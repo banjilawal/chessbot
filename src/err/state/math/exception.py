@@ -1,7 +1,7 @@
-# src/err/operation/vector/operation.py
+# src/err/state/vector/state.py
 
 """
-Module: err.operation.vector.operation
+Module: err.state.vector.state
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,15 +10,15 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import OperationException
+from err import StateException
 
 __all__ = [
-    # ======================# VECTOR_OPERATION_ERROR #======================#
-    "VectorOperationException",
+    # ======================# VECTOR_STATE_ERROR #======================#
+    "VectorStateException",
 ]
 
-# ======================# VECTOR_OPERATION_ERROR #======================#
-class VectorOperationException(OperationException):
+# ======================# VECTOR_STATE_ERROR #======================#
+class VectorStateException(StateException):
     """
     Role:
         -   Error Tracing
@@ -38,10 +38,10 @@ class VectorOperationException(OperationException):
     Provides:
 
     Super Class:
-        OperationException
+        StateException
     """
     MSG = "Vector stateaborted."
-    ERR_CODE = "VECTOR_OPERATION_ERROR"
+    ERR_CODE = "VECTOR_STATE_ERROR"
     
     def __init__(
             self,

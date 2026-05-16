@@ -1,4 +1,4 @@
-# src/err/operation/bootstrap/assembly/player/exception.py
+# src/err/state/bootstrap/assembly/player/exception.py
 
 """
 Module: err.bootstrap.assembly.player.exception

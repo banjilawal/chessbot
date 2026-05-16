@@ -14,18 +14,18 @@ from err import SearchException
 
 
 __all__ = [
-    # ======================# RANK_SEARCH_FAILURE #======================#
+    # ======================# RANK_SEARCH_ERROR #======================#
     "RankSearchException",
 ]
 
-# ======================# RANK_SEARCH_FAILURE #======================#
+# ======================# RANK_SEARCH_ERROR #======================#
 class RankSearchException(SearchException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a RankSearch experienced an error.
+        1.  Indicate that a Rank search.
 
     Attributes:
         msg: Optional[str]
@@ -42,7 +42,7 @@ class RankSearchException(SearchException):
         SearchException
     """
     MSG = "Rank error state."
-    ERR_CODE = "RANK_SEARCH_FAILURE"
+    ERR_CODE = "RANK_SEARCH_ERROR"
     
     def __init__(
             self,

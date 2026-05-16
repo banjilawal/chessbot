@@ -10,16 +10,16 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import TokenOperationException
+from err import TokenStateException
 
 
 __all__ = [
     # ======================# PLAYER_TOKEN_FAILURE #======================#
-    "PlayerTokenOperationException",
+    "PlayerTokenStateException",
 ]
 
 # ======================# PLAYER_TOKEN_FAILURE #======================#
-class PlayerTokenOperationException(TokenOperationException):
+class PlayerTokenStateException(TokenStateException):
     """
     Role:
         -   Error Tracing
@@ -40,7 +40,7 @@ class PlayerTokenOperationException(TokenOperationException):
     Provides:
 
     Super Class:
-        TokenOperationException
+        TokenStateException
     """
     MSG = "Player tokenfailed."
     ERR_CODE = "PLAYER_TOKEN_FAILURE"

@@ -1,4 +1,4 @@
-# src/err/operation/bootstrap/assembly/team/exception.py
+# src/err/state/bootstrap/assembly/team/exception.py
 
 """
 Module: err.bootstrap.assembly.team.exception

@@ -13,19 +13,19 @@ from err import ContextSearchException
 
 
 __all__ = [
-    # ======================# EDGE_CONTEXT_SEARCH_FAILURE #======================#
+    # ======================# EDGE_CONTEXT_SEARCH_ERROR #======================#
     "EdgeContextSearchException",
 ]
 
 
-# ======================# EDGE_CONTEXT_SEARCH_FAILURE #======================#
+# ======================# EDGE_CONTEXT_SEARCH_ERROR #======================#
 class EdgeContextSearchException(ContextSearchException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a EdgeContextSearch experienced an error.
+        1.  Indicate that a EdgeContext search.
 
     Attributes:
             msg: Optional[str]
@@ -42,7 +42,7 @@ class EdgeContextSearchException(ContextSearchException):
         ContextSearchException
     """
     MSG = "EdgeContext error state."
-    ERR_CODE = "EDGE_CONTEXT_SEARCH_FAILURE"
+    ERR_CODE = "EDGE_CONTEXT_SEARCH_ERROR"
     
     def __init__(
             self,

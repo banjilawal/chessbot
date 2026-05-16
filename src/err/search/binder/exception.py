@@ -14,18 +14,18 @@ from err import SearchException
 
 
 __all__ = [
-    # ======================# BINDER_SEARCH_FAILURE #======================#
+    # ======================# BINDER_SEARCH_ERROR #======================#
     "BinderSearchException",
 ]
 
-# ======================# BINDER_SEARCH_FAILURE #======================#
+# ======================# BINDER_SEARCH_ERROR #======================#
 class BinderSearchException(SearchException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a BinderSearch experienced an error.
+        1.  Indicate that a Binder search.
 
     Attributes:
         msg: Optional[str]
@@ -42,7 +42,7 @@ class BinderSearchException(SearchException):
         SearchException
     """
     MSG = "Binder error state."
-    ERR_CODE = "BINDER_SEARCH_FAILURE"
+    ERR_CODE = "BINDER_SEARCH_ERROR"
     
     def __init__(
             self,

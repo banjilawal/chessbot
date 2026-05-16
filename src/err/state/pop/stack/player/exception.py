@@ -1,7 +1,7 @@
-# src/err/operation/push /stack/player/exception.py
+# src/err/state/push /stack/player/exception.py
 
 """
-Module: err.operation.push .stack.player.exception
+Module: err.state.push .stack.player.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1

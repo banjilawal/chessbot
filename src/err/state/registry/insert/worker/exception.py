@@ -1,7 +1,7 @@
-# src/err/operation/registry/insert/worker/exception.py
+# src/err/state/registry/insert/worker/exception.py
 
 """
-Module: err.operation.registry.insert.worker.exception
+Module: err.state.registry.insert.worker.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1

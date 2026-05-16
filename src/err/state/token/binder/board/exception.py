@@ -1,7 +1,7 @@
-# src/err/operation/token/binder/board/exception.py
+# src/err/state/token/binder/board/exception.py
 
 """
-Module: err.operation.token.binder.board.exception
+Module: err.state.token.binder.board.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -9,19 +9,19 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import TokenOperationException
+from err import TokenStateException
 
 
 __all__ = [
     # ======================# BOARD_BINDER_TOKEN_FAILURE #======================#
-    "BoardBinderTokenOperationException",
+    "BoardBinderTokenStateException",
 ]
 
-from err import BinderTokenOperationException
+from err import BinderTokenStateException
 
 
 # ======================# BOARD_BINDER_TOKEN_FAILURE #======================#
-class BoardBinderTokenOperationException(BinderTokenOperationException):
+class BoardBinderTokenStateException(BinderTokenStateException):
     """
     Role:
         -   Error Tracing
@@ -41,7 +41,7 @@ class BoardBinderTokenOperationException(BinderTokenOperationException):
     Provides:
 
     Super Class:
-        BinderTokenOperationException
+        BinderTokenStateException
     """
     MSG = "BoardBinder tokenfailed."
     ERR_CODE = "BOARD_BINDER_TOKEN_FAILURE"

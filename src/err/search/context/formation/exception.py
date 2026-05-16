@@ -13,19 +13,19 @@ from err import ContextSearchException
 
 
 __all__ = [
-    # ======================# FORMATION_CONTEXT_SEARCH_FAILURE #======================#
+    # ======================# FORMATION_CONTEXT_SEARCH_ERROR #======================#
     "FormationContextSearchException",
 ]
 
 
-# ======================# FORMATION_CONTEXT_SEARCH_FAILURE #======================#
+# ======================# FORMATION_CONTEXT_SEARCH_ERROR #======================#
 class FormationContextSearchException(ContextSearchException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a FormationContextSearch experienced an error.
+        1.  Indicate that a FormationContext search.
 
     Attributes:
             msg: Optional[str]
@@ -42,7 +42,7 @@ class FormationContextSearchException(ContextSearchException):
         ContextSearchException
     """
     MSG = "FormationContext error state."
-    ERR_CODE = "FORMATION_CONTEXT_SEARCH_FAILURE"
+    ERR_CODE = "FORMATION_CONTEXT_SEARCH_ERROR"
     
     def __init__(
             self,

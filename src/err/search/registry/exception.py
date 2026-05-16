@@ -13,21 +13,21 @@ from typing import Any, Optional
 from err import SearchException
 
 __all__ = [
-    # ======================# REGISTRY_SEARCH_FAILURE #======================#
+    # ======================# REGISTRY_SEARCH_ERROR #======================#
     "RegistrySearchException",
 ]
 
 from result import MethodResultType
 
 
-# ======================# REGISTRY_SEARCH_FAILURE #======================#
+# ======================# REGISTRY_SEARCH_ERROR #======================#
 class RegistrySearchException(SearchException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an error occurred searching a registry.
+        1.  Indicate that an error occurred during a error occurred searching a registry.
 
     Attributes:
         msg: Optional[str]
@@ -45,7 +45,7 @@ class RegistrySearchException(SearchException):
         SearchException
     """
     MSG = "Error occurred during RegistrySearch"
-    ERR_CODE = "REGISTRY_SEARCH_FAILURE"
+    ERR_CODE = "REGISTRY_SEARCH_ERROR"
     
     def __init__(
             self,

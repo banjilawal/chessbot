@@ -1,7 +1,7 @@
-# src/err/operation/token/context/persona/exception.py
+# src/err/state/token/context/persona/exception.py
 
 """
-Module: err.operation.token.context.persona.exception
+Module: err.state.token.context.persona.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -9,19 +9,19 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import TokenOperationException
+from err import TokenStateException
 
 
 __all__ = [
     # ======================# PERSONA_CONTEXT_TOKEN_FAILURE #======================#
-    "PersonaContextTokenOperationException",
+    "PersonaContextTokenStateException",
 ]
 
-from err import ContextTokenOperationException
+from err import ContextTokenStateException
 
 
 # ======================# PERSONA_CONTEXT_TOKEN_FAILURE #======================#
-class PersonaContextTokenOperationException(ContextTokenOperationException):
+class PersonaContextTokenStateException(ContextTokenStateException):
     """
     Role:
         -   Error Tracing
@@ -41,7 +41,7 @@ class PersonaContextTokenOperationException(ContextTokenOperationException):
     Provides:
 
     Super Class:
-        ContextTokenOperationException
+        ContextTokenStateException
     """
     MSG = "PersonaContext tokenfailed."
     ERR_CODE = "PERSONA_CONTEXT_TOKEN_FAILURE"

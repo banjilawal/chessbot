@@ -14,18 +14,18 @@ from err import WorkerRegistrySearchException
 
 
 __all__ = [
-    # ======================# WORKER_REGISTRY_DOMAIN_SEARCH_FAILURE #======================#
+    # ======================# WORKER_REGISTRY_DOMAIN_SEARCH_ERROR #======================#
     "WorkerRegistryDomainSearchException",
 ]
 
-# ======================# WORKER_REGISTRY_DOMAIN_SEARCH_FAILURE #======================#
+# ======================# WORKER_REGISTRY_DOMAIN_SEARCH_ERROR #======================#
 class WorkerRegistryDomainSearchException(WorkerRegistrySearchException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an error occurred during a WorkerRegistryDomainSearch.
+        1.  Indicate that an error occurred during a error occurred during a WorkerRegistryDomainSearch.
 
     Attributes:
         msg: Optional[str]
@@ -43,7 +43,7 @@ class WorkerRegistryDomainSearchException(WorkerRegistrySearchException):
         RegistryWorkerSearchException
     """
     MSG = "Error during a WorkerRegistryDomainSearch."
-    ERR_CODE = "WORKER_REGISTRY_DOMAIN_SEARCH_FAILURE"
+    ERR_CODE = "WORKER_REGISTRY_DOMAIN_SEARCH_ERROR"
     
     def __init__(
             self,

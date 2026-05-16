@@ -1,7 +1,7 @@
-# src/err/operation/validation/context/zero/persona/__init__.py
+# src/err/state/validation/context/zero/persona/__init__.py
 
 """
-Module: err.operation.validation.context.zero.persona.exception
+Module: err.state.validation.context.zero.persona.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1

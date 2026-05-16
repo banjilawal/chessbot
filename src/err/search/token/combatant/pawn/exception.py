@@ -14,18 +14,18 @@ from err import TokenSearchException
 
 
 __all__ = [
-    # ======================# PAWN_TOKEN_SEARCH_FAILURE #======================#
+    # ======================# PAWN_TOKEN_SEARCH_ERROR #======================#
     "PawnTokenSearchException",
 ]
 
-# ======================# PAWN_TOKEN_SEARCH_FAILURE #======================#
+# ======================# PAWN_TOKEN_SEARCH_ERROR #======================#
 class PawnTokenSearchException(TokenSearchException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a PawnTokenSearch experienced an error.
+        1.  Indicate that a PawnToken search.
 
     Attributes:
         msg: Optional[str]
@@ -42,7 +42,7 @@ class PawnTokenSearchException(TokenSearchException):
         TokenSearchException
     """
     MSG = "PawnToken error state."
-    ERR_CODE = "PAWN_TOKEN_SEARCH_FAILURE"
+    ERR_CODE = "PAWN_TOKEN_SEARCH_ERROR"
     
     def __init__(
             self,

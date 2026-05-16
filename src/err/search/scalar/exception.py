@@ -14,18 +14,18 @@ from err import SearchException
 
 
 __all__ = [
-    # ======================# SCALAR_SEARCH_FAILURE #======================#
+    # ======================# SCALAR_SEARCH_ERROR #======================#
     "ScalarSearchException",
 ]
 
-# ======================# SCALAR_SEARCH_FAILURE #======================#
+# ======================# SCALAR_SEARCH_ERROR #======================#
 class ScalarSearchException(SearchException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a ScalarSearch experienced an error.
+        1.  Indicate that a Scalar search.
 
     Attributes:
         msg: Optional[str]
@@ -42,7 +42,7 @@ class ScalarSearchException(SearchException):
         SearchException
     """
     MSG = "Scalar error state."
-    ERR_CODE = "SCALAR_SEARCH_FAILURE"
+    ERR_CODE = "SCALAR_SEARCH_ERROR"
     
     def __init__(
             self,

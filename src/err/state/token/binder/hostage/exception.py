@@ -1,7 +1,7 @@
-# src/err/operation/token/binder/hostage/exception.py
+# src/err/state/token/binder/hostage/exception.py
 
 """
-Module: err.operation.token.binder.hostage.exception
+Module: err.state.token.binder.hostage.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -9,19 +9,19 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import TokenOperationException
+from err import TokenStateException
 
 
 __all__ = [
     # ======================# HOSTAGE_BINDER_TOKEN_FAILURE #======================#
-    "HostageBinderTokenOperationException",
+    "HostageBinderTokenStateException",
 ]
 
-from err import BinderTokenOperationException
+from err import BinderTokenStateException
 
 
 # ======================# HOSTAGE_BINDER_TOKEN_FAILURE #======================#
-class HostageBinderTokenOperationException(BinderTokenOperationException):
+class HostageBinderTokenStateException(BinderTokenStateException):
     """
     Role:
         -   Error Tracing
@@ -41,7 +41,7 @@ class HostageBinderTokenOperationException(BinderTokenOperationException):
     Provides:
 
     Super Class:
-        BinderTokenOperationException
+        BinderTokenStateException
     """
     MSG = "HostageBinder tokenfailed."
     ERR_CODE = "HOSTAGE_BINDER_TOKEN_FAILURE"

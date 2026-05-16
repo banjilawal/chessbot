@@ -1,7 +1,7 @@
-# src/err/operation/vector/transform/operation.py
+# src/err/state/vector/transform/state.py
 
 """
-Module: err.operation.vector.transform.operation
+Module: err.state.vector.transform.state
 Author: Banji Lawal
 Created: 2026-04-07
 version: 1.0.0
@@ -12,21 +12,21 @@ from typing import Any, Optional
 
 
 __all__ = [
-    # ======================# VECTOR_TRANSFORM_OPERATION_ERROR #======================#
+    # ======================# VECTOR_TRANSFORM_STATE_ERROR #======================#
     "VectorTransformException",
 ]
 
-from err import VectorOperationException
+from err import VectorStateException
 
 
-# ======================# VECTOR_TRANSFORM_OPERATION_ERROR #======================#
-class VectorTransformException(VectorOperationException):
+# ======================# VECTOR_TRANSFORM_STATE_ERROR #======================#
+class VectorTransformException(VectorStateException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an error occurred during VectorTransform operation.
+        1.  Indicate that an error occurred during VectorTransform state.
 
     Attributes:
         msg: Optional[str]
@@ -40,10 +40,10 @@ class VectorTransformException(VectorOperationException):
     Provides:
 
     Super Class:
-        VectorOperationException
+        VectorStateException
     """
     MSG = "Error during VectorTransform."
-    ERR_CODE = "VECTOR_TRANSFORM_OPERATION_ERROR"
+    ERR_CODE = "VECTOR_TRANSFORM_STATE_ERROR"
     
     def __init__(
             self,

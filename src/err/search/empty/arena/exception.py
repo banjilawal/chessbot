@@ -13,12 +13,12 @@ from err import EmptySearchException
 
 
 __all__ = [
-    # ======================# ARENA_NOT_FOUND_SEARCH_FAILURE #======================#
+    # ======================# ARENA_NOT_FOUND_SEARCH_ERROR #======================#
     "ArenaNotFoundSearchException",
 ]
 
 
-# ======================# ARENA_NOT_FOUND_SEARCH_FAILURE #======================#
+# ======================# ARENA_NOT_FOUND_SEARCH_ERROR #======================#
 class ArenaNotFoundSearchException(EmptySearchException):
     """
     Role:
@@ -42,7 +42,7 @@ class ArenaNotFoundSearchException(EmptySearchException):
         NotFoundSearchException
     """
     MSG = "Arena was not found."
-    ERR_CODE = "ARENA_NOT_FOUND_SEARCH_FAILURE"
+    ERR_CODE = "ARENA_NOT_FOUND_SEARCH_ERROR"
     
     def __init__(
             self,

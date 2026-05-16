@@ -1,7 +1,7 @@
-# src/err/operation/assembly/context/hostage/exception.py
+# src/err/state/assembly/context/hostage/exception.py
 
 """
-Module: err.operation.assembly.context.hostage.exception
+Module: err.state.assembly.context.hostage.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1

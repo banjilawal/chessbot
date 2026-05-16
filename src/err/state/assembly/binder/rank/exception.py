@@ -1,7 +1,7 @@
-# src/err/operation/assembly/binder/rank/exception.py
+# src/err/state/assembly/binder/rank/exception.py
 
 """
-Module: err.operation.assembly.binder.rank.exception
+Module: err.state.assembly.binder.rank.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1

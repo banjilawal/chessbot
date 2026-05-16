@@ -13,12 +13,12 @@ from err import EmptySearchException
 
 
 __all__ = [
-    # ======================# RANK_NOT_FOUND_SEARCH_FAILURE #======================#
+    # ======================# RANK_NOT_FOUND_SEARCH_ERROR #======================#
     "RankNotFoundSearchException",
 ]
 
 
-# ======================# RANK_NOT_FOUND_SEARCH_FAILURE #======================#
+# ======================# RANK_NOT_FOUND_SEARCH_ERROR #======================#
 class RankNotFoundSearchException(EmptySearchException):
     """
     Role:
@@ -42,7 +42,7 @@ class RankNotFoundSearchException(EmptySearchException):
         NotFoundSearchException
     """
     MSG = "Rank was not found."
-    ERR_CODE = "RANK_NOT_FOUND_SEARCH_FAILURE"
+    ERR_CODE = "RANK_NOT_FOUND_SEARCH_ERROR"
     
     def __init__(
             self,

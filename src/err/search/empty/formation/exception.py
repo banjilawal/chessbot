@@ -13,12 +13,12 @@ from err import EmptySearchException
 
 
 __all__ = [
-    # ======================# FORMATION_NOT_FOUND_SEARCH_FAILURE #======================#
+    # ======================# FORMATION_NOT_FOUND_SEARCH_ERROR #======================#
     "FormationNotFoundSearchException",
 ]
 
 
-# ======================# FORMATION_NOT_FOUND_SEARCH_FAILURE #======================#
+# ======================# FORMATION_NOT_FOUND_SEARCH_ERROR #======================#
 class FormationNotFoundSearchException(EmptySearchException):
     """
     Role:
@@ -42,7 +42,7 @@ class FormationNotFoundSearchException(EmptySearchException):
         NotFoundSearchException
     """
     MSG = "Formation was not found."
-    ERR_CODE = "FORMATION_NOT_FOUND_SEARCH_FAILURE"
+    ERR_CODE = "FORMATION_NOT_FOUND_SEARCH_ERROR"
     
     def __init__(
             self,

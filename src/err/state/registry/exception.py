@@ -1,7 +1,7 @@
-# src/err/operation/registry/exception.py
+# src/err/state/registry/exception.py
 
 """
-Module: err.operation.registry.exception
+Module: err.state.registry.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,18 +10,18 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import OperationException
+from err import StateException
 
 __all__ = [
-    # ======================# REGISTRY_OPERATION_FAILURE #======================#
-    "RegistryOperationException",
+    # ======================# REGISTRY_STATE_FAILURE #======================#
+    "RegistryStateException",
 ]
 
 from result import MethodResultType
 
 
-# ======================# REGISTRY_OPERATION_FAILURE #======================#
-class RegistryOperationException(OperationException):
+# ======================# REGISTRY_STATE_FAILURE #======================#
+class RegistryStateException(StateException):
     """
     Role:
         -   Error Tracing
@@ -42,10 +42,10 @@ class RegistryOperationException(OperationException):
     Provides:
 
     Super Class:
-        OperationException
+        StateException
     """
     MSG = "Registry statefailed."
-    ERR_CODE = "REGISTRY_OPERATION_FAILURE"
+    ERR_CODE = "REGISTRY_STATE_FAILURE"
     
     def __init__(
             self,

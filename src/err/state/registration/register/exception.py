@@ -1,7 +1,7 @@
-# src/err/operation/registration/register/exception.py
+# src/err/state/registration/register/exception.py
 
 """
-Module: err.operation.registration.register.exception
+Module: err.state.registration.register.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1

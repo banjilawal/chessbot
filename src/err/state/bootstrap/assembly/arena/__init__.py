@@ -1,4 +1,4 @@
-# src/err/operation/bootstrap/assembly/arena/__init__.py
+# src/err/state/bootstrap/assembly/arena/__init__.py
 
 """
 Module: err.bootstrap.assembly.arena.__init__

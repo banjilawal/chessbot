@@ -9,16 +9,16 @@ version: 1.0.1
 
 from __future__ import annotations
 from typing import Any, Optional
-from err import TokenOperationException
+from err import TokenStateException
 
 
 __all__ = [
     # ======================# NODE_TOKEN_FAILURE #======================#
-    "NodeTokenOperationException",
+    "NodeTokenStateException",
 ]
 
 # ======================# NODE_TOKEN_FAILURE #======================#
-class NodeTokenOperationException(TokenOperationException):
+class NodeTokenStateException(TokenStateException):
     """
     Role:
         -   Error Tracing
@@ -39,7 +39,7 @@ class NodeTokenOperationException(TokenOperationException):
     Provides:
 
     Super Class:
-        TokenOperationException
+        TokenStateException
     """
     MSG = "Node tokenfailed."
     ERR_CODE = "NODE_TOKEN_FAILURE"

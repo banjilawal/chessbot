@@ -1,7 +1,7 @@
-# src/err/operation/token/context/schema/exception.py
+# src/err/state/token/context/schema/exception.py
 
 """
-Module: err.operation.token.context.schema.exception
+Module: err.state.token.context.schema.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -9,19 +9,19 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import TokenOperationException
+from err import TokenStateException
 
 
 __all__ = [
     # ======================# SCHEMA_CONTEXT_TOKEN_FAILURE #======================#
-    "SchemaContextTokenOperationException",
+    "SchemaContextTokenStateException",
 ]
 
-from err import ContextTokenOperationException
+from err import ContextTokenStateException
 
 
 # ======================# SCHEMA_CONTEXT_TOKEN_FAILURE #======================#
-class SchemaContextTokenOperationException(ContextTokenOperationException):
+class SchemaContextTokenStateException(ContextTokenStateException):
     """
     Role:
         -   Error Tracing
@@ -41,7 +41,7 @@ class SchemaContextTokenOperationException(ContextTokenOperationException):
     Provides:
 
     Super Class:
-        ContextTokenOperationException
+        ContextTokenStateException
     """
     MSG = "SchemaContext tokenfailed."
     ERR_CODE = "SCHEMA_CONTEXT_TOKEN_FAILURE"

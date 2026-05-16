@@ -1,13 +1,13 @@
-# src/err/operation/assembly/binder/rank/__init__.py
+# src/err/state/assembly/binder/rank/__init__.py
 
 """
-Module: err.operation.assembly.binder.rank.__init__
+Module: err.state.assembly.binder.rank.__init__
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
 """
 
-# =========== ERR.OPERATION.ASSEMBLY.BINDER.RANK PACKAGE ===========#
+# =========== ERR.STATE.ASSEMBLY.BINDER.RANK PACKAGE ===========#
 
 # Packages
 

@@ -1,7 +1,7 @@
-# src/err/operation/validation/vector/exception.py
+# src/err/state/validation/vector/exception.py
 
 """
-Module: err.operation.validation.vector.exception
+Module: err.state.validation.vector.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1

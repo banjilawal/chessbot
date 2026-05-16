@@ -13,19 +13,19 @@ from err import ContextSearchException
 
 
 __all__ = [
-    # ======================# COORD_CONTEXT_SEARCH_FAILURE #======================#
+    # ======================# COORD_CONTEXT_SEARCH_ERROR #======================#
     "CoordContextSearchException",
 ]
 
 
-# ======================# COORD_CONTEXT_SEARCH_FAILURE #======================#
+# ======================# COORD_CONTEXT_SEARCH_ERROR #======================#
 class CoordContextSearchException(ContextSearchException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a CoordContextSearch experienced an error.
+        1.  Indicate that a CoordContext search.
 
     Attributes:
             msg: Optional[str]
@@ -42,7 +42,7 @@ class CoordContextSearchException(ContextSearchException):
         ContextSearchException
     """
     MSG = "CoordContext error state."
-    ERR_CODE = "COORD_CONTEXT_SEARCH_FAILURE"
+    ERR_CODE = "COORD_CONTEXT_SEARCH_ERROR"
     
     def __init__(
             self,

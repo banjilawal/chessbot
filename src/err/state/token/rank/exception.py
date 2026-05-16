@@ -10,16 +10,16 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import TokenOperationException
+from err import TokenStateException
 
 
 __all__ = [
     # ======================# RANK_TOKEN_FAILURE #======================#
-    "RankTokenOperationException",
+    "RankTokenStateException",
 ]
 
 # ======================# RANK_TOKEN_FAILURE #======================#
-class RankTokenOperationException(TokenOperationException):
+class RankTokenStateException(TokenStateException):
     """
     Role:
         -   Error Tracing
@@ -40,7 +40,7 @@ class RankTokenOperationException(TokenOperationException):
     Provides:
 
     Super Class:
-        TokenOperationException
+        TokenStateException
     """
     MSG = "Rank tokenfailed."
     ERR_CODE = "RANK_TOKEN_FAILURE"

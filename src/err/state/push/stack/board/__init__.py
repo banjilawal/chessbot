@@ -1,13 +1,13 @@
-# src/err/operation/push/stack/board/__init__.py
+# src/err/state/push/stack/board/__init__.py
 
 """
-Module: err.operation.push.stack.board.__init__
+Module: err.state.push.stack.board.__init__
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
 """
 
-# ============ ERR.OPERATION.PUSH.STACK.BOARD PACKAGE ===========#
+# ============ ERR.STATE.PUSH.STACK.BOARD PACKAGE ===========#
 
 # Packages
 

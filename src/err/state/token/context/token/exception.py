@@ -1,7 +1,7 @@
-# src/err/operation/token/context/token/exception.py
+# src/err/state/token/context/token/exception.py
 
 """
-Module: err.operation.token.context.token.exception
+Module: err.state.token.context.token.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,19 +10,19 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import TokenOperationException
+from err import TokenStateException
 
 
 __all__ = [
     # ======================# TOKEN_CONTEXT_TOKEN_FAILURE #======================#
-    "TokenContextTokenOperationException",
+    "TokenContextTokenStateException",
 ]
 
-from err import ContextTokenOperationException
+from err import ContextTokenStateException
 
 
 # ======================# TOKEN_CONTEXT_TOKEN_FAILURE #======================#
-class TokenContextTokenOperationException(ContextTokenOperationException):
+class TokenContextTokenStateException(ContextTokenStateException):
     """
     Role:
         -   Error Tracing
@@ -42,7 +42,7 @@ class TokenContextTokenOperationException(ContextTokenOperationException):
     Provides:
 
     Super Class:
-        ContextTokenOperationException
+        ContextTokenStateException
     """
     MSG = "TokenContext tokenfailed."
     ERR_CODE = "TOKEN_CONTEXT_TOKEN_FAILURE"

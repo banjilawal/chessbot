@@ -14,19 +14,19 @@ from err import ContextSearchException
 
 
 __all__ = [
-    # ======================# TOKEN_CONTEXT_SEARCH_FAILURE #======================#
+    # ======================# TOKEN_CONTEXT_SEARCH_ERROR #======================#
     "TokenContextSearchException",
 ]
 
 
-# ======================# TOKEN_CONTEXT_SEARCH_FAILURE #======================#
+# ======================# TOKEN_CONTEXT_SEARCH_ERROR #======================#
 class TokenContextSearchException(ContextSearchException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a TokenContextSearch experienced an error.
+        1.  Indicate that a TokenContext search.
 
     Attributes:
             msg: Optional[str]
@@ -43,7 +43,7 @@ class TokenContextSearchException(ContextSearchException):
         ContextSearchException
     """
     MSG = "TokenContext error state."
-    ERR_CODE = "TOKEN_CONTEXT_SEARCH_FAILURE"
+    ERR_CODE = "TOKEN_CONTEXT_SEARCH_ERROR"
     
     def __init__(
             self,

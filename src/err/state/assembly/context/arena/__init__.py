@@ -1,13 +1,13 @@
-# src/err/operation/assembly/context/arena/__init__.py
+# src/err/state/assembly/context/arena/__init__.py
 
 """
-Module: err.operation.assembly.context.arena.__init__
+Module: err.state.assembly.context.arena.__init__
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
 """
 
-# =========== ERR.OPERATION.ASSEMBLY.CONTEXT.ARENA PACKAGE ===========#
+# =========== ERR.STATE.ASSEMBLY.CONTEXT.ARENA PACKAGE ===========#
 
 # Packages
 

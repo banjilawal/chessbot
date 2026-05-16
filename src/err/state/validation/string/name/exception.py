@@ -1,7 +1,7 @@
-# src/err/operation/validation/string/name/exception.py
+# src/err/state/validation/string/name/exception.py
 
 """
-Module: err.operation.validation.string.name.exception
+Module: err.state.validation.string.name.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1

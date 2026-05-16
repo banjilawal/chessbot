@@ -14,18 +14,18 @@ from err import SearchException
 
 
 __all__ = [
-    # ======================# COORD_SEARCH_FAILURE #======================#
+    # ======================# COORD_SEARCH_ERROR #======================#
     "CoordSearchException",
 ]
 
-# ======================# COORD_SEARCH_FAILURE #======================#
+# ======================# COORD_SEARCH_ERROR #======================#
 class CoordSearchException(SearchException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a CoordSearch experienced an error.
+        1.  Indicate that a Coord search.
 
     Attributes:
         msg: Optional[str]
@@ -42,7 +42,7 @@ class CoordSearchException(SearchException):
         SearchException
     """
     MSG = "Coord error state."
-    ERR_CODE = "COORD_SEARCH_FAILURE"
+    ERR_CODE = "COORD_SEARCH_ERROR"
     
     def __init__(
             self,

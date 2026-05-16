@@ -1,7 +1,7 @@
-# src/err/operation/token/binder/game/exception.py
+# src/err/state/token/binder/game/exception.py
 
 """
-Module: err.operation.token.binder.game.exception
+Module: err.state.token.binder.game.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -9,19 +9,19 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import TokenOperationException
+from err import TokenStateException
 
 
 __all__ = [
     # ======================# GAME_BINDER_TOKEN_FAILURE #======================#
-    "GameBinderTokenOperationException",
+    "GameBinderTokenStateException",
 ]
 
-from err import BinderTokenOperationException
+from err import BinderTokenStateException
 
 
 # ======================# GAME_BINDER_TOKEN_FAILURE #======================#
-class GameBinderTokenOperationException(BinderTokenOperationException):
+class GameBinderTokenStateException(BinderTokenStateException):
     """
     Role:
         -   Error Tracing
@@ -41,7 +41,7 @@ class GameBinderTokenOperationException(BinderTokenOperationException):
     Provides:
 
     Super Class:
-        BinderTokenOperationException
+        BinderTokenStateException
     """
     MSG = "GameBinder tokenfailed."
     ERR_CODE = "GAME_BINDER_TOKEN_FAILURE"

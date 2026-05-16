@@ -13,19 +13,19 @@ from err import ContextSearchException
 
 
 __all__ = [
-    # ======================# BOARD_CONTEXT_SEARCH_FAILURE #======================#
+    # ======================# BOARD_CONTEXT_SEARCH_ERROR #======================#
     "BoardContextSearchException",
 ]
 
 
-# ======================# BOARD_CONTEXT_SEARCH_FAILURE #======================#
+# ======================# BOARD_CONTEXT_SEARCH_ERROR #======================#
 class BoardContextSearchException(ContextSearchException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a BoardContextSearch experienced an error.
+        1.  Indicate that a BoardContext search.
 
     Attributes:
             msg: Optional[str]
@@ -42,7 +42,7 @@ class BoardContextSearchException(ContextSearchException):
         ContextSearchException
     """
     MSG = "BoardContext error state."
-    ERR_CODE = "BOARD_CONTEXT_SEARCH_FAILURE"
+    ERR_CODE = "BOARD_CONTEXT_SEARCH_ERROR"
     
     def __init__(
             self,

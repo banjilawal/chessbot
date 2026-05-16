@@ -1,7 +1,7 @@
 # src/err/validation/operand/operand/exception.py
 
 """
-Module: err.operation.validation.operand.exception
+Module: err.state.validation.operand.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1

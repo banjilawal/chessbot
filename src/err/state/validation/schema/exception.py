@@ -1,7 +1,7 @@
-# src/err/operation/validation/schema/exception.py
+# src/err/state/validation/schema/exception.py
 
 """
-Module: err.operation.validation.schema.exception
+Module: err.state.validation.schema.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1

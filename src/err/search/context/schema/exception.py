@@ -13,19 +13,19 @@ from err import ContextSearchException
 
 
 __all__ = [
-    # ======================# SCHEMA_CONTEXT_SEARCH_FAILURE #======================#
+    # ======================# SCHEMA_CONTEXT_SEARCH_ERROR #======================#
     "SchemaContextSearchException",
 ]
 
 
-# ======================# SCHEMA_CONTEXT_SEARCH_FAILURE #======================#
+# ======================# SCHEMA_CONTEXT_SEARCH_ERROR #======================#
 class SchemaContextSearchException(ContextSearchException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a SchemaContextSearch experienced an error.
+        1.  Indicate that a SchemaContext search.
 
     Attributes:
             msg: Optional[str]
@@ -42,7 +42,7 @@ class SchemaContextSearchException(ContextSearchException):
         ContextSearchException
     """
     MSG = "SchemaContext error state."
-    ERR_CODE = "SCHEMA_CONTEXT_SEARCH_FAILURE"
+    ERR_CODE = "SCHEMA_CONTEXT_SEARCH_ERROR"
     
     def __init__(
             self,

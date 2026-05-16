@@ -1,7 +1,7 @@
-# src/err/operation/exception.py
+# src/err/state/exception.py
 
 """
-Module: err.operation.exception
+Module: err.state.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -13,21 +13,21 @@ from typing import Any, Optional
 from err import ChessException
 
 __all__ = [
-    # ======================# OPERATION_ERROR #======================#
-    "OperationException",
+    # ======================# STATE_ERROR #======================#
+    "StateException",
 ]
 
 from result import MethodResultType
 
 
-# ======================# OPERATION_ERROR #======================#
-class OperationException(ChessException):
+# ======================# STATE_ERROR #======================#
+class StateException(ChessException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an error prevented the statefrom completing the task.
+        1.  Indicate that an operation cannot be executed because an entity is not in the correct state.
 
     Attributes:
         msg: str
@@ -44,8 +44,8 @@ class OperationException(ChessException):
     Super Class:
         ChessException
     """
-    MSG = "Statefailed"
-    ERR_CODE = "OPERATION_ERROR"
+    MSG = "Entity is not in the correct state for the operation."
+    ERR_CODE = "STATE_ERROR"
     
     def __init__(
             self,

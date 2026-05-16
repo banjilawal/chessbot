@@ -1,13 +1,13 @@
-# src/err/operation/assembly/binder/team/__init__.py
+# src/err/state/assembly/binder/team/__init__.py
 
 """
-Module: err.operation.assembly.binder.team.__init__
+Module: err.state.assembly.binder.team.__init__
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
 """
 
-# =========== ERR.OPERATION.ASSEMBLY.BINDER.TEAM PACKAGE ===========#
+# =========== ERR.STATE.ASSEMBLY.BINDER.TEAM PACKAGE ===========#
 
 # Packages
 

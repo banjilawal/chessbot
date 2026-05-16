@@ -10,16 +10,16 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import TokenOperationException
+from err import TokenStateException
 
 
 __all__ = [
     # ======================# SCHEMA_TOKEN_FAILURE #======================#
-    "SchemaTokenOperationException",
+    "SchemaTokenStateException",
 ]
 
 # ======================# SCHEMA_TOKEN_FAILURE #======================#
-class SchemaTokenOperationException(TokenOperationException):
+class SchemaTokenStateException(TokenStateException):
     """
     Role:
         -   Error Tracing
@@ -40,7 +40,7 @@ class SchemaTokenOperationException(TokenOperationException):
     Provides:
 
     Super Class:
-        TokenOperationException
+        TokenStateException
     """
     MSG = "Schema tokenfailed."
     ERR_CODE = "SCHEMA_TOKEN_FAILURE"

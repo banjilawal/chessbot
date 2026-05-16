@@ -1,4 +1,4 @@
-# src/err/operation/bootstrap/assembly/hostage/exception.py
+# src/err/state/bootstrap/assembly/hostage/exception.py
 
 """
 Module: err.bootstrap.assembly.hostage.exception

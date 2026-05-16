@@ -1,13 +1,13 @@
 # src/err/validation/scalar/__init__.py
 
 """
-Module: err.operation.validation.scalar.__init__
+Module: err.state.validation.scalar.__init__
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
 """
 
-# ============ ERR.OPERATION.VALIDATION.SCALAR PACKAGE ===========#
+# ============ ERR.STATE.VALIDATION.SCALAR PACKAGE ===========#
 
 # Packages
 

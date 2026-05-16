@@ -14,18 +14,18 @@ from err import SearchException
 
 
 __all__ = [
-    # ======================# FORMATION_SEARCH_FAILURE #======================#
+    # ======================# FORMATION_SEARCH_ERROR #======================#
     "FormationSearchException",
 ]
 
-# ======================# FORMATION_SEARCH_FAILURE #======================#
+# ======================# FORMATION_SEARCH_ERROR #======================#
 class FormationSearchException(SearchException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a FormationSearch experienced an error.
+        1.  Indicate that a Formation search.
 
     Attributes:
             msg: Optional[str]
@@ -42,7 +42,7 @@ class FormationSearchException(SearchException):
         SearchException
     """
     MSG = "Formation error state."
-    ERR_CODE = "FORMATION_SEARCH_FAILURE"
+    ERR_CODE = "FORMATION_SEARCH_ERROR"
     
     def __init__(
             self,

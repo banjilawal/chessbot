@@ -10,16 +10,16 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import TokenOperationException
+from err import TokenStateException
 
 
 __all__ = [
     # ======================# HOSTAGE_TOKEN_FAILURE #======================#
-    "HostageTokenOperationException",
+    "HostageTokenStateException",
 ]
 
 # ======================# HOSTAGE_TOKEN_FAILURE #======================#
-class HostageTokenOperationException(TokenOperationException):
+class HostageTokenStateException(TokenStateException):
     """
     Role:
         -   Error Tracing
@@ -40,7 +40,7 @@ class HostageTokenOperationException(TokenOperationException):
     Provides:
 
     Super Class:
-        TokenOperationException
+        TokenStateException
     """
     MSG = "Hostage tokenfailed."
     ERR_CODE = "HOSTAGE_TOKEN_FAILURE"

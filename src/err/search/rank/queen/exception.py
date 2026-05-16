@@ -14,18 +14,18 @@ from err import RankSearchException
 
 
 __all__ = [
-    # ======================# QUEEN_SEARCH_FAILURE #======================#
+    # ======================# QUEEN_SEARCH_ERROR #======================#
     "QueenSearchException",
 ]
 
-# ======================# QUEEN_SEARCH_FAILURE #======================#
+# ======================# QUEEN_SEARCH_ERROR #======================#
 class QueenSearchException(RankSearchException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a QueenSearch experienced an error.
+        1.  Indicate that a Queen search.
 
     Attributes:
         msg: Optional[str]
@@ -42,7 +42,7 @@ class QueenSearchException(RankSearchException):
         RankSearchException
     """
     MSG = "Queen error state."
-    ERR_CODE = "QUEEN_SEARCH_FAILURE"
+    ERR_CODE = "QUEEN_SEARCH_ERROR"
     
     def __init__(
             self,

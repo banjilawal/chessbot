@@ -1,7 +1,7 @@
-# src/err/operation/push/stack/coord/exception.py
+# src/err/state/push/stack/coord/exception.py
 
 """
-Module: err.operation.push.stack.coord.exception
+Module: err.state.push.stack.coord.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1

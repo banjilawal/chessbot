@@ -1,7 +1,7 @@
-# src/err/operation/token/context/coord/exception.py
+# src/err/state/token/context/coord/exception.py
 
 """
-Module: err.operation.token.context.coord.exception
+Module: err.state.token.context.coord.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -9,19 +9,19 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import TokenOperationException
+from err import TokenStateException
 
 
 __all__ = [
     # ======================# COORD_CONTEXT_TOKEN_FAILURE #======================#
-    "CoordContextTokenOperationException",
+    "CoordContextTokenStateException",
 ]
 
-from err import ContextTokenOperationException
+from err import ContextTokenStateException
 
 
 # ======================# COORD_CONTEXT_TOKEN_FAILURE #======================#
-class CoordContextTokenOperationException(ContextTokenOperationException):
+class CoordContextTokenStateException(ContextTokenStateException):
     """
     Role:
         -   Error Tracing
@@ -41,7 +41,7 @@ class CoordContextTokenOperationException(ContextTokenOperationException):
     Provides:
 
     Super Class:
-        ContextTokenOperationException
+        ContextTokenStateException
     """
     MSG = "CoordContext tokenfailed."
     ERR_CODE = "COORD_CONTEXT_TOKEN_FAILURE"

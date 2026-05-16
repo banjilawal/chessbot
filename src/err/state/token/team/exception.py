@@ -10,16 +10,16 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import TokenOperationException
+from err import TokenStateException
 
 
 __all__ = [
     # ======================# TEAM_TOKEN_FAILURE #======================#
-    "TeamTokenOperationException",
+    "TeamTokenStateException",
 ]
 
 # ======================# TEAM_TOKEN_FAILURE #======================#
-class TeamTokenOperationException(TokenOperationException):
+class TeamTokenStateException(TokenStateException):
     """
     Role:
         -   Error Tracing
@@ -39,7 +39,7 @@ class TeamTokenOperationException(TokenOperationException):
     Provides:
 
     Super Class:
-        TokenOperationException
+        TokenStateException
     """
     MSG = "Team tokenfailed."
     ERR_CODE = "TEAM_TOKEN_FAILURE"

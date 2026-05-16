@@ -14,18 +14,18 @@ from err import RankSearchException
 
 
 __all__ = [
-    # ======================# BISHOP_SEARCH_FAILURE #======================#
+    # ======================# BISHOP_SEARCH_ERROR #======================#
     "BishopSearchException",
 ]
 
-# ======================# BISHOP_SEARCH_FAILURE #======================#
+# ======================# BISHOP_SEARCH_ERROR #======================#
 class BishopSearchException(RankSearchException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a BishopSearch experienced an error.
+        1.  Indicate that a Bishop search.
 
     Attributes:
         msg: Optional[str]
@@ -42,7 +42,7 @@ class BishopSearchException(RankSearchException):
         RankSearchException
     """
     MSG = "Bishop error state."
-    ERR_CODE = "BISHOP_SEARCH_FAILURE"
+    ERR_CODE = "BISHOP_SEARCH_ERROR"
     
     def __init__(
             self,

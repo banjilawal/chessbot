@@ -1,13 +1,13 @@
 # src/err/validation/rank/bishop/__init__.py
 
 """
-Module: err.operation.validation.rank.bishop.__init__
+Module: err.state.validation.rank.bishop.__init__
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
 """
 
-# ============ ERR.OPERATION.VALIDATION.RANK.BISHOP PACKAGE ===========#
+# ============ ERR.STATE.VALIDATION.RANK.BISHOP PACKAGE ===========#
 
 # Packages
 

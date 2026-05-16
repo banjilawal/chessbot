@@ -1,7 +1,7 @@
-# src/err/operation/token/binder/player/exception.py
+# src/err/state/token/binder/player/exception.py
 
 """
-Module: err.operation.token.binder.player.exception
+Module: err.state.token.binder.player.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -9,19 +9,19 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import TokenOperationException
+from err import TokenStateException
 
 
 __all__ = [
     # ======================# PLAYER_BINDER_TOKEN_FAILURE #======================#
-    "PlayerBinderTokenOperationException",
+    "PlayerBinderTokenStateException",
 ]
 
-from err import BinderTokenOperationException
+from err import BinderTokenStateException
 
 
 # ======================# PLAYER_BINDER_TOKEN_FAILURE #======================#
-class PlayerBinderTokenOperationException(BinderTokenOperationException):
+class PlayerBinderTokenStateException(BinderTokenStateException):
     """
     Role:
         -   Error Tracing
@@ -41,7 +41,7 @@ class PlayerBinderTokenOperationException(BinderTokenOperationException):
     Provides:
 
     Super Class:
-        BinderTokenOperationException
+        BinderTokenStateException
     """
     MSG = "PlayerBinder tokenfailed."
     ERR_CODE = "PLAYER_BINDER_TOKEN_FAILURE"

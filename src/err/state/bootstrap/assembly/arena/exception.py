@@ -1,4 +1,4 @@
-# src/err/operation/bootstrap/assembly/arena/exception.py
+# src/err/state/bootstrap/assembly/arena/exception.py
 
 """
 Module: err.bootstrap.assembly.arena.exception

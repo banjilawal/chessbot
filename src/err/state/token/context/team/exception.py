@@ -1,7 +1,7 @@
-# src/err/operation/token/context/team/exception.py
+# src/err/state/token/context/team/exception.py
 
 """
-Module: err.operation.token.context.team.exception
+Module: err.state.token.context.team.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -9,19 +9,19 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import TokenOperationException
+from err import TokenStateException
 
 
 __all__ = [
     # ======================# TEAM_CONTEXT_TOKEN_FAILURE #======================#
-    "TeamContextTokenOperationException",
+    "TeamContextTokenStateException",
 ]
 
-from err import ContextTokenOperationException
+from err import ContextTokenStateException
 
 
 # ======================# TEAM_CONTEXT_TOKEN_FAILURE #======================#
-class TeamContextTokenOperationException(ContextTokenOperationException):
+class TeamContextTokenStateException(ContextTokenStateException):
     """
     Role:
         -   Error Tracing
@@ -41,7 +41,7 @@ class TeamContextTokenOperationException(ContextTokenOperationException):
     Provides:
 
     Super Class:
-        ContextTokenOperationException
+        ContextTokenStateException
     """
     MSG = "TeamContext tokenfailed."
     ERR_CODE = "TEAM_CONTEXT_TOKEN_FAILURE"

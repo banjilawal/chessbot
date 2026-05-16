@@ -14,18 +14,18 @@ from err import RankSearchException
 
 
 __all__ = [
-    # ======================# KNIGHT_SEARCH_FAILURE #======================#
+    # ======================# KNIGHT_SEARCH_ERROR #======================#
     "KnightSearchException",
 ]
 
-# ======================# KNIGHT_SEARCH_FAILURE #======================#
+# ======================# KNIGHT_SEARCH_ERROR #======================#
 class KnightSearchException(RankSearchException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a KnightSearch experienced an error.
+        1.  Indicate that a Knight search.
 
     Attributes:
         msg: Optional[str]
@@ -42,7 +42,7 @@ class KnightSearchException(RankSearchException):
         RankSearchException
     """
     MSG = "Knight error state."
-    ERR_CODE = "KNIGHT_SEARCH_FAILURE"
+    ERR_CODE = "KNIGHT_SEARCH_ERROR"
     
     def __init__(
             self,

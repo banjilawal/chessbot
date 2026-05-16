@@ -10,16 +10,16 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import TokenOperationException
+from err import TokenStateException
 
 
 __all__ = [
     # ======================# PERSONA_TOKEN_FAILURE #======================#
-    "PersonaTokenOperationException",
+    "PersonaTokenStateException",
 ]
 
 # ======================# PERSONA_TOKEN_FAILURE #======================#
-class PersonaTokenOperationException(TokenOperationException):
+class PersonaTokenStateException(TokenStateException):
     """
     Role:
         -   Error Tracing
@@ -39,7 +39,7 @@ class PersonaTokenOperationException(TokenOperationException):
     Provides:
 
     Super Class:
-        TokenOperationException
+        TokenStateException
     """
     MSG = "Persona tokenfailed."
     ERR_CODE = "PERSONA_TOKEN_FAILURE"

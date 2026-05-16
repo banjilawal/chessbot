@@ -1,7 +1,7 @@
-# src/err/operation/token/binder/token/exception.py
+# src/err/state/token/binder/token/exception.py
 
 """
-Module: err.operation.token.binder.token.exception
+Module: err.state.token.binder.token.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,19 +10,19 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import TokenOperationException
+from err import TokenStateException
 
 
 __all__ = [
     # ======================# TOKEN_BINDER_TOKEN_FAILURE #======================#
-    "TokenBinderTokenOperationException",
+    "TokenBinderTokenStateException",
 ]
 
-from err import BinderTokenOperationException
+from err import BinderTokenStateException
 
 
 # ======================# TOKEN_BINDER_TOKEN_FAILURE #======================#
-class TokenBinderTokenOperationException(BinderTokenOperationException):
+class TokenBinderTokenStateException(BinderTokenStateException):
     """
     Role:
         -   Error Tracing
@@ -42,7 +42,7 @@ class TokenBinderTokenOperationException(BinderTokenOperationException):
     Provides:
 
     Super Class:
-        BinderTokenOperationException
+        BinderTokenStateException
     """
     MSG = "TokenBinder tokenfailed."
     ERR_CODE = "TOKEN_BINDER_TOKEN_FAILURE"

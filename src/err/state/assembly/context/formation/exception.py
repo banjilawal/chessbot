@@ -1,7 +1,7 @@
-# src/err/operation/assembly/context/formation/exception.py
+# src/err/state/assembly/context/formation/exception.py
 
 """
-Module: err.operation.assembly.context.formation.exception
+Module: err.state.assembly.context.formation.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1

@@ -13,6 +13,12 @@ from _ast import List
 from copy import deepcopy
 from typing import cast
 
+from err import TokenDeploymentException
+from err.operation.token.deployment.duplicate.exception import DuplicateTokenDeploymentException
+from model import OpeningSquare, Token
+from result import MethodResultType, UpdateResult
+from util import LoggingLevelRouter
+from validation import TokenValidator
 
 
 class TokenDeployer(Operation[Token]):
@@ -52,7 +58,7 @@ class TokenDeployer(Operation[Token]):
             cls,
             token: Token,
             token_validator: TokenValidator = TokenValidator(),
-    ) -> UpdateResult[Square]:
+    ) -> UpdateResult[OpeningSquare]:
         """
         Executes the deployment transaction.
         
@@ -84,10 +90,10 @@ class TokenDeployer(Operation[Token]):
                 original=token,
                 exception=TokenDeploymentException(
                     cls_mthd=method,
-                    op=TokenDeploymentException.OP,
+                    cls_name=cls.__class__.__name__,
                     msg=TokenDeploymentException.MSG,
                     err_code=TokenDeploymentException.ERR_CODE,
-                    mthd_rslt_type=TokenDeploymentException.MTHD_RSLT,
+                    mthd_rslt_type=MethodResultType.UPDATE_RESULT,
                     ex=token_validation.exception,
                 )
             )
@@ -98,13 +104,13 @@ class TokenDeployer(Operation[Token]):
                 original=token,
                 exception=TokenDeploymentException(
                     cls_mthd=method,
-                    op=TokenDeploymentException.OP,
+                    cls_name=cls.__class__.__name__,
                     msg=TokenDeploymentException.MSG,
                     err_code=TokenDeploymentException.ERR_CODE,
-                    mthd_rslt_type=TokenDeploymentException.MTHD_RSLT,
-                    ex=TokenAlreadyDeployedException(
-                        msg=TokenDeploymentException.MSG,
-                        err_code=TokenDeploymentException.ERR_CODE,
+                    mthd_rslt_type=MethodResultType.UPDATE_RESULT,
+                    ex=DuplicateTokenDeploymentException(
+                        msg=DuplicateTokenDeploymentException.MSG,
+                        err_code=DuplicateTokenDeploymentException.ERR_CODE,
                     ),
                 )
             )
@@ -116,10 +122,10 @@ class TokenDeployer(Operation[Token]):
                 original=token,
                 exception=TokenDeploymentException(
                     cls_mthd=method,
-                    op=TokenDeploymentException.OP,
+                    cls_name=cls.__class__.__name__,
                     msg=TokenDeploymentException.MSG,
                     err_code=TokenDeploymentException.ERR_CODE,
-                    mthd_rslt_type=TokenDeploymentException.MTHD_RSLT,
+                    mthd_rslt_type=MethodResultType.UPDATE_RESULT,
                     ex=opening_square_search_result.exception,
                 )
             )
@@ -131,7 +137,7 @@ class TokenDeployer(Operation[Token]):
             token=token,
             pre_update_token=pre_update_token,
             square_service=token.team.board.squares.service,
-            opening_square=cast(Square, opening_square_search_result.payload[0]),
+            opening_square=cast(OpeningSquare, opening_square_search_result.payload[0]),
         )
         # Handle the case that, the visitation transaction fails.
         if update_result.is_failure:
@@ -140,10 +146,10 @@ class TokenDeployer(Operation[Token]):
                 original=token,
                 exception=TokenDeploymentException(
                     cls_mthd=method,
-                    op=TokenDeploymentException.OP,
+                    cls_name=cls.__class__.__name__,
                     msg=TokenDeploymentException.MSG,
                     err_code=TokenDeploymentException.ERR_CODE,
-                    mthd_rslt_type=TokenDeploymentException.MTHD_RSLT,
+                    mthd_rslt_type=MethodResultType.UPDATE_RESULT,
                     ex=update_result.exception,
                 )
             )

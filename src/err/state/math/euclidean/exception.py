@@ -1,7 +1,7 @@
-# src/err/operation/vector/euclidean/operation.py
+# src/err/state/vector/euclidean/state.py
 
 """
-Module: err.operation.vector.euclidean.operation
+Module: err.state.vector.euclidean.state
 Author: Banji Lawal
 Created: 2026-04-07
 version: 1.0.0
@@ -16,11 +16,11 @@ __all__ = [
     "VectorEuclideanException",
 ]
 
-from err import VectorOperationException
+from err import VectorStateException
 
 
 # ======================# EUCLIDEAN_DISTANCE_CALCULATION_ERROR #======================#
-class VectorEuclideanException(VectorOperationException):
+class VectorEuclideanException(VectorStateException):
     """
     Role:
         -   Error Tracing
@@ -40,7 +40,7 @@ class VectorEuclideanException(VectorOperationException):
     Provides:
 
     Super Class:
-        VectorOperationException
+        VectorStateException
     """
     MSG = "Error during Euclidean distance calculation."
     ERR_CODE = "EUCLIDEAN_DISTANCE_CALCULATION_ERROR"

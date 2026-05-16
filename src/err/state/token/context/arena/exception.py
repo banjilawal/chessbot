@@ -1,7 +1,7 @@
-# src/err/operation/token/context/arena/exception.py
+# src/err/state/token/context/arena/exception.py
 
 """
-Module: err.operation.token.context.arena.exception
+Module: err.state.token.context.arena.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -9,19 +9,19 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import TokenOperationException
+from err import TokenStateException
 
 
 __all__ = [
     # ======================# ARENA_CONTEXT_TOKEN_FAILURE #======================#
-    "ArenaContextTokenOperationException",
+    "ArenaContextTokenStateException",
 ]
 
-from err import ContextTokenOperationException
+from err import ContextTokenStateException
 
 
 # ======================# ARENA_CONTEXT_TOKEN_FAILURE #======================#
-class ArenaContextTokenOperationException(ContextTokenOperationException):
+class ArenaContextTokenStateException(ContextTokenStateException):
     """
     Role:
         -   Error Tracing
@@ -41,7 +41,7 @@ class ArenaContextTokenOperationException(ContextTokenOperationException):
     Provides:
 
     Super Class:
-        ContextTokenOperationException
+        ContextTokenStateException
     """
     MSG = "ArenaContext tokenfailed."
     ERR_CODE = "ARENA_CONTEXT_TOKEN_FAILURE"

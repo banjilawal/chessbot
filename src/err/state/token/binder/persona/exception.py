@@ -1,7 +1,7 @@
-# src/err/operation/token/binder/persona/exception.py
+# src/err/state/token/binder/persona/exception.py
 
 """
-Module: err.operation.token.binder.persona.exception
+Module: err.state.token.binder.persona.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -9,19 +9,19 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import TokenOperationException
+from err import TokenStateException
 
 
 __all__ = [
     # ======================# PERSONA_BINDER_TOKEN_FAILURE #======================#
-    "PersonaBinderTokenOperationException",
+    "PersonaBinderTokenStateException",
 ]
 
-from err import BinderTokenOperationException
+from err import BinderTokenStateException
 
 
 # ======================# PERSONA_BINDER_TOKEN_FAILURE #======================#
-class PersonaBinderTokenOperationException(BinderTokenOperationException):
+class PersonaBinderTokenStateException(BinderTokenStateException):
     """
     Role:
         -   Error Tracing
@@ -41,7 +41,7 @@ class PersonaBinderTokenOperationException(BinderTokenOperationException):
     Provides:
 
     Super Class:
-        BinderTokenOperationException
+        BinderTokenStateException
     """
     MSG = "PersonaBinder tokenfailed."
     ERR_CODE = "PERSONA_BINDER_TOKEN_FAILURE"

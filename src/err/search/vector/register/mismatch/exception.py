@@ -12,21 +12,21 @@ from typing import Any, Optional
 
 
 __all__ = [
-    # ======================# VECTOR_REGISTER_MISMATCH_SEARCH_FAILURE #======================#
+    # ======================# VECTOR_REGISTER_MISMATCH_SEARCH_ERROR #======================#
     "VectorRegisterMismatchSearchException",
 ]
 
 from err import VectorOperationSearchException
 
 
-# ======================# VECTOR_REGISTER_MISMATCH_SEARCH_FAILURE #======================#
+# ======================# VECTOR_REGISTER_MISMATCH_SEARCH_ERROR #======================#
 class VectorRegisterMismatchSearchException(VectorOperationSearchException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an binary operation failed because the operands do
+        1.  Indicate that an error occurred during a binary operation failed because the operands do
             not have the same context.
 
     Attributes:
@@ -44,7 +44,7 @@ class VectorRegisterMismatchSearchException(VectorOperationSearchException):
         VectorOperationSearchException
     """
     MSG = "The registers do not have the same context."
-    ERR_CODE = "VECTOR_REGISTER_MISMATCH_SEARCH_FAILURE"
+    ERR_CODE = "VECTOR_REGISTER_MISMATCH_SEARCH_ERROR"
     
     def __init__(
             self,

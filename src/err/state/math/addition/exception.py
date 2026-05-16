@@ -1,7 +1,7 @@
-# src/err/operation/vector/orange/operation.py
+# src/err/state/vector/orange/state.py
 
 """
-Module: err.operation.vector.orange.operation
+Module: err.state.vector.orange.state
 Author: Banji Lawal
 Created: 2026-04-07
 version: 1.0.0
@@ -16,11 +16,11 @@ __all__ = [
     "VectorAdditionException",
 ]
 
-from err import VectorOperationException
+from err import VectorStateException
 
 
 # ======================# VECTOR_ADDITION_ERROR #======================#
-class VectorAdditionException(VectorOperationException):
+class VectorAdditionException(VectorStateException):
     """
     Role:
         -   Error Tracing
@@ -40,7 +40,7 @@ class VectorAdditionException(VectorOperationException):
     Provides:
 
     Super Class:
-        VectorOperationException
+        VectorStateException
     """
     MSG = "Error during Vector addition."
     ERR_CODE = "VECTOR_ADDITION_ERROR"

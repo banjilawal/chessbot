@@ -14,18 +14,18 @@ from err import SearchException
 
 
 __all__ = [
-    # ======================# SCHEMA_SEARCH_FAILURE #======================#
+    # ======================# SCHEMA_SEARCH_ERROR #======================#
     "SchemaSearchException",
 ]
 
-# ======================# SCHEMA_SEARCH_FAILURE #======================#
+# ======================# SCHEMA_SEARCH_ERROR #======================#
 class SchemaSearchException(SearchException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a SchemaSearch experienced an error.
+        1.  Indicate that a Schema search.
 
     Attributes:
         msg: Optional[str]
@@ -42,7 +42,7 @@ class SchemaSearchException(SearchException):
         SearchException
     """
     MSG = "Schema error state."
-    ERR_CODE = "SCHEMA_SEARCH_FAILURE"
+    ERR_CODE = "SCHEMA_SEARCH_ERROR"
     
     def __init__(
             self,

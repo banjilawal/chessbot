@@ -13,12 +13,12 @@ from err import EmptySearchException
 
 
 __all__ = [
-    # ======================# PERSONA_NOT_FOUND_SEARCH_FAILURE #======================#
+    # ======================# PERSONA_NOT_FOUND_SEARCH_ERROR #======================#
     "PersonaNotFoundSearchException",
 ]
 
 
-# ======================# PERSONA_NOT_FOUND_SEARCH_FAILURE #======================#
+# ======================# PERSONA_NOT_FOUND_SEARCH_ERROR #======================#
 class PersonaNotFoundSearchException(EmptySearchException):
     """
     Role:
@@ -42,7 +42,7 @@ class PersonaNotFoundSearchException(EmptySearchException):
         NotFoundSearchException
     """
     MSG = "Persona was not found."
-    ERR_CODE = "PERSONA_NOT_FOUND_SEARCH_FAILURE"
+    ERR_CODE = "PERSONA_NOT_FOUND_SEARCH_ERROR"
     
     def __init__(
             self,

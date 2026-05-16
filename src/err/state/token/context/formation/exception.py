@@ -1,7 +1,7 @@
-# src/err/operation/token/context/formation/exception.py
+# src/err/state/token/context/formation/exception.py
 
 """
-Module: err.operation.token.context.formation.exception
+Module: err.state.token.context.formation.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -9,19 +9,19 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import TokenOperationException
+from err import TokenStateException
 
 
 __all__ = [
     # ======================# FORMATION_CONTEXT_TOKEN_FAILURE #======================#
-    "FormationContextTokenOperationException",
+    "FormationContextTokenStateException",
 ]
 
-from err import ContextTokenOperationException
+from err import ContextTokenStateException
 
 
 # ======================# FORMATION_CONTEXT_TOKEN_FAILURE #======================#
-class FormationContextTokenOperationException(ContextTokenOperationException):
+class FormationContextTokenStateException(ContextTokenStateException):
     """
     Role:
         -   Error Tracing
@@ -41,7 +41,7 @@ class FormationContextTokenOperationException(ContextTokenOperationException):
     Provides:
 
     Super Class:
-        ContextTokenOperationException
+        ContextTokenStateException
     """
     MSG = "FormationContext tokenfailed."
     ERR_CODE = "FORMATION_CONTEXT_TOKEN_FAILURE"

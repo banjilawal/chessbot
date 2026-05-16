@@ -13,12 +13,12 @@ from err import EmptySearchException
 
 
 __all__ = [
-    # ======================# NODE_NOT_FOUND_SEARCH_FAILURE #======================#
+    # ======================# NODE_NOT_FOUND_SEARCH_ERROR #======================#
     "NodeNotFoundSearchException",
 ]
 
 
-# ======================# NODE_NOT_FOUND_SEARCH_FAILURE #======================#
+# ======================# NODE_NOT_FOUND_SEARCH_ERROR #======================#
 class NodeNotFoundSearchException(EmptySearchException):
     """
     Role:
@@ -42,7 +42,7 @@ class NodeNotFoundSearchException(EmptySearchException):
         NotFoundSearchException
     """
     MSG = "Node was not found."
-    ERR_CODE = "NODE_NOT_FOUND_SEARCH_FAILURE"
+    ERR_CODE = "NODE_NOT_FOUND_SEARCH_ERROR"
     
     def __init__(
             self,

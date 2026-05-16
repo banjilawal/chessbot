@@ -13,12 +13,12 @@ from err import EmptySearchException
 
 
 __all__ = [
-    # ======================# HOSTAGE_NOT_FOUND_SEARCH_FAILURE #======================#
+    # ======================# HOSTAGE_NOT_FOUND_SEARCH_ERROR #======================#
     "HostageNotFoundSearchException",
 ]
 
 
-# ======================# HOSTAGE_NOT_FOUND_SEARCH_FAILURE #======================#
+# ======================# HOSTAGE_NOT_FOUND_SEARCH_ERROR #======================#
 class HostageNotFoundSearchException(EmptySearchException):
     """
     Role:
@@ -42,7 +42,7 @@ class HostageNotFoundSearchException(EmptySearchException):
         NotFoundSearchException
     """
     MSG = "Hostage was not found."
-    ERR_CODE = "HOSTAGE_NOT_FOUND_SEARCH_FAILURE"
+    ERR_CODE = "HOSTAGE_NOT_FOUND_SEARCH_ERROR"
     
     def __init__(
             self,

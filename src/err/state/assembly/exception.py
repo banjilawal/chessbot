@@ -1,7 +1,7 @@
-# src/err/operation/assembly/assembly.py
+# src/err/state/assembly/assembly.py
 
 """
-Module: err.operation.assembly.assembly
+Module: err.state.assembly.assembly
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,7 +10,7 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import OperationException
+from err import StateException
 
 __all__ = [
     # ======================# ASSEMBLY_FAILURE #======================#
@@ -21,7 +21,7 @@ from result import MethodResultType
 
 
 # ======================# ASSEMBLY_FAILURE #======================#
-class AssemblyException(OperationException):
+class AssemblyException(StateException):
     """
     Role:
         -   Failure Tracing
@@ -42,7 +42,7 @@ class AssemblyException(OperationException):
     Provides:
 
     Super Class:
-        OperationException
+        StateException
     """
     MSG = "Assembly failed"
     ERR_CODE = "ASSEMBLY_FAILURE"

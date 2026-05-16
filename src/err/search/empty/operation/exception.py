@@ -14,12 +14,12 @@ from err import EmptySearchException
 
 
 __all__ = [
-    # ======================# OPERATION_NOT_FOUND_SEARCH_FAILURE #======================#
+    # ======================# OPERATION_NOT_FOUND_SEARCH_ERROR #======================#
     "OperationNotFoundSearchException",
 ]
 
 
-# ======================# OPERATION_NOT_FOUND_SEARCH_FAILURE #======================#
+# ======================# OPERATION_NOT_FOUND_SEARCH_ERROR #======================#
 class OperationNotFoundSearchException(EmptySearchException):
     """
     Role:
@@ -43,7 +43,7 @@ class OperationNotFoundSearchException(EmptySearchException):
         NotFoundSearchException
     """
     MSG = "Operation was not found."
-    ERR_CODE = "OPERATION_NOT_FOUND_SEARCH_FAILURE"
+    ERR_CODE = "OPERATION_NOT_FOUND_SEARCH_ERROR"
     
     def __init__(
             self,

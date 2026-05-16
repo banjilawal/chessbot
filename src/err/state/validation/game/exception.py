@@ -1,7 +1,7 @@
-# src/err/operation/validation/game/exception.py
+# src/err/state/validation/game/exception.py
 
 """
-Module: err.operation.validation.game.exception
+Module: err.state.validation.game.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1

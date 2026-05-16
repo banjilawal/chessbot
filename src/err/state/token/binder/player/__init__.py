@@ -1,15 +1,15 @@
-# src/err/operation/token/binder/player/__init__.py
+# src/err/state/token/binder/player/__init__.py
 
 """
-Module: err.operation.token.binder.player.__init__
+Module: err.state.token.binder.player.__init__
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
 """
 
-# =========== ERR.OPERATION.TOKEN.BINDER.PLAYER PACKAGE ===========#
+# =========== ERR.STATE.TOKEN.BINDER.PLAYER PACKAGE ===========#
 
 # Packages
 
 # Modules
-from .exception import PlayerBinderTokenOperationException
+from .exception import PlayerBinderTokenStateException

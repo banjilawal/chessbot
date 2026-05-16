@@ -14,18 +14,18 @@ from err import BinderSearchException
 
 
 __all__ = [
-    # ======================# BOARD_TEAM_BINDER_SEARCH_FAILURE #======================#
+    # ======================# BOARD_TEAM_BINDER_SEARCH_ERROR #======================#
     "BoardTeamBinderSearchException",
 ]
 
-# ======================# BOARD_TEAM_BINDER_SEARCH_FAILURE #======================#
+# ======================# BOARD_TEAM_BINDER_SEARCH_ERROR #======================#
 class BoardTeamBinderSearchException(BinderSearchException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a BoardTeamBinderSearch experienced an error.
+        1.  Indicate that a BoardTeamBinder search.
 
     Attributes:
         msg: Optional[str]
@@ -42,7 +42,7 @@ class BoardTeamBinderSearchException(BinderSearchException):
         BinderSearchException
     """
     MSG = "BoardTeamBinder error state."
-    ERR_CODE = "BOARD_TEAM_BINDER_SEARCH_FAILURE"
+    ERR_CODE = "BOARD_TEAM_BINDER_SEARCH_ERROR"
     
     def __init__(
             self,

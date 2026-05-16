@@ -13,18 +13,18 @@ from typing import Any, Optional
 from err import SearchException
 
 __all__ = [
-    # ======================# ARENA_SEARCH_FAILURE #======================#
+    # ======================# ARENA_SEARCH_ERROR #======================#
     "ArenaSearchException",
 ]
 
-# ======================# ARENA_SEARCH_FAILURE #======================#
+# ======================# ARENA_SEARCH_ERROR #======================#
 class ArenaSearchException(SearchException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an ArenaSearch experienced an error.
+        1.  Indicate that an error occurred during a Arena search.
 
     Attributes:
         msg: Optional[str]
@@ -41,7 +41,7 @@ class ArenaSearchException(SearchException):
         SearchException
     """
     MSG = "Arena error state."
-    ERR_CODE = "ARENA_SEARCH_FAILURE"
+    ERR_CODE = "ARENA_SEARCH_ERROR"
     
     def __init__(
             self,

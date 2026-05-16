@@ -10,7 +10,7 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import OperationException
+from err import StateException
 from result import MethodResultType
 
 __all__ = [
@@ -19,7 +19,7 @@ __all__ = [
 ]
 
 # ======================# PUSH _FAILURE #======================#
-class Push Exception(OperationException):
+class Push Exception(StateException):
     """
     Role:
         -   Error Tracing
@@ -39,7 +39,7 @@ class Push Exception(OperationException):
     Provides:
 
     Super Class:
-        OperationException
+        StateException
     """
     MSG = "Push  step failed."
     ERR_CODE = "PUSH _FAILURE"

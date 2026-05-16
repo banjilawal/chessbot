@@ -1,7 +1,7 @@
-# src/err/operation/push/duplicate/token/exception.py
+# src/err/state/push/duplicate/token/exception.py
 
 """
-Module: err.operation.push.duplicate.token.exception
+Module: err.state.push.duplicate.token.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1

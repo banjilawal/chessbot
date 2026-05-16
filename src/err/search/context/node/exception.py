@@ -13,19 +13,19 @@ from err import ContextSearchException
 
 
 __all__ = [
-    # ======================# NODE_CONTEXT_SEARCH_FAILURE #======================#
+    # ======================# NODE_CONTEXT_SEARCH_ERROR #======================#
     "NodeContextSearchException",
 ]
 
 
-# ======================# NODE_CONTEXT_SEARCH_FAILURE #======================#
+# ======================# NODE_CONTEXT_SEARCH_ERROR #======================#
 class NodeContextSearchException(ContextSearchException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a NodeContextSearch experienced an error.
+        1.  Indicate that a NodeContext search.
 
     Attributes:
             msg: Optional[str]
@@ -42,7 +42,7 @@ class NodeContextSearchException(ContextSearchException):
         ContextSearchException
     """
     MSG = "NodeContext error state."
-    ERR_CODE = "NODE_CONTEXT_SEARCH_FAILURE"
+    ERR_CODE = "NODE_CONTEXT_SEARCH_ERROR"
     
     def __init__(
             self,

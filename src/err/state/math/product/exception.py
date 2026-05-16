@@ -1,7 +1,7 @@
-# src/err/operation/vector/product/operation.py
+# src/err/state/vector/product/state.py
 
 """
-Module: err.operation.vector.product.operation
+Module: err.state.vector.product.state
 Author: Banji Lawal
 Created: 2026-04-07
 version: 1.0.0
@@ -16,11 +16,11 @@ __all__ = [
     "ScalarProductException",
 ]
 
-from err import VectorOperationException
+from err import VectorStateException
 
 
 # ======================# SCALAR_PRODUCT_ERROR #======================#
-class ScalarProductException(VectorOperationException):
+class ScalarProductException(VectorStateException):
     """
     Role:
         -   Error Tracing
@@ -40,7 +40,7 @@ class ScalarProductException(VectorOperationException):
     Provides:
 
     Super Class:
-        VectorOperationException
+        VectorStateException
     """
     MSG = "Error during scalar multiplication."
     ERR_CODE = "SCALAR_PRODUCT_ERROR"

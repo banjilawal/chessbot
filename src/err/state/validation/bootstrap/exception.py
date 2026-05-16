@@ -1,7 +1,7 @@
-# src/err/operation/validation/bootstrap/exception.py
+# src/err/state/validation/bootstrap/exception.py
 
 """
-Module: err.operation.validation.bootstrap.exception
+Module: err.state.validation.bootstrap.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1

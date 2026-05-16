@@ -10,16 +10,16 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import TokenOperationException
+from err import TokenStateException
 
 
 __all__ = [
     # ======================# SQUARE_TOKEN_FAILURE #======================#
-    "SquareTokenOperationException",
+    "SquareTokenStateException",
 ]
 
 # ======================# SQUARE_TOKEN_FAILURE #======================#
-class SquareTokenOperationException(TokenOperationException):
+class SquareTokenStateException(TokenStateException):
     """
     Role:
         -   Error Tracing
@@ -40,7 +40,7 @@ class SquareTokenOperationException(TokenOperationException):
     Provides:
 
     Super Class:
-        TokenOperationException
+        TokenStateException
     """
     MSG = "Square tokenfailed."
     ERR_CODE = "SQUARE_TOKEN_FAILURE"

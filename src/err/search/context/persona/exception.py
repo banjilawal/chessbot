@@ -13,19 +13,19 @@ from err import ContextSearchException
 
 
 __all__ = [
-    # ======================# PERSONA_CONTEXT_SEARCH_FAILURE #======================#
+    # ======================# PERSONA_CONTEXT_SEARCH_ERROR #======================#
     "PersonaContextSearchException",
 ]
 
 
-# ======================# PERSONA_CONTEXT_SEARCH_FAILURE #======================#
+# ======================# PERSONA_CONTEXT_SEARCH_ERROR #======================#
 class PersonaContextSearchException(ContextSearchException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a PersonaContextSearch experienced an error.
+        1.  Indicate that a PersonaContext search.
 
     Attributes:
             msg: Optional[str]
@@ -42,7 +42,7 @@ class PersonaContextSearchException(ContextSearchException):
         ContextSearchException
     """
     MSG = "PersonaContext error state."
-    ERR_CODE = "PERSONA_CONTEXT_SEARCH_FAILURE"
+    ERR_CODE = "PERSONA_CONTEXT_SEARCH_ERROR"
     
     def __init__(
             self,

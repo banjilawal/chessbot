@@ -1,13 +1,13 @@
 # src/err/assembly/edge/__init__.py
 
 """
-Module: err.assembly.operation.edge.__init__
+Module: err.assembly.state.edge.__init__
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
 """
 
-# ============ ERR.ASSEMBLY.OPERATION.EDGE PACKAGE ===========#
+# ============ ERR.ASSEMBLY.STATE.EDGE PACKAGE ===========#
 
 # Packages
 

@@ -10,7 +10,7 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import OperationException
+from err import StateException
 
 __all__ = [
     # ======================# BOOTSTRAP_FAILURE #======================#
@@ -18,7 +18,7 @@ __all__ = [
 ]
 
 # ======================# BOOTSTRAP_FAILURE #======================#
-class BootstrapException(OperationException):
+class BootstrapException(StateException):
     """
     Role:
         -   Error Tracing
@@ -39,7 +39,7 @@ class BootstrapException(OperationException):
     Provides:
 
     Super Class:
-        OperationException
+        StateException
     """
     MSG = "Bootstrap step failed."
     ERR_CODE = "BOOTSTRAP_FAILURE"

@@ -14,18 +14,18 @@ from err import SearchException
 
 
 __all__ = [
-    # ======================# VECTOR_SEARCH_FAILURE #======================#
+    # ======================# VECTOR_SEARCH_ERROR #======================#
     "VectorSearchException",
 ]
 
-# ======================# VECTOR_SEARCH_FAILURE #======================#
+# ======================# VECTOR_SEARCH_ERROR #======================#
 class VectorSearchException(SearchException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate a VectorSearch experienced an error.
+        1.  Indicate a Vector search.
 
     Attributes:
         msg: Optional[str]
@@ -42,7 +42,7 @@ class VectorSearchException(SearchException):
         SearchException
     """
     MSG = "Vector error state."
-    ERR_CODE = "VECTOR_SEARCH_FAILURE"
+    ERR_CODE = "VECTOR_SEARCH_ERROR"
     
     def __init__(
             self,

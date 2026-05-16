@@ -1,7 +1,7 @@
-# src/err/operation/assembly/binder/coord/exception.py
+# src/err/state/assembly/binder/coord/exception.py
 
 """
-Module: err.operation.assembly.binder.coord.exception
+Module: err.state.assembly.binder.coord.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1

@@ -14,18 +14,18 @@ from err import SearchException
 
 
 __all__ = [
-    # ======================# BOARD_SEARCH_FAILURE #======================#
+    # ======================# BOARD_SEARCH_ERROR #======================#
     "BoardSearchException",
 ]
 
-# ======================# BOARD_SEARCH_FAILURE #======================#
+# ======================# BOARD_SEARCH_ERROR #======================#
 class BoardSearchException(SearchException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a BoardSearch experienced an error.
+        1.  Indicate that a Board search.
 
     Attributes:
         msg: Optional[str]
@@ -42,7 +42,7 @@ class BoardSearchException(SearchException):
         SearchException
     """
     MSG = "Board error state."
-    ERR_CODE = "BOARD_SEARCH_FAILURE"
+    ERR_CODE = "BOARD_SEARCH_ERROR"
     
     def __init__(
             self,

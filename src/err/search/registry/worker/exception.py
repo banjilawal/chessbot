@@ -13,21 +13,21 @@ from typing import Any, Optional
 from err import RegistrySearchException
 
 __all__ = [
-    # ======================# WORKER_REGISTRY_SEARCH_FAILURE #======================#
+    # ======================# WORKER_REGISTRY_SEARCH_ERROR #======================#
     "WorkerRegistrySearchException",
 ]
 
 from result import MethodResultType
 
 
-# ======================# WORKER_REGISTRY_SEARCH_FAILURE #======================#
+# ======================# WORKER_REGISTRY_SEARCH_ERROR #======================#
 class WorkerRegistrySearchException(RegistrySearchException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an error occurred during a WorkerRegistrySearch.
+        1.  Indicate that an error occurred during a error occurred during a WorkerRegistrySearch.
 
     Attributes:
         var: Optional[str]
@@ -44,7 +44,7 @@ class WorkerRegistrySearchException(RegistrySearchException):
         RegistrySearchException
     """
     MSG = "Error occurred during WorkerRegistrySearch."
-    ERR_CODE = "WORKER_REGISTRY_SEARCH_FAILURE"
+    ERR_CODE = "WORKER_REGISTRY_SEARCH_ERROR"
     
     def __init__(
             self,

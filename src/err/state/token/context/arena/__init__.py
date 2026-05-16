@@ -1,15 +1,15 @@
-# src/err/operation/token/context/arena/__init__.py
+# src/err/state/token/context/arena/__init__.py
 
 """
-Module: err.operation.token.context.arena.__init__
+Module: err.state.token.context.arena.__init__
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
 """
 
-# =========== ERR.OPERATION.TOKEN.CONTEXT.ARENA PACKAGE ===========#
+# =========== ERR.STATE.TOKEN.CONTEXT.ARENA PACKAGE ===========#
 
 # Packages
 
 # Modules
-from .exception import ArenaContextTokenOperationException
+from .exception import ArenaContextTokenStateException

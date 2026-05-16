@@ -13,12 +13,12 @@ from err import EmptySearchException
 
 
 __all__ = [
-    # ======================# GAME_NOT_FOUND_SEARCH_FAILURE #======================#
+    # ======================# GAME_NOT_FOUND_SEARCH_ERROR #======================#
     "GameNotFoundSearchException",
 ]
 
 
-# ======================# GAME_NOT_FOUND_SEARCH_FAILURE #======================#
+# ======================# GAME_NOT_FOUND_SEARCH_ERROR #======================#
 class GameNotFoundSearchException(EmptySearchException):
     """
     Role:
@@ -42,7 +42,7 @@ class GameNotFoundSearchException(EmptySearchException):
         NotFoundSearchException
     """
     MSG = "Game was not found."
-    ERR_CODE = "GAME_NOT_FOUND_SEARCH_FAILURE"
+    ERR_CODE = "GAME_NOT_FOUND_SEARCH_ERROR"
     
     def __init__(
             self,

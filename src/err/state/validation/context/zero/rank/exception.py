@@ -1,7 +1,7 @@
-# src/err/operation/validation/context/zero/rank/__init__.py
+# src/err/state/validation/context/zero/rank/__init__.py
 
 """
-Module: err.operation.validation.context.zero.rank.exception
+Module: err.state.validation.context.zero.rank.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1

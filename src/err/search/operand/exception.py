@@ -13,19 +13,19 @@ from err import SearchException
 
 
 __all__ = [
-    # ======================# VECTOR_OPERAND_SEARCH_FAILURE #======================#
+    # ======================# VECTOR_OPERAND_SEARCH_ERROR #======================#
     "VectorOperandSearchException",
 ]
 
 
-# ======================# VECTOR_OPERAND_SEARCH_FAILURE #======================#
+# ======================# VECTOR_OPERAND_SEARCH_ERROR #======================#
 class VectorOperandSearchException(SearchException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a VectorOperandSearch experienced an error.
+        1.  Indicate that a VectorOperand search.
 
     Attributes:
             msg: Optional[str]
@@ -42,7 +42,7 @@ class VectorOperandSearchException(SearchException):
         SearchException
     """
     MSG = "VectorOperand error state."
-    ERR_CODE = "VECTOR_OPERAND_SEARCH_FAILURE"
+    ERR_CODE = "VECTOR_OPERAND_SEARCH_ERROR"
     
     def __init__(
             self,

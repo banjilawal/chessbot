@@ -14,18 +14,18 @@ from err import SearchException
 
 
 __all__ = [
-    # ======================# TOKEN_SEARCH_FAILURE #======================#
+    # ======================# TOKEN_SEARCH_ERROR #======================#
     "TokenSearchException",
 ]
 
-# ======================# TOKEN_SEARCH_FAILURE #======================#
+# ======================# TOKEN_SEARCH_ERROR #======================#
 class TokenSearchException(SearchException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a TokenSearch experienced an error.
+        1.  Indicate that a Token search.
 
     Attributes:
         msg: Optional[str]
@@ -42,7 +42,7 @@ class TokenSearchException(SearchException):
         SearchException
     """
     MSG = "Token error state."
-    ERR_CODE = "TOKEN_SEARCH_FAILURE"
+    ERR_CODE = "TOKEN_SEARCH_ERROR"
     
     def __init__(
             self,

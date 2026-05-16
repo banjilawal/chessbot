@@ -1,21 +1,21 @@
-# src/err/operation/validation/context/__init__.py
+# src/err/state/validation/context/__init__.py
 
 """
-Module: err.operation.validation.context.__init__
+Module: err.state.validation.context.__init__
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
 """
-# src/err/operation/validation/__init__.py
+# src/err/state/validation/__init__.py
 
 """
-Module: err.operation.validation.context.__init__
+Module: err.state.validation.context.__init__
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
 """
 
-# =========== ERR.OPERATION.VALIDATION.CONTEXT.CONTEXT PACKAGE ===========#
+# =========== ERR.STATE.VALIDATION.CONTEXT.CONTEXT PACKAGE ===========#
 
 # Packages
 from .arena import *

@@ -10,16 +10,16 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import TokenOperationException
+from err import TokenStateException
 
 
 __all__ = [
     # ======================# EDGE_TOKEN_FAILURE #======================#
-    "EdgeTokenOperationException",
+    "EdgeTokenStateException",
 ]
 
 # ======================# EDGE_TOKEN_FAILURE #======================#
-class EdgeTokenOperationException(TokenOperationException):
+class EdgeTokenStateException(TokenStateException):
     """
     Role:
         -   Error Tracing
@@ -40,7 +40,7 @@ class EdgeTokenOperationException(TokenOperationException):
     Provides:
 
     Super Class:
-        TokenOperationException
+        TokenStateException
     """
     MSG = "Edge tokenfailed."
     ERR_CODE = "EDGE_TOKEN_FAILURE"

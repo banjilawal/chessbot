@@ -14,18 +14,18 @@ from err import SearchException
 
 
 __all__ = [
-    # ======================# PERSONA_SEARCH_FAILURE #======================#
+    # ======================# PERSONA_SEARCH_ERROR #======================#
     "PersonaSearchException",
 ]
 
-# ======================# PERSONA_SEARCH_FAILURE #======================#
+# ======================# PERSONA_SEARCH_ERROR #======================#
 class PersonaSearchException(SearchException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that n PersonaSearch experienced an error.
+        1.  Indicate that n Persona search.
 
     Attributes:
             msg: Optional[str]
@@ -42,7 +42,7 @@ class PersonaSearchException(SearchException):
         SearchException
     """
     MSG = "Persona error state."
-    ERR_CODE = "PERSONA_SEARCH_FAILURE"
+    ERR_CODE = "PERSONA_SEARCH_ERROR"
     
     def __init__(
             self,

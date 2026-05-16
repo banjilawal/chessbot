@@ -1,7 +1,7 @@
-# src/err/operation/bootstrap/assembly/token/exception.py
+# src/err/state/bootstrap/assembly/token/exception.py
 
 """
-Module: err.operation.bootstrap.assembly.assembly.token.exception
+Module: err.state.bootstrap.assembly.assembly.token.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1

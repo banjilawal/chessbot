@@ -13,19 +13,19 @@ from err import ContextSearchException
 
 
 __all__ = [
-    # ======================# RANK_CONTEXT_SEARCH_FAILURE #======================#
+    # ======================# RANK_CONTEXT_SEARCH_ERROR #======================#
     "RankContextSearchException",
 ]
 
 
-# ======================# RANK_CONTEXT_SEARCH_FAILURE #======================#
+# ======================# RANK_CONTEXT_SEARCH_ERROR #======================#
 class RankContextSearchException(ContextSearchException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a RankContextSearch experienced an error.
+        1.  Indicate that a RankContext search.
 
     Attributes:
             msg: Optional[str]
@@ -42,7 +42,7 @@ class RankContextSearchException(ContextSearchException):
         ContextSearchException
     """
     MSG = "RankContext error state."
-    ERR_CODE = "RANK_CONTEXT_SEARCH_FAILURE"
+    ERR_CODE = "RANK_CONTEXT_SEARCH_ERROR"
     
     def __init__(
             self,

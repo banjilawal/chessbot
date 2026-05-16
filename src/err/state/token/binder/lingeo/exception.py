@@ -1,7 +1,7 @@
-# src/err/operation/token/binder/Vector/exception.py
+# src/err/state/token/binder/Vector/exception.py
 
 """
-Module: err.operation.token.binder.Vector.exception
+Module: err.state.token.binder.Vector.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -9,15 +9,15 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import BinderTokenOperationException
+from err import BinderTokenStateException
 
 __all__ = [
     # ======================# VECTOR_BINDER_TOKEN_FAILURE #======================#
-    "VectorBinderTokenOperationException",
+    "VectorBinderTokenStateException",
 ]
 
 # ======================# VECTOR_BINDER_TOKEN_FAILURE #======================#
-class VectorBinderTokenOperationException(BinderTokenOperationException):
+class VectorBinderTokenStateException(BinderTokenStateException):
     """
     Role:
         -   Error Tracing
@@ -37,7 +37,7 @@ class VectorBinderTokenOperationException(BinderTokenOperationException):
     Provides:
 
     Super Class:
-        BinderTokenOperationException
+        BinderTokenStateException
     """
     MSG = "VectorBinder tokenfailed."
     ERR_CODE = "VECTOR_BINDER_TOKEN_FAILURE"

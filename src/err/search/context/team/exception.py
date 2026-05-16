@@ -13,19 +13,19 @@ from err import ContextSearchException
 
 
 __all__ = [
-    # ======================# TEAM_CONTEXT_SEARCH_FAILURE #======================#
+    # ======================# TEAM_CONTEXT_SEARCH_ERROR #======================#
     "TeamContextSearchException",
 ]
 
 
-# ======================# TEAM_CONTEXT_SEARCH_FAILURE #======================#
+# ======================# TEAM_CONTEXT_SEARCH_ERROR #======================#
 class TeamContextSearchException(ContextSearchException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a TeamContextSearch experienced an error.
+        1.  Indicate that a TeamContext search.
 
     Attributes:
             msg: Optional[str]
@@ -42,7 +42,7 @@ class TeamContextSearchException(ContextSearchException):
         ContextSearchException
     """
     MSG = "TeamContext error state."
-    ERR_CODE = "TEAM_CONTEXT_SEARCH_FAILURE"
+    ERR_CODE = "TEAM_CONTEXT_SEARCH_ERROR"
     
     def __init__(
             self,

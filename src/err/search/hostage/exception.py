@@ -14,18 +14,18 @@ from err import SearchException
 
 
 __all__ = [
-    # ======================# HOSTAGE_SEARCH_FAILURE #======================#
+    # ======================# HOSTAGE_SEARCH_ERROR #======================#
     "HostageSearchException",
 ]
 
-# ======================# HOSTAGE_SEARCH_FAILURE #======================#
+# ======================# HOSTAGE_SEARCH_ERROR #======================#
 class HostageSearchException(SearchException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a HostageSearch experienced an error.
+        1.  Indicate that a Hostage search.
 
     Attributes:
         msg: Optional[str]
@@ -42,7 +42,7 @@ class HostageSearchException(SearchException):
         SearchException
     """
     MSG = "Hostage error state."
-    ERR_CODE = "HOSTAGE_SEARCH_FAILURE"
+    ERR_CODE = "HOSTAGE_SEARCH_ERROR"
     
     def __init__(
             self,

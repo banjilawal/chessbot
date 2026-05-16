@@ -14,18 +14,18 @@ from err import SearchException
 
 
 __all__ = [
-    # ======================# NODE_SEARCH_FAILURE #======================#
+    # ======================# NODE_SEARCH_ERROR #======================#
     "NodeSearchException",
 ]
 
-# ======================# NODE_SEARCH_FAILURE #======================#
+# ======================# NODE_SEARCH_ERROR #======================#
 class NodeSearchException(SearchException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a NodeSearch experienced an error.
+        1.  Indicate that a Node search.
 
     Attributes:
         msg: Optional[str]
@@ -42,7 +42,7 @@ class NodeSearchException(SearchException):
         SearchException
     """
     MSG = "Node error state."
-    ERR_CODE = "NODE_SEARCH_FAILURE"
+    ERR_CODE = "NODE_SEARCH_ERROR"
     
     def __init__(
             self,

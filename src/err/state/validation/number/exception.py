@@ -1,7 +1,7 @@
-# src/err/operation/validation/number/exception.py
+# src/err/state/validation/number/exception.py
 
 """
-Module: err.operation.validation.number.exception
+Module: err.state.validation.number.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1

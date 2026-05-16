@@ -1,4 +1,4 @@
-# src/err/operation/bootstrap/assembly/rank/exception.py
+# src/err/state/bootstrap/assembly/rank/exception.py
 
 """
 Module: err.bootstrap.assembly.rank.exception

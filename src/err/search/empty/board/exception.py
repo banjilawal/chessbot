@@ -13,12 +13,12 @@ from err import EmptySearchException
 
 
 __all__ = [
-    # ======================# BOARD_NOT_FOUND_SEARCH_FAILURE #======================#
+    # ======================# BOARD_NOT_FOUND_SEARCH_ERROR #======================#
     "BoardNotFoundSearchException",
 ]
 
 
-# ======================# BOARD_NOT_FOUND_SEARCH_FAILURE #======================#
+# ======================# BOARD_NOT_FOUND_SEARCH_ERROR #======================#
 class BoardNotFoundSearchException(EmptySearchException):
     """
     Role:
@@ -42,7 +42,7 @@ class BoardNotFoundSearchException(EmptySearchException):
         NotFoundSearchException
     """
     MSG = "Board was not found."
-    ERR_CODE = "BOARD_NOT_FOUND_SEARCH_FAILURE"
+    ERR_CODE = "BOARD_NOT_FOUND_SEARCH_ERROR"
     
     def __init__(
             self,

@@ -13,12 +13,12 @@ from err import EmptySearchException
 
 
 __all__ = [
-    # ======================# SCHEMA_NOT_FOUND_SEARCH_FAILURE #======================#
+    # ======================# SCHEMA_NOT_FOUND_SEARCH_ERROR #======================#
     "SchemaNotFoundSearchException",
 ]
 
 
-# ======================# SCHEMA_NOT_FOUND_SEARCH_FAILURE #======================#
+# ======================# SCHEMA_NOT_FOUND_SEARCH_ERROR #======================#
 class SchemaNotFoundSearchException(EmptySearchException):
     """
     Role:
@@ -42,7 +42,7 @@ class SchemaNotFoundSearchException(EmptySearchException):
         NotFoundSearchException
     """
     MSG = "Schema was not found."
-    ERR_CODE = "SCHEMA_NOT_FOUND_SEARCH_FAILURE"
+    ERR_CODE = "SCHEMA_NOT_FOUND_SEARCH_ERROR"
     
     def __init__(
             self,

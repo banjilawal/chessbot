@@ -1,7 +1,7 @@
-# src/err/operation/push /empty/stack/arena/exception.py
+# src/err/state/push /empty/stack/arena/exception.py
 
 """
-Module: err.operation.push .empty.stack.arena.exception
+Module: err.state.push .empty.stack.arena.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1

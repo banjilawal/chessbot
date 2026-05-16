@@ -1,15 +1,15 @@
-# src/err/operation/token/binder/hostage/__init__.py
+# src/err/state/token/binder/hostage/__init__.py
 
 """
-Module: err.operation.token.binder.hostage.__init__
+Module: err.state.token.binder.hostage.__init__
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
 """
 
-# =========== ERR.OPERATION.TOKEN.BINDER.HOSTAGE PACKAGE ===========#
+# =========== ERR.STATE.TOKEN.BINDER.HOSTAGE PACKAGE ===========#
 
 # Packages
 
 # Modules
-from .exception import HostageBinderTokenOperationException
+from .exception import HostageBinderTokenStateException

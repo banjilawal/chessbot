@@ -14,18 +14,18 @@ from err import SearchException
 
 
 __all__ = [
-    # ======================# EDGE_SEARCH_FAILURE #======================#
+    # ======================# EDGE_SEARCH_ERROR #======================#
     "EdgeSearchException",
 ]
 
-# ======================# EDGE_SEARCH_FAILURE #======================#
+# ======================# EDGE_SEARCH_ERROR #======================#
 class EdgeSearchException(SearchException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a EdgeSearch experienced an error.
+        1.  Indicate that a Edge search.
 
     Attributes:
         msg: Optional[str]
@@ -42,7 +42,7 @@ class EdgeSearchException(SearchException):
         SearchException
     """
     MSG = "Edge error state."
-    ERR_CODE = "EDGE_SEARCH_FAILURE"
+    ERR_CODE = "EDGE_SEARCH_ERROR"
     
     def __init__(
             self,

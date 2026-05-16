@@ -14,18 +14,18 @@ from err import SearchException
 
 
 __all__ = [
-    # ======================# TEAM_SEARCH_FAILURE #======================#
+    # ======================# TEAM_SEARCH_ERROR #======================#
     "TeamSearchException",
 ]
 
-# ======================# TEAM_SEARCH_FAILURE #======================#
+# ======================# TEAM_SEARCH_ERROR #======================#
 class TeamSearchException(SearchException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a TeamSearch experienced an error.
+        1.  Indicate that a Team search.
 
     Attributes:
             msg: Optional[str]
@@ -42,7 +42,7 @@ class TeamSearchException(SearchException):
         SearchException
     """
     MSG = "Team error state."
-    ERR_CODE = "TEAM_SEARCH_FAILURE"
+    ERR_CODE = "TEAM_SEARCH_ERROR"
     
     def __init__(
             self,

@@ -1,7 +1,7 @@
 # src/err/validation/binder/arena/exception.py
 
 """
-Module: err.operation.validation.binder.arena.exception
+Module: err.state.validation.binder.arena.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1

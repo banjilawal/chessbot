@@ -11,16 +11,14 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from err import ChessException
+from result import MethodResultType
 
 __all__ = [
-    # ======================# SEARCH_FAILURE #======================#
+    # ======================# SEARCH_ERROR #======================#
     "SearchException",
 ]
 
-from result import MethodResultType
-
-
-# ======================# SEARCH_FAILURE #======================#
+# ======================# SEARCH_ERROR #======================#
 class SearchException(ChessException):
     """
     Role:
@@ -43,7 +41,7 @@ class SearchException(ChessException):
     Super Class:
         ChessException
     """
-    ERR_CODE = "SEARCH_FAILURE"
+    ERR_CODE = "SEARCH_ERROR"
     MSG = "An error occurred during a search."
     MTHD_RSLT_TYPE = MethodResultType.SEARCH_RESULT
     
@@ -67,6 +65,7 @@ class SearchException(ChessException):
             cls_name: Optional[str]
             cls_mthd: Optional[str]
             err_code: Optional[str]
+            mthd_rslt_type: Optional[MTHD_RSLT_TYPE]
         """
         msg = msg or self.MSG
         err_code = err_code or self.ERR_CODE

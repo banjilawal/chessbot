@@ -1,7 +1,7 @@
-# src/err/operation/validation/context/edge/exception.py
+# src/err/state/validation/context/edge/exception.py
 
 """
-Module: err.operation.validation.context.edge.exception
+Module: err.state.validation.context.edge.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1

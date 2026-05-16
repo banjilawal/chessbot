@@ -1,15 +1,15 @@
-# src/err/operation/token/binder/edge/__init__.py
+# src/err/state/token/binder/edge/__init__.py
 
 """
-Module: err.operation.token.binder.edge.__init__
+Module: err.state.token.binder.edge.__init__
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
 """
 
-# =========== ERR.OPERATION.TOKEN.BINDER.EDGE PACKAGE ===========#
+# =========== ERR.STATE.TOKEN.BINDER.EDGE PACKAGE ===========#
 
 # Packages
 
 # Modules
-from .exception import EdgeBinderTokenOperationException
+from .exception import EdgeBinderTokenStateException

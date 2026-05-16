@@ -1,7 +1,7 @@
 # src/err/validation/rank/bishop/exception.py
 
 """
-Module: err.operation.validation.rank.bishop.exception
+Module: err.state.validation.rank.bishop.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1

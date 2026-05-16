@@ -1,7 +1,7 @@
-# src/err/operation/token/binder/schema/exception.py
+# src/err/state/token/binder/schema/exception.py
 
 """
-Module: err.operation.token.binder.schema.exception
+Module: err.state.token.binder.schema.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -9,19 +9,19 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import TokenOperationException
+from err import TokenStateException
 
 
 __all__ = [
     # ======================# SCHEMA_BINDER_TOKEN_FAILURE #======================#
-    "SchemaBinderTokenOperationException",
+    "SchemaBinderTokenStateException",
 ]
 
-from err import BinderTokenOperationException
+from err import BinderTokenStateException
 
 
 # ======================# SCHEMA_BINDER_TOKEN_FAILURE #======================#
-class SchemaBinderTokenOperationException(BinderTokenOperationException):
+class SchemaBinderTokenStateException(BinderTokenStateException):
     """
     Role:
         -   Error Tracing
@@ -41,7 +41,7 @@ class SchemaBinderTokenOperationException(BinderTokenOperationException):
     Provides:
 
     Super Class:
-        BinderTokenOperationException
+        BinderTokenStateException
     """
     MSG = "SchemaBinder tokenfailed."
     ERR_CODE = "SCHEMA_BINDER_TOKEN_FAILURE"

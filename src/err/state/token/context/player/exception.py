@@ -1,7 +1,7 @@
-# src/err/operation/token/context/player/exception.py
+# src/err/state/token/context/player/exception.py
 
 """
-Module: err.operation.token.context.player.exception
+Module: err.state.token.context.player.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -9,19 +9,19 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import TokenOperationException
+from err import TokenStateException
 
 
 __all__ = [
     # ======================# PLAYER_CONTEXT_TOKEN_FAILURE #======================#
-    "PlayerContextTokenOperationException",
+    "PlayerContextTokenStateException",
 ]
 
-from err import ContextTokenOperationException
+from err import ContextTokenStateException
 
 
 # ======================# PLAYER_CONTEXT_TOKEN_FAILURE #======================#
-class PlayerContextTokenOperationException(ContextTokenOperationException):
+class PlayerContextTokenStateException(ContextTokenStateException):
     """
     Role:
         -   Error Tracing
@@ -41,7 +41,7 @@ class PlayerContextTokenOperationException(ContextTokenOperationException):
     Provides:
 
     Super Class:
-        ContextTokenOperationException
+        ContextTokenStateException
     """
     MSG = "PlayerContext tokenfailed."
     ERR_CODE = "PLAYER_CONTEXT_TOKEN_FAILURE"

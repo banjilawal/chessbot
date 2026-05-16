@@ -14,18 +14,18 @@ from err import RankSearchException
 
 
 __all__ = [
-    # ======================# KING_SEARCH_FAILURE #======================#
+    # ======================# KING_SEARCH_ERROR #======================#
     "KingSearchException",
 ]
 
-# ======================# KING_SEARCH_FAILURE #======================#
+# ======================# KING_SEARCH_ERROR #======================#
 class KingSearchException(RankSearchException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a KingSearch experienced an error.
+        1.  Indicate that a King search.
 
     Attributes:
         msg: Optional[str]
@@ -42,7 +42,7 @@ class KingSearchException(RankSearchException):
         RankSearchException
     """
     MSG = "King error state."
-    ERR_CODE = "KING_SEARCH_FAILURE"
+    ERR_CODE = "KING_SEARCH_ERROR"
     
     def __init__(
             self,

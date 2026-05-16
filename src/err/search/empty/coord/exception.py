@@ -13,12 +13,12 @@ from err import EmptySearchException
 
 
 __all__ = [
-    # ======================# COORD_NOT_FOUND_SEARCH_FAILURE #======================#
+    # ======================# COORD_NOT_FOUND_SEARCH_ERROR #======================#
     "CoordNotFoundSearchException",
 ]
 
 
-# ======================# COORD_NOT_FOUND_SEARCH_FAILURE #======================#
+# ======================# COORD_NOT_FOUND_SEARCH_ERROR #======================#
 class CoordNotFoundSearchException(EmptySearchException):
     """
     Role:
@@ -42,7 +42,7 @@ class CoordNotFoundSearchException(EmptySearchException):
         NotFoundSearchException
     """
     MSG = "Coord was not found."
-    ERR_CODE = "COORD_NOT_FOUND_SEARCH_FAILURE"
+    ERR_CODE = "COORD_NOT_FOUND_SEARCH_ERROR"
     
     def __init__(
             self,

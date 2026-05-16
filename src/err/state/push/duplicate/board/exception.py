@@ -1,7 +1,7 @@
-# src/err/operation/push/duplicate/board/exception.py
+# src/err/state/push/duplicate/board/exception.py
 
 """
-Module: err.operation.push.duplicate.board.exception
+Module: err.state.push.duplicate.board.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1

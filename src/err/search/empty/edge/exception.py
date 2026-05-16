@@ -13,12 +13,12 @@ from err import EmptySearchException
 
 
 __all__ = [
-    # ======================# EDGE_NOT_FOUND_SEARCH_FAILURE #======================#
+    # ======================# EDGE_NOT_FOUND_SEARCH_ERROR #======================#
     "EdgeNotFoundSearchException",
 ]
 
 
-# ======================# EDGE_NOT_FOUND_SEARCH_FAILURE #======================#
+# ======================# EDGE_NOT_FOUND_SEARCH_ERROR #======================#
 class EdgeNotFoundSearchException(EmptySearchException):
     """
     Role:
@@ -42,7 +42,7 @@ class EdgeNotFoundSearchException(EmptySearchException):
         NotFoundSearchException
     """
     MSG = "Edge was not found."
-    ERR_CODE = "EDGE_NOT_FOUND_SEARCH_FAILURE"
+    ERR_CODE = "EDGE_NOT_FOUND_SEARCH_ERROR"
     
     def __init__(
             self,

@@ -14,18 +14,18 @@ from err import RankSearchException
 
 
 __all__ = [
-    # ======================# PAWN_SEARCH_FAILURE #======================#
+    # ======================# PAWN_SEARCH_ERROR #======================#
     "PawnSearchException",
 ]
 
-# ======================# PAWN_SEARCH_FAILURE #======================#
+# ======================# PAWN_SEARCH_ERROR #======================#
 class PawnSearchException(RankSearchException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a PawnSearch experienced an error.
+        1.  Indicate that a Pawn search.
 
     Attributes:
         msg: Optional[str]
@@ -42,7 +42,7 @@ class PawnSearchException(RankSearchException):
         RankSearchException
     """
     MSG = "Pawn error state."
-    ERR_CODE = "PAWN_SEARCH_FAILURE"
+    ERR_CODE = "PAWN_SEARCH_ERROR"
     
     def __init__(
             self,

@@ -1,7 +1,7 @@
-# src/err/operation/registration/stack/graph/exception.py
+# src/err/state/registration/stack/graph/exception.py
 
 """
-Module: err.operation.registration.stack.graph.exception
+Module: err.state.registration.stack.graph.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1

@@ -13,19 +13,19 @@ from err import ContextSearchException
 
 
 __all__ = [
-    # ======================# PLAYER_CONTEXT_SEARCH_FAILURE #======================#
+    # ======================# PLAYER_CONTEXT_SEARCH_ERROR #======================#
     "PlayerContextSearchException",
 ]
 
 
-# ======================# PLAYER_CONTEXT_SEARCH_FAILURE #======================#
+# ======================# PLAYER_CONTEXT_SEARCH_ERROR #======================#
 class PlayerContextSearchException(ContextSearchException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a PlayerContextSearch experienced an error.
+        1.  Indicate that a PlayerContext search.
 
     Attributes:
             msg: Optional[str]
@@ -42,7 +42,7 @@ class PlayerContextSearchException(ContextSearchException):
         ContextSearchException
     """
     MSG = "PlayerContext error state."
-    ERR_CODE = "PLAYER_CONTEXT_SEARCH_FAILURE"
+    ERR_CODE = "PLAYER_CONTEXT_SEARCH_ERROR"
     
     def __init__(
             self,

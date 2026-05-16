@@ -1,7 +1,7 @@
-# src/err/operation/registration/stack/board/exception.py
+# src/err/state/registration/stack/board/exception.py
 
 """
-Module: err.operation.registration.stack.board.exception
+Module: err.state.registration.stack.board.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1

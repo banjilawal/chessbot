@@ -1,7 +1,7 @@
-# src/err/operation/token/context/board/exception.py
+# src/err/state/token/context/board/exception.py
 
 """
-Module: err.operation.token.context.board.exception
+Module: err.state.token.context.board.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -9,19 +9,19 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import TokenOperationException
+from err import TokenStateException
 
 
 __all__ = [
     # ======================# BOARD_CONTEXT_TOKEN_FAILURE #======================#
-    "BoardContextTokenOperationException",
+    "BoardContextTokenStateException",
 ]
 
-from err import ContextTokenOperationException
+from err import ContextTokenStateException
 
 
 # ======================# BOARD_CONTEXT_TOKEN_FAILURE #======================#
-class BoardContextTokenOperationException(ContextTokenOperationException):
+class BoardContextTokenStateException(ContextTokenStateException):
     """
     Role:
         -   Error Tracing
@@ -41,7 +41,7 @@ class BoardContextTokenOperationException(ContextTokenOperationException):
     Provides:
 
     Super Class:
-        ContextTokenOperationException
+        ContextTokenStateException
     """
     MSG = "BoardContext tokenfailed."
     ERR_CODE = "BOARD_CONTEXT_TOKEN_FAILURE"

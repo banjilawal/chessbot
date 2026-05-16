@@ -1,7 +1,7 @@
-# src/err/operation/token/binder/edge/exception.py
+# src/err/state/token/binder/edge/exception.py
 
 """
-Module: err.operation.token.binder.edge.exception
+Module: err.state.token.binder.edge.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -9,19 +9,19 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import TokenOperationException
+from err import TokenStateException
 
 
 __all__ = [
     # ======================# EDGE_BINDER_TOKEN_FAILURE #======================#
-    "EdgeBinderTokenOperationException",
+    "EdgeBinderTokenStateException",
 ]
 
-from err import BinderTokenOperationException
+from err import BinderTokenStateException
 
 
 # ======================# EDGE_BINDER_TOKEN_FAILURE #======================#
-class EdgeBinderTokenOperationException(BinderTokenOperationException):
+class EdgeBinderTokenStateException(BinderTokenStateException):
     """
     Role:
         -   Error Tracing
@@ -41,7 +41,7 @@ class EdgeBinderTokenOperationException(BinderTokenOperationException):
     Provides:
 
     Super Class:
-        BinderTokenOperationException
+        BinderTokenStateException
     """
     MSG = "EdgeBinder tokenfailed."
     ERR_CODE = "EDGE_BINDER_TOKEN_FAILURE"

@@ -1,7 +1,7 @@
-# src/err/operation/push /empty/stack/game/exception.py
+# src/err/state/push /empty/stack/game/exception.py
 
 """
-Module: err.operation.push .empty.stack.game.exception
+Module: err.state.push .empty.stack.game.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1

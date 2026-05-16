@@ -1,32 +1,32 @@
-# src/err/token/board/exception.py
+# src/err/state/token/board/exception.py
 
 """
-Module: err.token.board.exception
+Module: err.state.token.board.exception
 Author: Banji Lawal
-Created: 2026-04-04
-version: 1.0.1
+Created: 2026-04-07
+version: 1.0.0
 """
 
 from __future__ import annotations
 from typing import Any, Optional
 
-
-from err import TokenOperationException
+from err import TokenStateException
+from result import MethodResultType
 
 
 __all__ = [
-    # ======================# BOARD_TOKEN_FAILURE #======================#
-    "BoardTokenOperationException",
+    # ======================# TOKEN_BOARD_STATE_INCONSISTENCY_ERROR #======================#
+    "TokenBoardConsistencyStateException",
 ]
 
-# ======================# BOARD_TOKEN_FAILURE #======================#
-class BoardTokenOperationException(TokenOperationException):
+# ======================# TOKEN_BOARD_STATE_INCONSISTENCY_ERROR #======================#
+class TokenBoardConsistencyStateException(TokenStateException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a Board tokenfailed.
+        1.  Indicate that a TokenBoardState value did not match a Token's existence on the Board.
 
     Attributes:
         msg: Optional[str]
@@ -41,10 +41,10 @@ class BoardTokenOperationException(TokenOperationException):
     Provides:
 
     Super Class:
-        TokenOperationException
+        TokenStateException
     """
-    MSG = "Board tokenfailed."
-    ERR_CODE = "BOARD_TOKEN_FAILURE"
+    MSG = "Token.board_state is not consistent with the token's existence on the board."
+    ERR_CODE = "TOKEN_BOARD_STATE_INCONSISTENCY_ERROR"
     
     def __init__(
             self,
@@ -55,6 +55,7 @@ class BoardTokenOperationException(TokenOperationException):
             cls_name: Optional[str] | None = None,
             cls_mthd: Optional[str] | None = None,
             err_code: Optional[str] | None = None,
+            mthd_rslt_type: Optional[MethodResultType] | None = None,
     ):
         """
         Args:
@@ -68,6 +69,7 @@ class BoardTokenOperationException(TokenOperationException):
         """
         msg = msg or self.MSG
         err_code = err_code or self.ERR_CODE
+        mthd_rslt_type = mthd_rslt_type or self.MTHD_RSLT
         super().__init__(
             ex=ex,
             msg=msg,

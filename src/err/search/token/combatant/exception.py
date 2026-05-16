@@ -14,18 +14,18 @@ from err import TokenSearchException
 
 
 __all__ = [
-    # ======================# COMBATANT_TOKEN_SEARCH_FAILURE #======================#
+    # ======================# COMBATANT_TOKEN_SEARCH_ERROR #======================#
     "CombatantTokenSearchException",
 ]
 
-# ======================# COMBATANT_TOKEN_SEARCH_FAILURE #======================#
+# ======================# COMBATANT_TOKEN_SEARCH_ERROR #======================#
 class CombatantTokenSearchException(TokenSearchException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a CombatantTokenSearch experienced an error.
+        1.  Indicate that a CombatantToken search.
 
     Attributes:
         msg: Optional[str]
@@ -42,7 +42,7 @@ class CombatantTokenSearchException(TokenSearchException):
         TokenSearchException
     """
     MSG = "CombatantToken error state."
-    ERR_CODE = "COMBATANT_TOKEN_SEARCH_FAILURE"
+    ERR_CODE = "COMBATANT_TOKEN_SEARCH_ERROR"
     
     def __init__(
             self,

@@ -1,7 +1,7 @@
-# src/err/operation/validation/context/zero/team/__init__.py
+# src/err/state/validation/context/zero/team/__init__.py
 
 """
-Module: err.operation.validation.context.zero.team.exception
+Module: err.state.validation.context.zero.team.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1

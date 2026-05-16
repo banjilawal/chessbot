@@ -10,16 +10,16 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import TokenOperationException
+from err import TokenStateException
 
 
 __all__ = [
     # ======================# SCALAR_TOKEN_FAILURE #======================#
-    "ScalarTokenOperationException",
+    "ScalarTokenStateException",
 ]
 
 # ======================# SCALAR_TOKEN_FAILURE #======================#
-class ScalarTokenOperationException(TokenOperationException):
+class ScalarTokenStateException(TokenStateException):
     """
     Role:
         -   Error Tracing
@@ -40,7 +40,7 @@ class ScalarTokenOperationException(TokenOperationException):
     Provides:
 
     Super Class:
-        TokenOperationException
+        TokenStateException
     """
     MSG = "Scalar tokenfailed."
     ERR_CODE = "SCALAR_TOKEN_FAILURE"

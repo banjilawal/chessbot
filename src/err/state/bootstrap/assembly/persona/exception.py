@@ -1,4 +1,4 @@
-# src/err/operation/bootstrap/assembly/persona/exception.py
+# src/err/state/bootstrap/assembly/persona/exception.py
 
 """
 Module: err.bootstrap.assembly.persona.exception

@@ -1,7 +1,7 @@
-# src/err/operation/registration/stack/game/exception.py
+# src/err/state/registration/stack/game/exception.py
 
 """
-Module: err.operation.registration.stack.game.exception
+Module: err.state.registration.stack.game.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1

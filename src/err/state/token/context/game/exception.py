@@ -1,7 +1,7 @@
-# src/err/operation/token/context/game/exception.py
+# src/err/state/token/context/game/exception.py
 
 """
-Module: err.operation.token.context.game.exception
+Module: err.state.token.context.game.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -9,19 +9,19 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import TokenOperationException
+from err import TokenStateException
 
 
 __all__ = [
     # ======================# GAME_CONTEXT_TOKEN_FAILURE #======================#
-    "GameContextTokenOperationException",
+    "GameContextTokenStateException",
 ]
 
-from err import ContextTokenOperationException
+from err import ContextTokenStateException
 
 
 # ======================# GAME_CONTEXT_TOKEN_FAILURE #======================#
-class GameContextTokenOperationException(ContextTokenOperationException):
+class GameContextTokenStateException(ContextTokenStateException):
     """
     Role:
         -   Error Tracing
@@ -41,7 +41,7 @@ class GameContextTokenOperationException(ContextTokenOperationException):
     Provides:
 
     Super Class:
-        ContextTokenOperationException
+        ContextTokenStateException
     """
     MSG = "GameContext tokenfailed."
     ERR_CODE = "GAME_CONTEXT_TOKEN_FAILURE"

@@ -10,7 +10,7 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import TokenOperationException
+from err import TokenStateException
 from result import MethodResultType
 
 __all__ = [
@@ -19,7 +19,7 @@ __all__ = [
 ]
 
 # ======================# TOKEN_OPENING_DEPLOYMENT_FAILURE #======================#
-class TokenDeploymentException(TokenOperationException):
+class TokenDeploymentException(TokenStateException):
     """
     Role:
         -   Error Tracing
@@ -40,7 +40,7 @@ class TokenDeploymentException(TokenOperationException):
     Provides:
 
     Super Class:
-        TokenOperationException
+        TokenStateException
     """
     MSG = "Token deployment to opening square failed."
     ERR_CODE = "TOKEN_OPENING_DEPLOYMENT_FAILURE"

@@ -1,7 +1,7 @@
-# src/err/operation/validation/context/zero/arena/__init__.py
+# src/err/state/validation/context/zero/arena/__init__.py
 
 """
-Module: err.operation.validation.context.zero.arena.exception
+Module: err.state.validation.context.zero.arena.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1

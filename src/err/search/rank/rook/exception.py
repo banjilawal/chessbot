@@ -14,18 +14,18 @@ from err import RankSearchException
 
 
 __all__ = [
-    # ======================# ROOK_SEARCH_FAILURE #======================#
+    # ======================# ROOK_SEARCH_ERROR #======================#
     "RookSearchException",
 ]
 
-# ======================# ROOK_SEARCH_FAILURE #======================#
+# ======================# ROOK_SEARCH_ERROR #======================#
 class RookSearchException(RankSearchException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a RookSearch experienced an error.
+        1.  Indicate that a Rook search.
 
     Attributes:
         msg: Optional[str]
@@ -42,7 +42,7 @@ class RookSearchException(RankSearchException):
         RankSearchException
     """
     MSG = "Rook error state."
-    ERR_CODE = "ROOK_SEARCH_FAILURE"
+    ERR_CODE = "ROOK_SEARCH_ERROR"
     
     def __init__(
             self,

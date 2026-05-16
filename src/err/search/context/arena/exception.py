@@ -13,19 +13,19 @@ from err import ContextSearchException
 
 
 __all__ = [
-    # ======================# ARENA_CONTEXT_SEARCH_FAILURE #======================#
+    # ======================# ARENA_CONTEXT_SEARCH_ERROR #======================#
     "ArenaContextSearchException",
 ]
 
 
-# ======================# ARENA_CONTEXT_SEARCH_FAILURE #======================#
+# ======================# ARENA_CONTEXT_SEARCH_ERROR #======================#
 class ArenaContextSearchException(ContextSearchException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a ArenaContextSearch experienced an error.
+        1.  Indicate that a ArenaContext search.
 
     Attributes:
             msg: Optional[str]
@@ -42,7 +42,7 @@ class ArenaContextSearchException(ContextSearchException):
         ContextSearchException
     """
     MSG = "ArenaContext error state."
-    ERR_CODE = "ARENA_CONTEXT_SEARCH_FAILURE"
+    ERR_CODE = "ARENA_CONTEXT_SEARCH_ERROR"
     
     def __init__(
             self,

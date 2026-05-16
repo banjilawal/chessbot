@@ -1,7 +1,7 @@
 # src/err/validation/exception.py
 
 """
-Module: err.operation.validation.exception
+Module: err.state.validation.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,7 +10,7 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import OperationException
+from err import StateException
 
 __all__ = [
     # ======================# VALIDATION_FAILURE #======================#
@@ -21,7 +21,7 @@ from result import MethodResultType
 
 
 # ======================# VALIDATION_FAILURE #======================#
-class ValidationException(OperationException):
+class ValidationException(StateException):
     """
     Role:
         -   Failure Tracing
@@ -42,7 +42,7 @@ class ValidationException(OperationException):
     Provides:
 
     Super Class:
-        OperationException
+        StateException
     """
     MSG = "Validation failed"
     ERR_CODE = "VALIDATION_FAILURE"

@@ -1,7 +1,7 @@
-# src/err/operation/token/context/Vector/exception.py
+# src/err/state/token/context/Vector/exception.py
 
 """
-Module: err.operation.token.context.Vector.exception
+Module: err.state.token.context.Vector.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -9,15 +9,15 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import ContextTokenOperationException
+from err import ContextTokenStateException
 
 __all__ = [
     # ======================# VECTOR_CONTEXT_TOKEN_FAILURE #======================#
-    "VectorContextTokenOperationException",
+    "VectorContextTokenStateException",
 ]
 
 # ======================# VECTOR_CONTEXT_TOKEN_FAILURE #======================#
-class VectorContextTokenOperationException(ContextTokenOperationException):
+class VectorContextTokenStateException(ContextTokenStateException):
     """
     Role:
         -   Error Tracing
@@ -37,7 +37,7 @@ class VectorContextTokenOperationException(ContextTokenOperationException):
     Provides:
 
     Super Class:
-        ContextTokenOperationException
+        ContextTokenStateException
     """
     MSG = "VectorContext tokenfailed."
     ERR_CODE = "VECTOR_CONTEXT_TOKEN_FAILURE"

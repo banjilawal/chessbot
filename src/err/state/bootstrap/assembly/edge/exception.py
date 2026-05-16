@@ -1,4 +1,4 @@
-# src/err/operation/bootstrap/assembly/edge/exception.py
+# src/err/state/bootstrap/assembly/edge/exception.py
 
 """
 Module: err.bootstrap.assembly.edge.exception

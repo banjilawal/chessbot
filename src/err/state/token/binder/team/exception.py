@@ -1,7 +1,7 @@
-# src/err/operation/token/binder/team/exception.py
+# src/err/state/token/binder/team/exception.py
 
 """
-Module: err.operation.token.binder.team.exception
+Module: err.state.token.binder.team.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -9,19 +9,19 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import TokenOperationException
+from err import TokenStateException
 
 
 __all__ = [
     # ======================# TEAM_BINDER_TOKEN_FAILURE #======================#
-    "TeamBinderTokenOperationException",
+    "TeamBinderTokenStateException",
 ]
 
-from err import BinderTokenOperationException
+from err import BinderTokenStateException
 
 
 # ======================# TEAM_BINDER_TOKEN_FAILURE #======================#
-class TeamBinderTokenOperationException(BinderTokenOperationException):
+class TeamBinderTokenStateException(BinderTokenStateException):
     """
     Role:
         -   Error Tracing
@@ -41,7 +41,7 @@ class TeamBinderTokenOperationException(BinderTokenOperationException):
     Provides:
 
     Super Class:
-        BinderTokenOperationException
+        BinderTokenStateException
     """
     MSG = "TeamBinder tokenfailed."
     ERR_CODE = "TEAM_BINDER_TOKEN_FAILURE"

@@ -10,16 +10,16 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import TokenOperationException
+from err import TokenStateException
 
 
 __all__ = [
     # ======================# COORD_TOKEN_FAILURE #======================#
-    "CoordTokenOperationException",
+    "CoordTokenStateException",
 ]
 
 # ======================# COORD_TOKEN_FAILURE #======================#
-class CoordTokenOperationException(TokenOperationException):
+class CoordTokenStateException(TokenStateException):
     """
     Role:
         -   Error Tracing
@@ -40,7 +40,7 @@ class CoordTokenOperationException(TokenOperationException):
     Provides:
 
     Super Class:
-        TokenOperationException
+        TokenStateException
     """
     MSG = "Coord tokenfailed."
     ERR_CODE = "COORD_TOKEN_FAILURE"

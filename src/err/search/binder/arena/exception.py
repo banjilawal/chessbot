@@ -14,18 +14,18 @@ from err import BinderSearchException
 
 
 __all__ = [
-    # ======================# ARENA_PLAYER_BINDER_SEARCH_FAILURE #======================#
+    # ======================# ARENA_PLAYER_BINDER_SEARCH_ERROR #======================#
     "ArenaPlayerBinderSearchException",
 ]
 
-# ======================# ARENA_PLAYER_BINDER_SEARCH_FAILURE #======================#
+# ======================# ARENA_PLAYER_BINDER_SEARCH_ERROR #======================#
 class ArenaPlayerBinderSearchException(BinderSearchException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a ArenaPlayerBinderSearch experienced an error.
+        1.  Indicate that a ArenaPlayerBinder search.
 
     Attributes:
         msg: Optional[str]
@@ -42,7 +42,7 @@ class ArenaPlayerBinderSearchException(BinderSearchException):
         BinderSearchException
     """
     MSG = "ArenaPlayerBinder error state."
-    ERR_CODE = "ARENA_PLAYER_BINDER_SEARCH_FAILURE"
+    ERR_CODE = "ARENA_PLAYER_BINDER_SEARCH_ERROR"
     
     def __init__(
             self,

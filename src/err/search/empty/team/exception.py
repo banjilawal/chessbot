@@ -13,12 +13,12 @@ from err import EmptySearchException
 
 
 __all__ = [
-    # ======================# TEAM_NOT_FOUND_SEARCH_FAILURE #======================#
+    # ======================# TEAM_NOT_FOUND_SEARCH_ERROR #======================#
     "TeamNotFoundSearchException",
 ]
 
 
-# ======================# TEAM_NOT_FOUND_SEARCH_FAILURE #======================#
+# ======================# TEAM_NOT_FOUND_SEARCH_ERROR #======================#
 class TeamNotFoundSearchException(EmptySearchException):
     """
     Role:
@@ -42,7 +42,7 @@ class TeamNotFoundSearchException(EmptySearchException):
         NotFoundSearchException
     """
     MSG = "Team was not found."
-    ERR_CODE = "TEAM_NOT_FOUND_SEARCH_FAILURE"
+    ERR_CODE = "TEAM_NOT_FOUND_SEARCH_ERROR"
     
     def __init__(
             self,

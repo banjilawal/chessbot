@@ -1,4 +1,4 @@
-# src/err/operation/bootstrap/assembly/formation/exception.py
+# src/err/state/bootstrap/assembly/formation/exception.py
 
 """
 Module: err.bootstrap.assembly.formation.exception

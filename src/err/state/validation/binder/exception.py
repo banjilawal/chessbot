@@ -1,7 +1,7 @@
-# src/err/operation/validation/binder/exception.py
+# src/err/state/validation/binder/exception.py
 
 """
-Module: err.operation.validation.binder.exception
+Module: err.state.validation.binder.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1

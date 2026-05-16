@@ -10,7 +10,7 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import OperationException
+from err import StateException
 from result import MethodResultType
 
 __all__ = [
@@ -19,7 +19,7 @@ __all__ = [
 ]
 
 # ======================# REGISTRATION_FAILURE #======================#
-class RegistrationException(OperationException):
+class RegistrationException(StateException):
     """
     Role:
         -   Error Tracing
@@ -39,7 +39,7 @@ class RegistrationException(OperationException):
     Provides:
 
     Super Class:
-        OperationException
+        StateException
     """
     MSG = "Registration step failed."
     ERR_CODE = "REGISTRATION_FAILURE"

@@ -1,4 +1,4 @@
-# src/err/operation/bootstrap/assembly/coord/exception.py
+# src/err/state/bootstrap/assembly/coord/exception.py
 
 """
 Module: err.bootstrap.assembly.coord.exception

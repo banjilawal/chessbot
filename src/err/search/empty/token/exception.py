@@ -14,12 +14,12 @@ from err import EmptySearchException
 
 
 __all__ = [
-    # ======================# TOKEN_NOT_FOUND_SEARCH_FAILURE #======================#
+    # ======================# TOKEN_NOT_FOUND_SEARCH_ERROR #======================#
     "TokenNotFoundSearchException",
 ]
 
 
-# ======================# TOKEN_NOT_FOUND_SEARCH_FAILURE #======================#
+# ======================# TOKEN_NOT_FOUND_SEARCH_ERROR #======================#
 class TokenNotFoundSearchException(EmptySearchException):
     """
     Role:
@@ -43,7 +43,7 @@ class TokenNotFoundSearchException(EmptySearchException):
         NotFoundSearchException
     """
     MSG = "Token was not found."
-    ERR_CODE = "TOKEN_NOT_FOUND_SEARCH_FAILURE"
+    ERR_CODE = "TOKEN_NOT_FOUND_SEARCH_ERROR"
     
     def __init__(
             self,

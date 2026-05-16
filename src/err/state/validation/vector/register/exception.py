@@ -1,7 +1,7 @@
 # src/err/validationvector/register/exception.py
 
 """
-Module: err.operation.validation.vector.register.exception
+Module: err.state.validation.vector.register.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1

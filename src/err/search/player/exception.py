@@ -14,18 +14,18 @@ from err import SearchException
 
 
 __all__ = [
-    # ======================# PLAYER_SEARCH_FAILURE #======================#
+    # ======================# PLAYER_SEARCH_ERROR #======================#
     "PlayerSearchException",
 ]
 
-# ======================# PLAYER_SEARCH_FAILURE #======================#
+# ======================# PLAYER_SEARCH_ERROR #======================#
 class PlayerSearchException(SearchException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a PlayerSearch experienced an error.
+        1.  Indicate that a Player search.
 
     Attributes:
         msg: Optional[str]
@@ -42,7 +42,7 @@ class PlayerSearchException(SearchException):
         SearchException
     """
     MSG = "Player error state."
-    ERR_CODE = "PLAYER_SEARCH_FAILURE"
+    ERR_CODE = "PLAYER_SEARCH_ERROR"
     
     def __init__(
             self,

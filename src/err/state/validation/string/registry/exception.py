@@ -1,7 +1,7 @@
 # src/err/validation/string/registry/exception.py
 
 """
-Module: err.operation.validation.string.registry.exception
+Module: err.state.validation.string.registry.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1

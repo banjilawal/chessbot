@@ -13,19 +13,19 @@ from err import ContextSearchException
 
 
 __all__ = [
-    # ======================# HOSTAGE_CONTEXT_SEARCH_FAILURE #======================#
+    # ======================# HOSTAGE_CONTEXT_SEARCH_ERROR #======================#
     "HostageContextSearchException",
 ]
 
 
-# ======================# HOSTAGE_CONTEXT_SEARCH_FAILURE #======================#
+# ======================# HOSTAGE_CONTEXT_SEARCH_ERROR #======================#
 class HostageContextSearchException(ContextSearchException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a HostageContextSearch experienced an error.
+        1.  Indicate that a HostageContext search.
 
     Attributes:
             msg: Optional[str]
@@ -42,7 +42,7 @@ class HostageContextSearchException(ContextSearchException):
         ContextSearchException
     """
     MSG = "HostageContext error state."
-    ERR_CODE = "HOSTAGE_CONTEXT_SEARCH_FAILURE"
+    ERR_CODE = "HOSTAGE_CONTEXT_SEARCH_ERROR"
     
     def __init__(
             self,

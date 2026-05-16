@@ -1,7 +1,7 @@
-# src/err/operation/token/context/edge/exception.py
+# src/err/state/token/context/edge/exception.py
 
 """
-Module: err.operation.token.context.edge.exception
+Module: err.state.token.context.edge.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -9,19 +9,19 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import TokenOperationException
+from err import TokenStateException
 
 
 __all__ = [
     # ======================# EDGE_CONTEXT_TOKEN_FAILURE #======================#
-    "EdgeContextTokenOperationException",
+    "EdgeContextTokenStateException",
 ]
 
-from err import ContextTokenOperationException
+from err import ContextTokenStateException
 
 
 # ======================# EDGE_CONTEXT_TOKEN_FAILURE #======================#
-class EdgeContextTokenOperationException(ContextTokenOperationException):
+class EdgeContextTokenStateException(ContextTokenStateException):
     """
     Role:
         -   Error Tracing
@@ -41,7 +41,7 @@ class EdgeContextTokenOperationException(ContextTokenOperationException):
     Provides:
 
     Super Class:
-        ContextTokenOperationException
+        ContextTokenStateException
     """
     MSG = "EdgeContext tokenfailed."
     ERR_CODE = "EDGE_CONTEXT_TOKEN_FAILURE"

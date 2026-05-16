@@ -1,13 +1,13 @@
-# src/err/operation/bootstrap/assembly/context/__init__.py
+# src/err/state/bootstrap/assembly/context/__init__.py
 
 """
-Module: err.operation.bootstrap.assembly.context.__init__
+Module: err.state.bootstrap.assembly.context.__init__
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
 """
 
-# =========== ERR.OPERATION.BOOTSTRAP.ASSEMBLY.CONTEXT PACKAGE ===========#
+# =========== ERR.STATE.BOOTSTRAP.ASSEMBLY.CONTEXT PACKAGE ===========#
 
 # Packages
 from .arena import *

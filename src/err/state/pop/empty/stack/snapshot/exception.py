@@ -1,7 +1,7 @@
-# src/err/operation/pop/empty/stack/snapshot/exception.py
+# src/err/state/pop/empty/stack/snapshot/exception.py
 
 """
-Module: err.operation.pop.empty.stack.snapshot.exception
+Module: err.state.pop.empty.stack.snapshot.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1

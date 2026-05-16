@@ -1,7 +1,7 @@
-# src/err/operation/token/context/hostage/exception.py
+# src/err/state/token/context/hostage/exception.py
 
 """
-Module: err.operation.token.context.hostage.exception
+Module: err.state.token.context.hostage.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -9,19 +9,19 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import TokenOperationException
+from err import TokenStateException
 
 
 __all__ = [
     # ======================# HOSTAGE_CONTEXT_TOKEN_FAILURE #======================#
-    "HostageContextTokenOperationException",
+    "HostageContextTokenStateException",
 ]
 
-from err import ContextTokenOperationException
+from err import ContextTokenStateException
 
 
 # ======================# HOSTAGE_CONTEXT_TOKEN_FAILURE #======================#
-class HostageContextTokenOperationException(ContextTokenOperationException):
+class HostageContextTokenStateException(ContextTokenStateException):
     """
     Role:
         -   Error Tracing
@@ -41,7 +41,7 @@ class HostageContextTokenOperationException(ContextTokenOperationException):
     Provides:
 
     Super Class:
-        ContextTokenOperationException
+        ContextTokenStateException
     """
     MSG = "HostageContext tokenfailed."
     ERR_CODE = "HOSTAGE_CONTEXT_TOKEN_FAILURE"

@@ -10,7 +10,7 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import OperationException
+from err import StateException
 
 __all__ = [
     # ======================# FINALIZATION_FAILURE #======================#
@@ -18,7 +18,7 @@ __all__ = [
 ]
 
 # ======================# FINALIZATION_FAILURE #======================#
-class FinalizationException(OperationException):
+class FinalizationException(StateException):
     """
     Role:
         -   Error Tracing
@@ -39,7 +39,7 @@ class FinalizationException(OperationException):
     Provides:
 
     Super Class:
-        OperationException
+        StateException
     """
     MSG = "Finalizing a Finalization step failed."
     ERR_CODE = "FINALIZATION_FAILURE"

@@ -13,12 +13,12 @@ from err import EmptySearchException
 
 
 __all__ = [
-    # ======================# PLAYER_NOT_FOUND_SEARCH_FAILURE #======================#
+    # ======================# PLAYER_NOT_FOUND_SEARCH_ERROR #======================#
     "PlayerNotFoundSearchException",
 ]
 
 
-# ======================# PLAYER_NOT_FOUND_SEARCH_FAILURE #======================#
+# ======================# PLAYER_NOT_FOUND_SEARCH_ERROR #======================#
 class PlayerNotFoundSearchException(EmptySearchException):
     """
     Role:
@@ -42,7 +42,7 @@ class PlayerNotFoundSearchException(EmptySearchException):
         NotFoundSearchException
     """
     MSG = "Player was not found."
-    ERR_CODE = "PLAYER_NOT_FOUND_SEARCH_FAILURE"
+    ERR_CODE = "PLAYER_NOT_FOUND_SEARCH_ERROR"
     
     def __init__(
             self,

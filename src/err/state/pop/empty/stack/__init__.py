@@ -1,13 +1,13 @@
-# src/err/operation/pop/empty/stack/__init__.py
+# src/err/state/pop/empty/stack/__init__.py
 
 """
-Module: err.operation.pop.empty.stack.__init__
+Module: err.state.pop.empty.stack.__init__
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
 """
 
-# ============ ERR.OPERATION.POP.EMPTY.STACK PACKAGE ===========#
+# ============ ERR.STATE.POP.EMPTY.STACK PACKAGE ===========#
 
 # Packages
 from .arena import *

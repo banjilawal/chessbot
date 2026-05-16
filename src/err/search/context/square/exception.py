@@ -13,19 +13,19 @@ from err import ContextSearchException
 
 
 __all__ = [
-    # ======================# SQUARE_CONTEXT_SEARCH_FAILURE #======================#
+    # ======================# SQUARE_CONTEXT_SEARCH_ERROR #======================#
     "SquareContextSearchException",
 ]
 
 
-# ======================# SQUARE_CONTEXT_SEARCH_FAILURE #======================#
+# ======================# SQUARE_CONTEXT_SEARCH_ERROR #======================#
 class SquareContextSearchException(ContextSearchException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a SquareContextSearch experienced an error.
+        1.  Indicate that a SquareContext search.
 
     Attributes:
             msg: Optional[str]
@@ -42,7 +42,7 @@ class SquareContextSearchException(ContextSearchException):
         ContextSearchException
     """
     MSG = "SquareContext error state."
-    ERR_CODE = "SQUARE_CONTEXT_SEARCH_FAILURE"
+    ERR_CODE = "SQUARE_CONTEXT_SEARCH_ERROR"
     
     def __init__(
             self,

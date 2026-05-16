@@ -14,12 +14,12 @@ from err import EmptySearchException
 
 
 __all__ = [
-    # ======================# MICROSERVICE_NOT_FOUND_SEARCH_FAILURE #======================#
+    # ======================# MICROSERVICE_NOT_FOUND_SEARCH_ERROR #======================#
     "MicroserviceNotFoundSearchException",
 ]
 
 
-# ======================# MICROSERVICE_NOT_FOUND_SEARCH_FAILURE #======================#
+# ======================# MICROSERVICE_NOT_FOUND_SEARCH_ERROR #======================#
 class MicroserviceNotFoundSearchException(EmptySearchException):
     """
     Role:
@@ -43,7 +43,7 @@ class MicroserviceNotFoundSearchException(EmptySearchException):
         NotFoundSearchException
     """
     MSG = "Microservice was not found."
-    ERR_CODE = "MICROSERVICE_NOT_FOUND_SEARCH_FAILURE"
+    ERR_CODE = "MICROSERVICE_NOT_FOUND_SEARCH_ERROR"
     
     def __init__(
             self,

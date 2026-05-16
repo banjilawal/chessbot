@@ -14,18 +14,18 @@ from err import PlayerSearchException
 
 
 __all__ = [
-    # ======================# MACHINE_PLAYER_SEARCH_FAILURE #======================#
+    # ======================# MACHINE_PLAYER_SEARCH_ERROR #======================#
     "MachinePlayerSearchException",
 ]
 
-# ======================# MACHINE_PLAYER_SEARCH_FAILURE #======================#
+# ======================# MACHINE_PLAYER_SEARCH_ERROR #======================#
 class MachinePlayerSearchException(PlayerSearchException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a MachinePlayerSearch experienced an error.
+        1.  Indicate that a MachinePlayer search.
 
     Attributes:
         msg: Optional[str]
@@ -42,7 +42,7 @@ class MachinePlayerSearchException(PlayerSearchException):
         PlayerSearchException
     """
     MSG = "MachinePlayer error state."
-    ERR_CODE = "MACHINE_PLAYER_SEARCH_FAILURE"
+    ERR_CODE = "MACHINE_PLAYER_SEARCH_ERROR"
     
     def __init__(
             self,

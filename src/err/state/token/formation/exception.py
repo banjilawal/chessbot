@@ -10,16 +10,16 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import TokenOperationException
+from err import TokenStateException
 
 
 __all__ = [
     # ======================# FORMATION_TOKEN_FAILURE #======================#
-    "FormationTokenOperationException",
+    "FormationTokenStateException",
 ]
 
 # ======================# FORMATION_TOKEN_FAILURE #======================#
-class FormationTokenOperationException(TokenOperationException):
+class FormationTokenStateException(TokenStateException):
     """
     Role:
         -   Error Tracing
@@ -39,7 +39,7 @@ class FormationTokenOperationException(TokenOperationException):
     Provides:
 
     Super Class:
-        TokenOperationException
+        TokenStateException
     """
     MSG = "Formation tokenfailed."
     ERR_CODE = "FORMATION_TOKEN_FAILURE"

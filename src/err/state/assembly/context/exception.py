@@ -1,7 +1,7 @@
-# src/err/operation/assembly/context/exception.py
+# src/err/state/assembly/context/exception.py
 
 """
-Module: err.operation.assembly.context.exception
+Module: err.state.assembly.context.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1

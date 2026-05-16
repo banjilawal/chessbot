@@ -1,13 +1,13 @@
-# src/err/operation/push/duplicate/__init__.py
+# src/err/state/push/duplicate/__init__.py
 
 """
-Module: err.operation.push.duplicate.__init__
+Module: err.state.push.duplicate.__init__
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
 """
 
-# ============ ERR.OPERATION.PUSH.DUPLICATE PACKAGE ===========#
+# ============ ERR.STATE.PUSH.DUPLICATE PACKAGE ===========#
 
 # Packages
 from .arena import *

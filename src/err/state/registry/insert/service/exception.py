@@ -1,7 +1,7 @@
-# src/err/operation/registry/insert/service/exception.py
+# src/err/state/registry/insert/service/exception.py
 
 """
-Module: err.operation.registry.insert.service.exception
+Module: err.state.registry.insert.service.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1

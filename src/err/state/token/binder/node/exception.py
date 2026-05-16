@@ -1,7 +1,7 @@
-# src/err/operation/token/binder/node/exception.py
+# src/err/state/token/binder/node/exception.py
 
 """
-Module: err.operation.token.binder.node.exception
+Module: err.state.token.binder.node.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -9,19 +9,19 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import TokenOperationException
+from err import TokenStateException
 
 
 __all__ = [
     # ======================# NODE_BINDER_TOKEN_FAILURE #======================#
-    "NodeBinderTokenOperationException",
+    "NodeBinderTokenStateException",
 ]
 
-from err import BinderTokenOperationException
+from err import BinderTokenStateException
 
 
 # ======================# NODE_BINDER_TOKEN_FAILURE #======================#
-class NodeBinderTokenOperationException(BinderTokenOperationException):
+class NodeBinderTokenStateException(BinderTokenStateException):
     """
     Role:
         -   Error Tracing
@@ -41,7 +41,7 @@ class NodeBinderTokenOperationException(BinderTokenOperationException):
     Provides:
 
     Super Class:
-        BinderTokenOperationException
+        BinderTokenStateException
     """
     MSG = "NodeBinder tokenfailed."
     ERR_CODE = "NODE_BINDER_TOKEN_FAILURE"

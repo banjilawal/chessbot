@@ -1,7 +1,7 @@
-# src/err/search/opening/exception.py
+# src/err/search/square/opening/exception.py
 
 """
-Module: err.search.opening.searchException
+Module: err.search.square.opening.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -11,21 +11,22 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from err import SquareSearchException
+from result import MethodResultType
 
 
 __all__ = [
-    # ======================# OPENING_SEARCH_FAILURE #======================#
+    # ======================# OPENING_SEARCH_ERROR #======================#
     "OpeningSquareSearchException",
 ]
 
-# ======================# OPENING_SEARCH_FAILURE #======================#
+# ======================# OPENING_SEARCH_ERROR #======================#
 class OpeningSquareSearchException(SquareSearchException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an OpeningSquareSearch experienced an error.
+        1.  Indicate that an error occurred during an OpeningSquare search.
 
     Attributes:
         msg: Optional[str]
@@ -41,18 +42,19 @@ class OpeningSquareSearchException(SquareSearchException):
     Super Class:
         SquareSearchException
     """
-    MSG = "Opening error state."
-    ERR_CODE = "OPENING_SEARCH_FAILURE"
+    MSG = "an error occurred during a OpeningSquare search."
+    ERR_CODE = "OPENING_SEARCH_ERROR"
     
     def __init__(
             self,
             msg: Optional[str] | None = None,
             var: Optional[str] | None = None,
             val: Optional[Any] | None = None,
-            ex: Optional[Exception] | None = None,
-            cls_name: Optional[str] | None = None,
             cls_mthd: Optional[str] | None = None,
+            cls_name: Optional[str] | None = None,
+            ex: Optional[Exception] | None = None,
             err_code: Optional[str] | None = None,
+            mthd_rslt_type: Optional[MethodResultType] | None = None,
     ):
         """
         Args:
@@ -63,9 +65,11 @@ class OpeningSquareSearchException(SquareSearchException):
             cls_name: Optional[str]
             cls_mthd: Optional[str]
             err_code: Optional[str]
+            mthd_rslt_type: Optional[MTHD_RSLT_TYPE]
         """
         msg = msg or self.MSG
         err_code = err_code or self.ERR_CODE
+        mthd_rslt_type = mthd_rslt_type or self.MTHD_RSLT_TYPE
         super().__init__(
             ex=ex,
             msg=msg,
@@ -74,4 +78,6 @@ class OpeningSquareSearchException(SquareSearchException):
             err_code=err_code,
             cls_name=cls_name,
             cls_mthd=cls_mthd,
+            mthd_rslt_type=mthd_rslt_type
         )
+

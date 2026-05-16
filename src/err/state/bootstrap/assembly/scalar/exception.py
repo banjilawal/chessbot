@@ -1,4 +1,4 @@
-# src/err/operation/bootstrap/assembly/scalar/exception.py
+# src/err/state/bootstrap/assembly/scalar/exception.py
 
 """
 Module: err.bootstrap.assembly.scalar.exception

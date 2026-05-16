@@ -14,18 +14,18 @@ from err import PlayerSearchException
 
 
 __all__ = [
-    # ======================# HUMAN_PLAYER_SEARCH_FAILURE #======================#
+    # ======================# HUMAN_PLAYER_SEARCH_ERROR #======================#
     "HumanPlayerSearchException",
 ]
 
-# ======================# HUMAN_PLAYER_SEARCH_FAILURE #======================#
+# ======================# HUMAN_PLAYER_SEARCH_ERROR #======================#
 class HumanPlayerSearchException(PlayerSearchException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a HumanPlayerSearch experienced an error.
+        1.  Indicate that a HumanPlayer search.
 
     Attributes:
         msg: Optional[str]
@@ -42,7 +42,7 @@ class HumanPlayerSearchException(PlayerSearchException):
         PlayerSearchException
     """
     MSG = "HumanPlayer error state."
-    ERR_CODE = "HUMAN_PLAYER_SEARCH_FAILURE"
+    ERR_CODE = "HUMAN_PLAYER_SEARCH_ERROR"
     
     def __init__(
             self,

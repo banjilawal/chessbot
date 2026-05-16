@@ -1,7 +1,7 @@
-# src/err/operation/validation/node/exception.py
+# src/err/state/validation/node/exception.py
 
 """
-Module: err.operation.validation.node.exception
+Module: err.state.validation.node.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1

@@ -1,7 +1,7 @@
-# src/err/operation/validation/formation/exception.py
+# src/err/state/validation/formation/exception.py
 
 """
-Module: err.operation.validation.formation.exception
+Module: err.state.validation.formation.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1

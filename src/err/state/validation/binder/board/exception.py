@@ -1,7 +1,7 @@
 # src/err/validation/binder/board/exception.py
 
 """
-Module: err.operation.validation.binder.board.exception
+Module: err.state.validation.binder.board.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1

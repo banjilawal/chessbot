@@ -13,12 +13,12 @@ from err import EmptySearchException
 
 
 __all__ = [
-    # ======================# SQUARE_NOT_FOUND_SEARCH_FAILURE #======================#
+    # ======================# SQUARE_NOT_FOUND_SEARCH_ERROR #======================#
     "SquareNotFoundSearchException",
 ]
 
 
-# ======================# SQUARE_NOT_FOUND_SEARCH_FAILURE #======================#
+# ======================# SQUARE_NOT_FOUND_SEARCH_ERROR #======================#
 class SquareNotFoundSearchException(EmptySearchException):
     """
     Role:
@@ -42,7 +42,7 @@ class SquareNotFoundSearchException(EmptySearchException):
         NotFoundSearchException
     """
     MSG = "Square was not found."
-    ERR_CODE = "SQUARE_NOT_FOUND_SEARCH_FAILURE"
+    ERR_CODE = "SQUARE_NOT_FOUND_SEARCH_ERROR"
     
     def __init__(
             self,

@@ -1,7 +1,7 @@
-# src/err/operation/token/binder/rank/exception.py
+# src/err/state/token/binder/rank/exception.py
 
 """
-Module: err.operation.token.binder.rank.exception
+Module: err.state.token.binder.rank.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -9,19 +9,19 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import TokenOperationException
+from err import TokenStateException
 
 
 __all__ = [
     # ======================# RANK_BINDER_TOKEN_FAILURE #======================#
-    "RankBinderTokenOperationException",
+    "RankBinderTokenStateException",
 ]
 
-from err import BinderTokenOperationException
+from err import BinderTokenStateException
 
 
 # ======================# RANK_BINDER_TOKEN_FAILURE #======================#
-class RankBinderTokenOperationException(BinderTokenOperationException):
+class RankBinderTokenStateException(BinderTokenStateException):
     """
     Role:
         -   Error Tracing
@@ -41,7 +41,7 @@ class RankBinderTokenOperationException(BinderTokenOperationException):
     Provides:
 
     Super Class:
-        BinderTokenOperationException
+        BinderTokenStateException
     """
     MSG = "RankBinder tokenfailed."
     ERR_CODE = "RANK_BINDER_TOKEN_FAILURE"

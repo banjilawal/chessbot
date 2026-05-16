@@ -1,15 +1,15 @@
-# src/err/operation/token/context/square/__init__.py
+# src/err/state/token/context/square/__init__.py
 
 """
-Module: err.operation.token.context.square.__init__
+Module: err.state.token.context.square.__init__
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
 """
 
-# =========== ERR.OPERATION.TOKEN.CONTEXT.SQUARE PACKAGE ===========#
+# =========== ERR.STATE.TOKEN.CONTEXT.SQUARE PACKAGE ===========#
 
 # Packages
 
 # Modules
-from .exception import SquareContextTokenOperationException
+from .exception import SquareContextTokenStateException

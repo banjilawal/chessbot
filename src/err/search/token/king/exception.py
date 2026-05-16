@@ -14,18 +14,18 @@ from err import TokenSearchException
 
 
 __all__ = [
-    # ======================# KING_TOKEN_SEARCH_FAILURE #======================#
+    # ======================# KING_TOKEN_SEARCH_ERROR #======================#
     "KingTokenSearchException",
 ]
 
-# ======================# KING_TOKEN_SEARCH_FAILURE #======================#
+# ======================# KING_TOKEN_SEARCH_ERROR #======================#
 class KingTokenSearchException(TokenSearchException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a KingTokenSearch experienced an error.
+        1.  Indicate that a KingToken search.
 
     Attributes:
         msg: Optional[str]
@@ -42,7 +42,7 @@ class KingTokenSearchException(TokenSearchException):
         TokenSearchException
     """
     MSG = "KingToken error state."
-    ERR_CODE = "KING_TOKEN_SEARCH_FAILURE"
+    ERR_CODE = "KING_TOKEN_SEARCH_ERROR"
     
     def __init__(
             self,
