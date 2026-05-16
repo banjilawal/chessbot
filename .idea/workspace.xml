@@ -5,8 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/src/route/search/square/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/route/search/square/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/route/search/square/router.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/route/search/square/router.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validation/query/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/validation/query/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validation/query/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/validation/query/validator.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,7 +57,7 @@
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "main",
-    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/err/state/token/token/board",
+    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/validation",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
@@ -68,11 +68,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/validation" />
       <recent name="$PROJECT_DIR$/src/err/state/token/token/board" />
       <recent name="$PROJECT_DIR$/src/err" />
       <recent name="$PROJECT_DIR$/src/err/operation/token/deployment/duplicate" />
       <recent name="$PROJECT_DIR$/src/err/operation" />
-      <recent name="$PROJECT_DIR$/src/validation/token" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/err/state/token" />
@@ -1091,6 +1091,11 @@
           <url>file://$PROJECT_DIR$/src/route/search/__init__.py</url>
           <line>13</line>
           <option name="timeStamp" value="171" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/validation/__init__.py</url>
+          <line>12</line>
+          <option name="timeStamp" value="172" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

@@ -1,10 +1,10 @@
-# src/logic/token/database/search/context/service/operation/validation/validator.py
+# src/validation/query/token/validator.py
 
 """
-Module: logic.token.database.search.context.service.operation.validation.validator
+Module: validation.query.token.validator
 Author: Banji Lawal
-Created: 2025-10-03
-version: 1.0.0
+Created: 2026-04-03
+version: 1.0.1
 """
 
 from __future__ import annotations

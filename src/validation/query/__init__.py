@@ -1,15 +1,15 @@
-# src/validation/scalar/__init__.py
+# src/validation/query/__init__.py
 
 """
-Module: validation.scalar.__init__
+Module: validation.query.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
 """
 
-# =========== VALIDATION.SCALAR PACKAGE ===========#
+# =========== VALIDATION.QUERY PACKAGE ===========#
 
 # Packages
+from .token import *
 
 # Modules
-from .operation import ScalarValidator
