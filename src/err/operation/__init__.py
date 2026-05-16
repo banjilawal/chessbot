@@ -19,7 +19,7 @@ from .pop import *
 from .push import *
 from .registration import *
 from .registry import *
-from .registry import *
+from .token import *
 from .validation import *
 
 # Modules

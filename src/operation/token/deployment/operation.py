@@ -13,15 +13,9 @@ from _ast import List
 from copy import deepcopy
 from typing import cast
 
-from logic.square import Square, SquareContext, SquareNotFoundException, SquareOccupiedException
-from util import LoggingLevelRouter, SearchResult, UpdateResult
-from model.token import (
-    InconsistentTokenCoordException, InconsistentTokenSquareException, Token, TokenAlreadyDeployedException,
-    TokenBoardState, TokenDeploymentException, TokenValidator
-)
 
 
-class TokenDeployer:
+class TokenDeployer(Operation[Token]):
     """
     Role:
         - Transaction Worker
@@ -81,7 +75,8 @@ class TokenDeployer:
             TokenAlreadyDeployedException
         """
         method = f"{cls.__class__.__name__}.deploy_on_board"
-        # Handle the case that, the tokenis not safe.
+        
+        # Handle the case that, the token is not safe.
         token_validation = token_validator.validate(token)
         if token_validation.is_failure:
             # Send the exception chain on failure.
