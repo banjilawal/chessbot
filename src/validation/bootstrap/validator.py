@@ -28,7 +28,7 @@ class ValidatorBootstrapper(Validator[T]):
         -   Bootstrap
 
     Responsibilities:
-        1.  Run existence and type checks on all validation candidates.
+        1.  Run existence and type checks which are common to all validation candidates.
         2.  Encapsulate common, validation starting logic.
 
     Attributes:
@@ -54,7 +54,7 @@ class ValidatorBootstrapper(Validator[T]):
             null_exception: NullException,
     ) -> ValidationResult[T]:
         """
-        Verify that the target_model's safety checks can be run on an object. .
+        Verify that the target_model's safety checks can be run on an object.
 
         Action:
             1.  Send an exception chain in the ValidationResult any of the cases occur:

@@ -8,14 +8,15 @@ version: 1.0.1
 """
 
 from __future__ import annotations
-
 from typing import Any, cast
 
-from err import ContextNullException, ContextValidationException, ZeroContextFlagsException
 from model import Context
 from result import ValidationResult
 from util import LoggingLevelRouter
 from validation import Validator, ValidatorBootstrapper
+from err import (
+    ContextNullException, ContextValidationException, ExcessContextFlagsException, ZeroContextFlagsException
+)
 
 
 class BootstrapContextValidator(Validator[Context]):
@@ -27,15 +28,20 @@ class BootstrapContextValidator(Validator[Context]):
         -   Process Runner
 
     Responsibilities:
-        1.  Ensure a BootstrapContext instance is certified safe, reliable and consistent before use.
+        1.  Run checks for
+                -   existence
+                -   type
+                -   Flag count
+            checks which are common to all Context validation candidates.
 
     Attributes:
 
     Provides:
         -   def validate(
-                    rank: Any,
-                    workers: BootstrapContextIntegrityWorkers,
-            ) -> BuildResult[Context]:
+                    target_context_model: Context,
+                    null_exception: ContextNullException,
+                    validator_bootstrapper: ValidatorBootstrapper,
+            ) -> ValidationResult[Context]:
 
     Super Class:
         Validator
@@ -46,38 +52,35 @@ class BootstrapContextValidator(Validator[Context]):
             cls,
             candidate: Any,
             target_context_model: Context,
-            null_exception: ContextNullException,
+            null_exception: ContextNullException | None = None,
             validator_bootstrapper: ValidatorBootstrapper | None = None,
     ) -> ValidationResult[Context]:
         """
-        Certify a rank is a BootstrapContext that is safe to use.
+        Run tests that are common to Context subclasses
 
         Action:
             1.  Send an exception chain in the ValidationResult if any of the following
                 occur
-                    -   The rank is null.
-                    -   The rank is not a BootstrapContext.
-                    -   It has no attributes enabled.
-                    -   It has more than one attribute enabled.
-                    -   The enabled attribute fails a safety check.
-                    -   There is no validation path for the attribute.
+                    -   A validator_bootstrapper test fails.
+                    -   Exactly one attribute is not enabled.
             2.  Otherwise, send the success result.
         Args:
-            candidate: Any,
-            workers: BootstrapContextIntegrityWorkers
+            candidate: Any
+            target_context_model: Context
+            null_exception: ContextNullException
+            validator_bootstrapper: ValidatorBootstrapper
         Returns:
-            ValiationResult[Context]
+            ValidationResult[Context]
         Raises:
-            TypeError
-            NullBootstrapContextException
-            ZeroBootstrapContextFlagsException
-            BootstrapContextValidationException
-            ExcessBootstrapContextFlagsException
-            TeamContextValidationRouteException
+            ContextValidationException
+            ZeroContextFlagsException
+            ExcessContextFlagsException
         """
         method = f"{cls.__name__}.validate"
         
         # --- Supply any missing dependencies. ---#
+        if null_exception is None:
+            null_exception = ContextNullException()
         if validator_bootstrapper is None:
             validator_bootstrapper = ValidatorBootstrapper()
         
@@ -98,7 +101,7 @@ class BootstrapContextValidator(Validator[Context]):
                     ex=validation_bootstrap_result.exception,
                 )
             )
-        # --- Cast the candidate into the targeted Context subclass for additional tests. ---#
+        # --- Cast the candidate into the expected Context subclass for additional tests. ---#
         context = cast(target_context_model, candidate)
 
         # Handle the case of searching with no attribute-value provided.
@@ -127,9 +130,9 @@ class BootstrapContextValidator(Validator[Context]):
                     cls_name=cls.__name__,
                     msg=ContextValidationException.MSG,
                     err_code=ContextValidationException.ERR_CODE,
-                    ex=ZeroContextFlagsException(
+                    ex=ExcessContextFlagsException(
                         msg=f"{target_context_model.__class__.__name__} has more than one flag enabled.",
-                        err_code=ZeroContextFlagsException.ERR_CODE,
+                        err_code=ExcessContextFlagsException.ERR_CODE,
                         var=target_context_model.__class__.__name__
                     ),
                 )
