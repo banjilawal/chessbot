@@ -11,14 +11,15 @@ from __future__ import annotations
 
 from typing import List
 
-from model import Formation, OpeningSquare, Square, Token
+from err import SquareSearchException
+from model import Board, Coord, Formation, OpeningSquare, Square, SquareState, Token
 from model.query import SquareQuery
 from result import SearchResult
 from route import SearchRouter
-from system import LoggingLevelRouter
+from util import LoggingLevelRouter
 
 
-class TokenSearchRouter(SearchRouter[Token]):
+class SquareSearchRouter(SearchRouter[Square]):
     """
     Role:SearchRouter
 
@@ -44,7 +45,7 @@ class TokenSearchRouter(SearchRouter[Token]):
             cls,
             query: SquareQuery,
             query_validator: SquareQueryValidator | None = None,
-    ) -> SearchResult[List[Token]]:
+    ) -> SearchResult[List[Square]]:
             """
             # ACTION:
             1.  If the collider_candidates is null or the wrong type send the exception in the SearchResult.
@@ -93,23 +94,41 @@ class TokenSearchRouter(SearchRouter[Token]):
             # --- Route to the search method which matches the context key. ---#
             
             # Entry point into searching by square's id.
-            if context.id is not None:
-                return cls._find_by_id(dataset, context.id)
+            if query.context.id is not None:
+                return cls._find_by_id(dataset=query.stack, id=query.context.id)
+            
             # Entry point into searching by arena square is playing in.
-            if context.arena is not None:
-                return cls._find_by_arena(dataset=dataset, arena=context.arena)
-            # Entry point into searching by square's owner.
-            if context.owner is not None:
-                return cls._find_by_player(dataset, context.owner)
-            # Entry point into searching by square's color.
-            if context.color is not None:
-                return cls._find_by_color(dataset=dataset, square=context.color)
+            if query.context.name is not None:
+                return cls._find_by_name(dataset=query.stack, name=query.context.name)
+            
+            # Entry point into searching by square's board.
+            if query.context.board is not None:
+                return cls._find_by_board(dataset=query.stack, board=query.context.board)
+            
+            # Entry point into searching by square's coord.
+            if query.context.coord is not None:
+                return cls._find_by_coord(dataset=query.stack, coord=query.context.coord)
+            
+            # Entry point into searching by square's occupant.
+            if query.context.occupant is not None:
+                return cls._find_by_occupant(dataset=query.stack, occupant=query.context.occupant)
+            
+            # Entry point into searching by opening square's formation.
+            if query.context.formation is not None:
+                return cls._find_by_formation(dataset=query.stack, coord=query.context.formation)
+            
+            # Entry point into searching by opening square's state.
+            if query.context.state is not None:
+                return cls._find_by_formation(dataset=query.stack, coord=query.context.state)
             
             # The default path is only reached when a context.key does not have a search route. Return
             # the exception chain.
             return SearchResult.failure(
                 SquareSearchException(
-                    msg=f"{method}: {SquareSearchException.ERR_CODE}",
+                    cls_mthd=method,
+                    cls_name=cls.__name__,
+                    msg=SquareSearchException.MSG,
+                    err_code=SquareSearchException.ERR_CODE,
                     ex=SquareSearchRouteException(f"{method}: {SquareSearchRouteException.ERR_CODE}")
                 )
             )
@@ -118,22 +137,8 @@ class TokenSearchRouter(SearchRouter[Token]):
         @LoggingLevelRouter.monitor
         def _find_by_id(cls, dataset: List[Square], id: int) -> SearchResult[List[Square]]:
             """
-            # ACTION:
-                1.  Get the Square with the matching id if it exists
-                2.  Multiple, unique matches in the result indicate that  a problem.
-            # PARAMETERS:
-                *   id (int)
-                *   collider_candidates (List[Player])
-            # RETURNS:
-                *   SearchResult[List[Square]] containing either:
-                        - On error: Exception , payload null
-                        - On searching a match: List[Square] in the payload.
-                        - On no matches found: Exception null, payload null
-            Raises:
-                *   SquareSearchException
+            Find squares which match the id. There should only be one.
             """
-            method = "SquareFinder._find_by_id"
-            
             matches = [square for square in dataset if square.id == id]
             # Handle the nothing found case.
             if len(matches) == 0:
@@ -143,23 +148,11 @@ class TokenSearchRouter(SearchRouter[Token]):
         
         @classmethod
         @LoggingLevelRouter.monitor
-        def _find_by_arena(cls, dataset: [Square], arena: Arena) -> SearchResult[List[Square]]:
+        def _find_by_name(cls, dataset: List[Square], name: str) -> SearchResult[List[Square]]:
             """
-            # ACTION:
-                1.  Get any squares which have entered the arena
-            # PARAMETERS:
-                *   arena (Arena)
-                *   collider_candidates (List[Player])
-            # RETURNS:
-                *   SearchResult[List[Square]] containing either:
-                        - On error: Exception , payload null
-                        - On searching a match: List[Square] in the payload.
-                        - On no matches found: Exception null, payload null
-            Raises:
-                *   SquareSearchException
+            Find squares which match the name. There should only be one.
             """
-            method = "SquareFinder._find_by_arena"
-            matches = [square for square in dataset if square.arena == arena]
+            matches = [square for square in dataset if square.name.upper()== name.upper()]
             # Handle the nothing found case.
             if len(matches) == 0:
                 return SearchResult.empty()
@@ -168,23 +161,11 @@ class TokenSearchRouter(SearchRouter[Token]):
         
         @classmethod
         @LoggingLevelRouter.monitor
-        def _find_by_player(cls, dataset: [Square], player: Player) -> SearchResult[List[Square]]:
+        def _find_by_board(cls, dataset: List[Square], board: Board) -> SearchResult[List[Square]]:
             """
-            # ACTION:
-                1.  Get any squares which have been played by the owner,
-            # PARAMETERS:
-                *   arena (Arena)
-                *   collider_candidates (List[Player])
-            # RETURNS:
-                *   SearchResult[List[Square]] containing either:
-                        - On error: Exception , payload null
-                        - On searching a match: List[Square] in the payload.
-                        - On no matches found: Exception null, payload null
-            Raises:
-                *   SquareSearchException
+            Find squares which match the board.
             """
-            method = "SquareFinder._find_by_player"
-            matches = [square for square in dataset if square.owner == player]
+            matches = [square for square in dataset if square.board == board]
             # Handle the nothing found case.
             if len(matches) == 0:
                 return SearchResult.empty()
@@ -193,53 +174,60 @@ class TokenSearchRouter(SearchRouter[Token]):
         
         @classmethod
         @LoggingLevelRouter.monitor
-        def _find_by_color(cls, dataset: List[Square], color: GameColor) -> SearchResult[List[Square]]:
+        def _find_by_coord(cls, dataset: List[Square], coord: Coord) -> SearchResult[List[Square]]:
             """
-            # ACTION:
-                1.  Get any squares which have been assigned the targeted color
-            # PARAMETERS:
-                *   arena (Arena)
-                *   collider_candidates (List[Player])
-            # RETURNS:
-                *   SearchResult[List[Square]] containing either:
-                        - On error: Exception , payload null
-                        - On searching a match: List[Square] in the payload.
-                        - On no matches found: Exception null, payload null
-            Raises:
-                *   SquareSearchException
+            Find squares which match the coord. There should only be one.
             """
-            method = "SquareFinder._find_by_color"
-            matches = [square for square in dataset if square.schema.color == color]
+            matches = [square for square in dataset if square.coord == coord]
             # Handle the nothing found case.
             if len(matches) == 0:
                 return SearchResult.empty()
             # Only other case
             return SearchResult.success(payload=matches)
 
+        @classmethod
+        @LoggingLevelRouter.monitor
+        def _find_by_occupant(cls, dataset: List[Square], occupant: Token) -> SearchResult[List[Square]]:
+            """
+            Find squares containing the occupant. There should only be one.
+            """
+            matches = [square for square in dataset if square.occupant == occupant]
+            # Handle the nothing found case.
+            if len(matches) == 0:
+                return SearchResult.empty()
+            # Only other case
+            return SearchResult.success(payload=matches)
+
+
+        @classmethod
+        @LoggingLevelRouter.monitor
+        def _find_by_state(cls, dataset: List[Square], state: SquareState) -> SearchResult[List[Square]]:
+            """
+            Find squares containing the occupant. There should only be one.
+            """
+            matches = [square for square in dataset if square.state == state]
+            # Handle the nothing found case.
+            if len(matches) == 0:
+                return SearchResult.empty()
+            # Only other case
+            return SearchResult.success(payload=matches)
 
         @classmethod
         @LoggingLevelRouter.monitor
         def _find_by_formation(
                 cls,
-                dataset: List[OpeningSquare],
+                dataset: List[Square],
                 formation: Formation
         ) -> SearchResult[List[OpeningSquare]]:
             """
-            # ACTION:
-                1.  Get any squares which have been assigned the targeted color
-            # PARAMETERS:
-                *   arena (Arena)
-                *   collider_candidates (List[Player])
-            # RETURNS:
-                *   SearchResult[List[Square]] containing either:
-                        - On error: Exception , payload null
-                        - On searching a match: List[Square] in the payload.
-                        - On no matches found: Exception null, payload null
-            Raises:
-                *   SquareSearchException
+            Find OpeningSquare instances which match the formation. There should only be one.
             """
-            method = "SquareFinder._find_by_color"
-            matches = [square for square in dataset if square.formation == formation]
+            matches = [
+                square for square in dataset if (
+                        isinstance(square, OpeningSquare) and 
+                        square.formation == formation
+                )
+            ]
             # Handle the nothing found case.
             if len(matches) == 0:
                 return SearchResult.empty()
