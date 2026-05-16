@@ -32,6 +32,7 @@ from .operand import *
 from .operation import *
 from .persona import *
 from .player import *
+from .query import *
 from .rank import *
 from .scalar import *
 from .schema import *
