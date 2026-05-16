@@ -10,7 +10,7 @@ version: 1.0.1
 from __future__ import annotations
 
 from microservice import BoardService, SchemaService, TeamService
-from validation.bootstrap import ValidationBootstrapper
+from validation.bootstrap import ValidatorBootstrapper
 from toolkit import Toolkit
 
 
@@ -45,7 +45,7 @@ class BoardTeamBinderToolkit(Toolkit):
             board_validator: BoardService | None = None,
             schema_service: SchemaService | None = None,
 
-            validation_bootstrapper: ValidationBootstrapper | None = None,
+            validation_bootstrapper: ValidatorBootstrapper | None = None,
     ):
         """
         Args:
@@ -76,5 +76,5 @@ class BoardTeamBinderToolkit(Toolkit):
 
     
     @property
-    def validation_bootstrapper(self) -> ValidationBootstrapper:
+    def validation_bootstrapper(self) -> ValidatorBootstrapper:
         return self._validation_bootstrapper

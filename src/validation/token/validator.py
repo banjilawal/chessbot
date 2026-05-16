@@ -48,6 +48,7 @@ class TokenValidator(Validator[Token]):
     def validate(
             cls,
             candidate: Any,
+            null_exception: TokenNullException | None = None,
             toolkit: TokenToolkit | None = None,
     ) -> ValidationResult[Token]:
         """
@@ -71,6 +72,9 @@ class TokenValidator(Validator[Token]):
         """
         method = f"{cls.__name__}.validate"
         
+        # --- Supply any missing dependencies. ---#
+        if null_exception is None:
+            null_exception = TokenNullException()
         if toolkit is None:
             toolkit = TokenToolkit()
         
@@ -92,7 +96,7 @@ class TokenValidator(Validator[Token]):
         validation_bootstrap_result = tools["validation_bootstrapper"].validate(
             candidate=candidate,
             target_model=Token,
-            null_exception=TokenNullException(),
+            null_exception=null_exception,
         )
         if validation_bootstrap_result.is_failure:
             # Send the exception chain on failure.

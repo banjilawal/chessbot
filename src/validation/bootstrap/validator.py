@@ -19,7 +19,7 @@ from err import NullException, ValidationBootstrapException
 T = TypeVar("T")
 
 
-class ValidationBootstrapper(Validator[T]):
+class ValidatorBootstrapper(Validator[T]):
     """
     Role
         -   Transaction Worker
@@ -43,6 +43,7 @@ class ValidationBootstrapper(Validator[T]):
     Super Class:
         Validator
     """
+    NAME = "validator_bootstrapper"
     
     @classmethod
     @LoggingLevelRouter.monitor

@@ -5,8 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/src/validation/query/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/validation/query/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/validation/query/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/validation/query/validator.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/validation/context/bootstrap/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/validation/context/bootstrap/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,7 +58,7 @@
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "main",
-    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/validation",
+    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/validation/context",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
@@ -68,18 +69,18 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/validation/context" />
+      <recent name="$PROJECT_DIR$/src/err/null" />
       <recent name="$PROJECT_DIR$/src/validation" />
       <recent name="$PROJECT_DIR$/src/err/state/token/token/board" />
       <recent name="$PROJECT_DIR$/src/err" />
-      <recent name="$PROJECT_DIR$/src/err/operation/token/deployment/duplicate" />
-      <recent name="$PROJECT_DIR$/src/err/operation" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/validation/query/token" />
       <recent name="$PROJECT_DIR$/src/err/state/token" />
       <recent name="$PROJECT_DIR$/src/controller" />
       <recent name="$PROJECT_DIR$/src/operation/token" />
       <recent name="$PROJECT_DIR$/src/analysis/relation/token" />
-      <recent name="$PROJECT_DIR$/src" />
     </key>
   </component>
   <component name="RunManager" selected="Python.operation">
