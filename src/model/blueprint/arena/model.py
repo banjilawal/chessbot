@@ -8,11 +8,14 @@ version: 1.0.1
 """
 
 from __future__ import annotations
+
+from dataclasses import dataclass
 from typing import Optional
 
+from err import ArenaNullException
 from model import Game, Blueprint, Arena
 
-
+@dataclass
 class ArenaBlueprint(Blueprint[Arena]):
     """
     Role:
@@ -22,36 +25,18 @@ class ArenaBlueprint(Blueprint[Arena]):
         1.  Provides values for instantiating a Arena object.
     
     Attributes:
-        id: int
+        id: Optional[int]
         game: Game
-    
+        model_type: Arena
+        null_exception: ArenaNullException
+        
     Provides:
     
     Super Class:
         Blueprint
     """
-    _id: int
-    _game: Game    
-    def __init__(
-            self,
-            game: Game,
-            id: Optional[int] | None = None,
-    ):
-        """
-        Args:
-            id: int
-            game: Game
-        """
-        super().__init__()
-        self._id = id
-        self._game = game
-        
-    @property
-    def id(self) -> Optional[int]:
-        return self._id
-
-    @property
-    def game(self) -> Game:
-        return self._game
-    
+    game: Game
+    id: Optional[int] | None = None
+    null_exception: ArenaNullException = ArenaNullException()
+    model_type: Arena = Arena
 

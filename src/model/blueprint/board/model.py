@@ -8,11 +8,13 @@ version: 1.0.1
 """
 
 from __future__ import annotations
+from dataclasses import dataclass
 from typing import Optional
 
+from err import BoardNullException
 from model import Arena, Blueprint, Board
 
-
+@dataclass
 class BoardBlueprint(Blueprint[Board]):
     """
     Role:
@@ -22,36 +24,18 @@ class BoardBlueprint(Blueprint[Board]):
         1.  Provides values for instantiating a Board object.
     
     Attributes:
-        id: int
+        id: Optional[int]
         arena: Arena
-    
+        model_type: Board
+        null_exception: BoardNullException
     Provides:
     
     Super Class:
         Blueprint
     """
-    _id: int
-    _arena: Arena    
-    def __init__(
-            self,
-            arena: Arena,
-            id: Optional[int] | None = None,
-    ):
-        """
-        Args:
-            id: int
-            arena: Arena
-        """
-        super().__init__()
-        self._id = id
-        self._arena = arena
-        
-    @property
-    def id(self) -> Optional[int]:
-        return self._id
-
-    @property
-    def arena(self) -> Arena:
-        return self._arena
+    arena: Arena
+    id: Optional[int] | None = None
+    null_exception: BoardNullException = BoardNullException()
+    model_type: Board = Board
     
 

@@ -8,11 +8,14 @@ version: 1.0.1
 """
 
 from __future__ import annotations
+
+from dataclasses import dataclass
 from typing import Optional
 
+from err import SquareNullException
 from model import Blueprint, Board, Coord, Formation, Square
 
-
+@dataclass
 class SquareBlueprint(Blueprint[Square]):
     """
     Role:
@@ -27,57 +30,18 @@ class SquareBlueprint(Blueprint[Square]):
         coord: Coord
         id: Optional[int]
         formation: Optional[Formation]
+        null_exception: SquareNullException
+        model_type: Square
         
     Provides:
 
      Super Class:
         Blueprint
      """
-    _name: str
-    _board: Board
-    _coord: Coord
-    _id: Optional[int]
-    _formation: Optional[Formation]
-    
-    def __init__(
-            self,
-            name: str,
-            board: Board,
-            coord: Coord,
-            id: Optional[int] | None = None,
-            formation: Optional[Formation] | None = None,
-    ):
-        """
-        Args:
-            name: str
-            board: Board
-            coord: Coord
-            id: Optional[int]
-            formation: Optional[Formation]
-        """
-        super().__init__()
-        self._id = id
-        self._name = name
-        self._board = board
-        self._coord = coord
-        formation = formation
-        
-    @property
-    def id(self) -> Optional[int]:
-        return self._id
-    
-    @property
-    def formation(self) -> Optional[Formation]:
-        return self._formation
-    
-    @property
-    def name(self) -> str:
-        return self._name
-    
-    @property
-    def board(self) -> Board:
-        return self._board
-    
-    @property
-    def coord(self) -> Coord:
-        return self._coord
+    name: str
+    board: Board
+    coord: Coord
+    id: Optional[int] | None = None
+    formation: Optional[Formation] | None = None
+    null_exception: SquareNullException = SquareNullException()
+    model_type: Square = Square

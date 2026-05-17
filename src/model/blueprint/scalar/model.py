@@ -8,10 +8,12 @@ version: 1.0.1
 """
 
 from __future__ import annotations
+from dataclasses import dataclass
 
+from err import ScalarNullException
 from model import Blueprint, Scalar
 
-
+@dataclass
 class ScalarBlueprint(Blueprint[Scalar]):
     """
     Role:
@@ -22,25 +24,13 @@ class ScalarBlueprint(Blueprint[Scalar]):
 
     Attributes:
         magnitude: int
-        
+        model_type: Scalar
+        null_exception: ScalarNullException
     Provides:
 
      Super Class:
         Blueprint
      """
-    _magnitude: int
-    
-    def __init__(
-            self,
-            magnitude: int,
-    ):
-        """
-        Args:
-            magnitude: Optional[int]
-        """
-        super().__init__()
-        self._magnitude = magnitude
-        
-    @property
-    def magnitude(self) -> int:
-        return self._magnitude
+    magnitude: int
+    model_type: Scalar = Scalar
+    null_exception: ScalarNullException = ScalarNullException()

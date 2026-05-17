@@ -8,11 +8,12 @@ version: 1.0.1
 """
 
 from __future__ import annotations
+from dataclasses import dataclass
 from typing import Optional
 
 from model import Blueprint, Node, Square
 
-
+@dataclass
 class NodeBlueprint(Blueprint[Node]):
     """
     Role:
@@ -25,41 +26,17 @@ class NodeBlueprint(Blueprint[Node]):
         square: Square
         priority: Optional[int]
         predecessor: Optional[Node]
+        null_exception: NodeNullException
+        model_type: Node
         
     Provides:
 
      Super Class:
         Blueprint
      """
-    _priority: int
-    _square: Square
-    _predecessor: Optional[Node]
-    
-    def __init__(
-            self, 
-            square: Square,
-            priority: Optional[int],
-            predecessor: Optional[Node] | None = None,
-    ):
-        """
-        Args:
-            square: Square
-            priority: Optional[int]
-            predecessor: Optional[Node]
-        """
-        super().__init__()
-        self._square = square
-        self._priority = priority
-        self._predecessor = predecessor
-
-    @property
-    def square(self) -> Square:
-        return self._square
-    
-    @property
-    def priority(self) -> int:
-        return self._priority
-    
-    @property
-    def predecessor(self) -> Optional[Node]:
-        return self._predecessor
+    priority: int
+    square: Square
+    predecessor: Optional[Node]
+    id: Optional[int] | None = None
+    null_exception: NodeNullException = NodeNullException()
+    model_type: Node = Node

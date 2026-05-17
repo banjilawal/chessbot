@@ -8,52 +8,39 @@ version: 1.0.1
 """
 
 from __future__ import annotations
+from dataclasses import dataclass
 from typing import Optional
 
 from microservice import TeamService
 from model import Blueprint, Board, Schema, BoardBinder
 
+@dataclass
+class BoardBinderBlueprint(Blueprint[BoardBinder]):
+    """
+    Role:
+        -   Container
 
-class BoardTeamBinderBlueprint(Blueprint[BoardBinder]):
-    _id: int
-    _board: Board
-    _schema: Schema
-    _team_service: TeamService
-    
-    def __init__(
-            self,
-            board: Board,
-            id: Optional[int] | None = None,
-            schema: Optional[Schema] | None = None,
-            team_service: TeamService | None = None
-    ):
-        """
-        Args:
-            id: int
-            board: Board
-            schema: Schema
-            team_service: TeamService
-        """
-        super().__init__()
-        self._id = id
-        self._board = board
-        self._schema = schema or Schema()
-        self._team_service = team_service or TeamService()
+    Responsibilities:
+        1.  Provides values for instantiating a BoardTeamBinder object.
+
+    Attributes:
+        id: Optional[int]
+        board: Board
+        schema: Schema
+        model_type: Orange
+        team_service: TeamService
+        null_exception: OrangeNullException
         
-    @property
-    def id(self) -> Optional[int]:
-        return self._id
-    
-    @property
-    def board(self) -> Board:
-        return self._board
-    
-    @property
-    def schema(self) -> Schema:
-        return self._schema
-    
-    @property
-    def team_service(self) -> TeamService:
-        return self._team_service
+    Provides:
+
+    Super Class:
+        Blueprint
+    """
+    board: Board
+    schema: Schema
+    id: Optional[int] | None = None
+    model_type: Orange = Orange
+    team_service: team_Service | None = PlayerService()
+    null_exception: OrangeNullException = OrangeNullException()
     
 

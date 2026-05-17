@@ -8,11 +8,14 @@ version: 1.0.1
 """
 
 from __future__ import annotations
+
+from dataclasses import dataclass
 from typing import Optional
 
+from err import RankNullException
 from model import Blueprint, Persona, Rank
 
-
+@dataclass
 class RankBlueprint(Blueprint[Rank]):
     """
     Role:
@@ -22,35 +25,17 @@ class RankBlueprint(Blueprint[Rank]):
         1.  Provides values for instantiating a Rank object.
 
     Attributes:
-        id: int
+        id: Optional[int]
         persona: Persona
+        model_type: Rank
+        null_exception: RankNullException
             
     Provides:
 
      Super Class:
         Blueprint
      """
-    _persona: Persona
-    _id: Optional[int]
-    
-    
-    def __init__(
-            self,
-            persona: Persona,
-            id: Optional[int] | None = None,
-    ):
-        """
-        Args:
-            id: int
-            persona: Persona
-        """
-        self._persona = persona
-        self._id = id
-        
-    @property
-    def persona(self) -> Persona:
-        return self._persona
-    
-    @property
-    def id(self) -> Optional[int]:
-        return self._id
+    persona: Persona
+    id: Optional[int] | None = None
+    null_exception: RankNullException = RankNullException()
+    model_type: Rank = Rank

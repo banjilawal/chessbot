@@ -5,14 +5,27 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/validation/context/bootstrap/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/validation/context/bootstrap/validator.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/toolkit/binder/board/toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/toolkit/binder/board/toolkit.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/validation/bootstrap/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/validation/bootstrap/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/validation/bootstrap/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/validation/bootstrap/validator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/validation/context/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/validation/context/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/validation/token/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/validation/token/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/blueprint/arena/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/blueprint/arena/model.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/blueprint/binder/arena/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/blueprint/binder/arena/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/blueprint/binder/arena/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/blueprint/binder/arena/model.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/blueprint/binder/board/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/blueprint/binder/board/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/blueprint/binder/board/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/blueprint/binder/board/model.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/blueprint/board/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/blueprint/board/model.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/blueprint/context/token/blueprint.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/blueprint/context/token/blueprint.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/blueprint/coord/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/blueprint/coord/model.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/blueprint/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/blueprint/model.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/blueprint/node/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/blueprint/node/model.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/blueprint/player/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/blueprint/player/model.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/blueprint/rank/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/blueprint/rank/model.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/blueprint/scalar/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/blueprint/scalar/model.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/blueprint/square/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/blueprint/square/model.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/blueprint/team/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/blueprint/team/model.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/blueprint/token/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/blueprint/token/model.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/blueprint/vector/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/blueprint/vector/model.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/assembly/binder/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/assembly/binder/operation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/bootstrap/assembly/binder/board/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/bootstrap/assembly/binder/board/operation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validation/context/token/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/validation/context/token/validator.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

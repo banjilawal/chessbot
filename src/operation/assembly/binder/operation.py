@@ -9,7 +9,7 @@ version: 1.0.0
 
 from __future__ import annotations
 
-from model.blueprint.binder.board.model import BoardTeamBinderBlueprint
+from model.blueprint.binder.board.model import BoardBinderBlueprint
 from system import BuildResult, Builder, LoggingLevelRouter
 from model.team import (
     BlackTeamHasWrongSchemaException, TeamBinder, TeamBinderBuildException,
@@ -24,7 +24,7 @@ class TeamTableBuilder(Builder[TeamBinder]):
     @LoggingLevelRouter.monitor
     def build(
             cls,
-            blueprint: BoardTeamBinderBlueprint,
+            blueprint: BoardBinderBlueprint,
             toolkit: TeamBinderToolkit | None = None,
     ) -> BuildResult[TeamBinder]:
         method = f"TeamBinderBuilder.build"

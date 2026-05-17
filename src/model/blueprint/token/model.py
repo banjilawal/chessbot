@@ -10,7 +10,9 @@ version: 1.0.1
 from __future__ import annotations
 
 from dataclasses import dataclass
+from typing import Optional
 
+from err import TokenNullException
 from model.catalog import Formation
 from model import Blueprint, OpeningSquare, Rank, Team, Token
 
@@ -25,20 +27,23 @@ class TokenBlueprint(Blueprint[Token]):
         1.  Provides values for instantiating a Token object.
 
     Attributes:
-        id: int
+        id: Optional[int]
         team: Team
         rank: Rank
         formation: Formation
         opening_square: OpeningSquare
-
+        null_exception: TokenNullException
+        model_type: Token
+        
     Provides:
 
      Super Class:
         Blueprint
      """
-    
     team: Team
     formation: Formation
-    id: int | None = None
-    rank: Rank | None = None
+    id: Optional[int] | None = None
+    rank: Optional[Rank] | None = None
     opening_square: OpeningSquare | None = None
+    null_exception: TokenNullException = TokenNullException()
+    model_type: Token = Token

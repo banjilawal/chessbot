@@ -8,13 +8,14 @@ version: 1.0.1
 """
 
 from __future__ import annotations
-
+from dataclasses import dataclass
 from typing import Optional
 
+from err import PlayerNullException
 from logic.engine import Engine
 from model import Blueprint, Player
 
-
+@dataclass
 class PlayerBlueprint(Blueprint[Player]):
     """
     Role:
@@ -24,44 +25,19 @@ class PlayerBlueprint(Blueprint[Player]):
         1.  Provides values for instantiating a Player object.
 
     Attributes:
-        id: int
+        id: Optional[int]
         name: str
         engine: Engine
-            
+        model_type: Player
+        null_exception: PlayerNullException
+        
     Provides:
 
      Super Class:
         Blueprint
      """
-    _id: Optional[int]
-    _name: Optional[str]
-    _engine: Optional[Engine]
-    
-    def __init__(
-            self,
-            id: Optional[int] | None = None,
-            name: Optional[str] | None = None,
-            engine: Optional[Engine] | None = None,
-    ):
-        """
-        Args:
-            id: int
-            name: str
-            engine: Engine
-        """
-        super().__init__()
-        self._id = id
-        self._name = name
-        self._engine = engine
-
-    @property
-    def id(self) -> Optional[int]:
-        return self._id
-    
-    @property
-    def name(self) -> Optional[str]:
-        return self._name
-    
-    @property
-    def engine(self) -> Optional[Engine]:
-        return self._engine
+    name: Optional[str]
+    engine: Optional[Engine]
+    id: Optional[int] | None = None
+    null_exception: PlayerNullException = PlayerNullException()
+    model_type: Player = Player

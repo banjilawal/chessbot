@@ -12,6 +12,8 @@ from __future__ import annotations
 from abc import ABC
 from typing import Generic, TypeVar
 
+from err import NullException
+
 T = TypeVar("T")
 
 class Blueprint(ABC, Generic[T]):
@@ -28,4 +30,5 @@ class Blueprint(ABC, Generic[T]):
     
     Super Class:
     """
-    pass
+    model_type: T
+    null_exception: NullException = NullException()

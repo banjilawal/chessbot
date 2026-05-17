@@ -25,4 +25,5 @@ class TokenContextBlueprint(Blueprint[TokenContext]):
     designation: Optional[str]
     current_position: Optional[Coord]
     opening_square_name: Optional[str]
+    null_exception: 
 

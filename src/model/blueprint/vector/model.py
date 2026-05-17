@@ -9,9 +9,12 @@ version: 1.0.1
 
 from __future__ import annotations
 
+from dataclasses import dataclass
+
+from err import VectorNullException
 from model import Blueprint, Vector
 
-
+@dataclass
 class VectorBlueprint(Blueprint[Vector]):
     """
     Role:
@@ -23,29 +26,15 @@ class VectorBlueprint(Blueprint[Vector]):
     Attributes:
         x: int
         y: int
+        model_type: Vector
+        null_exception: VectorNullException
             
     Provides:
 
      Super Class:
         Blueprint
      """
-    _x: int
-    _y: int
-    
-    def __init__(self, x: int, y: int,):
-        """
-        Args:
-            x: int
-            y: int
-        """
-        super().__init__()
-        self._x = int
-        self._y = int
-
-    @property
-    def x(self) -> int:
-        return self._x
-    
-    @property
-    def y(self) -> int:
-        return self._y
+    x: int
+    y: int
+    model_type: Vector = Vector
+    null_exception: VectorNullException = VectorNullException()

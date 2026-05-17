@@ -9,6 +9,8 @@ version: 1.0.1
 
 from __future__ import annotations
 
+from typing import Any
+
 from err import ZeroTokenContextFlagsException
 
 
@@ -39,7 +41,10 @@ class TokenContextValidator(Validator[TokenContext]):
     def validate(
             cls,
             candidate: Any,
-            workers: TokenContextIntegrityWorkers,
+            context_model: TokenContext | None = None,
+            toolkit: TokenToolkit | None = None,
+            null_exception: NullTokenContext | None = None,
+            conext_validator
     ) -> ValidationResult[TokenContext]:
         """
         Certify a rank is a TokenContext that is safe to use.

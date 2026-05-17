@@ -8,10 +8,12 @@ version: 1.0.1
 """
 
 from __future__ import annotations
+from dataclasses import dataclass
 
+from err import CoordNullException
 from model import Blueprint, Coord
 
-
+@dataclass
 class CoordBlueprint(Blueprint[Coord]):
     """
     Role:
@@ -23,29 +25,15 @@ class CoordBlueprint(Blueprint[Coord]):
     Attributes:
         row: int
         column: int
-
+        model_type: Coord
+        null_exception: CoordNullException
+        
     Provides:
 
      Super Class:
         Blueprint
      """
-    _row: int
-    _column: int
-    
-    def __init__(self, row: int, column: int,):
-        """
-        Args:
-            row: int
-            column: int
-        """
-        super().__init__()
-        self._row = int
-        self._column = int
-
-    @property
-    def row(self) -> int:
-        return self._row
-    
-    @property
-    def column(self) -> int:
-        return self._column
+    row: int
+    column: int
+    model_type: Coord = Coord
+    null_exception: CoordNullException = CoordNullException()

@@ -10,7 +10,7 @@ version: 1.0.0
 from __future__ import annotations
 
 from microservice import IdentityService, BoardTeamBinderService
-from model import Board, TeamBinderBinderBlueprint, BoardTeamBinderBlueprint
+from model import Board, TeamBinderBinderBlueprint, BoardBinderBlueprint
 from model.catalog import SchemaService
 from operation import AssemblyBootstrapper
 from result import ValidationResult
@@ -49,7 +49,7 @@ class TeamBinderBinderAssemblyBootstrapper(AssemblyBootstrapper[TeamBinderBinder
                 )
             )
         return ValidationResult.success(
-            BoardTeamBinderBlueprint(
+            BoardBinderBlueprint(
                 id=blueprint_validation_result.payload.id,
                 board=blueprint_validation_result.payload.board,
                 schema=blueprint_validation_result.payload.schema,
@@ -59,9 +59,9 @@ class TeamBinderBinderAssemblyBootstrapper(AssemblyBootstrapper[TeamBinderBinder
     @classmethod
     @LoggingLevelRouter.monitor
     def _run_validations(cls,
-            blueprint: BoardTeamBinderBlueprint,
+            blueprint: BoardBinderBlueprint,
             toolkit: TeamBinderToolkit,
-    ) -> ValidationResult[BoardTeamBinderBlueprint]:
+    ) -> ValidationResult[BoardBinderBlueprint]:
         """
         """
         method = f"{cls.__name__}._run_validations"
@@ -111,7 +111,7 @@ class TeamBinderBinderAssemblyBootstrapper(AssemblyBootstrapper[TeamBinderBinder
                 )
             )
         return ValidationResult.success(
-            BoardTeamBinderBlueprint(
+            BoardBinderBlueprint(
                 id=id_validation_result.payload,
                 schema=blueprint.schema,
                 board=blueprint.board,
