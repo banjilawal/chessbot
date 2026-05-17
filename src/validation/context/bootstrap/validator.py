@@ -19,7 +19,7 @@ from err import (
 )
 
 
-class BootstrapContextValidator(Validator[Context]):
+class ContextValidatorBootstrapper(Validator[Context]):
     """
     Role
         -   Transaction Worker

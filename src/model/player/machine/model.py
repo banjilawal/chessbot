@@ -9,6 +9,7 @@ version: 1.0.1
 
 from __future__ import annotations
 
+from engine import Engine
 from model import Player
 
 
@@ -36,7 +37,7 @@ class MachinePlayer(Player):
             self,
             id: int,
             name: str,
-            engine_service: EngineService = EngineService(),
+            engine: Engine,
             teams: UniqueTeamDataService = UniqueTeamDataService(),
     ):
         """

@@ -44,7 +44,7 @@ class TokenContextValidator(Validator[TokenContext]):
             context_model: TokenContext | None = None,
             toolkit: TokenToolkit | None = None,
             null_exception: NullTokenContext | None = None,
-            conext_validator
+            conext_validator:
     ) -> ValidationResult[TokenContext]:
         """
         Certify a rank is a TokenContext that is safe to use.

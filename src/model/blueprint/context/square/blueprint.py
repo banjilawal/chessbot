@@ -12,6 +12,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Optional
 
+from err import SquareContextNullException
 from model import Board, Coord, Formation, SquareContext, Blueprint, SquareState, Token
 
 
@@ -22,3 +23,5 @@ class SquareContextBlueprint(Blueprint[SquareContext]):
     occupant: Optional[Token] = None
     state: Optional[SquareState] = None
     formation: Optional[Formation] = None
+    null_exception = SquareContextNullException()
+    model_type = SquareContext

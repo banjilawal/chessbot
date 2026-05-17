@@ -12,6 +12,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Optional
 
+from err import CoordContextNullException
 from model import CoordContext, Blueprint, Game, Player
 
 
@@ -19,3 +20,5 @@ from model import CoordContext, Blueprint, Game, Player
 class CoordContextBlueprint(Blueprint[CoordContext]):
     row: Optional[int] = None
     column: Optional[int] = None
+    null_exception = CoordContextNullException()
+    model_type = CoordContext

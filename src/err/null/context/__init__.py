@@ -23,6 +23,7 @@ from .player import *
 from .rank import *
 from .schema import *
 from .square import *
+from .team import *
 from .token import *
 
 # Modules

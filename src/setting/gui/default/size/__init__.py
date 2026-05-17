@@ -14,5 +14,4 @@ from .font import *
 from .square import *
 from .window import *
 
-
 # Modules

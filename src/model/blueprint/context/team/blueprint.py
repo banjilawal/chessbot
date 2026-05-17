@@ -12,6 +12,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Optional
 
+from err import TeamContextNullException
 from model import Board, Blueprint, Player, Schema, TeamContext, TeamState
 
 
@@ -22,3 +23,5 @@ class TeamContextBlueprint(Blueprint[TeamContext]):
     player: Optional[Player] = None | None
     state: Optional[TeamState] = None | None
     schema: Optional[Schema] = None | None
+    null_exception = TeamContextNullException()
+    model_type = TeamContext

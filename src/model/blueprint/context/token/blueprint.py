@@ -12,8 +12,9 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Optional
 
+from err import TokenContextNullException
 from model import Coord, Rank, Team, TokenContext, Blueprint
-from system import GameColor
+from setting import GameColor
 
 
 @dataclass
@@ -25,5 +26,6 @@ class TokenContextBlueprint(Blueprint[TokenContext]):
     designation: Optional[str]
     current_position: Optional[Coord]
     opening_square_name: Optional[str]
-    null_exception: 
+    null_exception = TokenContextNullException()
+    model_type = TokenContext
 

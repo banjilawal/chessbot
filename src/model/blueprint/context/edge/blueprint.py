@@ -12,6 +12,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Optional
 
+from err import EdgeContextNullException
 from model import EdgeContext, Blueprint, Game, Node, Player
 
 
@@ -23,3 +24,5 @@ class EdgeContextBlueprint(Blueprint[EdgeContext]):
     weight: Optional[int] = None
     distance: Optional[int] = None
     heuristic: Optional[int] = None
+    null_exception = EdgeContextNullException()
+    model_type = EdgeContext

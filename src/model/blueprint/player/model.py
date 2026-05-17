@@ -11,8 +11,8 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Optional
 
+from engine import Engine
 from err import PlayerNullException
-from logic.engine import Engine
 from model import Blueprint, Player
 
 @dataclass

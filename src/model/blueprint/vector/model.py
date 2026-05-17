@@ -36,5 +36,5 @@ class VectorBlueprint(Blueprint[Vector]):
      """
     x: int
     y: int
-    model_type: Vector = Vector
-    null_exception: VectorNullException = VectorNullException()
+    model_type = Vector
+    null_exception = VectorNullException()

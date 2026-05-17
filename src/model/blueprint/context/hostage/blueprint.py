@@ -12,6 +12,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Optional
 
+from err import HostageContextNullException
 from model import HostageContext, Blueprint, Game, Player
 
 
@@ -21,3 +22,5 @@ class HostageContextBlueprint(Blueprint[HostageContext]):
     name: Optional[str] = None,
     player: Optional[Player] = None,
     game: Optional[Game] = None,
+    null_exception = HostageContextNullException()
+    model_type = HostageContext

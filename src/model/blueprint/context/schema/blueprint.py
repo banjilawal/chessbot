@@ -12,11 +12,14 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Optional
 
+from err import SchemaContextNullException
 from model import SchemaContext, Blueprint
-from system import GameColor
+from setting import GameColor
 
 
 @dataclass
 class SchemaContextBlueprint(Blueprint[SchemaContext]):
     name: Optional[str] = None
     color: Optional[GameColor] = None
+    null_exception = SchemaContextNullException()
+    model_type = SchemaContext

@@ -12,10 +12,14 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Optional
 
+from err import BoardContextNullException
 from model import Arena, BoardContext, Blueprint, Team
 
 
 @dataclass
 class BoardContextBlueprint(Blueprint[BoardContext]):
+    id: Optional[int] = None
     arena: Optional[Arena] = None
     team: Optional[Team] = None
+    null_exception = BoardContextNullException()
+    model_type = BoardContext
