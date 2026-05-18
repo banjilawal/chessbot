@@ -13,11 +13,11 @@ from typing import Any, Optional
 from err import NullException
 
 __all__ = [
-    # ======================# QUERY_NULL_EXCEPTION #======================#
+    # ======================# QUERY_NULL_ERROR #======================#
     "QueryNullException",
 ]
 
-# ======================# QUERY_NULL_EXCEPTION #======================#
+# ======================# QUERY_NULL_ERROR #======================#
 class QueryNullException(NullException):
     """
     Role:
@@ -41,7 +41,7 @@ class QueryNullException(NullException):
         NullException
     """
     MSG = "No null logic for query's attribute"
-    ERR_CODE = "QUERY_NULL_EXCEPTION"
+    ERR_CODE = "QUERY_NULL_ERROR"
     
     def __init__(
             self,

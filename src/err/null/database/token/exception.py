@@ -13,11 +13,11 @@ from typing import Any, Optional
 from err import DatabaseNullException
 
 __all__ = [
-    # ======================# TOKEN_DATABASE_NULL_EXCEPTION #======================#
+    # ======================# TOKEN_DATABASE_NULL_ERROR #======================#
     "TokenDatabaseNullException",
 ]
 
-# ======================# TOKEN_DATABASE_NULL_EXCEPTION #======================#
+# ======================# TOKEN_DATABASE_NULL_ERROR #======================#
 class TokenDatabaseNullException(DatabaseNullException):
     """
     Role:
@@ -41,7 +41,7 @@ class TokenDatabaseNullException(DatabaseNullException):
         DatabaseNullException
     """
     MSG = "TokenDatabase cannot be null."
-    ERR_CODE = "TOKEN_DATABASE_NULL_EXCEPTION"
+    ERR_CODE = "TOKEN_DATABASE_NULL_ERROR"
     
     def __init__(
             self,

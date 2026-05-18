@@ -13,12 +13,12 @@ from typing import Any, Optional
 from err import DependencyListNullException
 
 __all__ = [
-    # ======================# SERVICE_LIST_NULL_EXCEPTION #======================#
+    # ======================# SERVICE_LIST_NULL_ERROR #======================#
     "ServiceListNullException",
 ]
 
 
-# ======================# SERVICE_LIST_NULL_EXCEPTION #======================#
+# ======================# SERVICE_LIST_NULL_ERROR #======================#
 class ServiceListNullException(DependencyListNullException):
     """
     Role:
@@ -42,7 +42,7 @@ class ServiceListNullException(DependencyListNullException):
         DependencyListNullException
     """
     MSG = "ServiceList cannot be null."
-    ERR_CODE = "SERVICE_LIST_NULL_EXCEPTION"
+    ERR_CODE = "SERVICE_LIST_NULL_ERROR"
     
     def __init__(
             self,

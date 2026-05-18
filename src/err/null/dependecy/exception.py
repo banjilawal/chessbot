@@ -13,11 +13,11 @@ from typing import Any, Optional
 from err import NullException
 
 __all__ = [
-    # ======================# DEPENDENCY_LIST_NULL_EXCEPTION #======================#
+    # ======================# DEPENDENCY_LIST_NULL_ERROR #======================#
     "DependencyListNullException",
 ]
 
-# ======================# DEPENDENCY_LIST_NULL_EXCEPTION #======================#
+# ======================# DEPENDENCY_LIST_NULL_ERROR #======================#
 class DependencyListNullException(NullException):
     """
     Role:
@@ -41,7 +41,7 @@ class DependencyListNullException(NullException):
         NullException
     """
     MSG = "DependencyList cannot be null."
-    ERR_CODE = "DEPENDENCY_LIST_NULL_EXCEPTION"
+    ERR_CODE = "DEPENDENCY_LIST_NULL_ERROR"
     
     def __init__(
             self,

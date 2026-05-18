@@ -13,11 +13,11 @@ from typing import Any, Optional
 from err import NullException
 
 __all__ = [
-    # ======================# SQUARE_NULL_EXCEPTION #======================#
+    # ======================# SQUARE_NULL_ERROR #======================#
     "SquareNullException",
 ]
 
-# ======================# SQUARE_NULL_EXCEPTION #======================#
+# ======================# SQUARE_NULL_ERROR #======================#
 class SquareNullException(NullException):
     """
     Role:
@@ -41,7 +41,7 @@ class SquareNullException(NullException):
         NullException
     """
     MSG = "Square cannot be null."
-    ERR_CODE = "SQUARE_NULL_EXCEPTION"
+    ERR_CODE = "SQUARE_NULL_ERROR"
     
     def __init__(
             self,

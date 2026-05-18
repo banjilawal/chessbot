@@ -13,11 +13,11 @@ from typing import Any, Optional
 from err import NullException
 
 __all__ = [
-    # ======================# NODE_NULL_EXCEPTION #======================#
+    # ======================# NODE_NULL_ERROR #======================#
     "NodeNullException",
 ]
 
-# ======================# NODE_NULL_EXCEPTION #======================#
+# ======================# NODE_NULL_ERROR #======================#
 class NodeNullException(NullException):
     """
     Role:
@@ -41,7 +41,7 @@ class NodeNullException(NullException):
         NullException
     """
     MSG = "Node cannot be null."
-    ERR_CODE = "NODE_NULL_EXCEPTION"
+    ERR_CODE = "NODE_NULL_ERROR"
     
     def __init__(
             self,

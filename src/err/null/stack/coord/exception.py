@@ -13,11 +13,11 @@ from typing import Any, Optional
 from err import StackNullException
 
 __all__ = [
-    # ======================# COORD_STACK_NULL_EXCEPTION #======================#
+    # ======================# COORD_STACK_NULL_ERROR #======================#
     "CoordStackNullException",
 ]
 
-# ======================# COORD_STACK_NULL_EXCEPTION #======================#
+# ======================# COORD_STACK_NULL_ERROR #======================#
 class CoordStackNullException(StackNullException):
     """
     Role:
@@ -41,7 +41,7 @@ class CoordStackNullException(StackNullException):
         StackNullException
     """
     MSG = "CoordStack cannot be null."
-    ERR_CODE = "COORD_STACK_NULL_EXCEPTION"
+    ERR_CODE = "COORD_STACK_NULL_ERROR"
     
     def __init__(
             self,

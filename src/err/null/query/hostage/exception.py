@@ -12,14 +12,14 @@ from typing import Any, Optional
 
 
 __all__ = [
-    # ======================# HOSTAGE_QUERY_NULL_EXCEPTION #======================#
+    # ======================# HOSTAGE_QUERY_NULL_ERROR #======================#
     "HostageQueryNullException",
 ]
 
 from err import QueryNullException
 
 
-# ======================# HOSTAGE_QUERY_NULL_EXCEPTION #======================#
+# ======================# HOSTAGE_QUERY_NULL_ERROR #======================#
 class HostageQueryNullException(QueryNullException):
     """
     Role:
@@ -43,7 +43,7 @@ class HostageQueryNullException(QueryNullException):
         QueryNullException
     """
     MSG = "No null logic for HostageQuery attribute"
-    ERR_CODE = "HOSTAGE_QUERY_NULL_EXCEPTION"
+    ERR_CODE = "HOSTAGE_QUERY_NULL_ERROR"
     
     def __init__(
             self,

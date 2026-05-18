@@ -13,11 +13,11 @@ from typing import Any, Optional
 from err import NullException
 
 __all__ = [
-    # ======================# BOARD_NULL_EXCEPTION #======================#
+    # ======================# BOARD_NULL_ERROR #======================#
     "BoardNullException",
 ]
 
-# ======================# BOARD_NULL_EXCEPTION #======================#
+# ======================# BOARD_NULL_ERROR #======================#
 class BoardNullException(NullException):
     """
     Role:
@@ -41,7 +41,7 @@ class BoardNullException(NullException):
         NullException
     """
     MSG = "Board cannot be null."
-    ERR_CODE = "BOARD_NULL_EXCEPTION"
+    ERR_CODE = "BOARD_NULL_ERROR"
     
     def __init__(
             self,

@@ -13,11 +13,11 @@ from typing import Any, Optional
 from err import ChessException
 
 __all__ = [
-    # ======================# NULL_EXCEPTION #======================#
+    # ======================# NULL_ERROR #======================#
     "NullException",
 ]
 
-# ======================# NULL_EXCEPTION #======================#
+# ======================# NULL_ERROR #======================#
 class NullException(ChessException):
     """
     Role:
@@ -41,7 +41,7 @@ class NullException(ChessException):
         ChessException
     """
     MSG = "Data-Holder is null."
-    ERR_CODE = "NULL_EXCEPTION"
+    ERR_CODE = "NULL_ERROR"
     
     def __init__(
             self,

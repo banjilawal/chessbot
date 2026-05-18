@@ -12,14 +12,14 @@ from typing import Any, Optional
 
 
 __all__ = [
-    # ======================# RANK_QUERY_NULL_EXCEPTION #======================#
+    # ======================# RANK_QUERY_NULL_ERROR #======================#
     "RankQueryNullException",
 ]
 
 from err import QueryNullException
 
 
-# ======================# RANK_QUERY_NULL_EXCEPTION #======================#
+# ======================# RANK_QUERY_NULL_ERROR #======================#
 class RankQueryNullException(QueryNullException):
     """
     Role:
@@ -43,7 +43,7 @@ class RankQueryNullException(QueryNullException):
         QueryNullException
     """
     MSG = "No null logic for RankQuery attribute"
-    ERR_CODE = "RANK_QUERY_NULL_EXCEPTION"
+    ERR_CODE = "RANK_QUERY_NULL_ERROR"
     
     def __init__(
             self,

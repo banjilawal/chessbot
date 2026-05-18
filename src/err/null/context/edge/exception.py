@@ -12,14 +12,14 @@ from typing import Any, Optional
 
 
 __all__ = [
-    # ======================# EDGE_CONTEXT_NULL_EXCEPTION #======================#
+    # ======================# EDGE_CONTEXT_NULL_ERROR #======================#
     "EdgeContextNullException",
 ]
 
 from err import ContextNullException
 
 
-# ======================# EDGE_CONTEXT_NULL_EXCEPTION #======================#
+# ======================# EDGE_CONTEXT_NULL_ERROR #======================#
 class EdgeContextNullException(ContextNullException):
     """
     Role:
@@ -43,7 +43,7 @@ class EdgeContextNullException(ContextNullException):
         ContextNullException
     """
     MSG = "No null logic for EdgeContext attribute"
-    ERR_CODE = "EDGE_CONTEXT_NULL_EXCEPTION"
+    ERR_CODE = "EDGE_CONTEXT_NULL_ERROR"
     
     def __init__(
             self,

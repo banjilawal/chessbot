@@ -13,11 +13,11 @@ from typing import Any, Optional
 from err import DatabaseNullException
 
 __all__ = [
-    # ======================# COORD_DATABASE_NULL_EXCEPTION #======================#
+    # ======================# COORD_DATABASE_NULL_ERROR #======================#
     "CoordDatabaseNullException",
 ]
 
-# ======================# COORD_DATABASE_NULL_EXCEPTION #======================#
+# ======================# COORD_DATABASE_NULL_ERROR #======================#
 class CoordDatabaseNullException(DatabaseNullException):
     """
     Role:
@@ -41,7 +41,7 @@ class CoordDatabaseNullException(DatabaseNullException):
         DatabaseNullException
     """
     MSG = "CoordDatabase cannot be null."
-    ERR_CODE = "COORD_DATABASE_NULL_EXCEPTION"
+    ERR_CODE = "COORD_DATABASE_NULL_ERROR"
     
     def __init__(
             self,

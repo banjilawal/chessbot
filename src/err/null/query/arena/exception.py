@@ -12,14 +12,14 @@ from typing import Any, Optional
 
 
 __all__ = [
-    # ======================# ARENA_QUERY_NULL_EXCEPTION #======================#
+    # ======================# ARENA_QUERY_NULL_ERROR #======================#
     "ArenaQueryNullException",
 ]
 
 from err import QueryNullException
 
 
-# ======================# ARENA_QUERY_NULL_EXCEPTION #======================#
+# ======================# ARENA_QUERY_NULL_ERROR #======================#
 class ArenaQueryNullException(QueryNullException):
     """
     Role:
@@ -43,7 +43,7 @@ class ArenaQueryNullException(QueryNullException):
         QueryNullException
     """
     MSG = "No null logic for ArenaQuery attribute"
-    ERR_CODE = "ARENA_QUERY_NULL_EXCEPTION"
+    ERR_CODE = "ARENA_QUERY_NULL_ERROR"
     
     def __init__(
             self,

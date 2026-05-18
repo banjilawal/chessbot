@@ -13,11 +13,11 @@ from typing import Any, Optional
 from err import NullException
 
 __all__ = [
-    # ======================# PLAYER_NULL_EXCEPTION #======================#
+    # ======================# PLAYER_NULL_ERROR #======================#
     "PlayerNullException",
 ]
 
-# ======================# PLAYER_NULL_EXCEPTION #======================#
+# ======================# PLAYER_NULL_ERROR #======================#
 class PlayerNullException(NullException):
     """
     Role:
@@ -41,7 +41,7 @@ class PlayerNullException(NullException):
         NullException
     """
     MSG = "Player cannot be null."
-    ERR_CODE = "PLAYER_NULL_EXCEPTION"
+    ERR_CODE = "PLAYER_NULL_ERROR"
     
     def __init__(
             self,

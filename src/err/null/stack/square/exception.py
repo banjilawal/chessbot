@@ -13,11 +13,11 @@ from typing import Any, Optional
 from err import StackNullException
 
 __all__ = [
-    # ======================# SQUARE_STACK_NULL_EXCEPTION #======================#
+    # ======================# SQUARE_STACK_NULL_ERROR #======================#
     "SquareStackNullException",
 ]
 
-# ======================# SQUARE_STACK_NULL_EXCEPTION #======================#
+# ======================# SQUARE_STACK_NULL_ERROR #======================#
 class SquareStackNullException(StackNullException):
     """
     Role:
@@ -41,7 +41,7 @@ class SquareStackNullException(StackNullException):
         StackNullException
     """
     MSG = "SquareStack cannot be null."
-    ERR_CODE = "SQUARE_STACK_NULL_EXCEPTION"
+    ERR_CODE = "SQUARE_STACK_NULL_ERROR"
     
     def __init__(
             self,

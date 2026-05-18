@@ -13,11 +13,11 @@ from typing import Any, Optional
 from err import StackNullException
 
 __all__ = [
-    # ======================# TOKEN_STACK_NULL_EXCEPTION #======================#
+    # ======================# TOKEN_STACK_NULL_ERROR #======================#
     "TokenStackNullException",
 ]
 
-# ======================# TOKEN_STACK_NULL_EXCEPTION #======================#
+# ======================# TOKEN_STACK_NULL_ERROR #======================#
 class TokenStackNullException(StackNullException):
     """
     Role:
@@ -41,7 +41,7 @@ class TokenStackNullException(StackNullException):
         StackNullException
     """
     MSG = "TokenStack cannot be null."
-    ERR_CODE = "TOKEN_STACK_NULL_EXCEPTION"
+    ERR_CODE = "TOKEN_STACK_NULL_ERROR"
     
     def __init__(
             self,

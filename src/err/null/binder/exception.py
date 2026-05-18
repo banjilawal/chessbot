@@ -13,11 +13,11 @@ from typing import Any, Optional
 from err import NullException
 
 __all__ = [
-    # ======================# BINDER_NULL_EXCEPTION #======================#
+    # ======================# BINDER_NULL_ERROR #======================#
     "BinderNullException",
 ]
 
-# ======================# BINDER_NULL_EXCEPTION #======================#
+# ======================# BINDER_NULL_ERROR #======================#
 class BinderNullException(NullException):
     """
     Role:
@@ -41,7 +41,7 @@ class BinderNullException(NullException):
         NullException
     """
     MSG = "Binder cannot be null"
-    ERR_CODE = "BINDER_NULL_EXCEPTION"
+    ERR_CODE = "BINDER_NULL_ERROR"
     
     def __init__(
             self,

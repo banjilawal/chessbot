@@ -13,11 +13,11 @@ from typing import Any, Optional
 from err import StackNullException
 
 __all__ = [
-    # ======================# NODE_STACK_NULL_EXCEPTION #======================#
+    # ======================# NODE_STACK_NULL_ERROR #======================#
     "NodeStackNullException",
 ]
 
-# ======================# NODE_STACK_NULL_EXCEPTION #======================#
+# ======================# NODE_STACK_NULL_ERROR #======================#
 class NodeStackNullException(StackNullException):
     """
     Role:
@@ -41,7 +41,7 @@ class NodeStackNullException(StackNullException):
         StackNullException
     """
     MSG = "NodeStack cannot be null."
-    ERR_CODE = "NODE_STACK_NULL_EXCEPTION"
+    ERR_CODE = "NODE_STACK_NULL_ERROR"
     
     def __init__(
             self,

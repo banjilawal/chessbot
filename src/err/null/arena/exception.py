@@ -14,11 +14,11 @@ from err import NullException
 
 
 __all__ = [
-    # ======================# ARENA_NULL_EXCEPTION #======================#
+    # ======================# ARENA_NULL_ERROR #======================#
     "ArenaNullException",
 ]
 
-# ======================# ARENA_NULL_EXCEPTION #======================#
+# ======================# ARENA_NULL_ERROR #======================#
 class ArenaNullException(NullException):
     """
     Role:
@@ -42,7 +42,7 @@ class ArenaNullException(NullException):
         NullException
     """
     MSG = "Arena cannot be null."
-    ERR_CODE = "ARENA_NULL_EXCEPTION"
+    ERR_CODE = "ARENA_NULL_ERROR"
     
     def __init__(
             self,

@@ -12,14 +12,14 @@ from typing import Any, Optional
 
 
 __all__ = [
-    # ======================# EDGE_QUERY_NULL_EXCEPTION #======================#
+    # ======================# EDGE_QUERY_NULL_ERROR #======================#
     "EdgeQueryNullException",
 ]
 
 from err import QueryNullException
 
 
-# ======================# EDGE_QUERY_NULL_EXCEPTION #======================#
+# ======================# EDGE_QUERY_NULL_ERROR #======================#
 class EdgeQueryNullException(QueryNullException):
     """
     Role:
@@ -43,7 +43,7 @@ class EdgeQueryNullException(QueryNullException):
         QueryNullException
     """
     MSG = "No null logic for EdgeQuery attribute"
-    ERR_CODE = "EDGE_QUERY_NULL_EXCEPTION"
+    ERR_CODE = "EDGE_QUERY_NULL_ERROR"
     
     def __init__(
             self,

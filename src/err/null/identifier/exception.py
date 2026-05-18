@@ -13,11 +13,11 @@ from typing import Any, Optional
 from err import NullException
 
 __all__ = [
-    # ======================# IDENTIFIER_NULL_EXCEPTION #======================#
+    # ======================# IDENTIFIER_NULL_ERROR #======================#
     "IdentifierNullException",
 ]
 
-# ======================# IDENTIFIER_NULL_EXCEPTION #======================#
+# ======================# IDENTIFIER_NULL_ERROR #======================#
 class IdentifierNullException(NullException):
     """
     Role:
@@ -41,7 +41,7 @@ class IdentifierNullException(NullException):
         NullException
     """
     MSG = "Identifier cannot be null."
-    ERR_CODE = "IDENTIFIER_NULL_EXCEPTION"
+    ERR_CODE = "IDENTIFIER_NULL_ERROR"
     
     def __init__(
             self,

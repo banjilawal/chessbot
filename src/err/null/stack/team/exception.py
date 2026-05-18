@@ -13,11 +13,11 @@ from typing import Any, Optional
 from err import StackNullException
 
 __all__ = [
-    # ======================# TEAM_STACK_NULL_EXCEPTION #======================#
+    # ======================# TEAM_STACK_NULL_ERROR #======================#
     "TeamStackNullException",
 ]
 
-# ======================# TEAM_STACK_NULL_EXCEPTION #======================#
+# ======================# TEAM_STACK_NULL_ERROR #======================#
 class TeamStackNullException(StackNullException):
     """
     Role:
@@ -41,7 +41,7 @@ class TeamStackNullException(StackNullException):
         StackNullException
     """
     MSG = "TeamStack cannot be null."
-    ERR_CODE = "TEAM_STACK_NULL_EXCEPTION"
+    ERR_CODE = "TEAM_STACK_NULL_ERROR"
     
     def __init__(
             self,

@@ -13,14 +13,14 @@ from typing import Any, Optional
 
 
 __all__ = [
-    # ======================# VECTOR_REGISTER_NULL_EXCEPTION #======================#
+    # ======================# VECTOR_REGISTER_NULL_ERROR #======================#
     "VectorRegisterNullException",
 ]
 
 from err import NullException
 
 
-# ======================# VECTOR_REGISTER_NULL_EXCEPTION #======================#
+# ======================# VECTOR_REGISTER_NULL_ERROR #======================#
 class VectorRegisterNullException(NullException):
     """
     Role:
@@ -44,7 +44,7 @@ class VectorRegisterNullException(NullException):
         VectorNullException
     """
     MSG = "VectorRegister cannot be null."
-    ERR_CODE = "VECTOR_REGISTER_NULL_EXCEPTION"
+    ERR_CODE = "VECTOR_REGISTER_NULL_ERROR"
     
     def __init__(
             self,

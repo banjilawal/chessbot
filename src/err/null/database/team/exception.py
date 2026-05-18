@@ -13,11 +13,11 @@ from typing import Any, Optional
 from err import DatabaseNullException
 
 __all__ = [
-    # ======================# TEAM_DATABASE_NULL_EXCEPTION #======================#
+    # ======================# TEAM_DATABASE_NULL_ERROR #======================#
     "TeamDatabaseNullException",
 ]
 
-# ======================# TEAM_DATABASE_NULL_EXCEPTION #======================#
+# ======================# TEAM_DATABASE_NULL_ERROR #======================#
 class TeamDatabaseNullException(DatabaseNullException):
     """
     Role:
@@ -41,7 +41,7 @@ class TeamDatabaseNullException(DatabaseNullException):
         DatabaseNullException
     """
     MSG = "TeamDatabase cannot be null."
-    ERR_CODE = "TEAM_DATABASE_NULL_EXCEPTION"
+    ERR_CODE = "TEAM_DATABASE_NULL_ERROR"
     
     def __init__(
             self,

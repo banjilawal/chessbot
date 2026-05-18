@@ -12,14 +12,14 @@ from typing import Any, Optional
 
 
 __all__ = [
-    # ======================# SQUARE_CONTEXT_NULL_EXCEPTION #======================#
+    # ======================# SQUARE_CONTEXT_NULL_ERROR #======================#
     "SquareContextNullException",
 ]
 
 from err import ContextNullException
 
 
-# ======================# SQUARE_CONTEXT_NULL_EXCEPTION #======================#
+# ======================# SQUARE_CONTEXT_NULL_ERROR #======================#
 class SquareContextNullException(ContextNullException):
     """
     Role:
@@ -43,7 +43,7 @@ class SquareContextNullException(ContextNullException):
         ContextNullException
     """
     MSG = "No null logic for SquareContext attribute"
-    ERR_CODE = "SQUARE_CONTEXT_NULL_EXCEPTION"
+    ERR_CODE = "SQUARE_CONTEXT_NULL_ERROR"
     
     def __init__(
             self,

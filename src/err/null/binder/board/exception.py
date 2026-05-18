@@ -12,10 +12,10 @@ from __future__ import annotations
 from err import BinderNullException
 
 __all__ = [
-    # ======================# BOARD_TEAM_BINDER_NULL_EXCEPTION #======================#
+    # ======================# BOARD_TEAM_BINDER_NULL_ERROR #======================#
     "BoardTeamBinderNullException",
 ]
-# ======================# BOARD_TEAM_BINDER_NULL_EXCEPTION #======================#
+# ======================# BOARD_TEAM_BINDER_NULL_ERROR #======================#
 class BoardTeamBinderNullException(BinderNullException):
     """
     Role:
@@ -39,7 +39,7 @@ class BoardTeamBinderNullException(BinderNullException):
         BinderNullException
     """
     MSG = "BoardTeamBinder cannot be null."
-    ERR_CODE = "BOARD_TEAM_BINDER_NULL_EXCEPTION"
+    ERR_CODE = "BOARD_TEAM_BINDER_NULL_ERROR"
     
     def __init__(
             self,

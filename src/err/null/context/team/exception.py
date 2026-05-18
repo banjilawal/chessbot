@@ -12,14 +12,14 @@ from typing import Any, Optional
 
 
 __all__ = [
-    # ======================# TEAM_CONTEXT_NULL_EXCEPTION #======================#
+    # ======================# TEAM_CONTEXT_NULL_ERROR #======================#
     "TeamContextNullException",
 ]
 
 from err import ContextNullException
 
 
-# ======================# TEAM_CONTEXT_NULL_EXCEPTION #======================#
+# ======================# TEAM_CONTEXT_NULL_ERROR #======================#
 class TeamContextNullException(ContextNullException):
     """
     Role:
@@ -43,7 +43,7 @@ class TeamContextNullException(ContextNullException):
         ContextNullException
     """
     MSG = "No null logic for TeamContext attribute"
-    ERR_CODE = "TEAM_CONTEXT_NULL_EXCEPTION"
+    ERR_CODE = "TEAM_CONTEXT_NULL_ERROR"
     
     def __init__(
             self,

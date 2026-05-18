@@ -12,14 +12,14 @@ from typing import Any, Optional
 
 
 __all__ = [
-    # ======================# COORD_QUERY_NULL_EXCEPTION #======================#
+    # ======================# COORD_QUERY_NULL_ERROR #======================#
     "CoordQueryNullException",
 ]
 
 from err import QueryNullException
 
 
-# ======================# COORD_QUERY_NULL_EXCEPTION #======================#
+# ======================# COORD_QUERY_NULL_ERROR #======================#
 class CoordQueryNullException(QueryNullException):
     """
     Role:
@@ -43,7 +43,7 @@ class CoordQueryNullException(QueryNullException):
         QueryNullException
     """
     MSG = "No null logic for CoordQuery attribute"
-    ERR_CODE = "COORD_QUERY_NULL_EXCEPTION"
+    ERR_CODE = "COORD_QUERY_NULL_ERROR"
     
     def __init__(
             self,

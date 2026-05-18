@@ -12,14 +12,14 @@ from typing import Any, Optional
 
 
 __all__ = [
-    # ======================# NODE_CONTEXT_NULL_EXCEPTION #======================#
+    # ======================# NODE_CONTEXT_NULL_ERROR #======================#
     "NodeContextNullException",
 ]
 
 from err import ContextNullException
 
 
-# ======================# NODE_CONTEXT_NULL_EXCEPTION #======================#
+# ======================# NODE_CONTEXT_NULL_ERROR #======================#
 class NodeContextNullException(ContextNullException):
     """
     Role:
@@ -43,7 +43,7 @@ class NodeContextNullException(ContextNullException):
         ContextNullException
     """
     MSG = "No null logic for NodeContext attribute"
-    ERR_CODE = "NODE_CONTEXT_NULL_EXCEPTION"
+    ERR_CODE = "NODE_CONTEXT_NULL_ERROR"
     
     def __init__(
             self,

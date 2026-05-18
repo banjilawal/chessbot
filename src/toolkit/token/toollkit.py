@@ -13,7 +13,7 @@ from typing import List
 
 from model import Token
 from toolkit import Toolkit
-from microservice import FormationService, Microservice, RankService
+from microservice import FormationService, IdentityService, Microservice, RankService
 from operation import CoordValidator, Operation, SquareValidator, TeamValidator, ValidationBootstrapper
 
 
@@ -50,3 +50,8 @@ class TokenToolkit(Toolkit[Token]):
         RankService,
         FormationService,
     ]
+    square_validator: SquareValidator = SquareValidator()
+    coord_validator: CoordValidator = CoordValidator()
+    team_validator: TeamValidator = TeamValidator()
+    identity_service: IdentityService = IdentityService()
+    validation_bootstrap: ValidationBootstrapper = ValidationBootstrapper()

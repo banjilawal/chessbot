@@ -5,13 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/engine/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/engine/engine.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/blueprint/context/model.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/toolkit/context/token/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/toolkit/context/token/toollkit.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/toolkit/context/toollkit.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/blueprint/player/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/blueprint/player/model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/blueprint/vector/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/blueprint/vector/model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/player/machine/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/player/machine/model.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/blueprint/context/token/blueprint.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/blueprint/context/token/blueprint.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/toolkit/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/toolkit/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/toolkit/context/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/toolkit/context/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/toolkit/team/toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/toolkit/team/toolkit.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/toolkit/token/toollkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/toolkit/token/toollkit.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/validation/context/token/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/validation/context/token/validator.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -63,7 +65,7 @@
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "main",
-    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/model/blueprint/context",
+    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/toolkit/context",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
@@ -74,11 +76,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/toolkit/context" />
       <recent name="$PROJECT_DIR$/src/model/blueprint/context" />
       <recent name="$PROJECT_DIR$/src/validation/context" />
       <recent name="$PROJECT_DIR$/src/err/null" />
       <recent name="$PROJECT_DIR$/src/validation" />
-      <recent name="$PROJECT_DIR$/src/err/state/token/token/board" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/validation/query/token" />
@@ -1102,6 +1104,16 @@
           <url>file://$PROJECT_DIR$/src/validation/__init__.py</url>
           <line>12</line>
           <option name="timeStamp" value="172" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/model/blueprint/context/token/blueprint.py</url>
+          <line>9</line>
+          <option name="timeStamp" value="174" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/setting/gui/caption/config.py</url>
+          <line>9</line>
+          <option name="timeStamp" value="175" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

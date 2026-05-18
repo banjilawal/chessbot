@@ -12,14 +12,14 @@ from typing import Any, Optional
 
 
 __all__ = [
-    # ======================# BOARD_CONTEXT_NULL_EXCEPTION #======================#
+    # ======================# BOARD_CONTEXT_NULL_ERROR #======================#
     "BoardContextNullException",
 ]
 
 from err import ContextNullException
 
 
-# ======================# BOARD_CONTEXT_NULL_EXCEPTION #======================#
+# ======================# BOARD_CONTEXT_NULL_ERROR #======================#
 class BoardContextNullException(ContextNullException):
     """
     Role:
@@ -43,7 +43,7 @@ class BoardContextNullException(ContextNullException):
         ContextNullException
     """
     MSG = "No null logic for BoardContext attribute"
-    ERR_CODE = "BOARD_CONTEXT_NULL_EXCEPTION"
+    ERR_CODE = "BOARD_CONTEXT_NULL_ERROR"
     
     def __init__(
             self,

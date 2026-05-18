@@ -12,14 +12,14 @@ from typing import Any, Optional
 
 
 __all__ = [
-    # ======================# SCHEMA_CONTEXT_NULL_EXCEPTION #======================#
+    # ======================# SCHEMA_CONTEXT_NULL_ERROR #======================#
     "SchemaContextNullException",
 ]
 
 from err import ContextNullException
 
 
-# ======================# SCHEMA_CONTEXT_NULL_EXCEPTION #======================#
+# ======================# SCHEMA_CONTEXT_NULL_ERROR #======================#
 class SchemaContextNullException(ContextNullException):
     """
     Role:
@@ -43,7 +43,7 @@ class SchemaContextNullException(ContextNullException):
         ContextNullException
     """
     MSG = "No null logic for SchemaContext attribute"
-    ERR_CODE = "SCHEMA_CONTEXT_NULL_EXCEPTION"
+    ERR_CODE = "SCHEMA_CONTEXT_NULL_ERROR"
     
     def __init__(
             self,

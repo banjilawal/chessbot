@@ -12,14 +12,14 @@ from typing import Any, Optional
 
 
 __all__ = [
-    # ======================# NODE_QUERY_NULL_EXCEPTION #======================#
+    # ======================# NODE_QUERY_NULL_ERROR #======================#
     "NodeQueryNullException",
 ]
 
 from err import QueryNullException
 
 
-# ======================# NODE_QUERY_NULL_EXCEPTION #======================#
+# ======================# NODE_QUERY_NULL_ERROR #======================#
 class NodeQueryNullException(QueryNullException):
     """
     Role:
@@ -43,7 +43,7 @@ class NodeQueryNullException(QueryNullException):
         QueryNullException
     """
     MSG = "No null logic for NodeQuery attribute"
-    ERR_CODE = "NODE_QUERY_NULL_EXCEPTION"
+    ERR_CODE = "NODE_QUERY_NULL_ERROR"
     
     def __init__(
             self,

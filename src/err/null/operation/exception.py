@@ -13,11 +13,11 @@ from typing import Any, Optional
 from err import NullException
 
 __all__ = [
-    # ======================# OPERATION_NULL_EXCEPTION #======================#
+    # ======================# OPERATION_NULL_ERROR #======================#
     "OperationNullException",
 ]
 
-# ======================# OPERATION_NULL_EXCEPTION #======================#
+# ======================# OPERATION_NULL_ERROR #======================#
 class OperationNullException(NullException):
     """
     Role:
@@ -41,7 +41,7 @@ class OperationNullException(NullException):
         NullException
     """
     MSG = "Operation cannot be null."
-    ERR_CODE = "OPERATION_NULL_EXCEPTION"
+    ERR_CODE = "OPERATION_NULL_ERROR"
     
     def __init__(
             self,

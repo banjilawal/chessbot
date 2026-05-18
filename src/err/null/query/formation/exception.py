@@ -12,14 +12,14 @@ from typing import Any, Optional
 
 
 __all__ = [
-    # ======================# FORMATION_QUERY_NULL_EXCEPTION #======================#
+    # ======================# FORMATION_QUERY_NULL_ERROR #======================#
     "FormationQueryNullException",
 ]
 
 from err import QueryNullException
 
 
-# ======================# FORMATION_QUERY_NULL_EXCEPTION #======================#
+# ======================# FORMATION_QUERY_NULL_ERROR #======================#
 class FormationQueryNullException(QueryNullException):
     """
     Role:
@@ -43,7 +43,7 @@ class FormationQueryNullException(QueryNullException):
         QueryNullException
     """
     MSG = "No null logic for FormationQuery attribute"
-    ERR_CODE = "FORMATION_QUERY_NULL_EXCEPTION"
+    ERR_CODE = "FORMATION_QUERY_NULL_ERROR"
     
     def __init__(
             self,

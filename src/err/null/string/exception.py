@@ -13,11 +13,11 @@ from typing import Any, Optional
 from err import NullException
 
 __all__ = [
-    # ======================# STRING_NULL_EXCEPTION #======================#
+    # ======================# STRING_NULL_ERROR #======================#
     "StringNullException",
 ]
 
-# ======================# STRING_NULL_EXCEPTION #======================#
+# ======================# STRING_NULL_ERROR #======================#
 class StringNullException(NullException):
     """
     Role:
@@ -41,7 +41,7 @@ class StringNullException(NullException):
         NullException
     """
     MSG = "String cannot be null."
-    ERR_CODE = "STRING_NULL_EXCEPTION"
+    ERR_CODE = "STRING_NULL_ERROR"
     
     def __init__(
             self,

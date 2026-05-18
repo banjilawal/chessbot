@@ -12,14 +12,14 @@ from typing import Any, Optional
 
 
 __all__ = [
-    # ======================# PLAYER_CONTEXT_NULL_EXCEPTION #======================#
+    # ======================# PLAYER_CONTEXT_NULL_ERROR #======================#
     "PlayerContextNullException",
 ]
 
 from err import ContextNullException
 
 
-# ======================# PLAYER_CONTEXT_NULL_EXCEPTION #======================#
+# ======================# PLAYER_CONTEXT_NULL_ERROR #======================#
 class PlayerContextNullException(ContextNullException):
     """
     Role:
@@ -43,7 +43,7 @@ class PlayerContextNullException(ContextNullException):
         ContextNullException
     """
     MSG = "No null logic for PlayerContext attribute"
-    ERR_CODE = "PLAYER_CONTEXT_NULL_EXCEPTION"
+    ERR_CODE = "PLAYER_CONTEXT_NULL_ERROR"
     
     def __init__(
             self,

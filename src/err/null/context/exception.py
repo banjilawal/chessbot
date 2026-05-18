@@ -13,11 +13,11 @@ from typing import Any, Optional
 from err import NullException
 
 __all__ = [
-    # ======================# CONTEXT_NULL_EXCEPTION #======================#
+    # ======================# CONTEXT_NULL_ERROR #======================#
     "ContextNullException",
 ]
 
-# ======================# CONTEXT_NULL_EXCEPTION #======================#
+# ======================# CONTEXT_NULL_ERROR #======================#
 class ContextNullException(NullException):
     """
     Role:
@@ -41,7 +41,7 @@ class ContextNullException(NullException):
         NullException
     """
     MSG = "No null logic for context's attribute"
-    ERR_CODE = "CONTEXT_NULL_EXCEPTION"
+    ERR_CODE = "CONTEXT_NULL_ERROR"
     
     def __init__(
             self,

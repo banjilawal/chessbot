@@ -13,11 +13,11 @@ from typing import Any, Optional
 from err import DatabaseNullException
 
 __all__ = [
-    # ======================# PLAYER_DATABASE_NULL_EXCEPTION #======================#
+    # ======================# PLAYER_DATABASE_NULL_ERROR #======================#
     "PlayerDatabaseNullException",
 ]
 
-# ======================# PLAYER_DATABASE_NULL_EXCEPTION #======================#
+# ======================# PLAYER_DATABASE_NULL_ERROR #======================#
 class PlayerDatabaseNullException(DatabaseNullException):
     """
     Role:
@@ -41,7 +41,7 @@ class PlayerDatabaseNullException(DatabaseNullException):
         DatabaseNullException
     """
     MSG = "PlayerDatabase cannot be null."
-    ERR_CODE = "PLAYER_DATABASE_NULL_EXCEPTION"
+    ERR_CODE = "PLAYER_DATABASE_NULL_ERROR"
     
     def __init__(
             self,

@@ -12,14 +12,14 @@ from typing import Any, Optional
 
 
 __all__ = [
-    # ======================# TEAM_QUERY_NULL_EXCEPTION #======================#
+    # ======================# TEAM_QUERY_NULL_ERROR #======================#
     "TeamQueryNullException",
 ]
 
 from err import QueryNullException
 
 
-# ======================# TEAM_QUERY_NULL_EXCEPTION #======================#
+# ======================# TEAM_QUERY_NULL_ERROR #======================#
 class TeamQueryNullException(QueryNullException):
     """
     Role:
@@ -43,7 +43,7 @@ class TeamQueryNullException(QueryNullException):
         QueryNullException
     """
     MSG = "No null logic for TeamQuery attribute"
-    ERR_CODE = "TEAM_QUERY_NULL_EXCEPTION"
+    ERR_CODE = "TEAM_QUERY_NULL_ERROR"
     
     def __init__(
             self,

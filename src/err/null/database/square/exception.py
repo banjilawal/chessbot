@@ -13,11 +13,11 @@ from typing import Any, Optional
 from err import DatabaseNullException
 
 __all__ = [
-    # ======================# SQUARE_DATABASE_NULL_EXCEPTION #======================#
+    # ======================# SQUARE_DATABASE_NULL_ERROR #======================#
     "SquareDatabaseNullException",
 ]
 
-# ======================# SQUARE_DATABASE_NULL_EXCEPTION #======================#
+# ======================# SQUARE_DATABASE_NULL_ERROR #======================#
 class SquareDatabaseNullException(DatabaseNullException):
     """
     Role:
@@ -41,7 +41,7 @@ class SquareDatabaseNullException(DatabaseNullException):
         DatabaseNullException
     """
     MSG = "SquareDatabase cannot be null."
-    ERR_CODE = "SQUARE_DATABASE_NULL_EXCEPTION"
+    ERR_CODE = "SQUARE_DATABASE_NULL_ERROR"
     
     def __init__(
             self,

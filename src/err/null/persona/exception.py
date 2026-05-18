@@ -13,11 +13,11 @@ from typing import Any, Optional
 from err import NullException
 
 __all__ = [
-    # ======================# PERSONA_NULL_EXCEPTION #======================#
+    # ======================# PERSONA_NULL_ERROR #======================#
     "PersonaNullException",
 ]
 
-# ======================# PERSONA_NULL_EXCEPTION #======================#
+# ======================# PERSONA_NULL_ERROR #======================#
 class PersonaNullException(NullException):
     """
     Role:
@@ -41,7 +41,7 @@ class PersonaNullException(NullException):
         NullException
     """
     MSG = "Persona cannot be null."
-    ERR_CODE = "PERSONA_NULL_EXCEPTION"
+    ERR_CODE = "PERSONA_NULL_ERROR"
     
     def __init__(
             self,

@@ -13,11 +13,11 @@ from typing import Any, Optional
 from err import NullException
 
 __all__ = [
-    # ======================# NUMBER_NULL_EXCEPTION #======================#
+    # ======================# NUMBER_NULL_ERROR #======================#
     "NumberNullException",
 ]
 
-# ======================# NUMBER_NULL_EXCEPTION #======================#
+# ======================# NUMBER_NULL_ERROR #======================#
 class NumberNullException(NullException):
     """
     Role:
@@ -41,7 +41,7 @@ class NumberNullException(NullException):
         NullException
     """
     MSG = "Number cannot be null."
-    ERR_CODE = "NUMBER_NULL_EXCEPTION"
+    ERR_CODE = "NUMBER_NULL_ERROR"
     
     def __init__(
             self,

@@ -12,14 +12,14 @@ from typing import Any, Optional
 
 
 __all__ = [
-    # ======================# FORMATION_CONTEXT_NULL_EXCEPTION #======================#
+    # ======================# FORMATION_CONTEXT_NULL_ERROR #======================#
     "FormationContextNullException",
 ]
 
 from err import ContextNullException
 
 
-# ======================# FORMATION_CONTEXT_NULL_EXCEPTION #======================#
+# ======================# FORMATION_CONTEXT_NULL_ERROR #======================#
 class FormationContextNullException(ContextNullException):
     """
     Role:
@@ -43,7 +43,7 @@ class FormationContextNullException(ContextNullException):
         ContextNullException
     """
     MSG = "No null logic for FormationContext attribute"
-    ERR_CODE = "FORMATION_CONTEXT_NULL_EXCEPTION"
+    ERR_CODE = "FORMATION_CONTEXT_NULL_ERROR"
     
     def __init__(
             self,

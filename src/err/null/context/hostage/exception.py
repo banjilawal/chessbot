@@ -12,14 +12,14 @@ from typing import Any, Optional
 
 
 __all__ = [
-    # ======================# HOSTAGE_CONTEXT_NULL_EXCEPTION #======================#
+    # ======================# HOSTAGE_CONTEXT_NULL_ERROR #======================#
     "HostageContextNullException",
 ]
 
 from err import ContextNullException
 
 
-# ======================# HOSTAGE_CONTEXT_NULL_EXCEPTION #======================#
+# ======================# HOSTAGE_CONTEXT_NULL_ERROR #======================#
 class HostageContextNullException(ContextNullException):
     """
     Role:
@@ -43,7 +43,7 @@ class HostageContextNullException(ContextNullException):
         ContextNullException
     """
     MSG = "No null logic for HostageContext attribute"
-    ERR_CODE = "HOSTAGE_CONTEXT_NULL_EXCEPTION"
+    ERR_CODE = "HOSTAGE_CONTEXT_NULL_ERROR"
     
     def __init__(
             self,

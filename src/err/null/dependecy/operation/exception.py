@@ -13,12 +13,12 @@ from typing import Any, Optional
 from err import DependencyListNullException
 
 __all__ = [
-    # ======================# OPERATION_LIST_NULL_EXCEPTION #======================#
+    # ======================# OPERATION_LIST_NULL_ERROR #======================#
     "OperationListNullException",
 ]
 
 
-# ======================# OPERATION_LIST_NULL_EXCEPTION #======================#
+# ======================# OPERATION_LIST_NULL_ERROR #======================#
 class OperationListNullException(DependencyListNullException):
     """
     Role:
@@ -42,7 +42,7 @@ class OperationListNullException(DependencyListNullException):
         DependencyListNullException
     """
     MSG = "OperationList cannot be null."
-    ERR_CODE = "OPERATION_LIST_NULL_EXCEPTION"
+    ERR_CODE = "OPERATION_LIST_NULL_ERROR"
     
     def __init__(
             self,

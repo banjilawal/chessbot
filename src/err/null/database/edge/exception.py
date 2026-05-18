@@ -13,11 +13,11 @@ from typing import Any, Optional
 from err import DatabaseNullException
 
 __all__ = [
-    # ======================# EDGE_DATABASE_NULL_EXCEPTION #======================#
+    # ======================# EDGE_DATABASE_NULL_ERROR #======================#
     "EdgeDatabaseNullException",
 ]
 
-# ======================# EDGE_DATABASE_NULL_EXCEPTION #======================#
+# ======================# EDGE_DATABASE_NULL_ERROR #======================#
 class EdgeDatabaseNullException(DatabaseNullException):
     """
     Role:
@@ -41,7 +41,7 @@ class EdgeDatabaseNullException(DatabaseNullException):
         DatabaseNullException
     """
     MSG = "EdgeDatabase cannot be null."
-    ERR_CODE = "EDGE_DATABASE_NULL_EXCEPTION"
+    ERR_CODE = "EDGE_DATABASE_NULL_ERROR"
     
     def __init__(
             self,

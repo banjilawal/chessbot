@@ -13,11 +13,11 @@ from typing import Any, Optional
 from err import NullException
 
 __all__ = [
-    # ======================# STACK_NULL_EXCEPTION #======================#
+    # ======================# STACK_NULL_ERROR #======================#
     "StackNullException",
 ]
 
-# ======================# STACK_NULL_EXCEPTION #======================#
+# ======================# STACK_NULL_ERROR #======================#
 class StackNullException(NullException):
     """
     Role:
@@ -41,7 +41,7 @@ class StackNullException(NullException):
         NullException
     """
     MSG = "Stack cannot be null."
-    ERR_CODE = "STACK_NULL_EXCEPTION"
+    ERR_CODE = "STACK_NULL_ERROR"
     
     def __init__(
             self,

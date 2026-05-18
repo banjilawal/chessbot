@@ -13,11 +13,11 @@ from typing import Any, Optional
 from err import StackNullException
 
 __all__ = [
-    # ======================# SNAPSHOT_STACK_NULL_EXCEPTION #======================#
+    # ======================# SNAPSHOT_STACK_NULL_ERROR #======================#
     "SnapshotStackNullException",
 ]
 
-# ======================# SNAPSHOT_STACK_NULL_EXCEPTION #======================#
+# ======================# SNAPSHOT_STACK_NULL_ERROR #======================#
 class SnapshotStackNullException(StackNullException):
     """
     Role:
@@ -41,7 +41,7 @@ class SnapshotStackNullException(StackNullException):
         StackNullException
     """
     MSG = "SnapshotStack cannot be null."
-    ERR_CODE = "SNAPSHOT_STACK_NULL_EXCEPTION"
+    ERR_CODE = "SNAPSHOT_STACK_NULL_ERROR"
     
     def __init__(
             self,

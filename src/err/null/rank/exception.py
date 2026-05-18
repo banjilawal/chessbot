@@ -13,11 +13,11 @@ from typing import Any, Optional
 from err import NullException
 
 __all__ = [
-    # ======================# RANK_NULL_EXCEPTION #======================#
+    # ======================# RANK_NULL_ERROR #======================#
     "RankNullException",
 ]
 
-# ======================# RANK_NULL_EXCEPTION #======================#
+# ======================# RANK_NULL_ERROR #======================#
 class RankNullException(NullException):
     """
     Role:
@@ -41,7 +41,7 @@ class RankNullException(NullException):
         NullException
     """
     MSG = "Rank cannot be null."
-    ERR_CODE = "RANK_NULL_EXCEPTION"
+    ERR_CODE = "RANK_NULL_ERROR"
     
     def __init__(
             self,

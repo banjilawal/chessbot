@@ -12,14 +12,14 @@ from typing import Any, Optional
 
 
 __all__ = [
-    # ======================# COORD_CONTEXT_NULL_EXCEPTION #======================#
+    # ======================# COORD_CONTEXT_NULL_ERROR #======================#
     "CoordContextNullException",
 ]
 
 from err import ContextNullException
 
 
-# ======================# COORD_CONTEXT_NULL_EXCEPTION #======================#
+# ======================# COORD_CONTEXT_NULL_ERROR #======================#
 class CoordContextNullException(ContextNullException):
     """
     Role:
@@ -43,7 +43,7 @@ class CoordContextNullException(ContextNullException):
         ContextNullException
     """
     MSG = "No null logic for CoordContext attribute"
-    ERR_CODE = "COORD_CONTEXT_NULL_EXCEPTION"
+    ERR_CODE = "COORD_CONTEXT_NULL_ERROR"
     
     def __init__(
             self,

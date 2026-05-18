@@ -12,14 +12,14 @@ from typing import Any, Optional
 
 
 __all__ = [
-    # ======================# BOARD_QUERY_NULL_EXCEPTION #======================#
+    # ======================# BOARD_QUERY_NULL_ERROR #======================#
     "BoardQueryNullException",
 ]
 
 from err import QueryNullException
 
 
-# ======================# BOARD_QUERY_NULL_EXCEPTION #======================#
+# ======================# BOARD_QUERY_NULL_ERROR #======================#
 class BoardQueryNullException(QueryNullException):
     """
     Role:
@@ -43,7 +43,7 @@ class BoardQueryNullException(QueryNullException):
         QueryNullException
     """
     MSG = "No null logic for BoardQuery attribute"
-    ERR_CODE = "BOARD_QUERY_NULL_EXCEPTION"
+    ERR_CODE = "BOARD_QUERY_NULL_ERROR"
     
     def __init__(
             self,

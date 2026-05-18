@@ -12,14 +12,14 @@ from typing import Any, Optional
 
 
 __all__ = [
-    # ======================# PLAYER_QUERY_NULL_EXCEPTION #======================#
+    # ======================# PLAYER_QUERY_NULL_ERROR #======================#
     "PlayerQueryNullException",
 ]
 
 from err import QueryNullException
 
 
-# ======================# PLAYER_QUERY_NULL_EXCEPTION #======================#
+# ======================# PLAYER_QUERY_NULL_ERROR #======================#
 class PlayerQueryNullException(QueryNullException):
     """
     Role:
@@ -43,7 +43,7 @@ class PlayerQueryNullException(QueryNullException):
         QueryNullException
     """
     MSG = "No null logic for PlayerQuery attribute"
-    ERR_CODE = "PLAYER_QUERY_NULL_EXCEPTION"
+    ERR_CODE = "PLAYER_QUERY_NULL_ERROR"
     
     def __init__(
             self,

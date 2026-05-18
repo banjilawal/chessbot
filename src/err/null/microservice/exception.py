@@ -13,11 +13,11 @@ from typing import Any, Optional
 from err import NullException
 
 __all__ = [
-    # ======================# MICROSERVICE_NULL_EXCEPTION #======================#
+    # ======================# MICROSERVICE_NULL_ERROR #======================#
     "MicroserviceNullException",
 ]
 
-# ======================# MICROSERVICE_NULL_EXCEPTION #======================#
+# ======================# MICROSERVICE_NULL_ERROR #======================#
 class MicroserviceNullException(NullException):
     """
     Role:
@@ -41,7 +41,7 @@ class MicroserviceNullException(NullException):
         NullException
     """
     MSG = "Microservice cannot be null."
-    ERR_CODE = "MICROSERVICE_NULL_EXCEPTION"
+    ERR_CODE = "MICROSERVICE_NULL_ERROR"
     
     def __init__(
             self,

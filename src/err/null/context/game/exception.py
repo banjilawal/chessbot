@@ -12,14 +12,14 @@ from typing import Any, Optional
 
 
 __all__ = [
-    # ======================# GAME_CONTEXT_NULL_EXCEPTION #======================#
+    # ======================# GAME_CONTEXT_NULL_ERROR #======================#
     "GameContextNullException",
 ]
 
 from err import ContextNullException
 
 
-# ======================# GAME_CONTEXT_NULL_EXCEPTION #======================#
+# ======================# GAME_CONTEXT_NULL_ERROR #======================#
 class GameContextNullException(ContextNullException):
     """
     Role:
@@ -43,7 +43,7 @@ class GameContextNullException(ContextNullException):
         ContextNullException
     """
     MSG = "No null logic for GameContext attribute"
-    ERR_CODE = "GAME_CONTEXT_NULL_EXCEPTION"
+    ERR_CODE = "GAME_CONTEXT_NULL_ERROR"
     
     def __init__(
             self,

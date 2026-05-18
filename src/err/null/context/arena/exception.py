@@ -12,14 +12,14 @@ from typing import Any, Optional
 
 
 __all__ = [
-    # ======================# ARENA_CONTEXT_NULL_EXCEPTION #======================#
+    # ======================# ARENA_CONTEXT_NULL_ERROR #======================#
     "ArenaContextNullException",
 ]
 
 from err import ContextNullException
 
 
-# ======================# ARENA_CONTEXT_NULL_EXCEPTION #======================#
+# ======================# ARENA_CONTEXT_NULL_ERROR #======================#
 class ArenaContextNullException(ContextNullException):
     """
     Role:
@@ -43,7 +43,7 @@ class ArenaContextNullException(ContextNullException):
         ContextNullException
     """
     MSG = "No null logic for ArenaContext attribute"
-    ERR_CODE = "ARENA_CONTEXT_NULL_EXCEPTION"
+    ERR_CODE = "ARENA_CONTEXT_NULL_ERROR"
     
     def __init__(
             self,

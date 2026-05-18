@@ -13,11 +13,11 @@ from typing import Any, Optional
 from err import StackNullException
 
 __all__ = [
-    # ======================# PLAYER_STACK_NULL_EXCEPTION #======================#
+    # ======================# PLAYER_STACK_NULL_ERROR #======================#
     "PlayerStackNullException",
 ]
 
-# ======================# PLAYER_STACK_NULL_EXCEPTION #======================#
+# ======================# PLAYER_STACK_NULL_ERROR #======================#
 class PlayerStackNullException(StackNullException):
     """
     Role:
@@ -41,7 +41,7 @@ class PlayerStackNullException(StackNullException):
         StackNullException
     """
     MSG = "PlayerStack cannot be null."
-    ERR_CODE = "PLAYER_STACK_NULL_EXCEPTION"
+    ERR_CODE = "PLAYER_STACK_NULL_ERROR"
     
     def __init__(
             self,

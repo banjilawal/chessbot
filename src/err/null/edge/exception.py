@@ -13,11 +13,11 @@ from typing import Any, Optional
 from err import NullException
 
 __all__ = [
-    # ======================# EDGE_NULL_EXCEPTION #======================#
+    # ======================# EDGE_NULL_ERROR #======================#
     "EdgeNullException",
 ]
 
-# ======================# EDGE_NULL_EXCEPTION #======================#
+# ======================# EDGE_NULL_ERROR #======================#
 class EdgeNullException(NullException):
     """
     Role:
@@ -41,7 +41,7 @@ class EdgeNullException(NullException):
         NullException
     """
     MSG = "Edge cannot be null."
-    ERR_CODE = "EDGE_NULL_EXCEPTION"
+    ERR_CODE = "EDGE_NULL_ERROR"
     
     def __init__(
             self,

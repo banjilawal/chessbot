@@ -10,6 +10,10 @@ version: 1.0.1
 # =========== TOOLKIT.CONTEXT PACKAGE ===========#
 
 # Packages
-from .vector import *
+from .arena import *
+from .board import *
+from .coord import *
+from .token import *
 
 # Modules
+from .toollkit import ContextToolkit

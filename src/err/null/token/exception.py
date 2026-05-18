@@ -13,11 +13,11 @@ from typing import Any, Optional
 from err import NullException
 
 __all__ = [
-    # ======================# TOKEN_NULL_EXCEPTION #======================#
+    # ======================# TOKEN_NULL_ERROR #======================#
     "TokenNullException",
 ]
 
-# ======================# TOKEN_NULL_EXCEPTION #======================#
+# ======================# TOKEN_NULL_ERROR #======================#
 class TokenNullException(NullException):
     """
     Role:
@@ -41,7 +41,7 @@ class TokenNullException(NullException):
         NullException
     """
     MSG = "Token is null."
-    ERR_CODE = "TOKEN_NULL_EXCEPTION"
+    ERR_CODE = "TOKEN_NULL_ERROR"
     
     def __init__(
             self,

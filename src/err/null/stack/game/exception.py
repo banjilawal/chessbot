@@ -13,11 +13,11 @@ from typing import Any, Optional
 from err import StackNullException
 
 __all__ = [
-    # ======================# GAME_STACK_NULL_EXCEPTION #======================#
+    # ======================# GAME_STACK_NULL_ERROR #======================#
     "GameStackNullException",
 ]
 
-# ======================# GAME_STACK_NULL_EXCEPTION #======================#
+# ======================# GAME_STACK_NULL_ERROR #======================#
 class GameStackNullException(StackNullException):
     """
     Role:
@@ -41,7 +41,7 @@ class GameStackNullException(StackNullException):
         StackNullException
     """
     MSG = "GameStack cannot be null."
-    ERR_CODE = "GAME_STACK_NULL_EXCEPTION"
+    ERR_CODE = "GAME_STACK_NULL_ERROR"
     
     def __init__(
             self,

@@ -13,11 +13,11 @@ from typing import Any, Optional
 from err import NullException
 
 __all__ = [
-    # ======================# HOSTAGE_NULL_EXCEPTION #======================#
+    # ======================# HOSTAGE_NULL_ERROR #======================#
     "HostageNullException",
 ]
 
-# ======================# HOSTAGE_NULL_EXCEPTION #======================#
+# ======================# HOSTAGE_NULL_ERROR #======================#
 class HostageNullException(NullException):
     """
     Role:
@@ -41,7 +41,7 @@ class HostageNullException(NullException):
         NullException
     """
     MSG = "Hostage cannot be null."
-    ERR_CODE = "HOSTAGE_NULL_EXCEPTION"
+    ERR_CODE = "HOSTAGE_NULL_ERROR"
     
     def __init__(
             self,

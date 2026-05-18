@@ -12,14 +12,14 @@ from typing import Any, Optional
 
 
 __all__ = [
-    # ======================# PERSONA_QUERY_NULL_EXCEPTION #======================#
+    # ======================# PERSONA_QUERY_NULL_ERROR #======================#
     "PersonaQueryNullException",
 ]
 
 from err import QueryNullException
 
 
-# ======================# PERSONA_QUERY_NULL_EXCEPTION #======================#
+# ======================# PERSONA_QUERY_NULL_ERROR #======================#
 class PersonaQueryNullException(QueryNullException):
     """
     Role:
@@ -43,7 +43,7 @@ class PersonaQueryNullException(QueryNullException):
         QueryNullException
     """
     MSG = "No null logic for PersonaQuery attribute"
-    ERR_CODE = "PERSONA_QUERY_NULL_EXCEPTION"
+    ERR_CODE = "PERSONA_QUERY_NULL_ERROR"
     
     def __init__(
             self,

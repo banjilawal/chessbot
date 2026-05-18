@@ -13,11 +13,11 @@ from typing import Any, Optional
 from err import StackNullException
 
 __all__ = [
-    # ======================# BOARD_STACK_NULL_EXCEPTION #======================#
+    # ======================# BOARD_STACK_NULL_ERROR #======================#
     "BoardStackNullException",
 ]
 
-# ======================# BOARD_STACK_NULL_EXCEPTION #======================#
+# ======================# BOARD_STACK_NULL_ERROR #======================#
 class BoardStackNullException(StackNullException):
     """
     Role:
@@ -41,7 +41,7 @@ class BoardStackNullException(StackNullException):
         StackNullException
     """
     MSG = "BoardStack cannot be null."
-    ERR_CODE = "BOARD_STACK_NULL_EXCEPTION"
+    ERR_CODE = "BOARD_STACK_NULL_ERROR"
     
     def __init__(
             self,

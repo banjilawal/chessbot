@@ -12,10 +12,10 @@ from __future__ import annotations
 from err import BinderNullException
 
 __all__ = [
-    # ======================# ARENA_PLAYER_BINDER_NULL_EXCEPTION #======================#
+    # ======================# ARENA_PLAYER_BINDER_NULL_ERROR #======================#
     "ArenaPlayerBinderNullException",
 ]
-# ======================# ARENA_PLAYER_BINDER_NULL_EXCEPTION #======================#
+# ======================# ARENA_PLAYER_BINDER_NULL_ERROR #======================#
 class ArenaPlayerBinderNullException(BinderNullException):
     """
     Role:
@@ -39,7 +39,7 @@ class ArenaPlayerBinderNullException(BinderNullException):
         BinderNullException
     """
     MSG = "ArenaPlayerBinder cannot be null."
-    ERR_CODE = "ARENA_PLAYER_BINDER_NULL_EXCEPTION"
+    ERR_CODE = "ARENA_PLAYER_BINDER_NULL_ERROR"
     
     def __init__(
             self,

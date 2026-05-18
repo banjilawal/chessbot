@@ -13,11 +13,11 @@ from typing import Any, Optional
 from err import NullException
 
 __all__ = [
-    # ======================# FORMATION_NULL_EXCEPTION #======================#
+    # ======================# FORMATION_NULL_ERROR #======================#
     "FormationNullException",
 ]
 
-# ======================# FORMATION_NULL_EXCEPTION #======================#
+# ======================# FORMATION_NULL_ERROR #======================#
 class FormationNullException(NullException):
     """
     Role:
@@ -41,7 +41,7 @@ class FormationNullException(NullException):
         NullException
     """
     MSG = "Formation cannot be null."
-    ERR_CODE = "FORMATION_NULL_EXCEPTION"
+    ERR_CODE = "FORMATION_NULL_ERROR"
     
     def __init__(
             self,

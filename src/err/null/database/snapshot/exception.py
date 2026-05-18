@@ -13,11 +13,11 @@ from typing import Any, Optional
 from err import DatabaseNullException
 
 __all__ = [
-    # ======================# SNAPSHOT_DATABASE_NULL_EXCEPTION #======================#
+    # ======================# SNAPSHOT_DATABASE_NULL_ERROR #======================#
     "SnapshotDatabaseNullException",
 ]
 
-# ======================# SNAPSHOT_DATABASE_NULL_EXCEPTION #======================#
+# ======================# SNAPSHOT_DATABASE_NULL_ERROR #======================#
 class SnapshotDatabaseNullException(DatabaseNullException):
     """
     Role:
@@ -41,7 +41,7 @@ class SnapshotDatabaseNullException(DatabaseNullException):
         DatabaseNullException
     """
     MSG = "SnapshotDatabase cannot be null."
-    ERR_CODE = "SNAPSHOT_DATABASE_NULL_EXCEPTION"
+    ERR_CODE = "SNAPSHOT_DATABASE_NULL_ERROR"
     
     def __init__(
             self,

@@ -13,11 +13,11 @@ from typing import Any, Optional
 from err import NullException
 
 __all__ = [
-    # ======================# LIST_NULL_EXCEPTION #======================#
+    # ======================# LIST_NULL_ERROR #======================#
     "ListNullException",
 ]
 
-# ======================# LIST_NULL_EXCEPTION #======================#
+# ======================# LIST_NULL_ERROR #======================#
 class ListNullException(NullException):
     """
     Role:
@@ -41,7 +41,7 @@ class ListNullException(NullException):
         NullException
     """
     MSG = "List cannot be null."
-    ERR_CODE = "LIST_NULL_EXCEPTION"
+    ERR_CODE = "LIST_NULL_ERROR"
     
     def __init__(
             self,

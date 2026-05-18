@@ -13,11 +13,11 @@ from typing import Any, Optional
 from err import DatabaseNullException
 
 __all__ = [
-    # ======================# BOARD_DATABASE_NULL_EXCEPTION #======================#
+    # ======================# BOARD_DATABASE_NULL_ERROR #======================#
     "BoardDatabaseNullException",
 ]
 
-# ======================# BOARD_DATABASE_NULL_EXCEPTION #======================#
+# ======================# BOARD_DATABASE_NULL_ERROR #======================#
 class BoardDatabaseNullException(DatabaseNullException):
     """
     Role:
@@ -41,7 +41,7 @@ class BoardDatabaseNullException(DatabaseNullException):
         DatabaseNullException
     """
     MSG = "BoardDatabase cannot be null."
-    ERR_CODE = "BOARD_DATABASE_NULL_EXCEPTION"
+    ERR_CODE = "BOARD_DATABASE_NULL_ERROR"
     
     def __init__(
             self,

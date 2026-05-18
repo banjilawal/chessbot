@@ -13,11 +13,11 @@ from typing import Any, Optional
 from err import NullException
 
 __all__ = [
-    # ======================# HASH_TABLE_NULL_EXCEPTION #======================#
+    # ======================# HASH_TABLE_NULL_ERROR #======================#
     "HashtableNullException",
 ]
 
-# ======================# HASH_TABLE_NULL_EXCEPTION #======================#
+# ======================# HASH_TABLE_NULL_ERROR #======================#
 class HashtableNullException(NullException):
     """
     Role:
@@ -41,7 +41,7 @@ class HashtableNullException(NullException):
         NullException
     """
     MSG = "Hashtable cannot be null."
-    ERR_CODE = "HASH_TABLE_NULL_EXCEPTION"
+    ERR_CODE = "HASH_TABLE_NULL_ERROR"
     
     def __init__(
             self,

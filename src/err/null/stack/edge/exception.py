@@ -13,11 +13,11 @@ from typing import Any, Optional
 from err import StackNullException
 
 __all__ = [
-    # ======================# EDGE_STACK_NULL_EXCEPTION #======================#
+    # ======================# EDGE_STACK_NULL_ERROR #======================#
     "EdgeStackNullException",
 ]
 
-# ======================# EDGE_STACK_NULL_EXCEPTION #======================#
+# ======================# EDGE_STACK_NULL_ERROR #======================#
 class EdgeStackNullException(StackNullException):
     """
     Role:
@@ -41,7 +41,7 @@ class EdgeStackNullException(StackNullException):
         StackNullException
     """
     MSG = "EdgeStack cannot be null."
-    ERR_CODE = "EDGE_STACK_NULL_EXCEPTION"
+    ERR_CODE = "EDGE_STACK_NULL_ERROR"
     
     def __init__(
             self,

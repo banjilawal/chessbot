@@ -12,14 +12,14 @@ from typing import Any, Optional
 
 
 __all__ = [
-    # ======================# PERSONA_CONTEXT_NULL_EXCEPTION #======================#
+    # ======================# PERSONA_CONTEXT_NULL_ERROR #======================#
     "PersonaContextNullException",
 ]
 
 from err import ContextNullException
 
 
-# ======================# PERSONA_CONTEXT_NULL_EXCEPTION #======================#
+# ======================# PERSONA_CONTEXT_NULL_ERROR #======================#
 class PersonaContextNullException(ContextNullException):
     """
     Role:
@@ -43,7 +43,7 @@ class PersonaContextNullException(ContextNullException):
         ContextNullException
     """
     MSG = "No null logic for PersonaContext attribute"
-    ERR_CODE = "PERSONA_CONTEXT_NULL_EXCEPTION"
+    ERR_CODE = "PERSONA_CONTEXT_NULL_ERROR"
     
     def __init__(
             self,

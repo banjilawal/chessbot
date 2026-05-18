@@ -12,14 +12,14 @@ from typing import Any, Optional
 
 
 __all__ = [
-    # ======================# SQUARE_QUERY_NULL_EXCEPTION #======================#
+    # ======================# SQUARE_QUERY_NULL_ERROR #======================#
     "SquareQueryNullException",
 ]
 
 from err import QueryNullException
 
 
-# ======================# SQUARE_QUERY_NULL_EXCEPTION #======================#
+# ======================# SQUARE_QUERY_NULL_ERROR #======================#
 class SquareQueryNullException(QueryNullException):
     """
     Role:
@@ -43,7 +43,7 @@ class SquareQueryNullException(QueryNullException):
         QueryNullException
     """
     MSG = "No null logic for SquareQuery attribute"
-    ERR_CODE = "SQUARE_QUERY_NULL_EXCEPTION"
+    ERR_CODE = "SQUARE_QUERY_NULL_ERROR"
     
     def __init__(
             self,

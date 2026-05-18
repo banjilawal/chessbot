@@ -12,14 +12,14 @@ from typing import Any, Optional
 
 
 __all__ = [
-    # ======================# RANK_CONTEXT_NULL_EXCEPTION #======================#
+    # ======================# RANK_CONTEXT_NULL_ERROR #======================#
     "RankContextNullException",
 ]
 
 from err import ContextNullException
 
 
-# ======================# RANK_CONTEXT_NULL_EXCEPTION #======================#
+# ======================# RANK_CONTEXT_NULL_ERROR #======================#
 class RankContextNullException(ContextNullException):
     """
     Role:
@@ -43,7 +43,7 @@ class RankContextNullException(ContextNullException):
         ContextNullException
     """
     MSG = "No null logic for RankContext attribute"
-    ERR_CODE = "RANK_CONTEXT_NULL_EXCEPTION"
+    ERR_CODE = "RANK_CONTEXT_NULL_ERROR"
     
     def __init__(
             self,

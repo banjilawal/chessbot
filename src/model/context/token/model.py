@@ -12,7 +12,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Any, Dict, Optional
 
-from model import Context, Coord, Rank, Team, Token
+from model import Context, Coord, OpeningSquare, Rank, Team, Token
 from system import GameColor
 
 
@@ -35,7 +35,7 @@ class TokenContext(Context[Token]):
         current_position:Optional[Coord]
         designation: Optional[str]
         color: Optional[GameColor]
-        opening_square_name: Optional[str]
+        opening_square: Optional[OpeningSquare]
 
     Provides:
         -   to_dict() -> Dict[str, Any]
@@ -49,7 +49,7 @@ class TokenContext(Context[Token]):
     color: Optional[GameColor]
     designation: Optional[str]
     current_position:Optional[Coord]
-    opening_square_name: Optional[str]
+    opening_square: Optional[OpeningSquare]
 
     @property
     def to_dict(self) -> Dict[str, Any]:
@@ -61,5 +61,5 @@ class TokenContext(Context[Token]):
             "ransom": self.ransom,
             "designation": self.designation,
             "current_position": self.current_position,
-            "opening_square_name_name": self.opening_square_name
+            "opening_squaree": self.opening_square
         }

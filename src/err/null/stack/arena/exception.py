@@ -13,11 +13,11 @@ from typing import Any, Optional
 from err import StackNullException
 
 __all__ = [
-    # ======================# ARENA_STACK_NULL_EXCEPTION #======================#
+    # ======================# ARENA_STACK_NULL_ERROR #======================#
     "ArenaStackNullException",
 ]
 
-# ======================# ARENA_STACK_NULL_EXCEPTION #======================#
+# ======================# ARENA_STACK_NULL_ERROR #======================#
 class ArenaStackNullException(StackNullException):
     """
     Role:
@@ -41,7 +41,7 @@ class ArenaStackNullException(StackNullException):
         StackNullException
     """
     MSG = "ArenaStack cannot be null."
-    ERR_CODE = "ARENA_STACK_NULL_EXCEPTION"
+    ERR_CODE = "ARENA_STACK_NULL_ERROR"
     
     def __init__(
             self,

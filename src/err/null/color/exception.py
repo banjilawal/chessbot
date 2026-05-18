@@ -10,20 +10,22 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
+from err import NullException
+
 
 __all__ = [
-    # ======================# COLOR_NULL_EXCEPTION #======================#
-    "ColorNullException",
+    # ======================# GAME_COLOR_NULL_ERROR #======================#
+    "GameColorNullException",
 ]
 
-# ======================# COLOR_NULL_EXCEPTION #======================#
-class ColorNullException(NullException):
+# ======================# GAME_COLOR_NULL_ERROR #======================#
+class GameColorNullException(NullException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required Color is null.
+        1.  Indicate that a required GameColor is null.
 
     Attributes:
         msg: Optional[str]
@@ -39,8 +41,8 @@ class ColorNullException(NullException):
     Super Class:
         NullException
     """
-    MSG = "Color cannot be null."
-    ERR_CODE = "COLOR_NULL_EXCEPTION"
+    MSG = "GameColor cannot be null."
+    ERR_CODE = "GAME_COLOR_NULL_ERROR"
     
     def __init__(
             self,

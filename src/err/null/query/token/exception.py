@@ -13,14 +13,14 @@ from typing import Any, Optional
 
 
 __all__ = [
-    # ======================# TOKEN_QUERY_NULL_EXCEPTION #======================#
+    # ======================# TOKEN_QUERY_NULL_ERROR #======================#
     "TokenQueryNullException",
 ]
 
 from err import QueryNullException
 
 
-# ======================# TOKEN_QUERY_NULL_EXCEPTION #======================#
+# ======================# TOKEN_QUERY_NULL_ERROR #======================#
 class TokenQueryNullException(QueryNullException):
     """
     Role:
@@ -44,7 +44,7 @@ class TokenQueryNullException(QueryNullException):
         QueryNullException
     """
     MSG = "No null logic for TokenQuery attribute"
-    ERR_CODE = "TOKEN_QUERY_NULL_EXCEPTION"
+    ERR_CODE = "TOKEN_QUERY_NULL_ERROR"
     
     def __init__(
             self,

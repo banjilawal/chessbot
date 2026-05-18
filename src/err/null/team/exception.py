@@ -13,11 +13,11 @@ from typing import Any, Optional
 from err import NullException
 
 __all__ = [
-    # ======================# TEAM_NULL_EXCEPTION #======================#
+    # ======================# TEAM_NULL_ERROR #======================#
     "TeamNullException",
 ]
 
-# ======================# TEAM_NULL_EXCEPTION #======================#
+# ======================# TEAM_NULL_ERROR #======================#
 class TeamNullException(NullException):
     """
     Role:
@@ -41,7 +41,7 @@ class TeamNullException(NullException):
         NullException
     """
     MSG = "Team cannot be null."
-    ERR_CODE = "TEAM_NULL_EXCEPTION"
+    ERR_CODE = "TEAM_NULL_ERROR"
     
     def __init__(
             self,

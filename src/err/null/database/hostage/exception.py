@@ -13,11 +13,11 @@ from typing import Any, Optional
 from err import DatabaseNullException
 
 __all__ = [
-    # ======================# HOSTAGE_DATABASE_NULL_EXCEPTION #======================#
+    # ======================# HOSTAGE_DATABASE_NULL_ERROR #======================#
     "HostageDatabaseNullException",
 ]
 
-# ======================# HOSTAGE_DATABASE_NULL_EXCEPTION #======================#
+# ======================# HOSTAGE_DATABASE_NULL_ERROR #======================#
 class HostageDatabaseNullException(DatabaseNullException):
     """
     Role:
@@ -41,7 +41,7 @@ class HostageDatabaseNullException(DatabaseNullException):
         DatabaseNullException
     """
     MSG = "HostageDatabase cannot be null."
-    ERR_CODE = "HOSTAGE_DATABASE_NULL_EXCEPTION"
+    ERR_CODE = "HOSTAGE_DATABASE_NULL_ERROR"
     
     def __init__(
             self,

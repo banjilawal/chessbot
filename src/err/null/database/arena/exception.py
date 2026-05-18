@@ -13,11 +13,11 @@ from typing import Any, Optional
 from err import DatabaseNullException
 
 __all__ = [
-    # ======================# ARENA_DATABASE_NULL_EXCEPTION #======================#
+    # ======================# ARENA_DATABASE_NULL_ERROR #======================#
     "ArenaDatabaseNullException",
 ]
 
-# ======================# ARENA_DATABASE_NULL_EXCEPTION #======================#
+# ======================# ARENA_DATABASE_NULL_ERROR #======================#
 class ArenaDatabaseNullException(DatabaseNullException):
     """
     Role:
@@ -41,7 +41,7 @@ class ArenaDatabaseNullException(DatabaseNullException):
         DatabaseNullException
     """
     MSG = "ArenaDatabase cannot be null."
-    ERR_CODE = "ARENA_DATABASE_NULL_EXCEPTION"
+    ERR_CODE = "ARENA_DATABASE_NULL_ERROR"
     
     def __init__(
             self,

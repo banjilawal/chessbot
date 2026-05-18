@@ -13,11 +13,11 @@ from typing import Any, Optional
 from err import NullException
 
 __all__ = [
-    # ======================# VECTOR_OPERAND_NULL_EXCEPTION #======================#
+    # ======================# VECTOR_OPERAND_NULL_ERROR #======================#
     "VectorOperandNullException",
 ]
 
-# ======================# VECTOR_OPERAND_NULL_EXCEPTION #======================#
+# ======================# VECTOR_OPERAND_NULL_ERROR #======================#
 class VectorOperandNullException(NullException):
     """
     Role:
@@ -41,7 +41,7 @@ class VectorOperandNullException(NullException):
         NullException
     """
     MSG = "VectorOperand cannot be null."
-    ERR_CODE = "VECTOR_OPERAND_NULL_EXCEPTION"
+    ERR_CODE = "VECTOR_OPERAND_NULL_ERROR"
     
     def __init__(
             self,

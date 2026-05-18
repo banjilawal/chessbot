@@ -13,11 +13,11 @@ from typing import Any, Optional
 from err import NullException
 
 __all__ = [
-    # ======================# GAME_NULL_EXCEPTION #======================#
+    # ======================# GAME_NULL_ERROR #======================#
     "GameNullException",
 ]
 
-# ======================# GAME_NULL_EXCEPTION #======================#
+# ======================# GAME_NULL_ERROR #======================#
 class GameNullException(NullException):
     """
     Role:
@@ -41,7 +41,7 @@ class GameNullException(NullException):
         NullException
     """
     MSG = "Game cannot be null."
-    ERR_CODE = "GAME_NULL_EXCEPTION"
+    ERR_CODE = "GAME_NULL_ERROR"
     
     def __init__(
             self,

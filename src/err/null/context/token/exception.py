@@ -13,14 +13,14 @@ from typing import Any, Optional
 
 
 __all__ = [
-    # ======================# TOKEN_CONTEXT_NULL_EXCEPTION #======================#
+    # ======================# TOKEN_CONTEXT_NULL_ERROR #======================#
     "TokenContextNullException",
 ]
 
 from err import ContextNullException
 
 
-# ======================# TOKEN_CONTEXT_NULL_EXCEPTION #======================#
+# ======================# TOKEN_CONTEXT_NULL_ERROR #======================#
 class TokenContextNullException(ContextNullException):
     """
     Role:
@@ -44,7 +44,7 @@ class TokenContextNullException(ContextNullException):
         ContextNullException
     """
     MSG = "No null logic for TokenContext attribute"
-    ERR_CODE = "TOKEN_CONTEXT_NULL_EXCEPTION"
+    ERR_CODE = "TOKEN_CONTEXT_NULL_ERROR"
     
     def __init__(
             self,

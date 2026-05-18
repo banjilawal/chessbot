@@ -13,11 +13,11 @@ from typing import Any, Optional
 from err import StackNullException
 
 __all__ = [
-    # ======================# HOSTAGE_STACK_NULL_EXCEPTION #======================#
+    # ======================# HOSTAGE_STACK_NULL_ERROR #======================#
     "HostageStackNullException",
 ]
 
-# ======================# HOSTAGE_STACK_NULL_EXCEPTION #======================#
+# ======================# HOSTAGE_STACK_NULL_ERROR #======================#
 class HostageStackNullException(StackNullException):
     """
     Role:
@@ -41,7 +41,7 @@ class HostageStackNullException(StackNullException):
         StackNullException
     """
     MSG = "HostageStack cannot be null."
-    ERR_CODE = "HOSTAGE_STACK_NULL_EXCEPTION"
+    ERR_CODE = "HOSTAGE_STACK_NULL_ERROR"
     
     def __init__(
             self,

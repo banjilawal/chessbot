@@ -13,11 +13,11 @@ from typing import Any, Optional
 from err import NullException
 
 __all__ = [
-    # ======================# DATABASE_NULL_EXCEPTION #======================#
+    # ======================# DATABASE_NULL_ERROR #======================#
     "DatabaseNullException",
 ]
 
-# ======================# DATABASE_NULL_EXCEPTION #======================#
+# ======================# DATABASE_NULL_ERROR #======================#
 class DatabaseNullException(NullException):
     """
     Role:
@@ -41,7 +41,7 @@ class DatabaseNullException(NullException):
         NullException
     """
     MSG = "Database cannot be null."
-    ERR_CODE = "DATABASE_NULL_EXCEPTION"
+    ERR_CODE = "DATABASE_NULL_ERROR"
     
     def __init__(
             self,

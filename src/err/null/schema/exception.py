@@ -13,11 +13,11 @@ from typing import Any, Optional
 from err import NullException
 
 __all__ = [
-    # ======================# SCHEMA_NULL_EXCEPTION #======================#
+    # ======================# SCHEMA_NULL_ERROR #======================#
     "SchemaNullException",
 ]
 
-# ======================# SCHEMA_NULL_EXCEPTION #======================#
+# ======================# SCHEMA_NULL_ERROR #======================#
 class SchemaNullException(NullException):
     """
     Role:
@@ -41,7 +41,7 @@ class SchemaNullException(NullException):
         NullException
     """
     MSG = "Schema cannot be null."
-    ERR_CODE = "SCHEMA_NULL_EXCEPTION"
+    ERR_CODE = "SCHEMA_NULL_ERROR"
     
     def __init__(
             self,

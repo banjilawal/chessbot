@@ -13,7 +13,7 @@ from dataclasses import dataclass
 from typing import Optional
 
 from err import TokenContextNullException
-from model import Coord, Rank, Team, TokenContext, Blueprint
+from model import Coord, OpeningSquare, Rank, Team, TokenContext, Blueprint
 from setting import GameColor
 
 
@@ -25,7 +25,7 @@ class TokenContextBlueprint(Blueprint[TokenContext]):
     color: Optional[GameColor]
     designation: Optional[str]
     current_position: Optional[Coord]
-    opening_square_name: Optional[str]
+    opening_square: Optional[OpeningSquare]
     null_exception = TokenContextNullException()
     model_type = TokenContext
 

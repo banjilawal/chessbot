@@ -13,11 +13,11 @@ from typing import Any, Optional
 from err import NullException
 
 __all__ = [
-    # ======================# SCALAR_NULL_EXCEPTION #======================#
+    # ======================# SCALAR_NULL_ERROR #======================#
     "ScalarNullException",
 ]
 
-# ======================# SCALAR_NULL_EXCEPTION #======================#
+# ======================# SCALAR_NULL_ERROR #======================#
 class ScalarNullException(NullException):
     """
     Role:
@@ -41,7 +41,7 @@ class ScalarNullException(NullException):
         NullException
     """
     MSG = "Scalar cannot be null."
-    ERR_CODE = "SCALAR_NULL_EXCEPTION"
+    ERR_CODE = "SCALAR_NULL_ERROR"
     
     def __init__(
             self,

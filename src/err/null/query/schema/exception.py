@@ -12,14 +12,14 @@ from typing import Any, Optional
 
 
 __all__ = [
-    # ======================# SCHEMA_QUERY_NULL_EXCEPTION #======================#
+    # ======================# SCHEMA_QUERY_NULL_ERROR #======================#
     "SchemaQueryNullException",
 ]
 
 from err import QueryNullException
 
 
-# ======================# SCHEMA_QUERY_NULL_EXCEPTION #======================#
+# ======================# SCHEMA_QUERY_NULL_ERROR #======================#
 class SchemaQueryNullException(QueryNullException):
     """
     Role:
@@ -43,7 +43,7 @@ class SchemaQueryNullException(QueryNullException):
         QueryNullException
     """
     MSG = "No null logic for SchemaQuery attribute"
-    ERR_CODE = "SCHEMA_QUERY_NULL_EXCEPTION"
+    ERR_CODE = "SCHEMA_QUERY_NULL_ERROR"
     
     def __init__(
             self,

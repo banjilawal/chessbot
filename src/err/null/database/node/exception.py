@@ -13,11 +13,11 @@ from typing import Any, Optional
 from err import DatabaseNullException
 
 __all__ = [
-    # ======================# NODE_DATABASE_NULL_EXCEPTION #======================#
+    # ======================# NODE_DATABASE_NULL_ERROR #======================#
     "NodeDatabaseNullException",
 ]
 
-# ======================# NODE_DATABASE_NULL_EXCEPTION #======================#
+# ======================# NODE_DATABASE_NULL_ERROR #======================#
 class NodeDatabaseNullException(DatabaseNullException):
     """
     Role:
@@ -41,7 +41,7 @@ class NodeDatabaseNullException(DatabaseNullException):
         DatabaseNullException
     """
     MSG = "NodeDatabase cannot be null."
-    ERR_CODE = "NODE_DATABASE_NULL_EXCEPTION"
+    ERR_CODE = "NODE_DATABASE_NULL_ERROR"
     
     def __init__(
             self,

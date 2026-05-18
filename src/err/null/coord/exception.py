@@ -13,11 +13,11 @@ from typing import Any, Optional
 from err import NullException
 
 __all__ = [
-    # ======================# COORD_NULL_EXCEPTION #======================#
+    # ======================# COORD_NULL_ERROR #======================#
     "CoordNullException",
 ]
 
-# ======================# COORD_NULL_EXCEPTION #======================#
+# ======================# COORD_NULL_ERROR #======================#
 class CoordNullException(NullException):
     """
     Role:
@@ -41,7 +41,7 @@ class CoordNullException(NullException):
         NullException
     """
     MSG = "Coord cannot be null."
-    ERR_CODE = "COORD_NULL_EXCEPTION"
+    ERR_CODE = "COORD_NULL_ERROR"
     
     def __init__(
             self,

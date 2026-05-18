@@ -13,11 +13,11 @@ from typing import Any, Optional
 from err import NullException
 
 __all__ = [
-    # ======================# NAME_NULL_EXCEPTION #======================#
+    # ======================# NAME_NULL_ERROR #======================#
     "NameNullException",
 ]
 
-# ======================# NAME_NULL_EXCEPTION #======================#
+# ======================# NAME_NULL_ERROR #======================#
 class NameNullException(NullException):
     """
     Role:
@@ -41,7 +41,7 @@ class NameNullException(NullException):
         NullException
     """
     MSG = "Name cannot be null."
-    ERR_CODE = "NAME_NULL_EXCEPTION"
+    ERR_CODE = "NAME_NULL_ERROR"
     
     def __init__(
             self,
