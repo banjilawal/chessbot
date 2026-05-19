@@ -26,7 +26,7 @@ class ArenaQuery(StackQuery[Arena]):
         1.  A list of arenas to search with context.
 
     Attributes:
-        stack: List[Arena]
+        items: List[Arena]
         context: ArenaContext
 
     Provides:
@@ -34,6 +34,6 @@ class ArenaQuery(StackQuery[Arena]):
     Super Class:
         StackQuery
     """
-    stack: List[Arena]
+    items: List[Arena]
     context: ArenaContext
 

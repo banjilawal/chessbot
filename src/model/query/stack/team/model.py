@@ -29,7 +29,7 @@ class TeamQuery(StackQuery[Team]):
 
 
     Attributes:
-        stack: List[Team]
+        items: List[Team]
         context: TeamContext
 
     Provides:
@@ -37,6 +37,6 @@ class TeamQuery(StackQuery[Team]):
     Super Class:
         StackQuery
     """
-    stack: List[Team]
+    items: List[Team]
     context: TeamContext
 

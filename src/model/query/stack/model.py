@@ -18,7 +18,7 @@ from model.query import Query
 T = TypeVar("T")
 
 @dataclass
-class StackQuery(Query, Generic[T]):
+class StackQuery(Query(T, List[T])):
     """
     Role:
         -   Model
@@ -33,7 +33,7 @@ class StackQuery(Query, Generic[T]):
 
 
     Attributes:
-        stack: List[T]
+        items: List[T]
         context: Context[T]
 
     Provides:
@@ -41,6 +41,6 @@ class StackQuery(Query, Generic[T]):
     Super Class:
         Query
     """
-    stack: List[T]
+    items: List[T]
     context: Context[T]
 

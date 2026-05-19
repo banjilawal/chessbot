@@ -28,7 +28,7 @@ class BoardQuery(StackQuery[Board]):
 
 
     Attributes:
-        stack: List[Board]
+        items: List[Board]
         context: BoardContext
 
     Provides:
@@ -36,6 +36,6 @@ class BoardQuery(StackQuery[Board]):
     Super Class:
         StackQuery
     """
-    stack: List[Board]
+    items: List[Board]
     context: BoardContext
 

@@ -28,7 +28,7 @@ class NodeQuery(StackQuery[Node]):
 
 
     Attributes:
-        stack: List[Node]
+        items: List[Node]
         context: NodeContext
 
     Provides:
@@ -36,6 +36,6 @@ class NodeQuery(StackQuery[Node]):
     Super Class:
         StackQuery
     """
-    stack: List[Node]
+    items: List[Node]
     context: NodeContext
 

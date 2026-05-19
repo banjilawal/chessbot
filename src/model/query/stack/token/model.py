@@ -28,7 +28,7 @@ class TokenQuery(StackQuery[Token]):
 
 
     Attributes:
-        stack: List[Token]
+        items: List[Token]
         context: TokenContext
 
     Provides:
@@ -36,6 +36,6 @@ class TokenQuery(StackQuery[Token]):
     Super Class:
         StackQuery
     """
-    stack: List[Token]
+    items: List[Token]
     context: TokenContext
 

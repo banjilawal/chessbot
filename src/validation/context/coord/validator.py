@@ -8,12 +8,11 @@ version: 1.0.1
 """
 
 from __future__ import annotations
-
 from typing import Any, cast
 
-from err import CoordContextValidationException, CoordContextValidationRouteException
+from err import CoordContextValidationException
 from model import CoordContext
-from result import MethodResultType, ValidationResult
+from result import ValidationResult
 from setting import BoardProperty
 from toolkit import CoordContextToolkit
 from util import LoggingLevelRouter
@@ -58,7 +57,6 @@ class CoordContextValidator(Validator[CoordContext]):
                 occur
                     -   The Validation is not primed.
                     -   The enabled attribute fails a safety check.
-                    -   There is no validation path for the attribute.
             2.  Otherwise, send the success result.
         Args:
             candidate: Any,
@@ -67,7 +65,6 @@ class CoordContextValidator(Validator[CoordContext]):
             ValidationResult[CoordContext]
         Raises:
             CoordContextValidationException
-            CoordContextValidationRouteException
         """
         method = f"{cls.__name__}.validate"
         
@@ -103,7 +100,6 @@ class CoordContextValidator(Validator[CoordContext]):
                 ceiling=BoardProperty.MAX_COLUMN_INDEX.value,
                 floor=0,
             )
-
             if validation_result.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(

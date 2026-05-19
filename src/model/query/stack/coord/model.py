@@ -28,7 +28,7 @@ class CoordQuery(StackQuery[Coord]):
 
 
     Attributes:
-        stack: List[Coord]
+        items: List[Coord]
         context: CoordContext
 
     Provides:
@@ -36,6 +36,6 @@ class CoordQuery(StackQuery[Coord]):
     Super Class:
         StackQuery
     """
-    stack: List[Coord]
+    items: List[Coord]
     context: CoordContext
 

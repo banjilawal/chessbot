@@ -28,7 +28,7 @@ class EdgeQuery(StackQuery[Edge]):
 
 
     Attributes:
-        stack: List[Edge]
+        items: List[Edge]
         context: EdgeContext
 
     Provides:
@@ -36,6 +36,6 @@ class EdgeQuery(StackQuery[Edge]):
     Super Class:
         StackQuery
     """
-    stack: List[Edge]
+    items: List[Edge]
     context: EdgeContext
 

@@ -16,9 +16,10 @@ from typing import Generic, TypeVar
 from model import Context
 
 T = TypeVar("T")
+S = TypeVar("S", bound="List, Catalog")
 
 @dataclass
-class Query(ABC, Generic[T]):
+class Query(ABC, Generic[T, S]):
     """
     Role:
         -   Model
@@ -36,5 +37,6 @@ class Query(ABC, Generic[T]):
     Super Class:
     """
     context: Context[T]
+    items: S
     
     

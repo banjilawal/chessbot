@@ -28,7 +28,7 @@ class SquareQuery(StackQuery[Square]):
 
 
     Attributes:
-        stack: List[Square]
+        items: List[Square]
         context: SquareContext
 
     Provides:
@@ -36,6 +36,6 @@ class SquareQuery(StackQuery[Square]):
     Super Class:
         StackQuery
     """
-    stack: List[Square]
+    items: List[Square]
     context: SquareContext
 
