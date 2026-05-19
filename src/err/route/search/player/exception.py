@@ -1,4 +1,4 @@
-# MISSING_src/err/route/search/player/exception.py
+# src/err/route/search/player/exception.py
 
 """
 Module: err.route.search.player.exception
@@ -14,11 +14,11 @@ from err import SearchRouteException
 
 
 __all__ = [
-    # ======================# MISSING_PLAYER_SEARCH_ROUTE #======================#
+    # ======================# PLAYER_SEARCH_ROUTE #======================#
     "PlayerSearchRouteException",
 ]
 
-# ======================# MISSING_PLAYER_SEARCH_ROUTE #======================#
+# ======================# PLAYER_SEARCH_ROUTE #======================#
 class PlayerSearchRouteException(SearchRouteException):
     """
     Role:

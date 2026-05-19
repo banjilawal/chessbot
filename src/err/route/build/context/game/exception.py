@@ -1,4 +1,4 @@
-# MISSING_src/err/route/build/context/game/exception.py
+# src/err/route/build/context/game/exception.py
 
 """
 Module: err.route.build.context.game.exception
@@ -13,14 +13,14 @@ from err import BuildRouteException
 
 
 __all__ = [
-    # ======================# MISSING_GAME_CONTEXT_BUILD_ROUTE #======================#
+    # ======================# GAME_CONTEXT_BUILD_ROUTE #======================#
     "GameContextBuildRouteException",
 ]
 
 from err import ContextBuildRouteException
 
 
-# ======================# MISSING_GAME_CONTEXT_BUILD_ROUTE #======================#
+# ======================# GAME_CONTEXT_BUILD_ROUTE #======================#
 class GameContextBuildRouteException(ContextBuildRouteException):
     """
     Role:

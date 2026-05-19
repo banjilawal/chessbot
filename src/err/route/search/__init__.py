@@ -1,4 +1,4 @@
-# MISSING_src/err/route/search/__init__.py
+# src/err/route/search/__init__.py
 
 """
 Module: err.route.search.__init__
@@ -9,7 +9,7 @@ version: 1.0.1
 
 # ============ ERR.SEARCH PACKAGE ===========#
 
-# MISSING_Packages
+# Packages
 from .arena import *
 from .board import *
 from .context import *
@@ -29,5 +29,5 @@ from .team import *
 from .token import *
 from .vector import *
 
-# MISSING_Modules
+# Modules
 from .exception import SearchRouteException

@@ -1,4 +1,4 @@
-# MISSING_src/err/route/build/board/exception.py
+# src/err/route/build/board/exception.py
 
 """
 Module: err.route.build.board.exception
@@ -15,11 +15,11 @@ from err import BuildRouteException
 
 
 __all__ = [
-    # ======================# MISSING_BOARD_BUILD_ROUTE #======================#
+    # ======================# BOARD_BUILD_ROUTE #======================#
     "BoardBuildRouteException",
 ]
 
-# ======================# MISSING_BOARD_BUILD_ROUTE #======================#
+# ======================# BOARD_BUILD_ROUTE #======================#
 class BoardBuildRouteException(BuildRouteException):
     """
     Role:

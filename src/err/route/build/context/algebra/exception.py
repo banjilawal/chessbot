@@ -1,4 +1,4 @@
-# MISSING_src/err/route/build/context/algebra/exception.py
+# src/err/route/build/context/algebra/exception.py
 
 """
 Module: err.route.build.context.algebra.exception
@@ -13,14 +13,14 @@ from err import BuildRouteException
 
 
 __all__ = [
-    # ======================# MISSING_ALGEBRA_CONTEXT_BUILD_ROUTE #======================#
+    # ======================# ALGEBRA_CONTEXT_BUILD_ROUTE #======================#
     "AlgebraContextBuildRouteException",
 ]
 
 from err import ContextBuildRouteException
 
 
-# ======================# MISSING_ALGEBRA_CONTEXT_BUILD_ROUTE #======================#
+# ======================# ALGEBRA_CONTEXT_BUILD_ROUTE #======================#
 class AlgebraContextBuildRouteException(ContextBuildRouteException):
     """
     Role:

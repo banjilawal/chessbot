@@ -1,4 +1,4 @@
-# MISSING_src/err/route/build/__init__.py
+# src/err/route/build/__init__.py
 
 """
 Module: err.route.build.__init__
@@ -12,11 +12,11 @@ from typing import Any, Optional
 from err import ExecutionRouteException
 
 __all__ = [
-    # ======================# MISSING_BUILD_ROUTE #======================#
+    # ======================# BUILD_ROUTE #======================#
     "BuildRouteException",
 ]
 
-# ======================# MISSING_BUILD_ROUTE #======================#
+# ======================# BUILD_ROUTE #======================#
 class BuildRouteException(ExecutionRouteException):
     """
     Role:

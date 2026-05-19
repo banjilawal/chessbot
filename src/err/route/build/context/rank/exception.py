@@ -1,4 +1,4 @@
-# MISSING_src/err/route/build/context/rank/exception.py
+# src/err/route/build/context/rank/exception.py
 
 """
 Module: err.route.build.context.rank.exception
@@ -13,14 +13,14 @@ from err import BuildRouteException
 
 
 __all__ = [
-    # ======================# MISSING_RANK_CONTEXT_BUILD_ROUTE #======================#
+    # ======================# RANK_CONTEXT_BUILD_ROUTE #======================#
     "RankContextBuildRouteException",
 ]
 
 from err import ContextBuildRouteException
 
 
-# ======================# MISSING_RANK_CONTEXT_BUILD_ROUTE #======================#
+# ======================# RANK_CONTEXT_BUILD_ROUTE #======================#
 class RankContextBuildRouteException(ContextBuildRouteException):
     """
     Role:

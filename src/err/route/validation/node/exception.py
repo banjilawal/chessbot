@@ -1,4 +1,4 @@
-# MISSING_src/err/route/validation/node/exception.py
+# src/err/route/validation/node/exception.py
 
 """
 Module: err.route.validation.node.exception
@@ -13,11 +13,11 @@ from err import ValidationRouteException
 
 
 __all__ = [
-    # ======================# MISSING_NODE_VALIDATION_ROUTE #======================#
+    # ======================# NODE_VALIDATION_ROUTE #======================#
     "NodeValidationRouteException",
 ]
 
-# ======================# MISSING_NODE_VALIDATION_ROUTE #======================#
+# ======================# NODE_VALIDATION_ROUTE #======================#
 class NodeValidationRouteException(ValidationRouteException):
     """
     Role:

@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, cast
 
 from err import (
-    GameColorNullException, TokenContextNullException, TeamContextValidationException,
+    GameColorNullException, TokenContextNullException, TokenContextValidationException,
     ZeroTokenContextFlagsException
 )
 from err.route.validation import TokenContextValidationRouteException
@@ -54,15 +54,12 @@ class TokenContextValidator(Validator[TokenContext]):
             toolkit: TokenContextToolkit | None = None,
     ) -> ValidationResult[TokenContext]:
         """
-        Certify a rank is a TokenContext that is safe to use.
+        Certify a candidate is a TokenContext that is safe to use.
 
         Action:
             1.  Send an exception chain in the ValidationResult if any of the following
                 occur
-                    -   The rank is null.
-                    -   The rank is not a TokenContext.
-                    -   It has no attributes enabled.
-                    -   It has more than one attribute enabled.
+                    -   The Validation is not primed.
                     -   The enabled attribute fails a safety check.
                     -   There is no validation path for the attribute.
             2.  Otherwise, send the success result.
@@ -72,7 +69,8 @@ class TokenContextValidator(Validator[TokenContext]):
         Returns:
             ValidationResult[TokenContext]
         Raises:
-            TeamContextValidationException
+            TokenContextValidationException
+            TokenContextValidationRouteException
         """
         method = f"{cls.__name__}.validate"
         
@@ -90,11 +88,11 @@ class TokenContextValidator(Validator[TokenContext]):
         if priming_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                TeamContextValidationException(
+                TokenContextValidationException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    msg=TeamContextValidationException.MSG,
-                    err_code=TeamContextValidationException.ERR_CODE,
+                    msg=TokenContextValidationException.MSG,
+                    err_code=TokenContextValidationException.ERR_CODE,
                     ex=priming_result.exception
                 )
             )
@@ -109,11 +107,11 @@ class TokenContextValidator(Validator[TokenContext]):
             if validation_result.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
-                    TeamContextValidationException(
+                    TokenContextValidationException(
                         cls_mthd=method,
                         cls_name=cls.__name__,
-                        msg=TeamContextValidationException.MSG,
-                        err_code=TeamContextValidationException.ERR_CODE,
+                        msg=TokenContextValidationException.MSG,
+                        err_code=TokenContextValidationException.ERR_CODE,
                         ex=validation_result.exception
                     )
                 )
@@ -128,11 +126,11 @@ class TokenContextValidator(Validator[TokenContext]):
             if validation_result.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
-                    TeamContextValidationException(
+                    TokenContextValidationException(
                         cls_mthd=method,
                         cls_name=cls.__name__,
-                        msg=TeamContextValidationException.MSG,
-                        err_code=TeamContextValidationException.ERR_CODE,
+                        msg=TokenContextValidationException.MSG,
+                        err_code=TokenContextValidationException.ERR_CODE,
                         ex=validation_result.exception
                     )
                 )
@@ -147,11 +145,11 @@ class TokenContextValidator(Validator[TokenContext]):
             if validation_result.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
-                    TeamContextValidationException(
+                    TokenContextValidationException(
                         cls_mthd=method,
                         cls_name=cls.__name__,
-                        msg=TeamContextValidationException.MSG,
-                        err_code=TeamContextValidationException.ERR_CODE,
+                        msg=TokenContextValidationException.MSG,
+                        err_code=TokenContextValidationException.ERR_CODE,
                         ex=validation_result.exception
                     )
                 )
@@ -166,11 +164,11 @@ class TokenContextValidator(Validator[TokenContext]):
             if validation_result.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
-                    TeamContextValidationException(
+                    TokenContextValidationException(
                         cls_mthd=method,
                         cls_name=cls.__name__,
-                        msg=TeamContextValidationException.MSG,
-                        err_code=TeamContextValidationException.ERR_CODE,
+                        msg=TokenContextValidationException.MSG,
+                        err_code=TokenContextValidationException.ERR_CODE,
                         ex=validation_result.exception
                     )
                 )
@@ -185,11 +183,11 @@ class TokenContextValidator(Validator[TokenContext]):
             if validation_result.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
-                    TeamContextValidationException(
+                    TokenContextValidationException(
                         cls_mthd=method,
                         cls_name=cls.__name__,
-                        msg=TeamContextValidationException.MSG,
-                        err_code=TeamContextValidationException.ERR_CODE,
+                        msg=TokenContextValidationException.MSG,
+                        err_code=TokenContextValidationException.ERR_CODE,
                         ex=validation_result.exception
                     )
                 )
@@ -204,11 +202,11 @@ class TokenContextValidator(Validator[TokenContext]):
             if validation_result.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
-                    TeamContextValidationException(
+                    TokenContextValidationException(
                         cls_mthd=method,
                         cls_name=cls.__name__,
-                        msg=TeamContextValidationException.MSG,
-                        err_code=TeamContextValidationException.ERR_CODE,
+                        msg=TokenContextValidationException.MSG,
+                        err_code=TokenContextValidationException.ERR_CODE,
                         ex=validation_result.exception
                     )
                 )
@@ -225,11 +223,11 @@ class TokenContextValidator(Validator[TokenContext]):
             if validation_result.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
-                    TeamContextValidationException(
+                    TokenContextValidationException(
                         cls_mthd=method,
                         cls_name=cls.__name__,
-                        msg=TeamContextValidationException.MSG,
-                        err_code=TeamContextValidationException.ERR_CODE,
+                        msg=TokenContextValidationException.MSG,
+                        err_code=TokenContextValidationException.ERR_CODE,
                         ex=validation_result.exception
                     )
                 )
@@ -246,11 +244,11 @@ class TokenContextValidator(Validator[TokenContext]):
             if validation_result.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
-                    TeamContextValidationException(
+                    TokenContextValidationException(
                         cls_mthd=method,
                         cls_name=cls.__name__,
-                        msg=TeamContextValidationException.MSG,
-                        err_code=TeamContextValidationException.ERR_CODE,
+                        msg=TokenContextValidationException.MSG,
+                        err_code=TokenContextValidationException.ERR_CODE,
                         ex=validation_result.exception
                     )
                 )
@@ -259,14 +257,14 @@ class TokenContextValidator(Validator[TokenContext]):
         
         # Handle the case that, there is no validation logic for the attribute.
         return ValidationResult.failure(
-            TeamContextValidationException(
+            TokenContextValidationException(
                 cls_mthd=method,
                 cls_name=cls.__name__,
-                msg=TeamContextValidationException.MSG,
-                err_code=TeamContextValidationException.ERR_CODE,
+                msg=TokenContextValidationException.MSG,
+                err_code=TokenContextValidationException.ERR_CODE,
                 ex=TokenContextValidationRouteException(
-                    msg=TeamContextValidationException.MSG,
-                    err_code=TeamContextValidationException.ERR_CODE,
+                    msg=TokenContextValidationRouteException.MSG,
+                    err_code=TokenContextValidationRouteException.ERR_CODE,
                 )
             )
         )

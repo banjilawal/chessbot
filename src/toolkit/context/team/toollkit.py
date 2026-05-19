@@ -22,7 +22,7 @@ class TeamContextToolkit(ContextToolkit[Team]):
         -   Data Holder
         
     Responsibilities:
-        1.  Collection of workers and services that are required for Board tasks.
+        1.  Collection of workers and services that are required for Team tasks.
         2.  Simplifies entry points.
         3.  No logic in the Toolkit.
 

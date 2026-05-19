@@ -1,4 +1,4 @@
-# MISSING_src/err/route/validation/context/hostage/exception.py
+# src/err/route/validation/context/hostage/exception.py
 
 """
 Module: err.route.validation.context.hostage.exception
@@ -13,14 +13,14 @@ from err import ValidationRouteException
 
 
 __all__ = [
-    # ======================# MISSING_HOSTAGE_CONTEXT_VALIDATION_ROUTE #======================#
+    # ======================# HOSTAGE_CONTEXT_VALIDATION_ROUTE #======================#
     "HostageContextValidationRouteException",
 ]
 
 from err import ContextValidationRouteException
 
 
-# ======================# MISSING_HOSTAGE_CONTEXT_VALIDATION_ROUTE #======================#
+# ======================# HOSTAGE_CONTEXT_VALIDATION_ROUTE #======================#
 class HostageContextValidationRouteException(ContextValidationRouteException):
     """
     Role:

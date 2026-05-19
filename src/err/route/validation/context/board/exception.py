@@ -1,4 +1,4 @@
-# MISSING_src/err/route/validation/context/board/exception.py
+# src/err/route/validation/context/board/exception.py
 
 """
 Module: err.route.validation.context.board.exception
@@ -13,14 +13,14 @@ from err import ValidationRouteException
 
 
 __all__ = [
-    # ======================# MISSING_BOARD_CONTEXT_VALIDATION_ROUTE #======================#
+    # ======================# BOARD_CONTEXT_VALIDATION_ROUTE #======================#
     "BoardContextValidationRouteException",
 ]
 
 from err import ContextValidationRouteException
 
 
-# ======================# MISSING_BOARD_CONTEXT_VALIDATION_ROUTE #======================#
+# ======================# BOARD_CONTEXT_VALIDATION_ROUTE #======================#
 class BoardContextValidationRouteException(ContextValidationRouteException):
     """
     Role:

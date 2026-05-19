@@ -1,4 +1,4 @@
-# MISSING_src/err/route/search/context/rank/exception.py
+# src/err/route/search/context/rank/exception.py
 
 """
 Module: err.route.search.context.rank.exception
@@ -13,14 +13,14 @@ from err import SearchRouteException
 
 
 __all__ = [
-    # ======================# MISSING_RANK_CONTEXT_SEARCH_ROUTE #======================#
+    # ======================# RANK_CONTEXT_SEARCH_ROUTE #======================#
     "RankContextSearchRouteException",
 ]
 
 from err import ContextSearchRouteException
 
 
-# ======================# MISSING_RANK_CONTEXT_SEARCH_ROUTE #======================#
+# ======================# RANK_CONTEXT_SEARCH_ROUTE #======================#
 class RankContextSearchRouteException(ContextSearchRouteException):
     """
     Role:

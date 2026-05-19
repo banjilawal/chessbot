@@ -1,4 +1,4 @@
-# MISSING_src/err/route/validation/formation/exception.py
+# src/err/route/validation/formation/exception.py
 
 """
 Module: err.route.validation.formation.exception
@@ -14,11 +14,11 @@ from err import ValidationRouteException
 
 
 __all__ = [
-    # ======================# MISSING_FORMATION_VALIDATION_ROUTE #======================#
+    # ======================# FORMATION_VALIDATION_ROUTE #======================#
     "FormationValidationRouteException",
 ]
 
-# ======================# MISSING_FORMATION_VALIDATION_ROUTE #======================#
+# ======================# FORMATION_VALIDATION_ROUTE #======================#
 class FormationValidationRouteException(ValidationRouteException):
     """
     Role:

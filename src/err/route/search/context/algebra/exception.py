@@ -1,4 +1,4 @@
-# MISSING_src/err/route/search/context/algebra/exception.py
+# src/err/route/search/context/algebra/exception.py
 
 """
 Module: err.route.search.context.algebra.exception
@@ -13,14 +13,14 @@ from err import SearchRouteException
 
 
 __all__ = [
-    # ======================# MISSING_ALGEBRA_CONTEXT_SEARCH_ROUTE #======================#
+    # ======================# ALGEBRA_CONTEXT_SEARCH_ROUTE #======================#
     "AlgebraContextSearchRouteException",
 ]
 
 from err import ContextSearchRouteException
 
 
-# ======================# MISSING_ALGEBRA_CONTEXT_SEARCH_ROUTE #======================#
+# ======================# ALGEBRA_CONTEXT_SEARCH_ROUTE #======================#
 class AlgebraContextSearchRouteException(ContextSearchRouteException):
     """
     Role:

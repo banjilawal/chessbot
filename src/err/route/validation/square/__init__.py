@@ -1,4 +1,4 @@
-# MISSING_src/err/route/validation/square/__init__.py
+# src/err/route/validation/square/__init__.py
 
 """
 Module: err.route.validation.context.square.__init__
@@ -9,8 +9,7 @@ version: 1.0.1
 
 # ============ ERR.ROUTE.VALIDATION.CONTEXT.SQUARE PACKAGE ===========#
 
-# MISSING_Packages
-None
+# Packages
 
-# MISSING_Modules
+# Modules
 from .exception import SquareValidationRouteException

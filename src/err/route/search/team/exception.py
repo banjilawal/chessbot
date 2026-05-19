@@ -1,4 +1,4 @@
-# MISSING_src/err/route/search/team/exception.py
+# src/err/route/search/team/exception.py
 
 """
 Module: err.route.search.team.exception
@@ -14,11 +14,11 @@ from err import SearchRouteException
 
 
 __all__ = [
-    # ======================# MISSING_TEAM_SEARCH_ROUTE #======================#
+    # ======================# TEAM_SEARCH_ROUTE #======================#
     "TeamSearchRouteException",
 ]
 
-# ======================# MISSING_TEAM_SEARCH_ROUTE #======================#
+# ======================# TEAM_SEARCH_ROUTE #======================#
 class TeamSearchRouteException(SearchRouteException):
     """
     Role:

@@ -1,4 +1,4 @@
-# MISSING_src/err/route/validation/game/exception.py
+# src/err/route/validation/game/exception.py
 
 """
 Module: err.route.validation.game.exception
@@ -14,11 +14,11 @@ from err import ValidationRouteException
 
 
 __all__ = [
-    # ======================# MISSING_GAME_VALIDATION_ROUTE #======================#
+    # ======================# GAME_VALIDATION_ROUTE #======================#
     "GameValidationRouteException",
 ]
 
-# ======================# MISSING_GAME_VALIDATION_ROUTE #======================#
+# ======================# GAME_VALIDATION_ROUTE #======================#
 class GameValidationRouteException(ValidationRouteException):
     """
     Role:

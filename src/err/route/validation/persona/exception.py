@@ -1,4 +1,4 @@
-# MISSING_src/err/route/validation/persona/exception.py
+# src/err/route/validation/persona/exception.py
 
 """
 Module: err.route.validation.persona.exception
@@ -14,11 +14,11 @@ from err import ValidationRouteException
 
 
 __all__ = [
-    # ======================# MISSING_PERSONA_VALIDATION_ROUTE #======================#
+    # ======================# PERSONA_VALIDATION_ROUTE #======================#
     "PersonaValidationRouteException",
 ]
 
-# ======================# MISSING_PERSONA_VALIDATION_ROUTE #======================#
+# ======================# PERSONA_VALIDATION_ROUTE #======================#
 class PersonaValidationRouteException(ValidationRouteException):
     """
     Role:

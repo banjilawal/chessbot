@@ -1,4 +1,4 @@
-# MISSING_src/err/route/search/__init__.py
+# src/err/route/search/__init__.py
 
 """
 Module: err.route.search.__init__
@@ -12,11 +12,11 @@ from typing import Any, Optional
 from err import ExecutionRouteException
 
 __all__ = [
-    # ======================# MISSING_SEARCH_ROUTE #======================#
+    # ======================# SEARCH_ROUTE #======================#
     "SearchRouteException",
 ]
 
-# ======================# MISSING_SEARCH_ROUTE #======================#
+# ======================# SEARCH_ROUTE #======================#
 class SearchRouteException(ExecutionRouteException):
     """
     Role:

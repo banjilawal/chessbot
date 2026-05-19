@@ -1,4 +1,4 @@
-# MISSING_src/err/route/search/rank/exception.py
+# src/err/route/search/rank/exception.py
 
 """
 Module: err.route.search.rank.exception
@@ -14,11 +14,11 @@ from err import SearchRouteException
 
 
 __all__ = [
-    # ======================# MISSING_RANK_SEARCH_ROUTE #======================#
+    # ======================# RANK_SEARCH_ROUTE #======================#
     "RankSearchRouteException",
 ]
 
-# ======================# MISSING_RANK_SEARCH_ROUTE #======================#
+# ======================# RANK_SEARCH_ROUTE #======================#
 class RankSearchRouteException(SearchRouteException):
     """
     Role:

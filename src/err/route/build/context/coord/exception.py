@@ -1,4 +1,4 @@
-# MISSING_src/err/route/build/context/coord/exception.py
+# src/err/route/build/context/coord/exception.py
 
 """
 Module: err.route.build.context.coord.exception
@@ -13,14 +13,14 @@ from err import BuildRouteException
 
 
 __all__ = [
-    # ======================# MISSING_COORD_CONTEXT_BUILD_ROUTE #======================#
+    # ======================# COORD_CONTEXT_BUILD_ROUTE #======================#
     "CoordContextBuildRouteException",
 ]
 
 from err import ContextBuildRouteException
 
 
-# ======================# MISSING_COORD_CONTEXT_BUILD_ROUTE #======================#
+# ======================# COORD_CONTEXT_BUILD_ROUTE #======================#
 class CoordContextBuildRouteException(ContextBuildRouteException):
     """
     Role:

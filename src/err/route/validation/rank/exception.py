@@ -1,4 +1,4 @@
-# MISSING_src/err/route/validation/rank/exception.py
+# src/err/route/validation/rank/exception.py
 
 """
 Module: err.route.validation.rank.exception
@@ -14,11 +14,11 @@ from err import ValidationRouteException
 
 
 __all__ = [
-    # ======================# MISSING_RANK_VALIDATION_ROUTE #======================#
+    # ======================# RANK_VALIDATION_ROUTE #======================#
     "RankValidationRouteException",
 ]
 
-# ======================# MISSING_RANK_VALIDATION_ROUTE #======================#
+# ======================# RANK_VALIDATION_ROUTE #======================#
 class RankValidationRouteException(ValidationRouteException):
     """
     Role:

@@ -1,4 +1,4 @@
-# MISSING_src/err/route/search/context/node/exception.py
+# src/err/route/search/context/node/exception.py
 
 """
 Module: err.route.search.context.node.exception
@@ -13,14 +13,14 @@ from err import SearchRouteException
 
 
 __all__ = [
-    # ======================# MISSING_NODE_CONTEXT_SEARCH_ROUTE #======================#
+    # ======================# NODE_CONTEXT_SEARCH_ROUTE #======================#
     "NodeContextSearchRouteException",
 ]
 
 from err import ContextSearchRouteException
 
 
-# ======================# MISSING_NODE_CONTEXT_SEARCH_ROUTE #======================#
+# ======================# NODE_CONTEXT_SEARCH_ROUTE #======================#
 class NodeContextSearchRouteException(ContextSearchRouteException):
     """
     Role:

@@ -1,4 +1,4 @@
-# MISSING_src/err/route/validation/context/schema/exception.py
+# src/err/route/validation/context/schema/exception.py
 
 """
 Module: err.route.validation.context.schema.exception
@@ -13,14 +13,14 @@ from err import ValidationRouteException
 
 
 __all__ = [
-    # ======================# MISSING_SCHEMA_CONTEXT_VALIDATION_ROUTE #======================#
+    # ======================# SCHEMA_CONTEXT_VALIDATION_ROUTE #======================#
     "SchemaContextValidationRouteException",
 ]
 
 from err import ContextValidationRouteException
 
 
-# ======================# MISSING_SCHEMA_CONTEXT_VALIDATION_ROUTE #======================#
+# ======================# SCHEMA_CONTEXT_VALIDATION_ROUTE #======================#
 class SchemaContextValidationRouteException(ContextValidationRouteException):
     """
     Role:

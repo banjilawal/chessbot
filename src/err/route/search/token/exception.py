@@ -1,4 +1,4 @@
-# MISSING_src/err/route/search/token/exception.py
+# src/err/route/search/token/exception.py
 
 """
 Module: err.route.search.token.exception
@@ -14,11 +14,11 @@ from err import SearchRouteException
 
 
 __all__ = [
-    # ======================# MISSING_TOKEN_SEARCH_ROUTE #======================#
+    # ======================# TOKEN_SEARCH_ROUTE #======================#
     "TokenSearchRouteException",
 ]
 
-# ======================# MISSING_TOKEN_SEARCH_ROUTE #======================#
+# ======================# TOKEN_SEARCH_ROUTE #======================#
 class TokenSearchRouteException(SearchRouteException):
     """
     Role:

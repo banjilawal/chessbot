@@ -1,4 +1,4 @@
-# MISSING_src/err/route/validation/vector/exception.py
+# src/err/route/validation/vector/exception.py
 
 """
 Module: err.route.validation.vector.exception
@@ -14,11 +14,11 @@ from err import ValidationRouteException
 
 
 __all__ = [
-    # ======================# MISSING_VECTOR_VALIDATION_ROUTE #======================#
+    # ======================# VECTOR_VALIDATION_ROUTE #======================#
     "VectorValidationRouteException",
 ]
 
-# ======================# MISSING_VECTOR_VALIDATION_ROUTE #======================#
+# ======================# VECTOR_VALIDATION_ROUTE #======================#
 class VectorValidationRouteException(ValidationRouteException):
     """
     Role:

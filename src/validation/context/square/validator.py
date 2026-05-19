@@ -9,13 +9,16 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from typing import Any
+from typing import Any, cast
 
+from err import FormationNullException, SquareContextValidationException, SquareContextValidationRouteException
+from err.null.state.square import SquareStateNullException
 from integrity import SquareValidator, Validator
 from microservice import BoardService, CoordService, SquareService
-from model import SquareContext
+from model import Formation, SquareContext, SquareState
 from result import ValidationResult
 from system import IdentityService, LoggingLevelRouter
+from toolkit import SquareContextToolkit
 
 
 class SquareContextValidator(Validator[SquareContext]):
@@ -40,178 +43,191 @@ class SquareContextValidator(Validator[SquareContext]):
     def validate(
             cls,
             candidate: Any,
-            board_service: BoardService = BoardService(),
-            coord_service: CoordService = CoordService(),
-            square_service: SquareService = SquareService(),
-            identity_service: IdentityService = IdentityService(),
-            square_validator: SquareValidator = SquareValidator(),
+            toolkit: SquareContextToolkit | None = None,
     ) -> ValidationResult[SquareContext]:
         """
-        # ACTION:
-            1.  If the rank fails either
-                    *   A null check.
-                    *   A type check.
-                Send an exception chain in the ValidationResult. Else, cast rank to SquareContext
-                instance context.
-            2.  Send an exception chain in the ValidationResult if either
-                    *   The id
-                    *   The schema
-                    *   The coord
-                    *   The state
-                    *   The board
-                    *   The occupant
-                are does not pass a validation check. by their services, or there is no validation
-                route for the context.
-            3.  The context has been certified as safe, send the validation success result.
-        # PARAMETERS:
-            *   rank (Any)
-            *   board_service (BoardService)
-            *   coord_service (CoordService)
-            *   identity_service: (IdentityService)
-            *   square_validator (SquareValidator)
-        # RETURNS:
-            *   ValidationResult[SquareContext] containing either:
-                    - On failure: Exception.
-                    - On success: Square in the payload
+        Certify a candidate is a SquareContext that is safe to use.
+
+        Action:
+            1.  Send an exception chain in the ValidationResult if any of the following
+                occur
+                    -   The Validation is not primed.
+                    -   The enabled attribute fails a safety check.
+                    -   There is no validation path for the attribute.
+            2.  Otherwise, send the success result.
+        Args:
+            candidate: Any,
+            toolkit: SquareContextToolkit,
+        Returns:
+            ValidationResult[SquareContext]
         Raises:
-            *   TypeError
-            *   NullSquareContextException
-            *   ZeroSquareContextFlagsException
-            *   ExcessSquareContextFlagsException
-            *   SquareContextValidationRouteException
-            *   SquareContextValidationException
+            SquareContextValidationException
+            SquareContextValidationRouteException
         """
-        method = "SquareContextValidator.validate"
+        method = f"{cls.__name__}.validate"
         
-        # Handle the nonexistence case.
-        if candidate is None:
+        # --- Supply any missing dependencies. ---#
+        if toolkit is None:
+            toolkit = SquareContextToolkit()
+        
+        # handle the case that, priming the validator fails.
+        priming_result = toolkit.context_validation_primer.validate(
+            candidate=candidate,
+            context_model=toolkit.context_model_type,
+            null_exception=toolkit.null_context_exception,
+            validator_bootstrapper=toolkit.team_toolkit.validation_bootstrapper
+        )
+        if priming_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 SquareContextValidationException(
-                    msg=f"{method}: {SquareContextValidationException.MSG}",
-                    ex=NullSquareContextException(f"{method}: {NullSquareContextException.MSG}")
+                    cls_mthd=method,
+                    cls_name=cls.__name__,
+                    msg=SquareContextValidationException.MSG,
+                    err_code=SquareContextValidationException.ERR_CODE,
+                    ex=priming_result.exception
                 )
             )
-        # Handle the wrong class case.
-        if not isinstance(candidate, SquareContext):
-            # Send the exception chain on failure.
-            return ValidationResult.failure(
-                SquareContextValidationException(
-                    msg=f"{method}: {SquareContextValidationException.MSG}",
-                    ex=TypeError(
-                        f"{method}: Was expecting a SquareContext, got {type(candidate).__name__} instead."
-                    )
-                )
-            )
-        # --- Cast the candidate into SquareContext for additional tests. ---#
+        # --- Cast the candidate into SquareContext for routing attribute testing ---#
         context = cast(SquareContext, candidate)
         
-        # Handle the case of searching with no attribute-value provided.
-        flag_count = len(context.to_dict())
-        if flag_count == 0:
-            # Send the exception chain on failure.
-            return ValidationResult.failure(
-                SquareContextValidationException(
-                    msg=f"{method}: {SquareContextValidationException.MSG}",
-                    ex=ZeroSquareContextFlagsException(f"{method}: {ZeroSquareContextFlagsException.MSG}")
-                )
-            )
-        # Handle the case of too many attributes being used in a search.
-        if flag_count > 1:
-            # Send the exception chain on failure.
-            return ValidationResult.failure(
-                SquareContextValidationException(
-                    msg=f"{method}: {SquareContextValidationException.MSG}",
-                    ex=ExcessSquareContextFlagsException(
-                        f"{method}: {ExcessSquareContextFlagsException.MSG}"
-                    )
-                )
-            )
-        # --- Route to the appropriate validation branch. ---#
-        
+        # Certification for the search-by-id target.
         # Certification for the search-by-id target.
         if context.id is not None:
-            validation = identity_service.validate_id(candidate=context.id)
-            if validation.is_failure:
+            validation_result = toolkit.team_toolkit.identity_service.validate_id(
+                candidate=context.id
+            )
+            if validation_result.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
                     SquareContextValidationException(
-                        msg=f"{method}: {SquareContextValidationException.MSG}",
-                        ex=validation.exception
+                        cls_mthd=method,
+                        cls_name=cls.__name__,
+                        msg=SquareContextValidationException.MSG,
+                        err_code=SquareContextValidationException.ERR_CODE,
+                        ex=validation_result.exception
                     )
                 )
-            # On certification success return the id_SquareContext in the ValidationResult.
-            return ValidationResult.success(payload=context)
+            # On validation success forward the work product to the caller.
+            return ValidationResult.success(context)
         
         # Certification for the search-by-schema target.
-        if context.designation is not None:
-            validation = identity_service.validate_name(context.designation)
-            if validation.is_failure:
+        if context.name is not None:
+            validation_result = toolkit.square_toolkit.identity_service.validate_name(
+                candidate=context.name
+            )
+            if validation_result.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
                     SquareContextValidationException(
-                        msg=f"{method}: {SquareContextValidationException.MSG}",
-                        ex=validation.exception
+                        cls_mthd=method,
+                        cls_name=cls.__name__,
+                        msg=SquareContextValidationException.MSG,
+                        err_code=SquareContextValidationException.ERR_CODE,
+                        ex=validation_result.exception
                     )
                 )
-            # On certification success return the name_SquareContext in the ValidationResult.
-            return ValidationResult.success(payload=context)
+            # On validation success forward the work product to the caller.
+            return ValidationResult.success(context)
         
         # Certification for the search-by-coord target.
         if context.coord is not None:
-            validation = coord_service.validator.validate(context.coord)
-            if validation.is_failure:
+            validation_result = toolkit.square_toolkit.coord_validator.validate(
+                candidate=context.coord
+            )
+            if validation_result.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
                     SquareContextValidationException(
-                        msg=f"{method}: {SquareContextValidationException.MSG}",
-                        ex=validation.exception
+                        cls_mthd=method,
+                        cls_name=cls.__name__,
+                        msg=SquareContextValidationException.MSG,
+                        err_code=SquareContextValidationException.ERR_CODE,
+                        ex=validation_result.exception
                     )
                 )
-            # On certification success return the coord_SquareContext in the ValidationResult.
-            return ValidationResult.success(payload=context)
+            # On validation success forward the work product to the caller.
+            return ValidationResult.success(context)
         
         # Certification for the search-by-board target.
         if context.board is not None:
-            validation = board_service.validator.validate(context.board)
-            if validation.is_failure:
+            validation_result = toolkit.square_toolkit.board_validator.validate(
+                candidate=context.board
+            )
+            if validation_result.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
                     SquareContextValidationException(
-                        msg=f"{method}: {SquareContextValidationException.MSG}",
-                        ex=validation.exception
+                        cls_mthd=method,
+                        cls_name=cls.__name__,
+                        msg=SquareContextValidationException.MSG,
+                        err_code=SquareContextValidationException.ERR_CODE,
+                        ex=validation_result.exception
                     )
                 )
-            # On certification success return the board_SquareContext in the ValidationResult.
-            return ValidationResult.success(payload=context)
+            # On validation success forward the work product to the caller.
+            return ValidationResult.success(context)
         
         # Certification for the search-by-occupant target.
         if context.occupant is not None:
-            validation = square_service.validator.validate(context.occupant)
-            if validation.is_failure:
+            validation_result = toolkit.square_toolkit.token_validator.validate(
+                candidate=context.occupant
+            )
+            if validation_result.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
                     SquareContextValidationException(
-                        msg=f"{method}: {SquareContextValidationException.MSG}",
-                        ex=validation.exception
+                        cls_mthd=method,
+                        cls_name=cls.__name__,
+                        msg=SquareContextValidationException.MSG,
+                        err_code=SquareContextValidationException.ERR_CODE,
+                        ex=validation_result.exception
                     )
                 )
-            # On certification success return the board_SquareContext in the ValidationResult.
-            return ValidationResult.success(payload=context)
+            # On validation success forward the work product to the caller.
+            return ValidationResult.success(context)
         
         # Certification for the search-by-state.
         if context.state is not None:
-            validation = square_validator.validate_square_state(context.occupant)
-            if validation.is_failure:
+            validation_result = toolkit.team_toolkit.validation_bootstrapper.validate(
+                candidate=context.state,
+                model_type=SquareState,
+                null_exception=SquareStateNullException()
+            )
+            if validation_result.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
                     SquareContextValidationException(
-                        msg=f"{method}: {SquareContextValidationException.MSG}",
-                        ex=validation.exception
+                        cls_mthd=method,
+                        cls_name=cls.__name__,
+                        msg=SquareContextValidationException.MSG,
+                        err_code=SquareContextValidationException.ERR_CODE,
+                        ex=validation_result.exception
                     )
                 )
-            # On certification success return the board_SquareContext in the ValidationResult.
-            return ValidationResult.success(payload=context)
+            # On validation success forward the work product to the caller.
+            return ValidationResult.success(context)
+        
+        # Certification for the search-by-formation.
+        if context.formation is not None:
+            validation_result = toolkit.team_toolkit.validation_bootstrapper.validate(
+                candidate=context.formation,
+                model_type=Formation,
+                null_exception=FormationNullException()
+            )
+            if validation_result.is_failure:
+                # Send the exception chain on failure.
+                return ValidationResult.failure(
+                    SquareContextValidationException(
+                        cls_mthd=method,
+                        cls_name=cls.__name__,
+                        msg=SquareContextValidationException.MSG,
+                        err_code=SquareContextValidationException.ERR_CODE,
+                        ex=validation_result.exception
+                    )
+                )
+            # On validation success forward the work product to the caller.
+            return ValidationResult.success(context)
         
         # Return the exception chain if there is no validation route for the context.
         return ValidationResult.failure(

@@ -1,4 +1,4 @@
-# MISSING_src/err/route/search/arena/exception.py
+# src/err/route/search/arena/exception.py
 
 """
 Module: err.route.search.arena.exception
@@ -13,11 +13,11 @@ from typing import Any, Optional
 from err import SearchRouteException
 
 __all__ = [
-    # ======================# MISSING_ARENA_SEARCH_ROUTE #======================#
+    # ======================# ARENA_SEARCH_ROUTE #======================#
     "ArenaSearchRouteException",
 ]
 
-# ======================# MISSING_ARENA_SEARCH_ROUTE #======================#
+# ======================# ARENA_SEARCH_ROUTE #======================#
 class ArenaSearchRouteException(SearchRouteException):
     """
     Role:

@@ -11,6 +11,8 @@ version: 1.0.1
 
 # Packages
 from .build import *
+from .search import *
+from .validation import *
 
 # Modules
 from .exception import ExecutionRouteException

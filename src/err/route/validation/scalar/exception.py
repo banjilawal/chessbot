@@ -1,4 +1,4 @@
-# MISSING_src/err/route/validation/scalar/exception.py
+# src/err/route/validation/scalar/exception.py
 
 """
 Module: err.route.validation.scalar.exception
@@ -14,11 +14,11 @@ from err import ValidationRouteException
 
 
 __all__ = [
-    # ======================# MISSING_SCALAR_VALIDATION_ROUTE #======================#
+    # ======================# SCALAR_VALIDATION_ROUTE #======================#
     "ScalarValidationRouteException",
 ]
 
-# ======================# MISSING_SCALAR_VALIDATION_ROUTE #======================#
+# ======================# SCALAR_VALIDATION_ROUTE #======================#
 class ScalarValidationRouteException(ValidationRouteException):
     """
     Role:

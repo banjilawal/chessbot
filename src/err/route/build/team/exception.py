@@ -1,4 +1,4 @@
-# MISSING_src/err/route/build/team/exception.py
+# src/err/route/build/team/exception.py
 
 """
 Module: err.route.build.team.exception
@@ -14,11 +14,11 @@ from err import BuildRouteException
 
 
 __all__ = [
-    # ======================# MISSING_TEAM_BUILD_ROUTE #======================#
+    # ======================# TEAM_BUILD_ROUTE #======================#
     "TeamBuildRouteException",
 ]
 
-# ======================# MISSING_TEAM_BUILD_ROUTE #======================#
+# ======================# TEAM_BUILD_ROUTE #======================#
 class TeamBuildRouteException(BuildRouteException):
     """
     Role:

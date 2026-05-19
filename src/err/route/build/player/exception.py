@@ -1,4 +1,4 @@
-# MISSING_src/err/route/build/player/exception.py
+# src/err/route/build/player/exception.py
 
 """
 Module: err.route.build.player.exception
@@ -14,11 +14,11 @@ from err import BuildRouteException
 
 
 __all__ = [
-    # ======================# MISSING_PLAYER_BUILD_ROUTE #======================#
+    # ======================# PLAYER_BUILD_ROUTE #======================#
     "PlayerBuildRouteException",
 ]
 
-# ======================# MISSING_PLAYER_BUILD_ROUTE #======================#
+# ======================# PLAYER_BUILD_ROUTE #======================#
 class PlayerBuildRouteException(BuildRouteException):
     """
     Role:

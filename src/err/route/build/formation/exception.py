@@ -1,4 +1,4 @@
-# MISSING_src/err/route/build/formation/exception.py
+# src/err/route/build/formation/exception.py
 
 """
 Module: err.route.build.formation.exception
@@ -14,11 +14,11 @@ from err import BuildRouteException
 
 
 __all__ = [
-    # ======================# MISSING_FORMATION_BUILD_ROUTE #======================#
+    # ======================# FORMATION_BUILD_ROUTE #======================#
     "FormationBuildRouteException",
 ]
 
-# ======================# MISSING_FORMATION_BUILD_ROUTE #======================#
+# ======================# FORMATION_BUILD_ROUTE #======================#
 class FormationBuildRouteException(BuildRouteException):
     """
     Role:

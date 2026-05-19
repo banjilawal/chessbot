@@ -33,7 +33,7 @@ class SquareContextBlueprint(Blueprint[SquareContext]):
         state: Optional[State]
         formation: Optional[Formation]
         null_exception: TamContextNullException
-        context_model_type = TeamContext
+        context_model_type = SquareContext
 
     Provides:
 
@@ -47,4 +47,4 @@ class SquareContextBlueprint(Blueprint[SquareContext]):
     state: Optional[SquareState] = None
     formation: Optional[Formation] = None
     null_exception = SquareContextNullException()
-    model_type = SquareContext
+    context_model_type = SquareContext

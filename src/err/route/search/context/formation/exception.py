@@ -1,4 +1,4 @@
-# MISSING_src/err/route/search/context/formation/exception.py
+# src/err/route/search/context/formation/exception.py
 
 """
 Module: err.route.search.context.formation.exception
@@ -13,14 +13,14 @@ from err import SearchRouteException
 
 
 __all__ = [
-    # ======================# MISSING_FORMATION_CONTEXT_SEARCH_ROUTE #======================#
+    # ======================# FORMATION_CONTEXT_SEARCH_ROUTE #======================#
     "FormationContextSearchRouteException",
 ]
 
 from err import ContextSearchRouteException
 
 
-# ======================# MISSING_FORMATION_CONTEXT_SEARCH_ROUTE #======================#
+# ======================# FORMATION_CONTEXT_SEARCH_ROUTE #======================#
 class FormationContextSearchRouteException(ContextSearchRouteException):
     """
     Role:

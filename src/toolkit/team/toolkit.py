@@ -44,3 +44,4 @@ class TeamToolkit(Toolkit[Team]):
     board_validator: BoardValidator = BoardValidator()
     identity_service: IdentityService = IdentityService()
     player_validator: PlayerValidator = PlayerValidator()
+    validation_bootstrapper: ValidationBootstrapper = ValidationBootstrapper()

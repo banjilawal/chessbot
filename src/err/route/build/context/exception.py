@@ -1,4 +1,4 @@
-# MISSING_src/err/route/build/context/exception.py
+# src/err/route/build/context/exception.py
 
 """
 Module: err.route.build.context.exception
@@ -14,11 +14,11 @@ from err import BuildRouteException
 
 
 __all__ = [
-    # ======================# MISSING_CONTEXT_BUILD_ROUTE #======================#
+    # ======================# CONTEXT_BUILD_ROUTE #======================#
     "ContextBuildRouteException",
 ]
 
-# ======================# MISSING_CONTEXT_BUILD_ROUTE #======================#
+# ======================# CONTEXT_BUILD_ROUTE #======================#
 class ContextBuildRouteException(BuildRouteException):
     """
     Role:

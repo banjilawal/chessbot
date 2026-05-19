@@ -1,4 +1,4 @@
-# MISSING_src/err/route/build/scalar/exception.py
+# src/err/route/build/scalar/exception.py
 
 """
 Module: err.route.build.scalar.exception
@@ -14,11 +14,11 @@ from err import BuildRouteException
 
 
 __all__ = [
-    # ======================# MISSING_SCALAR_BUILD_ROUTE #======================#
+    # ======================# SCALAR_BUILD_ROUTE #======================#
     "ScalarBuildRouteException",
 ]
 
-# ======================# MISSING_SCALAR_BUILD_ROUTE #======================#
+# ======================# SCALAR_BUILD_ROUTE #======================#
 class ScalarBuildRouteException(BuildRouteException):
     """
     Role:

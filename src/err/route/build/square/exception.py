@@ -1,4 +1,4 @@
-# MISSING_src/err/route/build/square/exception.py
+# src/err/route/build/square/exception.py
 
 """
 Module: err.route.build.square.exception
@@ -14,11 +14,11 @@ from err import BuildRouteException
 
 
 __all__ = [
-    # ======================# MISSING_SQUARE_BUILD_ROUTE #======================#
+    # ======================# SQUARE_BUILD_ROUTE #======================#
     "SquareBuildRouteException",
 ]
 
-# ======================# MISSING_SQUARE_BUILD_ROUTE #======================#
+# ======================# SQUARE_BUILD_ROUTE #======================#
 class SquareBuildRouteException(BuildRouteException):
     """
     Role:

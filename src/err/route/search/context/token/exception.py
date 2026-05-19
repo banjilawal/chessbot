@@ -1,4 +1,4 @@
-# MISSING_src/err/route/search/context/token/exception.py
+# src/err/route/search/context/token/exception.py
 
 """
 Module: err.route.search.context.token.exception
@@ -14,14 +14,14 @@ from err import SearchRouteException
 
 
 __all__ = [
-    # ======================# MISSING_TOKEN_CONTEXT_SEARCH_ROUTE #======================#
+    # ======================# TOKEN_CONTEXT_SEARCH_ROUTE #======================#
     "TokenContextSearchRouteException",
 ]
 
 from err import ContextSearchRouteException
 
 
-# ======================# MISSING_TOKEN_CONTEXT_SEARCH_ROUTE #======================#
+# ======================# TOKEN_CONTEXT_SEARCH_ROUTE #======================#
 class TokenContextSearchRouteException(ContextSearchRouteException):
     """
     Role:

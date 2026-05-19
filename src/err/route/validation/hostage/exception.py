@@ -1,4 +1,4 @@
-# MISSING_src/err/route/validation/hostage/exception.py
+# src/err/route/validation/hostage/exception.py
 
 """
 Module: err.route.validation.hostage.exception
@@ -14,11 +14,11 @@ from err import ValidationRouteException
 
 
 __all__ = [
-    # ======================# MISSING_HOSTAGE_VALIDATION_ROUTE #======================#
+    # ======================# HOSTAGE_VALIDATION_ROUTE #======================#
     "HostageValidationRouteException",
 ]
 
-# ======================# MISSING_HOSTAGE_VALIDATION_ROUTE #======================#
+# ======================# HOSTAGE_VALIDATION_ROUTE #======================#
 class HostageValidationRouteException(ValidationRouteException):
     """
     Role:

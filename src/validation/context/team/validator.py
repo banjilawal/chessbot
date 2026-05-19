@@ -11,30 +11,38 @@ from __future__ import annotations
 
 from typing import Any, cast
 
-from err import SchemaNullException, TeamContextValidationException
 from model import Schema, TeamContext
 from result import ValidationResult
-from toolkit.build.context.team.builder import TeamContextToolkit
+from toolkit import TeamContextToolkit
 from util import LoggingLevelRouter
 from validation import Validator
+from err import SchemaNullException, TeamContextValidationException, TeamContextValidationRouteException
+
+
+
 
 
 class TeamContextValidator(Validator[TeamContext]):
     """
-     Role:Validation, Data Integrity Guarantor, Security.
+    Role
+        -   Transaction Worker
+        -   Integrity Maintenance
+        -   Consistency Assurance
+        -   Process Runner
 
     Responsibilities:
-    1.  Ensure a TeamContext instance is certified safe, reliable and consistent before use.
-    2.  If verification fails indicate the reason in an exception returned to the caller.
+        1.  Ensure a TeamContext instance is certified safe, reliable and consistent before use.
 
-    Super Class:
-        *   Validator
+    Attributes:
 
     Provides:
+        -   def validate(
+                    candidate: Any,
+                    toolkit: TeamContextToolkit,
+            ) -> ValidationResult[TeamContext]:
 
-
-    # INHERITED ATTRIBUTES:
-    None
+    Super Class:
+        Validator
     """
     @classmethod
     @LoggingLevelRouter.monitor
@@ -44,30 +52,23 @@ class TeamContextValidator(Validator[TeamContext]):
             toolkit: TeamContextToolkit | None = None,
     ) -> ValidationResult[TeamContext]:
         """
-        # ACTION:
-            1.  If the rank fails existence or type tests send the exception in the ValidationResult.
-                Else, cast to TeamContext instance context.
-            2.  If one-and-only-one context attribute is not null return an exception in the ValidationResult.
-            3.  If there is no certification route for the attribute return an exception in the ValidationResult.
-            4.  If the certification route exists use the appropriate service or validation to send either an exception
-                chain the ValidationResult or the context.
-        # PARAMETERS:
-            *   rank (Any)
-            *   color_validator (ColorValidator)
-            *   player_service (PlayerService)
-            *   board_service (BoardService)
-            *   identity_service (IdentityService)
-        # RETURNS:
-            *   ValidationResult[TeamContext] containing either:
-                    - On failure: Exception.
-                    - On success: TeamContext in the payload.
+        Certify a candidate is a TeamContext that is safe to use.
+
+        Action:
+            1.  Send an exception chain in the ValidationResult if any of the following
+                occur
+                    -   The Validation is not primed.
+                    -   The enabled attribute fails a safety check.
+                    -   There is no validation path for the attribute.
+            2.  Otherwise, send the success result.
+        Args:
+            candidate: Any,
+            toolkit: TeamContextToolkit,
+        Returns:
+            ValidationResult[TeamContext]
         Raises:
-            *   TypeError
-            *   NullTeamContextException
-            *   ZeroTeamContextFlagsException
-            *   BoardTeamContextFlagsException
-            *   TeamContextValidationException
-            *   TeamContextValidationRouteException
+            TeamContextValidationException
+            TeamContextValidationRouteException
         """
         method = f"{cls.__name__}.validate"
         
@@ -80,7 +81,7 @@ class TeamContextValidator(Validator[TeamContext]):
             candidate=candidate,
             context_model=toolkit.context_model_type,
             null_exception=toolkit.null_context_exception,
-            validator_bootstrapper=toolkit.token_toolkit.validation_bootstrap
+            validator_bootstrapper=toolkit.team_toolkit.validation_bootstrapper
         )
         if priming_result.is_failure:
             # Send the exception chain on failure.
@@ -117,7 +118,7 @@ class TeamContextValidator(Validator[TeamContext]):
         
         # Certification for the search-by-owner target.
         if context.owner is not None:
-            validation_result = toolkit.team_toolkit.player_service.validator.validate(
+            validation_result = toolkit.team_toolkit.player_validator.validate(
                 candidate=context.owner
             )
             if validation_result.is_failure:
@@ -156,7 +157,7 @@ class TeamContextValidator(Validator[TeamContext]):
         
         # Certification for the search-by-color target.
         if context.schema is not None:
-            validation_result = toolkit.token_toolkit.validation_bootstrap.validate(
+            validation_result = toolkit.team_toolkit.validation_bootstrapper.validate(
                 candidate=context.schema,
                 model_type=Schema,
                 null_exception=SchemaNullException()
@@ -178,9 +179,13 @@ class TeamContextValidator(Validator[TeamContext]):
         # Return the exception chain if there is no validation route for the context.
         return ValidationResult.failure(
             TeamContextValidationException(
-                msg=f"{method}: {TeamContextValidationException.ERR_CODE}",
+                cls_mthd=method,
+                cls_name=cls.__name__,
+                msg=TeamContextValidationException.MSG,
+                err_code=TeamContextValidationException.ERR_CODE,
                 ex=TeamContextValidationRouteException(
-                    f"{method}: {TeamContextValidationRouteException.MSG}"
+                    msg=TeamContextValidationRouteException.MSG,
+                    err_code=TeamContextValidationRouteException.ERR_CODE,
                 )
             )
         )

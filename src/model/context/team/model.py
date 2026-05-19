@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, Dict, Optional
 
 from model import Board, Context, Player, Schema, Team
-from system import GameColor
+from setting import GameColor
 
 
 class TeamContext(Context[Team]):
@@ -28,7 +28,7 @@ class TeamContext(Context[Team]):
     Attributes:
             id: Optional[int]
             board: Optional[Board]
-            player: Optional[Player]
+            owner: Optional[Player]
             color: Optional[GameColor]
 
     Provides:
@@ -38,7 +38,7 @@ class TeamContext(Context[Team]):
         Context
     """
     board: Optional[Board] = None
-    player: Optional[Player] = None
+    owner: Optional[Player] = None
     color: Optional[GameColor] = None
     schema: Optional[Schema] = None
     
@@ -47,7 +47,7 @@ class TeamContext(Context[Team]):
         return {
             "id": self.id,
             "board": self.board,
-            "owner": self.player,
+            "owner": self.owner,
             "color": self.color,
             "schema": self.schema,
         }

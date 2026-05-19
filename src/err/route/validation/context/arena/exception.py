@@ -1,4 +1,4 @@
-# MISSING_src/err/route/validation/context/arena/exception.py
+# src/err/route/validation/context/arena/exception.py
 
 """
 Module: err.route.validation.context.arena.exception
@@ -13,14 +13,14 @@ from err import ValidationRouteException
 
 
 __all__ = [
-    # ======================# MISSING_ARENA_CONTEXT_VALIDATION_ROUTE #======================#
+    # ======================# ARENA_CONTEXT_VALIDATION_ROUTE #======================#
     "ArenaContextValidationRouteException",
 ]
 
 from err import ContextValidationRouteException
 
 
-# ======================# MISSING_ARENA_CONTEXT_VALIDATION_ROUTE #======================#
+# ======================# ARENA_CONTEXT_VALIDATION_ROUTE #======================#
 class ArenaContextValidationRouteException(ContextValidationRouteException):
     """
     Role:

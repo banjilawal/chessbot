@@ -1,4 +1,4 @@
-# MISSING_src/err/route/search/node/exception.py
+# src/err/route/search/node/exception.py
 
 """
 Module: err.route.search.node.exception
@@ -13,11 +13,11 @@ from err import SearchRouteException
 
 
 __all__ = [
-    # ======================# MISSING_NODE_SEARCH_ROUTE #======================#
+    # ======================# NODE_SEARCH_ROUTE #======================#
     "NodeSearchRouteException",
 ]
 
-# ======================# MISSING_NODE_SEARCH_ROUTE #======================#
+# ======================# NODE_SEARCH_ROUTE #======================#
 class NodeSearchRouteException(SearchRouteException):
     """
     Role:

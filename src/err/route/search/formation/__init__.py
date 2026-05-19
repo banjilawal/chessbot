@@ -1,4 +1,4 @@
-# MISSING_src/err/route/search/formation/__init__.py
+# src/err/route/search/formation/__init__.py
 
 """
 Module: err.route.search.context.formation.__init__
@@ -9,8 +9,7 @@ version: 1.0.1
 
 # ============ ERR.ROUTE.SEARCH.CONTEXT.FORMATION PACKAGE ===========#
 
-# MISSING_Packages
-None
+# Packages
 
-# MISSING_Modules
+# Modules
 from .exception import FormationSearchRouteException

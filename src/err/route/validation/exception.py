@@ -1,22 +1,26 @@
-# MISSING_src/err/route/validation/__init__.py
+# src/err/route/validation/exception.py
 
 """
-Module: err.route.validation.__init__
+Module: err.route.validation.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
 """
+
 from __future__ import annotations
 from typing import Any, Optional
 
 from err import ExecutionRouteException
 
 __all__ = [
-    # ======================# MISSING_VALIDATION_ROUTE #======================#
+    # ======================# VALIDATION_ROUTE #======================#
     "ValidationRouteException",
 ]
 
-# ======================# MISSING_VALIDATION_ROUTE #======================#
+from result import MethodResultType
+
+
+# ======================# VALIDATION_ROUTE #======================#
 class ValidationRouteException(ExecutionRouteException):
     """
     Role:
@@ -40,10 +44,10 @@ class ValidationRouteException(ExecutionRouteException):
     Super Class:
         ExecutionRouteException
     """
-    MSG = "One of  validation routes is missing."
+    MSG = "One of validation routes is missing."
     ERR_CODE = "VALIDATION_ROUTE"
-    MTHD_RSLT = "ValidationResult"
-    _mthd_rslt_type = Optional[str]
+    MTHD_RSLT_TYPE = MethodResultType.VALIDATION_RESULT
+
     
     def __init__(
             self,
@@ -54,6 +58,7 @@ class ValidationRouteException(ExecutionRouteException):
             cls_name: Optional[str] | None = None,
             ex: Optional[Exception] | None = None,
             err_code: Optional[str] | None = None,
+            mthd_rslt_type: Optional[MethodResultType] | None = None,
     ):
         """
         Args:
@@ -64,10 +69,11 @@ class ValidationRouteException(ExecutionRouteException):
             cls_name: Optional[str]
             cls_mthd: Optional[str]
             err_code: Optional[str]
+            mthd_result_type: Optional[MethodResultType]
         """
         msg = msg or self.MSG
-        mthd_rslt = self.MTHD_RSLT
         err_code = err_code or self.ERR_CODE
+        mthd_rslt_type = mthd_rslt_type or self.MTHD_RSLT_TYPE
         super().__init__(
             ex=ex,
             msg=msg,
@@ -76,12 +82,5 @@ class ValidationRouteException(ExecutionRouteException):
             err_code=err_code,
             cls_name=cls_name,
             cls_mthd=cls_mthd,
+            mthd_rslt_type=mthd_rslt_type,
         )
-        self._mthd_rslt = mthd_rslt
-    
-    @property
-    def mthd_rslt(self) -> Optional[str]:
-        return self._mthd_rslt
-    
-    def __str__(self):
-        return f"{super().__str__()},  mthd_rslt_type:{self._mthd_rslt}"

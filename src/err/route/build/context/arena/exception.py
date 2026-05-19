@@ -1,4 +1,4 @@
-# MISSING_src/err/route/build/context/arena/exception.py
+# src/err/route/build/context/arena/exception.py
 
 """
 Module: err.route.build.context.arena.exception
@@ -13,14 +13,14 @@ from err import BuildRouteException
 
 
 __all__ = [
-    # ======================# MISSING_ARENA_CONTEXT_BUILD_ROUTE #======================#
+    # ======================# ARENA_CONTEXT_BUILD_ROUTE #======================#
     "ArenaContextBuildRouteException",
 ]
 
 from err import ContextBuildRouteException
 
 
-# ======================# MISSING_ARENA_CONTEXT_BUILD_ROUTE #======================#
+# ======================# ARENA_CONTEXT_BUILD_ROUTE #======================#
 class ArenaContextBuildRouteException(ContextBuildRouteException):
     """
     Role:

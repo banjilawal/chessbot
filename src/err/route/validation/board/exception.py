@@ -1,4 +1,4 @@
-# MISSING_src/err/route/validation/board/exception.py
+# src/err/route/validation/board/exception.py
 
 """
 Module: err.route.validation.board.exception
@@ -15,11 +15,11 @@ from err import ValidationRouteException
 
 
 __all__ = [
-    # ======================# MISSING_BOARD_VALIDATION_ROUTE #======================#
+    # ======================# BOARD_VALIDATION_ROUTE #======================#
     "BoardValidationRouteException",
 ]
 
-# ======================# MISSING_BOARD_VALIDATION_ROUTE #======================#
+# ======================# BOARD_VALIDATION_ROUTE #======================#
 class BoardValidationRouteException(ValidationRouteException):
     """
     Role:

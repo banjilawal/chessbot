@@ -1,4 +1,4 @@
-# MISSING_src/err/route/search/context/team/exception.py
+# src/err/route/search/context/team/exception.py
 
 """
 Module: err.route.search.context.team.exception
@@ -13,14 +13,14 @@ from err import SearchRouteException
 
 
 __all__ = [
-    # ======================# MISSING_TEAM_CONTEXT_SEARCH_ROUTE #======================#
+    # ======================# TEAM_CONTEXT_SEARCH_ROUTE #======================#
     "TeamContextSearchRouteException",
 ]
 
 from err import ContextSearchRouteException
 
 
-# ======================# MISSING_TEAM_CONTEXT_SEARCH_ROUTE #======================#
+# ======================# TEAM_CONTEXT_SEARCH_ROUTE #======================#
 class TeamContextSearchRouteException(ContextSearchRouteException):
     """
     Role:

@@ -10,16 +10,17 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
+from err import ChessException
 
 __all__ = [
-    # ======================# EXECUTION_ROUTE_EXCEPTION #======================#
+    # ======================# EXECUTION_ROUTE_ERROR #======================#
     "ExecutionRouteException",
 ]
 
-from err import ChessException
+from result import MethodResultType
 
 
-# ======================# EXECUTION_ROUTE_EXCEPTION #======================#
+# ======================# EXECUTION_ROUTE_ERROR #======================#
 class ExecutionRouteException(ChessException):
     """
     Role:
@@ -36,6 +37,7 @@ class ExecutionRouteException(ChessException):
         cls_name: Optional[str]
         cls_mthd: Optional[str]
         err_code: Optional[str]
+        mthd_rslt_type: Optional[MethodRsltType]
 
     Provides
 
@@ -45,7 +47,7 @@ class ExecutionRouteException(ChessException):
         ChessException
     """
     MSG = "Missing execution route."
-    ERR_CODE = "EXECUTION_ROUTE_EXCEPTION"
+    ERR_CODE = "EXECUTION_ROUTE_ERROR"
     
     def __init__(
             self,
@@ -56,6 +58,7 @@ class ExecutionRouteException(ChessException):
             cls_name: Optional[str] | None = None,
             cls_mthd: Optional[str] | None = None,
             err_code: Optional[str] | None = None,
+            mthd_rslt_type: Optional[MethodResultType] | None = None,
     ):
         """
         Args:
@@ -66,6 +69,7 @@ class ExecutionRouteException(ChessException):
             cls_name: Optional[str]
             cls_mthd: Optional[str]
             err_code: Optional[str]
+            mthd_rslt_type: Optional[MethodResultType]
         """
         msg = msg or self.MSG
         err_code = err_code or self.ERR_CODE
@@ -77,4 +81,5 @@ class ExecutionRouteException(ChessException):
             err_code=err_code,
             cls_name=cls_name,
             cls_mthd=cls_mthd,
+            mthd_rslt_type=mthd_rslt_type,
         )

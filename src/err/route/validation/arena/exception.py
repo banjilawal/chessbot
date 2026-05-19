@@ -1,4 +1,4 @@
-# MISSING_src/err/route/validation/arena/exception.py
+# src/err/route/validation/arena/exception.py
 
 """
 Module: err.route.validation.arena.exception
@@ -13,11 +13,11 @@ from typing import Any, Optional
 from err import ValidationRouteException
 
 __all__ = [
-    # ======================# MISSING_ARENA_VALIDATION_ROUTE #======================#
+    # ======================# ARENA_VALIDATION_ROUTE #======================#
     "ArenaValidationRouteException",
 ]
 
-# ======================# MISSING_ARENA_VALIDATION_ROUTE #======================#
+# ======================# ARENA_VALIDATION_ROUTE #======================#
 class ArenaValidationRouteException(ValidationRouteException):
     """
     Role:

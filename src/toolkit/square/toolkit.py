@@ -9,14 +9,18 @@ version: 1.0.1
 
 from __future__ import annotations
 
+from dataclasses import dataclass
+
 from analysis import SquareCollisionAnalyst
 from integrity import BoardValidator, CoordValidator
 from microservice import FormationService, IdentityService
 from model import Square
 from operation import ValidationBootstrapper
 from toolkit import Toolkit
+from validation import TokenValidator
 
 
+@dataclass
 class SquareToolkit(Toolkit[Square]):
     """
     Role:
@@ -33,25 +37,33 @@ class SquareToolkit(Toolkit[Square]):
         coord_validator: CoordValidator
         identity_service: IdentityService
         formation_service: FormationService
-        collision_analyst: SquareCollisionAnalyst
+        square_collision_analyst: SquareCollisionAnalyst
     
     Provides:
     
     Super Class:
         Toolkit
     """
-    [
+    DEPENDENCIES =[
         IdentityService,
         FormationService,
         BoardValidator,
         CoordValidator,
         SquareCollisionAnalyst,
-        ValidationBootstrapper
+        ValidationBootstrapper,
     ]
-    _coord_validator: CoordValidator
-    _board_validator: BoardValidator
-    _formation_service: FormationService
-    _collision_analyst: SquareCollisionAnalyst
+    
+    SERVICE_DEPENDENCIES = [
+        IdentityService,
+        FormationService,
+    ]
+    identity_service: IdentityService()
+    formation_service: FormationService()
+    board_validator: BoardValidator()
+    coord_validator: CoordValidator()
+    square_collision_analyst: SquareCollisionAnalyst()
+    token_validator: TokenValidator()
+    
     
     def __init__(
             self,

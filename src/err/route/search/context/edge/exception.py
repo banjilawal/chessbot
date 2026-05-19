@@ -1,4 +1,4 @@
-# MISSING_src/err/route/search/context/edge/exception.py
+# src/err/route/search/context/edge/exception.py
 
 """
 Module: err.route.search.context.edge.exception
@@ -13,14 +13,14 @@ from err import SearchRouteException
 
 
 __all__ = [
-    # ======================# MISSING_EDGE_CONTEXT_SEARCH_ROUTE #======================#
+    # ======================# EDGE_CONTEXT_SEARCH_ROUTE #======================#
     "EdgeContextSearchRouteException",
 ]
 
 from err import ContextSearchRouteException
 
 
-# ======================# MISSING_EDGE_CONTEXT_SEARCH_ROUTE #======================#
+# ======================# EDGE_CONTEXT_SEARCH_ROUTE #======================#
 class EdgeContextSearchRouteException(ContextSearchRouteException):
     """
     Role:

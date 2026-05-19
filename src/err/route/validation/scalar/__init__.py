@@ -1,4 +1,4 @@
-# MISSING_src/err/route/validation/scalar/__init__.py
+# src/err/route/validation/scalar/__init__.py
 
 """
 Module: err.route.validation.context.scalar.__init__
@@ -9,8 +9,7 @@ version: 1.0.1
 
 # ============ ERR.ROUTE.VALIDATION.CONTEXT.SCALAR PACKAGE ===========#
 
-# MISSING_Packages
-None
+# Packages
 
-# MISSING_Modules
+# Modules
 from .exception import ScalarValidationRouteException

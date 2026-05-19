@@ -1,4 +1,4 @@
-# MISSING_src/err/route/search/schema/exception.py
+# src/err/route/search/schema/exception.py
 
 """
 Module: err.route.search.schema.exception
@@ -14,11 +14,11 @@ from err import SearchRouteException
 
 
 __all__ = [
-    # ======================# MISSING_SCHEMA_SEARCH_ROUTE #======================#
+    # ======================# SCHEMA_SEARCH_ROUTE #======================#
     "SchemaSearchRouteException",
 ]
 
-# ======================# MISSING_SCHEMA_SEARCH_ROUTE #======================#
+# ======================# SCHEMA_SEARCH_ROUTE #======================#
 class SchemaSearchRouteException(SearchRouteException):
     """
     Role:

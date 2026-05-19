@@ -1,4 +1,4 @@
-# MISSING_src/err/route/search/board/exception.py
+# src/err/route/search/board/exception.py
 
 """
 Module: err.route.search.board.exception
@@ -15,11 +15,11 @@ from err import SearchRouteException
 
 
 __all__ = [
-    # ======================# MISSING_BOARD_SEARCH_ROUTE #======================#
+    # ======================# BOARD_SEARCH_ROUTE #======================#
     "BoardSearchRouteException",
 ]
 
-# ======================# MISSING_BOARD_SEARCH_ROUTE #======================#
+# ======================# BOARD_SEARCH_ROUTE #======================#
 class BoardSearchRouteException(SearchRouteException):
     """
     Role:

@@ -1,4 +1,4 @@
-# MISSING_src/err/route/build/context/board/exception.py
+# src/err/route/build/context/board/exception.py
 
 """
 Module: err.route.build.context.board.exception
@@ -13,14 +13,14 @@ from err import BuildRouteException
 
 
 __all__ = [
-    # ======================# MISSING_BOARD_CONTEXT_BUILD_ROUTE #======================#
+    # ======================# BOARD_CONTEXT_BUILD_ROUTE #======================#
     "BoardContextBuildRouteException",
 ]
 
 from err import ContextBuildRouteException
 
 
-# ======================# MISSING_BOARD_CONTEXT_BUILD_ROUTE #======================#
+# ======================# BOARD_CONTEXT_BUILD_ROUTE #======================#
 class BoardContextBuildRouteException(ContextBuildRouteException):
     """
     Role:

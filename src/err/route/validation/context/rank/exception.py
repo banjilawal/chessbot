@@ -1,4 +1,4 @@
-# MISSING_src/err/route/validation/context/rank/exception.py
+# src/err/route/validation/context/rank/exception.py
 
 """
 Module: err.route.validation.context.rank.exception
@@ -13,14 +13,14 @@ from err import ValidationRouteException
 
 
 __all__ = [
-    # ======================# MISSING_RANK_CONTEXT_VALIDATION_ROUTE #======================#
+    # ======================# RANK_CONTEXT_VALIDATION_ROUTE #======================#
     "RankContextValidationRouteException",
 ]
 
 from err import ContextValidationRouteException
 
 
-# ======================# MISSING_RANK_CONTEXT_VALIDATION_ROUTE #======================#
+# ======================# RANK_CONTEXT_VALIDATION_ROUTE #======================#
 class RankContextValidationRouteException(ContextValidationRouteException):
     """
     Role:

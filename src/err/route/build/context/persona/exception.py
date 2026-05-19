@@ -1,4 +1,4 @@
-# MISSING_src/err/route/build/context/persona/exception.py
+# src/err/route/build/context/persona/exception.py
 
 """
 Module: err.route.build.context.persona.exception
@@ -13,14 +13,14 @@ from err import BuildRouteException
 
 
 __all__ = [
-    # ======================# MISSING_PERSONA_CONTEXT_BUILD_ROUTE #======================#
+    # ======================# PERSONA_CONTEXT_BUILD_ROUTE #======================#
     "PersonaContextBuildRouteException",
 ]
 
 from err import ContextBuildRouteException
 
 
-# ======================# MISSING_PERSONA_CONTEXT_BUILD_ROUTE #======================#
+# ======================# PERSONA_CONTEXT_BUILD_ROUTE #======================#
 class PersonaContextBuildRouteException(ContextBuildRouteException):
     """
     Role:

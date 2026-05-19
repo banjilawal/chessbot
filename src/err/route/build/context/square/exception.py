@@ -1,4 +1,4 @@
-# MISSING_src/err/route/build/context/square/exception.py
+# src/err/route/build/context/square/exception.py
 
 """
 Module: err.route.build.context.square.exception
@@ -13,14 +13,14 @@ from err import BuildRouteException
 
 
 __all__ = [
-    # ======================# MISSING_SQUARE_CONTEXT_BUILD_ROUTE #======================#
+    # ======================# SQUARE_CONTEXT_BUILD_ROUTE #======================#
     "SquareContextBuildRouteException",
 ]
 
 from err import ContextBuildRouteException
 
 
-# ======================# MISSING_SQUARE_CONTEXT_BUILD_ROUTE #======================#
+# ======================# SQUARE_CONTEXT_BUILD_ROUTE #======================#
 class SquareContextBuildRouteException(ContextBuildRouteException):
     """
     Role:

@@ -1,4 +1,4 @@
-# MISSING_src/err/route/build/token/exception.py
+# src/err/route/build/token/exception.py
 
 """
 Module: err.route.build.token.exception
@@ -14,11 +14,11 @@ from err import BuildRouteException
 
 
 __all__ = [
-    # ======================# MISSING_TOKEN_BUILD_ROUTE #======================#
+    # ======================# TOKEN_BUILD_ROUTE #======================#
     "TokenBuildRouteException",
 ]
 
-# ======================# MISSING_TOKEN_BUILD_ROUTE #======================#
+# ======================# TOKEN_BUILD_ROUTE #======================#
 class TokenBuildRouteException(BuildRouteException):
     """
     Role:

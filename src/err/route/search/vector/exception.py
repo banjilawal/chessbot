@@ -1,4 +1,4 @@
-# MISSING_src/err/route/search/vector/exception.py
+# src/err/route/search/vector/exception.py
 
 """
 Module: err.route.search.vector.exception
@@ -14,11 +14,11 @@ from err import SearchRouteException
 
 
 __all__ = [
-    # ======================# MISSING_VECTOR_SEARCH_ROUTE #======================#
+    # ======================# VECTOR_SEARCH_ROUTE #======================#
     "VectorSearchRouteException",
 ]
 
-# ======================# MISSING_VECTOR_SEARCH_ROUTE #======================#
+# ======================# VECTOR_SEARCH_ROUTE #======================#
 class VectorSearchRouteException(SearchRouteException):
     """
     Role:

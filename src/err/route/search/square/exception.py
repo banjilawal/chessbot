@@ -1,4 +1,4 @@
-# MISSING_src/err/route/search/square/exception.py
+# src/err/route/search/square/exception.py
 
 """
 Module: err.route.search.square.exception
@@ -14,11 +14,11 @@ from err import SearchRouteException
 
 
 __all__ = [
-    # ======================# MISSING_SQUARE_SEARCH_ROUTE #======================#
+    # ======================# SQUARE_SEARCH_ROUTE #======================#
     "SquareSearchRouteException",
 ]
 
-# ======================# MISSING_SQUARE_SEARCH_ROUTE #======================#
+# ======================# SQUARE_SEARCH_ROUTE #======================#
 class SquareSearchRouteException(SearchRouteException):
     """
     Role:

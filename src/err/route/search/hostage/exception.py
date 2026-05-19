@@ -1,4 +1,4 @@
-# MISSING_src/err/route/search/hostage/exception.py
+# src/err/route/search/hostage/exception.py
 
 """
 Module: err.route.search.hostage.exception
@@ -14,11 +14,11 @@ from err import SearchRouteException
 
 
 __all__ = [
-    # ======================# MISSING_HOSTAGE_SEARCH_ROUTE #======================#
+    # ======================# HOSTAGE_SEARCH_ROUTE #======================#
     "HostageSearchRouteException",
 ]
 
-# ======================# MISSING_HOSTAGE_SEARCH_ROUTE #======================#
+# ======================# HOSTAGE_SEARCH_ROUTE #======================#
 class HostageSearchRouteException(SearchRouteException):
     """
     Role:

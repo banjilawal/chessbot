@@ -1,4 +1,4 @@
-# MISSING_src/err/route/validation/token/exception.py
+# src/err/route/validation/token/exception.py
 
 """
 Module: err.route.validation.token.exception
@@ -14,11 +14,11 @@ from err import ValidationRouteException
 
 
 __all__ = [
-    # ======================# MISSING_TOKEN_VALIDATION_ROUTE #======================#
+    # ======================# TOKEN_VALIDATION_ROUTE #======================#
     "TokenValidationRouteException",
 ]
 
-# ======================# MISSING_TOKEN_VALIDATION_ROUTE #======================#
+# ======================# TOKEN_VALIDATION_ROUTE #======================#
 class TokenValidationRouteException(ValidationRouteException):
     """
     Role:

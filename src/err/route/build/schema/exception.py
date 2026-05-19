@@ -1,4 +1,4 @@
-# MISSING_src/err/route/build/schema/exception.py
+# src/err/route/build/schema/exception.py
 
 """
 Module: err.route.build.schema.exception
@@ -14,11 +14,11 @@ from err import BuildRouteException
 
 
 __all__ = [
-    # ======================# MISSING_SCHEMA_BUILD_ROUTE #======================#
+    # ======================# SCHEMA_BUILD_ROUTE #======================#
     "SchemaBuildRouteException",
 ]
 
-# ======================# MISSING_SCHEMA_BUILD_ROUTE #======================#
+# ======================# SCHEMA_BUILD_ROUTE #======================#
 class SchemaBuildRouteException(BuildRouteException):
     """
     Role:

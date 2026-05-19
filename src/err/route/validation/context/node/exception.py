@@ -1,4 +1,4 @@
-# MISSING_src/err/route/validation/context/node/exception.py
+# src/err/route/validation/context/node/exception.py
 
 """
 Module: err.route.validation.context.node.exception
@@ -13,14 +13,14 @@ from err import ValidationRouteException
 
 
 __all__ = [
-    # ======================# MISSING_NODE_CONTEXT_VALIDATION_ROUTE #======================#
+    # ======================# NODE_CONTEXT_VALIDATION_ROUTE #======================#
     "NodeContextValidationRouteException",
 ]
 
 from err import ContextValidationRouteException
 
 
-# ======================# MISSING_NODE_CONTEXT_VALIDATION_ROUTE #======================#
+# ======================# NODE_CONTEXT_VALIDATION_ROUTE #======================#
 class NodeContextValidationRouteException(ContextValidationRouteException):
     """
     Role:

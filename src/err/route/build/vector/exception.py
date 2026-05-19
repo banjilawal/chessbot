@@ -1,4 +1,4 @@
-# MISSING_src/err/route/build/vector/exception.py
+# src/err/route/build/vector/exception.py
 
 """
 Module: err.route.build.vector.exception
@@ -14,11 +14,11 @@ from err import BuildRouteException
 
 
 __all__ = [
-    # ======================# MISSING_VECTOR_BUILD_ROUTE #======================#
+    # ======================# VECTOR_BUILD_ROUTE #======================#
     "VectorBuildRouteException",
 ]
 
-# ======================# MISSING_VECTOR_BUILD_ROUTE #======================#
+# ======================# VECTOR_BUILD_ROUTE #======================#
 class VectorBuildRouteException(BuildRouteException):
     """
     Role:

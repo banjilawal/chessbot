@@ -1,4 +1,4 @@
-# MISSING_src/err/route/search/context/coord/exception.py
+# src/err/route/search/context/coord/exception.py
 
 """
 Module: err.route.search.context.coord.exception
@@ -13,14 +13,14 @@ from err import SearchRouteException
 
 
 __all__ = [
-    # ======================# MISSING_COORD_CONTEXT_SEARCH_ROUTE #======================#
+    # ======================# COORD_CONTEXT_SEARCH_ROUTE #======================#
     "CoordContextSearchRouteException",
 ]
 
 from err import ContextSearchRouteException
 
 
-# ======================# MISSING_COORD_CONTEXT_SEARCH_ROUTE #======================#
+# ======================# COORD_CONTEXT_SEARCH_ROUTE #======================#
 class CoordContextSearchRouteException(ContextSearchRouteException):
     """
     Role:

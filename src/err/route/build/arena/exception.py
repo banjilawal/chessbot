@@ -1,4 +1,4 @@
-# MISSING_src/err/route/build/arena/exception.py
+# src/err/route/build/arena/exception.py
 
 """
 Module: err.route.build.arena.exception
@@ -13,11 +13,11 @@ from typing import Any, Optional
 from err import BuildRouteException
 
 __all__ = [
-    # ======================# MISSING_ARENA_BUILD_ROUTE #======================#
+    # ======================# ARENA_BUILD_ROUTE #======================#
     "ArenaBuildRouteException",
 ]
 
-# ======================# MISSING_ARENA_BUILD_ROUTE #======================#
+# ======================# ARENA_BUILD_ROUTE #======================#
 class ArenaBuildRouteException(BuildRouteException):
     """
     Role:

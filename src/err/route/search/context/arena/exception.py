@@ -1,4 +1,4 @@
-# MISSING_src/err/route/search/context/arena/exception.py
+# src/err/route/search/context/arena/exception.py
 
 """
 Module: err.route.search.context.arena.exception
@@ -13,14 +13,14 @@ from err import SearchRouteException
 
 
 __all__ = [
-    # ======================# MISSING_ARENA_CONTEXT_SEARCH_ROUTE #======================#
+    # ======================# ARENA_CONTEXT_SEARCH_ROUTE #======================#
     "ArenaContextSearchRouteException",
 ]
 
 from err import ContextSearchRouteException
 
 
-# ======================# MISSING_ARENA_CONTEXT_SEARCH_ROUTE #======================#
+# ======================# ARENA_CONTEXT_SEARCH_ROUTE #======================#
 class ArenaContextSearchRouteException(ContextSearchRouteException):
     """
     Role:

@@ -1,4 +1,4 @@
-# MISSING_src/err/route/validation/context/exception.py
+# src/err/route/validation/context/exception.py
 
 """
 Module: err.route.validation.context.exception
@@ -14,11 +14,11 @@ from err import ValidationRouteException
 
 
 __all__ = [
-    # ======================# MISSING_CONTEXT_VALIDATION_ROUTE #======================#
+    # ======================# CONTEXT_VALIDATION_ROUTE #======================#
     "ContextValidationRouteException",
 ]
 
-# ======================# MISSING_CONTEXT_VALIDATION_ROUTE #======================#
+# ======================# CONTEXT_VALIDATION_ROUTE #======================#
 class ContextValidationRouteException(ValidationRouteException):
     """
     Role:

@@ -1,4 +1,4 @@
-# MISSING_src/err/route/build/rank/exception.py
+# src/err/route/build/rank/exception.py
 
 """
 Module: err.route.build.rank.exception
@@ -14,11 +14,11 @@ from err import BuildRouteException
 
 
 __all__ = [
-    # ======================# MISSING_RANK_BUILD_ROUTE #======================#
+    # ======================# RANK_BUILD_ROUTE #======================#
     "RankBuildRouteException",
 ]
 
-# ======================# MISSING_RANK_BUILD_ROUTE #======================#
+# ======================# RANK_BUILD_ROUTE #======================#
 class RankBuildRouteException(BuildRouteException):
     """
     Role:

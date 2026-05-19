@@ -1,4 +1,4 @@
-# MISSING_src/err/route/search/persona/exception.py
+# src/err/route/search/persona/exception.py
 
 """
 Module: err.route.search.persona.exception
@@ -14,11 +14,11 @@ from err import SearchRouteException
 
 
 __all__ = [
-    # ======================# MISSING_PERSONA_SEARCH_ROUTE #======================#
+    # ======================# PERSONA_SEARCH_ROUTE #======================#
     "PersonaSearchRouteException",
 ]
 
-# ======================# MISSING_PERSONA_SEARCH_ROUTE #======================#
+# ======================# PERSONA_SEARCH_ROUTE #======================#
 class PersonaSearchRouteException(SearchRouteException):
     """
     Role:

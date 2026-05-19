@@ -1,4 +1,4 @@
-# MISSING_src/err/route/search/scalar/exception.py
+# src/err/route/search/scalar/exception.py
 
 """
 Module: err.route.search.scalar.exception
@@ -14,11 +14,11 @@ from err import SearchRouteException
 
 
 __all__ = [
-    # ======================# MISSING_SCALAR_SEARCH_ROUTE #======================#
+    # ======================# SCALAR_SEARCH_ROUTE #======================#
     "ScalarSearchRouteException",
 ]
 
-# ======================# MISSING_SCALAR_SEARCH_ROUTE #======================#
+# ======================# SCALAR_SEARCH_ROUTE #======================#
 class ScalarSearchRouteException(SearchRouteException):
     """
     Role:

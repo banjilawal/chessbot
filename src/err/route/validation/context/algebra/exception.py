@@ -1,4 +1,4 @@
-# MISSING_src/err/route/validation/context/algebra/exception.py
+# src/err/route/validation/context/algebra/exception.py
 
 """
 Module: err.route.validation.context.algebra.exception
@@ -13,14 +13,14 @@ from err import ValidationRouteException
 
 
 __all__ = [
-    # ======================# MISSING_ALGEBRA_CONTEXT_VALIDATION_ROUTE #======================#
+    # ======================# ALGEBRA_CONTEXT_VALIDATION_ROUTE #======================#
     "AlgebraContextValidationRouteException",
 ]
 
 from err import ContextValidationRouteException
 
 
-# ======================# MISSING_ALGEBRA_CONTEXT_VALIDATION_ROUTE #======================#
+# ======================# ALGEBRA_CONTEXT_VALIDATION_ROUTE #======================#
 class AlgebraContextValidationRouteException(ContextValidationRouteException):
     """
     Role:

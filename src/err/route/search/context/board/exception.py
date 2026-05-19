@@ -1,4 +1,4 @@
-# MISSING_src/err/route/search/context/board/exception.py
+# src/err/route/search/context/board/exception.py
 
 """
 Module: err.route.search.context.board.exception
@@ -13,14 +13,14 @@ from err import SearchRouteException
 
 
 __all__ = [
-    # ======================# MISSING_BOARD_CONTEXT_SEARCH_ROUTE #======================#
+    # ======================# BOARD_CONTEXT_SEARCH_ROUTE #======================#
     "BoardContextSearchRouteException",
 ]
 
 from err import ContextSearchRouteException
 
 
-# ======================# MISSING_BOARD_CONTEXT_SEARCH_ROUTE #======================#
+# ======================# BOARD_CONTEXT_SEARCH_ROUTE #======================#
 class BoardContextSearchRouteException(ContextSearchRouteException):
     """
     Role:

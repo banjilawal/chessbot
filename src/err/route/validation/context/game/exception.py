@@ -1,4 +1,4 @@
-# MISSING_src/err/route/validation/context/game/exception.py
+# src/err/route/validation/context/game/exception.py
 
 """
 Module: err.route.validation.context.game.exception
@@ -13,14 +13,14 @@ from err import ValidationRouteException
 
 
 __all__ = [
-    # ======================# MISSING_GAME_CONTEXT_VALIDATION_ROUTE #======================#
+    # ======================# GAME_CONTEXT_VALIDATION_ROUTE #======================#
     "GameContextValidationRouteException",
 ]
 
 from err import ContextValidationRouteException
 
 
-# ======================# MISSING_GAME_CONTEXT_VALIDATION_ROUTE #======================#
+# ======================# GAME_CONTEXT_VALIDATION_ROUTE #======================#
 class GameContextValidationRouteException(ContextValidationRouteException):
     """
     Role:

@@ -1,4 +1,4 @@
-# MISSING_src/err/route/build/context/formation/exception.py
+# src/err/route/build/context/formation/exception.py
 
 """
 Module: err.route.build.context.formation.exception
@@ -13,14 +13,14 @@ from err import BuildRouteException
 
 
 __all__ = [
-    # ======================# MISSING_FORMATION_CONTEXT_BUILD_ROUTE #======================#
+    # ======================# FORMATION_CONTEXT_BUILD_ROUTE #======================#
     "FormationContextBuildRouteException",
 ]
 
 from err import ContextBuildRouteException
 
 
-# ======================# MISSING_FORMATION_CONTEXT_BUILD_ROUTE #======================#
+# ======================# FORMATION_CONTEXT_BUILD_ROUTE #======================#
 class FormationContextBuildRouteException(ContextBuildRouteException):
     """
     Role:

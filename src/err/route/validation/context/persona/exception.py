@@ -1,4 +1,4 @@
-# MISSING_src/err/route/validation/context/persona/exception.py
+# src/err/route/validation/context/persona/exception.py
 
 """
 Module: err.route.validation.context.persona.exception
@@ -13,14 +13,14 @@ from err import ValidationRouteException
 
 
 __all__ = [
-    # ======================# MISSING_PERSONA_CONTEXT_VALIDATION_ROUTE #======================#
+    # ======================# PERSONA_CONTEXT_VALIDATION_ROUTE #======================#
     "PersonaContextValidationRouteException",
 ]
 
 from err import ContextValidationRouteException
 
 
-# ======================# MISSING_PERSONA_CONTEXT_VALIDATION_ROUTE #======================#
+# ======================# PERSONA_CONTEXT_VALIDATION_ROUTE #======================#
 class PersonaContextValidationRouteException(ContextValidationRouteException):
     """
     Role:

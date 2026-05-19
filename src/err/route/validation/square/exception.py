@@ -1,4 +1,4 @@
-# MISSING_src/err/route/validation/square/exception.py
+# src/err/route/validation/square/exception.py
 
 """
 Module: err.route.validation.square.exception
@@ -14,11 +14,11 @@ from err import ValidationRouteException
 
 
 __all__ = [
-    # ======================# MISSING_SQUARE_VALIDATION_ROUTE #======================#
+    # ======================# SQUARE_VALIDATION_ROUTE #======================#
     "SquareValidationRouteException",
 ]
 
-# ======================# MISSING_SQUARE_VALIDATION_ROUTE #======================#
+# ======================# SQUARE_VALIDATION_ROUTE #======================#
 class SquareValidationRouteException(ValidationRouteException):
     """
     Role:

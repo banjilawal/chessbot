@@ -1,4 +1,4 @@
-# MISSING_src/err/route/search/context/persona/exception.py
+# src/err/route/search/context/persona/exception.py
 
 """
 Module: err.route.search.context.persona.exception
@@ -13,14 +13,14 @@ from err import SearchRouteException
 
 
 __all__ = [
-    # ======================# MISSING_PERSONA_CONTEXT_SEARCH_ROUTE #======================#
+    # ======================# PERSONA_CONTEXT_SEARCH_ROUTE #======================#
     "PersonaContextSearchRouteException",
 ]
 
 from err import ContextSearchRouteException
 
 
-# ======================# MISSING_PERSONA_CONTEXT_SEARCH_ROUTE #======================#
+# ======================# PERSONA_CONTEXT_SEARCH_ROUTE #======================#
 class PersonaContextSearchRouteException(ContextSearchRouteException):
     """
     Role:

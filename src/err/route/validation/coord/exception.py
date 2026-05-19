@@ -1,4 +1,4 @@
-# MISSING_src/err/route/validation/coord/exception.py
+# src/err/route/validation/coord/exception.py
 
 """
 Module: err.route.validation.coord.exception
@@ -14,11 +14,11 @@ from err import ValidationRouteException
 
 
 __all__ = [
-    # ======================# MISSING_COORD_VALIDATION_ROUTE #======================#
+    # ======================# COORD_VALIDATION_ROUTE #======================#
     "CoordValidationRouteException",
 ]
 
-# ======================# MISSING_COORD_VALIDATION_ROUTE #======================#
+# ======================# COORD_VALIDATION_ROUTE #======================#
 class CoordValidationRouteException(ValidationRouteException):
     """
     Role:

@@ -1,4 +1,4 @@
-# MISSING_src/err/route/search/context/game/exception.py
+# src/err/route/search/context/game/exception.py
 
 """
 Module: err.route.search.context.game.exception
@@ -13,14 +13,14 @@ from err import SearchRouteException
 
 
 __all__ = [
-    # ======================# MISSING_GAME_CONTEXT_SEARCH_ROUTE #======================#
+    # ======================# GAME_CONTEXT_SEARCH_ROUTE #======================#
     "GameContextSearchRouteException",
 ]
 
 from err import ContextSearchRouteException
 
 
-# ======================# MISSING_GAME_CONTEXT_SEARCH_ROUTE #======================#
+# ======================# GAME_CONTEXT_SEARCH_ROUTE #======================#
 class GameContextSearchRouteException(ContextSearchRouteException):
     """
     Role:

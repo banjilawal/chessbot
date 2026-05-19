@@ -1,4 +1,4 @@
-# MISSING_src/err/route/build/node/exception.py
+# src/err/route/build/node/exception.py
 
 """
 Module: err.route.build.node.exception
@@ -13,11 +13,11 @@ from err import BuildRouteException
 
 
 __all__ = [
-    # ======================# MISSING_NODE_BUILD_ROUTE #======================#
+    # ======================# NODE_BUILD_ROUTE #======================#
     "NodeBuildRouteException",
 ]
 
-# ======================# MISSING_NODE_BUILD_ROUTE #======================#
+# ======================# NODE_BUILD_ROUTE #======================#
 class NodeBuildRouteException(BuildRouteException):
     """
     Role:

@@ -1,4 +1,4 @@
-# MISSING_src/err/route/search/formation/exception.py
+# src/err/route/search/formation/exception.py
 
 """
 Module: err.route.search.formation.exception
@@ -14,11 +14,11 @@ from err import SearchRouteException
 
 
 __all__ = [
-    # ======================# MISSING_FORMATION_SEARCH_ROUTE #======================#
+    # ======================# FORMATION_SEARCH_ROUTE #======================#
     "FormationSearchRouteException",
 ]
 
-# ======================# MISSING_FORMATION_SEARCH_ROUTE #======================#
+# ======================# FORMATION_SEARCH_ROUTE #======================#
 class FormationSearchRouteException(SearchRouteException):
     """
     Role:

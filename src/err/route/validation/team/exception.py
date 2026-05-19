@@ -1,4 +1,4 @@
-# MISSING_src/err/route/validation/team/exception.py
+# src/err/route/validation/team/exception.py
 
 """
 Module: err.route.validation.team.exception
@@ -14,11 +14,11 @@ from err import ValidationRouteException
 
 
 __all__ = [
-    # ======================# MISSING_TEAM_VALIDATION_ROUTE #======================#
+    # ======================# TEAM_VALIDATION_ROUTE #======================#
     "TeamValidationRouteException",
 ]
 
-# ======================# MISSING_TEAM_VALIDATION_ROUTE #======================#
+# ======================# TEAM_VALIDATION_ROUTE #======================#
 class TeamValidationRouteException(ValidationRouteException):
     """
     Role:

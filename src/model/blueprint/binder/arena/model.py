@@ -28,8 +28,8 @@ class ArenaBinderBlueprint(Blueprint[ArenaBinder]):
         arena: Arena
         schema: Schema
         player_service: PlayerService
-        null_exception: OrangeNullException
-        model_type: Orange
+        null_exception: AreaBinderNullException
+        model_type: AreaBinder
         
     Provides:
 
@@ -40,7 +40,7 @@ class ArenaBinderBlueprint(Blueprint[ArenaBinder]):
     schema: Schema
     id: Optional[int] | None = None
     player_service: PlayerService | None = PlayerService()
-    null_exception: OrangeNullException = OrangeNullException()
-    model_type: Orange = Orange
+    null_exception: AreaBinderNullException = AreaBinderNullException()
+    model_type: AreaBinder = AreaBinder
     
 

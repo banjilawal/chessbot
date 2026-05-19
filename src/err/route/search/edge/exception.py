@@ -1,4 +1,4 @@
-# MISSING_src/err/route/search/edge/exception.py
+# src/err/route/search/edge/exception.py
 
 """
 Module: err.route.search.edge.exception
@@ -14,11 +14,11 @@ from err import SearchRouteException
 
 
 __all__ = [
-    # ======================# MISSING_EDGE_SEARCH_ROUTE #======================#
+    # ======================# EDGE_SEARCH_ROUTE #======================#
     "EdgeSearchRouteException",
 ]
 
-# ======================# MISSING_EDGE_SEARCH_ROUTE #======================#
+# ======================# EDGE_SEARCH_ROUTE #======================#
 class EdgeSearchRouteException(SearchRouteException):
     """
     Role:

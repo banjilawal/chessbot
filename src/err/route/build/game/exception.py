@@ -1,4 +1,4 @@
-# MISSING_src/err/route/build/game/exception.py
+# src/err/route/build/game/exception.py
 
 """
 Module: err.route.build.game.exception
@@ -14,11 +14,11 @@ from err import BuildRouteException
 
 
 __all__ = [
-    # ======================# MISSING_GAME_BUILD_ROUTE #======================#
+    # ======================# GAME_BUILD_ROUTE #======================#
     "GameBuildRouteException",
 ]
 
-# ======================# MISSING_GAME_BUILD_ROUTE #======================#
+# ======================# GAME_BUILD_ROUTE #======================#
 class GameBuildRouteException(BuildRouteException):
     """
     Role:

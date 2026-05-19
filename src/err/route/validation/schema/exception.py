@@ -1,4 +1,4 @@
-# MISSING_src/err/route/validation/schema/exception.py
+# src/err/route/validation/schema/exception.py
 
 """
 Module: err.route.validation.schema.exception
@@ -14,11 +14,11 @@ from err import ValidationRouteException
 
 
 __all__ = [
-    # ======================# MISSING_SCHEMA_VALIDATION_ROUTE #======================#
+    # ======================# SCHEMA_VALIDATION_ROUTE #======================#
     "SchemaValidationRouteException",
 ]
 
-# ======================# MISSING_SCHEMA_VALIDATION_ROUTE #======================#
+# ======================# SCHEMA_VALIDATION_ROUTE #======================#
 class SchemaValidationRouteException(ValidationRouteException):
     """
     Role:
