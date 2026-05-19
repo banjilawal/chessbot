@@ -21,7 +21,7 @@ from util import LoggingLevelRouter
 from validation import Validator
 
 
-class SquareContextValidator(Validator[SquareContext]):
+class SquareContextValidator(ContextValidator[SquareContext]):
     """
     Role
         -   Transaction Worker
@@ -41,7 +41,7 @@ class SquareContextValidator(Validator[SquareContext]):
             ) -> ValidationResult[SquareContext]:
 
     Super Class:
-        Validator
+        ContextValidator
     """
     @classmethod
     @LoggingLevelRouter.monitor

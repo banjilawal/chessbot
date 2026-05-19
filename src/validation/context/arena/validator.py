@@ -10,7 +10,7 @@ version: 1.0.1
 from __future__ import annotations
 
 
-class ArenaContextValidator(Validator[ArenaContext]):
+class ArenaContextValidator(ContextValidator[ArenaContext]):
     
     @classmethod
     def validate(cls, candidate: Any, *args, **kwargs) -> ValidationResult[ArenaContext]:

@@ -18,7 +18,7 @@ from system import (
 )
 
 
-class PersonaContext(Validator[PersonaKey]):
+class PersonaContext(ContextValidator[PersonaKey]):
     """
      Role:Validation, Data Integrity Guarantor, Security.
 

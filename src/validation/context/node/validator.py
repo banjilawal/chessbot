@@ -10,7 +10,7 @@ version: 1.0.1
 from __future__ import annotations
 
 
-class NodeContextValidator(Validator[NodeContext]):
+class NodeContextValidator(ContextValidator[NodeContext]):
     """
      Role:Validation, Data Integrity Guarantor, Security.
 

@@ -10,7 +10,7 @@ version: 1.0.1
 from __future__ import annotations
 
 
-class BoardContextValidator(Validator[BoardContext]):
+class BoardContextValidator(ContextValidator[BoardContext]):
     """
      Role:Validation, Data Integrity Guarantor, Security.
 

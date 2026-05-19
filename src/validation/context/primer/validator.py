@@ -19,7 +19,7 @@ from err import (
 )
 
 
-class ContextValidatorPrimerper(Validator[Context]):
+class ContextValidatorPrimerper(ContextValidator[Context]):
     """
     Role
         -   Transaction Worker
@@ -44,7 +44,7 @@ class ContextValidatorPrimerper(Validator[Context]):
             ) -> ValidationResult[Context]:
 
     Super Class:
-        Validator
+        ContextValidator
     """
     @classmethod
     @LoggingLevelRouter.monitor

@@ -10,7 +10,7 @@ version: 1.0.1
 from __future__ import annotations
 
 
-class GameContextValidator(Validator[GameContext]):
+class GameContextValidator(ContextValidator[GameContext]):
     """
      Role:Validation, Data Integrity Guarantor, Security.
 

@@ -10,7 +10,7 @@ version: 1.0.1
 from __future__ import annotations
 
 
-class FormationContext(Validator[FormationKey]):
+class FormationContext(ContextValidator[FormationKey]):
     """
      Role:Validation, Data Integrity Guarantor, Security.
 

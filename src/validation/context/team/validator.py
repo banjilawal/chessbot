@@ -22,7 +22,7 @@ from err import SchemaNullException, TeamContextValidationException, TeamContext
 
 
 
-class TeamContextValidator(Validator[TeamContext]):
+class TeamContextValidator(ContextValidator[TeamContext]):
     """
     Role
         -   Transaction Worker
@@ -42,7 +42,7 @@ class TeamContextValidator(Validator[TeamContext]):
             ) -> ValidationResult[TeamContext]:
 
     Super Class:
-        Validator
+        ContextValidator
     """
     @classmethod
     @LoggingLevelRouter.monitor

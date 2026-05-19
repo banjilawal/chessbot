@@ -10,7 +10,7 @@ version: 1.0.1
 from __future__ import annotations
 
 
-class EdgeContextValidator(Validator[EdgeContext]):
+class EdgeContextValidator(ContextValidator[EdgeContext]):
     """
      Role:Validation, Data Integrity Guarantor, Security.
 

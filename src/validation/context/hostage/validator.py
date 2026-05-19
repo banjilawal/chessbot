@@ -10,7 +10,7 @@ version: 1.0.1
 from __future__ import annotations
 
 
-class HostageContextValidator(Validator[HostageContext]):
+class HostageContextValidator(ContextValidator[HostageContext]):
     """
      Role:Validation, Data Integrity Guarantor, Security.
 

@@ -10,7 +10,7 @@ version: 1.0.1
 from __future__ import annotations
 
 
-class SchemaContextValidator(Validator[SchemaKey]):
+class SchemaContextValidator(ContextValidator[SchemaKey]):
     """
      Role:Validation, Data Integrity Guarantor, Security.
 

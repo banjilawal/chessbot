@@ -11,20 +11,10 @@ from __future__ import annotations
 
 from typing import Any, cast
 
-from err import (
-    GameColorNullException, TokenContextNullException, TokenContextValidationException,
-    ZeroTokenContextFlagsException
-)
-from err.route.validation import TokenContextValidationRouteException
-from model import Persona, TokenContext
-from result import MethodResultType, ValidationResult
-from setting import GameColor
-from toolkit import TokenContextToolkit, TokenToolkit
-from util import LoggingLevelRouter
-from validation import ContextValidatorBootstrapper, Validator, ValidationPrimer
+from validation.context.validator import ContextValidator
 
 
-class TokenContextValidator(Validator[TokenContext]):
+class TokenContextValidator(ContextValidator[TokenContext]):
     """
     Role
         -   Transaction Worker
@@ -44,7 +34,7 @@ class TokenContextValidator(Validator[TokenContext]):
             ) -> ValidationResult[TokenContext]:
 
     Super Class:
-        Validator
+        ContextValidator
     """
     @classmethod
     @LoggingLevelRouter.monitor

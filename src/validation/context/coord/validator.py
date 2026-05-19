@@ -19,7 +19,7 @@ from util import LoggingLevelRouter
 from validation import Validator
 
 
-class CoordContextValidator(Validator[CoordContext]):
+class CoordContextValidator(ContextValidator[CoordContext]):
     """
     Role
         -   Transaction Worker
@@ -39,7 +39,7 @@ class CoordContextValidator(Validator[CoordContext]):
             ) -> ValidationResult[CoordContext]:
 
     Super Class:
-        Validator
+        ContextValidator
     """
     
     @classmethod

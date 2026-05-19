@@ -5,22 +5,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/validation/context/validator.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/validation/query/validator.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/query/query.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/query/query.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/query/stack/arena/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/query/stack/arena/model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/query/stack/board/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/query/stack/board/model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/query/stack/coord/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/query/stack/coord/model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/query/stack/edge/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/query/stack/edge/model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/query/stack/game/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/query/stack/game/model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/query/stack/hostage/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/query/stack/hostage/model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/query/stack/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/query/stack/model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/query/stack/node/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/query/stack/node/model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/query/stack/player/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/query/stack/player/model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/query/stack/rank/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/query/stack/rank/model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/query/stack/square/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/query/stack/square/model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/query/stack/team/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/query/stack/team/model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/query/stack/token/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/query/stack/token/model.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validation/context/arena/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/validation/context/arena/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validation/context/board/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/validation/context/board/validator.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/validation/context/coord/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/validation/context/coord/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validation/context/edge/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/validation/context/edge/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validation/context/formation/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/validation/context/formation/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validation/context/game/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/validation/context/game/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validation/context/hostage/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/validation/context/hostage/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validation/context/node/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/validation/context/node/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validation/context/persona/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/validation/context/persona/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validation/context/player/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/validation/context/player/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validation/context/primer/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/validation/context/primer/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validation/context/schema/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/validation/context/schema/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validation/context/square/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/validation/context/square/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validation/context/team/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/validation/context/team/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validation/context/token/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/validation/context/token/validator.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,7 +73,7 @@
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "main",
-    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/err/validation/context",
+    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/validation/context",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
@@ -82,11 +84,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/validation/context" />
+      <recent name="$PROJECT_DIR$/src/validation/query" />
       <recent name="$PROJECT_DIR$/src/err/validation/context" />
       <recent name="$PROJECT_DIR$/src/toolkit/context" />
       <recent name="$PROJECT_DIR$/src/err/null/state/square" />
-      <recent name="$PROJECT_DIR$/src/err/null" />
-      <recent name="$PROJECT_DIR$/src/model/blueprint/context" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/err" />
@@ -1130,6 +1132,11 @@
           <url>file://$PROJECT_DIR$/src/toolkit/context/square/toollkit.py</url>
           <line>9</line>
           <option name="timeStamp" value="177" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/validation/context/validator.py</url>
+          <line>9</line>
+          <option name="timeStamp" value="178" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
