@@ -13,11 +13,11 @@ from typing import Any, Optional
 from err import ValidationException
 
 __all__ = [
-    # ======================# SCALAR_VALIDATION_EXCEPTION #======================#
+    # ======================# SCALAR_VALIDATION_FAILURE #======================#
     "ScalarValidationException",
 ]
 
-# ======================# SCALAR_VALIDATION_EXCEPTION #======================#
+# ======================# SCALAR_VALIDATION_FAILURE #======================#
 class ScalarValidationException(ValidationException):
     """
     Role:
@@ -42,7 +42,7 @@ class ScalarValidationException(ValidationException):
         ValidationException
     """
     MSG = "ScalarValidation check failed"
-    ERR_CODE = "SCALAR_VALIDATION_EXCEPTION"
+    ERR_CODE = "SCALAR_VALIDATION_FAILURE"
     
     def __init__(
             self,

@@ -13,11 +13,11 @@ from typing import Any, Optional
 from err import ValidationException
 
 __all__ = [
-    # ======================# REGISTRY_ENTRY_KEY_STRING_VALIDATION_EXCEPTION #======================#
+    # ======================# REGISTRY_ENTRY_KEY_STRING_VALIDATION_FAILURE #======================#
     "RegistryEntryKeyStringValidationException",
 ]
 
-# ======================# REGISTRY_ENTRY_KEY_STRING_VALIDATION_EXCEPTION #======================#
+# ======================# REGISTRY_ENTRY_KEY_STRING_VALIDATION_FAILURE #======================#
 class RegistryEntryKeyStringValidationException(ValidationException):
     """
     Role:
@@ -42,7 +42,7 @@ class RegistryEntryKeyStringValidationException(ValidationException):
         ValidationException
     """
     MSG = "RegistryEntryKey is not a valid string."
-    ERR_CODE = "REGISTRY_ENTRY_KEY_STRING_VALIDATION_EXCEPTION"
+    ERR_CODE = "REGISTRY_ENTRY_KEY_STRING_VALIDATION_FAILURE"
     
     def __init__(
             self,

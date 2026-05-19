@@ -1,7 +1,7 @@
-# src/validation/bootstrapper.py
+# src/validation/primerper.py
 
 """
-Module: validation.bootstrapper
+Module: validation.primerper
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -14,18 +14,18 @@ from typing import Any, TypeVar, cast
 from operation import Validator
 from result import ValidationResult
 from util import LoggingLevelRouter
-from err import NullException, ValidationBootstrapException
+from err import NullException, ValidationPrimingException
 
 T = TypeVar("T")
 
 
-class ValidatorBootstrapper(Validator[T]):
+class ValidationPrimer(Validator[T]):
     """
     Role
         -   Transaction Worker
         -   Integrity Maintenance
         -   Consistency Assurance
-        -   Bootstrap
+        -   Primer
 
     Responsibilities:
         1.  Run existence and type checks which are common to all validation candidates.
@@ -43,7 +43,7 @@ class ValidatorBootstrapper(Validator[T]):
     Super Class:
         Validator
     """
-    NAME = "validator_bootstrapper"
+    NAME = "validator_primerper"
     
     @classmethod
     @LoggingLevelRouter.monitor
@@ -69,7 +69,7 @@ class ValidatorBootstrapper(Validator[T]):
             ValidationResult[T]
         Raises:
             TypeError
-            ValidationBootstrapException
+            ValidationPrimerException
         """
         method = f"{cls.__class__.__name__}.validate"
         
@@ -77,13 +77,13 @@ class ValidatorBootstrapper(Validator[T]):
         if candidate is None:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                ValidationBootstrapException(
+                ValidationPrimingException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
                     var="candidate_expected_type",
                     val=target_model.__name__,
-                    msg=ValidationBootstrapException.MSG,
-                    err_code=ValidationBootstrapException.ERR_CODE,
+                    msg=ValidationPrimingException.MSG,
+                    err_code=ValidationPrimingException.ERR_CODE,
                     ex=null_exception,
                 )
             )
@@ -91,11 +91,11 @@ class ValidatorBootstrapper(Validator[T]):
         if not isinstance(candidate, type(target_model)):
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                ValidationBootstrapException(
+                ValidationPrimingException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    msg=ValidationBootstrapException.MSG,
-                    err_code=ValidationBootstrapException.ERR_CODE,
+                    msg=ValidationPrimingException.MSG,
+                    err_code=ValidationPrimingException.ERR_CODE,
                     ex=TypeError(
                         f"Expected {type(target_model).__name}, "
                         f"got {type(candidate).__name__} instead."

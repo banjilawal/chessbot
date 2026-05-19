@@ -13,11 +13,11 @@ from typing import Any, Optional
 from err import ZeroContextFlagsException
 
 _all_ = [
-    # ======================# ZERO_TOKEN_CONTEXT_FLAGS_EXCEPTION #======================#
+    # ======================# ZERO_TOKEN_CONTEXT_FLAGS_FAILURE #======================#
     "ZeroTokenContextFlagsException",
 ]
 
-# ======================# ZERO_TOKEN_CONTEXT_FLAGS_EXCEPTION #======================#
+# ======================# ZERO_TOKEN_CONTEXT_FLAGS_FAILURE #======================#
 class ZeroTokenContextFlagsException(ZeroContextFlagsException):
     """
     Role:
@@ -41,7 +41,7 @@ class ZeroTokenContextFlagsException(ZeroContextFlagsException):
         ZeroContextFlagsException
     """
     MSG = "No TokenCcontext attribute enabled."
-    ERR_CODE = "ZERO_TOKEN_CONTEXT_FLAGS_EXCEPTION"
+    ERR_CODE = "ZERO_TOKEN_CONTEXT_FLAGS_FAILURE"
     
     def __init__(
             self,

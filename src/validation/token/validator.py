@@ -93,7 +93,7 @@ class TokenValidator(Validator[Token]):
         tools = toolkit_build_result.payload
         
         # Handle the case that, the candidate does not exist.
-        validation_bootstrap_result = tools["validation_bootstrapper"].validate(
+        validation_bootstrap_result = tools["validation_primer"].validate(
             candidate=candidate,
             target_model=Token,
             null_exception=null_exception,
@@ -168,7 +168,7 @@ class TokenValidator(Validator[Token]):
                 )
             )
         # Handle the case that the token's CoordDatabase fails it safety checks.
-        coord_database_validation_result = tools["validation_bootstrapper"].validate(
+        coord_database_validation_result = tools["validation_primer"].validate(
             candidate=token.positions,
             target_model=CoordDatabase,
             null_exception=CoordDatabaseNullException()

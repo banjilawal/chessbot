@@ -12,14 +12,14 @@ from typing import Any, Optional
 
 
 __all__ = [
-    # ======================# TEAM_CONTEXT_VALIDATION_EXCEPTION #======================#
+    # ======================# TEAM_CONTEXT_VALIDATION_FAILURE #======================#
     "TeamContextValidationException",
 ]
 
 from err import ContextValidationException
 
 
-# ======================# TEAM_CONTEXT_VALIDATION_EXCEPTION #======================#
+# ======================# TEAM_CONTEXT_VALIDATION_FAILURE #======================#
 class TeamContextValidationException(ContextValidationException):
     """
     Role:
@@ -43,7 +43,7 @@ class TeamContextValidationException(ContextValidationException):
         ContextValidationException
     """
     MSG = "No validation logic for TeamContext attribute"
-    ERR_CODE = "TEAM_CONTEXT_VALIDATION_EXCEPTION"
+    ERR_CODE = "TEAM_CONTEXT_VALIDATION_FAILURE"
     
     def __init__(
             self,

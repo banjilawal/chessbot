@@ -29,7 +29,7 @@ class RankToolkit(Toolkit[Rank]):
     Attributes:
         identity_service: IdentityService
         persona_validator: PersonaValidator
-        validation_bootstrapper: ValidationBootstrapper
+        validation_primer: ValidationPrimer
         
     Provides:
     

@@ -12,14 +12,14 @@ from typing import Any, Optional
 
 
 __all__ = [
-    # ======================# STRING_VALIDATION_EXCEPTION #======================#
+    # ======================# STRING_VALIDATION_FAILURE #======================#
     "StringValidationException",
 ]
 
 from err import ValidationException
 
 
-# ======================# STRING_VALIDATION_EXCEPTION #======================#
+# ======================# STRING_VALIDATION_FAILURE #======================#
 class StringValidationException(ValidationException):
     """
     Role:
@@ -44,7 +44,7 @@ class StringValidationException(ValidationException):
         ValidationException
     """
     MSG = "StringValidation check failed"
-    ERR_CODE = "STRING_VALIDATION_EXCEPTION"
+    ERR_CODE = "STRING_VALIDATION_FAILURE"
     
     def __init__(
             self,

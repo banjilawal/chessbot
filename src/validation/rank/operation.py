@@ -68,7 +68,7 @@ class RankValidator(Validator[Rank]):
             toolkit = RankToolkit()
         
         # Handle the case that, the candidate does not exist.
-        validation_bootstrap_result = toolkit.validation_bootstrapper.validate(
+        validation_bootstrap_result = toolkit.validation_primer.validate(
             candidate=candidate,
             target_model=Rank,
             null_exception=RankNullException(),
@@ -101,7 +101,7 @@ class RankValidator(Validator[Rank]):
                 )
             )
         # Handle the case that, the rank has the wrong persona.
-        rank_persona_validation_result = toolkit.validation_bootstrapper.validate(
+        rank_persona_validation_result = toolkit.validation_primer.validate(
             candidate=rank.persona,
             target_model=Persona,
             null_exception=PersonaNullException(),

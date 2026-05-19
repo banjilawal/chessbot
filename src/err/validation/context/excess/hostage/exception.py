@@ -13,11 +13,11 @@ from typing import Any, Optional
 from err import ExcessContextFlagsException
 
 _all_ = [
-    # ======================# EXCESS_HOSTAGE_CONTEXT_FLAGS_EXCEPTION #======================#
+    # ======================# EXCESS_HOSTAGE_CONTEXT_FLAGS_FAILURE #======================#
     "ExcessHostageContextFlagsException",
 ]
 
-# ======================# EXCESS_HOSTAGE_CONTEXT_FLAGS_EXCEPTION #======================#
+# ======================# EXCESS_HOSTAGE_CONTEXT_FLAGS_FAILURE #======================#
 class ExcessHostageContextFlagsException(ExcessContextFlagsException):
     """
     Role:
@@ -41,7 +41,7 @@ class ExcessHostageContextFlagsException(ExcessContextFlagsException):
         ExcessContextFlagsException
     """
     MSG = "More than one HostageCcontext attribute enabled."
-    ERR_CODE = "EXCESS_HOSTAGE_CONTEXT_FLAGS_EXCEPTION"
+    ERR_CODE = "EXCESS_HOSTAGE_CONTEXT_FLAGS_FAILURE"
     
     def __init__(
             self,

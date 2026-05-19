@@ -8,40 +8,37 @@ version: 1.0.1
 """
 
 from __future__ import annotations
+from dataclasses import dataclass
 
 from model import Coord
 from toolkit import Toolkit
-from operation import NumberValidator
+from validation import NumberValidator, ValidationPrimer
 
+
+@dataclass
 class CoordToolkit(Toolkit[Coord]):
     """
     Role:
-        -   Container
+        -   Dependency Container
+        -   Dynamic Dependency Provider
 
     Responsibilities:
-        1.  Collection of workers and services that are required for Coord tasks.
-        2.  Simplifies entry points.
-        3.  No logic in the Toolkit.
+        1.  Aggregates workers and services a Coord requires for its tasks.
+        2.  Separates dependencies from data objects in operation calls.
+        3.  Simplifies entry points.
 
     Attributes:
-            number_validator: NumberValidator
+        DEPENDENCIES: List[Operation] = []
+        SERVICE_DEPENDENCIES: List[Microservice] = []
+
+        number_validator: NumberValidator
+        validation_primer: ValidationPrimer
+
     Provides:
-
-     Super Class:
-         Toolkit
-     """
-    
-    def __init__(
-            self,
-            number_validator: NumberValidator | None = None,
-    ):
-        """
-        Args:
-            number_validator: NumberValidator
-        """
-        super().__init__()
-        self._number_validator = number_validator or NumberValidator()
-
-    @property
-    def number_validator(self) -> NumberValidator:
-        return self._number_validator
+        -   def resolve_dependencies(s -> SearchResult[List[Dict[str, Any]]]:
+        
+    Super Class:
+        Toolkit
+    """
+    number_validator: NumberValidator = NumberValidator()
+    validation_primer: ValidationPrimer = ValidationPrimer()

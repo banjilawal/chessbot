@@ -1,7 +1,7 @@
-# src/validation/context/bootstrap/operation.py
+# src/validation/context/primer/operation.py
 
 """
-Module: validation.context.bootstrap.validator
+Module: validation.context.primer.validator
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -13,13 +13,13 @@ from typing import Any, cast
 from model import Context
 from result import ValidationResult
 from util import LoggingLevelRouter
-from validation import Validator, ValidatorBootstrapper
+from validation import Validator, ValidationPrimer
 from err import (
     ContextNullException, ContextValidationException, ExcessContextFlagsException, ZeroContextFlagsException
 )
 
 
-class ContextValidatorBootstrapper(Validator[Context]):
+class ContextValidatorPrimerper(Validator[Context]):
     """
     Role
         -   Transaction Worker
@@ -40,7 +40,7 @@ class ContextValidatorBootstrapper(Validator[Context]):
         -   def validate(
                     target_context_model: Context,
                     null_exception: ContextNullException,
-                    validator_bootstrapper: ValidatorBootstrapper,
+                    validator_primerper: ValidatorPrimerper,
             ) -> ValidationResult[Context]:
 
     Super Class:
@@ -53,7 +53,7 @@ class ContextValidatorBootstrapper(Validator[Context]):
             candidate: Any,
             target_context_model: Context,
             null_exception: ContextNullException | None = None,
-            validator_bootstrapper: ValidatorBootstrapper | None = None,
+            validator_primerper: ValidationPrimer | None = None,
     ) -> ValidationResult[Context]:
         """
         Run tests that are common to Context subclasses
@@ -61,14 +61,14 @@ class ContextValidatorBootstrapper(Validator[Context]):
         Action:
             1.  Send an exception chain in the ValidationResult if any of the following
                 occur
-                    -   A validator_bootstrapper test fails.
+                    -   A validator_primerper test fails.
                     -   Exactly one attribute is not enabled.
             2.  Otherwise, send the success result.
         Args:
             candidate: Any
             target_context_model: Context
             null_exception: ContextNullException
-            validator_bootstrapper: ValidatorBootstrapper
+            validator_primerper: ValidatorPrimerper
         Returns:
             ValidationResult[Context]
         Raises:
@@ -81,16 +81,16 @@ class ContextValidatorBootstrapper(Validator[Context]):
         # --- Supply any missing dependencies. ---#
         if null_exception is None:
             null_exception = ContextNullException()
-        if validator_bootstrapper is None:
-            validator_bootstrapper = ValidatorBootstrapper()
+        if validator_primerper is None:
+            validator_primerper = ValidationPrimer()
         
         # Handle the case that, either the null or type check fails.
-        validation_bootstrap_result = validator_bootstrapper.validate(
+        validation_primer_result = validator_primerper.validate(
             candidate=candidate,
             target_model=target_context_model,
             null_exception=null_exception,
         )
-        if validation_bootstrap_result.is_failure:
+        if validation_primer_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 ContextValidationException(
@@ -98,7 +98,7 @@ class ContextValidatorBootstrapper(Validator[Context]):
                     cls_name=cls.__name__,
                     msg=ContextValidationException.MSG,
                     err_code=ContextValidationException.ERR_CODE,
-                    ex=validation_bootstrap_result.exception,
+                    ex=validation_primer_result.exception,
                 )
             )
         # --- Cast the candidate into the expected Context subclass for additional tests. ---#

@@ -13,11 +13,11 @@ from typing import Any, Optional
 from err import ZeroContextFlagsException
 
 _all_ = [
-    # ======================# ZERO_BOARD_CONTEXT_FLAGS_EXCEPTION #======================#
+    # ======================# ZERO_BOARD_CONTEXT_FLAGS_FAILURE #======================#
     "ZeroBoardContextFlagsException",
 ]
 
-# ======================# ZERO_BOARD_CONTEXT_FLAGS_EXCEPTION #======================#
+# ======================# ZERO_BOARD_CONTEXT_FLAGS_FAILURE #======================#
 class ZeroBoardContextFlagsException(ZeroContextFlagsException):
     """
     Role:
@@ -41,7 +41,7 @@ class ZeroBoardContextFlagsException(ZeroContextFlagsException):
         ZeroContextFlagsException
     """
     MSG = "No BoardCcontext attribute enabled."
-    ERR_CODE = "ZERO_BOARD_CONTEXT_FLAGS_EXCEPTION"
+    ERR_CODE = "ZERO_BOARD_CONTEXT_FLAGS_FAILURE"
     
     def __init__(
             self,

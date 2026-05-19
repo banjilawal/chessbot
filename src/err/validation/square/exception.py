@@ -13,11 +13,11 @@ from typing import Any, Optional
 from err import ValidationException
 
 __all__ = [
-    # ======================# SQUARE_VALIDATION_EXCEPTION #======================#
+    # ======================# SQUARE_VALIDATION_FAILURE #======================#
     "SquareValidationException",
 ]
 
-# ======================# SQUARE_VALIDATION_EXCEPTION #======================#
+# ======================# SQUARE_VALIDATION_FAILURE #======================#
 class SquareValidationException(ValidationException):
     """
     Role:
@@ -42,7 +42,7 @@ class SquareValidationException(ValidationException):
         ValidationException
     """
     MSG = "SquareValidation check failed"
-    ERR_CODE = "SQUARE_VALIDATION_EXCEPTION"
+    ERR_CODE = "SQUARE_VALIDATION_FAILURE"
     
     def __init__(
             self,

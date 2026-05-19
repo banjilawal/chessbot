@@ -13,11 +13,11 @@ from typing import Any, Optional
 from err import ZeroContextFlagsException
 
 _all_ = [
-    # ======================# ZERO_COORD_CONTEXT_FLAGS_EXCEPTION #======================#
+    # ======================# ZERO_COORD_CONTEXT_FLAGS_FAILURE #======================#
     "ZeroCoordContextFlagsException",
 ]
 
-# ======================# ZERO_COORD_CONTEXT_FLAGS_EXCEPTION #======================#
+# ======================# ZERO_COORD_CONTEXT_FLAGS_FAILURE #======================#
 class ZeroCoordContextFlagsException(ZeroContextFlagsException):
     """
     Role:
@@ -41,7 +41,7 @@ class ZeroCoordContextFlagsException(ZeroContextFlagsException):
         ZeroContextFlagsException
     """
     MSG = "No CoordCcontext attribute enabled."
-    ERR_CODE = "ZERO_COORD_CONTEXT_FLAGS_EXCEPTION"
+    ERR_CODE = "ZERO_COORD_CONTEXT_FLAGS_FAILURE"
     
     def __init__(
             self,

@@ -13,11 +13,11 @@ from typing import Any, Optional
 from err import ValidationException
 
 __all__ = [
-    # ======================# CONTEXT_VALIDATION_EXCEPTION #======================#
+    # ======================# CONTEXT_VALIDATION_FAILURE #======================#
     "ContextValidationException",
 ]
 
-# ======================# CONTEXT_VALIDATION_EXCEPTION #======================#
+# ======================# CONTEXT_VALIDATION_FAILURE #======================#
 class ContextValidationException(ValidationException):
     """
     Role:
@@ -41,7 +41,7 @@ class ContextValidationException(ValidationException):
         ValidationException
     """
     MSG = "No validation logic for context's attribute"
-    ERR_CODE = "CONTEXT_VALIDATION_EXCEPTION"
+    ERR_CODE = "CONTEXT_VALIDATION_FAILURE"
     
     def __init__(
             self,

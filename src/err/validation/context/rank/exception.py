@@ -12,14 +12,14 @@ from typing import Any, Optional
 
 
 __all__ = [
-    # ======================# RANK_CONTEXT_VALIDATION_EXCEPTION #======================#
+    # ======================# RANK_CONTEXT_VALIDATION_FAILURE #======================#
     "RankContextValidationException",
 ]
 
 from err import ContextValidationException
 
 
-# ======================# RANK_CONTEXT_VALIDATION_EXCEPTION #======================#
+# ======================# RANK_CONTEXT_VALIDATION_FAILURE #======================#
 class RankContextValidationException(ContextValidationException):
     """
     Role:
@@ -43,7 +43,7 @@ class RankContextValidationException(ContextValidationException):
         ContextValidationException
     """
     MSG = "No validation logic for RankContext attribute"
-    ERR_CODE = "RANK_CONTEXT_VALIDATION_EXCEPTION"
+    ERR_CODE = "RANK_CONTEXT_VALIDATION_FAILURE"
     
     def __init__(
             self,

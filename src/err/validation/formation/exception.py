@@ -13,11 +13,11 @@ from typing import Any, Optional
 from err import ValidationException
 
 __all__ = [
-    # ======================# FORMATION_VALIDATION_EXCEPTION #======================#
+    # ======================# FORMATION_VALIDATION_FAILURE #======================#
     "FormationValidationException",
 ]
 
-# ======================# FORMATION_VALIDATION_EXCEPTION #======================#
+# ======================# FORMATION_VALIDATION_FAILURE #======================#
 class FormationValidationException(ValidationException):
     """
     Role:
@@ -41,7 +41,7 @@ class FormationValidationException(ValidationException):
         ValidationException
     """
     MSG = "FormationValidation check failed"
-    ERR_CODE = "FORMATION_VALIDATION_EXCEPTION"
+    ERR_CODE = "FORMATION_VALIDATION_FAILURE"
     
     def __init__(
             self,

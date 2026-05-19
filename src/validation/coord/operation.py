@@ -74,7 +74,7 @@ class CoordValidator(Validator[Coord]):
             toolkit = MathToolkit()
         
         # Handle the case that, the candidate does not exist.
-        validation_bootstrap_result = toolkit.validation_bootstrapper.validate(
+        validation_bootstrap_result = toolkit.validation_primer.validate(
             candidate=candidate,
             target_model=Coord,
             null_exception=CoordNullException(),

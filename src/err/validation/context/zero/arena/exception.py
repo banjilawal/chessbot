@@ -13,11 +13,11 @@ from typing import Any, Optional
 from err import ZeroContextFlagsException
 
 _all_ = [
-    # ======================# ZERO_ARENA_CONTEXT_FLAGS_EXCEPTION #======================#
+    # ======================# ZERO_ARENA_CONTEXT_FLAGS_FAILURE #======================#
     "ZeroArenaContextFlagsException",
 ]
 
-# ======================# ZERO_ARENA_CONTEXT_FLAGS_EXCEPTION #======================#
+# ======================# ZERO_ARENA_CONTEXT_FLAGS_FAILURE #======================#
 class ZeroArenaContextFlagsException(ZeroContextFlagsException):
     """
     Role:
@@ -41,7 +41,7 @@ class ZeroArenaContextFlagsException(ZeroContextFlagsException):
         ZeroContextFlagsException
     """
     MSG = "No ArenaCcontext attribute enabled."
-    ERR_CODE = "ZERO_ARENA_CONTEXT_FLAGS_EXCEPTION"
+    ERR_CODE = "ZERO_ARENA_CONTEXT_FLAGS_FAILURE"
     
     def __init__(
             self,

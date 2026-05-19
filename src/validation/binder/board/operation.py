@@ -74,7 +74,7 @@ class BoardTeamBinderValidator(Validator[BoardBinder]):
             toolkit = BoardTeamBinderToolkit()
             
         # Handle the case that, the candidate does not exist.
-        validation_bootstrap_result = toolkit.validation_bootstrapper.validate(
+        validation_bootstrap_result = toolkit.validation_primer.validate(
             candidate=candidate,
             target_model=BoardBinder,
             null_exception=BoardTeamBinderNullException(),
@@ -117,7 +117,7 @@ class BoardTeamBinderValidator(Validator[BoardBinder]):
         method = f"{cls.__name__}.run_satellite_table_checks"
         
         # Handle the case that, the satellite is not a dictionary or null.
-        table_validation_result = BinderTableValidationBootstrapper.validate(binder)
+        table_validation_result = BinderTableValidationPrimer.validate(binder)
         if table_validation_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(

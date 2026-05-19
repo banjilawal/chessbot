@@ -18,7 +18,7 @@ from search import WorkerRegistryDomainSearch, WorkerRegistryNameSearch
 class WorkerRegistryToolkit:
     """
     Role:
-        -   Utility Container
+        -   Dependency Container
 
     Responsibilities:
         1.  Consolidates WorkerRegistry integrity operations and validation resources into

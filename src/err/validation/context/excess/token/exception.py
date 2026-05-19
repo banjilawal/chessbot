@@ -13,11 +13,11 @@ from typing import Any, Optional
 from err import ExcessContextFlagsException
 
 _all_ = [
-    # ======================# EXCESS_TOKEN_CONTEXT_FLAGS_EXCEPTION #======================#
+    # ======================# EXCESS_TOKEN_CONTEXT_FLAGS_FAILURE #======================#
     "ExcessTokenContextFlagsException",
 ]
 
-# ======================# EXCESS_TOKEN_CONTEXT_FLAGS_EXCEPTION #======================#
+# ======================# EXCESS_TOKEN_CONTEXT_FLAGS_FAILURE #======================#
 class ExcessTokenContextFlagsException(ExcessContextFlagsException):
     """
     Role:
@@ -41,7 +41,7 @@ class ExcessTokenContextFlagsException(ExcessContextFlagsException):
         ExcessContextFlagsException
     """
     MSG = "More than one TokenCcontext attribute enabled."
-    ERR_CODE = "EXCESS_TOKEN_CONTEXT_FLAGS_EXCEPTION"
+    ERR_CODE = "EXCESS_TOKEN_CONTEXT_FLAGS_FAILURE"
     
     def __init__(
             self,

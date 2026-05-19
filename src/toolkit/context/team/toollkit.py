@@ -22,9 +22,10 @@ class TeamContextToolkit(ContextToolkit[Team]):
         -   Data Holder
         
     Responsibilities:
-        1.  Collection of workers and services that are required for Team tasks.
-        2.  Simplifies entry points.
-        3.  No logic in the Toolkit.
+        1.  Aggregates workers and services required for TeamContext build and validation tasks.
+        2.  Separates dependencies from data objects in operation calls.
+        3.  Simplifies entry points.
+
 
     Attributes:
         DEPENDENCIES: List[Operation]
@@ -32,7 +33,7 @@ class TeamContextToolkit(ContextToolkit[Team]):
         
         context_model_type: TeamContext
         null_context_exception: TeamContextNullException
-        context_validation_primer: ValidationBootstrapper
+        context_validation_primer: ValidationPrimer
         number_validator: NumberValidator
         
     Provides:

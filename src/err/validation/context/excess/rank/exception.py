@@ -13,11 +13,11 @@ from typing import Any, Optional
 from err import ExcessContextFlagsException
 
 _all_ = [
-    # ======================# EXCESS_RANK_CONTEXT_FLAGS_EXCEPTION #======================#
+    # ======================# EXCESS_RANK_CONTEXT_FLAGS_FAILURE #======================#
     "ExcessRankContextFlagsException",
 ]
 
-# ======================# EXCESS_RANK_CONTEXT_FLAGS_EXCEPTION #======================#
+# ======================# EXCESS_RANK_CONTEXT_FLAGS_FAILURE #======================#
 class ExcessRankContextFlagsException(ExcessContextFlagsException):
     """
     Role:
@@ -41,7 +41,7 @@ class ExcessRankContextFlagsException(ExcessContextFlagsException):
         ExcessContextFlagsException
     """
     MSG = "More than one RankCcontext attribute enabled."
-    ERR_CODE = "EXCESS_RANK_CONTEXT_FLAGS_EXCEPTION"
+    ERR_CODE = "EXCESS_RANK_CONTEXT_FLAGS_FAILURE"
     
     def __init__(
             self,

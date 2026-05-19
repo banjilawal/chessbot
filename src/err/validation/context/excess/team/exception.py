@@ -13,11 +13,11 @@ from typing import Any, Optional
 from err import ExcessContextFlagsException
 
 _all_ = [
-    # ======================# EXCESS_TEAM_CONTEXT_FLAGS_EXCEPTION #======================#
+    # ======================# EXCESS_TEAM_CONTEXT_FLAGS_FAILURE #======================#
     "ExcessTeamContextFlagsException",
 ]
 
-# ======================# EXCESS_TEAM_CONTEXT_FLAGS_EXCEPTION #======================#
+# ======================# EXCESS_TEAM_CONTEXT_FLAGS_FAILURE #======================#
 class ExcessTeamContextFlagsException(ExcessContextFlagsException):
     """
     Role:
@@ -41,7 +41,7 @@ class ExcessTeamContextFlagsException(ExcessContextFlagsException):
         ExcessContextFlagsException
     """
     MSG = "More than one TeamCcontext attribute enabled."
-    ERR_CODE = "EXCESS_TEAM_CONTEXT_FLAGS_EXCEPTION"
+    ERR_CODE = "EXCESS_TEAM_CONTEXT_FLAGS_FAILURE"
     
     def __init__(
             self,

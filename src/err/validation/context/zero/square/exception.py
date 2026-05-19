@@ -13,11 +13,11 @@ from typing import Any, Optional
 from err import ZeroContextFlagsException
 
 _all_ = [
-    # ======================# ZERO_SQUARE_CONTEXT_FLAGS_EXCEPTION #======================#
+    # ======================# ZERO_SQUARE_CONTEXT_FLAGS_FAILURE #======================#
     "ZeroSquareContextFlagsException",
 ]
 
-# ======================# ZERO_SQUARE_CONTEXT_FLAGS_EXCEPTION #======================#
+# ======================# ZERO_SQUARE_CONTEXT_FLAGS_FAILURE #======================#
 class ZeroSquareContextFlagsException(ZeroContextFlagsException):
     """
     Role:
@@ -41,7 +41,7 @@ class ZeroSquareContextFlagsException(ZeroContextFlagsException):
         ZeroContextFlagsException
     """
     MSG = "No SquareCcontext attribute enabled."
-    ERR_CODE = "ZERO_SQUARE_CONTEXT_FLAGS_EXCEPTION"
+    ERR_CODE = "ZERO_SQUARE_CONTEXT_FLAGS_FAILURE"
     
     def __init__(
             self,

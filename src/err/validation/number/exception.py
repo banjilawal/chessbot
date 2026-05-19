@@ -13,11 +13,11 @@ from typing import Any, Optional
 from err import ValidationException
 
 __all__ = [
-    # ======================# NUMBER_VALIDATION_EXCEPTION #======================#
+    # ======================# NUMBER_VALIDATION_FAILURE #======================#
     "NumberValidationException",
 ]
 
-# ======================# NUMBER_VALIDATION_EXCEPTION #======================#
+# ======================# NUMBER_VALIDATION_FAILURE #======================#
 class NumberValidationException(ValidationException):
     """
     Role:
@@ -42,7 +42,7 @@ class NumberValidationException(ValidationException):
         ValidationException
     """
     MSG = "NumberValidation check failed"
-    ERR_CODE = "NUMBER_VALIDATION_EXCEPTION"
+    ERR_CODE = "NUMBER_VALIDATION_FAILURE"
     
     def __init__(
             self,

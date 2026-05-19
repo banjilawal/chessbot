@@ -13,10 +13,10 @@ from typing import Any, Optional
 from err import ValidationException
 
 __all__ = [
-    # ======================# VECTOR_OPERAND_VALIDATION_EXCEPTION #======================#
+    # ======================# VECTOR_OPERAND_VALIDATION_FAILURE #======================#
     "VectorOperandValidationException",
 ]
-# ======================# VECTOR_OPERAND_VALIDATION_EXCEPTION #======================#
+# ======================# VECTOR_OPERAND_VALIDATION_FAILURE #======================#
 class VectorOperandValidationException(ValidationException):
     """
     Role:
@@ -40,7 +40,7 @@ class VectorOperandValidationException(ValidationException):
         ValidationException
     """
     MSG = "VectorOperand validation failed."
-    ERR_CODE = "VECTOR_OPERAND_VALIDATION_EXCEPTION"
+    ERR_CODE = "VECTOR_OPERAND_VALIDATION_FAILURE"
     
     def __init__(
             self,

@@ -12,14 +12,14 @@ from typing import Any, Optional
 
 
 __all__ = [
-    # ======================# BOARD_CONTEXT_VALIDATION_EXCEPTION #======================#
+    # ======================# BOARD_CONTEXT_VALIDATION_FAILURE #======================#
     "BoardContextValidationException",
 ]
 
 from err import ContextValidationException
 
 
-# ======================# BOARD_CONTEXT_VALIDATION_EXCEPTION #======================#
+# ======================# BOARD_CONTEXT_VALIDATION_FAILURE #======================#
 class BoardContextValidationException(ContextValidationException):
     """
     Role:
@@ -43,7 +43,7 @@ class BoardContextValidationException(ContextValidationException):
         ContextValidationException
     """
     MSG = "No validation logic for BoardContext attribute"
-    ERR_CODE = "BOARD_CONTEXT_VALIDATION_EXCEPTION"
+    ERR_CODE = "BOARD_CONTEXT_VALIDATION_FAILURE"
     
     def __init__(
             self,

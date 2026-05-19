@@ -13,11 +13,11 @@ from typing import Any, Optional
 from err import ExcessContextFlagsException
 
 _all_ = [
-    # ======================# EXCESS_EDGE_CONTEXT_FLAGS_EXCEPTION #======================#
+    # ======================# EXCESS_EDGE_CONTEXT_FLAGS_FAILURE #======================#
     "ExcessEdgeContextFlagsException",
 ]
 
-# ======================# EXCESS_EDGE_CONTEXT_FLAGS_EXCEPTION #======================#
+# ======================# EXCESS_EDGE_CONTEXT_FLAGS_FAILURE #======================#
 class ExcessEdgeContextFlagsException(ExcessContextFlagsException):
     """
     Role:
@@ -41,7 +41,7 @@ class ExcessEdgeContextFlagsException(ExcessContextFlagsException):
         ExcessContextFlagsException
     """
     MSG = "More than one EdgeCcontext attribute enabled."
-    ERR_CODE = "EXCESS_EDGE_CONTEXT_FLAGS_EXCEPTION"
+    ERR_CODE = "EXCESS_EDGE_CONTEXT_FLAGS_FAILURE"
     
     def __init__(
             self,

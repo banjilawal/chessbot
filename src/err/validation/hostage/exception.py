@@ -13,11 +13,11 @@ from typing import Any, Optional
 from err import ValidationException
 
 __all__ = [
-    # ======================# HOSTAGE_VALIDATION_EXCEPTION #======================#
+    # ======================# HOSTAGE_VALIDATION_FAILURE #======================#
     "HostageValidationException",
 ]
 
-# ======================# HOSTAGE_VALIDATION_EXCEPTION #======================#
+# ======================# HOSTAGE_VALIDATION_FAILURE #======================#
 class HostageValidationException(ValidationException):
     """
     Role:
@@ -42,7 +42,7 @@ class HostageValidationException(ValidationException):
         ValidationException
     """
     MSG = "HostageValidation check failed"
-    ERR_CODE = "HOSTAGE_VALIDATION_EXCEPTION"
+    ERR_CODE = "HOSTAGE_VALIDATION_FAILURE"
     
     def __init__(
             self,

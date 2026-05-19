@@ -12,14 +12,14 @@ from typing import Any, Optional
 
 
 __all__ = [
-    # ======================# HOSTAGE_CONTEXT_VALIDATION_EXCEPTION #======================#
+    # ======================# HOSTAGE_CONTEXT_VALIDATION_FAILURE #======================#
     "HostageContextValidationException",
 ]
 
 from err import ContextValidationException
 
 
-# ======================# HOSTAGE_CONTEXT_VALIDATION_EXCEPTION #======================#
+# ======================# HOSTAGE_CONTEXT_VALIDATION_FAILURE #======================#
 class HostageContextValidationException(ContextValidationException):
     """
     Role:
@@ -43,7 +43,7 @@ class HostageContextValidationException(ContextValidationException):
         ContextValidationException
     """
     MSG = "No validation logic for HostageContext attribute"
-    ERR_CODE = "HOSTAGE_CONTEXT_VALIDATION_EXCEPTION"
+    ERR_CODE = "HOSTAGE_CONTEXT_VALIDATION_FAILURE"
     
     def __init__(
             self,

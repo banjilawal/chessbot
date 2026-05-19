@@ -13,11 +13,11 @@ from typing import Any, Optional
 from err import ZeroContextFlagsException
 
 _all_ = [
-    # ======================# ZERO_NODE_CONTEXT_FLAGS_EXCEPTION #======================#
+    # ======================# ZERO_NODE_CONTEXT_FLAGS_FAILURE #======================#
     "ZeroNodeContextFlagsException",
 ]
 
-# ======================# ZERO_NODE_CONTEXT_FLAGS_EXCEPTION #======================#
+# ======================# ZERO_NODE_CONTEXT_FLAGS_FAILURE #======================#
 class ZeroNodeContextFlagsException(ZeroContextFlagsException):
     """
     Role:
@@ -41,7 +41,7 @@ class ZeroNodeContextFlagsException(ZeroContextFlagsException):
         ZeroContextFlagsException
     """
     MSG = "No NodeCcontext attribute enabled."
-    ERR_CODE = "ZERO_NODE_CONTEXT_FLAGS_EXCEPTION"
+    ERR_CODE = "ZERO_NODE_CONTEXT_FLAGS_FAILURE"
     
     def __init__(
             self,

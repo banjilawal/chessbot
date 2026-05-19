@@ -13,11 +13,11 @@ from typing import Any, Optional
 from err import ValidationException
 
 __all__ = [
-    # ======================# NAME_VALIDATION_EXCEPTION #======================#
+    # ======================# NAME_VALIDATION_FAILURE #======================#
     "NameValidationException",
 ]
 
-# ======================# NAME_VALIDATION_EXCEPTION #======================#
+# ======================# NAME_VALIDATION_FAILURE #======================#
 class NameValidationException(ValidationException):
     """
     Role:
@@ -42,7 +42,7 @@ class NameValidationException(ValidationException):
         ValidationException
     """
     MSG = "NameValidation check failed"
-    ERR_CODE = "NAME_VALIDATION_EXCEPTION"
+    ERR_CODE = "NAME_VALIDATION_FAILURE"
     
     def __init__(
             self,

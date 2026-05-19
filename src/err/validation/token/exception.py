@@ -13,11 +13,11 @@ from typing import Any, Optional
 from err import ValidationException
 
 __all__ = [
-    # ======================# TOKEN_VALIDATION_EXCEPTION #======================#
+    # ======================# TOKEN_VALIDATION_FAILURE #======================#
     "TokenValidationException",
 ]
 
-# ======================# TOKEN_VALIDATION_EXCEPTION #======================#
+# ======================# TOKEN_VALIDATION_FAILURE #======================#
 class TokenValidationException(ValidationException):
     """
     Role:
@@ -42,7 +42,7 @@ class TokenValidationException(ValidationException):
         ValidationException
     """
     MSG = "TokenValidation check failed."
-    ERR_CODE = "TOKEN_VALIDATION_EXCEPTION"
+    ERR_CODE = "TOKEN_VALIDATION_FAILURE"
     
     def __init__(
             self,

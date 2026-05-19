@@ -9,6 +9,16 @@ version: 1.0.1
 
 from __future__ import annotations
 
+from typing import Any, cast
+
+from err import CoordContextValidationException, CoordContextValidationRouteException
+from model import CoordContext
+from result import MethodResultType, ValidationResult
+from setting import BoardProperty
+from toolkit import CoordContextToolkit
+from util import LoggingLevelRouter
+from validation import Validator
+
 
 class CoordContextValidator(Validator[CoordContext]):
     """
@@ -24,203 +34,90 @@ class CoordContextValidator(Validator[CoordContext]):
     Attributes:
 
     Provides:
-        -   execute(
-                    rank: Any,
-                    number_validator: NumberValidator = NumberValidator(),
-            ) -> ValidationResult[CoordContext]
-            
-        -   _run_attribute_checks(
-                    attributes: List[int],
-                    number_validator: NumberValidator,
-            ) -> ValidationResult[CoordContext]
+        -   def validate(
+                    candidate: Any,
+                    toolkit: CoordContextToolkit,
+            ) -> ValidationResult[CoordContext]:
 
     Super Class:
         Validator
     """
-
+    
     @classmethod
     @LoggingLevelRouter.monitor
     def validate(
             cls,
             candidate: Any,
-            number_validator: NumberValidator = NumberValidator(),
+            toolkit: CoordContextToolkit | None = None,
     ) -> ValidationResult[CoordContext]:
         """
+        Certify a candidate is a CoordContext that is safe to use.
+
         Action:
-            1.  If the rank is either:
-                    -   is null.
-                    -   the type wrong
-                    -   The attribute fails a validation check.
-                send an exception chain in the ValidationResult.
+            1.  Send an exception chain in the ValidationResult if any of the following
+                occur
+                    -   The Validation is not primed.
+                    -   The enabled attribute fails a safety check.
+                    -   There is no validation path for the attribute.
             2.  Otherwise, send the success result.
         Args:
-            candidate: Any
-            number_validator: NumberValidator
-        Returns:
-            ValidationResult[CoordContext]
-        Raises:
-            TypeError
-            CoordContextException
-            NullCoordContextException
-            ZeroCoordContextFlagsException
-        """
-        method = f"{cls.__name__}.validate"
-        
-        # Handle the nonexistence case.
-        if candidate is None:
-            # Send the exception chain on failure.
-            return ValidationResult.failure(
-                CoordContextValidationException(
-                    cls_mthd=method,
-                    cls_name=cls.__name__,
-                    op=CoordContextValidationException.OP,
-                    msg=CoordContextValidationException.MSG,
-                    err_code=CoordContextValidationException.ERR_CODE,
-                    mthd_rslt_type=CoordContextValidationException.MTHD_RSLT,
-                    ex=NullCoordContextException(
-                        msg=CoordContextValidationException.MSG,
-                        err_code=CoordContextValidationException.ERR_CODE,
-                    )
-                )
-            )
-        # Handle the case that, they type is wrong.
-        if not isinstance(candidate, CoordContext):
-            # Send the exception chain on failure.
-            return ValidationResult.failure(
-                CoordContextValidationException(
-                    cls_mthd=method,
-                    cls_name=cls.__name__,
-                    op=CoordContextValidationException.OP,
-                    msg=CoordContextValidationException.MSG,
-                    err_code=CoordContextValidationException.ERR_CODE,
-                    mthd_rslt_type=CoordContextValidationException.MTHD_RSLT,
-                    ex=TypeError(f"Expected a CoordContext, got {type(candidate).__name__} instead.")
-                )
-            )
-        # --- Cast rank to the CoordContext for additional tests. ---#
-        context = cast(CoordContext, candidate)
-        
-        # Get how many context flags are set.
-        switch_count = len(context.to_dict())
-        
-        # Handle the case that, no context flags are set.
-        if switch_count == 0:
-            # Send the exception chain on failure.
-            return ValidationResult.failure(
-                CoordContextValidationException(
-                    cls_mthd=method,
-                    cls_name=cls.__name__,
-                    op=CoordContextValidationException.OP,
-                    msg=CoordContextValidationException.MSG,
-                    err_code=CoordContextValidationException.ERR_CODE,
-                    mthd_rslt_type=CoordContextValidationException.MTHD_RSLT,
-                    ex=ZeroCoordContextFlagsException(
-                        msg=CoordContextValidationException.MSG,
-                        err_code=CoordContextValidationException.ERR_CODE,
-                    )
-                )
-            )
-        # --- Route to the appropriate validation branch. ---#
-        
-        # Certification for the search-by-column-and-row target.
-        if switch_count == 2:
-            # Handle the case that, the search-by-column-and-row target fails its integrity checks.
-            validation_result = cls._run_attribute_checks(
-                attributes=[context.row, context.column],
-                number_validator=number_validator,
-            )
-            # On failure, forward the result
-            if validation_result.is_failure:
-                return validation_result
-            # --- Otherwise forward the work product to the client. ---#
-            return ValidationResult.success(context)
-        
-        # --- Validation route for row_CoordContext. ---#
-        if context.row is not None:
-            # Handle the case that, the context.row fails a check.
-            validation_result = cls._run_attribute_checks(
-                attributes=[context.row],
-                number_validator=number_validator,
-            )
-            # On failure, forward the result
-            if validation_result.is_failure:
-                return validation_result
-            # --- Otherwise forward the work product to the client. ---#
-            return ValidationResult.success(context)
-        
-        # --- Validation route for column_CoordContext. ---#
-        if context.column is not None:
-            # Handle the case that, the context.column fails a check.
-            validation_result = cls._run_attribute_checks(
-                attributes=[context.column],
-                number_validator=number_validator,
-            )
-            # On failure forward the result
-            if validation_result.is_failure:
-                return validation_result
-            # --- Otherwise forward the work product to the client. ---#
-            return ValidationResult.success(context)
-        
-        # Handle the case that, there is no validation route for the context.
-        return ValidationResult.failure(
-            CoordContextValidationException(
-                cls_mthd=method,
-                cls_name=cls.__name__,
-                op=CoordContextValidationException.OP,
-                msg=CoordContextValidationException.MSG,
-                err_code=CoordContextValidationException.ERR_CODE,
-                mthd_rslt_type=CoordContextValidationException.MTHD_RSLT,
-                ex=CoordContextValidationRouteException(
-                    msg=CoordContextValidationException.MSG,
-                    err_code=CoordContextValidationException.ERR_CODE,
-                )
-            )
-        )
-    
-    @classmethod
-    @LoggingLevelRouter.monitor
-    def _run_attribute_checks(
-            cls,
-            attributes: List[int],
-            number_validator: NumberValidator,
-    ) -> ValidationResult[CoordContext]:
-        """
-        Run checks on which ether attributes have been enabled.
-        Action:
-            Send an exception in the ValidationResult if list member fails a check.
-            Otherwise, send the success result.
-        Args:
-            attributes: List[int]
-            number_validator: NumberValidator
+            candidate: Any,
+            toolkit: CoordContextToolkit,
         Returns:
             ValidationResult[CoordContext]
         Raises:
             CoordContextValidationException
+            CoordContextValidationRouteException
         """
-        method = f"{cls.__name__}._run_validation_check"
+        method = f"{cls.__name__}.validate"
         
-        for attribute in attributes:
-            # Handle the case that, the rowis not safe.
-            validation_result = number_validator.validate(
+        # --- Supply any missing dependencies. ---#
+        if toolkit is None:
+            toolkit = CoordContextToolkit()
+        
+        # handle the case that, priming the validator fails.
+        priming_result = toolkit.context_validation_primer.validate(
+            candidate=candidate,
+            context_model=toolkit.context_model_type,
+            null_exception=toolkit.null_context_exception,
+            validator_bootstrapper=toolkit.coord_toolkit.validation_primer
+        )
+        if priming_result.is_failure:
+            # Send the exception chain on failure.
+            return ValidationResult.failure(
+                CoordContextValidationException(
+                    cls_mthd=method,
+                    cls_name=cls.__name__,
+                    msg=CoordContextValidationException.MSG,
+                    err_code=CoordContextValidationException.ERR_CODE,
+                    ex=priming_result.exception
+                )
+            )
+        # --- Cast the candidate into SquareContext for routing attribute testing. ---#
+        context = cast(CoordContext, candidate)
+        
+        # Certification whichever attribute is enabled.
+        for attribute in [context.row, context.column]:
+            validation_result = toolkit.coord_toolkit.number_validator.validate(
                 candidate=attribute,
-                ceiling=BOARD_DIMENSION - 1,
+                ceiling=BoardProperty.MAX_COLUMN_INDEX.value,
                 floor=0,
             )
+
             if validation_result.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
                     CoordContextValidationException(
                         cls_mthd=method,
                         cls_name=cls.__name__,
-                        op=CoordContextValidationException.OP,
                         msg=CoordContextValidationException.MSG,
                         err_code=CoordContextValidationException.ERR_CODE,
-                        mthd_rslt_type=CoordContextValidationException.MTHD_RSLT,
                         ex=validation_result.exception
                     )
                 )
         # --- Forward the work product to the caller. ---#
-        return ValidationResult.success(CoordContext())
+        return ValidationResult.success(context)
+
         
 
 

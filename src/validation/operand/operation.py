@@ -82,7 +82,7 @@ class VectorOperandValidator(Validator[VectorOperand]):
             toolkit = VectorOperandToolkit()
         
         # Handle the case that, the candidate does not exist or, is the wrong type.
-        validation_bootstrap_result = toolkit.validation_bootstrapper.validate(
+        validation_bootstrap_result = toolkit.validation_primer.validate(
             candidate=candidate,
             target_model=VectorOperand,
             null_exception=VectorOperandNullException(),

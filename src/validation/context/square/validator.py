@@ -8,35 +8,40 @@ version: 1.0.1
 """
 
 from __future__ import annotations
-
 from typing import Any, cast
 
-from err import FormationNullException, SquareContextValidationException, SquareContextValidationRouteException
-from err.null.state.square import SquareStateNullException
-from integrity import SquareValidator, Validator
-from microservice import BoardService, CoordService, SquareService
+from err import (
+    FormationNullException, SquareContextValidationException, SquareContextValidationRouteException,
+    SquareStateNullException
+)
 from model import Formation, SquareContext, SquareState
 from result import ValidationResult
-from system import IdentityService, LoggingLevelRouter
 from toolkit import SquareContextToolkit
+from util import LoggingLevelRouter
+from validation import Validator
 
 
 class SquareContextValidator(Validator[SquareContext]):
     """
-     Role:Validation, Data Integrity Guarantor, Security.
+    Role
+        -   Transaction Worker
+        -   Integrity Maintenance
+        -   Consistency Assurance
+        -   Process Runner
 
     Responsibilities:
-    1.  Ensure a SquareContext instance is certified safe, reliable and consistent before use.
-    2.  If verification fails send an exception detailing the failure.
+        1.  Ensure a SquareContext instance is certified safe, reliable and consistent before use.
 
-    Super Class:
-        *   Validator
+    Attributes:
 
     Provides:
+        -   def validate(
+                    candidate: Any,
+                    toolkit: SquareContextToolkit,
+            ) -> ValidationResult[SquareContext]:
 
-
-    # INHERITED ATTRIBUTES:
-    None
+    Super Class:
+        Validator
     """
     @classmethod
     @LoggingLevelRouter.monitor
@@ -75,7 +80,7 @@ class SquareContextValidator(Validator[SquareContext]):
             candidate=candidate,
             context_model=toolkit.context_model_type,
             null_exception=toolkit.null_context_exception,
-            validator_bootstrapper=toolkit.team_toolkit.validation_bootstrapper
+            validator_bootstrapper=toolkit.square_toolkit.validation_primer
         )
         if priming_result.is_failure:
             # Send the exception chain on failure.
@@ -88,13 +93,12 @@ class SquareContextValidator(Validator[SquareContext]):
                     ex=priming_result.exception
                 )
             )
-        # --- Cast the candidate into SquareContext for routing attribute testing ---#
+        # --- Cast the candidate into SquareContext for routing attribute testing. ---#
         context = cast(SquareContext, candidate)
         
         # Certification for the search-by-id target.
-        # Certification for the search-by-id target.
         if context.id is not None:
-            validation_result = toolkit.team_toolkit.identity_service.validate_id(
+            validation_result = toolkit.square_toolkit.identity_service.validate_id(
                 candidate=context.id
             )
             if validation_result.is_failure:
@@ -189,7 +193,7 @@ class SquareContextValidator(Validator[SquareContext]):
         
         # Certification for the search-by-state.
         if context.state is not None:
-            validation_result = toolkit.team_toolkit.validation_bootstrapper.validate(
+            validation_result = toolkit.square_toolkit.validation_primer.validate(
                 candidate=context.state,
                 model_type=SquareState,
                 null_exception=SquareStateNullException()
@@ -210,7 +214,7 @@ class SquareContextValidator(Validator[SquareContext]):
         
         # Certification for the search-by-formation.
         if context.formation is not None:
-            validation_result = toolkit.team_toolkit.validation_bootstrapper.validate(
+            validation_result = toolkit.square_toolkit.validation_primer.validate(
                 candidate=context.formation,
                 model_type=Formation,
                 null_exception=FormationNullException()
@@ -232,9 +236,13 @@ class SquareContextValidator(Validator[SquareContext]):
         # Return the exception chain if there is no validation route for the context.
         return ValidationResult.failure(
             SquareContextValidationException(
-                msg=f"{method}: {SquareContextValidationException.MSG}",
+                cls_mthd=method,
+                cls_name=cls.__name__,
+                msg=SquareContextValidationException.MSG,
+                err_code=SquareContextValidationException.ERR_CODE,
                 ex=SquareContextValidationRouteException(
-                    f"{method}: {SquareContextValidationRouteException.MSG}"
+                    msg=SquareContextValidationRouteException.MSG,
+                    err_code=SquareContextValidationRouteException.ERR_CODE,
                 )
             )
         )

@@ -13,11 +13,11 @@ from typing import Any, Optional
 from err import ContextException
 
 _all_ = [
-    # ======================# ZERO_CONTEXT_FLAGS_EXCEPTION #======================#
+    # ======================# ZERO_CONTEXT_FLAGS_FAILURE #======================#
     "ZeroContextFlagsException",
 ]
 
-# ======================# ZERO_CONTEXT_FLAGS_EXCEPTION #======================#
+# ======================# ZERO_CONTEXT_FLAGS_FAILURE #======================#
 class ZeroContextFlagsException(ContextException):
     """
     Role:
@@ -41,7 +41,7 @@ class ZeroContextFlagsException(ContextException):
         ContextException
     """
     MSG = "No Context flag is enabled."
-    ERR_CODE = "ZERO_CONTEXT_FLAGS_EXCEPTION"
+    ERR_CODE = "ZERO_CONTEXT_FLAGS_FAILURE"
     
     def __init__(
             self,

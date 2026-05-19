@@ -18,7 +18,7 @@ from search import ServiceRegistrySearch
 class ServiceRegistryToolkit:
     """
     Role:
-        -   Utility Container
+        -   Dependency Container
 
     Responsibilities:
         1.  Consolidates ServiceRegistry integrity operations and validation resources into

@@ -22,9 +22,9 @@ class TokenContextToolkit(ContextToolkit[Token]):
         -   Data Holder
         
     Responsibilities:
-        1.  Collection of workers and services that are required for Board tasks.
-        2.  Simplifies entry points.
-        3.  No logic in the Toolkit.
+        1.  Aggregates workers and services required for TokenContext build and validation tasks.
+        2.  Separates dependencies from data objects in operation calls.
+        3.  Simplifies entry points.
 
     Attributes:
         DEPENDENCIES: List[Operation]
@@ -32,7 +32,7 @@ class TokenContextToolkit(ContextToolkit[Token]):
         
         context_model_type: TokenContext
         null_context_exception: TokenContextNullException
-        context_validation_primer: ValidationBootstrapper
+        context_validation_primer: ValidationPrimer
         number_validator: NumberValidator
         
     Provides:

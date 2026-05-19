@@ -12,14 +12,14 @@ from typing import Any, Optional
 
 
 __all__ = [
-    # ======================# FORMATION_CONTEXT_VALIDATION_EXCEPTION #======================#
+    # ======================# FORMATION_CONTEXT_VALIDATION_FAILURE #======================#
     "FormationContextValidationException",
 ]
 
 from err import ContextValidationException
 
 
-# ======================# FORMATION_CONTEXT_VALIDATION_EXCEPTION #======================#
+# ======================# FORMATION_CONTEXT_VALIDATION_FAILURE #======================#
 class FormationContextValidationException(ContextValidationException):
     """
     Role:
@@ -43,7 +43,7 @@ class FormationContextValidationException(ContextValidationException):
         ContextValidationException
     """
     MSG = "No validation logic for FormationContext attribute"
-    ERR_CODE = "FORMATION_CONTEXT_VALIDATION_EXCEPTION"
+    ERR_CODE = "FORMATION_CONTEXT_VALIDATION_FAILURE"
     
     def __init__(
             self,

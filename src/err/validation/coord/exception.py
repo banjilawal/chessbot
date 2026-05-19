@@ -13,11 +13,11 @@ from typing import Any, Optional
 from err import ValidationException
 
 __all__ = [
-    # ======================# COORD_VALIDATION_EXCEPTION #======================#
+    # ======================# COORD_VALIDATION_FAILURE #======================#
     "CoordValidationException",
 ]
 
-# ======================# COORD_VALIDATION_EXCEPTION #======================#
+# ======================# COORD_VALIDATION_FAILURE #======================#
 class CoordValidationException(ValidationException):
     """
     Role:
@@ -42,7 +42,7 @@ class CoordValidationException(ValidationException):
         ValidationException
     """
     MSG = "CoordValidation check failed"
-    ERR_CODE = "COORD_VALIDATION_EXCEPTION"
+    ERR_CODE = "COORD_VALIDATION_FAILURE"
     
     def __init__(
             self,

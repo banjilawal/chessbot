@@ -13,11 +13,11 @@ from typing import Any, Optional
 from err import ValidationException
 
 __all__ = [
-    # ======================# TEAM_VALIDATION_EXCEPTION #======================#
+    # ======================# TEAM_VALIDATION_FAILURE #======================#
     "TeamValidationException",
 ]
 
-# ======================# TEAM_VALIDATION_EXCEPTION #======================#
+# ======================# TEAM_VALIDATION_FAILURE #======================#
 class TeamValidationException(ValidationException):
     """
     Role:
@@ -41,7 +41,7 @@ class TeamValidationException(ValidationException):
         ValidationException
     """
     MSG = "TeamValidation check failed"
-    ERR_CODE = "TEAM_VALIDATION_EXCEPTION"
+    ERR_CODE = "TEAM_VALIDATION_FAILURE"
     
     def __init__(
             self,

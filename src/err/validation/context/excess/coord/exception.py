@@ -13,11 +13,11 @@ from typing import Any, Optional
 from err import ExcessContextFlagsException
 
 _all_ = [
-    # ======================# EXCESS_COORD_CONTEXT_FLAGS_EXCEPTION #======================#
+    # ======================# EXCESS_COORD_CONTEXT_FLAGS_FAILURE #======================#
     "ExcessCoordContextFlagsException",
 ]
 
-# ======================# EXCESS_COORD_CONTEXT_FLAGS_EXCEPTION #======================#
+# ======================# EXCESS_COORD_CONTEXT_FLAGS_FAILURE #======================#
 class ExcessCoordContextFlagsException(ExcessContextFlagsException):
     """
     Role:
@@ -41,7 +41,7 @@ class ExcessCoordContextFlagsException(ExcessContextFlagsException):
         ExcessContextFlagsException
     """
     MSG = "More than one CoordCcontext attribute enabled."
-    ERR_CODE = "EXCESS_COORD_CONTEXT_FLAGS_EXCEPTION"
+    ERR_CODE = "EXCESS_COORD_CONTEXT_FLAGS_FAILURE"
     
     def __init__(
             self,

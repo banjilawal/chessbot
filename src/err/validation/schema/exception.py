@@ -13,11 +13,11 @@ from typing import Any, Optional
 from err import ValidationException
 
 __all__ = [
-    # ======================# SCHEMA_VALIDATION_EXCEPTION #======================#
+    # ======================# SCHEMA_VALIDATION_FAILURE #======================#
     "SchemaValidationException",
 ]
 
-# ======================# SCHEMA_VALIDATION_EXCEPTION #======================#
+# ======================# SCHEMA_VALIDATION_FAILURE #======================#
 class SchemaValidationException(ValidationException):
     """
     Role:
@@ -42,7 +42,7 @@ class SchemaValidationException(ValidationException):
         ValidationException
     """
     MSG = "SchemaValidation check failed"
-    ERR_CODE = "SCHEMA_VALIDATION_EXCEPTION"
+    ERR_CODE = "SCHEMA_VALIDATION_FAILURE"
     
     def __init__(
             self,

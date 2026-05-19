@@ -12,14 +12,14 @@ from typing import Any, Optional
 
 
 __all__ = [
-    # ======================# PLAYER_CONTEXT_VALIDATION_EXCEPTION #======================#
+    # ======================# PLAYER_CONTEXT_VALIDATION_FAILURE #======================#
     "PlayerContextValidationException",
 ]
 
 from err import ContextValidationException
 
 
-# ======================# PLAYER_CONTEXT_VALIDATION_EXCEPTION #======================#
+# ======================# PLAYER_CONTEXT_VALIDATION_FAILURE #======================#
 class PlayerContextValidationException(ContextValidationException):
     """
     Role:
@@ -43,7 +43,7 @@ class PlayerContextValidationException(ContextValidationException):
         ContextValidationException
     """
     MSG = "No validation logic for PlayerContext attribute"
-    ERR_CODE = "PLAYER_CONTEXT_VALIDATION_EXCEPTION"
+    ERR_CODE = "PLAYER_CONTEXT_VALIDATION_FAILURE"
     
     def __init__(
             self,

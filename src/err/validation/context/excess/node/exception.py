@@ -13,11 +13,11 @@ from typing import Any, Optional
 from err import ExcessContextFlagsException
 
 _all_ = [
-    # ======================# EXCESS_NODE_CONTEXT_FLAGS_EXCEPTION #======================#
+    # ======================# EXCESS_NODE_CONTEXT_FLAGS_FAILURE #======================#
     "ExcessNodeContextFlagsException",
 ]
 
-# ======================# EXCESS_NODE_CONTEXT_FLAGS_EXCEPTION #======================#
+# ======================# EXCESS_NODE_CONTEXT_FLAGS_FAILURE #======================#
 class ExcessNodeContextFlagsException(ExcessContextFlagsException):
     """
     Role:
@@ -41,7 +41,7 @@ class ExcessNodeContextFlagsException(ExcessContextFlagsException):
         ExcessContextFlagsException
     """
     MSG = "More than one NodeCcontext attribute enabled."
-    ERR_CODE = "EXCESS_NODE_CONTEXT_FLAGS_EXCEPTION"
+    ERR_CODE = "EXCESS_NODE_CONTEXT_FLAGS_FAILURE"
     
     def __init__(
             self,

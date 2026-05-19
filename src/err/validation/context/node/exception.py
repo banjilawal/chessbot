@@ -12,14 +12,14 @@ from typing import Any, Optional
 
 
 __all__ = [
-    # ======================# NODE_CONTEXT_VALIDATION_EXCEPTION #======================#
+    # ======================# NODE_CONTEXT_VALIDATION_FAILURE #======================#
     "NodeContextValidationException",
 ]
 
 from err import ContextValidationException
 
 
-# ======================# NODE_CONTEXT_VALIDATION_EXCEPTION #======================#
+# ======================# NODE_CONTEXT_VALIDATION_FAILURE #======================#
 class NodeContextValidationException(ContextValidationException):
     """
     Role:
@@ -43,7 +43,7 @@ class NodeContextValidationException(ContextValidationException):
         ContextValidationException
     """
     MSG = "No validation logic for NodeContext attribute"
-    ERR_CODE = "NODE_CONTEXT_VALIDATION_EXCEPTION"
+    ERR_CODE = "NODE_CONTEXT_VALIDATION_FAILURE"
     
     def __init__(
             self,

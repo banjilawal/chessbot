@@ -13,11 +13,11 @@ from typing import Any, Optional
 from err import ZeroContextFlagsException
 
 _all_ = [
-    # ======================# ZERO_EDGE_CONTEXT_FLAGS_EXCEPTION #======================#
+    # ======================# ZERO_EDGE_CONTEXT_FLAGS_FAILURE #======================#
     "ZeroEdgeContextFlagsException",
 ]
 
-# ======================# ZERO_EDGE_CONTEXT_FLAGS_EXCEPTION #======================#
+# ======================# ZERO_EDGE_CONTEXT_FLAGS_FAILURE #======================#
 class ZeroEdgeContextFlagsException(ZeroContextFlagsException):
     """
     Role:
@@ -41,7 +41,7 @@ class ZeroEdgeContextFlagsException(ZeroContextFlagsException):
         ZeroContextFlagsException
     """
     MSG = "No EdgeCcontext attribute enabled."
-    ERR_CODE = "ZERO_EDGE_CONTEXT_FLAGS_EXCEPTION"
+    ERR_CODE = "ZERO_EDGE_CONTEXT_FLAGS_FAILURE"
     
     def __init__(
             self,

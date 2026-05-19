@@ -12,14 +12,14 @@ from typing import Any, Optional
 
 
 __all__ = [
-    # ======================# PERSONA_CONTEXT_VALIDATION_EXCEPTION #======================#
+    # ======================# PERSONA_CONTEXT_VALIDATION_FAILURE #======================#
     "PersonaContextValidationException",
 ]
 
 from err import ContextValidationException
 
 
-# ======================# PERSONA_CONTEXT_VALIDATION_EXCEPTION #======================#
+# ======================# PERSONA_CONTEXT_VALIDATION_FAILURE #======================#
 class PersonaContextValidationException(ContextValidationException):
     """
     Role:
@@ -43,7 +43,7 @@ class PersonaContextValidationException(ContextValidationException):
         ContextValidationException
     """
     MSG = "No validation logic for PersonaContext attribute"
-    ERR_CODE = "PERSONA_CONTEXT_VALIDATION_EXCEPTION"
+    ERR_CODE = "PERSONA_CONTEXT_VALIDATION_FAILURE"
     
     def __init__(
             self,

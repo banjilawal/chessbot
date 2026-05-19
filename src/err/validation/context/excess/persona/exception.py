@@ -13,11 +13,11 @@ from typing import Any, Optional
 from err import ExcessContextFlagsException
 
 _all_ = [
-    # ======================# EXCESS_PERSONA_CONTEXT_FLAGS_EXCEPTION #======================#
+    # ======================# EXCESS_PERSONA_CONTEXT_FLAGS_FAILURE #======================#
     "ExcessPersonaContextFlagsException",
 ]
 
-# ======================# EXCESS_PERSONA_CONTEXT_FLAGS_EXCEPTION #======================#
+# ======================# EXCESS_PERSONA_CONTEXT_FLAGS_FAILURE #======================#
 class ExcessPersonaContextFlagsException(ExcessContextFlagsException):
     """
     Role:
@@ -41,7 +41,7 @@ class ExcessPersonaContextFlagsException(ExcessContextFlagsException):
         ExcessContextFlagsException
     """
     MSG = "More than one PersonaCcontext attribute enabled."
-    ERR_CODE = "EXCESS_PERSONA_CONTEXT_FLAGS_EXCEPTION"
+    ERR_CODE = "EXCESS_PERSONA_CONTEXT_FLAGS_FAILURE"
     
     def __init__(
             self,

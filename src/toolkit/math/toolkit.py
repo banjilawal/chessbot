@@ -10,7 +10,7 @@ version: 1.0.1
 from __future__ import annotations
 
 from toolkit import Toolkit
-from operation import NumberValidator, ValidationBootstrapper
+from operation import NumberValidator, ValidationPrimer
 
 
 
@@ -26,7 +26,7 @@ class MathToolkit(Toolkit):
 
     Attributes:
             number_validator: NumberValidator
-            validation_bootstrap: ValidationBootstrapper
+            validation_bootstrap: ValidationPrimer
     Provides:
 
      Super Class:
@@ -36,21 +36,21 @@ class MathToolkit(Toolkit):
     def __init__(
             self,
             number_validator: NumberValidator | None = None,
-            validation_bootstrap: ValidationBootstrapper | None = None,
+            validation_bootstrap: ValidationPrimer | None = None,
     ):
         """
         Args:
             number_validator: NumberValidator
-            validation_bootstrap: ValidationBootstrapper
+            validation_bootstrap: ValidationPrimer
         """
         super().__init__()
         self._number_validator = number_validator or NumberValidator()
-        self._validation_bootstrapper = validation_bootstrap or ValidationBootstrapper()
+        self._validation_primer = validation_bootstrap or ValidationPrimer()
 
     @property
     def number_validator(self) -> NumberValidator:
         return self._number_validator
     
     @property
-    def validation_bootstrapper(self) -> ValidationBootstrapper:
-        return self._validation_bootstrapper
+    def validation_primer(self) -> ValidationPrimer:
+        return self._validation_primer

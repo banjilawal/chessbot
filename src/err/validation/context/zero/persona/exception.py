@@ -13,11 +13,11 @@ from typing import Any, Optional
 from err import ZeroContextFlagsException
 
 _all_ = [
-    # ======================# ZERO_PERSONA_CONTEXT_FLAGS_EXCEPTION #======================#
+    # ======================# ZERO_PERSONA_CONTEXT_FLAGS_FAILURE #======================#
     "ZeroPersonaContextFlagsException",
 ]
 
-# ======================# ZERO_PERSONA_CONTEXT_FLAGS_EXCEPTION #======================#
+# ======================# ZERO_PERSONA_CONTEXT_FLAGS_FAILURE #======================#
 class ZeroPersonaContextFlagsException(ZeroContextFlagsException):
     """
     Role:
@@ -41,7 +41,7 @@ class ZeroPersonaContextFlagsException(ZeroContextFlagsException):
         ZeroContextFlagsException
     """
     MSG = "No PersonaCcontext attribute enabled."
-    ERR_CODE = "ZERO_PERSONA_CONTEXT_FLAGS_EXCEPTION"
+    ERR_CODE = "ZERO_PERSONA_CONTEXT_FLAGS_FAILURE"
     
     def __init__(
             self,

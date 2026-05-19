@@ -13,11 +13,11 @@ from typing import Any, Optional
 from err import ZeroContextFlagsException
 
 _all_ = [
-    # ======================# ZERO_FORMATION_CONTEXT_FLAGS_EXCEPTION #======================#
+    # ======================# ZERO_FORMATION_CONTEXT_FLAGS_FAILURE #======================#
     "ZeroFormationContextFlagsException",
 ]
 
-# ======================# ZERO_FORMATION_CONTEXT_FLAGS_EXCEPTION #======================#
+# ======================# ZERO_FORMATION_CONTEXT_FLAGS_FAILURE #======================#
 class ZeroFormationContextFlagsException(ZeroContextFlagsException):
     """
     Role:
@@ -41,7 +41,7 @@ class ZeroFormationContextFlagsException(ZeroContextFlagsException):
         ZeroContextFlagsException
     """
     MSG = "No FormationCcontext attribute enabled."
-    ERR_CODE = "ZERO_FORMATION_CONTEXT_FLAGS_EXCEPTION"
+    ERR_CODE = "ZERO_FORMATION_CONTEXT_FLAGS_FAILURE"
     
     def __init__(
             self,

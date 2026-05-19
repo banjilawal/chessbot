@@ -12,7 +12,7 @@ from typing import Any, cast
 
 from result import ValidationResult
 from system import BOARD_DIMENSION, LoggingLevelRouter
-from operation import ValidationBootstrapper, Validator
+from operation import ValidationPrimer, Validator
 from err import (
     NegativeNumberException, NumberAboveBoundsException, NumberBelowBoundsException, NumberNullException,
     NumberValidationException
@@ -37,7 +37,7 @@ class NumberValidator(Validator[int]):
                     candidate: Any,
                     floor: int = 0,
                     ceiling: int = BOARD_DIMENSION,
-                    validation_bootstrapper: ValidationBootstrapper,
+                    validation_primer: ValidationPrimer,
             ) -> ValidationResult[int]:
     
     Super Class:
@@ -52,7 +52,7 @@ class NumberValidator(Validator[int]):
             candidate: Any,
             floor: int = 0,
             ceiling: int = BOARD_DIMENSION-1,
-            validation_bootstrapper: ValidationBootstrapper | None = None,
+            validation_primer: ValidationPrimer | None = None,
     ) -> ValidationResult[int]:
         """
         Make sure an object is a number within bounds before use.
@@ -65,7 +65,7 @@ class NumberValidator(Validator[int]):
             candidate: Any
             floor: int
             ceiling: int
-            validation_bootstrapper: ValidationBootstrapper
+            validation_primer: ValidationPrimer
         Returns:
             ValidationResult[int]
         Raises:
@@ -76,11 +76,11 @@ class NumberValidator(Validator[int]):
         """
         method = f"{cls.__name__}.validate"
         
-        if validation_bootstrapper is None:
-            validation_bootstrapper = ValidationBootstrapper()
+        if validation_primer is None:
+            validation_primer = ValidationPrimer()
         
         # Handle the case that, the candidate does not exist.
-        validation_bootstrap_result = validation_bootstrapper.validate(
+        validation_bootstrap_result = validation_primer.validate(
             candidate=candidate,
             target_model=int,
             null_exception=NumberNullException(),

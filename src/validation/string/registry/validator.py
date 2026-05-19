@@ -14,7 +14,7 @@ from controller import WorkerRegistryController
 from err import (
     EmptyListException, ListNullException, RegistryEntryKeyStringValidationException, StringValidationException
 )
-from operation import ValidationBootstrapper, Validator
+from operation import ValidationPrimer, Validator
 from validation.string import NameValidator
 from result import ValidationResult
 from util import LoggingLevelRouter
@@ -37,7 +37,7 @@ class RegistryEntryNameValidator(Validator):
        -    execute(
                 candidates: List[str],
                 name_validator: NameValidator,
-                validation_bootstrapper: ValidationBootstrapper,
+                validation_primer: ValidationPrimer,
             ) -> ValidationResult[List[String]]
 
     Super Class:
@@ -50,7 +50,7 @@ class RegistryEntryNameValidator(Validator):
             cls,
             candidates: List[str],
             name_validator: NameValidator | None = None,
-            validation_bootstrapper: ValidationBootstrapper | None = None,
+            validation_primer: ValidationPrimer | None = None,
     ) -> ValidationResult[List[str]]:
         """
         Verify the list of names are safe to use as domains and keys in Registries.
@@ -64,7 +64,7 @@ class RegistryEntryNameValidator(Validator):
         Args:
             candidates: List[str]
             name_validator: NameValidator
-            validation_bootstrapper: ValidationBootstrapper
+            validation_primer: ValidationPrimer
         Returns:
             ValidationResult[List[str]]
         Raises:
@@ -78,10 +78,10 @@ class RegistryEntryNameValidator(Validator):
         # --- Supply any missing dependencies. ---#
         if name_validator is None:
             name_validator = NameValidator()
-        if validation_bootstrapper is None:
-            validation_bootstrapper = ValidationBootstrapper()
+        if validation_primer is None:
+            validation_primer = ValidationPrimer()
         
-        list_validation_result = validation_bootstrapper.validate(
+        list_validation_result = validation_primer.validate(
             candidate=candidates,
             target_model=List[str],
             null_exception=ListNullException()

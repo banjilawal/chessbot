@@ -13,11 +13,11 @@ from typing import Any, Optional
 from err import ValidationException
 
 __all__ = [
-    # ======================# BINDER_VALIDATION_EXCEPTION #======================#
+    # ======================# BINDER_VALIDATION_FAILURE #======================#
     "BinderValidationException",
 ]
 
-# ======================# BINDER_VALIDATION_EXCEPTION #======================#
+# ======================# BINDER_VALIDATION_FAILURE #======================#
 class BinderValidationException(ValidationException):
     """
     Role:
@@ -42,7 +42,7 @@ class BinderValidationException(ValidationException):
         ValidationException
     """
     MSG = "BinderValidation check failed"
-    ERR_CODE = "BINDER_VALIDATION_EXCEPTION"
+    ERR_CODE = "BINDER_VALIDATION_FAILURE"
     
     def __init__(
             self,

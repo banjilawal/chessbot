@@ -1,7 +1,7 @@
-# src/err/validation/bootstrap/exception.py
+# src/err/validation/context/primer/exception.py
 
 """
-Module: err.validation.bootstrap.exception
+Module: err.validation.context.primer.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,39 +10,39 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import ValidationException
+from err import ContextValidationException
+
 
 __all__ = [
-    # ======================# VALIDATION_BOOTSTRAP_FAILURE #======================#
-    "ValidationBootstrapException",
+    # ======================# CONTEXT_VALIDATION_PRIMING_FAILURE #======================#
+    "ContextValidationPrimingException",
 ]
 
-# ======================# VALIDATION_BOOTSTRAP_FAILURE #======================#
-class ValidationBootstrapException(ValidationException):
+# ======================# CONTEXT_VALIDATION_PRIMING_FAILURE #======================#
+class ContextValidationPrimingException(ContextValidationException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate a validation failed during the bootstrap phase.
+        1.  Indicate that a ContextValidation failed during its priming phase.
 
     Attributes:
-        msg: Optional[str]
-        var: Optional[str]
-        val: Optional[Any]
-        ex: Optional[Exception]
-        cls_name: Optional[str]
-        cls_mthd: Optional[str]
-        err_code: Optional[str]
-        mthd_rslt_type: Optional[MethodResultType]
+            msg: Optional[str]
+            var: Optional[str]
+            val: Optional[Any]
+            ex: Optional[Exception]
+            cls_name: Optional[str]
+            cls_mthd: Optional[str]
+            err_code: Optional[str]
             
     Provides:
 
     Super Class:
-        ValidationException
+        ContextValidationException
     """
-    MSG = "Validation failed during the bootstrap phase."
-    ERR_CODE = "VALIDATION_BOOTSTRAP_FAILURE"
+    MSG = "ContextValidation failed during its priming phase."
+    ERR_CODE = "CONTEXT_VALIDATION_PRIMING_FAILURE"
     
     def __init__(
             self,

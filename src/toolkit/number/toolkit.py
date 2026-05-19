@@ -10,7 +10,7 @@ version: 1.0.1
 from __future__ import annotations
 
 from toolkit import Toolkit
-from operation import NumberValidator, ValidationBootstrapper
+from operation import NumberValidator, ValidationPrimer
 
 
 

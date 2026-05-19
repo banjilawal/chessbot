@@ -12,14 +12,14 @@ from typing import Any, Optional
 
 
 __all__ = [
-    # ======================# ARENA_CONTEXT_VALIDATION_EXCEPTION #======================#
+    # ======================# ARENA_CONTEXT_VALIDATION_FAILURE #======================#
     "ArenaContextValidationException",
 ]
 
 from err import ContextValidationException
 
 
-# ======================# ARENA_CONTEXT_VALIDATION_EXCEPTION #======================#
+# ======================# ARENA_CONTEXT_VALIDATION_FAILURE #======================#
 class ArenaContextValidationException(ContextValidationException):
     """
     Role:
@@ -43,7 +43,7 @@ class ArenaContextValidationException(ContextValidationException):
         ContextValidationException
     """
     MSG = "No validation logic for ArenaContext attribute"
-    ERR_CODE = "ARENA_CONTEXT_VALIDATION_EXCEPTION"
+    ERR_CODE = "ARENA_CONTEXT_VALIDATION_FAILURE"
     
     def __init__(
             self,

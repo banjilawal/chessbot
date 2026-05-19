@@ -13,11 +13,11 @@ from typing import Any, Optional
 from err import ZeroContextFlagsException
 
 _all_ = [
-    # ======================# ZERO_SCHEMA_CONTEXT_FLAGS_EXCEPTION #======================#
+    # ======================# ZERO_SCHEMA_CONTEXT_FLAGS_FAILURE #======================#
     "ZeroSchemaContextFlagsException",
 ]
 
-# ======================# ZERO_SCHEMA_CONTEXT_FLAGS_EXCEPTION #======================#
+# ======================# ZERO_SCHEMA_CONTEXT_FLAGS_FAILURE #======================#
 class ZeroSchemaContextFlagsException(ZeroContextFlagsException):
     """
     Role:
@@ -41,7 +41,7 @@ class ZeroSchemaContextFlagsException(ZeroContextFlagsException):
         ZeroContextFlagsException
     """
     MSG = "No SchemaCcontext attribute enabled."
-    ERR_CODE = "ZERO_SCHEMA_CONTEXT_FLAGS_EXCEPTION"
+    ERR_CODE = "ZERO_SCHEMA_CONTEXT_FLAGS_FAILURE"
     
     def __init__(
             self,

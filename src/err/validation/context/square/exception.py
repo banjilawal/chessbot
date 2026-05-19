@@ -12,14 +12,14 @@ from typing import Any, Optional
 
 
 __all__ = [
-    # ======================# SQUARE_CONTEXT_VALIDATION_EXCEPTION #======================#
+    # ======================# SQUARE_CONTEXT_VALIDATION_FAILURE #======================#
     "SquareContextValidationException",
 ]
 
 from err import ContextValidationException
 
 
-# ======================# SQUARE_CONTEXT_VALIDATION_EXCEPTION #======================#
+# ======================# SQUARE_CONTEXT_VALIDATION_FAILURE #======================#
 class SquareContextValidationException(ContextValidationException):
     """
     Role:
@@ -43,7 +43,7 @@ class SquareContextValidationException(ContextValidationException):
         ContextValidationException
     """
     MSG = "No validation logic for SquareContext attribute"
-    ERR_CODE = "SQUARE_CONTEXT_VALIDATION_EXCEPTION"
+    ERR_CODE = "SQUARE_CONTEXT_VALIDATION_FAILURE"
     
     def __init__(
             self,

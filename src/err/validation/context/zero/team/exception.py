@@ -13,11 +13,11 @@ from typing import Any, Optional
 from err import ZeroContextFlagsException
 
 _all_ = [
-    # ======================# ZERO_TEAM_CONTEXT_FLAGS_EXCEPTION #======================#
+    # ======================# ZERO_TEAM_CONTEXT_FLAGS_FAILURE #======================#
     "ZeroTeamContextFlagsException",
 ]
 
-# ======================# ZERO_TEAM_CONTEXT_FLAGS_EXCEPTION #======================#
+# ======================# ZERO_TEAM_CONTEXT_FLAGS_FAILURE #======================#
 class ZeroTeamContextFlagsException(ZeroContextFlagsException):
     """
     Role:
@@ -41,7 +41,7 @@ class ZeroTeamContextFlagsException(ZeroContextFlagsException):
         ZeroContextFlagsException
     """
     MSG = "No TeamCcontext attribute enabled."
-    ERR_CODE = "ZERO_TEAM_CONTEXT_FLAGS_EXCEPTION"
+    ERR_CODE = "ZERO_TEAM_CONTEXT_FLAGS_FAILURE"
     
     def __init__(
             self,

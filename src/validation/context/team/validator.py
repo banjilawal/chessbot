@@ -81,7 +81,7 @@ class TeamContextValidator(Validator[TeamContext]):
             candidate=candidate,
             context_model=toolkit.context_model_type,
             null_exception=toolkit.null_context_exception,
-            validator_bootstrapper=toolkit.team_toolkit.validation_bootstrapper
+            validator_bootstrapper=toolkit.team_toolkit.validation_primer
         )
         if priming_result.is_failure:
             # Send the exception chain on failure.
@@ -157,7 +157,7 @@ class TeamContextValidator(Validator[TeamContext]):
         
         # Certification for the search-by-color target.
         if context.schema is not None:
-            validation_result = toolkit.team_toolkit.validation_bootstrapper.validate(
+            validation_result = toolkit.team_toolkit.validation_primer.validate(
                 candidate=context.schema,
                 model_type=Schema,
                 null_exception=SchemaNullException()

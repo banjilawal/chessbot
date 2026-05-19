@@ -12,14 +12,14 @@ from typing import Any, Optional
 
 
 __all__ = [
-    # ======================# GAME_CONTEXT_VALIDATION_EXCEPTION #======================#
+    # ======================# GAME_CONTEXT_VALIDATION_FAILURE #======================#
     "GameContextValidationException",
 ]
 
 from err import ContextValidationException
 
 
-# ======================# GAME_CONTEXT_VALIDATION_EXCEPTION #======================#
+# ======================# GAME_CONTEXT_VALIDATION_FAILURE #======================#
 class GameContextValidationException(ContextValidationException):
     """
     Role:
@@ -43,7 +43,7 @@ class GameContextValidationException(ContextValidationException):
         ContextValidationException
     """
     MSG = "No validation logic for GameContext attribute"
-    ERR_CODE = "GAME_CONTEXT_VALIDATION_EXCEPTION"
+    ERR_CODE = "GAME_CONTEXT_VALIDATION_FAILURE"
     
     def __init__(
             self,

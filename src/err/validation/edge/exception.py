@@ -13,11 +13,11 @@ from typing import Any, Optional
 from err import ValidationException
 
 __all__ = [
-    # ======================# EDGE_VALIDATION_EXCEPTION #======================#
+    # ======================# EDGE_VALIDATION_FAILURE #======================#
     "EdgeValidationException",
 ]
 
-# ======================# EDGE_VALIDATION_EXCEPTION #======================#
+# ======================# EDGE_VALIDATION_FAILURE #======================#
 class EdgeValidationException(ValidationException):
     """
     Role:
@@ -42,7 +42,7 @@ class EdgeValidationException(ValidationException):
         ValidationException
     """
     MSG = "EdgeValidation check failed"
-    ERR_CODE = "EDGE_VALIDATION_EXCEPTION"
+    ERR_CODE = "EDGE_VALIDATION_FAILURE"
     
     def __init__(
             self,

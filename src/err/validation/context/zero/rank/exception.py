@@ -13,11 +13,11 @@ from typing import Any, Optional
 from err import ZeroContextFlagsException
 
 _all_ = [
-    # ======================# ZERO_RANK_CONTEXT_FLAGS_EXCEPTION #======================#
+    # ======================# ZERO_RANK_CONTEXT_FLAGS_FAILURE #======================#
     "ZeroRankContextFlagsException",
 ]
 
-# ======================# ZERO_RANK_CONTEXT_FLAGS_EXCEPTION #======================#
+# ======================# ZERO_RANK_CONTEXT_FLAGS_FAILURE #======================#
 class ZeroRankContextFlagsException(ZeroContextFlagsException):
     """
     Role:
@@ -41,7 +41,7 @@ class ZeroRankContextFlagsException(ZeroContextFlagsException):
         ZeroContextFlagsException
     """
     MSG = "No RankCcontext attribute enabled."
-    ERR_CODE = "ZERO_RANK_CONTEXT_FLAGS_EXCEPTION"
+    ERR_CODE = "ZERO_RANK_CONTEXT_FLAGS_FAILURE"
     
     def __init__(
             self,

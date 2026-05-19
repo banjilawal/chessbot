@@ -13,11 +13,11 @@ from typing import Any, Optional
 from err import ZeroContextFlagsException
 
 _all_ = [
-    # ======================# ZERO_HOSTAGE_CONTEXT_FLAGS_EXCEPTION #======================#
+    # ======================# ZERO_HOSTAGE_CONTEXT_FLAGS_FAILURE #======================#
     "ZeroHostageContextFlagsException",
 ]
 
-# ======================# ZERO_HOSTAGE_CONTEXT_FLAGS_EXCEPTION #======================#
+# ======================# ZERO_HOSTAGE_CONTEXT_FLAGS_FAILURE #======================#
 class ZeroHostageContextFlagsException(ZeroContextFlagsException):
     """
     Role:
@@ -41,7 +41,7 @@ class ZeroHostageContextFlagsException(ZeroContextFlagsException):
         ZeroContextFlagsException
     """
     MSG = "No HostageCcontext attribute enabled."
-    ERR_CODE = "ZERO_HOSTAGE_CONTEXT_FLAGS_EXCEPTION"
+    ERR_CODE = "ZERO_HOSTAGE_CONTEXT_FLAGS_FAILURE"
     
     def __init__(
             self,

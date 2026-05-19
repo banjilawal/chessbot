@@ -13,11 +13,11 @@ from typing import Any, Optional
 from err import ValidationException
 
 __all__ = [
-    # ======================# RANK_VALIDATION_EXCEPTION #======================#
+    # ======================# RANK_VALIDATION_FAILURE #======================#
     "RankValidationException",
 ]
 
-# ======================# RANK_VALIDATION_EXCEPTION #======================#
+# ======================# RANK_VALIDATION_FAILURE #======================#
 class RankValidationException(ValidationException):
     """
     Role:
@@ -42,7 +42,7 @@ class RankValidationException(ValidationException):
         ValidationException
     """
     MSG = "RankValidation check failed"
-    ERR_CODE = "RANK_VALIDATION_EXCEPTION"
+    ERR_CODE = "RANK_VALIDATION_FAILURE"
     
     def __init__(
             self,

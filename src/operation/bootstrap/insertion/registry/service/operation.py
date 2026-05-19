@@ -15,7 +15,7 @@ from result import ValidationResult
 from util import LoggingLevelRouter
 from controller import ServiceRegistryController
 from err import NewServiceRegistrationException, MicroserviceNullException, RegistryKeyCollisionException
-from operation import Bootstrap, RegistryEntryNameValidator, ValidationBootstrapper
+from operation import Bootstrap, RegistryEntryNameValidator, ValidationPrimer
 
 
 class BootstrapServiceRegistration(Bootstrap[Microservice]):
@@ -33,7 +33,7 @@ class BootstrapServiceRegistration(Bootstrap[Microservice]):
                 service: Microservice,
                 registry: ServiceRegistry,
                 null_exception: MicroserviceNullException,
-                validation_bootstrapper: ValidationBootstrapper,
+                validation_primer: ValidationPrimer,
                 registry_entry_name_validator: RegistryEntryNameValidator\,
             ) -> ValidationResult[Microservice]:
 
@@ -49,7 +49,7 @@ class BootstrapServiceRegistration(Bootstrap[Microservice]):
             service: Microservice,
             registry: ServiceRegistry,
             null_exception: MicroserviceNullException | None = None,
-            validation_bootstrapper: ValidationBootstrapper | None = None,
+            validation_primer: ValidationPrimer | None = None,
             registry_entry_name_validator: RegistryEntryNameValidator| None = None,
     ) -> ValidationResult[Microservice]:
         """
@@ -65,7 +65,7 @@ class BootstrapServiceRegistration(Bootstrap[Microservice]):
             service: Microservice
             registry: ServiceRegistry
             null_exception: MicroserviceNullException
-            validation_bootstrapper: ValidationBootstrapper
+            validation_primer: ValidationPrimer
             registry_entry_name_validator: RegistryEntryNameValidator
         Returns:
             ValidationResult[Microservice]
@@ -77,13 +77,13 @@ class BootstrapServiceRegistration(Bootstrap[Microservice]):
         # --- Supply any missing dependencies. ---#
         if null_exception is None:
             null_exception = MicroserviceNullException()
-        if validation_bootstrapper is None:
-            validation_bootstrapper = ValidationBootstrapper()
+        if validation_primer is None:
+            validation_primer = ValidationPrimer()
         if registry_entry_name_validator is None:
             registry_entry_name_validator = RegistryEntryNameValidator()
         
         # Handle the case that, the service is not a valid microservice.
-        service_validation_result = validation_bootstrapper.validate(
+        service_validation_result = validation_primer.validate(
             candidate=service,
             target_model=Microservice,
             null_exception=null_exception,
@@ -102,7 +102,7 @@ class BootstrapServiceRegistration(Bootstrap[Microservice]):
         # Handle the case that, either the service's domain or name are not good strings.
         key_validation_result = registry_entry_name_validator.validate(
             candidates=[service.NAME],
-            validation_bootstrapper=validation_bootstrapper,
+            validation_primer=validation_primer,
         )
         if key_validation_result.is_failure:
             # Send the exception chain on failure.

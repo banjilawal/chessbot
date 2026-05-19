@@ -13,11 +13,11 @@ from typing import Any, Optional
 from err import ExcessContextFlagsException
 
 _all_ = [
-    # ======================# EXCESS_SCHEMA_CONTEXT_FLAGS_EXCEPTION #======================#
+    # ======================# EXCESS_SCHEMA_CONTEXT_FLAGS_FAILURE #======================#
     "ExcessSchemaContextFlagsException",
 ]
 
-# ======================# EXCESS_SCHEMA_CONTEXT_FLAGS_EXCEPTION #======================#
+# ======================# EXCESS_SCHEMA_CONTEXT_FLAGS_FAILURE #======================#
 class ExcessSchemaContextFlagsException(ExcessContextFlagsException):
     """
     Role:
@@ -41,7 +41,7 @@ class ExcessSchemaContextFlagsException(ExcessContextFlagsException):
         ExcessContextFlagsException
     """
     MSG = "More than one SchemaCcontext attribute enabled."
-    ERR_CODE = "EXCESS_SCHEMA_CONTEXT_FLAGS_EXCEPTION"
+    ERR_CODE = "EXCESS_SCHEMA_CONTEXT_FLAGS_FAILURE"
     
     def __init__(
             self,

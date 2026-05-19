@@ -13,11 +13,11 @@ from typing import Any, Optional
 from err import ExcessContextFlagsException
 
 _all_ = [
-    # ======================# EXCESS_PLAYER_CONTEXT_FLAGS_EXCEPTION #======================#
+    # ======================# EXCESS_PLAYER_CONTEXT_FLAGS_FAILURE #======================#
     "ExcessPlayerContextFlagsException",
 ]
 
-# ======================# EXCESS_PLAYER_CONTEXT_FLAGS_EXCEPTION #======================#
+# ======================# EXCESS_PLAYER_CONTEXT_FLAGS_FAILURE #======================#
 class ExcessPlayerContextFlagsException(ExcessContextFlagsException):
     """
     Role:
@@ -41,7 +41,7 @@ class ExcessPlayerContextFlagsException(ExcessContextFlagsException):
         ExcessContextFlagsException
     """
     MSG = "More than one PlayerCcontext attribute enabled."
-    ERR_CODE = "EXCESS_PLAYER_CONTEXT_FLAGS_EXCEPTION"
+    ERR_CODE = "EXCESS_PLAYER_CONTEXT_FLAGS_FAILURE"
     
     def __init__(
             self,

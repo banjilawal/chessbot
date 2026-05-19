@@ -10,6 +10,7 @@ version: 1.0.1
 # ============ ERR.NULL.STATE PACKAGE ===========#
 
 # Packages
+from .square import *
 
 # Modules
 from .exception import StateNullException

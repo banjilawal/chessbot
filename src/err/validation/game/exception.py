@@ -13,11 +13,11 @@ from typing import Any, Optional
 from err import ValidationException
 
 __all__ = [
-    # ======================# GAME_VALIDATION_EXCEPTION #======================#
+    # ======================# GAME_VALIDATION_FAILURE #======================#
     "GameValidationException",
 ]
 
-# ======================# GAME_VALIDATION_EXCEPTION #======================#
+# ======================# GAME_VALIDATION_FAILURE #======================#
 class GameValidationException(ValidationException):
     """
     Role:
@@ -41,7 +41,7 @@ class GameValidationException(ValidationException):
         ValidationException
     """
     MSG = "GameValidation check failed"
-    ERR_CODE = "GAME_VALIDATION_EXCEPTION"
+    ERR_CODE = "GAME_VALIDATION_FAILURE"
     
     def __init__(
             self,

@@ -13,14 +13,14 @@ from typing import Any, Optional
 
 
 __all__ = [
-    # ======================# VECTOR_REGISTER_VALIDATION_EXCEPTION #======================#
+    # ======================# VECTOR_REGISTER_VALIDATION_FAILURE #======================#
     "VectorRegisterValidationException",
 ]
 
 from err import ValidationException
 
 
-# ======================# VECTOR_REGISTER_VALIDATION_EXCEPTION #======================#
+# ======================# VECTOR_REGISTER_VALIDATION_FAILURE #======================#
 class VectorRegisterValidationException(ValidationException):
     """
     Role:
@@ -44,7 +44,7 @@ class VectorRegisterValidationException(ValidationException):
         ValidationException
     """
     MSG = "VectorRegisterValidation failed."
-    ERR_CODE = "VECTOR_REGISTER_VALIDATION_EXCEPTION"
+    ERR_CODE = "VECTOR_REGISTER_VALIDATION_FAILURE"
     
     def __init__(
             self,

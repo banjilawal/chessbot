@@ -13,11 +13,11 @@ from typing import Any, Optional
 from err import ContextException
 
 _all_ = [
-    # ======================# EXCESS_CONTEXT_FLAGS_EXCEPTION #======================#
+    # ======================# EXCESS_CONTEXT_FLAGS_FAILURE #======================#
     "ExcessContextFlagsException",
 ]
 
-# ======================# EXCESS_CONTEXT_FLAGS_EXCEPTION #======================#
+# ======================# EXCESS_CONTEXT_FLAGS_FAILURE #======================#
 class ExcessContextFlagsException(ContextException):
     """
     Role:
@@ -41,7 +41,7 @@ class ExcessContextFlagsException(ContextException):
         ContextException
     """
     MSG = "More than one context attribute enabled."
-    ERR_CODE = "EXCESS_CONTEXT_FLAGS_EXCEPTION"
+    ERR_CODE = "EXCESS_CONTEXT_FLAGS_FAILURE"
     
     def __init__(
             self,

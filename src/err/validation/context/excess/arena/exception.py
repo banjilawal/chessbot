@@ -13,11 +13,11 @@ from typing import Any, Optional
 from err import ExcessContextFlagsException
 
 _all_ = [
-    # ======================# EXCESS_ARENA_CONTEXT_FLAGS_EXCEPTION #======================#
+    # ======================# EXCESS_ARENA_CONTEXT_FLAGS_FAILURE #======================#
     "ExcessArenaContextFlagsException",
 ]
 
-# ======================# EXCESS_ARENA_CONTEXT_FLAGS_EXCEPTION #======================#
+# ======================# EXCESS_ARENA_CONTEXT_FLAGS_FAILURE #======================#
 class ExcessArenaContextFlagsException(ExcessContextFlagsException):
     """
     Role:
@@ -41,7 +41,7 @@ class ExcessArenaContextFlagsException(ExcessContextFlagsException):
         ExcessContextFlagsException
     """
     MSG = "More than one ArenaCcontext attribute enabled."
-    ERR_CODE = "EXCESS_ARENA_CONTEXT_FLAGS_EXCEPTION"
+    ERR_CODE = "EXCESS_ARENA_CONTEXT_FLAGS_FAILURE"
     
     def __init__(
             self,

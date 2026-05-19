@@ -12,14 +12,14 @@ from typing import Any, Optional
 
 
 __all__ = [
-    # ======================# EDGE_CONTEXT_VALIDATION_EXCEPTION #======================#
+    # ======================# EDGE_CONTEXT_VALIDATION_FAILURE #======================#
     "EdgeContextValidationException",
 ]
 
 from err import ContextValidationException
 
 
-# ======================# EDGE_CONTEXT_VALIDATION_EXCEPTION #======================#
+# ======================# EDGE_CONTEXT_VALIDATION_FAILURE #======================#
 class EdgeContextValidationException(ContextValidationException):
     """
     Role:
@@ -43,7 +43,7 @@ class EdgeContextValidationException(ContextValidationException):
         ContextValidationException
     """
     MSG = "No validation logic for EdgeContext attribute"
-    ERR_CODE = "EDGE_CONTEXT_VALIDATION_EXCEPTION"
+    ERR_CODE = "EDGE_CONTEXT_VALIDATION_FAILURE"
     
     def __init__(
             self,

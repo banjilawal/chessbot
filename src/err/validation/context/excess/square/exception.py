@@ -13,11 +13,11 @@ from typing import Any, Optional
 from err import ExcessContextFlagsException
 
 _all_ = [
-    # ======================# EXCESS_SQUARE_CONTEXT_FLAGS_EXCEPTION #======================#
+    # ======================# EXCESS_SQUARE_CONTEXT_FLAGS_FAILURE #======================#
     "ExcessSquareContextFlagsException",
 ]
 
-# ======================# EXCESS_SQUARE_CONTEXT_FLAGS_EXCEPTION #======================#
+# ======================# EXCESS_SQUARE_CONTEXT_FLAGS_FAILURE #======================#
 class ExcessSquareContextFlagsException(ExcessContextFlagsException):
     """
     Role:
@@ -41,7 +41,7 @@ class ExcessSquareContextFlagsException(ExcessContextFlagsException):
         ExcessContextFlagsException
     """
     MSG = "More than one SquareCcontext attribute enabled."
-    ERR_CODE = "EXCESS_SQUARE_CONTEXT_FLAGS_EXCEPTION"
+    ERR_CODE = "EXCESS_SQUARE_CONTEXT_FLAGS_FAILURE"
     
     def __init__(
             self,

@@ -21,7 +21,7 @@ from result import MethodResultType, ValidationResult
 from setting import GameColor
 from toolkit import TokenContextToolkit, TokenToolkit
 from util import LoggingLevelRouter
-from validation import ContextValidatorBootstrapper, Validator, ValidatorBootstrapper
+from validation import ContextValidatorBootstrapper, Validator, ValidationPrimer
 
 
 class TokenContextValidator(Validator[TokenContext]):
@@ -83,7 +83,7 @@ class TokenContextValidator(Validator[TokenContext]):
             candidate=candidate,
             context_model=toolkit.context_model_type,
             null_exception=toolkit.null_context_exception,
-            validator_bootstrapper=toolkit.token_toolkit.validation_bootstrap
+            validator_bootstrapper=toolkit.token_toolkit.validation_primer
         )
         if priming_result.is_failure:
             # Send the exception chain on failure.
@@ -215,7 +215,7 @@ class TokenContextValidator(Validator[TokenContext]):
         
         # Certification for the search-by-color target.
         if context.color is not None:
-            validation_result = toolkit.token_toolkit.validation_bootstrap.validate(
+            validation_result = toolkit.token_toolkit.validation_primer.validate(
                 candidate=context.color,
                 model_type=GameColor,
                 null_exception=GameColorNullException()

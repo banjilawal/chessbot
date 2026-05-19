@@ -13,11 +13,11 @@ from typing import Any, Optional
 from err import ValidationException
 
 __all__ = [
-    # ======================# IDENTITY_VALIDATION_EXCEPTION #======================#
+    # ======================# IDENTITY_VALIDATION_FAILURE #======================#
     "IdentityValidationException",
 ]
 
-# ======================# IDENTITY_VALIDATION_EXCEPTION #======================#
+# ======================# IDENTITY_VALIDATION_FAILURE #======================#
 class IdentityValidationException(ValidationException):
     """
     Role:
@@ -42,7 +42,7 @@ class IdentityValidationException(ValidationException):
         ValidationException
     """
     MSG = "IdentityValidation check failed"
-    ERR_CODE = "IDENTITY_VALIDATION_EXCEPTION"
+    ERR_CODE = "IDENTITY_VALIDATION_FAILURE"
     
     def __init__(
             self,

@@ -13,7 +13,7 @@ version: 1.0.1
 from .arena import *
 from .binder import *
 from .board import *
-from .bootstrap import *
+from .primer import *
 from .context import *
 from .coord import *
 from .edge import *

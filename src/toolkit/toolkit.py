@@ -27,17 +27,25 @@ T = TypeVar("T")
 class Toolkit(ABC, Generic[T]):
     """
     Role:
-        -   Utility Container
+        -   Dependency Container
+        -   Dynamic Dependency Provider
         
     Responsibilities:
-        1.  Collection of workers and services that are required for a task.
-        2.  Simplifies entry points.
-        3.  No logic in the Toolkit.
+        1.  Aggregates workers and services an entity requires for its tasks.
+        2.  Separates dependencies from data objects in operation calls.
+        3.  Simplifies entry points.
 
     Attributes:
-
+        DEPENDENCIES: List[Operation] = []
+        SERVICE_DEPENDENCIES: List[Microservice] = []
+        
+        _entries: Dict[str, Any]
+    
     Provides:
-
+        -   def resolve_dependencies(s -> SearchResult[List[Dict[str, Any]]]:
+        -   def _resolve_service_dependencies() -> SearchResult[List[Dict[str, Microservice]]]:
+        -   def _resolve_dependencies(self) -> SearchResult[List[Dict[str, Operation]]]
+        
     Super Class:
     """
     DEPENDENCIES: List[Operation] = []

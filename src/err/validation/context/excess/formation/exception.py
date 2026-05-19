@@ -13,11 +13,11 @@ from typing import Any, Optional
 from err import ExcessContextFlagsException
 
 _all_ = [
-    # ======================# EXCESS_FORMATION_CONTEXT_FLAGS_EXCEPTION #======================#
+    # ======================# EXCESS_FORMATION_CONTEXT_FLAGS_FAILURE #======================#
     "ExcessFormationContextFlagsException",
 ]
 
-# ======================# EXCESS_FORMATION_CONTEXT_FLAGS_EXCEPTION #======================#
+# ======================# EXCESS_FORMATION_CONTEXT_FLAGS_FAILURE #======================#
 class ExcessFormationContextFlagsException(ExcessContextFlagsException):
     """
     Role:
@@ -41,7 +41,7 @@ class ExcessFormationContextFlagsException(ExcessContextFlagsException):
         ExcessContextFlagsException
     """
     MSG = "More than one FormationCcontext attribute enabled."
-    ERR_CODE = "EXCESS_FORMATION_CONTEXT_FLAGS_EXCEPTION"
+    ERR_CODE = "EXCESS_FORMATION_CONTEXT_FLAGS_FAILURE"
     
     def __init__(
             self,

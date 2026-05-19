@@ -12,14 +12,14 @@ from typing import Any, Optional
 
 
 __all__ = [
-    # ======================# SCHEMA_CONTEXT_VALIDATION_EXCEPTION #======================#
+    # ======================# SCHEMA_CONTEXT_VALIDATION_FAILURE #======================#
     "SchemaContextValidationException",
 ]
 
 from err import ContextValidationException
 
 
-# ======================# SCHEMA_CONTEXT_VALIDATION_EXCEPTION #======================#
+# ======================# SCHEMA_CONTEXT_VALIDATION_FAILURE #======================#
 class SchemaContextValidationException(ContextValidationException):
     """
     Role:
@@ -43,7 +43,7 @@ class SchemaContextValidationException(ContextValidationException):
         ContextValidationException
     """
     MSG = "No validation logic for SchemaContext attribute"
-    ERR_CODE = "SCHEMA_CONTEXT_VALIDATION_EXCEPTION"
+    ERR_CODE = "SCHEMA_CONTEXT_VALIDATION_FAILURE"
     
     def __init__(
             self,

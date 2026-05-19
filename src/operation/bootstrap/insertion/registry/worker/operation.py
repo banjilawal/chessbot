@@ -15,7 +15,7 @@ from result import ValidationResult
 from util import LoggingLevelRouter
 from controller import WorkerRegistryController
 from err import NewWorkerRegistrationException, OperationNullException, RegistryKeyCollisionException
-from operation import Bootstrap, Operation, RegistryEntryNameValidator, ValidationBootstrapper
+from operation import Bootstrap, Operation, RegistryEntryNameValidator, ValidationPrimer
 
 
 class BootstrapWorkerRegistration(Bootstrap[Operation]):
@@ -34,7 +34,7 @@ class BootstrapWorkerRegistration(Bootstrap[Operation]):
                 worker: Operation,
                 registry: WorkerRegistry,
                 null_exception: OperationNullException,
-                validation_bootstrapper: ValidationBootstrapper,
+                validation_primer: ValidationPrimer,
                 registry_entry_name_validator: RegistryEntryNameValidator\,
             ) -> ValidationResult[Operation]:
 
@@ -50,7 +50,7 @@ class BootstrapWorkerRegistration(Bootstrap[Operation]):
             worker: Operation,
             registry: WorkerRegistry,
             null_exception: OperationNullException | None = None,
-            validation_bootstrapper: ValidationBootstrapper | None = None,
+            validation_primer: ValidationPrimer | None = None,
             registry_entry_name_validator: RegistryEntryNameValidator| None = None,
     ) -> ValidationResult[Operation]:
         """
@@ -66,7 +66,7 @@ class BootstrapWorkerRegistration(Bootstrap[Operation]):
             worker: Operation
             registry: WorkerRegistry
             null_exception: OperationNullException
-            validation_bootstrapper: ValidationBootstrapper
+            validation_primer: ValidationPrimer
             registry_entry_name_validator: RegistryEntryNameValidator
         Returns:
             ValidationResult[Operation]
@@ -78,13 +78,13 @@ class BootstrapWorkerRegistration(Bootstrap[Operation]):
         # --- Supply any missing dependencies. ---#
         if null_exception is None:
             null_exception = OperationNullException()
-        if validation_bootstrapper is None:
-            validation_bootstrapper = ValidationBootstrapper()
+        if validation_primer is None:
+            validation_primer = ValidationPrimer()
         if registry_entry_name_validator is None:
             registry_entry_name_validator = RegistryEntryNameValidator()
         
         # Handle the case that, the worker is not a valid operation.
-        worker_validation_result = validation_bootstrapper.validate(
+        worker_validation_result = validation_primer.validate(
             candidate=worker,
             target_model=Operation,
             null_exception=null_exception,
@@ -103,7 +103,7 @@ class BootstrapWorkerRegistration(Bootstrap[Operation]):
         # Handle the case that, either the worker's domain or name are not good strings.
         keys_validation_result = registry_entry_name_validator.validate(
             candidates=[worker.DOMAIN, worker.NAME],
-            validation_bootstrapper=validation_bootstrapper,
+            validation_primer=validation_primer,
         )
         if keys_validation_result.is_failure:
             # Send the exception chain on failure.

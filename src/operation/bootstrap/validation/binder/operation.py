@@ -16,7 +16,7 @@ from microvalidator import SchemaValidator
 
 from err.null.hashtable.exception import HashtableNullException
 from model import Binder, BoardBinder, Schema, Team
-from operation import ValidationBootstrapper, Validator
+from operation import ValidationPrimer, Validator
 from result import ValidationResult
 from util import LoggingLevelRouter
 from toolkit import BoardTeamBinderToolkit
@@ -39,7 +39,7 @@ class SchemaHashtableValidator(Validator[Dict[Schema, Any]]):
         -   def validate(
                 candidate: Any,
                 schema_validator: SchemaDictValidator,
-                validation_bootstrapper: ValidationBootstrapper,
+                validation_primer: ValidationPrimer,
             ) -> ValidationResult[Dict[Schema, Any]]:
 
     Super Class:
@@ -52,7 +52,7 @@ class SchemaHashtableValidator(Validator[Dict[Schema, Any]]):
             cls,
             candidate: Any,
             schema_validator: SchemaValidator,
-            validation_bootstrapper: ValidationBootstrapper,
+            validation_primer: ValidationPrimer,
     ) -> ValidationResult[Binder]:
         """
         Verify the candidate is a BinderTable that.
@@ -67,7 +67,7 @@ class SchemaHashtableValidator(Validator[Dict[Schema, Any]]):
         Args:
             candidate: Any
             schema_validator: SchemaValidator
-            validation_bootstrapper: ValidationBootstrapper
+            validation_primer: ValidationPrimer
         Returns:
             ValidationResult[Dict[Schema, Any]]
         Raises:
@@ -80,7 +80,7 @@ class SchemaHashtableValidator(Validator[Dict[Schema, Any]]):
         method = f"{cls.__name__}.validate"
             
         # Handle the case that, the candidate does not exist.
-        validation_bootstrap_result = validation_bootstrapper.validate(
+        validation_bootstrap_result = validation_primer.validate(
             candidate=candidate,
             target_model=Dict[Schema, Any],
             null_exception=HashtableNullException(),

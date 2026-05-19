@@ -13,11 +13,11 @@ from typing import Any, Optional
 from err import ValidationException
 
 __all__ = [
-    # ======================# PLAYER_VALIDATION_EXCEPTION #======================#
+    # ======================# PLAYER_VALIDATION_FAILURE #======================#
     "PlayerValidationException",
 ]
 
-# ======================# PLAYER_VALIDATION_EXCEPTION #======================#
+# ======================# PLAYER_VALIDATION_FAILURE #======================#
 class PlayerValidationException(ValidationException):
     """
     Role:
@@ -42,7 +42,7 @@ class PlayerValidationException(ValidationException):
         ValidationException
     """
     MSG = "PlayerValidation check failed"
-    ERR_CODE = "PLAYER_VALIDATION_EXCEPTION"
+    ERR_CODE = "PLAYER_VALIDATION_FAILURE"
     
     def __init__(
             self,

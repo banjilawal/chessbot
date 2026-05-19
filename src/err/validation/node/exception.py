@@ -13,11 +13,11 @@ from typing import Any, Optional
 from err import ValidationException
 
 __all__ = [
-    # ======================# NODE_VALIDATION_EXCEPTION #======================#
+    # ======================# NODE_VALIDATION_FAILURE #======================#
     "NodeValidationException",
 ]
 
-# ======================# NODE_VALIDATION_EXCEPTION #======================#
+# ======================# NODE_VALIDATION_FAILURE #======================#
 class NodeValidationException(ValidationException):
     """
     Role:
@@ -42,7 +42,7 @@ class NodeValidationException(ValidationException):
         ValidationException
     """
     MSG = "NodeValidation check failed"
-    ERR_CODE = "NODE_VALIDATION_EXCEPTION"
+    ERR_CODE = "NODE_VALIDATION_FAILURE"
     
     def __init__(
             self,

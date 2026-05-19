@@ -12,14 +12,14 @@ from typing import Any, Optional
 
 
 __all__ = [
-    # ======================# COORD_CONTEXT_VALIDATION_EXCEPTION #======================#
+    # ======================# COORD_CONTEXT_VALIDATION_FAILURE #======================#
     "CoordContextValidationException",
 ]
 
 from err import ContextValidationException
 
 
-# ======================# COORD_CONTEXT_VALIDATION_EXCEPTION #======================#
+# ======================# COORD_CONTEXT_VALIDATION_FAILURE #======================#
 class CoordContextValidationException(ContextValidationException):
     """
     Role:
@@ -43,7 +43,7 @@ class CoordContextValidationException(ContextValidationException):
         ContextValidationException
     """
     MSG = "No validation logic for CoordContext attribute"
-    ERR_CODE = "COORD_CONTEXT_VALIDATION_EXCEPTION"
+    ERR_CODE = "COORD_CONTEXT_VALIDATION_FAILURE"
     
     def __init__(
             self,

@@ -13,11 +13,11 @@ from typing import Any, Optional
 from err import ValidationException
 
 __all__ = [
-    # ======================# PERSONA_VALIDATION_EXCEPTION #======================#
+    # ======================# PERSONA_VALIDATION_FAILURE #======================#
     "PersonaValidationException",
 ]
 
-# ======================# PERSONA_VALIDATION_EXCEPTION #======================#
+# ======================# PERSONA_VALIDATION_FAILURE #======================#
 class PersonaValidationException(ValidationException):
     """
     Role:
@@ -41,7 +41,7 @@ class PersonaValidationException(ValidationException):
         ValidationException
     """
     MSG = "PersonaValidation check failed"
-    ERR_CODE = "PERSONA_VALIDATION_EXCEPTION"
+    ERR_CODE = "PERSONA_VALIDATION_FAILURE"
     
     def __init__(
             self,

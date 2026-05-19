@@ -13,11 +13,11 @@ from typing import Any, Optional
 from err import ZeroContextFlagsException
 
 _all_ = [
-    # ======================# ZERO_GAME_CONTEXT_FLAGS_EXCEPTION #======================#
+    # ======================# ZERO_GAME_CONTEXT_FLAGS_FAILURE #======================#
     "ZeroGameContextFlagsException",
 ]
 
-# ======================# ZERO_GAME_CONTEXT_FLAGS_EXCEPTION #======================#
+# ======================# ZERO_GAME_CONTEXT_FLAGS_FAILURE #======================#
 class ZeroGameContextFlagsException(ZeroContextFlagsException):
     """
     Role:
@@ -41,7 +41,7 @@ class ZeroGameContextFlagsException(ZeroContextFlagsException):
         ZeroContextFlagsException
     """
     MSG = "No GameCcontext attribute enabled."
-    ERR_CODE = "ZERO_GAME_CONTEXT_FLAGS_EXCEPTION"
+    ERR_CODE = "ZERO_GAME_CONTEXT_FLAGS_FAILURE"
     
     def __init__(
             self,

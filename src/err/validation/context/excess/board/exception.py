@@ -13,11 +13,11 @@ from typing import Any, Optional
 from err import ExcessContextFlagsException
 
 _all_ = [
-    # ======================# EXCESS_BOARD_CONTEXT_FLAGS_EXCEPTION #======================#
+    # ======================# EXCESS_BOARD_CONTEXT_FLAGS_FAILURE #======================#
     "ExcessBoardContextFlagsException",
 ]
 
-# ======================# EXCESS_BOARD_CONTEXT_FLAGS_EXCEPTION #======================#
+# ======================# EXCESS_BOARD_CONTEXT_FLAGS_FAILURE #======================#
 class ExcessBoardContextFlagsException(ExcessContextFlagsException):
     """
     Role:
@@ -41,7 +41,7 @@ class ExcessBoardContextFlagsException(ExcessContextFlagsException):
         ExcessContextFlagsException
     """
     MSG = "More than one BoardCcontext attribute enabled."
-    ERR_CODE = "EXCESS_BOARD_CONTEXT_FLAGS_EXCEPTION"
+    ERR_CODE = "EXCESS_BOARD_CONTEXT_FLAGS_FAILURE"
     
     def __init__(
             self,
