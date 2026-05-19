@@ -19,7 +19,8 @@ from setting import GameColor
 
 @dataclass
 class SchemaContextBlueprint(Blueprint[SchemaContext]):
-    name: Optional[str] = None
-    color: Optional[GameColor] = None
+    
+    name: Optional[str] | None = None
+    color: Optional[GameColor] | None = None
     null_exception = SchemaContextNullException()
     model_type = SchemaContext

@@ -54,4 +54,5 @@ class TokenToolkit(Toolkit[Token]):
     coord_validator: CoordValidator = CoordValidator()
     team_validator: TeamValidator = TeamValidator()
     identity_service: IdentityService = IdentityService()
+    rank_service: RankService = RankService()
     validation_bootstrap: ValidationBootstrapper = ValidationBootstrapper()

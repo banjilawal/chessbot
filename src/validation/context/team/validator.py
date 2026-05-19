@@ -9,6 +9,15 @@ version: 1.0.1
 
 from __future__ import annotations
 
+from typing import Any, cast
+
+from err import SchemaNullException, TeamContextValidationException
+from model import Schema, TeamContext
+from result import ValidationResult
+from toolkit.build.context.team.builder import TeamContextToolkit
+from util import LoggingLevelRouter
+from validation import Validator
+
 
 class TeamContextValidator(Validator[TeamContext]):
     """
@@ -32,10 +41,7 @@ class TeamContextValidator(Validator[TeamContext]):
     def validate(
             cls,
             candidate: Any,
-            arena_service: ArenaService = ArenaService(),
-            player_service: PlayerService = PlayerService(),
-            identity_service: IdentityService = IdentityService(),
-            color_validator: GameColorValidator = GameColorValidator(),
+            toolkit: TeamContextToolkit | None = None,
     ) -> ValidationResult[TeamContext]:
         """
         # ACTION:
@@ -49,7 +55,7 @@ class TeamContextValidator(Validator[TeamContext]):
             *   rank (Any)
             *   color_validator (ColorValidator)
             *   player_service (PlayerService)
-            *   arena_service (ArenaService)
+            *   board_service (BoardService)
             *   identity_service (IdentityService)
         # RETURNS:
             *   ValidationResult[TeamContext] containing either:
@@ -59,109 +65,115 @@ class TeamContextValidator(Validator[TeamContext]):
             *   TypeError
             *   NullTeamContextException
             *   ZeroTeamContextFlagsException
-            *   ArenaTeamContextFlagsException
+            *   BoardTeamContextFlagsException
             *   TeamContextValidationException
             *   TeamContextValidationRouteException
         """
-        method = "TeamContextValidator.validate"
+        method = f"{cls.__name__}.validate"
         
-        # Handle the nonexistence case.
-        if candidate is None:
+        # --- Supply any missing dependencies. ---#
+        if toolkit is None:
+            toolkit = TeamContextToolkit()
+        
+        # handle the case that, priming the validator fails.
+        priming_result = toolkit.context_validation_primer.validate(
+            candidate=candidate,
+            context_model=toolkit.context_model_type,
+            null_exception=toolkit.null_context_exception,
+            validator_bootstrapper=toolkit.token_toolkit.validation_bootstrap
+        )
+        if priming_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 TeamContextValidationException(
-                    msg=f"{method}: {TeamContextValidationException.ERR_CODE}",
-                    ex=NullTeamContextException(f"{method}: {NullTeamContextException.MSG}")
+                    cls_mthd=method,
+                    cls_name=cls.__name__,
+                    msg=TeamContextValidationException.MSG,
+                    err_code=TeamContextValidationException.ERR_CODE,
+                    ex=priming_result.exception
                 )
             )
-        # Handle the wrong class case.
-        if not isinstance(candidate, TeamContext):
-            # Send the exception chain on failure.
-            return ValidationResult.failure(
-                TeamContextValidationException(
-                    msg=f"{method}: {TeamContextValidationException.ERR_CODE}",
-                    ex=TypeError(f"{method}: Expected TeamContext, got {type(candidate).__name__} instead.")
-                )
-            )
-        # --- Cast the candidate into TeamContext for additional tests. ---#
+        # --- Cast the candidate into TeamContext for routing attribute testing ---#
         context = cast(TeamContext, candidate)
-        
-        # Handle the case of searching with no attribute-value provided.
-        flag_count = len(context.to_dict())
-        if flag_count == 0:
-            # Send the exception chain on failure.
-            return ValidationResult.failure(
-                TeamContextValidationException(
-                    msg=f"{method}: {TeamContextValidationException.ERR_CODE}",
-                    ex=ZeroTeamContextFlagsException(f"{method}: {ZeroTeamContextFlagsException.MSG}")
-                )
-            )
-        # Handle the case of too many attributes being used in a search.
-        if flag_count > 1:
-            # Send the exception chain on failure.
-            return ValidationResult.failure(
-                TeamContextValidationException(
-                    msg=f"{method}: {TeamContextValidationException.ERR_CODE}",
-                    ex=ArenaTeamContextFlagsException(
-                        f"{method}: {ArenaTeamContextFlagsException.MSG}"
-                    )
-                )
-            )
-        # --- Route to the appropriate validation branch. ---#
         
         # Certification for the search-by-id target.
         if context.id is not None:
-            validation = identity_service.validate_id(candidate=context.id)
-            if validation.is_failure:
+            validation_result = toolkit.team_toolkit.identity_service.validate_id(
+                candidate=context.id
+            )
+            if validation_result.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
                     TeamContextValidationException(
-                        msg=f"{method}: {TeamContextValidationException.ERR_CODE}", ex=validation.exception
+                        cls_mthd=method,
+                        cls_name=cls.__name__,
+                        msg=TeamContextValidationException.MSG,
+                        err_code=TeamContextValidationException.ERR_CODE,
+                        ex=validation_result.exception
                     )
                 )
-            # On certification success return the TeamContext_id in the ValidationResult.
-            return ValidationResult.success(payload=context)
+            # On validation success forward the work product to the caller.
+            return ValidationResult.success(context)
         
         # Certification for the search-by-owner target.
         if context.owner is not None:
-            validation = player_service.validator.validate(candidate=context.owner)
-            if validation.is_failure:
+            validation_result = toolkit.team_toolkit.player_service.validator.validate(
+                candidate=context.owner
+            )
+            if validation_result.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
                     TeamContextValidationException(
-                        msg=f"{method}: {TeamContextValidationException.ERR_CODE}", ex=validation.exception
+                        cls_mthd=method,
+                        cls_name=cls.__name__,
+                        msg=TeamContextValidationException.MSG,
+                        err_code=TeamContextValidationException.ERR_CODE,
+                        ex=validation_result.exception
                     )
                 )
-            # On certification success return the TeamContext_owner in the ValidationResult.
-            return ValidationResult.success(payload=context)
+            # On validation success forward the work product to the caller.
+            return ValidationResult.success(context)
         
-        # Certification for the search-by-arena target.
-        if context.arena is not None:
-            validation = arena_service.validator.search_service(candidate=context.arena)
-            if validation.is_failure:
-                # Send the exception chain on failure.
-                return ValidationResult.failure(
-                    TeamContextValidationException(
-                        msg=f"{method}: {TeamContextValidationException.ERR_CODE}",
-                        ex=validation.exception
+        # Certification for the search-by-board target.
+        if context.board is not None:
+            validation_result = toolkit.team_toolkit.board_validator.validate(
+                candidate=context.board
+            )
+            if validation_result.is_failure:
+                if validation_result.is_failure:
+                    # Send the exception chain on failure.
+                    return ValidationResult.failure(
+                        TeamContextValidationException(
+                            cls_mthd=method,
+                            cls_name=cls.__name__,
+                            msg=TeamContextValidationException.MSG,
+                            err_code=TeamContextValidationException.ERR_CODE,
+                            ex=validation_result.exception
+                        )
                     )
-                )
-            # On certification success return the TeamContext_arena in a ValidationResult.
-            return ValidationResult.success(payload=context)
+                # On validation success forward the work product to the caller.
+                return ValidationResult.success(context)
         
         # Certification for the search-by-color target.
-        if context.color is not None:
-            validation = color_validator.validate(candidate=context.color)
-            if validation.is_failure:
+        if context.schema is not None:
+            validation_result = toolkit.token_toolkit.validation_bootstrap.validate(
+                candidate=context.schema,
+                model_type=Schema,
+                null_exception=SchemaNullException()
+            )
+            if validation_result.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
                     TeamContextValidationException(
-                        msg=f"{method}: {TeamContextValidationException.ERR_CODE}",
-                        ex=validation.exception
+                        cls_mthd=method,
+                        cls_name=cls.__name__,
+                        msg=TeamContextValidationException.MSG,
+                        err_code=TeamContextValidationException.ERR_CODE,
+                        ex=validation_result.exception
                     )
                 )
-            # On certification success return the team_color_context in a ValidationResult.
-            return ValidationResult.success(payload=context)
+                # On validation success forward the work product to the caller.
+            return ValidationResult.success(context)
         
         # Return the exception chain if there is no validation route for the context.
         return ValidationResult.failure(

@@ -20,7 +20,6 @@ from .push import *
 from .registration import *
 from .registry import *
 from .token import *
-from .validation import *
 
 # Modules
 from .exception import OperationException

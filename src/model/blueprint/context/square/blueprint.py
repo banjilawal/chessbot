@@ -18,6 +18,29 @@ from model import Board, Coord, Formation, SquareContext, Blueprint, SquareState
 
 @dataclass
 class SquareContextBlueprint(Blueprint[SquareContext]):
+    """
+    Role:
+        -   Container
+
+    Responsibilities:
+        1.  Provides values for instantiating a SquareContext instance.
+
+    Attributes:
+        id: Optional[int]
+        board: Optional[Board]
+        coord: Optional[Coord]
+        occupant: Optional[Token]
+        state: Optional[State]
+        formation: Optional[Formation]
+        null_exception: TamContextNullException
+        context_model_type = TeamContext
+
+    Provides:
+
+    Super Class:
+        ContextBlueprint
+    """
+    id: Optional[int] = None
     board: Optional[Board] = None
     coord: Optional[Coord] = None
     occupant: Optional[Token] = None
