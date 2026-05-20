@@ -1,4 +1,4 @@
-# src/validation/context/hostage/operation.py
+# src/validation/context/hostage/validator.py
 
 """
 Module: validation.context.hostage.validator
@@ -10,7 +10,7 @@ version: 1.0.1
 from __future__ import annotations
 
 
-class HostageContextValidator(ContextValidator[HostageContext]):
+class HostageContextValidator(ContextValidator[Hostage]):
     """
      Role:Validation, Data Integrity Guarantor, Security.
 
@@ -38,7 +38,7 @@ class HostageContextValidator(ContextValidator[HostageContext]):
             hostage_service: HostageService = HostageService(),
             square_service: SquareService = SquareService(),
             identity_service: IdentityService = IdentityService(),
-    ) -> ValidationResult[HostageContext]:
+    ) -> ValidationResult[Hostage]:
         """
         # ACTION:
         Verifies rank is a HostageContext in two steps.
@@ -48,7 +48,7 @@ class HostageContextValidator(ContextValidator[HostageContext]):
             * rank (Any): Object to verify is a Square.
             * validation (type[SquareValidator]): Enforces safety requirements on row, column, square_name squares.
         # RETURNS:
-            * ValidationResult[HostageContext] containing either:
+            * ValidationResult[Hostage] containing either:
                     - On failure: Exception.
                     - On success: HostageContext in the payload.
         Raises:

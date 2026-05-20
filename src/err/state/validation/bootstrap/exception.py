@@ -13,11 +13,11 @@ from typing import Any, Optional
 from err import ValidationException
 
 __all__ = [
-    # ======================# VALIDATION_BOOTSTRAP_FAILURE #======================#
+    # ======================# VALIDATION_PRIMING_FAILURE #======================#
     "ValidationBootstrapException",
 ]
 
-# ======================# VALIDATION_BOOTSTRAP_FAILURE #======================#
+# ======================# VALIDATION_PRIMING_FAILURE #======================#
 class ValidationBootstrapException(ValidationException):
     """
     Role:
@@ -42,7 +42,7 @@ class ValidationBootstrapException(ValidationException):
         ValidationException
     """
     MSG = "Validation failed during the bootstrap phase."
-    ERR_CODE = "VALIDATION_BOOTSTRAP_FAILURE"
+    ERR_CODE = "VALIDATION_PRIMING_FAILURE"
     
     def __init__(
             self,

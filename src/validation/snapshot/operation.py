@@ -1,4 +1,4 @@
-# src/validation/snapshot/operation.py
+# src/validation/snapshot/validator.py
 
 """
 Module: validation.snapshot.validator

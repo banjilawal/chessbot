@@ -15,4 +15,3 @@ from .table import *
 from .command import *
 
 # Modules
-None

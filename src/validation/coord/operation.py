@@ -1,4 +1,4 @@
-# src/validation/coord/operation.py
+# src/validation/coord/validator.py
 
 """
 Module: validation.coord.operation
@@ -74,12 +74,12 @@ class CoordValidator(Validator[Coord]):
             toolkit = MathToolkit()
         
         # Handle the case that, the candidate does not exist.
-        validation_bootstrap_result = toolkit.validation_primer.validate(
+        validation_priming_result = toolkit.validation_primer.validate(
             candidate=candidate,
             target_model=Coord,
-            null_exception=CoordNullException(),
+            context_null_exception=CoordNullException(),
         )
-        if validation_bootstrap_result.is_failure:
+        if validation_priming_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 CoordValidationException(
@@ -87,7 +87,7 @@ class CoordValidator(Validator[Coord]):
                     cls_name=cls.__name__,
                     msg=CoordValidationException.MSG,
                     err_code=CoordValidationException.ERR_CODE,
-                    ex=validation_bootstrap_result.exception,
+                    ex=validation_priming_result.exception,
                 )
             )
         # --- Cast the candidate to a Coord for additional tests ---#

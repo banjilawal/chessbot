@@ -1,4 +1,4 @@
-# src/validation/node/operation.py
+# src/validation/node/validator.py
 
 """
 Module: validation.node.validator

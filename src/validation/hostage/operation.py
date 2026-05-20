@@ -1,4 +1,4 @@
-# src/validation/hostage/operation.py
+# src/validation/hostage/validator.py
 
 """
 Module: validation.hostage.validator

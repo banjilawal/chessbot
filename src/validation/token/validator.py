@@ -1,4 +1,4 @@
-# src/validation/token/operation.py
+# src/validation/token/validator.py
 
 """
 Module: validation.token.operation
@@ -93,12 +93,12 @@ class TokenValidator(Validator[Token]):
         tools = toolkit_build_result.payload
         
         # Handle the case that, the candidate does not exist.
-        validation_bootstrap_result = tools["validation_primer"].validate(
+        validation_priming_result = tools["validation_primer"].validate(
             candidate=candidate,
             target_model=Token,
-            null_exception=null_exception,
+            context_null_exception=null_exception,
         )
-        if validation_bootstrap_result.is_failure:
+        if validation_priming_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 TokenValidationException(
@@ -106,7 +106,7 @@ class TokenValidator(Validator[Token]):
                     cls_name=cls.__name__,
                     msg=TokenValidationException.MSG,
                     err_code=TokenValidationException.ERR_CODE,
-                    ex=validation_bootstrap_result.exception,
+                    ex=validation_priming_result.exception,
                 )
             )
         # --- Cast the candidate into a Token for additional tests ---#
@@ -171,7 +171,7 @@ class TokenValidator(Validator[Token]):
         coord_database_validation_result = tools["validation_primer"].validate(
             candidate=token.positions,
             target_model=CoordDatabase,
-            null_exception=CoordDatabaseNullException()
+            context_null_exception=CoordDatabaseNullException()
         )
         if coord_database_validation_result.is_failure:
             # Send the exception chain on failure.

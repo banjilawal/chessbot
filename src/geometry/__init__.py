@@ -17,4 +17,3 @@ log = logging.getLogger("chessbot")
 from .span import *
 
 # Modules
-None

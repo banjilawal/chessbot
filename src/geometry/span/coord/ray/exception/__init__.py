@@ -10,7 +10,6 @@ version: 1.0.0
 # =========== SPAN.COORD.RAY.EXCEPTION PACKAGE ===========#
 
 # Modules
-None
 
 # Packages
 from .debug import ComputedNullRayDebugException

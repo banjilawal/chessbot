@@ -10,7 +10,6 @@ version: 1.0.0
 # =========== SPAN.COORD.RAY.PERPENDICULAR.PROVIDER PACKAGE ===========#
 
 # Modules
-None
 
 # Packages
 from .factor import PerpendicularRayFactors

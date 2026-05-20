@@ -1,4 +1,4 @@
-# src/validation/context/team/operation.py
+# src/validation/context/team/validator.py
 
 """
 Module: validation.context.team.validator
@@ -15,14 +15,11 @@ from model import Schema, TeamContext
 from result import ValidationResult
 from toolkit import TeamContextToolkit
 from util import LoggingLevelRouter
-from validation import Validator
 from err import SchemaNullException, TeamContextValidationException, TeamContextValidationRouteException
+from validation import ContextValidator
 
 
-
-
-
-class TeamContextValidator(ContextValidator[TeamContext]):
+class TeamContextValidator(ContextValidator[Team]):
     """
     Role
         -   Transaction Worker
@@ -39,7 +36,7 @@ class TeamContextValidator(ContextValidator[TeamContext]):
         -   def validate(
                     candidate: Any,
                     toolkit: TeamContextToolkit,
-            ) -> ValidationResult[TeamContext]:
+            ) -> ValidationResult[Team]:
 
     Super Class:
         ContextValidator
@@ -50,7 +47,7 @@ class TeamContextValidator(ContextValidator[TeamContext]):
             cls,
             candidate: Any,
             toolkit: TeamContextToolkit | None = None,
-    ) -> ValidationResult[TeamContext]:
+    ) -> ValidationResult[Team]:
         """
         Certify a candidate is a TeamContext that is safe to use.
 
@@ -65,7 +62,7 @@ class TeamContextValidator(ContextValidator[TeamContext]):
             candidate: Any,
             toolkit: TeamContextToolkit,
         Returns:
-            ValidationResult[TeamContext]
+            ValidationResult[Team]
         Raises:
             TeamContextValidationException
             TeamContextValidationRouteException
@@ -80,7 +77,7 @@ class TeamContextValidator(ContextValidator[TeamContext]):
         priming_result = toolkit.context_validation_primer.validate(
             candidate=candidate,
             context_model=toolkit.context_model_type,
-            null_exception=toolkit.null_context_exception,
+            context_null_exception=toolkit.null_context_exception,
             validator_bootstrapper=toolkit.team_toolkit.validation_primer
         )
         if priming_result.is_failure:

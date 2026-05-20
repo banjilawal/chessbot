@@ -1,4 +1,4 @@
-# src/validation/context/node/operation.py
+# src/validation/context/node/validator.py
 
 """
 Module: validation.context.node.validator
@@ -10,7 +10,7 @@ version: 1.0.1
 from __future__ import annotations
 
 
-class NodeContextValidator(ContextValidator[NodeContext]):
+class NodeContextValidator(ContextValidator[Node]):
     """
      Role:Validation, Data Integrity Guarantor, Security.
 
@@ -35,7 +35,7 @@ class NodeContextValidator(ContextValidator[NodeContext]):
             square_service: SquareService = SquareService(),
             node_validator: NodeValidator = NodeValidator(),
             number_validator: NumberValidator = NumberValidator(),
-    ) -> ValidationResult[NodeContext]:
+    ) -> ValidationResult[Node]:
         """
         # ACTION:
             1.  If Candidate fails existence or type checks return the exception chain in the ValidationResult. Else,
@@ -51,7 +51,7 @@ class NodeContextValidator(ContextValidator[NodeContext]):
             *   node_validator (NodeValidator)
             *   number_validation (NumberValidator):
         # RETURNS:
-            *   ValidationResult[NodeContext] containing either:
+            *   ValidationResult[Node] containing either:
                     - On failure: Exception.
                     - On success: NodeContext in the payload.
         Raises:

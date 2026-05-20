@@ -9,11 +9,14 @@ version: 1.0.1
 
 from __future__ import annotations
 
+from dataclasses import dataclass
+
 from toolkit import Toolkit
-from operation import NumberValidator, ValidationPrimer
+from integrity import CoordBuilder, ScalarBuilder, VectorBuilder
+from validation import CoordValidator, NumberValidator, ScalarValidator, VectorOperandValidator, VectorValidator
 
 
-
+@dataclass
 class MathToolkit(Toolkit):
     """
     Role:
@@ -25,32 +28,26 @@ class MathToolkit(Toolkit):
         3.  No logic in the Toolkit.
 
     Attributes:
-            number_validator: NumberValidator
-            validation_bootstrap: ValidationPrimer
+        coord_validator: CoordValidator
+        scalar_validator: ScalarValidator
+        number_validator: NumberValidator
+        vector_validator: VectorValidator
+        vector_operand_validator: VectorOperandValidator
+        
+        coord_builder: CoordBuilder
+        scalar_builder: ScalarBuilder
+        vector_builder: VectorBuilder
     Provides:
 
      Super Class:
          Toolkit
      """
+    coord_validator: CoordValidator = CoordValidator()
+    scalar_validator: ScalarValidator = ScalarValidator()
+    number_validator: NumberValidator = NumberValidator()
+    vector_validator: VectorValidator = VectorValidator()
+    vector_operand_validator: VectorOperandValidator = VectorOperandValidator()
     
-    def __init__(
-            self,
-            number_validator: NumberValidator | None = None,
-            validation_bootstrap: ValidationPrimer | None = None,
-    ):
-        """
-        Args:
-            number_validator: NumberValidator
-            validation_bootstrap: ValidationPrimer
-        """
-        super().__init__()
-        self._number_validator = number_validator or NumberValidator()
-        self._validation_primer = validation_bootstrap or ValidationPrimer()
-
-    @property
-    def number_validator(self) -> NumberValidator:
-        return self._number_validator
-    
-    @property
-    def validation_primer(self) -> ValidationPrimer:
-        return self._validation_primer
+    coord_builder: CoordBuilder = CoordBuilder()
+    scalar_builder: ScalarBuilder = ScalarBuilder()
+    vector_builder: VectorBuilder = VectorBuilder()

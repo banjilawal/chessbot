@@ -18,6 +18,7 @@ from toolkit import Toolkit
 from model import VectorOperand
 
 
+@dataclass
 class VectorOperandToolkit(Toolkit[VectorOperand]):
     """
     Role:

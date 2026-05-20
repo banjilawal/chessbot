@@ -1,4 +1,4 @@
-# src/validation/board/operation.py
+# src/validation/board/validator.py
 
 """
 Module: validation.board.validator

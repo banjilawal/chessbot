@@ -16,4 +16,3 @@ from .invariant import *
 from .inconsistent import *
 
 # Modules
-None

@@ -1,4 +1,4 @@
-# src/validation/context/game/operation.py
+# src/validation/context/game/validator.py
 
 """
 Module: validation.context.game.validator
@@ -10,7 +10,7 @@ version: 1.0.1
 from __future__ import annotations
 
 
-class GameContextValidator(ContextValidator[GameContext]):
+class GameContextValidator(ContextValidator[Game]):
     """
      Role:Validation, Data Integrity Guarantor, Security.
 
@@ -36,7 +36,7 @@ class GameContextValidator(ContextValidator[GameContext]):
             candidate: Any,
             agent_service: AgentService = AgentService(),
             identity_service: IdentityService = IdentityService(),
-    ) -> ValidationResult[GameContext]:
+    ) -> ValidationResult[Game]:
         """
         # ACTION:
             1.  Confirm that only one in the (id, owner) tuple is not null.
@@ -54,7 +54,7 @@ class GameContextValidator(ContextValidator[GameContext]):
             *   identity_service (IdentityService)
 
         # RETURNS:
-        BuildResult[GameContext] containing either:
+        BuildResult[Game] containing either:
             - On success: GameContext in the payload.
             - On failure: Exception.
 

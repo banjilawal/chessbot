@@ -1,4 +1,4 @@
-# src/validation/game/operation.py
+# src/validation/game/validator.py
 
 """
 Module: validation.game.validator

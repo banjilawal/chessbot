@@ -26,4 +26,3 @@ from .team import *
 from .token import *
 
 # Modules
-None

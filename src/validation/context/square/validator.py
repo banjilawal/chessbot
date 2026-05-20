@@ -1,4 +1,4 @@
-# src/validation/context/square/operation.py
+# src/validation/context/square/validator.py
 
 """
 Module: validation.context.square.validator
@@ -10,18 +10,19 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, cast
 
-from err import (
-    FormationNullException, SquareContextValidationException, SquareContextValidationRouteException,
-    SquareStateNullException
-)
 from model import Formation, SquareContext, SquareState
 from result import ValidationResult
 from toolkit import SquareContextToolkit
 from util import LoggingLevelRouter
-from validation import Validator
+from validation import ContextValidator
+from err import (
+    FormationNullException, SquareContextValidationException, SquareContextValidationRouteException,
+    SquareStateNullException
+)
 
 
-class SquareContextValidator(ContextValidator[SquareContext]):
+
+class SquareContextValidator(ContextValidator[Square]):
     """
     Role
         -   Transaction Worker
@@ -38,7 +39,7 @@ class SquareContextValidator(ContextValidator[SquareContext]):
         -   def validate(
                     candidate: Any,
                     toolkit: SquareContextToolkit,
-            ) -> ValidationResult[SquareContext]:
+            ) -> ValidationResult[Square]:
 
     Super Class:
         ContextValidator
@@ -49,7 +50,7 @@ class SquareContextValidator(ContextValidator[SquareContext]):
             cls,
             candidate: Any,
             toolkit: SquareContextToolkit | None = None,
-    ) -> ValidationResult[SquareContext]:
+    ) -> ValidationResult[Square]:
         """
         Certify a candidate is a SquareContext that is safe to use.
 
@@ -64,7 +65,7 @@ class SquareContextValidator(ContextValidator[SquareContext]):
             candidate: Any,
             toolkit: SquareContextToolkit,
         Returns:
-            ValidationResult[SquareContext]
+            ValidationResult[Square]
         Raises:
             SquareContextValidationException
             SquareContextValidationRouteException
@@ -79,8 +80,8 @@ class SquareContextValidator(ContextValidator[SquareContext]):
         priming_result = toolkit.context_validation_primer.validate(
             candidate=candidate,
             context_model=toolkit.context_model_type,
-            null_exception=toolkit.null_context_exception,
-            validator_bootstrapper=toolkit.square_toolkit.validation_primer
+            context_null_exception=toolkit.null_context_exception,
+            validation_primer=toolkit.square_toolkit.validation_primer
         )
         if priming_result.is_failure:
             # Send the exception chain on failure.

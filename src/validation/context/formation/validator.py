@@ -1,4 +1,4 @@
-# src/validation/context/formation/operation.py
+# src/validation/context/formation/validator.py
 
 """
 Module: validation.context.formation.validator
@@ -10,7 +10,7 @@ version: 1.0.1
 from __future__ import annotations
 
 
-class FormationContext(ContextValidator[FormationKey]):
+class FormationContextValidator(ContextValidator[FormationKey]):
     """
      Role:Validation, Data Integrity Guarantor, Security.
 

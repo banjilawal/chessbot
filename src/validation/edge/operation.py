@@ -1,4 +1,4 @@
-# src/validation/edge/operation.py
+# src/validation/edge/validator.py
 
 """
 Module: validation.edge.validator

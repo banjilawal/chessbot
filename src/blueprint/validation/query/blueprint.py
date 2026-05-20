@@ -10,10 +10,11 @@ version: 1.0.1
 from __future__ import annotations
 from typing import TypeVar
 
+from blueprint import Blueprint
 from err import (
     ContextNullException, NullException, QueryNullException, StackEmptyException, StackNullException
 )
-from model import Blueprint, Query
+from model import Query
 from stack import StackService
 from validation import ContextValidator, ValidationPrimer
 

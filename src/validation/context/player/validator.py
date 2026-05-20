@@ -1,4 +1,4 @@
-# src/validation/context/player/operation.py
+# src/validation/context/player/validator.py
 
 """
 Module: validation.context.player.validator
@@ -10,7 +10,7 @@ version: 1.0.1
 from __future__ import annotations
 
 
-class PlayerContextValidator(ContextValidator[PlayerContext]):
+class PlayerContextValidator(ContextValidator[Player]):
     """
      Role:Validation, Data Integrity Guarantor, Security.
 
@@ -35,7 +35,7 @@ class PlayerContextValidator(ContextValidator[PlayerContext]):
             team_service: TeamService = TeamService(),
             game_service: GameService = GameService(),
             identity_service: IdentityService = IdentityService(),
-    ) -> ValidationResult[PlayerContext]:
+    ) -> ValidationResult[Player]:
         """
         # ACTION:
             1.  If the rank passes existence and type checks cast into a PlayerContext for
@@ -53,7 +53,7 @@ class PlayerContextValidator(ContextValidator[PlayerContext]):
             *   identity_service (IdentityService)
 
         # RETURNS:
-        ValidationResult[PlayerContext] containing either:
+        ValidationResult[Player] containing either:
             - On success: PlayerContext in the payload.
             - On failure: Exception.
 

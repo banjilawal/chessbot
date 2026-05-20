@@ -10,7 +10,6 @@ version: 1.0.0
 # =========== SPAN.COORD.RAY.DIAGONAL.PROVIDER PACKAGE ===========#
 
 # Modules
-None
 
 # Packages
 from .factor import DiagonalRayFactors

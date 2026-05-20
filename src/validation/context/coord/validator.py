@@ -1,4 +1,4 @@
-# src/validation/context/coord/operation.py
+# src/validation/context/coord/validator.py
 
 """
 Module: validation.context.coord.validator
@@ -19,7 +19,7 @@ from util import LoggingLevelRouter
 from validation import Validator
 
 
-class CoordContextValidator(ContextValidator[CoordContext]):
+class CoordContextValidator(ContextValidator[Coord]):
     """
     Role
         -   Transaction Worker
@@ -36,7 +36,7 @@ class CoordContextValidator(ContextValidator[CoordContext]):
         -   def validate(
                     candidate: Any,
                     toolkit: CoordContextToolkit,
-            ) -> ValidationResult[CoordContext]:
+            ) -> ValidationResult[Coord]:
 
     Super Class:
         ContextValidator
@@ -48,7 +48,7 @@ class CoordContextValidator(ContextValidator[CoordContext]):
             cls,
             candidate: Any,
             toolkit: CoordContextToolkit | None = None,
-    ) -> ValidationResult[CoordContext]:
+    ) -> ValidationResult[Coord]:
         """
         Certify a candidate is a CoordContext that is safe to use.
 
@@ -62,7 +62,7 @@ class CoordContextValidator(ContextValidator[CoordContext]):
             candidate: Any,
             toolkit: CoordContextToolkit,
         Returns:
-            ValidationResult[CoordContext]
+            ValidationResult[Coord]
         Raises:
             CoordContextValidationException
         """
@@ -76,7 +76,7 @@ class CoordContextValidator(ContextValidator[CoordContext]):
         priming_result = toolkit.context_validation_primer.validate(
             candidate=candidate,
             context_model=toolkit.context_model_type,
-            null_exception=toolkit.null_context_exception,
+            context_null_exception=toolkit.null_context_exception,
             validator_bootstrapper=toolkit.coord_toolkit.validation_primer
         )
         if priming_result.is_failure:

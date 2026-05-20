@@ -1,4 +1,4 @@
-# src/bootstrap/validation/binder/operation.py
+# src/bootstrap/validation/binder/validator.py
 
 """
 Module: boostrap.validation.binder.operation
@@ -79,12 +79,12 @@ class SchemaHashtableValidator(Validator[Dict[Schema, Any]]):
         method = f"{cls.__name__}.validate"
             
         # Handle the case that, the candidate does not exist.
-        validation_bootstrap_result = validation_primer.validate(
+        validation_priming_result = validation_primer.validate(
             candidate=candidate,
             target_model=Dict[Schema, Any],
-            null_exception=HashtableNullException(),
+            context_null_exception=HashtableNullException(),
         )
-        if validation_bootstrap_result.is_failure:
+        if validation_priming_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 SchemaHashtableValidationException(
@@ -92,10 +92,10 @@ class SchemaHashtableValidator(Validator[Dict[Schema, Any]]):
                     cls_name=cls.__name__,
                     msg=SchemaHashtableValidationException.MSG,
                     err_code=SchemaHashtableValidationException.ERR_CODE,
-                    ex=validation_bootstrap_result.exception,
+                    ex=validation_priming_result.exception,
                 )
             )
-        table = cast(Dict[Schema, Any], validation_bootstrap_result.payload)
+        table = cast(Dict[Schema, Any], validation_priming_result.payload)
         
         for key in table.keys():
             schema_validation_result = schema_validator.validator.validate(table[key])

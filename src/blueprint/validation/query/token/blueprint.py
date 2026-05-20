@@ -10,12 +10,14 @@ version: 1.0.1
 from __future__ import annotations
 from dataclasses import dataclass
 
+from model import Token, TokenQuery
+from stack import TokenStackService
+from validation import TokenContextValidator
+from blueprint import QueryValidationBlueprint
 from err import (
     TokenContextNullException, TokenQueryNullException, TokenStackEmptyException, TokenStackNullException
 )
-from model import QueryValidationBlueprint, Token, TokenQuery
-from stack import TokenStackService
-from validation import TokenContextValidator
+
 
 
 @dataclass

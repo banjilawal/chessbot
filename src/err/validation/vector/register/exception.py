@@ -18,6 +18,7 @@ __all__ = [
 ]
 
 from err import ValidationException
+from result import MethodResultType
 
 
 # ======================# VECTOR_REGISTER_VALIDATION_FAILURE #======================#

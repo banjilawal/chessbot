@@ -8,7 +8,6 @@ version: 1.0.1
 """
 
 from __future__ import annotations
-
 from typing import Any, TypeVar
 
 from model import Context
@@ -19,7 +18,7 @@ from validation import Validator
 
 T = TypeVar("T")
 
-class ContextValidator(Validator[T]):
+class ContextValidator(Validator):
     """
     Role
         -   Transaction Worker
@@ -40,7 +39,7 @@ class ContextValidator(Validator[T]):
     """
     @classmethod
     @LoggingLevelRouter.monitor
-    def validate(cls, candidate: Any, context_toolkit: ContextToolkit[T],) -> ValidationResult[Context[T]]:
+    def validate(cls, candidate: Any, toolkit: ContextToolkit[T],) -> ValidationResult[Context[T]]:
         pass
         
     

@@ -14,4 +14,3 @@ from .ray import *
 from .span import *
 
 # Modules
-None

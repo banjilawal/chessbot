@@ -1,4 +1,4 @@
-# src/validation/vector/operation.py
+# src/validation/vector/validator.py
 
 """
 Module: validation.vector.operation
@@ -77,12 +77,12 @@ class VectorValidator(Validator[Vector]):
             toolkit = MathToolkit()
         
         # Handle the case that, the candidate does not exist.
-        validation_bootstrap_result = toolkit.validation_primer.validate(
+        validation_priming_result = toolkit.validation_primer.validate(
             candidate=candidate,
             target_model=Vector,
-            null_exception=VectorNullException(),
+            context_null_exception=VectorNullException(),
         )
-        if validation_bootstrap_result.is_failure:
+        if validation_priming_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 VectorValidationException(
@@ -90,7 +90,7 @@ class VectorValidator(Validator[Vector]):
                     cls_name=cls.__name__,
                     msg=VectorValidationException.MSG,
                     err_code=VectorValidationException.ERR_CODE,
-                    ex=validation_bootstrap_result.exception,
+                    ex=validation_priming_result.exception,
                 )
             )
         # --- Cast the candidate to a Vector for additional tests ---#
@@ -111,7 +111,7 @@ class VectorValidator(Validator[Vector]):
                         cls_name=cls.__name__,
                         msg=VectorValidationException.MSG,
                         err_code=VectorValidationException.ERR_CODE,
-                        ex=validation_bootstrap_result.exception,
+                        ex=validation_priming_result.exception,
                     )
                 )
         # --- Forward the work product to the caller. ---#

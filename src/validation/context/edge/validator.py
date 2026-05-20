@@ -1,4 +1,4 @@
-# src/validation/context/edge/operation.py
+# src/validation/context/edge/validator.py
 
 """
 Module: validation.context.edge.validator
@@ -10,7 +10,7 @@ version: 1.0.1
 from __future__ import annotations
 
 
-class EdgeContextValidator(ContextValidator[EdgeContext]):
+class EdgeContextValidator(ContextValidator[Edge]):
     """
      Role:Validation, Data Integrity Guarantor, Security.
 
@@ -36,7 +36,7 @@ class EdgeContextValidator(ContextValidator[EdgeContext]):
             coord_service: CoordService = CoordService(),
             edge_service: EdgeService = EdgeService(),
             identity_service: IdentityService = IdentityService()
-    ) -> ValidationResult[EdgeContext]:
+    ) -> ValidationResult[Edge]:
         """
         # ACTION:
             1.  If Candidate fails existence or type checks return the exception chain in the ValidationResult. Else,
@@ -52,7 +52,7 @@ class EdgeContextValidator(ContextValidator[EdgeContext]):
             *   edge_service (EdgeService)
             *   identity_service (IdentityService):
         # RETURNS:
-            *   ValidationResult[EdgeContext] containing either:
+            *   ValidationResult[Edge] containing either:
                     - On failure:   Exception.
                     - On success:   EdgeContext in the payload.
         Raises:

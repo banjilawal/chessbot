@@ -1,4 +1,4 @@
-# src/validation/context/arena/operation.py
+# src/validation/context/arena/validator.py
 
 """
 Module: validation.context.arena.validator
@@ -10,8 +10,8 @@ version: 1.0.1
 from __future__ import annotations
 
 
-class ArenaContextValidator(ContextValidator[ArenaContext]):
+class ArenaContextValidator(ContextValidator[Arena]):
     
     @classmethod
-    def validate(cls, candidate: Any, *args, **kwargs) -> ValidationResult[ArenaContext]:
+    def validate(cls, candidate: Any, *args, **kwargs) -> ValidationResult[Arena]:
         pass

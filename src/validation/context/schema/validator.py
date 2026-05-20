@@ -1,4 +1,4 @@
-# src/validation/context/schema/operation.py
+# src/validation/context/schema/validator.py
 
 """
 Module: validation.context.schema.validator
@@ -8,6 +8,8 @@ version: 1.0.1
 """
 
 from __future__ import annotations
+
+from validation import ContextValidator
 
 
 class SchemaContextValidator(ContextValidator[SchemaKey]):

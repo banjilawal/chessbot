@@ -18,7 +18,7 @@ from system import (
 )
 
 
-class PersonaContext(ContextValidator[PersonaKey]):
+class PersonaContextValidator(ContextValidator[PersonaKey]):
     """
      Role:Validation, Data Integrity Guarantor, Security.
 
@@ -57,7 +57,7 @@ class PersonaContext(ContextValidator[PersonaKey]):
             *   color_validator (ColorValidator)
             *   identity_service (IdentityService)
         # RETURNS:Confirm
-            *   ValidationResult[PersonaContext] containing either:
+            *   ValidationResult[Persona] containing either:
                     - On failure: Exception.
                     - On success: PersonaContext in the payload.
         Raises:

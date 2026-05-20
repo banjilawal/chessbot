@@ -1,4 +1,4 @@
-# src/validation/schema/operation.py
+# src/validation/schema/validator.py
 
 """
 Module: validation.schema.validator

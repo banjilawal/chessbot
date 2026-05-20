@@ -79,12 +79,12 @@ class BoardTeamBinderValidator(Validator[BoardBinder]):
             toolkit = BoardTeamBinderToolkit()
             
         # Handle the case that, the candidate does not exist.
-        validation_bootstrap_result = toolkit.validation_primer.validate(
+        validation_priming_result = toolkit.validation_primer.validate(
             candidate=candidate,
             target_model=BoardBinder,
             null_exception=BoardTeamBinderNullException(),
         )
-        if validation_bootstrap_result.is_failure:
+        if validation_priming_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 BoardTeamBinderValidationException(
@@ -92,10 +92,10 @@ class BoardTeamBinderValidator(Validator[BoardBinder]):
                     cls_name=cls.__name__,
                     msg=BoardTeamBinderValidationException.MSG,
                     err_code=BoardTeamBinderValidationException.ERR_CODE,
-                    ex=validation_bootstrap_result.exception,
+                    ex=validation_priming_result.exception,
                 )
             )
-        binder = validation_bootstrap_result.payload
+        binder = validation_priming_result.payload
         board_validation_result =toolkit.board_service.validator.validate(binder.primary)
         
         if board_validation_result.is_failure:

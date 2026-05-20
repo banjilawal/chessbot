@@ -1,4 +1,4 @@
-# src/validation/operand/operation.py
+# src/validation/operand/validator.py
 
 """
 Module: validation.operand.operation
@@ -82,12 +82,12 @@ class VectorOperandValidator(Validator[VectorOperand]):
             toolkit = VectorOperandToolkit()
         
         # Handle the case that, the candidate does not exist or, is the wrong type.
-        validation_bootstrap_result = toolkit.validation_primer.validate(
+        validation_priming_result = toolkit.validation_primer.validate(
             candidate=candidate,
             target_model=VectorOperand,
-            null_exception=VectorOperandNullException(),
+            context_null_exception=VectorOperandNullException(),
         )
-        if validation_bootstrap_result.is_failure:
+        if validation_priming_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 VectorOperandValidationException(
@@ -95,7 +95,7 @@ class VectorOperandValidator(Validator[VectorOperand]):
                     cls_name=cls.__name__,
                     msg=VectorOperandValidationException.MSG,
                     err_code=VectorOperandValidationException.ERR_CODE,
-                    ex=validation_bootstrap_result.exception
+                    ex=validation_priming_result.exception
                 )
             )
         # --- Cast candidate to a VectorOperand for additional tests. ---#

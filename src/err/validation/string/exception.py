@@ -17,6 +17,7 @@ __all__ = [
 ]
 
 from err import ValidationException
+from result import MethodResultType
 
 
 # ======================# STRING_VALIDATION_FAILURE #======================#

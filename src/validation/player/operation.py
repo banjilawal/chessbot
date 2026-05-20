@@ -1,4 +1,4 @@
-# src/validation/player/operation.py
+# src/validation/player/validator.py
 
 """
 Module: validation.player.validator

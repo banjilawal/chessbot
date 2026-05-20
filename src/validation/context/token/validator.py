@@ -1,4 +1,4 @@
-# src/validation/context/token/operation.py
+# src/validation/context/token/validator.py
 
 """
 Module: validation.context.token.validator
@@ -11,10 +11,17 @@ from __future__ import annotations
 
 from typing import Any, cast
 
-from validation.context.validator import ContextValidator
+from model import Persona, TokenContext
+from result import ValidationResult
+from setting import GameColor
+from toolkit import TokenContextToolkit
+from util import LoggingLevelRouter
+from validation import ContextValidator
+from err import GameColorNullException, TokenContextValidationException, TokenContextValidationRouteException
 
 
-class TokenContextValidator(ContextValidator[TokenContext]):
+
+class TokenContextValidator(ContextValidator):
     """
     Role
         -   Transaction Worker
@@ -31,7 +38,7 @@ class TokenContextValidator(ContextValidator[TokenContext]):
         -   def validate(
                     candidate: Any,
                     toolkit: TokenContextToolkit,
-            ) -> ValidationResult[TokenContext]:
+            ) -> ValidationResult[Token]:
 
     Super Class:
         ContextValidator
@@ -57,7 +64,7 @@ class TokenContextValidator(ContextValidator[TokenContext]):
             candidate: Any,
             toolkit: TokenContextToolkit,
         Returns:
-            ValidationResult[TokenContext]
+            ValidationResult[Token]
         Raises:
             TokenContextValidationException
             TokenContextValidationRouteException
@@ -72,8 +79,8 @@ class TokenContextValidator(ContextValidator[TokenContext]):
         priming_result = toolkit.context_validation_primer.validate(
             candidate=candidate,
             context_model=toolkit.context_model_type,
-            null_exception=toolkit.null_context_exception,
-            validator_bootstrapper=toolkit.token_toolkit.validation_primer
+            context_null_exception=toolkit.null_context_exception,
+            validation_primer=toolkit.token_toolkit.validation_primer
         )
         if priming_result.is_failure:
             # Send the exception chain on failure.

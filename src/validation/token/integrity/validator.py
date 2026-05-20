@@ -86,12 +86,12 @@ class TokenIntegrityValidator(Validator[Token]):
         tools = toolkit_build_result.payload
         
         # Handle the case that, the candidate does not exist.
-        validation_bootstrap_result = tools["validation_primer"].validate(
+        validation_priming_result = tools["validation_primer"].validate(
             candidate=candidate,
             target_model=Token,
-            null_exception=TokenNullException(),
+            context_null_exception=TokenNullException(),
         )
-        if validation_bootstrap_result.is_failure:
+        if validation_priming_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 TokenValidationException(
@@ -99,7 +99,7 @@ class TokenIntegrityValidator(Validator[Token]):
                     cls_name=cls.__name__,
                     msg=TokenValidationException.MSG,
                     err_code=TokenValidationException.ERR_CODE,
-                    ex=validation_bootstrap_result.exception,
+                    ex=validation_priming_result.exception,
                 )
             )
         # --- Cast the candidate into a Token for additional tests ---#
@@ -164,7 +164,7 @@ class TokenIntegrityValidator(Validator[Token]):
         coord_database_validation_result = tools["validation_primer"].validate(
             candidate=token.positions,
             target_model=CoordDatabase,
-            null_exception=CoordDatabaseNullException()
+            context_null_exception=CoordDatabaseNullException()
         )
         if coord_database_validation_result.is_failure:
             # Send the exception chain on failure.

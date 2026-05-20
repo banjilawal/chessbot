@@ -1,4 +1,4 @@
-# src/validation/context/board/operation.py
+# src/validation/context/board/validator.py
 
 """
 Module: validation.context.board.validator
@@ -10,7 +10,7 @@ version: 1.0.1
 from __future__ import annotations
 
 
-class BoardContextValidator(ContextValidator[BoardContext]):
+class BoardContextValidator(ContextValidator[Board]):
     """
      Role:Validation, Data Integrity Guarantor, Security.
 
@@ -35,7 +35,7 @@ class BoardContextValidator(ContextValidator[BoardContext]):
             candidate: Any,
             arena_service: ArenaService = ArenaService(),
             identity_service: IdentityService = IdentityService()
-    ) -> ValidationResult[BoardContext]:
+    ) -> ValidationResult[Board]:
         """
         # ACTION:
             1.  If Candidate fails existence or type checks return the exception chain in the ValidationResult. Else,
@@ -49,7 +49,7 @@ class BoardContextValidator(ContextValidator[BoardContext]):
             *   arena_service (ArenaService)
             *   identity_service (IdentityService):
         # RETURNS:
-            *   ValidationResult[BoardContext] containing either:
+            *   ValidationResult[Board] containing either:
                     - On failure:   Exception.
                     - On success:   BoardContext in the payload.
         Raises:

@@ -1,4 +1,4 @@
-# src/validation/scalar/operation.py
+# src/validation/scalar/validator.py
 
 """
 Module: validation.scalar.operation
@@ -70,12 +70,12 @@ class ScalarValidator(Validator[Scalar]):
             toolkit = MathToolkit()
         
         # Handle the case that, the candidate does not exist.
-        validation_bootstrap_result = toolkit.validation_primer.validate(
+        validation_priming_result = toolkit.validation_primer.validate(
             candidate=candidate,
             target_model=Scalar,
-            null_exception=ScalarNullException(),
+            context_null_exception=ScalarNullException(),
         )
-        if validation_bootstrap_result.is_failure:
+        if validation_priming_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 ScalarValidationException(
@@ -83,7 +83,7 @@ class ScalarValidator(Validator[Scalar]):
                     cls_name=cls.__name__,
                     msg=ScalarValidationException.MSG,
                     err_code=ScalarValidationException.ERR_CODE,
-                    ex=validation_bootstrap_result.exception,
+                    ex=validation_priming_result.exception,
                 )
             )
         # --- Cast candidate to a Scalar for additional tests. ---#
@@ -102,7 +102,7 @@ class ScalarValidator(Validator[Scalar]):
                     cls_name=cls.__name__,
                     msg=ScalarValidationException.MSG,
                     err_code=ScalarValidationException.ERR_CODE,
-                    ex=validation_bootstrap_result.exception,
+                    ex=validation_priming_result.exception,
                 )
             )
         return ValidationResult.success(scalar)

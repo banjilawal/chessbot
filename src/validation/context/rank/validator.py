@@ -1,4 +1,4 @@
-# src/validation/context/rank/operation.py
+# src/validation/context/rank/validator.py
 
 """
 Module: validation.context.rank.validator

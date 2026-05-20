@@ -1,4 +1,4 @@
-# src/validation/register/operation.py
+# src/validation/register/validator.py
 
 """
 Module: validation.register.validator
@@ -77,12 +77,12 @@ class VectorRegisterValidator(Validator[VectorRegister]):
             toolkit = VectorRegisterToolkit()
         
         # Handle the case that, the candidate does not exist.
-        validation_bootstrap_result = toolkit.validation_primer.validate(
+        validation_priming_result = toolkit.validation_primer.validate(
             candidate=candidate,
             target_model=VectorRegister,
-            null_exception=VectorRegisterNullException(),
+            context_null_exception=VectorRegisterNullException(),
         )
-        if validation_bootstrap_result.is_failure:
+        if validation_priming_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 VectorRegisterValidationException(
@@ -90,7 +90,7 @@ class VectorRegisterValidator(Validator[VectorRegister]):
                     cls_name=cls.__name__,
                     msg=VectorRegisterValidationException.MSG,
                     err_code=VectorRegisterValidationException.ERR_CODE,
-                    ex=validation_bootstrap_result.exception,
+                    ex=validation_priming_result.exception,
                 )
             )
         # --- Cast candidate to a VectorRegister for additional tests. ---#

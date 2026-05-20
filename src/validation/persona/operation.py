@@ -1,4 +1,4 @@
-# src/validation/persona/operation.py
+# src/validation/persona/validator.py
 
 """
 Module: validation.persona.validator

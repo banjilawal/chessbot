@@ -20,4 +20,3 @@ from .token import *
 from .system import *
 
 # Modules
-None

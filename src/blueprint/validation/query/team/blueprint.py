@@ -12,8 +12,9 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Optional
 
+from blueprint import QueryValidationBlueprint
 from err import TeamNullException
-from model import Board, Blueprint, Player, Schema, TeamValidation, TeamState
+from model import Board, Blueprint, Player, Schema, Team, TeamValidation, TeamState
 
 
 @dataclass

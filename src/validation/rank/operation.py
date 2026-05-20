@@ -1,4 +1,4 @@
-# src/validation/rank/operation.py
+# src/validation/rank/validator.py
 
 """
 Module: validation.rank.operation
@@ -68,12 +68,12 @@ class RankValidator(Validator[Rank]):
             toolkit = RankToolkit()
         
         # Handle the case that, the candidate does not exist.
-        validation_bootstrap_result = toolkit.validation_primer.validate(
+        validation_priming_result = toolkit.validation_primer.validate(
             candidate=candidate,
             target_model=Rank,
-            null_exception=RankNullException(),
+            context_null_exception=RankNullException(),
         )
-        if validation_bootstrap_result.is_failure:
+        if validation_priming_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 RankValidationException(
@@ -81,7 +81,7 @@ class RankValidator(Validator[Rank]):
                     cls_name=cls.__name__,
                     msg=RankValidationException.MSG,
                     err_code=RankValidationException.ERR_CODE,
-                    ex=validation_bootstrap_result.exception,
+                    ex=validation_priming_result.exception,
                 )
             )
         # --- Cast candidate to a Rank for additional tests. ---#
@@ -104,7 +104,7 @@ class RankValidator(Validator[Rank]):
         rank_persona_validation_result = toolkit.validation_primer.validate(
             candidate=rank.persona,
             target_model=Persona,
-            null_exception=PersonaNullException(),
+            context_null_exception=PersonaNullException(),
         )
         if rank_persona_validation_result.is_failure:
             # Return the exception on failure.

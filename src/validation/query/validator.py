@@ -9,16 +9,15 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from typing import Any, List, cast
+from typing import Any, cast
 
-from err import ContextNullException, ListNullException, StackNullException
-from model import Query
-from system import LoggingLevelRouter, ValidationResult, Validator
-from model.token import (
-    Token, TokenContextValidator, QueryNullException, ListEmptyException,
-    TokenStackNullException, Query, QueryValidationException
-)
-from validation import ContextValidator, ValidationPrimer
+from blueprint import QueryValidationBlueprint
+from err import QueryValidationException
+from model import CatalogQuery, Query, StackQuery
+from result import ValidationResult
+from stack import StackService
+from util import LoggingLevelRouter
+from validation import ValidationPrimer, Validator
 
 
 class QueryValidator(Validator[Query]):
@@ -47,14 +46,7 @@ class QueryValidator(Validator[Query]):
     def validate(
             cls,
             candidate: Any,
-            query_model_type: Query,
-            stack_model_type: StackService,
-            query_null_exception: QueryNullException,
-            context_null_exception: ContextNullException,
-            stack_null_exception: StackNullException,
-            empty_stack_exception: StackNullException,
-            context_validator: ContextValidator,
-            validation_primer: ValidationPrimer,
+            blueprint: QueryValidationBlueprint,
     ) -> ValidationResult[Query]:
         """
         Certify a rank is a Query that is safe to use.
@@ -69,10 +61,8 @@ class QueryValidator(Validator[Query]):
                     -   The schema's type is not ist[Token]
             2.  Otherwise, send the success result.
         Args:
-            query_model_type: Query,
-            null_exception: QueryNullException,
-            context_validator: ContextValidator,
-            validation_primer: ValidationPrimer,
+            candidate: Any
+            blueprint: QueryValidationBlueprint
         Returns:
             ValidationResult[Query]
         Raises:
@@ -81,10 +71,10 @@ class QueryValidator(Validator[Query]):
         """
         method = f"{cls.__name__}._validate"
         
-        query_validation_result = validation_primer.validate(
+        query_validation_result = blueprint.validation_primer.validate(
             candidate=candidate,
-            target_model=query_model_type,
-            null_exception=null_exception,
+            target_model=blueprint.query_model_type,
+            null_exception=blueprint.query_null_exception,
         )
         if query_validation_result.is_failure:
             # Send the exception chain on failure.
@@ -98,9 +88,9 @@ class QueryValidator(Validator[Query]):
                 )
             )
         # --- Cast the candidate into Query for additional tests. ---#
-        query = cast(query_model_type, candidate)
+        query = cast(blueprint.query_model_type, candidate)
         
-        context_validation_result = context_validator.validate(query.context)
+        context_validation_result = blueprint.context_validator.validate(query.context)
         if context_validation_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
@@ -112,12 +102,40 @@ class QueryValidator(Validator[Query]):
                     ex=context_validation_result.exception
                 )
             )
-        list_validation_result = validation_primer.validate(
-            candidate=query.items,
-            target_model=List,
-            null_exception=ListNullException(),
+        
+        if isinstance(StackQuery, query):
+            stack_query_validation_result = cls._stack_query_validator(query, blueprint)
+            if stack_query_validation_result.is_failure:
+                # Send the exception chain on failure.
+                return ValidationResult.failure(
+                    QueryValidationException(
+                        cls_mthd=method,
+                        cls_name=method.__class__.__name__,
+                        msg=QueryValidationException.MSG,
+                        err_code=QueryValidationException.ERR_CODE,
+                        ex=stack_query_validation_result.exception
+                    )
+                )
+            return ValidationResult.success(query)
+        if isinstance(CatalogQuery, query):
+        
+        
+            
+
+
+        return ValidationResult.success(query)
+    
+    @classmethod
+    @LoggingLevelRouter.monitor
+    def _stack_query_validator(cls, query: StackQuery, blueprint: QueryValidationBlueprint) -> ValidationResult[StackQuery]:
+        method = f"{cls.__name__}._stack_query_validator"
+        
+        stack_validation_result = blueprint.validation_primer.validate(
+            candidate=query.stack,
+            target_model=blueprint.stack_model_type,
+            null_exception=blueprint.stack_null_exception,
         )
-        if list_validation_result.is_failure:
+        if stack_validation_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 QueryValidationException(
@@ -125,23 +143,44 @@ class QueryValidator(Validator[Query]):
                     cls_name=method.__class__.__name__,
                     msg=QueryValidationException.MSG,
                     err_code=QueryValidationException.ERR_CODE,
-                    ex=list_validation_result.exception
+                    ex=stack_validation_result.exception
                 )
             )
-        # Handle the case that, list is empty.
-        if len(query.items) == 0:
+        # Handle the case that, stack is empty.
+        if query.stack.is_empty:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 QueryValidationException(
                     cls_mthd=method,
                     cls_name=method.__class__.__name__,
-                    op=QueryValidationException.OP,
                     msg=QueryValidationException.MSG,
                     err_code=QueryValidationException.ERR_CODE,
-                    ex=ListEmptyException(
-                        msg=ListEmptyException.MSG,
-                        err_code=ListEmptyException.ERR_CODE,
-                    )
+                    ex=blueprint.empty_stack_exception,
+                )
+            )
+        # --- Forward the work product to the client. ---#
+        return ValidationResult.success(query)
+    
+    @classmethod
+    @LoggingLevelRouter.monitor
+    def _catalog_query_validator(cls, query: CatalogQuery, blueprint: QueryValidationBlueprint) -> ValidationResult[
+        StackQuery]:
+        method = f"{cls.__name__}._stack_query_validator"
+        
+        stack_validation_result = blueprint.validation_primer.validate(
+            candidate=query.catalog,
+            target_model=blueprint.stack_model_type,
+            null_exception=blueprint.stack_null_exception,
+        )
+        if stack_validation_result.is_failure:
+            # Send the exception chain on failure.
+            return ValidationResult.failure(
+                QueryValidationException(
+                    cls_mthd=method,
+                    cls_name=method.__class__.__name__,
+                    msg=QueryValidationException.MSG,
+                    err_code=QueryValidationException.ERR_CODE,
+                    ex=stack_validation_result.exception
                 )
             )
         # --- Forward the work product to the client. ---#

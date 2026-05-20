@@ -1,4 +1,4 @@
-# src/validation/number/operation.py
+# src/validation/number/validator.py
 
 """
 Module: validation.number.validator
@@ -80,12 +80,12 @@ class NumberValidator(Validator[int]):
             validation_primer = ValidationPrimer()
         
         # Handle the case that, the candidate does not exist.
-        validation_bootstrap_result = validation_primer.validate(
+        validation_priming_result = validation_primer.validate(
             candidate=candidate,
             target_model=int,
             null_exception=NumberNullException(),
         )
-        if validation_bootstrap_result.is_failure:
+        if validation_priming_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                NumberValidationException(
@@ -93,7 +93,7 @@ class NumberValidator(Validator[int]):
                     cls_name=cls.__name__,
                     msg=NumberValidationException.MSG,
                     err_code=NumberValidationException.ERR_CODE,
-                    ex=validation_bootstrap_result.exception,
+                    ex=validation_priming_result.exception,
                 )
             )
         # --- Cast the candidate into a Token for additional tests ---#

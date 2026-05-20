@@ -14,7 +14,6 @@ from dataclasses import dataclass
 from err import ContextNullException
 from model import Context
 from toolkit import Toolkit
-from validation import ContextValidatorBootstrapper
 
 
 @dataclass
@@ -45,4 +44,4 @@ class ContextToolkit(Toolkit[Context]):
     """
     context_model_type: Context = Context
     null_context_exception: ContextNullException = ContextNullException()
-    context_validation_primer: ContextValidatorBootstrapper = ContextValidatorBootstrapper()
+    context_validation_primer: ContextValidationPrimer = ContextValidationPrimer()

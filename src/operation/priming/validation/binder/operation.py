@@ -83,7 +83,7 @@ class SchemaHashtableValidator(Validator[Dict[Schema, Any]]):
         validation_priming_result = validation_primer.validate(
             candidate=candidate,
             target_model=Dict[Schema, Any],
-            null_exception=HashtableNullException(),
+            context_null_exception=HashtableNullException(),
         )
         if validation_priming_result.is_failure:
             # Send the exception chain on failure.
