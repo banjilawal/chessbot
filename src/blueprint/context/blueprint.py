@@ -1,7 +1,7 @@
-# src/blueprint/blueprint.py
+# src/blueprint/context/blueprint.py
 
 """
-Module: blueprint.blueprint
+Module: blueprint.context.blueprint
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -9,10 +9,9 @@ version: 1.0.1
 
 from __future__ import annotations
 
-
+from blueprint import Blueprint
 from err import ContextNullException
-from model import Blueprint, Context
-from validation import ContextValidatorBootstrapper
+from model import Context
 
 
 class ContextBlueprint(Blueprint[Context]):

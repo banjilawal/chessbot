@@ -14,7 +14,7 @@ from typing import Any, Dict, cast
 from err import BoardTeamBinderNullException, BoardTeamBinderValidationException, NullException
 from model import Board, BoardBinder, Schema, Team
 from operation import Validator
-from operation.bootstrap.validation.binder.operation import SchemaHashtableValidator
+from operation.priming.validation.binder.operation import SchemaHashtableValidator
 from result import ValidationResult
 from util import LoggingLevelRouter
 from toolkit import BoardTeamBinderToolkit

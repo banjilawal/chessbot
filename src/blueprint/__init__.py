@@ -15,3 +15,4 @@ from .model import *
 from .validation import *
 
 # Modules
+from .blueprint import Blueprint

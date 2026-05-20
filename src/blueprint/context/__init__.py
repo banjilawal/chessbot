@@ -1,4 +1,4 @@
-# src/blueprint/context/context/__init__.py
+# src/blueprint/context/__init__.py
 
 """
 Module: blueprint.context.__init__
@@ -26,3 +26,4 @@ from .team import *
 from .token import *
 
 # Modules
+from .blueprint import ContextBlueprint
