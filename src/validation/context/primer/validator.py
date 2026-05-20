@@ -19,7 +19,7 @@ from err import (
 )
 
 
-class ContextValidatorPrimerper(ContextValidator[Context]):
+class ContextValidatorprimer(ContextValidator[Context]):
     """
     Role
         -   Transaction Worker
@@ -40,7 +40,7 @@ class ContextValidatorPrimerper(ContextValidator[Context]):
         -   def validate(
                     target_context_model: Context,
                     null_exception: ContextNullException,
-                    validator_primerper: ValidatorPrimerper,
+                    validator_primer: Validatorprimer,
             ) -> ValidationResult[Context]:
 
     Super Class:
@@ -53,7 +53,7 @@ class ContextValidatorPrimerper(ContextValidator[Context]):
             candidate: Any,
             target_context_model: Context,
             null_exception: ContextNullException | None = None,
-            validator_primerper: ValidationPrimer | None = None,
+            validator_primer: ValidationPrimer | None = None,
     ) -> ValidationResult[Context]:
         """
         Run tests that are common to Context subclasses
@@ -61,14 +61,14 @@ class ContextValidatorPrimerper(ContextValidator[Context]):
         Action:
             1.  Send an exception chain in the ValidationResult if any of the following
                 occur
-                    -   A validator_primerper test fails.
+                    -   A validator_primer test fails.
                     -   Exactly one attribute is not enabled.
             2.  Otherwise, send the success result.
         Args:
             candidate: Any
             target_context_model: Context
             null_exception: ContextNullException
-            validator_primerper: ValidatorPrimerper
+            validator_primer: Validatorprimer
         Returns:
             ValidationResult[Context]
         Raises:
@@ -81,11 +81,11 @@ class ContextValidatorPrimerper(ContextValidator[Context]):
         # --- Supply any missing dependencies. ---#
         if null_exception is None:
             null_exception = ContextNullException()
-        if validator_primerper is None:
-            validator_primerper = ValidationPrimer()
+        if validator_primer is None:
+            validator_primer = ValidationPrimer()
         
         # Handle the case that, either the null or type check fails.
-        validation_primer_result = validator_primerper.validate(
+        validation_primer_result = validator_primer.validate(
             candidate=candidate,
             target_model=target_context_model,
             null_exception=null_exception,

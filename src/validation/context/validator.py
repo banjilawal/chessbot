@@ -1,7 +1,7 @@
-# src/validation/context/token/operation.py
+# src/validation/context/validator.py
 
 """
-Module: validation.context.token.validator
+Module: validation.context.validator
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -17,9 +17,9 @@ from toolkit import ContextToolkit
 from util import LoggingLevelRouter
 from validation import Validator
 
-C = TypeVar("C", bound=Context)
+T = TypeVar("T")
 
-class ContextValidator(Validator[C]):
+class ContextValidator(Validator[T]):
     """
     Role
         -   Transaction Worker
@@ -40,7 +40,7 @@ class ContextValidator(Validator[C]):
     """
     @classmethod
     @LoggingLevelRouter.monitor
-    def validate(cls, candidate: Any, toolkit: ContextToolkit[C],) -> ValidationResult[C]:
+    def validate(cls, candidate: Any, context_toolkit: ContextToolkit[T],) -> ValidationResult[Context[T]]:
         pass
         
     

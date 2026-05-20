@@ -1,7 +1,7 @@
-# src/validation/primerper.py
+# src/validation/primer.py
 
 """
-Module: validation.primerper
+Module: validation.primer
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -11,15 +11,16 @@ from __future__ import annotations
 from typing import Any, TypeVar, cast
 
 
-from operation import Validator
 from result import ValidationResult
 from util import LoggingLevelRouter
+from validation import Validator
 from err import NullException, ValidationPrimingException
+
 
 T = TypeVar("T")
 
 
-class ValidationPrimer(Validator[T]):
+class ValidationPrimer(Validator):
     """
     Role
         -   Transaction Worker
@@ -43,7 +44,7 @@ class ValidationPrimer(Validator[T]):
     Super Class:
         Validator
     """
-    NAME = "validator_primerper"
+    NAME = "validator_primer"
     
     @classmethod
     @LoggingLevelRouter.monitor
