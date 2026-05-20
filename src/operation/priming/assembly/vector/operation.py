@@ -15,7 +15,7 @@ from toolkit import MathToolkit
 from result import ValidationResult
 from model import Vector, VectorBlueprint
 from operation import AssemblyPrimer
-from err import VectorAssemblyPrimingperException
+from err import VectorAssemblyPrimerException
 from util import LoggingLevelRouter
 
 
@@ -82,11 +82,11 @@ class VectorAssemblyPrimer(AssemblyPrimer[Vector]):
             if validation_result.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
-                    VectorAssemblyPrimingperException(
+                    VectorAssemblyPrimerException(
                         cls_mthd=method,
                         cls_name=cls.__name__,
-                        msg=VectorAssemblyPrimingperException.MSG,
-                        err_code=VectorAssemblyPrimingperException.ERR_CODE,
+                        msg=VectorAssemblyPrimerException.MSG,
+                        err_code=VectorAssemblyPrimerException.ERR_CODE,
                         ex=validation_result.exception,
                     )
                 )

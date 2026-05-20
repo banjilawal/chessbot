@@ -11,7 +11,7 @@ version: 1.0.0
 
 # Packages
 from .assembly import *
-from .bootstrap import *
+from .priming import *
 from .build import *
 from .finalize import *
 from .math import *
