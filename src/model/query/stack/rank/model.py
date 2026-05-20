@@ -29,7 +29,7 @@ class RankQuery(StackQuery[Rank]):
 
 
     Attributes:
-        items: List[Rank]
+        stack: RankStackService
         context: RankContext
 
     Provides:
@@ -37,6 +37,6 @@ class RankQuery(StackQuery[Rank]):
     Super Class:
         StackQuery
     """
-    items: List[Rank]
+    stack: RankStackService
     context: RankContext
 

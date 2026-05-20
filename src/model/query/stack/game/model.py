@@ -28,7 +28,7 @@ class GameQuery(StackQuery[Game]):
 
 
     Attributes:
-        items: List[Game]
+        stack: List[Game]
         context: GameContext
 
     Provides:
@@ -36,6 +36,6 @@ class GameQuery(StackQuery[Game]):
     Super Class:
         StackQuery
     """
-    items: List[Game]
+    stack: List[Game]
     context: GameContext
 

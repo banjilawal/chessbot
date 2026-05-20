@@ -22,6 +22,9 @@ from .node import *
 from .persona import *
 from .player import *
 from .rank import *
+from .square import *
+from .team import *
+from .token import *
 
 # Module
 from .validator import ContextValidator

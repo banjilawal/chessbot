@@ -7,13 +7,11 @@ version: 1.0.1
 """
 
 from __future__ import annotations
-
 from dataclasses import dataclass
-from typing import List
 
 from model.query import StackQuery
 from model import Team, TeamContext
-
+from stack import TeamStackService
 
 
 @dataclass
@@ -29,7 +27,7 @@ class TeamQuery(StackQuery[Team]):
 
 
     Attributes:
-        items: List[Team]
+        stack: List[Team]
         context: TeamContext
 
     Provides:
@@ -37,6 +35,6 @@ class TeamQuery(StackQuery[Team]):
     Super Class:
         StackQuery
     """
-    items: List[Team]
+    stack: TeamStackService
     context: TeamContext
 

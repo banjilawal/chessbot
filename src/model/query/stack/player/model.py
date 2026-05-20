@@ -28,7 +28,7 @@ class PlayerQuery(StackQuery[Player]):
 
 
     Attributes:
-        items: List[Player]
+        stack: PlayerStackService
         context: PlayerContext
 
     Provides:
@@ -36,6 +36,6 @@ class PlayerQuery(StackQuery[Player]):
     Super Class:
         StackQuery
     """
-    items: List[Player]
+    stack: PlayerStackService
     context: PlayerContext
 

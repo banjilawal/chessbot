@@ -12,7 +12,6 @@ version: 1.0.1
 # Packages
 from .arena import *
 from .binder import *
-from .blueprint import *
 from .board import *
 from .catalog import *
 from .context import *

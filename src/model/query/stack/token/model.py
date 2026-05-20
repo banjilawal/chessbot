@@ -7,12 +7,11 @@ version: 1.0.1
 """
 
 from __future__ import annotations
-
 from dataclasses import dataclass
-from typing import List
 
 from model import Token, TokenContext
 from model.query import StackQuery
+from stack import TokenStackService
 
 
 @dataclass
@@ -28,7 +27,7 @@ class TokenQuery(StackQuery[Token]):
 
 
     Attributes:
-        items: List[Token]
+        stack: List[Token]
         context: TokenContext
 
     Provides:
@@ -36,6 +35,6 @@ class TokenQuery(StackQuery[Token]):
     Super Class:
         StackQuery
     """
-    items: List[Token]
+    stack: TokenStackService
     context: TokenContext
 

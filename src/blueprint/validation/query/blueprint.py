@@ -1,0 +1,52 @@
+# src/blueprint/model.py
+
+"""
+Module: blueprint.model
+Author: Banji Lawal
+Created: 2026-04-03
+version: 1.0.1
+"""
+
+from __future__ import annotations
+from typing import TypeVar
+
+from err import (
+    ContextNullException, NullException, QueryNullException, StackEmptyException, StackNullException
+)
+from model import Blueprint, Query
+from stack import StackService
+from validation import ContextValidator, ValidationPrimer
+
+T = TypeVar("T")
+
+class QueryValidationBlueprint(Blueprint[T]):
+    """
+    Role:
+        -   Container
+    
+    Responsibilities:
+        1.  Satisfy dependencies StackQueryValidator needs for determining if a candidate is
+            a properly formed query.
+    
+    Attributes:
+        query_model_type: Query
+        stack_model_type: StackService
+        stack_null_exception: StackNullException
+        query_null_exception: QueryNullException
+        context_null_exception: ContextNullException
+        empty_stack_exception: StackEmptyException
+        context_validator: ContextValidator
+        validation_primer: ValidatorPrimer
+        
+    Provides:
+    
+    Super Class:
+    """
+    query_model_type: Query
+    stack_model_type: StackService
+    stack_null_exception: StackNullException
+    query_null_exception: QueryNullException
+    context_null_exception: ContextNullException
+    empty_stack_exception: StackEmptyException
+    context_validator: ContextValidator
+    validation_primer: ValidationPrimer = ValidationPrimer()

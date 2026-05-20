@@ -14,11 +14,12 @@ from typing import Generic, List, TypeVar
 
 from model import Context
 from model.query import Query
+from stack import StackService
 
 T = TypeVar("T")
 
 @dataclass
-class StackQuery(Query(T, List[T])):
+class StackQuery(Query[T]):
     """
     Role:
         -   Model
@@ -27,20 +28,20 @@ class StackQuery(Query(T, List[T])):
 
     Responsibilities:
         1.  Contains
-                -   The entity list[T]
+                -   The entity Stac[T]
                 -   The criteria for searching the list
         2.  Delivers it's contents to SearchRouter[T]
 
 
     Attributes:
-        items: List[T]
         context: Context[T]
+        stack: StackService[T]
 
     Provides:
 
     Super Class:
         Query
     """
-    items: List[T]
     context: Context[T]
+    stack: StackService[T]
 

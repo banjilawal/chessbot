@@ -13,6 +13,7 @@ from typing import List
 
 from model import Node, NodeContext
 from model.query import StackQuery
+from stack import NodeStackService
 
 
 @dataclass
@@ -28,7 +29,7 @@ class NodeQuery(StackQuery[Node]):
 
 
     Attributes:
-        items: List[Node]
+        stack: NodeStackService
         context: NodeContext
 
     Provides:
@@ -36,6 +37,6 @@ class NodeQuery(StackQuery[Node]):
     Super Class:
         StackQuery
     """
-    items: List[Node]
+    stack: NodeStackService
     context: NodeContext
 

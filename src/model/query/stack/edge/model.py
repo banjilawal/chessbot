@@ -13,6 +13,7 @@ from typing import List
 
 from model import Edge, EdgeContext
 from model.query import StackQuery
+from stack import EdgeStackService
 
 
 @dataclass
@@ -28,7 +29,7 @@ class EdgeQuery(StackQuery[Edge]):
 
 
     Attributes:
-        items: List[Edge]
+        stack: EdgeStackService
         context: EdgeContext
 
     Provides:
@@ -36,6 +37,6 @@ class EdgeQuery(StackQuery[Edge]):
     Super Class:
         StackQuery
     """
-    items: List[Edge]
+    stack: EdgeStackService
     context: EdgeContext
 

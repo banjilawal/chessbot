@@ -13,6 +13,7 @@ from typing import List
 
 from model import Coord, CoordContext
 from model.query import StackQuery
+from stack import CoordStackService
 
 
 @dataclass
@@ -28,7 +29,7 @@ class CoordQuery(StackQuery[Coord]):
 
 
     Attributes:
-        items: List[Coord]
+        stack: CoordStackService
         context: CoordContext
 
     Provides:
@@ -36,6 +37,6 @@ class CoordQuery(StackQuery[Coord]):
     Super Class:
         StackQuery
     """
-    items: List[Coord]
+    stack: CoordStackService
     context: CoordContext
 

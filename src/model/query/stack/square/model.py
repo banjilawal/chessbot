@@ -7,12 +7,11 @@ version: 1.0.1
 """
 
 from __future__ import annotations
-
 from dataclasses import dataclass
-from typing import List
 
 from model import Square, SquareContext
 from model.query import StackQuery
+from stack import SquareStackService
 
 
 @dataclass
@@ -28,7 +27,7 @@ class SquareQuery(StackQuery[Square]):
 
 
     Attributes:
-        items: List[Square]
+        stack: SquareStackService
         context: SquareContext
 
     Provides:
@@ -36,6 +35,6 @@ class SquareQuery(StackQuery[Square]):
     Super Class:
         StackQuery
     """
-    items: List[Square]
+    stack: SquareStackService
     context: SquareContext
 

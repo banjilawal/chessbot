@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Any, List, cast
 
-from err import ListNullException
+from err import ContextNullException, ListNullException, StackNullException
 from model import Query
 from system import LoggingLevelRouter, ValidationResult, Validator
 from model.token import (
@@ -48,7 +48,11 @@ class QueryValidator(Validator[Query]):
             cls,
             candidate: Any,
             query_model_type: Query,
-            null_exception: QueryNullException,
+            stack_model_type: StackService,
+            query_null_exception: QueryNullException,
+            context_null_exception: ContextNullException,
+            stack_null_exception: StackNullException,
+            empty_stack_exception: StackNullException,
             context_validator: ContextValidator,
             validation_primer: ValidationPrimer,
     ) -> ValidationResult[Query]:

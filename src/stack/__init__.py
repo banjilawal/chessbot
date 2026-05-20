@@ -18,6 +18,7 @@ from .node import *
 from .player import *
 from .result import *
 from .snapshot import *
+from .square import *
 from .team import *
 from .token import *
 

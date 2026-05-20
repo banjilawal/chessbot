@@ -28,7 +28,7 @@ class HostageQuery(StackQuery[Hostage]):
 
 
     Attributes:
-        items: List[Hostage]
+        stack: HostageStackService
         context: HostageContext
 
     Provides:
@@ -36,6 +36,6 @@ class HostageQuery(StackQuery[Hostage]):
     Super Class:
         StackQuery
     """
-    items: List[Hostage]
+    stack: HostageStackService
     context: HostageContext
 

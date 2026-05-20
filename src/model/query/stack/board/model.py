@@ -13,6 +13,7 @@ from typing import List
 
 from model import Board, BoardContext
 from model.query import StackQuery
+from stack import BoardStackService
 
 
 @dataclass
@@ -28,7 +29,7 @@ class BoardQuery(StackQuery[Board]):
 
 
     Attributes:
-        items: List[Board]
+        stack: BoardStackService
         context: BoardContext
 
     Provides:
@@ -36,6 +37,6 @@ class BoardQuery(StackQuery[Board]):
     Super Class:
         StackQuery
     """
-    items: List[Board]
+    stack: BoardStackService
     context: BoardContext
 

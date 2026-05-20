@@ -14,4 +14,4 @@ from .catalog import *
 from .stack import *
 
 # Modules
-from .query import Query
+from .model import Query
