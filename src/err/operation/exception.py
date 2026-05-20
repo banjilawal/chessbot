@@ -11,14 +11,12 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from err import ChessException
+from result import MethodResultType
 
 __all__ = [
     # ======================# OPERATION_ERROR #======================#
     "OperationException",
 ]
-
-from result import MethodResultType
-
 
 # ======================# OPERATION_ERROR #======================#
 class OperationException(ChessException):

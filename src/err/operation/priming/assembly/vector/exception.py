@@ -10,16 +10,17 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import AssemblyPrimerException
+from err import AssemblyPrimingException
+from result import MethodResultType
 
 
 __all__ = [
-    # ======================# VECTOR_PRIMING_ASSEMBLY_FAILURE #======================#
-    "VectorAssemblyPrimerException",
+    # ======================# VECTOR_ASSEMBLY_PRIMING_FAILURE #======================#
+    "VectorAssemblyPrimingException",
 ]
 
-# ======================# VECTOR_PRIMING_ASSEMBLY_FAILURE #======================#
-class VectorAssemblyPrimerException(AssemblyPrimerException):
+# ======================# VECTOR_ASSEMBLY_PRIMING_FAILURE #======================#
+class VectorAssemblyPrimingException(AssemblyPrimingException):
     """
     Role:
         -   Error Tracing
@@ -43,7 +44,7 @@ class VectorAssemblyPrimerException(AssemblyPrimerException):
         PrimingAssemblyException
     """
     MSG = "VectorAssembly priming step failed."
-    ERR_CODE = "VECTOR_PRIMING_ASSEMBLY_FAILURE"
+    ERR_CODE = "VECTOR_ASSEMBLY_PRIMING_FAILURE"
     
     def __init__(
             self,
@@ -54,16 +55,18 @@ class VectorAssemblyPrimerException(AssemblyPrimerException):
             cls_name: Optional[str] | None = None,
             cls_mthd: Optional[str] | None = None,
             err_code: Optional[str] | None = None,
+            mthd_rslt_type: Optional[MethodResultType] | None = None,
     ):
         """
-        Args:
-            msg: Optional[str]
-            var: Optional[str]
-            val: Optional[Any]
-            ex: Optional[Exception]
-            cls_name: Optional[str]
-            cls_mthd: Optional[str]
-            err_code: Optional[str]
+        args:
+            Msg: Optional[str]
+            Var: Optional[str]
+            val: Optional[any]
+            ex: optional[Exception]
+            cls_name: optional[Str]
+            cls_mthd: optional[str]
+            err_code: optional[str]
+            mthd_rslt_type: optional[methodResultType]
         """
         msg = msg or self.MSG
         err_code = err_code or self.ERR_CODE
@@ -75,4 +78,5 @@ class VectorAssemblyPrimerException(AssemblyPrimerException):
             err_code=err_code,
             cls_name=cls_name,
             cls_mthd=cls_mthd,
+            mthd_rslt_type=mthd_rslt_type,
         )

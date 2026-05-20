@@ -10,13 +10,12 @@ version: 1.0.0
 from __future__ import annotations
 from typing import Any, Optional
 
+from result import MethodResultType
+
 __all__ = [
     # ======================#  ROOT APPLICATION EXCEPTION CLASS #======================#
     "ChessException",
 ]
-
-from result import MethodResultType
-
 
 # ======================# ROOT APPLICATION EXCEPTION CLASS #======================#
 class ChessException(Exception):
@@ -53,7 +52,6 @@ class ChessException(Exception):
     _cls_mthd: Optional[str] | None = None
     _ex: Optional[Exception] | None = None
     _mthd_rslt_type: Optional[MethodResultType] | None = None
-    
     
     def __init__(
             self,
@@ -123,11 +121,13 @@ class ChessException(Exception):
     
     def __str__(self):
         return (
-            f"exception:{self.__name__}:, "
+            f"name:{self.__name__}:, "
+            f"cls_name:{self._cls_name},"
+            f"cls_mthd:{self._cls_mthd},"
             f"errr_code:{self._err_code}, "
             f"msg:{self._msg}, "
+            f"mthd_rslt_type:{self._mthd_rslt_type}, "
             f"ex:{self._ex}"
-            f"cls_name:{self._cls_name},"
         )
 
 

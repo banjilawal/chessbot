@@ -13,4 +13,4 @@ version: 1.0.1
 from .assembly import *
 
 # Modules
-from .exception import PrimerException
+from .exception import PrimingException

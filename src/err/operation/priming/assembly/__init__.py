@@ -30,4 +30,4 @@ from .token import *
 from .vector import *
 
 # Modules
-from .exception import AssemblyPrimerException
+from .exception import AssemblyPrimingException

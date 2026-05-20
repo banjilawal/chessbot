@@ -61,7 +61,7 @@ class SpanComputationException(ComputationException):
             msg: Optional[str] | None = None,
             ex: Optional[Exception] | None = None,
             mthd: Optional[str] = None, = None,
-            mthd_rslt_type: Optional[MethodResultType] | None = None,
+            mthd_rslt_Ttype: Optional[MethodResultType] | None = None,
     ):
         """
         Args:

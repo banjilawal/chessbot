@@ -10,20 +10,22 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import PrimerException
+from err import PrimingException
+from result import MethodResultType
 
 __all__ = [
-    # ======================# PRIMING_ASSEMBLY_FAILURE #======================#
-    "AssemblyPrimerException",
+    # ======================# ASSEMBLY_PRIMING_FAILURE #======================#
+    "AssemblyPrimingException",
 ]
-# ======================# PRIMING_ASSEMBLY_FAILURE #======================#
-class AssemblyPrimerException(PrimerException):
+
+# ======================# ASSEMBLY_PRIMING_FAILURE #======================#
+class AssemblyPrimingException(PrimingException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a AssemblyPrimer failed.
+        1.  Indicate that an AssemblyPrimer failed.
 
     Attributes:
         var: Optional[str]
@@ -32,15 +34,16 @@ class AssemblyPrimerException(PrimerException):
         cls_name: Optional[str]
         cls_mthd: Optional[str]
         err_code: Optional[str]
-        mthd_retr
+        mthd_rslt_type: Optional[MethodResultType]
             
     Provides:
 
     Super Class:
         PrimingException
     """
-    MSG = "AssmblyPrimer failed"
-    ERR_CODE = "PRIMING_ASSEMBLY_FAILURE"
+    MSG = "AssemblyPrimer failed"
+    ERR_CODE = "ASSEMBLY_PRIMING_FAILURE"
+    MTHD_RSLT_TYPE = MethodResultType.VALIDATION_RESULT
     
     def __init__(
             self,
@@ -51,6 +54,7 @@ class AssemblyPrimerException(PrimerException):
             cls_name: Optional[str] | None = None,
             cls_mthd: Optional[str] | None = None,
             err_code: Optional[str] | None = None,
+            mthd_rslt_type: Optional[MethodResultType] | None = None,
     ):
         """
         Args:
@@ -61,9 +65,11 @@ class AssemblyPrimerException(PrimerException):
             cls_name: Optional[str]
             cls_mthd: Optional[str]
             err_code: Optional[str]
+            mthd_rslt_type: Optional[MethodResultType]
         """
         msg = msg or self.MSG
         err_code = err_code or self.ERR_CODE
+        mthd_rslt_type = mthd_rslt_type or self.MTHD_RSLT_TYPE
         super().__init__(
             ex=ex,
             msg=msg,
@@ -72,4 +78,5 @@ class AssemblyPrimerException(PrimerException):
             err_code=err_code,
             cls_name=cls_name,
             cls_mthd=cls_mthd,
+            mthd_rslt_type=mthd_rslt_type,
         )

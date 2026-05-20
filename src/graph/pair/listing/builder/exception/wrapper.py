@@ -60,7 +60,7 @@ class PairListBuildException(BuildException):
             mthd: Optional[str] = None,
             ex: Optional[Exception] | None = None,
             err_code: Optional[str] | None = None,
-            mthd_rslt_type: Optional[MethodResultType] | None = None,
+            mthd_rslt_Ttype: Optional[MethodResultType] | None = None,
     ):
         """
         Args:
