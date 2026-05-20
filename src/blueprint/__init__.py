@@ -10,20 +10,8 @@ version: 1.0.1
 # =========== BLUEPRINT PACKAGE ===========#
 
 # Packages
-from .arena import *
-from .binder import *
-from .board import *
 from .context import *
-from .coord import *
-from .node import *
-from .player import *
-from .rank import *
-from .scalar import *
-from .square import *
-from .team import *
-from .token import *
-from .vector import *
+from .model import *
 from .validation import *
 
 # Modules
-from .model import Blueprint
