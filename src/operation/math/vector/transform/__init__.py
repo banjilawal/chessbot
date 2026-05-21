@@ -1,13 +1,13 @@
-# src/operation/vector/conversion/__init__.py
+# src/operation/math/vector/conversion/__init__.py
 
 """
-Module: operation.vector.conversion.__init__
+Module: operation.math.vector.conversion.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
 """
 
-# =========== OPERATION.VECTOR.CONVERSION CONTENTS ===========#
+# =========== OPERATION.MATH.VECTOR.CONVERSION CONTENTS ===========#
 
 # Packages
 

@@ -1,6 +1,6 @@
-# src/operation/vector/conversion/operation.py
+# src/operation/math/vector/conversion/operation.py
 """
-Module: operation.vector.conversion.operation
+Module: operation.math.vector.conversion.operation
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

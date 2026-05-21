@@ -123,7 +123,7 @@ class TokenQueryValidator(Validator[TokenQuery]):
                 )
             )
         # Handle the case that, the schema does not exist
-        if query.stack is None:
+        if query.items is None:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 TokenQueryValidationException(
@@ -140,7 +140,7 @@ class TokenQueryValidator(Validator[TokenQuery]):
                 )
             )
         # Handle the case that, the schema is the wrong type.
-        if not isinstance(query.stack, List):
+        if not isinstance(query.items, List):
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 TokenQueryValidationException(
@@ -151,12 +151,12 @@ class TokenQueryValidator(Validator[TokenQuery]):
                     err_code=TokenQueryValidationException.ERR_CODE,
                     mthd_rslt_type=TokenQueryValidationException.MTHD_RSLT,
                     ex=TypeError(
-                        f"Expected List, got {type(query.stack).__name__} instead."
+                        f"Expected List, got {type(query.items).__name__} instead."
                     )
                 )
             )
         # Handle the case that, list is empty.
-        if len(query.stack) == 0:
+        if len(query.items) == 0:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 TokenQueryValidationException(
@@ -173,7 +173,7 @@ class TokenQueryValidator(Validator[TokenQuery]):
                 )
             )
         # Handle the case that, list contains something different from tokens.
-        if not isinstance(query.stack[0], Token):
+        if not isinstance(query.items[0], Token):
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 TokenQueryValidationException(
@@ -184,7 +184,7 @@ class TokenQueryValidator(Validator[TokenQuery]):
                     err_code=TokenQueryValidationException.ERR_CODE,
                     mthd_rslt_type=TokenQueryValidationException.MTHD_RSLT,
                     ex=TypeError(
-                        f"List contains {type(query.stack).__name__}  instead of tokens."
+                        f"List contains {type(query.items).__name__}  instead of tokens."
                     )
                 )
             )

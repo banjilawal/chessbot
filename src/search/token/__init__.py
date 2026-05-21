@@ -1,16 +1,15 @@
-# src/logic/token/database/search/__init__.py
+# src/search/token/__init__.py
 
 """
-Module: logic.token.database.search.__init__
+Module: search.token.__init__
 Author: Banji Lawal
-Created: 2025-10-03
-version: 1.0.0
+Created: 2026-04-03
+version: 1.0.1
 """
 
-# =========== SEARCH.TOKEN.DATABASE.SEARCH PACKAGE ===========#
+# =========== SEARCH.TOKEN PACKAGE ===========#
 
 # Packages
-from .service import *
-from .resource import *
 
 # Modules
+from

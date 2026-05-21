@@ -1,7 +1,7 @@
-# src/operation/vector/euclidean/operation.py
+# src/operation/math/vector/distance/euclidean/operation.py
 
 """
-Module: operation.vector.euclidean.operation
+Module: operation.math.vector.distance.euclidean.operation
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -20,7 +20,7 @@ from operation import Operation, VectorRegisterValidator
 from model import RegisterCategory, Scalar, ScalarBlueprint, VectorRegister
 
 
-class EuclideanOperation(Operation[VectorRegister]):
+class EuclideanDistance(Operation[VectorRegister]):
     """
     Role:
         -   Operation
@@ -128,4 +128,4 @@ class EuclideanOperation(Operation[VectorRegister]):
         return ComputationResult.success(scalar_assembly_result.payload)
     
 # Register the operation.
-WorkerRegistryController.register_worker(worker=EuclideanOperation)
+WorkerRegistryController.register_worker(worker=EuclideanDistance)

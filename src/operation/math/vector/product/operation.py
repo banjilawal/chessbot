@@ -1,7 +1,7 @@
-# src/operation/vector/product/operation.py
+# src/operation/math/vector/product/operation.py
 
 """
-Module: operation.vector.product.operation
+Module: operation.math.vector.product.operation
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -19,7 +19,7 @@ from pipeline import CoordBuildPipeline, VectorBuildPipeline
 from operation import Operation, ScalarValidator, VectorOperandValidator
 
 
-class ScalarProductOperation(Operation[VectorOperand]):
+class ScalarProduct(Operation[VectorOperand]):
     """
     Role:
         -   Operation
@@ -140,4 +140,4 @@ class ScalarProductOperation(Operation[VectorOperand]):
         return ComputationResult.success(build_result.payload)
 
 # Register the operation.
-WorkerRegistryController.register_worker(worker=ScalarProductOperation)
+WorkerRegistryController.register_worker(worker=ScalarProduct)

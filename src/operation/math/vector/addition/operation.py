@@ -1,7 +1,7 @@
-# src/operation/vector/addition/operation.py
+# src/operation/math/vector/addition/operation.py
 
 """
-Module: operation.vector.addition.operation
+Module: operation.math.vector.addition.operation
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -18,7 +18,7 @@ from operation import Operation, VectorRegisterValidator
 from model import Coord, CoordBlueprint, RegisterCategory, Vector, VectorBlueprint, VectorRegister
 
 
-class AddOperation(Operation[VectorRegister]):
+class AddVector(Operation[VectorRegister]):
     """
     Role:
         -   Operation
@@ -124,5 +124,5 @@ class AddOperation(Operation[VectorRegister]):
         return ComputationResult.success(build_result.payload)
 
 # Register the operation.
-WorkerRegistryController.register_worker(worker=AddOperation)
+WorkerRegistryController.register_worker(worker=AddVector)
         
