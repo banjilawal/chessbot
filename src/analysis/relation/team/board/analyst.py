@@ -12,14 +12,12 @@ from __future__ import annotations
 from typing import cast
 
 from analysis import RelationAnalyst
-from analysis.relation.team.board.exception import BoardTeamAnalysisException
-from integrity import BoardValidator
-from microvalidator import TeamValidator
+from err import BoardTeamAnalysisException
 from model import Board, Team
 from report import RelationReport
-from result import AnalysisResult
-from result.category import MethodResultType
-from system import LoggingLevelRouter
+from result import AnalysisResult, MethodResultType
+from util import LoggingLevelRouter
+from validation import BoardValidator, TeamValidator
 
 
 class BoardTeamRelationAnalyst(RelationAnalyst[Board, Team]):
@@ -29,7 +27,7 @@ class BoardTeamRelationAnalyst(RelationAnalyst[Board, Team]):
         - Report Generator
 
     Responsibilities:
-        1.  Report the on the type of relationship is between the board and team.
+        1.  Analyze the relationship between Team and Board instances.
 
     Attributes:
 
@@ -42,6 +40,7 @@ class BoardTeamRelationAnalyst(RelationAnalyst[Board, Team]):
             ) -> RelationReport[Board, Team]
 
     Super:
+        Analyst
     """
     
     @classmethod
@@ -52,24 +51,24 @@ class BoardTeamRelationAnalyst(RelationAnalyst[Board, Team]):
             candidate_satellite: Team,
             board_validator: BoardValidator | None = None,
             team_validator: TeamValidator | None = None,
-    ) -> AnalysisResult[RelationReport[Board, Team]]:
+    ) -> AnalysisResult[RelationReport]:
         """
         Generate a report on the relationship between a board and team.
         
         Action:
-            1.  Send an AnalyzerFailure exception if either rank cannot be validated.
-            2.  Otherwise, send the success result which can be:
-                    -   No relation between them.
-                    -   Board has expired link to team.
-                    -   Team has not registered with board.
-                    -   They have a fully bidirectional relation.
-        Args::
+            1.  Send an exception chain in the AnalysisResult if either candidate is flagged by
+                a validator.
+            2.  Otherwise, test that
+                    -   The board contains the team.
+                    -   The team belongs to the board.
+            3.  Then, send the test results in the success result.
+        Args:
             candidate_primary: Board
             candidate_satellite: Team
             board_validator: BoardValidator
             team_validator: TeamValidator
         Returns:
-            RelationReport[Board, Team]
+            AnalysisResult[RelationReport]
         Raises:
             BoardTeamAnalysisException
         """
@@ -77,7 +76,6 @@ class BoardTeamRelationAnalyst(RelationAnalyst[Board, Team]):
         
         if board_validator is None:
             board_validator = BoardValidator()
-        
         if team_validator is None:
             team_validator = TeamValidator()
         
@@ -99,7 +97,7 @@ class BoardTeamRelationAnalyst(RelationAnalyst[Board, Team]):
         board = cast(Board, board_validation_result.payload)
         
         # Handle the case that, the team_binder has a board inconsistency.
-        if board.team_binder.board != board:
+        if board.binder_controller.binder != board:
             if board_validation_result.is_failure:
                 # Send the exception chain on failure.
                 return AnalysisResult.failure(
@@ -128,16 +126,15 @@ class BoardTeamRelationAnalyst(RelationAnalyst[Board, Team]):
             )
         team = cast(Team, team_validation_result.payload)
         
-        # Handle the case that, the team belongs to a different board.
-        if board != team.board:
+        if team.board != board and board.binder_controller.binder.satellite_table[team.schema] != team:
             return AnalysisResult.success(RelationReport.no_relation())
         
         # Handle the case that, the team has not registered with the board.
-        if team.schema not in board.team_binder.schema_list:
+        if team.schema not in board.binder_controller.binder.schema_list:
             return AnalysisResult.success(RelationReport.registration_missing(team))
         
         # Handle the case that, the board has a stale link to the team.
-        if team in board.team_binder.satellite_list and team.board != board:
+        if team in board.binder_controller.binder.satellite_list and team.board != board:
             return AnalysisResult.success(RelationReport.stale_link(board))
         
         # Last case is the
