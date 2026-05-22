@@ -38,9 +38,9 @@ class TeamAssemblyPrimer(AssemblyPrimer[Team]):
         ) -> ValidationResult[TeamBlueprint]:
     
     Super Class:
-        AssemblyPrimingper
+        AssemblyPrimer
     """
-    NAME  = "team_assembly_primingper"
+    NAME  = "team_assembly_primer"
     
     @classmethod
     @LoggingLevelRouter.monitor()
@@ -65,6 +65,7 @@ class TeamAssemblyPrimer(AssemblyPrimer[Team]):
         """
         method = f"{cls.__name__}.execute"
         
+        # --- Supply any missing dependencies. ---#
         if toolkit is None:
             toolkit = TeamToolkit()
         

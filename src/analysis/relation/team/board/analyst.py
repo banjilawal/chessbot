@@ -74,6 +74,7 @@ class BoardTeamRelationAnalyst(RelationAnalyst[Board, Team]):
         """
         method = f"{cls.__name__}.analyze"
         
+        # --- Supply any missing dependencies. ---#
         if board_validator is None:
             board_validator = BoardValidator()
         if team_validator is None:
@@ -96,20 +97,6 @@ class BoardTeamRelationAnalyst(RelationAnalyst[Board, Team]):
         # Just incase things aren't Liskovian on the candidate_primary, cast the validation payload instead,
         board = cast(Board, board_validation_result.payload)
         
-        # Handle the case that, the team_binder has a board inconsistency.
-        if board.binder_controller.binder != board:
-            if board_validation_result.is_failure:
-                # Send the exception chain on failure.
-                return AnalysisResult.failure(
-                    BoardTeamAnalysisException(
-                        cls_mthd=method,
-                        cls_name=cls.__name__,
-                        msg=BoardTeamAnalysisException.MSG,
-                        err_code=BoardTeamAnalysisException.ERR_CODE,
-                        mthd_rslt_type=MethodResultType.ANALYSIS_RESULT,
-                        ex=board_validation_result.exception,
-                    )
-                )
         # Handle the case that, the team is not certified as safe.
         team_validation_result = team_validator.validator.validate(candidate_satellite)
         if team_validation_result.is_failure:

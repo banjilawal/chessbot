@@ -23,7 +23,7 @@ from model import OpeningSquare, SquareContext, Token, TokenBlueprint
 
 
 class TokenAssemblyPrimer(AssemblyPrimer[Token]):
-    NAME = "token_assembly_primingper"
+    NAME = "token_assembly_primer"
     
     @classmethod
     @LoggingLevelRouter.monitor
@@ -53,6 +53,7 @@ class TokenAssemblyPrimer(AssemblyPrimer[Token]):
         """
         method = f"{cls.__name__}.execute"
         
+        # --- Supply any missing dependencies. ---#
         if toolkit is None:
             toolkit = TokenToolkit()
             

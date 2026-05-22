@@ -21,7 +21,7 @@ from util import LoggingLevelRouter
 T = TypeVar("T")
 
 class AssemblyPrimer(Operation[T]):
-    DOMAIN = "assembly_primingper"
+    DOMAIN = "assembly_primer"
     
     @classmethod
     @abstractmethod

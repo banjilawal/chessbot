@@ -39,9 +39,9 @@ class RankAssemblyPrimer(AssemblyPrimer[Rank]):
         ) -> ValidationResult[RankBlueprint]:
     
     Super Class:
-        AssemblyPrimingper
+        AssemblyPrimer
     """
-    NAME = "rank_assembly_primingper"
+    NAME = "rank_assembly_primer"
     
     @classmethod
     @LoggingLevelRouter.monitor()

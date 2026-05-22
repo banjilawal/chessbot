@@ -7,7 +7,7 @@ Created: 2026-04-03
 version: 1.0.1
 """
 
-# =========== PRIMING.VALIDATION.PRIMINGPER PACKAGE ===========#
+# =========== PRIMING.VALIDATION.PRIMER PACKAGE ===========#
 
 # Packages
 

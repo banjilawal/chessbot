@@ -13,8 +13,7 @@ from dataclasses import dataclass
 from typing import Any, Dict, Optional
 
 from model import Context, Coord, OpeningSquare, Rank, Team, Token
-from system import GameColor
-
+from setting import GameColor
 
 @dataclass
 class TokenContext(Context[Token]):
@@ -43,13 +42,25 @@ class TokenContext(Context[Token]):
     Super Class:
         Context
     """
-    rank: Optional[Rank]
-    team: Optional[Team]
-    ransom: Optional[int]
-    color: Optional[GameColor]
-    designation: Optional[str]
-    current_position:Optional[Coord]
-    opening_square: Optional[OpeningSquare]
+    id: Optional[int] | None = None
+    rank: Optional[Rank] | None = None
+    team: Optional[Team] | None = None
+    ransom: Optional[int] | None = None
+    color: Optional[GameColor] | None = None
+    designation: Optional[str] | None = None
+    current_position:Optional[Coord] | None = None
+    opening_square: Optional[OpeningSquare] | None = None
+    
+    # def __init__(
+    #         self,
+    #     rank: Optional[Rank] | None = None,
+    #     team: Optional[Team] | None = None,
+    #     ransom: Optional[int] | None = None,
+    #     color: Optional[GameColor] | None = None,
+    #     designation: Optional[str] | None = None,
+    #     current_position: Optional[Coord] | None = None,
+    #     opening_square: Optional[OpeningSquare] | None = None,
+    # ):
 
     @property
     def to_dict(self) -> Dict[str, Any]:

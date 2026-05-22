@@ -38,9 +38,9 @@ class BoardAssemblyPrimer(AssemblyPrimer[Board]):
         ) -> ValidationResult[BoardBlueprint]:
     
     Super Class:
-        AssemblyPrimingper
+        AssemblyPrimer
     """
-    NAME = "board_assembly_primingper"
+    NAME = "board_assembly_primer"
     
     @classmethod
     @LoggingLevelRouter.monitor()

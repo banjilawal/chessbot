@@ -5,89 +5,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/err/operation/priming/deployment/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/operation/priming/deployment/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/operation/visit/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/operation/visit/empty/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/operation/visit/empty/stack/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/operation/visit/empty/stack/arena/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/operation/visit/empty/stack/arena/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/operation/visit/empty/stack/board/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/operation/visit/empty/stack/board/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/operation/visit/empty/stack/coord/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/operation/visit/empty/stack/coord/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/operation/visit/empty/stack/edge/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/operation/visit/empty/stack/edge/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/operation/visit/empty/stack/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/operation/visit/empty/stack/game/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/operation/visit/empty/stack/game/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/operation/visit/empty/stack/graph/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/operation/visit/empty/stack/graph/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/operation/visit/empty/stack/hostage/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/operation/visit/empty/stack/hostage/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/operation/visit/empty/stack/node/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/operation/visit/empty/stack/node/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/operation/visit/empty/stack/node/node/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/operation/visit/empty/stack/node/node/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/operation/visit/empty/stack/player/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/operation/visit/empty/stack/player/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/operation/visit/empty/stack/snapshot/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/operation/visit/empty/stack/snapshot/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/operation/visit/empty/stack/square/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/operation/visit/empty/stack/square/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/operation/visit/empty/stack/team/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/operation/visit/empty/stack/team/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/operation/visit/empty/stack/token/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/operation/visit/empty/stack/token/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/operation/visit/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/operation/visit/stack/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/operation/visit/stack/arena/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/operation/visit/stack/arena/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/operation/visit/stack/board/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/operation/visit/stack/board/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/operation/visit/stack/coord/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/operation/visit/stack/coord/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/operation/visit/stack/edge/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/operation/visit/stack/edge/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/operation/visit/stack/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/operation/visit/stack/game/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/operation/visit/stack/game/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/operation/visit/stack/graph/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/operation/visit/stack/graph/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/operation/visit/stack/hostage/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/operation/visit/stack/hostage/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/operation/visit/stack/node/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/operation/visit/stack/node/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/operation/visit/stack/node/node/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/operation/visit/stack/node/node/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/operation/visit/stack/player/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/operation/visit/stack/player/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/operation/visit/stack/snapshot/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/operation/visit/stack/snapshot/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/operation/visit/stack/square/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/operation/visit/stack/square/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/operation/visit/stack/team/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/operation/visit/stack/team/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/operation/visit/stack/token/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/operation/visit/stack/token/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/operation/priming/deployment/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/operation/priming/deployment/exception/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/operation/priming/deployment/exception/debug/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/operation/priming/deployment/exception/debug/inconsistent/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/operation/priming/deployment/exception/debug/inconsistent/board.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/operation/priming/deployment/exception/debug/inconsistent/coord.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/operation/priming/deployment/exception/debug/inconsistent/occupant.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/operation/priming/deployment/operation.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/operation/priming/deployment/priming/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/operation/token/deployment/priming/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/operation/token/deployment/priming/operation.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/analysis/relation/token/team/analyst.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/analysis/analyst.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/analysis/analyst.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/analysis/freedom/analyst.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/analysis/freedom/analyst.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/operation/priming/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/priming/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/analysis/relation/team/board/analyst.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/analysis/relation/team/board/analyst.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/analysis/relation/token/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/analysis/relation/token/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/analysis/relation/token/team/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/analysis/relation/token/team/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/context/token/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/context/token/model.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/priming/assembly/board/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/priming/assembly/board/operation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/priming/assembly/context/arena/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/priming/assembly/context/arena/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/priming/assembly/context/arena/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/priming/assembly/context/arena/operation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/priming/assembly/coord/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/priming/assembly/coord/operation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/priming/assembly/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/priming/assembly/operation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/priming/assembly/rank/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/priming/assembly/rank/operation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/priming/assembly/square/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/priming/assembly/square/operation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/priming/assembly/team/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/priming/assembly/team/operation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/priming/assembly/token/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/priming/assembly/token/operation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/priming/assembly/vector/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/priming/assembly/vector/operation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/priming/validation/binder/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/priming/validation/binder/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/operation/token/deployment/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/token/deployment/operation.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/report/freedom/report.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/report/freedom/report.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/report/freedom/state.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/report/freedom/state.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/token/deployment/priming/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/token/deployment/priming/operation.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -138,7 +74,7 @@
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "main",
-    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/err/operation",
+    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/analysis/relation/token",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
@@ -149,18 +85,18 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/analysis/relation/token" />
       <recent name="$PROJECT_DIR$/src/err/operation" />
       <recent name="$PROJECT_DIR$/src/err/operation/priming/deployment" />
       <recent name="$PROJECT_DIR$/src/err/operation/priming" />
       <recent name="$PROJECT_DIR$/src/operation/priming" />
-      <recent name="$PROJECT_DIR$/src/operation/token/deployment/priming" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/err/operation/visit" />
       <recent name="$PROJECT_DIR$/src/operation/priming/deployment" />
       <recent name="$PROJECT_DIR$/src/analysis" />
       <recent name="$PROJECT_DIR$/src/toolkit/model" />
       <recent name="$PROJECT_DIR$/src/toolkit" />
-      <recent name="$PROJECT_DIR$/src/model/math/vector" />
     </key>
   </component>
   <component name="RunManager" selected="Python.operation">
@@ -867,7 +803,7 @@
       <workItem from="1777594334967" duration="13903000" />
       <workItem from="1778331271699" duration="24815000" />
       <workItem from="1778551204712" duration="6996000" />
-      <workItem from="1779317382327" duration="34711000" />
+      <workItem from="1779317382327" duration="43421000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />

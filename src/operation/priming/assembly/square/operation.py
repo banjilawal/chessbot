@@ -39,9 +39,9 @@ class SquareAssemblyPrimer(AssemblyPrimer[Square]):
             ) -> ValidationResult[SquareBlueprint]
     
     Super Class:
-        AssemblyPrimingper
+        AssemblyPrimer
     """
-    NAME = "square_assembly_primingper"
+    NAME = "square_assembly_primer"
     
     @classmethod
     @LoggingLevelRouter.monitor()

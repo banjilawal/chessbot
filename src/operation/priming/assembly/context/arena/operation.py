@@ -20,7 +20,7 @@ from logic.arena import (
 )
 
 
-class ArenaContextAssemblyPrimingper(AssemblyPriming[ArenaContext]):
+class ArenaContextAssemblyPrimer(AssemblyPriming[ArenaContext]):
     """
     Role:Assembly, Data Integrity And Reliability Guarantor
 

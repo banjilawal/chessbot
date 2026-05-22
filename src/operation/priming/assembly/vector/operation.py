@@ -39,9 +39,9 @@ class VectorAssemblyPrimer(AssemblyPrimer[Vector]):
             ) -> ValidationResult[VectorBlueprint]:
     
     Super Class:
-        AssemblyPrimingper
+        AssemblyPrimer
      """
-    NAME = "vector_assembly_primingper"
+    NAME = "vector_assembly_primer"
     
     @classmethod
     @LoggingLevelRouter.monitor

@@ -39,9 +39,9 @@ class CoordAssemblyPrimer(AssemblyPrimer[Coord]):
             ) -> ValidationResult[CoordBlueprint]:
     
     Super Class:
-        AssemblyPrimingper
+        AssemblyPrimer
     """
-    NAME = "coord_assembly_primingper"
+    NAME = "coord_assembly_primer"
     
     @classmethod
     @LoggingLevelRouter.monitor()
