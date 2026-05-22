@@ -11,6 +11,8 @@ version: 1.0.1
 
 # Packages
 from .collision import *
+from .freedom import *
 from .relation import *
 
 # Modules
+from .exception import AnalysisException

@@ -12,6 +12,7 @@ version: 1.0.1
 
 # Packages
 from .collision import *
+from .freedom import *
 from .quota import *
 from .relation import *
 from .stack import *

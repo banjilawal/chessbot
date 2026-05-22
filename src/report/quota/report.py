@@ -9,46 +9,38 @@ version: 1.0.0
 
 from __future__ import annotations
 
+from dataclasses import dataclass
+
 from model import Rank
 from report import Report
 
-
+@dataclass
 class RankQuotaReport(Report):
     """
-     Role:
-         - Data Report
+    Role:
+        -   Test results
 
-     Responsibilities:
-         1.  Record of a rank's
-                - Quota
-                - The number of open slots
-            that a TokenStackService can support
-            
-     Attributes:
+    Responsibilities:
+        1.  Indicate the number of slots available for a Rank in a TokenStack.
+
+    Attributes:
          rank: Rank
          number_of_openings: int
-         
-     Provides:
-     Super:
-     """
-    _rank: Rank
-    _number_of_openings: int
-    
-    def __init__(self, rank: Rank,  number_of_openings: int):
-        self._rank = rank
-        self._number_of_openings = number_of_openings
-        
-    @property
-    def rank(self) -> Rank:
-        return self._rank
-    
-    @property
-    def number_of_openings(self) -> int:
-        return self._number_of_openings
-    
+
+        openings_exist: bool
+        rank_is_full: bool
+
+    Provides:
+
+    Super Class:
+        Report
+    """
+    rank: Rank
+    number_of_openings: int
+
     @property
     def openings_exist(self) -> bool:
-        return self._rank.persona.quota - self._number_of_openings > 0
+        return self.rank.persona.quota - self.number_of_openings > 0
     
     @property
     def rank_is_full(self) -> bool:

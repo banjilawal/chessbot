@@ -68,8 +68,8 @@ class AnalysisException(ChessException):
             mthd_rslt_type: Optional[MethodResultType]
         """
         msg = msg or self.MSG
-        mthd_rslt_type = mthd_rslt_type or self.MTHD_RSLT
         err_code = err_code or self.ERR_CODE
+        mthd_rslt_type = mthd_rslt_type or self.MTHD_RSLT
         super().__init__(
             ex=ex,
             msg=msg,

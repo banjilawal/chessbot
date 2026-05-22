@@ -1,7 +1,7 @@
-# src/err/analysis/relation/exception.py
+# src/err/analysis/freedom/exception.py
 
 """
-Module: err.analysis.relation.exception
+Module: err.analysis.freedom.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,21 +10,23 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import ChessException
+from err import AnalysisException
+from result import MethodResultType
 
 __all__ = [
-    # ======================# RELATION_FAILURE #======================#
-    "RelationException",
+    # ======================# TOKEN_FREEDOM_ANALYSIS_FAILURE #======================#
+    "TokenFreedomAnalysisException",
 ]
 
-# ======================# RELATION_FAILURE #======================#
-class RelationException(ChessException):
+# ======================# TOKEN_FREEDOM_ANALYSIS_FAILURE #======================#
+class TokenFreedomAnalysisException(AnalysisException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that two entities share attribute value that should be unique.
+        1.  Indicate that an error prevented a Token freedom analysis from completing.
+        
     Attributes:
         msg: Optional[str]
         var: Optional[str]
@@ -38,12 +40,11 @@ class RelationException(ChessException):
     Provides:
 
     Super Class:
-        ChessException
+        AnalysisException
     """
-    MSG = "Relation step failed."
-    ERR_CODE = "RELATION_FAILURE"
+    MSG = "An error occurred. token freedom analysis failed."
+    ERR_CODE = "TOKEN_FREEDOM_ANALYSIS_FAILURE"
 
-    
     def __init__(
             self,
             msg: Optional[str] | None = None,
@@ -53,6 +54,7 @@ class RelationException(ChessException):
             cls_name: Optional[str] | None = None,
             ex: Optional[Exception] | None = None,
             err_code: Optional[str] | None = None,
+            mthd_rslt_type: Optional[MethodResultType] | None = None,
     ):
         """
         Args:
@@ -63,10 +65,11 @@ class RelationException(ChessException):
             cls_name: Optional[str]
             cls_mthd: Optional[str]
             err_code: Optional[str]
+            mthd_rslt_type: Optional[MethodResultType]
         """
         msg = msg or self.MSG
-        mthd_rslt = self.MTHD_RSLT
         err_code = err_code or self.ERR_CODE
+        mthd_rslt_type = mthd_rslt_type or self.MTHD_RSLT_TYPE
         super().__init__(
             ex=ex,
             msg=msg,
@@ -77,11 +80,3 @@ class RelationException(ChessException):
             cls_mthd=cls_mthd,
             mthd_rslt_type=mthd_rslt_type,
         )
-        self._mthd_rslt = mthd_rslt
-    
-    @property
-    def mthd_rslt(self) -> Optional[str]:
-        return self._mthd_rslt
-    
-    def __str__(self):
-        return f"{super().__str__()},  mthd_rslt_type:{self._mthd_rslt}"

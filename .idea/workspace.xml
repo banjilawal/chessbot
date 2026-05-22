@@ -5,15 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/report/freedom/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/report/freedom/exception/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/report/freedom/exception/work.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/report/freedom/report.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/report/freedom/state.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/analysis/freedom/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/analysis/freedom/exception.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/report/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/report/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/toolkit/model/vector/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/toolkit/model/vector/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/toolkit/model/vector/toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/toolkit/model/vector/toolkit.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/analysis/analyst.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/analysis/analyst.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/analysis/relation/token/readiness/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/analysis/relation/token/freedom/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/analysis/relation/token/readiness/analyst.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/analysis/relation/token/freedom/analyst.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/analysis/relation/token/readiness/exception/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/analysis/relation/token/readiness/exception/transaction.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/analysis/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/analysis/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/analysis/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/analysis/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/analysis/relation/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/analysis/relation/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/report/quota/report.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/report/quota/report.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,7 +67,7 @@
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "main",
-    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/report",
+    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/err/analysis",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
@@ -75,11 +78,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/err/analysis" />
       <recent name="$PROJECT_DIR$/src/report" />
       <recent name="$PROJECT_DIR$/src/toolkit/math/vector" />
       <recent name="$PROJECT_DIR$/src" />
       <recent name="$PROJECT_DIR$/src/err/validation" />
-      <recent name="$PROJECT_DIR$/src/err/empty" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/toolkit/model" />
@@ -793,7 +796,7 @@
       <workItem from="1777594334967" duration="13903000" />
       <workItem from="1778331271699" duration="24815000" />
       <workItem from="1778551204712" duration="6996000" />
-      <workItem from="1779317382327" duration="20665000" />
+      <workItem from="1779317382327" duration="30348000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />
@@ -1144,6 +1147,16 @@
           <url>file://$PROJECT_DIR$/src/toolkit/model/__init__.py</url>
           <line>12</line>
           <option name="timeStamp" value="183" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/report/quota/report.py</url>
+          <line>9</line>
+          <option name="timeStamp" value="184" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/err/analysis/freedom/exception.py</url>
+          <line>9</line>
+          <option name="timeStamp" value="185" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

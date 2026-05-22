@@ -10,6 +10,5 @@ version: 1.0.1
 # =========== ANALYSIS.RELATION.TOKEN PACKAGE ===========#
 
 # Packages
-from .readiness import *
 
 # Modules
