@@ -12,6 +12,7 @@ from enum import Enum, auto
 
 class FreedomState(Enum):
     FREE = auto(),
-    NOT_DEPLOYED = auto(),
+    DISABLED = auto(),
     CAPTURED = auto(),
     CHECKMATED = auto(),
+    NOT_DEPLOYED = auto(),

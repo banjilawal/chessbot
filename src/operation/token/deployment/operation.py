@@ -13,9 +13,11 @@ from _ast import List
 from copy import deepcopy
 from typing import cast
 
+from analysis import TokenFreedomAnalyzer
 from err import TokenDeploymentException
 from err.operation.token.deployment.duplicate.exception import DuplicateTokenDeploymentException
 from model import OpeningSquare, Token
+from operation import Operation
 from result import MethodResultType, UpdateResult
 from util import LoggingLevelRouter
 from validation import TokenValidator
@@ -57,7 +59,7 @@ class TokenDeployer(Operation[Token]):
     def execute(
             cls,
             token: Token,
-            token_validator: TokenValidator = TokenValidator(),
+            token_freedom_analyzer: TokenFreedomAnalyzer | None = None,
     ) -> UpdateResult[OpeningSquare]:
         """
         Executes the deployment transaction.

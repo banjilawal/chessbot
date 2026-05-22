@@ -20,7 +20,7 @@ from util import LoggingLevelRouter
 from validation import TokenValidator
 
 
-class TokenFreedomAnalyzer(Analyst[Token]):
+class TokenFreedomAnalyzer(Analyst[TokenFreedomReport]):
     """
     Role:
         -   Analysis Factory

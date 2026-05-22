@@ -3,7 +3,7 @@ from typing import Generic, TypeVar
 
 from report import Report
 from result import AnalysisResult
-from system import LoggingLevelRouter
+from util import LoggingLevelRouter
 
 R = TypeVar("R", bound=Report)
 
@@ -11,5 +11,5 @@ class Analyst(ABC, Generic[R]):
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def analyze(cls, *args, **kwargs) -> AnalysisResult[Report]:
+    def analyze(cls, *args, **kwargs) -> AnalysisResult[R]:
         pass

@@ -47,19 +47,27 @@ class TokenFreedomReport:
     state: FreedomState
     
     @property
-    def is_free(self) -> bool:
+    def token_is_free(self) -> bool:
         return self.state == FreedomState.FREE
     
     @property
-    def is_not_free(self) -> bool:
+    def token_is_not_free(self) -> bool:
         return self.state != FreedomState.FREE
     
     @property
-    def is_captured(self) -> bool:
+    def token_is_captured(self) -> bool:
         return isinstance(self.token, CombatantToken) and self.state == FreedomState.CAPTURED
     
     @property
-    def is_not_deployed(self) -> bool:
+    def token_is_disabled(self) -> bool:
+        return self.state == FreedomState.DISABLED and self.token.is_disabled
+    
+    @property
+    def token_is_deployed(self) -> bool:
+        return self.state != FreedomState.NOT_DEPLOYED and self.token.is_not_deployed
+    
+    @property
+    def token_is_not_deployed(self) -> bool:
         return self.state == FreedomState.NOT_DEPLOYED
     
     @property
@@ -73,6 +81,10 @@ class TokenFreedomReport:
     @classmethod
     def not_deployed(cls, token: Token) -> TokenFreedomReport:
         return cls(token=token, state=FreedomState.NOT_DEPLOYED)
+    
+    @classmethod
+    def disabled(cls, token: Token) -> TokenFreedomReport:
+        return cls(token=token, state=FreedomState.DISABLED)
     
     @classmethod
     def captured(cls, token: CombatantToken) -> TokenFreedomReport:

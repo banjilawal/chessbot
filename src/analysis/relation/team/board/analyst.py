@@ -13,8 +13,8 @@ from typing import cast
 
 from analysis import RelationAnalyst
 from analysis.relation.team.board.exception import BoardTeamAnalysisException
-from integrity import BoardService
-from microservice import TeamService
+from integrity import BoardValidator
+from microvalidator import TeamValidator
 from model import Board, Team
 from report import RelationReport
 from result import AnalysisResult
@@ -38,7 +38,7 @@ class BoardTeamRelationAnalyst(RelationAnalyst[Board, Team]):
                     candidate_primary: Board,
                     candidate_satellite: Team,
                     board_validator: BoardValidator = BoardValidator(),
-                    team_service: TeamService = TeamService(),
+                    team_validator: TeamValidator = TeamValidator(),
             ) -> RelationReport[Board, Team]
 
     Super:
@@ -50,8 +50,8 @@ class BoardTeamRelationAnalyst(RelationAnalyst[Board, Team]):
             cls,
             candidate_primary: Board,
             candidate_satellite: Team,
-            board_validator: BoardService | None = None,
-            team_service: TeamService | None = None,
+            board_validator: BoardValidator | None = None,
+            team_validator: TeamValidator | None = None,
     ) -> AnalysisResult[RelationReport[Board, Team]]:
         """
         Generate a report on the relationship between a board and team.
@@ -67,7 +67,7 @@ class BoardTeamRelationAnalyst(RelationAnalyst[Board, Team]):
             candidate_primary: Board
             candidate_satellite: Team
             board_validator: BoardValidator
-            team_service: TeamService
+            team_validator: TeamValidator
         Returns:
             RelationReport[Board, Team]
         Raises:
@@ -76,10 +76,10 @@ class BoardTeamRelationAnalyst(RelationAnalyst[Board, Team]):
         method = f"{cls.__name__}.analyze"
         
         if board_validator is None:
-            board_validator = BoardService()
+            board_validator = BoardValidator()
         
-        if team_service is None:
-            team_service = TeamService()
+        if team_validator is None:
+            team_validator = TeamValidator()
         
         # Handle the case that, the board is not certified as safe.
         board_validation_result = board_validator.validate(candidate_primary)
@@ -113,7 +113,7 @@ class BoardTeamRelationAnalyst(RelationAnalyst[Board, Team]):
                     )
                 )
         # Handle the case that, the team is not certified as safe.
-        team_validation_result = team_service.validator.validate(candidate_satellite)
+        team_validation_result = team_validator.validator.validate(candidate_satellite)
         if team_validation_result.is_failure:
             # Send the exception chain on failure.
             return AnalysisResult.failure(
