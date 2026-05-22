@@ -1,13 +1,13 @@
-# src/model/math/register/__init__.py
+# src/model/math/vector/register/__init__.py
 
 """
-Module: model.math.register.__init__
+Module: model.math.vector.register.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
 """
 
-# =========== MODEL.MATH.REGISTER PACKAGE ===========#
+# =========== MODEL.MATH.VECTOR.REGISTER PACKAGE ===========#
 
 # Packages
 

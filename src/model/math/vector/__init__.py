@@ -10,6 +10,8 @@ version: 1.0.1
 # =========== MODEL.MATH.VECTOR PACKAGE ===========#
 
 # Packages
+from .operand import *
+from .register import *
 
 # Modules
 from .model import Vector

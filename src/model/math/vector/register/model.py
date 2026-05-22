@@ -1,7 +1,7 @@
-# src/model/math/register/model.py
+# src/model/math/vector/register/category.py
 
 """
-Module: model.math.register.model
+Module: model.math.vector.register.category
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

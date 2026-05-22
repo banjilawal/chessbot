@@ -1,7 +1,7 @@
-# src/model/context/vector/model.py
+# src/model/math/vector/register/category.py
 
 """
-Module: model.context.vector.model
+Module: model.math.vectoroperand.category
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
