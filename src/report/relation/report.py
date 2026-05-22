@@ -8,81 +8,86 @@ version: 1.0.1
 """
 
 from __future__ import annotations
+
+from dataclasses import dataclass
 from typing import Any, Optional
 
 from report import RelationState, Report
 
+@dataclass
+class RelationReport(Report):
+    """
+    Role:
+        -   Test results
 
-class RelationReport(Report[Any, Any]):
-    _primary: Optional[Any]
-    _satellite: Optional[Any]
-    _exception: Optional[Exception]
-    _status: Optional[RelationState]
-    
-    def __init__(
-            self,
-            primary: Optional[Any],
-            satellite: Optional[Any],
-            status: RelationState,
-            exception: Optional[Exception],
-    ):
-        """INTERNAL: Use build methods instead of direct constructor."""
-        method = "RelationReport.__init__"
-        self._primary = primary
-        self._satellite = satellite
-        self._relation_status = status
-        self._exception = exception
+    Responsibilities:
+        1.  Presents the results of testing if two entities have a bidirectional relationship.
+
+    Attributes:
+        primary: Optional[Any]
+        satellite: Optional[Any]
+        status: RelationState
+
+        does_not_exist: bool
+        registration_does_not_exist: bool
+        stale_link_exists: bool
+        fully_exists: bool
+
+    Provides:
+        -   def no_relation(cls) -> RelationReport:
+        -   def registration_missing(cls, satellite: Any) -> RelationReport:
+        -   def stale_link(cls, primary: Any) -> RelationReport:
+        -   def bidirectional(cls, primary: Any, satellite: Any) -> RelationReport
+
+    Super Class:
+        Report
+    """
+    primary: Optional[Any]
+    satellite: Optional[Any]
+    status: Optional[RelationState]
         
     @property
     def primary(self) -> Optional[Any]:
-        return self._primary
+        return self.primary
     
     @property
     def satellite(self) -> Optional[Any]:
-        return self._satellite
+        return self.satellite
     
     @property
     def status(self) -> Optional[RelationState]:
-        return self._status
-    
-    @property
-    def exception(self) -> Optional[Exception]:
-        return self._exception
+        return self.status
     
     @property
     def does_not_exist(self) -> bool:
         return (
-                self._exception is None and
-                self._primary is None and
-                self._satellite is None and
-                self._status == RelationState.NO_RELATION
+                self.primary is None and
+                self.satellite is None and
+                self.status == RelationState.NO_RELATION
         )
     
     @property
     def registration_does_not_exist(self) -> bool:
         return (
-                self._exception is None and
-                self._primary is None and
-                self._satellite is not None and
-                self._status == RelationState.REGISTRATION_NOT_SUBMITTED
+                self.primary is None and
+                self.satellite is not None and
+                self.status == RelationState.REGISTRATION_NOT_SUBMITTED
         )
     
     @property
     def stale_link_exists(self) -> bool:
         return (
-                self._exception is None and
-                self._primary is not None and
-                self._satellite is None and
-                self._status == RelationState.STALE_LINK_NOT_PURGED
+                self.primary is not None and
+                self.satellite is None and
+                self.status == RelationState.STALE_LINK_NOT_PURGED
         )
 
     @property
     def fully_exists(self) -> bool:
         return (
-                self._exception is None and
-                self._primary is not None and
-                self._satellite is not None and
-                self._status == RelationState.BIDIRECTIONAL
+                self.primary is not None and
+                self.satellite is not None and
+                self.status == RelationState.BIDIRECTIONAL
         )
     
     @classmethod
@@ -90,7 +95,6 @@ class RelationReport(Report[Any, Any]):
         return RelationReport(
             primary=None,
             satellite=None,
-            exception=None,
             status=RelationState.NO_RELATION,
         )
     
@@ -98,7 +102,6 @@ class RelationReport(Report[Any, Any]):
     def registration_missing(cls, satellite: Any) -> RelationReport:
         return RelationReport(
             primary=None,
-            exception=None,
             satellite=satellite,
             status=RelationState.REGISTRATION_NOT_SUBMITTED,
         )
@@ -107,7 +110,6 @@ class RelationReport(Report[Any, Any]):
     def stale_link(cls, primary: Any) -> RelationReport:
         return RelationReport(
             satellite=None,
-            exception=None,
             primary=primary,
             status=RelationState.STALE_LINK_NOT_PURGED,
         )
@@ -115,7 +117,6 @@ class RelationReport(Report[Any, Any]):
     @classmethod
     def bidirectional(cls, primary: Any, satellite: Any) -> RelationReport:
         return RelationReport(
-            exception=None,
             primary=primary,
             satellite=satellite,
             status=RelationState.BIDIRECTIONAL,

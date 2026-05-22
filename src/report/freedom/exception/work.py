@@ -1,0 +1,81 @@
+# src/logic/system/freedom/exception/validator.py
+
+"""
+Module: logic.system.freedom.exception.work
+Author: Banji Lawal
+Created: 2026-02-21
+Version: 1.0.0
+"""
+
+from __future__ import annotations
+from typing import Optional
+
+
+__all__ = [
+    # ======================# FREEDOM_ANALYST_FAILURE #======================#
+    "FreedomAnalystException",
+]
+
+from system import OperationException
+
+
+# ======================# FREEDOM_ANALYST_FAILURE #======================#
+class FreedomAnalystException(OperationException):
+    """
+    Role:
+        -   Worker Method Identification
+        -   Exception Chain Layer 1,
+        -   Exception Messaging
+
+    Responsibilities:
+        1.  Indicate a FreedomAnalyst exception was aborted because of an error.
+        2.  Identify the exception' method where the failure occurred.
+
+    Attributes:
+        msg: Optional[str]
+        mthd: Optional[str]
+        title: Optional[str]
+        ex: Optional[Exception]
+        err_code: Optional[str]
+        mthd_rslt_type: Optional[MethodResultType]
+
+    Provides:
+
+    Super Class:
+        TransactionException
+    """
+    OP = "FreedomAnalyst"
+    MTHD_RSLT = "FreedomAnalystResult"
+    ERR_CODE = "FREEDOM_ANALYST_FAILURE"
+    MSG = "FreedomAnalyst experienced an error. Analyst aborted."
+    
+    def __init__(
+            self,
+            msg: Optional[str] | None = None,
+            mthd: Optional[str] = None,
+            title: Optional[str] = None,
+            ex: Optional[Exception] | None = None,
+            err_code: Optional[str] | None = None,
+            mthd_rslt_Ttype: Optional[MethodResultType] | None = None,
+    ):
+        """
+        Args:
+            msg: Optional[str]
+            mthd: Optional[str]
+            title: Optional[str]
+            ex: Optional[Exception]
+            err_code: Optional[str]
+            mthd_rslt_type: Optional[MethodResultType]
+        """
+        msg = msg or self.MSG
+        err_code = err_code or self.ERR_CODE
+        mthd_rslt = mthd_rslt or self.MTHD_RSLT
+        super().__init__(
+            ex=ex,
+            op=op,
+            msg=msg,
+            mthd=mthd,
+            title=title,
+            err_code=err_code,
+            mthd_rslt_type=mthd_rslt_type,
+        )

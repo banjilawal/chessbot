@@ -8,11 +8,13 @@ version: 1.0.1
 """
 
 from __future__ import annotations
+
+from dataclasses import dataclass
 from typing import Any, Optional
 
 from report import CollisionState
 
-
+@dataclass
 class CollisionReport:
     """
     Role:
@@ -42,64 +44,19 @@ class CollisionReport:
     Super Class:
         Report
     """
-    _colliding_variable: Optional[str]
-    _collision_value: Optional[Any]
-    _collider: Optional[Any]
-    _state: CollisionState
-    _exception: Optional[Exception]
+    colliding_variable: Optional[str]
+    collision_value: Optional[Any]
+    collider: Optional[Any]
+    state: CollisionState
+    exception: Optional[Exception]
 
-
-    def __init__(
-            self,
-            state: CollisionState,
-            colliding_variable: Optional[str] = None,
-            collision_value: Optional[Any] = None,
-            collider: Optional[Any] = None,
-            exception: Optional[Exception] = None,
-    ):
-        """
-        Args:
-            state: CollisionState
-            colliding_variable: Optional[str]
-            collision_value: Any
-            collider: T
-            exception: Exception
-        """
-        super().__init__(state=state, exception=exception)
-        """INTERNAL: Use build methods instead of direct constructor."""
-        method = "CollisionReport.result"
-        self._colliding_variable = colliding_variable
-        self._collision_value = collision_value
-        self._state = state
-        self._collider = collider
-        self._exception = exception
-        
-    @property
-    def state(self) -> CollisionState:
-        return self._state
-    
-    @property
-    def colliding_variable(self) -> Optional[str]:
-        return self._colliding_variable
-    
-    @property
-    def collision_value(self) -> Optional[Any]:
-        return self._collision_value
-    
-    @property
-    def collider(self) -> Optional[Any]:
-        return self._collider
-    
-    @property
-    def exception(self) -> Optional[Exception]:
-        return self._exception
     
     @property
     def collision_exists(self) -> bool:
         return (
                 self.colliding_variable is not None and
                 self.collision_value is not None and
-                self._collider is not None and
+                self.collider is not None and
                 self.exception is not None and
                 self.state == CollisionState.COLLISION_DETECTED
         )
