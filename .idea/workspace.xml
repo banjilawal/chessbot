@@ -5,15 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/toolkit/math/vector/operand/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/toolkit/math/vector/operand/toolkit.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/toolkit/math/vector/register/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/toolkit/math/vector/register/toolkit.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/math/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/math/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/math/operand/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/math/vector/operand/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/math/operand/category.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/math/vector/operand/category.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/math/operand/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/math/vector/operand/model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/math/register/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/math/vector/register/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/math/register/category.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/math/vector/register/category.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/math/register/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/math/vector/register/model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/math/vector/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/math/vector/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/toolkit/math/vector/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/toolkit/math/vector/__init__.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,7 +61,7 @@
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "main",
-    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src",
+    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/toolkit/math/vector",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
@@ -75,11 +72,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/toolkit/math/vector" />
       <recent name="$PROJECT_DIR$/src" />
       <recent name="$PROJECT_DIR$/src/err/validation" />
       <recent name="$PROJECT_DIR$/src/err/empty" />
       <recent name="$PROJECT_DIR$/src/err" />
-      <recent name="$PROJECT_DIR$/src/model/blueprint" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/model/math/vector" />
@@ -793,7 +790,7 @@
       <workItem from="1777594334967" duration="13903000" />
       <workItem from="1778331271699" duration="24815000" />
       <workItem from="1778551204712" duration="6996000" />
-      <workItem from="1779317382327" duration="17342000" />
+      <workItem from="1779317382327" duration="19294000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />

@@ -11,9 +11,13 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 
+from model import VectorRegister
 from toolkit import Toolkit
 from integrity import CoordBuilder, ScalarBuilder, VectorBuilder
-from validation import CoordValidator, NumberValidator, ScalarValidator, VectorOperandValidator, VectorValidator
+from validation import (
+    CoordValidator, NumberValidator, ScalarValidator, VectorOperandValidator,
+    VectorRegisterValidator, VectorValidator
+)
 
 
 @dataclass
@@ -32,6 +36,7 @@ class MathToolkit(Toolkit):
         scalar_validator: ScalarValidator
         number_validator: NumberValidator
         vector_validator: VectorValidator
+        vector_register_validator: VectorRegisterValidator
         vector_operand_validator: VectorOperandValidator
         
         coord_builder: CoordBuilder
@@ -46,6 +51,7 @@ class MathToolkit(Toolkit):
     scalar_validator: ScalarValidator = ScalarValidator()
     number_validator: NumberValidator = NumberValidator()
     vector_validator: VectorValidator = VectorValidator()
+    vector_register_validator: VectorRegisterValidator = VectorRegisterValidator()
     vector_operand_validator: VectorOperandValidator = VectorOperandValidator()
     
     coord_builder: CoordBuilder = CoordBuilder()

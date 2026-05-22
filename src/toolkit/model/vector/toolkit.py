@@ -1,7 +1,7 @@
-# src/toolkit/math/vector/toolkit.py
+# src/toolkit/vector/toolkit.py
 
 """
-Module: toolkit.math.vector.toolkit
+Module: toolkit.vector.toolkit
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -9,9 +9,10 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from operation import VectorOperandValidator
+
 from toolkit import Toolkit
 from model import VectorRegister
+from validation import VectorOperandValidator
 
 
 class VectorRegisterToolkit(Toolkit[VectorRegister]):
