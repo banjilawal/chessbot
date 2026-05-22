@@ -44,7 +44,7 @@ class InsertionException(TransactionException):
     OP = "Insertion"
     MSG = "Insertion aborted."
     ERR_CODE = "INSERTION_FAILURE"
-    MTHD_RSLT = "InsertionResult"
+    MTHD_RSLT_TYPE = "InsertionResult"
     
     def __init__(
             self,
@@ -69,9 +69,9 @@ class InsertionException(TransactionException):
             err_code: Optional[str]
         """
         msg = msg or self.MSG
-        mthd_rslt = self.MTHD_RSLT
+        mthd_rslt_type = self.MTHD_RSLT_TYPE
         err_code = err_code or self.ERR_CODE
-        mthd_rslt = mthd_rslt or self.MTHD_RSLT
+        mthd_rslt_type = mthd_rslt or self.MTHD_RSLT_TYPE
         super().__init__(
             op=op,
             ex=ex,

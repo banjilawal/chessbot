@@ -1,4 +1,4 @@
-## src/err/analysis/relation/team/board/__init__.py
+# src/err/analysis/relation/team/board/__init__.py
 
 """
 Module: err.analysis.relation.team.board.__init__
@@ -11,6 +11,5 @@ version: 1.0.1
 
 # Packages
 
-
 # Modules
-from .exception import BoardTeamAnalysisException
+from .exception import BoardTeamRelationAnalysisException

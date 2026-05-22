@@ -44,7 +44,7 @@ class InsertionPipelineException(PipelineException):
     OP = "Insertion"
     MSG = "Error in InsertionPipeline."
     ERR_CODE = "INSERTION_PIPELINE_FAILURE"
-    MTHD_RSLT = "InsertionResult"
+    MTHD_RSLT_TYPE = "InsertionResult"
     
     def __init__(
             self,
@@ -69,7 +69,7 @@ class InsertionPipelineException(PipelineException):
             mthd_rslt_type: Optional[MethodResultType]
         """
         msg = msg or self.MSG
-        mthd_rslt_type = self.MTHD_RSLT
+        mthd_rslt_type = self.MTHD_RSLT_TYPE
         err_code = err_code or self.ERR_CODE
         super().__init__(
             op=op,

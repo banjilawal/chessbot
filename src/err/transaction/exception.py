@@ -103,7 +103,7 @@ class TransactionException(ChessException):
             cls_mthd=cls_mthd,
             mthd_rslt_type=mthd_rslt_type,
         )
-        self._mthd_rslt = mthd_rslt_type
+        self._mthd_rslt_type = mthd_rslt_type
     
     @property
     def mthd_rslt(self) -> Optional[str]:

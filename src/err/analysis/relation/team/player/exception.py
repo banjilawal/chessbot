@@ -1,7 +1,7 @@
-# src/err/analysis/relation/team/player/exception.py
+# src/err/analysis/relation/team/exception.py
 
 """
-Module: err.analysis.relation.team.player.exception
+Module: err.analysis.relation.team.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,23 +10,23 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
+from err import RelationAnalysisException
+from result import MethodResultType
+
 
 __all__ = [
     # ======================# PLAYER_TEAM_RELATION_ANALYSIS_FAILURE #======================#
-    "PlayerTeamAnalysisException",
+    "PlayerTeamRelationAnalysisException",
 ]
 
-from err.analysis.relation import RelationException
-
-
 # ======================# PLAYER_TEAM_RELATION_ANALYSIS_FAILURE #======================#
-class PlayerTeamAnalysisException(RelationException):
+class PlayerTeamRelationAnalysisException(RelationAnalysisException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an error prevented a PlayerTeamRelations analysis from completing.
+        1.  Indicate that an error prevented the team-player relation analysis from completing.
 
     Attributes:
         msg: Optional[str]
@@ -41,9 +41,9 @@ class PlayerTeamAnalysisException(RelationException):
     Provides:
 
     Super Class:
-        IdRelationException
+        RelationException
     """
-    MSG = "A PlayerTeamRelations analysis step failed."
+    MSG = "PlayerTeamRelationAnalyst experienced an error."
     ERR_CODE = "PLAYER_TEAM_RELATION_ANALYSIS_FAILURE"
     
     def __init__(
@@ -58,18 +58,19 @@ class PlayerTeamAnalysisException(RelationException):
             mthd_rslt_type: Optional[MethodResultType] | None = None,
     ):
         """
-        args:
-            Msg: Optional[str]
-            Var: Optional[str]
-            val: Optional[any]
-            ex: optional[Exception]
-            cls_name: optional[Str]
-            cls_mthd: optional[str]
-            err_code: optional[str]
-            mthd_rslt_type: optional[methodResultType]
+        Args:
+            msg: Optional[str]
+            var: Optional[str]
+            val: Optional[Any]
+            ex: Optional[Exception]
+            cls_name: Optional[str]
+            cls_mthd: Optional[str]
+            err_code: Optional[str]
+            mthd_rslt_type: Optional[MethodResultType]
         """
         msg = msg or self.MSG
         err_code = err_code or self.ERR_CODE
+        mthd_rslt_type = mthd_rslt_type or self.MTHD_RSLT_TYPE
         super().__init__(
             ex=ex,
             msg=msg,

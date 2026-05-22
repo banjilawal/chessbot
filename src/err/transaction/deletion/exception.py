@@ -44,7 +44,7 @@ class DeletionException(TransactionException):
     OP = "Deletion"
     MSG = "Deletion aborted."
     ERR_CODE = "DELETION_FAILURE"
-    MTHD_RSLT = "DeletionResult"
+    MTHD_RSLT_TYPE = "DeletionResult"
     
     def __init__(
             self,
@@ -69,9 +69,9 @@ class DeletionException(TransactionException):
             err_code: Optional[str]
         """
         msg = msg or self.MSG
-        mthd_rslt = self.MTHD_RSLT
+        mthd_rslt_type = self.MTHD_RSLT_TYPE
         err_code = err_code or self.ERR_CODE
-        mthd_rslt = mthd_rslt or self.MTHD_RSLT
+        mthd_rslt_type = mthd_rslt or self.MTHD_RSLT_TYPE
         super().__init__(
             op=op,
             ex=ex,

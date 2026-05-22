@@ -44,7 +44,7 @@ class UpdatePipelineException(PipelineException):
     OP = "Update"
     MSG = "Error in UpdatePipeline."
     ERR_CODE = "UPDATE_PIPELINE_FAILURE"
-    MTHD_RSLT = "UpdateResult"
+    MTHD_RSLT_TYPE = "UpdateResult"
     
     def __init__(
             self,
@@ -69,7 +69,7 @@ class UpdatePipelineException(PipelineException):
             mthd_rslt_type: Optional[MethodResultType]
         """
         msg = msg or self.MSG
-        mthd_rslt_type = self.MTHD_RSLT
+        mthd_rslt_type = self.MTHD_RSLT_TYPE
         err_code = err_code or self.ERR_CODE
         super().__init__(
             op=op,

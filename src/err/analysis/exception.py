@@ -43,7 +43,7 @@ class AnalysisException(ChessException):
     """
     MSG = "Analysis failed"
     ERR_CODE = "ANALYSIS_FAILURE"
-    MTHD_RSLT = MethodResultType.ANALYSIS_RESULT
+    MTHD_RSLT_TYPE = MethodResultType.ANALYSIS_RESULT
     
     def __init__(
             self,
@@ -69,7 +69,7 @@ class AnalysisException(ChessException):
         """
         msg = msg or self.MSG
         err_code = err_code or self.ERR_CODE
-        mthd_rslt_type = mthd_rslt_type or self.MTHD_RSLT
+        mthd_rslt_type = mthd_rslt_type or self.MTHD_RSLT_TYPE
         super().__init__(
             ex=ex,
             msg=msg,

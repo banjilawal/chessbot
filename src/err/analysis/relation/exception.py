@@ -10,21 +10,24 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import ChessException
+from err import AnalysisException
+from result import MethodResultType
+
 
 __all__ = [
-    # ======================# RELATION_FAILURE #======================#
-    "RelationException",
+    # ======================# RELATION_ANALYSIS_FAILURE #======================#
+    "RelationAnalysisException",
 ]
 
-# ======================# RELATION_FAILURE #======================#
-class RelationException(ChessException):
+# ======================# RELATION_ANALYSIS_FAILURE #======================#
+class RelationAnalysisException(AnalysisException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that two entities share attribute value that should be unique.
+        1.  Indicate that an error prevented a relation analysis from completing.
+        
     Attributes:
         msg: Optional[str]
         var: Optional[str]
@@ -38,10 +41,10 @@ class RelationException(ChessException):
     Provides:
 
     Super Class:
-        ChessException
+        AnalysisException
     """
-    MSG = "Relation step failed."
-    ERR_CODE = "RELATION_FAILURE"
+    MSG = "RelationAnalyst encountered an error."
+    ERR_CODE = "ANALYSIS_FAILURE"
 
     
     def __init__(
@@ -53,6 +56,7 @@ class RelationException(ChessException):
             cls_name: Optional[str] | None = None,
             ex: Optional[Exception] | None = None,
             err_code: Optional[str] | None = None,
+            mthd_rslt_type: Optional[MethodResultType] | None = None,
     ):
         """
         Args:
@@ -63,9 +67,10 @@ class RelationException(ChessException):
             cls_name: Optional[str]
             cls_mthd: Optional[str]
             err_code: Optional[str]
+            mthd_rslt_type: Optional[MethodResultType]
         """
         msg = msg or self.MSG
-        mthd_rslt = self.MTHD_RSLT
+        mthd_rslt_type = mthd_rslt_type or self.MTHD_RSLT_TYPE
         err_code = err_code or self.ERR_CODE
         super().__init__(
             ex=ex,
@@ -77,11 +82,3 @@ class RelationException(ChessException):
             cls_mthd=cls_mthd,
             mthd_rslt_type=mthd_rslt_type,
         )
-        self._mthd_rslt = mthd_rslt
-    
-    @property
-    def mthd_rslt(self) -> Optional[str]:
-        return self._mthd_rslt
-    
-    def __str__(self):
-        return f"{super().__str__()},  mthd_rslt_type:{self._mthd_rslt}"

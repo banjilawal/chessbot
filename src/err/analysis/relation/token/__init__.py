@@ -1,15 +1,16 @@
 # src/err/analysis/relation/token/__init__.py
 
 """
-Module: err.analysis.relation.context.token.__init__
+Module: err.analysis.relation.token.__init__
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
 """
 
-# ============ ERR.ANALYSIS.RELATION.CONTEXT.TOKEN PACKAGE ===========#
+# ============ ERR.ANALYSIS.RELATION.TOKEN PACKAGE ===========#
 
 # Packages
+from .square import *
+from .team import *
 
 # Modules
-from .exception import TokenRelationException

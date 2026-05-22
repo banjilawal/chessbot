@@ -46,7 +46,7 @@ class ValidationException(StateException):
     """
     MSG = "Validation failed"
     ERR_CODE = "VALIDATION_FAILURE"
-    MTHD_RSLT = MethodResultType.VALIDATION_RESULT
+    MTHD_RSLT_TYPE = MethodResultType.VALIDATION_RESULT
     
     def __init__(
             self,
@@ -71,7 +71,7 @@ class ValidationException(StateException):
             mthd_rslt_type: Optional[MethodResultType]
         """
         msg = msg or self.MSG
-        mthd_rslt_type = mthd_rslt_type or self.MTHD_RSLT
+        mthd_rslt_type = mthd_rslt_type or self.MTHD_RSLT_TYPE
         err_code = err_code or self.ERR_CODE
         super().__init__(
             ex=ex,

@@ -43,7 +43,7 @@ class SearchRouteException(ExecutionRouteException):
     OP = "Search"
     MSG = "One of  search routes is missing."
     ERR_CODE = "SEARCH_ROUTE"
-    MTHD_RSLT = "SearchResult"
+    MTHD_RSLT_TYPE = "SearchResult"
     _mthd_rslt_type = Optional[str]
     
     def __init__(
@@ -67,7 +67,7 @@ class SearchRouteException(ExecutionRouteException):
             err_code: Optional[str]
         """
         msg = msg or self.MSG
-        mthd_rslt = self.MTHD_RSLT
+        mthd_rslt_type = self.MTHD_RSLT_TYPE
         err_code = err_code or self.ERR_CODE
         super().__init__(
             ex=ex,
@@ -79,7 +79,7 @@ class SearchRouteException(ExecutionRouteException):
             cls_mthd=cls_mthd,
             mthd_rslt_type=mthd_rslt_type,
         )
-        self._mthd_rslt = mthd_rslt
+        self._mthd_rslt_type = mthd_rslt
     
     @property
     def mthd_rslt(self) -> Optional[str]:

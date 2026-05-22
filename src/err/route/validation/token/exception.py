@@ -68,7 +68,7 @@ class TokenValidationRouteException(ValidationRouteException):
         """
         msg = msg or self.MSG
         err_code = err_code or self.ERR_CODE
-        mthd_rslt = mthd_rslt or self.MTHD_RSLT
+        mthd_rslt_type = mthd_rslt or self.MTHD_RSLT_TYPE
         super().__init__(
             ex=ex,
             msg=msg,

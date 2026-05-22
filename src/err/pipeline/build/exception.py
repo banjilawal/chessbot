@@ -44,7 +44,7 @@ class BuildPipelineException(PipelineException):
     OP = "Build"
     MSG = "Error in BuildPipeline."
     ERR_CODE = "BUILD_PIPELINE_FAILURE"
-    MTHD_RSLT = "BuildResult"
+    MTHD_RSLT_TYPE = "BuildResult"
     
     def __init__(
             self,
@@ -69,7 +69,7 @@ class BuildPipelineException(PipelineException):
             mthd_rslt_type: Optional[MethodResultType]
         """
         msg = msg or self.MSG
-        mthd_rslt_type = self.MTHD_RSLT
+        mthd_rslt_type = self.MTHD_RSLT_TYPE
         err_code = err_code or self.ERR_CODE
         super().__init__(
             op=op,

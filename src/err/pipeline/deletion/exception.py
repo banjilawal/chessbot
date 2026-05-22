@@ -44,7 +44,7 @@ class DeletionPipelineException(PipelineException):
     OP = "Deletion"
     MSG = "Error in DeletionPipeline."
     ERR_CODE = "DELETION_PIPELINE_FAILURE"
-    MTHD_RSLT = "DeletionResult"
+    MTHD_RSLT_TYPE = "DeletionResult"
     
     def __init__(
             self,
@@ -69,7 +69,7 @@ class DeletionPipelineException(PipelineException):
             mthd_rslt_type: Optional[MethodResultType]
         """
         msg = msg or self.MSG
-        mthd_rslt_type = self.MTHD_RSLT
+        mthd_rslt_type = self.MTHD_RSLT_TYPE
         err_code = err_code or self.ERR_CODE
         super().__init__(
             op=op,

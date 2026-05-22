@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import cast
 
 from analysis import RelationAnalyst
-from err import BoardBinderAnalysisException
+from err import BoardBinderAnalysisAnalysisException
 from integrity import BoardValidator
 from microservice import BoardService
 from model import Board, BoardBinder
@@ -86,11 +86,11 @@ class BoardTeamBinderRelationAnalyst(RelationAnalyst[Board, BoardBinder]):
         if board_validation_result.is_failure:
             # Send the exception chain on failure.
             return AnalysisResult.failure(
-                BoardBinderAnalysisException(
+                BoardBinderAnalysisAnalysisException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    msg=BoardBinderAnalysisException.MSG,
-                    err_code=BoardBinderAnalysisException.ERR_CODE,
+                    msg=BoardBinderAnalysisAnalysisException.MSG,
+                    err_code=BoardBinderAnalysisAnalysisException.ERR_CODE,
                     ex=board_validation_result.exception,
                 )
             )
@@ -102,11 +102,11 @@ class BoardTeamBinderRelationAnalyst(RelationAnalyst[Board, BoardBinder]):
         if team_binder_validation_result.is_failure:
             # Send the exception chain on failure.
             return AnalysisResult.failure(
-                BoardBinderAnalysisException(
+                BoardBinderAnalysisAnalysisException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    msg=BoardBinderAnalysisException.MSG,
-                    err_code=BoardBinderAnalysisException.ERR_CODE,
+                    msg=BoardBinderAnalysisAnalysisException.MSG,
+                    err_code=BoardBinderAnalysisAnalysisException.ERR_CODE,
                     ex=team_binder_validation_result.exception,
                 )
             )

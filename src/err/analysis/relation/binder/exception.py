@@ -13,14 +13,14 @@ from typing import Any, Optional
 
 __all__ = [
     # ======================# BOARD_BINDER_RELATION_ANALYSIS_FAILURE #======================#
-    "BoardBinderAnalysisException",
+    "BoardBinderAnalysisAnalysisException",
 ]
 
-from err.analysis.relation import RelationException
+from err.analysis.relation import RelationAnalysisException
 
 
 # ======================# BOARD_BINDER_RELATION_ANALYSIS_FAILURE #======================#
-class BoardBinderAnalysisException(RelationException):
+class BoardBinderAnalysisAnalysisException(RelationAnalysisException):
     """
     Role:
         -   Error Tracing

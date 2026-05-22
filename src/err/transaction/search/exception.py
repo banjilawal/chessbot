@@ -44,7 +44,7 @@ class SearchTransactionException(TransactionException):
     OP = "Search"
     MSG = "Search aborted."
     ERR_CODE = "SEARCH_FAILURE"
-    MTHD_RSLT = "SearchResult"
+    MTHD_RSLT_TYPE = "SearchResult"
     
     def __init__(
             self,
@@ -70,7 +70,7 @@ class SearchTransactionException(TransactionException):
         """
         msg = msg or self.MSG
         err_code = err_code or self.ERR_CODE
-        mthd_rslt_type = mthd_rslt_type or self.MTHD_RSLT
+        mthd_rslt_type = mthd_rslt_type or self.MTHD_RSLT_TYPE
         super().__init__(
             ex=ex,
             msg=msg,

@@ -42,7 +42,7 @@ class CollisionException(ChessException):
     """
     MSG = "Collision step failed."
     ERR_CODE = "COLLISION_FAILURE"
-    MTHD_RSLT = "CollisionResult"
+    MTHD_RSLT_TYPE = "CollisionResult"
     _mthd_rslt_type = Optional[str]
     
     def __init__(
@@ -66,7 +66,7 @@ class CollisionException(ChessException):
             err_code: Optional[str]
         """
         msg = msg or self.MSG
-        mthd_rslt = self.MTHD_RSLT
+        mthd_rslt_type = self.MTHD_RSLT_TYPE
         err_code = err_code or self.ERR_CODE
         super().__init__(
             ex=ex,
@@ -78,7 +78,7 @@ class CollisionException(ChessException):
             cls_mthd=cls_mthd,
             mthd_rslt_type=mthd_rslt_type,
         )
-        self._mthd_rslt = mthd_rslt
+        self._mthd_rslt_type = mthd_rslt
     
     @property
     def mthd_rslt(self) -> Optional[str]:

@@ -43,7 +43,7 @@ class BuildRouteException(ExecutionRouteException):
     OP = "Build"
     MSG = "One of  build routes is missing."
     ERR_CODE = "BUILD_ROUTE"
-    MTHD_RSLT = "BuildResult"
+    MTHD_RSLT_TYPE = "BuildResult"
     _mthd_rslt_type = Optional[str]
     
     def __init__(
@@ -67,7 +67,7 @@ class BuildRouteException(ExecutionRouteException):
             err_code: Optional[str]
         """
         msg = msg or self.MSG
-        mthd_rslt = self.MTHD_RSLT
+        mthd_rslt_type = self.MTHD_RSLT_TYPE
         err_code = err_code or self.ERR_CODE
         super().__init__(
             ex=ex,
@@ -79,7 +79,7 @@ class BuildRouteException(ExecutionRouteException):
             cls_mthd=cls_mthd,
             mthd_rslt_type=mthd_rslt_type,
         )
-        self._mthd_rslt = mthd_rslt
+        self._mthd_rslt_type = mthd_rslt
     
     @property
     def mthd_rslt(self) -> Optional[str]:

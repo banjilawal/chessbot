@@ -8,15 +8,14 @@ version: 1.0.1
 """
 
 from __future__ import annotations
-
 from typing import cast
 
-from analysis import RelationAnalyst
-from err import BoardTeamAnalysisException
 from model import Board, Team
 from report import RelationReport
-from result import AnalysisResult, MethodResultType
+from analysis import RelationAnalyst
 from util import LoggingLevelRouter
+from err import BoardTeamRelationAnalysisException
+from result import AnalysisResult, MethodResultType
 from validation import BoardValidator, TeamValidator
 
 
@@ -85,11 +84,11 @@ class BoardTeamRelationAnalyst(RelationAnalyst[Board, Team]):
         if board_validation_result.is_failure:
             # Send the exception chain on failure.
             return AnalysisResult.failure(
-                BoardTeamAnalysisException(
+                BoardTeamRelationAnalysisException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    msg=BoardTeamAnalysisException.MSG,
-                    err_code=BoardTeamAnalysisException.ERR_CODE,
+                    msg=BoardTeamRelationAnalysisException.MSG,
+                    err_code=BoardTeamRelationAnalysisException.ERR_CODE,
                     mthd_rslt_type=MethodResultType.ANALYSIS_RESULT,
                     ex=board_validation_result.exception,
                 )
@@ -102,11 +101,11 @@ class BoardTeamRelationAnalyst(RelationAnalyst[Board, Team]):
         if team_validation_result.is_failure:
             # Send the exception chain on failure.
             return AnalysisResult.failure(
-                BoardTeamAnalysisException(
+                BoardTeamRelationAnalysisException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    msg=BoardTeamAnalysisException.MSG,
-                    err_code=BoardTeamAnalysisException.ERR_CODE,
+                    msg=BoardTeamRelationAnalysisException.MSG,
+                    err_code=BoardTeamRelationAnalysisException.ERR_CODE,
                     mthd_rslt_type=MethodResultType.ANALYSIS_RESULT,
                     ex=team_validation_result.exception,
                 )

@@ -14,8 +14,7 @@ from typing import Generic, TypeVar
 from analysis import Analyst
 from report import RelationReport
 from result import AnalysisResult
-from system import LoggingLevelRouter
-
+from util import LoggingLevelRouter
 
 P = TypeVar("P")
 S = TypeVar("S")
@@ -32,7 +31,12 @@ class RelationAnalyst(Analyst[RelationReport], Generic[P, S]):
     Attributes:
 
     Provides:
-        -   execute(candidate_primary: P, candidate_satellite: S, *args, **kwargs) -> RelationReport:
+        -   analyze(
+                    candidate_primary: P,
+                    candidate_satellite: S,
+                    *args,
+                    **kwargs,
+            ) -> AnalysisResult[RelationReport]:
 
     Super Class:
     """

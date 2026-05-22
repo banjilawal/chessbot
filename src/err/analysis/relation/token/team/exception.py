@@ -1,7 +1,7 @@
-# src/err/analysis/relation/id/square/exception.py
+# src/err/analysis/relation/token/exception.py
 
 """
-Module: err.analysis.relation.id.square.exception
+Module: err.analysis.relation.token.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,21 +10,23 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import IdRelationException
+from err import RelationAnalysisException
+from result import MethodResultType
+
 
 __all__ = [
-    # ======================# SQUARE_ID_RELATION_ERROR #======================#
-    "SquareIdRelationException",
+    # ======================# TEAM_TOKEN_RELATION_ANALYSIS_FAILURE #======================#
+    "TeamTokenRelationAnalysisException",
 ]
 
-# ======================# SQUARE_ID_RELATION_ERROR #======================#
-class SquareIdRelationException(IdRelationException):
+# ======================# TEAM_TOKEN_RELATION_ANALYSIS_FAILURE #======================#
+class TeamTokenRelationAnalysisException(RelationAnalysisException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a square is already using the id.
+        1.  Indicate that an error prevented the token-team relation analysis from completing.
 
     Attributes:
         msg: Optional[str]
@@ -39,10 +41,10 @@ class SquareIdRelationException(IdRelationException):
     Provides:
 
     Super Class:
-        IdRelationException
+        RelationException
     """
-    MSG = "A square is already using the id."
-    ERR_CODE = "SQUARE_ID_RELATION_ERROR"
+    MSG = "TeamTokenRelationAnalyst experienced an error."
+    ERR_CODE = "TEAM_TOKEN_RELATION_ANALYSIS_FAILURE"
     
     def __init__(
             self,
@@ -56,18 +58,19 @@ class SquareIdRelationException(IdRelationException):
             mthd_rslt_type: Optional[MethodResultType] | None = None,
     ):
         """
-        args:
-            Msg: Optional[str]
-            Var: Optional[str]
-            val: Optional[any]
-            ex: optional[Exception]
-            cls_name: optional[Str]
-            cls_mthd: optional[str]
-            err_code: optional[str]
-            mthd_rslt_type: optional[methodResultType]
+        Args:
+            msg: Optional[str]
+            var: Optional[str]
+            val: Optional[Any]
+            ex: Optional[Exception]
+            cls_name: Optional[str]
+            cls_mthd: Optional[str]
+            err_code: Optional[str]
+            mthd_rslt_type: Optional[MethodResultType]
         """
         msg = msg or self.MSG
         err_code = err_code or self.ERR_CODE
+        mthd_rslt_type = mthd_rslt_type or self.MTHD_RSLT_TYPE
         super().__init__(
             ex=ex,
             msg=msg,
