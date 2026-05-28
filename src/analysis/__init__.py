@@ -18,4 +18,4 @@ from .relation import *
 from .stack import *
 
 # Modules
-from .analyst import Analyst
+from .analyzer import Analyzer

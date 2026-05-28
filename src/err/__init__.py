@@ -13,6 +13,7 @@ version: 1.0.0
 from .analysis import *
 from .array import *
 from .config import *
+from .consistency import *
 from .controller import *
 from .empty import *
 from .factory import *

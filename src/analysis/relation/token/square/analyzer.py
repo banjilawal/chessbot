@@ -1,7 +1,7 @@
-# src/analysis/relation/token/square/analyst.py
+# src/analysis/relation/token/square/analyzer.py
 
 """
-Module: analysis.relation.token.square.analyst
+Module: analysis.relation.token.square.analyzer
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -11,19 +11,19 @@ from __future__ import annotations
 
 from typing import cast
 
-from analysis import RelationAnalyst
-from err import SquareTokenAnalysisException
+from analysis import RelationAnalyzer
 from model import Square, Token
 from report import RelationReport
-from result import AnalysisResult, MethodResultType
 from util import LoggingLevelRouter
+from result import AnalysisResult, MethodResultType
+from err import SquareTokenRelationAnalysisException
 from validation import SquareValidator, TokenValidator
 
 
-class SquareTokenRelationAnalyst(RelationAnalyst[Square, Token]):
+class SquareTokenRelationAnalyzer(RelationAnalyzer[Square, Token]):
     """
     Role:
-        - Relation Analyst
+        - Relation Analyzer
         - Report Generator
 
     Responsibilities:
@@ -40,7 +40,7 @@ class SquareTokenRelationAnalyst(RelationAnalyst[Square, Token]):
             ) -> RelationReport[Square, Token]
 
     Super:
-        Analyst
+        Analyzer
     """
     
     @classmethod
@@ -70,7 +70,7 @@ class SquareTokenRelationAnalyst(RelationAnalyst[Square, Token]):
         Returns:
             AnalysisResult[RelationReport]
         Raises:
-            SquareTokenAnalysisException
+            SquareTokenRelationAnalysisException
         """
         method = f"{cls.__name__}.analyze"
         
@@ -85,11 +85,11 @@ class SquareTokenRelationAnalyst(RelationAnalyst[Square, Token]):
         if square_validation_result.is_failure:
             # Send the exception chain on failure.
             return AnalysisResult.failure(
-                SquareTokenAnalysisException(
+                SquareTokenRelationAnalysisException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    msg=SquareTokenAnalysisException.MSG,
-                    err_code=SquareTokenAnalysisException.ERR_CODE,
+                    msg=SquareTokenRelationAnalysisException.MSG,
+                    err_code=SquareTokenRelationAnalysisException.ERR_CODE,
                     mthd_rslt_type=MethodResultType.ANALYSIS_RESULT,
                     ex=square_validation_result.exception,
                 )
@@ -98,25 +98,28 @@ class SquareTokenRelationAnalyst(RelationAnalyst[Square, Token]):
         square = cast(Square, square_validation_result.payload)
         
         # Handle the case that, the token is not certified as safe.
-        token_validation_result = token_validator.validator.validate(candidate_satellite)
+        token_validation_result = token_validator.validate(candidate_satellite)
         if token_validation_result.is_failure:
             # Send the exception chain on failure.
             return AnalysisResult.failure(
-                SquareTokenAnalysisException(
+                SquareTokenRelationAnalysisException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    msg=SquareTokenAnalysisException.MSG,
-                    err_code=SquareTokenAnalysisException.ERR_CODE,
+                    msg=SquareTokenRelationAnalysisException.MSG,
+                    err_code=SquareTokenRelationAnalysisException.ERR_CODE,
                     mthd_rslt_type=MethodResultType.ANALYSIS_RESULT,
                     ex=token_validation_result.exception,
                 )
             )
         token = cast(Token, token_validation_result.payload)
         
-        if square.occupant != token and token.current_position != square.coord:
-            return AnalysisResult.success(RelationReport.no_relation())
-        
-        if square.board != token.team.board:
+        if (
+                token.team.board != square.board or
+                (
+                        square.occupant != token and
+                        token.current_position != square.coord
+                )
+        ):
             return AnalysisResult.success(RelationReport.no_relation())
         
         if square.occupant == token and token.current_position != square.coord:

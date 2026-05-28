@@ -11,8 +11,8 @@ from __future__ import annotations
 
 from typing import cast
 
-from analysis import RelationAnalyst
-from err import TeamTokenAnalysisException
+from analysis import RelationAnalyzer
+from err import TeamTokenRelationAnalysisException
 from model import Team, Token, TokenContext
 from report import RelationReport
 from result import AnalysisResult, MethodResultType
@@ -20,7 +20,7 @@ from util import LoggingLevelRouter
 from validation import TeamValidator, TokenValidator
 
 
-class TeamTokenRelationAnalyst(RelationAnalyst[Team, Token]):
+class TeamTokenRelationAnalyzer(RelationAnalyzer[Team, Token]):
     """
     Role:
         - Relation Analyst
@@ -70,7 +70,7 @@ class TeamTokenRelationAnalyst(RelationAnalyst[Team, Token]):
         Returns:
             AnalysisResult[RelationReport]
         Raises:
-            TeamTokenAnalysisException
+            TeamTokenRelationAnalysisException
         """
         method = f"{cls.__name__}.analyze"
         
@@ -85,11 +85,11 @@ class TeamTokenRelationAnalyst(RelationAnalyst[Team, Token]):
         if team_validation_result.is_failure:
             # Send the exception chain on failure.
             return AnalysisResult.failure(
-                TeamTokenAnalysisException(
+                TeamTokenRelationAnalysisException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    msg=TeamTokenAnalysisException.MSG,
-                    err_code=TeamTokenAnalysisException.ERR_CODE,
+                    msg=TeamTokenRelationAnalysisException.MSG,
+                    err_code=TeamTokenRelationAnalysisException.ERR_CODE,
                     mthd_rslt_type=MethodResultType.ANALYSIS_RESULT,
                     ex=team_validation_result.exception,
                 )
@@ -98,15 +98,15 @@ class TeamTokenRelationAnalyst(RelationAnalyst[Team, Token]):
         team = cast(Team, team_validation_result.payload)
         
         # Handle the case that, the token is not certified as safe.
-        token_validation_result = token_validator.validator.validate(candidate_satellite)
+        token_validation_result = token_validator.validate(candidate_satellite)
         if token_validation_result.is_failure:
             # Send the exception chain on failure.
             return AnalysisResult.failure(
-                TeamTokenAnalysisException(
+                TeamTokenRelationAnalysisException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    msg=TeamTokenAnalysisException.MSG,
-                    err_code=TeamTokenAnalysisException.ERR_CODE,
+                    msg=TeamTokenRelationAnalysisException.MSG,
+                    err_code=TeamTokenRelationAnalysisException.ERR_CODE,
                     mthd_rslt_type=MethodResultType.ANALYSIS_RESULT,
                     ex=token_validation_result.exception,
                 )
@@ -120,11 +120,11 @@ class TeamTokenRelationAnalyst(RelationAnalyst[Team, Token]):
         if token_search_result.is_failure:
             # Send the exception chain on failure.
             return AnalysisResult.failure(
-                TeamTokenAnalysisException(
+                TeamTokenRelationAnalysisException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    msg=TeamTokenAnalysisException.MSG,
-                    err_code=TeamTokenAnalysisException.ERR_CODE,
+                    msg=TeamTokenRelationAnalysisException.MSG,
+                    err_code=TeamTokenRelationAnalysisException.ERR_CODE,
                     mthd_rslt_type=MethodResultType.ANALYSIS_RESULT,
                     ex=token_search_result.exception,
                 )

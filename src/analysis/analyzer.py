@@ -7,7 +7,7 @@ from util import LoggingLevelRouter
 
 R = TypeVar("R", bound=Report)
 
-class Analyst(ABC, Generic[R]):
+class Analyzer(ABC, Generic[R]):
     
     @classmethod
     @LoggingLevelRouter.monitor

@@ -11,5 +11,6 @@ version: 1.0.1
 
 # Packages
 from .team import *
+from .square import *
 
 # Modules

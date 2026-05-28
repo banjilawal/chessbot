@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import cast
 
-from analysis import Analyst
+from analysis import Analyzer
 from err import TokenFreedomAnalysisException
 from model import CombatantToken, KingToken, Token
 from report import TokenFreedomReport
@@ -20,7 +20,7 @@ from util import LoggingLevelRouter
 from validation import TokenValidator
 
 
-class TokenFreedomAnalyzer(Analyst[TokenFreedomReport]):
+class TokenFreedomAnalyzer(Analyzer[TokenFreedomReport]):
     """
     Role:
         -   Analysis Factory

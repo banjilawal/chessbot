@@ -13,12 +13,16 @@ from _ast import List
 from copy import deepcopy
 from typing import cast
 
-from analysis import TokenFreedomAnalyzer
-from err import SquareOccupiedException, TokenDeploymentPrimingException
+from analysis import SquareTokenRelationAnalyzer, TokenFreedomAnalyzer
+from database.square.database import square
+from err import (
+    ConsistencyException, SquareNotFoundSearchException, SquareOccupiedException,
+    TokenDeploymentPrimingException
+)
 from err.operation.token.deployment.duplicate.exception import DuplicateTokenDeploymentException
-from model import OpeningSquare, Token
+from model import OpeningSquare, SquareContext, Token
 from operation import Operation
-from report import TokenFreedomReport
+from report import RelationReport, TokenFreedomReport
 from result import MethodResultType, UpdateResult, ValidationResult
 from util import LoggingLevelRouter
 from validation import TokenValidator
@@ -60,6 +64,7 @@ class TokenDeploymentPrimer(Operation[Token]):
     def execute(
             cls,
             token: Token,
+            square_token_relation_analyzer: SquareTokenRelationAnalyzer | None = None,
             token_freedom_analyzer: TokenFreedomAnalyzer | None = None,
     ) -> ValidationResult[Token]:
         """
@@ -88,10 +93,12 @@ class TokenDeploymentPrimer(Operation[Token]):
         # --- Supply any missing dependencies. ---#
         if token_freedom_analyzer is None:
             token_freedom_analyzer = TokenFreedomAnalyzer()
+        if square_token_relation_analyzer is None:
+            square_token_relation_analyzer = SquareTokenRelationAnalyzer()
         
         # Handle the case that, the token is not safe.
-        deployment_analysis_result = token_freedom_analyzer.analyze(token)
-        if deployment_analysis_result.is_failure:
+        freedom_analysis_result = token_freedom_analyzer.analyze(token)
+        if freedom_analysis_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 TokenDeploymentPrimingException(
@@ -100,10 +107,10 @@ class TokenDeploymentPrimer(Operation[Token]):
                     msg=TokenDeploymentPrimingException.MSG,
                     err_code=TokenDeploymentPrimingException.ERR_CODE,
                     mthd_rslt_type=MethodResultType.VALIDATION_RESULT,
-                    ex=deployment_analysis_result.exception,
+                    ex=freedom_analysis_result.exception,
                 )
             )
-        report = cast (TokenFreedomReport, deployment_analysis_result.payload)
+        report = cast (TokenFreedomReport, freedom_analysis_result.payload)
         # Handle the case that, the token has already been deployed.
         if report.token_is_deployed:
             # Send the exception chain on failure.
@@ -122,8 +129,90 @@ class TokenDeploymentPrimer(Operation[Token]):
             )
         
         board = token.team.board
+        square_search_result = board.squares.search(context=SquareContext(id=token.opening_square.id))
+        if square_search_result.is_failure:
+            # Send the exception chain on failure.
+            return ValidationResult.failure(
+                TokenDeploymentPrimingException(
+                    cls_mthd=method,
+                    cls_name=cls.__class__.__name__,
+                    msg=TokenDeploymentPrimingException.MSG,
+                    err_code=TokenDeploymentPrimingException.ERR_CODE,
+                    mthd_rslt_type=MethodResultType.UPDATE_RESULT,
+                    ex=square_search_result.exception,
+                )
+            )
+        if square_search_result.is_empty:
+            # Send the exception chain on failure.
+            return ValidationResult.failure(
+                TokenDeploymentPrimingException(
+                    cls_mthd=method,
+                    cls_name=cls.__class__.__name__,
+                    msg=TokenDeploymentPrimingException.MSG,
+                    err_code=TokenDeploymentPrimingException.ERR_CODE,
+                    mthd_rslt_type=MethodResultType.UPDATE_RESULT,
+                    ex=SquareNotFoundSearchException(
+                        msg=SquareNotFoundSearchException.MSG,
+                        err_code=SquareNotFoundSearchException.ERR_CODE,
+                        var=f"opening_square:{token.opening_square.name}",
+                        val=token.opening_square,
+                    ),
+                )
+            )
+        opening_square = cast(OpeningSquare, square_search_result.payload[0])
+        if opening_square.is_activated:
+            # Send the exception chain on failure.
+            return ValidationResult.failure(
+                TokenDeploymentPrimingException(
+                    cls_mthd=method,
+                    cls_name=cls.__class__.__name__,
+                    msg=TokenDeploymentPrimingException.MSG,
+                    err_code=TokenDeploymentPrimingException.ERR_CODE,
+                    mthd_rslt_type=MethodResultType.UPDATE_RESULT,
+                    ex=DuplicateTokenDeploymentException(
+                        msg=DuplicateTokenDeploymentException.MSG,
+                        err_code=DuplicateTokenDeploymentException.ERR_CODE,
+                    ),
+                )
+            )
         opening_square = token.opening_square
+        if opening_square.board != board:
+            # Send the exception chain on failure.
+            return ValidationResult.failure(
+                TokenDeploymentPrimingException(
+                    cls_mthd=method,
+                    cls_name=cls.__class__.__name__,
+                    msg=TokenDeploymentPrimingException.MSG,
+                    err_code=TokenDeploymentPrimingException.ERR_CODE,
+                    mthd_rslt_type=MethodResultType.UPDATE_RESULT,
+                    ex=ConsistencyException(
+                        cls_mthd=method,
+                        cls_name=cls.__class__.__name__,
+                        msg=f"Board inconsistency between token:{token.id} and opening_square:{opening_square.id}",
+                        err_code=ConsistencyException.ERR_CODE,
+                        var="board_ids()",
+                        val=f"(opening_square_board.id:{opening_square.board.id}, token.board.id:{board.id})",
+                    )
+                )
+            )
         
+        square_token_relation_analysis_result = square_token_relation_analyzer.analyze(
+            candidate_primary=token.opening_square,
+            candidate_satellite=token
+        )
+        if square_token_relation_analysis_result.is_failure:
+            # Send the exception chain on failure.
+            return ValidationResult.failure(
+                TokenDeploymentPrimingException(
+                    cls_mthd=method,
+                    cls_name=cls.__class__.__name__,
+                    msg=TokenDeploymentPrimingException.MSG,
+                    err_code=TokenDeploymentPrimingException.ERR_CODE,
+                    mthd_rslt_type=MethodResultType.UPDATE_RESULT,
+                    ex=square_token_relation_analysis_result
+                )
+            )
+        report = cast(RelationReport, square_token_relation_analysis_result.payload)
         if opening_square.is_occupied:
             ValidationResult.failure(
                 exception=TokenDeploymentPrimingException(
@@ -145,8 +234,7 @@ class TokenDeploymentPrimer(Operation[Token]):
         if opening_square_search_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                original=token,
-                exception=TokenDeploymentPrimingException(
+                TokenDeploymentPrimingException(
                     cls_mthd=method,
                     cls_name=cls.__class__.__name__,
                     msg=TokenDeploymentPrimingException.MSG,

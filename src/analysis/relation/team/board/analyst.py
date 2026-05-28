@@ -12,14 +12,14 @@ from typing import cast
 
 from model import Board, Team
 from report import RelationReport
-from analysis import RelationAnalyst
+from analysis import RelationAnalyzer
 from util import LoggingLevelRouter
 from err import BoardTeamRelationAnalysisException
 from result import AnalysisResult, MethodResultType
 from validation import BoardValidator, TeamValidator
 
 
-class BoardTeamRelationAnalyst(RelationAnalyst[Board, Team]):
+class BoardTeamRelationAnalyzer(RelationAnalyzer[Board, Team]):
     """
     Role:
         - Relation Analyst

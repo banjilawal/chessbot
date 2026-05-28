@@ -11,7 +11,7 @@ from __future__ import annotations
 from abc import abstractmethod
 from typing import Generic, TypeVar
 
-from analysis import Analyst
+from analysis import Analyzer
 from report import RelationReport
 from result import AnalysisResult
 from util import LoggingLevelRouter
@@ -19,7 +19,7 @@ from util import LoggingLevelRouter
 P = TypeVar("P")
 S = TypeVar("S")
 
-class RelationAnalyst(Analyst[RelationReport], Generic[P, S]):
+class RelationAnalyzer(Analyzer[RelationReport], Generic[P, S]):
     """
     Role:
         - Analyst interface.
@@ -48,6 +48,7 @@ class RelationAnalyst(Analyst[RelationReport], Generic[P, S]):
             cls,
             candidate_primary: P,
             candidate_satellite: S,
-            *args, **kwargs
+            *args,
+            **kwargs,
     ) -> AnalysisResult[RelationReport]:
         pass

@@ -1,0 +1,27 @@
+# src/model/square/opening/state.py
+
+"""
+Module: model.square.opening/state
+Author: Banji Lawal
+Created: 2026-04-03
+version: 1.0.1
+"""
+
+from enum import Enum, auto
+
+
+class ActivationState(Enum):
+    """
+    Role:
+        -   State Descriptor
+
+    Responsibilities:
+        1.  Indicates if the square can be visited.
+        
+    Provides
+
+    Super Class:
+        Enum
+    """
+    BLANK = auto(),
+    ACTIVATED_BY_TOKEN = auto(),

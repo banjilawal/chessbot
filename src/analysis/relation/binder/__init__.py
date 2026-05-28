@@ -13,4 +13,4 @@ version: 1.0.1
 
 
 # Modules
-from .analyst import BoardTeamBinderRelationAnalyst
+from .analyst import BoardTeamBinderRelationAnalyzer

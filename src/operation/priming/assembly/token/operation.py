@@ -11,15 +11,16 @@ from __future__ import annotations
 
 from typing import List
 
+from blueprint import TokenBlueprint
 from controller import WorkerRegistryController
 from report import CollisionReport
 from toolkit import TokenToolkit
 from search import SquareNotFoundException
 from operation import AssemblyPrimer
 from err import TokenAssemblyPrimingException
-from system import IdFactory, LoggingLevelRouter
 from result import AnalysisResult, SearchResult, ValidationResult
-from model import OpeningSquare, SquareContext, Token, TokenBlueprint
+from model import OpeningSquare, SquareContext, Token
+from util import IdFactory, LoggingLevelRouter
 
 
 class TokenAssemblyPrimer(AssemblyPrimer[Token]):
@@ -173,7 +174,7 @@ class TokenAssemblyPrimer(AssemblyPrimer[Token]):
                 )
             )
         # Handle the case that, the team does not pass a validation check.
-        team_validation = toolkit.team_service.validator.validate(
+        team_validation = toolkit.team_validator.validate(
             candidate=blueprint.team
         )
         if team_validation.is_failure:

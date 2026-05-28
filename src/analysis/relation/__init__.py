@@ -12,9 +12,9 @@ version: 1.0.1
 
 # Packages
 from .binder import *
+from .square import *
 from .team import *
-
-
+from .token import *
 
 # Modules
-from .analyst import RelationAnalyst
+from .analyzer import RelationAnalyzer

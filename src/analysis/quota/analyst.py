@@ -9,12 +9,12 @@ version: 1.0.0
 
 from __future__ import annotations
 
-from analysis import Analyst
+from analysis import Analyzer
 from analysis import Rank
 from report.quota.report import RankQuotaReport
 
 
-class RankQuotaAnalyst(Analyst[RankQuotaReport]):
+class RankQuotaAnalyzer(Analyzer[RankQuotaReport]):
     """
     Role:
         - Statistical Analyst

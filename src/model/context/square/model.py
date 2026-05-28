@@ -40,6 +40,7 @@ class SquareContext(Context[Square]):
     Super Class:
         Context
     """
+    id: Optional[int] = None
     board: Optional[Board] = None
     coord: Optional[Coord] = None
     occupant: Optional[Token] = None

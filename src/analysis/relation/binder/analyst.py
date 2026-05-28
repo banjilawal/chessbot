@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import cast
 
-from analysis import RelationAnalyst
+from analysis import RelationAnalyzer
 from err import BoardBinderAnalysisAnalysisException
 from integrity import BoardValidator
 from microservice import BoardService
@@ -22,7 +22,7 @@ from result import AnalysisResult, MethodResultType
 from system import LoggingLevelRouter
 
 
-class BoardTeamBinderRelationAnalyst(RelationAnalyst[Board, BoardBinder]):
+class BoardTeamBinderRelationAnalyzer(RelationAnalyzer[Board, BoardBinder]):
     """
     Role:
         - Relation Analyst

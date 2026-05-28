@@ -14,12 +14,12 @@ from typing import Any, cast
 from controller import WorkerRegistryController
 from factory import ToolkitFactory
 from model import CombatantToken, KingToken, Token
-from operation import Validator
 from toolkit import TokenToolkit
 from database import CoordDatabase
 from result import BuildResult, ValidationResult
 from util import LoggingLevelRouter
 from err import CoordDatabaseNullException, TokenNullException, TokenValidationException
+from validation import Validator
 
 
 class TokenValidator(Validator[Token]):
