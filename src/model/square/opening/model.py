@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from model import Coord, Formation, Square
 from model.board import Board
-from model.square.opening.state import ActivationState
+from model.square.opening.state import TokenHomeClaimState
 
 
 class OpeningSquare(Square):
@@ -41,7 +41,7 @@ class OpeningSquare(Square):
         Square
     """
     _formation: Formation
-    _activation_state: ActivationState
+    token_claim_state: TokenHomeClaimState
     
     
     def __init__(
@@ -62,22 +62,22 @@ class OpeningSquare(Square):
         """
         super().__init__(id=id, name=name, coord=coord, board=board)
         self._formation = formation
-        self._activation_state = ActivationState.BLANK
+        self.token_claim_state = TokenHomeClaimState.UNCLAIMED
     
     @property
     def formation(self) -> Formation:
         return self._formation
     
     @property
-    def activation_state(self) -> ActivationState:
-        return self._activation_state
+    def activation_state(self) -> TokenHomeClaimState:
+        return self.token_claim_state
     
     def activate(self):
-        self._activation_state = ActivationState.ACTIVATED_BY_TOKEN
+        self.token_claim_state = TokenHomeClaimState.CLAIMED
         
     @property
     def is_activated(self) -> bool:
-        return self._activation_state == ActivationState.ACTIVATED_BY_TOKEN
+        return self.token_claim_state == TokenHomeClaimState.CLAIMED
     
     @property
     def is_not_activated(self) -> bool:

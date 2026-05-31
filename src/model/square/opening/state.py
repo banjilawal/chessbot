@@ -10,7 +10,7 @@ version: 1.0.1
 from enum import Enum, auto
 
 
-class ActivationState(Enum):
+class TokenHomeClaimState(Enum):
     """
     Role:
         -   State Descriptor
@@ -23,5 +23,5 @@ class ActivationState(Enum):
     Super Class:
         Enum
     """
-    BLANK = auto(),
-    ACTIVATED_BY_TOKEN = auto(),
+    UNCLAIMED = auto(),
+    CLAIMED = auto(),
