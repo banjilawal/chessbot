@@ -22,7 +22,7 @@ class OpeningSquare(Square):
         -   Stateful Data Holder
 
     Responsibilities:
-        1.  Square Which a token gets formed before is opening move.
+        1.  Square Which a token claims before it can make its opening move.
 
     Attributes:
         id: int
@@ -41,7 +41,7 @@ class OpeningSquare(Square):
         Square
     """
     _formation: Formation
-    token_claim_state: TokenHomeClaimState
+    _token_claim_state: TokenHomeClaimState
     
     
     def __init__(
@@ -62,26 +62,26 @@ class OpeningSquare(Square):
         """
         super().__init__(id=id, name=name, coord=coord, board=board)
         self._formation = formation
-        self.token_claim_state = TokenHomeClaimState.UNCLAIMED
+        self._token_claim_state = TokenHomeClaimState.UNCLAIMED
     
     @property
     def formation(self) -> Formation:
         return self._formation
     
     @property
-    def activation_state(self) -> TokenHomeClaimState:
-        return self.token_claim_state
+    def token_claim_state(self) -> TokenHomeClaimState:
+        return self._token_claim_state
     
-    def activate(self):
-        self.token_claim_state = TokenHomeClaimState.CLAIMED
+    def claim(self):
+        self._token_claim_state = TokenHomeClaimState.CLAIMED
         
     @property
-    def is_activated(self) -> bool:
+    def is_claimed(self) -> bool:
         return self.token_claim_state == TokenHomeClaimState.CLAIMED
     
     @property
-    def is_not_activated(self) -> bool:
-        return not self.is_activated
+    def is_not_claimed(self) -> bool:
+        return not self.is_claimed
     
     def __eq__(self, other: object) -> bool:
         if other is self: return True

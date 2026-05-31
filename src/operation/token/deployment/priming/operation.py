@@ -23,7 +23,7 @@ from err.operation.token.deployment.duplicate.exception import DuplicateTokenDep
 from model import OpeningSquare, SquareContext, Token
 from operation import Operation
 from report import RelationReport, TokenFreedomReport
-from result import MethodResultType, UpdateResult, ValidationResult
+from result import AnalysisResult, MethodResultType, UpdateResult, ValidationResult
 from util import LoggingLevelRouter
 from validation import TokenValidator
 
@@ -96,8 +96,10 @@ class TokenDeploymentPrimer(Operation[Token]):
         if square_token_relation_analyzer is None:
             square_token_relation_analyzer = SquareTokenRelationAnalyzer()
         
-        # Handle the case that, the token is not safe.
+        # --- Perform analysis to see if the token is free. ---#
         freedom_analysis_result = token_freedom_analyzer.analyze(token)
+        
+        # Handle the case that, the analysis is not completed.
         if freedom_analysis_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
@@ -110,8 +112,8 @@ class TokenDeploymentPrimer(Operation[Token]):
                     ex=freedom_analysis_result.exception,
                 )
             )
-        report = cast (TokenFreedomReport, freedom_analysis_result.payload)
         # Handle the case that, the token has already been deployed.
+        report = cast (TokenFreedomReport, freedom_analysis_result.payload)
         if report.token_is_deployed:
             # Send the exception chain on failure.
             return ValidationResult.failure(
@@ -127,9 +129,12 @@ class TokenDeploymentPrimer(Operation[Token]):
                     ),
                 )
             )
-        
+        # --- Start opening_square tests from the token's board. ---#
         board = token.team.board
-        square_search_result = board.squares.search(context=SquareContext(id=token.opening_square.id))
+        square_search_result = board.squares.search(
+            context=SquareContext(id=token.opening_square.id)
+        )
+        # Handle the case that, searching for the opening square is not completed.
         if square_search_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
@@ -142,6 +147,7 @@ class TokenDeploymentPrimer(Operation[Token]):
                     ex=square_search_result.exception,
                 )
             )
+        # Handle the case that, the opening square is not found.
         if square_search_result.is_empty:
             # Send the exception chain on failure.
             return ValidationResult.failure(
@@ -159,8 +165,9 @@ class TokenDeploymentPrimer(Operation[Token]):
                     ),
                 )
             )
+        # Handle the case that, the opening square has already been claimed as home by a token.
         opening_square = cast(OpeningSquare, square_search_result.payload[0])
-        if opening_square.is_activated:
+        if opening_square.is_claimed:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 TokenDeploymentPrimingException(
@@ -175,6 +182,9 @@ class TokenDeploymentPrimer(Operation[Token]):
                     ),
                 )
             )
+        return AnalysisResult.success(
+            RelationReport.bidirectional(primary=opening_square)
+        )
         opening_square = token.opening_square
         if opening_square.board != board:
             # Send the exception chain on failure.
