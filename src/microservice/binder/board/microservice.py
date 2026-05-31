@@ -12,7 +12,7 @@ from __future__ import annotations
 from copy import deepcopy
 from typing import Optional
 
-from analysis import BoardTeamBinderRelationAnalyzer, BoardTeamRelationAnalyzer
+from analyzer import BoardTeamBinderRelationAnalyzer, BoardTeamRelationAnalyzer
 from integrity import SchemaValidator, TeamValidator
 from microservice import BoardService, Microservice
 from model import Board, BoardBinder, Schema, Team

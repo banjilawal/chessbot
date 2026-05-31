@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Iterator, List, Optional
 
-from analysis import CollisionAnalyst
+from analyzer import CollisionAnalyzer
 from controller.stack.token.controller import TokenStackOpsController
 from microservice import IdentityService, TokenService
 from model import Token, TokenContext
@@ -162,7 +162,7 @@ class TokenStackService(StackService[Token]):
         )
     
     @property
-    def collision_analyst(self) -> CollisionAnalyst[Token]:
+    def collision_analyst(self) -> CollisionAnalyzer[Token]:
         return self._ops_controller.collision_analyst
     
     @property

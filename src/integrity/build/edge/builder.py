@@ -139,8 +139,8 @@ class EdgeBuilder(Builder[Edge]):
              )
          # --- After the inputs have been validated compute the edge's Euclidean dist. ---#
          distance_computation_result = edge_service.distance(
-             u=head.square.edge,
-             v=tail.square.edge
+             u=head.opening_square.edge,
+             v=tail.opening_square.edge
          )
          # Handle the case that, the dist is not computed successfully.
          if distance_computation_result.is_failure:

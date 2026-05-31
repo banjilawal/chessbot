@@ -10,7 +10,7 @@ version: 1.0.1
 from __future__ import annotations
 from typing import List, Optional
 
-from analysis import CollisionReport
+from analyzer import CollisionReport
 from database import Database
 from microservice import IdentityService, RankService, TokenService
 from model import Rank, Token, TokenBlueprint

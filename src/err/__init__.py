@@ -10,7 +10,7 @@ version: 1.0.0
 #=========== ERR PACKAGE ===========#
 
 # Packages
-from .analysis import *
+from .analyzer import *
 from .array import *
 from .config import *
 from .consistency import *

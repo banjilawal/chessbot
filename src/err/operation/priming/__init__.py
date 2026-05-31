@@ -11,7 +11,6 @@ version: 1.0.1
 
 # Packages
 from .assembly import *
-from .deployment import *
 
 # Modules
 from .exception import PrimingException

@@ -9,7 +9,7 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from analysis import Rank
+from analyzer import Rank
 
 
 class OpeningSquareAvailabilityReport:

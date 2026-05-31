@@ -13,15 +13,14 @@ from _ast import List
 from copy import deepcopy
 from typing import cast
 
-from analysis import TokenFreedomAnalyzer
+from analyzer import TokenFreedomAnalyzer
 from err import TokenDeploymentException
-from err.operation.token.deployment.duplicate.exception import DuplicateTokenDeploymentException
+from err.analyzer.claim.exist.exception import HomeSquareAlreadyClaimedException
 from model import OpeningSquare, Token
 from operation import Operation
 from report import TokenFreedomReport
 from result import MethodResultType, UpdateResult, ValidationResult
 from util import LoggingLevelRouter
-from validation import TokenValidator
 
 
 class TokenDeploymentPrimer(Operation[Token]):
@@ -113,9 +112,9 @@ class TokenDeploymentPrimer(Operation[Token]):
                     msg=TokenDeploymentException.MSG,
                     err_code=TokenDeploymentException.ERR_CODE,
                     mthd_rslt_type=MethodResultType.UPDATE_RESULT,
-                    ex=DuplicateTokenDeploymentException(
-                        msg=DuplicateTokenDeploymentException.MSG,
-                        err_code=DuplicateTokenDeploymentException.ERR_CODE,
+                    ex=HomeSquareAlreadyClaimedException(
+                        msg=HomeSquareAlreadyClaimedException.MSG,
+                        err_code=HomeSquareAlreadyClaimedException.ERR_CODE,
                     ),
                 )
             )

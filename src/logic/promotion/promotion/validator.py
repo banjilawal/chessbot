@@ -99,7 +99,7 @@ class OldPromotionEventValidator(Validator[PromotionEvent]):
                 return ValidationResult.failure(square_search_result.exception)
             square = cast(Square, square_search_result.payload)
             
-            resource_validation = TravelResourceValidator.search_service(event.square, event.execution_environment)
+            resource_validation = TravelResourceValidator.search_service(event.opening_square, event.execution_environment)
             if resource_validation.is_failure():
                 return ValidationResult(exception=resource_validation.exception)
             

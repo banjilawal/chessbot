@@ -8,7 +8,6 @@ version: 1.0.1
 """
 
 from __future__ import annotations
-
 from dataclasses import dataclass
 
 from model import OpeningSquare, Token
@@ -24,8 +23,8 @@ class HomeSquareClaimReport:
         1.  Presents a token's claim on an opening square.
         
     Attributes:
-        token: Token
-        square: OpeningSquare
+        claimant: Token
+        opening_square: OpeningSquare
         
         token_has_claimed_square: bool
         square_claimed_by_other_token
@@ -35,17 +34,17 @@ class HomeSquareClaimReport:
     Super Class:
         Report
     """
-    token: Token
-    square: OpeningSquare
+    claimant: Token
+    opening_square: OpeningSquare
     
     @property
-    def token_has_claimed_square(self) -> bool:
+    def claimant_owns_square(self) -> bool:
         return (
-                self.token.is_deployed and
-                self.square.is_claimed and
-                self.token == self.square.occupant
+                self.claimant.is_deployed and
+                self.opening_square.is_claimed and
+                self.claimant == self.opening_square.occupant
         )
     
     @property
     def square_claimed_by_other_token(self) -> bool:
-        return self.square.is_claimed and self.token != self.square.occupant
+        return self.opening_square.is_claimed and self.claimant != self.opening_square.occupant

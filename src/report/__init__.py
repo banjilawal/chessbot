@@ -11,6 +11,7 @@ version: 1.0.1
 # =========== REPORT PACKAGE ===========#
 
 # Packages
+from .claim import *
 from .collision import *
 from .freedom import *
 from .quota import *

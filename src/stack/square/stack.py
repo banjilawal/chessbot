@@ -215,7 +215,7 @@ class SquareStackService(StackService[Square]):
         method = "SquareStackService.start_square_visit"
         
         # --- Handoff the visit management responsibility to _controller ---#
-        visitation_result = self._controller.token.occupy_stack_square(
+        visitation_result = self._controller.claimant.occupy_stack_square(
             token=token,
             square=square,
             square_stack=self,
@@ -244,7 +244,7 @@ class SquareStackService(StackService[Square]):
         method = "SquareStackService.end_square_visit"
         
         # --- Handoff the visit management responsibility to _controller ---#
-        visitation_result = self._controller.token.remove_occupant_from_stack(
+        visitation_result = self._controller.claimant.remove_occupant_from_stack(
             occupant=token,
             square_stack=self,
             token_service=token_service,
