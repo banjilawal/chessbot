@@ -83,7 +83,7 @@ class Token(ABC):
         self._opening_square = opening_square
         self._current_position = self._positions.current_item
         self._previous_address = self._positions.previous_coord
-        self._token_board_state = TokenBoardState.NEVER_BEEN_PLACED
+        self._token_board_state = TokenBoardState.HAS_NOT_DEPLOYED
         self._readiness_state = TokenActivityState.NOT_INITIALIZED
     
     @property
@@ -142,21 +142,21 @@ class Token(ABC):
     def is_not_deployed(self) -> bool:
         return (
                 self.positions.is_empty and
-                self._token_board_state == TokenBoardState.NEVER_BEEN_PLACED
+                self._token_board_state == TokenBoardState.HAS_NOT_DEPLOYED
         )
     
     @property
     def is_deployed(self) -> bool:
         return (
             self.positions.size == 1 and
-            self._token_board_state != TokenBoardState.DEPLOYED_ON_BOARD
+            self._token_board_state != TokenBoardState.CLAIMED_HOME_SQUARE
         )
     
     @property
     def is_developed(self) -> bool:
         return (
                 self.positions.size > 1 and
-                self._token_board_state != TokenBoardState.DEPLOYED_ON_BOARD
+                self._token_board_state != TokenBoardState.CLAIMED_HOME_SQUARE
         )
     
     @property

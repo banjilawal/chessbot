@@ -24,6 +24,6 @@ class TokenBoardState(Enum):
     Super Class:
         Enum
     """
-    NEVER_BEEN_PLACED = auto(),
-    DEPLOYED_ON_BOARD = auto(),
+    HAS_NOT_DEPLOYED = auto(),
+    CLAIMED_HOME_SQUARE = auto(),
     REMOVED_FROM_BOARD = auto(),

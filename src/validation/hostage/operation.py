@@ -182,7 +182,7 @@ class HostageValidator(Validator[Hostage]):
                 )
             )
         # The victor can get captured later. Only test that is has been formed.
-        if manifest.victor.board_state == TokenBoardState.NEVER_BEEN_PLACED:
+        if manifest.victor.board_state == TokenBoardState.HAS_NOT_DEPLOYED:
             # Send the exception chain on failure
             return ValidationResult.failure(
                 HostageValidationException(
