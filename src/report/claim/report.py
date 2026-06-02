@@ -9,9 +9,11 @@ version: 1.0.1
 
 from __future__ import annotations
 from dataclasses import dataclass
+from typing import Optional
 
 from model import OpeningSquare, Token
 from report import Report
+from report.claim.state import ClaimPermission
 
 
 @dataclass
@@ -25,7 +27,7 @@ class HomeSquareClaimReport(Report):
         
     Attributes:
         claimant: Token
-        home_square: OpeningSquare
+        home: OpeningSquare
         
         token_has_claimed_square: bool
         square_claimed_by_other_token
@@ -36,16 +38,34 @@ class HomeSquareClaimReport(Report):
         Report
     """
     claimant: Token
-    home_square: OpeningSquare
+    home: Optional[OpeningSquare]
+    permissions: ClaimPermission
     
     @property
-    def claimant_owns_square(self) -> bool:
+    def is_granted(self) -> bool:
         return (
                 self.claimant.is_deployed and
-                self.home_square.is_claimed and
-                self.claimant == self.home_square.occupant
+                self.home.is_claimed and
+                self.claimant.opening_square == self.home and
+                self.permissions == ClaimPermission.GRANTED
         )
     
     @property
-    def square_claimed_by_other_token(self) -> bool:
-        return self.home_square.is_claimed and self.claimant != self.home_square.occupant
+    def is_denied(self) -> bool:
+        return not self.is_granted
+    
+    @classmethod
+    def grant_claim(cls, token: Token, home_square: OpeningSquare) -> HomeSquareClaimReport:
+        return cls(
+            claimant=token,
+            home=home_square,
+            permissions=ClaimPermission.GRANTED
+        )
+    
+    @classmethod
+    def deny_claim(cls, token: Token) -> HomeSquareClaimReport:
+        return cls(
+            claimant=token,
+            home=None,
+            permissions=ClaimPermission.DENIED
+        )

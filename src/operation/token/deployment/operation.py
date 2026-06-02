@@ -101,7 +101,7 @@ class TokenDeployer(Operation[Token]):
         # Make a visitation request to square_validator.
         visitation_result = token.team.board.squares.service.begin_square_visit(
             visitor=token,
-            square=claim_report.home_square,
+            square=claim_report.home,
         )
         # Handle the case that, the visitation transaction fails.
         if visitation_result.is_failure:
