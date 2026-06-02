@@ -131,7 +131,7 @@ class TokenDeployer(Operation[Token]):
         
         
         if token.deployment_state == DeploymentState.NOT_DEPLOYED:
-            token.deployment_state = DeploymentState.CLAIMED_HOME_SQUARE
+            token.deployment_state = DeploymentState.DEPLOYED
         if home_square.token_claim_state != TokenHomeClaimState.UNCLAIMED:
             home_square.record_claim()
         # Handle the case that, the token is not safe.
@@ -332,7 +332,7 @@ class TokenDeployer(Operation[Token]):
             )
         # --- Ensure the token.board_state has been updated. ---#
         if token.deployment_state == DeploymentState.NOT_DEPLOYED:
-            token.deployment_state = DeploymentState.CLAIMED_HOME_SQUARE
+            token.deployment_state = DeploymentState.DEPLOYED
             
         # --- Send the work product ---#
         return UpdateResult.update_success(original=pre_update_token, updated=token,)

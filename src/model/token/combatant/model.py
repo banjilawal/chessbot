@@ -85,7 +85,7 @@ class CombatantToken(Token):
         return (
                 self._captor is None and
                 self.readiness_state == TokenActivityState.FREE and
-                self.deployment_state == DeploymentState.CLAIMED_HOME_SQUARE
+                self.deployment_state == DeploymentState.DEPLOYED
         )
     
     @property
@@ -96,7 +96,7 @@ class CombatantToken(Token):
     def has_entered_hostage_process(self) -> bool:
         return (
                 self._captor is not None and
-                self.deployment_state == DeploymentState.CLAIMED_HOME_SQUARE and
+                self.deployment_state == DeploymentState.DEPLOYED and
                 self.readiness_state == TokenActivityState.CAPTURE_ACTIVATED
         )
     

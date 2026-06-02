@@ -328,7 +328,7 @@ class TokenDeploymentPrimer(Operation[Token]):
             )
         # --- Ensure the token.board_state has been updated. ---#
         if token.deployment_state == TokenBoardState.NOT_DEPLOYED:
-            token.deployment_state = TokenBoardState.CLAIMED_HOME_SQUARE
+            token.deployment_state = TokenBoardState.DEPLOYED
             
         # --- Send the work product ---#
         return UpdateResult.update_success(original=pre_update_token, updated=token,)

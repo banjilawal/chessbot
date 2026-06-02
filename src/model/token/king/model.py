@@ -80,14 +80,14 @@ class KingToken(Token):
     @property
     def is_in_check(self) -> bool:
         return (
-                self.deployment_state == DeploymentState.CLAIMED_HOME_SQUARE and
+                self.deployment_state == DeploymentState.DEPLOYED and
                 self.readiness_state == TokenActivityState.IN_CHECK
         )
     
     @property
     def is_checkmated(self) -> bool:
         return (
-                self.deployment_state == DeploymentState.CLAIMED_HOME_SQUARE and
+                self.deployment_state == DeploymentState.DEPLOYED and
                 self.readiness_state == TokenActivityState.CHECKMATED
         )
     
@@ -95,7 +95,7 @@ class KingToken(Token):
     def is_active(self) -> bool:
         return (
                 (TokenActivityState.FREE or TokenActivityState.IN_CHECK) and
-                self.deployment_state == DeploymentState.CLAIMED_HOME_SQUARE
+                self.deployment_state == DeploymentState.DEPLOYED
         )
     
     @property

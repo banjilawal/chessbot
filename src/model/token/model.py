@@ -135,7 +135,7 @@ class Token(ABC):
         return self._deployment_state
     
     def mark_deployed(self,):
-        self._deployment_state = DeploymentState.CLAIMED_HOME_SQUARE
+        self._deployment_state = DeploymentState.DEPLOYED
     
     @property
     def is_not_deployed(self) -> bool:
@@ -148,14 +148,14 @@ class Token(ABC):
     def is_deployed(self) -> bool:
         return (
                 self.positions.size == 1 and
-                self._deployment_state != DeploymentState.CLAIMED_HOME_SQUARE
+                self._deployment_state != DeploymentState.DEPLOYED
         )
     
     @property
     def is_developed(self) -> bool:
         return (
                 self.positions.size > 1 and
-                self._deployment_state != DeploymentState.CLAIMED_HOME_SQUARE
+                self._deployment_state != DeploymentState.DEPLOYED
         )
     
     @property

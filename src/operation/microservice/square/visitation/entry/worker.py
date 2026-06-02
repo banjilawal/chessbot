@@ -154,7 +154,7 @@ class SquareEntryProcess:
             )
         # --- Update the token's deployment state. ---#
         if token.deployment_state == DeploymentState.NOT_DEPLOYED:
-            token.deployment_state = DeploymentState.CLAIMED_HOME_SQUARE
+            token.deployment_state = DeploymentState.DEPLOYED
             
         # --- Forward the work product to the caller. ---#
         return UpdateResult.update_success(original=pre_update_square, updated=square)

@@ -179,6 +179,6 @@ class TokenStackPop:
         method = f"{cls.__name__}._token_stack_state_processor"
         
         if token_stack.is_empty:
-            token_stack.state = TokenStackState.CLAIMED_HOME_SQUARE
+            token_stack.state = TokenStackState.DEPLOYED
         # --- Send the work product. ---#
         return DeletionResult.success(payload=deleted_token)

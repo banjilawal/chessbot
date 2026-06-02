@@ -25,5 +25,5 @@ class DeploymentState(Enum):
         Enum
     """
     NOT_DEPLOYED = auto(),
-    CLAIMED_HOME_SQUARE = auto(),
+    DEPLOYED = auto(),
     REMOVED_FROM_BOARD = auto(),
