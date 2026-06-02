@@ -12,7 +12,7 @@ from abc import ABC, abstractmethod
 from typing import Optional
 
 from database import CoordDatabase
-from model import Coord, OpeningSquare, Rank, Team, TokenActivityState, TokenBoardState
+from model import Coord, OpeningSquare, Rank, Team, TokenActivityState, DeploymentState
 
 
 class Token(ABC):
@@ -53,7 +53,7 @@ class Token(ABC):
     _opening_square: OpeningSquare
     _current_position: Optional[Coord]
     _previous_address: Optional[Coord]
-    _token_board_state: TokenBoardState
+    _deployment_state: DeploymentState
     _readiness_state: TokenActivityState
 
     def __init__(
@@ -83,7 +83,7 @@ class Token(ABC):
         self._opening_square = opening_square
         self._current_position = self._positions.current_item
         self._previous_address = self._positions.previous_coord
-        self._token_board_state = TokenBoardState.HAS_NOT_DEPLOYED
+        self._deployment_state = DeploymentState.NOT_DEPLOYED
         self._readiness_state = TokenActivityState.NOT_INITIALIZED
     
     @property
@@ -131,32 +131,31 @@ class Token(ABC):
         return self._previous_address
     
     @property
-    def board_state(self) -> TokenBoardState:
-        return self._token_board_state
+    def deployment_state(self) -> DeploymentState:
+        return self._deployment_state
     
-    @board_state.setter
-    def board_state(self, board_state: TokenBoardState):
-        self._token_board_state = board_state
+    def mark_deployed(self,):
+        self._deployment_state = DeploymentState.CLAIMED_HOME_SQUARE
     
     @property
     def is_not_deployed(self) -> bool:
         return (
                 self.positions.is_empty and
-                self._token_board_state == TokenBoardState.HAS_NOT_DEPLOYED
+                self._deployment_state == DeploymentState.NOT_DEPLOYED
         )
     
     @property
     def is_deployed(self) -> bool:
         return (
-            self.positions.size == 1 and
-            self._token_board_state != TokenBoardState.CLAIMED_HOME_SQUARE
+                self.positions.size == 1 and
+                self._deployment_state != DeploymentState.CLAIMED_HOME_SQUARE
         )
     
     @property
     def is_developed(self) -> bool:
         return (
                 self.positions.size > 1 and
-                self._token_board_state != TokenBoardState.CLAIMED_HOME_SQUARE
+                self._deployment_state != DeploymentState.CLAIMED_HOME_SQUARE
         )
     
     @property
@@ -169,9 +168,9 @@ class Token(ABC):
     def is_disabled(self) -> bool:
         pass
     
-    @board_state.setter
-    def board_state(self, token_board_state: TokenBoardState):
-        self._token_board_state = token_board_state
+    @mark_deployed.setter
+    def deployment_state(self, token_board_state: DeploymentState):
+        self._deployment_state = token_board_state
     
     def set_rank(self, rank: Rank) -> None:
         self._rank = rank

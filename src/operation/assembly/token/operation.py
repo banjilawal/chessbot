@@ -40,7 +40,7 @@ class TokenAssembler(Assembler[Token]):
                     team=blueprint.team,
                     designation=blueprint.formation.designation,
                     roster_number=blueprint.formation.roster_number,
-                    opening_square=blueprint.opening_square,
+                    opening_square=blueprint.home_square,
                 )
             )
         if isinstance(blueprint.rank, King):
@@ -50,7 +50,7 @@ class TokenAssembler(Assembler[Token]):
                     team=blueprint.team,
                     designation=blueprint.formation.designation,
                     roster_number=blueprint.formation.roster_number,
-                    opening_square=blueprint.opening_square
+                    opening_square=blueprint.home_square
                 )
             )
         return BuildResult.success(
@@ -59,7 +59,7 @@ class TokenAssembler(Assembler[Token]):
                 team=blueprint.team,
                 designation=blueprint.formation.designation,
                 roster_number=blueprint.formation.roster_number,
-                opening_square=blueprint.opening_square,
+                opening_square=blueprint.home_square,
                 rank=blueprint.rank
             )
         )

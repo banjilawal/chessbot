@@ -10,6 +10,7 @@ version: 1.0.1
 # ============ ERR.ANALYZER.CLAIM PACKAGE ===========#
 
 # Packages
+from .exist import *
 
 # Modules
 from .exception import HomeSquareClaimAnalyzerException

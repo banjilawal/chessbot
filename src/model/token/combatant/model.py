@@ -13,7 +13,7 @@ from typing import Optional
 from model import OpeningSquare
 from model.team import Team
 from model.rank import Rank
-from model.token import Token, TokenBoardState, TokenActivityState
+from model.token import Token, DeploymentState, TokenActivityState
 
 
 class CombatantToken(Token):
@@ -85,7 +85,7 @@ class CombatantToken(Token):
         return (
                 self._captor is None and
                 self.readiness_state == TokenActivityState.FREE and
-                self.board_state == TokenBoardState.CLAIMED_HOME_SQUARE
+                self.deployment_state == DeploymentState.CLAIMED_HOME_SQUARE
         )
     
     @property
@@ -96,7 +96,7 @@ class CombatantToken(Token):
     def has_entered_hostage_process(self) -> bool:
         return (
                 self._captor is not None and
-                self.board_state == TokenBoardState.CLAIMED_HOME_SQUARE and
+                self.deployment_state == DeploymentState.CLAIMED_HOME_SQUARE and
                 self.readiness_state == TokenActivityState.CAPTURE_ACTIVATED
         )
     
@@ -104,7 +104,7 @@ class CombatantToken(Token):
     def being_processed_as_hostage(self) -> bool:
         return (
                 self._captor is not None and
-                self.board_state == TokenBoardState.REMOVED_FROM_BOARD and
+                self.deployment_state == DeploymentState.REMOVED_FROM_BOARD and
                 self.readiness_state == TokenActivityState.HOSTAGE_CREATED
         )
     
@@ -112,7 +112,7 @@ class CombatantToken(Token):
     def recorded_as_hostage(self) -> bool:
         return (
                 self._captor is not None and
-                self.board_state == TokenBoardState.REMOVED_FROM_BOARD and
+                self.deployment_state == DeploymentState.REMOVED_FROM_BOARD and
                 self.readiness_state == TokenActivityState.HOSTAGE_IN_DATABASE
         )
     

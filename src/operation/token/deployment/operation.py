@@ -13,11 +13,14 @@ from _ast import List
 from copy import deepcopy
 from typing import cast
 
-from analyzer import TokenFreedomAnalyzer
+from analyzer import HomeSquareClaimAnalyzer, TokenFreedomAnalyzer
+from controller import WorkerRegistryController
 from err import TokenDeploymentException
 from err.analyzer.claim.exist.exception import HomeSquareAlreadyClaimedException
-from model import OpeningSquare, Token
+from model import BoardState, OpeningSquare, Token, DeploymentState
+from model.square.opening.state import TokenHomeClaimState
 from operation import Operation
+from report import HomeSquareClaimReport
 from result import MethodResultType, UpdateResult
 from util import LoggingLevelRouter
 
@@ -58,7 +61,7 @@ class TokenDeployer(Operation[Token]):
     def execute(
             cls,
             token: Token,
-            token_freedom_analyzer: TokenFreedomAnalyzer | None = None,
+            home_square_claim_analyzer: HomeSquareClaimAnalyzer | None = None,
     ) -> UpdateResult[OpeningSquare]:
         """
         Executes the deployment transaction.
@@ -84,54 +87,56 @@ class TokenDeployer(Operation[Token]):
         method = f"{cls.__class__.__name__}.deploy_on_board"
         
         # --- Supply any missing dependencies. ---#
+        if home_square_claim_analyzer is None:
+            home_square_claim_analyzer = HomeSquareClaimAnalyzer()
+         
+        # Handle the case that, a claim report is not generated.
+        analysis_result = home_square_claim_analyzer.analyze(token=token)
+        if analysis_result.is_failure:
+            # Send the exception chain on failure.
+            return UpdateResult.update_failure(
+                original=token,
+                exception=TokenDeploymentException(
+                    cls_mthd=method,
+                    cls_name=cls.__class__.__name__,
+                    msg=TokenDeploymentException.MSG,
+                    err_code=TokenDeploymentException.ERR_CODE,
+                    mthd_rslt_type=MethodResultType.UPDATE_RESULT,
+                    ex=analysis_result.exception,
+                )
+            )
+        claim_report = cast(HomeSquareClaimReport, analysis_result.payload)
+        pre_update_token = deepcopy(token)
         
+        visitation_result = token.team.board.squares.service.begin_square_visit(
+            visitor=token,
+            square=claim_report.home_square,
+        )
+        # Handle the case that, the visitation transaction fails.
+        if visitation_result.is_failure:
+            # Send the exception chain on failure.
+            return UpdateResult.update_failure(
+                original=pre_update_token,
+                exception=TokenDeploymentException(
+                    cls_mthd=method,
+                    cls_name=cls.__class__.__name__,
+                    msg=TokenDeploymentException.MSG,
+                    err_code=TokenDeploymentException.ERR_CODE,
+                    mthd_rslt_type=MethodResultType.UPDATE_RESULT,
+                    ex=analysis_result.exception,
+                )
+            )
+        home_square = cast(OpeningSquare, visitation_result.payload)
+        token = home_square.occupant
+        
+        
+        if token.deployment_state == DeploymentState.NOT_DEPLOYED:
+            token.deployment_state = DeploymentState.CLAIMED_HOME_SQUARE
+        if home_square.token_claim_state != TokenHomeClaimState.UNCLAIMED:
+            home_square.record_claim()
         # Handle the case that, the token is not safe.
-        token_validation = token_validator.validate(token)
-        if token_validation.is_failure:
-            # Send the exception chain on failure.
-            return UpdateResult.update_failure(
-                original=token,
-                exception=TokenDeploymentException(
-                    cls_mthd=method,
-                    cls_name=cls.__class__.__name__,
-                    msg=TokenDeploymentException.MSG,
-                    err_code=TokenDeploymentException.ERR_CODE,
-                    mthd_rslt_type=MethodResultType.UPDATE_RESULT,
-                    ex=token_validation.exception,
-                )
-            )
-        # Handle the case that, the token has already been deployed.
-        if token.is_deployed:
-            # Send the exception chain on failure.
-            return UpdateResult.update_failure(
-                original=token,
-                exception=TokenDeploymentException(
-                    cls_mthd=method,
-                    cls_name=cls.__class__.__name__,
-                    msg=TokenDeploymentException.MSG,
-                    err_code=TokenDeploymentException.ERR_CODE,
-                    mthd_rslt_type=MethodResultType.UPDATE_RESULT,
-                    ex=HomeSquareAlreadyClaimedException(
-                        msg=HomeSquareAlreadyClaimedException.MSG,
-                        err_code=HomeSquareAlreadyClaimedException.ERR_CODE,
-                    ),
-                )
-            )
-        # Handle the case that, an opening_square test fails.
-        opening_square_search_result = cls._run_opening_square_tests(token)
-        if opening_square_search_result.is_failure:
-            # Send the exception chain on failure.
-            return UpdateResult.update_failure(
-                original=token,
-                exception=TokenDeploymentException(
-                    cls_mthd=method,
-                    cls_name=cls.__class__.__name__,
-                    msg=TokenDeploymentException.MSG,
-                    err_code=TokenDeploymentException.ERR_CODE,
-                    mthd_rslt_type=MethodResultType.UPDATE_RESULT,
-                    ex=opening_square_search_result.exception,
-                )
-            )
+
+
         # --- Integrity and consistency checks are passed. Make a deep copy of the original token. ---#
         pre_update_token = deepcopy(token)
         
@@ -326,9 +331,13 @@ class TokenDeployer(Operation[Token]):
                 )
             )
         # --- Ensure the token.board_state has been updated. ---#
-        if token.board_state == TokenBoardState.HAS_NOT_DEPLOYED:
-            token.board_state = TokenBoardState.CLAIMED_HOME_SQUARE
+        if token.deployment_state == DeploymentState.NOT_DEPLOYED:
+            token.deployment_state = DeploymentState.CLAIMED_HOME_SQUARE
             
         # --- Send the work product ---#
         return UpdateResult.update_success(original=pre_update_token, updated=token,)
+
+
+# Register the operation.
+WorkerRegistryController.register_worker(TokenAssembler)
         

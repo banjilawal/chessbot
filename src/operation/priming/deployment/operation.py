@@ -101,7 +101,7 @@ class TokenDeploymentPrimer(Operation[Token]):
                     ex=deployment_analysis_result.exception,
                 )
             )
-        report = cast (TokenFreedomReport, deployment_analysis_result.payload)
+        report = cast(TokenFreedomReport, deployment_analysis_result.payload)
         # Handle the case that, the token has already been deployed.
         if report.token_is_deployed:
             # Send the exception chain on failure.
@@ -327,8 +327,8 @@ class TokenDeploymentPrimer(Operation[Token]):
                 )
             )
         # --- Ensure the token.board_state has been updated. ---#
-        if token.board_state == TokenBoardState.HAS_NOT_DEPLOYED:
-            token.board_state = TokenBoardState.CLAIMED_HOME_SQUARE
+        if token.deployment_state == TokenBoardState.NOT_DEPLOYED:
+            token.deployment_state = TokenBoardState.CLAIMED_HOME_SQUARE
             
         # --- Send the work product ---#
         return UpdateResult.update_success(original=pre_update_token, updated=token,)

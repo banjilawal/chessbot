@@ -17,7 +17,7 @@ from util import LoggingLevelRouter
 from logic.square import Square, SquareDatabase
 from system import RelationReport
 from model.hostage import HostageService
-from model.token import CombatantReadinessEnum, KingToken, Token, TokenBoardState, TokenService
+from model.token import CombatantReadinessEnum, KingToken, Token, DeploymentState, TokenService
 
 
 class Attack:
@@ -144,7 +144,7 @@ class Attack:
         # Update the hostage's captor field and its status.
         prisoner = captive_removal.payload
         prisoner.captor = attacker
-        prisoner.board_state = TokenBoardState.REMOVED_FROM_BOARD
+        prisoner.deployment_state = DeploymentState.REMOVED_FROM_BOARD
         prisoner.activity.classification = CombatantReadinessEnum.CAPTURE_ACTIVATED
         
         # Handle the case that, removing the attacker from their old item fails.

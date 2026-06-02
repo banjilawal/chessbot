@@ -11,13 +11,11 @@ from __future__ import annotations
 
 from typing import Generic, Optional, TypeVar
 
-from model import Report
+from report import Report
 from result import AnalysisState, Result
 
-R = TypeVar("R", bound=Report)
 
-
-class AnalysisResult(Result, Generic[R]):
+class AnalysisResult(Result[Report]):
     """
     Role:
         -   Data Transport
@@ -91,7 +89,7 @@ class AnalysisResult(Result, Generic[R]):
         )
     
     @classmethod
-    def completed(cls, payload: Report) -> AnalysisResult[R]:
+    def completed(cls, payload: Report) -> AnalysisResult[Report]:
         return cls(
             payload=payload,
             exception=None,
@@ -99,7 +97,7 @@ class AnalysisResult(Result, Generic[R]):
         )
     
     @classmethod
-    def aborted(cls, exception: Exception) -> AnalysisResult[R]:
+    def aborted(cls, exception: Exception) -> AnalysisResult[Report]:
         return cls(
             payload=None,
             exception=exception,
@@ -107,7 +105,7 @@ class AnalysisResult(Result, Generic[R]):
         )
     
     @classmethod
-    def timed_out(cls, exception: Exception) -> AnalysisResult[R]:
+    def timed_out(cls, exception: Exception) -> AnalysisResult[Report]:
         return cls(
             payload=None,
             exception=exception,

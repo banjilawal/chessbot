@@ -72,7 +72,7 @@ class OpeningSquare(Square):
     def token_claim_state(self) -> TokenHomeClaimState:
         return self._token_claim_state
     
-    def claim(self):
+    def record_claim(self):
         self._token_claim_state = TokenHomeClaimState.CLAIMED
         
     @property

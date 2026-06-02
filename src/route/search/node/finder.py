@@ -108,8 +108,8 @@ class NodeFinder(StackSearchRouter[Node]):
         if context.priority is not None:
             return cls._find_by_priority(dataset=dataset, priority=context.priority)
         # Entry point into finding by item's square.
-        if context.opening_square is not None:
-            return cls._find_by_square(dataset=dataset, square=context.opening_square)
+        if context.home_square is not None:
+            return cls._find_by_square(dataset=dataset, square=context.home_square)
         # Entry point into searching by item's predecessor.
         if context.predecessor is not None:
             return cls._find_by_predecessor(dataset=dataset, priority=context.predecessor)

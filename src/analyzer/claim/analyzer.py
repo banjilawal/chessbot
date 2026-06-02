@@ -1,10 +1,10 @@
-# src/logic/token/service/operation/deployment/deployer.py
+# src/analyzer/claim/analyzer.py
 
 """
-Module: logic.token.service.operation.deployment.deployer
+Module: analyzer.claim.analyzer
 Author: Banji Lawal
-Created: 2026-03-14
-version: 1.0.0
+Created: 2026-04-03
+version: 1.0.1
 """
 
 from __future__ import annotations
@@ -15,7 +15,7 @@ from analyzer import Analyzer, TokenFreedomAnalyzer
 from err import HomeSquareAlreadyClaimedException, HomeSquareClaimAnalyzerException, SquareNotFoundSearchException
 from model import OpeningSquare, SquareContext, Token
 from report import HomeSquareClaimReport, TokenFreedomReport
-from result import AnalysisResult, MethodResultType
+from result import AnalysisResult
 from util import LoggingLevelRouter
 
 
@@ -36,18 +36,11 @@ class HomeSquareClaimAnalyzer(Analyzer[HomeSquareClaimReport]):
     Provides:
         -   execute(
                     token: Token,
-                    token_validator: TokenValidator,
-            ) -> UpdateResult[Token]
+                    token_freedom_analyzer: TokenFreedomAnalyzer,
+            ) -> AnalysisResult[HomeSquareClaimReport]
             
-        - _run_opening_square_tests(token: Token) -> SearchResult[List[Square]]
-        
-        - _square_visitation_process_work(
-                    token: Token,
-                    pre_update_token: Token,
-                    opening_square: Square,
-            ) -> UpdateResult[Token]
-            
-    Super:
+    Super Class:
+        Analyzer
     """
 
     @classmethod
@@ -67,7 +60,7 @@ class HomeSquareClaimAnalyzer(Analyzer[HomeSquareClaimReport]):
                         -   Searching the board is fails.
                         -   square has already been claimed.
             2.  Otherwise, send the success result.
-        # Args:
+        Args:
             token: Token
             token_freedom_analyzer: TokenFreedomAnalyzer
         Returns:
@@ -149,8 +142,8 @@ class HomeSquareClaimAnalyzer(Analyzer[HomeSquareClaimReport]):
                 )
             )
         # Handle the case that, the opening square has already been claimed as home by a token.
-        opening_square = cast(OpeningSquare, square_search_result.payload[0])
-        if opening_square.is_claimed:
+        home_square = cast(OpeningSquare, square_search_result.payload[0])
+        if home_square.is_claimed:
             # Send the exception chain on failure.
             return AnalysisResult.failure(
                 HomeSquareClaimAnalyzerException(
@@ -165,7 +158,7 @@ class HomeSquareClaimAnalyzer(Analyzer[HomeSquareClaimReport]):
                 )
             )
         # --- Send the work product ---#
-        return AnalysisResult.success(
-            HomeSquareClaimReport(claimant=token, opening_square=opening_square)
+        return AnalysisResult.completed(
+            HomeSquareClaimReport(claimant=token, home_square=home_square)
         )
         

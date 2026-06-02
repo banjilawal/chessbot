@@ -9,7 +9,7 @@ version: 1.0.1
 
 from enum import Enum, auto
 
-class TokenBoardState(Enum):
+class DeploymentState(Enum):
     """
     Role:
         -   State
@@ -24,6 +24,6 @@ class TokenBoardState(Enum):
     Super Class:
         Enum
     """
-    HAS_NOT_DEPLOYED = auto(),
+    NOT_DEPLOYED = auto(),
     CLAIMED_HOME_SQUARE = auto(),
     REMOVED_FROM_BOARD = auto(),

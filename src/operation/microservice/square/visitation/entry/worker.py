@@ -15,7 +15,7 @@ from logic.square import (
     SquareVisitorDisabledException, WrongOpeningSquareException
 )
 from util import LoggingLevelRouter, UpdateResult
-from model.token import Token, TokenBoardState, TokenService
+from model.token import Token, DeploymentState, TokenService
 
 
 class SquareEntryProcess:
@@ -153,8 +153,8 @@ class SquareEntryProcess:
                 )
             )
         # --- Update the token's deployment state. ---#
-        if token.board_state == TokenBoardState.HAS_NOT_DEPLOYED:
-            token.board_state = TokenBoardState.CLAIMED_HOME_SQUARE
+        if token.deployment_state == DeploymentState.NOT_DEPLOYED:
+            token.deployment_state = DeploymentState.CLAIMED_HOME_SQUARE
             
         # --- Forward the work product to the caller. ---#
         return UpdateResult.update_success(original=pre_update_square, updated=square)
