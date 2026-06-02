@@ -112,8 +112,8 @@ class TokenDeployer(Operation[Token]):
         
         # Make a visitation request to square_validator.
         visitation_result = token.team.board.squares.service.begin_square_visit(
-            visitor=token,
-            square=claim.home,
+            visitor=claim.claimant,
+            square=claim.home_square,
         )
         # Handle the case that, the visitation transaction fails.
         if visitation_result.is_failure:
@@ -131,17 +131,17 @@ class TokenDeployer(Operation[Token]):
             )
         # --- Token has occupied its home square. Perform consistency maintenance tasks. ---#
         home_square = cast(OpeningSquare, visitation_result.payload)
-        token = home_square.occupant
+        claimant = home_square.occupant
         
-        # Confirm token's deployment state is updated.
-        if token.deployment_state == DeploymentState.NOT_DEPLOYED:
-            token.mark_deployed()
+        # Confirm claimant's deployment state is updated.
+        if claimant.deployment_state == DeploymentState.NOT_DEPLOYED:
+            claimant.mark_deployed()
         # Confirm opening_square is marked as claimed.
         if home_square.token_claim_state != TokenHomeClaimState.UNCLAIMED:
             home_square.record_claim()
             
         # --- Forward the work product to the client. ---#
-        return UpdateResult.update_success(original=pre_update_token, updated=token,)
+        return UpdateResult.update_success(original=pre_update_token, updated=claimant,)
 
 
 # Register the operation.

@@ -39,8 +39,8 @@ class PromotionReport(Report):
     Super Class:
         Report
     """
-    pawn: PawnToken
     permission: PromotionPermission
+    pawn: Optional[PawnToken] = None
     promotion_row: Optional[int] = None
     exception: Optional[Exception] = None
     
@@ -65,14 +65,15 @@ class PromotionReport(Report):
             pawn=pawn,
             permission=PromotionPermission.GRANTED,
             promotion_row=pawn.team.schema.enemy_schema.rank_row,
+            exception=None,
         )
     
     @classmethod
-    def deny_promotion(cls, pawn: PawnToken, exception: Exception) -> PromotionReport:
+    def deny_promotion(cls, exception: Exception) -> PromotionReport:
         return cls(
-            pawn=pawn,
             permission=PromotionPermission.DENIED,
             promotion_row=None,
-            exception=exception
+            pawn=None,
+            exception=exception,
         )
     

@@ -158,5 +158,5 @@ class HomeSquareClaimAnalyzer(Analyzer):
                 )
             )
         # --- Send the work product ---#
-        return AnalysisResult.completed(HomeSquareClaimReport(claimant=token, home=home_square))
+        return AnalysisResult.completed(HomeSquareClaimReport(claimant=token, home_square=home_square))
         

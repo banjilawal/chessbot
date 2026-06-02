@@ -27,7 +27,7 @@ class HomeSquareClaimReport(Report):
         
     Attributes:
         claimant: Token
-        home: OpeningSquare
+        home_square: OpeningSquare
         
         token_has_claimed_square: bool
         square_claimed_by_other_token
@@ -39,16 +39,16 @@ class HomeSquareClaimReport(Report):
     """
     claimant: Token
     permissions: ClaimPermission
-    home: Optional[OpeningSquare] = None
+    home_square: Optional[OpeningSquare] = None
     exception: Optional[Exception] = None
     
     @property
     def is_granted(self) -> bool:
         return (
                 self.claimant.is_deployed and
-                self.home.is_claimed and
+                self.home_square.is_claimed and
                 self.exception is None and
-                self.claimant.opening_square == self.home and
+                self.claimant.opening_square == self.home_square and
                 self.permissions == ClaimPermission.GRANTED
         )
     
@@ -60,7 +60,7 @@ class HomeSquareClaimReport(Report):
     def grant_claim(cls, token: Token, home_square: OpeningSquare) -> HomeSquareClaimReport:
         return cls(
             claimant=token,
-            home=home_square,
+            home_square=home_square,
             permissions=ClaimPermission.GRANTED,
             exception=None
         )
@@ -69,7 +69,7 @@ class HomeSquareClaimReport(Report):
     def deny_claim(cls, token: Token, exception: Exception,) -> HomeSquareClaimReport:
         return cls(
             claimant=token,
-            home=None,
+            home_square=None,
             permissions=ClaimPermission.DENIED,
             exception=exception,
         )

@@ -81,7 +81,7 @@ class NodeValidator(Validator[Node]):
         node = cast(Node, candidate)
         
         # Handle the case that, the square is not valid.
-        square_validation_result = square_validator.validate(node.home)
+        square_validation_result = square_validator.validate(node.home_square)
         if square_validation_result.is_failure:
             # Send the exception chain on failure.
             ValidationResult.failure(

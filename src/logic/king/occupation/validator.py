@@ -47,13 +47,13 @@ class KingOccupationEventValidator(Validator[KingOccupationEvent]):
                 return ValidationResult(exception=actor_binding_validation.exception)
             
             resource_binding_validation = TravelResourceValidator.search_service(
-                event.home,
+                event.home_square,
                 event.execution_environment
             )
             if resource_binding_validation.is_failure():
                 return ValidationResult(exception=resource_binding_validation.exception)
             
-            if event.home.occupant is not None:
+            if event.home_square.occupant is not None:
                 return ValidationResult(exception=OccupationDestinationNotEmptyException(
                     f"{method}: {OccupationDestinationNotEmptyException.MSG}"
                     )

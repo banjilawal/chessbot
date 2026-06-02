@@ -84,6 +84,14 @@ class Team:
     @property
     def schema(self) -> Schema:
         return self._schema
+    
+    @property
+    def enemy_schema(self) -> Schema:
+        return self._schema.enemy_schema
+    
+    @property
+    def enemy_rank_row(self) -> int:
+        return self.enemy_schema.rank_row
 
     @property
     def roster(self) -> TokenDatabase:
