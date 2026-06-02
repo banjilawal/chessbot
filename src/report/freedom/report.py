@@ -13,10 +13,11 @@ from dataclasses import dataclass
 from typing import Any, Optional
 
 from model import CombatantToken, KingToken, Token
-from report import FreedomState
+from report import FreedomState, Report
+
 
 @dataclass
-class TokenFreedomReport:
+class TokenFreedomReport(Report):
     """
     Role:
         -   Test results

@@ -19,7 +19,7 @@ from result import AnalysisResult
 from util import LoggingLevelRouter
 
 
-class HomeSquareClaimAnalyzer(Analyzer[HomeSquareClaimReport]):
+class HomeSquareClaimAnalyzer(Analyzer):
     """
     Role:
         - Transaction Worker
@@ -158,7 +158,5 @@ class HomeSquareClaimAnalyzer(Analyzer[HomeSquareClaimReport]):
                 )
             )
         # --- Send the work product ---#
-        return AnalysisResult.completed(
-            HomeSquareClaimReport(claimant=token, home_square=home_square)
-        )
+        return AnalysisResult.completed(HomeSquareClaimReport(claimant=token, home_square=home_square))
         

@@ -1,7 +1,7 @@
-# src/analyzer/freedom/analyst.py
+# src/analyzer/freedom/analyzer.py
 
 """
-Module: analyzer.freedom.analyst
+Module: analyzer.freedom.analyzer
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -12,7 +12,6 @@ from __future__ import annotations
 from typing import cast
 
 from analyzer import Analyzer
-from err import TokenFreedomAnalysisException
 from model import CombatantToken, KingToken, Token
 from report import TokenFreedomReport
 from result import AnalysisResult
@@ -20,7 +19,7 @@ from util import LoggingLevelRouter
 from validation import TokenValidator
 
 
-class TokenFreedomAnalyzer(Analyzer[TokenFreedomReport]):
+class TokenFreedomAnalyzer(Analyzer):
     """
     Role:
         -   Analysis Factory
@@ -40,12 +39,12 @@ class TokenFreedomAnalyzer(Analyzer[TokenFreedomReport]):
             ) -> AnalysisResult[TokenFreedomReport]
             
     Parent:
-        Analyst
+        Analyzer
     """
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def execute(
+    def analyze(
             cls,
             token: Token,
             token_validator: TokenValidator | None = None,
@@ -91,12 +90,11 @@ class TokenFreedomAnalyzer(Analyzer[TokenFreedomReport]):
             )
         # Deal with the simplest universal case first, token has no been deployed.
         if token.is_not_deployed:
-            return AnalysisResult.success(TokenFreedomReport.not_deployed(token))
+            return AnalysisResult.completed(TokenFreedomReport.not_deployed(token))
         
         if isinstance(token, CombatantToken):
-            return cls._analyze_combatant_freedom(
-                combatant=cast(CombatantToken, token)
-            )
+            return cls._analyze_combatant_freedom(combatant=cast(CombatantToken, token))
+        # Otherwise we are checking if a king is free.
         return cls._analyze_king_freedom(king=cast(KingToken, token))
     
     @classmethod
@@ -105,6 +103,7 @@ class TokenFreedomAnalyzer(Analyzer[TokenFreedomReport]):
         # Captured tokens are not free.
         if combatant.has_entered_hostage_process or combatant.recorded_as_hostage:
             return AnalysisResult.success(TokenFreedomReport.captured(combatant))
+        # Disabled combatants are not free either.
         if combatant.is_disabled:
             return AnalysisResult.success(TokenFreedomReport.disabled(combatant))
         
@@ -113,9 +112,10 @@ class TokenFreedomAnalyzer(Analyzer[TokenFreedomReport]):
     @classmethod
     @LoggingLevelRouter.monitor
     def _analyze_king_freedom(cls, king: KingToken) -> AnalysisResult[TokenFreedomReport]:
-
-        if king.is_in_check:
+        # Checkmated kings are not free.
+        if king.is_checkmated:
             return AnalysisResult.success(TokenFreedomReport.checkmated(king))
+        # Disabled kings are not free either.
         if king.is_disabled:
             return AnalysisResult.success(TokenFreedomReport.disabled(king))
         

@@ -1,18 +1,22 @@
-# src/logic/token/service/operation/promotion/promoter.py
+# src/operation/token/promotion/operation.py
 
 """
-Module: logic.token.service.operation.promotion.promoter
+Module: operation.token.promotion.operation
 Author: Banji Lawal
-Created: 2026-03-14
-version: 1.0.0
+Created: 2026-04-03
+version: 1.0.1
 """
 
 from __future__ import annotations
 
 from copy import deepcopy
+from typing import cast
 
 from logic.rank import King, Pawn, Rank, RankService
+
+from analyzer import TokenFreedomAnalyzer
 from model.catalog import SchemaService
+from report import TokenFreedomReport
 from util import LoggingLevelRouter, UpdateResult
 from model.token import (
     PawnAlreadyPromotedException, PawnPromotionRowException, PawnToken, PromoteInactivePawnException,
@@ -66,6 +70,7 @@ class PawnPromoter:
             rank_service: RankService = RankService(),
             schema_service: SchemaService = SchemaService(),
             token_validator: TokenValidator = TokenValidator(),
+            token_freedom_analyzer: TokenFreedomAnalyzer | None = None,
     ) -> UpdateResult[PawnToken]:
         """
         Executes the promotion transaction.
@@ -96,9 +101,18 @@ class PawnPromoter:
         """
         method = f"{cls.__class__.__name__}.promote"
         
-        # Handle the case that, the tokenis not safe.
-        token_validation_result = token_validator.verify_actionable_token(pawn_token)
-        if token_validation_result.is_failure:
+        # --- Supply any missing dependencies. ---#
+        if token_freedom_analyzer is None:
+            token_freedom_analyzer = TokenFreedomAnalyzer()
+        if token_validator is None:
+            token_validator = TokenValidator()
+            
+        analysis_result = token_freedom_analyzer.analyze(
+            token=pawn_token,
+            token_validator=token_validator
+        )
+        # Handle the case that, the freedom analysis is not completed.
+        if analysis_result.is_failure:
             # Send the exception chain on failure.
             return UpdateResult.update_failure(
                 original=pawn_token,
@@ -109,7 +123,27 @@ class PawnPromoter:
                     msg=PromotionException.MSG,
                     err_code=PromotionException.ERR_CODE,
                     mthd_rslt_type=PromotionException.MTHD_RSLT,
-                    ex=token_validation_result.exception
+                    ex=analysis_result.exception
+                )
+            )
+        report = cast(TokenFreedomReport, analysis_result.payload)
+        
+        # Handle the case that, the token is not free.
+        if report.token_is_not_free:
+            # Send the exception chain on failure.
+            return UpdateResult.update_failure(
+                original=pawn_token,
+                exception=PromotionException(
+                    cls_mthd=method,
+                    op=PromotionException.OP,
+                    msg=PromotionException.MSG,
+                    err_code=PromotionException.ERR_CODE,
+                    mthd_rslt_type=PromotionException.MTHD_RSLT,
+                    ex=PromoteInactivePawnException(
+                        var=pawn_token.designation,
+                        msg=PromoteInactivePawnException.MSG,
+                        err_code=PromoteInactivePawnException.ERR_CODE,
+                    )
                 )
             )
         # Handle the case that. the token is wrong type.
@@ -127,24 +161,6 @@ class PawnPromoter:
                     ex=TypeError(
                         f"Expected type PawnToken for promotion. "
                         f"Got {type(pawn_token).__name__} instead."
-                    )
-                )
-            )
-        # Handle the case that, the pawn_token is not actionable.
-        if not pawn_token.is_active:
-            # Send the exception chain on failure.
-            return UpdateResult.update_failure(
-                original=pawn_token,
-                exception=PromotionException(
-                    cls_mthd=method,
-                    op=PromotionException.OP,
-                    msg=PromotionException.MSG,
-                    err_code=PromotionException.ERR_CODE,
-                    mthd_rslt_type=PromotionException.MTHD_RSLT,
-                    ex=PromoteInactivePawnException(
-                        var=pawn_token.designation,
-                        msg=PromoteInactivePawnException.MSG,
-                        err_code=PromoteInactivePawnException.ERR_CODE,
                     )
                 )
             )

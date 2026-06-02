@@ -9,7 +9,7 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from typing import Generic, Optional, TypeVar
+from typing import Optional, TypeVar
 
 from report import Report
 from result import AnalysisState, Result
@@ -47,7 +47,7 @@ class AnalysisResult(Result[Report]):
     def __init__(
             self,
             state: AnalysisState,
-            payload: Optional[R] = None,
+            payload: Optional[Report] = None,
             exception: Optional[Exception] = None,
     ):
         """
@@ -89,7 +89,7 @@ class AnalysisResult(Result[Report]):
         )
     
     @classmethod
-    def completed(cls, payload: Report) -> AnalysisResult[Report]:
+    def completed(cls, payload: Report) -> AnalysisResult:
         return cls(
             payload=payload,
             exception=None,
@@ -97,7 +97,7 @@ class AnalysisResult(Result[Report]):
         )
     
     @classmethod
-    def aborted(cls, exception: Exception) -> AnalysisResult[Report]:
+    def aborted(cls, exception: Exception) -> AnalysisResult:
         return cls(
             payload=None,
             exception=exception,
@@ -105,7 +105,7 @@ class AnalysisResult(Result[Report]):
         )
     
     @classmethod
-    def timed_out(cls, exception: Exception) -> AnalysisResult[Report]:
+    def timed_out(cls, exception: Exception) -> AnalysisResult:
         return cls(
             payload=None,
             exception=exception,

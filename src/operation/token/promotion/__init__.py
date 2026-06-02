@@ -1,16 +1,15 @@
-# src/logic/token/service/operation/promotion/__init__.py
+# src/operation/token/promotion/__init__.py
 
 """
-Module: logic.token.service.operation.promotion.__init__
+Module: operation.token.promotion.__init__
 Author: Banji Lawal
-Created: 2026-03-14
-version: 1.0.0
+Created: 2026-04-03
+version: 1.0.1
 """
 
-# =========== TOKEN.SERVICE.OPERATION.PROMOTION PACKAGE ===========#
+# =========== OPERATION.TOKEN.PROMOTION PACKAGE ===========#
 
 # Packages
-from .exception import *
 
 # Modules
-from .worker import PawnPromoter
+from .operation import PawnPromoter
