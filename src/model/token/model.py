@@ -147,8 +147,8 @@ class Token(ABC):
     @property
     def is_deployed(self) -> bool:
         return (
-                self.positions.size == 1 and
-                self._deployment_state != DeploymentState.DEPLOYED
+                self.positions.size >= 1 and
+                self._deployment_state == DeploymentState.DEPLOYED
         )
     
     @property

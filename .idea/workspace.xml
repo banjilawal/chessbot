@@ -6,6 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/token/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/token/model.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/token/deployment/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/token/deployment/operation.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -789,7 +791,7 @@
       <workItem from="1779980103308" duration="100000" />
       <workItem from="1780253177020" duration="17428000" />
       <workItem from="1780338096358" duration="3367000" />
-      <workItem from="1780365970384" duration="3027000" />
+      <workItem from="1780365970384" duration="6732000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />

@@ -13,3 +13,4 @@ version: 1.0.1
 
 # Modules
 from .model import OpeningSquare
+from .state import TokenHomeClaimState
