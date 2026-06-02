@@ -11,7 +11,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Optional
 
-from model import OpeningSquare, PawnToken, PromotionState, Token
+from model import PawnToken, PromotionState
 from report import Report
 from report.promote.state import PromotionPermission
 
@@ -26,26 +26,30 @@ class PromotionReport(Report):
         1.  Presents a token's claim on an opening square.
         
     Attributes:
-        claimant: Token
-        home_square: OpeningSquare
+        pawn: PawnToken
+        promotion_row: Optional[int]
+        permission: PromotionPermission
         
-        token_has_claimed_square: bool
-        square_claimed_by_other_token
+        can_promote: bool
+        cannot_promote: bool
         
     Provides:
-
+        -   def grant_promotion(pawn: PawnToken) -> PromotionReport
+        -   def deny_promotion(pawn: PawnToken) -> PromotionReport
     Super Class:
         Report
     """
     pawn: PawnToken
-    promotion_row: Optional[int]
     permission: PromotionPermission
+    promotion_row: Optional[int] = None
+    exception: Optional[Exception] = None
     
     
     @property
     def can_promote(self) -> bool:
         return (
             self.pawn.is_active and
+            self.exception is None and
             self.permission == PromotionPermission.GRANTED and
             self.pawn.promotion_state == PromotionState.NOT_PROMOTED and
             self.pawn.current_position.row == self.promotion_row
@@ -64,10 +68,11 @@ class PromotionReport(Report):
         )
     
     @classmethod
-    def deny_promotion(cls, pawn: PawnToken) -> PromotionReport:
+    def deny_promotion(cls, pawn: PawnToken, exception: Exception) -> PromotionReport:
         return cls(
             pawn=pawn,
             permission=PromotionPermission.DENIED,
             promotion_row=None,
+            exception=exception
         )
     

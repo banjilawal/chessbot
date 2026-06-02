@@ -95,13 +95,25 @@ class TokenDeployer(Operation[Token]):
                     ex=analysis_result.exception,
                 )
             )
-        claim_report = cast(HomeSquareClaimReport, analysis_result.payload)
+        claim = cast(HomeSquareClaimReport, analysis_result.payload)
+        if claim.is_denied:
+            return UpdateResult.update_failure(
+                original=token,
+                exception=TokenDeploymentException(
+                    cls_mthd=method,
+                    cls_name=cls.__class__.__name__,
+                    msg=TokenDeploymentException.MSG,
+                    err_code=TokenDeploymentException.ERR_CODE,
+                    mthd_rslt_type=MethodResultType.UPDATE_RESULT,
+                    ex=claim.exception,
+                )
+            )
         pre_update_token = deepcopy(token)
         
         # Make a visitation request to square_validator.
         visitation_result = token.team.board.squares.service.begin_square_visit(
             visitor=token,
-            square=claim_report.home,
+            square=claim.home,
         )
         # Handle the case that, the visitation transaction fails.
         if visitation_result.is_failure:

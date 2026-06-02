@@ -92,7 +92,7 @@ class HomeSquareClaimAnalyzer(Analyzer):
                 )
             )
         # Handle the case that, the token has already been deployed.
-        report = cast (TokenFreedomReport, freedom_analysis_result.payload)
+        report = cast(TokenFreedomReport, freedom_analysis_result.payload)
         if report.token_is_deployed:
             # Send the exception chain on failure.
             return AnalysisResult.failure(

@@ -38,14 +38,16 @@ class HomeSquareClaimReport(Report):
         Report
     """
     claimant: Token
-    home: Optional[OpeningSquare]
     permissions: ClaimPermission
+    home: Optional[OpeningSquare] = None
+    exception: Optional[Exception] = None
     
     @property
     def is_granted(self) -> bool:
         return (
                 self.claimant.is_deployed and
                 self.home.is_claimed and
+                self.exception is None and
                 self.claimant.opening_square == self.home and
                 self.permissions == ClaimPermission.GRANTED
         )
@@ -59,13 +61,15 @@ class HomeSquareClaimReport(Report):
         return cls(
             claimant=token,
             home=home_square,
-            permissions=ClaimPermission.GRANTED
+            permissions=ClaimPermission.GRANTED,
+            exception=None
         )
     
     @classmethod
-    def deny_claim(cls, token: Token) -> HomeSquareClaimReport:
+    def deny_claim(cls, token: Token, exception: Exception,) -> HomeSquareClaimReport:
         return cls(
             claimant=token,
             home=None,
-            permissions=ClaimPermission.DENIED
+            permissions=ClaimPermission.DENIED,
+            exception=exception,
         )
