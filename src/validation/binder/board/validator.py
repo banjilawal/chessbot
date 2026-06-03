@@ -18,7 +18,7 @@ from util import LoggingLevelRouter
 from toolkit import BoardTeamBinderToolkit
 
 
-class BoardTeamBinderValidator(Validator[BoardBinder]):
+class BoardBinderValidator(Validator[BoardBinder]):
     """
     Role
         -   Transaction Worker
