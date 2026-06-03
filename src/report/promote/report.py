@@ -13,11 +13,11 @@ from typing import Optional
 
 from model import PawnToken, PromotionState
 from report import Report
-from report.promote.state import PromotionPermission
+from report.promote.state import PromotionDecision
 
 
 @dataclass
-class PromotionPermission(Report):
+class PromotionPermissionReport(Report):
     """
     Role:
         -   Test results
@@ -26,9 +26,9 @@ class PromotionPermission(Report):
         1.  Presents a token's claim on an opening square.
         
     Attributes:
-        pawn: PawnToken
+        requestor: PawnToken
         promotion_row: Optional[int]
-        permission: PromotionPermission
+        decision: PromotionDecision
         
         can_promote: bool
         cannot_promote: bool
@@ -39,8 +39,8 @@ class PromotionPermission(Report):
     Super Class:
         Report
     """
-    permission: PromotionPermission
-    pawn: Optional[PawnToken] = None
+    decision: PromotionDecision
+    requestor: Optional[PawnToken] = None
     promotion_row: Optional[int] = None
     exception: Optional[Exception] = None
     
@@ -48,11 +48,11 @@ class PromotionPermission(Report):
     @property
     def is_granted(self) -> bool:
         return (
-            self.pawn.is_active and
-            self.exception is None and
-            self.permission == PromotionPermission.GRANTED and
-            self.pawn.promotion_state == PromotionState.NOT_PROMOTED and
-            self.pawn.current_position.row == self.promotion_row
+                self.requestor.is_active and
+                self.exception is None and
+                self.decision == PromotionDecision.GRANTED and
+                self.requestor.promotion_state == PromotionState.NOT_PROMOTED and
+                self.requestor.current_position.row == self.promotion_row
         )
     
     @property
@@ -60,20 +60,20 @@ class PromotionPermission(Report):
         return not self.is_granted
     
     @classmethod
-    def grant_promotion(cls, pawn: PawnToken) -> PromotionPermission:
+    def grant_promotion(cls, pawn: PawnToken) -> PromotionPermissionReport:
         return cls(
-            pawn=pawn,
-            permission=PromotionPermission.GRANTED,
+            requestor=pawn,
+            decision=PromotionDecision.GRANTED,
             promotion_row=pawn.team.schema.enemy_schema.rank_row,
             exception=None,
         )
     
     @classmethod
-    def deny_promotion(cls, exception: Exception) -> PromotionPermission:
+    def deny_promotion(cls, exception: Exception) -> PromotionPermissionReport:
         return cls(
-            permission=PromotionPermission.DENIED,
+            decision=PromotionDecision.DENIED,
             promotion_row=None,
-            pawn=None,
+            requestor=None,
             exception=exception,
         )
     
