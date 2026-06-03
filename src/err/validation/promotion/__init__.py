@@ -1,15 +1,16 @@
-# src/err/validation/primer/__init__.py
+# src/err/validation/promotion/__init__.py
 
 """
-Module: err.validation.primer.__init__
+Module: err.validation.promotion.__init__
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
 """
 
-# ============ ERR.VALIDATION.PRIMER PACKAGE ===========#
+# ============ ERR.VALIDATION.PROMOTION PACKAGE ===========#
 
 # Packages
+from .king import *
 
 # Modules
 from .exception import RankElevationValidationException

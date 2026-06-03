@@ -5,7 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/err/validation/promotion/king/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/validation/promotion/king/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/validation/promotion/pawn/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/validation/promotion/pawn/exception.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/validation/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/validation/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/validation/promotion/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/validation/promotion/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/validation/promotion/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/validation/promotion/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validation/promotion/rank/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/validation/promotion/rank/validator.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,7 +64,7 @@
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "main",
-    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/err/validation",
+    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/err/validation/promotion",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
@@ -67,11 +75,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/err/validation/promotion" />
+      <recent name="$PROJECT_DIR$/src/err/validation/promotion/king" />
       <recent name="$PROJECT_DIR$/src/err/validation" />
       <recent name="$PROJECT_DIR$/src/validation" />
       <recent name="$PROJECT_DIR$/src/err/operation/token" />
-      <recent name="$PROJECT_DIR$/src/err/analyzer" />
-      <recent name="$PROJECT_DIR$/src/analyzer" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/err/analyzer/claim/exist" />
@@ -790,7 +798,7 @@
       <workItem from="1780253177020" duration="17428000" />
       <workItem from="1780338096358" duration="3367000" />
       <workItem from="1780365970384" duration="21144000" />
-      <workItem from="1780439079821" duration="10618000" />
+      <workItem from="1780439079821" duration="13443000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />
@@ -1156,6 +1164,11 @@
           <url>file://$PROJECT_DIR$/src/err/analyzer/relation/__init__.py</url>
           <line>11</line>
           <option name="timeStamp" value="186" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/err/validation/promotion/king/exception.py</url>
+          <line>9</line>
+          <option name="timeStamp" value="187" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

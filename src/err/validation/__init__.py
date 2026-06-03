@@ -27,6 +27,7 @@ from .operand import *
 from .persona import *
 from .player import *
 from .primer import *
+from .promotion import *
 from .query import *
 from .rank import *
 from .scalar import *

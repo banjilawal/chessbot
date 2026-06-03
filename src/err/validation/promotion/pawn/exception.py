@@ -1,7 +1,7 @@
-# src/err/validation/promotion/exception.py
+# src/err/validation/promotion/pawn/exception.py
 
 """
-Module: err.validation.promotion.exception
+Module: err.validation.promotion.pawn.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,22 +10,22 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import ValidationException
+from err import RankElevationValidationException
 from result import MethodResultType
 
 __all__ = [
-    # ======================# RANK_ELEVATION_VALIDATION_FAILURE #======================#
-    "RankElevationValidationException",
+    # ======================# PROMOTE_PAWN_TO_PAWN_ERROR #======================#
+    "PromoteToPawnException",
 ]
 
-# ======================# RANK_ELEVATION_VALIDATION_FAILURE #======================#
-class RankElevationValidationException(ValidationException):
+# ======================# PROMOTE_PAWN_TO_PAWN_ERROR #======================#
+class PromoteToPawnException(RankElevationValidationException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate a rank elevation check was not passed.
+        1.  Indicate an attempt to promote a pawn to Pawn rank occurred.
 
     Attributes:
         msg: Optional[str]
@@ -40,10 +40,10 @@ class RankElevationValidationException(ValidationException):
     Provides:
 
     Super Class:
-        ValidationException
+        RankElevationValidationException
     """
-    MSG = "Rank elevation check was not passed."
-    ERR_CODE = "RANK_ELEVATION_VALIDATION_FAILURE"
+    MSG = "Cannot promote a pawn to Pawn rank. Its new rank must be higher."
+    ERR_CODE = "PROMOTE_PAWN_TO_PAWN_ERROR"
     
     def __init__(
             self,

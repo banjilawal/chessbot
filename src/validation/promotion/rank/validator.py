@@ -8,15 +8,14 @@ version: 1.0.1
 """
 
 from __future__ import annotations
-from typing import Any, Dict, cast
 
-from err import RankTeamPromotionNullException, RankElevationValidationException
-from model import Rank
-from operation import Validator
+from typing import Any, cast
+
+from err.validation.promotion import RankElevationValidationException
+from model import King, Rank
 from result import ValidationResult
 from util import LoggingLevelRouter
-from toolkit import RankTeamPromotionToolkit
-from validation import RankValidator
+from validation import RankValidator, Validator
 
 
 class RankElevationValidator(Validator[Rank]):
@@ -76,7 +75,7 @@ class RankElevationValidator(Validator[Rank]):
             rank_validator = RankValidator()
             
         # Handle the case that, the candidate is flagged by the rank_validator.
-        validation_result = rank_validator.validate(candidate),
+        validation_result = rank_validator.validate(candidate)
         if validation_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
@@ -88,10 +87,9 @@ class RankElevationValidator(Validator[Rank]):
                     ex=validation_result.exception,
                 )
             )
-        promotion = validation_priming_result.payload
-        rank_validation_result =toolkit.rank_service.validator.validate(promotion.primary)
-        
-        if rank_validation_result.is_failure:
+        rank = cast(Rank, validation_result.payload)
+        # Handle the case that, the higher rank is a King's.
+        if isinstance(rank, King):
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 RankElevationValidationException(
@@ -99,24 +97,15 @@ class RankElevationValidator(Validator[Rank]):
                     cls_name=cls.__name__,
                     msg=RankElevationValidationException.MSG,
                     err_code=RankElevationValidationException.ERR_CODE,
-                    ex=rank_validation_result.exception,
+                    ex=PromotionToKingException(
+                        msg=PromotionToKingException.MSG,
+                        err_code=PromotionToKingException.ERR_CODE,
+                    ),
                 )
             )
-        # --- Forward the work product to the caller ---#
-        return ValidationResult.success(promotion)
-    
-    @classmethod
-    @LoggingLevelRouter.monitor
-    def _run_satellite_table_checks(
-            cls,
-            promotion: Rank,
-            toolkit: RankTeamPromotionToolkit
-    ) -> ValidationResult[Dict[Schema, Team]]:
-        method = f"{cls.__name__}.run_satellite_table_checks"
-        
-        # Handle the case that, the satellite is not a dictionary or null.
-        table_validation_result = PromotionTableValidationPrimer.validate(promotion)
-        if table_validation_result.is_failure:
+        # Handle the case that, the new rank is still a Pawn's.
+        if isinstance(rank, Pawn):
+            # Send the exception chain on failure.
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 RankElevationValidationException(
@@ -124,37 +113,11 @@ class RankElevationValidator(Validator[Rank]):
                     cls_name=cls.__name__,
                     msg=RankElevationValidationException.MSG,
                     err_code=RankElevationValidationException.ERR_CODE,
-                    ex=table_validation_result.exception
+                    ex=PromoteToPawnException(
+                        msg=PromoteToPawnException.MSG,
+                        err_code=PromoteToPawnException.ERR_CODE,
+                    ),
                 )
             )
-        # --- Cast to Dict for additional tests. ---#
-        table = cast(Dict[Schema, Any], table_validation_result.payload)
-        
-        # handle the case that, the keys are not safe schemas.
-        for key in table.keys():
-            schema_validation_result = toolkit.schema_service.validator.validate(table[key])
-            # Send the exception chain on failure.
-            return ValidationResult.failure(
-                RankElevationValidationException(
-                    cls_mthd=method,
-                    cls_name=cls.__name__,
-                    msg=RankElevationValidationException.MSG,
-                    err_code=RankElevationValidationException.ERR_CODE,
-                    ex=schema_validation_result.exception
-                )
-            )
-        # Handle the case that, the values are not safe teams.
-        for key in table.keys():
-            team_validation_result = toolkit.schema_service.validator.validate(table[key])
-            # Send the exception chain on failure.
-            return ValidationResult.failure(
-                RankElevationValidationException(
-                    cls_mthd=method,
-                    cls_name=cls.__name__,
-                    msg=RankElevationValidationException.MSG,
-                    err_code=RankElevationValidationException.ERR_CODE,
-                    ex=team_validation_result.exception
-                )
-            )
-        # --- Return the work product to the caller. ---#
-        return ValidationResult.success(table)
+        # --- Send the work product. ---#
+        return ValidationResult.success(rank)
