@@ -11,6 +11,7 @@ version: 1.0.1
 
 # Packages
 from .king import *
+from .pawn import *
 
 # Modules
 from .exception import RankElevationValidationException

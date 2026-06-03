@@ -1,7 +1,7 @@
-# src/validation/promotion/rank/__init__.py
+# src/validation/promotion/rank/validator.py
 
 """
-Module: validation.promotion.rank.__init__
+Module: validation.promotion.rank.validator
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -11,8 +11,8 @@ from __future__ import annotations
 
 from typing import Any, cast
 
-from err.validation.promotion import RankElevationValidationException
-from model import King, Rank
+from err import PromoteToKingException, PromoteToPawnException, RankElevationValidationException
+from model import King, Pawn, Rank
 from result import ValidationResult
 from util import LoggingLevelRouter
 from validation import RankValidator, Validator
@@ -27,16 +27,15 @@ class RankElevationValidator(Validator[Rank]):
         -   Validation Process Owner
 
     Responsibilities:
-        1.  Ensure a RankTeamPromotion instance is certified safe, reliable and consistent
-            before use.
+        1.  Perform safety and bounds checks on a pawn's requested new rank.
 
     Attributes:
 
     Properties:
         -   def validate(
                     candidate: Any,
-                    toolkit : RankTeamPromotionToolkit,
-            ) -> ValidationResult[RankTeamPromotion]:
+                    rank_validator: RankValidator,
+            ) -> ValidationResult[Rank]:
 
     Super Class:
         Validator
@@ -55,10 +54,8 @@ class RankElevationValidator(Validator[Rank]):
         Action:
             1.  Send an exception in the ValidationResult any of these
                 conditions occur.
-                    -   candidate is null.
-                    -   It's not a RankTeamPromotion.
-                    -   RankValidator flags the primary unsafe.
-                    -   The satellite_table fails a check.
+                    -   Is flagged by rank_validator
+                    -   The new rank is either Pawn or King.
             3.  Otherwise, Send the success result.
         Args:
             candidate: Any
@@ -67,6 +64,8 @@ class RankElevationValidator(Validator[Rank]):
             ValidationResult[Rank]
         Raises:
             RankElevationValidationException
+            PromoteToKingException
+            PromoteToPawnException
         """
         method = f"{cls.__name__}.validate"
         
@@ -97,9 +96,9 @@ class RankElevationValidator(Validator[Rank]):
                     cls_name=cls.__name__,
                     msg=RankElevationValidationException.MSG,
                     err_code=RankElevationValidationException.ERR_CODE,
-                    ex=PromotionToKingException(
-                        msg=PromotionToKingException.MSG,
-                        err_code=PromotionToKingException.ERR_CODE,
+                    ex=PromoteToKingException(
+                        msg=PromoteToKingException.MSG,
+                        err_code=PromoteToKingException.ERR_CODE,
                     ),
                 )
             )
