@@ -12,7 +12,7 @@ from __future__ import annotations
 from copy import deepcopy
 from typing import cast
 
-from analyzer import PawnPromotionApprovalManager, RankElevationAnalyzer
+from analyzer import PawnPromotionApprovalManager, PromotionLevelAnalyzer
 from err import PawnPromoterException
 from model import PawnToken, PromotionState, Rank
 from report import PromotionApprovalReport
@@ -51,7 +51,7 @@ class PawnPromoter:
             cls,
             rank: Rank,
             pawn: PawnToken,
-            rank_elevation_validator: RankElevationAnalyzer | None = None,
+            promotion_level_analyzer: PromotionLevelAnalyzer | None = None,
             promotion_approval_manager: PawnPromotionApprovalManager | None = None,
     ) -> UpdateResult[PawnToken]:
         """
@@ -69,7 +69,7 @@ class PawnPromoter:
         Args:
             rank: Rank
             pawn: PawnToken
-            rank_elevation_validator: RankElevationAnalyzer
+            promotion_level_analyzer: RankElevationAnalyzer
             promotion_approval_manager: PawnPromotionApprovalManager 
         Returns:
             UpdateResult[PawnToken]
@@ -81,8 +81,8 @@ class PawnPromoter:
         method = f"{cls.__class__.__name__}.promote"
         
         # --- Supply any missing dependencies. ---#
-        if rank_elevation_validator is None:
-            rank_elevation_validator = RankElevationAnalyzer()
+        if promotion_level_analyzer is None:
+            promotion_level_analyzer = PromotionLevelAnalyzer()
         if promotion_approval_manager is None:
             promotion_approval_manager = PawnPromotionApprovalManager()
             
@@ -117,7 +117,7 @@ class PawnPromoter:
                 )
             )
         # Handle the case that, a rank_promotable test fails.
-        elevation_check_result = rank_elevation_validator.validate(rank)
+        elevation_check_result = promotion_level_analyzer.validate(rank)
         if elevation_check_result.is_failure:
             # Send the exception chain on failure.
             return UpdateResult.update_failure(
