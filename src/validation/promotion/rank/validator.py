@@ -10,7 +10,7 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Dict, cast
 
-from err import RankTeamPromotionNullException, RankTeamPromotionValidationException
+from err import RankTeamPromotionNullException, RankElevationValidationException
 from model import Rank
 from operation import Validator
 from result import ValidationResult
@@ -67,7 +67,7 @@ class RankElevationValidator(Validator[Rank]):
         Returns:
             ValidationResult[Rank]
         Raises:
-            RankTeamPromotionValidationException
+            RankElevationValidationException
         """
         method = f"{cls.__name__}.validate"
         
@@ -80,12 +80,12 @@ class RankElevationValidator(Validator[Rank]):
         if validation_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                RankTeamPromotionValidationException(
+                RankElevationValidationException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    msg=RankTeamPromotionValidationException.MSG,
-                    err_code=RankTeamPromotionValidationException.ERR_CODE,
-                    ex=validation_priming_result.exception,
+                    msg=RankElevationValidationException.MSG,
+                    err_code=RankElevationValidationException.ERR_CODE,
+                    ex=validation_result.exception,
                 )
             )
         promotion = validation_priming_result.payload
@@ -94,11 +94,11 @@ class RankElevationValidator(Validator[Rank]):
         if rank_validation_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                RankTeamPromotionValidationException(
+                RankElevationValidationException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    msg=RankTeamPromotionValidationException.MSG,
-                    err_code=RankTeamPromotionValidationException.ERR_CODE,
+                    msg=RankElevationValidationException.MSG,
+                    err_code=RankElevationValidationException.ERR_CODE,
                     ex=rank_validation_result.exception,
                 )
             )
@@ -119,11 +119,11 @@ class RankElevationValidator(Validator[Rank]):
         if table_validation_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                RankTeamPromotionValidationException(
+                RankElevationValidationException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    msg=RankTeamPromotionValidationException.MSG,
-                    err_code=RankTeamPromotionValidationException.ERR_CODE,
+                    msg=RankElevationValidationException.MSG,
+                    err_code=RankElevationValidationException.ERR_CODE,
                     ex=table_validation_result.exception
                 )
             )
@@ -135,11 +135,11 @@ class RankElevationValidator(Validator[Rank]):
             schema_validation_result = toolkit.schema_service.validator.validate(table[key])
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                RankTeamPromotionValidationException(
+                RankElevationValidationException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    msg=RankTeamPromotionValidationException.MSG,
-                    err_code=RankTeamPromotionValidationException.ERR_CODE,
+                    msg=RankElevationValidationException.MSG,
+                    err_code=RankElevationValidationException.ERR_CODE,
                     ex=schema_validation_result.exception
                 )
             )
@@ -148,11 +148,11 @@ class RankElevationValidator(Validator[Rank]):
             team_validation_result = toolkit.schema_service.validator.validate(table[key])
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                RankTeamPromotionValidationException(
+                RankElevationValidationException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    msg=RankTeamPromotionValidationException.MSG,
-                    err_code=RankTeamPromotionValidationException.ERR_CODE,
+                    msg=RankElevationValidationException.MSG,
+                    err_code=RankElevationValidationException.ERR_CODE,
                     ex=team_validation_result.exception
                 )
             )

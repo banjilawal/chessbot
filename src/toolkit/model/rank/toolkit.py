@@ -9,47 +9,43 @@ version: 1.0.1
 
 from __future__ import annotations
 
+from typing import List
 
+from microservice import IdentityService, Microservice
 from model import Rank
 from toolkit import Toolkit
-from operation import PersonaValidator
-
+from operation import Operation, PersonaValidator
+from validation import ValidationPrimer
 
 
 class RankToolkit(Toolkit[Rank]):
     """
     Role:
-        -   Container
+        -   Dependency Container
+        -   Dynamic Dependency Provider
 
     Responsibilities:
-        1.  Collection of workers and services that are required for Arena tasks.
-        2.  Simplifies entry points.
-        3.  No logic in the Toolkit.
-    
+        1.  Aggregates workers and services an entity requires for its tasks.
+        2.  Separates dependencies from data objects in operation calls.
+        3.  Simplifies entry points.
+
     Attributes:
+        DEPENDENCIES: List[Operation] = []
+        SERVICE_DEPENDENCIES: List[Microservice] = []
+
+        validation_primer: Primer
         identity_service: IdentityService
-        persona_validator: PersonaValidator
-        validation_primer: ValidationPrimer
-        
+
     Provides:
-    
+        -   def resolve_dependencies(s -> SearchResult[List[Dict[str, Any]]]:
+
     Super Class:
         Toolkit
     """
-    _persona_validator: PersonaValidator
+    DEPENDENCIES: List[Operation] = [ValidationPrimer,]
+    SERVICE_DEPENDENCIES: List[Microservice] = [IdentityService,]
 
-    def __init__(
-            self,
-            persona_validator: PersonaValidator | None = None,
-    ):
-        """
-        Args:
-            persona_validator: PersonaValidator
-        """
-        super().__init__()
-        self._persona_validator = persona_validator or PersonaValidator()
-    
-    @property
-    def persona_validator(self) -> PersonaValidator:
-        return self._persona_validator
+    identity_service: IdentityService = IdentityService()
+    validation_primer: ValidationPrimer = ValidationPrimer()
+
         

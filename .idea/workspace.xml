@@ -5,15 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/validation/promotion/rank/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/validation/promotion/rank/validator.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/validation/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/validation/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/validation/promotion/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/validation/promotion/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/validation/promotion/duplicate/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/validation/promotion/exception.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/validation/rank/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/validation/rank/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/validation/rank/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/validation/rank/validator.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -798,7 +790,7 @@
       <workItem from="1780253177020" duration="17428000" />
       <workItem from="1780338096358" duration="3367000" />
       <workItem from="1780365970384" duration="21144000" />
-      <workItem from="1780439079821" duration="8714000" />
+      <workItem from="1780439079821" duration="10618000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />
