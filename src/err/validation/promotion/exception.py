@@ -1,7 +1,7 @@
-# src/err/token/deployment/exception.py
+# src/err/validation/primer/exception.py
 
 """
-Module: err.token.deployment.exception
+Module: err.validation.primer.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,22 +10,22 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import TokenOperationException
+from err import ValidationException
 from result import MethodResultType
 
 __all__ = [
-    # ======================# TOKEN_OPENING_DEPLOYMENT_FAILURE #======================#
-    "TokenDeploymentException",
+    # ======================# RANK_ELEVATION_VALIDATION_FAILURE #======================#
+    "RankElevationValidationException",
 ]
 
-# ======================# TOKEN_OPENING_DEPLOYMENT_FAILURE #======================#
-class TokenDeploymentException(TokenOperationException):
+# ======================# RANK_ELEVATION_VALIDATION_FAILURE #======================#
+class RankElevationValidationException(ValidationException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an error prevented a Token getting deployed to its opening square.
+        1.  Indicate a rank elevation check was not passed.
 
     Attributes:
         msg: Optional[str]
@@ -40,32 +40,32 @@ class TokenDeploymentException(TokenOperationException):
     Provides:
 
     Super Class:
-        TokenOperationException
+        ValidationException
     """
-    MSG = "Token deployment to opening square failed."
-    ERR_CODE = "TOKEN_OPENING_DEPLOYMENT_FAILURE"
+    MSG = "Rank elevation check was not passed."
+    ERR_CODE = "RANK_ELEVATION_VALIDATION_FAILURE"
     
     def __init__(
             self,
-            msg: str = MSG,
-            err_code: str = ERR_CODE,
+            msg: Optional[str] | None = None,
             var: Optional[str] | None = None,
             val: Optional[Any] | None = None,
+            ex: Optional[Exception] | None = None,
             cls_name: Optional[str] | None = None,
             cls_mthd: Optional[str] | None = None,
-            ex: Optional[Exception] | None = None,
+            err_code: Optional[str] | None = None,
             mthd_rslt_type: Optional[MethodResultType] | None = None,
     ):
         """
-            Args:
-            msg: str
-            err_code: str
-            var: Optional[str]
-            val: Optional[Any]
-            cls_name: Optional[str]
-            cls_mthd: Optional[str]
-            ex: Optional[Exception]
-            mthd_rslt_type: Optional[MethodResultType]
+        args:
+            Msg: Optional[str]
+            Var: Optional[str]
+            val: Optional[any]
+            ex: optional[Exception]
+            cls_name: optional[Str]
+            cls_mthd: optional[str]
+            err_code: optional[str]
+            mthd_rslt_type: optional[methodResultType]
         """
         msg = msg or self.MSG
         err_code = err_code or self.ERR_CODE

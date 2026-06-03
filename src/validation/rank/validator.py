@@ -12,10 +12,10 @@ from typing import Any, cast
 
 from model import Persona, Rank
 from toolkit import RankToolkit
-from operation import Validator
 from result import ValidationResult
 from util import LoggingLevelRouter
 from err import PersonaNullException, RankNullException, RankValidationException
+from validation import Validator
 
 
 class RankValidator(Validator[Rank]):

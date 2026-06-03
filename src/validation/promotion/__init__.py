@@ -1,16 +1,15 @@
-# src/err/token/deployment/__init__.py
+# src/validation/promotion/__init__.py
 
 """
-Module: err.token.deployment.__init__
+Module: validation.promotion.__init__
 Author: Banji Lawal
-Created: 2026-04-04
+Created: 2026-04-03
 version: 1.0.1
 """
 
-# ============ ERR.TOKEN.DEPLOYMENT PACKAGE ===========#
+# =========== VALIDATION.PROMOTION PACKAGE ===========#
 
 # Packages
-from .duplicate import *
+from .rank import *
 
-# Modules
-from .exception import TokenDeploymentException
+# Module
