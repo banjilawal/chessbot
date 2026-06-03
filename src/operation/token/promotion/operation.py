@@ -60,7 +60,7 @@ class PawnPromoter:
         Action:
             1.  Send the unmodified pawn along with an exception chain in the UpdateResult if:
                     -   The promotion_approval_manager sends a denial report.
-                    -   The rank_elevation_analyzer approves the new rank.
+                    -   The promotion_level_analyzer approves the new rank.
             2.  Otherwise:
                     -   Make a deepcopy of pawn to pre_update_pawn.
                     -   Elevate the pawn to its new rank.
@@ -86,9 +86,9 @@ class PawnPromoter:
         if promotion_approval_manager is None:
             promotion_approval_manager = PawnPromotionApprovalManager()
             
-        analysis_result = promotion_approval_manager.analyze(pawn)
+        pawn_approval_analysis_result = promotion_approval_manager.analyze(pawn)
         # Handle the case that, the promotion permission evaluation is not completed.
-        if analysis_result.is_failure:
+        if pawn_approval_analysis_result.is_failure:
             # Send the exception chain on failure.
             return UpdateResult.update_failure(
                 original=pawn,
@@ -98,12 +98,12 @@ class PawnPromoter:
                     msg=PawnPromoterException.MSG,
                     err_code=PawnPromoterException.ERR_CODE,
                     mthd_rslt_type=MethodResultType.UPDATE_RESULT,
-                    ex=analysis_result.exception
+                    ex=pawn_approval_analysis_result.exception
                 )
             )
-        approval = cast(PromotionApprovalReport, analysis_result.payload)
+        pawn_approval = cast(PromotionApprovalReport, pawn_approval_analysis_result.payload)
         # Handle the case that, the pawn is not granted promotion permission.
-        if approval.is_denied:
+        if pawn_approval.is_denied:
             # Send the exception chain on failure.
             return UpdateResult.update_failure(
                 original=pawn,
@@ -113,12 +113,12 @@ class PawnPromoter:
                     msg=PawnPromoterException.MSG,
                     err_code=PawnPromoterException.ERR_CODE,
                     mthd_rslt_type=MethodResultType.UPDATE_RESULT,
-                    ex=approval.exception
+                    ex=pawn_approval.exception
                 )
             )
         # Handle the case that, a rank_promotable test fails.
-        elevation_check_result = promotion_level_analyzer.validate(rank)
-        if elevation_check_result.is_failure:
+        promotion_level_analysis_result = promotion_level_analyzer.validate(rank)
+        if promotion_level_analysis_result.is_failure:
             # Send the exception chain on failure.
             return UpdateResult.update_failure(
                 original=pawn,
@@ -128,10 +128,10 @@ class PawnPromoter:
                     msg=PawnPromoterException.MSG,
                     err_code=PawnPromoterException.ERR_CODE,
                     mthd_rslt_type=MethodResultType.UPDATE_RESULT,
-                    ex=elevation_check_result.exception
+                    ex=promotion_level_analysis_result.exception
                 )
             )
-        #--- Integrity and consistency checks are passed. Do the promotion work. ---#
+        #--- Approvals have been granted. Do the promotion work. ---#
 
         # Make a deepcopy of the original pawn.
         pre_update_pawn = deepcopy(pawn)
