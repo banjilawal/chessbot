@@ -26,7 +26,7 @@ from model.token import (
 )
 
 
-class PromotionApprovalAnalyzer(Analyzer):
+class PawnPromotionApprovalManager(Analyzer):
     """
     Role:
         -   Transaction Worker

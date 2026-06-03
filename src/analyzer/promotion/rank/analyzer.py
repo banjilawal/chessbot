@@ -18,7 +18,7 @@ from util import LoggingLevelRouter
 from validation import RankValidator, Validator
 
 
-class RankElevationValidator(Validator[Rank]):
+class RankElevationAnalyzer(Validator[Rank]):
     """
     Role
         -   Transaction Worker

@@ -5,11 +5,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/analyzer/promotion/rank/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/analyzer/promotion/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/analyzer/promotion/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/analyzer/promotion/analyzer.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/analyzer/promotion/analyzer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/analyzer/promotion/exception/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/analyzer/promotion/exception/debug/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/analyzer/promotion/exception/debug/double.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/analyzer/promotion/exception/debug/inactive.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/analyzer/promotion/exception/debug/king.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/analyzer/promotion/exception/debug/pawn.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/analyzer/promotion/exception/debug/route.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/analyzer/promotion/exception/debug/row.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/analyzer/promotion/exception/transaction.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/operation/token/promotion/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/token/promotion/operation.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/report/promote/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/report/promote/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/report/promote/report.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/report/promote/report.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validation/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/validation/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validation/promotion/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validation/promotion/rank/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validation/promotion/rank/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/analyzer/promotion/rank/analyzer.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -78,11 +91,11 @@
       <recent name="$PROJECT_DIR$/src/err/operation/token" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/analyzer/promotion/rank" />
       <recent name="$PROJECT_DIR$/src/err/analyzer/claim/exist" />
       <recent name="$PROJECT_DIR$/src/err/analyzer" />
       <recent name="$PROJECT_DIR$/src/analysis" />
       <recent name="$PROJECT_DIR$/src/operation/priming/deployment" />
-      <recent name="$PROJECT_DIR$/src/analysis/claim" />
     </key>
   </component>
   <component name="RunManager" selected="Python.operation">
@@ -794,7 +807,7 @@
       <workItem from="1780253177020" duration="17428000" />
       <workItem from="1780338096358" duration="3367000" />
       <workItem from="1780365970384" duration="21144000" />
-      <workItem from="1780439079821" duration="18780000" />
+      <workItem from="1780439079821" duration="20917000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />

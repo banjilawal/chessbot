@@ -10,6 +10,7 @@ version: 1.0.1
 # =========== ANALYZER.PROMOTION PACKAGE ===========#
 
 # Packages
+from .rank import *
 
 # Modules
-from .analyzer import PromotionApprovalAnalyzer
+from .analyzer import PawnPromotionApprovalManager

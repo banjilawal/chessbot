@@ -12,13 +12,12 @@ from __future__ import annotations
 from copy import deepcopy
 from typing import cast
 
-from analyzer import PromotionApprovalAnalyzer
+from analyzer import PawnPromotionApprovalManager, RankElevationAnalyzer
 from err import PawnPromoterException
 from model import PawnToken, PromotionState, Rank
 from report import PromotionApprovalReport
 from result import MethodResultType, UpdateResult
 from util import LoggingLevelRouter
-from validation import RankElevationValidator
 
 
 class PawnPromoter:
@@ -52,28 +51,26 @@ class PawnPromoter:
             cls,
             rank: Rank,
             pawn: PawnToken,
-            promotion_analyzer: PromotionApprovalAnalyzer | None = None,
-            rank_elevation_validator: RankElevationValidator | None = None,
+            rank_elevation_validator: RankElevationAnalyzer | None = None,
+            promotion_approval_manager: PawnPromotionApprovalManager | None = None,
     ) -> UpdateResult[PawnToken]:
         """
         Executes the promotion transaction.
         
         Action:
             1.  Send the unmodified pawn along with an exception chain in the UpdateResult if:
-                    *   The token is not certified as a safe, actionable PawnToken.
-                    *   The pawn is already promoted.
-                    *   Is not on its enemy's rank_row.
-                    *   The new rank is either King or Pawn.
+                    -   The promotion_approval_manager sends a denial report.
+                    -   The rank_elevation_analyzer approves the new rank.
             2.  Otherwise:
-                    *   Make a deepcopy of the pawn to pre_update_pawn.
-                    *   Set the new rank
-                    *   Set the pawn's promotion_state to PromotionState.PROMOTED.
+                    -   Make a deepcopy of pawn to pre_update_pawn.
+                    -   Elevate the pawn to its new rank.
+                    -   Update pawn.PromotionState
             3.  Send the success result containing, the finished work product.
         Args:
             rank: Rank
             pawn: PawnToken
-            rank_elevation_validator: RankElevationValidator
-            promotion_analyzer: PawnPromotionAnalyzer
+            rank_elevation_validator: RankElevationAnalyzer
+            promotion_approval_manager: PawnPromotionApprovalManager 
         Returns:
             UpdateResult[PawnToken]
         Raises:
@@ -85,11 +82,11 @@ class PawnPromoter:
         
         # --- Supply any missing dependencies. ---#
         if rank_elevation_validator is None:
-            rank_elevation_validator = RankElevationValidator()
-        if promotion_analyzer is None:
-            promotion_analyzer = PromotionApprovalAnalyzer()
+            rank_elevation_validator = RankElevationAnalyzer()
+        if promotion_approval_manager is None:
+            promotion_approval_manager = PawnPromotionApprovalManager()
             
-        analysis_result = promotion_analyzer.analyze(pawn)
+        analysis_result = promotion_approval_manager.analyze(pawn)
         # Handle the case that, the promotion permission evaluation is not completed.
         if analysis_result.is_failure:
             # Send the exception chain on failure.
