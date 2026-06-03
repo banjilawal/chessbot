@@ -17,7 +17,7 @@ from report.promote.state import PromotionDecision
 
 
 @dataclass
-class PromotionPermissionReport(Report):
+class PromotionApprovalReport(Report):
     """
     Role:
         -   Test results
@@ -60,7 +60,7 @@ class PromotionPermissionReport(Report):
         return not self.is_granted
     
     @classmethod
-    def grant_promotion(cls, pawn: PawnToken) -> PromotionPermissionReport:
+    def approve_promotion(cls, pawn: PawnToken) -> PromotionApprovalReport:
         return cls(
             requestor=pawn,
             decision=PromotionDecision.GRANTED,
@@ -69,7 +69,7 @@ class PromotionPermissionReport(Report):
         )
     
     @classmethod
-    def deny_promotion(cls, exception: Exception) -> PromotionPermissionReport:
+    def deny_promotion(cls, exception: Exception) -> PromotionApprovalReport:
         return cls(
             decision=PromotionDecision.DENIED,
             promotion_row=None,
