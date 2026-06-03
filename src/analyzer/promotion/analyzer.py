@@ -17,7 +17,7 @@ from logic.rank import King, Pawn, Rank, RankService
 from analyzer import Analyzer, TokenFreedomAnalyzer
 from model.catalog import SchemaService
 from report import TokenFreedomReport
-from report.promote.report import PromotionReport
+from report.promote.report import PromotionPermission
 from result import AnalysisResult
 from util import LoggingLevelRouter, UpdateResult
 from model.token import (
@@ -70,7 +70,7 @@ class PawnPromotionAnalyzer(Analyzer):
             pawn: PawnToken,
             token_validator: TokenValidator | None = None,
             token_freedom_analyzer: TokenFreedomAnalyzer | None = None,
-    ) -> AnalysisResult[PromotionReport]:
+    ) -> AnalysisResult[PromotionPermission]:
         """
         Executes the promotion transaction.
         
@@ -129,7 +129,7 @@ class PawnPromotionAnalyzer(Analyzer):
         # Handle the case that, the token is not free.
         if activity_report.token_is_not_free:
             return AnalysisResult.completed(
-                PromotionReport.deny_promotion(
+                PromotionPermission.deny_promotion(
                     PromoteInactivePawnException(
                         cls_mthd=method,
                         cls_name=cls.__name__,
@@ -141,7 +141,7 @@ class PawnPromotionAnalyzer(Analyzer):
         # Handle the case that, the token is not a PawnToken.
         if not isinstance(pawn, PawnToken):
             return AnalysisResult.completed(
-                PromotionReport.deny_promotion(
+                PromotionPermission.deny_promotion(
                     TypeError(
                         f"Expected type PawnToken for promotion. "
                         f"Got {type(pawn).__name__} instead."
@@ -151,7 +151,7 @@ class PawnPromotionAnalyzer(Analyzer):
         # Handle the case that, the pawn_token has already been promoted.
         if pawn.is_promoted:
             return AnalysisResult.completed(
-                PromotionReport.deny_promotion(
+                PromotionPermission.deny_promotion(
                     PawnAlreadyPromotedException(
                         cls_mthd=method,
                         cls_name=cls.__name__,
@@ -162,7 +162,7 @@ class PawnPromotionAnalyzer(Analyzer):
             )
         if pawn.current_position.row != pawn.team.enemy_rank_row:
             return AnalysisResult.completed(
-                PromotionReport.deny_promotion(
+                PromotionPermission.deny_promotion(
                     PawnPromotionRowException(
                         cls_mthd=method,
                         cls_name=cls.__name__,
@@ -173,7 +173,7 @@ class PawnPromotionAnalyzer(Analyzer):
                 )
             )
         # --- Send the work product. ---#
-        return AnalysisResult.completed(PromotionReport.grant_promotion(pawn=pawn))
+        return AnalysisResult.completed(PromotionPermission.grant_promotion(pawn=pawn))
 
 
     @classmethod

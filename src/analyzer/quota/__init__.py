@@ -14,4 +14,4 @@ version: 1.0.1
 
 
 # Modules
-from .analyst import R
+from .analyzer import R

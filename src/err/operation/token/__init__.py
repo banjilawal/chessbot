@@ -22,6 +22,7 @@ from .hostage import *
 from .node import *
 from .persona import *
 from .player import *
+from .promotion import *
 from .rank import *
 from .scalar import *
 from .schema import *
