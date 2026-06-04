@@ -1,7 +1,7 @@
-# src/err/analyzer/promotion/inactive/exception.py
+# src/err/validation/promotion/exception.py
 
 """
-Module: err.analyzer.promotion.inactive.exception
+Module: err.validation.promotion.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -14,20 +14,21 @@ from err import AnalyzerException
 from result import MethodResultType
 
 __all__ = [
-    # ======================# PROMOTE_INACTIVE_PAWN_ERROR #======================#
-    "PromoteInactivePawnException",
+    # ======================# RANK_ELEVATION_VALIDATION_FAILURE #======================#
+    "PromotionLevelAnalyzerException",
 ]
 
-# ======================# PROMOTE_INACTIVE_PAWN_ERROR #======================#
-class PromoteInactivePawnException(AnalyzerException):
+# ======================# RANK_ELEVATION_VALIDATION_FAILURE #======================#
+class PromotionLevelAnalyzerException(AnalyzerException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an attempt was made to promote an inactive pawn.
+        1.  Indicate a rank elevation check was not passed.
 
     Attributes:
+        msg: Optional[str]
         var: Optional[str]
         val: Optional[Any]
         ex: Optional[Exception]
@@ -41,9 +42,8 @@ class PromoteInactivePawnException(AnalyzerException):
     Super Class:
         AnalyzerException
     """
-    MSG = "Cannot promote an inactive pawn."
-    ERR_CODE = "PROMOTE_INACTIVE_PAWN_ERROR"
-    MTHD_RSLT_TYPE = MethodResultType.ANALYSIS_RESULT
+    MSG = "Rank elevation check was not passed."
+    ERR_CODE = "RANK_ELEVATION_VALIDATION_FAILURE"
     
     def __init__(
             self,
@@ -57,19 +57,18 @@ class PromoteInactivePawnException(AnalyzerException):
             mthd_rslt_type: Optional[MethodResultType] | None = None,
     ):
         """
-        Args:
-            msg: Optional[str]
-            var: Optional[str]
-            val: Optional[Any]
-            ex: Optional[Exception]
-            cls_name: Optional[str]
-            cls_mthd: Optional[str]
-            err_code: Optional[str]
-            mthd_rslt_type: Optional[MethodResultType]
+        args:
+            Msg: Optional[str]
+            Var: Optional[str]
+            val: Optional[any]
+            ex: optional[Exception]
+            cls_name: optional[Str]
+            cls_mthd: optional[str]
+            err_code: optional[str]
+            mthd_rslt_type: optional[methodResultType]
         """
         msg = msg or self.MSG
         err_code = err_code or self.ERR_CODE
-        mthd_rslt_type = mthd_rslt_type or self.MTHD_RSLT_TYPE
         super().__init__(
             ex=ex,
             msg=msg,

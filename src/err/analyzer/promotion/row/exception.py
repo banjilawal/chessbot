@@ -1,7 +1,7 @@
-# src/err/validation/promotion/king/exception.py
+# src/err/validation/promotion/exception.py
 
 """
-Module: err.validation.promotion.king.exception
+Module: err.validation.promotion.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,22 +10,23 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import PromotionLevelAnalyzerException
+from err import AnalyzerException
 from result import MethodResultType
 
 __all__ = [
-    # ======================# PROMOTE_PAWN_TO_KING_ERROR #======================#
-    "PromoteToKingException",
+    # ======================# PAWN_PROMOTION_ROW_ERROR #======================#
+    "PawnPromotionRowException",
 ]
 
-# ======================# PROMOTE_PAWN_TO_KING_ERROR #======================#
-class PromoteToKingException(PromotionLevelAnalyzerException):
+# ======================# PAWN_PROMOTION_ROW_ERROR #======================#
+class PawnPromotionRowException(AnalyzerException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate an attempt to promote a pawn to King rank occurred.
+        1.  Indicate that a pawn was not promoted because it was not on its enemy's 
+            row row.
 
     Attributes:
         msg: Optional[str]
@@ -40,10 +41,10 @@ class PromoteToKingException(PromotionLevelAnalyzerException):
     Provides:
 
     Super Class:
-        RankElevationValidationException
+        AnalyzerException
     """
-    MSG = "Pawn cannot be promoted to King. Teams can only have one king."
-    ERR_CODE = "PROMOTE_PAWN_TO_KING_ERROR"
+    MSG = "Pawn cannot be promoted. It is not on the enemy row row."
+    ERR_CODE = "PAWN_PROMOTION_ROW_ERROR"
     
     def __init__(
             self,

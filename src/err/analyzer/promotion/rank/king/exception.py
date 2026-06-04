@@ -1,7 +1,7 @@
-# src/err/validation/promotion/exception.py
+# src/err/analyzer/promotion/rank/king/exception.py
 
 """
-Module: err.validation.promotion.exception
+Module: err.analyzer.promotion.rank.king.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,22 +10,22 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import ValidationException
+from err import PromotionLevelAnalyzerException
 from result import MethodResultType
 
 __all__ = [
-    # ======================# RANK_ELEVATION_VALIDATION_FAILURE #======================#
-    "PromotionLevelAnalyzerException",
+    # ======================# PROMOTE_PAWN_TO_KING_ERROR #======================#
+    "PromoteToKingException",
 ]
 
-# ======================# RANK_ELEVATION_VALIDATION_FAILURE #======================#
-class PromotionLevelAnalyzerException(ValidationException):
+# ======================# PROMOTE_PAWN_TO_KING_ERROR #======================#
+class PromoteToKingException(PromotionLevelAnalyzerException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate a rank elevation check was not passed.
+        1.  Indicate an attempt to promote a pawn to King rank occurred.
 
     Attributes:
         msg: Optional[str]
@@ -40,10 +40,10 @@ class PromotionLevelAnalyzerException(ValidationException):
     Provides:
 
     Super Class:
-        ValidationException
+        RankElevationValidationException
     """
-    MSG = "Rank elevation check was not passed."
-    ERR_CODE = "RANK_ELEVATION_VALIDATION_FAILURE"
+    MSG = "Pawn cannot be promoted to King. Teams can only have one king."
+    ERR_CODE = "PROMOTE_PAWN_TO_KING_ERROR"
     
     def __init__(
             self,

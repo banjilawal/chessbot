@@ -13,6 +13,7 @@ version: 1.0.1
 from .claim import *
 from .collision import *
 from .freedom import *
+from .promotion import *
 from .relation import *
 
 # Modules

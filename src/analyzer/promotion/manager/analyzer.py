@@ -12,6 +12,7 @@ from __future__ import annotations
 from typing import cast
 
 from analyzer import Analyzer, TokenFreedomAnalyzer
+from err import PawnDoublePromotionException, PawnPromotionRowException, PromoteInactivePawnException
 from err.analyzer.promotion import PromotionApprovalManagerException
 from model import PawnToken
 from report import PromotionApprovalManagerReport, TokenFreedomReport
@@ -78,7 +79,7 @@ class PawnPromotionApprovalManager(Analyzer):
         Raises:
             PawnPromotionAnalyzerException
             PromoteInactivePawnException
-            PawnAlreadyPromotedException
+            PawnDoublePromotionException
             PawnPromotionRowException
             TypeError
         """
@@ -136,11 +137,11 @@ class PawnPromotionApprovalManager(Analyzer):
         if pawn.is_promoted:
             return AnalysisResult.completed(
                 PromotionApprovalManagerReport.deny_promotion(
-                    PawnAlreadyPromotedException(
+                    PawnDoublePromotionException(
                         cls_mthd=method,
                         cls_name=cls.__name__,
-                        msg=PawnAlreadyPromotedException.MSG,
-                        err_code=PawnAlreadyPromotedException.ERR_CODE,
+                        msg=PawnDoublePromotionException.MSG,
+                        err_code=PawnDoublePromotionException.ERR_CODE,
                     )
                 )
             )
@@ -158,4 +159,6 @@ class PawnPromotionApprovalManager(Analyzer):
                 )
             )
         # --- Send the work product. ---#
-        return AnalysisResult.completed(PromotionApprovalManagerReport.approve_promotion(pawn=pawn))
+        return AnalysisResult.completed(
+            PromotionApprovalManagerReport.approve_promotion(pawn)
+        )
