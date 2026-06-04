@@ -12,5 +12,5 @@ version: 1.0.1
 # Packages
 
 # Modules
-from .report import PromotionLevelReport
+from .report import RankLevelApproval
 from .state import RankElevationDecision

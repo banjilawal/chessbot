@@ -1,7 +1,7 @@
-# src/validation/promotion/rank/validator.py
+# src/analyzer/promotion/rank/analyzer.py
 
 """
-Module: validation.promotion.rank.validator
+Module: analyzer.promotion.rank.analyzer
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -12,13 +12,13 @@ from __future__ import annotations
 from analyzer import Analyzer
 from err import PromoteToKingException, PromoteToPawnException, PromotionLevelAnalyzerException
 from model import King, Pawn, Rank
-from report import PromotionLevelReport
+from report import RankLevelApproval
 from result import AnalysisResult
 from util import LoggingLevelRouter
 from validation import RankValidator
 
 
-class PromotionLevelAnalyzer(Analyzer[PromotionLevelReport]):
+class PromotioRanklAnalyzer(Analyzer):
     """
     Role
         -   Transaction Worker
@@ -47,7 +47,7 @@ class PromotionLevelAnalyzer(Analyzer[PromotionLevelReport]):
             cls,
             new_rank: Rank,
             rank_validator: RankValidator | None = None,
-    ) -> AnalysisResult[PromotionLevelReport]:
+    ) -> AnalysisResult[RankLevelApproval]:
         """
         Verify the pawn's new Rank is not Pawn or King..
         
@@ -90,7 +90,7 @@ class PromotionLevelAnalyzer(Analyzer[PromotionLevelReport]):
         if isinstance(new_rank, King):
             # Send the exception chain on failure.
             return AnalysisResult.success(
-                PromotionLevelReport.deny(
+                RankLevelApproval.deny(
                     exception=PromoteToKingException(
                         msg=PromoteToKingException.MSG,
                         err_code=PromoteToKingException.ERR_CODE,
@@ -101,7 +101,7 @@ class PromotionLevelAnalyzer(Analyzer[PromotionLevelReport]):
         if isinstance(new_rank, Pawn):
             # Send the exception chain on failure.
             return AnalysisResult.success(
-                PromotionLevelReport.deny(
+                RankLevelApproval.deny(
                     exception=PromoteToPawnException(
                         msg=PromoteToPawnException.MSG,
                         err_code=PromoteToPawnException.ERR_CODE,
@@ -109,4 +109,4 @@ class PromotionLevelAnalyzer(Analyzer[PromotionLevelReport]):
                 )
             )
         # --- Send the work product. ---#
-        return AnalysisResult.success(PromotionLevelReport.approve(new_rank))
+        return AnalysisResult.success(RankLevelApproval.approve(new_rank))

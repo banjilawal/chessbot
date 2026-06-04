@@ -16,7 +16,7 @@ from model import PawnToken, Rank
 
 
 @dataclass
-class PromotionLevelReport(Report):
+class RankLevelApproval(Report):
     """
     Role:
         -   Test results
@@ -56,7 +56,7 @@ class PromotionLevelReport(Report):
         return not self.is_granted
     
     @classmethod
-    def approve(cls, new_rank: Rank) -> PromotionLevelReport:
+    def approve(cls, new_rank: Rank) -> RankLevelApproval:
         return cls(
             exception=None,
             new_rank=new_rank,
@@ -64,7 +64,7 @@ class PromotionLevelReport(Report):
         )
     
     @classmethod
-    def deny(cls, exception: Exception) -> PromotionLevelReport:
+    def deny(cls, exception: Exception) -> RankLevelApproval:
         return cls(
             decision=RankElevationDecision.DENIED,
             exception=exception,
