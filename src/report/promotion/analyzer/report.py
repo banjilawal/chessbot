@@ -12,8 +12,8 @@ from dataclasses import dataclass
 from typing import Optional
 
 from report import Report
-from model import PawnToken, PromotionState
-from report.promotion.analyzer.state import PromotionDecision
+from model import PawnToken, PromotionState, Rank
+from report.promotion.analyzer.state import RankElevationDecision
 
 
 @dataclass
@@ -26,33 +26,32 @@ class RankElevationReport(Report):
         1.  Presents a token's promotion on an opening square.
 
     Attributes:
-        decision: PromotionDecision
-        promotion_row: Optional[int]
-        requestor: Optional[PawnToken]
-        execption: Optional[Exception]
+        decision: RankElevationDecision
+        pawn: Optional[PawnToken] = None
+        new_rank: Optional[Rank] = None
+        exception: Optional[Exception] = None
 
         can_promote: bool
         cannot_promote: bool
 
     Provides:
-        -   def approve_promotion(cls, pawn: PawnToken) -> RankElevationReport:
-        -   def deny_promotion(cls, exception: Exception) -> RankElevationReport:
+        -   def approve(pawn: PawnToken, new_rank: Rank) -> RankElevationReport:
+        -   def deny(exception: Exception) -> RankElevationReport:
     Super Class:
         Report
     """
-    decision: PromotionDecision
-    requestor: Optional[PawnToken] = None
-    promotion_row: Optional[int] = None
+    decision: RankElevationDecision
+    pawn: Optional[PawnToken] = None
+    new_rank: Optional[Rank] = None
     exception: Optional[Exception] = None
     
     @property
     def is_granted(self) -> bool:
         return (
-                self.requestor.is_active and
+                self.pawn is not None and
+                self.new_rank is not None and
                 self.exception is None and
-                self.decision == PromotionDecision.GRANTED and
-                self.requestor.promotion_state == PromotionState.NOT_PROMOTED and
-                self.requestor.current_position.row == self.promotion_row
+                self.decision == RankElevationDecision.GRANTED
         )
     
     @property
@@ -60,20 +59,20 @@ class RankElevationReport(Report):
         return not self.is_granted
     
     @classmethod
-    def approve_promotion(cls, pawn: PawnToken) -> RankElevationReport:
+    def approve(cls, pawn: PawnToken, new_rank: Rank) -> RankElevationReport:
         return cls(
-            requestor=pawn,
-            decision=PromotionDecision.GRANTED,
-            promotion_row=pawn.team.schema.enemy_schema.rank_row,
+            pawn=pawn,
+            new_rank=new_rank,
+            decision=RankElevationDecision.GRANTED,
             exception=None,
         )
     
     @classmethod
-    def deny_promotion(cls, exception: Exception) -> RankElevationReport:
+    def deny(cls, exception: Exception) -> RankElevationReport:
         return cls(
-            decision=PromotionDecision.DENIED,
-            promotion_row=None,
-            requestor=None,
+            decision=RankElevationDecision.DENIED,
             exception=exception,
+            new_rank=None,
+            pawn=None,
         )
     
