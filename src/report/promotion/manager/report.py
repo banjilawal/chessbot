@@ -31,8 +31,8 @@ class PromotionApprovalManagerReport(Report):
         requestor: Optional[PawnToken]
         execption: Optional[Exception]
         
-        can_promote: bool
-        cannot_promote: bool
+        is_granted: bool
+        is_denied: bool
         
     Provides:
         -   def approve_promotion(cls, pawn: PawnToken) -> PromotionApprovalManagerReport:

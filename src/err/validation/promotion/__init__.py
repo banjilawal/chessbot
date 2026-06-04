@@ -14,4 +14,4 @@ from .king import *
 from .pawn import *
 
 # Modules
-from .exception import RankElevationValidationException
+from .exception import PromotionLevelAnalyzerException

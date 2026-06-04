@@ -9,16 +9,16 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from typing import Any, cast
-
-from err import PromoteToKingException, PromoteToPawnException, RankElevationValidationException
+from analyzer import Analyzer
+from err import PromoteToKingException, PromoteToPawnException, PromotionLevelAnalyzerException
 from model import King, Pawn, Rank
-from result import ValidationResult
+from report import PromotionLevelReport
+from result import AnalysisResult
 from util import LoggingLevelRouter
-from validation import RankValidator, Validator
+from validation import RankValidator
 
 
-class PromotionLevelAnalyzer(Validator[Rank]):
+class PromotionLevelAnalyzer(Analyzer[PromotionLevelReport]):
     """
     Role
         -   Transaction Worker
@@ -32,38 +32,38 @@ class PromotionLevelAnalyzer(Validator[Rank]):
     Attributes:
 
     Properties:
-        -   def validate(
-                    candidate: Any,
+        -   def analyze(
+                    new_rank: Rank,
                     rank_validator: RankValidator,
-            ) -> ValidationResult[Rank]:
+            ) -> AnalysisResult[PromotionLevelReport]:
 
     Super Class:
-        Validator
+        Analyzer
     """
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def validate(
+    def analyze(
             cls,
-            candidate: Any,
+            new_rank: Rank,
             rank_validator: RankValidator | None = None,
-    ) -> ValidationResult[Rank]:
+    ) -> AnalysisResult[PromotionLevelReport]:
         """
-        Verify the candidate is a safe RankTeamPromotion.
+        Verify the pawn's new Rank is not Pawn or King..
         
         Action:
-            1.  Send an exception in the ValidationResult any of these
+            1.  Send an exception in the AnalysisResult any of these
                 conditions occur.
                     -   Is flagged by rank_validator
                     -   The new rank is either Pawn or King.
             3.  Otherwise, Send the success result.
         Args:
-            candidate: Any
+            new_rank: Rank
             rank_validator: RankValidator
         Returns:
-            ValidationResult[Rank]
+            AnalysisResult[PromotionLevelReport]
         Raises:
-            RankElevationValidationException
+            PromotionLevelAnalyzerException
             PromoteToKingException
             PromoteToPawnException
         """
@@ -74,49 +74,39 @@ class PromotionLevelAnalyzer(Validator[Rank]):
             rank_validator = RankValidator()
             
         # Handle the case that, the candidate is flagged by the rank_validator.
-        validation_result = rank_validator.validate(candidate)
+        validation_result = rank_validator.validate(new_rank)
         if validation_result.is_failure:
             # Send the exception chain on failure.
-            return ValidationResult.failure(
-                RankElevationValidationException(
+            return AnalysisResult.failure(
+                PromotionLevelAnalyzerException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    msg=RankElevationValidationException.MSG,
-                    err_code=RankElevationValidationException.ERR_CODE,
+                    msg=PromotionLevelAnalyzerException.MSG,
+                    err_code=PromotionLevelAnalyzerException.ERR_CODE,
                     ex=validation_result.exception,
                 )
             )
-        rank = cast(Rank, validation_result.payload)
         # Handle the case that, the higher rank is a King's.
-        if isinstance(rank, King):
+        if isinstance(new_rank, King):
             # Send the exception chain on failure.
-            return ValidationResult.failure(
-                RankElevationValidationException(
-                    cls_mthd=method,
-                    cls_name=cls.__name__,
-                    msg=RankElevationValidationException.MSG,
-                    err_code=RankElevationValidationException.ERR_CODE,
-                    ex=PromoteToKingException(
+            return AnalysisResult.success(
+                PromotionLevelReport.deny(
+                    exception=PromoteToKingException(
                         msg=PromoteToKingException.MSG,
                         err_code=PromoteToKingException.ERR_CODE,
                     ),
                 )
             )
         # Handle the case that, the new rank is still a Pawn's.
-        if isinstance(rank, Pawn):
+        if isinstance(new_rank, Pawn):
             # Send the exception chain on failure.
-            # Send the exception chain on failure.
-            return ValidationResult.failure(
-                RankElevationValidationException(
-                    cls_mthd=method,
-                    cls_name=cls.__name__,
-                    msg=RankElevationValidationException.MSG,
-                    err_code=RankElevationValidationException.ERR_CODE,
-                    ex=PromoteToPawnException(
+            return AnalysisResult.success(
+                PromotionLevelReport.deny(
+                    exception=PromoteToPawnException(
                         msg=PromoteToPawnException.MSG,
                         err_code=PromoteToPawnException.ERR_CODE,
-                    ),
+                    )
                 )
             )
         # --- Send the work product. ---#
-        return ValidationResult.success(rank)
+        return AnalysisResult.success(PromotionLevelReport.approve(new_rank))

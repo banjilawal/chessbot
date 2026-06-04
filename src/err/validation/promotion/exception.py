@@ -15,11 +15,11 @@ from result import MethodResultType
 
 __all__ = [
     # ======================# RANK_ELEVATION_VALIDATION_FAILURE #======================#
-    "RankElevationValidationException",
+    "PromotionLevelAnalyzerException",
 ]
 
 # ======================# RANK_ELEVATION_VALIDATION_FAILURE #======================#
-class RankElevationValidationException(ValidationException):
+class PromotionLevelAnalyzerException(ValidationException):
     """
     Role:
         -   Error Tracing

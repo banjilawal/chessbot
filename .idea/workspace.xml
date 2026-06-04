@@ -5,18 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/report/promotion/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/report/promotion/analyzer/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/report/promotion/analyzer/report.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/report/promotion/analyzer/state.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/report/promotion/manager/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/analyzer/promotion/analyzer.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/analyzer/promotion/analyzer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/token/promotion/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/token/promotion/operation.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/report/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/report/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/report/promote/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/report/promote/report.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/report/promotion/manager/report.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/report/promote/state.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/report/promotion/manager/state.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/analyzer/promotion/rank/analyzer.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/analyzer/promotion/rank/analyzer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/validation/promotion/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/validation/promotion/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/validation/promotion/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/validation/promotion/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/validation/promotion/king/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/validation/promotion/king/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/validation/promotion/pawn/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/validation/promotion/pawn/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/report/promotion/analyzer/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/report/promotion/analyzer/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/report/promotion/analyzer/report.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/report/promotion/analyzer/report.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/report/promotion/manager/report.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/report/promotion/manager/report.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -802,7 +799,7 @@
       <workItem from="1780338096358" duration="3367000" />
       <workItem from="1780365970384" duration="21144000" />
       <workItem from="1780439079821" duration="22480000" />
-      <workItem from="1780581450061" duration="2484000" />
+      <workItem from="1780581450061" duration="6103000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />
@@ -1178,6 +1175,11 @@
           <url>file://$PROJECT_DIR$/src/operation/token/promotion/operation.py</url>
           <line>128</line>
           <option name="timeStamp" value="188" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/report/promotion/analyzer/__init__.py</url>
+          <line>14</line>
+          <option name="timeStamp" value="189" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

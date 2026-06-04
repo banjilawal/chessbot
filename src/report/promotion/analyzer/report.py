@@ -11,13 +11,12 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Optional
 
-from report import Report
-from model import PawnToken, PromotionState, Rank
-from report.promotion.analyzer.state import RankElevationDecision
+from report import RankElevationDecision, Report
+from model import PawnToken, Rank
 
 
 @dataclass
-class RankElevationReport(Report):
+class PromotionLevelReport(Report):
     """
     Role:
         -   Test results
@@ -27,30 +26,28 @@ class RankElevationReport(Report):
 
     Attributes:
         decision: RankElevationDecision
-        pawn: Optional[PawnToken] = None
         new_rank: Optional[Rank] = None
         exception: Optional[Exception] = None
 
-        can_promote: bool
-        cannot_promote: bool
+        is_granted: bool
+        is_denied: bool
 
     Provides:
-        -   def approve(pawn: PawnToken, new_rank: Rank) -> RankElevationReport:
+        -   def approve(new_rank: Rank) -> RankElevationReport:
         -   def deny(exception: Exception) -> RankElevationReport:
+        
     Super Class:
         Report
     """
     decision: RankElevationDecision
-    pawn: Optional[PawnToken] = None
     new_rank: Optional[Rank] = None
     exception: Optional[Exception] = None
     
     @property
     def is_granted(self) -> bool:
         return (
-                self.pawn is not None and
-                self.new_rank is not None and
                 self.exception is None and
+                self.new_rank is not None and
                 self.decision == RankElevationDecision.GRANTED
         )
     
@@ -59,20 +56,18 @@ class RankElevationReport(Report):
         return not self.is_granted
     
     @classmethod
-    def approve(cls, pawn: PawnToken, new_rank: Rank) -> RankElevationReport:
+    def approve(cls, new_rank: Rank) -> PromotionLevelReport:
         return cls(
-            pawn=pawn,
+            exception=None,
             new_rank=new_rank,
             decision=RankElevationDecision.GRANTED,
-            exception=None,
         )
     
     @classmethod
-    def deny(cls, exception: Exception) -> RankElevationReport:
+    def deny(cls, exception: Exception) -> PromotionLevelReport:
         return cls(
             decision=RankElevationDecision.DENIED,
             exception=exception,
             new_rank=None,
-            pawn=None,
         )
     

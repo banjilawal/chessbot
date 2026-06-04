@@ -10,7 +10,7 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import RankElevationValidationException
+from err import PromotionLevelAnalyzerException
 from result import MethodResultType
 
 __all__ = [
@@ -19,7 +19,7 @@ __all__ = [
 ]
 
 # ======================# PROMOTE_PAWN_TO_KING_ERROR #======================#
-class PromoteToKingException(RankElevationValidationException):
+class PromoteToKingException(PromotionLevelAnalyzerException):
     """
     Role:
         -   Error Tracing
