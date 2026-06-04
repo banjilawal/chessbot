@@ -1,7 +1,7 @@
-# src/analyzer/promotion/analyzer.py
+# src/analyzer/promotion/manager/analyzer.py
 
 """
-Module: analyzer.promotion.analyzer
+Module: analyzer.promotion.manager.analyzer
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -11,17 +11,13 @@ from __future__ import annotations
 
 from typing import cast
 
-from logic.rank import King, Pawn, Rank, RankService
-
 from analyzer import Analyzer, TokenFreedomAnalyzer
-from report import TokenFreedomReport
-from report.promotion.manager.report import PromotionApprovalManagerReport
-from result import AnalysisResult
-from util import LoggingLevelRouter, UpdateResult
-from model.token import (
-    PawnAlreadyPromotedException, PawnPromotionRowException, PawnToken, PromoteInactivePawnException,
-    PromoteToPawnException, PawnPromotionAnalyzerException, PromotionToKingException, TokenValidator,
-)
+from err.analyzer.promotion import PromotionApprovalManagerException
+from model import PawnToken
+from report import PromotionApprovalManagerReport, TokenFreedomReport
+from result import AnalysisResult, MethodResultType
+from util import LoggingLevelRouter
+from validation import TokenValidator
 
 
 class PawnPromotionApprovalManager(Analyzer):
@@ -47,16 +43,6 @@ class PawnPromotionApprovalManager(Analyzer):
                     schema_service: SchemaService,
                     token_validator: TokenValidator
             ) -> UpdateResult[PawnToken]
-        
-        -   _run_promotable_rank_tests(
-                    rank: Rank,
-                    rank_service: RankService
-            ) -> ValidationResult[int]
-        
-        -    _run_enemy_rank_row_tests(
-                    pawn_token: PawnToken,
-                    schema_service: SchemaService
-            ) -> ValidationResult[int]:
             
     Super Class:
     """
@@ -112,20 +98,20 @@ class PawnPromotionApprovalManager(Analyzer):
         if analysis_result.is_failure:
             # Send the exception chain on failure.
             return AnalysisResult.failure(
-                PawnPromotionAnalyzerException(
+                PromotionApprovalManagerException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    op=PawnPromotionAnalyzerException.OP,
-                    msg=PawnPromotionAnalyzerException.MSG,
-                    err_code=PawnPromotionAnalyzerException.ERR_CODE,
-                    mthd_rslt_type=PawnPromotionAnalyzerException.MTHD_RSLT,
+                    msg=PromotionApprovalManagerException.MSG,
+                    err_code=PromotionApprovalManagerException.ERR_CODE,
+                    mthd_rslt_type=MethodResultType.ANALYSIS_RESULT,
                     ex=analysis_result.exception
                 )
             )
-        activity_report = cast(TokenFreedomReport, analysis_result.payload)
+        report = cast(TokenFreedomReport, analysis_result.payload)
         
         # Handle the case that, the token is not free.
-        if activity_report.token_is_not_free:
+        if report.token_is_not_free:
+            # Send the exception chain on failure.
             return AnalysisResult.completed(
                 PromotionApprovalManagerReport.deny_promotion(
                     PromoteInactivePawnException(
@@ -158,6 +144,7 @@ class PawnPromotionApprovalManager(Analyzer):
                     )
                 )
             )
+        # Handle the case that, the is not on its promotion row..
         if pawn.current_position.row != pawn.team.enemy_rank_row:
             return AnalysisResult.completed(
                 PromotionApprovalManagerReport.deny_promotion(
@@ -172,84 +159,3 @@ class PawnPromotionApprovalManager(Analyzer):
             )
         # --- Send the work product. ---#
         return AnalysisResult.completed(PromotionApprovalManagerReport.approve_promotion(pawn=pawn))
-
-
-    @classmethod
-    @LoggingLevelRouter.monitor
-    def _run_promotable_rank_tests(
-            cls,
-            rank: Rank,
-            pawn_token: PawnToken,
-            rank_service: RankService,
-    ) -> UpdateResult[PawnToken]:
-        """
-        Runs the exception that assures the rank instance can be used safely.
-        
-        Action:
-            1.  Send an exception chain in the ValidationResult if:
-                    *   The rank does not pass a validation check.
-                    *   It's not a Pawn or King.
-            2.  Otherwise, send the success result.
-        Args:
-            rank: Rank
-            rank_service: RankService
-        Returns:
-            ValidationResult[int]
-        Raises:
-            PawnPromotionAnalyzerException
-            PromoteToPawnException
-            PromoteToKingException
-        """
-        method = f"{cls.__class__.__name__}. _run_promotable_rank_tests"
-        
-        # Handle the case that, the rank does not pass a validation check.
-        validation_result = rank_service.validator.validate(rank)
-        if validation_result.is_failure:
-            # Send the exception chain on failure.
-            return UpdateResult.update_failure(
-                original=pawn_token,
-                exception=PawnPromotionAnalyzerException(
-                    cls_mthd=method,
-                    op=PawnPromotionAnalyzerException.OP,
-                    msg=PawnPromotionAnalyzerException.MSG,
-                    err_code=PawnPromotionAnalyzerException.ERR_CODE,
-                    mthd_rslt_type=PawnPromotionAnalyzerException.MTHD_RSLT,
-                    ex=validation_result.exception
-                )
-            )
-        # Handle the case that, the higher rank is a King's.
-        if isinstance(rank, King):
-            # Send the exception chain on failure.
-            return UpdateResult.update_failure(
-                original=pawn_token,
-                exception=PawnPromotionAnalyzerException(
-                    cls_mthd=method,
-                    op=PawnPromotionAnalyzerException.OP,
-                    msg=PawnPromotionAnalyzerException.MSG,
-                    err_code=PawnPromotionAnalyzerException.ERR_CODE,
-                    mthd_rslt_type=PawnPromotionAnalyzerException.MTHD_RSLT,
-                    ex=PromotionToKingException(
-                        msg=PromotionToKingException.MSG,
-                        err_code=PromotionToKingException.ERR_CODE,
-                    )
-                )
-            )
-        # Handle the case that, the new is still a Pawn's.
-        if isinstance(rank, Pawn):
-            # Send the exception chain on failure.
-            return UpdateResult.update_failure(
-                original=pawn_token,
-                exception=PawnPromotionAnalyzerException(
-                    cls_mthd=method,
-                    op=PawnPromotionAnalyzerException.OP,
-                    msg=PawnPromotionAnalyzerException.MSG,
-                    err_code=PawnPromotionAnalyzerException.ERR_CODE,
-                    mthd_rslt_type=PawnPromotionAnalyzerException.MTHD_RSLT,
-                    ex=PromoteToPawnException(
-                        msg=PromoteToPawnException.MSG,
-                        err_code=PromoteToPawnException.ERR_CODE,
-                    )
-                )
-            )
-        # --- Send the work product. ---#
-        return UpdateResult.update_success(original=pawn_token, updated=pawn_token)

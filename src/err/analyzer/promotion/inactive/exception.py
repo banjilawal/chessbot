@@ -1,7 +1,7 @@
-# src/err/analyzer/claim/exception.py
+# src/err/analyzer/promotion/inactive/exception.py
 
 """
-Module: err.analyzer.claim.exception
+Module: err.analyzer.promotion.inactive.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -14,18 +14,18 @@ from err import AnalyzerException
 from result import MethodResultType
 
 __all__ = [
-    # ======================# HOME_SQUARE_CLAIM_ANALYZER_ERROR #======================#
-    "HomeSquareClaimAnalyzerException",
+    # ======================# PROMOTE_INACTIE_PAWN_ERROR #======================#
+    "PromoteInactivePawnException",
 ]
 
-# ======================# HOME_SQUARE_CLAIM_ANALYZER_ERROR #======================#
-class HomeSquareClaimAnalyzerException(AnalyzerException):
+# ======================# PROMOTE_INACTIE_PAWN_ERROR #======================#
+class PromoteInactivePawnException(AnalyzerException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an error occurred during a home square claim analysis.
+        1.  Indicate that an attempt was made to promote an inactive pawn.
 
     Attributes:
         var: Optional[str]
@@ -41,8 +41,8 @@ class HomeSquareClaimAnalyzerException(AnalyzerException):
     Super Class:
         AnalyzerException
     """
-    MSG = "Error occurred during a home square claim analysis."
-    ERR_CODE = "HOME_SQUARE_CLAIM_ANALYZER_ERROR"
+    MSG = "Cannot promote an inactive pawn."
+    ERR_CODE = "PROMOTE_INACTIE_PAWN_ERROR"
     MTHD_RSLT_TYPE = MethodResultType.ANALYSIS_RESULT
     
     def __init__(

@@ -18,7 +18,7 @@ from util import LoggingLevelRouter
 from validation import RankValidator
 
 
-class PromotioRanklAnalyzer(Analyzer):
+class PromotionRankAnalyzer(Analyzer):
     """
     Role
         -   Transaction Worker
@@ -89,7 +89,7 @@ class PromotioRanklAnalyzer(Analyzer):
         # Handle the case that, the higher rank is a King's.
         if isinstance(new_rank, King):
             # Send the exception chain on failure.
-            return AnalysisResult.success(
+            return AnalysisResult.completed(
                 RankLevelApproval.deny(
                     exception=PromoteToKingException(
                         msg=PromoteToKingException.MSG,
@@ -100,7 +100,7 @@ class PromotioRanklAnalyzer(Analyzer):
         # Handle the case that, the new rank is still a Pawn's.
         if isinstance(new_rank, Pawn):
             # Send the exception chain on failure.
-            return AnalysisResult.success(
+            return AnalysisResult.completed(
                 RankLevelApproval.deny(
                     exception=PromoteToPawnException(
                         msg=PromoteToPawnException.MSG,
@@ -109,4 +109,4 @@ class PromotioRanklAnalyzer(Analyzer):
                 )
             )
         # --- Send the work product. ---#
-        return AnalysisResult.success(RankLevelApproval.approve(new_rank))
+        return AnalysisResult.completed(RankLevelApproval.approve(new_rank))

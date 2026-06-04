@@ -1,7 +1,7 @@
-# src/err/token/deployment/duplicate/exception.py
+# src/err/analyzer/promotion/double/exception.py
 
 """
-Module: err.token.deployment.duplicate.exception
+Module: err.analyzer.promotion.double.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,25 +10,24 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import HomeSquarePromotionAnalyzerException
+from err import AnalyzerException
 from result import MethodResultType
 
 __all__ = [
-    # ======================# HOME_SQUARE_ALREADY_PROMOTIONED_ERROR #======================#
-    "HomeSquareAlreadyPromotionedException",
+    # ======================# PAWN_DOUBLE_PROMOTION_ERROR #======================#
+    "PawnDoublePromotionException",
 ]
 
-# ======================# HOME_SQUARE_ALREADY_PROMOTIONED_ERROR #======================#
-class HomeSquareAlreadyPromotionedException(HomeSquarePromotionAnalyzerException):
+# ======================# PAWN_DOUBLE_PROMOTION_ERROR #======================#
+class PawnDoublePromotionException(AnalyzerException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an opening square has already been promotioned.
+        1.  Indicate that an attempt was made to promote a pawn twice.
 
     Attributes:
-        msg: Optional[str]
         var: Optional[str]
         val: Optional[Any]
         ex: Optional[Exception]
@@ -40,35 +39,37 @@ class HomeSquareAlreadyPromotionedException(HomeSquarePromotionAnalyzerException
     Provides:
 
     Super Class:
-        HomeSquarePromotionAnalyzerException
+        AnalyzerException
     """
-    MSG = "Opening square has already been promotioned."
-    ERR_CODE = "HOME_SQUARE_ALREADY_PROMOTIONED_ERROR"
+    MSG = "Cannot promote a pwan twice."
+    ERR_CODE = "PAWN_DOUBLE_PROMOTION_ERROR"
+    MTHD_RSLT_TYPE = MethodResultType.ANALYSIS_RESULT
     
     def __init__(
             self,
-            msg: str = MSG,
-            err_code: str = ERR_CODE,
+            msg: Optional[str] | None = None,
             var: Optional[str] | None = None,
             val: Optional[Any] | None = None,
+            ex: Optional[Exception] | None = None,
             cls_name: Optional[str] | None = None,
             cls_mthd: Optional[str] | None = None,
-            ex: Optional[Exception] | None = None,
+            err_code: Optional[str] | None = None,
             mthd_rslt_type: Optional[MethodResultType] | None = None,
     ):
         """
-            Args:
-            msg: str
-            err_code: str
+        Args:
+            msg: Optional[str]
             var: Optional[str]
             val: Optional[Any]
+            ex: Optional[Exception]
             cls_name: Optional[str]
             cls_mthd: Optional[str]
-            ex: Optional[Exception]
+            err_code: Optional[str]
             mthd_rslt_type: Optional[MethodResultType]
         """
         msg = msg or self.MSG
         err_code = err_code or self.ERR_CODE
+        mthd_rslt_type = mthd_rslt_type or self.MTHD_RSLT_TYPE
         super().__init__(
             ex=ex,
             msg=msg,

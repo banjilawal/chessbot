@@ -10,7 +10,7 @@ version: 1.0.1
 # ============ ERR.ANALYZER.PROMOTION PACKAGE ===========#
 
 # Packages
-from .exist import *
+from .manager import *
+from .rank import *
 
 # Modules
-from .exception import PawnPromotionAnalyzerException

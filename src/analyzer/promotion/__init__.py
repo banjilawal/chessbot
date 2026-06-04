@@ -13,4 +13,4 @@ version: 1.0.1
 from .rank import *
 
 # Modules
-from .analyzer import PawnPromotionApprovalManager
+from analyzer.promotion.manager.analyzer import PawnPromotionApprovalManager

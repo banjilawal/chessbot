@@ -12,7 +12,7 @@ from __future__ import annotations
 from copy import deepcopy
 from typing import cast
 
-from analyzer import PawnPromotionApprovalManager, PromotioRanklAnalyzer
+from analyzer import PawnPromotionApprovalManager, PromotionRankAnalyzer
 from err import PawnPromoterException
 from model import PawnToken, PromotionState, Rank
 from report import PromotionApprovalManagerReport, RankLevelApproval
@@ -51,7 +51,7 @@ class PawnPromoter:
             cls,
             rank: Rank,
             pawn: PawnToken,
-            promotion_rank_analyzer: PromotioRanklAnalyzer | None = None,
+            promotion_rank_analyzer: PromotionRankAnalyzer | None = None,
             promotion_approval_manager: PawnPromotionApprovalManager | None = None,
     ) -> UpdateResult[PawnToken]:
         """
@@ -82,7 +82,7 @@ class PawnPromoter:
         
         # --- Supply any missing dependencies. ---#
         if promotion_rank_analyzer is None:
-            promotion_rank_analyzer = PromotioRanklAnalyzer()
+            promotion_rank_analyzer = PromotionRankAnalyzer()
         if promotion_approval_manager is None:
             promotion_approval_manager = PawnPromotionApprovalManager()
             

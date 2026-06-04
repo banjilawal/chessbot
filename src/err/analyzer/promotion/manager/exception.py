@@ -1,7 +1,7 @@
-# src/err/analyzer/promotion/exception.py
+# src/err/analyzer/promotion/manager/exception.py
 
 """
-Module: err.analyzer.promotion.exception
+Module: err.analyzer.promotion.manager.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -15,11 +15,11 @@ from result import MethodResultType
 
 __all__ = [
     # ======================# PAWN_PROMOTION_ANALYZER_ERROR #======================#
-    "PawnPromotionAnalyzerException",
+    "PromotionApprovalManagerException",
 ]
 
 # ======================# PAWN_PROMOTION_ANALYZER_ERROR #======================#
-class PawnPromotionAnalyzerException(AnalyzerException):
+class PromotionApprovalManagerException(AnalyzerException):
     """
     Role:
         -   Error Tracing
@@ -43,7 +43,7 @@ class PawnPromotionAnalyzerException(AnalyzerException):
     """
     MSG = "Error occurred during a pawn promotion analysis."
     ERR_CODE = "PAWN_PROMOTION_ANALYZER_ERROR"
-    MTHD_RSLT_TYPE = MethodResultType.VALIDATION_RESULT
+    MTHD_RSLT_TYPE = MethodResultType.ANALYSIS_RESULT
     
     def __init__(
             self,
