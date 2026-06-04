@@ -1,7 +1,7 @@
-# src/report/claim/report.py
+# src/report/promotion/analyzer/report.py
 
 """
-Module: report.claim.report
+Module: report.promotion.analyzer.report
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -11,31 +11,32 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Optional
 
-from model import PawnToken, PromotionState
 from report import Report
-from report.promote.state import PromotionDecision
+from model import PawnToken, PromotionState
+from report.promotion.analyzer.state import PromotionDecision
 
 
 @dataclass
-class PromotionApprovalReport(Report):
+class RankElevationReport(Report):
     """
     Role:
         -   Test results
 
     Responsibilities:
-        1.  Presents a token's claim on an opening square.
-        
+        1.  Presents a token's promotion on an opening square.
+
     Attributes:
-        requestor: PawnToken
-        promotion_row: Optional[int]
         decision: PromotionDecision
-        
+        promotion_row: Optional[int]
+        requestor: Optional[PawnToken]
+        execption: Optional[Exception]
+
         can_promote: bool
         cannot_promote: bool
-        
+
     Provides:
-        -   def grant_promotion(pawn: PawnToken) -> PromotionReport
-        -   def deny_promotion(pawn: PawnToken) -> PromotionReport
+        -   def approve_promotion(cls, pawn: PawnToken) -> RankElevationReport:
+        -   def deny_promotion(cls, exception: Exception) -> RankElevationReport:
     Super Class:
         Report
     """
@@ -43,7 +44,6 @@ class PromotionApprovalReport(Report):
     requestor: Optional[PawnToken] = None
     promotion_row: Optional[int] = None
     exception: Optional[Exception] = None
-    
     
     @property
     def is_granted(self) -> bool:
@@ -60,7 +60,7 @@ class PromotionApprovalReport(Report):
         return not self.is_granted
     
     @classmethod
-    def approve_promotion(cls, pawn: PawnToken) -> PromotionApprovalReport:
+    def approve_promotion(cls, pawn: PawnToken) -> RankElevationReport:
         return cls(
             requestor=pawn,
             decision=PromotionDecision.GRANTED,
@@ -69,7 +69,7 @@ class PromotionApprovalReport(Report):
         )
     
     @classmethod
-    def deny_promotion(cls, exception: Exception) -> PromotionApprovalReport:
+    def deny_promotion(cls, exception: Exception) -> RankElevationReport:
         return cls(
             decision=PromotionDecision.DENIED,
             promotion_row=None,

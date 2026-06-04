@@ -14,7 +14,7 @@ version: 1.0.1
 from .claim import *
 from .collision import *
 from .freedom import *
-from .promote import *
+from .promotion import *
 from .quota import *
 from .relation import *
 from .square import *

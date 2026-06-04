@@ -9,20 +9,18 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from copy import deepcopy
 from typing import cast
 
 from logic.rank import King, Pawn, Rank, RankService
 
 from analyzer import Analyzer, TokenFreedomAnalyzer
-from model.catalog import SchemaService
 from report import TokenFreedomReport
-from report.promote.report import PromotionApprovalReport
+from report.promotion.manager.report import PromotionApprovalManagerReport
 from result import AnalysisResult
 from util import LoggingLevelRouter, UpdateResult
 from model.token import (
     PawnAlreadyPromotedException, PawnPromotionRowException, PawnToken, PromoteInactivePawnException,
-    PromoteToPawnException, PawnPromotionAnalyzerException, PromotionState, PromotionToKingException, TokenValidator,
+    PromoteToPawnException, PawnPromotionAnalyzerException, PromotionToKingException, TokenValidator,
 )
 
 
@@ -70,7 +68,7 @@ class PawnPromotionApprovalManager(Analyzer):
             pawn: PawnToken,
             token_validator: TokenValidator | None = None,
             token_freedom_analyzer: TokenFreedomAnalyzer | None = None,
-    ) -> AnalysisResult[PromotionApprovalReport]:
+    ) -> AnalysisResult[PromotionApprovalManagerReport]:
         """
         Executes the promotion transaction.
         
@@ -129,7 +127,7 @@ class PawnPromotionApprovalManager(Analyzer):
         # Handle the case that, the token is not free.
         if activity_report.token_is_not_free:
             return AnalysisResult.completed(
-                PromotionApprovalReport.deny_promotion(
+                PromotionApprovalManagerReport.deny_promotion(
                     PromoteInactivePawnException(
                         cls_mthd=method,
                         cls_name=cls.__name__,
@@ -141,7 +139,7 @@ class PawnPromotionApprovalManager(Analyzer):
         # Handle the case that, the token is not a PawnToken.
         if not isinstance(pawn, PawnToken):
             return AnalysisResult.completed(
-                PromotionApprovalReport.deny_promotion(
+                PromotionApprovalManagerReport.deny_promotion(
                     TypeError(
                         f"Expected type PawnToken for promotion. "
                         f"Got {type(pawn).__name__} instead."
@@ -151,7 +149,7 @@ class PawnPromotionApprovalManager(Analyzer):
         # Handle the case that, the pawn_token has already been promoted.
         if pawn.is_promoted:
             return AnalysisResult.completed(
-                PromotionApprovalReport.deny_promotion(
+                PromotionApprovalManagerReport.deny_promotion(
                     PawnAlreadyPromotedException(
                         cls_mthd=method,
                         cls_name=cls.__name__,
@@ -162,7 +160,7 @@ class PawnPromotionApprovalManager(Analyzer):
             )
         if pawn.current_position.row != pawn.team.enemy_rank_row:
             return AnalysisResult.completed(
-                PromotionApprovalReport.deny_promotion(
+                PromotionApprovalManagerReport.deny_promotion(
                     PawnPromotionRowException(
                         cls_mthd=method,
                         cls_name=cls.__name__,
@@ -173,7 +171,7 @@ class PawnPromotionApprovalManager(Analyzer):
                 )
             )
         # --- Send the work product. ---#
-        return AnalysisResult.completed(PromotionApprovalReport.approve_promotion(pawn=pawn))
+        return AnalysisResult.completed(PromotionApprovalManagerReport.approve_promotion(pawn=pawn))
 
 
     @classmethod

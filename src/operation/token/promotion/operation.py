@@ -15,7 +15,7 @@ from typing import cast
 from analyzer import PawnPromotionApprovalManager, PromotionLevelAnalyzer
 from err import PawnPromoterException
 from model import PawnToken, PromotionState, Rank
-from report import PromotionApprovalReport
+from report import PromotionApprovalManagerReport
 from result import MethodResultType, UpdateResult
 from util import LoggingLevelRouter
 
@@ -101,7 +101,7 @@ class PawnPromoter:
                     ex=pawn_approval_analysis_result.exception
                 )
             )
-        pawn_approval = cast(PromotionApprovalReport, pawn_approval_analysis_result.payload)
+        pawn_approval = cast(PromotionApprovalManagerReport, pawn_approval_analysis_result.payload)
         # Handle the case that, the pawn is not granted promotion permission.
         if pawn_approval.is_denied:
             # Send the exception chain on failure.

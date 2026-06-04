@@ -1,7 +1,7 @@
-# src/report/collision/state.py
+# src/report/promotion/manager/state.py
 
 """
-Module: report.collision.state
+Module: report.promotion.manager.state
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
