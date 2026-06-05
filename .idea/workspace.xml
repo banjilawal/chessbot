@@ -5,9 +5,31 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/chessbot.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/chessbot.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/analyzer/promotion/rank/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/analyzer/promotion/rank/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/analyzer/promotion/row/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/analyzer/promotion/row/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/analyzer/analyzer.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/analyzer/analyzer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/microservice/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/square/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/microservice/square/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/microservice/square/visitation/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/square/visitation/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/microservice/square/visitation/controller.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/square/visitation/controller.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/microservice/square/visitation/departure/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/square/visitation/departure/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/microservice/square/visitation/departure/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/square/visitation/departure/exception/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/microservice/square/visitation/departure/exception/empty.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/square/visitation/departure/exception/empty.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/microservice/square/visitation/departure/exception/transaction.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/square/visitation/departure/exception/transaction.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/microservice/square/visitation/departure/worker.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/square/visitation/departure/worker.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/microservice/square/visitation/entry/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/square/visitation/entry/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/microservice/square/visitation/entry/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/square/visitation/entry/exception/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/microservice/square/visitation/entry/exception/debug/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/square/visitation/entry/exception/debug/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/microservice/square/visitation/entry/exception/debug/board.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/square/visitation/entry/exception/debug/board.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/microservice/square/visitation/entry/exception/debug/disabled.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/square/visitation/entry/exception/debug/disabled.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/microservice/square/visitation/entry/exception/debug/occupied.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/square/visitation/entry/exception/debug/occupied.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/microservice/square/visitation/entry/exception/debug/opening.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/square/visitation/entry/exception/debug/opening.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/microservice/square/visitation/entry/exception/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/square/visitation/entry/exception/wrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/microservice/square/visitation/entry/worker.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/square/visitation/entry/worker.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/microservice/square/visitation/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/square/visitation/exception/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/microservice/square/visitation/exception/anchor.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/square/visitation/exception/anchor.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/microservice/square/visitation/exception/debug.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/square/visitation/exception/debug.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,13 +79,15 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "main",
+    "ignore.virus.scanning.warn.message": "true",
     "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/err/analyzer/promotion",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.lookFeel",
+    "settings.editor.selected.configurable": "preferences.editor",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -76,11 +100,11 @@
       <recent name="$PROJECT_DIR$/src/err/validation" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\banji\PycharmProjects\chessbot\src\operation" />
       <recent name="$PROJECT_DIR$/src/err/analyzer/promotion/rank" />
       <recent name="$PROJECT_DIR$/src/err/analyzer/promotion/manager" />
       <recent name="$PROJECT_DIR$/src/analyzer/promotion/manager" />
       <recent name="$PROJECT_DIR$/src/report/promotion/pawn" />
-      <recent name="$PROJECT_DIR$/src/analyzer/promotion/rank" />
     </key>
   </component>
   <component name="RunManager" selected="Python.operation">
@@ -442,8 +466,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-js-predefined-d6986cc7102b-410509235cf1-JavaScript-PY-242.20224.428" />
-        <option value="bundled-python-sdk-80e8e15d2b92-39cff9de6eef-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-242.20224.428" />
+        <option value="bundled-js-predefined-d6986cc7102b-9c94529fcfe0-JavaScript-PY-252.26199.168" />
+        <option value="bundled-python-sdk-b3d66beaba9a-c6efb3732140-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-252.26199.168" />
       </set>
     </attachedChunks>
   </component>
@@ -794,6 +818,7 @@
       <workItem from="1780365970384" duration="21144000" />
       <workItem from="1780439079821" duration="22480000" />
       <workItem from="1780581450061" duration="17923000" />
+      <workItem from="1780689459952" duration="225000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />
@@ -931,21 +956,6 @@
           <option name="timeStamp" value="89" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/src/controller/stack/token/controller.py</url>
-          <line>45</line>
-          <option name="timeStamp" value="90" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/src/model/context/square/model.py</url>
-          <line>9</line>
-          <option name="timeStamp" value="96" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/src/logic/zone/__init__.py</url>
-          <line>11</line>
-          <option name="timeStamp" value="97" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/src/model/context/coord/exception/anchor.py</url>
           <line>67</line>
           <option name="timeStamp" value="98" />
@@ -991,19 +1001,9 @@
           <option name="timeStamp" value="121" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/src/err/number/negative/exception.py</url>
-          <line>9</line>
-          <option name="timeStamp" value="122" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/src/model/name/model.py</url>
           <line>9</line>
           <option name="timeStamp" value="123" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/src/integrity/build/context/__init__.py</url>
-          <line>12</line>
-          <option name="timeStamp" value="124" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/src/report/collision/__init__.py</url>
@@ -1014,16 +1014,6 @@
           <url>file://$PROJECT_DIR$/src/blueprint/context/board/blueprint.py</url>
           <line>9</line>
           <option name="timeStamp" value="135" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/src/route/search/token/router.py</url>
-          <line>9</line>
-          <option name="timeStamp" value="136" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/src/route/search/square/router.py</url>
-          <line>214</line>
-          <option name="timeStamp" value="138" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/src/err/operation/priming/assembly/context/board/exception.py</url>
@@ -1051,24 +1041,9 @@
           <option name="timeStamp" value="153" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/src/err/operation/pop/stack/arena/exception.py</url>
-          <line>9</line>
-          <option name="timeStamp" value="155" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/src/operation/assembly/binder/operation.py</url>
-          <line>9</line>
-          <option name="timeStamp" value="158" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/src/util/__init__.py</url>
           <line>17</line>
           <option name="timeStamp" value="159" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/src/err/search/empty/exception.py</url>
-          <line>8</line>
-          <option name="timeStamp" value="160" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/src/operation/registry/worker/validation/search/__init__.py</url>

@@ -1,10 +1,10 @@
-# src/logic/square/service/visitation/entry/entryer.py
+# src/operation/square/entry/operation.py
 
 """
-Module: logic.square.service.visitation.entry.entryer
+Module: operation.square.entry.operation
 Author: Banji Lawal
-Created: 2026-02-22
-version: 1.0.0
+Created: 2026-04-03
+version: 1.0.1
 """
 
 from __future__ import annotations
@@ -18,7 +18,7 @@ from util import LoggingLevelRouter, UpdateResult
 from model.token import Token, DeploymentState, TokenService
 
 
-class SquareEntryProcess:
+class SquareEntry:
     """
     Role:
         - Transaction Worker

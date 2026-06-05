@@ -18,6 +18,7 @@ from util import LoggingLevelRouter
 R = TypeVar("R", bound=Report)
 
 class Analyzer:
+    DOMAIN = "analyzer"
     
     @classmethod
     @LoggingLevelRouter.monitor
