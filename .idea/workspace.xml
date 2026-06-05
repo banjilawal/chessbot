@@ -6,17 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/analyzer/promotion/manager/analyzer.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/analyzer/promotion/manager/analyzer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/analyzer/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/analyzer/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/analyzer/promotion/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/analyzer/promotion/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/analyzer/promotion/inactive/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/analyzer/promotion/inactive/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/analyzer/promotion/rank/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/analyzer/promotion/rank/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/analyzer/promotion/rank/promotion/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/analyzer/promotion/rank/promotion/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/analyzer/promotion/rank/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/analyzer/promotion/rank/promotion/king/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/analyzer/promotion/rank/king/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/analyzer/promotion/rank/promotion/king/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/analyzer/promotion/rank/king/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/analyzer/promotion/rank/promotion/pawn/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/analyzer/promotion/rank/pawn/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/analyzer/promotion/rank/promotion/pawn/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/analyzer/promotion/rank/pawn/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/analyzer/promotion/rank/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/analyzer/promotion/rank/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/analyzer/promotion/row/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/analyzer/promotion/row/exception.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -802,7 +793,7 @@
       <workItem from="1780338096358" duration="3367000" />
       <workItem from="1780365970384" duration="21144000" />
       <workItem from="1780439079821" duration="22480000" />
-      <workItem from="1780581450061" duration="14457000" />
+      <workItem from="1780581450061" duration="17923000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />
