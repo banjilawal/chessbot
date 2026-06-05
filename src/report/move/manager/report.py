@@ -12,7 +12,7 @@ from dataclasses import dataclass
 from typing import Optional
 
 from report import Report
-from model import PawnToken, MoveState
+from model import PawnToken, MoveState, Square, Token
 from report.move.manager.state import MoveDecision
 
 
@@ -28,7 +28,7 @@ class MoveApprovalManagerReport(Report):
     Attributes:
         decision: MoveDecision
         move_row: Optional[int]
-        requestor: Optional[PawnToken]
+        traveller: Optional[PawnToken]
         execption: Optional[Exception]
         
         is_granted: bool
@@ -41,19 +41,20 @@ class MoveApprovalManagerReport(Report):
         Report
     """
     decision: MoveDecision
-    requestor: Optional[PawnToken] = None
-    move_row: Optional[int] = None
+    traveller: Optional[Token] = None
+    origin_square: Optional[Square] = None
+    destination_occupant: Optional[Token] = None
+    destination_square: Optional[Square] = None
     exception: Optional[Exception] = None
     
     
     @property
     def is_granted(self) -> bool:
         return (
-                self.requestor.is_active and
+                self.traveller.is_active and
                 self.exception is None and
                 self.decision == MoveDecision.ATTACK_ENEMY_SQUARE and
-                self.requestor.move_state == MoveState.NOT_PROMOTED and
-                self.requestor.current_position.row == self.move_row
+                self.traveller.current_position.row == self.move_row
         )
     
     @property
@@ -63,7 +64,7 @@ class MoveApprovalManagerReport(Report):
     @classmethod
     def approve_move(cls, pawn: PawnToken) -> MoveApprovalManagerReport:
         return cls(
-            requestor=pawn,
+            traveller=pawn,
             decision=MoveDecision.ATTACK_ENEMY_SQUARE,
             move_row=pawn.team.schema.enemy_schema.rank_row,
             exception=None,
@@ -74,7 +75,7 @@ class MoveApprovalManagerReport(Report):
         return cls(
             decision=MoveDecision.OCCUPY_EMPTY_SQUARE,
             move_row=None,
-            requestor=None,
+            traveller=None,
             exception=exception,
         )
     
