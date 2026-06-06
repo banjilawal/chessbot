@@ -53,11 +53,11 @@ class TokenFreedomAnalyzer(Analyzer):
         MAke sure the token can be used.
         
         Action:
-            1.  If the token fails its certification send an exception chain in the
+            1.  If the token fails, its certification, send an exception chain in the
                 RelationReport.
-            2.  Otherwise, decide if the token is actionable base on.
-                    -   It has it been deployed.
-                    -   It has not been captured or, it has not been checkmated.
+            2.  Otherwise, decide if the token is actionable based on.
+                    -   if it has been deployed.
+                    -   It has not been captured or checkmated.
             3.  Send the success result.
         
         Args:
@@ -70,7 +70,7 @@ class TokenFreedomAnalyzer(Analyzer):
         """
         method = f"{cls.__name__}.analyze"
         
-        
+        # --- Supply any missing dependencies. ---#
         if token_validator is None:
             token_validator = TokenValidator()
         
