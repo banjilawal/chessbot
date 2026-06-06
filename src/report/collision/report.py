@@ -66,7 +66,7 @@ class CollisionReport:
         return (
                 self.colliding_variable is None and
                 self.collision_value is None and
-                self._collider is None and
+                self.collider is None and
                 self.exception is None and
                 self.state == CollisionState.NO_COLLISIONS
         )

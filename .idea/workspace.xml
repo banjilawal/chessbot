@@ -5,31 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/report/move/attack/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/report/move/attack/report.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/chessbot.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/chessbot.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/analyzer/analyzer.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/analyzer/analyzer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/microservice/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/square/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/microservice/square/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/microservice/square/visitation/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/square/visitation/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/microservice/square/visitation/controller.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/square/visitation/controller.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/microservice/square/visitation/departure/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/square/visitation/departure/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/microservice/square/visitation/departure/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/square/visitation/departure/exception/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/microservice/square/visitation/departure/exception/empty.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/square/visitation/departure/exception/empty.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/microservice/square/visitation/departure/exception/transaction.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/square/visitation/departure/exception/transaction.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/microservice/square/visitation/departure/worker.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/square/visitation/departure/worker.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/microservice/square/visitation/entry/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/square/visitation/entry/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/microservice/square/visitation/entry/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/square/visitation/entry/exception/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/microservice/square/visitation/entry/exception/debug/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/square/visitation/entry/exception/debug/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/microservice/square/visitation/entry/exception/debug/board.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/square/visitation/entry/exception/debug/board.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/microservice/square/visitation/entry/exception/debug/disabled.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/square/visitation/entry/exception/debug/disabled.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/microservice/square/visitation/entry/exception/debug/occupied.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/square/visitation/entry/exception/debug/occupied.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/microservice/square/visitation/entry/exception/debug/opening.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/square/visitation/entry/exception/debug/opening.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/microservice/square/visitation/entry/exception/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/square/visitation/entry/exception/wrapper.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/microservice/square/visitation/entry/worker.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/square/visitation/entry/worker.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/microservice/square/visitation/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/square/visitation/exception/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/microservice/square/visitation/exception/anchor.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/square/visitation/exception/anchor.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/microservice/square/visitation/exception/debug.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/square/visitation/exception/debug.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/report/collision/report.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/report/collision/report.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -82,22 +63,22 @@
     "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/err/analyzer/promotion",
+    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/report/move",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.editor",
+    "settings.editor.selected.configurable": "preferences.lookFeel",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/report/move" />
       <recent name="$PROJECT_DIR$/src/err/analyzer/promotion" />
       <recent name="$PROJECT_DIR$/src/report/promotion" />
       <recent name="$PROJECT_DIR$/src/err/validation/promotion" />
       <recent name="$PROJECT_DIR$/src/err/validation/promotion/king" />
-      <recent name="$PROJECT_DIR$/src/err/validation" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\banji\PycharmProjects\chessbot\src\operation" />
@@ -466,8 +447,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-js-predefined-d6986cc7102b-9c94529fcfe0-JavaScript-PY-252.26199.168" />
-        <option value="bundled-python-sdk-b3d66beaba9a-c6efb3732140-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-252.26199.168" />
+        <option value="bundled-js-predefined-d6986cc7102b-410509235cf1-JavaScript-PY-242.20224.428" />
+        <option value="bundled-python-sdk-80e8e15d2b92-39cff9de6eef-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-242.20224.428" />
       </set>
     </attachedChunks>
   </component>
@@ -819,6 +800,7 @@
       <workItem from="1780439079821" duration="22480000" />
       <workItem from="1780581450061" duration="17923000" />
       <workItem from="1780689459952" duration="225000" />
+      <workItem from="1780733827772" duration="2151000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />

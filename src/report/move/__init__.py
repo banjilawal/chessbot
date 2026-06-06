@@ -11,6 +11,8 @@ version: 1.0.1
 
 # Packages
 from .analyzer import *
+from .attack import *
 from .manager import *
+from .occupation import *
 
 # Modules
