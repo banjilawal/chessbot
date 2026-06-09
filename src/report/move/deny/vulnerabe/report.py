@@ -1,7 +1,7 @@
-# src/report/move/deny/checked/__init__.py
+# src/report/move/deny/vulnerable/__init__.py
 
 """
-Module: report.move.deny.checked.__init__
+Module: report.move.deny.vulnerable.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -9,26 +9,28 @@ version: 1.0.1
 
 from __future__ import annotations
 from dataclasses import dataclass
+from typing import Optional
 
-from model import KingToken, Square, Team, Token
+from model import CombatantToken, KingToken, Square, Team, Token
 from report import MoveDenialReport
 
 
 @dataclass
-class DestinationChecked(MoveDenialReport):
+class DestinationVulnerable(MoveDenialReport):
     """
     Role:
         -   Test results
 
     Responsibilities:
-        1.  Provide details about an enemy who could reach the king if it moved to
-            the destination.
+        1.  Provide details about a destination the enemy can attack.
         
     Attributes:
         origin: Square
         recipient: KingToken
-        checked_square: Square
-        check_holder: Token
+        vulnerable_square: Square
+        attacker: Token
+        attacker_source: Square
+        weight: Optional[int]
         
     Provides:
 
@@ -36,10 +38,11 @@ class DestinationChecked(MoveDenialReport):
         MoveDenialReport
     """
     origin: Square
-    recipient: KingToken
-    checked_square: Square
-    check_holder: Token
-    enemy_source: Square
+    recipient: CombatantToken
+    vulnerable_square: Square
+    attacker: Token
+    attacker_source: Square
+    weight: Optional[int]
     
     @property
     def enemy_team(self) -> Team:
