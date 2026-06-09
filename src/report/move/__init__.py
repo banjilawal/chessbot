@@ -11,8 +11,7 @@ version: 1.0.1
 
 # Packages
 from .approve import *
-from .denial import *
-from .blocked import *
+from .deny import *
 
 # Modules
 from .report import MoveOrder
