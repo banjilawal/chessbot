@@ -1,7 +1,7 @@
-# src/report/move/occupation/report.py
+# src/report/move/blocked/report.py
 
 """
-Module: report.move.occupation.report
+Module: report.move.blocked.report
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -9,25 +9,26 @@ version: 1.0.1
 
 from __future__ import annotations
 from dataclasses import dataclass
-from typing import Optional
 
-from report import Report
 from model import CombatantToken, Square, Token
+from report import MoveOrder
 
 
 @dataclass
-class MoveOrder(Report):
+class MoveBlockerReport(MoveOrder):
     """
     Role:
         -   Test results
 
     Responsibilities:
-        1.  Details a token needs to visit a Square.
+        1.  Provide information about a move that was blocked by a friendly.
         
     Attributes:
         origin: Square
         recipient: Token
         destination: Square
+        enemy: CombatantToken
+        priority: int
         
     Provides:
 
@@ -36,4 +37,6 @@ class MoveOrder(Report):
     """
     origin: Square
     recipient: Token
-    destination: Square
+    blocked_square: Square
+    friendly: Token
+    team: Team

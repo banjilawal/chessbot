@@ -51,13 +51,13 @@ class BlockingEventValidator(Validator[BlockingEvent]):
                 return ValidationResult.failure(actor_validation.exception)
             
             resource_validation = TravelResourceValidator.search_service(
-                resource=event.blocked_square,
+                resource=event.blocked_destination,
                 environment=event.execution_environment
             )
             if resource_validation.is_failure():
                 return ValidationResult.failure(resource_validation.exception)
             
-            if event.actor.current_position == event.blocked_square.point:
+            if event.actor.current_position == event.blocked_destination.point:
                 return ValidationResult.failure(
                     ActorBlockingOwnSquareException(f"{method}: {ActorBlockingOwnSquareException.MSG}")
                 )
