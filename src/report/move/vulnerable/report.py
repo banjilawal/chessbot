@@ -46,7 +46,7 @@ class DestinationVulnerabilityReport(MoveOrder):
     
     @property
     def enemy_team(self) -> Team:
-        return self.check_holder.team
+        return self.attacker.team
         
     @property
     def recipient_team(self) -> Team:
