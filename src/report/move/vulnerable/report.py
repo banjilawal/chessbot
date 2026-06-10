@@ -1,7 +1,7 @@
-# src/report/move/deny/vulnerable/__init__.py
+# src/report/move/vulnerable/report.py
 
 """
-Module: report.move.deny.vulnerable.__init__
+Module: report.move.vulnerable.report
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -11,12 +11,12 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Optional
 
-from model import CombatantToken, KingToken, Square, Team, Token
-from report import MoveDenialReport
+from model import Square, Team, Token
+from report import MoveOrder
 
 
 @dataclass
-class DestinationVulnerable(MoveDenialReport):
+class DestinationVulnerabilityReport(MoveOrder):
     """
     Role:
         -   Test results
@@ -35,10 +35,10 @@ class DestinationVulnerable(MoveDenialReport):
     Provides:
 
     Super Class:
-        MoveDenialReport
+        MoveOrder
     """
     origin: Square
-    recipient: CombatantToken
+    recipient: Token
     vulnerable_square: Square
     attacker: Token
     attacker_source: Square

@@ -12,6 +12,7 @@ version: 1.0.1
 # Packages
 from .approve import *
 from .deny import *
+from .vulnerable import *
 
 # Modules
 from .report import MoveOrder

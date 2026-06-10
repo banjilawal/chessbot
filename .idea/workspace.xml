@@ -5,10 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/report/move/deny/vulnerabe/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/report/move/deny/vulnerabe/report.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/report/move/deny/checked/report.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/report/move/deny/checked/report.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/report/move/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/report/move/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/report/move/deny/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/report/move/deny/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/report/move/deny/vulnerabe/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/report/move/vulnerabe/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/report/move/deny/vulnerabe/report.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/report/move/vulnerabe/report.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -79,8 +80,8 @@
       <recent name="$PROJECT_DIR$/src/err/analyzer" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/report/move/approval" />
       <recent name="$PROJECT_DIR$/src/report/move" />
+      <recent name="$PROJECT_DIR$/src/report/move/approval" />
       <recent name="C:\Users\banji\PycharmProjects\chessbot\src\operation" />
       <recent name="$PROJECT_DIR$/src/err/analyzer/promotion/rank" />
       <recent name="$PROJECT_DIR$/src/err/analyzer/promotion/manager" />
@@ -799,7 +800,7 @@
       <workItem from="1780581450061" duration="17923000" />
       <workItem from="1780689459952" duration="225000" />
       <workItem from="1780733827772" duration="9472000" />
-      <workItem from="1781010206472" duration="14942000" />
+      <workItem from="1781010206472" duration="16373000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />
