@@ -21,6 +21,7 @@ from .formation import *
 from .game import *
 from .hostage import *
 from .identity import *
+from .itinerary import *
 from .node import *
 from .number import *
 from .operand import *

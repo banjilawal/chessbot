@@ -9,10 +9,11 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from analyzer import SquareTokenRelationAnalyzer, TokenFreedomAnalyzer
+from err import ItineraryException, ItineraryNullException
 from model import Itinerary
 from toolkit import Toolkit
-from validation import SquareValidator, TokenValidator
+from analyzer import SquareTokenRelationAnalyzer, TokenFreedomAnalyzer
+from validation import SquareValidator, TokenValidator, ValidationPrimer
 
 
 class ItineraryToolkit(Toolkit[Itinerary]):
@@ -26,7 +27,11 @@ class ItineraryToolkit(Toolkit[Itinerary]):
         3.  No logic in the Toolkit.
 
     Attributes:
+        model_type: Itinerary
+        token_validator: TokenValidator
         square_validator: SquareValidator
+        validation_primer: ValidationPrimer
+        null_exception: ItineraryNullException
         token_freedom_analyzer: TokenFreedomAnalyzer
         square_token_relation_analyzer: SquareTokenRelationAnalyzer
         
@@ -35,6 +40,10 @@ class ItineraryToolkit(Toolkit[Itinerary]):
      Super Class:
          Toolkit
      """
+    model_type: Itinerary
+    token_validator: TokenValidator = TokenValidator()
     square_validator: SquareValidator = SquareValidator()
+    validation_primer: ValidationPrimer = ValidationPrimer()
+    null_exception: ItineraryNullException = ItineraryNullException()
     token_freedom_analyzer: TokenFreedomAnalyzer = TokenFreedomAnalyzer()
     square_token_relation_analyzer: SquareTokenRelationAnalyzer = SquareTokenRelationAnalyzer()
