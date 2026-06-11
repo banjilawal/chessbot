@@ -9,10 +9,11 @@ version: 1.0.1
 
 from __future__ import annotations
 
+from blueprint import CoordBlueprint
 from result import BuildResult
 from operation import Assembler
 from util import LoggingLevelRouter
-from model import Coord, CoordBlueprint
+from model import Coord
 from controller import WorkerRegistryController
 
 class CoordAssembler(Assembler[Coord]):

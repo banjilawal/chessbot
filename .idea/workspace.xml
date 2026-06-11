@@ -5,14 +5,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/err/model/itinerary/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/model/itinerary/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/itenerary/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/itenerary/model.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/blueprint/model/itenerary/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/blueprint/model/itenerary/blueprint.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/itenerary/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/itenerary/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/operation/assembly/itenerary/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/operation/assembly/itenerary/operation.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/operation/priming/assembly/itenerary/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/operation/priming/assembly/itenerary/operation.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/analyzer/move/analyzer.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/analyzer/move/analyzer.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/analyzer/move/entry/analyzer.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/analyzer/move/entry/analyzer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/model/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/model/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/blueprint/model/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/blueprint/model/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/null/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/itenerary/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/itenerary/model.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/assembly/coord/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/assembly/coord/operation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/priming/assembly/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/priming/assembly/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pipeline/build/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/pipeline/build/__init__.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,7 +74,7 @@
     "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/model",
+    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/toolkit/model",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
@@ -76,11 +85,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/model" />
-      <recent name="$PROJECT_DIR$/src/err/model" />
-      <recent name="$PROJECT_DIR$/src/report/move/deny" />
-      <recent name="$PROJECT_DIR$/src/report/move" />
-      <recent name="$PROJECT_DIR$/src/report/move/approval" />
+      <recent name="$PROJECT_DIR$/src/toolkit/model" />
+      <recent name="$PROJECT_DIR$/src/pipeline/build" />
+      <recent name="$PROJECT_DIR$/src/operation/priming/assembly" />
+      <recent name="$PROJECT_DIR$/src/blueprint/model" />
+      <recent name="$PROJECT_DIR$/src/err/null" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/report/move" />
@@ -806,7 +815,7 @@
       <workItem from="1781010206472" duration="18170000" />
       <workItem from="1781058030612" duration="792000" />
       <workItem from="1781074987396" duration="713000" />
-      <workItem from="1781166237647" duration="4351000" />
+      <workItem from="1781166237647" duration="7806000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />
@@ -1132,6 +1141,11 @@
           <url>file://$PROJECT_DIR$/src/report/move/__init__.py</url>
           <line>11</line>
           <option name="timeStamp" value="190" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/model/itenerary/model.py</url>
+          <line>9</line>
+          <option name="timeStamp" value="191" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

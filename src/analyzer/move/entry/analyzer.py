@@ -15,7 +15,7 @@ from analyzer import SquareTokenRelationAnalyzer, TokenFreedomAnalyzer
 from err import MovePermissionAnalyzerException, SquareNotFoundSearchException, SquareVisitorBoardException
 from err.analyzer.move.disabled.exception import DisabledTokenMoveException
 from model import Square, SquareContext, Token
-from report import MoveOrder, RelationReport, TokenFreedomReport
+from report import Itenerary, RelationReport, TokenFreedomReport
 from result import MethodResultType, BuildResult
 from util import LoggingLevelRouter
 from validation import SquareValidator
@@ -56,7 +56,7 @@ class MovePermissionAnalyzer:
             square_validator: SquareValidator | None = None,
             token_freedom_analyzer: TokenFreedomAnalyzer | None = None,
             square_token_relation_analyzer: SquareTokenRelationAnalyzer | None = None,
-    ) -> BuildResult[MoveOrder]:
+    ) -> BuildResult[Itenerary]:
         """
         Action:
             1.  Send the original square along with an exception chain in the validation result if:
@@ -184,8 +184,6 @@ class MovePermissionAnalyzer:
                     ex=token_destination_relation_result.exception,
                 )
             )
-
-        
         relation = cast(RelationReport, token_destination_relation_result.payload)
         # Handle the case that, there is a stale link between the destination and the token.
         if relation.stale_link_exists:

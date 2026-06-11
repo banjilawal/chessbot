@@ -14,6 +14,7 @@ version: 1.0.1
 from .arena import *
 from .board import *
 from .coord import *
+from .itinerary import *
 from .scalar import *
 from .square import *
 from .team import *

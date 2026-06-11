@@ -14,6 +14,7 @@ from .arena import *
 from .binder import *
 from .board import *
 from .coord import *
+from .itenerary import *
 from .node import *
 from .player import *
 from .rank import *

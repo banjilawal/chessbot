@@ -14,6 +14,7 @@ from .binder import *
 from .board import *
 from .context import *
 from .coord import *
+from .itinerary import *
 from .square import *
 from .team import *
 from .token import *

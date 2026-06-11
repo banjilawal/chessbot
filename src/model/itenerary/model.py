@@ -16,9 +16,27 @@ from model.token import Token
 
 @dataclass
 class Itinerary:
+    """
+    Role:
+        -   Model
+        -   Data Holder
+
+    Responsibilities:
+        1.  Contains the source and destination squares a token wants to travel between.
+
+    Attributes:
+        traveler: Token
+        source: Square
+        destination: Square
+
+    Provides:
+
+    Super Class:
+    """
+    traveler: Token
     source: Square
     destination: Square
-    traveler: Token
+
     
     def __eq__(self, other):
         if other is None:

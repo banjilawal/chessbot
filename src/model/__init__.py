@@ -20,6 +20,7 @@ from .math import *
 from .game import *
 from .graph import *
 from .hostage import *
+from .itenerary import *
 from .node import *
 from .player import *
 from .query import *

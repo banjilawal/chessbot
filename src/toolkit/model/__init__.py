@@ -17,6 +17,7 @@ from .coord import *
 from .edge import *
 from .game import *
 from .hostage import *
+from .itinerary import *
 from .node import *
 from .rank import *
 from .scalar import *
