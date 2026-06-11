@@ -12,7 +12,11 @@ from __future__ import annotations
 from typing import cast
 
 from blueprint import ItineraryBlueprint
-from err import DisabledTokenMoveException, ItineraryAssemblyPrimerException, SquareNotFoundSearchException
+from err import (
+    DisabledTokenMoveException, ItineraryAssemblyPrimerException, MissingRegistrationWithSquareException,
+    SquareNotFoundSearchException,
+    StaleTokenLinkException
+)
 from model import Itinerary, SquareContext
 from operation import AssemblyPrimer
 from report import RelationReport, TokenFreedomReport
@@ -138,9 +142,9 @@ class ItineraryAssemblyPrimer(AssemblyPrimer[Itinerary]):
                     msg=ItineraryAssemblyPrimerException.MSG,
                     err_code=ItineraryAssemblyPrimerException.ERR_CODE,
                     mthd_rslt_type=MethodResultType.VALIDATION_RESULT,
-                    ex=StaleTokenSquareLinkException(
-                        msg=StaleTokenSquareLinkException.MSG,
-                        err_code=StaleTokenSquareLinkException.ERR_CODE,
+                    ex=StaleTokenLinkException(
+                        msg=StaleTokenLinkException.MSG,
+                        err_code=StaleTokenLinkException.ERR_CODE,
                     )
                 )
             )
@@ -191,9 +195,9 @@ class ItineraryAssemblyPrimer(AssemblyPrimer[Itinerary]):
                     msg=ItineraryAssemblyPrimerException.MSG,
                     err_code=ItineraryAssemblyPrimerException.ERR_CODE,
                     mthd_rslt_type=MethodResultType.VALIDATION_RESULT,
-                    ex=StaleTokenSquareLinkException(
-                        msg=StaleTokenSquareLinkException.MSG,
-                        err_code=StaleTokenSquareLinkException.ERR_CODE,
+                    ex=StaleTokenLinkException(
+                        msg=f"Square has stale link to Token.",
+                        err_code=StaleTokenLinkException.ERR_CODE,
                     ),
                 )
             )
@@ -207,10 +211,7 @@ class ItineraryAssemblyPrimer(AssemblyPrimer[Itinerary]):
                     msg=ItineraryAssemblyPrimerException.MSG,
                     err_code=ItineraryAssemblyPrimerException.ERR_CODE,
                     mthd_rslt_type=MethodResultType.VALIDATION_RESULT,
-                    ex=TokenSquareMissingRegistrationException(
-                        msg=TokenSquareMissingRegistrationException.MSG,
-                        err_code=TokenSquareMissingRegistrationException.ERR_CODE,
-                    ),
+                    ex=Inconsisten,
                 )
             )
         # Handle the case that, the square is already at the destination.

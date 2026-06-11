@@ -1,7 +1,7 @@
-# src/err/consistency/exception.py
+# src/err/inconsistent/exception.py
 
 """
-Module: err.consistency.exception
+Module: err.inconsistent.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -14,18 +14,18 @@ from err import ChessException
 from result import MethodResultType
 
 __all__ = [
-    # ======================# CONSISTENCY_ERROR #======================#
-    "ConsistencyException",
+    # ======================# INCONSISTENT_STATE_ERROR #======================#
+    "InconsistentStateException",
 ]
 
-# ======================# CONSISTENCY_ERROR #======================#
-class ConsistencyException(ChessException):
+# ======================# INCONSISTENT_STATE_ERROR #======================#
+class InconsistentStateException(ChessException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate there is an inconsistency in a relationship.
+        1.  Indicate there is an object has conflicting states or partial relationships.
 
     Attributes:
         msg: Optional[str]
@@ -35,14 +35,15 @@ class ConsistencyException(ChessException):
         cls_name: Optional[str]
         cls_mthd: Optional[str]
         err_code: Optional[str]
-            
+        mthd_rslt_type: Optional[MethodResultType]
+        
     Provides:
 
     Super Class:
         ChessException
     """
-    MSG = "The is an inconsistency."
-    ERR_CODE = "CONSISTENCY_ERROR"
+    MSG = "The is an ininconsistent."
+    ERR_CODE = "INCONSISTENT_STATE_ERROR"
     
     def __init__(
             self,
