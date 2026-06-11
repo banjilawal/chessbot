@@ -8,14 +8,13 @@ version: 1.0.1
 """
 
 from __future__ import annotations
-
 from typing import cast
 
 from blueprint import ItineraryBlueprint
+from controller import WorkerRegistryController
 from err import (
-    DisabledTokenMoveException, ItineraryAssemblyPrimerException, MissingRegistrationWithSquareException,
-    SquareNotFoundSearchException,
-    StaleTokenLinkException
+    DisabledTokenTravelerException, InconsistentStateException, ItineraryAssemblyPrimerException,
+    SquareNotFoundSearchException, StaleTokenLinkException, TokenAlreadyAtDestinationException
 )
 from model import Itinerary, SquareContext
 from operation import AssemblyPrimer
@@ -27,6 +26,7 @@ from util import LoggingLevelRouter
 
 class ItineraryAssemblyPrimer(AssemblyPrimer[Itinerary]):
     NAME = "itinerary_assembly_primer"
+    
     """
     Role:
         - Transaction Worker
@@ -42,14 +42,13 @@ class ItineraryAssemblyPrimer(AssemblyPrimer[Itinerary]):
     Attributes:
 
     Provides:
-        -   execute(
-                    token: Token,
-                    square: Square,
-                    token_freedom_analyzer: TokenFreedomAnalyzer,
-                    square_validator: SquareValidator,
-            ) -> UpdateResult[Square]:
+        -   def execute(
+                    blueprint: ItineraryBlueprint,
+                    toolkit: ItineraryToolkit,
+            ) -> ValidationResult[ItineraryBlueprint]:
 
     Super Class:
+        AssemblyPrimer
     """
     
     @classmethod
@@ -61,23 +60,26 @@ class ItineraryAssemblyPrimer(AssemblyPrimer[Itinerary]):
     ) -> ValidationResult[ItineraryBlueprint]:
         """
         Action:
-            1.  Send the original square along with an exception chain in the validation result if:
-                    -   The square or token are insecure.
-                    -   The token is disabled
-                    -   The token belongs to a different board.
-                    -   The new token is being deployed to the wrong square.
-                    -   The square is already occupied.
-                    -   The square accepts the token but the token cannot update its position.
-            2.  Otherwise, each updates its state.
+            1.  Send an exception chain in the validation result if:
+                    -   The blueprint.token is not free.
+                    -   The token exists in more than one square.
+                    -   The token is not found on the board.
+                    -   There is a partial relationship between the token and its destination.
+                    -   The token is already at its destination.
+            2.  Otherwise, build a new ItineraryBlueprint containing the source square.
             3.  Send the success result.
         Args:
-            token: Token
-            destination_square: Square
-            token_freedom_analyzer: TokenFreedomAnalyzer
-            square_validator: SquareValidator
+            blueprint: ItineraryBlueprint,
+            toolkit: ItineraryToolkit
        Returns:
-            UpdateResult[Square]
+            ValidationResult[ItineraryBlueprint]
         Raises:
+            DisabledTokenTravelerException
+            ItineraryAssemblyPrimerException
+            StaleTokenLinkException
+            SquareNotFoundSearchException
+            InconsistentStateException
+            TokenAlreadyAtDestinationException
         """
         method = f"{cls.__class__.__name__}.execute"
         
@@ -110,9 +112,9 @@ class ItineraryAssemblyPrimer(AssemblyPrimer[Itinerary]):
                     msg=ItineraryAssemblyPrimerException.MSG,
                     err_code=ItineraryAssemblyPrimerException.ERR_CODE,
                     mthd_rslt_type=MethodResultType.VALIDATION_RESULT,
-                    ex=DisabledTokenMoveException(
-                        msg=DisabledTokenMoveException.MSG,
-                        err_code=DisabledTokenMoveException.ERR_CODE,
+                    ex=DisabledTokenTravelerException(
+                        msg=DisabledTokenTravelerException.MSG,
+                        err_code=DisabledTokenTravelerException.ERR_CODE,
                     ),
                 )
             )
@@ -143,7 +145,8 @@ class ItineraryAssemblyPrimer(AssemblyPrimer[Itinerary]):
                     err_code=ItineraryAssemblyPrimerException.ERR_CODE,
                     mthd_rslt_type=MethodResultType.VALIDATION_RESULT,
                     ex=StaleTokenLinkException(
-                        msg=StaleTokenLinkException.MSG,
+                        msg=f"The token is linked with more than one square. "
+                            f"There are either inconsistencies or stale links.",
                         err_code=StaleTokenLinkException.ERR_CODE,
                     )
                 )
@@ -211,7 +214,11 @@ class ItineraryAssemblyPrimer(AssemblyPrimer[Itinerary]):
                     msg=ItineraryAssemblyPrimerException.MSG,
                     err_code=ItineraryAssemblyPrimerException.ERR_CODE,
                     mthd_rslt_type=MethodResultType.VALIDATION_RESULT,
-                    ex=Inconsisten,
+                    ex=InconsistentStateException(
+                        msg=f"The Token has an inconsistent occupation states between its "
+                            f"source and its destination.",
+                        err_code=InconsistentStateException.ERR_CODE,
+                    ),
                 )
             )
         # Handle the case that, the square is already at the destination.
@@ -230,16 +237,15 @@ class ItineraryAssemblyPrimer(AssemblyPrimer[Itinerary]):
                     ),
                 )
             )
-        # Handle 
-
-        # Handle the case that, the token is already on the square.
         
-        # --- Security tests are passed. Return the registration result to the caller. ---#
-        return ValidationResult.success(ItineraryBlueprint(source=source_square, token=blueprint.token, destination=blueprint.destination))
+        # --- Send the work product. ---#
+        return ValidationResult.success(
+            ItineraryBlueprint(
+                source=source_square,
+                token=blueprint.token,
+                destination=blueprint.destination
+            )
+        )
     
-
-    
-
-
 # Register the operation.
-WorkerRegistryController.register_worker(worker=CoordAssemblyPrimer)
+WorkerRegistryController.register_worker(worker=ItineraryAssemblyPrimer)

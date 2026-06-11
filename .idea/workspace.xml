@@ -5,8 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/src/err/consistency/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/consistency/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/consistency/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/consistency/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/operation/primer/assembly/itinerary/destination/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/analyzer/move/entry/analyzer.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/analyzer/move/entry/analyzer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/analyzer/move/disabled/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/analyzer/move/disabled/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/analyzer/move/disabled/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/analyzer/move/disabled/exception.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/operation/priming/assembly/itinerary/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/priming/assembly/itinerary/operation.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -60,7 +63,7 @@
     "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/err/bidirectional/missing",
+    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/err/operation/primer/assembly/itinerary/destination",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
@@ -71,11 +74,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/err/operation/primer/assembly/itinerary/destination" />
       <recent name="$PROJECT_DIR$/src/err/bidirectional/missing" />
       <recent name="$PROJECT_DIR$/src/err/bidirectional" />
       <recent name="$PROJECT_DIR$/src/err/bidirectional/stale" />
       <recent name="$PROJECT_DIR$/src/err" />
-      <recent name="$PROJECT_DIR$/src/err/operation/priming/assembly" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/report/move" />
@@ -801,7 +804,7 @@
       <workItem from="1781010206472" duration="18170000" />
       <workItem from="1781058030612" duration="792000" />
       <workItem from="1781074987396" duration="713000" />
-      <workItem from="1781166237647" duration="17534000" />
+      <workItem from="1781166237647" duration="19788000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />
@@ -1142,6 +1145,11 @@
           <url>file://$PROJECT_DIR$/src/err/bidirectional/missing/exception.py</url>
           <line>9</line>
           <option name="timeStamp" value="193" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/operation/priming/assembly/itinerary/operation.py</url>
+          <line>243</line>
+          <option name="timeStamp" value="194" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

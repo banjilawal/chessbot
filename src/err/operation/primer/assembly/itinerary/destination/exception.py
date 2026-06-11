@@ -1,7 +1,7 @@
-# src/err/analyzer/move/disabled/exception.py
+# src/err/operation/primer/assembly/itinerary/destination/exception.py
 
 """
-Module: err.analyzer.move.disabled.exception
+Module: err.priming.assembly.itinerary.destination.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,22 +10,23 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import MovePermissionAnalyzerException
+from err import ItineraryAssemblyPrimerException
 from result import MethodResultType
 
 __all__ = [
-    # ======================# DISABLED_TOKEN_CANNOT_MOVE_ERROR #======================#
-    "DisabledTokenTravelerException",
+    # ======================# TOKEN_ALREADY_AT_DESTINATION_ERROR #======================#
+    "TokenAlreadyAtDestinationException",
 ]
 
-# ======================# DISABLED_TOKEN_CANNOT_MOVE_ERROR #======================#
-class DisabledTokenTravelerException(MovePermissionAnalyzerException):
+# ======================# TOKEN_ALREADY_AT_DESTINATION_ERROR #======================#
+class TokenAlreadyAtDestinationException(ItineraryAssemblyPrimerException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a token cannot move because it is not free.
+        1.  Indicate that an ItineraryAssembly priming step failed because the source and 
+            destination are the same.
 
     Attributes:
         msg: Optional[str]
@@ -40,32 +41,32 @@ class DisabledTokenTravelerException(MovePermissionAnalyzerException):
     Provides:
 
     Super Class:
-        MovePermissionAnalyzerException
+        ItineraryAssemblyPrimerException
     """
-    MSG = "A disabled token cannot move."
-    ERR_CODE = "DISABLED_TOKEN_CANNOT_MOVE_ERROR"
+    MSG = "Token is already at the destination."
+    ERR_CODE = "TOKEN_ALREADY_AT_DESTINATION_ERROR"
     
     def __init__(
             self,
-            msg: str = MSG,
-            err_code: str = ERR_CODE,
+            msg: Optional[str] | None = None,
             var: Optional[str] | None = None,
             val: Optional[Any] | None = None,
+            ex: Optional[Exception] | None = None,
             cls_name: Optional[str] | None = None,
             cls_mthd: Optional[str] | None = None,
-            ex: Optional[Exception] | None = None,
+            err_code: Optional[str] | None = None,
             mthd_rslt_type: Optional[MethodResultType] | None = None,
     ):
         """
-            Args:
-            msg: str
-            err_code: str
-            var: Optional[str]
-            val: Optional[Any]
-            cls_name: Optional[str]
-            cls_mthd: Optional[str]
-            ex: Optional[Exception]
-            mthd_rslt_type: Optional[MethodResultType]
+        args:
+            Msg: Optional[str]
+            Var: Optional[str]
+            val: Optional[any]
+            ex: optional[Exception]
+            cls_name: optional[Str]
+            cls_mthd: optional[str]
+            err_code: optional[str]
+            mthd_rslt_type: optional[methodResultType]
         """
         msg = msg or self.MSG
         err_code = err_code or self.ERR_CODE

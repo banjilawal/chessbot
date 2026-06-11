@@ -13,7 +13,7 @@ from typing import cast
 
 from analyzer import SquareTokenRelationAnalyzer, TokenFreedomAnalyzer
 from err import MovePermissionAnalyzerException, SquareNotFoundSearchException, SquareVisitorBoardException
-from err.analyzer.move.disabled.exception import DisabledTokenMoveException
+from err.analyzer.move.disabled.exception import DisabledTokenTravelerException
 from model import Square, SquareContext, Token
 from report import Itenerary, RelationReport, TokenFreedomReport
 from result import MethodResultType, BuildResult
@@ -112,9 +112,9 @@ class MovePermissionAnalyzer:
                     msg=MovePermissionAnalyzerException.MSG,
                     err_code=MovePermissionAnalyzerException.ERR_CODE,
                     mthd_rslt_type=MethodResultType.BUILD_RESULT,
-                    ex=DisabledTokenMoveException(
-                        msg=DisabledTokenMoveException.MSG,
-                        err_code=DisabledTokenMoveException.ERR_CODE,
+                    ex=DisabledTokenTravelerException(
+                        msg=DisabledTokenTravelerException.MSG,
+                        err_code=DisabledTokenTravelerException.ERR_CODE,
                     ),
                 )
             )
