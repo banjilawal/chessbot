@@ -12,10 +12,11 @@ from __future__ import annotations
 from typing import cast
 
 from blueprint import ItineraryBlueprint
-from model import Itinerary
+from err import DisabledTokenMoveException, ItineraryAssemblyPrimerException, SquareNotFoundSearchException
+from model import Itinerary, SquareContext
 from operation import AssemblyPrimer
 from report import RelationReport, TokenFreedomReport
-from result import ValidationResult
+from result import MethodResultType, ValidationResult
 from toolkit import ItineraryToolkit
 from util import LoggingLevelRouter
 
@@ -80,9 +81,9 @@ class ItineraryAssemblyPrimer(AssemblyPrimer[Itinerary]):
         if toolkit is None:
             toolkit = ItineraryToolkit()
         
-        token_freedom_build_result = toolkit.token_freedom_analyzer.analyze(blueprint.traveler)
+        token_freedom_validation_result = toolkit.token_freedom_analyzer.analyze(blueprint.token)
         # Handle the case that, the freedom_analysis is not completed.
-        if token_freedom_build_result.is_failure:
+        if token_freedom_validation_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 ItineraryAssemblyPrimerException(
@@ -90,11 +91,11 @@ class ItineraryAssemblyPrimer(AssemblyPrimer[Itinerary]):
                     cls_name=cls.__name__,
                     msg=ItineraryAssemblyPrimerException.MSG,
                     err_code=ItineraryAssemblyPrimerException.ERR_CODE,
-                    mthd_rslt_type=MethodResultType.BUILD_RESULT,
-                    ex=token_freedom_build_result.exception,
+                    mthd_rslt_type=MethodResultType.VALIDATION_RESULT,
+                    ex=token_freedom_validation_result.exception,
                 )
             )
-        report = cast(TokenFreedomReport, token_freedom_build_result.payload)
+        report = cast(TokenFreedomReport, token_freedom_validation_result.payload)
         # Handle the case that, the token is not free.
         if report.token_is_not_free:
             # Send the exception chain on failure.
@@ -104,14 +105,16 @@ class ItineraryAssemblyPrimer(AssemblyPrimer[Itinerary]):
                     cls_name=cls.__name__,
                     msg=ItineraryAssemblyPrimerException.MSG,
                     err_code=ItineraryAssemblyPrimerException.ERR_CODE,
-                    mthd_rslt_type=MethodResultType.BUILD_RESULT,
+                    mthd_rslt_type=MethodResultType.VALIDATION_RESULT,
                     ex=DisabledTokenMoveException(
                         msg=DisabledTokenMoveException.MSG,
                         err_code=DisabledTokenMoveException.ERR_CODE,
                     ),
                 )
             )
-        source_square_search_result = blueprint.traveler.team.board.squares.search(context=SquareContext(occupant=token))
+        source_square_search_result = blueprint.token.team.board.squares.search(
+            context=SquareContext(occupant=blueprint.token)
+        )
         # Handle the case that, the search is not completed.
         if source_square_search_result.is_failure:
             # Send the exception chain on failure.
@@ -121,7 +124,7 @@ class ItineraryAssemblyPrimer(AssemblyPrimer[Itinerary]):
                     cls_name=cls.__name__,
                     msg=ItineraryAssemblyPrimerException.MSG,
                     err_code=ItineraryAssemblyPrimerException.ERR_CODE,
-                    mthd_rslt_type=MethodResultType.BUILD_RESULT,
+                    mthd_rslt_type=MethodResultType.VALIDATION_RESULT,
                     ex=source_square_search_result.exception,
                 )
             )
@@ -134,7 +137,7 @@ class ItineraryAssemblyPrimer(AssemblyPrimer[Itinerary]):
                     cls_name=cls.__name__,
                     msg=ItineraryAssemblyPrimerException.MSG,
                     err_code=ItineraryAssemblyPrimerException.ERR_CODE,
-                    mthd_rslt_type=MethodResultType.BUILD_RESULT,
+                    mthd_rslt_type=MethodResultType.VALIDATION_RESULT,
                     ex=StaleTokenSquareLinkException(
                         msg=StaleTokenSquareLinkException.MSG,
                         err_code=StaleTokenSquareLinkException.ERR_CODE,
@@ -150,7 +153,7 @@ class ItineraryAssemblyPrimer(AssemblyPrimer[Itinerary]):
                     cls_name=cls.__name__,
                     msg=ItineraryAssemblyPrimerException.MSG,
                     err_code=ItineraryAssemblyPrimerException.ERR_CODE,
-                    mthd_rslt_type=MethodResultType.BUILD_RESULT,
+                    mthd_rslt_type=MethodResultType.VALIDATION_RESULT,
                     ex=SquareNotFoundSearchException(
                         msg=SquareNotFoundSearchException.MSG,
                         err_code=SquareNotFoundSearchException.ERR_CODE,
@@ -162,7 +165,7 @@ class ItineraryAssemblyPrimer(AssemblyPrimer[Itinerary]):
         # Handle the case, that the token and the destination are already related.
         token_destination_relation_result = toolkit.square_token_relation_analyzer.analyze(
             candidate_primary=blueprint.destination,
-            candidate_satellite=blueprint.traveler,
+            candidate_satellite=blueprint.token,
         )
         # Handle the case that, the relation analysis fails.
         if token_destination_relation_result.is_failure:
@@ -173,7 +176,7 @@ class ItineraryAssemblyPrimer(AssemblyPrimer[Itinerary]):
                     cls_name=cls.__name__,
                     msg=ItineraryAssemblyPrimerException.MSG,
                     err_code=ItineraryAssemblyPrimerException.ERR_CODE,
-                    mthd_rslt_type=MethodResultType.BUILD_RESULT,
+                    mthd_rslt_type=MethodResultType.VALIDATION_RESULT,
                     ex=token_destination_relation_result.exception,
                 )
             )
@@ -187,7 +190,7 @@ class ItineraryAssemblyPrimer(AssemblyPrimer[Itinerary]):
                     cls_name=cls.__name__,
                     msg=ItineraryAssemblyPrimerException.MSG,
                     err_code=ItineraryAssemblyPrimerException.ERR_CODE,
-                    mthd_rslt_type=MethodResultType.BUILD_RESULT,
+                    mthd_rslt_type=MethodResultType.VALIDATION_RESULT,
                     ex=StaleTokenSquareLinkException(
                         msg=StaleTokenSquareLinkException.MSG,
                         err_code=StaleTokenSquareLinkException.ERR_CODE,
@@ -203,7 +206,7 @@ class ItineraryAssemblyPrimer(AssemblyPrimer[Itinerary]):
                     cls_name=cls.__name__,
                     msg=ItineraryAssemblyPrimerException.MSG,
                     err_code=ItineraryAssemblyPrimerException.ERR_CODE,
-                    mthd_rslt_type=MethodResultType.BUILD_RESULT,
+                    mthd_rslt_type=MethodResultType.VALIDATION_RESULT,
                     ex=TokenSquareMissingRegistrationException(
                         msg=TokenSquareMissingRegistrationException.MSG,
                         err_code=TokenSquareMissingRegistrationException.ERR_CODE,
@@ -219,7 +222,7 @@ class ItineraryAssemblyPrimer(AssemblyPrimer[Itinerary]):
                     cls_name=cls.__name__,
                     msg=ItineraryAssemblyPrimerException.MSG,
                     err_code=ItineraryAssemblyPrimerException.ERR_CODE,
-                    mthd_rslt_type=MethodResultType.BUILD_RESULT,
+                    mthd_rslt_type=MethodResultType.VALIDATION_RESULT,
                     ex=TokenAlreadyAtDestinationException(
                         msg=TokenAlreadyAtDestinationException.MSG,
                         err_code=TokenAlreadyAtDestinationException.ERR_CODE
@@ -231,7 +234,7 @@ class ItineraryAssemblyPrimer(AssemblyPrimer[Itinerary]):
         # Handle the case that, the token is already on the square.
         
         # --- Security tests are passed. Return the registration result to the caller. ---#
-        return ValidationResult.success(ItineraryBlueprint(source=source_square, traveler=blueprint.traveler, destination=blueprint.destination))
+        return ValidationResult.success(ItineraryBlueprint(source=source_square, token=blueprint.token, destination=blueprint.destination))
     
 
     

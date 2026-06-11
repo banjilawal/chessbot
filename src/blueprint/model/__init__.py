@@ -1,13 +1,13 @@
-# src/blueprint/model/model/__init__.py
+# src/blueprint/model/__init__.py
 
 """
-Module: blueprint.model.model.__init__
+Module: blueprint.model.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
 """
 
-# =========== BLUEPRINT.MODEL.MODEL PACKAGE ===========#
+# =========== BLUEPRINT.MODEL PACKAGE ===========#
 
 # Packages
 from .arena import *

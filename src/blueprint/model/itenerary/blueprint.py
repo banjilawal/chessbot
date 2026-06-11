@@ -23,12 +23,13 @@ class ItineraryBlueprint(Blueprint[Itinerary]):
         -   Container
 
     Responsibilities:
-        1.  Provides values for instantiating a Itinerary object.
+        1.  Provides values for instantiating an Itinerary object.
 
     Attributes:
-        source: Square
+        token: Token
         destination: Square
-        traveler: Token
+        source: Optional[Square]
+
         null_exception: ItineraryNullException
         model_type: Itinerary
         
@@ -37,9 +38,9 @@ class ItineraryBlueprint(Blueprint[Itinerary]):
      Super Class:
         Blueprint
      """
-    source: Square
+    token: Token
     destination: Square
-    traveler: Token
+    source: Optional[Square] = None
 
     null_exception: ItineraryNullException = ItineraryNullException()
     model_type: Itinerary = Itinerary

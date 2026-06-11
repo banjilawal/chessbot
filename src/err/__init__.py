@@ -12,6 +12,7 @@ version: 1.0.0
 # Packages
 from .analyzer import *
 from .array import *
+from .bidirectional import *
 from .config import *
 from .consistency import *
 from .controller import *

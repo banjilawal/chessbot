@@ -38,6 +38,7 @@ class TokenContextBuildRouteException(ContextBuildRouteException):
             cls_name: Optional[str]
             cls_mthd: Optional[str]
             err_code: Optional[str]
+            mthd_rslt_type: optional[methodResultType]
             
     Provides:
 

@@ -12,8 +12,8 @@ from __future__ import annotations
 from abc import abstractmethod
 from typing import TypeVar
 
+from blueprint import Blueprint
 from toolkit import Toolkit
-from model import Blueprint
 from operation import Operation
 from result import ValidationResult
 from util import LoggingLevelRouter
