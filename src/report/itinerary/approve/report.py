@@ -1,7 +1,7 @@
-# src/report/move/occupation/report.py
+# src/report/itinerary/occupation/report.py
 
 """
-Module: report.move.occupation.report
+Module: report.itinerary.occupation.report
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -13,12 +13,12 @@ from abc import ABC
 from dataclasses import dataclass
 
 
-from report import Report
+from report import ItineraryReport
 from model import Square, Token
 
 
 @dataclass
-class MoveOrder(ABC, Report):
+class ItineraryApprovalReport(ABC, ItineraryReport):
     """
     Role:
         -   Test results
@@ -29,6 +29,7 @@ class MoveOrder(ABC, Report):
     Attributes:
         origin: Square
         recipient: Token
+        destination: Square
         
     Provides:
 
@@ -37,3 +38,4 @@ class MoveOrder(ABC, Report):
     """
     origin: Square
     recipient: Token
+    destination: Square

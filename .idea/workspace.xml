@@ -5,23 +5,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/err/validation/itinerary/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/validation/itinerary/consistency/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/validation/itinerary/consistency/destination/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/validation/itinerary/consistency/destination/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/validation/itinerary/consistency/destination/partial/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/validation/itinerary/consistency/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/validation/itinerary/consistency/source/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/validation/itinerary/consistency/source/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/validation/itinerary/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/validation/itinerary/same/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/validation/itinerary/same/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/validation/itinerary/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/validation/itinerary/validator.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/report/itinerary/approve/peace/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/validation/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/validation/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/toolkit/model/itinerary/toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/toolkit/model/itinerary/toolkit.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/validation/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/validation/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/report/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/report/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/report/move/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/report/itinerary/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/report/move/approve/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/report/itinerary/approve/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/report/move/approve/attack/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/report/itinerary/approve/attack/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/report/move/approve/attack/report.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/report/itinerary/approve/attack/report.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/report/move/approve/move/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/report/move/approve/move/report.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/report/itinerary/approve/peace/report.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/report/move/approve/report.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/report/itinerary/approve/report.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/report/move/deny/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/report/itinerary/deny/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/report/move/deny/blocked/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/report/itinerary/deny/blocked/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/report/move/deny/blocked/report.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/report/itinerary/deny/blocked/report.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/report/move/deny/checked/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/report/itinerary/deny/checked/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/report/move/deny/checked/report.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/report/itinerary/deny/checked/report.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/report/move/deny/report.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/report/itinerary/deny/report.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/report/move/report.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/report/itinerary/report.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/report/move/vulnerable/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/report/itinerary/vulnerable/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/report/move/vulnerable/report.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/report/itinerary/vulnerable/report.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -815,7 +817,7 @@
       <workItem from="1781010206472" duration="18170000" />
       <workItem from="1781058030612" duration="792000" />
       <workItem from="1781074987396" duration="713000" />
-      <workItem from="1781166237647" duration="26025000" />
+      <workItem from="1781166237647" duration="30250000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />
@@ -1138,7 +1140,7 @@
           <option name="timeStamp" value="189" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/src/report/move/__init__.py</url>
+          <url>file://$PROJECT_DIR$/src/report/itinerary/__init__.py</url>
           <line>11</line>
           <option name="timeStamp" value="190" />
         </line-breakpoint>

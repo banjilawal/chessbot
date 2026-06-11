@@ -1,7 +1,7 @@
-# src/report/move/deny/checked/__init__.py
+# src/report/itinerary/deny/checked/__init__.py
 
 """
-Module: report.move.deny.checked.__init__
+Module: report.itinerary.deny.checked.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -11,17 +11,17 @@ from __future__ import annotations
 from dataclasses import dataclass
 
 from model import KingToken, Square, Team, Token
-from report import MoveDenialReport
+from report import ItineraryDenialReport
 
 
 @dataclass
-class DestinationChecked(MoveDenialReport):
+class KingItineraryChecked(ItineraryDenialReport):
     """
     Role:
         -   Test results
 
     Responsibilities:
-        1.  Provide details about an enemy who could reach the king if it moved to
+        1.  Provide details about an enemy who could reach the king if it itineraryd to
             the destination.
         
     Attributes:
@@ -33,7 +33,7 @@ class DestinationChecked(MoveDenialReport):
     Provides:
 
     Super Class:
-        MoveDenialReport
+        ItineraryDenialReport
     """
     origin: Square
     recipient: KingToken

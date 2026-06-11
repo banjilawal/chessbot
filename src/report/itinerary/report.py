@@ -1,7 +1,7 @@
-# src/report/move/occupation/report.py
+# src/report/itinerary/occupation/report.py
 
 """
-Module: report.move.occupation.report
+Module: report.itinerary.occupation.report
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -13,18 +13,18 @@ from abc import ABC
 from dataclasses import dataclass
 
 
-from report import MoveOrder
+from report import Report
 from model import Square, Token
 
 
 @dataclass
-class MoveDenialReport(ABC, MoveOrder):
+class ItineraryReport(ABC, Report):
     """
     Role:
         -   Test results
 
     Responsibilities:
-        1.  Details about why a token was denied permission to occupy a square.
+        1.  Details a token needs to visit a Square.
         
     Attributes:
         origin: Square
@@ -33,5 +33,7 @@ class MoveDenialReport(ABC, MoveOrder):
     Provides:
 
     Super Class:
-        MoveOrder
+        Report
     """
+    origin: Square
+    recipient: Token

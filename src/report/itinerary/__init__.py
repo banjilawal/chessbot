@@ -1,13 +1,13 @@
-# src/report/move/__init__.py
+# src/report/itinerary/__init__.py
 
 """
-Module: report.move.__init__
+Module: report.itinerary.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
 """
 
-# =========== REPORT.MOVE PACKAGE ===========#
+# =========== REPORT.ITINERARY PACKAGE ===========#
 
 # Packages
 from .approve import *
@@ -15,4 +15,4 @@ from .deny import *
 from .vulnerable import *
 
 # Modules
-from .report import MoveOrder
+from .report import ItineraryReport

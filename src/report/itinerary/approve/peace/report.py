@@ -1,7 +1,7 @@
-# src/report/move/approve/move/report.py
+# src/report/itinerary/approve/peace/report.py
 
 """
-Module: report.move.approve.move.report
+Module: report.itinerary.approve.peace.report
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -12,11 +12,11 @@ from dataclasses import dataclass
 from typing import Optional
 
 from model import CombatantToken, Square, Token
-from report import MoveApprovalReport
+from report import ItineraryApprovalReport
 
 
 @dataclass
-class MoveApproval(MoveApprovalReport):
+class PeaceItineraryApproval(ItineraryApprovalReport):
     """
     Role:
         -   Test results

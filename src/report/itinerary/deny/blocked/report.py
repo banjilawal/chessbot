@@ -1,7 +1,7 @@
-# src/report/move/deny/blocked/report.py
+# src/report/itinerary/deny/blocked/report.py
 
 """
-Module: report.move.deny.blocked.report
+Module: report.itinerary.deny.blocked.report
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -11,17 +11,17 @@ from __future__ import annotations
 from dataclasses import dataclass
 
 from model import Square, Team, Token
-from report import MoveDenialReport
+from report import ItineraryDenialReport
 
 
 @dataclass
-class DestinationBlocked(MoveDenialReport):
+class BlockedItinerary(ItineraryDenialReport):
     """
     Role:
         -   Test results
 
     Responsibilities:
-        1.  Provide details about a move that was blocked by a friendly already in the destination.
+        1.  Provide details about a itinerary that was blocked by a friendly already in the destination.
         
     Attributes:
         origin: Square
@@ -32,7 +32,7 @@ class DestinationBlocked(MoveDenialReport):
     Provides:
 
     Super Class:
-        MoveDenialReport
+        ItineraryDenialReport
     """
     origin: Square
     recipient: Token

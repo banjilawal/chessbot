@@ -1,7 +1,7 @@
-# src/report/move/vulnerable/report.py
+# src/report/itinerary/vulnerable/report.py
 
 """
-Module: report.move.vulnerable.report
+Module: report.itinerary.vulnerable.report
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -12,11 +12,11 @@ from dataclasses import dataclass
 from typing import Optional
 
 from model import Square, Team, Token
-from report import MoveOrder
+from report import ItineraryReport
 
 
 @dataclass
-class DestinationVulnerabilityReport(MoveOrder):
+class ItineraryVulnerabilityReport(ItineraryReport):
     """
     Role:
         -   Test results
@@ -35,7 +35,7 @@ class DestinationVulnerabilityReport(MoveOrder):
     Provides:
 
     Super Class:
-        MoveOrder
+        ItineraryOrder
     """
     origin: Square
     recipient: Token
