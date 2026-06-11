@@ -9,7 +9,7 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from analyzer import Analyzer, SquareTokenRelationAnalyzer
+from analyzer import Analyzer, SquareTokenRelationAnalyzer, TokenFreedomAnalyzer
 from logic.move.move import Move
 from model import Square, Token
 from report import MoveOrder
@@ -25,6 +25,7 @@ class MovePermissionManager(Analyzer):
             cls,
             token: Token,
             destination: Square,
+            token_freedom_analyzer: TokenFreedomAnalyzer | None = None,
             square_token_relation_analyzer: SquareTokenRelationAnalyzer | None = None,
     ) -> AnalysisResult[MoveOrder]:
         pass

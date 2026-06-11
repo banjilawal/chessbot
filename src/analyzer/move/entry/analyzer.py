@@ -11,12 +11,12 @@ from __future__ import annotations
 
 from typing import cast
 
-from analyzer import TokenFreedomAnalyzer
-from err import MovePermissionAnalyzerException, SquareVisitorBoardException
+from analyzer import SquareTokenRelationAnalyzer, TokenFreedomAnalyzer
+from err import MovePermissionAnalyzerException, SquareNotFoundSearchException, SquareVisitorBoardException
 from err.analyzer.move.disabled.exception import DisabledTokenMoveException
-from model import Square, Token
-from report import MoveOrder, TokenFreedomReport
-from result import MethodResultType, ValidationResult
+from model import Square, SquareContext, Token
+from report import MoveOrder, RelationReport, TokenFreedomReport
+from result import MethodResultType, BuildResult
 from util import LoggingLevelRouter
 from validation import SquareValidator
 
@@ -52,10 +52,11 @@ class MovePermissionAnalyzer:
     def execute(
             cls,
             token: Token,
-            square: Square,
+            destination_square: Square,
             square_validator: SquareValidator | None = None,
             token_freedom_analyzer: TokenFreedomAnalyzer | None = None,
-    ) -> ValidationResult[MoveOrder]:
+            square_token_relation_analyzer: SquareTokenRelationAnalyzer | None = None,
+    ) -> BuildResult[MoveOrder]:
         """
         Action:
             1.  Send the original square along with an exception chain in the validation result if:
@@ -69,7 +70,7 @@ class MovePermissionAnalyzer:
             3.  Send the success result.
         Args:
             token: Token
-            square: Square
+            destination_square: Square
             token_freedom_analyzer: TokenFreedomAnalyzer
             square_validator: SquareValidator
        Returns:
@@ -83,62 +84,183 @@ class MovePermissionAnalyzer:
             square_validator = SquareValidator()
         if token_freedom_analyzer is None:
             token_freedom_analyzer = TokenFreedomAnalyzer()
+        if square_token_relation_analyzer is None:
+            square_token_relation_analyzer = SquareTokenRelationAnalyzer()
         
-        token_freedom_analysis_result = token_freedom_analyzer.analyze(token)
+        token_freedom_build_result = token_freedom_analyzer.analyze(token)
         # Handle the case that, the freedom_analysis is not completed.
-        if token_freedom_analysis_result.is_failure:
+        if token_freedom_build_result.is_failure:
             # Send the exception chain on failure.
-            return ValidationResult.failure(
+            return BuildResult.failure(
                 MovePermissionAnalyzerException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
                     msg=MovePermissionAnalyzerException.MSG,
                     err_code=MovePermissionAnalyzerException.ERR_CODE,
-                    mthd_rslt_type=MethodResultType.ANALYSIS_RESULT,
-                    ex=token_freedom_analysis_result.exception,
+                    mthd_rslt_type=MethodResultType.BUILD_RESULT,
+                    ex=token_freedom_build_result.exception,
                 )
             )
-        report = cast(TokenFreedomReport, token_freedom_analysis_result.payload)
+        report = cast(TokenFreedomReport, token_freedom_build_result.payload)
         # Handle the case that, the token is not free.
         if report.token_is_not_free:
             # Send the exception chain on failure.
-            return ValidationResult.failure(
+            return BuildResult.failure(
                 MovePermissionAnalyzerException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
                     msg=MovePermissionAnalyzerException.MSG,
                     err_code=MovePermissionAnalyzerException.ERR_CODE,
-                    mthd_rslt_type=MethodResultType.ANALYSIS_RESULT,
+                    mthd_rslt_type=MethodResultType.BUILD_RESULT,
                     ex=DisabledTokenMoveException(
                         msg=DisabledTokenMoveException.MSG,
                         err_code=DisabledTokenMoveException.ERR_CODE,
                     ),
                 )
             )
-        # Handle the case, that the square is flagged by the validator.
-        square_validation_result = square_validator.validate(square)
-        if square_validation_result.is_failure:
+        source_square_search_result = token.team.board.squares.search(context=SquareContext(occupant=token))
+        # Handle the case that, the search is not completed.
+        if source_square_search_result.is_failure:
             # Send the exception chain on failure.
-            return ValidationResult.failure(
+            return BuildResult.failure(
                 MovePermissionAnalyzerException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
                     msg=MovePermissionAnalyzerException.MSG,
                     err_code=MovePermissionAnalyzerException.ERR_CODE,
-                    mthd_rslt_type=MethodResultType.ANALYSIS_RESULT,
+                    mthd_rslt_type=MethodResultType.BUILD_RESULT,
+                    ex=source_square_search_result.exception,
+                )
+            )
+        # Handle the case that more than one hit is found.
+        if len(source_square_search_result.payload) > 1:
+            # Send the exception chain on failure.
+            return BuildResult.failure(
+                MovePermissionAnalyzerException(
+                    cls_mthd=method,
+                    cls_name=cls.__name__,
+                    msg=MovePermissionAnalyzerException.MSG,
+                    err_code=MovePermissionAnalyzerException.ERR_CODE,
+                    mthd_rslt_type=MethodResultType.BUILD_RESULT,
+                    ex=StaleTokenSquareLinkException(
+                        msg=StaleTokenSquareLinkException.MSG,
+                        err_code=StaleTokenSquareLinkException.ERR_CODE,
+                    )
+                )
+            )
+        # Handle the case that, the token was not found on the board.
+        if source_square_search_result.is_empty:
+            # Send the exception chain on failure.
+            return BuildResult.failure(
+                MovePermissionAnalyzerException(
+                    cls_mthd=method,
+                    cls_name=cls.__name__,
+                    msg=MovePermissionAnalyzerException.MSG,
+                    err_code=MovePermissionAnalyzerException.ERR_CODE,
+                    mthd_rslt_type=MethodResultType.BUILD_RESULT,
+                    ex=SquareNotFoundSearchException(
+                        msg=SquareNotFoundSearchException.MSG,
+                        err_code=SquareNotFoundSearchException.ERR_CODE,
+                    )
+                )
+            )
+        source_square = source_square_search_result.payload[0]
+        
+        # Handle the case, that the token and the destination are already related.
+        token_destination_relation_result = square_token_relation_analyzer.analyze(
+            candidate_primary=destination_square,
+            candidate_satellite=token,
+        )
+        # Handle the case that, the relation analysis fails.
+        if token_destination_relation_result.is_failure:
+            # Send the exception chain on failure.
+            return BuildResult.failure(
+                MovePermissionAnalyzerException(
+                    cls_mthd=method,
+                    cls_name=cls.__name__,
+                    msg=MovePermissionAnalyzerException.MSG,
+                    err_code=MovePermissionAnalyzerException.ERR_CODE,
+                    mthd_rslt_type=MethodResultType.BUILD_RESULT,
+                    ex=token_destination_relation_result.exception,
+                )
+            )
+
+        
+        relation = cast(RelationReport, token_destination_relation_result.payload)
+        # Handle the case that, there is a stale link between the destination and the token.
+        if relation.stale_link_exists:
+            # Send the exception chain on failure.
+            return BuildResult.failure(
+                MovePermissionAnalyzerException(
+                    cls_mthd=method,
+                    cls_name=cls.__name__,
+                    msg=MovePermissionAnalyzerException.MSG,
+                    err_code=MovePermissionAnalyzerException.ERR_CODE,
+                    mthd_rslt_type=MethodResultType.BUILD_RESULT,
+                    ex=StaleTokenSquareLinkException(
+                        msg=StaleTokenSquareLinkException.MSG,
+                        err_code=StaleTokenSquareLinkException.ERR_CODE,
+                    ),
+                )
+            )
+        # Handle the case that the token has an orphan link with the destination.
+        if relation.registration_does_not_exist:
+            # Send the exception chain on failure.
+            return BuildResult.failure(
+                MovePermissionAnalyzerException(
+                    cls_mthd=method,
+                    cls_name=cls.__name__,
+                    msg=MovePermissionAnalyzerException.MSG,
+                    err_code=MovePermissionAnalyzerException.ERR_CODE,
+                    mthd_rslt_type=MethodResultType.BUILD_RESULT,
+                    ex=TokenSquareMissingRegistrationException(
+                        msg=TokenSquareMissingRegistrationException.MSG,
+                        err_code=TokenSquareMissingRegistrationException.ERR_CODE,
+                    ),
+                )
+            )
+        # Handle the case that, the square is already at the destination.
+        if relation.fully_exists and source_square == destination_square:
+            # Send the exception chain on failure.
+            return BuildResult.failure(
+                MovePermissionAnalyzerException(
+                    cls_mthd=method,
+                    cls_name=cls.__name__,
+                    msg=MovePermissionAnalyzerException.MSG,
+                    err_code=MovePermissionAnalyzerException.ERR_CODE,
+                    mthd_rslt_type=MethodResultType.BUILD_RESULT,
+                    ex=TokenAlreadyAtDestinationException(
+                        msg=TokenAlreadyAtDestinationException.MSG,
+                        err_code=TokenAlreadyAtDestinationException.ERR_CODE
+                    ),
+                )
+            )
+        # Handle 
+            
+        # square is flagged by the validator.
+        square_validation_result = square_validator.validate(destination_square)
+        if square_validation_result.is_failure:
+            # Send the exception chain on failure.
+            return BuildResult.failure(
+                MovePermissionAnalyzerException(
+                    cls_mthd=method,
+                    cls_name=cls.__name__,
+                    msg=MovePermissionAnalyzerException.MSG,
+                    err_code=MovePermissionAnalyzerException.ERR_CODE,
+                    mthd_rslt_type=MethodResultType.BUILD_RESULT,
                     ex=square_validation_result.exception,
                 )
             )
         # Handle the case that, the token and square are on different boards.
-        if token.team.board != square.board:
+        if token.team.board != destination_square.board:
             # Send the exception chain on failure.
-            return ValidationResult.failure(
+            return BuildResult.failure(
                 MovePermissionAnalyzerException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
                     msg=MovePermissionAnalyzerException.MSG,
                     err_code=MovePermissionAnalyzerException.ERR_CODE,
-                    mthd_rslt_type=MethodResultType.ANALYSIS_RESULT,
+                    mthd_rslt_type=MethodResultType.BUILD_RESULT,
                     ex=SquareVisitorBoardException(
                         msg=SquareVisitorBoardException.MSG,
                         err_code=SquareVisitorBoardException.ERR_CODE,
@@ -147,9 +269,10 @@ class MovePermissionAnalyzer:
             )
         # Handle the case that, the token is already on the square.
         
+        
         # Handle the case that, the square does not pass a security test.
         square_security_test_result = cls._run_square_tests(
-            square=square,
+            square=destination_square,
             square_validator=square_validator
         )
         if square_security_test_result.is_failure:
@@ -158,7 +281,7 @@ class MovePermissionAnalyzer:
         # Handle the case that, the token does not pass a security test.
         token_security_test_result = cls._run_token_tests(
             token=token,
-            square=square,
+            square=destination_square,
             token_freedom_analyzer=token_freedom_analyzer
         )
         if token_security_test_result.is_failure:
@@ -166,14 +289,14 @@ class MovePermissionAnalyzer:
         
         # Handle the case that, an unformed token is trying to entry from the wrong square.
         deployment_test_result = cls._run_deployment_tests(
-            square=square,
+            square=destination_square,
             token=token
         )
         if deployment_test_result.is_failure:
             return deployment_test_result
         
         # --- Security tests are passed. Return the registration result to the caller. ---#
-        return cls._register_token_visit(square=square, token=token)
+        return cls._register_token_visit(square=destination_square, token=token)
     
     @classmethod
     @LoggingLevelRouter.monitor
@@ -391,7 +514,7 @@ class MovePermissionAnalyzer:
             token: Token
             square: Square
         Returns:
-            ValidationResult[Square]
+            BuildResult[Square]
         Raises:
             MovePermissionAnalyzerException
             WrongOpeningSquareException
