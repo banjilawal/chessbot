@@ -13,12 +13,12 @@ from typing import Any, cast
 
 from err import (
     ItineraryNullException, ItinerarySourceEqualsDestinationException, ItineraryValidationException,
-    TokenAlreadyAtDestinationException, TokenDestinationPartialRelationException
+    NoSourceTokenRelationException, TokenAlreadyAtDestinationException, TokenDestinationPartialRelationException
 )
 from model import Itinerary
 from report import RelationReport
 from result import ValidationResult
-from toolkit import ItineraryToolkit
+from toolkit import ItineraryToolkit, Toolkit
 from util import LoggingLevelRouter
 from validation import Validator
 
@@ -144,12 +144,87 @@ class ItineraryValidator(Validator[Itinerary]):
                 )
             )
         # --- Test the token's consistency with its source. ---#
-        token_source_relation_result = toolkit.square_token_relation_analyzer.analyze(
+        consistency_validation_result = cls._consistency_validator(
+            itinerary=itinerary,
+            toolkit=toolkit,
+        )
+        # Handle the case that, the itinerary has an inconsistency.
+        if consistency_validation_result.is_failure:
+            # Send the exception chain on failure.
+            return ValidationResult.failure(
+                ItineraryValidationException(
+                    cls_mthd=method,
+                    cls_name=cls.__name__,
+                    msg=ItineraryValidationException.MSG,
+                    err_code=ItineraryValidationException.ERR_CODE,
+                    ex=consistency_validation_result.exception,
+                )
+            )
+        # --- Candidate has been successfully validated. Return to the caller. ---#
+        return ValidationResult.success(itinerary)
+        
+        
+    @classmethod
+    @LoggingLevelRouter.monitor
+    def _consistency_validator(
+        cls,
+        itinerary: Itinerary,
+        toolkit: ItineraryToolkit,
+    ) -> ValidationResult[Itinerary]:
+        method = f"{cls.__name__}._consistency_validator"
+        
+        source_consistency_result = cls._source_consistency_validator(
+            itinerary=itinerary,
+            toolkit=toolkit,
+        )
+        # Handle the case that, the source has an inconsistency with the token.
+        if source_consistency_result.is_failure:
+            # Send the exception chain on failure.
+            return ValidationResult.failure(
+                ItineraryValidationException(
+                    cls_mthd=method,
+                    cls_name=cls.__name__,
+                    msg=ItineraryValidationException.MSG,
+                    err_code=ItineraryValidationException.ERR_CODE,
+                    ex=source_consistency_result.exception,
+                )
+            )
+        
+        destination_consistency_result = cls._destination_consistency_validator(
+            itinerary=itinerary,
+            toolkit=toolkit,
+        )
+        # Handle the case that, the source has an inconsistency with the token.
+        if destination_consistency_result.is_failure:
+            # Send the exception chain on failure.
+            return ValidationResult.failure(
+                ItineraryValidationException(
+                    cls_mthd=method,
+                    cls_name=cls.__name__,
+                    msg=ItineraryValidationException.MSG,
+                    err_code=ItineraryValidationException.ERR_CODE,
+                    ex=destination_consistency_result.exception,
+                )
+            )
+        # --- Candidate has been successfully validated. Return to the caller. ---#
+        return ValidationResult.success(itinerary)
+        
+    
+    @classmethod
+    @LoggingLevelRouter.monitor
+    def _source_consistency_validator(
+            cls,
+            itinerary: Itinerary,
+            toolkit: ItineraryToolkit,
+    ) -> ValidationResult[Itinerary]:
+        method = f"{cls.__name__}._source_consistency_validator"
+        
+        relation_result = toolkit.square_token_relation_analyzer.analyze(
             candidate_primary=itinerary.source,
             candidate_satellite=itinerary.token,
         )
         # Handle the case that, the relation_analysis is not completed.
-        if token_source_relation_result.is_failure:
+        if relation_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 ItineraryValidationException(
@@ -157,12 +232,12 @@ class ItineraryValidator(Validator[Itinerary]):
                     cls_name=cls.__name__,
                     msg=ItineraryValidationException.MSG,
                     err_code=ItineraryValidationException.ERR_CODE,
-                    ex=token_source_relation_result.exception,
+                    ex=relation_result.exception,
                 )
             )
         # Handle the case that, the token does not have a bidirectional relation with its source.
-        token_source_relation = cast(RelationReport, token_source_relation_result.payload)
-        if not token_source_relation.fully_exists:
+        relation = cast(RelationReport, relation_result.payload)
+        if not relation.fully_exists:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 ItineraryValidationException(
@@ -170,16 +245,31 @@ class ItineraryValidator(Validator[Itinerary]):
                     cls_name=cls.__name__,
                     msg=ItineraryValidationException.MSG,
                     err_code=ItineraryValidationException.ERR_CODE,
-                    ex=token_source_relation_result.exception,
+                    ex=NoSourceTokenRelationException(
+                        msg=NoSourceTokenRelationException.MSG,
+                        err_code=NoSourceTokenRelationException.ERR_CODE,
+                    ),
                 )
             )
+        # --- Candidate has been successfully validated. Return to the caller. ---#
+        return ValidationResult.success(itinerary)
+    
+    @classmethod
+    @LoggingLevelRouter.monitor
+    def _destination_consistency_validator(
+            cls,
+            itinerary: Itinerary,
+            toolkit: ItineraryToolkit,
+    ) -> ValidationResult[Itinerary]:
+        method = f"{cls.__name__}._destination_consistency_validator"
+
         # --- Test the has no relation with the destination. ---#
-        token_destination_relation_result = toolkit.square_token_relation_analyzer.analyze(
+        relation_result = toolkit.square_token_relation_analyzer.analyze(
             candidate_primary=itinerary.destination,
             candidate_satellite=itinerary.token,
         )
         # Handle the case that, the relation_analysis is not completed.
-        if token_destination_relation_result.is_failure:
+        if relation_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 ItineraryValidationException(
@@ -187,14 +277,14 @@ class ItineraryValidator(Validator[Itinerary]):
                     cls_name=cls.__name__,
                     msg=ItineraryValidationException.MSG,
                     err_code=ItineraryValidationException.ERR_CODE,
-                    ex=token_destination_relation_result.exception,
+                    ex=relation_result.exception,
                 )
             )
         # Handle the case that the token has an unexpected partial binding to the destination.
-        token_destination_relation = cast(RelationReport, token_destination_relation_result.payload)
+        relation = cast(RelationReport, relation_result.payload)
         if (
-                token_destination_relation.stale_link_exists or
-                token_source_relation.registration_missing
+                relation.stale_link_exists or
+                relation.registration_missing
         ):
             # Send the exception chain on failure.
             return ValidationResult.failure(
@@ -210,7 +300,7 @@ class ItineraryValidator(Validator[Itinerary]):
                 )
             )
         # Handle the case that, the token has an unexpected full binding with the destination.
-        if token_destination_relation.fully_exists:
+        if relation.fully_exists:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 ItineraryValidationException(
