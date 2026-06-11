@@ -14,7 +14,7 @@ from typing import cast
 from blueprint import ItineraryBlueprint
 from model import Itinerary
 from operation import AssemblyPrimer
-from report import TokenFreedomReport
+from report import RelationReport, TokenFreedomReport
 from result import ValidationResult
 from toolkit import ItineraryToolkit
 from util import LoggingLevelRouter
@@ -85,11 +85,11 @@ class ItineraryAssemblyPrimer(AssemblyPrimer[Itinerary]):
         if token_freedom_build_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                MovePermissionAnalyzerException(
+                ItineraryAssemblyPrimerException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    msg=MovePermissionAnalyzerException.MSG,
-                    err_code=MovePermissionAnalyzerException.ERR_CODE,
+                    msg=ItineraryAssemblyPrimerException.MSG,
+                    err_code=ItineraryAssemblyPrimerException.ERR_CODE,
                     mthd_rslt_type=MethodResultType.BUILD_RESULT,
                     ex=token_freedom_build_result.exception,
                 )
@@ -99,11 +99,11 @@ class ItineraryAssemblyPrimer(AssemblyPrimer[Itinerary]):
         if report.token_is_not_free:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                MovePermissionAnalyzerException(
+                ItineraryAssemblyPrimerException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    msg=MovePermissionAnalyzerException.MSG,
-                    err_code=MovePermissionAnalyzerException.ERR_CODE,
+                    msg=ItineraryAssemblyPrimerException.MSG,
+                    err_code=ItineraryAssemblyPrimerException.ERR_CODE,
                     mthd_rslt_type=MethodResultType.BUILD_RESULT,
                     ex=DisabledTokenMoveException(
                         msg=DisabledTokenMoveException.MSG,
@@ -116,11 +116,11 @@ class ItineraryAssemblyPrimer(AssemblyPrimer[Itinerary]):
         if source_square_search_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                MovePermissionAnalyzerException(
+                ItineraryAssemblyPrimerException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    msg=MovePermissionAnalyzerException.MSG,
-                    err_code=MovePermissionAnalyzerException.ERR_CODE,
+                    msg=ItineraryAssemblyPrimerException.MSG,
+                    err_code=ItineraryAssemblyPrimerException.ERR_CODE,
                     mthd_rslt_type=MethodResultType.BUILD_RESULT,
                     ex=source_square_search_result.exception,
                 )
@@ -129,11 +129,11 @@ class ItineraryAssemblyPrimer(AssemblyPrimer[Itinerary]):
         if len(source_square_search_result.payload) > 1:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                MovePermissionAnalyzerException(
+                ItineraryAssemblyPrimerException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    msg=MovePermissionAnalyzerException.MSG,
-                    err_code=MovePermissionAnalyzerException.ERR_CODE,
+                    msg=ItineraryAssemblyPrimerException.MSG,
+                    err_code=ItineraryAssemblyPrimerException.ERR_CODE,
                     mthd_rslt_type=MethodResultType.BUILD_RESULT,
                     ex=StaleTokenSquareLinkException(
                         msg=StaleTokenSquareLinkException.MSG,
@@ -145,11 +145,11 @@ class ItineraryAssemblyPrimer(AssemblyPrimer[Itinerary]):
         if source_square_search_result.is_empty:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                MovePermissionAnalyzerException(
+                ItineraryAssemblyPrimerException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    msg=MovePermissionAnalyzerException.MSG,
-                    err_code=MovePermissionAnalyzerException.ERR_CODE,
+                    msg=ItineraryAssemblyPrimerException.MSG,
+                    err_code=ItineraryAssemblyPrimerException.ERR_CODE,
                     mthd_rslt_type=MethodResultType.BUILD_RESULT,
                     ex=SquareNotFoundSearchException(
                         msg=SquareNotFoundSearchException.MSG,
@@ -168,11 +168,11 @@ class ItineraryAssemblyPrimer(AssemblyPrimer[Itinerary]):
         if token_destination_relation_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                MovePermissionAnalyzerException(
+                ItineraryAssemblyPrimerException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    msg=MovePermissionAnalyzerException.MSG,
-                    err_code=MovePermissionAnalyzerException.ERR_CODE,
+                    msg=ItineraryAssemblyPrimerException.MSG,
+                    err_code=ItineraryAssemblyPrimerException.ERR_CODE,
                     mthd_rslt_type=MethodResultType.BUILD_RESULT,
                     ex=token_destination_relation_result.exception,
                 )
@@ -182,11 +182,11 @@ class ItineraryAssemblyPrimer(AssemblyPrimer[Itinerary]):
         if relation.stale_link_exists:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                MovePermissionAnalyzerException(
+                ItineraryAssemblyPrimerException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    msg=MovePermissionAnalyzerException.MSG,
-                    err_code=MovePermissionAnalyzerException.ERR_CODE,
+                    msg=ItineraryAssemblyPrimerException.MSG,
+                    err_code=ItineraryAssemblyPrimerException.ERR_CODE,
                     mthd_rslt_type=MethodResultType.BUILD_RESULT,
                     ex=StaleTokenSquareLinkException(
                         msg=StaleTokenSquareLinkException.MSG,
@@ -198,11 +198,11 @@ class ItineraryAssemblyPrimer(AssemblyPrimer[Itinerary]):
         if relation.registration_does_not_exist:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                MovePermissionAnalyzerException(
+                ItineraryAssemblyPrimerException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    msg=MovePermissionAnalyzerException.MSG,
-                    err_code=MovePermissionAnalyzerException.ERR_CODE,
+                    msg=ItineraryAssemblyPrimerException.MSG,
+                    err_code=ItineraryAssemblyPrimerException.ERR_CODE,
                     mthd_rslt_type=MethodResultType.BUILD_RESULT,
                     ex=TokenSquareMissingRegistrationException(
                         msg=TokenSquareMissingRegistrationException.MSG,
@@ -214,11 +214,11 @@ class ItineraryAssemblyPrimer(AssemblyPrimer[Itinerary]):
         if relation.fully_exists and source_square == blueprint.destination:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                MovePermissionAnalyzerException(
+                ItineraryAssemblyPrimerException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    msg=MovePermissionAnalyzerException.MSG,
-                    err_code=MovePermissionAnalyzerException.ERR_CODE,
+                    msg=ItineraryAssemblyPrimerException.MSG,
+                    err_code=ItineraryAssemblyPrimerException.ERR_CODE,
                     mthd_rslt_type=MethodResultType.BUILD_RESULT,
                     ex=TokenAlreadyAtDestinationException(
                         msg=TokenAlreadyAtDestinationException.MSG,

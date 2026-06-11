@@ -5,23 +5,85 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/blueprint/model/itenerary/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/blueprint/model/itenerary/blueprint.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/itenerary/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/itenerary/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/operation/assembly/itenerary/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/operation/assembly/itenerary/operation.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/operation/priming/assembly/itenerary/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/operation/priming/assembly/itenerary/operation.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/operation/primer/assembly/itinerary/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/operation/primer/assembly/itinerary/exception.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/analyzer/move/entry/analyzer.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/analyzer/move/entry/analyzer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blueprint/model/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/blueprint/model/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/null/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/null/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/operation/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/operation/priming/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/primer/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/operation/priming/assembly/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/primer/assembly/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/operation/priming/assembly/arena/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/primer/assembly/arena/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/operation/priming/assembly/arena/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/primer/assembly/arena/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/operation/priming/assembly/board/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/primer/assembly/board/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/operation/priming/assembly/board/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/primer/assembly/board/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/operation/priming/assembly/context/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/primer/assembly/context/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/operation/priming/assembly/context/arena/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/primer/assembly/context/arena/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/operation/priming/assembly/context/arena/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/primer/assembly/context/arena/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/operation/priming/assembly/context/board/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/primer/assembly/context/board/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/operation/priming/assembly/context/board/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/primer/assembly/context/board/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/operation/priming/assembly/context/coord/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/primer/assembly/context/coord/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/operation/priming/assembly/context/coord/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/primer/assembly/context/coord/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/operation/priming/assembly/context/edge/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/primer/assembly/context/edge/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/operation/priming/assembly/context/edge/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/primer/assembly/context/edge/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/operation/priming/assembly/context/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/primer/assembly/context/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/operation/priming/assembly/context/formation/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/primer/assembly/context/formation/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/operation/priming/assembly/context/formation/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/primer/assembly/context/formation/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/operation/priming/assembly/context/game/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/primer/assembly/context/game/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/operation/priming/assembly/context/game/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/primer/assembly/context/game/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/operation/priming/assembly/context/hostage/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/primer/assembly/context/hostage/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/operation/priming/assembly/context/hostage/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/primer/assembly/context/hostage/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/operation/priming/assembly/context/node/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/primer/assembly/context/node/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/operation/priming/assembly/context/node/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/primer/assembly/context/node/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/operation/priming/assembly/context/persona/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/primer/assembly/context/persona/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/operation/priming/assembly/context/persona/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/primer/assembly/context/persona/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/operation/priming/assembly/context/player/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/primer/assembly/context/player/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/operation/priming/assembly/context/player/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/primer/assembly/context/player/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/operation/priming/assembly/context/rank/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/primer/assembly/context/rank/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/operation/priming/assembly/context/rank/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/primer/assembly/context/rank/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/operation/priming/assembly/context/schema/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/primer/assembly/context/schema/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/operation/priming/assembly/context/schema/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/primer/assembly/context/schema/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/operation/priming/assembly/context/square/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/primer/assembly/context/square/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/operation/priming/assembly/context/square/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/primer/assembly/context/square/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/operation/priming/assembly/context/team/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/primer/assembly/context/team/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/operation/priming/assembly/context/team/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/primer/assembly/context/team/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/operation/priming/assembly/context/token/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/primer/assembly/context/token/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/operation/priming/assembly/context/token/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/primer/assembly/context/token/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/operation/priming/assembly/context/vector/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/primer/assembly/context/vector/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/operation/priming/assembly/context/vector/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/primer/assembly/context/vector/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/operation/priming/assembly/coord/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/primer/assembly/coord/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/operation/priming/assembly/coord/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/primer/assembly/coord/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/operation/priming/assembly/edge/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/primer/assembly/edge/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/operation/priming/assembly/edge/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/primer/assembly/edge/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/operation/priming/assembly/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/primer/assembly/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/operation/priming/assembly/formation/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/primer/assembly/formation/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/operation/priming/assembly/formation/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/primer/assembly/formation/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/operation/priming/assembly/game/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/primer/assembly/game/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/operation/priming/assembly/game/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/primer/assembly/game/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/operation/priming/assembly/hostage/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/primer/assembly/hostage/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/operation/priming/assembly/hostage/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/primer/assembly/hostage/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/operation/priming/assembly/node/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/primer/assembly/node/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/operation/priming/assembly/node/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/primer/assembly/node/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/operation/priming/assembly/persona/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/primer/assembly/persona/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/operation/priming/assembly/persona/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/primer/assembly/persona/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/operation/priming/assembly/player/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/primer/assembly/player/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/operation/priming/assembly/player/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/primer/assembly/player/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/operation/priming/assembly/rank/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/primer/assembly/rank/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/operation/priming/assembly/rank/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/primer/assembly/rank/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/operation/priming/assembly/scalar/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/primer/assembly/scalar/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/operation/priming/assembly/scalar/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/primer/assembly/scalar/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/operation/priming/assembly/schema/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/primer/assembly/schema/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/operation/priming/assembly/schema/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/primer/assembly/schema/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/operation/priming/assembly/square/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/primer/assembly/square/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/operation/priming/assembly/square/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/primer/assembly/square/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/operation/priming/assembly/team/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/primer/assembly/team/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/operation/priming/assembly/team/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/primer/assembly/team/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/operation/priming/assembly/token/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/primer/assembly/token/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/operation/priming/assembly/token/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/primer/assembly/token/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/operation/priming/assembly/vector/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/primer/assembly/vector/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/operation/priming/assembly/vector/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/primer/assembly/vector/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/operation/priming/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/primer/exception.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/model/itenerary/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/itenerary/model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/assembly/coord/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/assembly/coord/operation.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/priming/assembly/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/priming/assembly/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pipeline/build/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/pipeline/build/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/assembly/itenerary/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/assembly/itenerary/operation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/priming/assembly/itinerary/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/priming/assembly/itinerary/operation.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -74,22 +136,22 @@
     "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/toolkit/model",
+    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/err/operation/priming/assembly",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.lookFeel",
+    "settings.editor.selected.configurable": "editor.preferences.tabs",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/err/operation/priming/assembly" />
       <recent name="$PROJECT_DIR$/src/toolkit/model" />
       <recent name="$PROJECT_DIR$/src/pipeline/build" />
       <recent name="$PROJECT_DIR$/src/operation/priming/assembly" />
       <recent name="$PROJECT_DIR$/src/blueprint/model" />
-      <recent name="$PROJECT_DIR$/src/err/null" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/report/move" />
@@ -815,7 +877,7 @@
       <workItem from="1781010206472" duration="18170000" />
       <workItem from="1781058030612" duration="792000" />
       <workItem from="1781074987396" duration="713000" />
-      <workItem from="1781166237647" duration="7806000" />
+      <workItem from="1781166237647" duration="11148000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />
@@ -1013,7 +1075,7 @@
           <option name="timeStamp" value="135" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/src/err/operation/priming/assembly/context/board/exception.py</url>
+          <url>file://$PROJECT_DIR$/src/err/operation/primer/assembly/context/board/exception.py</url>
           <line>9</line>
           <option name="timeStamp" value="141" />
         </line-breakpoint>

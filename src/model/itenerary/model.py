@@ -25,7 +25,7 @@ class Itinerary:
         1.  Contains the source and destination squares a token wants to travel between.
 
     Attributes:
-        traveler: Token
+        token: Token
         source: Square
         destination: Square
 
@@ -33,7 +33,7 @@ class Itinerary:
 
     Super Class:
     """
-    traveler: Token
+    token: Token
     source: Square
     destination: Square
 
@@ -45,7 +45,7 @@ class Itinerary:
             return True
         if isinstance(other, Itinerary):
             return (
-                    self.traveler == other.traveler and
+                    self.token == other.token and
                     self.source == other.source and
                     self.destination == other.destination
             )

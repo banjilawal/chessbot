@@ -34,7 +34,7 @@ class ItineraryAssembler(Assembler[Itinerary]):
         return BuildResult.success(
             Itinerary(
                 source=blueprint.source,
-                traveler=blueprint.traveler,
+                token=blueprint.traveler,
                 destination=blueprint.destination,
             )
         )

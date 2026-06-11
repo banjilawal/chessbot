@@ -17,7 +17,7 @@ from report import CollisionReport
 from toolkit import TokenToolkit
 from search import SquareNotFoundException
 from operation import AssemblyPrimer
-from err import TokenAssemblyPrimingException
+from err import TokenAssemblyPrimerException
 from result import AnalysisResult, SearchResult, ValidationResult
 from model import OpeningSquare, SquareContext, Token
 from util import IdFactory, LoggingLevelRouter
@@ -66,11 +66,11 @@ class TokenAssemblyPrimer(AssemblyPrimer[Token]):
         if blueprint_validation_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                TokenAssemblyPrimingException(
+                TokenAssemblyPrimerException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    msg=TokenAssemblyPrimingException.MSG,
-                    err_code=TokenAssemblyPrimingException.ERR_CODE,
+                    msg=TokenAssemblyPrimerException.MSG,
+                    err_code=TokenAssemblyPrimerException.ERR_CODE,
                     ex=blueprint_validation_result.exception,
                 )
             )
@@ -81,11 +81,11 @@ class TokenAssemblyPrimer(AssemblyPrimer[Token]):
         if collision_analysis_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                TokenAssemblyPrimingException(
+                TokenAssemblyPrimerException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    msg=TokenAssemblyPrimingException.MSG,
-                    err_code=TokenAssemblyPrimingException.ERR_CODE,
+                    msg=TokenAssemblyPrimerException.MSG,
+                    err_code=TokenAssemblyPrimerException.ERR_CODE,
                     ex=blueprint_validation_result.exception,
                 )
             )
@@ -96,11 +96,11 @@ class TokenAssemblyPrimer(AssemblyPrimer[Token]):
         if opening_square_discovery_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                TokenAssemblyPrimingException(
+                TokenAssemblyPrimerException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    msg=TokenAssemblyPrimingException.MSG,
-                    err_code=TokenAssemblyPrimingException.ERR_CODE,
+                    msg=TokenAssemblyPrimerException.MSG,
+                    err_code=TokenAssemblyPrimerException.ERR_CODE,
                     ex=blueprint_validation_result.exception,
                 )
             )
@@ -111,11 +111,11 @@ class TokenAssemblyPrimer(AssemblyPrimer[Token]):
         if rank_assembly_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                TokenAssemblyPrimingException(
+                TokenAssemblyPrimerException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    msg=TokenAssemblyPrimingException.MSG,
-                    err_code=TokenAssemblyPrimingException.ERR_CODE,
+                    msg=TokenAssemblyPrimerException.MSG,
+                    err_code=TokenAssemblyPrimerException.ERR_CODE,
                     ex=rank_assembly_result.exception,
                 )
             )
@@ -165,11 +165,11 @@ class TokenAssemblyPrimer(AssemblyPrimer[Token]):
         if id_validation_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                TokenAssemblyPrimingException(
+                TokenAssemblyPrimerException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    msg=TokenAssemblyPrimingException.MSG,
-                    err_code=TokenAssemblyPrimingException.ERR_CODE,
+                    msg=TokenAssemblyPrimerException.MSG,
+                    err_code=TokenAssemblyPrimerException.ERR_CODE,
                     ex=id_validation_result.exception,
                 )
             )
@@ -180,11 +180,11 @@ class TokenAssemblyPrimer(AssemblyPrimer[Token]):
         if team_validation.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                TokenAssemblyPrimingException(
+                TokenAssemblyPrimerException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    msg=TokenAssemblyPrimingException.MSG,
-                    err_code=TokenAssemblyPrimingException.ERR_CODE,
+                    msg=TokenAssemblyPrimerException.MSG,
+                    err_code=TokenAssemblyPrimerException.ERR_CODE,
                     ex=team_validation.exception,
                 )
             )
@@ -195,11 +195,11 @@ class TokenAssemblyPrimer(AssemblyPrimer[Token]):
         if formation_validation.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                TokenAssemblyPrimingException(
+                TokenAssemblyPrimerException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    msg=TokenAssemblyPrimingException.MSG,
-                    err_code=TokenAssemblyPrimingException.ERR_CODE,
+                    msg=TokenAssemblyPrimerException.MSG,
+                    err_code=TokenAssemblyPrimerException.ERR_CODE,
                     ex=formation_validation.exception,
                 )
             )
@@ -243,11 +243,11 @@ class TokenAssemblyPrimer(AssemblyPrimer[Token]):
             if id_validation.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
-                    TokenAssemblyPrimingException(
+                    TokenAssemblyPrimerException(
                         cls_mthd=method,
                         cls_name=cls.__name__,
-                        msg=TokenAssemblyPrimingException.MSG,
-                        err_code=TokenAssemblyPrimingException.ERR_CODE,
+                        msg=TokenAssemblyPrimerException.MSG,
+                        err_code=TokenAssemblyPrimerException.ERR_CODE,
                         ex=id_validation.exception,
                     )
                 )
@@ -281,22 +281,22 @@ class TokenAssemblyPrimer(AssemblyPrimer[Token]):
         if collision_analysis_result.is_failure:
             # Send the exception chain on failure.
             return AnalysisResult.failure(
-                TokenAssemblyPrimingException(
+                TokenAssemblyPrimerException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    msg=TokenAssemblyPrimingException.MSG,
-                    err_code=TokenAssemblyPrimingException.ERR_CODE,
+                    msg=TokenAssemblyPrimerException.MSG,
+                    err_code=TokenAssemblyPrimerException.ERR_CODE,
                     ex=collision_analysis_result.exception,
                 )
             )
         if collision_analysis_result.payload.collision_exists:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                TokenAssemblyPrimingException(
+                TokenAssemblyPrimerException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    msg=TokenAssemblyPrimingException.MSG,
-                    err_code=TokenAssemblyPrimingException.ERR_CODE,
+                    msg=TokenAssemblyPrimerException.MSG,
+                    err_code=TokenAssemblyPrimerException.ERR_CODE,
                     ex=collision_analysis_result.payload.exception,
                 )
             )
@@ -334,11 +334,11 @@ class TokenAssemblyPrimer(AssemblyPrimer[Token]):
         if square_search_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                TokenAssemblyPrimingException(
+                TokenAssemblyPrimerException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    msg=TokenAssemblyPrimingException.MSG,
-                    err_code=TokenAssemblyPrimingException.ERR_CODE,
+                    msg=TokenAssemblyPrimerException.MSG,
+                    err_code=TokenAssemblyPrimerException.ERR_CODE,
                     ex=square_search_result.exception,
                 )
             )
@@ -346,11 +346,11 @@ class TokenAssemblyPrimer(AssemblyPrimer[Token]):
         if square_search_result.is_empty:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                TokenAssemblyPrimingException(
+                TokenAssemblyPrimerException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    msg=TokenAssemblyPrimingException.MSG,
-                    err_code=TokenAssemblyPrimingException.ERR_CODE,
+                    msg=TokenAssemblyPrimerException.MSG,
+                    err_code=TokenAssemblyPrimerException.ERR_CODE,
                     ex=SquareNotFoundException(
                         msg=SquareNotFoundException.MSG,
                         err_code=SquareNotFoundException.ERR_CODE,
