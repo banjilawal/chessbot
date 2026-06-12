@@ -42,7 +42,7 @@ class DepartingEmptySquareException(SquareDebugException):
         SquareDebugException
     """
     ERR_CODE = "DEPARTING_EMPTY_SQUARE_EXCEPTION"
-    MSG = "SquareDeparture failed: Cannot remove visitor from empty square."
+    MSG = "SquareDeparture failed: Cannot reitinerary visitor from empty square."
     
     def __init__(
             self,

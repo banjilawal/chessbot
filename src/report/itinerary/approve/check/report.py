@@ -1,7 +1,7 @@
-# src/report/itinerary/approve/attack/report.py
+# src/report/itinerary/approve/check/report.py
 
 """
-Module: report.itinerary.approve.attack.report
+Module: report.itinerary.approve.check.report
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -11,24 +11,24 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Optional
 
-from model import CombatantToken, Square, Team, Token
+from model import KingToken, Square, Team, Token
 from report import ItineraryApprovalReport
 
 
 @dataclass
-class AttackItineraryApproval(ItineraryApprovalReport):
+class EnemyKingAttackItineraryApproval(ItineraryApprovalReport):
     """
     Role:
         -   Test results
 
     Responsibilities:
-        1.  Details a token needs to capture an enemy combatant.
+        1.  Details a token needs to check an  enemy king.
         
     Attributes:
         origin: Square
         recipient: Token
         target_square: Square
-        enemy_combatant: CombatantToken
+        enemy_king: KingToken
         priority: int
         
         targeted_team: Team
@@ -42,12 +42,12 @@ class AttackItineraryApproval(ItineraryApprovalReport):
     origin: Square
     recipient: Token
     target_square: Square
-    enemy_combatant: CombatantToken
+    enemy_king: KingToken
     priority: Optional[int] = None
     
     @property
     def targeted_team(self) -> Team:
-        return self.enemy_combatant.team
+        return self.enemy_king.team
     
     @property
     def attacking_team(self) -> Team:

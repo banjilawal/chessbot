@@ -14,4 +14,4 @@ from .board import *
 from .disabled import *
 
 # Modules
-from .exception import MovePermissionAnalyzerException
+from .exception import ItineraryAnalyzerException

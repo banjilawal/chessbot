@@ -10,7 +10,7 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import MovePermissionAnalyzerException
+from err import ItineraryAnalyzerException
 from result import MethodResultType
 
 __all__ = [
@@ -19,7 +19,7 @@ __all__ = [
 ]
 
 # ======================# VISITOR_FROM_WRONG_BOARD EXCEPTION #======================#
-class SquareVisitorBoardException(MovePermissionAnalyzerException):
+class SquareVisitorBoardException(ItineraryAnalyzerException):
     """
     Role:
         -   Error Tracing

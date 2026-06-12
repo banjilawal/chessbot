@@ -5,25 +5,40 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/report/itinerary/approve/peace/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/report/itinerary/approve/check/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/report/itinerary/approve/check/report.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/report/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/report/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/report/move/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/report/itinerary/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/report/move/approve/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/report/itinerary/approve/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/report/move/approve/attack/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/report/itinerary/approve/attack/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/report/move/approve/attack/report.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/report/itinerary/approve/attack/report.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/report/move/approve/move/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/report/move/approve/move/report.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/report/itinerary/approve/peace/report.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/report/move/approve/report.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/report/itinerary/approve/report.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/report/move/deny/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/report/itinerary/deny/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/report/move/deny/blocked/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/report/itinerary/deny/blocked/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/report/move/deny/blocked/report.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/report/itinerary/deny/blocked/report.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/report/move/deny/checked/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/report/itinerary/deny/checked/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/report/move/deny/checked/report.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/report/itinerary/deny/checked/report.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/report/move/deny/report.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/report/itinerary/deny/report.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/report/move/report.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/report/itinerary/report.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/report/move/vulnerable/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/report/itinerary/vulnerable/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/report/move/vulnerable/report.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/report/itinerary/vulnerable/report.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/analyzer/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/analyzer/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/analyzer/move/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/analyzer/itinerary/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/analyzer/move/analyzer.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/analyzer/itinerary/analyzer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/analyzer/move/departure/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/analyzer/itinerary/departure/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/analyzer/move/departure/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/analyzer/itinerary/departure/exception/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/analyzer/move/departure/exception/empty.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/analyzer/itinerary/departure/exception/empty.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/analyzer/move/departure/exception/transaction.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/analyzer/itinerary/departure/exception/transaction.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/analyzer/move/departure/worker.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/analyzer/itinerary/departure/worker.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/analyzer/move/entry/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/analyzer/itinerary/entry/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/analyzer/move/entry/analyzer.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/analyzer/itinerary/entry/analyzer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/analyzer/move/entry/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/analyzer/itinerary/entry/exception/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/analyzer/move/entry/exception/debug/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/analyzer/itinerary/entry/exception/debug/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/analyzer/move/entry/exception/debug/board.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/analyzer/itinerary/entry/exception/debug/board.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/analyzer/move/entry/exception/debug/disabled.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/analyzer/itinerary/entry/exception/debug/disabled.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/analyzer/move/entry/exception/debug/occupied.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/analyzer/itinerary/entry/exception/debug/occupied.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/analyzer/move/entry/exception/debug/opening.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/analyzer/itinerary/entry/exception/debug/opening.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/analyzer/move/entry/exception/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/analyzer/itinerary/entry/exception/wrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/analyzer/move/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/analyzer/itinerary/exception/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/analyzer/move/exception/anchor.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/analyzer/itinerary/exception/anchor.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/analyzer/move/exception/debug.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/analyzer/itinerary/exception/debug.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/analyzer/move/visit/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/analyzer/itinerary/visit/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/analyzer/move/visit/controller.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/analyzer/itinerary/visit/controller.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/analyzer/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/analyzer/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/analyzer/move/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/analyzer/itinerary/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/analyzer/move/board/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/analyzer/itinerary/board/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/analyzer/move/board/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/analyzer/itinerary/board/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/analyzer/move/disabled/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/analyzer/itinerary/disabled/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/analyzer/move/disabled/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/analyzer/itinerary/disabled/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/analyzer/move/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/analyzer/itinerary/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/report/itinerary/approve/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/report/itinerary/approve/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/report/itinerary/approve/attack/report.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/report/itinerary/approve/attack/report.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,22 +91,22 @@
     "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/err/validation/itinerary/consistency",
+    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/report/itinerary/approve",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "editor.preferences.tabs",
+    "settings.editor.selected.configurable": "editor.preferences.completion",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/report/itinerary/approve" />
       <recent name="$PROJECT_DIR$/src/err/validation/itinerary/consistency" />
       <recent name="$PROJECT_DIR$/src/err/validation/itinerary/consistency/source" />
       <recent name="$PROJECT_DIR$/src/err/validation/itinerary" />
       <recent name="$PROJECT_DIR$/src/err/validation/itinerary/same" />
-      <recent name="$PROJECT_DIR$/src/err/validation" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/report/move" />
@@ -817,7 +832,7 @@
       <workItem from="1781010206472" duration="18170000" />
       <workItem from="1781058030612" duration="792000" />
       <workItem from="1781074987396" duration="713000" />
-      <workItem from="1781166237647" duration="30250000" />
+      <workItem from="1781166237647" duration="38866000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />
@@ -1138,11 +1153,6 @@
           <url>file://$PROJECT_DIR$/src/report/promotion/analyzer/__init__.py</url>
           <line>14</line>
           <option name="timeStamp" value="189" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/src/report/itinerary/__init__.py</url>
-          <line>11</line>
-          <option name="timeStamp" value="190" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/src/model/itenerary/model.py</url>

@@ -11,6 +11,7 @@ version: 1.0.1
 
 # Packages
 from .attack import *
+from .check import *
 from .peace import *
 
 # Modules

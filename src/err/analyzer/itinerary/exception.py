@@ -14,18 +14,18 @@ from err import AnalyzerException
 from result import MethodResultType
 
 __all__ = [
-    # ======================# MOVE_PERMISSION_ANALYZER_ERROR #======================#
-    "MovePermissionAnalyzerException",
+    # ======================# ITINERARY_ANALYZER_FAILURE #======================#
+    "ItineraryAnalyzerException",
 ]
 
-# ======================# MOVE_PERMISSION_ANALYZER_ERROR #======================#
-class MovePermissionAnalyzerException(AnalyzerException):
+# ======================# ITINERARY_ANALYZER_FAILURE #======================#
+class ItineraryAnalyzerException(AnalyzerException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an error occurred during a token's move permission analysis.
+        1.  Indicate that an error occurred during an itinerary analysis.
 
     Attributes:
         var: Optional[str]
@@ -41,8 +41,8 @@ class MovePermissionAnalyzerException(AnalyzerException):
     Super Class:
         AnalyzerException
     """
-    MSG = "Error occurred during a token's move permission analysis."
-    ERR_CODE = "MOVE_PERMISSION_ANALYZER_ERROR"
+    MSG = "An error prevented the itinerary analysis from completing"
+    ERR_CODE = "ITINERARY_ANALYZER_FAILURE"
     MTHD_RSLT_TYPE = MethodResultType.ANALYSIS_RESULT
     
     def __init__(
