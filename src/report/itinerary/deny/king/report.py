@@ -1,7 +1,7 @@
-# src/report/itinerary/deny/checked/__init__.py
+# src/report/itinerary/deny/checked/report.py
 
 """
-Module: report.itinerary.deny.checked.__init__
+Module: report.itinerary.deny.checked.report
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -15,14 +15,13 @@ from report import ItineraryDenialReport
 
 
 @dataclass
-class KingItineraryChecked(ItineraryDenialReport):
+class KingSafetyViolation(ItineraryDenialReport):
     """
     Role:
         -   Test results
 
     Responsibilities:
-        1.  Provide details about an enemy who could reach the king if it itineraryd to
-            the destination.
+        1.  Provide details an itinerary that was denied because it would put a King in in check.
         
     Attributes:
         id: int
@@ -54,7 +53,7 @@ class KingItineraryChecked(ItineraryDenialReport):
     def __eq__(self, other):
         if other is self: return True
         if other is None: return False
-        if isinstance(other, KingItineraryChecked):
+        if isinstance(other, KingSafetyViolation):
             return (
                     super().__eq__(other) and
                     self.check_holder == other.check_holder and

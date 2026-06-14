@@ -33,11 +33,14 @@ class ItineraryAssembler(Assembler[Itinerary]):
         method = f"{cls.__name__}.execute"
         return BuildResult.success(
             Itinerary(
+                id=blueprint.id,
                 source=blueprint.source,
                 token=blueprint.token,
                 destination=blueprint.destination,
             )
         )
+    
+    
     
 
         

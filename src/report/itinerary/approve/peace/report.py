@@ -16,7 +16,7 @@ from report import ItineraryApprovalReport
 
 
 @dataclass
-class PeaceItineraryApproval(ItineraryApprovalReport):
+class ManeuverItineraryApproval(ItineraryApprovalReport):
     """
     Role:
         -   Test results
@@ -42,7 +42,7 @@ class PeaceItineraryApproval(ItineraryApprovalReport):
     def __eq__(self, other):
         if other is self: return True
         if other is None: return False
-        if isinstance(other, PeaceItineraryApproval):
+        if isinstance(other, ManeuverItineraryApproval):
             return (
                     super().__eq__(other) and
                     self.cost == other.cost and

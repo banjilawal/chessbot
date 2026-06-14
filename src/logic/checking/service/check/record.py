@@ -87,6 +87,6 @@ class CheckRecord:
         )
     
     def __repr__(self):
-        return (f"<KingCheckRecord poster_id={self._poster_id} poster_name={self._poster_name} "
+        return (f"<KingCheckEvent poster_id={self._poster_id} poster_name={self._poster_name} "
                 f"poster_position={self._poster_position} king_id={self._king_id} king_name={self._king_name} "
                 f"king_position={self._king_position}>")

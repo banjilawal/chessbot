@@ -13,4 +13,4 @@ version: 1.0.1
 # Packages
 
 # Modules
-from .report import EnemyKingAttackItineraryApproval
+from .report import KingAttackApproval

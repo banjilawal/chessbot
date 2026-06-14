@@ -16,7 +16,7 @@ from report import ItineraryApprovalReport
 
 
 @dataclass
-class EnemyKingAttackItineraryApproval(ItineraryApprovalReport):
+class KingAttackApproval(ItineraryApprovalReport):
     """
     Role:
         -   Test results
@@ -55,7 +55,7 @@ class EnemyKingAttackItineraryApproval(ItineraryApprovalReport):
     def __eq__(self, other):
         if other is self: return True
         if other is None: return False
-        if isinstance(other, EnemyKingAttackItineraryApproval):
+        if isinstance(other, KingAttackApproval):
             return (
                 super().__eq__(other) and
                 self.priority == other.priority and

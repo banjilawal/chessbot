@@ -13,4 +13,3 @@ version: 1.0.0
 from .build import *
 
 # Modules
-from .record import KingCheckRecord

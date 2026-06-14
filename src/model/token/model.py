@@ -175,8 +175,13 @@ class Token(ABC):
     def set_rank(self, rank: Rank) -> None:
         self._rank = rank
     
+    def is_friend(self, token: Token) -> bool:
+        return self._team == token.team
+    
     def is_enemy(self, token: Token) -> bool:
-        return self._team != token.team
+        return not self.is_friend(token)
+    
+
     
     def __eq__(self, other: object) -> bool:
         if other is self: return True

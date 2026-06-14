@@ -28,6 +28,7 @@ class ItineraryBlueprint(Blueprint[Itinerary]):
     Attributes:
         token: Token
         destination: Square
+        id: Optional[int]
         source: Optional[Square]
 
         null_exception: ItineraryNullException
@@ -40,6 +41,7 @@ class ItineraryBlueprint(Blueprint[Itinerary]):
      """
     token: Token
     destination: Square
+    id: Optional[int] = None
     source: Optional[Square] = None
 
     null_exception: ItineraryNullException = ItineraryNullException()

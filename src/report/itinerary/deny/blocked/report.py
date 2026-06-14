@@ -15,7 +15,7 @@ from report import ItineraryDenialReport
 
 
 @dataclass
-class BlockedItinerary(ItineraryDenialReport):
+class BlockingReport(ItineraryDenialReport):
     """
     Role:
         -   Test results
@@ -45,7 +45,7 @@ class BlockedItinerary(ItineraryDenialReport):
     def __eq__(self, other):
         if other is self: return True
         if other is None: return False
-        if isinstance(other, BlockedItinerary):
+        if isinstance(other, BlockingReport):
             return (
                     super().__eq__(other) and
                     self.friendly == other.friendly and

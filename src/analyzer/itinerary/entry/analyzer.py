@@ -8,6 +8,8 @@ version: 1.0.1
 """
 
 from __future__ import annotations
+
+from crypt import methods
 from typing import cast
 
 
@@ -17,8 +19,8 @@ from err import ItineraryAnalyzerException
 from result import AnalysisResult, MethodResultType
 from model import CombatantToken, Itinerary, KingToken
 from report import (
-    AttackItineraryApproval, BlockedItinerary, EnemyKingAttackItineraryApproval, ItineraryReport,
-    PeaceItineraryApproval
+    AttackApproval, BlockingReport, KingAttackApproval, ItineraryReport,
+    ManeuverItineraryApproval
 )
 
 
@@ -92,45 +94,87 @@ class ItineraryAnalyzer:
                     ex=validation_result.exception,
                 )
             )
-        # Handle the case that, the destination is empty.
+        # Handle the case that, the destination is not occupied.
         if itinerary.destination.is_empty:
             return AnalysisResult.completed(
-                PeaceItineraryApproval(
+                ManeuverItineraryApproval(
                     recipient=itinerary.token,
                     origin=itinerary.source,
                     destination=itinerary.destination,
                 )
             )
-        # Handle the case that, the destination is blocked by a friendly.
-        destination = itinerary.destination
+        # Otherwise, produce a report for an occupied destination.
+        return cls._occupied_destination_analyzer(itinerary)
         
-        if destination.is_occupied and not itinerary.token.is_enemy(destination.occupant):
+    @classmethod
+    @LoggingLevelRouter.monitor
+    def _occupied_destination_analyzer(
+            cls,
+            itinerary: Itinerary
+    ) -> AnalysisResult[ItineraryReport]:
+        """
+        Generate an itinerary report for an occupied destination.
+        
+        Action:
+            1.  If the destination's occupant is friendly, send a BlockedItinerary.
+        Args:
+            itinerary: Itinerary,
+        Returns:
+            AnalysisResult[AttackApproval|KingAttackApproval]
+        Raises:
+        """
+        method = f"{cls.__name__}._enemy_destination_analyzer"
+        destination_occupant = itinerary.destination.occupant
+        if itinerary.token.is_friend(destination_occupant):
             return AnalysisResult.completed(
-                BlockedItinerary(
+                BlockingReport(
+                    id=itinerary.id,
                     recipient=itinerary.token,
                     origin=itinerary.source,
                     blocked_destination=itinerary.destination,
-                    friendly=itinerary.destination.occupant,
+                    friendly=destination_occupant,
                 )
             )
-        if destination.is_occupied and itinerary.token.is_enemy(destination.occupant):
-            if isinstance(destination.occupant, CombatantToken):
-                enemy_combatant = cast(CombatantToken, destination.occupant)
-                return AnalysisResult.completed(
-                    AttackItineraryApproval(
-                        recipient=itinerary.token,
-                        origin=itinerary.source,
-                        target_square=itinerary.destination,
-                        enemy_combatant=enemy_combatant,
-                    )
+        return cls._enemy_destination_analyzer(itinerary=itinerary)
+    
+    @classmethod
+    @LoggingLevelRouter.monitor
+    def _enemy_destination_analyzer(
+            cls,
+            itinerary: Itinerary
+    ) -> AnalysisResult[ItineraryReport]:
+        """
+        Generate an itinerary report for an enemy destination.
+        Action:
+            1.  If the enemy is an EnemyCombatant send an AttackApproval.
+                Otherwise, send a KingAttackApproval.
+        Args:
+            itinerary: Itinerary,
+        Returns:
+            AnalysisResult[AttackApproval|KingAttackApproval]
+        Raises:
+        """
+        method = f"{cls.__name__}._enemy_destination_analyzer"
+        enemy = itinerary.destination.occupant
+        
+        # --- If the enemy is a combatant the work product is an AttackApproval. ---#
+        if isinstance(enemy, CombatantToken):
+            return AnalysisResult.completed(
+                AttackApproval(
+                    id=itinerary.id,
+                    recipient=itinerary.token,
+                    origin=itinerary.source,
+                    target_square=itinerary.destination,
+                    enemy_combatant=cast(CombatantToken, enemy),
                 )
-            if isinstance(destination.occupant, KingToken):
-                enemy_king = cast(KingToken, destination.occupant)
-                return AnalysisResult.completed(
-                    EnemyKingAttackItineraryApproval(
-                        recipient=itinerary.token,
-                        origin=itinerary.source,
-                        target_square=itinerary.destination,
-                        enemy_king=enemy_king,
-                    )
-                )
+            )
+        # --- Otherwise, a KingAttackApproval ---#
+        return AnalysisResult.completed(
+            KingAttackApproval(
+                id=itinerary.id,
+                recipient=itinerary.token,
+                origin=itinerary.source,
+                target_square=itinerary.destination,
+                enemy_king=cast(KingToken, enemy),
+            )
+        )
