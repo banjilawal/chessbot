@@ -1,7 +1,7 @@
-# src/err/validation/itinerary/consistency/destination/partial/exception.py
+# src/err/validation/itinerary/binding/partial/exception.py
 
 """
-Module: err.validation.itinerary.consistency.destination.partial.exception
+Module: err.validation.itinerary.binding.partial.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1

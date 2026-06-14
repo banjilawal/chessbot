@@ -1,7 +1,7 @@
-# src/err/validation/itinerary/consistency/destination/full/exception.py
+# src/err/validation/itinerary/binding/exception.py
 
 """
-Module: err.validation.itinerary.consistency.destination.full.exception
+Module: err.validation.itinerary.binding.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,23 +10,22 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import ItineraryConsistencyException
+from err import ItineraryValidationException
 from result import MethodResultType
 
 __all__ = [
-    # ======================# TOKEN_ALREADY_AT_DESTINATION_ERROR #======================#
-    "TokenAlreadyAtDestinationException",
+    # ======================# ITINERARY_CONSISTENCY_ERROR #======================#
+    "ItineraryConsistencyException",
 ]
 
-# ======================# TOKEN_ALREADY_AT_DESTINATION_ERROR #======================#
-class TokenAlreadyAtDestinationException(ItineraryConsistencyException):
+# ======================# ITINERARY_CONSISTENCY_ERROR #======================#
+class ItineraryConsistencyException(ItineraryValidationException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate an Itinerary's token has a full binding to the destination. This
-            means its already at the destination.
+        1.  Indicate an Itinerary's token has an inconsistency with either the source or destination.
 
     Attributes:
         msg: Optional[str]
@@ -41,10 +40,10 @@ class TokenAlreadyAtDestinationException(ItineraryConsistencyException):
     Provides:
 
     Super Class:
-        ItineraryConsistencyException
+        ItineraryValidationException
     """
-    MSG = "Token is already at the destination."
-    ERR_CODE = "TOKEN_ALREADY_AT_DESTINATION_ERROR"
+    MSG = "Inconsistency between the itinerary and an endpoint."
+    ERR_CODE = "ITINERARY_CONSISTENCY_ERROR"
     
     def __init__(
             self,

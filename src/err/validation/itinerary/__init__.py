@@ -10,7 +10,7 @@ version: 1.0.1
 # ============ ERR.VALIDATION.ITINERARY PACKAGE ===========#
 
 # Packages
-from .consistency import *
+from .binding import *
 from .same import *
 
 # Modules

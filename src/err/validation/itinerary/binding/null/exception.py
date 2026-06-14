@@ -1,7 +1,7 @@
-# src/err/validation/itinerary/consistency/exception.py
+# src/err/validation/itinerary/binding/null/exception.py
 
 """
-Module: err.validation.itinerary.consistency.exception
+Module: err.validation.itinerary.binding.null.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,22 +10,22 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import ItineraryValidationException
+from err import ItineraryConsistencyException
 from result import MethodResultType
 
 __all__ = [
-    # ======================# ITINERARY_CONSISTENCY_ERROR #======================#
-    "ItineraryConsistencyException",
+    # ======================# NO_SOURCE_TOKEN_BIDIRECTIONAL_RELATION_ERROR #======================#
+    "BidirectionalSourceTokenRelationException",
 ]
 
-# ======================# ITINERARY_CONSISTENCY_ERROR #======================#
-class ItineraryConsistencyException(ItineraryValidationException):
+# ======================# NO_SOURCE_TOKEN_BIDIRECTIONAL_RELATION_ERROR #======================#
+class BidirectionalSourceTokenRelationException(ItineraryConsistencyException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate an Itinerary's token has an inconsistency with either the source or destination.
+        1.  Indicate an Itinerary's token does not have a fully bidirectional relation with its source.
 
     Attributes:
         msg: Optional[str]
@@ -40,10 +40,10 @@ class ItineraryConsistencyException(ItineraryValidationException):
     Provides:
 
     Super Class:
-        ItineraryValidationException
+        ItineraryConsistencyException
     """
-    MSG = "Inconsistency between the itinerary and an endpoint."
-    ERR_CODE = "ITINERARY_CONSISTENCY_ERROR"
+    MSG = "Itinerary's token does not have bidirectional relation with source."
+    ERR_CODE = "NO_SOURCE_TOKEN_BIDIRECTIONAL_RELATION_ERROR"
     
     def __init__(
             self,

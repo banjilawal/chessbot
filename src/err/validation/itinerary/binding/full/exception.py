@@ -1,7 +1,7 @@
-# src/err/validation/itinerary/consistency/source/exception.py
+# src/err/validation/itinerary/binding/full/exception.py
 
 """
-Module: err.validation.itinerary.consistency.source.exception
+Module: err.validation.itinerary.binding.full.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -14,18 +14,19 @@ from err import ItineraryConsistencyException
 from result import MethodResultType
 
 __all__ = [
-    # ======================# NO_SOURCE_TOKEN_BIDIRECTIONAL_RELATION_ERROR #======================#
-    "BidirectionalSourceTokenRelationException",
+    # ======================# TOKEN_ALREADY_AT_DESTINATION_ERROR #======================#
+    "TokenAlreadyAtDestinationException",
 ]
 
-# ======================# NO_SOURCE_TOKEN_BIDIRECTIONAL_RELATION_ERROR #======================#
-class BidirectionalSourceTokenRelationException(ItineraryConsistencyException):
+# ======================# TOKEN_ALREADY_AT_DESTINATION_ERROR #======================#
+class TokenAlreadyAtDestinationException(ItineraryConsistencyException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate an Itinerary's token does not have a fully bidirectional relation with its source.
+        1.  Indicate an Itinerary's token has a full binding to the destination. This
+            means its already at the destination.
 
     Attributes:
         msg: Optional[str]
@@ -42,8 +43,8 @@ class BidirectionalSourceTokenRelationException(ItineraryConsistencyException):
     Super Class:
         ItineraryConsistencyException
     """
-    MSG = "Itinerary's token does not have bidirectional relation with source."
-    ERR_CODE = "NO_SOURCE_TOKEN_BIDIRECTIONAL_RELATION_ERROR"
+    MSG = "Token is already at the destination."
+    ERR_CODE = "TOKEN_ALREADY_AT_DESTINATION_ERROR"
     
     def __init__(
             self,
