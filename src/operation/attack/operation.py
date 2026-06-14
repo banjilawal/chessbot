@@ -1,7 +1,7 @@
-# src/operation/maneuver/operation.py
+# src/operation/attack/operation.py
 
 """
-Module: operation.maneuver.operation
+Module: operation.attack.operation
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -10,16 +10,12 @@ version: 1.0.1
 from __future__ import annotations
 from copy import deepcopy
 
-from err import ManeuverDestinationOccupiedException, ManeuverException, NullException
-from event import ManeuverEvent
-from model import  Square, SquareState, Token
-from report import ManeuverApproval
-from result import ManeuverResult, MethodResultType, UpdateResult
+from report import AttackApproval
 from util import LoggingLevelRouter
 from validation import ValidationPrimer
 
 
-class Maneuver:
+class Attack:
     """
     Role:
         - Transaction Worker
@@ -40,7 +36,7 @@ class Maneuver:
                     square: Square,
                     token_freedom_analyzer: TokenFreedomAnalyzer,
                     validation_primer: ValidationPrimer,
-            ) -> ManeuverResult:
+            ) -> AttackResult:
 
     Super Class:
     """
@@ -49,9 +45,9 @@ class Maneuver:
     @LoggingLevelRouter.monitor
     def execute(
             cls,
-            report: ManeuverApproval,
+            report: AttackApproval,
             validation_primer: ValidationPrimer | None = None,
-    ) -> ManeuverResult:
+    ) -> AttackResult:
         """
         Action:
             1.  Send the original square along with an exception chain in the validation result if:
@@ -64,10 +60,10 @@ class Maneuver:
             2.  Otherwise, each updates its state.
             3.  Send the success result.
         Args:
-            report: ManeuverItineraryApproval
+            report: AttackItineraryApproval
             validation_primer: ValidationPrimer
        Returns:
-            ManeuverResult
+            AttackResult
         Raises:
         """
         method = f"{cls.__class__.__name__}.execute"
@@ -78,34 +74,34 @@ class Maneuver:
         # Handle the case that, the itinerary is not valid.
         validation_result = validation_primer.validate(
             candidate=report,
-            target_type=ManeuverApproval,
+            target_type=AttackItineraryApproval,
             null_ex_cls=NullException,
         )
         if validation_result.is_failure:
             # Send the exception chain on failure.
-            return ManeuverResult.failure(
-                ManeuverException(
+            return AttackResult.failure(
+                AttackException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    msg=ManeuverException.MSG,
-                    err_code=ManeuverException.ERR_CODE,
-                    mthd_rslt_type=MethodResultType.MANEUVER_RESULT,
+                    msg=AttackException.MSG,
+                    err_code=AttackException.ERR_CODE,
+                    mthd_rslt_type=MethodResultType.ATTACK_RESULT,
                     ex=validation_result.exception,
                 )
             )
         # Handle the case that, the destination is not empty.
         if report.destination.is_occupied:
             # Send the exception chain on failure.
-            return ManeuverResult.failure(
-                ManeuverException(
+            return AttackResult.failure(
+                AttackException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    msg=ManeuverException.MSG,
-                    err_code=ManeuverException.ERR_CODE,
-                    mthd_rslt_type=MethodResultType.MANEUVER_RESULT,
-                    ex=ManeuverDestinationOccupiedException(
-                        msg=ManeuverDestinationOccupiedException.MSG,
-                        err_code=ManeuverDestinationOccupiedException.ERR_CODE,
+                    msg=AttackException.MSG,
+                    err_code=AttackException.ERR_CODE,
+                    mthd_rslt_type=MethodResultType.ATTACK_RESULT,
+                    ex=AttackDestinationOccupiedException(
+                        msg=AttackDestinationOccupiedException.MSG,
+                        err_code=AttackDestinationOccupiedException.ERR_CODE,
                     ),
                 )
             )
@@ -113,20 +109,20 @@ class Maneuver:
         arrival_result = cls._arrive(traveller=report.recipient, destination=report.destination, )
         if arrival_result.is_failure:
             # Send the exception chain on failure.
-            return ManeuverResult.failure(
-                ManeuverException(
+            return AttackResult.failure(
+                AttackException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    msg=ManeuverException.MSG,
-                    err_code=ManeuverException.ERR_CODE,
-                    mthd_rslt_type=MethodResultType.MANEUVER_RESULT,
+                    msg=AttackException.MSG,
+                    err_code=AttackException.ERR_CODE,
+                    mthd_rslt_type=MethodResultType.ATTACK_RESULT,
                     ex=arrival_result.exception,
                 )
             )
         departure_result = cls._depart(origin=report.origin,)
         
-        return ManeuverResult.success(
-            ManeuverEvent(
+        return AttackResult.success(
+            AttackEvent(
                 traveller=arrival_result.updated.occupant,
                 arrival_point=arrival_result.updated,
                 departure_point=departure_result.updated,
@@ -173,11 +169,11 @@ class Maneuver:
             # Send the exception chain on failure.
             return UpdateResult.update_failure(
                 original=pre_update_square,
-                exception=ManeuverException(
+                exception=AttackException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    msg=ManeuverException.MSG,
-                    err_code=ManeuverException.ERR_CODE,
+                    msg=AttackException.MSG,
+                    err_code=AttackException.ERR_CODE,
                     mthd_rslt_type=MethodResultType.UPDATE_RESULT,
                     ex=coord_insertion_result.exception,
                 )

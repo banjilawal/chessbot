@@ -18,7 +18,7 @@ from result import AnalysisResult, MethodResultType
 from model import CombatantToken, Itinerary, KingToken
 from report import (
     AttackApproval, BlockingReport, KingAttackApproval, ItineraryReport,
-    ManeuverItineraryApproval
+    ManeuverApproval
 )
 
 class ItineraryAnalyzer:
@@ -90,7 +90,7 @@ class ItineraryAnalyzer:
         # Handle the case that, the destination is not occupied.
         if itinerary.destination.is_empty:
             return AnalysisResult.completed(
-                ManeuverItineraryApproval(
+                ManeuverApproval(
                     recipient=itinerary.token,
                     origin=itinerary.source,
                     destination=itinerary.destination,

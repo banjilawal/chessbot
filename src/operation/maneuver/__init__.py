@@ -1,4 +1,4 @@
-# src/operation/square/entry/__init__.py
+# src/operation/maneuver/__init__.py
 
 """
 Module: operation.maneuver.__init__
@@ -10,7 +10,6 @@ version: 1.0.1
 # =========== OPERATION.MANEUVER PACKAGE ===========#
 
 # Packages
-from exception import *
 
 # Modules
 from .operation import Maneuver
