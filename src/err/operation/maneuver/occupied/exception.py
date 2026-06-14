@@ -11,20 +11,21 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from err import ManeuverException
+from result import MethodResultType
 
 __all__ = [
-    # ======================# SQUARE_NOT_EMPTY_ERROR #======================#
-    "SquareOccupiedException",
+    # ======================# MANEUVER_DESTINATION_ALREADY_OCCUPIED #======================#
+    "ManeuverDestinationOccupiedException",
 ]
 
-# ======================# SQUARE_NOT_EMPTY_ERROR #======================#
-class SquareOccupiedException(ManeuverException):
+# ======================# MANEUVER_DESTINATION_ALREADY_OCCUPIED #======================#
+class ManeuverDestinationOccupiedException(ManeuverException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a Square maneuveration failed because the destination was already occupied.
+        1.  Indicate that a token cannot maneuver because its destination is occupied.
 
     Attributes:
         msg: Optional[str]
@@ -34,36 +35,37 @@ class SquareOccupiedException(ManeuverException):
         cls_name: Optional[str]
         cls_mthd: Optional[str]
         err_code: Optional[str]
+        mthd_rslt_type: Optional[MethodResultType]
             
     Provides:
 
     Super Class:
         ManeuverException
     """
-    MSG = "The square cannot be maneuvered. It is already occupied."
-    ERR_CODE = "SQUARE_NOT_EMPTY_ERROR"
+    MSG = "Cannot maneuver a token to a destination that is already occupied."
+    ERR_CODE = "MANEUVER_DESTINATION_ALREADY_OCCUPIED"
     
     def __init__(
             self,
-            msg: Optional[str] | None = None,
+            msg: str = MSG,
+            err_code: str = ERR_CODE,
             var: Optional[str] | None = None,
             val: Optional[Any] | None = None,
-            cls_mthd: Optional[str] | None = None,
             cls_name: Optional[str] | None = None,
+            cls_mthd: Optional[str] | None = None,
             ex: Optional[Exception] | None = None,
-            err_code: Optional[str] | None = None,
-            Mthd_rslt_Type: optional[methodResultType] | None = none,
+            mthd_rslt_type: Optional[MethodResultType] | None = None,
     ):
         """
-        args:
-            Msg: Optional[str]
-            Var: Optional[str]
-            val: Optional[any]
-            ex: optional[Exception]
-            cls_name: optional[Str]
-            cls_mthd: optional[str]
-            err_code: optional[str]
-            mthd_rslt_type: optional[methodResultType]
+            Args:
+            msg: str
+            err_code: str
+            var: Optional[str]
+            val: Optional[Any]
+            cls_name: Optional[str]
+            cls_mthd: Optional[str]
+            ex: Optional[Exception]
+            mthd_rslt_type: Optional[MethodResultType]
         """
         msg = msg or self.MSG
         err_code = err_code or self.ERR_CODE

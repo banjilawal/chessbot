@@ -5,37 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/err/operation/maneuver/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/operation/maneuver/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/operation/maneuver/occupied/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/operation/maneuver/occupied/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/event/maneuver/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/event/maneuver/event.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/operation/maneuver/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/operation/maneuver/exception/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/operation/maneuver/exception/debug/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/operation/maneuver/exception/debug/board.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/operation/maneuver/exception/debug/disabled.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/operation/maneuver/exception/debug/occupied.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/operation/maneuver/exception/debug/opening.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/operation/maneuver/exception/wrapper.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/operation/maneuver/operation.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/result/maneuver/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/result/maneuver/result.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/result/maneuver/state.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/analyzer/freedom/analyzer.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/analyzer/freedom/analyzer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/analyzer/itinerary/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/analyzer/itinerary/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/analyzer/itinerary/disabled/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/maneuver/disability/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/analyzer/itinerary/disabled/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/maneuver/disability/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/operation/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/operation/visit/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/visit/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/event/check/event.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/event/check/event.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/event/event.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/event/event.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/priming/assembly/itinerary/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/priming/assembly/itinerary/operation.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/square/entry/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/square/entry/operation.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/validation/itinerary/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/validation/itinerary/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/maneuver/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/maneuver/operation.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -831,7 +802,7 @@
       <workItem from="1781058030612" duration="792000" />
       <workItem from="1781074987396" duration="713000" />
       <workItem from="1781166237647" duration="41439000" />
-      <workItem from="1781391224653" duration="42994000" />
+      <workItem from="1781391224653" duration="47799000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />

@@ -11,6 +11,7 @@ version: 1.0.1
 
 # Packages
 from .disability import *
+from .occupied import *
 
 # Modules
 from .exception import ManeuverException
