@@ -1,7 +1,7 @@
-# src/err/operation/visit/exception.py
+# src/err/operation/maneuver/exception.py
 
 """
-Module: err.operation.visit.exception
+Module: err.operation.maneuver.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -14,18 +14,18 @@ from err import OperationException
 from result import MethodResultType
 
 __all__ = [
-    # ======================# SQUARE_VISIT_FAILURE #======================#
-    "SquareVisitException",
+    # ======================# MANEUVER_FAILURE #======================#
+    "ManeuverException",
 ]
 
-# ======================# SQUARE_VISIT_FAILURE #======================#
-class SquareVisitException(OperationException):
+# ======================# MANEUVER_FAILURE #======================#
+class ManeuverException(OperationException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a square visit failed.
+        1.  Indicate that a maneuver failed.
 
     Attributes:
         msg: Optional[str]
@@ -41,8 +41,8 @@ class SquareVisitException(OperationException):
     Super Class:
         OperationException
     """
-    MSG = "square visit failed."
-    ERR_CODE = "SQUARE_VISIT_FAILURE"
+    MSG = "Maneuver failed."
+    ERR_CODE = "MANEUVER_FAILURE"
     
     def __init__(
             self,

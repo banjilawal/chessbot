@@ -1,7 +1,7 @@
-# src/err/analyzer/move/disabled/exception.py
+# src/err/operation/maneuver/disability/exception.py
 
 """
-Module: err.analyzer.move.disabled.exception
+Module: err.operation.maneuver.disability.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,22 +10,22 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import ItineraryAnalyzerException
+from err import ManeuverException
 from result import MethodResultType
 
 __all__ = [
-    # ======================# DISABLED_TOKEN_CANNOT_MOVE_ERROR #======================#
-    "DisabledTokenTravelerException",
+    # ======================# MANEUVERING_DISABLED_TOKEN_ERROR #======================#
+    "DisabledTokenManeuverException",
 ]
 
-# ======================# DISABLED_TOKEN_CANNOT_MOVE_ERROR #======================#
-class DisabledTokenTravelerException(ItineraryAnalyzerException):
+# ======================# MANEUVERING_DISABLED_TOKEN_ERROR #======================#
+class DisabledTokenManeuverException(ManeuverException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a token cannot move because it is not free.
+        1.  Indicate that a token cannot maneuver because its either not on the board or checkmated..
 
     Attributes:
         msg: Optional[str]
@@ -40,10 +40,10 @@ class DisabledTokenTravelerException(ItineraryAnalyzerException):
     Provides:
 
     Super Class:
-        MovePermissionAnalyzerException
+        ManeuverException
     """
-    MSG = "A disabled token cannot move."
-    ERR_CODE = "DISABLED_TOKEN_CANNOT_MOVE_ERROR"
+    MSG = "Cannot move a disabled token."
+    ERR_CODE = "MANEUVERING_DISABLED_TOKEN_ERROR"
     
     def __init__(
             self,

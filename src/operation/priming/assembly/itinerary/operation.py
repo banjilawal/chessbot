@@ -13,7 +13,7 @@ from typing import cast
 from blueprint import ItineraryBlueprint
 from controller import WorkerRegistryController
 from err import (
-    DisabledTokenTravelerException, InconsistentStateException, ItineraryAssemblyPrimerException,
+    DisabledTokenManeuverException, InconsistentStateException, ItineraryAssemblyPrimerException,
     SquareNotFoundSearchException, StaleTokenLinkException, TokenAlreadyAtDestinationException
 )
 from model import Itinerary, SquareContext
@@ -112,9 +112,9 @@ class ItineraryAssemblyPrimer(AssemblyPrimer[Itinerary]):
                     msg=ItineraryAssemblyPrimerException.MSG,
                     err_code=ItineraryAssemblyPrimerException.ERR_CODE,
                     mthd_rslt_type=MethodResultType.VALIDATION_RESULT,
-                    ex=DisabledTokenTravelerException(
-                        msg=DisabledTokenTravelerException.MSG,
-                        err_code=DisabledTokenTravelerException.ERR_CODE,
+                    ex=DisabledTokenManeuverException(
+                        msg=DisabledTokenManeuverException.MSG,
+                        err_code=DisabledTokenManeuverException.ERR_CODE,
                     ),
                 )
             )

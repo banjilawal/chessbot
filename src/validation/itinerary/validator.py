@@ -12,8 +12,9 @@ from __future__ import annotations
 from typing import Any, cast
 
 from controller import WorkerRegistryController
-from err import ItinerarySourceEqualsDestinationException, ItineraryValidationException
+from err import DisabledTokenManeuverException, ItinerarySourceEqualsDestinationException, ItineraryValidationException
 from model import Itinerary
+from report import TokenFreedomReport
 from result import ValidationResult
 from toolkit import ItineraryToolkit
 from util import LoggingLevelRouter
@@ -132,8 +133,8 @@ class ItineraryValidator(Validator[Itinerary]):
                 )
             )
         # Handle the case that, the token fails a validation check.
-        token_validation_result = toolkit.token_validator.validate(itinerary.token)
-        if token_validation_result.is_failure:
+        freedom_analysis_result = toolkit.token_freedom_analyzer.analyze(itinerary.token)
+        if freedom_analysis_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 ItineraryValidationException(
@@ -141,7 +142,23 @@ class ItineraryValidator(Validator[Itinerary]):
                     cls_name=cls.__name__,
                     msg=ItineraryValidationException.MSG,
                     err_code=ItineraryValidationException.ERR_CODE,
-                    ex=token_validation_result.exception,
+                    ex=freedom_analysis_result.exception,
+                )
+            )
+        # Handle the case that, the token is not free.
+        report = cast(TokenFreedomReport, freedom_analysis_result.payload)
+        if report.token_is_not_free:
+            # Send the exception chain on failure.
+            return ValidationResult.failure(
+                ItineraryValidationException(
+                    cls_mthd=method,
+                    cls_name=cls.__name__,
+                    msg=ItineraryValidationException.MSG,
+                    err_code=ItineraryValidationException.ERR_CODE,
+                    ex=DisabledTokenManeuverException(
+                        msg=DisabledTokenManeuverException.MSG,
+                        err_code=DisabledTokenManeuverException.ERR_CODE,
+                    ),
                 )
             )
         # Handle the case that, the itinerary has an inconsistency.

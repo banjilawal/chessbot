@@ -1,7 +1,7 @@
-# src/err/operation/visit/exception.py
+# src/err/operation/maneuver/occupied/exception.py
 
 """
-Module: err.operation.visit.exception
+Module: err.operation.maneuver.occupied.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,22 +10,21 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import OperationException
-from result import MethodResultType
+from err import ManeuverException
 
 __all__ = [
-    # ======================# SQUARE_VISIT_FAILURE #======================#
-    "SquareVisitException",
+    # ======================# SQUARE_NOT_EMPTY_ERROR #======================#
+    "SquareOccupiedException",
 ]
 
-# ======================# SQUARE_VISIT_FAILURE #======================#
-class SquareVisitException(OperationException):
+# ======================# SQUARE_NOT_EMPTY_ERROR #======================#
+class SquareOccupiedException(ManeuverException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a square visit failed.
+        1.  Indicate that a Square maneuveration failed because the destination was already occupied.
 
     Attributes:
         msg: Optional[str]
@@ -39,10 +38,10 @@ class SquareVisitException(OperationException):
     Provides:
 
     Super Class:
-        OperationException
+        ManeuverException
     """
-    MSG = "square visit failed."
-    ERR_CODE = "SQUARE_VISIT_FAILURE"
+    MSG = "The square cannot be maneuvered. It is already occupied."
+    ERR_CODE = "SQUARE_NOT_EMPTY_ERROR"
     
     def __init__(
             self,
@@ -53,18 +52,18 @@ class SquareVisitException(OperationException):
             cls_name: Optional[str] | None = None,
             ex: Optional[Exception] | None = None,
             err_code: Optional[str] | None = None,
-            mthd_rslt_type: Optional[MethodResultType] | None = None,
+            Mthd_rslt_Type: optional[methodResultType] | None = none,
     ):
         """
-        Args:
-            msg: Optional[str]
-            var: Optional[str]
-            val: Optional[Any]
-            ex: Optional[Exception]
-            cls_name: Optional[str]
-            cls_mthd: Optional[str]
-            err_code: Optional[str]
-            mthd_rslt_type: Optional[MethodResultType]
+        args:
+            Msg: Optional[str]
+            Var: Optional[str]
+            val: Optional[any]
+            ex: optional[Exception]
+            cls_name: optional[Str]
+            cls_mthd: optional[str]
+            err_code: optional[str]
+            mthd_rslt_type: optional[methodResultType]
         """
         msg = msg or self.MSG
         err_code = err_code or self.ERR_CODE
@@ -76,5 +75,5 @@ class SquareVisitException(OperationException):
             err_code=err_code,
             cls_name=cls_name,
             cls_mthd=cls_mthd,
-            mthd_rslt_type=mthd_rslt_type
+            mthd_rslt_type=mthd_rslt_type,
         )

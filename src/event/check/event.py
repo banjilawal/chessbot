@@ -37,7 +37,6 @@ class KingCheckEvent(Event):
     Super Class:
         Event
     """
-    id: int
     issuer: Token
     issued_from: Square
     for_location: Square

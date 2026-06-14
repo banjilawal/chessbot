@@ -1,7 +1,7 @@
 # src/operation/square/entry/operation.py
 
 """
-Module: operation.square.entry.operation
+Module: operation.maneuver.operation
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -11,14 +11,17 @@ from __future__ import annotations
 from copy import deepcopy
 
 from logic.square import (
-    Square, SquareEntryException, SquareOccupiedException, SquareState, SquareValidator, SquareVisitorBoardException,
+    Square, ManeuverException, SquareOccupiedException, SquareState, ItineraryValidator, SquareVisitorBoardException,
     SquareVisitorDisabledException, WrongOpeningSquareException
 )
+
+from model import Itinerary
+from result import ManeuverResult, MethodResultType
 from util import LoggingLevelRouter, UpdateResult
 from model.token import Token, DeploymentState, TokenFreedomAnalyzer
 
 
-class SquareEntry:
+class Maneuver:
     """
     Role:
         - Transaction Worker
@@ -38,8 +41,8 @@ class SquareEntry:
                     token: Token,
                     square: Square,
                     token_freedom_analyzer: TokenFreedomAnalyzer,
-                    square_validator: SquareValidator,
-            ) -> UpdateResult[Square]:
+                    itinerary_validator: ItineraryValidator,
+            ) -> ManeuverResult:
 
     Super Class:
     """
@@ -48,11 +51,9 @@ class SquareEntry:
     @LoggingLevelRouter.monitor
     def execute(
             cls,
-            token: Token,
-            square: Square,
-            square_validator: SquareValidator | None = None,
-            token_freedom_analyzer: TokenFreedomAnalyzer | None = None,
-    ) -> UpdateResult[Square]:
+            itinerary: Itinerary,
+            itinerary_validator: ItineraryValidator | None = None,
+    ) -> ManeuverResult:
         """
         Action:
             1.  Send the original square along with an exception chain in the validation result if:
@@ -65,28 +66,36 @@ class SquareEntry:
             2.  Otherwise, each updates its state.
             3.  Send the success result.
         Args:
-            token: Token
-            square: Square
-            square_validator: SquareValidator
-            token_freedom_analyzer: TokenFreedomAnalyzer
-
+            itinerary: Itinerary
+            itinerary_validator: ItineraryValidator
        Returns:
-            UpdateResult[Square]
+            ManeuverResult
         Raises:
         """
         method = f"{cls.__class__.__name__}.execute"
         
-        if square_validator is None:
-            square_validator = SquareValidator()
-        if token_freedom_analyzer is None:
-            token_freedom_analyzer = TokenFreedomAnalyzer()
+        if itinerary_validator is None:
+            itinerary_validator = ItineraryValidator()
             
-        # Handle the case that, the
+        # Handle the case that, the itinerary is not valid.
+        validation_result = itinerary_validator.validate(itinerary)
+        if validation_result.is_failure:
+            # Send the exception chain on failure.
+            return ManeuverResult.failure(
+                ManeuverException(
+                    cls_mthd=method,
+                    op=ManeuverException.OP,
+                    msg=ManeuverException.MSG,
+                    err_code=ManeuverException.ERR_CODE,
+                    mthd_rslt_type=MethodResultType.MANEUVER_RESULT,
+                    ex=validation_result.exception,
+                )
+            )
         
         # Handle the case that, the square does not pass a security test.
         square_security_test_result = cls._run_square_tests(
             square=square,
-            square_validator=square_validator
+            itinerary_validator=itinerary_validator
         )
         if square_security_test_result.is_failure:
             return square_security_test_result
@@ -109,11 +118,11 @@ class SquareEntry:
             return deployment_test_result
         
         # --- Security tests are passed. Return the registration result to the caller. ---#
-        return cls._register_token_visit(square=square, token=token)
+        return cls._arrive(traveller=itinerary.token, destination=itinerary.destination,)
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def _register_token_visit(cls, square: Square, token: Token) -> UpdateResult[Square]:
+    def _arrive(cls, traveller: Token, destination: Square, ) -> UpdateResult[Square]:
         """
         Puts the token into the square.
 
@@ -126,46 +135,42 @@ class SquareEntry:
                     -   Each updates its state.
             3.  Send the success result.
         Args:
-            square: Square
-            token: Token
+            traveller: Token
+            destination: Square
         Returns:
             UpdateResult[Square]
         """
-        method = f"{cls.__name__}._register_token_visit"
+        method = f"{cls.__name__}._arrive"
         
         #  Make a deep copy of the square.
-        pre_update_square = deepcopy(square)
+        pre_update_square = deepcopy(destination)
         # --- Set the square side of the relationship. ---#
-        square.occupant = token
-        square.state = SquareState.OCCUPIED
+        destination.occupant = traveller
+        destination.state = SquareState.OCCUPIED
         
         # --- Push the square's coord onto the schema. ---#
-        coord_insertion_result = token.positions.push(square.coord)
+        coord_insertion_result = traveller.positions.push(destination.coord)
         
         # Handle the case that, the push failed
         if coord_insertion_result.is_failure:
             # Rollback the square.
-            square.occupant = None
-            square.state = SquareState.EMPTY
+            destination.occupant = None
+            destination.state = SquareState.EMPTY
             
             # Send the exception chain on failure.
             return UpdateResult.update_failure(
-                original=square,
-                exception=SquareEntryException(
+                original=pre_update_square,
+                exception=ManeuverException(
                     cls_mthd=method,
-                    op=SquareEntryException.OP,
-                    msg=SquareEntryException.MSG,
-                    err_code=SquareEntryException.ERR_CODE,
-                    mthd_rslt_type=SquareEntryException.MTHD_RSLT,
+                    op=ManeuverException.OP,
+                    msg=ManeuverException.MSG,
+                    err_code=ManeuverException.ERR_CODE,
+                    mthd_rslt_type=ManeuverException.MTHD_RSLT,
                     ex=coord_insertion_result.exception,
                 )
             )
-        # --- Update the token's deployment state. ---#
-        if token.deployment_state == DeploymentState.NOT_DEPLOYED:
-            token.deployment_state = DeploymentState.DEPLOYED
-            
         # --- Forward the work product to the caller. ---#
-        return UpdateResult.update_success(original=pre_update_square, updated=square)
+        return UpdateResult.update_success(original=pre_update_square, updated=destination)
     
     @classmethod
     @LoggingLevelRouter.monitor
@@ -174,7 +179,7 @@ class SquareEntry:
             token: Token,
             square: Square,
             token_freedom_analyzer: TokenFreedomAnalyzer,
-    ) -> UpdateResult[Square]:
+    ) -> ManeuverResult:
         """
         Tests if the token can enter the square.
 
@@ -188,9 +193,9 @@ class SquareEntry:
             square: Square
             token_freedom_analyzer: TokenFreedomAnalyzer
         Returns:
-            UpdateResult[Square]
+            ManeuverResult
         Raises:
-            SquareEntryException
+            ManeuverException
             SquareOccupiedException
         """
         method = f"{cls.__module__}._run_token_tests"
@@ -199,28 +204,28 @@ class SquareEntry:
         token_validation_result = token_freedom_analyzer.validator.search_service(candidate=token)
         if token_validation_result.is_failure:
             # Send the exception chain on failure.
-            return UpdateResult.update_failure(
+            return ManeuverResult.failure(
                 original=square,
-                exception=SquareEntryException(
+                exception=ManeuverException(
                     cls_mthd=method,
-                    op=SquareEntryException.OP,
-                    msg=SquareEntryException.MSG,
-                    err_code=SquareEntryException.ERR_CODE,
-                    mthd_rslt_type=SquareEntryException.MTHD_RSLT,
+                    op=ManeuverException.OP,
+                    msg=ManeuverException.MSG,
+                    err_code=ManeuverException.ERR_CODE,
+                    mthd_rslt_type=ManeuverException.MTHD_RSLT,
                     ex=token_validation_result.exception,
                 )
             )
         # Handle the case that, the token belongs to a different board
         if token.team.board != square.board:
             # Send the exception chain on failure.
-            return UpdateResult.update_failure(
+            return ManeuverResult.failure(
                 original=square,
-                exception=SquareEntryException(
+                exception=ManeuverException(
                     cls_mthd=method,
-                    op=SquareEntryException.OP,
-                    msg=SquareEntryException.MSG,
-                    err_code=SquareEntryException.ERR_CODE,
-                    mthd_rslt_type=SquareEntryException.MTHD_RSLT,
+                    op=ManeuverException.OP,
+                    msg=ManeuverException.MSG,
+                    err_code=ManeuverException.ERR_CODE,
+                    mthd_rslt_type=ManeuverException.MTHD_RSLT,
                     ex=SquareVisitorBoardException(
                         msg=SquareVisitorBoardException.MSG,
                         err_code=SquareVisitorBoardException.ERR_CODE,
@@ -230,14 +235,14 @@ class SquareEntry:
         # Handle the case that, the occupant is disabled
         if token.is_disabled:
             # Send the exception chain on failure.
-            return UpdateResult.update_failure(
+            return ManeuverResult.failure(
                 original=square,
-                exception=SquareEntryException(
+                exception=ManeuverException(
                     cls_mthd=method,
-                    op=SquareEntryException.OP,
-                    msg=SquareEntryException.MSG,
-                    err_code=SquareEntryException.ERR_CODE,
-                    mthd_rslt_type=SquareEntryException.MTHD_RSLT,
+                    op=ManeuverException.OP,
+                    msg=ManeuverException.MSG,
+                    err_code=ManeuverException.ERR_CODE,
+                    mthd_rslt_type=ManeuverException.MTHD_RSLT,
                     ex=SquareVisitorDisabledException(
                         msg=SquareVisitorDisabledException.MSG,
                         err_code=SquareVisitorDisabledException.ERR_CODE,
@@ -252,8 +257,8 @@ class SquareEntry:
     def _run_square_tests(
             cls,
             square: Square,
-            square_validator: SquareValidator
-    ) -> UpdateResult[Square]:
+            itinerary_validator: ItineraryValidator
+    ) -> ManeuverResult:
         """
         Tests if the square can be visited.
         
@@ -264,41 +269,41 @@ class SquareEntry:
             2.  Otherwise, send the success result.
         Args:
             square: Square
-            square_validator: SquareValidator
+            itinerary_validator: ItineraryValidator
         Returns:
-            UpdateResult[Square]
+            ManeuverResult
         Raises:
-            SquareEntryException
+            ManeuverException
             SquareOccupiedException
         """
         method = f"{cls.__module__}._run_square_tests"
         
         # Handle the case that, the squareis not safe.
-        square_validation_result = square_validator.validate(square)
+        square_validation_result = itinerary_validator.validate(square)
         if square_validation_result.is_failure:
             # Send the exception chain on failure.
-            return UpdateResult.update_failure(
+            return ManeuverResult.failure(
                 original=square,
-                exception=SquareEntryException(
+                exception=ManeuverException(
                     cls_mthd=method,
-                    op=SquareEntryException.OP,
-                    msg=SquareEntryException.MSG,
-                    err_code=SquareEntryException.ERR_CODE,
-                    mthd_rslt_type=SquareEntryException.MTHD_RSLT,
+                    op=ManeuverException.OP,
+                    msg=ManeuverException.MSG,
+                    err_code=ManeuverException.ERR_CODE,
+                    mthd_rslt_type=ManeuverException.MTHD_RSLT,
                     ex=square_validation_result.exception,
                 )
             )
         # Handle the case that, the square is already occupied.
         if square.is_occupied:
             # Send the exception chain on failure.
-            return UpdateResult.update_failure(
+            return ManeuverResult.failure(
                 original=square,
-                exception=SquareEntryException(
+                exception=ManeuverException(
                     cls_mthd=method,
-                    op=SquareEntryException.OP,
-                    msg=SquareEntryException.MSG,
-                    err_code=SquareEntryException.ERR_CODE,
-                    mthd_rslt_type=SquareEntryException.MTHD_RSLT,
+                    op=ManeuverException.OP,
+                    msg=ManeuverException.MSG,
+                    err_code=ManeuverException.ERR_CODE,
+                    mthd_rslt_type=ManeuverException.MTHD_RSLT,
                     ex=SquareOccupiedException(
                         msg=SquareOccupiedException.MSG,
                         err_code=SquareOccupiedException.ERR_CODE,
@@ -315,7 +320,7 @@ class SquareEntry:
             cls,
             token: Token,
             square: Square,
-    ) -> UpdateResult[Square]:
+    ) -> ManeuverResult:
         """
         Tests if  new tokens are deployed to the correct square.
         
@@ -329,7 +334,7 @@ class SquareEntry:
         Returns:
             ValidationResult[Square]
         Raises:
-            SquareEntryException
+            ManeuverException
             WrongOpeningSquareException
         """
         method = f"{cls.__name__}_run_deployment_tests"
@@ -341,14 +346,14 @@ class SquareEntry:
         # Handle the case that, the token should open on a different square.
         if square.name.upper() != token.opening_square_name.upper():
             # Send the exception chain on failure.
-            return UpdateResult.update_failure(
+            return ManeuverResult.failure(
                 original=square,
-                exception=SquareEntryException(
+                exception=ManeuverException(
                     cls_mthd=method,
-                    op=SquareEntryException.OP,
-                    msg=SquareEntryException.MSG,
-                    err_code=SquareEntryException.ERR_CODE,
-                    mthd_rslt_type=SquareEntryException.MTHD_RSLT,
+                    op=ManeuverException.OP,
+                    msg=ManeuverException.MSG,
+                    err_code=ManeuverException.ERR_CODE,
+                    mthd_rslt_type=ManeuverException.MTHD_RSLT,
                     ex=WrongOpeningSquareException(
                         msg=WrongOpeningSquareException.MSG,
                         err_code=WrongOpeningSquareException.ERR_CODE

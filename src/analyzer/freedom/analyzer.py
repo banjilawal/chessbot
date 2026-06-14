@@ -12,6 +12,7 @@ from __future__ import annotations
 from typing import cast
 
 from analyzer import Analyzer
+from err import TokenFreedomAnalyzerException
 from model import CombatantToken, KingToken, Token
 from report import TokenFreedomReport
 from result import AnalysisResult
@@ -66,7 +67,7 @@ class TokenFreedomAnalyzer(Analyzer):
         Returns:
               AnalysisResult[TokenFreedomReport]
         Raises:
-            TokenFreedomAnalysisException
+            TokenFreedomAnalyzerException
         """
         method = f"{cls.__name__}.analyze"
         
@@ -75,16 +76,16 @@ class TokenFreedomAnalyzer(Analyzer):
             token_validator = TokenValidator()
         
         # Handle the case that, the token does not pass a validation check.
-        validation_result = token_validator.validate(candidate=token)
+        validation_result = token_validator.validate(token)
         # Send the exception chain on failure.
         if validation_result.is_failure:
             return AnalysisResult.failure(
-                TokenFreedomAnalysisException(
+                TokenFreedomAnalyzerException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    msg=TokenFreedomAnalysisException.MSG,
-                    err_code=TokenFreedomAnalysisException.ERR_CODE,
-                    mthd_rslt_type=TokenFreedomAnalysisException.MTHD_RSLT,
+                    msg=TokenFreedomAnalyzerException.MSG,
+                    err_code=TokenFreedomAnalyzerException.ERR_CODE,
+                    mthd_rslt_type=TokenFreedomAnalyzerException.MTHD_RSLT,
                     ex=validation_result.exception
                 )
             )
@@ -99,7 +100,10 @@ class TokenFreedomAnalyzer(Analyzer):
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def _analyze_combatant_freedom(cls, combatant: CombatantToken,) -> AnalysisResult[TokenFreedomReport]:
+    def _analyze_combatant_freedom(
+            cls,
+            combatant: CombatantToken,
+    ) -> AnalysisResult[TokenFreedomReport]:
         # Captured tokens are not free.
         if combatant.has_entered_hostage_process or combatant.recorded_as_hostage:
             return AnalysisResult.success(TokenFreedomReport.captured(combatant))
@@ -111,7 +115,10 @@ class TokenFreedomAnalyzer(Analyzer):
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def _analyze_king_freedom(cls, king: KingToken) -> AnalysisResult[TokenFreedomReport]:
+    def _analyze_king_freedom(
+            cls,
+            king: KingToken
+    ) -> AnalysisResult[TokenFreedomReport]:
         # Checkmated kings are not free.
         if king.is_checkmated:
             return AnalysisResult.success(TokenFreedomReport.checkmated(king))

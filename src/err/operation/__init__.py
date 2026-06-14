@@ -15,6 +15,7 @@ from .primer import *
 from .build import *
 from .finalize import *
 from .math import *
+from .maneuver import *
 from .pop import *
 from .push import *
 from .registration import *

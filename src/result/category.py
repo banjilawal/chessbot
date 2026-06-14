@@ -17,5 +17,6 @@ class MethodResultType(Enum):
     INSERTION_RESULT = auto(),
     SEARCH_RESULT = auto(),
     UPDATE_RESULT = auto(),
-    VALIDATION_RESULT = auto()
+    VALIDATION_RESULT = auto(),
+    MANEUVER_RESULT = auto(),
     

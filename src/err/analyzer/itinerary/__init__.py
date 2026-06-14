@@ -11,7 +11,6 @@ version: 1.0.1
 
 # Packages
 from .board import *
-from .disabled import *
 
 # Modules
 from .exception import ItineraryAnalyzerException

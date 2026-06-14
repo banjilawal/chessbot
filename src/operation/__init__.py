@@ -15,7 +15,7 @@ from .priming import *
 from .finalize import *
 from .insertion import *
 from .math import *
-from .microservice import *
+from .maneuver import *
 from .stack import *
 from .token import *
 

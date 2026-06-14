@@ -7,10 +7,6 @@ Created: 2026-03-30
 version: 1.0.1
 """
 
-import logging
-
-log = logging.getLogger("chessbot")
-
 # =========== RESULT PACKAGE ===========#
 
 # Packages
@@ -19,6 +15,7 @@ from .build import *
 from .computation import *
 from .deletion import *
 from .insertion import *
+from maneuver import *
 from .search import *
 from .update import *
 from .validation import*

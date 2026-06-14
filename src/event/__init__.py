@@ -12,6 +12,7 @@ version: 1.0.1
 
 # Packages
 from .check import *
+from .maneuver import *
 
 # Modules
 from .event import Event
