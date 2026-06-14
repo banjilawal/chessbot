@@ -27,6 +27,7 @@ class ItineraryApprovalReport(ABC, ItineraryReport):
         1.  Details a token needs to visit a Square.
         
     Attributes:
+        id: int
         origin: Square
         recipient: Token
         destination: Square
@@ -36,6 +37,11 @@ class ItineraryApprovalReport(ABC, ItineraryReport):
     Super Class:
         Report
     """
-    origin: Square
-    recipient: Token
     destination: Square
+    
+    def __eq__(self, other):
+        if other is self: return True
+        if other is None: return False
+        if isinstance(other, ItineraryApprovalReport):
+            return super().__eq__(other)
+        return False

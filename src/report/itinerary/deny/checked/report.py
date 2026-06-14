@@ -25,17 +25,19 @@ class KingItineraryChecked(ItineraryDenialReport):
             the destination.
         
     Attributes:
-        origin: Square
+        id: int
         recipient: KingToken
         checked_square: Square
         check_holder: Token
+        
+        enemy_team: Team
+        recipient_team: Team
         
     Provides:
 
     Super Class:
         ItineraryDenialReport
     """
-    origin: Square
     recipient: KingToken
     checked_square: Square
     check_holder: Token

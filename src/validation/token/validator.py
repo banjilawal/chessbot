@@ -36,7 +36,8 @@ class TokenValidator(Validator[Token]):
     Attributes:
 
     Provides:
-        -   def validate(candidate: Any, toolkit: TokenToolkit) -> ValidationResult[Token]:
+        -   def validate(
+                candidate: Any, toolkit: TokenToolkit) -> ValidationResult[Token]:
 
     Super Class:
         Validator

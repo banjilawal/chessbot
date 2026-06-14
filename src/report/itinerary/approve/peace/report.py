@@ -25,6 +25,7 @@ class PeaceItineraryApproval(ItineraryApprovalReport):
         1.  Details an empty square a token can occupy.
         
     Attributes:
+        id: int
         origin: Square
         recipient: Token
         destination: Square
@@ -35,7 +36,11 @@ class PeaceItineraryApproval(ItineraryApprovalReport):
     Super Class:
         Report
     """
-    origin: Square
-    recipient: Token
-    destination: Square
     cost: Optional[int] = None
+    
+    def __eq__(self, other):
+        if other is self: return True
+        if other is None: return False
+        if isinstance(other, ItineraryApprovalReport):
+            return super().__eq__(other)
+        return False

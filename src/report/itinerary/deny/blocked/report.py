@@ -24,6 +24,7 @@ class BlockedItinerary(ItineraryDenialReport):
         1.  Provide details about a itinerary that was blocked by a friendly already in the destination.
         
     Attributes:
+        id: int
         origin: Square
         recipient: Token
         blocked_destination: Square
@@ -34,8 +35,6 @@ class BlockedItinerary(ItineraryDenialReport):
     Super Class:
         ItineraryDenialReport
     """
-    origin: Square
-    recipient: Token
     blocked_destination: Square
     friendly: Token
     

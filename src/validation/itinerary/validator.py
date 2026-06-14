@@ -11,6 +11,7 @@ from __future__ import annotations
 
 from typing import Any, cast
 
+from controller import WorkerRegistryController
 from err import ItinerarySourceEqualsDestinationException, ItineraryValidationException
 from model import Itinerary
 from result import ValidationResult
@@ -161,3 +162,7 @@ class ItineraryValidator(Validator[Itinerary]):
             )
         # --- Forward the work product to the caller. ---#
         return ValidationResult.success(itinerary)
+
+
+# --- FINALLY: REGISTER THE OPERATION ---#
+WorkerRegistryController.register_worker(worker=ItineraryValidator)

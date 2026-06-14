@@ -18,7 +18,7 @@ from model import Square, Token
 
 
 @dataclass
-class ItineraryReport(ABC, Report):
+class ItineraryReport(Report):
     """
     Role:
         -   Test results
@@ -27,6 +27,7 @@ class ItineraryReport(ABC, Report):
         1.  Details a token needs to visit a Square.
         
     Attributes:
+        id: int
         origin: Square
         recipient: Token
         
@@ -35,5 +36,6 @@ class ItineraryReport(ABC, Report):
     Super Class:
         Report
     """
+    id: int
     origin: Square
     recipient: Token

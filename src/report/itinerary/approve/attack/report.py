@@ -25,6 +25,7 @@ class AttackItineraryApproval(ItineraryApprovalReport):
         1.  Details a token needs to capture an enemy combatant.
         
     Attributes:
+        id: int
         origin: Square
         recipient: Token
         target_square: Square
@@ -39,8 +40,6 @@ class AttackItineraryApproval(ItineraryApprovalReport):
     Super Class:
         Report
     """
-    origin: Square
-    recipient: Token
     target_square: Square
     enemy_combatant: CombatantToken
     priority: Optional[int] = None
@@ -52,3 +51,10 @@ class AttackItineraryApproval(ItineraryApprovalReport):
     @property
     def attacking_team(self) -> Team:
         return self.recipient.team
+    
+    def __eq__(self, other):
+        if other is self: return True
+        if other is None: return False
+        if isinstance(other, AttackItineraryApproval):
+            return super().__eq__(other)
+        return False

@@ -11,7 +11,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Optional
 
-from model import KingToken, Square, Team, Token
+from model import KingToken, Square, Team
 from report import ItineraryApprovalReport
 
 
@@ -25,6 +25,7 @@ class EnemyKingAttackItineraryApproval(ItineraryApprovalReport):
         1.  Details a token needs to check an  enemy king.
         
     Attributes:
+        id: int
         origin: Square
         recipient: Token
         target_square: Square
@@ -39,8 +40,6 @@ class EnemyKingAttackItineraryApproval(ItineraryApprovalReport):
     Super Class:
         Report
     """
-    origin: Square
-    recipient: Token
     target_square: Square
     enemy_king: KingToken
     priority: Optional[int] = None
@@ -52,3 +51,10 @@ class EnemyKingAttackItineraryApproval(ItineraryApprovalReport):
     @property
     def attacking_team(self) -> Team:
         return self.recipient.team
+    
+    def __eq__(self, other):
+        if other is self: return True
+        if other is None: return False
+        if isinstance(other, EnemyKingAttackItineraryApproval):
+            return super().__eq__(other)
+        return False

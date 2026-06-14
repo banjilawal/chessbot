@@ -18,7 +18,7 @@ from model import Square, Token
 
 
 @dataclass
-class ItineraryDenialReport(ABC, ItineraryReport):
+class ItineraryDenialReport(ItineraryReport):
     """
     Role:
         -   Test results
@@ -27,11 +27,12 @@ class ItineraryDenialReport(ABC, ItineraryReport):
         1.  Details about why a token was denied permission to occupy a square.
         
     Attributes:
+        id: int
         origin: Square
         recipient: Token
         
     Provides:
 
     Super Class:
-        ItineraryOrder
+        ItineraryReport
     """
