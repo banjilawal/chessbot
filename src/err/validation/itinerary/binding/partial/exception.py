@@ -15,11 +15,11 @@ from result import MethodResultType
 
 __all__ = [
     # ======================# PARTIAL_TOKEN_DESTINATION_RELATION_ERROR #======================#
-    "TokenDestinationPartialBindingException",
+    "PartialTokenDestinationBindingException",
 ]
 
 # ======================# PARTIAL_TOKEN_DESTINATION_RELATION_ERROR #======================#
-class TokenDestinationPartialBindingException(ItineraryConsistencyException):
+class PartialTokenDestinationBindingException(ItineraryConsistencyException):
     """
     Role:
         -   Error Tracing

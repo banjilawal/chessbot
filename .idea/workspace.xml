@@ -5,19 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/err/validation/itinerary/binding/full/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/validation/itinerary/binding/partial/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/validation/itinerary/consistency/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/validation/itinerary/consistency/destination/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/validation/itinerary/consistency/destination/validator.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/validation/itinerary/consistency/source/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/validation/itinerary/consistency/source/validator.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/validation/itinerary/consistency/validator.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/validation/itinerary/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/validation/itinerary/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/validation/itinerary/consistency/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/validation/itinerary/binding/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/validation/itinerary/consistency/destination/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/validation/itinerary/consistency/destination/full/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/validation/itinerary/consistency/destination/full/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/validation/itinerary/binding/full/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/validation/itinerary/consistency/destination/partial/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/validation/itinerary/consistency/destination/partial/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/validation/itinerary/binding/partial/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/validation/itinerary/consistency/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/validation/itinerary/binding/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/validation/itinerary/consistency/source/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/validation/itinerary/binding/null/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/validation/itinerary/consistency/source/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/validation/itinerary/binding/null/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/validation/itinerary/binding/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/validation/itinerary/binding/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/validation/itinerary/binding/partial/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/validation/itinerary/binding/partial/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/validation/itinerary/binding/partial/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/validation/itinerary/binding/partial/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validation/itinerary/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/validation/itinerary/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validation/itinerary/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/validation/itinerary/validator.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -70,7 +69,7 @@
     "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/err/validation/itinerary/consistency/destination",
+    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/validation/itinerary/consistency/destination",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
@@ -81,11 +80,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/validation/itinerary/consistency/destination" />
+      <recent name="$PROJECT_DIR$/src/validation/itinerary/consistency" />
+      <recent name="$PROJECT_DIR$/src/validation/itinerary/consistency/source" />
       <recent name="$PROJECT_DIR$/src/err/validation/itinerary/consistency/destination" />
       <recent name="$PROJECT_DIR$/src/report/itinerary/approve" />
-      <recent name="$PROJECT_DIR$/src/err/validation/itinerary/consistency" />
-      <recent name="$PROJECT_DIR$/src/err/validation/itinerary/consistency/source" />
-      <recent name="$PROJECT_DIR$/src/err/validation/itinerary" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/err/validation/itinerary/binding" />
@@ -812,7 +811,7 @@
       <workItem from="1781058030612" duration="792000" />
       <workItem from="1781074987396" duration="713000" />
       <workItem from="1781166237647" duration="41439000" />
-      <workItem from="1781391224653" duration="5392000" />
+      <workItem from="1781391224653" duration="7341000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />

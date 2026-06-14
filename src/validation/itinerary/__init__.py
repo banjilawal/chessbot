@@ -10,6 +10,7 @@ version: 1.0.1
 # =========== VALIDATION.ITINERARY PACKAGE ===========#
 
 # Packages
+from .consistency import *
 
 # Modules
 from .validator import ItineraryValidator
