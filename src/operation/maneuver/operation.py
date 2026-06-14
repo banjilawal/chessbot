@@ -10,18 +10,13 @@ version: 1.0.1
 from __future__ import annotations
 from copy import deepcopy
 
-from logic.square import (
-    Square, ManeuverException, SquareOccupiedException, SquareState, ItineraryValidator, SquareVisitorBoardException,
-    SquareVisitorDisabledException, WrongOpeningSquareException
-)
-from setuptools.msvc import msvc14_get_vc_env
-
-from err import ManeuverDestinationOccupiedException
+from err import ManeuverDestinationOccupiedException, ManeuverException, NullException
 from event import ManeuverEvent
-from model import Itinerary
-from result import ManeuverResult, MethodResultType
-from util import IdFactory, LoggingLevelRouter, UpdateResult
-from model.token import Token, DeploymentState, TokenFreedomAnalyzer
+from model import  Square, SquareState, Token
+from report import ManeuverItineraryApproval
+from result import ManeuverResult, MethodResultType, UpdateResult
+from util import LoggingLevelRouter
+from validation import ValidationPrimer
 
 
 class Maneuver:
@@ -44,7 +39,7 @@ class Maneuver:
                     token: Token,
                     square: Square,
                     token_freedom_analyzer: TokenFreedomAnalyzer,
-                    itinerary_validator: ItineraryValidator,
+                    validation_primer: ValidationPrimer,
             ) -> ManeuverResult:
 
     Super Class:
@@ -54,8 +49,8 @@ class Maneuver:
     @LoggingLevelRouter.monitor
     def execute(
             cls,
-            itinerary: Itinerary,
-            itinerary_validator: ItineraryValidator | None = None,
+            report: ManeuverItineraryApproval,
+            validation_primer: ValidationPrimer | None = None,
     ) -> ManeuverResult:
         """
         Action:
@@ -69,25 +64,29 @@ class Maneuver:
             2.  Otherwise, each updates its state.
             3.  Send the success result.
         Args:
-            itinerary: Itinerary
-            itinerary_validator: ItineraryValidator
+            report: ManeuverItineraryApproval
+            validation_primer: ValidationPrimer
        Returns:
             ManeuverResult
         Raises:
         """
         method = f"{cls.__class__.__name__}.execute"
         
-        if itinerary_validator is None:
-            itinerary_validator = ItineraryValidator()
+        if validation_primer is None:
+            validation_primer = ValidationPrimer()
             
         # Handle the case that, the itinerary is not valid.
-        validation_result = itinerary_validator.validate(itinerary)
+        validation_result = validation_primer.validate(
+            candidate=report,
+            target_type=ManeuverItineraryApproval,
+            null_ex_cls=NullException,
+        )
         if validation_result.is_failure:
             # Send the exception chain on failure.
             return ManeuverResult.failure(
                 ManeuverException(
                     cls_mthd=method,
-                    op=ManeuverException.OP,
+                    cls_name=cls.__name__,
                     msg=ManeuverException.MSG,
                     err_code=ManeuverException.ERR_CODE,
                     mthd_rslt_type=MethodResultType.MANEUVER_RESULT,
@@ -95,12 +94,12 @@ class Maneuver:
                 )
             )
         # Handle the case that, the destination is not empty.
-        if itinerary.destination.is_occupied:
+        if report.destination.is_occupied:
             # Send the exception chain on failure.
             return ManeuverResult.failure(
                 ManeuverException(
                     cls_mthd=method,
-                    op=ManeuverException.OP,
+                    cls_name=cls.__name__,
                     msg=ManeuverException.MSG,
                     err_code=ManeuverException.ERR_CODE,
                     mthd_rslt_type=MethodResultType.MANEUVER_RESULT,
@@ -111,20 +110,20 @@ class Maneuver:
                 )
             )
         # --- Security tests are passed. Return the registration result to the caller. ---#
-        arrival_result = cls._arrive(traveller=itinerary.token, destination=itinerary.destination,)
+        arrival_result = cls._arrive(traveller=report.recipient, destination=report.destination, )
         if arrival_result.is_failure:
             # Send the exception chain on failure.
             return ManeuverResult.failure(
                 ManeuverException(
                     cls_mthd=method,
-                    op=ManeuverException.OP,
+                    cls_name=cls.__name__,
                     msg=ManeuverException.MSG,
                     err_code=ManeuverException.ERR_CODE,
                     mthd_rslt_type=MethodResultType.MANEUVER_RESULT,
                     ex=arrival_result.exception,
                 )
             )
-        departure_result = cls._depart(source=itinerary.source,)
+        departure_result = cls._depart(origin=report.origin,)
         
         return ManeuverResult.success(
             ManeuverEvent(
@@ -136,7 +135,7 @@ class Maneuver:
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def _arrive(cls, traveller: Token, destination: Square, ) -> UpdateResult[Square]:
+    def _arrive(cls, traveller: Token, destination: Square,) -> UpdateResult[Square]:
         """
         Puts the token into the square.
 
@@ -176,10 +175,10 @@ class Maneuver:
                 original=pre_update_square,
                 exception=ManeuverException(
                     cls_mthd=method,
-                    op=ManeuverException.OP,
+                    cls_name=cls.__name__,
                     msg=ManeuverException.MSG,
                     err_code=ManeuverException.ERR_CODE,
-                    mthd_rslt_type=ManeuverException.MTHD_RSLT,
+                    mthd_rslt_type=MethodResultType.UPDATE_RESULT,
                     ex=coord_insertion_result.exception,
                 )
             )
@@ -188,25 +187,25 @@ class Maneuver:
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def _depart(cls, source: Square, ) -> UpdateResult[Square]:
+    def _depart(cls, origin: Square,) -> UpdateResult[Square]:
         """
         Remove the token from its source square.
 
         Action:
-            1.  Set the square occupant to None then update its state.
+            1.  Set the square occupant to null then update its state.
             2.  Send the success result.
         Args:
-            source: Square
+            origin: Square
         Returns:
             UpdateResult[Square]
         """
         method = f"{cls.__name__}._depart"
         
         #  Make a deep copy of the square.
-        pre_update_square = deepcopy(source)
+        pre_update_square = deepcopy(origin)
         # --- Remove the occupant. ---#
-        source.occupant = None
-        source.state = SquareState.EMPTY
+        origin.occupant = None
+        origin.state = SquareState.EMPTY
         
         # --- Forward the work product to the caller. ---#
-        return UpdateResult.update_success(original=pre_update_square, updated=source)
+        return UpdateResult.update_success(original=pre_update_square, updated=origin)
