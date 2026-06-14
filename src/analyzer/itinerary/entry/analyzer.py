@@ -58,15 +58,12 @@ class ItineraryAnalyzer:
     ) -> AnalysisResult[ItineraryReport]:
         """
         Action:
-            1.  Send the original square along with an exception chain in the validation result if:
-                    -   The square or token are insecure.
-                    -   The token is disabled
-                    -   The token belongs to a different board.
-                    -   The new token is being deployed to the wrong square.
-                    -   The square is already occupied.
-                    -   The square accepts the token but the token cannot update its position.
-            2.  Otherwise, each updates its state.
-            3.  Send the success result.
+            1.  Send an exception chain in the validation result if the itinerary is flagged.
+            2.  Otherwise, the analyzer produces one of the following products;
+                    -   A ManeuverItineraryApproval
+                    -   A BlockingReport
+                    -   An AttackApprovalReport
+                    -   A KingAttackApproval
         Args:
             itinerary: Itinerary,
             itinerary_validator: ItineraryValidator
@@ -116,15 +113,18 @@ class ItineraryAnalyzer:
         Generate an itinerary report for an occupied destination.
         
         Action:
-            1.  If the destination's occupant is friendly, send a BlockedItinerary.
+            1.  If the destination's occupant is friendly, send a BlockingReport. Otherwise,
+                call _enemy_destination_analyzer to get either an AttackApproval or KingAttackApproval.
         Args:
             itinerary: Itinerary,
         Returns:
-            AnalysisResult[AttackApproval|KingAttackApproval]
+            AnalysisResult[ItineraryReport]
         Raises:
         """
-        method = f"{cls.__name__}._enemy_destination_analyzer"
+        method = f"{cls.__name__}._occupied_destination_analyzer"
+        
         destination_occupant = itinerary.destination.occupant
+        # --- If the occupant is a friend send a BlockingReport. ---#
         if itinerary.token.is_friend(destination_occupant):
             return AnalysisResult.completed(
                 BlockingReport(
@@ -135,6 +135,7 @@ class ItineraryAnalyzer:
                     friendly=destination_occupant,
                 )
             )
+        # --- Otherwise, get the attack approvals. ---#
         return cls._enemy_destination_analyzer(itinerary=itinerary)
     
     @classmethod
