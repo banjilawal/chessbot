@@ -9,12 +9,14 @@ version: 1.0.0
 
 from __future__ import annotations
 
-from logic.square import (
-    VisitationController, SquareBuild, SquarePositionController, SquareCollisionAnalysis,
-    SquareReadinessAnalysis, SquareValidation
-)
+from dataclasses import dataclass
+
+from analyzer import SquareCollisionDetector
+from builder import SquareBuilder
+from validation import SquareValidator
 
 
+@dataclass
 class SquareOpsController:
     """
     Role:
@@ -24,10 +26,10 @@ class SquareOpsController:
         1.  Provide a single entry point for operations SquareService supports.
         
     Attributes:
-        build: SquareBuild
-        validate: SquareValidation
-        vistation: VisitationController
-        collision_detection: SquareCollisionAnalyst
+        builder: SquareBuilder
+        validator: SquareValidator
+        vistation_controller: VisitationController
+        collision_detector: SquareCollisionAnalyst
         position_controller: SquarePositionController
         readiness_analyzer: SquareReadinessAnalysis
 
@@ -35,42 +37,7 @@ class SquareOpsController:
     
     Parent:
     """
-    _build: SquareBuild
-    _validation: SquareValidation
-    _vistation: VisitationController
-    _collision_detection: SquareCollisionAnalysis
-
-    
-    
-    def __init__(
-            self,
-            build: SquareBuild = SquareBuild(),
-            validation: SquareValidation = SquareValidation(),
-            vistation: VisitationController = VisitationController(),
-            collision_detection: SquareCollisionAnalysis = SquareCollisionAnalysis(),
-    ):
-        """
-        Args:
-            vistation: VisitationController
-            collision_detection: SquareCollisionAnalyst
-            position_controller: SquarePositionController
-            readiness_analyzer: SquareReadinessAnalysis
-        """
-        self._vistation = vistation
-        self._collision_detection = collision_detection
-        
-    @property
-    def build(self) -> SquareBuild:
-        return self._build
-        
-    @property
-    def validation(self) ->SquareValidation:
-        return self._validation
-        
-    @property
-    def visitation(self) -> VisitationController:
-        return self._vistation
-    
-    @property
-    def collision_detection(self) -> SquareCollisionAnalysis:
-        return self._collision_detection
+    builder: SquareBuilder
+    validator: SquareValidator
+    visitation_controller: VisitationController
+    collision_detector: SquareCollisionDetector

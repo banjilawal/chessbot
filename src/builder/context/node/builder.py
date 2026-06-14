@@ -1,0 +1,185 @@
+# src/builder/context/node/builder.py
+
+"""
+Module: builder.context.node.builder
+Author: Banji Lawal
+Created: 2026-04-03
+version: 1.0.1
+"""
+
+from __future__ import annotations
+
+import sys
+from typing import Optional
+
+from model.node import (
+    DiscoveryStatus, ArenaNodeContextFlagsException, Node, NodeContext, NodeContextBuildException,
+    NodeContextBuildRouteException, NodeValidator, ZeroNodeContextFlagsException
+)
+from logic.square import Square, SquareService
+from system import Builder, BuildResult, NumberValidator
+
+
+
+class NodeContextBuilder(Builder[NodeContext]):
+    """
+    Role
+        -   Transaction Worker
+        -   Integrity Maintenance
+        -   Consistency Assurance
+        -   Build Process Owner
+
+   Responsibilities:
+        1.  Ensure a new Token instance is born safe and reliable.
+
+     Attributes:
+
+    Provides:
+        -   def execute(
+                    owner: Team,
+                    id: int = IdFactory,
+                    formation: Formation,
+                    rank_service: RankService,
+                    identity_service: IdentityService,
+                    formation_service: FormationService,
+                    team_validator: TeamValidator,
+            ) -> BuildResult[Token]
+
+     Super Class:
+         Builder
+     """
+    @classmethod
+    def build(
+            cls,
+            priority: Optional[int] = None,
+            square: Optional[Square] = None,
+            predecessor: Optional[Node] = None,
+            discovery_status: Optional[DiscoveryStatus] = None,
+            square_service: SquareService = SquareService(),
+            node_validator: NodeValidator = NodeValidator(),
+            number_validator: NumberValidator = NumberValidator(),
+    ) -> BuildResult[NodeContext]:
+        """
+        # ACTION:
+            1.  If one-and-only-one context attribute is not null send an exception chain in the BuildResult.
+            2.  If there is no build route for the not-null context attribute send an exception chain in the BuildResult.
+            3.  If the build route exists and the context attribute is not verified send an exception chain in the
+                BuildResult. Else build the context and send it in the BuildResult's payload.
+        # PARAMETERS:
+            Only one these must be provided:
+
+                *   priority Optional[(int)]
+                *   predecessor Optional[(Predecessor)]
+                *   discovery_status Optional[DiscoveryStatus]
+            These Parameters must be provided:
+                *   predecessor_service (PredecessorService)
+                *   priority_service (PriorityService)
+                *   square_validator (SquareService)
+                *   number_validation (IdentityService)
+            # RETURNS:
+                *   BuildResult[NodeContext] containing either:
+                        - On failure: Exception.
+                        - On success: NodeContext in the payload.
+            Raises:
+                *   ZeroNodeContextFlagsException
+                *   NodeContextBuildException
+                *   ArenaNodeContextFlagsException
+                *   NodeContextBuildRouteException
+            """
+        method = "NodeContextBuilder.build"
+
+        # --- Count how many optional parameters are not-null. only one should be not null. ---#
+        params = [priority, square,predecessor, discovery_status,]
+        param_count = sum(bool(p) for p in params)
+        
+        # Handle the case that, all the optional params are null.
+        if param_count == 0:
+            # Send the exception chain on failure.
+            return BuildResult.failure(
+                NodeContextBuildException(
+                    msg=f"{method}: {NodeContextBuildException.MSG}",
+                    ex=ZeroNodeContextFlagsException(
+                        f"{method}: {ZeroNodeContextFlagsException.MSG}"
+                    )
+                )
+            )
+        # Handle the case that, more than one optional param is not-null.
+        if param_count > 1:
+            # Send the exception chain on failure.
+            return BuildResult.failure(
+                NodeContextBuildException(
+                    msg=f"{method}: {NodeContextBuildException.MSG}",
+                    ex=ArenaNodeContextFlagsException(
+                        f"{method}: {ArenaNodeContextFlagsException.MSG}"
+                    )
+                )
+            )
+        # --- Route to the appropriate validation/build branch. ---#
+        
+        # Build the priority NodeContext if its flag is enabled.
+        if priority is not None:
+            validation = number_validator.validate(
+                candidate=priority,
+                ceiling=sys.maxsize,
+                floor=-(sys.maxsize - 1),
+            )
+            if validation.is_failure:
+                # Send the exception chain on failure.
+                return BuildResult.failure(
+                    NodeContextBuildException(
+                        msg=f"{method}: {NodeContextBuildException.MSG}",
+                        ex=validation.exception
+                    )
+                )
+            # On validation success return an id_NodeContext in the BuildResult.
+            return BuildResult.success(NodeContext(priority=priority))
+        
+        # Build the square NodeContext if its flag is enabled.
+        if square is not None:
+            validation = square_service.validator.validate(candidate=square)
+            if validation.is_failure:
+                # Send the exception chain on failure.
+                return BuildResult.failure(
+                    NodeContextBuildException(
+                        msg=f"{method}: {NodeContextBuildException.MSG}",
+                        ex=validation.exception
+                    )
+                )
+            # On validation success return a square_NodeContext in the BuildResult.
+            return BuildResult.success(NodeContext(square=square))
+        
+        # Build the predecessor NodeContext if its flag is enabled.
+        if predecessor is not None:
+            validation = node_validator.validate(candidate=predecessor)
+            if validation.is_failure:
+                # Send the exception chain on failure.
+                return BuildResult.failure(
+                    NodeContextBuildException(
+                        msg=f"{method}: {NodeContextBuildException.MSG}",
+                        ex=validation.exception
+                    )
+                )
+            # On validation success return a predecessor_NodeContext in the BuildResult.
+            return BuildResult.success(NodeContext(predecessor=predecessor))
+        
+        # Build the discovery_status NodeContext if its flag is enabled.
+        if discovery_status is not None:
+            validation = node_validator.validate_discovery_status(candidate=discovery_status)
+            if validation.is_failure:
+                # Send the exception chain on failure.
+                return BuildResult.failure(
+                    NodeContextBuildException(
+                        msg=f"{method}: {NodeContextBuildException.MSG}",
+                        ex=validation.exception
+                    )
+                )
+            # On validation success return a predecessor_NodeContext in the BuildResult.
+            return BuildResult.success(NodeContext(discovery_status=discovery_status))
+        
+        # Return the exception chain if there is no build route for the context.
+        return BuildResult.failure(
+            NodeContextBuildException(
+                msg=f"{method}: {NodeContextBuildException.MSG}",
+                ex=NodeContextBuildRouteException(f"{method}: {NodeContextBuildRouteException.MSG}")
+            )
+        )

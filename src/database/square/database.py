@@ -9,6 +9,8 @@ version: 1.0.1
 
 from __future__ import annotations
 
+from microservice import SquareService
+
 
 class SquareDatabase(Database[Square]):
     """
@@ -35,6 +37,7 @@ class SquareDatabase(Database[Square]):
         -   insert(item: T) -> InsertionResult:
         -   delete_by_id(id: int) -> DeletionResult[T]:
         -   search(context: Context[T]) -> SearchResult[List[T]]
+    """
     """
     Role:Data Repository, CRUD Search Microservice, CRUD Controller, Encapsulation, API layer.
 

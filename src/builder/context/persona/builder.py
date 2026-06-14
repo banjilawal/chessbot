@@ -1,0 +1,176 @@
+# src/builder/context/persona/builder.py
+
+"""
+Module: builder.context.persona.builder
+Author: Banji Lawal
+Created: 2026-04-03
+version: 1.0.1
+"""
+
+from __future__ import annotations
+
+from model.catalog.persona import (
+    ArenaPersonaKeysException, PersonaKey, PersonaKeyBuildException,
+    PersonaKeyBuildRouteException, ZeroPersonaKeysException
+)
+from system import NumberValidator, BuildResult, Builder, IdentityService, LoggingLevelRouter
+
+
+class PersonaContextBuilder(Builder[PersonaKey]):
+    """
+    Role
+        -   Transaction Worker
+        -   Integrity Maintenance
+        -   Consistency Assurance
+        -   Build Process Owner
+
+   Responsibilities:
+        1.  Ensure a new Token instance is born safe and reliable.
+
+     Attributes:
+
+    Provides:
+        -   def execute(
+                    owner: Team,
+                    id: int = IdFactory,
+                    formation: Formation,
+                    rank_service: RankService,
+                    identity_service: IdentityService,
+                    formation_service: FormationService,
+                    team_validator: TeamValidator,
+            ) -> BuildResult[Token]
+
+     Super Class:
+         Builder
+     """
+    @classmethod
+    @LoggingLevelRouter.monitor
+    def build(
+            cls,
+            name: Optional[str] = None,
+            quota: Optional[int] = None,
+            ransom: Optional[int] = None,
+            designation: Optional[str] = None,
+            identity_service: IdentityService = IdentityService(),
+            number_validator: NumberValidator = NumberValidator(),
+    ) -> BuildResult[PersonaKey]:
+        """
+        # ACTION:
+            1.  If only one optional param is not-null return an exception in the BuildResult. Else
+            2.  If the enabled param is not certified by the appropriate validating service return an exception in
+                the BuildResult.
+            3.  After the active param is validated create the PersonaContext object and return in the BuildResult.
+        # PARAMETERS:
+            *   Only one these must be provided:
+                    *   schema (Optional[str])
+                    *   quota (Optional[int])
+                    *   ransom (Optional[int])
+                    *   designation (Optional[str])
+            *   These Parameters must be provided:
+                    *   color_validator (GameColorValidator)
+                    *   identity_service (IdentityService)
+                    *   number_validation (NumberValidator)
+
+        # RETURNS:
+            *   BuildResult[PersonaContext] containing either:
+                    - On failure: Exception.
+                    - On success: PersonaContext in the payload.
+        Raises:
+            *   ZeroPersonaKeysException
+            *   PersonaKeyBuildException
+            *   ArenaPersonaKeysException
+            *   PersonaKeyBuildRouteException
+        """
+        method = "PersonaContextBuilder.build"
+        
+        # Count how many optional parameters are not-null. One param needs to be not-null.
+        params = [name, designation, quota, ransom]
+        param_count = sum(bool(p) for p in params)
+        
+        # Test if no params are set. Need an attribute-value pair to look up a rank's persona_entry.
+        if param_count == 0:
+            # Send the exception chain on failure.
+            return BuildResult.failure(
+                PersonaKeyBuildException(
+                    msg=f"{method}: {PersonaKeyBuildException.ERR_CODE}",
+                    ex=ZeroPersonaKeysException(f"{method}: {ZeroPersonaKeysException.MSG}")
+                )
+            )
+        # Test if more than one param is set. Only one attribute-value tuple is allowed in a search.
+        if param_count > 1:
+            # Send the exception chain on failure.
+            return BuildResult.failure(
+                PersonaKeyBuildException(
+                    msg=f"{method}: {PersonaKeyBuildException.ERR_CODE}",
+                    ex=ArenaPersonaKeysException(f"{method}: {ArenaPersonaKeysException}")
+                )
+            )
+        # After verifying only one Persona hash key-value is set, validate it.
+        
+        # Build the schema PersonaContext if its flag is enabled.
+        if name is not None:
+            validation = identity_service.validate_name(candidate=name)
+            if validation.is_failure:
+                # Send the exception chain on failure.
+                return BuildResult.failure(
+                    PersonaKeyBuildException(
+                        msg=f"{method}: {PersonaKeyBuildException.ERR_CODE}",
+                        ex=validation.exception
+                    )
+                )
+            # On validation success return a ransom_PersonaKey in the BuildResult.
+            return BuildResult.success(PersonaKey(name=name))
+        
+        # Build the designation PersonaContext if its flag is enabled.
+        if designation is not None:
+            validation = identity_service.validate_name(candidate=designation)
+            if validation.is_failure:
+                # Send the exception chain on failure.
+                return BuildResult.failure(
+                    PersonaKeyBuildException(
+                        msg=f"{method}: {PersonaKeyBuildException.ERR_CODE}",
+                        ex=validation.exception
+                    )
+                )
+            # On validation success return a designation_PersonaKey in the BuildResult.
+            return BuildResult.success(PersonaKey(designation=designation))
+        
+        # Build the quota PersonaContext if its flag is enabled.
+        if quota is not None:
+            # Quotas have to be between king_count=1 and pawn_count=8
+            validation = number_validator.validate(floor=1, ceiling=9)
+            if validation.is_failure:
+                # Send the exception chain on failure.
+                return BuildResult.failure(
+                    PersonaKeyBuildException(
+                        msg=f"{method}: {PersonaKeyBuildException.ERR_CODE}",
+                        ex=validation.exception
+                    )
+                )
+            # On validation success return a quota_PersonaKey in the BuildResult.
+            return BuildResult.success(PersonaKey(quota=quota))
+        
+        # Build the ransom PersonaContext if its flag is enabled.
+        if ransom is not None:
+            # Ransoms have to be between king_ransom=0 and 20
+            validation = number_validator.validate(floor=0, ceiling=20)
+            if validation.is_failure:
+                # Send the exception chain on failure.
+                return BuildResult.failure(
+                    PersonaKeyBuildException(
+                        msg=f"{method}: {PersonaKeyBuildException.ERR_CODE}",
+                        ex=validation.exception
+                    )
+                )
+            # On validation success return a ransom_PersonaKey in the BuildResult.
+            return BuildResult.success(PersonaKey(ransom=ransom))
+        
+        # The default path returns failure.
+        BuildResult.failure(
+            PersonaKeyBuildException(
+                msg=f"{method}: {PersonaKeyBuildException.ERR_CODE}",
+                ex=PersonaKeyBuildRouteException(
+                    f"{method}: {PersonaKeyBuildRouteException.MSG}"
+                )
+            )
+        )

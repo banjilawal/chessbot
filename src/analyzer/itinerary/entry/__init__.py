@@ -13,4 +13,3 @@ version: 1.0.1
 from exception import *
 
 # Modules
-from .analyzer import SquareEntry

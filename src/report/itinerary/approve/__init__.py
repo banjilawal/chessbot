@@ -12,7 +12,7 @@ version: 1.0.1
 # Packages
 from .attack import *
 from .check import *
-from .peace import *
+from .maneuver import *
 
 # Modules
 from .report import ItineraryApprovalReport

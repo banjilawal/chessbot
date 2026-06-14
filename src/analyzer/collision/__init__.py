@@ -11,7 +11,7 @@ version: 1.0.1
 # =========== ANALYZER.COLLISION PACKAGE ===========#
 
 # Packages
-from .square import SquareCollisionAnalyzer
+from .square import SquareCollisionDetector
 from .token import TokenCollisionAnalyzer
 
 # Modules

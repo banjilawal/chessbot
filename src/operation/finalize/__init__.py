@@ -11,7 +11,7 @@ version: 1.0.1
 # =========== OPERATION.FINALIZE PACKAGE ===========#
 
 # Packages
-from build import *
+from builder import *
 
 # Modules
 from .operation import Finalizer

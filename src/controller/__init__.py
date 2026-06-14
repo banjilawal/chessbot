@@ -12,8 +12,9 @@ version: 1.0.1
 # Packages
 from .binder import *
 from .registry import *
-from .token import *
 from .stack import *
+from .token import *
+from .visit import *
 
 # Modules
 from .controller import  Controller

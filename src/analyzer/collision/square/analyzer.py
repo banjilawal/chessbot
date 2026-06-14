@@ -19,7 +19,7 @@ from analyzer import CollisionAnalyzer
 from system import CollisionAnalyst, CollisionReport, LoggingLevelRouter
 
 
-class SquareCollisionAnalyzer(CollisionAnalyzer[Square]):
+class SquareCollisionDetector(CollisionAnalyzer[Square]):
     """
      Role:
          - Collision Detection Worker

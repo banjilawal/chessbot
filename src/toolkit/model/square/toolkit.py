@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 
-from analyzer import SquareCollisionAnalyzer
+from analyzer import SquareCollisionDetector
 from microservice import FormationService, IdentityService
 from model import Square
 from toolkit import Toolkit
@@ -51,7 +51,7 @@ class SquareToolkit(Toolkit[Square]):
     DEPENDENCIES =[
         BoardValidator,
         CoordValidator,
-        SquareCollisionAnalyzer,
+        SquareCollisionDetector,
         ValidationPrimer,
     ]
     
@@ -65,5 +65,5 @@ class SquareToolkit(Toolkit[Square]):
     identity_service: IdentityService = IdentityService()
     formation_service: FormationService = FormationService()
     validation_primer: ValidationPrimer = ValidationPrimer()
-    square_collision_analyst: SquareCollisionAnalyzer = SquareCollisionAnalyzer()
+    square_collision_analyst: SquareCollisionDetector = SquareCollisionDetector()
 
