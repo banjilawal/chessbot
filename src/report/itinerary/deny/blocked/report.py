@@ -41,3 +41,14 @@ class BlockedItinerary(ItineraryDenialReport):
     @property
     def team(self) -> Team:
         return self.recipient.team
+    
+    def __eq__(self, other):
+        if other is self: return True
+        if other is None: return False
+        if isinstance(other, BlockedItinerary):
+            return (
+                    super().__eq__(other) and
+                    self.friendly == other.friendly and
+                    self.blocked_destination == other.blocked_destination
+            )
+        return False

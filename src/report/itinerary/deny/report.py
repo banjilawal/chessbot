@@ -36,3 +36,10 @@ class ItineraryDenialReport(ItineraryReport):
     Super Class:
         ItineraryReport
     """
+    
+    def __eq__(self, other):
+        if other is self: return True
+        if other is None: return False
+        if isinstance(other, ItineraryDenialReport):
+            return super().__eq__(other)
+        return False

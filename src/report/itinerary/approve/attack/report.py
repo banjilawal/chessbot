@@ -56,5 +56,10 @@ class AttackItineraryApproval(ItineraryApprovalReport):
         if other is self: return True
         if other is None: return False
         if isinstance(other, AttackItineraryApproval):
-            return super().__eq__(other)
+            return (
+                super().__eq__(other) and
+                self.priority == other.priority and
+                self.target_square == other.target_square and
+                self.enemy_combatant == other.enemy_combatant
+            )
         return False

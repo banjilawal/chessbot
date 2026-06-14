@@ -30,14 +30,12 @@ class ItineraryApprovalReport(ABC, ItineraryReport):
         id: int
         origin: Square
         recipient: Token
-        destination: Square
         
     Provides:
 
     Super Class:
         Report
     """
-    destination: Square
     
     def __eq__(self, other):
         if other is self: return True

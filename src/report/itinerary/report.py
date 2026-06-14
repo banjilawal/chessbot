@@ -39,3 +39,14 @@ class ItineraryReport(Report):
     id: int
     origin: Square
     recipient: Token
+    
+    def __eq__(self, other):
+        if other is self: return True
+        if other is None: return False
+        if isinstance(other, ItineraryReport):
+            return (
+                    self.origin == other.origin and
+                    self.recipient == other.recipient
+            )
+        return False
+    

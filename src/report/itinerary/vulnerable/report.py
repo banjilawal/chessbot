@@ -37,11 +37,9 @@ class ItineraryVulnerabilityReport(ItineraryReport):
     Super Class:
         ItineraryOrder
     """
-    origin: Square
-    recipient: Token
-    vulnerable_square: Square
     attacker: Token
     attacker_source: Square
+    vulnerable_square: Square
     weight: Optional[int]
     
     @property
@@ -51,3 +49,16 @@ class ItineraryVulnerabilityReport(ItineraryReport):
     @property
     def recipient_team(self) -> Team:
         return self.recipient.team
+    
+    def __eq__(self, other):
+        if other is self: return True
+        if other is None: return False
+        if isinstance(other, ItineraryVulnerabilityReport):
+            return (
+                    super().__eq__(other) and
+                    self.attacker == other.attacker and
+                    self.attacker_source == other.attacker_source and
+                    self.vulnerable_square == other.vulnerable_square and
+                    self.weight == other.weight
+            )
+        return False

@@ -36,11 +36,16 @@ class PeaceItineraryApproval(ItineraryApprovalReport):
     Super Class:
         Report
     """
+    destination: Square
     cost: Optional[int] = None
     
     def __eq__(self, other):
         if other is self: return True
         if other is None: return False
-        if isinstance(other, ItineraryApprovalReport):
-            return super().__eq__(other)
+        if isinstance(other, PeaceItineraryApproval):
+            return (
+                    super().__eq__(other) and
+                    self.cost == other.cost and
+                    self.destination == other.destination
+            )
         return False

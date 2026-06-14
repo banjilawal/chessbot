@@ -50,3 +50,16 @@ class KingItineraryChecked(ItineraryDenialReport):
     @property
     def recipient_team(self) -> Team:
         return self.recipient.team
+    
+    def __eq__(self, other):
+        if other is self: return True
+        if other is None: return False
+        if isinstance(other, KingItineraryChecked):
+            return (
+                    super().__eq__(other) and
+                    self.check_holder == other.check_holder and
+                    self.enemy_source == other.enemy_source and
+                    self.checked_square == other.checked_square
+            )
+        return False
+
