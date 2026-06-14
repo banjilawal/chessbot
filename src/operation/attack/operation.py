@@ -10,8 +10,13 @@ version: 1.0.1
 from __future__ import annotations
 from copy import deepcopy
 
-from report import AttackApproval
-from util import LoggingLevelRouter
+from err import AttackDestinationEmptyException, AttackEventNullException, AttackException
+from event import AttackEvent
+from model import Hostage, SquareState
+from operation import Maneuver
+from report import AttackApproval, ManeuverApproval
+from result import EventResult, MethodResultType
+from util import IdFactory, LoggingLevelRouter
 from validation import ValidationPrimer
 
 
@@ -36,7 +41,7 @@ class Attack:
                     square: Square,
                     token_freedom_analyzer: TokenFreedomAnalyzer,
                     validation_primer: ValidationPrimer,
-            ) -> AttackResult:
+            ) -> EventResult:
 
     Super Class:
     """
@@ -47,7 +52,7 @@ class Attack:
             cls,
             report: AttackApproval,
             validation_primer: ValidationPrimer | None = None,
-    ) -> AttackResult:
+    ) -> EventResult:
         """
         Action:
             1.  Send the original square along with an exception chain in the validation result if:
@@ -60,10 +65,10 @@ class Attack:
             2.  Otherwise, each updates its state.
             3.  Send the success result.
         Args:
-            report: AttackItineraryApproval
+            report: AttackApproval
             validation_primer: ValidationPrimer
        Returns:
-            AttackResult
+            EventResult
         Raises:
         """
         method = f"{cls.__class__.__name__}.execute"
@@ -74,64 +79,75 @@ class Attack:
         # Handle the case that, the itinerary is not valid.
         validation_result = validation_primer.validate(
             candidate=report,
-            target_type=AttackItineraryApproval,
-            null_ex_cls=NullException,
+            target_type=AttackApproval,
+            null_ex_cls=AttackEventNullException,
         )
         if validation_result.is_failure:
             # Send the exception chain on failure.
-            return AttackResult.failure(
+            return EventResult.failure(
                 AttackException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
                     msg=AttackException.MSG,
                     err_code=AttackException.ERR_CODE,
-                    mthd_rslt_type=MethodResultType.ATTACK_RESULT,
+                    mthd_rslt_type=MethodResultType.EVENT_RESULT,
                     ex=validation_result.exception,
                 )
             )
         # Handle the case that, the destination is not empty.
-        if report.destination.is_occupied:
+        if report.target_square.is_empty:
             # Send the exception chain on failure.
-            return AttackResult.failure(
+            return EventResult.failure(
                 AttackException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
                     msg=AttackException.MSG,
                     err_code=AttackException.ERR_CODE,
-                    mthd_rslt_type=MethodResultType.ATTACK_RESULT,
-                    ex=AttackDestinationOccupiedException(
-                        msg=AttackDestinationOccupiedException.MSG,
-                        err_code=AttackDestinationOccupiedException.ERR_CODE,
+                    mthd_rslt_type=MethodResultType.EVENT_RESULT,
+                    ex=AttackDestinationEmptyException(
+                        msg=AttackDestinationEmptyException.MSG,
+                        err_code=AttackDestinationEmptyException.ERR_CODE,
                     ),
                 )
             )
         # --- Security tests are passed. Return the registration result to the caller. ---#
-        arrival_result = cls._arrive(traveller=report.recipient, destination=report.destination, )
-        if arrival_result.is_failure:
-            # Send the exception chain on failure.
-            return AttackResult.failure(
+        hostage = cls._capture_enemy(report)
+
+        departure_result = cls._depart(origin=report.origin,)
+        maneuver_result = Maneuver.execute(
+            ManeuverApproval(
+                id=IdFactory.next_id("Maneuver"),
+                origin=report.origin,
+                recipient=report.recipient,
+                destination=report.target_square,
+            )
+        )
+        if maneuver_result.is_failure:
+            return EventResult.failure(
                 AttackException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
                     msg=AttackException.MSG,
                     err_code=AttackException.ERR_CODE,
-                    mthd_rslt_type=MethodResultType.ATTACK_RESULT,
-                    ex=arrival_result.exception,
+                    mthd_rslt_type=MethodResultType.EVENT_RESULT,
+                    ex=maneuver_result.exception,
                 )
             )
-        departure_result = cls._depart(origin=report.origin,)
         
-        return AttackResult.success(
+        return EventResult.success(
             AttackEvent(
-                traveller=arrival_result.updated.occupant,
-                arrival_point=arrival_result.updated,
-                departure_point=departure_result.updated,
+                id=IdFactory.next_id("AttackEvent"),
+                attack_origin=report.origin,
+                attacker=report.recipient,
+                target_square=report.target_square,
+                enemy_combatant=hostage.prisoner,
+                child=maneuver_result.payload,
             )
         )
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def _arrive(cls, traveller: Token, destination: Square,) -> UpdateResult[Square]:
+    def _capture_enemy(cls, report: AttackApproval) -> Hostage:
         """
         Puts the token into the square.
 
@@ -149,59 +165,20 @@ class Attack:
         Returns:
             UpdateResult[Square]
         """
-        method = f"{cls.__name__}._arrive"
+        method = f"{cls.__name__}._capture_enemy"
         
-        #  Make a deep copy of the square.
-        pre_update_square = deepcopy(destination)
-        # --- Set the square side of the relationship. ---#
-        destination.occupant = traveller
-        destination.state = SquareState.OCCUPIED
+        report_copy = deepcopy(report)
+        board = report.target_square.board
+        hostage_db = board.hostage_database
         
-        # --- Push the square's coord onto the schema. ---#
-        coord_insertion_result = traveller.positions.push(destination.coord)
-        
-        # Handle the case that, the push failed
-        if coord_insertion_result.is_failure:
-            # Rollback the square.
-            destination.occupant = None
-            destination.state = SquareState.EMPTY
-            
-            # Send the exception chain on failure.
-            return UpdateResult.update_failure(
-                original=pre_update_square,
-                exception=AttackException(
-                    cls_mthd=method,
-                    cls_name=cls.__name__,
-                    msg=AttackException.MSG,
-                    err_code=AttackException.ERR_CODE,
-                    mthd_rslt_type=MethodResultType.UPDATE_RESULT,
-                    ex=coord_insertion_result.exception,
-                )
-            )
-        # --- Forward the work product to the caller. ---#
-        return UpdateResult.update_success(original=pre_update_square, updated=destination)
-    
-    @classmethod
-    @LoggingLevelRouter.monitor
-    def _depart(cls, origin: Square,) -> UpdateResult[Square]:
-        """
-        Remove the token from its source square.
-
-        Action:
-            1.  Set the square occupant to null then update its state.
-            2.  Send the success result.
-        Args:
-            origin: Square
-        Returns:
-            UpdateResult[Square]
-        """
-        method = f"{cls.__name__}._depart"
-        
-        #  Make a deep copy of the square.
-        pre_update_square = deepcopy(origin)
-        # --- Remove the occupant. ---#
-        origin.occupant = None
-        origin.state = SquareState.EMPTY
+        report.enemy_combatant.captor = report.recipient
+        report.target_square.occupant = None
+        report.target_square.state = SquareState.EMPTY
         
         # --- Forward the work product to the caller. ---#
-        return UpdateResult.update_success(original=pre_update_square, updated=origin)
+        return Hostage(
+            id=IdFactory.next_id("Hostage"),
+            victor=report.recipient,
+            prisoner=report.enemy_combatant,
+            captured_square=report.target_square,
+        )

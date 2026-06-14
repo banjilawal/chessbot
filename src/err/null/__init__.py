@@ -20,6 +20,7 @@ from .coord import *
 from .database import *
 from .dependecy import *
 from .edge import *
+from .event import *
 from .formation import *
 from .game import *
 from .hashtable import *

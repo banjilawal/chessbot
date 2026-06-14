@@ -18,5 +18,5 @@ class MethodResultType(Enum):
     SEARCH_RESULT = auto(),
     UPDATE_RESULT = auto(),
     VALIDATION_RESULT = auto(),
-    MANEUVER_RESULT = auto(),
+    EVENT_RESULT = auto(),
     

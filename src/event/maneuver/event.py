@@ -20,15 +20,3 @@ class ManeuverEvent(Event):
     departure_point: Square
     arrival_point: Square
     
-    def __eq__(self, other: object) -> bool:
-        if other is self: return True
-        if other is None: return False
-        if isinstance(other, ManeuverEvent):
-            return (
-                    super().__eq__(other) and
-                    self.traveller == other.traveller and
-                    self.departure_point == other.departure_point and
-                    self.arrival_point == other.arrival_point
-            )
-        return False
-    

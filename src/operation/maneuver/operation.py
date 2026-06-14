@@ -10,11 +10,11 @@ version: 1.0.1
 from __future__ import annotations
 from copy import deepcopy
 
-from err import ManeuverDestinationOccupiedException, ManeuverException, NullException
+from err import ManeuverDestinationOccupiedException, ManeuverEventNullException, ManeuverException
 from event import ManeuverEvent
 from model import  Square, SquareState, Token
 from report import ManeuverApproval
-from result import ManeuverResult, MethodResultType, UpdateResult
+from result import EventResult, MethodResultType, UpdateResult
 from util import LoggingLevelRouter
 from validation import ValidationPrimer
 
@@ -51,7 +51,7 @@ class Maneuver:
             cls,
             report: ManeuverApproval,
             validation_primer: ValidationPrimer | None = None,
-    ) -> ManeuverResult:
+    ) -> EventResult:
         """
         Action:
             1.  Send the original square along with an exception chain in the validation result if:
@@ -79,30 +79,30 @@ class Maneuver:
         validation_result = validation_primer.validate(
             candidate=report,
             target_type=ManeuverApproval,
-            null_ex_cls=NullException,
+            null_ex_cls=ManeuverEventNullException,
         )
         if validation_result.is_failure:
             # Send the exception chain on failure.
-            return ManeuverResult.failure(
+            return EventResult.failure(
                 ManeuverException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
                     msg=ManeuverException.MSG,
                     err_code=ManeuverException.ERR_CODE,
-                    mthd_rslt_type=MethodResultType.MANEUVER_RESULT,
+                    mthd_rslt_type=MethodResultType.EVENT_RESULT,
                     ex=validation_result.exception,
                 )
             )
         # Handle the case that, the destination is not empty.
         if report.destination.is_occupied:
             # Send the exception chain on failure.
-            return ManeuverResult.failure(
+            return EventResult.failure(
                 ManeuverException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
                     msg=ManeuverException.MSG,
                     err_code=ManeuverException.ERR_CODE,
-                    mthd_rslt_type=MethodResultType.MANEUVER_RESULT,
+                    mthd_rslt_type=MethodResultType.EVENT_RESULT,
                     ex=ManeuverDestinationOccupiedException(
                         msg=ManeuverDestinationOccupiedException.MSG,
                         err_code=ManeuverDestinationOccupiedException.ERR_CODE,
@@ -113,19 +113,19 @@ class Maneuver:
         arrival_result = cls._arrive(traveller=report.recipient, destination=report.destination, )
         if arrival_result.is_failure:
             # Send the exception chain on failure.
-            return ManeuverResult.failure(
+            return EventResult.failure(
                 ManeuverException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
                     msg=ManeuverException.MSG,
                     err_code=ManeuverException.ERR_CODE,
-                    mthd_rslt_type=MethodResultType.MANEUVER_RESULT,
+                    mthd_rslt_type=MethodResultType.EVENT_RESULT,
                     ex=arrival_result.exception,
                 )
             )
         departure_result = cls._depart(origin=report.origin,)
         
-        return ManeuverResult.success(
+        return EventResult.success(
             ManeuverEvent(
                 traveller=arrival_result.updated.occupant,
                 arrival_point=arrival_result.updated,

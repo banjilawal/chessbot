@@ -37,7 +37,7 @@ class FinalizeSchemaContextBuildException(FinalizeContextBuildException):
             cls_name: Optional[str]
             cls_mthd: Optional[str]
             err_code: Optional[str]
-            mthd_rslt_type: optional[methodResultType]
+            mthd_rslt_type: Optional[MethodResultType]
             
     Provides:
 
@@ -63,11 +63,11 @@ class FinalizeSchemaContextBuildException(FinalizeContextBuildException):
             Msg: Optional[str]
             Var: Optional[str]
             val: Optional[any]
-            ex: optional[Exception]
-            cls_name: optional[Str]
-            cls_mthd: optional[str]
-            err_code: optional[str]
-            mthd_rslt_type: optional[methodResultType]
+            ex: Optional[Exception]
+            cls_name: Optional[Str]
+            cls_mthd: Optional[str]
+            err_code: Optional[str]
+            mthd_rslt_type: Optional[MethodResultType]
         """
         msg = msg or self.MSG
         err_code = err_code or self.ERR_CODE

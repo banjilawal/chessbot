@@ -11,6 +11,7 @@ version: 1.0.0
 
 # Packages
 from .assembly import *
+from .attack import *
 from .primer import *
 from .build import *
 from .finalize import *

@@ -9,6 +9,12 @@ version: 1.0.1
 
 from __future__ import annotations
 
+from microservice import HostageService
+from model import Hostage
+from result import InsertionResult
+from search import HostageQueryService
+from util import LoggingLevelRouter
+
 
 class HostageDatabase(Database[Hostage]):
     """
@@ -35,6 +41,7 @@ class HostageDatabase(Database[Hostage]):
         -   insert(item: T) -> InsertionResult:
         -   delete_by_id(id: int) -> DeletionResult[T]:
         -   search(context: Context[T]) -> SearchResult[List[T]]
+    """
     """
     Role:Unique Data Stack, Search Microservice, CRUD Controller, Encapsulation, API layer.
 

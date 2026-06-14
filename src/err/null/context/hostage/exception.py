@@ -28,7 +28,7 @@ class HostageContextNullException(ContextNullException):
     Responsibilities:
         1.  Indicate that a required HostageContext is null.
 
-    Attributes:
+    Cannot Be Null.s:
             msg: Optional[str]
             var: Optional[str]
             val: Optional[Any]
@@ -36,14 +36,14 @@ class HostageContextNullException(ContextNullException):
             cls_name: Optional[str]
             cls_mthd: Optional[str]
             err_code: Optional[str]
-            mthd_rslt_type: optional[methodResultType]
+            mthd_rslt_type: Optional[MethodResultType]
             
     Provides:
 
     Super Class:
         ContextNullException
     """
-    MSG = "No null logic for HostageContext attribute"
+    MSG = "HostageContext cannot be null."
     ERR_CODE = "HOSTAGE_CONTEXT_NULL_ERROR"
     
     def __init__(
@@ -62,11 +62,11 @@ class HostageContextNullException(ContextNullException):
             Msg: Optional[str]
             Var: Optional[str]
             val: Optional[any]
-            ex: optional[Exception]
-            cls_name: optional[Str]
-            cls_mthd: optional[str]
-            err_code: optional[str]
-            mthd_rslt_type: optional[methodResultType]
+            ex: Optional[Exception]
+            cls_name: Optional[Str]
+            cls_mthd: Optional[str]
+            err_code: Optional[str]
+            mthd_rslt_type: Optional[MethodResultType]
         """
         msg = msg or self.MSG
         err_code = err_code or self.ERR_CODE

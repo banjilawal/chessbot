@@ -12,12 +12,12 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Optional
 
-from event import ManeuverEvent
-from result import ManeuverState, Result
+from event import Event
+from result import EventState, Result
 
 
 @dataclass(frozen=True)
-class ManeuverResult(Result[ManeuverEvent]):
+class EventResult(Result[Event]):
     """
     Role:
         -   Data Transport
@@ -42,9 +42,10 @@ class ManeuverResult(Result[ManeuverEvent]):
     Super Class:
         Result
     """
-    state: ManeuverState
+    state: EventState
+    payload: Optional[Event] = None
     exception: Optional[Exception] = None
-    payload: Optional[ManeuverEvent] = None
+
 
     @property
     def is_success(self) -> bool:
@@ -55,8 +56,8 @@ class ManeuverResult(Result[ManeuverEvent]):
         return (
                 self.payload is None and
                 self.exception is not None and
-                self.state == ManeuverState.FAILURE or
-                self.state == ManeuverState.TIMED_OUT
+                self.state == EventState.FAILURE or
+                self.state == EventState.TIMED_OUT
         )
     
     @property
@@ -64,29 +65,29 @@ class ManeuverResult(Result[ManeuverEvent]):
         return (
                 self.payload is None and
                 self.exception is not None and
-                self.state == ManeuverState.TIMED_OUT
+                self.state == EventState.TIMED_OUT
         )
     
     @classmethod
-    def success(cls, payload: ManeuverEvent) -> ManeuverResult[ManeuverEvent]:
+    def success(cls, payload: Event) -> EventResult[Event]:
         return cls(
             payload=payload,
             exception=None,
-            state=ManeuverState.SUCCESS,
+            state=EventState.SUCCESS,
         )
     
     @classmethod
-    def failure(cls, exception: Exception) -> ManeuverResult[ManeuverEvent]:
+    def failure(cls, exception: Exception) -> EventResult[Event]:
         return cls(
             payload=None,
             exception=exception,
-            state=ManeuverState.FAILURE,
+            state=EventState.FAILURE,
         )
     
     @classmethod
-    def timed_out(cls, exception: Exception) -> ManeuverResult[ManeuverEvent]:
+    def timed_out(cls, exception: Exception) -> EventResult[Event]:
         return cls(
             payload=None,
             exception=exception,
-            state=ManeuverState.TIMED_OUT,
+            state=EventState.TIMED_OUT,
         )

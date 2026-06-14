@@ -9,12 +9,14 @@ version: 1.0.1
 
 from __future__ import annotations
 
+from dataclasses import dataclass
+
 from model.square import Square
 from model.token import CombatantToken, Token
 
 
+@dataclass
 class Hostage:
-    _id: int
     _victor: Token
     _prisoner: CombatantToken
     _captured_square: Square
