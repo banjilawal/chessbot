@@ -10,7 +10,6 @@ version: 1.0.1
 # ============ ERR.OPERATION.PRIMER.ASSEMBLY.ITINERARY PACKAGE ===========#
 
 # Packages
-from .destination import *
 
 # Modules
 from .exception import ItineraryAssemblyPrimerException

@@ -15,11 +15,11 @@ from result import MethodResultType
 
 __all__ = [
     # ======================# NO_SOURCE_TOKEN_BIDIRECTIONAL_RELATION_ERROR #======================#
-    "NoSourceTokenRelationException",
+    "BidirectionalSourceTokenRelationException",
 ]
 
 # ======================# NO_SOURCE_TOKEN_BIDIRECTIONAL_RELATION_ERROR #======================#
-class NoSourceTokenRelationException(ItineraryConsistencyException):
+class BidirectionalSourceTokenRelationException(ItineraryConsistencyException):
     """
     Role:
         -   Error Tracing

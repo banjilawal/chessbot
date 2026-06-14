@@ -1,7 +1,7 @@
-# src/err/operation/primer/assembly/itinerary/destination/exception.py
+# src/err/validation/itinerary/consistency/destination/full/exception.py
 
 """
-Module: err.priming.assembly.itinerary.destination.exception
+Module: err.validation.itinerary.consistency.destination.full.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,7 +10,7 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import ItineraryAssemblyPrimerException
+from err import ItineraryConsistencyException
 from result import MethodResultType
 
 __all__ = [
@@ -19,14 +19,14 @@ __all__ = [
 ]
 
 # ======================# TOKEN_ALREADY_AT_DESTINATION_ERROR #======================#
-class TokenAlreadyAtDestinationException(ItineraryAssemblyPrimerException):
+class TokenAlreadyAtDestinationException(ItineraryConsistencyException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an ItineraryAssembly priming step failed because the source and 
-            destination are the same.
+        1.  Indicate an Itinerary's token has a full binding to the destination. This
+            means its already at the destination.
 
     Attributes:
         msg: Optional[str]
@@ -41,7 +41,7 @@ class TokenAlreadyAtDestinationException(ItineraryAssemblyPrimerException):
     Provides:
 
     Super Class:
-        ItineraryAssemblyPrimerException
+        ItineraryConsistencyException
     """
     MSG = "Token is already at the destination."
     ERR_CODE = "TOKEN_ALREADY_AT_DESTINATION_ERROR"

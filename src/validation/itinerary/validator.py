@@ -13,7 +13,7 @@ from typing import Any, cast
 
 from err import (
     ItineraryNullException, ItinerarySourceEqualsDestinationException, ItineraryValidationException,
-    NoSourceTokenRelationException, TokenAlreadyAtDestinationException, TokenDestinationPartialRelationException
+    BidirectionalSourceTokenRelationException, TokenAlreadyAtDestinationException, TokenDestinationPartialBindingException
 )
 from model import Itinerary
 from report import RelationReport
@@ -52,40 +52,36 @@ class ItineraryValidator(Validator[Itinerary]):
             toolkit: ItineraryToolkit | None = None,
     ) -> ValidationResult[Itinerary]:
         """
+        Verify the object is an Itinerary that is safe to use.
         Action:
-            1.  verify itinerary_variety is a not-null ItineraryVariety object.
-            2.  Use itinerary_variety to pick which Validation method will create the concrete Itinerary object.
+            1.  Send an exception chan in the validation result if any of the following occur:
+                    -   The candidate is null or the wrong type.
+                    -   Either the token, source or destination are not valid.
+                    -   The source and destination are the same.
+                    -   The itinerary has an inconsistency.
+            2.  Otherwise, send the success result.
         Args:
-            *   rank (int)
-            *   token_service (TokenService)
-            *   square_validator (SquareService)
-            *   identity_service (IdentityService)
+            candidate: Any
+            toolkit: ItineraryToolkit
         Returns:
-            *   ValidationResult[Itinerary] containing either:
-                    - On failure: Exception.
-                    - On success: Itinerary in the payload.
+            ValidationResult[Itinerary]
         Raises:
-            *   TypeError
-            *   NullItineraryException
-            *   KingCannotBeCapturedException
-            *   TokenCannotCaptureItselfException
-            *   FriendCannotCaptureFriendException
-            *   PrisonerCapturedByDifferentEnemyException
-            *   UnformedTokenCannotBeVictorException
-            *   PrisonerCannotBeActiveCombatantException
-            *   ItineraryValidationException
-            *   VictorAndPrisonerOnDifferentBoardsException
-            *   PrisonerAlreadyHasItineraryException
-            *   PrisonerCapturedOnDifferentSquareException
+            ItineraryValidationException
+            ItinerarySourceEqualsDestinationException
         """
-        method = f"ItineraryValidator.validate"
+        method = f"{cls.__name__}.validate"
         
-        # Handle the case that, the candidate does not exist.
+        # --- Supply any missing dependencies. ---#
+        if toolkit is None:
+            toolkit = ItineraryToolkit()
+        
+        # Use the validation primer for existence and type checking.
         validation_priming_result = toolkit.validation_primer.validate(
             candidate=candidate,
-            target_model=Itinerary,
+            target_model=toolkit.model_type,
             context_null_exception=toolkit.null_exception,
         )
+        # Handle the case that, the base checks are not passed.
         if validation_priming_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
@@ -97,7 +93,7 @@ class ItineraryValidator(Validator[Itinerary]):
                     ex=validation_priming_result.exception,
                 )
             )
-        # --- Cast the candidate into a Token for additional tests ---#
+        # --- Cast the candidate into an Itinerary for additional tests ---#
         itinerary = cast(Itinerary, candidate)
         
         # Handle the case that, either the source or destination fail a validation check.
@@ -143,12 +139,13 @@ class ItineraryValidator(Validator[Itinerary]):
                     ex=token_validation_result.exception,
                 )
             )
-        # --- Test the token's consistency with its source. ---#
+        # --- Integrity tests are passed. Perform consistency checks. ---#
+        
+        # Handle the case that, the itinerary has an inconsistency.
         consistency_validation_result = cls._consistency_validator(
             itinerary=itinerary,
             toolkit=toolkit,
         )
-        # Handle the case that, the itinerary has an inconsistency.
         if consistency_validation_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
@@ -160,7 +157,7 @@ class ItineraryValidator(Validator[Itinerary]):
                     ex=consistency_validation_result.exception,
                 )
             )
-        # --- Candidate has been successfully validated. Return to the caller. ---#
+        # --- Forward the work product to the caller. ---#
         return ValidationResult.success(itinerary)
         
         
@@ -171,13 +168,29 @@ class ItineraryValidator(Validator[Itinerary]):
         itinerary: Itinerary,
         toolkit: ItineraryToolkit,
     ) -> ValidationResult[Itinerary]:
+        """
+        Verify there is consistency between the itinerary's elements.
+        
+        Action:
+            1.  Send an exception chan in the validation result if either:
+                    -   There is a token-source inconsistency.
+                    -   There is token-destination inconsistency.
+            2.  Otherwise, send the success result.
+        Args:
+            itinerary: Itinerary
+            toolkit: ItineraryToolkit
+        Returns:
+            ValidationResult[Itinerary]
+        Raises:
+            ItineraryConsistencyException
+        """
         method = f"{cls.__name__}._consistency_validator"
         
+        # Handle the case that, the token has an inconsistency with the source.
         source_consistency_result = cls._source_consistency_validator(
             itinerary=itinerary,
             toolkit=toolkit,
         )
-        # Handle the case that, the source has an inconsistency with the token.
         if source_consistency_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
@@ -189,12 +202,11 @@ class ItineraryValidator(Validator[Itinerary]):
                     ex=source_consistency_result.exception,
                 )
             )
-        
+        # Handle the case that, the token has an inconsistency with the destination.
         destination_consistency_result = cls._destination_consistency_validator(
             itinerary=itinerary,
             toolkit=toolkit,
         )
-        # Handle the case that, the source has an inconsistency with the token.
         if destination_consistency_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
@@ -206,10 +218,9 @@ class ItineraryValidator(Validator[Itinerary]):
                     ex=destination_consistency_result.exception,
                 )
             )
-        # --- Candidate has been successfully validated. Return to the caller. ---#
+        # --- Forward the work product to the caller. ---#
         return ValidationResult.success(itinerary)
         
-    
     @classmethod
     @LoggingLevelRouter.monitor
     def _source_consistency_validator(
@@ -217,6 +228,23 @@ class ItineraryValidator(Validator[Itinerary]):
             itinerary: Itinerary,
             toolkit: ItineraryToolkit,
     ) -> ValidationResult[Itinerary]:
+        """
+        Verify there the itinerary's token and source have a bidirectional relationship.
+
+        Action:
+            1.  Send an exception chan in the validation result if either:
+                    -   The square-token relation analysis is not completed.
+                    -   There relation between the token and its source is not fully bidirectional.
+            2.  Otherwise, send the success result.
+        Args:
+            itinerary: Itinerary
+            toolkit: ItineraryToolkit
+        Returns:
+            ValidationResult[Itinerary]
+        Raises:
+            ItineraryConsistencyException
+            NoSourceTokenRelationException
+        """
         method = f"{cls.__name__}._source_consistency_validator"
         
         relation_result = toolkit.square_token_relation_analyzer.analyze(
@@ -245,13 +273,13 @@ class ItineraryValidator(Validator[Itinerary]):
                     cls_name=cls.__name__,
                     msg=ItineraryValidationException.MSG,
                     err_code=ItineraryValidationException.ERR_CODE,
-                    ex=NoSourceTokenRelationException(
-                        msg=NoSourceTokenRelationException.MSG,
-                        err_code=NoSourceTokenRelationException.ERR_CODE,
+                    ex=BidirectionalSourceTokenRelationException(
+                        msg=BidirectionalSourceTokenRelationException.MSG,
+                        err_code=BidirectionalSourceTokenRelationException.ERR_CODE,
                     ),
                 )
             )
-        # --- Candidate has been successfully validated. Return to the caller. ---#
+        # --- Forward the work product to the caller. ---#
         return ValidationResult.success(itinerary)
     
     @classmethod
@@ -261,6 +289,24 @@ class ItineraryValidator(Validator[Itinerary]):
             itinerary: Itinerary,
             toolkit: ItineraryToolkit,
     ) -> ValidationResult[Itinerary]:
+        """
+        Verify there is no relationship between the itinerary's token and destination.
+
+        Action:
+            1.  Send an exception chan in the validation result if either:
+                    -   There is a partial binding between the token and destination.
+                    -   The token and destination have a bidirectional relationship.
+            2.  Otherwise, send the success result.
+        Args:
+            itinerary: Itinerary
+            toolkit: ItineraryToolkit
+        Returns:
+            ValidationResult[Itinerary]
+        Raises:
+            ItineraryConsistencyException
+            TokenAlreadyAtDestinationException
+            TokenDestinationPartialBindingException
+        """
         method = f"{cls.__name__}._destination_consistency_validator"
 
         # --- Test the has no relation with the destination. ---#
@@ -293,9 +339,9 @@ class ItineraryValidator(Validator[Itinerary]):
                     cls_name=cls.__name__,
                     msg=ItineraryValidationException.MSG,
                     err_code=ItineraryValidationException.ERR_CODE,
-                    ex=TokenDestinationPartialRelationException(
-                        msg=TokenDestinationPartialRelationException.MSG,
-                        err_code=TokenDestinationPartialRelationException.ERR_CODE,
+                    ex=TokenDestinationPartialBindingException(
+                        msg=TokenDestinationPartialBindingException.MSG,
+                        err_code=TokenDestinationPartialBindingException.ERR_CODE,
                     ),
                 )
             )
@@ -314,5 +360,5 @@ class ItineraryValidator(Validator[Itinerary]):
                     ),
                 )
             )
-        # --- Candidate has been successfully validated. Return to the caller. ---#
+        # --- Forward the work product to the caller. ---#
         return ValidationResult.success(itinerary)

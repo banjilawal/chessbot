@@ -1,7 +1,7 @@
-# src/err/validation/itinerary/consistency/destination/exception.py
+# src/err/validation/itinerary/consistency/destination/partial/exception.py
 
 """
-Module: err.validation.itinerary.consistency.destination.exception
+Module: err.validation.itinerary.consistency.destination.partial.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -15,11 +15,11 @@ from result import MethodResultType
 
 __all__ = [
     # ======================# PARTIAL_TOKEN_DESTINATION_RELATION_ERROR #======================#
-    "TokenDestinationPartialRelationException",
+    "TokenDestinationPartialBindingException",
 ]
 
 # ======================# PARTIAL_TOKEN_DESTINATION_RELATION_ERROR #======================#
-class TokenDestinationPartialRelationException(ItineraryConsistencyException):
+class TokenDestinationPartialBindingException(ItineraryConsistencyException):
     """
     Role:
         -   Error Tracing

@@ -10,6 +10,7 @@ version: 1.0.1
 # ============ ERR.VALIDATION.ITINERARY.CONSISTENCY.DESTINATION PACKAGE ===========#
 
 # Packages
+from .full import *
+from .partial import *
 
 # Modules
-from .exception import TokenDestinationPartialRelationException
