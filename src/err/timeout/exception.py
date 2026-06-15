@@ -1,7 +1,7 @@
-# src/err/query/exception.py
+# src/err/timeout/exception.py
 
 """
-Module: err.route.exception
+Module: err.timeout.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -14,18 +14,18 @@ from err import ChessException
 from result import MethodResultType
 
 __all__ = [
-    # ======================# QUERY_EXCEPTION #======================#
-    "QueryException",
+    # ======================# TIMEOUT_ERROR #======================#
+    "TimeoutException",
 ]
 
-# ======================# QUERY_EXCEPTION #======================#
-class QueryException(ChessException):
+# ======================# TIMEOUT_ERROR #======================#
+class TimeoutException(ChessException):
     """
     Role:
         -   Error Tracing
     
     Responsibilities:
-        1.  Indicate that a query experienced an error.
+        1.  Indicate that a task failed because one of its calls timed out.
         
     Attributes:
         msg: Optional[str]
@@ -43,8 +43,8 @@ class QueryException(ChessException):
     Super Class:
         ChessException
     """
-    MSG = "A query experienced an error."
-    ERR_CODE = "QUERY_EXCEPTION"
+    MSG = "Timedout"
+    ERR_CODE = "TIMEOUT_ERROR"
     
     def __init__(
             self,

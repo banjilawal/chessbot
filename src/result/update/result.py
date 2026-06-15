@@ -10,6 +10,7 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Generic, Optional, TypeVar
 
+from err import MethodImplementationException
 from result import UpdateState
 
 T = TypeVar("T")
@@ -43,7 +44,7 @@ class UpdateResult(Generic[T]):
         Result
     """
     _state: UpdateState
-    original: Optional[T]
+    _original: Optional[T]
     _updated: Optional[T]
     _exception: Optional[Exception]
 
@@ -53,7 +54,6 @@ class UpdateResult(Generic[T]):
             original: Optional[T],
             updated: Optional[T] = None,
             exception: Optional[Exception] = None,
-
     ):
         """INTERNAL: Use build methods instead of direct constructor."""
         self._state = state
@@ -115,7 +115,7 @@ class UpdateResult(Generic[T]):
         )
     
     @classmethod
-    def update_success(cls, original: T, updated: T) -> UpdateResult[T]:
+    def update_success(cls, original: T, updated: T) -> UpdateResult:
         return cls(
             updated=updated,
             original=original,
@@ -124,7 +124,7 @@ class UpdateResult(Generic[T]):
         )
     
     @classmethod
-    def update_failure(cls, original: T, exception: Exception):
+    def update_failure(cls, original: T, exception: Exception) -> UpdateResult:
         return cls(
             updated=None,
             original=original,
@@ -133,7 +133,7 @@ class UpdateResult(Generic[T]):
         )
     
     @classmethod
-    def update_timed_out(cls, original: T, exception: Exception):
+    def update_timed_out(cls, original: T, exception: Exception) -> UpdateResult:
         return cls(
             updated=None,
             original=original,
@@ -142,7 +142,7 @@ class UpdateResult(Generic[T]):
         )
     
     @classmethod
-    def nothing_to_update(cls, ) -> UpdateResult[T]:
+    def nothing_to_update(cls, ) -> UpdateResult:
         method = f"{cls.__name__}.nothing_to_update"
         return cls(
             original=None,
@@ -150,5 +150,31 @@ class UpdateResult(Generic[T]):
             exception=None,
             state=UpdateState.ORIGINAL_AND_UPDATE_ARE_SAME,
         )
+    
+    # @classmethod
+    # def success(cls, payload: T) -> UpdateResult:
+    #     return cls(
+    #         updated=None,
+    #         original=None,
+    #         exception=MethodImplementationException(
+    #             msg=f"{cls.__name__} does not implement the f{super.__name__}.success()"
+    #                 f" method. Use the update_success() instead.",
+    #             err_code=MethodImplementationException.ERR_CODE,
+    #         ),
+    #         state=UpdateState.CALLED_UNIMPLEMENTED_METHOD,
+    #     )
+    #
+    # @classmethod
+    # def failure(cls, exception: Exception) -> UpdateResult:
+    #     return cls(
+    #         updated=None,
+    #         original=None,
+    #         exception=MethodImplementationException(
+    #             msg=f"{cls.__name__} does not implement the f{super.__name__}.failure()"
+    #                 f"method. Use the update_failure() instead.",
+    #             err_code=MethodImplementationException.ERR_CODE,
+    #         ),
+    #         state=UpdateState.CALLED_UNIMPLEMENTED_METHOD,
+    #     )
 
     

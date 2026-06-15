@@ -1,7 +1,7 @@
-# src/err/query/exception.py
+# src/err/method/__init__.py
 
 """
-Module: err.route.exception
+Module: err.method.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -11,22 +11,21 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from err import ChessException
-from result import MethodResultType
 
 __all__ = [
-    # ======================# QUERY_EXCEPTION #======================#
-    "QueryException",
+    # ======================# METHOD_NOT_IMPLEMENTED_WARNING #======================#
+    "MethodImplementationException",
 ]
 
-# ======================# QUERY_EXCEPTION #======================#
-class QueryException(ChessException):
+# ======================# METHOD_NOT_IMPLEMENTED_WARNING #======================#
+class MethodImplementationException(ChessException):
     """
     Role:
         -   Error Tracing
-    
+
     Responsibilities:
-        1.  Indicate that a query experienced an error.
-        
+        1.  Indicate that a call was made to an abstract method that the subclass does not implement.
+
     Attributes:
         msg: Optional[str]
         var: Optional[str]
@@ -35,25 +34,23 @@ class QueryException(ChessException):
         cls_name: Optional[str]
         cls_mthd: Optional[str]
         err_code: Optional[str]
-
-    Provides
-
+            
     Provides:
-    
+
     Super Class:
         ChessException
     """
-    MSG = "A query experienced an error."
-    ERR_CODE = "QUERY_EXCEPTION"
+    MSG = "Class does not implement the abstract method."
+    ERR_CODE = "METHOD_NOT_IMPLEMENTED_WARNING"
     
     def __init__(
             self,
             msg: Optional[str] | None = None,
             var: Optional[str] | None = None,
             val: Optional[Any] | None = None,
-            ex: Optional[Exception] | None = None,
-            cls_name: Optional[str] | None = None,
             cls_mthd: Optional[str] | None = None,
+            cls_name: Optional[str] | None = None,
+            ex: Optional[Exception] | None = None,
             err_code: Optional[str] | None = None,
             mthd_rslt_type: Optional[MethodResultType] | None = None,
     ):

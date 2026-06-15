@@ -1,7 +1,7 @@
-# src/result/maneuver/state.py
+# src/result/event/state.py
 
 """
-Module: result.maneuver.state
+Module: result.event.state
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

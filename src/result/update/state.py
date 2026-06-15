@@ -15,3 +15,4 @@ class UpdateState(Enum):
     FAILURE = auto(),
     TIMED_OUT = auto(),
     ORIGINAL_AND_UPDATE_ARE_SAME = auto(),
+    CALLED_UNIMPLEMENTED_METHOD = auto(),

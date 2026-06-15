@@ -1,22 +1,20 @@
-# src/result/maneuver/result.py
+# src/result/event/result.py
 
 """
-Module: result.maneuver.result
+Module: result.event.result
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
 """
 
 from __future__ import annotations
-
-from dataclasses import dataclass
 from typing import Optional
 
 from event import Event
 from result import EventState, Result
 
 
-@dataclass(frozen=True)
+
 class EventResult(Result[Event]):
     """
     Role:
@@ -24,27 +22,41 @@ class EventResult(Result[Event]):
         -   Error Transport
 
     Responsibilities:
-        1.  Contains outcome of a maneuver transaction.
+        1.  Contains outcome of a event transaction.
 
     Attributes:
         exception: Optional[Exception]
-        state: ManeuverState
-        payload: Optional[ManeuverEvent]
+        state: EventState
+        payload: Optional[EventEvent]
         is_timed_out: bool
         is_success: bool
         is_failure: bool
 
     Provides:
-        -   def success(r) -> ManeuverResult[ManeuverEvent]
-        -   def failure(exception: Exception) -> ManeuverResult[ManeuverEvent]
-        -   def timed_out(exception: Exception) -> ManeuverResult[ManeuverEvent]
+        -   def success(r) -> EventResult[EventEvent]
+        -   def failure(exception: Exception) -> EventResult[EventEvent]
+        -   def timed_out(exception: Exception) -> EventResult[EventEvent]
         
     Super Class:
         Result
     """
-    state: EventState
-    payload: Optional[Event] = None
-    exception: Optional[Exception] = None
+    _state: EventState
+    
+    def __init__(
+            self,
+            state: EventState,
+            payload: Optional[Event] | None = None,
+            exception: Optional[Exception] | None = None,
+    ):
+        """
+        Args:
+            state: SearchState
+            payload: Optional[Event]
+            exception: Optional[Exception]
+        """
+        super().__init__(payload=payload, exception=exception)
+        """INTERNAL: Use Search methods instead of direct constructor."""
+        self._state = state
 
 
     @property
@@ -56,8 +68,8 @@ class EventResult(Result[Event]):
         return (
                 self.payload is None and
                 self.exception is not None and
-                self.state == EventState.FAILURE or
-                self.state == EventState.TIMED_OUT
+                self._state == EventState.FAILURE or
+                self._state == EventState.TIMED_OUT
         )
     
     @property
@@ -65,11 +77,11 @@ class EventResult(Result[Event]):
         return (
                 self.payload is None and
                 self.exception is not None and
-                self.state == EventState.TIMED_OUT
+                self._state == EventState.TIMED_OUT
         )
     
     @classmethod
-    def success(cls, payload: Event) -> EventResult[Event]:
+    def success(cls, payload: Event) -> EventResult:
         return cls(
             payload=payload,
             exception=None,
@@ -77,7 +89,7 @@ class EventResult(Result[Event]):
         )
     
     @classmethod
-    def failure(cls, exception: Exception) -> EventResult[Event]:
+    def failure(cls, exception: Exception) -> EventResult:
         return cls(
             payload=None,
             exception=exception,
@@ -85,7 +97,7 @@ class EventResult(Result[Event]):
         )
     
     @classmethod
-    def timed_out(cls, exception: Exception) -> EventResult[Event]:
+    def timed_out(cls, exception: Exception) -> EventResult:
         return cls(
             payload=None,
             exception=exception,

@@ -85,7 +85,7 @@ class InsertionResult(Result[bool]):
         )
     
     @classmethod
-    def success(cls, payload: bool = True) -> InsertionResult[bool]:
+    def success(cls, payload: bool = True) -> InsertionResult:
         return cls(
             payload=True,
             exception=None,
@@ -93,7 +93,7 @@ class InsertionResult(Result[bool]):
         )
     
     @classmethod
-    def failure(cls, exception: Exception) -> InsertionResult[bool]:
+    def failure(cls, exception: Exception) -> InsertionResult:
         return cls(
             payload=False,
             exception=exception,
@@ -101,7 +101,7 @@ class InsertionResult(Result[bool]):
         )
     
     @classmethod
-    def timed_out(cls, exception: Exception) -> InsertionResult[bool]:
+    def timed_out(cls, exception: Exception) -> InsertionResult:
         return cls(
             payload=False,
             exception=exception,
@@ -109,7 +109,7 @@ class InsertionResult(Result[bool]):
         )
     
     @classmethod
-    def already_inserted(cls) -> InsertionResult[bool]:
+    def already_inserted(cls) -> InsertionResult:
         return cls(
             payload=True,
             exception=None,

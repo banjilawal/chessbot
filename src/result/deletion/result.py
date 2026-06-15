@@ -36,8 +36,8 @@ class DeletionResult(Result, Generic[T]):
     Provides:
         -   def success(payload: T) -> DeletionResu[T]
         -   def failure(exception: Exception) -> DeletionResu[T]
-        -   def timed_out(exception: Exception) -> DeletionResult[T]
-        -   def nothing_to_delete() -> DeletionResult[T]
+        -   def timed_out(exception: Exception) -> DeletionResult
+        -   def nothing_to_delete() -> DeletionResult
 
     Super Class:
         Result
@@ -101,7 +101,7 @@ class DeletionResult(Result, Generic[T]):
         )
     
     @classmethod
-    def success(cls, payload: T) -> DeletionResult[T]:
+    def success(cls, payload: T) -> DeletionResult:
         return cls(
             payload=payload,
             exception=None,
@@ -109,7 +109,7 @@ class DeletionResult(Result, Generic[T]):
         )
     
     @classmethod
-    def failure(cls, exception: Exception) -> DeletionResult[T]:
+    def failure(cls, exception: Exception) -> DeletionResult:
         return cls(
             payload=None,
             exception=exception,
@@ -117,7 +117,7 @@ class DeletionResult(Result, Generic[T]):
         )
     
     @classmethod
-    def timed_out(cls, exception: Exception) -> DeletionResult[T]:
+    def timed_out(cls, exception: Exception) -> DeletionResult:
         return cls(
             payload=None,
             exception=exception,
@@ -125,7 +125,7 @@ class DeletionResult(Result, Generic[T]):
         )
     
     @classmethod
-    def nothing_to_delete(cls) -> DeletionResult[T]:
+    def nothing_to_delete(cls) -> DeletionResult:
         return cls(
             payload=None,
             exception=None,

@@ -32,9 +32,9 @@ class ComputationResult(Result[T], Generic[T]):
         is_failure: bool
 
     Provides:
-        -   def success(payload: T) -> ComputationResult[T]
-        -   def failure(exception: Exception) -> ComputationResult[T]
-        -   def timed_out(exception: Exception) -> ComputationResult[T]
+        -   def success(payload: T) -> ComputationResult
+        -   def failure(exception: Exception) -> ComputationResult
+        -   def timed_out(exception: Exception) -> ComputationResult
         
     Super Class:
         Result
@@ -86,7 +86,7 @@ class ComputationResult(Result[T], Generic[T]):
         )
     
     @classmethod
-    def success(cls, payload: T) -> ComputationResult[T]:
+    def success(cls, payload: T) -> ComputationResult:
         return cls(
             payload=payload,
             exception=None,
@@ -94,7 +94,7 @@ class ComputationResult(Result[T], Generic[T]):
         )
     
     @classmethod
-    def failure(cls, exception: Exception) -> ComputationResult[T]:
+    def failure(cls, exception: Exception) -> ComputationResult:
         return cls(
             payload=None,
             exception=exception,
@@ -102,7 +102,7 @@ class ComputationResult(Result[T], Generic[T]):
         )
     
     @classmethod
-    def timed_out(cls, exception: Exception) -> ComputationResult[T]:
+    def timed_out(cls, exception: Exception) -> ComputationResult:
         return cls(
             payload=None,
             exception=exception,

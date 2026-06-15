@@ -34,9 +34,9 @@ class BuildResult(Result[T], Generic[T]):
         is_failure: bool
 
     Provides:
-        -   def success(payload: T) -> BuildResult[T]
-        -   def failure(exception: Exception) -> BuildResult[T]
-        -   def timed_out(cls, exception: Exception) -> BuildResult[T]:
+        -   def success(payload: T) -> BuildResult
+        -   def failure(exception: Exception) -> BuildResult
+        -   def timed_out(cls, exception: Exception) -> BuildResult:
 
     Super Class:
         Result
@@ -88,21 +88,21 @@ class BuildResult(Result[T], Generic[T]):
         )
     
     @classmethod
-    def success(cls, payload: T) -> BuildResult[T]:
+    def success(cls, payload: T) -> BuildResult:
         return cls(
             payload=payload,
             state=BuildState.SUCCESS,
         )
     
     @classmethod
-    def failure(cls, exception: Exception) -> BuildResult[T]:
+    def failure(cls, exception: Exception) -> BuildResult:
         return cls(
             exception=exception,
             state=BuildState.FAILURE,
         )
     
     @classmethod
-    def timed_out(cls, exception: Exception) -> BuildResult[T]:
+    def timed_out(cls, exception: Exception) -> BuildResult:
         return cls(
             exception=exception,
             state=BuildState.TIMED_OUT,

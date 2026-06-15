@@ -42,12 +42,14 @@ class SearchResult(Result[T], Generic[T]):
         Result
     """
     _state: SearchState
+    _payload: Optional[List[T]] = None
+    
     
     def __init__(
             self,
             state: SearchState,
-            payload: Optional[T] = None,
-            exception: Optional[Exception] = None,
+            payload: Optional[List[T]] | None = None,
+            exception: Optional[Exception] | None = None,
     ):
         """
         Args:
@@ -83,7 +85,7 @@ class SearchResult(Result[T], Generic[T]):
     def is_empty(self) -> bool:
         return (
                 self.payload is None and
-                self.exception is not None and
+                self.exception is None and
                 self._state == SearchState.NOTHING_FOUND
         )
     
@@ -96,7 +98,7 @@ class SearchResult(Result[T], Generic[T]):
         )
     
     @classmethod
-    def success(cls, payload: List[T]) -> SearchResult[List[T]]:
+    def success(cls, payload: List[T]) -> SearchResult:
         return cls(
             payload=payload,
             exception=None,
@@ -104,7 +106,7 @@ class SearchResult(Result[T], Generic[T]):
         )
     
     @classmethod
-    def failure(cls, exception: Exception) -> SearchResult[T]:
+    def failure(cls, exception: Exception) -> SearchResult:
         return cls(
             payload=None,
             exception=exception,
@@ -112,7 +114,7 @@ class SearchResult(Result[T], Generic[T]):
         )
     
     @classmethod
-    def timed_out(cls, exception: Exception) -> SearchResult[T]:
+    def timed_out(cls, exception: Exception) -> SearchResult:
         return cls(
             payload=None,
             exception=exception,
@@ -120,7 +122,7 @@ class SearchResult(Result[T], Generic[T]):
         )
     
     @classmethod
-    def empty(cls) -> SearchResult[T]:
+    def empty(cls) -> SearchResult:
         return cls(
             payload=None,
             exception=None,

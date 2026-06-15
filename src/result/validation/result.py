@@ -14,6 +14,7 @@ from result.validation import ValidationState
 
 T = TypeVar("T")
 
+
 class ValidationResult(Result[T], Generic[T]):
     """
     Role:
@@ -66,7 +67,11 @@ class ValidationResult(Result[T], Generic[T]):
     
     @property
     def is_success(self) -> bool:
-        return not self.is_failure
+        return (
+            self.exception is None and
+            self.payload is not None and
+            self._state == ValidationState.SUCCESS
+        )
     
     @property
     def is_failure(self) -> bool:
@@ -86,21 +91,21 @@ class ValidationResult(Result[T], Generic[T]):
         )
     
     @classmethod
-    def success(cls, payload: T) -> ValidationResult[T]:
+    def success(cls, payload: T) -> ValidationResult:
         return cls(
             payload=payload,
             state=ValidationState.SUCCESS,
         )
     
     @classmethod
-    def failure(cls, exception: Exception) -> ValidationResult[T]:
+    def failure(cls, exception: Exception) -> ValidationResult:
         return cls(
             exception=exception,
             state=ValidationState.FAILURE,
         )
     
     @classmethod
-    def timed_out(cls, exception: Exception) -> ValidationResult[T]:
+    def timed_out(cls, exception: Exception) -> ValidationResult:
         return cls(
             exception=exception,
             state=ValidationState.TIMED_OUT,

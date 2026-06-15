@@ -9,7 +9,7 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from typing import Optional, TypeVar
+from typing import Optional
 
 from report import Report
 from result import AnalysisState, Result

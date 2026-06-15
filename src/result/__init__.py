@@ -14,8 +14,8 @@ from .analysis import *
 from .build import *
 from .computation import *
 from .deletion import *
+from .event import *
 from .insertion import *
-from maneuver import *
 from .search import *
 from .update import *
 from .validation import*
