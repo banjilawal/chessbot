@@ -9,7 +9,7 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import ContextCollisionException
+from err import ContextCollisionDetectorException
 
 __all__ = [
     # ======================# VECTOR_CONTEXT_COLLISION_FAILURE #======================#
@@ -17,7 +17,7 @@ __all__ = [
 ]
 
 # ======================# VECTOR_CONTEXT_COLLISION_FAILURE #======================#
-class VectorContextCollisionException(ContextCollisionException):
+class VectorContextCollisionException(ContextCollisionDetectorException):
     """
     Role:
         -   Error Tracing

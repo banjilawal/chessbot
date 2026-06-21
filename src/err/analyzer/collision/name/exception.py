@@ -10,15 +10,15 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import CollisionException
+from err import CollisionDetectorException
 
 __all__ = [
     # ======================# NAME_COLLISION_ERROR #======================#
-    "NameCollisionException",
+    "NameCollisionDetectorException",
 ]
 
 # ======================# NAME_COLLISION_ERROR #======================#
-class NameCollisionException(CollisionException):
+class NameCollisionDetectorException(CollisionDetectorException):
     """
     Role:
         -   Error Tracing

@@ -10,16 +10,16 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import CollisionException
+from err import CollisionDetectorException
 
 
 __all__ = [
     # ======================# RANK_COLLISION_FAILURE #======================#
-    "RankCollisionException",
+    "RankCollisionDetectorException",
 ]
 
 # ======================# RANK_COLLISION_FAILURE #======================#
-class RankCollisionException(CollisionException):
+class RankCollisionDetectorException(CollisionDetectorException):
     """
     Role:
         -   Error Tracing

@@ -10,16 +10,16 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import CollisionException
+from err import CollisionDetectorException
 
 
 __all__ = [
     # ======================# CONTEXT_COLLISION_FAILURE #======================#
-    "ContextCollisionException",
+    "ContextCollisionDetectorException",
 ]
 
 # ======================# CONTEXT_COLLISION_FAILURE #======================#
-class ContextCollisionException(CollisionException):
+class ContextCollisionDetectorException(CollisionDetectorException):
     """
     Role:
         -   Error Tracing

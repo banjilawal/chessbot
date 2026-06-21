@@ -12,4 +12,4 @@ version: 1.0.1
 # Packages
 
 # Modules
-from .exception import EdgeCollisionException
+from .exception import EdgeCollisionDetectorException

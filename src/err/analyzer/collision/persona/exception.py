@@ -10,16 +10,16 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import CollisionException
+from err import CollisionDetectorException
 
 
 __all__ = [
     # ======================# PERSONA_COLLISION_FAILURE #======================#
-    "PersonaCollisionException",
+    "PersonaCollisionDetectorException",
 ]
 
 # ======================# PERSONA_COLLISION_FAILURE #======================#
-class PersonaCollisionException(CollisionException):
+class PersonaCollisionDetectorException(CollisionDetectorException):
     """
     Role:
         -   Error Tracing

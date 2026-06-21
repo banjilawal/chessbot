@@ -10,19 +10,19 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import CollisionException
+from err import CollisionDetectorException
 
 
 __all__ = [
     # ======================# TOKEN_COLLISION_FAILURE #======================#
-    "TokenCollisionException",
+    "TokenCollisionDetectorException",
 ]
 
 from result.category import MethodResultType
 
 
 # ======================# TOKEN_COLLISION_FAILURE #======================#
-class TokenCollisionException(CollisionException):
+class TokenCollisionDetectorException(CollisionDetectorException):
     """
     Role:
         -   Error Tracing

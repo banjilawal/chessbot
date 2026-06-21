@@ -11,16 +11,16 @@ from __future__ import annotations
 from typing import Any, Optional
 
 
-from err import CollisionException
+from err import CollisionDetectorException
 
 
 __all__ = [
     # ======================# BOARD_COLLISION_FAILURE #======================#
-    "BoardCollisionException",
+    "BoardCollisionDetectorException",
 ]
 
 # ======================# BOARD_COLLISION_FAILURE #======================#
-class BoardCollisionException(CollisionException):
+class BoardCollisionDetectorException(CollisionDetectorException):
     """
     Role:
         -   Error Tracing

@@ -10,22 +10,23 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import CollisionException
+from err import CollisionDetectorException
+from result import MethodResultType
 
 
 __all__ = [
-    # ======================# SQUARE_COLLISION_FAILURE #======================#
-    "SquareCollisionException",
+    # ======================# SQUARE_COLLISION_DETECTOR_FAILURE #======================#
+    "SquareCollisionDetectorException",
 ]
 
-# ======================# SQUARE_COLLISION_FAILURE #======================#
-class SquareCollisionException(CollisionException):
+# ======================# SQUARE_COLLISION_DETECTOR_FAILURE #======================#
+class SquareCollisionDetectorException(CollisionDetectorException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a SquareCollision step failed.
+        1.  Indicate that a SquareCollisionDetector experienced an error.
 
     Attributes:
         msg: Optional[str]
@@ -42,8 +43,8 @@ class SquareCollisionException(CollisionException):
     Super Class:
         CollisionException
     """
-    MSG = "SquareCollision step failed"
-    ERR_CODE = "SQUARE_COLLISION_FAILURE"
+    MSG = "SquareCollisionDeter experienced an error."
+    ERR_CODE = "SQUARE_COLLISION_DETECTOR_FAILURE"
     
     def __init__(
             self,

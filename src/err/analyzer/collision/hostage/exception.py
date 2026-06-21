@@ -10,16 +10,16 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import CollisionException
+from err import CollisionDetectorException
 
 
 __all__ = [
     # ======================# HOSTAGE_COLLISION_FAILURE #======================#
-    "HostageCollisionException",
+    "HostageCollisionDetectorException",
 ]
 
 # ======================# HOSTAGE_COLLISION_FAILURE #======================#
-class HostageCollisionException(CollisionException):
+class HostageCollisionDetectorException(CollisionDetectorException):
     """
     Role:
         -   Error Tracing

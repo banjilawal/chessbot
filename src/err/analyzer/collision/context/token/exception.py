@@ -10,7 +10,7 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import CollisionException
+from err import CollisionDetectorException
 
 
 __all__ = [
@@ -18,11 +18,11 @@ __all__ = [
     "TokenContextCollisionException",
 ]
 
-from err import ContextCollisionException
+from err import ContextCollisionDetectorException
 
 
 # ======================# TOKEN_CONTEXT_COLLISION_FAILURE #======================#
-class TokenContextCollisionException(ContextCollisionException):
+class TokenContextCollisionException(ContextCollisionDetectorException):
     """
     Role:
         -   Error Tracing

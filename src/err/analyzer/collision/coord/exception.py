@@ -10,15 +10,15 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import CollisionException
+from err import CollisionDetectorException
 
 __all__ = [
     # ======================# COORD_COLLISION_ERROR #======================#
-    "CoordCollisionException",
+    "CoordCollisionDetectorException",
 ]
 
 # ======================# COORD_COLLISION_ERROR #======================#
-class CoordCollisionException(CollisionException):
+class CoordCollisionDetectorException(CollisionDetectorException):
     """
     Role:
         -   Error Tracing

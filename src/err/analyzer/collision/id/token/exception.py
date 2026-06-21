@@ -10,7 +10,7 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import IdCollisionException
+from err import IdCollisionDetectorException
 
 __all__ = [
     # ======================# TOKEN_ID_COLLISION_ERROR #======================#
@@ -18,7 +18,7 @@ __all__ = [
 ]
 
 # ======================# TOKEN_ID_COLLISION_ERROR #======================#
-class TokenIdCollisionException(IdCollisionException):
+class TokenIdCollisionException(IdCollisionDetectorException):
     """
     Role:
         -   Error Tracing

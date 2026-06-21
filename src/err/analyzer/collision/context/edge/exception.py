@@ -9,7 +9,7 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import CollisionException
+from err import CollisionDetectorException
 
 
 __all__ = [
@@ -17,11 +17,11 @@ __all__ = [
     "EdgeContextCollisionException",
 ]
 
-from err import ContextCollisionException
+from err import ContextCollisionDetectorException
 
 
 # ======================# EDGE_CONTEXT_COLLISION_FAILURE #======================#
-class EdgeContextCollisionException(ContextCollisionException):
+class EdgeContextCollisionException(ContextCollisionDetectorException):
     """
     Role:
         -   Error Tracing

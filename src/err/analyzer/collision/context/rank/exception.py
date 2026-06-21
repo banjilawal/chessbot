@@ -9,7 +9,7 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import CollisionException
+from err import CollisionDetectorException
 
 
 __all__ = [
@@ -17,11 +17,11 @@ __all__ = [
     "RankContextCollisionException",
 ]
 
-from err import ContextCollisionException
+from err import ContextCollisionDetectorException
 
 
 # ======================# RANK_CONTEXT_COLLISION_FAILURE #======================#
-class RankContextCollisionException(ContextCollisionException):
+class RankContextCollisionException(ContextCollisionDetectorException):
     """
     Role:
         -   Error Tracing

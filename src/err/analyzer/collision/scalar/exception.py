@@ -10,16 +10,16 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import CollisionException
+from err import CollisionDetectorException
 
 
 __all__ = [
     # ======================# SCALAR_COLLISION_FAILURE #======================#
-    "ScalarCollisionException",
+    "ScalarCollisionDetectorException",
 ]
 
 # ======================# SCALAR_COLLISION_FAILURE #======================#
-class ScalarCollisionException(CollisionException):
+class ScalarCollisionDetectorException(CollisionDetectorException):
     """
     Role:
         -   Error Tracing

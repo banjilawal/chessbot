@@ -10,16 +10,16 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import CollisionException
+from err import CollisionDetectorException
 
 
 __all__ = [
     # ======================# TEAM_COLLISION_FAILURE #======================#
-    "TeamCollisionException",
+    "TeamCollisionDetectorException",
 ]
 
 # ======================# TEAM_COLLISION_FAILURE #======================#
-class TeamCollisionException(CollisionException):
+class TeamCollisionDetectorException(CollisionDetectorException):
     """
     Role:
         -   Error Tracing

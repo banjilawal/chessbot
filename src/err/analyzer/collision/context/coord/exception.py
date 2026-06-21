@@ -9,7 +9,7 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import CollisionException
+from err import CollisionDetectorException
 
 
 __all__ = [
@@ -17,11 +17,11 @@ __all__ = [
     "CoordContextCollisionException",
 ]
 
-from err import ContextCollisionException
+from err import ContextCollisionDetectorException
 
 
 # ======================# COORD_CONTEXT_COLLISION_FAILURE #======================#
-class CoordContextCollisionException(ContextCollisionException):
+class CoordContextCollisionException(ContextCollisionDetectorException):
     """
     Role:
         -   Error Tracing

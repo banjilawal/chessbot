@@ -29,7 +29,6 @@ from .schema import *
 from .square import *
 from .team import *
 from .token import *
-from .vector import *
 
 # Modules
-from .exception import CollisionException
+from .exception import CollisionDetectorException

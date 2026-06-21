@@ -14,4 +14,4 @@ from .square import *
 from .token import *
 
 # Modules
-from .exception import NameCollisionException
+from .exception import NameCollisionDetectorException

@@ -10,16 +10,16 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import CollisionException
+from err import CollisionDetectorException
 
 
 __all__ = [
     # ======================# FORMATION_COLLISION_FAILURE #======================#
-    "FormationCollisionException",
+    "FormationCollisionDetectorException",
 ]
 
 # ======================# FORMATION_COLLISION_FAILURE #======================#
-class FormationCollisionException(CollisionException):
+class FormationCollisionDetectorException(CollisionDetectorException):
     """
     Role:
         -   Error Tracing

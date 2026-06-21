@@ -10,21 +10,24 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import ChessException
+from err import AnalyzerException
 
 __all__ = [
-    # ======================# COLLISION_FAILURE #======================#
-    "CollisionException",
+    # ======================# COLLISION_DETECTOR_ERROR #======================#
+    "CollisionDetectorException",
 ]
 
-# ======================# COLLISION_FAILURE #======================#
-class CollisionException(ChessException):
+from result import MethodResultType
+
+
+# ======================# COLLISION_DETECTOR_ERROR #======================#
+class CollisionDetectorException(AnalyzerException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that two entities share attribute value that should be unique.
+        1.  Indicate that a collision detector that prevented it from completing its task.
     Attributes:
         msg: Optional[str]
         var: Optional[str]
@@ -38,12 +41,11 @@ class CollisionException(ChessException):
     Provides:
 
     Super Class:
-        ChessException
+        AnalyzerException
     """
     MSG = "Collision step failed."
-    ERR_CODE = "COLLISION_FAILURE"
-    MTHD_RSLT_TYPE = "CollisionResult"
-    _mthd_rslt_type = Optional[str]
+    ERR_CODE = "COLLISION_DETECTOR_ERROR"
+    MTHD_RSLT_TYPE = MethodResultType.ANALYSIS_RESULT
     
     def __init__(
             self,
@@ -68,8 +70,8 @@ class CollisionException(ChessException):
             mthd_rslt_type: Optional[MethodResultType]
         """
         msg = msg or self.MSG
-        mthd_rslt_type = self.MTHD_RSLT_TYPE
         err_code = err_code or self.ERR_CODE
+        mthd_rslt_type = self.MTHD_RSLT_TYPE
         super().__init__(
             ex=ex,
             msg=msg,
@@ -80,11 +82,3 @@ class CollisionException(ChessException):
             cls_mthd=cls_mthd,
             mthd_rslt_type=mthd_rslt_type,
         )
-        self._mthd_rslt_type = mthd_rslt
-    
-    @property
-    def mthd_rslt(self) -> Optional[str]:
-        return self._mthd_rslt
-    
-    def __str__(self):
-        return f"{super().__str__()},  mthd_rslt_type:{self._mthd_rslt}"

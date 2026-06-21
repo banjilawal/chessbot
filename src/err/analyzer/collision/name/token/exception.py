@@ -10,7 +10,7 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import NameCollisionException
+from err import NameCollisionDetectorException
 
 __all__ = [
     # ======================# TOKEN_DESIGNATION_COLLISION_ERROR #======================#
@@ -18,7 +18,7 @@ __all__ = [
 ]
 
 # ======================# TOKEN_DESIGNATION_COLLISION_ERROR #======================#
-class TokenDesignationCollisionException(NameCollisionException):
+class TokenDesignationCollisionException(NameCollisionDetectorException):
     """
     Role:
         -   Error Tracing

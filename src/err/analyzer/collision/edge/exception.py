@@ -10,16 +10,16 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import CollisionException
+from err import CollisionDetectorException
 
 
 __all__ = [
     # ======================# EDGE_COLLISION_FAILURE #======================#
-    "EdgeCollisionException",
+    "EdgeCollisionDetectorException",
 ]
 
 # ======================# EDGE_COLLISION_FAILURE #======================#
-class EdgeCollisionException(CollisionException):
+class EdgeCollisionDetectorException(CollisionDetectorException):
     """
     Role:
         -   Error Tracing
