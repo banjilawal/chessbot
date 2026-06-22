@@ -13,11 +13,13 @@ version: 1.0.0
 from .analyzer import *
 from .array import *
 from .bidirectional import *
+from .collision import *
 from .config import *
-from .inconsistent import *
 from .controller import *
+from .detector import *
 from .empty import *
 from .factory import *
+from .inconsistent import *
 from .math import *
 from .method import *
 from .model import *
