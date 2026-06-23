@@ -10,6 +10,7 @@ version: 1.0.0
 # =========== ERR.COLLISION PACKAGE ===========#
 
 # Packages
+from .coord import *
 from .id import *
 from .name import *
 

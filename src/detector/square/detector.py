@@ -10,7 +10,10 @@ version: 1.0.1
 from __future__ import annotations
 
 from detector import Detector
-from err import SquareCollisionDetectorException
+from err import (
+    SquareCollisionDetectorException, SquareCoordCollisionException, SquareIdCollisionException,
+    SquareNameCollisionException
+)
 from model import Square
 from report import CollisionReport
 from result import AnalysisResult
@@ -36,16 +39,16 @@ class SquareCollisionDetector(Detector[Square]):
             ) -> CollisionReport
             
      Super:
-        -   CollisionAnalyst[T]
+        -   Detector[T]
     """
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def analyze(
+    def execute(
             cls,
             target: Square,
             square_stack: SquareStackService,
-    ) -> AnalysisResult:
+    ) -> AnalysisResult[CollisionReport]:
         """
         Report if any schema member has the same id, schema or
         coord as the target.
@@ -85,53 +88,57 @@ class SquareCollisionDetector(Detector[Square]):
         # --- Loop through the collider_candidates to find matches. ---#
         
         for square in square_stack.items:
-            # Handle the case that, the target shares its id with a collider_candidates member.
+            # Handle the case that, a candidate already has the target's id.
             if square.id == target.id:
-                # Return target, the collider, and the exception explaining the collision.
-                return AnalysisResult.failure(
-                    SquareCollisionDetectorException(
-                        cls_mthd=method,
-                        cls_name=cls.__class__.__name__,
-                        msg=SquareCollisionDetectorException.MSG,
-                        err_code=SquareCollisionDetectorException.ERR_CODE,
+                # Return the collision details in the report.
+                return AnalysisResult.completed(
+                    CollisionReport.occurrence(
+                        target=target,
+                        collider=square,
+                        colliding_variable=f"id",
+                        collision_value=target.id,
                         exception=SquareIdCollisionException(
-                            var="id",
-                            val=f"{square.id}",
+                            cls_mthd=method,
+                            cls_name=cls.__class__.__name__,
                             msg=SquareIdCollisionException.MSG,
-                            err_code=SquareIdCollisionException.ERR_CODE
+                            err_code=SquareIdCollisionException.ERR_CODE,
                         )
                     )
                 )
-            # Handle the case that, the target shares its schema with a collider_candidates member.
-            if square.designation.upper() == target.name.upper():
-                # Return target, the collider, and the exception explaining the collision.
-                return CollisionReport.collision_occurred(
-                    var="schema",
-                    target=target,
-                    collider=square,
-                    val=f"{square.designation}",
-                    exception=SquareNameCollisionException(
-                            var="schema",
-                            val=f"{square.designation}",
+            # Handle the case that, a candidate already has the target's name.
+            if square.name.upper() == target.name.upper():
+                # Return the collision details in the report.
+                return AnalysisResult.completed(
+                    CollisionReport.occurrence(
+                        target=target,
+                        collider=square,
+                        colliding_variable=f"name",
+                        collision_value=target.name,
+                        exception=SquareNameCollisionException(
+                            cls_mthd=method,
+                            cls_name=cls.__class__.__name__,
                             msg=SquareNameCollisionException.MSG,
                             err_code=SquareNameCollisionException.ERR_CODE,
+                        )
                     )
                 )
-            # Handle the case that, the target shares its coord with a collider_candidates member.
+            # Handle the case that, a candidate already has the target's coord.
             if square.coord == target.coord:
-                # Return target, the collider, and the exception explaining the collision.
-                return CollisionReport.collision_occurred(
-                    var="coord",
-                    target=target,
-                    collider=square,
-                    val=f"{square.coord}",
-                    exception=SquareCoordCollisionException(
-                            var="coord",
-                            val=f"{square.coord}",
+                # Return the collision details in the report.
+                return AnalysisResult.completed(
+                    CollisionReport.occurrence(
+                        target=target,
+                        collider=square,
+                        colliding_variable=f"coord",
+                        collision_value=target.coord,
+                        exception=SquareCoordCollisionException(
+                            cls_mthd=method,
+                            cls_name=cls.__class__.__name__,
                             msg=SquareCoordCollisionException.MSG,
                             err_code=SquareCoordCollisionException.ERR_CODE,
+                        )
                     )
                 )
         # --- Send the no collisions detected report. ---#
-        return CollisionReport.no_collision()
+        return AnalysisResult.completed(CollisionReport.no_collisions(target=target))
     

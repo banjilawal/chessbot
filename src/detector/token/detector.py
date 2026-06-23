@@ -90,7 +90,7 @@ class TokenCollisionDetector(CollisionDetector[Token]):
             if token.id == blueprint.id:
                 # Return the collider, id, and the exception.
                 return AnalysisResult.success(
-                    CollisionReport.collision_occurred(
+                    CollisionReport.occurrence(
                         collider=token,
                         colliding_variable="id",
                         collision_value=token.id,
@@ -106,7 +106,7 @@ class TokenCollisionDetector(CollisionDetector[Token]):
             if token.designation.upper() == blueprint.formation.designation.upper():
                 # Return the collider, designation, and the exception.
                 return AnalysisResult.success(
-                    CollisionReport.collision_occurred(
+                    CollisionReport.occurrence(
                         collider=token,
                         colliding_variable="designation",
                         collision_value=f"{token.designation}",
@@ -122,7 +122,7 @@ class TokenCollisionDetector(CollisionDetector[Token]):
             if token.opening_square_name.upper()== blueprint.formation.square_name.upper():
                 # Return the collider, designation, and the exception.
                 return AnalysisResult.success(
-                    CollisionReport.collision_occurred(
+                    CollisionReport.occurrence(
                         collider=token,
                         colliding_variable="opening_square_name",
                         collision_value=f"{token.opening_square_name}",
@@ -135,5 +135,5 @@ class TokenCollisionDetector(CollisionDetector[Token]):
                     )
                 )
         # --- Send the no collisions detected report. ---#
-        return AnalysisResult.success(CollisionReport.no_collision())
+        return AnalysisResult.success(CollisionReport.no_collisions())
     

@@ -11,7 +11,7 @@ from __future__ import annotations
 
 
 from analyzer import CollisionAnalyzer
-from err import SquareCollisionDetectorException
+from err import SquareCollisionDetectorException, SquareIdCollisionException
 from model import Square
 from report import CollisionReport
 from result import AnalysisResult
@@ -46,7 +46,7 @@ class SquareCollisionDetector(CollisionAnalyzer[Square]):
             cls,
             target: Square,
             square_stack: SquareStackService,
-    ) -> CollisionReport[Square]:
+    ) -> CollisionReport:
         """
         Report if any schema member has the same id, schema or
         coord as the target.
@@ -91,24 +91,23 @@ class SquareCollisionDetector(CollisionAnalyzer[Square]):
             # Handle the case that, the target shares its id with a collider_candidates member.
             if square.id == target.id:
                 # Return target, the collider, and the exception explaining the collision.
-                return AnalysisResult.failure(
-                    SquareCollisionDetectorException(
-                        cls_mthd=method,
-                        cls_name=cls.__class__.__name__,
-                        msg=SquareCollisionDetectorException.MSG,
-                        err_code=SquareCollisionDetectorException.ERR_CODE,
+                return AnalysisResult.success(
+                    CollisionReport.occurrence(
+                        target=target,
+                        collider=square,
+                        colliding_variable=f"id",
+                        collision_value=target.id,
                         exception=SquareIdCollisionException(
-                            var="id",
-                            val=f"{square.id}",
+                            cls_mthd=method,
+                            cls_name=cls.__class__.__name__,
                             msg=SquareIdCollisionException.MSG,
-                            err_code=SquareIdCollisionException.ERR_CODE
+                            err_code=SquareIdCollisionException.ERR_CODE,
                         )
                     )
-                )
             # Handle the case that, the target shares its schema with a collider_candidates member.
             if square.designation.upper() == target.name.upper():
                 # Return target, the collider, and the exception explaining the collision.
-                return CollisionReport.collision_occurred(
+                return CollisionReport.occurrence(
                     var="schema",
                     target=target,
                     collider=square,
@@ -123,7 +122,7 @@ class SquareCollisionDetector(CollisionAnalyzer[Square]):
             # Handle the case that, the target shares its coord with a collider_candidates member.
             if square.coord == target.coord:
                 # Return target, the collider, and the exception explaining the collision.
-                return CollisionReport.collision_occurred(
+                return CollisionReport.occurrence(
                     var="coord",
                     target=target,
                     collider=square,
@@ -136,5 +135,5 @@ class SquareCollisionDetector(CollisionAnalyzer[Square]):
                     )
                 )
         # --- Send the no collisions detected report. ---#
-        return CollisionReport.no_collision()
+        return CollisionReport.no_collisions()
     

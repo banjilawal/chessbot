@@ -96,7 +96,7 @@ class TokenStackPush:
             dataset=token_stack.items,
         )
         # Handle the case that, the either a collision was detected or token wis not safe.
-        if not collision_detection_result.is_no_collision:
+        if not collision_detection_result.is_no_collisions:
             # Return the exception chain on failure
             return InsertionResult.failure(
                 TokenStackPushException(
