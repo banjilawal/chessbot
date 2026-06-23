@@ -12,6 +12,7 @@ from __future__ import annotations
 from abc import ABC
 from typing import Generic, TypeVar
 
+from blueprint import Blueprint
 from report import CollisionReport
 from result import AnalysisResult
 from stack import StackService
@@ -24,5 +25,11 @@ class Detector(ABC, Generic[T]):
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def execute(cls, target: T, stack: StackService[T], *args, **kwargs,) -> AnalysisResult[CollisionReport]:
+    def execute(
+            cls,
+            target_set: Blueprint[T],
+            stack: StackService[T],
+            *args,
+            **kwargs,
+    ) -> AnalysisResult[CollisionReport]:
         pass

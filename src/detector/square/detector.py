@@ -9,6 +9,7 @@ version: 1.0.1
 
 from __future__ import annotations
 
+from blueprint import SquareBlueprint
 from detector import Detector
 from err import (
     SquareCollisionDetectorException, SquareCoordCollisionException, SquareIdCollisionException,
@@ -46,7 +47,7 @@ class SquareCollisionDetector(Detector[Square]):
     @LoggingLevelRouter.monitor
     def execute(
             cls,
-            target: Square,
+            target_set: SquareBlueprint,
             square_stack: SquareStackService,
     ) -> AnalysisResult[CollisionReport]:
         """
@@ -61,7 +62,7 @@ class SquareCollisionDetector(Detector[Square]):
                     *   The collider.
                     *   The exception indicating which unique property is shared.
         Args:
-            target: Square
+            target_set: Square
             square_stack: SquareStackService
         Returns:
                CollisionReport[Square]
@@ -74,7 +75,7 @@ class SquareCollisionDetector(Detector[Square]):
         method = f"{cls.__class__.__name__}.detect"
         
         # Handle the case that, the target does not pass a validation check.
-        validation_result = square_stack.microservice.validator.validate(target)
+        validation_result = square_stack.microservice.validator.validate(target_set)
         if validation_result.is_failure:
             return AnalysisResult.failure(
                 SquareCollisionDetectorException(
@@ -89,14 +90,14 @@ class SquareCollisionDetector(Detector[Square]):
         
         for square in square_stack.items:
             # Handle the case that, a candidate already has the target's id.
-            if square.id == target.id:
+            if square.id == target_set.id:
                 # Return the collision details in the report.
                 return AnalysisResult.completed(
                     CollisionReport.occurrence(
-                        target=target,
+                        target_set=target_set,
                         collider=square,
                         colliding_variable=f"id",
-                        collision_value=target.id,
+                        collision_value=target_set.id,
                         exception=SquareIdCollisionException(
                             cls_mthd=method,
                             cls_name=cls.__class__.__name__,
@@ -106,14 +107,14 @@ class SquareCollisionDetector(Detector[Square]):
                     )
                 )
             # Handle the case that, a candidate already has the target's name.
-            if square.name.upper() == target.name.upper():
+            if square.name.upper() == target_set.name.upper():
                 # Return the collision details in the report.
                 return AnalysisResult.completed(
                     CollisionReport.occurrence(
-                        target=target,
+                        target_set=target_set,
                         collider=square,
                         colliding_variable=f"name",
-                        collision_value=target.name,
+                        collision_value=target_set.name,
                         exception=SquareNameCollisionException(
                             cls_mthd=method,
                             cls_name=cls.__class__.__name__,
@@ -123,14 +124,14 @@ class SquareCollisionDetector(Detector[Square]):
                     )
                 )
             # Handle the case that, a candidate already has the target's coord.
-            if square.coord == target.coord:
+            if square.coord == target_set.coord:
                 # Return the collision details in the report.
                 return AnalysisResult.completed(
                     CollisionReport.occurrence(
-                        target=target,
+                        target_set=target_set,
                         collider=square,
                         colliding_variable=f"coord",
-                        collision_value=target.coord,
+                        collision_value=target_set.coord,
                         exception=SquareCoordCollisionException(
                             cls_mthd=method,
                             cls_name=cls.__class__.__name__,
@@ -140,5 +141,5 @@ class SquareCollisionDetector(Detector[Square]):
                     )
                 )
         # --- Send the no collisions detected report. ---#
-        return AnalysisResult.completed(CollisionReport.no_collisions(target=target))
+        return AnalysisResult.completed(CollisionReport.no_collisions(target_set))
     
