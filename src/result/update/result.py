@@ -11,12 +11,12 @@ from __future__ import annotations
 from typing import Generic, Optional, TypeVar
 
 from err import MethodImplementationException
-from result import UpdateState
+from result import Result, UpdateState
 
 T = TypeVar("T")
 
 
-class UpdateResult(Generic[T]):
+class UpdateResult(Result, Generic[T]):
     """
     Role:
         -   Data Transport
@@ -56,10 +56,9 @@ class UpdateResult(Generic[T]):
             exception: Optional[Exception] = None,
     ):
         """INTERNAL: Use build methods instead of direct constructor."""
+        super().__init__(payload=original, exception=exception)
         self._state = state
         self._updated = updated
-        self._original = original
-        self._exception = exception
         
     @property
     def state(self) -> UpdateState:
@@ -67,22 +66,18 @@ class UpdateResult(Generic[T]):
         
     @property
     def original(self) -> T:
-        return self._original
+        return self.payload
     
     @property
     def updated(self) -> Optional[T]:
         return self._updated
     
     @property
-    def exception(self) -> Optional[Exception]:
-        return self._exception
-    
-    @property
     def is_success(self) -> bool:
         return (
-            self._original is not None and
+            self.original is not None and
             self._updated is not None and
-            self._exception is None and
+            self.exception is None and
             self._state == UpdateState.SUCCESS
         )
     
@@ -151,30 +146,30 @@ class UpdateResult(Generic[T]):
             state=UpdateState.ORIGINAL_AND_UPDATE_ARE_SAME,
         )
     
-    # @classmethod
-    # def success(cls, payload: T) -> UpdateResult:
-    #     return cls(
-    #         updated=None,
-    #         original=None,
-    #         exception=MethodImplementationException(
-    #             msg=f"{cls.__name__} does not implement the f{super.__name__}.success()"
-    #                 f" method. Use the update_success() instead.",
-    #             err_code=MethodImplementationException.ERR_CODE,
-    #         ),
-    #         state=UpdateState.CALLED_UNIMPLEMENTED_METHOD,
-    #     )
-    #
-    # @classmethod
-    # def failure(cls, exception: Exception) -> UpdateResult:
-    #     return cls(
-    #         updated=None,
-    #         original=None,
-    #         exception=MethodImplementationException(
-    #             msg=f"{cls.__name__} does not implement the f{super.__name__}.failure()"
-    #                 f"method. Use the update_failure() instead.",
-    #             err_code=MethodImplementationException.ERR_CODE,
-    #         ),
-    #         state=UpdateState.CALLED_UNIMPLEMENTED_METHOD,
-    #     )
+    @classmethod
+    def success(cls, payload: T) -> UpdateResult:
+        return cls(
+            updated=None,
+            original=None,
+            exception=MethodImplementationException(
+                msg=f"{cls.__name__} does not implement the f{super.__name__}.success()"
+                    f" method. Use the update_success() instead.",
+                err_code=MethodImplementationException.ERR_CODE,
+            ),
+            state=UpdateState.CALLED_UNIMPLEMENTED_METHOD,
+        )
+
+    @classmethod
+    def failure(cls, exception: Exception) -> UpdateResult:
+        return cls(
+            updated=None,
+            original=None,
+            exception=MethodImplementationException(
+                msg=f"{cls.__name__} does not implement the f{super.__name__}.failure()"
+                    f"method. Use the update_failure() instead.",
+                err_code=MethodImplementationException.ERR_CODE,
+            ),
+            state=UpdateState.CALLED_UNIMPLEMENTED_METHOD,
+        )
 
     

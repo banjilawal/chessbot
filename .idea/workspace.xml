@@ -5,74 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/err/collision/token/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/collision/token/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/collision/token/square/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/collision/token/square/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/blueprint/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/blueprint/arena/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/blueprint/arena/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/blueprint/board/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/blueprint/board/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/blueprint/coord/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/blueprint/coord/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/blueprint/edge/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/blueprint/edge/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/blueprint/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/blueprint/formation/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/blueprint/formation/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/blueprint/game/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/blueprint/game/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/blueprint/hostage/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/blueprint/hostage/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/blueprint/node/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/blueprint/node/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/blueprint/persona/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/blueprint/persona/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/blueprint/player/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/blueprint/player/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/blueprint/rank/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/blueprint/rank/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/blueprint/schema/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/blueprint/schema/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/blueprint/square/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/blueprint/square/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/blueprint/team/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/blueprint/team/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/blueprint/token/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/blueprint/token/exception.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/analyzer/collision/token/analyzer.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/analyzer/collision/token/analyzer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/builder/square/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/builder/square/builder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/builder/token/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/builder/token/builder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/stack/crud/square/crud/push/process.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/stack/crud/square/crud/push/process.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/detector/detector.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/detector/detector.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/detector/square/detector.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/detector/square/detector.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/detector/token/detector.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/detector/token/detector.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/collision/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/collision/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/collision/name/arena/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/collision/name/arena/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/collision/name/board/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/collision/name/board/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/collision/name/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/collision/name/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/collision/name/square/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/collision/name/square/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/collision/name/team/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/collision/name/team/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/collision/name/token/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/collision/name/token/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/null/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/null/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/microservice/arena/microservice.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/microservice/arena/microservice.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/microservice/catalog/formation/microservice.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/microservice/catalog/formation/microservice.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/microservice/coord/microservice.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/microservice/coord/microservice.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/microservice/player/microservice.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/microservice/player/microservice.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/microservice/token/microservice.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/microservice/token/microservice.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/catalog/formation/catalog.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/catalog/formation/catalog.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/report/collision/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/report/collision/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/report/collision/exception/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/report/collision/exception/work.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/route/search/formation/router.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/route/search/formation/router.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/search/formation/lookup/lookup.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/search/formation/lookup/lookup.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/stack/coord/stack.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/stack/coord/stack.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/stack/square/stack.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/stack/square/stack.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/stack/token/stack.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/stack/token/stack.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/validation/context/formation/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/validation/context/formation/validator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/worker/stack/token/push/pusher.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/worker/stack/token/push/pusher.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/collision/token/square/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/collision/token/square/__init__.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -869,7 +804,7 @@
       <workItem from="1781074987396" duration="713000" />
       <workItem from="1781166237647" duration="41439000" />
       <workItem from="1781391224653" duration="75192000" />
-      <workItem from="1782069802645" duration="28248000" />
+      <workItem from="1782069802645" duration="29800000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />

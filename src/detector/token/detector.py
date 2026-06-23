@@ -12,11 +12,9 @@ from __future__ import annotations
 from blueprint import TokenBlueprint
 from detector import Detector
 from err import (
-    NullException, SquareNameCollisionException, TokenBlueprintNullException, TokenCollisionDetectorException,
-    TokenIdCollisionException,
-    TokenNameCollisionException, TokenStackNullException
+    OpeningSquareCollisionException, TokenBlueprintNullException, TokenCollisionDetectorException,
+    TokenIdCollisionException, TokenNameCollisionException, TokenStackNullException
 )
-from err.collision.token.square.exception import OpeningSquareCollisionException
 from microservice import IdentityService
 from model import Token
 from report import CollisionReport
