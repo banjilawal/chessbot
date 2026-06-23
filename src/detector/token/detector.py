@@ -9,15 +9,24 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from detector import CollisionDetector, CollisionReport
-from err import SquareNameCollisionException, TokenDesignationCollisionException, TokenIdCollisionException
-from model import Token, TokenBlueprint
+from blueprint import TokenBlueprint
+from detector import Detector
+from err import (
+    NullException, SquareNameCollisionException, TokenBlueprintNullException, TokenCollisionDetectorException,
+    TokenIdCollisionException,
+    TokenNameCollisionException, TokenStackNullException
+)
+from err.collision.token.square.exception import OpeningSquareCollisionException
+from microservice import IdentityService
+from model import Token
+from report import CollisionReport
 from result import AnalysisResult
 from stack import TokenStackService
-from system import LoggingLevelRouter
+from util import LoggingLevelRouter
+from validation import ValidationPrimer
 
 
-class TokenCollisionDetector(CollisionDetector[Token]):
+class TokenCollisionDetector(Detector[Token]):
     """
      Role:
          - Collision Detection Worker
@@ -40,10 +49,12 @@ class TokenCollisionDetector(CollisionDetector[Token]):
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def analyze(
+    def execute(
             cls,
-            blueprint: TokenBlueprint,
-            token_stack: TokenStackService,
+            target_set: TokenBlueprint,
+            stream: TokenStackService,
+            identity_service: IdentityService | None = None,
+            validation_primer: ValidationPrimer | None = None,
     ) -> AnalysisResult[CollisionReport]:
         """
         Report if any schema member has the same id, designation or
@@ -57,8 +68,10 @@ class TokenCollisionDetector(CollisionDetector[Token]):
                     *   The collider.
                     *   The exception indicating which unique property is shared.
         Args:
-            blueprint: TokenBlueprint
-            token_stack: TokenStackService
+            target_set: TokenBlueprint
+            stream: TokenStackService
+            identity_service: IdentityService
+            validation_primer: ValidationPrimer
         Returns:
                CollisionReport[Token]
         Raises:
@@ -69,71 +82,110 @@ class TokenCollisionDetector(CollisionDetector[Token]):
         """
         method = f"{cls.__class__.__name__}.detect"
         
-        # Handle the case that, the target does not pass a validation check.
-        # validation_result = token_stack.service.validator.search_service(
-        #     candidate=target
-        # )
-        # if validation_result.is_failure:
-        #     return CollisionReport.failure(
-        #         exception=TokenCollisionDetectionException(
-        #             val=method,
-        #             var="token failed integrity validation",
-        #             msg=TokenCollisionDetectionException.MSG,
-        #             err_code=TokenCollisionDetectionException.ERR_CODE,
-        #             ex=validation_result.exception
-        #         )
-        #     )
+        
+        if validation_primer is None:
+            validation_primer = ValidationPrimer()
+        if identity_service is None:
+            identity_service = IdentityService()
+        
+        stream_validation_result = validation_primer.validate(
+            candidate=stream,
+            target_type=TokenStackService,
+            nullable=TokenStackNullException()
+        )
+        if stream_validation_result.is_failure:
+            return AnalysisResult.failure(
+                TokenCollisionDetectorException(
+                    cls_mthd=method,
+                    cls_name=cls.__name__,
+                    msg=TokenCollisionDetectorException.MSG,
+                    err_code=TokenCollisionDetectorException.ERR_CODE,
+                    ex=stream_validation_result.exception
+                )
+            )
+        blueprint_validation_result = validation_primer.validate(
+            candidate=target_set,
+            target_type=TokenBlueprint,
+            nullable=TokenBlueprintNullException(),
+        )
+        if blueprint_validation_result.is_failure:
+            return AnalysisResult.failure(
+                TokenCollisionDetectorException(
+                    cls_mthd=method,
+                    cls_name=cls.__name__,
+                    msg=TokenCollisionDetectorException.MSG,
+                    err_code=TokenCollisionDetectorException.ERR_CODE,
+                    ex=blueprint_validation_result.exception
+                )
+            )
+        blueprint_identity_validation_result = identity_service.validate_identity(
+            id_candidate=target_set.id,
+            name_candidate=target_set.formation.designation,
+        )
+        if blueprint_identity_validation_result.is_failure:
+            return AnalysisResult.failure(
+                TokenCollisionDetectorException(
+                    cls_mthd=method,
+                    cls_name=cls.__name__,
+                    msg=TokenCollisionDetectorException.MSG,
+                    err_code=TokenCollisionDetectorException.ERR_CODE,
+                    ex=blueprint_identity_validation_result.exception
+                )
+            )
         # --- Loop through the collider_candidates to find matches. ---#
         
-        for token in token_stack.items:
-            # Handle the case that, the target shares its id with a collider_candidates member.
-            if token.id == blueprint.id:
-                # Return the collider, id, and the exception.
-                return AnalysisResult.success(
+        for token in stream.items:
+            # Handle the case that, a token already has the target's id.
+            if token.id == target_set.id:
+                # Return the collision details in the report.
+                return AnalysisResult.completed(
                     CollisionReport.occurrence(
                         collider=token,
+                        target_set=target_set,
                         colliding_variable="id",
                         collision_value=token.id,
                         exception=TokenIdCollisionException(
-                            var="id",
-                            val=f"{token.id}",
+                            cls_mthd=method,
+                            cls_name=cls.__name__,
                             msg=TokenIdCollisionException.MSG,
-                            err_code=TokenIdCollisionException.ERR_CODE
+                            err_code=TokenIdCollisionException.ERR_CODE,
                         )
                     )
                 )
-            # Handle the case that, the target shares its designation with a collider_candidates member.
-            if token.designation.upper() == blueprint.formation.designation.upper():
-                # Return the collider, designation, and the exception.
-                return AnalysisResult.success(
+            # Handle the case that, a token already has the target's id.
+            if token.designation == target_set.formation.designation.upper():
+                # Return the collision details in the report.
+                return AnalysisResult.completed(
                     CollisionReport.occurrence(
                         collider=token,
+                        target_set=target_set,
                         colliding_variable="designation",
-                        collision_value=f"{token.designation}",
-                        exception=TokenDesignationCollisionException(
-                            var="designation",
-                            val=f"{token.designation}",
-                            msg=TokenDesignationCollisionException.MSG,
-                            err_code=TokenDesignationCollisionException.ERR_CODE,
+                        collision_value=token.designation,
+                        exception=TokenNameCollisionException(
+                            cls_mthd=method,
+                            cls_name=cls.__name__,
+                            msg=TokenNameCollisionException.MSG,
+                            err_code=TokenNameCollisionException.ERR_CODE,
                         )
                     )
                 )
             # Handle the case that, the target shares its opening_square_name with a collider_candidates member.
-            if token.opening_square_name.upper()== blueprint.formation.square_name.upper():
+            if token.opening_square.name.upper() == target_set.formation.opening_square_name.upper():
                 # Return the collider, designation, and the exception.
                 return AnalysisResult.success(
                     CollisionReport.occurrence(
                         collider=token,
-                        colliding_variable="opening_square_name",
-                        collision_value=f"{token.opening_square_name}",
-                        exception=SquareNameCollisionException(
-                            var="opening_square_name",
-                            val=f"{token.opening_square_name}",
-                            msg=SquareNameCollisionException.MSG,
-                            err_code=SquareNameCollisionException.ERR_CODE,
+                        target_set=target_set,
+                        colliding_variable="opening_square",
+                        collision_value=token.opening_square,
+                        exception=OpeningSquareCollisionException(
+                            cls_mthd=method,
+                            cls_name=cls.__name__,
+                            msg=OpeningSquareCollisionException.MSG,
+                            err_code=OpeningSquareCollisionException.ERR_CODE,
                         )
                     )
                 )
         # --- Send the no collisions detected report. ---#
-        return AnalysisResult.success(CollisionReport.no_collisions())
+        return AnalysisResult.success(CollisionReport.no_collisions(target_set))
     

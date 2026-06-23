@@ -104,7 +104,7 @@ class Formation(Enum):
         return self._color
     
     @property
-    def square_name(self) -> str:
+    def opening_square_name(self) -> str:
         """Name of the Square a piece makes its opening move from."""
         return self._square_name
     

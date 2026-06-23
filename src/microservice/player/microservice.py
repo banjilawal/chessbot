@@ -161,7 +161,7 @@ class PlayerService(Microservice[Player]):
         """
         method = "PlayerService.push_team_to_player"
         
-        relation = self.player_team_relation_analyzer.analyze(
+        relation = self.player_team_relation_analyzer.execute(
             candidate_primary=player,
             candidate_secondary=team,
             owner_validator=self.validator,

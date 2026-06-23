@@ -117,7 +117,7 @@ class CoordStackService(StackService[Coord]):
         method = f"{self.__class__.__name__}.push"
         
         # --- Handoff request fulfilment to the ops_controller. ---#
-        request_result = self._ops_controller.crud_controller.push.analyze(
+        request_result = self._ops_controller.crud_controller.push.execute(
             coord=item,
             coord_stack=self,
         )
@@ -152,7 +152,7 @@ class CoordStackService(StackService[Coord]):
         method = f"{self.__class__.__name__}.pop"
         
         # --- Handoff request fulfilment to the ops_controller. ---#
-        request_result = self._ops_controller.crud_controller.pop.analyze(
+        request_result = self._ops_controller.crud_controller.pop.execute(
             coord_stack=self,
         )
         # Handle the case that, the request is not fulfilled.

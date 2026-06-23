@@ -189,7 +189,7 @@ class TokenStackService(StackService[Token]):
         method = f"{self.__class__.__name__}.pop"
         
         # --- Handoff request fulfilment to the ops_controller. ---#
-        request_result = self._ops_controller.crud.pop.analyze()
+        request_result = self._ops_controller.crud.pop.execute()
         
         # Handle the case that, the request was not fulfilled.
         if request_result.is_failure:
@@ -224,9 +224,9 @@ class TokenStackService(StackService[Token]):
         method = f"{self.__class__.__name__}.push"
         
         # --- Handoff request fulfilment to the ops_controller. ---#
-        request_result = self._ops_controller.crud.push.analyze(
+        request_result = self._ops_controller.crud.push.execute(
             token=item,
-            token_stack=self,
+            stream=self,
             rank_quota_analyzer=self._ops_controller.rank_quota_analyzer,
             token_collision_detector=self._ops_controller.collision_detector
         )

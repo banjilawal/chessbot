@@ -10,7 +10,6 @@ version: 1.0.1
 # =========== REPORT.COLLISION PACKAGE ===========#
 
 # Packages
-from .exception import *
 
 # Modules
 from .report import CollisionReport

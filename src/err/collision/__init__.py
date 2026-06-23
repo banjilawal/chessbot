@@ -13,6 +13,7 @@ version: 1.0.0
 from .coord import *
 from .id import *
 from .name import *
+from .token import *
 
 # Modules
 from .exception import AttributeCollisionException

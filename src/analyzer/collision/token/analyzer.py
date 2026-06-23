@@ -119,7 +119,7 @@ class TokenCollisionAnalyzer(CollisionAnalyzer[Token]):
                     )
                 )
             # Handle the case that, the target shares its opening_square_name with a collider_candidates member.
-            if token.opening_square_name.upper()== blueprint.formation.square_name.upper():
+            if token.opening_square_name.upper()== blueprint.formation.opening_square_name.upper():
                 # Return the collider, designation, and the exception.
                 return AnalysisResult.success(
                     CollisionReport.occurrence(

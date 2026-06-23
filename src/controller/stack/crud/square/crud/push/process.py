@@ -91,7 +91,7 @@ class SquareStackPush:
                 )
             )
         # ServiceRequest a collision report. The square is verified during the report generation. ---#
-        collision_detection_result = collision_detector.analyze(
+        collision_detection_result = collision_detector.execute(
             target=square,
             dataset=square_stack.items,
         )

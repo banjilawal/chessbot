@@ -175,7 +175,7 @@ class SquareBuilder(Builder[Square]):
                 )
             )
         # Handle the case that, the square's attributes have already been used.
-        collision_detection_result = tool.collision_analyst.analyze(
+        collision_detection_result = tool.collision_analyst.execute(
             id=id,
             name=name,
             coord=coord,

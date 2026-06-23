@@ -48,7 +48,7 @@ class SquareCollisionDetector(Detector[Square]):
     def execute(
             cls,
             target_set: SquareBlueprint,
-            square_stack: SquareStackService,
+            stream: SquareStackService,
     ) -> AnalysisResult[CollisionReport]:
         """
         Report if any schema member has the same id, schema or
@@ -62,8 +62,8 @@ class SquareCollisionDetector(Detector[Square]):
                     *   The collider.
                     *   The exception indicating which unique property is shared.
         Args:
-            target_set: Square
-            square_stack: SquareStackService
+            target_set: SquareBlueprint
+            stream: SquareStackService
         Returns:
                CollisionReport[Square]
         Raises:
@@ -75,7 +75,7 @@ class SquareCollisionDetector(Detector[Square]):
         method = f"{cls.__class__.__name__}.detect"
         
         # Handle the case that, the target does not pass a validation check.
-        validation_result = square_stack.microservice.validator.validate(target_set)
+        validation_result = stream.microservice.validator.validate(target_set)
         if validation_result.is_failure:
             return AnalysisResult.failure(
                 SquareCollisionDetectorException(
@@ -88,7 +88,7 @@ class SquareCollisionDetector(Detector[Square]):
             )
         # --- Loop through the collider_candidates to find matches. ---#
         
-        for square in square_stack.items:
+        for square in stream.items:
             # Handle the case that, a candidate already has the target's id.
             if square.id == target_set.id:
                 # Return the collision details in the report.

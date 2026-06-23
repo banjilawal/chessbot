@@ -183,7 +183,7 @@ class TokenBuilder(Builder[Token]):
                     team=owner,
                     designation=formation.designation,
                     roster_number=formation.roster_number,
-                    opening_square_name=formation.square_name,
+                    opening_square_name=formation.opening_square_name,
                 )
             )
         # Build path for kings.
@@ -194,7 +194,7 @@ class TokenBuilder(Builder[Token]):
                     team=owner,
                     designation=formation.designation,
                     roster_number=formation.roster_number,
-                    opening_square_name=formation.square_name,
+                    opening_square_name=formation.opening_square_name,
                 )
             )
         # --- All other ranks run the CombatantToken build steps. ---#
@@ -217,7 +217,7 @@ class TokenBuilder(Builder[Token]):
                 rank=rank_build_result.payload,
                 designation=formation.designation,
                 roster_number=formation.roster_number,
-                opening_square_name=formation.square_name,
+                opening_square_name=formation.opening_square_name,
             )
         )
     

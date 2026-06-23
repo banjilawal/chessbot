@@ -37,7 +37,7 @@ class TeamNameCollisionException(NameCollisionException):
         err_code: Optional[str]
         mthd_rslt_type: Optional[MethodResultType]
             
-    Provnamees:
+    Provides:
 
     Super Class:
         NameCollisionException

@@ -37,7 +37,7 @@ class NameCollisionException(AttributeCollisionException):
         err_code: Optional[str]
         mthd_rslt_type: Optional[MethodResultType]
             
-    Provnamees:
+    Provides:
 
     Super Class:
         AttributeCollisionException
