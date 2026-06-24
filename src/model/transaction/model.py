@@ -19,10 +19,10 @@ class Transaction:
     Role:
         -   Model
         -   Addressing
-        -   Stateful Data Holder
+        -   Stateles Data Holder
 
     Responsibilities:
-        1.  Maps a Coord to a approvalable, occupyable checkpoint location.
+        1.  Tracking the
         2.  Space on Checkpoint a Token can occupy.
         3.  Metadata about a reference on the Checkpoint.
     

@@ -8,49 +8,47 @@ version: 1.0.0
 """
 
 from __future__ import annotations
-from typing import Optional
+from typing import Optional, cast
 
 from event import Event
 from model import CombatantToken, Square, Token
-
+from report import AttackApproval
 
 
 class AttackEvent(Event):
     _attacker: Token
-    _attack_origin: Square
-    _target_square: Square
-    _enemy_combatant: CombatantToken
+    _location: Square
+    _captive: CombatantToken
     
     def __init__(
             self,
             id: int,
             attacker: Token,
-            attack_origin: Square,
-            target_square: Square,
-            enemy_combatant: CombatantToken,
+            captive: CombatantToken,
+            approval: AttackApproval,
+            location: Square,
             parent: Optional[Event] | None = None,
     ):
-        super().__init__(id=id, parent=parent)
+        super().__init__(id=id, parent=parent, approval=approval)
         self._attacker = attacker
-        self._attack_origin = attack_origin
-        self._target_square = target_square
-        self._enemy_combatant = enemy_combatant
+        self._location = location
+        self._captive = captive
+        
+    @property
+    def approval(self) -> AttackApproval:
+        return cast(AttackApproval, self._approval)
         
     @property
     def attacker(self) -> Token:
         return self._attacker
     
     @property
-    def attack_origin(self) -> Square:
-        return self._attack_origin
+    def location(self) -> Square:
+        return self._location
     
     @property
-    def target_square(self) -> Square:
-        return self._target_square
-    
-    @property
-    def enemy_combatant(self) -> CombatantToken:
-        return self._enemy_combatant
+    def captive(self) -> CombatantToken:
+        return self._captive
     
     def __eq__(self, other: object) -> bool:
         if other is self: return True
@@ -59,8 +57,10 @@ class AttackEvent(Event):
             return (
                     super().__eq__(other) and
                     self._attacker == other.attacker and
-                    self._attack_origin == other.attack_origin and
-                    self._target_square == other.target_square and
-                    self._enemy_combatant == other.enemy_combatant
+                    self._location == other.location and
+                    self._captive == other.captive
             )
         return False
+    
+    def __hash__(self):
+        return super().__hash__(id)

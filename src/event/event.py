@@ -10,19 +10,31 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Optional
 
+from report import Report
 
 
 class Event:
         _id: int
+        _approval: Report
         _parent: Optional[Event]
         
-        def __init__(self, id: int, parent: Optional[Event] | None = None):
+        def __init__(
+                self,
+                id: int,
+                approval: Report,
+                parent: Optional[Event] | None = None,
+        ):
                 self._id = id
+                self._approval = approval
                 self._parent = parent
                 
         @property
         def id(self) -> int:
                 return self._id
+        
+        @property
+        def approval(self) -> Report:
+                return self._approval
         
         @property
         def parent(self) -> Optional[Event]:

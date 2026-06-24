@@ -9,8 +9,11 @@ version: 1.0.0
 
 from __future__ import annotations
 
+from typing import cast
+
 from event import Event
 from model import Square, Token
+from report import ManeuverApproval
 
 
 class ManeuverEvent(Event):
@@ -21,15 +24,20 @@ class ManeuverEvent(Event):
     def __init__(
             self,
             id: int,
+            approval: ManeuverApproval,
             traveller: Token,
             departure_point: Square,
             arrival_point: Square,
             parent: Event | None = None,
     ):
-        super().__init__(id=id, parent=parent)
+        super().__init__(id=id, parent=parent, approval=approval)
         self._traveller = traveller
         self._departure_point = departure_point
         self._arrival_point = arrival_point
+        
+    @property
+    def approval(self) -> ManeuverApproval:
+        return cast(ManeuverApproval, self.approval)
         
     @property
     def traveller(self) -> Token:
