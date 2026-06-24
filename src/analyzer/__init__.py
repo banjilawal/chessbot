@@ -12,7 +12,6 @@ version: 1.0.1
 
 # Packages
 from .claim import *
-from .collision import *
 from .freedom import *
 from .itinerary import *
 from .promotion import *

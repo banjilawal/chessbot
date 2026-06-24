@@ -11,8 +11,9 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Optional
 
+from blueprint import QueryValidationBlueprint
 from err import ArenaNullException
-from model import Arena, Blueprint, Game, Player
+from model import Arena, Game, Player
 from setting import GameColor
 
 
@@ -24,4 +25,4 @@ class ArenaQueryValidationBlueprint(QueryValidationBlueprint[Arena]):
     game: Optional[Game] = None
     color: Optional[GameColor] = None
     null_exception = ArenaNullException()
-    model_type = ArenaValidation
+    model_type = Arena

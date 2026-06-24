@@ -12,7 +12,7 @@ from typing import TypeVar
 
 from blueprint import Blueprint
 from err import (
-    ContextNullException, NullException, QueryNullException, StackEmptyException, StackNullException
+    ContextNullException, QueryNullException, StackEmptyException, StackNullException
 )
 from model import Query
 from stack import StackService
@@ -43,11 +43,11 @@ class QueryValidationBlueprint(Blueprint[T]):
     
     Super Class:
     """
-    query_model_type: Query
-    stack_model_type: StackService
+    query_model_type: Query[T]
+    stack_model_type: StackService[T]
     stack_null_exception: StackNullException
     query_null_exception: QueryNullException
     context_null_exception: ContextNullException
     empty_stack_exception: StackEmptyException
-    context_validator: ContextValidator
+    context_validator: ContextValidator[T]
     validation_primer: ValidationPrimer = ValidationPrimer()
