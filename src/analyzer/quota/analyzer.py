@@ -10,11 +10,15 @@ version: 1.0.0
 from __future__ import annotations
 
 from analyzer import Analyzer
-from analyzer import Rank
+from microservice import RankService
+from model import Rank
 from report.quota.report import RankQuotaReport
+from result import AnalysisResult
+from stack import TokenStackService
+from util import LoggingLevelRouter
 
 
-class RankQuotaAnalyzer(Analyzer[RankQuotaReport]):
+class RankQuotaAnalyzer(Analyzer):
     """
     Role:
         - Statistical Analyst
@@ -32,7 +36,7 @@ class RankQuotaAnalyzer(Analyzer[RankQuotaReport]):
                     rank: Rank,
                     token_stack: TokenStackService,
                     rank_service: RankService = RankService(),
-            ) -> ComputationResult[RankQuotaReport]
+            ) -> AnalysisResult[RankQuotaReport]
 
     Super:
     """
@@ -44,12 +48,12 @@ class RankQuotaAnalyzer(Analyzer[RankQuotaReport]):
             rank: Rank,
             token_stack: TokenStackService,
             rank_service: RankService = RankService(),
-    ) -> ComputationResult[RankQuotaReport]:
+    ) -> AnalysisResult[RankQuotaReport]:
         """
         Create a RankQuotaReport.
         
         Actions:
-            1.  Send an exception chain in the ComputationResult if:
+            1.  Send an exception chain in the AnalysisResult if:
                     *   The rank does not pass a validation check.
                     *   The rank search fails.
             2.  Otherwise, send the success result.
@@ -58,7 +62,7 @@ class RankQuotaAnalyzer(Analyzer[RankQuotaReport]):
             token_stack: TokenStack
             rank_service: RankService
         Returns:
-            ComputationResult[RankQuotaReport]
+            AnalysisResult[RankQuotaReport]
         Raises:
             RankQutaAnalystException
         """
@@ -68,13 +72,13 @@ class RankQuotaAnalyzer(Analyzer[RankQuotaReport]):
         rank_validation_result = rank_service.validator.validate(rank)
         if rank_validation_result.is_failure:
             # Send the exception chain on failure.
-            return ComputationResult.failure(
-                RankQuotaAnalystException(
+            return AnalysisResult.failure(
+                RankQuotaAnalyzerException(
                     cls_mthd=method,
-                    op=RankQuotaAnalystException.OP,
-                    msg=RankQuotaAnalystException.MSG,
-                    err_code=RankQuotaAnalystException.ERR_CODE,
-                    mthd_rslt_type=RankQuotaAnalystException.MTHD_RSLT,
+                    op=RankQuotaAnalyzerException.OP,
+                    msg=RankQuotaAnalyzerException.MSG,
+                    err_code=RankQuotaAnalyzerException.ERR_CODE,
+                    mthd_rslt_type=RankQuotaAnalyzerException.MTHD_RSLT,
                     ex=rank_validation_result.exception
                 )
             )
@@ -84,18 +88,18 @@ class RankQuotaAnalyzer(Analyzer[RankQuotaReport]):
         # Handle the case that, a search error occurred.
         if rank_search_result.is_failure:
             # Send the exception chain on failure.
-            return ComputationResult.failure(
-                RankQuotaAnalystException(
+            return AnalysisResult.failure(
+                RankQuotaAnalyzerException(
                     cls_mthd=method,
-                    op=RankQuotaAnalystException.OP,
-                    msg=RankQuotaAnalystException.MSG,
-                    err_code=RankQuotaAnalystException.ERR_CODE,
-                    mthd_rslt_type=RankQuotaAnalystException.MTHD_RSLT,
+                    op=RankQuotaAnalyzerException.OP,
+                    msg=RankQuotaAnalyzerException.MSG,
+                    err_code=RankQuotaAnalyzerException.ERR_CODE,
+                    mthd_rslt_type=RankQuotaAnalyzerException.MTHD_RSLT,
                     ex=rank_search_result.exception
                 )
             )
         # --- Send the work product. ---#
-        return ComputationResult.success(
+        return AnalysisResult.success(
             RankQuotaReport(
                 rank=rank,
                 number_of_openings=rank.persona.quota - len(rank_search_result.payload),

@@ -5,30 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/stack/attack/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/stack/attack/stack.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/stack/attack/state.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/stack/crud/token/controller.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/stack/crud/token/controller.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/stack/token/controller.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/stack/token/controller.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/stack/coord/stack.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/stack/coord/stack.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/stack/edge/stack.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/stack/edge/stack.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/stack/hostage/stack.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/stack/hostage/stack.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/stack/node/stack.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/stack/node/stack.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/stack/player/stack.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/stack/player/stack.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/stack/result/stack.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/stack/result/stack.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/stack/snapshot/stack.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/stack/snapshot/stack.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/stack/square/stack.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/stack/square/stack.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/stack/stack.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/stack/stack.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/stack/team/stack.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/stack/team/stack.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/stack/token/stack.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/stack/token/stack.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/worker/stack/token/push/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/stack/push/token/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/worker/stack/token/push/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/stack/push/token/exception/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/worker/stack/token/push/exception/duplicate.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/stack/push/token/exception/duplicate.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/worker/stack/token/push/exception/full.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/stack/push/token/exception/full.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/worker/stack/token/push/exception/rank.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/stack/push/token/exception/rank.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/worker/stack/token/push/exception/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/stack/push/token/exception/wrapper.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/worker/stack/token/push/pusher.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/stack/push/token/operation.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/analyzer/quota/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/analyzer/quota/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/analyzer/quota/exist/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/analyzer/quota/exist/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/analyzer/quota/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/analyzer/quota/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/analyzer/quota/analyzer.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/analyzer/quota/analyzer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/analyzer/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/analyzer/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/push/token/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/push/token/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/push/token/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/push/token/operation.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -82,7 +67,7 @@
     "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/stack",
+    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/err/analyzer",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
@@ -93,18 +78,18 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/err/analyzer" />
       <recent name="$PROJECT_DIR$/src/stack" />
       <recent name="$PROJECT_DIR$/src/microservice" />
       <recent name="$PROJECT_DIR$/src/model" />
       <recent name="$PROJECT_DIR$/src/err/null" />
-      <recent name="$PROJECT_DIR$/src/err/collision" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/operation" />
       <recent name="$PROJECT_DIR$/src/operation/stack/push" />
       <recent name="$PROJECT_DIR$/src/detector" />
       <recent name="$PROJECT_DIR$/src/event" />
       <recent name="$PROJECT_DIR$/src/model/notification" />
-      <recent name="$PROJECT_DIR$/src/err/operation/maneuver" />
     </key>
   </component>
   <component name="RunManager" selected="Python.notifier">
@@ -828,7 +813,7 @@
       <workItem from="1782069802645" duration="29800000" />
       <workItem from="1782214489414" duration="8439000" />
       <workItem from="1782265217166" duration="7062000" />
-      <workItem from="1782325486599" duration="7832000" />
+      <workItem from="1782325486599" duration="9558000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />

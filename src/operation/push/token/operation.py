@@ -1,23 +1,24 @@
-# src/logic/token/database/kernel/operation/exception.py
+# src/operation/push/token/operation.py
 
 """
-Module: logic.token.database.kernel.operation.pusher
+Module: operation.push.token.operation
 Author: Banji Lawal
-Created: 2025-11-22
-version: 1.0.0
+Created: 2026-04-03
+version: 1.0.1
 """
 
 from __future__ import annotations
 
-from logic.rank import RankService
-from system import InsertionResult, LoggingLevelRouter
-from model.token import (
-    RankQuotaAnalysis, RankQuotaFullException, Token, TokenCollisionAnalysis, TokenStackFullException,
-    TokenStackPushException, TokenStackService, TokenStackState
-)
+from detector import TokenCollisionDetector
+from microservice import RankService
+from model import Token
+from operation import Pusher
+from result import InsertionResult
+from stack import TokenStackService
+from util import LoggingLevelRouter
 
 
-class TokenPusher:
+class TokenPusher(Pusher[Token]):
     """
     Role:
         - Transaction Worker
@@ -36,7 +37,7 @@ class TokenPusher:
                     token: Token,
                     token_stack: TokenStackService,
                     rank_service: RankService = RankService(),
-                    rank_quota_analyzer: RankQuotaAnalysis = RankQuotaAnalysis(),
+                    rank_quota_analyzer: RankQuotaAnalyzer = RankQuotaAnalyzer(),
                     collision_detector: TokenCollisionAnalyst = TokenCollisionAnalyst(),
             ) -> InsertionResult
 
@@ -50,9 +51,9 @@ class TokenPusher:
             token: Token,
             token_stack: TokenStackService,
             rank_service: RankService = RankService(),
-            rank_quota_analyzer: RankQuotaAnalysis = RankQuotaAnalysis(),
-            collision_detector: TokenCollisionAnalysis = TokenCollisionAnalysis(),
-    ) -> InsertionResult[bool]:
+            rank_quota_analyzer: RankQuotaAnalyzer = RankQuotaAnalyzer(),
+            collision_detector: TokenCollisionDetector = TokenCollisionDetector(),
+    ) -> InsertionResult:
         """
         Action:
             1.  Return a failure result containing an exception chain if
@@ -64,7 +65,7 @@ class TokenPusher:
            token: Token
            rank_service: RankService
            token_stack: TokenStackService
-           rank_quota_analyzer: RankQuotaAnalysis
+           rank_quota_analyzer: RankQuotaAnalyzer
            collision_detector: TokenCollisionAnalyst
         Returns:
             InsertionResult

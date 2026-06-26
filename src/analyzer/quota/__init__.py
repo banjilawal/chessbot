@@ -14,4 +14,4 @@ version: 1.0.1
 
 
 # Modules
-from .analyzer import R
+from .analyzer import RankQuotaAnalyzer
