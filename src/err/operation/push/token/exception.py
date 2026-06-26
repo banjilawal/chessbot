@@ -1,7 +1,7 @@
-# src/err/operation/push/stack/arena/exception.py
+# src/err/operation/push/token/exception.py
 
 """
-Module: err.operation.push.stack.arena.exception
+Module: err.operation.push.token.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,21 +10,22 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import StackPushException
+from err import PusherException
+from result import MethodResultType
 
 __all__ = [
-    # ======================# ARENA_STACK_PUSH_FAILURE #======================#
-    "ArenaStackPushException",
+    # ======================# TOKEN_STACK_PUSH_FAILURE #======================#
+    "TokenPusherException",
 ]
 
-# ======================# ARENA_STACK_PUSH_FAILURE #======================#
-class ArenaStackPushException(StackPushException):
+# ======================# TOKEN_STACK_PUSH_FAILURE #======================#
+class TokenPusherException(PusherException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that pushing onto a ArenaStack failed.
+        1.  Indicate that pushing onto a TokenStack failed.
 
     Attributes:
         msg: Optional[str]
@@ -40,8 +41,8 @@ class ArenaStackPushException(StackPushException):
     Super Class:
         PushingStackException
     """
-    MSG = "Pushing ont a ArenaStack failed."
-    ERR_CODE = "ARENA_STACK_PUSH_FAILURE"
+    MSG = "Pushing ont a TokenStack failed."
+    ERR_CODE = "TOKEN_STACK_PUSH_FAILURE"
     
     def __init__(
             self,

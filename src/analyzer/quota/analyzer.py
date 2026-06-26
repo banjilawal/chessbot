@@ -10,10 +10,11 @@ version: 1.0.0
 from __future__ import annotations
 
 from analyzer import Analyzer
+from err import RankQuotaAnalyzerException
 from microservice import RankService
-from model import Rank
+from model import Rank, TokenContext
 from report.quota.report import RankQuotaReport
-from result import AnalysisResult
+from result import AnalysisResult, MethodResultType
 from stack import TokenStackService
 from util import LoggingLevelRouter
 
@@ -54,8 +55,8 @@ class RankQuotaAnalyzer(Analyzer):
         
         Actions:
             1.  Send an exception chain in the AnalysisResult if:
-                    *   The rank does not pass a validation check.
-                    *   The rank search fails.
+                    -   The rank does not pass a validation check.
+                    -   The rank search fails.
             2.  Otherwise, send the success result.
         Args:
             rank: Rank
@@ -75,10 +76,10 @@ class RankQuotaAnalyzer(Analyzer):
             return AnalysisResult.failure(
                 RankQuotaAnalyzerException(
                     cls_mthd=method,
-                    op=RankQuotaAnalyzerException.OP,
+                    cls_name=cls.__name__,
                     msg=RankQuotaAnalyzerException.MSG,
                     err_code=RankQuotaAnalyzerException.ERR_CODE,
-                    mthd_rslt_type=RankQuotaAnalyzerException.MTHD_RSLT,
+                    mthd_rslt_type=MethodResultType.ANALYSIS_RESULT,
                     ex=rank_validation_result.exception
                 )
             )
@@ -91,10 +92,10 @@ class RankQuotaAnalyzer(Analyzer):
             return AnalysisResult.failure(
                 RankQuotaAnalyzerException(
                     cls_mthd=method,
-                    op=RankQuotaAnalyzerException.OP,
+                    cls_name=cls.__name__,
                     msg=RankQuotaAnalyzerException.MSG,
                     err_code=RankQuotaAnalyzerException.ERR_CODE,
-                    mthd_rslt_type=RankQuotaAnalyzerException.MTHD_RSLT,
+                    mthd_rslt_type=MethodResultType.ANALYSIS_RESULT,
                     ex=rank_search_result.exception
                 )
             )

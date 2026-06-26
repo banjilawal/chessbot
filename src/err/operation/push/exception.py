@@ -1,7 +1,7 @@
-# src/err/push/__init__.py
+# src/err/push/exception.py
 
 """
-Module: err.push.__init__
+Module: err.push.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -15,11 +15,11 @@ from result import MethodResultType
 
 __all__ = [
     # ======================# PUSH_FAILURE #======================#
-    "PushException",
+    "PusherException",
 ]
 
 # ======================# PUSH_FAILURE #======================#
-class PushException(OperationException):
+class PusherException(OperationException):
     """
     Role:
         -   Error Tracing
@@ -35,6 +35,7 @@ class PushException(OperationException):
         cls_name: Optional[str]
         cls_mthd: Optional[str]
         err_code: Optional[str]
+        mthd_rslt_type: Optional[MethodResultType]
             
     Provides:
 
@@ -69,7 +70,7 @@ class PushException(OperationException):
         """
         msg = msg or self.MSG
         err_code = err_code or self.ERR_CODE
-        mthd_rslt_type = self.MTHD_RSLT_TYPE
+        mthd_rslt_type = mthd_rslt_type or self.MTHD_RSLT_TYPE
         super().__init__(
             ex=ex,
             msg=msg,

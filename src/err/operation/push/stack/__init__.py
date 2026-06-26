@@ -20,7 +20,6 @@ from .node import *
 from .player import *
 from .square import *
 from .team import *
-from .token import *
 
 # Modules
 from .exception import StackPushException

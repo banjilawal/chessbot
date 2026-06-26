@@ -9,6 +9,7 @@ version: 1.0.1
 
 from __future__ import annotations
 
+from analyzer import RankQuotaAnalyzer
 from detector import TokenCollisionDetector
 from microservice import RankService
 from model import Token
@@ -50,9 +51,9 @@ class TokenPusher(Pusher[Token]):
             cls,
             token: Token,
             token_stack: TokenStackService,
-            rank_service: RankService = RankService(),
-            rank_quota_analyzer: RankQuotaAnalyzer = RankQuotaAnalyzer(),
-            collision_detector: TokenCollisionDetector = TokenCollisionDetector(),
+            rank_service: RankService | None = None,
+            rank_quota_analyzer: RankQuotaAnalyzer | None = None,
+            collision_detector: TokenCollisionDetector | None = None,
     ) -> InsertionResult:
         """
         Action:
@@ -74,6 +75,14 @@ class TokenPusher(Pusher[Token]):
             TokenStackFullException
         """
         method =  f"{cls.__name__}.push"
+    
+    
+        if rank_service is None:
+            rank_service = RankService()
+        if rank_quota_analyzer is None:
+            rank_quota_analyzer = RankQuotaAnalyzer()
+        if collision_detector is None:
+            collision_detector = TokenCollisionDetector()
         
         # Handle the case that, the list is full.
         if token_stack.is_full:

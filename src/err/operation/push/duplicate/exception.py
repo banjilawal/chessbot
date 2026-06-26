@@ -10,7 +10,7 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import PushException
+from err import PusherException
 
 __all__ = [
     # ======================# PUSH_PUSH_ERROR #======================#
@@ -18,7 +18,7 @@ __all__ = [
 ]
 
 # ======================# PUSH_PUSH_ERROR #======================#
-class DuplicatePushException(PushException):
+class DuplicatePushException(PusherException):
     """
     Role:
         -   Error Tracing

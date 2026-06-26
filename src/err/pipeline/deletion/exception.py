@@ -69,7 +69,7 @@ class DeletionPipelineException(PipelineException):
             mthd_rslt_type: Optional[MethodResultType]
         """
         msg = msg or self.MSG
-        mthd_rslt_type = self.MTHD_RSLT_TYPE
+        mthd_rslt_type = mthd_rslt_type or self.MTHD_RSLT_TYPE
         err_code = err_code or self.ERR_CODE
         super().__init__(
             op=op,

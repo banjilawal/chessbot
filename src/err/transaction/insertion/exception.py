@@ -69,7 +69,7 @@ class InsertionException(TransactionException):
             err_code: Optional[str]
         """
         msg = msg or self.MSG
-        mthd_rslt_type = self.MTHD_RSLT_TYPE
+        mthd_rslt_type = mthd_rslt_type or self.MTHD_RSLT_TYPE
         err_code = err_code or self.ERR_CODE
         mthd_rslt_type = mthd_rslt or self.MTHD_RSLT_TYPE
         super().__init__(
