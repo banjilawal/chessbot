@@ -9,7 +9,9 @@ version: 1.0.0
 
 from __future__ import annotations
 
-from model.token import TokenQueryService, TokenStackPop, TokenStackPush
+from search.token.resource import TokenQueryService
+from worker.stack.token.pop import TokenStackPop
+from operation.stack.push.token import TokenStackPush
 
 
 class TokenStackCrudController:

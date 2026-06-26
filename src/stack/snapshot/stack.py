@@ -1,7 +1,7 @@
-# src/stack/snapshot/py
+# src/stack/snapshot/stack.py
 
 """
-Module: stack.snapshot.microservice
+Module: stack.snapshot.stack
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

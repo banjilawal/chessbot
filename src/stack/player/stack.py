@@ -1,7 +1,7 @@
-# src/stack/player/py
+# src/stack/player/stack.py
 
 """
-Module: stack.player.microservice
+Module: stack.player.stack
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

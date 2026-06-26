@@ -1,7 +1,7 @@
-# src/stack/edge/py
+# src/stack/edge/stack.py
 
 """
-Module: stack.edge.microservice
+Module: stack.edge.stack
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

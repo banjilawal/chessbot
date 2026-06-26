@@ -9,6 +9,7 @@ version: 1.0.0
 
 from __future__ import annotations
 
+from controller.stack.crud.token import TokenStackCrudController
 from detector import TokenCollisionDetector
 from system import IntegrityMicroservice
 

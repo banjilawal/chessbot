@@ -1,7 +1,7 @@
-# src/stack/coord/py
+# src/stack/coord/stack.py
 
 """
-Module: stack.coord.microservice
+Module: stack.coord.stack
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

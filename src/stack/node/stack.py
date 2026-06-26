@@ -1,7 +1,7 @@
-# src/stack/node/py
+# src/stack/node/stack.py
 
 """
-Module: stack.node.microservice
+Module: stack.node.stack
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

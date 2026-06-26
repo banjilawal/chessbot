@@ -1,7 +1,7 @@
-# src/stack/team/py
+# src/stack/team/stack.py
 
 """
-Module: stack.team.microservice
+Module: stack.team.stack
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

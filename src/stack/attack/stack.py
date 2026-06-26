@@ -1,7 +1,7 @@
-# src/stack/token/stack.py
+# src/stack/attack/stack.py
 
 """
-Module: stack.token.stack
+Module: stack.attack.stack
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -12,15 +12,17 @@ from __future__ import annotations
 from typing import Iterator, List, Optional
 
 from analyzer import CollisionAnalyzer
-from controller.stack.token.controller import TokenStackOpsController
-from microservice import IdentityService, TokenService
-from model import Token, TokenContext
+from controller.stack.attack.controller import AttackStackOpsController
+
+from event import AttackEvent
+from microservice import IdentityService, AttackService
+from model import Attack, AttackContext
 from result import DeletionResult, InsertionResult, SearchResult
-from stack import StackService, TokenStackState
+from stack import StackService, AttackStackState
 from system import IdFactory, LoggingLevelRouter
 
 
-class TokenStackService(StackService[Token]):
+class AttackStackService(StackService[AttackEvent]):
     """
     Role:
         -   API
@@ -30,74 +32,64 @@ class TokenStackService(StackService[Token]):
         -   Operations Provider
 
     Responsibilities:
-        1.  Baremetal service request API for Token collections.
+        1.  Baremetal service request API for Attack collections.
         2.  Preserve consistency during updates and deletes.
-        3.  Stateful, scalable integrity management of Tokens.
-        4.  Token search and retrieval.
+        3.  Stateful, scalable integrity management of Attacks.
+        4.  Attack search and retrieval.
 
     Attributes:
         CAPACITY = 16
-        SERVICE_NAME = TokenStackService
+        SERVICE_NAME = AttackStackService
  
         id: int
         schema: str
         size: int
         capacity: int
-        items: List[Token]
-        iterator: Iterator[Token]
-        stack_state: TokenStackState
-        current_item: Optional[Token]
-        integrity_service: TokenService
-        ops_controller: TokenStackOpsController
+        items: List[AttackEvent]
+        iterator: Iterator[AttackEvent]
+        stack_state: AttackStackState
+        current_item: Optional[AttackEvent]
+        integrity_service: AttackService
+        ops_controller: AttackStackOpsController
 
     Provides:
         -   is_empty() -> bool
         -   is_being_deployed() -> bool
         -   is_deployed_on_board() -> bool
-        -   pop() -> DeletionResult[Token]
-        -   push(item: Token) -> InsertionResult
+        -   pop() -> DeletionResult[AttackEvent]
+        -   push(item: Attack) -> InsertionResult
         -   is_ready_for_deployment() -> bool
         -   is_getting_ready_for_deployment() -> bool
-        -   delete_by_id(id: int) -> DeletionResult[Token]
-        -   context(context: Context[Token]) -> SearchResult[List[Token]]
+        -   delete_by_id(id: int) -> DeletionResult[AttackEvent]
+        -   context(context: Context[AttackEvent]) -> SearchResult[List[AttackEvent]]
 
     Super Class:
         StackService
     """
-    DEFAULT_CAPACITY: int = 16
-    SERVICE_NAME: str = "TokenStackService"
-    
-    _capacity: int
-    _stack: List[Token]
-    _state: TokenStackState
-    _ops_controller: TokenStackOpsController
+    SERVICE_NAME: str = "AttackStackService"
+    _stack: List[AttackEvent]
+    _state: AttackStackState
+    _ops_controller: AttackStackOpsController
     
     def __init__(
             self,
             name: str = SERVICE_NAME,
-            capacity: int = DEFAULT_CAPACITY,
-            id: int = IdFactory.next_id(class_name="TokenStackService"),
-            ops_controller: TokenStackOpsController = TokenStackOpsController(),
+            id: int = IdFactory.next_id(class_name="AttackStackService"),
     ):
         """
         Args:
             id: int
             name: str
-            capacity: int
-            ops_controller: TokenStackOpsController
         """
         super().__init__(id=id, name=name,)
         self._stack = []
-        self._capacity = capacity
-        self._ops_controller = ops_controller
-        self._state = TokenStackState.NOT_READY_FORD_DEPLOYMENT
     
     @property
-    def items(self) -> List[Token]:
+    def items(self) -> List[AttackEvent]:
         return self._stack
     
     @property
-    def iterator(self) -> Iterator[Token]:
+    def iterator(self) -> Iterator[AttackEvent]:
         return iter(self._stack)
 
     @property
@@ -105,86 +97,74 @@ class TokenStackService(StackService[Token]):
         return len(self._stack)
     
     @property
-    def current_token(self) -> Optional[Token]:
+    def current_attack(self) -> Optional[AttackEvent]:
         return self._stack[-1] if self._stack else None
-
-    @property
-    def capacity(self) -> int:
-        return self._capacity
     
     @property
     def is_empty(self) -> bool:
         return self.size == 0
     
     @property
-    def is_partially_full(self) -> bool:
-        return 0 < self.size < self._capacity
-    
-    @property
-    def is_full(self) -> bool:
-        return self.size == self._capacity
-    
-    @property
-    def current_item(self) -> Optional[Token]:
+    def current_item(self) -> Optional[AttackEvent]:
         return self._stack[-1] if self._stack else None
     
     @property
-    def request(self) -> TokenStackOpsController:
+    def request(self) -> AttackStackOpsController:
         return self._ops_controller
     
     @property
-    def microservice(self) -> TokenService:
+    def microservice(self) -> AttackService:
         return self._ops_controller.integrity_service
     
     @property
     def is_getting_ready_for_deployment(self) -> bool:
         return not (
                 self.is_full and
-                self._state == TokenStackState.NOT_READY_FORD_DEPLOYMENT
+                self._state == AttackStackState.NOT_READY_FORD_DEPLOYMENT
         )
     
     @property
     def is_ready_for_deployment(self) -> bool:
         return (
                 self.is_full and
-                self._state == TokenStackState.READY_FOR_DEPLOYMENT
+                self._state == AttackStackState.READY_FOR_DEPLOYMENT
         )
     
     @property
     def is_being_deployed(self) -> bool:
-        return self.is_partially_full and self._state == TokenStackState.BEING_DEPLOYED
+        return self.is_partially_full and self._state == AttackStackState.BEING_DEPLOYED
     
     @property
     def is_deployed_on_board(self) -> bool:
         return (
                 self.is_empty and
-                self._state == TokenStackState.DEPLOYED_ON_BOARD
+                self._state == AttackStackState.DEPLOYED_ON_BOARD
         )
     
     @property
-    def collision_analyst(self) -> CollisionAnalyzer[Token]:
+    def collision_analyst(self) -> CollisionAnalyzer[AttackEvent]:
         return self._ops_controller.collision_analyst
     
     @property
-    def stack_state(self) -> TokenStackState:
+    def stack_state(self) -> AttackStackState:
         return self._state
     
     @stack_state.setter
-    def stack_state(self, state: TokenStackState):
+    def stack_state(self, state: AttackStackState):
         self._state = state
     
     @LoggingLevelRouter.monitor
-    def pop(self) -> DeletionResult[Token]:
+    def pop(self) -> DeletionResult[AttackEvent]:
         """
-        Remove the last token put on the stack.
+        Remove the last attack put on the stack.
 
         Action:
             If the pop fails, send an exception chain. Otherwise, send the success result.
         Args:
         Returns:
-            DeletionResult[Token]
+            DeletionResult[AttackEvent]
         Raises:
-            TokenStackServiceException
+            AttackStackServiceException
         """
         method = f"{self.__class__.__name__}.pop"
         
@@ -195,11 +175,11 @@ class TokenStackService(StackService[Token]):
         if request_result.is_failure:
             # Send the exception chain on failure.
             return DeletionResult.failure(
-                TokenStackServiceException(
+                AttackStackServiceException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=TokenStackServiceException.MSG,
-                    err_code=TokenStackServiceException.ERR_CODE,
+                    msg=AttackStackServiceException.MSG,
+                    err_code=AttackStackServiceException.ERR_CODE,
                     ex=request_result.exception,
                 )
             )
@@ -207,38 +187,38 @@ class TokenStackService(StackService[Token]):
         return request_result
     
     @LoggingLevelRouter.monitor
-    def push(self, item: Token) -> InsertionResult[bool]:
+    def push(self, item: Attack) -> InsertionResult[bool]:
         """
-        Put the token onto the schema.
+        Put the attack onto the schema.
 
         Action:
             If the insertion fails, send an exception chain. Otherwise, send
             the success result.
         Args:
-            item: Token
+            item: Attack
         Returns:
             InsertionResult[bool]
         Raises:
-            TokenStackServiceException
+            AttackStackServiceException
         """
         method = f"{self.__class__.__name__}.push"
         
         # --- Handoff request fulfilment to the ops_controller. ---#
         request_result = self._ops_controller.crud.push.execute(
-            token=item,
+            attack=item,
             stream=self,
             rank_quota_analyzer=self._ops_controller.rank_quota_analyzer,
-            token_collision_detector=self._ops_controller.collision_detector
+            attack_collision_detector=self._ops_controller.collision_detector
         )
         # Handle the case that, the request was not fulfilled.
         if request_result.is_failure:
             # Send the exception chain on failure.
             return InsertionResult.failure(
-                TokenStackServiceException(
+                AttackStackServiceException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=TokenStackServiceException.MSG,
-                    err_code=TokenStackServiceException.ERR_CODE,
+                    msg=AttackStackServiceException.MSG,
+                    err_code=AttackStackServiceException.ERR_CODE,
                     ex=request_result.exception,
                 )
             )
@@ -250,9 +230,9 @@ class TokenStackService(StackService[Token]):
             self,
             id: int,
             identity_service: IdentityService
-    ) -> DeletionResult[Token]:
+    ) -> DeletionResult[AttackEvent]:
         """
-        Delete any token which has that id.
+        Delete any attack which has that id.
         
         Action:
             If the operation gets interrupted send an exception chain. Otherwise,
@@ -261,9 +241,9 @@ class TokenStackService(StackService[Token]):
             id: int
             identity_service: IdentityService
         Returns:
-            DeletionResult[Token]
+            DeletionResult[AttackEvent]
         Raises:
-            TokenStackServiceException
+            AttackStackServiceException
         """
         method = f"{self.__class__.__name__}.delete_by_id"
         
@@ -279,11 +259,11 @@ class TokenStackService(StackService[Token]):
         if request_result.is_failure:
             # Send the exception chain on failure.
             return DeletionResult.failure(
-                TokenStackServiceException(
+                AttackStackServiceException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=TokenStackServiceException.MSG,
-                    err_code=TokenStackServiceException.ERR_CODE,
+                    msg=AttackStackServiceException.MSG,
+                    err_code=AttackStackServiceException.ERR_CODE,
                     ex=request_result.exception,
                 )
             )
@@ -291,19 +271,19 @@ class TokenStackService(StackService[Token]):
         return request_result
     
     @LoggingLevelRouter.monitor
-    def search(self, context: TokenContext) -> SearchResult[List[Token]]:
+    def search(self, context: AttackContext) -> SearchResult[List[AttackEvent]]:
         """
-        Find tokens whose attribute value fits the context.
+        Find attacks whose attribute value fits the context.
 
         Action:
             Send an exception chain if the operation gets interrupted. Otherwise, send
             the success result.
         Args:
-            context: TokenContext
+            context: AttackContext
         Returns:
-            SearchResult[List[Token]]
+            SearchResult[List[AttackEvent]]
         Raises:
-            TokenStackServiceException
+            AttackStackServiceException
         """
         method = f"{self.__class__.__name__}.context"
         
@@ -314,11 +294,11 @@ class TokenStackService(StackService[Token]):
         if request_result.is_failure:
             # Send the exception chain on failure.
             return SearchResult.failure(
-                TokenStackServiceException(
+                AttackStackServiceException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=TokenStackServiceException.MSG,
-                    err_code=TokenStackServiceException.ERR_CODE,
+                    msg=AttackStackServiceException.MSG,
+                    err_code=AttackStackServiceException.ERR_CODE,
                     ex=request_result.exception,
                 )
             )

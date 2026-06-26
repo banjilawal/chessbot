@@ -1,7 +1,7 @@
-# src/stack/py
+# src/stack/stack.py
 
 """
-Module: stack.microservice
+Module: stack.stack
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

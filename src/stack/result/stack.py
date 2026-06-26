@@ -1,7 +1,7 @@
-# src/stack/result/py
+# src/stack/result/stack.py
 
 """
-Module: stack.result.microservice
+Module: stack.result.stack
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
