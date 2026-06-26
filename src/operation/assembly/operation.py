@@ -11,11 +11,10 @@ from __future__ import annotations
 
 from typing import TypeVar
 
+from blueprint import Blueprint
 from result import BuildResult
 from operation import Operation
 from util import LoggingLevelRouter
-from model import Blueprint
-
 
 
 T = TypeVar("T")

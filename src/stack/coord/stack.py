@@ -8,6 +8,11 @@ version: 1.0.1
 """
 
 from __future__ import annotations
+
+from model import Coord
+from stack import StackService
+
+
 class CoordStackService(StackService[Coord]):
     """
     Role:

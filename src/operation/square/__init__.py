@@ -12,6 +12,5 @@ version: 1.0.1
 # Packages
 from departure import *
 from entry import *
-from .visit import *
 
 # Modules
