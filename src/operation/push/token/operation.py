@@ -17,7 +17,7 @@ from model.token import (
 )
 
 
-class TokenStackPush:
+class TokenPusher:
     """
     Role:
         - Transaction Worker

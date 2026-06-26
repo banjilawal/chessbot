@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from search.token.resource import TokenQueryService
 from worker.stack.token.pop import TokenStackPop
-from operation.stack.push.token import TokenStackPush
+from operation.push.token import TokenPusher
 
 
 class TokenStackCrudController:
@@ -40,14 +40,14 @@ class TokenStackCrudController:
     """
     
     _pop: TokenStackPop
-    _push: TokenStackPush
+    _push: TokenPusher
     _query: TokenQueryService
     
     def __init__(
             self,
             pop: TokenStackPop = TokenStackPop(),
             query: TokenQueryService = TokenQueryService(),
-            push: TokenStackPush = TokenStackPush(),
+            push: TokenPusher = TokenPusher(),
     ):
         self._pop = pop
         self._push = push
@@ -58,7 +58,7 @@ class TokenStackCrudController:
         return self._pop
     
     @property
-    def push(self) -> TokenStackPush:
+    def push(self) -> TokenPusher:
         return self._push
     
     @property
