@@ -1,10 +1,10 @@
-# src/logic/token/database/kernel/operation/quota/check.py
+# src/report/quota/report.py
 
 """
-Module: logic.token.database.kernel.operation.quota.report
+Module: report.quota.report
 Author: Banji Lawal
-Created: 2026-02-21
-version: 1.0.0
+Created: 2026-04-03
+version: 1.0.1
 """
 
 from __future__ import annotations
