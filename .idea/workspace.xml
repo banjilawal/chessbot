@@ -5,13 +5,62 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/src/detector/detector.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/detector/detector.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/detector/square/detector.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/detector/square/detector.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/detector/token/detector.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/detector/token/detector.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/assembly/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/assembly/operation.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/push/token/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/push/token/operation.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/square/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/square/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/stack/coord/stack.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/stack/coord/stack.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/operation/push/duplicate/prisoner/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/operation/push/duplicate/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/push/duplicate/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/operation/push/duplicate/arena/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/push/duplicate/arena/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/operation/push/duplicate/arena/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/push/duplicate/arena/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/operation/push/duplicate/board/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/push/duplicate/board/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/operation/push/duplicate/board/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/push/duplicate/board/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/operation/push/duplicate/coord/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/push/duplicate/coord/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/operation/push/duplicate/coord/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/push/duplicate/coord/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/operation/push/duplicate/edge/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/push/duplicate/edge/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/operation/push/duplicate/edge/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/push/duplicate/edge/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/operation/push/duplicate/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/push/duplicate/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/operation/push/duplicate/game/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/push/duplicate/game/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/operation/push/duplicate/game/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/push/duplicate/game/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/operation/push/duplicate/graph/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/operation/push/duplicate/graph/exception.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/operation/push/duplicate/hostage/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/operation/push/duplicate/hostage/exception.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/operation/push/duplicate/node/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/push/duplicate/node/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/operation/push/duplicate/node/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/push/duplicate/node/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/operation/push/duplicate/player/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/push/duplicate/player/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/operation/push/duplicate/player/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/push/duplicate/player/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/operation/push/duplicate/snapshot/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/operation/push/duplicate/snapshot/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/push/duplicate/prisoner/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/operation/push/duplicate/square/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/push/duplicate/square/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/operation/push/duplicate/square/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/push/duplicate/square/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/operation/push/duplicate/team/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/push/duplicate/team/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/operation/push/duplicate/team/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/push/duplicate/team/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/operation/push/duplicate/token/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/push/duplicate/token/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/operation/push/duplicate/token/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/push/duplicate/token/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/state/push/duplicate/arena/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/state/push/duplicate/arena/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/state/push/duplicate/board/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/state/push/duplicate/board/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/state/push/duplicate/coord/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/state/push/duplicate/coord/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/state/push/duplicate/edge/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/state/push/duplicate/edge/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/state/push/duplicate/game/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/state/push/duplicate/game/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/state/push/duplicate/graph/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/state/push/duplicate/graph/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/state/push/duplicate/hostage/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/state/push/duplicate/hostage/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/state/push/duplicate/node/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/state/push/duplicate/node/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/state/push/duplicate/player/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/state/push/duplicate/player/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/state/push/duplicate/snapshot/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/state/push/duplicate/snapshot/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/state/push/duplicate/square/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/state/push/duplicate/square/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/state/push/duplicate/team/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/state/push/duplicate/team/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/state/push/duplicate/token/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/state/push/duplicate/token/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/transaction/insertion/duplicate/arena/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/transaction/insertion/duplicate/arena/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/transaction/insertion/duplicate/board/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/transaction/insertion/duplicate/board/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/transaction/insertion/duplicate/coord/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/transaction/insertion/duplicate/coord/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/transaction/insertion/duplicate/edge/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/transaction/insertion/duplicate/edge/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/transaction/insertion/duplicate/game/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/transaction/insertion/duplicate/game/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/transaction/insertion/duplicate/graph/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/transaction/insertion/duplicate/graph/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/transaction/insertion/duplicate/hostage/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/transaction/insertion/duplicate/hostage/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/transaction/insertion/duplicate/node/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/transaction/insertion/duplicate/node/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/transaction/insertion/duplicate/player/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/transaction/insertion/duplicate/player/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/transaction/insertion/duplicate/rank/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/transaction/insertion/duplicate/rank/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/transaction/insertion/duplicate/square/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/transaction/insertion/duplicate/square/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/transaction/insertion/duplicate/team/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/transaction/insertion/duplicate/team/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/transaction/insertion/duplicate/token/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/transaction/insertion/duplicate/token/exception.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,29 +107,29 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Python.notifier.executor&quot;: &quot;Debug&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/griot/PycharmProjects/chessbot/src/err/analyzer&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.completion&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Python.notifier.executor": "Debug",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "main",
+    "ignore.virus.scanning.warn.message": "true",
+    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/err/operation/push/duplicate",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "editor.preferences.completion",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/err/operation/push/duplicate" />
+      <recent name="$PROJECT_DIR$/src/err/operation/push/token" />
       <recent name="$PROJECT_DIR$/src/err/analyzer" />
       <recent name="$PROJECT_DIR$/src/stack" />
       <recent name="$PROJECT_DIR$/src/microservice" />
-      <recent name="$PROJECT_DIR$/src/model" />
-      <recent name="$PROJECT_DIR$/src/err/null" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/err/operation/push" />
@@ -811,7 +860,7 @@
       <workItem from="1782069802645" duration="29800000" />
       <workItem from="1782214489414" duration="8439000" />
       <workItem from="1782265217166" duration="7062000" />
-      <workItem from="1782325486599" duration="14586000" />
+      <workItem from="1782325486599" duration="20510000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />

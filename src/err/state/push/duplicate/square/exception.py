@@ -10,7 +10,7 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import DuplicatePushException
+from err import DuplicateItemException
 
 __all__ = [
     # ======================# DUPLICATE_SQUARE_PUSH_ERROR #======================#
@@ -18,7 +18,7 @@ __all__ = [
 ]
 
 # ======================# DUPLICATE_SQUARE_PUSH_ERROR #======================#
-class DuplicateSquarePushException(DuplicatePushException):
+class DuplicateSquarePushException(DuplicateItemException):
     """
     Role:
         -   Error Tracing

@@ -17,6 +17,7 @@ from .collision import *
 from .config import *
 from .controller import *
 from .detector import *
+from .duplicate import *
 from .empty import *
 from .factory import *
 from .inconsistent import *

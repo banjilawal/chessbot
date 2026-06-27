@@ -10,7 +10,7 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import DuplicatePushException
+from err import DuplicateItemException
 
 
 __all__ = [
@@ -19,7 +19,7 @@ __all__ = [
 ]
 
 # ======================# DUPLICATE_BOARD_STACK_PUSH_ERROR #======================#
-class DuplicateBoardPushException(DuplicatePushException):
+class DuplicateBoardPushException(DuplicateItemException):
     """
     Role:
         -   Error Tracing

@@ -10,7 +10,6 @@ version: 1.0.1
 # ============ ERR.OPERATION.PUSH PACKAGE ===========#
 
 # Packages
-from .duplicate import *
 from .stack import *
 from .token import *
 

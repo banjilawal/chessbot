@@ -10,7 +10,7 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import DuplicatePushException
+from err import DuplicateItemException
 
 
 __all__ = [
@@ -19,7 +19,7 @@ __all__ = [
 ]
 
 # ======================# DUPLICATE_GRAPH_STACK_PUSH_ERROR #======================#
-class DuplicateGraphPushException(DuplicatePushException):
+class DuplicateGraphPushException(DuplicateItemException):
     """
     Role:
         -   Error Tracing
