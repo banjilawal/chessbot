@@ -48,6 +48,7 @@ class TokenAssembler(Assembler[Token]):
                 KingToken(
                     id=blueprint.id,
                     team=blueprint.team,
+                    formation=blueprint.formation,
                     designation=blueprint.formation.designation,
                     roster_number=blueprint.formation.roster_number,
                     opening_square=blueprint.home_square
@@ -57,8 +58,7 @@ class TokenAssembler(Assembler[Token]):
             CombatantToken(
                 id=blueprint.id,
                 team=blueprint.team,
-                designation=blueprint.formation.designation,
-                roster_number=blueprint.formation.roster_number,
+                formation=blueprint.formation,
                 opening_square=blueprint.home_square,
                 rank=blueprint.rank
             )

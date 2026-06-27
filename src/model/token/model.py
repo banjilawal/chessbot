@@ -12,7 +12,7 @@ from abc import ABC, abstractmethod
 from typing import Optional
 
 from database import CoordDatabase
-from model import Coord, OpeningSquare, Rank, Team, TokenActivityState, DeploymentState
+from model import Coord, Formation, OpeningSquare, Rank, Team, TokenActivityState, DeploymentState
 
 
 class Token(ABC):
@@ -47,8 +47,7 @@ class Token(ABC):
     _id: int
     _team: Team
     _rank: Rank
-    _designation: str
-    _roster_number: int
+    _formation: Formation
     _positions: CoordDatabase
     _opening_square: OpeningSquare
     _current_position: Optional[Coord]
@@ -61,8 +60,7 @@ class Token(ABC):
             id: int,
             rank: Rank,
             team: Team,
-            designation: str,
-            roster_number: int,
+            formation: Formation,
             opening_square: OpeningSquare,
     ):
         """
@@ -70,16 +68,14 @@ class Token(ABC):
             id: int
             team: Team
             rank: Rank
-            designation: str
-            roster_number: int
+            formation: Formation
             opening_square: OpeningSquare
         """
         self._id = id
         self._team = team
         self._rank = rank
+        self._formation = formation
         self._positions = CoordDatabase()
-        self._designation = designation
-        self._roster_number = roster_number
         self._opening_square = opening_square
         self._current_position = self._positions.current_item
         self._previous_address = self._positions.previous_coord
@@ -91,12 +87,16 @@ class Token(ABC):
         return self._id
     
     @property
+    def formation(self) -> Formation:
+        return self._formation
+    
+    @property
     def designation(self) -> str:
-        return self._designation
+        return self._formation.designation
     
     @property
     def roster_number(self) -> int:
-        return self._roster_number
+        return self._formation.roster_number
     
     @property
     def team(self) -> Team:
@@ -152,13 +152,6 @@ class Token(ABC):
         )
     
     @property
-    def is_developed(self) -> bool:
-        return (
-                self.positions.size > 1 and
-                self._deployment_state != DeploymentState.DEPLOYED
-        )
-    
-    @property
     @abstractmethod
     def is_active(self) -> bool:
         pass
@@ -180,8 +173,6 @@ class Token(ABC):
     
     def is_enemy(self, token: Token) -> bool:
         return not self.is_friend(token)
-    
-
     
     def __eq__(self, other: object) -> bool:
         if other is self: return True

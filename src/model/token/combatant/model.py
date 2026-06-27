@@ -10,7 +10,7 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Optional
 
-from model import OpeningSquare
+from model import Formation, OpeningSquare
 from model.team import Team
 from model.rank import Rank
 from model.token import Token, DeploymentState, TokenActivityState
@@ -57,6 +57,7 @@ class CombatantToken(Token):
             id: int,
             rank: Rank,
             team: Team,
+            formation: Formation,
             designation: str,
             roster_number: int,
             opening_square: OpeningSquare,
@@ -66,6 +67,7 @@ class CombatantToken(Token):
             id: int
             team: Team
             rank: Rank
+            formation: Formation
             designation: str
             roster_number: int
             opening_square: OpeningSquare
@@ -74,6 +76,7 @@ class CombatantToken(Token):
             id=id,
             team=team,
             rank=rank,
+            formation=formation,
             designation=designation,
             roster_number=roster_number,
             opening_square=opening_square,

@@ -11,7 +11,7 @@ from __future__ import annotations
 from enum import Enum
 
 from model.catalog import Persona
-from system import GameColor
+from setting import GameColor
 
 
 class Formation(Enum):

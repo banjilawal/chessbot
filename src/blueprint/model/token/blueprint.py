@@ -8,13 +8,13 @@ version: 1.0.1
 """
 
 from __future__ import annotations
-
 from dataclasses import dataclass
 from typing import Optional
 
+from blueprint import Blueprint
 from err import TokenNullException
 from model.catalog import Formation
-from model import Blueprint, OpeningSquare, Rank, Team, Token
+from model import OpeningSquare, Rank, Team, Token
 
 
 @dataclass

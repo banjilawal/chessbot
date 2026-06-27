@@ -9,13 +9,9 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from model.coord import CoordDatabase
 
-from model import OpeningSquare
-from model.rank import King
-from model.team import Team
-from model.token import Token, DeploymentState, TokenActivityState
-from system import IdFactory
+from model import DeploymentState, Formation, King, OpeningSquare, Team, Token, TokenActivityState
+from util import IdFactory
 
 
 class KingToken(Token):
@@ -55,6 +51,7 @@ class KingToken(Token):
             self,
             id: int,
             team: Team,
+            formation: Formation,
             designation: str,
             roster_number: int,
             opening_square: OpeningSquare,
@@ -63,15 +60,16 @@ class KingToken(Token):
         Args:
             id: int
             team: Team
+            formation: Formation
             designation: str
             roster_number: int
             opening_square: Square
         """
-        rank = King(id=IdFactory.next_id(class_name="King"))
         super().__init__(
             id=id,
             team=team,
-            rank=rank,
+            rank=King(id=IdFactory.next_id(class_name="King")),
+            formation=formation,
             designation=designation,
             roster_number=roster_number,
             opening_square=opening_square,
