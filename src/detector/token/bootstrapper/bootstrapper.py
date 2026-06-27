@@ -15,7 +15,7 @@ from typing import Optional
 from blueprint import TokenBlueprint
 from err import (
     ExcessTeamContextFlagsException, OpeningSquareCollisionException, TokenBlueprintNullException,
-    TokenCollisionDetectorException,
+    TokenCollisionDetectorBootstrapperException,
     TokenIdCollisionException, TokenNameCollisionException, TokenStackNullException, ZeroTokenContextFlagsException
 )
 from microservice import IdentityService
@@ -98,11 +98,11 @@ class TokenCollisionDetectorBootstrapper:
         if param_count == 0:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                TokenCollisionDetectorException(
+                TokenCollisionDetectorBootstrapperException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    msg=TokenCollisionDetectorException.MSG,
-                    err_code=TokenCollisionDetectorException.ERR_CODE,
+                    msg=TokenCollisionDetectorBootstrapperException.MSG,
+                    err_code=TokenCollisionDetectorBootstrapperException.ERR_CODE,
                     ex=ZeroTokenContextFlagsException(
                         msg=ZeroTokenContextFlagsException.MSG,
                         err_code=ZeroTokenContextFlagsException.ERR_CODE,
@@ -113,11 +113,11 @@ class TokenCollisionDetectorBootstrapper:
         if param_count > 1:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                TokenCollisionDetectorException(
+                TokenCollisionDetectorBootstrapperException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    msg=TokenCollisionDetectorException.MSG,
-                    err_code=TokenCollisionDetectorException.ERR_CODE,
+                    msg=TokenCollisionDetectorBootstrapperException.MSG,
+                    err_code=TokenCollisionDetectorBootstrapperException.ERR_CODE,
                     ex=ExcessTeamContextFlagsException(
                         msg=ExcessTeamContextFlagsException.MSG,
                         err_code=ExcessTeamContextFlagsException.ERR_CODE,
@@ -131,11 +131,11 @@ class TokenCollisionDetectorBootstrapper:
         )
         if stream_validation_result.is_failure:
             return ValidationResult.failure(
-                TokenCollisionDetectorException(
+                TokenCollisionDetectorBootstrapperException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    msg=TokenCollisionDetectorException.MSG,
-                    err_code=TokenCollisionDetectorException.ERR_CODE,
+                    msg=TokenCollisionDetectorBootstrapperException.MSG,
+                    err_code=TokenCollisionDetectorBootstrapperException.ERR_CODE,
                     ex=stream_validation_result.exception
                 )
             )
@@ -164,11 +164,11 @@ class TokenCollisionDetectorBootstrapper:
         validation_result = token_validator.validate(target)
         if validation_result.is_failure:
             return ValidationResult.failure(
-                TokenCollisionDetectorException(
+                TokenCollisionDetectorBootstrapperException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    msg=TokenCollisionDetectorException.MSG,
-                    err_code=TokenCollisionDetectorException.ERR_CODE,
+                    msg=TokenCollisionDetectorBootstrapperException.MSG,
+                    err_code=TokenCollisionDetectorBootstrapperException.ERR_CODE,
                     ex=validation_result.exception
                 )
             )
@@ -201,11 +201,11 @@ class TokenCollisionDetectorBootstrapper:
     
         if validation_result.is_failure:
             return ValidationResult.failure(
-                TokenCollisionDetectorException(
+                TokenCollisionDetectorBootstrapperException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    msg=TokenCollisionDetectorException.MSG,
-                    err_code=TokenCollisionDetectorException.ERR_CODE,
+                    msg=TokenCollisionDetectorBootstrapperException.MSG,
+                    err_code=TokenCollisionDetectorBootstrapperException.ERR_CODE,
                     ex=validation_result.exception
                 )
             )
@@ -215,11 +215,11 @@ class TokenCollisionDetectorBootstrapper:
         )
         if identity_validation_result.is_failure:
             return ValidationResult.failure(
-                TokenCollisionDetectorException(
+                TokenCollisionDetectorBootstrapperException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    msg=TokenCollisionDetectorException.MSG,
-                    err_code=TokenCollisionDetectorException.ERR_CODE,
+                    msg=TokenCollisionDetectorBootstrapperException.MSG,
+                    err_code=TokenCollisionDetectorBootstrapperException.ERR_CODE,
                     ex=identity_validation_result.exception
                 )
             )
