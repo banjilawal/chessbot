@@ -112,7 +112,7 @@ class PawnToken(CombatantToken):
         return not isinstance(self.rank, Pawn) and self._promotion_state != PromotionState.NOT_PROMOTED
     
     def set_new_rank(self, new_rank: Rank):
-        self._set_rank(new_rank)
+        self.set_rank(new_rank)
        
     def __eq__(self, other):
         if super().__eq__(other):

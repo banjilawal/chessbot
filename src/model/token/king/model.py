@@ -52,8 +52,6 @@ class KingToken(Token):
             id: int,
             team: Team,
             formation: Formation,
-            designation: str,
-            roster_number: int,
             opening_square: OpeningSquare,
     ):
         """
@@ -61,8 +59,6 @@ class KingToken(Token):
             id: int
             team: Team
             formation: Formation
-            designation: str
-            roster_number: int
             opening_square: Square
         """
         super().__init__(
@@ -70,8 +66,6 @@ class KingToken(Token):
             team=team,
             rank=King(id=IdFactory.next_id(class_name="King")),
             formation=formation,
-            designation=designation,
-            roster_number=roster_number,
             opening_square=opening_square,
         )
      

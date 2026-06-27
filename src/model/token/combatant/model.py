@@ -126,6 +126,9 @@ class CombatantToken(Token):
     @captor.setter
     def captor(self, captor: Token):
         self._captor = captor
+    
+    def set_rank(self, rank: Rank):
+        pass
         
     def __eq__(self, other):
         if super().__eq__(other):

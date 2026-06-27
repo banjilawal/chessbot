@@ -5,14 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/detector/token/boostrap/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/detector/token/boostrap/bootstrap.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/catalog/formation/catalog.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/catalog/formation/catalog.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/detector/token/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/detector/token/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/detector/token/boostrap/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/detector/token/bootstrapper/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/detector/token/boostrap/bootstrap.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/detector/token/bootstrapper/bootstrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/detector/token/detector.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/detector/token/detector.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/model/token/combatant/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/token/combatant/model.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/token/combatant/pawn/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/token/combatant/pawn/model.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/model/token/king/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/token/king/model.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/model/token/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/token/model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/assembly/token/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/assembly/token/operation.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -812,7 +813,7 @@
       <workItem from="1782069802645" duration="29800000" />
       <workItem from="1782214489414" duration="8439000" />
       <workItem from="1782265217166" duration="7062000" />
-      <workItem from="1782325486599" duration="27259000" />
+      <workItem from="1782325486599" duration="33962000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />

@@ -1,7 +1,7 @@
-# src/detector/collision/token/analyst.py
+# src/detector/collision/token/detector.py
 
 """
-Module: detector.collision.token.analyst
+Module: detector.collision.token.detector
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -9,10 +9,10 @@ version: 1.0.1
 
 from __future__ import annotations
 
+from time import clock_settime
 from typing import Optional
 
 from blueprint import TokenBlueprint
-from detector import Detector
 from err import (
     ExcessTeamContextFlagsException, OpeningSquareCollisionException, TokenBlueprintNullException,
     TokenCollisionDetectorException,
@@ -21,7 +21,7 @@ from err import (
 from microservice import IdentityService
 from model import Token
 from report import CollisionReport
-from result import ValidationResult, ValidationResult
+from result import AnalysisResult, ValidationResult
 from stack import TokenStackService
 from util import LoggingLevelRouter
 from validation import TokenValidator, ValidationPrimer
@@ -37,6 +37,7 @@ class TokenCollisionDetectorBootstrapper:
          1.  Report if any tokens are sharing attributes which should be unique.
          
      Attributes:
+     
      Provides:
          -   detect(
                     cls,
@@ -57,7 +58,6 @@ class TokenCollisionDetectorBootstrapper:
             target_blueprint: Optional[TokenBlueprint] | None = None,
             identity_service: IdentityService | None = None,
             validation_primer: ValidationPrimer | None = None,
-            token_validator: TokenValidator | None = None,
     ) -> ValidationResult[TokenBlueprint]:
         """
         Report if any schema member has the same id, designation or
@@ -83,7 +83,7 @@ class TokenCollisionDetectorBootstrapper:
             TokenOpeningSquareCollisionException
             TokenCollisionDetectionException
         """
-        method = f"{cls.__class__.__name__}.detect"
+        method = f"{cls.__class__.__name__}.execute"
         
         
         if validation_primer is None:
@@ -124,34 +124,6 @@ class TokenCollisionDetectorBootstrapper:
                     )
                 )
             )
-        
-        if target is not None:
-            validation_result = token_validator.validate(target)
-            if validation_result.is_failure:
-                return ValidationResult.failure(
-                    TokenCollisionDetectorException(
-                        cls_mthd=method,
-                        cls_name=cls.__name__,
-                        msg=TokenCollisionDetectorException.MSG,
-                        err_code=TokenCollisionDetectorException.ERR_CODE,
-                        ex=validation_result.exception
-                    )
-                )
-            return ValidationResult.success(
-                TokenBlueprint(
-                    id=target.id,
-                    team=target.team,
-                    rank=target.rank,
-                    opening_square=target.opening_square,
-                )
-            )
-        else:
-            blueprint_validation_result = validation_primer.validate(
-                candidate=target_blueprint,
-                target_type=TokenBlueprint,
-                nullable=TokenBlueprintNullException(),
-            )
-        
         stream_validation_result = validation_primer.validate(
             candidate=stream,
             target_type=TokenStackService,
@@ -167,85 +139,88 @@ class TokenCollisionDetectorBootstrapper:
                     ex=stream_validation_result.exception
                 )
             )
-
-        if blueprint_validation_result.is_failure:
-            return ValidationResult.failure(
-                TokenCollisionDetectorException(
-                    cls_mthd=method,
-                    cls_name=cls.__name__,
-                    msg=TokenCollisionDetectorException.MSG,
-                    err_code=TokenCollisionDetectorException.ERR_CODE,
-                    ex=blueprint_validation_result.exception
-                )
-            )
-        blueprint_identity_validation_result = identity_service.validate_identity(
-            id_candidate=target_blueprint.id,
-            name_candidate=target_blueprint.formation.designation,
-        )
-        if blueprint_identity_validation_result.is_failure:
-            return ValidationResult.failure(
-                TokenCollisionDetectorException(
-                    cls_mthd=method,
-                    cls_name=cls.__name__,
-                    msg=TokenCollisionDetectorException.MSG,
-                    err_code=TokenCollisionDetectorException.ERR_CODE,
-                    ex=blueprint_identity_validation_result.exception
-                )
-            )
-        # --- Loop through the collider_candidates to find matches. ---#
         
-        for token in stream.items:
-            # Handle the case that, a token already has the target's id.
-            if token.id == target_blueprint.id:
-                # Return the collision details in the report.
-                return ValidationResult.completed(
-                    CollisionReport.occurrence(
-                        collider=token,
-                        target_set=target_blueprint,
-                        colliding_variable="id",
-                        collision_value=token.id,
-                        exception=TokenIdCollisionException(
-                            cls_mthd=method,
-                            cls_name=cls.__name__,
-                            msg=TokenIdCollisionException.MSG,
-                            err_code=TokenIdCollisionException.ERR_CODE,
-                        )
-                    )
-                )
-            # Handle the case that, a token already has the target's id.
-            if token.designation == target_blueprint.formation.designation.upper():
-                # Return the collision details in the report.
-                return ValidationResult.completed(
-                    CollisionReport.occurrence(
-                        collider=token,
-                        target_set=target_blueprint,
-                        colliding_variable="designation",
-                        collision_value=token.designation,
-                        exception=TokenNameCollisionException(
-                            cls_mthd=method,
-                            cls_name=cls.__name__,
-                            msg=TokenNameCollisionException.MSG,
-                            err_code=TokenNameCollisionException.ERR_CODE,
-                        )
-                    )
-                )
-            # Handle the case that, the target shares its opening_square_name with a collider_candidates member.
-            if token.opening_square.name.upper() == target_blueprint.formation.opening_square_name.upper():
-                # Return the collider, designation, and the exception.
-                return ValidationResult.success(
-                    CollisionReport.occurrence(
-                        collider=token,
-                        target_set=target_blueprint,
-                        colliding_variable="opening_square",
-                        collision_value=token.opening_square,
-                        exception=OpeningSquareCollisionException(
-                            cls_mthd=method,
-                            cls_name=cls.__name__,
-                            msg=OpeningSquareCollisionException.MSG,
-                            err_code=OpeningSquareCollisionException.ERR_CODE,
-                        )
-                    )
-                )
-        # --- Send the no collisions detected report. ---#
-        return ValidationResult.success(CollisionReport.no_collisions(target_blueprint))
+        if target is not None:
+            return cls._validate_target(
+                target=target,
+                token_stack=stream.microservice.validator,
+            )
+
+        return cls._validate_blueprint(
+            blueprint=target_blueprint,
+            validation_primer=validation_primer,
+            identity_service=identity_service
+        )
     
+    @classmethod
+    @LoggingLevelRouter.monitor
+    def _validate_target(
+            cls,
+            target: Token,
+            token_validator: TokenValidator,
+    ) -> ValidationResult[TokenBlueprint]:
+        method = f"{cls.__class__.__name__}._validate_target"
+    
+        validation_result = token_validator.validate(target)
+        if validation_result.is_failure:
+            return ValidationResult.failure(
+                TokenCollisionDetectorException(
+                    cls_mthd=method,
+                    cls_name=cls.__name__,
+                    msg=TokenCollisionDetectorException.MSG,
+                    err_code=TokenCollisionDetectorException.ERR_CODE,
+                    ex=validation_result.exception
+                )
+            )
+        return ValidationResult.success(
+            TokenBlueprint(
+                id=target.id,
+                team=target.team,
+                rank=target.rank,
+                formation=target.formation,
+                opening_square=target.opening_square,
+            )
+        )
+        
+    
+    @classmethod
+    @LoggingLevelRouter.monitor
+    def _validate_blueprint(
+            cls, 
+            blueprint: TokenBlueprint, 
+            validation_primer: ValidationPrimer,
+            identity_service: IdentityService,
+    ) -> ValidationResult[TokenBlueprint]:
+        method = f"{cls.__name__}.validate_blueprint"
+    
+        validation_result = validation_primer.validate(
+            candidate=blueprint,
+            target_type=TokenBlueprint,
+            nullable=TokenBlueprintNullException(),
+        )
+    
+        if validation_result.is_failure:
+            return ValidationResult.failure(
+                TokenCollisionDetectorException(
+                    cls_mthd=method,
+                    cls_name=cls.__name__,
+                    msg=TokenCollisionDetectorException.MSG,
+                    err_code=TokenCollisionDetectorException.ERR_CODE,
+                    ex=validation_result.exception
+                )
+            )
+        identity_validation_result = identity_service.validate_identity(
+            id_candidate=blueprint.id,
+            name_candidate=blueprint.formation.designation,
+        )
+        if identity_validation_result.is_failure:
+            return ValidationResult.failure(
+                TokenCollisionDetectorException(
+                    cls_mthd=method,
+                    cls_name=cls.__name__,
+                    msg=TokenCollisionDetectorException.MSG,
+                    err_code=TokenCollisionDetectorException.ERR_CODE,
+                    ex=identity_validation_result.exception
+                )
+            )
+        return ValidationResult.success(blueprint)

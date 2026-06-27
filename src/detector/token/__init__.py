@@ -1,13 +1,13 @@
-# src/detector/collision/token/__init__.py
+# src/detector/token/__init__.py
 
 """
-Module: detector.collision.token.__init__
+Module: detector.token.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
 """
 
-# =========== DETECTOR.COLLISION.TOKEN PACKAGE ===========#
+# =========== DETECTOR.TOKEN PACKAGE ===========#
 
 # Packages
 

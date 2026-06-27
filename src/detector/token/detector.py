@@ -1,22 +1,21 @@
-# src/detector/collision/token/analyst.py
+# src/detector/collision/token/detector.py
 
 """
-Module: detector.collision.token.analyst
+Module: detector.collision.token.detector
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
 """
 
 from __future__ import annotations
-
 from typing import Optional
 
 from blueprint import TokenBlueprint
 from detector import Detector
 from err import (
     ExcessTeamContextFlagsException, OpeningSquareCollisionException, TokenBlueprintNullException,
-    TokenCollisionDetectorException,
-    TokenIdCollisionException, TokenNameCollisionException, TokenStackNullException, ZeroTokenContextFlagsException
+    TokenCollisionDetectorException, TokenIdCollisionException, TokenNameCollisionException, TokenStackNullException,
+    ZeroTokenContextFlagsException
 )
 from microservice import IdentityService
 from model import Token
@@ -45,7 +44,7 @@ class TokenCollisionDetector(Detector[Token]):
             ) -> CollisionReport
             
      Super:
-        -   CollisionAnalyst[T]
+        -   CollisionDetector[T]
     """
     
     @classmethod

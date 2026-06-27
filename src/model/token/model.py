@@ -161,10 +161,6 @@ class Token(ABC):
     def is_disabled(self) -> bool:
         pass
     
-    @mark_deployed.setter
-    def deployment_state(self, token_board_state: DeploymentState):
-        self._deployment_state = token_board_state
-    
     def set_rank(self, rank: Rank) -> None:
         self._rank = rank
     
