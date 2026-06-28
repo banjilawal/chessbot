@@ -1,12 +1,11 @@
-# src/err/detector/collision/token/bootstrapper/exception.py
+# src/err/detector/token/bootstrapper/exception.py
 
 """
-Module: err.detector.collision.token.bootstrapper.exception
+Module: err.detector.token.bootstrapper.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
 """
-
 from __future__ import annotations
 from typing import Any, Optional
 
@@ -15,14 +14,14 @@ from err import TokenCollisionDetectorException
 
 __all__ = [
     # ======================# TOKEN_COLLISION_FAILURE #======================#
-    "TokenCollisionDetectorBootstrapperException",
+    "TokenCollisionBootstrapperException",
 ]
 
 from result.category import MethodResultType
 
 
 # ======================# TOKEN_COLLISION_FAILURE #======================#
-class TokenCollisionDetectorBootstrapperException(TokenCollisionDetectorException):
+class TokenCollisionBootstrapperException(TokenCollisionDetectorException):
     """
     Role:
         -   Error Tracing

@@ -13,7 +13,8 @@ version: 1.0.0
 from .analyzer import *
 from .array import *
 from .bidirectional import *
-from .collision import *
+from .bootstrapper import *
+from .collider import *
 from .config import *
 from .controller import *
 from .detector import *

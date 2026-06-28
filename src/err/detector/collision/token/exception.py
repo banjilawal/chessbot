@@ -1,4 +1,4 @@
-# src/err/detector/collision/token/exception.py
+# src/err/detector/token/exception.py
 
 """
 Module: err.detector.collision.token.exception

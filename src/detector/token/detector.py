@@ -52,8 +52,8 @@ class TokenCollisionDetector(Detector[Token]):
     def execute(
             self,
             stream: TokenStackService,
-            token: Optional[Token] | None = None,
-            token_blueprint: Optional[TokenBlueprint] | None = None,
+            target: Optional[Token] | None = None,
+            target_blueprint: Optional[TokenBlueprint] | None = None,
     ) -> AnalysisResult[CollisionReport]:
         """
         Report if any schema member has the same id, designation or
@@ -82,8 +82,8 @@ class TokenCollisionDetector(Detector[Token]):
         method = f"{self.__class__.__name__}.execute"
         
         bootstrap_result = self._bootstrapper.execute(
-            token=token,
-            token_blueprint=token_blueprint,
+            target=target,
+            target_blueprint=target_blueprint,
             identity_service=self._identity_service,
             validation_primer=self._validation_primer,
         )

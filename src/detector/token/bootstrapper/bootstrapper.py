@@ -13,7 +13,7 @@ from typing import Optional
 
 from blueprint import TokenBlueprint
 from err import (
-    ExcessTeamContextFlagsException, TokenBlueprintNullException, TokenCollisionDetectorBootstrapperException,
+    ExcessTeamContextFlagsException, TokenBlueprintNullException, TokenCollisionBootstrapperException,
     TokenStackNullException, ZeroTokenContextFlagsException
 )
 from microservice import IdentityService
@@ -51,8 +51,8 @@ class TokenCollisionBootstrapper:
     def execute(
             cls,
             stream: TokenStackService,
-            token: Optional[Token] | None = None,
-            token_blueprint: Optional[TokenBlueprint] | None = None,
+            target: Optional[Token] | None = None,
+            target_blueprint: Optional[TokenBlueprint] | None = None,
             identity_service: IdentityService | None = None,
             validation_primer: ValidationPrimer | None = None,
     ) -> ValidationResult[TokenBlueprint]:
@@ -68,7 +68,7 @@ class TokenCollisionBootstrapper:
                     *   The collider.
                     *   The exception indicating which unique property is shared.
         Args:
-            token_blueprint: TokenBlueprint
+            target_blueprint: TokenBlueprint
             stream: TokenStackService
             identity_service: IdentityService
             validation_primer: ValidationPrimer
@@ -88,18 +88,18 @@ class TokenCollisionBootstrapper:
         if identity_service is None:
             identity_service = IdentityService()
         
-        params = [token, token_blueprint]
+        params = [target, target_blueprint]
         param_count = sum(bool(p) for p in params)
         
         # Handle the case that, all the optional params are null.
         if param_count == 0:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                TokenCollisionDetectorBootstrapperException(
+                TokenCollisionBootstrapperException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    msg=TokenCollisionDetectorBootstrapperException.MSG,
-                    err_code=TokenCollisionDetectorBootstrapperException.ERR_CODE,
+                    msg=TokenCollisionBootstrapperException.MSG,
+                    err_code=TokenCollisionBootstrapperException.ERR_CODE,
                     ex=ZeroTokenContextFlagsException(
                         msg=ZeroTokenContextFlagsException.MSG,
                         err_code=ZeroTokenContextFlagsException.ERR_CODE,
@@ -110,11 +110,11 @@ class TokenCollisionBootstrapper:
         if param_count > 1:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                TokenCollisionDetectorBootstrapperException(
+                TokenCollisionBootstrapperException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    msg=TokenCollisionDetectorBootstrapperException.MSG,
-                    err_code=TokenCollisionDetectorBootstrapperException.ERR_CODE,
+                    msg=TokenCollisionBootstrapperException.MSG,
+                    err_code=TokenCollisionBootstrapperException.ERR_CODE,
                     ex=ExcessTeamContextFlagsException(
                         msg=ExcessTeamContextFlagsException.MSG,
                         err_code=ExcessTeamContextFlagsException.ERR_CODE,
@@ -128,23 +128,23 @@ class TokenCollisionBootstrapper:
         )
         if stream_validation_result.is_failure:
             return ValidationResult.failure(
-                TokenCollisionDetectorBootstrapperException(
+                TokenCollisionBootstrapperException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    msg=TokenCollisionDetectorBootstrapperException.MSG,
-                    err_code=TokenCollisionDetectorBootstrapperException.ERR_CODE,
+                    msg=TokenCollisionBootstrapperException.MSG,
+                    err_code=TokenCollisionBootstrapperException.ERR_CODE,
                     ex=stream_validation_result.exception
                 )
             )
         
-        if token is not None:
+        if target is not None:
             return cls._validate_target(
-                target=token,
+                target=target,
                 token_stack=stream.microservice.validator,
             )
 
         return cls._validate_blueprint(
-            blueprint=token_blueprint,
+            blueprint=target_blueprint,
             validation_primer=validation_primer,
             identity_service=identity_service
         )
@@ -161,11 +161,11 @@ class TokenCollisionBootstrapper:
         validation_result = token_validator.validate(target)
         if validation_result.is_failure:
             return ValidationResult.failure(
-                TokenCollisionDetectorBootstrapperException(
+                TokenCollisionBootstrapperException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    msg=TokenCollisionDetectorBootstrapperException.MSG,
-                    err_code=TokenCollisionDetectorBootstrapperException.ERR_CODE,
+                    msg=TokenCollisionBootstrapperException.MSG,
+                    err_code=TokenCollisionBootstrapperException.ERR_CODE,
                     ex=validation_result.exception
                 )
             )
@@ -198,11 +198,11 @@ class TokenCollisionBootstrapper:
     
         if validation_result.is_failure:
             return ValidationResult.failure(
-                TokenCollisionDetectorBootstrapperException(
+                TokenCollisionBootstrapperException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    msg=TokenCollisionDetectorBootstrapperException.MSG,
-                    err_code=TokenCollisionDetectorBootstrapperException.ERR_CODE,
+                    msg=TokenCollisionBootstrapperException.MSG,
+                    err_code=TokenCollisionBootstrapperException.ERR_CODE,
                     ex=validation_result.exception
                 )
             )
@@ -212,11 +212,11 @@ class TokenCollisionBootstrapper:
         )
         if identity_validation_result.is_failure:
             return ValidationResult.failure(
-                TokenCollisionDetectorBootstrapperException(
+                TokenCollisionBootstrapperException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    msg=TokenCollisionDetectorBootstrapperException.MSG,
-                    err_code=TokenCollisionDetectorBootstrapperException.ERR_CODE,
+                    msg=TokenCollisionBootstrapperException.MSG,
+                    err_code=TokenCollisionBootstrapperException.ERR_CODE,
                     ex=identity_validation_result.exception
                 )
             )
