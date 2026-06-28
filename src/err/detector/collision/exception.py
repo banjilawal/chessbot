@@ -11,14 +11,12 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from err import DetectorException
+from result import MethodResultType
 
 __all__ = [
     # ======================# COLLISION_DETECTOR_ERROR #======================#
     "CollisionDetectorException",
 ]
-
-from result import MethodResultType
-
 
 # ======================# COLLISION_DETECTOR_ERROR #======================#
 class CollisionDetectorException(DetectorException):

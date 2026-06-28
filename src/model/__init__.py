@@ -31,6 +31,6 @@ from .snapshot import *
 from .square import *
 from .team import *
 from .token import *
-from .transaction import *
+from .transition import *
 
 # Modules

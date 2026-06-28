@@ -1,33 +1,32 @@
-# src/err/detector/token/collider/exception.py
+# src/err/detector/token/exception.py
 
 """
-Module: err.detector.token.collider.exception
+Module: err.detector.token.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
 """
+
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import OperationException
+from err import DetectorException
+from result import MethodResultType
 
 
 __all__ = [
     # ======================# TOKEN_COLLISION_FAILURE #======================#
-    "TokenColliderException",
+    "TokenCollisionDetectorException",
 ]
 
-from result.category import MethodResultType
-
-
 # ======================# TOKEN_COLLISION_FAILURE #======================#
-class TokenColliderException(OperationException):
+class TokenCollisionDetectorException(DetectorException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate an item hit the collision attractor.
+        1.  Indicate a TokenCollision step failed.
 
     Attributes:
         msg: Optional[str]
@@ -42,7 +41,7 @@ class TokenColliderException(OperationException):
     Provides:
 
     Super Class:
-        CollisionException
+        DetectorException
     """
     MSG = "TokenCollision step failed."
     ERR_CODE = "TOKEN_COLLISION_FAILURE"
@@ -67,6 +66,7 @@ class TokenColliderException(OperationException):
             cls_name: Optional[str]
             cls_mthd: Optional[str]
             err_code: Optional[str]
+            mthd_rslt_type: Optional[MethodResultType]
         """
         msg = msg or self.MSG
         err_code = err_code or self.ERR_CODE

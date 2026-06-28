@@ -105,10 +105,9 @@ class TokenPusher(Pusher[Token]):
                 )
             )
         # ServiceRequest a collision report. The token is verified during the report generation. ---#
-        blueprint = TokenBlueprint(id=item.id, rank=item.rank, opening_square=item.opening_square, team=item.team, )
         collision_detection_result = collision_detector.execute(
             attractor=item,
-            stack=stack,
+            stream=stack,
         )
         if collision_detection_result.failure:
             # Return the exception chain on failure

@@ -10,8 +10,6 @@ version: 1.0.1
 # ============ ERR.DETECTOR.TOKEN PACKAGE ===========#
 
 # Packages
-from .boostrapper import *
-from .collider import *
 
 # Modules
 from .exception import TokenCollisionDetectorException

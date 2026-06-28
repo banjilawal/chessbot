@@ -9,14 +9,15 @@ version: 1.0.0
 
 from __future__ import annotations
 
+from analyzer import RankQuotaAnalyzer
 from controller.stack.crud.token import TokenStackCrudController
 from detector import TokenCollisionDetector
-from system import IntegrityMicroservice
+from operation import TokenPusher
 
-from model.token import TokenStackDeployment
+from model.token import TokenDeployer
 
 
-class TokenStackOpsController:
+class TokenStackController:
     """
     Role:
         -   Operations Controller
@@ -27,29 +28,32 @@ class TokenStackOpsController:
     Attributes:
         crud: TokenStackCrudController
         rank_quota_analyzer: RankQuotaAnalysis
-        token_collision_detector: TokenCollisionAnalyst
+        collision_detector: TokenCollisionAnalyst
 
     Provides:
     Parent:
     """
     _crud: TokenStackCrudController
-    _deployment: TokenStackDeployment
+    _token_deployer: TokenDeployer
     _integrity_service: IntegrityMicroservice
-    _rank_quota_analyzer: RankQuotaAnalysis
-    _token_collision_detector: TokenCollisionDetector
+    _pusher: TokenPusher
+    _rank_quota_analyzer: RankQuotaAnalyzer
+    _collision_detector: TokenCollisionDetector
     
     def __init__(
             self,
-            crud: TokenStackCrudController = TokenStackCrudController(),
+            crud: TokenStackCrudController | None = TokenStackCrudController(),
             integrity_service: IntegrityMicroservice = IntegrityMicroservice(),
-            deployment: TokenStackDeployment = TokenStackDeployment(),
-            rank_quota_analyzer: RankQuotaAnalysis = RankQuotaAnalysis(),
-            token_collision_detector: TokenCollisionDetector = TokenCollisionDetector(),
+            token_deployer: TokenDeployer | None = TokenDeployer(),
+            pusher: TokenPusher | None = TokenPusher(),
+            rank_quota_analyzer: RankQuotaAnalyzer | None = RankQuotaAnalyzer(),
+            collision_detector: TokenCollisionDetector | None = None,
     ):
         self._crud = crud
-        self._deployment = deployment
+        self._token_deployer = token_deployer
         self._integrity_service = integrity_service
-        self._token_collision_detector = token_collision_detector
+        self._pusher = pusher
+        self._collision_detector = collision_detector
         self._rank_quota_analyzer = rank_quota_analyzer
 
     @property
@@ -57,8 +61,8 @@ class TokenStackOpsController:
         return self._crud
     
     @property
-    def deployment(self) -> TokenStackDeployment:
-        return self._deployment
+    def token_deployer(self) -> TokenDeployer:
+        return self._token_deployer
     
     @property
     def integrity_service(self) -> TokenService:
@@ -69,5 +73,5 @@ class TokenStackOpsController:
         return self._rank_quota_analyzer
     
     @property
-    def token_collision_detector(self) -> TokenCollisionDetector:
-        return self._token_collision_detector
+    def collision_detector(self) -> TokenCollisionDetector:
+        return self._collision_detector

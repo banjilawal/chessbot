@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Iterator, List, Optional
 
 from analyzer import CollisionAnalyzer
-from controller.stack.token.controller import TokenStackOpsController
+from controller.stack.token.controller import TokenStackController
 from microservice import IdentityService, TokenService
 from model import Token, TokenContext
 from result import DeletionResult, InsertionResult, SearchResult
@@ -70,14 +70,14 @@ class TokenStackService(StackService[Token]):
     _capacity: int
     _stack: List[Token]
     _state: TokenStackState
-    _ops_controller: TokenStackOpsController
+    _ops_controller: TokenStackController
     
     def __init__(
             self,
             name: str = SERVICE_NAME,
             capacity: int = DEFAULT_CAPACITY,
             id: int = IdFactory.next_id(class_name="TokenStackService"),
-            ops_controller: TokenStackOpsController = TokenStackOpsController(),
+            ops_controller: TokenStackController = TokenStackController(),
     ):
         """
         Args:
@@ -129,7 +129,7 @@ class TokenStackService(StackService[Token]):
         return self._stack[-1] if self._stack else None
     
     @property
-    def request(self) -> TokenStackOpsController:
+    def request(self) -> TokenStackController:
         return self._ops_controller
     
     @property

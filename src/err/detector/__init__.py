@@ -10,7 +10,7 @@ version: 1.0.1
 # ============ ERR.DETECTOR PACKAGE ===========#
 
 # Packages
-from .collision import *
+from .token import *
 
 # Modules
 from .exception import DetectorException

@@ -9,7 +9,7 @@ version: 1.0.0
 
 from __future__ import annotations
 
-
+from detector import TokenCollisionDetector
 from model.token import (
     PawnPromoter, TokenBuilder, TokenPositionController, TokenDeployer,
     TokenReadinessAnalyzer, TokenValidator
@@ -51,6 +51,7 @@ class TokenOpsController:
     _validator: TokenValidator
     _promoter: PawnPromoter
     _deployer: TokenDeployer
+    _collision_detector: TokenCollisionDetector
     _position_controller: TokenPositionController
     _readiness_analyzer: TokenReadinessAnalyzer
     
@@ -61,6 +62,7 @@ class TokenOpsController:
             promoter: PawnPromoter = PawnPromoter(),
             deployer: TokenDeployer = TokenDeployer(),
             validator: TokenValidator = TokenValidator(),
+            
             position_controller: TokenPositionController = TokenPositionController(),
             readiness_analyzer: TokenReadinessAnalyzer = TokenReadinessAnalyzer(),
     ):
