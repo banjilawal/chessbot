@@ -9,5 +9,7 @@ version: 1.0.1
 
 # =========== DETECTOR.TOKEN.BOOTSTRAPPER PACKAGE ===========#
 
+# Packages
+
 # Modules
-from .bootstrapper import TokenCollisionDetectorBootstrapper
+from .bootstrapper import TokenCollisionBootstrapper

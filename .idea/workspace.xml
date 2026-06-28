@@ -5,10 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/detector/token/collider/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/detector/token/collider/collider.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/stack/crud/square/crud/push/process.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/stack/crud/square/crud/push/process.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/detector/detector.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/detector/detector.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/detector/square/detector.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/detector/square/detector.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/detector/token/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/detector/token/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/detector/token/bootstrapper/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/detector/token/bootstrapper/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/detector/token/bootstrapper/bootstrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/detector/token/bootstrapper/bootstrapper.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/detector/token/detector.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/detector/token/detector.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/push/token/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/push/token/operation.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,22 +69,22 @@
     "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/detector",
+    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/detector/token/collider",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "editor.preferences.completion",
+    "settings.editor.selected.configurable": "editor.preferences.inline.completion",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/detector/token/collider" />
+      <recent name="$PROJECT_DIR$/src/err/detector/collision/token/boostrapper" />
       <recent name="$PROJECT_DIR$/src/detector" />
       <recent name="$PROJECT_DIR$/src/err/full/stack" />
       <recent name="$PROJECT_DIR$/src/err" />
-      <recent name="$PROJECT_DIR$/src/err/operation/push/duplicate" />
-      <recent name="$PROJECT_DIR$/src/err/operation/push/token" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/detector/token" />
@@ -808,7 +815,7 @@
       <workItem from="1782069802645" duration="29800000" />
       <workItem from="1782214489414" duration="8439000" />
       <workItem from="1782265217166" duration="7062000" />
-      <workItem from="1782325486599" duration="37327000" />
+      <workItem from="1782325486599" duration="43534000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />
@@ -1157,7 +1164,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/src/detector/token/bootstrapper/bootstrapper.py</url>
-          <line>149</line>
+          <line>146</line>
           <option name="timeStamp" value="199" />
         </line-breakpoint>
       </breakpoints>

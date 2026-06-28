@@ -28,7 +28,7 @@ class Detector(ABC, Generic[T]):
     def execute(
             cls,
             stream: StackService[T],
-            target: Optional[Blueprint[T]],
+            attractor: Optional[Blueprint[T]],
             *args,
             **kwargs,
     ) -> AnalysisResult[CollisionReport]:

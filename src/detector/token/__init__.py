@@ -10,6 +10,8 @@ version: 1.0.1
 # =========== DETECTOR.TOKEN PACKAGE ===========#
 
 # Packages
+from .bootstrapper import *
+from .collider import *
 
 # Modules
 from .detector import TokenCollisionDetector

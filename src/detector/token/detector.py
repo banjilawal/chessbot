@@ -1,29 +1,25 @@
 # src/detector/collision/token/detector.py
 
 """
-Module: detector.collision.token.detector
+Module: detector.token.detector
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
 """
 
 from __future__ import annotations
-from typing import Optional
+from typing import Optional, cast
 
 from blueprint import TokenBlueprint
-from detector import Detector
-from err import (
-    ExcessTeamContextFlagsException, OpeningSquareCollisionException, TokenBlueprintNullException,
-    TokenCollisionDetectorException, TokenIdCollisionException, TokenNameCollisionException, TokenStackNullException,
-    ZeroTokenContextFlagsException
-)
+from detector import Detector, TokenCollider, TokenCollisionBootstrapper
+from err import TokenCollisionDetectorException
 from microservice import IdentityService
 from model import Token
 from report import CollisionReport
 from result import AnalysisResult
 from stack import TokenStackService
 from util import LoggingLevelRouter
-from validation import TokenValidator, ValidationPrimer
+from validation import ValidationPrimer
 
 
 class TokenCollisionDetector(Detector[Token]):
@@ -46,13 +42,18 @@ class TokenCollisionDetector(Detector[Token]):
      Super:
         -   CollisionDetector[T]
     """
+    _collider: TokenCollider
+    _identity_service: IdentityService
+    _validation_primer: ValidationPrimer
+    _bootstrapper: TokenCollisionBootstrapper
+
     
-    @classmethod
     @LoggingLevelRouter.monitor
     def execute(
-            cls,
+            self,
             stream: TokenStackService,
-            target: Optional[TokenBlueprint] | None = None,
+            token: Optional[Token] | None = None,
+            token_blueprint: Optional[TokenBlueprint] | None = None,
     ) -> AnalysisResult[CollisionReport]:
         """
         Report if any schema member has the same id, designation or
@@ -66,7 +67,7 @@ class TokenCollisionDetector(Detector[Token]):
                     *   The collider.
                     *   The exception indicating which unique property is shared.
         Args:
-            target: TokenBlueprint
+            attractor: TokenBlueprint
             stream: TokenStackService
             identity_service: IdentityService
             validation_primer: ValidationPrimer
@@ -78,61 +79,25 @@ class TokenCollisionDetector(Detector[Token]):
             TokenOpeningSquareCollisionException
             TokenCollisionDetectionException
         """
-        method = f"{cls.__class__.__name__}.detect"
-        # --- Loop through the collider_candidates to find matches. ---#
+        method = f"{self.__class__.__name__}.execute"
         
-        for token in stream.items:
-            # Handle the case that, a token already has the target's id.
-            if token.id == target.id:
-                # Return the collision details in the report.
-                return AnalysisResult.completed(
-                    CollisionReport.occurrence(
-                        collider=token,
-                        target_set=target,
-                        colliding_variable="id",
-                        collision_value=token.id,
-                        exception=TokenIdCollisionException(
-                            cls_mthd=method,
-                            cls_name=cls.__name__,
-                            msg=TokenIdCollisionException.MSG,
-                            err_code=TokenIdCollisionException.ERR_CODE,
-                        )
-                    )
+        bootstrap_result = self._bootstrapper.execute(
+            token=token,
+            token_blueprint=token_blueprint,
+            identity_service=self._identity_service,
+            validation_primer=self._validation_primer,
+        )
+        if bootstrap_result.is_failure:
+            # Return the collision details in the report.
+            return AnalysisResult.failure(
+                TokenCollisionDetectorException(
+                    cls_mthd=method,
+                    cls_name=self.__class__.__name__,
+                    msg=TokenCollisionDetectorException.MSG,
+                    err_code=TokenCollisionDetectorException.ERR_CODE,
+                    ex=bootstrap_result.exception,
                 )
-            # Handle the case that, a token already has the target's id.
-            if token.designation == target.formation.designation.upper():
-                # Return the collision details in the report.
-                return AnalysisResult.completed(
-                    CollisionReport.occurrence(
-                        collider=token,
-                        target_set=target,
-                        colliding_variable="designation",
-                        collision_value=token.designation,
-                        exception=TokenNameCollisionException(
-                            cls_mthd=method,
-                            cls_name=cls.__name__,
-                            msg=TokenNameCollisionException.MSG,
-                            err_code=TokenNameCollisionException.ERR_CODE,
-                        )
-                    )
-                )
-            # Handle the case that, the target shares its opening_square_name with a collider_candidates member.
-            if token.opening_square.name.upper() == target.formation.opening_square_name.upper():
-                # Return the collider, designation, and the exception.
-                return AnalysisResult.success(
-                    CollisionReport.occurrence(
-                        collider=token,
-                        target_set=target,
-                        colliding_variable="opening_square",
-                        collision_value=token.opening_square,
-                        exception=OpeningSquareCollisionException(
-                            cls_mthd=method,
-                            cls_name=cls.__name__,
-                            msg=OpeningSquareCollisionException.MSG,
-                            err_code=OpeningSquareCollisionException.ERR_CODE,
-                        )
-                    )
-                )
+            )
+        attractor = cast(TokenBlueprint, bootstrap_result.payload)
         # --- Send the no collisions detected report. ---#
-        return AnalysisResult.success(CollisionReport.no_collisions(target))
-    
+        return self._collider.execute(stream=stream, attractor=attractor)

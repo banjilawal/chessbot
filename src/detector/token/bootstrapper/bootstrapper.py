@@ -1,7 +1,7 @@
-# src/detector/collision/token/detector.py
+# src/detector/token/bootstrapper.py
 
 """
-Module: detector.collision.token.detector
+Module: detector.token.bootstrapper
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -9,25 +9,22 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from time import clock_settime
 from typing import Optional
 
 from blueprint import TokenBlueprint
 from err import (
-    ExcessTeamContextFlagsException, OpeningSquareCollisionException, TokenBlueprintNullException,
-    TokenCollisionDetectorBootstrapperException,
-    TokenIdCollisionException, TokenNameCollisionException, TokenStackNullException, ZeroTokenContextFlagsException
+    ExcessTeamContextFlagsException, TokenBlueprintNullException, TokenCollisionDetectorBootstrapperException,
+    TokenStackNullException, ZeroTokenContextFlagsException
 )
 from microservice import IdentityService
 from model import Token
-from report import CollisionReport
-from result import AnalysisResult, ValidationResult
+from result import ValidationResult
 from stack import TokenStackService
 from util import LoggingLevelRouter
 from validation import TokenValidator, ValidationPrimer
 
 
-class TokenCollisionDetectorBootstrapper:
+class TokenCollisionBootstrapper:
     """
      Role:
          - Collision Detection Worker
@@ -54,8 +51,8 @@ class TokenCollisionDetectorBootstrapper:
     def execute(
             cls,
             stream: TokenStackService,
-            target: Optional[Token] | None = None,
-            target_blueprint: Optional[TokenBlueprint] | None = None,
+            token: Optional[Token] | None = None,
+            token_blueprint: Optional[TokenBlueprint] | None = None,
             identity_service: IdentityService | None = None,
             validation_primer: ValidationPrimer | None = None,
     ) -> ValidationResult[TokenBlueprint]:
@@ -71,7 +68,7 @@ class TokenCollisionDetectorBootstrapper:
                     *   The collider.
                     *   The exception indicating which unique property is shared.
         Args:
-            target_blueprint: TokenBlueprint
+            token_blueprint: TokenBlueprint
             stream: TokenStackService
             identity_service: IdentityService
             validation_primer: ValidationPrimer
@@ -91,7 +88,7 @@ class TokenCollisionDetectorBootstrapper:
         if identity_service is None:
             identity_service = IdentityService()
         
-        params = [target, target_blueprint]
+        params = [token, token_blueprint]
         param_count = sum(bool(p) for p in params)
         
         # Handle the case that, all the optional params are null.
@@ -140,14 +137,14 @@ class TokenCollisionDetectorBootstrapper:
                 )
             )
         
-        if target is not None:
+        if token is not None:
             return cls._validate_target(
-                target=target,
+                target=token,
                 token_stack=stream.microservice.validator,
             )
 
         return cls._validate_blueprint(
-            blueprint=target_blueprint,
+            blueprint=token_blueprint,
             validation_primer=validation_primer,
             identity_service=identity_service
         )
