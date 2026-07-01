@@ -1,25 +1,25 @@
-# src/analyzer/promotion/manager/analyzer.py
+# src/permitter/promotion/permitter.py
 
 """
-Module: analyzer.promotion.manager.analyzer
+Module: permitter.promotion.permitter
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
 """
 
-from __future__ import annotations
+# =========== PERMITTER.PUSH PACKAGE ===========#
 
+from __future__ import annotations
 from typing import cast
 
-from analyzer import Analyzer, TokenFreedomAnalyzer
+from analyzer import TokenFreedomAnalyzer
 from err import (
     PawnDoublePromotionException, PawnPromotionRowException, PromoteInactivePawnException,
-    PromoteToKingException, PromoteToPawnException
+    PromoteToKingException, PromoteToPawnException, PromotionPermitterException
 )
-from err.analyzer.promotion import PromotionPermitterException
 from model import King, Pawn, PawnToken, Rank
 from permitter import OperationPermitter
-from report import PromotionApproval, PromotionApprovalManagerReport, TokenFreedomReport
+from report import PromotionApproval, TokenFreedomReport
 from result import AnalysisResult, MethodResultType
 from util import LoggingLevelRouter
 from validation import RankValidator, TokenValidator

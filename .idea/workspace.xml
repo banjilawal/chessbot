@@ -5,28 +5,27 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/err/permitter/promotion/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/permitter/promotion/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/permitter/promotion/token/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/permitter/promotion/token/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/permitter/promotion/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/permitter/promotion/manager/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/permitter/promotion/permitter.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/permitter/promotion/rank/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/permitter/promotion/rank/analyzer.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/report/approval/promotion/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/report/approval/promotion/report.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/operation/deletion/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/operation/deletion/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/operation/deletion/token/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/operation/deletion/token/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/permitter/deletion/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/permitter/deletion/token/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/microservice/token/microservice.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/microservice/token/microservice.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/permitter/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/permitter/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/permitter/delete/token/permitter.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/permitter/delete/token/permitter.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/permitter/pop/token/permitter.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/permitter/pop/token/permitter.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/permitter/push/token/permitter.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/permitter/push/token/permitter.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/report/approval/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/report/approval/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/report/approval/delete/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/report/approval/deletion/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/report/approval/delete/report.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/report/approval/deletion/report.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/report/approval/pop/report.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/report/approval/pop/report.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/report/approval/push/report.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/report/approval/push/report.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/operation/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/permitter/delete/token/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/permitter/delete/token/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/permitter/delete/token/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/permitter/delete/token/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/delete/token/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/delete/token/operation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/pop/token/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/pop/token/operation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/token/promotion/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/token/promotion/operation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/permitter/delete/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/permitter/delete/token/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/permitter/delete/token/permitter.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/permitter/deletion/token/permitter.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/permitter/promotion/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/permitter/promotion/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/permitter/promotion/manager/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/permitter/promotion/permitter.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/permitter/promotion/permitter.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/permitter/promotion/rank/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/permitter/promotion/rank/analyzer.py" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -80,7 +79,7 @@
     "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/err/permitter",
+    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/err/operation",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
@@ -91,11 +90,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/err/operation" />
       <recent name="$PROJECT_DIR$/src/err/permitter" />
       <recent name="$PROJECT_DIR$/src/permitter" />
       <recent name="$PROJECT_DIR$/src/report/approval" />
       <recent name="$PROJECT_DIR$/src/err/validation/query/token" />
-      <recent name="$PROJECT_DIR$/src/operation" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/permitter/promotion" />
@@ -827,7 +826,7 @@
       <workItem from="1782214489414" duration="8439000" />
       <workItem from="1782265217166" duration="7062000" />
       <workItem from="1782325486599" duration="56546000" />
-      <workItem from="1782732939190" duration="45630000" />
+      <workItem from="1782732939190" duration="49270000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />
@@ -1178,11 +1177,6 @@
           <url>file://$PROJECT_DIR$/src/detector/token/bootstrapper/bootstrapper.py</url>
           <line>146</line>
           <option name="timeStamp" value="199" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/src/permitter/delete/token/permitter.py</url>
-          <line>9</line>
-          <option name="timeStamp" value="202" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

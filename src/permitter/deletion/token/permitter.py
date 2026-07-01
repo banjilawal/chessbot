@@ -1,7 +1,7 @@
-# src/pop/token/py
+# src/deletion/token/py
 
 """
-Module: pop.token.operation
+Module: deletion.token.operation
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Optional
 
-from err import PoppingEmptyTokenStackException, TokenDeletePermitterException, TokenStackNullException
+from err import PoppingEmptyTokenStackException, TokenDeletionPermitterException, TokenStackNullException
 from microservice import IdentityService
 from report import DeleteApproval
 from result import AnalysisResult, MethodResultType
@@ -20,7 +20,7 @@ from util import LoggingLevelRouter
 from validation import ValidationPrimer
 
 
-class TokenDeletePermitter:
+class TokenDeletionPermitter:
     """
     Role:
         - Transaction Worker
@@ -28,7 +28,7 @@ class TokenDeletePermitter:
         - Process Runner
 
     Responsibilities:
-        1.  Run tests to see if permission can be granted to a TokenStackService to execute a pop.
+        1.  Run tests to see if permission can be granted to a TokenStackService to execute a deletion.
 
     Attributes:
 
@@ -60,7 +60,7 @@ class TokenDeletePermitter:
                     -   The collision_detector
                     -   The rank_quota_analyzer
                 do not complete their work.
-            2.  Otherwise, send a pop denial if
+            2.  Otherwise, send a deletion denial if
                     -   The TokenStack is full.
                     -   The item collides with an existing stack member.
                     -   The quota for the token's rank is full.
@@ -88,11 +88,11 @@ class TokenDeletePermitter:
         if id_validation_result.is_failure:
             # Return the exception chain on failure
             return AnalysisResult.failure(
-                TokenDeletePermitterException(
+                TokenDeletionPermitterException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    msg=TokenDeletePermitterException.MSG,
-                    err_code=TokenDeletePermitterException.ERR_CODE,
+                    msg=TokenDeletionPermitterException.MSG,
+                    err_code=TokenDeletionPermitterException.ERR_CODE,
                     mthd_rslt_type=MethodResultType.ANALYSIS_RESULT,
                     ex=id_validation_result.exception,
                 )
@@ -107,11 +107,11 @@ class TokenDeletePermitter:
         if stack_validation_result.is_failure:
             # Return the exception chain on failure
             return AnalysisResult.failure(
-                TokenDeletePermitterException(
+                TokenDeletionPermitterException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    msg=TokenDeletePermitterException.MSG,
-                    err_code=TokenDeletePermitterException.ERR_CODE,
+                    msg=TokenDeletionPermitterException.MSG,
+                    err_code=TokenDeletionPermitterException.ERR_CODE,
                     mthd_rslt_type=MethodResultType.ANALYSIS_RESULT,
                     ex=stack_validation_result.exception,
                 )
@@ -120,11 +120,11 @@ class TokenDeletePermitter:
             # Return the exception chain on failure
             return AnalysisResult.completed(
                 DeleteApproval.deny(
-                    exception=TokenDeletePermitterException(
+                    exception=TokenDeletionPermitterException(
                         cls_mthd=method,
                         cls_name=cls.__name__,
-                        msg=TokenDeletePermitterException.MSG,
-                        err_code=TokenDeletePermitterException.ERR_CODE,
+                        msg=TokenDeletionPermitterException.MSG,
+                        err_code=TokenDeletionPermitterException.ERR_CODE,
                         mthd_rslt_type=MethodResultType.ANALYSIS_RESULT,
                         ex=PoppingEmptyTokenStackException(
                             cls_mthd=method,

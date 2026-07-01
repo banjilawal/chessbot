@@ -13,7 +13,7 @@ from typing import cast
 from err import TokenDeleterException
 from model import Token
 from operation import Deleter
-from permitter import TokenDeletePermitter
+from permitter.deletion import TokenDeletionPermitter
 from report import DeleteApproval
 from result import DeletionResult, MethodResultType
 from stack import TokenStackService, TokenStackState
@@ -34,8 +34,11 @@ class TokenDeleter(Deleter[Token]):
     Attributes:
     
     Provides:
-        -   delete() -> DeletionResult[Token]
-        -   delete_by_id(id: int, identity_service: IdentityService) -> DeletionResult[Token]
+        -   execute(
+                item_id: int,
+                stack: TokenStackService,
+                permitter: TokenDeletionPermitter,
+        ) -> DeletionResult[Token]
         
     Super:
     """
@@ -46,7 +49,7 @@ class TokenDeleter(Deleter[Token]):
             cls, 
             item_id: int,
             stack: TokenStackService,
-            deletion_permitter: TokenDeletePermitter | None = None,
+            permitter: TokenDeletionPermitter | None = None,
     ) -> DeletionResult[Token]:
         """
         Remove the token at the top of the stack.
@@ -58,7 +61,7 @@ class TokenDeleter(Deleter[Token]):
         Args:
             item_id: int
             stack: TokenStackService
-            deletion_permitter: TokenDeletePermitter
+            permitter: TokenDeletionPermitter
         Returns:
             DeletionResult[Token]
         Raises:
@@ -66,10 +69,10 @@ class TokenDeleter(Deleter[Token]):
         """
         method = f"{cls.__class__.__name__}.execute"
         
-        if deletion_permitter is None:
-            deletion_permitter = TokenDeletePermitter()
+        if permitter is None:
+            permitter = TokenDeletionPermitter()
         
-        permission_analysis_result = deletion_permitter.execute(item_id=item_id, stack=stack)
+        permission_analysis_result = permitter.execute(item_id=item_id, stack=stack)
         # Handle the case that, the push_permitter does not complete analysis.
         if permission_analysis_result.is_failure:
             # Return the exception chain on failure
@@ -84,9 +87,9 @@ class TokenDeleter(Deleter[Token]):
                 )
             )
         
-        permission = cast(DeleteApproval, permission_analysis_result.payload)
+        delete_permission = cast(DeleteApproval, permission_analysis_result.payload)
         # Handle the case that, push permission is denied.
-        if permission.is_denied:
+        if delete_permission.is_denied:
             # Return the exception chain on failure
             return DeletionResult.failure(
                 TokenDeleterException(
@@ -95,7 +98,7 @@ class TokenDeleter(Deleter[Token]):
                     msg=TokenDeleterException.MSG,
                     err_code=TokenDeleterException.ERR_CODE,
                     mthd_rslt_type=MethodResultType.DELETION_RESULT,
-                    ex=permission.exception
+                    ex=delete_permission.exception
                 )
             )
         # --- Loop through the collection to ensure all matches are removed. ---#

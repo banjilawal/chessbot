@@ -12,10 +12,10 @@ from __future__ import annotations
 from copy import deepcopy
 from typing import cast
 
-from analyzer import PawnPromotionApprovalManager, PromotionRankAnalyzer
 from err import PawnPromoterException
 from model import PawnToken, PromotionState, Rank
-from report import PromotionApprovalManagerReport, RankLevelApproval
+from permitter import PromotionPermitter
+from report import PromotionApproval
 from result import MethodResultType, UpdateResult
 from util import LoggingLevelRouter
 
@@ -39,7 +39,7 @@ class PawnPromoter:
         -   execute(
                     rank: Rank,
                     pawn: PawnToken,
-                    rank_elevation_validator: RankService,
+                    permitter: PromotionPermitter,
             ) -> UpdateResult[PawnToken]
             
     Super Class:
@@ -51,8 +51,7 @@ class PawnPromoter:
             cls,
             rank: Rank,
             pawn: PawnToken,
-            promotion_rank_analyzer: PromotionRankAnalyzer | None = None,
-            promotion_approval_manager: PawnPromotionApprovalManager | None = None,
+            permitter: PromotionPermitter | None = None,
     ) -> UpdateResult[PawnToken]:
         """
         Executes the promotion transaction.
@@ -69,26 +68,24 @@ class PawnPromoter:
         Args:
             rank: Rank
             pawn: PawnToken
-            promotion_rank_analyzer: RankElevationAnalyzer
-            promotion_approval_manager: PawnPromotionApprovalManager 
+            permitter: PromotionPermitter
         Returns:
             UpdateResult[PawnToken]
         Raises:
             PawnPromoterException
-            PromoteInactivePawnException
-            PawnAlreadyPromotedException
         """
         method = f"{cls.__class__.__name__}.promote"
         
         # --- Supply any missing dependencies. ---#
-        if promotion_rank_analyzer is None:
-            promotion_rank_analyzer = PromotionRankAnalyzer()
-        if promotion_approval_manager is None:
-            promotion_approval_manager = PawnPromotionApprovalManager()
+        if permitter is None:
+            permitter = PromotionPermitter()
             
-        pawn_approval_analysis_result = promotion_approval_manager.analyze(pawn)
+        permission_analysis_result = permitter.execute(
+            pawn=pawn,
+            rank=rank,
+        )
         # Handle the case that, the promotion permission evaluation is not completed.
-        if pawn_approval_analysis_result.is_failure:
+        if permission_analysis_result.is_failure:
             # Send the exception chain on failure.
             return UpdateResult.update_failure(
                 original=pawn,
@@ -98,12 +95,12 @@ class PawnPromoter:
                     msg=PawnPromoterException.MSG,
                     err_code=PawnPromoterException.ERR_CODE,
                     mthd_rslt_type=MethodResultType.UPDATE_RESULT,
-                    ex=pawn_approval_analysis_result.exception
+                    ex=permission_analysis_result.exception
                 )
             )
-        pawn_approval = cast(PromotionApprovalManagerReport, pawn_approval_analysis_result.payload)
+        promotion_permission = cast(PromotionApproval, permission_analysis_result.payload)
         # Handle the case that, the pawn is not granted promotion permission.
-        if pawn_approval.is_denied:
+        if promotion_permission.is_denied:
             # Send the exception chain on failure.
             return UpdateResult.update_failure(
                 original=pawn,
@@ -113,36 +110,7 @@ class PawnPromoter:
                     msg=PawnPromoterException.MSG,
                     err_code=PawnPromoterException.ERR_CODE,
                     mthd_rslt_type=MethodResultType.UPDATE_RESULT,
-                    ex=pawn_approval.exception
-                )
-            )
-        # Handle the case that, a rank_promotable test fails.
-        promotion_rank_analyst_result = promotion_rank_analyzer.analyze(rank)
-        if promotion_rank_analyst_result.is_failure:
-            # Send the exception chain on failure.
-            return UpdateResult.update_failure(
-                original=pawn,
-                exception=PawnPromoterException(
-                    cls_mthd=method,
-                    cls_name=cls.__name__,
-                    msg=PawnPromoterException.MSG,
-                    err_code=PawnPromoterException.ERR_CODE,
-                    mthd_rslt_type=MethodResultType.UPDATE_RESULT,
-                    ex=promotion_rank_analyst_result.exception
-                )
-            )
-        promotion_level_approval = cast(RankLevelApproval, promotion_rank_analyst_result.payload)
-        if promotion_level_approval.is_denied:
-            # Send the exception chain on failure.
-            return UpdateResult.update_failure(
-                original=pawn,
-                exception=PawnPromoterException(
-                    cls_mthd=method,
-                    cls_name=cls.__name__,
-                    msg=PawnPromoterException.MSG,
-                    err_code=PawnPromoterException.ERR_CODE,
-                    mthd_rslt_type=MethodResultType.UPDATE_RESULT,
-                    ex=promotion_level_approval.exception
+                    ex=promotion_permission.exception
                 )
             )
         #--- Approvals have been granted. Do the promotion work. ---#

@@ -45,7 +45,7 @@ class TokenPopper(Popper[Token]):
     def execute(
             cls,
             stack: TokenStackService,
-            pop_permitter: TokenPopPermitter | None = None,
+            permitter: TokenPopPermitter | None = None,
     ) -> DeletionResult[Token]:
         """
         Remove the token at the top of the stack.
@@ -57,7 +57,7 @@ class TokenPopper(Popper[Token]):
         Args:
             item_id: int
             stack: TokenStackService
-            pop_permitter: TokenPopPermitter
+            permitter: TokenPopPermitter
         Returns:
             DeletionResult[Token]
         Raises:
@@ -65,10 +65,10 @@ class TokenPopper(Popper[Token]):
         """
         method = f"{cls.__class__.__name__}.execute"
         
-        if pop_permitter is None:
-            pop_permitter = TokenPopPermitter()
+        if permitter is None:
+            permitter = TokenPopPermitter()
         
-        permission_analysis_result = pop_permitter.execute(stack=stack)
+        permission_analysis_result = permitter.execute(stack=stack)
         # Handle the case that, the push_permitter does not complete analysis.
         if permission_analysis_result.is_failure:
             # Return the exception chain on failure
@@ -83,9 +83,9 @@ class TokenPopper(Popper[Token]):
                 )
             )
         
-        permission = cast(PopApproval, permission_analysis_result.payload)
+        pop_permission = cast(PopApproval, permission_analysis_result.payload)
         # Handle the case that, push permission is denied.
-        if permission.is_denied:
+        if pop_permission.is_denied:
             # Return the exception chain on failure
             return DeletionResult.failure(
                 TokenPopperException(

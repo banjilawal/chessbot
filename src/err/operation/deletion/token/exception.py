@@ -1,7 +1,7 @@
-# src/err/permitter/delete/token/exception.py
+# src/err/operation/deletion/token/exception.py
 
 """
-Module: err.permitter.delete.token.exception
+Module: err.operation.deletion.token.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,22 +10,22 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import DeletePermitterException
+from err import DeleterException
 from result import MethodResultType
 
 __all__ = [
-    # ======================# TOKEN_DELETE_PERMITTER_FAILURE #======================#
-    "TokenDeletionPermitterException",
+    # ======================# TOKEN_DELETER_FAILURE #======================#
+    "TokenDeleterException",
 ]
 
-# ======================# TOKEN_DELETE_PERMITTER_FAILURE #======================#
-class TokenDeletionPermitterException(DeletePermitterException):
+# ======================# TOKEN_DELETER_FAILURE #======================#
+class TokenDeleterException(DeleterException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a TokenDeletePermitter did not complete its analysis.
+        1.  Indicate that a TokenDeleter did not complete its task.
 
     Attributes:
         msg: Optional[str]
@@ -39,10 +39,10 @@ class TokenDeletionPermitterException(DeletePermitterException):
     Provides:
 
     Super Class:
-        DeletePermitterException
+        DeletionpingStackException
     """
-    MSG = "TokenDeletePermitter did not complete its analysis."
-    ERR_CODE = "TOKEN_DELETE_PERMITTER_FAILURE"
+    MSG = "Deletionping a TokenStack failed."
+    ERR_CODE = "TOKEN_DELETER_FAILURE"
     
     def __init__(
             self,

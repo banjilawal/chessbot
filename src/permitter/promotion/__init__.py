@@ -1,16 +1,15 @@
-# src/analyzer/promotion/__init__.py
+# src/permitter/promotion/__init__.py
 
 """
-Module: analyzer.promotion.__init__
+Module: permitter.promotion.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
 """
 
-# =========== ANALYZER.PROMOTION PACKAGE ===========#
+# =========== PERMITTER.PROMOTION PACKAGE ===========#
 
 # Packages
-from .rank import *
 
 # Modules
-from analyzer.promotion.manager.analyzer import PawnPromotionApprovalManager
+from .permitter import PromotionPermitter

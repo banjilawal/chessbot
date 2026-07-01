@@ -14,6 +14,7 @@ from .assembly import *
 from .attack import *
 from .primer import *
 from .build import *
+from .deletion import *
 from .finalize import *
 from .math import *
 from .maneuver import *
