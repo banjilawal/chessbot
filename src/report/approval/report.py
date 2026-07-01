@@ -12,34 +12,38 @@ from __future__ import annotations
 from abc import abstractmethod
 from typing import Optional, TypeVar
 
-from report.approval.state import PushPermission
+from report import Permission, Report
 
 T = TypeVar("T")
 
 
-class OperationApprovalReport:
+class OperationApprovalReport(Report):
     """
     Role:
         -   Test results
 
     Responsibilities:
-        1.  Details a token needs to capture an enemy combatant.
+        1.  Provides details about the outcome of an operation approval request.
         
     Attributes:
-        item: T
-        stack: StackService[T]
+        exception: Optional[Exception]
+        permission: Permission
+        is_denied: bool
+        is_granted: bool
         
     Provides:
+        -   def approve(*args, **kwargs) -> OperationApprovalReport
+        -   def deny(exception: Exception) -> OperationApprovalReport:
 
     Super Class:
         Report
     """
     _exception: Optional[Exception]
-    _permission: PushPermission
+    _permission: Permission
     
     def __init__(
             self,
-            permission: PushPermission,
+            permission: Permission,
             exception: Optional[Exception] | None = None,
     ):
         self._exception = exception
@@ -50,33 +54,33 @@ class OperationApprovalReport:
         return self._exception
     
     @property
-    def permission(self) -> PushPermission:
+    def permission(self) -> Permission:
         return self._permission
     
     @property
     def is_denied(self) -> bool:
         return (
                 self._exception is not None and
-                self._permission == PushPermission.DENIED
+                self._permission == Permission.DENIED
         )
     
     @property
     def is_granted(self) -> bool:
         return (
             self._exception is None and
-            self._permission == PushPermission.GRANTED
+            self._permission == Permission.GRANTED
         )
     
     @classmethod
     @abstractmethod
-    def approve(cls, *kargs, **kwargs) -> OperationApprovalReport:
+    def approve(cls, *args, **kwargs) -> OperationApprovalReport:
         pass
     
     @classmethod
     def deny(cls, exception: Exception) -> OperationApprovalReport:
         return cls(
             exception=exception,
-            permission=PushPermission.DENIED
+            permission=Permission.DENIED
         )
     
     

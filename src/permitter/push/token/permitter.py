@@ -12,7 +12,7 @@ from typing import cast
 
 from analyzer import RankQuotaAnalyzer
 from detector import TokenCollisionDetector
-from err import RankQuotaFullException, TokenStackFullException
+from err import RankQuotaFullException, TokenPushPermitterException, TokenStackFullException
 from microservice import RankService
 from model import Token
 from report import CollisionReport, PushApproval, RankQuotaReport
@@ -29,8 +29,7 @@ class TokenPushPermitter:
         - Process Runner
 
     Responsibilities:
-        1.  Token insertion exception owner.
-        2.  Guarantees all tokens are safe and unique.
+        1.  Run tests to see if permission can be granted to a TokenStackService to execute a push.
 
     Attributes:
 
@@ -56,14 +55,18 @@ class TokenPushPermitter:
             rank_service: RankService | None = None,
             rank_quota_analyzer: RankQuotaAnalyzer | None = None,
             collision_detector: TokenCollisionDetector | None = None,
-    ) -> AnalysisResult[PushApproval]:
+    ) -> AnalysisResult:
         """
         Action:
-            1.  Return a failure result containing an exception chain if
-                    *   The token is not safe.
-                    *   One of its properties already in use.
-                    *   The TokenStackService cannot support another token.
-            2.  If none of the failure conditions are met insert the token and send the success result.
+            1.  Return a failure result containing an exception chain if either:
+                    -   The collision_detector
+                    -   The rank_quota_analyzer
+                do not complete their work.
+            2.  Otherwise, send a push denial if
+                    -   The TokenStack is full.
+                    -   The item collides with an existing stack member.
+                    -   The quota for the token's rank is full.
+            3.  Send an approval if all the tests are passed.
         Args:
             item: Token
             stack: TokenStackService
@@ -90,6 +93,7 @@ class TokenPushPermitter:
             attractor=item,
             stream=stack,
         )
+        # Handle the case that, the collision_detection is not completed.
         if collision_detection_result.failure:
             # Return the exception chain on failure
             return AnalysisResult.failure(
@@ -109,7 +113,7 @@ class TokenPushPermitter:
             stream=stack,
             rank_service=rank_service,
         )
-        # Handle the case that, the request was not completed.
+        # Handle the case that, the quota analysis was not completed.
         if quota_analysis_result.is_failure:
             # Return the exception chain on failure
             return AnalysisResult.failure(

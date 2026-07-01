@@ -22,16 +22,20 @@ class PushApproval(OperationApprovalReport):
         -   Test results
 
     Responsibilities:
-        1.  Details a token needs to capture an enemy combatant.
+        1.  Provides details about the outcome of a push approval request.
         
     Attributes:
         item: T
         stack: StackService[T]
+        exception: Optional[Exception]
+        permission: Permission
         
     Provides:
-
+        -   def approve(item: T, stack: StackService[T]) -> OperationApprovalReport
+        -   def deny(exception: Exception) -> OperationApprovalReport:
+        
     Super Class:
-        Report
+        OperationApprovalReport
     """
     _item: Optional[T] = None
     _stack: Optional[StackService[T]] = None
