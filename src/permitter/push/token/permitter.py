@@ -79,7 +79,7 @@ class TokenPushPermitter:
             TokenPushPermitterException
             TokenStackFullException
         """
-        method =  f"{cls.__name__}.push"
+        method =  f"{cls.__name__}.execute"
     
         if rank_service is None:
             rank_service = RankService()

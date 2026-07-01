@@ -1,7 +1,7 @@
-# src/err/operation/push /stack/coord/exception.py
+# src/err/operation/pop/stack/coord/exception.py
 
 """
-Module: err.operation.push .stack.coord.exception
+Module: err.operation.pop.stack.coord.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,21 +10,21 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import Push pingStackException
+from err import PoppingStackException
 
 __all__ = [
-    # ======================# PUSH PING_COORD_STACK_FAILURE #======================#
-    "Push pingCoordStackException",
+    # ======================# POPPING_COORD_STACK_FAILURE #======================#
+    "PoppingCoordStackException",
 ]
 
-# ======================# PUSH PING_COORD_STACK_FAILURE #======================#
-class Push pingCoordStackException(Push pingStackException):
+# ======================# POPPING_COORD_STACK_FAILURE #======================#
+class PoppingCoordStackException(PoppingStackException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that push ping a CoordStack failed.
+        1.  Indicate that popping a CoordStack failed.
 
     Attributes:
         msg: Optional[str]
@@ -38,10 +38,10 @@ class Push pingCoordStackException(Push pingStackException):
     Provides:
 
     Super Class:
-        Push pingStackException
+        PoppingStackException
     """
-    MSG = "Push ping a CoordStack failed."
-    ERR_CODE = "PUSH PING_COORD_STACK_FAILURE"
+    MSG = "Popping a CoordStack failed."
+    ERR_CODE = "POPPING_COORD_STACK_FAILURE"
     
     def __init__(
             self,

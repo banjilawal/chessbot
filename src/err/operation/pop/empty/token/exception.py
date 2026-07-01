@@ -1,7 +1,7 @@
-# src/err/pop/empty/__init__.py
+# src/err/operation/pop/empty/token/exception.py
 
 """
-Module: err.pop.__init__
+Module: err.operation.pop.empty.token.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,21 +10,22 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import PopException
+from err import PoppingEmptyStackException
+from result import MethodResultType
 
 __all__ = [
-    # ======================# POP_FAILURE #======================#
-    "PoppingEmptyStackException",
+    # ======================# POPPING_EMPTY_TOKEN_STACK_ERROR #======================#
+    "PoppingEmptyTokenStackException",
 ]
 
-# ======================# POP_FAILURE #======================#
-class PoppingEmptyStackException(PopException):
+# ======================# POPPING_EMPTY_TOKEN_STACK_ERROR #======================#
+class PoppingEmptyTokenStackException(PoppingEmptyStackException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that poppingEmpty a Stack failed.
+        1.  Indicate that popping a TokenStack failed because it was empty.
 
     Attributes:
         msg: Optional[str]
@@ -34,14 +35,15 @@ class PoppingEmptyStackException(PopException):
         cls_name: Optional[str]
         cls_mthd: Optional[str]
         err_code: Optional[str]
+        mthd_rslt_type: Optional[MethodResultType]
             
     Provides:
 
     Super Class:
-        PopException
+        PoppingEmptyStackException
     """
-    MSG = "PoppingEmpty a Stack failed"
-    ERR_CODE = "POP_FAILURE"
+    MSG = "Cannot pop an empty Token stack."
+    ERR_CODE = "POPPING_EMPTY_TOKEN_STACK_ERROR"
     
     def __init__(
             self,

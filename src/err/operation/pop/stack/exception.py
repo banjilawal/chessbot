@@ -1,7 +1,7 @@
-# src/err/push /__init__.py
+# src/err/pop/__init__.py
 
 """
-Module: err.push .__init__
+Module: err.pop.__init__
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,21 +10,22 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import Push Exception
+from err import PopException
+from result import MethodResultType
 
 __all__ = [
-    # ======================# PUSH _FAILURE #======================#
-    "Push pingStackException",
+    # ======================# POP_FAILURE #======================#
+    "PoppingStackException",
 ]
 
-# ======================# PUSH _FAILURE #======================#
-class Push pingStackException(Push Exception):
+# ======================# POP_FAILURE #======================#
+class PoppingStackException(PopException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that push ping a Stack failed.
+        1.  Indicate that popping a Stack failed.
 
     Attributes:
         msg: Optional[str]
@@ -38,10 +39,10 @@ class Push pingStackException(Push Exception):
     Provides:
 
     Super Class:
-        Push Exception
+        PopException
     """
-    MSG = "Push ping a Stack failed"
-    ERR_CODE = "PUSH _FAILURE"
+    MSG = "Popping a Stack failed"
+    ERR_CODE = "POP_FAILURE"
     
     def __init__(
             self,

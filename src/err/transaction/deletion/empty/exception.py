@@ -15,11 +15,11 @@ from err import DeletionException
 
 __all__ = [
     # ======================# POPPING_EMPTY_STACK #======================#
-    "PoppingEmptyStackException",
+    "EmptyStackDeletionException",
 ]
 
 # ======================# POPPING_EMPTY_STACK #======================#
-class PoppingEmptyStackException(DeletionException):
+class EmptyStackDeletionException(DeletionException):
     """
     Role:
         -   Error Tracing
@@ -45,7 +45,7 @@ class PoppingEmptyStackException(DeletionException):
     MSG = "Deletion aborted."
     ERR_CODE = "POPPING_EMPTY_STACK"
     
-    def .__init__(
+    def __init__(
             self,
             msg: Optional[str] | None = None,
             var: Optional[str] | None = None,

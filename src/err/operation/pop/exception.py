@@ -1,7 +1,7 @@
-# src/err/push /__init__.py
+# src/err/pop/__init__.py
 
 """
-Module: err.push .__init__
+Module: err.pop.__init__
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -14,18 +14,18 @@ from err import OperationException
 from result import MethodResultType
 
 __all__ = [
-    # ======================# PUSH _FAILURE #======================#
-    "Push Exception",
+    # ======================# POP_FAILURE #======================#
+    "PopException",
 ]
 
-# ======================# PUSH _FAILURE #======================#
-class Push Exception(OperationException):
+# ======================# POP_FAILURE #======================#
+class PopException(OperationException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a push  operation failed.
+        1.  Indicate that a pop operation failed.
 
     Attributes:
         msg: Optional[str]
@@ -41,8 +41,8 @@ class Push Exception(OperationException):
     Super Class:
         OperationException
     """
-    MSG = "Push  step failed."
-    ERR_CODE = "PUSH _FAILURE"
+    MSG = "Pop step failed."
+    ERR_CODE = "POP_FAILURE"
     MTHD_RSLT_TYPE = MethodResultType.DELETION_RESULT
     
     def __init__(

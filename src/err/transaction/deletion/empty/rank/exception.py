@@ -10,16 +10,16 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import PoppingEmptyStackException
+from err import EmptyStackDeletionException
 
 
 __all__ = [
     # ======================# POPPING_EMPTY_RANK_STACK_ERROR #======================#
-    "PoppingEmptyRankStackException",
+    "EmptyRankStackDeletionException",
 ]
 
 # ======================# POPPING_EMPTY_RANK_STACK_ERROR #======================#
-class PoppingEmptyRankStackException(PoppingEmptyStackException):
+class EmptyRankStackDeletionException(EmptyStackDeletionException):
     """
     Role:
         -   Error Tracing

@@ -8,17 +8,14 @@ version: 1.0.1
 """
 
 from __future__ import annotations
-from typing import cast
 
-from analyzer import RankQuotaAnalyzer
-from detector import TokenCollisionDetector
-from err import RankQuotaFullException, TokenPopPermitterException, TokenStackFullException
-from microservice import RankService
-from model import Token
-from report import CollisionReport, PopApproval, RankQuotaReport
+from err import PoppingEmptyTokenStackException, TokenPopPermitterException, TokenStackNullException
+from microservice import IdentityService
+from report import PopApproval
 from result import AnalysisResult, MethodResultType
 from stack import TokenStackService
 from util import LoggingLevelRouter
+from validation import ValidationPrimer
 
 
 class TokenPopPermitter:
@@ -50,11 +47,10 @@ class TokenPopPermitter:
     @LoggingLevelRouter.monitor
     def execute(
             cls,
-            item: Token,
+            id: int,
             stack: TokenStackService,
-            rank_service: RankService | None = None,
-            rank_quota_analyzer: RankQuotaAnalyzer | None = None,
-            collision_detector: TokenCollisionDetector | None = None,
+            identity_service: IdentityService | None = None,
+            validation_primer: ValidationPrimer | None = None,
     ) -> AnalysisResult:
         """
         Action:
@@ -68,33 +64,25 @@ class TokenPopPermitter:
                     -   The quota for the token's rank is full.
             3.  Send an approval if all the tests are passed.
         Args:
-            item: Token
+            id: int
             stack: TokenStackService
-            rank_service: RankService
-            rank_quota_analyzer: RankQuotaAnalyzer
-            collision_detector: TokenCollisionAnalyst
+            identity_service: IdentityService
+            validation_primer: ValidationPrimer
         Returns:
             AnalysisResult
         Raises:
             TokenPopPermitterException
             TokenStackFullException
         """
-        method =  f"{cls.__name__}.pop"
+        method =  f"{cls.__name__}.execute"
     
-        if rank_service is None:
-            rank_service = RankService()
-        if rank_quota_analyzer is None:
-            rank_quota_analyzer = RankQuotaAnalyzer()
-        if collision_detector is None:
-            collision_detector = TokenCollisionDetector()
-        
-        # ServiceRequest a collision report. The token is verified during the report generation. ---#
-        collision_detection_result = collision_detector.execute(
-            attractor=item,
-            stream=stack,
-        )
-        # Handle the case that, the collision_detection is not completed.
-        if collision_detection_result.failure:
+        if identity_service is None:
+            identity_service = IdentityService()
+        if validation_primer is None:
+            validation_primer = ValidationPrimer()
+            
+        id_validation_result = identity_service.validate_id(candidate=id)
+        if id_validation_result.is_failure:
             # Return the exception chain on failure
             return AnalysisResult.failure(
                 TokenPopPermitterException(
@@ -103,18 +91,16 @@ class TokenPopPermitter:
                     msg=TokenPopPermitterException.MSG,
                     err_code=TokenPopPermitterException.ERR_CODE,
                     mthd_rslt_type=MethodResultType.ANALYSIS_RESULT,
-                    ex=collision_detection_result.exception,
+                    ex=id_validation_result.exception,
                 )
             )
         
-        # --- ServiceRequest a rank quota report. ---#
-        quota_analysis_result = rank_quota_analyzer.execute(
-            rank=item.rank,
-            stream=stack,
-            rank_service=rank_service,
+        stack_validation_result = validation_primer.validate(
+            candidate=stack,
+            target_model=TokenStackService,
+            null_exception=TokenStackNullException()
         )
-        # Handle the case that, the quota analysis was not completed.
-        if quota_analysis_result.is_failure:
+        if stack_validation_result.is_failure:
             # Return the exception chain on failure
             return AnalysisResult.failure(
                 TokenPopPermitterException(
@@ -123,12 +109,10 @@ class TokenPopPermitter:
                     msg=TokenPopPermitterException.MSG,
                     err_code=TokenPopPermitterException.ERR_CODE,
                     mthd_rslt_type=MethodResultType.ANALYSIS_RESULT,
-                    ex=quota_analysis_result.exception,
+                    ex=stack_validation_result.exception,
                 )
             )
-        
-        # Handle the case that, the list is full.
-        if stack.is_full:
+        if stack.is_empty:
             # Return the exception chain on failure
             return AnalysisResult.completed(
                 PopApproval.deny(
@@ -138,53 +122,16 @@ class TokenPopPermitter:
                         msg=TokenPopPermitterException.MSG,
                         err_code=TokenPopPermitterException.ERR_CODE,
                         mthd_rslt_type=MethodResultType.ANALYSIS_RESULT,
-                        ex=TokenStackFullException(
-                            msg=TokenStackFullException.MSG,
-                            err_code=TokenStackFullException.ERR_CODE,
-                        )
-                    )
-                )
-            )
-        
-
-        report = cast(CollisionReport, collision_detection_result.payload)
-        # Handle the case that, the either a collision was detected or token wis not safe.
-        if report.collision_exists:
-            # Return the exception chain on failure
-            return AnalysisResult.completed(
-                PopApproval.deny(
-                    exception=TokenPopPermitterException(
-                        cls_mthd=method,
-                        cls_name=cls.__name__,
-                        msg=TokenPopPermitterException.MSG,
-                        err_code=TokenPopPermitterException.ERR_CODE,
-                        mthd_rslt_type=MethodResultType.ANALYSIS_RESULT,
-                        ex=report.exception,
-                    )
-                )
-            )
-
-        quota = cast(RankQuotaReport, quota_analysis_result.payload)
-        # Handle the case that, there's no open slots for the token's rank.
-        if quota.rank_is_full:
-            # Return the exception chain on failure
-            return AnalysisResult.completed(
-                PopApproval.deny(
-                    exception=TokenPopPermitterException(
-                        cls_mthd=method,
-                        cls_name=cls.__name__,
-                        msg=TokenPopPermitterException.MSG,
-                        err_code=TokenPopPermitterException.ERR_CODE,
-                        mthd_rslt_type=MethodResultType.ANALYSIS_RESULT,
-                        ex=RankQuotaFullException(
-                            msg=RankQuotaFullException.MSG,
-                            err_code=RankQuotaFullException.ERR_CODE,
+                        ex=PoppingEmptyTokenStackException(
+                            cls_mthd=method,
+                            cls_name=cls.__name__,
+                            msg=PoppingEmptyTokenStackException.MSG,
+                            err_code=PoppingEmptyTokenStackException.ERR_CODE,
                         ),
                     )
                 )
             )
-
         # --- Integrity and performance tests are passed. ---#
-        return AnalysisResult.completed(PopApproval.approve(item=item, stack=stack))
+        return AnalysisResult.completed(PopApproval.approve(id=id, stack=stack))
 
     

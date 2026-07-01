@@ -1,7 +1,7 @@
-# src/err/operation/push /stack/snapshot/exception.py
+# src/err/operation/pop/stack/snapshot/exception.py
 
 """
-Module: err.operation.push .stack.snapshot.exception
+Module: err.operation.pop.stack.snapshot.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,21 +10,21 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import Push pingStackException
+from err import PoppingStackException
 
 __all__ = [
-    # ======================# PUSH PING_SNAPSHOT_STACK_FAILURE #======================#
-    "Push pingSnapshotStackException",
+    # ======================# POPPING_SNAPSHOT_STACK_FAILURE #======================#
+    "PoppingSnapshotStackException",
 ]
 
-# ======================# PUSH PING_SNAPSHOT_STACK_FAILURE #======================#
-class Push pingSnapshotStackException(Push pingStackException):
+# ======================# POPPING_SNAPSHOT_STACK_FAILURE #======================#
+class PoppingSnapshotStackException(PoppingStackException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that push ping a SnapshotStack failed.
+        1.  Indicate that popping a SnapshotStack failed.
 
     Attributes:
         msg: Optional[str]
@@ -38,10 +38,10 @@ class Push pingSnapshotStackException(Push pingStackException):
     Provides:
 
     Super Class:
-        Push pingStackException
+        PoppingStackException
     """
-    MSG = "Push ping a SnapshotStack failed."
-    ERR_CODE = "PUSH PING_SNAPSHOT_STACK_FAILURE"
+    MSG = "Popping a SnapshotStack failed."
+    ERR_CODE = "POPPING_SNAPSHOT_STACK_FAILURE"
     
     def __init__(
             self,

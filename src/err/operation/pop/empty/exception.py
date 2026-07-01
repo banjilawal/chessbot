@@ -1,7 +1,7 @@
-# src/err/operation/push /empty/stack/graph/exception.py
+# src/err/operation/pop/empty/exception.py
 
 """
-Module: err.operation.push .empty.stack.graph.exception
+Module: err.operation.pop.empty.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,21 +10,22 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import Push pingEmptyStackException
+from err import PopException
+from result import MethodResultType
 
 __all__ = [
-    # ======================# PUSH PINGEMPTY_GRAPH_STACK_FAILURE #======================#
-    "Push pingEmptyGraphStackException",
+    # ======================# POPPING_EMPTY_STACK_ERROR #======================#
+    "PoppingEmptyStackException",
 ]
 
-# ======================# PUSH PINGEMPTY_GRAPH_STACK_FAILURE #======================#
-class Push pingEmptyGraphStackException(Push pingEmptyStackException):
+# ======================# POPPING_EMPTY_STACK_ERROR #======================#
+class PoppingEmptyStackException(PopException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that push pingEmpty a GraphStack failed.
+        1.  Indicate that popping a stack failed because it was empty.
 
     Attributes:
         msg: Optional[str]
@@ -34,14 +35,15 @@ class Push pingEmptyGraphStackException(Push pingEmptyStackException):
         cls_name: Optional[str]
         cls_mthd: Optional[str]
         err_code: Optional[str]
+        mthd_rslt_type: Optional[MethodResultType]        
             
     Provides:
 
     Super Class:
-        Push pingEmptyStackException
+        PopException
     """
-    MSG = "Push pingEmpty a GraphStack failed."
-    ERR_CODE = "PUSH PINGEMPTY_GRAPH_STACK_FAILURE"
+    MSG = "Cannot pop an empty stack."
+    ERR_CODE = "POPPING_EMPTY_STACK_ERROR"
     
     def __init__(
             self,

@@ -10,16 +10,16 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import PoppingEmptyStackException
+from err import EmptyStackDeletionException
 
 
 __all__ = [
     # ======================# POPPING_EMPTY_PLAYER_STACK_ERROR #======================#
-    "PoppingEmptyPlayerStackException",
+    "EmptyPlayerStackDeletionException",
 ]
 
 # ======================# POPPING_EMPTY_PLAYER_STACK_ERROR #======================#
-class PoppingEmptyPlayerStackException(PoppingEmptyStackException):
+class EmptyPlayerStackDeletionException(EmptyStackDeletionException):
     """
     Role:
         -   Error Tracing

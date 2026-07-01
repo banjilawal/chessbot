@@ -10,16 +10,16 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import PoppingEmptyStackException
+from err import EmptyStackDeletionException
 
 
 __all__ = [
     # ======================# POPPING_EMPTY_ARENA_STACK_ERROR #======================#
-    "PoppingEmptyArenaStackException",
+    "EmptyArenaStackDeletionException",
 ]
 
 # ======================# POPPING_EMPTY_ARENA_STACK_ERROR #======================#
-class PoppingEmptyArenaStackException(PoppingEmptyStackException):
+class EmptyArenaStackDeletionException(EmptyStackDeletionException):
     """
     Role:
         -   Error Tracing
