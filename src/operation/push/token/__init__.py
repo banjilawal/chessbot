@@ -10,7 +10,6 @@ version: 1.0.1
 # =========== OPERATION.PUSH.TOKEN PACKAGE ===========#
 
 # Packages
-from .exception import *
 
 # Modules
 from .operation import TokenPusher

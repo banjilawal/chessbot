@@ -12,9 +12,9 @@ from __future__ import annotations
 from analyzer import RankQuotaAnalyzer
 from controller.stack.crud.token import TokenStackCrudController
 from detector import TokenCollisionDetector
-from operation import TokenPusher
+from microservice import TokenService
+from operation import TokenDeployer, TokenPusher
 
-from model.token import TokenDeployer
 
 
 class TokenStackController:
@@ -27,7 +27,7 @@ class TokenStackController:
 
     Attributes:
         crud: TokenStackCrudController
-        rank_quota_analyzer: RankQuotaAnalysis
+        rank_quota_analyzer: RankQuotaAnalyzer
         collision_detector: TokenCollisionAnalyst
 
     Provides:
@@ -35,7 +35,7 @@ class TokenStackController:
     """
     _crud: TokenStackCrudController
     _token_deployer: TokenDeployer
-    _integrity_service: IntegrityMicroservice
+    _microservice: TokenService
     _pusher: TokenPusher
     _rank_quota_analyzer: RankQuotaAnalyzer
     _collision_detector: TokenCollisionDetector
@@ -43,7 +43,7 @@ class TokenStackController:
     def __init__(
             self,
             crud: TokenStackCrudController | None = TokenStackCrudController(),
-            integrity_service: IntegrityMicroservice = IntegrityMicroservice(),
+            microservice: TokenService = TokenService(),
             token_deployer: TokenDeployer | None = TokenDeployer(),
             pusher: TokenPusher | None = TokenPusher(),
             rank_quota_analyzer: RankQuotaAnalyzer | None = RankQuotaAnalyzer(),
@@ -51,7 +51,7 @@ class TokenStackController:
     ):
         self._crud = crud
         self._token_deployer = token_deployer
-        self._integrity_service = integrity_service
+        self._microservice = microservice
         self._pusher = pusher
         self._collision_detector = collision_detector
         self._rank_quota_analyzer = rank_quota_analyzer
@@ -65,11 +65,11 @@ class TokenStackController:
         return self._token_deployer
     
     @property
-    def integrity_service(self) -> TokenService:
-        return self._integrity_service
+    def microservice(self) -> TokenService:
+        return self._microservice
     
     @property
-    def rank_quota_analyzer(self) -> RankQuotaAnalysis:
+    def rank_quota_analyzer(self) -> RankQuotaAnalyzer:
         return self._rank_quota_analyzer
     
     @property

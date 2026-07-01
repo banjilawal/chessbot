@@ -5,64 +5,28 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/event/transition/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/event/transition/arena/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/event/transition/arena/model.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/event/transition/board/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/event/transition/board/model.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/event/transition/coord/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/event/transition/coord/model.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/event/transition/edge/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/event/transition/edge/model.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/event/transition/formation/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/event/transition/formation/model.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/event/transition/game/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/event/transition/game/model.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/event/transition/hostage/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/event/transition/hostage/model.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/event/transition/model.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/event/transition/node/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/event/transition/node/model.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/event/transition/persona/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/event/transition/persona/model.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/event/transition/player/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/event/transition/player/model.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/event/transition/rank/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/event/transition/rank/model.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/event/transition/schema/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/event/transition/schema/model.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/event/transition/square/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/event/transition/square/model.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/event/transition/team/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/event/transition/team/model.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/event/transition/token/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/event/transition/token/model.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/report/event/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/report/event/report.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/report/event/state.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/permitter/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/permitter/permitter.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/permitter/push/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/permitter/push/token/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/permitter/push/token/permitter.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/report/approval/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/report/approval/push/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/report/approval/push/report.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/report/approval/report.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/report/approval/state.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/stack/crud/token/controller.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/stack/crud/token/controller.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controller/stack/token/controller.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/stack/token/controller.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/token/controller.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/token/controller.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/bootstrapper/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/bootstrapper/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/collider/square/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/collider/square/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/collider/token/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/collider/token/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/collider/token/boostrapper/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/collider/token/boostrapper/exception.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/detector/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/detector/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/detector/collision/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/detector/collision/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/detector/collision/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/detector/collision/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/detector/collision/token/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/detector/token/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/detector/collision/token/boostrapper/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/detector/collision/token/boostrapper/exception.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/detector/collision/token/collider/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/detector/collision/token/collider/exception.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/detector/collision/token/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/detector/token/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/transaction/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/transaction/model.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/transaction/state.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/push/token/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/push/token/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/operation/push/token/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/push/token/operation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/stack/pop/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/pop/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/report/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/report/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/stack/token/stack.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/stack/token/stack.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/worker/stack/token/pop/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/pop/token/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/worker/stack/token/pop/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/pop/token/exception/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/worker/stack/token/pop/exception/empty.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/pop/token/exception/empty.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/worker/stack/token/pop/exception/work.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/pop/token/exception/work.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/worker/stack/token/pop/process.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/pop/token/operation.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -116,7 +80,7 @@
     "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/model",
+    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/report/approval",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
@@ -127,18 +91,18 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/model" />
+      <recent name="$PROJECT_DIR$/src/report/approval" />
+      <recent name="$PROJECT_DIR$/src/report/approval/push" />
       <recent name="$PROJECT_DIR$/src/report" />
-      <recent name="$PROJECT_DIR$/src/err" />
-      <recent name="$PROJECT_DIR$/src/err/detector/collision/token" />
-      <recent name="$PROJECT_DIR$/src/detector/token/collider" />
+      <recent name="$PROJECT_DIR$/src/operation" />
+      <recent name="$PROJECT_DIR$/src/model" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/event" />
-      <recent name="$PROJECT_DIR$/src/err/detector" />
-      <recent name="$PROJECT_DIR$/src/err/collider" />
-      <recent name="$PROJECT_DIR$/src/detector/token" />
-      <recent name="$PROJECT_DIR$/src/err" />
+      <recent name="$PROJECT_DIR$/src/report/approval" />
+      <recent name="$PROJECT_DIR$/src/bootstrapper/push" />
+      <recent name="$PROJECT_DIR$/src" />
+      <recent name="$PROJECT_DIR$/src/operation/pop" />
+      <recent name="$PROJECT_DIR$/src/operation" />
     </key>
   </component>
   <component name="RunManager" selected="Python.notifier">
@@ -862,7 +826,8 @@
       <workItem from="1782069802645" duration="29800000" />
       <workItem from="1782214489414" duration="8439000" />
       <workItem from="1782265217166" duration="7062000" />
-      <workItem from="1782325486599" duration="55663000" />
+      <workItem from="1782325486599" duration="56546000" />
+      <workItem from="1782732939190" duration="13321000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />

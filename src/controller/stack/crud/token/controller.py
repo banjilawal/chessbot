@@ -10,7 +10,7 @@ version: 1.0.0
 from __future__ import annotations
 
 from search.token.resource import TokenQueryService
-from worker.stack.token.pop import TokenStackPop
+from operation.pop.token import TokenStackPop
 from operation.push.token import TokenPusher
 
 
