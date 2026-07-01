@@ -15,7 +15,7 @@ from model import Token
 from operation import Operation
 from toolkit import Toolkit
 from microservice import FormationService, IdentityService, Microservice, RankService
-from validation import CoordValidator, SquareValidator, TeamValidator, ValidationPrimer
+from validation import CoordValidator, NumberValidator, SquareValidator, TeamValidator, ValidationPrimer
 
 
 class TokenToolkit(Toolkit[Token]):
@@ -52,6 +52,7 @@ class TokenToolkit(Toolkit[Token]):
         CoordValidator,
         TeamValidator,
         ValidationPrimer,
+        NumberValidator,
     ]
     
     SERVICE_DEPENDENCIES: List[Microservice] = [
@@ -64,3 +65,4 @@ class TokenToolkit(Toolkit[Token]):
     identity_service: IdentityService = IdentityService()
     rank_service: RankService = RankService()
     validation_primer: ValidationPrimer = ValidationPrimer()
+    number_validator: NumberValidator = NumberValidator()

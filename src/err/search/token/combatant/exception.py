@@ -10,16 +10,16 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import TokenSearchException
+from err import TokenSearcherException
 
 
 __all__ = [
     # ======================# COMBATANT_TOKEN_SEARCH_ERROR #======================#
-    "CombatantTokenSearchException",
+    "CombatantTokenSearcherException",
 ]
 
 # ======================# COMBATANT_TOKEN_SEARCH_ERROR #======================#
-class CombatantTokenSearchException(TokenSearchException):
+class CombatantTokenSearcherException(TokenSearcherException):
     """
     Role:
         -   Error Tracing

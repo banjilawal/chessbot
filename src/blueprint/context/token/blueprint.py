@@ -50,6 +50,5 @@ class TokenContextBlueprint(Blueprint[TokenContext]):
     designation: Optional[str] | None = None
     current_position: Optional[Coord] | None = None
     opening_square: Optional[OpeningSquare] | None = None
-    null_exception = TokenContextNullException()
-    model_type = TokenContext
+
 

@@ -9,10 +9,10 @@ version: 1.0.1
 
 from __future__ import annotations
 
+from model import Query
 from result import BuildResult
 from operation import Assembler
 from util import LoggingLevelRouter
-from model import Query, QueryBlueprint
 
 class QueryAssembler(Assembler[Query]):
     NAME = "query_assembler"

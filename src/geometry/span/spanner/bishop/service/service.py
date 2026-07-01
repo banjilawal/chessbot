@@ -114,7 +114,7 @@ class BishopSpanService(SpanMicroservice):
                 current_coord: Coord = ray.origin
                 for point in ray.members:
                     
-                    tail_square_search_result = square_database.search(context=SquareContext(coord=previous_point))
+                    tail_square_search_result = square_database.execute(context=SquareContext(coord=previous_point))
                     # Handle the case that the search is not completed
                     if tail_square_search_result.is_failure:
                         # Send the exception chain on failure.
@@ -128,7 +128,7 @@ class BishopSpanService(SpanMicroservice):
                             )
                         )
                     
-                    head_square_search_result = square_database.search(context=SquareContext(coord=point))
+                    head_square_search_result = square_database.execute(context=SquareContext(coord=point))
                     # Handle the case that the search is not completed
                     if head_square_search_result.is_failure:
                         # Send the exception chain on failure.
@@ -143,7 +143,7 @@ class BishopSpanService(SpanMicroservice):
                         )
                     square_v = square_v_search.payload[0]
 
-                    square_u_search_result = square_database.search(context=SquareContext(coord=previous_point))
+                    square_u_search_result = square_database.execute(context=SquareContext(coord=previous_point))
                     square_u = square_u_search_result.payload[0]
                     
                     pair_build_result = self._build_pair(
@@ -207,7 +207,7 @@ class BishopSpanService(SpanMicroservice):
                 current_coord: Coord = ray.origin
                 for point in ray.members:
                     
-                    tail_square_search_result = square_database.search(
+                    tail_square_search_result = square_database.execute(
                         context=SquareContext(coord=previous_point)
                     )
                     # Handle the case that the search is not completed
@@ -223,7 +223,7 @@ class BishopSpanService(SpanMicroservice):
                             )
                         )
                     
-                    head_square_search_result = square_database.search(context=SquareContext(coord=point))
+                    head_square_search_result = square_database.execute(context=SquareContext(coord=point))
                     # Handle the case that the search is not completed
                     if head_square_search_result.is_failure:
                         # Send the exception chain on failure.
@@ -238,7 +238,7 @@ class BishopSpanService(SpanMicroservice):
                         )
                     square_v = square_v_search.payload[0]
                     
-                    square_u_search_result = square_database.search(context=SquareContext(coord=previous_point))
+                    square_u_search_result = square_database.execute(context=SquareContext(coord=previous_point))
                     square_u = square_u_search_result.payload[0]
                     
                     pair_build_result = self._build_pair(

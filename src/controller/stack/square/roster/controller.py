@@ -214,7 +214,7 @@ class SquareStackRosterHandler:
         
         pre_deployment_team = deepcopy(team)
         # Find the roster member's opening square.
-        token_search_result = team.roster.search(context=TokenContext(opening_square=square.name))
+        token_search_result = team.roster.execute(context=TokenContext(opening_square=square.name))
         
         # Handle the case that, the search is not completed.
         if token_search_result.is_failure:

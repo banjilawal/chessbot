@@ -96,7 +96,7 @@ class BoardSquareRelationAnalysis(RelationAnalysis[Board, Square]):
         
 
         # --- Search the board's squares for the satellite-rank. ---#
-        square_search = board.squares.search(context=SquareContext(id=square.id))
+        square_search = board.squares.execute(context=SquareContext(id=square.id))
         
         # Handle the case that, the search was aborted.
         if square_search.is_failure:

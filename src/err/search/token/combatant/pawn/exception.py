@@ -10,16 +10,16 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import TokenSearchException
+from err import TokenSearcherException
 
 
 __all__ = [
     # ======================# PAWN_TOKEN_SEARCH_ERROR #======================#
-    "PawnTokenSearchException",
+    "PawnTokenSearcherException",
 ]
 
 # ======================# PAWN_TOKEN_SEARCH_ERROR #======================#
-class PawnTokenSearchException(TokenSearchException):
+class PawnTokenSearcherException(TokenSearcherException):
     """
     Role:
         -   Error Tracing

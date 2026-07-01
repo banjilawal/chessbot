@@ -43,8 +43,7 @@ class TokenPopper(Popper[Token]):
     @classmethod
     @LoggingLevelRouter.monitor
     def execute(
-            cls, 
-            item_id: int,
+            cls,
             stack: TokenStackService,
             pop_permitter: TokenPopPermitter | None = None,
     ) -> DeletionResult[Token]:
@@ -69,7 +68,7 @@ class TokenPopper(Popper[Token]):
         if pop_permitter is None:
             pop_permitter = TokenPopPermitter()
         
-        permission_analysis_result = pop_permitter.execute(item_id=item_id, stack=stack)
+        permission_analysis_result = pop_permitter.execute(stack=stack)
         # Handle the case that, the push_permitter does not complete analysis.
         if permission_analysis_result.is_failure:
             # Return the exception chain on failure
@@ -98,17 +97,7 @@ class TokenPopper(Popper[Token]):
                     ex=permission.exception
                 )
             )
-        # --- Loop through the collection to ensure all matches are removed. ---#
-        target = None
-        for token in stack.items:
-            if token.id == item_id:
-                # Record a hit before pulling it from the stack.
-                target = token
-                stack.items.remove(token)
-        # --- After the purging loop finishes handle the possible return cases. ---#
-        
-        if target is None:
-            return DeletionResult.nothing_to_delete()
+        target = stack.items.pop(-1)
         if stack.is_empty:
             stack.stack_state = TokenStackState.DEPLOYED_ON_BOARD
         return DeletionResult.success(target)

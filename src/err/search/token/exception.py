@@ -15,11 +15,11 @@ from err import SearchException
 
 __all__ = [
     # ======================# TOKEN_SEARCH_ERROR #======================#
-    "TokenSearchException",
+    "TokenSearcherException",
 ]
 
 # ======================# TOKEN_SEARCH_ERROR #======================#
-class TokenSearchException(SearchException):
+class TokenSearcherException(SearchException):
     """
     Role:
         -   Error Tracing

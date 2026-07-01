@@ -14,11 +14,13 @@ from typing import Any, cast
 from model import Persona, TokenContext
 from result import ValidationResult
 from setting import GameColor
-from toolkit import TokenContextToolkit
+from toolkit import TokenToolkit
 from util import LoggingLevelRouter
-from validation import ContextValidator
-from err import GameColorNullException, TokenContextValidationException, TokenContextValidationRouteException
-
+from validation import ContextValidator, ValidationPrimer
+from err import (
+    GameColorNullException, TokenContextNullException, TokenContextValidationException,
+    TokenContextValidationRouteException
+)
 
 
 class TokenContextValidator(ContextValidator):
@@ -37,7 +39,7 @@ class TokenContextValidator(ContextValidator):
     Provides:
         -   def validate(
                     candidate: Any,
-                    toolkit: TokenContextToolkit,
+                    toolkit: TokenToolkit,
             ) -> ValidationResult[Token]:
 
     Super Class:
@@ -48,7 +50,7 @@ class TokenContextValidator(ContextValidator):
     def validate(
             cls,
             candidate: Any,
-            toolkit: TokenContextToolkit | None = None,
+            toolkit: TokenToolkit | None = None,
     ) -> ValidationResult[TokenContext]:
         """
         Certify a candidate is a TokenContext that is safe to use.
@@ -62,7 +64,7 @@ class TokenContextValidator(ContextValidator):
             2.  Otherwise, send the success result.
         Args:
             candidate: Any,
-            toolkit: TokenContextToolkit,
+            toolkit: TokenToolkit,
         Returns:
             ValidationResult[Token]
         Raises:
@@ -73,14 +75,14 @@ class TokenContextValidator(ContextValidator):
         
         # --- Supply any missing dependencies. ---#
         if toolkit is None:
-            toolkit = TokenContextToolkit()
+            toolkit = TokenToolkit()
         
         # handle the case that, priming the validator fails.
-        priming_result = toolkit.context_validation_primer.validate(
+        priming_result = toolkit.validation_primer.validate(
             candidate=candidate,
-            context_model=toolkit.context_model_type,
-            context_null_exception=toolkit.null_context_exception,
-            validation_primer=toolkit.token_toolkit.validation_primer
+            context_model=candidate,
+            context_null_exception=TokenContext,
+            validation_primer=TokenContextNullException()
         )
         if priming_result.is_failure:
             # Send the exception chain on failure.
@@ -98,7 +100,7 @@ class TokenContextValidator(ContextValidator):
         
         # Certification for the search-by-id target.
         if context.id is not None:
-            validation_result = toolkit.token_toolkit.identity_service.validate_id(
+            validation_result = toolkit.identity_service.validate_id(
                 candidate=context.id
             )
             if validation_result.is_failure:
@@ -117,7 +119,7 @@ class TokenContextValidator(ContextValidator):
         
         # Certification for the search-by-designation target.
         if context.designation is not None:
-            validation_result = toolkit.token_toolkit.identity_service.validate_name(
+            validation_result = toolkit.identity_service.validate_name(
                 candidate=context.designation
             )
             if validation_result.is_failure:
@@ -136,7 +138,7 @@ class TokenContextValidator(ContextValidator):
         
         # Certification for the search-by-opening_square target.
         if context.opening_square is not None:
-            validation_result = toolkit.token_toolkit.square_validator.validate(
+            validation_result = toolkit.square_validator.validate(
                 candidate=context.opening_square
             )
             if validation_result.is_failure:
@@ -155,7 +157,7 @@ class TokenContextValidator(ContextValidator):
         
         # Certification for the search-by-coord target.
         if context.current_position is not None:
-            validation_result = toolkit.token_toolkit.coord_validator.validate(
+            validation_result = toolkit.coord_validator.validate(
                 candidate=context.current_position
             )
             if validation_result.is_failure:
@@ -174,7 +176,7 @@ class TokenContextValidator(ContextValidator):
     
         # Certification for the search-by-team target.
         if context.team is not None:
-            validation_result = toolkit.token_toolkit.team_validator.validate(
+            validation_result = toolkit.team_validator.validate(
                 candidate=context.current_position
             )
             if validation_result.is_failure:
@@ -193,7 +195,7 @@ class TokenContextValidator(ContextValidator):
         
         # Certification for the search-by-rank target.
         if context.rank is not None:
-            validation_result = toolkit.token_toolkit.rank_service.validator.validate(
+            validation_result = toolkit.rank_service.validator.validate(
                 candidate=context.rank
             )
             if validation_result.is_failure:
@@ -212,7 +214,7 @@ class TokenContextValidator(ContextValidator):
         
         # Certification for the search-by-color target.
         if context.color is not None:
-            validation_result = toolkit.token_toolkit.validation_primer.validate(
+            validation_result = toolkit.validation_primer.validate(
                 candidate=context.color,
                 model_type=GameColor,
                 null_exception=GameColorNullException()

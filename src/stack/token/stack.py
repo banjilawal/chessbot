@@ -71,14 +71,14 @@ class TokenStackService(StackService[Token]):
     _capacity: int
     _stack: List[Token]
     _state: TokenStackState
-    controller: TokenStackController
+    _controller: TokenStackController
     
     def __init__(
             self,
             name: str = SERVICE_NAME,
             capacity: int = DEFAULT_CAPACITY,
             id: int = IdFactory.next_id(class_name="TokenStackService"),
-            controller: TokenStackController = TokenStackController(),
+            controller: TokenStackController | None = TokenStackController(),
     ):
         """
         Args:
@@ -90,7 +90,7 @@ class TokenStackService(StackService[Token]):
         super().__init__(id=id, name=name,)
         self._stack = []
         self._capacity = capacity
-        self.controller = controller
+        self._controller = controller
         self._state = TokenStackState.NOT_READY_FORD_DEPLOYMENT
     
     @property
@@ -130,8 +130,8 @@ class TokenStackService(StackService[Token]):
         return self._stack[-1] if self._stack else None
     
     @property
-    def request(self) -> TokenStackController:
-        return self.controller
+    def controller(self) -> TokenStackController:
+        return self._controller
     
     @property
     def microservice(self) -> TokenService:
@@ -190,7 +190,7 @@ class TokenStackService(StackService[Token]):
         method = f"{self.__class__.__name__}.pop"
         
         # --- Handoff request fulfilment to the controller. ---#
-        request_result = self.controller.crud.pop.execute()
+        request_result = self._controller.popper.execute()
         
         # Handle the case that, the request was not fulfilled.
         if request_result.is_failure:
@@ -208,7 +208,7 @@ class TokenStackService(StackService[Token]):
         return request_result
     
     @LoggingLevelRouter.monitor
-    def push(self, item: Token) -> InsertionResult[bool]:
+    def push(self, item: Token) -> InsertionResult:
         """
         Put the token onto the schema.
 
@@ -225,11 +225,9 @@ class TokenStackService(StackService[Token]):
         method = f"{self.__class__.__name__}.push"
         
         # --- Handoff request fulfilment to the controller. ---#
-        request_result = self.controller.crud.push.execute(
-            token=item,
-            stream=self,
-            rank_quota_analyzer=self.controller.rank_quota_analyzer,
-            token_collision_detector=self.controller.collision_detector
+        request_result = self._controller.pusher.execute(
+            item=item,
+            stack=self,
         )
         # Handle the case that, the request was not fulfilled.
         if request_result.is_failure:
@@ -247,11 +245,7 @@ class TokenStackService(StackService[Token]):
         return InsertionResult.success()
     
     @LoggingLevelRouter.monitor
-    def delete_by_id(
-            self,
-            id: int,
-            identity_service: IdentityService
-    ) -> DeletionResult[Token]:
+    def delete_by_id(self, id: int,) -> DeletionResult[Token]:
         """
         Delete any token which has that id.
         
@@ -260,7 +254,6 @@ class TokenStackService(StackService[Token]):
             send the success result.
         Args:
             id: int
-            identity_service: IdentityService
         Returns:
             DeletionResult[Token]
         Raises:
@@ -268,13 +261,10 @@ class TokenStackService(StackService[Token]):
         """
         method = f"{self.__class__.__name__}.delete_by_id"
         
-        if identity_service is None:
-            identity_service = IdentityService()
-        
         # --- Handoff request fulfilment to the controller. ---#
-        request_result = self.controller.crud.pop.delete_by_id(
-            id=id,
-            identity_service=identity_service
+        request_result = self._controller.deleter.execute(
+            item_id=id,
+            stack=self,
         )
         # Handle the case that, the request was not completed
         if request_result.is_failure:
@@ -309,7 +299,7 @@ class TokenStackService(StackService[Token]):
         method = f"{self.__class__.__name__}.context"
         
         # --- Handoff request fulfilment to the controller. ---#
-        request_result = self.controller.crud.query.search(context=context)
+        request_result = self._controller.sea.execute(context=context)
         
         # Handle the case that, the request was not fulfilled.
         if request_result.is_failure:

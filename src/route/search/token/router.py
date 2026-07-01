@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import List
 
-from err import TokenSearchException, TokenSearchRouteException
+from err import TokenSearcherException, TokenSearchRouteException
 from model import Coord, OpeningSquare, Rank, Team, Token
 from model.query import TokenQuery
 from result import SearchResult
@@ -116,13 +116,13 @@ class TokenSearchRouter(SearchRouter[Token]):
             )
         # Handle the case that, there is no search path for the context context..
         return SearchResult.failure(
-            TokenSearchException(
+            TokenSearcherException(
                 cls_mthd=method,
                 cls_name=cls.__name__,
-                op=TokenSearchException.OP,
-                msg=TokenSearchException.MSG,
-                err_code=TokenSearchException.ERR_CODE,
-                mthd_rslt_type=TokenSearchException.MTHD_RSLT,
+                op=TokenSearcherException.OP,
+                msg=TokenSearcherException.MSG,
+                err_code=TokenSearcherException.ERR_CODE,
+                mthd_rslt_type=TokenSearcherException.MTHD_RSLT,
                 ex=TokenSearchRouteException(
                     msg=TokenSearchRouteException.MSG,
                     err_code=TokenSearchRouteException.ERR_CODE,

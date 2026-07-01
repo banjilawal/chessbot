@@ -10,7 +10,7 @@ from encodings import search_function
 from typing import List
 
 from database.coord.database import search
-from err import TokenSearchException
+from err import TokenSearcherException
 from model import Token, TokenQuery
 from result import SearchResult
 from route import TokenSearchRouter
@@ -31,28 +31,28 @@ class TokenSearcher:
         self._search_router = search_router or TokenSearchRouter()
         
     @LoggingLevelRouter.monitor
-    def search(self, query: TokenQuery) -> SearchResult[List[Token]]:
+    def execute(self, query: TokenQuery) -> SearchResult[List[Token]]:
         method = f"{self.__class__.__name__}.search"
         query_validation_result = self._query_validator.validate(query)
         
         if query_validation_result.is_failure:
             return SearchResult.failure(
-                TokenSearchException(
+                TokenSearcherException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=TokenSearchException.MSG,
-                    err_code=TokenSearchException.ERR_CODE,
+                    msg=TokenSearcherException.MSG,
+                    err_code=TokenSearcherException.ERR_CODE,
                     ex=query_validation_result.exception,
                 )
             )
         search_result = self._search_router.route(query)
         if search_result.is_failure:
             return SearchResult.failure(
-                TokenSearchException(
+                TokenSearcherException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=TokenSearchException.MSG,
-                    err_code=TokenSearchException.ERR_CODE,
+                    msg=TokenSearcherException.MSG,
+                    err_code=TokenSearcherException.ERR_CODE,
                     ex=search_result.exception,
                 )
             )

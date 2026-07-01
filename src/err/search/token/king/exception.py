@@ -10,16 +10,16 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import TokenSearchException
+from err import TokenSearcherException
 
 
 __all__ = [
     # ======================# KING_TOKEN_SEARCH_ERROR #======================#
-    "KingTokenSearchException",
+    "KingTokenSearcherException",
 ]
 
 # ======================# KING_TOKEN_SEARCH_ERROR #======================#
-class KingTokenSearchException(TokenSearchException):
+class KingTokenSearcherException(TokenSearcherException):
     """
     Role:
         -   Error Tracing

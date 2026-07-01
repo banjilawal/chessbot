@@ -197,7 +197,7 @@ class OpeningSquareLocator(Worker):
                     ex=token_validation_result.exception
                 )
             )
-        opening_square_search = square_stack.microservice.search(
+        opening_square_search = square_stack.microservice.execute(
             context=SquareContext(name=token.opening_square_name)
         )
         # Handle the case that the search fails
