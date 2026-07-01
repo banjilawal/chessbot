@@ -72,6 +72,13 @@ class PopApproval(OperationApprovalReport):
             stack=stack,
             permission=Permission.GRANTED
         )
+    
+    @classmethod
+    def deny(cls, exception: Exception) -> PopApproval:
+        return cls(
+            exception=exception,
+            permission=Permission.DENIED
+        )
 
     
     

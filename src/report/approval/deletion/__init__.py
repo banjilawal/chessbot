@@ -1,7 +1,7 @@
-# src/report/approval/delete/__init__.py
+# src/report/approval/deletion/__init__.py
 
 """
-Module: report.approval.delete.__init__
+Module: report.approval.deletion.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

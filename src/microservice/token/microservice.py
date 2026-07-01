@@ -10,11 +10,11 @@ version: 1.0.1
 from __future__ import annotations
 
 from microservice import Microservice
-from model import Token
+from model import Coord, Token
 from operation import TokenValidator
 from controller.token import TokenOpsController
 from pipeline import TokenBuildPipeline
-from result import DeletionResult
+from result import DeletionResult, InsertionResult
 from system import IdFactory, LoggingLevelRouter
 
 

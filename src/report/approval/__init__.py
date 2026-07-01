@@ -10,9 +10,10 @@ version: 1.0.1
 # =========== REPORT.APPROVAL PACKAGE ===========#
 
 # Packages
-from .delete import *
+from .deletion import *
 from .pop import *
 from .push import *
+from .promotion import *
 
 # Modules
 from .report import OperationApprovalReport

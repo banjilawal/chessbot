@@ -1,7 +1,7 @@
-# src/report/approval/delete/report.py
+# src/report/approval/deletion/report.py
 
 """
-Module: report.approval.delete.report
+Module: report.approval.deletion.report
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -77,6 +77,13 @@ class DeleteApproval(OperationApprovalReport):
             id=id,
             stack=stack,
             permission=Permission.GRANTED
+        )
+    
+    @classmethod
+    def deny(cls, exception: Exception) -> DeleteApproval:
+        return cls(
+            exception=exception,
+            permission=Permission.DENIED
         )
 
     

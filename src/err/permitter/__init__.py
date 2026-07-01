@@ -12,6 +12,7 @@ version: 1.0.0
 # Packages
 from .delete import *
 from .pop import *
+from .promotion import *
 from .push import *
 
 # Modules

@@ -5,46 +5,28 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/err/validation/query/token/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/validation/query/token/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/permitter/promotion/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/permitter/promotion/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/permitter/promotion/token/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/permitter/promotion/token/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/permitter/promotion/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/permitter/promotion/manager/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/permitter/promotion/permitter.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/permitter/promotion/rank/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/permitter/promotion/rank/analyzer.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/report/approval/promotion/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/report/approval/promotion/report.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/stack/token/controller.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/stack/token/controller.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/empty/query/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/empty/query/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/empty/query/arena/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/empty/query/arena/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/empty/query/arena/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/empty/query/arena/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/empty/query/board/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/empty/query/board/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/empty/query/board/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/empty/query/board/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/empty/query/coord/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/empty/query/coord/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/empty/query/coord/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/empty/query/coord/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/empty/query/edge/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/empty/query/edge/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/empty/query/edge/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/empty/query/edge/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/empty/query/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/empty/query/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/empty/query/formation/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/empty/query/formation/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/empty/query/formation/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/empty/query/formation/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/empty/query/game/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/empty/query/game/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/empty/query/game/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/empty/query/game/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/empty/query/hostage/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/empty/query/hostage/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/empty/query/hostage/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/empty/query/hostage/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/empty/query/node/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/empty/query/node/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/empty/query/node/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/empty/query/node/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/empty/query/persona/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/empty/query/persona/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/empty/query/persona/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/empty/query/persona/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/empty/query/player/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/empty/query/player/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/empty/query/player/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/empty/query/player/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/empty/query/rank/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/empty/query/rank/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/empty/query/rank/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/empty/query/rank/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/empty/query/schema/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/empty/query/schema/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/empty/query/schema/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/empty/query/schema/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/empty/query/square/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/empty/query/square/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/empty/query/square/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/empty/query/square/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/empty/query/team/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/empty/query/team/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/empty/query/team/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/empty/query/team/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/empty/query/token/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/empty/query/token/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/empty/query/token/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/empty/query/token/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/validation/query/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/validation/query/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/search/token/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/search/token/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/search/token/search.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/search/token/searcher.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/validation/query/token/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/validation/query/token/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/microservice/token/microservice.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/microservice/token/microservice.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/permitter/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/permitter/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/permitter/delete/token/permitter.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/permitter/delete/token/permitter.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/permitter/pop/token/permitter.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/permitter/pop/token/permitter.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/permitter/push/token/permitter.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/permitter/push/token/permitter.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/report/approval/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/report/approval/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/report/approval/delete/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/report/approval/deletion/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/report/approval/delete/report.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/report/approval/deletion/report.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/report/approval/pop/report.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/report/approval/pop/report.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/report/approval/push/report.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/report/approval/push/report.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -98,7 +80,7 @@
     "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/err/validation/query/token",
+    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/err/permitter",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
@@ -109,18 +91,18 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/err/validation/query/token" />
       <recent name="$PROJECT_DIR$/src/err/permitter" />
-      <recent name="$PROJECT_DIR$/src/report/approval" />
       <recent name="$PROJECT_DIR$/src/permitter" />
+      <recent name="$PROJECT_DIR$/src/report/approval" />
+      <recent name="$PROJECT_DIR$/src/err/validation/query/token" />
       <recent name="$PROJECT_DIR$/src/operation" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/permitter/promotion" />
       <recent name="$PROJECT_DIR$/src/report/approval" />
       <recent name="$PROJECT_DIR$/src/report/approval/pop" />
       <recent name="$PROJECT_DIR$/src/err/operation/pop" />
       <recent name="$PROJECT_DIR$/src/err/operation/pop/empty" />
-      <recent name="$PROJECT_DIR$/src/bootstrapper/push" />
     </key>
   </component>
   <component name="RunManager" selected="Python.notifier">
@@ -845,7 +827,7 @@
       <workItem from="1782214489414" duration="8439000" />
       <workItem from="1782265217166" duration="7062000" />
       <workItem from="1782325486599" duration="56546000" />
-      <workItem from="1782732939190" duration="40877000" />
+      <workItem from="1782732939190" duration="45630000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />

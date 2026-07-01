@@ -13,6 +13,7 @@ version: 1.0.1
 from .delete import *
 from .pop import *
 from .push import *
+from .promotion import *
 
 # Modules
 from .permitter import OperationPermitter

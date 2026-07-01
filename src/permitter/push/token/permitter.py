@@ -15,13 +15,14 @@ from detector import TokenCollisionDetector
 from err import RankQuotaFullException, TokenPushPermitterException, TokenStackFullException
 from microservice import RankService
 from model import Token
+from permitter import OperationPermitter
 from report import CollisionReport, PushApproval, RankQuotaReport
 from result import AnalysisResult, MethodResultType
 from stack import TokenStackService
 from util import LoggingLevelRouter
 
 
-class TokenPushPermitter:
+class TokenPushPermitter(OperationPermitter):
     """
     Role:
         - Transaction Worker
@@ -80,7 +81,8 @@ class TokenPushPermitter:
             TokenStackFullException
         """
         method =  f"{cls.__name__}.execute"
-    
+        
+        # --- Supply any missing dependencies. ---#
         if rank_service is None:
             rank_service = RankService()
         if rank_quota_analyzer is None:

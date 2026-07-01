@@ -1,7 +1,7 @@
-# src/report/approval/push/report.py
+# src/report/approval/promote/report.py
 
 """
-Module: report.approval.push.report
+Module: report.approval.promote.report
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -10,82 +10,83 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Optional, TypeVar
 
+from model import PawnToken, Rank
 from report import OperationApprovalReport, Permission
-from stack import StackService
+from rank import Rank
 
 T = TypeVar("T")
 
 
-class PushApproval(OperationApprovalReport):
+class PromotionApproval(OperationApprovalReport):
     """
     Role:
         -   Test results
 
     Responsibilities:
-        1.  Provides details about the outcome of a push approval request.
+        1.  Provides details about the outcome of a promote approval request.
         
     Attributes:
-        item: T
-        stack: StackService[T]
+        pawn: T
+        rank: Rank
         exception: Optional[Exception]
         permission: Permission
         
     Provides:
-        -   def approve(item: T, stack: StackService[T]) -> OperationApprovalReport
+        -   def approve(pawn: T, rank: Rank) -> OperationApprovalReport
         -   def deny(exception: Exception) -> OperationApprovalReport:
         
     Super Class:
         OperationApprovalReport
     """
-    _item: Optional[T] = None
-    _stack: Optional[StackService[T]] = None
+    _pawn: Optional[PawnToken] = None
+    _rank: Optional[Rank] = None
     
     def __init__(
             self,
             permission: Permission,
-            item: Optional[T] | None = None,
-            stack: Optional[StackService[T]] | None = None,
+            pawn: Optional[PawnToken] | None = None,
+            rank: Optional[Rank] | None = None,
             exception: Optional[Exception] | None = None,
     ):
         super().__init__(exception=exception, permission=permission)
-        self._item = item
-        self._stack = stack
+        self._pawn = pawn
+        self._rank = rank
     
     
     @property
-    def item(self) -> Optional[T]:
-        return self._item
+    def pawn(self) -> Optional[PawnToken]:
+        return self._pawn
     
     @property
-    def stack(self) -> Optional[StackService[T]]:
-        return self._stack
+    def rank(self) -> Optional[Rank]:
+        return self._rank
     
     @property
     def is_denied(self) -> bool:
         return (
-                self._item is None and
-                self._stack is None and
+                self._pawn is None and
+                self._rank is None and
                 super().is_denied
         )
     
     @property
     def is_granted(self) -> bool:
         return (
-            self._item is not None and
-            self._stack is not None and
+            self._pawn is not None and
+            self._rank is not None and
             super().is_granted
         )
     
     @classmethod
-    def approve(cls, item: T, stack: StackService[T]) -> PushApproval:
+    def approve(cls, pawn: T, rank: Rank) -> PromotionApproval:
         return cls(
-            item=item,
-            stack=stack,
+            pawn=pawn,
+            rank=rank,
             permission=Permission.GRANTED
         )
     
     @classmethod
-    def deny(cls, exception: Exception) -> PushApproval:
+    def deny(cls, exception: Exception) -> PromotionApproval:
         return cls(
             exception=exception,
             permission=Permission.DENIED
