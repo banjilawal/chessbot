@@ -15,17 +15,17 @@ from result import MethodResultType
 
 __all__ = [
     # ======================# POP_FAILURE #======================#
-    "PopException",
+    "PopperException",
 ]
 
 # ======================# POP_FAILURE #======================#
-class PopException(OperationException):
+class PopperException(OperationException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a pop operation failed.
+        1.  Indicate that a StackPopper failed.
 
     Attributes:
         msg: Optional[str]
@@ -41,7 +41,7 @@ class PopException(OperationException):
     Super Class:
         OperationException
     """
-    MSG = "Pop step failed."
+    MSG = "Popping stack failed"
     ERR_CODE = "POP_FAILURE"
     MTHD_RSLT_TYPE = MethodResultType.DELETION_RESULT
     

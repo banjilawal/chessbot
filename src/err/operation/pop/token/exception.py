@@ -1,7 +1,7 @@
-# src/err/operation/pop/stack/coord/exception.py
+# src/err/operation/pop/token/exception.py
 
 """
-Module: err.operation.pop.stack.coord.exception
+Module: err.operation.pop.token.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,21 +10,22 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import PoppingStackException
+from err import PopperException
+from result import MethodResultType
 
 __all__ = [
-    # ======================# POPPING_COORD_STACK_FAILURE #======================#
-    "PoppingCoordStackException",
+    # ======================# TOKEN_POPPER_FAILURE #======================#
+    "TokenPopperException",
 ]
 
-# ======================# POPPING_COORD_STACK_FAILURE #======================#
-class PoppingCoordStackException(PoppingStackException):
+# ======================# TOKEN_POPPER_FAILURE #======================#
+class TokenPopperException(PopperException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that popping a CoordStack failed.
+        1.  Indicate that a TokenPopper did not complete its task.
 
     Attributes:
         msg: Optional[str]
@@ -40,8 +41,8 @@ class PoppingCoordStackException(PoppingStackException):
     Super Class:
         PoppingStackException
     """
-    MSG = "Popping a CoordStack failed."
-    ERR_CODE = "POPPING_COORD_STACK_FAILURE"
+    MSG = "Popping a TokenStack failed."
+    ERR_CODE = "TOKEN_POPPER_FAILURE"
     
     def __init__(
             self,

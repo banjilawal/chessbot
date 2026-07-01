@@ -10,7 +10,7 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import PopException
+from err import PopperException
 
 __all__ = [
     # ======================# POP_FAILURE #======================#
@@ -18,7 +18,7 @@ __all__ = [
 ]
 
 # ======================# POP_FAILURE #======================#
-class PoppingEmptyStackException(PopException):
+class PoppingEmptyStackException(PopperException):
     """
     Role:
         -   Error Tracing

@@ -47,7 +47,7 @@ class TokenPopPermitter:
     @LoggingLevelRouter.monitor
     def execute(
             cls,
-            id: int,
+            item_id: int,
             stack: TokenStackService,
             identity_service: IdentityService | None = None,
             validation_primer: ValidationPrimer | None = None,
@@ -64,7 +64,7 @@ class TokenPopPermitter:
                     -   The quota for the token's rank is full.
             3.  Send an approval if all the tests are passed.
         Args:
-            id: int
+            item_id: int
             stack: TokenStackService
             identity_service: IdentityService
             validation_primer: ValidationPrimer
@@ -81,7 +81,7 @@ class TokenPopPermitter:
         if validation_primer is None:
             validation_primer = ValidationPrimer()
             
-        id_validation_result = identity_service.validate_id(candidate=id)
+        id_validation_result = identity_service.validate_id(candidate=item_id)
         if id_validation_result.is_failure:
             # Return the exception chain on failure
             return AnalysisResult.failure(
@@ -132,6 +132,6 @@ class TokenPopPermitter:
                 )
             )
         # --- Integrity and performance tests are passed. ---#
-        return AnalysisResult.completed(PopApproval.approve(id=id, stack=stack))
+        return AnalysisResult.completed(PopApproval.approve(id=item_id, stack=stack))
 
     

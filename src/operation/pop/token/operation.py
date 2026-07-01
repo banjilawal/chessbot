@@ -9,10 +9,19 @@ version: 1.0.1
 
 from __future__ import annotations
 
+from typing import cast
+
+from err import TokenPopperException
+from model import Token
+from operation import Popper
+from permitter import TokenPopPermitter
+from report import PopApproval
+from result import DeletionResult, MethodResultType
+from stack import TokenStackService, TokenStackState
 from util import LoggingLevelRouter
 
 
-class TokenStackPop:
+class TokenPopper(Popper[Token]):
     """
     Role:
         - Transaction Worker
@@ -34,7 +43,12 @@ class TokenStackPop:
 
     @classmethod
     @LoggingLevelRouter.monitor
-    def execute(cls, token_stack: TokenStackService) -> DeletionResult[Token]:
+    def execute(
+            cls, 
+            item_id: int,
+            stack: TokenStackService,
+            pop_permitter: TokenPopPermitter | None = None,
+    ) -> DeletionResult[Token]:
         """
         Remove the token at the top of the stack.
         
@@ -43,140 +57,59 @@ class TokenStackPop:
             2.  Otherwise, pop the token from the stack.
             3.  Send the success result containing the finished work product.
         Args:
-            token_stack: TokenStackService
+            item_id: int
+            stack: TokenStackService
+            pop_permitter: TokenPopPermitter
         Returns:
             DeletionResult[Token]
         Raises:
-            TokenStackPopException
-            PoppingEmptyTokenStackException
+            TokenPopperException
         """
-        method = f"{cls.__class__.__name__}.pop"
+        method = f"{cls.__class__.__name__}.execute"
         
-        # Handle the case that the stack is empty.
-        if token_stack.is_empty:
-            # Send the exception chain on failure.
+        if pop_permitter is None:
+            pop_permitter = TokenPopPermitter()
+        
+        permission_analysis_result = pop_permitter.execute(item_id=item_id, stack=stack)
+        # Handle the case that, the push_permitter does not complete analysis.
+        if permission_analysis_result.is_failure:
+            # Return the exception chain on failure
             return DeletionResult.failure(
-                TokenStackPopException(
+                TokenPopperException(
                     cls_mthd=method,
-                    op=TokenStackPopException.OP,
-                    msg=TokenStackPopException.MSG,
-                    err_code=TokenStackPopException.ERR_CODE,
-                    mthd_rslt_type=TokenStackPopException.MTHD_RSLT,
-                    ex=PoppingEmptyTokenStackException(
-                        msg=PoppingEmptyTokenStackException.MSG,
-                        err_code=PoppingEmptyTokenStackException.ERR_CODE,
-                    )
+                    cls_name=cls.__name__,
+                    msg=TokenPopperException.MSG,
+                    err_code=TokenPopperException.ERR_CODE,
+                    mthd_rslt_type=MethodResultType.DELETION_RESULT,
+                    ex=permission_analysis_result.exception
                 )
             )
-        # Handoff delivery responsibility to the stack_state_processor.
-        return cls._token_stack_state_processor(
-            deleted_token=token_stack.items.pop(-1),
-            token_stack=token_stack,
-        )
-
-    
-    @classmethod
-    @LoggingLevelRouter.monitor
-    def delete_by_id(
-            cls,
-            id: int,
-            token_stack: TokenStackService,
-            identity_service: IdentityService = IdentityService()
-    ) -> DeletionResult[Token]:
-        """
-        Action:
-        Delete any tokens whose id matches the target.
         
-        Actions:
-            1.  Send an exception chain in the DeletionResult if the idis not safe
-            2.  Otherwise, create a temp variable.
-            3.  Iterate through the items. If any match the id store then in the temp variable
-                before deleting.
-            4.  Possible success conditions are:
-                    *   Nothing to delete.
-                    *   Return the deleted item.
-        Args:
-            id: int
-            token_stack: TokenStackService
-            identity_service: IdentityService
-        Returns:
-            DeletionResult[Token]
-        Raises:
-            TokenStackPopException
-            PoppingEmptyTokenStackException
-        """
-        method = f"{cls.__name__}.delete_by_id"
-        
-        # Handle the case that the stack is empty.
-        if token_stack.is_empty:
-            # Send the exception chain on failure.
+        permission = cast(PopApproval, permission_analysis_result.payload)
+        # Handle the case that, push permission is denied.
+        if permission.is_denied:
+            # Return the exception chain on failure
             return DeletionResult.failure(
-                TokenStackPopException(
+                TokenPopperException(
                     cls_mthd=method,
-                    op=TokenStackPopException.OP,
-                    msg=TokenStackPopException.MSG,
-                    err_code=TokenStackPopException.ERR_CODE,
-                    mthd_rslt_type=TokenStackPopException.MTHD_RSLT,
-                    ex=PoppingEmptyTokenStackException(
-                        msg=PoppingEmptyTokenStackException.MSG,
-                        err_code=PoppingEmptyTokenStackException.ERR_CODE,
-                    )
-                )
-            )
-        # Handle the case that, the idis not safe.
-        id_validation_result = identity_service.validate_id(candidate=id)
-        if id_validation_result.is_failure:
-            # Send the exception chain on failure.
-            return DeletionResult.failure(
-                TokenStackPopException(
-                    cls_mthd=method,
-                    op=TokenStackPopException.OP,
-                    msg=TokenStackPopException.MSG,
-                    err_code=TokenStackPopException.ERR_CODE,
-                    mthd_rslt_type=TokenStackPopException.MTHD_RSLT,
-                    ex=id_validation_result.exception
+                    cls_name=cls.__name__,
+                    msg=TokenPopperException.MSG,
+                    err_code=TokenPopperException.ERR_CODE,
+                    mthd_rslt_type=MethodResultType.DELETION_RESULT,
+                    ex=permission.exception
                 )
             )
         # --- Loop through the collection to ensure all matches are removed. ---#
         target = None
-        for token in token_stack.items:
-            if token.id == id:
+        for token in stack.items:
+            if token.id == item_id:
                 # Record a hit before pulling it from the stack.
                 target = token
-                token_stack.items.remove(token)
+                stack.items.remove(token)
         # --- After the purging loop finishes handle the possible return cases. ---#
         
-        # Nothing was deleted
         if target is None:
             return DeletionResult.nothing_to_delete()
-        
-        # If an item was deleted, handoff delivery responsibility to the stack_state_processor.
-        return cls._token_stack_state_processor(
-            deleted_token=target,
-            token_stack=token_stack,
-        )
-    
-    @classmethod
-    @LoggingLevelRouter.monitor
-    def _token_stack_state_processor(
-            cls,
-            deleted_token: Token,
-            token_stack: TokenStackService
-    ) -> DeletionResult[Token]:
-        """
-        Action:
-            1.  If the token_stack is empty token_stack.state = TokenStackState.DEPLOYED_ON_BOARD
-        Args:
-            deleted_token: Token
-            token_stack: TokenStackService
-        Returns:
-            DeletionResult[Token]
-        Raises:
-            None
-        """
-        method = f"{cls.__name__}._token_stack_state_processor"
-        
-        if token_stack.is_empty:
-            token_stack.state = TokenStackState.DEPLOYED
-        # --- Send the work product. ---#
-        return DeletionResult.success(payload=deleted_token)
+        if stack.is_empty:
+            stack.stack_state = TokenStackState.DEPLOYED_ON_BOARD
+        return DeletionResult.success(target)

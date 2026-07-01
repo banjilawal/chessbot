@@ -10,7 +10,7 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import PopException
+from err import PopperException
 from result import MethodResultType
 
 __all__ = [
@@ -19,7 +19,7 @@ __all__ = [
 ]
 
 # ======================# POPPING_EMPTY_STACK_ERROR #======================#
-class PoppingEmptyStackException(PopException):
+class PoppingEmptyStackException(PopperException):
     """
     Role:
         -   Error Tracing
