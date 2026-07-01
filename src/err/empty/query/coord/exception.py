@@ -12,21 +12,21 @@ from typing import Any, Optional
 
 
 __all__ = [
-    # ======================# COORD_QUERY_EMPTY_ERROR #======================#
-    "CoordQueryEmptyException",
+    # ======================# COORD_QUERY_STACK_EMPTY_ERROR #======================#
+    "CoordQueryStackEmptyException",
 ]
 
-from err import QueryEmptyException
+from err import QueryStackEmptyException
 
 
-# ======================# COORD_QUERY_EMPTY_ERROR #======================#
-class CoordQueryEmptyException(QueryEmptyException):
+# ======================# COORD_QUERY_STACK_EMPTY_ERROR #======================#
+class CoordQueryStackEmptyException(QueryStackEmptyException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required CoordQuery is empty.
+        1.  Indicate that a required CoordQuery's target stack is empty.
 
     Attributes:
             msg: Optional[str]
@@ -41,10 +41,10 @@ class CoordQueryEmptyException(QueryEmptyException):
     Provides:
 
     Super Class:
-        QueryEmptyException
+        QueryStackEmptyException
     """
-    MSG = "No empty logic for CoordQuery attribute"
-    ERR_CODE = "COORD_QUERY_EMPTY_ERROR"
+    MSG = "Cannot search an empty Coord Stack."
+    ERR_CODE = "COORD_QUERY_STACK_EMPTY_ERROR"
     
     def __init__(
             self,

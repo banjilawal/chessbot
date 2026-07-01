@@ -8,14 +8,17 @@ version: 1.0.1
 """
 
 from __future__ import annotations
-
 from typing import Any, List, cast
 
-from system import LoggingLevelRouter, ValidationResult, Validator
-from model.token import (
-    Token, TokenContextValidator, TokenQueryNullException, TokenQueryStackEmptyException,
-    TokenStackNullException, TokenQuery, TokenQueryValidationException
+from err import (
+    TokenQueryNullException, TokenQueryStackEmptyException, TokenQueryValidationException,
+    TokenStackNullException
 )
+from model import Token, TokenQuery
+from result import MethodResultType, ValidationResult
+from stack import TokenStackService
+from util import LoggingLevelRouter
+from validation import TokenContextValidator, ValidationPrimer, Validator
 
 
 class TokenQueryValidator(Validator[TokenQuery]):
@@ -44,7 +47,8 @@ class TokenQueryValidator(Validator[TokenQuery]):
     def validate(
             cls,
             candidate: Any,
-            context_validator: TokenContextValidator = TokenContextValidator(),
+            validation_primer: ValidationPrimer | None = None,
+            context_validator: TokenContextValidator | None = None,
     ) -> ValidationResult[TokenQuery]:
         """
         Certify a rank is a TokenQuery that is safe to use.
@@ -71,120 +75,76 @@ class TokenQueryValidator(Validator[TokenQuery]):
         """
         method = f"{cls.__name__}._validate"
         
+        if validation_primer is None:
+            validation_primer = ValidationPrimer()
+        if context_validator is None:
+            context_validator = TokenContextValidator()
+        
+        priming_validation_result = validation_primer.validate(
+            candidate=candidate,
+            target_model=TokenQuery,
+            null_exception=TokenQueryNullException(),
+        )
         # Handle the nonexistence case.
-        if candidate is None:
+        if priming_validation_result.failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 TokenQueryValidationException(
                     cls_mthd=method,
                     cls_name=method.__class__.__name__,
-                    op=TokenQueryValidationException.OP,
                     msg=TokenQueryValidationException.MSG,
                     err_code=TokenQueryValidationException.ERR_CODE,
-                    mthd_rslt_type=TokenQueryValidationException.MTHD_RSLT,
-                    ex=TokenQueryNullException(
-                        TokenQueryNullException.MSG,
-                        TokenQueryNullException.ERR_CODE,
-                    )
-                )
-            )
-        # Handle the wrong class case.
-        if not isinstance(candidate, TokenQuery):
-            # Send the exception chain on failure.
-            return ValidationResult.failure(
-                TokenQueryValidationException(
-                    cls_mthd=method,
-                    cls_name=method.__class__.__name__,
-                    op=TokenQueryValidationException.OP,
-                    msg=TokenQueryValidationException.MSG,
-                    err_code=TokenQueryValidationException.ERR_CODE,
-                    mthd_rslt_type=TokenQueryValidationException.MTHD_RSLT,
-                    ex=TypeError(
-                        f"Expected TokenQuery, got {type(candidate).__name__} instead."
-                    )
+                    mthd_rslt_type=MethodResultType.VALIDATION_RESULT,
+                    ex=priming_validation_result.exception,
                 )
             )
         # --- Cast the candidate into TokenQuery for additional tests. ---#
         query = cast(TokenQuery, candidate)
         
         # Handle the case that, the context is not safe to use.
-        validation_result = context_validator.validate(query.context)
-        if validation_result.is_failure:
+        context_validation_result = context_validator.validate(query.context)
+        if context_validation_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 TokenQueryValidationException(
                     cls_mthd=method,
                     cls_name=method.__class__.__name__,
-                    op=TokenQueryValidationException.OP,
                     msg=TokenQueryValidationException.MSG,
                     err_code=TokenQueryValidationException.ERR_CODE,
-                    mthd_rslt_type=TokenQueryValidationException.MTHD_RSLT,
-                    ex=validation_result.exception
+                    mthd_rslt_type=MethodResultType.VALIDATION_RESULT,
+                    ex=context_validation_result.exception
                 )
             )
-        # Handle the case that, the schema does not exist
-        if query.items is None:
+        stack_validation_result = priming_validation_result = validation_primer.validate(
+            candidate=query.stack,
+            target_model=TokenStackService,
+            null_exception=TokenStackNullException(),
+        )
+        if stack_validation_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 TokenQueryValidationException(
                     cls_mthd=method,
                     cls_name=method.__class__.__name__,
-                    op=TokenQueryValidationException.OP,
                     msg=TokenQueryValidationException.MSG,
                     err_code=TokenQueryValidationException.ERR_CODE,
-                    mthd_rslt_type=TokenQueryValidationException.MTHD_RSLT,
-                    ex=TokenStackNullException(
-                        msg=TokenStackNullException.MSG,
-                        err_code=TokenStackNullException.ERR_CODE,
-                    )
-                )
-            )
-        # Handle the case that, the schema is the wrong type.
-        if not isinstance(query.items, List):
-            # Send the exception chain on failure.
-            return ValidationResult.failure(
-                TokenQueryValidationException(
-                    cls_mthd=method,
-                    cls_name=method.__class__.__name__,
-                    op=TokenQueryValidationException.OP,
-                    msg=TokenQueryValidationException.MSG,
-                    err_code=TokenQueryValidationException.ERR_CODE,
-                    mthd_rslt_type=TokenQueryValidationException.MTHD_RSLT,
-                    ex=TypeError(
-                        f"Expected List, got {type(query.items).__name__} instead."
-                    )
+                    mthd_rslt_type=MethodResultType.VALIDATION_RESULT,
+                    ex=stack_validation_result.exception,
                 )
             )
         # Handle the case that, list is empty.
-        if len(query.items) == 0:
+        if query.stack.is_empty:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 TokenQueryValidationException(
                     cls_mthd=method,
                     cls_name=method.__class__.__name__,
-                    op=TokenQueryValidationException.OP,
                     msg=TokenQueryValidationException.MSG,
                     err_code=TokenQueryValidationException.ERR_CODE,
-                    mthd_rslt_type=TokenQueryValidationException.MTHD_RSLT,
+                    mthd_rslt_type=MethodResultType.VALIDATION_RESULT,
                     ex=TokenQueryStackEmptyException(
                         msg=TokenQueryStackEmptyException.MSG,
                         err_code=TokenQueryStackEmptyException.ERR_CODE,
-                    )
-                )
-            )
-        # Handle the case that, list contains something different from tokens.
-        if not isinstance(query.items[0], Token):
-            # Send the exception chain on failure.
-            return ValidationResult.failure(
-                TokenQueryValidationException(
-                    cls_mthd=method,
-                    cls_name=method.__class__.__name__,
-                    op=TokenQueryValidationException.OP,
-                    msg=TokenQueryValidationException.MSG,
-                    err_code=TokenQueryValidationException.ERR_CODE,
-                    mthd_rslt_type=TokenQueryValidationException.MTHD_RSLT,
-                    ex=TypeError(
-                        f"List contains {type(query.items).__name__}  instead of tokens."
                     )
                 )
             )

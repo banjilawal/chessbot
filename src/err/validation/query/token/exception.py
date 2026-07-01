@@ -1,50 +1,50 @@
-# src/err/empty/query/rank/exception.py
+# src/err/validation/query/exception.py
 
 """
-Module: err.empty.rank.exception
+Module: err.validation.query.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
 """
+
 from __future__ import annotations
 from typing import Any, Optional
 
+from err import QueryValidationException
+from result import MethodResultType
 
 
 __all__ = [
-    # ======================# RANK_QUERY_STACK_EMPTY_ERROR #======================#
-    "RankQueryStackEmptyException",
+    # ======================# TOKEN_QUERY_VALIDATION_FAILURE #======================#
+    "TokenQueryValidationException",
 ]
 
-from err import QueryStackEmptyException
-
-
-# ======================# RANK_QUERY_STACK_EMPTY_ERROR #======================#
-class RankQueryStackEmptyException(QueryStackEmptyException):
+# ======================# TOKEN_QUERY_VALIDATION_FAILURE #======================#
+class TokenQueryValidationException(QueryValidationException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required RankQuery's target stack is empty.
+        1.  Indicate that a TokenQueryValidation check failed.
 
     Attributes:
-            msg: Optional[str]
-            var: Optional[str]
-            val: Optional[Any]
-            ex: Optional[Exception]
-            cls_name: Optional[str]
-            cls_mthd: Optional[str]
-            err_code: Optional[str]
-            mthd_rslt_type: Optional[MethodResultType]
+        msg: Optional[str]
+        var: Optional[str]
+        val: Optional[Any]
+        ex: Optional[Exception]
+        cls_name: Optional[str]
+        cls_mthd: Optional[str]
+        err_code: Optional[str]
+        mthd_rslt_type: Optional[MethodResultType]
             
     Provides:
 
     Super Class:
-        QueryStackEmptyException
+        QueryValidationException
     """
-    MSG = "Cannot search an empty Rank Stack."
-    ERR_CODE = "RANK_QUERY_STACK_EMPTY_ERROR"
+    MSG = "TokenQueryValidation check failed"
+    ERR_CODE = "TOKEN_QUERY_VALIDATION_FAILURE"
     
     def __init__(
             self,

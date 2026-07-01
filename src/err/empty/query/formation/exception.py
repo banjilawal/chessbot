@@ -12,21 +12,21 @@ from typing import Any, Optional
 
 
 __all__ = [
-    # ======================# FORMATION_QUERY_EMPTY_ERROR #======================#
-    "FormationQueryEmptyException",
+    # ======================# FORMATION_QUERY_STACK_EMPTY_ERROR #======================#
+    "FormationQueryStackEmptyException",
 ]
 
-from err import QueryEmptyException
+from err import QueryStackEmptyException
 
 
-# ======================# FORMATION_QUERY_EMPTY_ERROR #======================#
-class FormationQueryEmptyException(QueryEmptyException):
+# ======================# FORMATION_QUERY_STACK_EMPTY_ERROR #======================#
+class FormationQueryStackEmptyException(QueryStackEmptyException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required FormationQuery is empty.
+        1.  Indicate that a required FormationQuery's target stack is empty.
 
     Attributes:
             msg: Optional[str]
@@ -41,10 +41,10 @@ class FormationQueryEmptyException(QueryEmptyException):
     Provides:
 
     Super Class:
-        QueryEmptyException
+        QueryStackEmptyException
     """
-    MSG = "No empty logic for FormationQuery attribute"
-    ERR_CODE = "FORMATION_QUERY_EMPTY_ERROR"
+    MSG = "Cannot search an empty Formation Stack."
+    ERR_CODE = "FORMATION_QUERY_STACK_EMPTY_ERROR"
     
     def __init__(
             self,

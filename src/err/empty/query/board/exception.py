@@ -12,21 +12,21 @@ from typing import Any, Optional
 
 
 __all__ = [
-    # ======================# BOARD_QUERY_EMPTY_ERROR #======================#
-    "BoardQueryEmptyException",
+    # ======================# BOARD_QUERY_STACK_EMPTY_ERROR #======================#
+    "BoardQueryStackEmptyException",
 ]
 
-from err import QueryEmptyException
+from err import QueryStackEmptyException
 
 
-# ======================# BOARD_QUERY_EMPTY_ERROR #======================#
-class BoardQueryEmptyException(QueryEmptyException):
+# ======================# BOARD_QUERY_STACK_EMPTY_ERROR #======================#
+class BoardQueryStackEmptyException(QueryStackEmptyException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required BoardQuery is empty.
+        1.  Indicate that a required BoardQuery's target stack is empty.
 
     Attributes:
             msg: Optional[str]
@@ -41,10 +41,10 @@ class BoardQueryEmptyException(QueryEmptyException):
     Provides:
 
     Super Class:
-        QueryEmptyException
+        QueryStackEmptyException
     """
-    MSG = "No empty logic for BoardQuery attribute"
-    ERR_CODE = "BOARD_QUERY_EMPTY_ERROR"
+    MSG = "Cannot search an empty Board Stack."
+    ERR_CODE = "BOARD_QUERY_STACK_EMPTY_ERROR"
     
     def __init__(
             self,

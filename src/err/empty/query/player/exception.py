@@ -12,21 +12,21 @@ from typing import Any, Optional
 
 
 __all__ = [
-    # ======================# PLAYER_QUERY_EMPTY_ERROR #======================#
-    "PlayerQueryEmptyException",
+    # ======================# PLAYER_QUERY_STACK_EMPTY_ERROR #======================#
+    "PlayerQueryStackEmptyException",
 ]
 
-from err import QueryEmptyException
+from err import QueryStackEmptyException
 
 
-# ======================# PLAYER_QUERY_EMPTY_ERROR #======================#
-class PlayerQueryEmptyException(QueryEmptyException):
+# ======================# PLAYER_QUERY_STACK_EMPTY_ERROR #======================#
+class PlayerQueryStackEmptyException(QueryStackEmptyException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required PlayerQuery is empty.
+        1.  Indicate that a required PlayerQuery's target stack is empty.
 
     Attributes:
             msg: Optional[str]
@@ -41,10 +41,10 @@ class PlayerQueryEmptyException(QueryEmptyException):
     Provides:
 
     Super Class:
-        QueryEmptyException
+        QueryStackEmptyException
     """
-    MSG = "No empty logic for PlayerQuery attribute"
-    ERR_CODE = "PLAYER_QUERY_EMPTY_ERROR"
+    MSG = "Cannot search an empty Player Stack."
+    ERR_CODE = "PLAYER_QUERY_STACK_EMPTY_ERROR"
     
     def __init__(
             self,

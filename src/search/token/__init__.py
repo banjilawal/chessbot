@@ -12,4 +12,4 @@ version: 1.0.1
 # Packages
 
 # Modules
-from .search import TokenSearcher
+from .searcher import TokenSearcher

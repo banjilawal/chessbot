@@ -10,24 +10,26 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
+from result import MethodResultType
+
 
 
 __all__ = [
-    # ======================# TOKEN_QUERY_EMPTY_ERROR #======================#
-    "TokenQueryEmptyException",
+    # ======================# TOKEN_QUERY_STACK_EMPTY_ERROR #======================#
+    "TokenQueryStackEmptyException",
 ]
 
-from err import QueryEmptyException
+from err import QueryStackEmptyException
 
 
-# ======================# TOKEN_QUERY_EMPTY_ERROR #======================#
-class TokenQueryEmptyException(QueryEmptyException):
+# ======================# TOKEN_QUERY_STACK_EMPTY_ERROR #======================#
+class TokenQueryStackEmptyException(QueryStackEmptyException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required TokenQuery is empty.
+        1.  Indicate that a required TokenQuery's target stack is empty.
 
     Attributes:
             msg: Optional[str]
@@ -42,10 +44,10 @@ class TokenQueryEmptyException(QueryEmptyException):
     Provides:
 
     Super Class:
-        QueryEmptyException
+        QueryStackEmptyException
     """
-    MSG = "No empty logic for TokenQuery attribute"
-    ERR_CODE = "TOKEN_QUERY_EMPTY_ERROR"
+    MSG = "Cannot search an empty Token Stack."
+    ERR_CODE = "TOKEN_QUERY_STACK_EMPTY_ERROR"
     
     def __init__(
             self,

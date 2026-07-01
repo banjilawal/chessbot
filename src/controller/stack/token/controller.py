@@ -14,7 +14,7 @@ from controller.stack.crud.token import TokenStackCrudController
 from detector import TokenCollisionDetector
 from microservice import TokenService
 from operation import TokenDeleter, TokenDeployer, TokenPopper, TokenPusher
-from search.token.search import TokenSearcher
+from search.token.searcher import TokenSearcher
 
 
 class TokenStackController:

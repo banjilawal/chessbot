@@ -12,21 +12,21 @@ from typing import Any, Optional
 
 
 __all__ = [
-    # ======================# ARENA_QUERY_EMPTY_ERROR #======================#
-    "ArenaQueryEmptyException",
+    # ======================# ARENA_QUERY_STACK_EMPTY_ERROR #======================#
+    "ArenaQueryStackEmptyException",
 ]
 
-from err import QueryEmptyException
+from err import QueryStackEmptyException
 
 
-# ======================# ARENA_QUERY_EMPTY_ERROR #======================#
-class ArenaQueryEmptyException(QueryEmptyException):
+# ======================# ARENA_QUERY_STACK_EMPTY_ERROR #======================#
+class ArenaQueryStackEmptyException(QueryStackEmptyException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required ArenaQuery is empty.
+        1.  Indicate that a required ArenaQuery's target stack is empty.
 
     Attributes:
             msg: Optional[str]
@@ -41,10 +41,10 @@ class ArenaQueryEmptyException(QueryEmptyException):
     Provides:
 
     Super Class:
-        QueryEmptyException
+        QueryStackEmptyException
     """
-    MSG = "No empty logic for ArenaQuery attribute"
-    ERR_CODE = "ARENA_QUERY_EMPTY_ERROR"
+    MSG = "Cannot search an empty Arena Stack."
+    ERR_CODE = "ARENA_QUERY_STACK_EMPTY_ERROR"
     
     def __init__(
             self,

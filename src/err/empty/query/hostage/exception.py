@@ -12,21 +12,21 @@ from typing import Any, Optional
 
 
 __all__ = [
-    # ======================# HOSTAGE_QUERY_EMPTY_ERROR #======================#
-    "HostageQueryEmptyException",
+    # ======================# HOSTAGE_QUERY_STACK_EMPTY_ERROR #======================#
+    "HostageQueryStackEmptyException",
 ]
 
-from err import QueryEmptyException
+from err import QueryStackEmptyException
 
 
-# ======================# HOSTAGE_QUERY_EMPTY_ERROR #======================#
-class HostageQueryEmptyException(QueryEmptyException):
+# ======================# HOSTAGE_QUERY_STACK_EMPTY_ERROR #======================#
+class HostageQueryStackEmptyException(QueryStackEmptyException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required HostageQuery is empty.
+        1.  Indicate that a required HostageQuery's target stack is empty.
 
     Attributes:
             msg: Optional[str]
@@ -41,10 +41,10 @@ class HostageQueryEmptyException(QueryEmptyException):
     Provides:
 
     Super Class:
-        QueryEmptyException
+        QueryStackEmptyException
     """
-    MSG = "No empty logic for HostageQuery attribute"
-    ERR_CODE = "HOSTAGE_QUERY_EMPTY_ERROR"
+    MSG = "Cannot search an empty Hostage Stack."
+    ERR_CODE = "HOSTAGE_QUERY_STACK_EMPTY_ERROR"
     
     def __init__(
             self,

@@ -12,21 +12,21 @@ from typing import Any, Optional
 
 
 __all__ = [
-    # ======================# SCHEMA_QUERY_EMPTY_ERROR #======================#
-    "SchemaQueryEmptyException",
+    # ======================# SCHEMA_QUERY_STACK_EMPTY_ERROR #======================#
+    "SchemaQueryStackEmptyException",
 ]
 
-from err import QueryEmptyException
+from err import QueryStackEmptyException
 
 
-# ======================# SCHEMA_QUERY_EMPTY_ERROR #======================#
-class SchemaQueryEmptyException(QueryEmptyException):
+# ======================# SCHEMA_QUERY_STACK_EMPTY_ERROR #======================#
+class SchemaQueryStackEmptyException(QueryStackEmptyException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required SchemaQuery is empty.
+        1.  Indicate that a required SchemaQuery's target stack is empty.
 
     Attributes:
             msg: Optional[str]
@@ -41,10 +41,10 @@ class SchemaQueryEmptyException(QueryEmptyException):
     Provides:
 
     Super Class:
-        QueryEmptyException
+        QueryStackEmptyException
     """
-    MSG = "No empty logic for SchemaQuery attribute"
-    ERR_CODE = "SCHEMA_QUERY_EMPTY_ERROR"
+    MSG = "Cannot search an empty Schema Stack."
+    ERR_CODE = "SCHEMA_QUERY_STACK_EMPTY_ERROR"
     
     def __init__(
             self,

@@ -11,20 +11,21 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from err import EmptyException
+from result import MethodResultType
 
 __all__ = [
-    # ======================# QUERY_EMPTY_ERROR #======================#
-    "QueryEmptyException",
+    # ======================# QUERY_STACK_EMPTY_ERROR #======================#
+    "QueryStackEmptyException",
 ]
 
-# ======================# QUERY_EMPTY_ERROR #======================#
-class QueryEmptyException(EmptyException):
+# ======================# QUERY_STACK_EMPTY_ERROR #======================#
+class QueryStackEmptyException(EmptyException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required QueryEmpty failed.
+        1.  Indicate that a required Query's target Stack is empty.
 
     Attributes:
             msg: Optional[str]
@@ -41,8 +42,8 @@ class QueryEmptyException(EmptyException):
     Super Class:
         EmptyException
     """
-    MSG = "No empty logic for query's attribute"
-    ERR_CODE = "QUERY_EMPTY_ERROR"
+    MSG = "Cannot search an empty stack."
+    ERR_CODE = "QUERY_STACK_EMPTY_ERROR"
     
     def __init__(
             self,

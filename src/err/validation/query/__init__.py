@@ -10,6 +10,7 @@ version: 1.0.1
 # ============ ERR.VALIDATION.QUERY PACKAGE ===========#
 
 # Packages
+from .token import *
 
 # Modules
 from .exception import QueryValidationException

@@ -12,21 +12,21 @@ from typing import Any, Optional
 
 
 __all__ = [
-    # ======================# GAME_QUERY_EMPTY_ERROR #======================#
-    "GameQueryEmptyException",
+    # ======================# GAME_QUERY_STACK_EMPTY_ERROR #======================#
+    "GameQueryStackEmptyException",
 ]
 
-from err import QueryEmptyException
+from err import QueryStackEmptyException
 
 
-# ======================# GAME_QUERY_EMPTY_ERROR #======================#
-class GameQueryEmptyException(QueryEmptyException):
+# ======================# GAME_QUERY_STACK_EMPTY_ERROR #======================#
+class GameQueryStackEmptyException(QueryStackEmptyException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required GameQuery is empty.
+        1.  Indicate that a required GameQuery's target stack is empty.
 
     Attributes:
             msg: Optional[str]
@@ -41,10 +41,10 @@ class GameQueryEmptyException(QueryEmptyException):
     Provides:
 
     Super Class:
-        QueryEmptyException
+        QueryStackEmptyException
     """
-    MSG = "No empty logic for GameQuery attribute"
-    ERR_CODE = "GAME_QUERY_EMPTY_ERROR"
+    MSG = "Cannot search an empty Game Stack."
+    ERR_CODE = "GAME_QUERY_STACK_EMPTY_ERROR"
     
     def __init__(
             self,

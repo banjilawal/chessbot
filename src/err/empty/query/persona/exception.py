@@ -12,21 +12,21 @@ from typing import Any, Optional
 
 
 __all__ = [
-    # ======================# PERSONA_QUERY_EMPTY_ERROR #======================#
-    "PersonaQueryEmptyException",
+    # ======================# PERSONA_QUERY_STACK_EMPTY_ERROR #======================#
+    "PersonaQueryStackEmptyException",
 ]
 
-from err import QueryEmptyException
+from err import QueryStackEmptyException
 
 
-# ======================# PERSONA_QUERY_EMPTY_ERROR #======================#
-class PersonaQueryEmptyException(QueryEmptyException):
+# ======================# PERSONA_QUERY_STACK_EMPTY_ERROR #======================#
+class PersonaQueryStackEmptyException(QueryStackEmptyException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required PersonaQuery is empty.
+        1.  Indicate that a required PersonaQuery's target stack is empty.
 
     Attributes:
             msg: Optional[str]
@@ -41,10 +41,10 @@ class PersonaQueryEmptyException(QueryEmptyException):
     Provides:
 
     Super Class:
-        QueryEmptyException
+        QueryStackEmptyException
     """
-    MSG = "No empty logic for PersonaQuery attribute"
-    ERR_CODE = "PERSONA_QUERY_EMPTY_ERROR"
+    MSG = "Cannot search an empty Persona Stack."
+    ERR_CODE = "PERSONA_QUERY_STACK_EMPTY_ERROR"
     
     def __init__(
             self,

@@ -26,4 +26,4 @@ from .square import *
 from .token import *
 
 # Modules
-from .exception import QueryEmptyException
+from .exception import QueryStackEmptyException

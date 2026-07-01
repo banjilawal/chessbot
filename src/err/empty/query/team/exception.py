@@ -12,21 +12,21 @@ from typing import Any, Optional
 
 
 __all__ = [
-    # ======================# TEAM_QUERY_EMPTY_ERROR #======================#
-    "TeamQueryEmptyException",
+    # ======================# TEAM_QUERY_STACK_EMPTY_ERROR #======================#
+    "TeamQueryStackEmptyException",
 ]
 
-from err import QueryEmptyException
+from err import QueryStackEmptyException
 
 
-# ======================# TEAM_QUERY_EMPTY_ERROR #======================#
-class TeamQueryEmptyException(QueryEmptyException):
+# ======================# TEAM_QUERY_STACK_EMPTY_ERROR #======================#
+class TeamQueryStackEmptyException(QueryStackEmptyException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required TeamQuery is empty.
+        1.  Indicate that a required TeamQuery's target stack is empty.
 
     Attributes:
             msg: Optional[str]
@@ -41,10 +41,10 @@ class TeamQueryEmptyException(QueryEmptyException):
     Provides:
 
     Super Class:
-        QueryEmptyException
+        QueryStackEmptyException
     """
-    MSG = "No empty logic for TeamQuery attribute"
-    ERR_CODE = "TEAM_QUERY_EMPTY_ERROR"
+    MSG = "Cannot search an empty Team Stack."
+    ERR_CODE = "TEAM_QUERY_STACK_EMPTY_ERROR"
     
     def __init__(
             self,

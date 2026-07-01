@@ -15,19 +15,19 @@ from model import Token, TokenQuery
 from result import SearchResult
 from route import TokenSearchRouter
 from util import LoggingLevelRouter
-from validation.query.validator import QueryValidator
+from validation import TokenQueryValidator
 
 
 class TokenSearcher:
-    _query_validator: QueryValidator
+    _query_validator: TokenQueryValidator
     _search_router: TokenSearchRouter
     
     def __init__(
             self,
-            query_validator: QueryValidator | None = None,
+            query_validator: TokenQueryValidator | None = None,
             search_router: TokenSearchRouter | None = None,
     ):
-        self._query_validator = query_validator or QueryValidator()
+        self._query_validator = query_validator or TokenQueryValidator()
         self._search_router = search_router or TokenSearchRouter()
         
     @LoggingLevelRouter.monitor

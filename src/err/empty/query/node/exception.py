@@ -12,21 +12,21 @@ from typing import Any, Optional
 
 
 __all__ = [
-    # ======================# NODE_QUERY_EMPTY_ERROR #======================#
-    "NodeQueryEmptyException",
+    # ======================# NODE_QUERY_STACK_EMPTY_ERROR #======================#
+    "NodeQueryStackEmptyException",
 ]
 
-from err import QueryEmptyException
+from err import QueryStackEmptyException
 
 
-# ======================# NODE_QUERY_EMPTY_ERROR #======================#
-class NodeQueryEmptyException(QueryEmptyException):
+# ======================# NODE_QUERY_STACK_EMPTY_ERROR #======================#
+class NodeQueryStackEmptyException(QueryStackEmptyException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required NodeQuery is empty.
+        1.  Indicate that a required NodeQuery's target stack is empty.
 
     Attributes:
             msg: Optional[str]
@@ -41,10 +41,10 @@ class NodeQueryEmptyException(QueryEmptyException):
     Provides:
 
     Super Class:
-        QueryEmptyException
+        QueryStackEmptyException
     """
-    MSG = "No empty logic for NodeQuery attribute"
-    ERR_CODE = "NODE_QUERY_EMPTY_ERROR"
+    MSG = "Cannot search an empty Node Stack."
+    ERR_CODE = "NODE_QUERY_STACK_EMPTY_ERROR"
     
     def __init__(
             self,

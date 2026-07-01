@@ -12,21 +12,21 @@ from typing import Any, Optional
 
 
 __all__ = [
-    # ======================# SQUARE_QUERY_EMPTY_ERROR #======================#
-    "SquareQueryEmptyException",
+    # ======================# SQUARE_QUERY_STACK_EMPTY_ERROR #======================#
+    "SquareQueryStackEmptyException",
 ]
 
-from err import QueryEmptyException
+from err import QueryStackEmptyException
 
 
-# ======================# SQUARE_QUERY_EMPTY_ERROR #======================#
-class SquareQueryEmptyException(QueryEmptyException):
+# ======================# SQUARE_QUERY_STACK_EMPTY_ERROR #======================#
+class SquareQueryStackEmptyException(QueryStackEmptyException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required SquareQuery is empty.
+        1.  Indicate that a required SquareQuery's target stack is empty.
 
     Attributes:
             msg: Optional[str]
@@ -41,10 +41,10 @@ class SquareQueryEmptyException(QueryEmptyException):
     Provides:
 
     Super Class:
-        QueryEmptyException
+        QueryStackEmptyException
     """
-    MSG = "No empty logic for SquareQuery attribute"
-    ERR_CODE = "SQUARE_QUERY_EMPTY_ERROR"
+    MSG = "Cannot search an empty Square Stack."
+    ERR_CODE = "SQUARE_QUERY_STACK_EMPTY_ERROR"
     
     def __init__(
             self,

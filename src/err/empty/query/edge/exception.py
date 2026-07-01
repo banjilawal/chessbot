@@ -12,21 +12,21 @@ from typing import Any, Optional
 
 
 __all__ = [
-    # ======================# EDGE_QUERY_EMPTY_ERROR #======================#
-    "EdgeQueryEmptyException",
+    # ======================# EDGE_QUERY_STACK_EMPTY_ERROR #======================#
+    "EdgeQueryStackEmptyException",
 ]
 
-from err import QueryEmptyException
+from err import QueryStackEmptyException
 
 
-# ======================# EDGE_QUERY_EMPTY_ERROR #======================#
-class EdgeQueryEmptyException(QueryEmptyException):
+# ======================# EDGE_QUERY_STACK_EMPTY_ERROR #======================#
+class EdgeQueryStackEmptyException(QueryStackEmptyException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required EdgeQuery is empty.
+        1.  Indicate that a required EdgeQuery's target stack is empty.
 
     Attributes:
             msg: Optional[str]
@@ -41,10 +41,10 @@ class EdgeQueryEmptyException(QueryEmptyException):
     Provides:
 
     Super Class:
-        QueryEmptyException
+        QueryStackEmptyException
     """
-    MSG = "No empty logic for EdgeQuery attribute"
-    ERR_CODE = "EDGE_QUERY_EMPTY_ERROR"
+    MSG = "Cannot search an empty Edge Stack."
+    ERR_CODE = "EDGE_QUERY_STACK_EMPTY_ERROR"
     
     def __init__(
             self,
