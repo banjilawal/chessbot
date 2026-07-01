@@ -10,8 +10,9 @@ version: 1.0.1
 # =========== PERMITTER PACKAGE ===========#
 
 # Packages
+from .delete import *
 from .pop import *
-from push import *
+from .push import *
 
 # Modules
 from .permitter import OperationPermitter

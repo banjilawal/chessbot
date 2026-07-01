@@ -13,6 +13,7 @@ from typing import Iterator, List, Optional
 
 from analyzer import CollisionAnalyzer
 from controller.stack.token.controller import TokenStackController
+from err import TokenStackServiceException
 from microservice import IdentityService, TokenService
 from model import Token, TokenContext
 from result import DeletionResult, InsertionResult, SearchResult
@@ -48,7 +49,7 @@ class TokenStackService(StackService[Token]):
         stack_state: TokenStackState
         current_item: Optional[Token]
         integrity_service: TokenService
-        ops_controller: TokenStackOpsController
+        controller: TokenStackOpsController
 
     Provides:
         -   is_empty() -> bool
@@ -70,26 +71,26 @@ class TokenStackService(StackService[Token]):
     _capacity: int
     _stack: List[Token]
     _state: TokenStackState
-    _ops_controller: TokenStackController
+    controller: TokenStackController
     
     def __init__(
             self,
             name: str = SERVICE_NAME,
             capacity: int = DEFAULT_CAPACITY,
             id: int = IdFactory.next_id(class_name="TokenStackService"),
-            ops_controller: TokenStackController = TokenStackController(),
+            controller: TokenStackController = TokenStackController(),
     ):
         """
         Args:
             id: int
             name: str
             capacity: int
-            ops_controller: TokenStackOpsController
+            controller: TokenStackOpsController
         """
         super().__init__(id=id, name=name,)
         self._stack = []
         self._capacity = capacity
-        self._ops_controller = ops_controller
+        self.controller = controller
         self._state = TokenStackState.NOT_READY_FORD_DEPLOYMENT
     
     @property
@@ -130,11 +131,11 @@ class TokenStackService(StackService[Token]):
     
     @property
     def request(self) -> TokenStackController:
-        return self._ops_controller
+        return self.controller
     
     @property
     def microservice(self) -> TokenService:
-        return self._ops_controller.integrity_service
+        return self.controller.microservice
     
     @property
     def is_getting_ready_for_deployment(self) -> bool:
@@ -163,7 +164,7 @@ class TokenStackService(StackService[Token]):
     
     @property
     def collision_analyst(self) -> CollisionAnalyzer[Token]:
-        return self._ops_controller.collision_analyst
+        return self.controller.collision_analyst
     
     @property
     def stack_state(self) -> TokenStackState:
@@ -188,8 +189,8 @@ class TokenStackService(StackService[Token]):
         """
         method = f"{self.__class__.__name__}.pop"
         
-        # --- Handoff request fulfilment to the ops_controller. ---#
-        request_result = self._ops_controller.crud.pop.execute()
+        # --- Handoff request fulfilment to the controller. ---#
+        request_result = self.controller.crud.pop.execute()
         
         # Handle the case that, the request was not fulfilled.
         if request_result.is_failure:
@@ -223,12 +224,12 @@ class TokenStackService(StackService[Token]):
         """
         method = f"{self.__class__.__name__}.push"
         
-        # --- Handoff request fulfilment to the ops_controller. ---#
-        request_result = self._ops_controller.crud.push.execute(
+        # --- Handoff request fulfilment to the controller. ---#
+        request_result = self.controller.crud.push.execute(
             token=item,
             stream=self,
-            rank_quota_analyzer=self._ops_controller.rank_quota_analyzer,
-            token_collision_detector=self._ops_controller.collision_detector
+            rank_quota_analyzer=self.controller.rank_quota_analyzer,
+            token_collision_detector=self.controller.collision_detector
         )
         # Handle the case that, the request was not fulfilled.
         if request_result.is_failure:
@@ -270,8 +271,8 @@ class TokenStackService(StackService[Token]):
         if identity_service is None:
             identity_service = IdentityService()
         
-        # --- Handoff request fulfilment to the ops_controller. ---#
-        request_result = self._ops_controller.crud.pop.delete_by_id(
+        # --- Handoff request fulfilment to the controller. ---#
+        request_result = self.controller.crud.pop.delete_by_id(
             id=id,
             identity_service=identity_service
         )
@@ -307,8 +308,8 @@ class TokenStackService(StackService[Token]):
         """
         method = f"{self.__class__.__name__}.context"
         
-        # --- Handoff request fulfilment to the ops_controller. ---#
-        request_result = self._ops_controller.crud.query.search(context=context)
+        # --- Handoff request fulfilment to the controller. ---#
+        request_result = self.controller.crud.query.search(context=context)
         
         # Handle the case that, the request was not fulfilled.
         if request_result.is_failure:

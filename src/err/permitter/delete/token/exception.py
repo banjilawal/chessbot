@@ -1,7 +1,7 @@
-# src/err/permitter/pop/token/exception.py
+# src/err/permitter/delete/token/exception.py
 
 """
-Module: err.permitter.pop.token.exception
+Module: err.permitter.delete.token.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,22 +10,22 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import PopPermitterException
+from err import DeletePermitterException
 from result import MethodResultType
 
 __all__ = [
-    # ======================# TOKEN_POP_PERMITTER_FAILURE #======================#
-    "TokenPopPermitterException",
+    # ======================# TOKEN_DELETE_PERMITTER_FAILURE #======================#
+    "TokenDeletePermitterException",
 ]
 
-# ======================# TOKEN_POP_PERMITTER_FAILURE #======================#
-class TokenPopPermitterException(PopPermitterException):
+# ======================# TOKEN_DELETE_PERMITTER_FAILURE #======================#
+class TokenDeletePermitterException(DeletePermitterException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a TokenPopPermitter did not complete its analysis.
+        1.  Indicate that a TokenDeletePermitter did not complete its analysis.
 
     Attributes:
         msg: Optional[str]
@@ -39,10 +39,10 @@ class TokenPopPermitterException(PopPermitterException):
     Provides:
 
     Super Class:
-        PopPermitterException
+        DeletePermitterException
     """
-    MSG = "TokenPopPermitter did not complete its analysis."
-    ERR_CODE = "TOKEN_POP_PERMITTER_FAILURE"
+    MSG = "TokenDeletePermitter did not complete its analysis."
+    ERR_CODE = "TOKEN_DELETE_PERMITTER_FAILURE"
     
     def __init__(
             self,

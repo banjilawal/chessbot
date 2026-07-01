@@ -10,6 +10,7 @@ version: 1.0.0
 # =========== ERR.PERMITTER PACKAGE ===========#
 
 # Packages
+from .delete import *
 from .pop import *
 from .push import *
 

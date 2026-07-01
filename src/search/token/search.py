@@ -18,7 +18,7 @@ from util import LoggingLevelRouter
 from validation.query.validator import QueryValidator
 
 
-class TokenSearch:
+class TokenSearcher:
     _query_validator: QueryValidator
     _search_router: TokenSearchRouter
     

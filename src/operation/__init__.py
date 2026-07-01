@@ -11,6 +11,7 @@ version: 1.0.1
 
 # Packages
 from .assembly import *
+from .delete import *
 from .pop import *
 from .priming import *
 from .push import *

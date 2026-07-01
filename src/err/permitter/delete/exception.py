@@ -1,7 +1,7 @@
-# src/err/permitter/pop/token/exception.py
+# src/err/permitter/delete/exception.py
 
 """
-Module: err.permitter.pop.token.exception
+Module: err.permitter.delete.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,22 +10,22 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import PopPermitterException
+from err import PermitterException
 from result import MethodResultType
 
 __all__ = [
-    # ======================# TOKEN_POP_PERMITTER_FAILURE #======================#
-    "TokenPopPermitterException",
+    # ======================# DELETE_PERMITTER_FAILURE #======================#
+    "DeletePermitterException",
 ]
 
-# ======================# TOKEN_POP_PERMITTER_FAILURE #======================#
-class TokenPopPermitterException(PopPermitterException):
+# ======================# DELETE_PERMITTER_FAILURE #======================#
+class DeletePermitterException(PermitterException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a TokenPopPermitter did not complete its analysis.
+        1.  Indicate that a DeletePermitter did not complete its permission analysis.
 
     Attributes:
         msg: Optional[str]
@@ -35,14 +35,16 @@ class TokenPopPermitterException(PopPermitterException):
         cls_name: Optional[str]
         cls_mthd: Optional[str]
         err_code: Optional[str]
+        mthd_rslt_type: Optional[MethodResultType]
             
     Provides:
 
     Super Class:
-        PopPermitterException
+        PermitterException
     """
-    MSG = "TokenPopPermitter did not complete its analysis."
-    ERR_CODE = "TOKEN_POP_PERMITTER_FAILURE"
+    MSG = "DeletePermitter did not complete its analysis."
+    ERR_CODE = "DELETE_PERMITTER_FAILURE"
+    MTHD_RSLT_TYPE = MethodResultType.ANALYSIS_RESULT
     
     def __init__(
             self,
@@ -56,18 +58,19 @@ class TokenPopPermitterException(PopPermitterException):
             mthd_rslt_type: Optional[MethodResultType] | None = None,
     ):
         """
-        args:
-            Msg: Optional[str]
-            Var: Optional[str]
-            val: Optional[any]
+        Args:
+            msg: Optional[str]
+            var: Optional[str]
+            val: Optional[Any]
             ex: Optional[Exception]
-            cls_name: Optional[Str]
+            cls_name: Optional[str]
             cls_mthd: Optional[str]
             err_code: Optional[str]
             mthd_rslt_type: Optional[MethodResultType]
         """
         msg = msg or self.MSG
         err_code = err_code or self.ERR_CODE
+        mthd_rslt_type = mthd_rslt_type or self.MTHD_RSLT_TYPE
         super().__init__(
             ex=ex,
             msg=msg,
@@ -76,5 +79,5 @@ class TokenPopPermitterException(PopPermitterException):
             err_code=err_code,
             cls_name=cls_name,
             cls_mthd=cls_mthd,
-            mthd_rslt_type=mthd_rslt_type,
+            mthd_rslt_type=mthd_rslt_type
         )

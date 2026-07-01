@@ -10,7 +10,6 @@ version: 1.0.1
 # =========== OPERATION.POP.TOKEN PACKAGE ===========#
 
 # Packages
-from .exception import *
 
 # Modules
 from .operation import TokenPopper
