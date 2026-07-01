@@ -15,7 +15,7 @@ from analyzer import CollisionAnalyzer
 from controller.stack.token.controller import TokenStackController
 from err import TokenStackServiceException
 from microservice import IdentityService, TokenService
-from model import Token, TokenContext
+from model import Token, TokenContext, TokenQuery
 from result import DeletionResult, InsertionResult, SearchResult
 from stack import StackService, TokenStackState
 from system import IdFactory, LoggingLevelRouter
@@ -299,8 +299,9 @@ class TokenStackService(StackService[Token]):
         method = f"{self.__class__.__name__}.context"
         
         # --- Handoff request fulfilment to the controller. ---#
-        request_result = self._controller.sea.execute(context=context)
-        
+        request_result = self._controller.searcher.execute(
+            query=TokenQuery(context=context, stack=self)
+        )
         # Handle the case that, the request was not fulfilled.
         if request_result.is_failure:
             # Send the exception chain on failure.
