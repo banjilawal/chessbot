@@ -23,13 +23,12 @@ from util import LoggingLevelRouter
 class TokenPusher(Pusher[Token]):
     """
     Role:
-        - Transaction Worker
+        - Transaction pipeline
         - Consistency, Integrity Maintenance
         - Process Runner
 
     Responsibilities:
-        1.  Token insertion exception owner.
-        2.  Guarantees all tokens are safe and unique.
+        1.  Token insertion process owner.
 
     Attributes:
 
@@ -55,11 +54,10 @@ class TokenPusher(Pusher[Token]):
     ) -> InsertionResult:
         """
         Action:
-            1.  Return a failure result containing an exception chain if
-                    *   The token is not safe.
-                    *   One of its properties already in use.
-                    *   The TokenStackService cannot support another token.
-            2.  If none of the failure conditions are met insert the token and send the success result.
+            1.  Return an exception chain in the InsertionResult if either
+                    -   The push_permitter does not complete its analysis.
+                    -   Push permission is denied.
+            2.  Otherwise, perform the insertion then, send the success result.
         Args:
             item: Token
             stack: TokenStackService
@@ -71,11 +69,11 @@ class TokenPusher(Pusher[Token]):
         """
         method =  f"{cls.__name__}.push"
     
-    
         if push_permitter is None:
             push_permitter = TokenPushPermitter()
             
         permission_analysis_result = push_permitter.execute(item=item, stack=stack)
+        # Handle the case that, the push_permitter does not complete analysis.
         if permission_analysis_result.is_failure:
             # Return the exception chain on failure
             return InsertionResult.failure(
@@ -89,6 +87,7 @@ class TokenPusher(Pusher[Token]):
                 )
             )
         permission = cast(PushApproval, permission_analysis_result.payload)
+        # Handle the case that, push permission is denied.
         if permission.is_denied:
             # Return the exception chain on failure
             return InsertionResult.failure(
