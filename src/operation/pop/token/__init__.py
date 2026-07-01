@@ -13,4 +13,4 @@ version: 1.0.1
 from .exception import *
 
 # Modules
-from .operation import TokenStackPop
+from .operation import TokenPopper

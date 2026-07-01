@@ -8,7 +8,6 @@ version: 1.0.1
 """
 
 from __future__ import annotations
-
 from typing import cast
 
 from err import TokenPopperException

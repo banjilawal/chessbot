@@ -13,7 +13,7 @@ from analyzer import RankQuotaAnalyzer
 from controller.stack.crud.token import TokenStackCrudController
 from detector import TokenCollisionDetector
 from microservice import TokenService
-from operation import TokenDeployer, TokenPusher
+from operation import TokenDeployer, TokenPopper, TokenPusher
 
 
 
@@ -37,6 +37,7 @@ class TokenStackController:
     _token_deployer: TokenDeployer
     _microservice: TokenService
     _pusher: TokenPusher
+    _popper: TokenPopper
     _rank_quota_analyzer: RankQuotaAnalyzer
     _collision_detector: TokenCollisionDetector
     
@@ -45,6 +46,7 @@ class TokenStackController:
             crud: TokenStackCrudController | None = TokenStackCrudController(),
             microservice: TokenService = TokenService(),
             token_deployer: TokenDeployer | None = TokenDeployer(),
+            popper: TokenPopper | None = TokenPopper(),
             pusher: TokenPusher | None = TokenPusher(),
             rank_quota_analyzer: RankQuotaAnalyzer | None = RankQuotaAnalyzer(),
             collision_detector: TokenCollisionDetector | None = None,
@@ -53,6 +55,7 @@ class TokenStackController:
         self._token_deployer = token_deployer
         self._microservice = microservice
         self._pusher = pusher
+        self._popper = popper
         self._collision_detector = collision_detector
         self._rank_quota_analyzer = rank_quota_analyzer
 
