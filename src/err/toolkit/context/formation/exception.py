@@ -25,7 +25,7 @@ class FormationContextException(ContextException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a FormationContext experienced an error.
+        1.  Indicate that a FormationContext encountered an error.
 
     Attributes:
             msg: Optional[str]

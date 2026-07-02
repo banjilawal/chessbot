@@ -25,7 +25,7 @@ class HashtableException(ModelException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a Hashtable experienced an error.
+        1.  Indicate that a Hashtable encountered an error.
 
     Attributes:
         msg: Optional[str]

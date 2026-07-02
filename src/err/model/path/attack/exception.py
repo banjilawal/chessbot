@@ -26,7 +26,7 @@ class AttackPathException(PathException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a AttackPath experienced an error.
+        1.  Indicate that a AttackPath encountered an error.
 
     Attributes:
         msg: Optional[str]

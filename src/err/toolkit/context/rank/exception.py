@@ -25,7 +25,7 @@ class RankContextException(ContextException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a RankContext experienced an error.
+        1.  Indicate that a RankContext encountered an error.
 
     Attributes:
             msg: Optional[str]

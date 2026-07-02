@@ -43,7 +43,7 @@ class PlayerTeamRelationAnalyzerException(RelationAnalyzerException):
     Super Class:
         RelationException
     """
-    MSG = "PlayerTeamRelationAnalyst experienced an error."
+    MSG = "PlayerTeamRelationAnalyst encountered an error."
     ERR_CODE = "PLAYER_TEAM_RELATION_ANALYZER_FAILURE"
     
     def __init__(

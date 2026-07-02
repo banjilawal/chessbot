@@ -27,7 +27,7 @@ class SquareStackServiceException(StackServiceException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a SquareStackService experienced an error.
+        1.  Indicate that a SquareStackService encountered an error.
 
     Attributes:
         msg: Optional[str]

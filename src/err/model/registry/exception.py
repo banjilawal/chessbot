@@ -25,7 +25,7 @@ class RegistryException(ModelException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a Registry experienced an error.
+        1.  Indicate that a Registry encountered an error.
 
     Attributes:
         msg: Optional[str]

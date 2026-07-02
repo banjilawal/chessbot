@@ -25,7 +25,7 @@ class GameException(ToolkitException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a Game experienced an error.
+        1.  Indicate that a Game encountered an error.
 
     Attributes:
             msg: Optional[str]

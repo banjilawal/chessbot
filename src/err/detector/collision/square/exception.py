@@ -44,7 +44,7 @@ class SquareCollisionDetectorException(DetectorException):
     Super Class:
         CollisionException
     """
-    MSG = "SquareCollisionDeter experienced an error."
+    MSG = "SquareCollisionDeter encountered an error."
     ERR_CODE = "SQUARE_COLLISION_DETECTOR_FAILURE"
     
     def __init__(

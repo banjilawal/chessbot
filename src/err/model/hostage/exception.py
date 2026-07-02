@@ -25,7 +25,7 @@ class HostageException(ModelException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a Hostage experienced an error.
+        1.  Indicate that a Hostage encountered an error.
 
     Attributes:
         msg: Optional[str]

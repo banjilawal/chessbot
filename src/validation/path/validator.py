@@ -44,6 +44,7 @@ class TokenPathValidator:
     @LoggingLevelRouter.monitor
     def validator(
             cls,
+            candidate
             token: Token,
             origin: Square,
             destination: Square,

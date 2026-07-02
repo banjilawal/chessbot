@@ -25,7 +25,7 @@ class PersonaContextException(ContextException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a PersonaContext experienced an error.
+        1.  Indicate that a PersonaContext encountered an error.
 
     Attributes:
             msg: Optional[str]

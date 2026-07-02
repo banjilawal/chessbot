@@ -43,7 +43,7 @@ class TeamTokenRelationAnalyzerException(RelationAnalyzerException):
     Super Class:
         RelationException
     """
-    MSG = "TeamTokenRelationAnalyst experienced an error."
+    MSG = "TeamTokenRelationAnalyst encountered an error."
     ERR_CODE = "TEAM_TOKEN_RELATION_ANALYZER_FAILURE"
     
     def __init__(

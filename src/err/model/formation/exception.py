@@ -25,7 +25,7 @@ class FormationException(ModelException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a Formation experienced an error.
+        1.  Indicate that a Formation encountered an error.
 
     Attributes:
             msg: Optional[str]

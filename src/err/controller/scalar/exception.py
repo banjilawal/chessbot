@@ -25,7 +25,7 @@ class ScalarException(ControllerException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a Scalar experienced an error.
+        1.  Indicate that a Scalar encountered an error.
 
     Attributes:
         msg: Optional[str]

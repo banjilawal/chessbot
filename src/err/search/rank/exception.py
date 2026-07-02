@@ -1,7 +1,7 @@
 # src/err/search/rank/exception.py
 
 """
-Module: err.search.rank.searchException
+Module: err.search.rank.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,39 +10,42 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import SearchException
+from err import SearcherException
+from result import MethodResultType
 
 
 __all__ = [
-    # ======================# RANK_SEARCH_ERROR #======================#
-    "RankSearchException",
+    # ======================# RANK_SEARCHER_FAILURE #======================#
+    "RankSearcherException",
 ]
 
-# ======================# RANK_SEARCH_ERROR #======================#
-class RankSearchException(SearchException):
+# ======================# RANK_SEARCHER_FAILURE #======================#
+class RankSearcherException(SearcherException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a Rank search.
+        1.  Indicate that an error prevented a RankSearcher from
+            completing its task.
 
     Attributes:
-        msg: Optional[str]
-        var: Optional[str]
-        val: Optional[Any]
-        ex: Optional[Exception]
-        cls_name: Optional[str]
-        cls_mthd: Optional[str]
-        err_code: Optional[str]
+            msg: Optional[str]
+            var: Optional[str]
+            val: Optional[Any]
+            ex: Optional[Exception]
+            cls_name: Optional[str]
+            cls_mthd: Optional[str]
+            err_code: Optional[str]
+            mthd_rslt_type: Optional[MethodResultType]
             
     Provides:
 
     Super Class:
-        SearchException
+        SearcherException
     """
-    MSG = "Rank error state."
-    ERR_CODE = "RANK_SEARCH_ERROR"
+    MSG = "RankSearcher encountered an error."
+    ERR_CODE = "RANK_SEARCHER_FAILURE"
     
     def __init__(
             self,

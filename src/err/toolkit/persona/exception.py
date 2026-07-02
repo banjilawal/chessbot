@@ -25,7 +25,7 @@ class PersonaException(ToolkitException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that n Persona experienced an error.
+        1.  Indicate that n Persona encountered an error.
 
     Attributes:
             msg: Optional[str]

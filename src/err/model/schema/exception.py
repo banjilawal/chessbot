@@ -25,7 +25,7 @@ class SchemaException(ModelException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a Schema experienced an error.
+        1.  Indicate that a Schema encountered an error.
 
     Attributes:
         msg: Optional[str]

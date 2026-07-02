@@ -1,7 +1,7 @@
 # src/err/search/team/exception.py
 
 """
-Module: err.search.team.searchException
+Module: err.search.team.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,22 +10,24 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import SearchException
+from err import SearcherException
+from result import MethodResultType
 
 
 __all__ = [
-    # ======================# TEAM_SEARCH_ERROR #======================#
-    "TeamSearchException",
+    # ======================# TEAM_SEARCHER_FAILURE #======================#
+    "TeamSearcherException",
 ]
 
-# ======================# TEAM_SEARCH_ERROR #======================#
-class TeamSearchException(SearchException):
+# ======================# TEAM_SEARCHER_FAILURE #======================#
+class TeamSearcherException(SearcherException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a Team search.
+        1.  Indicate that an error prevented a TeamSearcher from
+            completing its task.
 
     Attributes:
             msg: Optional[str]
@@ -40,10 +42,10 @@ class TeamSearchException(SearchException):
     Provides:
 
     Super Class:
-        SearchException
+        SearcherException
     """
-    MSG = "Team error state."
-    ERR_CODE = "TEAM_SEARCH_ERROR"
+    MSG = "TeamSearcher encountered an error."
+    ERR_CODE = "TEAM_SEARCHER_FAILURE"
     
     def __init__(
             self,

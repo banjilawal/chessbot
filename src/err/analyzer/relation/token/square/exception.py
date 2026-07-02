@@ -43,7 +43,7 @@ class SquareTokenRelationAnalyzerException(RelationAnalyzerException):
     Super Class:
         RelationException
     """
-    MSG = "SquareTokenRelationAnalyst experienced an error."
+    MSG = "SquareTokenRelationAnalyst encountered an error."
     ERR_CODE = "SQUARE_TOKEN_RELATION_ANALYZER_FAILURE"
     
     def __init__(

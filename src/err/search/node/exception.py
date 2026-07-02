@@ -1,7 +1,7 @@
 # src/err/search/node/exception.py
 
 """
-Module: err.search.node.searchException
+Module: err.search.node.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,39 +10,42 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import SearchException
+from err import SearcherException
+from result import MethodResultType
 
 
 __all__ = [
-    # ======================# NODE_SEARCH_ERROR #======================#
-    "NodeSearchException",
+    # ======================# NODE_SEARCHER_FAILURE #======================#
+    "NodeSearcherException",
 ]
 
-# ======================# NODE_SEARCH_ERROR #======================#
-class NodeSearchException(SearchException):
+# ======================# NODE_SEARCHER_FAILURE #======================#
+class NodeSearcherException(SearcherException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a Node search.
+        1.  Indicate that an error prevented a NodeSearcher from
+            completing its task.
 
     Attributes:
-        msg: Optional[str]
-        var: Optional[str]
-        val: Optional[Any]
-        ex: Optional[Exception]
-        cls_name: Optional[str]
-        cls_mthd: Optional[str]
-        err_code: Optional[str]
+            msg: Optional[str]
+            var: Optional[str]
+            val: Optional[Any]
+            ex: Optional[Exception]
+            cls_name: Optional[str]
+            cls_mthd: Optional[str]
+            err_code: Optional[str]
+            mthd_rslt_type: Optional[MethodResultType]
             
     Provides:
 
     Super Class:
-        SearchException
+        SearcherException
     """
-    MSG = "Node error state."
-    ERR_CODE = "NODE_SEARCH_ERROR"
+    MSG = "NodeSearcher encountered an error."
+    ERR_CODE = "NODE_SEARCHER_FAILURE"
     
     def __init__(
             self,

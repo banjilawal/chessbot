@@ -43,7 +43,7 @@ class ArenaBoardRelationAnalyzerException(RelationAnalyzerException):
     Super Class:
         RelationException
     """
-    MSG = "ArenaBoardRelationAnalyst experienced an error."
+    MSG = "ArenaBoardRelationAnalyst encountered an error."
     ERR_CODE = "ARENA_BOARD_RELATION_ANALYZER_FAILURE"
     
     def __init__(

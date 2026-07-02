@@ -27,7 +27,7 @@ class CoordStackServiceException(StackServiceException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a CoordStackService experienced an error.
+        1.  Indicate that a CoordStackService encountered an error.
 
     Attributes:
         msg: Optional[str]

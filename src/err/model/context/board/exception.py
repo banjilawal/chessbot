@@ -25,7 +25,7 @@ class BoardContextException(ContextException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a BoardContext experienced an error.
+        1.  Indicate that a BoardContext encountered an error.
 
     Attributes:
             msg: Optional[str]

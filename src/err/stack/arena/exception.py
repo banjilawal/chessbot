@@ -27,7 +27,7 @@ class ArenaStackServiceException(StackServiceException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a ArenaStackService experienced an error.
+        1.  Indicate that a ArenaStackService encountered an error.
 
     Attributes:
         msg: Optional[str]

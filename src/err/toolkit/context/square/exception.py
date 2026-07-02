@@ -25,7 +25,7 @@ class SquareContextException(ContextException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a SquareContext experienced an error.
+        1.  Indicate that a SquareContext encountered an error.
 
     Attributes:
             msg: Optional[str]

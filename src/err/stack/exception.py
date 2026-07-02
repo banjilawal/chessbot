@@ -27,7 +27,7 @@ class StackServiceException(ChessException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a StackService experienced an error.
+        1.  Indicate that a StackService encountered an error.
 
     Attributes:
         msg: Optional[str]

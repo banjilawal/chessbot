@@ -25,7 +25,7 @@ class OpeningSquareException(SquareException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an OpeningSquare experienced an error.
+        1.  Indicate that an OpeningSquare encountered an error.
 
     Attributes:
         msg: Optional[str]

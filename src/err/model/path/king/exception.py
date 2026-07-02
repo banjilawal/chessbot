@@ -26,7 +26,7 @@ class KingPathException(PathException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a KingPath experienced an error.
+        1.  Indicate that a KingPath encountered an error.
 
     Attributes:
         msg: Optional[str]

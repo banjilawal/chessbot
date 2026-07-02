@@ -25,7 +25,7 @@ class PlayerContextException(ContextException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a PlayerContext experienced an error.
+        1.  Indicate that a PlayerContext encountered an error.
 
     Attributes:
             msg: Optional[str]

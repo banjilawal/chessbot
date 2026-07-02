@@ -25,7 +25,7 @@ class TokenException(ControllerException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a Token experienced an error.
+        1.  Indicate that a Token encountered an error.
 
     Attributes:
         msg: Optional[str]

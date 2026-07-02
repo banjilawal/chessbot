@@ -1,7 +1,7 @@
 # src/err/search/player/exception.py
 
 """
-Module: err.search.player.searchException
+Module: err.search.player.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,39 +10,42 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import SearchException
+from err import SearcherException
+from result import MethodResultType
 
 
 __all__ = [
-    # ======================# PLAYER_SEARCH_ERROR #======================#
-    "PlayerSearchException",
+    # ======================# PLAYER_SEARCHER_FAILURE #======================#
+    "PlayerSearcherException",
 ]
 
-# ======================# PLAYER_SEARCH_ERROR #======================#
-class PlayerSearchException(SearchException):
+# ======================# PLAYER_SEARCHER_FAILURE #======================#
+class PlayerSearcherException(SearcherException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a Player search.
+        1.  Indicate that an error prevented a PlayerSearcher from
+            completing its task.
 
     Attributes:
-        msg: Optional[str]
-        var: Optional[str]
-        val: Optional[Any]
-        ex: Optional[Exception]
-        cls_name: Optional[str]
-        cls_mthd: Optional[str]
-        err_code: Optional[str]
+            msg: Optional[str]
+            var: Optional[str]
+            val: Optional[Any]
+            ex: Optional[Exception]
+            cls_name: Optional[str]
+            cls_mthd: Optional[str]
+            err_code: Optional[str]
+            mthd_rslt_type: Optional[MethodResultType]
             
     Provides:
 
     Super Class:
-        SearchException
+        SearcherException
     """
-    MSG = "Player error state."
-    ERR_CODE = "PLAYER_SEARCH_ERROR"
+    MSG = "PlayerSearcher encountered an error."
+    ERR_CODE = "PLAYER_SEARCHER_FAILURE"
     
     def __init__(
             self,

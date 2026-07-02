@@ -24,7 +24,7 @@ class ServiceRegistryControllerException(RegistryControllerException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate a ServiceRegistry experienced an error.
+        1.  Indicate a ServiceRegistry encountered an error.
 
     Attributes:
         msg: Optional[str]

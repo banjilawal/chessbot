@@ -19,7 +19,7 @@ from err import (
     TokenStackNullException
 )
 from microservice import SquareValidator
-from model import Square, Token
+from model import Square, SquareContext, Token
 from report import DeleteApproval, RelationReport, TokenFreedomReport
 from report.approval.maneuver import ManeuverApproval
 from result import AnalysisResult, MethodResultType
@@ -58,7 +58,6 @@ class ManeuverPermitter:
     def execute(
             cls,
             token: Token,
-            origin: Square,
             destination: Square,
             square_validator: SquareValidator | None = None,
             square_token_relation_analyzer: SquareTokenRelationAnalyzer | None = None,
@@ -93,6 +92,8 @@ class ManeuverPermitter:
             square_validator = SquareValidator()
         if token_freedom_analyzer is None:
             token_freedom_analyzer = TokenFreedomAnalyzer()
+            
+        
         
         for square in [origin, destination]:
             square_validation_result = square_validator.validate(square)
@@ -141,6 +142,45 @@ class ManeuverPermitter:
         # Handle the case that, the token is not free.
         report = cast(TokenFreedomReport, freedom_analysis_result.payload)
         if report.token_is_not_free:
+            # Return the exception chain on failure
+            return AnalysisResult.completed(
+                ManeuverApproval.deny(
+                    exception=ManeuverPermitterException(
+                        cls_mthd=method,
+                        cls_name=cls.__name__,
+                        msg=ManeuverPermitterException.MSG,
+                        err_code=ManeuverPermitterException.ERR_CODE,
+                        mthd_rslt_type=MethodResultType.ANALYSIS_RESULT,
+                        ex=DisabledTokenManeuverException(
+                            msg=DisabledTokenManeuverException.MSG,
+                            err_code=DisabledTokenManeuverException.ERR_CODE,
+                        ),
+                    )
+                )
+            )
+        origin_search_result = token.team.board.squares.search(
+            context=SquareContext(occupant=token)
+        )
+        # Handle the case that, the search is not completed.
+        if origin_search_result.is_failure:
+            # Return the exception chain on failure
+            return AnalysisResult.completed(
+                ManeuverApproval.deny(
+                    exception=ManeuverPermitterException(
+                        cls_mthd=method,
+                        cls_name=cls.__name__,
+                        msg=ManeuverPermitterException.MSG,
+                        err_code=ManeuverPermitterException.ERR_CODE,
+                        mthd_rslt_type=MethodResultType.ANALYSIS_RESULT,
+                        ex=DisabledTokenManeuverException(
+                            msg=DisabledTokenManeuverException.MSG,
+                            err_code=DisabledTokenManeuverException.ERR_CODE,
+                        ),
+                    )
+                )
+            )
+        # Handle the case that, the token is not on the board.
+        if origin_search_result.is_empty:
             # Return the exception chain on failure
             return AnalysisResult.completed(
                 ManeuverApproval.deny(

@@ -14,18 +14,18 @@ from err import ChessException
 from result import MethodResultType
 
 __all__ = [
-    # ======================# SEARCH_ERROR #======================#
-    "SearchException",
+    # ======================# SEARCHER_FAILURE #======================#
+    "SearcherException",
 ]
 
-# ======================# SEARCH_ERROR #======================#
-class SearchException(ChessException):
+# ======================# SEARCHER_FAILURE #======================#
+class SearcherException(ChessException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an error occurred during a search.
+        1.  Indicate that an error prevented a Searcher from completing its task.
 
     Attributes:
         msg: Optional[str]
@@ -42,8 +42,8 @@ class SearchException(ChessException):
     Super Class:
         ChessException
     """
-    ERR_CODE = "SEARCH_ERROR"
-    MSG = "An error occurred during a search."
+    ERR_CODE = "SEARCHER_FAILURE"
+    MSG = "Searcher encountered an error."
     MTHD_RSLT_TYPE = MethodResultType.SEARCH_RESULT
     
     def __init__(

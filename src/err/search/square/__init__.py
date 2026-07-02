@@ -10,7 +10,6 @@ version: 1.0.1
 # ============ ERR.SEARCH.SQUARE PACKAGE ===========#
 
 # Packages
-from .opening import *
 
 # Modules
-from .exception import SquareSearchException
+from .exception import SquareSearcherException

@@ -10,8 +10,6 @@ version: 1.0.1
 # ============ ERR.SEARCH.PLAYER PACKAGE ===========#
 
 # Packages
-from .human import *
-from .machine import *
 
 # Modules
-from .exception import PlayerSearchException
+from .exception import PlayerSearcherException

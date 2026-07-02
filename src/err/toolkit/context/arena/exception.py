@@ -25,7 +25,7 @@ class ArenaContextException(ContextException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a ArenaContext experienced an error.
+        1.  Indicate that a ArenaContext encountered an error.
 
     Attributes:
             msg: Optional[str]

@@ -25,7 +25,7 @@ class RookException(RankException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a Rook experienced an error.
+        1.  Indicate that a Rook encountered an error.
 
     Attributes:
         msg: Optional[str]

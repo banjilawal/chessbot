@@ -43,7 +43,7 @@ class PlayerBoardRelationAnalyzerException(RelationAnalyzerException):
     Super Class:
         RelationException
     """
-    MSG = "PlayerBoardRelationAnalyst experienced an error."
+    MSG = "PlayerBoardRelationAnalyst encountered an error."
     ERR_CODE = "PLAYER_BOARD_RELATION_ANALYZER_FAILURE"
     
     def __init__(

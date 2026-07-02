@@ -25,7 +25,7 @@ class QueryException(ChessException):
         -   Error Tracing
     
     Responsibilities:
-        1.  Indicate that a query experienced an error.
+        1.  Indicate that a query encountered an error.
         
     Attributes:
         msg: Optional[str]
@@ -43,7 +43,7 @@ class QueryException(ChessException):
     Super Class:
         ChessException
     """
-    MSG = "A query experienced an error."
+    MSG = "A query encountered an error."
     ERR_CODE = "QUERY_EXCEPTION"
     
     def __init__(

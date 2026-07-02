@@ -25,7 +25,7 @@ class SchemaContextException(ContextException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a SchemaContext experienced an error.
+        1.  Indicate that a SchemaContext encountered an error.
 
     Attributes:
             msg: Optional[str]

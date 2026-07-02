@@ -27,7 +27,7 @@ class TokenStackServiceException(StackServiceException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a TokenStackService experienced an error.
+        1.  Indicate that a TokenStackService encountered an error.
 
     Attributes:
         msg: Optional[str]

@@ -25,7 +25,7 @@ class PlayerException(ModelException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a Player experienced an error.
+        1.  Indicate that a Player encountered an error.
 
     Attributes:
         msg: Optional[str]

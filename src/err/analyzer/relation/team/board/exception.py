@@ -43,7 +43,7 @@ class BoardTeamRelationAnalyzerException(RelationAnalyzerException):
     Super Class:
         RelationException
     """
-    MSG = "BoardTeamRelationAnalyst experienced an error."
+    MSG = "BoardTeamRelationAnalyst encountered an error."
     ERR_CODE = "BOARD_TEAM_RELATION_ANALYZER_FAILURE"
     
     def __init__(

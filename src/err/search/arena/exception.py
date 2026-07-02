@@ -1,7 +1,7 @@
 # src/err/search/arena/exception.py
 
 """
-Module: err.search.arena.searchException
+Module: err.search.arena.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,38 +10,42 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import SearchException
+from err import SearcherException
+from result import MethodResultType
+
 
 __all__ = [
-    # ======================# ARENA_SEARCH_ERROR #======================#
-    "ArenaSearchException",
+    # ======================# ARENA_SEARCHER_FAILURE #======================#
+    "ArenaSearcherException",
 ]
 
-# ======================# ARENA_SEARCH_ERROR #======================#
-class ArenaSearchException(SearchException):
+# ======================# ARENA_SEARCHER_FAILURE #======================#
+class ArenaSearcherException(SearcherException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an error occurred during a Arena search.
+        1.  Indicate that an error prevented an ArenaSearcher from
+            completing its task.
 
     Attributes:
-        msg: Optional[str]
-        var: Optional[str]
-        val: Optional[Any]
-        ex: Optional[Exception]
-        cls_name: Optional[str]
-        cls_mthd: Optional[str]
-        err_code: Optional[str]
+            msg: Optional[str]
+            var: Optional[str]
+            val: Optional[Any]
+            ex: Optional[Exception]
+            cls_name: Optional[str]
+            cls_mthd: Optional[str]
+            err_code: Optional[str]
+            mthd_rslt_type: Optional[MethodResultType]
             
     Provides:
 
     Super Class:
-        SearchException
+        SearcherException
     """
-    MSG = "Arena error state."
-    ERR_CODE = "ARENA_SEARCH_ERROR"
+    MSG = "ArenaSearcher encountered an error."
+    ERR_CODE = "ARENA_SEARCHER_FAILURE"
     
     def __init__(
             self,

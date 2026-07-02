@@ -24,7 +24,7 @@ class WorkerRegistryControllerException(RegistryControllerException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate a WorkerRegistry experienced an error.
+        1.  Indicate a WorkerRegistry encountered an error.
 
     Attributes:
         msg: Optional[str]

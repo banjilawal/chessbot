@@ -10,8 +10,6 @@ version: 1.0.1
 # ============ ERR.SEARCH.TOKEN PACKAGE ===========#
 
 # Packages
-from .combatant import *
-from .king import *
 
 # Modules
 from .exception import TokenSearcherException

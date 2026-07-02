@@ -27,7 +27,7 @@ class HostageStackServiceException(StackServiceException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a HostageStackService experienced an error.
+        1.  Indicate that a HostageStackService encountered an error.
 
     Attributes:
         msg: Optional[str]

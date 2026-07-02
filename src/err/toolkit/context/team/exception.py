@@ -25,7 +25,7 @@ class TeamContextException(ContextException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a TeamContext experienced an error.
+        1.  Indicate that a TeamContext encountered an error.
 
     Attributes:
             msg: Optional[str]

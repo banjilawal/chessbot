@@ -1,7 +1,7 @@
 # src/err/search/edge/exception.py
 
 """
-Module: err.search.edge.searchException
+Module: err.search.edge.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,39 +10,42 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import SearchException
+from err import SearcherException
+from result import MethodResultType
 
 
 __all__ = [
-    # ======================# EDGE_SEARCH_ERROR #======================#
-    "EdgeSearchException",
+    # ======================# EDGE_SEARCHER_FAILURE #======================#
+    "EdgeSearcherException",
 ]
 
-# ======================# EDGE_SEARCH_ERROR #======================#
-class EdgeSearchException(SearchException):
+# ======================# EDGE_SEARCHER_FAILURE #======================#
+class EdgeSearcherException(SearcherException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a Edge search.
+        1.  Indicate that an error prevented a EdgeSearcher from
+            completing its task.
 
     Attributes:
-        msg: Optional[str]
-        var: Optional[str]
-        val: Optional[Any]
-        ex: Optional[Exception]
-        cls_name: Optional[str]
-        cls_mthd: Optional[str]
-        err_code: Optional[str]
+            msg: Optional[str]
+            var: Optional[str]
+            val: Optional[Any]
+            ex: Optional[Exception]
+            cls_name: Optional[str]
+            cls_mthd: Optional[str]
+            err_code: Optional[str]
+            mthd_rslt_type: Optional[MethodResultType]
             
     Provides:
 
     Super Class:
-        SearchException
+        SearcherException
     """
-    MSG = "Edge error state."
-    ERR_CODE = "EDGE_SEARCH_ERROR"
+    MSG = "EdgeSearcher encountered an error."
+    ERR_CODE = "EDGE_SEARCHER_FAILURE"
     
     def __init__(
             self,

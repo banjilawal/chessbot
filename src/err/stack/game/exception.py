@@ -27,7 +27,7 @@ class GameStackServiceException(StackServiceException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a GameStackService experienced an error.
+        1.  Indicate that a GameStackService encountered an error.
 
     Attributes:
         msg: Optional[str]

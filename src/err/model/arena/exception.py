@@ -24,7 +24,7 @@ class ArenaException(ModelException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an Arena experienced an error.
+        1.  Indicate that an Arena encountered an error.
 
     Attributes:
         msg: Optional[str]

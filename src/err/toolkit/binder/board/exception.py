@@ -25,7 +25,7 @@ class BoardTeamBinderException(BinderException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a BoardTeamBinder experienced an error.
+        1.  Indicate that a BoardTeamBinder encountered an error.
 
     Attributes:
         msg: Optional[str]

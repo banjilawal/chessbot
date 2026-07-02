@@ -25,7 +25,7 @@ class NodeContextException(ContextException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a NodeContext experienced an error.
+        1.  Indicate that a NodeContext encountered an error.
 
     Attributes:
             msg: Optional[str]

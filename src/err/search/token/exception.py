@@ -1,7 +1,7 @@
 # src/err/search/token/exception.py
 
 """
-Module: err.search.token.searchException
+Module: err.search.token.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,39 +10,42 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import SearchException
+from err import SearcherException
+from result import MethodResultType
 
 
 __all__ = [
-    # ======================# TOKEN_SEARCH_ERROR #======================#
+    # ======================# TOKEN_SEARCHER_FAILURE #======================#
     "TokenSearcherException",
 ]
 
-# ======================# TOKEN_SEARCH_ERROR #======================#
-class TokenSearcherException(SearchException):
+# ======================# TOKEN_SEARCHER_FAILURE #======================#
+class TokenSearcherException(SearcherException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a Token search.
+        1.  Indicate that an error prevented a TokenSearcher from
+            completing its task.
 
     Attributes:
-        msg: Optional[str]
-        var: Optional[str]
-        val: Optional[Any]
-        ex: Optional[Exception]
-        cls_name: Optional[str]
-        cls_mthd: Optional[str]
-        err_code: Optional[str]
+            msg: Optional[str]
+            var: Optional[str]
+            val: Optional[Any]
+            ex: Optional[Exception]
+            cls_name: Optional[str]
+            cls_mthd: Optional[str]
+            err_code: Optional[str]
+            mthd_rslt_type: Optional[MethodResultType]
             
     Provides:
 
     Super Class:
-        SearchException
+        SearcherException
     """
-    MSG = "Token error state."
-    ERR_CODE = "TOKEN_SEARCH_ERROR"
+    MSG = "TokenSearcher encountered an error."
+    ERR_CODE = "TOKEN_SEARCHER_FAILURE"
     
     def __init__(
             self,

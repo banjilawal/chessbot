@@ -26,7 +26,7 @@ class CombatantPathException(PathException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a CombatantPath experienced an error.
+        1.  Indicate that a CombatantPath encountered an error.
 
     Attributes:
         msg: Optional[str]

@@ -25,7 +25,7 @@ class ArenaPlayerBinderException(BinderException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a ArenaPlayerBinder experienced an error.
+        1.  Indicate that a ArenaPlayerBinder encountered an error.
 
     Attributes:
         msg: Optional[str]

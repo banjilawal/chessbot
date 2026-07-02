@@ -25,7 +25,7 @@ class NodeException(ModelException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a Node experienced an error.
+        1.  Indicate that a Node encountered an error.
 
     Attributes:
         msg: Optional[str]

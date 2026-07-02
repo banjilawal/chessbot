@@ -25,7 +25,7 @@ class SquareException(ModelException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a Square experienced an error.
+        1.  Indicate that a Square encountered an error.
 
     Attributes:
         msg: Optional[str]

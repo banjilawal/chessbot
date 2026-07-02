@@ -25,7 +25,7 @@ class RankException(ToolkitException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a Rank experienced an error.
+        1.  Indicate that a Rank encountered an error.
 
     Attributes:
         msg: Optional[str]

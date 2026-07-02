@@ -26,7 +26,7 @@ class PathException(ModelException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a Path experienced an error.
+        1.  Indicate that a Path encountered an error.
 
     Attributes:
         msg: Optional[str]
