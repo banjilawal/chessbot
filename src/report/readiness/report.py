@@ -8,9 +8,7 @@ version: 1.0.1
 """
 
 from __future__ import annotations
-
 from dataclasses import dataclass
-from typing import Any, Optional
 
 from model import CombatantToken, KingToken, Token
 from report import ReadinessState, Report

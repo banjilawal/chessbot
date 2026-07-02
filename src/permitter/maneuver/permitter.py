@@ -23,9 +23,10 @@ from model import Square, SquareContext, Token
 from report import DeleteApproval, RelationReport, TokenReadinessReport
 from report.approval.maneuver import ManeuverApproval
 from result import AnalysisResult, MethodResultType
+from search import TokenOriginSearcher
 from stack import TokenStackService
 from util import LoggingLevelRouter
-from validation import TokenFreedomAnalyzer
+from validation import TokenFreedomAnalyzer, TokenValidator
 
 
 class ManeuverPermitter:
@@ -59,9 +60,11 @@ class ManeuverPermitter:
             cls,
             token: Token,
             destination: Square,
+            token_validator: TokenValidator | None = None,
             square_validator: SquareValidator | None = None,
-            square_token_relation_analyzer: SquareTokenRelationAnalyzer | None = None,
-            token_freedom_analyzer: TokenReadinessAnalyzer | None = None,
+            origin_searcher: TokenOriginSearcher | None = None,
+            token_readiness_analyzer: TokenReadinessAnalyzer | None = None,
+            destination_relation_analyzer: SquareTokenRelationAnalyzer | None = None,
     ) -> AnalysisResult:
         """
         Action:
@@ -88,13 +91,42 @@ class ManeuverPermitter:
         method =  f"{cls.__name__}.execute"
         
         # --- Supply any missing dependencies. ---#
+        if token_validator is None:
+            token_validator = TokenValidator()
         if square_validator is None:
             square_validator = SquareValidator()
-        if token_freedom_analyzer is None:
-            token_freedom_analyzer = TokenReadinessAnalyzer()
+        if origin_searcher is None:
+            origin_searcher = TokenOriginSearcher()
+        if token_readiness_analyzer is None:
+            token_readiness_analyzer = TokenReadinessAnalyzer()
+        if destination_relation_analyzer is None:
+            destination_relation_analyzer = SquareTokenRelationAnalyzer()
             
+        token_origin_search_result = origin_searcher.execute(
+            token=token,
+            readiness_analyzer=token_readiness_analyzer
+        )
+        # Handle the case that, the origin_searcher is not successful.
+        if token_origin_search_result.is_failure:
+            # Return the exception chain on failure
+            return AnalysisResult.failure(
+                ManeuverPermitterException(
+                    cls_mthd=method,
+                    cls_name=cls.__name__,
+                    msg=ManeuverPermitterException.MSG,
+                    err_code=ManeuverPermitterException.ERR_CODE,
+                    mthd_rslt_type=MethodResultType.ANALYSIS_RESULT,
+                    ex=token_origin_search_result.exception,
+                )
+            )
+        origin = token_origin_search_result.payload[0]
         
-        
+        destination_relation_analysis_result = destination_relation_analyzer.analyze(
+            candidate_primary=destination,
+            candidate_satellite=token,
+            square_validator=square_validator,
+            toke
+        )
         for square in [origin, destination]:
             square_validation_result = square_validator.validate(square)
             if square_validation_result.is_failure:
@@ -198,7 +230,7 @@ class ManeuverPermitter:
                 )
             )
         path_validation_result =
-        origin_token_relation_result = square_token_relation_analyzer.analyze(
+        origin_token_relation_result = destination_relation_analyzer.analyze(
             candidate_primary=origin,
             candidate_satellite=token,
         )
@@ -234,7 +266,7 @@ class ManeuverPermitter:
                     )
                 )
             )
-        destination_token_relation_result = square_token_relation_analyzer.analyze(
+        destination_token_relation_result = destination_relation_analyzer.analyze(
             candidate_primary=destination,
             candidate_satellite=token,
         )
