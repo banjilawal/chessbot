@@ -33,6 +33,7 @@ from .node import *
 from .number import *
 from .operand import *
 from .operation import *
+from .path import *
 from .persona import *
 from .player import *
 from .query import *

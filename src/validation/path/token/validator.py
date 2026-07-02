@@ -9,13 +9,11 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from microservice import IdentityService
 from model import Square, Token
 from util import LoggingLevelRouter
-from validation import SquareValidator, ValidationPrimer
 
 
-class PathValidator:
+class TokenPathValidator:
     """
     Role
         -   Transaction Worker
@@ -46,11 +44,13 @@ class PathValidator:
     @LoggingLevelRouter.monitor
     def validator(
             cls,
-            candidate,
-            identity_service: IdentityService | None = None,
-            square_validator: SquareValidator | None = None,
-            validation_primer: ValidationPrimer | None = None,
-    ) -> ValidationResult[Path]:
+            candidate
+            token: Token,
+            origin: Square,
+            destination: Square,
+            origin_relation_validator: OriginRelationValidator | None = None,
+            destination_analyzer: DestinationTokenRelationAnalyzer | None = None,
+    ) -> ValidationResult[int]:
         """
         Verify there is consistency between the itinerary's elements.
 
@@ -73,18 +73,10 @@ class PathValidator:
         method = f"{cls.__name__}.validate"
         
         # --- Supply any missing dependencies. ---#
-        if identity_service is None:
-            identity_service = IdentityService()
-        if square_validator is None:
-            square_validator = SquareValidator()
-        if validation_primer is None:
-            validation_primer = ValidationPrimer()
-            
-        priming_validation_result = validation_primer.validate(
-            candidate=candidate,
-            target_model=Path,
-            null_exception=PathNullException(),
-        )
+        if origin_relation_validator is None:
+            origin_relation_validator = OriginRelationValidator()
+        if destination_analyzer is None:
+            destination_analyzer = DestinationTokenRelationAnalyzer()
         
         # Handle the case that, the token has an inconsistency with the source.
         origin_relation_analysis = origin_relation_validator.execute(

@@ -5,22 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/err/validation/arena/origin/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/validation/arena/origin/circular/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/validation/arena/origin/circular/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/validation/arena/origin/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/validation/arena/origin/partial/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/validation/arena/origin/partial/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/validation/origin/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/validation/origin/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/validation/origin/null/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/validation/origin/null/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/validation/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/validation/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/validation/destination/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/validation/destination/validator.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/path/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/path/attack/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/path/attack/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/path/check/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/path/check/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/path/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/path/maneuver/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/path/maneuver/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/validation/path/token/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/validation/path/token/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/null/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/validation/path/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/validation/path/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/validation/path/origin/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/validation/origin/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/validation/path/origin/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/validation/origin/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validation/path/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/validation/path/validator.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -74,7 +71,7 @@
     "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/err/validation",
+    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/err/null",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
@@ -85,11 +82,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/err/null" />
+      <recent name="$PROJECT_DIR$/src/validation/path/token" />
       <recent name="$PROJECT_DIR$/src/err/validation" />
       <recent name="$PROJECT_DIR$/src/err/validation/arena" />
       <recent name="$PROJECT_DIR$/src/permitter/maneuver/destination" />
-      <recent name="$PROJECT_DIR$/src/err/search" />
-      <recent name="$PROJECT_DIR$/src/err" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/validation" />
@@ -821,7 +818,7 @@
       <workItem from="1782214489414" duration="8439000" />
       <workItem from="1782265217166" duration="7062000" />
       <workItem from="1782325486599" duration="56546000" />
-      <workItem from="1782732939190" duration="102260000" />
+      <workItem from="1782732939190" duration="103877000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />
