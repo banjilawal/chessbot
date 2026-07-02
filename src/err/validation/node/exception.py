@@ -10,22 +10,22 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import ValidationException
+from err import ValidatorException
 from result import MethodResultType
 
 __all__ = [
     # ======================# NODE_VALIDATION_FAILURE #======================#
-    "NodeValidationException",
+    "NodeValidatorException",
 ]
 
 # ======================# NODE_VALIDATION_FAILURE #======================#
-class NodeValidationException(ValidationException):
+class NodeValidatorException(ValidatorException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a NodeValidation check failed.
+        1.  Indicate that a candidate did not pass a NodeValidator check.
 
     Attributes:
         msg: Optional[str]
@@ -40,9 +40,9 @@ class NodeValidationException(ValidationException):
     Provides:
 
     Super Class:
-        ValidationException
+        ValidatorException
     """
-    MSG = "NodeValidation check failed"
+    MSG = "NodeValidator check"
     ERR_CODE = "NODE_VALIDATION_FAILURE"
     
     def __init__(

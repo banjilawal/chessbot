@@ -10,7 +10,7 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import ContextValidationException
+from err import ContextValidatorException
 
 
 __all__ = [
@@ -19,13 +19,13 @@ __all__ = [
 ]
 
 # ======================# CONTEXT_VALIDATION_PRIMING_FAILURE #======================#
-class ContextValidationPrimingException(ContextValidationException):
+class ContextValidationPrimingException(ContextValidatorException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a ContextValidation failed during its priming phase.
+        1.  Indicate that a candidate did not pass a ContextValidation failed during its priming phase.
 
     Attributes:
             msg: Optional[str]
@@ -40,7 +40,7 @@ class ContextValidationPrimingException(ContextValidationException):
     Provides:
 
     Super Class:
-        ContextValidationException
+        ContextValidatorException
     """
     MSG = "ContextValidation failed during its priming phase."
     ERR_CODE = "CONTEXT_VALIDATION_PRIMING_FAILURE"

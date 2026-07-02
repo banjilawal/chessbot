@@ -10,6 +10,7 @@ version: 1.0.1
 # =========== PERMITTER.MANEUVER PACKAGE ===========#
 
 # Packages
+from .destination import *
 
 # Modules
 from .permitter import ManeuverPermitter

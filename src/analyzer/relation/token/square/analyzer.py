@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import cast
 
-from analyzer import RelationAnalyzer, TokenReadinessAnalyzer
+from analyzer import RelationAnalyzer
 from err import SquareTokenRelationAnalyzerException
 from model import Square, Token
 from report import RelationReport

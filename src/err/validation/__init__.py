@@ -16,6 +16,7 @@ from .board import *
 from .primer import *
 from .context import *
 from .coord import *
+from .destination import *
 from .edge import *
 from .formation import *
 from .game import *
@@ -39,4 +40,4 @@ from .token import *
 from .vector import *
 
 # Modules
-from .exception import ValidationException
+from .exception import ValidatorException

@@ -10,22 +10,22 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import ValidationException
+from err import ValidatorException
 from result import MethodResultType
 
 __all__ = [
     # ======================# EDGE_VALIDATION_FAILURE #======================#
-    "EdgeValidationException",
+    "EdgeValidatorException",
 ]
 
 # ======================# EDGE_VALIDATION_FAILURE #======================#
-class EdgeValidationException(ValidationException):
+class EdgeValidatorException(ValidatorException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an EdgeValidation check failed.
+        1.  Indicate that an EdgeValidator check.
 
     Attributes:
         msg: Optional[str]
@@ -40,9 +40,9 @@ class EdgeValidationException(ValidationException):
     Provides:
 
     Super Class:
-        ValidationException
+        ValidatorException
     """
-    MSG = "EdgeValidation check failed"
+    MSG = "EdgeValidator check"
     ERR_CODE = "EDGE_VALIDATION_FAILURE"
     
     def __init__(

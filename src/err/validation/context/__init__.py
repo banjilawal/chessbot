@@ -37,4 +37,4 @@ from .token import *
 from .zero import *
 
 # Modules
-from .exception import ContextValidationException
+from .exception import ContextValidatorException

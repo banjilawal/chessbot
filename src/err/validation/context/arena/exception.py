@@ -13,20 +13,20 @@ from typing import Any, Optional
 
 __all__ = [
     # ======================# ARENA_CONTEXT_VALIDATION_FAILURE #======================#
-    "ArenaContextValidationException",
+    "ArenaContextValidatorException",
 ]
 
-from err import ContextValidationException
+from err import ContextValidatorException
 
 
 # ======================# ARENA_CONTEXT_VALIDATION_FAILURE #======================#
-class ArenaContextValidationException(ContextValidationException):
+class ArenaContextValidatorException(ContextValidatorException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a ArenaContextValidation check failed.
+        1.  Indicate that a candidate did not pass a ArenaContextValidator check.
 
     Attributes:
             msg: Optional[str]
@@ -41,7 +41,7 @@ class ArenaContextValidationException(ContextValidationException):
     Provides:
 
     Super Class:
-        ContextValidationException
+        ContextValidatorException
     """
     MSG = "No validation logic for ArenaContext attribute"
     ERR_CODE = "ARENA_CONTEXT_VALIDATION_FAILURE"

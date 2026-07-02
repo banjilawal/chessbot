@@ -14,20 +14,20 @@ from err import OperationException
 
 __all__ = [
     # ======================# VALIDATION_FAILURE #======================#
-    "ValidationException",
+    "ValidatorException",
 ]
 
 from result import MethodResultType
 
 
 # ======================# VALIDATION_FAILURE #======================#
-class ValidationException(OperationException):
+class ValidatorException(OperationException):
     """
     Role:
         -   Failure Tracing
 
     Responsibilities:
-        1.  Indicate that validation check failed.
+        1.  Indicate that validator check.
 
     Attributes:
         msg: str

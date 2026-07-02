@@ -14,4 +14,4 @@ from .binding import *
 from .same import *
 
 # Modules
-from .exception import ItineraryValidationException
+from .exception import ItineraryValidatorException

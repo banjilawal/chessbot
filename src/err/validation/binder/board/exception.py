@@ -10,21 +10,21 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import BinderValidationException
+from err import BinderValidatorException
 
 __all__ = [
     # ======================# BOARD_TEAM_BINDER_VALIDATION_FAILURE #======================#
-    "BoardTeamBinderValidationException",
+    "BoardTeamBinderValidatorException",
 ]
 
 # ======================# BOARD_TEAM_BINDER_VALIDATION_FAILURE #======================#
-class BoardTeamBinderValidationException(BinderValidationException):
+class BoardTeamBinderValidatorException(BinderValidatorException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a BoardTeamBinder validation check failed.
+        1.  Indicate that a candidate did not pass a BoardTeamBinder validator check.
 
     Attributes:
         msg: Optional[str]
@@ -39,9 +39,9 @@ class BoardTeamBinderValidationException(BinderValidationException):
     Provides:
 
     Super Class:
-        BinderValidationException
+        BinderValidatorException
     """
-    MSG = "BoardTeamBinder validation check failed."
+    MSG = "BoardTeamBinder validator check."
     ERR_CODE = "BOARD_TEAM_BINDER_VALIDATION_FAILURE"
     
     def __init__(

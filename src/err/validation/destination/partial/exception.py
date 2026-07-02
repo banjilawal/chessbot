@@ -1,7 +1,7 @@
-# src/err/validation/itinerary/binding/full/exception.py
+# src/err/validation/destination/partial/exception.py
 
 """
-Module: err.validation.itinerary.binding.full.exception
+Module: err.validation.destination.partial.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,23 +10,23 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import ItineraryConsistencyException
+from err import ValidatorException
 from result import MethodResultType
 
 __all__ = [
-    # ======================# TOKEN_ALREADY_AT_DESTINATION_ERROR #======================#
-    "TokenAlreadyAtDestinationException",
+    # ======================# PARTIAL_TOKEN_DESTINATION_RELATION_ERROR #======================#
+    "PartialTokenDestinationRelationException",
 ]
 
-# ======================# TOKEN_ALREADY_AT_DESTINATION_ERROR #======================#
-class TokenAlreadyAtDestinationException(ItineraryConsistencyException):
+# ======================# PARTIAL_TOKEN_DESTINATION_RELATION_ERROR #======================#
+class PartialTokenDestinationRelationException(ValidatorException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate an Itinerary's token has a full binding to the destination. This
-            means its already at the destination.
+        1.  Indicate a Token and its destination have a either a missing registration 
+            or a stale between them instead of no relation at all.
 
     Attributes:
         msg: Optional[str]
@@ -41,10 +41,10 @@ class TokenAlreadyAtDestinationException(ItineraryConsistencyException):
     Provides:
 
     Super Class:
-        ItineraryConsistencyException
+        ValidatorException
     """
-    MSG = "Token is already at the destination."
-    ERR_CODE = "TOKEN_ALREADY_AT_DESTINATION_ERROR"
+    MSG = "Token and destination have a partial relation where none should exist."
+    ERR_CODE = "PARTIAL_TOKEN_DESTINATION_RELATION_ERROR"
     
     def __init__(
             self,

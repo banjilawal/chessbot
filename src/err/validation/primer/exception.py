@@ -10,7 +10,7 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import ValidationException
+from err import ValidatorException
 from result import MethodResultType
 
 __all__ = [
@@ -19,7 +19,7 @@ __all__ = [
 ]
 
 # ======================# VALIDATION_PRIMING_FAILURE #======================#
-class ValidationPrimingException(ValidationException):
+class ValidationPrimingException(ValidatorException):
     """
     Role:
         -   Error Tracing
@@ -40,7 +40,7 @@ class ValidationPrimingException(ValidationException):
     Provides:
 
     Super Class:
-        ValidationException
+        ValidatorException
     """
     MSG = "Validation failed during its phase."
     ERR_CODE = "VALIDATION_PRIMING_FAILURE"

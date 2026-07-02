@@ -10,22 +10,22 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import ValidationException
+from err import ValidatorException
 from result import MethodResultType
 
 __all__ = [
     # ======================# PERSONA_VALIDATION_FAILURE #======================#
-    "PersonaValidationException",
+    "PersonaValidatorException",
 ]
 
 # ======================# PERSONA_VALIDATION_FAILURE #======================#
-class PersonaValidationException(ValidationException):
+class PersonaValidatorException(ValidatorException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that n PersonaValidation check failed.
+        1.  Indicate that n PersonaValidator check.
 
     Attributes:
             msg: Optional[str]
@@ -40,9 +40,9 @@ class PersonaValidationException(ValidationException):
     Provides:
 
     Super Class:
-        ValidationException
+        ValidatorException
     """
-    MSG = "PersonaValidation check failed"
+    MSG = "PersonaValidator check"
     ERR_CODE = "PERSONA_VALIDATION_FAILURE"
     
     def __init__(

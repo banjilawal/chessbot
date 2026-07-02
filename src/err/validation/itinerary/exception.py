@@ -10,22 +10,22 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import ValidationException
+from err import ValidatorException
 from result import MethodResultType
 
 __all__ = [
     # ======================# ITINERARY_VALIDATION_FAILURE #======================#
-    "ItineraryValidationException",
+    "ItineraryValidatorException",
 ]
 
 # ======================# ITINERARY_VALIDATION_FAILURE #======================#
-class ItineraryValidationException(ValidationException):
+class ItineraryValidatorException(ValidatorException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate a ItineraryValidation check failed.
+        1.  Indicate a ItineraryValidator check.
 
     Attributes:
         msg: Optional[str]
@@ -40,9 +40,9 @@ class ItineraryValidationException(ValidationException):
     Provides:
 
     Super Class:
-        ValidationException
+        ValidatorException
     """
-    MSG = "ItineraryValidation check failed."
+    MSG = "ItineraryValidator check."
     ERR_CODE = "ITINERARY_VALIDATION_FAILURE"
     
     def __init__(

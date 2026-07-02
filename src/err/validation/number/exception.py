@@ -10,22 +10,22 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import ValidationException
+from err import ValidatorException
 from result import MethodResultType
 
 __all__ = [
     # ======================# NUMBER_VALIDATION_FAILURE #======================#
-    "NumberValidationException",
+    "NumberValidatorException",
 ]
 
 # ======================# NUMBER_VALIDATION_FAILURE #======================#
-class NumberValidationException(ValidationException):
+class NumberValidatorException(ValidatorException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a NumberValidation check failed.
+        1.  Indicate that a candidate did not pass a NumberValidator check.
 
     Attributes:
         msg: Optional[str]
@@ -40,9 +40,9 @@ class NumberValidationException(ValidationException):
     Provides:
 
     Super Class:
-        ValidationException
+        ValidatorException
     """
-    MSG = "NumberValidation check failed"
+    MSG = "NumberValidator check"
     ERR_CODE = "NUMBER_VALIDATION_FAILURE"
     
     def __init__(

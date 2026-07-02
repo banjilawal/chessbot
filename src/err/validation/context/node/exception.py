@@ -13,20 +13,20 @@ from typing import Any, Optional
 
 __all__ = [
     # ======================# NODE_CONTEXT_VALIDATION_FAILURE #======================#
-    "NodeContextValidationException",
+    "NodeContextValidatorException",
 ]
 
-from err import ContextValidationException
+from err import ContextValidatorException
 
 
 # ======================# NODE_CONTEXT_VALIDATION_FAILURE #======================#
-class NodeContextValidationException(ContextValidationException):
+class NodeContextValidatorException(ContextValidatorException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a NodeContextValidation check failed.
+        1.  Indicate that a candidate did not pass a NodeContextValidator check.
 
     Attributes:
             msg: Optional[str]
@@ -41,7 +41,7 @@ class NodeContextValidationException(ContextValidationException):
     Provides:
 
     Super Class:
-        ContextValidationException
+        ContextValidatorException
     """
     MSG = "No validation logic for NodeContext attribute"
     ERR_CODE = "NODE_CONTEXT_VALIDATION_FAILURE"

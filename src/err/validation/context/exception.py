@@ -10,22 +10,22 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import ValidationException
+from err import ValidatorException
 from result import MethodResultType
 
 __all__ = [
     # ======================# CONTEXT_VALIDATION_FAILURE #======================#
-    "ContextValidationException",
+    "ContextValidatorException",
 ]
 
 # ======================# CONTEXT_VALIDATION_FAILURE #======================#
-class ContextValidationException(ValidationException):
+class ContextValidatorException(ValidatorException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a ContextValidation failed.
+        1.  Indicate that a candidate did not pass a ContextValidation failed.
 
     Attributes:
             msg: Optional[str]
@@ -40,7 +40,7 @@ class ContextValidationException(ValidationException):
     Provides:
 
     Super Class:
-        ValidationException
+        ValidatorException
     """
     MSG = "No validation logic for context's attribute"
     ERR_CODE = "CONTEXT_VALIDATION_FAILURE"

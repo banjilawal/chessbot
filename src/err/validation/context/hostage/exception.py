@@ -13,20 +13,20 @@ from typing import Any, Optional
 
 __all__ = [
     # ======================# HOSTAGE_CONTEXT_VALIDATION_FAILURE #======================#
-    "HostageContextValidationException",
+    "HostageContextValidatorException",
 ]
 
-from err import ContextValidationException
+from err import ContextValidatorException
 
 
 # ======================# HOSTAGE_CONTEXT_VALIDATION_FAILURE #======================#
-class HostageContextValidationException(ContextValidationException):
+class HostageContextValidatorException(ContextValidatorException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a HostageContextValidation check failed.
+        1.  Indicate that a candidate did not pass a HostageContextValidator check.
 
     Attributes:
             msg: Optional[str]
@@ -41,7 +41,7 @@ class HostageContextValidationException(ContextValidationException):
     Provides:
 
     Super Class:
-        ContextValidationException
+        ContextValidatorException
     """
     MSG = "No validation logic for HostageContext attribute"
     ERR_CODE = "HOSTAGE_CONTEXT_VALIDATION_FAILURE"

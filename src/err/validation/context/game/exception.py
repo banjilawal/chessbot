@@ -13,20 +13,20 @@ from typing import Any, Optional
 
 __all__ = [
     # ======================# GAME_CONTEXT_VALIDATION_FAILURE #======================#
-    "GameContextValidationException",
+    "GameContextValidatorException",
 ]
 
-from err import ContextValidationException
+from err import ContextValidatorException
 
 
 # ======================# GAME_CONTEXT_VALIDATION_FAILURE #======================#
-class GameContextValidationException(ContextValidationException):
+class GameContextValidatorException(ContextValidatorException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a GameContextValidation check failed.
+        1.  Indicate that a candidate did not pass a GameContextValidator check.
 
     Attributes:
             msg: Optional[str]
@@ -41,7 +41,7 @@ class GameContextValidationException(ContextValidationException):
     Provides:
 
     Super Class:
-        ContextValidationException
+        ContextValidatorException
     """
     MSG = "No validation logic for GameContext attribute"
     ERR_CODE = "GAME_CONTEXT_VALIDATION_FAILURE"

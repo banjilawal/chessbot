@@ -11,7 +11,6 @@ version: 1.0.1
 
 # Packages
 from .origin import *
-from .destination import *
 
 # Modules
 from .validator import TokenPathValidator

@@ -10,22 +10,22 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import ValidationException
+from err import ValidatorException
 from result import MethodResultType
 
 __all__ = [
     # ======================# REGISTRY_ENTRY_KEY_STRING_VALIDATION_FAILURE #======================#
-    "RegistryEntryKeyStringValidationException",
+    "RegistryEntryKeyStringValidatorException",
 ]
 
 # ======================# REGISTRY_ENTRY_KEY_STRING_VALIDATION_FAILURE #======================#
-class RegistryEntryKeyStringValidationException(ValidationException):
+class RegistryEntryKeyStringValidatorException(ValidatorException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a RegistryEntry key failed a String validation check.
+        1.  Indicate that a candidate did not pass a RegistryEntry key failed a String validation check.
 
     Attributes:
         msg: Optional[str]
@@ -40,7 +40,7 @@ class RegistryEntryKeyStringValidationException(ValidationException):
     Provides:
 
     Super Class:
-        ValidationException
+        ValidatorException
     """
     MSG = "RegistryEntryKey is not a valid string."
     ERR_CODE = "REGISTRY_ENTRY_KEY_STRING_VALIDATION_FAILURE"

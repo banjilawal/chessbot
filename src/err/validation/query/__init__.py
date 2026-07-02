@@ -13,4 +13,4 @@ version: 1.0.1
 from .token import *
 
 # Modules
-from .exception import QueryValidationException
+from .exception import QueryValidatorException

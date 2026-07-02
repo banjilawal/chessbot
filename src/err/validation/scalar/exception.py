@@ -10,22 +10,22 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import ValidationException
+from err import ValidatorException
 from result import MethodResultType
 
 __all__ = [
     # ======================# SCALAR_VALIDATION_FAILURE #======================#
-    "ScalarValidationException",
+    "ScalarValidatorException",
 ]
 
 # ======================# SCALAR_VALIDATION_FAILURE #======================#
-class ScalarValidationException(ValidationException):
+class ScalarValidatorException(ValidatorException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a ScalarValidation check failed.
+        1.  Indicate that a candidate did not pass a ScalarValidator check.
 
     Attributes:
         msg: Optional[str]
@@ -40,9 +40,9 @@ class ScalarValidationException(ValidationException):
     Provides:
 
     Super Class:
-        ValidationException
+        ValidatorException
     """
-    MSG = "ScalarValidation check failed"
+    MSG = "ScalarValidator check"
     ERR_CODE = "SCALAR_VALIDATION_FAILURE"
     
     def __init__(

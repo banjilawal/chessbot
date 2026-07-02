@@ -13,21 +13,21 @@ from typing import Any, Optional
 
 __all__ = [
     # ======================# STRING_VALIDATION_FAILURE #======================#
-    "StringValidationException",
+    "StringValidatorException",
 ]
 
-from err import ValidationException
+from err import ValidatorException
 from result import MethodResultType
 
 
 # ======================# STRING_VALIDATION_FAILURE #======================#
-class StringValidationException(ValidationException):
+class StringValidatorException(ValidatorException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a StringValidation check failed.
+        1.  Indicate that a candidate did not pass a StringValidator check.
 
     Attributes:
         msg: Optional[str]
@@ -42,9 +42,9 @@ class StringValidationException(ValidationException):
     Provides:
 
     Super Class:
-        ValidationException
+        ValidatorException
     """
-    MSG = "StringValidation check failed"
+    MSG = "StringValidator check"
     ERR_CODE = "STRING_VALIDATION_FAILURE"
     
     def __init__(

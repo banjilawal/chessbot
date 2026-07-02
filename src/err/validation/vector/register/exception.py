@@ -14,21 +14,21 @@ from typing import Any, Optional
 
 __all__ = [
     # ======================# VECTOR_REGISTER_VALIDATION_FAILURE #======================#
-    "VectorRegisterValidationException",
+    "VectorRegisterValidatorException",
 ]
 
-from err import ValidationException
+from err import ValidatorException
 from result import MethodResultType
 
 
 # ======================# VECTOR_REGISTER_VALIDATION_FAILURE #======================#
-class VectorRegisterValidationException(ValidationException):
+class VectorRegisterValidatorException(ValidatorException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a VectorRegisterValidation check failed.
+        1.  Indicate that a candidate did not pass a VectorRegisterValidator check.
 
     Attributes:
             msg: Optional[str]
@@ -43,7 +43,7 @@ class VectorRegisterValidationException(ValidationException):
     Provides:
 
     Super Class:
-        ValidationException
+        ValidatorException
     """
     MSG = "VectorRegisterValidation failed."
     ERR_CODE = "VECTOR_REGISTER_VALIDATION_FAILURE"

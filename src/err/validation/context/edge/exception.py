@@ -13,20 +13,20 @@ from typing import Any, Optional
 
 __all__ = [
     # ======================# EDGE_CONTEXT_VALIDATION_FAILURE #======================#
-    "EdgeContextValidationException",
+    "EdgeContextValidatorException",
 ]
 
-from err import ContextValidationException
+from err import ContextValidatorException
 
 
 # ======================# EDGE_CONTEXT_VALIDATION_FAILURE #======================#
-class EdgeContextValidationException(ContextValidationException):
+class EdgeContextValidatorException(ContextValidatorException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a EdgeContextValidation check failed.
+        1.  Indicate that a candidate did not pass a EdgeContextValidator check.
 
     Attributes:
             msg: Optional[str]
@@ -41,7 +41,7 @@ class EdgeContextValidationException(ContextValidationException):
     Provides:
 
     Super Class:
-        ContextValidationException
+        ContextValidatorException
     """
     MSG = "No validation logic for EdgeContext attribute"
     ERR_CODE = "EDGE_CONTEXT_VALIDATION_FAILURE"

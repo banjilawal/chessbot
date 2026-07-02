@@ -10,21 +10,21 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import BinderValidationException
+from err import BinderValidatorException
 
 __all__ = [
     # ======================# ARENA_PLAYER_BINDER_VALIDATION_FAILURE #======================#
-    "ArenaPlayerBinderValidationException",
+    "ArenaPlayerBinderValidatorException",
 ]
 
 # ======================# ARENA_PLAYER_BINDER_VALIDATION_FAILURE #======================#
-class ArenaPlayerBinderValidationException(BinderValidationException):
+class ArenaPlayerBinderValidatorException(BinderValidatorException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a ArenaPlayerBinder validation check failed.
+        1.  Indicate that a candidate did not pass a ArenaPlayerBinder validator check.
 
     Attributes:
         msg: Optional[str]
@@ -39,9 +39,9 @@ class ArenaPlayerBinderValidationException(BinderValidationException):
     Provides:
 
     Super Class:
-        BinderValidationException
+        BinderValidatorException
     """
-    MSG = "ArenaPlayerBinder validation check failed."
+    MSG = "ArenaPlayerBinder validator check."
     ERR_CODE = "ARENA_PLAYER_BINDER_VALIDATION_FAILURE"
     
     def __init__(

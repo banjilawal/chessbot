@@ -10,23 +10,23 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import QueryValidationException
+from err import QueryValidatorException
 from result import MethodResultType
 
 
 __all__ = [
     # ======================# TOKEN_QUERY_VALIDATION_FAILURE #======================#
-    "TokenQueryValidationException",
+    "TokenQueryValidatorException",
 ]
 
 # ======================# TOKEN_QUERY_VALIDATION_FAILURE #======================#
-class TokenQueryValidationException(QueryValidationException):
+class TokenQueryValidatorException(QueryValidatorException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a TokenQueryValidation check failed.
+        1.  Indicate that a candidate did not pass a TokenQueryValidator check.
 
     Attributes:
         msg: Optional[str]
@@ -41,9 +41,9 @@ class TokenQueryValidationException(QueryValidationException):
     Provides:
 
     Super Class:
-        QueryValidationException
+        QueryValidatorException
     """
-    MSG = "TokenQueryValidation check failed"
+    MSG = "TokenQueryValidator check"
     ERR_CODE = "TOKEN_QUERY_VALIDATION_FAILURE"
     
     def __init__(

@@ -10,22 +10,22 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import ValidationException
+from err import ValidatorException
 from result import MethodResultType
 
 __all__ = [
     # ======================# VECTOR_VALIDATION_FAILURE #======================#
-    "VectorValidationException",
+    "VectorValidatorException",
 ]
 
 # ======================# VECTOR_VALIDATION_FAILURE #======================#
-class VectorValidationException(ValidationException):
+class VectorValidatorException(ValidatorException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate a VectorValidation check failed.
+        1.  Indicate a VectorValidator check.
 
     Attributes:
         msg: Optional[str]
@@ -40,9 +40,9 @@ class VectorValidationException(ValidationException):
     Provides:
 
     Super Class:
-        ValidationException
+        ValidatorException
     """
-    MSG = "VectorValidation check failed"
+    MSG = "VectorValidator check"
     ERR_CODE = "VECTOR_VALIDATION_FAILURE"
     
     def __init__(

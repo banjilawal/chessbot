@@ -13,20 +13,20 @@ from typing import Any, Optional
 
 __all__ = [
     # ======================# PERSONA_CONTEXT_VALIDATION_FAILURE #======================#
-    "PersonaContextValidationException",
+    "PersonaContextValidatorException",
 ]
 
-from err import ContextValidationException
+from err import ContextValidatorException
 
 
 # ======================# PERSONA_CONTEXT_VALIDATION_FAILURE #======================#
-class PersonaContextValidationException(ContextValidationException):
+class PersonaContextValidatorException(ContextValidatorException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a PersonaContextValidation check failed.
+        1.  Indicate that a candidate did not pass a PersonaContextValidator check.
 
     Attributes:
             msg: Optional[str]
@@ -41,7 +41,7 @@ class PersonaContextValidationException(ContextValidationException):
     Provides:
 
     Super Class:
-        ContextValidationException
+        ContextValidatorException
     """
     MSG = "No validation logic for PersonaContext attribute"
     ERR_CODE = "PERSONA_CONTEXT_VALIDATION_FAILURE"

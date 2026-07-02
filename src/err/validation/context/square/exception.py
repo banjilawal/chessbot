@@ -13,20 +13,20 @@ from typing import Any, Optional
 
 __all__ = [
     # ======================# SQUARE_CONTEXT_VALIDATION_FAILURE #======================#
-    "SquareContextValidationException",
+    "SquareContextValidatorException",
 ]
 
-from err import ContextValidationException
+from err import ContextValidatorException
 
 
 # ======================# SQUARE_CONTEXT_VALIDATION_FAILURE #======================#
-class SquareContextValidationException(ContextValidationException):
+class SquareContextValidatorException(ContextValidatorException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a SquareContextValidation check failed.
+        1.  Indicate that a candidate did not pass a SquareContextValidator check.
 
     Attributes:
             msg: Optional[str]
@@ -41,7 +41,7 @@ class SquareContextValidationException(ContextValidationException):
     Provides:
 
     Super Class:
-        ContextValidationException
+        ContextValidatorException
     """
     MSG = "No validation logic for SquareContext attribute"
     ERR_CODE = "SQUARE_CONTEXT_VALIDATION_FAILURE"

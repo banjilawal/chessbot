@@ -10,21 +10,21 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import RankValidationException
+from err import RankValidatorException
 
 __all__ = [
     # ======================# ROOK_VALIDATION_FAILURE #======================#
-    "RookValidationException",
+    "RookValidatorException",
 ]
 
 # ======================# ROOK_VALIDATION_FAILURE #======================#
-class RookValidationException(RankValidationException):
+class RookValidatorException(RankValidatorException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a Rook validation check failed.
+        1.  Indicate that a candidate did not pass a Rook validator check.
 
     Attributes:
         msg: Optional[str]
@@ -39,9 +39,9 @@ class RookValidationException(RankValidationException):
     Provides:
 
     Super Class:
-        RankValidationException
+        RankValidatorException
     """
-    MSG = "Rook validation check failed."
+    MSG = "Rook validator check."
     ERR_CODE = "ROOK_VALIDATION_FAILURE"
     
     def __init__(

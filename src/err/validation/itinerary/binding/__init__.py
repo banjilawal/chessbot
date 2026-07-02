@@ -10,9 +10,7 @@ version: 1.0.1
 # ============ ERR.VALIDATION.ITINERARY.BINDING PACKAGE ===========#
 
 # Packages
-from .full import *
 from .null import *
-from .partial import *
 
 # Modules
 from .exception import  ItineraryConsistencyException

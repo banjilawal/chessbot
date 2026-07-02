@@ -13,20 +13,20 @@ from typing import Any, Optional
 
 __all__ = [
     # ======================# FORMATION_CONTEXT_VALIDATION_FAILURE #======================#
-    "FormationContextValidationException",
+    "FormationContextValidatorException",
 ]
 
-from err import ContextValidationException
+from err import ContextValidatorException
 
 
 # ======================# FORMATION_CONTEXT_VALIDATION_FAILURE #======================#
-class FormationContextValidationException(ContextValidationException):
+class FormationContextValidatorException(ContextValidatorException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a FormationContextValidation check failed.
+        1.  Indicate that a candidate did not pass a FormationContextValidator check.
 
     Attributes:
             msg: Optional[str]
@@ -41,7 +41,7 @@ class FormationContextValidationException(ContextValidationException):
     Provides:
 
     Super Class:
-        ContextValidationException
+        ContextValidatorException
     """
     MSG = "No validation logic for FormationContext attribute"
     ERR_CODE = "FORMATION_CONTEXT_VALIDATION_FAILURE"

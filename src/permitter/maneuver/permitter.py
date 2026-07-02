@@ -121,12 +121,38 @@ class ManeuverPermitter:
             )
         origin = token_origin_search_result.payload[0]
         
-        destination_relation_analysis_result = destination_relation_analyzer.analyze(
+        destination_relation_analysis = destination_relation_analyzer.analyze(
             candidate_primary=destination,
             candidate_satellite=token,
+            token_validator=token_validator,
             square_validator=square_validator,
-            toke
         )
+        # Handle the case that, the destination_relation_analyzer aborts.
+        if destination_relation_analysis.is_failure:
+            # Return the exception chain on failure
+            return AnalysisResult.failure(
+                ManeuverPermitterException(
+                    cls_mthd=method,
+                    cls_name=cls.__name__,
+                    msg=ManeuverPermitterException.MSG,
+                    err_code=ManeuverPermitterException.ERR_CODE,
+                    mthd_rslt_type=MethodResultType.ANALYSIS_RESULT,
+                    ex=destination_relation_analysis.exception,
+                )
+            )
+        # Handle the case that, the token and destination are related in some fashion.
+        if destination_relation_analysis.is_failure:
+            # Return the exception chain on failure
+            return AnalysisResult.failure(
+                ManeuverPermitterException(
+                    cls_mthd=method,
+                    cls_name=cls.__name__,
+                    msg=ManeuverPermitterException.MSG,
+                    err_code=ManeuverPermitterException.ERR_CODE,
+                    mthd_rslt_type=MethodResultType.ANALYSIS_RESULT,
+                    ex=destination_relation_analysis.exception,
+                )
+            )
         for square in [origin, destination]:
             square_validation_result = square_validator.validate(square)
             if square_validation_result.is_failure:

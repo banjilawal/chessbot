@@ -13,20 +13,20 @@ from typing import Any, Optional
 
 __all__ = [
     # ======================# BOARD_CONTEXT_VALIDATION_FAILURE #======================#
-    "BoardContextValidationException",
+    "BoardContextValidatorException",
 ]
 
-from err import ContextValidationException
+from err import ContextValidatorException
 
 
 # ======================# BOARD_CONTEXT_VALIDATION_FAILURE #======================#
-class BoardContextValidationException(ContextValidationException):
+class BoardContextValidatorException(ContextValidatorException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a BoardContextValidation check failed.
+        1.  Indicate that a candidate did not pass a BoardContextValidator check.
 
     Attributes:
             msg: Optional[str]
@@ -41,7 +41,7 @@ class BoardContextValidationException(ContextValidationException):
     Provides:
 
     Super Class:
-        ContextValidationException
+        ContextValidatorException
     """
     MSG = "No validation logic for BoardContext attribute"
     ERR_CODE = "BOARD_CONTEXT_VALIDATION_FAILURE"

@@ -13,20 +13,20 @@ from typing import Any, Optional
 
 __all__ = [
     # ======================# PLAYER_CONTEXT_VALIDATION_FAILURE #======================#
-    "PlayerContextValidationException",
+    "PlayerContextValidatorException",
 ]
 
-from err import ContextValidationException
+from err import ContextValidatorException
 
 
 # ======================# PLAYER_CONTEXT_VALIDATION_FAILURE #======================#
-class PlayerContextValidationException(ContextValidationException):
+class PlayerContextValidatorException(ContextValidatorException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a PlayerContextValidation check failed.
+        1.  Indicate that a candidate did not pass a PlayerContextValidator check.
 
     Attributes:
             msg: Optional[str]
@@ -41,7 +41,7 @@ class PlayerContextValidationException(ContextValidationException):
     Provides:
 
     Super Class:
-        ContextValidationException
+        ContextValidatorException
     """
     MSG = "No validation logic for PlayerContext attribute"
     ERR_CODE = "PLAYER_CONTEXT_VALIDATION_FAILURE"

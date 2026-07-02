@@ -13,20 +13,20 @@ from typing import Any, Optional
 
 __all__ = [
     # ======================# COORD_CONTEXT_VALIDATION_FAILURE #======================#
-    "CoordContextValidationException",
+    "CoordContextValidatorException",
 ]
 
-from err import ContextValidationException
+from err import ContextValidatorException
 
 
 # ======================# COORD_CONTEXT_VALIDATION_FAILURE #======================#
-class CoordContextValidationException(ContextValidationException):
+class CoordContextValidatorException(ContextValidatorException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a CoordContextValidation check failed.
+        1.  Indicate that a candidate did not pass a CoordContextValidator check.
 
     Attributes:
             msg: Optional[str]
@@ -41,7 +41,7 @@ class CoordContextValidationException(ContextValidationException):
     Provides:
 
     Super Class:
-        ContextValidationException
+        ContextValidatorException
     """
     MSG = "No validation logic for CoordContext attribute"
     ERR_CODE = "COORD_CONTEXT_VALIDATION_FAILURE"

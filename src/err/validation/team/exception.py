@@ -10,22 +10,22 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import ValidationException
+from err import ValidatorException
 from result import MethodResultType
 
 __all__ = [
     # ======================# TEAM_VALIDATION_FAILURE #======================#
-    "TeamValidationException",
+    "TeamValidatorException",
 ]
 
 # ======================# TEAM_VALIDATION_FAILURE #======================#
-class TeamValidationException(ValidationException):
+class TeamValidatorException(ValidatorException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a TeamValidation check failed.
+        1.  Indicate that a candidate did not pass a TeamValidator check.
 
     Attributes:
             msg: Optional[str]
@@ -40,9 +40,9 @@ class TeamValidationException(ValidationException):
     Provides:
 
     Super Class:
-        ValidationException
+        ValidatorException
     """
-    MSG = "TeamValidation check failed"
+    MSG = "TeamValidator check"
     ERR_CODE = "TEAM_VALIDATION_FAILURE"
     
     def __init__(

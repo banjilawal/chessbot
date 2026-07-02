@@ -10,22 +10,22 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import ValidationException
+from err import ValidatorException
 from result import MethodResultType
 
 __all__ = [
     # ======================# HOSTAGE_VALIDATION_FAILURE #======================#
-    "HostageValidationException",
+    "HostageValidatorException",
 ]
 
 # ======================# HOSTAGE_VALIDATION_FAILURE #======================#
-class HostageValidationException(ValidationException):
+class HostageValidatorException(ValidatorException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a HostageValidation check failed.
+        1.  Indicate that a candidate did not pass a HostageValidator check.
 
     Attributes:
         msg: Optional[str]
@@ -40,9 +40,9 @@ class HostageValidationException(ValidationException):
     Provides:
 
     Super Class:
-        ValidationException
+        ValidatorException
     """
-    MSG = "HostageValidation check failed"
+    MSG = "HostageValidator check"
     ERR_CODE = "HOSTAGE_VALIDATION_FAILURE"
     
     def __init__(

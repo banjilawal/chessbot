@@ -10,7 +10,7 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import ItineraryValidationException
+from err import ItineraryValidatorException
 from result import MethodResultType
 
 __all__ = [
@@ -19,7 +19,7 @@ __all__ = [
 ]
 
 # ======================# ITINERARY_SOURCE_EQUALS_DESTINATION #======================#
-class ItinerarySourceEqualsDestinationException(ItineraryValidationException):
+class ItinerarySourceEqualsDestinationException(ItineraryValidatorException):
     """
     Role:
         -   Error Tracing
@@ -40,7 +40,7 @@ class ItinerarySourceEqualsDestinationException(ItineraryValidationException):
     Provides:
 
     Super Class:
-        ItineraryValidationException
+        ItineraryValidatorException
     """
     MSG = "Itinerary source and destination cannot be the same."
     ERR_CODE = "ITINERARY_SOURCE_EQUALS_DESTINATION"

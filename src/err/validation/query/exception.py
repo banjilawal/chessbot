@@ -10,23 +10,23 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import ValidationException
+from err import ValidatorException
 from result import MethodResultType
 
 
 __all__ = [
     # ======================# QUERY_VALIDATION_FAILURE #======================#
-    "QueryValidationException",
+    "QueryValidatorException",
 ]
 
 # ======================# QUERY_VALIDATION_FAILURE #======================#
-class QueryValidationException(ValidationException):
+class QueryValidatorException(ValidatorException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a QueryValidation check failed.
+        1.  Indicate that a candidate did not pass a QueryValidator check.
 
     Attributes:
         msg: Optional[str]
@@ -41,9 +41,9 @@ class QueryValidationException(ValidationException):
     Provides:
 
     Super Class:
-        ValidationException
+        ValidatorException
     """
-    MSG = "QueryValidation check failed"
+    MSG = "QueryValidator check"
     ERR_CODE = "QUERY_VALIDATION_FAILURE"
     
     def __init__(

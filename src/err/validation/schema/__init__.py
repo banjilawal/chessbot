@@ -13,4 +13,4 @@ version: 1.0.1
 from .table import *
 
 # Modules
-from .exception import SchemaValidationException
+from .exception import SchemaValidatorException

@@ -13,20 +13,20 @@ from typing import Any, Optional
 
 __all__ = [
     # ======================# RANK_CONTEXT_VALIDATION_FAILURE #======================#
-    "RankContextValidationException",
+    "RankContextValidatorException",
 ]
 
-from err import ContextValidationException
+from err import ContextValidatorException
 
 
 # ======================# RANK_CONTEXT_VALIDATION_FAILURE #======================#
-class RankContextValidationException(ContextValidationException):
+class RankContextValidatorException(ContextValidatorException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a RankContextValidation check failed.
+        1.  Indicate that a candidate did not pass a RankContextValidator check.
 
     Attributes:
             msg: Optional[str]
@@ -41,7 +41,7 @@ class RankContextValidationException(ContextValidationException):
     Provides:
 
     Super Class:
-        ContextValidationException
+        ContextValidatorException
     """
     MSG = "No validation logic for RankContext attribute"
     ERR_CODE = "RANK_CONTEXT_VALIDATION_FAILURE"

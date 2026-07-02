@@ -10,22 +10,22 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import ValidationException
+from err import ValidatorException
 from result import MethodResultType
 
 __all__ = [
     # ======================# IDENTITY_VALIDATION_FAILURE #======================#
-    "IdentityValidationException",
+    "IdentityValidatorException",
 ]
 
 # ======================# IDENTITY_VALIDATION_FAILURE #======================#
-class IdentityValidationException(ValidationException):
+class IdentityValidatorException(ValidatorException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an IdentityValidation check failed.
+        1.  Indicate that an IdentityValidator check.
 
     Attributes:
         msg: Optional[str]
@@ -40,9 +40,9 @@ class IdentityValidationException(ValidationException):
     Provides:
 
     Super Class:
-        ValidationException
+        ValidatorException
     """
-    MSG = "IdentityValidation check failed"
+    MSG = "IdentityValidator check"
     ERR_CODE = "IDENTITY_VALIDATION_FAILURE"
     
     def __init__(

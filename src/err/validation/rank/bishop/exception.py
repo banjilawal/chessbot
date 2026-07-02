@@ -10,21 +10,21 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import RankValidationException
+from err import RankValidatorException
 
 __all__ = [
     # ======================# BISHOP_VALIDATION_FAILURE #======================#
-    "BishopValidationException",
+    "BishopValidatorException",
 ]
 
 # ======================# BISHOP_VALIDATION_FAILURE #======================#
-class BishopValidationException(RankValidationException):
+class BishopValidatorException(RankValidatorException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a Bishop validation check failed.
+        1.  Indicate that a candidate did not pass a Bishop validator check.
 
     Attributes:
         msg: Optional[str]
@@ -39,9 +39,9 @@ class BishopValidationException(RankValidationException):
     Provides:
 
     Super Class:
-        RankValidationException
+        RankValidatorException
     """
-    MSG = "Bishop validation check failed."
+    MSG = "Bishop validator check."
     ERR_CODE = "BISHOP_VALIDATION_FAILURE"
     
     def __init__(

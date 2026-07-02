@@ -10,22 +10,22 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import ValidationException
+from err import ValidatorException
 from result import MethodResultType
 
 __all__ = [
     # ======================# NAME_VALIDATION_FAILURE #======================#
-    "NameValidationException",
+    "NameValidatorException",
 ]
 
 # ======================# NAME_VALIDATION_FAILURE #======================#
-class NameValidationException(ValidationException):
+class NameValidatorException(ValidatorException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a NameValidation check failed.
+        1.  Indicate that a candidate did not pass a NameValidator check.
 
     Attributes:
         msg: Optional[str]
@@ -40,9 +40,9 @@ class NameValidationException(ValidationException):
     Provides:
 
     Super Class:
-        ValidationException
+        ValidatorException
     """
-    MSG = "NameValidation check failed"
+    MSG = "NameValidator check"
     ERR_CODE = "NAME_VALIDATION_FAILURE"
     
     def __init__(

@@ -14,4 +14,4 @@ from .arena import *
 from .board import *
 
 # Modules
-from .exception import BinderValidationException
+from .exception import BinderValidatorException

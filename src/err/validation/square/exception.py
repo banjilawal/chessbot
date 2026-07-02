@@ -10,22 +10,22 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import ValidationException
+from err import ValidatorException
 from result import MethodResultType
 
 __all__ = [
     # ======================# SQUARE_VALIDATION_FAILURE #======================#
-    "SquareValidationException",
+    "SquareValidatorException",
 ]
 
 # ======================# SQUARE_VALIDATION_FAILURE #======================#
-class SquareValidationException(ValidationException):
+class SquareValidatorException(ValidatorException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a SquareValidation check failed.
+        1.  Indicate that a candidate did not pass a SquareValidator check.
 
     Attributes:
         msg: Optional[str]
@@ -40,9 +40,9 @@ class SquareValidationException(ValidationException):
     Provides:
 
     Super Class:
-        ValidationException
+        ValidatorException
     """
-    MSG = "SquareValidation check failed"
+    MSG = "SquareValidator check"
     ERR_CODE = "SQUARE_VALIDATION_FAILURE"
     
     def __init__(

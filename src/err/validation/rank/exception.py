@@ -10,22 +10,22 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import ValidationException
+from err import ValidatorException
 from result import MethodResultType
 
 __all__ = [
     # ======================# RANK_VALIDATION_FAILURE #======================#
-    "RankValidationException",
+    "RankValidatorException",
 ]
 
 # ======================# RANK_VALIDATION_FAILURE #======================#
-class RankValidationException(ValidationException):
+class RankValidatorException(ValidatorException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a RankValidation check failed.
+        1.  Indicate that a candidate did not pass a RankValidator check.
 
     Attributes:
         msg: Optional[str]
@@ -40,9 +40,9 @@ class RankValidationException(ValidationException):
     Provides:
 
     Super Class:
-        ValidationException
+        ValidatorException
     """
-    MSG = "RankValidation check failed"
+    MSG = "RankValidator check"
     ERR_CODE = "RANK_VALIDATION_FAILURE"
     
     def __init__(

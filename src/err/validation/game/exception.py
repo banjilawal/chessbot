@@ -10,22 +10,22 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import ValidationException
+from err import ValidatorException
 from result import MethodResultType
 
 __all__ = [
     # ======================# GAME_VALIDATION_FAILURE #======================#
-    "GameValidationException",
+    "GameValidatorException",
 ]
 
 # ======================# GAME_VALIDATION_FAILURE #======================#
-class GameValidationException(ValidationException):
+class GameValidatorException(ValidatorException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a GameValidation check failed.
+        1.  Indicate that a candidate did not pass a GameValidator check.
 
     Attributes:
             msg: Optional[str]
@@ -40,9 +40,9 @@ class GameValidationException(ValidationException):
     Provides:
 
     Super Class:
-        ValidationException
+        ValidatorException
     """
-    MSG = "GameValidation check failed"
+    MSG = "GameValidator check"
     ERR_CODE = "GAME_VALIDATION_FAILURE"
     
     def __init__(

@@ -1,7 +1,7 @@
-# src/err/validation/itinerary/binding/partial/exception.py
+# src/err/validation/destination/circular/exception.py
 
 """
-Module: err.validation.itinerary.binding.partial.exception
+Module: err.validation.destination.circular.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,22 +10,23 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import ItineraryConsistencyException
+from err import ValidatorException
 from result import MethodResultType
 
 __all__ = [
-    # ======================# PARTIAL_TOKEN_DESTINATION_RELATION_ERROR #======================#
-    "PartialTokenDestinationBindingException",
+    # ======================# TOKEN_ALREADY_AT_DESTINATION_ERROR #======================#
+    "TokenAlreadyAtDestinationException",
 ]
 
-# ======================# PARTIAL_TOKEN_DESTINATION_RELATION_ERROR #======================#
-class PartialTokenDestinationBindingException(ItineraryConsistencyException):
+# ======================# TOKEN_ALREADY_AT_DESTINATION_ERROR #======================#
+class TokenAlreadyAtDestinationException(ValidatorException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate an Itinerary's token has a partial relation with the destination.
+        1.  Indicate an Itinerary's token has a full binding to the destination. This
+            means its already at the destination.
 
     Attributes:
         msg: Optional[str]
@@ -40,10 +41,10 @@ class PartialTokenDestinationBindingException(ItineraryConsistencyException):
     Provides:
 
     Super Class:
-        ItineraryConsistencyException
+        ValidatorException
     """
-    MSG = "Itinerary's token does not have bidirectional relation with destination."
-    ERR_CODE = "PARTIAL_TOKEN_DESTINATION_RELATION_ERROR"
+    MSG = "Token is already at the destination."
+    ERR_CODE = "TOKEN_ALREADY_AT_DESTINATION_ERROR"
     
     def __init__(
             self,
