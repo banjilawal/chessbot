@@ -141,7 +141,7 @@ class ManeuverPermitter:
             )
         # Handle the case that, the token is not free.
         report = cast(TokenReadinessReport, freedom_analysis_result.payload)
-        if report.is_not_ready:
+        if report.token_is_not_ready:
             # Return the exception chain on failure
             return AnalysisResult.completed(
                 ManeuverApproval.deny(

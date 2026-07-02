@@ -22,7 +22,7 @@ from microservice import SquareValidator
 from model import Square, SquareContext, Token
 from report import DeleteApproval, RelationReport, TokenReadinessReport
 from report.approval.maneuver import ManeuverApproval
-from result import AnalysisResult, MethodResultType, SearchResult
+from result import SearchResult, MethodResultType, SearchResult
 from stack import TokenStackService
 from util import LoggingLevelRouter
 from validation import TokenFreedomAnalyzer
@@ -48,7 +48,7 @@ class TokenOriginSearcher:
                     rank_service: RankService = RankService(),
                     rank_quota_analyzer: RankQuotaAnalyzer = RankQuotaAnalyzer(),
                     collision_detector: TokenCollisionAnalyst = TokenCollisionAnalyst(),
-            ) -> AnalysisResult
+            ) -> SearchResult
 
     Super Class:
     """
@@ -58,7 +58,7 @@ class TokenOriginSearcher:
     def execute(
             cls,
             token: Token,
-            token_freedom_analyzer: TokenReadinessAnalyzer | None = None,
+            readiness_analyzer: TokenReadinessAnalyzer | None = None,
     ) -> SearchResult:
         """
         Find the square a Token occupies on a Board.
@@ -77,9 +77,9 @@ class TokenOriginSearcher:
             item_id: int
             stack: TokenStackService
             square_validator: SquareValidator
-            token_freedom_analyzer: TokenFreedomAnalyzer
+            readiness_analyzer: TokenFreedomAnalyzer
         Returns:
-            AnalysisResult
+            SearchResult
         Raises:
             TokenDeletePermitterException
             TokenStackFullException
@@ -87,29 +87,39 @@ class TokenOriginSearcher:
         method =  f"{cls.__name__}.execute"
         
         # --- Supply any missing dependencies. ---#
-        if token_freedom_analyzer is None:
-            token_freedom_analyzer = TokenReadinessAnalyzer()
+        if readiness_analyzer is None:
+            readiness_analyzer = TokenReadinessAnalyzer()
 
         # Handle the case that, the token fails a validation check.
-        freedom_analysis_result = token_freedom_analyzer.analyze(token)
+        readiness_analysis_result = readiness_analyzer.analyze(token)
         # Handle the case that, the freedom
-        if freedom_analysis_result.is_failure:
+        if readiness_analysis_result.is_failure:
             # Return the exception chain on failure
-            return AnalysisResult.failure(
-                TokenOriginSearcherException(
+            return SearchResult.failure(
+                exception=TokenOriginSearcherException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
                     msg=TokenOriginSearcherException.MSG,
                     err_code=TokenOriginSearcherException.ERR_CODE,
                     mthd_rslt_type=MethodResultType.ANALYSIS_RESULT,
-                    ex=freedom_analysis_result.exception,
+                    ex=readiness_analysis_result.exception,
                 )
             )
-        # Handle the case that, the token is not free.
-        report = cast(TokenReadinessReport, freedom_analysis_result.payload)
-        if report.is_not_ready:
+        # Handle the case that, the token is not ready for use.
+        report = cast(TokenReadinessReport, readiness_analysis_result.payload)
+        if report.token_is_not_ready:
             # Return the exception chain on failure
-            return AnalysisResult.completed(
+            return SearchResult.failure(
+                exception=TokenOriginSearcherException(
+                    cls_mthd=method,
+                    cls_name=cls.__name__,
+                    msg=TokenOriginSearcherException.MSG,
+                    err_code=TokenOriginSearcherException.ERR_CODE,
+                    mthd_rslt_type=MethodResultType.ANALYSIS_RESULT,
+                    ex=readiness_analysis_result.exception,
+                )
+            )
+            return SearchResult.completed(
                 ManeuverApproval.deny(
                     exception=TokenOriginSearcherException(
                         cls_mthd=method,
@@ -130,7 +140,7 @@ class TokenOriginSearcher:
         # Handle the case that, the search is not completed.
         if origin_search_result.is_failure:
             # Return the exception chain on failure
-            return AnalysisResult.completed(
+            return SearchResult.completed(
                 ManeuverApproval.deny(
                     exception=TokenOriginSearcherException(
                         cls_mthd=method,
@@ -148,7 +158,7 @@ class TokenOriginSearcher:
         # Handle the case that, the token is not on the board.
         if origin_search_result.is_empty:
             # Return the exception chain on failure
-            return AnalysisResult.completed(
+            return SearchResult.completed(
                 ManeuverApproval.deny(
                     exception=TokenOriginSearcherException(
                         cls_mthd=method,
@@ -171,7 +181,7 @@ class TokenOriginSearcher:
         # Handle the case that, the relation_analysis is not completed.
         if origin_token_relation_result.is_failure:
             # Return the exception chain on failure
-            return AnalysisResult.failure(
+            return SearchResult.failure(
                 TokenOriginSearcherException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
@@ -185,7 +195,7 @@ class TokenOriginSearcher:
         origin_relation = cast(RelationReport, origin_token_relation_result.payload)
         if not origin_relation.fully_exists:
             # Return the exception chain on failure
-            return AnalysisResult.completed(
+            return SearchResult.completed(
                 ManeuverApproval.deny(
                     exception=TokenOriginSearcherException(
                         cls_mthd=method,
@@ -206,7 +216,7 @@ class TokenOriginSearcher:
         )
         # Handle the case that, the relation_analysis is not completed.
         # Return the exception chain on failure
-        return AnalysisResult.failure(
+        return SearchResult.failure(
             TokenOriginSearcherException(
                 cls_mthd=method,
                 cls_name=cls.__name__,
@@ -238,7 +248,7 @@ class TokenOriginSearcher:
         id_validation_result = square_validator.validate_id(candidate=id)
         if id_validation_result.is_failure:
             # Return the exception chain on failure
-            return AnalysisResult.failure(
+            return SearchResult.failure(
                 TokenOriginSearcherException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
@@ -250,14 +260,14 @@ class TokenOriginSearcher:
             )
 
         
-        stack_validation_result = token_freedom_analyzer.execute(
+        stack_validation_result = readiness_analyzer.execute(
             candidate=stack,
             target_model=TokenStackService,
             null_exception=TokenStackNullException()
         )
         if stack_validation_result.is_failure:
             # Return the exception chain on failure
-            return AnalysisResult.failure(
+            return SearchResult.failure(
                 TokenOriginSearcherException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
@@ -269,7 +279,7 @@ class TokenOriginSearcher:
             )
         if stack.is_empty:
             # Return the exception chain on failure
-            return AnalysisResult.completed(
+            return SearchResult.completed(
                 DeleteApproval.deny(
                     exception=TokenOriginSearcherException(
                         cls_mthd=method,
@@ -287,6 +297,6 @@ class TokenOriginSearcher:
                 )
             )
         # --- Integrity and performance tests are passed. ---#
-        return AnalysisResult.completed(DeleteApproval.approve(id=item_id, stack=stack))
+        return SearchResult.completed(DeleteApproval.approve(id=item_id, stack=stack))
 
     

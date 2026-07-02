@@ -11,6 +11,7 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from err import TokenException
+from result import MethodResultType
 
 
 __all__ = [
@@ -41,7 +42,7 @@ class CombatantTokenException(TokenException):
     Super Class:
         TokenException
     """
-    MSG = "CombatantToken error state."
+    MSG = "CombatantToken encountered an error."
     ERR_CODE = "COMBATANT_TOKEN_ERROR"
     
     def __init__(

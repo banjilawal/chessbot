@@ -11,6 +11,7 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from err import TokenException
+from result import MethodResultType
 
 
 __all__ = [
@@ -41,7 +42,7 @@ class KingTokenException(TokenException):
     Super Class:
         TokenException
     """
-    MSG = "KingToken error state."
+    MSG = "KingToken encountered an error."
     ERR_CODE = "KING_TOKEN_ERROR"
     
     def __init__(

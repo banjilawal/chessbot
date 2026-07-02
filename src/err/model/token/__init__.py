@@ -11,6 +11,7 @@ version: 1.0.1
 
 # Packages
 from .combatant import *
+from .disabled import *
 from .king import *
 
 # Modules

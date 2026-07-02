@@ -103,7 +103,7 @@ class ItineraryAssemblyPrimer(AssemblyPrimer[Itinerary]):
             )
         report = cast(TokenReadinessReport, token_freedom_validation_result.payload)
         # Handle the case that, the token is not free.
-        if report.is_not_ready:
+        if report.token_is_not_ready:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 ItineraryAssemblyPrimerException(

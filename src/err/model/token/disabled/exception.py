@@ -1,7 +1,7 @@
-# src/err/model/token/exception.py
+# src/err/model/token/disabled/exception.py
 
 """
-Module: err.model.token.exception
+Module: err.model.token.disabled.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,23 +10,23 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import ModelException
+from err import TokenException
 from result import MethodResultType
 
 
 __all__ = [
-    # ======================# TOKEN_ERROR #======================#
-    "TokenException",
+    # ======================# DISABLED_TOKEN_ERROR #======================#
+    "DisabledTokenException",
 ]
 
-# ======================# TOKEN_ERROR #======================#
-class TokenException(ModelException):
+# ======================# DISABLED_TOKEN_ERROR #======================#
+class DisabledTokenException(TokenException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a Token encountered an error.
+        1.  Indicate that an attempt was made to use a disabled Token.
 
     Attributes:
         msg: Optional[str]
@@ -40,10 +40,10 @@ class TokenException(ModelException):
     Provides:
 
     Super Class:
-        ModelException
+        TokenException
     """
-    MSG = "Token encountered an error."
-    ERR_CODE = "TOKEN_ERROR"
+    MSG = "Cannot use a disabled Token."
+    ERR_CODE = "DISABLED_TOKEN_ERROR"
     
     def __init__(
             self,

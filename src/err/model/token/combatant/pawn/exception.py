@@ -41,7 +41,7 @@ class PawnTokenException(TokenException):
     Super Class:
         TokenException
     """
-    MSG = "PawnToken error state."
+    MSG = "PawnToken encountered an error."
     ERR_CODE = "PAWN_TOKEN_ERROR"
     
     def __init__(

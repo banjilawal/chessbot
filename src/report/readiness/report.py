@@ -52,7 +52,7 @@ class TokenReadinessReport(Report):
         return self.state == ReadinessState.READY
     
     @property
-    def is_not_ready(self) -> bool:
+    def token_is_not_ready(self) -> bool:
         return self.state != ReadinessState.READY
     
     @property
