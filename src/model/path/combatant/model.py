@@ -22,13 +22,14 @@ class CombatantPath(Path):
         -   Data Holder
 
     Responsibilities:
-        1.  Contains the origin and destination squares a token wants to travel between.
+        1.  Provide information about a path a CombatantToken might follow.
 
     Attributes:
         id: int
-        combatant: combatantToken
         origin: Square
         destination: Square
+        combatant: CombatantToken
+        cost: Optional[int]
 
     Provides:
 
@@ -45,6 +46,14 @@ class CombatantPath(Path):
             destination: Square,
             cost: Optional[int] | None,
     ):
+        """
+        Args:
+            id: int
+            combatant: CombatantToken
+            origin: Square
+            destination: Square
+            cost: Optional[int]
+        """
         super().__init__(
             id=id,
             origin=origin,

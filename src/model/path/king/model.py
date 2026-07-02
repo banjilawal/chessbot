@@ -22,13 +22,14 @@ class KingPath(Path):
         -   Data Holder
 
     Responsibilities:
-        1.  Contains the origin and destination squares a token wants to travel between.
+        1.  Provide information about a path a KingToken might follow.
 
     Attributes:
         id: int
-        king: kingToken
+        king: KingToken
         origin: Square
         destination: Square
+        cost: Optional[int]
 
     Provides:
 
@@ -45,6 +46,14 @@ class KingPath(Path):
             destination: Square,
             cost: Optional[int] | None,
     ):
+        """
+        Args:
+            id: int
+            king: KingToken
+            origin: Square
+            destination: Square
+            cost: Optional[int]
+        """
         super().__init__(
             id=id,
             origin=origin,

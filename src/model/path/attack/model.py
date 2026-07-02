@@ -20,13 +20,17 @@ class AttackPath(Path):
         -   Data Holder
 
     Responsibilities:
-        1.  Contains the origin and destination squares a token wants to travel between.
+        1.  Provide information about a Path which might be used to attack
+            an enemy's CombatantToken.
 
     Attributes:
         id: int
-        combatant: combatantToken
-        origin: Square
-        destination: Square
+        attacker: Token
+        enemy_combatant: CombatantToken
+        attack_origin: Square
+        target_square: Square
+        cost: Optional[int]
+        benefit: Optional[int]
 
     Provides:
 
@@ -47,6 +51,16 @@ class AttackPath(Path):
             cost: Optional[int] | None,
             benefit: Optional[int] | None,
     ):
+        """
+        Args:
+            id: int
+            attacker: Token
+            enemy_combatant: CombatantToken
+            attack_origin: Square
+            target_square: Square
+            cost: Optional[int]
+            benefit: Optional[int
+        """
         super().__init__(
             id=id,
             origin=attack_origin,

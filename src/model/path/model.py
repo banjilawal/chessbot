@@ -20,7 +20,7 @@ class Path:
         -   Data Holder
 
     Responsibilities:
-        1.  Contains information about path traveled during a turn..
+        1.  Provide information about path which might be taken during a turn
 
     Attributes:
         id: int
@@ -44,6 +44,13 @@ class Path:
             destination: Square,
             cost: Optional[int] | None = None,
     ):
+        """
+        Args:
+            id: int
+            origin: Square
+            destination: Square
+            cost: Optional[int]
+        """
         self._id = id
         self._origin = origin
         self._destination = destination
