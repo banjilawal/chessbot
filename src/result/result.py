@@ -1,7 +1,7 @@
-# src/result/build/result.py
+# src/result/result.py
 
 """
-Module: result.build.result
+Module: result.result
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -22,19 +22,17 @@ class Result(Generic[T]):
         -   Error Transport
   
     Responsibilities:
-        1.  Contains the outcome of a transaction. Either a work product or
-            an exception.
+        1.  Hold the product of some work.
 
     Attributes:
-        exception: Optional[Exception]
         payload: Optional[T]
-        is_timed_out: bool
+        exception: Optional[Exception]
         is_success: bool
         is_failure: bool
 
     Provides:
-        -   def success(payload: T) -> Result[T]
-        -   def failure(exception: Exception) -> Result[T]
+        -   def success(payload: T) -> Result
+        -   def failure(exception: Exception) -> Result
         
     Super Class:
     """
@@ -71,10 +69,10 @@ class Result(Generic[T]):
         return self._exception is not None
     
     @classmethod
-    def success(cls, payload: T) -> Result[T]:
+    def success(cls, payload: T) -> Result:
         return cls(payload=payload)
     
     @classmethod
-    def failure(cls, exception: Exception) -> Result[T]:
+    def failure(cls, exception: Exception) -> Result:
         return cls(exception=exception)
     

@@ -1,14 +1,13 @@
 # src/search/origin/searcher.py
 
 """
-Module: search.origin/searcher
+Module: search.origin.searcher
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
 """
 
 from __future__ import annotations
-
 from typing import cast
 
 from analyzer import TokenReadinessAnalyzer
