@@ -13,7 +13,7 @@ from typing import Optional, cast
 
 from analyzer import SquareTokenRelationAnalyzer, TokenReadinessAnalyzer
 from err import (
-    BidirectionalSourceTokenRelationException, DisabledTokenManeuverException,
+    BidirectionalSourceTokenRelationException, DisabledTokenException, DisabledTokenManeuverException,
     ItinerarySourceEqualsDestinationException, PoppingEmptyTokenStackException,
     TokenOriginSearcherException,
     TokenStackNullException
@@ -23,6 +23,7 @@ from model import Square, SquareContext, Token
 from report import DeleteApproval, RelationReport, TokenReadinessReport
 from report.approval.maneuver import ManeuverApproval
 from result import SearchResult, MethodResultType, SearchResult
+from search.token.service import TokenNotFoundException
 from stack import TokenStackService
 from util import LoggingLevelRouter
 from validation import TokenFreedomAnalyzer
@@ -89,8 +90,8 @@ class TokenOriginSearcher:
         # --- Supply any missing dependencies. ---#
         if readiness_analyzer is None:
             readiness_analyzer = TokenReadinessAnalyzer()
-
-        # Handle the case that, the token fails a validation check.
+        
+        # --- Before doing anything else make sure the token can be used. ---#
         readiness_analysis_result = readiness_analyzer.analyze(token)
         # Handle the case that, the freedom
         if readiness_analysis_result.is_failure:
@@ -101,7 +102,7 @@ class TokenOriginSearcher:
                     cls_name=cls.__name__,
                     msg=TokenOriginSearcherException.MSG,
                     err_code=TokenOriginSearcherException.ERR_CODE,
-                    mthd_rslt_type=MethodResultType.ANALYSIS_RESULT,
+                    mthd_rslt_type=MethodResultType.SEARCH_RESULT,
                     ex=readiness_analysis_result.exception,
                 )
             )
@@ -115,49 +116,48 @@ class TokenOriginSearcher:
                     cls_name=cls.__name__,
                     msg=TokenOriginSearcherException.MSG,
                     err_code=TokenOriginSearcherException.ERR_CODE,
-                    mthd_rslt_type=MethodResultType.ANALYSIS_RESULT,
-                    ex=readiness_analysis_result.exception,
-                )
-            )
-            return SearchResult.completed(
-                ManeuverApproval.deny(
-                    exception=TokenOriginSearcherException(
+                    mthd_rslt_type=MethodResultType.SEARCH_RESULT,
+                    ex=DisabledTokenException(
                         cls_mthd=method,
                         cls_name=cls.__name__,
-                        msg=TokenOriginSearcherException.MSG,
-                        err_code=TokenOriginSearcherException.ERR_CODE,
-                        mthd_rslt_type=MethodResultType.ANALYSIS_RESULT,
-                        ex=DisabledTokenManeuverException(
-                            msg=DisabledTokenManeuverException.MSG,
-                            err_code=DisabledTokenManeuverException.ERR_CODE,
-                        ),
-                    )
+                        msg=DisabledTokenException.MSG,
+                        err_code=DisabledTokenException.ERR_CODE,
+                    ),
                 )
             )
+        # --- After the token is available find where its on the board. ---#
+        
         origin_search_result = token.team.board.squares.search(
             context=SquareContext(occupant=token)
         )
         # Handle the case that, the search is not completed.
         if origin_search_result.is_failure:
             # Return the exception chain on failure
-            return SearchResult.completed(
-                ManeuverApproval.deny(
-                    exception=TokenOriginSearcherException(
-                        cls_mthd=method,
-                        cls_name=cls.__name__,
-                        msg=TokenOriginSearcherException.MSG,
-                        err_code=TokenOriginSearcherException.ERR_CODE,
-                        mthd_rslt_type=MethodResultType.ANALYSIS_RESULT,
-                        ex=DisabledTokenManeuverException(
-                            msg=DisabledTokenManeuverException.MSG,
-                            err_code=DisabledTokenManeuverException.ERR_CODE,
-                        ),
-                    )
+            return SearchResult.failure(
+                exception=TokenOriginSearcherException(
+                    cls_mthd=method,
+                    cls_name=cls.__name__,
+                    msg=TokenOriginSearcherException.MSG,
+                    err_code=TokenOriginSearcherException.ERR_CODE,
+                    mthd_rslt_type=MethodResultType.SEARCH_RESULT,
+                    ex=origin_search_result.exception,
                 )
             )
         # Handle the case that, the token is not on the board.
         if origin_search_result.is_empty:
             # Return the exception chain on failure
+            return SearchResult.failure(
+                exception=TokenOriginSearcherException(
+                    cls_mthd=method,
+                    cls_name=cls.__name__,
+                    msg=TokenOriginSearcherException.MSG,
+                    err_code=TokenOriginSearcherException.ERR_CODE,
+                    mthd_rslt_type=MethodResultType.SEARCH_RESULT,
+                    ex=TokenNotFoundException(
+                        cls_mthd=method,
+                    ),
+                )
+            )
             return SearchResult.completed(
                 ManeuverApproval.deny(
                     exception=TokenOriginSearcherException(
@@ -165,7 +165,7 @@ class TokenOriginSearcher:
                         cls_name=cls.__name__,
                         msg=TokenOriginSearcherException.MSG,
                         err_code=TokenOriginSearcherException.ERR_CODE,
-                        mthd_rslt_type=MethodResultType.ANALYSIS_RESULT,
+                        mthd_rslt_type=MethodResultType.SEARCH_RESULT,
                         ex=DisabledTokenManeuverException(
                             msg=DisabledTokenManeuverException.MSG,
                             err_code=DisabledTokenManeuverException.ERR_CODE,
@@ -187,7 +187,7 @@ class TokenOriginSearcher:
                     cls_name=cls.__name__,
                     msg=TokenOriginSearcherException.MSG,
                     err_code=TokenOriginSearcherException.ERR_CODE,
-                    mthd_rslt_type=MethodResultType.ANALYSIS_RESULT,
+                    mthd_rslt_type=MethodResultType.SEARCH_RESULT,
                     ex=origin_token_relation_result.exception,
                 )
             )
@@ -202,7 +202,7 @@ class TokenOriginSearcher:
                         cls_name=cls.__name__,
                         msg=TokenOriginSearcherException.MSG,
                         err_code=TokenOriginSearcherException.ERR_CODE,
-                        mthd_rslt_type=MethodResultType.ANALYSIS_RESULT,
+                        mthd_rslt_type=MethodResultType.SEARCH_RESULT,
                         ex=BidirectionalSourceTokenRelationException(
                             msg=BidirectionalSourceTokenRelationException.MSG,
                             err_code=BidirectionalSourceTokenRelationException.ERR_CODE,
@@ -222,7 +222,7 @@ class TokenOriginSearcher:
                 cls_name=cls.__name__,
                 msg=TokenOriginSearcherException.MSG,
                 err_code=TokenOriginSearcherException.ERR_CODE,
-                mthd_rslt_type=MethodResultType.ANALYSIS_RESULT,
+                mthd_rslt_type=MethodResultType.SEARCH_RESULT,
                 ex=destination_token_relation_result.exception,
             )
         )
@@ -254,7 +254,7 @@ class TokenOriginSearcher:
                     cls_name=cls.__name__,
                     msg=TokenOriginSearcherException.MSG,
                     err_code=TokenOriginSearcherException.ERR_CODE,
-                    mthd_rslt_type=MethodResultType.ANALYSIS_RESULT,
+                    mthd_rslt_type=MethodResultType.SEARCH_RESULT,
                     ex=id_validation_result.exception,
                 )
             )
@@ -273,7 +273,7 @@ class TokenOriginSearcher:
                     cls_name=cls.__name__,
                     msg=TokenOriginSearcherException.MSG,
                     err_code=TokenOriginSearcherException.ERR_CODE,
-                    mthd_rslt_type=MethodResultType.ANALYSIS_RESULT,
+                    mthd_rslt_type=MethodResultType.SEARCH_RESULT,
                     ex=stack_validation_result.exception,
                 )
             )
@@ -286,7 +286,7 @@ class TokenOriginSearcher:
                         cls_name=cls.__name__,
                         msg=TokenOriginSearcherException.MSG,
                         err_code=TokenOriginSearcherException.ERR_CODE,
-                        mthd_rslt_type=MethodResultType.ANALYSIS_RESULT,
+                        mthd_rslt_type=MethodResultType.SEARCH_RESULT,
                         ex=PoppingEmptyTokenStackException(
                             cls_mthd=method,
                             cls_name=cls.__name__,
