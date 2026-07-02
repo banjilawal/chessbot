@@ -1,7 +1,7 @@
-# src/err/validation/destination/circular/exception.py
+# src/err/validation/destination/exception.py
 
 """
-Module: err.validation.destination.circular.exception
+Module: err.validation.destination.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -14,18 +14,18 @@ from err import ValidatorException
 from result import MethodResultType
 
 __all__ = [
-    # ======================# TOKEN_ALREADY_AT_DESTINATION_ERROR #======================#
-    "TokenAlreadyAtDestinationException",
+    # ======================# TOKEN_DESTINATION_RELATION_VALIDATOR_FAILURE #======================#
+    "TokenDestinationRelationValidatorException",
 ]
 
-# ======================# TOKEN_ALREADY_AT_DESTINATION_ERROR #======================#
-class TokenAlreadyAtDestinationException(ValidatorException):
+# ======================# TOKEN_DESTINATION_RELATION_VALIDATOR_FAILURE #======================#
+class TokenDestinationRelationValidatorException(ValidatorException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate a Token is already at its destination.
+        1.  Indicate that a candidate did not pass a TokenDestinationRelationValidator check.
 
     Attributes:
         msg: Optional[str]
@@ -42,8 +42,8 @@ class TokenAlreadyAtDestinationException(ValidatorException):
     Super Class:
         ValidatorException
     """
-    MSG = "Token is already at the destination."
-    ERR_CODE = "TOKEN_ALREADY_AT_DESTINATION_ERROR"
+    MSG = "Candidate failed a TokenDestinationRelationValidator check."
+    ERR_CODE = "TOKEN_DESTINATION_RELATION_VALIDATOR_FAILURE"
     
     def __init__(
             self,

@@ -25,7 +25,8 @@ class TokenAlreadyAtDestinationException(ValidatorException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate a Token is already at its destination.
+        1.  Indicate an Itinerary's token has a full binding to the destination. This
+            means its already at the destination.
 
     Attributes:
         msg: Optional[str]

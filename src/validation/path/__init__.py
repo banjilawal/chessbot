@@ -10,7 +10,6 @@ version: 1.0.1
 # =========== VALIDATION.ITINERARY.CONSISTENCY PACKAGE ===========#
 
 # Packages
-from .origin import *
 
 # Modules
 from .validator import TokenPathValidator

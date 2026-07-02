@@ -1,21 +1,17 @@
-# src/validation/destination/validator.py
+# src/validation/origin/validator.py
 
 """
-Module: validation.destination.validator
+Module: validation.origin.validator
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
 """
 
 from __future__ import annotations
-
 from typing import cast
 
 from analyzer import SquareTokenRelationAnalyzer
-from err import (
-    TokenDestinationRelationValidatorException, PartialTokenDestinationRelationException,
-    TokenAlreadyAtDestinationException
-)
+from err import TokenOriginRelationNullException, TokenOriginRelationValidatorException
 from model import Square, Token
 from report import RelationReport
 from result import ValidationResult
@@ -23,7 +19,7 @@ from util import LoggingLevelRouter
 from validation import SquareValidator, TokenValidator
 
 
-class TokenDestinationRelationValidator:
+class TokenOriginRelationValidator:
     """
     Role
         -   Validation Worker
@@ -31,32 +27,30 @@ class TokenDestinationRelationValidator:
         -   Consistency Assurance
 
     Responsibilities:
-        1.  Verify a Token neither has, a partial nor fully bidirectional relation it wants 
-            to visit.
-        2.  Prevents circular square visits. 
+        1.  Verify a Token has a fully bidirectional relation with the Square it wants
+            to travel from
 
     Attributes:
 
     Provides:
         -   def execute(
                     token: Token,
-                    destination: Square,
+                    origin: Square,
                     token_validator: TokenValidator | None = None,
                     square_validator: SquareValidator | None = None,
                     relation_analyzer: SquareTokenRelationAnalyzer | None = None,
             ) -> ValidationResult[Square]:
 
     Super Class:
-        Validator
     """
-    OPERATION_NAME = "token_destination_relation_validator"
+    OPERATION_NAME = "token_origin_relation_validator"
     
     @classmethod
     @LoggingLevelRouter.monitor
     def execute(
             cls,
             token: Token,
-            destination: Square,
+            origin: Square,
             token_validator: TokenValidator | None = None,
             square_validator: SquareValidator | None = None,
             relation_analyzer: SquareTokenRelationAnalyzer | None = None,
@@ -67,21 +61,21 @@ class TokenDestinationRelationValidator:
         Action:
             1.  Send an exception chan in the validation result if either:
                     -   The relation analysis is not completed.
-                    -   There is a partial binding between the token and destination.
-                    -   The token and destination have a bidirectional relationship.
+                    -   There is a partial binding between the token and origin.
+                    -   The token and origin have a bidirectional relationship.
             2.  Otherwise, send the success result.
         Args:
             token: Token
-            destination: Square
+            origin: Square
             token_validator: TokenValidator
             square_validator: SquareValidator
             relation_analyzer: SquareTokenRelationAnalyzer
         Returns:
             ValidationResult
         Raises:
-            TokenDestinationRelationValidatorException
-            TokenAlreadyAtDestinationException
-            PartialTokenDestinationRelationException
+            TokenOriginRelationValidatorException
+            TokenAlreadyAtOriginException
+            PartialTokenOriginRelationException
         """
         method = f"{cls.__name__}.validator"
         
@@ -95,7 +89,7 @@ class TokenDestinationRelationValidator:
         
         # --- Run the relation analyzer. ---#
         relation_analysis = relation_analyzer.analyze(
-            candidate_primary=destination,
+            candidate_primary=origin,
             candidate_satellite=token,
             token_validator=token_validator,
             square_validator=square_validator,
@@ -104,47 +98,31 @@ class TokenDestinationRelationValidator:
         if relation_analysis.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                TokenDestinationRelationValidatorException(
+                TokenOriginRelationValidatorException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    msg=TokenDestinationRelationValidatorException.MSG,
-                    err_code=TokenDestinationRelationValidatorException.ERR_CODE,
+                    msg=TokenOriginRelationValidatorException.MSG,
+                    err_code=TokenOriginRelationValidatorException.ERR_CODE,
                     ex=relation_analysis.exception,
                 )
             )
-        # Handle the case that the token has an unexpected partial binding to the destination.
+        # Handle the case that, the token and the origin aren't fully bidirectional.
         relation = cast(RelationReport, relation_analysis.payload)
-        if (
-                relation.stale_link_exists or
-                relation.registration_missing
-        ):
+        if not relation.fully_exists:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                TokenDestinationRelationValidatorException(
+                TokenOriginRelationValidatorException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    msg=TokenDestinationRelationValidatorException.MSG,
-                    err_code=TokenDestinationRelationValidatorException.ERR_CODE,
-                    ex=PartialTokenDestinationRelationException(
-                        msg=PartialTokenDestinationRelationException.MSG,
-                        err_code=PartialTokenDestinationRelationException.ERR_CODE,
+                    msg=TokenOriginRelationValidatorException.MSG,
+                    err_code=TokenOriginRelationValidatorException.ERR_CODE,
+                    ex=TokenOriginRelationNullException(
+                        cls_mthd=method,
+                        cls_name=cls.__name__,
+                        msg=TokenOriginRelationNullException.MSG,
+                        err_code=TokenOriginRelationNullException.ERR_CODE,
                     ),
                 )
             )
-        # Handle the case that, the token has an unexpected full binding with the destination.
-        if relation.fully_exists:
-            # Send the exception chain on failure.
-            return ValidationResult.failure(
-                TokenDestinationRelationValidatorException(
-                    cls_mthd=method,
-                    cls_name=cls.__name__,
-                    msg=TokenDestinationRelationValidatorException.MSG,
-                    err_code=TokenDestinationRelationValidatorException.ERR_CODE,
-                    ex=TokenAlreadyAtDestinationException(
-                        msg=TokenAlreadyAtDestinationException.MSG,
-                        err_code=TokenAlreadyAtDestinationException.ERR_CODE,
-                    ),
-                )
-            )
-        # --- Token is not at the destination. Forward the work product to the caller. ---#
-        return ValidationResult.success(destination)
+        # --- The token is at the origin. Forward the work product to the caller. ---#
+        return ValidationResult.success(origin)
