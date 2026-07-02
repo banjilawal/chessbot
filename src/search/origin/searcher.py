@@ -9,24 +9,17 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from typing import Optional, cast
+from typing import cast
 
-from analyzer import SquareTokenRelationAnalyzer, TokenReadinessAnalyzer
+from analyzer import TokenReadinessAnalyzer
 from err import (
-    BidirectionalSourceTokenRelationException, DisabledTokenException, DisabledTokenManeuverException,
-    ItinerarySourceEqualsDestinationException, PoppingEmptyTokenStackException,
-    TokenOriginSearcherException,
-    TokenSearchHitConflictException, TokenSearchResultEmptyException, TokenStackNullException
+    DisabledTokenException, TokenOriginSearcherException, TokenSearchHitConflictException,
+    TokenSearchResultEmptyException
 )
-from microservice import SquareValidator
-from model import Square, SquareContext, Token
-from report import DeleteApproval, RelationReport, TokenReadinessReport
-from report.approval.maneuver import ManeuverApproval
-from result import SearchResult, MethodResultType, SearchResult
-from search.token.service import TokenNotFoundException
-from stack import TokenStackService
+from model import SquareContext, Token
+from report import TokenReadinessReport
+from result import MethodResultType, SearchResult
 from util import LoggingLevelRouter
-from validation import TokenFreedomAnalyzer
 
 
 class TokenOriginSearcher:
@@ -93,6 +86,7 @@ class TokenOriginSearcher:
         
         # --- Before doing anything else make sure the token can be used. ---#
         readiness_analysis_result = readiness_analyzer.analyze(token)
+        
         # Handle the case that, the freedom
         if readiness_analysis_result.is_failure:
             # Return the exception chain on failure
