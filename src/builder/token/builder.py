@@ -100,7 +100,7 @@ class TokenBuilder(Builder[Token]):
                 )
             )
         # Handle the case that, the team does not pass a validation check.
-        owner_validation = toolkit.team_service.validator.validate(owner)
+        owner_validation = toolkit.team_service.validator.execute(owner)
         if owner_validation.is_failure:
             # Send the exception chain on failure.
             return BuildResult.failure(
@@ -114,7 +114,7 @@ class TokenBuilder(Builder[Token]):
                 )
             )
         # Handle the case that, the formation does not pass a validation check.
-        formation_validation = toolkit.formation_service.validator.validate(formation)
+        formation_validation = toolkit.formation_service.validator.execute(formation)
         if formation_validation.is_failure:
             # Send the exception chain on failure.
             return BuildResult.failure(

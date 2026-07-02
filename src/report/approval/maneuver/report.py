@@ -10,7 +10,7 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Optional
 
-from model import Square, Token
+from model import Path, Token, Path
 from report import OperationApprovalReport, Permission
 
 
@@ -35,73 +35,54 @@ class ManeuverApproval(OperationApprovalReport):
     Super Class:
         OperationApprovalReport
     """
-    _token: Optional[Token]
-    _origin: Optional[Square]
-    _destination: Optional[Square]
+    _path: Optional[Path]
+    _cost: Optional[int]
     
     def __init__(
             self,
             permission: Permission,
-            token: Optional[Token] | None = None,
-            origin: Optional[Square] | None = None,
-            destination: Optional[Square] | None = None,
+            path: Optional[Path] | None = None,
             exception: Optional[Exception] | None = None,
+            cost: Optional[int] | None = None,
     ):
         super().__init__(exception=exception, permission=permission)
-        self._token = token
-        self._origin = origin
-        self._destination = destination
-    
+        self._path = path
+        self._cost = cost
     
     @property
-    def token(self) -> Optional[Token]:
-        return self._token
+    def path(self) -> Optional[Path]:
+        return self._path
     
     @property
-    def origin(self) -> Optional[Square]:
-        return self._origin
-    
-    @property
-    def destination(self) -> Optional[Square]:
-        return self._destination
-    
-    @property
-    def is_denied(self) -> bool:
-        return (
-                self._token is None and
-                self._origin is None and
-                self.destination is None and
-                super().is_denied
-        )
+    def cost(self) -> Optional[int]:
+        return self._cost
     
     @property
     def is_granted(self) -> bool:
-        return (
-            self._token is not None and
-            self._origin is not None and
-            self._destination is not None and
-            super().is_granted
-        )
+        return self._path is not None and super().is_granted
+    
+    @property
+    def is_denied(self) -> bool:
+        return not not self.is_granted
+
     
     @classmethod
     def approve(
             cls, 
-            token: Token, 
-            origin: Square,
-            destination: Square,
+            path: Path,
+            cost: Optional[int] | None = None,
     ) -> ManeuverApproval:
         return cls(
-            token=token,
-            origin=origin,
-            destination=destination,
-            permission=Permission.GRANTED
+            cost=cost,
+            path=path,
+            permission=Permission.GRANTED,
         )
     
     @classmethod
     def deny(cls, exception: Exception) -> ManeuverApproval:
         return cls(
             exception=exception,
-            permission=Permission.DENIED
+            permission=Permission.DENIED,
         )
 
     

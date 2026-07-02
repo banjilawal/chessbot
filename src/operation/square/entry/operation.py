@@ -274,7 +274,7 @@ class SquareEntry:
         method = f"{cls.__module__}._run_square_tests"
         
         # Handle the case that, the squareis not safe.
-        square_validation_result = square_validator.validate(square)
+        square_validation_result = square_validator.execute(square)
         if square_validation_result.is_failure:
             # Send the exception chain on failure.
             return UpdateResult.update_failure(

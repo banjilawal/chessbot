@@ -87,7 +87,7 @@ class BoardService(Microservice[Board]):
         method = "BoardService.forma_team_on_board"
         
         # Handle the case that, the team does not pass a validation check.
-        team_validation = team_service.validate(candidate=team)
+        team_validation = team_service.execute(candidate=team)
         if team_validation.is_failure:
             # Send the exception chain on failure.
             return InsertionResult.failure(
@@ -137,7 +137,7 @@ class BoardService(Microservice[Board]):
         method = "BoardService.layout_board"
         
         # Handle the case that, the board does not pass a validation check.
-        validation = self.validator.validate(candidate=board)
+        validation = self.validator.execute(candidate=board)
         if validation.is_failure:
             # Return exception chain on failure
             return InsertionResult.failure(
@@ -185,7 +185,7 @@ class BoardService(Microservice[Board]):
         method = "BoardService.generate_graph"
     
         # Handle the case that, the board does not pass a validation check.
-        validation = self.validator.validate(candidate=board)
+        validation = self.validator.execute(candidate=board)
         if validation.is_failure:
             # Return exception chain on failure
             return ComputationResult.failure(

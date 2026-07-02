@@ -30,7 +30,7 @@ class TeamTableBuilder(Builder[TeamBinder]):
         method = f"TeamBinderBuilder.build"
         
         # Handle the case that, the white_team does not pass a validation check.
-        white_team_validation_result = team_validator.validate(white_team)
+        white_team_validation_result = team_validator.execute(white_team)
         if white_team_validation_result.is_failure:
             # Send the exception chain on failure.
             return BuildResult.failure(

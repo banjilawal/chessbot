@@ -102,7 +102,7 @@ class HostageValidator(Validator[Hostage]):
                 )
             )
         # Handle the case that, the item where the capture occurredis not safe.
-        captured_square_validation = square_service.validator.validate(candidate=manifest.captured_square)
+        captured_square_validation = square_service.validator.execute(candidate=manifest.captured_square)
         if captured_square_validation.failure:
             # Send the exception chain on failure
             return ValidationResult.failure(
@@ -112,7 +112,7 @@ class HostageValidator(Validator[Hostage]):
                 )
             )
         # Handle the case that, the victor's itemis not safe.
-        victor_square_validation = square_service.validator.validate(candidate=manifest.victor_square)
+        victor_square_validation = square_service.validator.execute(candidate=manifest.victor_square)
         if victor_square_validation.failure:
             # Send the exception chain on failure
             return ValidationResult.failure(

@@ -145,7 +145,7 @@ class SquareBuilder(Builder[Square]):
                 )
             )
         # Handle the case that, the coord is not safe.
-        coord_validation = tool.coord_service.validator.validate(coord)
+        coord_validation = tool.coord_service.validator.execute(coord)
         if coord_validation.is_failure:
             # Send the exception chain on failure.
             return BuildResult.failure(
@@ -160,7 +160,7 @@ class SquareBuilder(Builder[Square]):
                 )
             )
         # Handle the case that, the board is not safe.
-        board_validation = tool.board_service.validator.validate(board)
+        board_validation = tool.board_service.validator.execute(board)
         if board_validation.is_failure:
             # Send the exception chain on failure.
             return BuildResult.failure(

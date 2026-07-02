@@ -1,7 +1,7 @@
-# src/err/model/itinerary/exception.py
+# src/err/model/path/exception.py
 
 """
-Module: err.model.itinerary.exception
+Module: err.model.path.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -14,18 +14,18 @@ from err import ModelException
 
 
 __all__ = [
-    # ======================# ITINERARY_ERROR #======================#
-    "ItineraryException",
+    # ======================# PATH_ERROR #======================#
+    "PathException",
 ]
 
-# ======================# ITINERARY_ERROR #======================#
-class ItineraryException(ModelException):
+# ======================# PATH_ERROR #======================#
+class PathException(ModelException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an Itinerary experienced an error.
+        1.  Indicate that an Path experienced an error.
 
     Attributes:
         msg: Optional[str]
@@ -41,8 +41,8 @@ class ItineraryException(ModelException):
     Super Class:
         ModelException
     """
-    MSG = "Itinerary error state."
-    ERR_CODE = "ITINERARY_ERROR"
+    MSG = "Path error state."
+    ERR_CODE = "PATH_ERROR"
     
     def __init__(
             self,

@@ -10,7 +10,8 @@ version: 1.0.1
 # =========== PERMITTER PACKAGE ===========#
 
 # Packages
-from .delete import *
+from .deletion import *
+from .maneuver import *
 from .pop import *
 from .push import *
 from .promotion import *

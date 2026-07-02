@@ -22,7 +22,6 @@ class Popper(Operation[T]):
     @LoggingLevelRouter.monitor
     def execute(
             cls,
-            item_id: int,
             stack: StackService[T],
             *args,
             **kwargs,

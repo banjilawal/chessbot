@@ -59,7 +59,7 @@ class NodeToolkit(Toolkit[Node]):
         method = "NodeToolkit.toolkit"
         
         # Handle the case that, the square does not pass a validation check.
-        validation_result = square_validator.validate(square)
+        validation_result = square_validator.execute(square)
         if validation_result.is_failure:
             # Send the exception chain on failure.
             return ToolkitResult.failure(

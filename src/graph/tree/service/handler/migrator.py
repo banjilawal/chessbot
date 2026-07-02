@@ -52,7 +52,7 @@ class NodeTreeStackMigrator:
         method = f"{cls.__class__.__name__}.convert"
         
         # Handle the case that, the node_tree does not pass a validation check.
-        validation_result = node_tree_validator.validate(candidate=node_tree)
+        validation_result = node_tree_validator.execute(candidate=node_tree)
         if validation_result.is_failure:
             # Send the exception chain on failure.
             return BuildResult.failure(

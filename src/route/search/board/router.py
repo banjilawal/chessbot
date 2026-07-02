@@ -69,7 +69,7 @@ class BoardSearchRouter(Router[Board]):
                 )
             )
         # Handle the case that, the context fails validation.
-        validation_result = context_validator.validate(context)
+        validation_result = context_validator.execute(context)
         if validation_result.is_failure:
             # Send the exception chain on failure.
             return SearchResult.failure(

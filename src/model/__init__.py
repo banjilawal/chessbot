@@ -19,7 +19,7 @@ from .edge import *
 from .game import *
 from .graph import *
 from .hostage import *
-from .itenerary import *
+from .path import *
 from .math import *
 from .node import *
 from .notification import *

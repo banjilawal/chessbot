@@ -68,7 +68,7 @@ class SquareDepartureProcess:
         method = f"{cls.__name__}.execute"
         
         # Handle the case that, the square does not pass a validation check.
-        validation_result = square_validator.validate(candidate=square)
+        validation_result = square_validator.execute(candidate=square)
         if validation_result.is_failure:
             # Send the exception chain on failure.
             return DeletionResult.failure(

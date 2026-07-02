@@ -86,7 +86,7 @@ class TokenIntegrityValidator(Validator[Token]):
         tools = toolkit_build_result.payload
         
         # Handle the case that, the candidate does not exist.
-        validation_priming_result = tools["validation_primer"].validate(
+        validation_priming_result = tools["validation_primer"].execute(
             candidate=candidate,
             target_model=Token,
             context_null_exception=TokenNullException(),
@@ -122,7 +122,7 @@ class TokenIntegrityValidator(Validator[Token]):
                 )
             )
         # Handle the case that, the occupant's team fails validation.
-        team_validation_result = tools["team_validator"].validate(token.team)
+        team_validation_result = tools["team_validator"].execute(token.team)
         if team_validation_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
@@ -135,7 +135,7 @@ class TokenIntegrityValidator(Validator[Token]):
                 )
             )
         # Handle the case that, the roster or opening_square_name are not acceptable.
-        opening_square_validation_result = toolkit["square_validator"].validate(token.opening_square)
+        opening_square_validation_result = toolkit["square_validator"].execute(token.opening_square)
         if opening_square_validation_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
@@ -148,7 +148,7 @@ class TokenIntegrityValidator(Validator[Token]):
                 )
             )
         # Handle the case that, the rank is not safe.
-        rank_validation_result = tools["rank_service.validator"].validate(rank=token.rank)
+        rank_validation_result = tools["rank_service.validator"].execute(rank=token.rank)
         if rank_validation_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
@@ -161,7 +161,7 @@ class TokenIntegrityValidator(Validator[Token]):
                 )
             )
         # Handle the case that the token's CoordDatabase fails it safety checks.
-        coord_database_validation_result = tools["validation_primer"].validate(
+        coord_database_validation_result = tools["validation_primer"].execute(
             candidate=token.positions,
             target_model=CoordDatabase,
             context_null_exception=CoordDatabaseNullException()

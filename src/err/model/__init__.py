@@ -20,7 +20,7 @@ from .formation import *
 from .game import *
 from .hashtable import *
 from .hostage import *
-from .itinerary import *
+from .path import *
 from .node import *
 from .operand import *
 from .persona import *

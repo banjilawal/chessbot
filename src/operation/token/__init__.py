@@ -15,6 +15,5 @@ from .check import *
 from .coord import *
 from .deployment import *
 from .mate import *
-from .promotion import *
 
 # Modules

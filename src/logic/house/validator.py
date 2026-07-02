@@ -34,7 +34,7 @@ class HouseValidator(Validator[House]):
                 )
             
             house = cast(House, candidate)
-            square_validation = SquareValidator.validate(house.square)
+            square_validation = SquareValidator.execute(house.square)
             if square_validation.is_failure():
                 return ValidationResult.failure(square_validation.exception)
             

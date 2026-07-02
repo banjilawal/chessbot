@@ -64,7 +64,7 @@ class SchemaSearchRouter(SearchRouter[Schema]):
         method = f"{cls.__name__}.route"
 
         # Handle the case that, the query is not safe to use.
-        query_validation_result = query_validator.validate(query)
+        query_validation_result = query_validator.execute(query)
         if query_validation_result.is_failure:
             # Send the exception chain on failure.
             return SearchResult.failure(

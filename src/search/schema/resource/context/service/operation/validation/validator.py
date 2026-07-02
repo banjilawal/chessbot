@@ -212,7 +212,7 @@ class SchemaContextValidator(Validator[SchemaContext]):
         
         # Certification for the search-by-coord target.
         if context.current_position is not None:
-            validation_result = workers.coord_service.validator.validate(
+            validation_result = workers.coord_service.validator.execute(
                 rank=context.current_position
             )
             if validation_result.is_failure:
@@ -233,7 +233,7 @@ class SchemaContextValidator(Validator[SchemaContext]):
         
         # Certification for the search-by-team target.
         if context.team is not None:
-            validation_result = workers.team_service.validator.validate(
+            validation_result = workers.team_service.validator.execute(
                 rank=context.team
             )
             if validation_result.is_failure:
@@ -254,7 +254,7 @@ class SchemaContextValidator(Validator[SchemaContext]):
         
         # Certification for the search-by-rank target.
         if context.rank is not None:
-            validation_result = workers.rank_service.validator.validate(
+            validation_result = workers.rank_service.validator.execute(
                 rank=context.rank
             )
             if validation_result.is_failure:
@@ -275,7 +275,7 @@ class SchemaContextValidator(Validator[SchemaContext]):
         
         # Certification for the search-by-color target.
         if context.color is not None:
-            validation_result = workers.color_validator.validate(
+            validation_result = workers.color_validator.execute(
                 candidate=context.color
             )
             if validation_result.is_failure:
@@ -296,7 +296,7 @@ class SchemaContextValidator(Validator[SchemaContext]):
         
         # Certification for the search-by-ransom target.
         if context.ransom is not None:
-            validation_result = workers.number_validator.validate(
+            validation_result = workers.number_validator.execute(
                 rank=context.ransom,
                 floor=workers.persona_service.min_ransom,
                 ceiling=workers.persona_service.max_ransom,

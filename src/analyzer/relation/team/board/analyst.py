@@ -97,7 +97,7 @@ class BoardTeamRelationAnalyzer(RelationAnalyzer[Board, Team]):
         board = cast(Board, board_validation_result.payload)
         
         # Handle the case that, the team is not certified as safe.
-        team_validation_result = team_validator.validator.validate(candidate_satellite)
+        team_validation_result = team_validator.validator.execute(candidate_satellite)
         if team_validation_result.is_failure:
             # Send the exception chain on failure.
             return AnalysisResult.failure(

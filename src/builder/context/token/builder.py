@@ -190,7 +190,7 @@ class TokenContextBuilder(Builder[TokenContext]):
         
         # Build the current_position TokenContext if its flag is enabled.
         if current_position is not None:
-            validation = workers.coord_service.validator.validate(current_position)
+            validation = workers.coord_service.validator.execute(current_position)
             if validation.is_failure:
                 # Send the exception chain on failure.
                 return BuildResult.failure(
@@ -209,7 +209,7 @@ class TokenContextBuilder(Builder[TokenContext]):
         
         # Build the rank TokenContext if its flag is enabled.
         if rank is not None:
-            validation = workers.rank_service.validator.validate(rank)
+            validation = workers.rank_service.validator.execute(rank)
             if validation.is_failure:
                 # Send the exception chain on failure.
                 return BuildResult.failure(
@@ -228,7 +228,7 @@ class TokenContextBuilder(Builder[TokenContext]):
         
         # Build the team TokenContext if its flag is enabled.
         if team is not None:
-            validation = workers.team_service.validator.validate(team)
+            validation = workers.team_service.validator.execute(team)
             if validation.is_failure:
                 # Send the exception chain on failure.
                 return BuildResult.failure(
@@ -247,7 +247,7 @@ class TokenContextBuilder(Builder[TokenContext]):
         
         # Build the color TokenContext if its flag is enabled.
         if color is not None:
-            validation = workers.color_validator.validate(color)
+            validation = workers.color_validator.execute(color)
             if validation.is_failure:
                 # Send the exception chain on failure.
                 return BuildResult.failure(
@@ -266,7 +266,7 @@ class TokenContextBuilder(Builder[TokenContext]):
         
         # Build the ransom TokenContext if its flag is enabled.
         if ransom is not None:
-            validation = workers.number_validator.validate(
+            validation = workers.number_validator.execute(
                 candidate=ransom,
                 floor=workers.rank_service.persona_service.min_ransom,
                 ceiling=workers.rank_service.persona_service.max_ransom

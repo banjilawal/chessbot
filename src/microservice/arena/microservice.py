@@ -134,14 +134,14 @@ class ArenaService(Microservice[Arena]):
     ) -> SearchResult[Team]:
         """"""
         method = "ArenaService.team_from_schema"
-        arena_validation = self.validator.validate(arena)
+        arena_validation = self.validator.execute(arena)
         if arena_validation.is_failure:
             return SearchResult.failure(
                 ArenaServiceException(
                     msg=f"{method}: {ArenaServiceException.ERR_CODE}", ex=arena_validation.exception
                 )
             )
-        schema_validation = schema_service.validator.validate(schema)
+        schema_validation = schema_service.validator.execute(schema)
         if schema_validation.is_failure:
             return SearchResult.failure(
                 ArenaServiceException(

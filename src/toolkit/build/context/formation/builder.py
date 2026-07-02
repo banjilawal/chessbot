@@ -114,7 +114,7 @@ class FormationContextToolkit(Toolkit[FormationKey]):
         
         # Toolkit the square_name FormationKey if its value is set.
         if square is not None:
-            validation = square_service.validator.validate(square)
+            validation = square_service.validator.execute(square)
             if validation.is_failure:
                 # Send the exception chain on failure.
                 return ToolkitResult.failure(
@@ -142,7 +142,7 @@ class FormationContextToolkit(Toolkit[FormationKey]):
         
         # Toolkit the color FormationKey if its value is set.
         if color is not None:
-            validation = color_validator.validate(candidate=color)
+            validation = color_validator.execute(candidate=color)
             if validation.is_failure:
                 # Send the exception chain on failure.
                 return ToolkitResult.failure(
@@ -156,7 +156,7 @@ class FormationContextToolkit(Toolkit[FormationKey]):
         
         # Toolkit the persona FormationKey if its value is set.
         if persona is not None:
-            validation = persona_service.validator.validate(candidate=persona)
+            validation = persona_service.validator.execute(candidate=persona)
             if validation.is_failure:
                 # Send the exception chain on failure.
                 return ToolkitResult.failure(

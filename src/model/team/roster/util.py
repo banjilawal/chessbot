@@ -79,7 +79,7 @@ class RosterUtil:
         
         pre_update_team = deepcopy(team)
         # Handle the case that, the teamis not safe.
-        team_validation = team_validator.validate(candidate=team)
+        team_validation = team_validator.execute(candidate=team)
         if team_validation.is_failure:
             # Return exception chain on failure.
             return UpdateResult.update_failure(

@@ -66,7 +66,7 @@ class VectorBuilder(Builder[Vector]):
         
         # Handle the case that, either component is out of bounds.
         for num in [x, y]:
-            validation_result = number_validator.validate(
+            validation_result = number_validator.execute(
                 floor=0,
                 ceiling=LONGEST_KNIGHT_LEG_SIZE,
                 candidate=abs(num)

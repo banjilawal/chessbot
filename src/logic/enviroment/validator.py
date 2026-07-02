@@ -50,11 +50,11 @@ class TurnSceneValidator(Validator[TurnScene]):
             
             turn_scene = cast(TurnScene, candidate)
             
-            id_validation = IdValidator.validate(turn_scene.id)
+            id_validation = IdValidator.execute(turn_scene.id)
             if id_validation.is_failure():
                 return ValidationResult.failure(id_validation.exception)
 
-            board_validator = BoardValidator.validate(turn_scene.board)
+            board_validator = BoardValidator.execute(turn_scene.board)
             if board_validator.is_failure():
                 return ValidationResult.failure(board_validator.exception)
               

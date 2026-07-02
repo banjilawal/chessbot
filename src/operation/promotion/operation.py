@@ -1,7 +1,7 @@
-# src/operation/token/promotion/operation.py
+# src/operation/promotion/operation.py
 
 """
-Module: operation.token.promotion.operation
+Module: operation.promotion.operation
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
