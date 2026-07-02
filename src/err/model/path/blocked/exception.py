@@ -10,23 +10,23 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import ModelException
+from err import PathException
 from result import MethodResultType
 
 
 __all__ = [
-    # ======================# PATH_ERROR #======================#
-    "PathException",
+    # ======================# BLOCKED_PATH_ERROR #======================#
+    "BlockedPathException",
 ]
 
-# ======================# PATH_ERROR #======================#
-class PathException(ModelException):
+# ======================# BLOCKED_PATH_ERROR #======================#
+class BlockedPathException(PathException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a Path experienced an error.
+        1.  Indicate that a path's destination is occupied by a friendly Token.
 
     Attributes:
         msg: Optional[str]
@@ -41,10 +41,10 @@ class PathException(ModelException):
     Provides:
 
     Super Class:
-        ModelException
+        PathException
     """
-    MSG = "Path error state."
-    ERR_CODE = "PATH_ERROR"
+    MSG = "The path's destination is occupied by a friendly token."
+    ERR_CODE = "BLOCKED_PATH_ERROR"
     
     def __init__(
             self,

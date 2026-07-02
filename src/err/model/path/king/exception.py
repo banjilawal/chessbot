@@ -10,23 +10,23 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import ModelException
+from err import PathException
 from result import MethodResultType
 
 
 __all__ = [
-    # ======================# PATH_ERROR #======================#
-    "PathException",
+    # ======================# KING_PATH_ERROR #======================#
+    "KingPathException",
 ]
 
-# ======================# PATH_ERROR #======================#
-class PathException(ModelException):
+# ======================# KING_PATH_ERROR #======================#
+class KingPathException(PathException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a Path experienced an error.
+        1.  Indicate that a KingPath experienced an error.
 
     Attributes:
         msg: Optional[str]
@@ -41,10 +41,10 @@ class PathException(ModelException):
     Provides:
 
     Super Class:
-        ModelException
+        PathException
     """
-    MSG = "Path error state."
-    ERR_CODE = "PATH_ERROR"
+    MSG = "KingPath error state."
+    ERR_CODE = "KING_PATH_ERROR"
     
     def __init__(
             self,
