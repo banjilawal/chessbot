@@ -14,7 +14,7 @@ from typing import Any, cast
 from controller import WorkerRegistryController
 from err import DisabledTokenManeuverException, ItinerarySourceEqualsDestinationException, ItineraryValidationException
 from model import Itinerary
-from report import TokenFreedomReport
+from report import TokenReadinessReport
 from result import ValidationResult
 from toolkit import ItineraryToolkit
 from util import LoggingLevelRouter
@@ -146,8 +146,8 @@ class ItineraryValidator(Validator[Itinerary]):
                 )
             )
         # Handle the case that, the token is not free.
-        report = cast(TokenFreedomReport, freedom_analysis_result.payload)
-        if report.token_is_not_free:
+        report = cast(TokenReadinessReport, freedom_analysis_result.payload)
+        if report.is_not_ready:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 ItineraryValidationException(

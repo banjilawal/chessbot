@@ -11,11 +11,11 @@ from __future__ import annotations
 
 from typing import cast
 
-from analyzer import Analyzer, TokenFreedomAnalyzer
+from analyzer import Analyzer, TokenReadinessAnalyzer
 from err import PawnDoublePromotionException, PawnPromotionRowException, PromoteInactivePawnException
 from err.analyzer.promotion import PromotionApprovalManagerException
 from model import PawnToken
-from report import PromotionApprovalManagerReport, TokenFreedomReport
+from report import PromotionApprovalManagerReport, TokenReadinessReport
 from result import AnalysisResult, MethodResultType
 from util import LoggingLevelRouter
 from validation import TokenValidator
@@ -54,7 +54,7 @@ class PawnPromotionApprovalManager(Analyzer):
             cls,
             pawn: PawnToken,
             token_validator: TokenValidator | None = None,
-            token_freedom_analyzer: TokenFreedomAnalyzer | None = None,
+            token_freedom_analyzer: TokenReadinessAnalyzer | None = None,
     ) -> AnalysisResult[PromotionApprovalManagerReport]:
         """
         Executes the promotion transaction.
@@ -87,7 +87,7 @@ class PawnPromotionApprovalManager(Analyzer):
         
         # --- Supply any missing dependencies. ---#
         if token_freedom_analyzer is None:
-            token_freedom_analyzer = TokenFreedomAnalyzer()
+            token_freedom_analyzer = TokenReadinessAnalyzer()
         if token_validator is None:
             token_validator = TokenValidator()
             
@@ -108,10 +108,10 @@ class PawnPromotionApprovalManager(Analyzer):
                     ex=analysis_result.exception
                 )
             )
-        report = cast(TokenFreedomReport, analysis_result.payload)
+        report = cast(TokenReadinessReport, analysis_result.payload)
         
         # Handle the case that, the token is not free.
-        if report.token_is_not_free:
+        if report.is_not_ready:
             # Send the exception chain on failure.
             return AnalysisResult.completed(
                 PromotionApprovalManagerReport.deny_promotion(

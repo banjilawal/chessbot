@@ -13,12 +13,12 @@ from _ast import List
 from copy import deepcopy
 from typing import cast
 
-from analyzer import TokenFreedomAnalyzer
+from analyzer import TokenReadinessAnalyzer
 from err import TokenDeploymentException
 from err.analyzer.claim.exist.exception import HomeSquareAlreadyClaimedException
 from model import OpeningSquare, Token
 from operation import Operation
-from report import TokenFreedomReport
+from report import TokenReadinessReport
 from result import MethodResultType, UpdateResult, ValidationResult
 from util import LoggingLevelRouter
 
@@ -59,7 +59,7 @@ class TokenDeploymentPrimer(Operation[Token]):
     def execute(
             cls,
             token: Token,
-            token_freedom_analyzer: TokenFreedomAnalyzer | None = None,
+            token_freedom_analyzer: TokenReadinessAnalyzer | None = None,
     ) -> ValidationResult[Token]:
         """
         Executes the deployment transaction.
@@ -85,7 +85,7 @@ class TokenDeploymentPrimer(Operation[Token]):
         method = f"{cls.__class__.__name__}.deploy_on_board"
         
         if token_freedom_analyzer is None:
-            token_freedom_analyzer = TokenFreedomAnalyzer()
+            token_freedom_analyzer = TokenReadinessAnalyzer()
         
         # Handle the case that, the token is not safe.
         deployment_analysis_result = token_freedom_analyzer.analyze(token)
@@ -101,7 +101,7 @@ class TokenDeploymentPrimer(Operation[Token]):
                     ex=deployment_analysis_result.exception,
                 )
             )
-        report = cast(TokenFreedomReport, deployment_analysis_result.payload)
+        report = cast(TokenReadinessReport, deployment_analysis_result.payload)
         # Handle the case that, the token has already been deployed.
         if report.token_is_deployed:
             # Send the exception chain on failure.

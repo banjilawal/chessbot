@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from analyzer import SquareTokenRelationAnalyzer, TokenFreedomAnalyzer
+from analyzer import SquareTokenRelationAnalyzer, TokenReadinessAnalyzer
 from err import (
     BidirectionalSourceTokenRelationException, DisabledTokenManeuverException,
     ItinerarySourceEqualsDestinationException, PoppingEmptyTokenStackException,
@@ -20,7 +20,7 @@ from err import (
 )
 from microservice import SquareValidator
 from model import Square, SquareContext, Token
-from report import DeleteApproval, RelationReport, TokenFreedomReport
+from report import DeleteApproval, RelationReport, TokenReadinessReport
 from report.approval.maneuver import ManeuverApproval
 from result import AnalysisResult, MethodResultType
 from stack import TokenStackService
@@ -61,7 +61,7 @@ class ManeuverPermitter:
             destination: Square,
             square_validator: SquareValidator | None = None,
             square_token_relation_analyzer: SquareTokenRelationAnalyzer | None = None,
-            token_freedom_analyzer: TokenFreedomAnalyzer | None = None,
+            token_freedom_analyzer: TokenReadinessAnalyzer | None = None,
     ) -> AnalysisResult:
         """
         Action:
@@ -91,7 +91,7 @@ class ManeuverPermitter:
         if square_validator is None:
             square_validator = SquareValidator()
         if token_freedom_analyzer is None:
-            token_freedom_analyzer = TokenFreedomAnalyzer()
+            token_freedom_analyzer = TokenReadinessAnalyzer()
             
         
         
@@ -140,8 +140,8 @@ class ManeuverPermitter:
                 )
             )
         # Handle the case that, the token is not free.
-        report = cast(TokenFreedomReport, freedom_analysis_result.payload)
-        if report.token_is_not_free:
+        report = cast(TokenReadinessReport, freedom_analysis_result.payload)
+        if report.is_not_ready:
             # Return the exception chain on failure
             return AnalysisResult.completed(
                 ManeuverApproval.deny(

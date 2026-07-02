@@ -12,7 +12,7 @@ from __future__ import annotations
 from err import ItineraryException, ItineraryNullException
 from model import Itinerary
 from toolkit import Toolkit
-from analyzer import SquareTokenRelationAnalyzer, TokenFreedomAnalyzer
+from analyzer import SquareTokenRelationAnalyzer, TokenReadinessAnalyzer
 from validation import SquareValidator, TokenValidator, ValidationPrimer
 
 
@@ -45,5 +45,5 @@ class ItineraryToolkit(Toolkit[Itinerary]):
     square_validator: SquareValidator = SquareValidator()
     validation_primer: ValidationPrimer = ValidationPrimer()
     null_exception: ItineraryNullException = ItineraryNullException()
-    token_freedom_analyzer: TokenFreedomAnalyzer = TokenFreedomAnalyzer()
+    token_freedom_analyzer: TokenReadinessAnalyzer = TokenReadinessAnalyzer()
     square_token_relation_analyzer: SquareTokenRelationAnalyzer = SquareTokenRelationAnalyzer()

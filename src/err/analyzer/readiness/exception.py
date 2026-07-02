@@ -1,7 +1,7 @@
-# src/err/analyzer/freedom/exception.py
+# src/err/analyzer/readiness/exception.py
 
 """
-Module: err.analyzer.freedom.exception
+Module: err.analyzer.readiness.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -14,18 +14,19 @@ from err import AnalyzerException
 from result import MethodResultType
 
 __all__ = [
-    # ======================# TOKEN_FREEDOM_ANALYZER_FAILURE #======================#
-    "TokenFreedomAnalyzerException",
+    # ======================# TOKEN_READINESS_ANALYZER_FAILURE #======================#
+    "TokenReadinessAnalyzerException",
 ]
 
-# ======================# TOKEN_FREEDOM_ANALYZER_FAILURE #======================#
-class TokenFreedomAnalyzerException(AnalyzerException):
+# ======================# TOKEN_READINESS_ANALYZER_FAILURE #======================#
+class TokenReadinessAnalyzerException(AnalyzerException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an error prevented a Token freedom analyzer from completing.
+        1.  Indicate that an error prevented a TokenReadinessAnalyzer from completing
+            its task.
         
     Attributes:
         msg: Optional[str]
@@ -42,8 +43,8 @@ class TokenFreedomAnalyzerException(AnalyzerException):
     Super Class:
         AnalyzerException
     """
-    MSG = "An error occurred. token freedom analyzer failed."
-    ERR_CODE = "TOKEN_FREEDOM_ANALYZER_FAILURE"
+    MSG = "TokenReadinessAnalyzer encountered an error."
+    ERR_CODE = "TOKEN_READINESS_ANALYZER_FAILURE"
 
     def __init__(
             self,

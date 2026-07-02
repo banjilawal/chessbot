@@ -18,7 +18,7 @@ from err import (
 )
 from model import Itinerary, SquareContext
 from operation import AssemblyPrimer
-from report import RelationReport, TokenFreedomReport
+from report import RelationReport, TokenReadinessReport
 from result import MethodResultType, ValidationResult
 from toolkit import ItineraryToolkit
 from util import LoggingLevelRouter
@@ -101,9 +101,9 @@ class ItineraryAssemblyPrimer(AssemblyPrimer[Itinerary]):
                     ex=token_freedom_validation_result.exception,
                 )
             )
-        report = cast(TokenFreedomReport, token_freedom_validation_result.payload)
+        report = cast(TokenReadinessReport, token_freedom_validation_result.payload)
         # Handle the case that, the token is not free.
-        if report.token_is_not_free:
+        if report.is_not_ready:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 ItineraryAssemblyPrimerException(

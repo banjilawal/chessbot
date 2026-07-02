@@ -12,15 +12,15 @@ from __future__ import annotations
 from typing import cast
 
 from analyzer import Analyzer
-from err import TokenFreedomAnalyzerException
+from err import TokenReadinessAnalyzerException
 from model import CombatantToken, KingToken, Token
-from report import TokenFreedomReport
+from report import TokenReadinessReport
 from result import AnalysisResult
 from util import LoggingLevelRouter
 from validation import TokenValidator
 
 
-class TokenFreedomAnalyzer(Analyzer):
+class TokenReadinessAnalyzer(Analyzer):
     """
     Role:
         -   Analysis Factory
@@ -49,7 +49,7 @@ class TokenFreedomAnalyzer(Analyzer):
             cls,
             token: Token,
             token_validator: TokenValidator | None = None,
-    ) -> AnalysisResult[TokenFreedomReport]:
+    ) -> AnalysisResult[TokenReadinessReport]:
         """
         MAke sure the token can be used.
         
@@ -80,18 +80,18 @@ class TokenFreedomAnalyzer(Analyzer):
         # Send the exception chain on failure.
         if validation_result.is_failure:
             return AnalysisResult.failure(
-                TokenFreedomAnalyzerException(
+                TokenReadinessAnalyzerException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    msg=TokenFreedomAnalyzerException.MSG,
-                    err_code=TokenFreedomAnalyzerException.ERR_CODE,
-                    mthd_rslt_type=TokenFreedomAnalyzerException.MTHD_RSLT,
+                    msg=TokenReadinessAnalyzerException.MSG,
+                    err_code=TokenReadinessAnalyzerException.ERR_CODE,
+                    mthd_rslt_type=TokenReadinessAnalyzerException.MTHD_RSLT,
                     ex=validation_result.exception
                 )
             )
         # Deal with the simplest universal case first, token has no been deployed.
         if token.is_not_deployed:
-            return AnalysisResult.completed(TokenFreedomReport.not_deployed(token))
+            return AnalysisResult.completed(TokenReadinessReport.not_deployed(token))
         
         if isinstance(token, CombatantToken):
             return cls._analyze_combatant_freedom(combatant=cast(CombatantToken, token))
@@ -103,27 +103,27 @@ class TokenFreedomAnalyzer(Analyzer):
     def _analyze_combatant_freedom(
             cls,
             combatant: CombatantToken,
-    ) -> AnalysisResult[TokenFreedomReport]:
+    ) -> AnalysisResult[TokenReadinessReport]:
         # Captured tokens are not free.
         if combatant.has_entered_hostage_process or combatant.recorded_as_hostage:
-            return AnalysisResult.success(TokenFreedomReport.captured(combatant))
+            return AnalysisResult.success(TokenReadinessReport.captured(combatant))
         # Disabled combatants are not free either.
         if combatant.is_disabled:
-            return AnalysisResult.success(TokenFreedomReport.disabled(combatant))
+            return AnalysisResult.success(TokenReadinessReport.disabled(combatant))
         
-        return AnalysisResult.success(TokenFreedomReport.free(combatant))
+        return AnalysisResult.success(TokenReadinessReport.ready(combatant))
     
     @classmethod
     @LoggingLevelRouter.monitor
     def _analyze_king_freedom(
             cls,
             king: KingToken
-    ) -> AnalysisResult[TokenFreedomReport]:
+    ) -> AnalysisResult[TokenReadinessReport]:
         # Checkmated kings are not free.
         if king.is_checkmated:
-            return AnalysisResult.success(TokenFreedomReport.checkmated(king))
+            return AnalysisResult.success(TokenReadinessReport.checkmated(king))
         # Disabled kings are not free either.
         if king.is_disabled:
-            return AnalysisResult.success(TokenFreedomReport.disabled(king))
+            return AnalysisResult.success(TokenReadinessReport.disabled(king))
         
-        return AnalysisResult.success(TokenFreedomReport.free(king))
+        return AnalysisResult.success(TokenReadinessReport.ready(king))

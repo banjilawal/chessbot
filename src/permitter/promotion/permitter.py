@@ -12,14 +12,14 @@ version: 1.0.1
 from __future__ import annotations
 from typing import cast
 
-from analyzer import TokenFreedomAnalyzer
+from analyzer import TokenReadinessAnalyzer
 from err import (
     PawnDoublePromotionException, PawnPromotionRowException, PromoteInactivePawnException,
     PromoteToKingException, PromoteToPawnException, PromotionPermitterException
 )
 from model import King, Pawn, PawnToken, Rank
 from permitter import OperationPermitter
-from report import PromotionApproval, TokenFreedomReport
+from report import PromotionApproval, TokenReadinessReport
 from result import AnalysisResult, MethodResultType
 from util import LoggingLevelRouter
 from validation import RankValidator, TokenValidator
@@ -60,7 +60,7 @@ class PromotionPermitter(OperationPermitter):
             pawn: PawnToken,
             rank_validator: RankValidator | None = None,
             token_validator: TokenValidator | None = None,
-            token_freedom_analyzer: TokenFreedomAnalyzer | None = None,
+            token_freedom_analyzer: TokenReadinessAnalyzer | None = None,
     ) -> AnalysisResult[PromotionApproval]:
         """
         Executes the promotion transaction.
@@ -95,7 +95,7 @@ class PromotionPermitter(OperationPermitter):
         
         # --- Supply any missing dependencies. ---#
         if token_freedom_analyzer is None:
-            token_freedom_analyzer = TokenFreedomAnalyzer()
+            token_freedom_analyzer = TokenReadinessAnalyzer()
         if token_validator is None:
             token_validator = TokenValidator()
         if rank_validator is None:
@@ -131,10 +131,10 @@ class PromotionPermitter(OperationPermitter):
                     ex=freedom_analysis_result.exception
                 )
             )
-        report = cast(TokenFreedomReport, freedom_analysis_result.payload)
+        report = cast(TokenReadinessReport, freedom_analysis_result.payload)
         
         # Handle the case that, the token is not free.
-        if report.token_is_not_free:
+        if report.is_not_ready:
             # Send the exception chain on failure.
             return AnalysisResult.completed(
                 PromotionApproval.deny(

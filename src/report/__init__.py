@@ -15,10 +15,10 @@ from .approval import *
 from .claim import *
 from .collision import *
 from .event import *
-from .freedom import *
 from .itinerary import *
 from .promotion import *
 from .quota import *
+from .readiness import *
 from .relation import *
 from .square import *
 

@@ -10,8 +10,8 @@ version: 1.0.1
 from enum import Enum, auto
 
 
-class FreedomState(Enum):
-    FREE = auto(),
+class ReadinessState(Enum):
+    READY = auto(),
     DISABLED = auto(),
     CAPTURED = auto(),
     CHECKMATED = auto(),

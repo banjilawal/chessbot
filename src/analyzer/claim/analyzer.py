@@ -11,10 +11,10 @@ from __future__ import annotations
 
 from typing import cast
 
-from analyzer import Analyzer, TokenFreedomAnalyzer
+from analyzer import Analyzer, TokenReadinessAnalyzer
 from err import HomeSquareAlreadyClaimedException, HomeSquareClaimAnalyzerException, SquareNotFoundSearchException
 from model import OpeningSquare, SquareContext, Token
-from report import HomeSquareClaimReport, TokenFreedomReport
+from report import HomeSquareClaimReport, TokenReadinessReport
 from result import AnalysisResult
 from util import LoggingLevelRouter
 
@@ -48,7 +48,7 @@ class HomeSquareClaimAnalyzer(Analyzer):
     def execute(
             cls,
             token: Token,
-            token_freedom_analyzer: TokenFreedomAnalyzer | None = None,
+            token_freedom_analyzer: TokenReadinessAnalyzer | None = None,
     ) -> AnalysisResult[HomeSquareClaimReport]:
         """
         Executes the deployment transaction.
@@ -74,7 +74,7 @@ class HomeSquareClaimAnalyzer(Analyzer):
         
         # --- Supply any missing dependencies. ---#
         if token_freedom_analyzer is None:
-            token_freedom_analyzer = TokenFreedomAnalyzer()
+            token_freedom_analyzer = TokenReadinessAnalyzer()
         
         # --- Perform analysis to see if the token is free. ---#
         freedom_analysis_result = token_freedom_analyzer.analyze(token)
@@ -92,7 +92,7 @@ class HomeSquareClaimAnalyzer(Analyzer):
                 )
             )
         # Handle the case that, the token has already been deployed.
-        report = cast(TokenFreedomReport, freedom_analysis_result.payload)
+        report = cast(TokenReadinessReport, freedom_analysis_result.payload)
         if report.token_is_deployed:
             # Send the exception chain on failure.
             return AnalysisResult.failure(

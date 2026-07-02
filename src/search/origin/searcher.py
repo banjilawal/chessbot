@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from analyzer import SquareTokenRelationAnalyzer, TokenFreedomAnalyzer
+from analyzer import SquareTokenRelationAnalyzer, TokenReadinessAnalyzer
 from err import (
     BidirectionalSourceTokenRelationException, DisabledTokenManeuverException,
     ItinerarySourceEqualsDestinationException, PoppingEmptyTokenStackException,
@@ -20,7 +20,7 @@ from err import (
 )
 from microservice import SquareValidator
 from model import Square, SquareContext, Token
-from report import DeleteApproval, RelationReport, TokenFreedomReport
+from report import DeleteApproval, RelationReport, TokenReadinessReport
 from report.approval.maneuver import ManeuverApproval
 from result import AnalysisResult, MethodResultType, SearchResult
 from stack import TokenStackService
@@ -58,7 +58,7 @@ class TokenOriginSearcher:
     def execute(
             cls,
             token: Token,
-            token_freedom_analyzer: TokenFreedomAnalyzer | None = None,
+            token_freedom_analyzer: TokenReadinessAnalyzer | None = None,
     ) -> SearchResult:
         """
         Find the square a Token occupies on a Board.
@@ -87,45 +87,12 @@ class TokenOriginSearcher:
         method =  f"{cls.__name__}.execute"
         
         # --- Supply any missing dependencies. ---#
-        if square_validator is None:
-            square_validator = SquareValidator()
         if token_freedom_analyzer is None:
-            token_freedom_analyzer = TokenFreedomAnalyzer()
-            
-        
-        
-        for square in [origin, destination]:
-            square_validation_result = square_validator.validate(square)
-            if square_validation_result.is_failure:
-                # Return the exception chain on failure
-                return AnalysisResult.failure(
-                    TokenOriginSearcherException(
-                        cls_mthd=method,
-                        cls_name=cls.__name__,
-                        msg=TokenOriginSearcherException.MSG,
-                        err_code=TokenOriginSearcherException.ERR_CODE,
-                        mthd_rslt_type=MethodResultType.ANALYSIS_RESULT,
-                        ex=square_validation_result.exception,
-                    )
-                )
-        # Handle the case, that the source and destination are the same.
-        if origin == destination:
-            # Return the exception chain on failure
-            return AnalysisResult.failure(
-                TokenOriginSearcherException(
-                    cls_mthd=method,
-                    cls_name=cls.__name__,
-                    msg=TokenOriginSearcherException.MSG,
-                    err_code=TokenOriginSearcherException.ERR_CODE,
-                    mthd_rslt_type=MethodResultType.ANALYSIS_RESULT,
-                    ex=ItinerarySourceEqualsDestinationException(
-                        msg=ItinerarySourceEqualsDestinationException.MSG,
-                        err_code=ItinerarySourceEqualsDestinationException.ERR_CODE,
-                    ),
-                )
-            )
+            token_freedom_analyzer = TokenReadinessAnalyzer()
+
         # Handle the case that, the token fails a validation check.
         freedom_analysis_result = token_freedom_analyzer.analyze(token)
+        # Handle the case that, the freedom
         if freedom_analysis_result.is_failure:
             # Return the exception chain on failure
             return AnalysisResult.failure(
@@ -139,8 +106,8 @@ class TokenOriginSearcher:
                 )
             )
         # Handle the case that, the token is not free.
-        report = cast(TokenFreedomReport, freedom_analysis_result.payload)
-        if report.token_is_not_free:
+        report = cast(TokenReadinessReport, freedom_analysis_result.payload)
+        if report.is_not_ready:
             # Return the exception chain on failure
             return AnalysisResult.completed(
                 ManeuverApproval.deny(
