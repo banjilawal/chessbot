@@ -1,23 +1,20 @@
-# src/err/search/__init__.py
+# src/err/search/empty/__init__.py
 
 """
-Module: err.search.__init__
+Module: err.search.empty.__init__
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
 """
 
-# ============ ERR.SEARCH PACKAGE ===========#
+# ============ ERR.SEARCH.EMPTY PACKAGE ===========#
 
 # Packages
 from .arena import *
 from .attack import *
 from .board import *
-from .check import *
-from .conflict import *
 from .coord import *
 from .edge import *
-from .empty import *
 from .game import *
 from .graph import *
 from .node import *
@@ -32,4 +29,4 @@ from .token import *
 
 
 # Modules
-from .exception import SearcherException
+from .exception import SearchHitConflictException

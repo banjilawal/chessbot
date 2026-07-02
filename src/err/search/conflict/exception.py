@@ -14,18 +14,18 @@ from err import SearcherException
 from result import MethodResultType
 
 __all__ = [
-    # ======================# REQUIRED_ITEM_NOT_FOUND #======================#
-    "SearchResultEmptyException",
+    # ======================# ITEM_SEARCH_CONFLICTING_HITS_ERROR #======================#
+    "SearchHitConflictException",
 ]
 
-# ======================# REQUIRED_ITEM_NOT_FOUND #======================#
-class SearchResultEmptyException(SearcherException):
+# ======================# ITEM_SEARCH_CONFLICTING_HITS_ERROR #======================#
+class SearchHitConflictException(SearcherException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a Searcher did not find a required item.
+        1.  Indicate that a Searcher returned multiple hits for an item which should be unique.
 
     Attributes:
         msg: Optional[str]
@@ -42,8 +42,8 @@ class SearchResultEmptyException(SearcherException):
     Super Class:
         SearcherException
     """
-    ERR_CODE = "REQUIRED_ITEM_NOT_FOUND"
-    MSG = "Searcher did not find the required item."
+    ERR_CODE = "REQUIRED_ITEM_SEARCH_CONFLICTING_HITS_ERROR"
+    MSG = "Searcher returned multiple hits for an item which should be unique."
     MTHD_RSLT_TYPE = MethodResultType.SEARCH_RESULT
     
     def __init__(

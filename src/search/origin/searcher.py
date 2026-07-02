@@ -16,7 +16,7 @@ from err import (
     BidirectionalSourceTokenRelationException, DisabledTokenException, DisabledTokenManeuverException,
     ItinerarySourceEqualsDestinationException, PoppingEmptyTokenStackException,
     TokenOriginSearcherException,
-    TokenStackNullException
+    TokenSearchResultEmptyException, TokenStackNullException
 )
 from microservice import SquareValidator
 from model import Square, SquareContext, Token
@@ -153,8 +153,29 @@ class TokenOriginSearcher:
                     msg=TokenOriginSearcherException.MSG,
                     err_code=TokenOriginSearcherException.ERR_CODE,
                     mthd_rslt_type=MethodResultType.SEARCH_RESULT,
-                    ex=TokenNotFoundException(
+                    ex=TokenSearchResultEmptyException(
                         cls_mthd=method,
+                        cls_name=cls.__name__,
+                        msg=TokenSearchResultEmptyException.MSG,
+                        err_code=TokenSearchResultEmptyException.ERR_CODE,
+                    ),
+                )
+            )
+        # Handle the case that, the search contains more than one hit.
+        if len(origin_search_result.payload) > 1:
+            # Return the exception chain on failure
+            return SearchResult.failure(
+                exception=TokenOriginSearcherException(
+                    cls_mthd=method,
+                    cls_name=cls.__name__,
+                    msg=TokenOriginSearcherException.MSG,
+                    err_code=TokenOriginSearcherException.ERR_CODE,
+                    mthd_rslt_type=MethodResultType.SEARCH_RESULT,
+                    ex=TokenSearchResultConflictException(
+                        cls_mthd=method,
+                        cls_name=cls.__name__,
+                        msg=TokenSearchResultConflictException.MSG,
+                        err_code=TokenSearchResultConflictException.ERR_CODE,
                     ),
                 )
             )
