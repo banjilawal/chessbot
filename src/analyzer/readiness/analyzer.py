@@ -94,36 +94,36 @@ class TokenReadinessAnalyzer(Analyzer):
             return AnalysisResult.completed(TokenReadinessReport.not_deployed(token))
         
         if isinstance(token, CombatantToken):
-            return cls._analyze_combatant_freedom(combatant=cast(CombatantToken, token))
+            return cls._analyze_combatant_readiness(combatant=cast(CombatantToken, token))
         # Otherwise we are checking if a king is free.
-        return cls._analyze_king_freedom(king=cast(KingToken, token))
+        return cls._analyze_king_readiness(king=cast(KingToken, token))
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def _analyze_combatant_freedom(
+    def _analyze_combatant_readiness(
             cls,
             combatant: CombatantToken,
     ) -> AnalysisResult[TokenReadinessReport]:
         # Captured tokens are not free.
         if combatant.has_entered_hostage_process or combatant.recorded_as_hostage:
-            return AnalysisResult.success(TokenReadinessReport.captured(combatant))
+            return AnalysisResult.completed(TokenReadinessReport.captured(combatant))
         # Disabled combatants are not free either.
         if combatant.is_disabled:
-            return AnalysisResult.success(TokenReadinessReport.disabled(combatant))
+            return AnalysisResult.completed(TokenReadinessReport.disabled(combatant))
         
-        return AnalysisResult.success(TokenReadinessReport.ready(combatant))
+        return AnalysisResult.completed(TokenReadinessReport.ready(combatant))
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def _analyze_king_freedom(
+    def _analyze_king_readiness(
             cls,
             king: KingToken
     ) -> AnalysisResult[TokenReadinessReport]:
         # Checkmated kings are not free.
         if king.is_checkmated:
-            return AnalysisResult.success(TokenReadinessReport.checkmated(king))
+            return AnalysisResult.completed(TokenReadinessReport.checkmated(king))
         # Disabled kings are not free either.
         if king.is_disabled:
-            return AnalysisResult.success(TokenReadinessReport.disabled(king))
+            return AnalysisResult.completed(TokenReadinessReport.disabled(king))
         
-        return AnalysisResult.success(TokenReadinessReport.ready(king))
+        return AnalysisResult.completed(TokenReadinessReport.ready(king))

@@ -5,28 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/analyzer/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/analyzer/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/analyzer/claim/analyzer.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/analyzer/claim/analyzer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/analyzer/freedom/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/analyzer/readiness/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/analyzer/freedom/analyzer.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/analyzer/readiness/analyzer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/analyzer/promotion/manager/analyzer.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/analyzer/promotion/manager/analyzer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/analyzer/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/analyzer/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/analyzer/freedom/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/analyzer/readiness/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/analyzer/freedom/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/analyzer/readiness/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/priming/assembly/itinerary/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/priming/assembly/itinerary/operation.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/priming/deployment/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/priming/deployment/operation.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/permitter/maneuver/permitter.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/permitter/maneuver/permitter.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/permitter/promotion/permitter.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/permitter/promotion/permitter.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/report/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/report/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/report/freedom/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/report/readiness/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/report/freedom/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/report/readiness/exception/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/report/freedom/exception/work.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/report/readiness/exception/work.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/report/freedom/report.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/report/readiness/report.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/report/freedom/state.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/report/readiness/state.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/search/origin/searcher.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/search/origin/searcher.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/toolkit/model/itinerary/toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/toolkit/model/itinerary/toolkit.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/validation/itinerary/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/validation/itinerary/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/analyzer/readiness/analyzer.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/analyzer/readiness/analyzer.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -827,7 +806,7 @@
       <workItem from="1782214489414" duration="8439000" />
       <workItem from="1782265217166" duration="7062000" />
       <workItem from="1782325486599" duration="56546000" />
-      <workItem from="1782732939190" duration="81117000" />
+      <workItem from="1782732939190" duration="81588000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />

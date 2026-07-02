@@ -13,6 +13,7 @@ from typing import Optional
 
 from report import Report
 from result import AnalysisState, Result
+from result.result import T
 
 
 class AnalysisResult(Result[Report]):
@@ -31,7 +32,6 @@ class AnalysisResult(Result[Report]):
         is_timed_out: bool
         is_success: bool
         is_failure: bool
-        is_nothing_to_analysis: bool
 
     Provides:
         -   def success(payload: T) -> AnalysisResu[R]
@@ -70,23 +70,35 @@ class AnalysisResult(Result[Report]):
     @property
     def is_completed(self) -> bool:
         return (
-            self.payload is not None and
-            self.exception is None and
+            super().is_success and
             self._state == AnalysisState.COMPLETED
         )
     
     @property
     def is_aborted(self) -> bool:
-        return not self.is_completed
-    
+        return (
+            super().is_failure and
+            self.state == AnalysisState.ABORTED
+        )
     
     @property
     def is_timed_out(self) -> bool:
         return (
-                self.payload is None and
-                self.exception is not None and
-                self._state == AnalysisState.TIMED_OUT
+                super().is_failure and
+                self.state == AnalysisState.TIMED_OUT
         )
+    
+    @property
+    def is_success(self) -> bool:
+        return self.is_completed
+    
+    @property
+    def is_failure(self) -> bool:
+        return not self.is_completed
+    
+    @classmethod
+    def failure(cls, exception: Exception) -> AnalysisResult:
+        return cls.aborted(exception)
     
     @classmethod
     def completed(cls, payload: Report) -> AnalysisResult:
