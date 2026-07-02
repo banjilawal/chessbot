@@ -25,12 +25,13 @@ from util import LoggingLevelRouter
 class TokenOriginSearcher:
     """
     Role:
-        - Transaction Worker
-        - Consistency, Integrity Maintenance
-        - Process Runner
+        - Search Worker
+        - Integrity Maintenance
 
     Responsibilities:
-        1.  Run tests to see if permission can be granted to a TokenStackService to execute a deletion.
+        1.  Find the square a Token occupies on a Board.
+        2.  Provides a token's origin for maneuver operations.
+        3.  Provide debugging information for error cases which can occur during the search.
 
     Attributes:
 
@@ -38,10 +39,7 @@ class TokenOriginSearcher:
         -   execute(
                     cls,
                     token: Token,
-                    token_stack: TokenStackService,
-                    rank_service: RankService = RankService(),
-                    rank_quota_analyzer: RankQuotaAnalyzer = RankQuotaAnalyzer(),
-                    collision_detector: TokenCollisionAnalyst = TokenCollisionAnalyst(),
+                    readiness_analyzer: TokenReadinessAnalyzer,
             ) -> SearchResult
 
     Super Class:
@@ -55,28 +53,26 @@ class TokenOriginSearcher:
             readiness_analyzer: TokenReadinessAnalyzer | None = None,
     ) -> SearchResult:
         """
-        Find the square a Token occupies on a Board.
+        Find the source square a Token can move from.
         
         Action:
             1.  Return a failure result containing an exception chain if either:
-                    -   The collision_detector
-                    -   The rank_quota_analyzer
-                do not complete their work.
-            2.  Otherwise, send a deletion denial if
-                    -   The TokenStack is full.
-                    -   The item collides with an existing stack member.
-                    -   The quota for the token's rank is full.
-            3.  Send an approval if all the tests are passed.
+                    -   The token's readiness analysis is not completed.
+                    -   The square search is not completed.
+                    -   The token is disabled.
+                    -   The token is not found on the board.
+                    -   The search result indicates the token occupies more than one square.
+            2.  Otherwise, send the success result.
         Args:
-            item_id: int
-            stack: TokenStackService
-            square_validator: SquareValidator
-            readiness_analyzer: TokenFreedomAnalyzer
+            token: Token,
+            readiness_analyzer: TokenReadinessAnalyzer
         Returns:
             SearchResult
         Raises:
-            TokenDeletePermitterException
-            TokenStackFullException
+            DisabledTokenException
+            TokenOriginSearcherException
+            TokenSearchHitConflictException
+            TokenSearchResultEmptyException
         """
         method =  f"{cls.__name__}.execute"
         
@@ -119,11 +115,11 @@ class TokenOriginSearcher:
                     ),
                 )
             )
-        # --- After the token is available find where its on the board. ---#
-        
+        # --- After confirming the token is available find the square it occupies. ---#
         origin_search_result = token.team.board.squares.search(
             context=SquareContext(occupant=token)
         )
+        
         # Handle the case that, the search is not completed.
         if origin_search_result.is_failure:
             # Return the exception chain on failure
@@ -173,7 +169,7 @@ class TokenOriginSearcher:
                     ),
                 )
             )
-        # --- Last possible case, Token's square has been found. Forward success result---#
+        # --- Last possible case, Token's square has been found. Forward the work product. ---#
         return origin_search_result
 
     
