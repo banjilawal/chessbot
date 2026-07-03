@@ -13,6 +13,7 @@ version: 1.0.1
 from .attack import *
 from .checked import *
 from .combatant import *
+from .dto import *
 from .king import *
 
 # Modules

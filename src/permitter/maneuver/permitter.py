@@ -27,6 +27,7 @@ from search import TokenOriginSearcher
 from stack import TokenStackService
 from util import LoggingLevelRouter
 from validation import TokenFreedomAnalyzer, TokenValidator
+from validation.destination import TokenDestinationRelationValidator
 
 
 class ManeuverPermitter:
@@ -63,8 +64,9 @@ class ManeuverPermitter:
             token_validator: TokenValidator | None = None,
             square_validator: SquareValidator | None = None,
             origin_searcher: TokenOriginSearcher | None = None,
-            token_readiness_analyzer: TokenReadinessAnalyzer | None = None,
-            destination_relation_analyzer: SquareTokenRelationAnalyzer | None = None,
+            readiness_analyzer: TokenReadinessAnalyzer | None = None,
+            relation_analyzer: SquareTokenRelationAnalyzer | None = None,
+            destination_validator: TokenDestinationRelationValidator | None = None,
     ) -> AnalysisResult:
         """
         Action:
@@ -97,17 +99,19 @@ class ManeuverPermitter:
             square_validator = SquareValidator()
         if origin_searcher is None:
             origin_searcher = TokenOriginSearcher()
-        if token_readiness_analyzer is None:
-            token_readiness_analyzer = TokenReadinessAnalyzer()
-        if destination_relation_analyzer is None:
-            destination_relation_analyzer = SquareTokenRelationAnalyzer()
+        if readiness_analyzer is None:
+            readiness_analyzer = TokenReadinessAnalyzer()
+        if relation_analyzer is None:
+            relation_analyzer = SquareTokenRelationAnalyzer()
+        if destination_validator is None:
+            destination_validator = TokenDestinationRelationValidator()
             
-        token_origin_search_result = origin_searcher.execute(
+        origin_search_result = origin_searcher.execute(
             token=token,
-            readiness_analyzer=token_readiness_analyzer
+            readiness_analyzer=readiness_analyzer
         )
         # Handle the case that, the origin_searcher is not successful.
-        if token_origin_search_result.is_failure:
+        if origin_search_result.is_failure:
             # Return the exception chain on failure
             return AnalysisResult.failure(
                 ManeuverPermitterException(
@@ -116,11 +120,44 @@ class ManeuverPermitter:
                     msg=ManeuverPermitterException.MSG,
                     err_code=ManeuverPermitterException.ERR_CODE,
                     mthd_rslt_type=MethodResultType.ANALYSIS_RESULT,
-                    ex=token_origin_search_result.exception,
+                    ex=origin_search_result.exception,
                 )
             )
-        origin = token_origin_search_result.payload[0]
+        origin = origin_search_result.payload[0]
         
+        # Handle the case that, the token is already at the destination.
+        token_destination_validation_result = destination_validator.execute(
+            token=token,
+            destination=destination,
+            token_validator=token_validator,
+            square_validator=square_validator,
+            relation_analyzer=relation_analyzer,
+        )
+        if token_destination_validation_result.is_failure:
+            # Return the exception chain on failure
+            return AnalysisResult.failure(
+                ManeuverPermitterException(
+                    cls_mthd=method,
+                    cls_name=cls.__name__,
+                    msg=ManeuverPermitterException.MSG,
+                    err_code=ManeuverPermitterException.ERR_CODE,
+                    mthd_rslt_type=MethodResultType.ANALYSIS_RESULT,
+                    ex=token_destination_validation_result.exception,
+                )
+            )
+        # Handle the case that, the origin and destination are the same.
+        if origin == destination:
+            # Return the exception chain on failure
+            return AnalysisResult.failure(
+                ManeuverPermitterException(
+                    cls_mthd=method,
+                    cls_name=cls.__name__,
+                    msg=ManeuverPermitterException.MSG,
+                    err_code=ManeuverPermitterException.ERR_CODE,
+                    mthd_rslt_type=MethodResultType.ANALYSIS_RESULT,
+                    ex=token_destination_validation_result.exception,
+                )
+            )
         destination_relation_analysis = destination_relation_analyzer.analyze(
             candidate_primary=destination,
             candidate_satellite=token,
