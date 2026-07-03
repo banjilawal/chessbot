@@ -17,7 +17,7 @@ from report import DeleteApproval
 from result import AnalysisResult, MethodResultType
 from stack import TokenStackService
 from util import LoggingLevelRouter
-from validation import ValidationPrimer
+from validation import PrimingValidator
 
 
 class TokenDeletionPermitter:
@@ -52,7 +52,7 @@ class TokenDeletionPermitter:
             stack: TokenStackService,
             item_id: Optional[int] = None,
             identity_service: IdentityService | None = None,
-            validation_primer: ValidationPrimer | None = None,
+            validation_primer: PrimingValidator | None = None,
     ) -> AnalysisResult:
         """
         Action:
@@ -82,7 +82,7 @@ class TokenDeletionPermitter:
         if identity_service is None:
             identity_service = IdentityService()
         if validation_primer is None:
-            validation_primer = ValidationPrimer()
+            validation_primer = PrimingValidator()
         
         id_validation_result = identity_service.validate_id(candidate=id)
         if id_validation_result.is_failure:

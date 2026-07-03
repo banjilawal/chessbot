@@ -15,7 +15,7 @@ from microservice import IdentityService
 from model import Path
 from result import ValidationResult
 from util import LoggingLevelRouter
-from validation import SquareValidator, ValidationPrimer
+from validation import SquareValidator, PrimingValidator
 
 
 class PathValidator:
@@ -52,7 +52,7 @@ class PathValidator:
             candidate,
             identity_service: IdentityService | None = None,
             square_validator: SquareValidator | None = None,
-            validation_primer: ValidationPrimer | None = None,
+            validation_primer: PrimingValidator | None = None,
     ) -> ValidationResult[Path]:
         """
         Verify the object is a Path that is safe to use.
@@ -83,7 +83,7 @@ class PathValidator:
         if square_validator is None:
             square_validator = SquareValidator()
         if validation_primer is None:
-            validation_primer = ValidationPrimer()
+            validation_primer = PrimingValidator()
             
         priming_validation_result = validation_primer.validate(
             candidate=candidate,

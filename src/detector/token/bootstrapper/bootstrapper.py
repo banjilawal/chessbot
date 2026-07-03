@@ -21,7 +21,7 @@ from model import Token
 from result import ValidationResult
 from stack import TokenStackService
 from util import LoggingLevelRouter
-from validation import TokenValidator, ValidationPrimer
+from validation import TokenValidator, PrimingValidator
 
 
 class TokenCollisionBootstrapper:
@@ -54,7 +54,7 @@ class TokenCollisionBootstrapper:
             target: Optional[Token] | None = None,
             target_blueprint: Optional[TokenBlueprint] | None = None,
             identity_service: IdentityService | None = None,
-            validation_primer: ValidationPrimer | None = None,
+            validation_primer: PrimingValidator | None = None,
     ) -> ValidationResult[TokenBlueprint]:
         """
         Report if any schema member has the same id, designation or
@@ -84,7 +84,7 @@ class TokenCollisionBootstrapper:
         
         
         if validation_primer is None:
-            validation_primer = ValidationPrimer()
+            validation_primer = PrimingValidator()
         if identity_service is None:
             identity_service = IdentityService()
         
@@ -185,7 +185,7 @@ class TokenCollisionBootstrapper:
     def _validate_blueprint(
             cls, 
             blueprint: TokenBlueprint, 
-            validation_primer: ValidationPrimer,
+            validation_primer: PrimingValidator,
             identity_service: IdentityService,
     ) -> ValidationResult[TokenBlueprint]:
         method = f"{cls.__name__}.validate_blueprint"

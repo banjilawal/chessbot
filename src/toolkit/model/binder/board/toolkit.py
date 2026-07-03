@@ -10,7 +10,7 @@ version: 1.0.1
 from __future__ import annotations
 
 from microservice import BoardService, SchemaService, TeamService
-from validation.primer import ValidationPrimer
+from validation.primer import PrimingValidator
 from toolkit import Toolkit
 
 
@@ -45,7 +45,7 @@ class BoardTeamBinderToolkit(Toolkit):
             board_validator: BoardService | None = None,
             schema_service: SchemaService | None = None,
 
-            validation_primer: ValidationPrimer | None = None,
+            validation_primer: PrimingValidator | None = None,
     ):
         """
         Args:
@@ -76,5 +76,5 @@ class BoardTeamBinderToolkit(Toolkit):
 
     
     @property
-    def validation_primer(self) -> ValidationPrimer:
+    def validation_primer(self) -> PrimingValidator:
         return self._validation_primer

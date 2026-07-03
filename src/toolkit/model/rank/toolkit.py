@@ -15,7 +15,7 @@ from microservice import IdentityService, Microservice
 from model import Rank
 from toolkit import Toolkit
 from operation import Operation, PersonaValidator
-from validation import ValidationPrimer
+from validation import PrimingValidator
 
 
 class RankToolkit(Toolkit[Rank]):
@@ -42,10 +42,10 @@ class RankToolkit(Toolkit[Rank]):
     Super Class:
         Toolkit
     """
-    DEPENDENCIES: List[Operation] = [ValidationPrimer,]
+    DEPENDENCIES: List[Operation] = [PrimingValidator, ]
     SERVICE_DEPENDENCIES: List[Microservice] = [IdentityService,]
 
     identity_service: IdentityService = IdentityService()
-    validation_primer: ValidationPrimer = ValidationPrimer()
+    validation_primer: PrimingValidator = PrimingValidator()
 
         

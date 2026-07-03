@@ -16,7 +16,7 @@ from model import  Square, SquareState, Token
 from report import ManeuverApproval
 from result import EventResult, MethodResultType, UpdateResult
 from util import LoggingLevelRouter
-from validation import ValidationPrimer
+from validation import PrimingValidator
 
 
 class Maneuver:
@@ -50,7 +50,7 @@ class Maneuver:
     def execute(
             cls,
             report: ManeuverApproval,
-            validation_primer: ValidationPrimer | None = None,
+            validation_primer: PrimingValidator | None = None,
     ) -> EventResult:
         """
         Action:
@@ -73,7 +73,7 @@ class Maneuver:
         method = f"{cls.__class__.__name__}.execute"
         
         if validation_primer is None:
-            validation_primer = ValidationPrimer()
+            validation_primer = PrimingValidator()
             
         # Handle the case that, the itinerary is not valid.
         validation_result = validation_primer.validate(

@@ -12,7 +12,7 @@ from __future__ import annotations
 from microservice import IdentityService
 from model import Team
 from toolkit import Toolkit
-from validation import BoardValidator, PlayerValidator, ValidationPrimer
+from validation import BoardValidator, PlayerValidator, PrimingValidator
 
 
 class TeamToolkit(Toolkit[Team]):
@@ -44,11 +44,11 @@ class TeamToolkit(Toolkit[Team]):
     DEPENDENCIES = [
         BoardValidator,
         PlayerValidator,
-        ValidationPrimer
+        PrimingValidator
     ]
     SERVICE_DEPENDENCIES = [ IdentityService, ]
     
     board_validator: BoardValidator = BoardValidator()
     identity_service: IdentityService = IdentityService()
     player_validator: PlayerValidator = PlayerValidator()
-    validation_primer: ValidationPrimer = ValidationPrimer()
+    validation_primer: PrimingValidator = PrimingValidator()

@@ -18,7 +18,7 @@ from model import Token, TokenQuery
 from result import MethodResultType, ValidationResult
 from stack import TokenStackService
 from util import LoggingLevelRouter
-from validation import TokenContextValidator, ValidationPrimer, Validator
+from validation import TokenContextValidator, PrimingValidator, Validator
 
 
 class TokenQueryValidator(Validator[TokenQuery]):
@@ -47,7 +47,7 @@ class TokenQueryValidator(Validator[TokenQuery]):
     def validate(
             cls,
             candidate: Any,
-            validation_primer: ValidationPrimer | None = None,
+            validation_primer: PrimingValidator | None = None,
             context_validator: TokenContextValidator | None = None,
     ) -> ValidationResult[TokenQuery]:
         """
@@ -76,7 +76,7 @@ class TokenQueryValidator(Validator[TokenQuery]):
         method = f"{cls.__name__}._validate"
         
         if validation_primer is None:
-            validation_primer = ValidationPrimer()
+            validation_primer = PrimingValidator()
         if context_validator is None:
             context_validator = TokenContextValidator()
         

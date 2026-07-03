@@ -16,7 +16,7 @@ from result import ValidationResult
 from setting import GameColor
 from toolkit import TokenToolkit
 from util import LoggingLevelRouter
-from validation import ContextValidator, ValidationPrimer
+from validation import ContextValidator, PrimingValidator
 from err import (
     GameColorNullException, TokenContextNullException, TokenContextValidationException,
     TokenContextValidationRouteException

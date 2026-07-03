@@ -12,7 +12,7 @@ from dataclasses import dataclass
 
 from model import VectorRegister
 from toolkit import Toolkit
-from validation import ValidationPrimer, VectorOperandValidator
+from validation import PrimingValidator, VectorOperandValidator
 
 @dataclass
 class VectorRegisterToolkit(Toolkit[VectorRegister]):
@@ -40,4 +40,4 @@ class VectorRegisterToolkit(Toolkit[VectorRegister]):
         Toolkit
     """
     vector_operand_validator: VectorOperandValidator = VectorOperandValidator()
-    validation_primer: ValidationPrimer = ValidationPrimer()
+    validation_primer: PrimingValidator = PrimingValidator()

@@ -15,7 +15,7 @@ from detector import SquareCollisionDetector
 from microservice import FormationService, IdentityService
 from model import Square
 from toolkit import Toolkit
-from validation import BoardValidator, CoordValidator, TokenValidator, ValidationPrimer
+from validation import BoardValidator, CoordValidator, TokenValidator, PrimingValidator
 
 
 @dataclass
@@ -52,7 +52,7 @@ class SquareToolkit(Toolkit[Square]):
         BoardValidator,
         CoordValidator,
         SquareCollisionDetector,
-        ValidationPrimer,
+        PrimingValidator,
     ]
     
     SERVICE_DEPENDENCIES = [
@@ -64,6 +64,6 @@ class SquareToolkit(Toolkit[Square]):
     coord_validator: CoordValidator = CoordValidator()
     identity_service: IdentityService = IdentityService()
     formation_service: FormationService = FormationService()
-    validation_primer: ValidationPrimer = ValidationPrimer()
+    validation_primer: PrimingValidator = PrimingValidator()
     square_collision_detector: SquareCollisionDetector = SquareCollisionDetector()
 

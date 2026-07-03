@@ -14,7 +14,7 @@ from report import PopApproval
 from result import AnalysisResult, MethodResultType
 from stack import TokenStackService
 from util import LoggingLevelRouter
-from validation import ValidationPrimer
+from validation import PrimingValidator
 
 
 class TokenPopPermitter:
@@ -44,7 +44,7 @@ class TokenPopPermitter:
     def execute(
             cls,
             stack: TokenStackService,
-            validation_primer: ValidationPrimer | None = None,
+            validation_primer: PrimingValidator | None = None,
     ) -> AnalysisResult:
         """
         Action:
@@ -65,7 +65,7 @@ class TokenPopPermitter:
         
         # --- Supply any missing dependencies. ---#
         if validation_primer is None:
-            validation_primer = ValidationPrimer()
+            validation_primer = PrimingValidator()
 
         stack_validation_result = validation_primer.validate(
             candidate=stack,

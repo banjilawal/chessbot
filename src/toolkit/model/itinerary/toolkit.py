@@ -13,7 +13,7 @@ from err import ItineraryException, ItineraryNullException
 from model import Itinerary
 from toolkit import Toolkit
 from analyzer import SquareTokenRelationAnalyzer, TokenReadinessAnalyzer
-from validation import SquareValidator, TokenValidator, ValidationPrimer
+from validation import SquareValidator, TokenValidator, PrimingValidator
 
 
 class ItineraryToolkit(Toolkit[Itinerary]):
@@ -43,7 +43,7 @@ class ItineraryToolkit(Toolkit[Itinerary]):
     model_type: Itinerary
     token_validator: TokenValidator = TokenValidator()
     square_validator: SquareValidator = SquareValidator()
-    validation_primer: ValidationPrimer = ValidationPrimer()
+    validation_primer: PrimingValidator = PrimingValidator()
     null_exception: ItineraryNullException = ItineraryNullException()
     token_freedom_analyzer: TokenReadinessAnalyzer = TokenReadinessAnalyzer()
     square_token_relation_analyzer: SquareTokenRelationAnalyzer = SquareTokenRelationAnalyzer()

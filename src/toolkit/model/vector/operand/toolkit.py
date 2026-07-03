@@ -12,7 +12,7 @@ from dataclasses import dataclass
 
 from model import VectorOperand
 from toolkit import Toolkit
-from validation import CoordValidator, ValidationPrimer, VectorValidator
+from validation import CoordValidator, PrimingValidator, VectorValidator
 
 
 @dataclass
@@ -43,4 +43,4 @@ class VectorOperandToolkit(Toolkit[VectorOperand]):
     """
     coord_validator: CoordValidator = CoordValidator()
     vector_validator: VectorValidator = VectorValidator()
-    validation_primer: ValidationPrimer = ValidationPrimer()
+    validation_primer: PrimingValidator = PrimingValidator()

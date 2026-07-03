@@ -20,7 +20,7 @@ from err import NullException, ValidationPrimingException
 T = TypeVar("T")
 
 
-class ValidationPrimer(Validator):
+class PrimingValidator(Validator):
     """
     Role
         -   Transaction Worker

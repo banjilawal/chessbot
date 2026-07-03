@@ -13,7 +13,7 @@ from typing import Any, cast
 from model import Context
 from result import ValidationResult
 from util import LoggingLevelRouter
-from validation import Validator, ValidationPrimer
+from validation import Validator, PrimingValidator
 from err import (
     ContextNullException, ContextValidationException, ExcessContextFlagsException, ZeroContextFlagsException
 )
@@ -53,7 +53,7 @@ class ContextValidationPrimer(Validator[Context]):
             candidate: Any,
             context_model: Context,
             context_null_exception: ContextNullException | None = None,
-            validation_primer: ValidationPrimer | None = None,
+            validation_primer: PrimingValidator | None = None,
     ) -> ValidationResult[Context]:
         """
         Run tests that are common to Context subclasses
@@ -82,7 +82,7 @@ class ContextValidationPrimer(Validator[Context]):
         if context_null_exception is None:
             context_null_exception = ContextNullException()
         if validation_primer is None:
-            validation_primer = ValidationPrimer()
+            validation_primer = PrimingValidator()
         
         # Handle the case that, either the null or type check fails.
         validation_priming_result = validation_primer.validate(

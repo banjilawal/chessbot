@@ -17,7 +17,7 @@ from operation import Maneuver
 from report import AttackApproval, ManeuverApproval
 from result import EventResult, MethodResultType
 from util import IdFactory, LoggingLevelRouter
-from validation import ValidationPrimer
+from validation import PrimingValidator
 
 
 class Attack:
@@ -51,7 +51,7 @@ class Attack:
     def execute(
             cls,
             report: AttackApproval,
-            validation_primer: ValidationPrimer | None = None,
+            validation_primer: PrimingValidator | None = None,
     ) -> EventResult:
         """
         Action:
@@ -74,7 +74,7 @@ class Attack:
         method = f"{cls.__class__.__name__}.execute"
         
         if validation_primer is None:
-            validation_primer = ValidationPrimer()
+            validation_primer = PrimingValidator()
             
         # Handle the case that, the itinerary is not valid.
         validation_result = validation_primer.validate(

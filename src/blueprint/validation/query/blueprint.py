@@ -16,7 +16,7 @@ from err import (
 )
 from model import Query
 from stack import StackService
-from validation import ContextValidator, ValidationPrimer
+from validation import ContextValidator, PrimingValidator
 
 T = TypeVar("T")
 
@@ -50,4 +50,4 @@ class QueryValidationBlueprint(Blueprint[T]):
     context_null_exception: ContextNullException
     empty_stack_exception: StackEmptyException
     context_validator: ContextValidator[T]
-    validation_primer: ValidationPrimer = ValidationPrimer()
+    validation_primer: PrimingValidator = PrimingValidator()

@@ -19,7 +19,7 @@ from report import CollisionReport
 from result import AnalysisResult
 from stack import TokenStackService
 from util import LoggingLevelRouter
-from validation import ValidationPrimer
+from validation import PrimingValidator
 
 
 class TokenCollisionDetector(Detector[Token]):
@@ -44,7 +44,7 @@ class TokenCollisionDetector(Detector[Token]):
     """
     _collider: TokenCollider
     _identity_service: IdentityService
-    _validation_primer: ValidationPrimer
+    _validation_primer: PrimingValidator
     _bootstrapper: TokenCollisionBootstrapper
 
     

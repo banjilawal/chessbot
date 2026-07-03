@@ -15,10 +15,11 @@ from typing import Any, Dict, Generic, List, TypeVar
 
 from controller import ServiceRegistryController, WorkerRegistryController
 from err import OperationNotFoundException, ToolkitException
-from microservice import Microservice
+from microservice import IdentityService, Microservice
 from operation import Operation
 from result import SearchResult
 from util import LoggingLevelRouter
+from validation import PrimingValidator
 
 T = TypeVar("T")
 
@@ -50,6 +51,8 @@ class Toolkit(ABC, Generic[T]):
     """
     DEPENDENCIES: List[Operation] = []
     SERVICE_DEPENDENCIES: List[Microservice] = []
+    identity_service: IdentityService = IdentityService()
+    priming_validator: PrimingValidator = PrimingValidator()
     
     _entries: Dict[str, Any] = {}
     
