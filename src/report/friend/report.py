@@ -179,10 +179,10 @@ class FriendshipReport(Report):
         )
     
     @classmethod
-    def enemy_prisoner(cls, hunter: Token, enemy_combatant: CombatantToken) -> FriendshipReport:
+    def enemy_prisoner(cls, hunter: Token, enemy_prisoner: CombatantToken) -> FriendshipReport:
         return cls(
             hunter=hunter,
-            enemy_combatant=enemy_combatant,
+            enemy_combatant=enemy_prisoner,
             status=FriendshipStatus.ENEMY_PRISONER,
         )
     

@@ -1,7 +1,7 @@
-# src/analyzer/friend/king/analyzer.py
+# src/analyzer/friend/king/detector.py
 
 """
-Module: analyzer.friend.king.analyzer
+Module: analyzer.friend.king.detector
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -19,7 +19,7 @@ from util import LoggingLevelRouter
 from validation import TokenValidator
 
 
-class EnemyKingAnalyzer(Analyzer):
+class EnemyKingStatusDetector(Analyzer):
     """
     Role:
         - Transaction Worker

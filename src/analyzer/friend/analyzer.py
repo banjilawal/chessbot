@@ -11,15 +11,11 @@ from __future__ import annotations
 
 from typing import cast
 
-from analyzer import Analyzer, TokenReadinessAnalyzer
-from err import (
-    HomeSquareAlreadyFriendedException, FriendshipAnalyzerException, SquareNotFoundSearchException,
-    TokenNullException
-)
-from model import KingToken, OpeningSquare, SquareContext, Token
-from report import FriendshipReport, TokenReadinessReport
+from analyzer import Analyzer, EnemyCombatantStatusDetector, EnemyKingStatusDetector
+from err import FriendshipAnalyzerException
+from model import CombatantToken, KingToken, Token
+from report import FriendshipReport, FriendshipStatus
 from result import AnalysisResult
-from toolkit import TokenToolkit
 from util import LoggingLevelRouter
 from validation import TokenValidator
 
@@ -39,10 +35,14 @@ class FriendshipAnalyzer(Analyzer):
     Attributes:
     
     Provides:
-        -   execute(
-                    token: Token,
-                    readiness_analyzerr: TokenFreedomAnalyzer,
-            ) -> AnalysisResult[FriendshipReport]
+        -   def execute(
+                    cls,
+                    hunter: Token,
+                    target: Token,
+                    token_validator: TokenValidator,
+                    king_status_detector: EnemyKingStatusDetector,
+                    combatant_status_detector: EnemyCombatantStatusDetector,
+            ) -> AnalysisResult[FriendshipReport
             
     Super Class:
         Analyzer
@@ -54,9 +54,9 @@ class FriendshipAnalyzer(Analyzer):
             cls,
             hunter: Token,
             target: Token,
-            toolkit: TokenToolkit | None = None,
             token_validator: TokenValidator | None = None,
-            readiness_analyzer: TokenReadinessAnalyzer | None = None,
+            king_status_detector: EnemyKingStatusDetector | None = None,
+            combatant_status_detector: EnemyCombatantStatusDetector | None = None,
     ) -> AnalysisResult[FriendshipReport]:
         """
         Executes the deployment transaction.
@@ -69,28 +69,29 @@ class FriendshipAnalyzer(Analyzer):
                         -   square has already been friended.
             2.  Otherwise, send the success result.
         Args:
-            token: Token
-            readiness_analyzerr: TokenFreedomAnalyzer
+            hunter: Token
+            target: Token
+            token_validator: TokenValidator
+            king_status_detector: EnemyKingStatusDetector
+            combatant_status_detector: EnemyCombatantStatusDetector
         Returns:
             AnalysisResult[FriendshipReport]
         Raises:
             FriendshipAnalyzerException
-            DuplicateTokenDeploymentException
-            SquareNotFoundSearchException
         """
         method = f"{cls.__class__.__name__}.execute"
         
         # --- Supply any missing dependencies. ---#
-        if readiness_analyzer is None:
-            readiness_analyzer = TokenReadinessAnalyzer()
+        if token_validator is None:
+            token_validator = TokenValidator()
+        if king_status_detector is None:
+            king_status_detector = EnemyKingStatusDetector()
+        if combatant_status_detector is None:
+            combatant_status_detector = EnemyCombatantStatusDetector()
         
         # --- Perform analysis to see if the token is free. ---#
         for token in [hunter, target]:
-            validation_result = token_validator.validate(
-                candidate=token,
-                toolkit=toolkit,
-                null_exception=TokenNullException(),
-            )
+            validation_result = token_validator.validate(candidate=token)
             if validation_result.is_failure:
                 # Send the exception chain on failure.
                 return AnalysisResult.failure(
@@ -107,109 +108,147 @@ class FriendshipAnalyzer(Analyzer):
                 FriendshipReport.friends(hunter=hunter, friend=target,)
             )
         
-        target_readiness_analysis = readiness_analyzer.analyze(
-            token=target,
-            token_validator=token_validator,
-        )
-        if target_readiness_analysis.is_failure:
-            # Send the exception chain on failure.
-            return AnalysisResult.failure(
-                FriendshipAnalyzerException(
-                    cls_mthd=method,
-                    cls_name=cls.__class__.__name__,
-                    msg=FriendshipAnalyzerException.MSG,
-                    err_code=FriendshipAnalyzerException.ERR_CODE,
-                    ex=target_readiness_analysis.exception,
-                )
+        if isinstance(target, KingToken):
+            analysis_result = cls._process_enemy_king(
+                hunter=hunter,
+                king=cast(KingToken, target),
+                king_status_detector=king_status_detector,
             )
-        target_readiness = cast(TokenReadinessReport, target_readiness_analysis.payload)
+            if analysis_result.is_failure:
+                return AnalysisResult.failure(
+                    FriendshipAnalyzerException(
+                        cls_mthd=method,
+                        cls_name=cls.__class__.__name__,
+                        msg=FriendshipAnalyzerException.MSG,
+                        err_code=FriendshipAnalyzerException.ERR_CODE,
+                        ex=analysis_result.exception,
+                    )
+                )
+            return analysis_result
         
-        if target_readiness.t
-            
-        
-        # Handle the case that, the analysis is not completed.
-        if freedom_analysis_result.is_failure:
-            # Send the exception chain on failure.
-            return AnalysisResult.failure(
-                FriendshipAnalyzerException(
-                    cls_mthd=method,
-                    cls_name=cls.__class__.__name__,
-                    msg=FriendshipAnalyzerException.MSG,
-                    err_code=FriendshipAnalyzerException.ERR_CODE,
-                    ex=freedom_analysis_result.exception,
-                )
-            )
-        # Handle the case that, the token has already been deployed.
-        report = cast(TokenReadinessReport, freedom_analysis_result.payload)
-        if report.token_is_deployed:
-            # Send the exception chain on failure.
-            return AnalysisResult.failure(
-                FriendshipAnalyzerException(
-                    cls_mthd=method,
-                    cls_name=cls.__class__.__name__,
-                    msg=FriendshipAnalyzerException.MSG,
-                    err_code=FriendshipAnalyzerException.ERR_CODE,
-                    ex=HomeSquareAlreadyFriendedException(
-                        msg=HomeSquareAlreadyFriendedException.MSG,
-                        err_code=HomeSquareAlreadyFriendedException.ERR_CODE,
-                    ),
-                )
-            )
-        # --- Start opening_square tests from the token's board. ---#
-        board = token.team.board
-        square_search_result = board.squares.search(
-            context=SquareContext(id=token.opening_square.id)
+        analysis_result = cls._process_enemy_combatant(
+            hunter=hunter,
+            combatant=cast(CombatantToken, target),
+            combatant_status_detector=combatant_status_detector,
         )
-        # Handle the case that, searching for the opening square is not completed.
-        if square_search_result.is_failure:
-            # Send the exception chain on failure.
+        if analysis_result.is_failure:
             return AnalysisResult.failure(
                 FriendshipAnalyzerException(
                     cls_mthd=method,
                     cls_name=cls.__class__.__name__,
                     msg=FriendshipAnalyzerException.MSG,
                     err_code=FriendshipAnalyzerException.ERR_CODE,
-                    ex=square_search_result.exception,
-                )
-            )
-        # Handle the case that, the opening square is not found.
-        if square_search_result.is_empty:
-            # Send the exception chain on failure.
-            return AnalysisResult.failure(
-                FriendshipAnalyzerException(
-                    cls_mthd=method,
-                    cls_name=cls.__class__.__name__,
-                    msg=FriendshipAnalyzerException.MSG,
-                    err_code=FriendshipAnalyzerException.ERR_CODE,
-                    ex=SquareNotFoundSearchException(
-                        msg=SquareNotFoundSearchException.MSG,
-                        err_code=SquareNotFoundSearchException.ERR_CODE,
-                        var=f"opening_square:{token.opening_square.name}",
-                        val=token.opening_square,
-                    ),
-                )
-            )
-        # Handle the case that, the opening square has already been friended as home by a token.
-        home_square = cast(OpeningSquare, square_search_result.payload[0])
-        if home_square.is_friended:
-            # Send the exception chain on failure.
-            return AnalysisResult.failure(
-                FriendshipAnalyzerException(
-                    cls_mthd=method,
-                    cls_name=cls.__class__.__name__,
-                    msg=FriendshipAnalyzerException.MSG,
-                    err_code=FriendshipAnalyzerException.ERR_CODE,
-                    ex=HomeSquareAlreadyFriendedException(
-                        msg=HomeSquareAlreadyFriendedException.MSG,
-                        err_code=HomeSquareAlreadyFriendedException.ERR_CODE,
-                    ),
+                    ex=analysis_result.exception,
                 )
             )
         # --- Send the work product ---#
-        return AnalysisResult.completed(FriendshipReport(friendant=token, home_square=home_square))
+        return analysis_result
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def _process_enemy_king(cls, king: KingToken) -> AnalysisResult[FriendshipReport]:
+    def _process_enemy_king(
+            cls,
+            hunter: Token,
+            king: KingToken,
+            token_validator: TokenValidator,
+            king_status_detector: EnemyKingStatusDetector,
+    ) -> AnalysisResult[FriendshipReport]:
+        method = f"{cls.__name__}._process_enemy_king"
+
+        enemy_king_status_detection = king_status_detector.execute(
+            king=king,
+            token_validator=token_validator,
+        )
+        
+        # Handle the case that, the king's friendship status cannot be detected.
+        if enemy_king_status_detection.is_failure:
+            # Send the exception chain on failure.
+            return AnalysisResult.failure(
+                FriendshipAnalyzerException(
+                    cls_mthd=method,
+                    cls_name=cls.__class__.__name__,
+                    msg=FriendshipAnalyzerException.MSG,
+                    err_code=FriendshipAnalyzerException.ERR_CODE,
+                    ex=enemy_king_status_detection.exception,
+                )
+            )
+        king_status = cast(FriendshipStatus, enemy_king_status_detection.payload)
+        
+        # Case: The enemy king is free.
+        if king_status == FriendshipStatus.FREE_ENEMY_KING:
+            return AnalysisResult.completed(
+                FriendshipReport.free_enemy_king(
+                    hunter=hunter,
+                    enemy_king=king
+                )
+            )
+        # Case: The enemy king is checkmated.
+        if king_status == FriendshipStatus.CHECKMATED_ENEMY_KING:
+            return AnalysisResult.completed(
+                FriendshipReport.checkmated_enemy_king(
+                    hunter=hunter,
+                    enemy_king=king
+                )
+            )
+        # Default Case: the king has not been deployed.
+        return AnalysisResult.completed(
+            FriendshipReport.undeployed_enemy_king(
+                hunter=hunter,
+                enemy_king=king
+            )
+        )
     
+    @classmethod
+    @LoggingLevelRouter.monitor
+    def _process_enemy_combatant(
+            cls,
+            hunter: Token,
+            combatant: CombatantToken,
+            token_validator: TokenValidator,
+            combatant_status_detector: EnemyCombatantStatusDetector,
+    ) -> AnalysisResult[FriendshipReport]:
+        method = f"{cls.__name__}._process_enemy_combatant"
+        
+        enemy_combatant_status_detection = combatant_status_detector.execute(
+            combatant=combatant,
+            token_validator=token_validator,
+        )
+        
+        # Handle the case that, the king's friendship status cannot be detected.
+        if enemy_combatant_status_detection.is_failure:
+            # Send the exception chain on failure.
+            return AnalysisResult.failure(
+                FriendshipAnalyzerException(
+                    cls_mthd=method,
+                    cls_name=cls.__class__.__name__,
+                    msg=FriendshipAnalyzerException.MSG,
+                    err_code=FriendshipAnalyzerException.ERR_CODE,
+                    ex=enemy_combatant_status_detection.exception,
+                )
+            )
+        combatant_status = cast(FriendshipStatus, enemy_combatant_status_detection.payload)
+        
+        # Case: The enemy king is free.
+        if combatant_status == FriendshipStatus.FREE_ENEMY_COMBATANT:
+            return AnalysisResult.completed(
+                FriendshipReport.free_enemy_combatant(
+                    hunter=hunter,
+                    enemy_combatant=combatant
+                )
+            )
+        # Case: The enemy combatant has been captured.
+        if combatant_status == FriendshipStatus.ENEMY_PRISONER:
+            return AnalysisResult.completed(
+                FriendshipReport.enemy_prisoner(
+                    hunter=hunter,
+                    enemy_prisoner=combatant
+                )
+            )
+        # Default Case: the combatant has not been deployed.
+        return AnalysisResult.completed(
+            FriendshipReport.undeployed_enemy_combatant(
+                hunter=hunter,
+                enemy_combatant=combatant
+            )
+        )
         
