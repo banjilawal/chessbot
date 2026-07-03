@@ -1,7 +1,7 @@
-# src/model/path/model.py
+# src/model/model/maneuver.py
 
 """
-Module: model.path.model
+Module: model.model.maneuver
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -10,34 +10,33 @@ version: 1.0.1
 from __future__ import annotations
 
 from dataclasses import dataclass
-from typing import Optional
 
-from model.square import Square
+
+from model import Path, Token
 
 @dataclass
-class Path:
+class Maneuver:
     """
     Role:
         -   Model
         -   Data Holder
 
     Responsibilities:
-        1.  Provide the endpoints of a token's step.
+        1.  Transport resources for a Path factory.
 
     Attributes:
-        id: int
+        token: Token
         origin: Square
         destination: Square
-        cost: Optional[int]
+        id: Optional[int]
 
     Provides:
 
     Super Class:
     """
+    token: Token
+    path: Path
     id: int
-    origin: Square
-    destination: Square
-    cost: Optional[int] = None
         
         
         

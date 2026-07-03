@@ -10,7 +10,6 @@ version: 1.0.1
 # =========== MODEL.PATH PACKAGE ===========#
 
 # Packages
-from .attack import *
 from .checked import *
 from .combatant import *
 from .dto import *

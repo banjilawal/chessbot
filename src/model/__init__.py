@@ -11,6 +11,7 @@ version: 1.0.1
 
 # Packages
 from .arena import *
+from .attack import *
 from .binder import *
 from .board import *
 from .catalog import *
@@ -21,6 +22,7 @@ from .game import *
 from .graph import *
 from .hostage import *
 from .path import *
+from .maneuver import *
 from .math import *
 from .node import *
 from .notification import *

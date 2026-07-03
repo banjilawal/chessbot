@@ -10,7 +10,7 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Optional
 
-from model import Path, Token, Path
+from model import CheckedPath, Path, Token, Path
 from report import OperationApprovalReport, Permission
 
 
@@ -36,7 +36,6 @@ class ManeuverApproval(OperationApprovalReport):
         OperationApprovalReport
     """
     _path: Optional[Path]
-    _cost: Optional[int]
     
     def __init__(
             self,
@@ -75,6 +74,36 @@ class ManeuverApproval(OperationApprovalReport):
         return cls(
             cost=cost,
             path=path,
+            permission=Permission.GRANTED,
+        )
+    
+    @classmethod
+    def approve_maneuver(
+            cls,
+            maneuver: Path,
+    ) -> ManeuverApproval:
+        return cls(
+            path=maneuver,
+            permission=Permission.GRANTED,
+        )
+    
+    @classmethod
+    def approve_king_attack(
+            cls,
+            king_attack: CheckedPath,
+    ) -> ManeuverApproval:
+        return cls(
+            path=king_attack,
+            permission=Permission.GRANTED,
+        )
+    
+    @classmethod
+    def approve_combatant_attack(
+            cls,
+            combatant_attack: CheckedPath,
+    ) -> ManeuverApproval:
+        return cls(
+            path=combatant_attack,
             permission=Permission.GRANTED,
         )
     

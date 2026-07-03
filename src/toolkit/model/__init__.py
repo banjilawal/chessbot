@@ -19,6 +19,7 @@ from .edge import *
 from .game import *
 from .hostage import *
 from .itinerary import *
+from .maneuver import *
 from .node import *
 from .rank import *
 from .scalar import *

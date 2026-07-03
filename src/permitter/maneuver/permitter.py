@@ -14,7 +14,8 @@ from typing import Optional, cast
 from analyzer import FriendshipAnalyzer, SquareTokenRelationAnalyzer, TokenReadinessAnalyzer
 from builder import TokenPathDtoBuilder
 from err import (
-    BidirectionalSourceTokenRelationException, CircularPathException, DisabledTokenManeuverException,
+    BidirectionalSourceTokenRelationException, BlockedPathException, CircularPathException,
+    DisabledTokenManeuverException,
     ItinerarySourceEqualsDestinationException, PoppingEmptyTokenStackException,
     ManeuverPermitterException,
     TokenStackNullException
@@ -138,6 +139,7 @@ class ManeuverPermitter:
         dto = cast(TokenPathDTO, dto_build_result.payload)
         
         destination_occupant = dto.destination.occupant
+
         if destination_occupant is not None:
             friendship_analysis_result = token_service.controller.friendship_analyzer.execute(
                 hunter=token,
@@ -157,7 +159,27 @@ class ManeuverPermitter:
                 )
             report = cast(FriendshipReport, friendship_analysis_result.payload[0])
             if report.are_friends:
-                return
+                return AnalysisResult.completed(
+                    ManeuverApproval.deny(
+                        BlockedPathException(
+                            cls_mthd=method,
+                            cls_name=cls.__name__,
+                            msg=BlockedPathException.MSG,
+                            err_code=BlockedPathException.ERR_CODE,
+                        )
+                    )
+                )
+            if report.is_enemy_king:
+                return AnalysisResult.completed(
+                    ManeuverApproval.approve(
+                        (
+                            cls_mthd=method,
+                            cls_name=cls.__name__,
+                            msg=BlockedPathException.MSG,
+                            err_code=BlockedPathException.ERR_CODE,
+                        )
+                    )
+                )
                 
         origin_search_result = origin_searcher.execute(
             token=token,
