@@ -1,16 +1,19 @@
-# src/validation/itinerary/consistency/validator.py
+# src/validation/path/validator.py
 
 """
-Module: validation.itinerary.consistency.validator
+Module: validation.path.validator
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
 """
 
 from __future__ import annotations
+from typing import cast
 
+from err import PathNullException
 from microservice import IdentityService
-from model import Square, Token
+from model import Path
+from result import ValidationResult
 from util import LoggingLevelRouter
 from validation import SquareValidator, ValidationPrimer
 
@@ -24,23 +27,23 @@ class PathValidator:
         -   Process Runner
 
     Responsibilities:
-        1.  Ensure at point of use, an itinerary's token:
-                Has no relationship with its destination.
-                Has a bidirectional relationship with its source.
+        1.  Ensure a Path instance is certified safe, reliable and consistent before use.
 
     Attributes:
 
     Provides:
-        -   def validate(
-                    itinerary: Itinerary,
-                    toolkit: ItineraryToolkit,
-                    origin_relation_analyzer: OriginRelationValidator,
-                    destination_relation_analyzer: DestinationTokenRelationAnalyzer,
-            ) -> ValidationResult[Token]:
+        -   def validator(
+                    cls,
+                    candidate,
+                    identity_service: IdentityService,
+                    square_validator: SquareValidator,
+                    validation_primer: ValidationPrimer,
+            ) -> ValidationResult[Path]
 
     Super Class:
+        Validator
     """
-    OPERATION_NAME = "itinerary_consistency_validator"
+    OPERATION_NAME = "path_validator"
     
     @classmethod
     @LoggingLevelRouter.monitor
@@ -52,23 +55,25 @@ class PathValidator:
             validation_primer: ValidationPrimer | None = None,
     ) -> ValidationResult[Path]:
         """
-        Verify there is consistency between the itinerary's elements.
+        Verify the object is a Path that is safe to use.
 
         Action:
-            1.  Send an exception chan in the validation result if either:
-                    -   There is a token-source inconsistency.
-                    -   There is token-destination inconsistency.
+            1.  Send an exception chain in the ValidationResult any of the cases occur:
+                    -   Candidate is null
+                    -   It's not a Path.
+                    _   An id check fails.
+                    -   Either the origin or destination are not safe square.
+                    -   The origin and destination are the same.
             2.  Otherwise, send the success result.
         Args:
-            token: Token
-            origin: Square
-            destination: Square
-            origin_relation_validator: OriginRelationValidator
-            destination_analyzer: DestinationTokenRelationAnalyzer
+            candidate: Any
+            identity_service: IdentityService
+            square_validator: SquareValidator
+            validation_primer: ValidationPrimer
         Returns:
-            ValidationResult[int]
+            ValidationResult[Path]
         Raises:
-            ItineraryConsistencyException
+             PathValidationException
         """
         method = f"{cls.__name__}.validate"
         
@@ -85,41 +90,60 @@ class PathValidator:
             target_model=Path,
             null_exception=PathNullException(),
         )
-        
-        # Handle the case that, the token has an inconsistency with the source.
-        origin_relation_analysis = origin_relation_validator.execute(
-            token=token,
-            origin=origin,
-        )
-        if origin_relation_analysis.is_failure:
+        # Handle the case that, the candidate fails an initial check.
+        if priming_validation_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                ItineraryConsistencyException(
+                PathValidatorException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    msg=ItineraryConsistencyException.MSG,
-                    err_code=ItineraryConsistencyException.ERR_CODE,
-                    ex=origin_relation_analysis.exception,
+                    msg=PathValidatorException.MSG,
+                    err_code=PathValidatorException.ERR_CODE,
+                    ex=priming_validation_result.exception,
                 )
             )
-
-        # Handle the case that, the token has an inconsistency with the destination.
-        destination_result = destination_analyzer.validate(
-            token=token,
-            destination=destination,
-        )
-        if destination_result.is_failure:
+        path = cast(Path, candidate)
+        
+        # Handle the case that, the path's id gets flagged.
+        id_validation = identity_service.validate_id(path.id)
+        if id_validation.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                ItineraryConsistencyException(
+                PathValidatorException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    msg=ItineraryConsistencyException.MSG,
-                    err_code=ItineraryConsistencyException.ERR_CODE,
-                    ex=destination_result.exception,
+                    msg=PathValidatorException.MSG,
+                    err_code=PathValidatorException.ERR_CODE,
+                    ex=id_validation.exception,
+                )
+            )
+        # Handle the case that either the source or destination are not safe.
+        for square in [path.origin, path.destination]:
+            square_validation_result = square_validator.validate(candidate=square)
+            if square_validation_result.is_failure:
+                # Send the exception chain on failure.
+                return ValidationResult.failure(
+                    PathValidatorException(
+                        cls_mthd=method,
+                        cls_name=cls.__name__,
+                        msg=PathValidatorException.MSG,
+                        err_code=PathValidatorException.ERR_CODE,
+                        ex=square_validation_result.exception,
+                    )
+                )
+        # Handle the case that, the origin and the destination are the same.
+        if path.origin == path.destination:
+            # Send the exception chain on failure.
+            return ValidationResult.failure(
+                PathValidatorException(
+                    cls_mthd=method,
+                    cls_name=cls.__name__,
+                    msg=PathValidatorException.MSG,
+                    err_code=PathValidatorException.ERR_CODE,
+                    ex=square_validation_result.exception,
                 )
             )
         # --- Forward the work product to the caller. ---#
-        return ValidationResult.success(2)
+        return ValidationResult.success(payload=path)
         
         

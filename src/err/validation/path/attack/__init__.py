@@ -1,0 +1,15 @@
+# src/err/validation/path/attack/__init__.py
+
+"""
+Module: err.validation.path.attack.__init__
+Author: Banji Lawal
+Created: 2026-04-04
+version: 1.0.1
+"""
+
+# =========== ERR.VALIDATION.PATH.ATTACK PACKAGE ===========#
+
+# Packages
+
+# Modules
+from .exception import AttackPathValidatorException

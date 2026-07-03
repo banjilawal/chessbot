@@ -24,7 +24,7 @@ class ZeroTokenContextFlagsException(ZeroContextFlagsException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicates that no TokenContext attribute enabled.
+        1.  Indicates that no TokenContextValidator test. enabled.
 
     Attributes:
         msg: Optional[str]
@@ -40,7 +40,7 @@ class ZeroTokenContextFlagsException(ZeroContextFlagsException):
     Super Class:
         ZeroContextFlagsException
     """
-    MSG = "No TokenCcontext attribute enabled."
+    MSG = "Candidate did not pass a No TokenCContextValidator test. enabled."
     ERR_CODE = "ZERO_TOKEN_CONTEXT_FLAGS_FAILURE"
     
     def __init__(
@@ -67,6 +67,7 @@ class ZeroTokenContextFlagsException(ZeroContextFlagsException):
         """
         msg = msg or self.MSG
         err_code = err_code or self.ERR_CODE
+        mthd_rslt_type = mthd_rslt_type or self.mthd_rslt_type
         super().__init__(
             ex=ex,
             msg=msg,

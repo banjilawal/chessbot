@@ -42,7 +42,7 @@ class ItineraryConsistencyException(ItineraryValidatorException):
     Super Class:
         ItineraryValidatorException
     """
-    MSG = "Inconsistency between the itinerary and an endpoint."
+    MSG = "Candidate did not pass a Inconsistency between the itinerary and an endpoint."
     ERR_CODE = "ITINERARY_CONSISTENCY_ERROR"
     
     def __init__(
@@ -69,6 +69,7 @@ class ItineraryConsistencyException(ItineraryValidatorException):
         """
         msg = msg or self.MSG
         err_code = err_code or self.ERR_CODE
+        mthd_rslt_type = mthd_rslt_type or self.mthd_rslt_type
         super().__init__(
             ex=ex,
             msg=msg,

@@ -25,7 +25,7 @@ class EdgeValidatorException(ValidatorException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an EdgeValidator check.
+        1.  Indicate that an EdgeValidator test.
 
     Attributes:
         msg: Optional[str]
@@ -42,7 +42,7 @@ class EdgeValidatorException(ValidatorException):
     Super Class:
         ValidatorException
     """
-    MSG = "EdgeValidator check"
+    MSG = "Candidate did not pass a EdgeValidator test."
     ERR_CODE = "EDGE_VALIDATION_FAILURE"
     
     def __init__(
@@ -69,6 +69,7 @@ class EdgeValidatorException(ValidatorException):
         """
         msg = msg or self.MSG
         err_code = err_code or self.ERR_CODE
+        mthd_rslt_type = mthd_rslt_type or self.mthd_rslt_type
         super().__init__(
             ex=ex,
             msg=msg,

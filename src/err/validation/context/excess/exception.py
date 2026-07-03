@@ -24,7 +24,7 @@ class ExcessContextFlagsException(ContextException):
         -   Error Tracing
         
     Responsibilities:
-        1.  Indicate that no Context attributes were enabled.
+        1.  Indicate that no ContextValidator test.s were enabled.
 
     Attributes:
         msg: Optional[str]
@@ -40,7 +40,7 @@ class ExcessContextFlagsException(ContextException):
     Super Class:
         ContextException
     """
-    MSG = "More than one context attribute enabled."
+    MSG = "Candidate did not pass a More than one ContextValidator test. enabled."
     ERR_CODE = "EXCESS_CONTEXT_FLAGS_FAILURE"
     
     def __init__(
@@ -67,6 +67,7 @@ class ExcessContextFlagsException(ContextException):
         """
         msg = msg or self.MSG
         err_code = err_code or self.ERR_CODE
+        mthd_rslt_type = mthd_rslt_type or self.mthd_rslt_type
         super().__init__(
             ex=ex,
             msg=msg,

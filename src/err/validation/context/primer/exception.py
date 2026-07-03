@@ -42,7 +42,7 @@ class ContextValidationPrimingException(ContextValidatorException):
     Super Class:
         ContextValidatorException
     """
-    MSG = "ContextValidation failed during its priming phase."
+    MSG = "Candidate did not pass a ContextValidation failed during its priming phase."
     ERR_CODE = "CONTEXT_VALIDATION_PRIMING_FAILURE"
     
     def __init__(
@@ -69,6 +69,7 @@ class ContextValidationPrimingException(ContextValidatorException):
         """
         msg = msg or self.MSG
         err_code = err_code or self.ERR_CODE
+        mthd_rslt_type = mthd_rslt_type or self.mthd_rslt_type
         super().__init__(
             ex=ex,
             msg=msg,

@@ -24,7 +24,7 @@ class ZeroPlayerContextFlagsException(ZeroContextFlagsException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicates that no PlayerContext attribute enabled.
+        1.  Indicates that no PlayerContextValidator test. enabled.
 
     Attributes:
         msg: Optional[str]
@@ -40,7 +40,7 @@ class ZeroPlayerContextFlagsException(ZeroContextFlagsException):
     Super Class:
         ZeroContextFlagsException
     """
-    MSG = "No PlayerCcontext attribute enabled."
+    MSG = "Candidate did not pass a No PlayerCContextValidator test. enabled."
     ERR_CODE = "ZERO_PLAYER_CONTEXT_FLAGS_FAILURE"
     
     def __init__(
@@ -67,6 +67,7 @@ class ZeroPlayerContextFlagsException(ZeroContextFlagsException):
         """
         msg = msg or self.MSG
         err_code = err_code or self.ERR_CODE
+        mthd_rslt_type = mthd_rslt_type or self.mthd_rslt_type
         super().__init__(
             ex=ex,
             msg=msg,

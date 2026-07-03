@@ -25,7 +25,7 @@ class SchemaValidatorException(ValidatorException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a candidate did not pass a SchemaValidator check.
+        1.  Indicate that a candidate did not pass a SchemaValidator test.
 
     Attributes:
         msg: Optional[str]
@@ -42,7 +42,7 @@ class SchemaValidatorException(ValidatorException):
     Super Class:
         ValidatorException
     """
-    MSG = "SchemaValidator check"
+    MSG = "Candidate did not pass a SchemaValidator test."
     ERR_CODE = "SCHEMA_VALIDATION_FAILURE"
     
     def __init__(
@@ -69,6 +69,7 @@ class SchemaValidatorException(ValidatorException):
         """
         msg = msg or self.MSG
         err_code = err_code or self.ERR_CODE
+        mthd_rslt_type = mthd_rslt_type or self.mthd_rslt_type
         super().__init__(
             ex=ex,
             msg=msg,

@@ -42,7 +42,7 @@ class TokenOriginRelationNullException(ValidatorException):
     Super Class:
         ValidatorException
     """
-    MSG = "Square is not the Token's origin. Token cannot move from the square."
+    MSG = "Candidate did not pass a Square is not the Token's origin. Token cannot move from the square."
     ERR_CODE = "TOKEN_ORIGIN_RELATION_NULL_ERROR"
     
     def __init__(
@@ -69,6 +69,7 @@ class TokenOriginRelationNullException(ValidatorException):
         """
         msg = msg or self.MSG
         err_code = err_code or self.ERR_CODE
+        mthd_rslt_type = mthd_rslt_type or self.mthd_rslt_type
         super().__init__(
             ex=ex,
             msg=msg,

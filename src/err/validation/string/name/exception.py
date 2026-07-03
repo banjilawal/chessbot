@@ -25,7 +25,7 @@ class NameValidatorException(ValidatorException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a candidate did not pass a NameValidator check.
+        1.  Indicate that a candidate did not pass a NameValidator test.
 
     Attributes:
         msg: Optional[str]
@@ -42,7 +42,7 @@ class NameValidatorException(ValidatorException):
     Super Class:
         ValidatorException
     """
-    MSG = "NameValidator check"
+    MSG = "Candidate did not pass a NameValidator test."
     ERR_CODE = "NAME_VALIDATION_FAILURE"
     
     def __init__(
@@ -69,6 +69,7 @@ class NameValidatorException(ValidatorException):
         """
         msg = msg or self.MSG
         err_code = err_code or self.ERR_CODE
+        mthd_rslt_type = mthd_rslt_type or self.mthd_rslt_type
         super().__init__(
             ex=ex,
             msg=msg,

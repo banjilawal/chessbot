@@ -40,7 +40,7 @@ class ExcessBoardContextFlagsException(ExcessContextFlagsException):
     Super Class:
         ExcessContextFlagsException
     """
-    MSG = "More than one BoardCcontext attribute enabled."
+    MSG = "Candidate did not pass a More than one BoardCContextValidator test. enabled."
     ERR_CODE = "EXCESS_BOARD_CONTEXT_FLAGS_FAILURE"
     
     def __init__(
@@ -67,6 +67,7 @@ class ExcessBoardContextFlagsException(ExcessContextFlagsException):
         """
         msg = msg or self.MSG
         err_code = err_code or self.ERR_CODE
+        mthd_rslt_type = mthd_rslt_type or self.mthd_rslt_type
         super().__init__(
             ex=ex,
             msg=msg,

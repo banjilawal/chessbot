@@ -40,7 +40,7 @@ class ExcessSchemaContextFlagsException(ExcessContextFlagsException):
     Super Class:
         ExcessContextFlagsException
     """
-    MSG = "More than one SchemaCcontext attribute enabled."
+    MSG = "Candidate did not pass a More than one SchemaCContextValidator test. enabled."
     ERR_CODE = "EXCESS_SCHEMA_CONTEXT_FLAGS_FAILURE"
     
     def __init__(
@@ -67,6 +67,7 @@ class ExcessSchemaContextFlagsException(ExcessContextFlagsException):
         """
         msg = msg or self.MSG
         err_code = err_code or self.ERR_CODE
+        mthd_rslt_type = mthd_rslt_type or self.mthd_rslt_type
         super().__init__(
             ex=ex,
             msg=msg,

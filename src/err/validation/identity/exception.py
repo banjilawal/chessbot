@@ -25,7 +25,7 @@ class IdentityValidatorException(ValidatorException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an IdentityValidator check.
+        1.  Indicate that an IdentityValidator test.
 
     Attributes:
         msg: Optional[str]
@@ -42,7 +42,7 @@ class IdentityValidatorException(ValidatorException):
     Super Class:
         ValidatorException
     """
-    MSG = "IdentityValidator check"
+    MSG = "Candidate did not pass a IdentityValidator test."
     ERR_CODE = "IDENTITY_VALIDATION_FAILURE"
     
     def __init__(
@@ -69,6 +69,7 @@ class IdentityValidatorException(ValidatorException):
         """
         msg = msg or self.MSG
         err_code = err_code or self.ERR_CODE
+        mthd_rslt_type = mthd_rslt_type or self.mthd_rslt_type
         super().__init__(
             ex=ex,
             msg=msg,

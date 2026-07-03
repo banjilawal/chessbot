@@ -25,7 +25,7 @@ class TokenValidatorException(ValidatorException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate a TokenValidator check.
+        1.  Indicate a TokenValidator test.
 
     Attributes:
         msg: Optional[str]
@@ -42,7 +42,7 @@ class TokenValidatorException(ValidatorException):
     Super Class:
         ValidatorException
     """
-    MSG = "TokenValidator check."
+    MSG = "Candidate did not pass a TokenValidator test."
     ERR_CODE = "TOKEN_VALIDATION_FAILURE"
     
     def __init__(
@@ -69,6 +69,7 @@ class TokenValidatorException(ValidatorException):
         """
         msg = msg or self.MSG
         err_code = err_code or self.ERR_CODE
+        mthd_rslt_type = mthd_rslt_type or self.mthd_rslt_type
         super().__init__(
             ex=ex,
             msg=msg,

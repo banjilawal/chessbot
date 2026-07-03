@@ -42,7 +42,7 @@ class ContextValidatorException(ValidatorException):
     Super Class:
         ValidatorException
     """
-    MSG = "No validation logic for context's attribute"
+    MSG = "Candidate did not pass a context's attribute"
     ERR_CODE = "CONTEXT_VALIDATION_FAILURE"
     
     def __init__(
@@ -69,6 +69,7 @@ class ContextValidatorException(ValidatorException):
         """
         msg = msg or self.MSG
         err_code = err_code or self.ERR_CODE
+        mthd_rslt_type = mthd_rslt_type or self.mthd_rslt_type
         super().__init__(
             ex=ex,
             msg=msg,

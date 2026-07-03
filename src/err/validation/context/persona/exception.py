@@ -6,18 +6,17 @@ Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
 """
+
 from __future__ import annotations
 from typing import Any, Optional
 
-
+from err import ContextValidatorException
+from result import MethodResultType
 
 __all__ = [
     # ======================# PERSONA_CONTEXT_VALIDATION_FAILURE #======================#
     "PersonaContextValidatorException",
 ]
-
-from err import ContextValidatorException
-
 
 # ======================# PERSONA_CONTEXT_VALIDATION_FAILURE #======================#
 class PersonaContextValidatorException(ContextValidatorException):
@@ -26,7 +25,7 @@ class PersonaContextValidatorException(ContextValidatorException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a candidate did not pass a PersonaContextValidator check.
+        1.  Indicate that a candidate did not pass a PersonaContextValidator test.
 
     Attributes:
             msg: Optional[str]
@@ -43,7 +42,7 @@ class PersonaContextValidatorException(ContextValidatorException):
     Super Class:
         ContextValidatorException
     """
-    MSG = "No validation logic for PersonaContext attribute"
+    MSG = "Candidate did not pass a PersonaContextValidator test."
     ERR_CODE = "PERSONA_CONTEXT_VALIDATION_FAILURE"
     
     def __init__(
@@ -70,6 +69,7 @@ class PersonaContextValidatorException(ContextValidatorException):
         """
         msg = msg or self.MSG
         err_code = err_code or self.ERR_CODE
+        mthd_rslt_type = mthd_rslt_type or self.mthd_rslt_type
         super().__init__(
             ex=ex,
             msg=msg,

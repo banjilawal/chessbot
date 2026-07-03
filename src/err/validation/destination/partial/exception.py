@@ -43,7 +43,7 @@ class PartialTokenDestinationRelationException(ValidatorException):
     Super Class:
         ValidatorException
     """
-    MSG = "Token and destination have a partial relation where none should exist."
+    MSG = "Candidate did not pass a Token and destination have a partial relation where none should exist."
     ERR_CODE = "PARTIAL_TOKEN_DESTINATION_RELATION_ERROR"
     
     def __init__(
@@ -70,6 +70,7 @@ class PartialTokenDestinationRelationException(ValidatorException):
         """
         msg = msg or self.MSG
         err_code = err_code or self.ERR_CODE
+        mthd_rslt_type = mthd_rslt_type or self.mthd_rslt_type
         super().__init__(
             ex=ex,
             msg=msg,

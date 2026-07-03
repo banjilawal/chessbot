@@ -28,7 +28,7 @@ class VectorRegisterValidatorException(ValidatorException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a candidate did not pass a VectorRegisterValidator check.
+        1.  Indicate that a candidate did not pass a VectorRegisterValidator test.
 
     Attributes:
             msg: Optional[str]
@@ -45,7 +45,7 @@ class VectorRegisterValidatorException(ValidatorException):
     Super Class:
         ValidatorException
     """
-    MSG = "VectorRegisterValidation failed."
+    MSG = "Candidate did not pass a VectorRegisterValidation failed."
     ERR_CODE = "VECTOR_REGISTER_VALIDATION_FAILURE"
     
     def __init__(
@@ -72,6 +72,7 @@ class VectorRegisterValidatorException(ValidatorException):
         """
         msg = msg or self.MSG
         err_code = err_code or self.ERR_CODE
+        mthd_rslt_type = mthd_rslt_type or self.mthd_rslt_type
         super().__init__(
             ex=ex,
             msg=msg,

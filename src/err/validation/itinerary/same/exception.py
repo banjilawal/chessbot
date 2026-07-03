@@ -42,7 +42,7 @@ class ItinerarySourceEqualsDestinationException(ItineraryValidatorException):
     Super Class:
         ItineraryValidatorException
     """
-    MSG = "Itinerary source and destination cannot be the same."
+    MSG = "Candidate did not pass a Itinerary source and destination cannot be the same."
     ERR_CODE = "ITINERARY_SOURCE_EQUALS_DESTINATION"
     
     def __init__(
@@ -69,6 +69,7 @@ class ItinerarySourceEqualsDestinationException(ItineraryValidatorException):
         """
         msg = msg or self.MSG
         err_code = err_code or self.ERR_CODE
+        mthd_rslt_type = mthd_rslt_type or self.mthd_rslt_type
         super().__init__(
             ex=ex,
             msg=msg,

@@ -6,18 +6,15 @@ Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
 """
+
 from __future__ import annotations
-from typing import Any, Optional
-
-
+from err import ContextValidatorException
+from result import MethodResultType
 
 __all__ = [
     # ======================# BOARD_CONTEXT_VALIDATION_FAILURE #======================#
     "BoardContextValidatorException",
 ]
-
-from err import ContextValidatorException
-
 
 # ======================# BOARD_CONTEXT_VALIDATION_FAILURE #======================#
 class BoardContextValidatorException(ContextValidatorException):
@@ -26,7 +23,7 @@ class BoardContextValidatorException(ContextValidatorException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a candidate did not pass a BoardContextValidator check.
+        1.  Indicate that a candidate did not pass a BoardContextValidator test.
 
     Attributes:
             msg: Optional[str]
@@ -43,7 +40,7 @@ class BoardContextValidatorException(ContextValidatorException):
     Super Class:
         ContextValidatorException
     """
-    MSG = "No validation logic for BoardContext attribute"
+    MSG = "Candidate did not pass a BoardContextValidator test."
     ERR_CODE = "BOARD_CONTEXT_VALIDATION_FAILURE"
     
     def __init__(
@@ -70,6 +67,7 @@ class BoardContextValidatorException(ContextValidatorException):
         """
         msg = msg or self.MSG
         err_code = err_code or self.ERR_CODE
+        mthd_rslt_type = mthd_rslt_type or self.mthd_rslt_type
         super().__init__(
             ex=ex,
             msg=msg,

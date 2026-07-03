@@ -6,18 +6,15 @@ Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
 """
+
 from __future__ import annotations
-from typing import Any, Optional
-
-
+from err import ContextValidatorException
+from result import MethodResultType
 
 __all__ = [
     # ======================# ARENA_CONTEXT_VALIDATION_FAILURE #======================#
     "ArenaContextValidatorException",
 ]
-
-from err import ContextValidatorException
-
 
 # ======================# ARENA_CONTEXT_VALIDATION_FAILURE #======================#
 class ArenaContextValidatorException(ContextValidatorException):
@@ -26,7 +23,7 @@ class ArenaContextValidatorException(ContextValidatorException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a candidate did not pass a ArenaContextValidator check.
+        1.  Indicate that a candidate did not pass a ArenaContextValidator test.
 
     Attributes:
             msg: Optional[str]
@@ -43,7 +40,7 @@ class ArenaContextValidatorException(ContextValidatorException):
     Super Class:
         ContextValidatorException
     """
-    MSG = "No validation logic for ArenaContext attribute"
+    MSG = "Candidate did not pass a ArenaContextValidator test."
     ERR_CODE = "ARENA_CONTEXT_VALIDATION_FAILURE"
     
     def __init__(
@@ -70,6 +67,7 @@ class ArenaContextValidatorException(ContextValidatorException):
         """
         msg = msg or self.MSG
         err_code = err_code or self.ERR_CODE
+        mthd_rslt_type = mthd_rslt_type or self.mthd_rslt_type
         super().__init__(
             ex=ex,
             msg=msg,

@@ -25,7 +25,7 @@ class NumberValidatorException(ValidatorException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a candidate did not pass a NumberValidator check.
+        1.  Indicate that a candidate did not pass a NumberValidator test.
 
     Attributes:
         msg: Optional[str]
@@ -42,7 +42,7 @@ class NumberValidatorException(ValidatorException):
     Super Class:
         ValidatorException
     """
-    MSG = "NumberValidator check"
+    MSG = "Candidate did not pass a NumberValidator test."
     ERR_CODE = "NUMBER_VALIDATION_FAILURE"
     
     def __init__(
@@ -69,6 +69,7 @@ class NumberValidatorException(ValidatorException):
         """
         msg = msg or self.MSG
         err_code = err_code or self.ERR_CODE
+        mthd_rslt_type = mthd_rslt_type or self.mthd_rslt_type
         super().__init__(
             ex=ex,
             msg=msg,

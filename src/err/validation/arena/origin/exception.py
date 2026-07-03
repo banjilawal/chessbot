@@ -25,7 +25,7 @@ class TokenDestinationRelationValidatorException(ValidatorException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a candidate did not pass a TokenDestinationRelationValidator check.
+        1.  Indicate that a candidate did not pass a TokenDestinationRelationValidator test.
 
     Attributes:
         msg: Optional[str]
@@ -42,7 +42,7 @@ class TokenDestinationRelationValidatorException(ValidatorException):
     Super Class:
         ValidatorException
     """
-    MSG = "Candidate failed a TokenDestinationRelationValidator check."
+    MSG = "Candidate did not pass a Candidate failed a TokenDestinationRelationValidator test."
     ERR_CODE = "TOKEN_DESTINATION_RELATION_VALIDATOR_FAILURE"
     
     def __init__(
@@ -69,6 +69,7 @@ class TokenDestinationRelationValidatorException(ValidatorException):
         """
         msg = msg or self.MSG
         err_code = err_code or self.ERR_CODE
+        mthd_rslt_type = mthd_rslt_type or self.mthd_rslt_type
         super().__init__(
             ex=ex,
             msg=msg,

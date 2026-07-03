@@ -27,7 +27,7 @@ class ValidatorException(OperationException):
         -   Failure Tracing
 
     Responsibilities:
-        1.  Indicate that validator check.
+        1.  Indicate that a candidate did not pass a Validator test.
 
     Attributes:
         msg: str
@@ -44,7 +44,7 @@ class ValidatorException(OperationException):
     Super Class:
         OperationException
     """
-    MSG = "Validation failed"
+    MSG = "Candidate did not pass a Candidate did not pass a Validator test."
     ERR_CODE = "VALIDATION_FAILURE"
     MTHD_RSLT_TYPE = MethodResultType.VALIDATION_RESULT
     

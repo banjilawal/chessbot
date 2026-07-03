@@ -42,7 +42,7 @@ class ValidationPrimingException(ValidatorException):
     Super Class:
         ValidatorException
     """
-    MSG = "Validation failed during its phase."
+    MSG = "Candidate did not pass a Validation failed during its phase."
     ERR_CODE = "VALIDATION_PRIMING_FAILURE"
     
     def __init__(
@@ -69,6 +69,7 @@ class ValidationPrimingException(ValidatorException):
         """
         msg = msg or self.MSG
         err_code = err_code or self.ERR_CODE
+        mthd_rslt_type = mthd_rslt_type or self.mthd_rslt_type
         super().__init__(
             ex=ex,
             msg=msg,

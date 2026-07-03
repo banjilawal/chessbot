@@ -25,7 +25,7 @@ class PersonaValidatorException(ValidatorException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that n PersonaValidator check.
+        1.  Indicate that n PersonaValidator test.
 
     Attributes:
             msg: Optional[str]
@@ -42,7 +42,7 @@ class PersonaValidatorException(ValidatorException):
     Super Class:
         ValidatorException
     """
-    MSG = "PersonaValidator check"
+    MSG = "Candidate did not pass a PersonaValidator test."
     ERR_CODE = "PERSONA_VALIDATION_FAILURE"
     
     def __init__(
@@ -69,6 +69,7 @@ class PersonaValidatorException(ValidatorException):
         """
         msg = msg or self.MSG
         err_code = err_code or self.ERR_CODE
+        mthd_rslt_type = mthd_rslt_type or self.mthd_rslt_type
         super().__init__(
             ex=ex,
             msg=msg,

@@ -25,7 +25,7 @@ class PlayerValidatorException(ValidatorException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a candidate did not pass a PlayerValidator check.
+        1.  Indicate that a candidate did not pass a PlayerValidator test.
 
     Attributes:
         msg: Optional[str]
@@ -42,7 +42,7 @@ class PlayerValidatorException(ValidatorException):
     Super Class:
         ValidatorException
     """
-    MSG = "PlayerValidator check"
+    MSG = "Candidate did not pass a PlayerValidator test."
     ERR_CODE = "PLAYER_VALIDATION_FAILURE"
     
     def __init__(
@@ -69,6 +69,7 @@ class PlayerValidatorException(ValidatorException):
         """
         msg = msg or self.MSG
         err_code = err_code or self.ERR_CODE
+        mthd_rslt_type = mthd_rslt_type or self.mthd_rslt_type
         super().__init__(
             ex=ex,
             msg=msg,

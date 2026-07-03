@@ -25,7 +25,7 @@ class SquareValidatorException(ValidatorException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a candidate did not pass a SquareValidator check.
+        1.  Indicate that a candidate did not pass a SquareValidator test.
 
     Attributes:
         msg: Optional[str]
@@ -42,7 +42,7 @@ class SquareValidatorException(ValidatorException):
     Super Class:
         ValidatorException
     """
-    MSG = "SquareValidator check"
+    MSG = "Candidate did not pass a SquareValidator test."
     ERR_CODE = "SQUARE_VALIDATION_FAILURE"
     
     def __init__(
@@ -69,6 +69,7 @@ class SquareValidatorException(ValidatorException):
         """
         msg = msg or self.MSG
         err_code = err_code or self.ERR_CODE
+        mthd_rslt_type = mthd_rslt_type or self.mthd_rslt_type
         super().__init__(
             ex=ex,
             msg=msg,

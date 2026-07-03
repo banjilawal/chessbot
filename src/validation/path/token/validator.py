@@ -1,7 +1,7 @@
-# src/validation/itinerary/consistency/validator.py
+# src/validation/path/validator.py
 
 """
-Module: validation.itinerary.consistency.validator
+Module: validation.path.validator
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

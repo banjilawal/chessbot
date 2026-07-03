@@ -8,17 +8,13 @@ version: 1.0.1
 """
 
 from __future__ import annotations
-from typing import Any, Optional
-
-
+from err import ContextValidatorException
+from result import MethodResultType
 
 __all__ = [
     # ======================# TOKEN_CONTEXT_VALIDATION_FAILURE #======================#
     "TokenContextValidatorException",
 ]
-
-from err import ContextValidatorException
-
 
 # ======================# TOKEN_CONTEXT_VALIDATION_FAILURE #======================#
 class TokenContextValidatorException(ContextValidatorException):
@@ -27,7 +23,7 @@ class TokenContextValidatorException(ContextValidatorException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a candidate did not pass a TokenContextValidator check.
+        1.  Indicate that a candidate did not pass a TokenContextValidator test.
 
     Attributes:
             msg: Optional[str]
@@ -44,7 +40,7 @@ class TokenContextValidatorException(ContextValidatorException):
     Super Class:
         ContextValidatorException
     """
-    MSG = "No validation logic for TokenContext attribute"
+    MSG = "Candidate did not pass a TokenContextValidator test."
     ERR_CODE = "TOKEN_CONTEXT_VALIDATION_FAILURE"
     
     def __init__(
@@ -71,6 +67,7 @@ class TokenContextValidatorException(ContextValidatorException):
         """
         msg = msg or self.MSG
         err_code = err_code or self.ERR_CODE
+        mthd_rslt_type = mthd_rslt_type or self.mthd_rslt_type
         super().__init__(
             ex=ex,
             msg=msg,
