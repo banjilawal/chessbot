@@ -42,6 +42,10 @@ class TokenOriginRelationToolkit(Toolkit):
 
     Super Class:
         Toolkit
+        
+    Notes:
+        -   The toolkit does not support any models. It just makes TokenOriginRelationValidator's validate
+            method signature simpler.
     """
 
     DEPENDENCIES: List[Operation] = []
