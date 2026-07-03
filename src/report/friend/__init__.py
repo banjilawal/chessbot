@@ -13,3 +13,4 @@ version: 1.0.1
 
 # Modules
 from .report import FriendshipReport
+from .state import FriendshipStatus

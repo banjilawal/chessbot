@@ -12,5 +12,9 @@ from enum import Enum, auto
 
 class FriendshipStatus(Enum):
     ARE_FRIENDS = auto(),
-    TARGET_IS_ENEMY_KING = auto(),
-    TARGET_IS_ENEMY_COMBATANT = auto(),
+    FREE_ENEMY_KING = auto(),
+    FREE_ENEMY_COMBATANT = auto(),
+    CHECKMATED_ENEMY_KING = auto()
+    ENEMY_PRISONER = auto()
+    UNDEPLOYED_ENEMY_KING = auto()
+    UNDEPLOYED_ENEMY_COMBATANT = auto()

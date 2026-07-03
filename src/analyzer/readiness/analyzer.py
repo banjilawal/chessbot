@@ -85,7 +85,6 @@ class TokenReadinessAnalyzer(Analyzer):
                     cls_name=cls.__name__,
                     msg=TokenReadinessAnalyzerException.MSG,
                     err_code=TokenReadinessAnalyzerException.ERR_CODE,
-                    mthd_rslt_type=TokenReadinessAnalyzerException.MTHD_RSLT,
                     ex=validation_result.exception
                 )
             )

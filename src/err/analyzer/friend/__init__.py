@@ -10,6 +10,8 @@ version: 1.0.1
 # ============ ERR.ANALYZER.FRIEND PACKAGE ===========#
 
 # Packages
+from .combatant import *
+from .king import *
 
 # Modules
 from .exception import FriendshipAnalyzerException

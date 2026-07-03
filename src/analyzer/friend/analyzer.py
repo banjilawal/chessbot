@@ -16,7 +16,7 @@ from err import (
     HomeSquareAlreadyFriendedException, FriendshipAnalyzerException, SquareNotFoundSearchException,
     TokenNullException
 )
-from model import OpeningSquare, SquareContext, Token
+from model import KingToken, OpeningSquare, SquareContext, Token
 from report import FriendshipReport, TokenReadinessReport
 from result import AnalysisResult
 from toolkit import TokenToolkit
@@ -41,7 +41,7 @@ class FriendshipAnalyzer(Analyzer):
     Provides:
         -   execute(
                     token: Token,
-                    token_freedom_analyzer: TokenFreedomAnalyzer,
+                    readiness_analyzerr: TokenFreedomAnalyzer,
             ) -> AnalysisResult[FriendshipReport]
             
     Super Class:
@@ -52,11 +52,11 @@ class FriendshipAnalyzer(Analyzer):
     @LoggingLevelRouter.monitor
     def execute(
             cls,
-            a: Token,
-            b: Token,
+            hunter: Token,
+            target: Token,
             toolkit: TokenToolkit | None = None,
             token_validator: TokenValidator | None = None,
-            token_freedom_analyzer: TokenReadinessAnalyzer | None = None,
+            readiness_analyzer: TokenReadinessAnalyzer | None = None,
     ) -> AnalysisResult[FriendshipReport]:
         """
         Executes the deployment transaction.
@@ -70,7 +70,7 @@ class FriendshipAnalyzer(Analyzer):
             2.  Otherwise, send the success result.
         Args:
             token: Token
-            token_freedom_analyzer: TokenFreedomAnalyzer
+            readiness_analyzerr: TokenFreedomAnalyzer
         Returns:
             AnalysisResult[FriendshipReport]
         Raises:
@@ -81,13 +81,11 @@ class FriendshipAnalyzer(Analyzer):
         method = f"{cls.__class__.__name__}.execute"
         
         # --- Supply any missing dependencies. ---#
-        if token_freedom_analyzer is None:
-            token_freedom_analyzer = TokenReadinessAnalyzer()
+        if readiness_analyzer is None:
+            readiness_analyzer = TokenReadinessAnalyzer()
         
         # --- Perform analysis to see if the token is free. ---#
-        freedom_analysis_result = token_freedom_analyzer.analyze(token)
-        
-        for token in [a, b]:
+        for token in [hunter, target]:
             validation_result = token_validator.validate(
                 candidate=token,
                 toolkit=toolkit,
@@ -101,10 +99,32 @@ class FriendshipAnalyzer(Analyzer):
                         cls_name=cls.__class__.__name__,
                         msg=FriendshipAnalyzerException.MSG,
                         err_code=FriendshipAnalyzerException.ERR_CODE,
-                        ex=freedom_analysis_result.exception,
+                        ex=validation_result.exception,
                     )
                 )
-        if a.is_friend(b):
+        if hunter.is_friend(target):
+            return AnalysisResult.completed(
+                FriendshipReport.friends(hunter=hunter, friend=target,)
+            )
+        
+        target_readiness_analysis = readiness_analyzer.analyze(
+            token=target,
+            token_validator=token_validator,
+        )
+        if target_readiness_analysis.is_failure:
+            # Send the exception chain on failure.
+            return AnalysisResult.failure(
+                FriendshipAnalyzerException(
+                    cls_mthd=method,
+                    cls_name=cls.__class__.__name__,
+                    msg=FriendshipAnalyzerException.MSG,
+                    err_code=FriendshipAnalyzerException.ERR_CODE,
+                    ex=target_readiness_analysis.exception,
+                )
+            )
+        target_readiness = cast(TokenReadinessReport, target_readiness_analysis.payload)
+        
+        if target_readiness.t
             
         
         # Handle the case that, the analysis is not completed.
@@ -187,4 +207,9 @@ class FriendshipAnalyzer(Analyzer):
             )
         # --- Send the work product ---#
         return AnalysisResult.completed(FriendshipReport(friendant=token, home_square=home_square))
+    
+    @classmethod
+    @LoggingLevelRouter.monitor
+    def _process_enemy_king(cls, king: KingToken) -> AnalysisResult[FriendshipReport]:
+    
         

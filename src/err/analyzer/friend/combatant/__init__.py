@@ -1,0 +1,15 @@
+# src/err/analyzer/friend/combatant/__init__.py
+
+"""
+Module: err.analyzer.friend.combatant.__init__
+Author: Banji Lawal
+Created: 2026-04-04
+version: 1.0.1
+"""
+
+# ============ ERR.ANALYZER.FRIEND.COMBATANT PACKAGE ===========#
+
+# Packages
+
+# Modules
+from .exception import EnemyCombatantAnalyzerException

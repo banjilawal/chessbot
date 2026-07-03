@@ -11,7 +11,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Optional
 
-from model import CombatantToken, KingToken, OpeningSquare, Token
+from model import CombatantToken, KingToken, Token
 from report import Report
 from report.friend.state import FriendshipStatus
 
@@ -62,19 +62,73 @@ class FriendshipReport(Report):
         return not self.are_friends
     
     @property
-    def target_is_enemy_king(self) -> bool:
+    def is_enemy_king(self) -> bool:
         return (
-                self.are_not_friends and
-                self.enemy_king is not None and
-                self.status == FriendshipStatus.TARGET_IS_ENEMY_KING
+                self.is_free_enemy_king or
+                self.is_checkmated_enemy_king
         )
     
     @property
-    def target_is_enemy_combatant(self) -> bool:
+    def is_free_enemy_king(self) -> bool:
+        return (
+                self.are_not_friends and
+                self.enemy_king is not None and
+                self.enemy_king.is_active and
+                self.status == FriendshipStatus.FREE_ENEMY_KING
+        )
+    
+    @property
+    def is_checkmated_enemy_king(self) -> bool:
+        return (
+                self.are_not_friends and
+                self.enemy_king is not None and
+                self.enemy_king.is_checkmated and
+                self.status == FriendshipStatus.CHECKMATED_ENEMY_KING
+        )
+    
+    @property
+    def is_undeployed_enemy_king(self) -> bool:
+        return (
+                self.are_not_friends and
+                self.enemy_king is not None and
+                self.enemy_king.is_not_deployed and
+                self.status == FriendshipStatus.UNDEPLOYED_ENEMY_KING
+        )
+    
+    @property
+    def is_enemy_combatant(self) -> bool:
         return (
                 self.are_not_friends and
                 self.enemy_combatant is not None and
-                self.status == FriendshipStatus.TARGET_IS_ENEMY_COMBATANT
+                self.status == FriendshipStatus.ENEMY_PRISONER or
+                self.status == FriendshipStatus.FREE_ENEMY_COMBATANT
+        )
+    
+    @property
+    def is_free_enemy_combatant(self) -> bool:
+        return (
+                self.are_not_friends and
+                self.enemy_combatant is not None and
+                self.enemy_combatant.captor is None and
+                self.status == FriendshipStatus.FREE_ENEMY_COMBATANT
+        )
+    
+    @property
+    def is_enemy_prisoner(self) -> bool:
+        return (
+                self.are_not_friends and
+                self.enemy_combatant is not None and
+                self.enemy_combatant.captor is not None and
+                self.status == FriendshipStatus.ENEMY_PRISONER
+        )
+    
+    @property
+    def is_undeployed_enemy_combatant(self) -> bool:
+        return (
+                self.are_not_friends and
+                self.enemy_combatant is not None and
+                self.enemy_combatant.is_not_deployed and
+                self.status == FriendshipStatus.ENEMY_PRISONER
         )
     
     @property
@@ -93,18 +147,51 @@ class FriendshipReport(Report):
         )
     
     @classmethod
-    def king_target(cls, hunter: Token, enemy_king: KingToken) -> FriendshipReport:
+    def free_enemy_king(cls, hunter: Token, enemy_king: KingToken) -> FriendshipReport:
         return cls(
             hunter=hunter,
             enemy_king=enemy_king,
-            status=FriendshipStatus.TARGET_IS_ENEMY_KING,
+            status=FriendshipStatus.FREE_ENEMY_KING,
         )
     
     @classmethod
-    def combatant_target(cls, hunter: Token, enemy_combatant: CombatantToken) -> FriendshipReport:
+    def checkmated_enemy_king(cls, hunter: Token, enemy_king: KingToken) -> FriendshipReport:
+        return cls(
+            hunter=hunter,
+            enemy_king=enemy_king,
+            status=FriendshipStatus.CHECKMATED_ENEMY_KING,
+        )
+    
+    @classmethod
+    def undeployed_enemy_king(cls, hunter: Token, enemy_king: KingToken) -> FriendshipReport:
+        return cls(
+            hunter=hunter,
+            enemy_king=enemy_king,
+            status=FriendshipStatus.UNDEPLOYED_ENEMY_KING,
+        )
+    
+    @classmethod
+    def free_enemy_combatant(cls, hunter: Token, enemy_combatant: CombatantToken) -> FriendshipReport:
         return cls(
             hunter=hunter,
             enemy_combatant=enemy_combatant,
-            status=FriendshipStatus.TARGET_IS_ENEMY_COMBATANT,
+            status=FriendshipStatus.FREE_ENEMY_COMBATANT,
         )
+    
+    @classmethod
+    def enemy_prisoner(cls, hunter: Token, enemy_combatant: CombatantToken) -> FriendshipReport:
+        return cls(
+            hunter=hunter,
+            enemy_combatant=enemy_combatant,
+            status=FriendshipStatus.ENEMY_PRISONER,
+        )
+    
+    @classmethod
+    def undeployed_enemy_combatant(cls, hunter: Token, enemy_combatant: CombatantToken) -> FriendshipReport:
+        return cls(
+            hunter=hunter,
+            enemy_combatant=enemy_combatant,
+            status=FriendshipStatus.UNDEPLOYED_ENEMY_COMBATANT,
+        )
+
     
