@@ -10,16 +10,16 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import BuildException
+from err import BuilderException
 
 
 __all__ = [
-    # ======================# COORD_BUILD_FAILURE #======================#
-    "CoordBuildException",
+    # ======================# COORD_BUILDER_FAILURE #======================#
+    "CoordBuilderException",
 ]
 
-# ======================# COORD_BUILD_FAILURE #======================#
-class CoordBuildException(BuildException):
+# ======================# COORD_BUILDER_FAILURE #======================#
+class CoordBuilderException(BuilderException):
     """
     Role:
         -   Error Tracing
@@ -40,10 +40,10 @@ class CoordBuildException(BuildException):
     Provides:
 
     Super Class:
-        BuildException
+        BuilderException
     """
     MSG = "Coord build failed."
-    ERR_CODE = "COORD_BUILD_FAILURE"
+    ERR_CODE = "COORD_BUILDER_FAILURE"
     
     def __init__(
             self,

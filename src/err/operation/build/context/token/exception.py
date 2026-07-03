@@ -10,19 +10,19 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import BuildException
+from err import BuilderException
 
 
 __all__ = [
-    # ======================# TOKEN_CONTEXT_BUILD_FAILURE #======================#
-    "TokenContextBuildException",
+    # ======================# TOKEN_CONTEXT_BUILDER_FAILURE #======================#
+    "TokenContextBuilderException",
 ]
 
-from err import ContextBuildException
+from err import ContextBuilderException
 
 
-# ======================# TOKEN_CONTEXT_BUILD_FAILURE #======================#
-class TokenContextBuildException(ContextBuildException):
+# ======================# TOKEN_CONTEXT_BUILDER_FAILURE #======================#
+class TokenContextBuilderException(ContextBuilderException):
     """
     Role:
         -   Error Tracing
@@ -42,10 +42,10 @@ class TokenContextBuildException(ContextBuildException):
     Provides:
 
     Super Class:
-        ContextBuildException
+        ContextBuilderException
     """
     MSG = "TokenContext build failed."
-    ERR_CODE = "TOKEN_CONTEXT_BUILD_FAILURE"
+    ERR_CODE = "TOKEN_CONTEXT_BUILDER_FAILURE"
     
     def __init__(
             self,

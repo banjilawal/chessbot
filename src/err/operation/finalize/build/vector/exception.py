@@ -10,16 +10,16 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import FinalizeBuildException
+from err import FinalizeBuilderException
 
 
 __all__ = [
-    # ======================# FINALIZE_VECTOR_BUILD_FAILURE #======================#
-    "FinalizeVectorBuildException",
+    # ======================# FINALIZE_VECTOR_BUILDER_FAILURE #======================#
+    "FinalizeVectorBuilderException",
 ]
 
-# ======================# FINALIZE_VECTOR_BUILD_FAILURE #======================#
-class FinalizeVectorBuildException(FinalizeBuildException):
+# ======================# FINALIZE_VECTOR_BUILDER_FAILURE #======================#
+class FinalizeVectorBuilderException(FinalizeBuilderException):
     """
     Role:
         -   Error Tracing
@@ -40,10 +40,10 @@ class FinalizeVectorBuildException(FinalizeBuildException):
     Provides:
 
     Super Class:
-        FinalizeBuildException
+        FinalizeBuilderException
     """
     MSG = "Finalizing a VectorBuild failed."
-    ERR_CODE = "FINALIZE_VECTOR_BUILD_FAILURE"
+    ERR_CODE = "FINALIZE_VECTOR_BUILDER_FAILURE"
     
     def __init__(
             self,

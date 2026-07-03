@@ -6,18 +6,19 @@ Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
 """
+
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import FinalizeContextBuildException
+from err import FinalizeContextBuilderException
 
 __all__ = [
-    # ======================# FINALIZING_VECTOR_CONTEXT_BUILD_FAILURE #======================#
-    "FinalizeVectorContextBuildException",
+    # ======================# FINALIZING_VECTOR_CONTEXT_BUILDER_FAILURE #======================#
+    "FinalizeVectorContextBuilderException",
 ]
 
-# ======================# FINALIZING_VECTOR_CONTEXT_BUILD_FAILURE #======================#
-class FinalizeVectorContextBuildException(FinalizeContextBuildException):
+# ======================# FINALIZING_VECTOR_CONTEXT_BUILDER_FAILURE #======================#
+class FinalizeVectorContextBuilderException(FinalizeContextBuilderException):
     """
     Role:
         -   Error Tracing
@@ -38,10 +39,10 @@ class FinalizeVectorContextBuildException(FinalizeContextBuildException):
     Provides:
 
     Super Class:
-        ContextFinalizeBuildException
+        ContextFinalizeBuilderException
     """
     MSG = "Finalizing a VectorContextBuild failed."
-    ERR_CODE = "FINALIZING_VECTOR_CONTEXT_BUILD_FAILURE"
+    ERR_CODE = "FINALIZING_VECTOR_CONTEXT_BUILDER_FAILURE"
     
     def __init__(
             self,

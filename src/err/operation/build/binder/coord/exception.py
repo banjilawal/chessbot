@@ -6,22 +6,23 @@ Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
 """
+
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import BuildException
+from err import BuilderException
 
 
 __all__ = [
-    # ======================# COORD_BINDER_BUILD_FAILURE #======================#
-    "CoordBinderBuildException",
+    # ======================# COORD_BINDER_BUILDER_FAILURE #======================#
+    "CoordBinderBuilderException",
 ]
 
-from err import BinderBuildException
+from err import BinderBuilderException
 
 
-# ======================# COORD_BINDER_BUILD_FAILURE #======================#
-class CoordBinderBuildException(BinderBuildException):
+# ======================# COORD_BINDER_BUILDER_FAILURE #======================#
+class CoordBinderBuilderException(BinderBuilderException):
     """
     Role:
         -   Error Tracing
@@ -41,10 +42,10 @@ class CoordBinderBuildException(BinderBuildException):
     Provides:
 
     Super Class:
-        BinderBuildException
+        BinderBuilderException
     """
     MSG = "CoordBinder build failed."
-    ERR_CODE = "COORD_BINDER_BUILD_FAILURE"
+    ERR_CODE = "COORD_BINDER_BUILDER_FAILURE"
     
     def __init__(
             self,

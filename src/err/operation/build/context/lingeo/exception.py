@@ -6,18 +6,19 @@ Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
 """
+
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import ContextBuildException
+from err import ContextBuilderException
 
 __all__ = [
-    # ======================# VECTOR_CONTEXT_BUILD_FAILURE #======================#
-    "VectorContextBuildException",
+    # ======================# VECTOR_CONTEXT_BUILDER_FAILURE #======================#
+    "VectorContextBuilderException",
 ]
 
-# ======================# VECTOR_CONTEXT_BUILD_FAILURE #======================#
-class VectorContextBuildException(ContextBuildException):
+# ======================# VECTOR_CONTEXT_BUILDER_FAILURE #======================#
+class VectorContextBuilderException(ContextBuilderException):
     """
     Role:
         -   Error Tracing
@@ -37,10 +38,10 @@ class VectorContextBuildException(ContextBuildException):
     Provides:
 
     Super Class:
-        ContextBuildException
+        ContextBuilderException
     """
     MSG = "VectorContext build failed."
-    ERR_CODE = "VECTOR_CONTEXT_BUILD_FAILURE"
+    ERR_CODE = "VECTOR_CONTEXT_BUILDER_FAILURE"
     
     def __init__(
             self,

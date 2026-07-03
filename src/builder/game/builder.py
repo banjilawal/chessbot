@@ -9,7 +9,7 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from model.game import Game, GameBuildException
+from model.game import Game, GameBuilderException
 from system import Builder, BuildResult, LoggingLevelRouter
 
 
@@ -77,7 +77,7 @@ class GameBuilder(Builder[Game]):
             - On failure: Exception.
     
         RAISES:
-            *   GameBuildException
+            *   GameBuilderException
         """
         method = "GameBuilder.build"
         
@@ -121,8 +121,8 @@ class GameBuilder(Builder[Game]):
             return BuildResult.success(game)
         
         # Finally return a BuildResult containing any unhandled exception insided an
-        # GameBuildException
+        # GameBuilderException
         except Exception as ex:
             return BuildResult.failure(
-                GameBuildException(ex=ex, msg=f"{method}: {GameBuildException.MSG}")
+                GameBuilderException(ex=ex, msg=f"{method}: {GameBuilderException.MSG}")
             )

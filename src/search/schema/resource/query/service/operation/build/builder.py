@@ -13,7 +13,7 @@ from typing import Type
 
 from system import Builder, LoggingLevelRouter, BuildResult
 from model.catalog import (
-    Schema, SchemaContext, SchemaQuery, SchemaQueryBuildException, SchemaQueryIntegrityWorkers
+    Schema, SchemaContext, SchemaQuery, SchemaQueryBuilderException, SchemaQueryIntegrityWorkers
 )
 
 
@@ -67,7 +67,7 @@ class SchemaQueryBuilder(Builder[SchemaQuery]):
         Raises:
             TypeError
             SchemaStackNullException
-            SchemaQueryBuildException
+            SchemaQueryBuilderException
         """
         method = f"{cls.__name__}.build"
         
@@ -76,13 +76,13 @@ class SchemaQueryBuilder(Builder[SchemaQuery]):
         if schema_validation_result.is_failure:
             # Send the exception chain on failure.
             return BuildResult.failure(
-                SchemaQueryBuildException(
+                SchemaQueryBuilderException(
                     cls_mthd=method,
                     cls_name=method.__class__.__name__,
-                    op=SchemaQueryBuildException.OP,
-                    msg=SchemaQueryBuildException.MSG,
-                    err_code=SchemaQueryBuildException.ERR_CODE,
-                    mthd_rslt_type=SchemaQueryBuildException.MTHD_RSLT,
+                    op=SchemaQueryBuilderException.OP,
+                    msg=SchemaQueryBuilderException.MSG,
+                    err_code=SchemaQueryBuilderException.ERR_CODE,
+                    mthd_rslt_type=SchemaQueryBuilderException.MTHD_RSLT,
                     ex=schema_validation_result.exception,
                 )
             )
@@ -93,13 +93,13 @@ class SchemaQueryBuilder(Builder[SchemaQuery]):
             # Send the exception chain on failure.
             # Send the exception chain on failure.
             return BuildResult.failure(
-                SchemaQueryBuildException(
+                SchemaQueryBuilderException(
                     cls_mthd=method,
                     cls_name=method.__class__.__name__,
-                    op=SchemaQueryBuildException.OP,
-                    msg=SchemaQueryBuildException.MSG,
-                    err_code=SchemaQueryBuildException.ERR_CODE,
-                    mthd_rslt_type=SchemaQueryBuildException.MTHD_RSLT,
+                    op=SchemaQueryBuilderException.OP,
+                    msg=SchemaQueryBuilderException.MSG,
+                    err_code=SchemaQueryBuilderException.ERR_CODE,
+                    mthd_rslt_type=SchemaQueryBuilderException.MTHD_RSLT,
                     ex=context_validation_result.exception,
                 )
             )

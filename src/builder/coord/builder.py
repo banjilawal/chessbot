@@ -9,7 +9,7 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from logic.coord import Coord, CoordBuildException
+from logic.coord import Coord, CoordBuilderException
 from system import COORD_DIMENSION, Builder, BuildResult, LoggingLevelRouter, NumberValidator
 
 
@@ -60,7 +60,7 @@ class CoordBuilder(Builder[Coord]):
         Returns:
             BuildResult[Coord]
         Raises:
-            CoordBuildException
+            CoordBuilderException
         """
         method = f"{cls.__name__}.build"
         
@@ -74,13 +74,13 @@ class CoordBuilder(Builder[Coord]):
             if validation_result.is_failure:
                 # Return the validation chain on failure.
                 return BuildResult.failure(
-                    CoordBuildException(
+                    CoordBuilderException(
                         cls_mthd=method,
                         cls_name=cls.__name__,
-                        op=CoordBuildException.OP,
-                        msg=CoordBuildException.MSG,
-                        err_code=CoordBuildException.ERR_CODE,
-                        mthd_rslt_type=CoordBuildException.MTHD_RSLT,
+                        op=CoordBuilderException.OP,
+                        msg=CoordBuilderException.MSG,
+                        err_code=CoordBuilderException.ERR_CODE,
+                        mthd_rslt_type=CoordBuilderException.MTHD_RSLT,
                         ex=validation_result.exception,
                     )
                 )

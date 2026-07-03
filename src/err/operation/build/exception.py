@@ -13,15 +13,15 @@ from typing import Any, Optional
 from err import OperationException
 
 __all__ = [
-    # ======================# BUILD_FAILURE #======================#
-    "BuildException",
+    # ======================# BUILDER_FAILURE #======================#
+    "BuilderException",
 ]
 
 from result import MethodResultType
 
 
-# ======================# BUILD_FAILURE #======================#
-class BuildException(OperationException):
+# ======================# BUILDER_FAILURE #======================#
+class BuilderException(OperationException):
     """
     Role:
         -   Failure Tracing
@@ -45,7 +45,7 @@ class BuildException(OperationException):
         OperationException
     """
     MSG = "Build failed"
-    ERR_CODE = "BUILD_FAILURE"
+    ERR_CODE = "BUILDER_FAILURE"
     MTHD_RSLT_TYPE = MethodResultType.BUILD_RESULT
     
     def __init__(

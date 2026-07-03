@@ -10,16 +10,16 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import BuildException
+from err import BuilderException
 
 
 __all__ = [
-    # ======================# RANK_BUILD_FAILURE #======================#
-    "RankBuildException",
+    # ======================# RANK_BUILDER_FAILURE #======================#
+    "RankBuilderException",
 ]
 
-# ======================# RANK_BUILD_FAILURE #======================#
-class RankBuildException(BuildException):
+# ======================# RANK_BUILDER_FAILURE #======================#
+class RankBuilderException(BuilderException):
     """
     Role:
         -   Error Tracing
@@ -40,10 +40,10 @@ class RankBuildException(BuildException):
     Provides:
 
     Super Class:
-        BuildException
+        BuilderException
     """
     MSG = "Rank build failed."
-    ERR_CODE = "RANK_BUILD_FAILURE"
+    ERR_CODE = "RANK_BUILDER_FAILURE"
     
     def __init__(
             self,

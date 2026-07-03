@@ -10,16 +10,16 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import BuildException
+from err import BuilderException
 
 
 __all__ = [
-    # ======================# TEAM_BUILD_FAILURE #======================#
-    "TeamBuildException",
+    # ======================# TEAM_BUILDER_FAILURE #======================#
+    "TeamBuilderException",
 ]
 
-# ======================# TEAM_BUILD_FAILURE #======================#
-class TeamBuildException(BuildException):
+# ======================# TEAM_BUILDER_FAILURE #======================#
+class TeamBuilderException(BuilderException):
     """
     Role:
         -   Error Tracing
@@ -40,10 +40,10 @@ class TeamBuildException(BuildException):
     Provides:
 
     Super Class:
-        BuildException
+        BuilderException
     """
     MSG = "Team build failed."
-    ERR_CODE = "TEAM_BUILD_FAILURE"
+    ERR_CODE = "TEAM_BUILDER_FAILURE"
     
     def __init__(
             self,

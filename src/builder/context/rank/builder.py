@@ -12,7 +12,7 @@ from __future__ import annotations
 
 from system import BuildResult, Builder, LoggingLevelRouter
 from logic.rank import (
-    Rank, RankValidator, RankContext, RankContextBuildException,
+    Rank, RankValidator, RankContext, RankContextBuilderException,
     NoRankSearchOptionSelectedException, MoreThanOneRankSearchOptionPickedException,
 )
 
@@ -76,7 +76,7 @@ class RankContextBuilder(Builder[RankContext]):
                 - On failure: Exception.
 
         Raises:
-            * RankContextBuildException
+            * RankContextBuilderException
             * NoRankSearchOptionSelectedException
             * MoreThanOneRankSearchOptionPickedException
         """
@@ -117,8 +117,8 @@ class RankContextBuilder(Builder[RankContext]):
         
         except Exception as ex:
             return BuildResult.failure(
-                RankContextBuildException(
-                    f"{method}: {RankContextBuildException.MSG}", ex
+                RankContextBuilderException(
+                    f"{method}: {RankContextBuilderException.MSG}", ex
                 )
             )
     
@@ -151,8 +151,8 @@ class RankContextBuilder(Builder[RankContext]):
         
         except Exception as ex:
             return BuildResult.failure(
-                RankContextBuildException(
-                    f"{method}: {RankContextBuildException.MSG}", ex
+                RankContextBuilderException(
+                    f"{method}: {RankContextBuilderException.MSG}", ex
                 )
             )
     
@@ -190,8 +190,8 @@ class RankContextBuilder(Builder[RankContext]):
         
         except Exception as ex:
             return BuildResult.failure(
-                RankContextBuildException(
-                    f"{method}: {RankContextBuildException.MSG}", ex
+                RankContextBuilderException(
+                    f"{method}: {RankContextBuilderException.MSG}", ex
                 )
             )
     
@@ -229,7 +229,7 @@ class RankContextBuilder(Builder[RankContext]):
         
         except Exception as e:
             return BuildResult.failure(
-                RankContextBuildException(
-                    f"{method}: {RankContextBuildException.MSG}"
+                RankContextBuilderException(
+                    f"{method}: {RankContextBuilderException.MSG}"
                 )
             )

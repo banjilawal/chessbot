@@ -14,6 +14,7 @@ version: 1.0.1
 from .arena import *
 from .board import *
 from .coord import *
+from .dto import *
 from .edge import *
 from .game import *
 from .graph import *

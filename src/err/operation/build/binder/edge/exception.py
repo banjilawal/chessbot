@@ -6,22 +6,23 @@ Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
 """
+
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import BuildException
+from err import BuilderException
 
 
 __all__ = [
-    # ======================# EDGE_BINDER_BUILD_FAILURE #======================#
-    "EdgeBinderBuildException",
+    # ======================# EDGE_BINDER_BUILDER_FAILURE #======================#
+    "EdgeBinderBuilderException",
 ]
 
-from err import BinderBuildException
+from err import BinderBuilderException
 
 
-# ======================# EDGE_BINDER_BUILD_FAILURE #======================#
-class EdgeBinderBuildException(BinderBuildException):
+# ======================# EDGE_BINDER_BUILDER_FAILURE #======================#
+class EdgeBinderBuilderException(BinderBuilderException):
     """
     Role:
         -   Error Tracing
@@ -41,10 +42,10 @@ class EdgeBinderBuildException(BinderBuildException):
     Provides:
 
     Super Class:
-        BinderBuildException
+        BinderBuilderException
     """
     MSG = "EdgeBinder build failed."
-    ERR_CODE = "EDGE_BINDER_BUILD_FAILURE"
+    ERR_CODE = "EDGE_BINDER_BUILDER_FAILURE"
     
     def __init__(
             self,

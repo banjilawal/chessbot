@@ -9,7 +9,7 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from graph.domain.graph import Node, NodeBuildException
+from graph.domain.graph import Node, NodeBuilderException
 from logic.square import Square, SquareValidator
 from system import BuildResult, Builder, LoggingLevelRouter
 
@@ -57,7 +57,7 @@ class NodeBuilder(Builder[Node]):
                     - On failure: Exception.
                     - On success: Node in the payload.
         Raises:
-            *   NodeBuildException
+            *   NodeBuilderException
         """
         method = "NodeBuilder.build"
         
@@ -66,8 +66,8 @@ class NodeBuilder(Builder[Node]):
         if validation_result.is_failure:
             # Send the exception chain on failure.
             return BuildResult.failure(
-                NodeBuildException(
-                    msg=f"{method}: {NodeBuildException.MSG}",
+                NodeBuilderException(
+                    msg=f"{method}: {NodeBuilderException.MSG}",
                     ex=validation_result.exception
                 )
             )

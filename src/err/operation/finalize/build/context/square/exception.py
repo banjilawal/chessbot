@@ -6,22 +6,23 @@ Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
 """
+
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import FinalizeBuildException
+from err import FinalizeBuilderException
 
 
 __all__ = [
-    # ======================# FINALIZING_SQUARE_CONTEXT_BUILD_FAILURE #======================#
-    "FinalizeSquareContextBuildException",
+    # ======================# FINALIZING_SQUARE_CONTEXT_BUILDER_FAILURE #======================#
+    "FinalizeSquareContextBuilderException",
 ]
 
-from err import FinalizeContextBuildException
+from err import FinalizeContextBuilderException
 
 
-# ======================# FINALIZING_SQUARE_CONTEXT_BUILD_FAILURE #======================#
-class FinalizeSquareContextBuildException(FinalizeContextBuildException):
+# ======================# FINALIZING_SQUARE_CONTEXT_BUILDER_FAILURE #======================#
+class FinalizeSquareContextBuilderException(FinalizeContextBuilderException):
     """
     Role:
         -   Error Tracing
@@ -42,10 +43,10 @@ class FinalizeSquareContextBuildException(FinalizeContextBuildException):
     Provides:
 
     Super Class:
-        ContextFinalizeBuildException
+        ContextFinalizeBuilderException
     """
     MSG = "Finalizing a SquareContextBuild failed."
-    ERR_CODE = "FINALIZING_SQUARE_CONTEXT_BUILD_FAILURE"
+    ERR_CODE = "FINALIZING_SQUARE_CONTEXT_BUILDER_FAILURE"
     
     def __init__(
             self,

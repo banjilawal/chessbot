@@ -9,7 +9,7 @@ version: 1.0.1
 from model.catalog.persona import Persona, PersonaService
 from system import Builder, BuildResult, LoggingLevelRouter, id_emitter
 from logic.rank import (
-    Bishop, King, Knight, Pawn, Queen, Rank, RankBuildException, RankBuildRouteException,
+    Bishop, King, Knight, Pawn, Queen, Rank, RankBuilderException, RankBuildRouteException,
     RankFactoryException, Rook
 )
 
@@ -61,7 +61,7 @@ class RankBuilder(Builder[Rank]):
           BuildResult[Rank]
 
         Raises:
-            RankBuildException
+            RankBuilderException
             RankFactoryException
         """
         method = f"{cls.__name__}.build"
@@ -76,12 +76,12 @@ class RankBuilder(Builder[Rank]):
                     cls_name=cls.__name__,
                     msg=RankFactoryException.MSG,
                     err_code=RankFactoryException.ERR_CODE,
-                    ex=RankBuildException(
+                    ex=RankBuilderException(
                         cls_mthd=method,
-                        op=RankBuildException.OP,
-                        msg=RankBuildException.MSG,
-                        err_code=RankBuildException.ERR_CODE,
-                        mthd_rslt_type=RankBuildException.MTHD_RSLT,
+                        op=RankBuilderException.OP,
+                        msg=RankBuilderException.MSG,
+                        err_code=RankBuilderException.ERR_CODE,
+                        mthd_rslt_type=RankBuilderException.MTHD_RSLT,
                         ex=validation_result.exception
                     )
                 )
@@ -114,12 +114,12 @@ class RankBuilder(Builder[Rank]):
                 cls_name=cls.__name__,
                 msg=RankFactoryException.MSG,
                 err_code=RankFactoryException.ERR_CODE,
-                ex=RankBuildException(
+                ex=RankBuilderException(
                     cls_mthd=method,
-                    op=RankBuildException.OP,
-                    msg=RankBuildException.MSG,
-                    err_code=RankBuildException.ERR_CODE,
-                    mthd_rslt_type=RankBuildException.MTHD_RSLT,
+                    op=RankBuilderException.OP,
+                    msg=RankBuilderException.MSG,
+                    err_code=RankBuilderException.ERR_CODE,
+                    mthd_rslt_type=RankBuilderException.MTHD_RSLT,
                     ex=RankBuildRouteException(
                         var="persona",
                         val=f"{persona}",

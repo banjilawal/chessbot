@@ -10,16 +10,16 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import BuildException
+from err import BuilderException
 
 
 __all__ = [
-    # ======================# BINDER_BUILD_FAILURE #======================#
-    "BinderBuildException",
+    # ======================# BINDER_BUILDER_FAILURE #======================#
+    "BinderBuilderException",
 ]
 
-# ======================# BINDER_BUILD_FAILURE #======================#
-class BinderBuildException(BuildException):
+# ======================# BINDER_BUILDER_FAILURE #======================#
+class BinderBuilderException(BuilderException):
     """
     Role:
         -   Error Tracing
@@ -39,10 +39,10 @@ class BinderBuildException(BuildException):
     Provides:
 
     Super Class:
-        BuildException
+        BuilderException
     """
     MSG = "binder's build failed."
-    ERR_CODE = "BINDER_BUILD_FAILURE"
+    ERR_CODE = "BINDER_BUILDER_FAILURE"
     
     def __init__(
             self,

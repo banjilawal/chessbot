@@ -14,6 +14,7 @@ from .analyzer import *
 from .array import *
 from .bidirectional import *
 from .bootstrapper import *
+from .build import *
 from .collider import *
 from .config import *
 from .controller import *

@@ -9,16 +9,16 @@ version: 1.0.1
 
 from __future__ import annotations
 from typing import Any, Optional
-from err import FinalizeBuildException
+from err import FinalizeBuilderException
 
 
 __all__ = [
     # ======================# FINALIZING_NODE_BUILD_ #======================#
-    "FinalizeNodeBuildException",
+    "FinalizeNodeBuilderException",
 ]
 
 # ======================# FINALIZING_NODE_BUILD_ #======================#
-class FinalizeNodeBuildException(FinalizeBuildException):
+class FinalizeNodeBuilderException(FinalizeBuilderException):
     """
     Role:
         -   Error Tracing
@@ -39,7 +39,7 @@ class FinalizeNodeBuildException(FinalizeBuildException):
     Provides:
 
     Super Class:
-        FinalizeBuildException
+        FinalizeBuilderException
     """
     MSG = "Finalizing a NodeBuild failed."
     ERR_CODE = "FINALIZING_NODE_BUILD_"

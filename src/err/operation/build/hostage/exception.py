@@ -10,16 +10,16 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import BuildException
+from err import BuilderException
 
 
 __all__ = [
-    # ======================# HOSTAGE_BUILD_FAILURE #======================#
-    "HostageBuildException",
+    # ======================# HOSTAGE_BUILDER_FAILURE #======================#
+    "HostageBuilderException",
 ]
 
-# ======================# HOSTAGE_BUILD_FAILURE #======================#
-class HostageBuildException(BuildException):
+# ======================# HOSTAGE_BUILDER_FAILURE #======================#
+class HostageBuilderException(BuilderException):
     """
     Role:
         -   Error Tracing
@@ -40,10 +40,10 @@ class HostageBuildException(BuildException):
     Provides:
 
     Super Class:
-        BuildException
+        BuilderException
     """
     MSG = "Hostage build failed."
-    ERR_CODE = "HOSTAGE_BUILD_FAILURE"
+    ERR_CODE = "HOSTAGE_BUILDER_FAILURE"
     
     def __init__(
             self,

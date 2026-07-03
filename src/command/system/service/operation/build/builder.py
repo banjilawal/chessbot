@@ -10,7 +10,7 @@ from __future__ import annotations
 
 from typing import Any, Dict
 
-from command import Command, CommandBuildException, NullArgumentsException
+from command import Command, CommandBuilderException, NullArgumentsException
 from system import BuildResult, Builder, IdFactory, IdentityService, LoggingLevelRouter, Microservice
 
 
@@ -36,11 +36,11 @@ class CommandBuilder(Builder[Command]):
         if identity_validation_result.is_failure:
             # Return the exception on failure.
             return BuildResult.failure(
-                CommandBuildException(
-                    err_code=CommandBuildException.ERR_CODE,
-                    msg=CommandBuildException.MSG,
-                    mthd=CommandBuildException.MTHD,
-                    op=CommandBuildException.OP,
+                CommandBuilderException(
+                    err_code=CommandBuilderException.ERR_CODE,
+                    msg=CommandBuilderException.MSG,
+                    mthd=CommandBuilderException.MTHD,
+                    op=CommandBuilderException.OP,
                     ex=identity_validation_result.exception
                 )
             )
@@ -49,11 +49,11 @@ class CommandBuilder(Builder[Command]):
         if parameters is None:
             # Return the exception on failure.
             return BuildResult.failure(
-                CommandBuildException(
-                    err_code=CommandBuildException.ERR_CODE,
-                    msg=CommandBuildException.MSG,
-                    mthd=CommandBuildException.MTHD,
-                    op=CommandBuildException.OP,
+                CommandBuilderException(
+                    err_code=CommandBuilderException.ERR_CODE,
+                    msg=CommandBuilderException.MSG,
+                    mthd=CommandBuilderException.MTHD,
+                    op=CommandBuilderException.OP,
                     ex=NullArgumentsException(
                         err_code=NullArgumentsException.ERR_CODE,
                         msg=NullArgumentsException.MSG,
@@ -64,11 +64,11 @@ class CommandBuilder(Builder[Command]):
         if not isinstance(parameters, Dict):
             # Return the exception on failure.
             return BuildResult.failure(
-                CommandBuildException(
-                    err_code=CommandBuildException.ERR_CODE,
-                    msg=CommandBuildException.MSG,
-                    mthd=CommandBuildException.MTHD,
-                    op=CommandBuildException.OP,
+                CommandBuilderException(
+                    err_code=CommandBuilderException.ERR_CODE,
+                    msg=CommandBuilderException.MSG,
+                    mthd=CommandBuilderException.MTHD,
+                    op=CommandBuilderException.OP,
                     ex=TypeError(
                         f"{method}: Expected Dict, got {type(parameters).__name__} instead."
                     )

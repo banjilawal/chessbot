@@ -10,16 +10,16 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import FinalizeBuildException
+from err import FinalizeBuilderException
 
 
 __all__ = [
-    # ======================# PERSONA_FINALIZE_BUILD_FAILURE #======================#
-    "PersonaFinalizeBuildException",
+    # ======================# PERSONA_FINALIZE_BUILDER_FAILURE #======================#
+    "PersonaFinalizeBuilderException",
 ]
 
-# ======================# PERSONA_FINALIZE_BUILD_FAILURE #======================#
-class PersonaFinalizeBuildException(FinalizeBuildException):
+# ======================# PERSONA_FINALIZE_BUILDER_FAILURE #======================#
+class PersonaFinalizeBuilderException(FinalizeBuilderException):
     """
     Role:
         -   Error Tracing
@@ -40,10 +40,10 @@ class PersonaFinalizeBuildException(FinalizeBuildException):
     Provides:
 
     Super Class:
-        FinalizeBuildException
+        FinalizeBuilderException
     """
     MSG = "Finalizing a PersonaBuild failed."
-    ERR_CODE = "PERSONA_FINALIZE_BUILD_FAILURE"
+    ERR_CODE = "PERSONA_FINALIZE_BUILDER_FAILURE"
     
     def __init__(
             self,

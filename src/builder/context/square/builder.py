@@ -82,7 +82,7 @@ class SquareContextBuilder(Builder[SquareContext]):
             BuildResult[SquareContext]
             
         Raises:
-            SquareContextBuildException
+            SquareContextBuilderException
             ZeroSquareContextFlagsException
             ExcessSquareContextFlagsException
             SquareContextBuildRouteException
@@ -97,8 +97,8 @@ class SquareContextBuilder(Builder[SquareContext]):
         if param_count == 0:
             # Send the exception chain on failure.
             return BuildResult.failure(
-                SquareContextBuildException(
-                    msg=f"{method}: {SquareContextBuildException.MSG}",
+                SquareContextBuilderException(
+                    msg=f"{method}: {SquareContextBuilderException.MSG}",
                     ex=ZeroSquareContextFlagsException(
                         f"{method}: {ZeroSquareContextFlagsException.MSG}"
                     )
@@ -108,8 +108,8 @@ class SquareContextBuilder(Builder[SquareContext]):
         if param_count > 1:
             # Send the exception chain on failure.
             return BuildResult.failure(
-                SquareContextBuildException(
-                    msg=f"{method}: {SquareContextBuildException.MSG}",
+                SquareContextBuilderException(
+                    msg=f"{method}: {SquareContextBuilderException.MSG}",
                     ex=ExcessSquareContextFlagsException(
                         f"{method}: {ExcessSquareContextFlagsException.MSG}"
                     )
@@ -123,8 +123,8 @@ class SquareContextBuilder(Builder[SquareContext]):
             if validation.is_failure:
                 # Send the exception chain on failure.
                 return BuildResult.failure(
-                    SquareContextBuildException(
-                        msg=f"{method}: {SquareContextBuildException.MSG}",
+                    SquareContextBuilderException(
+                        msg=f"{method}: {SquareContextBuilderException.MSG}",
                         ex=validation.exception
                     )
                 )
@@ -137,8 +137,8 @@ class SquareContextBuilder(Builder[SquareContext]):
             if validation.is_failure:
                 # Send the exception chain on failure.
                 return BuildResult.failure(
-                    SquareContextBuildException(
-                        msg=f"{method}: {SquareContextBuildException.MSG}",
+                    SquareContextBuilderException(
+                        msg=f"{method}: {SquareContextBuilderException.MSG}",
                         ex=validation.exception
                     )
                 )
@@ -151,8 +151,8 @@ class SquareContextBuilder(Builder[SquareContext]):
             if validation.is_failure:
                 # Send the exception chain on failure.
                 return BuildResult.failure(
-                    SquareContextBuildException(
-                        msg=f"{method}: {SquareContextBuildException.MSG}",
+                    SquareContextBuilderException(
+                        msg=f"{method}: {SquareContextBuilderException.MSG}",
                         ex=validation.exception
                     )
                 )
@@ -165,8 +165,8 @@ class SquareContextBuilder(Builder[SquareContext]):
             if validation.is_failure:
                 # Send the exception chain on failure.
                 return BuildResult.failure(
-                    SquareContextBuildException(
-                        msg=f"{method}: {SquareContextBuildException.MSG}",
+                    SquareContextBuilderException(
+                        msg=f"{method}: {SquareContextBuilderException.MSG}",
                         ex=validation.exception
                     )
                 )
@@ -179,8 +179,8 @@ class SquareContextBuilder(Builder[SquareContext]):
             if validation.is_failure:
                 # Send the exception chain on failure.
                 return BuildResult.failure(
-                    SquareContextBuildException(
-                        msg=f"{method}: {SquareContextBuildException.MSG}",
+                    SquareContextBuilderException(
+                        msg=f"{method}: {SquareContextBuilderException.MSG}",
                         ex=validation.exception
                     )
                 )
@@ -189,8 +189,8 @@ class SquareContextBuilder(Builder[SquareContext]):
         
         # Return the exception chain if there is no build route for the context.
         return BuildResult.failure(
-            SquareContextBuildException(
-                msg=f"{method}: {SquareContextBuildException.MSG}",
+            SquareContextBuilderException(
+                msg=f"{method}: {SquareContextBuilderException.MSG}",
                 ex=SquareContextBuildRouteException(f"{method}: {SquareContextBuildRouteException.MSG}")
             )
         )

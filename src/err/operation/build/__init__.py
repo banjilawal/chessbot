@@ -31,4 +31,4 @@ from .token import *
 from .vector import *
 
 # Modules
-from .exception import BuildException
+from .exception import BuilderException

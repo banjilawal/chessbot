@@ -6,22 +6,23 @@ Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
 """
+
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import BuildException
+from err import BuilderException
 
 
 __all__ = [
-    # ======================# PLAYER_CONTEXT_BUILD_FAILURE #======================#
-    "PlayerContextBuildException",
+    # ======================# PLAYER_CONTEXT_BUILDER_FAILURE #======================#
+    "PlayerContextBuilderException",
 ]
 
-from err import ContextBuildException
+from err import ContextBuilderException
 
 
-# ======================# PLAYER_CONTEXT_BUILD_FAILURE #======================#
-class PlayerContextBuildException(ContextBuildException):
+# ======================# PLAYER_CONTEXT_BUILDER_FAILURE #======================#
+class PlayerContextBuilderException(ContextBuilderException):
     """
     Role:
         -   Error Tracing
@@ -41,10 +42,10 @@ class PlayerContextBuildException(ContextBuildException):
     Provides:
 
     Super Class:
-        ContextBuildException
+        ContextBuilderException
     """
     MSG = "PlayerContext build failed."
-    ERR_CODE = "PLAYER_CONTEXT_BUILD_FAILURE"
+    ERR_CODE = "PLAYER_CONTEXT_BUILDER_FAILURE"
     
     def __init__(
             self,

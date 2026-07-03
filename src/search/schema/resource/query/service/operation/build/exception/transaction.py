@@ -11,15 +11,15 @@ from __future__ import annotations
 from typing import Optional
 
 __all__ = [
-    # ======================# SCHEMA_QUERY_BUILD_FAILURE #======================#
-    "SchemaQueryBuildException",
+    # ======================# SCHEMA_QUERY_BUILDER_FAILURE #======================#
+    "SchemaQueryBuilderException",
 ]
 
-from system import BuildException
+from system import BuilderException
 
 
-# ======================# SCHEMA_QUERY_BUILD_FAILURE #======================#
-class SchemaQueryBuildException(BuildException):
+# ======================# SCHEMA_QUERY_BUILDER_FAILURE #======================#
+class SchemaQueryBuilderException(BuilderException):
     """
     Role:
         -   Worker Method Identification
@@ -41,10 +41,10 @@ class SchemaQueryBuildException(BuildException):
     Provides:
 
     Super Class:
-        BuildException
+        BuilderException
     """
     MSG = "A SchemaQueryBuilder method failed."
-    ERR_CODE = "SCHEMA_QUERY_BUILD_FAILURE"
+    ERR_CODE = "SCHEMA_QUERY_BUILDER_FAILURE"
     
     def __init__(
             self,

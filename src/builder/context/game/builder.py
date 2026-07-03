@@ -13,7 +13,7 @@ from __future__ import annotations
 from logic.agent import PlayerAgent, AgentService
 from system import Builder, BuildResult, ExecutionRouteException, IdentityService, LoggingLevelRouter
 from model.game import (
-    GameContext, GameContextBuildException, ZeroGameContextFlagsException, ArenaGameContextFlagsException
+    GameContext, GameContextBuilderException, ZeroGameContextFlagsException, ArenaGameContextFlagsException
 )
 
 
@@ -77,7 +77,7 @@ class GameContextBuilder(Builder[GameContext]):
 
         Raises:
             *   ZeroGameContextFlagsException
-            *   GameContextBuildException
+            *   GameContextBuilderException
             *   ArenaGameContextFlagsException
         """
         method = "GameSearchContextBuilder.build"
@@ -119,11 +119,11 @@ class GameContextBuilder(Builder[GameContext]):
             BuildResult.failure(
                 ExecutionRouteException(f"{method}: {ExecutionRouteException.MSG}")
             )
-        # Finally, catch any missed exception and wrap A GameContextBuildException around it then
+        # Finally, catch any missed exception and wrap A GameContextBuilderException around it then
         # return the exception-chain inside the ValidationResult.
         except Exception as ex:
             return BuildResult.failure(
-                GameContextBuildException(
-                    ex=ex, msg=f"{method}: {GameContextBuildException.MSG}"
+                GameContextBuilderException(
+                    ex=ex, msg=f"{method}: {GameContextBuilderException.MSG}"
                 )
             )

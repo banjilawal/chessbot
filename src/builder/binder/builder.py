@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from microservice import BoardService
 from model import Board, BoardBinder
-from operation.priming.build.binder.wrapper import TeamBinderBuildException
+from operation.priming.build.binder.wrapper import TeamBinderBuilderException
 from operation import Assemble
 from result import BuildResult
 from system import LoggingLevelRouter
@@ -33,11 +33,11 @@ class TeamBinderBuilder(Assemble[BoardBinder]):
         if board_validation_result.is_failure:
             # Send the exception chain on failure.
             return BuildResult.failure(
-                TeamBinderBuildException(
+                TeamBinderBuilderException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    msg=TeamBinderBuildException.MSG,
-                    err_code=TeamBinderBuildException.ERR_CODE,
+                    msg=TeamBinderBuilderException.MSG,
+                    err_code=TeamBinderBuilderException.ERR_CODE,
                     ex=board_validation_result.exception,
                 )
             )

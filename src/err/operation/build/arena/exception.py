@@ -10,15 +10,15 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import BuildException
+from err import BuilderException
 
 __all__ = [
-    # ======================# ARENA_BUILD_FAILURE #======================#
-    "ArenaBuildException",
+    # ======================# ARENA_BUILDER_FAILURE #======================#
+    "ArenaBuilderException",
 ]
 
-# ======================# ARENA_BUILD_FAILURE #======================#
-class ArenaBuildException(BuildException):
+# ======================# ARENA_BUILDER_FAILURE #======================#
+class ArenaBuilderException(BuilderException):
     """
     Role:
         -   Error Tracing
@@ -39,10 +39,10 @@ class ArenaBuildException(BuildException):
     Provides:
 
     Super Class:
-        BuildException
+        BuilderException
     """
     MSG = "Arena build failed."
-    ERR_CODE = "ARENA_BUILD_FAILURE"
+    ERR_CODE = "ARENA_BUILDER_FAILURE"
     
     def __init__(
             self,

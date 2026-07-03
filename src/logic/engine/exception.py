@@ -38,7 +38,7 @@ DEPENDENCIES:
 Requires base rollback_exception classes and constants from the kernel system:
 From `logic.system`:
   * Exception: `ChessException`, `ValidationException`, `NullException`,
-        `BuildException`.
+        `BuilderException`.
 
 CONTAINS:
 --------
@@ -51,10 +51,10 @@ __all__ = [
 #======================# ENGINE VALIDATION EXCEPTION #======================#
   'NullEngineException',
 #======================# ENGINE BUILD EXCEPTION #======================#
-    'BuildException'
+    'BuilderException'
 ]
 
-from system import ChessException, NullException, BuildException
+from system import ChessException, NullException, BuilderException
 
 class EngineException(ChessException):
   """
@@ -70,7 +70,7 @@ class NullEngineException(EngineException, NullException):
   ERR_CODE = "NULL_ENGINE_EXCEPTION"
   MSG = "Engine cannot be validation"
 
-class EngineBuild(EngineException, BuildException):
+class EngineBuild(EngineException, BuilderException):
   """
   Raised when `EngineBuilder` crashed while building team_name new object. Exists
   primarily to catch all exception raised creating engines.

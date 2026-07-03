@@ -10,16 +10,16 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import FinalizeBuildException
+from err import FinalizeBuilderException
 
 
 __all__ = [
-    # ======================# FINALIZING_SCALAR_BUILD_FAILURE #======================#
-    "FinalizeScalarBuildException",
+    # ======================# FINALIZING_SCALAR_BUILDER_FAILURE #======================#
+    "FinalizeScalarBuilderException",
 ]
 
-# ======================# FINALIZING_SCALAR_BUILD_FAILURE #======================#
-class FinalizeScalarBuildException(FinalizeBuildException):
+# ======================# FINALIZING_SCALAR_BUILDER_FAILURE #======================#
+class FinalizeScalarBuilderException(FinalizeBuilderException):
     """
     Role:
         -   Error Tracing
@@ -40,10 +40,10 @@ class FinalizeScalarBuildException(FinalizeBuildException):
     Provides:
 
     Super Class:
-        FinalizeBuildException
+        FinalizeBuilderException
     """
     MSG = "Finalizing a ScalarBuild failed."
-    ERR_CODE = "FINALIZING_SCALAR_BUILD_FAILURE"
+    ERR_CODE = "FINALIZING_SCALAR_BUILDER_FAILURE"
     
     def __init__(
             self,

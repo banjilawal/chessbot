@@ -67,7 +67,7 @@ class SquareBuilder(Builder[Square]):
             BuildResult[Square]
             
         Raises:
-            SquareBuildException
+            SquareBuilderException
         """
         method = f"{cls.__class__.__name__}.build"
         
@@ -122,7 +122,7 @@ class SquareBuilder(Builder[Square]):
         Returns:
             BuildResult[Square]
         Raises:
-            SquareBuildException
+            SquareBuilderException
         """
         method = f"{cls.__name__}_run_build_param_checks"
         
@@ -134,13 +134,13 @@ class SquareBuilder(Builder[Square]):
         if identity_validation.is_failure:
             # Send the exception chain on failure.
             return BuildResult.failure(
-                SquareBuildException(
+                SquareBuilderException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    op=SquareBuildException.OP,
-                    msg=SquareBuildException.MSG,
-                    err_code=SquareBuildException.ERR_CODE,
-                    mthd_rslt_type=SquareBuildException.MTHD_RSLT,
+                    op=SquareBuilderException.OP,
+                    msg=SquareBuilderException.MSG,
+                    err_code=SquareBuilderException.ERR_CODE,
+                    mthd_rslt_type=SquareBuilderException.MTHD_RSLT,
                     ex=identity_validation.exception,
                 )
             )
@@ -149,13 +149,13 @@ class SquareBuilder(Builder[Square]):
         if coord_validation.is_failure:
             # Send the exception chain on failure.
             return BuildResult.failure(
-                SquareBuildException(
+                SquareBuilderException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    op=SquareBuildException.OP,
-                    msg=SquareBuildException.MSG,
-                    err_code=SquareBuildException.ERR_CODE,
-                    mthd_rslt_type=SquareBuildException.MTHD_RSLT,
+                    op=SquareBuilderException.OP,
+                    msg=SquareBuilderException.MSG,
+                    err_code=SquareBuilderException.ERR_CODE,
+                    mthd_rslt_type=SquareBuilderException.MTHD_RSLT,
                     ex=coord_validation.exception,
                 )
             )
@@ -164,13 +164,13 @@ class SquareBuilder(Builder[Square]):
         if board_validation.is_failure:
             # Send the exception chain on failure.
             return BuildResult.failure(
-                SquareBuildException(
+                SquareBuilderException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    op=SquareBuildException.OP,
-                    msg=SquareBuildException.MSG,
-                    err_code=SquareBuildException.ERR_CODE,
-                    mthd_rslt_type=SquareBuildException.MTHD_RSLT,
+                    op=SquareBuilderException.OP,
+                    msg=SquareBuilderException.MSG,
+                    err_code=SquareBuilderException.ERR_CODE,
+                    mthd_rslt_type=SquareBuilderException.MTHD_RSLT,
                     ex=board_validation.exception,
                 )
             )
@@ -184,13 +184,13 @@ class SquareBuilder(Builder[Square]):
         if collision_detection_result.is_failure:
             # Send the exception chain on failure.
             return BuildResult.failure(
-                SquareBuildException(
+                SquareBuilderException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    op=SquareBuildException.OP,
-                    msg=SquareBuildException.MSG,
-                    err_code=SquareBuildException.ERR_CODE,
-                    mthd_rslt_type=SquareBuildException.MTHD_RSLT,
+                    op=SquareBuilderException.OP,
+                    msg=SquareBuilderException.MSG,
+                    err_code=SquareBuilderException.ERR_CODE,
+                    mthd_rslt_type=SquareBuilderException.MTHD_RSLT,
                     ex=collision_detection_result.exception,
                 )
             )
@@ -223,7 +223,7 @@ class SquareBuilder(Builder[Square]):
         Returns:
             BuildResult[Square]
         Raises:
-            SquareBuildException
+            SquareBuilderException
         """
         method = f"{cls.__name__}.bind_square_board"
         
@@ -235,13 +235,13 @@ class SquareBuilder(Builder[Square]):
         if relation_analysis.is_failure:
             # Send the exception chain on failure.
             return BuildResult.failure(
-                SquareBuildException(
+                SquareBuilderException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    op=SquareBuildException.OP,
-                    msg=SquareBuildException.MSG,
-                    err_code=SquareBuildException.ERR_CODE,
-                    mthd_rslt_type=SquareBuildException.MTHD_RSLT,
+                    op=SquareBuilderException.OP,
+                    msg=SquareBuilderException.MSG,
+                    err_code=SquareBuilderException.ERR_CODE,
+                    mthd_rslt_type=SquareBuilderException.MTHD_RSLT,
                     ex=relation_analysis.exception,
                 )
             )
@@ -249,13 +249,13 @@ class SquareBuilder(Builder[Square]):
         if relation_analysis.not_related or relation_analysis.stale_link_exists:
             # Send the exception chain on failure.
             return BuildResult.failure(
-                SquareBuildException(
+                SquareBuilderException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    op=SquareBuildException.OP,
-                    msg=SquareBuildException.MSG,
-                    err_code=SquareBuildException.ERR_CODE,
-                    mthd_rslt_type=SquareBuildException.MTHD_RSLT,
+                    op=SquareBuilderException.OP,
+                    msg=SquareBuilderException.MSG,
+                    err_code=SquareBuilderException.ERR_CODE,
+                    mthd_rslt_type=SquareBuilderException.MTHD_RSLT,
                     ex=InvariantBreachException(
                         msg=InvariantBreachException.MSG,
                         err_code=InvariantBreachException.ERR_CODE,
@@ -268,13 +268,13 @@ class SquareBuilder(Builder[Square]):
             if insertion_result.is_failure:
                 # Send the exception chain on failure.
                 return BuildResult.failure(
-                    SquareBuildException(
+                    SquareBuilderException(
                         cls_mthd=method,
                         cls_name=cls.__name__,
-                        op=SquareBuildException.OP,
-                        msg=SquareBuildException.MSG,
-                        err_code=SquareBuildException.ERR_CODE,
-                        mthd_rslt_type=SquareBuildException.MTHD_RSLT,
+                        op=SquareBuilderException.OP,
+                        msg=SquareBuilderException.MSG,
+                        err_code=SquareBuilderException.ERR_CODE,
+                        mthd_rslt_type=SquareBuilderException.MTHD_RSLT,
                         ex=insertion_result.exception,
                     )
                 )

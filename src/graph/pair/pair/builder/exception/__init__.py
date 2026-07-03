@@ -13,4 +13,4 @@ version: 1.0.0
 
 # Modules
 from .square import HeadTailSquareException
-from .work import PairBuildException
+from .work import PairBuilderException

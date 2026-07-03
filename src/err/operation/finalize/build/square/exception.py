@@ -10,16 +10,16 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import FinalizeBuildException
+from err import FinalizeBuilderException
 
 
 __all__ = [
-    # ======================# FINALIZING_SQUARE_BUILD_FAILURE #======================#
-    "FinalizeSquareBuildException",
+    # ======================# FINALIZING_SQUARE_BUILDER_FAILURE #======================#
+    "FinalizeSquareBuilderException",
 ]
 
-# ======================# FINALIZING_SQUARE_BUILD_FAILURE #======================#
-class FinalizeSquareBuildException(FinalizeBuildException):
+# ======================# FINALIZING_SQUARE_BUILDER_FAILURE #======================#
+class FinalizeSquareBuilderException(FinalizeBuilderException):
     """
     Role:
         -   Error Tracing
@@ -40,10 +40,10 @@ class FinalizeSquareBuildException(FinalizeBuildException):
     Provides:
 
     Super Class:
-        FinalizeBuildException
+        FinalizeBuilderException
     """
     MSG = "Finalizing a SquareBuild failed."
-    ERR_CODE = "FINALIZING_SQUARE_BUILD_FAILURE"
+    ERR_CODE = "FINALIZING_SQUARE_BUILDER_FAILURE"
     
     def __init__(
             self,

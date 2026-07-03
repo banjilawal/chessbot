@@ -74,7 +74,7 @@ class TeamContextBuilder(Builder[TeamContext]):
                     - On success: TeamContext in the payload.
         Raises:
             *   ZeroTeamContextFlagsException
-            *   TeamContextBuildException
+            *   TeamContextBuilderException
             *   ArenaTeamContextFlagsException
         """
         method = "PieceSearchContextBuilder.build"
@@ -87,8 +87,8 @@ class TeamContextBuilder(Builder[TeamContext]):
         if param_count == 0:
             # Send the exception chain on failure.
             return BuildResult.failure(
-                TeamContextBuildException(
-                    msg=f"{method}: {TeamContextBuildException.ERR_CODE}",
+                TeamContextBuilderException(
+                    msg=f"{method}: {TeamContextBuilderException.ERR_CODE}",
                     ex=ZeroTeamContextFlagsException(f"{method}: {ZeroTeamContextFlagsException.ERR_CODE}")
                 )
             )
@@ -96,8 +96,8 @@ class TeamContextBuilder(Builder[TeamContext]):
         if param_count > 1:
             # Send the exception chain on failure.
             return BuildResult.failure(
-                TeamContextBuildException(
-                    msg=f"{method}: {TeamContextBuildException.ERR_CODE}",
+                TeamContextBuilderException(
+                    msg=f"{method}: {TeamContextBuilderException.ERR_CODE}",
                     ex=ArenaTeamContextFlagsException(f"{method}: {ArenaTeamContextFlagsException}")
                 )
             )
@@ -109,8 +109,8 @@ class TeamContextBuilder(Builder[TeamContext]):
             if validation.is_failure:
                 # Send the exception chain on failure.
                 return BuildResult.failure(
-                    TeamContextBuildException(
-                        msg=f"{method}: {TeamContextBuildException.ERR_CODE}",
+                    TeamContextBuilderException(
+                        msg=f"{method}: {TeamContextBuilderException.ERR_CODE}",
                         ex=validation.exception
                     )
                 )
@@ -123,8 +123,8 @@ class TeamContextBuilder(Builder[TeamContext]):
             if validation.is_failure:
                 # Send the exception chain on failure.
                 return BuildResult.failure(
-                    TeamContextBuildException(
-                        msg=f"{method}: {TeamContextBuildException.ERR_CODE}",
+                    TeamContextBuilderException(
+                        msg=f"{method}: {TeamContextBuilderException.ERR_CODE}",
                         ex=validation.exception
                     )
                 )
@@ -137,8 +137,8 @@ class TeamContextBuilder(Builder[TeamContext]):
             if validation.is_failure:
                 # Send the exception chain on failure.
                 return BuildResult.failure(
-                    TeamContextBuildException(
-                        msg=f"{method}: {TeamContextBuildException.ERR_CODE}",
+                    TeamContextBuilderException(
+                        msg=f"{method}: {TeamContextBuilderException.ERR_CODE}",
                         ex=validation.exception
                     )
                 )
@@ -151,8 +151,8 @@ class TeamContextBuilder(Builder[TeamContext]):
             if validation.is_failure:
                 # Send the exception chain on failure.
                 return BuildResult.failure(
-                    TeamContextBuildException(
-                        msg=f"{method}: {TeamContextBuildException.ERR_CODE}",
+                    TeamContextBuilderException(
+                        msg=f"{method}: {TeamContextBuilderException.ERR_CODE}",
                         ex=validation.exception
                     )
                 )
@@ -161,8 +161,8 @@ class TeamContextBuilder(Builder[TeamContext]):
         
         # Return the exception chain if there is no build route for the context.
         return BuildResult.failure(
-            TeamContextBuildException(
-                msg=f"{method}: {TeamContextBuildException.ERR_CODE}",
+            TeamContextBuilderException(
+                msg=f"{method}: {TeamContextBuilderException.ERR_CODE}",
                 ex=TeamContextBuildRouteException(f"{method}: {TeamContextBuildRouteException.ERR_CODE}")
             )
         )

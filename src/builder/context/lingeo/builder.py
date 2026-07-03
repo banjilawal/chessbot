@@ -10,7 +10,7 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Optional
 
-from err import ExcessVectorOperandFlagsException, VectorContextBuildException
+from err import ExcessVectorOperandFlagsException, VectorContextBuilderException
 from integrity import Builder
 from model import Coord, VectorOperand, Vector
 from result import BuildResult
@@ -66,7 +66,7 @@ class VectorContextBuilder(Builder[VectorOperand]):
             TypeError
             VectorContextNullException
             ZeroVectorContextFlagsException
-            VectorContextBuildException
+            VectorContextBuilderException
             ExcessVectorContextFlagsException
         """
         method = f"{cls.__name__}.build"
@@ -79,11 +79,11 @@ class VectorContextBuilder(Builder[VectorOperand]):
         if param_count == 0:
             # Send the exception chain on failure.
             return BuildResult.failure(
-                VectorContextBuildException(
+                VectorContextBuilderException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    msg=VectorContextBuildException.MSG,
-                    err_code=VectorContextBuildException.ERR_CODE,
+                    msg=VectorContextBuilderException.MSG,
+                    err_code=VectorContextBuilderException.ERR_CODE,
                     ex=ZeroVectorContextFlagsException(
                         msg=ZeroVectorContextFlagsException.MSG,
                         err_code=ZeroVectorContextFlagsException.ERR_CODE,
@@ -94,11 +94,11 @@ class VectorContextBuilder(Builder[VectorOperand]):
         if param_count > 1:
             # Send the exception chain on failure.
             return BuildResult.failure(
-                VectorContextBuildException(
+                VectorContextBuilderException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    msg=VectorContextBuildException.MSG,
-                    err_code=VectorContextBuildException.ERR_CODE,
+                    msg=VectorContextBuilderException.MSG,
+                    err_code=VectorContextBuilderException.ERR_CODE,
                     ex=ExcessVectorOperandFlagsException(
                         msg=ExcessVectorOperandFlagsException.MSG,
                         err_code=ExcessVectorOperandFlagsException.ERR_CODE,
@@ -114,11 +114,11 @@ class VectorContextBuilder(Builder[VectorOperand]):
             if build_result.is_failure:
                 # Send the exception chain on failure.
                 return BuildResult.failure(
-                    VectorContextBuildException(
+                    VectorContextBuilderException(
                         cls_mthd=method,
                         cls_name=cls.__name__,
-                        msg=VectorContextBuildException.MSG,
-                        err_code=VectorContextBuildException.ERR_CODE,
+                        msg=VectorContextBuilderException.MSG,
+                        err_code=VectorContextBuilderException.ERR_CODE,
                         ex=ExcessVectorOperandFlagsException(
                             msg=ExcessVectorOperandFlagsException.MSG,
                             err_code=ExcessVectorOperandFlagsException.ERR_CODE,
@@ -133,11 +133,11 @@ class VectorContextBuilder(Builder[VectorOperand]):
         if build_result.is_failure:
             # Send the exception chain on failure.
             return BuildResult.failure(
-                VectorContextBuildException(
+                VectorContextBuilderException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    msg=VectorContextBuildException.MSG,
-                    err_code=VectorContextBuildException.ERR_CODE,
+                    msg=VectorContextBuilderException.MSG,
+                    err_code=VectorContextBuilderException.ERR_CODE,
                     ex=build_result.exception
                 )
             )

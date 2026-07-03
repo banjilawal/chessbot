@@ -17,7 +17,7 @@ from math.span import (
     SquareRay, SquareSpan
 )
 from model.node import Node, NodeService,
-from math.span.service.handler import PairBuildException
+from math.span.service.handler import PairBuilderException
 from system import BuildResult, InsertionResult, LoggingLevelRouter
 
 
@@ -47,7 +47,7 @@ class NodeTreeProducer:
             BuildResult[SquareStackService]
             
         Raises:
-            PairBuildException
+            PairBuilderException
         """
         method = f"{cls.__class__.__name__}.build_node_stack_service"
         
@@ -73,11 +73,11 @@ class NodeTreeProducer:
                     cls_name=cls.__class__.__name__,
                     msg=SquareGraphHandlerException.MSG,
                     err_code=SquareGraphHandlerException.ERR_CODE,
-                    ex=PairBuildException(
+                    ex=PairBuilderException(
                         cls_mthd=method,
-                        op=PairBuildException.OP,
-                        msg=PairBuildException.MSG,
-                        err_code=PairBuildException.ERR_CODE,
+                        op=PairBuilderException.OP,
+                        msg=PairBuilderException.MSG,
+                        err_code=PairBuilderException.ERR_CODE,
                         ex=root_node_build_result.exception
                     )
                 )

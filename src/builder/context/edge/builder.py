@@ -15,7 +15,7 @@ from logic.coord import Coord, CoordService
 from microservice.edge import EdgeState
 from system import Builder, BuildResult, IdentityService
 from microservice.edge import (
-    EdgeContextBuildRouteException, ZeroEdgeContextFlagsException, EdgeContext, EdgeContextBuildException,
+    EdgeContextBuildRouteException, ZeroEdgeContextFlagsException, EdgeContext, EdgeContextBuilderException,
     ArenaEdgeContextFlagsException
 )
 from model.token import Token, TokenService
@@ -86,7 +86,7 @@ class EdgeContextBuilder(Builder[EdgeContext]):
                         - On success: EdgeContext in the payload.
             Raises:
                 *   ZeroEdgeContextFlagsException
-                *   EdgeContextBuildException
+                *   EdgeContextBuilderException
                 *   ArenaEdgeContextFlagsException
                 *   EdgeContextBuildRouteException
             """
@@ -100,8 +100,8 @@ class EdgeContextBuilder(Builder[EdgeContext]):
         if param_count == 0:
             # Send the exception chain on failure.
             return BuildResult.failure(
-                EdgeContextBuildException(
-                    msg=f"{method}: {EdgeContextBuildException.MSG}",
+                EdgeContextBuilderException(
+                    msg=f"{method}: {EdgeContextBuilderException.MSG}",
                     ex=ZeroEdgeContextFlagsException(
                         f"{method}: {ZeroEdgeContextFlagsException.MSG}"
                     )
@@ -111,8 +111,8 @@ class EdgeContextBuilder(Builder[EdgeContext]):
         if param_count > 1:
             # Send the exception chain on failure.
             return BuildResult.failure(
-                EdgeContextBuildException(
-                    msg=f"{method}: {EdgeContextBuildException.MSG}",
+                EdgeContextBuilderException(
+                    msg=f"{method}: {EdgeContextBuilderException.MSG}",
                     ex=ArenaEdgeContextFlagsException(
                         f"{method}: {ArenaEdgeContextFlagsException.MSG}"
                     )
@@ -126,8 +126,8 @@ class EdgeContextBuilder(Builder[EdgeContext]):
             if validation.is_failure:
                 # Send the exception chain on failure.
                 return BuildResult.failure(
-                    EdgeContextBuildException(
-                        msg=f"{method}: {EdgeContextBuildException.MSG}",
+                    EdgeContextBuilderException(
+                        msg=f"{method}: {EdgeContextBuilderException.MSG}",
                         ex=validation.exception
                     )
                 )
@@ -140,8 +140,8 @@ class EdgeContextBuilder(Builder[EdgeContext]):
             if validation.is_failure:
                 # Send the exception chain on failure.
                 return BuildResult.failure(
-                    EdgeContextBuildException(
-                        msg=f"{method}: {EdgeContextBuildException.MSG}",
+                    EdgeContextBuilderException(
+                        msg=f"{method}: {EdgeContextBuilderException.MSG}",
                         ex=validation.exception
                     )
                 )
@@ -154,8 +154,8 @@ class EdgeContextBuilder(Builder[EdgeContext]):
             if validation.is_failure:
                 # Send the exception chain on failure.
                 return BuildResult.failure(
-                    EdgeContextBuildException(
-                        msg=f"{method}: {EdgeContextBuildException.MSG}",
+                    EdgeContextBuilderException(
+                        msg=f"{method}: {EdgeContextBuilderException.MSG}",
                         ex=validation.exception
                     )
                 )
@@ -168,8 +168,8 @@ class EdgeContextBuilder(Builder[EdgeContext]):
             if validation.is_failure:
                 # Send the exception chain on failure.
                 return BuildResult.failure(
-                    EdgeContextBuildException(
-                        msg=f"{method}: {EdgeContextBuildException.MSG}",
+                    EdgeContextBuilderException(
+                        msg=f"{method}: {EdgeContextBuilderException.MSG}",
                         ex=validation.exception
                     )
                 )
@@ -182,8 +182,8 @@ class EdgeContextBuilder(Builder[EdgeContext]):
             if validation.is_failure:
                 # Send the exception chain on failure.
                 return BuildResult.failure(
-                    EdgeContextBuildException(
-                        msg=f"{method}: {EdgeContextBuildException.MSG}",
+                    EdgeContextBuilderException(
+                        msg=f"{method}: {EdgeContextBuilderException.MSG}",
                         ex=validation.exception
                     )
                 )
@@ -195,8 +195,8 @@ class EdgeContextBuilder(Builder[EdgeContext]):
             if not isinstance(state, EdgeState):
                 # Send the exception chain on failure.
                 return BuildResult.failure(
-                    EdgeContextBuildException(
-                        msg=f"{method}: {EdgeContextBuildException.MSG}",
+                    EdgeContextBuilderException(
+                        msg=f"{method}: {EdgeContextBuilderException.MSG}",
                         ex=TypeError(
                             f"{method}: Was expecting a EdgeState, got {type(state).__name__} instead."
                         )
@@ -207,8 +207,8 @@ class EdgeContextBuilder(Builder[EdgeContext]):
         
         # Return the exception chain if there is no build route for the context.
         return BuildResult.failure(
-            EdgeContextBuildException(
-                msg=f"{method}: {EdgeContextBuildException.MSG}",
+            EdgeContextBuilderException(
+                msg=f"{method}: {EdgeContextBuilderException.MSG}",
                 ex=EdgeContextBuildRouteException(f"{method}: {EdgeContextBuildRouteException.MSG}")
             )
         )

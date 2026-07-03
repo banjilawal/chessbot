@@ -11,16 +11,16 @@ from __future__ import annotations
 from typing import Any, Optional
 
 
-from err import FinalizeBuildException
+from err import FinalizeBuilderException
 
 
 __all__ = [
-    # ======================# FINALIZING_BOARD_BUILD_FAILURE #======================#
-    "FinalizeBoardBuildException",
+    # ======================# FINALIZING_BOARD_BUILDER_FAILURE #======================#
+    "FinalizeBoardBuilderException",
 ]
 
-# ======================# FINALIZING_BOARD_BUILD_FAILURE #======================#
-class FinalizeBoardBuildException(FinalizeBuildException):
+# ======================# FINALIZING_BOARD_BUILDER_FAILURE #======================#
+class FinalizeBoardBuilderException(FinalizeBuilderException):
     """
     Role:
         -   Error Tracing
@@ -41,10 +41,10 @@ class FinalizeBoardBuildException(FinalizeBuildException):
     Provides:
 
     Super Class:
-        FinalizeBuildException
+        FinalizeBuilderException
     """
     MSG = "Finalizing a BoardBuild failed."
-    ERR_CODE = "FINALIZING_BOARD_BUILD_FAILURE"
+    ERR_CODE = "FINALIZING_BOARD_BUILDER_FAILURE"
     
     def __init__(
             self,

@@ -10,7 +10,7 @@ version: 1.0.1
 from __future__ import annotations
 
 from model.catalog.persona import (
-    ArenaPersonaKeysException, PersonaKey, PersonaKeyBuildException,
+    ArenaPersonaKeysException, PersonaKey, PersonaKeyBuilderException,
     PersonaKeyBuildRouteException, ZeroPersonaKeysException
 )
 from system import NumberValidator, BuildResult, Builder, IdentityService, LoggingLevelRouter
@@ -77,7 +77,7 @@ class PersonaContextBuilder(Builder[PersonaKey]):
                     - On success: PersonaContext in the payload.
         Raises:
             *   ZeroPersonaKeysException
-            *   PersonaKeyBuildException
+            *   PersonaKeyBuilderException
             *   ArenaPersonaKeysException
             *   PersonaKeyBuildRouteException
         """
@@ -91,8 +91,8 @@ class PersonaContextBuilder(Builder[PersonaKey]):
         if param_count == 0:
             # Send the exception chain on failure.
             return BuildResult.failure(
-                PersonaKeyBuildException(
-                    msg=f"{method}: {PersonaKeyBuildException.ERR_CODE}",
+                PersonaKeyBuilderException(
+                    msg=f"{method}: {PersonaKeyBuilderException.ERR_CODE}",
                     ex=ZeroPersonaKeysException(f"{method}: {ZeroPersonaKeysException.MSG}")
                 )
             )
@@ -100,8 +100,8 @@ class PersonaContextBuilder(Builder[PersonaKey]):
         if param_count > 1:
             # Send the exception chain on failure.
             return BuildResult.failure(
-                PersonaKeyBuildException(
-                    msg=f"{method}: {PersonaKeyBuildException.ERR_CODE}",
+                PersonaKeyBuilderException(
+                    msg=f"{method}: {PersonaKeyBuilderException.ERR_CODE}",
                     ex=ArenaPersonaKeysException(f"{method}: {ArenaPersonaKeysException}")
                 )
             )
@@ -113,8 +113,8 @@ class PersonaContextBuilder(Builder[PersonaKey]):
             if validation.is_failure:
                 # Send the exception chain on failure.
                 return BuildResult.failure(
-                    PersonaKeyBuildException(
-                        msg=f"{method}: {PersonaKeyBuildException.ERR_CODE}",
+                    PersonaKeyBuilderException(
+                        msg=f"{method}: {PersonaKeyBuilderException.ERR_CODE}",
                         ex=validation.exception
                     )
                 )
@@ -127,8 +127,8 @@ class PersonaContextBuilder(Builder[PersonaKey]):
             if validation.is_failure:
                 # Send the exception chain on failure.
                 return BuildResult.failure(
-                    PersonaKeyBuildException(
-                        msg=f"{method}: {PersonaKeyBuildException.ERR_CODE}",
+                    PersonaKeyBuilderException(
+                        msg=f"{method}: {PersonaKeyBuilderException.ERR_CODE}",
                         ex=validation.exception
                     )
                 )
@@ -142,8 +142,8 @@ class PersonaContextBuilder(Builder[PersonaKey]):
             if validation.is_failure:
                 # Send the exception chain on failure.
                 return BuildResult.failure(
-                    PersonaKeyBuildException(
-                        msg=f"{method}: {PersonaKeyBuildException.ERR_CODE}",
+                    PersonaKeyBuilderException(
+                        msg=f"{method}: {PersonaKeyBuilderException.ERR_CODE}",
                         ex=validation.exception
                     )
                 )
@@ -157,8 +157,8 @@ class PersonaContextBuilder(Builder[PersonaKey]):
             if validation.is_failure:
                 # Send the exception chain on failure.
                 return BuildResult.failure(
-                    PersonaKeyBuildException(
-                        msg=f"{method}: {PersonaKeyBuildException.ERR_CODE}",
+                    PersonaKeyBuilderException(
+                        msg=f"{method}: {PersonaKeyBuilderException.ERR_CODE}",
                         ex=validation.exception
                     )
                 )
@@ -167,8 +167,8 @@ class PersonaContextBuilder(Builder[PersonaKey]):
         
         # The default path returns failure.
         BuildResult.failure(
-            PersonaKeyBuildException(
-                msg=f"{method}: {PersonaKeyBuildException.ERR_CODE}",
+            PersonaKeyBuilderException(
+                msg=f"{method}: {PersonaKeyBuilderException.ERR_CODE}",
                 ex=PersonaKeyBuildRouteException(
                     f"{method}: {PersonaKeyBuildRouteException.MSG}"
                 )

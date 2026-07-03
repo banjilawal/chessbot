@@ -15,11 +15,11 @@ __all__ = [
     "SpanningGraphProductionException",
 ]
 
-from system import BuildException
+from system import BuilderException
 
 
 # ======================# SPANNING_GRAPH_PRODUCTION_FAILURE #======================#
-class SpanningGraphProductionException(BuildException):
+class SpanningGraphProductionException(BuilderException):
     """
     Role:Exception Chain Layer 1, Exception Messaging
     # TASK: Worker Method Identifier
@@ -28,13 +28,13 @@ class SpanningGraphProductionException(BuildException):
     1.  Identify the SpanningGraphProducer method where the exception failed.
 
     Super Class:
-        *   BuildException
+        *   BuilderException
 
     Provides:
 
 
     # INHERITED ATTRIBUTES:
-        *   See BuildException class for inherited attributes.
+        *   See BuilderException class for inherited attributes.
 
     Attributes:
         *   op: Optional[str]
@@ -48,7 +48,7 @@ class SpanningGraphProductionException(BuildException):
     None
 
     # INHERITED METHODS:
-        *   See BuildException class for inherited methods.
+        *   See BuilderException class for inherited methods.
     """
     OP = "Build"
     MTHD_RSLT = "BuildResult"

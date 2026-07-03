@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import List, Optional
 
 from logic.coord import (
-    CoordContext, CoordContextBuildException, CoordContextBuildRouteException,
+    CoordContext, CoordContextBuilderException, CoordContextBuildRouteException,
     ZeroCoordContextFlagsException
 )
 from system import (
@@ -71,7 +71,7 @@ class CoordContextBuilder(Builder[CoordContext]):
         Returns:
             BuildResult[CoordContext]
         Raises:
-            CoordContextBuildException
+            CoordContextBuilderException
             ZeroCoordContextFlagsException
         """
         method = f"{cls.__name__}.build"
@@ -84,16 +84,16 @@ class CoordContextBuilder(Builder[CoordContext]):
         if param_count == 0:
             # Send the exception chain on failure.
             return BuildResult.failure(
-                CoordContextBuildException(
+                CoordContextBuilderException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    op=CoordContextBuildException.OP,
-                    msg=CoordContextBuildException.MSG,
-                    err_code=CoordContextBuildException.ERR_CODE,
-                    mthd_rslt_type=CoordContextBuildException.MTHD_RSLT,
+                    op=CoordContextBuilderException.OP,
+                    msg=CoordContextBuilderException.MSG,
+                    err_code=CoordContextBuilderException.ERR_CODE,
+                    mthd_rslt_type=CoordContextBuilderException.MTHD_RSLT,
                     ex=ZeroCoordContextFlagsException(
-                        msg=CoordContextBuildException.MSG,
-                        err_code=CoordContextBuildException.ERR_CODE,
+                        msg=CoordContextBuilderException.MSG,
+                        err_code=CoordContextBuilderException.ERR_CODE,
                     )
                 )
             )
@@ -140,13 +140,13 @@ class CoordContextBuilder(Builder[CoordContext]):
   
         # Handle there is no build route for the attribute.
         return BuildResult.failure(
-            CoordContextBuildException(
+            CoordContextBuilderException(
                 cls_mthd=method,
                 cls_name=cls.__name__,
-                op=CoordContextBuildException.OP,
-                msg=CoordContextBuildException.MSG,
-                err_code=CoordContextBuildException.ERR_CODE,
-                mthd_rslt_type=CoordContextBuildException.MTHD_RSLT,
+                op=CoordContextBuilderException.OP,
+                msg=CoordContextBuilderException.MSG,
+                err_code=CoordContextBuilderException.ERR_CODE,
+                mthd_rslt_type=CoordContextBuilderException.MTHD_RSLT,
                 ex=CoordContextBuildRouteException(
                     msg=CoordContextBuildRouteException.MSG,
                     err_code=CoordContextBuildRouteException.ERR_CODE,
@@ -172,7 +172,7 @@ class CoordContextBuilder(Builder[CoordContext]):
         Returns:
             BuildResult[CoordContext]
         Raises:
-            CoordContextBuildException
+            CoordContextBuilderException
         """
         method = f"{cls.__name__}._run_validation_check"
         
@@ -186,13 +186,13 @@ class CoordContextBuilder(Builder[CoordContext]):
             if validation_result.is_failure:
                 # Send the exception chain on failure.
                 return BuildResult.failure(
-                    CoordContextBuildException(
+                    CoordContextBuilderException(
                         cls_mthd=method,
                         cls_name=cls.__name__,
-                        op=CoordContextBuildException.OP,
-                        msg=CoordContextBuildException.MSG,
-                        err_code=CoordContextBuildException.ERR_CODE,
-                        mthd_rslt_type=CoordContextBuildException.MTHD_RSLT,
+                        op=CoordContextBuilderException.OP,
+                        msg=CoordContextBuilderException.MSG,
+                        err_code=CoordContextBuilderException.ERR_CODE,
+                        mthd_rslt_type=CoordContextBuilderException.MTHD_RSLT,
                         ex=validation_result.exception
                     )
                 )

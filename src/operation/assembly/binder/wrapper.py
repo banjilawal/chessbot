@@ -8,16 +8,16 @@ version: 1.0.0
 """
 
 __all__ = [
-    # ======================# TEAM_BINDER_BUILD_FAILURE #======================#
-    "TeamBinderBuildException",
+    # ======================# TEAM_BINDER_BUILDER_FAILURE #======================#
+    "TeamBinderBuilderException",
 ]
 
 from model.team import TeamBinderException
-from system import BuildException
+from system import BuilderException
 
 
-# ======================# TEAM_BINDER_BUILD_FAILURE #======================#
-class TeamBinderBuildException(TeamBinderException, BuildException):
+# ======================# TEAM_BINDER_BUILDER_FAILURE #======================#
+class TeamBinderBuilderException(TeamBinderException, BuilderException):
     """
     Role:Exception Work
 
@@ -27,7 +27,7 @@ class TeamBinderBuildException(TeamBinderException, BuildException):
 
     Super Class:
         *   TeamException
-        *   BuildException
+        *   BuilderException
 
     Provides:
 
@@ -35,5 +35,5 @@ class TeamBinderBuildException(TeamBinderException, BuildException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERR_CODE = "TEAM_BINDER_BUILD_FAILURE"
+    ERR_CODE = "TEAM_BINDER_BUILDER_FAILURE"
     MSG = "TeamBinder build failed."

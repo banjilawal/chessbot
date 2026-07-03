@@ -14,7 +14,7 @@ from model.game import Game, GameService
 from logic.team import Team, TeamService
 from system import Builder, BuildResult, ExecutionRouteException, IdentityService, LoggingLevelRouter
 from logic.agent import (
-    AgentVariety, PlayerContextBuilder, PlayerContextBuilderBuildException, ZeroPlayerContextBuilderFlagsException,
+    AgentVariety, PlayerContextBuilder, PlayerContextBuilderBuilderException, ZeroPlayerContextBuilderFlagsException,
     ArenaPlayerContextBuilderFlagsException
 )
 
@@ -87,7 +87,7 @@ class PlayerContextBuilder(Builder[PlayerContextBuilder]):
 
         Raises:
             *   ZeroPlayerContextBuilderFlagsException
-            *   PlayerContextBuilderBuildException
+            *   PlayerContextBuilderBuilderException
             *   ArenaPlayerContextBuilderFlagsException
         """
         method = "AgentSearchContextBuilder.build"
@@ -153,11 +153,11 @@ class PlayerContextBuilder(Builder[PlayerContextBuilder]):
             BuildResult.failure(
                 ExecutionRouteException(f"{method}: {ExecutionRouteException.MSG}")
             )
-        # Finally, catch any missed exception, wrap an PlayerContextBuilderBuildException around it then
+        # Finally, catch any missed exception, wrap an PlayerContextBuilderBuilderException around it then
         # return the exception-chain inside the ValidationResult.
         except Exception as ex:
             return BuildResult.failure(
-                PlayerContextBuilderBuildException(
-                    ex=ex, msg=f"{method}: {PlayerContextBuilderBuildException.MSG}"
+                PlayerContextBuilderBuilderException(
+                    ex=ex, msg=f"{method}: {PlayerContextBuilderBuilderException.MSG}"
                 )
             )

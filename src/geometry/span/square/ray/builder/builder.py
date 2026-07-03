@@ -11,7 +11,7 @@ from __future__ import annotations
 from typing import List
 
 from model.math.coord import Coord
-from math.span import CoordRay, SquareRay, SquareRayBuildException
+from math.span import CoordRay, SquareRay, SquareRayBuilderException
 from geometry.square import Square, SquareContext, SquareNotFoundException, SquareStackService
 from system import Builder, BuildResult, LoggingLevelRouter, SearchResult
 
@@ -35,7 +35,7 @@ class SquareRayBuilder(Builder[SquareRay]):
             BuildResult[SquareRay]
         
         Raises:
-              SquareRayBuildException
+              SquareRayBuilderException
         """
         method = f"{cls.__class__.__name__}.build"
         
@@ -48,12 +48,12 @@ class SquareRayBuilder(Builder[SquareRay]):
         if origin_member_square_search_result.is_failure:
             # Send the exception chain on failure.
             SearchResult.failure(
-                SquareRayBuildException(
+                SquareRayBuilderException(
                     cls_mthd=method,
-                    op=SquareRayBuildException.OP,
-                    msg=SquareRayBuildException.MSG,
-                    err_code=SquareRayBuildException.ERR_CODE,
-                    mthd_rslt_type=SquareRayBuildException.MTHD_RSLT,
+                    op=SquareRayBuilderException.OP,
+                    msg=SquareRayBuilderException.MSG,
+                    err_code=SquareRayBuilderException.ERR_CODE,
+                    mthd_rslt_type=SquareRayBuilderException.MTHD_RSLT,
                     ex=origin_member_square_search_result.exception,
                 )
             )
@@ -68,12 +68,12 @@ class SquareRayBuilder(Builder[SquareRay]):
             if member_square_search_result.is_failure:
                 # Send the exception chain on failure.
                 SearchResult.failure(
-                    SquareRayBuildException(
+                    SquareRayBuilderException(
                         cls_mthd=method,
-                        op=SquareRayBuildException.OP,
-                        msg=SquareRayBuildException.MSG,
-                        err_code=SquareRayBuildException.ERR_CODE,
-                        mthd_rslt_type=SquareRayBuildException.MTHD_RSLT,
+                        op=SquareRayBuilderException.OP,
+                        msg=SquareRayBuilderException.MSG,
+                        err_code=SquareRayBuilderException.ERR_CODE,
+                        mthd_rslt_type=SquareRayBuilderException.MTHD_RSLT,
                         ex=member_square_search_result.exception,
                     )
                 )
@@ -103,7 +103,7 @@ class SquareRayBuilder(Builder[SquareRay]):
             
         Raises:
             SquareNotFoundException
-            SquareRayBuildException
+            SquareRayBuilderException
         """
         method = f"{cls.__class__.__name__}._search_square_by_coord"
         
@@ -112,12 +112,12 @@ class SquareRayBuilder(Builder[SquareRay]):
         if search_result.is_failure:
             # Send the exception chain on failure.
             SearchResult.failure(
-                SquareRayBuildException(
+                SquareRayBuilderException(
                     cls_mthd=method,
-                    op=SquareRayBuildException.OP,
-                    msg=SquareRayBuildException.MSG,
-                    err_code=SquareRayBuildException.ERR_CODE,
-                    mthd_rslt_type=SquareRayBuildException.MTHD_RSLT,
+                    op=SquareRayBuilderException.OP,
+                    msg=SquareRayBuilderException.MSG,
+                    err_code=SquareRayBuilderException.ERR_CODE,
+                    mthd_rslt_type=SquareRayBuilderException.MTHD_RSLT,
                     ex=search_result.exception,
                 )
             )
@@ -125,17 +125,17 @@ class SquareRayBuilder(Builder[SquareRay]):
         if search_result.is_empty:
             # Send the exception chain on failure.
             SearchResult.failure(
-                SquareRayBuildException(
+                SquareRayBuilderException(
                     cls_mthd=method,
-                    op=SquareRayBuildException.OP,
-                    msg=SquareRayBuildException.MSG,
-                    err_code=SquareRayBuildException.ERR_CODE,
-                    mthd_rslt_type=SquareRayBuildException.MTHD_RSLT,
+                    op=SquareRayBuilderException.OP,
+                    msg=SquareRayBuilderException.MSG,
+                    err_code=SquareRayBuilderException.ERR_CODE,
+                    mthd_rslt_type=SquareRayBuilderException.MTHD_RSLT,
                     ex=SquareNotFoundException(
                         var="coord",
                         val=f"{coord}",
-                        msg=SquareRayBuildException.MSG,
-                        err_code=SquareRayBuildException.ERR_CODE,
+                        msg=SquareRayBuilderException.MSG,
+                        err_code=SquareRayBuilderException.ERR_CODE,
                     ),
                 )
             )

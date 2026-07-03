@@ -35,11 +35,11 @@ version: 1.0.0
 # DEPENDENCIES:
 ---------------
 From `logic.system`:
-    `BuildResult`, `Builder`, `LoggingLevelRouter`, `ChessException`, `NullException`, `BuildException`
+    `BuildResult`, `Builder`, `LoggingLevelRouter`, `ChessException`, `NullException`, `BuilderException`
     `IdValidator`, `NameValidator`
 
 From `logic.board_validator`:
-    `Board`, `NullBoard`, `BoardBuildException`, `BoardSchema`
+    `Board`, `NullBoard`, `BoardBuilderException`, `BoardSchema`
 
 From `logic.owner`:
   `Player`, `PlayerAgentValidator`,

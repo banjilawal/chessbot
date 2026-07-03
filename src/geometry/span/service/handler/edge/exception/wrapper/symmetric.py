@@ -11,14 +11,14 @@ from __future__ import annotations
 from typing import Optional
 
 __all__ = [
-    # ======================# SYMMETRIC_EDGE_BUILD_FAILURE #======================#
-    "SymmetricEdgeBuildException",
+    # ======================# SYMMETRIC_EDGE_BUILDER_FAILURE #======================#
+    "SymmetricEdgeBuilderException",
 ]
 
-from system import BuildException
+from system import BuilderException
 
-# ======================# SYMMETRIC_EDGE_BUILD_FAILURE #======================#
-class SymmetricEdgeBuildException(BuildException):
+# ======================# SYMMETRIC_EDGE_BUILDER_FAILURE #======================#
+class SymmetricEdgeBuilderException(BuilderException):
     """
     Role:Exception Chain Layer 1, Exception Messaging
     # TASK: Worker Method Identifier
@@ -27,13 +27,13 @@ class SymmetricEdgeBuildException(BuildException):
     1.  Identify the NodeEdgeHandler method where the exception failed.
 
     Super Class:
-        *   BuildException
+        *   BuilderException
 
     Provides:
 
 
     # INHERITED ATTRIBUTES:
-        *   See BuildException class for inherited attributes.
+        *   See BuilderException class for inherited attributes.
 
     Attributes:
         *   err_code (str)
@@ -47,11 +47,11 @@ class SymmetricEdgeBuildException(BuildException):
    None
 
     # INHERITED METHODS:
-        *   See BuildException class for inherited methods.
+        *   See BuilderException class for inherited methods.
     """
     OP = "Build"
     MTHD_RSLT = "BuildResult"
-    ERR_CODE = "SYMMETRIC_EDGE_BUILD_FAILURE"
+    ERR_CODE = "SYMMETRIC_EDGE_BUILDER_FAILURE"
     MSG = "Failure in NodeEdgeHandler method."
     
     def __init__(

@@ -8,7 +8,7 @@ version: 1.0.0
 """
 
 from system import (
-    ChessException, NullException, ValidationException, BuildException, InconsistencyException
+    ChessException, NullException, ValidationException, BuilderException, InconsistencyException
 )
 
 __all__ = [
@@ -21,7 +21,7 @@ __all__ = [
     "NullHouseResidentException",
     
     #====================== TURN_SCENE BUILD EXCEPTION #======================#
-    "HouseBuildException",
+    "HouseBuilderException",
 ]
 
 
@@ -56,7 +56,7 @@ class NullHouseResidentException(HouseException):
 
 
 #====================== HOUSE BUILD EXCEPTION #======================#
-class HouseBuildException(HouseException, BuildException):
+class HouseBuilderException(HouseException, BuilderException):
     """"""
     ERR_CODE = "HOUSE_BUILD_FAILED"
     MSG = "House build failed."

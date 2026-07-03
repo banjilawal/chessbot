@@ -65,7 +65,7 @@ class HostageContextBuilder(Builder[HostageContext]):
             * TypeError
             * NullHostageContextException
             * ZeroHostageContextFlagsException
-            * HostageContextBuildException
+            * HostageContextBuilderException
             * HostageContextBuildRouteException
         """
         method = "HostageContextBuilder.validate"
@@ -78,8 +78,8 @@ class HostageContextBuilder(Builder[HostageContext]):
         if param_count == 0:
             # Send the exception chain on failure.
             return BuildResult.failure(
-                HostageContextBuildException(
-                    msg=f"{method}: {HostageContextBuildException.MSG}",
+                HostageContextBuilderException(
+                    msg=f"{method}: {HostageContextBuilderException.MSG}",
                     ex=ZeroHostageContextFlagsException(
                         f"{method}: {ZeroHostageContextFlagsException.MSG}"
                     )
@@ -89,8 +89,8 @@ class HostageContextBuilder(Builder[HostageContext]):
         if param_count > 1:
             # Send the exception chain on failure.
             return BuildResult.failure(
-                HostageContextBuildException(
-                    msg=f"{method}: {HostageContextBuildException.MSG}",
+                HostageContextBuilderException(
+                    msg=f"{method}: {HostageContextBuilderException.MSG}",
                     ex=ArenaHostageContextFlagsException(
                         f"{method}: {ArenaHostageContextFlagsException.MSG}"
                     )
@@ -104,8 +104,8 @@ class HostageContextBuilder(Builder[HostageContext]):
             if validation.is_failure:
                 # Send the exception chain on failure.
                 return BuildResult.failure(
-                    HostageContextBuildException(
-                        msg=f"{method}: {HostageContextBuildException.MSG}",
+                    HostageContextBuilderException(
+                        msg=f"{method}: {HostageContextBuilderException.MSG}",
                         ex=validation.exception
                     )
                 )
@@ -118,8 +118,8 @@ class HostageContextBuilder(Builder[HostageContext]):
             if validation.is_failure:
                 # Send the exception chain on failure.
                 return BuildResult.failure(
-                    HostageContextBuildException(
-                        msg=f"{method}: {HostageContextBuildException.MSG}",
+                    HostageContextBuilderException(
+                        msg=f"{method}: {HostageContextBuilderException.MSG}",
                         ex=validation.exception
                     )
                 )
@@ -133,8 +133,8 @@ class HostageContextBuilder(Builder[HostageContext]):
             if validation.is_failure:
                 # Send the exception chain on failure.
                 return BuildResult.failure(
-                    HostageContextBuildException(
-                        msg=f"{method}: {HostageContextBuildException.MSG}",
+                    HostageContextBuilderException(
+                        msg=f"{method}: {HostageContextBuilderException.MSG}",
                         ex=validation.exception
                     )
                 )
@@ -147,8 +147,8 @@ class HostageContextBuilder(Builder[HostageContext]):
             if validation.is_failure:
                 # Send the exception chain on failure.
                 return BuildResult.failure(
-                    HostageContextBuildException(
-                        msg=f"{method}: {HostageContextBuildException.MSG}",
+                    HostageContextBuilderException(
+                        msg=f"{method}: {HostageContextBuilderException.MSG}",
                         ex=validation.exception
                     )
                 )
@@ -157,8 +157,8 @@ class HostageContextBuilder(Builder[HostageContext]):
         
         # Return the exception chain if there is no build route for the context.
         return BuildResult.failure(
-            HostageContextBuildException(
-                msg=f"{method}: {HostageContextBuildException.MSG}",
+            HostageContextBuilderException(
+                msg=f"{method}: {HostageContextBuilderException.MSG}",
                 ex=HostageContextBuildRouteException(
                     f"{method}: {HostageContextBuildRouteException.MSG}"
                 )

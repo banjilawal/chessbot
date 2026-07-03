@@ -26,4 +26,4 @@ from .square import *
 from .token import *
 
 # Modules
-from .exception import BinderBuildException
+from .exception import BinderBuilderException

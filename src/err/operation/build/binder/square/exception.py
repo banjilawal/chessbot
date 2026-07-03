@@ -6,22 +6,23 @@ Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
 """
+
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import BuildException
+from err import BuilderException
 
 
 __all__ = [
-    # ======================# SQUARE_BINDER_BUILD_FAILURE #======================#
-    "SquareBinderBuildException",
+    # ======================# SQUARE_BINDER_BUILDER_FAILURE #======================#
+    "SquareBinderBuilderException",
 ]
 
-from err import BinderBuildException
+from err import BinderBuilderException
 
 
-# ======================# SQUARE_BINDER_BUILD_FAILURE #======================#
-class SquareBinderBuildException(BinderBuildException):
+# ======================# SQUARE_BINDER_BUILDER_FAILURE #======================#
+class SquareBinderBuilderException(BinderBuilderException):
     """
     Role:
         -   Error Tracing
@@ -41,10 +42,10 @@ class SquareBinderBuildException(BinderBuildException):
     Provides:
 
     Super Class:
-        BinderBuildException
+        BinderBuilderException
     """
     MSG = "SquareBinder build failed."
-    ERR_CODE = "SQUARE_BINDER_BUILD_FAILURE"
+    ERR_CODE = "SQUARE_BINDER_BUILDER_FAILURE"
     
     def __init__(
             self,

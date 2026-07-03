@@ -10,16 +10,16 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import FinalizeBuildException
+from err import FinalizeBuilderException
 
 
 __all__ = [
-    # ======================# FINALIZING_TEAM_BUILD_FAILURE #======================#
-    "FinalizeTeamBuildException",
+    # ======================# FINALIZING_TEAM_BUILDER_FAILURE #======================#
+    "FinalizeTeamBuilderException",
 ]
 
-# ======================# FINALIZING_TEAM_BUILD_FAILURE #======================#
-class FinalizeTeamBuildException(FinalizeBuildException):
+# ======================# FINALIZING_TEAM_BUILDER_FAILURE #======================#
+class FinalizeTeamBuilderException(FinalizeBuilderException):
     """
     Role:
         -   Error Tracing
@@ -40,10 +40,10 @@ class FinalizeTeamBuildException(FinalizeBuildException):
     Provides:
 
     Super Class:
-        FinalizeBuildException
+        FinalizeBuilderException
     """
     MSG = "Finalizing a TeamBuild failed."
-    ERR_CODE = "FINALIZING_TEAM_BUILD_FAILURE"
+    ERR_CODE = "FINALIZING_TEAM_BUILDER_FAILURE"
     
     def __init__(
             self,

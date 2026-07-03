@@ -14,6 +14,7 @@ from .arena import *
 from .binder import *
 from .board import *
 from .coord import *
+from .path import *
 from .edge import *
 from .game import *
 from .hostage import *

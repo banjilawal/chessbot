@@ -10,7 +10,7 @@ version: 1.0.0
 from __future__ import annotations
 
 from model.node import NodeService
-from graph.pair import PairListBuilder, NodeTreeBuildException
+from graph.pair import PairListBuilder, NodeTreeBuilderException
 from graph.pair.pair.service.service import PairService
 from graph.tree.tree import NodeTree
 from math.span import SquareSpan, SquareSpanService
@@ -72,7 +72,7 @@ class NodeTreeBuilder(Builder[NodeTree]):
             BuildResult[NodeTree]
 
         Raises:
-            NodeTreeBuildException
+            NodeTreeBuilderException
         """
         method = f"{cls.__class__.__name__}._build"
         
@@ -81,12 +81,12 @@ class NodeTreeBuilder(Builder[NodeTree]):
         if square_span_result.is_failure:
             # Send the exception chain on failure.
             return BuildResult.failure(
-                NodeTreeBuildException(
+                NodeTreeBuilderException(
                     cls_mthd=method,
-                    op=NodeTreeBuildException.OP,
-                    msg=NodeTreeBuildException.MSG,
-                    err_code=NodeTreeBuildException.ERR_CODE,
-                    mthd_rslt_type=NodeTreeBuildException.MTHD_RSLT,
+                    op=NodeTreeBuilderException.OP,
+                    msg=NodeTreeBuilderException.MSG,
+                    err_code=NodeTreeBuilderException.ERR_CODE,
+                    mthd_rslt_type=NodeTreeBuilderException.MTHD_RSLT,
                     ex=square_span_result.exception,
                 )
             )
@@ -98,12 +98,12 @@ class NodeTreeBuilder(Builder[NodeTree]):
         if root_node_build_result.is_failure:
             # Send the exception chain on failure.
             return BuildResult.failure(
-                NodeTreeBuildException(
+                NodeTreeBuilderException(
                     cls_mthd=method,
-                    op=NodeTreeBuildException.OP,
-                    msg=NodeTreeBuildException.MSG,
-                    err_code=NodeTreeBuildException.ERR_CODE,
-                    mthd_rslt_type=NodeTreeBuildException.MTHD_RSLT,
+                    op=NodeTreeBuilderException.OP,
+                    msg=NodeTreeBuilderException.MSG,
+                    err_code=NodeTreeBuilderException.ERR_CODE,
+                    mthd_rslt_type=NodeTreeBuilderException.MTHD_RSLT,
                     ex=root_node_build_result.exception,
                 )
             )
@@ -119,12 +119,12 @@ class NodeTreeBuilder(Builder[NodeTree]):
             if branch_build_result.is_failure:
                 # Send the exception chain on failure.
                 return BuildResult.failure(
-                    NodeTreeBuildException(
+                    NodeTreeBuilderException(
                         cls_mthd=method,
-                        op=NodeTreeBuildException.OP,
-                        msg=NodeTreeBuildException.MSG,
-                        err_code=NodeTreeBuildException.ERR_CODE,
-                        mthd_rslt_type=NodeTreeBuildException.MTHD_RSLT,
+                        op=NodeTreeBuilderException.OP,
+                        msg=NodeTreeBuilderException.MSG,
+                        err_code=NodeTreeBuilderException.ERR_CODE,
+                        mthd_rslt_type=NodeTreeBuilderException.MTHD_RSLT,
                         ex=branch_build_result.exception,
                     )
                 )

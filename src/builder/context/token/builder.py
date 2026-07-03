@@ -75,7 +75,7 @@ class TokenContextBuilder(Builder[TokenContext]):
         Returns:
             BuildResult[TokenContext]
         Raises:
-            TokenContextBuildException
+            TokenContextBuilderException
             ZeroTokenContextFlagsException
             TokenContextBuildRouteException
             ExcessTokenContextFlagsException
@@ -99,13 +99,13 @@ class TokenContextBuilder(Builder[TokenContext]):
         if param_count == 0:
             # Send the exception chain on failure.
             return BuildResult.failure(
-                TokenContextBuildException(
+                TokenContextBuilderException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    op=TokenContextBuildException.OP,
-                    msg=TokenContextBuildException.MSG,
-                    err_code=TokenContextBuildException.ERR_CODE,
-                    mthd_rslt_type=TokenContextBuildException.MTHD_RSLT,
+                    op=TokenContextBuilderException.OP,
+                    msg=TokenContextBuilderException.MSG,
+                    err_code=TokenContextBuilderException.ERR_CODE,
+                    mthd_rslt_type=TokenContextBuilderException.MTHD_RSLT,
                     ex=ZeroTokenContextFlagsException(
                         msg=ZeroTokenContextFlagsException.MSG,
                         err_code=ZeroTokenContextFlagsException.ERR_CODE,
@@ -116,13 +116,13 @@ class TokenContextBuilder(Builder[TokenContext]):
         if param_count > 1:
             # Send the exception chain on failure.
             return BuildResult.failure(
-                TokenContextBuildException(
+                TokenContextBuilderException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    op=TokenContextBuildException.OP,
-                    msg=TokenContextBuildException.MSG,
-                    err_code=TokenContextBuildException.ERR_CODE,
-                    mthd_rslt_type=TokenContextBuildException.MTHD_RSLT,
+                    op=TokenContextBuilderException.OP,
+                    msg=TokenContextBuilderException.MSG,
+                    err_code=TokenContextBuilderException.ERR_CODE,
+                    mthd_rslt_type=TokenContextBuilderException.MTHD_RSLT,
                     ex=ExcessTeamContextFlagsException(
                         msg=ExcessTeamContextFlagsException.MSG,
                         err_code=ExcessTeamContextFlagsException.ERR_CODE,
@@ -137,13 +137,13 @@ class TokenContextBuilder(Builder[TokenContext]):
             if validation.is_failure:
                 # Send the exception chain on failure.
                 return BuildResult.failure(
-                    TokenContextBuildException(
+                    TokenContextBuilderException(
                         cls_mthd=method,
                         cls_name=cls.__name__,
-                        op=TokenContextBuildException.OP,
-                        msg=TokenContextBuildException.MSG,
-                        err_code=TokenContextBuildException.ERR_CODE,
-                        mthd_rslt_type=TokenContextBuildException.MTHD_RSLT,
+                        op=TokenContextBuilderException.OP,
+                        msg=TokenContextBuilderException.MSG,
+                        err_code=TokenContextBuilderException.ERR_CODE,
+                        mthd_rslt_type=TokenContextBuilderException.MTHD_RSLT,
                         ex=validation.exception,
                     )
                 )
@@ -156,13 +156,13 @@ class TokenContextBuilder(Builder[TokenContext]):
             if validation.is_failure:
                 # Send the exception chain on failure.
                 return BuildResult.failure(
-                    TokenContextBuildException(
+                    TokenContextBuilderException(
                         cls_mthd=method,
                         cls_name=cls.__name__,
-                        op=TokenContextBuildException.OP,
-                        msg=TokenContextBuildException.MSG,
-                        err_code=TokenContextBuildException.ERR_CODE,
-                        mthd_rslt_type=TokenContextBuildException.MTHD_RSLT,
+                        op=TokenContextBuilderException.OP,
+                        msg=TokenContextBuilderException.MSG,
+                        err_code=TokenContextBuilderException.ERR_CODE,
+                        mthd_rslt_type=TokenContextBuilderException.MTHD_RSLT,
                         ex=validation.exception,
                     )
                 )
@@ -175,13 +175,13 @@ class TokenContextBuilder(Builder[TokenContext]):
             if validation.is_failure:
                 # Send the exception chain on failure.
                 return BuildResult.failure(
-                    TokenContextBuildException(
+                    TokenContextBuilderException(
                         cls_mthd=method,
                         cls_name=cls.__name__,
-                        op=TokenContextBuildException.OP,
-                        msg=TokenContextBuildException.MSG,
-                        err_code=TokenContextBuildException.ERR_CODE,
-                        mthd_rslt_type=TokenContextBuildException.MTHD_RSLT,
+                        op=TokenContextBuilderException.OP,
+                        msg=TokenContextBuilderException.MSG,
+                        err_code=TokenContextBuilderException.ERR_CODE,
+                        mthd_rslt_type=TokenContextBuilderException.MTHD_RSLT,
                         ex=validation.exception,
                     )
                 )
@@ -194,13 +194,13 @@ class TokenContextBuilder(Builder[TokenContext]):
             if validation.is_failure:
                 # Send the exception chain on failure.
                 return BuildResult.failure(
-                    TokenContextBuildException(
+                    TokenContextBuilderException(
                         cls_mthd=method,
                         cls_name=cls.__name__,
-                        op=TokenContextBuildException.OP,
-                        msg=TokenContextBuildException.MSG,
-                        err_code=TokenContextBuildException.ERR_CODE,
-                        mthd_rslt_type=TokenContextBuildException.MTHD_RSLT,
+                        op=TokenContextBuilderException.OP,
+                        msg=TokenContextBuilderException.MSG,
+                        err_code=TokenContextBuilderException.ERR_CODE,
+                        mthd_rslt_type=TokenContextBuilderException.MTHD_RSLT,
                         ex=validation.exception,
                     )
                 )
@@ -213,13 +213,13 @@ class TokenContextBuilder(Builder[TokenContext]):
             if validation.is_failure:
                 # Send the exception chain on failure.
                 return BuildResult.failure(
-                    TokenContextBuildException(
+                    TokenContextBuilderException(
                         cls_mthd=method,
                         cls_name=cls.__name__,
-                        op=TokenContextBuildException.OP,
-                        msg=TokenContextBuildException.MSG,
-                        err_code=TokenContextBuildException.ERR_CODE,
-                        mthd_rslt_type=TokenContextBuildException.MTHD_RSLT,
+                        op=TokenContextBuilderException.OP,
+                        msg=TokenContextBuilderException.MSG,
+                        err_code=TokenContextBuilderException.ERR_CODE,
+                        mthd_rslt_type=TokenContextBuilderException.MTHD_RSLT,
                         ex=validation.exception,
                     )
                 )
@@ -232,13 +232,13 @@ class TokenContextBuilder(Builder[TokenContext]):
             if validation.is_failure:
                 # Send the exception chain on failure.
                 return BuildResult.failure(
-                    TokenContextBuildException(
+                    TokenContextBuilderException(
                         cls_mthd=method,
                         cls_name=cls.__name__,
-                        op=TokenContextBuildException.OP,
-                        msg=TokenContextBuildException.MSG,
-                        err_code=TokenContextBuildException.ERR_CODE,
-                        mthd_rslt_type=TokenContextBuildException.MTHD_RSLT,
+                        op=TokenContextBuilderException.OP,
+                        msg=TokenContextBuilderException.MSG,
+                        err_code=TokenContextBuilderException.ERR_CODE,
+                        mthd_rslt_type=TokenContextBuilderException.MTHD_RSLT,
                         ex=validation.exception,
                     )
                 )
@@ -251,13 +251,13 @@ class TokenContextBuilder(Builder[TokenContext]):
             if validation.is_failure:
                 # Send the exception chain on failure.
                 return BuildResult.failure(
-                    TokenContextBuildException(
+                    TokenContextBuilderException(
                         cls_mthd=method,
                         cls_name=cls.__name__,
-                        op=TokenContextBuildException.OP,
-                        msg=TokenContextBuildException.MSG,
-                        err_code=TokenContextBuildException.ERR_CODE,
-                        mthd_rslt_type=TokenContextBuildException.MTHD_RSLT,
+                        op=TokenContextBuilderException.OP,
+                        msg=TokenContextBuilderException.MSG,
+                        err_code=TokenContextBuilderException.ERR_CODE,
+                        mthd_rslt_type=TokenContextBuilderException.MTHD_RSLT,
                         ex=validation.exception,
                     )
                 )
@@ -274,13 +274,13 @@ class TokenContextBuilder(Builder[TokenContext]):
             if validation.is_failure:
                 # Send the exception chain on failure.
                 return BuildResult.failure(
-                    TokenContextBuildException(
+                    TokenContextBuilderException(
                         cls_mthd=method,
                         cls_name=cls.__name__,
-                        op=TokenContextBuildException.OP,
-                        msg=TokenContextBuildException.MSG,
-                        err_code=TokenContextBuildException.ERR_CODE,
-                        mthd_rslt_type=TokenContextBuildException.MTHD_RSLT,
+                        op=TokenContextBuilderException.OP,
+                        msg=TokenContextBuilderException.MSG,
+                        err_code=TokenContextBuilderException.ERR_CODE,
+                        mthd_rslt_type=TokenContextBuilderException.MTHD_RSLT,
                         ex=validation.exception,
                     )
                 )
@@ -289,13 +289,13 @@ class TokenContextBuilder(Builder[TokenContext]):
         
         # Handle the case that, there was no build route for the attribute
         return BuildResult.failure(
-            TokenContextBuildException(
+            TokenContextBuilderException(
                 cls_mthd=method,
                 cls_name=cls.__name__,
-                op=TokenContextBuildException.OP,
-                msg=TokenContextBuildException.MSG,
-                err_code=TokenContextBuildException.ERR_CODE,
-                mthd_rslt_type=TokenContextBuildException.MTHD_RSLT,
+                op=TokenContextBuilderException.OP,
+                msg=TokenContextBuilderException.MSG,
+                err_code=TokenContextBuilderException.ERR_CODE,
+                mthd_rslt_type=TokenContextBuilderException.MTHD_RSLT,
                 ex=TokenContextBuildRouteException(
                     msg=TokenContextBuildRouteException.MSG,
                     err_code=TokenContextBuildRouteException.ERR_CODE,

@@ -12,7 +12,7 @@ from __future__ import annotations
 from blueprint.model.binder import BoardBinderBlueprint
 from system import BuildResult, Builder, LoggingLevelRouter
 from model.team import (
-    BlackTeamHasWrongSchemaException, TeamBinder, TeamBinderBuildException,
+    BlackTeamHasWrongSchemaException, TeamBinder, TeamBinderBuilderException,
     TeamSchemaCollisionException, WhiteTeamHasWrongSchemaException
 )
 
@@ -34,8 +34,8 @@ class TeamTableBuilder(Builder[TeamBinder]):
         if white_team_validation_result.is_failure:
             # Send the exception chain on failure.
             return BuildResult.failure(
-                TeamBinderBuildException(
-                    msg=f"{method}: {TeamBinderBuildException.MSG}",
+                TeamBinderBuilderException(
+                    msg=f"{method}: {TeamBinderBuilderException.MSG}",
                     ex=white_team_validation_result.exception
                 )
             )
@@ -43,8 +43,8 @@ class TeamTableBuilder(Builder[TeamBinder]):
         if white_team.schema != schema_service.schema.WHITE:
             # Send the exception chain on failure.
             return BuildResult.failure(
-                TeamBinderBuildException(
-                    msg=f"{method}: {TeamBinderBuildException.MSG}",
+                TeamBinderBuilderException(
+                    msg=f"{method}: {TeamBinderBuilderException.MSG}",
                     ex=WhiteTeamHasWrongSchemaException(
                         f"{method}: {WhiteTeamHasWrongSchemaException.MSG}",
                     )
@@ -54,8 +54,8 @@ class TeamTableBuilder(Builder[TeamBinder]):
         if black_team.schema != schema_service.schema.WHITE:
             # Send the exception chain on failure.
             return BuildResult.failure(
-                TeamBinderBuildException(
-                    msg=f"{method}: {TeamBinderBuildException.MSG}",
+                TeamBinderBuilderException(
+                    msg=f"{method}: {TeamBinderBuilderException.MSG}",
                     ex=BlackTeamHasWrongSchemaException(
                         f"{method}: {BlackTeamHasWrongSchemaException.MSG}",
                     )
@@ -65,8 +65,8 @@ class TeamTableBuilder(Builder[TeamBinder]):
         if black_team.schema == white_team.schema:
             # Send the exception chain on failure.
             return BuildResult.failure(
-                TeamBinderBuildException(
-                    msg=f"{method}: {TeamBinderBuildException.MSG}",
+                TeamBinderBuilderException(
+                    msg=f"{method}: {TeamBinderBuilderException.MSG}",
                     ex=TeamSchemaCollisionException(
                         f"{method}:{TeamSchemaCollisionException.MSG}",
                     )

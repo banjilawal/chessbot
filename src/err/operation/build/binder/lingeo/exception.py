@@ -6,18 +6,19 @@ Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
 """
+
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import BinderBuildException
+from err import BinderBuilderException
 
 __all__ = [
-    # ======================# VECTOR_BINDER_BUILD_FAILURE #======================#
-    "VectorBinderBuildException",
+    # ======================# VECTOR_BINDER_BUILDER_FAILURE #======================#
+    "VectorBinderBuilderException",
 ]
 
-# ======================# VECTOR_BINDER_BUILD_FAILURE #======================#
-class VectorBinderBuildException(BinderBuildException):
+# ======================# VECTOR_BINDER_BUILDER_FAILURE #======================#
+class VectorBinderBuilderException(BinderBuilderException):
     """
     Role:
         -   Error Tracing
@@ -37,10 +38,10 @@ class VectorBinderBuildException(BinderBuildException):
     Provides:
 
     Super Class:
-        BinderBuildException
+        BinderBuilderException
     """
     MSG = "VectorBinder build failed."
-    ERR_CODE = "VECTOR_BINDER_BUILD_FAILURE"
+    ERR_CODE = "VECTOR_BINDER_BUILDER_FAILURE"
     
     def __init__(
             self,

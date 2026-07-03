@@ -10,15 +10,15 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import FinalizeBuildException
+from err import FinalizeBuilderException
 
 __all__ = [
-    # ======================# FINALIZING_ARENA_BUILD_FAILURE #======================#
-    "FinalizeArenaBuildException",
+    # ======================# FINALIZING_ARENA_BUILDER_FAILURE #======================#
+    "FinalizeArenaBuilderException",
 ]
 
-# ======================# FINALIZING_ARENA_BUILD_FAILURE #======================#
-class FinalizeArenaBuildException(FinalizeBuildException):
+# ======================# FINALIZING_ARENA_BUILDER_FAILURE #======================#
+class FinalizeArenaBuilderException(FinalizeBuilderException):
     """
     Role:
         -   Error Tracing
@@ -39,10 +39,10 @@ class FinalizeArenaBuildException(FinalizeBuildException):
     Provides:
 
     Super Class:
-        FinalizeBuildException
+        FinalizeBuilderException
     """
     MSG = "Finalizing a ArenaBuild failed."
-    ERR_CODE = "FINALIZING_ARENA_BUILD_FAILURE"
+    ERR_CODE = "FINALIZING_ARENA_BUILDER_FAILURE"
     
     def __init__(
             self,

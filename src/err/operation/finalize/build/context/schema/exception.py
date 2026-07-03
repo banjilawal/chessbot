@@ -6,22 +6,23 @@ Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
 """
+
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import FinalizeBuildException
+from err import FinalizeBuilderException
 
 
 __all__ = [
-    # ======================# FINALIZING_SCHEMA_CONTEXT_BUILD_FAILURE #======================#
-    "FinalizeSchemaContextBuildException",
+    # ======================# FINALIZING_SCHEMA_CONTEXT_BUILDER_FAILURE #======================#
+    "FinalizeSchemaContextBuilderException",
 ]
 
-from err import FinalizeContextBuildException
+from err import FinalizeContextBuilderException
 
 
-# ======================# FINALIZING_SCHEMA_CONTEXT_BUILD_FAILURE #======================#
-class FinalizeSchemaContextBuildException(FinalizeContextBuildException):
+# ======================# FINALIZING_SCHEMA_CONTEXT_BUILDER_FAILURE #======================#
+class FinalizeSchemaContextBuilderException(FinalizeContextBuilderException):
     """
     Role:
         -   Error Tracing
@@ -42,10 +43,10 @@ class FinalizeSchemaContextBuildException(FinalizeContextBuildException):
     Provides:
 
     Super Class:
-        ContextFinalizeBuildException
+        ContextFinalizeBuilderException
     """
     MSG = "Finalizing a SchemaContextBuild failed."
-    ERR_CODE = "FINALIZING_SCHEMA_CONTEXT_BUILD_FAILURE"
+    ERR_CODE = "FINALIZING_SCHEMA_CONTEXT_BUILDER_FAILURE"
     
     def __init__(
             self,

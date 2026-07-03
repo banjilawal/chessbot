@@ -6,22 +6,23 @@ Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
 """
+
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import BuildException
+from err import BuilderException
 
 
 __all__ = [
-    # ======================# SCHEMA_CONTEXT_BUILD_FAILURE #======================#
-    "SchemaContextBuildException",
+    # ======================# SCHEMA_CONTEXT_BUILDER_FAILURE #======================#
+    "SchemaContextBuilderException",
 ]
 
-from err import ContextBuildException
+from err import ContextBuilderException
 
 
-# ======================# SCHEMA_CONTEXT_BUILD_FAILURE #======================#
-class SchemaContextBuildException(ContextBuildException):
+# ======================# SCHEMA_CONTEXT_BUILDER_FAILURE #======================#
+class SchemaContextBuilderException(ContextBuilderException):
     """
     Role:
         -   Error Tracing
@@ -41,10 +42,10 @@ class SchemaContextBuildException(ContextBuildException):
     Provides:
 
     Super Class:
-        ContextBuildException
+        ContextBuilderException
     """
     MSG = "SchemaContext build failed."
-    ERR_CODE = "SCHEMA_CONTEXT_BUILD_FAILURE"
+    ERR_CODE = "SCHEMA_CONTEXT_BUILDER_FAILURE"
     
     def __init__(
             self,

@@ -61,7 +61,7 @@ class ZoneBuilder(Builder[Zone]):
         Returns:
             BuildResult[Zone]
         Raises:
-            ZoneBuildException
+            ZoneBuilderException
         """
         method = f"{cls.__name__}.build"
         return BuildResult()

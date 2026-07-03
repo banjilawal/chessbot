@@ -10,16 +10,16 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import FinalizeBuildException
+from err import FinalizeBuilderException
 
 
 __all__ = [
-    # ======================# FINALIZING_PLAYER_BUILD_FAILURE #======================#
-    "FinalizePlayerBuildException",
+    # ======================# FINALIZING_PLAYER_BUILDER_FAILURE #======================#
+    "FinalizePlayerBuilderException",
 ]
 
-# ======================# FINALIZING_PLAYER_BUILD_FAILURE #======================#
-class FinalizePlayerBuildException(FinalizeBuildException):
+# ======================# FINALIZING_PLAYER_BUILDER_FAILURE #======================#
+class FinalizePlayerBuilderException(FinalizeBuilderException):
     """
     Role:
         -   Error Tracing
@@ -40,10 +40,10 @@ class FinalizePlayerBuildException(FinalizeBuildException):
     Provides:
 
     Super Class:
-        FinalizeBuildException
+        FinalizeBuilderException
     """
     MSG = "Finalizing a PlayerBuild failed."
-    ERR_CODE = "FINALIZING_PLAYER_BUILD_FAILURE"
+    ERR_CODE = "FINALIZING_PLAYER_BUILDER_FAILURE"
     
     def __init__(
             self,

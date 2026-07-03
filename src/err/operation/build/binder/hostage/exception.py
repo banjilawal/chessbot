@@ -6,22 +6,23 @@ Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
 """
+
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import BuildException
+from err import BuilderException
 
 
 __all__ = [
-    # ======================# HOSTAGE_BINDER_BUILD_FAILURE #======================#
-    "HostageBinderBuildException",
+    # ======================# HOSTAGE_BINDER_BUILDER_FAILURE #======================#
+    "HostageBinderBuilderException",
 ]
 
-from err import BinderBuildException
+from err import BinderBuilderException
 
 
-# ======================# HOSTAGE_BINDER_BUILD_FAILURE #======================#
-class HostageBinderBuildException(BinderBuildException):
+# ======================# HOSTAGE_BINDER_BUILDER_FAILURE #======================#
+class HostageBinderBuilderException(BinderBuilderException):
     """
     Role:
         -   Error Tracing
@@ -41,10 +42,10 @@ class HostageBinderBuildException(BinderBuildException):
     Provides:
 
     Super Class:
-        BinderBuildException
+        BinderBuilderException
     """
     MSG = "HostageBinder build failed."
-    ERR_CODE = "HOSTAGE_BINDER_BUILD_FAILURE"
+    ERR_CODE = "HOSTAGE_BINDER_BUILDER_FAILURE"
     
     def __init__(
             self,

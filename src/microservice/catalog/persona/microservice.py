@@ -174,8 +174,8 @@ class PersonaService(HashService[Persona]):
     #             # Return exception chain on failure.
     #             PersonaServiceException(
     #                 msg=f"ServiceId:{self.id} {method}: {PersonaServiceException.ERR_CODE}",
-    #                 ex=RankBuildException(
-    #                     msg=f"{method}: {RankBuildException.ERR_CODE}",
+    #                 ex=RankBuilderException(
+    #                     msg=f"{method}: {RankBuilderException.ERR_CODE}",
     #                     ex=validation.exception
     #                 )
     #             )

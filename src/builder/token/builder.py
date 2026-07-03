@@ -10,7 +10,7 @@ version: 1.0.1
 from __future__ import annotations
 
 from model.catalog import Formation, Persona
-from err import TokenBuildException
+from err import TokenBuilderException
 from integrity import Builder
 from microservice import RankService
 from model import CombatantToken, KingToken, PawnToken, Team, Token
@@ -76,7 +76,7 @@ class TokenBuilder(Builder[Token]):
         Returns:
             BuildResult[Token]
         Raises:
-            TokenBuildException
+            TokenBuilderException
         """
         method = f"{cls.__name__}.execute"
         
@@ -90,12 +90,12 @@ class TokenBuilder(Builder[Token]):
         if id_validation.is_failure:
             # Send the exception chain on failure.
             return BuildResult.failure(
-                TokenBuildException(
+                TokenBuilderException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    op=TokenBuildException.OP,
-                    msg=TokenBuildException.MSG,
-                    err_code=TokenBuildException.ERR_CODE,
+                    op=TokenBuilderException.OP,
+                    msg=TokenBuilderException.MSG,
+                    err_code=TokenBuilderException.ERR_CODE,
                     ex=id_validation.exception,
                 )
             )
@@ -104,12 +104,12 @@ class TokenBuilder(Builder[Token]):
         if owner_validation.is_failure:
             # Send the exception chain on failure.
             return BuildResult.failure(
-                TokenBuildException(
+                TokenBuilderException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    op=TokenBuildException.OP,
-                    msg=TokenBuildException.MSG,
-                    err_code=TokenBuildException.ERR_CODE,
+                    op=TokenBuilderException.OP,
+                    msg=TokenBuilderException.MSG,
+                    err_code=TokenBuilderException.ERR_CODE,
                     ex=owner_validation.exception,
                 )
             )
@@ -118,12 +118,12 @@ class TokenBuilder(Builder[Token]):
         if formation_validation.is_failure:
             # Send the exception chain on failure.
             return BuildResult.failure(
-                TokenBuildException(
+                TokenBuilderException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    op=TokenBuildException.OP,
-                    msg=TokenBuildException.MSG,
-                    err_code=TokenBuildException.ERR_CODE,
+                    op=TokenBuilderException.OP,
+                    msg=TokenBuilderException.MSG,
+                    err_code=TokenBuilderException.ERR_CODE,
                     ex=formation_validation.exception,
                 )
             )
@@ -171,7 +171,7 @@ class TokenBuilder(Builder[Token]):
         Returns:
             BuildResult[Token]
         Raises:
-            TokenBuildException
+            TokenBuilderException
         """
         method = "TokenBuilder._build_pawn"
         
@@ -204,8 +204,8 @@ class TokenBuilder(Builder[Token]):
         if rank_build_result.is_failure:
             # Send the exception chain on failure.
             return BuildResult.failure(
-                TokenBuildException(
-                    msg=f"{method}: {TokenBuildException.ERR_CODE}",
+                TokenBuilderException(
+                    msg=f"{method}: {TokenBuilderException.ERR_CODE}",
                     ex=rank_build_result.exception
                 )
             )
@@ -236,7 +236,7 @@ class TokenBuilder(Builder[Token]):
         Returns:
             BuildResult[Token]
         Raises:
-            TokenBuildException
+            TokenBuilderException
         """
         method = f"{cls.__name__}._create_bindings"
         
@@ -246,12 +246,12 @@ class TokenBuilder(Builder[Token]):
             # Handle the case that, the token is not successfully registered with its team.
             if insertion_result.is_failure:
                 return BuildResult.failure(
-                    TokenBuildException(
+                    TokenBuilderException(
                         cls_mthd=method,
                         cls_name=cls.__name__,
-                        op=TokenBuildException.OP,
-                        msg=TokenBuildException.MSG,
-                        err_code=TokenBuildException.ERR_CODE,
+                        op=TokenBuilderException.OP,
+                        msg=TokenBuilderException.MSG,
+                        err_code=TokenBuilderException.ERR_CODE,
                         ex=insertion_result.exception,
                     )
                 )

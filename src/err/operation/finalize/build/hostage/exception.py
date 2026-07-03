@@ -10,16 +10,16 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import FinalizeBuildException
+from err import FinalizeBuilderException
 
 
 __all__ = [
     # ======================# FINALIZING_HOSTAGE_BUILD_ #======================#
-    "FinalizeHostageBuildException",
+    "FinalizeHostageBuilderException",
 ]
 
 # ======================# FINALIZING_HOSTAGE_BUILD_ #======================#
-class FinalizeHostageBuildException(FinalizeBuildException):
+class FinalizeHostageBuilderException(FinalizeBuilderException):
     """
     Role:
         -   Error Tracing
@@ -40,7 +40,7 @@ class FinalizeHostageBuildException(FinalizeBuildException):
     Provides:
 
     Super Class:
-        FinalizeBuildException
+        FinalizeBuilderException
     """
     MSG = "Finalizing a HostageBuild failed."
     ERR_CODE = "FINALIZING_HOSTAGE_BUILD_"

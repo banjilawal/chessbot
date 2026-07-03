@@ -460,7 +460,7 @@ DEPENDENCIES:
 Requires base rollback_exception classes and constants from the kernel system:
 From `logic.system`:
   * Exception: `ChessException`, `ValidationException`, `NullException`,
-        `BuildException`.
+        `BuilderException`.
 
 CONTAINS:
 --------
@@ -541,7 +541,7 @@ See the list of exception in the `__all__` list following (e.g., `VectorExceptio
 #
 #
 # #=== ATTACK_EVENT BUILD EXCEPTION #======================#
-# class AttackEventBuilderException(AttackEventException, BuildException):
+# class AttackEventBuilderException(AttackEventException, BuilderException):
 #   """
 #   Indicate That  Coord could not be built. Wraps and re-raises errors that occurred
 #   during build.

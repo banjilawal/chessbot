@@ -10,16 +10,16 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import FinalizeBuildException
+from err import FinalizeBuilderException
 
 
 __all__ = [
-    # ======================# SCHEMA_FINALIZE_BUILD_FAILURE #======================#
-    "SchemaFinalizeBuildException",
+    # ======================# SCHEMA_FINALIZE_BUILDER_FAILURE #======================#
+    "SchemaFinalizeBuilderException",
 ]
 
-# ======================# SCHEMA_FINALIZE_BUILD_FAILURE #======================#
-class SchemaFinalizeBuildException(FinalizeBuildException):
+# ======================# SCHEMA_FINALIZE_BUILDER_FAILURE #======================#
+class SchemaFinalizeBuilderException(FinalizeBuilderException):
     """
     Role:
         -   Error Tracing
@@ -40,10 +40,10 @@ class SchemaFinalizeBuildException(FinalizeBuildException):
     Provides:
 
     Super Class:
-        FinalizeBuildException
+        FinalizeBuilderException
     """
     MSG = "Finalizing a SchemaBuild failed."
-    ERR_CODE = "SCHEMA_FINALIZE_BUILD_FAILURE"
+    ERR_CODE = "SCHEMA_FINALIZE_BUILDER_FAILURE"
     
     def __init__(
             self,

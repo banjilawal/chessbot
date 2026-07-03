@@ -6,22 +6,23 @@ Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
 """
+
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import BuildException
+from err import BuilderException
 
 
 __all__ = [
-    # ======================# ARENA_CONTEXT_BUILD_FAILURE #======================#
-    "ArenaContextBuildException",
+    # ======================# ARENA_CONTEXT_BUILDER_FAILURE #======================#
+    "ArenaContextBuilderException",
 ]
 
-from err import ContextBuildException
+from err import ContextBuilderException
 
 
-# ======================# ARENA_CONTEXT_BUILD_FAILURE #======================#
-class ArenaContextBuildException(ContextBuildException):
+# ======================# ARENA_CONTEXT_BUILDER_FAILURE #======================#
+class ArenaContextBuilderException(ContextBuilderException):
     """
     Role:
         -   Error Tracing
@@ -41,10 +42,10 @@ class ArenaContextBuildException(ContextBuildException):
     Provides:
 
     Super Class:
-        ContextBuildException
+        ContextBuilderException
     """
     MSG = "ArenaContext build failed."
-    ERR_CODE = "ARENA_CONTEXT_BUILD_FAILURE"
+    ERR_CODE = "ARENA_CONTEXT_BUILDER_FAILURE"
     
     def __init__(
             self,

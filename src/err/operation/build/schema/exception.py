@@ -10,16 +10,16 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import BuildException
+from err import BuilderException
 
 
 __all__ = [
-    # ======================# SCHEMA_BUILD_FAILURE #======================#
-    "SchemaBuildException",
+    # ======================# SCHEMA_BUILDER_FAILURE #======================#
+    "SchemaBuilderException",
 ]
 
-# ======================# SCHEMA_BUILD_FAILURE #======================#
-class SchemaBuildException(BuildException):
+# ======================# SCHEMA_BUILDER_FAILURE #======================#
+class SchemaBuilderException(BuilderException):
     """
     Role:
         -   Error Tracing
@@ -40,10 +40,10 @@ class SchemaBuildException(BuildException):
     Provides:
 
     Super Class:
-        BuildException
+        BuilderException
     """
     MSG = "Schema build failed."
-    ERR_CODE = "SCHEMA_BUILD_FAILURE"
+    ERR_CODE = "SCHEMA_BUILDER_FAILURE"
     
     def __init__(
             self,

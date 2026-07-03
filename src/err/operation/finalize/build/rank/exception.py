@@ -10,16 +10,16 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import FinalizeBuildException
+from err import FinalizeBuilderException
 
 
 __all__ = [
-    # ======================# FINALIZING_RANK_BUILD_FAILURE #======================#
-    "FinalizeRankBuildException",
+    # ======================# FINALIZING_RANK_BUILDER_FAILURE #======================#
+    "FinalizeRankBuilderException",
 ]
 
-# ======================# FINALIZING_RANK_BUILD_FAILURE #======================#
-class FinalizeRankBuildException(FinalizeBuildException):
+# ======================# FINALIZING_RANK_BUILDER_FAILURE #======================#
+class FinalizeRankBuilderException(FinalizeBuilderException):
     """
     Role:
         -   Error Tracing
@@ -40,10 +40,10 @@ class FinalizeRankBuildException(FinalizeBuildException):
     Provides:
 
     Super Class:
-        FinalizeBuildException
+        FinalizeBuilderException
     """
     MSG = "Finalizing a RankBuild failed."
-    ERR_CODE = "FINALIZING_RANK_BUILD_FAILURE"
+    ERR_CODE = "FINALIZING_RANK_BUILDER_FAILURE"
     
     def __init__(
             self,

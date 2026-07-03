@@ -10,16 +10,16 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import BuildException
+from err import BuilderException
 
 
 __all__ = [
-    # ======================# SQUARE_BUILD_FAILURE #======================#
-    "SquareBuildException",
+    # ======================# SQUARE_BUILDER_FAILURE #======================#
+    "SquareBuilderException",
 ]
 
-# ======================# SQUARE_BUILD_FAILURE #======================#
-class SquareBuildException(BuildException):
+# ======================# SQUARE_BUILDER_FAILURE #======================#
+class SquareBuilderException(BuilderException):
     """
     Role:
         -   Error Tracing
@@ -40,10 +40,10 @@ class SquareBuildException(BuildException):
     Provides:
 
     Super Class:
-        BuildException
+        BuilderException
     """
     MSG = "Square build failed."
-    ERR_CODE = "SQUARE_BUILD_FAILURE"
+    ERR_CODE = "SQUARE_BUILDER_FAILURE"
     
     def __init__(
             self,

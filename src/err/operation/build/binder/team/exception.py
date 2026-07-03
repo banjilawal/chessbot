@@ -6,22 +6,23 @@ Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
 """
+
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import BuildException
+from err import BuilderException
 
 
 __all__ = [
-    # ======================# TEAM_BINDER_BUILD_FAILURE #======================#
-    "TeamBinderBuildException",
+    # ======================# TEAM_BINDER_BUILDER_FAILURE #======================#
+    "TeamBinderBuilderException",
 ]
 
-from err import BinderBuildException
+from err import BinderBuilderException
 
 
-# ======================# TEAM_BINDER_BUILD_FAILURE #======================#
-class TeamBinderBuildException(BinderBuildException):
+# ======================# TEAM_BINDER_BUILDER_FAILURE #======================#
+class TeamBinderBuilderException(BinderBuilderException):
     """
     Role:
         -   Error Tracing
@@ -41,10 +42,10 @@ class TeamBinderBuildException(BinderBuildException):
     Provides:
 
     Super Class:
-        BinderBuildException
+        BinderBuilderException
     """
     MSG = "TeamBinder build failed."
-    ERR_CODE = "TEAM_BINDER_BUILD_FAILURE"
+    ERR_CODE = "TEAM_BINDER_BUILDER_FAILURE"
     
     def __init__(
             self,

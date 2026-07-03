@@ -14,7 +14,7 @@ from model.node import Node
 from graph.domain.graph import Graph
 from microservice.edge import Edge, EdgeBuilder, PushingEdgeException
 from system import BuildResult, InsertionResult, LoggingLevelRouter
-from math.span import AsymmetricEdgeBuildException, NodeEdgeHandlerException, SymmetricEdgeBuildException
+from math.span import AsymmetricEdgeBuilderException, NodeEdgeHandlerException, SymmetricEdgeBuilderException
 
 class NodeEdgeHandler:
     
@@ -37,7 +37,7 @@ class NodeEdgeHandler:
             BuildResult[Dict[str, Edge]]
             
         Raises:
-            SymmetricEdgeBuildException
+            SymmetricEdgeBuilderException
         """
         method = f"{cls.__class__.__name__}.build"
         
@@ -65,11 +65,11 @@ class NodeEdgeHandler:
                         cls_name=cls.__class__.__name__,
                         msg=NodeEdgeHandlerException.MSG,
                         err_code=NodeEdgeHandlerException.ERR_CODE,
-                        ex=SymmetricEdgeBuildException(
+                        ex=SymmetricEdgeBuilderException(
                             cls_mthd=method,
-                            op=SymmetricEdgeBuildException.OP,
-                            msg=SymmetricEdgeBuildException.MSG,
-                            err_code=SymmetricEdgeBuildException.ERR_CODE,
+                            op=SymmetricEdgeBuilderException.OP,
+                            msg=SymmetricEdgeBuilderException.MSG,
+                            err_code=SymmetricEdgeBuilderException.ERR_CODE,
                             ex=build_result.exception
                         )
                     )
@@ -96,7 +96,7 @@ class NodeEdgeHandler:
             BuildResult[List[Edge]]
 
         Raises:
-            AsymmetricEdgeBuildException
+            AsymmetricEdgeBuilderException
         """
         method = f"{cls.__class__.__name__}.build"
         
@@ -113,11 +113,11 @@ class NodeEdgeHandler:
                     cls_name=cls.__class__.__name__,
                     msg=NodeEdgeHandlerException.MSG,
                     err_code=NodeEdgeHandlerException.ERR_CODE,
-                    ex=AsymmetricEdgeBuildException(
+                    ex=AsymmetricEdgeBuilderException(
                         cls_mthd=method,
-                        op=AsymmetricEdgeBuildException.OP,
-                        msg=AsymmetricEdgeBuildException.MSG,
-                        err_code=AsymmetricEdgeBuildException.ERR_CODE,
+                        op=AsymmetricEdgeBuilderException.OP,
+                        msg=AsymmetricEdgeBuilderException.MSG,
+                        err_code=AsymmetricEdgeBuilderException.ERR_CODE,
                         ex=build_result.exception
                     )
                 )

@@ -10,7 +10,7 @@ version: 1.0.0
 from __future__ import annotations
 
 from model.node import Node, NodeService
-from graph.pair import PairBuilder, PairList, PairListBuildException, TreeDoesNotOwnRayException
+from graph.pair import PairBuilder, PairList, PairListBuilderException, TreeDoesNotOwnRayException
 from math.span import SquareRay, SquareRayService
 from system import BuildResult, Builder, LoggingLevelRouter
 
@@ -77,7 +77,7 @@ class PairListBuilder(Builder[PairList]):
             BuildResult[PairList]
 
         Raises:
-            PairListBuildException
+            PairListBuilderException
         """
         method = f"{cls.__class__.__name__}.build"
         
@@ -86,12 +86,12 @@ class PairListBuilder(Builder[PairList]):
         if not parent_validation_result.is_failure:
             # Send the exception chain on failure.
             BuildResult.failure(
-                PairListBuildException(
+                PairListBuilderException(
                     cls_mthd=method,
-                    op=PairListBuildException.OP,
-                    msg=PairListBuildException.MSG,
-                    err_code=PairListBuildException.ERR_CODE,
-                    mthd_rslt_type=PairListBuildException.MTHD_RSLT,
+                    op=PairListBuilderException.OP,
+                    msg=PairListBuilderException.MSG,
+                    err_code=PairListBuilderException.ERR_CODE,
+                    mthd_rslt_type=PairListBuilderException.MTHD_RSLT,
                     ex=parent_validation_result.exception,
                 )
             )
@@ -100,12 +100,12 @@ class PairListBuilder(Builder[PairList]):
         if square_ray_validation_result.is_failure:
             # Send the exception chain on failure.
             BuildResult.failure(
-                PairListBuildException(
+                PairListBuilderException(
                     cls_mthd=method,
-                    op=PairListBuildException.OP,
-                    msg=PairListBuildException.MSG,
-                    err_code=PairListBuildException.ERR_CODE,
-                    mthd_rslt_type=PairListBuildException.MTHD_RSLT,
+                    op=PairListBuilderException.OP,
+                    msg=PairListBuilderException.MSG,
+                    err_code=PairListBuilderException.ERR_CODE,
+                    mthd_rslt_type=PairListBuilderException.MTHD_RSLT,
                     ex=square_ray_validation_result.exception,
                 )
             )
@@ -113,15 +113,15 @@ class PairListBuilder(Builder[PairList]):
         if square_ray.origin != parent_node.square:
             # Send the exception chain on failure.
             BuildResult.failure(
-                PairListBuildException(
+                PairListBuilderException(
                     cls_mthd=method,
-                    op=PairListBuildException.OP,
-                    msg=PairListBuildException.MSG,
-                    err_code=PairListBuildException.ERR_CODE,
-                    mthd_rslt_type=PairListBuildException.MTHD_RSLT,
+                    op=PairListBuilderException.OP,
+                    msg=PairListBuilderException.MSG,
+                    err_code=PairListBuilderException.ERR_CODE,
+                    mthd_rslt_type=PairListBuilderException.MTHD_RSLT,
                     ex=TreeDoesNotOwnRayException(
-                        msg=PairListBuildException.MSG,
-                        err_code=PairListBuildException.ERR_CODE,
+                        msg=PairListBuilderException.MSG,
+                        err_code=PairListBuilderException.ERR_CODE,
                     )
                 )
             )
@@ -140,12 +140,12 @@ class PairListBuilder(Builder[PairList]):
             if build_result.is_failure:
                 # Send the exception chain on failure.
                 BuildResult.failure(
-                    PairListBuildException(
+                    PairListBuilderException(
                         cls_mthd=method,
-                        op=PairListBuildException.OP,
-                        msg=PairListBuildException.MSG,
-                        err_code=PairListBuildException.ERR_CODE,
-                        mthd_rslt_type=PairListBuildException.MTHD_RSLT,
+                        op=PairListBuilderException.OP,
+                        msg=PairListBuilderException.MSG,
+                        err_code=PairListBuilderException.ERR_CODE,
+                        mthd_rslt_type=PairListBuilderException.MTHD_RSLT,
                         ex=build_result.exception,
                     )
                 )

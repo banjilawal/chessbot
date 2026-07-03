@@ -71,7 +71,7 @@ class TeamBuilder(Builder[Team]):
                 - On failure: Exception.
                 - On success: Team in the payload.
         RAISES:
-            *   TeamBuildException
+            *   TeamBuilderException
         """
         method = "TeamBuilder.build"
         
@@ -89,8 +89,8 @@ class TeamBuilder(Builder[Team]):
         if build_params_validation_result.is_failure:
             # Send the exception chain on failure.
             return BuildResult.failure(
-                SquareBuildException(
-                    msg=f"{method}: {TeamBuildException.MSG}",
+                SquareBuilderException(
+                    msg=f"{method}: {TeamBuilderException.MSG}",
                     ex=build_params_validation_result.exception
                 )
             )
@@ -104,8 +104,8 @@ class TeamBuilder(Builder[Team]):
         if insertion_result.is_failure:
             # If the push failed return the exception chain.
             return BuildResult.failure(
-                TeamBuildException(
-                    msg=f"{method}: {TeamBuildException.ERR_CODE}", ex=insertion_result.exception
+                TeamBuilderException(
+                    msg=f"{method}: {TeamBuilderException.ERR_CODE}", ex=insertion_result.exception
                 )
             )
         # Put the team in the board.
@@ -113,8 +113,8 @@ class TeamBuilder(Builder[Team]):
         if insertion_result.is_failure:
             # If board entry fails return the exception chain.
             return BuildResult.failure(
-                TeamBuildException(
-                    msg=f"{method}: {TeamBuildException.ERR_CODE}", ex=owner_validation.exception
+                TeamBuilderException(
+                    msg=f"{method}: {TeamBuilderException.ERR_CODE}", ex=owner_validation.exception
                 )
             )
         # After the team is registered with its owner and entered the board send it in the BuildResult.
@@ -195,7 +195,7 @@ from typing import cast
 from logic.board import Board, BoardService
 from logic.coord import Coord, CoordService
 from logic.square import (
-    Square, SquareBuildException, SquareCollisionAnalysis
+    Square, SquareBuilderException, SquareCollisionAnalysis
 )
 from system import (
     Builder, BuildResult, IdFactory, IdentityService, InsertionResult, InvariantBreachException, LoggingLevelRouter,
@@ -275,7 +275,7 @@ class SquareBuilder(Builder[Square]):
                     - On failure: Exception.
                     - On success: Square in the payload.
         Raises:
-            *   SquareBuildException
+            *   SquareBuilderException
         """
         method = "SquareBuilder.build"
         
@@ -292,8 +292,8 @@ class SquareBuilder(Builder[Square]):
         if build_params_validation_result.is_failure:
             # Send the exception chain on failure.
             return BuildResult.failure(
-                SquareBuildException(
-                    msg=f"{method}: {SquareBuildException.MSG}",
+                SquareBuilderException(
+                    msg=f"{method}: {SquareBuilderException.MSG}",
                     ex=build_params_validation_result.exception
                 )
             )
@@ -307,8 +307,8 @@ class SquareBuilder(Builder[Square]):
         if collision_detection_result.is_failure:
             # Send the exception chain on failure.
             return BuildResult.failure(
-                SquareBuildException(
-                    msg=f"{method}: {SquareBuildException.MSG}",
+                SquareBuilderException(
+                    msg=f"{method}: {SquareBuilderException.MSG}",
                     ex=collision_detection_result.exception
                 )
             )
@@ -325,8 +325,8 @@ class SquareBuilder(Builder[Square]):
         if insertion_result.is_failure:
             # Send the exception chain on failure.
             return BuildResult.failure(
-                SquareBuildException(
-                    msg=f"{method}: {SquareBuildException.MSG}",
+                SquareBuilderException(
+                    msg=f"{method}: {SquareBuilderException.MSG}",
                     ex=insertion_result.exception
                 )
             )

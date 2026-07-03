@@ -13,11 +13,11 @@ from typing import Any, Optional
 from err import FinalizationException
 
 __all__ = [
-    # ======================# FINALIZE_BUILD_FAILURE #======================#
-    "FinalizeBuildException",
+    # ======================# FINALIZE_BUILDER_FAILURE #======================#
+    "FinalizeBuilderException",
 ]
-# ======================# FINALIZE_BUILD_FAILURE #======================#
-class FinalizeBuildException(FinalizationException):
+# ======================# FINALIZE_BUILDER_FAILURE #======================#
+class FinalizeBuilderException(FinalizationException):
     """
     Role:
         -   Error Tracing
@@ -40,7 +40,7 @@ class FinalizeBuildException(FinalizationException):
         FinalizeException
     """
     MSG = "Finalizing a Build failed."
-    ERR_CODE = "FINALIZE_BUILD_FAILURE"
+    ERR_CODE = "FINALIZE_BUILDER_FAILURE"
     
     def __init__(
             self,

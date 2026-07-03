@@ -65,7 +65,7 @@ class VectorAssemblyPrimer(AssemblyPrimer[Vector]):
         Returns:
             ValidationResult[VectorBlueprint]
         Raises:
-            VectorBuildException
+            VectorBuilderException
         """
         method = f"{cls.__class__.__name__}.execute"
         

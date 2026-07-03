@@ -6,18 +6,19 @@ Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
 """
+
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import FinalizeContextBuildException
+from err import FinalizeContextBuilderException
 
 __all__ = [
-    # ======================# FINALIZING_PERSONA_CONTEXT_BUILD_FAILURE #======================#
-    "FinalizePersonaContextBuildException",
+    # ======================# FINALIZING_PERSONA_CONTEXT_BUILDER_FAILURE #======================#
+    "FinalizePersonaContextBuilderException",
 ]
 
-# ======================# FINALIZING_PERSONA_CONTEXT_BUILD_FAILURE #======================#
-class FinalizePersonaContextBuildException(FinalizeContextBuildException):
+# ======================# FINALIZING_PERSONA_CONTEXT_BUILDER_FAILURE #======================#
+class FinalizePersonaContextBuilderException(FinalizeContextBuilderException):
     """
     Role:
         -   Error Tracing
@@ -38,10 +39,10 @@ class FinalizePersonaContextBuildException(FinalizeContextBuildException):
     Provides:
 
     Super Class:
-        ContextFinalizeBuildException
+        ContextFinalizeBuilderException
     """
     MSG = "Finalizing a PersonaContextBuild failed."
-    ERR_CODE = "FINALIZING_PERSONA_CONTEXT_BUILD_FAILURE"
+    ERR_CODE = "FINALIZING_PERSONA_CONTEXT_BUILDER_FAILURE"
     
     def __init__(
             self,

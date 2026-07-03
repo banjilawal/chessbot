@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import List
 
 from model.math.coord import Coord
-from math.span.square import SquareSpanBuildException
+from math.span.square import SquareSpanBuilderException
 from geometry.square import Square, SquareContext, SquareStackService
 from math.span import CoordRay, CoordSpan, SquareRay, SquareSpan
 from system import BuildResult, Builder, ComputationResult, LoggingLevelRouter, SearchResult
@@ -32,7 +32,7 @@ class SquareSpanBuilder(Builder[SquareSpan]):
             BuildResult[SquareSpan]
             
         Raises:
-            SquareSpanBuildException
+            SquareSpanBuilderException
         """
         method = f"{cls.__class__.__name__}.build"
         
@@ -45,12 +45,12 @@ class SquareSpanBuilder(Builder[SquareSpan]):
         if square_span_origin_result.is_failure:
             # Send the exception chain on failure.
             SearchResult.failure(
-                SquareSpanBuildException(
+                SquareSpanBuilderException(
                     cls_mthd=method,
-                    op=SquareSpanBuildException.OP,
-                    msg=SquareSpanBuildException.MSG,
-                    err_code=SquareSpanBuildException.ERR_CODE,
-                    mthd_rslt_type=SquareSpanBuildException.MTHD_RSLT,
+                    op=SquareSpanBuilderException.OP,
+                    msg=SquareSpanBuilderException.MSG,
+                    err_code=SquareSpanBuilderException.ERR_CODE,
+                    mthd_rslt_type=SquareSpanBuilderException.MTHD_RSLT,
                     ex=square_span_origin_result.exception,
                 )
             )
@@ -79,7 +79,7 @@ class SquareSpanBuilder(Builder[SquareSpan]):
             BuildResult[SquareSpan]
             
         Raises:
-            SquareSpanBuildException
+            SquareSpanBuilderException
         """
         method = f"{cls.__class__.__name__}.square_span_build_helper"
         
@@ -96,12 +96,12 @@ class SquareSpanBuilder(Builder[SquareSpan]):
             if derivation_result.is_failure:
                 # Send the exception chain on failure.
                 BuildResult.failure(
-                    SquareSpanBuildException(
+                    SquareSpanBuilderException(
                         cls_mthd=method,
-                        op=SquareSpanBuildException.OP,
-                        msg=SquareSpanBuildException.MSG,
-                        err_code=SquareSpanBuildException.ERR_CODE,
-                        mthd_rslt_type=SquareSpanBuildException.MTHD_RSLT,
+                        op=SquareSpanBuilderException.OP,
+                        msg=SquareSpanBuilderException.MSG,
+                        err_code=SquareSpanBuilderException.ERR_CODE,
+                        mthd_rslt_type=SquareSpanBuilderException.MTHD_RSLT,
                         ex=derivation_result.exception,
                     )
                 )
@@ -129,7 +129,7 @@ class SquareSpanBuilder(Builder[SquareSpan]):
             BuildResult[SquareRay]
         
         Raises:
-              SquareSpanBuildException
+              SquareSpanBuilderException
         """
         method = f"{cls.__class__.__name__}._derive_square_ray"
         
@@ -142,12 +142,12 @@ class SquareSpanBuilder(Builder[SquareSpan]):
         if square_ray_origin_result.is_failure:
             # Send the exception chain on failure.
             SearchResult.failure(
-                SquareSpanBuildException(
+                SquareSpanBuilderException(
                     cls_mthd=method,
-                    op=SquareSpanBuildException.OP,
-                    msg=SquareSpanBuildException.MSG,
-                    err_code=SquareSpanBuildException.ERR_CODE,
-                    mthd_rslt_type=SquareSpanBuildException.MTHD_RSLT,
+                    op=SquareSpanBuilderException.OP,
+                    msg=SquareSpanBuilderException.MSG,
+                    err_code=SquareSpanBuilderException.ERR_CODE,
+                    mthd_rslt_type=SquareSpanBuilderException.MTHD_RSLT,
                     ex=square_ray_origin_result.exception,
                 )
             )
@@ -164,12 +164,12 @@ class SquareSpanBuilder(Builder[SquareSpan]):
             if square_search_result.is_failure:
                 # Send the exception chain on failure.
                 SearchResult.failure(
-                    SquareSpanBuildException(
+                    SquareSpanBuilderException(
                         cls_mthd=method,
-                        op=SquareSpanBuildException.OP,
-                        msg=SquareSpanBuildException.MSG,
-                        err_code=SquareSpanBuildException.ERR_CODE,
-                        mthd_rslt_type=SquareSpanBuildException.MTHD_RSLT,
+                        op=SquareSpanBuilderException.OP,
+                        msg=SquareSpanBuilderException.MSG,
+                        err_code=SquareSpanBuilderException.ERR_CODE,
+                        mthd_rslt_type=SquareSpanBuilderException.MTHD_RSLT,
                         ex=square_search_result.exception,
                     )
                 )
@@ -199,7 +199,7 @@ class SquareSpanBuilder(Builder[SquareSpan]):
             
         Raises:
             SquareNotFoundException
-            SquareSpanBuildException
+            SquareSpanBuilderException
         """
         method = f"{cls.__class__.__name__}.square_from_coord"
         
@@ -208,12 +208,12 @@ class SquareSpanBuilder(Builder[SquareSpan]):
         if search_result.is_failure:
             # Send the exception chain on failure.
             SearchResult.failure(
-                SquareSpanBuildException(
+                SquareSpanBuilderException(
                     cls_mthd=method,
-                    op=SquareSpanBuildException.OP,
-                    msg=SquareSpanBuildException.MSG,
-                    err_code=SquareSpanBuildException.ERR_CODE,
-                    mthd_rslt_type=SquareSpanBuildException.MTHD_RSLT,
+                    op=SquareSpanBuilderException.OP,
+                    msg=SquareSpanBuilderException.MSG,
+                    err_code=SquareSpanBuilderException.ERR_CODE,
+                    mthd_rslt_type=SquareSpanBuilderException.MTHD_RSLT,
                     ex=search_result.exception,
                 )
             )

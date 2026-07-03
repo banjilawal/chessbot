@@ -10,16 +10,16 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import BuildException
+from err import BuilderException
 
 
 __all__ = [
-    # ======================# SCALAR_BUILD_FAILURE #======================#
-    "ScalarBuildException",
+    # ======================# SCALAR_BUILDER_FAILURE #======================#
+    "ScalarBuilderException",
 ]
 
-# ======================# SCALAR_BUILD_FAILURE #======================#
-class ScalarBuildException(BuildException):
+# ======================# SCALAR_BUILDER_FAILURE #======================#
+class ScalarBuilderException(BuilderException):
     """
     Role:
         -   Error Tracing
@@ -40,10 +40,10 @@ class ScalarBuildException(BuildException):
     Provides:
 
     Super Class:
-        BuildException
+        BuilderException
     """
     MSG = "Scalar build failed."
-    ERR_CODE = "SCALAR_BUILD_FAILURE"
+    ERR_CODE = "SCALAR_BUILDER_FAILURE"
     
     def __init__(
             self,

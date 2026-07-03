@@ -6,22 +6,23 @@ Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
 """
+
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import BuildException
+from err import BuilderException
 
 
 __all__ = [
-    # ======================# FORMATION_CONTEXT_BUILD_FAILURE #======================#
-    "FormationContextBuildException",
+    # ======================# FORMATION_CONTEXT_BUILDER_FAILURE #======================#
+    "FormationContextBuilderException",
 ]
 
-from err import ContextBuildException
+from err import ContextBuilderException
 
 
-# ======================# FORMATION_CONTEXT_BUILD_FAILURE #======================#
-class FormationContextBuildException(ContextBuildException):
+# ======================# FORMATION_CONTEXT_BUILDER_FAILURE #======================#
+class FormationContextBuilderException(ContextBuilderException):
     """
     Role:
         -   Error Tracing
@@ -41,10 +42,10 @@ class FormationContextBuildException(ContextBuildException):
     Provides:
 
     Super Class:
-        ContextBuildException
+        ContextBuilderException
     """
     MSG = "FormationContext build failed."
-    ERR_CODE = "FORMATION_CONTEXT_BUILD_FAILURE"
+    ERR_CODE = "FORMATION_CONTEXT_BUILDER_FAILURE"
     
     def __init__(
             self,

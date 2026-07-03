@@ -6,22 +6,23 @@ Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
 """
+
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import BuildException
+from err import BuilderException
 
 
 __all__ = [
-    # ======================# EDGE_CONTEXT_BUILD_FAILURE #======================#
-    "EdgeContextBuildException",
+    # ======================# EDGE_CONTEXT_BUILDER_FAILURE #======================#
+    "EdgeContextBuilderException",
 ]
 
-from err import ContextBuildException
+from err import ContextBuilderException
 
 
-# ======================# EDGE_CONTEXT_BUILD_FAILURE #======================#
-class EdgeContextBuildException(ContextBuildException):
+# ======================# EDGE_CONTEXT_BUILDER_FAILURE #======================#
+class EdgeContextBuilderException(ContextBuilderException):
     """
     Role:
         -   Error Tracing
@@ -41,10 +42,10 @@ class EdgeContextBuildException(ContextBuildException):
     Provides:
 
     Super Class:
-        ContextBuildException
+        ContextBuilderException
     """
     MSG = "EdgeContext build failed."
-    ERR_CODE = "EDGE_CONTEXT_BUILD_FAILURE"
+    ERR_CODE = "EDGE_CONTEXT_BUILDER_FAILURE"
     
     def __init__(
             self,

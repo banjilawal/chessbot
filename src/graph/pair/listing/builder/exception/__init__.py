@@ -13,4 +13,4 @@ version: 1.0.0
 
 # Modules
 from .different import TreeDoesNotOwnRayException
-from .work import PairListBuildException
+from .work import PairListBuilderException

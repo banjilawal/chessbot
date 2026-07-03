@@ -10,16 +10,16 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import BuildException
+from err import BuilderException
 
 
 __all__ = [
-    # ======================# TOKEN_BUILD_FAILURE #======================#
-    "TokenBuildException",
+    # ======================# TOKEN_BUILDER_FAILURE #======================#
+    "TokenBuilderException",
 ]
 
-# ======================# TOKEN_BUILD_FAILURE #======================#
-class TokenBuildException(BuildException):
+# ======================# TOKEN_BUILDER_FAILURE #======================#
+class TokenBuilderException(BuilderException):
     """
     Role:
         -   Error Tracing
@@ -40,10 +40,10 @@ class TokenBuildException(BuildException):
     Provides:
 
     Super Class:
-        BuildException
+        BuilderException
     """
     MSG = "Token build failed."
-    ERR_CODE = "TOKEN_BUILD_FAILURE"
+    ERR_CODE = "TOKEN_BUILDER_FAILURE"
     
     def __init__(
             self,

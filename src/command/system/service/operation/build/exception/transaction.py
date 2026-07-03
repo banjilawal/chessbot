@@ -10,15 +10,15 @@ from __future__ import annotations
 from typing import Optional
 
 __all__ = [
-    # ======================# COMMAND_BUILD_FAILURE #======================#
-    "CommandBuildException",
+    # ======================# COMMAND_BUILDER_FAILURE #======================#
+    "CommandBuilderException",
 ]
 
-from system import BuildException
+from system import BuilderException
 
 
-# ======================# COMMAND_BUILD_FAILURE #======================#
-class CommandBuildException(BuildException):
+# ======================# COMMAND_BUILDER_FAILURE #======================#
+class CommandBuilderException(BuilderException):
     """
     Role:Worker Method Identifier, Exception Chain Layer 1, Exception Messaging
 
@@ -26,7 +26,7 @@ class CommandBuildException(BuildException):
     1.  Indicate that an error prevented CommandBuilder from returning a product.
 
         Super Class:
-            *   BuildException
+            *   BuilderException
 
         # PROVIDES:
         None
@@ -35,7 +35,7 @@ class CommandBuildException(BuildException):
         None
 
         # INHERITED ATTRIBUTES:
-            *   See BuildException class for inherited attributes.
+            *   See BuilderException class for inherited attributes.
 
         Attributes:
             *   err_code (str)
@@ -51,7 +51,7 @@ class CommandBuildException(BuildException):
         # INHERITED METHODS:
             *   See WorkException class for inherited methods.
         """
-    ERR_CODE = "COMMAND_BUILD_FAILURE"
+    ERR_CODE = "COMMAND_BUILDER_FAILURE"
     MSG = "CommandBuilder returned an error."
     MTHD = "build"
     OP = "Build"

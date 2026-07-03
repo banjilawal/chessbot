@@ -10,16 +10,16 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import FinalizeBuildException
+from err import FinalizeBuilderException
 
 
 __all__ = [
-    # ======================# FINALIZING_CONTEXT_BUILD_FAILURE #======================#
-    "FinalizeContextBuildException",
+    # ======================# FINALIZING_CONTEXT_BUILDER_FAILURE #======================#
+    "FinalizeContextBuilderException",
 ]
 
-# ======================# FINALIZING_CONTEXT_BUILD_FAILURE #======================#
-class FinalizeContextBuildException(FinalizeBuildException):
+# ======================# FINALIZING_CONTEXT_BUILDER_FAILURE #======================#
+class FinalizeContextBuilderException(FinalizeBuilderException):
     """
     Role:
         -   Error Tracing
@@ -40,10 +40,10 @@ class FinalizeContextBuildException(FinalizeBuildException):
     Provides:
 
     Super Class:
-        FinalizeBuildException
+        FinalizeBuilderException
     """
     MSG = "Finalizing a context's attribute"
-    ERR_CODE = "FINALIZING_CONTEXT_BUILD_FAILURE"
+    ERR_CODE = "FINALIZING_CONTEXT_BUILDER_FAILURE"
     
     def __init__(
             self,

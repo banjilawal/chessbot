@@ -6,18 +6,19 @@ Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
 """
+
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import FinalizeContextBuildException
+from err import FinalizeContextBuilderException
 
 __all__ = [
     # ======================# FINALIZING_COORD_CONTEXT_BUILD_ #======================#
-    "FinalizeCoordContextBuildException",
+    "FinalizeCoordContextBuilderException",
 ]
 
 # ======================# FINALIZING_COORD_CONTEXT_BUILD_ #======================#
-class FinalizeCoordContextBuildException(FinalizeContextBuildException):
+class FinalizeCoordContextBuilderException(FinalizeContextBuilderException):
     """
     Role:
         -   Error Tracing
@@ -38,7 +39,7 @@ class FinalizeCoordContextBuildException(FinalizeContextBuildException):
     Provides:
 
     Super Class:
-        ContextFinalizeBuildException
+        ContextFinalizeBuilderException
     """
     MSG = "Finalizing a CoordContextBuild failed."
     ERR_CODE = "FINALIZING_COORD_CONTEXT_BUILD_"

@@ -6,22 +6,23 @@ Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
 """
+
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import BuildException
+from err import BuilderException
 
 
 __all__ = [
-    # ======================# SQUARE_CONTEXT_BUILD_FAILURE #======================#
-    "SquareContextBuildException",
+    # ======================# SQUARE_CONTEXT_BUILDER_FAILURE #======================#
+    "SquareContextBuilderException",
 ]
 
-from err import ContextBuildException
+from err import ContextBuilderException
 
 
-# ======================# SQUARE_CONTEXT_BUILD_FAILURE #======================#
-class SquareContextBuildException(ContextBuildException):
+# ======================# SQUARE_CONTEXT_BUILDER_FAILURE #======================#
+class SquareContextBuilderException(ContextBuilderException):
     """
     Role:
         -   Error Tracing
@@ -41,10 +42,10 @@ class SquareContextBuildException(ContextBuildException):
     Provides:
 
     Super Class:
-        ContextBuildException
+        ContextBuilderException
     """
     MSG = "SquareContext build failed."
-    ERR_CODE = "SQUARE_CONTEXT_BUILD_FAILURE"
+    ERR_CODE = "SQUARE_CONTEXT_BUILDER_FAILURE"
     
     def __init__(
             self,

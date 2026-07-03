@@ -6,22 +6,23 @@ Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
 """
+
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import BuildException
+from err import BuilderException
 
 
 __all__ = [
-    # ======================# BOARD_CONTEXT_BUILD_FAILURE #======================#
-    "BoardContextBuildException",
+    # ======================# BOARD_CONTEXT_BUILDER_FAILURE #======================#
+    "BoardContextBuilderException",
 ]
 
-from err import ContextBuildException
+from err import ContextBuilderException
 
 
-# ======================# BOARD_CONTEXT_BUILD_FAILURE #======================#
-class BoardContextBuildException(ContextBuildException):
+# ======================# BOARD_CONTEXT_BUILDER_FAILURE #======================#
+class BoardContextBuilderException(ContextBuilderException):
     """
     Role:
         -   Error Tracing
@@ -41,10 +42,10 @@ class BoardContextBuildException(ContextBuildException):
     Provides:
 
     Super Class:
-        ContextBuildException
+        ContextBuilderException
     """
     MSG = "BoardContext build failed."
-    ERR_CODE = "BOARD_CONTEXT_BUILD_FAILURE"
+    ERR_CODE = "BOARD_CONTEXT_BUILDER_FAILURE"
     
     def __init__(
             self,

@@ -8,7 +8,7 @@ version: 1.0.0
 """
 
 
-from graph.domain import DomainOrigin, DomainOriginBuildException
+from graph.domain import DomainOrigin, DomainOriginBuilderException
 from logic.enviroment import TurnScene, TurnSceneValidator
 from system import Builder, BuildResult, LoggingLevelRouter
 
@@ -67,8 +67,8 @@ class DomainOriginBuilder(Builder[DomainOrigin]):
         
         except Exception as e:
             return BuildResult.failure(
-                DomainOriginBuildException(
-                    f"{method}: {DomainOriginBuildException.MSG}",
+                DomainOriginBuilderException(
+                    f"{method}: {DomainOriginBuilderException.MSG}",
                     e
                 )
             )

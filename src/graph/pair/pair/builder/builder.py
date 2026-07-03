@@ -12,7 +12,7 @@ from __future__ import annotations
 from model.node import Node, NodeService
 from logic.square import Square, SquareValidator
 from system import BuildResult, Builder, LoggingLevelRouter
-from graph.pair import HeadTailSquareException, Pair, PairBuildException
+from graph.pair import HeadTailSquareException, Pair, PairBuilderException
 
 class PairBuilder(Builder[Pair]):
     """
@@ -67,7 +67,7 @@ class PairBuilder(Builder[Pair]):
             BuildResult[Pair]
 
         Raises:
-            PairBuildException
+            PairBuilderException
         """
         method = f"{cls.__class__.__name__}._build"
         
@@ -76,11 +76,11 @@ class PairBuilder(Builder[Pair]):
         if node_validation_result.is_failure:
             # Return the exception chain on failure
             return BuildResult.failure(
-                PairBuildException(
+                PairBuilderException(
                     cls_mthd=method,
-                    op=PairBuildException.OP,
-                    msg=PairBuildException.MSG,
-                    err_code=PairBuildException.ERR_CODE,
+                    op=PairBuilderException.OP,
+                    msg=PairBuilderException.MSG,
+                    err_code=PairBuilderException.ERR_CODE,
                     ex=node_validation_result.exception
                 )
             )
@@ -89,11 +89,11 @@ class PairBuilder(Builder[Pair]):
         if tail_square_validation_result.is_failure:
             # Return the exception chain on failure
             return BuildResult.failure(
-                PairBuildException(
+                PairBuilderException(
                     cls_mthd=method,
-                    op=PairBuildException.OP,
-                    msg=PairBuildException.MSG,
-                    err_code=PairBuildException.ERR_CODE,
+                    op=PairBuilderException.OP,
+                    msg=PairBuilderException.MSG,
+                    err_code=PairBuilderException.ERR_CODE,
                     ex=tail_square_validation_result.exception
                 )
             )
@@ -101,11 +101,11 @@ class PairBuilder(Builder[Pair]):
         if tail_square == head.square:
             # Return the exception chain on failure
             return BuildResult.failure(
-                PairBuildException(
+                PairBuilderException(
                     cls_mthd=method,
-                    op=PairBuildException.OP,
-                    msg=PairBuildException.MSG,
-                    err_code=PairBuildException.ERR_CODE,
+                    op=PairBuilderException.OP,
+                    msg=PairBuilderException.MSG,
+                    err_code=PairBuilderException.ERR_CODE,
                     ex=HeadTailSquareException(
                         var="tail_square",
                         val=tail_square.name,
@@ -123,11 +123,11 @@ class PairBuilder(Builder[Pair]):
         if tail_node_build_result.is_failure:
             # Return the exception chain on failure
             return BuildResult.failure(
-                PairBuildException(
+                PairBuilderException(
                     cls_mthd=method,
-                    op=PairBuildException.OP,
-                    msg=PairBuildException.MSG,
-                    err_code=PairBuildException.ERR_CODE,
+                    op=PairBuilderException.OP,
+                    msg=PairBuilderException.MSG,
+                    err_code=PairBuilderException.ERR_CODE,
                     ex=tail_node_build_result.exception
                 )
             )

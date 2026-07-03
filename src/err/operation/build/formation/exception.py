@@ -10,16 +10,16 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import BuildException
+from err import BuilderException
 
 
 __all__ = [
-    # ======================# FORMATION_BUILD_FAILURE #======================#
-    "FormationBuildException",
+    # ======================# FORMATION_BUILDER_FAILURE #======================#
+    "FormationBuilderException",
 ]
 
-# ======================# FORMATION_BUILD_FAILURE #======================#
-class FormationBuildException(BuildException):
+# ======================# FORMATION_BUILDER_FAILURE #======================#
+class FormationBuilderException(BuilderException):
     """
     Role:
         -   Error Tracing
@@ -40,10 +40,10 @@ class FormationBuildException(BuildException):
     Provides:
 
     Super Class:
-        BuildException
+        BuilderException
     """
     MSG = "Formation build failed."
-    ERR_CODE = "FORMATION_BUILD_FAILURE"
+    ERR_CODE = "FORMATION_BUILDER_FAILURE"
     
     def __init__(
             self,

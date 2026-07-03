@@ -11,4 +11,4 @@ Created: 2026-02-24
 # Packages
 
 # Modules
-from .transaction import CommandBuildException
+from .transaction import CommandBuilderException

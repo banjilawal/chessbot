@@ -33,7 +33,7 @@ Requires base rollback_exception classes and constants from the kernel system:
 From `logic.system`:
   * Constants: `NUMBER_OF_ROWS`, `NUMBER_OF_COLUMNS`
   * Exception: `ChessException`, `ValidationException`, `NullException`,
-        `BuildException`.
+        `BuilderException`.
 
 CONTAINS:
 --------
@@ -42,7 +42,7 @@ See the list of exception in the `__all__` list following (e.g., `CoordException
 """
 
 from system import (
-    EventException, NullException, BuildException, TransactionException, ValidationException,
+    EventException, NullException, BuilderException, TransactionException, ValidationException,
     ResourceException, InconsistencyException
 )
 
@@ -69,7 +69,7 @@ class NullTravelEventException(TravelEventException, NullException):
 
 
 #====================== TravelEvent BUILD EXCEPTION #======================#
-class TravelEventBuildException(TravelEventException, BuildException):
+class TravelEventBuilderException(TravelEventException, BuilderException):
   """
   Indicate That  TravelEvent could not be built. Wraps and re-raises errors that occurred
   during build.
@@ -77,7 +77,7 @@ class TravelEventBuildException(TravelEventException, BuildException):
   ERR_CODE = "TRAVEL_EVENT_BUILD_FAILED"
   MSG = "TravelEvent build failed."
 
-class OccupationEventBuildException(TravelEventBuildException):
+class OccupationEventBuilderException(TravelEventBuilderException):
   """
   Indicate That  OldOccupationEventValidator could not be built. Wraps and re-raises errors that occurred
   during build.

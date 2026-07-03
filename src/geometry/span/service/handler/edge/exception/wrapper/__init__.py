@@ -13,5 +13,5 @@ version: 1.0.0
 
 # Modules
 from .push import EdgePairInsertionException
-from .symmetric import SymmetricEdgeBuildException
-from .asymmetric import AsymmetricEdgeBuildException
+from .symmetric import SymmetricEdgeBuilderException
+from .asymmetric import AsymmetricEdgeBuilderException

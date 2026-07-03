@@ -10,7 +10,7 @@ version: 1.0.1
 from __future__ import annotations
 
 from controller import WorkerRegistryController
-from err import FinalizeTokenBuildException
+from err import FinalizeTokenBuilderException
 from model import Token
 from operation import AssemblyFinalizer, TokenAssembler
 from result import BuildResult
@@ -30,11 +30,11 @@ class TokenAssemblyFinalizer(AssemblyFinalizer[Token]):
             # Handle the case that, the token is not successfully registered with its team.
             if insertion_result.is_failure:
                 return BuildResult.failure(
-                    FinalizeTokenBuildException(
+                    FinalizeTokenBuilderException(
                         cls_mthd=method,
                         cls_name=cls.__name__,
-                        msg=FinalizeTokenBuildException.MSG,
-                        err_code=FinalizeTokenBuildException.ERR_CODE,
+                        msg=FinalizeTokenBuilderException.MSG,
+                        err_code=FinalizeTokenBuilderException.ERR_CODE,
                         ex=insertion_result.exception,
                     )
                 )

@@ -6,22 +6,23 @@ Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
 """
+
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import BuildException
+from err import BuilderException
 
 
 __all__ = [
-    # ======================# BOARD_BINDER_BUILD_FAILURE #======================#
-    "BoardBinderBuildException",
+    # ======================# BOARD_BINDER_BUILDER_FAILURE #======================#
+    "BoardBinderBuilderException",
 ]
 
-from err import BinderBuildException
+from err import BinderBuilderException
 
 
-# ======================# BOARD_BINDER_BUILD_FAILURE #======================#
-class BoardBinderBuildException(BinderBuildException):
+# ======================# BOARD_BINDER_BUILDER_FAILURE #======================#
+class BoardBinderBuilderException(BinderBuilderException):
     """
     Role:
         -   Error Tracing
@@ -41,10 +42,10 @@ class BoardBinderBuildException(BinderBuildException):
     Provides:
 
     Super Class:
-        BinderBuildException
+        BinderBuilderException
     """
     MSG = "BoardBinder build failed."
-    ERR_CODE = "BOARD_BINDER_BUILD_FAILURE"
+    ERR_CODE = "BOARD_BINDER_BUILDER_FAILURE"
     
     def __init__(
             self,

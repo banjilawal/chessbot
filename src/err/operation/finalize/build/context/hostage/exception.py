@@ -6,18 +6,19 @@ Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
 """
+
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import FinalizeContextBuildException
+from err import FinalizeContextBuilderException
 
 __all__ = [
-    # ======================# FINALIZING_HOSTAGE_CONTEXT_BUILD_FAILURE #======================#
-    "FinalizeHostageContextBuildException",
+    # ======================# FINALIZING_HOSTAGE_CONTEXT_BUILDER_FAILURE #======================#
+    "FinalizeHostageContextBuilderException",
 ]
 
-# ======================# FINALIZING_HOSTAGE_CONTEXT_BUILD_FAILURE #======================#
-class FinalizeHostageContextBuildException(FinalizeContextBuildException):
+# ======================# FINALIZING_HOSTAGE_CONTEXT_BUILDER_FAILURE #======================#
+class FinalizeHostageContextBuilderException(FinalizeContextBuilderException):
     """
     Role:
         -   Error Tracing
@@ -38,10 +39,10 @@ class FinalizeHostageContextBuildException(FinalizeContextBuildException):
     Provides:
 
     Super Class:
-        ContextFinalizeBuildException
+        ContextFinalizeBuilderException
     """
     MSG = "Finalizing a HostageContextBuild failed."
-    ERR_CODE = "FINALIZING_HOSTAGE_CONTEXT_BUILD_FAILURE"
+    ERR_CODE = "FINALIZING_HOSTAGE_CONTEXT_BUILDER_FAILURE"
     
     def __init__(
             self,

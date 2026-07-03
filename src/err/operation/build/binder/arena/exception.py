@@ -6,22 +6,23 @@ Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
 """
+
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import BuildException
+from err import BuilderException
 
 
 __all__ = [
-    # ======================# ARENA_BINDER_BUILD_FAILURE #======================#
-    "ArenaBinderBuildException",
+    # ======================# ARENA_BINDER_BUILDER_FAILURE #======================#
+    "ArenaBinderBuilderException",
 ]
 
-from err import BinderBuildException
+from err import BinderBuilderException
 
 
-# ======================# ARENA_BINDER_BUILD_FAILURE #======================#
-class ArenaBinderBuildException(BinderBuildException):
+# ======================# ARENA_BINDER_BUILDER_FAILURE #======================#
+class ArenaBinderBuilderException(BinderBuilderException):
     """
     Role:
         -   Error Tracing
@@ -41,10 +42,10 @@ class ArenaBinderBuildException(BinderBuildException):
     Provides:
 
     Super Class:
-        BinderBuildException
+        BinderBuilderException
     """
     MSG = "ArenaBinder build failed."
-    ERR_CODE = "ARENA_BINDER_BUILD_FAILURE"
+    ERR_CODE = "ARENA_BINDER_BUILDER_FAILURE"
     
     def __init__(
             self,

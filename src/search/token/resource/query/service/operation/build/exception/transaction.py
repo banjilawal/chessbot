@@ -11,15 +11,15 @@ from __future__ import annotations
 from typing import Optional
 
 __all__ = [
-    # ======================# TOKEN_QUERY_BUILD_FAILURE #======================#
-    "TokenQueryBuildException",
+    # ======================# TOKEN_QUERY_BUILDER_FAILURE #======================#
+    "TokenQueryBuilderException",
 ]
 
-from system import BuildException
+from system import BuilderException
 
 
-# ======================# TOKEN_QUERY_BUILD_FAILURE #======================#
-class TokenQueryBuildException(BuildException):
+# ======================# TOKEN_QUERY_BUILDER_FAILURE #======================#
+class TokenQueryBuilderException(BuilderException):
     """
     Role:
         -   Worker Method Identification
@@ -41,10 +41,10 @@ class TokenQueryBuildException(BuildException):
     Provides:
 
     Super Class:
-        BuildException
+        BuilderException
     """
     MSG = "A TokenQueryBuilder method failed."
-    ERR_CODE = "TOKEN_QUERY_BUILD_FAILURE"
+    ERR_CODE = "TOKEN_QUERY_BUILDER_FAILURE"
     
     def __init__(
             self,

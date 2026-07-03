@@ -13,7 +13,7 @@ from model.game import Game, GameService
 from logic.team import Team, TeamService
 from system import Builder, BuildResult, ExecutionRouteException, IdentityService, LoggingLevelRouter
 from logic.arena import (
-    ArenaContext, ArenaContextBuildException, ExcessArenaContextFlagsException, ZeroArenaContextFlagsException,
+    ArenaContext, ArenaContextBuilderException, ExcessArenaContextFlagsException, ZeroArenaContextFlagsException,
 )
 
 
@@ -77,7 +77,7 @@ class ArenaContextBuilder(Builder[ArenaContext]):
 
         Raises:
             *   ZeroArenaContextFlagsException
-            *   ArenaContextBuildException
+            *   ArenaContextBuilderException
             *   ExcessArenaContextFlagsException
         """
         method = "ArenaSearchContextBuilder.build"
@@ -143,11 +143,11 @@ class ArenaContextBuilder(Builder[ArenaContext]):
             BuildResult.failure(
                 ExecutionRouteException(f"{method}: {ExecutionRouteException.MSG}")
             )
-        # Finally, catch any missed exception, wrap an ArenaContextBuildException around it then
+        # Finally, catch any missed exception, wrap an ArenaContextBuilderException around it then
         # return the exception-chain inside the ValidationResult.
         except Exception as ex:
             return BuildResult.failure(
-                ArenaContextBuildException(
-                    ex=ex, msg=f"{method}: {ArenaContextBuildException.MSG}"
+                ArenaContextBuilderException(
+                    ex=ex, msg=f"{method}: {ArenaContextBuilderException.MSG}"
                 )
             )

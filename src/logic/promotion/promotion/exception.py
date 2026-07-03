@@ -79,7 +79,7 @@ DEPENDENCIES:
 Requires base rollback_exception classes and constants from the kernel system:
 From `logic.system`:
   * Exception: `ChessException`, `ValidationException`, `NullException`,
-        `BuildException`.
+        `BuilderException`.
 
 CONTAINS:
 --------
@@ -88,7 +88,7 @@ See the list of exception in the `__all__` list following (e.g., `VectorExceptio
 """
 
 from logic.event import EventException, TransactionException
-from system import ChessException, NullException, BuildException, ValidationException
+from system import ChessException, NullException, BuilderException, ValidationException
 
 __all__ = [
   'PromotionEventException',
@@ -183,7 +183,7 @@ class DoublePromotionRolledBackException(PieceRollBackException):
 
 
 #======================# PROMOTION_EVENT BUILD EXCEPTION #======================#
-class PromotionEventBuild(PromotionEventException, BuildException):
+class PromotionEventBuild(PromotionEventException, BuilderException):
   """
   Raised when `PromotionEventBuilder` crashed while building team_name new `PromotionEven`. Exists
   primarily to catch all exception raised creating `PromotionEvent` objects.
@@ -241,7 +241,7 @@ Requires base rollback_exception classes and constants from the kernel system:
 From `logic.system`:
   * Constants: `NUMBER_OF_ROWS`, `NUMBER_OF_COLUMNS`
   * Exception: `ChessException`, `ValidationException`, `NullException`,
-        `BuildException`.
+        `BuilderException`.
 
 CONTAINS:
 --------

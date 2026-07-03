@@ -13,7 +13,7 @@ from typing import List
 
 from system import BuildResult, Builder, LoggingLevelRouter, ValidationResult
 from model.token import (
-    Token, TokenContext, TokenContextValidator, TokenQueryBuildException, TokenStackNullException, TokenQuery,
+    Token, TokenContext, TokenContextValidator, TokenQueryBuilderException, TokenStackNullException, TokenQuery,
 )
 
 
@@ -64,7 +64,7 @@ class TokenQueryBuilder(Builder[TokenQuery]):
         Raises:
             TypeError
             TokenStackNullException
-            TokenQueryBuildException
+            TokenQueryBuilderException
         """
         method = f"{cls.__name__}._validate"
         
@@ -73,11 +73,11 @@ class TokenQueryBuilder(Builder[TokenQuery]):
         if validation_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                TokenQueryBuildException(
+                TokenQueryBuilderException(
                     cls_mthd=method,
                     cls_name=method.__class__.__name__,
-                    msg=TokenQueryBuildException.MSG,
-                    err_code=TokenQueryBuildException.ERR_CODE,
+                    msg=TokenQueryBuilderException.MSG,
+                    err_code=TokenQueryBuilderException.ERR_CODE,
                     ex=validation_result.exception,
                 )
             )
@@ -85,11 +85,11 @@ class TokenQueryBuilder(Builder[TokenQuery]):
         if stack is None:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                TokenQueryBuildException(
+                TokenQueryBuilderException(
                     cls_mthd=method,
                     cls_name=method.__class__.__name__,
-                    msg=TokenQueryBuildException.MSG,
-                    err_code=TokenQueryBuildException.ERR_CODE,
+                    msg=TokenQueryBuilderException.MSG,
+                    err_code=TokenQueryBuilderException.ERR_CODE,
                     ex=TokenStackNullException(
                         msg=TokenStackNullException.MSG,
                         err_code=TokenStackNullException.ERR_CODE,
@@ -100,11 +100,11 @@ class TokenQueryBuilder(Builder[TokenQuery]):
         if not isinstance(stack, List):
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                TokenQueryBuildException(
+                TokenQueryBuilderException(
                     cls_mthd=method,
                     cls_name=method.__class__.__name__,
-                    msg=TokenQueryBuildException.MSG,
-                    err_code=TokenQueryBuildException.ERR_CODE,
+                    msg=TokenQueryBuilderException.MSG,
+                    err_code=TokenQueryBuilderException.ERR_CODE,
                     ex=TypeError(
                         f"Expected List, got {type(stack).__name__} instead."
                     )
@@ -114,11 +114,11 @@ class TokenQueryBuilder(Builder[TokenQuery]):
         if not isinstance(stack[0], Token):
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                TokenQueryBuildException(
+                TokenQueryBuilderException(
                     cls_mthd=method,
                     cls_name=method.__class__.__name__,
-                    msg=TokenQueryBuildException.MSG,
-                    err_code=TokenQueryBuildException.ERR_CODE,
+                    msg=TokenQueryBuilderException.MSG,
+                    err_code=TokenQueryBuilderException.ERR_CODE,
                     ex=TypeError(
                         f"List contains {type(stack).__name__}  instead of tokens."
                     )

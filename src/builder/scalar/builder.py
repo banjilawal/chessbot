@@ -58,7 +58,7 @@ class ScalarBuilder(Builder[Scalar]):
                 - On failure: Exception.
     
         Raises:
-            * ScalarBuildException
+            * ScalarBuilderException
         """
         method = "ScalarBuilder.build"
         
@@ -71,9 +71,9 @@ class ScalarBuilder(Builder[Scalar]):
         
         except Exception as ex:
             return BuildResult.failure(
-                ScalarBuildException(
+                ScalarBuilderException(
                     ex=ex,
                     msg=f"{method}: "
-                            f"{ScalarBuildException.MSG}"
+                            f"{ScalarBuilderException.MSG}"
                 )
             )

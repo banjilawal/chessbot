@@ -48,7 +48,7 @@ See the list of exception in the `__all__` list following (e.g., `EventException
 """
 
 
-from system import ChessException, NullException, BuildException, ValidationException
+from system import ChessException, NullException, BuilderException, ValidationException
 
 __all__ = [
   'BlockingEventException',
@@ -114,7 +114,7 @@ class DiscoveryAlreadyExistsException(BlockingEventException):
 #
 #
 # #======================# BLOCKING_EVENT BUILD EXCEPTION #======================#
-# class BlockingEventExceptionBuildException(BlockingEventException, BuildException):
+# class BlockingEventExceptionBuilderException(BlockingEventException, BuilderException):
 #   """
 #   Indicate That  Coord could not be built. Wraps and re-raises errors that occurred
 #   during build.
@@ -158,7 +158,7 @@ class DiscoveryAlreadyExistsException(BlockingEventException):
 # From `logic.system`:
 #   * Constants: `NUMBER_OF_ROWS`, `NUMBER_OF_COLUMNS`
 #   * Exception: `ChessException`, `ValidationException`, `NullException`,
-#         `BuildException`.
+#         `BuilderException`.
 #
 # CONTAINS:
 # --------

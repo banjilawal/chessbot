@@ -11,16 +11,16 @@ from __future__ import annotations
 from typing import Any, Optional
 
 
-from err import BuildException
+from err import BuilderException
 
 
 __all__ = [
-    # ======================# BOARD_BUILD_FAILURE #======================#
-    "BoardBuildException",
+    # ======================# BOARD_BUILDER_FAILURE #======================#
+    "BoardBuilderException",
 ]
 
-# ======================# BOARD_BUILD_FAILURE #======================#
-class BoardBuildException(BuildException):
+# ======================# BOARD_BUILDER_FAILURE #======================#
+class BoardBuilderException(BuilderException):
     """
     Role:
         -   Error Tracing
@@ -41,10 +41,10 @@ class BoardBuildException(BuildException):
     Provides:
 
     Super Class:
-        BuildException
+        BuilderException
     """
     MSG = "Board build failed."
-    ERR_CODE = "BOARD_BUILD_FAILURE"
+    ERR_CODE = "BOARD_BUILDER_FAILURE"
     
     def __init__(
             self,

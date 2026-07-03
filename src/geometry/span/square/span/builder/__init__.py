@@ -13,4 +13,4 @@ version: 1.0.0
 
 # Modules
 from .builder import SquareSpanBuilder
-from .work import SquareSpanBuildException
+from .work import SquareSpanBuilderException

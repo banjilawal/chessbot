@@ -7,7 +7,7 @@ Created: 2025-10-31
 version: 1.0.0
 """
 
-from system import SearchContextException, NullException, BuildException, ValidationException
+from system import SearchContextException, NullException, BuilderException, ValidationException
 
 __all__ = [
     "VisitorSearchContextException",
@@ -19,7 +19,7 @@ __all__ = [
     "ArenaVisitorSearchParamsException",
 
     #======= SEARCH_CONTEXT BUILD EXCEPTION =======#
-    "VisitorSearchContextBuildException",
+    "VisitorSearchContextBuilderException",
 ]
 
 
@@ -71,7 +71,7 @@ class ArenaVisitorSearchParamsException(VisitorSearchContextException):
 
 
 # #======================# VISITOR_SEARCH_CONTEXT BUILD EXCEPTION #======================# 
-class VisitorSearchContextBuildException(VisitorSearchContextException, BuildException):
+class VisitorSearchContextBuilderException(VisitorSearchContextException, BuilderException):
     """
     Raised when VisitorSearchContextBuilder encounters an error while building team_name team_name.
     Exists primarily to catch all exception raised build team_name new visitorSearchContext

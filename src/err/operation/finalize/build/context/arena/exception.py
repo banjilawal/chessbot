@@ -6,18 +6,19 @@ Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
 """
+
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import FinalizeContextBuildException
+from err import FinalizeContextBuilderException
 
 __all__ = [
-    # ======================# FINALIZING_ARENA_CONTEXT_BUILD_FAILURE #======================#
-    "FinalizeArenaContextBuildException",
+    # ======================# FINALIZING_ARENA_CONTEXT_BUILDER_FAILURE #======================#
+    "FinalizeArenaContextBuilderException",
 ]
 
-# ======================# FINALIZING_ARENA_CONTEXT_BUILD_FAILURE #======================#
-class FinalizeArenaContextBuildException(FinalizeContextBuildException):
+# ======================# FINALIZING_ARENA_CONTEXT_BUILDER_FAILURE #======================#
+class FinalizeArenaContextBuilderException(FinalizeContextBuilderException):
     """
     Role:
         -   Error Tracing
@@ -38,10 +39,10 @@ class FinalizeArenaContextBuildException(FinalizeContextBuildException):
     Provides:
 
     Super Class:
-        ContextFinalizeBuildException
+        ContextFinalizeBuilderException
     """
     MSG = "Finalizing a ArenaContextBuild failed."
-    ERR_CODE = "FINALIZING_ARENA_CONTEXT_BUILD_FAILURE"
+    ERR_CODE = "FINALIZING_ARENA_CONTEXT_BUILDER_FAILURE"
     
     def __init__(
             self,

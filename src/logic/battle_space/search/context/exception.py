@@ -31,7 +31,7 @@ Requires base rollback_exception classes and constants from the kernel system:
 From `logic.system`:
   * Constants: `NUMBER_OF_ROWS`, `NUMBER_OF_COLUMNS`
   * Exception: `ChessException`, `ValidationException`, `NullException`,
-        `BuildException`.
+        `BuilderException`.
 
 CONTAINS:
 --------
@@ -39,7 +39,7 @@ See the list of exception in the `__all__` list following (e.g., `ProjectionSear
 `NullProjectionSearchContextException`, `RowAboveBoundsException`).
 """
 
-from system import ContextException, NullException, BuildException, ValidationException
+from system import ContextException, NullException, BuilderException, ValidationException
 
 __all__ = [
     'ProjectionSearchContextException',
@@ -51,7 +51,7 @@ __all__ = [
     # 'ProjectionSearchContextMaxParamCountException',
 
     #======= SEARCH_CONTEXT BUILD EXCEPTION =======#
-    'ProjectionSearchContextBuildException',
+    'ProjectionSearchContextBuilderException',
     'RansomOutOfBoundsException'
 ]
 
@@ -101,7 +101,7 @@ class ProjectionSearchContextMaxParamCountException(ProjectionSearchContextExcep
 
 
 # #======================#   PROJECTION_SEARCH_CONTEXT BUILD EXCEPTION #======================# 
-class ProjectionSearchContextBuildException(ProjectionSearchContextException, BuildException):
+class ProjectionSearchContextBuilderException(ProjectionSearchContextException, BuilderException):
     """
     Raised when ProjectionSearchContextBuilder encounters an error while building team_name team_name.
     Exists primarily to catch all exception raised build team_name new projectionSearchContext

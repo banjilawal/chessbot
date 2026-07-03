@@ -10,19 +10,19 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import FinalizeBuildException
+from err import FinalizeBuilderException
 
 
 __all__ = [
-    # ======================# FINALIZING_TOKEN_CONTEXT_BUILD_FAILURE #======================#
-    "FinalizeTokenContextBuildException",
+    # ======================# FINALIZING_TOKEN_CONTEXT_BUILDER_FAILURE #======================#
+    "FinalizeTokenContextBuilderException",
 ]
 
-from err import FinalizeContextBuildException
+from err import FinalizeContextBuilderException
 
 
-# ======================# FINALIZING_TOKEN_CONTEXT_BUILD_FAILURE #======================#
-class FinalizeTokenContextBuildException(FinalizeContextBuildException):
+# ======================# FINALIZING_TOKEN_CONTEXT_BUILDER_FAILURE #======================#
+class FinalizeTokenContextBuilderException(FinalizeContextBuilderException):
     """
     Role:
         -   Error Tracing
@@ -43,10 +43,10 @@ class FinalizeTokenContextBuildException(FinalizeContextBuildException):
     Provides:
 
     Super Class:
-        ContextFinalizeBuildException
+        ContextFinalizeBuilderException
     """
     MSG = "Finalizing a TokenContextBuild failed."
-    ERR_CODE = "FINALIZING_TOKEN_CONTEXT_BUILD_FAILURE"
+    ERR_CODE = "FINALIZING_TOKEN_CONTEXT_BUILDER_FAILURE"
     
     def __init__(
             self,

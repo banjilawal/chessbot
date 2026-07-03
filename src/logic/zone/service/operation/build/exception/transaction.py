@@ -11,14 +11,14 @@ from __future__ import annotations
 from typing import Optional
 
 __all__ = [
-    # ======================# ZONE_BUILD_FAILURE #======================#
-    "ZoneBuildException",
+    # ======================# ZONE_BUILDER_FAILURE #======================#
+    "ZoneBuilderException",
 ]
 
-from system import BuildException
+from system import BuilderException
 
-# ======================# ZONE_BUILD_FAILURE #======================#
-class ZoneBuildException(BuildException):
+# ======================# ZONE_BUILDER_FAILURE #======================#
+class ZoneBuilderException(BuilderException):
     """
     Role:
         -   Worker Method Identifier
@@ -40,11 +40,11 @@ class ZoneBuildException(BuildException):
     Provides
 
     Super Class:
-        BuildException
+        BuilderException
     """
     OP = "Build"
     MTHD_RSLT = "BuildResult"
-    ERR_CODE = "ZONE_BUILD_FAILURE"
+    ERR_CODE = "ZONE_BUILDER_FAILURE"
     MSG = "Failure in ZoneBuildProcess method."
     
     def __init__(

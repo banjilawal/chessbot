@@ -82,7 +82,7 @@ class SnapshotContextBuilder(Builder[SnapshotContext]):
 
         Raises:
             *   ZeroSnapshotContextFlagsException
-            *   SnapshotContextBuildException
+            *   SnapshotContextBuilderException
             *   ArenaSnapshotContextFlagsException
         """
         method = "SnapshotContextBuilder.build"
@@ -131,11 +131,11 @@ class SnapshotContextBuilder(Builder[SnapshotContext]):
             BuildResult.failure(
                 ExecutionRouteException(f"{method}: {ExecutionRouteException.MSG}")
             )
-        # Finally, catch any missed exception and wrap A SnapshotContextBuildException around it then
+        # Finally, catch any missed exception and wrap A SnapshotContextBuilderException around it then
         # return the exception-chain inside the ValidationResult.
         except Exception as ex:
             return BuildResult.failure(
-               SnapshotContextBuildException(
-                    ex=ex, msg=f"{method}: {SnapshotContextBuildException.MSG}"
+               SnapshotContextBuilderException(
+                    ex=ex, msg=f"{method}: {SnapshotContextBuilderException.MSG}"
                 )
             )

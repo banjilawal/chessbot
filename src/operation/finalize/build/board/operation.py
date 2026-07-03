@@ -10,7 +10,7 @@ version: 1.0.1
 from __future__ import annotations
 
 from controller import WorkerRegistryController
-from err import FinalizeBoardBuildException
+from err import FinalizeBoardBuilderException
 from model import Board
 from operation import AssemblyFinalizer
 from result import BuildResult
@@ -30,11 +30,11 @@ class BoardAssemblyFinalizer(AssemblyFinalizer[Board]):
             # Handle the case that, the board is not successfully registered with its arena.
             if insertion_result.is_failure:
                 return BuildResult.failure(
-                    FinalizeBoardBuildException(
+                    FinalizeBoardBuilderException(
                         cls_mthd=method,
                         cls_name=cls.__name__,
-                        msg=FinalizeBoardBuildException.MSG,
-                        err_code=FinalizeBoardBuildException.ERR_CODE,
+                        msg=FinalizeBoardBuilderException.MSG,
+                        err_code=FinalizeBoardBuilderException.ERR_CODE,
                         ex=insertion_result.exception,
                     )
                 )

@@ -6,22 +6,23 @@ Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
 """
+
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import BuildException
+from err import BuilderException
 
 
 __all__ = [
-    # ======================# GAME_BINDER_BUILD_FAILURE #======================#
-    "GameBinderBuildException",
+    # ======================# GAME_BINDER_BUILDER_FAILURE #======================#
+    "GameBinderBuilderException",
 ]
 
-from err import BinderBuildException
+from err import BinderBuilderException
 
 
-# ======================# GAME_BINDER_BUILD_FAILURE #======================#
-class GameBinderBuildException(BinderBuildException):
+# ======================# GAME_BINDER_BUILDER_FAILURE #======================#
+class GameBinderBuilderException(BinderBuilderException):
     """
     Role:
         -   Error Tracing
@@ -41,10 +42,10 @@ class GameBinderBuildException(BinderBuildException):
     Provides:
 
     Super Class:
-        BinderBuildException
+        BinderBuilderException
     """
     MSG = "GameBinder build failed."
-    ERR_CODE = "GAME_BINDER_BUILD_FAILURE"
+    ERR_CODE = "GAME_BINDER_BUILDER_FAILURE"
     
     def __init__(
             self,

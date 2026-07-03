@@ -9,7 +9,7 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from microservice.edge import Edge, EdgeBuildException
+from microservice.edge import Edge, EdgeBuilderException
 from system import Builder, BuildResult, LoggingLevelRouter, NumberValidator
 
 
@@ -62,7 +62,7 @@ class EdgeBuilder(Builder[Edge]):
         Returns:
             BuildResult[Edge]
         Raises:
-            EdgeBuildException
+            EdgeBuilderException
         """
     @classmethod
     @LoggingLevelRouter.monitor
@@ -94,7 +94,7 @@ class EdgeBuilder(Builder[Edge]):
                      - On failure: Exception.
                      - On success: Edge in the payload.
          Raises:
-             *   EdgeBuildException
+             *   EdgeBuilderException
          """
          method = "EdgeBuilder.build"
          
@@ -103,8 +103,8 @@ class EdgeBuilder(Builder[Edge]):
          if id_validation.is_failure:
              # Return the exception chain on failure
              return BuildResult.failure(
-                 EdgeBuildException(
-                     msg=f"{method} {EdgeBuildException.MSG}",
+                 EdgeBuilderException(
+                     msg=f"{method} {EdgeBuilderException.MSG}",
                      ex=id_validation.exception
                  )
              )
@@ -113,8 +113,8 @@ class EdgeBuilder(Builder[Edge]):
          if head_validation.is_failure:
              # Return the exception chain on failure
              return BuildResult.failure(
-                 EdgeBuildException(
-                     msg=f"{method} {EdgeBuildException.MSG}",
+                 EdgeBuilderException(
+                     msg=f"{method} {EdgeBuilderException.MSG}",
                      ex=head_validation.exception
                  )
              )
@@ -123,8 +123,8 @@ class EdgeBuilder(Builder[Edge]):
          if tail_validation.is_failure:
              # Return the exception chain on failure
              return BuildResult.failure(
-                 EdgeBuildException(
-                     msg=f"{method} {EdgeBuildException.MSG}",
+                 EdgeBuilderException(
+                     msg=f"{method} {EdgeBuilderException.MSG}",
                      ex=tail_validation.exception
                  )
              )
@@ -132,8 +132,8 @@ class EdgeBuilder(Builder[Edge]):
          if head == tail:
              # Return the exception chain on failure
              return BuildResult.failure(
-                 EdgeBuildException(
-                     msg=f"{method} {EdgeBuildException.MSG}",
+                 EdgeBuilderException(
+                     msg=f"{method} {EdgeBuilderException.MSG}",
                      ex=HeadCannotBeTailException(f"{method}: {HeadCannotBeTailException.MSG}")
                  )
              )
@@ -146,8 +146,8 @@ class EdgeBuilder(Builder[Edge]):
          if distance_computation_result.is_failure:
              # Return the exception chain on failure
              return BuildResult.failure(
-                 EdgeBuildException(
-                     msg=f"{method} {EdgeBuildException.MSG}",
+                 EdgeBuilderException(
+                     msg=f"{method} {EdgeBuilderException.MSG}",
                      ex=distance_computation_result.exception
                  )
              )

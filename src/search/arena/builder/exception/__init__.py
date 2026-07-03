@@ -12,5 +12,5 @@ version: 1.0.0
 # Packages
 
 # Modules
-from .work import ArenaContextBuildException
+from .work import ArenaContextBuilderException
 from .route import ArenaContextExecutionRouteException

@@ -12,4 +12,4 @@ version: 1.0.0
 # Packages
 
 # Modules
-from .work import NodeTreeBuildException
+from .work import NodeTreeBuilderException

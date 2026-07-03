@@ -60,7 +60,7 @@ class CoordAssemblyPrimer(AssemblyPrimer[Coord]):
         Returns:
             ValidationResult[CoordBlueprint]
         Raises:
-            CoordBuildException
+            CoordBuilderException
         """
         method = f"{cls.__class__.__name__}.execute"
         

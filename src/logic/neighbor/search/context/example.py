@@ -35,11 +35,11 @@ version: 1.0.0
 # DEPENDENCIES:
 ---------------
 From `logic.system`:
-    `BuildResult`, `Builder`, `LoggingLevelRouter`, `ChessException`, `NullException`, `BuildException`
+    `BuildResult`, `Builder`, `LoggingLevelRouter`, `ChessException`, `NullException`, `BuilderException`
     `IdValidator`, `NameValidator`
 
 From `logic.discoverySearchContext`:
-    `DiscoverySearchContext`, `NullDiscoverySearchContext`, `DiscoverySearchContextBuildException`, `DiscoverySearchContextSchema`
+    `DiscoverySearchContext`, `NullDiscoverySearchContext`, `DiscoverySearchContextBuilderException`, `DiscoverySearchContextSchema`
 
 From `logic.owner`:
   `Player`, `PlayerAgentValidator`,
@@ -89,11 +89,11 @@ version: 1.0.0
 # DEPENDENCIES:
 ---------------
 From `logic.system`:
-    `BuildResult`, `Builder`, `LoggingLevelRouter`, `ChessException`, `NullException`, `BuildException`
+    `BuildResult`, `Builder`, `LoggingLevelRouter`, `ChessException`, `NullException`, `BuilderException`
     `IdValidator`, `NameValidator`
 
 From `logic.team_name`:
-    `Team`, `NullTeam`, `TeamBuildException`, `Schema`
+    `Team`, `NullTeam`, `TeamBuilderException`, `Schema`
 
 From `logic.owner`:
   `Player`, `PlayerAgentValidator`,
@@ -198,11 +198,11 @@ version: 1.0.0
 # DEPENDENCIES:
 ---------------
 From `logic.system`:
-    `BuildResult`, `Builder`, `LoggingLevelRouter`, `ChessException`, `NullException`, `BuildException`
+    `BuildResult`, `Builder`, `LoggingLevelRouter`, `ChessException`, `NullException`, `BuilderException`
     `IdValidator`, `NameValidator`
 
 From `logic.discoverySearchContext`:
-    `DiscoverySearchContext`, `NullDiscoverySearchContext`, `DiscoverySearchContextBuildException`, `DiscoverySearchContextSchema`
+    `DiscoverySearchContext`, `NullDiscoverySearchContext`, `DiscoverySearchContextBuilderException`, `DiscoverySearchContextSchema`
 
 From `logic.owner`:
   `Player`, `PlayerAgentValidator`,
@@ -252,11 +252,11 @@ version: 1.0.0
 # DEPENDENCIES:
 ---------------
 From `logic.system`:
-    `BuildResult`, `Builder`, `LoggingLevelRouter`, `ChessException`, `NullException`, `BuildException`
+    `BuildResult`, `Builder`, `LoggingLevelRouter`, `ChessException`, `NullException`, `BuilderException`
     `IdValidator`, `NameValidator`
 
 From `logic.discoverySearchContext`:
-    `DiscoverySearchContext`, `NullDiscoverySearchContext`, `DiscoverySearchContextBuildException`, `DiscoverySearchContextSchema`
+    `DiscoverySearchContext`, `NullDiscoverySearchContext`, `DiscoverySearchContextBuilderException`, `DiscoverySearchContextSchema`
 
 From `logic.owner`:
   `Player`, `PlayerAgentValidator`,
@@ -309,7 +309,7 @@ Requires base rollback_exception classes and constants from the kernel system:
 From `logic.system`:
   * Constants: `NUMBER_OF_ROWS`, `NUMBER_OF_COLUMNS`
   * Exception: `ChessException`, `ValidationException`, `NullException`,
-        `BuildException`.
+        `BuilderException`.
 
 CONTAINS:
 --------

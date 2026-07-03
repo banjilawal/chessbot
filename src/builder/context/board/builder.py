@@ -15,7 +15,7 @@ from typing import Optional
 from logic.arena import Arena, ArenaService
 from system import Builder, BuildResult, IdentityService
 from logic.board import (
-    BoardContextBuildRouteException, ZeroBoardContextFlagsException, BoardContext, BoardContextBuildException,
+    BoardContextBuildRouteException, ZeroBoardContextFlagsException, BoardContext, BoardContextBuilderException,
     ArenaBoardContextFlagsException
 )
 
@@ -73,7 +73,7 @@ class BoardContextBuilder(Builder[BoardContext]):
                     - On success: BoardContext in the payload.
         Raises:
             *   ZeroBoardContextFlagsException
-            *   BoardContextBuildException
+            *   BoardContextBuilderException
             *   ArenaBoardContextFlagsException
             *   BoardContextBuildRouteException
         """
@@ -87,8 +87,8 @@ class BoardContextBuilder(Builder[BoardContext]):
         if param_count == 0:
             # Send the exception chain on failure.
             return BuildResult.failure(
-                BoardContextBuildException(
-                    msg=f"{method}: {BoardContextBuildException.MSG}",
+                BoardContextBuilderException(
+                    msg=f"{method}: {BoardContextBuilderException.MSG}",
                     ex=ZeroBoardContextFlagsException(
                         f"{method}: {ZeroBoardContextFlagsException.MSG}"
                     )
@@ -98,8 +98,8 @@ class BoardContextBuilder(Builder[BoardContext]):
         if param_count > 1:
             # Send the exception chain on failure.
             return BuildResult.failure(
-                BoardContextBuildException(
-                    msg=f"{method}: {BoardContextBuildException.MSG}",
+                BoardContextBuilderException(
+                    msg=f"{method}: {BoardContextBuilderException.MSG}",
                     ex=ArenaBoardContextFlagsException(
                         f"{method}: {ArenaBoardContextFlagsException.MSG}"
                     )
@@ -113,8 +113,8 @@ class BoardContextBuilder(Builder[BoardContext]):
             if validation.is_failure:
                 # Send the exception chain on failure.
                 return BuildResult.failure(
-                    BoardContextBuildException(
-                        msg=f"{method}: {BoardContextBuildException.MSG}",
+                    BoardContextBuilderException(
+                        msg=f"{method}: {BoardContextBuilderException.MSG}",
                         ex=validation.exception
                     )
                 )
@@ -127,8 +127,8 @@ class BoardContextBuilder(Builder[BoardContext]):
             if validation.is_failure:
                 # Send the exception chain on failure.
                 return BuildResult.failure(
-                    BoardContextBuildException(
-                        msg=f"{method}: {BoardContextBuildException.MSG}",
+                    BoardContextBuilderException(
+                        msg=f"{method}: {BoardContextBuilderException.MSG}",
                         ex=validation.exception
                     )
                 )
@@ -137,8 +137,8 @@ class BoardContextBuilder(Builder[BoardContext]):
         
         # Return the exception chain if there is no build route for the context.
         return BuildResult.failure(
-            BoardContextBuildException(
-                msg=f"{method}: {BoardContextBuildException.MSG}",
+            BoardContextBuilderException(
+                msg=f"{method}: {BoardContextBuilderException.MSG}",
                 ex=BoardContextBuildRouteException(f"{method}: {BoardContextBuildRouteException.MSG}")
             )
         )

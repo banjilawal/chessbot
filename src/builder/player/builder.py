@@ -15,8 +15,8 @@ from logic.team import UniqueTeamDataService
 from system import Builder, BuildResult, IdentityService, LoggingLevelRouter, id_emitter
 
 from logic.player import (
-    Player, PlayerBuildException, PlayerVariety, PlayerValidator, HumanPlayer, HumanPlayerBuildException,
-    MachinePlayer, MachinePlayerBuildException
+    Player, PlayerBuilderException, PlayerVariety, PlayerValidator, HumanPlayer, HumanPlayerBuilderException,
+    MachinePlayer, MachinePlayerBuilderException
 )
 
 
@@ -74,7 +74,7 @@ class PlayerFactory(Builder[Player]):
             - On failure: Exception.
 
         Raises:
-            *   PlayerBuildException
+            *   PlayerBuilderException
         """
         method = "PlayerBuilder.build"
         try:
@@ -92,13 +92,13 @@ class PlayerFactory(Builder[Player]):
                 return cls.build_machine_player(id=id, name=name, engine_service=engine_service)
         
         # The flow should only get here if the logic did not route all the types of concrete Players.
-        # In that case wrap the unhandled exception inside an PlayerBuildException then, return
+        # In that case wrap the unhandled exception inside an PlayerBuilderException then, return
         # the exception chain inside a ValidationResult.
         # then return the exception-chain inside a ValidationResult.
         except Exception as ex:
             return BuildResult.failure(
-                PlayerBuildException(
-                    ex=ex, msg=f"{method}: {PlayerBuildException.MSG}"
+                PlayerBuilderException(
+                    ex=ex, msg=f"{method}: {PlayerBuilderException.MSG}"
                 )
             )
     
@@ -126,7 +126,7 @@ class PlayerFactory(Builder[Player]):
             - On failure: Exception.
 
         Raises:
-            *   HumanPlayerBuildException
+            *   HumanPlayerBuilderException
         """
         method = "PlayerBuilder.build_human_player"
         try:
@@ -145,11 +145,11 @@ class PlayerFactory(Builder[Player]):
             )
         
         # Finally, if some exception unrelated to identity verification is raised wrap it inside a
-        # HumanPlayerBuildException then, send the exception chain inside a BuildResult.
+        # HumanPlayerBuilderException then, send the exception chain inside a BuildResult.
         except Exception as ex:
             return BuildResult.failure(
-                HumanPlayerBuildException(
-                    ex=ex, msg=f"{method}: {HumanPlayerBuildException.MSG}"
+                HumanPlayerBuilderException(
+                    ex=ex, msg=f"{method}: {HumanPlayerBuilderException.MSG}"
                 )
             )
     
@@ -180,7 +180,7 @@ class PlayerFactory(Builder[Player]):
             - On failure: Exception.
 
         Raises:
-            *   MachinePlayerBuildException
+            *   MachinePlayerBuilderException
         """
         method = "PlayerBuilder.build_machine_player"
         try:
@@ -205,10 +205,10 @@ class PlayerFactory(Builder[Player]):
             )
         
         # Finally, if some exception unrelated to identity verification is raised wrap it inside a
-        # MachinePlayerBuildException then, send the exception chain inside a BuildResult.
+        # MachinePlayerBuilderException then, send the exception chain inside a BuildResult.
         except Exception as ex:
             return BuildResult.failure(
-                MachinePlayerBuildException(
-                    ex=ex, msg=f"{method}: {MachinePlayerBuildException.MSG}"
+                MachinePlayerBuilderException(
+                    ex=ex, msg=f"{method}: {MachinePlayerBuilderException.MSG}"
                 )
             )

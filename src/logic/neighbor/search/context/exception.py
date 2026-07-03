@@ -7,7 +7,7 @@ version: 1.0.0
 """
 
 
-from system import ContextException, NullException, BuildException, ValidationException
+from system import ContextException, NullException, BuilderException, ValidationException
 
 __all__ = [
     'VisitationSearchContextException',
@@ -21,7 +21,7 @@ __all__ = [
     'VisitationInvalidRankNameParamException',
 
     #======= SEARCH_CONTEXT BUILD EXCEPTION =======#
-    'VisitationSearchContextBuildException',
+    'VisitationSearchContextBuilderException',
 ]
 
 
@@ -91,7 +91,7 @@ class VisitationInvalidRankNameParamException(VisitationSearchContextException):
 
 
 # #======================#   PIECE_SEARCH_CONTEXT BUILD EXCEPTION #======================#
-class VisitationSearchContextBuildException(VisitationSearchContextException, BuildException):
+class VisitationSearchContextBuilderException(VisitationSearchContextException, BuilderException):
     """
     Raised when VisitationSearchContextBuilder encounters an error while building team_name team_name.
     Exists primarily to catch all exception raised build team_name new visitationSearchContext

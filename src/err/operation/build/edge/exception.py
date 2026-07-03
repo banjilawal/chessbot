@@ -10,16 +10,16 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import BuildException
+from err import BuilderException
 
 
 __all__ = [
-    # ======================# EDGE_BUILD_FAILURE #======================#
-    "EdgeBuildException",
+    # ======================# EDGE_BUILDER_FAILURE #======================#
+    "EdgeBuilderException",
 ]
 
-# ======================# EDGE_BUILD_FAILURE #======================#
-class EdgeBuildException(BuildException):
+# ======================# EDGE_BUILDER_FAILURE #======================#
+class EdgeBuilderException(BuilderException):
     """
     Role:
         -   Error Tracing
@@ -40,10 +40,10 @@ class EdgeBuildException(BuildException):
     Provides:
 
     Super Class:
-        BuildException
+        BuilderException
     """
     MSG = "Edge build failed."
-    ERR_CODE = "EDGE_BUILD_FAILURE"
+    ERR_CODE = "EDGE_BUILDER_FAILURE"
     
     def __init__(
             self,

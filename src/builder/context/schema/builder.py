@@ -65,7 +65,7 @@ class SchemaContextBuilder(Builder[SchemaKey]):
                     - On success: SchemaKey in the payload.
         Raises:
             *   ZeroSchemaKeysException
-            *   SchemaKeyBuildException
+            *   SchemaKeyBuilderException
             *   ArenaSchemaKeysException
         """
         method = "SchemaContextBuilder.build"
@@ -78,8 +78,8 @@ class SchemaContextBuilder(Builder[SchemaKey]):
         if param_count == 0:
             # Send the exception chain on failure.
             return BuildResult.failure(
-                SchemaKeyBuildException(
-                    msg=f"{method}: {SchemaKeyBuildException.ERR_CODE}",
+                SchemaKeyBuilderException(
+                    msg=f"{method}: {SchemaKeyBuilderException.ERR_CODE}",
                     ex=ZeroSchemaKeysException(f"{method}: {ZeroSchemaKeysException.MSG}")
                 )
             )
@@ -87,8 +87,8 @@ class SchemaContextBuilder(Builder[SchemaKey]):
         if param_count > 1:
             # Send the exception chain on failure.
             return BuildResult.failure(
-                SchemaKeyBuildException(
-                    msg=f"{method}: {SchemaKeyBuildException.ERR_CODE}",
+                SchemaKeyBuilderException(
+                    msg=f"{method}: {SchemaKeyBuilderException.ERR_CODE}",
                     ex=ArenaSchemaKeysException(f"{method}: {ArenaSchemaKeysException}")
                 )
             )
@@ -100,8 +100,8 @@ class SchemaContextBuilder(Builder[SchemaKey]):
             if validation.is_failure:
                 # Send the exception chain on failure.
                 return BuildResult.failure(
-                    SchemaKeyBuildException(
-                        msg=f"{method}: {SchemaKeyBuildException.ERR_CODE}",
+                    SchemaKeyBuilderException(
+                        msg=f"{method}: {SchemaKeyBuilderException.ERR_CODE}",
                         ex=validation.exception
                     )
                 )
@@ -114,8 +114,8 @@ class SchemaContextBuilder(Builder[SchemaKey]):
             if validation.is_failure:
                 # Send the exception chain on failure.
                 return BuildResult.failure(
-                    SchemaKeyBuildException(
-                        msg=f"{method}: {SchemaKeyBuildException.ERR_CODE}",
+                    SchemaKeyBuilderException(
+                        msg=f"{method}: {SchemaKeyBuilderException.ERR_CODE}",
                         ex=validation.exception
                     )
                 )
@@ -124,8 +124,8 @@ class SchemaContextBuilder(Builder[SchemaKey]):
         
         # The default path returns failure
         return BuildResult.failure(
-            SchemaKeyBuildException(
-                msg=f"{method}: {SchemaKeyBuildException.ERR_CODE}",
+            SchemaKeyBuilderException(
+                msg=f"{method}: {SchemaKeyBuilderException.ERR_CODE}",
                 ex=SchemaKeyBuildRouteException(f"{method}: {SchemaKeyBuildRouteException.MSG}")
             )
         )

@@ -10,16 +10,16 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import BuildException
+from err import BuilderException
 
 
 __all__ = [
-    # ======================# GAME_BUILD_FAILURE #======================#
-    "GameBuildException",
+    # ======================# GAME_BUILDER_FAILURE #======================#
+    "GameBuilderException",
 ]
 
-# ======================# GAME_BUILD_FAILURE #======================#
-class GameBuildException(BuildException):
+# ======================# GAME_BUILDER_FAILURE #======================#
+class GameBuilderException(BuilderException):
     """
     Role:
         -   Error Tracing
@@ -40,10 +40,10 @@ class GameBuildException(BuildException):
     Provides:
 
     Super Class:
-        BuildException
+        BuilderException
     """
     MSG = "Game build failed."
-    ERR_CODE = "GAME_BUILD_FAILURE"
+    ERR_CODE = "GAME_BUILDER_FAILURE"
     
     def __init__(
             self,

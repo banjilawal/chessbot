@@ -13,7 +13,7 @@ import sys
 from typing import Optional
 
 from model.node import (
-    DiscoveryStatus, ArenaNodeContextFlagsException, Node, NodeContext, NodeContextBuildException,
+    DiscoveryStatus, ArenaNodeContextFlagsException, Node, NodeContext, NodeContextBuilderException,
     NodeContextBuildRouteException, NodeValidator, ZeroNodeContextFlagsException
 )
 from logic.square import Square, SquareService
@@ -82,7 +82,7 @@ class NodeContextBuilder(Builder[NodeContext]):
                         - On success: NodeContext in the payload.
             Raises:
                 *   ZeroNodeContextFlagsException
-                *   NodeContextBuildException
+                *   NodeContextBuilderException
                 *   ArenaNodeContextFlagsException
                 *   NodeContextBuildRouteException
             """
@@ -96,8 +96,8 @@ class NodeContextBuilder(Builder[NodeContext]):
         if param_count == 0:
             # Send the exception chain on failure.
             return BuildResult.failure(
-                NodeContextBuildException(
-                    msg=f"{method}: {NodeContextBuildException.MSG}",
+                NodeContextBuilderException(
+                    msg=f"{method}: {NodeContextBuilderException.MSG}",
                     ex=ZeroNodeContextFlagsException(
                         f"{method}: {ZeroNodeContextFlagsException.MSG}"
                     )
@@ -107,8 +107,8 @@ class NodeContextBuilder(Builder[NodeContext]):
         if param_count > 1:
             # Send the exception chain on failure.
             return BuildResult.failure(
-                NodeContextBuildException(
-                    msg=f"{method}: {NodeContextBuildException.MSG}",
+                NodeContextBuilderException(
+                    msg=f"{method}: {NodeContextBuilderException.MSG}",
                     ex=ArenaNodeContextFlagsException(
                         f"{method}: {ArenaNodeContextFlagsException.MSG}"
                     )
@@ -126,8 +126,8 @@ class NodeContextBuilder(Builder[NodeContext]):
             if validation.is_failure:
                 # Send the exception chain on failure.
                 return BuildResult.failure(
-                    NodeContextBuildException(
-                        msg=f"{method}: {NodeContextBuildException.MSG}",
+                    NodeContextBuilderException(
+                        msg=f"{method}: {NodeContextBuilderException.MSG}",
                         ex=validation.exception
                     )
                 )
@@ -140,8 +140,8 @@ class NodeContextBuilder(Builder[NodeContext]):
             if validation.is_failure:
                 # Send the exception chain on failure.
                 return BuildResult.failure(
-                    NodeContextBuildException(
-                        msg=f"{method}: {NodeContextBuildException.MSG}",
+                    NodeContextBuilderException(
+                        msg=f"{method}: {NodeContextBuilderException.MSG}",
                         ex=validation.exception
                     )
                 )
@@ -154,8 +154,8 @@ class NodeContextBuilder(Builder[NodeContext]):
             if validation.is_failure:
                 # Send the exception chain on failure.
                 return BuildResult.failure(
-                    NodeContextBuildException(
-                        msg=f"{method}: {NodeContextBuildException.MSG}",
+                    NodeContextBuilderException(
+                        msg=f"{method}: {NodeContextBuilderException.MSG}",
                         ex=validation.exception
                     )
                 )
@@ -168,8 +168,8 @@ class NodeContextBuilder(Builder[NodeContext]):
             if validation.is_failure:
                 # Send the exception chain on failure.
                 return BuildResult.failure(
-                    NodeContextBuildException(
-                        msg=f"{method}: {NodeContextBuildException.MSG}",
+                    NodeContextBuilderException(
+                        msg=f"{method}: {NodeContextBuilderException.MSG}",
                         ex=validation.exception
                     )
                 )
@@ -178,8 +178,8 @@ class NodeContextBuilder(Builder[NodeContext]):
         
         # Return the exception chain if there is no build route for the context.
         return BuildResult.failure(
-            NodeContextBuildException(
-                msg=f"{method}: {NodeContextBuildException.MSG}",
+            NodeContextBuilderException(
+                msg=f"{method}: {NodeContextBuilderException.MSG}",
                 ex=NodeContextBuildRouteException(f"{method}: {NodeContextBuildRouteException.MSG}")
             )
         )

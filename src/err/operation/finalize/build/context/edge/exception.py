@@ -6,18 +6,19 @@ Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
 """
+
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import FinalizeContextBuildException
+from err import FinalizeContextBuilderException
 
 __all__ = [
-    # ======================# FINALIZING_EDGE_CONTEXT_BUILD_FAILURE #======================#
-    "FinalizeEdgeContextBuildException",
+    # ======================# FINALIZING_EDGE_CONTEXT_BUILDER_FAILURE #======================#
+    "FinalizeEdgeContextBuilderException",
 ]
 
-# ======================# FINALIZING_EDGE_CONTEXT_BUILD_FAILURE #======================#
-class FinalizeEdgeContextBuildException(FinalizeContextBuildException):
+# ======================# FINALIZING_EDGE_CONTEXT_BUILDER_FAILURE #======================#
+class FinalizeEdgeContextBuilderException(FinalizeContextBuilderException):
     """
     Role:
         -   Error Tracing
@@ -37,10 +38,10 @@ class FinalizeEdgeContextBuildException(FinalizeContextBuildException):
     Provides:
 
     Super Class:
-        ContextFinalizeBuildException
+        ContextFinalizeBuilderException
     """
     MSG = "Finalizing a EdgeContextBuild failed."
-    ERR_CODE = "FINALIZING_EDGE_CONTEXT_BUILD_FAILURE"
+    ERR_CODE = "FINALIZING_EDGE_CONTEXT_BUILDER_FAILURE"
     
     def __init__(
             self,

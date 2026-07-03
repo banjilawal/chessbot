@@ -12,7 +12,7 @@ from typing import List
 from logic.team import Team
 from logic.board import Board
 from logic.agent import PlayerAgent, AgentService
-from logic.arena import Arena, ArenaBuildException, DuplicatePlayerInArenaException
+from logic.arena import Arena, ArenaBuilderException, DuplicatePlayerInArenaException
 from system import Builder, BuildResult, IdentityService, LoggingLevelRouter, ValidationResult, id_emitter
 
 
@@ -66,7 +66,7 @@ class ArenaBuilder(Builder[Arena]):
             - On failure: Exception.
 
         Raises:
-            *   ArenaBuildException
+            *   ArenaBuilderException
         """
         method = "ArenaBuilder.build"
         try:
@@ -83,12 +83,12 @@ class ArenaBuilder(Builder[Arena]):
             return BuildResult.success(payload=Arena(id=id, board=board))
         
         # The flow should only get here if the logic did not route all the types of concrete Arenas.
-        # In that case wrap the unhandled exception inside an ArenaBuildException then, return
+        # In that case wrap the unhandled exception inside an ArenaBuilderException then, return
         # the exception chain inside a ValidationResult.
         # then return the exception-chain inside a ValidationResult.
         except Exception as ex:
             return BuildResult.failure(
-                ArenaBuildException(ex=ex, msg=f"{method}: {ArenaBuildException.MSG}")
+                ArenaBuilderException(ex=ex, msg=f"{method}: {ArenaBuilderException.MSG}")
             )
         
     @classmethod
@@ -114,11 +114,11 @@ class ArenaBuilder(Builder[Arena]):
             # After individual piece integrity certifcation and uniqueness verification send a success result.
             return ValidationResult.success(payload=players)
         
-        # Finally, catch any missed exception, wrap an ArenaBuildException around it then
+        # Finally, catch any missed exception, wrap an ArenaBuilderException around it then
         # return the exception-chain inside the ValidationResult.
         except Exception as ex:
             return ValidationResult.failure(
-                ArenaBuildException(ex=ex, msg=f"{method}: {ArenaBuildException.MSG}")
+                ArenaBuilderException(ex=ex, msg=f"{method}: {ArenaBuilderException.MSG}")
             )
         
     @classmethod

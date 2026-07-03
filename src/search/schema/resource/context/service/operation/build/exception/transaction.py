@@ -12,15 +12,15 @@ from typing import Optional
 
 
 __all__ = [
-    # ======================# SCHEMA_CONTEXT_BUILD_FAILURE #======================#
-    "SchemaContextBuildException",
+    # ======================# SCHEMA_CONTEXT_BUILDER_FAILURE #======================#
+    "SchemaContextBuilderException",
 ]
 
-from system import BuildException
+from system import BuilderException
 
 
-# ======================# SCHEMA_CONTEXT_BUILD_FAILURE #======================#
-class SchemaContextBuildException(BuildException):
+# ======================# SCHEMA_CONTEXT_BUILDER_FAILURE #======================#
+class SchemaContextBuilderException(BuilderException):
     """
     Role:
         - Worker Method Identification
@@ -42,9 +42,9 @@ class SchemaContextBuildException(BuildException):
     Provides:
 
     Super:
-        BuildException
+        BuilderException
     """
-    ERR_CODE = "SCHEMA_CONTEXT_BUILD_FAILURE"
+    ERR_CODE = "SCHEMA_CONTEXT_BUILDER_FAILURE"
     MSG = "A SchemaContextBuilder method failed."
     
     def __init__(

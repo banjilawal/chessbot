@@ -10,7 +10,7 @@ version: 1.0.1
 from __future__ import annotations
 
 from controller import WorkerRegistryController
-from err import FinalizeSquareBuildException
+from err import FinalizeSquareBuilderException
 from model import Square
 from operation import AssemblyFinalizer
 from result import BuildResult
@@ -48,11 +48,11 @@ class SquareAssemblyFinalizer(AssemblyFinalizer[Square]):
         if insertion_result.is_failure:
             # Send the exception chain on failure.
             return BuildResult.failure(
-                FinalizeSquareBuildException(
+                FinalizeSquareBuilderException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    msg=FinalizeSquareBuildException.MSG,
-                    err_code=FinalizeSquareBuildException.ERR_CODE,
+                    msg=FinalizeSquareBuilderException.MSG,
+                    err_code=FinalizeSquareBuilderException.ERR_CODE,
                     ex=insertion_result.exception,
                 )
             )

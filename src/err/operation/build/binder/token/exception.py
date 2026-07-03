@@ -10,19 +10,19 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import BuildException
+from err import BuilderException
 
 
 __all__ = [
-    # ======================# TOKEN_BINDER_BUILD_FAILURE #======================#
-    "TokenBinderBuildException",
+    # ======================# TOKEN_BINDER_BUILDER_FAILURE #======================#
+    "TokenBinderBuilderException",
 ]
 
-from err import BinderBuildException
+from err import BinderBuilderException
 
 
-# ======================# TOKEN_BINDER_BUILD_FAILURE #======================#
-class TokenBinderBuildException(BinderBuildException):
+# ======================# TOKEN_BINDER_BUILDER_FAILURE #======================#
+class TokenBinderBuilderException(BinderBuilderException):
     """
     Role:
         -   Error Tracing
@@ -42,10 +42,10 @@ class TokenBinderBuildException(BinderBuildException):
     Provides:
 
     Super Class:
-        BinderBuildException
+        BinderBuilderException
     """
     MSG = "TokenBinder build failed."
-    ERR_CODE = "TOKEN_BINDER_BUILD_FAILURE"
+    ERR_CODE = "TOKEN_BINDER_BUILDER_FAILURE"
     
     def __init__(
             self,

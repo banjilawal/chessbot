@@ -6,18 +6,19 @@ Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
 """
+
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import FinalizeContextBuildException
+from err import FinalizeContextBuilderException
 
 
 __all__ = [
     # ======================# FINALIZING_FORMATION_CONTEXT_BUILD_AILURE #======================#
-    "FinalizeFormationContextBuildException",
+    "FinalizeFormationContextBuilderException",
 ]
 # ======================# FINALIZING_FORMATION_CONTEXT_BUILD_AILURE #======================#
-class FinalizeFormationContextBuildException(FinalizeContextBuildException):
+class FinalizeFormationContextBuilderException(FinalizeContextBuilderException):
     """
     Role:
         -   Error Tracing
@@ -38,7 +39,7 @@ class FinalizeFormationContextBuildException(FinalizeContextBuildException):
     Provides:
 
     Super Class:
-        ContextFinalizeBuildException
+        ContextFinalizeBuilderException
     """
     MSG = "Finalizing a FormationContextBuild failed."
     ERR_CODE = "FINALIZING_FORMATION_CONTEXT_BUILD_AILURE"

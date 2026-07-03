@@ -10,16 +10,16 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import BuildException
+from err import BuilderException
 
 
 __all__ = [
-    # ======================# VECTOR_BUILD_FAILURE #======================#
-    "VectorBuildException",
+    # ======================# VECTOR_BUILDER_FAILURE #======================#
+    "VectorBuilderException",
 ]
 
-# ======================# VECTOR_BUILD_FAILURE #======================#
-class VectorBuildException(BuildException):
+# ======================# VECTOR_BUILDER_FAILURE #======================#
+class VectorBuilderException(BuilderException):
     """
     Role:
         -   Error Tracing
@@ -40,10 +40,10 @@ class VectorBuildException(BuildException):
     Provides:
 
     Super Class:
-        BuildException
+        BuilderException
     """
     MSG = "Vector build failed."
-    ERR_CODE = "VECTOR_BUILD_FAILURE"
+    ERR_CODE = "VECTOR_BUILDER_FAILURE"
     
     def __init__(
             self,

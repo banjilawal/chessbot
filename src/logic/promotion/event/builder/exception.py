@@ -9,10 +9,10 @@ version: 1.0.0
 
 
 
-from system import BuildException
+from system import BuilderException
 from logic.promotion import PromotionEventException
 
 
-class PromotionEventBuildException(PromotionEventException, BuildException):
+class PromotionEventBuilderException(PromotionEventException, BuilderException):
     ERR_CODE = "PROMOTION_EVENT_EXCEPTION"
     MSG = "PromotionEvent raised an exception."

@@ -11,14 +11,14 @@ from __future__ import annotations
 from typing import Optional
 
 __all__ = [
-    # ======================# SQUARE_RAY_BUILD_FAILURE #======================#
-    "SquareRayBuildException",
+    # ======================# SQUARE_RAY_BUILDER_FAILURE #======================#
+    "SquareRayBuilderException",
 ]
 
-from system import BuildException
+from system import BuilderException
 
-# ======================# SQUARE_RAY_BUILD_FAILURE #======================#
-class SquareRayBuildException(BuildException):
+# ======================# SQUARE_RAY_BUILDER_FAILURE #======================#
+class SquareRayBuilderException(BuilderException):
     """
     Role:Exception Chain Layer 1, Exception Messaging
     # TASK: Worker Method Identifier
@@ -27,13 +27,13 @@ class SquareRayBuildException(BuildException):
     1.  Identify the SquareRayBuilder method where the exception failed.
 
     Super Class:
-        *   BuildException
+        *   BuilderException
 
     Provides:
 
 
     # INHERITED ATTRIBUTES:
-        *   See BuildException class for inherited attributes.
+        *   See BuilderException class for inherited attributes.
 
     Attributes:
         msg: Optional[str]
@@ -46,11 +46,11 @@ class SquareRayBuildException(BuildException):
    None
 
     # INHERITED METHODS:
-        *   See BuildException class for inherited methods.
+        *   See BuilderException class for inherited methods.
     """
     OP = "Build"
     MTHD_RSLT = "BuildResult"
-    ERR_CODE = "SQUARE_RAY_BUILD_FAILURE"
+    ERR_CODE = "SQUARE_RAY_BUILDER_FAILURE"
     MSG = "Failure in SquareRayBuilder method."
     
     def __init__(

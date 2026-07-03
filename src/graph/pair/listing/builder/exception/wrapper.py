@@ -11,15 +11,15 @@ from __future__ import annotations
 from typing import Optional
 
 __all__ = [
-    # ======================# PAIR_LIST_BUILD_FAILURE #======================#
-    "PairListBuildException",
+    # ======================# PAIR_LIST_BUILDER_FAILURE #======================#
+    "PairListBuilderException",
 ]
 
-from system import BuildException
+from system import BuilderException
 
 
-# ======================# PAIR_LIST_BUILD_FAILURE #======================#
-class PairListBuildException(BuildException):
+# ======================# PAIR_LIST_BUILDER_FAILURE #======================#
+class PairListBuilderException(BuilderException):
     """
     Role:Worker Method Identification, Exception Chain Layer 1, Exception Messaging
 
@@ -28,13 +28,13 @@ class PairListBuildException(BuildException):
     2.  Identify the PairListBuilder method where the failure occurred.
 
     Super Class:
-        *   BuildException
+        *   BuilderException
 
     Provides:
 
 
     # INHERITED ATTRIBUTES:
-        *   See BuildException class for inherited attributes.
+        *   See BuilderException class for inherited attributes.
 
     Attributes:
         ex: Optional[str]
@@ -47,11 +47,11 @@ class PairListBuildException(BuildException):
     None
 
     # INHERITED METHODS:
-        *   See BuildException class for inherited methods.
+        *   See BuilderException class for inherited methods.
     """
     OP = "Build"
     MTHD_RSLT = "BuildResult"
-    ERR_CODE = "PAIR_LIST_BUILD_FAILURE"
+    ERR_CODE = "PAIR_LIST_BUILDER_FAILURE"
     MSG = "Failure in PairListBuilder method."
     
     def __init__(

@@ -10,7 +10,7 @@ version: 1.0.1
 from __future__ import annotations
 
 from model.catalog.formation import (
-    ArenaFormationKeysException, FormationKey, FormationKeyBuildException,
+    ArenaFormationKeysException, FormationKey, FormationKeyBuilderException,
     FormationKeyBuildRouteException, ZeroFormationKeysException
 )
 from model.catalog.persona import Persona, PersonaService
@@ -79,9 +79,9 @@ class FormationContextBuilder(Builder[FormationKey]):
                     - On success: FormationKey in the payload.
         Raises:
             *   ZeroFormationKeysException
-            *   FormationKeyBuildException
+            *   FormationKeyBuilderException
             *   ArenaFormationKeysException
-            *   FormationKeyBuildException
+            *   FormationKeyBuilderException
         """
         method = "FormationContextBuilder.build"
         
@@ -93,8 +93,8 @@ class FormationContextBuilder(Builder[FormationKey]):
         if param_count == 0:
             # Send the exception chain on failure.
             return BuildResult.failure(
-                FormationKeyBuildException(
-                    msg=f"{method}: {FormationKeyBuildException.ERR_CODE}",
+                FormationKeyBuilderException(
+                    msg=f"{method}: {FormationKeyBuilderException.ERR_CODE}",
                     ex=ZeroFormationKeysException(
                         f"{method}: {ZeroFormationKeysException.MSG}"
                     )
@@ -104,8 +104,8 @@ class FormationContextBuilder(Builder[FormationKey]):
         if param_count > 1:
             # Send the exception chain on failure.
             return BuildResult.failure(
-                FormationKeyBuildException(
-                    msg=f"{method}: {FormationKeyBuildException.ERR_CODE}",
+                FormationKeyBuilderException(
+                    msg=f"{method}: {FormationKeyBuilderException.ERR_CODE}",
                     ex=ArenaFormationKeysException(f"{method}: {ArenaFormationKeysException}")
                 )
             )
@@ -118,8 +118,8 @@ class FormationContextBuilder(Builder[FormationKey]):
             if validation.is_failure:
                 # Send the exception chain on failure.
                 return BuildResult.failure(
-                    FormationKeyBuildException(
-                        msg=f"{method}: {FormationKeyBuildException.ERR_CODE}",
+                    FormationKeyBuilderException(
+                        msg=f"{method}: {FormationKeyBuilderException.ERR_CODE}",
                         ex=validation.exception,
                     )
                 )
@@ -132,8 +132,8 @@ class FormationContextBuilder(Builder[FormationKey]):
             if validation.is_failure:
                 # Send the exception chain on failure.
                 return BuildResult.failure(
-                    FormationKeyBuildException(
-                        msg=f"{method}: {FormationKeyBuildException.ERR_CODE}",
+                    FormationKeyBuilderException(
+                        msg=f"{method}: {FormationKeyBuilderException.ERR_CODE}",
                         ex=validation.exception,
                     )
                 )
@@ -146,8 +146,8 @@ class FormationContextBuilder(Builder[FormationKey]):
             if validation.is_failure:
                 # Send the exception chain on failure.
                 return BuildResult.failure(
-                    FormationKeyBuildException(
-                        msg=f"{method}: {FormationKeyBuildException.ERR_CODE}",
+                    FormationKeyBuilderException(
+                        msg=f"{method}: {FormationKeyBuilderException.ERR_CODE}",
                         ex=validation.exception,
                     )
                 )
@@ -160,8 +160,8 @@ class FormationContextBuilder(Builder[FormationKey]):
             if validation.is_failure:
                 # Send the exception chain on failure.
                 return BuildResult.failure(
-                    FormationKeyBuildException(
-                        msg=f"{method}: {FormationKeyBuildException.ERR_CODE}",
+                    FormationKeyBuilderException(
+                        msg=f"{method}: {FormationKeyBuilderException.ERR_CODE}",
                         ex=validation.exception,
                     )
                 )
@@ -170,8 +170,8 @@ class FormationContextBuilder(Builder[FormationKey]):
         
         # The default path returns failure.
         BuildResult.failure(
-            FormationKeyBuildException(
-                msg=f"{method}: {FormationKeyBuildException.ERR_CODE}",
+            FormationKeyBuilderException(
+                msg=f"{method}: {FormationKeyBuilderException.ERR_CODE}",
                 ex=FormationKeyBuildRouteException(
                     f"{method}: {FormationKeyBuildRouteException.MSG}"
                 )

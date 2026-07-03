@@ -10,16 +10,16 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import BuildException
+from err import BuilderException
 
 
 __all__ = [
-    # ======================# PERSONA_BUILD_FAILURE #======================#
-    "PersonaBuildException",
+    # ======================# PERSONA_BUILDER_FAILURE #======================#
+    "PersonaBuilderException",
 ]
 
-# ======================# PERSONA_BUILD_FAILURE #======================#
-class PersonaBuildException(BuildException):
+# ======================# PERSONA_BUILDER_FAILURE #======================#
+class PersonaBuilderException(BuilderException):
     """
     Role:
         -   Error Tracing
@@ -40,10 +40,10 @@ class PersonaBuildException(BuildException):
     Provides:
 
     Super Class:
-        BuildException
+        BuilderException
     """
     MSG = "Persona build failed."
-    ERR_CODE = "PERSONA_BUILD_FAILURE"
+    ERR_CODE = "PERSONA_BUILDER_FAILURE"
     
     def __init__(
             self,

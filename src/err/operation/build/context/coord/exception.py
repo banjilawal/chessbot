@@ -6,22 +6,23 @@ Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
 """
+
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import BuildException
+from err import BuilderException
 
 
 __all__ = [
-    # ======================# COORD_CONTEXT_BUILD_FAILURE #======================#
-    "CoordContextBuildException",
+    # ======================# COORD_CONTEXT_BUILDER_FAILURE #======================#
+    "CoordContextBuilderException",
 ]
 
-from err import ContextBuildException
+from err import ContextBuilderException
 
 
-# ======================# COORD_CONTEXT_BUILD_FAILURE #======================#
-class CoordContextBuildException(ContextBuildException):
+# ======================# COORD_CONTEXT_BUILDER_FAILURE #======================#
+class CoordContextBuilderException(ContextBuilderException):
     """
     Role:
         -   Error Tracing
@@ -41,10 +42,10 @@ class CoordContextBuildException(ContextBuildException):
     Provides:
 
     Super Class:
-        ContextBuildException
+        ContextBuilderException
     """
     MSG = "CoordContext build failed."
-    ERR_CODE = "COORD_CONTEXT_BUILD_FAILURE"
+    ERR_CODE = "COORD_CONTEXT_BUILDER_FAILURE"
     
     def __init__(
             self,

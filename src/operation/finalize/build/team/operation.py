@@ -10,7 +10,7 @@ version: 1.0.1
 from __future__ import annotations
 
 from controller import WorkerRegistryController
-from err import FinalizeTeamBuildException
+from err import FinalizeTeamBuilderException
 from model import Team
 from operation import AssemblyFinalizer
 from result import BuildResult
@@ -29,11 +29,11 @@ class TeamAssemblyFinalizer(AssemblyFinalizer[Team]):
         if insertion_result.is_failure:
             # Handle the case that, the team is not successfully registered with its team.
             return BuildResult.failure(
-                FinalizeTeamBuildException(
+                FinalizeTeamBuilderException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    msg=FinalizeTeamBuildException.MSG,
-                    err_code=FinalizeTeamBuildException.ERR_CODE,
+                    msg=FinalizeTeamBuilderException.MSG,
+                    err_code=FinalizeTeamBuilderException.ERR_CODE,
                     ex=insertion_result.exception,
                 )
         )

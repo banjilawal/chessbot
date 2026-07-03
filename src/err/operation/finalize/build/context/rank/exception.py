@@ -6,22 +6,23 @@ Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
 """
+
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import FinalizeBuildException
+from err import FinalizeBuilderException
 
 
 __all__ = [
-    # ======================# FINALIZING_RANK_CONTEXT_BUILD_FAILURE #======================#
-    "FinalizeRankContextBuildException",
+    # ======================# FINALIZING_RANK_CONTEXT_BUILDER_FAILURE #======================#
+    "FinalizeRankContextBuilderException",
 ]
 
-from err import FinalizeContextBuildException
+from err import FinalizeContextBuilderException
 
 
-# ======================# FINALIZING_RANK_CONTEXT_BUILD_FAILURE #======================#
-class FinalizeRankContextBuildException(FinalizeContextBuildException):
+# ======================# FINALIZING_RANK_CONTEXT_BUILDER_FAILURE #======================#
+class FinalizeRankContextBuilderException(FinalizeContextBuilderException):
     """
     Role:
         -   Error Tracing
@@ -42,10 +43,10 @@ class FinalizeRankContextBuildException(FinalizeContextBuildException):
     Provides:
 
     Super Class:
-        ContextFinalizeBuildException
+        ContextFinalizeBuilderException
     """
     MSG = "Finalizing a RankContextBuild failed."
-    ERR_CODE = "FINALIZING_RANK_CONTEXT_BUILD_FAILURE"
+    ERR_CODE = "FINALIZING_RANK_CONTEXT_BUILDER_FAILURE"
     
     def __init__(
             self,

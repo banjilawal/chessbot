@@ -13,4 +13,4 @@ version: 1.0.0
 
 # Modules
 from .builder import ArenaContextBuilder
-from .exception import ArenaContextBuildException
+from .exception import ArenaContextBuilderException

@@ -10,16 +10,16 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import BuildException
+from err import BuilderException
 
 
 __all__ = [
-    # ======================# CONTEXT_BUILD_FAILURE #======================#
-    "ContextBuildException",
+    # ======================# CONTEXT_BUILDER_FAILURE #======================#
+    "ContextBuilderException",
 ]
 
-# ======================# CONTEXT_BUILD_FAILURE #======================#
-class ContextBuildException(BuildException):
+# ======================# CONTEXT_BUILDER_FAILURE #======================#
+class ContextBuilderException(BuilderException):
     """
     Role:
         -   Error Tracing
@@ -39,10 +39,10 @@ class ContextBuildException(BuildException):
     Provides:
 
     Super Class:
-        BuildException
+        BuilderException
     """
     MSG = "context's build failed."
-    ERR_CODE = "CONTEXT_BUILD_FAILURE"
+    ERR_CODE = "CONTEXT_BUILDER_FAILURE"
     
     def __init__(
             self,

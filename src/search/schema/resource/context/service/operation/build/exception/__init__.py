@@ -13,4 +13,4 @@ version: 1.0.0
 
 # Modules
 from .route import SchemaContextBuildRouteException
-from .transaction import SchemaContextBuildException
+from .transaction import SchemaContextBuilderException

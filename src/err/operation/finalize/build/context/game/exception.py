@@ -6,18 +6,19 @@ Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
 """
+
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import FinalizeContextBuildException
+from err import FinalizeContextBuilderException
 
 __all__ = [
-    # ======================# FINALIZING_GAME_CONTEXT_BUILD_FAILURE #======================#
-    "FinalizeGameContextBuildException",
+    # ======================# FINALIZING_GAME_CONTEXT_BUILDER_FAILURE #======================#
+    "FinalizeGameContextBuilderException",
 ]
 
-# ======================# FINALIZING_GAME_CONTEXT_BUILD_FAILURE #======================#
-class FinalizeGameContextBuildException(FinalizeContextBuildException):
+# ======================# FINALIZING_GAME_CONTEXT_BUILDER_FAILURE #======================#
+class FinalizeGameContextBuilderException(FinalizeContextBuilderException):
     """
     Role:
         -   Error Tracing
@@ -38,10 +39,10 @@ class FinalizeGameContextBuildException(FinalizeContextBuildException):
     Provides:
 
     Super Class:
-        ContextFinalizeBuildException
+        ContextFinalizeBuilderException
     """
     MSG = "Finalizing a GameContextBuild failed."
-    ERR_CODE = "FINALIZING_GAME_CONTEXT_BUILD_FAILURE"
+    ERR_CODE = "FINALIZING_GAME_CONTEXT_BUILDER_FAILURE"
     
     def __init__(
             self,

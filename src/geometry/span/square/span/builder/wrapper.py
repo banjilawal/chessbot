@@ -11,15 +11,15 @@ from __future__ import annotations
 from typing import Optional
 
 __all__ = [
-    # ======================# SQUARE_SPAN_BUILD_FAILURE #======================#
-    "SquareSpanBuildException",
+    # ======================# SQUARE_SPAN_BUILDER_FAILURE #======================#
+    "SquareSpanBuilderException",
 ]
 
-from system import BuildException
+from system import BuilderException
 
 
-# ======================# SQUARE_SPAN_BUILD_FAILURE #======================#
-class SquareSpanBuildException(BuildException):
+# ======================# SQUARE_SPAN_BUILDER_FAILURE #======================#
+class SquareSpanBuilderException(BuilderException):
     """
     Role:Exception Chain Layer 1, Exception Messaging
     # TASK: Worker Method Identifier
@@ -28,13 +28,13 @@ class SquareSpanBuildException(BuildException):
     1.  Identify the SquareSpanBuilder method where the exception failed.
 
     Super Class:
-        *   BuildException
+        *   BuilderException
 
     Provides:
 
 
     # INHERITED ATTRIBUTES:
-        *   See BuildException class for inherited attributes.
+        *   See BuilderException class for inherited attributes.
 
     Attributes:
         *   err_code (str)
@@ -48,11 +48,11 @@ class SquareSpanBuildException(BuildException):
    None
 
     # INHERITED METHODS:
-        *   See BuildException class for inherited methods.
+        *   See BuilderException class for inherited methods.
     """
     OP = "Build"
     MTHD_RSLT = "BuildResult"
-    ERR_CODE = "SQUARE_SPAN_BUILD_FAILURE"
+    ERR_CODE = "SQUARE_SPAN_BUILDER_FAILURE"
     MSG = "Failure in SquareSpanBuilder method."
     
     def __init__(

@@ -10,16 +10,16 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import FinalizeBuildException
+from err import FinalizeBuilderException
 
 
 __all__ = [
-    # ======================# FORMATION_FINALIZE_BUILD_FAILURE #======================#
-    "FormationFinalizeBuildException",
+    # ======================# FORMATION_FINALIZE_BUILDER_FAILURE #======================#
+    "FormationFinalizeBuilderException",
 ]
 
-# ======================# FORMATION_FINALIZE_BUILD_FAILURE #======================#
-class FormationFinalizeBuildException(FinalizeBuildException):
+# ======================# FORMATION_FINALIZE_BUILDER_FAILURE #======================#
+class FormationFinalizeBuilderException(FinalizeBuilderException):
     """
     Role:
         -   Error Tracing
@@ -40,10 +40,10 @@ class FormationFinalizeBuildException(FinalizeBuildException):
     Provides:
 
     Super Class:
-        FinalizeBuildException
+        FinalizeBuilderException
     """
     MSG = "Finalizing a FormationBuild failed."
-    ERR_CODE = "FORMATION_FINALIZE_BUILD_FAILURE"
+    ERR_CODE = "FORMATION_FINALIZE_BUILDER_FAILURE"
     
     def __init__(
             self,

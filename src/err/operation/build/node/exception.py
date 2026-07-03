@@ -9,16 +9,16 @@ version: 1.0.1
 
 from __future__ import annotations
 from typing import Any, Optional
-from err import BuildException
+from err import BuilderException
 
 
 __all__ = [
-    # ======================# NODE_BUILD_FAILURE #======================#
-    "NodeBuildException",
+    # ======================# NODE_BUILDER_FAILURE #======================#
+    "NodeBuilderException",
 ]
 
-# ======================# NODE_BUILD_FAILURE #======================#
-class NodeBuildException(BuildException):
+# ======================# NODE_BUILDER_FAILURE #======================#
+class NodeBuilderException(BuilderException):
     """
     Role:
         -   Error Tracing
@@ -39,10 +39,10 @@ class NodeBuildException(BuildException):
     Provides:
 
     Super Class:
-        BuildException
+        BuilderException
     """
     MSG = "Node build failed."
-    ERR_CODE = "NODE_BUILD_FAILURE"
+    ERR_CODE = "NODE_BUILDER_FAILURE"
     
     def __init__(
             self,

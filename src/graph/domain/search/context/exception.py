@@ -7,7 +7,7 @@ Created: 2025-10-31
 version: 1.0.0
 """
 
-from system import SearchContextException, NullException, BuildException, ValidationException
+from system import SearchContextException, NullException, BuilderException, ValidationException
 
 __all__ = [
     "ResidentSearchContextException",
@@ -19,7 +19,7 @@ __all__ = [
     "ArenaResidentSearchParamsException",
 
     #======= SEARCH_CONTEXT BUILD EXCEPTION =======#
-    "ResidentSearchContextBuildException",
+    "ResidentSearchContextBuilderException",
 ]
 
 
@@ -71,7 +71,7 @@ class ArenaResidentSearchParamsException(ResidentSearchContextException):
 
 
 # #======================# RESIDENT_SEARCH_CONTEXT BUILD EXCEPTION #======================#
-class ResidentSearchContextBuildException(ResidentSearchContextException, BuildException):
+class ResidentSearchContextBuilderException(ResidentSearchContextException, BuilderException):
     """"""
     ERR_CODE = "RESIDENT_SEARCH_CONTEXT_BUILD_FAILED"
     MSG = "ResidentFilter build failed."

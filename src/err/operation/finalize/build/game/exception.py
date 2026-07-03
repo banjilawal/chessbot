@@ -10,16 +10,16 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import FinalizeBuildException
+from err import FinalizeBuilderException
 
 
 __all__ = [
     # ======================# FINALIZING_GAME_BUILD_ #======================#
-    "FinalizeGameBuildException",
+    "FinalizeGameBuilderException",
 ]
 
 # ======================# FINALIZING_GAME_BUILD_ #======================#
-class FinalizeGameBuildException(FinalizeBuildException):
+class FinalizeGameBuilderException(FinalizeBuilderException):
     """
     Role:
         -   Error Tracing
@@ -40,7 +40,7 @@ class FinalizeGameBuildException(FinalizeBuildException):
     Provides:
 
     Super Class:
-        FinalizeBuildException
+        FinalizeBuilderException
     """
     MSG = "Finalizing a GameBuild failed."
     ERR_CODE = "FINALIZING_GAME_BUILD_"

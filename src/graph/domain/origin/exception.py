@@ -8,7 +8,7 @@ version: 1.0.0
 """
 
 from system import (
-    ChessException, NullException, ValidationException, BuildException, InconsistencyException
+    ChessException, NullException, ValidationException, BuilderException, InconsistencyException
 )
 
 __all__ = [
@@ -22,7 +22,7 @@ __all__ = [
     "InvalidDomainOriginException",
     
     #====================== DOMAIN_ORIGIN BUILD EXCEPTION #======================#
-    "DomainOriginBuildException",
+    "DomainOriginBuilderException",
 ]
 
 
@@ -50,7 +50,7 @@ class InvalidDomainOriginException(DomainOriginException, ValidationException):
 
 
 #====================== DOMAIN_ORIGIN BUILD EXCEPTION #======================#
-class DomainOriginBuildException(DomainOriginException, BuildException):
+class DomainOriginBuilderException(DomainOriginException, BuilderException):
     """Super Exception for DomainOriginBuilder when it stops because of an error."""
     ERR_CODE = "DOMAIN_ORIGIN_BUILD_FAILED"
     MSG = "DomainOrigin build failed."

@@ -8,7 +8,7 @@ version: 1.0.1
 """
 
 from logic.arena import Arena, ArenaService
-from logic.board import ArenaAlreadyContainsBoardException, Board, BoardBuildException
+from logic.board import ArenaAlreadyContainsBoardException, Board, BoardBuilderException
 from system import Builder, BuildResult, BOARD_DIMENSION, IdentityService, LoggingLevelRouter, id_emitter
 
 
@@ -70,7 +70,7 @@ class BoardBuilder(Builder[Board]):
                     - On failure: Exception.
                     - On success: Board in the payload.
         Raises:
-            *   BoardBuildException
+            *   BoardBuilderException
             *   ArenaAlreadyContainsBoardException
         """
         method = "BoardBuilder.build"
@@ -80,8 +80,8 @@ class BoardBuilder(Builder[Board]):
         if id_validation.is_failure:
             # On failure return the exception.
             return BuildResult.failure(
-                BoardBuildException(
-                    msg=f"{method}: {BoardBuildException.ERR_CODE}",
+                BoardBuilderException(
+                    msg=f"{method}: {BoardBuilderException.ERR_CODE}",
                     ex=id_validation.exception
                 )
             )
@@ -90,8 +90,8 @@ class BoardBuilder(Builder[Board]):
         if arena_validation.is_failure:
             # On failure return the exception.
             return BuildResult.failure(
-                BoardBuildException(
-                    msg=f"{method}: {BoardBuildException.ERR_CODE}",
+                BoardBuilderException(
+                    msg=f"{method}: {BoardBuilderException.ERR_CODE}",
                     ex=arena_validation.exception
                 )
             )
@@ -99,8 +99,8 @@ class BoardBuilder(Builder[Board]):
         if arena.board is not None:
             # On failure return the exception.
             return BuildResult.failure(
-                BoardBuildException(
-                    msg=f"{method}: {BoardBuildException.ERR_CODE}",
+                BoardBuilderException(
+                    msg=f"{method}: {BoardBuilderException.ERR_CODE}",
                     ex=ArenaAlreadyContainsBoardException(f"{method}: {ArenaAlreadyContainsBoardException.MSG}")
                 )
             )

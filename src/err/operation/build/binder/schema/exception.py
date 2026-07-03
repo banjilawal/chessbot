@@ -6,22 +6,23 @@ Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
 """
+
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import BuildException
+from err import BuilderException
 
 
 __all__ = [
-    # ======================# SCHEMA_BINDER_BUILD_FAILURE #======================#
-    "SchemaBinderBuildException",
+    # ======================# SCHEMA_BINDER_BUILDER_FAILURE #======================#
+    "SchemaBinderBuilderException",
 ]
 
-from err import BinderBuildException
+from err import BinderBuilderException
 
 
-# ======================# SCHEMA_BINDER_BUILD_FAILURE #======================#
-class SchemaBinderBuildException(BinderBuildException):
+# ======================# SCHEMA_BINDER_BUILDER_FAILURE #======================#
+class SchemaBinderBuilderException(BinderBuilderException):
     """
     Role:
         -   Error Tracing
@@ -41,10 +42,10 @@ class SchemaBinderBuildException(BinderBuildException):
     Provides:
 
     Super Class:
-        BinderBuildException
+        BinderBuilderException
     """
     MSG = "SchemaBinder build failed."
-    ERR_CODE = "SCHEMA_BINDER_BUILD_FAILURE"
+    ERR_CODE = "SCHEMA_BINDER_BUILDER_FAILURE"
     
     def __init__(
             self,

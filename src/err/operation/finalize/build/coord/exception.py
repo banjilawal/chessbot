@@ -10,16 +10,16 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import FinalizeBuildException
+from err import FinalizeBuilderException
 
 
 __all__ = [
-    # ======================# FINALIZING_COORD_BUILD_FAILURE #======================#
-    "FinalizeCoordBuildException",
+    # ======================# FINALIZING_COORD_BUILDER_FAILURE #======================#
+    "FinalizeCoordBuilderException",
 ]
 
-# ======================# FINALIZING_COORD_BUILD_FAILURE #======================#
-class FinalizeCoordBuildException(FinalizeBuildException):
+# ======================# FINALIZING_COORD_BUILDER_FAILURE #======================#
+class FinalizeCoordBuilderException(FinalizeBuilderException):
     """
     Role:
         -   Error Tracing
@@ -40,10 +40,10 @@ class FinalizeCoordBuildException(FinalizeBuildException):
     Provides:
 
     Super Class:
-        FinalizeBuildException
+        FinalizeBuilderException
     """
     MSG = "Finalizing a CoordBuild failed."
-    ERR_CODE = "FINALIZING_COORD_BUILD_FAILURE"
+    ERR_CODE = "FINALIZING_COORD_BUILDER_FAILURE"
     
     def __init__(
             self,

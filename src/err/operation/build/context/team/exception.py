@@ -6,22 +6,23 @@ Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
 """
+
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import BuildException
+from err import BuilderException
 
 
 __all__ = [
-    # ======================# TEAM_CONTEXT_BUILD_FAILURE #======================#
-    "TeamContextBuildException",
+    # ======================# TEAM_CONTEXT_BUILDER_FAILURE #======================#
+    "TeamContextBuilderException",
 ]
 
-from err import ContextBuildException
+from err import ContextBuilderException
 
 
-# ======================# TEAM_CONTEXT_BUILD_FAILURE #======================#
-class TeamContextBuildException(ContextBuildException):
+# ======================# TEAM_CONTEXT_BUILDER_FAILURE #======================#
+class TeamContextBuilderException(ContextBuilderException):
     """
     Role:
         -   Error Tracing
@@ -41,10 +42,10 @@ class TeamContextBuildException(ContextBuildException):
     Provides:
 
     Super Class:
-        ContextBuildException
+        ContextBuilderException
     """
     MSG = "TeamContext build failed."
-    ERR_CODE = "TEAM_CONTEXT_BUILD_FAILURE"
+    ERR_CODE = "TEAM_CONTEXT_BUILDER_FAILURE"
     
     def __init__(
             self,

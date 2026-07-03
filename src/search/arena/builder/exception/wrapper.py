@@ -11,14 +11,14 @@ from __future__ import annotations
 from typing import Optional
 
 __all__ = [
-    # ======================# ARENA_CONTEXT_BUILD_FAILURE #======================#
-    "ArenaContextBuildException",
+    # ======================# ARENA_CONTEXT_BUILDER_FAILURE #======================#
+    "ArenaContextBuilderException",
 ]
 
-from system import BuildException
+from system import BuilderException
 
-# ======================# ARENA_CONTEXT_BUILD_FAILURE #======================#
-class ArenaContextBuildException(BuildException):
+# ======================# ARENA_CONTEXT_BUILDER_FAILURE #======================#
+class ArenaContextBuilderException(BuilderException):
     """
     Role:Worker Method Identification, Exception Chain Layer 1, Exception Messaging
 
@@ -27,13 +27,13 @@ class ArenaContextBuildException(BuildException):
     2.  Identify the ArenaContextBuilder method where the failure occurred.
 
     Super Class:
-        *   BuildException
+        *   BuilderException
 
     Provides:
 
 
     # INHERITED ATTRIBUTES:
-        *   See BuildException class for inherited attributes.
+        *   See BuilderException class for inherited attributes.
 
     Attributes:
         ex: Optional[str]
@@ -46,11 +46,11 @@ class ArenaContextBuildException(BuildException):
     None
 
     # INHERITED METHODS:
-        *   See BuildException class for inherited methods.
+        *   See BuilderException class for inherited methods.
     """
     OP = "Build"
     MTHD_RSLT = "BuildResult"
-    ERR_CODE = "ARENA_CONTEXT_BUILD_FAILURE"
+    ERR_CODE = "ARENA_CONTEXT_BUILDER_FAILURE"
     MSG = "Failure in ArenaContextBuilder method."
 
     def __init__(

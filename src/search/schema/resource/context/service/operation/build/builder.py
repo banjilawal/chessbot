@@ -10,7 +10,7 @@ version: 1.0.0
 from __future__ import annotations
 from typing import Optional
 
-from model.catalog import SchemaContextBuildException, SchemaContextBuildRouteException, ZeroSchemaContextFlagsException
+from model.catalog import SchemaContextBuilderException, SchemaContextBuildRouteException, ZeroSchemaContextFlagsException
 from model.catalog import SchemaContext, SchemaContextIntegrityWorkers
 from system import BuildResult, Builder, GameColor, LoggingLevelRouter
 from logic.team import ExcessTeamContextFlagsException
@@ -67,7 +67,7 @@ class SchemaContextBuilder(Builder[SchemaContext]):
         Returns:
             BuildResult[SchemaContext]
         Raises:
-            SchemaContextBuildException
+            SchemaContextBuilderException
             ZeroSchemaContextFlagsException
             SchemaContextBuildRouteException
             ExcessSchemaContextFlagsException
@@ -82,13 +82,13 @@ class SchemaContextBuilder(Builder[SchemaContext]):
         if param_count == 0:
             # Send the exception chain on failure.
             return BuildResult.failure(
-                SchemaContextBuildException(
+                SchemaContextBuilderException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    op=SchemaContextBuildException.OP,
-                    msg=SchemaContextBuildException.MSG,
-                    err_code=SchemaContextBuildException.ERR_CODE,
-                    mthd_rslt_type=SchemaContextBuildException.MTHD_RSLT,
+                    op=SchemaContextBuilderException.OP,
+                    msg=SchemaContextBuilderException.MSG,
+                    err_code=SchemaContextBuilderException.ERR_CODE,
+                    mthd_rslt_type=SchemaContextBuilderException.MTHD_RSLT,
                     ex=ZeroSchemaContextFlagsException(
                         msg=ZeroSchemaContextFlagsException.MSG,
                         err_code=ZeroSchemaContextFlagsException.ERR_CODE,
@@ -99,13 +99,13 @@ class SchemaContextBuilder(Builder[SchemaContext]):
         if param_count > 1:
             # Send the exception chain on failure.
             return BuildResult.failure(
-                SchemaContextBuildException(
+                SchemaContextBuilderException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    op=SchemaContextBuildException.OP,
-                    msg=SchemaContextBuildException.MSG,
-                    err_code=SchemaContextBuildException.ERR_CODE,
-                    mthd_rslt_type=SchemaContextBuildException.MTHD_RSLT,
+                    op=SchemaContextBuilderException.OP,
+                    msg=SchemaContextBuilderException.MSG,
+                    err_code=SchemaContextBuilderException.ERR_CODE,
+                    mthd_rslt_type=SchemaContextBuilderException.MTHD_RSLT,
                     ex=ExcessTeamContextFlagsException(
                         msg=ExcessTeamContextFlagsException.MSG,
                         err_code=ExcessTeamContextFlagsException.ERR_CODE,
@@ -120,13 +120,13 @@ class SchemaContextBuilder(Builder[SchemaContext]):
             if validation.is_failure:
                 # Send the exception chain on failure.
                 return BuildResult.failure(
-                    SchemaContextBuildException(
+                    SchemaContextBuilderException(
                         cls_mthd=method,
                         cls_name=cls.__name__,
-                        op=SchemaContextBuildException.OP,
-                        msg=SchemaContextBuildException.MSG,
-                        err_code=SchemaContextBuildException.ERR_CODE,
-                        mthd_rslt_type=SchemaContextBuildException.MTHD_RSLT,
+                        op=SchemaContextBuilderException.OP,
+                        msg=SchemaContextBuilderException.MSG,
+                        err_code=SchemaContextBuilderException.ERR_CODE,
+                        mthd_rslt_type=SchemaContextBuilderException.MTHD_RSLT,
                         ex=validation.exception,
                     )
                 )
@@ -139,13 +139,13 @@ class SchemaContextBuilder(Builder[SchemaContext]):
             if validation.is_failure:
                 # Send the exception chain on failure.
                 return BuildResult.failure(
-                    SchemaContextBuildException(
+                    SchemaContextBuilderException(
                         cls_mthd=method,
                         cls_name=cls.__name__,
-                        op=SchemaContextBuildException.OP,
-                        msg=SchemaContextBuildException.MSG,
-                        err_code=SchemaContextBuildException.ERR_CODE,
-                        mthd_rslt_type=SchemaContextBuildException.MTHD_RSLT,
+                        op=SchemaContextBuilderException.OP,
+                        msg=SchemaContextBuilderException.MSG,
+                        err_code=SchemaContextBuilderException.ERR_CODE,
+                        mthd_rslt_type=SchemaContextBuilderException.MTHD_RSLT,
                         ex=validation.exception,
                     )
                 )
@@ -154,13 +154,13 @@ class SchemaContextBuilder(Builder[SchemaContext]):
 
         # Handle the case that, there was no build route for the attribute
         return BuildResult.failure(
-            SchemaContextBuildException(
+            SchemaContextBuilderException(
                 cls_mthd=method,
                 cls_name=cls.__name__,
-                op=SchemaContextBuildException.OP,
-                msg=SchemaContextBuildException.MSG,
-                err_code=SchemaContextBuildException.ERR_CODE,
-                mthd_rslt_type=SchemaContextBuildException.MTHD_RSLT,
+                op=SchemaContextBuilderException.OP,
+                msg=SchemaContextBuilderException.MSG,
+                err_code=SchemaContextBuilderException.ERR_CODE,
+                mthd_rslt_type=SchemaContextBuilderException.MTHD_RSLT,
                 ex=SchemaContextBuildRouteException(
                     msg=SchemaContextBuildRouteException.MSG,
                     err_code=SchemaContextBuildRouteException.ERR_CODE,

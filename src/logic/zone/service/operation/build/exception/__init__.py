@@ -12,4 +12,4 @@ version: 1.0.0
 # Packages
 
 # Modules
-from .transaction import ZoneBuildException
+from .transaction import ZoneBuilderException

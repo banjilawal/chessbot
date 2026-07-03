@@ -10,14 +10,14 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import FinalizeBuildException
+from err import FinalizeBuilderException
 
 __all__ = [
-    # ======================# FINALIZING_TOKEN_BUILD_FAILURE #======================#
-    "FinalizeTokenBuildException",
+    # ======================# FINALIZING_TOKEN_BUILDER_FAILURE #======================#
+    "FinalizeTokenBuilderException",
 ]
-# ======================# FINALIZING_TOKEN_BUILD_FAILURE #======================#
-class FinalizeTokenBuildException(FinalizeBuildException):
+# ======================# FINALIZING_TOKEN_BUILDER_FAILURE #======================#
+class FinalizeTokenBuilderException(FinalizeBuilderException):
     """
     Role:
         -   Error Tracing
@@ -38,10 +38,10 @@ class FinalizeTokenBuildException(FinalizeBuildException):
     Provides:
 
     Super Class:
-        FinalizeBuildException
+        FinalizeBuilderException
     """
     MSG = "Finalizing a Finalize step failed"
-    ERR_CODE = "FINALIZING_TOKEN_BUILD_FAILURE"
+    ERR_CODE = "FINALIZING_TOKEN_BUILDER_FAILURE"
     
     def __init__(
             self,

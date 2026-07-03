@@ -70,7 +70,7 @@ class HostageBuilder(Builder[Hostage]):
             *   TypeError
             *   PrisonerCapturedByDifferentEnemyException
             *   PrisonerCannotBeActiveCombatantException
-            *   HostageBuildException
+            *   HostageBuilderException
             *   PrisonerAlreadyHasHostageException
             *   PrisonerCapturedOnDifferentSquareException
         """
@@ -81,8 +81,8 @@ class HostageBuilder(Builder[Hostage]):
         if id_validation.failure:
             # Send the exception chain on failure
             return BuildResult.failure(
-                HostageBuildException(
-                    msg=f"{method}: {HostageBuildException.MSG}",
+                HostageBuilderException(
+                    msg=f"{method}: {HostageBuilderException.MSG}",
                     ex=id_validation.exception
                 )
             )
@@ -91,8 +91,8 @@ class HostageBuilder(Builder[Hostage]):
         if captured_square_validation.failure:
             # Send the exception chain on failure
             return BuildResult.failure(
-                HostageBuildException(
-                    msg=f"{method}: {HostageBuildException.MSG}",
+                HostageBuilderException(
+                    msg=f"{method}: {HostageBuilderException.MSG}",
                     ex=captured_square_validation.exception
                 )
             )
@@ -100,8 +100,8 @@ class HostageBuilder(Builder[Hostage]):
         if captured_square.is_empty:
             # Send the exception chain on failure
             return BuildResult.failure(
-                HostageBuildException(
-                    msg=f"{method}: {HostageBuildException.MSG}",
+                HostageBuilderException(
+                    msg=f"{method}: {HostageBuilderException.MSG}",
                     ex=VictorNotOccupyingCapturedSquareException(
                         f"{method}: {VictorNotOccupyingCapturedSquareException.MSG}"
                     )
@@ -118,8 +118,8 @@ class HostageBuilder(Builder[Hostage]):
         if prisoner_is_combatant_validation.is_failure:
             # Send the exception chain on failure
             return BuildResult.failure(
-                HostageBuildException(
-                    msg=f"{method}: {HostageBuildException.MSG}",
+                HostageBuilderException(
+                    msg=f"{method}: {HostageBuilderException.MSG}",
                     ex=prisoner_is_combatant_validation.exception
                 )
             )
@@ -127,8 +127,8 @@ class HostageBuilder(Builder[Hostage]):
         if prisoner.is_active:
             # Send the exception chain on failure
             return BuildResult.failure(
-                HostageBuildException(
-                    msg=f"{method}: {HostageBuildException.MSG}",
+                HostageBuilderException(
+                    msg=f"{method}: {HostageBuilderException.MSG}",
                     ex=PrisonerCannotBeActiveCombatantException(
                         f"{method}: {PrisonerCannotBeActiveCombatantException.MSG}"
                     )
@@ -138,8 +138,8 @@ class HostageBuilder(Builder[Hostage]):
         if prisoner.being_processed_as_hostage:
             # Send the exception chain on failure
             return BuildResult.failure(
-                HostageBuildException(
-                    msg=f"{method}: {HostageBuildException.MSG}",
+                HostageBuilderException(
+                    msg=f"{method}: {HostageBuilderException.MSG}",
                     ex=PrisonerAlreadyHasHostageException(
                         f"{method}: {PrisonerAlreadyHasHostageException.MSG}"
                     )
@@ -149,8 +149,8 @@ class HostageBuilder(Builder[Hostage]):
         if prisoner.current_position != captured_square.hostage:
             # Send the exception chain on failure
             return BuildResult.failure(
-                HostageBuildException(
-                    msg=f"{method}: {HostageBuildException.MSG}",
+                HostageBuilderException(
+                    msg=f"{method}: {HostageBuilderException.MSG}",
                     ex=PrisonerCapturedOnDifferentSquareException(
                         f"{method}: {PrisonerCapturedOnDifferentSquareException.MSG}"
                     )
@@ -160,8 +160,8 @@ class HostageBuilder(Builder[Hostage]):
         if prisoner.captor != captured_square.occupant:
             # Send the exception chain on failure
             return BuildResult.failure(
-                HostageBuildException(
-                    msg=f"{method}: {HostageBuildException.MSG}",
+                HostageBuilderException(
+                    msg=f"{method}: {HostageBuilderException.MSG}",
                     ex=PrisonerCapturedByDifferentEnemyException(
                         f"{method}: {PrisonerCapturedByDifferentEnemyException.MSG}"
                     )

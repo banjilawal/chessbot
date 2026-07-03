@@ -13,7 +13,7 @@ from typing import Optional, cast
 
 from analyzer import SquareTokenRelationAnalyzer, TokenReadinessAnalyzer
 from err import (
-    BidirectionalSourceTokenRelationException, DisabledTokenManeuverException,
+    BidirectionalSourceTokenRelationException, CircularPathException, DisabledTokenManeuverException,
     ItinerarySourceEqualsDestinationException, PoppingEmptyTokenStackException,
     ManeuverPermitterException,
     TokenStackNullException
@@ -155,7 +155,12 @@ class ManeuverPermitter:
                     msg=ManeuverPermitterException.MSG,
                     err_code=ManeuverPermitterException.ERR_CODE,
                     mthd_rslt_type=MethodResultType.ANALYSIS_RESULT,
-                    ex=token_destination_validation_result.exception,
+                    ex=CircularPathException(
+                        cls_mthd=method,
+                        cls_name=cls.__name__,
+                        msg=CircularPathException.MSG,
+                        err_code=CircularPathException.ERR_CODE,
+                    ),
                 )
             )
         destination_relation_analysis = destination_relation_analyzer.analyze(

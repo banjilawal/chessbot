@@ -10,16 +10,16 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import FinalizeBuildException
+from err import FinalizeBuilderException
 
 
 __all__ = [
-    # ======================# FINALIZING_EDGE_BUILD_FAILURE #======================#
-    "FinalizeEdgeBuildException",
+    # ======================# FINALIZING_EDGE_BUILDER_FAILURE #======================#
+    "FinalizeEdgeBuilderException",
 ]
 
-# ======================# FINALIZING_EDGE_BUILD_FAILURE #======================#
-class FinalizeEdgeBuildException(FinalizeBuildException):
+# ======================# FINALIZING_EDGE_BUILDER_FAILURE #======================#
+class FinalizeEdgeBuilderException(FinalizeBuilderException):
     """
     Role:
         -   Error Tracing
@@ -40,10 +40,10 @@ class FinalizeEdgeBuildException(FinalizeBuildException):
     Provides:
 
     Super Class:
-        FinalizeBuildException
+        FinalizeBuilderException
     """
     MSG = "Finalizing a EdgeBuild failed."
-    ERR_CODE = "FINALIZING_EDGE_BUILD_FAILURE"
+    ERR_CODE = "FINALIZING_EDGE_BUILDER_FAILURE"
     
     def __init__(
             self,

@@ -10,7 +10,7 @@ version: 1.0.1
 from system import (
     Builder, BuildResult, LONGEST_KNIGHT_LEG_SIZE, LoggingLevelRouter, NumberValidator
 )
-from model.math.vector import Vector, VectorBuildException
+from model.math.vector import Vector, VectorBuilderException
 
 
 class VectorBuilder(Builder[Vector]):
@@ -60,7 +60,7 @@ class VectorBuilder(Builder[Vector]):
         Returns:
             BuildResult[Vector]
         Raises:
-            VectorBuildException
+            VectorBuilderException
         """
         method = f"{cls.__name__}.build"
         
@@ -74,13 +74,13 @@ class VectorBuilder(Builder[Vector]):
             if validation_result.is_failure:
                 # Send the exception chain on failure.
                 return BuildResult.failure(
-                    VectorBuildException(
+                    VectorBuilderException(
                         cls_mthd=method,
                         cls_name=cls.__name__,
-                        op=VectorBuildException.OP,
-                        msg=VectorBuildException.MSG,
-                        err_code=VectorBuildException.ERR_CODE,
-                        mthd_rslt_type=VectorBuildException.MTHD_RSLT,
+                        op=VectorBuilderException.OP,
+                        msg=VectorBuilderException.MSG,
+                        err_code=VectorBuilderException.ERR_CODE,
+                        mthd_rslt_type=VectorBuilderException.MTHD_RSLT,
                         ex=validation_result.exception
                     )
             )

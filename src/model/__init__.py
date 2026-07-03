@@ -15,6 +15,7 @@ from .binder import *
 from .board import *
 from .catalog import *
 from .context import *
+from .dto import *
 from .edge import *
 from .game import *
 from .graph import *
