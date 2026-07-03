@@ -1,7 +1,7 @@
-# src/err/null/path/check/exception.py
+# src/err/null/path/checked/exception.py
 
 """
-Module: err.null.check.exception
+Module: err.null.checked.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -15,18 +15,18 @@ from result import MethodResultType
 
 
 __all__ = [
-    # ======================# CHECK_PATH_NULL_ERROR #======================#
-    "CheckPathNullException",
+    # ======================# CHECKED_PATH_NULL_ERROR #======================#
+    "CheckedPathNullException",
 ]
 
-# ======================# CHECK_PATH_NULL_ERROR #======================#
-class CheckPathNullException(PathNullException):
+# ======================# CHECKED_PATH_NULL_ERROR #======================#
+class CheckedPathNullException(PathNullException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required CheckPath is null.
+        1.  Indicate that a required CheckedPath is null.
 
     Cannot Be Null.s:
             msg: Optional[str]
@@ -43,8 +43,8 @@ class CheckPathNullException(PathNullException):
     Super Class:
         PathNullException
     """
-    MSG = "CheckPath cannot be null."
-    ERR_CODE = "CHECK_PATH_NULL_ERROR"
+    MSG = "CheckedPath cannot be null."
+    ERR_CODE = "CHECKED_PATH_NULL_ERROR"
     
     def __init__(
             self,

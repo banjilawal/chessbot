@@ -13,6 +13,7 @@ version: 1.0.1
 from .attack import *
 from .blocked import *
 from .checked import *
+from .circular import *
 from .combatant import *
 from .king import *
 

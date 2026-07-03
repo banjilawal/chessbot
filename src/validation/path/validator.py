@@ -10,7 +10,7 @@ version: 1.0.1
 from __future__ import annotations
 from typing import cast
 
-from err import PathNullException
+from err import PathNullException, PathValidatorException
 from microservice import IdentityService
 from model import Path
 from result import ValidationResult
