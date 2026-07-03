@@ -5,11 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/analyzer/friend/analyzer.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/analyzer/friend/analyzer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/analyzer/friend/enemy/king/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/analyzer/friend/enemy/king/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/analyzer/friend/enemy/king/analyzer.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/analyzer/friend/enemy/king/detector.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/report/friend/report.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/report/friend/report.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/token/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/token/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/token/controller.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/token/controller.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/microservice/token/microservice.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/microservice/token/microservice.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -810,7 +808,7 @@
       <workItem from="1782214489414" duration="8439000" />
       <workItem from="1782265217166" duration="7062000" />
       <workItem from="1782325486599" duration="56546000" />
-      <workItem from="1782732939190" duration="131332000" />
+      <workItem from="1782732939190" duration="133655000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />

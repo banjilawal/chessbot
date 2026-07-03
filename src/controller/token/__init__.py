@@ -14,4 +14,4 @@ from .build import *
 from .validation import *
 
 # Modules
-from .controller import TokenOpsController
+from .controller import TokenServiceController

@@ -17,7 +17,7 @@ from operation.promotion import PawnPromoter
 from validation import TokenValidator
 
 
-class TokenOpsController:
+class TokenServiceController:
     """
     Role:
         - Controller

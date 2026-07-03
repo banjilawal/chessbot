@@ -12,7 +12,7 @@ from __future__ import annotations
 from microservice import Microservice
 from model import Coord, Token
 from operation import TokenValidator
-from controller.token import TokenOpsController
+from controller.token import TokenServiceController
 from pipeline import TokenBuildPipeline
 from result import DeletionResult, InsertionResult
 from system import IdFactory, LoggingLevelRouter
@@ -66,13 +66,13 @@ class TokenService(Microservice[Token]):
         Microservice
     """
     SERVICE_NAME = "TokenService"
-    _controller: TokenOpsController
+    _controller: TokenServiceController
     
     def __init__(
             self,
             name: str = SERVICE_NAME,
             id: int = IdFactory.next_id(class_name="TokenService"),
-            controller: TokenOpsController = TokenOpsController(),
+            controller: TokenServiceController = TokenServiceController(),
     ):
         """
         Args:
@@ -92,7 +92,7 @@ class TokenService(Microservice[Token]):
         return TokenValidator()
     
     @property
-    def controller(self) -> TokenOpsController:
+    def controller(self) -> TokenServiceController:
         return self._controller
     
     @LoggingLevelRouter.monitor
