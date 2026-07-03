@@ -21,7 +21,7 @@ from err import (
 )
 from microservice import SquareValidator, TokenService
 from model import Square, SquareContext, Token, TokenPathDTO
-from report import DeleteApproval, RelationReport, TokenReadinessReport
+from report import DeleteApproval, FriendshipReport, RelationReport, TokenReadinessReport
 from report.approval.maneuver import ManeuverApproval
 from result import AnalysisResult, MethodResultType
 from search import TokenOriginSearcher
@@ -137,11 +137,28 @@ class ManeuverPermitter:
             )
         dto = cast(TokenPathDTO, dto_build_result.payload)
         
-        destination_occupant == dto.destination.occupant
-        token_service.controller.
-        if token.is_friend(destination_occupant)
-        
-            
+        destination_occupant = dto.destination.occupant
+        if destination_occupant is not None:
+            friendship_analysis_result = token_service.controller.friendship_analyzer.execute(
+                hunter=token,
+                target=destination_occupant,
+            )
+            if friendship_analysis_result.is_failure:
+                # Return the exception chain on failure
+                return AnalysisResult.failure(
+                    ManeuverPermitterException(
+                        cls_mthd=method,
+                        cls_name=cls.__name__,
+                        msg=ManeuverPermitterException.MSG,
+                        err_code=ManeuverPermitterException.ERR_CODE,
+                        mthd_rslt_type=MethodResultType.ANALYSIS_RESULT,
+                        ex=friendship_analysis_result.exception,
+                    )
+                )
+            report = cast(FriendshipReport, friendship_analysis_result.payload[0])
+            if report.are_friends:
+                return
+                
         origin_search_result = origin_searcher.execute(
             token=token,
             readiness_analyzer=readiness_analyzer
