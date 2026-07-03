@@ -10,7 +10,7 @@ version: 1.0.1
 from __future__ import annotations
 from typing import cast
 
-from err import PathNullException, PathValidatorException
+from err import CircularPathException, PathNullException, PathValidatorException
 from microservice import IdentityService
 from model import Path
 from result import ValidationResult
@@ -140,7 +140,12 @@ class PathValidator:
                     cls_name=cls.__name__,
                     msg=PathValidatorException.MSG,
                     err_code=PathValidatorException.ERR_CODE,
-                    ex=square_validation_result.exception,
+                    ex=CircularPathException(
+                        cls_mthd=method,
+                        cls_name=cls.__name__,
+                        msg=CircularPathException.MSG,
+                        err_code=CircularPathException.ERR_CODE,
+                    ),
                 )
             )
         # --- Forward the work product to the caller. ---#
