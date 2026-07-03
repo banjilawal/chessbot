@@ -18,7 +18,10 @@ from model import Maneuver
 from operation import Operation
 from search import TokenOriginSearcher
 from toolkit import Toolkit
-from validation import PathValidator, SquareValidator, TokenDestinationRelationValidator, TokenValidator
+from validation import (
+    ManeuverEndpointValidator, PathValidator, SquareValidator, TokenDestinationRelationValidator,
+    TokenValidator
+)
 from validation.origin import TokenOriginRelationValidator
 
 
@@ -43,6 +46,7 @@ class ManeuverToolkit(Toolkit[Maneuver]):
         origin_searcher: TokenOriginSearcher
         readiness_analyzer: TokenReadinessAnalyzer
         relation_analyzer: SquareTokenRelationAnalyzer
+        maneuver_endpoint_validator: ManeuverEndpointValidator
         origin_relation_validator: TokenOriginRelationValidator
         destination_relation_validator: TokenDestinationRelationValidator
         null_exception: ManeuverNullException
@@ -64,6 +68,7 @@ class ManeuverToolkit(Toolkit[Maneuver]):
     origin_searcher: TokenOriginSearcher = TokenOriginSearcher()
     readiness_analyzer: TokenReadinessAnalyzer = TokenReadinessAnalyzer()
     relation_analyzer: SquareTokenRelationAnalyzer = SquareTokenRelationAnalyzer()
+    maneuver_endpoint_validator: ManeuverEndpointValidator = ManeuverEndpointValidator()
     origin_relation_validator: TokenOriginRelationValidator = TokenOriginRelationValidator()
     destination_relation_validator: TokenDestinationRelationValidator = TokenDestinationRelationValidator()
     null_exception: ManeuverNullException = ManeuverNullException()

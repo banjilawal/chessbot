@@ -18,6 +18,7 @@ from .context import *
 from .coord import *
 from .destination import *
 from .edge import *
+from .endpoint import *
 from .formation import *
 from .game import *
 from .hostage import *

@@ -18,6 +18,7 @@ from .priming import *
 from .context import *
 from .coord import *
 from .edge import *
+from .endpoint import *
 from .formation import *
 from .game import *
 from .hashtable import *
