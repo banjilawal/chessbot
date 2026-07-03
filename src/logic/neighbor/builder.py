@@ -26,7 +26,7 @@ class VisitationEventBuilder(Builder[VisitationEvent]):
         method = "VisitationBuilder.build"
         
         try:
-            id_validation = IdValidator.execute(id)
+            id_validation = IdValidator.build(id)
             if id_validation.is_failure():
                 return BuildResult.failure(
                     IdValidationException(f"{method}: {IdValidationException.MSG}")

@@ -75,7 +75,7 @@ class TeamBinderValidator(Validator[TeamBinder]):
         binder = cast(TeamBinder, candidate)
         
         # Handle the case that, the white team does not pass a validation check.
-        white_team_validation_result = team_validator.execute(binder.white_team)
+        white_team_validation_result = team_validator.build(binder.white_team)
         if white_team_validation_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
@@ -85,7 +85,7 @@ class TeamBinderValidator(Validator[TeamBinder]):
                 )
             )
         # Handle the case that, the black team does not pass a validation check.
-        black_team_validation_result = team_validator.execute(binder.black_team)
+        black_team_validation_result = team_validator.build(binder.black_team)
         if black_team_validation_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(

@@ -70,7 +70,7 @@ class TokenPopCoordProcess:
         method = f"{cls.__class__.__name__}undo_last_coord_push"
         
         # Handle the case that, the token does not pass a validation check.
-        validation_result = token_validator.execute(token)
+        validation_result = token_validator.build(token)
         if validation_result.is_failure:
             # Send the exception chain on failure.
             return DeletionResult.failure(

@@ -67,7 +67,7 @@ class VectorTransform(Operation):
         method = f"{cls.__name__}.work"
         
         # Handle the case that, the validator flags the context.
-        context_validation_result = context_validator.execute(context)
+        context_validation_result = context_validator.build(context)
         if context_validation_result.is_failure:
             # Send the exception chain on failure.
             return ComputationResult.failure(

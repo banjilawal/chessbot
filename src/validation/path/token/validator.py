@@ -79,7 +79,7 @@ class TokenPathValidator:
             destination_analyzer = DestinationTokenRelationAnalyzer()
         
         # Handle the case that, the token has an inconsistency with the source.
-        origin_relation_analysis = origin_relation_validator.execute(
+        origin_relation_analysis = origin_relation_validator.build(
             token=token,
             origin=origin,
         )

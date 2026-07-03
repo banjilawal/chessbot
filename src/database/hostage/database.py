@@ -123,7 +123,7 @@ class HostageDatabase(Database[Hostage]):
         # --- To assure uniqueness the member_service has to conduct a search. The hostage should be validated first. ---#
         
         # Handle the case that, the hostageis not safe.
-        validation = self.integrity_service.validator.execute(candidate=manifest)
+        validation = self.integrity_service.validator.build(candidate=manifest)
         if validation.is_failure:
             # Send the exception chain on failure.
             return InsertionResult.failure(

@@ -114,7 +114,7 @@ class RankAssemblyPrimer(AssemblyPrimer[Rank]):
                 )
             )
         # Handle the case that, the persona does not pass a validation check.
-        persona_validator_result = toolkit.persona_validator.execute(
+        persona_validator_result = toolkit.persona_validator.build(
             candidate=blueprint.persona
         )
         if persona_validator_result.is_failure:

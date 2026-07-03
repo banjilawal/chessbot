@@ -96,7 +96,7 @@ class BoardTeamBinderValidator(Validator[BoardBinder]):
                 )
             )
         binder = validation_priming_result.payload
-        board_validation_result =toolkit.board_service.validator.execute(binder.primary)
+        board_validation_result =toolkit.board_service.validator.build(binder.primary)
         
         if board_validation_result.is_failure:
             # Send the exception chain on failure.
@@ -139,7 +139,7 @@ class BoardTeamBinderValidator(Validator[BoardBinder]):
         
         # handle the case that, the keys are not safe schemas.
         for key in table.keys():
-            schema_validation_result = toolkit.schema_service.validator.execute(table[key])
+            schema_validation_result = toolkit.schema_service.validator.build(table[key])
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 BoardTeamBinderValidationException(
@@ -152,7 +152,7 @@ class BoardTeamBinderValidator(Validator[BoardBinder]):
             )
         # Handle the case that, the values are not safe teams.
         for key in table.keys():
-            team_validation_result = toolkit.schema_service.validator.execute(table[key])
+            team_validation_result = toolkit.schema_service.validator.build(table[key])
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 BoardTeamBinderValidationException(

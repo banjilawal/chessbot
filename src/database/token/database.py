@@ -181,7 +181,7 @@ class TokenDatabase(Database[Token]):
             rank_service = RankService()
             
         # --- Forward the request to the kernel. ---#
-        rank_quota_analysis_result = self._kernel.request.rank_quota_analyzer.execute(
+        rank_quota_analysis_result = self._kernel.request.rank_quota_analyzer.build(
             rank=rank,
             token_stack=self._kernel,
             rank_service=rank_service,

@@ -66,7 +66,7 @@ class KingSpanner(Spanner):
         method = f"{cls.__name__}.compute"
         
         # Handle the case that the origin is not certified as a safe Coord.
-        validation_result = coord_service.validator.execute(candidate=origin)
+        validation_result = coord_service.validator.build(candidate=origin)
         if validation_result.is_failure:
             return ComputationResult.failure(
                 KingSpannerException(

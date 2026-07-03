@@ -217,7 +217,7 @@ class RankContextToolkit(Toolkit[RankContext]):
         method = "RankContextToolkit.toolkit_rank_search_context"
         
         try:
-            rank_validation = rank_validator.execute(rank)
+            rank_validation = rank_validator.build(rank)
             if rank_validation.is_failure():
                 return ToolkitResult.failure(rank_validation.exception)
             

@@ -95,7 +95,7 @@ class SquareStackRosterHandler:
         method = "SquareStackRosterHandler.deploy_roster_on_stack"
         
         # Handle the case that, the team does not pass a validation check.
-        team_validation = team_service.validator.execute(candidate=team)
+        team_validation = team_service.validator.build(candidate=team)
         if team_validation.is_failure:
             # Send the exception chain on failure.
             return UpdateResult.update_failure(
@@ -214,7 +214,7 @@ class SquareStackRosterHandler:
         
         pre_deployment_team = deepcopy(team)
         # Find the roster member's opening square.
-        token_search_result = team.roster.execute(context=TokenContext(opening_square=square.name))
+        token_search_result = team.roster.build(context=TokenContext(opening_square=square.name))
         
         # Handle the case that, the search is not completed.
         if token_search_result.is_failure:

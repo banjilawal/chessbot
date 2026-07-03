@@ -93,7 +93,7 @@ class SquareRayValidator(Validator[SquareRay]):
         square_ray = cast(SquareRay, candidate)
         
         # Handle the case that, the origin does not pass square safety checks.
-        origin_validation_result = square_validator.execute(candidate=square_ray.origin)
+        origin_validation_result = square_validator.build(candidate=square_ray.origin)
         if origin_validation_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(

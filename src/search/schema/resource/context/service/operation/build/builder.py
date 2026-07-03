@@ -135,7 +135,7 @@ class SchemaContextBuilder(Builder[SchemaContext]):
         
         # Build the color SchemaContext if its flag is enabled.
         if color is not None:
-            validation = workers.color_validator.execute(color)
+            validation = workers.color_validator.build(color)
             if validation.is_failure:
                 # Send the exception chain on failure.
                 return BuildResult.failure(

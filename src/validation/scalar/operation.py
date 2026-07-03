@@ -70,7 +70,7 @@ class ScalarValidator(Validator[Scalar]):
             toolkit = MathToolkit()
         
         # Handle the case that, the candidate does not exist.
-        validation_priming_result = toolkit.validation_primer.execute(
+        validation_priming_result = toolkit.validation_primer.build(
             candidate=candidate,
             target_model=Scalar,
             context_null_exception=ScalarNullException(),

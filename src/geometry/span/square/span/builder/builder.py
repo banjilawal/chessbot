@@ -203,7 +203,7 @@ class SquareSpanBuilder(Builder[SquareSpan]):
         """
         method = f"{cls.__class__.__name__}.square_from_coord"
         
-        search_result = square_stack.execute(context=SquareContext(coord=coord))
+        search_result = square_stack.build(context=SquareContext(coord=coord))
         # Handle the case that the context is not completed.
         if search_result.is_failure:
             # Send the exception chain on failure.

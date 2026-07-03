@@ -119,7 +119,7 @@ class TeamContextToolkit(Toolkit[TeamContext]):
         
         # Toolkit the owner TeamContext if its flag is enabled.
         if player is not None:
-            validation = player_service.validator.execute(candidate=player)
+            validation = player_service.validator.build(candidate=player)
             if validation.is_failure:
                 # Send the exception chain on failure.
                 return ToolkitResult.failure(
@@ -147,7 +147,7 @@ class TeamContextToolkit(Toolkit[TeamContext]):
         
         # Toolkit the color TeamContext if its flag is enabled.
         if color is not None:
-            validation = color_validator.execute(candidate=color)
+            validation = color_validator.build(candidate=color)
             if validation.is_failure:
                 # Send the exception chain on failure.
                 return ToolkitResult.failure(

@@ -93,7 +93,7 @@ class PlayerService(Microservice[Player]):
         method = "PlayerService.pop_team_from_player"
         
         # Handle the case that, the owneris not safe.
-        validation = self.validator.execute(player)
+        validation = self.validator.build(player)
         if validation.is_failure:
             # Send the exception chain on failure.
             return DeletionResult.failure(
@@ -161,7 +161,7 @@ class PlayerService(Microservice[Player]):
         """
         method = "PlayerService.push_team_to_player"
         
-        relation = self.player_team_relation_analyzer.execute(
+        relation = self.player_team_relation_analyzer.build(
             candidate_primary=player,
             candidate_secondary=team,
             owner_validator=self.validator,

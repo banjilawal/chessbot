@@ -107,7 +107,7 @@ class VectorService(Microservice[Vector]):
         
         # Handle the case that, one of the vectors in not certified as safe
         for vector in vectors:
-            validation_result = self.validator.execute(candidate=vector)
+            validation_result = self.validator.build(candidate=vector)
             if validation_result.is_failure:
                 # Send an exception chain on failure.
                 return ComputationResult.failure(
@@ -180,7 +180,7 @@ class VectorService(Microservice[Vector]):
         method = f"{self.__class__.__name__}.multiply_vector_by_scalar"
         
         # Handle the case that, the vector does not pass a validation check.
-        vector_validation_result = self.validator.execute(candidate=vector)
+        vector_validation_result = self.validator.build(candidate=vector)
         if vector_validation_result.is_failure:
             # Send an exception chain on failure.
             return ComputationResult.failure(
@@ -193,7 +193,7 @@ class VectorService(Microservice[Vector]):
                 )
             )
         # Handle the case that, the scalar does not pass a validation check.
-        scalar_validation_result = scalar_service.validator.execute(candidate=scalar)
+        scalar_validation_result = scalar_service.validator.build(candidate=scalar)
         if scalar_validation_result.is_failure:
             # Send an exception chain on failure.
             return ComputationResult.failure(
@@ -253,7 +253,7 @@ class VectorService(Microservice[Vector]):
         method = f"{self.__class__.__name__}.convert_coord_to_vector"
         
         # Handle the case that, the coord does not pass a validation check.
-        coord_validation_result = coord_service.validator.execute(candidate=coord)
+        coord_validation_result = coord_service.validator.build(candidate=coord)
         if coord_validation_result.is_failure:
             # Send an exception chain on failure.
             return ComputationResult.failure(

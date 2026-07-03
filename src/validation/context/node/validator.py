@@ -112,7 +112,7 @@ class NodeContextValidator(ContextValidator[Node]):
         
         # Certification for the search-by-priority target.
         if context.priority is not None:
-            validation = number_validator.execute(
+            validation = number_validator.build(
                 candidate=context.priority,
                 floor=-(sys.maxsize -1),
                 ceiling=sys.maxsize
@@ -130,7 +130,7 @@ class NodeContextValidator(ContextValidator[Node]):
         
         # Certification for the search-by-predecessor target.
         if context.predecessor is not None:
-            validation = node_validator.execute(candidate=context.predecessor)
+            validation = node_validator.build(candidate=context.predecessor)
             if validation.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
@@ -144,7 +144,7 @@ class NodeContextValidator(ContextValidator[Node]):
         
         # Certification for the search-by-square target.
         if context.home_square is not None:
-            validation = square_service.validator.execute(context.home_square)
+            validation = square_service.validator.build(context.home_square)
             if validation.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(

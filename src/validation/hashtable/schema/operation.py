@@ -79,7 +79,7 @@ class SchemaHashtableValidator(Validator[Dict[Schema, Any]]):
         method = f"{cls.__name__}.validate"
             
         # Handle the case that, the candidate does not exist.
-        validation_priming_result = validation_primer.execute(
+        validation_priming_result = validation_primer.build(
             candidate=candidate,
             target_model=Dict[Schema, Any],
             context_null_exception=HashtableNullException(),
@@ -98,7 +98,7 @@ class SchemaHashtableValidator(Validator[Dict[Schema, Any]]):
         table = cast(Dict[Schema, Any], validation_priming_result.payload)
         
         for key in table.keys():
-            schema_validation_result = schema_validator.validator.execute(table[key])
+            schema_validation_result = schema_validator.validator.build(table[key])
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 SchemaHashtableValidationException(

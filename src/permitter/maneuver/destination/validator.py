@@ -342,7 +342,7 @@ class ManeuverPermitter:
             )
 
         
-        stack_validation_result = token_freedom_analyzer.execute(
+        stack_validation_result = token_freedom_analyzer.build(
             candidate=stack,
             target_model=TokenStackService,
             null_exception=TokenStackNullException()

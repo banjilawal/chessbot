@@ -45,7 +45,7 @@ class OldPromotionEventValidator(Validator[PromotionEvent]):
             
             event = cast(PromotionEvent, candidate)
             
-            id_validation = Validator.execute(candidate.id)
+            id_validation = Validator.build(candidate.id)
             if not id_validation.is_success():
                 return ValidationResult(exception=id_validation.exception)
             

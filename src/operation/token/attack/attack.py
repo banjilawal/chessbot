@@ -46,7 +46,7 @@ class Attack:
                 )
             )
         # Handle the case the item does not pass a validation check.
-        square_validation = square_database.microservice.validator.execute(candidate=square)
+        square_validation = square_database.microservice.validator.build(candidate=square)
         if square_validation.is_failure:
             # Send the exception chain on failure.
             return AttackResult.failure(

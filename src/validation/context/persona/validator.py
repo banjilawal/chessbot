@@ -144,7 +144,7 @@ class PersonaContextValidator(ContextValidator[PersonaKey]):
         
         # Certification for the lookup-by-quota target.
         if super_key.quota is not None:
-            validation = number_validator.execute(candidate=super_key.quota)
+            validation = number_validator.build(candidate=super_key.quota)
             if validation.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
@@ -158,7 +158,7 @@ class PersonaContextValidator(ContextValidator[PersonaKey]):
         
         # Certification for the lookup-by-ransom target.
         if super_key.ransom is not None:
-            validation = number_validator.execute(candidate=super_key.ransom)
+            validation = number_validator.build(candidate=super_key.ransom)
             if validation.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(

@@ -123,7 +123,7 @@ class TeamValidator(Validator[Team]):
                 )
             )
         # Handle the case that, team.owner does not pass a validation check.
-        owner_validation_result = toolkit.owner_validator.execute(team.owner)
+        owner_validation_result = toolkit.owner_validator.build(team.owner)
         if owner_validation_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(

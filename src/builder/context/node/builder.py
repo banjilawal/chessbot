@@ -118,7 +118,7 @@ class NodeContextBuilder(Builder[NodeContext]):
         
         # Build the priority NodeContext if its flag is enabled.
         if priority is not None:
-            validation = number_validator.execute(
+            validation = number_validator.build(
                 candidate=priority,
                 ceiling=sys.maxsize,
                 floor=-(sys.maxsize - 1),
@@ -136,7 +136,7 @@ class NodeContextBuilder(Builder[NodeContext]):
         
         # Build the square NodeContext if its flag is enabled.
         if square is not None:
-            validation = square_service.validator.execute(candidate=square)
+            validation = square_service.validator.build(candidate=square)
             if validation.is_failure:
                 # Send the exception chain on failure.
                 return BuildResult.failure(
@@ -150,7 +150,7 @@ class NodeContextBuilder(Builder[NodeContext]):
         
         # Build the predecessor NodeContext if its flag is enabled.
         if predecessor is not None:
-            validation = node_validator.execute(candidate=predecessor)
+            validation = node_validator.build(candidate=predecessor)
             if validation.is_failure:
                 # Send the exception chain on failure.
                 return BuildResult.failure(

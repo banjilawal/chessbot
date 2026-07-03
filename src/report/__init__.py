@@ -15,6 +15,7 @@ from .approval import *
 from .claim import *
 from .collision import *
 from .event import *
+from .friend import *
 from .itinerary import *
 from .promotion import *
 from .quota import *

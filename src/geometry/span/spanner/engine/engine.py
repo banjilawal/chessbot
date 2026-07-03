@@ -81,7 +81,7 @@ class SpannerEngine:
                 )
             )
         # Handle the case that, the origin is not certified as a safe coord.
-        origin_validation = coord_service.validator.execute(candidate=origin)
+        origin_validation = coord_service.validator.build(candidate=origin)
         if origin_validation.is_failure:
             # Send the exception chain on failure.
             return ComputationResult.failure(

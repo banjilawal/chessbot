@@ -45,7 +45,7 @@ class BoardRelationAnalyzer:
     def analyze(self, context: BoardRelationAnalysisContext) -> RelationReport:
         
         if context.team is not None:
-            return self._team_relation.execute(
+            return self._team_relation.build(
                 candidate_primary=context.board,
                 candidate_secondary=context.team,
             )

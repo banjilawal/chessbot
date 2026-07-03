@@ -168,7 +168,7 @@ class SquareAssemblyPrimer(AssemblyPrimer[Square]):
             )
         # Handle the case that, the coord does not pass a validation check.
         if blueprint.formation is not None:
-            formation_validation_result = toolkit.formation_service.validator.execute(
+            formation_validation_result = toolkit.formation_service.validator.build(
                 candidate=blueprint.formation
             )
             if formation_validation_result.is_failure:

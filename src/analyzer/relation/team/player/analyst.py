@@ -61,7 +61,7 @@ class PlayerTeamRelationAnalyst(RelationAnalyst[Player, Team]):
         method = "PlayerService.analyze"
         
         # Handle the case that, owner validation fails.
-        player_validation = player_validator.execute(candidate_primary)
+        player_validation = player_validator.build(candidate_primary)
         if player_validation.is_failure:
             # Send the exception chain on failure.
             return RelationReport.failure(

@@ -66,7 +66,7 @@ class CoordStackPush:
         method =  f"{cls.__name__}.push"
         
         # Handle the case that, the coord does not past a validation check.
-        validation_result = coord_stack.validator.execute(coord)
+        validation_result = coord_stack.validator.build(coord)
         if validation_result.is_failure:
             # Return the exception chain on failure
             return InsertionResult.failure(

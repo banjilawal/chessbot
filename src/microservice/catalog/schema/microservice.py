@@ -65,7 +65,7 @@ class SchemaService(CatalogService[Schema]):
     
     @property
     def search_service(self) -> SchemaLookupService:
-        return self._ops_controller.execute
+        return self._ops_controller.build
     
     @property
     def values(self) -> SchemaPropertyValuesReporter:

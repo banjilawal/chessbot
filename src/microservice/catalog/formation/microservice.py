@@ -113,7 +113,7 @@ class FormationService(HashService[Formation]):
         method = "FormationService.get_team_square"
         
         # Handle the case that, the team does not get certfied safe.
-        team_validation = team_service.validator.execute(candidate=team)
+        team_validation = team_service.validator.build(candidate=team)
         # Send the exception chain on failure.
         if team_validation.is_failure:
             return SearchResult.failure(

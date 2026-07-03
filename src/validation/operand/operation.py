@@ -82,7 +82,7 @@ class VectorOperandValidator(Validator[VectorOperand]):
             toolkit = VectorOperandToolkit()
         
         # Handle the case that, the candidate does not exist or, is the wrong type.
-        validation_priming_result = toolkit.validation_primer.execute(
+        validation_priming_result = toolkit.validation_primer.build(
             candidate=candidate,
             target_model=VectorOperand,
             context_null_exception=VectorOperandNullException(),
@@ -134,9 +134,9 @@ class VectorOperandValidator(Validator[VectorOperand]):
         # --- Assign to the correct service for the final step. ---#
         validation_result = None
         if isinstance(operand.vector, Vector):
-            validation_result = toolkit.vector_service.validator.execute(operand.vector)
+            validation_result = toolkit.vector_service.validator.build(operand.vector)
         if isinstance(operand.coord, Coord):
-            validation_result = toolkit.coord_service.validator.execute(operand.to_dict)
+            validation_result = toolkit.coord_service.validator.build(operand.to_dict)
             
         # Handle the case that context was flagged.
         if validation_result.is_failure:

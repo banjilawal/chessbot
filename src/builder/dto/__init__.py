@@ -13,4 +13,3 @@ version: 1.0.1
 from .path import *
 
 # Modules
-from .builder import DtoBuilder

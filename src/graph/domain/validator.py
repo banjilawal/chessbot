@@ -80,7 +80,7 @@ class DomainValidator(Validator[Domain]):
             
             domain = cast(Domain, candidate)
             
-            id_validation = IdValidator.execute(domain.id)
+            id_validation = IdValidator.build(domain.id)
             if id_validation.is_failure():
                 return ValidationResult.failure(id_validation.exception)
             

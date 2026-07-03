@@ -38,7 +38,7 @@ class OccupationEventValidator(Validator[OccupationEvent]):
                 )
             event = cast(OccupationEvent, candidate)
             
-            id_validation = Validator.execute(candidate.visitor_id)
+            id_validation = Validator.build(candidate.visitor_id)
             if not id_validation.is_success():
                 return ValidationResult(exception=id_validation.exception)
             

@@ -58,7 +58,7 @@ class KingCheckEventValidator(Validator[KingCheckEvent]):
 
       event = cast(AttackEvent, t)
 
-      id_validation = IdValidator.execute(event.visitor_id)
+      id_validation = IdValidator.build(event.visitor_id)
       if not id_validation.is_success():
         raise IdValidationException(f"{method}: {IdValidationException.MSG}")
 
@@ -66,7 +66,7 @@ class KingCheckEventValidator(Validator[KingCheckEvent]):
       if not actor_validation.is_success():
         raise InvalidAttackException(f"{method}: actor_candidate validation failed.")
 
-      destination_square_validation = SquareValidator.execute(event.enemy_square)
+      destination_square_validation = SquareValidator.build(event.enemy_square)
       if not destination_square_validation.is_success():
         raise InvalidSqaureException(f"{method}: {InvalidSqaureException.MSG}")
 

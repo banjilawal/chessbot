@@ -68,7 +68,7 @@ class BoardSquareRelationAnalysis(RelationAnalysis[Board, Square]):
         method = f"{cls.__name__}.analyze"
         
         # Handle the case that, the board is not secure.
-        board_validation = board_validator.execute(candidate_primary)
+        board_validation = board_validator.build(candidate_primary)
         if board_validation.is_failure:
             # Send the exception chain on failure.
             return RelationReport.failure(
@@ -82,7 +82,7 @@ class BoardSquareRelationAnalysis(RelationAnalysis[Board, Square]):
         board = cast(Board, board_validation.payload)
         
         # Handle the case that, the square is unsecure.
-        square_validation = square_service.validator.execute(candidate_satellite)
+        square_validation = square_service.validator.build(candidate_satellite)
         if square_validation.is_failure:
             # Send the exception chain on failure.
             return RelationReport.failure(
@@ -96,7 +96,7 @@ class BoardSquareRelationAnalysis(RelationAnalysis[Board, Square]):
         
 
         # --- Search the board's squares for the satellite-rank. ---#
-        square_search = board.squares.execute(context=SquareContext(id=square.id))
+        square_search = board.squares.build(context=SquareContext(id=square.id))
         
         # Handle the case that, the search was aborted.
         if square_search.is_failure:

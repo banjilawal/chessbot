@@ -12,19 +12,21 @@ from __future__ import annotations
 from typing import Optional, cast
 
 from analyzer import SquareTokenRelationAnalyzer, TokenReadinessAnalyzer
+from builder import TokenPathDtoBuilder
 from err import (
     BidirectionalSourceTokenRelationException, CircularPathException, DisabledTokenManeuverException,
     ItinerarySourceEqualsDestinationException, PoppingEmptyTokenStackException,
     ManeuverPermitterException,
     TokenStackNullException
 )
-from microservice import SquareValidator
-from model import Square, SquareContext, Token
+from microservice import SquareValidator, TokenService
+from model import Square, SquareContext, Token, TokenPathDTO
 from report import DeleteApproval, RelationReport, TokenReadinessReport
 from report.approval.maneuver import ManeuverApproval
 from result import AnalysisResult, MethodResultType
 from search import TokenOriginSearcher
 from stack import TokenStackService
+from toolkit import TokenPathToolkit
 from util import LoggingLevelRouter
 from validation import TokenFreedomAnalyzer, TokenValidator
 from validation.destination import TokenDestinationRelationValidator
@@ -61,6 +63,9 @@ class ManeuverPermitter:
             cls,
             token: Token,
             destination: Square,
+            token_service: TokenService | None = None,
+            path_toolkit: TokenPathToolkit | None = None,
+            path_dto_builder: TokenPathDtoBuilder | None = None,
             token_validator: TokenValidator | None = None,
             square_validator: SquareValidator | None = None,
             origin_searcher: TokenOriginSearcher | None = None,
@@ -95,6 +100,10 @@ class ManeuverPermitter:
         # --- Supply any missing dependencies. ---#
         if token_validator is None:
             token_validator = TokenValidator()
+        if path_toolkit is None:
+            path_toolkit = TokenPathToolkit()
+        if path_dto_builder is None:
+            path_dto_builder = TokenPathDtoBuilder()
         if square_validator is None:
             square_validator = SquareValidator()
         if origin_searcher is None:
@@ -105,6 +114,30 @@ class ManeuverPermitter:
             relation_analyzer = SquareTokenRelationAnalyzer()
         if destination_validator is None:
             destination_validator = TokenDestinationRelationValidator()
+            
+        dto_build_result = path_dto_builder.build(
+            token=token,
+            destination=destination,
+            toolkit=path_toolkit,
+        )
+        if dto_build_result.is_failure:
+            # Return the exception chain on failure
+            return AnalysisResult.failure(
+                ManeuverPermitterException(
+                    cls_mthd=method,
+                    cls_name=cls.__name__,
+                    msg=ManeuverPermitterException.MSG,
+                    err_code=ManeuverPermitterException.ERR_CODE,
+                    mthd_rslt_type=MethodResultType.ANALYSIS_RESULT,
+                    ex=dto_build_result.exception,
+                )
+            )
+        dto = cast(TokenPathDTO, dto_build_result.payload)
+        
+        destination_occupant = dto.destination.occupant
+        token_service.controller.
+        if token.is_friend(destination_occupant)
+        
             
         origin_search_result = origin_searcher.execute(
             token=token,
@@ -384,7 +417,7 @@ class ManeuverPermitter:
             )
 
         
-        stack_validation_result = token_freedom_analyzer.execute(
+        stack_validation_result = token_freedom_analyzer.build(
             candidate=stack,
             target_model=TokenStackService,
             null_exception=TokenStackNullException()

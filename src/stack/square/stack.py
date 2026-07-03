@@ -138,7 +138,7 @@ class SquareStackService(StackService[Square]):
         method = "SquareStackService.push"
         
         # --- Handoff the push responsibility to _controller ---#
-        insertion_result = self._controller.crud.pusher.execute(stack=self, item=item)
+        insertion_result = self._controller.crud.pusher.build(stack=self, item=item)
     
         # Handle the case that, the search is not completed.
         if insertion_result.is_failure:

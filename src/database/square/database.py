@@ -257,7 +257,7 @@ class SquareDatabase(Database[Square]):
         method = "SquareDatabase.search"
         
         # --- Handoff square insertion responsibility to stack_service. ---#
-        query_result = self._stack_service.execute(context=context)
+        query_result = self._stack_service.build(context=context)
         
         # Handle the case that, the context was aborted.
         if query_result.is_failure:

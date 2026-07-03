@@ -110,7 +110,7 @@ class SchemaContextToolkit(Toolkit[SchemaKey]):
         
         # Toolkit the color_key SchemaKey if its value is set.
         if color is not None:
-            validation = color_validator.execute(candidate=color)
+            validation = color_validator.build(candidate=color)
             if validation.is_failure:
                 # Send the exception chain on failure.
                 return ToolkitResult.failure(

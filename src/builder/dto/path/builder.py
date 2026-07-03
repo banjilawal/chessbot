@@ -9,7 +9,7 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from err import CircularPathException
+from err import CircularPathException, TokenPathDtoBuilderException
 from model import Square, Token, TokenPathDTO
 from result import BuildResult, MethodResultType
 from toolkit import TokenPathToolkit
@@ -18,32 +18,34 @@ from util import LoggingLevelRouter
 
 class TokenPathDtoBuilder:
     """
-    Role:
-        - Transaction Worker
-        - Consistency, Integrity Maintenance
-        - Process Runner
-
-    Responsibilities:
-        1.  Run tests to see if permission can be granted to a TokenStackService to execute a deletion.
-
-    Attributes:
-
-    Provides:
-        -   execute(
-                    cls,
-                    token: Token,
-                    token_stack: TokenStackService,
-                    rank_service: RankService = RankService(),
-                    rank_quota_analyzer: RankQuotaAnalyzer = RankQuotaAnalyzer(),
-                    collision_detector: TokenCollisionAnalyst = TokenCollisionAnalyst(),
-            ) -> BuildResult
-
-    Super Class:
-    """
+    Role
+        -   Transaction Worker
+        -   Integrity Maintenance
+        -   Consistency Assurance
+        -   Build Process Owner
     
+    Responsibilities:
+        1.  Ensure a new TokenPathDto instance is born safe and reliable.
+    
+    Attributes:
+    
+    Provides:
+        -   def execute(
+                    owner: Team,
+                    id: int = IdFactory,
+                    formation: Formation,
+                    rank_service: RankService,
+                    identity_service: IdentityService,
+                    formation_service: FormationService,
+                    team_validator: TeamValidator,
+            ) -> BuildResult[Token]
+    
+    Super Class:
+        Builder
+    """
     @classmethod
     @LoggingLevelRouter.monitor
-    def execute(
+    def build(
             cls,
             token: Token,
             destination: Square,
@@ -84,11 +86,11 @@ class TokenPathDtoBuilder:
         if origin_search_result.is_failure:
             # Return the exception chain on failure
             return BuildResult.failure(
-                TokenPahDtoBuilderException(
+                TokenPathDtoBuilderException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    msg=TokenPahDtoBuilderException.MSG,
-                    err_code=TokenPahDtoBuilderException.ERR_CODE,
+                    msg=TokenPathDtoBuilderException.MSG,
+                    err_code=TokenPathDtoBuilderException.ERR_CODE,
                     mthd_rslt_type=MethodResultType.BUILD_RESULT,
                     ex=origin_search_result.exception,
                 )
@@ -106,11 +108,11 @@ class TokenPathDtoBuilder:
         if token_destination_validation_result.is_failure:
             # Return the exception chain on failure
             return BuildResult.failure(
-                TokenPahDtoBuilderException(
+                TokenPathDtoBuilderException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    msg=TokenPahDtoBuilderException.MSG,
-                    err_code=TokenPahDtoBuilderException.ERR_CODE,
+                    msg=TokenPathDtoBuilderException.MSG,
+                    err_code=TokenPathDtoBuilderException.ERR_CODE,
                     mthd_rslt_type=MethodResultType.BUILD_RESULT,
                     ex=token_destination_validation_result.exception,
                 )
@@ -119,11 +121,11 @@ class TokenPathDtoBuilder:
         if origin == destination:
             # Return the exception chain on failure
             return BuildResult.failure(
-                TokenPahDtoBuilderException(
+                TokenPathDtoBuilderException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    msg=TokenPahDtoBuilderException.MSG,
-                    err_code=TokenPahDtoBuilderException.ERR_CODE,
+                    msg=TokenPathDtoBuilderException.MSG,
+                    err_code=TokenPathDtoBuilderException.ERR_CODE,
                     mthd_rslt_type=MethodResultType.BUILD_RESULT,
                     ex=CircularPathException(
                         cls_mthd=method,
@@ -133,6 +135,7 @@ class TokenPathDtoBuilder:
                     ),
                 )
             )
+        # --- Forward the work product to the caller. ---#
         return BuildResult.success(
             payload=TokenPathDTO(
                 token=token,

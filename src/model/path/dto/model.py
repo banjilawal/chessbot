@@ -8,11 +8,13 @@ version: 1.0.1
 """
 
 from __future__ import annotations
+
+from dataclasses import dataclass
 from typing import Optional
 
-from model import KingToken, Path, Square, Token
+from model import Square, Token
 
-
+@dataclass
 class TokenPathDTO:
     """
     Role:

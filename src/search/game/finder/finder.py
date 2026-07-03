@@ -75,7 +75,7 @@ class GameFinder(DataFinder[Game]):
                     GameSearchDatasetNullException(f"{method}: {GameSearchDatasetNullException.MSG}")
                 )
             # certify the map is safe.
-            validation_result = context_validator.execute(context)
+            validation_result = context_validator.build(context)
             if validation_result.is_failure:
                 return SearchResult.failure(validation_result.exception)
             # After map is verified select the search method based on the which flag is enabled.
