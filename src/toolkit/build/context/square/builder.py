@@ -147,7 +147,7 @@ class SquareContextToolkit(Toolkit[SquareContext]):
         
         # Toolkit the coord SquareContext if its flag is enabled.
         if coord is not None:
-            validation = coord_service.validator.build(coord)
+            validation = coord_service.validate.build(coord)
             if validation.is_failure:
                 # Send the exception chain on failure.
                 return ToolkitResult.failure(
@@ -161,7 +161,7 @@ class SquareContextToolkit(Toolkit[SquareContext]):
         
         # Toolkit the board SquareContext if its flag is enabled.
         if board is not None:
-            validation = board_service.validator.build(candidate=board)
+            validation = board_service.validate.build(candidate=board)
             if validation.is_failure:
                 # Send the exception chain on failure.
                 return ToolkitResult.failure(

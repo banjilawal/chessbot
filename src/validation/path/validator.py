@@ -8,14 +8,13 @@ version: 1.0.1
 """
 
 from __future__ import annotations
-from typing import cast
+from typing import Any, cast
 
-from err import CircularPathException, PathNullException, PathValidatorException
-from microservice import IdentityService
+from err import CircularPathException, PathValidatorException
 from model import Path
 from result import ValidationResult
+from toolkit import PathToolkit
 from util import LoggingLevelRouter
-from validation import SquareValidator, PrimingValidator
 
 
 class PathValidator:
@@ -47,12 +46,10 @@ class PathValidator:
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def validator(
+    def validate(
             cls,
-            candidate,
-            identity_service: IdentityService | None = None,
-            square_validator: SquareValidator | None = None,
-            validation_primer: PrimingValidator | None = None,
+            candidate: Any,
+            toolkit: PathToolkit | None = None,
     ) -> ValidationResult[Path]:
         """
         Verify the object is a Path that is safe to use.
@@ -67,9 +64,7 @@ class PathValidator:
             2.  Otherwise, send the success result.
         Args:
             candidate: Any
-            identity_service: IdentityService
-            square_validator: SquareValidator
-            validation_primer: ValidationPrimer
+            toolkit: PathToolkit
         Returns:
             ValidationResult[Path]
         Raises:
@@ -78,19 +73,15 @@ class PathValidator:
         method = f"{cls.__name__}.validate"
         
         # --- Supply any missing dependencies. ---#
-        if identity_service is None:
-            identity_service = IdentityService()
-        if square_validator is None:
-            square_validator = SquareValidator()
-        if validation_primer is None:
-            validation_primer = PrimingValidator()
-            
-        priming_validation_result = validation_primer.validate(
-            candidate=candidate,
-            target_model=Path,
-            null_exception=PathNullException(),
-        )
+        if toolkit is None:
+            toolkit = PathToolkit()
+        
         # Handle the case that, the candidate fails an initial check.
+        priming_validation_result = toolkit.priming_validator.validate(
+            candidate=candidate,
+            target_model=toolkit.model,
+            null_exception=toolkit.null_exception,
+        )
         if priming_validation_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
@@ -102,10 +93,11 @@ class PathValidator:
                     ex=priming_validation_result.exception,
                 )
             )
+        # --- Cast the candidate into a Path for additional tests. ---#
         path = cast(Path, candidate)
         
         # Handle the case that, the path's id gets flagged.
-        id_validation = identity_service.validate_id(path.id)
+        id_validation = toolkit.identity_service.validate_id(path.id)
         if id_validation.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
@@ -119,7 +111,7 @@ class PathValidator:
             )
         # Handle the case that either the source or destination are not safe.
         for square in [path.origin, path.destination]:
-            square_validation_result = square_validator.validate(candidate=square)
+            square_validation_result = toolkit.square_validator.validate(square)
             if square_validation_result.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
@@ -149,6 +141,6 @@ class PathValidator:
                 )
             )
         # --- Forward the work product to the caller. ---#
-        return ValidationResult.success(payload=path)
+        return ValidationResult.success(path)
         
         

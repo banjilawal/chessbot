@@ -114,7 +114,7 @@ class FormationContextBuilder(Builder[FormationKey]):
         
         # Build the square_name FormationKey if its value is set.
         if square is not None:
-            validation = square_service.validator.build(square)
+            validation = square_service.validate.build(square)
             if validation.is_failure:
                 # Send the exception chain on failure.
                 return BuildResult.failure(
@@ -156,7 +156,7 @@ class FormationContextBuilder(Builder[FormationKey]):
         
         # Build the persona FormationKey if its value is set.
         if persona is not None:
-            validation = persona_service.validator.build(candidate=persona)
+            validation = persona_service.validate.build(candidate=persona)
             if validation.is_failure:
                 # Send the exception chain on failure.
                 return BuildResult.failure(

@@ -10,11 +10,10 @@ version: 1.0.1
 from __future__ import annotations
 
 from abc import ABC
-from logging import Logger
 from typing import Any, Dict, Generic, List, TypeVar
 
 from controller import ServiceRegistryController, WorkerRegistryController
-from err import OperationNotFoundException, ToolkitException
+from err import ToolkitException
 from microservice import IdentityService, Microservice
 from operation import Operation
 from result import SearchResult
@@ -40,6 +39,9 @@ class Toolkit(ABC, Generic[T]):
         DEPENDENCIES: List[Operation] = []
         SERVICE_DEPENDENCIES: List[Microservice] = []
         
+        identity_service: IdentityService
+        priming_validator: PrimingValidator
+        
         _entries: Dict[str, Any]
     
     Provides:
@@ -51,6 +53,7 @@ class Toolkit(ABC, Generic[T]):
     """
     DEPENDENCIES: List[Operation] = []
     SERVICE_DEPENDENCIES: List[Microservice] = []
+    
     identity_service: IdentityService = IdentityService()
     priming_validator: PrimingValidator = PrimingValidator()
     

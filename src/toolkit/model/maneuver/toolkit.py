@@ -12,12 +12,14 @@ from __future__ import annotations
 from typing import List
 
 from analyzer import SquareTokenRelationAnalyzer, TokenReadinessAnalyzer
+from err import ManeuverNullException
 from microservice import Microservice
 from model import Maneuver
 from operation import Operation
 from search import TokenOriginSearcher
 from toolkit import Toolkit
-from validation import SquareValidator, TokenDestinationRelationValidator, TokenValidator
+from validation import PathValidator, SquareValidator, TokenDestinationRelationValidator, TokenValidator
+from validation.origin import TokenOriginRelationValidator
 
 
 class ManeuverToolkit(Toolkit[Maneuver]):
@@ -35,12 +37,16 @@ class ManeuverToolkit(Toolkit[Maneuver]):
         DEPENDENCIES: List[Operation] = []
         SERVICE_DEPENDENCIES: List[Microservice] = []
 
+        path_validator: PathValidator
         token_validator: TokenValidator
         square_validator: SquareValidator
         origin_searcher: TokenOriginSearcher
         readiness_analyzer: TokenReadinessAnalyzer
         relation_analyzer: SquareTokenRelationAnalyzer
-        destination_validator: TokenDestinationRelationValidator
+        origin_relation_validator: TokenOriginRelationValidator
+        destination_relation_validator: TokenDestinationRelationValidator
+        null_exception: ManeuverNullException
+        model: Maneuver
 
     Provides:
         -   def resolve_dependencies(s -> SearchResult[List[Dict[str, Any]]]:
@@ -52,10 +58,13 @@ class ManeuverToolkit(Toolkit[Maneuver]):
     DEPENDENCIES: List[Operation] = []
     SERVICE_DEPENDENCIES: List[Microservice] = []
     
-    
+    path_validator: PathValidator = PathValidator()
     token_validator: TokenValidator = TokenValidator()
     square_validator: SquareValidator = SquareValidator()
     origin_searcher: TokenOriginSearcher = TokenOriginSearcher()
     readiness_analyzer: TokenReadinessAnalyzer = TokenReadinessAnalyzer()
     relation_analyzer: SquareTokenRelationAnalyzer = SquareTokenRelationAnalyzer()
-    destination_validator: TokenDestinationRelationValidator = TokenDestinationRelationValidator()
+    origin_relation_validator: TokenOriginRelationValidator = TokenOriginRelationValidator()
+    destination_relation_validator: TokenDestinationRelationValidator = TokenDestinationRelationValidator()
+    null_exception: ManeuverNullException = ManeuverNullException()
+    model: Maneuver = Maneuver

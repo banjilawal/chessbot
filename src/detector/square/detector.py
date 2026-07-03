@@ -75,7 +75,7 @@ class SquareCollisionDetector(Detector[Square]):
         method = f"{cls.__class__.__name__}.detect"
         
         # Handle the case that, the target does not pass a validation check.
-        validation_result = stream.microservice.validator.build(attractor)
+        validation_result = stream.microservice.validate.build(attractor)
         if validation_result.is_failure:
             return AnalysisResult.failure(
                 SquareCollisionDetectorException(

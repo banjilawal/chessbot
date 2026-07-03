@@ -23,6 +23,7 @@ from .game import *
 from .hostage import *
 from .identity import *
 from .itinerary import *
+from .maneuver import *
 from .node import *
 from .number import *
 from .operand import *

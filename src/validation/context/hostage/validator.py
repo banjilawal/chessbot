@@ -122,7 +122,7 @@ class HostageContextValidator(ContextValidator[Hostage]):
         
         # Certification for the search-by-victor target.
         if context.victor is not None:
-            validation = hostage_service.validator.build(context.victor)
+            validation = hostage_service.validate.build(context.victor)
             if validation.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
@@ -136,7 +136,7 @@ class HostageContextValidator(ContextValidator[Hostage]):
         
         # Certification for the search-by-prisoner target.
         if context.prisoner is not None:
-            validation = hostage_service.validator.verify_hostage_is_combatant(candidate=context.prisoner)
+            validation = hostage_service.validate.verify_hostage_is_combatant(candidate=context.prisoner)
             if validation.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
@@ -150,7 +150,7 @@ class HostageContextValidator(ContextValidator[Hostage]):
         
         # Certification for the search-by-captured_square target.
         if context.captured_square is not None:
-            validation = square_service.validator.build(context.captured_square)
+            validation = square_service.validate.build(context.captured_square)
             if validation.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(

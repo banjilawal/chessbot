@@ -96,7 +96,7 @@ class BoardTeamBinderValidator(Validator[BoardBinder]):
                 )
             )
         binder = validation_priming_result.payload
-        board_validation_result =toolkit.board_service.validator.build(binder.primary)
+        board_validation_result =toolkit.board_service.validate.build(binder.primary)
         
         if board_validation_result.is_failure:
             # Send the exception chain on failure.

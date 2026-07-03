@@ -1,7 +1,7 @@
-# src/err/null/relation/exception.py
+# src/err/null/relation/origin/exception.py
 
 """
-Module: err.null.relation.exception
+Module: err.null.relation.origin.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,22 +10,23 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import NullException
+from err import RelationNullException
 from result import MethodResultType
 
 __all__ = [
-    # ======================# RELATION_NULL_ERROR #======================#
-    "RelationNullException",
+    # ======================# TOKEN_ORIGIN_RELATION_NULL_ERROR #======================#
+    "TokenOriginRelationNullException",
 ]
 
-# ======================# RELATION_NULL_ERROR #======================#
-class RelationNullException(NullException):
+# ======================# TOKEN_ORIGIN_RELATION_NULL_ERROR #======================#
+class TokenOriginRelationNullException(RelationNullException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required Relation is null.
+        1.  Indicate that a required TokenOriginRelation is null. This means the square
+            is not the token's source.
 
     Attributes:
         msg: Optional[str]
@@ -39,10 +40,10 @@ class RelationNullException(NullException):
     Provides:
 
     Super Class:
-        NullException
+        RelationNullException
     """
-    MSG = "Relation cannot be null."
-    ERR_CODE = "RELATION_NULL_ERROR"
+    MSG = "TokenOriginRelation cannot be null. Square is not token's source."
+    ERR_CODE = "TOKEN_ORIGIN_RELATION_NULL_ERROR"
     
     def __init__(
             self,

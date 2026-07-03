@@ -189,7 +189,7 @@ class TokenAssemblyPrimer(AssemblyPrimer[Token]):
                 )
             )
         # Handle the case that, the formation does not pass a validation check.
-        formation_validation = toolkit.formation_service.validator.build(
+        formation_validation = toolkit.formation_service.validate.build(
             candidate=blueprint.formation
         )
         if formation_validation.is_failure:

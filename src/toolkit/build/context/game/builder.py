@@ -109,7 +109,7 @@ class GameContextToolkit(Toolkit[GameContext]):
             
             # Toolkit the owner GameContext if its flag is enabled.
             if agent is not None:
-                validation = agent_service.validator.search_service(candidate=agent)
+                validation = agent_service.validate.search_service(candidate=agent)
                 if validation.is_failure:
                     return ToolkitResult.failure(validation.exception)
                 # On validation success return a player_GameContext in the ToolkitResult.

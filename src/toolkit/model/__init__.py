@@ -1,13 +1,13 @@
-# src/toolkit/model/model/__init__.py
+# src/toolkit/model/__init__.py
 
 """
-Module: toolkit.model.model.__init__
+Module: toolkit.model.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
 """
 
-# =========== TOOLKIT.MODEL.MODEL PACKAGE ===========#
+# =========== TOOLKIT.MODEL PACKAGE ===========#
 
 # Packages
 from .arena import *
@@ -21,6 +21,8 @@ from .hostage import *
 from .itinerary import *
 from .maneuver import *
 from .node import *
+from .number import *
+from .path import *
 from .rank import *
 from .scalar import *
 from .square import *

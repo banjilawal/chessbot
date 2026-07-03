@@ -62,7 +62,7 @@ class EuclideanDistance:
         
         # Handle the case that, the either coord does not pass a validation check.
         for coord in (u, v):
-            coord_validation_result =coord_service.validator.build(coord)
+            coord_validation_result =coord_service.validate.build(coord)
             if coord_validation_result.is_failure:
                 # Return exception chain on failure.
                 return ComputationResult.failure(

@@ -1,7 +1,7 @@
-# src/validation/path/validator.py
+# src/validation/maneuver/validator.py
 
 """
-Module: validation.path.validator
+Module: validation.maneuver.validator
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -9,109 +9,151 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from model import Square, Token
+from typing import Any, cast
+
+from err import ManeuverValidatorException
+from model import Maneuver
+from result import ValidationResult
+from toolkit import ManeuverToolkit
 from util import LoggingLevelRouter
 
 
-class TokenPathValidator:
+class ManeuverValidator:
     """
     Role
         -   Transaction Worker
         -   Integrity Maintenance
         -   Consistency Assurance
-        -   Process Runner
+        -   Validation Process Owner
 
     Responsibilities:
-        1.  Ensure at point of use, an itinerary's token:
-                Has no relationship with its destination.
-                Has a bidirectional relationship with its source.
+        1.  Ensure a Maneuver instance is certified safe, reliable and consistent before use.
 
     Attributes:
 
     Provides:
         -   def validate(
-                    itinerary: Itinerary,
-                    toolkit: ItineraryToolkit,
-                    origin_relation_analyzer: OriginRelationValidator,
-                    destination_relation_analyzer: DestinationTokenRelationAnalyzer,
-            ) -> ValidationResult[Token]:
+                    candidate: Any,
+                    toolkit: ManeuverToolkit,
+            ) -> ValidationResult[Maneuver]:
 
     Super Class:
+        Validator
     """
-    OPERATION_NAME = "itinerary_consistency_validator"
+    OPERATION_NAME = "maneuver_validator"
     
     @classmethod
     @LoggingLevelRouter.monitor
     def validator(
             cls,
-            candidate
-            token: Token,
-            origin: Square,
-            destination: Square,
-            origin_relation_validator: OriginRelationValidator | None = None,
-            destination_analyzer: DestinationTokenRelationAnalyzer | None = None,
-    ) -> ValidationResult[int]:
+            candidate: Any,
+            toolkit: ManeuverToolkit | None,
+    ) -> ValidationResult[Maneuver]:
         """
         Verify there is consistency between the itinerary's elements.
 
         Action:
-            1.  Send an exception chan in the validation result if either:
-                    -   There is a token-source inconsistency.
+            1.  Send an exception chan in the validation result if any of the following occur:
+                    -   The candidate is either null or the wrong type.
+                    -   The maneuver's token in not valid.
+                    -   The maneuver's path gets flagged.
+                    -   The token is not at the origin.
+                    -   The destination contains the token.
                     -   There is token-destination inconsistency.
             2.  Otherwise, send the success result.
         Args:
-            token: Token
-            origin: Square
-            destination: Square
-            origin_relation_validator: OriginRelationValidator
-            destination_analyzer: DestinationTokenRelationAnalyzer
+            candidate: Any
+            toolkit: ManeuverToolkit
         Returns:
             ValidationResult[int]
         Raises:
-            ItineraryConsistencyException
+            ManeuverValidatorException
         """
         method = f"{cls.__name__}.validate"
         
         # --- Supply any missing dependencies. ---#
-        if origin_relation_validator is None:
-            origin_relation_validator = OriginRelationValidator()
-        if destination_analyzer is None:
-            destination_analyzer = DestinationTokenRelationAnalyzer()
+        if toolkit is None:
+            toolkit = ManeuverToolkit()
         
-        # Handle the case that, the token has an inconsistency with the source.
-        origin_relation_analysis = origin_relation_validator.build(
-            token=token,
-            origin=origin,
+        # Handle the case that, the candidate fails an initial check.
+        priming_validation_result = toolkit.priming_validator.validate(
+            candidate=candidate,
+            target_model=toolkit.model,
+            null_exception=toolkit.null_exception,
         )
-        if origin_relation_analysis.is_failure:
+        if priming_validation_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                ItineraryConsistencyException(
+                ManeuverValidatorException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    msg=ItineraryConsistencyException.MSG,
-                    err_code=ItineraryConsistencyException.ERR_CODE,
-                    ex=origin_relation_analysis.exception,
+                    msg=ManeuverValidatorException.MSG,
+                    err_code=ManeuverValidatorException.ERR_CODE,
+                    ex=priming_validation_result.exception,
                 )
             )
-
-        # Handle the case that, the token has an inconsistency with the destination.
-        destination_result = destination_analyzer.validate(
-            token=token,
-            destination=destination,
-        )
-        if destination_result.is_failure:
+        # --- Cast the candidate into a Maneuver for additional tests. ---#
+        maneuver = cast(Maneuver, candidate)
+        
+        # Handle the case that, the path is not safe.
+        path_validation_result = toolkit.path_validator.validate(maneuver.path)
+        if path_validation_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                ItineraryConsistencyException(
+                ManeuverValidatorException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    msg=ItineraryConsistencyException.MSG,
-                    err_code=ItineraryConsistencyException.ERR_CODE,
-                    ex=destination_result.exception,
+                    msg=ManeuverValidatorException.MSG,
+                    err_code=ManeuverValidatorException.ERR_CODE,
+                    ex=path_validation_result.exception,
+                )
+            )
+        # Handle the case that, the token is not safe.
+        token_validation_result = toolkit.token_validator.validate(maneuver.path)
+        if token_validation_result.is_failure:
+            # Send the exception chain on failure.
+            return ValidationResult.failure(
+                ManeuverValidatorException(
+                    cls_mthd=method,
+                    cls_name=cls.__name__,
+                    msg=ManeuverValidatorException.MSG,
+                    err_code=ManeuverValidatorException.ERR_CODE,
+                    ex=token_validation_result.exception,
+                )
+            )
+        # Handle the case that, the token is not at the path's origin.
+        origin_relation_validation_result = toolkit.origin_relation_validator.validate(
+            token=maneuver.token,
+            origin=maneuver.path.origin,
+        )
+        if origin_relation_validation_result.is_failure:
+            # Send the exception chain on failure.
+            return ValidationResult.failure(
+                ManeuverValidatorException(
+                    cls_mthd=method,
+                    cls_name=cls.__name__,
+                    msg=ManeuverValidatorException.MSG,
+                    err_code=ManeuverValidatorException.ERR_CODE,
+                    ex=origin_relation_validation_result.exception,
+                )
+            )
+        # Handle the case that, the token is already at the path's destination.
+        destination_relation_validation_result = toolkit.destination_relation_validator.validate(
+            token=maneuver.token,
+            destination=maneuver.path.destination,
+        )
+        if origin_relation_validation_result.is_failure:
+            # Send the exception chain on failure.
+            return ValidationResult.failure(
+                ManeuverValidatorException(
+                    cls_mthd=method,
+                    cls_name=cls.__name__,
+                    msg=ManeuverValidatorException.MSG,
+                    err_code=ManeuverValidatorException.ERR_CODE,
+                    ex=destination_relation_validation_result.exception,
                 )
             )
         # --- Forward the work product to the caller. ---#
-        return ValidationResult.success(2)
+        return ValidationResult.success(maneuver)
         
         

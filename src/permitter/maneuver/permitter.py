@@ -201,7 +201,7 @@ class ManeuverPermitter:
         origin = origin_search_result.payload[0]
         
         # Handle the case that, the token is already at the destination.
-        token_destination_validation_result = destination_validator.execute(
+        token_destination_validation_result = destination_validator.validate(
             token=token,
             destination=destination,
             token_validator=token_validator,

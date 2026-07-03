@@ -1,7 +1,7 @@
-# src/err/null/game/exception.py
+# src/err/null/maneuver/exception.py
 
 """
-Module: err.null.game.exception
+Module: err.null.maneuver.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -11,20 +11,21 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from err import NullException
+from result import MethodResultType
 
 __all__ = [
-    # ======================# GAME_NULL_ERROR #======================#
-    "GameNullException",
+    # ======================# MANEUVER_NULL_ERROR #======================#
+    "ManeuverNullException",
 ]
 
-# ======================# GAME_NULL_ERROR #======================#
-class GameNullException(NullException):
+# ======================# MANEUVER_NULL_ERROR #======================#
+class ManeuverNullException(NullException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required Game is null.
+        1.  Indicate that a required Maneuver is null.
 
     Attributes:
             msg: Optional[str]
@@ -40,8 +41,8 @@ class GameNullException(NullException):
     Super Class:
         NullException
     """
-    MSG = "Game cannot be null."
-    ERR_CODE = "GAME_NULL_ERROR"
+    MSG = "Maneuver cannot be null."
+    ERR_CODE = "MANEUVER_NULL_ERROR"
     
     def __init__(
             self,

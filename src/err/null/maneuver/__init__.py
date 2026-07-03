@@ -1,15 +1,15 @@
-# src/err/null/game/__init__.py
+# src/err/null/maneuver/__init__.py
 
 """
-Module: err.null.game.__init__
+Module: err.null.maneuver.__init__
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
 """
 
-# ============ ERR.NULL.GAME PACKAGE ===========#
+# ============ ERR.NULL.MANEUVER PACKAGE ===========#
 
 # Packages
 
 # Modules
-from .exception import GameNullException
+from .exception import ManeuverNullException

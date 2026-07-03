@@ -133,7 +133,7 @@ class CoordQueryService(QueryService[Coord]):
         method = f"{self.__class__.__name__}._run_safety_checks"
         
         # Handle the case that, the context is incorrect
-        context_validation_result = self._context_service.validator.search_service(context)
+        context_validation_result = self._context_service.validate.search_service(context)
         if context_validation_result.is_failure:
             # Send the exception chain on failure.
             return SearchResult.failure(

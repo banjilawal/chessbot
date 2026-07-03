@@ -25,7 +25,7 @@ class PathNullException(NullException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required PathNull failed.
+        1.  Indicate that a required Path is null.
 
     Cannot Be Null.s:
             msg: Optional[str]
@@ -42,7 +42,7 @@ class PathNullException(NullException):
     Super Class:
         NullException
     """
-    MSG = "path's cannot be null."
+    MSG = "Path cannot be null."
     ERR_CODE = "PATH_NULL_ERROR"
     
     def __init__(

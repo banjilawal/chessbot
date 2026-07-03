@@ -28,6 +28,7 @@ from .hashtable import *
 from .hostage import *
 from .identifier import *
 from .itenerary import *
+from .maneuver import *
 from .microservice import *
 from .node import *
 from .number import *
@@ -38,6 +39,7 @@ from .persona import *
 from .player import *
 from .query import *
 from .rank import *
+from .relation import *
 from .scalar import *
 from .schema import *
 from .square import *

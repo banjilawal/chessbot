@@ -1,13 +1,13 @@
-# src/err/validation/origin/circular/__init__.py
+# src/err/null/relation/origin/__init__.py
 
 """
-Module: err.validation.origin.circular.__init__
+Module: err.null.relation.origin.__init__
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
 """
 
-# ============ ERR.VALIDATION.ORIGIN.CIRCULAR PACKAGE ===========#
+# ============ ERR.NULL.RELATION.ORIGIN PACKAGE ===========#
 
 # Packages
 

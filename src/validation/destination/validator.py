@@ -53,7 +53,7 @@ class TokenDestinationRelationValidator:
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def execute(
+    def validate(
             cls,
             token: Token,
             destination: Square,

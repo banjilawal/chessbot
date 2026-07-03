@@ -89,7 +89,7 @@ class SquareStackDepartureWorker:
         method = "SquareService.remove_occupant_from_stack"
         
         # Handle the case that, the token does not pass a validation check.
-        token_validation = token_service.validator.search_service(occupant)
+        token_validation = token_service.validate.search_service(occupant)
         if token_validation.is_failure:
             # Send the debug exception to the client.
             return DeletionResult.failure(
@@ -156,7 +156,7 @@ class SquareStackDepartureWorker:
         method = "SquareStackDepartureWorker._safe_square_exists"
         
         # Handle the case that, the squareis not safe.
-        square_validation = square_stack.microservice.validator.build(square)
+        square_validation = square_stack.microservice.validate.build(square)
         if square_validation.is_failure:
             return ValidationResult.failure(
                 exception=SquareStackTokenHandlerException(

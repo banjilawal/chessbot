@@ -1,7 +1,7 @@
-# src/err/validation/coord/exception.py
+# src/err/validation/maneuver/exception.py
 
 """
-Module: err.validation.coord.exception
+Module: err.validation.maneuver.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -14,18 +14,18 @@ from err import ValidatorException
 from result import MethodResultType
 
 __all__ = [
-    # ======================# COORD_VALIDATION_FAILURE #======================#
-    "CoordValidatorException",
+    # ======================# MANEUVER_VALIDATION_FAILURE #======================#
+    "ManeuverValidatorException",
 ]
 
-# ======================# COORD_VALIDATION_FAILURE #======================#
-class CoordValidatorException(ValidatorException):
+# ======================# MANEUVER_VALIDATION_FAILURE #======================#
+class ManeuverValidatorException(ValidatorException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a candidate did not pass a CoordValidator test.
+        1.  Indicate that a candidate did not pass a ManeuverValidator test.
 
     Attributes:
         msg: Optional[str]
@@ -42,8 +42,8 @@ class CoordValidatorException(ValidatorException):
     Super Class:
         ValidatorException
     """
-    MSG = "Candidate did not pass a CoordValidator test."
-    ERR_CODE = "COORD_VALIDATION_FAILURE"
+    MSG = "Candidate did not pass a ManeuverValidator test."
+    ERR_CODE = "MANEUVER_VALIDATION_FAILURE"
     
     def __init__(
             self,

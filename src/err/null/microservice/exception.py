@@ -11,6 +11,7 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from err import NullException
+from result import methodResultType
 
 __all__ = [
     # ======================# MICROSERVICE_NULL_ERROR #======================#

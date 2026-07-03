@@ -1,7 +1,7 @@
-# src/validation/primer.py
+# src/validation/priming.py
 
 """
-Module: validation.primer
+Module: validation.priming
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -26,7 +26,7 @@ class PrimingValidator(Validator):
         -   Transaction Worker
         -   Integrity Maintenance
         -   Consistency Assurance
-        -   Primer
+        -   Priming
 
     Responsibilities:
         1.  Run existence and type checks which are common to all validation candidates.
@@ -44,7 +44,7 @@ class PrimingValidator(Validator):
     Super Class:
         Validator
     """
-    NAME = "validator_primer"
+    NAME = "validator_priming"
     
     @classmethod
     @LoggingLevelRouter.monitor
@@ -70,7 +70,7 @@ class PrimingValidator(Validator):
             ValidationResult[T]
         Raises:
             TypeError
-            ValidationPrimerException
+            ValidationPrimingException
         """
         method = f"{cls.__class__.__name__}.validate"
         

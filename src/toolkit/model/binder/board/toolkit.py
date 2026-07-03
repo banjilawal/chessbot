@@ -10,7 +10,7 @@ version: 1.0.1
 from __future__ import annotations
 
 from microservice import BoardService, SchemaService, TeamService
-from validation.primer import PrimingValidator
+from validation.priming import PrimingValidator
 from toolkit import Toolkit
 
 

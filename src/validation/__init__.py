@@ -14,7 +14,7 @@ from .arena import *
 from .binder import *
 from .board import *
 from .destination import *
-from .primer import *
+from .priming import *
 from .context import *
 from .coord import *
 from .edge import *
@@ -23,13 +23,14 @@ from .game import *
 from .hashtable import *
 from .hostage import *
 from .itinerary import *
+from .maneuver import *
 from .node import *
 from .number import *
 from .operand import *
 from .path import *
 from .persona import *
 from .player import *
-from .primer import *
+from .priming import *
 from .query import *
 from .rank import *
 from .register import *
