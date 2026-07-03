@@ -14,7 +14,7 @@ from err import TokenOriginRelationNullException, TokenOriginRelationValidatorEx
 from model import Square, Token
 from report import RelationReport
 from result import ValidationResult
-from toolkit import TokenOriginRelationToolkit
+from toolkit import TokenEndpointRelationToolkit
 from util import LoggingLevelRouter
 
 
@@ -35,7 +35,7 @@ class TokenOriginRelationValidator:
         -   def validate(
                     token: Token,
                     origin: Square,
-                    toolkit: TokenOriginRelationToolkit,
+                    toolkit: TokenEndpointRelationToolkit,
             ) -> ValidationResult[Square]:
 
     Super Class:
@@ -48,7 +48,7 @@ class TokenOriginRelationValidator:
             cls,
             token: Token,
             origin: Square,
-            toolkit: TokenOriginRelationToolkit | None = None,
+            toolkit: TokenEndpointRelationToolkit | None = None,
     ) -> ValidationResult[Square]:
         """
         Makes sure a Maneuver's origin contains the right token.
@@ -61,19 +61,18 @@ class TokenOriginRelationValidator:
         Args:
             token: Token
             origin: Square
-            toolkit: TokenOriginRelationToolkit
+            toolkit: TokenEndpointRelationToolkit
         Returns:
             ValidationResult
         Raises:
             TokenOriginRelationValidatorException
-            TokenAlreadyAtOriginException
-            PartialTokenOriginRelationException
+            TokenOriginRelationNullException
         """
         method = f"{cls.__name__}.validator"
         
         # --- Supply any missing dependencies. ---#
         if toolkit is None:
-            toolkit = TokenOriginRelationToolkit
+            toolkit = TokenEndpointRelationToolkit
         
         # --- Run the relation analyzer. ---#
         relation_analysis_result = toolkit.relation_analyzer.analyze(
@@ -94,8 +93,10 @@ class TokenOriginRelationValidator:
                     ex=relation_analysis_result.exception,
                 )
             )
-        # Handle the case that, the token and the origin aren't fully bidirectional.
+        # --- Extract the relation report for additional tests. ---#
         relation = cast(RelationReport, relation_analysis_result.payload)
+        
+        # Handle the case that, the token and the origin aren't fully bidirectional.
         if not relation.fully_exists:
             # Send the exception chain on failure.
             return ValidationResult.failure(

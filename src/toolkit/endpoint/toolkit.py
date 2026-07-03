@@ -1,7 +1,7 @@
-# src/toolkit/origin/toolkit.py
+# src/toolkit/endpoint/toolkit.py
 
 """
-Module: toolkit.origin.toolkit
+Module: toolkit.endpoint.toolkit
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -18,14 +18,14 @@ from toolkit import Toolkit
 from validation import SquareValidator, TokenValidator
 
 
-class TokenOriginRelationToolkit(Toolkit):
+class TokenEndpointRelationToolkit(Toolkit):
     """
     Role:
         -   Dependency Container
         -   Dynamic Dependency Provider
 
     Responsibilities:
-        1.  Aggregates workers and services a Origin object requires for its tasks.
+        1.  Aggregates workers and services a Endpoint object requires for its tasks.
         2.  Separates dependencies from data objects in operation calls.
         3.  Simplifies entry points.
 
@@ -44,8 +44,8 @@ class TokenOriginRelationToolkit(Toolkit):
         Toolkit
         
     Notes:
-        -   The toolkit does not support any models. It just makes TokenOriginRelationValidator's validate
-            method signature simpler.
+        -   The toolkit does not support any models. It just makes TokenOriging and TokenDestination RelationValidator
+            method signatures simpler.
     """
 
     DEPENDENCIES: List[Operation] = []

@@ -15,7 +15,7 @@ from .graph import *
 from .math import *
 from .model import *
 from .operand import *
-from .origin import *
+from .endpoint import *
 from .pipeline import *
 from .registry import *
 
