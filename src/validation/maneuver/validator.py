@@ -59,7 +59,6 @@ class ManeuverValidator:
                     -   The maneuver's path gets flagged.
                     -   The token is not at the origin.
                     -   The destination contains the token.
-                    -   There is token-destination inconsistency.
             2.  Otherwise, send the success result.
         Args:
             candidate: Any
@@ -121,28 +120,13 @@ class ManeuverValidator:
                     ex=token_validation_result.exception,
                 )
             )
-        # Handle the case that, the token is not at the path's origin.
-        origin_relation_validation_result = toolkit.origin_relation_validator.validate(
+        # Handle the case that, either the token is not at the origin or already at the destination.
+        token_endpoint_relation_validation_result = toolkit.endpoint_validator.validate(
             token=maneuver.token,
             origin=maneuver.path.origin,
-        )
-        if origin_relation_validation_result.is_failure:
-            # Send the exception chain on failure.
-            return ValidationResult.failure(
-                ManeuverValidatorException(
-                    cls_mthd=method,
-                    cls_name=cls.__name__,
-                    msg=ManeuverValidatorException.MSG,
-                    err_code=ManeuverValidatorException.ERR_CODE,
-                    ex=origin_relation_validation_result.exception,
-                )
-            )
-        # Handle the case that, the token is already at the path's destination.
-        destination_relation_validation_result = toolkit.destination_relation_validator.validate(
-            token=maneuver.token,
             destination=maneuver.path.destination,
         )
-        if origin_relation_validation_result.is_failure:
+        if token_endpoint_relation_validation_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 ManeuverValidatorException(
@@ -150,7 +134,7 @@ class ManeuverValidator:
                     cls_name=cls.__name__,
                     msg=ManeuverValidatorException.MSG,
                     err_code=ManeuverValidatorException.ERR_CODE,
-                    ex=destination_relation_validation_result.exception,
+                    ex=token_endpoint_relation_validation_result.exception,
                 )
             )
         # --- Forward the work product to the caller. ---#
