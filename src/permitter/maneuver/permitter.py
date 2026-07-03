@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from analyzer import SquareTokenRelationAnalyzer, TokenReadinessAnalyzer
+from analyzer import FriendshipAnalyzer, SquareTokenRelationAnalyzer, TokenReadinessAnalyzer
 from builder import TokenPathDtoBuilder
 from err import (
     BidirectionalSourceTokenRelationException, CircularPathException, DisabledTokenManeuverException,
@@ -63,6 +63,7 @@ class ManeuverPermitter:
             cls,
             token: Token,
             destination: Square,
+            friendship_analyzer: FriendshipAnalyzer | None = None,
             token_service: TokenService | None = None,
             path_toolkit: TokenPathToolkit | None = None,
             path_dto_builder: TokenPathDtoBuilder | None = None,
@@ -114,6 +115,8 @@ class ManeuverPermitter:
             relation_analyzer = SquareTokenRelationAnalyzer()
         if destination_validator is None:
             destination_validator = TokenDestinationRelationValidator()
+        if friendship_analyzer is None:
+            friendship_analyzer = FriendshipAnalyzer()
             
         dto_build_result = path_dto_builder.build(
             token=token,
@@ -134,7 +137,7 @@ class ManeuverPermitter:
             )
         dto = cast(TokenPathDTO, dto_build_result.payload)
         
-        destination_occupant = dto.destination.occupant
+        destination_occupant == dto.destination.occupant
         token_service.controller.
         if token.is_friend(destination_occupant)
         

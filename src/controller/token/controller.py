@@ -9,11 +9,12 @@ version: 1.0.0
 
 from __future__ import annotations
 
+from analyzer import FriendshipAnalyzer, TokenReadinessAnalyzer
+from builder import TokenBuilder
 from detector import TokenCollisionDetector
-from model.token import (
-    PawnPromoter, TokenBuilder, TokenPositionController, TokenDeployer,
-    TokenReadinessAnalyzer, TokenValidator
-)
+from operation import TokenDeployer, TokenPositionController
+from operation.promotion import PawnPromoter
+from validation import TokenValidator
 
 
 class TokenOpsController:
@@ -51,6 +52,7 @@ class TokenOpsController:
     _validator: TokenValidator
     _promoter: PawnPromoter
     _deployer: TokenDeployer
+    _friendship_analyzer: FriendshipAnalyzer
     _collision_detector: TokenCollisionDetector
     _position_controller: TokenPositionController
     _readiness_analyzer: TokenReadinessAnalyzer
@@ -58,11 +60,11 @@ class TokenOpsController:
     
     def __init__(
             self,
-            builder: TokenBuilder = TokenBuilder(),
+            builder: TokenBuilder | None = TokenBuilder(),
             promoter: PawnPromoter = PawnPromoter(),
             deployer: TokenDeployer = TokenDeployer(),
             validator: TokenValidator = TokenValidator(),
-            
+            friendship_analyzer: FriendshipAnalyzer =FriendshipAnalyzer(),
             position_controller: TokenPositionController = TokenPositionController(),
             readiness_analyzer: TokenReadinessAnalyzer = TokenReadinessAnalyzer(),
     ):
@@ -77,6 +79,7 @@ class TokenOpsController:
         self._promoter = promoter
         self._deployer = deployer
         self._validator = validator
+        self._friendship_analyzer = friendship_analyzer
         self._position_controller = position_controller
         self._readiness_analyzer = readiness_analyzer
         
@@ -91,6 +94,10 @@ class TokenOpsController:
     @property
     def pawn_promoter(self) -> PawnPromoter:
         return self._promoter
+    
+    @property
+    def friendship_analyzer(self) -> FriendshipAnalyzer:
+        return self._frienship_analyzer
     
     @property
     def deployer(self) -> TokenDeployer:
