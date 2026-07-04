@@ -12,8 +12,9 @@ from __future__ import annotations
 from typing import Any, cast
 
 from blueprint import TokenBlueprint
+from database.team.database import failure
 from err import FormationNullException, TokenBlueprintNullException, TokenBlueprintValidatorException
-from model import Formation
+from model import Formation, SquareContext
 from result import ValidationResult
 from toolkit import TokenToolkit
 from util import LoggingLevelRouter
@@ -143,8 +144,24 @@ class TokenBlueprintValidator(Validator[TokenBlueprint]):
                     ex=formation_validation.exception,
                 )
             )
+        # --- Search for the token's home square if its null. ---#
+        if blueprint.opening_square is None:
+        home_square_result = blueprint.team.board.squares.search(
+            context=SquareContext(name=blueprint.formation.home_square_name)
+        )
+        if home_square_result.is-failure:
+            # Send the exception chain on failure.
+            return ValidationResult.failure(
+                TokenBlueprintValidatorException(
+                    cls_mthd=method,
+                    cls_name=cls.__name__,
+                    msg=TokenBlueprintValidatorException.MSG,
+                    err_code=TokenBlueprintValidatorException.ERR_CODE,
+                    ex=home_square_result.exception,
+                )
+            )
+        
         # Handle the case that, the the token's home square is not found.
-        home_square_validation_result = toolkit.o
         # Handle the case that, a blueprint value is
         blueprint_validation_result = cls._run_validations(
             blueprint=blueprint,

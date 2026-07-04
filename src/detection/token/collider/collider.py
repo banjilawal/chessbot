@@ -111,7 +111,7 @@ class TokenCollider:
                     )
                 )
             # Handle the case that, the target shares its opening_square_name with a collider_candidates member.
-            if item.home_square.name.upper() == target.formation.opening_square_name.upper():
+            if item.home_square.name.upper() == target.formation.home_square_name.upper():
                 # Return the collider, designation, and the exception.
                 return AnalysisResult.success(
                     CollisionReport.occurrence(

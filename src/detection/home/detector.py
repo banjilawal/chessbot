@@ -9,9 +9,13 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from typing import cast
+from typing import Optional, cast
 
-from err import HomeSquareDetectorException, HomeSquareSearchResultEmptyException
+from err import (
+    ExcessContextFlagsException, HomeSquareDetectorException, HomeSquareSearchResultEmptyException,
+    ZeroContextFlagsException
+)
+from microservice import IdentityService
 from model import HomeSquare, SquareContext, Token
 from result import Result
 from util import LoggingLevelRouter
@@ -42,8 +46,10 @@ class HomeSquareDetector:
     @LoggingLevelRouter.monitor
     def execute(
             cls,
-            token: Token,
+            token: Optional[Token] | None = None,
+            home_square_name: Optional[str] | None = None,
             token_validator: TokenValidator | None = None,
+            identity_service: IdentityService | None = None,
     ) -> Result[HomeSquare]:
         """
         Find the token's home square.
@@ -55,8 +61,10 @@ class HomeSquareDetector:
                     -   The home square was not found.
             2.  Otherwise, send the success result.
         Args:
-            token: Token
-            token_validator: TokenFreedomAnalyzer
+            token: Optional[Token]
+            home_square_name: Optional[str]
+            token_validator: TokenValidator
+            identity_service: IdentityService
         Returns:
             Result[HomeSquare]
         Raises:
@@ -69,12 +77,15 @@ class HomeSquareDetector:
         # --- Supply any missing dependencies. ---#
         if token_validator is None:
             token_validator = TokenValidator()
+        if identity_service is None:
+            identity_service = IdentityService()
         
-        # --- Perform analysis to see if the token is free. ---#
-        token_validator_result = token_validator.validate(token)
+        # --- Count how many optional parameters are not-null. only one should be not null. ---#
+        params = [token, home_square_name]
+        param_count = sum(bool(p) for p in params)
         
-        # Handle the case that, the analysis is not completed.
-        if token_validator_result.is_failure:
+        # Handle the case that, all the optional params are null.
+        if param_count == 0:
             # Send the exception chain on failure.
             return Result.failure(
                 HomeSquareDetectorException(
@@ -82,13 +93,73 @@ class HomeSquareDetector:
                     cls_name=cls.__class__.__name__,
                     msg=HomeSquareDetectorException.MSG,
                     err_code=HomeSquareDetectorException.ERR_CODE,
-                    ex=token_validator_result.exception,
+                    ex=ZeroContextFlagsException(
+                        cls_mthd=method,
+                        cls_name=cls.__name__,
+                        msg=ZeroContextFlagsException.MSG,
+                        err_code=ZeroContextFlagsException.ERR_CODE,
+                    ),
                 )
             )
+        # Handle the case that, more than one optional param is not-null.
+        if param_count > 1:
+            # Send the exception chain on failure.
+            return Result.failure(
+                HomeSquareDetectorException(
+                    cls_mthd=method,
+                    cls_name=cls.__class__.__name__,
+                    msg=HomeSquareDetectorException.MSG,
+                    err_code=HomeSquareDetectorException.ERR_CODE,
+                    ex=ExcessContextFlagsException(
+                        cls_mthd=method,
+                        cls_name=cls.__name__,
+                        msg=ExcessContextFlagsException.MSG,
+                        err_code=ExcessContextFlagsException.ERR_CODE,
+                    ),
+                )
+            )
+        # --- Route to the appropriate validation/ branch. ---#
+        
+        # Validating the name if its enabled.
+        if home_square_name is not None:
+            name_validation_result = identity_service.validate_name(home_square_name)
+            if name_validation_result.is_failure:
+                # Send the exception chain on failure.
+                return Result.failure(
+                    HomeSquareDetectorException(
+                        cls_mthd=method,
+                        cls_name=cls.__class__.__name__,
+                        msg=HomeSquareDetectorException.MSG,
+                        err_code=HomeSquareDetectorException.ERR_CODE,
+                        ex=name_validation_result.exception,
+                    )
+                )
+            
+        # Validate the token if its enabled.
+        if token is not None:
+            # --- Perform analysis to see if the token is free. ---#
+            token_validation_result = token_validator.validate(token)
+            
+            # Handle the case that, the analysis is not completed.
+            if token_validation_result.is_failure:
+                # Send the exception chain on failure.
+                return Result.failure(
+                    HomeSquareDetectorException(
+                        cls_mthd=method,
+                        cls_name=cls.__class__.__name__,
+                        msg=HomeSquareDetectorException.MSG,
+                        err_code=HomeSquareDetectorException.ERR_CODE,
+                        ex=token_validation_result.exception,
+                    )
+                )
+            # Set the home_square_name to use in the search.
+            home_square_name = token.formation.home_square_name
+            
+            
         # --- Search for the token's opening square. ---#
         board = token.team.board
         home_search_result = board.squares.search(
-            context=SquareContext(id=token.home_square.id)
+            context=SquareContext(name=home_square_name)
         )
         # Handle the case that, searching for the opening square is not completed.
         if home_search_result.is_failure:
@@ -121,4 +192,3 @@ class HomeSquareDetector:
             )
         # --- Send the work product ---#
         return Result.success(cast(HomeSquare, home_search_result.payload[0]))
-        

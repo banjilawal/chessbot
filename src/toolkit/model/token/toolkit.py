@@ -11,6 +11,7 @@ from __future__ import annotations
 
 from typing import List
 
+from detection import HomeSquareDetector
 from model import Token
 from operation import Operation
 from toolkit import Toolkit
@@ -33,6 +34,7 @@ class TokenToolkit(Toolkit[Token]):
         DEPENDENCIES: List[Operation] = []
         SERVICE_DEPENDENCIES: List[Microservice] = []
 
+        home_square_detector: HomeSquareDetector
         square_validator: SquareValidator
         coord_validator: CoordValidator
         team_validator: TeamValidator
@@ -59,6 +61,7 @@ class TokenToolkit(Toolkit[Token]):
         RankService,
         FormationService,
     ]
+    home_square_detector: HomeSquareDetector = HomeSquareDetector()
     square_validator: SquareValidator = SquareValidator()
     coord_validator: CoordValidator = CoordValidator()
     team_validator: TeamValidator = TeamValidator()

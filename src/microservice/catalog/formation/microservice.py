@@ -133,7 +133,7 @@ class FormationService(HashService[Formation]):
                 )
             )
         formation = formation_search_result.payload[0]
-        square_search_result = team.squares.search_service(context=SquareContext(name=formation.opening_square_name))
+        square_search_result = team.squares.search_service(context=SquareContext(name=formation.home_square_name))
         # Handle the case that, the square search fails.
         if square_search_result.is_failure:
             # Send the exception chain on failure.
@@ -149,7 +149,7 @@ class FormationService(HashService[Formation]):
             return SearchResult.failure(
                 FormationServiceException(
                     msg=f"{method}: {FormationServiceException.ERR_CODE}",
-                    ex=InvariantBreachException(f"{method}: Square {formation.opening_square_name} not found.")
+                    ex=InvariantBreachException(f"{method}: Square {formation.home_square_name} not found.")
                 )
             )
         hash = {

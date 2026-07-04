@@ -190,9 +190,9 @@ class SchemaContextValidator(Validator[SchemaContext]):
             return ValidationResult.success(context)
         
         # Certification for the search-by-opening_square_name target.
-        if context.opening_square_name is not None:
+        if context.home_square_name is not None:
             validation_result = workers.identity_service.validate_name(
-                candidate=context.opening_square_name
+                candidate=context.home_square_name
             )
             if validation_result.is_failure:
                 # Send the exception chain on failure.

@@ -138,8 +138,8 @@ class FormationBlueprintValidator(BlueprintValidator[FormationKey]):
             return ValidationResult.success(super_key)
 
         # Certification for the lookup-by-square_name target.
-        if super_key.opening_square_name is not None:
-            validation = identity_service.validate_name(candidate=super_key.opening_square_name)
+        if super_key.home_square_name is not None:
+            validation = identity_service.validate_name(candidate=super_key.home_square_name)
             if validation.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(

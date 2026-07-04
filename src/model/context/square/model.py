@@ -12,7 +12,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Any, Dict, Optional
 
-from model import Board, Context, Coord, Formation, Square, SquareState, Token
+from model import Board, Context, Coord, Square, SquareState, Token
 
 
 @dataclass
@@ -41,11 +41,11 @@ class SquareContext(Context[Square]):
         Context
     """
     id: Optional[int] = None
+    name: Optional[str] = None
     board: Optional[Board] = None
     coord: Optional[Coord] = None
     occupant: Optional[Token] = None
     state: Optional[SquareState] = None
-    formation: Optional[Formation] = None
     
     
     @property
@@ -57,5 +57,4 @@ class SquareContext(Context[Square]):
             "coord": self.coord,
             "occupant": self.occupant,
             "state": self.state,
-            "formation": self.formation,
         }
