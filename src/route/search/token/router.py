@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import List
 
 from err import TokenSearcherException, TokenSearchRouteException
-from model import Coord, OpeningSquare, Rank, Team, Token
+from model import Coord, HomeSquare, Rank, Team, Token
 from model.query import TokenQuery
 from result import SearchResult
 from route import SearchRouter
@@ -188,7 +188,7 @@ class TokenSearchRouter(SearchRouter[Token]):
     def _find_by_opening_square(
             cls,
             items: List[Token],
-            opening_square: OpeningSquare,
+            opening_square: HomeSquare,
     ) -> SearchResult[List[Token]]:
         """
         Search the schema by a opening square's schema'
@@ -200,7 +200,7 @@ class TokenSearchRouter(SearchRouter[Token]):
             SearchResult[List[Token]]
         Raises
         """
-        matches = [token for token in items if token.opening_square == opening_square]
+        matches = [token for token in items if token.home_square == opening_square]
         # Handle the nothing found case.
         if len(matches) == 0:
             return SearchResult.empty()

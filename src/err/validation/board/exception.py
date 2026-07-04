@@ -14,11 +14,11 @@ from err import ValidatorException
 from result import MethodResultType
 
 __all__ = [
-    # ======================# BOARD_VALIDATION_FAILURE #======================#
+    # ======================# BOARD_VALIDATOR_FAILURE #======================#
     "BoardValidatorException",
 ]
 
-# ======================# BOARD_VALIDATION_FAILURE #======================#
+# ======================# BOARD_VALIDATOR_FAILURE #======================#
 class BoardValidatorException(ValidatorException):
     """
     Role:
@@ -43,7 +43,7 @@ class BoardValidatorException(ValidatorException):
         ValidatorException
     """
     MSG = "Candidate did not pass a BoardValidator test."
-    ERR_CODE = "BOARD_VALIDATION_FAILURE"
+    ERR_CODE = "BOARD_VALIDATOR_FAILURE"
     
     def __init__(
             self,

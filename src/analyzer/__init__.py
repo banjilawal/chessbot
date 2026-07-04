@@ -11,7 +11,6 @@ version: 1.0.1
 # =========== ANALYZER PACKAGE ===========#
 
 # Packages
-from .claim import *
 from .friend import *
 from .itinerary import *
 from .promotion import *

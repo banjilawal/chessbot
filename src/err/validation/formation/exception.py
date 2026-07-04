@@ -14,11 +14,11 @@ from err import ValidatorException
 from result import MethodResultType
 
 __all__ = [
-    # ======================# FORMATION_VALIDATION_FAILURE #======================#
+    # ======================# FORMATION_VALIDATOR_FAILURE #======================#
     "FormationValidatorException",
 ]
 
-# ======================# FORMATION_VALIDATION_FAILURE #======================#
+# ======================# FORMATION_VALIDATOR_FAILURE #======================#
 class FormationValidatorException(ValidatorException):
     """
     Role:
@@ -43,7 +43,7 @@ class FormationValidatorException(ValidatorException):
         ValidatorException
     """
     MSG = "Candidate did not pass a FormationValidator test."
-    ERR_CODE = "FORMATION_VALIDATION_FAILURE"
+    ERR_CODE = "FORMATION_VALIDATOR_FAILURE"
     
     def __init__(
             self,

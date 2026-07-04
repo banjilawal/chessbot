@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from analyzer import FriendshipAnalyzer, TokenReadinessAnalyzer
 from builder import TokenBuilder
-from detector import TokenCollisionDetector
+from detection import TokenCollisionDetector
 from operation import TokenDeployer, TokenPositionController
 from operation.promotion import PawnPromoter
 from validation import TokenValidator

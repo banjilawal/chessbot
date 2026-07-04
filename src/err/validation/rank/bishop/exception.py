@@ -13,11 +13,11 @@ from typing import Any, Optional
 from err import RankValidatorException
 
 __all__ = [
-    # ======================# BISHOP_VALIDATION_FAILURE #======================#
+    # ======================# BISHOP_VALIDATOR_FAILURE #======================#
     "BishopValidatorException",
 ]
 
-# ======================# BISHOP_VALIDATION_FAILURE #======================#
+# ======================# BISHOP_VALIDATOR_FAILURE #======================#
 class BishopValidatorException(RankValidatorException):
     """
     Role:
@@ -42,7 +42,7 @@ class BishopValidatorException(RankValidatorException):
         RankValidatorException
     """
     MSG = "Candidate did not pass a Bishop validator test."
-    ERR_CODE = "BISHOP_VALIDATION_FAILURE"
+    ERR_CODE = "BISHOP_VALIDATOR_FAILURE"
     
     def __init__(
             self,

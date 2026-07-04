@@ -13,11 +13,11 @@ from typing import Any, Optional
 from err import RankValidatorException
 
 __all__ = [
-    # ======================# PAWN_VALIDATION_FAILURE #======================#
+    # ======================# PAWN_VALIDATOR_FAILURE #======================#
     "PawnValidatorException",
 ]
 
-# ======================# PAWN_VALIDATION_FAILURE #======================#
+# ======================# PAWN_VALIDATOR_FAILURE #======================#
 class PawnValidatorException(RankValidatorException):
     """
     Role:
@@ -42,7 +42,7 @@ class PawnValidatorException(RankValidatorException):
         RankValidatorException
     """
     MSG = "Candidate did not pass a Pawn validator test."
-    ERR_CODE = "PAWN_VALIDATION_FAILURE"
+    ERR_CODE = "PAWN_VALIDATOR_FAILURE"
     
     def __init__(
             self,

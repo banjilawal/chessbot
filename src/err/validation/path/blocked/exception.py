@@ -14,11 +14,11 @@ from err import PathValidatorException
 from result import MethodResultType
 
 __all__ = [
-    # ======================# BLOCKED_PATH_VALIDATION_FAILURE #======================#
+    # ======================# BLOCKED_PATH_VALIDATOR_FAILURE #======================#
     "BlockedPathValidatorException",
 ]
 
-# ======================# BLOCKED_PATH_VALIDATION_FAILURE #======================#
+# ======================# BLOCKED_PATH_VALIDATOR_FAILURE #======================#
 class BlockedPathValidatorException(PathValidatorException):
     """
     Role:
@@ -43,7 +43,7 @@ class BlockedPathValidatorException(PathValidatorException):
         PathValidatorException
     """
     MSG = "Candidate did not pass an BlockedPathValidator test."
-    ERR_CODE = "BLOCKED_PATH_VALIDATION_FAILURE"
+    ERR_CODE = "BLOCKED_PATH_VALIDATOR_FAILURE"
     
     def __init__(
             self,

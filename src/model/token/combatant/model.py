@@ -10,7 +10,7 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Optional
 
-from model import Formation, OpeningSquare
+from model import Formation, HomeSquare
 from model.team import Team
 from model.rank import Rank
 from model.token import Token, DeploymentState, TokenActivityState
@@ -60,7 +60,7 @@ class CombatantToken(Token):
             formation: Formation,
             designation: str,
             roster_number: int,
-            opening_square: OpeningSquare,
+            opening_square: HomeSquare,
     ):
         """
         Args:

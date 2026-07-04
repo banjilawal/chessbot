@@ -14,11 +14,11 @@ from err import ValidatorException
 from result import MethodResultType
 
 __all__ = [
-    # ======================# EDGE_VALIDATION_FAILURE #======================#
+    # ======================# EDGE_VALIDATOR_FAILURE #======================#
     "EdgeValidatorException",
 ]
 
-# ======================# EDGE_VALIDATION_FAILURE #======================#
+# ======================# EDGE_VALIDATOR_FAILURE #======================#
 class EdgeValidatorException(ValidatorException):
     """
     Role:
@@ -43,7 +43,7 @@ class EdgeValidatorException(ValidatorException):
         ValidatorException
     """
     MSG = "Candidate did not pass a EdgeValidator test."
-    ERR_CODE = "EDGE_VALIDATION_FAILURE"
+    ERR_CODE = "EDGE_VALIDATOR_FAILURE"
     
     def __init__(
             self,

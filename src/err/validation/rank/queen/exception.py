@@ -13,11 +13,11 @@ from typing import Any, Optional
 from err import RankValidatorException
 
 __all__ = [
-    # ======================# QUEEN_VALIDATION_FAILURE #======================#
+    # ======================# QUEEN_VALIDATOR_FAILURE #======================#
     "QueenValidatorException",
 ]
 
-# ======================# QUEEN_VALIDATION_FAILURE #======================#
+# ======================# QUEEN_VALIDATOR_FAILURE #======================#
 class QueenValidatorException(RankValidatorException):
     """
     Role:
@@ -42,7 +42,7 @@ class QueenValidatorException(RankValidatorException):
         RankValidatorException
     """
     MSG = "Candidate did not pass a Queen validator test."
-    ERR_CODE = "QUEEN_VALIDATION_FAILURE"
+    ERR_CODE = "QUEEN_VALIDATOR_FAILURE"
     
     def __init__(
             self,

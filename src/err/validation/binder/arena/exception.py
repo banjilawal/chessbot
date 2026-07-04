@@ -13,11 +13,11 @@ from typing import Any, Optional
 from err import BinderValidatorException
 
 __all__ = [
-    # ======================# ARENA_PLAYER_BINDER_VALIDATION_FAILURE #======================#
+    # ======================# ARENA_PLAYER_BINDER_VALIDATOR_FAILURE #======================#
     "ArenaPlayerBinderValidatorException",
 ]
 
-# ======================# ARENA_PLAYER_BINDER_VALIDATION_FAILURE #======================#
+# ======================# ARENA_PLAYER_BINDER_VALIDATOR_FAILURE #======================#
 class ArenaPlayerBinderValidatorException(BinderValidatorException):
     """
     Role:
@@ -42,7 +42,7 @@ class ArenaPlayerBinderValidatorException(BinderValidatorException):
         BinderValidatorException
     """
     MSG = "Candidate did not pass a ArenaPlayerBinder validator test."
-    ERR_CODE = "ARENA_PLAYER_BINDER_VALIDATION_FAILURE"
+    ERR_CODE = "ARENA_PLAYER_BINDER_VALIDATOR_FAILURE"
     
     def __init__(
             self,

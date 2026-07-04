@@ -14,7 +14,7 @@ from typing import Optional
 from blueprint import Blueprint
 from err import TokenNullException
 from model.catalog import Formation
-from model import OpeningSquare, Rank, Team, Token
+from model import HomeSquare, Rank, Team, Token
 
 
 @dataclass
@@ -44,6 +44,6 @@ class TokenBlueprint(Blueprint[Token]):
     formation: Formation
     id: Optional[int] | None = None
     rank: Optional[Rank] | None = None
-    opening_square: OpeningSquare | None = None
+    opening_square: HomeSquare | None = None
     null_exception: TokenNullException = TokenNullException()
     model_type: Token = Token

@@ -11,7 +11,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Optional
 
-from model import OpeningSquare, Token
+from model import HomeSquare, Token
 from report import Report
 from report.claim.state import ClaimPermission
 
@@ -39,7 +39,7 @@ class HomeSquareClaimReport(Report):
     """
     claimant: Token
     permissions: ClaimPermission
-    home_square: Optional[OpeningSquare] = None
+    home_square: Optional[HomeSquare] = None
     exception: Optional[Exception] = None
     
     @property
@@ -48,7 +48,7 @@ class HomeSquareClaimReport(Report):
                 self.claimant.is_deployed and
                 self.home_square.is_claimed and
                 self.exception is None and
-                self.claimant.opening_square == self.home_square and
+                self.claimant.home_square == self.home_square and
                 self.permissions == ClaimPermission.GRANTED
         )
     
@@ -57,7 +57,7 @@ class HomeSquareClaimReport(Report):
         return not self.is_granted
     
     @classmethod
-    def grant_claim(cls, token: Token, home_square: OpeningSquare) -> HomeSquareClaimReport:
+    def grant_claim(cls, token: Token, home_square: HomeSquare) -> HomeSquareClaimReport:
         return cls(
             claimant=token,
             home_square=home_square,

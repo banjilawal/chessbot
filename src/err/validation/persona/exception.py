@@ -14,11 +14,11 @@ from err import ValidatorException
 from result import MethodResultType
 
 __all__ = [
-    # ======================# PERSONA_VALIDATION_FAILURE #======================#
+    # ======================# PERSONA_VALIDATOR_FAILURE #======================#
     "PersonaValidatorException",
 ]
 
-# ======================# PERSONA_VALIDATION_FAILURE #======================#
+# ======================# PERSONA_VALIDATOR_FAILURE #======================#
 class PersonaValidatorException(ValidatorException):
     """
     Role:
@@ -43,7 +43,7 @@ class PersonaValidatorException(ValidatorException):
         ValidatorException
     """
     MSG = "Candidate did not pass a PersonaValidator test."
-    ERR_CODE = "PERSONA_VALIDATION_FAILURE"
+    ERR_CODE = "PERSONA_VALIDATOR_FAILURE"
     
     def __init__(
             self,

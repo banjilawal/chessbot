@@ -14,11 +14,11 @@ from err import ValidatorException
 from result import MethodResultType
 
 __all__ = [
-    # ======================# COORD_VALIDATION_FAILURE #======================#
+    # ======================# COORD_VALIDATOR_FAILURE #======================#
     "CoordValidatorException",
 ]
 
-# ======================# COORD_VALIDATION_FAILURE #======================#
+# ======================# COORD_VALIDATOR_FAILURE #======================#
 class CoordValidatorException(ValidatorException):
     """
     Role:
@@ -43,7 +43,7 @@ class CoordValidatorException(ValidatorException):
         ValidatorException
     """
     MSG = "Candidate did not pass a CoordValidator test."
-    ERR_CODE = "COORD_VALIDATION_FAILURE"
+    ERR_CODE = "COORD_VALIDATOR_FAILURE"
     
     def __init__(
             self,

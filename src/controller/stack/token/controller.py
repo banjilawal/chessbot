@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from analyzer import RankQuotaAnalyzer
 from controller.stack.crud.token import TokenStackCrudController
-from detector import TokenCollisionDetector
+from detection import TokenCollisionDetector
 from microservice import TokenService
 from operation import TokenDeleter, TokenDeployer, TokenPopper, TokenPusher
 from search.token.searcher import TokenSearcher

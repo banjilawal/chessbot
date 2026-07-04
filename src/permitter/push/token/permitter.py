@@ -11,7 +11,7 @@ from __future__ import annotations
 from typing import cast
 
 from analyzer import RankQuotaAnalyzer
-from detector import TokenCollisionDetector
+from detection import TokenCollisionDetector
 from err import RankQuotaFullException, TokenPushPermitterException, TokenStackFullException
 from microservice import RankService
 from model import Token

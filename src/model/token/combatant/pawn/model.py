@@ -10,7 +10,7 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Optional
 
-from model import OpeningSquare
+from model import HomeSquare
 from model.team import Team
 from model.rank import Pawn, Rank
 from model.token import CombatantToken, PromotionState
@@ -65,7 +65,7 @@ class PawnToken(CombatantToken):
             team: Team,
             designation: str,
             roster_number: int,
-            opening_square: OpeningSquare,
+            opening_square: HomeSquare,
     ):
         """
         Args:

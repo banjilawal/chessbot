@@ -10,7 +10,7 @@ version: 1.0.1
 from __future__ import annotations
 
 
-from model import DeploymentState, Formation, King, OpeningSquare, Team, Token, TokenActivityState
+from model import DeploymentState, Formation, King, HomeSquare, Team, Token, TokenActivityState
 from util import IdFactory
 
 
@@ -52,7 +52,7 @@ class KingToken(Token):
             id: int,
             team: Team,
             formation: Formation,
-            opening_square: OpeningSquare,
+            opening_square: HomeSquare,
     ):
         """
         Args:

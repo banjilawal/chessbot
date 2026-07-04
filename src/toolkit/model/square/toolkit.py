@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 
-from detector import SquareCollisionDetector
+from detection import SquareCollisionDetector
 from microservice import FormationService, IdentityService
 from model import Square
 from toolkit import Toolkit

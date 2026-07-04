@@ -14,11 +14,11 @@ from err import ValidatorException
 from result import MethodResultType
 
 __all__ = [
-    # ======================# SCHEMA_VALIDATION_FAILURE #======================#
+    # ======================# SCHEMA_VALIDATOR_FAILURE #======================#
     "SchemaValidatorException",
 ]
 
-# ======================# SCHEMA_VALIDATION_FAILURE #======================#
+# ======================# SCHEMA_VALIDATOR_FAILURE #======================#
 class SchemaValidatorException(ValidatorException):
     """
     Role:
@@ -43,7 +43,7 @@ class SchemaValidatorException(ValidatorException):
         ValidatorException
     """
     MSG = "Candidate did not pass a SchemaValidator test."
-    ERR_CODE = "SCHEMA_VALIDATION_FAILURE"
+    ERR_CODE = "SCHEMA_VALIDATOR_FAILURE"
     
     def __init__(
             self,

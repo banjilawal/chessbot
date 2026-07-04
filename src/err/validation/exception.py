@@ -13,14 +13,14 @@ from typing import Any, Optional
 from err import OperationException
 
 __all__ = [
-    # ======================# VALIDATION_FAILURE #======================#
+    # ======================# VALIDATOR_FAILURE #======================#
     "ValidatorException",
 ]
 
 from result import MethodResultType
 
 
-# ======================# VALIDATION_FAILURE #======================#
+# ======================# VALIDATOR_FAILURE #======================#
 class ValidatorException(OperationException):
     """
     Role:
@@ -45,7 +45,7 @@ class ValidatorException(OperationException):
         OperationException
     """
     MSG = "Candidate did not pass a Candidate did not pass a Validator test."
-    ERR_CODE = "VALIDATION_FAILURE"
+    ERR_CODE = "VALIDATOR_FAILURE"
     MTHD_RSLT_TYPE = MethodResultType.VALIDATION_RESULT
     
     def __init__(

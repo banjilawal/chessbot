@@ -13,11 +13,11 @@ from typing import Any, Optional
 from err import RankValidatorException
 
 __all__ = [
-    # ======================# KNIGHT_VALIDATION_FAILURE #======================#
+    # ======================# KNIGHT_VALIDATOR_FAILURE #======================#
     "KnightValidatorException",
 ]
 
-# ======================# KNIGHT_VALIDATION_FAILURE #======================#
+# ======================# KNIGHT_VALIDATOR_FAILURE #======================#
 class KnightValidatorException(RankValidatorException):
     """
     Role:
@@ -42,7 +42,7 @@ class KnightValidatorException(RankValidatorException):
         RankValidatorException
     """
     MSG = "Candidate did not pass a Knight validator test."
-    ERR_CODE = "KNIGHT_VALIDATION_FAILURE"
+    ERR_CODE = "KNIGHT_VALIDATOR_FAILURE"
     
     def __init__(
             self,

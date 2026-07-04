@@ -14,11 +14,11 @@ from err import ValidatorException
 from result import MethodResultType
 
 __all__ = [
-    # ======================# TOKEN_VALIDATION_FAILURE #======================#
+    # ======================# TOKEN_VALIDATOR_FAILURE #======================#
     "TokenValidatorException",
 ]
 
-# ======================# TOKEN_VALIDATION_FAILURE #======================#
+# ======================# TOKEN_VALIDATOR_FAILURE #======================#
 class TokenValidatorException(ValidatorException):
     """
     Role:
@@ -43,7 +43,7 @@ class TokenValidatorException(ValidatorException):
         ValidatorException
     """
     MSG = "Candidate did not pass a TokenValidator test."
-    ERR_CODE = "TOKEN_VALIDATION_FAILURE"
+    ERR_CODE = "TOKEN_VALIDATOR_FAILURE"
     
     def __init__(
             self,

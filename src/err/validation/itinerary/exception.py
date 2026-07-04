@@ -14,11 +14,11 @@ from err import ValidatorException
 from result import MethodResultType
 
 __all__ = [
-    # ======================# ITINERARY_VALIDATION_FAILURE #======================#
+    # ======================# ITINERARY_VALIDATOR_FAILURE #======================#
     "ItineraryValidatorException",
 ]
 
-# ======================# ITINERARY_VALIDATION_FAILURE #======================#
+# ======================# ITINERARY_VALIDATOR_FAILURE #======================#
 class ItineraryValidatorException(ValidatorException):
     """
     Role:
@@ -43,7 +43,7 @@ class ItineraryValidatorException(ValidatorException):
         ValidatorException
     """
     MSG = "Candidate did not pass a ItineraryValidator test."
-    ERR_CODE = "ITINERARY_VALIDATION_FAILURE"
+    ERR_CODE = "ITINERARY_VALIDATOR_FAILURE"
     
     def __init__(
             self,

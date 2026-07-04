@@ -14,11 +14,11 @@ from err import ValidatorException
 from result import MethodResultType
 
 __all__ = [
-    # ======================# ARENA_VALIDATION_FAILURE #======================#
+    # ======================# ARENA_VALIDATOR_FAILURE #======================#
     "ArenaValidatorException",
 ]
 
-# ======================# ARENA_VALIDATION_FAILURE #======================#
+# ======================# ARENA_VALIDATOR_FAILURE #======================#
 class ArenaValidatorException(ValidatorException):
     """
     Role:
@@ -43,7 +43,7 @@ class ArenaValidatorException(ValidatorException):
         ValidatorException
     """
     MSG = "Candidate did not pass a ArenaValidator test."
-    ERR_CODE = "ARENA_VALIDATION_FAILURE"
+    ERR_CODE = "ARENA_VALIDATOR_FAILURE"
     
     def __init__(
             self,

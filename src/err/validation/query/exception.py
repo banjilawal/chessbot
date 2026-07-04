@@ -15,11 +15,11 @@ from result import MethodResultType
 
 
 __all__ = [
-    # ======================# QUERY_VALIDATION_FAILURE #======================#
+    # ======================# QUERY_VALIDATOR_FAILURE #======================#
     "QueryValidatorException",
 ]
 
-# ======================# QUERY_VALIDATION_FAILURE #======================#
+# ======================# QUERY_VALIDATOR_FAILURE #======================#
 class QueryValidatorException(ValidatorException):
     """
     Role:
@@ -44,7 +44,7 @@ class QueryValidatorException(ValidatorException):
         ValidatorException
     """
     MSG = "Candidate did not pass a QueryValidator test."
-    ERR_CODE = "QUERY_VALIDATION_FAILURE"
+    ERR_CODE = "QUERY_VALIDATOR_FAILURE"
     
     def __init__(
             self,

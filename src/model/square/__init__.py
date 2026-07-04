@@ -10,7 +10,7 @@ version: 1.0.1
 # =========== MODEL.SQUARE PACKAGE ===========#
 
 # Packages
-from .opening import *
+from .home import *
 
 # Modules
 from .model import Square

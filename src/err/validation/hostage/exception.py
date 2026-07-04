@@ -14,11 +14,11 @@ from err import ValidatorException
 from result import MethodResultType
 
 __all__ = [
-    # ======================# HOSTAGE_VALIDATION_FAILURE #======================#
+    # ======================# HOSTAGE_VALIDATOR_FAILURE #======================#
     "HostageValidatorException",
 ]
 
-# ======================# HOSTAGE_VALIDATION_FAILURE #======================#
+# ======================# HOSTAGE_VALIDATOR_FAILURE #======================#
 class HostageValidatorException(ValidatorException):
     """
     Role:
@@ -43,7 +43,7 @@ class HostageValidatorException(ValidatorException):
         ValidatorException
     """
     MSG = "Candidate did not pass a HostageValidator test."
-    ERR_CODE = "HOSTAGE_VALIDATION_FAILURE"
+    ERR_CODE = "HOSTAGE_VALIDATOR_FAILURE"
     
     def __init__(
             self,

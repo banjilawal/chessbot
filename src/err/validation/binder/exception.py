@@ -14,11 +14,11 @@ from err import ValidatorException
 from result import MethodResultType
 
 __all__ = [
-    # ======================# BINDER_VALIDATION_FAILURE #======================#
+    # ======================# BINDER_VALIDATOR_FAILURE #======================#
     "BinderValidatorException",
 ]
 
-# ======================# BINDER_VALIDATION_FAILURE #======================#
+# ======================# BINDER_VALIDATOR_FAILURE #======================#
 class BinderValidatorException(ValidatorException):
     """
     Role:
@@ -43,7 +43,7 @@ class BinderValidatorException(ValidatorException):
         ValidatorException
     """
     MSG = "Candidate did not pass a BinderValidator test."
-    ERR_CODE = "BINDER_VALIDATION_FAILURE"
+    ERR_CODE = "BINDER_VALIDATOR_FAILURE"
     
     def __init__(
             self,

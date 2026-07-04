@@ -14,11 +14,11 @@ from err import ValidatorException
 from result import MethodResultType
 
 __all__ = [
-    # ======================# MANEUVER_ENDPOINT_VALIDATION_FAILURE #======================#
+    # ======================# MANEUVER_ENDPOINT_VALIDATOR_FAILURE #======================#
     "ManeuverEndpointValidatorException",
 ]
 
-# ======================# MANEUVER_ENDPOINT_VALIDATION_FAILURE #======================#
+# ======================# MANEUVER_ENDPOINT_VALIDATOR_FAILURE #======================#
 class ManeuverEndpointValidatorException(ValidatorException):
     """
     Role:
@@ -43,7 +43,7 @@ class ManeuverEndpointValidatorException(ValidatorException):
         ValidatorException
     """
     MSG = "Candidate did not pass a ManeuverEndpointValidator test."
-    ERR_CODE = "MANEUVER_ENDPOINT_VALIDATION_FAILURE"
+    ERR_CODE = "MANEUVER_ENDPOINT_VALIDATOR_FAILURE"
     
     def __init__(
             self,

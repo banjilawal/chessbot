@@ -135,7 +135,7 @@ class TokenIntegrityValidator(Validator[Token]):
                 )
             )
         # Handle the case that, the roster or opening_square_name are not acceptable.
-        opening_square_validation_result = toolkit["square_validator"].build(token.opening_square)
+        opening_square_validation_result = toolkit["square_validator"].build(token.home_square)
         if opening_square_validation_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(

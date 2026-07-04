@@ -12,7 +12,7 @@ from abc import ABC, abstractmethod
 from typing import Optional
 
 from database import CoordDatabase
-from model import Coord, Formation, OpeningSquare, Rank, Team, TokenActivityState, DeploymentState
+from model import Coord, Formation, HomeSquare, Rank, Team, TokenActivityState, DeploymentState
 
 
 class Token(ABC):
@@ -49,7 +49,7 @@ class Token(ABC):
     _rank: Rank
     _formation: Formation
     _positions: CoordDatabase
-    _opening_square: OpeningSquare
+    _opening_square: HomeSquare
     _current_position: Optional[Coord]
     _previous_address: Optional[Coord]
     _deployment_state: DeploymentState
@@ -61,7 +61,7 @@ class Token(ABC):
             rank: Rank,
             team: Team,
             formation: Formation,
-            opening_square: OpeningSquare,
+            opening_square: HomeSquare,
     ):
         """
         Args:
@@ -107,7 +107,7 @@ class Token(ABC):
         return self._rank
     
     @property
-    def opening_square(self) -> OpeningSquare:
+    def home_square(self) -> HomeSquare:
         return self._opening_square
     
     @property

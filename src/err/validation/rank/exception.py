@@ -14,11 +14,11 @@ from err import ValidatorException
 from result import MethodResultType
 
 __all__ = [
-    # ======================# RANK_VALIDATION_FAILURE #======================#
+    # ======================# RANK_VALIDATOR_FAILURE #======================#
     "RankValidatorException",
 ]
 
-# ======================# RANK_VALIDATION_FAILURE #======================#
+# ======================# RANK_VALIDATOR_FAILURE #======================#
 class RankValidatorException(ValidatorException):
     """
     Role:
@@ -43,7 +43,7 @@ class RankValidatorException(ValidatorException):
         ValidatorException
     """
     MSG = "Candidate did not pass a RankValidator test."
-    ERR_CODE = "RANK_VALIDATION_FAILURE"
+    ERR_CODE = "RANK_VALIDATOR_FAILURE"
     
     def __init__(
             self,

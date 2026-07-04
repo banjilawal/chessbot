@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import List
 
 from err import SquareSearchException
-from model import Board, Coord, Formation, OpeningSquare, Square, SquareState, Token
+from model import Board, Coord, Formation, HomeSquare, Square, SquareState, Token
 from model.query import SquareQuery
 from result import SearchResult
 from route import SearchRouter
@@ -218,13 +218,13 @@ class SquareSearchRouter(SearchRouter[Square]):
                 cls,
                 dataset: List[Square],
                 formation: Formation
-        ) -> SearchResult[List[OpeningSquare]]:
+        ) -> SearchResult[List[HomeSquare]]:
             """
             Find OpeningSquare instances which match the formation. There should only be one.
             """
             matches = [
                 square for square in dataset if (
-                        isinstance(square, OpeningSquare) and 
+                        isinstance(square, HomeSquare) and
                         square.formation == formation
                 )
             ]

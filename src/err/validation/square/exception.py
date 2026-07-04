@@ -14,11 +14,11 @@ from err import ValidatorException
 from result import MethodResultType
 
 __all__ = [
-    # ======================# SQUARE_VALIDATION_FAILURE #======================#
+    # ======================# SQUARE_VALIDATOR_FAILURE #======================#
     "SquareValidatorException",
 ]
 
-# ======================# SQUARE_VALIDATION_FAILURE #======================#
+# ======================# SQUARE_VALIDATOR_FAILURE #======================#
 class SquareValidatorException(ValidatorException):
     """
     Role:
@@ -43,7 +43,7 @@ class SquareValidatorException(ValidatorException):
         ValidatorException
     """
     MSG = "Candidate did not pass a SquareValidator test."
-    ERR_CODE = "SQUARE_VALIDATION_FAILURE"
+    ERR_CODE = "SQUARE_VALIDATOR_FAILURE"
     
     def __init__(
             self,

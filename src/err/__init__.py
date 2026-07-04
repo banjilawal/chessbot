@@ -18,7 +18,7 @@ from .build import *
 from .collider import *
 from .config import *
 from .controller import *
-from .detector import *
+from .detection import *
 from .duplicate import *
 from .empty import *
 from .factory import *

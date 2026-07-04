@@ -16,7 +16,7 @@ from typing import cast
 from analyzer import TokenReadinessAnalyzer
 from err import TokenDeploymentException
 from err.analyzer.claim.exist.exception import HomeSquareAlreadyClaimedException
-from model import OpeningSquare, Token
+from model import HomeSquare, Token
 from operation import Operation
 from report import TokenReadinessReport
 from result import MethodResultType, UpdateResult, ValidationResult
@@ -141,7 +141,7 @@ class TokenDeploymentPrimer(Operation[Token]):
             token=token,
             pre_update_token=pre_update_token,
             square_service=token.team.board.squares.service,
-            opening_square=cast(OpeningSquare, opening_square_search_result.payload[0]),
+            opening_square=cast(HomeSquare, opening_square_search_result.payload[0]),
         )
         # Handle the case that, the visitation transaction fails.
         if update_result.is_failure:

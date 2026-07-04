@@ -14,11 +14,11 @@ from err import PathValidatorException
 from result import MethodResultType
 
 __all__ = [
-    # ======================# ATTACK_PATH_VALIDATION_FAILURE #======================#
+    # ======================# ATTACK_PATH_VALIDATOR_FAILURE #======================#
     "AttackPathValidatorException",
 ]
 
-# ======================# ATTACK_PATH_VALIDATION_FAILURE #======================#
+# ======================# ATTACK_PATH_VALIDATOR_FAILURE #======================#
 class AttackPathValidatorException(PathValidatorException):
     """
     Role:
@@ -43,7 +43,7 @@ class AttackPathValidatorException(PathValidatorException):
         PathValidatorException
     """
     MSG = "Candidate did not pass an AttackPathValidator test."
-    ERR_CODE = "ATTACK_PATH_VALIDATION_FAILURE"
+    ERR_CODE = "ATTACK_PATH_VALIDATOR_FAILURE"
     
     def __init__(
             self,

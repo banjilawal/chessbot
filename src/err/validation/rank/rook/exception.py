@@ -13,11 +13,11 @@ from typing import Any, Optional
 from err import RankValidatorException
 
 __all__ = [
-    # ======================# ROOK_VALIDATION_FAILURE #======================#
+    # ======================# ROOK_VALIDATOR_FAILURE #======================#
     "RookValidatorException",
 ]
 
-# ======================# ROOK_VALIDATION_FAILURE #======================#
+# ======================# ROOK_VALIDATOR_FAILURE #======================#
 class RookValidatorException(RankValidatorException):
     """
     Role:
@@ -42,7 +42,7 @@ class RookValidatorException(RankValidatorException):
         RankValidatorException
     """
     MSG = "Candidate did not pass a Rook validator test."
-    ERR_CODE = "ROOK_VALIDATION_FAILURE"
+    ERR_CODE = "ROOK_VALIDATOR_FAILURE"
     
     def __init__(
             self,

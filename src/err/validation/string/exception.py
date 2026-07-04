@@ -12,7 +12,7 @@ from typing import Any, Optional
 
 
 __all__ = [
-    # ======================# STRING_VALIDATION_FAILURE #======================#
+    # ======================# STRING_VALIDATOR_FAILURE #======================#
     "StringValidatorException",
 ]
 
@@ -20,7 +20,7 @@ from err import ValidatorException
 from result import MethodResultType
 
 
-# ======================# STRING_VALIDATION_FAILURE #======================#
+# ======================# STRING_VALIDATOR_FAILURE #======================#
 class StringValidatorException(ValidatorException):
     """
     Role:
@@ -45,7 +45,7 @@ class StringValidatorException(ValidatorException):
         ValidatorException
     """
     MSG = "Candidate did not pass a StringValidator test."
-    ERR_CODE = "STRING_VALIDATION_FAILURE"
+    ERR_CODE = "STRING_VALIDATOR_FAILURE"
     
     def __init__(
             self,

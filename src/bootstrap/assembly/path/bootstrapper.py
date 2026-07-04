@@ -19,7 +19,7 @@ from search import SquareNotFoundException
 from operation import AssemblyPrimer
 from err import PathAssemblyPrimerException
 from result import AnalysisResult, SearchResult, ValidationResult
-from model import OpeningSquare, SquareContext, Path
+from model import HomeSquare, SquareContext, Path
 from util import IdFactory, LoggingLevelRouter
 
 
@@ -308,7 +308,7 @@ class PathAssemblyPrimer(AssemblyPrimer[Path]):
     def _opening_square_discovery(
             cls,
             blueprint: PathBlueprint,
-    ) -> SearchResult[List[OpeningSquare]]:
+    ) -> SearchResult[List[HomeSquare]]:
         """
         Find the path's opening square.
 

@@ -14,11 +14,11 @@ from err import ValidatorException
 from result import MethodResultType
 
 __all__ = [
-    # ======================# REGISTRY_ENTRY_KEY_STRING_VALIDATION_FAILURE #======================#
+    # ======================# REGISTRY_ENTRY_KEY_STRING_VALIDATOR_FAILURE #======================#
     "RegistryEntryKeyStringValidatorException",
 ]
 
-# ======================# REGISTRY_ENTRY_KEY_STRING_VALIDATION_FAILURE #======================#
+# ======================# REGISTRY_ENTRY_KEY_STRING_VALIDATOR_FAILURE #======================#
 class RegistryEntryKeyStringValidatorException(ValidatorException):
     """
     Role:
@@ -43,7 +43,7 @@ class RegistryEntryKeyStringValidatorException(ValidatorException):
         ValidatorException
     """
     MSG = "Candidate did not pass a RegistryEntryKey is not a valid string."
-    ERR_CODE = "REGISTRY_ENTRY_KEY_STRING_VALIDATION_FAILURE"
+    ERR_CODE = "REGISTRY_ENTRY_KEY_STRING_VALIDATOR_FAILURE"
     
     def __init__(
             self,

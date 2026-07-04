@@ -12,14 +12,15 @@ from __future__ import annotations
 from typing import Any, cast
 
 from blueprint import TokenBlueprint
-from bootstrap import AssemblyPrimer
-from err import TokenBlueprintNullException
+from err import FormationNullException, TokenBlueprintNullException, TokenBlueprintValidatorException
+from model import Formation
 from result import ValidationResult
 from toolkit import TokenToolkit
 from util import LoggingLevelRouter
+from validation import Validator
 
 
-class TokenBlueprintValidator(AssemblyPrimer[Token]):
+class TokenBlueprintValidator(Validator[TokenBlueprint]):
     """
     Role
         -   Transaction Worker
@@ -44,7 +45,7 @@ class TokenBlueprintValidator(AssemblyPrimer[Token]):
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def execute(
+    def validate(
             cls,
             candidate: Any,
             toolkit: TokenToolkit | None = None
@@ -61,7 +62,7 @@ class TokenBlueprintValidator(AssemblyPrimer[Token]):
             2.  Otherwise ,create a new Blueprint including the Rank and OpeningSquare.
             2.  Send the success result.
         Args:
-            blueprint: TokenBlueprint
+            candidate: Any
             toolkit: TokenToolkit
         Returns:
             ValidationResult[Blueprint]
@@ -83,11 +84,11 @@ class TokenBlueprintValidator(AssemblyPrimer[Token]):
         if priming_validation_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                TokenAssemblyPrimerException(
+                TokenBlueprintValidatorException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    msg=TokenAssemblyPrimerException.MSG,
-                    err_code=TokenAssemblyPrimerException.ERR_CODE,
+                    msg=TokenBlueprintValidatorException.MSG,
+                    err_code=TokenBlueprintValidatorException.ERR_CODE,
                     ex=priming_validation_result.exception,
                 )
             )
@@ -95,8 +96,55 @@ class TokenBlueprintValidator(AssemblyPrimer[Token]):
         blueprint = cast(TokenBlueprint, candidate)
         
         # Handle the case that, any id in the blueprint is flagged.
-        if blueprint.id is not None:
-        
+        id_validation_result = toolkit.blueprint_id_validator.validate(
+            candidate=blueprint.id,
+            identity_service=toolkit.identity_service,
+        )
+        if id_validation_result.is_failure:
+        # Send the exception chain on failure.
+            return ValidationResult.failure(
+                TokenBlueprintValidatorException(
+                    cls_mthd=method,
+                    cls_name=cls.__name__,
+                    msg=TokenBlueprintValidatorException.MSG,
+                    err_code=TokenBlueprintValidatorException.ERR_CODE,
+                    ex=id_validation_result.exception,
+                )
+            )
+        # Handle the case that, the team does not pass a validation check.
+        team_validation = toolkit.team_validator.validate(
+            candidate=blueprint.team
+        )
+        if team_validation.is_failure:
+            # Send the exception chain on failure.
+            return ValidationResult.failure(
+                TokenBlueprintValidatorException(
+                    cls_mthd=method,
+                    cls_name=cls.__name__,
+                    msg=TokenBlueprintValidatorException.MSG,
+                    err_code=TokenBlueprintValidatorException.ERR_CODE,
+                    ex=team_validation.exception,
+                )
+            )
+        # Handle the case that, the formation does not pass a validation check.
+        formation_validation = toolkit.priming_validator.validate(
+            candidate=blueprint.formation,
+            target_model=Formation,
+            null_exception=FormationNullException(),
+        )
+        if formation_validation.is_failure:
+            # Send the exception chain on failure.
+            return ValidationResult.failure(
+                TokenBlueprintValidatorException(
+                    cls_mthd=method,
+                    cls_name=cls.__name__,
+                    msg=TokenBlueprintValidatorException.MSG,
+                    err_code=TokenBlueprintValidatorException.ERR_CODE,
+                    ex=formation_validation.exception,
+                )
+            )
+        # Handle the case that, the the token's home square is not found.
+        home_square_validation_result = toolkit.o
         # Handle the case that, a blueprint value is
         blueprint_validation_result = cls._run_validations(
             blueprint=blueprint,
@@ -105,11 +153,11 @@ class TokenBlueprintValidator(AssemblyPrimer[Token]):
         if blueprint_validation_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                TokenAssemblyPrimerException(
+                TokenBlueprintValidatorException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    msg=TokenAssemblyPrimerException.MSG,
-                    err_code=TokenAssemblyPrimerException.ERR_CODE,
+                    msg=TokenBlueprintValidatorException.MSG,
+                    err_code=TokenBlueprintValidatorException.ERR_CODE,
                     ex=blueprint_validation_result.exception,
                 )
             )
@@ -120,26 +168,53 @@ class TokenBlueprintValidator(AssemblyPrimer[Token]):
         if collision_analysis_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                TokenAssemblyPrimerException(
+                TokenBlueprintValidatorException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    msg=TokenAssemblyPrimerException.MSG,
-                    err_code=TokenAssemblyPrimerException.ERR_CODE,
+                    msg=TokenBlueprintValidatorException.MSG,
+                    err_code=TokenBlueprintValidatorException.ERR_CODE,
                     ex=blueprint_validation_result.exception,
                 )
             )
-        # Handle the case that, the opening square discovery failed.
+
+        # Handle the case that, the search is not completed.
+        if square_search_result.is_failure:
+            # Send the exception chain on failure.
+            return ValidationResult.failure(
+                TokenBlueprintValidatorException(
+                    cls_mthd=method,
+                    cls_name=cls.__name__,
+                    msg=TokenBlueprintValidatorException.MSG,
+                    err_code=TokenBlueprintValidatorException.ERR_CODE,
+                    ex=square_search_result.exception,
+                )
+            )
+        # Handle the case that, the opening square is not found.
+        if square_search_result.is_empty:
+            # Send the exception chain on failure.
+            return ValidationResult.failure(
+                TokenBlueprintValidatorException(
+                    cls_mthd=method,
+                    cls_name=cls.__name__,
+                    msg=TokenBlueprintValidatorException.MSG,
+                    err_code=TokenBlueprintValidatorException.ERR_CODE,
+                    ex=SquareNotFoundException(
+                        msg=SquareNotFoundException.MSG,
+                        err_code=SquareNotFoundException.ERR_CODE,
+                    ),
+                )
+            )
         opening_square_discovery_result = cls._opening_square_discovery(
             blueprint=blueprint
         )
         if opening_square_discovery_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                TokenAssemblyPrimerException(
+                TokenBlueprintValidatorException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    msg=TokenAssemblyPrimerException.MSG,
-                    err_code=TokenAssemblyPrimerException.ERR_CODE,
+                    msg=TokenBlueprintValidatorException.MSG,
+                    err_code=TokenBlueprintValidatorException.ERR_CODE,
                     ex=blueprint_validation_result.exception,
                 )
             )
@@ -150,11 +225,11 @@ class TokenBlueprintValidator(AssemblyPrimer[Token]):
         if rank_assembly_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                TokenAssemblyPrimerException(
+                TokenBlueprintValidatorException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    msg=TokenAssemblyPrimerException.MSG,
-                    err_code=TokenAssemblyPrimerException.ERR_CODE,
+                    msg=TokenBlueprintValidatorException.MSG,
+                    err_code=TokenBlueprintValidatorException.ERR_CODE,
                     ex=rank_assembly_result.exception,
                 )
             )
@@ -196,52 +271,8 @@ class TokenBlueprintValidator(AssemblyPrimer[Token]):
         """
         method = f"{cls.__name__}._run_validations"
         
-        # Handle the case that, the id is not certified as safe.
-        id_validation_result = cls._verify_id(
-            blueprint=blueprint,
-            toolkit=toolkit
-        )
-        if id_validation_result.is_failure:
-            # Send the exception chain on failure.
-            return ValidationResult.failure(
-                TokenAssemblyPrimerException(
-                    cls_mthd=method,
-                    cls_name=cls.__name__,
-                    msg=TokenAssemblyPrimerException.MSG,
-                    err_code=TokenAssemblyPrimerException.ERR_CODE,
-                    ex=id_validation_result.exception,
-                )
-            )
-        # Handle the case that, the team does not pass a validation check.
-        team_validation = toolkit.team_validator.validate(
-            candidate=blueprint.team
-        )
-        if team_validation.is_failure:
-            # Send the exception chain on failure.
-            return ValidationResult.failure(
-                TokenAssemblyPrimerException(
-                    cls_mthd=method,
-                    cls_name=cls.__name__,
-                    msg=TokenAssemblyPrimerException.MSG,
-                    err_code=TokenAssemblyPrimerException.ERR_CODE,
-                    ex=team_validation.exception,
-                )
-            )
-        # Handle the case that, the formation does not pass a validation check.
-        formation_validation = toolkit.formation_service.validate.build(
-            candidate=blueprint.formation
-        )
-        if formation_validation.is_failure:
-            # Send the exception chain on failure.
-            return ValidationResult.failure(
-                TokenAssemblyPrimerException(
-                    cls_mthd=method,
-                    cls_name=cls.__name__,
-                    msg=TokenAssemblyPrimerException.MSG,
-                    err_code=TokenAssemblyPrimerException.ERR_CODE,
-                    ex=formation_validation.exception,
-                )
-            )
+
+
         # --- Create a new TokenBlueprint with the id, then send the success result. ---#
         return ValidationResult.success(
             TokenBlueprint(
@@ -251,47 +282,6 @@ class TokenBlueprintValidator(AssemblyPrimer[Token]):
             )
         )
         
-    @classmethod
-    def _verify_id(
-            cls,
-            blueprint: TokenBlueprint,
-            toolkit: TokenToolkit
-    ) -> ValidationResult[int]:
-        """
-        Verify the id if it already exists or create a new one.
-
-        Action:
-            1.  Send an exception chain in the ValidationResult if an existing id
-                is not certified as safe.
-            2.  Otherwise, send the success result.
-        Args:
-            blueprint: TokenBlueprint
-            toolkit: TokenToolkit
-        Returns:
-            ValidationResult[int]
-        Raises:
-            PrimingTokenAssemblyException
-        """
-        method = f"{cls.__name__}._verify_id"
-        
-        if blueprint.id is None:
-            return ValidationResult.success(IdFactory.next_id(class_name="Token"))
-        
-        if blueprint.id is not None:
-            id_validation = toolkit.identity_service.validate_id(blueprint.id)
-            if id_validation.is_failure:
-                # Send the exception chain on failure.
-                return ValidationResult.failure(
-                    TokenAssemblyPrimerException(
-                        cls_mthd=method,
-                        cls_name=cls.__name__,
-                        msg=TokenAssemblyPrimerException.MSG,
-                        err_code=TokenAssemblyPrimerException.ERR_CODE,
-                        ex=id_validation.exception,
-                    )
-                )
-            # --- Return the work product. ---#
-            return ValidationResult.success(blueprint.id)
         
     @classmethod
     @LoggingLevelRouter.monitor
@@ -320,22 +310,22 @@ class TokenBlueprintValidator(AssemblyPrimer[Token]):
         if collision_analysis_result.is_failure:
             # Send the exception chain on failure.
             return AnalysisResult.failure(
-                TokenAssemblyPrimerException(
+                TokenBlueprintValidatorException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    msg=TokenAssemblyPrimerException.MSG,
-                    err_code=TokenAssemblyPrimerException.ERR_CODE,
+                    msg=TokenBlueprintValidatorException.MSG,
+                    err_code=TokenBlueprintValidatorException.ERR_CODE,
                     ex=collision_analysis_result.exception,
                 )
             )
         if collision_analysis_result.payload.collision_exists:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                TokenAssemblyPrimerException(
+                TokenBlueprintValidatorException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    msg=TokenAssemblyPrimerException.MSG,
-                    err_code=TokenAssemblyPrimerException.ERR_CODE,
+                    msg=TokenBlueprintValidatorException.MSG,
+                    err_code=TokenBlueprintValidatorException.ERR_CODE,
                     ex=collision_analysis_result.payload.exception,
                 )
             )
@@ -373,11 +363,11 @@ class TokenBlueprintValidator(AssemblyPrimer[Token]):
         if square_search_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                TokenAssemblyPrimerException(
+                TokenBlueprintValidatorException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    msg=TokenAssemblyPrimerException.MSG,
-                    err_code=TokenAssemblyPrimerException.ERR_CODE,
+                    msg=TokenBlueprintValidatorException.MSG,
+                    err_code=TokenBlueprintValidatorException.ERR_CODE,
                     ex=square_search_result.exception,
                 )
             )
@@ -385,11 +375,11 @@ class TokenBlueprintValidator(AssemblyPrimer[Token]):
         if square_search_result.is_empty:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                TokenAssemblyPrimerException(
+                TokenBlueprintValidatorException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    msg=TokenAssemblyPrimerException.MSG,
-                    err_code=TokenAssemblyPrimerException.ERR_CODE,
+                    msg=TokenBlueprintValidatorException.MSG,
+                    err_code=TokenBlueprintValidatorException.ERR_CODE,
                     ex=SquareNotFoundException(
                         msg=SquareNotFoundException.MSG,
                         err_code=SquareNotFoundException.ERR_CODE,

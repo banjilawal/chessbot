@@ -14,7 +14,7 @@ from result import BuildResult
 from operation import Assembler
 from util import LoggingLevelRouter
 from controller import WorkerRegistryController
-from model import OpeningSquare, Square, SquareBlueprint
+from model import HomeSquare, Square, SquareBlueprint
 
 
 class SquareAssembler(Assembler[Square]):
@@ -69,7 +69,7 @@ class SquareAssembler(Assembler[Square]):
         
         if blueprint.formation is not None:
             return BuildResult.success(
-                OpeningSquare(
+                HomeSquare(
                     id=blueprint.id,
                     name=blueprint.name,
                     coord=blueprint.coord,

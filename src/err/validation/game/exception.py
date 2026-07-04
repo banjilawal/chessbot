@@ -14,11 +14,11 @@ from err import ValidatorException
 from result import MethodResultType
 
 __all__ = [
-    # ======================# GAME_VALIDATION_FAILURE #======================#
+    # ======================# GAME_VALIDATOR_FAILURE #======================#
     "GameValidatorException",
 ]
 
-# ======================# GAME_VALIDATION_FAILURE #======================#
+# ======================# GAME_VALIDATOR_FAILURE #======================#
 class GameValidatorException(ValidatorException):
     """
     Role:
@@ -43,7 +43,7 @@ class GameValidatorException(ValidatorException):
         ValidatorException
     """
     MSG = "Candidate did not pass a GameValidator test."
-    ERR_CODE = "GAME_VALIDATION_FAILURE"
+    ERR_CODE = "GAME_VALIDATOR_FAILURE"
     
     def __init__(
             self,

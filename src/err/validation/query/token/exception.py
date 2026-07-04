@@ -15,11 +15,11 @@ from result import MethodResultType
 
 
 __all__ = [
-    # ======================# TOKEN_QUERY_VALIDATION_FAILURE #======================#
+    # ======================# TOKEN_QUERY_VALIDATOR_FAILURE #======================#
     "TokenQueryValidatorException",
 ]
 
-# ======================# TOKEN_QUERY_VALIDATION_FAILURE #======================#
+# ======================# TOKEN_QUERY_VALIDATOR_FAILURE #======================#
 class TokenQueryValidatorException(QueryValidatorException):
     """
     Role:
@@ -44,7 +44,7 @@ class TokenQueryValidatorException(QueryValidatorException):
         QueryValidatorException
     """
     MSG = "Candidate did not pass a TokenQueryValidator test."
-    ERR_CODE = "TOKEN_QUERY_VALIDATION_FAILURE"
+    ERR_CODE = "TOKEN_QUERY_VALIDATOR_FAILURE"
     
     def __init__(
             self,

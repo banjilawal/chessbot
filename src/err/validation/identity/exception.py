@@ -14,11 +14,11 @@ from err import ValidatorException
 from result import MethodResultType
 
 __all__ = [
-    # ======================# IDENTITY_VALIDATION_FAILURE #======================#
+    # ======================# IDENTITY_VALIDATOR_FAILURE #======================#
     "IdentityValidatorException",
 ]
 
-# ======================# IDENTITY_VALIDATION_FAILURE #======================#
+# ======================# IDENTITY_VALIDATOR_FAILURE #======================#
 class IdentityValidatorException(ValidatorException):
     """
     Role:
@@ -43,7 +43,7 @@ class IdentityValidatorException(ValidatorException):
         ValidatorException
     """
     MSG = "Candidate did not pass a IdentityValidator test."
-    ERR_CODE = "IDENTITY_VALIDATION_FAILURE"
+    ERR_CODE = "IDENTITY_VALIDATOR_FAILURE"
     
     def __init__(
             self,

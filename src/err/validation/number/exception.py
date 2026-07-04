@@ -14,11 +14,11 @@ from err import ValidatorException
 from result import MethodResultType
 
 __all__ = [
-    # ======================# NUMBER_VALIDATION_FAILURE #======================#
+    # ======================# NUMBER_VALIDATOR_FAILURE #======================#
     "NumberValidatorException",
 ]
 
-# ======================# NUMBER_VALIDATION_FAILURE #======================#
+# ======================# NUMBER_VALIDATOR_FAILURE #======================#
 class NumberValidatorException(ValidatorException):
     """
     Role:
@@ -43,7 +43,7 @@ class NumberValidatorException(ValidatorException):
         ValidatorException
     """
     MSG = "Candidate did not pass a NumberValidator test."
-    ERR_CODE = "NUMBER_VALIDATION_FAILURE"
+    ERR_CODE = "NUMBER_VALIDATOR_FAILURE"
     
     def __init__(
             self,

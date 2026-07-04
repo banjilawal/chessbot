@@ -14,11 +14,11 @@ from err import ValidatorException
 from result import MethodResultType
 
 __all__ = [
-    # ======================# NODE_VALIDATION_FAILURE #======================#
+    # ======================# NODE_VALIDATOR_FAILURE #======================#
     "NodeValidatorException",
 ]
 
-# ======================# NODE_VALIDATION_FAILURE #======================#
+# ======================# NODE_VALIDATOR_FAILURE #======================#
 class NodeValidatorException(ValidatorException):
     """
     Role:
@@ -43,7 +43,7 @@ class NodeValidatorException(ValidatorException):
         ValidatorException
     """
     MSG = "Candidate did not pass a NodeValidator test."
-    ERR_CODE = "NODE_VALIDATION_FAILURE"
+    ERR_CODE = "NODE_VALIDATOR_FAILURE"
     
     def __init__(
             self,

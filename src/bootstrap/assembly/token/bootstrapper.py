@@ -19,7 +19,7 @@ from search import SquareNotFoundException
 from operation import AssemblyPrimer
 from err import TokenAssemblyPrimerException
 from result import AnalysisResult, SearchResult, ValidationResult
-from model import OpeningSquare, SquareContext, Token
+from model import HomeSquare, SquareContext, Token
 from util import IdFactory, LoggingLevelRouter
 
 
@@ -308,7 +308,7 @@ class TokenAssemblyPrimer(AssemblyPrimer[Token]):
     def _opening_square_discovery(
             cls,
             blueprint: TokenBlueprint,
-    ) -> SearchResult[List[OpeningSquare]]:
+    ) -> SearchResult[List[HomeSquare]]:
         """
         Find the token's opening square.
 

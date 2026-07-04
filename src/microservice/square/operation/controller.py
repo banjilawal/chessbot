@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 
-from detector import SquareCollisionDetector
+from detection import SquareCollisionDetector
 from builder import SquareBuilder
 from validation import SquareValidator
 

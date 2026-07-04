@@ -14,11 +14,11 @@ from err import ValidatorException
 from result import MethodResultType
 
 __all__ = [
-    # ======================# SCALAR_VALIDATION_FAILURE #======================#
+    # ======================# SCALAR_VALIDATOR_FAILURE #======================#
     "ScalarValidatorException",
 ]
 
-# ======================# SCALAR_VALIDATION_FAILURE #======================#
+# ======================# SCALAR_VALIDATOR_FAILURE #======================#
 class ScalarValidatorException(ValidatorException):
     """
     Role:
@@ -43,7 +43,7 @@ class ScalarValidatorException(ValidatorException):
         ValidatorException
     """
     MSG = "Candidate did not pass a ScalarValidator test."
-    ERR_CODE = "SCALAR_VALIDATION_FAILURE"
+    ERR_CODE = "SCALAR_VALIDATOR_FAILURE"
     
     def __init__(
             self,

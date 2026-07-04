@@ -13,10 +13,10 @@ from __future__ import annotations
 from copy import deepcopy
 from typing import cast
 
-from analyzer import HomeSquareClaimAnalyzer
+from analyzer import HomeSquareValidator
 from controller import WorkerRegistryController
 from err import TokenDeploymentException
-from model import DeploymentState, OpeningSquare, Token, TokenHomeClaimState
+from model import DeploymentState, HomeSquare, Token, TokenHomeClaimState
 from operation import Operation
 from report import HomeSquareClaimReport
 from result import MethodResultType, UpdateResult
@@ -52,7 +52,7 @@ class TokenDeployer(Operation[Token]):
     def execute(
             cls,
             token: Token,
-            home_square_claim_analyzer: HomeSquareClaimAnalyzer | None = None,
+            home_square_validator: HomeSquareValidator | None = None,
     ) -> UpdateResult[Token]:
         """
         Executes the deployment transaction.
@@ -68,7 +68,7 @@ class TokenDeployer(Operation[Token]):
             3.  Send the success result containing, the finished work product.
         Args:
             token: Token
-            home_square_claim_analyzer: HomeSquareClaimAnalyzer
+            home_square_validator: HomeSquareClaimAnalyzer
         Returns:
             UpdateResult[Token]
         Raises:
@@ -77,11 +77,11 @@ class TokenDeployer(Operation[Token]):
         method = f"{cls.__class__.__name__}.deploy_on_board"
         
         # --- Supply any missing dependencies. ---#
-        if home_square_claim_analyzer is None:
-            home_square_claim_analyzer = HomeSquareClaimAnalyzer()
+        if home_square_validator is None:
+            home_square_validator = HomeSquareValidator()
          
         # Handle the case that, a claim report is not generated.
-        analysis_result = home_square_claim_analyzer.analyze(token=token)
+        analysis_result = home_square_validator.analyze(token=token)
         if analysis_result.is_failure:
             # Send the exception chain on failure.
             return UpdateResult.update_failure(
@@ -130,7 +130,7 @@ class TokenDeployer(Operation[Token]):
                 )
             )
         # --- Token has occupied its home square. Perform consistency maintenance tasks. ---#
-        home_square = cast(OpeningSquare, visitation_result.payload)
+        home_square = cast(HomeSquare, visitation_result.payload)
         claimant = home_square.occupant
         
         # Confirm claimant's deployment state is updated.

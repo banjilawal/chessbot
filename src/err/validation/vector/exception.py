@@ -14,11 +14,11 @@ from err import ValidatorException
 from result import MethodResultType
 
 __all__ = [
-    # ======================# VECTOR_VALIDATION_FAILURE #======================#
+    # ======================# VECTOR_VALIDATOR_FAILURE #======================#
     "VectorValidatorException",
 ]
 
-# ======================# VECTOR_VALIDATION_FAILURE #======================#
+# ======================# VECTOR_VALIDATOR_FAILURE #======================#
 class VectorValidatorException(ValidatorException):
     """
     Role:
@@ -43,7 +43,7 @@ class VectorValidatorException(ValidatorException):
         ValidatorException
     """
     MSG = "Candidate did not pass a VectorValidator test."
-    ERR_CODE = "VECTOR_VALIDATION_FAILURE"
+    ERR_CODE = "VECTOR_VALIDATOR_FAILURE"
     
     def __init__(
             self,

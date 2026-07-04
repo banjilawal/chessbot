@@ -13,7 +13,7 @@ from dataclasses import dataclass
 from typing import Any, Dict, Optional
 
 from err import TokenContextNullException
-from model import Context, Coord, OpeningSquare, Rank, Team, Token
+from model import Context, Coord, HomeSquare, Rank, Team, Token
 from setting import GameColor
 
 @dataclass
@@ -50,7 +50,7 @@ class TokenContext(Context[Token]):
     color: Optional[GameColor] | None = None
     designation: Optional[str] | None = None
     current_position:Optional[Coord] | None = None
-    opening_square: Optional[OpeningSquare] | None = None
+    opening_square: Optional[HomeSquare] | None = None
     
     # def __init__(
     #         self,

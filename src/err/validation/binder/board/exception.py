@@ -13,11 +13,11 @@ from typing import Any, Optional
 from err import BinderValidatorException
 
 __all__ = [
-    # ======================# BOARD_TEAM_BINDER_VALIDATION_FAILURE #======================#
+    # ======================# BOARD_TEAM_BINDER_VALIDATOR_FAILURE #======================#
     "BoardTeamBinderValidatorException",
 ]
 
-# ======================# BOARD_TEAM_BINDER_VALIDATION_FAILURE #======================#
+# ======================# BOARD_TEAM_BINDER_VALIDATOR_FAILURE #======================#
 class BoardTeamBinderValidatorException(BinderValidatorException):
     """
     Role:
@@ -42,7 +42,7 @@ class BoardTeamBinderValidatorException(BinderValidatorException):
         BinderValidatorException
     """
     MSG = "Candidate did not pass a BoardTeamBinder validator test."
-    ERR_CODE = "BOARD_TEAM_BINDER_VALIDATION_FAILURE"
+    ERR_CODE = "BOARD_TEAM_BINDER_VALIDATOR_FAILURE"
     
     def __init__(
             self,

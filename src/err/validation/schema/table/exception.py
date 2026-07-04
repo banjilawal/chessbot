@@ -14,11 +14,11 @@ from err import ValidatorException
 from result import MethodResultType
 
 __all__ = [
-    # ======================# SCHEMA_VALIDATION_VALIDATION_FAILURE #======================#
+    # ======================# SCHEMA_VALIDATION_VALIDATOR_FAILURE #======================#
     "SchemaHashtableValidatorException",
 ]
 
-# ======================# SCHEMA_VALIDATION_VALIDATION_FAILURE #======================#
+# ======================# SCHEMA_VALIDATION_VALIDATOR_FAILURE #======================#
 class SchemaHashtableValidatorException(ValidatorException):
     """
     Role:
@@ -43,7 +43,7 @@ class SchemaHashtableValidatorException(ValidatorException):
         ValidatorException
     """
     MSG = "Candidate did not pass a SchemaDictValidator test."
-    ERR_CODE = "SCHEMA_VALIDATION_VALIDATION_FAILURE"
+    ERR_CODE = "SCHEMA_VALIDATION_VALIDATOR_FAILURE"
     
     def __init__(
             self,
