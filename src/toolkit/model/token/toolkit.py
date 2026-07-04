@@ -9,22 +9,21 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from typing import List
+from dataclasses import dataclass
 
 from detection import HomeSquareDetector
 from err import TokenNullException
+from microservice import RankService
 from model import Token
-from operation import Operation
 from toolkit import Toolkit
-from microservice import FormationService, IdentityService, Microservice, RankService
 from validation import (
-    BlueprintHomeSquareProcessor, BlueprintRankProcessor, CoordValidator, NumberValidator, SquareValidator,
-    TeamValidator,
-    PrimingValidator
+    BlueprintHomeSquareProcessor, BlueprintRankProcessor, CoordValidator, NumberValidator,
+    SquareValidator, TeamValidator
 )
 
 
-class TokenToolkit(Toolkit[Token]):
+@dataclass
+class TokenToolkit(Toolkit):
     """
     Role:
         -   Dependency Container

@@ -1,7 +1,7 @@
-# src/err/permitter/promotion/exception.py
+# src/err/model/token/disabled/maneuver/promote/exception.py
 
 """
-Module: err.permitter.promotion.exception
+Module: err.model.token.disabled.maneuver.promote.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,23 +10,23 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import PermitterException
+from err import DisabledTokenManeuverException
 from result import MethodResultType
 
 __all__ = [
-    # ======================# PROMOTION_PERMITTER_FAILURE #======================#
-    "PromotionPermitterException",
+    # ======================# DISABLED_TOKEN_UNDO_MOVE_ERROR #======================#
+    "DisabledTokenUndoMoveException",
 ]
 
-# ======================# PROMOTION_PERMITTER_FAILURE #======================#
-class PromotionPermitterException(PermitterException):
+# ======================# DISABLED_TOKEN_UNDO_MOVE_ERROR #======================#
+class DisabledTokenUndoMoveException(DisabledTokenManeuverException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a PromotionPermitter did not complete its permission analysis.
-
+        1.  Indicate a disabled token attempted to undo a move.
+            
     Attributes:
         msg: Optional[str]
         var: Optional[str]
@@ -35,16 +35,14 @@ class PromotionPermitterException(PermitterException):
         cls_name: Optional[str]
         cls_mthd: Optional[str]
         err_code: Optional[str]
-        mthd_rslt_type: Optional[MethodResultType]
             
     Provides:
 
     Super Class:
-        PermitterException
+        DisabledTokenManeuverException
     """
-    MSG = "PromotionPermitter did not complete its analysis."
-    ERR_CODE = "PROMOTION_PERMITTER_FAILURE"
-    MTHD_RSLT_TYPE = MethodResultType.ANALYSIS_RESULT
+    MSG = "Disabled token cannot undo its move."
+    ERR_CODE = "DISABLED_TOKEN_UNDO_MOVE_ERROR"
     
     def __init__(
             self,
@@ -58,19 +56,18 @@ class PromotionPermitterException(PermitterException):
             mthd_rslt_type: Optional[MethodResultType] | None = None,
     ):
         """
-        Args:
-            msg: Optional[str]
-            var: Optional[str]
-            val: Optional[Any]
+        args:
+            Msg: Optional[str]
+            Var: Optional[str]
+            val: Optional[any]
             ex: Optional[Exception]
-            cls_name: Optional[str]
+            cls_name: Optional[Str]
             cls_mthd: Optional[str]
             err_code: Optional[str]
             mthd_rslt_type: Optional[MethodResultType]
         """
         msg = msg or self.MSG
         err_code = err_code or self.ERR_CODE
-        mthd_rslt_type = mthd_rslt_type or self.MTHD_RSLT_TYPE
         super().__init__(
             ex=ex,
             msg=msg,
@@ -79,5 +76,5 @@ class PromotionPermitterException(PermitterException):
             err_code=err_code,
             cls_name=cls_name,
             cls_mthd=cls_mthd,
-            mthd_rslt_type=mthd_rslt_type
+            mthd_rslt_type=mthd_rslt_type,
         )

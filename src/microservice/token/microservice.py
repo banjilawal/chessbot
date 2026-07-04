@@ -9,13 +9,13 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from microservice import Microservice
+from builder import TokenBuilder
+from controller import TokenController
+from microservice import CoordService
 from model import Coord, Token
-from operation import TokenValidator
-from controller.model.token import TokenController
-from pipeline import TokenBuildPipeline
 from result import DeletionResult, InsertionResult
-from system import IdFactory, LoggingLevelRouter
+from util import IdFactory, LoggingLevelRouter
+from validation import TokenValidator
 
 
 class TokenService(Microservice[Token]):
@@ -71,8 +71,8 @@ class TokenService(Microservice[Token]):
     def __init__(
             self,
             name: str = SERVICE_NAME,
-            id: int = IdFactory.next_id(class_name="TokenService"),
-            controller: TokenController = TokenController(),
+            id: int | None = IdFactory.next_id(class_name="TokenService"),
+            controller: TokenController | None = None,
     ):
         """
         Args:
@@ -81,19 +81,19 @@ class TokenService(Microservice[Token]):
             controller: TokenOpsController
         """
         super().__init__(id=id, name=name)
-        self._controller = controller
-    
-    @property
-    def builder(self) -> TokenBuildPipeline:
-        return TokenBuildPipeline()
-    
-    @property
-    def validator(self) -> TokenValidator:
-        return TokenValidator()
-    
+        self._controller = controller or TokenController()
+        
     @property
     def controller(self) -> TokenController:
         return self._controller
+    
+    @property
+    def builder(self) -> TokenBuilder:
+        return self._controller.builder
+    
+    @property
+    def validator(self) -> TokenValidator:
+        return self._controller.validator
     
     @LoggingLevelRouter.monitor
     def pop_coord_from_token(self, token) -> DeletionResult[Coord]:
@@ -112,7 +112,7 @@ class TokenService(Microservice[Token]):
         method = f"{self.__class__.__name__}.pop_coord_from_token"
         
         #--- Forward the request to the controller. ---#
-        popping_coord_result = self._controller.position.pop.build(
+        popping_coord_result = self._controller.position_controller.pop.build(
             target=token,
             token_validation=self.validator,
         )
@@ -136,7 +136,7 @@ class TokenService(Microservice[Token]):
             self,
             token: Token,
             coord: Coord,
-            coord_service: CoordService = CoordService()
+            coord_service: CoordService | None = None,
     ) -> InsertionResult:
         """
         Record the token's last move.
@@ -154,8 +154,11 @@ class TokenService(Microservice[Token]):
         """
         method = f"{self.__class__.__name__}.push_coord_to_token"
         
+        if coord_service is None:
+            coord_service = CoordService()
+        
         # --- Forward the request to the controller. ---#
-        insertion_result = self._controller.position.push.build(
+        insertion_result = self._controller.position_controller..position.push.build(
             target=token,
             coord=coord,
             coord_service=coord_service,

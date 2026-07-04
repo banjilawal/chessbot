@@ -10,6 +10,9 @@ version: 1.0.1
 # ============ ERR.MODEL.TOKEN.DISABLED PACKAGE ===========#
 
 # Packages
+from .attack import *
+from .maneuver import *
+from .pawn import *
 
 # Modules
 from .exception import DisabledTokenException

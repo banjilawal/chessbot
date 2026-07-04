@@ -46,7 +46,7 @@ class TokenReadinessReport(Report):
     state: ReadinessState
     
     @property
-    def is_ready(self) -> bool:
+    def token_is_ready(self) -> bool:
         return self.state == ReadinessState.READY
     
     @property
@@ -54,7 +54,7 @@ class TokenReadinessReport(Report):
         return self.state != ReadinessState.READY
     
     @property
-    def is_captured(self) -> bool:
+    def token_is_captured(self) -> bool:
         return (
                 isinstance(self.token, CombatantToken) and
                 self.state == ReadinessState.CAPTURED

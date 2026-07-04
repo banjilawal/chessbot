@@ -9,7 +9,13 @@ version: 1.0.0
 
 from __future__ import annotations
 
+from typing import cast
+
 from logic.coord import Coord
+
+from analyzer import TokenReadinessAnalyzer
+from err import DisabledTokenManeuverException
+from report import TokenReadinessReport
 from system import DeletionResult, LoggingLevelRouter
 from model.token import (
     InactiveTokenPoppingCoordException, MoveUndoLimitException, Token, TokenPopCoordException, TokenValidation,
@@ -17,7 +23,7 @@ from model.token import (
 )
 
 
-class TokenPopCoordProcess:
+class TokenPositionPopper:
     """
     Role:
         - Transaction Worker
@@ -43,7 +49,8 @@ class TokenPopCoordProcess:
     def execute(
             cls,
             token: Token,
-            token_validator: TokenValidation = TokenValidation(),
+            token_validator: TokenValidator | None = None,
+            readiness_analyzer: TokenReadinessAnalyzer | None = None,
     ) -> DeletionResult[Coord]:
         """
         Forwards a request that the CoordDatabase instance removed its latest insert.
@@ -69,6 +76,49 @@ class TokenPopCoordProcess:
         """
         method = f"{cls.__class__.__name__}undo_last_coord_push"
         
+        if token_validator is None:
+            token_validator = TokenValidation()
+        if readiness_analyzer is None:
+            readiness_analyzer = TokenReadinessAnalyzer()
+            
+        readiness_analysis_result = readiness_analyzer.analyze(
+            token=token,
+            token_validator=token_validator
+        )
+        # Handle the case that, the analyzer aborts.
+        if readiness_analysis_result.is_failure:
+            # Send the exception chain on failure.
+            return DeletionResult.failure(
+                TokenPopCoordException(
+                    cls_mthd=method,
+                    cls_name=cls.__name__,
+                    op=TokenPopCoordException.OP,
+                    msg=TokenPopCoordException.MSG,
+                    err_code=TokenPopCoordException.ERR_CODE,
+                    mthd_rslt_type=TokenPopCoordException.MTHD_RSLT,
+                    ex=readiness_analysis_result.exception
+                )
+            )
+        report = cast(TokenReadinessReport, readiness_analysis_result.payload)
+        # Handle the case that, the token is not actionable.
+        if report.token_is_not_ready:
+            # Send the exception chain on failure.
+            return DeletionResult.failure(
+                TokenPopCoordException(
+                    cls_mthd=method,
+                    cls_name=cls.__name__,
+                    op=TokenPopCoordException.OP,
+                    msg=TokenPopCoordException.MSG,
+                    err_code=TokenPopCoordException.ERR_CODE,
+                    mthd_rslt_type=TokenPopCoordException.MTHD_RSLT,
+                    ex=DisabledTokenManeuverException(
+                        cls_mthd=method,
+                        cls_name=cls.__name__,
+                        msg=DisabledTokenManeuverException.MSG,
+                        err_code=DisabledTokenManeuverException.ERR_CODE,
+                    )
+                )
+            )
         # Handle the case that, the token does not pass a validation check.
         validation_result = token_validator.build(token)
         if validation_result.is_failure:
