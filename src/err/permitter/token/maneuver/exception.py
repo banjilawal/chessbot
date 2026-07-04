@@ -14,18 +14,18 @@ from err import TokenPermitterException
 from result import MethodResultType
 
 __all__ = [
-    # ======================# PROMOTION_PERMITTER_FAILURE #======================#
-    "PromotionPermitterException",
+    # ======================# TOKEN_MANEUVER_PERMITTER_FAILURE #======================#
+    "TokenManeuverPermitterException",
 ]
 
-# ======================# PROMOTION_PERMITTER_FAILURE #======================#
-class PromotionPermitterException(TokenPermitterException):
+# ======================# TOKEN_MANEUVER_PERMITTER_FAILURE #======================#
+class TokenManeuverPermitterException(TokenPermitterException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an error prevented a PromotionPermitter from completing its task.
+        1.  Indicate that an error prevented a TokenManeuverPermitter from completing its task.
 
     Attributes:
         msg: Optional[str]
@@ -42,8 +42,8 @@ class PromotionPermitterException(TokenPermitterException):
     Super Class:
         TokenPermitterException
     """
-    MSG = "PromotionPermitter error."
-    ERR_CODE = "PROMOTION_PERMITTER_FAILURE"
+    MSG = "TokenManeuverPermitter error."
+    ERR_CODE = "TOKEN_MANEUVER_PERMITTER_FAILURE"
     
     def __init__(
             self,

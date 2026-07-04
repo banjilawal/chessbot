@@ -10,7 +10,9 @@ version: 1.0.1
 # ============ ERR.PERMITTER.TOKEN.UNDO PACKAGE ===========#
 
 # Packages
+from .deployed import *
 from .max import *
+
 
 # Modules
 from .exception import TokenUndoMovePermitterException

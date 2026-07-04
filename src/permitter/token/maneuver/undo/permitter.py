@@ -1,7 +1,7 @@
-# src/permitter/service/token/position/pop/permitter.py
+# src/permitter/token/maneuver/undo/permitter.py
 
 """
-Module: permitter.service.token.position.pop.permitter
+Module: permitter.token.maneuver.undo.permitter
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -15,6 +15,7 @@ from logic.coord import Coord
 
 from analyzer import TokenReadinessAnalyzer
 from err import DisabledTokenManeuverException
+from permitter import TokenManeuverPermitter
 from report import PopApproval, TokenReadinessReport
 from system import AnalysisResult, LoggingLevelRouter
 from model.token import (
@@ -24,7 +25,23 @@ from model.token import (
 from validation import TokenValidator
 
 
-class TokenUndoMovePermitter:
+class TokenUndoMovePermitter(TokenManeuverPermitter):
+    """
+    Role:
+        - Permission Granter
+        - Consistency, Integrity Maintenance
+
+    Responsibilities:
+        1.  Determine if Token can undo its last move.
+
+    Attributes:
+
+    Provides:
+        -   def execute(cls,token: Token, *args, **kwargs) -> AnalysisResult
+
+    Super Class:
+        TokenManeuverPermitter
+    """
     """
     Role:
         - Transaction Worker

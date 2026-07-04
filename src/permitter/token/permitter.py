@@ -20,11 +20,13 @@ from util import LoggingLevelRouter
 class TokenPermitter(OperationPermitter):
     """
     Role:
-        - Analysis Worker
+        - Permission Granter
         - Consistency, Integrity Maintenance
 
     Responsibilities:
-        1.  Checks if a Token satisfies the conditions to perform an operation.
+        1.  Grants token permission to perform an operation if the requestor satisfies
+            conditions for maintaining consistency and integrity through the process
+            lifetime.
 
     Attributes:
 
@@ -34,7 +36,6 @@ class TokenPermitter(OperationPermitter):
     Super Class:
         OperationPermitter
     """
-    
     @classmethod
     @abstractmethod
     @LoggingLevelRouter.monitor

@@ -1,7 +1,7 @@
-# src/err/permitter/token/promote/exception.py
+# src/err/permitter/token/undo/exception.py
 
 """
-Module: err.permitter.token.promote.exception
+Module: err.permitter.token.undo.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,23 +10,24 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import TokenPermitterException
+from err import TokenUndoMovePermitterException
 from result import MethodResultType
 
 __all__ = [
-    # ======================# PROMOTION_PERMITTER_FAILURE #======================#
-    "PromotionPermitterException",
+    # ======================# MOVE_UNDEPOYED_TOKEN_ERROR #======================#
+    "MoveUndeployedTokenException",
 ]
 
-# ======================# PROMOTION_PERMITTER_FAILURE #======================#
-class PromotionPermitterException(TokenPermitterException):
+# ======================# MOVE_UNDEPOYED_TOKEN_ERROR #======================#
+class MoveUndeployedTokenException(TokenUndoMovePermitterException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an error prevented a PromotionPermitter from completing its task.
-
+        1.  Indicate that an attempt was made to move a token which has not
+            been deployed to its home square.
+            
     Attributes:
         msg: Optional[str]
         var: Optional[str]
@@ -35,15 +36,14 @@ class PromotionPermitterException(TokenPermitterException):
         cls_name: Optional[str]
         cls_mthd: Optional[str]
         err_code: Optional[str]
-        mthd_rslt_type: Optional[MethodResultType]
             
     Provides:
 
     Super Class:
-        TokenPermitterException
+        TokenUndoMovePermitterException
     """
-    MSG = "PromotionPermitter error."
-    ERR_CODE = "PROMOTION_PERMITTER_FAILURE"
+    MSG = "Cannot move a token until its placed on its home square first."
+    ERR_CODE = "MOVE_UNDEPOYED_TOKEN_ERROR"
     
     def __init__(
             self,
@@ -57,19 +57,18 @@ class PromotionPermitterException(TokenPermitterException):
             mthd_rslt_type: Optional[MethodResultType] | None = None,
     ):
         """
-        Args:
-            msg: Optional[str]
-            var: Optional[str]
-            val: Optional[Any]
+        args:
+            Msg: Optional[str]
+            Var: Optional[str]
+            val: Optional[any]
             ex: Optional[Exception]
-            cls_name: Optional[str]
+            cls_name: Optional[Str]
             cls_mthd: Optional[str]
             err_code: Optional[str]
             mthd_rslt_type: Optional[MethodResultType]
         """
         msg = msg or self.MSG
         err_code = err_code or self.ERR_CODE
-        mthd_rslt_type = mthd_rslt_type or self.MTHD_RSLT_TYPE
         super().__init__(
             ex=ex,
             msg=msg,
@@ -78,5 +77,5 @@ class PromotionPermitterException(TokenPermitterException):
             err_code=err_code,
             cls_name=cls_name,
             cls_mthd=cls_mthd,
-            mthd_rslt_type=mthd_rslt_type
+            mthd_rslt_type=mthd_rslt_type,
         )

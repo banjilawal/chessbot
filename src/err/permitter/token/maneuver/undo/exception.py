@@ -10,7 +10,7 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import TokenPermitterException
+from err import TokenManeuverPermitter
 from result import MethodResultType
 
 __all__ = [
@@ -19,7 +19,7 @@ __all__ = [
 ]
 
 # ======================# TOKEN_UNDO_MOVE_PERMITTER_FAILURE #======================#
-class TokenUndoMovePermitterException(TokenPermitterException):
+class TokenUndoMovePermitterException(TokenManeuverPermitter):
     """
     Role:
         -   Error Tracing
@@ -40,7 +40,7 @@ class TokenUndoMovePermitterException(TokenPermitterException):
     Provides:
 
     Super Class:
-        TokenPermitterException
+        TokenManeuverPermitter
     """
     MSG = "TokenUndoMovePermitter error."
     ERR_CODE = "TOKEN_UNDO_MOVE_PERMITTER_FAILURE"

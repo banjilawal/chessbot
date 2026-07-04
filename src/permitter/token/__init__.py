@@ -1,16 +1,16 @@
-# src/permitter/maneuver/__init__.py
+# src/permitter/token/__init__.py
 
 """
-Module: permitter.maneuver.__init__
+Module: permitter.token.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
 """
 
-# =========== PERMITTER.MANEUVER PACKAGE ===========#
+# =========== PERMITTER.TOKEN PACKAGE ===========#
 
 # Packages
-from .destination import *
+from .maneuver import *
 
 # Modules
-from .permitter import ManeuverPermitter
+from .permitter import TokenPermitter

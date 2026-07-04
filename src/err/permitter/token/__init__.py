@@ -11,7 +11,7 @@ version: 1.0.1
 
 # Packages
 from .promotion import *
-from .undo import *
+from .maneuver import *
 
 # Modules
 from .exception import TokenPermitterException
