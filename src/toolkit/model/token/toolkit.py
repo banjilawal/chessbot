@@ -16,7 +16,11 @@ from model import Token
 from operation import Operation
 from toolkit import Toolkit
 from microservice import FormationService, IdentityService, Microservice, RankService
-from validation import CoordValidator, NumberValidator, SquareValidator, TeamValidator, PrimingValidator
+from validation import (
+    BlueprintHomeSquareProcessor, BlueprintRankProcessor, CoordValidator, NumberValidator, SquareValidator,
+    TeamValidator,
+    PrimingValidator
+)
 
 
 class TokenToolkit(Toolkit[Token]):
@@ -69,3 +73,5 @@ class TokenToolkit(Toolkit[Token]):
     rank_service: RankService = RankService()
     validation_primer: PrimingValidator = PrimingValidator()
     number_validator: NumberValidator = NumberValidator()
+    blueprint_rank_processor: BlueprintRankProcessor = BlueprintRankProcessor()
+    blueprint_home_square_processor: BlueprintHomeSquareProcessor = BlueprintHomeSquareProcessor()

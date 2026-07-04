@@ -175,7 +175,7 @@ class TokenCollisionBootstrapper:
                 team=target.team,
                 rank=target.rank,
                 formation=target.formation,
-                opening_square=target.home_square,
+                home_square=target.home_square,
             )
         )
         

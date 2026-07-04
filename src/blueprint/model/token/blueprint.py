@@ -31,7 +31,7 @@ class TokenBlueprint(Blueprint[Token]):
         team: Team
         rank: Rank
         formation: Formation
-        opening_square: OpeningSquare
+        home_square: OpeningSquare
         null_exception: TokenNullException
         model_type: Token
         
@@ -44,6 +44,6 @@ class TokenBlueprint(Blueprint[Token]):
     formation: Formation
     id: Optional[int] | None = None
     rank: Optional[Rank] | None = None
-    opening_square: HomeSquare | None = None
+    home_square: HomeSquare | None = None
     null_exception: TokenNullException = TokenNullException()
     model_type: Token = Token

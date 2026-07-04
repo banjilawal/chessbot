@@ -126,7 +126,7 @@ class TokenAssemblyPrimer(AssemblyPrimer[Token]):
                 formation=blueprint.formation,
                 rank=rank_assembly_result.payload,
                 id=blueprint_validation_result.payload.id,
-                opening_square=opening_square_discovery_result.payload[0],
+                home_square=opening_square_discovery_result.payload[0],
             )
         )
     

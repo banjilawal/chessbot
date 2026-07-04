@@ -10,6 +10,8 @@ version: 1.0.1
 # =========== ERR.VALIDATION.BLUEPRINT.TOKEN PACKAGE ===========#
 
 # Packages
+from .home import *
+from .rank import *
 
 # Modules
 from .exception import TokenBlueprintValidatorException
