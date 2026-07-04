@@ -9,6 +9,7 @@ version: 1.0.1
 
 from __future__ import annotations
 from dataclasses import dataclass
+from typing import Optional
 
 from model import CombatantToken, KingToken, Token
 from report import ReadinessState, Report
@@ -42,8 +43,9 @@ class TokenReadinessReport(Report):
     Super Class:
         Report
     """
-    token: Token
     state: ReadinessState
+    token: Optional[Token] = None
+    exception: Optional[Exception] = None
     
     @property
     def token_is_ready(self) -> bool:
@@ -54,21 +56,21 @@ class TokenReadinessReport(Report):
         return self.state != ReadinessState.READY
     
     @property
-    def token_is_captured(self) -> bool:
+    def combatant_is_captured(self) -> bool:
         return (
                 isinstance(self.token, CombatantToken) and
                 self.state == ReadinessState.CAPTURED
         )
     
     @property
-    def is_disabled(self) -> bool:
+    def token_is_disabled(self) -> bool:
         return (
                 self.state == ReadinessState.DISABLED and
                 self.token.is_disabled
         )
     
     @property
-    def is_not_deployed(self) -> bool:
+    def token_is_not_deployed(self) -> bool:
         return self.state == ReadinessState.NOT_DEPLOYED
     
     @property
@@ -79,7 +81,7 @@ class TokenReadinessReport(Report):
         )
 
     @property
-    def is_checkmated(self) -> bool:
+    def king_is_checkmated(self) -> bool:
         return (
                 isinstance(self.token, KingToken) and
                 self.state == ReadinessState.CHECKMATED
@@ -88,6 +90,10 @@ class TokenReadinessReport(Report):
     @classmethod
     def ready(cls, token: Token) -> TokenReadinessReport:
         return cls(token=token, state=ReadinessState.READY)
+    
+    @classmethod
+    def inactive(cls, exception) -> TokenReadinessReport:
+        return cls(exception=exception, state=ReadinessState.DISABLED)
     
     @classmethod
     def not_deployed(cls, token: Token) -> TokenReadinessReport:

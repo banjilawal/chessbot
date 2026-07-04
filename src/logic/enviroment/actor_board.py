@@ -93,7 +93,7 @@ class BoardActorValidator(Validator[Tuple[Piece, Board]]):
           CapturedActorCannotMoveException(f"{method}: {CapturedActorCannotMoveException.MSG}")
         )
 
-      if isinstance(actor, KingPiece) and cast(KingPiece, actor).is_checkmated:
+      if isinstance(actor, KingPiece) and cast(KingPiece, actor).king_is_checkmated:
           return ValidationResult.failure(
             CheckMatedKingCannotMoveException(f"{method}: {CheckMatedKingCannotMoveException.MSG}")
           )

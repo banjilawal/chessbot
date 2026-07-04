@@ -16,3 +16,4 @@ class ReadinessState(Enum):
     CAPTURED = auto(),
     CHECKMATED = auto(),
     NOT_DEPLOYED = auto(),
+    

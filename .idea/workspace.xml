@@ -5,26 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/bootstrap/analyzer/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/bootstrap/analyzer/analyzer.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/bootstrap/analyzer/bootstrapper.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/bootstrap/analyzer/readiness/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/bootstrap/analyzer/readiness/bootstrapper.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/bootstrap/operation/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/bootstrap/operation/bootstrapper.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/bootstrap/operation/readiness/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/bootstrap/operation/readiness/bootstrapper.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/bootstrap/permitter/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/toolkit/permitter/token/maneuver/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/toolkit/permitter/token/maneuver/toolkit.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bootstrap/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/bootstrap/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bootstrap/bootstrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/bootstrap/primer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bootstrap/validation/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/bootstrap/validation/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/permitter/token/maneuver/permitter.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/permitter/token/maneuver/permitter.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/report/approval/maneuver/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/report/approval/maneuver/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/report/approval/maneuver/report.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/report/approval/maneuver/report.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/toolkit/permitter/token/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/toolkit/permitter/token/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/analyzer/readiness/analyzer.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/analyzer/readiness/analyzer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bootstrap/analyzer/bootstrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/bootstrap/analyzer/bootstrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bootstrap/analyzer/readiness/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/bootstrap/analyzer/readiness/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bootstrap/analyzer/readiness/bootstrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/bootstrap/analyzer/readiness/bootstrapper.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -96,11 +80,11 @@
       <recent name="$PROJECT_DIR$/src/err/null" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/bootstrap/operation" />
+      <recent name="$PROJECT_DIR$/src/bootstrap" />
       <recent name="$PROJECT_DIR$/src/toolkit/permitter" />
       <recent name="$PROJECT_DIR$/src/toolkit/model/state" />
       <recent name="$PROJECT_DIR$/src/err/null/model/state" />
-      <recent name="$PROJECT_DIR$/src/err/null/model" />
-      <recent name="$PROJECT_DIR$/src/model/stateful" />
     </key>
   </component>
   <component name="RunManager" selected="Python.notifier">
@@ -825,7 +809,7 @@
       <workItem from="1782214489414" duration="8439000" />
       <workItem from="1782265217166" duration="7062000" />
       <workItem from="1782325486599" duration="56546000" />
-      <workItem from="1782732939190" duration="219695000" />
+      <workItem from="1782732939190" duration="220803000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />

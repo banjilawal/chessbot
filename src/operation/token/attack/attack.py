@@ -96,7 +96,7 @@ class Attack:
                 )
             )
         # Handle the case that, the enemy combatant, occupying the item, is already disabled.
-        if square.occupant.is_disabled:
+        if square.occupant.token_is_disabled:
             # Send the exception chain on failure.
             return AttackResult.failure(
                 AttackException(

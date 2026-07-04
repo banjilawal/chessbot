@@ -10,6 +10,11 @@ version: 1.0.1
 from __future__ import annotations
 
 from bootstrap import AnalyzerBootstrapper
+from model import CombatantToken, KingToken, Token
+from report import TokenReadinessReport
+from result import AnalysisResult
+from util import LoggingLevelRouter
+from validation import TokenValidator
 
 
 class ReadinessAnalyzerBootstrapper(AnalyzerBootstrapper):
@@ -37,7 +42,7 @@ class ReadinessAnalyzerBootstrapper(AnalyzerBootstrapper):
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def analyze(
+    def execute(
             cls,
             token: Token,
             token_validator: TokenValidator | None = None,

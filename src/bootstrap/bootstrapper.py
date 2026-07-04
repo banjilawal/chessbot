@@ -10,18 +10,16 @@ version: 1.0.1
 from __future__ import annotations
 
 from abc import ABC, abstractmethod
-from typing import Generic, TypeVar
 
+from result import Result
 from util import LoggingLevelRouter
 
-T = TypeVar("T")
 
-
-class Bootstrapper(ABC, Generic[T]):
+class Bootstrapper(ABC):
     DOMAIN = "BootStrap"
     
     @classmethod
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def execute(cls, *args, **kwargs, ) -> ValidationResult[T]:
+    def execute(cls, *args, **kwargs, ) -> Result:
         pass

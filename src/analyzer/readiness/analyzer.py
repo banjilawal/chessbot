@@ -9,15 +9,13 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from typing import cast
-
 from analyzer import Analyzer
+from bootstrap import ReadinessAnalyzerBootstrapper
 from err import TokenReadinessAnalyzerException
-from model import CombatantToken, KingToken, Token
+from model import Token
 from report import TokenReadinessReport
 from result import AnalysisResult
 from util import LoggingLevelRouter
-from validation import TokenValidator
 
 
 class TokenReadinessAnalyzer(Analyzer):
@@ -48,7 +46,7 @@ class TokenReadinessAnalyzer(Analyzer):
     def analyze(
             cls,
             token: Token,
-            token_validator: TokenValidator | None = None,
+            bootstrapper: ReadinessAnalyzerBootstrapper | None = None,
     ) -> AnalysisResult[TokenReadinessReport]:
         """
         MAke sure the token can be used.
@@ -63,7 +61,7 @@ class TokenReadinessAnalyzer(Analyzer):
         
         Args:
             token: Token
-            token_validator: TokenValidator
+            bootstrapper: ReadinessAnalyzerBootstrapper
         Returns:
               AnalysisResult[TokenFreedomReport]
         Raises:
@@ -72,57 +70,20 @@ class TokenReadinessAnalyzer(Analyzer):
         method = f"{cls.__name__}.analyze"
         
         # --- Supply any missing dependencies. ---#
-        if token_validator is None:
-            token_validator = TokenValidator()
-        
-        # Handle the case that, the token does not pass a validation check.
-        validation_result = token_validator.validate(token)
-        # Send the exception chain on failure.
-        if validation_result.is_failure:
-            return AnalysisResult.failure(
-                TokenReadinessAnalyzerException(
-                    cls_mthd=method,
-                    cls_name=cls.__name__,
-                    msg=TokenReadinessAnalyzerException.MSG,
-                    err_code=TokenReadinessAnalyzerException.ERR_CODE,
-                    ex=validation_result.exception
+        if bootstrapper is None:
+            bootstrapper = ReadinessAnalyzerBootstrapper()
+            
+        analysis_result = bootstrapper.execute(token=token,)
+        if analysis_result.is_failure:
+            return AnalysisResult.completed(
+                TokenReadinessReport.inactive(
+                    exception=TokenReadinessAnalyzerException(
+                        cls_mthd=method,
+                        cls_name=cls.__name__,
+                        msg=TokenReadinessAnalyzerException.MSG,
+                        err_code=TokenReadinessAnalyzerException.ERR_CODE,
+                        ex=analysis_result.exception
+                    )
                 )
             )
-        # Deal with the simplest universal case first, token has no been deployed.
-        if token.is_not_deployed:
-            return AnalysisResult.completed(TokenReadinessReport.not_deployed(token))
-        
-        if isinstance(token, CombatantToken):
-            return cls._analyze_combatant_readiness(combatant=cast(CombatantToken, token))
-        # Otherwise we are checking if a king is free.
-        return cls._analyze_king_readiness(king=cast(KingToken, token))
-    
-    @classmethod
-    @LoggingLevelRouter.monitor
-    def _analyze_combatant_readiness(
-            cls,
-            combatant: CombatantToken,
-    ) -> AnalysisResult[TokenReadinessReport]:
-        # Captured tokens are not free.
-        if combatant.has_entered_hostage_process or combatant.recorded_as_hostage:
-            return AnalysisResult.completed(TokenReadinessReport.captured(combatant))
-        # Disabled combatants are not free either.
-        if combatant.is_disabled:
-            return AnalysisResult.completed(TokenReadinessReport.disabled(combatant))
-        
-        return AnalysisResult.completed(TokenReadinessReport.ready(combatant))
-    
-    @classmethod
-    @LoggingLevelRouter.monitor
-    def _analyze_king_readiness(
-            cls,
-            king: KingToken
-    ) -> AnalysisResult[TokenReadinessReport]:
-        # Checkmated kings are not free.
-        if king.is_checkmated:
-            return AnalysisResult.completed(TokenReadinessReport.checkmated(king))
-        # Disabled kings are not free either.
-        if king.is_disabled:
-            return AnalysisResult.completed(TokenReadinessReport.disabled(king))
-        
-        return AnalysisResult.completed(TokenReadinessReport.ready(king))
+        return AnalysisResult.completed(TokenReadinessReport.ready(token=token))

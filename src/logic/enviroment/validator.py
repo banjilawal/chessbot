@@ -141,7 +141,7 @@ class TurnSceneValidator(Validator[TurnScene]):
                     )
                 )
             
-            if isinstance(piece, KingPiece) and cast(KingPiece, piece).is_checkmated:
+            if isinstance(piece, KingPiece) and cast(KingPiece, piece).king_is_checkmated:
                 return ValidationResult.failure(
                     CheckmatedKingCannotActException(
                         f"{method}: {CheckmatedKingCannotActException.MSG}"

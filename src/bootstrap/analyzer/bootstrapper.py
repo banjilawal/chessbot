@@ -11,13 +11,15 @@ from __future__ import annotations
 
 from abc import abstractmethod
 
-from analyzer import Analyzer
 from bootstrap import Bootstrapper
+from report import Report
+from result import AnalysisResult
 from util import LoggingLevelRouter
 
 
-class AnalyzerBootstrapper(Bootstrapper[Analyzer]):
+class AnalyzerBootstrapper(Bootstrapper):
     DOMAIN = "BootStrap"
+    PACAKGE = "Analyzer"
     
     @classmethod
     @abstractmethod
