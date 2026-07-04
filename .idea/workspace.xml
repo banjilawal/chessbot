@@ -5,22 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/err/validation/blueprint/token/home/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/validation/blueprint/token/home/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/validation/blueprint/token/rank/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/validation/blueprint/token/rank/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/validation/blueprint/token/home/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/validation/blueprint/token/home/validator.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/validation/blueprint/token/rank/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/validation/blueprint/token/rank/validator.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/builder/builder.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blueprint/model/token/blueprint.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/blueprint/model/token/blueprint.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bootstrap/assembly/token/bootstrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/bootstrap/assembly/token/bootstrapper.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/detection/home/detector.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/detection/home/detector.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/detection/token/bootstrapper/bootstrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/detection/token/bootstrapper/bootstrapper.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/validation/blueprint/token/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/validation/blueprint/token/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/validation/blueprint/token/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/validation/blueprint/token/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/validation/blueprint/token/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/validation/blueprint/token/validator.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -74,7 +60,7 @@
     "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/err/validation/blueprint/token",
+    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/builder",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
@@ -85,11 +71,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/builder" />
       <recent name="$PROJECT_DIR$/src/err/validation/blueprint/token" />
       <recent name="$PROJECT_DIR$/src/err/validation/blueprint/token/home" />
       <recent name="$PROJECT_DIR$/src/validation/blueprint/token" />
       <recent name="$PROJECT_DIR$/src/validation/blueprint/token/home" />
-      <recent name="$PROJECT_DIR$/src/err/search/empty" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/detection" />
@@ -821,7 +807,7 @@
       <workItem from="1782214489414" duration="8439000" />
       <workItem from="1782265217166" duration="7062000" />
       <workItem from="1782325486599" duration="56546000" />
-      <workItem from="1782732939190" duration="179546000" />
+      <workItem from="1782732939190" duration="185816000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />
