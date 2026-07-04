@@ -1,7 +1,7 @@
-# src/toolkit/model/edge/toolkit.py
+# src/toolkit/permitter/edge/toolkit.py
 
 """
-Module: toolkit.model.edge.toolkit
+Module: toolkit.permitter.edge.toolkit
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -15,7 +15,7 @@ from microservice.node import NodeService
 from system import Toolkit, ToolkitResult, LoggingLevelRouter, NumberValidator
 
 
-class EdgeToolkit(ModelToolkit[Edge]):
+class EdgeToolkit(PermitterToolkit[Edge]):
     """
      Role:
         -   Container

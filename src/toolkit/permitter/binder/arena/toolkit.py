@@ -1,7 +1,7 @@
-# src/toolkit/model/binder/arena/toolkit.py
+# src/toolkit/permitter/binder/arena/toolkit.py
 
 """
-Module: toolkit.model.binder.arena.toolkit
+Module: toolkit.permitter.binder.arena.toolkit
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -11,10 +11,10 @@ from __future__ import annotations
 
 from microservice import ArenaService, IdentityService, SchemaService, PlayerService
 from model import ArenaBinder
-from toolkit import ModelToolkit
+from toolkit import PermitterToolkit
 
 
-class ArenaPlayerBinderToolkit(ModelToolkit[ArenaBinder]):
+class ArenaPlayerBinderToolkit(PermitterToolkit[ArenaBinder]):
     """
     Role:
         -   Container

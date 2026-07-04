@@ -1,13 +1,13 @@
-# src/toolkit/model/token/__init__.py
+# src/toolkit/permitter/token/__init__.py
 
 """
-Module: toolkit.model.token.__init__
+Module: toolkit.permitter.token.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
 """
 
-# =========== TOOLKIT.MODEL.TOKEN PACKAGE ===========#
+# =========== TOOLKIT.PERMITTER.TOKEN PACKAGE ===========#
 
 # Packages
 

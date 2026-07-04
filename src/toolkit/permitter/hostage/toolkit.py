@@ -1,7 +1,7 @@
-# src/toolkit/model/hostage/toolkit.py
+# src/toolkit/permitter/hostage/toolkit.py
 
 """
-Module: toolkit.model.hostage.toolkit
+Module: toolkit.permitter.hostage.toolkit
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -11,10 +11,10 @@ from __future__ import annotations
 
 from microservice import IdentityService, SquareService, TokenService
 from model import Hostage
-from toolkit import ModelToolkit
+from toolkit import PermitterToolkit
 
 
-class HostageToolkit(ModelToolkit[Hostage]):
+class HostageToolkit(PermitterToolkit[Hostage]):
     """
     Role:
         -   Container

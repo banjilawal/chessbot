@@ -7,7 +7,7 @@ Created: 2026-04-03
 version: 1.0.1
 """
 
-class StatefulModel[Model]:
+class StateModel[Model]:
     """
     Role:
         -   Stateful Data Holder

@@ -31,4 +31,4 @@ from .token import *
 from .vector import *
 
 # Modules
-from .toolkit import StatefulModelToolkit
+from .toolkit import StateModelToolkit

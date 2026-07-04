@@ -1,7 +1,7 @@
-# src/toolkit/model/rank/toolkit.py
+# src/toolkit/permitter/rank/toolkit.py
 
 """
-Module: toolkit.model.rank.toolkit
+Module: toolkit.permitter.rank.toolkit
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -13,12 +13,12 @@ from typing import List
 
 from microservice import IdentityService, Microservice
 from model import Rank
-from toolkit import ModelToolkit
+from toolkit import PermitterToolkit
 from operation import Operation, PersonaValidator
 from validation import PrimingValidator
 
 
-class RankToolkit(ModelToolkit[Rank]):
+class RankToolkit(PermitterToolkit[Rank]):
     """
     Role:
         -   Dependency Container

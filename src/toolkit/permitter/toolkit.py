@@ -1,7 +1,7 @@
-# src/toolkit/model/toolkit.py
+# src/toolkit/permitter/toolkit.py
 
 """
-Module: toolkit.model.toolkit
+Module: toolkit.permitter.toolkit
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -18,14 +18,14 @@ T = TypeVar("T")
 
 
 
-class ModelToolkit(Toolkit[T]):
+class PermitterToolkit(Toolkit[Permitter]):
     """
     Role:
         -   Dependency Container
         -   Dynamic Dependency Provider
         
     Responsibilities:
-        1.  Aggregates workers and services a model requires for its tasks.
+        1.  Aggregates workers and services a permitter requires for its tasks.
         2.  Separates dependencies from data objects in operation calls.
         3.  Simplifies entry points.
 
@@ -48,8 +48,8 @@ class ModelToolkit(Toolkit[T]):
         Toolkit
         
     Notes:
-        -   ModelToolkit for an empty class which makes managing toolkits easier.
-        -   Any toolkits for a model should be a ModelToolkit subclass.
+        -   PermitterToolkit for an empty class which makes managing toolkits easier.
+        -   Any toolkits for a permitter should be a PermitterToolkit subclass.
     """
-    model: T
+    permitter: T
     null_exception: NullException

@@ -1,7 +1,7 @@
-# src/toolkit/model/player/toolkit.py
+# src/toolkit/permitter/player/toolkit.py
 
 """
-Module: toolkit.model.player.toolkit
+Module: toolkit.permitter.player.toolkit
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -10,10 +10,10 @@ version: 1.0.1
 from __future__ import annotations
 
 from model import Player
-from toolkit import ModelToolkit
+from toolkit import PermitterToolkit
 
 
-class PlayerToolkit(ModelToolkit[Player]):
+class PlayerToolkit(PermitterToolkit[Player]):
     """
     Role:
         -   Container

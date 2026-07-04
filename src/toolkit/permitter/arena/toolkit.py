@@ -1,7 +1,7 @@
-# src/toolkit/model/arena/toolkit.py
+# src/toolkit/permitter/arena/toolkit.py
 
 """
-Module: toolkit.model.arena.toolkit
+Module: toolkit.permitter.arena.toolkit
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -11,10 +11,10 @@ from __future__ import annotations
 
 from microservice import BoardService, IdentityService
 from model import Arena
-from toolkit import ModelToolkit
+from toolkit import PermitterToolkit
 
 
-class ArenaToolkit(ModelToolkit[Arena]):
+class ArenaToolkit(PermitterToolkit[Arena]):
     """
     Role:
         -   Container

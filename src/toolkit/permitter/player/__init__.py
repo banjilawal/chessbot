@@ -1,13 +1,13 @@
-# src/toolkit/model/player/__init__.py
+# src/toolkit/permitter/player/__init__.py
 
 """
-Module: toolkit.model.player.__init__
+Module: toolkit.permitter.player.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
 """
 
-# =========== TOOLKIT.MODEL.PLAYER PACKAGE ===========#
+# =========== TOOLKIT.PERMITTER.PLAYER PACKAGE ===========#
 
 # Packages
 

@@ -1,7 +1,7 @@
-# src/toolkit/model/path/toolkit.py
+# src/toolkit/permitter/path/toolkit.py
 
 """
-Module: toolkit.model.path.toolkit
+Module: toolkit.permitter.path.toolkit
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -13,11 +13,11 @@ from dataclasses import dataclass
 
 from err import PathNullException
 from model import Path
-from toolkit import ModelToolkit
+from toolkit import PermitterToolkit
 from validation import SquareValidator
 
 @dataclass
-class PathToolkit(ModelToolkit):
+class PathToolkit(PermitterToolkit):
     """
     Role:
         -   Container
@@ -30,7 +30,7 @@ class PathToolkit(ModelToolkit):
     Attributes:
         square_validator: SquareValidator
         null_exception: PathNullException
-        model: Path
+        permitter: Path
 
     Provides:
 
@@ -39,7 +39,7 @@ class PathToolkit(ModelToolkit):
     """
     square_validator: SquareValidator = SquareValidator()
     null_exception: PathNullException = PathNullException()
-    model: Path = Path
+    permitter: Path = Path
 
 
     

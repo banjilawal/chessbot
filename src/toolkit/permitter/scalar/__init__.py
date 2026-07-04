@@ -1,13 +1,13 @@
-# src/toolkit/model/scalar/__init__.py
+# src/toolkit/permitter/scalar/__init__.py
 
 """
-Module: toolkit.model.scalar.__init__
+Module: toolkit.permitter.scalar.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
 """
 
-# =========== TOOLKIT.MODEL.SCALAR PACKAGE ===========#
+# =========== TOOLKIT.PERMITTER.SCALAR PACKAGE ===========#
 
 # Packages
 

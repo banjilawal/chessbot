@@ -1,7 +1,7 @@
-# src/toolkit/model/team/toolkit.py
+# src/toolkit/permitter/team/toolkit.py
 
 """
-Module: toolkit.model.team.toolkit
+Module: toolkit.permitter.team.toolkit
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -11,11 +11,11 @@ from __future__ import annotations
 
 from microservice import IdentityService
 from model import Team
-from toolkit import ModelToolkit
+from toolkit import PermitterToolkit
 from validation import BoardValidator, PlayerValidator, PrimingValidator
 
 
-class TeamToolkit(ModelToolkit[Team]):
+class TeamToolkit(PermitterToolkit[Team]):
     """
     Role:
         -   Dependency Container

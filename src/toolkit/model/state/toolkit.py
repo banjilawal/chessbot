@@ -9,16 +9,14 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from typing import TypeVar
-
 from err import NullException
-from model import StatefulModel
+from model import StateModel
 from toolkit import ModelToolkit
 
 
 
 
-class StatefulModelToolkit(ModelToolkit[StatefulModel]):
+class StateModelToolkit(ModelToolkit[StateModel]):
     """
     Role:
         -   Dependency Container
@@ -51,5 +49,5 @@ class StatefulModelToolkit(ModelToolkit[StatefulModel]):
         -   ModelToolkit for an empty class which makes managing toolkits easier.
         -   Any toolkits for a model should be a ModelToolkit subclass.
     """
-    model: StatefulModel
+    model: StateModel
     null_exception: NullException

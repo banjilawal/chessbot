@@ -1,7 +1,7 @@
-# src/toolkit/model/maneuver/toolkit.py
+# src/toolkit/permitter/maneuver/toolkit.py
 
 """
-Module: toolkit.model.maneuver.toolkit
+Module: toolkit.permitter.maneuver.toolkit
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -17,7 +17,7 @@ from microservice import Microservice
 from model import Maneuver
 from operation import Operation
 from search import TokenOriginSearcher
-from toolkit import ModelToolkit
+from toolkit import PermitterToolkit
 from validation import (
     ManeuverEndpointValidator, PathValidator, SquareValidator, TokenDestinationRelationValidator,
     TokenValidator
@@ -25,7 +25,7 @@ from validation import (
 from validation.origin import TokenOriginRelationValidator
 
 
-class ManeuverToolkit(ModelToolkit[Maneuver]):
+class ManeuverToolkit(PermitterToolkit[Maneuver]):
     """
     Role:
         -   Dependency Container
@@ -50,7 +50,7 @@ class ManeuverToolkit(ModelToolkit[Maneuver]):
         origin_relation_validator: TokenOriginRelationValidator
         destination_relation_validator: TokenDestinationRelationValidator
         null_exception: ManeuverNullException
-        model: Maneuver
+        permitter: Maneuver
 
     Provides:
         -   def resolve_dependencies(s -> SearchResult[List[Dict[str, Any]]]:
@@ -72,4 +72,4 @@ class ManeuverToolkit(ModelToolkit[Maneuver]):
     origin_relation_validator: TokenOriginRelationValidator = TokenOriginRelationValidator()
     destination_relation_validator: TokenDestinationRelationValidator = TokenDestinationRelationValidator()
     null_exception: ManeuverNullException = ManeuverNullException()
-    model: Maneuver = Maneuver
+    permitter: Maneuver = Maneuver

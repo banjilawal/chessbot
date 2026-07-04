@@ -1,7 +1,7 @@
-# src/toolkit/model/scalar/toolkit.py
+# src/toolkit/permitter/scalar/toolkit.py
 
 """
-Module: toolkit.model.scalar.toolkit
+Module: toolkit.permitter.scalar.toolkit
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -12,12 +12,12 @@ from __future__ import annotations
 from dataclasses import dataclass
 
 from model import Scalar
-from toolkit import ModelToolkit
+from toolkit import PermitterToolkit
 from validation import NumberValidator
 
 
 @dataclass
-class ScalarToolkit(ModelToolkit[Scalar]):
+class ScalarToolkit(PermitterToolkit[Scalar]):
     """
     Role:
         -   Container

@@ -1,7 +1,7 @@
-# src/toolkit/model/vector/toolkit.py
+# src/toolkit/permitter/vector/toolkit.py
 
 """
-Module: toolkit.model.vector.toolkit
+Module: toolkit.permitter.vector.toolkit
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -10,12 +10,12 @@ version: 1.0.1
 from __future__ import annotations
 
 
-from toolkit import ModelToolkit
+from toolkit import PermitterToolkit
 from model import VectorRegister
 from validation import VectorOperandValidator
 
 
-class VectorRegisterToolkit(ModelToolkit[VectorRegister]):
+class VectorRegisterToolkit(PermitterToolkit[VectorRegister]):
     """
     Role:
         -   Container

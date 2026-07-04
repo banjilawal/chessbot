@@ -1,7 +1,7 @@
-# src/toolkit/model/number/toolkit.py
+# src/toolkit/permitter/number/toolkit.py
 
 """
-Module: toolkit.model.number.toolkit
+Module: toolkit.permitter.number.toolkit
 Created: 2026-04-03
 version: 1.0.1
 """
@@ -9,11 +9,11 @@ version: 1.0.1
 from __future__ import annotations
 from dataclasses import dataclass
 
-from toolkit import ModelToolkit
+from toolkit import PermitterToolkit
 from validation import NumberValidator
 
 @dataclass
-class NumberToolkit(ModelToolkit[int]):
+class NumberToolkit(PermitterToolkit[int]):
     """
     Role:
         -   Container

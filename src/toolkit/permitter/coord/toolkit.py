@@ -1,7 +1,7 @@
-# src/toolkit/model/coord/toolkit.py
+# src/toolkit/permitter/coord/toolkit.py
 
 """
-Module: toolkit.model.coord.toolkit
+Module: toolkit.permitter.coord.toolkit
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -11,12 +11,12 @@ from __future__ import annotations
 from dataclasses import dataclass
 
 from model import Coord
-from toolkit import ModelToolkit
+from toolkit import PermitterToolkit
 from validation import NumberValidator, PrimingValidator
 
 
 @dataclass
-class CoordToolkit(ModelToolkit[Coord]):
+class CoordToolkit(PermitterToolkit[Coord]):
     """
     Role:
         -   Dependency Container

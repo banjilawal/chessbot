@@ -37,4 +37,4 @@ from .token import *
 from .transition import *
 
 # Modules
-from .model import StatefulModel
+from .model import StateModel

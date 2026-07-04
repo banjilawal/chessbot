@@ -1,7 +1,7 @@
-# src/toolkit/model/game/toolkit.py
+# src/toolkit/permitter/game/toolkit.py
 
 """
-Module: toolkit.model.game.toolkit
+Module: toolkit.permitter.game.toolkit
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -10,11 +10,11 @@ version: 1.0.1
 from __future__ import annotations
 
 from microservice import BoardService, IdentityService, PlayerService
-from model.state.game import Game
-from system import LoggingLevelRouter
+from permitter.state.game import Game, GameToolkitException
+from system import Toolkit, ToolkitResult, LoggingLevelRouter
 
 
-class GameToolkit(ModelToolkit[Game]):
+class GameToolkit(PermitterToolkit[Game]):
     """
     Role:
         -   Container

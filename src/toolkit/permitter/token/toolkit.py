@@ -1,7 +1,7 @@
-# src/toolkit/model/token/toolkit.py
+# src/toolkit/permitter/token/toolkit.py
 
 """
-Module: toolkit.model.token.toolkit
+Module: toolkit.permitter.token.toolkit
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -15,7 +15,7 @@ from detection import HomeSquareDetector
 from err import TokenNullException
 from microservice import RankService
 from model import Token
-from toolkit import ModelToolkit
+from toolkit import PermitterToolkit
 from validation import (
     BlueprintHomeSquareProcessor, BlueprintRankProcessor, CoordValidator, NumberValidator,
     SquareValidator, TeamValidator
@@ -23,7 +23,7 @@ from validation import (
 
 
 @dataclass
-class TokenToolkit(ModelToolkit):
+class TokenToolkit(PermitterToolkit):
     """
     Role:
         -   Dependency Container
@@ -61,4 +61,4 @@ class TokenToolkit(ModelToolkit):
     blueprint_rank_processor: BlueprintRankProcessor = BlueprintRankProcessor()
     blueprint_home_square_processor: BlueprintHomeSquareProcessor = BlueprintHomeSquareProcessor()
     null_exception: TokenNullException = TokenNullException()
-    model: Token = Token
+    permitter: Token = Token

@@ -1,7 +1,7 @@
-# src/toolkit/model/itinerary/toolkit.py
+# src/toolkit/permitter/itinerary/toolkit.py
 
 """
-Module: toolkit.model.itinerary.toolkit
+Module: toolkit.permitter.itinerary.toolkit
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -11,12 +11,12 @@ from __future__ import annotations
 
 from err import ItineraryException, ItineraryNullException
 from model import Itinerary
-from toolkit import ModelToolkit
+from toolkit import PermitterToolkit
 from analyzer import SquareTokenRelationAnalyzer, TokenReadinessAnalyzer
 from validation import SquareValidator, TokenValidator, PrimingValidator
 
 
-class ItineraryToolkit(ModelToolkit[Itinerary]):
+class ItineraryToolkit(PermitterToolkit[Itinerary]):
     """
     Role:
         -   Container
@@ -27,7 +27,7 @@ class ItineraryToolkit(ModelToolkit[Itinerary]):
         3.  No logic in the Toolkit.
 
     Attributes:
-        model_type: Itinerary
+        permitter_type: Itinerary
         token_validator: TokenValidator
         square_validator: SquareValidator
         priming_validator: ValidationPrimer
@@ -40,7 +40,7 @@ class ItineraryToolkit(ModelToolkit[Itinerary]):
      Super Class:
          Toolkit
      """
-    model_type: Itinerary
+    permitter_type: Itinerary
     token_validator: TokenValidator = TokenValidator()
     square_validator: SquareValidator = SquareValidator()
     priming_validator: PrimingValidator = PrimingValidator()

@@ -1,13 +1,13 @@
-# src/toolkit/model/__init__.py
+# src/toolkit/permitter/__init__.py
 
 """
-Module: toolkit.model.__init__
+Module: toolkit.permitter.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
 """
 
-# =========== TOOLKIT.MODEL PACKAGE ===========#
+# =========== TOOLKIT.PERMITTER PACKAGE ===========#
 
 # Packages
 from .arena import *
@@ -31,4 +31,4 @@ from .token import *
 from .vector import *
 
 # Modules
-from .toolkit import ModelToolkit
+from .toolkit import PermitterToolkit

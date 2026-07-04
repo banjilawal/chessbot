@@ -16,7 +16,7 @@ from err import (
 )
 from microvalidator import SchemaValidator
 
-from err.null.model.hashtable import HashtableNullException
+from err.null.model.state.hashtable import HashtableNullException
 from model import Binder, Schema
 from operation import ValidationPrimer, Validator
 from result import ValidationResult

@@ -1,13 +1,13 @@
-# src/toolkit/model/path/__init__.py
+# src/toolkit/permitter/path/__init__.py
 
 """
-Module: toolkit.model.path.__init__
+Module: toolkit.permitter.path.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
 """
 
-# =========== TOOLKIT.MODEL.PATH PACKAGE ===========#
+# =========== TOOLKIT.PERMITTER.PATH PACKAGE ===========#
 
 # Packages
 

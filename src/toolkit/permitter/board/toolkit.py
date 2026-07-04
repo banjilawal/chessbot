@@ -1,7 +1,7 @@
-# src/toolkit/model/board/toolkit.py
+# src/toolkit/permitter/board/toolkit.py
 
 """
-Module: toolkit.model.board.toolkit
+Module: toolkit.permitter.board.toolkit
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -11,10 +11,10 @@ from __future__ import annotations
 
 from model import Board
 from operation import ArenaValidator
-from toolkit import ModelToolkit
+from toolkit import PermitterToolkit
 from microservice import BoardTeamBinderService
 
-class BoardToolkit(ModelToolkit[Board]):
+class BoardToolkit(PermitterToolkit[Board]):
     """
     Role:
         -   Container

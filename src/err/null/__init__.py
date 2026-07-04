@@ -10,6 +10,8 @@ version: 1.0.1
 # ============ ERR.NULL PACKAGE ===========#
 
 # Packages
+from .microservice import *
+from .model import *
 
 # Modules
 from .exception import NullException

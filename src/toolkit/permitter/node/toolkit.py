@@ -1,7 +1,7 @@
-# src/toolkit/model/node/toolkit.py
+# src/toolkit/permitter/node/toolkit.py
 
 """
-Module: toolkit.model.node.toolkit
+Module: toolkit.permitter.node.toolkit
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -10,10 +10,10 @@ version: 1.0.1
 from __future__ import annotations
 
 from model import Node
-from toolkit import ModelToolkit
+from toolkit import PermitterToolkit
 
 
-class NodeToolkit(ModelToolkit[Node]):
+class NodeToolkit(PermitterToolkit[Node]):
     """
     Role:
         -   Container

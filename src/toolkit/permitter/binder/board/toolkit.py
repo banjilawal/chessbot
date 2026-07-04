@@ -1,7 +1,7 @@
-# src/toolkit/model/binder/board/toolkit.py
+# src/toolkit/permitter/binder/board/toolkit.py
 
 """
-Module: toolkit.model.binder.board.toolkit
+Module: toolkit.permitter.binder.board.toolkit
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -11,10 +11,10 @@ from __future__ import annotations
 
 from microservice import BoardService, SchemaService, TeamService
 from validation.priming import PrimingValidator
-from toolkit import ModelToolkit
+from toolkit import PermitterToolkit
 
 
-class BoardTeamBinderToolkit(ModelToolkit):
+class BoardTeamBinderToolkit(PermitterToolkit):
     """
     Role:
         -   Container

@@ -14,7 +14,7 @@ from typing import Any, Dict, cast
 from err import BoardTeamBinderValidationException
 from microvalidator import SchemaValidator
 
-from err.null.model.hashtable.exception import HashtableNullException
+from err.null.model.state.hashtable.exception import HashtableNullException
 from model import Binder, Schema
 from operation import ValidationPrimer, Validator
 from result import ValidationResult
