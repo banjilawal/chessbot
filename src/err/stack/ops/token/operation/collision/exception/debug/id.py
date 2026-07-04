@@ -15,7 +15,7 @@ __all__ = [
     "TokenIdCollisionException",
 ]
 
-from model.token import TokenDebugException
+from model.state.token import TokenDebugException
 
 # ======================# TOKEN_ID_COLLISION EXCEPTION #======================#
 class TokenIdCollisionException(TokenDebugException):

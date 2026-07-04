@@ -10,7 +10,7 @@ version: 1.0.1
 from typing import Optional
 
 from logic.engine import EngineService
-from model.game import UniqueGameDataService
+from model.state.game import UniqueGameDataService
 from logic.team import UniqueTeamDataService
 from system import Builder, BuildResult, IdentityService, LoggingLevelRouter, id_emitter
 

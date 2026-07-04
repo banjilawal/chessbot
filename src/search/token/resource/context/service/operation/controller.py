@@ -9,7 +9,7 @@ version: 1.0.0
 
 from __future__ import annotations
 
-from model.token import TokenContextBuilder, TokenContextIntegrityWorkers, TokenContextValidator
+from model.state.token import TokenContextBuilder, TokenContextIntegrityWorkers, TokenContextValidator
 
 
 class TokenContextOpsController:

@@ -12,8 +12,8 @@ from __future__ import annotations
 from copy import deepcopy
 
 from system import LoggingLevelRouter, UpdateResult
-from model.token import TokenStackService, TokenStackState
-from model.token import (
+from model.state.token import TokenStackService, TokenStackState
+from model.state.token import (
     TokenStackAlreadyDeployedException,
     TokenStackDeploymentException
 )

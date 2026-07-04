@@ -1,8 +1,8 @@
 from typing import List
 
 from logic.square import Square
-from model.token import Discovery
-from model.token import Piece
+from model.state.token import Discovery
+from model.state.token import Piece
 
 
 class ScoutReportAnalysis:

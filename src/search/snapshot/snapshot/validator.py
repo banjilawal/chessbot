@@ -11,7 +11,7 @@ from typing import Any, cast
 
 from logic.agent import AgentService
 from logic.arena import ArenaService
-from model.game import GameService
+from model.state.game import GameService
 from logic.snapshot import NullSnapshotContextException, SnapshotContext
 from logic.snapshot.context.validator.exception.base import InvalidSnapshotContextException
 from logic.snapshot.context.validator.exception.flag.excess import ArenaSnapshotContextFlagsException

@@ -1,7 +1,7 @@
 from operation.token.attack import Attack, AttackingFriendlySquareException
 from logic.square import Square, SquareService
 from system import LoggingLevelRouter
-from model.token import TokenActivityState, Token, TokenService
+from model.state.token import TokenActivityState, Token, TokenService
 
 
 class Move:

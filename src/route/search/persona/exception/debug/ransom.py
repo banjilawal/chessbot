@@ -8,7 +8,7 @@ version: 1.0.0
 """
 
 from system import BoundsException
-from model.catalog.persona import PersonaException
+from model.state.catalog.persona import PersonaException
 
 __all__ = [
     # ======================# PERSONA_RANSOM_BOUNDS EXCEPTION #======================#

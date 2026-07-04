@@ -17,7 +17,7 @@ from microservice.edge import (
     Edge, EdgeContext, EdgeContextValidator, EdgeSearchException, EdgeSearchRouteException,
     EdgeSearchNullDatasetException, EdgeSearchPayloadTypeException, EdgeState
 )
-from model.token import Token
+from model.state.token import Token
 
 
 class EdgeFinder(StackSearchRouter[Edge]):

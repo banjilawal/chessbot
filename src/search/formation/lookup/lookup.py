@@ -14,7 +14,7 @@ from model.catalog.formation import (
     FormationLookupRouteException, FormationPersonaBoundsException, FormationSquareBoundsException, FormationKey,
     FormationKeyValidator
 )
-from model.catalog.persona import Persona
+from model.state.catalog.persona import Persona
 from system import GameColor, HashLookupProcess, LoggingLevelRouter, SearchResult
 
 

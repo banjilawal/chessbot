@@ -10,7 +10,7 @@ version: 1.0.0
 from typing import Optional
 
 from logic.arena import Arena
-from model.game import Game
+from model.state.game import Game
 from logic.team import Team
 from logic.snapshot import Snapshot
 from logic.agent import PlayerAgent

@@ -12,7 +12,7 @@ __all__ = [
     "TeamBinderAssemblyException",
 ]
 
-from model.team import TeamBinderException
+from model.state.team import TeamBinderException
 from system import AssemblyException
 
 

@@ -9,7 +9,7 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from model.game import Game, GameBuilderException
+from model.state.game import Game, GameBuilderException
 from system import Builder, BuildResult, LoggingLevelRouter
 
 

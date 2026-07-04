@@ -10,7 +10,7 @@ version: 1.0.0
 
 from typing import List
 
-from model.catalog.persona import (
+from model.state.catalog.persona import (
     Persona, PersonaDesignationBoundsException, PersonaLookupFailedException, PersonaLookupRouteException,
     PersonaNameBoundsException, PersonaQuotaBoundsException, PersonaRansomBoundsException, PersonaKey,
     PersonaKeyValidator

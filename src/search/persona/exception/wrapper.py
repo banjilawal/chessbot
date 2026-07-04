@@ -7,7 +7,7 @@ Created: 2025-09-08
 version: 1.0.0
 """
 
-from model.catalog.persona import PersonaException
+from model.state.catalog.persona import PersonaException
 from system import LookupException
 
 __all__ = [

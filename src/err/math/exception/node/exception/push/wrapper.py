@@ -12,7 +12,7 @@ __all__ = [
     "NodePushException",
 ]
 
-from model.node import NodeStackException
+from model.state.node import NodeStackException
 from system import InsertionException
 
 

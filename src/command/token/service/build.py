@@ -15,7 +15,7 @@ from model.catalog.formation import Formation
 from system import IdFactory
 from command.token.root import TokenCommand
 from logic.team import Team
-from model.token import TokenService
+from model.state.token import TokenService
 
 
 class BuildTokenCommandArgs(CommandArgs):

@@ -28,7 +28,7 @@ from logic.team.exception import RemoveTeamMemberRolledBackException
 
 
 from logic.transaction import AttackValidator
-from model.token import (
+from model.state.token import (
     OccupationSearchEventException,
   TravelEvent,
   OccupationEventException,

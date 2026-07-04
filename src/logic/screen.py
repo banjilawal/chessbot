@@ -17,7 +17,7 @@ from logic.rank.model.concrete.knight import Knight
 from logic.rank.model.concrete.king import King
 from logic.pawn import Pawn
 from logic.rank.model.concrete.queen import Queen
-from model.token import Piece
+from model.state.token import Piece
 
 if TYPE_CHECKING:
   from builder import Board

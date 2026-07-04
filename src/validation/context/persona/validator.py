@@ -9,12 +9,12 @@ version: 1.0.0
 
 from typing import Any, cast
 
-from model.catalog.persona import (
+from model.state.catalog.persona import (
     ArenaPersonaKeysException, NullPersonaKeyException, PersonaKey, ZeroPersonaKeysException,
     PersonaKeyValidationException, PersonaKeyValidationRouteException
 )
 from system import (
-    IdentityService, LoggingLevelRouter, NumberValidator, ValidationException, ValidationResult, Validator
+    IdentityService, LoggingLevelRouter, NumberValidator, ValidationException, ValidationResult
 )
 
 

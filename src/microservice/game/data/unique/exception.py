@@ -7,7 +7,7 @@ Created: 2025-09-16
 version: 1.0.0
 """
 
-from model.game import GameException
+from model.state.game import GameException
 from system import DatabaseException
 
 __all__ = [

@@ -10,7 +10,7 @@ version: 1.0.0
 from __future__ import annotations
 from typing import Any, cast
 
-from model.node import NodeValidator
+from model.state.node import NodeValidator
 from microservice.edge import HeadCannotBeTailException
 from graph.pair import Pair, NullPairException, PairValidationException
 from system import LoggingLevelRouter, ValidationResult, Validator

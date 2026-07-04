@@ -9,7 +9,7 @@ version: 1.0.0
 
 from __future__ import annotations
 
-from model.node import Node, NodeService
+from model.state.node import Node, NodeService
 from logic.square import Square, SquareValidator
 from system import BuildResult, Builder, LoggingLevelRouter
 from graph.pair import HeadTailSquareException, Pair, PairBuilderException

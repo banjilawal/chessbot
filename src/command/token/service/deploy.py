@@ -12,7 +12,7 @@ from typing import Dict
 
 from system import IdFactory
 from command.token.root import TokenCommand
-from model.token import Token, TokenService
+from model.state.token import Token, TokenService
 
 
 class DeployTokenCommand(TokenCommand):

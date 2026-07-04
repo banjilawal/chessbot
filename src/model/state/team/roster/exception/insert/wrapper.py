@@ -1,0 +1,36 @@
+# src/model/state/team/roster/exception/insertion/validator.py
+
+"""
+Module: model.state.team.roster.exception.insertion.work
+Author: Banji Lawal
+Created: 2025-10-06
+version: 1.0.0
+"""
+
+from model.state.team import TeamRosterException
+
+__all__ = [
+    # ======================# FILLING_TEAM_ROSTER_FAILURE #======================#
+    "FillingTeamRosterException",
+]
+
+
+# ======================# FILLING_TEAM_ROSTER_FAILURE #======================#
+class FillingTeamRosterException(TeamRosterException):
+    """
+    Role:Debug, Error Tracing
+
+    Responsibilities:
+    1.  Carry the DebugException that explains why initializing the team's roster failed.
+
+    Super Class:
+        *   TeamDatabaseException
+
+    Provides:
+
+
+    # INHERITED ATTRIBUTES:
+    None
+    """
+    ERR_CODE = "FILLING_TEAM_ROSTER_FAILURE"
+    MSG = "Filling the team's roster failed."

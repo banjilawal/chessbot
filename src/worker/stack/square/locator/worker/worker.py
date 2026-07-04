@@ -16,7 +16,7 @@ from system import InsertionResult, LoggingLevelRouter, SearchResult, Validation
 from logic.square import (
     SquareContext, SquareStackCapacityFullException, Square, SquareStackExecuteException, SquareStackService, SquareStackState
 )
-from model.token import Token, TokenService
+from model.state.token import Token, TokenService
 
 
 class OpeningSquareLocator(Worker):

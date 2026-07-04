@@ -9,7 +9,7 @@ version: 1.0.0
 
 from __future__ import annotations
 
-from model.node import NodeStackService
+from model.state.node import NodeStackService
 from graph.pair import NodeTree, NodeTreeValidator
 from system import BuildResult, LoggingLevelRouter
 

@@ -16,8 +16,8 @@ from command import ArgumentCountException, ArgumentTypeException, NullArguments
 from command.token import DeployTokenCommand, PromotePawnCommand, TokenCommand, ValidateTokenCommand
 from command.token.service.build import BuildTokenCommand
 from system import IdentityService, LoggingLevelRouter, Router, ValidationResult
-from model.token import TokenCommandTable, TokenService, TokenServiceMenuException
-from model.token import TokenCommandNotFoundException
+from model.state.token import TokenCommandTable, TokenService, TokenServiceMenuException
+from model.state.token import TokenCommandNotFoundException
 
 
 class TokenServiceMenu(Router[TokenService]):

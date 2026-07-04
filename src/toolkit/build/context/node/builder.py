@@ -12,7 +12,7 @@ from __future__ import annotations
 import sys
 from typing import Optional
 
-from model.node import (
+from model.state.node import (
     DiscoveryStatus, ArenaNodeContextFlagsException, Node, NodeContext, NodeContextToolkitException,
     NodeContextToolkitRouteException, NodeValidator, ZeroNodeContextFlagsException
 )

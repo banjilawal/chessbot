@@ -1,0 +1,36 @@
+# src/model/state/team/roster/exception/insertion/different.py
+
+"""
+Module: model.state.team.roster.exception.insertion.different
+Author: Banji Lawal
+Created: 2025-10-06
+version: 1.0.0
+"""
+
+from model.state.team import TeamRosterException
+
+__all__ = [
+    # ======================# ENEMY_CANNOT_JOIN_ROSTER EXCEPTION #======================#
+    "EnemyCannotJoinTeamRosterException",
+]
+
+
+# ======================# ENEMY_CANNOT_JOIN_ROSTER EXCEPTION #======================#
+class EnemyCannotJoinTeamRosterException(TeamRosterException):
+    """
+    Role:Exception Work
+
+    Responsibilities:
+    1.  Indicate that inserting into a Team's roster failed because it the occupant had a different team.
+
+    Super Class:
+        *   TeamRosterException
+
+    Provides:
+
+
+    # INHERITED ATTRIBUTES:
+    None
+    """
+    ERR_CODE = "ENEMY_CANNOT_JOIN_ROSTER"
+    MSG = "Adding roster member failed: The occupant is on an enemy team."

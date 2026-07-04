@@ -10,11 +10,11 @@ version: 1.0.1
 from __future__ import annotations
 
 from microservice import BoardService, IdentityService, PlayerService
-from model.game import Game, GameToolkitException
+from model.state.game import Game, GameToolkitException
 from system import Toolkit, ToolkitResult, LoggingLevelRouter
 
 
-class GameToolkit(Toolkit[Game]):
+class GameToolkit(ModelToolkit[Game]):
     """
     Role:
         -   Container

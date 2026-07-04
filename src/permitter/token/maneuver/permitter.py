@@ -1,7 +1,7 @@
-# src/permitter/token/maneuver/permitter.py
+# src/permitter/maneuver/destination/__init__.py
 
 """
-Module: permitter.token.maneuver.permitter
+Module: permitter.maneuver.destination.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -11,63 +11,60 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from analyzer import FriendshipAnalyzer, SquareTokenRelationAnalyzer, TokenReadinessAnalyzer
-from builder import TokenPathDtoBuilder
+from analyzer import SquareTokenRelationAnalyzer, TokenReadinessAnalyzer
 from err import (
-    BidirectionalSourceTokenRelationException, BlockedPathException, CircularPathException,
-    DisabledTokenManeuverException,
+    BidirectionalSourceTokenRelationException, DisabledTokenManeuverException,
     ItinerarySourceEqualsDestinationException, PoppingEmptyTokenStackException,
     ManeuverPermitterException,
     TokenStackNullException
 )
-from microservice import SquareValidator, TokenService
-from model import Square, SquareContext, Token, TokenPathDTO
-from permitter import TokenPermitter
-from report import DeleteApproval, FriendshipReport, RelationReport, TokenReadinessReport
+from microservice import SquareValidator
+from model import Square, SquareContext, Token
+from report import DeleteApproval, RelationReport, TokenReadinessReport
 from report.approval.maneuver import ManeuverApproval
 from result import AnalysisResult, MethodResultType
 from search import TokenOriginSearcher
 from stack import TokenStackService
-from toolkit import TokenPathToolkit
 from util import LoggingLevelRouter
 from validation import TokenFreedomAnalyzer, TokenValidator
-from validation.destination import TokenDestinationRelationValidator
 
 
 class TokenManeuverPermitter(TokenPermitter):
     """
     Role:
-        - Permission Granter
+        - Transaction Worker
         - Consistency, Integrity Maintenance
+        - Process Runner
 
     Responsibilities:
-        1.  Grants token permission to run maneuvers if the token satisfies  
-            integrity and consistency preservation during the maneuver's lifecycle.
+        1.  Run tests to see if permission can be granted to a TokenStackService to execute a deletion.
 
     Attributes:
 
     Provides:
-        -   def execute(cls,token: Token, *args, **kwargs) -> AnalysisResult
+        -   execute(
+                    cls,
+                    token: Token,
+                    token_stack: TokenStackService,
+                    rank_service: RankService = RankService(),
+                    rank_quota_analyzer: RankQuotaAnalyzer = RankQuotaAnalyzer(),
+                    collision_detector: TokenCollisionAnalyst = TokenCollisionAnalyst(),
+            ) -> AnalysisResult
 
     Super Class:
-        TokenPermitter
-    """    
+    """
+    
     @classmethod
     @LoggingLevelRouter.monitor
     def execute(
             cls,
             requestor: Token,
             destination: Square,
-            friendship_analyzer: FriendshipAnalyzer | None = None,
-            token_service: TokenService | None = None,
-            path_toolkit: TokenPathToolkit | None = None,
-            path_dto_builder: TokenPathDtoBuilder | None = None,
             token_validator: TokenValidator | None = None,
             square_validator: SquareValidator | None = None,
             origin_searcher: TokenOriginSearcher | None = None,
-            readiness_analyzer: TokenReadinessAnalyzer | None = None,
-            relation_analyzer: SquareTokenRelationAnalyzer | None = None,
-            destination_validator: TokenDestinationRelationValidator | None = None,
+            token_readiness_analyzer: TokenReadinessAnalyzer | None = None,
+            destination_relation_analyzer: SquareTokenRelationAnalyzer | None = None,
     ) -> AnalysisResult:
         """
         Action:
@@ -96,91 +93,21 @@ class TokenManeuverPermitter(TokenPermitter):
         # --- Supply any missing dependencies. ---#
         if token_validator is None:
             token_validator = TokenValidator()
-        if path_toolkit is None:
-            path_toolkit = TokenPathToolkit()
-        if path_dto_builder is None:
-            path_dto_builder = TokenPathDtoBuilder()
         if square_validator is None:
             square_validator = SquareValidator()
         if origin_searcher is None:
             origin_searcher = TokenOriginSearcher()
-        if readiness_analyzer is None:
-            readiness_analyzer = TokenReadinessAnalyzer()
-        if relation_analyzer is None:
-            relation_analyzer = SquareTokenRelationAnalyzer()
-        if destination_validator is None:
-            destination_validator = TokenDestinationRelationValidator()
-        if friendship_analyzer is None:
-            friendship_analyzer = FriendshipAnalyzer()
+        if token_readiness_analyzer is None:
+            token_readiness_analyzer = TokenReadinessAnalyzer()
+        if destination_relation_analyzer is None:
+            destination_relation_analyzer = SquareTokenRelationAnalyzer()
             
-        dto_build_result = path_dto_builder.build(
+        token_origin_search_result = origin_searcher.execute(
             token=token,
-            destination=destination,
-            toolkit=path_toolkit,
-        )
-        if dto_build_result.is_failure:
-            # Return the exception chain on failure
-            return AnalysisResult.failure(
-                ManeuverPermitterException(
-                    cls_mthd=method,
-                    cls_name=cls.__name__,
-                    msg=ManeuverPermitterException.MSG,
-                    err_code=ManeuverPermitterException.ERR_CODE,
-                    mthd_rslt_type=MethodResultType.ANALYSIS_RESULT,
-                    ex=dto_build_result.exception,
-                )
-            )
-        dto = cast(TokenPathDTO, dto_build_result.payload)
-        
-        destination_occupant = dto.destination.occupant
-
-        if destination_occupant is not None:
-            friendship_analysis_result = token_service.controller.friendship_analyzer.execute(
-                hunter=token,
-                target=destination_occupant,
-            )
-            if friendship_analysis_result.is_failure:
-                # Return the exception chain on failure
-                return AnalysisResult.failure(
-                    ManeuverPermitterException(
-                        cls_mthd=method,
-                        cls_name=cls.__name__,
-                        msg=ManeuverPermitterException.MSG,
-                        err_code=ManeuverPermitterException.ERR_CODE,
-                        mthd_rslt_type=MethodResultType.ANALYSIS_RESULT,
-                        ex=friendship_analysis_result.exception,
-                    )
-                )
-            report = cast(FriendshipReport, friendship_analysis_result.payload[0])
-            if report.are_friends:
-                return AnalysisResult.completed(
-                    ManeuverApproval.deny(
-                        BlockedPathException(
-                            cls_mthd=method,
-                            cls_name=cls.__name__,
-                            msg=BlockedPathException.MSG,
-                            err_code=BlockedPathException.ERR_CODE,
-                        )
-                    )
-                )
-            if report.is_enemy_king:
-                return AnalysisResult.completed(
-                    ManeuverApproval.approve(
-                        (
-                            cls_mthd=method,
-                            cls_name=cls.__name__,
-                            msg=BlockedPathException.MSG,
-                            err_code=BlockedPathException.ERR_CODE,
-                        )
-                    )
-                )
-                
-        origin_search_result = origin_searcher.execute(
-            token=token,
-            readiness_analyzer=readiness_analyzer
+            readiness_analyzer=token_readiness_analyzer
         )
         # Handle the case that, the origin_searcher is not successful.
-        if origin_search_result.is_failure:
+        if token_origin_search_result.is_failure:
             # Return the exception chain on failure
             return AnalysisResult.failure(
                 ManeuverPermitterException(
@@ -189,49 +116,11 @@ class TokenManeuverPermitter(TokenPermitter):
                     msg=ManeuverPermitterException.MSG,
                     err_code=ManeuverPermitterException.ERR_CODE,
                     mthd_rslt_type=MethodResultType.ANALYSIS_RESULT,
-                    ex=origin_search_result.exception,
+                    ex=token_origin_search_result.exception,
                 )
             )
-        origin = origin_search_result.payload[0]
+        origin = token_origin_search_result.payload[0]
         
-        # Handle the case that, the token is already at the destination.
-        token_destination_validation_result = destination_validator.validate(
-            token=token,
-            destination=destination,
-            token_validator=token_validator,
-            square_validator=square_validator,
-            relation_analyzer=relation_analyzer,
-        )
-        if token_destination_validation_result.is_failure:
-            # Return the exception chain on failure
-            return AnalysisResult.failure(
-                ManeuverPermitterException(
-                    cls_mthd=method,
-                    cls_name=cls.__name__,
-                    msg=ManeuverPermitterException.MSG,
-                    err_code=ManeuverPermitterException.ERR_CODE,
-                    mthd_rslt_type=MethodResultType.ANALYSIS_RESULT,
-                    ex=token_destination_validation_result.exception,
-                )
-            )
-        # Handle the case that, the origin and destination are the same.
-        if origin == destination:
-            # Return the exception chain on failure
-            return AnalysisResult.failure(
-                ManeuverPermitterException(
-                    cls_mthd=method,
-                    cls_name=cls.__name__,
-                    msg=ManeuverPermitterException.MSG,
-                    err_code=ManeuverPermitterException.ERR_CODE,
-                    mthd_rslt_type=MethodResultType.ANALYSIS_RESULT,
-                    ex=CircularPathException(
-                        cls_mthd=method,
-                        cls_name=cls.__name__,
-                        msg=CircularPathException.MSG,
-                        err_code=CircularPathException.ERR_CODE,
-                    ),
-                )
-            )
         destination_relation_analysis = destination_relation_analyzer.analyze(
             candidate_primary=destination,
             candidate_satellite=token,

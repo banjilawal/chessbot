@@ -17,7 +17,7 @@ from analyzer import TokenReadinessAnalyzer
 from err import DisabledTokenManeuverException
 from report import TokenReadinessReport
 from system import DeletionResult, LoggingLevelRouter
-from model.token import (
+from model.state.token import (
     InactiveTokenPoppingCoordException, MoveUndoLimitException, Token, TokenPopCoordException, TokenValidation,
     UnopenedTokenPoppingCoordException
 )

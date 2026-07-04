@@ -10,7 +10,7 @@ version: 1.0.0
 from typing import cast
 
 from logic.exception import SearchException
-from model.token import PieceCapturingItSelfException
+from model.state.token import PieceCapturingItSelfException
 from logic.player.finder import BoardSearch
 from logic.square import Square
 from assurance import ThrowHelper

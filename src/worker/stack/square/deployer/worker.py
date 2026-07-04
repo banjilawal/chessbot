@@ -15,7 +15,7 @@ from logic.square import (
     SquareContext, SquareStackCapacityFullException, Square, SquareStackFullException,
     SquareStackDeployException, SquareStackService, SquareStackState
 )
-from model.token import Token, TokenService
+from model.state.token import Token, TokenService
 
 
 class TokenDeploymentWorker(Worker):

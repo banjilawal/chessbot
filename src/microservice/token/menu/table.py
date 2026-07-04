@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, Dict
 
 from logic.team import Team
-from model.token import PawnToken, Token
+from model.state.token import PawnToken, Token
 from model.catalog.formation import Formation
 from command.system.adt import CommandArgs, CommandTable
 from command.token import (

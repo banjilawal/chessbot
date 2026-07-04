@@ -10,7 +10,7 @@ version: 1.0.1
 from __future__ import annotations
 
 
-from model.game import Game, GameService
+from model.state.game import Game, GameService
 from logic.team import Team, TeamService
 from system import Builder, BuildResult, ExecutionRouteException, IdentityService, LoggingLevelRouter
 from logic.agent import (

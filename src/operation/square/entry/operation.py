@@ -15,7 +15,7 @@ from logic.square import (
     SquareVisitorDisabledException, WrongOpeningSquareException
 )
 from util import LoggingLevelRouter, UpdateResult
-from model.token import Token, DeploymentState, TokenFreedomAnalyzer
+from model.state.token import Token, DeploymentState, TokenFreedomAnalyzer
 
 
 class SquareEntry:

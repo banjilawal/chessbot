@@ -8,7 +8,7 @@ version: 1.0.0
 """
 
 from system import QueryService
-from model.game import SnapshotContext
+from model.state.game import SnapshotContext
 
 
 class SnapshotQueryService(QueryService[SnapshotContext]):

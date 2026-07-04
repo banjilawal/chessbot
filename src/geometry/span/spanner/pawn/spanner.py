@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Dict, List
 
-from model.token import PawnToken
+from model.state.token import PawnToken
 from system import ComputationResult
 from model.math.coord import Coord, CoordService
 from model.math.vector import Vector, VectorService

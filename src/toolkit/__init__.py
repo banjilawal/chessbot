@@ -16,6 +16,7 @@ from .math import *
 from .model import *
 from .operand import *
 from .endpoint import *
+from .permitter import *
 from .pipeline import *
 from .registry import *
 

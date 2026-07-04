@@ -9,7 +9,7 @@ version: 1.0.0
 
 from __future__ import annotations
 
-from model.token import TokenContextService, TokenQueryService, TokenSearchRouter
+from model.state.token import TokenContextService, TokenQueryService, TokenSearchRouter
 
 
 class TokenSearchResourceHost:

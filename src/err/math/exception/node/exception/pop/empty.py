@@ -14,7 +14,7 @@ __all__ = [
     "PoppingEmptyNodeStackException",
 ]
 
-from model.node import NodeDebugException
+from model.state.node import NodeDebugException
 
 
 # ======================# POPPING_EMPTY_NODE_STACK EXCEPTION #======================#

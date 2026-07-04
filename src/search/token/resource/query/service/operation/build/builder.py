@@ -12,7 +12,7 @@ from typing import List
 
 
 from system import BuildResult, Builder, LoggingLevelRouter, ValidationResult
-from model.token import (
+from model.state.token import (
     Token, TokenContext, TokenContextValidator, TokenQueryBuilderException, TokenStackNullException, TokenQuery,
 )
 

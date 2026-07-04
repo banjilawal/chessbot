@@ -10,7 +10,7 @@ version: 1.0.0
 from __future__ import annotations
 
 
-from model.token import (
+from model.state.token import (
     PawnPromoter, TokenBuilder, TokenPositionController, TokenDeployer,
     TokenReadinessAnalyzer, TokenValidator
 )
