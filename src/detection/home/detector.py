@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import cast
 
-from err import HomeSquareDetectorException
+from err import HomeSquareDetectorException, HomeSquareSearchResultEmptyException
 from model import HomeSquare, SquareContext, Token
 from result import Result
 from util import LoggingLevelRouter
@@ -22,13 +22,10 @@ class HomeSquareDetector:
     """
     Role:
         - Transaction Worker
-        - Consistency, Integrity Maintenance
-        - Process Runner
+        - Search
         
     Responsibilities:
-        1.  Token deployment exception owner.
-        2.  Preserve original and updated data for rollbacks.
-        3.  Ensure the token's integrity and consistency are maintained during the transaction.
+        1.  Find a token's home square.
     
     Attributes:
     
@@ -39,7 +36,6 @@ class HomeSquareDetector:
             ) -> Result[HomeSquareClaimReport]
             
     Super Class:
-        Analyzer
     """
 
     @classmethod
@@ -50,24 +46,23 @@ class HomeSquareDetector:
             token_validator: TokenValidator | None = None,
     ) -> Result[HomeSquare]:
         """
-        Executes the deployment transaction.
+        Find the token's home square.
         
         Action:
             1.  Send an exception chain in the Result if any of the conditions occur.
-                        -   The token fails a freedom check.
-                        -   The opening square is not found in the token's board.
-                        -   Searching the board is fails.
-                        -   square has already been claimed.
+                    -   The token is not safe.
+                    -   The search for the home square is not completed.
+                    -   The home square was not found.
             2.  Otherwise, send the success result.
         Args:
             token: Token
             token_validator: TokenFreedomAnalyzer
         Returns:
-            Result[HomeSquareClaimReport]
+            Result[HomeSquare]
         Raises:
             HomeSquareDetectorException
             DuplicateTokenDeploymentException
-            SquareNotFoundSearchException
+            HomeSquareSearchResultEmptyException
         """
         method = f"{cls.__class__.__name__}.validator"
         
@@ -116,9 +111,9 @@ class HomeSquareDetector:
                     cls_name=cls.__class__.__name__,
                     msg=HomeSquareDetectorException.MSG,
                     err_code=HomeSquareDetectorException.ERR_CODE,
-                    ex=SquareNotFoundSearchException(
-                        msg=SquareNotFoundSearchException.MSG,
-                        err_code=SquareNotFoundSearchException.ERR_CODE,
+                    ex=HomeSquareSearchResultEmptyException(
+                        msg=HomeSquareSearchResultEmptyException.MSG,
+                        err_code=HomeSquareSearchResultEmptyException.ERR_CODE,
                         var=f"opening_square:{token.home_square.name}",
                         val=token.home_square,
                     ),
