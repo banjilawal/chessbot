@@ -1,31 +1,32 @@
-# src/err/bootstrapper/exception.py
+# src/err/bootstrap/operation/exception.py
 
 """
-Module: err.bootstrapper.exception
+Module: err.bootstrapper.operation.exception
 Author: Banji Lawal
-Created: 2026-04-04
+Created: 2026-04-03
 version: 1.0.1
 """
 
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import ChessException
+from err import BootstrapperException
 from result import MethodResultType
 
 __all__ = [
-    # ======================# BOOTSTRAPPER_FAILURE #======================#
-    "BootstrapperException",
+    # ======================# OPERATION_BOOTSTRAPPER_FAILURE #======================#
+    "OperationBootstrapperException",
 ]
 
-# ======================# BOOTSTRAPPER_FAILURE #======================#
-class BootstrapperException(ChessException):
+# ======================# OPERATION_BOOTSTRAPPER_FAILURE #======================#
+class OperationBootstrapperException(BootstrapperException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an error prevented a Bootstrapper from completing its task.
+        1.  Indicate that an error prevented an OperationBootstrapper from
+            completing its task.
         
     Attributes:
         msg: Optional[str]
@@ -40,10 +41,10 @@ class BootstrapperException(ChessException):
     Provides:
 
     Super Class:
-        ChessException
+        BootstrapperException
     """
-    MSG = "Bootstrapper encountered an error."
-    ERR_CODE = "BOOTSTRAPPER_FAILURE"
+    MSG = "OperationBootstrapper encountered an error."
+    ERR_CODE = "OPERATION_BOOTSTRAPPER_FAILURE"
     MTHD_RSLT_TYPE = MethodResultType.ANALYSIS_RESULT
     
     def __init__(

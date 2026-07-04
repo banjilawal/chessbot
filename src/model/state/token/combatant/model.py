@@ -81,13 +81,26 @@ class CombatantToken(Token):
     def is_active(self) -> bool:
         return (
                 self._captor is None and
-                self.readiness_state == TokenActivityState.FREE and
-                self.deployment_state == DeploymentState.DEPLOYED
+                self._readiness_state == TokenActivityState.FREE and
+                self._deployment_state == DeploymentState.DEPLOYED
         )
     
     @property
+    def is_captured(self) -> bool:
+        return (
+                self._captor is not None and
+                self.deployment_state == DeploymentState.DEPLOYED and
+                (
+                        self._readiness_state == TokenActivityState.CAPTURE_ACTIVATED or
+                        self.readiness_state == TokenActivityState.HOSTAGE_CREATED or
+                        self._readiness_state == TokenActivityState.HOSTAGE_IN_DATABASE
+                )
+        )
+    
+        
+    @property
     def is_disabled(self) -> bool:
-        return not self.is_active
+        return self.is_not_deployed or self.is_captured
 
     @property
     def has_entered_hostage_process(self) -> bool:

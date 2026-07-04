@@ -9,7 +9,10 @@ version: 1.0.1
 
 from __future__ import annotations
 
+from typing import cast
+
 from bootstrap import AnalyzerBootstrapper
+from err import ReadinessAnalyzerBootstrapperException
 from model import CombatantToken, KingToken, Token
 from report import TokenReadinessReport
 from result import AnalysisResult
@@ -87,7 +90,7 @@ class ReadinessAnalyzerBootstrapper(AnalyzerBootstrapper):
             )
         # Deal with the simplest universal case first, token has no been deployed.
         if token.is_not_deployed:
-            return AnalysisResult.completed(TokenReadinessReport.not_deployed(token))
+            return AnalysisResult.completed(TokenReadinessReport.inactive(token))
         
         if isinstance(token, CombatantToken):
             return cls._analyze_combatant_readiness(combatant=cast(CombatantToken, token))

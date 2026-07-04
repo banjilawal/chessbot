@@ -15,11 +15,11 @@ from result import MethodResultType
 
 
 __all__ = [
-    # ======================# COLLISION_BOOTSTRAPPER_ERROR #======================#
+    # ======================# COLLISION_BOOTSTRAPPER_FAILURE #======================#
     "CollisionBootstrapperException",
 ]
 
-# ======================# COLLISION_BOOTSTRAPPER_ERROR #======================#
+# ======================# COLLISION_BOOTSTRAPPER_FAILURE #======================#
 class CollisionBootstrapperException(BootstrapperException):
     """
     Role:
@@ -44,7 +44,7 @@ class CollisionBootstrapperException(BootstrapperException):
         CollisionException
     """
     MSG = "An existing token collided with the attractor."
-    ERR_CODE = "COLLISION_BOOTSTRAPPER_ERROR"
+    ERR_CODE = "COLLISION_BOOTSTRAPPER_FAILURE"
     
     def __init__(
             self,

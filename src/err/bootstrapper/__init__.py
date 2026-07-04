@@ -10,7 +10,10 @@ version: 1.0.1
 # ============ ERR.BOOTSTRAPPER PACKAGE ===========#
 
 # Packages
+from .analyzer import *
 from .collision import *
+from .operation import *
+from .permitter import *
 
 # Modules
 from .exception import BootstrapperException
