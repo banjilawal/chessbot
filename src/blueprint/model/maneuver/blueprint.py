@@ -26,8 +26,8 @@ class ManeuverBlueprint(Blueprint[Maneuver]):
         1.  Provides values for instantiating a Maneuver object.
 
     Attributes:
-        token: Token
         path: Path
+        token: Token
         id: Optional[int]
         null_exception: ManeuverNullException
         model_type: Maneuver
@@ -37,8 +37,8 @@ class ManeuverBlueprint(Blueprint[Maneuver]):
      Super Class:
         Blueprint
      """
-    token: Token
     path: Path
+    token: Token
     id: Optional[int] | None = None
     null_exception: ManeuverNullException = ManeuverNullException()
     model_type: Maneuver = Maneuver

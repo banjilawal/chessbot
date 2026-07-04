@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from microservice import BoardService
 from model import Board, BoardBinder
-from operation.priming.build.binder.wrapper import TeamBinderBuilderException
+from bootstrap import TeamBinderBuilderException
 from operation import Assemble
 from result import BuildResult
 from system import LoggingLevelRouter

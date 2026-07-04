@@ -11,10 +11,10 @@ from __future__ import annotations
 
 from typing import Any, Dict, cast
 
-from err import BoardTeamBinderNullException, BoardTeamBinderValidationException, NullException
-from model import Board, BoardBinder, Schema, Team
+from err import BoardTeamBinderNullException, BoardTeamBinderValidationException
+from model import BoardBinder, Schema, Team
 from operation import Validator
-from operation.priming.validation.binder.operation import SchemaHashtableValidator
+from bootstrap.validation.binder.operation import SchemaHashtableValidator
 from result import ValidationResult
 from util import LoggingLevelRouter
 from toolkit import BoardTeamBinderToolkit

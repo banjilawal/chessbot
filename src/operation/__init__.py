@@ -13,7 +13,6 @@ version: 1.0.1
 from .assembly import *
 from .delete import *
 from .pop import *
-from .priming import *
 from .push import *
 from .finalize import *
 from .insertion import *
