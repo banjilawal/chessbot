@@ -1,7 +1,7 @@
-# src/operation/token/deployment/operation.py
+# src/operation/token/place/operation.py
 
 """
-Module: operation.token.deployment.operation
+Module: operation.token.place.operation
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -15,15 +15,15 @@ from typing import cast
 
 from analyzer import HomeSquareValidator
 from controller import WorkerRegistryController
-from err import TokenDeploymentException
-from model import DeploymentState, HomeSquare, Token, TokenHomeClaimState
+from err import TokenPlaceException
+from model import PlaceState, HomeSquare, Token, TokenHomeClaimState
 from operation import Operation
 from report import HomeSquareClaimReport
 from result import MethodResultType, UpdateResult
 from util import LoggingLevelRouter
 
 
-class TokenDeployer(Operation[Token]):
+class TokenHomePlacer(Operation[Token]):
     """
     Role:
         - Transaction Worker
@@ -55,7 +55,7 @@ class TokenDeployer(Operation[Token]):
             home_square_validator: HomeSquareValidator | None = None,
     ) -> UpdateResult[Token]:
         """
-        Executes the deployment transaction.
+        Executes the place transaction.
         
         Action:
             1.  Send the unmodified token along with an exception chain in the UpdateResult if either
@@ -72,7 +72,7 @@ class TokenDeployer(Operation[Token]):
         Returns:
             UpdateResult[Token]
         Raises:
-            TokenDeploymentException
+            TokenPlaceException
         """
         method = f"{cls.__class__.__name__}.deploy_on_board"
         
@@ -86,11 +86,11 @@ class TokenDeployer(Operation[Token]):
             # Send the exception chain on failure.
             return UpdateResult.update_failure(
                 original=token,
-                exception=TokenDeploymentException(
+                exception=TokenPlaceException(
                     cls_mthd=method,
                     cls_name=cls.__class__.__name__,
-                    msg=TokenDeploymentException.MSG,
-                    err_code=TokenDeploymentException.ERR_CODE,
+                    msg=TokenPlaceException.MSG,
+                    err_code=TokenPlaceException.ERR_CODE,
                     mthd_rslt_type=MethodResultType.UPDATE_RESULT,
                     ex=analysis_result.exception,
                 )
@@ -99,11 +99,11 @@ class TokenDeployer(Operation[Token]):
         if claim.is_denied:
             return UpdateResult.update_failure(
                 original=token,
-                exception=TokenDeploymentException(
+                exception=TokenPlaceException(
                     cls_mthd=method,
                     cls_name=cls.__class__.__name__,
-                    msg=TokenDeploymentException.MSG,
-                    err_code=TokenDeploymentException.ERR_CODE,
+                    msg=TokenPlaceException.MSG,
+                    err_code=TokenPlaceException.ERR_CODE,
                     mthd_rslt_type=MethodResultType.UPDATE_RESULT,
                     ex=claim.exception,
                 )
@@ -120,11 +120,11 @@ class TokenDeployer(Operation[Token]):
             # Send the exception chain on failure.
             return UpdateResult.update_failure(
                 original=pre_update_token,
-                exception=TokenDeploymentException(
+                exception=TokenPlaceException(
                     cls_mthd=method,
                     cls_name=cls.__class__.__name__,
-                    msg=TokenDeploymentException.MSG,
-                    err_code=TokenDeploymentException.ERR_CODE,
+                    msg=TokenPlaceException.MSG,
+                    err_code=TokenPlaceException.ERR_CODE,
                     mthd_rslt_type=MethodResultType.UPDATE_RESULT,
                     ex=visitation_result.exception,
                 )
@@ -133,8 +133,8 @@ class TokenDeployer(Operation[Token]):
         home_square = cast(HomeSquare, visitation_result.payload)
         claimant = home_square.occupant
         
-        # Confirm claimant's deployment state is updated.
-        if claimant.deployment_state == DeploymentState.NOT_DEPLOYED:
+        # Confirm claimant's place state is updated.
+        if claimant.place_state == PlaceState.NOT_DEPLOYED:
             claimant.mark_deployed()
         # Confirm home_square is marked as claimed.
         if home_square.token_claim_state != TokenHomeClaimState.UNCLAIMED:
@@ -145,5 +145,5 @@ class TokenDeployer(Operation[Token]):
 
 
 # Register the operation.
-WorkerRegistryController.register_worker(TokenDeployer)
+WorkerRegistryController.register_worker(TokenHomePlacer)
         

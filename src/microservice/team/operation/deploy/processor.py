@@ -16,7 +16,7 @@ from logic.team import Team
 from model.token import Token
 
 
-class DeployTeam:
+class TeamDeployer:
     """
     Role:
         - Transaction Worker

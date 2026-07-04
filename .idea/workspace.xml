@@ -4,7 +4,19 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="" />
+    <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/controller/model/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/controller/model/controller.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/token/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/model/token/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/token/controller.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/model/token/controller.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/microservice/team/operation/deploy/processor.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/microservice/team/operation/deploy/processor.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/microservice/token/microservice.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/microservice/token/microservice.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/token/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/token/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/token/deployment/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/token/placer/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/token/deployment/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/token/placer/operation.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -57,7 +69,7 @@
     "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/builder",
+    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/controller/model",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
@@ -68,18 +80,18 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/controller/model" />
       <recent name="$PROJECT_DIR$/src/builder" />
       <recent name="$PROJECT_DIR$/src/err/validation/blueprint/token" />
       <recent name="$PROJECT_DIR$/src/err/validation/blueprint/token/home" />
       <recent name="$PROJECT_DIR$/src/validation/blueprint/token" />
-      <recent name="$PROJECT_DIR$/src/validation/blueprint/token/home" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/controller/model" />
       <recent name="$PROJECT_DIR$/src/detection" />
       <recent name="$PROJECT_DIR$/src/err/detector" />
       <recent name="$PROJECT_DIR$/src/operation" />
       <recent name="$PROJECT_DIR$/src/validation" />
-      <recent name="$PROJECT_DIR$/src" />
     </key>
   </component>
   <component name="RunManager" selected="Python.notifier">
@@ -804,7 +816,7 @@
       <workItem from="1782214489414" duration="8439000" />
       <workItem from="1782265217166" duration="7062000" />
       <workItem from="1782325486599" duration="56546000" />
-      <workItem from="1782732939190" duration="186641000" />
+      <workItem from="1782732939190" duration="189680000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />
@@ -1160,6 +1172,11 @@
           <url>file://$PROJECT_DIR$/src/err/model/token/disabled/exception.py</url>
           <line>9</line>
           <option name="timeStamp" value="204" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/controller/model/controller.py</url>
+          <line>9</line>
+          <option name="timeStamp" value="206" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

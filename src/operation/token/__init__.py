@@ -13,7 +13,7 @@ version: 1.0.1
 from .attack import *
 from .check import *
 from .coord import *
-from .deployment import *
 from .mate import *
+from .place import *
 
 # Modules

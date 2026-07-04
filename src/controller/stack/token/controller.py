@@ -13,7 +13,7 @@ from analyzer import RankQuotaAnalyzer
 from controller.stack.crud.token import TokenStackCrudController
 from detection import TokenCollisionDetector
 from microservice import TokenService
-from operation import TokenDeleter, TokenDeployer, TokenPopper, TokenPusher
+from operation import TokenDeleter, TokenHomePlacer, TokenPopper, TokenPusher
 from search.token.searcher import TokenSearcher
 
 
@@ -34,7 +34,7 @@ class TokenStackController:
     Parent:
     """
     _crud: TokenStackCrudController
-    _token_deployer: TokenDeployer
+    _token_deployer: TokenHomePlacer
     _microservice: TokenService
     _pusher: TokenPusher
     _popper: TokenPopper
@@ -47,7 +47,7 @@ class TokenStackController:
             self,
             crud: TokenStackCrudController | None = TokenStackCrudController(),
             microservice: TokenService = TokenService(),
-            token_deployer: TokenDeployer | None = TokenDeployer(),
+            token_deployer: TokenHomePlacer | None = TokenHomePlacer(),
             popper: TokenPopper | None = TokenPopper(),
             pusher: TokenPusher | None = TokenPusher(),
             deleter: TokenDeleter | None = TokenDeleter(),
@@ -86,7 +86,7 @@ class TokenStackController:
         return self._crud
     
     @property
-    def token_deployer(self) -> TokenDeployer:
+    def token_deployer(self) -> TokenHomePlacer:
         return self._token_deployer
     
     @property
