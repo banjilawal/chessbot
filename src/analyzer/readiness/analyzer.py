@@ -73,7 +73,7 @@ class TokenReadinessAnalyzer(Analyzer):
         if bootstrapper is None:
             bootstrapper = ReadinessAnalyzerBootstrapper()
             
-        analysis_result = bootstrapper.execute(token=token,)
+        analysis_result = bootstrapper.execute(subject=token, )
         if analysis_result.is_failure:
             return AnalysisResult.failure(
                 exception=TokenReadinessAnalyzerException(

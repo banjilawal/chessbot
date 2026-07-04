@@ -10,6 +10,7 @@ version: 1.0.1
 # =========== TOOLKIT PACKAGE ===========#
 
 # Packages
+from .analyzer import *
 from .context import *
 from .graph import *
 from .math import *
