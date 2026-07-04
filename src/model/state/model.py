@@ -1,7 +1,7 @@
-# src/model/state/stateful/model/state.py
+# src/model/state/model.py
 
 """
-Module: model.state.stateful.model
+Module: model.state.model
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
