@@ -9,24 +9,14 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from typing import Optional, cast
+from typing import cast
 
-from analyzer import SquareTokenRelationAnalyzer, TokenReadinessAnalyzer
-from err import (
-    BidirectionalSourceTokenRelationException, DisabledTokenManeuverException,
-    ItinerarySourceEqualsDestinationException, PoppingEmptyTokenStackException,
-    ManeuverPermitterException,
-    TokenStackNullException
-)
-from microservice import SquareValidator
-from model import Square, SquareContext, Token
-from report import DeleteApproval, RelationReport, TokenReadinessReport
-from report.approval.maneuver import ManeuverApproval
-from result import AnalysisResult, MethodResultType
-from search import TokenOriginSearcher
-from stack import TokenStackService
+from model import Square, Token
+from permitter import TokenPermitter
+from report.approval.maneuver import ManeuverApprovalReport
+from result import AnalysisResult
+from toolkit import TokenManeuverToolkit
 from util import LoggingLevelRouter
-from validation import TokenFreedomAnalyzer, TokenValidator
 
 
 class TokenManeuverPermitter(TokenPermitter):
@@ -43,12 +33,9 @@ class TokenManeuverPermitter(TokenPermitter):
 
     Provides:
         -   execute(
-                    cls,
-                    token: Token,
-                    token_stack: TokenStackService,
-                    rank_service: RankService = RankService(),
-                    rank_quota_analyzer: RankQuotaAnalyzer = RankQuotaAnalyzer(),
-                    collision_detector: TokenCollisionAnalyst = TokenCollisionAnalyst(),
+                    requestor: Token,
+                    destination: Square,
+                    toolkit: TokenManeuverToolkit,
             ) -> AnalysisResult
 
     Super Class:
@@ -60,12 +47,8 @@ class TokenManeuverPermitter(TokenPermitter):
             cls,
             requestor: Token,
             destination: Square,
-            token_validator: TokenValidator | None = None,
-            square_validator: SquareValidator | None = None,
-            origin_searcher: TokenOriginSearcher | None = None,
-            token_readiness_analyzer: TokenReadinessAnalyzer | None = None,
-            destination_relation_analyzer: SquareTokenRelationAnalyzer | None = None,
-    ) -> AnalysisResult:
+            toolkit: TokenManeuverToolkit | None = None,
+    ) -> AnalysisResult[ManeuverApprovalReport]:
         """
         Action:
             1.  Return a failure result containing an exception chain if either:
@@ -78,10 +61,9 @@ class TokenManeuverPermitter(TokenPermitter):
                     -   The quota for the token's rank is full.
             3.  Send an approval if all the tests are passed.
         Args:
-            item_id: int
-            stack: TokenStackService
-            square_validator: SquareValidator
-            token_freedom_analyzer: TokenFreedomAnalyzer
+            requestor: Token
+            destination: Square
+            toolkit: TokenManeuverToolkit
         Returns:
             AnalysisResult
         Raises:
@@ -91,20 +73,46 @@ class TokenManeuverPermitter(TokenPermitter):
         method =  f"{cls.__name__}.execute"
         
         # --- Supply any missing dependencies. ---#
-        if token_validator is None:
-            token_validator = TokenValidator()
-        if square_validator is None:
-            square_validator = SquareValidator()
-        if origin_searcher is None:
-            origin_searcher = TokenOriginSearcher()
-        if token_readiness_analyzer is None:
-            token_readiness_analyzer = TokenReadinessAnalyzer()
-        if destination_relation_analyzer is None:
-            destination_relation_analyzer = SquareTokenRelationAnalyzer()
+        if toolkit is None:
+            toolkit = TokenManeuverToolkit()
+        
+        # Handle the case that, the token fails a validation check.
+        readiness_analysis_result = toolkit.readiness_analyzer.analyze(token)
+        if readiness_analysis_result.is_failure:
+            # Return the exception chain on failure
+            return AnalysisResult.failure(
+                ManeuverPermitterException(
+                    cls_mthd=method,
+                    cls_name=cls.__name__,
+                    msg=ManeuverPermitterException.MSG,
+                    err_code=ManeuverPermitterException.ERR_CODE,
+                    mthd_rslt_type=MethodResultType.ANALYSIS_RESULT,
+                    ex=readiness_analysis_result.exception,
+                )
+            )
+        # Handle the case that, the token is not free.
+        report = cast(TokenReadinessReport, readiness_analysis_result.payload)
+        if report.token_is_not_ready:
+            # Return the exception chain on failure
+            return AnalysisResult.completed(
+                ManeuverApprovalReport.deny(
+                    exception=ManeuverPermitterException(
+                        cls_mthd=method,
+                        cls_name=cls.__name__,
+                        msg=ManeuverPermitterException.MSG,
+                        err_code=ManeuverPermitterException.ERR_CODE,
+                        mthd_rslt_type=MethodResultType.ANALYSIS_RESULT,
+                        ex=DisabledTokenManeuverException(
+                            msg=DisabledTokenManeuverException.MSG,
+                            err_code=DisabledTokenManeuverException.ERR_CODE,
+                        ),
+                    )
+                )
+            )
             
-        token_origin_search_result = origin_searcher.execute(
-            token=token,
-            readiness_analyzer=token_readiness_analyzer
+        token_origin_search_result = toolkit.origin_searcher.execute(
+            token=requestor,
+            readiness_analyzer=toolkit.readiness_analyzer
         )
         # Handle the case that, the origin_searcher is not successful.
         if token_origin_search_result.is_failure:
@@ -121,12 +129,13 @@ class TokenManeuverPermitter(TokenPermitter):
             )
         origin = token_origin_search_result.payload[0]
         
-        destination_relation_analysis = destination_relation_analyzer.analyze(
+        destination_relation_analysis = toolkit.destination_relation_analyzer.analyze(
             candidate_primary=destination,
-            candidate_satellite=token,
-            token_validator=token_validator,
-            square_validator=square_validator,
+            candidate_satellite=requestor,
+            token_validator=toolkit.token_validator,
+            square_validator=toolkit.square_validator,
         )
+
         # Handle the case that, the destination_relation_analyzer aborts.
         if destination_relation_analysis.is_failure:
             # Return the exception chain on failure
@@ -154,7 +163,7 @@ class TokenManeuverPermitter(TokenPermitter):
                 )
             )
         for square in [origin, destination]:
-            square_validation_result = square_validator.validate(square)
+            square_validation_result = toolkit.square_validator.validate(square)
             if square_validation_result.is_failure:
                 # Return the exception chain on failure
                 return AnalysisResult.failure(
@@ -183,39 +192,7 @@ class TokenManeuverPermitter(TokenPermitter):
                     ),
                 )
             )
-        # Handle the case that, the token fails a validation check.
-        freedom_analysis_result = token_freedom_analyzer.analyze(token)
-        if freedom_analysis_result.is_failure:
-            # Return the exception chain on failure
-            return AnalysisResult.failure(
-                ManeuverPermitterException(
-                    cls_mthd=method,
-                    cls_name=cls.__name__,
-                    msg=ManeuverPermitterException.MSG,
-                    err_code=ManeuverPermitterException.ERR_CODE,
-                    mthd_rslt_type=MethodResultType.ANALYSIS_RESULT,
-                    ex=freedom_analysis_result.exception,
-                )
-            )
-        # Handle the case that, the token is not free.
-        report = cast(TokenReadinessReport, freedom_analysis_result.payload)
-        if report.token_is_not_ready:
-            # Return the exception chain on failure
-            return AnalysisResult.completed(
-                ManeuverApproval.deny(
-                    exception=ManeuverPermitterException(
-                        cls_mthd=method,
-                        cls_name=cls.__name__,
-                        msg=ManeuverPermitterException.MSG,
-                        err_code=ManeuverPermitterException.ERR_CODE,
-                        mthd_rslt_type=MethodResultType.ANALYSIS_RESULT,
-                        ex=DisabledTokenManeuverException(
-                            msg=DisabledTokenManeuverException.MSG,
-                            err_code=DisabledTokenManeuverException.ERR_CODE,
-                        ),
-                    )
-                )
-            )
+
         origin_search_result = token.team.board.squares.search(
             context=SquareContext(occupant=token)
         )
@@ -223,7 +200,7 @@ class TokenManeuverPermitter(TokenPermitter):
         if origin_search_result.is_failure:
             # Return the exception chain on failure
             return AnalysisResult.completed(
-                ManeuverApproval.deny(
+                ManeuverApprovalReport.deny(
                     exception=ManeuverPermitterException(
                         cls_mthd=method,
                         cls_name=cls.__name__,
@@ -241,7 +218,7 @@ class TokenManeuverPermitter(TokenPermitter):
         if origin_search_result.is_empty:
             # Return the exception chain on failure
             return AnalysisResult.completed(
-                ManeuverApproval.deny(
+                ManeuverApprovalReport.deny(
                     exception=ManeuverPermitterException(
                         cls_mthd=method,
                         cls_name=cls.__name__,
@@ -278,7 +255,7 @@ class TokenManeuverPermitter(TokenPermitter):
         if not origin_relation.fully_exists:
             # Return the exception chain on failure
             return AnalysisResult.completed(
-                ManeuverApproval.deny(
+                ManeuverApprovalReport.deny(
                     exception=ManeuverPermitterException(
                         cls_mthd=method,
                         cls_name=cls.__name__,

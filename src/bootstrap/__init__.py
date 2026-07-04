@@ -11,9 +11,11 @@ version: 1.0.1
 # =========== BOOTSTRAP PACKAGE ===========#
 
 # Packages
+from .analyzer import *
 from .assembly import *
 from .insertion import *
 from .validation import *
+from .operation import *
 
 # Modules
-from .bootstrapper import Primer
+from bootstrapper import Bootstrapper

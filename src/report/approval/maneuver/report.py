@@ -14,7 +14,7 @@ from model import CheckedPath, Path, Token, Path
 from report import OperationApprovalReport, Permission
 
 
-class ManeuverApproval(OperationApprovalReport):
+class ManeuverApprovalReport(OperationApprovalReport):
     """
     Role:
         -   Test results
@@ -70,7 +70,7 @@ class ManeuverApproval(OperationApprovalReport):
             cls, 
             path: Path,
             cost: Optional[int] | None = None,
-    ) -> ManeuverApproval:
+    ) -> ManeuverApprovalReport:
         return cls(
             cost=cost,
             path=path,
@@ -81,7 +81,7 @@ class ManeuverApproval(OperationApprovalReport):
     def approve_maneuver(
             cls,
             maneuver: Path,
-    ) -> ManeuverApproval:
+    ) -> ManeuverApprovalReport:
         return cls(
             path=maneuver,
             permission=Permission.GRANTED,
@@ -91,7 +91,7 @@ class ManeuverApproval(OperationApprovalReport):
     def approve_king_attack(
             cls,
             king_attack: CheckedPath,
-    ) -> ManeuverApproval:
+    ) -> ManeuverApprovalReport:
         return cls(
             path=king_attack,
             permission=Permission.GRANTED,
@@ -101,14 +101,14 @@ class ManeuverApproval(OperationApprovalReport):
     def approve_combatant_attack(
             cls,
             combatant_attack: CheckedPath,
-    ) -> ManeuverApproval:
+    ) -> ManeuverApprovalReport:
         return cls(
             path=combatant_attack,
             permission=Permission.GRANTED,
         )
     
     @classmethod
-    def deny(cls, exception: Exception) -> ManeuverApproval:
+    def deny(cls, exception: Exception) -> ManeuverApprovalReport:
         return cls(
             exception=exception,
             permission=Permission.DENIED,
