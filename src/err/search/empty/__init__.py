@@ -17,6 +17,7 @@ from .coord import *
 from .edge import *
 from .game import *
 from .graph import *
+from .home import *
 from .node import *
 from .origin import *
 from .path import *

@@ -124,22 +124,6 @@ class HomeSquareDetector:
                     ),
                 )
             )
-        # Handle the case that, the opening square has already been claimed as home by a token.
-        home_square = cast(HomeSquare, home_search_result.payload[0])
-        if home_square.is_claimed:
-            # Send the exception chain on failure.
-            return Result.failure(
-                HomeSquareDetectorException(
-                    cls_mthd=method,
-                    cls_name=cls.__class__.__name__,
-                    msg=HomeSquareDetectorException.MSG,
-                    err_code=HomeSquareDetectorException.ERR_CODE,
-                    ex=HomeSquareAlreadyClaimedException(
-                        msg=HomeSquareAlreadyClaimedException.MSG,
-                        err_code=HomeSquareAlreadyClaimedException.ERR_CODE,
-                    ),
-                )
-            )
         # --- Send the work product ---#
-        return Result.completed(HomeSquareClaimReport(claimant=token, home_square=home_square))
+        return Result.success(cast(HomeSquare, home_search_result.payload[0]))
         
