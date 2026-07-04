@@ -15,7 +15,9 @@ from .binder import *
 from .board import *
 from .coord import *
 from .itenerary import *
+from .maneuver import *
 from .node import *
+from .path import *
 from .player import *
 from .rank import *
 from .scalar import *

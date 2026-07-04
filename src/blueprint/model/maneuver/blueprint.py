@@ -1,0 +1,44 @@
+# src/blueprint/model/maneuver/blueprint.py
+
+"""
+Module: blueprint.model.maneuver.blueprint
+Author: Banji Lawal
+Created: 2026-04-03
+version: 1.0.1
+"""
+
+from __future__ import annotations
+from dataclasses import dataclass
+from typing import Optional
+
+from blueprint import Blueprint
+from err import ManeuverNullException
+from model import Path, Maneuver, Token
+
+
+@dataclass
+class ManeuverBlueprint(Blueprint[Maneuver]):
+    """
+    Role:
+        -   Container
+
+    Responsibilities:
+        1.  Provides values for instantiating a Maneuver object.
+
+    Attributes:
+        token: Token
+        path: Path
+        id: Optional[int]
+        null_exception: ManeuverNullException
+        model_type: Maneuver
+        
+    Provides:
+
+     Super Class:
+        Blueprint
+     """
+    token: Token
+    path: Path
+    id: Optional[int] | None = None
+    null_exception: ManeuverNullException = ManeuverNullException()
+    model_type: Maneuver = Maneuver
