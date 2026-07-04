@@ -5,118 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/bootstrap/analyzer/readiness/combatant/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/bootstrap/analyzer/readiness/combatant/analyzer.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/bootstrap/analyzer/readiness/king/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/bootstrap/analyzer/readiness/king/analyzer.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/toolkit/analyzer/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/toolkit/analyzer/bootstrapper/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/toolkit/analyzer/bootstrapper/binder/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/toolkit/analyzer/bootstrapper/binder/arena/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/toolkit/analyzer/bootstrapper/binder/arena/toolkit.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/toolkit/analyzer/bootstrapper/binder/board/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/toolkit/analyzer/bootstrapper/binder/board/toolkit.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/toolkit/analyzer/bootstrapper/board/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/toolkit/analyzer/bootstrapper/board/toolkit.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/toolkit/analyzer/bootstrapper/coord/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/toolkit/analyzer/bootstrapper/coord/toolkit.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/toolkit/analyzer/bootstrapper/edge/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/toolkit/analyzer/bootstrapper/edge/toolkit.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/toolkit/analyzer/bootstrapper/game/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/toolkit/analyzer/bootstrapper/game/toolkit.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/toolkit/analyzer/bootstrapper/hostage/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/toolkit/analyzer/bootstrapper/hostage/toolkit.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/toolkit/analyzer/bootstrapper/itinerary/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/toolkit/analyzer/bootstrapper/itinerary/toolkit.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/toolkit/analyzer/bootstrapper/maneuver/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/toolkit/analyzer/bootstrapper/maneuver/toolkit.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/toolkit/analyzer/bootstrapper/node/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/toolkit/analyzer/bootstrapper/node/toolkit.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/toolkit/analyzer/bootstrapper/number/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/toolkit/analyzer/bootstrapper/number/toolkit.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/toolkit/analyzer/bootstrapper/operand/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/toolkit/analyzer/bootstrapper/operand/toolkit.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/toolkit/analyzer/bootstrapper/path/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/toolkit/analyzer/bootstrapper/path/toolkit.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/toolkit/analyzer/bootstrapper/player/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/toolkit/analyzer/bootstrapper/player/toolkit.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/toolkit/analyzer/bootstrapper/rank/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/toolkit/analyzer/bootstrapper/rank/toolkit.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/toolkit/analyzer/bootstrapper/readiness/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/toolkit/analyzer/bootstrapper/readiness/toolkit.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/toolkit/analyzer/bootstrapper/register/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/toolkit/analyzer/bootstrapper/register/toolkit.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/toolkit/analyzer/bootstrapper/scalar/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/toolkit/analyzer/bootstrapper/scalar/toolkit.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/toolkit/analyzer/bootstrapper/square/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/toolkit/analyzer/bootstrapper/square/toolkit.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/toolkit/analyzer/bootstrapper/team/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/toolkit/analyzer/bootstrapper/team/toolkit.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/toolkit/analyzer/bootstrapper/token/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/toolkit/analyzer/bootstrapper/token/toolkit.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/toolkit/analyzer/bootstrapper/toolkit.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/toolkit/analyzer/bootstrapper/vector/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/toolkit/analyzer/bootstrapper/vector/operand/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/toolkit/analyzer/bootstrapper/vector/operand/toolkit.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/toolkit/analyzer/bootstrapper/vector/register/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/toolkit/analyzer/bootstrapper/vector/register/toolkit.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/toolkit/analyzer/bootstrapper/vector/toolkit.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/toolkit/analyzer/state/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/toolkit/analyzer/state/arena/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/toolkit/analyzer/state/arena/toolkit.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/toolkit/analyzer/state/binder/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/toolkit/analyzer/state/binder/arena/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/toolkit/analyzer/state/binder/arena/toolkit.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/toolkit/analyzer/state/binder/board/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/toolkit/analyzer/state/binder/board/toolkit.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/toolkit/analyzer/state/board/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/toolkit/analyzer/state/board/toolkit.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/toolkit/analyzer/state/coord/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/toolkit/analyzer/state/coord/toolkit.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/toolkit/analyzer/state/edge/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/toolkit/analyzer/state/edge/toolkit.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/toolkit/analyzer/state/game/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/toolkit/analyzer/state/game/toolkit.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/toolkit/analyzer/state/hostage/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/toolkit/analyzer/state/hostage/toolkit.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/toolkit/analyzer/state/itinerary/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/toolkit/analyzer/state/itinerary/toolkit.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/toolkit/analyzer/state/maneuver/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/toolkit/analyzer/state/maneuver/toolkit.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/toolkit/analyzer/state/node/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/toolkit/analyzer/state/node/toolkit.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/toolkit/analyzer/state/number/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/toolkit/analyzer/state/number/toolkit.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/toolkit/analyzer/state/operand/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/toolkit/analyzer/state/operand/toolkit.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/toolkit/analyzer/state/path/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/toolkit/analyzer/state/path/toolkit.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/toolkit/analyzer/state/player/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/toolkit/analyzer/state/player/toolkit.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/toolkit/analyzer/state/rank/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/toolkit/analyzer/state/rank/toolkit.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/toolkit/analyzer/state/register/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/toolkit/analyzer/state/register/toolkit.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/toolkit/analyzer/state/scalar/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/toolkit/analyzer/state/scalar/toolkit.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/toolkit/analyzer/state/square/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/toolkit/analyzer/state/square/toolkit.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/toolkit/analyzer/state/team/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/toolkit/analyzer/state/team/toolkit.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/toolkit/analyzer/state/token/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/toolkit/analyzer/state/token/toolkit.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/toolkit/analyzer/state/toolkit.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/toolkit/analyzer/state/vector/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/toolkit/analyzer/state/vector/operand/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/toolkit/analyzer/state/vector/operand/toolkit.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/toolkit/analyzer/state/vector/register/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/toolkit/analyzer/state/vector/register/toolkit.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/toolkit/analyzer/state/vector/toolkit.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/toolkit/analyzer/toolkit.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/analyzer/readiness/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/analyzer/readiness/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/bootstrap/analyzer/readiness/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/bootstrap/analyzer/readiness/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bootstrap/analyzer/readiness/bootstrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/bootstrap/analyzer/readiness/bootstrapper.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/toolkit/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/toolkit/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bootstrap/analyzer/readiness/combatant/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/analyzer/readiness/combatant/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bootstrap/analyzer/readiness/combatant/analyzer.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/analyzer/readiness/combatant/analyzer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bootstrap/analyzer/readiness/king/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/analyzer/readiness/king/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bootstrap/analyzer/readiness/king/analyzer.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/analyzer/readiness/king/analyzer.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -188,11 +82,11 @@
       <recent name="$PROJECT_DIR$/src/err/bootstrapper/operation" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/analyzer/readiness" />
       <recent name="$PROJECT_DIR$/src/model" />
       <recent name="$PROJECT_DIR$/src/model/state" />
       <recent name="$PROJECT_DIR$/src/bootstrap/operation" />
       <recent name="$PROJECT_DIR$/src/bootstrap" />
-      <recent name="$PROJECT_DIR$/src/toolkit/permitter" />
     </key>
   </component>
   <component name="RunManager" selected="Python.notifier">
@@ -917,7 +811,7 @@
       <workItem from="1782214489414" duration="8439000" />
       <workItem from="1782265217166" duration="7062000" />
       <workItem from="1782325486599" duration="56546000" />
-      <workItem from="1782732939190" duration="232286000" />
+      <workItem from="1782732939190" duration="233456000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />
@@ -1285,7 +1179,7 @@
           <option name="timeStamp" value="208" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/src/bootstrap/analyzer/readiness/combatant/analyzer.py</url>
+          <url>file://$PROJECT_DIR$/src/analyzer/readiness/combatant/analyzer.py</url>
           <line>9</line>
           <option name="timeStamp" value="209" />
         </line-breakpoint>

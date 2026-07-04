@@ -1,7 +1,7 @@
-# src/bootstrap/analyzer/readiness/king/analyzer.py
+# src/analyzer/readiness/combatant/analyzer.py
 
 """
-Module: bootstrap.analyzer.readiness.king.analyzer
+Module: analyzer.readiness.combatant.analyzer
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -10,13 +10,13 @@ version: 1.0.1
 from __future__ import annotations
 
 from analyzer import Analyzer
-from model import KingToken
+from model import CombatantToken
 from report import TokenReadinessReport
 from result import AnalysisResult
 from util import LoggingLevelRouter
 
 
-class KingReadinessAnalyzer(Analyzer):
+class CombatantReadinessAnalyzer(Analyzer):
     """
     Role:
         -   Analysis Factory
@@ -24,7 +24,7 @@ class KingReadinessAnalyzer(Analyzer):
 
 
     Responsibilities:
-        1.  ReadinessAnalyzerBootstrapper helper class which analyzes KingToken's
+        1.  ReadinessAnalyzerBootstrapper helper class which analyzes CombatantToken's
              availability.
         2.  Performs not safety checks on analysis subjet.
 
@@ -32,7 +32,7 @@ class KingReadinessAnalyzer(Analyzer):
 
     Provides:
         -   def execute(
-                    subject: KingToken,
+                    subject: CombatantToken,
             ) -> AnalysisResult[TokenReadinessReport]
     Parent:
         Analyzer
@@ -40,14 +40,14 @@ class KingReadinessAnalyzer(Analyzer):
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def analyze(cls, subject: KingToken,) -> AnalysisResult[TokenReadinessReport]:
+    def analyze(cls, subject: CombatantToken,) -> AnalysisResult[TokenReadinessReport]:
         """
-        Reports if a KingToken is free or not. Should not be called directly.
+        Reports if a CombatantToken is free or not. Should not be called directly.
         Action:
-            1.  Report the token is inactive if its checkmates or not deployed. Otherwise,
+            1.  Report the token is inactive if its captured or not deployed. Otherwise,
                 report its free.
         Args:
-            subject: KingToken
+            subject: CombatantToken
         Returns:
               AnalysisResult[TokenFreedomReport]
         Raises:
@@ -56,7 +56,7 @@ class KingReadinessAnalyzer(Analyzer):
         """
         method = f"{cls.__name__}.analyze"
         
-        if subject.is_checkmatedd or subject.is_not_deployed:
+        if subject.is_captured or subject.is_not_deployed:
             return AnalysisResult.completed(TokenReadinessReport.inactive(subject))
         
         return AnalysisResult.completed(TokenReadinessReport.ready(subject))

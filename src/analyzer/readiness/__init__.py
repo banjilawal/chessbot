@@ -10,6 +10,8 @@ version: 1.0.1
 # =========== ANALYZER.FREEDOM PACKAGE ===========#
 
 # Packages
+from .combatant import *
+from .king import *
 
 # Modules
 from .analyzer import TokenReadinessAnalyzer
