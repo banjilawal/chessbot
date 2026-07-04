@@ -77,11 +77,11 @@ class SquareBlueprintValidator(BlueprintValidator[Square]):
             toolkit = SquareBlueprintToolkit()
         
         # handle the case that, priming the validator fails.
-        priming_result = toolkit.blueprint_validation_primer.build(
+        priming_result = toolkit.blueprint_priming_validator.build(
             candidate=candidate,
             blueprint_model=toolkit.blueprint_model_type,
             blueprint_null_exception=toolkit.null_blueprint_exception,
-            validation_primer=toolkit.square_toolkit.validation_primer
+            priming_validator=toolkit.square_toolkit.priming_validator
         )
         if priming_result.is_failure:
             # Send the exception chain on failure.
@@ -194,7 +194,7 @@ class SquareBlueprintValidator(BlueprintValidator[Square]):
         
         # Certification for the search-by-state.
         if blueprint.state is not None:
-            validation_result = toolkit.square_toolkit.validation_primer.validate(
+            validation_result = toolkit.square_toolkit.priming_validator.validate(
                 candidate=blueprint.state,
                 model_type=SquareState,
                 null_exception=SquareStateNullException()
@@ -215,7 +215,7 @@ class SquareBlueprintValidator(BlueprintValidator[Square]):
         
         # Certification for the search-by-formation.
         if blueprint.formation is not None:
-            validation_result = toolkit.square_toolkit.validation_primer.validate(
+            validation_result = toolkit.square_toolkit.priming_validator.validate(
                 candidate=blueprint.formation,
                 model_type=Formation,
                 null_exception=FormationNullException()

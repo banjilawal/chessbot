@@ -32,7 +32,7 @@ class TokenContextToolkit(ContextToolkit[Token]):
         
         context_model_type: TokenContext
         null_context_exception: TokenContextNullException
-        context_validation_primer: ValidationPrimer
+        context_priming_validator: ValidationPrimer
         number_validator: NumberValidator
         
     Provides:

@@ -39,7 +39,7 @@ class SchemaHashtableValidator(Validator[Dict[Schema, Any]]):
         -   def validate(
                 candidate: Any,
                 schema_validator: SchemaDictValidator,
-                validation_primer: ValidationPrimer,
+                priming_validator: ValidationPrimer,
             ) -> ValidationResult[Dict[Schema, Any]]:
 
     Super Class:
@@ -52,7 +52,7 @@ class SchemaHashtableValidator(Validator[Dict[Schema, Any]]):
             cls,
             candidate: Any,
             schema_validator: SchemaValidator,
-            validation_primer: ValidationPrimer,
+            priming_validator: ValidationPrimer,
     ) -> ValidationResult[Binder]:
         """
         Verify the candidate is a BinderTable that.
@@ -67,7 +67,7 @@ class SchemaHashtableValidator(Validator[Dict[Schema, Any]]):
         Args:
             candidate: Any
             schema_validator: SchemaValidator
-            validation_primer: ValidationPrimer
+            priming_validator: ValidationPrimer
         Returns:
             ValidationResult[Dict[Schema, Any]]
         Raises:
@@ -80,7 +80,7 @@ class SchemaHashtableValidator(Validator[Dict[Schema, Any]]):
         method = f"{cls.__name__}.validate"
             
         # Handle the case that, the candidate does not exist.
-        validation_priming_result = validation_primer.build(
+        validation_priming_result = priming_validator.build(
             candidate=candidate,
             target_model=Dict[Schema, Any],
             context_null_exception=HashtableNullException(),

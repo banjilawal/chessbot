@@ -73,11 +73,11 @@ class CoordBlueprintValidator(BlueprintValidator[Coord]):
             toolkit = CoordBlueprintToolkit()
         
         # handle the case that, priming the validator fails.
-        priming_result = toolkit.blueprint_validation_primer.build(
+        priming_result = toolkit.blueprint_priming_validator.build(
             candidate=candidate,
             blueprint_model=toolkit.blueprint_model_type,
             blueprint_null_exception=toolkit.null_blueprint_exception,
-            validator_bootstrapper=toolkit.coord_toolkit.validation_primer
+            validator_bootstrapper=toolkit.coord_toolkit.priming_validator
         )
         if priming_result.is_failure:
             # Send the exception chain on failure.

@@ -19,7 +19,7 @@ from result import BuildResult, ValidationResult
 from util import LoggingLevelRouter
 from validation import Validator
 from controller import WorkerRegistryController
-from err import CoordDatabaseNullException, TokenNullException, TokenValidationException
+from err import CoordDatabaseNullException, TokenNullException, TokenValidatorException
 
 
 class TokenConsistencyValidator(Validator[Token]):
@@ -78,18 +78,18 @@ class TokenConsistencyValidator(Validator[Token]):
         if toolkit_build_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                TokenValidationException(
+                TokenValidatorException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    msg=TokenValidationException.MSG,
-                    err_code=TokenValidationException.ERR_CODE,
+                    msg=TokenValidatorException.MSG,
+                    err_code=TokenValidatorException.ERR_CODE,
                     ex=toolkit_build_result.exception,
                 )
             )
         tools = toolkit_build_result.payload
         
         # Handle the case that, the candidate does not exist.
-        validation_priming_result = tools["validation_primer"].build(
+        validation_priming_result = tools["priming_validator"].build(
             candidate=candidate,
             target_model=Token,
             context_null_exception=TokenNullException(),
@@ -97,11 +97,11 @@ class TokenConsistencyValidator(Validator[Token]):
         if validation_priming_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                TokenValidationException(
+                TokenValidatorException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    msg=TokenValidationException.MSG,
-                    err_code=TokenValidationException.ERR_CODE,
+                    msg=TokenValidatorException.MSG,
+                    err_code=TokenValidatorException.ERR_CODE,
                     ex=validation_priming_result.exception,
                 )
             )
@@ -116,11 +116,11 @@ class TokenConsistencyValidator(Validator[Token]):
         if identity_validation_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                TokenValidationException(
+                TokenValidatorException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    msg=TokenValidationException.MSG,
-                    err_code=TokenValidationException.ERR_CODE,
+                    msg=TokenValidatorException.MSG,
+                    err_code=TokenValidatorException.ERR_CODE,
                     ex=identity_validation_result.exception,
                 )
             )
@@ -129,11 +129,11 @@ class TokenConsistencyValidator(Validator[Token]):
         if team_validation_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                TokenValidationException(
+                TokenValidatorException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    msg=TokenValidationException.MSG,
-                    err_code=TokenValidationException.ERR_CODE,
+                    msg=TokenValidatorException.MSG,
+                    err_code=TokenValidatorException.ERR_CODE,
                     ex=team_validation_result.exception,
                 )
             )
@@ -142,11 +142,11 @@ class TokenConsistencyValidator(Validator[Token]):
         if home_square_validation_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                TokenValidationException(
+                TokenValidatorException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    msg=TokenValidationException.MSG,
-                    err_code=TokenValidationException.ERR_CODE,
+                    msg=TokenValidatorException.MSG,
+                    err_code=TokenValidatorException.ERR_CODE,
                     ex=home_square_validation_result.exception,
                 )
             )
@@ -155,16 +155,16 @@ class TokenConsistencyValidator(Validator[Token]):
         if rank_validation_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                TokenValidationException(
+                TokenValidatorException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    msg=TokenValidationException.MSG,
-                    err_code=TokenValidationException.ERR_CODE,
+                    msg=TokenValidatorException.MSG,
+                    err_code=TokenValidatorException.ERR_CODE,
                     ex=rank_validation_result.exception,
                 )
             )
         # Handle the case that the token's CoordDatabase fails it safety checks.
-        coord_database_validation_result = tools["validation_primer"].build(
+        coord_database_validation_result = tools["priming_validator"].build(
             candidate=token.positions,
             target_model=CoordDatabase,
             context_null_exception=CoordDatabaseNullException()
@@ -172,11 +172,11 @@ class TokenConsistencyValidator(Validator[Token]):
         if coord_database_validation_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                TokenValidationException(
+                TokenValidatorException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    msg=TokenValidationException.MSG,
-                    err_code=TokenValidationException.ERR_CODE,
+                    msg=TokenValidatorException.MSG,
+                    err_code=TokenValidatorException.ERR_CODE,
                     ex=coord_database_validation_result,
                 )
             )
@@ -201,10 +201,10 @@ class TokenConsistencyValidator(Validator[Token]):
         if validation_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                TokenValidationException(
+                TokenValidatorException(
                     cls_mthd=method,
-                    msg=TokenValidationException.MSG,
-                    err_code=TokenValidationException.ERR_CODE,
+                    msg=TokenValidatorException.MSG,
+                    err_code=TokenValidatorException.ERR_CODE,
                     ex=validation_result.exception
                 )
             )
@@ -212,10 +212,10 @@ class TokenConsistencyValidator(Validator[Token]):
         if not isinstance(candidate, CombatantToken):
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                TokenValidationException(
+                TokenValidatorException(
                     cls_mthd=method,
-                    msg=TokenValidationException.MSG,
-                    err_code=TokenValidationException.ERR_CODE,
+                    msg=TokenValidatorException.MSG,
+                    err_code=TokenValidatorException.ERR_CODE,
                     ex=TypeError(f"Expected CombatantToken, got {type(candidate).__name__} instead.")
                 )
             )
@@ -230,8 +230,8 @@ class TokenConsistencyValidator(Validator[Token]):
         if validation.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                TokenValidationException(
-                    msg=f"{method}: {TokenValidationException.MSG}",
+                TokenValidatorException(
+                    msg=f"{method}: {TokenValidatorException.MSG}",
                     ex=validation.exception
                 )
             )
@@ -239,8 +239,8 @@ class TokenConsistencyValidator(Validator[Token]):
         if not isinstance(candidate, KingToken):
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                TokenValidationException(
-                    msg=f"{method}: {TokenValidationException.MSG}",
+                TokenValidatorException(
+                    msg=f"{method}: {TokenValidatorException.MSG}",
                     ex=TypeError(f"{method}:Expected KingToken, got {type(candidate).__name__} instead.")
                 )
             )
@@ -255,8 +255,8 @@ class TokenConsistencyValidator(Validator[Token]):
         if token_validation.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                TokenValidationException(
-                    msg=f"{method}: {TokenValidationException.MSG}",
+                TokenValidatorException(
+                    msg=f"{method}: {TokenValidatorException.MSG}",
                     ex=token_validation.exception
                 )
             )
@@ -264,8 +264,8 @@ class TokenConsistencyValidator(Validator[Token]):
         if token.is_disabled:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                TokenValidationException(
-                    msg=f"{method}: {TokenValidationException.MSG}",
+                TokenValidatorException(
+                    msg=f"{method}: {TokenValidatorException.MSG}",
                     ex=DisabledTokenCannotExploreException(
                         f"{method}: {DisabledTokenCannotExploreException.MSG}"
                     )
@@ -282,8 +282,8 @@ class TokenConsistencyValidator(Validator[Token]):
         if token_validation.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                TokenValidationException(
-                    msg=f"{method}: {TokenValidationException.MSG}",
+                TokenValidatorException(
+                    msg=f"{method}: {TokenValidatorException.MSG}",
                     ex=token_validation.exception
                 )
             )
@@ -291,8 +291,8 @@ class TokenConsistencyValidator(Validator[Token]):
         if token.is_active:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                TokenValidationException(
-                    msg=f"{method}: {TokenValidationException.MSG}",
+                TokenValidatorException(
+                    msg=f"{method}: {TokenValidatorException.MSG}",
                     ex=TokenException(
                         f"{method}: {DisabledTokenCannotExploreException.MSG}"
                     )
@@ -309,8 +309,8 @@ class TokenConsistencyValidator(Validator[Token]):
         if token.is_active:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                TokenValidationException(
-                    msg=f"{method}: {TokenValidationException.MSG}",
+                TokenValidatorException(
+                    msg=f"{method}: {TokenValidatorException.MSG}",
                     ex=token_validation.exception
                 )
             )
@@ -318,8 +318,8 @@ class TokenConsistencyValidator(Validator[Token]):
         if isinstance(token, KingToken):
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                TokenValidationException(
-                    msg=f"{method}: {TokenValidationException.MSG}",
+                TokenValidatorException(
+                    msg=f"{method}: {TokenValidatorException.MSG}",
                     ex=TokenException()
                 )
             )
@@ -334,11 +334,11 @@ class TokenConsistencyValidator(Validator[Token]):
         if build_result.is_failure:
             # Send the exception chain on failure.
             return BuildResult.failure(
-                TokenValidationException(
+                TokenValidatorException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    msg=TokenValidationException.MSG,
-                    err_code=TokenValidationException.ERR_CODE,
+                    msg=TokenValidatorException.MSG,
+                    err_code=TokenValidatorException.ERR_CODE,
                     ex=build_result.exception,
                 )
             )

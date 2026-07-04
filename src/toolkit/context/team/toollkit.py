@@ -33,7 +33,7 @@ class TeamContextToolkit(ContextToolkit[Team]):
         
         context_model_type: TeamContext
         null_context_exception: TeamContextNullException
-        context_validation_primer: ValidationPrimer
+        context_priming_validator: ValidationPrimer
         number_validator: NumberValidator
         
     Provides:

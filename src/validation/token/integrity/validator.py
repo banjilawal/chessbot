@@ -19,7 +19,7 @@ from toolkit import TokenToolkit
 from database import CoordDatabase
 from result import BuildResult, ValidationResult
 from util import LoggingLevelRouter
-from err import CoordDatabaseNullException, TokenNullException, TokenValidationException
+from err import CoordDatabaseNullException, TokenNullException, TokenValidatorException
 
 
 class TokenIntegrityValidator(Validator[Token]):
@@ -75,18 +75,18 @@ class TokenIntegrityValidator(Validator[Token]):
         if toolkit_build_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                TokenValidationException(
+                TokenValidatorException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    msg=TokenValidationException.MSG,
-                    err_code=TokenValidationException.ERR_CODE,
+                    msg=TokenValidatorException.MSG,
+                    err_code=TokenValidatorException.ERR_CODE,
                     ex=toolkit_build_result.exception,
                 )
             )
         tools = toolkit_build_result.payload
         
         # Handle the case that, the candidate does not exist.
-        validation_priming_result = tools["validation_primer"].build(
+        validation_priming_result = tools["priming_validator"].build(
             candidate=candidate,
             target_model=Token,
             context_null_exception=TokenNullException(),
@@ -94,11 +94,11 @@ class TokenIntegrityValidator(Validator[Token]):
         if validation_priming_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                TokenValidationException(
+                TokenValidatorException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    msg=TokenValidationException.MSG,
-                    err_code=TokenValidationException.ERR_CODE,
+                    msg=TokenValidatorException.MSG,
+                    err_code=TokenValidatorException.ERR_CODE,
                     ex=validation_priming_result.exception,
                 )
             )
@@ -113,11 +113,11 @@ class TokenIntegrityValidator(Validator[Token]):
         if identity_validation_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                TokenValidationException(
+                TokenValidatorException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    msg=TokenValidationException.MSG,
-                    err_code=TokenValidationException.ERR_CODE,
+                    msg=TokenValidatorException.MSG,
+                    err_code=TokenValidatorException.ERR_CODE,
                     ex=identity_validation_result.exception,
                 )
             )
@@ -126,11 +126,11 @@ class TokenIntegrityValidator(Validator[Token]):
         if team_validation_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                TokenValidationException(
+                TokenValidatorException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    msg=TokenValidationException.MSG,
-                    err_code=TokenValidationException.ERR_CODE,
+                    msg=TokenValidatorException.MSG,
+                    err_code=TokenValidatorException.ERR_CODE,
                     ex=team_validation_result.exception,
                 )
             )
@@ -139,11 +139,11 @@ class TokenIntegrityValidator(Validator[Token]):
         if home_square_validation_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                TokenValidationException(
+                TokenValidatorException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    msg=TokenValidationException.MSG,
-                    err_code=TokenValidationException.ERR_CODE,
+                    msg=TokenValidatorException.MSG,
+                    err_code=TokenValidatorException.ERR_CODE,
                     ex=home_square_validation_result.exception,
                 )
             )
@@ -152,16 +152,16 @@ class TokenIntegrityValidator(Validator[Token]):
         if rank_validation_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                TokenValidationException(
+                TokenValidatorException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    msg=TokenValidationException.MSG,
-                    err_code=TokenValidationException.ERR_CODE,
+                    msg=TokenValidatorException.MSG,
+                    err_code=TokenValidatorException.ERR_CODE,
                     ex=rank_validation_result.exception,
                 )
             )
         # Handle the case that the token's CoordDatabase fails it safety checks.
-        coord_database_validation_result = tools["validation_primer"].build(
+        coord_database_validation_result = tools["priming_validator"].build(
             candidate=token.positions,
             target_model=CoordDatabase,
             context_null_exception=CoordDatabaseNullException()
@@ -169,11 +169,11 @@ class TokenIntegrityValidator(Validator[Token]):
         if coord_database_validation_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                TokenValidationException(
+                TokenValidatorException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    msg=TokenValidationException.MSG,
-                    err_code=TokenValidationException.ERR_CODE,
+                    msg=TokenValidatorException.MSG,
+                    err_code=TokenValidatorException.ERR_CODE,
                     ex=coord_database_validation_result,
                 )
             )
@@ -188,11 +188,11 @@ class TokenIntegrityValidator(Validator[Token]):
         if build_result.is_failure:
             # Send the exception chain on failure.
             return BuildResult.failure(
-                TokenValidationException(
+                TokenValidatorException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    msg=TokenValidationException.MSG,
-                    err_code=TokenValidationException.ERR_CODE,
+                    msg=TokenValidatorException.MSG,
+                    err_code=TokenValidatorException.ERR_CODE,
                     ex=build_result.exception,
                 )
             )

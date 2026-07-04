@@ -33,7 +33,7 @@ class RankToolkit(Toolkit[Rank]):
         DEPENDENCIES: List[Operation] = []
         SERVICE_DEPENDENCIES: List[Microservice] = []
 
-        validation_primer: Primer
+        priming_validator: Primer
         identity_service: IdentityService
 
     Provides:
@@ -46,6 +46,6 @@ class RankToolkit(Toolkit[Rank]):
     SERVICE_DEPENDENCIES: List[Microservice] = [IdentityService,]
 
     identity_service: IdentityService = IdentityService()
-    validation_primer: PrimingValidator = PrimingValidator()
+    priming_validator: PrimingValidator = PrimingValidator()
 
         

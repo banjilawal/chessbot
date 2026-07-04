@@ -44,7 +44,7 @@ class TokenCollisionDetector(Detector[Token]):
     """
     _collider: TokenCollider
     _identity_service: IdentityService
-    _validation_primer: PrimingValidator
+    _priming_validator: PrimingValidator
     _bootstrapper: TokenCollisionBootstrapper
 
     
@@ -70,7 +70,7 @@ class TokenCollisionDetector(Detector[Token]):
             attractor: TokenBlueprint
             stream: TokenStackService
             identity_service: IdentityService
-            validation_primer: ValidationPrimer
+            priming_validator: ValidationPrimer
         Returns:
                CollisionReport[Token]
         Raises:
@@ -85,7 +85,7 @@ class TokenCollisionDetector(Detector[Token]):
             target=target,
             target_blueprint=target_blueprint,
             identity_service=self._identity_service,
-            validation_primer=self._validation_primer,
+            priming_validator=self._priming_validator,
         )
         if bootstrap_result.is_failure:
             # Return the collision details in the report.

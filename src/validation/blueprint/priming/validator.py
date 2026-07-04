@@ -53,7 +53,7 @@ class BlueprintValidationPrimer(Validator[Blueprint]):
             candidate: Any,
             blueprint_model: Blueprint,
             blueprint_null_exception: BlueprintNullException | None = None,
-            validation_primer: PrimingValidator | None = None,
+            priming_validator: PrimingValidator | None = None,
     ) -> ValidationResult[Blueprint]:
         """
         Run tests that are common to Blueprint subclasses
@@ -68,7 +68,7 @@ class BlueprintValidationPrimer(Validator[Blueprint]):
             candidate: Any
             blueprint_model: Blueprint
             blueprint_null_exception: BlueprintNullException
-            validation_primer: Validatorprimer
+            priming_validator: Validatorprimer
         Returns:
             ValidationResult[]
         Raises:
@@ -81,11 +81,11 @@ class BlueprintValidationPrimer(Validator[Blueprint]):
         # --- Supply any missing dependencies. ---#
         if blueprint_null_exception is None:
             blueprint_null_exception = BlueprintNullException()
-        if validation_primer is None:
-            validation_primer = PrimingValidator()
+        if priming_validator is None:
+            priming_validator = PrimingValidator()
         
         # Handle the case that, either the null or type check fails.
-        validation_priming_result = validation_primer.validate(
+        validation_priming_result = priming_validator.validate(
             candidate=candidate,
             target_model=blueprint_model,
             null_exception=blueprint_null_exception,

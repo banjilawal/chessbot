@@ -74,7 +74,7 @@ class CoordValidator(Validator[Coord]):
             toolkit = MathToolkit()
         
         # Handle the case that, the candidate does not exist.
-        validation_priming_result = toolkit.validation_primer.build(
+        validation_priming_result = toolkit.priming_validator.build(
             candidate=candidate,
             target_model=Coord,
             context_null_exception=CoordNullException(),

@@ -30,7 +30,7 @@ class ItineraryToolkit(Toolkit[Itinerary]):
         model_type: Itinerary
         token_validator: TokenValidator
         square_validator: SquareValidator
-        validation_primer: ValidationPrimer
+        priming_validator: ValidationPrimer
         null_exception: ItineraryNullException
         token_freedom_analyzer: TokenFreedomAnalyzer
         square_token_relation_analyzer: SquareTokenRelationAnalyzer
@@ -43,7 +43,7 @@ class ItineraryToolkit(Toolkit[Itinerary]):
     model_type: Itinerary
     token_validator: TokenValidator = TokenValidator()
     square_validator: SquareValidator = SquareValidator()
-    validation_primer: PrimingValidator = PrimingValidator()
+    priming_validator: PrimingValidator = PrimingValidator()
     null_exception: ItineraryNullException = ItineraryNullException()
     token_freedom_analyzer: TokenReadinessAnalyzer = TokenReadinessAnalyzer()
     square_token_relation_analyzer: SquareTokenRelationAnalyzer = SquareTokenRelationAnalyzer()

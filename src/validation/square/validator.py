@@ -72,7 +72,7 @@ class SquareValidator(Validator[Square]):
             toolkit = SquareToolkit()
         
         # Handle the case that, the candidate does not exist.
-        validation_priming_result = toolkit.validation_primer.validate(
+        validation_priming_result = toolkit.priming_validator.validate(
             candidate=candidate,
             target_model=Square,
             null_exception=SquareNullException(),

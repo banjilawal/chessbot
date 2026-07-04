@@ -33,7 +33,7 @@ class TokenPopPermitter:
         -   execute(
                     cls,
                     token_stack: TokenStackService,
-                    validation_primer: ValidationPrimer
+                    priming_validator: ValidationPrimer
             ) -> AnalysisResult
 
     Super Class:
@@ -44,7 +44,7 @@ class TokenPopPermitter:
     def execute(
             cls,
             stack: TokenStackService,
-            validation_primer: PrimingValidator | None = None,
+            priming_validator: PrimingValidator | None = None,
     ) -> AnalysisResult:
         """
         Action:
@@ -54,7 +54,7 @@ class TokenPopPermitter:
                 pop.
         Args:
             stack: TokenStackService
-            validation_primer: ValidationPrimer
+            priming_validator: ValidationPrimer
         Returns:
             AnalysisResult
         Raises:
@@ -64,10 +64,10 @@ class TokenPopPermitter:
         method =  f"{cls.__name__}.execute"
         
         # --- Supply any missing dependencies. ---#
-        if validation_primer is None:
-            validation_primer = PrimingValidator()
+        if priming_validator is None:
+            priming_validator = PrimingValidator()
 
-        stack_validation_result = validation_primer.validate(
+        stack_validation_result = priming_validator.validate(
             candidate=stack,
             target_model=TokenStackService,
             null_exception=TokenStackNullException()

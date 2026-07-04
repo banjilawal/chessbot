@@ -37,7 +37,7 @@ class TokenQueryValidationBlueprint(QueryValidationBlueprint[Token]):
         empty_stack_exception: TokenStackEmptyException
         context_null_exception: TokenContextNullException
         context_validator: TokenContextValidator
-        validation_primer: ValidatorPrimer
+        priming_validator: ValidatorPrimer
 
     Provides:
 

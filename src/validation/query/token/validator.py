@@ -47,7 +47,7 @@ class TokenQueryValidator(Validator[TokenQuery]):
     def validate(
             cls,
             candidate: Any,
-            validation_primer: PrimingValidator | None = None,
+            priming_validator: PrimingValidator | None = None,
             context_validator: TokenContextValidator | None = None,
     ) -> ValidationResult[TokenQuery]:
         """
@@ -75,12 +75,12 @@ class TokenQueryValidator(Validator[TokenQuery]):
         """
         method = f"{cls.__name__}._validate"
         
-        if validation_primer is None:
-            validation_primer = PrimingValidator()
+        if priming_validator is None:
+            priming_validator = PrimingValidator()
         if context_validator is None:
             context_validator = TokenContextValidator()
         
-        priming_validation_result = validation_primer.validate(
+        priming_validation_result = priming_validator.validate(
             candidate=candidate,
             target_model=TokenQuery,
             null_exception=TokenQueryNullException(),
@@ -115,7 +115,7 @@ class TokenQueryValidator(Validator[TokenQuery]):
                     ex=context_validation_result.exception
                 )
             )
-        stack_validation_result = priming_validation_result = validation_primer.validate(
+        stack_validation_result = priming_validation_result = priming_validator.validate(
             candidate=query.stack,
             target_model=TokenStackService,
             null_exception=TokenStackNullException(),

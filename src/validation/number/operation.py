@@ -37,7 +37,7 @@ class NumberValidator(Validator[int]):
                     candidate: Any,
                     floor: int = 0,
                     ceiling: int = BOARD_DIMENSION,
-                    validation_primer: ValidationPrimer,
+                    priming_validator: ValidationPrimer,
             ) -> ValidationResult[int]:
     
     Super Class:
@@ -52,7 +52,7 @@ class NumberValidator(Validator[int]):
             candidate: Any,
             floor: int = 0,
             ceiling: int = BOARD_DIMENSION-1,
-            validation_primer: ValidationPrimer | None = None,
+            priming_validator: ValidationPrimer | None = None,
     ) -> ValidationResult[int]:
         """
         Make sure an object is a number within bounds before use.
@@ -65,7 +65,7 @@ class NumberValidator(Validator[int]):
             candidate: Any
             floor: int
             ceiling: int
-            validation_primer: ValidationPrimer
+            priming_validator: ValidationPrimer
         Returns:
             ValidationResult[int]
         Raises:
@@ -76,11 +76,11 @@ class NumberValidator(Validator[int]):
         """
         method = f"{cls.__name__}.validate"
         
-        if validation_primer is None:
-            validation_primer = ValidationPrimer()
+        if priming_validator is None:
+            priming_validator = ValidationPrimer()
         
         # Handle the case that, the candidate does not exist.
-        validation_priming_result = validation_primer.validate(
+        validation_priming_result = priming_validator.validate(
             candidate=candidate,
             target_model=int,
             null_exception=NumberNullException(),

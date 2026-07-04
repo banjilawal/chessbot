@@ -63,7 +63,7 @@ class TokenCollider:
             target: TokenBlueprint
             stream: TokenStackService
             identity_service: IdentityService
-            validation_primer: ValidationPrimer
+            priming_validator: ValidationPrimer
         Returns:
                CollisionReport[Token]
         Raises:

@@ -29,7 +29,7 @@ class BoardTeamBinderToolkit(Toolkit):
         board_validator: BoardService
         schema_service: SchemaService
         identity_service: IdentityService
-        validation_primer: ValidationBootrapper
+        priming_validator: ValidationBootrapper
 
     Provides:
 
@@ -45,7 +45,7 @@ class BoardTeamBinderToolkit(Toolkit):
             board_validator: BoardService | None = None,
             schema_service: SchemaService | None = None,
 
-            validation_primer: PrimingValidator | None = None,
+            priming_validator: PrimingValidator | None = None,
     ):
         """
         Args:
@@ -53,7 +53,7 @@ class BoardTeamBinderToolkit(Toolkit):
             board_validator: BoardService
             schema_service: SchemaService
 
-            validation_primer: ValidationPrimer
+            priming_validator: ValidationPrimer
         """
         super().__init__()
         self._team_service = team_service or TeamService()
@@ -76,5 +76,5 @@ class BoardTeamBinderToolkit(Toolkit):
 
     
     @property
-    def validation_primer(self) -> PrimingValidator:
-        return self._validation_primer
+    def priming_validator(self) -> PrimingValidator:
+        return self._priming_validator

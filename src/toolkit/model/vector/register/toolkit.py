@@ -31,7 +31,7 @@ class VectorRegisterToolkit(Toolkit[VectorRegister]):
         SERVICE_DEPENDENCIES: List[Microservice] = []
 
         vector_operand_validator: VectorOperandValidator
-        validation_primer: ValidationPrimer
+        priming_validator: ValidationPrimer
 
     Provides:
         -   def resolve_dependencies(s -> SearchResult[List[Dict[str, Any]]]:
@@ -40,4 +40,4 @@ class VectorRegisterToolkit(Toolkit[VectorRegister]):
         Toolkit
     """
     vector_operand_validator: VectorOperandValidator = VectorOperandValidator()
-    validation_primer: PrimingValidator = PrimingValidator()
+    priming_validator: PrimingValidator = PrimingValidator()

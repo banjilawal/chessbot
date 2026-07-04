@@ -52,7 +52,7 @@ class TokenDeletionPermitter:
             stack: TokenStackService,
             item_id: Optional[int] = None,
             identity_service: IdentityService | None = None,
-            validation_primer: PrimingValidator | None = None,
+            priming_validator: PrimingValidator | None = None,
     ) -> AnalysisResult:
         """
         Action:
@@ -69,7 +69,7 @@ class TokenDeletionPermitter:
             item_id: int
             stack: TokenStackService
             identity_service: IdentityService
-            validation_primer: ValidationPrimer
+            priming_validator: ValidationPrimer
         Returns:
             AnalysisResult
         Raises:
@@ -81,8 +81,8 @@ class TokenDeletionPermitter:
         # --- Supply any missing dependencies. ---#
         if identity_service is None:
             identity_service = IdentityService()
-        if validation_primer is None:
-            validation_primer = PrimingValidator()
+        if priming_validator is None:
+            priming_validator = PrimingValidator()
         
         id_validation_result = identity_service.validate_id(candidate=id)
         if id_validation_result.is_failure:
@@ -99,7 +99,7 @@ class TokenDeletionPermitter:
             )
 
         
-        stack_validation_result = validation_primer.validate(
+        stack_validation_result = priming_validator.validate(
             candidate=stack,
             target_model=TokenStackService,
             null_exception=TokenStackNullException()

@@ -40,7 +40,7 @@ class Attack:
                     token: Token,
                     square: Square,
                     token_freedom_analyzer: TokenFreedomAnalyzer,
-                    validation_primer: ValidationPrimer,
+                    priming_validator: ValidationPrimer,
             ) -> EventResult:
 
     Super Class:
@@ -51,7 +51,7 @@ class Attack:
     def execute(
             cls,
             report: AttackApproval,
-            validation_primer: PrimingValidator | None = None,
+            priming_validator: PrimingValidator | None = None,
     ) -> EventResult:
         """
         Action:
@@ -66,18 +66,18 @@ class Attack:
             3.  Send the success result.
         Args:
             report: AttackApproval
-            validation_primer: ValidationPrimer
+            priming_validator: ValidationPrimer
        Returns:
             EventResult
         Raises:
         """
         method = f"{cls.__class__.__name__}.execute"
         
-        if validation_primer is None:
-            validation_primer = PrimingValidator()
+        if priming_validator is None:
+            priming_validator = PrimingValidator()
             
         # Handle the case that, the itinerary is not valid.
-        validation_result = validation_primer.validate(
+        validation_result = priming_validator.validate(
             candidate=report,
             target_type=AttackApproval,
             null_ex_cls=AttackEventNullException,

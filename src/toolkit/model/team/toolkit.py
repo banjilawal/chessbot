@@ -33,7 +33,7 @@ class TeamToolkit(Toolkit[Team]):
         board_validator: BoardValidator
         player_validator: PlayerValidator
         identity_service: IdentityService
-        validation_primer: ValidationPrimer
+        priming_validator: ValidationPrimer
 
     Provides:
         -   def resolve_dependencies(s -> SearchResult[List[Dict[str, Any]]]:
@@ -51,4 +51,4 @@ class TeamToolkit(Toolkit[Team]):
     board_validator: BoardValidator = BoardValidator()
     identity_service: IdentityService = IdentityService()
     player_validator: PlayerValidator = PlayerValidator()
-    validation_primer: PrimingValidator = PrimingValidator()
+    priming_validator: PrimingValidator = PrimingValidator()

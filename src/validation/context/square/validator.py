@@ -77,11 +77,11 @@ class SquareContextValidator(ContextValidator[Square]):
             toolkit = SquareContextToolkit()
         
         # handle the case that, priming the validator fails.
-        priming_result = toolkit.context_validation_primer.build(
+        priming_result = toolkit.context_priming_validator.build(
             candidate=candidate,
             context_model=toolkit.context_model_type,
             context_null_exception=toolkit.null_context_exception,
-            validation_primer=toolkit.square_toolkit.validation_primer
+            priming_validator=toolkit.square_toolkit.priming_validator
         )
         if priming_result.is_failure:
             # Send the exception chain on failure.
@@ -194,7 +194,7 @@ class SquareContextValidator(ContextValidator[Square]):
         
         # Certification for the search-by-state.
         if context.state is not None:
-            validation_result = toolkit.square_toolkit.validation_primer.validate(
+            validation_result = toolkit.square_toolkit.priming_validator.validate(
                 candidate=context.state,
                 model_type=SquareState,
                 null_exception=SquareStateNullException()
@@ -215,7 +215,7 @@ class SquareContextValidator(ContextValidator[Square]):
         
         # Certification for the search-by-formation.
         if context.formation is not None:
-            validation_result = toolkit.square_toolkit.validation_primer.validate(
+            validation_result = toolkit.square_toolkit.priming_validator.validate(
                 candidate=context.formation,
                 model_type=Formation,
                 null_exception=FormationNullException()

@@ -12,6 +12,7 @@ from __future__ import annotations
 from typing import List
 
 from detection import HomeSquareDetector
+from err import TokenNullException
 from model import Token
 from operation import Operation
 from toolkit import Toolkit
@@ -43,7 +44,7 @@ class TokenToolkit(Toolkit[Token]):
         coord_validator: CoordValidator
         team_validator: TeamValidator
         rank_service: RankService
-        validation_primer: Primer
+        priming_validator: Primer
         identity_service: IdentityService
 
     Provides:
@@ -52,26 +53,13 @@ class TokenToolkit(Toolkit[Token]):
     Super Class:
         Toolkit
     """
-
-    DEPENDENCIES: List[Operation] = [
-        SquareValidator,
-        CoordValidator,
-        TeamValidator,
-        PrimingValidator,
-        NumberValidator,
-    ]
-    
-    SERVICE_DEPENDENCIES: List[Microservice] = [
-        RankService,
-        FormationService,
-    ]
     home_square_detector: HomeSquareDetector = HomeSquareDetector()
     square_validator: SquareValidator = SquareValidator()
     coord_validator: CoordValidator = CoordValidator()
     team_validator: TeamValidator = TeamValidator()
-    identity_service: IdentityService = IdentityService()
     rank_service: RankService = RankService()
-    validation_primer: PrimingValidator = PrimingValidator()
     number_validator: NumberValidator = NumberValidator()
     blueprint_rank_processor: BlueprintRankProcessor = BlueprintRankProcessor()
     blueprint_home_square_processor: BlueprintHomeSquareProcessor = BlueprintHomeSquareProcessor()
+    null_exception: TokenNullException = TokenNullException()
+    model: Token = Token

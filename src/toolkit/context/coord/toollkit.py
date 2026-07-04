@@ -32,7 +32,7 @@ class CoordContextToolkit(ContextToolkit[Coord]):
         
         context_model_type: CoordContext
         null_context_exception: CoordContextNullException
-        context_validation_primer: ValidationPrimer
+        context_priming_validator: ValidationPrimer
         number_validator: NumberValidator
         
     Provides:

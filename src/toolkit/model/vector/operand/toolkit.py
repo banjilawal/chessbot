@@ -33,7 +33,7 @@ class VectorOperandToolkit(Toolkit[VectorOperand]):
 
         coord_validator: CoordValidator
         vector_validator: VectorValidator
-        validation_primer: ValidationPrimer
+        priming_validator: ValidationPrimer
 
     Provides:
         -   def resolve_dependencies(s -> SearchResult[List[Dict[str, Any]]]:
@@ -43,4 +43,4 @@ class VectorOperandToolkit(Toolkit[VectorOperand]):
     """
     coord_validator: CoordValidator = CoordValidator()
     vector_validator: VectorValidator = VectorValidator()
-    validation_primer: PrimingValidator = PrimingValidator()
+    priming_validator: PrimingValidator = PrimingValidator()

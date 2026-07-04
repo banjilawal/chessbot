@@ -53,7 +53,7 @@ class ContextValidationPrimer(Validator[Context]):
             candidate: Any,
             context_model: Context,
             context_null_exception: ContextNullException | None = None,
-            validation_primer: PrimingValidator | None = None,
+            priming_validator: PrimingValidator | None = None,
     ) -> ValidationResult[Context]:
         """
         Run tests that are common to Context subclasses
@@ -68,7 +68,7 @@ class ContextValidationPrimer(Validator[Context]):
             candidate: Any
             context_model: Context
             context_null_exception: ContextNullException
-            validation_primer: Validatorprimer
+            priming_validator: Validatorprimer
         Returns:
             ValidationResult[]
         Raises:
@@ -81,11 +81,11 @@ class ContextValidationPrimer(Validator[Context]):
         # --- Supply any missing dependencies. ---#
         if context_null_exception is None:
             context_null_exception = ContextNullException()
-        if validation_primer is None:
-            validation_primer = PrimingValidator()
+        if priming_validator is None:
+            priming_validator = PrimingValidator()
         
         # Handle the case that, either the null or type check fails.
-        validation_priming_result = validation_primer.validate(
+        validation_priming_result = priming_validator.validate(
             candidate=candidate,
             target_model=context_model,
             null_exception=context_null_exception,

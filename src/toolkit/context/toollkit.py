@@ -35,7 +35,7 @@ class ContextToolkit(Toolkit[Context]):
         
         context_model_type: Context
         null_context_exception: ContextNullException
-        context_validation_primer: ValidationPrimer
+        context_priming_validator: ValidationPrimer
         
     Provides:
     
@@ -44,4 +44,4 @@ class ContextToolkit(Toolkit[Context]):
     """
     context_model_type: Context = Context
     null_context_exception: ContextNullException = ContextNullException()
-    context_validation_primer: ContextValidationPrimer = ContextValidationPrimer()
+    context_priming_validator: ContextValidationPrimer = ContextValidationPrimer()

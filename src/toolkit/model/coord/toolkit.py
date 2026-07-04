@@ -32,7 +32,7 @@ class CoordToolkit(Toolkit[Coord]):
         SERVICE_DEPENDENCIES: List[Microservice] = []
 
         number_validator: NumberValidator
-        validation_primer: ValidationPrimer
+        priming_validator: ValidationPrimer
 
     Provides:
         -   def resolve_dependencies(s -> SearchResult[List[Dict[str, Any]]]:
@@ -41,4 +41,4 @@ class CoordToolkit(Toolkit[Coord]):
         Toolkit
     """
     number_validator: NumberValidator = NumberValidator()
-    validation_primer: PrimingValidator = PrimingValidator()
+    priming_validator: PrimingValidator = PrimingValidator()

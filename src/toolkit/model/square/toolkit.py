@@ -39,7 +39,7 @@ class SquareToolkit(Toolkit[Square]):
         coord_validator: CoordValidator
         identity_service: IdentityService
         formation_service: FormationService
-        validation_primer: ValidationPrimer
+        priming_validator: ValidationPrimer
         square_collision_detector: SquareCollisionAnalyst
 
     Provides:
@@ -64,6 +64,6 @@ class SquareToolkit(Toolkit[Square]):
     coord_validator: CoordValidator = CoordValidator()
     identity_service: IdentityService = IdentityService()
     formation_service: FormationService = FormationService()
-    validation_primer: PrimingValidator = PrimingValidator()
+    priming_validator: PrimingValidator = PrimingValidator()
     square_collision_detector: SquareCollisionDetector = SquareCollisionDetector()
 

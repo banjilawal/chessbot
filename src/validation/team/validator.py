@@ -73,7 +73,7 @@ class TeamValidator(Validator[Team]):
             toolkit = TeamToolkit()
         
         # Handle the case that, the candidate does not exist.
-        validation_priming_result = toolkit.validation_primer.validate(
+        validation_priming_result = toolkit.priming_validator.validate(
             candidate=candidate,
             target_model=Team,
             null_exception=TeamNullException(),
@@ -106,7 +106,7 @@ class TeamValidator(Validator[Team]):
                 )
             )
         # Handle the case that, team.schema does not pass a validation check.
-        schema_validation_result = toolkit.validation_primer.validate(
+        schema_validation_result = toolkit.priming_validator.validate(
             candidate=candidate,
             target_model=Schema,
             null_exception=SchemaNullException(),

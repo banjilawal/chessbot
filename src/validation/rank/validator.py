@@ -68,7 +68,7 @@ class RankValidator(Validator[Rank]):
             toolkit = RankToolkit()
         
         # Handle the case that, the candidate does not exist.
-        validation_priming_result = toolkit.validation_primer.validate(
+        validation_priming_result = toolkit.priming_validator.validate(
             candidate=candidate,
             target_model=Rank,
             context_null_exception=RankNullException(),
@@ -101,7 +101,7 @@ class RankValidator(Validator[Rank]):
                 )
             )
         # Handle the case that, the rank has the wrong persona.
-        rank_persona_validation_result = toolkit.validation_primer.validate(
+        rank_persona_validation_result = toolkit.priming_validator.validate(
             candidate=rank.persona,
             target_model=Persona,
             context_null_exception=PersonaNullException(),

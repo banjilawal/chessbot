@@ -74,11 +74,11 @@ class TeamBlueprintValidator(BlueprintValidator[Team]):
             toolkit = TeamBlueprintToolkit()
         
         # handle the case that, priming the validator fails.
-        priming_result = toolkit.blueprint_validation_primer.build(
+        priming_result = toolkit.blueprint_priming_validator.build(
             candidate=candidate,
             blueprint_model=toolkit.blueprint_model_type,
             blueprint_null_exception=toolkit.null_blueprint_exception,
-            validator_bootstrapper=toolkit.team_toolkit.validation_primer
+            validator_bootstrapper=toolkit.team_toolkit.priming_validator
         )
         if priming_result.is_failure:
             # Send the exception chain on failure.
@@ -154,7 +154,7 @@ class TeamBlueprintValidator(BlueprintValidator[Team]):
         
         # Certification for the search-by-color target.
         if blueprint.schema is not None:
-            validation_result = toolkit.team_toolkit.validation_primer.validate(
+            validation_result = toolkit.team_toolkit.priming_validator.validate(
                 candidate=blueprint.schema,
                 model_type=Schema,
                 null_exception=SchemaNullException()

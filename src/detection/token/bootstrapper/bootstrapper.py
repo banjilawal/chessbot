@@ -54,7 +54,7 @@ class TokenCollisionBootstrapper:
             target: Optional[Token] | None = None,
             target_blueprint: Optional[TokenBlueprint] | None = None,
             identity_service: IdentityService | None = None,
-            validation_primer: PrimingValidator | None = None,
+            priming_validator: PrimingValidator | None = None,
     ) -> ValidationResult[TokenBlueprint]:
         """
         Report if any schema member has the same id, designation or
@@ -71,7 +71,7 @@ class TokenCollisionBootstrapper:
             target_blueprint: TokenBlueprint
             stream: TokenStackService
             identity_service: IdentityService
-            validation_primer: ValidationPrimer
+            priming_validator: ValidationPrimer
         Returns:
                CollisionReport[Token]
         Raises:
@@ -83,8 +83,8 @@ class TokenCollisionBootstrapper:
         method = f"{cls.__class__.__name__}.execute"
         
         
-        if validation_primer is None:
-            validation_primer = PrimingValidator()
+        if priming_validator is None:
+            priming_validator = PrimingValidator()
         if identity_service is None:
             identity_service = IdentityService()
         
@@ -121,7 +121,7 @@ class TokenCollisionBootstrapper:
                     )
                 )
             )
-        stream_validation_result = validation_primer.validate(
+        stream_validation_result = priming_validator.validate(
             candidate=stream,
             target_type=TokenStackService,
             nullable=TokenStackNullException()
@@ -145,7 +145,7 @@ class TokenCollisionBootstrapper:
 
         return cls._validate_blueprint(
             blueprint=target_blueprint,
-            validation_primer=validation_primer,
+            priming_validator=priming_validator,
             identity_service=identity_service
         )
     
@@ -185,12 +185,12 @@ class TokenCollisionBootstrapper:
     def _validate_blueprint(
             cls, 
             blueprint: TokenBlueprint, 
-            validation_primer: PrimingValidator,
+            priming_validator: PrimingValidator,
             identity_service: IdentityService,
     ) -> ValidationResult[TokenBlueprint]:
         method = f"{cls.__name__}.validate_blueprint"
     
-        validation_result = validation_primer.validate(
+        validation_result = priming_validator.validate(
             candidate=blueprint,
             target_type=TokenBlueprint,
             nullable=TokenBlueprintNullException(),

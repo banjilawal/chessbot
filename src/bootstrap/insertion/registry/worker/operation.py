@@ -34,7 +34,7 @@ class PrimingWorkerRegistration(Primer[Operation]):
                 worker: Operation,
                 registry: WorkerRegistry,
                 null_exception: OperationNullException,
-                validation_primer: ValidationPrimer,
+                priming_validator: ValidationPrimer,
                 registry_entry_name_validator: RegistryEntryNameValidator\,
             ) -> ValidationResult[Operation]:
 
@@ -50,7 +50,7 @@ class PrimingWorkerRegistration(Primer[Operation]):
             worker: Operation,
             registry: WorkerRegistry,
             null_exception: OperationNullException | None = None,
-            validation_primer: ValidationPrimer | None = None,
+            priming_validator: ValidationPrimer | None = None,
             registry_entry_name_validator: RegistryEntryNameValidator| None = None,
     ) -> ValidationResult[Operation]:
         """
@@ -66,7 +66,7 @@ class PrimingWorkerRegistration(Primer[Operation]):
             worker: Operation
             registry: WorkerRegistry
             null_exception: OperationNullException
-            validation_primer: ValidationPrimer
+            priming_validator: ValidationPrimer
             registry_entry_name_validator: RegistryEntryNameValidator
         Returns:
             ValidationResult[Operation]
@@ -78,13 +78,13 @@ class PrimingWorkerRegistration(Primer[Operation]):
         # --- Supply any missing dependencies. ---#
         if null_exception is None:
             null_exception = OperationNullException()
-        if validation_primer is None:
-            validation_primer = ValidationPrimer()
+        if priming_validator is None:
+            priming_validator = ValidationPrimer()
         if registry_entry_name_validator is None:
             registry_entry_name_validator = RegistryEntryNameValidator()
         
         # Handle the case that, the worker is not a valid operation.
-        worker_validation_result = validation_primer.validate(
+        worker_validation_result = priming_validator.validate(
             candidate=worker,
             target_model=Operation,
             null_exception=null_exception,
@@ -103,7 +103,7 @@ class PrimingWorkerRegistration(Primer[Operation]):
         # Handle the case that, either the worker's domain or name are not good strings.
         keys_validation_result = registry_entry_name_validator.validate(
             candidates=[worker.DOMAIN, worker.NAME],
-            validation_primer=validation_primer,
+            priming_validator=priming_validator,
         )
         if keys_validation_result.is_failure:
             # Send the exception chain on failure.

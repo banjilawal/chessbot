@@ -73,11 +73,11 @@ class CoordContextValidator(ContextValidator[Coord]):
             toolkit = CoordContextToolkit()
         
         # handle the case that, priming the validator fails.
-        priming_result = toolkit.context_validation_primer.build(
+        priming_result = toolkit.context_priming_validator.build(
             candidate=candidate,
             context_model=toolkit.context_model_type,
             context_null_exception=toolkit.null_context_exception,
-            validator_bootstrapper=toolkit.coord_toolkit.validation_primer
+            validator_bootstrapper=toolkit.coord_toolkit.priming_validator
         )
         if priming_result.is_failure:
             # Send the exception chain on failure.

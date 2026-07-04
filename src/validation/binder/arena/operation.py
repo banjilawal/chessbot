@@ -79,7 +79,7 @@ class BoardTeamBinderValidator(Validator[BoardBinder]):
             toolkit = BoardTeamBinderToolkit()
             
         # Handle the case that, the candidate does not exist.
-        validation_priming_result = toolkit.validation_primer.validate(
+        validation_priming_result = toolkit.priming_validator.validate(
             candidate=candidate,
             target_model=BoardBinder,
             null_exception=BoardTeamBinderNullException(),

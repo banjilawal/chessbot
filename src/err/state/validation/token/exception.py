@@ -14,11 +14,11 @@ from err import ValidationException
 
 __all__ = [
     # ======================# TOKEN_VALIDATION_EXCEPTION #======================#
-    "TokenValidationException",
+    "TokenValidatorException",
 ]
 
 # ======================# TOKEN_VALIDATION_EXCEPTION #======================#
-class TokenValidationException(ValidationException):
+class TokenValidatorException(ValidationException):
     """
     Role:
         -   Error Tracing

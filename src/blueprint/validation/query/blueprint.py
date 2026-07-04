@@ -37,7 +37,7 @@ class QueryValidationBlueprint(Blueprint[T]):
         context_null_exception: ContextNullException
         empty_stack_exception: StackEmptyException
         context_validator: ContextValidator
-        validation_primer: ValidatorPrimer
+        priming_validator: ValidatorPrimer
         
     Provides:
     
@@ -50,4 +50,4 @@ class QueryValidationBlueprint(Blueprint[T]):
     context_null_exception: ContextNullException
     empty_stack_exception: StackEmptyException
     context_validator: ContextValidator[T]
-    validation_primer: PrimingValidator = PrimingValidator()
+    priming_validator: PrimingValidator = PrimingValidator()

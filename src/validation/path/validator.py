@@ -36,7 +36,7 @@ class PathValidator:
                     candidate,
                     identity_service: IdentityService,
                     square_validator: SquareValidator,
-                    validation_primer: ValidationPrimer,
+                    priming_validator: ValidationPrimer,
             ) -> ValidationResult[Path]
 
     Super Class:
