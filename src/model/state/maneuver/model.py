@@ -26,8 +26,7 @@ class Maneuver:
 
     Attributes:
         token: Token
-        origin: Square
-        destination: Square
+        path: Path
         id: Optional[int]
 
     Provides:

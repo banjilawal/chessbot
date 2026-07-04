@@ -11,12 +11,13 @@ from __future__ import annotations
 
 from typing import cast
 
-from model import Square, Token
+from err import TokenManeuverPermitterException
+from model import Maneuver, Path, Square, Token
 from permitter import TokenPermitter
-from report.approval.maneuver import ManeuverApprovalReport
-from result import AnalysisResult
+from report import ManeuverApprovalReport
+from result import AnalysisResult, MethodResultType
 from toolkit import TokenManeuverToolkit
-from util import LoggingLevelRouter
+from util import IdFactory, LoggingLevelRouter
 
 
 class TokenManeuverPermitter(TokenPermitter):
@@ -81,32 +82,13 @@ class TokenManeuverPermitter(TokenPermitter):
         if readiness_analysis_result.is_failure:
             # Return the exception chain on failure
             return AnalysisResult.failure(
-                ManeuverPermitterException(
+                TokenManeuverPermitterException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    msg=ManeuverPermitterException.MSG,
-                    err_code=ManeuverPermitterException.ERR_CODE,
+                    msg=TokenManeuverPermitterException.MSG,
+                    err_code=TokenManeuverPermitterException.ERR_CODE,
                     mthd_rslt_type=MethodResultType.ANALYSIS_RESULT,
                     ex=readiness_analysis_result.exception,
-                )
-            )
-        # Handle the case that, the token is not free.
-        report = cast(TokenReadinessReport, readiness_analysis_result.payload)
-        if report.token_is_not_ready:
-            # Return the exception chain on failure
-            return AnalysisResult.completed(
-                ManeuverApprovalReport.deny(
-                    exception=ManeuverPermitterException(
-                        cls_mthd=method,
-                        cls_name=cls.__name__,
-                        msg=ManeuverPermitterException.MSG,
-                        err_code=ManeuverPermitterException.ERR_CODE,
-                        mthd_rslt_type=MethodResultType.ANALYSIS_RESULT,
-                        ex=DisabledTokenManeuverException(
-                            msg=DisabledTokenManeuverException.MSG,
-                            err_code=DisabledTokenManeuverException.ERR_CODE,
-                        ),
-                    )
                 )
             )
             
@@ -118,11 +100,11 @@ class TokenManeuverPermitter(TokenPermitter):
         if token_origin_search_result.is_failure:
             # Return the exception chain on failure
             return AnalysisResult.failure(
-                ManeuverPermitterException(
+                TokenManeuverPermitterException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    msg=ManeuverPermitterException.MSG,
-                    err_code=ManeuverPermitterException.ERR_CODE,
+                    msg=TokenManeuverPermitterException.MSG,
+                    err_code=TokenManeuverPermitterException.ERR_CODE,
                     mthd_rslt_type=MethodResultType.ANALYSIS_RESULT,
                     ex=token_origin_search_result.exception,
                 )
@@ -140,11 +122,11 @@ class TokenManeuverPermitter(TokenPermitter):
         if destination_relation_analysis.is_failure:
             # Return the exception chain on failure
             return AnalysisResult.failure(
-                ManeuverPermitterException(
+                TokenManeuverPermitterException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    msg=ManeuverPermitterException.MSG,
-                    err_code=ManeuverPermitterException.ERR_CODE,
+                    msg=TokenManeuverPermitterException.MSG,
+                    err_code=TokenManeuverPermitterException.ERR_CODE,
                     mthd_rslt_type=MethodResultType.ANALYSIS_RESULT,
                     ex=destination_relation_analysis.exception,
                 )
@@ -153,11 +135,11 @@ class TokenManeuverPermitter(TokenPermitter):
         if destination_relation_analysis.is_failure:
             # Return the exception chain on failure
             return AnalysisResult.failure(
-                ManeuverPermitterException(
+                TokenManeuverPermitterException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    msg=ManeuverPermitterException.MSG,
-                    err_code=ManeuverPermitterException.ERR_CODE,
+                    msg=TokenManeuverPermitterException.MSG,
+                    err_code=TokenManeuverPermitterException.ERR_CODE,
                     mthd_rslt_type=MethodResultType.ANALYSIS_RESULT,
                     ex=destination_relation_analysis.exception,
                 )
@@ -167,195 +149,28 @@ class TokenManeuverPermitter(TokenPermitter):
             if square_validation_result.is_failure:
                 # Return the exception chain on failure
                 return AnalysisResult.failure(
-                    ManeuverPermitterException(
+                    TokenManeuverPermitterException(
                         cls_mthd=method,
                         cls_name=cls.__name__,
-                        msg=ManeuverPermitterException.MSG,
-                        err_code=ManeuverPermitterException.ERR_CODE,
+                        msg=TokenManeuverPermitterException.MSG,
+                        err_code=TokenManeuverPermitterException.ERR_CODE,
                         mthd_rslt_type=MethodResultType.ANALYSIS_RESULT,
                         ex=square_validation_result.exception,
                     )
                 )
-        # Handle the case, that the source and destination are the same.
-        if origin == destination:
-            # Return the exception chain on failure
-            return AnalysisResult.failure(
-                ManeuverPermitterException(
-                    cls_mthd=method,
-                    cls_name=cls.__name__,
-                    msg=ManeuverPermitterException.MSG,
-                    err_code=ManeuverPermitterException.ERR_CODE,
-                    mthd_rslt_type=MethodResultType.ANALYSIS_RESULT,
-                    ex=ItinerarySourceEqualsDestinationException(
-                        msg=ItinerarySourceEqualsDestinationException.MSG,
-                        err_code=ItinerarySourceEqualsDestinationException.ERR_CODE,
-                    ),
-                )
-            )
-
-        origin_search_result = token.team.board.squares.search(
-            context=SquareContext(occupant=token)
-        )
-        # Handle the case that, the search is not completed.
-        if origin_search_result.is_failure:
-            # Return the exception chain on failure
-            return AnalysisResult.completed(
-                ManeuverApprovalReport.deny(
-                    exception=ManeuverPermitterException(
-                        cls_mthd=method,
-                        cls_name=cls.__name__,
-                        msg=ManeuverPermitterException.MSG,
-                        err_code=ManeuverPermitterException.ERR_CODE,
-                        mthd_rslt_type=MethodResultType.ANALYSIS_RESULT,
-                        ex=DisabledTokenManeuverException(
-                            msg=DisabledTokenManeuverException.MSG,
-                            err_code=DisabledTokenManeuverException.ERR_CODE,
-                        ),
-                    )
-                )
-            )
-        # Handle the case that, the token is not on the board.
-        if origin_search_result.is_empty:
-            # Return the exception chain on failure
-            return AnalysisResult.completed(
-                ManeuverApprovalReport.deny(
-                    exception=ManeuverPermitterException(
-                        cls_mthd=method,
-                        cls_name=cls.__name__,
-                        msg=ManeuverPermitterException.MSG,
-                        err_code=ManeuverPermitterException.ERR_CODE,
-                        mthd_rslt_type=MethodResultType.ANALYSIS_RESULT,
-                        ex=DisabledTokenManeuverException(
-                            msg=DisabledTokenManeuverException.MSG,
-                            err_code=DisabledTokenManeuverException.ERR_CODE,
-                        ),
-                    )
-                )
-            )
-        path_validation_result =
-        origin_token_relation_result = destination_relation_analyzer.analyze(
-            candidate_primary=origin,
-            candidate_satellite=token,
-        )
-        # Handle the case that, the relation_analysis is not completed.
-        if origin_token_relation_result.is_failure:
-            # Return the exception chain on failure
-            return AnalysisResult.failure(
-                ManeuverPermitterException(
-                    cls_mthd=method,
-                    cls_name=cls.__name__,
-                    msg=ManeuverPermitterException.MSG,
-                    err_code=ManeuverPermitterException.ERR_CODE,
-                    mthd_rslt_type=MethodResultType.ANALYSIS_RESULT,
-                    ex=origin_token_relation_result.exception,
-                )
-            )
-        # Handle the case that, the token does not have a bidirectional relation with its source.
-        origin_relation = cast(RelationReport, origin_token_relation_result.payload)
-        if not origin_relation.fully_exists:
-            # Return the exception chain on failure
-            return AnalysisResult.completed(
-                ManeuverApprovalReport.deny(
-                    exception=ManeuverPermitterException(
-                        cls_mthd=method,
-                        cls_name=cls.__name__,
-                        msg=ManeuverPermitterException.MSG,
-                        err_code=ManeuverPermitterException.ERR_CODE,
-                        mthd_rslt_type=MethodResultType.ANALYSIS_RESULT,
-                        ex=BidirectionalSourceTokenRelationException(
-                            msg=BidirectionalSourceTokenRelationException.MSG,
-                            err_code=BidirectionalSourceTokenRelationException.ERR_CODE,
-                        ),
-                    )
-                )
-            )
-        destination_token_relation_result = destination_relation_analyzer.analyze(
-            candidate_primary=destination,
-            candidate_satellite=token,
-        )
-        # Handle the case that, the relation_analysis is not completed.
-        # Return the exception chain on failure
-        return AnalysisResult.failure(
-            ManeuverPermitterException(
-                cls_mthd=method,
-                cls_name=cls.__name__,
-                msg=ManeuverPermitterException.MSG,
-                err_code=ManeuverPermitterException.ERR_CODE,
-                mthd_rslt_type=MethodResultType.ANALYSIS_RESULT,
-                ex=destination_token_relation_result.exception,
-            )
-        )
-        # Handle the case that, the token does have a bidirectional relation with its source.
-        destination_token_relation_result = cast(RelationReport, destination_token_relation_result.payload)
-        if not destination_relation.does_not_exist:
-            # Send the exception chain on failure.
-            return ValidationResult.failure(
-                ItineraryConsistencyException(
-                    cls_mthd=method,
-                    cls_name=cls.__name__,
-                    msg=ItineraryConsistencyException.MSG,
-                    err_code=ItineraryConsistencyException.ERR_CODE,
-                    ex=BidirectionalSourceTokenRelationException(
-                        msg=BidirectionalSourceTokenRelationException.MSG,
-                        err_code=BidirectionalSourceTokenRelationException.ERR_CODE,
-                    ),
-                )
-            )
-        # --- Forward the work product to the caller. ---#
-        return ValidationResult.success(itinerary)
         
-        id_validation_result = square_validator.validate_id(candidate=id)
-        if id_validation_result.is_failure:
-            # Return the exception chain on failure
-            return AnalysisResult.failure(
-                ManeuverPermitterException(
-                    cls_mthd=method,
-                    cls_name=cls.__name__,
-                    msg=ManeuverPermitterException.MSG,
-                    err_code=ManeuverPermitterException.ERR_CODE,
-                    mthd_rslt_type=MethodResultType.ANALYSIS_RESULT,
-                    ex=id_validation_result.exception,
+        return AnalysisResult.completed(
+            ManeuverApprovalReport.approve(
+                Maneuver(
+                    token=requestor,
+                    path=Path(
+                        origin=origin,
+                        destination=destination,
+                        id=IdFactory.next_id(class_name="Path")
+                    ),
+                    id=IdFactory.next_id(class_name="Maneuver")
                 )
             )
-
-        
-        stack_validation_result = token_freedom_analyzer.build(
-            candidate=stack,
-            target_model=TokenStackService,
-            null_exception=TokenStackNullException()
         )
-        if stack_validation_result.is_failure:
-            # Return the exception chain on failure
-            return AnalysisResult.failure(
-                ManeuverPermitterException(
-                    cls_mthd=method,
-                    cls_name=cls.__name__,
-                    msg=ManeuverPermitterException.MSG,
-                    err_code=ManeuverPermitterException.ERR_CODE,
-                    mthd_rslt_type=MethodResultType.ANALYSIS_RESULT,
-                    ex=stack_validation_result.exception,
-                )
-            )
-        if stack.is_empty:
-            # Return the exception chain on failure
-            return AnalysisResult.completed(
-                DeleteApproval.deny(
-                    exception=ManeuverPermitterException(
-                        cls_mthd=method,
-                        cls_name=cls.__name__,
-                        msg=ManeuverPermitterException.MSG,
-                        err_code=ManeuverPermitterException.ERR_CODE,
-                        mthd_rslt_type=MethodResultType.ANALYSIS_RESULT,
-                        ex=PoppingEmptyTokenStackException(
-                            cls_mthd=method,
-                            cls_name=cls.__name__,
-                            msg=PoppingEmptyTokenStackException.MSG,
-                            err_code=PoppingEmptyTokenStackException.ERR_CODE,
-                        ),
-                    )
-                )
-            )
-        # --- Integrity and performance tests are passed. ---#
-        return AnalysisResult.completed(DeleteApproval.approve(id=item_id, stack=stack))
 
     

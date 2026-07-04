@@ -10,7 +10,7 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Optional
 
-from model import CheckedPath, Path, Token, Path
+from model import CheckedManeuver, Maneuver, Token, Maneuver
 from report import OperationApprovalReport, Permission
 
 
@@ -35,22 +35,22 @@ class ManeuverApprovalReport(OperationApprovalReport):
     Super Class:
         OperationApprovalReport
     """
-    _path: Optional[Path]
+    _maneuver: Optional[Maneuver]
     
     def __init__(
             self,
             permission: Permission,
-            path: Optional[Path] | None = None,
+            maneuver: Optional[Maneuver] | None = None,
             exception: Optional[Exception] | None = None,
             cost: Optional[int] | None = None,
     ):
         super().__init__(exception=exception, permission=permission)
-        self._path = path
+        self._maneuver = maneuver
         self._cost = cost
     
     @property
-    def path(self) -> Optional[Path]:
-        return self._path
+    def maneuver(self) -> Optional[Maneuver]:
+        return self._maneuver
     
     @property
     def cost(self) -> Optional[int]:
@@ -58,7 +58,7 @@ class ManeuverApprovalReport(OperationApprovalReport):
     
     @property
     def is_granted(self) -> bool:
-        return self._path is not None and super().is_granted
+        return self._maneuver is not None and super().is_granted
     
     @property
     def is_denied(self) -> bool:
@@ -68,42 +68,42 @@ class ManeuverApprovalReport(OperationApprovalReport):
     @classmethod
     def approve(
             cls, 
-            path: Path,
+            maneuver: Maneuver,
             cost: Optional[int] | None = None,
     ) -> ManeuverApprovalReport:
         return cls(
             cost=cost,
-            path=path,
+            maneuver=maneuver,
             permission=Permission.GRANTED,
         )
     
     @classmethod
     def approve_maneuver(
             cls,
-            maneuver: Path,
+            maneuver: Maneuver,
     ) -> ManeuverApprovalReport:
         return cls(
-            path=maneuver,
+            maneuver=maneuver,
             permission=Permission.GRANTED,
         )
     
     @classmethod
     def approve_king_attack(
             cls,
-            king_attack: CheckedPath,
+            king_attack: CheckedManeuver,
     ) -> ManeuverApprovalReport:
         return cls(
-            path=king_attack,
+            maneuver=king_attack,
             permission=Permission.GRANTED,
         )
     
     @classmethod
     def approve_combatant_attack(
             cls,
-            combatant_attack: CheckedPath,
+            combatant_attack: CheckedManeuver,
     ) -> ManeuverApprovalReport:
         return cls(
-            path=combatant_attack,
+            maneuver=combatant_attack,
             permission=Permission.GRANTED,
         )
     

@@ -75,15 +75,13 @@ class TokenReadinessAnalyzer(Analyzer):
             
         analysis_result = bootstrapper.execute(token=token,)
         if analysis_result.is_failure:
-            return AnalysisResult.completed(
-                TokenReadinessReport.inactive(
-                    exception=TokenReadinessAnalyzerException(
-                        cls_mthd=method,
-                        cls_name=cls.__name__,
-                        msg=TokenReadinessAnalyzerException.MSG,
-                        err_code=TokenReadinessAnalyzerException.ERR_CODE,
-                        ex=analysis_result.exception
-                    )
+            return AnalysisResult.failure(
+                exception=TokenReadinessAnalyzerException(
+                    cls_mthd=method,
+                    cls_name=cls.__name__,
+                    msg=TokenReadinessAnalyzerException.MSG,
+                    err_code=TokenReadinessAnalyzerException.ERR_CODE,
+                    ex=analysis_result.exception
                 )
             )
         return AnalysisResult.completed(TokenReadinessReport.ready(token=token))

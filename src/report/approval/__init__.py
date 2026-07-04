@@ -11,6 +11,7 @@ version: 1.0.1
 
 # Packages
 from .deletion import *
+from .maneuver import *
 from .pop import *
 from .push import *
 from .promotion import *
