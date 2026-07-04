@@ -12,11 +12,11 @@ from err import ContextValidatorException
 from result import MethodResultType
 
 __all__ = [
-    # ======================# FORMATION_CONTEXT_VALIDATION_FAILURE #======================#
+    # ======================# FORMATION_CONTEXT_VALIDATOR_FAILURE #======================#
     "FormationContextValidatorException",
 ]
 
-# ======================# FORMATION_CONTEXT_VALIDATION_FAILURE #======================#
+# ======================# FORMATION_CONTEXT_VALIDATOR_FAILURE #======================#
 class FormationContextValidatorException(ContextValidatorException):
     """
     Role:
@@ -41,7 +41,7 @@ class FormationContextValidatorException(ContextValidatorException):
         ContextValidatorException
     """
     MSG = "Candidate did not pass a FormationContextValidator test."
-    ERR_CODE = "FORMATION_CONTEXT_VALIDATION_FAILURE"
+    ERR_CODE = "FORMATION_CONTEXT_VALIDATOR_FAILURE"
     
     def __init__(
             self,

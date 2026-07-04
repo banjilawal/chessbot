@@ -16,4 +16,4 @@ from .insertion import *
 from .validation import *
 
 # Modules
-from .operation import Primer
+from .bootstrapper import Primer

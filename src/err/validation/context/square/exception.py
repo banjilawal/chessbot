@@ -12,11 +12,11 @@ from err import ContextValidatorException
 from result import MethodResultType
 
 __all__ = [
-    # ======================# SQUARE_CONTEXT_VALIDATION_FAILURE #======================#
+    # ======================# SQUARE_CONTEXT_VALIDATOR_FAILURE #======================#
     "SquareContextValidatorException",
 ]
 
-# ======================# SQUARE_CONTEXT_VALIDATION_FAILURE #======================#
+# ======================# SQUARE_CONTEXT_VALIDATOR_FAILURE #======================#
 class SquareContextValidatorException(ContextValidatorException):
     """
     Role:
@@ -41,7 +41,7 @@ class SquareContextValidatorException(ContextValidatorException):
         ContextValidatorException
     """
     MSG = "Candidate did not pass a SquareContextValidator test."
-    ERR_CODE = "SQUARE_CONTEXT_VALIDATION_FAILURE"
+    ERR_CODE = "SQUARE_CONTEXT_VALIDATOR_FAILURE"
     
     def __init__(
             self,

@@ -14,11 +14,11 @@ from err import ContextValidatorException
 from result import MethodResultType
 
 __all__ = [
-    # ======================# PERSONA_CONTEXT_VALIDATION_FAILURE #======================#
+    # ======================# PERSONA_CONTEXT_VALIDATOR_FAILURE #======================#
     "PersonaContextValidatorException",
 ]
 
-# ======================# PERSONA_CONTEXT_VALIDATION_FAILURE #======================#
+# ======================# PERSONA_CONTEXT_VALIDATOR_FAILURE #======================#
 class PersonaContextValidatorException(ContextValidatorException):
     """
     Role:
@@ -43,7 +43,7 @@ class PersonaContextValidatorException(ContextValidatorException):
         ContextValidatorException
     """
     MSG = "Candidate did not pass a PersonaContextValidator test."
-    ERR_CODE = "PERSONA_CONTEXT_VALIDATION_FAILURE"
+    ERR_CODE = "PERSONA_CONTEXT_VALIDATOR_FAILURE"
     
     def __init__(
             self,

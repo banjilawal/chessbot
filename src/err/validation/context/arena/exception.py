@@ -12,11 +12,11 @@ from err import ContextValidatorException
 from result import MethodResultType
 
 __all__ = [
-    # ======================# ARENA_CONTEXT_VALIDATION_FAILURE #======================#
+    # ======================# ARENA_CONTEXT_VALIDATOR_FAILURE #======================#
     "ArenaContextValidatorException",
 ]
 
-# ======================# ARENA_CONTEXT_VALIDATION_FAILURE #======================#
+# ======================# ARENA_CONTEXT_VALIDATOR_FAILURE #======================#
 class ArenaContextValidatorException(ContextValidatorException):
     """
     Role:
@@ -41,7 +41,7 @@ class ArenaContextValidatorException(ContextValidatorException):
         ContextValidatorException
     """
     MSG = "Candidate did not pass a ArenaContextValidator test."
-    ERR_CODE = "ARENA_CONTEXT_VALIDATION_FAILURE"
+    ERR_CODE = "ARENA_CONTEXT_VALIDATOR_FAILURE"
     
     def __init__(
             self,

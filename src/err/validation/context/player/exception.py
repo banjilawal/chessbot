@@ -12,11 +12,11 @@ from err import ContextValidatorException
 from result import MethodResultType
 
 __all__ = [
-    # ======================# PLAYER_CONTEXT_VALIDATION_FAILURE #======================#
+    # ======================# PLAYER_CONTEXT_VALIDATOR_FAILURE #======================#
     "PlayerContextValidatorException",
 ]
 
-# ======================# PLAYER_CONTEXT_VALIDATION_FAILURE #======================#
+# ======================# PLAYER_CONTEXT_VALIDATOR_FAILURE #======================#
 class PlayerContextValidatorException(ContextValidatorException):
     """
     Role:
@@ -41,7 +41,7 @@ class PlayerContextValidatorException(ContextValidatorException):
         ContextValidatorException
     """
     MSG = "Candidate did not pass a PlayerContextValidator test."
-    ERR_CODE = "PLAYER_CONTEXT_VALIDATION_FAILURE"
+    ERR_CODE = "PLAYER_CONTEXT_VALIDATOR_FAILURE"
     
     def __init__(
             self,

@@ -12,11 +12,11 @@ from err import ContextValidatorException
 from result import MethodResultType
 
 __all__ = [
-    # ======================# TOKEN_CONTEXT_VALIDATION_FAILURE #======================#
+    # ======================# TOKEN_CONTEXT_VALIDATOR_FAILURE #======================#
     "TokenContextValidatorException",
 ]
 
-# ======================# TOKEN_CONTEXT_VALIDATION_FAILURE #======================#
+# ======================# TOKEN_CONTEXT_VALIDATOR_FAILURE #======================#
 class TokenContextValidatorException(ContextValidatorException):
     """
     Role:
@@ -41,7 +41,7 @@ class TokenContextValidatorException(ContextValidatorException):
         ContextValidatorException
     """
     MSG = "Candidate did not pass a TokenContextValidator test."
-    ERR_CODE = "TOKEN_CONTEXT_VALIDATION_FAILURE"
+    ERR_CODE = "TOKEN_CONTEXT_VALIDATOR_FAILURE"
     
     def __init__(
             self,

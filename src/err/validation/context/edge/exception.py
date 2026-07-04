@@ -12,11 +12,11 @@ from err import ContextValidatorException
 from result import MethodResultType
 
 __all__ = [
-    # ======================# EDGE_CONTEXT_VALIDATION_FAILURE #======================#
+    # ======================# EDGE_CONTEXT_VALIDATOR_FAILURE #======================#
     "EdgeContextValidatorException",
 ]
 
-# ======================# EDGE_CONTEXT_VALIDATION_FAILURE #======================#
+# ======================# EDGE_CONTEXT_VALIDATOR_FAILURE #======================#
 class EdgeContextValidatorException(ContextValidatorException):
     """
     Role:
@@ -41,7 +41,7 @@ class EdgeContextValidatorException(ContextValidatorException):
         ContextValidatorException
     """
     MSG = "Candidate did not pass a EdgeContextValidator test."
-    ERR_CODE = "EDGE_CONTEXT_VALIDATION_FAILURE"
+    ERR_CODE = "EDGE_CONTEXT_VALIDATOR_FAILURE"
     
     def __init__(
             self,

@@ -1,7 +1,7 @@
 # src/bootstrap/assembly/board/operation.py
 
 """
-Module: operation.priming.assembly.board.operation
+Module: bootstrap.assembly.board.operation
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

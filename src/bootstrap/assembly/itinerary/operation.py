@@ -1,7 +1,7 @@
 # src/bootstrap/assembly/coord/operation.py
 
 """
-Module: operation.priming.assembly.coord.operation
+Module: bootstrap.assembly.coord.operation
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

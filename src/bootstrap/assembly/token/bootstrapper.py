@@ -1,7 +1,7 @@
-# src/bootstrap/assembly/path/operation.py
+# src/bootstrap/assembly/token/operation.py
 
 """
-Module: operation.priming.assembly.path.operation
+Module: bootstrap.assembly.token.operation
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -11,30 +11,30 @@ from __future__ import annotations
 
 from typing import List
 
-from blueprint import PathBlueprint
+from blueprint import TokenBlueprint
 from controller import WorkerRegistryController
 from report import CollisionReport
-from toolkit import PathToolkit
+from toolkit import TokenToolkit
 from search import SquareNotFoundException
 from operation import AssemblyPrimer
-from err import PathAssemblyPrimerException
+from err import TokenAssemblyPrimerException
 from result import AnalysisResult, SearchResult, ValidationResult
-from model import OpeningSquare, SquareContext, Path
+from model import OpeningSquare, SquareContext, Token
 from util import IdFactory, LoggingLevelRouter
 
 
-class PathAssemblyPrimer(AssemblyPrimer[Path]):
-    NAME = "path_assembly_primer"
+class TokenAssemblyPrimer(AssemblyPrimer[Token]):
+    NAME = "token_assembly_primer"
     
     @classmethod
     @LoggingLevelRouter.monitor
     def execute(
             cls,
-            blueprint: PathBlueprint,
-            toolkit: PathToolkit | None = None
-    ) -> ValidationResult[PathBlueprint]:
+            blueprint: TokenBlueprint,
+            toolkit: TokenToolkit | None = None
+    ) -> ValidationResult[TokenBlueprint]:
         """
-        Verify a PathBlueprint and fill before its used.
+        Verify a TokenBlueprint and fill before its used.
 
         Action:
             1.  Send an exception chain in the ValidationResult if any following occurs:
@@ -45,18 +45,18 @@ class PathAssemblyPrimer(AssemblyPrimer[Path]):
             2.  Otherwise ,create a new Blueprint including the Rank and OpeningSquare.
             2.  Send the success result.
         Args:
-            blueprint: PathBlueprint
-            toolkit: PathToolkit
+            blueprint: TokenBlueprint
+            toolkit: TokenToolkit
         Returns:
             ValidationResult[Blueprint]
         Raises:
-            PrimingPathAssemblyException
+            PrimingTokenAssemblyException
         """
         method = f"{cls.__name__}.execute"
         
         # --- Supply any missing dependencies. ---#
         if toolkit is None:
-            toolkit = PathToolkit()
+            toolkit = TokenToolkit()
             
         # Handle the case that, a blueprint value is
         blueprint_validation_result = cls._run_validations(
@@ -66,11 +66,11 @@ class PathAssemblyPrimer(AssemblyPrimer[Path]):
         if blueprint_validation_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                PathAssemblyPrimerException(
+                TokenAssemblyPrimerException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    msg=PathAssemblyPrimerException.MSG,
-                    err_code=PathAssemblyPrimerException.ERR_CODE,
+                    msg=TokenAssemblyPrimerException.MSG,
+                    err_code=TokenAssemblyPrimerException.ERR_CODE,
                     ex=blueprint_validation_result.exception,
                 )
             )
@@ -81,11 +81,11 @@ class PathAssemblyPrimer(AssemblyPrimer[Path]):
         if collision_analysis_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                PathAssemblyPrimerException(
+                TokenAssemblyPrimerException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    msg=PathAssemblyPrimerException.MSG,
-                    err_code=PathAssemblyPrimerException.ERR_CODE,
+                    msg=TokenAssemblyPrimerException.MSG,
+                    err_code=TokenAssemblyPrimerException.ERR_CODE,
                     ex=blueprint_validation_result.exception,
                 )
             )
@@ -96,11 +96,11 @@ class PathAssemblyPrimer(AssemblyPrimer[Path]):
         if opening_square_discovery_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                PathAssemblyPrimerException(
+                TokenAssemblyPrimerException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    msg=PathAssemblyPrimerException.MSG,
-                    err_code=PathAssemblyPrimerException.ERR_CODE,
+                    msg=TokenAssemblyPrimerException.MSG,
+                    err_code=TokenAssemblyPrimerException.ERR_CODE,
                     ex=blueprint_validation_result.exception,
                 )
             )
@@ -111,17 +111,17 @@ class PathAssemblyPrimer(AssemblyPrimer[Path]):
         if rank_assembly_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                PathAssemblyPrimerException(
+                TokenAssemblyPrimerException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    msg=PathAssemblyPrimerException.MSG,
-                    err_code=PathAssemblyPrimerException.ERR_CODE,
+                    msg=TokenAssemblyPrimerException.MSG,
+                    err_code=TokenAssemblyPrimerException.ERR_CODE,
                     ex=rank_assembly_result.exception,
                 )
             )
         # --- Forward the work product to the caller. ---#
         return ValidationResult.success(
-            PathBlueprint(
+            TokenBlueprint(
                 team=blueprint.team,
                 formation=blueprint.formation,
                 rank=rank_assembly_result.payload,
@@ -134,11 +134,11 @@ class PathAssemblyPrimer(AssemblyPrimer[Path]):
     @LoggingLevelRouter.monitor
     def _run_validations(
             cls,
-            blueprint: PathBlueprint,
-            toolkit: PathToolkit,
-    ) -> ValidationResult[PathBlueprint]:
+            blueprint: TokenBlueprint,
+            toolkit: TokenToolkit,
+    ) -> ValidationResult[TokenBlueprint]:
         """
-        Verify a PathBlueprint and fill before its used.
+        Verify a TokenBlueprint and fill before its used.
 
         Action:
             1.  Send an exception chain in the ValidationResult if any following occurs:
@@ -148,12 +148,12 @@ class PathAssemblyPrimer(AssemblyPrimer[Path]):
             2.  Otherwise ,create a new Blueprint including the certified id.
             2.  Send the success result.
         Args:
-            blueprint: PathBlueprint
-            toolkit: PathToolkit
+            blueprint: TokenBlueprint
+            toolkit: TokenToolkit
         Returns:
             ValidationResult[Blueprint]
         Raises:
-            PrimingPathAssemblyException
+            PrimingTokenAssemblyException
         """
         method = f"{cls.__name__}._run_validations"
         
@@ -165,11 +165,11 @@ class PathAssemblyPrimer(AssemblyPrimer[Path]):
         if id_validation_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                PathAssemblyPrimerException(
+                TokenAssemblyPrimerException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    msg=PathAssemblyPrimerException.MSG,
-                    err_code=PathAssemblyPrimerException.ERR_CODE,
+                    msg=TokenAssemblyPrimerException.MSG,
+                    err_code=TokenAssemblyPrimerException.ERR_CODE,
                     ex=id_validation_result.exception,
                 )
             )
@@ -180,11 +180,11 @@ class PathAssemblyPrimer(AssemblyPrimer[Path]):
         if team_validation.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                PathAssemblyPrimerException(
+                TokenAssemblyPrimerException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    msg=PathAssemblyPrimerException.MSG,
-                    err_code=PathAssemblyPrimerException.ERR_CODE,
+                    msg=TokenAssemblyPrimerException.MSG,
+                    err_code=TokenAssemblyPrimerException.ERR_CODE,
                     ex=team_validation.exception,
                 )
             )
@@ -195,17 +195,17 @@ class PathAssemblyPrimer(AssemblyPrimer[Path]):
         if formation_validation.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                PathAssemblyPrimerException(
+                TokenAssemblyPrimerException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    msg=PathAssemblyPrimerException.MSG,
-                    err_code=PathAssemblyPrimerException.ERR_CODE,
+                    msg=TokenAssemblyPrimerException.MSG,
+                    err_code=TokenAssemblyPrimerException.ERR_CODE,
                     ex=formation_validation.exception,
                 )
             )
-        # --- Create a new PathBlueprint with the id, then send the success result. ---#
+        # --- Create a new TokenBlueprint with the id, then send the success result. ---#
         return ValidationResult.success(
-            PathBlueprint(
+            TokenBlueprint(
                 team=blueprint.team,
                 formation=blueprint.formation,
                 id=id_validation_result.payload,
@@ -215,8 +215,8 @@ class PathAssemblyPrimer(AssemblyPrimer[Path]):
     @classmethod
     def _verify_id(
             cls,
-            blueprint: PathBlueprint,
-            toolkit: PathToolkit
+            blueprint: TokenBlueprint,
+            toolkit: TokenToolkit
     ) -> ValidationResult[int]:
         """
         Verify the id if it already exists or create a new one.
@@ -226,28 +226,28 @@ class PathAssemblyPrimer(AssemblyPrimer[Path]):
                 is not certified as safe.
             2.  Otherwise, send the success result.
         Args:
-            blueprint: PathBlueprint
-            toolkit: PathToolkit
+            blueprint: TokenBlueprint
+            toolkit: TokenToolkit
         Returns:
             ValidationResult[int]
         Raises:
-            PrimingPathAssemblyException
+            PrimingTokenAssemblyException
         """
         method = f"{cls.__name__}._verify_id"
         
         if blueprint.id is None:
-            return ValidationResult.success(IdFactory.next_id(class_name="Path"))
+            return ValidationResult.success(IdFactory.next_id(class_name="Token"))
         
         if blueprint.id is not None:
             id_validation = toolkit.identity_service.validate_id(blueprint.id)
             if id_validation.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
-                    PathAssemblyPrimerException(
+                    TokenAssemblyPrimerException(
                         cls_mthd=method,
                         cls_name=cls.__name__,
-                        msg=PathAssemblyPrimerException.MSG,
-                        err_code=PathAssemblyPrimerException.ERR_CODE,
+                        msg=TokenAssemblyPrimerException.MSG,
+                        err_code=TokenAssemblyPrimerException.ERR_CODE,
                         ex=id_validation.exception,
                     )
                 )
@@ -256,7 +256,7 @@ class PathAssemblyPrimer(AssemblyPrimer[Path]):
         
     @classmethod
     @LoggingLevelRouter.monitor
-    def _run_collision_analysis(cls, blueprint: PathBlueprint,) -> AnalysisResult[CollisionReport]:
+    def _run_collision_analysis(cls, blueprint: TokenBlueprint,) -> AnalysisResult[CollisionReport]:
         """
         Verify none of the blueprint values have already been used.
 
@@ -266,11 +266,11 @@ class PathAssemblyPrimer(AssemblyPrimer[Path]):
                     -   A collision occurred.
             2.  Otherwise, forward the success result.
         Args:
-            blueprint: PathBlueprint
+            blueprint: TokenBlueprint
         Returns:
             ValidationResult[Blueprint]
         Raises:
-            PrimingPathAssemblyException
+            PrimingTokenAssemblyException
         """
         method = f"{cls.__name__}._run_collision_analysis"
         
@@ -281,22 +281,22 @@ class PathAssemblyPrimer(AssemblyPrimer[Path]):
         if collision_analysis_result.is_failure:
             # Send the exception chain on failure.
             return AnalysisResult.failure(
-                PathAssemblyPrimerException(
+                TokenAssemblyPrimerException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    msg=PathAssemblyPrimerException.MSG,
-                    err_code=PathAssemblyPrimerException.ERR_CODE,
+                    msg=TokenAssemblyPrimerException.MSG,
+                    err_code=TokenAssemblyPrimerException.ERR_CODE,
                     ex=collision_analysis_result.exception,
                 )
             )
         if collision_analysis_result.payload.collision_exists:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                PathAssemblyPrimerException(
+                TokenAssemblyPrimerException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    msg=PathAssemblyPrimerException.MSG,
-                    err_code=PathAssemblyPrimerException.ERR_CODE,
+                    msg=TokenAssemblyPrimerException.MSG,
+                    err_code=TokenAssemblyPrimerException.ERR_CODE,
                     ex=collision_analysis_result.payload.exception,
                 )
             )
@@ -307,10 +307,10 @@ class PathAssemblyPrimer(AssemblyPrimer[Path]):
     @LoggingLevelRouter.monitor
     def _opening_square_discovery(
             cls,
-            blueprint: PathBlueprint,
+            blueprint: TokenBlueprint,
     ) -> SearchResult[List[OpeningSquare]]:
         """
-        Find the path's opening square.
+        Find the token's opening square.
 
         Action:
             1.  Send an exception chain in the AnalysisResult if any following occurs:
@@ -318,12 +318,12 @@ class PathAssemblyPrimer(AssemblyPrimer[Path]):
                     -   The opening_square is not found.
             2.  Otherwise, forward the success result.
         Args:
-            blueprint: PathBlueprint
-            toolkit: PathToolkit
+            blueprint: TokenBlueprint
+            toolkit: TokenToolkit
         Returns:
             SearchResult[List[OpeningSquare]]
         Raises:
-            PrimingPathAssemblyException
+            PrimingTokenAssemblyException
         """
         method = f"{cls.__name__}._opening_square_discovery"
         
@@ -334,11 +334,11 @@ class PathAssemblyPrimer(AssemblyPrimer[Path]):
         if square_search_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                PathAssemblyPrimerException(
+                TokenAssemblyPrimerException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    msg=PathAssemblyPrimerException.MSG,
-                    err_code=PathAssemblyPrimerException.ERR_CODE,
+                    msg=TokenAssemblyPrimerException.MSG,
+                    err_code=TokenAssemblyPrimerException.ERR_CODE,
                     ex=square_search_result.exception,
                 )
             )
@@ -346,11 +346,11 @@ class PathAssemblyPrimer(AssemblyPrimer[Path]):
         if square_search_result.is_empty:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                PathAssemblyPrimerException(
+                TokenAssemblyPrimerException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    msg=PathAssemblyPrimerException.MSG,
-                    err_code=PathAssemblyPrimerException.ERR_CODE,
+                    msg=TokenAssemblyPrimerException.MSG,
+                    err_code=TokenAssemblyPrimerException.ERR_CODE,
                     ex=SquareNotFoundException(
                         msg=SquareNotFoundException.MSG,
                         err_code=SquareNotFoundException.ERR_CODE,
@@ -362,4 +362,4 @@ class PathAssemblyPrimer(AssemblyPrimer[Path]):
 
 
 # Register the operation.
-WorkerRegistryController.register_worker(worker=PathAssemblyPrimer)
+WorkerRegistryController.register_worker(worker=TokenAssemblyPrimer)

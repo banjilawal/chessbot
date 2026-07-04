@@ -12,11 +12,11 @@ from err import ContextValidatorException
 from result import MethodResultType
 
 __all__ = [
-    # ======================# TEAM_CONTEXT_VALIDATION_FAILURE #======================#
+    # ======================# TEAM_CONTEXT_VALIDATOR_FAILURE #======================#
     "TeamContextValidatorException",
 ]
 
-# ======================# TEAM_CONTEXT_VALIDATION_FAILURE #======================#
+# ======================# TEAM_CONTEXT_VALIDATOR_FAILURE #======================#
 class TeamContextValidatorException(ContextValidatorException):
     """
     Role:
@@ -41,7 +41,7 @@ class TeamContextValidatorException(ContextValidatorException):
         ContextValidatorException
     """
     MSG = "Candidate did not pass a TeamContextValidator test."
-    ERR_CODE = "TEAM_CONTEXT_VALIDATION_FAILURE"
+    ERR_CODE = "TEAM_CONTEXT_VALIDATOR_FAILURE"
     
     def __init__(
             self,

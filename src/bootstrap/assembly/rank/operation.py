@@ -1,7 +1,7 @@
 # src/bootstrap/assembly/rank/operation.py
 
 """
-Module: operation.priming.assembly.rank.operation
+Module: bootstrap.assembly.rank.operation
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

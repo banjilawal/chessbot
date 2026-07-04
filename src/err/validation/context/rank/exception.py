@@ -12,11 +12,11 @@ from err import ContextValidatorException
 from result import MethodResultType
 
 __all__ = [
-    # ======================# RANK_CONTEXT_VALIDATION_FAILURE #======================#
+    # ======================# RANK_CONTEXT_VALIDATOR_FAILURE #======================#
     "RankContextValidatorException",
 ]
 
-# ======================# RANK_CONTEXT_VALIDATION_FAILURE #======================#
+# ======================# RANK_CONTEXT_VALIDATOR_FAILURE #======================#
 class RankContextValidatorException(ContextValidatorException):
     """
     Role:
@@ -41,7 +41,7 @@ class RankContextValidatorException(ContextValidatorException):
         ContextValidatorException
     """
     MSG = "Candidate did not pass a RankContextValidator test."
-    ERR_CODE = "RANK_CONTEXT_VALIDATION_FAILURE"
+    ERR_CODE = "RANK_CONTEXT_VALIDATOR_FAILURE"
     
     def __init__(
             self,

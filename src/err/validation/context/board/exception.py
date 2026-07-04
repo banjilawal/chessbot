@@ -12,11 +12,11 @@ from err import ContextValidatorException
 from result import MethodResultType
 
 __all__ = [
-    # ======================# BOARD_CONTEXT_VALIDATION_FAILURE #======================#
+    # ======================# BOARD_CONTEXT_VALIDATOR_FAILURE #======================#
     "BoardContextValidatorException",
 ]
 
-# ======================# BOARD_CONTEXT_VALIDATION_FAILURE #======================#
+# ======================# BOARD_CONTEXT_VALIDATOR_FAILURE #======================#
 class BoardContextValidatorException(ContextValidatorException):
     """
     Role:
@@ -41,7 +41,7 @@ class BoardContextValidatorException(ContextValidatorException):
         ContextValidatorException
     """
     MSG = "Candidate did not pass a BoardContextValidator test."
-    ERR_CODE = "BOARD_CONTEXT_VALIDATION_FAILURE"
+    ERR_CODE = "BOARD_CONTEXT_VALIDATOR_FAILURE"
     
     def __init__(
             self,

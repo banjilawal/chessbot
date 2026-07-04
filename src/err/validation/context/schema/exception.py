@@ -12,11 +12,11 @@ from err import ContextValidatorException
 from result import MethodResultType
 
 __all__ = [
-    # ======================# SCHEMA_CONTEXT_VALIDATION_FAILURE #======================#
+    # ======================# SCHEMA_CONTEXT_VALIDATOR_FAILURE #======================#
     "SchemaContextValidatorException",
 ]
 
-# ======================# SCHEMA_CONTEXT_VALIDATION_FAILURE #======================#
+# ======================# SCHEMA_CONTEXT_VALIDATOR_FAILURE #======================#
 class SchemaContextValidatorException(ContextValidatorException):
     """
     Role:
@@ -41,7 +41,7 @@ class SchemaContextValidatorException(ContextValidatorException):
         ContextValidatorException
     """
     MSG = "Candidate did not pass a SchemaContextValidator test."
-    ERR_CODE = "SCHEMA_CONTEXT_VALIDATION_FAILURE"
+    ERR_CODE = "SCHEMA_CONTEXT_VALIDATOR_FAILURE"
     
     def __init__(
             self,

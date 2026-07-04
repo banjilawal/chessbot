@@ -12,11 +12,11 @@ from err import ContextValidatorException
 from result import MethodResultType
 
 __all__ = [
-    # ======================# HOSTAGE_CONTEXT_VALIDATION_FAILURE #======================#
+    # ======================# HOSTAGE_CONTEXT_VALIDATOR_FAILURE #======================#
     "HostageContextValidatorException",
 ]
 
-# ======================# HOSTAGE_CONTEXT_VALIDATION_FAILURE #======================#
+# ======================# HOSTAGE_CONTEXT_VALIDATOR_FAILURE #======================#
 class HostageContextValidatorException(ContextValidatorException):
     """
     Role:
@@ -41,7 +41,7 @@ class HostageContextValidatorException(ContextValidatorException):
         ContextValidatorException
     """
     MSG = "Candidate did not pass a HostageContextValidator test."
-    ERR_CODE = "HOSTAGE_CONTEXT_VALIDATION_FAILURE"
+    ERR_CODE = "HOSTAGE_CONTEXT_VALIDATOR_FAILURE"
     
     def __init__(
             self,

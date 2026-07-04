@@ -1,13 +1,13 @@
 # src/bootstrap/assembly/rank/__init__.py
 
 """
-Module: operation.priming.assembly.rank.__init__
+Module: bootstrap.assembly.rank.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
 """
 
-# =========== OPERATION.PRIMING.ASSEMBLY.RANK PACKAGE ===========#
+# =========== BOOTSTRAP.ASSEMBLY.RANK PACKAGE ===========#
 
 # Packages
 

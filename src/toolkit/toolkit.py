@@ -18,7 +18,7 @@ from microservice import IdentityService, Microservice
 from operation import Operation
 from result import SearchResult
 from util import LoggingLevelRouter
-from validation import PrimingValidator
+from validation import BlueprintIdValidator, PrimingValidator
 
 T = TypeVar("T")
 
@@ -41,6 +41,7 @@ class Toolkit(ABC, Generic[T]):
         
         identity_service: IdentityService
         priming_validator: PrimingValidator
+        blueprint_id_validator: BlueprintIdValidator
         
         _entries: Dict[str, Any]
     
@@ -54,8 +55,10 @@ class Toolkit(ABC, Generic[T]):
     DEPENDENCIES: List[Operation] = []
     SERVICE_DEPENDENCIES: List[Microservice] = []
     
+
     identity_service: IdentityService = IdentityService()
     priming_validator: PrimingValidator = PrimingValidator()
+    blueprint_id_validator: BlueprintIdValidator = BlueprintIdValidator()
     
     _entries: Dict[str, Any] = {}
     

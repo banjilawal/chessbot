@@ -12,11 +12,11 @@ from err import ContextValidatorException
 from result import MethodResultType
 
 __all__ = [
-    # ======================# COORD_CONTEXT_VALIDATION_FAILURE #======================#
+    # ======================# COORD_CONTEXT_VALIDATOR_FAILURE #======================#
     "CoordContextValidatorException",
 ]
 
-# ======================# COORD_CONTEXT_VALIDATION_FAILURE #======================#
+# ======================# COORD_CONTEXT_VALIDATOR_FAILURE #======================#
 class CoordContextValidatorException(ContextValidatorException):
     """
     Role:
@@ -41,7 +41,7 @@ class CoordContextValidatorException(ContextValidatorException):
         ContextValidatorException
     """
     MSG = "Candidate did not pass a CoordContextValidator test."
-    ERR_CODE = "COORD_CONTEXT_VALIDATION_FAILURE"
+    ERR_CODE = "COORD_CONTEXT_VALIDATOR_FAILURE"
     
     def __init__(
             self,

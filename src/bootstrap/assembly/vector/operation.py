@@ -1,7 +1,7 @@
 # src/bootstrap/assembly/vector/operation.py
 
 """
-Module: operation.priming.assembly.vector.operation
+Module: bootstrap.assembly.vector.operation
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

@@ -12,11 +12,11 @@ from err import ContextValidatorException
 from result import MethodResultType
 
 __all__ = [
-    # ======================# NODE_CONTEXT_VALIDATION_FAILURE #======================#
+    # ======================# NODE_CONTEXT_VALIDATOR_FAILURE #======================#
     "NodeContextValidatorException",
 ]
 
-# ======================# NODE_CONTEXT_VALIDATION_FAILURE #======================#
+# ======================# NODE_CONTEXT_VALIDATOR_FAILURE #======================#
 class NodeContextValidatorException(ContextValidatorException):
     """
     Role:
@@ -41,7 +41,7 @@ class NodeContextValidatorException(ContextValidatorException):
         ContextValidatorException
     """
     MSG = "Candidate did not pass a NodeContextValidator test."
-    ERR_CODE = "NODE_CONTEXT_VALIDATION_FAILURE"
+    ERR_CODE = "NODE_CONTEXT_VALIDATOR_FAILURE"
     
     def __init__(
             self,

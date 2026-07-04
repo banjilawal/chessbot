@@ -7,7 +7,7 @@ Created: 2026-04-03
 version: 1.0.1
 """
 
-# =========== OPERATION.PRIMING.INSERTION.REGISTRY.SERVICE PACKAGE ===========#
+# =========== BOOTSTRAP.INSERTION.REGISTRY.SERVICE PACKAGE ===========#
 
 # Packages
 

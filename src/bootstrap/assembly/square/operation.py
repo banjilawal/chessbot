@@ -1,7 +1,7 @@
 # src/bootstrap/assembly/square/operation.py
 
 """
-Module: operation.priming.assembly.square.operation
+Module: bootstrap.assembly.square.operation
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

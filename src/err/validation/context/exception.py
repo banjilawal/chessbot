@@ -14,18 +14,18 @@ from err import ValidatorException
 from result import MethodResultType
 
 __all__ = [
-    # ======================# CONTEXT_VALIDATION_FAILURE #======================#
+    # ======================# CONTEXT_VALIDATOR_FAILURE #======================#
     "ContextValidatorException",
 ]
 
-# ======================# CONTEXT_VALIDATION_FAILURE #======================#
+# ======================# CONTEXT_VALIDATOR_FAILURE #======================#
 class ContextValidatorException(ValidatorException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a candidate did not pass a ContextValidation failed.
+        1.  Indicate that a candidate did not pass a ContextValidator test.
 
     Attributes:
             msg: Optional[str]
@@ -42,8 +42,8 @@ class ContextValidatorException(ValidatorException):
     Super Class:
         ValidatorException
     """
-    MSG = "Candidate did not pass a context's attribute"
-    ERR_CODE = "CONTEXT_VALIDATION_FAILURE"
+    MSG = "Candidate did not pass a ContextValidator test."
+    ERR_CODE = "CONTEXT_VALIDATOR_FAILURE"
     
     def __init__(
             self,

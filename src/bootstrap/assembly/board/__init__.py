@@ -1,13 +1,13 @@
 # src/bootstrap/assembly/board/__init__.py
 
 """
-Module: operation.priming.assembly.board.__init__
+Module: bootstrap.assembly.board.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
 """
 
-# =========== OPERATION.PRIMING.ASSEMBLY.BOARD PACKAGE ===========#
+# =========== BOOTSTRAP.ASSEMBLY.BOARD PACKAGE ===========#
 
 # Packages
 
