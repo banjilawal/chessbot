@@ -29,7 +29,7 @@ class KingToken(Token):
         designation: str
         roster_number: int
         positions: CoordDatabase
-        opening_square: str
+        home_square: str
         current_position: Optional[Coord]
         previous_address: Optional[Coord]
         token_board_state: TokenBoardState
@@ -52,21 +52,21 @@ class KingToken(Token):
             id: int,
             team: Team,
             formation: Formation,
-            opening_square: HomeSquare,
+            home_square: HomeSquare,
     ):
         """
         Args:
             id: int
             team: Team
             formation: Formation
-            opening_square: Square
+            home_square: Square
         """
         super().__init__(
             id=id,
             team=team,
             rank=King(id=IdFactory.next_id(class_name="King")),
             formation=formation,
-            opening_square=opening_square,
+            home_square=home_square,
         )
      
     @property

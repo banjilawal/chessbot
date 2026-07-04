@@ -50,7 +50,7 @@ class TokenCollider:
     ) -> AnalysisResult[CollisionReport]:
         """
         Report if any schema member has the same id, designation or
-        opening_square_name as the target.
+        home_square_name as the target.
         
         Action:
             1.  Send only exception chain in the CollisionReport if:
@@ -110,14 +110,14 @@ class TokenCollider:
                         )
                     )
                 )
-            # Handle the case that, the target shares its opening_square_name with a collider_candidates member.
+            # Handle the case that, the target shares its home_square_name with a collider_candidates member.
             if item.home_square.name.upper() == target.formation.home_square_name.upper():
                 # Return the collider, designation, and the exception.
                 return AnalysisResult.success(
                     CollisionReport.occurrence(
                         collider=item,
                         target_set=target,
-                        colliding_variable="opening_square",
+                        colliding_variable="home_square",
                         collision_value=item.home_square,
                         exception=OpeningSquareCollisionException(
                             cls_mthd=method,

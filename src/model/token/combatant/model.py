@@ -31,7 +31,7 @@ class CombatantToken(Token):
         designation: str
         roster_number: int
         positions: CoordDatabase
-        opening_square: OpeningSquare
+        home_square: OpeningSquare
         current_position: Optional[Coord]
         previous_address: Optional[Coord]
         token_board_state: TokenBoardState
@@ -58,9 +58,7 @@ class CombatantToken(Token):
             rank: Rank,
             team: Team,
             formation: Formation,
-            designation: str,
-            roster_number: int,
-            opening_square: HomeSquare,
+            home_square: HomeSquare,
     ):
         """
         Args:
@@ -68,18 +66,14 @@ class CombatantToken(Token):
             team: Team
             rank: Rank
             formation: Formation
-            designation: str
-            roster_number: int
-            opening_square: OpeningSquare
+            home_square: OpeningSquare
         """
         super().__init__(
             id=id,
             team=team,
             rank=rank,
             formation=formation,
-            designation=designation,
-            roster_number=roster_number,
-            opening_square=opening_square,
+            home_square=home_square,
         )
         self._captor = None
     

@@ -165,9 +165,9 @@ class SquareStackRosterHandler:
                     )
                 )
             # --- Transfer the successfully found subject to its opening square. ---#
-            team_update_result = cls._transfer_token_to_opening_square(
+            team_update_result = cls._transfer_token_to_home_square(
                 team=team,
-                opening_square=square,
+                home_square=square,
                 square_stack=square_stack,
                 token=token_search_result.payload[0],
             )
@@ -210,11 +210,11 @@ class SquareStackRosterHandler:
     @classmethod
     @LoggingLevelRouter.monitor
     def _get_forming_token(cls, team: Team, square: Square,) -> UpdateResult[Token]:
-        method = "SquareStackRosterHandler._search_for_opening_square"
+        method = "SquareStackRosterHandler._search_for_home_square"
         
         pre_deployment_team = deepcopy(team)
         # Find the roster member's opening square.
-        token_search_result = team.roster.build(context=TokenContext(opening_square=square.name))
+        token_search_result = team.roster.build(context=TokenContext(home_square=square.name))
         
         # Handle the case that, the search is not completed.
         if token_search_result.is_failure:
@@ -240,7 +240,7 @@ class SquareStackRosterHandler:
                     msg=SquareStackRosterHandlerException.MSG,
                     err_code=SquareStackRosterHandlerException.ERR_CODE,
                     ex=TokenNotFoundException(
-                        var="opening_square",
+                        var="home_square",
                         val=f"{square.name}",
                         msg=f"Token that deploys to square {square.name} not found.",
                         err_code=TokenNotFoundException.ERR_CODE,
@@ -252,20 +252,20 @@ class SquareStackRosterHandler:
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def _transfer_token_to_opening_square(
+    def _transfer_token_to_home_square(
             cls,
             team: Team,
             token: Token,
-            opening_square: Square,
+            home_square: Square,
             square_stack: SquareStackService,
     ) -> UpdateResult[Square]:
-        method = "SquareStackRosterHandler._transfer_token_to_opening_square"
+        method = "SquareStackRosterHandler._transfer_token_to_home_square"
     
         pre_deployment_team = deepcopy(team)
         # --- Handoff the square's occupation to the integrity service. ---#
         square_update_result = square_stack.microservice.occupy_stack_square(
             token=token,
-            square=opening_square,
+            square=home_square,
         )
         # Handle the case that, the occupation fails.
         if square_update_result.is_failure:

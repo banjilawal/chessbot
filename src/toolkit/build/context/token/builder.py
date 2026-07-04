@@ -48,7 +48,7 @@ class TokenContextToolkit(Toolkit[TokenContext]):
             color: Optional[GameColor] = None,
             designation: Optional[str] = None,
             current_position: Optional[Coord] = None,
-            opening_square_name: Optional[str] = None,
+            home_square_name: Optional[str] = None,
             workers: TokenContextIntegrityWorkers = TokenContextIntegrityWorkers(),
     ) -> ToolkitResult[TokenContext]:
         """
@@ -70,7 +70,7 @@ class TokenContextToolkit(Toolkit[TokenContext]):
             color: Optional[GameColor]
             designation: Optional[str]
             current_position: Optional[Coord]
-            opening_square_name: Optional[str]
+            home_square_name: Optional[str]
             workers: TokenContextIntegrityWorkers
         Returns:
             ToolkitResult[TokenContext]
@@ -91,7 +91,7 @@ class TokenContextToolkit(Toolkit[TokenContext]):
             ransom,
             designation,
             current_position,
-            opening_square_name,
+            home_square_name,
         ]
         param_count = sum(bool(p) for p in params)
         
@@ -169,9 +169,9 @@ class TokenContextToolkit(Toolkit[TokenContext]):
             # On validation success forward the work product to the caller.
             return ToolkitResult.success(TokenContext(designation=designation))
         
-        # Toolkit the opening_square_name TokenContext if its flag is enabled.
-        if opening_square_name is not None:
-            validation = workers.identity_service.validate_name(opening_square_name)
+        # Toolkit the home_square_name TokenContext if its flag is enabled.
+        if home_square_name is not None:
+            validation = workers.identity_service.validate_name(home_square_name)
             if validation.is_failure:
                 # Send the exception chain on failure.
                 return ToolkitResult.failure(
@@ -186,7 +186,7 @@ class TokenContextToolkit(Toolkit[TokenContext]):
                     )
                 )
             # On validation success forward the work product to the caller.
-            return ToolkitResult.success(TokenContext(opening_square_name=opening_square_name))
+            return ToolkitResult.success(TokenContext(home_square_name=home_square_name))
         
         # Toolkit the current_position TokenContext if its flag is enabled.
         if current_position is not None:

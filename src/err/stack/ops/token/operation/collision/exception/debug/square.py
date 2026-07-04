@@ -11,13 +11,13 @@ from __future__ import annotations
 from typing import Any, Optional
 
 __all__ = [
-    # ======================# TOKEN_OPENING_SQUARE_COLLISION EXCEPTION #======================#
+    # ======================# TOKEN_HOME_SQUARE_COLLISION EXCEPTION #======================#
     "TokenOpeningSquareCollisionException",
 ]
 
 from model.token import TokenDebugException
 
-# ======================# TOKEN_OPENING_SQUARE_COLLISION EXCEPTION #======================#
+# ======================# TOKEN_HOME_SQUARE_COLLISION EXCEPTION #======================#
 class TokenOpeningSquareCollisionException(TokenDebugException):
     """
     Role:Error Variable Identifier, Exception Chain Layer 2, Exception Messaging
@@ -47,7 +47,7 @@ class TokenOpeningSquareCollisionException(TokenDebugException):
     # INHERITED METHODS:
         *   See TokenDebugException class for inherited methods.
     """
-    ERR_CODE = "TOKEN_OPENING_SQUARE_COLLISION EXCEPTION"
+    ERR_CODE = "TOKEN_HOME_SQUARE_COLLISION EXCEPTION"
     MSG = "Opening Square has already been assigned."
     
     def __init__(

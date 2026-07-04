@@ -11,14 +11,14 @@ from __future__ import annotations
 from typing import Any, Optional
 
 __all__ = [
-    # ======================# WRONG_OPENING_SQUARE_EXCEPTION #======================#
+    # ======================# WRONG_HOME_SQUARE_EXCEPTION #======================#
     "WrongOpeningSquareException",
 ]
 
 from logic.square import SquareDebugException
 
 
-# ======================# WRONG_OPENING_SQUARE_EXCEPTION #======================#
+# ======================# WRONG_HOME_SQUARE_EXCEPTION #======================#
 class WrongOpeningSquareException(SquareDebugException):
     """
     Role:
@@ -42,7 +42,7 @@ class WrongOpeningSquareException(SquareDebugException):
     Super Class:
         TokenDebugException
     """
-    ERR_CODE = "WRONG_OPENING_SQUARE_EXCEPTION"
+    ERR_CODE = "WRONG_HOME_SQUARE_EXCEPTION"
     MSG = "Token deployed to wrong square"
     
     def __init__(

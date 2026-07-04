@@ -136,7 +136,7 @@ class TokenDeployer(Operation[Token]):
         # Confirm claimant's deployment state is updated.
         if claimant.deployment_state == DeploymentState.NOT_DEPLOYED:
             claimant.mark_deployed()
-        # Confirm opening_square is marked as claimed.
+        # Confirm home_square is marked as claimed.
         if home_square.token_claim_state != TokenHomeClaimState.UNCLAIMED:
             home_square.record_claim()
             

@@ -10,7 +10,7 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Optional
 
-from model import HomeSquare
+from model import Formation, HomeSquare
 from model.team import Team
 from model.rank import Pawn, Rank
 from model.token import CombatantToken, PromotionState
@@ -32,7 +32,7 @@ class PawnToken(CombatantToken):
         designation: str
         roster_number: int
         positions: CoordDatabase
-        opening_square: OpeningSquare
+        home_square: OpeningSquare
         current_position: Optional[Coord]
         previous_address: Optional[Coord]
         token_board_state: TokenBoardState
@@ -63,9 +63,8 @@ class PawnToken(CombatantToken):
             self,
             id: int,
             team: Team,
-            designation: str,
-            roster_number: int,
-            opening_square: HomeSquare,
+            formation: Formation,
+            home_square: HomeSquare,
     ):
         """
         Args:
@@ -74,16 +73,14 @@ class PawnToken(CombatantToken):
             rank: Rank
             designation: str
             roster_number: int
-            opening_square: OpeningSquare
+            home_square: OpeningSquare
         """
-        rank = Pawn(id=IdFactory.next_id(class_name="Pawn"))
         super().__init__(
             id=id,
             team=team,
-            rank=rank,
-            designation=designation,
-            roster_number=roster_number,
-            opening_square=opening_square,
+            rank=Pawn(formation.persona),
+            formation=formation,
+            home_square=home_square,
         )
         self._previous_rank = None
         self._promotion_state = PromotionState.NOT_PROMOTED

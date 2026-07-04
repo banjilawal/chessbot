@@ -136,10 +136,10 @@ class TokenContextValidator(ContextValidator):
                 # On validation success forward the work product to the caller.
             return ValidationResult.success(context)
         
-        # Certification for the search-by-opening_square target.
-        if context.opening_square is not None:
+        # Certification for the search-by-home_square target.
+        if context.home_square is not None:
             validation_result = toolkit.square_validator.validate(
-                candidate=context.opening_square
+                candidate=context.home_square
             )
             if validation_result.is_failure:
                 # Send the exception chain on failure.

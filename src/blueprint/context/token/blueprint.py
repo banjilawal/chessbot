@@ -33,7 +33,7 @@ class TokenContextBlueprint(Blueprint[TokenContext]):
         color: Optional[GameColor]
         designation: Optional[str]
         current_position: Optional[Coord]
-        opening_square: Optional[OpeningSquare]
+        home_square: Optional[OpeningSquare]
         null_exception = TokenContextNullException()
         model_type = TokenContext
 
@@ -49,6 +49,6 @@ class TokenContextBlueprint(Blueprint[TokenContext]):
     color: Optional[GameColor] | None = None
     designation: Optional[str] | None = None
     current_position: Optional[Coord] | None = None
-    opening_square: Optional[HomeSquare] | None = None
+    home_square: Optional[HomeSquare] | None = None
 
 

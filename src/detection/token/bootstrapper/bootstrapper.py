@@ -58,7 +58,7 @@ class TokenCollisionBootstrapper:
     ) -> ValidationResult[TokenBlueprint]:
         """
         Report if any schema member has the same id, designation or
-        opening_square_name as the target.
+        home_square_name as the target.
         
         Action:
             1.  Send only exception chain in the CollisionReport if:

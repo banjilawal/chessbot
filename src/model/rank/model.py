@@ -38,13 +38,11 @@ class Rank(ABC):
         
     Super Class:
     """
-    _id: int
     _persona: Persona
     _coord_service: CoordService
     _vector_service: VectorService
     
     def __init__(self,
-            id: int,
             persona: Persona,
             coord_service: CoordService = CoordService(),
             vector_service: VectorService = VectorService(),

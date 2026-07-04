@@ -189,7 +189,7 @@ class SchemaContextValidator(Validator[SchemaContext]):
             # On validation success forward the work product to the caller.
             return ValidationResult.success(context)
         
-        # Certification for the search-by-opening_square_name target.
+        # Certification for the search-by-home_square_name target.
         if context.home_square_name is not None:
             validation_result = workers.identity_service.validate_name(
                 candidate=context.home_square_name

@@ -134,9 +134,9 @@ class TokenIntegrityValidator(Validator[Token]):
                     ex=team_validation_result.exception,
                 )
             )
-        # Handle the case that, the roster or opening_square_name are not acceptable.
-        opening_square_validation_result = toolkit["square_validator"].build(token.home_square)
-        if opening_square_validation_result.is_failure:
+        # Handle the case that, the roster or home_square_name are not acceptable.
+        home_square_validation_result = toolkit["square_validator"].build(token.home_square)
+        if home_square_validation_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 TokenValidationException(
@@ -144,7 +144,7 @@ class TokenIntegrityValidator(Validator[Token]):
                     cls_name=cls.__name__,
                     msg=TokenValidationException.MSG,
                     err_code=TokenValidationException.ERR_CODE,
-                    ex=opening_square_validation_result.exception,
+                    ex=home_square_validation_result.exception,
                 )
             )
         # Handle the case that, the rank is not safe.

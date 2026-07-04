@@ -218,7 +218,7 @@ class HomeSquareDetector:
                     ex=HomeSquareSearchResultEmptyException(
                         msg=HomeSquareSearchResultEmptyException.MSG,
                         err_code=HomeSquareSearchResultEmptyException.ERR_CODE,
-                        var=f"opening_square:{token.home_square.name}",
+                        var=f"home_square:{token.home_square.name}",
                         val=token.home_square,
                     ),
                 )

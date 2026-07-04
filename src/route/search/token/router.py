@@ -78,11 +78,11 @@ class TokenSearchRouter(SearchRouter[Token]):
                 items=query.stack.items,
                 designation=query.context.designation
             )
-        # token.opening_square_name search entry point.
-        if query.context.opening_square is not None:
-            return cls._find_by_opening_square_name(
+        # token.home_square_name search entry point.
+        if query.context.home_square is not None:
+            return cls._find_by_home_square_name(
                 items=query.stack.items,
-                opening_square=query.context.opening_square
+                home_square=query.context.home_square
             )
         # token.team search entry point.
         if query.context.team is not None:
@@ -185,22 +185,22 @@ class TokenSearchRouter(SearchRouter[Token]):
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def _find_by_opening_square(
+    def _find_by_home_square(
             cls,
             items: List[Token],
-            opening_square: HomeSquare,
+            home_square: HomeSquare,
     ) -> SearchResult[List[Token]]:
         """
         Search the schema by a opening square's schema'
 
         Args:
-            opening_square: OpeningSquare
+            home_square: OpeningSquare
             items: List[Token]
         Returns:
             SearchResult[List[Token]]
         Raises
         """
-        matches = [token for token in items if token.home_square == opening_square]
+        matches = [token for token in items if token.home_square == home_square]
         # Handle the nothing found case.
         if len(matches) == 0:
             return SearchResult.empty()

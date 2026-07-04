@@ -10,7 +10,7 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Dict
 
-from model import Rank
+from model import Persona, Rank
 
 
 class Pawn(Rank):
@@ -34,7 +34,6 @@ class Pawn(Rank):
 
     def __init__(
             self,
-            id: int,
             persona: Persona = Persona.PAWN,
             spanner: PawnSpanner = PawnSpanner(),
             coord_service: CoordService = CoordService(),

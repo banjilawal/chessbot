@@ -11,14 +11,14 @@ from __future__ import annotations
 from typing import Optional
 
 __all__ = [
-    # ======================# OPENING_SQUARE_DISCOVERY_EXCEPTION #======================#
+    # ======================# HOME_SQUARE_DISCOVERY_EXCEPTION #======================#
     "SearchException",
 ]
 
 from system import SearchException
 
 
-# ======================# OPENING_SQUARE_DISCOVERY_EXCEPTION #======================#
+# ======================# HOME_SQUARE_DISCOVERY_EXCEPTION #======================#
 class OpeningSquareDiscoveryException(SearchException):
     """
      Role:
@@ -45,7 +45,7 @@ class OpeningSquareDiscoveryException(SearchException):
     """
     OP = "Search"
     MTHD_RSLT = "SearchResult"
-    ERR_CODE = "OPENING_SQUARE_DISCOVERY_EXCEPTION"
+    ERR_CODE = "HOME_SQUARE_DISCOVERY_EXCEPTION"
     MSG = "OpeningSquareSearch failure"
     
     def __init__(

@@ -30,7 +30,7 @@ class Token(ABC):
         designation: str
         roster_number: int
         positions: CoordDatabase
-        opening_square: OpeningSquare
+        home_square: OpeningSquare
         current_position: Optional[Coord]
         previous_address: Optional[Coord]
         token_board_state: TokenBoardState
@@ -49,7 +49,7 @@ class Token(ABC):
     _rank: Rank
     _formation: Formation
     _positions: CoordDatabase
-    _opening_square: HomeSquare
+    _home_square: HomeSquare
     _current_position: Optional[Coord]
     _previous_address: Optional[Coord]
     _deployment_state: DeploymentState
@@ -61,7 +61,7 @@ class Token(ABC):
             rank: Rank,
             team: Team,
             formation: Formation,
-            opening_square: HomeSquare,
+            home_square: HomeSquare,
     ):
         """
         Args:
@@ -69,14 +69,14 @@ class Token(ABC):
             team: Team
             rank: Rank
             formation: Formation
-            opening_square: OpeningSquare
+            home_square: OpeningSquare
         """
         self._id = id
         self._team = team
         self._rank = rank
         self._formation = formation
         self._positions = CoordDatabase()
-        self._opening_square = opening_square
+        self._home_square = home_square
         self._current_position = self._positions.current_item
         self._previous_address = self._positions.previous_coord
         self._deployment_state = DeploymentState.NOT_DEPLOYED
@@ -108,7 +108,7 @@ class Token(ABC):
     
     @property
     def home_square(self) -> HomeSquare:
-        return self._opening_square
+        return self._home_square
     
     @property
     def readiness_state(self) -> TokenActivityState:

@@ -339,7 +339,7 @@ class SquareEntry:
             return UpdateResult.update_success(original=square, updated=square)
         
         # Handle the case that, the token should open on a different square.
-        if square.name.upper() != token.opening_square_name.upper():
+        if square.name.upper() != token.home_square_name.upper():
             # Send the exception chain on failure.
             return UpdateResult.update_failure(
                 original=square,

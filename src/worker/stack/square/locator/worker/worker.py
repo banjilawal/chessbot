@@ -197,11 +197,11 @@ class OpeningSquareLocator(Worker):
                     ex=token_validation_result.exception
                 )
             )
-        opening_square_search = square_stack.microservice.build(
-            context=SquareContext(name=token.opening_square_name)
+        home_square_search = square_stack.microservice.build(
+            context=SquareContext(name=token.home_square_name)
         )
         # Handle the case that the search fails
-        if opening_square_search.is_failure:
+        if home_square_search.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 ExecutementSquareDiscoveryException(
@@ -210,7 +210,7 @@ class OpeningSquareLocator(Worker):
                     msg=ExecutementSquareDiscoveryException.MSG,
                     err_code=ExecutementSquareDiscoveryException.ERR_CODE,
                     mthd_rslt_type=ExecutementSquareDiscoveryException.MTHD_RSLT,
-                    ex=opening_square_search.exception
+                    ex=home_square_search.exception
                 )
             )
         # Handle the case that

@@ -9,12 +9,12 @@ version: 1.0.1
 
 from __future__ import annotations
 
-
+from blueprint import TokenBlueprint
 from result import BuildResult
 from operation import Assembler
 from util import LoggingLevelRouter
 from controller import WorkerRegistryController
-from model import CombatantToken, King, KingToken, Pawn, PawnToken, Token, TokenBlueprint
+from model import CombatantToken, King, KingToken, Pawn, PawnToken, Token
 
 class TokenAssembler(Assembler[Token]):
     NAME = "token_assembler"
@@ -38,9 +38,8 @@ class TokenAssembler(Assembler[Token]):
                 PawnToken(
                     id=blueprint.id,
                     team=blueprint.team,
-                    designation=blueprint.formation.designation,
-                    roster_number=blueprint.formation.roster_number,
-                    opening_square=blueprint.home_square,
+                    formation=blueprint.formation,
+                    home_square=blueprint.home_square,
                 )
             )
         if isinstance(blueprint.rank, King):
@@ -49,9 +48,7 @@ class TokenAssembler(Assembler[Token]):
                     id=blueprint.id,
                     team=blueprint.team,
                     formation=blueprint.formation,
-                    designation=blueprint.formation.designation,
-                    roster_number=blueprint.formation.roster_number,
-                    opening_square=blueprint.home_square
+                    home_square=blueprint.home_square
                 )
             )
         return BuildResult.success(
@@ -59,7 +56,7 @@ class TokenAssembler(Assembler[Token]):
                 id=blueprint.id,
                 team=blueprint.team,
                 formation=blueprint.formation,
-                opening_square=blueprint.home_square,
+                home_square=blueprint.home_square,
                 rank=blueprint.rank
             )
         )

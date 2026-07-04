@@ -14,11 +14,11 @@ from err import TokenCollisionException
 from result import MethodResultType
 
 __all__ = [
-    # ======================# OPENING_SQUARE_COLLISION_ERROR #======================#
+    # ======================# HOME_SQUARE_COLLISION_ERROR #======================#
     "OpeningSquareCollisionException",
 ]
 
-# ======================# OPENING_SQUARE_COLLISION_ERROR #======================#
+# ======================# HOME_SQUARE_COLLISION_ERROR #======================#
 class OpeningSquareCollisionException(TokenCollisionException):
     """
     Role:
@@ -43,7 +43,7 @@ class OpeningSquareCollisionException(TokenCollisionException):
         TokenCollisionException
     """
     MSG = "The token's opening square is already in use by another token."
-    ERR_CODE = "OPENING_SQUARE_COLLISION_ERROR"
+    ERR_CODE = "HOME_SQUARE_COLLISION_ERROR"
     
     def __init__(
             self,

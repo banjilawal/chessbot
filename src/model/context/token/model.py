@@ -35,7 +35,7 @@ class TokenContext(Context[Token]):
         current_position:Optional[Coord]
         designation: Optional[str]
         color: Optional[GameColor]
-        opening_square: Optional[OpeningSquare]
+        home_square: Optional[OpeningSquare]
 
     Provides:
         -   to_dict() -> Dict[str, Any]
@@ -50,7 +50,7 @@ class TokenContext(Context[Token]):
     color: Optional[GameColor] | None = None
     designation: Optional[str] | None = None
     current_position:Optional[Coord] | None = None
-    opening_square: Optional[HomeSquare] | None = None
+    home_square: Optional[HomeSquare] | None = None
     
     # def __init__(
     #         self,
@@ -60,7 +60,7 @@ class TokenContext(Context[Token]):
     #     color: Optional[GameColor] | None = None,
     #     designation: Optional[str] | None = None,
     #     current_position: Optional[Coord] | None = None,
-    #     opening_square: Optional[OpeningSquare] | None = None,
+    #     home_square: Optional[OpeningSquare] | None = None,
     # ):
 
     @property
@@ -73,5 +73,5 @@ class TokenContext(Context[Token]):
             "ransom": self.ransom,
             "designation": self.designation,
             "current_position": self.current_position,
-            "opening_squaree": self.opening_square
+            "home_squaree": self.home_square
         }

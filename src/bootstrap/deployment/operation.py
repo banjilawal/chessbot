@@ -43,12 +43,12 @@ class TokenDeploymentPrimer(Operation[Token]):
                     token_validator: TokenValidator,
             ) -> UpdateResult[Token]
             
-        - _run_opening_square_tests(token: Token) -> SearchResult[List[Square]]
+        - _run_home_square_tests(token: Token) -> SearchResult[List[Square]]
         
         - _square_visitation_process_work(
                     token: Token,
                     pre_update_token: Token,
-                    opening_square: Square,
+                    home_square: Square,
             ) -> UpdateResult[Token]
             
     Super:
@@ -118,9 +118,9 @@ class TokenDeploymentPrimer(Operation[Token]):
                     ),
                 )
             )
-        # Handle the case that, an opening_square test fails.
-        opening_square_search_result = cls._run_opening_square_tests(token)
-        if opening_square_search_result.is_failure:
+        # Handle the case that, an home_square test fails.
+        home_square_search_result = cls._run_home_square_tests(token)
+        if home_square_search_result.is_failure:
             # Send the exception chain on failure.
             return UpdateResult.update_failure(
                 original=token,
@@ -130,7 +130,7 @@ class TokenDeploymentPrimer(Operation[Token]):
                     msg=TokenDeploymentException.MSG,
                     err_code=TokenDeploymentException.ERR_CODE,
                     mthd_rslt_type=MethodResultType.UPDATE_RESULT,
-                    ex=opening_square_search_result.exception,
+                    ex=home_square_search_result.exception,
                 )
             )
         # --- Integrity and consistency checks are passed. Make a deep copy of the original token. ---#
@@ -141,7 +141,7 @@ class TokenDeploymentPrimer(Operation[Token]):
             token=token,
             pre_update_token=pre_update_token,
             square_service=token.team.board.squares.service,
-            opening_square=cast(HomeSquare, opening_square_search_result.payload[0]),
+            home_square=cast(HomeSquare, home_square_search_result.payload[0]),
         )
         # Handle the case that, the visitation transaction fails.
         if update_result.is_failure:
@@ -162,7 +162,7 @@ class TokenDeploymentPrimer(Operation[Token]):
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def _run_opening_square_tests(cls, token: Token) -> SearchResult[List[Square]]:
+    def _run_home_square_tests(cls, token: Token) -> SearchResult[List[Square]]:
         """
         Get the token's opening square if, it can be occupied.
         
@@ -182,14 +182,14 @@ class TokenDeploymentPrimer(Operation[Token]):
             SquareNotFoundException
             SquareOccupiedException
         """
-        method = f"{cls.__class__.__name__}._run_opening_square_tests"
+        method = f"{cls.__class__.__name__}._run_home_square_tests"
         
         # Get the board's squares to run the search.
-        opening_square_search_result = token.team.board.squares.search(
-            context=SquareContext(name=token.opening_square_name)
+        home_square_search_result = token.team.board.squares.search(
+            context=SquareContext(name=token.home_square_name)
         )
         # Handle the case that, the search fails.
-        if opening_square_search_result.is_failure:
+        if home_square_search_result.is_failure:
             # Send the exception chain on failure.
             return SearchResult.failure(
                 exception=TokenDeploymentException(
@@ -198,11 +198,11 @@ class TokenDeploymentPrimer(Operation[Token]):
                     msg=TokenDeploymentException.MSG,
                     err_code=TokenDeploymentException.ERR_CODE,
                     mthd_rslt_type=TokenDeploymentException.MTHD_RSLT,
-                    ex=opening_square_search_result.exception,
+                    ex=home_square_search_result.exception,
                 )
             )
         # Handle the case that, the token's square is not found.
-        if opening_square_search_result.is_empty:
+        if home_square_search_result.is_empty:
             # Send the exception chain on failure.
             return SearchResult.failure(
                 exception=TokenDeploymentException(
@@ -212,16 +212,16 @@ class TokenDeploymentPrimer(Operation[Token]):
                     err_code=TokenDeploymentException.ERR_CODE,
                     mthd_rslt_type=TokenDeploymentException.MTHD_RSLT,
                     ex=SquareNotFoundException(
-                        var="opening_square_name",
-                        val=token.opening_square_name,
+                        var="home_square_name",
+                        val=token.home_square_name,
                         msg=TokenDeploymentException.MSG,
                         err_code=TokenDeploymentException.ERR_CODE,
                     )
                 )
             )
         # Handle the case that the token's opening square is occupied
-        if opening_square_search_result.payload[0].is_occupied:
-            square = opening_square_search_result.payload[0]
+        if home_square_search_result.payload[0].is_occupied:
+            square = home_square_search_result.payload[0]
             # Send the exception chain on failure.
             return SearchResult.failure(
                 exception=TokenDeploymentException(
@@ -234,12 +234,12 @@ class TokenDeploymentPrimer(Operation[Token]):
                         var="square_occupant",
                         msg=f"square:{square.name} already occupied by {square.occupant.designation}",
                         err_code=SquareOccupiedException.ERR_CODE,
-                        val=opening_square_search_result.payload[0].occupant.designation,
+                        val=home_square_search_result.payload[0].occupant.designation,
                     )
                 )
             )
         # --- Send the work product. ---#
-        return opening_square_search_result
+        return home_square_search_result
     
     @classmethod
     @LoggingLevelRouter.monitor
@@ -247,7 +247,7 @@ class TokenDeploymentPrimer(Operation[Token]):
             cls,
             token: Token,
             pre_update_token: Token,
-            opening_square: Square,
+            home_square: Square,
     ) -> UpdateResult[Token]:
         """
         Run consistency checks on the token after SquareService.start_square_visit transaction
@@ -263,7 +263,7 @@ class TokenDeploymentPrimer(Operation[Token]):
         Args:
             token: Token
             pre_update_token: Token
-            opening_square: Square
+            home_square: Square
         Returns:
             UpdateResult[Square]
         Raises:
@@ -276,7 +276,7 @@ class TokenDeploymentPrimer(Operation[Token]):
         # Make a visitation request to square_validator.
         visitation_result = token.team.board.squares.service.begin_square_visit(
             visitor=token,
-            square=opening_square,
+            square=home_square,
         )
         # Handle the case that the visit is not successful.
         if visitation_result.is_failure:
@@ -293,7 +293,7 @@ class TokenDeploymentPrimer(Operation[Token]):
                 )
             )
         # Handle the case that, the token is not the square's visitor.
-        if opening_square.occupant != token:
+        if home_square.occupant != token:
             # Send the exception chain on failure.
             return UpdateResult.update_failure(
                 original=pre_update_token,
@@ -310,7 +310,7 @@ class TokenDeploymentPrimer(Operation[Token]):
                 )
             )
         # Handle the case that, the token's current position is not the square's
-        if opening_square.coord != token.current_position:
+        if home_square.coord != token.current_position:
             # Send the exception chain on failure.
             return UpdateResult.update_failure(
                 original=pre_update_token,

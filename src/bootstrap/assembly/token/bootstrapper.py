@@ -90,10 +90,10 @@ class TokenAssemblyPrimer(AssemblyPrimer[Token]):
                 )
             )
         # Handle the case that, the opening square discovery failed.
-        opening_square_discovery_result = cls._opening_square_discovery(
+        home_square_discovery_result = cls._home_square_discovery(
             blueprint=blueprint
         )
-        if opening_square_discovery_result.is_failure:
+        if home_square_discovery_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 TokenAssemblyPrimerException(
@@ -126,7 +126,7 @@ class TokenAssemblyPrimer(AssemblyPrimer[Token]):
                 formation=blueprint.formation,
                 rank=rank_assembly_result.payload,
                 id=blueprint_validation_result.payload.id,
-                home_square=opening_square_discovery_result.payload[0],
+                home_square=home_square_discovery_result.payload[0],
             )
         )
     
@@ -305,7 +305,7 @@ class TokenAssemblyPrimer(AssemblyPrimer[Token]):
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def _opening_square_discovery(
+    def _home_square_discovery(
             cls,
             blueprint: TokenBlueprint,
     ) -> SearchResult[List[HomeSquare]]:
@@ -315,7 +315,7 @@ class TokenAssemblyPrimer(AssemblyPrimer[Token]):
         Action:
             1.  Send an exception chain in the AnalysisResult if any following occurs:
                     -   The search is not completed.
-                    -   The opening_square is not found.
+                    -   The home_square is not found.
             2.  Otherwise, forward the success result.
         Args:
             blueprint: TokenBlueprint
@@ -325,7 +325,7 @@ class TokenAssemblyPrimer(AssemblyPrimer[Token]):
         Raises:
             PrimingTokenAssemblyException
         """
-        method = f"{cls.__name__}._opening_square_discovery"
+        method = f"{cls.__name__}._home_square_discovery"
         
         square_search_result = blueprint.team.roster.search(
             context=SquareContext(formation=blueprint.formation)
