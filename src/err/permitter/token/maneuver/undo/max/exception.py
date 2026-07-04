@@ -1,7 +1,7 @@
-# src/err/permitter/token/undo/exception.py
+# src/err/permitter/token/undo/max/exception.py
 
 """
-Module: err.permitter.token.undo.exception
+Module: err.permitter.token.undo.max.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1

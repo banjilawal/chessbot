@@ -11,17 +11,16 @@ from __future__ import annotations
 
 from typing import cast
 
-from logic.coord import Coord
-
 from analyzer import TokenReadinessAnalyzer
-from err import DisabledTokenManeuverException
+from err import (
+    DisabledTokenUndoMoveException, MaxMoveUndoException, UndeployedTovenMoveException,
+    TokenUndoMovePermitterException
+)
+from model import Token
 from permitter import TokenManeuverPermitter
 from report import PopApproval, TokenReadinessReport
-from system import AnalysisResult, LoggingLevelRouter
-from model.token import (
-    InactiveTokenPoppingCoordException, MoveUndoLimitException, Token, TokenPopCoordException, TokenValidation,
-    UnopenedTokenPoppingCoordException
-)
+from result import AnalysisResult
+from util import LoggingLevelRouter
 from validation import TokenValidator
 
 
@@ -37,24 +36,6 @@ class TokenUndoMovePermitter(TokenManeuverPermitter):
     Attributes:
 
     Provides:
-        -   def execute(cls,token: Token, *args, **kwargs) -> AnalysisResult
-
-    Super Class:
-        TokenManeuverPermitter
-    """
-    """
-    Role:
-        - Transaction Worker
-        - Consistency, Integrity Maintenance
-        - Process Runner
-
-    Responsibilities:
-        1.  Maintain the token's integrity and consistency when the last coord is popped.
-        2.  Enforce chess constraints on coord popes.
-
-    Attributes:
-
-    Provides:
         -   def execute(
                     cls,
                     token: Token,
@@ -62,13 +43,14 @@ class TokenUndoMovePermitter(TokenManeuverPermitter):
                     readiness_analyzer: TokenReadinessAnalyzer | None = None,
             ) -> AnalysisResult[Coord]
     Super Class:
+        TokenManeuverPermitter
     """
     
     @classmethod
     @LoggingLevelRouter.monitor
     def execute(
             cls,
-            token: Token,
+            requestor: Token,
             token_validator: TokenValidator | None = None,
             readiness_analyzer: TokenReadinessAnalyzer | None = None,
     ) -> AnalysisResult[PopApproval]:
@@ -77,43 +59,43 @@ class TokenUndoMovePermitter(TokenManeuverPermitter):
 
         Action:
             1.  Send an exception chain in the AnalysisResult if:
-                    *   The token is unsafe or not actionable.
-                    *   It has no position history.
-                    *   It has not moved from its opening square.
-            2.  Otherwise, pop the last move and send the success result.
+                    -   The readiness_analyzer aborts.
+            2.  Deny UndoMove permission if any of the following occur.
+                    -   The token is not free.
+                    -   It has already undone one move during its turn.
+            3.  If none of the conditions in (2) apply approve the request.
         Args:
-            token: Token
+            requestor: Token,
             token_validator: TokenValidator
+            readiness_analyzer: TokenReadinessAnalyzer
         Returns:
-            AnalysisResult[Coord]
+            AnalysisResult[PopApproval]
         Raises:
-            TokenPopCoordException
-            MoveUndoLimitException
-            TokenCoordHandlerException
-            PoppingEmtpyCoordStackException
-            InactiveTokenPoppingCoordException
-            UnopenedTokenPoppingCoordException
+            TokenUndoMovePermitterException
+            DisabledTokenUndoMoveException
+            MaxMoveUndoException
         """
-        method = f"{cls.__class__.__name__}undo_last_coord_push"
+        method = f"{cls.__class__.__name__}.execute"
         
+        # --- Supply missing dependencies. ---#
         if token_validator is None:
-            token_validator = TokenValidation()
+            token_validator = TokenValidator()
         if readiness_analyzer is None:
             readiness_analyzer = TokenReadinessAnalyzer()
             
         readiness_analysis_result = readiness_analyzer.analyze(
-            token=token,
+            token=requestor,
             token_validator=token_validator
         )
         # Handle the case that, the analyzer aborts.
         if readiness_analysis_result.is_failure:
             # Send the exception chain on failure.
             return AnalysisResult.aborted(
-                    TokenPopCoordException(
+                    TokenUndoMovePermitterException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    msg=TokenPopCoordException.MSG,
-                    err_code=TokenPopCoordException.ERR_CODE,
+                    msg=TokenUndoMovePermitterException.MSG,
+                    err_code=TokenUndoMovePermitterException.ERR_CODE,
                     ex=readiness_analysis_result.exception
                 )
             )
@@ -123,57 +105,40 @@ class TokenUndoMovePermitter(TokenManeuverPermitter):
             # Send the exception chain on failure.
             return AnalysisResult.completed(
                 PopApproval.deny(
-                    exception=TokenPopCoordException(
+                    exception=TokenUndoMovePermitterException(
                         cls_mthd=method,
                         cls_name=cls.__name__,
-                        msg=TokenPopCoordException.MSG,
-                        err_code=TokenPopCoordException.ERR_CODE,
-                        ex=DisabledTokenManeuverException(
+                        msg=TokenUndoMovePermitterException.MSG,
+                        err_code=TokenUndoMovePermitterException.ERR_CODE,
+                        ex=DisabledTokenUndoMoveException(
                             cls_mthd=method,
                             cls_name=cls.__name__,
-                            msg=DisabledTokenManeuverException.MSG,
-                            err_code=DisabledTokenManeuverException.ERR_CODE,
-                        )
-                    )
-                )
-            )
-        # Handle the case that, the active token has not opened.
-        if token.positions.size == 1:
-            # Send the exception chain on failure.
-            return AnalysisResult.completed(
-                PopApproval.deny(
-                    exception=TokenPopCoordException(
-                        cls_mthd=method,
-                        cls_name=cls.__name__,
-                        msg=TokenPopCoordException.MSG,
-                        err_code=TokenPopCoordException.ERR_CODE,
-                        ex=DisabledTokenManeuverException(
-                            cls_mthd=method,
-                            cls_name=cls.__name__,
-                            msg=DisabledTokenManeuverException.MSG,
-                            err_code=DisabledTokenManeuverException.ERR_CODE,
+                            msg=DisabledTokenUndoMoveException.MSG,
+                            err_code=DisabledTokenUndoMoveException.ERR_CODE,
                         )
                     )
                 )
             )
         # Handle the case that, an attempt is made to undo more than one turn.
-        if token.previous_coord == token.current_position:
+        if requestor.previous_coord == requestor.current_position:
             # Send the exception chain on failure.
             return AnalysisResult.completed(
                 PopApproval.deny(
-                    exception=TokenPopCoordException(
+                    exception=TokenUndoMovePermitterException(
                         cls_mthd=method,
                         cls_name=cls.__name__,
-                        msg=TokenPopCoordException.MSG,
-                        err_code=TokenPopCoordException.ERR_CODE,
-                        ex=MoveUndoLimitException(
-                            var=token.designation,
-                            msg=MoveUndoLimitException.MSG,
-                            err_code=MoveUndoLimitException.ERR_CODE,
+                        msg=TokenUndoMovePermitterException.MSG,
+                        err_code=TokenUndoMovePermitterException.ERR_CODE,
+                        ex=MaxMoveUndoException(
+                            cls_mthd=method,
+                            cls_name=cls.__name__,
+                            msg=MaxMoveUndoException.MSG,
+                            err_code=MaxMoveUndoException.ERR_CODE,
                         )
                     )
                 )
             )
+        # --- Forward the work product to the caller. ---#
         return AnalysisResult.completed(PopApproval.approve(token.positions.))
         
 

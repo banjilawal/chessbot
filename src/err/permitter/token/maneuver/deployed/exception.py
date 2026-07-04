@@ -1,7 +1,7 @@
-# src/err/permitter/token/undo/exception.py
+# src/err/permitter/token/maneuver/deployed/exception.py
 
 """
-Module: err.permitter.token.undo.exception
+Module: err.permitter.token.maneuver.deployed.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -14,11 +14,11 @@ from err import TokenUndoMovePermitterException
 from result import MethodResultType
 
 __all__ = [
-    # ======================# MOVE_UNDEPOYED_TOKEN_ERROR #======================#
+    # ======================# MOVE_UNDEPLOYED_TOKEN_ERROR #======================#
     "MoveUndeployedTokenException",
 ]
 
-# ======================# MOVE_UNDEPOYED_TOKEN_ERROR #======================#
+# ======================# MOVE_UNDEPLOYED_TOKEN_ERROR #======================#
 class MoveUndeployedTokenException(TokenUndoMovePermitterException):
     """
     Role:
@@ -43,7 +43,7 @@ class MoveUndeployedTokenException(TokenUndoMovePermitterException):
         TokenUndoMovePermitterException
     """
     MSG = "Cannot move a token until its placed on its home square first."
-    ERR_CODE = "MOVE_UNDEPOYED_TOKEN_ERROR"
+    ERR_CODE = "MOVE_UNDEPLOYED_TOKEN_ERROR"
     
     def __init__(
             self,

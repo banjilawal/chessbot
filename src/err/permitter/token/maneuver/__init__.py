@@ -10,6 +10,7 @@ version: 1.0.1
 # ============ ERR.PERMITTER.TOKEN.MANEUVER PACKAGE ===========#
 
 # Packages
+from .deployed import *
 from .undo import *
 
 # Modules
