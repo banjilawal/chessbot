@@ -11,17 +11,12 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 
-from model import VectorOperandRegister
 from toolkit import Toolkit
-from integrity import CoordBuilder, ScalarBuilder, VectorBuilder
-from validation import (
-    CoordValidator, NumberValidator, ScalarValidator, VectorOperandValidator,
-    VectorRegisterValidator, VectorValidator
-)
+from validation import CoordValidator, NumberValidator, ScalarValidator, VectorRegisterValidator, VectorValidator
 
 
 @dataclass
-class MathToolkit(Toolkit):
+class VectorAlgebraToolkit(Toolkit):
     """
     Role:
         -   Container

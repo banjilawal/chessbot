@@ -20,6 +20,7 @@ from .endpoint import *
 from .permitter import *
 from .pipeline import *
 from .registry import *
+from .suite import *
 
 # Modules
 from .toolkit import Toolkit

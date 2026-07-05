@@ -5,16 +5,35 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/toolkit/math/vector/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/toolkit/model/coord/toolkit.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/toolkit/model/scalar/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/toolkit/model/scalar/toolkit.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/toolkit/model/vector/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/toolkit/model/vector/toolkit.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/toolkit/suite/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/toolkit/suite/suite.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/toolkit/suite/token/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/toolkit/suite/token/suite.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/state/validation/vector/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/state/validation/vector/exception.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/state/validation/vector/register/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/state/validation/vector/register/exception.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/validation/register/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/validation/register/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/validation/register/operand/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/validation/register/operand/operation.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/validation/register/square/operand/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/validation/register/square/operand/category.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/validation/register/square/operand/model.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/toolkit/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/toolkit/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/toolkit/analyzer/bootstrapper/register/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/toolkit/analyzer/bootstrapper/register/toolkit.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/toolkit/math/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/toolkit/math/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/toolkit/math/toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/toolkit/math/vector/toolkit.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/toolkit/model/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/toolkit/model/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/toolkit/model/state/register/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/toolkit/model/state/register/toolkit.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/toolkit/model/state/vector/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/toolkit/model/coord/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/toolkit/model/state/vector/operand/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/toolkit/model/state/vector/operand/toolkit.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/toolkit/model/state/vector/register/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/toolkit/model/state/vector/register/toolkit.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/toolkit/model/state/vector/toolkit.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/toolkit/permitter/register/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/toolkit/permitter/register/toolkit.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validation/register/operand/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/validation/register/operand/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validation/register/operand/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/validation/register/operand/validator.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,7 +87,7 @@
     "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/err/validation",
+    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/toolkit/model",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
@@ -79,18 +98,18 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/toolkit/model" />
+      <recent name="$PROJECT_DIR$/src/toolkit/suite" />
+      <recent name="$PROJECT_DIR$/src/toolkit" />
       <recent name="$PROJECT_DIR$/src/err/validation" />
       <recent name="$PROJECT_DIR$/src/err/model" />
-      <recent name="$PROJECT_DIR$/src/err" />
-      <recent name="$PROJECT_DIR$/src/validation" />
-      <recent name="$PROJECT_DIR$/src/toolkit/model/register/operand" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/toolkit/math/vector" />
       <recent name="$PROJECT_DIR$/src/validation/register" />
       <recent name="$PROJECT_DIR$/src/validation/register/square" />
       <recent name="$PROJECT_DIR$/src/model" />
       <recent name="$PROJECT_DIR$/src/model/state/math/quadrant" />
-      <recent name="$PROJECT_DIR$/src/model/register/operand" />
     </key>
   </component>
   <component name="RunManager" selected="Python.notifier">
@@ -816,7 +835,7 @@
       <workItem from="1782265217166" duration="7062000" />
       <workItem from="1782325486599" duration="56546000" />
       <workItem from="1782732939190" duration="235900000" />
-      <workItem from="1783222430394" duration="37522000" />
+      <workItem from="1783222430394" duration="41166000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />
@@ -1102,11 +1121,6 @@
           <url>file://$PROJECT_DIR$/src/toolkit/model/state/scalar/toolkit.py</url>
           <line>9</line>
           <option name="timeStamp" value="182" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/src/toolkit/model/__init__.py</url>
-          <line>11</line>
-          <option name="timeStamp" value="183" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/src/err/analyzer/readiness/exception.py</url>

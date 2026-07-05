@@ -10,6 +10,6 @@ version: 1.0.1
 # =========== TOOLKIT.MATH PACKAGE ===========#
 
 # Packages
+from .vector import *
 
 # Modules
-from .toolkit import MathToolkit
