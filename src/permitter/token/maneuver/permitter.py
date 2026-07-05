@@ -78,7 +78,7 @@ class TokenManeuverPermitter(TokenPermitter):
             toolkit = TokenManeuverToolkit()
         
         # Handle the case that, the token fails a validation check.
-        readiness_analysis_result = toolkit.readiness_analyzer.analyze(token)
+        readiness_analysis_result = toolkit.readiness_analyzer.analyze(subject=requestor)
         if readiness_analysis_result.is_failure:
             # Return the exception chain on failure
             return AnalysisResult.failure(
@@ -91,9 +91,8 @@ class TokenManeuverPermitter(TokenPermitter):
                     ex=readiness_analysis_result.exception,
                 )
             )
-            
         token_origin_search_result = toolkit.origin_searcher.execute(
-            token=requestor,
+            target=requestor,
             readiness_analyzer=toolkit.readiness_analyzer
         )
         # Handle the case that, the origin_searcher is not successful.

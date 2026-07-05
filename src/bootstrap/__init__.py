@@ -14,8 +14,11 @@ version: 1.0.1
 from .analyzer import *
 from .assembly import *
 from .insertion import *
-from .validation import *
 from .operation import *
+from .permitter import *
+from .searcher import *
+from .validation import *
+
 
 # Modules
 from bootstrapper import Bootstrapper

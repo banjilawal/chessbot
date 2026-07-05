@@ -5,12 +5,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/src/analyzer/readiness/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/analyzer/readiness/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bootstrap/analyzer/readiness/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/bootstrap/analyzer/readiness/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bootstrap/analyzer/readiness/combatant/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/analyzer/readiness/combatant/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bootstrap/analyzer/readiness/combatant/analyzer.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/analyzer/readiness/combatant/analyzer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bootstrap/analyzer/readiness/king/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/analyzer/readiness/king/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bootstrap/analyzer/readiness/king/analyzer.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/analyzer/readiness/king/analyzer.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/bootstrap/searcher/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/bootstrap/searcher/bootstrapper.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/bootstrap/searcher/origin/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/bootstrap/searcher/origin/bootstrapper.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/bootstrap/searcher/origin/origin/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/bootstrap/searcher/origin/origin/searcher.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/bootstrapper/searcher/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/bootstrapper/searcher/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/bootstrapper/searcher/readiness/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/bootstrapper/searcher/readiness/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bootstrap/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/bootstrap/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/bootstrapper/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/bootstrapper/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/permitter/token/maneuver/permitter.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/permitter/token/maneuver/permitter.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,7 +72,7 @@
     "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/toolkit/analyzer",
+    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/bootstrap/searcher/origin",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
@@ -75,11 +83,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/bootstrap/searcher/origin" />
+      <recent name="$PROJECT_DIR$/src/bootstrap" />
+      <recent name="$PROJECT_DIR$/src/err/bootstrapper" />
       <recent name="$PROJECT_DIR$/src/toolkit/analyzer" />
       <recent name="$PROJECT_DIR$/src/toolkit" />
-      <recent name="$PROJECT_DIR$/src/bootstrap/analyzer/readiness" />
-      <recent name="$PROJECT_DIR$/src/bootstrap/analyzer/readiness/combatant" />
-      <recent name="$PROJECT_DIR$/src/err/bootstrapper/operation" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/analyzer/readiness" />
@@ -811,7 +819,7 @@
       <workItem from="1782214489414" duration="8439000" />
       <workItem from="1782265217166" duration="7062000" />
       <workItem from="1782325486599" duration="56546000" />
-      <workItem from="1782732939190" duration="233456000" />
+      <workItem from="1782732939190" duration="234260000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />
