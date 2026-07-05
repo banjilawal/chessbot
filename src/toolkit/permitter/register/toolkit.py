@@ -10,12 +10,12 @@ version: 1.0.1
 from __future__ import annotations
 from dataclasses import dataclass
 
-from model import VectorRegister
+from model import VectorOperandRegister
 from toolkit import PermitterToolkit
 from validation import PrimingValidator, VectorOperandValidator
 
 @dataclass
-class VectorRegisterToolkit(PermitterToolkit[VectorRegister]):
+class VectorRegisterToolkit(PermitterToolkit[VectorOperandRegister]):
     """
     Role:
         -   Dependency Container

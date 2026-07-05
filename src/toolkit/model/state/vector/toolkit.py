@@ -11,11 +11,11 @@ from __future__ import annotations
 
 
 from toolkit import ModelToolkit
-from model import VectorRegister
+from model import VectorOperandRegister
 from validation import VectorOperandValidator
 
 
-class VectorRegisterToolkit(ModelToolkit[VectorRegister]):
+class VectorRegisterToolkit(ModelToolkit[VectorOperandRegister]):
     """
     Role:
         -   Container

@@ -1,7 +1,7 @@
-# src/bootstrap/validator/readiness/bootstrapper.py
+# src/bootstrap/validator/maneuver/bootstrapper.py
 
 """
-Module: bootstrap.validator.readiness.bootstrapper
+Module: bootstrap.validator.maneuver.bootstrapper
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -9,19 +9,9 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from typing import cast
-
-from bootstrap import ValidatorBootstrapper
-from err import ReadinessValidatorBootstrapperException
-from model import CombatantToken, KingToken, Token
-from report import TokenReadinessReport
-from result import ValidationResult
-from toolkit import ReadinessValidatorBootstrapperToolkit
-from util import LoggingLevelRouter
-from validation import TokenValidator
 
 
-class ReadinessValidatorBootstrapper(ValidatorBootstrapper):
+class ManeuverValidatorBootstrapper(ValidatorBootstrapper):
     """
     Role:
         -   Analysis Factory
@@ -49,8 +39,8 @@ class ReadinessValidatorBootstrapper(ValidatorBootstrapper):
     def validate(
             cls,
             subject: Token,
-            toolkit: ReadinessValidatorBootstrapperToolkit | None = None
-    ) -> ValidationResult[TokenReadinessReport]:
+            toolkit: ManeuverValidatorBootstrapperToolkit | None = None
+    ) -> ValidationResult[TokenManeuverReport]:
         """
         MAke sure the token can be used.
 
@@ -64,7 +54,7 @@ class ReadinessValidatorBootstrapper(ValidatorBootstrapper):
 
         Args:
             subject: Token
-            toolkit: ReadinessValidatorBootstrapperToolkit
+            toolkit: ManeuverValidatorBootstrapperToolkit
         Returns:
               ValidationResult[TokenFreedomReport]
         Raises:
@@ -74,29 +64,29 @@ class ReadinessValidatorBootstrapper(ValidatorBootstrapper):
         
         # --- Supply any missing dependencies. ---#
         if toolkit is None:
-            toolkit = ReadinessValidatorBootstrapperToolkit()
+            toolkit = ManeuverValidatorBootstrapperToolkit()
         
         # Handle the case that, the token does not pass a validation check.
         validation_result = toolkit.token_validator.validate(subject)
         # Send the exception chain on failure.
         if validation_result.is_failure:
             return ValidationResult.failure(
-                ReadinessValidatorBootstrapperException(
+                ManeuverValidatorBootstrapperException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    msg=ReadinessValidatorBootstrapperException.MSG,
-                    err_code=ReadinessValidatorBootstrapperException.ERR_CODE,
+                    msg=ManeuverValidatorBootstrapperException.MSG,
+                    err_code=ManeuverValidatorBootstrapperException.ERR_CODE,
                     ex=validation_result.exception
                 )
             )
         # Deal with the simplest universal case first, token has no been deployed.
         if subject.is_not_deployed:
-            return ValidationResult.completed(TokenReadinessReport.inactive(subject))
+            return ValidationResult.completed(TokenManeuverReport.inactive(subject))
 
         if isinstance(subject, CombatantToken):
-            return toolkit.combatant_readiness_validator.analyze(
+            return toolkit.combatant_maneuver_validator.analyze(
                 subject=cast(CombatantToken, subject)
             )
-        return toolkit.king_readiness_validator.analyze(
+        return toolkit.king_maneuver_validator.analyze(
             subject=cast(KingToken, subject)
         )

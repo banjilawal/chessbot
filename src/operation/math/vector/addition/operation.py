@@ -15,10 +15,10 @@ from util import LoggingLevelRouter
 from err import VectorAdditionException
 from toolkit import VectorOperandToolkit
 from operation import Operation, VectorRegisterValidator
-from model import Coord, CoordBlueprint, RegisterCategory, Vector, VectorBlueprint, VectorRegister
+from model import Coord, CoordBlueprint, OperandRegisterContentType, Vector, VectorBlueprint, VectorOperandRegister
 
 
-class AddVector(Operation[VectorRegister]):
+class AddVector(Operation[VectorOperandRegister]):
     """
     Role:
         -   Operation
@@ -46,7 +46,7 @@ class AddVector(Operation[VectorRegister]):
     @LoggingLevelRouter.monitor
     def execute(
             cls,
-            register: VectorRegister,
+            register: VectorOperandRegister,
             register_validator: VectorRegisterValidator | None = None,
             operand_toolkit: VectorOperandToolkit | None = None,
     ) -> ComputationResult[Coord|Vector]:
@@ -92,7 +92,7 @@ class AddVector(Operation[VectorRegister]):
                 )
         )
         build_result = None
-        if register.category == RegisterCategory.VECTOR_REGISTER:
+        if register.category == OperandRegisterContentType.VECTOR_REGISTER:
             blueprint = VectorBlueprint(
                 x=register.a.vector.x + register.b.vector.x,
                 y=register.a.vector.y + register.b.vector.y,
@@ -100,7 +100,7 @@ class AddVector(Operation[VectorRegister]):
             build_result = operand_toolkit.vector_builder.run(
                 blueprint=blueprint,
             )
-        if register.category == RegisterCategory.COORD_REGISTER:
+        if register.category == OperandRegisterContentType.COORD_REGISTER:
             blueprint = CoordBlueprint(
                 row=register.a.coord.row + register.b.coord.row,
                 column=register.a.coord.column + register.b.coord.column,

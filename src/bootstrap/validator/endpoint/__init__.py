@@ -1,3 +1,5 @@
+# src/bootstrap/validator/endpoint/__init__.py
+
 """
 Module: bootstrap.validator.endpoint.__init__
 Author: Banji Lawal
@@ -12,3 +14,4 @@ from .destination import *
 from .origin import *
 
 # Modules
+from .bootstrapper import EndpointCertifierBootstrapper

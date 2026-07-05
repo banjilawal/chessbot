@@ -10,13 +10,13 @@ version: 1.0.1
 from enum import Enum, auto
 
 
-class RegisterCategory(Enum):
+class OperandRegisterContentType(Enum):
     """
     Role:
         -   State
 
     Responsibilities:
-        1.  Describes What type of operands are in the register.
+        1.  Describes What type of operands are in the Vecregister.
 
     Attributes:
 

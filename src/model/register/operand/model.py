@@ -10,23 +10,23 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Dict, List
 
-from model import RegisterCategory, VectorOperand
+from model import OperandRegisterContentType, VectorOperand
 
 
-class VectorRegister:
+class VectorOperandRegister:
     _u: VectorOperand
     _v: VectorOperand
-    _category: RegisterCategory
+    _content_type: OperandRegisterContentType
     
     def __init__(
             self,
             u: VectorOperand,
             v: VectorOperand,
-            category: RegisterCategory
+            content: OperandRegisterContentType
     ):
         self._u = u
         self._v = v
-        self._category = category
+        self._content_type = content
         
     @property
     def a(self) -> VectorOperand:
@@ -37,8 +37,8 @@ class VectorRegister:
         return self._v
     
     @property
-    def category(self) -> RegisterCategory:
-        return self._category
+    def category(self) -> OperandRegisterContentType:
+        return self._content_type
     
     @property
     def to_list(self) -> List[VectorOperand]:

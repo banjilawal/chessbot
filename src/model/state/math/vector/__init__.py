@@ -11,7 +11,6 @@ version: 1.0.1
 
 # Packages
 from .operand import *
-from .register import *
 
 # Modules
 from .model import Vector

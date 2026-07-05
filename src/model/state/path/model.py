@@ -25,7 +25,6 @@ class Path:
         1.  Provide the endpoints of a token's step.
 
     Attributes:
-        id: int
         origin: Square
         destination: Square
         cost: Optional[int]
@@ -34,10 +33,11 @@ class Path:
 
     Super Class:
     """
-    id: int
     origin: Square
     destination: Square
+    id: Optional[int] = None
     cost: Optional[int] = None
+
         
         
         

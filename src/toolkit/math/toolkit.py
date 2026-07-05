@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 
-from model import VectorRegister
+from model import VectorOperandRegister
 from toolkit import Toolkit
 from integrity import CoordBuilder, ScalarBuilder, VectorBuilder
 from validation import (

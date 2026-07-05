@@ -14,13 +14,13 @@ from err import (
     VectorRegisterMismatchException, VectorRegisterNullException, VectorRegisterValidationException
 )
 from operation import Validator
-from model import VectorRegister
+from model import VectorOperandRegister
 from result import ValidationResult
 from util import LoggingLevelRouter
 from toolkit import VectorRegisterToolkit
 
 
-class VectorRegisterValidator(Validator[VectorRegister]):
+class VectorRegisterValidator(Validator[VectorOperandRegister]):
     """
     Role
         -   Transaction Worker
@@ -51,7 +51,7 @@ class VectorRegisterValidator(Validator[VectorRegister]):
             cls,
             candidate: Any,
             toolkit: VectorRegisterToolkit | None = None,
-    ) -> ValidationResult[VectorRegister]:
+    ) -> ValidationResult[VectorOperandRegister]:
         """
         Verify the candidate is a safe VectorRegister.
         
@@ -79,7 +79,7 @@ class VectorRegisterValidator(Validator[VectorRegister]):
         # Handle the case that, the candidate does not exist.
         validation_priming_result = toolkit.priming_validator.validate(
             candidate=candidate,
-            target_model=VectorRegister,
+            target_model=VectorOperandRegister,
             context_null_exception=VectorRegisterNullException(),
         )
         if validation_priming_result.is_failure:
@@ -94,7 +94,7 @@ class VectorRegisterValidator(Validator[VectorRegister]):
                 )
             )
         # --- Cast candidate to a VectorRegister for additional tests. ---#
-        register = cast(VectorRegister, candidate)
+        register = cast(VectorOperandRegister, candidate)
         
         # Handle the case that, the validator flags either register
         for item in register.to_list:

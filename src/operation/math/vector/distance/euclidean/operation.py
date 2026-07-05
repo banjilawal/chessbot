@@ -17,10 +17,10 @@ from result import ComputationResult
 from util import LoggingLevelRouter
 from err import VectorEuclideanException
 from operation import Operation, VectorRegisterValidator
-from model import RegisterCategory, Scalar, ScalarBlueprint, VectorRegister
+from model import OperandRegisterContentType, Scalar, ScalarBlueprint, VectorOperandRegister
 
 
-class EuclideanDistance(Operation[VectorRegister]):
+class EuclideanDistance(Operation[VectorOperandRegister]):
     """
     Role:
         -   Operation
@@ -47,7 +47,7 @@ class EuclideanDistance(Operation[VectorRegister]):
     @LoggingLevelRouter.monitor
     def execute(
             cls,
-            register: VectorRegister,
+            register: VectorOperandRegister,
             register_validator: VectorRegisterValidator | None = None,
             scalar_build_pipeline: ScalarBuildPipeline | None = None,
     ) -> ComputationResult[Scalar]:
@@ -96,13 +96,13 @@ class EuclideanDistance(Operation[VectorRegister]):
         magnitude = None
         
         # For vector contexts
-        if register.category == RegisterCategory.VECTOR_REGISTER:
+        if register.category == OperandRegisterContentType.VECTOR_REGISTER:
             magnitude=sqrt(
                     (register.a.vector.y - register.b.vector.y)**2 +
                     (register.a.vector.x - register.b.vector.x)**2
                 )
         # For Coord contexts
-        if register.category == RegisterCategory.VECTOR_REGISTER:
+        if register.category == OperandRegisterContentType.VECTOR_REGISTER:
             magnitude = sqrt(
                 (register.a.coord.row - register.b.coord.row) ** 2 +
                 (register.a.coord.column - register.b.coord.column) ** 2
