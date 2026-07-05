@@ -46,6 +46,7 @@ class Vector(Model):
     Provides:
     
     Super Class:
+        Model
     """
     _x: int
     _y: int

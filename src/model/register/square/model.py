@@ -8,12 +8,11 @@ version: 1.0.1
 """
 
 from __future__ import annotations
-from typing import Any, Dict, List
 
-from model import Model, Square
+from model import Register, Square
 
 
-class SquareRegister(Model):
+class SquareRegister(Register[Square]):
     """
     Role:
         -   Model
@@ -23,12 +22,15 @@ class SquareRegister(Model):
         1.  Contains the endpoints of a journey.
 
     Attributes:
-            origin: Square
-            destination: Square
+        origin: Square
+        destination: Square
+        origin_is_destination: bool
+        origin_is_not_destination: bool
             
     Provides:
 
     Super Class:
+        Register
     """
     _origin: Square
     _destination: Square
@@ -39,25 +41,16 @@ class SquareRegister(Model):
             origin: Square
             destination: Square
         """
-        self._origin = origin
-        self._destination = destination
+        super().__init__(a=origin, b=destination)
         
     @property
     def origin(self) -> Square:
-        return self._origin
+        return self.a
     
     @property
     def destination(self) -> Square:
-        return self._destination
-    
-    @property
-    def to_list(self) -> List[Square]:
-        return [self._origin, self._destination]
-    
-    @property
-    def to_dict(self) -> Dict[str, Any]:
-        return {"origin": self._origin, "destination": self._destination}
-    
+        return self.b
+
     @property
     def origin_is_destination(self) -> bool:
         return self._origin == self._destination

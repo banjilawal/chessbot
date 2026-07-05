@@ -8,30 +8,35 @@ version: 1.0.1
 """
 
 from __future__ import annotations
-from typing import Any, Dict, List, Optional
 
-from model import Model, RegisterContentType, VectorOperand
+from typing import Optional
+
+from model import Register, RegisterContentType, VectorOperand
 
 
-class VectorOperandRegister(Model):
+class VectorOperandRegister(Register[VectorOperand]):
     """
         -   Model
         -   Data Holder
 
     Responsibilities:
-        1.  Describes What type of operands are in the Vecregister.
+        1.  Contains VectorOperands passed to vector algebra.
 
     Attributes:
-            u: VectorOperand,
-            v: VectorOperand,
-            content_type: OperandRegisterContentType
-    Provides:
+        a: VectorOperand
+        b: VectorOperand
+        content_type: OperandRegisterContentType
+        
+        a_is_same_as_b: bool
+        a_is_not_same_as_b: bool
+        is_vector_register:bool
+        is_coord_register: bool
+        to_list: List[T]
+        to_dict: Dict[str, T]
 
     Super Class:
-        Enum
+        Register
     """
-    _a: VectorOperand
-    _b: VectorOperand
     _content_type: Optional[RegisterContentType]
     
     def __init__(
@@ -46,8 +51,7 @@ class VectorOperandRegister(Model):
             b: VectorOperand
             content_type: OperandRegisterContentType
         """
-        self._a = a
-        self._b = b
+        super().__init__(a=a, b=b)
         self._content_type = content_type
         
     @property
@@ -61,10 +65,6 @@ class VectorOperandRegister(Model):
     @property
     def category(self) -> Optional[RegisterContentType]:
         return self._content_type
-    
-    @property
-    def to_list(self) -> List[VectorOperand]:
-        return [self._a, self._b]
     
     @property
     def to_dict(self) -> Dict[str, Any]:

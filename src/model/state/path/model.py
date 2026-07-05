@@ -34,6 +34,7 @@ class Path:
     Provides:
 
     Super Class:
+        Model
     """
     endpoints: SquareRegister
     id: Optional[int] = None

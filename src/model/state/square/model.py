@@ -41,6 +41,7 @@ class Square:
         -   def is_occupied() -> bool
 
     Super Class:
+        Model
     """
     _id: int
     _name: str

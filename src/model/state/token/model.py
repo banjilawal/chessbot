@@ -43,6 +43,7 @@ class Token(ABC):
     Provides:
 
     Super Class:
+        Model
     """
     _id: int
     _team: Team

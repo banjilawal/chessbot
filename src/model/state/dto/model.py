@@ -26,6 +26,7 @@ class Dto:
     Provides:
 
     Super Class:
+        Model
     """
         
         

@@ -31,6 +31,7 @@ class Attack:
     Provides:
 
     Super Class:
+        Model
     """
     _id: int
     _maneuver: Maneuver

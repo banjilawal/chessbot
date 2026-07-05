@@ -14,3 +14,4 @@ from .operand import *
 from .square import *
 
 # Modules
+from .model import Register

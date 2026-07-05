@@ -37,6 +37,7 @@ class Rank(ABC):
         -   dict span_dict(self) -> ComputationResult[Dict[str, CoordSpan]]:
         
     Super Class:
+        Model
     """
     _persona: Persona
     _coord_service: CoordService

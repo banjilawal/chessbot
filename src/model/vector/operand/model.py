@@ -36,6 +36,7 @@ class VectorOperand(Model):
     Provides:
 
     Super Class:
+        Model
     """
     _vector: Optional[Vector]
     _coord: Optional[Coord]

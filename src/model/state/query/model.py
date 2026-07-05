@@ -34,6 +34,7 @@ class Query(ABC, Generic[T]):
     Provides:
 
     Super Class:
+        Model
     """
     context: Context[T]
     

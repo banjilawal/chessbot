@@ -17,17 +17,18 @@ class Coord(Model):
     Role:
         -   Addressing
         -   Data-Holder
-  
+    
     Responsibilities:
         1.  Shared key between Squares and Tokens. Board array indices.
-        
+    
     Attributes:
         row: int
         column: int
-        
+    
     Provides:
     
     Super Class:
+        Model
     """
     _row: int
     _column: int

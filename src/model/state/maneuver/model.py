@@ -32,6 +32,7 @@ class Maneuver:
     Provides:
 
     Super Class:
+        Model
     """
     token: Token
     path: Path

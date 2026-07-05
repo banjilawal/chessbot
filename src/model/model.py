@@ -20,5 +20,6 @@ class Model:
     Provides:
 
     Super Class:
+        Model
     """
     pass

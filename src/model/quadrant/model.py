@@ -30,6 +30,7 @@ class Quadrant(Enum):
     Provides:
 
     Super Class:
+        Model
     """
     def __new__(cls, quad_id: int, vector: Vector):
         obj = object.__new__(cls)

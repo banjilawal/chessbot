@@ -27,6 +27,7 @@ class Board:
         binder_controller: ArenaBinderController
         
     Super Class:
+        Model
     """
     _id: int
     _arena: Arena
