@@ -13,7 +13,7 @@ from typing import cast
 
 from bootstrap import ValidatorBootstrapper
 from err import (
-    DestinationCertifierBootstrapperException, PartialTokenDestinationRelationException,
+    BlockedPathException, DestinationCertifierBootstrapperException, PartialTokenDestinationRelationException,
     TokenAlreadyAtDestinationException
 )
 from model import Square, Token
@@ -32,9 +32,9 @@ class DestinationCertifierBootstrapper(ValidatorBootstrapper):
         -   Consistency Assurance
 
     Responsibilities:
-        1.  Verify a Token neither has, a partial nor fully bidirectional relation it wants
-            to visit.
-        2.  Prevents circular square visits.
+        1.  Verify a Token does not have either a partial or full bidirectional relation with the
+            square it wants to visit.
+        2.  Prevents visiting friendly squares.
 
     Attributes:
 
@@ -59,12 +59,13 @@ class DestinationCertifierBootstrapper(ValidatorBootstrapper):
             toolkit: TokenEndpointRelationToolkit | None = None,
     ) -> ValidationResult[Square]:
         """
-        Makes sure a Token is not already in a Square it wants to visit.
+        Makes sure a Token can travel to a destination.
 
         Action:
             1.  Send an exception chan in the validation result if either:
                     -   The relation analysis is not completed.
                     -   The token is either fully or partially bound to the destination.
+                    -   The destination is occupied by a friend.
             2.  Otherwise, send the success result.
         Args:
             token: Token
@@ -135,6 +136,24 @@ class DestinationCertifierBootstrapper(ValidatorBootstrapper):
                     ex=TokenAlreadyAtDestinationException(
                         msg=TokenAlreadyAtDestinationException.MSG,
                         err_code=TokenAlreadyAtDestinationException.ERR_CODE,
+                    ),
+                )
+            )
+        # Handle the case that, the destination is occupied by a friend.
+        occupant = destination.occupant
+        if token.is_enemy(occupant):
+            # Send the exception chain on failure.
+            return ValidationResult.failure(
+                DestinationCertifierBootstrapperException(
+                    cls_mthd=method,
+                    cls_name=cls.__name__,
+                    msg=DestinationCertifierBootstrapperException.MSG,
+                    err_code=DestinationCertifierBootstrapperException.ERR_CODE,
+                    ex=BlockedPathException(
+                        cls_mthd=method,
+                        cls_name=cls.__name__,
+                        msg=BlockedPathException.MSG,
+                        err_code=BlockedPathException.ERR_CODE,
                     ),
                 )
             )
