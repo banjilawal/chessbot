@@ -1,7 +1,7 @@
-# src/bootstrap/validator/destination/bootstrapper.py
+# src/bootstrap/validator/endpoint/destination/bootstrapper.py
 
 """
-Module: bootstrap.validator.destination.bootstrapper
+Module: bootstrap.validator.endpoint.destination.bootstrapper
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -23,7 +23,6 @@ from toolkit import TokenEndpointRelationToolkit
 from util import LoggingLevelRouter
 
 
-
 class DestinationCertifierBootstrapper(ValidatorBootstrapper):
     """
     Role
@@ -32,8 +31,8 @@ class DestinationCertifierBootstrapper(ValidatorBootstrapper):
         -   Consistency Assurance
 
     Responsibilities:
-        1.  Verify a Token does not have either a partial or full bidirectional relation with the
-            square it wants to visit.
+        1.  Verify a Token does not have either a partial or full bidirectional relation
+            with the square it wants to visit.
         2.  Prevents visiting friendly squares.
 
     Attributes:

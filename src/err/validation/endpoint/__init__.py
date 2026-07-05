@@ -10,6 +10,8 @@ version: 1.0.1
 # ============ ERR.VALIDATION.ENDPOINT PACKAGE ===========#
 
 # Packages
+from .destination import *
+from .origin import *
 
 # Modules
 from .exception import ManeuverEndpointValidatorException

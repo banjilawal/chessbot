@@ -10,7 +10,7 @@ version: 1.0.1
 # =========== ERR.BOOTSTRAP.VALIDATOR PACKAGE ===========#
 
 # Packages
-from .destination import *
+from .endpoint import *
 from .readiness import *
 
 # Modules

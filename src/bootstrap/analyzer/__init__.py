@@ -10,7 +10,6 @@ version: 1.0.1
 # =========== BOOTSTRAP.ANALYZER PACKAGE ===========#
 
 # Packages
-from .destination import *
 from .readiness import *
 
 # Modules

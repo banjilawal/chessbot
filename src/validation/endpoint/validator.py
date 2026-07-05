@@ -14,8 +14,7 @@ from err import ManeuverEndpointValidatorException
 from model import Square, Token
 from result import ValidationResult
 from util import LoggingLevelRouter
-from validation import TokenDestinationCertifier
-from validation.endpoint.origin import TokenOriginCertifier
+from validation import TokenDestinationCertifier, TokenOriginCertifier
 
 
 class ManeuverEndpointValidator:
@@ -50,8 +49,8 @@ class ManeuverEndpointValidator:
             token: Token,
             origin: Square,
             destination: Square,
-            origin_relation_validator: TokenOriginCertifier | None = None,
-            destination_relation_validator: TokenDestinationCertifier | None = None,
+            origin_certifier: TokenOriginCertifier | None = None,
+            destination_certifier: TokenDestinationCertifier | None = None,
     ) -> ValidationResult[int]:
         """
         Makes sure the token is only at the origin at the beginning of a maneuver.
@@ -65,8 +64,8 @@ class ManeuverEndpointValidator:
             token: Token
             origin: Square
             destination: Square
-            origin_relation_validator: TokenOriginRelationValidator
-            destination_relation_validator: TokenDestinationRelationValidator
+            origin_certifier: TokenOriginRelationValidator
+            destination_certifier: TokenDestinationRelationValidator
         Returns:
             ValidationResult[int]
         Raises:
@@ -75,13 +74,13 @@ class ManeuverEndpointValidator:
         method = f"{cls.__name__}.validator"
         
         # --- Supply any missing dependencies. ---#
-        if origin_relation_validator is None:
-            origin_relation_validator = TokenOriginCertifier(),
-        if destination_relation_validator is None:
-            destination_relation_validator = TokenDestinationCertifier()
+        if origin_certifier is None:
+            origin_certifier = TokenOriginCertifier(),
+        if destination_certifier is None:
+            destination_certifier = TokenDestinationCertifier()
         
         # Handle the case that, the token is not at the origin
-        token_origin_relation_analysis_result = origin_relation_validator.validate(
+        token_origin_relation_analysis_result = origin_certifier.validate(
             token=token,
             origin=origin,
         )
@@ -97,7 +96,7 @@ class ManeuverEndpointValidator:
                 )
             )
         # Handle the case that, the token is already at the destination.
-        token_destination_relation_analysis_result = destination_relation_validator.validate(
+        token_destination_relation_analysis_result = destination_certifier.validate(
             token=token,
             destination=destination,
         )

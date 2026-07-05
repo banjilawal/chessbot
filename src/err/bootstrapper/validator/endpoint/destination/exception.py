@@ -1,33 +1,33 @@
-# src/err/validation/destination/partial/exception.py
+# src/err/bootstrap/validator/endpoint/destination/exception.py
 
 """
-Module: err.validation.destination.partial.exception
+Module: err.bootstrapper.validator.endpoint.destination.exception
 Author: Banji Lawal
-Created: 2026-04-04
+Created: 2026-04-03
 version: 1.0.1
 """
 
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import ValidatorException
+from err import ValidatorBootstrapperException
 from result import MethodResultType
 
 __all__ = [
-    # ======================# PARTIAL_TOKEN_DESTINATION_RELATION_ERROR #======================#
-    "PartialTokenDestinationRelationException",
+    # ======================# DESTINATION_CERTIFIER_BOOTSTRAPPER_FAILURE #======================#
+    "DestinationCertifierBootstrapperException",
 ]
 
-# ======================# PARTIAL_TOKEN_DESTINATION_RELATION_ERROR #======================#
-class PartialTokenDestinationRelationException(ValidatorException):
+# ======================# DESTINATION_CERTIFIER_BOOTSTRAPPER_FAILURE #======================#
+class DestinationCertifierBootstrapperException(ValidatorBootstrapperException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate a Token and its destination have a either a missing registration 
-            or a stale between them instead of no relation at all.
-
+        1.  Indicate that an error prevented a DestinationCertifierBootstrapper 
+            from completing its task.
+        
     Attributes:
         msg: Optional[str]
         var: Optional[str]
@@ -41,19 +41,20 @@ class PartialTokenDestinationRelationException(ValidatorException):
     Provides:
 
     Super Class:
-        ValidatorException
+        ValidatorBootstrapperException
     """
-    MSG = "Candidate did not pass a Token and destination have a partial relation where none should exist."
-    ERR_CODE = "PARTIAL_TOKEN_DESTINATION_RELATION_ERROR"
+    MSG = "DestinationCertifierBootstrapper encountered an error."
+    ERR_CODE = "DESTINATION_CERTIFIER_BOOTSTRAPPER_FAILURE"
+    MTHD_RSLT_TYPE = MethodResultType.ANALYSIS_RESULT
     
     def __init__(
             self,
             msg: Optional[str] | None = None,
             var: Optional[str] | None = None,
             val: Optional[Any] | None = None,
-            ex: Optional[Exception] | None = None,
-            cls_name: Optional[str] | None = None,
             cls_mthd: Optional[str] | None = None,
+            cls_name: Optional[str] | None = None,
+            ex: Optional[Exception] | None = None,
             err_code: Optional[str] | None = None,
             mthd_rslt_type: Optional[MethodResultType] | None = None,
     ):
@@ -70,7 +71,7 @@ class PartialTokenDestinationRelationException(ValidatorException):
         """
         msg = msg or self.MSG
         err_code = err_code or self.ERR_CODE
-        mthd_rslt_type = mthd_rslt_type or self.mthd_rslt_type
+        mthd_rslt_type = mthd_rslt_type or self.MTHD_RSLT_TYPE
         super().__init__(
             ex=ex,
             msg=msg,

@@ -1,33 +1,33 @@
-# src/err/validation/destination/circular/exception.py
+# src/err/bootstrap/validator/endpoint/origin/exception.py
 
 """
-Module: err.validation.destination.circular.exception
+Module: err.bootstrapper.validator.endpoint.origin.exception
 Author: Banji Lawal
-Created: 2026-04-04
+Created: 2026-04-03
 version: 1.0.1
 """
 
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import ValidatorException
+from err import ValidatorBootstrapperException
 from result import MethodResultType
 
 __all__ = [
-    # ======================# TOKEN_ALREADY_AT_DESTINATION_ERROR #======================#
-    "TokenAlreadyAtDestinationException",
+    # ======================# ORIGIN_CERTIFIER_BOOTSTRAPPER_FAILURE #======================#
+    "OriginCertifierBootstrapperException",
 ]
 
-# ======================# TOKEN_ALREADY_AT_DESTINATION_ERROR #======================#
-class TokenAlreadyAtDestinationException(ValidatorException):
+# ======================# ORIGIN_CERTIFIER_BOOTSTRAPPER_FAILURE #======================#
+class OriginCertifierBootstrapperException(ValidatorBootstrapperException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate an Itinerary's token has a full binding to the destination. This
-            means its already at the destination.
-
+        1.  Indicate that an error prevented an OriginCertifierBootstrapper
+            from completing its task.
+        
     Attributes:
         msg: Optional[str]
         var: Optional[str]
@@ -41,19 +41,20 @@ class TokenAlreadyAtDestinationException(ValidatorException):
     Provides:
 
     Super Class:
-        ValidatorException
+        ValidatorBootstrapperException
     """
-    MSG = "Candidate did not pass a Token is already at the destination."
-    ERR_CODE = "TOKEN_ALREADY_AT_DESTINATION_ERROR"
+    MSG = "OriginCertifierBootstrapper encountered an error."
+    ERR_CODE = "ORIGIN_CERTIFIER_BOOTSTRAPPER_FAILURE"
+    MTHD_RSLT_TYPE = MethodResultType.ANALYSIS_RESULT
     
     def __init__(
             self,
             msg: Optional[str] | None = None,
             var: Optional[str] | None = None,
             val: Optional[Any] | None = None,
-            ex: Optional[Exception] | None = None,
-            cls_name: Optional[str] | None = None,
             cls_mthd: Optional[str] | None = None,
+            cls_name: Optional[str] | None = None,
+            ex: Optional[Exception] | None = None,
             err_code: Optional[str] | None = None,
             mthd_rslt_type: Optional[MethodResultType] | None = None,
     ):
@@ -70,7 +71,7 @@ class TokenAlreadyAtDestinationException(ValidatorException):
         """
         msg = msg or self.MSG
         err_code = err_code or self.ERR_CODE
-        mthd_rslt_type = mthd_rslt_type or self.mthd_rslt_type
+        mthd_rslt_type = mthd_rslt_type or self.MTHD_RSLT_TYPE
         super().__init__(
             ex=ex,
             msg=msg,
