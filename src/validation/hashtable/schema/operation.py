@@ -76,13 +76,13 @@ class SchemaHashtableValidator(Validator[Dict[Schema, Any]]):
         """
         method = f"{cls.__name__}.validate"
             
-        # Handle the case that, the candidate does not exist.
-        validation_priming_result = priming_validator.build(
+        # Handle the case that, the validator is not primed.
+        validator_priming_result = priming_validator.build(
             candidate=candidate,
             target_model=Dict[Schema, Any],
             context_null_exception=HashtableNullException(),
         )
-        if validation_priming_result.is_failure:
+        if validator_priming_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 SchemaHashtableValidationException(
@@ -90,10 +90,10 @@ class SchemaHashtableValidator(Validator[Dict[Schema, Any]]):
                     cls_name=cls.__name__,
                     msg=SchemaHashtableValidationException.MSG,
                     err_code=SchemaHashtableValidationException.ERR_CODE,
-                    ex=validation_priming_result.exception,
+                    ex=validator_priming_result.exception,
                 )
             )
-        table = cast(Dict[Schema, Any], validation_priming_result.payload)
+        table = cast(Dict[Schema, Any], validator_priming_result.payload)
         
         for key in table.keys():
             schema_validation_result = schema_validator.validate.build(table[key])

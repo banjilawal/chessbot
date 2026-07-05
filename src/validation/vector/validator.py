@@ -74,13 +74,13 @@ class VectorValidator(Validator[Vector]):
         if toolkit is None:
             toolkit = VectorToolkit()
         
-        # Handle the case that, the candidate does not exist.
-        validation_priming_result = toolkit.priming_validator.validate(
+        # Handle the case that, the validator is not primed.
+        validator_priming_result = toolkit.priming_validator.validate(
             candidate=candidate,
             target_model=toolkit.model,
             context_null_exception=toolkit.null_exception,
         )
-        if validation_priming_result.is_failure:
+        if validator_priming_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 VectorValidatorException(
@@ -88,7 +88,7 @@ class VectorValidator(Validator[Vector]):
                     cls_name=cls.__name__,
                     msg=VectorValidatorException.MSG,
                     err_code=VectorValidatorException.ERR_CODE,
-                    ex=validation_priming_result.exception,
+                    ex=validator_priming_result.exception,
                 )
             )
         # --- Cast the candidate to a Vector for additional tests ---#
@@ -98,7 +98,6 @@ class VectorValidator(Validator[Vector]):
         for num in [vector.x, vector.y]:
             validation_result = toolkit.number_validator.validate(
                 floor=0,
-                ceiling=setting.b - 1,
                 candidate=abs(num)
             )
             if validation_result.is_failure:
@@ -109,7 +108,7 @@ class VectorValidator(Validator[Vector]):
                         cls_name=cls.__name__,
                         msg=VectorValidatorException.MSG,
                         err_code=VectorValidatorException.ERR_CODE,
-                        ex=validation_priming_result.exception,
+                        ex=validator_priming_result.exception,
                     )
                 )
         # --- Forward the work product to the caller. ---#

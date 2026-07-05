@@ -82,13 +82,13 @@ class ItineraryValidator(Validator[Itinerary]):
             consistency_validator = ItineraryConsistencyValidator()
         
         # Use the validation primer for existence and type checking.
-        validation_priming_result = toolkit.priming_validator.validate(
+        validator_priming_result = toolkit.priming_validator.validate(
             candidate=candidate,
             target_model=toolkit.model_type,
             context_null_exception=toolkit.null_exception,
         )
         # Handle the case that, the base checks are not passed.
-        if validation_priming_result.is_failure:
+        if validator_priming_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 ItineraryValidationException(
@@ -96,7 +96,7 @@ class ItineraryValidator(Validator[Itinerary]):
                     cls_name=cls.__name__,
                     msg=ItineraryValidationException.MSG,
                     err_code=ItineraryValidationException.ERR_CODE,
-                    ex=validation_priming_result.exception,
+                    ex=validator_priming_result.exception,
                 )
             )
         # --- Cast the candidate into an Itinerary for additional tests ---#
@@ -106,7 +106,7 @@ class ItineraryValidator(Validator[Itinerary]):
         for square in [itinerary.source, itinerary.destination]:
             square_validation_result = toolkit.square_validator.validate(square)
             if square_validation_result.is_failure:
-                if validation_priming_result.is_failure:
+                if validator_priming_result.is_failure:
                     # Send the exception chain on failure.
                     return ValidationResult.failure(
                         ItineraryValidationException(

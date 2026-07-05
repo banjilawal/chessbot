@@ -80,13 +80,13 @@ class TokenQueryValidator(Validator[TokenQuery]):
         if context_validator is None:
             context_validator = TokenContextValidator()
         
-        priming_validation_result = priming_validator.validate(
+        validator_priming_result = priming_validator.validate(
             candidate=candidate,
             target_model=TokenQuery,
             null_exception=TokenQueryNullException(),
         )
         # Handle the nonexistence case.
-        if priming_validation_result.failure:
+        if validator_priming_result.failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 TokenQueryValidationException(
@@ -95,7 +95,7 @@ class TokenQueryValidator(Validator[TokenQuery]):
                     msg=TokenQueryValidationException.MSG,
                     err_code=TokenQueryValidationException.ERR_CODE,
                     mthd_rslt_type=MethodResultType.VALIDATION_RESULT,
-                    ex=priming_validation_result.exception,
+                    ex=validator_priming_result.exception,
                 )
             )
         # --- Cast the candidate into TokenQuery for additional tests. ---#
@@ -115,7 +115,7 @@ class TokenQueryValidator(Validator[TokenQuery]):
                     ex=context_validation_result.exception
                 )
             )
-        stack_validation_result = priming_validation_result = priming_validator.validate(
+        stack_validation_result = validator_priming_result = priming_validator.validate(
             candidate=query.stack,
             target_model=TokenStackService,
             null_exception=TokenStackNullException(),

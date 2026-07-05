@@ -14,7 +14,6 @@ from .arena import *
 from .binder import *
 from .blueprint import *
 from .board import *
-from .priming import *
 from .context import *
 from .coord import *
 from .edge import *
@@ -31,7 +30,6 @@ from .operand import *
 from .path import *
 from .persona import *
 from .player import *
-from .priming import *
 from .query import *
 from .rank import *
 from .register import *

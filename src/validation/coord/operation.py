@@ -73,13 +73,13 @@ class CoordValidator(Validator[Coord]):
         if toolkit is None:
             toolkit = MathToolkit()
         
-        # Handle the case that, the candidate does not exist.
-        validation_priming_result = toolkit.priming_validator.build(
+        # Handle the case that, the validator is not primed.
+        validator_priming_result = toolkit.priming_validator.build(
             candidate=candidate,
             target_model=Coord,
             context_null_exception=CoordNullException(),
         )
-        if validation_priming_result.is_failure:
+        if validator_priming_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 CoordValidationException(
@@ -87,7 +87,7 @@ class CoordValidator(Validator[Coord]):
                     cls_name=cls.__name__,
                     msg=CoordValidationException.MSG,
                     err_code=CoordValidationException.ERR_CODE,
-                    ex=validation_priming_result.exception,
+                    ex=validator_priming_result.exception,
                 )
             )
         # --- Cast the candidate to a Coord for additional tests ---#

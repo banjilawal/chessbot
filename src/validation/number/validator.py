@@ -81,13 +81,13 @@ class NumberValidator(Validator[int]):
         if priming_validator is None:
             priming_validator = PrimingValidator()
         
-        # Handle the case that, the candidate does not exist.
-        validation_priming_result = priming_validator.validate(
+        # Handle the case that, the validator is not primed.
+        validator_priming_result = priming_validator.validate(
             candidate=candidate,
             target_model=int,
             null_exception=NumberNullException(),
         )
-        if validation_priming_result.is_failure:
+        if validator_priming_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                NumberValidatorException(
@@ -95,7 +95,7 @@ class NumberValidator(Validator[int]):
                     cls_name=cls.__name__,
                     msg=NumberValidatorException.MSG,
                     err_code=NumberValidatorException.ERR_CODE,
-                    ex=validation_priming_result.exception,
+                    ex=validator_priming_result.exception,
                 )
             )
         # --- Cast the candidate into a Token for additional tests ---#

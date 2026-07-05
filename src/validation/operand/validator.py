@@ -10,15 +10,12 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, cast
 
-from operation import Validator
+from err import ExcessVectorOperandFlagsException, VectorOperandValidationException, ZeroVectorOperandFlagsException
+from model import VectorOperand
 from result import ValidationResult
+from toolkit import VectorOperandToolkit
 from util import LoggingLevelRouter
-from model import Coord, Vector, VectorOperand
-from toolkit.context import VectorOperandToolkit
-from err import (
-    ExcessVectorOperandFlagsException, VectorOperandNullException, VectorOperandValidationException,
-    ZeroVectorOperandFlagsException
-)
+from validation import Validator
 
 
 class VectorOperandValidator(Validator[VectorOperand]):
@@ -74,21 +71,19 @@ class VectorOperandValidator(Validator[VectorOperand]):
             VectorOperandValidationException
             ExcessVectorOperandFlagsException
         """
-        OPERATION_NAME = "operand_validator"
-        
         method = f"{cls.__name__}.validate"
         
         # --- Supply missing dependencies. ---#
         if toolkit is None:
             toolkit = VectorOperandToolkit()
         
-        # Handle the case that, the candidate does not exist or, is the wrong type.
-        validation_priming_result = toolkit.priming_validator.build(
+        # Handle the case that, the validator is not primed.
+        validator_priming_result = toolkit.priming_validator.build(
             candidate=candidate,
-            target_model=VectorOperand,
-            context_null_exception=VectorOperandNullException(),
+            target_model=toolkit.model,
+            context_null_exception=toolkit.null_exception,
         )
-        if validation_priming_result.is_failure:
+        if validator_priming_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 VectorOperandValidationException(
@@ -96,11 +91,11 @@ class VectorOperandValidator(Validator[VectorOperand]):
                     cls_name=cls.__name__,
                     msg=VectorOperandValidationException.MSG,
                     err_code=VectorOperandValidationException.ERR_CODE,
-                    ex=validation_priming_result.exception
+                    ex=validator_priming_result.exception
                 )
             )
         # --- Cast candidate to a VectorOperand for additional tests. ---#
-        operand = cast(VectorOperand, candidate)
+        operand = cast(toolkit.model, candidate)
         
         # Handle the case that neither option is enabled.
         if len(operand.to_dict) == 0:
@@ -132,12 +127,16 @@ class VectorOperandValidator(Validator[VectorOperand]):
                     )
                 )
             )
-        # --- Assign to the correct service for the final step. ---#
+        """
+           Route to the appropriate validator and get its result so only have
+           one failure block.
+        """
+        # ---  ---#
         validation_result = None
-        if isinstance(operand.vector, Vector):
-            validation_result = toolkit.vector_service.validate.build(operand.vector)
-        if isinstance(operand.coord, Coord):
-            validation_result = toolkit.coord_service.validate.build(operand.to_dict)
+        if operand.is_vector:
+            validation_result = toolkit.vector.validator.validate(operand.vector)
+        if operand.is_coord:
+            validation_result = toolkit.coord.validator.validate(operand.coord)
             
         # Handle the case that context was flagged.
         if validation_result.is_failure:

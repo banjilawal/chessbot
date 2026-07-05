@@ -85,12 +85,12 @@ class ContextPrimingValidator(Validator[Context]):
             priming_validator = PrimingValidator()
         
         # Handle the case that, either the null or type check fails.
-        validation_priming_result = priming_validator.validate(
+        validator_priming_result = priming_validator.validate(
             candidate=candidate,
             target_model=context_model,
             null_exception=context_null_exception,
         )
-        if validation_priming_result.is_failure:
+        if validator_priming_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 ContextValidationException(
@@ -98,7 +98,7 @@ class ContextPrimingValidator(Validator[Context]):
                     cls_name=cls.__name__,
                     msg=ContextValidationException.MSG,
                     err_code=ContextValidationException.ERR_CODE,
-                    ex=validation_priming_result.exception,
+                    ex=validator_priming_result.exception,
                 )
             )
         # --- Cast the candidate into the expected Context subclass for additional tests. ---#

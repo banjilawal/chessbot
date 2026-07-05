@@ -74,13 +74,13 @@ class VectorOperandRegisterValidator(Validator[VectorOperandRegister]):
         if toolkit is None:
             toolkit = VectorRegisterToolkit()
         
-        # Handle the case that, the candidate does not exist.
-        validation_priming_result = toolkit.priming_validator.validate(
+        # Handle the case that, the validator is not primed.
+        validator_priming_result = toolkit.priming_validator.validate(
             candidate=candidate,
             target_model=VectorOperandRegister,
             context_null_exception=VectorRegisterNullException(),
         )
-        if validation_priming_result.is_failure:
+        if validator_priming_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 VectorOperandRegisterValidatorException(
@@ -88,7 +88,7 @@ class VectorOperandRegisterValidator(Validator[VectorOperandRegister]):
                     cls_name=cls.__name__,
                     msg=VectorOperandRegisterValidatorException.MSG,
                     err_code=VectorOperandRegisterValidatorException.ERR_CODE,
-                    ex=validation_priming_result.exception,
+                    ex=validator_priming_result.exception,
                 )
             )
         # --- Cast candidate to a VectorRegister for additional tests. ---#

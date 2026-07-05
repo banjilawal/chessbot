@@ -76,13 +76,13 @@ class PathValidator:
         if toolkit is None:
             toolkit = PathToolkit()
         
-        # Handle the case that, the candidate fails an initial check.
-        priming_validation_result = toolkit.priming_validator.validate(
+        # Handle the case that, the validator is not primed.
+        validator_priming_result = toolkit.priming_validator.validate(
             candidate=candidate,
             target_model=toolkit.model,
             null_exception=toolkit.null_exception,
         )
-        if priming_validation_result.is_failure:
+        if validator_priming_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 PathValidatorException(
@@ -90,7 +90,7 @@ class PathValidator:
                     cls_name=cls.__name__,
                     msg=PathValidatorException.MSG,
                     err_code=PathValidatorException.ERR_CODE,
-                    ex=priming_validation_result.exception,
+                    ex=validator_priming_result.exception,
                 )
             )
         # --- Cast the candidate into a Path for additional tests. ---#

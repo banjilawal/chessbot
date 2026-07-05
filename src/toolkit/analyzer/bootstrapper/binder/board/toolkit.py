@@ -10,8 +10,7 @@ version: 1.0.1
 from __future__ import annotations
 
 from microservice import BoardService, SchemaService, TeamService
-from validation.priming import PrimingValidator
-from toolkit import AnalyzerBootstrapperToolkit
+from bootstrap.validator.priming import PrimingValidator
 
 
 class BoardTeamBinderToolkit(AnalyzerToolkit):

@@ -78,13 +78,13 @@ class TokenValidator(Validator[Token]):
         if blueprint_validator is None:
             blueprint_validator = TokenBlueprintValidator()
         
-        # Handle the case that, the candidate fails an initial check.
-        priming_validation_result = toolkit.priming_validator.validate(
+        # Handle the case that, the validator is not primed.
+        validator_priming_result = toolkit.priming_validator.validate(
             candidate=candidate,
             target_model=toolkit.model,
             null_exception=toolkit.null_exception,
         )
-        if priming_validation_result.is_failure:
+        if validator_priming_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 TokenValidatorException(
@@ -92,7 +92,7 @@ class TokenValidator(Validator[Token]):
                     cls_name=cls.__name__,
                     msg=TokenValidatorException.MSG,
                     err_code=TokenValidatorException.ERR_CODE,
-                    ex=priming_validation_result.exception,
+                    ex=validator_priming_result.exception,
                 )
             )
         # --- Cast the candidate into a TokenBlueprint for additional tests. ---#

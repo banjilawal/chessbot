@@ -69,13 +69,13 @@ class ScalarValidator(Validator[Scalar]):
         if toolkit is None:
             toolkit = MathToolkit()
         
-        # Handle the case that, the candidate does not exist.
-        validation_priming_result = toolkit.priming_validator.build(
+        # Handle the case that, the validator is not primed.
+        validator_priming_result = toolkit.priming_validator.build(
             candidate=candidate,
             target_model=Scalar,
             context_null_exception=ScalarNullException(),
         )
-        if validation_priming_result.is_failure:
+        if validator_priming_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 ScalarValidationException(
@@ -83,7 +83,7 @@ class ScalarValidator(Validator[Scalar]):
                     cls_name=cls.__name__,
                     msg=ScalarValidationException.MSG,
                     err_code=ScalarValidationException.ERR_CODE,
-                    ex=validation_priming_result.exception,
+                    ex=validator_priming_result.exception,
                 )
             )
         # --- Cast candidate to a Scalar for additional tests. ---#
@@ -102,7 +102,7 @@ class ScalarValidator(Validator[Scalar]):
                     cls_name=cls.__name__,
                     msg=ScalarValidationException.MSG,
                     err_code=ScalarValidationException.ERR_CODE,
-                    ex=validation_priming_result.exception,
+                    ex=validator_priming_result.exception,
                 )
             )
         return ValidationResult.success(scalar)

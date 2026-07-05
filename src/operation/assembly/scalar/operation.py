@@ -68,7 +68,7 @@ class ScalarAssembler(Assembler[Scalar]):
         if toolkit is None:
             toolkit = ScalarToolkit()
         
-        # Handle the case that, the candidate does not exist.
+        # Handle the case that, the validator is not primed.
         validation_result = toolkit.number_validator.build(
             candidate=blueprint.magnitude,
         )

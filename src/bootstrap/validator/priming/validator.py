@@ -10,7 +10,7 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, TypeVar, cast
 
-
+from bootstrap import ValidatorBootstrapper
 from result import ValidationResult
 from util import LoggingLevelRouter
 from validation import Validator
@@ -20,7 +20,7 @@ from err import NullException, ValidationPrimingException
 T = TypeVar("T")
 
 
-class PrimingValidator(Validator):
+class PrimingValidator(ValidatorBootstrapper):
     """
     Role
         -   Transaction Worker
@@ -29,8 +29,8 @@ class PrimingValidator(Validator):
         -   Priming
 
     Responsibilities:
-        1.  Run existence and type checks which are common to all validation candidates.
-        2.  Encapsulate common, validation starting logic.
+        1.  Bootstrapping a validator by running existence and type checks.
+
 
     Attributes:
 
@@ -55,7 +55,7 @@ class PrimingValidator(Validator):
             null_exception: NullException,
     ) -> ValidationResult[T]:
         """
-        Verify that the target_model's safety checks can be run on an object.
+        Bootstrap a validator by running existence and type checks.
 
         Action:
             1.  Send an exception chain in the ValidationResult any of the cases occur:
