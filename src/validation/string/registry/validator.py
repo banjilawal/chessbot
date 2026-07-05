@@ -14,7 +14,7 @@ from controller import WorkerRegistryController
 from err import (
     EmptyListException, ListNullException, RegistryEntryKeyStringValidationException, StringValidationException
 )
-from operation import ValidationPrimer, Validator
+from operation import PrimingValidator, Validator
 from validation.string import NameValidator
 from result import ValidationResult
 from util import LoggingLevelRouter
@@ -37,7 +37,7 @@ class RegistryEntryNameValidator(Validator):
        -    execute(
                 candidates: List[str],
                 name_validator: NameValidator,
-                priming_validator: ValidationPrimer,
+                priming_validator: PrimingValidator,
             ) -> ValidationResult[List[String]]
 
     Super Class:
@@ -50,7 +50,7 @@ class RegistryEntryNameValidator(Validator):
             cls,
             candidates: List[str],
             name_validator: NameValidator | None = None,
-            priming_validator: ValidationPrimer | None = None,
+            priming_validator: PrimingValidator | None = None,
     ) -> ValidationResult[List[str]]:
         """
         Verify the list of names are safe to use as domains and keys in Registries.
@@ -64,7 +64,7 @@ class RegistryEntryNameValidator(Validator):
         Args:
             candidates: List[str]
             name_validator: NameValidator
-            priming_validator: ValidationPrimer
+            priming_validator: PrimingValidator
         Returns:
             ValidationResult[List[str]]
         Raises:
@@ -79,7 +79,7 @@ class RegistryEntryNameValidator(Validator):
         if name_validator is None:
             name_validator = NameValidator()
         if priming_validator is None:
-            priming_validator = ValidationPrimer()
+            priming_validator = PrimingValidator()
         
         list_validation_result = priming_validator.validate(
             candidate=candidates,

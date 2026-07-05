@@ -12,4 +12,4 @@ version: 1.0.1
 # Packages
 
 # Module
-from .operation import VectorOperandValidator
+from .validator import VectorOperandValidator

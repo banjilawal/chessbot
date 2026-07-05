@@ -117,7 +117,7 @@ class BoardBinderValidator(Validator[BoardBinder]):
         method = f"{cls.__name__}.run_satellite_table_checks"
         
         # Handle the case that, the satellite is not a dictionary or null.
-        table_validation_result = BinderTableValidationPrimer.build(binder)
+        table_validation_result = BinderTablePrimingValidator.build(binder)
         if table_validation_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(

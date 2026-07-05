@@ -40,7 +40,7 @@ class Attack:
                     token: Token,
                     square: Square,
                     token_freedom_analyzer: TokenFreedomAnalyzer,
-                    priming_validator: ValidationPrimer,
+                    priming_validator: PrimingValidator,
             ) -> EventResult:
 
     Super Class:
@@ -66,7 +66,7 @@ class Attack:
             3.  Send the success result.
         Args:
             report: AttackApproval
-            priming_validator: ValidationPrimer
+            priming_validator: PrimingValidator
        Returns:
             EventResult
         Raises:

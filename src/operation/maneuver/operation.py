@@ -39,7 +39,7 @@ class Maneuver:
                     token: Token,
                     square: Square,
                     token_freedom_analyzer: TokenFreedomAnalyzer,
-                    priming_validator: ValidationPrimer,
+                    priming_validator: PrimingValidator,
             ) -> ManeuverResult:
 
     Super Class:
@@ -65,7 +65,7 @@ class Maneuver:
             3.  Send the success result.
         Args:
             report: ManeuverItineraryApproval
-            priming_validator: ValidationPrimer
+            priming_validator: PrimingValidator
        Returns:
             ManeuverResult
         Raises:

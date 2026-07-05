@@ -14,29 +14,25 @@ from types import MappingProxyType
 from dataclasses import dataclass, field
 
 __all__ = [
-    "NUMBER_OF_ROWS",
-    "NUMBER_OF_COLUMNS",
-    "BOARD_SIZE",
-    "MIN_NAME_LENGTH",
-    "MAX_NAME_LENGTH",
-    "LONGEST_KNIGHT_LEG_SIZE",
-    "BoardDimensionPropertyTable",
+    "BoardDimensionProperty",
 ]
 
 from setting import BoardProperty
 
-NUMBER_OF_ROWS = 8
-NUMBER_OF_COLUMNS = 8
+__all__ = [
+    # ======================# BOARD_DIMENSION_PROPERTY #======================#
+    "BoardDimensionProperty",
+]
 
-BOARD_SIZE = 8
-MIN_NAME_LENGTH = 2
-MAX_NAME_LENGTH = 40
+board_size = 8
+knight_radius = 2
+number_of_rows = board_size
+number_of_columns = board_size
 
-LONGEST_KNIGHT_LEG_SIZE = 2
 
 
 @dataclass
-class BoardDimensionPropertyTable:
+class BoardDimensionProperty:
     """
     Role
         -   Property Settings
@@ -54,12 +50,12 @@ class BoardDimensionPropertyTable:
     entry: Mapping[BoardProperty, int] = field(
         default_factory=lambda: MappingProxyType(
             {
-                BoardProperty.DIMENSION: 8,
-                BoardProperty.NUMBER_OF_ROWS: 8,
-                BoardProperty.NUMBER_OF_COLUMNS: 8,
-                BoardProperty.MAX_ROW_INDEX: 7,
-                BoardProperty.MAX_COLUMN_INDEX: 7,
-                BoardProperty.KNIGHT_RADIUS: 4,
+                BoardProperty.DIMENSION: board_size,
+                BoardProperty.NUMBER_OF_ROWS: number_of_rows,
+                BoardProperty.NUMBER_OF_COLUMNS: number_of_columns,
+                BoardProperty.MAX_ROW_INDEX: number_of_rows - 1,
+                BoardProperty.MAX_COLUMN_INDEX: number_of_columns - 1,
+                BoardProperty.KNIGHT_RADIUS: number_of_columns,
             }
         )
     )

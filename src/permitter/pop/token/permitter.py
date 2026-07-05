@@ -33,7 +33,7 @@ class TokenPopPermitter:
         -   execute(
                     cls,
                     token_stack: TokenStackService,
-                    priming_validator: ValidationPrimer
+                    priming_validator: PrimingValidator
             ) -> AnalysisResult
 
     Super Class:
@@ -54,7 +54,7 @@ class TokenPopPermitter:
                 pop.
         Args:
             stack: TokenStackService
-            priming_validator: ValidationPrimer
+            priming_validator: PrimingValidator
         Returns:
             AnalysisResult
         Raises:

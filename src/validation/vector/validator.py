@@ -10,15 +10,13 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, cast
 
-from controller import WorkerRegistryController
+import setting
+from err import VectorValidatorException
 from model import Vector
-from toolkit import MathToolkit
-from operation import Validator
 from result import ValidationResult
-from system import BOARD_DIMENSION, LoggingLevelRouter
-from err import VectorNullException, VectorValidationException
-
-
+from toolkit import VectorToolkit
+from util import LoggingLevelRouter
+from validation import Validator
 
 
 class VectorValidator(Validator[Vector]):
@@ -37,20 +35,19 @@ class VectorValidator(Validator[Vector]):
     Provides:
         -   def validate(
                     candidate: Any,
-                     toolkit: MathToolkit
+                     toolkit: VectorToolkit
             ) -> ValidationResult[Vector]:
 
     Super Class:
         Validator
     """
-    OPERATION_NAME = "vector_validator"
     
     @classmethod
     @LoggingLevelRouter.monitor
     def validate(
             cls,
             candidate: Any,
-            toolkit: MathToolkit | None = None
+            toolkit: VectorToolkit | None = None,
     ) -> ValidationResult[Vector]:
         """
         Check if a Vector is safe to use.
@@ -63,59 +60,57 @@ class VectorValidator(Validator[Vector]):
             2.  Otherwise, send the success result.
         Args:
              candidate: Any
-             toolkit: MathToolkit
+             toolkit: VectorToolkit
         Returns:
             ValidationResult[Vector]
         Raises:
             TypeError
             NullVectorException
-            VectorValidationException
+            VectorValidatorException
         """
         method = f"{cls.__name__}.validate"
         
+        # --- Supply missing dependencies. ---#
         if toolkit is None:
-            toolkit = MathToolkit()
+            toolkit = VectorToolkit()
         
         # Handle the case that, the candidate does not exist.
-        validation_priming_result = toolkit.priming_validator.build(
+        validation_priming_result = toolkit.priming_validator.validate(
             candidate=candidate,
-            target_model=Vector,
-            context_null_exception=VectorNullException(),
+            target_model=toolkit.model,
+            context_null_exception=toolkit.null_exception,
         )
         if validation_priming_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                VectorValidationException(
+                VectorValidatorException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    msg=VectorValidationException.MSG,
-                    err_code=VectorValidationException.ERR_CODE,
+                    msg=VectorValidatorException.MSG,
+                    err_code=VectorValidatorException.ERR_CODE,
                     ex=validation_priming_result.exception,
                 )
             )
         # --- Cast the candidate to a Vector for additional tests ---#
-        vector = cast(Vector, candidate)
+        vector = cast(toolkit.model, candidate)
         
         # Handle the case that, either component is out of bounds.
         for num in [vector.x, vector.y]:
             validation_result = toolkit.number_validator.validate(
                 floor=0,
-                ceiling=BOARD_DIMENSION - 1,
+                ceiling=setting.b - 1,
                 candidate=abs(num)
             )
             if validation_result.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
-                    VectorValidationException(
+                    VectorValidatorException(
                         cls_mthd=method,
                         cls_name=cls.__name__,
-                        msg=VectorValidationException.MSG,
-                        err_code=VectorValidationException.ERR_CODE,
+                        msg=VectorValidatorException.MSG,
+                        err_code=VectorValidatorException.ERR_CODE,
                         ex=validation_priming_result.exception,
                     )
                 )
         # --- Forward the work product to the caller. ---#
         return ValidationResult.success(vector)
-
-# --- FINALLY: REGISTER THE OPERATION ---#
-WorkerRegistryController.register_worker(worker=VectorValidator)

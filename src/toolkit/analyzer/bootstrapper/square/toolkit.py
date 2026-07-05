@@ -39,7 +39,7 @@ class SquareToolkit(AnalyzerBootstrapperToolkit[Square]):
         coord_validator: CoordValidator
         identity_service: IdentityService
         formation_service: FormationService
-        priming_validator: ValidationPrimer
+        priming_validator: PrimingValidator
         square_collision_detector: SquareCollisionAnalyst
 
     Provides:

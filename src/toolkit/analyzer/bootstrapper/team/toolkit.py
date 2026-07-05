@@ -33,7 +33,7 @@ class TeamToolkit(AnalyzerBootstrapperToolkit[Team]):
         board_validator: BoardValidator
         player_validator: PlayerValidator
         identity_service: IdentityService
-        priming_validator: ValidationPrimer
+        priming_validator: PrimingValidator
 
     Provides:
         -   def resolve_dependencies(s -> SearchResult[List[Dict[str, Any]]]:

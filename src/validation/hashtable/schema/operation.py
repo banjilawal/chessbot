@@ -18,7 +18,7 @@ from microvalidator import SchemaValidator
 
 from err.null.model.state.hashtable import HashtableNullException
 from model import Binder, Schema
-from operation import ValidationPrimer, Validator
+from operation import PrimingValidator, Validator
 from result import ValidationResult
 from util import LoggingLevelRouter
 
@@ -40,7 +40,7 @@ class SchemaHashtableValidator(Validator[Dict[Schema, Any]]):
         -   def validate(
                 candidate: Any,
                 schema_validator: SchemaDictValidator,
-                priming_validator: ValidationPrimer,
+                priming_validator: PrimingValidator,
             ) -> ValidationResult[Dict[Schema, Any]]:
 
     Super Class:
@@ -53,7 +53,7 @@ class SchemaHashtableValidator(Validator[Dict[Schema, Any]]):
             cls,
             candidate: Any,
             schema_validator: SchemaValidator,
-            priming_validator: ValidationPrimer,
+            priming_validator: PrimingValidator,
     ) -> ValidationResult[Binder]:
         """
         Verify the candidate is a BinderTable that.
@@ -68,7 +68,7 @@ class SchemaHashtableValidator(Validator[Dict[Schema, Any]]):
         Args:
             candidate: Any
             schema_validator: SchemaValidator
-            priming_validator: ValidationPrimer
+            priming_validator: PrimingValidator
         Returns:
             ValidationResult[Dict[Schema, Any]]
         Raises:

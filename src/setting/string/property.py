@@ -11,7 +11,9 @@ from __future__ import annotations
 
 from enum import Enum, auto
 
-
+__all__ = [
+    "StringProperty",
+]
 class StringProperty(Enum):
     MIN_LENGTH = auto(),
     MAX_LENGTH = auto(),

@@ -30,7 +30,7 @@ class ItineraryToolkit(AnalyzerBootstrapperToolkit[Itinerary]):
         analyzer_type: Itinerary
         token_validator: TokenValidator
         square_validator: SquareValidator
-        priming_validator: ValidationPrimer
+        priming_validator: PrimingValidator
         null_exception: ItineraryNullException
         token_freedom_analyzer: TokenFreedomAnalyzer
         square_token_relation_analyzer: SquareTokenRelationAnalyzer

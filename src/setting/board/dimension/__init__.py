@@ -12,5 +12,5 @@ version: 1.0.1
 # Packages
 
 # Modules
-from .setting import *
+from .config import BoardDimensionProperty
 from .property import BoardProperty

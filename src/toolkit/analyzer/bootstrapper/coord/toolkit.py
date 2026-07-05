@@ -32,7 +32,7 @@ class CoordToolkit(AnalyzerBootstrapperToolkit[Coord]):
         SERVICE_DEPENDENCIES: List[Microservice] = []
 
         number_validator: NumberValidator
-        priming_validator: ValidationPrimer
+        priming_validator: PrimingValidator
 
     Provides:
         -   def resolve_dependencies(s -> SearchResult[List[Dict[str, Any]]]:

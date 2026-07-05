@@ -15,7 +15,7 @@ from result import ValidationResult
 from util import LoggingLevelRouter
 from controller import WorkerRegistryController
 from err import NewWorkerRegistrationException, OperationNullException, RegistryKeyCollisionException
-from operation import Primer, Operation, RegistryEntryNameValidator, ValidationPrimer
+from operation import Primer, Operation, RegistryEntryNameValidator, PrimingValidator
 
 
 class PrimingWorkerRegistration(Primer[Operation]):
@@ -34,7 +34,7 @@ class PrimingWorkerRegistration(Primer[Operation]):
                 worker: Operation,
                 registry: WorkerRegistry,
                 null_exception: OperationNullException,
-                priming_validator: ValidationPrimer,
+                priming_validator: PrimingValidator,
                 registry_entry_name_validator: RegistryEntryNameValidator\,
             ) -> ValidationResult[Operation]:
 
@@ -50,7 +50,7 @@ class PrimingWorkerRegistration(Primer[Operation]):
             worker: Operation,
             registry: WorkerRegistry,
             null_exception: OperationNullException | None = None,
-            priming_validator: ValidationPrimer | None = None,
+            priming_validator: PrimingValidator | None = None,
             registry_entry_name_validator: RegistryEntryNameValidator| None = None,
     ) -> ValidationResult[Operation]:
         """
@@ -66,7 +66,7 @@ class PrimingWorkerRegistration(Primer[Operation]):
             worker: Operation
             registry: WorkerRegistry
             null_exception: OperationNullException
-            priming_validator: ValidationPrimer
+            priming_validator: PrimingValidator
             registry_entry_name_validator: RegistryEntryNameValidator
         Returns:
             ValidationResult[Operation]
@@ -79,7 +79,7 @@ class PrimingWorkerRegistration(Primer[Operation]):
         if null_exception is None:
             null_exception = OperationNullException()
         if priming_validator is None:
-            priming_validator = ValidationPrimer()
+            priming_validator = PrimingValidator()
         if registry_entry_name_validator is None:
             registry_entry_name_validator = RegistryEntryNameValidator()
         

@@ -53,7 +53,7 @@ class BoardTeamBinderToolkit(ModelToolkit):
             board_validator: BoardService
             schema_service: SchemaService
 
-            priming_validator: ValidationPrimer
+            priming_validator: PrimingValidator
         """
         super().__init__()
         self._team_service = team_service or TeamService()

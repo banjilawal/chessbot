@@ -14,8 +14,6 @@ from types import MappingProxyType
 from dataclasses import dataclass, field
 
 __all__ = [
-    "MIN_LENGTH",
-    "MAX_LENGTH",
     "StringPropertyTable",
 ]
 

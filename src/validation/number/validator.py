@@ -10,13 +10,14 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, cast
 
-from result import ValidationResult
-from system import BOARD_DIMENSION, LoggingLevelRouter
-from operation import ValidationPrimer, Validator
+import setting
 from err import (
     NegativeNumberException, NumberAboveBoundsException, NumberBelowBoundsException, NumberNullException,
-    NumberValidationException
+    NumberValidatorException
 )
+from result import ValidationResult
+from util import LoggingLevelRouter
+from validation import PrimingValidator, Validator
 
 
 class NumberValidator(Validator[int]):
@@ -37,7 +38,7 @@ class NumberValidator(Validator[int]):
                     candidate: Any,
                     floor: int = 0,
                     ceiling: int = BOARD_DIMENSION,
-                    priming_validator: ValidationPrimer,
+                    priming_validator: PrimingValidator,
             ) -> ValidationResult[int]:
     
     Super Class:
@@ -50,9 +51,9 @@ class NumberValidator(Validator[int]):
     def validate(
             cls,
             candidate: Any,
-            floor: int = 0,
-            ceiling: int = BOARD_DIMENSION-1,
-            priming_validator: ValidationPrimer | None = None,
+            floor: int | None = 0,
+            ceiling: int | None = setting.board.dimension.config.board_size - 1,
+            priming_validator: PrimingValidator | None = None,
     ) -> ValidationResult[int]:
         """
         Make sure an object is a number within bounds before use.
@@ -65,19 +66,20 @@ class NumberValidator(Validator[int]):
             candidate: Any
             floor: int
             ceiling: int
-            priming_validator: ValidationPrimer
+            priming_validator: PrimingValidator
         Returns:
             ValidationResult[int]
         Raises:
             NegativeNumberException
             NumberAboveBoundsException
             NumberBelowBoundsException
-            NumberValidationException
+            NumberValidatorException
         """
         method = f"{cls.__name__}.validate"
         
+        # --- Supply missing dependencies. ---#
         if priming_validator is None:
-            priming_validator = ValidationPrimer()
+            priming_validator = PrimingValidator()
         
         # Handle the case that, the candidate does not exist.
         validation_priming_result = priming_validator.validate(
@@ -88,11 +90,11 @@ class NumberValidator(Validator[int]):
         if validation_priming_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-               NumberValidationException(
+               NumberValidatorException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    msg=NumberValidationException.MSG,
-                    err_code=NumberValidationException.ERR_CODE,
+                    msg=NumberValidatorException.MSG,
+                    err_code=NumberValidatorException.ERR_CODE,
                     ex=validation_priming_result.exception,
                 )
             )
@@ -103,11 +105,11 @@ class NumberValidator(Validator[int]):
         if floor < 0:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                NumberValidationException(
+                NumberValidatorException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    msg=NumberValidationException.MSG,
-                    err_code=NumberValidationException.ERR_CODE,
+                    msg=NumberValidatorException.MSG,
+                    err_code=NumberValidatorException.ERR_CODE,
                     ex=NegativeNumberException(
                         var="floor",
                         val=number,
@@ -120,11 +122,11 @@ class NumberValidator(Validator[int]):
         if number < floor:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                NumberValidationException(
+                NumberValidatorException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    msg=NumberValidationException.MSG,
-                    err_code=NumberValidationException.ERR_CODE,
+                    msg=NumberValidatorException.MSG,
+                    err_code=NumberValidatorException.ERR_CODE,
                     ex=NumberBelowBoundsException(
                         msg=NumberBelowBoundsException.MSG,
                         err_code=NumberBelowBoundsException.ERR_CODE,
@@ -135,16 +137,14 @@ class NumberValidator(Validator[int]):
         if number > ceiling:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                NumberValidationException(
+                NumberValidatorException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    msg=NumberValidationException.MSG,
-                    err_code=NumberValidationException.ERR_CODE,
+                    msg=NumberValidatorException.MSG,
+                    err_code=NumberValidatorException.ERR_CODE,
                     ex=NumberAboveBoundsException(
                         msg=NumberAboveBoundsException.MSG,
                         err_code=NumberAboveBoundsException.ERR_CODE,
                     )
                 )
             )
-        # --- Forward the work product to the caller. ---#
-        return ValidationResult.success(number)

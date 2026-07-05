@@ -33,7 +33,7 @@ class SquareContextToolkit(ContextToolkit[Square]):
         
         context_model_type: SquareContext
         null_context_exception: SquareContextNullException
-        context_priming_validator: ValidationPrimer
+        context_priming_validator: PrimingValidator
         number_validator: NumberValidator
         
     Provides:

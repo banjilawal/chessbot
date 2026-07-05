@@ -19,7 +19,7 @@ from err import (
 )
 
 
-class ContextValidationPrimer(Validator[Context]):
+class ContextPrimingValidator(Validator[Context]):
     """
     Role
         -   Transaction Worker

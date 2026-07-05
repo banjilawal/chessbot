@@ -69,7 +69,7 @@ class TokenDeletionPermitter:
             item_id: int
             stack: TokenStackService
             identity_service: IdentityService
-            priming_validator: ValidationPrimer
+            priming_validator: PrimingValidator
         Returns:
             AnalysisResult
         Raises:

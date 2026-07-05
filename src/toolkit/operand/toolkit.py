@@ -14,10 +14,12 @@ from dataclasses import dataclass
 from operation import CoordValidator, ScalarValidator, VectorValidator
 from pipeline import ScalarBuildPipeline, VectorBuildPipeline
 from pipeline.build.coord import CoordBuildPipeline
-from toolkit import Toolkit
+from toolkit import CoordOperationSuite, ScalarOperationSuite, Toolkit, VectorOperationSuite
 from model import VectorOperand
+from validation import VectorOperandRegisterValidator
 
 
+@dataclass
 @dataclass
 class VectorOperandToolkit(Toolkit[VectorOperand]):
     """
@@ -39,12 +41,17 @@ class VectorOperandToolkit(Toolkit[VectorOperand]):
     Super Class:
         Toolkit
     """
+
+    
     _coord_builder: CoordBuildPipeline
     _vector_builder: VectorBuildPipeline
     _scalar_builder: ScalarBuildPipeline
     _coord_validator: CoordValidator
     _vector_validator: VectorValidator
     _scalar_validator: ScalarValidator
+    
+    coord: CoordOperationSuite = CoordOperationSuite()
+    vector: VectorOperationSuite = VectorOperationSuite()
     
     def __init__(
             self,
