@@ -1,7 +1,7 @@
-# src/model/state/math/vector/register/category.py
+## src/model/register/operand/category.py
 
 """
-Module: model.state.math.vector.register.category
+Module: model.register.operand.category
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -10,13 +10,13 @@ version: 1.0.1
 from enum import Enum, auto
 
 
-class OperandRegisterContentType(Enum):
+class RegisterContentType(Enum):
     """
     Role:
         -   State
 
     Responsibilities:
-        1.  Describes What type of operands are in the Vecregister.
+        1.  Describes What type of operands are in the VectorOperandRegister.
 
     Attributes:
 

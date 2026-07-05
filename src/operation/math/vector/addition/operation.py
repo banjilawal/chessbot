@@ -15,7 +15,7 @@ from util import LoggingLevelRouter
 from err import VectorAdditionException
 from toolkit import VectorOperandToolkit
 from operation import Operation, VectorRegisterValidator
-from model import Coord, CoordBlueprint, OperandRegisterContentType, Vector, VectorBlueprint, VectorOperandRegister
+from model import Coord, CoordBlueprint, RegisterContentType, Vector, VectorBlueprint, VectorOperandRegister
 
 
 class AddVector(Operation[VectorOperandRegister]):
@@ -92,7 +92,7 @@ class AddVector(Operation[VectorOperandRegister]):
                 )
         )
         build_result = None
-        if register.category == OperandRegisterContentType.VECTOR_REGISTER:
+        if register.category == RegisterContentType.VECTOR_REGISTER:
             blueprint = VectorBlueprint(
                 x=register.a.vector.x + register.b.vector.x,
                 y=register.a.vector.y + register.b.vector.y,
@@ -100,7 +100,7 @@ class AddVector(Operation[VectorOperandRegister]):
             build_result = operand_toolkit.vector_builder.run(
                 blueprint=blueprint,
             )
-        if register.category == OperandRegisterContentType.COORD_REGISTER:
+        if register.category == RegisterContentType.COORD_REGISTER:
             blueprint = CoordBlueprint(
                 row=register.a.coord.row + register.b.coord.row,
                 column=register.a.coord.column + register.b.coord.column,

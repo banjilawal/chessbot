@@ -1,7 +1,7 @@
 # src/model/register/operand/__init__.py
 
 """
-Module: model.register.operand__init__
+Module: model.register.operand.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -12,5 +12,5 @@ version: 1.0.1
 # Packages
 
 # Modules
-from .category import OperandRegisterContentType
+from .category import RegisterContentType
 from model import VectorOperandRegister

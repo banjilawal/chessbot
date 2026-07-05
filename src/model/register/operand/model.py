@@ -1,7 +1,7 @@
-# src/model/state/math/vector/register/category.py
+# src/model/register/operand/model.py
 
 """
-Module: model.state.math.vector.register.category
+Module: model.register.operand.model
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -10,20 +10,42 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Dict, List
 
-from model import OperandRegisterContentType, VectorOperand
+from model import RegisterContentType, VectorOperand
 
 
 class VectorOperandRegister:
+    """
+    Role:
+        -   State
+
+    Responsibilities:
+        1.  Describes What type of operands are in the Vecregister.
+
+    Attributes:
+            u: VectorOperand,
+            v: VectorOperand,
+            content_type: OperandRegisterContentType
+    Provides:
+
+    Super Class:
+        Enum
+    """
     _u: VectorOperand
     _v: VectorOperand
-    _content_type: OperandRegisterContentType
+    _content_type: RegisterContentType
     
     def __init__(
             self,
             u: VectorOperand,
             v: VectorOperand,
-            content: OperandRegisterContentType
+            content_type: RegisterContentType
     ):
+        """
+        Args:
+            u: VectorOperand
+            v: VectorOperand
+            content_type: OperandRegisterContentType
+        """
         self._u = u
         self._v = v
         self._content_type = content
@@ -37,7 +59,7 @@ class VectorOperandRegister:
         return self._v
     
     @property
-    def category(self) -> OperandRegisterContentType:
+    def category(self) -> RegisterContentType:
         return self._content_type
     
     @property
