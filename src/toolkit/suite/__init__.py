@@ -10,6 +10,8 @@ version: 1.0.1
 # =========== TOOLKIT.SUITE PACKAGE ===========#
 
 # Packages
+from .coord import *
+from .scalar import *
 from .token import *
 from .vector import *
 
