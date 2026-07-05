@@ -12,13 +12,13 @@ from __future__ import annotations
 from typing import cast
 
 from bootstrap import DestinationCertifierBootstrapper
-from err import TokenDestinationRelationValidatorException
+from err import TokenDestinationCertifierException
 from model import Square, Token
 from result import ValidationResult
 from util import LoggingLevelRouter
 
 
-class TokenDestinationRelationValidator:
+class TokenDestinationCertifierValidator:
     """
     Role
         -   Validation Worker
@@ -78,11 +78,11 @@ class TokenDestinationRelationValidator:
         if validation_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                TokenDestinationRelationValidatorException(
+                TokenDestinationCertifierException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    msg=TokenDestinationRelationValidatorException.MSG,
-                    err_code=TokenDestinationRelationValidatorException.ERR_CODE,
+                    msg=TokenDestinationCertifierException.MSG,
+                    err_code=TokenDestinationCertifierException.ERR_CODE,
                     ex=validation_result.exception,
                 )
             )

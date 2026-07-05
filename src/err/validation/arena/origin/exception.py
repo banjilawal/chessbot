@@ -42,7 +42,7 @@ class TokenDestinationRelationValidatorException(ValidatorException):
     Super Class:
         ValidatorException
     """
-    MSG = "Candidate did not pass a Candidate failed a TokenDestinationRelationValidator test."
+    MSG = "Candidate did not pass TokenDestinationRelationValidator test."
     ERR_CODE = "TOKEN_DESTINATION_RELATION_VALIDATOR_FAILURE"
     
     def __init__(

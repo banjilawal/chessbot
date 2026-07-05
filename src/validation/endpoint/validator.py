@@ -14,7 +14,7 @@ from err import ManeuverEndpointValidatorException
 from model import Square, Token
 from result import ValidationResult
 from util import LoggingLevelRouter
-from validation import TokenDestinationRelationValidator
+from validation import TokenDestinationCertifierValidator
 from validation.origin import TokenOriginRelationValidator
 
 
@@ -51,7 +51,7 @@ class ManeuverEndpointValidator:
             origin: Square,
             destination: Square,
             origin_relation_validator: TokenOriginRelationValidator | None = None,
-            destination_relation_validator: TokenDestinationRelationValidator | None = None,
+            destination_relation_validator: TokenDestinationCertifierValidator | None = None,
     ) -> ValidationResult[int]:
         """
         Makes sure the token is only at the origin at the beginning of a maneuver.
@@ -78,7 +78,7 @@ class ManeuverEndpointValidator:
         if origin_relation_validator is None:
             origin_relation_validator = TokenOriginRelationValidator(),
         if destination_relation_validator is None:
-            destination_relation_validator = TokenDestinationRelationValidator()
+            destination_relation_validator = TokenDestinationCertifierValidator()
         
         # Handle the case that, the token is not at the origin
         token_origin_relation_analysis_result = origin_relation_validator.validate(

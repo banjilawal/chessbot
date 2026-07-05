@@ -74,7 +74,7 @@ class DestinationCertifierBootstrapper(ValidatorBootstrapper):
         Returns:
             ValidationResult
         Raises:
-            DestinationValidatorBootstrapperException
+            DestinationCertifierBootstrapperException
             TokenAlreadyAtDestinationException
             PartialTokenDestinationRelationException
         """

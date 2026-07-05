@@ -14,18 +14,18 @@ from err import ValidatorException
 from result import MethodResultType
 
 __all__ = [
-    # ======================# TOKEN_DESTINATION_RELATION_VALIDATOR_FAILURE #======================#
-    "TokenDestinationRelationValidatorException",
+    # ======================# TOKEN_DESTINATION_CERTIFIER_FAILURE #======================#
+    "TokenDestinationCertifierException",
 ]
 
-# ======================# TOKEN_DESTINATION_RELATION_VALIDATOR_FAILURE #======================#
-class TokenDestinationRelationValidatorException(ValidatorException):
+# ======================# TOKEN_DESTINATION_CERTIFIER_FAILURE #======================#
+class TokenDestinationCertifierException(ValidatorException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a candidate did not pass a TokenDestinationRelationValidator test.
+        1.  Indicate that a candidate did not pass a TokenDestinationCertifier test.
 
     Attributes:
         msg: Optional[str]
@@ -42,8 +42,8 @@ class TokenDestinationRelationValidatorException(ValidatorException):
     Super Class:
         ValidatorException
     """
-    MSG = "Candidate did not pass a Candidate failed a TokenDestinationRelationValidator test."
-    ERR_CODE = "TOKEN_DESTINATION_RELATION_VALIDATOR_FAILURE"
+    MSG = "Candidate did not pass TokenDestinationCertifier test."
+    ERR_CODE = "TOKEN_DESTINATION_CERTIFIER_FAILURE"
     
     def __init__(
             self,

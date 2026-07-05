@@ -14,4 +14,4 @@ from .circular import *
 from .partial import *
 
 # Modules
-from .exception import TokenDestinationRelationValidatorException
+from .exception import TokenDestinationCertifierException
