@@ -10,6 +10,8 @@ version: 1.0.1
 # =========== TOOLKIT.MODEL PACKAGE ===========#
 
 # Packages
+from .register import *
+from .state import *
 
 # Modules
 from .toolkit import ModelToolkit

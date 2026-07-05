@@ -5,27 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/model/register/model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/coord/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/coord/model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/quadrant/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/quadrant/model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/register/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/register/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/register/operand/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/register/operand/model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/register/square/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/register/square/model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/state/attack/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/state/attack/model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/state/board/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/state/board/model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/state/dto/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/state/dto/model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/state/maneuver/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/state/maneuver/model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/state/path/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/state/path/model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/state/query/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/state/query/model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/state/rank/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/state/rank/model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/state/registry/service/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/state/registry/service/model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/state/registry/worker/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/state/registry/worker/model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/state/square/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/state/square/model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/state/token/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/state/token/model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/vector/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/vector/model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/vector/operand/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/vector/operand/model.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/toolkit/model/register/operand/square.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/toolkit/model/register/toolkit.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/model/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/null/model/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/toolkit/model/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/toolkit/model/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/toolkit/model/register/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/toolkit/model/register/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/toolkit/model/register/square/toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/toolkit/model/register/square/toolkit.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -79,7 +64,7 @@
     "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/model/register",
+    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/toolkit/model/register/operand",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
@@ -90,11 +75,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/toolkit/model/register/operand" />
+      <recent name="$PROJECT_DIR$/src/toolkit/model/register" />
       <recent name="$PROJECT_DIR$/src/model/register" />
       <recent name="$PROJECT_DIR$/src/err/null/model" />
       <recent name="$PROJECT_DIR$/src/err/model/register" />
-      <recent name="$PROJECT_DIR$/src/err/model" />
-      <recent name="$PROJECT_DIR$/src/toolkit/model" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/model" />
@@ -827,7 +812,7 @@
       <workItem from="1782265217166" duration="7062000" />
       <workItem from="1782325486599" duration="56546000" />
       <workItem from="1782732939190" duration="235900000" />
-      <workItem from="1783222430394" duration="31829000" />
+      <workItem from="1783222430394" duration="33271000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />
@@ -1203,6 +1188,11 @@
           <url>file://$PROJECT_DIR$/src/toolkit/analyzer/bootstrapper/toolkit.py</url>
           <line>11</line>
           <option name="timeStamp" value="210" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/err/null/model/register/__init__.py</url>
+          <line>12</line>
+          <option name="timeStamp" value="212" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

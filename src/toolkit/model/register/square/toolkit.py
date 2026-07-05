@@ -8,34 +8,34 @@ version: 1.0.1
 """
 
 from __future__ import annotations
-from typing import Any, Dict, List, Optional
 
-from model import Square
-from toolkit import ModelToolkit
+from err import SquareRegisterNullException
+from model import Square, SquareRegister
+from toolkit import RegisterToolkit
 from validation import SquareValidator
 
 
-class SquareRegisterToolkit(ModelToolkit):
+class SquareRegisterToolkit(RegisterToolkit[Square]):
     """
     Role:
         -   Container
 
     Responsibilities:
-        1.  Collection of workers and services that are required for Path tasks.
+        1.  Collection of workers and services that are required for SquareRegister tasks.
         2.  Simplifies entry points.
         3.  No logic in the Toolkit.
 
     Attributes:
         square_validator: SquareValidator
-        null_exception: PathNullException
-        model: Path
+        null_exception: SquareRegisterNullException
+        model: SquareRegister
 
     Provides:
 
     Super Class:
-       ModelToolkit
+       RegisterToolkit
     """
     square_validator: SquareValidator = SquareValidator()
-    null_exception = SquareRegisterNullException = SquareRegistetNullException()
+    null_exception = SquareRegisterNullException = SquareRegisterNullException()
     model: SquareRegister
     

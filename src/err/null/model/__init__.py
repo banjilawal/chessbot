@@ -10,6 +10,7 @@ version: 1.0.1
 # ============ ERR.NULL.MODEL PACKAGE ===========#
 
 # Packages
+from .register import *
 from .state import *
 
 # Modules

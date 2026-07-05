@@ -8,97 +8,38 @@ version: 1.0.1
 """
 
 from __future__ import annotations
-from typing import Any, Dict, List, Optional
 
-from model import RegisterContentType, VectorOperand
-from toolkit import ModelToolkit
+from err import VectorOperandRegisterNullException
+from model import VectorOperand, VectorOperandRegister
+from toolkit import RegisterToolkit
+from validation import CoordValidator, ScalarValidator, VectorValidator
 
 
-class VectorOperandRegisterToolkit(ModelToolkit):
+class VectorOperandRegisterToolkit(RegisterToolkit[VectorOperand]):
     """
-        -   Model
-        -   Data Holder
+    Role:
+        -   Container
 
     Responsibilities:
-        1.  Describes What type of operands are in the Vecregister.
+        1.  Collection of workers and services that are required for VectorOperandRegister tasks.
+        2.  Simplifies entry points.
+        3.  No logic in the Toolkit.
 
     Attributes:
-            u: VectorOperand,
-            v: VectorOperand,
-            content_type: OperandRegisterContentType
+        coord_validator: CoordValidator
+        scalar_validator: ScalarValidator
+        vector_validator: VectorValidator
+        null_exception = VectorOperandRegisterNullException
+        model: VectorOperandRegister
+
     Provides:
 
     Super Class:
-        Enum
+       RegisterToolkit
     """
-    _a: VectorOperand
-    _b: VectorOperand
-    _content_type: Optional[RegisterContentType]
-    
-    def __init__(
-            self,
-            a: VectorOperand,
-            b: VectorOperand,
-            content_type: Optional[RegisterContentType] | None = None,
-    ):
-        """
-        Args:
-            a: VectorOperand
-            b: VectorOperand
-            content_type: OperandRegisterContentType
-        """
-        self._a = a
-        self._b = b
-        self._content_type = content_type
-        
-    @property
-    def a(self) -> VectorOperand:
-        return self._a
-    
-    @property
-    def b(self) -> VectorOperand:
-        return self._b
-    
-    @property
-    def category(self) -> Optional[RegisterContentType]:
-        return self._content_type
-    
-    @property
-    def to_list(self) -> List[VectorOperand]:
-        return [self._a, self._b]
-    
-    @property
-    def to_dict(self) -> Dict[str, Any]:
-        return {"a": self._a, "v": self._b}
-    
-    @property
-    def a_is_same_as_b(self) -> bool:
-        return self._a == self._b
-    
-    @property
-    def a_is_not_ame_as_b(self) -> bool:
-        return not self.a_is_same_as_b
-    
-    @property
-    def is_vector_register(self) -> bool:
-        return self._a.is_vector and self._b.is_vector
-    
-    @property
-    def is_coord_register(self) -> bool:
-        return self._a.is_coord and self._b.is_coord
-    
-    @property
-    def is_inconsistent(self) -> bool:
-        return not self._a.is_coord and not self._b.is_coord
-    
-    def __eq__(self, other):
-        if other is self: return True
-        if other is None: return False
-        if isinstance(other, VectorOperandRegisterToolkit):
-            return (
-                    self._a == other.b and
-                    self._b == other.b
-            )
-    
-    
+    coord_validator: CoordValidator = CoordValidator()
+    scalar_validator: ScalarValidator = ScalarValidator()
+    vector_validator: VectorValidator = VectorValidator()
+    null_exception = VectorOperandRegisterNullException = VectorOperandRegisterNullException()
+    model: VectorOperandRegister
     
