@@ -11,7 +11,7 @@ version: 1.0.1
 
 # Packages
 from .endpoint import *
-from .readiness import *
+from .maneuver import *
 
 # Modules
 from .exception import ValidatorBootstrapperException

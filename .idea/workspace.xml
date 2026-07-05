@@ -5,30 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/bootstrap/validator/endpoint/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/bootstrap/validator/endpoint/origin/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/bootstrap/validator/endpoint/origin/bootstrapper.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/bootstrapper/validator/endpoint/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/bootstrapper/validator/endpoint/origin/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bootstrap/analyzer/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/bootstrap/analyzer/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bootstrap/analyzer/destination/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bootstrap/analyzer/destination/bootstrapper.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bootstrap/validator/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/bootstrap/validator/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bootstrap/validator/destination/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/bootstrap/validator/endpoint/destination/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bootstrap/validator/destination/bootstrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/bootstrap/validator/endpoint/destination/bootstrapper.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bootstrap/validator/readiness/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/bootstrap/validator/readiness/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/err/bootstrapper/validator/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/bootstrapper/validator/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/bootstrapper/validator/destination/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/bootstrapper/validator/endpoint/destination/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/bootstrapper/validator/destination/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/bootstrapper/validator/endpoint/destination/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/validation/arena/origin/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/validation/arena/origin/circular/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/validation/arena/origin/circular/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/bootstrapper/validator/endpoint/origin/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/validation/arena/origin/exception.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/validation/arena/origin/partial/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/validation/arena/origin/partial/exception.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/validation/endpoint/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/validation/endpoint/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/validation/endpoint/origin/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/validation/endpoint/origin/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/bootstrapper/validator/readiness/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/bootstrapper/validator/maneuver/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/bootstrapper/validator/readiness/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/bootstrapper/validator/maneuver/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/toolkit/model/state/maneuver/toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/toolkit/model/state/maneuver/toolkit.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -830,7 +810,7 @@
       <workItem from="1782265217166" duration="7062000" />
       <workItem from="1782325486599" duration="56546000" />
       <workItem from="1782732939190" duration="235900000" />
-      <workItem from="1783222430394" duration="12590000" />
+      <workItem from="1783222430394" duration="14191000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />

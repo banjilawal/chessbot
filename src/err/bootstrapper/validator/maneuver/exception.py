@@ -1,7 +1,7 @@
-# src/err/bootstrap/validator/readiness/exception.py
+# src/err/bootstrap/validator/maneuver/exception.py
 
 """
-Module: err.bootstrapper.validator.readiness.exception
+Module: err.bootstrapper.validator.maneuver.exception
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -14,18 +14,18 @@ from err import ValidatorBootstrapperException
 from result import MethodResultType
 
 __all__ = [
-    # ======================# READINESS_VALIDATOR_BOOTSTRAPPER_FAILURE #======================#
-    "ReadinessValidatorBootstrapperException",
+    # ======================# MANEUVER_VALIDATOR_BOOTSTRAPPER_FAILURE #======================#
+    "ManeuverValidatorBootstrapperException",
 ]
 
-# ======================# READINESS_VALIDATOR_BOOTSTRAPPER_FAILURE #======================#
-class ReadinessValidatorBootstrapperException(ValidatorBootstrapperException):
+# ======================# MANEUVER_VALIDATOR_BOOTSTRAPPER_FAILURE #======================#
+class ManeuverValidatorBootstrapperException(ValidatorBootstrapperException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an error prevented a ReadinessValidatorBootstrapper from
+        1.  Indicate that an error prevented a ManeuverValidatorBootstrapper from
             completing its task.
         
     Attributes:
@@ -43,8 +43,8 @@ class ReadinessValidatorBootstrapperException(ValidatorBootstrapperException):
     Super Class:
         ValidatorBootstrapperException
     """
-    MSG = "ReadinessValidatorBootstrapper encountered an error."
-    ERR_CODE = "READINESS_VALIDATOR_BOOTSTRAPPER_FAILURE"
+    MSG = "ManeuverValidatorBootstrapper encountered an error."
+    ERR_CODE = "MANEUVER_VALIDATOR_BOOTSTRAPPER_FAILURE"
     MTHD_RSLT_TYPE = MethodResultType.ANALYSIS_RESULT
     
     def __init__(
