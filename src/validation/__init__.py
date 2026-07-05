@@ -14,7 +14,6 @@ from .arena import *
 from .binder import *
 from .blueprint import *
 from .board import *
-from .destination import *
 from .priming import *
 from .context import *
 from .coord import *

@@ -1,7 +1,7 @@
-# src/err/validation/origin/circular/exception.py
+# src/err/validation/endpoint/destination/circular/exception.py
 
 """
-Module: err.validation.origin.circular.exception
+Module: err.validation.endpoint.destination.circular.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -14,18 +14,18 @@ from err import ValidatorException
 from result import MethodResultType
 
 __all__ = [
-    # ======================# TOKEN_ORIGIN_RELATION_NULL_ERROR #======================#
-    "TokenOriginRelationNullException",
+    # ======================# TOKEN_ALREADY_AT_DESTINATION_ERROR #======================#
+    "TokenAlreadyAtDestinationException",
 ]
 
-# ======================# TOKEN_ORIGIN_RELATION_NULL_ERROR #======================#
-class TokenOriginRelationNullException(ValidatorException):
+# ======================# TOKEN_ALREADY_AT_DESTINATION_ERROR #======================#
+class TokenAlreadyAtDestinationException(ValidatorException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate a Token cannot move from a Square because its somewhere else.
+        1.  Indicate a Token is already at its destination.
 
     Attributes:
         msg: Optional[str]
@@ -42,8 +42,8 @@ class TokenOriginRelationNullException(ValidatorException):
     Super Class:
         ValidatorException
     """
-    MSG = "Candidate did not pass a Square is not the Token's origin. Token cannot move from the square."
-    ERR_CODE = "TOKEN_ORIGIN_RELATION_NULL_ERROR"
+    MSG = "Candidate did not pass a Token is already at the destination."
+    ERR_CODE = "TOKEN_ALREADY_AT_DESTINATION_ERROR"
     
     def __init__(
             self,

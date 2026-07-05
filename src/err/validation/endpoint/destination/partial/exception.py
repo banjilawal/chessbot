@@ -1,7 +1,7 @@
-# src/err/validation/destination/partial/exception.py
+# src/err/validation/endpoint/destination/partial/exception.py
 
 """
-Module: err.validation.destination.partial.exception
+Module: err.validation.endpoint.destination.partial.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1

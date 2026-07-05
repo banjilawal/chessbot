@@ -19,10 +19,10 @@ from operation import Operation
 from search import TokenOriginSearcher
 from toolkit import PermitterToolkit
 from validation import (
-    ManeuverEndpointValidator, PathValidator, SquareValidator, TokenDestinationCertifierValidator,
+    ManeuverEndpointValidator, PathValidator, SquareValidator, TokenDestinationCertifier,
     TokenValidator
 )
-from validation.origin import TokenOriginRelationValidator
+from validation.endpoint.origin import TokenOriginCertifier
 
 
 class ManeuverToolkit(PermitterToolkit[Maneuver]):
@@ -48,7 +48,7 @@ class ManeuverToolkit(PermitterToolkit[Maneuver]):
         relation_analyzer: SquareTokenRelationAnalyzer
         endpoint_validator: ManeuverEndpointValidator
         origin_relation_validator: TokenOriginRelationValidator
-        destination_relation_validator: TokenDestinationRelationValidator
+        destination_certifier: TokenDestinationRelationValidator
         null_exception: ManeuverNullException
         permitter: Maneuver
 
@@ -69,7 +69,7 @@ class ManeuverToolkit(PermitterToolkit[Maneuver]):
     readiness_analyzer: TokenReadinessAnalyzer = TokenReadinessAnalyzer()
     relation_analyzer: SquareTokenRelationAnalyzer = SquareTokenRelationAnalyzer()
     endpoint_validator: ManeuverEndpointValidator = ManeuverEndpointValidator()
-    origin_relation_validator: TokenOriginRelationValidator = TokenOriginRelationValidator()
-    destination_relation_validator: TokenDestinationCertifierValidator = TokenDestinationCertifierValidator()
+    origin_relation_validator: TokenOriginCertifier = TokenOriginCertifier()
+    destination_certifier: TokenDestinationCertifier = TokenDestinationCertifier()
     null_exception: ManeuverNullException = ManeuverNullException()
     permitter: Maneuver = Maneuver

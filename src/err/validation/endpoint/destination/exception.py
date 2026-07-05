@@ -1,7 +1,7 @@
-# src/err/validation/destination/exception.py
+# src/err/validation/endpoint/destination/exception.py
 
 """
-Module: err.validation.destination.exception
+Module: err.validation.endpoint.destination.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1

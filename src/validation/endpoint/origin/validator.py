@@ -1,7 +1,7 @@
-# src/validation/origin/validator.py
+# src/validation/endpoint/origin/validator.py
 
 """
-Module: validation.origin.validator
+Module: validation.endpoint.origin.validator
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -18,7 +18,7 @@ from toolkit import TokenEndpointRelationToolkit
 from util import LoggingLevelRouter
 
 
-class TokenOriginRelationValidator:
+class TokenOriginCertifier:
     """
     Role
         -   Validation Worker

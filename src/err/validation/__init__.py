@@ -17,7 +17,6 @@ from .board import *
 from .primer import *
 from .context import *
 from .coord import *
-from .destination import *
 from .edge import *
 from .endpoint import *
 from .formation import *
@@ -29,7 +28,6 @@ from .maneuver import *
 from .node import *
 from .number import *
 from .operand import *
-from .origin import *
 from .path import *
 from .persona import *
 from .player import *

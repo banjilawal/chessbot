@@ -12,6 +12,8 @@ version: 1.0.1
 # Packages
 from .microservice import *
 from .model import *
+from .operation import *
+from .relation import *
 
 # Modules
 from .exception import NullException

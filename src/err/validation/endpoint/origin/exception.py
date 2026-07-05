@@ -1,7 +1,7 @@
-# src/err/validation/origin/exception.py
+# src/err/validation/endpoint/origin/exception.py
 
 """
-Module: err.validation.origin.exception
+Module: err.validation.endpoint.origin.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -14,18 +14,18 @@ from err import ValidatorException
 from result import MethodResultType
 
 __all__ = [
-    # ======================# TOKEN_ORIGIN_RELATION_VALIDATOR_FAILURE #======================#
-    "TokenOriginRelationValidatorException",
+    # ======================# TOKEN_ORIGIN_CERTIFIER_FAILURE #======================#
+    "TokenOriginCertifierException",
 ]
 
-# ======================# TOKEN_ORIGIN_RELATION_VALIDATOR_FAILURE #======================#
-class TokenOriginRelationValidatorException(ValidatorException):
+# ======================# TOKEN_ORIGIN_CERTIFIER_FAILURE #======================#
+class TokenOriginCertifierException(ValidatorException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a candidate did not pass a TokenOriginRelationValidator test.
+        1.  Indicate that a candidate did not pass a TokenOriginCertifier test.
 
     Attributes:
         msg: Optional[str]
@@ -42,8 +42,8 @@ class TokenOriginRelationValidatorException(ValidatorException):
     Super Class:
         ValidatorException
     """
-    MSG = "Candidate did not pass TokenOriginRelationValidator test."
-    ERR_CODE = "TOKEN_ORIGIN_RELATION_VALIDATOR_FAILURE"
+    MSG = "Candidate did not pass TokenOriginCertifier test."
+    ERR_CODE = "TOKEN_ORIGIN_CERTIFIER_FAILURE"
     
     def __init__(
             self,

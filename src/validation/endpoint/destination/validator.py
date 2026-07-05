@@ -1,7 +1,7 @@
-# src/validation/destination/validator.py
+# src/validation/endpoint/destination/validator.py
 
 """
-Module: validation.destination.validator
+Module: validation.endpoint.destination.validator
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -18,7 +18,7 @@ from result import ValidationResult
 from util import LoggingLevelRouter
 
 
-class TokenDestinationCertifierValidator:
+class TokenDestinationCertifier:
     """
     Role
         -   Validation Worker
