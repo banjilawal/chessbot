@@ -43,7 +43,7 @@ class TeamContextException(ContextException):
     Super Class:
         ContextException
     """
-    MSG = "TeamContext error state."
+    MSG = "TeamContext error."
     ERR_CODE = "TEAM_CONTEXT_ERROR"
     
     def __init__(

@@ -37,7 +37,7 @@ class VectorRegisterToolkit(ModelToolkit[VectorOperandRegister]):
         -   def resolve_dependencies(s -> SearchResult[List[Dict[str, Any]]]:
         
     Super Class:
-        Toolkit
+       ModelToolkit
     """
     vector_operand_validator: VectorOperandValidator = VectorOperandValidator()
     priming_validator: PrimingValidator = PrimingValidator()

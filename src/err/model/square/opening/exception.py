@@ -35,13 +35,14 @@ class OpeningSquareException(SquareException):
         cls_name: Optional[str]
         cls_mthd: Optional[str]
         err_code: Optional[str]
-            
+        Mthd_Rslt_Type: Optional[MethodResultType]
+        
     Provides:
 
     Super Class:
         SquareException
     """
-    MSG = "Opening error state."
+    MSG = "Opening error."
     ERR_CODE = "OPENING_ERROR"
     
     def __init__(

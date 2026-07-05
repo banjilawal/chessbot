@@ -39,7 +39,7 @@ class VectorOperandToolkit(ModelToolkit[VectorOperand]):
         -   def resolve_dependencies(s -> SearchResult[List[Dict[str, Any]]]:
         
     Super Class:
-        Toolkit
+       ModelToolkit
     """
     coord_validator: CoordValidator = CoordValidator()
     vector_validator: VectorValidator = VectorValidator()

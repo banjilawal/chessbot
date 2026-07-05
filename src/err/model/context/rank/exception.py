@@ -43,7 +43,7 @@ class RankContextException(ContextException):
     Super Class:
         ContextException
     """
-    MSG = "RankContext error state."
+    MSG = "RankContext error."
     ERR_CODE = "RANK_CONTEXT_ERROR"
     
     def __init__(

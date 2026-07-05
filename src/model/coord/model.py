@@ -9,8 +9,10 @@ version: 1.0.1
 
 from __future__ import annotations
 
+from model import Model
 
-class Coord:
+
+class Coord(Model):
     """
     Role:
         -   Addressing

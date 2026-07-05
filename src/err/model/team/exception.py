@@ -11,6 +11,7 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from err import ModelException
+from result import methodResultType
 
 
 __all__ = [
@@ -42,7 +43,7 @@ class TeamException(ModelException):
     Super Class:
         ModelException
     """
-    MSG = "Team error state."
+    MSG = "Team error."
     ERR_CODE = "TEAM_ERROR"
     
     def __init__(

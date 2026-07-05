@@ -35,13 +35,14 @@ class HumanPlayerException(PlayerException):
         cls_name: Optional[str]
         cls_mthd: Optional[str]
         err_code: Optional[str]
-            
+        Mthd_Rslt_Type: Optional[MethodResultType]
+        
     Provides:
 
     Super Class:
         PlayerException
     """
-    MSG = "HumanPlayer error state."
+    MSG = "HumanPlayer error."
     ERR_CODE = "HUMAN_PLAYER_ERROR"
     
     def __init__(

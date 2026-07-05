@@ -43,7 +43,7 @@ class PlayerContextException(ContextException):
     Super Class:
         ContextException
     """
-    MSG = "PlayerContext error state."
+    MSG = "PlayerContext error."
     ERR_CODE = "PLAYER_CONTEXT_ERROR"
     
     def __init__(

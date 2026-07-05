@@ -31,7 +31,7 @@ class VectorRegisterToolkit(ModelToolkit[VectorOperandRegister]):
     Provides:
     
     Super Class:
-        Toolkit
+       ModelToolkit
     """
     _vector_operand_validator: VectorOperandValidator
     

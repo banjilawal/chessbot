@@ -11,6 +11,7 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from err import ModelException
+from result import MethodResultType
 
 
 __all__ = [
@@ -35,13 +36,14 @@ class EdgeException(ModelException):
         cls_name: Optional[str]
         cls_mthd: Optional[str]
         err_code: Optional[str]
+        mthd_rslt_type: Optional[MethodResultType]
             
     Provides:
 
     Super Class:
         ModelException
     """
-    MSG = "Edge error state."
+    MSG = "Edge error."
     ERR_CODE = "EDGE_ERROR"
     
     def __init__(

@@ -11,6 +11,7 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from err import ModelException
+from result import methodResultType
 
 
 __all__ = [
@@ -42,7 +43,7 @@ class PersonaException(ModelException):
     Super Class:
         ModelException
     """
-    MSG = "Persona error state."
+    MSG = "Persona error."
     ERR_CODE = "PERSONA_ERROR"
     
     def __init__(

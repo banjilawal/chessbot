@@ -38,7 +38,7 @@ class CoordToolkit(ModelToolkit[Coord]):
         -   def resolve_dependencies(s -> SearchResult[List[Dict[str, Any]]]:
         
     Super Class:
-        Toolkit
+       ModelToolkit
     """
     number_validator: NumberValidator = NumberValidator()
     priming_validator: PrimingValidator = PrimingValidator()

@@ -43,7 +43,7 @@ class NodeContextException(ContextException):
     Super Class:
         ContextException
     """
-    MSG = "NodeContext error state."
+    MSG = "NodeContext error."
     ERR_CODE = "NODE_CONTEXT_ERROR"
     
     def __init__(

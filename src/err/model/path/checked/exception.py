@@ -43,7 +43,7 @@ class CheckedPathException(PathException):
     Super Class:
         PathException
     """
-    MSG = "CheckedPath error state."
+    MSG = "CheckedPath error."
     ERR_CODE = "CHECKED_PATH_ERROR"
     
     def __init__(

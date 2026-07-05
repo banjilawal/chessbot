@@ -35,13 +35,14 @@ class QueenException(RankException):
         cls_name: Optional[str]
         cls_mthd: Optional[str]
         err_code: Optional[str]
-            
+        Mthd_Rslt_Type: Optional[MethodResultType]
+        
     Provides:
 
     Super Class:
         RankException
     """
-    MSG = "Queen error state."
+    MSG = "Queen error."
     ERR_CODE = "QUEEN_ERROR"
     
     def __init__(

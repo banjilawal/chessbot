@@ -43,7 +43,7 @@ class TokenContextException(ContextException):
     Super Class:
         ContextException
     """
-    MSG = "TokenContext error state."
+    MSG = "TokenContext error."
     ERR_CODE = "TOKEN_CONTEXT_ERROR"
     
     def __init__(

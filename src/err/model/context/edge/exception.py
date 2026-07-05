@@ -43,7 +43,7 @@ class EdgeContextException(ContextException):
     Super Class:
         ContextException
     """
-    MSG = "EdgeContext error state."
+    MSG = "EdgeContext error."
     ERR_CODE = "EDGE_CONTEXT_ERROR"
     
     def __init__(

@@ -43,7 +43,7 @@ class PersonaContextException(ContextException):
     Super Class:
         ContextException
     """
-    MSG = "PersonaContext error state."
+    MSG = "PersonaContext error."
     ERR_CODE = "PERSONA_CONTEXT_ERROR"
     
     def __init__(

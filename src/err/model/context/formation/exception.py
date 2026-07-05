@@ -43,7 +43,7 @@ class FormationContextException(ContextException):
     Super Class:
         ContextException
     """
-    MSG = "FormationContext error state."
+    MSG = "FormationContext error."
     ERR_CODE = "FORMATION_CONTEXT_ERROR"
     
     def __init__(

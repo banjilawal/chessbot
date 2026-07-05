@@ -11,6 +11,7 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from err import ModelException
+from result import methodResultType
 
 
 __all__ = [
@@ -35,13 +36,14 @@ class SchemaException(ModelException):
         cls_name: Optional[str]
         cls_mthd: Optional[str]
         err_code: Optional[str]
-            
+        Mthd_Rslt_Type: Optional[MethodResultType]
+        
     Provides:
 
     Super Class:
         ModelException
     """
-    MSG = "Schema error state."
+    MSG = "Schema error."
     ERR_CODE = "SCHEMA_ERROR"
     
     def __init__(

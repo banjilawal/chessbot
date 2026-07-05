@@ -10,13 +10,13 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Dict, List, Optional
 
-from model import RegisterContentType, VectorOperand
+from model import Model, RegisterContentType, VectorOperand
 
 
-class VectorOperandRegister:
+class VectorOperandRegister(Model):
     """
-    Role:
-        -   State
+        -   Model
+        -   Data Holder
 
     Responsibilities:
         1.  Describes What type of operands are in the Vecregister.

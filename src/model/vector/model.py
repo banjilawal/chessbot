@@ -9,8 +9,10 @@ version: 1.0.1
 
 from __future__ import annotations
 
+from model import Model
 
-class Vector:
+
+class Vector(Model):
     """
     Role:
         -   Model

@@ -43,7 +43,7 @@ class SquareContextException(ContextException):
     Super Class:
         ContextException
     """
-    MSG = "SquareContext error state."
+    MSG = "SquareContext error."
     ERR_CODE = "SQUARE_CONTEXT_ERROR"
     
     def __init__(

@@ -35,13 +35,14 @@ class BoardTeamBinderException(BinderException):
         cls_name: Optional[str]
         cls_mthd: Optional[str]
         err_code: Optional[str]
-            
+        Mthd_Rslt_Type: Optional[MethodResultType]
+        
     Provides:
 
     Super Class:
         BinderException
     """
-    MSG = "BoardTeamBinder error state."
+    MSG = "BoardTeamBinder error."
     ERR_CODE = "BOARD_TEAM_BINDER_ERROR"
     
     def __init__(

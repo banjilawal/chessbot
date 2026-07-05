@@ -43,7 +43,7 @@ class PathException(ModelException):
     Super Class:
         ModelException
     """
-    MSG = "Path error state."
+    MSG = "Path error."
     ERR_CODE = "PATH_ERROR"
     
     def __init__(

@@ -43,7 +43,7 @@ class HostageContextException(ContextException):
     Super Class:
         ContextException
     """
-    MSG = "HostageContext error state."
+    MSG = "HostageContext error."
     ERR_CODE = "HOSTAGE_CONTEXT_ERROR"
     
     def __init__(

@@ -35,13 +35,14 @@ class MachinePlayerException(PlayerException):
         cls_name: Optional[str]
         cls_mthd: Optional[str]
         err_code: Optional[str]
-            
+        Mthd_Rslt_Type: Optional[MethodResultType]
+        
     Provides:
 
     Super Class:
         PlayerException
     """
-    MSG = "MachinePlayer error state."
+    MSG = "MachinePlayer error."
     ERR_CODE = "MACHINE_PLAYER_ERROR"
     
     def __init__(

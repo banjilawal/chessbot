@@ -35,13 +35,14 @@ class PawnException(RankException):
         cls_name: Optional[str]
         cls_mthd: Optional[str]
         err_code: Optional[str]
-            
+        Mthd_Rslt_Type: Optional[MethodResultType]
+        
     Provides:
 
     Super Class:
         RankException
     """
-    MSG = "Pawn error state."
+    MSG = "Pawn error."
     ERR_CODE = "PAWN_ERROR"
     
     def __init__(

@@ -50,7 +50,7 @@ class TokenToolkit(ModelToolkit):
         -   def resolve_dependencies(s -> SearchResult[List[Dict[str, Any]]]:
 
     Super Class:
-        Toolkit
+       ModelToolkit
     """
     home_square_detector: HomeSquareDetector = HomeSquareDetector()
     square_validator: SquareValidator = SquareValidator()

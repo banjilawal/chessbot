@@ -35,13 +35,14 @@ class ArenaPlayerBinderException(BinderException):
         cls_name: Optional[str]
         cls_mthd: Optional[str]
         err_code: Optional[str]
-            
+        Mthd_Rslt_Type: Optional[MethodResultType]
+        
     Provides:
 
     Super Class:
         BinderException
     """
-    MSG = "ArenaPlayerBinder error state."
+    MSG = "ArenaPlayerBinder error."
     ERR_CODE = "ARENA_PLAYER_BINDER_ERROR"
     
     def __init__(

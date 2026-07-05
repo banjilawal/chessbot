@@ -11,6 +11,7 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from err import ModelException
+from result import methodResultType
 
 
 __all__ = [
@@ -43,7 +44,7 @@ class VectorOperandException(ModelException):
     Super Class:
         ModelException
     """
-    MSG = "VectorOperand error state."
+    MSG = "VectorOperand error."
     ERR_CODE = "VECTOR_OPERAND_ERROR"
     
     def __init__(

@@ -43,7 +43,7 @@ class CoordContextException(ContextException):
     Super Class:
         ContextException
     """
-    MSG = "CoordContext error state."
+    MSG = "CoordContext error."
     ERR_CODE = "COORD_CONTEXT_ERROR"
     
     def __init__(

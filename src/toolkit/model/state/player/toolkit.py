@@ -28,6 +28,6 @@ class PlayerToolkit(ModelToolkit[Player]):
     Provides:
 
     Super Class:
-        Toolkit
+       ModelToolkit
     """
     pass

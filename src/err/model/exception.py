@@ -34,13 +34,14 @@ class ModelException(ChessException):
         cls_name: Optional[str]
         cls_mthd: Optional[str]
         err_code: Optional[str]
-            
+        Mthd_Rslt_Type: Optional[MethodResultType]
+        
     Provides:
 
     Super Class:
         ChessException
     """
-    MSG = "Data object error state."
+    MSG = "Data object error."
     ERR_CODE = "MODEL_ERROR"
     
     def __init__(

@@ -43,7 +43,7 @@ class BoardContextException(ContextException):
     Super Class:
         ContextException
     """
-    MSG = "BoardContext error state."
+    MSG = "BoardContext error."
     ERR_CODE = "BOARD_CONTEXT_ERROR"
     
     def __init__(

@@ -34,13 +34,14 @@ class ArenaException(ModelException):
         cls_name: Optional[str]
         cls_mthd: Optional[str]
         err_code: Optional[str]
-            
+        Mthd_Rslt_Type: Optional[MethodResultType]
+        
     Provides:
 
     Super Class:
         ModelException
     """
-    MSG = "Arena error state."
+    MSG = "Arena error."
     ERR_CODE = "ARENA_ERROR"
     
     def __init__(

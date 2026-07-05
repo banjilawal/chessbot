@@ -8,15 +8,16 @@ version: 1.0.1
 """
 
 from __future__ import annotations
-from typing import Any, Dict, List, Optional
+from typing import Any, Dict, List
 
-from model import Square
+from model import Model, Square
 
 
-class SquareRegister:
+class SquareRegister(Model):
     """
     Role:
-        -   State
+        -   Model
+        -   Data Holder
 
     Responsibilities:
         1.  Contains the endpoints of a journey.

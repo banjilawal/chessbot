@@ -43,7 +43,7 @@ class AttackPathException(PathException):
     Super Class:
         PathException
     """
-    MSG = "AttackPath error state."
+    MSG = "AttackPath error."
     ERR_CODE = "ATTACK_PATH_ERROR"
     
     def __init__(

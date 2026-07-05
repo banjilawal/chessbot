@@ -43,7 +43,7 @@ class SchemaContextException(ContextException):
     Super Class:
         ContextException
     """
-    MSG = "SchemaContext error state."
+    MSG = "SchemaContext error."
     ERR_CODE = "SCHEMA_CONTEXT_ERROR"
     
     def __init__(

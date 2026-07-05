@@ -35,7 +35,7 @@ class PathToolkit(ModelToolkit):
     Provides:
 
     Super Class:
-        Toolkit
+       ModelToolkit
     """
     square_validator: SquareValidator = SquareValidator()
     null_exception: PathNullException = PathNullException()

@@ -11,6 +11,7 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from err import ModelException
+from result import methodResultType
 
 
 __all__ = [
@@ -42,7 +43,7 @@ class ContextException(ModelException):
     Super Class:
         ModelException
     """
-    MSG = "context's error state."
+    MSG = "context's error."
     ERR_CODE = "CONTEXT_ERROR"
     
     def __init__(

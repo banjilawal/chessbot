@@ -46,7 +46,7 @@ class SquareToolkit(ModelToolkit[Square]):
         -   def resolve_dependencies(s -> SearchResult[List[Dict[str, Any]]]:
 
     Super Class:
-        Toolkit
+       ModelToolkit
     """
     DEPENDENCIES =[
         BoardValidator,

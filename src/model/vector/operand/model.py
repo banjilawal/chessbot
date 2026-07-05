@@ -1,8 +1,7 @@
 # src/model/vector/register/category.py
 
 """
-Module: model.vectoroperand.category
-Author: Banji Lawal
+Module: model.vector.operand.model
 Created: 2026-04-03
 version: 1.0.1
 """
@@ -10,10 +9,10 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Dict, Optional
 
-from model import Coord, OperandCategory, Vector
+from model import Coord, Model, OperandCategory, Vector
 
 
-class VectorOperand:
+class VectorOperand(Model):
     """
     Role:
         -   Selection

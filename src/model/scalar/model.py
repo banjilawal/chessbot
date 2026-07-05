@@ -10,7 +10,7 @@ version: 1.0.1
 from __future__ import annotations
 
 
-class Scalar:
+class Scalar(Model):
     """
     Role:Computation, Transformation, Data-Holder
     

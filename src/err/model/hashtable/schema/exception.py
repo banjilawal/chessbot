@@ -35,13 +35,14 @@ class SchemaHashtableException(HashtableException):
         cls_name: Optional[str]
         cls_mthd: Optional[str]
         err_code: Optional[str]
-            
+        Mthd_Rslt_Type: Optional[MethodResultType]
+        
     Provides:
 
     Super Class:
         HashtableException
     """
-    MSG = "SchemaHashtable error state."
+    MSG = "SchemaHashtable error."
     ERR_CODE = "SCHEMA_HASHTABLE_ERROR"
     
     def __init__(

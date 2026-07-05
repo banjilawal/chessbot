@@ -11,6 +11,7 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from err import ModelException
+from result import methodResultType
 
 
 __all__ = [
@@ -42,7 +43,7 @@ class FormationException(ModelException):
     Super Class:
         ModelException
     """
-    MSG = "Formation error state."
+    MSG = "Formation error."
     ERR_CODE = "FORMATION_ERROR"
     
     def __init__(

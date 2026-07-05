@@ -20,7 +20,7 @@ class Path:
     """
     Role:
         -   Model
-        -   Data Holder
+        -   Stateful Data Holder
 
     Responsibilities:
         1.  Adds a label and cost to a SquareRegister.

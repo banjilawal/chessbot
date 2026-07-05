@@ -43,7 +43,7 @@ class ArenaContextException(ContextException):
     Super Class:
         ContextException
     """
-    MSG = "ArenaContext error state."
+    MSG = "ArenaContext error."
     ERR_CODE = "ARENA_CONTEXT_ERROR"
     
     def __init__(

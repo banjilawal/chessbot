@@ -43,7 +43,7 @@ class KingPathException(PathException):
     Super Class:
         PathException
     """
-    MSG = "KingPath error state."
+    MSG = "KingPath error."
     ERR_CODE = "KING_PATH_ERROR"
     
     def __init__(

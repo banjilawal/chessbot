@@ -45,7 +45,7 @@ class ModelToolkit(Toolkit[T]):
         -   def _resolve_dependencies(self) -> SearchResult[List[Dict[str, Operation]]]
         
     Super Class:
-        Toolkit
+       ModelToolkit
         
     Notes:
         -   ModelToolkit for an empty class which makes managing toolkits easier.

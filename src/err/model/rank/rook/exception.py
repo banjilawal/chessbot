@@ -35,13 +35,14 @@ class RookException(RankException):
         cls_name: Optional[str]
         cls_mthd: Optional[str]
         err_code: Optional[str]
+        Mthd_Rslt_Type: Optional[MethodResultType]
             
     Provides:
 
     Super Class:
         RankException
     """
-    MSG = "Rook error state."
+    MSG = "Rook error."
     ERR_CODE = "ROOK_ERROR"
     
     def __init__(

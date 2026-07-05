@@ -43,7 +43,7 @@ class CombatantPathException(PathException):
     Super Class:
         PathException
     """
-    MSG = "CombatantPath error state."
+    MSG = "CombatantPath error."
     ERR_CODE = "COMBATANT_PATH_ERROR"
     
     def __init__(

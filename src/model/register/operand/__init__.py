@@ -13,4 +13,4 @@ version: 1.0.1
 
 # Modules
 from .category import RegisterContentType
-from model import VectorOperandRegister
+from .model import VectorOperandRegister
