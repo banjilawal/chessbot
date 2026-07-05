@@ -13,6 +13,7 @@ from typing import Any, cast
 from err import VectorOperandRegisterValidatorException
 from model import VectorOperandRegister
 from result import ValidationResult
+from toolkit import VectorRegisterToolkit
 from util import LoggingLevelRouter
 from validation import Validator
 

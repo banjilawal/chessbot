@@ -9,16 +9,18 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from typing import TypeVar
+from typing import Generic, TypeVar
 
 from err import NullException
+from microservice import IdentityService
 from toolkit import Toolkit
+from validation import BlueprintIdValidator
 
 T = TypeVar("T")
 
 
 
-class ModelToolkit(Toolkit[T]):
+class ModelToolkit(Toolkit, Generic[T]):
     """
     Role:
         -   Dependency Container
@@ -53,3 +55,5 @@ class ModelToolkit(Toolkit[T]):
     """
     model: T
     null_exception: NullException
+    identity_service: IdentityService = IdentityService()
+    blueprint_id_validator: BlueprintIdValidator = BlueprintIdValidator()

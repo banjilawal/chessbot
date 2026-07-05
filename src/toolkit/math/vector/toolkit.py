@@ -20,21 +20,24 @@ class VectorAlgebraToolkit(Toolkit):
     """
     Role:
         -   Container
-
+    
     Responsibilities:
         1.  Collection of suites and operations for vector algebra.
         2.  Simplifies entry points.
         3.  No logic in the Toolkit.
-
+    
     Attributes:
         coord: CoordOperationSuite
         scalar: ScalarOperationSuite
         vector: VectorOperationSuite
         number_validator: NumberValidator
     Provides:
-
-     Super Class:
+    
+    Super Class:
          Toolkit
+         
+    Notes:
+        -   VectorAlgebraToolkit does not extend ModelOperationSuite because an OperationSuite needs a Type.
      """
     coord: CoordOperationSuite = CoordOperationSuite()
     scalar: ScalarOperationSuite = ScalarOperationSuite()

@@ -9,16 +9,15 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from typing import TypeVar
+from typing import Generic, TypeVar
 
-from err import NullException
+from permitter import OperationPermitter
 from toolkit import Toolkit
 
-T = TypeVar("T")
+P = TypeVar("P", bound=OperationPermitter)
 
 
-
-class PermitterToolkit(Toolkit[Permitter]):
+class PermitterToolkit(Toolkit[OperationPermitter, Generic[P]]):
     """
     Role:
         -   Dependency Container
@@ -51,5 +50,3 @@ class PermitterToolkit(Toolkit[Permitter]):
         -   PermitterToolkit for an empty class which makes managing toolkits easier.
         -   Any toolkits for a permitter should be a PermitterToolkit subclass.
     """
-    permitter: T
-    null_exception: NullException

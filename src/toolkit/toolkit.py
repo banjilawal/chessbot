@@ -55,10 +55,7 @@ class Toolkit(ABC, Generic[T]):
     DEPENDENCIES: List[Operation] = []
     SERVICE_DEPENDENCIES: List[Microservice] = []
     
-
-    identity_service: IdentityService = IdentityService()
     priming_validator: PrimingValidator = PrimingValidator()
-    blueprint_id_validator: BlueprintIdValidator = BlueprintIdValidator()
     
     _entries: Dict[str, Any] = {}
     
