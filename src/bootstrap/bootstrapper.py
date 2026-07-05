@@ -18,8 +18,8 @@ from util import LoggingLevelRouter
 class Bootstrapper(ABC):
     DOMAIN = "BootStrap"
     
-    @classmethod
-    @abstractmethod
-    @LoggingLevelRouter.monitor
-    def execute(cls, *args, **kwargs, ) -> Result:
-        pass
+    # @classmethod
+    # @abstractmethod
+    # @LoggingLevelRouter.monitor
+    # def execute(cls, *args, **kwargs, ) -> Result:
+    #     pass

@@ -9,8 +9,6 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from typing import cast
-
 from err import TokenManeuverPermitterException
 from model import Maneuver, Path, Square, Token
 from permitter import TokenPermitter
@@ -91,10 +89,7 @@ class TokenManeuverPermitter(TokenPermitter):
                     ex=readiness_analysis_result.exception,
                 )
             )
-        token_origin_search_result = toolkit.origin_searcher.execute(
-            target=requestor,
-            readiness_analyzer=toolkit.readiness_analyzer
-        )
+        token_origin_search_result = toolkit.origin_searcher.execute(target=requestor)
         # Handle the case that, the origin_searcher is not successful.
         if token_origin_search_result.is_failure:
             # Return the exception chain on failure

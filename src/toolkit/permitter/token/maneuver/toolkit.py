@@ -36,7 +36,7 @@ class TokenManeuverToolkit(PermitterToolkit):
         square_validator: SquareValidator
         origin_searcher: TokenOriginSearcher
         readiness_analyzer: TokenReadinessAnalyzer
-        destination_relation_analyzer: SquareTokenRelationAnalyzer
+        destination_relation_validator: SquareTokenRelationAnalyzer
 
     Provides:
 
@@ -47,4 +47,4 @@ class TokenManeuverToolkit(PermitterToolkit):
     square_validator: SquareValidator = SquareValidator()
     origin_searcher: TokenOriginSearcher = TokenOriginSearcher()
     readiness_analyzer: TokenReadinessAnalyzer = TokenReadinessAnalyzer()
-    destination_relation_analyzer: SquareTokenRelationAnalyzer = SquareTokenRelationAnalyzer()
+    destination_relation_validator: TokenDestinationRelationValidator = TokenDestinationRelationValidator()

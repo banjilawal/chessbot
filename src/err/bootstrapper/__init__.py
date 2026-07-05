@@ -15,6 +15,7 @@ from .collision import *
 from .operation import *
 from .permitter import *
 from .searcher import *
+from .validator import *
 
 # Modules
 from .exception import BootstrapperException

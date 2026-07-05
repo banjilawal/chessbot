@@ -17,7 +17,7 @@ from .insertion import *
 from .operation import *
 from .permitter import *
 from .searcher import *
-from .validation import *
+from .validator import *
 
 
 # Modules
