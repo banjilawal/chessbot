@@ -14,18 +14,18 @@ from err import ValidatorBootstrapperException
 from result import MethodResultType
 
 __all__ = [
-    # ======================# DESTINATION_VALIDATOR_BOOTSTRAPPER_FAILURE #======================#
+    # ======================# DESTINATION_CERTIFIER_BOOTSTRAPPER_FAILURE #======================#
     "DestinationCertifierBootstrapperException",
 ]
 
-# ======================# DESTINATION_VALIDATOR_BOOTSTRAPPER_FAILURE #======================#
+# ======================# DESTINATION_CERTIFIER_BOOTSTRAPPER_FAILURE #======================#
 class DestinationCertifierBootstrapperException(ValidatorBootstrapperException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an error prevented a DestinationValidatorBootstrapper 
+        1.  Indicate that an error prevented a DestinationCertifierBootstrapper 
             from completing its task.
         
     Attributes:
@@ -43,8 +43,8 @@ class DestinationCertifierBootstrapperException(ValidatorBootstrapperException):
     Super Class:
         ValidatorBootstrapperException
     """
-    MSG = "DestinationValidatorBootstrapper encountered an error."
-    ERR_CODE = "DESTINATION_VALIDATOR_BOOTSTRAPPER_FAILURE"
+    MSG = "DestinationCertifierBootstrapper encountered an error."
+    ERR_CODE = "DESTINATION_CERTIFIER_BOOTSTRAPPER_FAILURE"
     MTHD_RSLT_TYPE = MethodResultType.ANALYSIS_RESULT
     
     def __init__(
