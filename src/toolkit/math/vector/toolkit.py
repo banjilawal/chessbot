@@ -1,7 +1,7 @@
-# src/toolkit/math/toolit.py
+# src/toolkit/math/vector.toolit.py
 
 """
-Module: toolkit.math.toolkit
+Module: toolkit.math.vector.toolkit
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -11,8 +11,8 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 
-from toolkit import Toolkit
-from validation import CoordValidator, NumberValidator, ScalarValidator, VectorRegisterValidator, VectorValidator
+from toolkit import CoordOperationSuite, ScalarOperationSuite, Toolkit, VectorOperationSuite
+from validation import NumberValidator
 
 
 @dataclass
@@ -22,33 +22,22 @@ class VectorAlgebraToolkit(Toolkit):
         -   Container
 
     Responsibilities:
-        1.  Collection of workers and services that are required for VectorOperand tasks.
+        1.  Collection of suites and operations for vector algebra.
         2.  Simplifies entry points.
         3.  No logic in the Toolkit.
 
     Attributes:
-        coord_validator: CoordValidator
-        scalar_validator: ScalarValidator
+        coord: CoordOperationSuite
+        scalar: ScalarOperationSuite
+        vector: VectorOperationSuite
         number_validator: NumberValidator
-        vector_validator: VectorValidator
-        vector_register_validator: VectorRegisterValidator
-        vector_operand_validator: VectorOperandValidator
-        
-        coord_builder: CoordBuilder
-        scalar_builder: ScalarBuilder
-        vector_builder: VectorBuilder
     Provides:
 
      Super Class:
          Toolkit
      """
-    coord_validator: CoordValidator = CoordValidator()
-    scalar_validator: ScalarValidator = ScalarValidator()
+    coord: CoordOperationSuite = CoordOperationSuite()
+    scalar: ScalarOperationSuite = ScalarOperationSuite()
+    vector: VectorOperationSuite = VectorOperationSuite()
     number_validator: NumberValidator = NumberValidator()
-    vector_validator: VectorValidator = VectorValidator()
-    vector_register_validator: VectorRegisterValidator = VectorRegisterValidator()
-    vector_operand_validator: VectorOperandValidator = VectorOperandValidator()
-    
-    coord_builder: CoordBuilder = CoordBuilder()
-    scalar_builder: ScalarBuilder = ScalarBuilder()
-    vector_builder: VectorBuilder = VectorBuilder()
+
