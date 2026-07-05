@@ -1,15 +1,16 @@
-# src/validation/register/__init__.py
+# src/model/register/__init__.py
 
 """
-Module: validation.register.__init__
+Module: model.register.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
 """
 
-# =========== VALIDATION.REGISTER PACKAGE ===========#
+# =========== MODEL.REGISTER PACKAGE ===========#
 
 # Packages
+from .operand import *
+from .square import *
 
 # Modules
-from .operation import VectorRegisterValidator

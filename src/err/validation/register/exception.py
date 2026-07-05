@@ -1,32 +1,34 @@
-# src/err/model/context/edge/exception.py
+# src/err/validation/register/exception.py
 
 """
-Module: err.model.edge.exception
+Module: err.validation.register.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
 """
 
 from __future__ import annotations
+
 from typing import Any, Optional
 
-from err import ContextException
+from typing import Any, Optional
+
+from err import ValidatorException
 from result import MethodResultType
 
-
 __all__ = [
-    # ======================# EDGE_CONTEXT_ERROR #======================#
-    "EdgeContextException",
+    # ======================# REGISTER_VALIDATOR_FAILURE #======================#
+    "RegisterValidatorException",
 ]
 
-# ======================# EDGE_CONTEXT_ERROR #======================#
-class EdgeContextException(ContextException):
+# ======================# REGISTER_VALIDATOR_FAILURE #======================#
+class RegisterValidatorException(ValidatorException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a EdgeContext encountered an error.
+        1.  Indicate that a candidate did not pass a RegisterValidator test.
 
     Attributes:
             msg: Optional[str]
@@ -41,10 +43,10 @@ class EdgeContextException(ContextException):
     Provides:
 
     Super Class:
-        ContextException
+        ValidatorException
     """
-    MSG = "EdgeContext error."
-    ERR_CODE = "EDGE_CONTEXT_ERROR"
+    MSG = "Candidate did not pass a RegisterValidator test."
+    ERR_CODE = "REGISTER_VALIDATOR_FAILURE"
     
     def __init__(
             self,
@@ -70,6 +72,7 @@ class EdgeContextException(ContextException):
         """
         msg = msg or self.MSG
         err_code = err_code or self.ERR_CODE
+        mthd_rslt_type = mthd_rslt_type or self.mthd_rslt_type
         super().__init__(
             ex=ex,
             msg=msg,

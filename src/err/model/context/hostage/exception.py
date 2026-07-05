@@ -11,13 +11,13 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from err import ContextException
+from result import MethodResultType
 
 
 __all__ = [
     # ======================# HOSTAGE_CONTEXT_ERROR #======================#
     "HostageContextException",
 ]
-
 
 # ======================# HOSTAGE_CONTEXT_ERROR #======================#
 class HostageContextException(ContextException):

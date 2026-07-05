@@ -11,13 +11,13 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from err import ContextException
+from result import MethodResultType
 
 
 __all__ = [
     # ======================# COORD_CONTEXT_ERROR #======================#
     "CoordContextException",
 ]
-
 
 # ======================# COORD_CONTEXT_ERROR #======================#
 class CoordContextException(ContextException):

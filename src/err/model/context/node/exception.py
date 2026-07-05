@@ -11,13 +11,13 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from err import ContextException
+from result import MethodResultType
 
 
 __all__ = [
     # ======================# NODE_CONTEXT_ERROR #======================#
     "NodeContextException",
 ]
-
 
 # ======================# NODE_CONTEXT_ERROR #======================#
 class NodeContextException(ContextException):

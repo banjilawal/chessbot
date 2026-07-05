@@ -35,6 +35,7 @@ from .priming import *
 from .query import *
 from .rank import *
 from .register import *
+from validation.register.operand import *
 from .scalar import *
 from .schema import *
 from .snapshot import *

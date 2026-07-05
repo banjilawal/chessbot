@@ -1,32 +1,32 @@
-# src/err/model/context/edge/exception.py
+# src/err/validation/register/square/exception.py
 
 """
-Module: err.model.edge.exception
+Module: err.validation.register.square.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
 """
 
 from __future__ import annotations
+
 from typing import Any, Optional
 
-from err import ContextException
+from err import RegisterValidatorException
 from result import MethodResultType
 
-
 __all__ = [
-    # ======================# EDGE_CONTEXT_ERROR #======================#
-    "EdgeContextException",
+    # ======================# SQUARE_REGISTER_VALIDATOR_FAILURE #======================#
+    "SquareRegisterValidatorException",
 ]
 
-# ======================# EDGE_CONTEXT_ERROR #======================#
-class EdgeContextException(ContextException):
+# ======================# SQUARE_REGISTER_VALIDATOR_FAILURE #======================#
+class SquareRegisterValidatorException(RegisterValidatorException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a EdgeContext encountered an error.
+        1.  Indicate that a candidate did not pass a SquareRegisterValidator test.
 
     Attributes:
             msg: Optional[str]
@@ -41,10 +41,10 @@ class EdgeContextException(ContextException):
     Provides:
 
     Super Class:
-        ContextException
+        RegisterValidatorException
     """
-    MSG = "EdgeContext error."
-    ERR_CODE = "EDGE_CONTEXT_ERROR"
+    MSG = "Candidate did not pass a SquareRegisterValidator test."
+    ERR_CODE = "SQUARE_REGISTER_VALIDATOR_FAILURE"
     
     def __init__(
             self,
@@ -70,6 +70,7 @@ class EdgeContextException(ContextException):
         """
         msg = msg or self.MSG
         err_code = err_code or self.ERR_CODE
+        mthd_rslt_type = mthd_rslt_type or self.mthd_rslt_type
         super().__init__(
             ex=ex,
             msg=msg,

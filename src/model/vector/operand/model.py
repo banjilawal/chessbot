@@ -1,4 +1,4 @@
-# src/model/vector/register/category.py
+# src/model/vector/register/model.py
 
 """
 Module: model.vector.operand.model

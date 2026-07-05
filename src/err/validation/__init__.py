@@ -34,6 +34,7 @@ from .player import *
 from .primer import *
 from .query import *
 from .rank import *
+from .register import *
 from .scalar import *
 from .schema import *
 from .string import *
