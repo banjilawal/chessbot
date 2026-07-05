@@ -11,6 +11,6 @@ version: 1.0.1
 
 # Packages
 from .operand import *
+from .square import *
 
 # Modules
-from model.register.operand.model import VectorOperandRegister

@@ -98,14 +98,14 @@ class EuclideanDistance(Operation[VectorOperandRegister]):
         # For vector contexts
         if register.category == RegisterContentType.VECTOR_REGISTER:
             magnitude=sqrt(
-                    (register.a.vector.y - register.b.vector.y)**2 +
-                    (register.a.vector.x - register.b.vector.x)**2
+                (register.origin.vector.y - register.b.vector.y) ** 2 +
+                (register.origin.vector.x - register.b.vector.x) ** 2
                 )
         # For Coord contexts
         if register.category == RegisterContentType.VECTOR_REGISTER:
             magnitude = sqrt(
-                (register.a.coord.row - register.b.coord.row) ** 2 +
-                (register.a.coord.column - register.b.coord.column) ** 2
+                (register.origin.coord.row - register.b.coord.row) ** 2 +
+                (register.origin.coord.column - register.b.coord.column) ** 2
             )
         # Handle the case that, the scalar is not built.
         scalar_assembly_result = scalar_build_pipeline.run(

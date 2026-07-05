@@ -40,13 +40,13 @@ class VectorOperand:
     """
     _vector: Optional[Vector]
     _coord: Optional[Coord]
-    _category: OperandCategory = OperandCategory.NOT_INITIALIZED
+    _category: Optional[OperandCategory] = OperandCategory.NOT_INITIALIZED
     
     def __init__(
             self,
             vector: Optional[Vector] | None = None,
             coord: Optional[Coord] | None = None,
-            category: OperandCategory | None = None,
+            category: Optional[OperandCategory] | None = None,
     ):
         """
         Args:
@@ -91,3 +91,12 @@ class VectorOperand:
                 self._coord is None and
                 isinstance(self._vector, Vector)
         )
+    
+    def __eq__(self, other):
+        if other is self: return True
+        if other is None: return False
+        if isinstance(other, VectorOperand):
+            return (
+                    self._vector == other.vector and
+                    self._coord == other.coord
+            )

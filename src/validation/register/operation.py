@@ -111,7 +111,7 @@ class VectorRegisterValidator(Validator[VectorOperandRegister]):
                     )
                 )
         # Handle the case that the contexts are different.
-        if not isinstance(register.a, type(register.b)):
+        if not isinstance(register.origin, type(register.b)):
             return ValidationResult.failure(
                 VectorRegisterValidationException(
                     cls_mthd=method,

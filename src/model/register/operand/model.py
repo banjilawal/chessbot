@@ -32,7 +32,7 @@ class VectorOperandRegister:
     """
     _a: VectorOperand
     _b: VectorOperand
-    _content_type: RegisterContentType
+    _content_type: Optional[RegisterContentType]
     
     def __init__(
             self,
@@ -64,11 +64,19 @@ class VectorOperandRegister:
     
     @property
     def to_list(self) -> List[VectorOperand]:
-        return [self.a, self.b]
+        return [self._a, self._b]
     
     @property
     def to_dict(self) -> Dict[str, Any]:
-        return {"u": VectorOperand, "v": VectorOperand}
+        return {"a": self._a, "v": self._b}
+    
+    @property
+    def a_is_same_as_b(self) -> bool:
+        return self._a == self._b
+    
+    @property
+    def a_is_not_ame_as_b(self) -> bool:
+        return not self.a_is_same_as_b
     
     @property
     def is_vector_register(self) -> bool:
@@ -81,4 +89,15 @@ class VectorOperandRegister:
     @property
     def is_inconsistent(self) -> bool:
         return not self._a.is_coord and not self._b.is_coord
+    
+    def __eq__(self, other):
+        if other is self: return True
+        if other is None: return False
+        if isinstance(other, VectorOperandRegister):
+            return (
+                    self._a == other.b and
+                    self._b == other.b
+            )
+    
+    
     
