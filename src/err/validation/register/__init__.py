@@ -7,7 +7,7 @@ Created: 2026-04-04
 version: 1.0.1
 """
 
-# =========== ERR.VALIDATION.REGISTER.REGISTER PACKAGE ===========#
+# =========== ERR.VALIDATION.REGISTER PACKAGE ===========#
 
 # Packages
 from .operand import *

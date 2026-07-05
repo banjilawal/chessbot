@@ -10,14 +10,11 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, cast
 
-from err import (
-    VectorRegisterMismatchException, VectorRegisterNullException, VectorRegisterValidationException
-)
-from operation import Validator
+from err import VectorOperandRegisterValidatorException, VectorRegisterMismatchException
 from model import VectorOperandRegister
 from result import ValidationResult
-from util import LoggingLevelRouter
-from toolkit import VectorRegisterToolkit
+from toolkit.analyzer.state import VectorRegisterToolkit
+from validation import Validator
 
 
 class VectorRegisterValidator(Validator[VectorOperandRegister]):
@@ -69,7 +66,7 @@ class VectorRegisterValidator(Validator[VectorOperandRegister]):
         Returns:
             ValidationResult[VectorRegister]
         Raises:
-            VectorRegisterValidationException
+            VectorOperandRegisterValidatorException
         """
         method = f"{cls.__name__}.validate"
         
@@ -85,11 +82,11 @@ class VectorRegisterValidator(Validator[VectorOperandRegister]):
         if validation_priming_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                VectorRegisterValidationException(
+                VectorOperandRegisterValidatorException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    msg=VectorRegisterValidationException.MSG,
-                    err_code=VectorRegisterValidationException.ERR_CODE,
+                    msg=VectorOperandRegisterValidatorException.MSG,
+                    err_code=VectorOperandRegisterValidatorException.ERR_CODE,
                     ex=validation_priming_result.exception,
                 )
             )
@@ -102,22 +99,22 @@ class VectorRegisterValidator(Validator[VectorOperandRegister]):
             if validation.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
-                    VectorRegisterValidationException(
+                    VectorOperandRegisterValidatorException(
                         cls_mthd=method,
                         cls_name=cls.__name__,
-                        msg=VectorRegisterValidationException.MSG,
-                        err_code=VectorRegisterValidationException.ERR_CODE,
+                        msg=VectorOperandRegisterValidatorException.MSG,
+                        err_code=VectorOperandRegisterValidatorException.ERR_CODE,
                         ex=validation.exception,
                     )
                 )
         # Handle the case that the contexts are different.
         if not isinstance(register.origin, type(register.b)):
             return ValidationResult.failure(
-                VectorRegisterValidationException(
+                VectorOperandRegisterValidatorException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    msg=VectorRegisterValidationException.MSG,
-                    err_code=VectorRegisterValidationException.ERR_CODE,
+                    msg=VectorOperandRegisterValidatorException.MSG,
+                    err_code=VectorOperandRegisterValidatorException.ERR_CODE,
                     ex=VectorRegisterMismatchException(
                         msg=VectorRegisterMismatchException.MSG,
                         err_code=VectorRegisterMismatchException.ERR_CODE,
