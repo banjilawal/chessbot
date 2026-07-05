@@ -10,8 +10,11 @@ version: 1.0.1
 # =========== MODEL.PACKAGE ===========#
 
 # Packages
+from model.coord import *
 from .register import *
+from model.scalar import *
 from .state import *
+from model.vector import *
 
 # Modules
 from .model import Model

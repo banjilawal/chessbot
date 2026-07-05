@@ -1,7 +1,7 @@
-# src/model/state/math/vector/model/state.py
+# src/model/vector/model/state.py
 
 """
-Module: model.state.math.vector.model
+Module: model.vector.model
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

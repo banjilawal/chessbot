@@ -1,7 +1,7 @@
-# src/model/state/math/coord/model/state.py
+# src/model/coord/model/state.py
 
 """
-Module: model.state.math.coord.model
+Module: model.coord.model
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

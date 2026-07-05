@@ -1,7 +1,7 @@
-# src/model/state/math/quadrant/model/state.py
+# src/model/quadrant/model/state.py
 
 """
-Module: model.state.math.quadrant.model
+Module: model.quadrant.model
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

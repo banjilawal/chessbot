@@ -12,6 +12,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Optional
 
+from model import SquareRegister
 from model.state.square import Square
 
 @dataclass
@@ -22,19 +23,19 @@ class Path:
         -   Data Holder
 
     Responsibilities:
-        1.  Provide the endpoints of a token's step.
+        1.  Adds a label and cost to a SquareRegister.
+        2.  Used in path optimization problems.
 
     Attributes:
-        origin: Square
-        destination: Square
+        endpoints: SquareRegister
         cost: Optional[int]
+        id: Optional[int]
 
     Provides:
 
     Super Class:
     """
-    origin: Square
-    destination: Square
+    endpoints: SquareRegister
     id: Optional[int] = None
     cost: Optional[int] = None
 

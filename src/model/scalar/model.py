@@ -1,7 +1,7 @@
-# src/model/state/math/scalar/model/state.py
+# src/model/scalar/model/state.py
 
 """
-Module: model.state.math.scalar.model
+Module: model.scalar.model
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
