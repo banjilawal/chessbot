@@ -1,7 +1,7 @@
-# src/toolkit/suite/suite.py
+# src/suite/suite.py
 
 """
-Module: toolkit.suite.suite
+Module: suite.suite
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -9,17 +9,18 @@ version: 1.0.1
 
 from __future__ import annotations
 
+from abc import ABC
 from typing import Generic, TypeVar
 
 from builder import Builder
-from toolkit import ModelToolkit, Toolkit
+from toolkit import ModelToolkit
 from validation import Validator
 
-T = TypeVar("T")
+T = TypeVar("T", bound="Model")
 
 
 
-class ModelOperationSuite(Toolkit, Generic[T]):
+class ModelOperationSuite(ABC, Generic[T]):
     """
     Role:
         -   Dependency Container

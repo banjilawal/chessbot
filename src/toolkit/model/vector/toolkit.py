@@ -10,6 +10,7 @@ version: 1.0.1
 from __future__ import annotations
 
 from dataclasses import dataclass
+from typing import Type
 
 from err import VectorNullException
 from model import Vector
@@ -40,7 +41,7 @@ class VectorToolkit(ModelToolkit):
     """
     number_validator: NumberValidator = NumberValidator()
     null_exception: VectorNullException = VectorNullException()
-    model: Vector = Vector
+    model: Vector = Type[Vector]
 
 
     

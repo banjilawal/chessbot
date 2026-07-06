@@ -92,18 +92,18 @@ class AddVector(Operation[VectorOperandRegister]):
                 )
         )
         build_result = None
-        if register.category == RegisterContentType.VECTOR_REGISTER:
+        if register.is_vector_register:
             blueprint = VectorBlueprint(
-                x=register.origin.vector.x + register.b.vector.x,
-                y=register.origin.vector.y + register.b.vector.y,
+                x=register.a.operand.x + register.b.operand.x,
+                y=register.a.operand.y + register.b.operand.y,
             )
             build_result = operand_toolkit.vector_builder.run(
                 blueprint=blueprint,
             )
         if register.category == RegisterContentType.COORD_REGISTER:
             blueprint = CoordBlueprint(
-                row=register.origin.coord.row + register.b.coord.row,
-                column=register.origin.coord.column + register.b.coord.column,
+                row=register.a.operand.row + register.b.operand.row,
+                column=register.a.operand.column + register.b.operand.column,
             )
             build_result = operand_toolkit.coord_builder.run(
                 blueprint=blueprint,

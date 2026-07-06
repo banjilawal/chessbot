@@ -9,6 +9,8 @@ version: 1.0.1
 
 from __future__ import annotations
 
+from typing import Type
+
 from err import VectorOperandRegisterNullException
 from model import VectorOperand, VectorOperandRegister
 from toolkit import RegisterToolkit
@@ -37,5 +39,5 @@ class VectorOperandRegisterToolkit(RegisterToolkit[VectorOperand]):
     """
     vector_operand_validator: VectorOperandValidator = VectorOperandValidator()
     null_exception = VectorOperandRegisterNullException = VectorOperandRegisterNullException()
-    model: VectorOperandRegister
+    model: Type[VectorOperandRegister]
     

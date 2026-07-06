@@ -93,7 +93,7 @@ class VectorOperandRegisterValidator(Validator[VectorOperandRegister]):
                 )
             )
         # --- Cast candidate to a VectorRegister for additional tests. ---#
-        register = cast(VectorOperandRegister, candidate)
+        register = cast(toolkit.model, candidate)
         
         # Handle the case that the register has mixed contents.
         if register.is_mismatched_register:

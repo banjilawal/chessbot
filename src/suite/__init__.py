@@ -10,5 +10,12 @@ version: 1.0.1
 # =========== SUITE PACKAGE ===========#
 
 # Packages
+from .coord import *
+from .math import *
+from .register import *
+from .scalar import *
+from .token import *
+from .vector import *
 
 # Modules
+from .suite import ModelOperationSuite

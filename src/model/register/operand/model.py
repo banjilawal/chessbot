@@ -25,14 +25,13 @@ class VectorOperandRegister(Register[VectorOperand]):
     Attributes:
         a: VectorOperand
         b: VectorOperand
-        content_type: OperandRegisterContentType
         
-        a_is_same_as_b: bool
-        a_is_not_same_as_b: bool
+        a_equals_b: bool
+        a_does_not_equal_b: bool
         is_vector_register:bool
         is_coord_register: bool
-        to_list: List[T]
-        to_dict: Dict[str, T]
+        to_list: List[VectorOperand]
+        to_dict: Dict[str, VectorOperand]
 
     Super Class:
         Register
@@ -65,10 +64,6 @@ class VectorOperandRegister(Register[VectorOperand]):
     @property
     def category(self) -> Optional[RegisterContentType]:
         return self._content_type
-    
-    @property
-    def to_dict(self) -> Dict[str, Any]:
-        return {"a": self._a, "v": self._b}
     
     @property
     def a_equals_b(self) -> bool:

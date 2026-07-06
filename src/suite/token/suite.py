@@ -1,7 +1,7 @@
-# src/toolkit/suite/bootstrapper/toolkit.py
+# src/suite/bootstrapper/toolkit.py
 
 """
-Module: toolkit.suite.bootstrapper.toolkit
+Module: suite.bootstrapper.toolkit
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

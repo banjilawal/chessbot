@@ -58,12 +58,8 @@ class VectorOperand(Model):
         self._category = category
         
     @property
-    def vector(self) -> Optional[Vector]:
-        return self._vector
-    
-    @property
-    def coord(self) -> Optional[Coord]:
-        return self._coord
+    def operand(self) -> Optional[Coord|Vector]:
+        return self._vector or self._coord
     
     @property
     def category(self) -> OperandCategory:
