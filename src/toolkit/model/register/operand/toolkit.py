@@ -12,7 +12,7 @@ from __future__ import annotations
 from err import VectorOperandRegisterNullException
 from model import VectorOperand, VectorOperandRegister
 from toolkit import RegisterToolkit
-from validation import CoordValidator, ScalarValidator, VectorValidator
+from validation import VectorOperandValidator
 
 
 class VectorOperandRegisterToolkit(RegisterToolkit[VectorOperand]):
@@ -26,9 +26,7 @@ class VectorOperandRegisterToolkit(RegisterToolkit[VectorOperand]):
         3.  No logic in the Toolkit.
 
     Attributes:
-        coord_validator: CoordValidator
-        scalar_validator: ScalarValidator
-        vector_validator: VectorValidator
+        vector_operand_validator: VectorOperandValidator
         null_exception = VectorOperandRegisterNullException
         model: VectorOperandRegister
 
@@ -37,9 +35,7 @@ class VectorOperandRegisterToolkit(RegisterToolkit[VectorOperand]):
     Super Class:
        RegisterToolkit
     """
-    coord_validator: CoordValidator = CoordValidator()
-    scalar_validator: ScalarValidator = ScalarValidator()
-    vector_validator: VectorValidator = VectorValidator()
+    vector_operand_validator: VectorOperandValidator = VectorOperandValidator()
     null_exception = VectorOperandRegisterNullException = VectorOperandRegisterNullException()
     model: VectorOperandRegister
     

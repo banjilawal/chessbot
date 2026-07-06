@@ -9,7 +9,7 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from typing import Optional
+from typing import Any, Dict, Optional
 
 from model import Register, RegisterContentType, VectorOperand
 
@@ -71,12 +71,12 @@ class VectorOperandRegister(Register[VectorOperand]):
         return {"a": self._a, "v": self._b}
     
     @property
-    def a_is_same_as_b(self) -> bool:
+    def a_equals_b(self) -> bool:
         return self._a == self._b
     
     @property
-    def a_is_not_ame_as_b(self) -> bool:
-        return not self.a_is_same_as_b
+    def a_does_not_equal_b(self) -> bool:
+        return not self.a_equals_b
     
     @property
     def is_vector_register(self) -> bool:
@@ -87,8 +87,11 @@ class VectorOperandRegister(Register[VectorOperand]):
         return self._a.is_coord and self._b.is_coord
     
     @property
-    def is_inconsistent(self) -> bool:
-        return not self._a.is_coord and not self._b.is_coord
+    def is_mismatched_register(self) -> bool:
+        return  (
+            (not (self._a.is_coord and self._b.is_coord)) or
+            (not (self._a.is_vector and self.b.is_vector))
+        )
     
     def __eq__(self, other):
         if other is self: return True

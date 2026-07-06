@@ -10,6 +10,7 @@ version: 1.0.1
 # =========== ERR.VALIDATION.REGISTER.OPERAND PACKAGE ===========#
 
 # Packages
+from .mismatch import *
 
 # Modules
 from .exception import VectorOperandRegisterValidatorException
