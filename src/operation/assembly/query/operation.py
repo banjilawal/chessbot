@@ -1,7 +1,7 @@
-# src/operation/assembly/query/operation.py
+# src/assembly/query/py
 
 """
-Module: operation.assembly.query.operation
+Module: assembly.query.operation
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

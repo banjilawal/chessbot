@@ -102,7 +102,7 @@ class PromotionPermitter(OperationPermitter):
             rank_validator = RankValidator()
         
         # Handle the case that, the candidate is flagged by the rank_validator.
-        rank_validation_result = rank_validator.validate(rank)
+        rank_validation_result = rank_validator.execute(rank)
         if rank_validation_result.is_failure:
             return AnalysisResult.failure(
                 PromotionPermitterException(

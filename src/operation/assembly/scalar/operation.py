@@ -1,7 +1,7 @@
-# src/operation/assembly/scalar/operation.py
+# src/assembly/scalar/py
 
 """
-Module: operation.assembly.scalar.operation
+Module: assembly.scalar.operation
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -86,5 +86,5 @@ class ScalarAssembler(Assembler[Scalar]):
         # --- Forward the work product to the caller. ---#
         return BuildResult.success(Scalar(magnitude=blueprint.magnitude))
 
-# Register the operation.
+# Register the 
 WorkerRegistryController.register_worker(worker=ScalarAssembler)

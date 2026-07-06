@@ -23,7 +23,7 @@ from validation import (
 
 
 @dataclass
-class TokenToolkit(PermitterToolkit):
+class ManeuverToolkit(PermitterToolkit):
     """
     Role:
         -   Dependency Container
@@ -52,7 +52,7 @@ class TokenToolkit(PermitterToolkit):
     Super Class:
         Toolkit
     """
-    home_square_detector: TokenHomeDetector = TokenHomeDetector()
+    home_detector: TokenHomeDetector = TokenHomeDetector()
     square_validator: SquareValidator = SquareValidator()
     coord_validator: CoordValidator = CoordValidator()
     team_validator: TeamValidator = TeamValidator()

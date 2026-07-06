@@ -1,7 +1,7 @@
-# src/operation/assembly/vector/operation.py
+# src/assembly/vector/py
 
 """
-Module: operation.assembly.vector.operation
+Module: assembly.vector.operation
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

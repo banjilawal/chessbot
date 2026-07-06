@@ -46,7 +46,7 @@ class SquareBlueprintValidator(BlueprintValidator[Square]):
     """
     @classmethod
     @LoggingLevelRouter.monitor
-    def validate(
+    def execute(
             cls,
             candidate: Any,
             toolkit: SquareBlueprintToolkit | None = None,

@@ -31,7 +31,7 @@ class SchemaContextValidator(ContextValidator[SchemaKey]):
     """
     @classmethod
     @LoggingLevelRouter.monitor
-    def validate(
+    def execute(
             cls,
             candidate: Any,
             identity_service: IdentityService = IdentityService(),

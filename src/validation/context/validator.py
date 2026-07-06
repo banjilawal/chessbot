@@ -39,7 +39,7 @@ class ContextValidator(Validator):
     """
     @classmethod
     @LoggingLevelRouter.monitor
-    def validate(cls, candidate: Any, toolkit: ContextToolkit[T],) -> ValidationResult[Context[T]]:
+    def execute(cls, candidate: Any, toolkit: ContextToolkit[T], ) -> ValidationResult[Context[T]]:
         pass
         
     

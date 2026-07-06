@@ -1,13 +1,13 @@
-# src/operation/assembly/__init__.py
+# src/assembly/__init__.py
 
 """
-Module: operation.assembly.__init__
+Module: assembly.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
 """
 
-# =========== OPERATION.ASSEMBLY PACKAGE ===========#
+# =========== ASSEMBLY PACKAGE ===========#
 
 # Packages
 from .binder import *

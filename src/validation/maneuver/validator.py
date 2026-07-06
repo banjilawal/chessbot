@@ -108,7 +108,7 @@ class ManeuverValidator:
                 )
             )
         # Handle the case that, the token is not safe.
-        token_validation_result = toolkit.token_validator.validate(maneuver.path)
+        token_validation_result = toolkit.token_validator.execute(maneuver.path)
         if token_validation_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(

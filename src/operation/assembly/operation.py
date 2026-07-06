@@ -1,7 +1,7 @@
-# src/operation/assembly/operation.py
+# src/assembly/py
 
 """
-Module: operation.assembly.operation
+Module: assembly.operation
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

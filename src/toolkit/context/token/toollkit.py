@@ -17,7 +17,7 @@ from toolkit import ContextToolkit, TokenToolkit
 from validation import NumberValidator
 
 
-class TokenContextToolkit(ContextToolkit[Token]):
+class TokenContextToolkit(ContextToolkit):
     """
     Role:
         -   Container

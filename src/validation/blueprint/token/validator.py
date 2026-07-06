@@ -9,13 +9,15 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from typing import Any, cast
+from typing import Any, Type, cast
 
 from blueprint import TokenBlueprint
-from err import FormationNullException, TokenBlueprintNullException, TokenBlueprintValidatorException
+from context import TokenHomeContext
+from err import FormationNullException, TokenBlueprintValidatorException
 from model import Formation, HomeSquare
 from result import ValidationResult
 from toolkit import TokenToolkit
+
 from util import LoggingLevelRouter
 from validation import Validator
 
@@ -45,7 +47,7 @@ class TokenBlueprintValidator(Validator[TokenBlueprint]):
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def validate(
+    def execute(
             cls,
             candidate: Any,
             toolkit: TokenToolkit | None = None
@@ -78,8 +80,8 @@ class TokenBlueprintValidator(Validator[TokenBlueprint]):
         # Handle the case that, the validator is not primed.
         validator_priming_result = toolkit.priming_validator.execute(
             candidate=candidate,
-            context_model=TokenBlueprint,
-            null_exception=TokenBlueprintNullException(),
+            target_=toolkit.blueprint_model,
+            null_exception=toolkit.blueprint_null_execption,
         )
         if validator_priming_result.is_failure:
             # Send the exception chain on failure.
@@ -93,10 +95,10 @@ class TokenBlueprintValidator(Validator[TokenBlueprint]):
                 )
             )
         # --- Cast the candidate into a TokenBlueprint for additional tests. ---#
-        blueprint = cast(TokenBlueprint, candidate)
+        blueprint = cast(toolkit.blueprint_model, candidate)
         
         # Handle the case that, any id in the blueprint is flagged.
-        id_validation_result = toolkit.blueprint_id_validator.validate(
+        id_validation_result = toolkit.blueprint_id_validator.execute(
             candidate=blueprint.id,
             identity_service=toolkit.identity_service,
         )
@@ -129,7 +131,7 @@ class TokenBlueprintValidator(Validator[TokenBlueprint]):
         # Handle the case that, the formation does not pass a validation check.
         formation_validation = toolkit.priming_validator.execute(
             candidate=blueprint.formation,
-            context_model=Formation,
+            target_model=Type[Formation],
             null_exception=FormationNullException(),
         )
         if formation_validation.is_failure:
@@ -144,11 +146,13 @@ class TokenBlueprintValidator(Validator[TokenBlueprint]):
                 )
             )
         # Handle the case that, the home_square gets flagged.
-        home_square_validation_result = toolkit.blueprint_home_square_processor.execute(
-            blueprint=blueprint,
-            toolkit=toolkit,
+        home_detection_result = toolkit.home_detector.execute(
+            context=TokenHomeContext(
+                board=blueprint.team.board,
+                square_name=blueprint.formation.home_square_name,
+            ),
         )
-        if home_square_validation_result.is_failure:
+        if home_detection_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 TokenBlueprintValidatorException(
@@ -156,7 +160,7 @@ class TokenBlueprintValidator(Validator[TokenBlueprint]):
                     cls_name=cls.__name__,
                     msg=TokenBlueprintValidatorException.MSG,
                     err_code=TokenBlueprintValidatorException.ERR_CODE,
-                    ex=home_square_validation_result.exception,
+                    ex=home_detection_result.exception,
                 )
             )
         # Handle the case that, the rank is not safe to use.
@@ -178,7 +182,7 @@ class TokenBlueprintValidator(Validator[TokenBlueprint]):
         # --- Completed validations successfully. Extract the payloads to build a new blueprint. ---#
         rank = rank_validation_result.payload
         id = cast(int, id_validation_result.payload)
-        home_square = cast(HomeSquare, home_square_validation_result.payload)
+        home_square = cast(HomeSquare, home_detection_result.payload)
         
         # --- Forward the work product to the caller. ---#
         return ValidationResult.success(

@@ -46,7 +46,7 @@ class SquareContextValidator(ContextValidator[Square]):
     """
     @classmethod
     @LoggingLevelRouter.monitor
-    def validate(
+    def execute(
             cls,
             candidate: Any,
             toolkit: SquareContextToolkit | None = None,
@@ -175,7 +175,7 @@ class SquareContextValidator(ContextValidator[Square]):
         
         # Certification for the search-by-occupant target.
         if context.occupant is not None:
-            validation_result = toolkit.square_toolkit.token_validator.validate(
+            validation_result = toolkit.square_toolkit.token_validator.execute(
                 candidate=context.occupant
             )
             if validation_result.is_failure:

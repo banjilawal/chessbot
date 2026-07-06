@@ -158,7 +158,7 @@ class TokenCollisionBootstrapper:
     ) -> ValidationResult[TokenBlueprint]:
         method = f"{cls.__class__.__name__}._validate_target"
     
-        validation_result = token_validator.validate(target)
+        validation_result = token_validator.execute(target)
         if validation_result.is_failure:
             return ValidationResult.failure(
                 TokenCollisionBootstrapperException(

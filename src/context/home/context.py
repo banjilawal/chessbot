@@ -14,7 +14,7 @@ from context import Context
 from model import Board, HomeSquare, Token
 
 
-class TokenHomeContext(Context[HomeSquare]):
+class TokenHomeContext:
     """
     Role:
         -   Selection
@@ -35,13 +35,41 @@ class TokenHomeContext(Context[HomeSquare]):
     Super Class:
         Context
     """
-    token: Optional[Token] | None = None
-    board: Optional[Board] | None = None
-    square_name: Optional[str] | None = None
+    _token: Optional[Token]
+    _board: Optional[Board]
+    _square_name: Optional[str]
+    
+    def __init__(
+            self,
+            token: Optional[Token] | None = None,
+            board: Optional[Board] | None = None,
+            square_name: Optional[str] | None = None,
+    ):
+        """
+        Args:
+            token: Optional[Token]
+            board: Optional[Board]
+            square_name: Optional[str]
+        """
+        self._token = token
+        self._board = board
+        self._square_name = square_name
+        
+    @property
+    def token(self) -> Optional[Token]:
+        return self._token
+    
+    @property
+    def board(self) -> Optional[Board]:
+        return self._board
+    
+    @property
+    def square_name(self) -> Optional[str]:
+        return self.square_name
     
     def to_dict(self) -> Dict[str, Any]:
         return {
-            "token": self.arena,
-            "board": self.player,
-            "square_name": self.square_name
+            "token": self._token,
+            "board": self._board,
+            "square_name": self._square_name
         }

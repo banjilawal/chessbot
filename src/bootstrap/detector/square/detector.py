@@ -75,7 +75,7 @@ class SquareColliderBootstrapper(DetectorBootstrapper[Square]):
         method = f"{cls.__class__.__name__}.detect"
         
         # Handle the case that, the target does not pass a validation check.
-        validation_result = stream.microservice.execute.validate(attractor)
+        validation_result = stream.microservice.execute.execute(attractor)
         if validation_result.is_failure:
             return AnalysisResult.failure(
                 SquareCollisionDetectorException(

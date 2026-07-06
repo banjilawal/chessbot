@@ -1,7 +1,7 @@
-# src/operation/assembly/team/operation.py
+# src/assembly/team/py
 
 """
-Module: operation.assembly.team.operation
+Module: assembly.team.operation
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -41,6 +41,6 @@ class TeamAssembler(Assembler[Team]):
             )
         )
 
-# Register the operation.
+# Register the 
 WorkerRegistryController.register_worker(worker=TeamAssembler)
         

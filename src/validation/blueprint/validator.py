@@ -10,9 +10,7 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, TypeVar
 
-from model import Blueprint
 from result import ValidationResult
-from toolkit import BlueprintToolkit
 from util import LoggingLevelRouter
 from validation import Validator
 
@@ -39,7 +37,7 @@ class BlueprintValidator(Validator):
     """
     @classmethod
     @LoggingLevelRouter.monitor
-    def validate(cls, candidate: Any, toolkit: BlueprintToolkit[T],) -> ValidationResult[Blueprint[T]]:
+    def execute(cls, candidate: Any, toolkit: BlueprintToolkit[T], ) -> ValidationResult[Blueprint[T]]:
         pass
         
     

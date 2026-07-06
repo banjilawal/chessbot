@@ -45,7 +45,7 @@ class ItinerarySourceConsistencyValidator(Validator[Itinerary]):
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def validate(
+    def execute(
             cls,
             itinerary: Itinerary,
             toolkit: ItineraryToolkit | None = None,

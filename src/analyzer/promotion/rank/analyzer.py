@@ -74,7 +74,7 @@ class PromotionRankAnalyzer(Analyzer):
             rank_validator = RankValidator()
             
         # Handle the case that, the candidate is flagged by the rank_validator.
-        validation_result = rank_validator.validate(new_rank)
+        validation_result = rank_validator.execute(new_rank)
         if validation_result.is_failure:
             # Send the exception chain on failure.
             return AnalysisResult.failure(

@@ -43,7 +43,7 @@ class TeamContextValidator(ContextValidator[Team]):
     """
     @classmethod
     @LoggingLevelRouter.monitor
-    def validate(
+    def execute(
             cls,
             candidate: Any,
             toolkit: TeamContextToolkit | None = None,

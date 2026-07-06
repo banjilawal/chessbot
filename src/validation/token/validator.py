@@ -44,7 +44,7 @@ class TokenValidator(Validator[Token]):
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def validate(
+    def execute(
             cls,
             candidate: Any,
             toolkit: TokenToolkit | None = None,
@@ -106,7 +106,7 @@ class TokenValidator(Validator[Token]):
             null_exception=toolkit.null_exception,
         )
         
-        blueprint_validation_result = blueprint_validator.validate(
+        blueprint_validation_result = blueprint_validator.execute(
             candidate=blueprint,
             toolkit=toolkit,
         )

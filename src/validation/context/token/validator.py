@@ -47,7 +47,7 @@ class TokenContextValidator(ContextValidator):
     """
     @classmethod
     @LoggingLevelRouter.monitor
-    def validate(
+    def execute(
             cls,
             candidate: Any,
             toolkit: TokenToolkit | None = None,
@@ -235,7 +235,7 @@ class TokenContextValidator(ContextValidator):
         
         # Certification for the search-by-ransom target.
         if context.ransom is not None:
-            validation_result = toolkit.number_validator.validate(
+            validation_result = toolkit.number_validator.execute(
                 candidate=context.ransom,
                 floor=Persona.KING.ransom,
                 ceiling=Persona.QUEEN.ransom,

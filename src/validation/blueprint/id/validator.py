@@ -40,7 +40,7 @@ class BlueprintIdValidator(Validator[int]):
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def validate(
+    def execute(
             cls,
             candidate: Any,
             model_name: str,

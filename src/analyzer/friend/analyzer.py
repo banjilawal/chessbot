@@ -91,7 +91,7 @@ class FriendshipAnalyzer(Analyzer):
         
         # --- Perform analysis to see if the token is free. ---#
         for token in [hunter, target]:
-            validation_result = token_validator.validate(candidate=token)
+            validation_result = token_validator.execute(candidate=token)
             if validation_result.is_failure:
                 # Send the exception chain on failure.
                 return AnalysisResult.failure(

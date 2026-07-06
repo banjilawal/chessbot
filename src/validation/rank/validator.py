@@ -41,7 +41,7 @@ class RankValidator(Validator[Rank]):
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def validate(
+    def execute(
             cls,
             candidate: Any,
             toolkit: RankToolkit | None = None,

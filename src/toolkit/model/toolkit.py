@@ -11,12 +11,13 @@ from __future__ import annotations
 
 from typing import Generic, TypeVar
 
-from err import NullException
+from blueprint import Blueprint
+from err import BlueprintNullException, ModelNullException, NullException
 from microservice import IdentityService
 from toolkit import Toolkit
 from validation import BlueprintIdValidator
 
-T = TypeVar("T")
+T = TypeVar("T", bound="Model")
 
 
 
@@ -32,19 +33,15 @@ class ModelToolkit(Toolkit, Generic[T]):
         3.  Simplifies entry points.
 
     Attributes:
-        DEPENDENCIES: List[Operation] = []
-        SERVICE_DEPENDENCIES: List[Microservice] = []
-        
+        model: T
+        blueprint_model: Blueprint[T]
         identity_service: IdentityService
         priming_validator: PrimingValidator
         blueprint_id_validator: BlueprintIdValidator
+        null_exception: ModelNullException
+        blueprint_null_exception: BlueprintNullException
         
-        _entries: Dict[str, Any]
-    
     Provides:
-        -   def resolve_dependencies(s -> SearchResult[List[Dict[str, Any]]]:
-        -   def _resolve_service_dependencies() -> SearchResult[List[Dict[str, Microservice]]]:
-        -   def _resolve_dependencies(self) -> SearchResult[List[Dict[str, Operation]]]
         
     Super Class:
        ModelToolkit
@@ -53,7 +50,19 @@ class ModelToolkit(Toolkit, Generic[T]):
         -   ModelToolkit for an empty class which makes managing toolkits easier.
         -   Any toolkits for a model should be a ModelToolkit subclass.
     """
+    """
+    Args:
+        model: T
+        blueprint_model: Blueprint[T]
+        identity_service: IdentityService
+        priming_validator: PrimingValidator
+        blueprint_id_validator: BlueprintIdValidator
+        null_exception: ModelNullException
+        blueprint_null_exception: BlueprintNullException
+    """
     model: T
-    null_exception: NullException
+    blueprint_model: Blueprint[T]
+    null_exception: ModelNullException
+    blueprint_null_exception: BlueprintNullException
     identity_service: IdentityService = IdentityService()
     blueprint_id_validator: BlueprintIdValidator = BlueprintIdValidator()

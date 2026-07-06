@@ -77,7 +77,7 @@ class EnemyKingStatusDetector(Analyzer):
         if token_validator is None:
             token_validator = TokenValidator()
         
-        validation_result = token_validator.validate(
+        validation_result = token_validator.execute(
                 candidate=king,
                 toolkit=toolkit,
                 null_exception=TokenNullException(),

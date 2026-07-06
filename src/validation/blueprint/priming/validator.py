@@ -48,7 +48,7 @@ class BlueprintPrimingValidator(Validator[Blueprint]):
     """
     @classmethod
     @LoggingLevelRouter.monitor
-    def validate(
+    def execute(
             cls,
             candidate: Any,
             blueprint_model: Blueprint,

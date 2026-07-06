@@ -43,7 +43,7 @@ class QueryValidator(Validator[Query]):
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def validate(
+    def execute(
             cls,
             candidate: Any,
             blueprint: QueryValidationBlueprint,
@@ -107,7 +107,7 @@ class QueryValidator(Validator[Query]):
                 )
             )
         # Handle the case that, the context is flagged.
-        context_validation_result = blueprint.context_validator.validate(query.context)
+        context_validation_result = blueprint.context_validator.execute(query.context)
         if context_validation_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(

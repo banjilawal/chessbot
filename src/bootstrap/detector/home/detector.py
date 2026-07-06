@@ -171,7 +171,7 @@ class HomeDetectorBootstrapper(DetectorBootstrapper):
         # Validate the token if its enabled.
         if token is not None:
             # --- Perform analysis to see if the token is free. ---#
-            token_validation_result = token_validator.validate(token)
+            token_validation_result = token_validator.execute(token)
             
             # Handle the case that, the analysis is not completed.
             if token_validation_result.is_failure:

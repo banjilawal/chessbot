@@ -45,7 +45,7 @@ class TokenConsistencyValidator(Validator[Token]):
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def validate(
+    def execute(
             cls,
             token: Token
     ) -> ValidationResult[Token]:
@@ -197,7 +197,7 @@ class TokenConsistencyValidator(Validator[Token]):
         """
         method = f"{cls.__class__.__name__}.validate_token_is_combatant"
         # Handle the case that, the rank is not certified as a safe occupant.
-        validation_result = cls.validate(candidate)
+        validation_result = cls.execute(candidate)
         if validation_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
@@ -226,7 +226,7 @@ class TokenConsistencyValidator(Validator[Token]):
     def verify_token_is_king(cls, candidate: Any) -> ValidationResult[KingToken]:
         method = "TokenConsistencyValidator.validate_token_is_king"
         # Handle the case that, the rank is not certified as a safe occupant.
-        validation = cls.validate(candidate)
+        validation = cls.execute(candidate)
         if validation.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
@@ -251,7 +251,7 @@ class TokenConsistencyValidator(Validator[Token]):
     def verify_actionable_token(cls, token: Token) -> ValidationResult[Token]:
         method = "TokenService.verify_actionable_token"
         # Handle the case that, the occupantis not safe.
-        token_validation = cls.validate(candidate=token)
+        token_validation = cls.execute(candidate=token)
         if token_validation.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
@@ -278,7 +278,7 @@ class TokenConsistencyValidator(Validator[Token]):
     def verify_disabled_token(cls, token: Token) -> ValidationResult[Token]:
         method = "TokenService.verify_disabled_token"
         # Handle the case that, the occupantis not safe.
-        token_validation = cls.validate(candidate=token)
+        token_validation = cls.execute(candidate=token)
         if token_validation.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(

@@ -48,7 +48,7 @@ class NumberValidator(Validator[int]):
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def validate(
+    def execute(
             cls,
             candidate: Any,
             floor: int | None = 0,

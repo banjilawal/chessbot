@@ -82,7 +82,7 @@ class ItineraryConsistencyValidator:
             destination_consistency_validator = ItineraryDestinationConsistencyValidator()
         
         # Handle the case that, the token has an inconsistency with the source.
-        source_consistency_result = source_consistency_validator.validate(
+        source_consistency_result = source_consistency_validator.execute(
             itinerary=itinerary,
             toolkit=toolkit,
         )

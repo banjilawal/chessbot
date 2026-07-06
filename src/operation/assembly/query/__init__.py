@@ -1,13 +1,13 @@
-# src/operation/assembly/query/__init__.py
+# src/assembly/query/__init__.py
 
 """
-Module: operation.assembly.query.__init__
+Module: assembly.query.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
 """
 
-# =========== OPERATION.ASSEMBLY.QUERY PACKAGE ===========#
+# =========== ASSEMBLY.QUERY PACKAGE ===========#
 
 # Packages
 

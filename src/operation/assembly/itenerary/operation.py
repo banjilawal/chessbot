@@ -1,7 +1,7 @@
-# src/operation/assembly/itinerary/operation.py
+# src/assembly/itinerary/py
 
 """
-Module: operation.assembly.itinerary.operation
+Module: assembly.itinerary.operation
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

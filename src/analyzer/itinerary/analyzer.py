@@ -74,7 +74,7 @@ class ItineraryAnalyzer:
             itinerary_validator = ItineraryValidator()
             
         # Handle the case that, the itinerary fails a validation check.
-        validation_result = itinerary_validator.validate(itinerary)
+        validation_result = itinerary_validator.execute(itinerary)
         if validation_result.is_failure:
             # Send the exception chain on failure.
             return AnalysisResult.failure(

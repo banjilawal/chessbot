@@ -10,9 +10,11 @@ version: 1.0.1
 from __future__ import annotations
 
 from dataclasses import dataclass
+from typing import Type
 
+from blueprint import TokenBlueprint
 from detection import TokenHomeDetector
-from err import TokenNullException
+from err import TokenBlueprintNullException, TokenNullException
 from microservice import RankService
 from model import Token
 from toolkit import ModelToolkit
@@ -35,24 +37,32 @@ class TokenToolkit(ModelToolkit):
         3.  Simplifies entry points.
 
     Attributes:
-        DEPENDENCIES: List[Operation] = []
-        SERVICE_DEPENDENCIES: List[Microservice] = []
-
-        home_square_detector: HomeSquareDetector
-        square_validator: SquareValidator
-        coord_validator: CoordValidator
-        team_validator: TeamValidator
-        rank_service: RankService
-        priming_validator: Primer
+        model: Token
+        blueprint_model: TokenBlueprint
         identity_service: IdentityService
+        priming_validator: PrimingValidator
+        blueprint_id_validator: BlueprintIdValidator
+        null_exception: TokenNullException
+        blueprint_null_exception: TokenBlueprintNullException
 
     Provides:
-        -   def resolve_dependencies(s -> SearchResult[List[Dict[str, Any]]]:
 
     Super Class:
        ModelToolkit
     """
-    home_square_detector: TokenHomeDetector = TokenHomeDetector()
+    """
+    Args:
+        model: Token
+        blueprint_model: TokenBlueprint
+        identity_service: IdentityService
+        priming_validator: PrimingValidator
+        blueprint_id_validator: BlueprintIdValidator
+        null_exception: TokenNullException
+        blueprint_null_exception: TokenBlueprintNullException
+        
+        home_detector: TokenHomeDetector
+    """
+    home_detector: TokenHomeDetector = TokenHomeDetector()
     square_validator: SquareValidator = SquareValidator()
     coord_validator: CoordValidator = CoordValidator()
     team_validator: TeamValidator = TeamValidator()
@@ -60,5 +70,8 @@ class TokenToolkit(ModelToolkit):
     number_validator: NumberValidator = NumberValidator()
     blueprint_rank_processor: BlueprintRankProcessor = BlueprintRankProcessor()
     blueprint_home_square_processor: BlueprintHomeSquareProcessor = BlueprintHomeSquareProcessor()
+
+    model: Token = Type[Token]
+    blueprint_model = Type[TokenBlueprint]
     null_exception: TokenNullException = TokenNullException()
-    model: Token = Token
+    blueprint_null_exception: TokenBlueprintNullException = TokenBlueprintNullException()

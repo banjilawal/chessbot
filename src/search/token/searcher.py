@@ -33,7 +33,7 @@ class TokenSearcher:
     @LoggingLevelRouter.monitor
     def execute(self, query: TokenQuery) -> SearchResult[List[Token]]:
         method = f"{self.__class__.__name__}.search"
-        query_validation_result = self._query_validator.validate(query)
+        query_validation_result = self._query_validator.execute(query)
         
         if query_validation_result.is_failure:
             return SearchResult.failure(

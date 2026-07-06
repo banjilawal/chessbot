@@ -48,7 +48,7 @@ class ItineraryValidator(Validator[Itinerary]):
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def validate(
+    def execute(
             cls,
             candidate: Any,
             toolkit: ItineraryToolkit | None = None,

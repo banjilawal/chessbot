@@ -1,7 +1,7 @@
-# src/operation/assembly/rank/operation.py
+# src/assembly/rank/py
 
 """
-Module: operation.assembly.rank.operation
+Module: assembly.rank.operation
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -81,6 +81,6 @@ class RankAssembler(Assembler[Rank]):
         if blueprint.persona == Persona.QUEEN:
             return BuildResult.success(Queen(id=blueprint.id, persona=blueprint.persona))
 
-# Register the operation.
+# Register the 
 WorkerRegistryController.register_worker(worker=RankAssembler)
         

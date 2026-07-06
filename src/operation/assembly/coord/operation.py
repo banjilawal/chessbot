@@ -1,7 +1,7 @@
-# src/operation/assembly/coord/operation.py
+# src/assembly/coord/py
 
 """
-Module: operation.assembly.coord.operation
+Module: assembly.coord.operation
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -39,7 +39,7 @@ class CoordAssembler(Assembler[Coord]):
             )
         )
 
-# Register the operation.
+# Register the 
 WorkerRegistryController.register_worker(worker=CoordAssembler)
         
         

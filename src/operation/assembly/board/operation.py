@@ -1,7 +1,7 @@
-# src/operation/assembly/board/operation.py
+# src/assembly/board/py
 
 """
-Module: operation.assembly.board.operation
+Module: assembly.board.operation
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -35,7 +35,7 @@ class BoardAssembler(Assembler[Board]):
         
         return BuildResult.success(Board(id=blueprint.id, arena=blueprint.arena,))
 
-# Register the operation.
+# Register the 
 WorkerRegistryController.register_worker(worker=BoardAssembler)
     
         

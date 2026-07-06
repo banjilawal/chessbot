@@ -69,7 +69,7 @@ class CoordAssemblyPrimer(AssemblyPrimer[Coord]):
         
         # Handle the case that, either component is out of bounds.
         for component in [blueprint.x, blueprint.y]:
-            validation_result = toolkit.number_validator.validate(
+            validation_result = toolkit.number_validator.execute(
                 floor=0,
                 ceiling=BoardDimensionSetting.entry[BoardProperty.MAX_COLUMN_INDEX],
                 candidate=abs(component)

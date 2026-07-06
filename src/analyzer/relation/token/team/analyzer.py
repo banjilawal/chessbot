@@ -98,7 +98,7 @@ class TeamTokenRelationAnalyzer(RelationAnalyzer[Team, Token]):
         team = cast(Team, team_validation_result.payload)
         
         # Handle the case that, the token is not certified as safe.
-        token_validation_result = token_validator.validate(candidate_satellite)
+        token_validation_result = token_validator.execute(candidate_satellite)
         if token_validation_result.is_failure:
             # Send the exception chain on failure.
             return AnalysisResult.failure(

@@ -77,7 +77,7 @@ class EnemyCombatantStatusDetector(Analyzer):
         if token_validator is None:
             token_validator = TokenValidator()
         
-        validation_result = token_validator.validate(
+        validation_result = token_validator.execute(
                 candidate=combatant,
                 toolkit=toolkit,
                 null_exception=TokenNullException(),

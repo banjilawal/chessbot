@@ -13,4 +13,3 @@ version: 1.0.1
 from .maneuver import *
 
 # Modules
-from .toolkit import TokenToolkit

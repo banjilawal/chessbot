@@ -43,7 +43,7 @@ class TeamBlueprintValidator(BlueprintValidator[Team]):
     """
     @classmethod
     @LoggingLevelRouter.monitor
-    def validate(
+    def execute(
             cls,
             candidate: Any,
             toolkit: TeamBlueprintToolkit | None = None,

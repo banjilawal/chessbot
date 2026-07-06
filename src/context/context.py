@@ -9,12 +9,13 @@ version: 1.0.1
 
 from __future__ import annotations
 
+from dataclasses import dataclass
 from typing import Generic, Optional, TypeVar
 from abc import ABC, abstractmethod
 
 T = TypeVar("T")
 
-
+@dataclass
 class Context(ABC, Generic[T]):
     """
     Role:
@@ -46,32 +47,37 @@ class Context(ABC, Generic[T]):
                     -   Unions are clunky if there are many attributes.
                     -   Unions don't lower validation and build integrity overhead.
     """
-    _id: Optional[int]
-    _name: Optional[str]
-    
-    def __init__(
-            self,
-            id: Optional[int] = None,
-            name: Optional[str] = None
-    ):
-        """
-        Args:
-            id: Optional[int]
-            name: Optional[str]
-        """
-        self._id = id
-        self._name = name
-    
-    @property
-    def id(self) -> Optional[int]:
-        return self._id
-    
-    @property
-    def name(self) -> Optional[str]:
-        return self._name
-    
-    @property
-    @abstractmethod
-    def to_dict(self) -> dict:
-        """Implementations must override."""
-        pass
+    """
+    Args:
+        id: Optional[int] = None
+        name: Optional[str]
+    """
+    id: Optional[int] = None
+    name: Optional[str] = None
+    #
+    # def __init__(
+    #         self,
+    #         id: Optional[int] = None,
+    #         name: Optional[str] = None
+    # ):
+    #     """
+    #     Args:
+    #         id: Optional[int]
+    #         name: Optional[str]
+    #     """
+    #     self._id = id
+    #     self._name = name
+    #
+    # @property
+    # def id(self) -> Optional[int]:
+    #     return self._id
+    #
+    # @property
+    # def name(self) -> Optional[str]:
+    #     return self._name
+    #
+    # @property
+    # @abstractmethod
+    # def to_dict(self) -> dict:
+    #     """Implementations must override."""
+    #     pass

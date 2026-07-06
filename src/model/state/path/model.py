@@ -13,7 +13,6 @@ from dataclasses import dataclass
 from typing import Optional
 
 from model import SquareRegister
-from model.state.square import Square
 
 @dataclass
 class Path:

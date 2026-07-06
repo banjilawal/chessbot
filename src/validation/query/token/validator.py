@@ -44,7 +44,7 @@ class TokenQueryValidator(Validator[TokenQuery]):
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def validate(
+    def execute(
             cls,
             candidate: Any,
             priming_validator: PrimingValidator | None = None,
@@ -102,7 +102,7 @@ class TokenQueryValidator(Validator[TokenQuery]):
         query = cast(TokenQuery, candidate)
         
         # Handle the case that, the context is not safe to use.
-        context_validation_result = context_validator.validate(query.context)
+        context_validation_result = context_validator.execute(query.context)
         if context_validation_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(

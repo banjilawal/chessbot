@@ -12,13 +12,15 @@ from __future__ import annotations
 from typing import cast
 
 from blueprint import TokenBlueprint
+from builder import Builder
 from err import TokenBuilderException
 from model import Token
 from operation import TokenAssembler
 from operation.finalize.build import TokenAssemblyFinalizer
 from result import BuildResult
+from toolkit import TokenToolkit
 from util import LoggingLevelRouter
-from validation import BlueprintValidator, TokenBlueprintValidator
+from validation import TokenBlueprintValidator
 
 
 class TokenBuilder(Builder[Token]):
@@ -48,16 +50,25 @@ class TokenBuilder(Builder[Token]):
      Super Class:
          Builder
      """
+    _bootstrapper: TokenBlueprintValidator
+    _assembler: TokenAssembler
+    _finalizer: TokenAssemblyFinalizer
+    _toolkit: TokenToolkit
     
-    @classmethod
-    @LoggingLevelRouter.monitor
-    def build(
-            cls,
-            blueprint: TokenBlueprint,
-            blueprint_validator: BlueprintValidator | None = None,
-            assembler: TokenAssembler | None = None,
+    def __init__(
+            self,
+            bootstrapper: TokenBlueprintValidator | None = None,
+            assembler : TokenAssembler | None = None,
             finalizer: TokenAssemblyFinalizer | None = None,
-    ) -> BuildResult[Token]:
+            toolkit: TokenToolkit | None = None,
+    ):
+        self._bootstrapper = bootstrapper or TokenBlueprintValidator()
+        self._assembler = assembler or TokenAssembler()
+        self._finalizer = finalizer or TokenAssemblyFinalizer()
+        self._toolkit = toolkit or TokenToolkit()
+    
+    @LoggingLevelRouter.monitor
+    def build(self, blueprint: TokenBlueprint,) -> BuildResult[Token]:
         """
         Build a safe Token.
         
@@ -80,30 +91,26 @@ class TokenBuilder(Builder[Token]):
         """
         method = f"{cls.__name__}.build"
         
-        # --- Supply any missing dependencies. ---#
-        if assembler is None:
-            assembler = TokenAssembler()
-        if blueprint_validator is None:
-            blueprint_validator = TokenBlueprintValidator()
-        if finalizer is None:
-            finalizer = TokenAssemblyFinalizer()
-        
+
+        bootstrap_result = self._bootstrapper.execute(
+            candidate=blueprint,
+            toolkit=self._toolkit,
+        )
         # Handle the case that, the blueprint is flagged.
-        validation_result = blueprint_validator.validate(candidate=blueprint)
-        if validation_result.is_failure:
+        if bootstrap_result.is_failure:
             # Send the exception chain on failure.
             return BuildResult.failure(
                 TokenBuilderException(
                     cls_mthd=method,
-                    cls_name=cls.__name__,
+                    cls_name=self.__class__.__name__,
                     msg=TokenBuilderException.MSG,
                     err_code=TokenBuilderException.ERR_CODE,
-                    ex=validation_result.exception,
+                    ex=bootstrap_result.exception,
                 )
             )
         # --- Handoff the validated blueprint to the assembler. ---#
-        assembly_result = assembler.execute(
-            blueprint=cast(TokenBlueprint, validation_result.payload)
+        assembly_result = self._assembler.execute(
+            blueprint=cast(TokenBlueprint, bootstrap_result.payload)
         )
         # Handle the case that, the assembly is not completed.
         if assembly_result.is_failure:
@@ -111,14 +118,14 @@ class TokenBuilder(Builder[Token]):
             return BuildResult.failure(
                 TokenBuilderException(
                     cls_mthd=method,
-                    cls_name=cls.__name__,
+                    cls_name=self.__class__.__name__,
                     msg=TokenBuilderException.MSG,
                     err_code=TokenBuilderException.ERR_CODE,
                     ex=assembly_result.exception,
                 )
             )
         # --- Handoff the product for consistency and other finalization steps. ---#
-        finalization_result = finalizer.execute(
+        finalization_result = self._finalizer.execute(
             product=assembly_result.payload
         )
         # Handle the case that, the clean is not successful.
@@ -127,7 +134,7 @@ class TokenBuilder(Builder[Token]):
             return BuildResult.failure(
                 TokenBuilderException(
                     cls_mthd=method,
-                    cls_name=cls.__name__,
+                    cls_name=self.__class__.__name__,
                     msg=TokenBuilderException.MSG,
                     err_code=TokenBuilderException.ERR_CODE,
                     ex=finalization_result.exception,

@@ -1,7 +1,7 @@
-# src/operation/assembly/square/operation.py
+# src/assembly/square/py
 
 """
-Module: operation.assembly.square.operation
+Module: assembly.square.operation
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -86,5 +86,5 @@ class SquareAssembler(Assembler[Square]):
             )
         )
 
-# Register the operation.
+# Register the 
 WorkerRegistryController.register_worker(worker=SquareAssembler)

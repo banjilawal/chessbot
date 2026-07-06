@@ -1,7 +1,7 @@
-# src/operation/assembly/token/operation.py
+# src/assembly/token/py
 
 """
-Module: operation.assembly.token.operation
+Module: assembly.token.operation
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -61,5 +61,5 @@ class TokenAssembler(Assembler[Token]):
             )
         )
 
-# Register the operation.
+# Register the 
 WorkerRegistryController.register_worker(TokenAssembler)
