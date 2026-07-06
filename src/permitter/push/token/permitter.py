@@ -15,14 +15,14 @@ from detection import TokenCollisionDetector
 from err import RankQuotaFullException, TokenPushPermitterException, TokenStackFullException
 from microservice import RankService
 from model import Token
-from permitter import OperationPermitter
+from permitter import Permitter
 from report import CollisionReport, PushApproval, RankQuotaReport
 from result import AnalysisResult, MethodResultType
 from stack import TokenStackService
 from util import LoggingLevelRouter
 
 
-class TokenPushPermitter(OperationPermitter):
+class TokenPushPermitter(Permitter):
     """
     Role:
         - Transaction Worker

@@ -19,4 +19,4 @@ from .service import *
 from .token import *
 
 # Modules
-from .permitter import OperationPermitter
+from .permitter import Permitter

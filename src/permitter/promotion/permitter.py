@@ -18,14 +18,14 @@ from err import (
     PromoteToKingException, PromoteToPawnException, PromotionPermitterException
 )
 from model import King, Pawn, PawnToken, Rank
-from permitter import OperationPermitter
+from permitter import Permitter
 from report import PromotionApproval, TokenReadinessReport
 from result import AnalysisResult, MethodResultType
 from util import LoggingLevelRouter
 from validator import RankValidator, TokenValidator
 
 
-class PromotionPermitter(OperationPermitter):
+class PromotionPermitter(Permitter):
     """
     Role:
         -   Transaction Worker

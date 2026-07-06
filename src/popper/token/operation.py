@@ -1,7 +1,7 @@
-# src/operation/pop/token/operation.py
+# src/popper/token/operation.py
 
 """
-Module: operation.pop.token.operation
+Module: popper.token.operation
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

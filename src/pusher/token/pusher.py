@@ -1,7 +1,7 @@
-# src/operation/push/token/operation.py
+# src/pusher/token/pusher.py
 
 """
-Module: operation.push.token.operation
+Module: pusher.token.pusher
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -12,8 +12,8 @@ from typing import cast
 
 from err import TokenPusherException
 from model import Token
-from operation import Pusher
 from permitter import TokenPushPermitter
+from pusher import Pusher
 from report import PushApproval
 from result import InsertionResult, MethodResultType
 from stack import TokenStackService, TokenStackState

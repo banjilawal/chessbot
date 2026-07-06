@@ -15,7 +15,7 @@ from util import LoggingLevelRouter
 
 T = TypeVar("T")
 
-class OperationPermitter(ABC, Generic[T]):
+class Permitter(ABC, Generic[T]):
     """
     Role:
         - Analysis Worker

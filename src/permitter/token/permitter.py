@@ -12,12 +12,12 @@ from __future__ import annotations
 from abc import abstractmethod
 
 from model import Token
-from permitter import OperationPermitter
+from permitter import Permitter
 from result import AnalysisResult
 from util import LoggingLevelRouter
 
 
-class TokenPermitter(OperationPermitter):
+class TokenPermitter(Permitter):
     """
     Role:
         - Permission Granter

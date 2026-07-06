@@ -1,7 +1,7 @@
-# src/operation/delete/operation.py
+# src/popper/operation.py
 
 """
-Module: operation.delete.operation
+Module: popper.operation
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -16,13 +16,12 @@ from util import LoggingLevelRouter
 
 T = TypeVar("T")
 
-class Deleter(Operation[T]):
+class Popper(Operation[T]):
     
     @classmethod
     @LoggingLevelRouter.monitor
     def execute(
             cls,
-            item_id: int,
             stack: StackService[T],
             *args,
             **kwargs,

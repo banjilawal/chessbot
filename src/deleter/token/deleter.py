@@ -1,7 +1,7 @@
-# src/operation/delete/token/operation.py
+# src/deleter/token/deleter.py
 
 """
-Module: operation.delete.token.operation
+Module: deleter.token.deleter
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -10,9 +10,9 @@ version: 1.0.1
 from __future__ import annotations
 from typing import cast
 
+from deleter import Deleter
 from err import TokenDeleterException
 from model import Token
-from operation import Deleter
 from permitter.deletion import TokenDeletionPermitter
 from report import DeleteApproval
 from result import DeletionResult, MethodResultType

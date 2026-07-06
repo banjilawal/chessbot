@@ -10,8 +10,8 @@ version: 1.0.0
 from __future__ import annotations
 
 from search.token.resource import TokenQueryService
-from operation.pop.token import TokenStackPop
-from operation.push.token import TokenPusher
+from popper import TokenStackPop
+from pusher import TokenPusher
 
 
 class TokenStackCrudController:
