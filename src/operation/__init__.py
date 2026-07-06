@@ -10,7 +10,6 @@ version: 1.0.1
 # =========== OPERATION PACKAGE ===========#
 
 # Packages
-from .assembly import *
 from .delete import *
 from .pop import *
 from .push import *
