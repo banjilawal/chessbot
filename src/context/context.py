@@ -52,32 +52,28 @@ class Context(ABC, Generic[T]):
         id: Optional[int] = None
         name: Optional[str]
     """
-    id: Optional[int] = None
-    name: Optional[str] = None
-    #
-    # def __init__(
-    #         self,
-    #         id: Optional[int] = None,
-    #         name: Optional[str] = None
-    # ):
-    #     """
-    #     Args:
-    #         id: Optional[int]
-    #         name: Optional[str]
-    #     """
-    #     self._id = id
-    #     self._name = name
-    #
-    # @property
-    # def id(self) -> Optional[int]:
-    #     return self._id
-    #
-    # @property
-    # def name(self) -> Optional[str]:
-    #     return self._name
-    #
-    # @property
-    # @abstractmethod
-    # def to_dict(self) -> dict:
-    #     """Implementations must override."""
-    #     pass
+    _id: Optional[int] = None
+    _name: Optional[str] = None
+
+    def __init__(self, id: Optional[int] | None = None, name: Optional[str] | None = None):
+        """
+        Args:
+            id: Optional[int]
+            name: Optional[str]
+        """
+        self._id = id
+        self._name = name
+
+    @property
+    def id(self) -> Optional[int]:
+        return self._id
+
+    @property
+    def name(self) -> Optional[str]:
+        return self._name
+
+    @property
+    @abstractmethod
+    def to_dict(self) -> dict:
+        """Implementations must override."""
+        pass

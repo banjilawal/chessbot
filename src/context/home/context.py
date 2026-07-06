@@ -1,7 +1,7 @@
-# src/context/home/model/state.py
+# src/context/home/context.py
 
 """
-Module: context.home.model
+Module: context.home.context
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -14,7 +14,7 @@ from context import Context
 from model import Board, HomeSquare, Token
 
 
-class TokenHomeContext:
+class TokenHomeContext(Context[HomeSquare]):
     """
     Role:
         -   Selection
@@ -51,6 +51,7 @@ class TokenHomeContext:
             board: Optional[Board]
             square_name: Optional[str]
         """
+        super().__init__()
         self._token = token
         self._board = board
         self._square_name = square_name
