@@ -41,7 +41,6 @@ class Validator(ABC, Generic[T]):
         
     super Class:
     """
-    DOMAIN: str = "Validation"
     
     @classmethod
     @abstractmethod

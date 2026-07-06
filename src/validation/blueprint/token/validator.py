@@ -12,9 +12,10 @@ from __future__ import annotations
 from typing import Any, Type, cast
 
 from blueprint import TokenBlueprint
+from schema import Formation
 from context import TokenHomeContext
 from err import FormationNullException, TokenBlueprintValidatorException
-from model import Formation, HomeSquare
+from model import HomeSquare
 from result import ValidationResult
 from toolkit import TokenToolkit
 

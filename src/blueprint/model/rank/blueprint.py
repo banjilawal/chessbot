@@ -12,8 +12,9 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Optional
 
-from err import RankNullException
-from model import Blueprint, Persona, Rank
+from blueprint import Blueprint
+from model import Persona, Rank
+
 
 @dataclass
 class RankBlueprint(Blueprint[Rank]):
@@ -27,8 +28,7 @@ class RankBlueprint(Blueprint[Rank]):
     Attributes:
         id: Optional[int]
         persona: Persona
-        model_type: Rank
-        null_exception: RankNullException
+
             
     Provides:
 
@@ -37,5 +37,3 @@ class RankBlueprint(Blueprint[Rank]):
      """
     persona: Persona
     id: Optional[int] | None = None
-    null_exception: RankNullException = RankNullException()
-    model_type: Rank = Rank

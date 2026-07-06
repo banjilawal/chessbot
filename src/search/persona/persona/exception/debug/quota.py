@@ -8,7 +8,7 @@ version: 1.0.0
 """
 
 from system import BoundsException
-from model.state.catalog.persona import PersonaException
+from schema.persona import PersonaException
 
 
 __all__ = [

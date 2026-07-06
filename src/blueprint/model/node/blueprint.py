@@ -11,14 +11,16 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Optional
 
-from model import Blueprint, Node, Square
+from blueprint import Blueprint
+from model import Node, Square
 
 @dataclass
 class NodeBlueprint(Blueprint[Node]):
     """
     Role:
         -   Container
-
+        -   DTO
+        
     Responsibilities:
         1.  Provides values for instantiating a Node object.
 
@@ -26,8 +28,6 @@ class NodeBlueprint(Blueprint[Node]):
         square: Square
         priority: Optional[int]
         predecessor: Optional[Node]
-        null_exception: NodeNullException
-        model_type: Node
         
     Provides:
 
@@ -38,5 +38,3 @@ class NodeBlueprint(Blueprint[Node]):
     square: Square
     predecessor: Optional[Node]
     id: Optional[int] | None = None
-    null_exception: NodeNullException = NodeNullException()
-    model_type: Node = Node

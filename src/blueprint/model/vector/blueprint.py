@@ -11,23 +11,24 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 
-from err import VectorNullException
-from model import Blueprint, Vector
+from blueprint import Blueprint
+from model import Vector
+
 
 @dataclass
 class VectorBlueprint(Blueprint[Vector]):
     """
     Role:
         -   Container
+        -   DTO
 
     Responsibilities:
         1.  Provides values for instantiating a Vector object.
+        2.  DTO
 
     Attributes:
         x: int
         y: int
-        model_type: Vector
-        null_exception: VectorNullException
             
     Provides:
 
@@ -36,5 +37,3 @@ class VectorBlueprint(Blueprint[Vector]):
      """
     x: int
     y: int
-    model_type = Vector
-    null_exception = VectorNullException()

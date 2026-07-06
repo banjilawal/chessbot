@@ -21,4 +21,4 @@ from .token import *
 from .vector import *
 
 # Modules
-from .operation import Assembler
+from .assembler import Assembler

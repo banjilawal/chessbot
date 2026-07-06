@@ -9,7 +9,7 @@ version: 1.0.0
 
 from typing import Any, cast
 
-from model.state.catalog.persona import (
+from schema.persona import (
     ArenaPersonaKeysException, NullPersonaKeyException, PersonaKey, ZeroPersonaKeysException,
     PersonaKeyValidationException, PersonaKeyValidationRouteException
 )

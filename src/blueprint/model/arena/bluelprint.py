@@ -12,14 +12,16 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Optional
 
-from err import ArenaNullException
-from model import Game, Blueprint, Arena
+from blueprint import Blueprint
+from model import Arena, Game
+
 
 @dataclass
 class ArenaBlueprint(Blueprint[Arena]):
     """
     Role:
         -   Container
+        -   DTO
     
     Responsibilities:
         1.  Provides values for instantiating a Arena object.
@@ -27,8 +29,6 @@ class ArenaBlueprint(Blueprint[Arena]):
     Attributes:
         id: Optional[int]
         game: Game
-        model_type: Arena
-        null_exception: ArenaNullException
         
     Provides:
     
@@ -37,6 +37,4 @@ class ArenaBlueprint(Blueprint[Arena]):
     """
     game: Game
     id: Optional[int] | None = None
-    null_exception: ArenaNullException = ArenaNullException()
-    model_type: Arena = Arena
 

@@ -13,7 +13,7 @@ from model.catalog.formation import (
     ArenaFormationKeysException, FormationKey, FormationKeyBuilderException,
     FormationKeyBuildRouteException, ZeroFormationKeysException
 )
-from model.state.catalog.persona import Persona, PersonaService
+from schema.persona import Persona, PersonaService
 from logic.square import Square, SquareService
 from system import BuildResult, Builder, GameColor, GameColorValidator, IdentityService, LoggingLevelRouter
 

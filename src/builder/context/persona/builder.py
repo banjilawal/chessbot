@@ -9,7 +9,7 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from model.state.catalog.persona import (
+from schema.persona import (
     ArenaPersonaKeysException, PersonaKey, PersonaKeyBuilderException,
     PersonaKeyBuildRouteException, ZeroPersonaKeysException
 )

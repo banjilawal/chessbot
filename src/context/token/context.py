@@ -109,7 +109,6 @@ class TokenContext(Context[Token]):
         def designation(self) -> Optional[str]:
             return self._designation
     
-    
         @property
         def to_dict(self) -> Dict[str, Any]:
             return {

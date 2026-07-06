@@ -12,26 +12,26 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Optional
 
-from err import TeamNullException
-from model.catalog import Schema
-from model import Blueprint, Board, Player, Team
+from blueprint import Blueprint
+from model import Board, Player, Schema, Team
+
 
 @dataclass
 class TeamBlueprint(Blueprint[Team]):
     """
     Role:
         -   Container
+        -   DTO
 
     Responsibilities:
         1.  Provides values for instantiating a Team object.
+        2.  DTO
 
     Attributes:
         id: Optional[int]
         owner: Player
         board: Board
         schema: Schema
-        model_type: Team
-        null_exception: TeamNullException
         
     Provides:
 
@@ -42,7 +42,5 @@ class TeamBlueprint(Blueprint[Team]):
     board: Board
     schema: Schema
     id: Optional[int] | None = None
-    null_exception: TeamNullException = TeamNullException()
-    model_type: Team = Team
     
 

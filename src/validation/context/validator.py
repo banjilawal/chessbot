@@ -8,17 +8,16 @@ version: 1.0.1
 """
 
 from __future__ import annotations
-from typing import Any, TypeVar
+from typing import Any, Generic, TypeVar
 
-from model import Context
 from result import ValidationResult
 from toolkit import ContextToolkit
 from util import LoggingLevelRouter
 from validation import Validator
 
-T = TypeVar("T")
+C = TypeVar("C", bound="Context")
 
-class ContextValidator(Validator):
+class ContextValidator(Validator, Generic[C]):
     """
     Role
         -   Transaction Worker
@@ -39,7 +38,7 @@ class ContextValidator(Validator):
     """
     @classmethod
     @LoggingLevelRouter.monitor
-    def execute(cls, candidate: Any, toolkit: ContextToolkit[T], ) -> ValidationResult[Context[T]]:
+    def execute(cls, candidate: Any, toolkit: ContextToolkit[C], *args, **kwargs) -> ValidationResult:
         pass
         
     

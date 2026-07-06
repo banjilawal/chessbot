@@ -12,7 +12,6 @@ from __future__ import annotations
 from abc import ABC
 from typing import Generic, TypeVar
 
-from err import NullException
 
 T = TypeVar("T")
 
@@ -20,18 +19,15 @@ class Blueprint(ABC, Generic[T]):
     """
     Role:
         -   Container
-    
+        -   DTO
+        
     Responsibilities:
-        1.  Aggregates properties, values, entities that are passed to a method.
-        2.  Simplify entry points to Provides values for instantiating a T object.
+        1.  Provides values for instantiating an object.
+        2.  DTO
     
     Attributes:
-        model_type: T
-        null_exception: NullException
         
     Provides:
     
     Super Class:
     """
-    model_type: T
-    null_exception: NullException = NullException()

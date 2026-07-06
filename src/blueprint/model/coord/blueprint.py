@@ -10,8 +10,10 @@ version: 1.0.1
 from __future__ import annotations
 from dataclasses import dataclass
 
+from blueprint import Blueprint
 from err import CoordNullException
-from model import Blueprint, Coord
+from model import Coord
+
 
 @dataclass
 class CoordBlueprint(Blueprint[Coord]):
@@ -25,8 +27,6 @@ class CoordBlueprint(Blueprint[Coord]):
     Attributes:
         row: int
         column: int
-        model_type: Coord
-        null_exception: CoordNullException
         
     Provides:
 
@@ -35,5 +35,3 @@ class CoordBlueprint(Blueprint[Coord]):
      """
     row: int
     column: int
-    model_type: Coord = Coord
-    null_exception: CoordNullException = CoordNullException()

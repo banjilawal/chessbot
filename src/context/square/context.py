@@ -9,13 +9,12 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from dataclasses import dataclass
 from typing import Any, Dict, Optional
 
-from model import Board, Context, Coord, Square, SquareState, Token
+from context import Context
+from model import Square
 
 
-@dataclass
 class SquareContext(Context[Square]):
     """
     Role:

@@ -47,11 +47,6 @@ class Context(ABC, Generic[T]):
                     -   Unions are clunky if there are many attributes.
                     -   Unions don't lower validation and build integrity overhead.
     """
-    """
-    Args:
-        id: Optional[int] = None
-        name: Optional[str]
-    """
     _id: Optional[int] = None
     _name: Optional[str] = None
 

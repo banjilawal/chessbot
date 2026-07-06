@@ -21,7 +21,8 @@ class PathBlueprint(Blueprint[Path]):
     """
     Role:
         -   Container
-
+        -   DTO
+        
     Responsibilities:
         1.  Provides values for instantiating a Path object.
 

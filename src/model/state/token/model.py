@@ -12,7 +12,7 @@ from abc import ABC, abstractmethod
 from typing import Optional
 
 from database import CoordDatabase
-from model import Coord, Formation, HomeSquare, Rank, Team, TokenActivityState, DeploymentState
+from model import Coord, HomeSquare, Rank, Team, TokenActivityState, DeploymentState
 
 
 class Token(ABC):

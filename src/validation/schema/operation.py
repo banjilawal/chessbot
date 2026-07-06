@@ -26,12 +26,12 @@ class SchemaValidator(Validator[Schema]):
         -   Process Runner
 
     Responsibilities:
-        1.  Ensure a Schema instance is certified safe, reliable and consistent before use.
+        1.  Ensure a Archetype instance is certified safe, reliable and consistent before use.
 
     Attributes:
 
     Provides:
-        -   def validate(candidate: Any) -> ValidationResult[Schema]
+        -   def validate(candidate: Any) -> ValidationResult[Archetype]
 
     Super Class:
         Validator
@@ -41,17 +41,17 @@ class SchemaValidator(Validator[Schema]):
     @LoggingLevelRouter.monitor
     def validate(cls, candidate: Any) -> ValidationResult[Schema]:
         """
-        Verify the Schema is safe before its used.
+        Verify the Archetype is safe before its used.
         
         Action:
             1.  Send the exception chain in the ValidationResult if either:
                     -   The candidate is null.
-                    -   It's not a Schema.
+                    -   It's not a Archetype.
             2.  Otherwise, send the success result.
         Args:
             candidate: Any
         Returns:
-            ValidationResult[Schema]
+            ValidationResult[Archetype]
         Raises:
             TypeError
             NullSchemaException
@@ -89,7 +89,7 @@ class SchemaValidator(Validator[Schema]):
                     err_code=SchemaValidationException.ERR_CODE,
                     mthd_rslt_type=SchemaValidationException.MTHD_RSLT,
                     ex=TypeError(
-                        f"Expected a Schema, got {type(candidate).__name__} instead."
+                        f"Expected a Archetype, got {type(candidate).__name__} instead."
                     )
                 )
             )
