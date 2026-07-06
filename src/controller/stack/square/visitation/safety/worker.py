@@ -68,7 +68,7 @@ class SquareStackOccupationWorker(Worker):
         method = "SquareStackOccupationWorker._safe_square_exists"
         
         # Handle the case that, the squareis not safe.
-        square_validation = square_stack.microservice.validate.build(square)
+        square_validation = square_stack.microservice.execute.build(square)
         if square_validation.is_failure:
             return ValidationResult.failure(
                 exception=SquareStackTokenHandlerException(

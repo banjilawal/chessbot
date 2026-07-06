@@ -9,9 +9,14 @@ version: 1.0.1
 
 from __future__ import annotations
 
+from analyzer import FriendshipAnalyzer, TokenReadinessAnalyzer
 from builder import TokenBuilder
+from detection import TokenCollisionDetector, TokenHomeDetector
 from model import Token
-from toolkit import ModelOperationSuite, TokenToolkit
+from operation import TokenHomePlacer, TokenPositionController
+from operation.promotion import PawnPromoter
+from suite import ModelOperationSuite
+from toolkit import TokenToolkit
 from validation import TokenValidator
 
 
@@ -41,4 +46,12 @@ class TokenOperationSuite(ModelOperationSuite[Token]):
     toolkit: TokenToolkit = TokenToolkit()
     builder: TokenBuilder = TokenBuilder()
     validator: TokenValidator = TokenValidator()
+    
+    promoter: PawnPromoter = PawnPromoter()
+    home_placer: TokenHomePlacer = TokenHomePlacer()
+    friendship_analyzer: FriendshipAnalyzer = FriendshipAnalyzer()
+    collision_detector: TokenCollisionDetector = TokenCollisionDetector()
+    position_controller: TokenPositionController
+    readiness_analyzer: TokenReadinessAnalyzer = TokenReadinessAnalyzer()
+    home_detector: TokenHomeDetector = TokenHomeDetector()
 

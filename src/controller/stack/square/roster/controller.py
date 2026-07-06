@@ -95,7 +95,7 @@ class SquareStackRosterHandler:
         method = "SquareStackRosterHandler.deploy_roster_on_stack"
         
         # Handle the case that, the team does not pass a validation check.
-        team_validation = team_service.validate.build(candidate=team)
+        team_validation = team_service.execute.build(candidate=team)
         if team_validation.is_failure:
             # Send the exception chain on failure.
             return UpdateResult.update_failure(

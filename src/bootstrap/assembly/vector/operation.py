@@ -74,7 +74,7 @@ class VectorAssemblyPrimer(AssemblyPrimer[Vector]):
         
         # Handle the case that, either component is out of bounds.
         for num in [blueprint.x, blueprint.y]:
-            validation_result = toolkit.number_validator.validate(
+            validation_result = toolkit.number_validator.execute(
                 floor=0,
                 ceiling=BoardDimensionSetting.entry[BoardProperty.KNIGHT_RADIUS],
                 candidate=abs(num)

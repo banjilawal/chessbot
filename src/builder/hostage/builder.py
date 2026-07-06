@@ -87,7 +87,7 @@ class HostageBuilder(Builder[Hostage]):
                 )
             )
         # Handle the case that, the captured_squareis not safe.
-        captured_square_validation = square_service.validate.build(candidate=captured_square)
+        captured_square_validation = square_service.execute.build(candidate=captured_square)
         if captured_square_validation.failure:
             # Send the exception chain on failure
             return BuildResult.failure(
@@ -112,7 +112,7 @@ class HostageBuilder(Builder[Hostage]):
         # --- Perform the prisoner prebuild tests that are independent of the victor. ---#
         
         # Handle the case that, the prisoner is not a safe combatant.
-        prisoner_is_combatant_validation = token_service.validate.verify_token_is_combatant(
+        prisoner_is_combatant_validation = token_service.execute.verify_token_is_combatant(
             candidate=prisoner
         )
         if prisoner_is_combatant_validation.is_failure:

@@ -190,7 +190,7 @@ class TokenCollisionBootstrapper:
     ) -> ValidationResult[TokenBlueprint]:
         method = f"{cls.__name__}.validate_blueprint"
     
-        validation_result = priming_validator.validate(
+        validation_result = priming_validator.execute(
             candidate=blueprint,
             target_type=TokenBlueprint,
             nullable=TokenBlueprintNullException(),

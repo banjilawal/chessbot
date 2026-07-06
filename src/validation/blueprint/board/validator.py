@@ -122,7 +122,7 @@ class BoardBlueprintValidator(BlueprintValidator[Board]):
         
         # Certification for the search-by-arena target.
         if blueprint.arena is not None:
-            validation = arena_service.validate.search_service(blueprint.arena)
+            validation = arena_service.execute.search_service(blueprint.arena)
             if validation.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(

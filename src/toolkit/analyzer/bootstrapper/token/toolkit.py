@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 
-from detection import HomeSquareDetector
+from detection import TokenHomeDetector
 from err import TokenNullException
 from microservice import RankService
 from analyzer import Token
@@ -52,7 +52,7 @@ class TokenToolkit(AnalyzerToolkit):
     Super Class:
         Toolkit
     """
-    home_square_detector: HomeSquareDetector = HomeSquareDetector()
+    home_square_detector: TokenHomeDetector = TokenHomeDetector()
     square_validator: SquareValidator = SquareValidator()
     coord_validator: CoordValidator = CoordValidator()
     team_validator: TeamValidator = TeamValidator()

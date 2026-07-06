@@ -10,6 +10,7 @@ version: 1.0.1
 # =========== CONTROLLER.MODEL.TOKEN PACKAGE ===========#
 
 # Packages
+from .position import *
 
 # Modules
 from .controller import TokenController

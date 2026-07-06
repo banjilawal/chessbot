@@ -36,22 +36,18 @@ class VectorOperandRegister(Register[VectorOperand]):
     Super Class:
         Register
     """
-    _content_type: Optional[RegisterContentType]
     
     def __init__(
             self,
             a: VectorOperand,
             b: VectorOperand,
-            content_type: Optional[RegisterContentType] | None = None,
     ):
         """
         Args:
             a: VectorOperand
             b: VectorOperand
-            content_type: OperandRegisterContentType
         """
         super().__init__(a=a, b=b)
-        self._content_type = content_type
         
     @property
     def a(self) -> VectorOperand:

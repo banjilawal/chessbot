@@ -85,7 +85,7 @@ class SchemaLookupService(SearchMicroservice[Schema]):
         # --- Forward the request to the search_router. ---#
         search_result = self._resource_host.search_router.route(
             query=query,
-            query_validator=self._resource_host.query_service.validate
+            query_validator=self._resource_host.query_service.execute
         )
         # Handle the case that, the request was not completed.
         if search_result.is_failure:

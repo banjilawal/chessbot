@@ -154,7 +154,7 @@ class TeamContextValidator(ContextValidator[Team]):
         
         # Certification for the search-by-color target.
         if context.schema is not None:
-            validation_result = toolkit.team_toolkit.priming_validator.validate(
+            validation_result = toolkit.team_toolkit.priming_validator.execute(
                 candidate=context.schema,
                 model_type=Schema,
                 null_exception=SchemaNullException()

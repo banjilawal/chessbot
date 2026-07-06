@@ -72,7 +72,7 @@ class PairBuilder(Builder[Pair]):
         method = f"{cls.__class__.__name__}._build"
         
         # Handle the case that, the head does not pass a validation check.
-        node_validation_result = node_service.validate.build(candidate=head)
+        node_validation_result = node_service.execute.build(candidate=head)
         if node_validation_result.is_failure:
             # Return the exception chain on failure
             return BuildResult.failure(

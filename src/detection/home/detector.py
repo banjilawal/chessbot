@@ -11,6 +11,7 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
+from bootstrap import HomeDetectorBootstrapper
 from err import (
     ExcessContextFlagsException, HomeSquareDetectorException, HomeSquareSearchResultEmptyException,
     ZeroContextFlagsException
@@ -22,7 +23,7 @@ from util import LoggingLevelRouter
 from validation import BoardValidator, TokenValidator
 
 
-class HomeSquareDetector:
+class TokenHomeDetector:
     """
     Role:
         - Transaction Worker
@@ -49,9 +50,7 @@ class HomeSquareDetector:
             token: Optional[Token] | None = None,
             board: Optional[Board] | None = None,
             square_name: Optional[str] | None = None,
-            board_validator: BoardValidator | None = None,
-            token_validator: TokenValidator | None = None,
-            identity_service: IdentityService | None = None,
+            bootstrapper: HomeDetectorBootstrapper | None = None,
     ) -> Result[HomeSquare]:
         """
         Find the token's home square.
@@ -79,12 +78,12 @@ class HomeSquareDetector:
         method = f"{cls.__class__.__name__}.validator"
         
         # --- Supply any missing dependencies. ---#
-        if board_validator is None:
-            board_validator = BoardValidator()
-        if token_validator is None:
-            token_validator = TokenValidator()
-        if identity_service is None:
-            identity_service = IdentityService()
+        if bootstrapper is None:
+            bootstrapper = HomeDetectorBootstrapper()
+            
+        result = bootstrapper.execute(
+            token=token
+        )
         
         # --- Count how many optional parameters are not-null. only one should be not null. ---#
         params = [token, square_name]

@@ -122,7 +122,7 @@ class BoardContextValidator(ContextValidator[Board]):
         
         # Certification for the search-by-arena target.
         if context.arena is not None:
-            validation = arena_service.validate.search_service(context.arena)
+            validation = arena_service.execute.search_service(context.arena)
             if validation.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(

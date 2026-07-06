@@ -79,7 +79,7 @@ class TokenValidator(Validator[Token]):
             blueprint_validator = TokenBlueprintValidator()
         
         # Handle the case that, the validator is not primed.
-        validator_priming_result = toolkit.priming_validator.validate(
+        validator_priming_result = toolkit.priming_validator.execute(
             candidate=candidate,
             target_model=toolkit.model,
             null_exception=toolkit.null_exception,

@@ -46,7 +46,7 @@ class OriginCertifierBootstrapper(ValidatorBootstrapper):
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def validate(
+    def execute(
             cls,
             token: Token,
             origin: Square,

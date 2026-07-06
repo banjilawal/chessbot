@@ -190,7 +190,7 @@ class TokenContextToolkit(Toolkit[TokenContext]):
         
         # Toolkit the current_position TokenContext if its flag is enabled.
         if current_position is not None:
-            validation = workers.coord_service.validate.build(current_position)
+            validation = workers.coord_service.execute.build(current_position)
             if validation.is_failure:
                 # Send the exception chain on failure.
                 return ToolkitResult.failure(
@@ -209,7 +209,7 @@ class TokenContextToolkit(Toolkit[TokenContext]):
         
         # Toolkit the rank TokenContext if its flag is enabled.
         if rank is not None:
-            validation = workers.rank_service.validate.build(rank)
+            validation = workers.rank_service.execute.build(rank)
             if validation.is_failure:
                 # Send the exception chain on failure.
                 return ToolkitResult.failure(
@@ -228,7 +228,7 @@ class TokenContextToolkit(Toolkit[TokenContext]):
         
         # Toolkit the team TokenContext if its flag is enabled.
         if team is not None:
-            validation = workers.team_service.validate.build(team)
+            validation = workers.team_service.execute.build(team)
             if validation.is_failure:
                 # Send the exception chain on failure.
                 return ToolkitResult.failure(

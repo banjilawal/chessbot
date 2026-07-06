@@ -74,7 +74,7 @@ class TokenDestinationCertifier:
             bootstrapper = DestinationCertifierBootstrapper()
             
         # Handle the case that, the square is not certified as a destination
-        validation_result = bootstrapper.validate(token=token, destination=destination)
+        validation_result = bootstrapper.execute(token=token, destination=destination)
         if validation_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(

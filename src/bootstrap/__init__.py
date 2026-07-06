@@ -13,6 +13,7 @@ version: 1.0.1
 # Packages
 from .analyzer import *
 from .assembly import *
+from .detector import *
 from .insertion import *
 from .operation import *
 from .permitter import *

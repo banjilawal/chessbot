@@ -119,7 +119,7 @@ class TeamContextBuilder(Builder[TeamContext]):
         
         # Build the owner TeamContext if its flag is enabled.
         if player is not None:
-            validation = player_service.validate.build(candidate=player)
+            validation = player_service.execute.build(candidate=player)
             if validation.is_failure:
                 # Send the exception chain on failure.
                 return BuildResult.failure(

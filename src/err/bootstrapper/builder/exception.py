@@ -10,7 +10,7 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import ChessException
+from err import BootstrapperException
 from result import MethodResultType
 
 __all__ = [
@@ -20,7 +20,7 @@ __all__ = [
 
 
 # ======================# BUILDER_BOOTSTRAPPER_FAILURE #======================#
-class BuilderBootstrapperException(ChessException):
+class BuilderBootstrapperException(BootstrapperException):
     """
     Role:
         -   Failure Tracing
@@ -41,7 +41,7 @@ class BuilderBootstrapperException(ChessException):
     Provides:
 
     Super Class:
-        ChessException
+        BootstrapperException
     """
     MSG = "BuilderBootstrapper failed"
     ERR_CODE = "BUILDER_BOOTSTRAPPER_FAILURE"

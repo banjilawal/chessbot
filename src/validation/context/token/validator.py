@@ -78,7 +78,7 @@ class TokenContextValidator(ContextValidator):
             toolkit = TokenToolkit()
         
         # handle the case that, priming the validator fails.
-        priming_result = toolkit.priming_validator.validate(
+        priming_result = toolkit.priming_validator.execute(
             candidate=candidate,
             context_model=candidate,
             context_null_exception=TokenContext,
@@ -214,7 +214,7 @@ class TokenContextValidator(ContextValidator):
         
         # Certification for the search-by-color target.
         if context.color is not None:
-            validation_result = toolkit.priming_validator.validate(
+            validation_result = toolkit.priming_validator.execute(
                 candidate=context.color,
                 model_type=GameColor,
                 null_exception=GameColorNullException()

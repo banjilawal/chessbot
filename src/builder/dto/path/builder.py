@@ -78,7 +78,7 @@ class TokenPathDtoBuilder:
         if toolkit is None:
             toolkit = TokenPathToolkit()
             
-        origin_search_result = toolkit.origin_searcher.validate(
+        origin_search_result = toolkit.origin_searcher.execute(
             token=token,
             readiness_analyzer=toolkit.readiness_analyzer
         )
@@ -98,7 +98,7 @@ class TokenPathDtoBuilder:
         origin = origin_search_result.payload[0]
         
         # Handle the case that, the token is already at the destination.
-        token_destination_validation_result = toolkit.destination_validator.validate(
+        token_destination_validation_result = toolkit.destination_validator.execute(
             token=token,
             destination=destination,
             token_validator=toolkit.token_validator,

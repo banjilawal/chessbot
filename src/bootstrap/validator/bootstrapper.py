@@ -23,5 +23,5 @@ class ValidatorBootstrapper(Bootstrapper):
     @classmethod
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def validate(cls, *args, **kwargs, ) -> ValidationResult:
+    def execute(cls, *args, **kwargs, ) -> ValidationResult:
         pass

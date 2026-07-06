@@ -95,7 +95,7 @@ class CoordBlueprintValidator(BlueprintValidator[Coord]):
         
         # Certification whichever attribute is enabled.
         for attribute in [blueprint.row, blueprint.column]:
-            validation_result = toolkit.coord_toolkit.number_validator.validate(
+            validation_result = toolkit.coord_toolkit.number_validator.execute(
                 candidate=attribute,
                 ceiling=BoardProperty.MAX_COLUMN_INDEX.value,
                 floor=0,

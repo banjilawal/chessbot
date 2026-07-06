@@ -144,7 +144,7 @@ class NodeBlueprintValidator(BlueprintValidator[Node]):
         
         # Certification for the search-by-square target.
         if blueprint.home_square is not None:
-            validation = square_service.validate.build(blueprint.home_square)
+            validation = square_service.execute.build(blueprint.home_square)
             if validation.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(

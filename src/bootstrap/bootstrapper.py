@@ -1,7 +1,7 @@
-# src/bootstrap/analyzer/bootstrapper.py
+# src/bootstrap/bootstrapper.py
 
 """
-Module: bootstrap.analyzer.bootstrapper
+Module: bootstrap.bootstrapper
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -16,10 +16,9 @@ from util import LoggingLevelRouter
 
 
 class Bootstrapper(ABC):
-    DOMAIN = "BootStrap"
     
-    # @classmethod
-    # @abstractmethod
-    # @LoggingLevelRouter.monitor
-    # def execute(cls, *args, **kwargs, ) -> Result:
-    #     pass
+    @classmethod
+    @abstractmethod
+    @LoggingLevelRouter.monitor
+    def execute(cls, *args, **kwargs, ) -> Result:
+        pass

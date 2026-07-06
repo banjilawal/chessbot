@@ -76,7 +76,7 @@ class TokenBlueprintValidator(Validator[TokenBlueprint]):
             toolkit = TokenToolkit()
         
         # Handle the case that, the validator is not primed.
-        validator_priming_result = toolkit.priming_validator.validate(
+        validator_priming_result = toolkit.priming_validator.execute(
             candidate=candidate,
             target_model=TokenBlueprint,
             null_exception=TokenBlueprintNullException(),
@@ -127,7 +127,7 @@ class TokenBlueprintValidator(Validator[TokenBlueprint]):
                 )
             )
         # Handle the case that, the formation does not pass a validation check.
-        formation_validation = toolkit.priming_validator.validate(
+        formation_validation = toolkit.priming_validator.execute(
             candidate=blueprint.formation,
             target_model=Formation,
             null_exception=FormationNullException(),

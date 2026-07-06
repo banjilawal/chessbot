@@ -10,7 +10,8 @@ version: 1.0.1
 from __future__ import annotations
 
 from model import VectorOperandRegister
-from toolkit import ModelOperationSuite, VectorOperandRegisterToolkit
+from suite import ModelOperationSuite
+from toolkit import VectorOperandRegisterToolkit
 from validation import VectorOperandRegisterValidator
 
 

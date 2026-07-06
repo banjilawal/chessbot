@@ -110,13 +110,13 @@ class PlayerBlueprintValidator(BlueprintValidator[Player]):
                 return ValidationResult.success(blueprint)
             
             if blueprint.team is not None:
-                validation = team_service.validate.build(candidate=blueprint.team)
+                validation = team_service.execute.build(candidate=blueprint.team)
                 if validation.is_failure:
                     return ValidationResult.failure(validation.exception)
                 return ValidationResult.success(blueprint)
             
             if blueprint.game is not None:
-                validation = game_service.validate.build(candidate=blueprint.game)
+                validation = game_service.execute.build(candidate=blueprint.game)
                 if validation.is_failure:
                     return ValidationResult.failure(validation.exception)
                 return ValidationResult.success(blueprint)

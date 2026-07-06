@@ -137,7 +137,7 @@ class SquareBlueprintValidator(BlueprintValidator[Square]):
         
         # Certification for the search-by-coord target.
         if blueprint.coord is not None:
-            validation_result = toolkit.square_toolkit.coord_validator.validate(
+            validation_result = toolkit.square_toolkit.coord_validator.execute(
                 candidate=blueprint.coord
             )
             if validation_result.is_failure:
@@ -156,7 +156,7 @@ class SquareBlueprintValidator(BlueprintValidator[Square]):
         
         # Certification for the search-by-board target.
         if blueprint.board is not None:
-            validation_result = toolkit.square_toolkit.board_validator.validate(
+            validation_result = toolkit.square_toolkit.board_validator.execute(
                 candidate=blueprint.board
             )
             if validation_result.is_failure:
@@ -175,7 +175,7 @@ class SquareBlueprintValidator(BlueprintValidator[Square]):
         
         # Certification for the search-by-occupant target.
         if blueprint.occupant is not None:
-            validation_result = toolkit.square_toolkit.token_validator.validate(
+            validation_result = toolkit.square_toolkit.token_validator.execute(
                 candidate=blueprint.occupant
             )
             if validation_result.is_failure:
@@ -194,7 +194,7 @@ class SquareBlueprintValidator(BlueprintValidator[Square]):
         
         # Certification for the search-by-state.
         if blueprint.state is not None:
-            validation_result = toolkit.square_toolkit.priming_validator.validate(
+            validation_result = toolkit.square_toolkit.priming_validator.execute(
                 candidate=blueprint.state,
                 model_type=SquareState,
                 null_exception=SquareStateNullException()
@@ -215,7 +215,7 @@ class SquareBlueprintValidator(BlueprintValidator[Square]):
         
         # Certification for the search-by-formation.
         if blueprint.formation is not None:
-            validation_result = toolkit.square_toolkit.priming_validator.validate(
+            validation_result = toolkit.square_toolkit.priming_validator.execute(
                 candidate=blueprint.formation,
                 model_type=Formation,
                 null_exception=FormationNullException()

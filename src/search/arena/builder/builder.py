@@ -116,7 +116,7 @@ class ArenaContextBuilder(Builder[ArenaContext]):
             
             # Build the team ArenaContext if its flag is enabled.
             if team is not None:
-                validation = team_service.validate.build(candidate=team)
+                validation = team_service.execute.build(candidate=team)
                 if validation.is_failure:
                     return BuildResult.failure(validation.exception)
                 # On validation success return a team_ArenaContext in the BuildResult.
@@ -124,7 +124,7 @@ class ArenaContextBuilder(Builder[ArenaContext]):
             
             # Build the game ArenaContext if its flag is enabled.
             if game is not None:
-                validation = game_service.validate.build(candidate=game)
+                validation = game_service.execute.build(candidate=game)
                 if validation.is_failure:
                     return BuildResult.failure(validation.exception)
                 # On validation success return a game_ArenaContext in the BuildResult.

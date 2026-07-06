@@ -48,7 +48,7 @@ class PrimingValidator(ValidatorBootstrapper):
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def validate(
+    def execute(
             cls,
             candidate: Any,
             target_model: T,

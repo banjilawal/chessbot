@@ -13,6 +13,7 @@ version: 1.0.1
 from .analyzer import *
 from .builder import *
 from .collision import *
+from .detector import *
 from .operation import *
 from .permitter import *
 from .searcher import *

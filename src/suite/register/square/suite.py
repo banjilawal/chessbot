@@ -1,7 +1,7 @@
-# src/suite/register/square/model.py
+# src/suite/register/square/suite.py
 
 """
-Module: suite.register.square.model
+Module: suite.register.square.suite
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -11,7 +11,8 @@ from __future__ import annotations
 
 from builder import SquareBuilder
 from model import SquareRegister
-from toolkit import ModelOperationSuite, SquareToolkit
+from suite import ModelOperationSuite
+from toolkit import SquareToolkit
 from validation import SquareValidator
 
 

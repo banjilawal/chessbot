@@ -95,7 +95,7 @@ class CoordValidator(Validator[Coord]):
         
         # Handle the case that, either the row or column are not between [0-7] inclusive.
         for attribute in [coord.row, coord.column]:
-            number_validation_result = toolkit.number_validator.validate(
+            number_validation_result = toolkit.number_validator.execute(
                 ceiling=NUMBER_OF_ROWS,
                 candidate=attribute,
                 floor=0,

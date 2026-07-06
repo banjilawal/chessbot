@@ -1,77 +1,75 @@
-# src/err/bootstrap/operation/token/exception.py
+# src/err/bootstrapper/operation/token/exception.py
 
 """
 Module: err.bootstrapper.operation.token.exception
 Author: Banji Lawal
-Created: 2026-04-03
+Created: 2026-04-04
 version: 1.0.1
 """
 
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import BootstrapperException
+from err import OperationBootstrapperException
 from result import MethodResultType
 
 __all__ = [
-    # ======================# TOKEN_OPERATION_BOOTSTRAPPER_FAILURE #======================#
+    # ======================# TOKEN_OPERATION_FAILURE #======================#
     "TokenOperationBootstrapperException",
 ]
 
-# ======================# TOKEN_OPERATION_BOOTSTRAPPER_FAILURE #======================#
-class TokenOperationBootstrapperException(BootstrapperException):
+# ======================# TOKEN_OPERATION_FAILURE #======================#
+class TokenOperationBootstrapperException(OperationBootstrapperException):
     """
     Role:
-        -   Error Tracing
+        -   Failure Tracing
 
     Responsibilities:
-        1.  Indicate that an error prevented a TokenOperationBootstrapper from
-            completing its task.
-        
+        1.  Indicate that an error occurred when a TokenOperation was running.
+
     Attributes:
-        msg: Optional[str]
+        msg: str
+        err_code: str
         var: Optional[str]
         val: Optional[Any]
-        ex: Optional[Exception]
         cls_name: Optional[str]
         cls_mthd: Optional[str]
-        err_code: Optional[str]
+        ex: Optional[Exception]
         mthd_rslt_type: Optional[MethodResultType]
             
     Provides:
 
     Super Class:
-        BootstrapperException
+        OperationBootstrapperException
     """
-    MSG = "TokenOperationBootstrapper encountered an error."
-    ERR_CODE = "TOKEN_OPERATION_BOOTSTRAPPER_FAILURE"
-    MTHD_RSLT_TYPE = MethodResultType.ANALYSIS_RESULT
+    MSG = "TokenOperation failed."
+    ERR_CODE = "TOKEN_OPERATION_FAILURE"
+
     
     def __init__(
             self,
-            msg: Optional[str] | None = None,
+            msg: str = MSG,
+            err_code: str = ERR_CODE,
             var: Optional[str] | None = None,
             val: Optional[Any] | None = None,
-            cls_mthd: Optional[str] | None = None,
             cls_name: Optional[str] | None = None,
+            cls_mthd: Optional[str] | None = None,
             ex: Optional[Exception] | None = None,
-            err_code: Optional[str] | None = None,
             mthd_rslt_type: Optional[MethodResultType] | None = None,
     ):
         """
-        args:
-            Msg: Optional[str]
-            Var: Optional[str]
-            val: Optional[any]
-            ex: Optional[Exception]
-            cls_name: Optional[Str]
+            Args:
+            msg: str
+            err_code: str
+            var: Optional[str]
+            val: Optional[Any]
+            cls_name: Optional[str]
             cls_mthd: Optional[str]
-            err_code: Optional[str]
+            ex: Optional[Exception]
             mthd_rslt_type: Optional[MethodResultType]
         """
         msg = msg or self.MSG
         err_code = err_code or self.ERR_CODE
-        mthd_rslt_type = mthd_rslt_type or self.MTHD_RSLT_TYPE
         super().__init__(
             ex=ex,
             msg=msg,

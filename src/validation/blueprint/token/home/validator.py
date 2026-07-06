@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import cast
 
 from blueprint import TokenBlueprint
-from detection import HomeSquareDetector
+from detection import TokenHomeDetector
 from err import HomeSquareProcessorException
 from model import Board, HomeSquare, Square
 from result import ValidationResult
@@ -122,7 +122,7 @@ class BlueprintHomeSquareProcessor:
             cls,
             board: Board,
             square_name: str,
-            home_square_detector: HomeSquareDetector,
+            home_square_detector: TokenHomeDetector,
     ) -> ValidationResult[HomeSquare]:
         """
         Detect the HomeSquare from the Board when its not in the TokenBlueprint.

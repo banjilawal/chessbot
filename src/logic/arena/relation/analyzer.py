@@ -80,7 +80,7 @@ class ArenaTeamRelationAnalysis(RelationAnalysis[Arena, Team]):
         arena = cast(Arena, candidate_primary)
         
         # Process the possible team_validation outcomes.
-        team_validation = team_service.validate.build(candidate_satellite)
+        team_validation = team_service.execute.build(candidate_satellite)
         if team_validation.is_failure:
             # Send the exception chain on failure.
             return RelationReport.failure(

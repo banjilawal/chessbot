@@ -74,7 +74,7 @@ class BoardBinderValidator(Validator[BoardBinder]):
             toolkit = BoardTeamBinderToolkit()
             
         # Handle the case that, the validator is not primed.
-        validator_priming_result = toolkit.priming_validator.validate(
+        validator_priming_result = toolkit.priming_validator.execute(
             candidate=candidate,
             target_model=BoardBinder,
             null_exception=BoardTeamBinderNullException(),
@@ -91,7 +91,7 @@ class BoardBinderValidator(Validator[BoardBinder]):
                 )
             )
         binder = validator_priming_result.payload
-        board_validation_result =toolkit.board_service.validate.build(binder.primary)
+        board_validation_result =toolkit.board_service.execute.build(binder.primary)
         
         if board_validation_result.is_failure:
             # Send the exception chain on failure.

@@ -13,7 +13,7 @@ from dataclasses import dataclass
 
 from analyzer import FriendshipAnalyzer, TokenReadinessAnalyzer
 from builder import TokenBuilder
-from detection import HomeSquareDetector, TokenCollisionDetector
+from detection import TokenHomeDetector, TokenCollisionDetector
 from operation import TokenHomePlacer, TokenPositionController
 from operation.promotion import PawnPromoter
 from validation import TokenValidator
@@ -50,4 +50,4 @@ class TokenController:
     collision_detector: TokenCollisionDetector
     position_controller: TokenPositionController
     readiness_analyzer: TokenReadinessAnalyzer
-    home_square_detector: HomeSquareDetector
+    home_square_detector: TokenHomeDetector

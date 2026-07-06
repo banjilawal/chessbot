@@ -1,0 +1,149 @@
+# src/operation/token/place/operation.py
+
+"""
+Module: operation.token.place.operation
+Author: Banji Lawal
+Created: 2026-04-03
+version: 1.0.1
+"""
+
+from __future__ import annotations
+
+
+from copy import deepcopy
+from typing import cast
+
+from analyzer import HomeSquareValidator
+from controller import WorkerRegistryController
+from err import TokenPlaceException
+from model import PlaceState, HomeSquare, Token, TokenHomeClaimState
+from operation import Operation
+from report import HomeSquareClaimReport
+from result import MethodResultType, UpdateResult
+from util import LoggingLevelRouter
+
+
+class TokenHomePlacer(Operation[Token]):
+    """
+    Role:
+        - Transaction Worker
+        - Consistency, Integrity Maintenance
+        - Process Runner
+        
+    Responsibilities:
+        1.  Puts token onto its opening square on the board.
+        2.  Preserve original and updated data for rollbacks.
+        3.  Ensure the token's integrity and consistency are maintained during the transaction.
+    
+    Attributes:
+    
+    Provides:
+        -   execute(
+                    token: Token,
+                    home_square_claim_analyzer: HomeSquareClaimAnalyzer,
+            ) -> UpdateResult[Token]
+            
+    Super:
+        Operation
+    """
+
+    @classmethod
+    @LoggingLevelRouter.monitor
+    def execute(
+            cls,
+            token: Token,
+            home_square_validator: HomeSquareValidator | None = None,
+    ) -> UpdateResult[Token]:
+        """
+        Executes the place transaction.
+        
+        Action:
+            1.  Send the unmodified token along with an exception chain in the UpdateResult if either
+                    -   HomeSquare claim analysis fails.
+                    -   Square visitation fails.
+            2.  Otherwise:
+                    -   Deepcopy of token to pre_update_token.
+                    -   Ensure the token's state is deployed.
+                    -   Ensure the opening square is marked as claimed.
+            3.  Send the success result containing, the finished work product.
+        Args:
+            token: Token
+            home_square_validator: HomeSquareClaimAnalyzer
+        Returns:
+            UpdateResult[Token]
+        Raises:
+            TokenPlaceException
+        """
+        method = f"{cls.__class__.__name__}.deploy_on_board"
+        
+        # --- Supply any missing dependencies. ---#
+        if home_square_validator is None:
+            home_square_validator = HomeSquareValidator()
+         
+        # Handle the case that, a claim report is not generated.
+        analysis_result = home_square_validator.analyze(token=token)
+        if analysis_result.is_failure:
+            # Send the exception chain on failure.
+            return UpdateResult.update_failure(
+                original=token,
+                exception=TokenPlaceException(
+                    cls_mthd=method,
+                    cls_name=cls.__class__.__name__,
+                    msg=TokenPlaceException.MSG,
+                    err_code=TokenPlaceException.ERR_CODE,
+                    mthd_rslt_type=MethodResultType.UPDATE_RESULT,
+                    ex=analysis_result.exception,
+                )
+            )
+        claim = cast(HomeSquareClaimReport, analysis_result.payload)
+        if claim.is_denied:
+            return UpdateResult.update_failure(
+                original=token,
+                exception=TokenPlaceException(
+                    cls_mthd=method,
+                    cls_name=cls.__class__.__name__,
+                    msg=TokenPlaceException.MSG,
+                    err_code=TokenPlaceException.ERR_CODE,
+                    mthd_rslt_type=MethodResultType.UPDATE_RESULT,
+                    ex=claim.exception,
+                )
+            )
+        pre_update_token = deepcopy(token)
+        
+        # Make a visitation request to square_validator.
+        visitation_result = token.team.board.squares.service.begin_square_visit(
+            visitor=claim.claimant,
+            square=claim.home_square,
+        )
+        # Handle the case that, the visitation transaction fails.
+        if visitation_result.is_failure:
+            # Send the exception chain on failure.
+            return UpdateResult.update_failure(
+                original=pre_update_token,
+                exception=TokenPlaceException(
+                    cls_mthd=method,
+                    cls_name=cls.__class__.__name__,
+                    msg=TokenPlaceException.MSG,
+                    err_code=TokenPlaceException.ERR_CODE,
+                    mthd_rslt_type=MethodResultType.UPDATE_RESULT,
+                    ex=visitation_result.exception,
+                )
+            )
+        # --- Token has occupied its home square. Perform consistency maintenance tasks. ---#
+        home_square = cast(HomeSquare, visitation_result.payload)
+        claimant = home_square.occupant
+        
+        # Confirm claimant's place state is updated.
+        if claimant.place_state == PlaceState.NOT_DEPLOYED:
+            claimant.mark_deployed()
+        # Confirm home_square is marked as claimed.
+        if home_square.token_claim_state != TokenHomeClaimState.UNCLAIMED:
+            home_square.record_claim()
+            
+        # --- Forward the work product to the client. ---#
+        return UpdateResult.update_success(original=pre_update_token, updated=claimant,)
+
+
+# Register the operation.
+WorkerRegistryController.register_worker(TokenHomePlacer)
+        
