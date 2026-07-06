@@ -10,6 +10,7 @@ version: 1.0.1
 from __future__ import annotations
 
 from dataclasses import dataclass
+from typing import Generic, Optional, TypeVar
 
 from bootstrap import PrimingContextValidator
 from context import Context
@@ -17,8 +18,10 @@ from err import ContextNullException
 from toolkit import Toolkit
 
 
+T = TypeVar("T")
+
 @dataclass
-class ContextToolkit(Toolkit[Context]):
+class ContextToolkit(Toolkit, Generic[T]):
     """
     Role:
         -   Container
@@ -34,15 +37,16 @@ class ContextToolkit(Toolkit[Context]):
         DEPENDENCIES: List[Operation]
         SERVICE_DEPENDENCIES: List[Microservice]
         
-        context_model_type: Context
-        null_context_exception: ContextNullException
-        context_priming_validator: PrimingValidator
+        context_model: Context
+        null_exception: ContextNullException
+        priming_validator: PrimingContextValidator
         
     Provides:
     
     Super Class:
         Toolkit
     """
-    context_model_type: Context = Context
-    null_context_exception: ContextNullException = ContextNullException()
+    context_model: Context[T]
+    context_null_exception: ContextNullException
+    model_toolkit: Optional[Toolkit[T]] | None = None
     context_priming_validator: PrimingContextValidator = PrimingContextValidator()

@@ -13,9 +13,9 @@ from dataclasses import dataclass
 from typing import Type
 
 from context import TokenHomeContext
-from err import BoardValidatorException, TokenHomeContextNullException
+from err import BoardValidatorException, ContextNullException, TokenHomeContextNullException
 from microservice import IdentityService
-from toolkit import Toolkit
+from toolkit import TokenToolkit, Toolkit
 from validation import BoardValidator, TokenValidator
 
 
@@ -44,8 +44,11 @@ class TokenHomeContextToolkit(Toolkit[TokenHomeContext]):
     Super Class:
         DetectorBootstrapperToolkit
     """
+
+    model_toolkit: TokenToolkit = TokenToolkit()
     board_validator: BoardValidator = BoardValidatorException()
     token_validator: TokenValidator = TokenValidator()
-    identity_service: IdentityService = IdentityService()
-    null_exception: TokenHomeContextNullException = TokenHomeContextNullException()
-    model: TokenHomeContext = Type[TokenHomeContext]
+    context_model: TokenHomeContext = Type[TokenHomeContext]
+    context_null_exception: ContextNullException = TokenHomeContextNullException()
+    
+    

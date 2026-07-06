@@ -9,6 +9,8 @@ version: 1.0.1
 
 from __future__ import annotations
 
+from typing import Type
+
 from err import TokenContextNullException
 from model import Token, TokenContext
 from toolkit import ContextToolkit, TokenToolkit
@@ -40,7 +42,7 @@ class TokenContextToolkit(ContextToolkit[Token]):
     Super Class:
         ContextToolkit
     """
-    context_model_type = TokenContext
-    token_toolkit: TokenToolkit = TokenToolkit()
-    null_context_exception =  TokenContextNullException()
+    context_model: TokenContext = Type[TokenContext]
+    model_toolkit: TokenToolkit = TokenToolkit()
+    context_null_exception =  TokenContextNullException()
     number_validator: NumberValidator = NumberValidator()
