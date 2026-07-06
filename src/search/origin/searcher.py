@@ -9,7 +9,7 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from bootstrap import OriginSearcherBootstrapper
+from bootstrap import TokenBuilderBootstrapper
 from err import TokenOriginSearcherException
 from model import Token
 from result import MethodResultType, SearchResult
@@ -44,7 +44,7 @@ class TokenOriginSearcher:
     def execute(
             cls,
             target: Token,
-            bootstrapper: OriginSearcherBootstrapper | None = None,
+            bootstrapper: TokenBuilderBootstrapper | None = None,
     ) -> SearchResult:
         """
         Find the source square a Token can move from.
@@ -69,7 +69,7 @@ class TokenOriginSearcher:
     
         # --- Supply any missing dependencies. ---#
         if bootstrapper is None:
-            bootstrapper = OriginSearcherBootstrapper()
+            bootstrapper = TokenBuilderBootstrapper()
             
         search_result = bootstrapper.execute(target=target)
         if search_result.is_failure:

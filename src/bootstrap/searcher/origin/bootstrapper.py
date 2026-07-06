@@ -22,7 +22,7 @@ from search import TokenOriginSearcher
 from util import LoggingLevelRouter
 
 
-class OriginSearcherBootstrapper(SearcherBootstrapper[TokenOriginSearcher]):
+class TokenBuilderBootstrapper(SearcherBootstrapper[TokenOriginSearcher]):
     """
     Role:
         - Search Worker

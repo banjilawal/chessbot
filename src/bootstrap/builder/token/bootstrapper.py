@@ -1,27 +1,28 @@
-# src/search/origin/searcher.py
+# src/bootstrap/builder/token/bootstrapper.py
 
 """
-Module: search.origin.searcher
+Module: bootstrap.builder.token.bootstrapper
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
 """
 
 from __future__ import annotations
-from typing import cast
 
 from analyzer import TokenReadinessAnalyzer
+from bootstrap import BuilderBootstrapper
 from err import (
-    DisabledTokenException, TokenOriginSearcherException, TokenSearchHitConflictException,
+    DisabledTokenException, TokenBuilderBootstrapperException, TokenSearchHitConflictException,
     TokenSearchResultEmptyException
 )
 from model import SquareContext, Token
 from report import TokenReadinessReport
 from result import MethodResultType, SearchResult
+from search import TokenTokenBuilder
 from util import LoggingLevelRouter
 
 
-class TokenOriginSearcher:
+class TokenBuilderBootstrapper(BuilderBootstrapper[TokenTokenBuilder]):
     """
     Role:
         - Search Worker
@@ -29,14 +30,13 @@ class TokenOriginSearcher:
 
     Responsibilities:
         1.  Find the square a Token occupies on a Board.
-        2.  Provides a token's origin for maneuver operations.
+        2.  Provides a token's token for maneuver operations.
         3.  Provide debugging information for error cases which can occur during the search.
 
     Attributes:
 
     Provides:
         -   execute(
-                    cls,
                     token: Token,
                     readiness_analyzer: TokenReadinessAnalyzer,
             ) -> SearchResult
@@ -48,12 +48,12 @@ class TokenOriginSearcher:
     @LoggingLevelRouter.monitor
     def execute(
             cls,
-            token: Token,
+            target: Token,
             readiness_analyzer: TokenReadinessAnalyzer | None = None,
     ) -> SearchResult:
         """
         Find the source square a Token can move from.
-        
+
         Action:
             1.  Return a failure result containing an exception chain if either:
                     -   The token's readiness analysis is not completed.
@@ -63,34 +63,34 @@ class TokenOriginSearcher:
                     -   The search result indicates the token occupies more than one square.
             2.  Otherwise, send the success result.
         Args:
-            token: Token,
+            target: Token,
             readiness_analyzer: TokenReadinessAnalyzer
         Returns:
             SearchResult
         Raises:
             DisabledTokenException
-            TokenOriginSearcherException
+            TokenBuilderBootstrapperException
             TokenSearchHitConflictException
             TokenSearchResultEmptyException
         """
-        method =  f"{cls.__name__}.execute"
+        method = f"{cls.__name__}.execute"
         
         # --- Supply any missing dependencies. ---#
         if readiness_analyzer is None:
             readiness_analyzer = TokenReadinessAnalyzer()
         
         # --- Before doing anything else make sure the token can be used. ---#
-        readiness_analysis_result = readiness_analyzer.analyze(token)
+        readiness_analysis_result = readiness_analyzer.analyze(target)
         
         # Handle the case that, the freedom
         if readiness_analysis_result.is_failure:
             # Return the exception chain on failure
             return SearchResult.failure(
-                exception=TokenOriginSearcherException(
+                exception=TokenBuilderBootstrapperException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    msg=TokenOriginSearcherException.MSG,
-                    err_code=TokenOriginSearcherException.ERR_CODE,
+                    msg=TokenBuilderBootstrapperException.MSG,
+                    err_code=TokenBuilderBootstrapperException.ERR_CODE,
                     mthd_rslt_type=MethodResultType.SEARCH_RESULT,
                     ex=readiness_analysis_result.exception,
                 )
@@ -100,11 +100,11 @@ class TokenOriginSearcher:
         if report.token_is_not_ready:
             # Return the exception chain on failure
             return SearchResult.failure(
-                exception=TokenOriginSearcherException(
+                exception=TokenBuilderBootstrapperException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    msg=TokenOriginSearcherException.MSG,
-                    err_code=TokenOriginSearcherException.ERR_CODE,
+                    msg=TokenBuilderBootstrapperException.MSG,
+                    err_code=TokenBuilderBootstrapperException.ERR_CODE,
                     mthd_rslt_type=MethodResultType.SEARCH_RESULT,
                     ex=DisabledTokenException(
                         cls_mthd=method,
@@ -115,32 +115,32 @@ class TokenOriginSearcher:
                 )
             )
         # --- After confirming the token is available find the square it occupies. ---#
-        origin_search_result = token.team.board.squares.search(
-            context=SquareContext(occupant=token)
+        token_search_result = target.team.board.squares.search(
+            context=SquareContext(occupant=target)
         )
         
         # Handle the case that, the search is not completed.
-        if origin_search_result.is_failure:
+        if token_search_result.is_failure:
             # Return the exception chain on failure
             return SearchResult.failure(
-                exception=TokenOriginSearcherException(
+                exception=TokenBuilderBootstrapperException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    msg=TokenOriginSearcherException.MSG,
-                    err_code=TokenOriginSearcherException.ERR_CODE,
+                    msg=TokenBuilderBootstrapperException.MSG,
+                    err_code=TokenBuilderBootstrapperException.ERR_CODE,
                     mthd_rslt_type=MethodResultType.SEARCH_RESULT,
-                    ex=origin_search_result.exception,
+                    ex=token_search_result.exception,
                 )
             )
         # Handle the case that, the token is not on the board.
-        if origin_search_result.is_empty:
+        if token_search_result.is_empty:
             # Return the exception chain on failure
             return SearchResult.failure(
-                exception=TokenOriginSearcherException(
+                exception=TokenBuilderBootstrapperException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    msg=TokenOriginSearcherException.MSG,
-                    err_code=TokenOriginSearcherException.ERR_CODE,
+                    msg=TokenBuilderBootstrapperException.MSG,
+                    err_code=TokenBuilderBootstrapperException.ERR_CODE,
                     mthd_rslt_type=MethodResultType.SEARCH_RESULT,
                     ex=TokenSearchResultEmptyException(
                         cls_mthd=method,
@@ -151,14 +151,14 @@ class TokenOriginSearcher:
                 )
             )
         # Handle the case that, the search contains more than one hit.
-        if len(origin_search_result.payload) > 1:
+        if len(token_search_result.payload) > 1:
             # Return the exception chain on failure
             return SearchResult.failure(
-                exception=TokenOriginSearcherException(
+                exception=TokenBuilderBootstrapperException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    msg=TokenOriginSearcherException.MSG,
-                    err_code=TokenOriginSearcherException.ERR_CODE,
+                    msg=TokenBuilderBootstrapperException.MSG,
+                    err_code=TokenBuilderBootstrapperException.ERR_CODE,
                     mthd_rslt_type=MethodResultType.SEARCH_RESULT,
                     ex=TokenSearchHitConflictException(
                         cls_mthd=method,
@@ -169,6 +169,4 @@ class TokenOriginSearcher:
                 )
             )
         # --- Last possible case, Token's square has been found. Forward the work product. ---#
-        return origin_search_result
-
-    
+        return token_search_result
