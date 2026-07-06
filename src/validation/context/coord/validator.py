@@ -72,7 +72,7 @@ class CoordContextValidator(ContextValidator[Coord]):
         if toolkit is None:
             toolkit = CoordContextToolkit()
         
-        # handle the case that, priming the validator fails.
+        # Handle the case that, the validator is not primed.
         priming_result = toolkit.context_priming_validator.build(
             candidate=candidate,
             context_model=toolkit.context_model_type,

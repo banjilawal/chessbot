@@ -74,7 +74,7 @@ class SquareValidator(Validator[Square]):
         # Handle the case that, the validator is not primed.
         validator_priming_result = toolkit.priming_validator.execute(
             candidate=candidate,
-            target_model=Square,
+            context_model=Square,
             null_exception=SquareNullException(),
         )
         if validator_priming_result.is_failure:

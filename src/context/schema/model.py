@@ -1,9 +1,9 @@
 # src/logic/schema/key/key.py
 
-# src/model/state/context/schema/init.py
+# src/context/schema/init.py
 
 """
-Module: model.state.context.schema.init
+Module: context.schema.init
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

@@ -11,6 +11,7 @@ version: 1.0.1
 
 # Packages
 from .analyzer import *
+from .bootstrapper import *
 from .context import *
 from .graph import *
 from .math import *

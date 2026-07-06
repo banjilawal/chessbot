@@ -13,6 +13,7 @@ version: 1.0.1
 from .arena import *
 from .board import *
 from .coord import *
+from .home import *
 from .square import *
 from .team import *
 from .token import *

@@ -1,13 +1,13 @@
-# src/model/state/context/formation/__init__.py
+# src/context/formation/__init__.py
 
 """
-Module: model.state.context.formation.__init__
+Module: context.formation.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
 """
 
-# =========== MODEL.STATE.CONTEXT.FORMATION PACKAGE ===========#
+# =========== CONTEXT.FORMATION PACKAGE ===========#
 
 # Packages
 

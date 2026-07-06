@@ -1,7 +1,7 @@
-# src/model/state/context/rank/model/state.py
+# src/context/rank/model/state.py
 
 """
-Module: model.state.context.rank.model
+Module: context.rank.model
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

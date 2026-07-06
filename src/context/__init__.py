@@ -1,13 +1,13 @@
-# src/model/state/context/__init__.py
+# src/context/__init__.py
 
 """
-Module: model.state.context.__init__
+Module: context.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
 """
 
-# =========== MODEL.STATE.CONTEXT PACKAGE ===========#
+# =========== CONTEXT PACKAGE ===========#
 
 # Packages
 from .arena import *
@@ -16,6 +16,7 @@ from .coord import *
 from .edge import *
 from .formation import *
 from .game import *
+from .home import *
 from .hostage import *
 from .node import *
 from .persona import *
@@ -28,4 +29,4 @@ from .token import *
 
 
 # Modules
-from .model import Context
+from .context import Context

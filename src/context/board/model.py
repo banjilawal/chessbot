@@ -1,7 +1,7 @@
-# src/model/state/context/board/model/state.py
+# src/context/board/model/state.py
 
 """
-Module: model.state.context.board.model
+Module: context.board.model
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

@@ -11,8 +11,9 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 
+from bootstrap import PrimingContextValidator
+from context import Context
 from err import ContextNullException
-from model import Context
 from toolkit import Toolkit
 
 
@@ -44,4 +45,4 @@ class ContextToolkit(Toolkit[Context]):
     """
     context_model_type: Context = Context
     null_context_exception: ContextNullException = ContextNullException()
-    context_priming_validator: ContextPrimingValidator = ContextPrimingValidator()
+    context_priming_validator: PrimingContextValidator = PrimingContextValidator()

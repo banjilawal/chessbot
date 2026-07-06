@@ -76,7 +76,7 @@ class SquareBlueprintValidator(BlueprintValidator[Square]):
         if toolkit is None:
             toolkit = SquareBlueprintToolkit()
         
-        # handle the case that, priming the validator fails.
+        # Handle the case that, the validator is not primed.
         priming_result = toolkit.blueprint_priming_validator.build(
             candidate=candidate,
             blueprint_model=toolkit.blueprint_model_type,

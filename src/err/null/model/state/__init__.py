@@ -16,7 +16,6 @@ from .binder import *
 from .blueprint import *
 from .board import *
 from .color import *
-from .context import *
 from .coord import *
 from .database import *
 from .dependecy import *

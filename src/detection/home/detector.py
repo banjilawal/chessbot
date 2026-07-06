@@ -12,9 +12,10 @@ from __future__ import annotations
 from typing import Optional, cast
 
 from bootstrap import HomeDetectorBootstrapper
+from context import TokenHomeContext
 from err import (
     ExcessContextFlagsException, HomeSquareDetectorException, HomeSquareSearchResultEmptyException,
-    ZeroContextFlagsException
+    TokenHomeSquareContextException, ZeroContextFlagsException
 )
 from microservice import IdentityService
 from model import Board, HomeSquare, SquareContext, Token
@@ -47,9 +48,7 @@ class TokenHomeDetector:
     @LoggingLevelRouter.monitor
     def execute(
             cls,
-            token: Optional[Token] | None = None,
-            board: Optional[Board] | None = None,
-            square_name: Optional[str] | None = None,
+            context: TokenHomeContext,
             bootstrapper: HomeDetectorBootstrapper | None = None,
     ) -> Result[HomeSquare]:
         """

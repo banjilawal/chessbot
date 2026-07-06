@@ -16,17 +16,17 @@ from result import MethodResultType
 
 __all__ = [
     # ======================# HOME_CONTEXT_ERROR #======================#
-    "HomeSquareContextException",
+    "TokenHomeSquareContextException",
 ]
 
 # ======================# HOME_CONTEXT_ERROR #======================#
-class HomeSquareContextException(ContextException):
+class TokenHomeSquareContextException(ContextException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a HomeSquareContext encountered an error.
+        1.  Indicate that a TokenHomeSquareContext encountered an error.
 
     Attributes:
             msg: Optional[str]
@@ -43,7 +43,7 @@ class HomeSquareContextException(ContextException):
     Super Class:
         ContextException
     """
-    MSG = "HomeSquareContext error."
+    MSG = "TokenHomeSquareContext error."
     ERR_CODE = "HOME_CONTEXT_ERROR"
     
     def __init__(

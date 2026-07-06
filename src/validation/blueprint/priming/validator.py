@@ -84,7 +84,7 @@ class BlueprintPrimingValidator(Validator[Blueprint]):
         if priming_validator is None:
             priming_validator = PrimingValidator()
         
-        # Handle the case that, either the null or type check fails.
+        # Handle the case that, the validator is not primed.
         validator_priming_result = priming_validator.validate(
             candidate=candidate,
             target_model=blueprint_model,

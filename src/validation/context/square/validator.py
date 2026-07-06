@@ -76,7 +76,7 @@ class SquareContextValidator(ContextValidator[Square]):
         if toolkit is None:
             toolkit = SquareContextToolkit()
         
-        # handle the case that, priming the validator fails.
+        # Handle the case that, the validator is not primed.
         priming_result = toolkit.context_priming_validator.build(
             candidate=candidate,
             context_model=toolkit.context_model_type,

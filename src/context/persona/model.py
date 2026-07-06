@@ -1,7 +1,7 @@
-# src/model/state/context/persona/model/state.py
+# src/context/persona/model/state.py
 
 """
-Module: model.state.context.persona.model
+Module: context.persona.model
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

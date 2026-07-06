@@ -12,6 +12,7 @@ from __future__ import annotations
 from typing import Optional, cast
 
 from bootstrap import DetectorBootstrapper
+from context import TokenHomeContext
 from err import (
     ExcessContextFlagsException, HomeDetectorBootstrapperException, HomeSquareSearchResultEmptyException,
     ZeroContextFlagsException
@@ -47,12 +48,8 @@ class HomeDetectorBootstrapper(DetectorBootstrapper):
     @LoggingLevelRouter.monitor
     def execute(
             cls,
-            token: Optional[Token] | None = None,
-            board: Optional[Board] | None = None,
-            square_name: Optional[str] | None = None,
-            board_validator: BoardValidator | None = None,
-            token_validator: TokenValidator | None = None,
-            identity_service: IdentityService | None = None,
+            context: TokenHomeContext,
+            toolkit: Toke,
     ) -> Result[HomeSquare]:
         """
         Find the token's home square.

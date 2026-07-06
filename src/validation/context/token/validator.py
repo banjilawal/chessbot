@@ -77,7 +77,7 @@ class TokenContextValidator(ContextValidator):
         if toolkit is None:
             toolkit = TokenToolkit()
         
-        # handle the case that, priming the validator fails.
+        # Handle the case that, the validator is not primed.
         priming_result = toolkit.priming_validator.execute(
             candidate=candidate,
             context_model=candidate,

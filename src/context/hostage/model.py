@@ -1,7 +1,7 @@
-# src/model/state/context/game/model/state.py
+# src/context/game/model/state.py
 
 """
-Module: model.state.context.game.model
+Module: context.game.model
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

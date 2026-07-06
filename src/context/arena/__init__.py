@@ -1,13 +1,13 @@
-# src/model/state/context/arena/__init__.py
+# src/context/arena/__init__.py
 
 """
-Module: model.state.context.arena.__init__
+Module: context.arena.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
 """
 
-# =========== MODEL.STATE.CONTEXT.ARENA PACKAGE ===========#
+# =========== CONTEXT.ARENA PACKAGE ===========#
 
 # Packages
 

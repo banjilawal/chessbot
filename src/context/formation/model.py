@@ -1,7 +1,7 @@
-# src/model/state/context/formation/model/state.py
+# src/context/formation/model/state.py
 
 """
-Module: model.state.context.formation.model
+Module: context.formation.model
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

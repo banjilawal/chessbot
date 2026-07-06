@@ -1,15 +1,15 @@
-# src/model/state/context/token/__init__.py
+# src/context/token/__init__.py
 
 """
-Module: model.state.context.token.__init__
+Module: context.token.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
 """
 
-# =========== MODEL.STATE.CONTEXT.TOKEN PACKAGE ===========#
+# =========== CONTEXT.TOKEN PACKAGE ===========#
 
 # Packages
 
 # Modules
-from .model import TokenContext
+from .context import TokenContext
