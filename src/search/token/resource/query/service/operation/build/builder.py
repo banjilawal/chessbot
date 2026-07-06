@@ -1,7 +1,7 @@
-# src/logic/token/database/search/context/service/operation/build/builder.py
+# src/logic/token/database/searcher/context/service/operation/build/builder.py
 
 """
-Module: logic.token.database.search.context.service.operation.build.builder
+Module: logic.token.database.searcher.context.service.operation.build.builder
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0

@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import cast
 
-from bootstrap import HomeDetectorBootstrapper
+from bootstrapper import HomeDetectorBootstrapper
 from context import TokenHomeContext
 from err import HomeSquareDetectorException
 from model import HomeSquare

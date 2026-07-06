@@ -16,7 +16,7 @@ from err import (
 )
 from model import Query
 from stack import StackService
-from validation import ContextValidator, PrimingValidator
+from validator import ContextValidator, PrimingValidator
 
 T = TypeVar("T")
 

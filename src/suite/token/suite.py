@@ -17,7 +17,7 @@ from operation import TokenHomePlacer, TokenPositionController
 from operation.promotion import PawnPromoter
 from suite import ModelOperationSuite
 from toolkit import TokenToolkit
-from validation import TokenValidator
+from validator import TokenValidator
 
 
 class TokenOperationSuite(ModelOperationSuite[Token]):

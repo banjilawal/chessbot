@@ -15,7 +15,7 @@ from microservice import IdentityService, Microservice
 from model import Rank
 from toolkit import ModelToolkit
 from operation import Operation, PersonaValidator
-from validation import PrimingValidator
+from validator import PrimingValidator
 
 
 class RankToolkit(ModelToolkit[Rank]):

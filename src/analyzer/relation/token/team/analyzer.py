@@ -17,7 +17,7 @@ from model import Team, Token, TokenContext
 from report import RelationReport
 from result import AnalysisResult, MethodResultType
 from util import LoggingLevelRouter
-from validation import TeamValidator, TokenValidator
+from validator import TeamValidator, TokenValidator
 
 
 class TeamTokenRelationAnalyzer(RelationAnalyzer[Team, Token]):

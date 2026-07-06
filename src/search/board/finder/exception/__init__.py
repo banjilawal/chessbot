@@ -6,7 +6,7 @@ Created: 2025-10-06
 version: 1.0.0
 """
 
-# =========== SEARCH.BOARD.CONTEXT.FINDER.EXCEPTION PACKAGE ===========#
+# =========== SEARCHER.BOARD.CONTEXT.FINDER.EXCEPTION PACKAGE ===========#
 
 # Packages
 from .debug import *

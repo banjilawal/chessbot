@@ -1,7 +1,7 @@
-# src/logic/token/database/search/service/service.py
+# src/logic/token/database/searcher/service/service.py
 
 """
-Module: logic.token.database.search.service.service
+Module: logic.token.database.searcher.service.service
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0

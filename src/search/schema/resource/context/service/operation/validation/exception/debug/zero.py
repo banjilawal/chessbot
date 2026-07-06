@@ -1,7 +1,7 @@
-# src/logic/schema/database/search/context/service/operation/validation/exception/debug/zero.py
+# src/logic/schema/database/searcher/context/service/operation/validation/exception/debug/zero.py
 
 """
-Module: logic.schema.database.search.context.service.operation.validation.exception.debug.zero
+Module: logic.schema.database.searcher.context.service.operation.validation.exception.debug.zero
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0

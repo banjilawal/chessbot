@@ -18,7 +18,7 @@ from model import PawnToken
 from report import PromotionApprovalManagerReport, TokenReadinessReport
 from result import AnalysisResult, MethodResultType
 from util import LoggingLevelRouter
-from validation import TokenValidator
+from validator import TokenValidator
 
 
 class PawnPromotionApprovalManager(Analyzer):

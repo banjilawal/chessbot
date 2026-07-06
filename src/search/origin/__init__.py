@@ -1,13 +1,13 @@
-# src/search/origin/__init__.py
+# src/searcher/origin/__init__.py
 
 """
-Module: search.origin.__init__
+Module: searcher.origin.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
 """
 
-# =========== SEARCH.ORIGIN PACKAGE ===========#
+# =========== SEARCHER.ORIGIN PACKAGE ===========#
 # Packages
 
 # Modules

@@ -14,7 +14,7 @@ from dataclasses import dataclass
 from err import PathNullException
 from analyzer import Path
 from toolkit import AnalyzerBootstrapperToolkit
-from validation import SquareValidator
+from validator import SquareValidator
 
 @dataclass
 class PathToolkit(AnalyzerToolkit):

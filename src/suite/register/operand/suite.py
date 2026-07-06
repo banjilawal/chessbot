@@ -12,7 +12,7 @@ from __future__ import annotations
 from model import VectorOperandRegister
 from suite import ModelOperationSuite
 from toolkit import VectorOperandRegisterToolkit
-from validation import VectorOperandRegisterValidator
+from validator import VectorOperandRegisterValidator
 
 
 class VectorOperandRegisterSuite(ModelOperationSuite[VectorOperandRegister]):

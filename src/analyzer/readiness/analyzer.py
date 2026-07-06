@@ -10,7 +10,7 @@ version: 1.0.1
 from __future__ import annotations
 
 from analyzer import Analyzer
-from bootstrap import ReadinessAnalyzerBootstrapper
+from bootstrapper import ReadinessAnalyzerBootstrapper
 from err import TokenReadinessAnalyzerException
 from model import Token
 from report import TokenReadinessReport

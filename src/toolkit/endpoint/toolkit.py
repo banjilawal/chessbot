@@ -15,7 +15,7 @@ from analyzer import SquareTokenRelationAnalyzer
 from microservice import Microservice
 from operation import Operation
 from toolkit import Toolkit
-from validation import SquareValidator, TokenValidator
+from validator import SquareValidator, TokenValidator
 
 
 class TokenEndpointRelationToolkit(Toolkit):

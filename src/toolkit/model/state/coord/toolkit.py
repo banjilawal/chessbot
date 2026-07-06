@@ -12,7 +12,7 @@ from dataclasses import dataclass
 
 from model import Coord
 from toolkit import ModelToolkit
-from validation import NumberValidator, PrimingValidator
+from validator import NumberValidator, PrimingValidator
 
 
 @dataclass

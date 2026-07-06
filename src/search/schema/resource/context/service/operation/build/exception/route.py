@@ -1,7 +1,7 @@
-# src/logic/schema/database/search/context/service/operation/build/exception/route.py
+# src/logic/schema/database/searcher/context/service/operation/build/exception/route.py
 
 """
-Module: logic.schema.database.search.context.service.operation.build.exception.route
+Module: logic.schema.database.searcher.context.service.operation.build.exception.route
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0

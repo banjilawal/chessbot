@@ -7,7 +7,7 @@ Created: 2025-10-01
 version: 1.0.0
 """
 
-# =========== SEARCH.ARENA.CONTEXT.EXCEPTION PACKAGE ===========#
+# =========== SEARCHER.ARENA.CONTEXT.EXCEPTION PACKAGE ===========#
 
 # Packages
 

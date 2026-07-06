@@ -11,11 +11,11 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 
-from bootstrap import HomeDetectorBootstrapper
+from bootstrapper import HomeDetectorBootstrapper
 from err import BoardValidatorException
 from microservice import IdentityService
 from toolkit import BootstrapperToolkit
-from validation import BoardValidator, TokenHomeContextValidator, TokenValidator
+from validator import BoardValidator, TokenHomeContextValidator, TokenValidator
 
 
 @dataclass

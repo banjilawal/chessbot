@@ -9,10 +9,10 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from bootstrap import CombatantReadinessAnalyzer, KingReadinessAnalyzer, ReadinessAnalyzerBootstrapper
+from bootstrapper import CombatantReadinessAnalyzer, KingReadinessAnalyzer, ReadinessAnalyzerBootstrapper
 from err import TokenValidatorException
 from toolkit import AnalyzerBootstrapperToolkit
-from validation import TokenValidator
+from validator import TokenValidator
 
 
 class ReadinessAnalyzerBootstrapperToolkit(

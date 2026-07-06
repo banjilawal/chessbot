@@ -12,7 +12,7 @@ from __future__ import annotations
 from err import SquareContextNullException
 from model import Square, SquareContext
 from toolkit import ContextToolkit, SquareToolkit
-from validation import NumberValidator
+from validator import NumberValidator
 
 
 class SquareContextToolkit(ContextToolkit[Square]):

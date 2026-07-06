@@ -7,7 +7,7 @@ Created: 2025-10-09
 version: 1.0.0
 """
 
-# =========== SEARCH.FORMATION.KEY PACKAGE ===========#
+# =========== SEARCHER.FORMATION.KEY PACKAGE ===========#
 
 # Packages
 from .builder import *

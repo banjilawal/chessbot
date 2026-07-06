@@ -14,7 +14,7 @@ from typing import Type
 from err import VectorOperandRegisterNullException
 from model import VectorOperand, VectorOperandRegister
 from toolkit import RegisterToolkit
-from validation import VectorOperandValidator
+from validator import VectorOperandValidator
 
 
 class VectorOperandRegisterToolkit(RegisterToolkit[VectorOperand]):

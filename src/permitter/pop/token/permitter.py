@@ -14,7 +14,7 @@ from report import PopApproval
 from result import AnalysisResult, MethodResultType
 from stack import TokenStackService
 from util import LoggingLevelRouter
-from validation import PrimingValidator
+from validator import PrimingValidator
 
 
 class TokenPopPermitter:

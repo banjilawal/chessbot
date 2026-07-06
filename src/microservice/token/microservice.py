@@ -15,7 +15,7 @@ from microservice import CoordService
 from model import Coord, Token
 from result import DeletionResult, InsertionResult
 from util import IdFactory, LoggingLevelRouter
-from validation import TokenValidator
+from validator import TokenValidator
 
 
 class TokenService(Microservice[Token]):

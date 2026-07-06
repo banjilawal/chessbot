@@ -1,7 +1,7 @@
-# src/search/registry/worker/domain/search.py
+# src/searcher/registry/worker/domain/searcher.py
 
 """
-Module: search.registry.worker.domain.search
+Module: searcher.registry.worker.domain.search
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

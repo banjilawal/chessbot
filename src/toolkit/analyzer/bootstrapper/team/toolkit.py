@@ -12,7 +12,7 @@ from __future__ import annotations
 from microservice import IdentityService
 from analyzer import Team
 from toolkit import AnalyzerBootstrapperToolkit
-from validation import BoardValidator, PlayerValidator, PrimingValidator
+from validator import BoardValidator, PlayerValidator, PrimingValidator
 
 
 class TeamToolkit(AnalyzerBootstrapperToolkit[Team]):

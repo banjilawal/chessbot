@@ -15,7 +15,7 @@ from blueprint import Blueprint
 from err import BlueprintNullException, ModelNullException, NullException
 from microservice import IdentityService
 from toolkit import Toolkit
-from validation import BlueprintIdValidator
+from validator import BlueprintIdValidator
 
 T = TypeVar("T", bound="Model")
 

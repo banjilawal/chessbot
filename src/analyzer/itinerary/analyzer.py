@@ -12,7 +12,7 @@ from typing import cast
 
 
 from util import LoggingLevelRouter
-from validation import ItineraryValidator
+from validator import ItineraryValidator
 from err import ItineraryAnalyzerException
 from result import AnalysisResult, MethodResultType
 from model import CombatantToken, Itinerary, KingToken

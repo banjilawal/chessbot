@@ -48,7 +48,7 @@ class GameFinder(DataFinder[Game]):
         # ACTION:
         1.  Verify the collider_candidates is not null and contains only Game objects,
         2.  Use context_validator to certify the provided map.
-        3.  Context attribute routes the search. Attribute value is the search target.
+        3.  Context attribute routes the searcher. Attribute value is the search target.
         4.  The outcome of the search is sent back to the caller in a SearchResult object.
 
         # PARAMETERS:

@@ -1,7 +1,7 @@
-# src/logic/schema/database/search/operation/controller.py
+# src/logic/schema/database/searcher/operation/controller.py
 
 """
-Module: logic.schema.database.search.operation.controller
+Module: logic.schema.database.searcher.operation.controller
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0

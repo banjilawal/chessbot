@@ -1,7 +1,7 @@
-# src/logic/token/database/search/operation/controller.py
+# src/logic/token/database/searcher/operation/controller.py
 
 """
-Module: logic.token.database.search.operation.controller
+Module: logic.token.database.searcher.operation.controller
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0

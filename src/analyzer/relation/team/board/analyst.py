@@ -16,7 +16,7 @@ from analyzer import RelationAnalyzer
 from util import LoggingLevelRouter
 from err import BoardTeamRelationAnalysisException
 from result import AnalysisResult, MethodResultType
-from validation import BoardValidator, TeamValidator
+from validator import BoardValidator, TeamValidator
 
 
 class BoardTeamRelationAnalyzer(RelationAnalyzer[Board, Team]):

@@ -21,7 +21,7 @@ from model import Token
 from result import ValidationResult
 from stack import TokenStackService
 from util import LoggingLevelRouter
-from validation import TokenValidator, PrimingValidator
+from validator import TokenValidator, PrimingValidator
 
 
 class TokenCollisionBootstrapper:

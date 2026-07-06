@@ -21,7 +21,7 @@ from permitter import TokenManeuverPermitter
 from report import PopApproval, TokenReadinessReport
 from result import AnalysisResult
 from util import LoggingLevelRouter
-from validation import TokenValidator
+from validator import TokenValidator
 
 
 class TokenUndoMovePermitter(TokenManeuverPermitter):

@@ -7,7 +7,7 @@ Created: 2025-10-09
 version: 1.0.0
 """
 
-# =========== SEARCH.SCHEMA.KEY.SERVICE PACKAGE ===========#
+# =========== SEARCHER.SCHEMA.KEY.SERVICE PACKAGE ===========#
 
 # Packages
 from .exception import *

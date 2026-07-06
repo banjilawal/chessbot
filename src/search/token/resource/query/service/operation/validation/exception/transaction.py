@@ -1,7 +1,7 @@
-# src/logic/token/database/search/context/service/operation/validation/exception/transaction.py
+# src/logic/token/database/searcher/context/service/operation/validation/exception/transaction.py
 
 """
-Module: logic.token.database.search.context.service.operation.validation.exception.transaction
+Module: logic.token.database.searcher.context.service.operation.validation.exception.transaction
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0

@@ -13,7 +13,7 @@ from builder import SquareBuilder
 from model import SquareRegister
 from suite import ModelOperationSuite
 from toolkit import SquareToolkit
-from validation import SquareValidator
+from validator import SquareValidator
 
 
 class SquareRegisterSuite(ModelOperationSuite[SquareRegister]):

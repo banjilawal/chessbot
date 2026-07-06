@@ -15,7 +15,7 @@ from typing import Type
 from err import VectorNullException
 from model import Vector
 from toolkit import ModelToolkit
-from validation import NumberValidator
+from validator import NumberValidator
 
 
 @dataclass

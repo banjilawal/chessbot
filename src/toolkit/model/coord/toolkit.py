@@ -14,7 +14,7 @@ from dataclasses import dataclass
 from err import CoordNullException
 from model import Coord
 from toolkit import ModelToolkit
-from validation import NumberValidator
+from validator import NumberValidator
 
 
 @dataclass

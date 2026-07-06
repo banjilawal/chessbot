@@ -16,11 +16,11 @@ from builder import Builder
 from err import TokenBuilderException
 from model import Token
 from operation import TokenAssembler
-from operation.finalize.build import TokenAssemblyFinalizer
+from finalizer import TokenAssemblyFinalizer
 from result import BuildResult
 from toolkit import TokenToolkit
 from util import LoggingLevelRouter
-from validation import TokenBlueprintValidator
+from validator import TokenBlueprintValidator
 
 
 class TokenBuilder(Builder[Token]):

@@ -7,7 +7,7 @@ Created: 2025-10-01
 version: 1.0.0
 """
 
-# =========== SEARCH.HOSTAGE.CONTEXT.FINDER PACKAGE ===========#
+# =========== SEARCHER.HOSTAGE.CONTEXT.FINDER PACKAGE ===========#
 
 # Packages
 from .exception import *

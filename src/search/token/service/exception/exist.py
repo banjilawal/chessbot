@@ -1,7 +1,7 @@
-# src/logic/token/database/search/service/exception/exist.py
+# src/logic/token/database/searcher/service/exception/exist.py
 
 """
-Module: logic.token.database.search.service.exception.exist
+Module: logic.token.database.searcher.service.exception.exist
 Author: Banji Lawal
 Created: 2025-10-01
 version: 1.0.0

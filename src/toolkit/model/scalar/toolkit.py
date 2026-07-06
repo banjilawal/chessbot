@@ -14,7 +14,7 @@ from dataclasses import dataclass
 from err import ScalarNullException
 from model import Scalar
 from toolkit import ModelToolkit
-from validation import NumberValidator
+from validator import NumberValidator
 
 
 @dataclass

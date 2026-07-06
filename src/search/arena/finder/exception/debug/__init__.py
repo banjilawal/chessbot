@@ -6,7 +6,7 @@ Created: 2025-10-06
 version: 1.0.0
 """
 
-# =========== SEARCH.ARENA.CONTEXT.FINDER.EXCEPTION.DEBUG PACKAGE ===========#
+# =========== SEARCHER.ARENA.CONTEXT.FINDER.EXCEPTION.DEBUG PACKAGE ===========#
 
 # Packages
 

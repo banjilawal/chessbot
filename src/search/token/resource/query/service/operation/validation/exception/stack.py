@@ -1,7 +1,7 @@
-# src/logic/token/database/search/context/service/operation/validation/exception/null.py
+# src/logic/token/database/searcher/context/service/operation/validation/exception/null.py
 
 """
-Module: logic.token.database.search.context.service.operation.validation.exception.null
+Module: logic.token.database.searcher.context.service.operation.validation.exception.null
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0

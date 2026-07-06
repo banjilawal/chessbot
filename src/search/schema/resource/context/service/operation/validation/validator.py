@@ -1,7 +1,7 @@
-# src/logic/schema/database/search/context/service/operation/validation/validator.py
+# src/logic/schema/database/searcher/context/service/operation/validation/validator.py
 
 """
-Module: logic.schema.database.search.context.service.operation.validation.validator
+Module: logic.schema.database.searcher.context.service.operation.validation.validator
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0
@@ -128,7 +128,7 @@ class SchemaContextValidator(Validator[SchemaContext]):
                     )
                 )
             )
-        # Handle the case of too many attributes being used in a search.
+        # Handle the case of too many attributes being used in a searcher.
         if flag_count > 1:
             # Send the exception chain on failure.
             return ValidationResult.failure(

@@ -1,7 +1,7 @@
-# src/logic/schema/database/search/context/service/operation/build/exception/transaction.py
+# src/logic/schema/database/searcher/context/service/operation/build/exception/transaction.py
 
 """
-Module: logic.schema.database.search.context.service.operation.build.exception.transaction
+Module: logic.schema.database.searcher.context.service.operation.build.exception.transaction
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0

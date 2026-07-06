@@ -13,7 +13,7 @@ from err import ItineraryException, ItineraryNullException
 from model import Itinerary
 from toolkit import ModelToolkit
 from analyzer import SquareTokenRelationAnalyzer, TokenReadinessAnalyzer
-from validation import SquareValidator, TokenValidator, PrimingValidator
+from validator import SquareValidator, TokenValidator, PrimingValidator
 
 
 class ItineraryToolkit(ModelToolkit[Itinerary]):

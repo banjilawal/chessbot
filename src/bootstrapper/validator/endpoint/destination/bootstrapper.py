@@ -1,0 +1,160 @@
+# src/bootstrapper/validator/endpoint/destination/bootstrapper.py
+
+"""
+Module: bootstrapper.validator.endpoint.destination.bootstrapper
+Author: Banji Lawal
+Created: 2026-04-03
+version: 1.0.1
+"""
+
+from __future__ import annotations
+
+from typing import cast
+
+from bootstrapper import ValidatorBootstrapper
+from err import (
+    BlockedPathException, DestinationCertifierBootstrapperException, PartialTokenDestinationRelationException,
+    TokenAlreadyAtDestinationException
+)
+from model import Square, Token
+from report import RelationReport
+from result import ValidationResult
+from toolkit import TokenEndpointRelationToolkit
+from util import LoggingLevelRouter
+
+
+class DestinationCertifierBootstrapper(ValidatorBootstrapper):
+    """
+    Role
+        -   Validation Worker
+        -   Integrity Maintenance
+        -   Consistency Assurance
+
+    Responsibilities:
+        1.  Verify a Token does not have either a partial or full bidirectional relation
+            with the square it wants to visit.
+        2.  Prevents visiting friendly squares.
+
+    Attributes:
+
+    Provides:
+        -   def validator(
+                    token: Token,
+                    destination: Square,
+                    toolkit: TokenEndpointRelationToolkit,
+            ) -> ValidationResult[Square]:
+
+    Super Class:
+        Validator
+    """
+    OPERATION_NAME = "destination_relation_validator"
+    
+    @classmethod
+    @LoggingLevelRouter.monitor
+    def execute(
+            cls,
+            token: Token,
+            destination: Square,
+            toolkit: TokenEndpointRelationToolkit | None = None,
+    ) -> ValidationResult[Square]:
+        """
+        Makes sure a Token can travel to a destination.
+
+        Action:
+            1.  Send an exception chan in the validation result if either:
+                    -   The relation analysis is not completed.
+                    -   The token is either fully or partially bound to the destination.
+                    -   The destination is occupied by a friend.
+            2.  Otherwise, send the success result.
+        Args:
+            token: Token
+            destination: Square
+            toolkit: TokenEndpointRelationToolkit
+        Returns:
+            ValidationResult
+        Raises:
+            DestinationCertifierBootstrapperException
+            TokenAlreadyAtDestinationException
+            PartialTokenDestinationRelationException
+        """
+        method = f"{cls.__name__}.validate"
+        
+        # --- Supply any missing dependencies. ---#
+        if toolkit is None:
+            toolkit = TokenEndpointRelationToolkit()
+        
+        # --- Run the relation analyzer. ---#
+        relation_analysis_result = toolkit.relation_analyzer.analyze(
+            candidate_primary=destination,
+            candidate_satellite=token,
+            token_validator=toolkit.token_validator,
+            square_validator=toolkit.square_validator,
+        )
+        # Handle the case that, the relation_analysis is not completed.
+        if relation_analysis_result.is_failure:
+            # Send the exception chain on failure.
+            return ValidationResult.failure(
+                DestinationCertifierBootstrapperException(
+                    cls_mthd=method,
+                    cls_name=cls.__name__,
+                    msg=DestinationCertifierBootstrapperException.MSG,
+                    err_code=DestinationCertifierBootstrapperException.ERR_CODE,
+                    ex=relation_analysis_result.exception,
+                )
+            )
+        # --- Extract the relation report for additional tests. ---#
+        relation = cast(RelationReport, relation_analysis_result.payload)
+        
+        # Handle the case that the token has an unexpected partial binding to the destination.
+        if (
+                relation.stale_link_exists or
+                relation.registration_missing
+        ):
+            # Send the exception chain on failure.
+            return ValidationResult.failure(
+                DestinationCertifierBootstrapperException(
+                    cls_mthd=method,
+                    cls_name=cls.__name__,
+                    msg=DestinationCertifierBootstrapperException.MSG,
+                    err_code=DestinationCertifierBootstrapperException.ERR_CODE,
+                    ex=PartialTokenDestinationRelationException(
+                        msg=PartialTokenDestinationRelationException.MSG,
+                        err_code=PartialTokenDestinationRelationException.ERR_CODE,
+                    ),
+                )
+            )
+        # Handle the case that, the token is already at the destination.
+        if relation.fully_exists:
+            # Send the exception chain on failure.
+            return ValidationResult.failure(
+                DestinationCertifierBootstrapperException(
+                    cls_mthd=method,
+                    cls_name=cls.__name__,
+                    msg=DestinationCertifierBootstrapperException.MSG,
+                    err_code=DestinationCertifierBootstrapperException.ERR_CODE,
+                    ex=TokenAlreadyAtDestinationException(
+                        msg=TokenAlreadyAtDestinationException.MSG,
+                        err_code=TokenAlreadyAtDestinationException.ERR_CODE,
+                    ),
+                )
+            )
+        # Handle the case that, the destination is occupied by a friend.
+        occupant = destination.occupant
+        if token.is_enemy(occupant):
+            # Send the exception chain on failure.
+            return ValidationResult.failure(
+                DestinationCertifierBootstrapperException(
+                    cls_mthd=method,
+                    cls_name=cls.__name__,
+                    msg=DestinationCertifierBootstrapperException.MSG,
+                    err_code=DestinationCertifierBootstrapperException.ERR_CODE,
+                    ex=BlockedPathException(
+                        cls_mthd=method,
+                        cls_name=cls.__name__,
+                        msg=BlockedPathException.MSG,
+                        err_code=BlockedPathException.ERR_CODE,
+                    ),
+                )
+            )
+        # --- Forward the work product to the caller. ---#
+        return ValidationResult.success(destination)

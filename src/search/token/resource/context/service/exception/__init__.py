@@ -1,13 +1,13 @@
-# src/logic/token/database/search/context/service/exception/__init__.py
+# src/logic/token/database/searcher/context/service/exception/__init__.py
 
 """
-Module: logic.token.database.search.context.service.exception.__init__
+Module: logic.token.database.searcher.context.service.exception.__init__
 Author: Banji Lawal
 Created: 2025-10-01
 version: 1.0.0
 """
 
-# =========== SEARCH.TOKEN.DATABASE.SEARCH.SERVICE.EXCEPTION PACKAGE ===========#
+# =========== SEARCHER.TOKEN.DATABASE.SEARCHER.SERVICE.EXCEPTION PACKAGE ===========#
 
 # Packages
 

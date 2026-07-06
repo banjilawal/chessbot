@@ -1,7 +1,7 @@
-# src/search/origin/searcher.py
+# src/searcher/origin/searcher.py
 
 """
-Module: search.origin.searcher
+Module: searcher.origin.searcher
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -9,7 +9,7 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from bootstrap import TokenBuilderBootstrapper
+from bootstrapper import TokenBuilderBootstrapper
 from err import TokenOriginSearcherException
 from model import Token
 from result import MethodResultType, SearchResult
@@ -25,7 +25,7 @@ class TokenOriginSearcher:
     Responsibilities:
         1.  Find the square a Token occupies on a Board.
         2.  Provides a token's origin for maneuver operations.
-        3.  Provide debugging information for error cases which can occur during the search.
+        3.  Provide debugging information for error cases which can occur during the searcher.
 
     Attributes:
 

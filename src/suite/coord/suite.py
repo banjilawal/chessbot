@@ -12,7 +12,7 @@ from __future__ import annotations
 from builder import CoordBuilder
 from model import Coord
 from toolkit import ModelOperationSuite, CoordToolkit
-from validation import CoordValidator
+from validator import CoordValidator
 
 
 class CoordOperationSuite(ModelOperationSuite[Coord]):

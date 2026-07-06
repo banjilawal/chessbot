@@ -1,7 +1,7 @@
-# src/logic/schema/database/search/context/service/exception/anchor.py
+# src/logic/schema/database/searcher/context/service/exception/anchor.py
 
 """
-Module: logic.schema.database.search.context.service.exception.anchor
+Module: logic.schema.database.searcher.context.service.exception.anchor
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0

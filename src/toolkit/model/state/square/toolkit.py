@@ -15,7 +15,7 @@ from detection import SquareCollisionDetector
 from microservice import FormationService, IdentityService
 from model import Square
 from toolkit import ModelToolkit
-from validation import BoardValidator, CoordValidator, TokenValidator, PrimingValidator
+from validator import BoardValidator, CoordValidator, TokenValidator, PrimingValidator
 
 
 @dataclass

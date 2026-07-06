@@ -1,7 +1,7 @@
-# src/search/token/search.py
+# src/searcher/token/searcher.py
 
 """
-Module: search.token.search
+Module: searcher.token.search
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -15,7 +15,7 @@ from model import Token, TokenQuery
 from result import SearchResult
 from route import TokenSearchRouter
 from util import LoggingLevelRouter
-from validation import TokenQueryValidator
+from validator import TokenQueryValidator
 
 
 class TokenSearcher:

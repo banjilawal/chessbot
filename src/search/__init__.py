@@ -1,13 +1,13 @@
-# src/search/__init__.py
+# src/searcher/__init__.py
 
 """
-Module: search.__init__
+Module: searcher.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
 """
 
-# =========== SEARCH PACKAGE ===========#
+# =========== SEARCHER PACKAGE ===========#
 
 # Packages
 from .arena import *

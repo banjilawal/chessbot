@@ -1,6 +1,6 @@
-# src/logic/schema/database/search/route/model/exception/debug/missing.py
+# src/logic/schema/database/searcher/route/model/exception/debug/missing.py
 """
-Module: logic.schema.database.search.route.model.exception.debug.missing
+Module: logic.schema.database.searcher.route.model.exception.debug.missing
 Author: Banji Lawal
 Created: 2025-10-06
 version: 1.0.0

@@ -16,7 +16,7 @@ from report import FriendshipStatus
 from result import Result
 from toolkit import TokenToolkit
 from util import LoggingLevelRouter
-from validation import TokenValidator
+from validator import TokenValidator
 
 
 class EnemyKingStatusDetector(Analyzer):

@@ -17,7 +17,7 @@ from operation import Maneuver
 from report import AttackApproval, ManeuverApproval
 from result import EventResult, MethodResultType
 from util import IdFactory, LoggingLevelRouter
-from validation import PrimingValidator
+from validator import PrimingValidator
 
 
 class Attack:

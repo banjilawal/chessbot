@@ -12,7 +12,7 @@ from dataclasses import dataclass
 
 from analyzer import Coord
 from toolkit import AnalyzerBootstrapperToolkit
-from validation import NumberValidator, PrimingValidator
+from validator import NumberValidator, PrimingValidator
 
 
 @dataclass

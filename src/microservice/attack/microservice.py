@@ -14,7 +14,7 @@ from abc import abstractmethod
 from event import AttackEvent
 from microservice import Microservice
 from util import IdFactory
-from validation import Validator
+from validator import Validator
 
 
 class AttackEventService(Microservice[AttackEvent]):

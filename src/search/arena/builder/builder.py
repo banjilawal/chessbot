@@ -91,7 +91,7 @@ class ArenaContextBuilder(Builder[ArenaContext]):
                 return BuildResult.failure(
                     ZeroArenaContextFlagsException(f"{method}: {ZeroArenaContextFlagsException.MSG}")
                 )
-            # Test if more than one param is set. Only one attribute-value tuple is allowed in a search.
+            # Test if more than one param is set. Only one attribute-value tuple is allowed in a searcher.
             if param_count > 1:
                 return BuildResult.failure(
                     ExcessArenaContextFlagsException(f"{method}: {ExcessArenaContextFlagsException}")

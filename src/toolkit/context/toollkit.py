@@ -12,7 +12,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Generic, Optional, TypeVar
 
-from bootstrap import PrimingContextValidator
+from bootstrapper import PrimingContextValidator
 from context import Context
 from err import ContextNullException
 from toolkit import Toolkit

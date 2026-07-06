@@ -16,7 +16,7 @@ from err import TokenNullException
 from microservice import RankService
 from model import Token
 from toolkit import PermitterToolkit
-from validation import (
+from validator import (
     BlueprintHomeSquareProcessor, BlueprintRankProcessor, CoordValidator, NumberValidator,
     SquareValidator, TeamValidator
 )

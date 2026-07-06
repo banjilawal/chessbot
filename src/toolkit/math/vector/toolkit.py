@@ -12,7 +12,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 
 from toolkit import CoordOperationSuite, ScalarOperationSuite, Toolkit, VectorOperationSuite
-from validation import NumberValidator
+from validator import NumberValidator
 
 
 @dataclass

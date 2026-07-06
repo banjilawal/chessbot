@@ -5,89 +5,691 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/assembler/model/rank/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assembler/model/square/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assembler/model/team/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assembler/model/vector/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/bootstrapper/analyzer/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/bootstrapper/analyzer/readiness/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/bootstrapper/assembly/binder/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/bootstrapper/assembly/board/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/bootstrapper/assembly/context/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/bootstrapper/assembly/context/arena/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/bootstrapper/assembly/coord/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/bootstrapper/assembly/itinerary/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/bootstrapper/assembly/path/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/bootstrapper/assembly/rank/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/bootstrapper/assembly/square/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/bootstrapper/assembly/team/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/bootstrapper/assembly/vector/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/bootstrapper/builder/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/bootstrapper/builder/token/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/bootstrapper/detector/token/bootstrapper/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/bootstrapper/insertion/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/bootstrapper/insertion/registry/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/bootstrapper/insertion/registry/service/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/bootstrapper/insertion/registry/worker/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/bootstrapper/operation/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/bootstrapper/operation/readiness/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/bootstrapper/operation/readiness/bootstrapper.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/bootstrapper/searcher/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/bootstrapper/searcher/origin/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/bootstrapper/validator/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/bootstrapper/validator/context/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/bootstrapper/validator/context/priming/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/bootstrapper/validator/endpoint/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/bootstrapper/validator/endpoint/destination/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/bootstrapper/validator/endpoint/origin/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/bootstrapper/validator/maneuver/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/bootstrapper/validator/priming/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/operation/finalizer/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/operation/finalizer/finalizer.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/validator/arena/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/validator/binder/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/validator/binder/arena/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/validator/binder/board/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/validator/blueprint/arena/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/validator/blueprint/board/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/validator/blueprint/coord/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/validator/blueprint/edge/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/validator/blueprint/formation/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/validator/blueprint/game/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/validator/blueprint/hostage/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/validator/blueprint/id/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/validator/blueprint/node/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/validator/blueprint/persona/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/validator/blueprint/player/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/validator/blueprint/priming/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/validator/blueprint/rank/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/validator/blueprint/schema/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/validator/blueprint/square/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/validator/blueprint/team/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/validator/blueprint/token/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/validator/blueprint/token/home/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/validator/blueprint/token/rank/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/validator/board/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/validator/context/arena/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/validator/context/board/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/validator/context/coord/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/validator/context/edge/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/validator/context/formation/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/validator/context/game/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/validator/context/home/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/validator/context/hostage/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/validator/context/node/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/validator/context/persona/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/validator/context/player/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/validator/context/query/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/validator/context/rank/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/validator/context/schema/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/validator/context/square/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/validator/context/team/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/validator/context/token/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/validator/coord/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/validator/edge/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/validator/endpoint/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/validator/endpoint/destination/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/validator/endpoint/origin/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/validator/formation/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/validator/game/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/validator/hashtable/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/validator/hashtable/schema/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/validator/hostage/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/validator/itinerary/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/validator/itinerary/consistency/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/validator/itinerary/consistency/destination/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/validator/itinerary/consistency/source/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/validator/maneuver/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/validator/node/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/validator/number/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/validator/operand/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/validator/path/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/validator/persona/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/validator/player/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/validator/query/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/validator/query/token/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/validator/rank/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/validator/register/operand/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/validator/scalar/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/validator/schema/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/validator/snapshot/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/validator/square/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/validator/string/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/validator/string/name/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/validator/string/registry/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/validator/team/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/validator/token/consistency/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/validator/vector/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assembly/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assembly/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assembly/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assembly/assembler.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assembly/token/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assembly/token/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assembly/token/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assembly/token/assembler.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blueprint/blueprint.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/blueprint/blueprint.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blueprint/model/arena/bluelprint.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/blueprint/model/arena/bluelprint.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blueprint/model/board/blueprint.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/blueprint/model/board/blueprint.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blueprint/model/coord/blueprint.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/blueprint/model/coord/blueprint.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blueprint/model/node/blueprint.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/blueprint/model/node/blueprint.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blueprint/model/path/blueprint.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/blueprint/model/path/blueprint.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blueprint/model/player/blueprint.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/blueprint/model/player/blueprint.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blueprint/model/rank/blueprint.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/blueprint/model/rank/blueprint.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blueprint/model/team/blueprint.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/blueprint/model/team/blueprint.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blueprint/model/token/blueprint.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/blueprint/model/token/blueprint.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blueprint/model/vector/blueprint.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/blueprint/model/vector/blueprint.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/builder/context/formation/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/builder/context/formation/builder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/builder/context/persona/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/builder/context/persona/builder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/builder/rank/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/builder/rank/builder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/context/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/context/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/context/context.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/context/context.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/context/square/context.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/context/square/context.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/context/token/context.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/context/token/context.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/microservice/rank/microservice.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/microservice/rank/microservice.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/state/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/state/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/state/catalog/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/catalog/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/state/catalog/formation/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/catalog/formation/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/state/catalog/formation/catalog.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/catalog/formation/catalog.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/state/catalog/persona/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/catalog/persona/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/state/catalog/persona/catalog.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/catalog/persona/catalog.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/state/catalog/schema/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/catalog/schema/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/state/catalog/schema/catalog.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/catalog/schema/catalog.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/state/rank/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/rank/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/state/rank/bishop/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/rank/bishop/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/state/rank/bishop/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/rank/bishop/model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/state/rank/king/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/rank/king/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/state/rank/king/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/rank/king/model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/state/rank/knight/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/rank/knight/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/state/rank/knight/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/rank/knight/model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/state/rank/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/rank/model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/state/rank/pawn/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/rank/pawn/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/state/rank/pawn/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/rank/pawn/model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/state/rank/queen/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/rank/queen/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/state/rank/queen/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/rank/queen/model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/state/rank/rook/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/rank/rook/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/state/rank/rook/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/rank/rook/model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/state/token/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/state/token/model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/route/search/formation/router.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/route/search/formation/router.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/route/search/persona/exception/debug/designation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/route/search/persona/exception/debug/designation.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/route/search/persona/exception/debug/name.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/route/search/persona/exception/debug/name.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/route/search/persona/exception/debug/quota.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/route/search/persona/exception/debug/quota.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/route/search/persona/exception/debug/ransom.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/route/search/persona/exception/debug/ransom.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/route/search/persona/exception/debug/route.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/route/search/persona/exception/debug/route.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/route/search/persona/exception/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/route/search/persona/exception/wrapper.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/route/search/persona/lookup.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/route/search/persona/lookup.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/search/formation/lookup/lookup.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/search/formation/lookup/lookup.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/search/persona/exception/debug/designation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/search/persona/exception/debug/designation.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/search/persona/exception/debug/name.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/search/persona/exception/debug/name.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/search/persona/exception/debug/quota.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/search/persona/exception/debug/quota.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/search/persona/exception/debug/ransom.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/search/persona/exception/debug/ransom.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/search/persona/exception/debug/route.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/search/persona/exception/debug/route.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/search/persona/exception/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/search/persona/exception/wrapper.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/search/persona/lookup.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/search/persona/lookup.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/search/persona/persona/exception/debug/designation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/search/persona/persona/exception/debug/designation.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/search/persona/persona/exception/debug/name.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/search/persona/persona/exception/debug/name.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/search/persona/persona/exception/debug/quota.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/search/persona/persona/exception/debug/quota.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/search/persona/persona/exception/debug/ransom.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/search/persona/persona/exception/debug/ransom.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/search/persona/persona/exception/debug/route.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/search/persona/persona/exception/debug/route.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/search/persona/persona/exception/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/search/persona/persona/exception/wrapper.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/search/persona/persona/lookup.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/search/persona/persona/lookup.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/search/persona/service/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/search/persona/service/service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/analyzer/friend/analyzer.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/analyzer/friend/analyzer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/analyzer/friend/enemy/combatant/detector.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/analyzer/friend/enemy/combatant/detector.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/analyzer/friend/enemy/king/detector.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/analyzer/friend/enemy/king/detector.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/analyzer/itinerary/analyzer.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/analyzer/itinerary/analyzer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/analyzer/promotion/manager/analyzer.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/analyzer/promotion/manager/analyzer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/analyzer/promotion/rank/analyzer.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/analyzer/promotion/rank/analyzer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/analyzer/readiness/analyzer.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/analyzer/readiness/analyzer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/analyzer/relation/team/board/analyst.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/analyzer/relation/team/board/analyst.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/analyzer/relation/token/square/analyzer.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/analyzer/relation/token/square/analyzer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/analyzer/relation/token/team/analyzer.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/analyzer/relation/token/team/analyzer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assembly/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assembler/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assembly/assembler.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assembler/assembler.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assembly/binder/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assembler/binder/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assembly/binder/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assembler/binder/assembler.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assembly/binder/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assembler/binder/wrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assembly/board/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assembler/model/board/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assembly/board/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assembler/model/board/assembler.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assembly/coord/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assembler/model/coord/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assembly/coord/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assembler/model/coord/assembler.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assembly/itenerary/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assembler/itenerary/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assembly/itenerary/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assembler/itenerary/assembler.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assembly/query/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assembler/query/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assembly/query/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assembler/query/operation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assembly/rank/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assembly/rank/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assembler/model/rank/assembler.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assembly/scalar/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assembler/model/scalar/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assembly/scalar/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assembler/model/scalar/assembler.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assembly/square/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assembly/square/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assembler/model/square/assembler.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assembly/team/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assembly/team/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assembler/model/team/assembler.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assembly/token/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assembler/model/token/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assembly/token/assembler.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assembler/model/token/assembler.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assembly/vector/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assembly/vector/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assembler/model/vector/assembler.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/blueprint/validation/query/blueprint.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/blueprint/validation/query/blueprint.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/blueprint/validation/query/token/blueprint.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/blueprint/validation/query/token/blueprint.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bootstrap/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/bootstrapper/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bootstrap/analyzer/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bootstrap/analyzer/bootstrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/bootstrapper/analyzer/bootstrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bootstrap/analyzer/readiness/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bootstrap/analyzer/readiness/bootstrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/bootstrapper/analyzer/readiness/bootstrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bootstrap/assembly/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/bootstrapper/assembly/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bootstrap/assembly/binder/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bootstrap/assembly/binder/board/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assembler/model/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bootstrap/assembly/binder/board/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/bootstrapper/assembly/binder/board/operation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bootstrap/assembly/binder/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/bootstrapper/assembly/binder/wrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bootstrap/assembly/board/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bootstrap/assembly/board/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/bootstrapper/assembly/board/operation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bootstrap/assembly/context/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bootstrap/assembly/context/arena/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bootstrap/assembly/context/arena/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/bootstrapper/assembly/context/arena/operation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bootstrap/assembly/coord/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bootstrap/assembly/coord/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/bootstrapper/assembly/coord/operation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bootstrap/assembly/itinerary/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bootstrap/assembly/itinerary/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/bootstrapper/assembly/itinerary/operation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bootstrap/assembly/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/bootstrapper/assembly/operation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bootstrap/assembly/path/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bootstrap/assembly/path/bootstrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/bootstrapper/assembly/path/bootstrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bootstrap/assembly/rank/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bootstrap/assembly/rank/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/bootstrapper/assembly/rank/operation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bootstrap/assembly/square/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bootstrap/assembly/square/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/bootstrapper/assembly/square/operation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bootstrap/assembly/team/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bootstrap/assembly/team/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/bootstrapper/assembly/team/operation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bootstrap/assembly/vector/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bootstrap/assembly/vector/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/bootstrapper/assembly/vector/operation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bootstrap/bootstrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/bootstrapper/bootstrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bootstrap/builder/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bootstrap/builder/bootstrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/bootstrapper/builder/bootstrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bootstrap/builder/token/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bootstrap/builder/token/bootstrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/bootstrapper/builder/token/bootstrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bootstrap/deployment/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/bootstrapper/deployment/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bootstrap/deployment/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/bootstrapper/deployment/exception/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bootstrap/deployment/exception/debug/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/bootstrapper/deployment/exception/debug/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bootstrap/deployment/exception/debug/inconsistent/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/bootstrapper/deployment/exception/debug/inconsistent/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bootstrap/deployment/exception/debug/inconsistent/board.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/bootstrapper/deployment/exception/debug/inconsistent/board.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bootstrap/deployment/exception/debug/inconsistent/coord.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/bootstrapper/deployment/exception/debug/inconsistent/coord.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bootstrap/deployment/exception/debug/inconsistent/occupant.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/bootstrapper/deployment/exception/debug/inconsistent/occupant.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bootstrap/deployment/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/bootstrapper/deployment/operation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bootstrap/detector/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/bootstrapper/detector/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bootstrap/detector/detector.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/bootstrapper/detector/detector.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bootstrap/detector/home/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/bootstrapper/detector/home/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bootstrap/detector/home/detector.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/bootstrapper/detector/home/detector.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bootstrap/detector/square/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/bootstrapper/detector/square/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bootstrap/detector/square/detector.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/bootstrapper/detector/square/detector.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bootstrap/detector/token/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/bootstrapper/detector/token/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bootstrap/detector/token/bootstrapper/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bootstrap/detector/token/bootstrapper/bootstrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/bootstrapper/detector/token/bootstrapper/bootstrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bootstrap/detector/token/collider/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/bootstrapper/detector/token/collider/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bootstrap/detector/token/collider/collider.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/bootstrapper/detector/token/collider/collider.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bootstrap/detector/token/detector.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/bootstrapper/detector/token/detector.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bootstrap/insertion/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bootstrap/insertion/registry/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bootstrap/insertion/registry/service/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bootstrap/insertion/registry/service/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/bootstrapper/insertion/registry/service/operation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bootstrap/insertion/registry/worker/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bootstrap/insertion/registry/worker/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/bootstrapper/insertion/registry/worker/operation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bootstrap/operation/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bootstrap/operation/bootstrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/bootstrapper/operation/bootstrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bootstrap/operation/readiness/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bootstrap/operation/readiness/bootstrapper.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bootstrap/operation/token/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/bootstrapper/operation/token/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bootstrap/operation/token/attack/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/bootstrapper/operation/token/attack/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bootstrap/operation/token/attack/attack.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/bootstrapper/operation/token/attack/attack.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bootstrap/operation/token/attack/context/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/bootstrapper/assembly/binder/board/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bootstrap/operation/token/attack/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/bootstrapper/operation/token/attack/exception/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bootstrap/operation/token/attack/exception/debug/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/bootstrapper/operation/token/attack/exception/debug/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bootstrap/operation/token/attack/exception/debug/board/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/bootstrapper/operation/token/attack/exception/debug/board/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bootstrap/operation/token/attack/exception/debug/board/wrong.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/bootstrapper/operation/token/attack/exception/debug/board/wrong.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bootstrap/operation/token/attack/exception/debug/debug.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/bootstrapper/operation/token/attack/exception/debug/debug.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bootstrap/operation/token/attack/exception/debug/enemy/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/bootstrapper/operation/token/attack/exception/debug/enemy/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bootstrap/operation/token/attack/exception/debug/enemy/disabled.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/bootstrapper/operation/token/attack/exception/debug/enemy/disabled.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bootstrap/operation/token/attack/exception/debug/enemy/king.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/bootstrapper/operation/token/attack/exception/debug/enemy/king.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bootstrap/operation/token/attack/exception/debug/square/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/bootstrapper/operation/token/attack/exception/debug/square/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bootstrap/operation/token/attack/exception/debug/square/attacker.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/bootstrapper/operation/token/attack/exception/debug/square/attacker.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bootstrap/operation/token/attack/exception/debug/square/empty.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/bootstrapper/operation/token/attack/exception/debug/square/empty.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bootstrap/operation/token/attack/exception/debug/square/friend.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/bootstrapper/operation/token/attack/exception/debug/square/friend.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bootstrap/operation/token/attack/exception/debug/square/stale.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/bootstrapper/operation/token/attack/exception/debug/square/stale.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bootstrap/operation/token/attack/exception/debug/square/unfound.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/bootstrapper/operation/token/attack/exception/debug/square/unfound.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bootstrap/operation/token/attack/exception/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/bootstrapper/operation/token/attack/exception/wrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bootstrap/operation/token/attack/result.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/bootstrapper/operation/token/attack/result.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bootstrap/operation/token/attack/service/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/bootstrapper/operation/token/attack/context/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bootstrap/operation/token/attack/service/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/bootstrapper/operation/token/attack/service/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bootstrap/operation/token/attack/service/exception/anchor.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/bootstrapper/operation/token/attack/service/exception/anchor.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bootstrap/operation/token/check/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/bootstrapper/operation/token/check/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bootstrap/operation/token/coord/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/bootstrapper/operation/token/coord/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bootstrap/operation/token/coord/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/bootstrapper/operation/token/coord/exception/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bootstrap/operation/token/coord/exception/anchor.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/bootstrapper/operation/token/coord/exception/anchor.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bootstrap/operation/token/coord/exception/pop/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/bootstrapper/operation/token/coord/exception/pop/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bootstrap/operation/token/coord/pop/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/bootstrapper/operation/token/coord/pop/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bootstrap/operation/token/coord/pop/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/bootstrapper/operation/token/coord/pop/exception/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bootstrap/operation/token/coord/pop/exception/inactive.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/bootstrapper/operation/token/coord/pop/exception/inactive.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bootstrap/operation/token/coord/pop/exception/limit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/bootstrapper/operation/token/coord/pop/exception/limit.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bootstrap/operation/token/coord/pop/exception/opening.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/bootstrapper/operation/token/coord/pop/exception/opening.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bootstrap/operation/token/coord/pop/exception/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/bootstrapper/operation/token/coord/pop/exception/wrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bootstrap/operation/token/coord/pop/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/bootstrapper/operation/token/coord/pop/operation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bootstrap/operation/token/coord/push/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/bootstrapper/operation/token/coord/push/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bootstrap/operation/token/coord/push/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/bootstrapper/operation/token/coord/push/exception/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bootstrap/operation/token/coord/push/exception/inactive.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/bootstrapper/operation/token/coord/push/exception/inactive.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bootstrap/operation/token/coord/push/exception/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/bootstrapper/operation/token/coord/push/exception/wrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bootstrap/operation/token/coord/push/process.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/bootstrapper/operation/token/coord/push/process.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bootstrap/operation/token/mate/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/bootstrapper/operation/token/mate/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bootstrap/operation/token/mate/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/bootstrapper/operation/token/mate/exception/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bootstrap/operation/token/mate/mate.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/bootstrapper/operation/token/mate/mate.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bootstrap/operation/token/place/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/bootstrapper/operation/token/place/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bootstrap/operation/token/place/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/bootstrapper/operation/token/place/operation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bootstrap/permitter/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/bootstrapper/permitter/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bootstrap/searcher/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bootstrap/searcher/bootstrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/bootstrapper/searcher/bootstrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bootstrap/searcher/origin/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bootstrap/searcher/origin/bootstrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/bootstrapper/searcher/origin/bootstrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bootstrap/validator/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bootstrap/validator/bootstrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/bootstrapper/validator/bootstrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bootstrap/validator/context/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bootstrap/validator/context/priming/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bootstrap/validator/context/priming/bootstrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/bootstrapper/validator/context/priming/bootstrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bootstrap/validator/endpoint/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bootstrap/validator/endpoint/bootstrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/bootstrapper/validator/endpoint/bootstrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bootstrap/validator/endpoint/destination/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bootstrap/validator/endpoint/destination/bootstrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/bootstrapper/validator/endpoint/destination/bootstrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bootstrap/validator/endpoint/origin/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bootstrap/validator/endpoint/origin/bootstrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/bootstrapper/validator/endpoint/origin/bootstrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bootstrap/validator/maneuver/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bootstrap/validator/maneuver/bootstrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/bootstrapper/validator/maneuver/bootstrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bootstrap/validator/priming/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bootstrap/validator/priming/bootstrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/bootstrapper/validator/priming/bootstrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/builder/binder/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/builder/binder/builder.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/builder/token/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/builder/token/builder.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/model/token/controller.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/model/token/controller.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/detection/home/detector.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/detection/home/detector.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/detection/token/bootstrapper/bootstrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/detection/token/bootstrapper/bootstrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/detection/token/detector.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/detection/token/detector.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/microservice/attack/microservice.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/microservice/attack/microservice.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/microservice/square/operation/controller.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/microservice/square/operation/controller.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/microservice/token/microservice.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/microservice/token/microservice.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/attack/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/attack/operation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/finalize/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/finalize/build/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/finalize/build/board/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/finalize/build/board/operation.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/finalize/build/operation.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/finalize/build/square/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/finalize/build/square/operation.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/finalize/build/team/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/finalize/build/team/operation.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/finalize/build/token/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/finalize/build/token/operation.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/finalize/operation.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/maneuver/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/maneuver/operation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/token/coord/pop/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/token/coord/pop/operation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/permitter/deletion/token/permitter.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/permitter/deletion/token/permitter.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/permitter/pop/token/permitter.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/permitter/pop/token/permitter.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/permitter/promotion/permitter.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/permitter/promotion/permitter.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/permitter/token/maneuver/undo/permitter.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/permitter/token/maneuver/undo/permitter.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/search/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/search/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/search/arena/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/search/arena/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/search/arena/builder/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/search/arena/builder/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/search/arena/builder/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/search/arena/builder/builder.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/search/arena/builder/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/search/arena/builder/exception/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/search/arena/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/search/arena/exception/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/search/arena/finder/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/search/arena/finder/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/search/arena/finder/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/search/arena/finder/exception/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/search/arena/finder/exception/debug/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/search/arena/finder/exception/debug/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/search/arena/service/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/search/arena/service/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/search/arena/service/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/search/arena/service/exception/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/search/board/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/search/board/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/search/board/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/search/board/exception/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/search/board/finder/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/search/board/finder/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/search/board/finder/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/search/board/finder/exception/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/search/board/finder/exception/debug/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/search/board/finder/exception/debug/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/search/board/service/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/search/board/service/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/search/board/service/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/search/board/service/exception/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/search/edge/service/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/search/edge/service/exception/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/search/formation/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/search/formation/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/search/formation/lookup/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/search/formation/lookup/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/search/formation/lookup/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/search/formation/lookup/exception/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/search/formation/lookup/exception/debug/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/search/formation/lookup/exception/debug/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/search/formation/service/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/search/formation/service/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/search/formation/service/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/search/formation/service/exception/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/search/game/finder/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/search/game/finder/exception/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/search/game/finder/exception/debug/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/search/game/finder/exception/debug/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/search/game/finder/finder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/search/game/finder/finder.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/search/game/service/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/search/game/service/exception/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/search/graph/service/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/search/graph/service/exception/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/search/hostage/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/search/hostage/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/search/hostage/finder/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/search/hostage/finder/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/search/hostage/finder/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/search/hostage/finder/exception/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/search/hostage/finder/exception/debug/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/search/hostage/finder/exception/debug/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/search/hostage/service/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/search/hostage/service/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/search/hostage/service/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/search/hostage/service/exception/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/search/node/service/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/search/node/service/exception/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/search/origin/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/search/origin/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/search/origin/searcher.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/search/origin/searcher.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/search/persona/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/search/persona/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/search/persona/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/search/persona/exception/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/search/persona/exception/debug/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/search/persona/exception/debug/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/search/persona/persona/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/search/persona/persona/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/search/persona/persona/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/search/persona/persona/exception/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/search/persona/persona/exception/debug/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/search/persona/persona/exception/debug/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/search/persona/service/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/search/persona/service/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/search/persona/service/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/search/persona/service/exception/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/search/player/service/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/search/player/service/exception/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/search/registry/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/search/registry/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/search/registry/service/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/search/registry/service/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/search/registry/service/search.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/search/registry/service/search.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/search/registry/worker/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/search/registry/worker/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/search/registry/worker/domain/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/search/registry/worker/domain/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/search/registry/worker/domain/search.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/search/registry/worker/domain/search.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/search/registry/worker/name/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/search/registry/worker/name/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/search/registry/worker/name/search.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/search/registry/worker/name/search.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/search/schema/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/search/schema/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/search/schema/key/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/search/schema/key/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/search/schema/key/lookup/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/search/schema/key/lookup/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/search/schema/key/lookup/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/search/schema/key/lookup/exception/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/search/schema/key/lookup/exception/debug/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/search/schema/key/lookup/exception/debug/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/search/schema/key/service/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/search/schema/key/service/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/search/schema/key/service/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/search/schema/key/service/exception/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/search/schema/resource/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/search/schema/resource/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/search/schema/resource/context/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/search/schema/resource/context/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/search/schema/resource/context/service/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/search/schema/resource/context/service/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/search/schema/resource/context/service/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/search/schema/resource/context/service/exception/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/search/schema/resource/context/service/exception/anchor.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/search/schema/resource/context/service/exception/anchor.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/search/schema/resource/context/service/operation/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/search/schema/resource/context/service/operation/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/search/schema/resource/context/service/operation/build/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/search/schema/resource/context/service/operation/build/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/search/schema/resource/context/service/operation/build/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/search/schema/resource/context/service/operation/build/builder.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/search/schema/resource/context/service/operation/build/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/search/schema/resource/context/service/operation/build/exception/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/search/schema/resource/context/service/operation/build/exception/route.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/search/schema/resource/context/service/operation/build/exception/route.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/search/schema/resource/context/service/operation/build/exception/transaction.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/search/schema/resource/context/service/operation/build/exception/transaction.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/search/schema/resource/context/service/operation/controller.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/search/schema/resource/context/service/operation/controller.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/search/schema/resource/context/service/operation/validation/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/search/schema/resource/context/service/operation/validation/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/search/schema/resource/context/service/operation/validation/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/search/schema/resource/context/service/operation/validation/exception/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/search/schema/resource/context/service/operation/validation/exception/debug/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/search/schema/resource/context/service/operation/validation/exception/debug/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/search/schema/resource/context/service/operation/validation/exception/debug/excess.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/search/schema/resource/context/service/operation/validation/exception/debug/excess.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/search/schema/resource/context/service/operation/validation/exception/debug/null.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/search/schema/resource/context/service/operation/validation/exception/debug/null.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/search/schema/resource/context/service/operation/validation/exception/debug/route.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/search/schema/resource/context/service/operation/validation/exception/debug/route.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/search/schema/resource/context/service/operation/validation/exception/debug/zero.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/search/schema/resource/context/service/operation/validation/exception/debug/zero.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/search/schema/resource/context/service/operation/validation/exception/transaction.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/search/schema/resource/context/service/operation/validation/exception/transaction.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/search/schema/resource/context/service/operation/validation/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/search/schema/resource/context/service/operation/validation/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/search/schema/resource/context/service/operation/workers.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/search/schema/resource/context/service/operation/workers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/search/schema/resource/context/service/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/search/schema/resource/context/service/service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/search/schema/resource/host.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/search/schema/resource/host.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/search/schema/resource/query/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/search/schema/resource/query/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/search/schema/resource/query/model/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/search/schema/resource/query/model/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/search/schema/resource/query/model/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/search/schema/resource/query/model/exception/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/search/schema/resource/query/model/exception/anchor.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/search/schema/resource/query/model/exception/anchor.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/search/schema/resource/query/model/exception/debug.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/search/schema/resource/query/model/exception/debug.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/search/schema/resource/query/model/query.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/search/schema/resource/query/model/query.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/search/schema/resource/query/service/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/search/schema/resource/query/service/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/search/schema/resource/query/service/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/search/schema/resource/query/service/exception/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/search/schema/resource/query/service/exception/anchor.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/search/schema/resource/query/service/exception/anchor.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/search/schema/resource/query/service/operation/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/search/schema/resource/query/service/operation/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/search/schema/resource/query/service/operation/build/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/search/schema/resource/query/service/operation/build/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/search/schema/resource/query/service/operation/build/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/search/schema/resource/query/service/operation/build/builder.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/search/schema/resource/query/service/operation/build/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/search/schema/resource/query/service/operation/build/exception/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/search/schema/resource/query/service/operation/build/exception/transaction.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/search/schema/resource/query/service/operation/build/exception/transaction.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/search/schema/resource/query/service/operation/controller.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/search/schema/resource/query/service/operation/controller.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/search/schema/resource/query/service/operation/validation/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/search/schema/resource/query/service/operation/validation/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/search/schema/resource/query/service/operation/validation/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/search/schema/resource/query/service/operation/validation/exception/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/search/schema/resource/query/service/operation/validation/exception/candidate.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/search/schema/resource/query/service/operation/validation/exception/candidate.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/search/schema/resource/query/service/operation/validation/exception/stack.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/search/schema/resource/query/service/operation/validation/exception/stack.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/search/schema/resource/query/service/operation/validation/exception/transaction.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/search/schema/resource/query/service/operation/validation/exception/transaction.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/search/schema/resource/query/service/operation/validation/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/search/schema/resource/query/service/operation/validation/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/search/schema/resource/query/service/operation/workers.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/search/schema/resource/query/service/operation/workers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/search/schema/resource/query/service/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/search/schema/resource/query/service/service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/search/schema/resource/route/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/search/schema/resource/route/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/search/schema/resource/route/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/search/schema/resource/route/exception/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/search/schema/resource/route/exception/debug/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/search/schema/resource/route/exception/debug/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/search/schema/resource/route/exception/debug/missing.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/search/schema/resource/route/exception/debug/missing.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/search/schema/resource/route/exception/transaction.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/search/schema/resource/route/exception/transaction.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/search/schema/resource/route/router.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/search/schema/resource/route/router.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/search/schema/service/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/search/schema/service/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/search/schema/service/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/search/schema/service/service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/search/snapshot/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/search/snapshot/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/search/snapshot/service/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/search/snapshot/service/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/search/snapshot/service/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/search/snapshot/service/exception/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/search/snapshot/snapshot/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/search/snapshot/snapshot/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/search/square/finder/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/search/square/finder/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/search/square/finder/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/search/square/finder/exception/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/search/square/finder/exception/debug/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/search/square/finder/exception/debug/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/search/square/finder/square/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/search/square/finder/square/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/search/square/service/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/search/square/service/exception/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/search/team/finder/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/search/team/finder/exception/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/search/team/finder/exception/debug/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/search/team/finder/exception/debug/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/search/token/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/search/token/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/search/token/resource/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/search/token/resource/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/search/token/resource/context/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/search/token/resource/context/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/search/token/resource/context/service/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/search/token/resource/context/service/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/search/token/resource/context/service/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/search/token/resource/context/service/exception/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/search/token/resource/context/service/exception/anchor.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/search/token/resource/context/service/exception/anchor.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/search/token/resource/context/service/operation/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/search/token/resource/context/service/operation/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/search/token/resource/context/service/operation/controller.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/search/token/resource/context/service/operation/controller.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/search/token/resource/context/service/operation/workers.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/search/token/resource/context/service/operation/workers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/search/token/resource/context/service/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/search/token/resource/context/service/service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/search/token/resource/host.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/search/token/resource/host.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/search/token/resource/query/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/search/token/resource/query/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/search/token/resource/query/service/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/search/token/resource/query/service/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/search/token/resource/query/service/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/search/token/resource/query/service/exception/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/search/token/resource/query/service/exception/anchor.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/search/token/resource/query/service/exception/anchor.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/search/token/resource/query/service/operation/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/search/token/resource/query/service/operation/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/search/token/resource/query/service/operation/build/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/search/token/resource/query/service/operation/build/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/search/token/resource/query/service/operation/build/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/search/token/resource/query/service/operation/build/builder.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/search/token/resource/query/service/operation/build/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/search/token/resource/query/service/operation/build/exception/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/search/token/resource/query/service/operation/build/exception/transaction.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/search/token/resource/query/service/operation/build/exception/transaction.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/search/token/resource/query/service/operation/controller.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/search/token/resource/query/service/operation/controller.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/search/token/resource/query/service/operation/validation/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/search/token/resource/query/service/operation/validation/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/search/token/resource/query/service/operation/validation/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/search/token/resource/query/service/operation/validation/exception/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/search/token/resource/query/service/operation/validation/exception/candidate.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/search/token/resource/query/service/operation/validation/exception/candidate.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/search/token/resource/query/service/operation/validation/exception/stack.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/search/token/resource/query/service/operation/validation/exception/stack.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/search/token/resource/query/service/operation/validation/exception/transaction.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/search/token/resource/query/service/operation/validation/exception/transaction.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/search/token/resource/query/service/operation/workers.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/search/token/resource/query/service/operation/workers.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/toolkit/build/context/formation/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/toolkit/build/context/formation/builder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/toolkit/build/context/persona/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/toolkit/build/context/persona/builder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/validation/blueprint/persona/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/validation/blueprint/persona/validator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/validation/blueprint/token/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/validation/blueprint/token/validator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/validation/context/persona/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/validation/context/persona/validator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/validation/context/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/validation/context/validator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/validation/token/integrity/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/validation/token/integrity/validator.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/validation/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/validation/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/search/token/resource/query/service/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/search/token/resource/query/service/service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/search/token/searcher.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/search/token/searcher.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/search/token/service/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/search/token/service/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/search/token/service/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/search/token/service/exception/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/search/token/service/exception/anchor.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/search/token/service/exception/anchor.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/search/token/service/exception/exist.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/search/token/service/exception/exist.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/search/token/service/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/search/token/service/service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/suite/coord/suite.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/suite/coord/suite.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/suite/register/operand/suite.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/suite/register/operand/suite.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/suite/register/square/suite.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/suite/register/square/suite.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/suite/register/suite.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/suite/register/suite.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/suite/scalar/suite.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/suite/scalar/suite.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/suite/suite.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/suite/suite.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/suite/token/suite.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/suite/token/suite.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/suite/vector/suite.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/suite/vector/suite.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/toolkit/analyzer/bootstrapper/binder/board/toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/toolkit/analyzer/bootstrapper/binder/board/toolkit.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/toolkit/analyzer/bootstrapper/coord/toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/toolkit/analyzer/bootstrapper/coord/toolkit.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/toolkit/analyzer/bootstrapper/itinerary/toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/toolkit/analyzer/bootstrapper/itinerary/toolkit.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/toolkit/analyzer/bootstrapper/maneuver/toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/toolkit/analyzer/bootstrapper/maneuver/toolkit.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/toolkit/analyzer/bootstrapper/number/toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/toolkit/analyzer/bootstrapper/number/toolkit.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/toolkit/analyzer/bootstrapper/path/toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/toolkit/analyzer/bootstrapper/path/toolkit.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/toolkit/analyzer/bootstrapper/rank/toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/toolkit/analyzer/bootstrapper/rank/toolkit.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/toolkit/analyzer/bootstrapper/readiness/toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/toolkit/analyzer/bootstrapper/readiness/toolkit.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/toolkit/analyzer/bootstrapper/scalar/toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/toolkit/analyzer/bootstrapper/scalar/toolkit.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/toolkit/analyzer/bootstrapper/square/toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/toolkit/analyzer/bootstrapper/square/toolkit.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/toolkit/analyzer/bootstrapper/team/toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/toolkit/analyzer/bootstrapper/team/toolkit.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/toolkit/analyzer/bootstrapper/token/toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/toolkit/analyzer/bootstrapper/token/toolkit.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/toolkit/bootstrapper/detector/home/toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/toolkit/bootstrapper/detector/home/toolkit.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/toolkit/context/coord/toollkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/toolkit/context/coord/toollkit.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/toolkit/context/home/toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/toolkit/context/home/toolkit.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/toolkit/context/square/toollkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/toolkit/context/square/toollkit.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/toolkit/context/team/toollkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/toolkit/context/team/toollkit.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/toolkit/context/token/toollkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/toolkit/context/token/toollkit.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/toolkit/context/toollkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/toolkit/context/toollkit.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/toolkit/endpoint/toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/toolkit/endpoint/toolkit.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/toolkit/math/vector/toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/toolkit/math/vector/toolkit.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/toolkit/model/coord/toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/toolkit/model/coord/toolkit.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/toolkit/model/register/operand/toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/toolkit/model/register/operand/toolkit.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/toolkit/model/register/square/toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/toolkit/model/register/square/toolkit.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/toolkit/model/scalar/toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/toolkit/model/scalar/toolkit.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/toolkit/model/state/binder/board/toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/toolkit/model/state/binder/board/toolkit.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/toolkit/model/state/coord/toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/toolkit/model/state/coord/toolkit.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/toolkit/model/state/itinerary/toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/toolkit/model/state/itinerary/toolkit.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/toolkit/model/state/maneuver/toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/toolkit/model/state/maneuver/toolkit.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/toolkit/model/state/path/toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/toolkit/model/state/path/toolkit.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/toolkit/model/state/rank/toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/toolkit/model/state/rank/toolkit.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/toolkit/model/state/scalar/toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/toolkit/model/state/scalar/toolkit.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/toolkit/model/state/square/toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/toolkit/model/state/square/toolkit.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/toolkit/model/state/team/toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/toolkit/model/state/team/toolkit.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/toolkit/model/state/token/toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/toolkit/model/state/token/toolkit.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/toolkit/model/toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/toolkit/model/toolkit.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/toolkit/model/vector/toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/toolkit/model/vector/toolkit.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/toolkit/permitter/token/maneuver/toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/toolkit/permitter/token/maneuver/toolkit.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/toolkit/permitter/token/toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/toolkit/permitter/token/toolkit.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/toolkit/toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/toolkit/toolkit.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validation/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/validator/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validation/arena/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validation/arena/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/validator/arena/operation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validation/binder/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validation/binder/arena/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validation/binder/arena/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/validator/binder/arena/operation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validation/binder/board/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validation/binder/board/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/validator/binder/board/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validation/blueprint/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/validator/blueprint/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validation/blueprint/arena/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validation/blueprint/arena/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/validator/blueprint/arena/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validation/blueprint/board/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validation/blueprint/board/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/validator/blueprint/board/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validation/blueprint/coord/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validation/blueprint/coord/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/validator/blueprint/coord/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validation/blueprint/edge/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validation/blueprint/edge/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/validator/blueprint/edge/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validation/blueprint/formation/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validation/blueprint/formation/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/validator/blueprint/formation/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validation/blueprint/game/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validation/blueprint/game/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/validator/blueprint/game/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validation/blueprint/hostage/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validation/blueprint/hostage/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/validator/blueprint/hostage/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validation/blueprint/id/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validation/blueprint/id/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/validator/blueprint/id/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validation/blueprint/node/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validation/blueprint/node/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/validator/blueprint/node/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validation/blueprint/persona/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validation/blueprint/persona/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/validator/blueprint/persona/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validation/blueprint/player/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validation/blueprint/player/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/validator/blueprint/player/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validation/blueprint/priming/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validation/blueprint/priming/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/validator/blueprint/priming/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validation/blueprint/query/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/bootstrapper/operation/token/attack/service/exception/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validation/blueprint/rank/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validation/blueprint/rank/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/validator/blueprint/rank/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validation/blueprint/schema/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validation/blueprint/schema/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/validator/blueprint/schema/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validation/blueprint/square/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validation/blueprint/square/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/validator/blueprint/square/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validation/blueprint/team/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validation/blueprint/team/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/validator/blueprint/team/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validation/blueprint/token/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validation/blueprint/token/home/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validation/blueprint/token/home/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/validator/blueprint/token/home/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validation/blueprint/token/rank/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validation/blueprint/token/rank/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/validator/blueprint/token/rank/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validation/blueprint/token/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/validator/blueprint/token/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validation/blueprint/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/validator/blueprint/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validation/board/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validation/board/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/validator/board/operation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validation/context/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/validator/context/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validation/context/arena/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validation/context/arena/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/validator/context/arena/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validation/context/board/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validation/context/board/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/validator/context/board/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validation/context/coord/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validation/context/coord/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/validator/context/coord/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validation/context/edge/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validation/context/edge/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/validator/context/edge/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validation/context/formation/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validation/context/formation/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/validator/context/formation/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validation/context/game/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validation/context/game/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/validator/context/game/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validation/context/home/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validation/context/home/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/validator/context/home/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validation/context/hostage/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validation/context/hostage/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/validator/context/hostage/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validation/context/node/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validation/context/node/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/validator/context/node/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validation/context/persona/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validation/context/persona/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/validator/context/persona/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validation/context/player/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validation/context/player/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/validator/context/player/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validation/context/query/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/validator/blueprint/query/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validation/context/rank/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validation/context/rank/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/validator/context/rank/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validation/context/schema/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validation/context/schema/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/validator/context/schema/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validation/context/square/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validation/context/square/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/validator/context/square/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validation/context/team/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validation/context/team/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/validator/context/team/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validation/context/token/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validation/context/token/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/validator/context/token/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validation/context/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/validator/context/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validation/coord/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validation/coord/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/validator/coord/operation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validation/edge/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validation/edge/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/validator/edge/operation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validation/endpoint/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validation/endpoint/destination/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validation/endpoint/destination/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/validator/endpoint/destination/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validation/endpoint/origin/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validation/endpoint/origin/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/validator/endpoint/origin/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validation/endpoint/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/validator/endpoint/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validation/formation/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validation/formation/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/validator/formation/operation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validation/game/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validation/game/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/validator/game/operation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validation/hashtable/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validation/hashtable/schema/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validation/hashtable/schema/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/validator/hashtable/schema/operation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validation/hostage/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validation/hostage/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/validator/hostage/operation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validation/itinerary/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validation/itinerary/consistency/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validation/itinerary/consistency/destination/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validation/itinerary/consistency/destination/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/validator/itinerary/consistency/destination/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validation/itinerary/consistency/source/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validation/itinerary/consistency/source/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/validator/itinerary/consistency/source/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validation/itinerary/consistency/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/validator/itinerary/consistency/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validation/itinerary/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/validator/itinerary/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validation/maneuver/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validation/maneuver/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/validator/maneuver/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validation/node/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validation/node/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/validator/node/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validation/number/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validation/number/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/validator/number/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validation/operand/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validation/operand/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/validator/operand/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validation/path/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validation/path/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/validator/path/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validation/persona/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validation/persona/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/validator/persona/operation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validation/player/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validation/player/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/validator/player/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validation/query/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validation/query/token/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validation/query/token/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/validator/query/token/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validation/query/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/validator/query/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validation/rank/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validation/rank/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/validator/rank/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validation/register/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/validator/register/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validation/register/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/validator/register/model.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validation/register/operand/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validation/register/operand/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/validator/register/operand/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validation/register/square/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/validator/register/square/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validation/register/square/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/validator/register/square/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validation/scalar/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validation/scalar/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/validator/scalar/operation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validation/schema/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validation/schema/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/validator/schema/operation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validation/snapshot/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validation/snapshot/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/validator/snapshot/operation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validation/square/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validation/square/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/validator/square/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validation/string/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validation/string/name/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validation/string/name/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/validator/string/name/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validation/string/registry/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validation/string/registry/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/validator/string/registry/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validation/string/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/validator/string/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validation/team/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validation/team/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/validator/team/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validation/token/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/validator/token/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validation/token/consistency/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validation/token/consistency/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/validator/token/consistency/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validation/token/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/validator/token/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validation/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/validator/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validation/vector/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validation/vector/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/validator/vector/validator.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -160,11 +762,11 @@
       <recent name="$PROJECT_DIR$/src/context" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/assembler/model" />
       <recent name="$PROJECT_DIR$/src" />
       <recent name="$PROJECT_DIR$/src/model" />
       <recent name="$PROJECT_DIR$/src/err/bootstrapper/validator" />
       <recent name="$PROJECT_DIR$/src/bootstrap/validator/context" />
-      <recent name="$PROJECT_DIR$/src/err/null" />
     </key>
   </component>
   <component name="RunManager" selected="Python.notifier">
@@ -890,7 +1492,7 @@
       <workItem from="1782265217166" duration="7062000" />
       <workItem from="1782325486599" duration="56546000" />
       <workItem from="1782732939190" duration="235900000" />
-      <workItem from="1783222430394" duration="101249000" />
+      <workItem from="1783222430394" duration="103731000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />
@@ -1018,7 +1620,7 @@
           <option name="timeStamp" value="86" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/src/validation/team/exception/debug/__init__.py</url>
+          <url>file://$PROJECT_DIR$/src/validator/team/exception/debug/__init__.py</url>
           <line>12</line>
           <option name="timeStamp" value="87" />
         </line-breakpoint>
@@ -1038,7 +1640,7 @@
           <option name="timeStamp" value="99" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/src/validation/context/token/exception/debug/zero.py</url>
+          <url>file://$PROJECT_DIR$/src/validator/context/token/exception/debug/zero.py</url>
           <line>9</line>
           <option name="timeStamp" value="101" />
         </line-breakpoint>
@@ -1048,7 +1650,7 @@
           <option name="timeStamp" value="102" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/src/validation/rank/validator.py</url>
+          <url>file://$PROJECT_DIR$/src/validator/rank/validator.py</url>
           <line>9</line>
           <option name="timeStamp" value="107" />
         </line-breakpoint>
@@ -1063,7 +1665,7 @@
           <option name="timeStamp" value="110" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/src/validation/vector/exception/debug/__init__.py</url>
+          <url>file://$PROJECT_DIR$/src/validator/vector/exception/debug/__init__.py</url>
           <line>12</line>
           <option name="timeStamp" value="111" />
         </line-breakpoint>
@@ -1088,7 +1690,7 @@
           <option name="timeStamp" value="141" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/src/bootstrap/assembly/binder/board/operation.py</url>
+          <url>file://$PROJECT_DIR$/src/bootstrapper/assembly/binder/board/operation.py</url>
           <line>9</line>
           <option name="timeStamp" value="145" />
         </line-breakpoint>
@@ -1098,12 +1700,12 @@
           <option name="timeStamp" value="147" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/src/bootstrap/assembly/context/arena/operation.py</url>
+          <url>file://$PROJECT_DIR$/src/bootstrapper/assembly/context/arena/operation.py</url>
           <line>9</line>
           <option name="timeStamp" value="151" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/src/bootstrap/validation/binder/operation.py</url>
+          <url>file://$PROJECT_DIR$/src/bootstrapper/validation/binder/operation.py</url>
           <line>96</line>
           <option name="timeStamp" value="153" />
         </line-breakpoint>
@@ -1123,11 +1725,6 @@
           <option name="timeStamp" value="166" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/src/bootstrap/__init__.py</url>
-          <line>13</line>
-          <option name="timeStamp" value="167" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/src/operation/insertion/registry/service/operation.py</url>
           <line>9</line>
           <option name="timeStamp" value="169" />
@@ -1143,7 +1740,7 @@
           <option name="timeStamp" value="171" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/src/validation/__init__.py</url>
+          <url>file://$PROJECT_DIR$/src/validator/__init__.py</url>
           <line>12</line>
           <option name="timeStamp" value="172" />
         </line-breakpoint>
@@ -1198,7 +1795,7 @@
           <option name="timeStamp" value="189" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/src/bootstrap/assembly/operation.py</url>
+          <url>file://$PROJECT_DIR$/src/bootstrapper/assembly/operation.py</url>
           <line>9</line>
           <option name="timeStamp" value="192" />
         </line-breakpoint>
@@ -1208,7 +1805,7 @@
           <option name="timeStamp" value="193" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/src/bootstrap/assembly/itinerary/operation.py</url>
+          <url>file://$PROJECT_DIR$/src/bootstrapper/assembly/itinerary/operation.py</url>
           <line>243</line>
           <option name="timeStamp" value="194" />
         </line-breakpoint>
@@ -1268,7 +1865,7 @@
           <option name="timeStamp" value="212" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/src/validation/vector/validator.py</url>
+          <url>file://$PROJECT_DIR$/src/validator/vector/validator.py</url>
           <line>9</line>
           <option name="timeStamp" value="213" />
         </line-breakpoint>
@@ -1311,6 +1908,11 @@
           <url>file://$PROJECT_DIR$/src/model/rank/bishop/model.py</url>
           <line>9</line>
           <option name="timeStamp" value="222" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/operation/finalizer/finalizer.py</url>
+          <line>9</line>
+          <option name="timeStamp" value="223" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

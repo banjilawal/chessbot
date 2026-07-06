@@ -22,7 +22,7 @@ from permitter import OperationPermitter
 from report import PromotionApproval, TokenReadinessReport
 from result import AnalysisResult, MethodResultType
 from util import LoggingLevelRouter
-from validation import RankValidator, TokenValidator
+from validator import RankValidator, TokenValidator
 
 
 class PromotionPermitter(OperationPermitter):

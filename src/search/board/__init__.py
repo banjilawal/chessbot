@@ -7,7 +7,7 @@ Created: 2025-10-02
 version: 1.0.0
 """
 
-# =========== SEARCH.BOARD.CONTEXT PACKAGE ===========#
+# =========== SEARCHER.BOARD.CONTEXT PACKAGE ===========#
 
 # Packages
 from .builder import *

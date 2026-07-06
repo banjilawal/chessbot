@@ -7,7 +7,7 @@ Created: 2025-10-01
 version: 1.0.0
 """
 
-# =========== SEARCH.ARENA.CONTEXT.SERVICE PACKAGE ===========#
+# =========== SEARCHER.ARENA.CONTEXT.SERVICE PACKAGE ===========#
 
 # Packages
 from .exception import *

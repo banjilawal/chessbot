@@ -14,7 +14,7 @@ from dataclasses import dataclass
 from analyzer import SquareTokenRelationAnalyzer, TokenReadinessAnalyzer
 from search import TokenOriginSearcher
 from toolkit import PermitterToolkit
-from validation import SquareValidator, TokenValidator
+from validator import SquareValidator, TokenValidator
 
 @dataclass
 class TokenManeuverToolkit(PermitterToolkit):

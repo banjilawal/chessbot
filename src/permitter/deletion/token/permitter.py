@@ -17,7 +17,7 @@ from report import DeleteApproval
 from result import AnalysisResult, MethodResultType
 from stack import TokenStackService
 from util import LoggingLevelRouter
-from validation import PrimingValidator
+from validator import PrimingValidator
 
 
 class TokenDeletionPermitter:

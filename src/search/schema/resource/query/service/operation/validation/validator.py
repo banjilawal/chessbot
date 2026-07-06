@@ -1,7 +1,7 @@
-# src/logic/schema/database/search/context/service/operation/validation/validator.py
+# src/logic/schema/database/searcher/context/service/operation/validation/validator.py
 
 """
-Module: logic.schema.database.search.context.service.operation.validation.validator
+Module: logic.schema.database.searcher.context.service.operation.validation.validator
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0

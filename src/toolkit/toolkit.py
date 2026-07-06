@@ -12,7 +12,7 @@ from __future__ import annotations
 from abc import ABC
 from typing import Any, Dict, Generic, List, TypeVar
 
-from bootstrap import PrimingValidator
+from bootstrapper import PrimingValidator
 from controller import ServiceRegistryController, WorkerRegistryController
 from err import ToolkitException
 from microservice import Microservice

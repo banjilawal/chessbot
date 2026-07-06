@@ -17,7 +17,7 @@ from model import CombatantToken, KingToken, Token
 from report import FriendshipReport, FriendshipStatus
 from result import AnalysisResult
 from util import LoggingLevelRouter
-from validation import TokenValidator
+from validator import TokenValidator
 
 
 class FriendshipAnalyzer(Analyzer):

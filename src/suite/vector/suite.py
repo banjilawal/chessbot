@@ -12,7 +12,7 @@ from __future__ import annotations
 from builder import VectorBuilder
 from model import Vector
 from toolkit import ModelOperationSuite, VectorToolkit
-from validation import VectorValidator
+from validator import VectorValidator
 
 
 class VectorOperationSuite(ModelOperationSuite[Vector]):

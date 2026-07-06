@@ -7,7 +7,7 @@ Created: 2025-09-08
 version: 1.0.0
 """
 
-# =========== SEARCH.PERSONA.KEY.LOOKUP PACKAGE ===========#
+# =========== SEARCHER.PERSONA.KEY.LOOKUP PACKAGE ===========#
 
 # Packages
 from .exception import *

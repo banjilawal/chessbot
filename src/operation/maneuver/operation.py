@@ -16,7 +16,7 @@ from model import  Square, SquareState, Token
 from report import ManeuverApproval
 from result import EventResult, MethodResultType, UpdateResult
 from util import LoggingLevelRouter
-from validation import PrimingValidator
+from validator import PrimingValidator
 
 
 class Maneuver:

@@ -6,7 +6,7 @@ Created: 2025-10-06
 version: 1.0.0
 """
 
-# =========== SEARCH.SQUARE.CONTEXT.FINDER.EXCEPTION PACKAGE ===========#
+# =========== SEARCHER.SQUARE.CONTEXT.FINDER.EXCEPTION PACKAGE ===========#
 
 # Packages
 from .debug import *

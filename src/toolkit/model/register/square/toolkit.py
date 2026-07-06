@@ -12,7 +12,7 @@ from __future__ import annotations
 from err import SquareRegisterNullException
 from model import Square, SquareRegister
 from toolkit import RegisterToolkit
-from validation import SquareValidator
+from validator import SquareValidator
 
 
 class SquareRegisterToolkit(RegisterToolkit[Square]):

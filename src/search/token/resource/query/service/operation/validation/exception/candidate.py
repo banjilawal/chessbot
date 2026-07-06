@@ -1,7 +1,7 @@
-# src/logic/token/database/search/context/service/operation/validation/exception/debug/null.py
+# src/logic/token/database/searcher/context/service/operation/validation/exception/debug/null.py
 
 """
-Module: logic.token.database.search.context.service.operation.validation.exception.debug.null
+Module: logic.token.database.searcher.context.service.operation.validation.exception.debug.null
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0

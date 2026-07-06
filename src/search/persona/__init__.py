@@ -7,7 +7,7 @@ Created: 2025-09-08
 version: 1.0.0
 """
 
-# =========== SEARCH.PERSONA.KEY PACKAGE ===========#
+# =========== SEARCHER.PERSONA.KEY PACKAGE ===========#
 
 # Packages
 from .builder import *

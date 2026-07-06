@@ -1,7 +1,7 @@
-# src/logic/schema/database/search/service/microservice.py
+# src/logic/schema/database/searcher/service/microservice.py
 
 """
-Module: logic.schema.database.search.service.service
+Module: logic.schema.database.searcher.service.service
 Author: Banji Lawal
 Created: 2025-11-24
 version: 1.0.0

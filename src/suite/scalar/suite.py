@@ -12,7 +12,7 @@ from __future__ import annotations
 from builder import ScalarBuilder
 from model import Scalar
 from toolkit import ModelOperationSuite, ScalarToolkit
-from validation import ScalarValidator
+from validator import ScalarValidator
 
 
 class ScalarOperationSuite(ModelOperationSuite[Scalar]):
