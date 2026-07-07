@@ -8,18 +8,18 @@ version: 1.0.1
 """
 
 from __future__ import annotations
-from typing import Type, cast
 
-from bootstrapper import PrimingValidator
-from detector import TokenCollisionDetector
-from err import PushRequestNullException, TokenPushPermitterException, TokenStackNullException
+from typing import cast
+
+from detector.token import TokenCollisionDetector
+from err import TokenPushPermitterException
 from model import Token
 from permitter import PushPermitter, RankSlotPermitter
 from report import PushApprovalReport
 from request import PushRequest, RankSlotRequest
 from stack import TokenStackService
+from tester.stack import TokenPushRequestTester
 from util import IdFactory, LoggingLevelRouter
-from validator import TokenValidator
 
 
 class TokenPushPermitter(PushPermitter[Token]):
@@ -33,11 +33,9 @@ class TokenPushPermitter(PushPermitter[Token]):
         1.  Run tests to see if permission can be granted to a TokenStackService to execute a push.
 
     Attributes:
-        token_validator: TokenValidator
-        rank_service: RankService
-        quota_analyzer: RankQuotaAnalyzer
         collision_detector: TokenCollisionDetector
-        priming_validator: PrimingValidator
+        rank_slot_permitter: RankSlotPermitter
+        request_tester: TokenPushRequestTester
 
     Provides:
         -   execute(request: PushRequest) -> PushApprovalReport
@@ -45,25 +43,26 @@ class TokenPushPermitter(PushPermitter[Token]):
     Super Class:
         PushPermitter
     """
-    _token_validator: TokenValidator
     _rank_slot_permitter: RankSlotPermitter
     _collision_detector: TokenCollisionDetector
+    _request_tester: TokenPushRequestTester
     
     def __init__(
             self,
-            token_validator: TokenValidator | None = TokenValidator(),
             rank_slot_permitter: RankSlotPermitter = RankSlotPermitter(),
             collision_detector: TokenCollisionDetector | None = TokenCollisionDetector(),
+            request_tester: TokenPushRequestTester | None = TokenPushRequestTester()
     ):
         """
         Args:
             collision_detector: TokenCollisionDetector
             rank_slot_permitter: RankSlotPermitter
+            request_tester: TokenPushRequestTester
         """
         super().__init__()
-        self._token_validator = token_validator
         self._collision_detector = collision_detector
         self._rank_slot_permitter = rank_slot_permitter
+        self._request_tester = request_tester
         
         
     @LoggingLevelRouter.monitor
@@ -90,8 +89,8 @@ class TokenPushPermitter(PushPermitter[Token]):
         method =  f"{self.__class__.__name__}.execute"
         
         # Handle the case that, the request is not bootstrapped successfully.
-        bootstrap_result = self.bootstrap_request(request)
-        if bootstrap_result.is_failure:
+        bootstrap = self._request_tester.execute(candidate=request)
+        if bootstrap.is_failure:
             # Send an exception chain in the permission denial.
             return PushApprovalReport.deny(
                 TokenPushPermitterException(
@@ -99,29 +98,32 @@ class TokenPushPermitter(PushPermitter[Token]):
                     cls_name=self.__class__.__name__,
                     msg=TokenPushPermitterException.MSG,
                     err_code=TokenPushPermitterException.ERR_CODE,
-                    ex=bootstrap_result.exception,
+                    ex=bootstrap.exception,
                 )
             )
-        # Handle the case that, the item is not a safe token.
-        token_test = self._token_validator.execute(
-            candidate=request.item
+
+        token = cast(Token, request.item)
+        stack = cast(TokenStackService, request.stack)
+        
+        # Handle the case that, there is no opening for the token's rank.
+        rank_opening = self._rank_slot_permitter.run(
+            RankSlotRequest(
+                id=IdFactory.next_id(class_name="RankSLotRequest"),
+                token_stack=stack,
+                rank=token.rank,
+            )
         )
-        # Send the exception chain in the permission denial.
-        if token_test.is_failure:
-            PushApprovalReport.deny(
-                exception=TokenPushPermitterException(
+        if rank_opening.is_denied:
+            # Send an exception chain in the permission denial.
+            return PushApprovalReport.deny(
+                TokenPushPermitterException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
                     msg=TokenPushPermitterException.MSG,
                     err_code=TokenPushPermitterException.ERR_CODE,
-                    ex=token_test.exception,
+                    ex=rank_opening.exception,
                 )
             )
-
-        # Extract the token and stack for additional testing.
-        token = cast(Token, token_test.payload)
-        stack = cast(TokenStackService, stack_test.payload)
-        
         # Handle the case that, token conflicts with a current stack member.
         report = self._collision_detector.execute(attractor=token, stream=stack)
         if report.collision_exists:

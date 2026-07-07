@@ -8,16 +8,15 @@ version: 1.0.1
 """
 
 from __future__ import annotations
-from typing import cast
 
 from err import TokenPusherException
 from model import Token
 from permitter import TokenPushPermitter
 from pusher import Pusher
-from report import PushApprovalReport
+from request import PushRequest
 from result import InsertionResult, MethodResultType
 from stack import TokenStackService, TokenStackState
-from util import LoggingLevelRouter
+from util import IdFactory, LoggingLevelRouter
 
 
 class TokenPusher(Pusher[Token]):
@@ -31,76 +30,62 @@ class TokenPusher(Pusher[Token]):
         1.  Token insertion process owner.
 
     Attributes:
-
+        permitter: TokenPushPermitter
+        
     Provides:
-        -   execute(
-                    cls,
-                    item: Token,
-                    stack: TokenStackService,
-                    push_permitter: TokenPushPermitter,
-            ) -> InsertionResult
+        -   execute(self, item: Token, stack: TokenStackService,) -> InsertionResult
 
     Super Class:
         Pusher
     """
+    _permitter: TokenPushPermitter | None = None
     
-    @classmethod
+    def __init__(self, permitter: TokenPushPermitter | None = TokenPushPermitter()):
+        """
+        Args:
+            permitter: TokenPushPermitter
+        """
+        self._permitter = permitter
+        
+    
     @LoggingLevelRouter.monitor
-    def execute(
-            cls,
-            item: Token,
-            stack: TokenStackService,
-            push_permitter: TokenPushPermitter | None = None,
-    ) -> InsertionResult:
+    def execute(self, item: Token, stack: TokenStackService,) -> InsertionResult:
         """
         Action:
-            1.  Return an exception chain in the InsertionResult if either
-                    -   The push_permitter does not complete its analysis.
-                    -   Push permission is denied.
+            1.  Return an exception chain in the InsertionResult if permission is
+                not granted for the push.
             2.  Otherwise, perform the insertion then, send the success result.
         Args:
             item: Token
             stack: TokenStackService
-            push_permitter: TokenPushPermitter
         Returns:
             InsertionResult
         Raises:
             TokenPusherException
         """
-        method =  f"{cls.__name__}.push"
-    
-        if push_permitter is None:
-            push_permitter = TokenPushPermitter()
-            
-        permission_analysis_result = push_permitter.run(item=item, stack=stack)
-        # Handle the case that, the push_permitter does not complete analysis.
-        if permission_analysis_result.is_failure:
-            # Return the exception chain on failure
-            return InsertionResult.failure(
-                TokenPusherException(
-                    cls_mthd=method,
-                    cls_name=cls.__name__,
-                    msg=TokenPusherException.MSG,
-                    err_code=TokenPusherException.ERR_CODE,
-                    mthd_rslt_type=MethodResultType.INSERTION_RESULT,
-                    ex=permission_analysis_result.exception
-                )
+        method =  f"{self.__class__.__name__}.execute"
+        
+        # Handle the case that, push rights are not granted.
+        permission = self._permitter.run(
+            request=PushRequest(
+                item=item,
+                stack=stack,
+                id=IdFactory.next_id(class_name="PushRequest"),
             )
-        permission = cast(PushApprovalReport, permission_analysis_result.payload)
-        # Handle the case that, push permission is denied.
+        )
         if permission.is_denied:
             # Return the exception chain on failure
             return InsertionResult.failure(
                 TokenPusherException(
                     cls_mthd=method,
-                    cls_name=cls.__name__,
+                    cls_name=self.__class__.__name__,
                     msg=TokenPusherException.MSG,
                     err_code=TokenPusherException.ERR_CODE,
                     mthd_rslt_type=MethodResultType.INSERTION_RESULT,
                     ex=permission.exception
                 )
             )
-        # Push the token onto the stack
+        # Otherwise, complete the push steps.
         stack.items.append(item)
         # Maintain state.
         if stack.is_full:

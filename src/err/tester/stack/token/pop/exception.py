@@ -1,7 +1,7 @@
-# src/err/tester/stack/token/exception.py
+# src/err/tester/stack/token/pop/exception.py
 
 """
-Module: err.tester.stack.token.exception
+Module: err.tester.stack.token.pop.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -16,18 +16,18 @@ from result import MethodResultType
 
 
 __all__ = [
-    # ======================# TOKEN_STACK_PUSH_TESTER_FAILURE #======================#
-    "TokenStackPushTesterException",
+    # ======================# TOKEN_STACK_POP_TESTER_FAILURE #======================#
+    "TokenPopRequestTesterException",
 ]
 
-# ======================# TOKEN_STACK_PUSH_TESTER_FAILURE #======================#
-class TokenStackPushTesterException(StackTesterException):
+# ======================# TOKEN_STACK_POP_TESTER_FAILURE #======================#
+class TokenPopRequestTesterException(StackTesterException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a TokenStackPushTester encountered an error.
+        1.  Indicate that a TokenStackPopTester encountered an error.
 
     Cannot Be Tester.s:
             msg: Optional[str]
@@ -44,8 +44,8 @@ class TokenStackPushTesterException(StackTesterException):
     Super Class:
         StackTesterException
     """
-    MSG = "TokenStackPushTester failure."
-    ERR_CODE = "TOKEN_STACK_PUSH_TESTER_FAILURE"
+    MSG = "TokenStackPopTester failure."
+    ERR_CODE = "TOKEN_STACK_POP_TESTER_FAILURE"
     
     def __init__(
             self,

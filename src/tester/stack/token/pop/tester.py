@@ -1,7 +1,7 @@
-# src/tester/stack/push/tester.py
+# src/tester/stack/token/pop/tester.py
 
 """
-Module: tester.stack.push.tester
+Module: tester.stack.token.pop.tester
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -12,109 +12,85 @@ from __future__ import annotations
 
 from typing import Any, Type, cast
 
-from bootstrapper import PrimingValidator, PushPermitterBootstrapper
-from err import TokenStackNullException, TokenStackPushTesterException
-from request import PushRequest
+from bootstrapper import PrimingValidator, PopPermitterBootstrapper
+from err import TokenStackNullException, TokenPopRequestTesterException
+from request import PopRequest
 from result import MethodResultType, ValidationResult
 from stack import TokenStackService
 from util import LoggingLevelRouter
-from validator import TokenValidator
 
 
-class TokenStackPushTester:
+class TokenPopRequestTester:
     """
     Role:
         -   Helper
         -   Test Runner
         
     Responsibilities:
-        1.  Check if the subject is a push that can be promoted.
+        1.  Check if the subject is a pop that can be promoted.
         
     Attributes:
-        item_validator: TokenValidator
         priming_validator: PrimingValidator
-        bootstrapper: PushPermitterBootstrapper
+        bootstrapper: PopPermitterBootstrapper
           
     Provides:
         -   def execute(self, subject: Any) -> ValidationResult:
             
     Super Class:
     """
-    _item_validator: TokenValidator
     _priming_validator: PrimingValidator
-    _bootstrapper: PushPermitterBootstrapper
+    _bootstrapper: PopPermitterBootstrapper
     
     def __init__(
             self,
-            item_validator: TokenValidator | None = TokenValidator(),
             priming_validator: PrimingValidator | None = PrimingValidator(),
-            bootstrapper: PushPermitterBootstrapper | None = PushPermitterBootstrapper(),
+            bootstrapper: PopPermitterBootstrapper | None = PopPermitterBootstrapper(),
     ):
         """
         Args:
-            item_validator: TokenValidator
             priming_validator: PrimingValidator
-            bootstrapper: PushPermitterBootstrapper
+            bootstrapper: PopPermitterBootstrapper
         """
         self._bootstrapper = bootstrapper
-        self._item_validator = item_validator
         self._priming_validator = priming_validator
     
     
     @LoggingLevelRouter.monitor
     def execute(self, candidate: Any,) -> ValidationResult:
         """
-        Verifies the subject is a promotable push.
+        Verifies the subject is a promotable pop.
         
         Action:
             1.  Send an exception chain in the ValidationResult if any of the following occur:
                     -   The subject is flagged unsafe.
-                    -   The subject is not a free push.
-                    -   The push has already been promoted.
+                    -   The subject is not a free pop.
+                    -   The pop has already been promoted.
                     -   Is not on its enemy's rank_row.
             2.  Otherwise, Send the success result.
         Args:
             candidate: Any
         Returns:
-            ValidationResult[PushToken]
+            ValidationResult[PopToken]
         Raises:
-            TokenStackPushTesterException
-            PromoteInactivePushException
-            PushDoubleStackException
-            PushStackRowException
-            TypeError
+            TokenStackPopTesterException
         """
         method = f"{self.__class__.__name__}.execute"
         
-        # Handle the case that, the PushRequest is not bootstrapped successfully.
+        # Handle the case that, the PopRequest is not bootstrapped successfully.
         bootstrap = self._bootstrapper.execute(candidate)
         if bootstrap.is_failure:
             # Send the exception chain in the result.
             return ValidationResult.failure(
-                TokenStackPushTesterException(
+                TokenPopRequestTesterException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=TokenStackPushTesterException.MSG,
-                    err_code=TokenStackPushTesterException.ERR_CODE,
+                    msg=TokenPopRequestTesterException.MSG,
+                    err_code=TokenPopRequestTesterException.ERR_CODE,
                     mthd_rslt_type=MethodResultType.VALIDATION_RESULT,
                     ex=bootstrap.exception
                 )
             )
-        request = cast(PushRequest, bootstrap.payload)
-        # handle the case that, the item is not a safe token.
-        token_test = self._item_validator.execute(request.item)
-        if token_test.is_failure:
-            # Send the exception chain in the result.
-            return ValidationResult.failure(
-                TokenStackPushTesterException(
-                    cls_mthd=method,
-                    cls_name=self.__class__.__name__,
-                    msg=TokenStackPushTesterException.MSG,
-                    err_code=TokenStackPushTesterException.ERR_CODE,
-                    mthd_rslt_type=MethodResultType.VALIDATION_RESULT,
-                    ex=token_test.exception
-                )
-            )
+        request = cast(PopRequest, bootstrap.payload)
         # Handle the case that, the request contains a malformed stack.
         stack_test = self._priming_validator.execute(
             candidate=request.stack,
@@ -125,11 +101,11 @@ class TokenStackPushTester:
         if stack_test.is_failure:
             # Send the exception chain in the result.
             return ValidationResult.failure(
-                TokenStackPushTesterException(
+                TokenPopRequestTesterException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=TokenStackPushTesterException.MSG,
-                    err_code=TokenStackPushTesterException.ERR_CODE,
+                    msg=TokenPopRequestTesterException.MSG,
+                    err_code=TokenPopRequestTesterException.ERR_CODE,
                     mthd_rslt_type=MethodResultType.VALIDATION_RESULT,
                     ex=stack_test.exception
                 )

@@ -10,7 +10,6 @@ version: 1.0.1
 # =========== TESTER.STACK PACKAGE ===========#
 
 # Packages
-from .push import *
-from .rank import *
+
 
 # Modules
