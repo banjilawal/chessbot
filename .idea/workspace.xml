@@ -4,7 +4,32 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="" />
+    <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/err/permitter/slot/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/permitter/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/permitter/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/permitter/delete/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/permitter/delete/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/permitter/delete/token/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/permitter/delete/token/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/permitter/pop/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/permitter/pop/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/permitter/pop/token/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/permitter/pop/token/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/permitter/push/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/permitter/push/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/permitter/push/token/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/permitter/push/token/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/permitter/token/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/permitter/token/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/permitter/slot/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/permitter/token/maneuver/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/permitter/maneuver/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/permitter/token/maneuver/deployed/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/permitter/maneuver/deployed/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/permitter/token/maneuver/deployed/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/permitter/maneuver/deployed/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/permitter/token/maneuver/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/permitter/maneuver/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/permitter/token/maneuver/undo/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/permitter/maneuver/undo/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/permitter/token/maneuver/undo/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/permitter/maneuver/undo/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/permitter/token/maneuver/undo/max/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/permitter/maneuver/undo/max/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/permitter/token/maneuver/undo/max/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/permitter/maneuver/undo/max/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/permitter/token/promotion/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/permitter/promotion/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/permitter/token/promotion/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/permitter/promotion/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/permitter/push/token/permitter.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/permitter/push/token/permitter.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/permitter/quota/permitter.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/permitter/quota/permitter.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/report/approval/slot/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/report/approval/slot/__init__.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -57,7 +82,7 @@
     "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/report/approval",
+    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/err/permitter",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
@@ -69,18 +94,18 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/err/permitter" />
+      <recent name="$PROJECT_DIR$/src/err/null/request" />
       <recent name="$PROJECT_DIR$/src/report/approval" />
       <recent name="$PROJECT_DIR$/src/permitter" />
       <recent name="$PROJECT_DIR$/src/request" />
-      <recent name="$PROJECT_DIR$/src/bootstrapper/analyzer" />
-      <recent name="$PROJECT_DIR$/src/detector/collision" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/err/permitter" />
       <recent name="$PROJECT_DIR$/src/permitter/quota" />
       <recent name="$PROJECT_DIR$/src/permitter" />
       <recent name="$PROJECT_DIR$/src/analyzer/quota/rank" />
       <recent name="$PROJECT_DIR$/src/detector/collision" />
-      <recent name="$PROJECT_DIR$/src" />
     </key>
   </component>
   <component name="RunManager" selected="Python.notifier">
@@ -806,7 +831,7 @@
       <workItem from="1782265217166" duration="7062000" />
       <workItem from="1782325486599" duration="56546000" />
       <workItem from="1782732939190" duration="235900000" />
-      <workItem from="1783222430394" duration="125945000" />
+      <workItem from="1783222430394" duration="129359000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />

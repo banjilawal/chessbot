@@ -14,11 +14,11 @@ from err import PermitterException
 from result import MethodResultType
 
 __all__ = [
-    # ======================# POP_PERMITTER_FAILURE #======================#
+    # ======================# POP_PERMISSION_DENIAL #======================#
     "PopPermitterException",
 ]
 
-# ======================# POP_PERMITTER_FAILURE #======================#
+# ======================# POP_PERMISSION_DENIAL #======================#
 class PopPermitterException(PermitterException):
     """
     Role:
@@ -43,7 +43,7 @@ class PopPermitterException(PermitterException):
         PermitterException
     """
     MSG = "PopPermitter did not complete its analysis."
-    ERR_CODE = "POP_PERMITTER_FAILURE"
+    ERR_CODE = "POP_PERMISSION_DENIAL"
     MTHD_RSLT_TYPE = MethodResultType.ANALYSIS_RESULT
     
     def __init__(

@@ -14,11 +14,11 @@ from err import DeletePermitterException
 from result import MethodResultType
 
 __all__ = [
-    # ======================# TOKEN_DELETE_PERMITTER_FAILURE #======================#
+    # ======================# TOKEN_DELETE_PERMISSION_DENIAL #======================#
     "TokenDeletionPermitterException",
 ]
 
-# ======================# TOKEN_DELETE_PERMITTER_FAILURE #======================#
+# ======================# TOKEN_DELETE_PERMISSION_DENIAL #======================#
 class TokenDeletionPermitterException(DeletePermitterException):
     """
     Role:
@@ -43,7 +43,7 @@ class TokenDeletionPermitterException(DeletePermitterException):
         DeletePermitterException
     """
     MSG = "TokenDeletePermitter did not complete its analysis."
-    ERR_CODE = "TOKEN_DELETE_PERMITTER_FAILURE"
+    ERR_CODE = "TOKEN_DELETE_PERMISSION_DENIAL"
     
     def __init__(
             self,

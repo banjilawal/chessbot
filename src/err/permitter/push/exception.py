@@ -14,11 +14,11 @@ from err import PermitterException
 from result import MethodResultType
 
 __all__ = [
-    # ======================# PUSH_PERMITTER_FAILURE #======================#
+    # ======================# PUSH_PERMISSION_DENIAL #======================#
     "PushPermitterException",
 ]
 
-# ======================# PUSH_PERMITTER_FAILURE #======================#
+# ======================# PUSH_PERMISSION_DENIAL #======================#
 class PushPermitterException(PermitterException):
     """
     Role:
@@ -43,7 +43,7 @@ class PushPermitterException(PermitterException):
         PermitterException
     """
     MSG = "PushPermitter did not complete its analysis."
-    ERR_CODE = "PUSH_PERMITTER_FAILURE"
+    ERR_CODE = "PUSH_PERMISSION_DENIAL"
     MTHD_RSLT_TYPE = MethodResultType.ANALYSIS_RESULT
     
     def __init__(

@@ -1,7 +1,7 @@
-# src/err/permitter/token/maneuver/deployed/exception.py
+# src/err/permitter/promote/exception.py
 
 """
-Module: err.permitter.token.maneuver.deployed.exception
+Module: err.permitter.promote.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,24 +10,23 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import TokenUndoMovePermitterException
+from err import PermitterException
 from result import MethodResultType
 
 __all__ = [
-    # ======================# MOVE_UNDEPLOYED_TOKEN_ERROR #======================#
-    "MoveUndeployedTokenException",
+    # ======================# PROMOTION_PERMISSION_DENIAL #======================#
+    "PromotionPermitterException",
 ]
 
-# ======================# MOVE_UNDEPLOYED_TOKEN_ERROR #======================#
-class MoveUndeployedTokenException(TokenUndoMovePermitterException):
+# ======================# PROMOTION_PERMISSION_DENIAL #======================#
+class PromotionPermitterException(PermitterException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an attempt was made to move a token which has not
-            been deployed to its home square.
-            
+        1.  Indicate that an error prevented a PromotionPermitter from completing its task.
+
     Attributes:
         msg: Optional[str]
         var: Optional[str]
@@ -36,15 +35,15 @@ class MoveUndeployedTokenException(TokenUndoMovePermitterException):
         cls_name: Optional[str]
         cls_mthd: Optional[str]
         err_code: Optional[str]
-        Mthd_Rslt_Type: Optional[MethodResultType]
-        
+        mthd_rslt_type: Optional[MethodResultType]
+            
     Provides:
 
     Super Class:
-        TokenUndoMovePermitterException
+        PermitterException
     """
-    MSG = "Cannot move a token until its placed on its home square first."
-    ERR_CODE = "MOVE_UNDEPLOYED_TOKEN_ERROR"
+    MSG = "PromotionPermitter error."
+    ERR_CODE = "PROMOTION_PERMISSION_DENIAL"
     
     def __init__(
             self,
@@ -58,12 +57,12 @@ class MoveUndeployedTokenException(TokenUndoMovePermitterException):
             mthd_rslt_type: Optional[MethodResultType] | None = None,
     ):
         """
-        args:
-            Msg: Optional[str]
-            Var: Optional[str]
-            val: Optional[any]
+        Args:
+            msg: Optional[str]
+            var: Optional[str]
+            val: Optional[Any]
             ex: Optional[Exception]
-            cls_name: Optional[Str]
+            cls_name: Optional[str]
             cls_mthd: Optional[str]
             err_code: Optional[str]
             mthd_rslt_type: Optional[MethodResultType]
@@ -78,5 +77,5 @@ class MoveUndeployedTokenException(TokenUndoMovePermitterException):
             err_code=err_code,
             cls_name=cls_name,
             cls_mthd=cls_mthd,
-            mthd_rslt_type=mthd_rslt_type,
+            mthd_rslt_type=mthd_rslt_type
         )

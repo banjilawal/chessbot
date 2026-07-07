@@ -14,11 +14,11 @@ from err import PushPermitterException
 from result import MethodResultType
 
 __all__ = [
-    # ======================# TOKEN_PUSH_PERMITTER_FAILURE #======================#
+    # ======================# TOKEN_PUSH_PERMISSION_DENIAL #======================#
     "TokenPushPermitterException",
 ]
 
-# ======================# TOKEN_PUSH_PERMITTER_FAILURE #======================#
+# ======================# TOKEN_PUSH_PERMISSION_DENIAL #======================#
 class TokenPushPermitterException(PushPermitterException):
     """
     Role:
@@ -43,7 +43,7 @@ class TokenPushPermitterException(PushPermitterException):
         PushingStackException
     """
     MSG = "TokenPushPermitter did not complete its analysis."
-    ERR_CODE = "TOKEN_PUSH_PERMITTER_FAILURE"
+    ERR_CODE = "TOKEN_PUSH_PERMISSION_DENIAL"
     
     def __init__(
             self,

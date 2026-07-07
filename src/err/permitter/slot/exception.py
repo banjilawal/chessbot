@@ -1,7 +1,7 @@
-# src/err/permitter/token/undo/exception.py
+# src/err/permitter/slot/exception.py
 
 """
-Module: err.permitter.token.undo.exception
+Module: err.permitter.slot.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,23 +10,23 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import TokenManeuverPermitter
+from err import PermitterException
 from result import MethodResultType
 
 __all__ = [
-    # ======================# TOKEN_UNDO_MOVE_PERMITTER_FAILURE #======================#
-    "TokenUndoMovePermitterException",
+    # ======================# RANK_SLOT_PERMISSION_DENIAL #======================#
+    "RankSlotPermitterException",
 ]
 
-# ======================# TOKEN_UNDO_MOVE_PERMITTER_FAILURE #======================#
-class TokenUndoMovePermitterException(TokenManeuverPermitter):
+# ======================# RANK_SLOT_PERMISSION_DENIAL #======================#
+class RankSlotPermitterException(PermitterException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an error prevented a TokenUndoMovePermitter from 
-            completing its task.
+        1.  Indicates the RankSlotPermitter did not grant a Token a slot
+            for its rank.
 
     Attributes:
         msg: Optional[str]
@@ -36,15 +36,16 @@ class TokenUndoMovePermitterException(TokenManeuverPermitter):
         cls_name: Optional[str]
         cls_mthd: Optional[str]
         err_code: Optional[str]
-        Mthd_Rslt_Type: Optional[MethodResultType]
-        
+        mthd_rslt_type: Optional[MethodResultType]
+            
     Provides:
 
     Super Class:
-        TokenManeuverPermitter
+        PermitterException
     """
-    MSG = "TokenUndoMovePermitter error."
-    ERR_CODE = "TOKEN_UNDO_MOVE_PERMITTER_FAILURE"
+    MSG = "Rank opening denied"
+    ERR_CODE = "RANK_SLOT_PERMISSION_DENIAL"
+    MTHD_RSLT_TYPE = MethodResultType.ANALYSIS_RESULT
     
     def __init__(
             self,
@@ -58,18 +59,19 @@ class TokenUndoMovePermitterException(TokenManeuverPermitter):
             mthd_rslt_type: Optional[MethodResultType] | None = None,
     ):
         """
-        args:
-            Msg: Optional[str]
-            Var: Optional[str]
-            val: Optional[any]
+        Args:
+            msg: Optional[str]
+            var: Optional[str]
+            val: Optional[Any]
             ex: Optional[Exception]
-            cls_name: Optional[Str]
+            cls_name: Optional[str]
             cls_mthd: Optional[str]
             err_code: Optional[str]
             mthd_rslt_type: Optional[MethodResultType]
         """
         msg = msg or self.MSG
         err_code = err_code or self.ERR_CODE
+        mthd_rslt_type = mthd_rslt_type or self.MTHD_RSLT_TYPE
         super().__init__(
             ex=ex,
             msg=msg,
@@ -78,5 +80,5 @@ class TokenUndoMovePermitterException(TokenManeuverPermitter):
             err_code=err_code,
             cls_name=cls_name,
             cls_mthd=cls_mthd,
-            mthd_rslt_type=mthd_rslt_type,
+            mthd_rslt_type=mthd_rslt_type
         )

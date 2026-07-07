@@ -14,11 +14,11 @@ from err import PopPermitterException
 from result import MethodResultType
 
 __all__ = [
-    # ======================# TOKEN_POP_PERMITTER_FAILURE #======================#
+    # ======================# TOKEN_POP_PERMISSION_DENIAL #======================#
     "TokenPopPermitterException",
 ]
 
-# ======================# TOKEN_POP_PERMITTER_FAILURE #======================#
+# ======================# TOKEN_POP_PERMISSION_DENIAL #======================#
 class TokenPopPermitterException(PopPermitterException):
     """
     Role:
@@ -43,7 +43,7 @@ class TokenPopPermitterException(PopPermitterException):
         PopPermitterException
     """
     MSG = "TokenPopPermitter did not complete its analysis."
-    ERR_CODE = "TOKEN_POP_PERMITTER_FAILURE"
+    ERR_CODE = "TOKEN_POP_PERMISSION_DENIAL"
     
     def __init__(
             self,

@@ -14,11 +14,11 @@ from err import PermitterException
 from result import MethodResultType
 
 __all__ = [
-    # ======================# DELETE_PERMITTER_FAILURE #======================#
+    # ======================# DELETE_PERMISSION_DENIAL #======================#
     "DeletePermitterException",
 ]
 
-# ======================# DELETE_PERMITTER_FAILURE #======================#
+# ======================# DELETE_PERMISSION_DENIAL #======================#
 class DeletePermitterException(PermitterException):
     """
     Role:
@@ -43,7 +43,7 @@ class DeletePermitterException(PermitterException):
         PermitterException
     """
     MSG = "DeletePermitter did not complete its analysis."
-    ERR_CODE = "DELETE_PERMITTER_FAILURE"
+    ERR_CODE = "DELETE_PERMISSION_DENIAL"
     MTHD_RSLT_TYPE = MethodResultType.ANALYSIS_RESULT
     
     def __init__(

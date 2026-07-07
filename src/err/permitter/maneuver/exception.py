@@ -1,7 +1,7 @@
-# src/err/permitter/token/undo/max/exception.py
+# src/err/permitter/promote/exception.py
 
 """
-Module: err.permitter.token.undo.max.exception
+Module: err.permitter.promote.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,24 +10,23 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import TokenUndoMovePermitterException
+from err import PermitterException
 from result import MethodResultType
 
 __all__ = [
-    # ======================# MAX_UNDO_MOVE_ERROR #======================#
-    "MaxMoveUndoException",
+    # ======================# TOKEN_MANEUVER_PERMISSION_DENIAL #======================#
+    "ManeuverPermitterException",
 ]
 
-# ======================# MAX_UNDO_MOVE_ERROR #======================#
-class MaxMoveUndoException(TokenUndoMovePermitterException):
+# ======================# TOKEN_MANEUVER_PERMISSION_DENIAL #======================#
+class ManeuverPermitterException(PermitterException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a Token move tried to undo more than one move during a
-            turn.
-            
+        1.  Indicate that an error prevented a ManeuverPermitter from completing its task.
+
     Attributes:
         msg: Optional[str]
         var: Optional[str]
@@ -36,15 +35,15 @@ class MaxMoveUndoException(TokenUndoMovePermitterException):
         cls_name: Optional[str]
         cls_mthd: Optional[str]
         err_code: Optional[str]
-        Mthd_Rslt_Type: Optional[MethodResultType]
-        
+        mthd_rslt_type: Optional[MethodResultType]
+            
     Provides:
 
     Super Class:
-        TokenUndoMovePermitterException
+        PermitterException
     """
-    MSG = "Can only undo a single move during a turn."
-    ERR_CODE = "MAX_UNDO_MOVE_ERROR"
+    MSG = "ManeuverPermitter error."
+    ERR_CODE = "TOKEN_MANEUVER_PERMISSION_DENIAL"
     
     def __init__(
             self,
@@ -58,18 +57,19 @@ class MaxMoveUndoException(TokenUndoMovePermitterException):
             mthd_rslt_type: Optional[MethodResultType] | None = None,
     ):
         """
-        args:
-            Msg: Optional[str]
-            Var: Optional[str]
-            val: Optional[any]
+        Args:
+            msg: Optional[str]
+            var: Optional[str]
+            val: Optional[Any]
             ex: Optional[Exception]
-            cls_name: Optional[Str]
+            cls_name: Optional[str]
             cls_mthd: Optional[str]
             err_code: Optional[str]
             mthd_rslt_type: Optional[MethodResultType]
         """
         msg = msg or self.MSG
         err_code = err_code or self.ERR_CODE
+        mthd_rslt_type = mthd_rslt_type or self.MTHD_RSLT_TYPE
         super().__init__(
             ex=ex,
             msg=msg,
@@ -78,5 +78,5 @@ class MaxMoveUndoException(TokenUndoMovePermitterException):
             err_code=err_code,
             cls_name=cls_name,
             cls_mthd=cls_mthd,
-            mthd_rslt_type=mthd_rslt_type,
+            mthd_rslt_type=mthd_rslt_type
         )

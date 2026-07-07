@@ -17,11 +17,12 @@ from err import PushRequestNullException, TokenPushPermitterException, TokenStac
 from microservice import RankService
 from model import Token
 from permitter import PushPermitter
+from permitter.quota.permitter import RankSlotPermitter
 from report import PushApprovalReport
-from request import PushRequest
-from result import AnalysisResult, MethodResultType
+from request import PushRequest, RankSlotRequest
+from result import MethodResultType
 from stack import TokenStackService
-from util import LoggingLevelRouter
+from util import IdFactory, LoggingLevelRouter
 from validator import TokenValidator
 
 
@@ -49,7 +50,7 @@ class TokenPushPermitter(PushPermitter):
     """
     _token_validator: TokenValidator
     _rank_service: RankService
-    _quota_analyzer: RankQuotaAnalyzer
+    _rank_slot_permitter: RankSlotPermitter
     _collision_detector: TokenCollisionDetector
     _priming_validator: PrimingValidator
     
@@ -57,6 +58,7 @@ class TokenPushPermitter(PushPermitter):
             self,
             token_validator: TokenValidator | None = TokenValidator(),
             rank_service: RankService | None = RankService(),
+            rank_slot_permitter: RankSlotPermitter = RankSlotPermitter(),
             quota_analyzer: RankQuotaAnalyzer | None = RankQuotaAnalyzer(),
             collision_detector: TokenCollisionDetector | None = TokenCollisionDetector(),
             priming_validator: PrimingValidator | None = PrimingValidator(),
@@ -67,12 +69,14 @@ class TokenPushPermitter(PushPermitter):
             quota_analyzer: RankQuotaAnalyzer
             collision_detector: TokenCollisionDetector
             priming_validator: PrimingValidator
+            rank_slot_permitter: RankSlotPermitter
         """
         self._token_validator = token_validator
         self._rank_service = rank_service
         self._quota_analyzer = quota_analyzer
         self._collision_detector = collision_detector
         self._priming_validator = priming_validator
+        self._rank_slot_permitter = rank_slot_permitter
         
         
     @LoggingLevelRouter.monitor
@@ -147,6 +151,24 @@ class TokenPushPermitter(PushPermitter):
         token = cast(Token, token_validation_result.payload)
         stack = cast(TokenStackService, stack_validation_result.payload)
         
+        rank_slot_permission = self._rank_slot_permitter.run(
+            request=RankSlotRequest(
+                id=IdFactory.next_id(class_name="RankSlotRequest"),
+                rank=token.rank,
+                token_stack=stack,
+            )
+        )
+        if rank_slot_permission.is_denied:
+            PushApprovalReport.deny(
+                exception=TokenPushPermitterException(
+                    cls_mthd=method,
+                    cls_name=self.__class__.__name__,
+                    msg=TokenPushPermitterException.MSG,
+                    err_code=TokenPushPermitterException.ERR_CODE,
+                    mthd_rslt_type=MethodResultType.ANALYSIS_RESULT,
+                    ex=rank_slot_permission.exception,
+                )
+            )
         report = self._collision_detector.execute(attractor=token, stream=stack)
         if report.collision_exists:
             PushApprovalReport.deny(
@@ -159,118 +181,4 @@ class TokenPushPermitter(PushPermitter):
                     ex=report.exception,
                 )
             )
-        quota_analysis_result = self._quota_analyzer.execute(
-            rank=token.rank,
-            token_stack=stack,
-        )
-        if quota_analysis_result.is_failure
-            return AnalysisResult.failure(
-                TokenPushPermitterException(
-                    cls_mthd=method,
-                    cls_name=cls.__name__,
-                    msg=TokenPushPermitterException.MSG,
-                    err_code=TokenPushPermitterException.ERR_CODE,
-                    mthd_rslt_type=MethodResultType.ANALYSIS_RESULT,
-                    ex=collision_detection_result.exception,
-                )
-            )
-        # ServiceRequest a collision report. The token is verified during the report generation. ---#
-        collision_detection_result = collision_detector.execute(
-            attractor=item,
-            stream=stack,
-        )
-        # Handle the case that, the collision_detection is not completed.
-        if collision_detection_result.failure:
-            # Return the exception chain on failure
-            return AnalysisResult.failure(
-                TokenPushPermitterException(
-                    cls_mthd=method,
-                    cls_name=cls.__name__,
-                    msg=TokenPushPermitterException.MSG,
-                    err_code=TokenPushPermitterException.ERR_CODE,
-                    mthd_rslt_type=MethodResultType.ANALYSIS_RESULT,
-                    ex=collision_detection_result.exception,
-                )
-            )
-        
-        # --- ServiceRequest a rank quota report. ---#
-        quota_analysis_result = rank_quota_analyzer.execute(
-            rank=item.rank,
-            stream=stack,
-            rank_service=rank_service,
-        )
-        # Handle the case that, the quota analysis was not completed.
-        if quota_analysis_result.is_failure:
-            # Return the exception chain on failure
-            return AnalysisResult.failure(
-                TokenPushPermitterException(
-                    cls_mthd=method,
-                    cls_name=cls.__name__,
-                    msg=TokenPushPermitterException.MSG,
-                    err_code=TokenPushPermitterException.ERR_CODE,
-                    mthd_rslt_type=MethodResultType.ANALYSIS_RESULT,
-                    ex=quota_analysis_result.exception,
-                )
-            )
-        
-        # Handle the case that, the list is full.
-        if stack.is_full:
-            # Return the exception chain on failure
-            return AnalysisResult.completed(
-                PushApprovalReport.deny(
-                    exception=TokenPushPermitterException(
-                        cls_mthd=method,
-                        cls_name=cls.__name__,
-                        msg=TokenPushPermitterException.MSG,
-                        err_code=TokenPushPermitterException.ERR_CODE,
-                        mthd_rslt_type=MethodResultType.ANALYSIS_RESULT,
-                        ex=TokenStackFullException(
-                            msg=TokenStackFullException.MSG,
-                            err_code=TokenStackFullException.ERR_CODE,
-                        )
-                    )
-                )
-            )
-        
-
-        report = cast(CollisionReport, collision_detection_result.payload)
-        # Handle the case that, the either a collision was detected or token wis not safe.
-        if report.collision_exists:
-            # Return the exception chain on failure
-            return AnalysisResult.completed(
-                PushApprovalReport.deny(
-                    exception=TokenPushPermitterException(
-                        cls_mthd=method,
-                        cls_name=cls.__name__,
-                        msg=TokenPushPermitterException.MSG,
-                        err_code=TokenPushPermitterException.ERR_CODE,
-                        mthd_rslt_type=MethodResultType.ANALYSIS_RESULT,
-                        ex=report.exception,
-                    )
-                )
-            )
-
-        quota = cast(RankQuotaReport, quota_analysis_result.payload)
-        # Handle the case that, there's no open slots for the token's rank.
-        if quota.rank_is_full:
-            # Return the exception chain on failure
-            return AnalysisResult.completed(
-                PushApprovalReport.deny(
-                    exception=TokenPushPermitterException(
-                        cls_mthd=method,
-                        cls_name=cls.__name__,
-                        msg=TokenPushPermitterException.MSG,
-                        err_code=TokenPushPermitterException.ERR_CODE,
-                        mthd_rslt_type=MethodResultType.ANALYSIS_RESULT,
-                        ex=RankQuotaFullException(
-                            msg=RankQuotaFullException.MSG,
-                            err_code=RankQuotaFullException.ERR_CODE,
-                        ),
-                    )
-                )
-            )
-
-        # --- Integrity and performance tests are passed. ---#
-        return AnalysisResult.completed(PushApprovalReport.approve(item=item, stack=stack))
-
-    
+        return PushApprovalReport.approve(item=token, stack=stack)

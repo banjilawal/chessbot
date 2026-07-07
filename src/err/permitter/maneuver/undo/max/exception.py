@@ -1,7 +1,7 @@
-# src/err/permitter/token/promote/exception.py
+# src/err/permitter/undo/max/exception.py
 
 """
-Module: err.permitter.token.promote.exception
+Module: err.permitter.undo.max.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,23 +10,24 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import TokenPermitterException
+from err import TokenUndoMovePermitterException
 from result import MethodResultType
 
 __all__ = [
-    # ======================# TOKEN_MANEUVER_PERMITTER_FAILURE #======================#
-    "TokenManeuverPermitterException",
+    # ======================# MAX_UNDO_MOVE_ERROR #======================#
+    "MaxMoveUndoException",
 ]
 
-# ======================# TOKEN_MANEUVER_PERMITTER_FAILURE #======================#
-class TokenManeuverPermitterException(TokenPermitterException):
+# ======================# MAX_UNDO_MOVE_ERROR #======================#
+class MaxMoveUndoException(TokenUndoMovePermitterException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an error prevented a TokenManeuverPermitter from completing its task.
-
+        1.  Indicate that a Token move tried to undo more than one move during a
+            turn.
+            
     Attributes:
         msg: Optional[str]
         var: Optional[str]
@@ -35,15 +36,15 @@ class TokenManeuverPermitterException(TokenPermitterException):
         cls_name: Optional[str]
         cls_mthd: Optional[str]
         err_code: Optional[str]
-        mthd_rslt_type: Optional[MethodResultType]
-            
+        Mthd_Rslt_Type: Optional[MethodResultType]
+        
     Provides:
 
     Super Class:
-        TokenPermitterException
+        TokenUndoMovePermitterException
     """
-    MSG = "TokenManeuverPermitter error."
-    ERR_CODE = "TOKEN_MANEUVER_PERMITTER_FAILURE"
+    MSG = "Can only undo a single move during a turn."
+    ERR_CODE = "MAX_UNDO_MOVE_ERROR"
     
     def __init__(
             self,
@@ -57,19 +58,18 @@ class TokenManeuverPermitterException(TokenPermitterException):
             mthd_rslt_type: Optional[MethodResultType] | None = None,
     ):
         """
-        Args:
-            msg: Optional[str]
-            var: Optional[str]
-            val: Optional[Any]
+        args:
+            Msg: Optional[str]
+            Var: Optional[str]
+            val: Optional[any]
             ex: Optional[Exception]
-            cls_name: Optional[str]
+            cls_name: Optional[Str]
             cls_mthd: Optional[str]
             err_code: Optional[str]
             mthd_rslt_type: Optional[MethodResultType]
         """
         msg = msg or self.MSG
         err_code = err_code or self.ERR_CODE
-        mthd_rslt_type = mthd_rslt_type or self.MTHD_RSLT_TYPE
         super().__init__(
             ex=ex,
             msg=msg,
@@ -78,5 +78,5 @@ class TokenManeuverPermitterException(TokenPermitterException):
             err_code=err_code,
             cls_name=cls_name,
             cls_mthd=cls_mthd,
-            mthd_rslt_type=mthd_rslt_type
+            mthd_rslt_type=mthd_rslt_type,
         )

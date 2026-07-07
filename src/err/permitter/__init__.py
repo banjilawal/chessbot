@@ -11,10 +11,11 @@ version: 1.0.0
 
 # Packages
 from .delete import *
+from .maneuver import *
 from .pop import *
-from err.permitter.token.promotion import *
+from .promotion import *
 from .push import *
-from .token import *
+from .slot import *
 
 # Modules
 from .exception import PermitterException

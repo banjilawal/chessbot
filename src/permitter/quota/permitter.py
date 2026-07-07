@@ -12,13 +12,10 @@ from typing import Type, cast
 
 from analyzer import RankQuotaAnalyzer
 from bootstrapper import PrimingValidator
-from err import RankQuotaFullException
-from model import Rank
+from err import RankQuotaFullException, RankSlotPermitterException, RankSlotRequestNullException
 from permitter import Permitter
-from report import RankQuotaReport
-from report.approval.slot.report import RankSlotApprovalReport
+from report import RankQuotaReport, RankSlotApprovalReport
 from request import RankSlotRequest
-from stack import TokenStackService
 from util import LoggingLevelRouter
 from validator import RankValidator
 
@@ -108,6 +105,7 @@ class RankSlotPermitter(Permitter):
             rank=request.rank,
             token_stack=request.token_stack,
         )
+        # Send a permission denial if the analyzer aborts.
         if quota_analysis_result.is_failure:
             RankSlotApprovalReport.deny(
                 exception=RankSlotPermitterException(
@@ -119,6 +117,7 @@ class RankSlotPermitter(Permitter):
                 )
             )
         report = cast(RankQuotaReport, quota_analysis_result.payload)
+        # Send a permission denial if there ar no openings for the rank.
         if not report.openings_exist:
             RankSlotApprovalReport.deny(
                 exception=RankSlotPermitterException(
