@@ -113,7 +113,7 @@ class HostageContextToolkit(Toolkit[HostageContext]):
         
         # Toolkit the victor HostageContext if its flag is enabled.
         if victor is not None:
-            validation = token_service.execute.search_service(candidate=victor)
+            validation = token_service.run.search_service(candidate=victor)
             if validation.is_failure:
                 # Send the exception chain on failure.
                 return ToolkitResult.failure(
@@ -128,7 +128,7 @@ class HostageContextToolkit(Toolkit[HostageContext]):
         
         # Certification for the search-by-prisoner target.
         if prisoner is not None:
-            validation = token_service.execute.verify_token_is_combatant(candidate=prisoner)
+            validation = token_service.run.verify_token_is_combatant(candidate=prisoner)
             if validation.is_failure:
                 # Send the exception chain on failure.
                 return ToolkitResult.failure(
@@ -142,7 +142,7 @@ class HostageContextToolkit(Toolkit[HostageContext]):
         
         # Certification for the search-by-captured-item target.
         if captured_square is not None:
-            validation = square_service.execute.build(candidate=captured_square)
+            validation = square_service.run.build(candidate=captured_square)
             if validation.is_failure:
                 # Send the exception chain on failure.
                 return ToolkitResult.failure(

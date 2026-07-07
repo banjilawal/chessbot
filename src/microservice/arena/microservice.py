@@ -141,7 +141,7 @@ class ArenaService(Microservice[Arena]):
                     msg=f"{method}: {ArenaServiceException.ERR_CODE}", ex=arena_validation.exception
                 )
             )
-        schema_validation = schema_service.execute.build(schema)
+        schema_validation = schema_service.run.build(schema)
         if schema_validation.is_failure:
             return SearchResult.failure(
                 ArenaServiceException(

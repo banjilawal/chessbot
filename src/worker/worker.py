@@ -12,6 +12,7 @@ from __future__ import annotations
 from abc import ABC, abstractmethod
 from typing import Any, Generic, TypeVar
 
+from result import Result
 from system import LoggingLevelRouter, TransactionResult
 
 T = TypeVar("T")
@@ -35,5 +36,5 @@ class Worker(ABC,):
     
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def work(self, *args, **kwargs) -> TransactionResult[Any]:
+    def execute(self, *args, **kwargs) -> Result:
         pass

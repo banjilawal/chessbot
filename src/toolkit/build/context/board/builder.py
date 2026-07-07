@@ -123,7 +123,7 @@ class BoardContextToolkit(Toolkit[BoardContext]):
         
         # Toolkit the arena BoardContext if its flag is enabled.
         if arena is not None:
-            validation = arena_service.execute.search_service(arena)
+            validation = arena_service.run.search_service(arena)
             if validation.is_failure:
                 # Send the exception chain on failure.
                 return ToolkitResult.failure(

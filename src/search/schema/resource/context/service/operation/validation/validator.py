@@ -212,7 +212,7 @@ class SchemaContextValidator(Validator[SchemaContext]):
         
         # Certification for the search-by-coord target.
         if context.current_position is not None:
-            validation_result = workers.coord_service.execute.build(
+            validation_result = workers.coord_service.run.build(
                 rank=context.current_position
             )
             if validation_result.is_failure:
@@ -233,7 +233,7 @@ class SchemaContextValidator(Validator[SchemaContext]):
         
         # Certification for the search-by-team target.
         if context.team is not None:
-            validation_result = workers.team_service.execute.build(
+            validation_result = workers.team_service.run.build(
                 rank=context.team
             )
             if validation_result.is_failure:
@@ -254,7 +254,7 @@ class SchemaContextValidator(Validator[SchemaContext]):
         
         # Certification for the search-by-rank target.
         if context.rank is not None:
-            validation_result = workers.rank_service.execute.build(
+            validation_result = workers.rank_service.run.build(
                 rank=context.rank
             )
             if validation_result.is_failure:

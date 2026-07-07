@@ -73,7 +73,7 @@ class TeamValidator(Validator[Team]):
             toolkit = TeamToolkit()
         
         # Handle the case that, the validator is not primed.
-        validator_priming_result = toolkit.priming_validator.execute(
+        validator_priming_result = toolkit.priming_validator.run(
             candidate=candidate,
             context_model=Team,
             null_exception=TeamNullException(),
@@ -106,7 +106,7 @@ class TeamValidator(Validator[Team]):
                 )
             )
         # Handle the case that, team.schema does not pass a validation check.
-        schema_validation_result = toolkit.priming_validator.execute(
+        schema_validation_result = toolkit.priming_validator.run(
             candidate=candidate,
             context_model=Schema,
             null_exception=SchemaNullException(),

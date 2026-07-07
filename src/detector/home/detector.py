@@ -1,7 +1,7 @@
-# src/detection/home/detector.py
+# src/detector/home/detector.py
 
 """
-Module: detection.home.detector
+Module: detector.home.detector
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

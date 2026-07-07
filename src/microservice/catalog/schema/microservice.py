@@ -61,7 +61,7 @@ class SchemaService(CatalogService[Schema]):
         
     @property
     def validator(self) -> SchemaValidator:
-        return self._ops_controller.execute
+        return self._ops_controller.run
     
     @property
     def search_service(self) -> SchemaLookupService:

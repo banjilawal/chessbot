@@ -1,7 +1,7 @@
-# src/detection/collision/token/detector.py
+# src/detector/collision/token/detector.py
 
 """
-Module: detection.token.detector
+Module: detector.token.detector
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -10,16 +10,10 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Optional, cast
 
-from blueprint import TokenBlueprint
-from detection import Detector, TokenCollider, TokenCollisionBootstrapper
-from err import TokenCollisionDetectorException
+from bootstrapper import PrimingValidator, TokenCollider, TokenCollisionBootstrapper
+from detector import Detector
 from microservice import IdentityService
 from model import Token
-from report import CollisionReport
-from result import AnalysisResult
-from stack import TokenStackService
-from util import LoggingLevelRouter
-from validator import PrimingValidator
 
 
 class TokenCollisionDetector(Detector[Token]):
@@ -54,7 +48,7 @@ class TokenCollisionDetector(Detector[Token]):
             stream: TokenStackService,
             target: Optional[Token] | None = None,
             target_blueprint: Optional[TokenBlueprint] | None = None,
-    ) -> AnalysisResult[CollisionReport]:
+    ) -> CollisionReport:
         """
         Report if any schema member has the same id, designation or
         home_square_name as the target.

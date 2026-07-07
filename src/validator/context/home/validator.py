@@ -133,7 +133,7 @@ class TokenHomeContextValidator(ContextValidator[TokenHomeContext]):
         
         # Certification for the search-by-home_square target.
         if context.home_square is not None:
-            validation_result = toolkit.square_validator.execute(
+            validation_result = toolkit.square_validator.run(
                 candidate=context.home_square
             )
             if validation_result.is_failure:
@@ -152,7 +152,7 @@ class TokenHomeContextValidator(ContextValidator[TokenHomeContext]):
         
         # Certification for the search-by-coord target.
         if context.current_position is not None:
-            validation_result = toolkit.coord_validator.execute(
+            validation_result = toolkit.coord_validator.run(
                 candidate=context.current_position
             )
             if validation_result.is_failure:
@@ -171,7 +171,7 @@ class TokenHomeContextValidator(ContextValidator[TokenHomeContext]):
     
         # Certification for the search-by-team target.
         if context.team is not None:
-            validation_result = toolkit.team_validator.execute(
+            validation_result = toolkit.team_validator.run(
                 candidate=context.current_position
             )
             if validation_result.is_failure:
@@ -230,7 +230,7 @@ class TokenHomeContextValidator(ContextValidator[TokenHomeContext]):
         
         # Certification for the search-by-ransom target.
         if context.ransom is not None:
-            validation_result = toolkit.number_validator.execute(
+            validation_result = toolkit.number_validator.run(
                 candidate=context.ransom,
                 floor=Persona.KING.ransom,
                 ceiling=Persona.QUEEN.ransom,

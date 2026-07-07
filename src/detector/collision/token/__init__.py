@@ -1,7 +1,7 @@
-# src/detection/token/collider/__init__.py
+# src/detector/token/collider/__init__.py
 
 """
-Module: detection.token.collider.__init__
+Module: detector.token.collider.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -12,4 +12,4 @@ version: 1.0.1
 # Modules
 
 # Packages
-from .collider import TokenCollider
+from .ddetector import TokenCollider

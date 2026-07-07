@@ -33,7 +33,7 @@ from .player import *
 from .query import *
 from .rank import *
 from .register import *
-from validator.register.operand import *
+from .request import *
 from .scalar import *
 from .schema import *
 from .snapshot import *

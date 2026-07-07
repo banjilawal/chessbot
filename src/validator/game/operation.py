@@ -86,12 +86,12 @@ class GameValidator(Validator[Game]):
             if id_validator.is_failure:
                 return ValidationResult.failure(id_validator.exception)
             
-            board_validation = board_service.execute.build(game.board)
+            board_validation = board_service.run.build(game.board)
             if board_validator.is_failure:
                 return ValidationResult.failure(board_validator.exception)
             
             for player in game.players:
-                validation = agent_service.execute.search_service(player)
+                validation = agent_service.run.search_service(player)
                 if validator.is_failure:
                     return ValidationResult.failure(validator.exception)
             return ValidationResult.success(game)

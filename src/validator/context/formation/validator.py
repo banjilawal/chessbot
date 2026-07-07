@@ -166,7 +166,7 @@ class FormationContextValidator(ContextValidator[FormationKey]):
         
         # Certification for the lookup-by-persona target.
         if super_key.persona is not None:
-            validation = persona_service.execute.build(candidate=super_key.persona)
+            validation = persona_service.run.build(candidate=super_key.persona)
             if validator.is_failure:
                 return ValidationResult.failure(
                     FormationKeyValidationException(

@@ -82,7 +82,7 @@ class ItineraryValidator(Validator[Itinerary]):
             consistency_validator = ItineraryConsistencyValidator()
         
         # Use the validation primer for existence and type checking.
-        validator_priming_result = toolkit.priming_validator.execute(
+        validator_priming_result = toolkit.priming_validator.run(
             candidate=candidate,
             context_model=toolkit.model_type,
             context_null_exception=toolkit.null_exception,

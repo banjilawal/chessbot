@@ -122,7 +122,7 @@ class HostageBlueprintValidator(BlueprintValidator[Hostage]):
         
         # Certification for the search-by-victor target.
         if blueprint.victor is not None:
-            validation = hostage_service.execute.build(blueprint.victor)
+            validation = hostage_service.run.build(blueprint.victor)
             if validator.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
@@ -136,7 +136,7 @@ class HostageBlueprintValidator(BlueprintValidator[Hostage]):
         
         # Certification for the search-by-prisoner target.
         if blueprint.prisoner is not None:
-            validation = hostage_service.execute.verify_hostage_is_combatant(candidate=blueprint.prisoner)
+            validation = hostage_service.run.verify_hostage_is_combatant(candidate=blueprint.prisoner)
             if validator.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
@@ -150,7 +150,7 @@ class HostageBlueprintValidator(BlueprintValidator[Hostage]):
         
         # Certification for the search-by-captured_square target.
         if blueprint.captured_square is not None:
-            validation = square_service.execute.build(blueprint.captured_square)
+            validation = square_service.run.build(blueprint.captured_square)
             if validator.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(

@@ -1,7 +1,7 @@
-# src/detection/__init__.py
+# src/detector/__init__.py
 
 """
-Module: detection.__init__
+Module: detector.__init__
 Author: Banji Lawal
 Created: 2026-03-30
 version: 1.0.1
@@ -12,7 +12,7 @@ version: 1.0.1
 
 # Packages
 from .home import *
-from .square import *
+from detector.collision.square import *
 from .token import *
 
 # Modules

@@ -134,9 +134,9 @@ class VectorOperandValidator(Validator[VectorOperand]):
         # ---  ---#
         validation_result = None
         if operand.is_vector:
-            validation_result = toolkit.vector.validator.execute(operand.vector)
+            validation_result = toolkit.vector.validator.run(operand.vector)
         if operand.is_coord:
-            validation_result = toolkit.coord.validator.execute(operand.coord)
+            validation_result = toolkit.coord.validator.run(operand.coord)
             
         # Handle the case that context was flagged.
         if validation_result.is_failure:

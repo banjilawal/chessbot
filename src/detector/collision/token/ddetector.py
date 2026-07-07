@@ -1,7 +1,7 @@
-# src/detection/token/collider.py
+# src/detector/token/collider.py
 
 """
-Module: detection.token.collider
+Module: detector.token.collider
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -47,7 +47,7 @@ class TokenCollider:
             cls,
             stream: TokenStackService,
             target: Optional[TokenBlueprint],
-    ) -> AnalysisResult[CollisionReport]:
+    ) -> CollisionReport:
         """
         Report if any schema member has the same id, designation or
         home_square_name as the target.
@@ -79,54 +79,48 @@ class TokenCollider:
             # Handle the case that, a token already has the target's id.
             if item.id == target.id:
                 # Return the collision details in the report.
-                return AnalysisResult.completed(
-                    CollisionReport.occurrence(
-                        collider=item,
-                        target_set=target,
-                        colliding_variable="id",
-                        collision_value=item.id,
-                        exception=TokenIdCollisionException(
-                            cls_mthd=method,
-                            cls_name=cls.__name__,
-                            msg=TokenIdCollisionException.MSG,
-                            err_code=TokenIdCollisionException.ERR_CODE,
-                        )
+                return CollisionReport.collision(
+                    collider=item,
+                    target_set=target,
+                    colliding_variable="id",
+                    collision_value=item.id,
+                    exception=TokenIdCollisionException(
+                        cls_mthd=method,
+                        cls_name=cls.__name__,
+                        msg=TokenIdCollisionException.MSG,
+                        err_code=TokenIdCollisionException.ERR_CODE,
                     )
                 )
             # Handle the case that, a token already has the target's id.
             if item.designation == target.formation.designation.upper():
                 # Return the collision details in the report.
-                return AnalysisResult.completed(
-                    CollisionReport.occurrence(
-                        collider=item,
-                        target_set=target,
-                        colliding_variable="designation",
-                        collision_value=item.designation,
-                        exception=TokenNameCollisionException(
-                            cls_mthd=method,
-                            cls_name=cls.__name__,
-                            msg=TokenNameCollisionException.MSG,
-                            err_code=TokenNameCollisionException.ERR_CODE,
-                        )
+                return CollisionReport.collision(
+                    collider=item,
+                    target_set=target,
+                    colliding_variable="designation",
+                    collision_value=item.designation,
+                    exception=TokenNameCollisionException(
+                        cls_mthd=method,
+                        cls_name=cls.__name__,
+                        msg=TokenNameCollisionException.MSG,
+                        err_code=TokenNameCollisionException.ERR_CODE,
                     )
                 )
             # Handle the case that, the target shares its home_square_name with a collider_candidates member.
             if item.home_square.name.upper() == target.formation.home_square_name.upper():
                 # Return the collider, designation, and the exception.
-                return AnalysisResult.success(
-                    CollisionReport.occurrence(
-                        collider=item,
-                        target_set=target,
-                        colliding_variable="home_square",
-                        collision_value=item.home_square,
-                        exception=OpeningSquareCollisionException(
-                            cls_mthd=method,
-                            cls_name=cls.__name__,
-                            msg=OpeningSquareCollisionException.MSG,
-                            err_code=OpeningSquareCollisionException.ERR_CODE,
-                        )
+                return CollisionReport.collision(
+                    collider=item,
+                    target_set=target,
+                    colliding_variable="home_square",
+                    collision_value=item.home_square,
+                    exception=OpeningSquareCollisionException(
+                        cls_mthd=method,
+                        cls_name=cls.__name__,
+                        msg=OpeningSquareCollisionException.MSG,
+                        err_code=OpeningSquareCollisionException.ERR_CODE,
                     )
                 )
         # --- Send the no collisions detected report. ---#
-        return AnalysisResult.success(CollisionReport.no_collisions(target))
+        return CollisionReport.no_collisions(target)
     

@@ -89,7 +89,7 @@ class ScalarValidator(Validator[Scalar]):
         # --- Cast candidate to a Scalar for additional tests. ---#
         scalar = cast(Scalar, candidate)
         
-        scalar_magnitude_validation_result = toolkit.number_validator.execute(
+        scalar_magnitude_validation_result = toolkit.number_validator.run(
             candidate=scalar.magnitude,
             floor=0,
             ceiling=BoardDimensionProperty.entry[BoardProperty.MAX_ROW_INDEX],

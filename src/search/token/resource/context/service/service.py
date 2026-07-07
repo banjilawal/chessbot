@@ -59,6 +59,6 @@ class TokenContextService(IntegrityMicroservice[TokenContext]):
     
     @property
     def validator(self) ->TokenContextValidator:
-        return self._ops_controller.execute
+        return self._ops_controller.run
     
     

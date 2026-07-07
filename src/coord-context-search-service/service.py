@@ -63,7 +63,7 @@ class CoordContextService(IntegrityMicroservice[CoordContext]):
     
     @property
     def validator(self) -> CoordContextValidator:
-        return self._ops_controller.execute
+        return self._ops_controller.run
     
     @property
     def ops_controller(self) -> CoordContextContextOpsController:

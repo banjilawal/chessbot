@@ -190,7 +190,7 @@ class TokenStackService(StackService[Token]):
         method = f"{self.__class__.__name__}.pop"
         
         # --- Handoff request fulfilment to the controller. ---#
-        request_result = self._controller.popper.execute()
+        request_result = self._controller.popper.run()
         
         # Handle the case that, the request was not fulfilled.
         if request_result.is_failure:
@@ -225,7 +225,7 @@ class TokenStackService(StackService[Token]):
         method = f"{self.__class__.__name__}.push"
         
         # --- Handoff request fulfilment to the controller. ---#
-        request_result = self._controller.pusher.execute(
+        request_result = self._controller.pusher.run(
             item=item,
             stack=self,
         )
@@ -262,7 +262,7 @@ class TokenStackService(StackService[Token]):
         method = f"{self.__class__.__name__}.delete_by_id"
         
         # --- Handoff request fulfilment to the controller. ---#
-        request_result = self._controller.deleter.execute(
+        request_result = self._controller.deleter.run(
             item_id=id,
             stack=self,
         )

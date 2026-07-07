@@ -204,7 +204,7 @@ class TokenServiceMenu(Router[TokenService]):
             )
         # Select the TokenValidation worker
         if isinstance(command, ValidateTokenCommand):
-            return self._service.execute.build(
+            return self._service.run.build(
                 rank=command.parameters["rank"]
             )
         # Select the TokenDeployment worker.

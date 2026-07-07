@@ -115,7 +115,7 @@ class TeamBlueprintValidator(BlueprintValidator[Team]):
         
         # Certification for the search-by-owner target.
         if blueprint.owner is not None:
-            validation_result = toolkit.team_toolkit.player_validator.execute(
+            validation_result = toolkit.team_toolkit.player_validator.run(
                 candidate=blueprint.owner
             )
             if validation_result.is_failure:
@@ -134,7 +134,7 @@ class TeamBlueprintValidator(BlueprintValidator[Team]):
         
         # Certification for the search-by-board target.
         if blueprint.board is not None:
-            validation_result = toolkit.team_toolkit.board_validator.execute(
+            validation_result = toolkit.team_toolkit.board_validator.run(
                 candidate=blueprint.board
             )
             if validation_result.is_failure:
@@ -154,7 +154,7 @@ class TeamBlueprintValidator(BlueprintValidator[Team]):
         
         # Certification for the search-by-color target.
         if blueprint.schema is not None:
-            validation_result = toolkit.team_toolkit.priming_validator.execute(
+            validation_result = toolkit.team_toolkit.priming_validator.run(
                 candidate=blueprint.schema,
                 model_type=Schema,
                 null_exception=SchemaNullException()

@@ -80,7 +80,7 @@ class PawnPromoter:
         if permitter is None:
             permitter = PromotionPermitter()
             
-        permission_analysis_result = permitter.execute(
+        permission_analysis_result = permitter.run(
             pawn=pawn,
             rank=rank,
         )

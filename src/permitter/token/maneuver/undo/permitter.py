@@ -48,7 +48,7 @@ class TokenUndoMovePermitter(TokenManeuverPermitter):
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def execute(
+    def run(
             cls,
             requestor: Token,
             token_validator: TokenValidator | None = None,

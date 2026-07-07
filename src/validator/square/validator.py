@@ -72,7 +72,7 @@ class SquareValidator(Validator[Square]):
             toolkit = SquareToolkit()
         
         # Handle the case that, the validator is not primed.
-        validator_priming_result = toolkit.priming_validator.execute(
+        validator_priming_result = toolkit.priming_validator.run(
             candidate=candidate,
             context_model=Square,
             null_exception=SquareNullException(),
@@ -164,7 +164,7 @@ class SquareValidator(Validator[Square]):
         method = f"{cls.__name__}._run_board_tests"
         
         # Handle the case that, the square's board is nnt certified as safe.
-        board_validation_result = board_service.microservice.execute.validat(
+        board_validation_result = board_service.microservice.run.validat(
             candidate=square.board
         )
         if board_validation_result.is_faiure:

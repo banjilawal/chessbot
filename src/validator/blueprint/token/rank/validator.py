@@ -171,7 +171,7 @@ class BlueprintRankProcessor:
         method = f"{cls.__name__}._validate_rank"
         
         # Handle the case that, the rank is flagged.
-        validation_result = rank_service.validator.execute(rank)
+        validation_result = rank_service.validator.run(rank)
         if validation_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(

@@ -16,7 +16,7 @@ from stack import StackService
 T = TypeVar("T")
 
 
-class PushApproval(OperationApprovalReport):
+class PushApprovalReport(OperationApprovalReport):
     """
     Role:
         -   Test results
@@ -77,7 +77,7 @@ class PushApproval(OperationApprovalReport):
         )
     
     @classmethod
-    def approve(cls, item: T, stack: StackService[T]) -> PushApproval:
+    def approve(cls, item: T, stack: StackService[T]) -> PushApprovalReport:
         return cls(
             item=item,
             stack=stack,
@@ -85,7 +85,7 @@ class PushApproval(OperationApprovalReport):
         )
     
     @classmethod
-    def deny(cls, exception: Exception) -> PushApproval:
+    def deny(cls, exception: Exception) -> PushApprovalReport:
         return cls(
             exception=exception,
             permission=Permission.DENIED

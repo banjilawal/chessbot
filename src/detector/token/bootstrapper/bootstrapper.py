@@ -1,7 +1,7 @@
-# src/detection/token/bootstrapper.py
+# src/detector/token/bootstrapper.py
 
 """
-Module: detection.token.bootstrapper
+Module: detector.token.bootstrapper
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -190,7 +190,7 @@ class TokenCollisionBootstrapper:
     ) -> ValidationResult[TokenBlueprint]:
         method = f"{cls.__name__}.validate_blueprint"
     
-        validation_result = priming_validator.execute(
+        validation_result = priming_validator.run(
             candidate=blueprint,
             target_type=TokenBlueprint,
             nullable=TokenBlueprintNullException(),

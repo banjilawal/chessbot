@@ -80,7 +80,7 @@ class TokenCollider:
             if item.id == target.id:
                 # Return the collision details in the report.
                 return AnalysisResult.completed(
-                    CollisionReport.occurrence(
+                    CollisionReport.collision(
                         collider=item,
                         target_set=target,
                         colliding_variable="id",
@@ -97,7 +97,7 @@ class TokenCollider:
             if item.designation == target.formation.designation.upper():
                 # Return the collision details in the report.
                 return AnalysisResult.completed(
-                    CollisionReport.occurrence(
+                    CollisionReport.collision(
                         collider=item,
                         target_set=target,
                         colliding_variable="designation",
@@ -114,7 +114,7 @@ class TokenCollider:
             if item.home_square.name.upper() == target.formation.home_square_name.upper():
                 # Return the collider, designation, and the exception.
                 return AnalysisResult.success(
-                    CollisionReport.occurrence(
+                    CollisionReport.collision(
                         collider=item,
                         target_set=target,
                         colliding_variable="home_square",

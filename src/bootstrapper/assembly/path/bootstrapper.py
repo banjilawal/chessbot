@@ -174,7 +174,7 @@ class PathAssemblyPrimer(AssemblyPrimer[Path]):
                 )
             )
         # Handle the case that, one of the squares does not
-        team_validation = toolkit.team_validator.execute(
+        team_validation = toolkit.team_validator.run(
             candidate=blueprint.team
         )
         if team_validation.is_failure:
@@ -189,7 +189,7 @@ class PathAssemblyPrimer(AssemblyPrimer[Path]):
                 )
             )
         # Handle the case that, the formation does not pass a validation check.
-        formation_validation = toolkit.formation_service.execute.build(
+        formation_validation = toolkit.formation_service.run.build(
             candidate=blueprint.formation
         )
         if formation_validation.is_failure:

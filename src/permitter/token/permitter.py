@@ -39,7 +39,7 @@ class TokenPermitter(Permitter):
     @classmethod
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def execute(cls, requestor: Token, *args, **kwargs) -> AnalysisResult:
+    def run(cls, requestor: Token, *args, **kwargs) -> AnalysisResult:
         """
         Implement in TokenPermitter subclasses.
         Args:

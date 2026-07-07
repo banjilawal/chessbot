@@ -75,7 +75,7 @@ class SquareColliderBootstrapper(DetectorBootstrapper[Square]):
         method = f"{cls.__class__.__name__}.detect"
         
         # Handle the case that, the target does not pass a validation check.
-        validation_result = stream.microservice.execute.execute(attractor)
+        validation_result = stream.microservice.run.run(attractor)
         if validation_result.is_failure:
             return AnalysisResult.failure(
                 SquareCollisionDetectorException(
@@ -93,7 +93,7 @@ class SquareColliderBootstrapper(DetectorBootstrapper[Square]):
             if square.id == attractor.id:
                 # Return the collision details in the report.
                 return AnalysisResult.completed(
-                    CollisionReport.occurrence(
+                    CollisionReport.collision(
                         target_set=attractor,
                         collider=square,
                         colliding_variable=f"id",
@@ -110,7 +110,7 @@ class SquareColliderBootstrapper(DetectorBootstrapper[Square]):
             if square.name.upper() == attractor.name.upper():
                 # Return the collision details in the report.
                 return AnalysisResult.completed(
-                    CollisionReport.occurrence(
+                    CollisionReport.collision(
                         target_set=attractor,
                         collider=square,
                         colliding_variable=f"name",
@@ -127,7 +127,7 @@ class SquareColliderBootstrapper(DetectorBootstrapper[Square]):
             if square.coord == attractor.coord:
                 # Return the collision details in the report.
                 return AnalysisResult.completed(
-                    CollisionReport.occurrence(
+                    CollisionReport.collision(
                         target_set=attractor,
                         collider=square,
                         colliding_variable=f"coord",

@@ -83,7 +83,7 @@ class CollisionReport(Report):
         )
     
     @classmethod
-    def occurrence(
+    def collision(
             cls,
             target_set: Blueprint,
             colliding_variable: str,

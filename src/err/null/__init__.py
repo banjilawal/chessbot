@@ -15,6 +15,7 @@ from .microservice import *
 from .model import *
 from .operation import *
 from .relation import *
+from .request import *
 
 # Modules
 from .exception import NullException

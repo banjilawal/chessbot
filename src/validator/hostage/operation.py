@@ -102,7 +102,7 @@ class HostageValidator(Validator[Hostage]):
                 )
             )
         # Handle the case that, the item where the capture occurredis not safe.
-        captured_square_validation = square_service.execute.build(candidate=manifest.captured_square)
+        captured_square_validation = square_service.run.build(candidate=manifest.captured_square)
         if captured_square_validator.failure:
             # Send the exception chain on failure
             return ValidationResult.failure(
@@ -112,7 +112,7 @@ class HostageValidator(Validator[Hostage]):
                 )
             )
         # Handle the case that, the victor's itemis not safe.
-        victor_square_validation = square_service.execute.build(candidate=manifest.victor_square)
+        victor_square_validation = square_service.run.build(candidate=manifest.victor_square)
         if victor_square_validator.failure:
             # Send the exception chain on failure
             return ValidationResult.failure(
@@ -124,7 +124,7 @@ class HostageValidator(Validator[Hostage]):
         # --- Perform tests on the matrix.prisoner that do not rely on the victor. ---#
         
         # Handle the case that, the prisoner is not a safe combatant
-        prisoner_validation = token_service.execute.verify_token_is_combatant(candidate=manifest.prisoner)
+        prisoner_validation = token_service.run.verify_token_is_combatant(candidate=manifest.prisoner)
         if prisoner_validator.failure:
             # Send the exception chain on failure
             return ValidationResult.failure(
@@ -172,7 +172,7 @@ class HostageValidator(Validator[Hostage]):
             # --- Perform tests on the manifest.victor that do not rely on the prisoner. ---#
             
         # Handle the case that, the victoris not safe.
-        victor_validation = token_service.execute.search_service(candidate=manifest.victor)
+        victor_validation = token_service.run.search_service(candidate=manifest.victor)
         if victor_validator.failure:
             # Send the exception chain on failure
             return ValidationResult.failure(

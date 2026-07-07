@@ -118,7 +118,7 @@ class BoardDatabase(Database[Board]):
         # --- To assure uniqueness the member_service has to conduct a search. The board should be validated first. ---#
         
         # Handle the case that, the boardis not safe.
-        validation = self.microservice.execute.build(candidate=board)
+        validation = self.microservice.run.build(candidate=board)
         if validation.is_failure:
             # Send the exception chain on failure.
             return InsertionResult.failure(

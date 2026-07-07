@@ -1,7 +1,7 @@
-# src/detection/square/__init__.py
+# src/detector/square/__init__.py
 
 """
-Module: detection.square.__init__
+Module: detector.square.__init__
 Author: Banji Lawal
 Created: 2026-03-30
 version: 1.0.1

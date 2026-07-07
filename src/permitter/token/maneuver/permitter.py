@@ -42,7 +42,7 @@ class TokenManeuverPermitter(TokenPermitter):
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def execute(
+    def run(
             cls,
             requestor: Token,
             destination: Square,

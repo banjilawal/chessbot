@@ -96,7 +96,7 @@ class BoardTeamBinderValidator(Validator[BoardBinder]):
                 )
             )
         binder = validator_priming_result.payload
-        board_validation_result =toolkit.board_service.execute.build(binder.primary)
+        board_validation_result =toolkit.board_service.run.build(binder.primary)
         
         if board_validation_result.is_failure:
             # Send the exception chain on failure.
@@ -122,7 +122,7 @@ class BoardTeamBinderValidator(Validator[BoardBinder]):
         method = f"{cls.__name__}.run_satellite_table_checks"
         
         # Handle the case that, the satellite is not a dictionary or null.
-        table_validation_result = SchemaHashtableValidator.execute(binder)
+        table_validation_result = SchemaHashtableValidator.run(binder)
         if table_validation_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(

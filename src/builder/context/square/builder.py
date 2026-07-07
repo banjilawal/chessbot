@@ -147,7 +147,7 @@ class SquareContextBuilder(Builder[SquareContext]):
         
         # Build the coord SquareContext if its flag is enabled.
         if coord is not None:
-            validation = coord_service.execute.build(coord)
+            validation = coord_service.run.build(coord)
             if validation.is_failure:
                 # Send the exception chain on failure.
                 return BuildResult.failure(
@@ -161,7 +161,7 @@ class SquareContextBuilder(Builder[SquareContext]):
         
         # Build the board SquareContext if its flag is enabled.
         if board is not None:
-            validation = board_service.execute.build(candidate=board)
+            validation = board_service.run.build(candidate=board)
             if validation.is_failure:
                 # Send the exception chain on failure.
                 return BuildResult.failure(

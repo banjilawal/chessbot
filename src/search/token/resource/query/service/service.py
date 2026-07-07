@@ -59,6 +59,6 @@ class TokenQueryService(IntegrityMicroservice[TokenQuery]):
     
     @property
     def validator(self) ->TokenQueryValidator:
-        return self._ops_controller.execute
+        return self._ops_controller.run
     
     

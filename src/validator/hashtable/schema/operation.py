@@ -96,7 +96,7 @@ class SchemaHashtableValidator(Validator[Dict[Schema, Any]]):
         table = cast(Dict[Schema, Any], validator_priming_result.payload)
         
         for key in table.keys():
-            schema_validation_result = schema_validator.execute.build(table[key])
+            schema_validation_result = schema_validator.run.build(table[key])
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 SchemaHashtableValidationException(

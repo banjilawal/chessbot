@@ -141,7 +141,7 @@ class EdgeBlueprintValidator(BlueprintValidator[Edge]):
         
         # Certification for the search-by-coord target.
         if blueprint.coord is not None:
-            validation = coord_service.execute.build(blueprint.coord)
+            validation = coord_service.run.build(blueprint.coord)
             if validator.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
@@ -155,7 +155,7 @@ class EdgeBlueprintValidator(BlueprintValidator[Edge]):
         
         # Certification for the search-by-board target.
         if blueprint.board is not None:
-            validation = board_service.execute.build(blueprint.board)
+            validation = board_service.run.build(blueprint.board)
             if validator.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
@@ -169,7 +169,7 @@ class EdgeBlueprintValidator(BlueprintValidator[Edge]):
         
         # Certification for the search-by-occupant target.
         if blueprint.occupant is not None:
-            validation = edge_service.execute.build(blueprint.occupant)
+            validation = edge_service.run.build(blueprint.occupant)
             if validator.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(

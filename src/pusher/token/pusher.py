@@ -14,7 +14,7 @@ from err import TokenPusherException
 from model import Token
 from permitter import TokenPushPermitter
 from pusher import Pusher
-from report import PushApproval
+from report import PushApprovalReport
 from result import InsertionResult, MethodResultType
 from stack import TokenStackService, TokenStackState
 from util import LoggingLevelRouter
@@ -72,7 +72,7 @@ class TokenPusher(Pusher[Token]):
         if push_permitter is None:
             push_permitter = TokenPushPermitter()
             
-        permission_analysis_result = push_permitter.execute(item=item, stack=stack)
+        permission_analysis_result = push_permitter.run(item=item, stack=stack)
         # Handle the case that, the push_permitter does not complete analysis.
         if permission_analysis_result.is_failure:
             # Return the exception chain on failure
@@ -86,7 +86,7 @@ class TokenPusher(Pusher[Token]):
                     ex=permission_analysis_result.exception
                 )
             )
-        permission = cast(PushApproval, permission_analysis_result.payload)
+        permission = cast(PushApprovalReport, permission_analysis_result.payload)
         # Handle the case that, push permission is denied.
         if permission.is_denied:
             # Return the exception chain on failure
