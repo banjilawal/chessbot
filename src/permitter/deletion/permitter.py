@@ -1,7 +1,7 @@
-# src/permitter/push/permitter.py
+# src/permitter/deletion/permitter.py
 
 """
-Module: permitter.push.permitter
+Module: permitter.deletion.permitter
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -10,12 +10,12 @@ version: 1.0.1
 from abc import abstractmethod
 
 from permitter import Permitter
-from report import PushApprovalReport
-from request import PushRequest
+from report import DeletionApprovalReport, PushApprovalReport
+from request import DeletionRequest, PushRequest
 from util import LoggingLevelRouter
 
 
-class PushPermitter(Permitter):
+class DeleterPermitter(Permitter):
     """
     Role:
         - Analysis Worker
@@ -35,5 +35,5 @@ class PushPermitter(Permitter):
     
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def run(self, request: PushRequest,) -> PushApprovalReport:
+    def run(self, request: DeletionRequest,) -> DeletionApprovalReport:
         pass

@@ -31,10 +31,7 @@ class Permitter(ABC):
         -   def execute(cls, requestor: T, *args, **kwargs) -> AnalysisResult
 
     Super Class:
-        OperationPermitter
-        
-    Notes:
-        An OperationApprovalReport should be in the success payload.
+        Permitter
     """
     
     @abstractmethod

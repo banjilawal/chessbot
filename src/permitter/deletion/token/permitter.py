@@ -13,7 +13,7 @@ from typing import Optional
 
 from err import PoppingEmptyTokenStackException, TokenDeletionPermitterException, TokenStackNullException
 from microservice import IdentityService
-from report import DeleteApproval
+from report import DeletionApprovalReport
 from result import AnalysisResult, MethodResultType
 from stack import TokenStackService
 from util import LoggingLevelRouter
@@ -119,7 +119,7 @@ class TokenDeletionPermitter:
         if stack.is_empty:
             # Return the exception chain on failure
             return AnalysisResult.completed(
-                DeleteApproval.deny(
+                DeletionApprovalReport.deny(
                     exception=TokenDeletionPermitterException(
                         cls_mthd=method,
                         cls_name=cls.__name__,
@@ -136,6 +136,6 @@ class TokenDeletionPermitter:
                 )
             )
         # --- Integrity and performance tests are passed. ---#
-        return AnalysisResult.completed(DeleteApproval.approve(id=item_id, stack=stack))
+        return AnalysisResult.completed(DeletionApprovalReport.approve(id=item_id, stack=stack))
 
     

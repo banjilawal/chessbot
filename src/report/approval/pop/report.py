@@ -16,7 +16,7 @@ from stack import StackService
 T = TypeVar("T")
 
 
-class PopApproval(OperationApprovalReport):
+class PopApprovalReport(OperationApprovalReport):
     """
     Role:
         -   Test results
@@ -67,14 +67,14 @@ class PopApproval(OperationApprovalReport):
         )
     
     @classmethod
-    def approve(cls, stack: StackService[T]) -> PopApproval:
+    def approve(cls, stack: StackService[T]) -> PopApprovalReport:
         return cls(
             stack=stack,
             permission=Permission.GRANTED
         )
     
     @classmethod
-    def deny(cls, exception: Exception) -> PopApproval:
+    def deny(cls, exception: Exception) -> PopApprovalReport:
         return cls(
             exception=exception,
             permission=Permission.DENIED

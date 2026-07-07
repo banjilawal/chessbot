@@ -16,7 +16,7 @@ from stack import StackService
 T = TypeVar("T")
 
 
-class DeleteApproval(OperationApprovalReport):
+class DeletionApprovalReport(OperationApprovalReport):
     """
     Role:
         -   Test results
@@ -72,7 +72,7 @@ class DeleteApproval(OperationApprovalReport):
         )
     
     @classmethod
-    def approve(cls, id: int, stack: StackService[T],) -> DeleteApproval:
+    def approve(cls, id: int, stack: StackService[T],) -> DeletionApprovalReport:
         return cls(
             id=id,
             stack=stack,
@@ -80,7 +80,7 @@ class DeleteApproval(OperationApprovalReport):
         )
     
     @classmethod
-    def deny(cls, exception: Exception) -> DeleteApproval:
+    def deny(cls, exception: Exception) -> DeletionApprovalReport:
         return cls(
             exception=exception,
             permission=Permission.DENIED

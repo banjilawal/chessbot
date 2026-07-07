@@ -12,4 +12,4 @@ version: 1.0.1
 # Packages
 
 # Modules
-from .report import DeleteApproval
+from .report import DeletionApprovalReport

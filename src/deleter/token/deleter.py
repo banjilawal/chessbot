@@ -14,7 +14,7 @@ from deleter import Deleter
 from err import TokenDeleterException
 from model import Token
 from permitter.deletion import TokenDeletionPermitter
-from report import DeleteApproval
+from report import DeletionApprovalReport
 from result import DeletionResult, MethodResultType
 from stack import TokenStackService, TokenStackState
 from util import LoggingLevelRouter
@@ -87,7 +87,7 @@ class TokenDeleter(Deleter[Token]):
                 )
             )
         
-        delete_permission = cast(DeleteApproval, permission_analysis_result.payload)
+        delete_permission = cast(DeletionApprovalReport, permission_analysis_result.payload)
         # Handle the case that, push permission is denied.
         if delete_permission.is_denied:
             # Return the exception chain on failure

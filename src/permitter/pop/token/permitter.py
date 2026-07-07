@@ -10,7 +10,7 @@ version: 1.0.1
 from __future__ import annotations
 
 from err import PoppingEmptyTokenStackException, TokenPopPermitterException, TokenStackNullException
-from report import PopApproval
+from report import PopApprovalReport
 from result import AnalysisResult, MethodResultType
 from stack import TokenStackService
 from util import LoggingLevelRouter
@@ -87,7 +87,7 @@ class TokenPopPermitter:
         if stack.is_empty:
             # Return the exception chain on failure
             return AnalysisResult.completed(
-                PopApproval.deny(
+                PopApprovalReport.deny(
                     exception=TokenPopPermitterException(
                         cls_mthd=method,
                         cls_name=cls.__name__,
@@ -104,6 +104,6 @@ class TokenPopPermitter:
                 )
             )
         # --- Integrity and performance tests are passed. ---#
-        return AnalysisResult.completed(PopApproval.approve(stack=stack))
+        return AnalysisResult.completed(PopApprovalReport.approve(stack=stack))
 
     

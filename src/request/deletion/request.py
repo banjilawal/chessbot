@@ -1,7 +1,7 @@
-# src/request/delete/request.py
+# src/request/deletion/request.py
 
 """
-Module: request.delete.request
+Module: request.deletion.request
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -17,14 +17,14 @@ from stack import StackService
 T = TypeVar("T")
 
 
-class DeleteRequest(Request, Generic[T]):
+class DeletionRequest(Request, Generic[T]):
     """
      Role:
          -  Request
          -  Data Transport
 
      Responsibilities:
-        1.  Provide information the DeletePermitter needs to approve or deny removing an item
+        1.  Provide information the DeletionPermitter needs to approve or deny removing an item
             from the stack.
 
      Attributes:
@@ -33,7 +33,7 @@ class DeleteRequest(Request, Generic[T]):
          stack: StackService[T]
 
      Provides:
-        -   def request(id: int, item_id: in, stack: StackService[T]) -> DeleteRequest:
+        -   def request(id: int, item_id: in, stack: StackService[T]) -> DeletionRequest:
 
      Super Class:
         Request
@@ -61,5 +61,5 @@ class DeleteRequest(Request, Generic[T]):
         return self._stack
     
     @classmethod
-    def request(cls, id: int, item_id: int, stack: StackService[T]) -> DeleteRequest:
+    def request(cls, id: int, item_id: int, stack: StackService[T]) -> DeletionRequest:
         return cls(id=id, item_id=item_id, stack=stack)

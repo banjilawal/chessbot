@@ -18,7 +18,7 @@ from err import (
 )
 from model import Token
 from permitter import TokenManeuverPermitter
-from report import PopApproval, TokenReadinessReport
+from report import PopApprovalReport, TokenReadinessReport
 from result import AnalysisResult
 from util import LoggingLevelRouter
 from validator import TokenValidator
@@ -53,7 +53,7 @@ class TokenUndoMovePermitter(TokenManeuverPermitter):
             requestor: Token,
             token_validator: TokenValidator | None = None,
             readiness_analyzer: TokenReadinessAnalyzer | None = None,
-    ) -> AnalysisResult[PopApproval]:
+    ) -> AnalysisResult[PopApprovalReport]:
         """
         Forwards a request that the CoordDatabase instance removed its latest insert.
 
@@ -104,7 +104,7 @@ class TokenUndoMovePermitter(TokenManeuverPermitter):
         if report.token_is_not_ready:
             # Send the exception chain on failure.
             return AnalysisResult.completed(
-                PopApproval.deny(
+                PopApprovalReport.deny(
                     exception=TokenUndoMovePermitterException(
                         cls_mthd=method,
                         cls_name=cls.__name__,
@@ -123,7 +123,7 @@ class TokenUndoMovePermitter(TokenManeuverPermitter):
         if requestor.previous_coord == requestor.current_position:
             # Send the exception chain on failure.
             return AnalysisResult.completed(
-                PopApproval.deny(
+                PopApprovalReport.deny(
                     exception=TokenUndoMovePermitterException(
                         cls_mthd=method,
                         cls_name=cls.__name__,
@@ -139,6 +139,6 @@ class TokenUndoMovePermitter(TokenManeuverPermitter):
                 )
             )
         # --- Forward the work product to the caller. ---#
-        return AnalysisResult.completed(PopApproval.approve(token.positions.))
+        return AnalysisResult.completed(PopApprovalReport.approve(token.positions.))
         
 

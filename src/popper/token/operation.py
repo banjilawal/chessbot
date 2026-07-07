@@ -14,7 +14,7 @@ from err import TokenPopperException
 from model import Token
 from operation import Popper
 from permitter import TokenPopPermitter
-from report import PopApproval
+from report import PopApprovalReport
 from result import DeletionResult, MethodResultType
 from stack import TokenStackService, TokenStackState
 from util import LoggingLevelRouter
@@ -83,7 +83,7 @@ class TokenPopper(Popper[Token]):
                 )
             )
         
-        pop_permission = cast(PopApproval, permission_analysis_result.payload)
+        pop_permission = cast(PopApprovalReport, permission_analysis_result.payload)
         # Handle the case that, push permission is denied.
         if pop_permission.is_denied:
             # Return the exception chain on failure
