@@ -25,7 +25,7 @@ class PromotionPermitterException(PermitterException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an error prevented a PromotionPermitter from completing its task.
+        1.  Indicate that a PromotionPermitter did not approve a request.
 
     Attributes:
         msg: Optional[str]
@@ -42,7 +42,7 @@ class PromotionPermitterException(PermitterException):
     Super Class:
         PermitterException
     """
-    MSG = "PromotionPermitter error."
+    MSG = "PromotionPermitter did not approve the request."
     ERR_CODE = "PROMOTION_PERMISSION_DENIAL"
     
     def __init__(

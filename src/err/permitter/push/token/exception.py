@@ -10,7 +10,7 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import PushPermitterException
+from err import PusherPermitterException
 from result import MethodResultType
 
 __all__ = [
@@ -19,13 +19,13 @@ __all__ = [
 ]
 
 # ======================# TOKEN_PUSH_PERMISSION_DENIAL #======================#
-class TokenPushPermitterException(PushPermitterException):
+class TokenPushPermitterException(PusherPermitterException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a TokenPushPermitter did not complete its analysis.
+        1.  Indicate that a TokenPushPermitter did not approve the request.
 
     Attributes:
         msg: Optional[str]
@@ -42,7 +42,7 @@ class TokenPushPermitterException(PushPermitterException):
     Super Class:
         PushingStackException
     """
-    MSG = "TokenPushPermitter did not complete its analysis."
+    MSG = "TokenPushPermitter did not approve the request."
     ERR_CODE = "TOKEN_PUSH_PERMISSION_DENIAL"
     
     def __init__(

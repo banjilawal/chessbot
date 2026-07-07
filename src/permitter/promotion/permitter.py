@@ -24,24 +24,21 @@ from util import LoggingLevelRouter
 class PromotionPermitter(Permitter):
     """
     Role:
-        -   Transaction Worker
-        -   Consistency
-        -   Integrity Maintenance
-        -   Process Runner
-        
+        -   Request Analyzer
+        -   Rights Granter
+        -   Consistency, Integrity Maintenance
+
     Responsibilities:
-        1.  Pawn promotion exception owner.
-        2.  Preserve original and updated data for rollbacks.
-        3.  Ensure the pawn's integrity and consistency are maintained during the transaction.
+        1.  Evaluate if promotion request can be granted.
         
     Attributes:
         pawn_tester: PromotionPawnTester
         rank_level: PromotionLevelTester
         priming_validator: PrimingValidator
-          
+        
     Provides:
         -   run(self, request: PromotionRequest) -> PromotionApprovalReport
-            
+        
     Super Class:
         Permitter
     """

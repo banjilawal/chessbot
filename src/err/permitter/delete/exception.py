@@ -1,7 +1,7 @@
-# src/err/permitter/delete/exception.py
+# src/err/permitter/deleter/exception.py
 
 """
-Module: err.permitter.delete.exception
+Module: err.permitter.deleter.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -15,17 +15,17 @@ from result import MethodResultType
 
 __all__ = [
     # ======================# DELETE_PERMISSION_DENIAL #======================#
-    "DeletePermitterException",
+    "DeleterPermitterException",
 ]
 
 # ======================# DELETE_PERMISSION_DENIAL #======================#
-class DeletePermitterException(PermitterException):
+class DeleterPermitterException(PermitterException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a DeletePermitter did not complete its permission analysis.
+        1.  Indicate that a DeletePermitter did not approve the request.
 
     Attributes:
         msg: Optional[str]
@@ -42,7 +42,7 @@ class DeletePermitterException(PermitterException):
     Super Class:
         PermitterException
     """
-    MSG = "DeletePermitter did not complete its analysis."
+    MSG = "DeletePermitter did not approve the request."
     ERR_CODE = "DELETE_PERMISSION_DENIAL"
     MTHD_RSLT_TYPE = MethodResultType.ANALYSIS_RESULT
     

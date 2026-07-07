@@ -1,7 +1,7 @@
-# src/err/permitter/delete/token/exception.py
+# src/err/permitter/deleter/token/exception.py
 
 """
-Module: err.permitter.delete.token.exception
+Module: err.permitter.deleter.token.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,22 +10,22 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import DeletePermitterException
+from err import DeleterPermitterException
 from result import MethodResultType
 
 __all__ = [
     # ======================# TOKEN_DELETE_PERMISSION_DENIAL #======================#
-    "TokenDeletionPermitterException",
+    "TokenDeleterPermitterException",
 ]
 
 # ======================# TOKEN_DELETE_PERMISSION_DENIAL #======================#
-class TokenDeletionPermitterException(DeletePermitterException):
+class TokenDeleterPermitterException(DeleterPermitterException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a TokenDeletePermitter did not complete its analysis.
+        1.  Indicate that a TokenDeletePermitter did not approve the request.
 
     Attributes:
         msg: Optional[str]
@@ -42,7 +42,7 @@ class TokenDeletionPermitterException(DeletePermitterException):
     Super Class:
         DeletePermitterException
     """
-    MSG = "TokenDeletePermitter did not complete its analysis."
+    MSG = "TokenDeletePermitter did not approve the request."
     ERR_CODE = "TOKEN_DELETE_PERMISSION_DENIAL"
     
     def __init__(

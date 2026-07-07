@@ -15,17 +15,17 @@ from result import MethodResultType
 
 __all__ = [
     # ======================# PUSH_PERMISSION_DENIAL #======================#
-    "PushPermitterException",
+    "PusherPermitterException",
 ]
 
 # ======================# PUSH_PERMISSION_DENIAL #======================#
-class PushPermitterException(PermitterException):
+class PusherPermitterException(PermitterException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a PushPermitter did not complete its permission analysis.
+        1.  Indicate that a PushPermitter did not approve the request.
 
     Attributes:
         msg: Optional[str]
@@ -42,7 +42,7 @@ class PushPermitterException(PermitterException):
     Super Class:
         PermitterException
     """
-    MSG = "PushPermitter did not complete its analysis."
+    MSG = "PushPermitter did not approve the request."
     ERR_CODE = "PUSH_PERMISSION_DENIAL"
     MTHD_RSLT_TYPE = MethodResultType.ANALYSIS_RESULT
     

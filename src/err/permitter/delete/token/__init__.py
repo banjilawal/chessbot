@@ -1,16 +1,16 @@
-# src/err/permitter/delete/token/__init__.py
+# src/err/permitter/deleter/token/__init__.py
 
 """
-Module: err.permitter.delete.token.__init__
+Module: err.permitter.deleter.token.__init__
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
 """
 
-# ============ ERR.PERMITTER.DELETE.TOKEN PACKAGE ===========#
+# ============ ERR.PERMITTER.DELETER.TOKEN PACKAGE ===========#
 
 # Packages
 
 
 # Modules
-from .exception import TokenDeletionPermitterException
+from .exception import TokenDeleterPermitterException

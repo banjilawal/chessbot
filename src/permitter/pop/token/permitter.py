@@ -9,43 +9,38 @@ version: 1.0.1
 
 from __future__ import annotations
 
+from typing import Type
+
 from err import PoppingEmptyTokenStackException, TokenPopPermitterException, TokenStackNullException
+from model import Token
 from report import PopApprovalReport
-from result import AnalysisResult, MethodResultType
+from request import PopRequest
 from stack import TokenStackService
 from util import LoggingLevelRouter
-from validator import PrimingValidator
 
 
-class TokenPopPermitter:
+class TokenPopPermitter(PopPermitter[Token]):
     """
     Role:
-        - Transaction Worker
-        - Consistency, Integrity Maintenance
-        - Process Runner
+        -   Request Analyzer
+        -   Rights Granter
+        -   Consistency, Integrity Maintenance
 
     Responsibilities:
-        1.  Run tests to see if permission can be granted to a TokenStackService to execute a pop.
+        1.  Evaluate if a TokenStack popping request can be granted.
 
     Attributes:
+        priming_validator: PrimingValidator
 
     Provides:
-        -   execute(
-                    cls,
-                    token_stack: TokenStackService,
-                    priming_validator: PrimingValidator
-            ) -> AnalysisResult
+        -   run(self, request: PopRequest,) -> PopApprovalReport:
 
     Super Class:
+        PopPermitter
     """
-    
-    @classmethod
+
     @LoggingLevelRouter.monitor
-    def execute(
-            cls,
-            stack: TokenStackService,
-            priming_validator: PrimingValidator | None = None,
-    ) -> AnalysisResult:
+    def run(self, request: PopRequest) -> PopApprovalReport:
         """
         Action:
             1.  Return a failure result containing an exception chain if either:
@@ -53,57 +48,63 @@ class TokenPopPermitter:
             2.  Send a pop denial if the TokenStack is empty. Otherwise, approve the
                 pop.
         Args:
-            stack: TokenStackService
-            priming_validator: PrimingValidator
+            request: PopRequest
         Returns:
-            AnalysisResult
+            PopApprovalReport
         Raises:
-            TokenPopPermitterException
+            TokenPopperPermitterException
             PoppingEmptyTokenStackException
         """
-        method =  f"{cls.__name__}.execute"
+        method =  f"{self.__class__.__name__}.run"
         
-        # --- Supply any missing dependencies. ---#
-        if priming_validator is None:
-            priming_validator = PrimingValidator()
-
-        stack_validation_result = priming_validator.validate(
-            candidate=stack,
-            target_model=TokenStackService,
+        # Handle the case that, the request is not bootstrapped successfully.
+        bootstrap_result = self.bootstrap_request(request)
+        if bootstrap_result.is_failure:
+            # Send an exception chain in the permission denial.
+            return PopApprovalReport.deny(
+                TokenPopPermitterException(
+                    cls_mthd=method,
+                    cls_name=self.__class__.__name__,
+                    msg=TokenPopPermitterException.MSG,
+                    err_code=TokenPopPermitterException.ERR_CODE,
+                    ex=bootstrap_result.exception,
+                )
+            )
+        # Handle the case that, the candidate is not a TokenStack.
+        stack_validation_result = self.priming_validator.execute(
+            candidate=request.stack,
+            target_model=Type[TokenStackService],
             null_exception=TokenStackNullException()
         )
         if stack_validation_result.is_failure:
-            # Return the exception chain on failure
-            return AnalysisResult.failure(
+            # Send an exception chain in the permission denial.
+            return PopApprovalReport.deny(
                 TokenPopPermitterException(
                     cls_mthd=method,
-                    cls_name=cls.__name__,
+                    cls_name=self.__class__.__name__,
                     msg=TokenPopPermitterException.MSG,
                     err_code=TokenPopPermitterException.ERR_CODE,
-                    mthd_rslt_type=MethodResultType.ANALYSIS_RESULT,
                     ex=stack_validation_result.exception,
                 )
             )
-        if stack.is_empty:
-            # Return the exception chain on failure
-            return AnalysisResult.completed(
-                PopApprovalReport.deny(
-                    exception=TokenPopPermitterException(
+        # Handle the case that, the stack is empty.
+        if request.stack.is_empty:
+            # Send an exception chain in the permission denial.
+            return PopApprovalReport.deny(
+                TokenPopPermitterException(
+                    cls_mthd=method,
+                    cls_name=self.__class__.__name__,
+                    msg=TokenPopPermitterException.MSG,
+                    err_code=TokenPopPermitterException.ERR_CODE,
+                    ex=PoppingEmptyTokenStackException(
                         cls_mthd=method,
-                        cls_name=cls.__name__,
-                        msg=TokenPopPermitterException.MSG,
-                        err_code=TokenPopPermitterException.ERR_CODE,
-                        mthd_rslt_type=MethodResultType.ANALYSIS_RESULT,
-                        ex=PoppingEmptyTokenStackException(
-                            cls_mthd=method,
-                            cls_name=cls.__name__,
-                            msg=PoppingEmptyTokenStackException.MSG,
-                            err_code=PoppingEmptyTokenStackException.ERR_CODE,
-                        ),
-                    )
+                        cls_name=self.__class__.__name__,
+                        msg=PoppingEmptyTokenStackException.MSG,
+                        err_code=PoppingEmptyTokenStackException.ERR_CODE,
+                    ),
                 )
             )
-        # --- Integrity and performance tests are passed. ---#
-        return AnalysisResult.completed(PopApprovalReport.approve(stack=stack))
+        # --- Forward the request approval to the caller. ---#
+        return PopApprovalReport.approve(stack=request.stack)
 
     

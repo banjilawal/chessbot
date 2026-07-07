@@ -43,7 +43,7 @@ class PermitterException(ChessException):
     Super Class:
         ChessException
     """
-    MSG = "Permitter did not complete its analysis."
+    MSG = "Permitter did not approve the request."
     ERR_CODE = "PERMITTER_FAILURE"
     METHOD_RESULT_TYPE = MethodResultType.ANALYSIS_RESULT
     

@@ -1,4 +1,4 @@
-# src/permitter/promotion/tester/ranktester.py
+# src/permitter/promotion/tester/rank/tester.py
 
 """
 Module: permitter.promotion.tester.rank.tester

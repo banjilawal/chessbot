@@ -16,11 +16,11 @@ from result import MethodResultType
 
 __all__ = [
     # ======================# DELETE_REQUEST_NULL_ERROR #======================#
-    "DeleteRequestNullException",
+    "DeletionRequestNullException",
 ]
 
 # ======================# DELETE_REQUEST_NULL_ERROR #======================#
-class DeleteRequestNullException(RequestNullException):
+class DeletionRequestNullException(RequestNullException):
     """
     Role:
         -   Error Tracing

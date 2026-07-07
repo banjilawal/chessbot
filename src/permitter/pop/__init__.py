@@ -13,3 +13,4 @@ version: 1.0.1
 from .token import *
 
 # Modules
+from .permitter import PopPermitter

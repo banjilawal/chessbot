@@ -1,7 +1,7 @@
-# src/err/permitter/pop/exception.py
+# src/err/permitter/popper/exception.py
 
 """
-Module: err.permitter.pop.exception
+Module: err.permitter.popper.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -15,17 +15,17 @@ from result import MethodResultType
 
 __all__ = [
     # ======================# POP_PERMISSION_DENIAL #======================#
-    "PopPermitterException",
+    "PopperPermitterException",
 ]
 
 # ======================# POP_PERMISSION_DENIAL #======================#
-class PopPermitterException(PermitterException):
+class PopperPermitterException(PermitterException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a PopPermitter did not complete its permission analysis.
+        1.  Indicate that a PopperPermitter did not approve the request.
 
     Attributes:
         msg: Optional[str]
@@ -42,7 +42,7 @@ class PopPermitterException(PermitterException):
     Super Class:
         PermitterException
     """
-    MSG = "PopPermitter did not complete its analysis."
+    MSG = "PopperPermitter did not approve the request."
     ERR_CODE = "POP_PERMISSION_DENIAL"
     MTHD_RSLT_TYPE = MethodResultType.ANALYSIS_RESULT
     

@@ -10,6 +10,7 @@ version: 1.0.1
 from __future__ import annotations
 from abc import ABC, abstractmethod
 
+from bootstrapper import PrimingValidator
 from report import OperationApprovalReport
 from request import Request
 from util import LoggingLevelRouter
@@ -19,24 +20,38 @@ from util import LoggingLevelRouter
 class Permitter(ABC):
     """
     Role:
-        - Analysis Worker
-        - Consistency, Integrity Maintenance
+        -   Request Analyzer
+        -   Rights Granter
+        -   Consistency, Integrity Maintenance
 
     Responsibilities:
-        1.  Checks if an object satisfies the conditions to perform an operation.
+        1.  Evaluate if a candidate can be granted permission to run an operation.
 
     Attributes:
-
+        priming_validator: PrimingValidator
+        
     Provides:
-        -   def execute(cls, requestor: T, *args, **kwargs) -> AnalysisResult
+        -   run(self, request: Request, *args, **kwargs) -> OperationApprovalReport
 
     Super Class:
         Permitter
     """
+    _priming_validator: PrimingValidator
+    
+    def __init__(self, priming_validator: PrimingValidator):
+        """
+        Args:
+            priming_validator: PrimingValidator
+        """
+        self._priming_validator = priming_validator
+        
+    @property
+    def priming_validator(self) -> PrimingValidator:
+        return self._priming_validator
     
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def run(request: Request, *args, **kwargs) -> OperationApprovalReport:
+    def run(self, request: Request, *args, **kwargs) -> OperationApprovalReport:
         """
         Implement in TokenPermitter subclasses.
         Args:

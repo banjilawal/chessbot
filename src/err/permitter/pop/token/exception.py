@@ -1,7 +1,7 @@
-# src/err/permitter/pop/token/exception.py
+# src/err/permitter/popper/token/exception.py
 
 """
-Module: err.permitter.pop.token.exception
+Module: err.permitter.popper.token.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,7 +10,7 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import PopPermitterException
+from err import PopperPermitterException
 from result import MethodResultType
 
 __all__ = [
@@ -19,13 +19,13 @@ __all__ = [
 ]
 
 # ======================# TOKEN_POP_PERMISSION_DENIAL #======================#
-class TokenPopPermitterException(PopPermitterException):
+class TokenPopPermitterException(PopperPermitterException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a TokenPopPermitter did not complete its analysis.
+        1.  Indicate that a TokenPopperPermitter did not approve the request.
 
     Attributes:
         msg: Optional[str]
@@ -40,9 +40,9 @@ class TokenPopPermitterException(PopPermitterException):
     Provides:
 
     Super Class:
-        PopPermitterException
+        PopperPermitterException
     """
-    MSG = "TokenPopPermitter did not complete its analysis."
+    MSG = "TokenPopperPermitter did not approve the request."
     ERR_CODE = "TOKEN_POP_PERMISSION_DENIAL"
     
     def __init__(
