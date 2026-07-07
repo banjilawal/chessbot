@@ -10,10 +10,12 @@ version: 1.0.1
 # ============ ERR.NULL.REQUEST PACKAGE ===========#
 
 # Packages
-from .push import *
-from .pop import *
 from .delete import *
+from .maneuver import *
 from .promotion import *
+from .pop import *
+from .push import *
+from .slot import *
 
 # Modules
 from .exception import RequestNullException
