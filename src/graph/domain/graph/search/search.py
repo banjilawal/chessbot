@@ -123,7 +123,7 @@ class DomainVisitorFinder(Finder[Domain, Piece]):
         method = "DomainResidentFinder._rank_name_search"
         
         try:
-            matches = [visitor for visitor in domain.residents if visitor.rank.designation.upper() == rank_name.upper()]
+            matches = [visitor for visitor in domain.residents if visitor.rank_level.designation.upper() == rank_name.upper()]
             if len(matches) == 0:
                 return SearchResult.empty()
             
@@ -140,7 +140,7 @@ class DomainVisitorFinder(Finder[Domain, Piece]):
         method = "DomainResidentFinder._ransom_search"
         
         try:
-            matches = [visitor for visitor in domain.residents if visitor.rank.ransom == ransom]
+            matches = [visitor for visitor in domain.residents if visitor.rank_level.ransom == ransom]
             if len(matches) == 0:
                 return SearchResult.empty()
             

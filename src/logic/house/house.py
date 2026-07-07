@@ -30,7 +30,7 @@ class House:
     
     @property
     def house_cost(self) -> int:
-        return self._square.occupant.rank.ransom
+        return self._square.occupant.rank_level.ransom
     
     def house_category(self, piece) -> HouseCategory:
         if piece.is_enemy(self._square.occupant):

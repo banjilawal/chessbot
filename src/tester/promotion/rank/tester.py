@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, cast
 
 from analyzer import TokenReadinessAnalyzer
-from err import PromoteToKingException, PromoteToPawnException
+from err import PromoteToKingException, PromoteToPawnException, PromotionLevelTesterException
 from model import King, Pawn, Rank
 from result import MethodResultType, ValidationResult
 from util import LoggingLevelRouter

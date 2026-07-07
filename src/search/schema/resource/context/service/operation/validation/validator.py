@@ -253,9 +253,9 @@ class SchemaContextValidator(Validator[SchemaContext]):
             return ValidationResult.success(context)
         
         # Certification for the search-by-rank target.
-        if context.rank is not None:
+        if context.rank_level is not None:
             validation_result = workers.rank_service.run.build(
-                rank=context.rank
+                rank=context.rank_level
             )
             if validation_result.is_failure:
                 # Send the exception chain on failure.

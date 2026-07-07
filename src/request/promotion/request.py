@@ -49,11 +49,11 @@ class PromotionRequest(Request):
         
     
     @property
-    def pawn(self) -> PawnToken:
+    def candidate(self) -> PawnToken:
         return self._pawn
     
     @property
-    def promoted_rank(self) -> Rank:
+    def rank_level(self) -> Rank:
         return self._promoted_rank
 
     

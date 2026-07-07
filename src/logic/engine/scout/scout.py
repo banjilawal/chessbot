@@ -43,9 +43,9 @@ class Scout:
     squares: List[Square] = []
     origin = self._scout.positions.current_coord()
 
-    for territory in self._scout.rank.quadrants:
+    for territory in self._scout.rank_level.quadrants:
       for square in chess_board.iterator(origin, territory.delta):
-        if not self._scout.rank.walk.is_walkable(self._scout, square.position):
+        if not self._scout.rank_level.walk.is_walkable(self._scout, square.position):
           break
         if square.occupant is not None and square not in squares:
           squares.append(square)

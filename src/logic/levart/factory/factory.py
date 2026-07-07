@@ -107,7 +107,7 @@ class TravelEventFactory:
             actor: Piece, actor_square: Square, empty_square: Square, board: Board
     ) -> BuildResult[TravelEvent]:
         if isinstance(actor, PromotablePiece) and (
-                not isinstance(actor.rank, Queen) and
+                not isinstance(actor.rank_level, Queen) and
                 cast(PromotablePiece, actor).previous_rank is None and
                 actor.current_position.row == actor.schema.enemy_schema.rank_row and
                 actor.current_position.row == empty_square.coord.row

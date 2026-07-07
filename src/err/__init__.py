@@ -42,6 +42,7 @@ from .service import *
 from .stack import *
 from .state import *
 from .string import *
+from .tester import *
 from .timeout import *
 from .toolkit import *
 from .transaction import *

@@ -117,7 +117,7 @@ class OpeningSquareLocator(Worker):
             )
         # --- ServiceRequest a rank quota report. ---#
         rank_quota_report = rank_quota_analyzer.search_service(
-            rank=square.rank,
+            rank=square.rank_level,
             square_stack=square_stack,
             rank_service=rank_service,
         )

@@ -118,17 +118,17 @@ class GameDisplay:
       self.cell_px - self.border_px
     )
 
-    if isinstance(chess_piece.rank, King):
+    if isinstance(chess_piece.rank_level, King):
       pygame.draw.rect(self.screen, KING_COLOR, chess_piece_shape)
-    if isinstance(chess_piece.rank, Pawn):
+    if isinstance(chess_piece.rank_level, Pawn):
       pygame.draw.rect(self.screen, PAWN_COLOR, chess_piece_shape)
-    if isinstance(chess_piece.rank, Knight):
+    if isinstance(chess_piece.rank_level, Knight):
       pygame.draw.rect(self.screen, KNIGHT_COLOR, chess_piece_shape)
-    if isinstance(chess_piece.rank, Rook):
+    if isinstance(chess_piece.rank_level, Rook):
       pygame.draw.rect(self.screen, CASTLE_COLOR.visitor_ransom, chess_piece_shape)
-    if isinstance(chess_piece.rank, Bishop):
+    if isinstance(chess_piece.rank_level, Bishop):
       pygame.draw.rect(self.screen, BISHOP_COLOR, chess_piece_shape)
-    if isinstance(chess_piece.rank, Queen):
+    if isinstance(chess_piece.rank_level, Queen):
       pygame.draw.rect(self.screen, QUEEN_COLOR, chess_piece_shape)
 
     text_surface = self.font.render(str(chess_piece.designation), True, GameColor.BLACK.value)
@@ -252,7 +252,7 @@ class GameDisplay:
   def is_position_valid_for_drag(self, chess_piece: Piece, test_coordinate: Coord) -> bool:
     """Combined state for visual dragging"""
     # 1. KingCheckRecord board_validator's official position (for static entities)
-    if not chess_piece.rank.walk.is_walkable(chess_piece, test_coordinate):
+    if not chess_piece.rank_level.walk.is_walkable(chess_piece, test_coordinate):
       return False
     return True
 
@@ -264,17 +264,17 @@ class GameDisplay:
       self.cell_px - self.border_px
     )
     # pick color by validate (reuse your existing logic)
-    if isinstance(chess_piece.rank, King):
+    if isinstance(chess_piece.rank_level, King):
       pygame.draw.rect(self.screen, KING_COLOR, rect)
-    elif isinstance(chess_piece.rank, Pawn):
+    elif isinstance(chess_piece.rank_level, Pawn):
       pygame.draw.rect(self.screen, PAWN_COLOR, rect)
-    elif isinstance(chess_piece.rank, Knight):
+    elif isinstance(chess_piece.rank_level, Knight):
       pygame.draw.rect(self.screen, KNIGHT_COLOR, rect)
-    elif isinstance(chess_piece.rank, Rook):
+    elif isinstance(chess_piece.rank_level, Rook):
       pygame.draw.rect(self.screen, CASTLE_COLOR.visitor_ransom, rect)
-    elif isinstance(chess_piece.rank, Bishop):
+    elif isinstance(chess_piece.rank_level, Bishop):
       pygame.draw.rect(self.screen, BISHOP_COLOR, rect)
-    elif isinstance(chess_piece.rank, Queen):
+    elif isinstance(chess_piece.rank_level, Queen):
       pygame.draw.rect(self.screen, QUEEN_COLOR, rect)
 
     text_surface = self.font.render(str(chess_piece.designation), True, GameColor.BLACK.value)

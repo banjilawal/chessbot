@@ -76,10 +76,10 @@ class PromotionApprovalReport(OperationApprovalReport):
         )
     
     @classmethod
-    def approve(cls, pawn: T, rank: Rank) -> PromotionApprovalReport:
+    def approve(cls, pawn: T, rank_level: Rank) -> PromotionApprovalReport:
         return cls(
             pawn=pawn,
-            rank=rank,
+            rank=rank_level,
             permission=Permission.GRANTED
         )
     

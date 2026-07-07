@@ -145,7 +145,7 @@ class GraphDomainFinder(Finder[Graph, Domain]):
         method = "GraphDomainFinder._rank_name_search"
         
         try:
-            matches = [domain for domain in graph.domains if domain.ownerr.rank.designation.upper() == name.upper()]
+            matches = [domain for domain in graph.domains if domain.ownerr.rank_level.designation.upper() == name.upper()]
             if len(matches) == 0:
                 return SearchResult.empty()
             
@@ -161,7 +161,7 @@ class GraphDomainFinder(Finder[Graph, Domain]):
         method = "GraphDomainFinder._ransom_search"
         
         try:
-            matches = [domain for domain in graph.domains if domain.owner.rank.ransom == ransom]
+            matches = [domain for domain in graph.domains if domain.owner.rank_level.ransom == ransom]
             if len(matches) == 0:
                 return SearchResult.empty()
             

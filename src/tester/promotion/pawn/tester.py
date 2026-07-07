@@ -13,7 +13,10 @@ from __future__ import annotations
 from typing import Any, cast
 
 from analyzer import TokenReadinessAnalyzer
-from err import PawnDoublePromotionException, PawnPromotionRowException, PromoteInactivePawnException
+from err import (
+    PawnDoublePromotionException, PawnPromotionRowException, PromoteInactivePawnException,
+    PromotionPawnTesterException
+)
 from model import PawnToken
 from report import TokenReadinessReport
 from result import MethodResultType, ValidationResult

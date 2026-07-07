@@ -91,10 +91,10 @@ class TokenSearchRouter(SearchRouter[Token]):
                 team=query.context.team
             )
         # token.rank search entry point.
-        if query.context.rank is not None:
+        if query.context.rank_level is not None:
             return cls._find_by_rank(
                 items=query.token_stack,
-                team=query.context.rank
+                team=query.context.rank_level
             )
         # token.ransom search entry point.
         if query.context.ransom is not None:
