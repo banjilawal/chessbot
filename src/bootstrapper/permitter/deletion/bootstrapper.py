@@ -1,46 +1,42 @@
-# src/permitter/deletion/permitter.py
+# src/bootstrapper/permitter/deletion/bootstrapper.py
 
 """
-Module: permitter.deletion.permitter
+Module: bootstrapper/permitter.deletion.bootstrapper
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
 """
 
-from abc import abstractmethod
+from __future__ import annotations
+
 from typing import Type
 
-from err import DeletionRequestNullException, DeletePermitterException, PopRequestNullException
-from permitter import Permitter
-from report import DeletionApprovalReport, PushApprovalReport
-from request import DeletionRequest, PopRequest, PushRequest
+from err import DeletionRequestNullException, DeletionPermitterBootstrapperException
+from permitter import PermitterBootstrapper
+from request import DeletionRequest
 from result import ValidationResult
 from util import LoggingLevelRouter
 
 
-class DeleterPermitter(Permitter):
+class DeletionPermitterBootstrapper(PermitterBootstrapper):
     """
     Role:
-        -   Request Analyzer
-        -   Rights Granter
-        -   Consistency, Integrity Maintenance
+        - Bootstrapper
 
     Responsibilities:
-        1.  Evaluate if permission to remove a stack member can be granted.
+        1.  Verfiy a DeletionPermitter receives a well formed DeletionRequest.
 
     Attributes:
 
     Provides:
-        -   run(self, request: DeletionRequest,) -> DeletionApprovalReport:
+        -   bootstrap_request(self, request) -> ValidationResult:
 
     Super Class:
         Permitter
     """
-    
-    @abstractmethod
-    @LoggingLevelRouter.monitor
-    def run(self, request: DeletionRequest,) -> DeletionApprovalReport:
-        pass
+    def __init__(self):
+        super().__init__()
+        
     
     @LoggingLevelRouter.monitor
     def bootstrap_request(self, request) -> ValidationResult:
@@ -50,14 +46,14 @@ class DeleterPermitter(Permitter):
         Action:
             1.  Send an exception chain in the ValidationResult if the request is either
                     -   Null
-                    -   Not a PopRequest.
+                    -   Not a DeletionRequest.
             2.  Otherwise, send the success
         Args:
             request
         Returns:
             ValidationResult
         Raises:
-            DeleterPermitterException
+            DeletionPermitterBootstrapperException
         """
         method = f"{self.__class__.__name__}.bootstrap_request"
         
@@ -70,11 +66,11 @@ class DeleterPermitter(Permitter):
         if validation_result.is_failure:
             # Send the exception chain in the ValidationResult.
             return ValidationResult.failure(
-                DeletePermitterException(
+                DeletionPermitterBootstrapperException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=DeletePermitterException.MSG,
-                    err_code=DeletePermitterException.ERR_CODE,
+                    msg=DeletionPermitterBootstrapperException.MSG,
+                    err_code=DeletionPermitterBootstrapperException.ERR_CODE,
                     ex=validation_result.exception,
                 )
             )

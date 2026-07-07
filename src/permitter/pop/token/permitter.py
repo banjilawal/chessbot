@@ -13,6 +13,7 @@ from typing import Type
 
 from err import PoppingEmptyTokenStackException, TokenPopPermitterException, TokenStackNullException
 from model import Token
+from permitter import PopPermitter
 from report import PopApprovalReport
 from request import PopRequest
 from stack import TokenStackService
@@ -42,11 +43,14 @@ class TokenPopPermitter(PopPermitter[Token]):
     @LoggingLevelRouter.monitor
     def run(self, request: PopRequest) -> PopApprovalReport:
         """
+        Evaluate a TokenStack pop request.
+        
         Action:
-            1.  Return a failure result containing an exception chain if either:
-                    -   stack is not valid.
-            2.  Send a pop denial if the TokenStack is empty. Otherwise, approve the
-                pop.
+            1.  Deny the request if any of the following occur.
+                    -   The request cannot be bootstrapped.
+                    -   The request does not contain a TokenStackService.
+                    -   The TokenStack is empty.
+            2.  Otherwise, approve the request.
         Args:
             request: PopRequest
         Returns:

@@ -10,6 +10,7 @@ version: 1.0.1
 from abc import abstractmethod
 from typing import Type
 
+from bootstrapper import PrimingValidator
 from err import PusherPermitterException, PushRequestNullException
 from permitter import Permitter
 from report import PushApprovalReport
@@ -18,7 +19,7 @@ from result import ValidationResult
 from util import LoggingLevelRouter
 
 
-class PushPermitter(Permitter):
+class PermitterBootstrapper:
     """
     Role:
         - Analysis Worker
@@ -35,9 +36,23 @@ class PushPermitter(Permitter):
     Super Class:
         Permitter
     """
-    def __init__(self):
-        super().__init__()
+    _priming_validator: PrimingValidator
+    
+    def __init__(
+            self,
+            priming_validator: PrimingValidator | None = PrimingValidator(),
+    ):
+        """
+        Args:
+            priming_validator: PrimingValidator
+        """
+        self._priming_validator = priming_validator
+    
+    @property
+    def priming_validator(self) -> PrimingValidator:
+        return self._priming_validator
+    
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def run(self, request: PushRequest,) -> PushApprovalReport:
+    def bootstrap_request(self, request) -> ValidationResult:
         pass

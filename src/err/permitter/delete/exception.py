@@ -15,11 +15,11 @@ from result import MethodResultType
 
 __all__ = [
     # ======================# DELETE_PERMISSION_DENIAL #======================#
-    "DeleterPermitterException",
+    "DeletePermitterException",
 ]
 
 # ======================# DELETE_PERMISSION_DENIAL #======================#
-class DeleterPermitterException(PermitterException):
+class DeletePermitterException(PermitterException):
     """
     Role:
         -   Error Tracing

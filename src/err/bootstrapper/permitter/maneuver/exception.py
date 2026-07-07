@@ -1,32 +1,33 @@
-# src/err/permitter/deleter/token/exception.py
+# src/err/bootstrap/permitter/exception.py
 
 """
-Module: err.permitter.deleter.token.exception
+Module: err.bootstrapper.permitter.exception
 Author: Banji Lawal
-Created: 2026-04-04
+Created: 2026-04-03
 version: 1.0.1
 """
 
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import DeletePermitterException
+from err import BootstrapperException
 from result import MethodResultType
 
 __all__ = [
-    # ======================# TOKEN_DELETE_PERMISSION_DENIAL #======================#
-    "TokenDeletePermitterException",
+    # ======================# MANEUVER_PERMITTER_BOOTSTRAPPER_FAILURE #======================#
+    "ManeuverPermitterBootstrapperException",
 ]
 
-# ======================# TOKEN_DELETE_PERMISSION_DENIAL #======================#
-class TokenDeletePermitterException(DeletePermitterException):
+# ======================# MANEUVER_PERMITTER_BOOTSTRAPPER_FAILURE #======================#
+class ManeuverPermitterBootstrapperException(BootstrapperException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a TokenDeletePermitter did not approve the request.
-
+        1.  Indicate that an error prevented a ManeuverPermitterBootstrapper from
+            completing its task.
+        
     Attributes:
         msg: Optional[str]
         var: Optional[str]
@@ -35,15 +36,15 @@ class TokenDeletePermitterException(DeletePermitterException):
         cls_name: Optional[str]
         cls_mthd: Optional[str]
         err_code: Optional[str]
-        Mthd_Rslt_Type: Optional[MethodResultType]
+        mthd_rslt_type: Optional[MethodResultType]
             
     Provides:
 
     Super Class:
-        DeletePermitterException
+        BootstrapperException
     """
-    MSG = "TokenDeletePermitter did not approve the request."
-    ERR_CODE = "TOKEN_DELETE_PERMISSION_DENIAL"
+    MSG = "ManeuverPermitterBootstrapper encountered an error."
+    ERR_CODE = "MANEUVER_PERMITTER_BOOTSTRAPPER_FAILURE"
     
     def __init__(
             self,

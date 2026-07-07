@@ -11,6 +11,7 @@ version: 1.0.1
 
 # Packages
 from .promotion import *
+from .stack import *
 
 
 # Modules

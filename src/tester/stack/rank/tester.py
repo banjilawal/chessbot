@@ -1,7 +1,7 @@
-# src/tester/promotion/rank/tester.py
+# src/tester/stack/rank/tester.py
 
 """
-Module: tester.promotion.rank.tester
+Module: tester.stack.rank.tester
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -12,21 +12,21 @@ from __future__ import annotations
 from typing import Any, cast
 
 from analyzer import TokenReadinessAnalyzer
-from err import PromoteToKingException, PromoteToPawnException, PromotionLevelTesterException
+from err import PromoteToKingException, PromoteToPawnException, StackLevelTesterException
 from model import King, Pawn, Rank
 from result import MethodResultType, ValidationResult
 from util import LoggingLevelRouter
 from validator import TokenValidator
 
 
-class PromotionLevelTester:
+class StackLevelTester:
     """
     Role:
         -   Helper
         -   Test Runner
         
     Responsibilities:
-        1.  Check if the subject is a valid promotion level
+        1.  Check if the subject is a valid stack level
         
     Attributes:
         validator: TokenValidator
@@ -68,7 +68,7 @@ class PromotionLevelTester:
         Returns:
             ValidationResult[Rank]
         Raises:
-            PromotionLevelTesterException
+            StackLevelTesterException
             PromoteToPawnException
             PromoteToKingException
         """
@@ -79,11 +79,11 @@ class PromotionLevelTester:
         if validation_result.is_failure:
             # Send the exception chain in the result.
             return ValidationResult.failure(
-                PromotionLevelTesterException(
+                StackLevelTesterException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=PromotionLevelTesterException.MSG,
-                    err_code=PromotionLevelTesterException.ERR_CODE,
+                    msg=StackLevelTesterException.MSG,
+                    err_code=StackLevelTesterException.ERR_CODE,
                     mthd_rslt_type=MethodResultType.VALIDATION_RESULT,
                     ex=validation_result.exception
                 )
@@ -94,11 +94,11 @@ class PromotionLevelTester:
         if isinstance(rank, King):
             # Send the exception chain in the result.
             return ValidationResult.failure(
-                PromotionLevelTesterException(
+                StackLevelTesterException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=PromotionLevelTesterException.MSG,
-                    err_code=PromotionLevelTesterException.ERR_CODE,
+                    msg=StackLevelTesterException.MSG,
+                    err_code=StackLevelTesterException.ERR_CODE,
                     mthd_rslt_type=MethodResultType.VALIDATION_RESULT,
                     ex=PromoteToKingException(
                         cls_mthd=method,
@@ -112,11 +112,11 @@ class PromotionLevelTester:
         if isinstance(rank, Pawn):
             # Send the exception chain in the result.
             return ValidationResult.failure(
-                PromotionLevelTesterException(
+                StackLevelTesterException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=PromotionLevelTesterException.MSG,
-                    err_code=PromotionLevelTesterException.ERR_CODE,
+                    msg=StackLevelTesterException.MSG,
+                    err_code=StackLevelTesterException.ERR_CODE,
                     mthd_rslt_type=MethodResultType.VALIDATION_RESULT,
                     ex=PromoteToPawnException(
                         cls_mthd=method,

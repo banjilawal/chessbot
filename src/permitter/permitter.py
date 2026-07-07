@@ -38,7 +38,10 @@ class Permitter(ABC):
     """
     _priming_validator: PrimingValidator
     
-    def __init__(self, priming_validator: PrimingValidator):
+    def __init__(
+            self,
+            priming_validator: PrimingValidator | None = PrimingValidator(),
+    ):
         """
         Args:
             priming_validator: PrimingValidator

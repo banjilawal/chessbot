@@ -10,6 +10,11 @@ version: 1.0.1
 # =========== PRIMING.PERMITTER PACKAGE ===========#
 
 # Packages
+from .deletion import *
+from .maneuver import *
+from .pop import *
+from .promotion import *
+from .push import *
 
 # Modules
 from .exception import PermitterBootstrapperException
