@@ -11,6 +11,7 @@ from __future__ import annotations
 
 from analyzer import Analyzer
 from bootstrapper import ReadinessAnalyzerBootstrapper
+from detector import Detector
 from err import TokenReadinessAnalyzerException
 from model import Token
 from report import TokenReadinessReport
@@ -18,7 +19,7 @@ from result import AnalysisResult
 from util import LoggingLevelRouter
 
 
-class TokenReadinessAnalyzer(Analyzer):
+class ReadinessReporter(Detector):
     """
     Role:
         -   Analysis Factory
@@ -40,21 +41,15 @@ class TokenReadinessAnalyzer(Analyzer):
     Parent:
         Analyzer
     """
-    _bootstrapper: ReadinessAnalyzerBootstrapper
-    
-    def __init__(
-            self,
-            bootstrapper: ReadinessAnalyzerBootstrapper | None = ReadinessAnalyzerBootstrapper(),
-    ):
-        """
-        Args:
-            bootstrapper: ReadinessAnalyzerBootstrapper
-        """
-        self._bootstrapper = bootstrapper
     
     
+    @classmethod
     @LoggingLevelRouter.monitor
-    def execute(self, token: Token) -> AnalysisResult[TokenReadinessReport]:
+    def analyze(
+            cls,
+            token: Token,
+            bootstrapper: ReadinessAnalyzerBootstrapper | None = None,
+    ) -> AnalysisResult[TokenReadinessReport]:
         """
         MAke sure the token can be used.
         
@@ -74,16 +69,18 @@ class TokenReadinessAnalyzer(Analyzer):
         Raises:
             TokenFreedomAnalyzerException
         """
-        method = f"{self.__class__.__name__}.analyze"
+        method = f"{cls.__name__}.analyze"
         
         # --- Supply any missing dependencies. ---#
+        if bootstrapper is None:
+            bootstrapper = ReadinessAnalyzerBootstrapper()
             
-        analysis_result = self._bootstrapper.execute(subject=token, )
+        analysis_result = bootstrapper.execute(subject=token, )
         if analysis_result.is_failure:
             return AnalysisResult.failure(
                 exception=TokenReadinessAnalyzerException(
                     cls_mthd=method,
-                    cls_name=self.__class__.__name__,
+                    cls_name=cls.__name__,
                     msg=TokenReadinessAnalyzerException.MSG,
                     err_code=TokenReadinessAnalyzerException.ERR_CODE,
                     ex=analysis_result.exception

@@ -22,5 +22,5 @@ class Analyzer:
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def analyze(cls, *args, **kwargs) -> AnalysisResult[R]:
+    def execute(cls, *args, **kwargs) -> AnalysisResult[R]:
         pass

@@ -44,7 +44,7 @@ class RelationAnalyzer(Analyzer[RelationReport], Generic[P, S]):
     @classmethod
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def analyze(
+    def execute(
             cls,
             candidate_primary: P,
             candidate_satellite: S,

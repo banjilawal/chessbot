@@ -94,9 +94,9 @@ class ReadinessAnalyzerBootstrapper(AnalyzerBootstrapper):
             return AnalysisResult.completed(TokenReadinessReport.inactive(subject))
 
         if isinstance(subject, CombatantToken):
-            return toolkit.combatant_readiness_analyzer.analyze(
+            return toolkit.combatant_readiness_analyzer.execute(
                 subject=cast(CombatantToken, subject)
             )
-        return toolkit.king_readiness_analyzer.analyze(
+        return toolkit.king_readiness_analyzer.execute(
             subject=cast(KingToken, subject)
         )

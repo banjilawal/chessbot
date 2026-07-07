@@ -133,7 +133,7 @@ class ItineraryValidator(Validator[Itinerary]):
                 )
             )
         # Handle the case that, the token fails a validation check.
-        freedom_analysis_result = toolkit.token_freedom_analyzer.analyze(itinerary.token)
+        freedom_analysis_result = toolkit.token_freedom_analyzer.execute(itinerary.token)
         if freedom_analysis_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(

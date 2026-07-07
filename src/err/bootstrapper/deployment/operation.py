@@ -88,7 +88,7 @@ class TokenDeploymentPrimer(Operation[Token]):
             token_freedom_analyzer = TokenReadinessAnalyzer()
         
         # Handle the case that, the token is not safe.
-        deployment_analysis_result = token_freedom_analyzer.analyze(token)
+        deployment_analysis_result = token_freedom_analyzer.execute(token)
         if deployment_analysis_result.is_failure:
             # Send the exception chain on failure.
             return UpdateResult.update_failure(

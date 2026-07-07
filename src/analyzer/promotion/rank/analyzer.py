@@ -43,7 +43,7 @@ class PromotionRankAnalyzer(Analyzer):
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def analyze(
+    def execute(
             cls,
             new_rank: Rank,
             rank_validator: RankValidator | None = None,

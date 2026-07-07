@@ -87,7 +87,7 @@ class ItineraryAssemblyPrimer(AssemblyPrimer[Itinerary]):
         if toolkit is None:
             toolkit = ItineraryToolkit()
         
-        token_freedom_validation_result = toolkit.token_freedom_analyzer.analyze(blueprint.token)
+        token_freedom_validation_result = toolkit.token_freedom_analyzer.execute(blueprint.token)
         # Handle the case that, the freedom_analysis is not completed.
         if token_freedom_validation_result.is_failure:
             # Send the exception chain on failure.
@@ -170,7 +170,7 @@ class ItineraryAssemblyPrimer(AssemblyPrimer[Itinerary]):
         source_square = source_square_search_result.payload[0]
         
         # Handle the case, that the token and the destination are already related.
-        token_destination_relation_result = toolkit.square_token_relation_analyzer.analyze(
+        token_destination_relation_result = toolkit.square_token_relation_analyzer.execute(
             candidate_primary=blueprint.destination,
             candidate_satellite=blueprint.token,
         )

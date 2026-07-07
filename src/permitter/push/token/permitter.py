@@ -1,7 +1,7 @@
-# src/push/token/py
+# src/permitter/push/token/permitter.py
 
 """
-Module: push.token.operation
+Module: permitter.push.token.permitter
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -10,17 +10,13 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Type, cast
 
-from analyzer import RankQuotaAnalyzer
 from bootstrapper import PrimingValidator
 from detector import TokenCollisionDetector
 from err import PushRequestNullException, TokenPushPermitterException, TokenStackNullException
-from microservice import RankService
 from model import Token
-from permitter import PushPermitter
-from permitter.quota.permitter import RankSlotPermitter
+from permitter import PushPermitter, RankSlotPermitter
 from report import PushApprovalReport
 from request import PushRequest, RankSlotRequest
-from result import MethodResultType
 from stack import TokenStackService
 from util import IdFactory, LoggingLevelRouter
 from validator import TokenValidator
@@ -49,7 +45,6 @@ class TokenPushPermitter(PushPermitter):
     Super Class:
     """
     _token_validator: TokenValidator
-    _rank_service: RankService
     _rank_slot_permitter: RankSlotPermitter
     _collision_detector: TokenCollisionDetector
     _priming_validator: PrimingValidator
@@ -57,23 +52,17 @@ class TokenPushPermitter(PushPermitter):
     def __init__(
             self,
             token_validator: TokenValidator | None = TokenValidator(),
-            rank_service: RankService | None = RankService(),
             rank_slot_permitter: RankSlotPermitter = RankSlotPermitter(),
-            quota_analyzer: RankQuotaAnalyzer | None = RankQuotaAnalyzer(),
             collision_detector: TokenCollisionDetector | None = TokenCollisionDetector(),
             priming_validator: PrimingValidator | None = PrimingValidator(),
     ):
         """
         Args:
-            rank_service: RankService
-            quota_analyzer: RankQuotaAnalyzer
             collision_detector: TokenCollisionDetector
             priming_validator: PrimingValidator
             rank_slot_permitter: RankSlotPermitter
         """
         self._token_validator = token_validator
-        self._rank_service = rank_service
-        self._quota_analyzer = quota_analyzer
         self._collision_detector = collision_detector
         self._priming_validator = priming_validator
         self._rank_slot_permitter = rank_slot_permitter
@@ -116,11 +105,14 @@ class TokenPushPermitter(PushPermitter):
                     cls_name=self.__class__.__name__,
                     msg=TokenPushPermitterException.MSG,
                     err_code=TokenPushPermitterException.ERR_CODE,
-                    mthd_rslt_type=MethodResultType.ANALYSIS_RESULT,
                     ex=request_type_validation_result.exception,
                 )
             )
-        token_validation_result = self._token_validator.execute(candidate=request.item)
+        # Handle the case that, the item is not a safe token.
+        token_validation_result = self._token_validator.execute(
+            candidate=request.item
+        )
+        # Send the exception chain in the permission denial.
         if token_validation_result.is_failure:
             PushApprovalReport.deny(
                 exception=TokenPushPermitterException(
@@ -128,15 +120,16 @@ class TokenPushPermitter(PushPermitter):
                     cls_name=self.__class__.__name__,
                     msg=TokenPushPermitterException.MSG,
                     err_code=TokenPushPermitterException.ERR_CODE,
-                    mthd_rslt_type=MethodResultType.ANALYSIS_RESULT,
                     ex=request_type_validation_result.exception,
                 )
             )
+        # Handle the case that, the request contains a malformed stack.
         stack_validation_result = self._priming_validator.execute(
             candidate=request.stack,
             target_model=Type[TokenStackService],
             null_exception=TokenStackNullException()
         )
+        # Send the exception chain in the permission denial.
         if stack_validation_result.is_failure:
             PushApprovalReport.deny(
                 exception=TokenPushPermitterException(
@@ -144,13 +137,14 @@ class TokenPushPermitter(PushPermitter):
                     cls_name=self.__class__.__name__,
                     msg=TokenPushPermitterException.MSG,
                     err_code=TokenPushPermitterException.ERR_CODE,
-                    mthd_rslt_type=MethodResultType.ANALYSIS_RESULT,
                     ex=request_type_validation_result.exception,
                 )
             )
+        # Extract the token and stack for additional testing.
         token = cast(Token, token_validation_result.payload)
         stack = cast(TokenStackService, stack_validation_result.payload)
         
+        # Handle the case that, there are no openings for the token's rank.
         rank_slot_permission = self._rank_slot_permitter.run(
             request=RankSlotRequest(
                 id=IdFactory.next_id(class_name="RankSlotRequest"),
@@ -158,6 +152,7 @@ class TokenPushPermitter(PushPermitter):
                 token_stack=stack,
             )
         )
+        # Send the exception chain in the permission denial.
         if rank_slot_permission.is_denied:
             PushApprovalReport.deny(
                 exception=TokenPushPermitterException(
@@ -165,10 +160,10 @@ class TokenPushPermitter(PushPermitter):
                     cls_name=self.__class__.__name__,
                     msg=TokenPushPermitterException.MSG,
                     err_code=TokenPushPermitterException.ERR_CODE,
-                    mthd_rslt_type=MethodResultType.ANALYSIS_RESULT,
                     ex=rank_slot_permission.exception,
                 )
             )
+        # Handle the case that, token conflicts with a current stack member.
         report = self._collision_detector.execute(attractor=token, stream=stack)
         if report.collision_exists:
             PushApprovalReport.deny(
@@ -177,8 +172,8 @@ class TokenPushPermitter(PushPermitter):
                     cls_name=self.__class__.__name__,
                     msg=TokenPushPermitterException.MSG,
                     err_code=TokenPushPermitterException.ERR_CODE,
-                    mthd_rslt_type=MethodResultType.ANALYSIS_RESULT,
                     ex=report.exception,
                 )
             )
+        # Forward the permission approval.
         return PushApprovalReport.approve(item=token, stack=stack)

@@ -15,7 +15,7 @@ from .maneuver import *
 from .pop import *
 from .push import *
 from .promotion import *
-from .quota import *
+from .slot import *
 from .service import *
 
 # Modules

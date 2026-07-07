@@ -10,8 +10,9 @@ version: 1.0.1
 from __future__ import annotations
 from enum import Enum
 
+import setting.board.dimension
 from model import Quadrant, Scalar
-from system import GameColor, NUMBER_OF_ROWS
+from setting import GameColor
 
 
 class Archetype(Enum):
@@ -75,7 +76,7 @@ class Archetype(Enum):
         return obj
     
     WHITE = (GameColor.WHITE, 0, Scalar(1), Quadrant.N,)
-    BLACK = (GameColor.BLACK, (NUMBER_OF_ROWS - 1), Scalar(-1), Quadrant.S,)
+    BLACK = (GameColor.BLACK, (setting.board.dimension.config.number_of_rows - 1), Scalar(-1), Quadrant.S,)
     
     @property
     def color(self) -> GameColor:

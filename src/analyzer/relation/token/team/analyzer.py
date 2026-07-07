@@ -45,7 +45,7 @@ class TeamTokenRelationAnalyzer(RelationAnalyzer[Team, Token]):
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def analyze(
+    def execute(
             cls,
             candidate_primary: Team,
             candidate_satellite: Token,

@@ -15,7 +15,7 @@ from report import OperationApprovalReport, Permission
 
 
 
-class PromotionApproval(OperationApprovalReport):
+class PromotionApprovalReport(OperationApprovalReport):
     """
     Role:
         -   Test results
@@ -76,7 +76,7 @@ class PromotionApproval(OperationApprovalReport):
         )
     
     @classmethod
-    def approve(cls, pawn: T, rank: Rank) -> PromotionApproval:
+    def approve(cls, pawn: T, rank: Rank) -> PromotionApprovalReport:
         return cls(
             pawn=pawn,
             rank=rank,
@@ -84,7 +84,7 @@ class PromotionApproval(OperationApprovalReport):
         )
     
     @classmethod
-    def deny(cls, exception: Exception) -> PromotionApproval:
+    def deny(cls, exception: Exception) -> PromotionApprovalReport:
         return cls(
             exception=exception,
             permission=Permission.DENIED

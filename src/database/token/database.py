@@ -149,7 +149,7 @@ class TokenDatabase(Database[Token]):
             self,
             blueprint: TokenBlueprint,
     ) -> AnalysisResult[CollisionReport[Token]]:
-        return self._kernel.collision_analyst.analyze(
+        return self._kernel.collision_analyst.execute(
             target_blueprint=blueprint,
             collider_candidates=self._kernel.items,
         )

@@ -1,7 +1,7 @@
-# src/push/rank/py
+# src/permitter/slot/permitter.py
 
 """
-Module: push.rank.operation
+Module: permitter.slot.permitter
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -32,7 +32,7 @@ class RankSlotPermitter(Permitter):
 
     Attributes:
         rank_validator: RankValidator
-        quota_analyzer: RankQuotaAnalyzer
+        slot_analyzer: RankQuotaAnalyzer
         priming_validator: PrimingValidator
 
     Provides:
@@ -41,23 +41,23 @@ class RankSlotPermitter(Permitter):
     Super Class:
     """
     _rank_validator: RankValidator
-    _quota_analyzer: RankQuotaAnalyzer
+    _slot_analyzer: RankQuotaAnalyzer
     _priming_validator: PrimingValidator
     
     def __init__(
             self,
             rank_validator: RankValidator | None = RankValidator(),
-            quota_analyzer: RankQuotaAnalyzer | None = RankQuotaAnalyzer(),
+            slot_analyzer: RankQuotaAnalyzer | None = RankQuotaAnalyzer(),
             priming_validator: PrimingValidator | None = PrimingValidator(),
     ):
         """
         Args:
             rank_validator: RankValidator
-            quota_analyzer: RankQuotaAnalyzer
+            slot_analyzer: RankQuotaAnalyzer
             priming_validator: PrimingValidator
         """
         self._rank_validator = rank_validator
-        self._quota_analyzer = quota_analyzer
+        self._slot_analyzer = slot_analyzer
         self._priming_validator = priming_validator
         
         
@@ -67,12 +67,12 @@ class RankSlotPermitter(Permitter):
         Action:
             1.  Return a failure result containing an exception chain if either:
                     -   The collision_detector
-                    -   The rank_quota_analyzer
+                    -   The rank_slot_analyzer
                 do not complete their work.
             2.  Otherwise, send a push denial if
                     -   The RankStack is full.
                     -   The item collides with an existing stack member.
-                    -   The quota for the rank's rank is full.
+                    -   The slot for the rank's rank is full.
             3.  Send an approval if all the tests are passed.
         Args:
             request: RankSlotRequest
@@ -101,7 +101,7 @@ class RankSlotPermitter(Permitter):
                     ex=request_type_validation_result.exception,
                 )
             )
-        quota_analysis_result = self._quota_analyzer.execute(
+        quota_analysis_result = self._slot_analyzer.execute(
             rank=request.rank,
             token_stack=request.token_stack,
         )
@@ -116,9 +116,9 @@ class RankSlotPermitter(Permitter):
                     ex=quota_analysis_result.exception,
                 )
             )
-        report = cast(RankQuotaReport, quota_analysis_result.payload)
+        quota = cast(RankQuotaReport, quota_analysis_result.payload)
         # Send a permission denial if there ar no openings for the rank.
-        if not report.openings_exist:
+        if not quota.openings_exist:
             RankSlotApprovalReport.deny(
                 exception=RankSlotPermitterException(
                     cls_mthd=method,

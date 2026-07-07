@@ -84,9 +84,9 @@ class ManeuverValidatorBootstrapper(ValidatorBootstrapper):
             return ValidationResult.completed(TokenManeuverReport.inactive(subject))
 
         if isinstance(subject, CombatantToken):
-            return toolkit.combatant_maneuver_validator.analyze(
+            return toolkit.combatant_maneuver_validator.execute(
                 subject=cast(CombatantToken, subject)
             )
-        return toolkit.king_maneuver_validator.analyze(
+        return toolkit.king_maneuver_validator.execute(
             subject=cast(KingToken, subject)
         )

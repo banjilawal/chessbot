@@ -11,8 +11,8 @@ from __future__ import annotations
 
 from controller import WorkerRegistryController
 from err import FinalizeSquareBuilderException
+from finalizer import BuilderFinalizer
 from model import Square
-from operation import BuilderFinalizer
 from result import BuildResult
 from util import LoggingLevelRouter
 

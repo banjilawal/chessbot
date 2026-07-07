@@ -46,7 +46,7 @@ class BoardTeamBinderRelationAnalyzer(RelationAnalyzer[Board, BoardBinder]):
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def analyze(
+    def execute(
             cls,
             candidate_primary: Board,
             candidate_satellite: BoardBinder,

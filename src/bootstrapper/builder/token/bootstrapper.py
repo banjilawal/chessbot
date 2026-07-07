@@ -80,7 +80,7 @@ class TokenBuilderBootstrapper(BuilderBootstrapper[TokenTokenBuilder]):
             readiness_analyzer = TokenReadinessAnalyzer()
         
         # --- Before doing anything else make sure the token can be used. ---#
-        readiness_analysis_result = readiness_analyzer.analyze(target)
+        readiness_analysis_result = readiness_analyzer.execute(target)
         
         # Handle the case that, the freedom
         if readiness_analysis_result.is_failure:

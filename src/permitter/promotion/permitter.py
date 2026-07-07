@@ -7,19 +7,20 @@ Created: 2026-04-03
 version: 1.0.1
 """
 
-# =========== PERMITTER.PUSH PACKAGE ===========#
 
 from __future__ import annotations
-from typing import cast
+from typing import Type, cast
 
 from analyzer import TokenReadinessAnalyzer
+from bootstrapper import PrimingValidator
 from err import (
     PawnDoublePromotionException, PawnPromotionRowException, PromoteInactivePawnException,
-    PromoteToKingException, PromoteToPawnException, PromotionPermitterException
+    PromoteToKingException, PromoteToPawnException, PromotionPermitterException, PromotionRequestNullException
 )
 from model import King, Pawn, PawnToken, Rank
 from permitter import Permitter
-from report import PromotionApproval, TokenReadinessReport
+from report import PromotionApprovalReport, TokenReadinessReport
+from request.promotion import PromotionRequest
 from result import AnalysisResult, MethodResultType
 from util import LoggingLevelRouter
 from validator import RankValidator, TokenValidator
@@ -39,7 +40,10 @@ class PromotionPermitter(Permitter):
         3.  Ensure the pawn's integrity and consistency are maintained during the transaction.
         
     Attributes:
-    
+        rank_validator: RankValidator
+        token_validator: TokenValidator
+        freedom_analyzer: TokenReadinessAnalyzer    
+          
     Provides:
         -   execute(
                     rank: Rank,
@@ -50,18 +54,36 @@ class PromotionPermitter(Permitter):
             ) -> UpdateResult[PawnToken]
             
     Super Class:
+        Permitter
     """
+    _rank_validator: RankValidator
+    _token_validator: TokenValidator
+    _readiness_analyzer: TokenReadinessAnalyzer
+    _priming_validator: PrimingValidator
     
-    @classmethod
-    @LoggingLevelRouter.monitor
-    def analyze(
-            cls,
+    def __init__(
+            self,
+            rank_validator: RankValidator | None = RankValidator(),
+            token_validator: TokenValidator | None = TokenValidator(),
+            readiness_analyzer: TokenReadinessAnalyzer | None = TokenReadinessReport(),
+            priming_validator: PrimingValidator | None = PrimingValidator(),
+    ):
+        """
+        Args:
             rank: Rank,
             pawn: PawnToken,
-            rank_validator: RankValidator | None = None,
-            token_validator: TokenValidator | None = None,
-            token_freedom_analyzer: TokenReadinessAnalyzer | None = None,
-    ) -> AnalysisResult[PromotionApproval]:
+            rank_validator: RankValidator
+            token_validator: TokenValidator
+            readiness_analyzer_analyzer: TokenReadinessAnalyzer        
+        """
+        self._rank_validator = rank_validator
+        self._token_validator = token_validator
+        self._readiness_analyzer = readiness_analyzer
+        self._priming_validator = priming_validator
+    
+    
+    @LoggingLevelRouter.monitor
+    def run(self, request: PromotionRequest) -> PromotionApprovalReport:
         """
         Executes the promotion transaction.
         
@@ -91,7 +113,57 @@ class PromotionPermitter(Permitter):
             PawnPromotionRowException
             TypeError
         """
-        method = f"{cls.__class__.__name__}.promote"
+        method = f"{self.__class__.__name__}.run"
+        
+        # Handle the case that, the request is malformed
+        request_type_validation_result = self._priming_validator.execute(
+            candidate=request,
+            target_model=Type[PromotionRequest],
+            null_exception=PromotionRequestNullException()
+        )
+        if request_type_validation_result.is_failure:
+            # Send the exception chain in the permission denial.
+            PromotionApprovalReport.deny(
+                exception=PromotionPermitterException(
+                    cls_mthd=method,
+                    cls_name=self.__class__.__name__,
+                    msg=PromotionPermitterException.MSG,
+                    err_code=PromotionPermitterException.ERR_CODE,
+                    mthd_rslt_type=MethodResultType.ANALYSIS_RESULT,
+                    ex=request_type_validation_result.exception,
+                )
+            )
+        # Handle the case that, the token is the wrong type.
+        if not isinstance(request.pawn, PawnToken):
+            # Send the exception chain in the permission denial.
+            PromotionApprovalReport.deny(
+                exception=PromotionPermitterException(
+                    cls_mthd=method,
+                    cls_name=self.__class__.__name__,
+                    msg=PromotionPermitterException.MSG,
+                    err_code=PromotionPermitterException.ERR_CODE,
+                    mthd_rslt_type=MethodResultType.ANALYSIS_RESULT,
+                    ex=TypeError(
+                        f"Expected type PawnToken for promotion. "
+                        f"Got {type(request.pawn).__name__} instead."
+                    )
+                )
+            )
+            # Send the exception chain on failure.
+            return AnalysisResult.completed(
+                PromotionApprovalReport.deny(
+                    PromotionPermitterException(
+                        cls_mthd=method,
+                        cls_name=cls.__name__,
+                        msg=PromotionPermitterException.MSG,
+                        err_code=PromotionPermitterException.ERR_CODE,
+                        mthd_rslt_type=MethodResultType.ANALYSIS_RESULT,
+
+                    )
+                )
+            )
+        
+        readiness_analysis_result = self._
         
         # --- Supply any missing dependencies. ---#
         if token_freedom_analyzer is None:
@@ -114,7 +186,7 @@ class PromotionPermitter(Permitter):
                     ex=rank_validation_result.exception
                 )
             )
-        freedom_analysis_result = token_freedom_analyzer.analyze(
+        freedom_analysis_result = token_freedom_analyzer.execute(
             token=pawn,
             token_validator=token_validator
         )
@@ -137,7 +209,7 @@ class PromotionPermitter(Permitter):
         if report.token_is_not_ready:
             # Send the exception chain on failure.
             return AnalysisResult.completed(
-                PromotionApproval.deny(
+                PromotionApprovalReport.deny(
                     PromotionPermitterException(
                         cls_mthd=method,
                         cls_name=cls.__name__,
@@ -157,7 +229,7 @@ class PromotionPermitter(Permitter):
         if not isinstance(pawn, PawnToken):
             # Send the exception chain on failure.
             return AnalysisResult.completed(
-                PromotionApproval.deny(
+                PromotionApprovalReport.deny(
                     PromotionPermitterException(
                         cls_mthd=method,
                         cls_name=cls.__name__,
@@ -175,7 +247,7 @@ class PromotionPermitter(Permitter):
         if pawn.is_promoted:
             # Send the exception chain on failure.
             return AnalysisResult.completed(
-                PromotionApproval.deny(
+                PromotionApprovalReport.deny(
                     PromotionPermitterException(
                         cls_mthd=method,
                         cls_name=cls.__name__,
@@ -194,7 +266,7 @@ class PromotionPermitter(Permitter):
         # Handle the case that, the is not on its promotion row..
         if pawn.current_position.row != pawn.team.enemy_rank_row:
             return AnalysisResult.completed(
-                PromotionApproval.deny(
+                PromotionApprovalReport.deny(
                     PromotionPermitterException(
                         cls_mthd=method,
                         cls_name=cls.__name__,
@@ -216,7 +288,7 @@ class PromotionPermitter(Permitter):
         if isinstance(rank, King):
             # Send the exception chain on failure.
             return AnalysisResult.completed(
-                PromotionApproval.deny(
+                PromotionApprovalReport.deny(
                     PromotionPermitterException(
                         cls_mthd=method,
                         cls_name=cls.__name__,
@@ -236,7 +308,7 @@ class PromotionPermitter(Permitter):
         if isinstance(rank, Pawn):
             # Send the exception chain on failure.
             return AnalysisResult.completed(
-                PromotionApproval.deny(
+                PromotionApprovalReport.deny(
                     PromotionPermitterException(
                         cls_mthd=method,
                         cls_name=cls.__name__,
@@ -254,5 +326,5 @@ class PromotionPermitter(Permitter):
             )
         # --- Send the work product. ---#
         return AnalysisResult.completed(
-            PromotionApproval.approve(pawn=pawn, rank=rank)
+            PromotionApprovalReport.approve(pawn=pawn, rank=rank)
         )

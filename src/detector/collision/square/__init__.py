@@ -1,13 +1,13 @@
-# src/detector/square/__init__.py
+# src/detector/collision/square/__init__.py
 
 """
-Module: detector.square.__init__
+Module: detector.collision.square.__init__
 Author: Banji Lawal
 Created: 2026-03-30
 version: 1.0.1
 """
 
-# =========== DETECTOR.SQUARE PACKAGE ===========#
+# =========== DETECTOR.COLLISION.SQUARE PACKAGE ===========#
 
 # Packages
 

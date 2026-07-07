@@ -50,7 +50,7 @@ class PawnPromotionApprovalManager(Analyzer):
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def analyze(
+    def execute(
             cls,
             pawn: PawnToken,
             token_validator: TokenValidator | None = None,
@@ -91,7 +91,7 @@ class PawnPromotionApprovalManager(Analyzer):
         if token_validator is None:
             token_validator = TokenValidator()
             
-        analysis_result = token_freedom_analyzer.analyze(
+        analysis_result = token_freedom_analyzer.execute(
             token=pawn,
             token_validator=token_validator
         )

@@ -77,7 +77,7 @@ class OriginCertifierBootstrapper(ValidatorBootstrapper):
             toolkit = TokenEndpointRelationToolkit
         
         # --- Run the relation analyzer. ---#
-        relation_analysis_result = toolkit.relation_analyzer.analyze(
+        relation_analysis_result = toolkit.relation_analyzer.execute(
             candidate_primary=origin,
             candidate_satellite=token,
             token_validator=toolkit.token_validator,

@@ -100,7 +100,7 @@ class BoardTeamBinderService(Microservice[BoardBinder]):
         if board_service is None:
             board_service = BoardService()
         
-        return self._board_relation_analyst.analyze(
+        return self._board_relation_analyst.execute(
             candidate_primary=board,
             candidate_binder=binder,
             team_binder_validator=self._validator,

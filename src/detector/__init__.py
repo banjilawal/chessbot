@@ -11,9 +11,9 @@ version: 1.0.1
 # =========== DETECTOR PACKAGE ===========#
 
 # Packages
+from .collision import *
 from .home import *
-from detector.collision.square import *
-from .token import *
+from .readiness import *
 
 # Modules
 from .detector import Detector

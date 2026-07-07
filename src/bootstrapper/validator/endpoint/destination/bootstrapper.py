@@ -84,7 +84,7 @@ class DestinationCertifierBootstrapper(ValidatorBootstrapper):
             toolkit = TokenEndpointRelationToolkit()
         
         # --- Run the relation analyzer. ---#
-        relation_analysis_result = toolkit.relation_analyzer.analyze(
+        relation_analysis_result = toolkit.relation_analyzer.execute(
             candidate_primary=destination,
             candidate_satellite=token,
             token_validator=toolkit.token_validator,

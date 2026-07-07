@@ -9,7 +9,7 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from model import PawnToken
+from model import PawnToken, Rank
 from request import Request
 
 
@@ -25,30 +25,38 @@ class PromotionRequest(Request):
      Attributes:
          id: int
          pawn: PawnToken
+         promoted_rank: Rank
 
      Provides:
-        -   def request(id: int, pawn: PawnToken) -> PromotionRequest:
+        -   def request(id: int, pawn: PawnToken, promoted_rank: Rank) -> PromotionRequest:
 
      Super Class:
         Request
      """
     _pawn: PawnToken
+    _promoted_rank: Rank
     
-    def __init__(self, id: int, pawn: PawnToken):
+    def __init__(self, id: int, pawn: PawnToken, promoted_rank: Rank):
         """
          Args:
             id: int
-            pawn: PawnToken
+            pawn: PawnToken,
+            promoted_rank: Rank
         """
         super().__init__(id=id)
         self._pawn = pawn
+        self._promoted_rank = promoted_rank
         
     
     @property
     def pawn(self) -> PawnToken:
         return self._pawn
+    
+    @property
+    def promoted_rank(self) -> Rank:
+        return self._promoted_rank
 
     
     @classmethod
-    def request(cls, id: int, pawn: PawnToken) -> PromotionRequest:
-        return cls(id=id, pawn=pawn)
+    def request(cls, id: int, pawn: PawnToken, promoted_rank: Rank) -> PromotionRequest:
+        return cls(id=id, pawn=pawn, promoted_rank=promoted_rank)

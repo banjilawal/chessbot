@@ -82,7 +82,7 @@ class TokenPositionPopper:
         if readiness_analyzer is None:
             readiness_analyzer = TokenReadinessAnalyzer()
             
-        readiness_analysis_result = readiness_analyzer.analyze(
+        readiness_analysis_result = readiness_analyzer.execute(
             token=token,
             token_validator=token_validator
         )

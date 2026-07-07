@@ -45,7 +45,7 @@ class SquareTokenRelationAnalyzer(RelationAnalyzer[Square, Token]):
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def analyze(
+    def execute(
             cls,
             candidate_primary: Square,
             candidate_satellite: Token,

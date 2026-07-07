@@ -77,7 +77,7 @@ class ItineraryDestinationConsistencyValidator:
             toolkit = ItineraryToolkit()
         
         # --- Test the has no relation with the destination. ---#
-        relation_result = toolkit.square_token_relation_analyzer.analyze(
+        relation_result = toolkit.square_token_relation_analyzer.execute(
             candidate_primary=itinerary.destination,
             candidate_satellite=itinerary.token,
         )

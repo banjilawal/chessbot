@@ -73,7 +73,7 @@ class ItinerarySourceConsistencyValidator(Validator[Itinerary]):
         if toolkit is None:
             toolkit = ItineraryToolkit()
         
-        relation_result = toolkit.square_token_relation_analyzer.analyze(
+        relation_result = toolkit.square_token_relation_analyzer.execute(
             candidate_primary=itinerary.source,
             candidate_satellite=itinerary.token,
         )
