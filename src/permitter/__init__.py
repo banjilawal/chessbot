@@ -11,12 +11,12 @@ version: 1.0.1
 
 # Packages
 from .deletion import *
-from permitter.token.maneuver import *
+from .maneuver import *
 from .pop import *
 from .push import *
 from .promotion import *
+from .quota import *
 from .service import *
-from .token import *
 
 # Modules
 from .permitter import Permitter

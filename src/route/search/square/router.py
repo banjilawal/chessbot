@@ -95,31 +95,31 @@ class SquareSearchRouter(SearchRouter[Square]):
             
             # Entry point into searching by square's id.
             if query.context.id is not None:
-                return cls._find_by_id(dataset=query.stack, id=query.context.id)
+                return cls._find_by_id(dataset=query.token_stack, id=query.context.id)
             
             # Entry point into searching by arena square is playing in.
             if query.context.name is not None:
-                return cls._find_by_name(dataset=query.stack, name=query.context.name)
+                return cls._find_by_name(dataset=query.token_stack, name=query.context.name)
             
             # Entry point into searching by square's board.
             if query.context.board is not None:
-                return cls._find_by_board(dataset=query.stack, board=query.context.board)
+                return cls._find_by_board(dataset=query.token_stack, board=query.context.board)
             
             # Entry point into searching by square's coord.
             if query.context.coord is not None:
-                return cls._find_by_coord(dataset=query.stack, coord=query.context.coord)
+                return cls._find_by_coord(dataset=query.token_stack, coord=query.context.coord)
             
             # Entry point into searching by square's occupant.
             if query.context.occupant is not None:
-                return cls._find_by_occupant(dataset=query.stack, occupant=query.context.occupant)
+                return cls._find_by_occupant(dataset=query.token_stack, occupant=query.context.occupant)
             
             # Entry point into searching by opening square's formation.
             if query.context.formation is not None:
-                return cls._find_by_formation(dataset=query.stack, coord=query.context.formation)
+                return cls._find_by_formation(dataset=query.token_stack, coord=query.context.formation)
             
             # Entry point into searching by opening square's state.
             if query.context.state is not None:
-                return cls._find_by_formation(dataset=query.stack, coord=query.context.state)
+                return cls._find_by_formation(dataset=query.token_stack, coord=query.context.state)
             
             # The default path is only reached when a context.key does not have a search route. Return
             # the exception chain.

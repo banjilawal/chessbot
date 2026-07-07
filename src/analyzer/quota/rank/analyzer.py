@@ -1,10 +1,10 @@
-# src/logic/token/database/kernel/operation/quota/validator.py
+# src/analyzer/quota/rank/analyzer.py
 
 """
-Module: logic.token.database.kernel.operation.quota.analyzer
+Module: analyzer.quota.rank.analyzer
 Author: Banji Lawal
-Created: 2026-02-21
-version: 1.0.0
+Created: 2026-04-03
+version: 1.0.1
 """
 
 from __future__ import annotations
@@ -31,17 +31,22 @@ class RankQuotaAnalyzer(Analyzer):
 
 
     Attributes:
+        bootstrapper: QuotaAnalyzerBootstrapper
 
     Provides:
-        -   execute(
-                    rank: Rank,
-                    token_stack: TokenStackService,
-                    rank_service: RankService = RankService(),
-            ) -> AnalysisResult[RankQuotaReport]
+        -   execute(rank: Rank, token_stack: TokenStackService,) -> AnalysisResult[RankQuotaReport]
 
     Super:
+        Analyzer
     """
     _bootstrapper: QuotaAnalyzerBootstrapper | None = QuotaAnalyzerBootstrapper()
+    
+    def __init__(self, bootstrapper: QuotaAnalyzerBootstrapper | None = QuotaAnalyzerBootstrapper()):
+        """
+        Args:
+            bootstrapper: QuotaAnalyzerBootstrapper
+        """
+        self._bootstrapper = bootstrapper
  
 
     @LoggingLevelRouter.monitor
@@ -57,7 +62,6 @@ class RankQuotaAnalyzer(Analyzer):
         Args:
             rank: Rank
             token_stack: TokenStack
-            rank_service: RankService
         Returns:
             AnalysisResult[RankQuotaReport]
         Raises:

@@ -11,7 +11,11 @@ version: 1.0.1
 # =========== REQUEST PACKAGE ===========#
 
 # Packages
+from .delete import *
+from .delete import *
+from .pop import *
 from .push import *
+from .slot import *
 
 # Modules
 from .request import Request

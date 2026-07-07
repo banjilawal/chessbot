@@ -38,6 +38,12 @@ class ManeuverRequest(Request):
     _destination: Square
     
     def __init__(self, id: int, token: Token, destination: Square):
+        """
+        Args:
+            id: int
+            token: Token
+            destination: Square
+        """
         super().__init__(id=id)
         self._token = token
         self._destination: destination

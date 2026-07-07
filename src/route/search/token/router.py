@@ -69,49 +69,49 @@ class TokenSearchRouter(SearchRouter[Token]):
         # token.id search entry point.
         if query.context.id is not None:
             return cls._find_by_id(
-                items=query.stack.items,
+                items=query.token_stack.items,
                 id=query.context.id
             )
         # token.designation search entry point
         if query.context.designation is not None:
             return cls._find_by_designation(
-                items=query.stack.items,
+                items=query.token_stack.items,
                 designation=query.context.designation
             )
         # token.home_square_name search entry point.
         if query.context.home_square is not None:
             return cls._find_by_home_square_name(
-                items=query.stack.items,
+                items=query.token_stack.items,
                 home_square=query.context.home_square
             )
         # token.team search entry point.
         if query.context.team is not None:
             return cls._find_by_team(
-                items=query.stack.items,
+                items=query.token_stack.items,
                 team=query.context.team
             )
         # token.rank search entry point.
         if query.context.rank is not None:
             return cls._find_by_rank(
-                items=query.stack,
+                items=query.token_stack,
                 team=query.context.rank
             )
         # token.ransom search entry point.
         if query.context.ransom is not None:
             return cls._find_by_ransom(
-                items=query.stack.items,
+                items=query.token_stack.items,
                 ransom=query.context.ransom
             )
         # token.color search entry point.
         if query.context.ransom is not None:
             return cls._find_by_color(
-                items=query.stack.items,
+                items=query.token_stack.items,
                 ransom=query.context.color
             )
         # token.current_position search entry point.
         if query.context.ransom is not None:
             return cls._find_by_current_position(
-                items=query.stack.items,
+                items=query.token_stack.items,
                 ransom=query.context.current_position
             )
         # Handle the case that, there is no search path for the context context..

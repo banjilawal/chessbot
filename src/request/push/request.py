@@ -46,7 +46,7 @@ class PushRequest(Request, Generic[T]):
              id: int
              item: T
              stack: StackService[T]
-            """
+        """
         super().__init__(id=id)
         self._item = item
         self._stack: stack

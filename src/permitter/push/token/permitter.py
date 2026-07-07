@@ -13,13 +13,16 @@ from typing import Type, cast
 from analyzer import RankQuotaAnalyzer
 from bootstrapper import PrimingValidator
 from detector import TokenCollisionDetector
-from err import PushRequestNullException, TokenPushPermitterException
+from err import PushRequestNullException, TokenPushPermitterException, TokenStackNullException
 from microservice import RankService
+from model import Token
 from permitter import PushPermitter
 from report import PushApprovalReport
 from request import PushRequest
 from result import AnalysisResult, MethodResultType
+from stack import TokenStackService
 from util import LoggingLevelRouter
+from validator import TokenValidator
 
 
 class TokenPushPermitter(PushPermitter):
@@ -33,6 +36,7 @@ class TokenPushPermitter(PushPermitter):
         1.  Run tests to see if permission can be granted to a TokenStackService to execute a push.
 
     Attributes:
+        token_validator: TokenValidator
         rank_service: RankService
         quota_analyzer: RankQuotaAnalyzer
         collision_detector: TokenCollisionDetector
@@ -43,6 +47,7 @@ class TokenPushPermitter(PushPermitter):
 
     Super Class:
     """
+    _token_validator: TokenValidator
     _rank_service: RankService
     _quota_analyzer: RankQuotaAnalyzer
     _collision_detector: TokenCollisionDetector
@@ -50,6 +55,7 @@ class TokenPushPermitter(PushPermitter):
     
     def __init__(
             self,
+            token_validator: TokenValidator | None = TokenValidator(),
             rank_service: RankService | None = RankService(),
             quota_analyzer: RankQuotaAnalyzer | None = RankQuotaAnalyzer(),
             collision_detector: TokenCollisionDetector | None = TokenCollisionDetector(),
@@ -62,6 +68,7 @@ class TokenPushPermitter(PushPermitter):
             collision_detector: TokenCollisionDetector
             priming_validator: PrimingValidator
         """
+        self._token_validator = token_validator
         self._rank_service = rank_service
         self._quota_analyzer = quota_analyzer
         self._collision_detector = collision_detector
@@ -109,7 +116,38 @@ class TokenPushPermitter(PushPermitter):
                     ex=request_type_validation_result.exception,
                 )
             )
-        report = self._collision_detector.execute(attractor=request.item, stream=request.stack,)
+        token_validation_result = self._token_validator.execute(candidate=request.item)
+        if token_validation_result.is_failure:
+            PushApprovalReport.deny(
+                exception=TokenPushPermitterException(
+                    cls_mthd=method,
+                    cls_name=self.__class__.__name__,
+                    msg=TokenPushPermitterException.MSG,
+                    err_code=TokenPushPermitterException.ERR_CODE,
+                    mthd_rslt_type=MethodResultType.ANALYSIS_RESULT,
+                    ex=request_type_validation_result.exception,
+                )
+            )
+        stack_validation_result = self._priming_validator.execute(
+            candidate=request.stack,
+            target_model=Type[TokenStackService],
+            null_exception=TokenStackNullException()
+        )
+        if stack_validation_result.is_failure:
+            PushApprovalReport.deny(
+                exception=TokenPushPermitterException(
+                    cls_mthd=method,
+                    cls_name=self.__class__.__name__,
+                    msg=TokenPushPermitterException.MSG,
+                    err_code=TokenPushPermitterException.ERR_CODE,
+                    mthd_rslt_type=MethodResultType.ANALYSIS_RESULT,
+                    ex=request_type_validation_result.exception,
+                )
+            )
+        token = cast(Token, token_validation_result.payload)
+        stack = cast(TokenStackService, stack_validation_result.payload)
+        
+        report = self._collision_detector.execute(attractor=token, stream=stack)
         if report.collision_exists:
             PushApprovalReport.deny(
                 exception=TokenPushPermitterException(
@@ -121,6 +159,11 @@ class TokenPushPermitter(PushPermitter):
                     ex=report.exception,
                 )
             )
+        quota_analysis_result = self._quota_analyzer.execute(
+            rank=token.rank,
+            token_stack=stack,
+        )
+        if quota_analysis_result.is_failure
             return AnalysisResult.failure(
                 TokenPushPermitterException(
                     cls_mthd=method,

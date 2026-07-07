@@ -11,7 +11,6 @@ version: 1.0.1
 # =========== ANALYZER.QUOTA PACKAGE ===========#
 
 # Packages
-
+from .rank import *
 
 # Modules
-from .analyzer import RankQuotaAnalyzer

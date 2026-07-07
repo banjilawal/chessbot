@@ -39,6 +39,11 @@ class PopRequest(Request, Generic[T]):
     _stack: StackService[T]
     
     def __init__(self, id: int, stack: StackService[T]):
+        """
+        Args:
+            id: int
+            stack: StackService[T]
+        """
         super().__init__(id=id)
         self._stack: stack
 

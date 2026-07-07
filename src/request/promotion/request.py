@@ -26,7 +26,6 @@ class PromotionRequest(Request):
          id: int
          pawn: PawnToken
 
-
      Provides:
         -   def request(id: int, pawn: PawnToken) -> PromotionRequest:
 
@@ -36,6 +35,11 @@ class PromotionRequest(Request):
     _pawn: PawnToken
     
     def __init__(self, id: int, pawn: PawnToken):
+        """
+         Args:
+            id: int
+            pawn: PawnToken
+        """
         super().__init__(id=id)
         self._pawn = pawn
         
