@@ -36,11 +36,11 @@ class TurnSceneBuilder(Builder[TurnScene]):
                 return BuildResult.failure(piece_validation.exception)
             
             board_validator = Boardvalidator.execute(board)
-            if board_validator.is_failure():
+            if board_validation.is_failure():
                 return BuildResult.failure(board_validator.exception)
             
             actor_board_validator = TurnSceneValidator.actor_board_validator_helper(piece=piece, board=board)
-            if actor_board_validator.is_failure():
+            if actor_board_validation.is_failure():
                 return BuildResult.failure(actor_board_validator.exception)
             
             actor_square_validation = TurnSceneValidator.actor_square_validation_helper(piece=piece, board=board)

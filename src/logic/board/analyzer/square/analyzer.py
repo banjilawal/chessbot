@@ -69,7 +69,7 @@ class BoardSquareRelationAnalysis(RelationAnalysis[Board, Square]):
         
         # Handle the case that, the board is not secure.
         board_validator = board_validator.execute(candidate_primary)
-        if board_validator.is_failure:
+        if board_validation.is_failure:
             # Send the exception chain on failure.
             return RelationReport.failure(
                 BoardSquareAnalysisException(

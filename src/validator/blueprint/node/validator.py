@@ -117,7 +117,7 @@ class NodeBlueprintValidator(BlueprintValidator[Node]):
                 floor=-(sys.maxsize -1),
                 ceiling=sys.maxsize
             )
-            if validator.is_failure:
+            if validation.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
                     NodeBlueprintValidatorException(
@@ -131,7 +131,7 @@ class NodeBlueprintValidator(BlueprintValidator[Node]):
         # Certification for the search-by-predecessor target.
         if blueprint.predecessor is not None:
             validation = node_validator.execute(candidate=blueprint.predecessor)
-            if validator.is_failure:
+            if validation.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
                     NodeBlueprintValidatorException(
@@ -145,7 +145,7 @@ class NodeBlueprintValidator(BlueprintValidator[Node]):
         # Certification for the search-by-square target.
         if blueprint.home_square is not None:
             validation = square_service.run.build(blueprint.home_square)
-            if validator.is_failure:
+            if validation.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
                     NodeBlueprintValidatorException(
@@ -159,7 +159,7 @@ class NodeBlueprintValidator(BlueprintValidator[Node]):
         # Certification for the search-by-discovery_status target.
         if blueprint.discovery_status is not None:
             validation = node_validator.execute_discovery_status(blueprint.discovery_status)
-            if validator.is_failure:
+            if validation.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
                     NodeBlueprintValidatorException(

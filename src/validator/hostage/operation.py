@@ -98,7 +98,7 @@ class HostageValidator(Validator[Hostage]):
             return ValidationResult.failure(
                 HostageValidatorException(
                     msg=f"{method}: {HostageValidatorException.MSG}",
-                    ex=id_validator.exception
+                    ex=id_validation.exception
                 )
             )
         # Handle the case that, the item where the capture occurredis not safe.

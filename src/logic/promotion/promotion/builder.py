@@ -42,7 +42,7 @@ class OldPromotionEventBuilder(Builder[PromotionEvent]):
                 )
             
             actor_validator = BoardActorValidator.search_service(actor, execution_environment)
-            if actor_validator.is_failure():
+            if actor_validation.is_failure():
                 return BuildResult.failure(actor_validator.exception)
             
             actor_candidate, environment_candidate = actor_validator.payload

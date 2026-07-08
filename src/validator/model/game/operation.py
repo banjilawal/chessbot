@@ -83,16 +83,16 @@ class GameValidator(ModelValidator[Game]):
             game = cast(Game, candidate)
             
             id_validation = identity_service.validate_id(candidate=game.id)
-            if id_validator.is_failure:
+            if id_validation.is_failure:
                 return ValidationResult.failure(id_validator.exception)
             
             board_validator = board_service.run.build(game.board)
-            if board_validator.is_failure:
+            if board_validation.is_failure:
                 return ValidationResult.failure(board_validator.exception)
             
             for player in game.players:
                 validation = agent_service.run.search_service(player)
-                if validator.is_failure:
+                if validation.is_failure:
                     return ValidationResult.failure(modelValidator.exception)
             return ValidationResult.success(game)
         

@@ -98,7 +98,7 @@ class PathValidator:
         
         # Handle the case that, the path's id gets flagged.
         id_validation = toolkit.identity_service.validate_id(path.id)
-        if id_validator.is_failure:
+        if id_validation.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 PathValidatorException(
@@ -106,7 +106,7 @@ class PathValidator:
                     cls_name=cls.__name__,
                     msg=PathValidatorException.MSG,
                     err_code=PathValidatorException.ERR_CODE,
-                    ex=id_validator.exception,
+                    ex=id_validation.exception,
                 )
             )
         # Handle the case that either the source or destination are not safe.

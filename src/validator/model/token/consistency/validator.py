@@ -227,7 +227,7 @@ class TokenConsistencyValidator(ModelValidator[Token]):
         method = "TokenConsistencyValidator.execute_token_is_king"
         # Handle the case that, the rank is not certified as a safe occupant.
         validation = cls.execute(candidate)
-        if validator.is_failure:
+        if validation.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 TokenValidatorException(
@@ -252,7 +252,7 @@ class TokenConsistencyValidator(ModelValidator[Token]):
         method = "TokenService.verify_actionable_token"
         # Handle the case that, the occupantis not safe.
         token_validation = cls.execute(candidate=token)
-        if token_validator.is_failure:
+        if token_validation.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 TokenValidatorException(
@@ -279,7 +279,7 @@ class TokenConsistencyValidator(ModelValidator[Token]):
         method = "TokenService.verify_disabled_token"
         # Handle the case that, the occupantis not safe.
         token_validation = cls.execute(candidate=token)
-        if token_validator.is_failure:
+        if token_validation.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 TokenValidatorException(

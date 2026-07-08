@@ -14,7 +14,6 @@ from typing import Any, cast
 from controller import WorkerRegistryController
 from err import SquareNullException, SquareValidatorException
 from model import Square
-from operation import Validator
 from result import ValidationResult
 from util import LoggingLevelRouter
 from toolkit import SquareToolkit

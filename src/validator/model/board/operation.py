@@ -92,12 +92,12 @@ class BoardValidator(ModelValidator[Board]):
         
         # Handle the case board.id or board.schema does not pass a validation check.
         id_validation = identity_service.validate_id(candidate=board.id)
-        if id_validator.is_failure:
+        if id_validation.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 BoardValidatorException(
                     msg=f"{method}: {BoardValidatorException.ERR_CODE}",
-                    ex=id_validator.exception
+                    ex=id_validation.exception
                 )
             )
         # Handle the case that, board.arena integrity verification and the arena-board relation fails.

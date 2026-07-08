@@ -112,7 +112,7 @@ class SchemaBlueprintValidator(BlueprintValidator[SchemaKey]):
         if super_key.designation is not None:
             validation = identity_service.validate_name(candidate=super_key.designation)
             # Send the exception chain on failure.
-            if validator.is_failure:
+            if validation.is_failure:
                 return ValidationResult.failure(
                     SchemaKeyValidatorException(
                         msg=f"{method}: {SchemaKeyValidatorException.ERR_CODE}",
@@ -125,7 +125,7 @@ class SchemaBlueprintValidator(BlueprintValidator[SchemaKey]):
         # Certification for lookup-by-color value.
         if super_key.color is not None:
             validation = color_validator.execute(candidate=super_key.color)
-            if validator.is_failure:
+            if validation.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
                     SchemaKeyValidatorException(

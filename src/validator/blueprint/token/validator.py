@@ -19,10 +19,10 @@ from result import ValidationResult
 from schema.formation.schema import Formation
 from toolkit import TokenToolkit
 from util import LoggingLevelRouter
-from validator import Validator
+from validator import BlueprintValidator
 
 
-class TokenBlueprintValidator(Validator[TokenBlueprint]):
+class TokenBlueprintValidator(BlueprintValidator[TokenBlueprint]):
     """
     Role
         -   Transaction Worker
@@ -58,22 +58,20 @@ class TokenBlueprintValidator(Validator[TokenBlueprint]):
     @LoggingLevelRouter.monitor
     def execute(self, candidate: Any) -> ValidationResult:
         """
-        Verify a TokenBlueprint and fill before its used.
+        Certify a candidate is a TokenBlueprint that is safe to use.
 
         Action:
-            1.  Send an exception chain in the ValidationResult if any following occurs:
-                    -   A blueprint attribute gets flagged by a validator.
-                    -   The opening square is not found.
-                    -   The Rank is not built successfully.
-                    -   Any blueprint values have already been used in the team.
-            2.  Otherwise ,create a new Blueprint including the Rank and OpeningSquare.
-            2.  Send the success result.
+            1.  Send an exception chain in the ValidationResult if any of the following
+                occur
+                    -   The validation_priming fails.
+                    -   Either the board, owner or id get flagged unsafe.
+            2.  Otherwise, send the success result.
         Args:
-            candidate: Any
+            candidate: Any,
         Returns:
-            ValidationResult[Blueprint]
+            ValidationResult
         Raises:
-            PrimingTokenAssemblyException
+            TokenBlueprintValidatorException
         """
         method = f"{self.__class__.__name__}.execute"
     
@@ -181,7 +179,7 @@ class TokenBlueprintValidator(Validator[TokenBlueprint]):
                 )
             )
         # --- Completed validations successfully. Extract the payloads to build a new blueprint. ---#
-        rank = rank_validation_result.payload
+        rank = cast(type(rank_validation_result.payload)
         id = cast(int, id_validation_result.payload)
         home_square = cast(HomeSquare, home_detection_result.payload)
         

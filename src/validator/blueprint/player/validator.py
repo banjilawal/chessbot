@@ -99,26 +99,26 @@ class PlayerBlueprintValidator(BlueprintValidator[Player]):
             # Which ever attribute value is not null should be certified safe by the appropriate validator.
             if blueprint.id is not None:
                 validation = identity_service.validate_id(candidate=blueprint.id)
-                if validator.is_failure:
-                    return ValidationResult.failure(validator.exception)
+                if validation.is_failure:
+                    return ValidationResult.failure(blueprintValidator.exception)
                 return ValidationResult.success(blueprint)
             
             if blueprint.designation is not None:
                 validation = identity_service.validate_name(candidate=blueprint.designation)
-                if validator.is_failure:
-                    return ValidationResult.failure(validator.exception)
+                if validation.is_failure:
+                    return ValidationResult.failure(blueprintValidator.exception)
                 return ValidationResult.success(blueprint)
             
             if blueprint.team is not None:
                 validation = team_service.run.build(candidate=blueprint.team)
-                if validator.is_failure:
-                    return ValidationResult.failure(validator.exception)
+                if validation.is_failure:
+                    return ValidationResult.failure(blueprintValidator.exception)
                 return ValidationResult.success(blueprint)
             
             if blueprint.game is not None:
                 validation = game_service.run.build(candidate=blueprint.game)
-                if validator.is_failure:
-                    return ValidationResult.failure(validator.exception)
+                if validation.is_failure:
+                    return ValidationResult.failure(blueprintValidator.exception)
                 return ValidationResult.success(blueprint)
             
             if blueprint.variety is not None:

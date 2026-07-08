@@ -161,7 +161,7 @@ class SquareBuilder(Builder[Square]):
             )
         # Handle the case that, the board is not safe.
         board_validator = tool.board_service.run.build(board)
-        if board_validator.is_failure:
+        if board_validation.is_failure:
             # Send the exception chain on failure.
             return BuildResult.failure(
                 SquareBuilderException(

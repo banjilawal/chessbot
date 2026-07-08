@@ -113,7 +113,7 @@ class VectorOperandRegisterValidator(ModelValidator[VectorOperandRegister]):
         # Handle the case that, either slot is not safe.
         for item in register.to_list:
             validation = toolkit.vector_operand_validator.execute(item)
-            if validator.is_failure:
+            if validation.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
                     VectorOperandRegisterValidatorException(

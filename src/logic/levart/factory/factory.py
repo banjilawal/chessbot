@@ -63,7 +63,7 @@ class TravelEventFactory:
                 return BuildResult.failure(actor_validation.exception)
             
             resource_validator = TravelResourceValidator.search_service((destination_square, board))
-            if resource_validator.is_failure():
+            if resource_validation.is_failure():
                 return BuildResult.failure(resource_validator.exception)
             
             if actor.current_position == destination_square.coord:

@@ -85,7 +85,7 @@ class PlayerValidator(ModelValidator[Player]):
             
             # Verify the id and designation are safe.
             identity_validation = identity_service.validate_identity(player.id, player.designation)
-            if identity_validator.is_failure():
+            if identity_validation.is_failure():
                 return ValidationResult.failure(identity_validator.exception)
             
             # Certify the owner's TeamStack is correct.
@@ -194,7 +194,7 @@ class PlayerValidator(ModelValidator[Player]):
         method = "PlayerValidator.certify_machine_player_engine"
         try:
             engine_validation = engine_service_validator.execute_engine(machine_player.engine_service)
-            if engine_validator.is_failure():
+            if engine_validation.is_failure():
                 return ValidationResult.failure(engine_validator.exception)
             # On success just return the machinePlayer
             return ValidationResult.success(payload=machine_player)

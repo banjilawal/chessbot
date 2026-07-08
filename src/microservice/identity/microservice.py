@@ -11,10 +11,9 @@ from __future__ import annotations
 import sys
 from typing import Any, Dict
 
-from err import IdentityValidatorException
-from integrity import NameValidator, NumberValidator
 from result import ValidationResult
-from system import IdFactory, LoggingLevelRouter
+from util import IdFactory, LoggingLevelRouter
+from validator import NameValidator, NumberValidator
 
 
 class IdentityService:
@@ -65,15 +64,15 @@ class IdentityService:
         return IdFactory.next_id(class_name=class_name)
       
     @LoggingLevelRouter.monitor
-    def validate_id(self, candidate: Any) -> ValidationResult[int]:
+    def validate_id(self, candidate: Any) -> ValidationResult:
         return self._number_validator.execute(candidate)
     
     @LoggingLevelRouter.monitor
-    def validate_name(self, candidate: Any) -> ValidationResult[str]:
+    def validate_name(self, candidate: Any) -> ValidationResult:
         return self._name_validator.execute(candidate)
     
     @LoggingLevelRouter.monitor
-    def verify_bootstrap_id( self, id: Any, class_name: str,) -> ValidationResult[int]:
+    def validate_bootstrap_id(self, id: Any, class_name: str,) -> ValidationResult[int]:
         """
         """
         method = f"{self.__name__}._verify_bootstrap_id"

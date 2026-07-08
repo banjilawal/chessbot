@@ -109,7 +109,7 @@ class BoardBlueprintValidator(BlueprintValidator[Board]):
         # Certification for the search-by-id target.
         if blueprint.id is not None:
             validation = identity_service.validate_id(candidate=blueprint.id)
-            if validator.is_failure:
+            if validation.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
                     BoardBlueprintValidatorException(
@@ -123,7 +123,7 @@ class BoardBlueprintValidator(BlueprintValidator[Board]):
         # Certification for the search-by-arena target.
         if blueprint.arena is not None:
             validation = arena_service.run.search_service(blueprint.arena)
-            if validator.is_failure:
+            if validation.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
                     BoardBlueprintValidatorException(

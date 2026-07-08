@@ -108,7 +108,7 @@ class GameContextValidator(ContextValidator[Game]):
             # Build the id GameContext if its flag is enabled.
             if context.id is not None:
                 validation = identity_service.validate_id(candidate=context.id)
-                if validator.is_failure:
+                if validation.is_failure:
                     return ValidationResult.failure(validator.exception)
                 # On validation success return the id_game_context in a ValidationResult.
                 return ValidationResult.success(context)
@@ -116,7 +116,7 @@ class GameContextValidator(ContextValidator[Game]):
             # Verify the id flag if its enabled.
             if context.agent is not None:
                 validation = agent_service.run.search_service(candidate=context.agent)
-                if validator.is_failure:
+                if validation.is_failure:
                     return ValidationResult.failure(validator.exception)
                 # On validation success return the agent_game_context in a ValidationResult.
                 return ValidationResult.success(context)

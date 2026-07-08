@@ -15,10 +15,10 @@ from typing import Any, TypeVar
 from blueprint import Blueprint
 from result import ValidationResult
 from util import LoggingLevelRouter
-from validator import Validator
+from validator import BlueprintValidator
 
 
-class BlueprintValidator(Validator[Blueprint]):
+class BlueprintValidator(BlueprintValidator[Blueprint]):
     """
     Role
         -   Transaction Worker
@@ -35,7 +35,7 @@ class BlueprintValidator(Validator[Blueprint]):
         -   def validate(candidate: Any, toolkit: BlueprintToolkit[T],) -> ValidationResult[Blueprint[T]]:
 
     Super Class:
-        Validator
+        BlueprintValidator
     """
     
     @abstractmethod

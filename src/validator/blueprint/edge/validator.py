@@ -114,7 +114,7 @@ class EdgeBlueprintValidator(BlueprintValidator[Edge]):
         # Certification for the search-by-id target.
         if blueprint.id is not None:
             validation = identity_service.validate_id(candidate=blueprint.id)
-            if validator.is_failure:
+            if validation.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
                     EdgeBlueprintValidatorException(
@@ -128,7 +128,7 @@ class EdgeBlueprintValidator(BlueprintValidator[Edge]):
         # Certification for the search-by-schema target.
         if blueprint.designation is not None:
             validation = identity_service.validate_name(blueprint.designation)
-            if validator.is_failure:
+            if validation.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
                     EdgeBlueprintValidatorException(
@@ -142,7 +142,7 @@ class EdgeBlueprintValidator(BlueprintValidator[Edge]):
         # Certification for the search-by-coord target.
         if blueprint.coord is not None:
             validation = coord_service.run.build(blueprint.coord)
-            if validator.is_failure:
+            if validation.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
                     EdgeBlueprintValidatorException(
@@ -156,7 +156,7 @@ class EdgeBlueprintValidator(BlueprintValidator[Edge]):
         # Certification for the search-by-board target.
         if blueprint.board is not None:
             validation = board_service.run.build(blueprint.board)
-            if validator.is_failure:
+            if validation.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
                     EdgeBlueprintValidatorException(
@@ -170,7 +170,7 @@ class EdgeBlueprintValidator(BlueprintValidator[Edge]):
         # Certification for the search-by-occupant target.
         if blueprint.occupant is not None:
             validation = edge_service.run.build(blueprint.occupant)
-            if validator.is_failure:
+            if validation.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
                     EdgeBlueprintValidatorException(

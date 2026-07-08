@@ -15,13 +15,9 @@ from typing import Type
 from blueprint import TokenBlueprint
 from detector import TokenHomeDetector
 from err import TokenBlueprintNullException, TokenNullException
-from microservice import RankService
 from model import Token
-from toolkit import ModelToolkit
-from validator import (
-    BlueprintHomeSquareExtractor, BlueprintRankExtractor, CoordValidator, NumberValidator,
-    SquareValidator, TeamValidator
-)
+from tester import BlueprintHomeSquareExtractor, BlueprintRankExtractor
+from validator import TeamValidator
 
 
 @dataclass
@@ -54,23 +50,19 @@ class TokenToolkit:
     Args:
         model: Token
         blueprint_model: TokenBlueprint
-        identity_service: IdentityService
-        priming_validator: PrimingValidator
-        blueprint_id_validator: BlueprintIdValidator
         null_exception: TokenNullException
         blueprint_null_exception: TokenBlueprintNullException
-        team_validator: TeamValidator
-        
+        priming_validator: PrimingValidator
+        blueprint_id_validator: BlueprintIdValidator
         home_detector: TokenHomeDetector
+        blueprint_rank_extractor: BlueprintRankExtractor
+        blueprint_home_square_extractor: BlueprintHomeSquareExtractor
+        team_validator: TeamValidator
     """
     home_detector: TokenHomeDetector = TokenHomeDetector()
-    square_validator: SquareValidator = SquareValidator()
-    coord_validator: CoordValidator = CoordValidator()
     team_validator: TeamValidator = TeamValidator()
-    rank_service: RankService = RankService()
-    number_validator: NumberValidator = NumberValidator()
-    blueprint_rank_processor: BlueprintRankExtractor = BlueprintRankExtractor()
-    blueprint_home_square_processor: BlueprintHomeSquareExtractor = BlueprintHomeSquareExtractor()
+    blueprint_rank_extractor: BlueprintRankExtractor = BlueprintRankExtractor()
+    blueprint_home_square_extractor: BlueprintHomeSquareExtractor = BlueprintHomeSquareExtractor()
 
     model: Token = Type[Token]
     blueprint_model = Type[TokenBlueprint]

@@ -108,16 +108,16 @@ class GameBlueprintValidator(BlueprintValidator[Game]):
             # Build the id GameBlueprint if its flag is enabled.
             if blueprint.id is not None:
                 validation = identity_service.validate_id(candidate=blueprint.id)
-                if validator.is_failure:
-                    return ValidationResult.failure(validator.exception)
+                if validation.is_failure:
+                    return ValidationResult.failure(blueprintValidator.exception)
                 # On validation success return the id_game_blueprint in a ValidationResult.
                 return ValidationResult.success(blueprint)
             
             # Verify the id flag if its enabled.
             if blueprint.agent is not None:
                 validation = agent_service.run.search_service(candidate=blueprint.agent)
-                if validator.is_failure:
-                    return ValidationResult.failure(validator.exception)
+                if validation.is_failure:
+                    return ValidationResult.failure(blueprintValidator.exception)
                 # On validation success return the agent_game_blueprint in a ValidationResult.
                 return ValidationResult.success(blueprint)
             

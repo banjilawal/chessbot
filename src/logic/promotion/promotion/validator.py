@@ -50,7 +50,7 @@ class OldPromotionEventValidator(Validator[PromotionEvent]):
                 return ValidationResult(exception=id_validation.exception)
             
             actor_validator = BoardActorValidator.search_service(event.actor, event.execution_environment)
-            if actor_validator.is_failure():
+            if actor_validation.is_failure():
                 return ValidationResult.failure(actor_validator.exception)
             
             if not isinstance(event.actor, PawnPiece):

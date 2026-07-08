@@ -13,13 +13,13 @@ from typing import Any, cast
 from model import Blueprint
 from result import ValidationResult
 from util import LoggingLevelRouter
-from validator import Validator, PrimingValidator
+from validator import BlueprintValidator, PrimingValidator
 from err import (
     BlueprintNullException, BlueprintValidatorException, ExcessBlueprintFlagsException, ZeroBlueprintFlagsException
 )
 
 
-class BlueprintPrimingValidator(Validator[Blueprint]):
+class BlueprintPrimingValidator(BlueprintValidator[Blueprint]):
     """
     Role
         -   Transaction Worker

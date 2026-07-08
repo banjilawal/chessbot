@@ -11,6 +11,7 @@ version: 1.0.1
 
 # Packages
 from .home import *
+from .id import *
 from .rank import *
 
 # Modules

@@ -117,7 +117,7 @@ class PersonaBlueprintValidator(BlueprintValidator[PersonaKey]):
         # Certification for the lookup-by-schema target.
         if super_key.designation is not None:
             validation = identity_service.validate_name(candidate=super_key.designation)
-            if validator.is_failure:
+            if validation.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
                     PersonaKeyValidatorException(
@@ -131,7 +131,7 @@ class PersonaBlueprintValidator(BlueprintValidator[PersonaKey]):
         # Certification for the lookup-by-designation target.
         if super_key.designation is not None:
             validation = identity_service.validate_name(candidate=super_key.designation)
-            if validator.is_failure:
+            if validation.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
                     PersonaKeyValidatorException(
@@ -145,7 +145,7 @@ class PersonaBlueprintValidator(BlueprintValidator[PersonaKey]):
         # Certification for the lookup-by-quota target.
         if super_key.quota is not None:
             validation = number_validator.execute(candidate=super_key.quota)
-            if validator.is_failure:
+            if validation.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
                     PersonaKeyValidatorException(
@@ -159,7 +159,7 @@ class PersonaBlueprintValidator(BlueprintValidator[PersonaKey]):
         # Certification for the lookup-by-ransom target.
         if super_key.ransom is not None:
             validation = number_validator.execute(candidate=super_key.ransom)
-            if validator.is_failure:
+            if validation.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
                     PersonaKeyValidatorException(

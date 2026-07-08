@@ -59,18 +59,17 @@ class SquareBlueprintValidator(BlueprintValidator[SquareBlueprint]):
         Action:
             1.  Send an exception chain in the ValidationResult if any of the following
                 occur
-                    -   The Validation is not primed.
-                    -   The enabled attribute fails a safety check.
-                    -   There is no validation path for the attribute.
+                    -   The validation_priming fails.
+                    -   Either the board, owner or id get flagged unsafe.
             2.  Otherwise, send the success result.
         Args:
             candidate: Any,
         Returns:
-            ValidationResult[SquareBlueprint]
+            ValidationResult
         Raises:
             SquareBlueprintValidatorException
         """
-        method = f"{self.__class__.__name__}.validate"
+        method = f"{self.__class__.__name__}.execute"
         
         # Handle the case that, the validator is not primed.
         priming_result = self.toolkit.priming_validator.execute(

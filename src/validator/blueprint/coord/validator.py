@@ -16,7 +16,7 @@ from result import ValidationResult
 from setting import BoardProperty
 from toolkit import CoordBlueprintToolkit
 from util import LoggingLevelRouter
-from validator import Validator
+from validator import BlueprintValidator
 
 
 class CoordBlueprintValidator(BlueprintValidator[Coord]):

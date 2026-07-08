@@ -99,25 +99,25 @@ class PlayerContextValidator(ContextValidator[Player]):
             # Which ever attribute value is not null should be certified safe by the appropriate validator.
             if context.id is not None:
                 validation = identity_service.validate_id(candidate=context.id)
-                if validator.is_failure:
+                if validation.is_failure:
                     return ValidationResult.failure(validator.exception)
                 return ValidationResult.success(context)
             
             if context.designation is not None:
                 validation = identity_service.validate_name(candidate=context.designation)
-                if validator.is_failure:
+                if validation.is_failure:
                     return ValidationResult.failure(validator.exception)
                 return ValidationResult.success(context)
             
             if context.team is not None:
                 validation = team_service.run.build(candidate=context.team)
-                if validator.is_failure:
+                if validation.is_failure:
                     return ValidationResult.failure(validator.exception)
                 return ValidationResult.success(context)
             
             if context.game is not None:
                 validation = game_service.run.build(candidate=context.game)
-                if validator.is_failure:
+                if validation.is_failure:
                     return ValidationResult.failure(validator.exception)
                 return ValidationResult.success(context)
             

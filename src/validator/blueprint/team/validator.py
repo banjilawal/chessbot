@@ -65,9 +65,8 @@ class TeamBlueprintValidator(BlueprintValidator[TeamBlueprint]):
             ValidationResult
         Raises:
             TeamBlueprintValidatorException
-            TeamBlueprintValidationRouteException
         """
-        method = f"{self.__class__.__name__}.validate"
+        method = f"{self.__class__.__name__}.execute"
         
         # Handle the case that, the validator is not primed.
         priming_result = self.toolkit.priming_validator.execute(

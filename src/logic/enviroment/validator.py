@@ -55,7 +55,7 @@ class TurnSceneValidator(Validator[TurnScene]):
                 return ValidationResult.failure(id_validation.exception)
 
             board_validator = Boardvalidator.execute(turn_scene.board)
-            if board_validator.is_failure():
+            if board_validation.is_failure():
                 return ValidationResult.failure(board_validator.exception)
               
             actor_validation = cls._actor_validation_helper(piece=turn_scene.actor, board=turn_scene.board)

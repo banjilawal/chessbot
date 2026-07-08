@@ -112,7 +112,7 @@ class FormationContextValidator(ContextValidator[FormationKey]):
         # Certification for lookup-by-schema value.
         if super_key.designation is not None:
             validation = identity_service.validate_name(candidate=super_key.designation)
-            if validator.is_failure:
+            if validation.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
                     FormationKeyValidatorException(
@@ -126,7 +126,7 @@ class FormationContextValidator(ContextValidator[FormationKey]):
         # Certification for lookup-by-designation value.
         if super_key.designation is not None:
             validation = identity_service.validate_name(candidate=super_key.designation)
-            if validator.is_failure:
+            if validation.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
                     FormationKeyValidatorException(
@@ -140,7 +140,7 @@ class FormationContextValidator(ContextValidator[FormationKey]):
         # Certification for the lookup-by-square_name target.
         if super_key.home_square_name is not None:
             validation = identity_service.validate_name(candidate=super_key.home_square_name)
-            if validator.is_failure:
+            if validation.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
                     FormationKeyValidatorException(
@@ -154,7 +154,7 @@ class FormationContextValidator(ContextValidator[FormationKey]):
         # Certification for the lookup-by-color target.
         if super_key.color is not None:
             validation = color_validator.execute(candidate=super_key.color)
-            if validator.is_failure:
+            if validation.is_failure:
                 return ValidationResult.failure(
                     FormationKeyValidatorException(
                         msg=f"{method}: {FormationKeyValidatorException.ERR_CODE}",
@@ -167,7 +167,7 @@ class FormationContextValidator(ContextValidator[FormationKey]):
         # Certification for the lookup-by-persona target.
         if super_key.persona is not None:
             validation = persona_service.run.build(candidate=super_key.persona)
-            if validator.is_failure:
+            if validation.is_failure:
                 return ValidationResult.failure(
                     FormationKeyValidatorException(
                         msg=f"{method}: {FormationKeyValidatorException.ERR_CODE}",
