@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, cast
 
 from blueprint import QueryValidationBlueprint
-from err import QueryValidationException
+from err import QueryValidatorException
 from model import CatalogQuery, Query, StackQuery
 from result import ValidationResult
 from util import LoggingLevelRouter
@@ -66,12 +66,12 @@ class QueryValidator(Validator[Query]):
         Returns:
             ValidationResult[Query]
         Raises:
-            QueryValidationException
+            QueryValidatorException
             ListEmptyException
         """
         method = f"{cls.__name__}._validate"
         
-        priming_result = blueprint.priming_validator.run(
+        priming_result = blueprint.priming_validator.execute(
             candidate=candidate,
             context_model=blueprint.query_model_type,
             null_exception=blueprint.query_null_exception,
@@ -79,11 +79,11 @@ class QueryValidator(Validator[Query]):
         if priming_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                QueryValidationException(
+                QueryValidatorException(
                     cls_mthd=method,
                     cls_name=method.__class__.__name__,
-                    msg=QueryValidationException.MSG,
-                    err_code=QueryValidationException.ERR_CODE,
+                    msg=QueryValidatorException.MSG,
+                    err_code=QueryValidatorException.ERR_CODE,
                     ex=priming_result.exception
                 )
             )
@@ -98,11 +98,11 @@ class QueryValidator(Validator[Query]):
         if datasource_validation_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                QueryValidationException(
+                QueryValidatorException(
                     cls_mthd=method,
                     cls_name=method.__class__.__name__,
-                    msg=QueryValidationException.MSG,
-                    err_code=QueryValidationException.ERR_CODE,
+                    msg=QueryValidatorException.MSG,
+                    err_code=QueryValidatorException.ERR_CODE,
                     ex=datasource_validation_result.exception,
                 )
             )
@@ -111,11 +111,11 @@ class QueryValidator(Validator[Query]):
         if context_validation_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                QueryValidationException(
+                QueryValidatorException(
                     cls_mthd=method,
                     cls_name=method.__class__.__name__,
-                    msg=QueryValidationException.MSG,
-                    err_code=QueryValidationException.ERR_CODE,
+                    msg=QueryValidatorException.MSG,
+                    err_code=QueryValidatorException.ERR_CODE,
                     ex=context_validation_result.exception
                 )
             )
@@ -148,7 +148,7 @@ class QueryValidator(Validator[Query]):
         method = f"{cls.__name__}._stack_query_validator"
         
         # Handle the case that, the stack is flagged.
-        stack_validation_result = blueprint.priming_validator.run(
+        stack_validation_result = blueprint.priming_validator.execute(
             candidate=query.stack,
             context_model=blueprint.stack_model_type,
             null_exception=blueprint.stack_null_exception,
@@ -156,11 +156,11 @@ class QueryValidator(Validator[Query]):
         if stack_validation_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                QueryValidationException(
+                QueryValidatorException(
                     cls_mthd=method,
                     cls_name=method.__class__.__name__,
-                    msg=QueryValidationException.MSG,
-                    err_code=QueryValidationException.ERR_CODE,
+                    msg=QueryValidatorException.MSG,
+                    err_code=QueryValidatorException.ERR_CODE,
                     ex=stack_validation_result.exception
                 )
             )
@@ -168,11 +168,11 @@ class QueryValidator(Validator[Query]):
         if query.stack.is_empty:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                QueryValidationException(
+                QueryValidatorException(
                     cls_mthd=method,
                     cls_name=method.__class__.__name__,
-                    msg=QueryValidationException.MSG,
-                    err_code=QueryValidationException.ERR_CODE,
+                    msg=QueryValidatorException.MSG,
+                    err_code=QueryValidatorException.ERR_CODE,
                     ex=blueprint.empty_stack_exception,
                 )
             )
@@ -188,7 +188,7 @@ class QueryValidator(Validator[Query]):
     ) -> ValidationResult[CatalogQuery]:
         method = f"{cls.__name__}._stack_query_validator"
         
-        catalog_validation_result = blueprint.priming_validator.run(
+        catalog_validation_result = blueprint.priming_validator.execute(
             candidate=query.catalog,
             context_model=blueprint.stack_model_type,
             null_exception=blueprint.stack_null_exception,
@@ -196,11 +196,11 @@ class QueryValidator(Validator[Query]):
         if catalog_validation_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                QueryValidationException(
+                QueryValidatorException(
                     cls_mthd=method,
                     cls_name=method.__class__.__name__,
-                    msg=QueryValidationException.MSG,
-                    err_code=QueryValidationException.ERR_CODE,
+                    msg=QueryValidatorException.MSG,
+                    err_code=QueryValidatorException.ERR_CODE,
                     ex=catalog_validation_result.exception
                 )
             )

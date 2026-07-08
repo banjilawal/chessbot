@@ -60,16 +60,16 @@ class NodeBlueprintValidator(BlueprintValidator[Node]):
             *   ZeroNodeBlueprintFlagsException
             *   ArenaNodeBlueprintFlagsException
             *   NodeBlueprintValidationRouteException
-            *   NodeBlueprintValidationException
+            *   NodeBlueprintValidatorException
         """
-        method = "NodeBlueprintValidator.validate"
+        method = "NodeBlueprintValidator.execute"
         
         # Handle the nonexistence case.
         if candidate is None:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                NodeBlueprintValidationException(
-                    msg=f"{method}: {NodeBlueprintValidationException.MSG}",
+                NodeBlueprintValidatorException(
+                    msg=f"{method}: {NodeBlueprintValidatorException.MSG}",
                     ex=NullNodeBlueprintException(f"{method}: {NullNodeBlueprintException.MSG}")
                 )
             )
@@ -77,8 +77,8 @@ class NodeBlueprintValidator(BlueprintValidator[Node]):
         if not isinstance(candidate, NodeBlueprint):
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                NodeBlueprintValidationException(
-                    msg=f"{method}: {NodeBlueprintValidationException.MSG}",
+                NodeBlueprintValidatorException(
+                    msg=f"{method}: {NodeBlueprintValidatorException.MSG}",
                     ex=TypeError(
                         f"{method}: Was expecting a NodeBlueprint, got {type(candidate).__predecessor__} instead."
                     )
@@ -92,8 +92,8 @@ class NodeBlueprintValidator(BlueprintValidator[Node]):
         if flag_count == 0:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                NodeBlueprintValidationException(
-                    msg=f"{method}: {NodeBlueprintValidationException.MSG}",
+                NodeBlueprintValidatorException(
+                    msg=f"{method}: {NodeBlueprintValidatorException.MSG}",
                     ex=ZeroNodeBlueprintFlagsException(f"{method}: {ZeroNodeBlueprintFlagsException.MSG}")
                 )
             )
@@ -101,8 +101,8 @@ class NodeBlueprintValidator(BlueprintValidator[Node]):
         if flag_count > 1:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                NodeBlueprintValidationException(
-                    msg=f"{method}: {NodeBlueprintValidationException.MSG}",
+                NodeBlueprintValidatorException(
+                    msg=f"{method}: {NodeBlueprintValidatorException.MSG}",
                     ex=ArenaNodeBlueprintFlagsException(
                         f"{method}: {ArenaNodeBlueprintFlagsException.MSG}"
                     )
@@ -120,8 +120,8 @@ class NodeBlueprintValidator(BlueprintValidator[Node]):
             if validator.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
-                    NodeBlueprintValidationException(
-                        msg=f"{method}: {NodeBlueprintValidationException.MSG}",
+                    NodeBlueprintValidatorException(
+                        msg=f"{method}: {NodeBlueprintValidatorException.MSG}",
                         ex=validator.exception
                     )
                 )
@@ -134,8 +134,8 @@ class NodeBlueprintValidator(BlueprintValidator[Node]):
             if validator.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
-                    NodeBlueprintValidationException(
-                        msg=f"{method}: {NodeBlueprintValidationException.MSG}",
+                    NodeBlueprintValidatorException(
+                        msg=f"{method}: {NodeBlueprintValidatorException.MSG}",
                         ex=validator.exception
                     )
                 )
@@ -148,8 +148,8 @@ class NodeBlueprintValidator(BlueprintValidator[Node]):
             if validator.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
-                    NodeBlueprintValidationException(
-                        msg=f"{method}: {NodeBlueprintValidationException.MSG}",
+                    NodeBlueprintValidatorException(
+                        msg=f"{method}: {NodeBlueprintValidatorException.MSG}",
                         ex=validator.exception
                     )
                 )
@@ -158,12 +158,12 @@ class NodeBlueprintValidator(BlueprintValidator[Node]):
         
         # Certification for the search-by-discovery_status target.
         if blueprint.discovery_status is not None:
-            validation = node_validator.validate_discovery_status(blueprint.discovery_status)
+            validation = node_validator.execute_discovery_status(blueprint.discovery_status)
             if validator.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
-                    NodeBlueprintValidationException(
-                        msg=f"{method}: {NodeBlueprintValidationException.MSG}",
+                    NodeBlueprintValidatorException(
+                        msg=f"{method}: {NodeBlueprintValidatorException.MSG}",
                         ex=validator.exception
                     )
                 )
@@ -172,8 +172,8 @@ class NodeBlueprintValidator(BlueprintValidator[Node]):
         
         # Return the exception chain if there is no validation route for the blueprint.
         return ValidationResult.failure(
-            NodeBlueprintValidationException(
-                msg=f"{method}: {NodeBlueprintValidationException.MSG}",
+            NodeBlueprintValidatorException(
+                msg=f"{method}: {NodeBlueprintValidatorException.MSG}",
                 ex=NodeBlueprintValidationRouteException(
                     f"{method}: {NodeBlueprintValidationRouteException.MSG}"
                 )

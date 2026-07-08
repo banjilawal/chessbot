@@ -12,7 +12,7 @@ from typing import List, cast
 
 from controller import WorkerRegistryController
 from err import (
-    EmptyListException, ListNullException, RegistryEntryKeyStringValidationException, StringValidationException
+    EmptyListException, ListNullException, RegistryEntryKeyStringValidatorException, StringValidatorException
 )
 from operation import PrimingValidator, Validator
 from validator.string import NameValidator
@@ -70,8 +70,8 @@ class RegistryEntryNameValidator(Validator):
         Raises:
             ListNullException
             EmptyListException
-            StringValidationException
-            RegistryEntryKeyStringValidationException
+            StringValidatorException
+            RegistryEntryKeyStringValidatorException
         """
         method = f"{cls.__name__}.execute"
         
@@ -81,7 +81,7 @@ class RegistryEntryNameValidator(Validator):
         if priming_validator is None:
             priming_validator = PrimingValidator()
         
-        list_validation_result = priming_validator.validate(
+        list_validation_result = priming_validator.execute(
             candidate=candidates,
             target_model=List[str],
             null_exception=ListNullException()
@@ -90,11 +90,11 @@ class RegistryEntryNameValidator(Validator):
         if list_validation_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                RegistryEntryKeyStringValidationException(
+                RegistryEntryKeyStringValidatorException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    msg=RegistryEntryKeyStringValidationException.MSG,
-                    err_code=RegistryEntryKeyStringValidationException.ERR_CODE,
+                    msg=RegistryEntryKeyStringValidatorException.MSG,
+                    err_code=RegistryEntryKeyStringValidatorException.ERR_CODE,
                     ex=list_validation_result.exception,
                 )
             )
@@ -105,11 +105,11 @@ class RegistryEntryNameValidator(Validator):
         if len(names) == 0:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                RegistryEntryKeyStringValidationException(
+                RegistryEntryKeyStringValidatorException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    msg=RegistryEntryKeyStringValidationException.MSG,
-                    err_code=RegistryEntryKeyStringValidationException.ERR_CODE,
+                    msg=RegistryEntryKeyStringValidatorException.MSG,
+                    err_code=RegistryEntryKeyStringValidatorException.ERR_CODE,
                     ex=EmptyListException(
                         cls_mthd=method,
                         cls_name=cls.__name__,
@@ -120,15 +120,15 @@ class RegistryEntryNameValidator(Validator):
             )
         # Handle the case that, any name in the list cannot be used as Registry key.
         for name in names:
-            name_validation_result = name_validator.validate(name)
+            name_validation_result = name_validator.execute(name)
             # Send the exception chain on failure.
             if name_validation_result.is_failure:
                 return ValidationResult.failure(
-                    StringValidationException(
+                    StringValidatorException(
                         cls_mthd=method,
                         cls_name=cls.__name__,
-                        msg=StringValidationException.MSG,
-                        err_code=StringValidationException.ERR_CODE,
+                        msg=StringValidatorException.MSG,
+                        err_code=StringValidatorException.ERR_CODE,
                         ex=name_validation_result.exception,
                         var="name",
                         val=f"{name}"

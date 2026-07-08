@@ -2,7 +2,7 @@ from typing import Any, TypeVar, cast
 
 from logic.piece import KingCheckEvent, PieceValidator, InvalidAttackException
 from logic.square import SquareValidator, InvalidSqaureException
-from system import LoggingLevelRouter, Result, IdValidator, IdValidationException, ValidationResult, Validator
+from system import LoggingLevelRouter, Result, IdValidator, IdValidatorException, ValidationResult, Validator
 from model.state.token import (
   AttackEvent,
   NullAttackEventException,
@@ -36,9 +36,9 @@ class KingCheckEventValidator(Validator[KingCheckEvent]):
       `TypeError`: if `rank` is not OperationEvent
       `NullAttackEventException`: if `rank` is validation
 
-      `IdValidationException`: if invalid `visitor_id`
-      `PieceValidationException`: if `actor_candidate` fails coord_stack_validator
-      `SquareValidationException`: if `target` fails coord_stack_validator
+      `IdValidatorException`: if invalid `visitor_id`
+      `PieceValidatorException`: if `actor_candidate` fails coord_stack_validator
+      `SquareValidatorException`: if `target` fails coord_stack_validator
 
       `AutoOccupationException`: if target already occupies the square_name
       `KingAttackException`: if the target square_name is occupied by an enemy occupation
@@ -60,7 +60,7 @@ class KingCheckEventValidator(Validator[KingCheckEvent]):
 
       id_validation = IdValidator.build(event.visitor_id)
       if not id_validation.is_success():
-        raise IdValidationException(f"{method}: {IdValidationException.MSG}")
+        raise IdValidatorException(f"{method}: {IdValidatorException.MSG}")
 
       actor_validation = PieceValidator.search_service(event.actor)
       if not actor_validation.is_success():
@@ -77,7 +77,7 @@ class KingCheckEventValidator(Validator[KingCheckEvent]):
 
     except (
             TypeError,
-            IdValidationException,
+            IdValidatorException,
             InvalidAttackException,
             InvalidSqaureException,
             NullAttackEventException,

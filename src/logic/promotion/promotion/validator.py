@@ -30,7 +30,7 @@ class OldPromotionEventValidator(Validator[PromotionEvent]):
     @classmethod
     def validate(cls, candidate: Any) -> ValidationResult[OccupationEvent]:
         """"""
-        method = "PromotionEventValidator.validate"
+        method = "PromotionEventValidator.execute"
         
         try:
             if candidate is None:

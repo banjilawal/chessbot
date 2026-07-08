@@ -37,7 +37,7 @@ DEPENDENCIES:
 ------------
 Requires base rollback_exception classes and constants from the kernel system:
 From `logic.system`:
-  * Exception: `ChessException`, `ValidationException`, `NullException`,
+  * Exception: `ChessException`, `ValidatorException`, `NullException`,
         `BuilderException`.
 
 CONTAINS:

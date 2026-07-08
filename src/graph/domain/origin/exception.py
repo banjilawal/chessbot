@@ -8,7 +8,7 @@ version: 1.0.0
 """
 
 from system import (
-    ChessException, NullException, ValidationException, BuilderException, InconsistencyException
+    ChessException, NullException, ValidatorException, BuilderException, InconsistencyException
 )
 
 __all__ = [
@@ -43,7 +43,7 @@ class NullDomainOriginException(DomainOriginException, NullException):
 
 
 #====================== DOMAIN_ORIGIN VALIDATION EXCEPTION #======================#
-class InvalidDomainOriginException(DomainOriginException, ValidationException):
+class InvalidDomainOriginException(DomainOriginException, ValidatorException):
     """Super Exception for DomainOriginValidator when a rank fails a sanity check.""""""
     ERR_CODE = "DOMAIN_ORIGIN_VALIDATION_EXCEPTION"
     MSG = "DomainOrigin validation failed."

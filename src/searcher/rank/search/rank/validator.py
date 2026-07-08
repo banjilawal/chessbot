@@ -64,7 +64,7 @@ class RankContextValidator(Validator[RankContext]):
             * NoRankSearchOptionSelectedException
             * MoreThanOneRankSearchOptionPickedException
         """
-        method = "RankContextValidator.validate"
+        method = "RankContextValidator.execute"
         
         try:
             if candidate is None:
@@ -124,10 +124,10 @@ class RankContextValidator(Validator[RankContext]):
     #     Raises:
     #         * InvalidRankContextException
     #     """
-    #     method = "RankContextValidator.validate_id_search_option"
+    #     method = "RankContextValidator.execute_id_search_option"
     #
     #     try:
-    #         row_validation = rank_validator.validate_row(rank)
+    #         row_validation = rank_validator.execute_row(rank)
     #         if row_validation.is_failure():
     #             return ValidationResult.failure(row_validation.exception)
     #
@@ -165,10 +165,10 @@ class RankContextValidator(Validator[RankContext]):
     #     Raises:
     #         * InvalidRankContextException
     #     """
-    #     method = "RankContextValidator.validate_column_search_option"
+    #     method = "RankContextValidator.execute_column_search_option"
     #
     #     try:
-    #         column_validation = rank_validator.validate(rank)
+    #         column_validation = rank_validator.execute(rank)
     #         if column_validation.is_failure():
     #             return ValidationResult.failure(column_validation.exception)
     #
@@ -206,10 +206,10 @@ class RankContextValidator(Validator[RankContext]):
     #     Raises:
     #         * InvalidRankContextException
     #     """
-    #     method = "RankContextValidator.validate_rank_search_option"
+    #     method = "RankContextValidator.execute_rank_search_option"
     #
     #     try:
-    #         rank_validation = rank_validator.validate(rank)
+    #         rank_validation = rank_validator.execute(rank)
     #         if rank_validation.is_failure():
     #             return ValidationResult.failure(rank_validation.exception)
     #

@@ -10,15 +10,15 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import ValidationException
+from err import ValidatorException
 
 __all__ = [
     # ======================# NAME_VALIDATION_EXCEPTION #======================#
-    "NameValidationException",
+    "NameValidatorException",
 ]
 
 # ======================# NAME_VALIDATION_EXCEPTION #======================#
-class NameValidationException(ValidationException):
+class NameValidatorException(ValidatorException):
     """
     Role:
         -   Error Tracing
@@ -39,7 +39,7 @@ class NameValidationException(ValidationException):
     Provides:
 
     Super Class:
-        ValidationException
+        ValidatorException
     """
     MSG = "NameValidation check failed"
     ERR_CODE = "NAME_VALIDATION_EXCEPTION"

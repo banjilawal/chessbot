@@ -14,14 +14,14 @@ from typing import Any, Optional
 
 __all__ = [
     # ======================# BOARD_CONTEXT_VALIDATION_EXCEPTION #======================#
-    "BoardContextValidationException",
+    "BoardContextValidatorException",
 ]
 
-from err import ContextValidationException
+from err import ContextValidatorException
 
 
 # ======================# BOARD_CONTEXT_VALIDATION_EXCEPTION #======================#
-class BoardContextValidationException(ContextValidationException):
+class BoardContextValidatorException(ContextValidatorException):
     """
     Role:
         -   Error Tracing
@@ -42,7 +42,7 @@ class BoardContextValidationException(ContextValidationException):
     Provides:
 
     Super Class:
-        ContextValidationException
+        ContextValidatorException
     """
     MSG = "No validation logic for BoardContext attribute"
     ERR_CODE = "BOARD_CONTEXT_VALIDATION_EXCEPTION"

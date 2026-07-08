@@ -90,7 +90,7 @@ class RankPersonaValidator(Validator[Rank]):
         Raises:
             TypeError
             NullRankException
-            RankPersonaValidationException
+            RankPersonaValidatorException
         """
         method = f"{cls.__name__}.validate"
         
@@ -99,13 +99,13 @@ class RankPersonaValidator(Validator[Rank]):
             if rank.persona != persona_service.persona:
                 # Return the exception on failure.
                 return ValidationResult.failure(
-                    RankPersonaValidationException(
+                    RankPersonaValidatorException(
                         cls_mthd=method,
                         cls_name=cls.__name__,
-                        op=RankPersonaValidationException.OP,
-                        msg=RankPersonaValidationException.MSG,
-                        err_code=RankPersonaValidationException.ERR_CODE,
-                        mthd_rslt_type=RankPersonaValidationException.MTHD_RSLT,
+                        op=RankPersonaValidatorException.OP,
+                        msg=RankPersonaValidatorException.MSG,
+                        err_code=RankPersonaValidatorException.ERR_CODE,
+                        mthd_rslt_type=RankPersonaValidatorException.MTHD_RSLT,
                         ex=KingPersonaMismatchException(
                             val=rank.persona,
                             var="rank.persona",
@@ -122,13 +122,13 @@ class RankPersonaValidator(Validator[Rank]):
             if rank.persona != persona_service.persona:
                 # Return the exception on failure.
                 return ValidationResult.failure(
-                    RankPersonaValidationException(
+                    RankPersonaValidatorException(
                         cls_mthd=method,
                         cls_name=cls.__name__,
-                        op=RankPersonaValidationException.OP,
-                        msg=RankPersonaValidationException.MSG,
-                        err_code=RankPersonaValidationException.ERR_CODE,
-                        mthd_rslt_type=RankPersonaValidationException.MTHD_RSLT,
+                        op=RankPersonaValidatorException.OP,
+                        msg=RankPersonaValidatorException.MSG,
+                        err_code=RankPersonaValidatorException.ERR_CODE,
+                        mthd_rslt_type=RankPersonaValidatorException.MTHD_RSLT,
                         ex=PawnPersonaMismatchException(
                             val=rank.persona,
                             var="rank.persona",
@@ -145,13 +145,13 @@ class RankPersonaValidator(Validator[Rank]):
             if rank.persona != persona_service.persona:
                 # Return the exception on failure.
                 return ValidationResult.failure(
-                    RankPersonaValidationException(
+                    RankPersonaValidatorException(
                         cls_mthd=method,
                         cls_name=cls.__name__,
-                        op=RankPersonaValidationException.OP,
-                        msg=RankPersonaValidationException.MSG,
-                        err_code=RankPersonaValidationException.ERR_CODE,
-                        mthd_rslt_type=RankPersonaValidationException.MTHD_RSLT,
+                        op=RankPersonaValidatorException.OP,
+                        msg=RankPersonaValidatorException.MSG,
+                        err_code=RankPersonaValidatorException.ERR_CODE,
+                        mthd_rslt_type=RankPersonaValidatorException.MTHD_RSLT,
                         ex=KnightPersonaMismatchException(
                             val=rank.persona,
                             var="rank.persona",
@@ -168,13 +168,13 @@ class RankPersonaValidator(Validator[Rank]):
             if rank.persona != persona_service.persona:
                 # Return the exception on failure.
                 return ValidationResult.failure(
-                    RankPersonaValidationException(
+                    RankPersonaValidatorException(
                         cls_mthd=method,
                         cls_name=cls.__name__,
-                        op=RankPersonaValidationException.OP,
-                        msg=RankPersonaValidationException.MSG,
-                        err_code=RankPersonaValidationException.ERR_CODE,
-                        mthd_rslt_type=RankPersonaValidationException.MTHD_RSLT,
+                        op=RankPersonaValidatorException.OP,
+                        msg=RankPersonaValidatorException.MSG,
+                        err_code=RankPersonaValidatorException.ERR_CODE,
+                        mthd_rslt_type=RankPersonaValidatorException.MTHD_RSLT,
                         ex=BishopPersonaMismatchException(
                             val=rank.persona,
                             var="rank.persona",
@@ -191,13 +191,13 @@ class RankPersonaValidator(Validator[Rank]):
             if rank.persona != persona_service.persona:
                 # Return the exception on failure.
                 return ValidationResult.failure(
-                    RankPersonaValidationException(
+                    RankPersonaValidatorException(
                         cls_mthd=method,
                         cls_name=cls.__name__,
-                        op=RankPersonaValidationException.OP,
-                        msg=RankPersonaValidationException.MSG,
-                        err_code=RankPersonaValidationException.ERR_CODE,
-                        mthd_rslt_type=RankPersonaValidationException.MTHD_RSLT,
+                        op=RankPersonaValidatorException.OP,
+                        msg=RankPersonaValidatorException.MSG,
+                        err_code=RankPersonaValidatorException.ERR_CODE,
+                        mthd_rslt_type=RankPersonaValidatorException.MTHD_RSLT,
                         ex=RookPersonaMismatchException(
                             val=rank.persona,
                             var="rank.persona",
@@ -214,13 +214,13 @@ class RankPersonaValidator(Validator[Rank]):
             if rank.persona != persona_service.persona:
                 # Return the exception on failure.
                 return ValidationResult.failure(
-                    RankPersonaValidationException(
+                    RankPersonaValidatorException(
                         cls_mthd=method,
                         cls_name=cls.__name__,
-                        op=RankPersonaValidationException.OP,
-                        msg=RankPersonaValidationException.MSG,
-                        err_code=RankPersonaValidationException.ERR_CODE,
-                        mthd_rslt_type=RankPersonaValidationException.MTHD_RSLT,
+                        op=RankPersonaValidatorException.OP,
+                        msg=RankPersonaValidatorException.MSG,
+                        err_code=RankPersonaValidatorException.ERR_CODE,
+                        mthd_rslt_type=RankPersonaValidatorException.MTHD_RSLT,
                         ex=QueenPersonaMismatchException(
                             val=rank.persona,
                             var="rank.persona",
@@ -234,18 +234,18 @@ class RankPersonaValidator(Validator[Rank]):
         
         # Handle the case that, the there is no persona validator logic for the rank.
         return ValidationResult.failure(
-            RankPersonaValidationException(
+            RankPersonaValidatorException(
                 cls_mthd=method,
                 cls_name=cls.__name__,
-                op=RankPersonaValidationException.OP,
-                msg=RankPersonaValidationException.MSG,
-                err_code=RankPersonaValidationException.ERR_CODE,
-                mthd_rslt_type=RankPersonaValidationException.MTHD_RSLT,
+                op=RankPersonaValidatorException.OP,
+                msg=RankPersonaValidatorException.MSG,
+                err_code=RankPersonaValidatorException.ERR_CODE,
+                mthd_rslt_type=RankPersonaValidatorException.MTHD_RSLT,
                 ex=RankValidationRouteException(
                     val=rank,
                     var=rank.persona.name,
-                    msg=RankPersonaValidationException.MSG,
-                    err_code=RankPersonaValidationException.ERR_CODE,
+                    msg=RankPersonaValidatorException.MSG,
+                    err_code=RankPersonaValidatorException.ERR_CODE,
                 )
             )
         )

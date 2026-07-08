@@ -61,16 +61,16 @@ class EdgeContextValidator(ContextValidator[Edge]):
             *   ZeroEdgeContextFlagsException
             *   ArenaEdgeContextFlagsException
             *   EdgeContextValidationRouteException
-            *   EdgeContextValidationException
+            *   EdgeContextValidatorException
         """
-        method = "EdgeContextValidator.validate"
+        method = "EdgeContextValidator.execute"
         
         # Handle the nonexistence case.
         if candidate is None:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                EdgeContextValidationException(
-                    msg=f"{method}: {EdgeContextValidationException.MSG}",
+                EdgeContextValidatorException(
+                    msg=f"{method}: {EdgeContextValidatorException.MSG}",
                     ex=NullEdgeContextException(f"{method}: {NullEdgeContextException.MSG}")
                 )
             )
@@ -78,8 +78,8 @@ class EdgeContextValidator(ContextValidator[Edge]):
         if not isinstance(candidate, EdgeContext):
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                EdgeContextValidationException(
-                    msg=f"{method}: {EdgeContextValidationException.MSG}",
+                EdgeContextValidatorException(
+                    msg=f"{method}: {EdgeContextValidatorException.MSG}",
                     ex=TypeError(
                         f"{method}: Was expecting a EdgeContext, got {type(candidate).__name__} instead."
                     )
@@ -93,8 +93,8 @@ class EdgeContextValidator(ContextValidator[Edge]):
         if flag_count == 0:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                EdgeContextValidationException(
-                    msg=f"{method}: {EdgeContextValidationException.MSG}",
+                EdgeContextValidatorException(
+                    msg=f"{method}: {EdgeContextValidatorException.MSG}",
                     ex=ZeroEdgeContextFlagsException(f"{method}: {ZeroEdgeContextFlagsException.MSG}")
                 )
             )
@@ -102,8 +102,8 @@ class EdgeContextValidator(ContextValidator[Edge]):
         if flag_count > 1:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                EdgeContextValidationException(
-                    msg=f"{method}: {EdgeContextValidationException.MSG}",
+                EdgeContextValidatorException(
+                    msg=f"{method}: {EdgeContextValidatorException.MSG}",
                     ex=ArenaEdgeContextFlagsException(
                         f"{method}: {ArenaEdgeContextFlagsException.MSG}"
                     )
@@ -117,8 +117,8 @@ class EdgeContextValidator(ContextValidator[Edge]):
             if validator.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
-                    EdgeContextValidationException(
-                        msg=f"{method}: {EdgeContextValidationException.MSG}",
+                    EdgeContextValidatorException(
+                        msg=f"{method}: {EdgeContextValidatorException.MSG}",
                         ex=validator.exception
                     )
                 )
@@ -131,8 +131,8 @@ class EdgeContextValidator(ContextValidator[Edge]):
             if validator.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
-                    EdgeContextValidationException(
-                        msg=f"{method}: {EdgeContextValidationException.MSG}",
+                    EdgeContextValidatorException(
+                        msg=f"{method}: {EdgeContextValidatorException.MSG}",
                         ex=validator.exception
                     )
                 )
@@ -145,8 +145,8 @@ class EdgeContextValidator(ContextValidator[Edge]):
             if validator.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
-                    EdgeContextValidationException(
-                        msg=f"{method}: {EdgeContextValidationException.MSG}",
+                    EdgeContextValidatorException(
+                        msg=f"{method}: {EdgeContextValidatorException.MSG}",
                         ex=validator.exception
                     )
                 )
@@ -159,8 +159,8 @@ class EdgeContextValidator(ContextValidator[Edge]):
             if validator.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
-                    EdgeContextValidationException(
-                        msg=f"{method}: {EdgeContextValidationException.MSG}",
+                    EdgeContextValidatorException(
+                        msg=f"{method}: {EdgeContextValidatorException.MSG}",
                         ex=validator.exception
                     )
                 )
@@ -173,8 +173,8 @@ class EdgeContextValidator(ContextValidator[Edge]):
             if validator.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
-                    EdgeContextValidationException(
-                        msg=f"{method}: {EdgeContextValidationException.MSG}",
+                    EdgeContextValidatorException(
+                        msg=f"{method}: {EdgeContextValidatorException.MSG}",
                         ex=validator.exception
                     )
                 )
@@ -186,8 +186,8 @@ class EdgeContextValidator(ContextValidator[Edge]):
             if not isinstance(context.state, EdgeState):
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
-                    EdgeContextValidationException(
-                        msg=f"{method}: {EdgeContextValidationException.MSG}",
+                    EdgeContextValidatorException(
+                        msg=f"{method}: {EdgeContextValidatorException.MSG}",
                         ex=TypeError(
                             f"{method}: Was expecting a EdgeState, got {type(candidate).__name__} instead."
                         )
@@ -198,8 +198,8 @@ class EdgeContextValidator(ContextValidator[Edge]):
         
         # Return the exception chain if there is no validation route for the context.
         return ValidationResult.failure(
-            EdgeContextValidationException(
-                msg=f"{method}: {EdgeContextValidationException.MSG}",
+            EdgeContextValidatorException(
+                msg=f"{method}: {EdgeContextValidatorException.MSG}",
                 ex=EdgeContextValidationRouteException(
                     f"{method}: {EdgeContextValidationRouteException.MSG}"
                 )

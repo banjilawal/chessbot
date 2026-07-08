@@ -80,7 +80,7 @@ class EuclideanDistance(Operation[VectorOperandRegister]):
             scalar_build_pipeline = ScalarBuildPipeline()
         
         # Handle the case that, the register is flagged.
-        register_validation_result = register_validator.validate(register)
+        register_validation_result = register_validator.execute(register)
         if register_validation_result.is_failure:
             # Send the exception chain on failure.
             return ComputationResult.failure(

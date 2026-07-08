@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, Dict, cast
 
 from err import (
-    SchemaHashtableValidationException
+    SchemaHashtableValidatorException
 )
 from microvalidator import SchemaValidator
 
@@ -72,7 +72,7 @@ class SchemaHashtableValidator(Validator[Dict[Schema, Any]]):
         Returns:
             ValidationResult[Dict[Schema, Any]]
         Raises:
-            SchemaHashtableValidationException
+            SchemaHashtableValidatorException
         """
         method = f"{cls.__name__}.validate"
             
@@ -85,25 +85,25 @@ class SchemaHashtableValidator(Validator[Dict[Schema, Any]]):
         if validator_priming_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                SchemaHashtableValidationException(
+                SchemaHashtableValidatorException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    msg=SchemaHashtableValidationException.MSG,
-                    err_code=SchemaHashtableValidationException.ERR_CODE,
+                    msg=SchemaHashtableValidatorException.MSG,
+                    err_code=SchemaHashtableValidatorException.ERR_CODE,
                     ex=validator_priming_result.exception,
                 )
             )
         table = cast(Dict[Schema, Any], validator_priming_result.payload)
         
         for key in table.keys():
-            schema_validation_result = schema_validator.run.build(table[key])
+            schema_validation_result = schema_validator.execute.build(table[key])
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                SchemaHashtableValidationException(
+                SchemaHashtableValidatorException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    msg=SchemaHashtableValidationException.MSG,
-                    err_code=SchemaHashtableValidationException.ERR_CODE,
+                    msg=SchemaHashtableValidatorException.MSG,
+                    err_code=SchemaHashtableValidatorException.ERR_CODE,
                     ex=schema_validation_result.exception
                 )
             )

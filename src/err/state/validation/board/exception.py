@@ -10,15 +10,15 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import ValidationException
+from err import ValidatorException
 
 __all__ = [
     # ======================# BOARD_VALIDATION_EXCEPTION #======================#
-    "BoardValidationException",
+    "BoardValidatorException",
 ]
 
 # ======================# BOARD_VALIDATION_EXCEPTION #======================#
-class BoardValidationException(ValidationException):
+class BoardValidatorException(ValidatorException):
     """
     Role:
         -   Error Tracing
@@ -39,7 +39,7 @@ class BoardValidationException(ValidationException):
     Provides:
 
     Super Class:
-        ValidationException
+        ValidatorException
     """
     MSG = "BoardValidation check failed"
     ERR_CODE = "BOARD_VALIDATION_EXCEPTION"

@@ -14,14 +14,14 @@ from typing import Any, Optional
 
 __all__ = [
     # ======================# TEAM_CONTEXT_VALIDATION_EXCEPTION #======================#
-    "TeamContextValidationException",
+    "TeamContextValidatorException",
 ]
 
-from err import ContextValidationException
+from err import ContextValidatorException
 
 
 # ======================# TEAM_CONTEXT_VALIDATION_EXCEPTION #======================#
-class TeamContextValidationException(ContextValidationException):
+class TeamContextValidatorException(ContextValidatorException):
     """
     Role:
         -   Error Tracing
@@ -42,7 +42,7 @@ class TeamContextValidationException(ContextValidationException):
     Provides:
 
     Super Class:
-        ContextValidationException
+        ContextValidatorException
     """
     MSG = "No validation logic for TeamContext attribute"
     ERR_CODE = "TEAM_CONTEXT_VALIDATION_EXCEPTION"

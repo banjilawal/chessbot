@@ -14,14 +14,14 @@ from typing import Any, Optional
 
 __all__ = [
     # ======================# RANK_CONTEXT_VALIDATION_EXCEPTION #======================#
-    "RankContextValidationException",
+    "RankContextValidatorException",
 ]
 
-from err import ContextValidationException
+from err import ContextValidatorException
 
 
 # ======================# RANK_CONTEXT_VALIDATION_EXCEPTION #======================#
-class RankContextValidationException(ContextValidationException):
+class RankContextValidatorException(ContextValidatorException):
     """
     Role:
         -   Error Tracing
@@ -42,7 +42,7 @@ class RankContextValidationException(ContextValidationException):
     Provides:
 
     Super Class:
-        ContextValidationException
+        ContextValidatorException
     """
     MSG = "No validation logic for RankContext attribute"
     ERR_CODE = "RANK_CONTEXT_VALIDATION_EXCEPTION"

@@ -14,6 +14,6 @@ from .null import *
 
 # Modules
 from .null import PairListNullException
-from .work import PairListValidationException
+from .work import PairListValidatorException
 
 

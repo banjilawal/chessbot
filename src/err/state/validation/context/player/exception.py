@@ -14,14 +14,14 @@ from typing import Any, Optional
 
 __all__ = [
     # ======================# PLAYER_CONTEXT_VALIDATION_EXCEPTION #======================#
-    "PlayerContextValidationException",
+    "PlayerContextValidatorException",
 ]
 
-from err import ContextValidationException
+from err import ContextValidatorException
 
 
 # ======================# PLAYER_CONTEXT_VALIDATION_EXCEPTION #======================#
-class PlayerContextValidationException(ContextValidationException):
+class PlayerContextValidatorException(ContextValidatorException):
     """
     Role:
         -   Error Tracing
@@ -42,7 +42,7 @@ class PlayerContextValidationException(ContextValidationException):
     Provides:
 
     Super Class:
-        ContextValidationException
+        ContextValidatorException
     """
     MSG = "No validation logic for PlayerContext attribute"
     ERR_CODE = "PLAYER_CONTEXT_VALIDATION_EXCEPTION"

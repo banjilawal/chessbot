@@ -10,15 +10,15 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import RankValidationException
+from err import RankValidatorException
 
 __all__ = [
     # ======================# KING_VALIDATION_FAILURE #======================#
-    "KingValidationException",
+    "KingValidatorException",
 ]
 
 # ======================# KING_VALIDATION_FAILURE #======================#
-class KingValidationException(RankValidationException):
+class KingValidatorException(RankValidatorException):
     """
     Role:
         -   Error Tracing
@@ -39,7 +39,7 @@ class KingValidationException(RankValidationException):
     Provides:
 
     Super Class:
-        RankValidationException
+        RankValidatorException
     """
     MSG = "King validation check failed."
     ERR_CODE = "KING_VALIDATION_FAILURE"

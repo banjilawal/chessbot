@@ -8,7 +8,7 @@ version: 1.0.0
 """
 
 from system import (
-    ChessException, NullException, ValidationException, BuilderException, InconsistencyException
+    ChessException, NullException, ValidatorException, BuilderException, InconsistencyException
 )
 
 __all__ = [
@@ -37,7 +37,7 @@ class NullHouseException(HouseException, NullException):
     MSG = "A House cannot be null."
 
 
-class InvalidHouseException(HouseException, ValidationException):
+class InvalidHouseException(HouseException, ValidatorException):
     """"""
     ERR_CODE = "HOUSE_VALIDATION_EXCEPTION"
     MSG = "House validation failed."

@@ -22,7 +22,7 @@ class CombatantOccupationEventValidator(Validator[CombatantOccupationEvent]):
     @classmethod
     def validate(cls, candidate: Any) -> ValidationResult[CombatantOccupationEvent]:
         """"""
-        method = "OccupationEventValidator.validate"
+        method = "OccupationEventValidator.execute"
         
         try:
             if candidate is None:
@@ -91,9 +91,9 @@ class CombatantOccupationEventValidator(Validator[CombatantOccupationEvent]):
 #     `TypeError`: if `rank` is not OperationEvent
 #     `NullAttackEventException`: if `rank` is validation
 #
-#     `IdValidationException`: if invalid `visitor_id`
-#     `PieceValidationException`: if `actor_candidate` fails coord_stack_validator
-#     `SquareValidationException`: if `target` fails coord_stack_validator
+#     `IdValidatorException`: if invalid `visitor_id`
+#     `PieceValidatorException`: if `actor_candidate` fails coord_stack_validator
+#     `SquareValidatorException`: if `target` fails coord_stack_validator
 #
 #     `AutoOccupationException`: if target already occupies the square_name
 #     `KingAttackException`: if the target square_name is occupied by an enemy occupation
@@ -113,15 +113,15 @@ class CombatantOccupationEventValidator(Validator[CombatantOccupationEvent]):
 #
 #     travel = cast(AttackEvent, t)
 #
-#     id_validation = IdValidator.validate(travel.visitor_id)
+#     id_validation = IdValidator.execute(travel.visitor_id)
 #     if not id_validation.is_success():
-#       raise IdValidationException(f"{method}: {IdValidationException.MSG}")
+#       raise IdValidatorException(f"{method}: {IdValidatorException.MSG}")
 #
-#     actor_validation = PieceValidator.validate(travel.traveler)
+#     actor_validation = PieceValidator.execute(travel.traveler)
 #     if not actor_validation.is_success():
 #       raise InvalidAttackException(f"{method}: actor_candidate validation failed.")
 #
-#     destination_square_validation = SquareValidator.validate(travel.enemy_square)
+#     destination_square_validation = SquareValidator.execute(travel.enemy_square)
 #     if not destination_square_validation.is_success():
 #       raise InvalidSqaureException(f"{method}: {InvalidSqaureException.MSG}")
 #
@@ -132,7 +132,7 @@ class CombatantOccupationEventValidator(Validator[CombatantOccupationEvent]):
 #
 #   except (
 #       TypeError,
-#       IdValidationException,
+#       IdValidatorException,
 #       InvalidAttackException,
 #       InvalidSqaureException,
 #       NullAttackEventException,
@@ -178,14 +178,14 @@ class CombatantOccupationEventValidator(Validator[CombatantOccupationEvent]):
 #         `rollback_exception` (`Exception`) - An exception detailing which naming rule was broken.
 #
 #     Raises:
-#     `IdValidationException`: Wraps any specification violations including:
+#     `IdValidatorException`: Wraps any specification violations including:
 #         * `TypeError`: if rank is not an `int`
 #         * `IdNullException`: if rank is validation
 #         * `NegativeIdException`: if rank is negative `
 #     """
 #     method = "TravelEventFactory.execute"
 #
-#     event_validation = TravelEventValidator.validate(travel)
+#     event_validation = TravelEventValidator.execute(travel)
 #     if not event_validation.is_success():
 #       return TransactionResult(
 #         checkpoint=travel,
@@ -291,7 +291,7 @@ class CombatantOccupationEventValidator(Validator[CombatantOccupationEvent]):
 #       )
 #     )
 #
-#   attack_validation = AttackValidator.validate(
+#   attack_validation = AttackValidator.execute(
 #     CaptureContext(owner=travel.traveler, enemy=destination_occupant, board=map.board)
 #   )
 #   if not attack_validation.is_success():

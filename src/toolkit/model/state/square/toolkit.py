@@ -11,11 +11,12 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 
-from detection import SquareCollisionDetector
+from bootstrapper import PrimingValidator
+from detector import SquareCollisionDetector
 from microservice import FormationService, IdentityService
 from model import Square
 from toolkit import ModelToolkit
-from validator import BoardValidator, CoordValidator, TokenValidator, PrimingValidator
+from validator import BoardValidator, CoordValidator, TokenValidator
 
 
 @dataclass

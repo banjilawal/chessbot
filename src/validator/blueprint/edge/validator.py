@@ -61,16 +61,16 @@ class EdgeBlueprintValidator(BlueprintValidator[Edge]):
             *   ZeroEdgeBlueprintFlagsException
             *   ArenaEdgeBlueprintFlagsException
             *   EdgeBlueprintValidationRouteException
-            *   EdgeBlueprintValidationException
+            *   EdgeBlueprintValidatorException
         """
-        method = "EdgeBlueprintValidator.validate"
+        method = "EdgeBlueprintValidator.execute"
         
         # Handle the nonexistence case.
         if candidate is None:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                EdgeBlueprintValidationException(
-                    msg=f"{method}: {EdgeBlueprintValidationException.MSG}",
+                EdgeBlueprintValidatorException(
+                    msg=f"{method}: {EdgeBlueprintValidatorException.MSG}",
                     ex=NullEdgeBlueprintException(f"{method}: {NullEdgeBlueprintException.MSG}")
                 )
             )
@@ -78,8 +78,8 @@ class EdgeBlueprintValidator(BlueprintValidator[Edge]):
         if not isinstance(candidate, EdgeBlueprint):
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                EdgeBlueprintValidationException(
-                    msg=f"{method}: {EdgeBlueprintValidationException.MSG}",
+                EdgeBlueprintValidatorException(
+                    msg=f"{method}: {EdgeBlueprintValidatorException.MSG}",
                     ex=TypeError(
                         f"{method}: Was expecting a EdgeBlueprint, got {type(candidate).__name__} instead."
                     )
@@ -93,8 +93,8 @@ class EdgeBlueprintValidator(BlueprintValidator[Edge]):
         if flag_count == 0:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                EdgeBlueprintValidationException(
-                    msg=f"{method}: {EdgeBlueprintValidationException.MSG}",
+                EdgeBlueprintValidatorException(
+                    msg=f"{method}: {EdgeBlueprintValidatorException.MSG}",
                     ex=ZeroEdgeBlueprintFlagsException(f"{method}: {ZeroEdgeBlueprintFlagsException.MSG}")
                 )
             )
@@ -102,8 +102,8 @@ class EdgeBlueprintValidator(BlueprintValidator[Edge]):
         if flag_count > 1:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                EdgeBlueprintValidationException(
-                    msg=f"{method}: {EdgeBlueprintValidationException.MSG}",
+                EdgeBlueprintValidatorException(
+                    msg=f"{method}: {EdgeBlueprintValidatorException.MSG}",
                     ex=ArenaEdgeBlueprintFlagsException(
                         f"{method}: {ArenaEdgeBlueprintFlagsException.MSG}"
                     )
@@ -117,8 +117,8 @@ class EdgeBlueprintValidator(BlueprintValidator[Edge]):
             if validator.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
-                    EdgeBlueprintValidationException(
-                        msg=f"{method}: {EdgeBlueprintValidationException.MSG}",
+                    EdgeBlueprintValidatorException(
+                        msg=f"{method}: {EdgeBlueprintValidatorException.MSG}",
                         ex=validator.exception
                     )
                 )
@@ -131,8 +131,8 @@ class EdgeBlueprintValidator(BlueprintValidator[Edge]):
             if validator.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
-                    EdgeBlueprintValidationException(
-                        msg=f"{method}: {EdgeBlueprintValidationException.MSG}",
+                    EdgeBlueprintValidatorException(
+                        msg=f"{method}: {EdgeBlueprintValidatorException.MSG}",
                         ex=validator.exception
                     )
                 )
@@ -145,8 +145,8 @@ class EdgeBlueprintValidator(BlueprintValidator[Edge]):
             if validator.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
-                    EdgeBlueprintValidationException(
-                        msg=f"{method}: {EdgeBlueprintValidationException.MSG}",
+                    EdgeBlueprintValidatorException(
+                        msg=f"{method}: {EdgeBlueprintValidatorException.MSG}",
                         ex=validator.exception
                     )
                 )
@@ -159,8 +159,8 @@ class EdgeBlueprintValidator(BlueprintValidator[Edge]):
             if validator.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
-                    EdgeBlueprintValidationException(
-                        msg=f"{method}: {EdgeBlueprintValidationException.MSG}",
+                    EdgeBlueprintValidatorException(
+                        msg=f"{method}: {EdgeBlueprintValidatorException.MSG}",
                         ex=validator.exception
                     )
                 )
@@ -173,8 +173,8 @@ class EdgeBlueprintValidator(BlueprintValidator[Edge]):
             if validator.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
-                    EdgeBlueprintValidationException(
-                        msg=f"{method}: {EdgeBlueprintValidationException.MSG}",
+                    EdgeBlueprintValidatorException(
+                        msg=f"{method}: {EdgeBlueprintValidatorException.MSG}",
                         ex=validator.exception
                     )
                 )
@@ -186,8 +186,8 @@ class EdgeBlueprintValidator(BlueprintValidator[Edge]):
             if not isinstance(blueprint.state, EdgeState):
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
-                    EdgeBlueprintValidationException(
-                        msg=f"{method}: {EdgeBlueprintValidationException.MSG}",
+                    EdgeBlueprintValidatorException(
+                        msg=f"{method}: {EdgeBlueprintValidatorException.MSG}",
                         ex=TypeError(
                             f"{method}: Was expecting a EdgeState, got {type(candidate).__name__} instead."
                         )
@@ -198,8 +198,8 @@ class EdgeBlueprintValidator(BlueprintValidator[Edge]):
         
         # Return the exception chain if there is no validation route for the blueprint.
         return ValidationResult.failure(
-            EdgeBlueprintValidationException(
-                msg=f"{method}: {EdgeBlueprintValidationException.MSG}",
+            EdgeBlueprintValidatorException(
+                msg=f"{method}: {EdgeBlueprintValidatorException.MSG}",
                 ex=EdgeBlueprintValidationRouteException(
                     f"{method}: {EdgeBlueprintValidationRouteException.MSG}"
                 )

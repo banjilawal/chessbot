@@ -10,7 +10,7 @@ version: 1.0.0
 from __future__ import annotations
 from typing import Any, cast
 
-from graph.pair import PairList, PairListNullException, PairListValidationException
+from graph.pair import PairList, PairListNullException, PairListValidatorException
 from system import LoggingLevelRouter, ValidationResult, Validator
 
 
@@ -48,7 +48,7 @@ class PairListValidator(Validator[PairList]):
         Raises:
             TypeError
             PairListNullException
-            PairListValidationException
+            PairListValidatorException
         """
         method = f"{cls.__class__.__name__}.validate"
         
@@ -56,12 +56,12 @@ class PairListValidator(Validator[PairList]):
         if candidate is None:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                PairListValidationException(
+                PairListValidatorException(
                     cls_mthd=method,
-                    op=PairListValidationException.OP,
-                    msg=PairListValidationException.MSG,
-                    err_code=PairListValidationException.ERR_CODE,
-                    mthd_rslt_type=PairListValidationException.MTHD_RSLT,
+                    op=PairListValidatorException.OP,
+                    msg=PairListValidatorException.MSG,
+                    err_code=PairListValidatorException.ERR_CODE,
+                    mthd_rslt_type=PairListValidatorException.MTHD_RSLT,
                     ex=PairListNullException(
                         var="rank",
                         val="None",
@@ -74,12 +74,12 @@ class PairListValidator(Validator[PairList]):
         if not isinstance(candidate, PairList):
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                PairListValidationException(
+                PairListValidatorException(
                     cls_mthd=method,
-                    op=PairListValidationException.OP,
-                    msg=PairListValidationException.MSG,
-                    err_code=PairListValidationException.ERR_CODE,
-                    mthd_rslt_type=PairListValidationException.MTHD_RSLT,
+                    op=PairListValidatorException.OP,
+                    msg=PairListValidatorException.MSG,
+                    err_code=PairListValidatorException.ERR_CODE,
+                    mthd_rslt_type=PairListValidatorException.MTHD_RSLT,
                     ex=TypeError(
                         f"{method} Expected PairList, got {type(candidate).__name__} instead."
                     )

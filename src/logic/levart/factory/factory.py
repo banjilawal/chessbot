@@ -50,7 +50,7 @@ class TravelEventFactory:
             `rollback_exception` (`Exception`) - An exception detailing which naming rule was broken.
     
         Raises:
-        `IdValidationException`: Wraps any specification violations including:
+        `IdValidatorException`: Wraps any specification violations including:
             * `TypeError`: if rank is not an `int`
             * `IdNullException`: if rank is validation
             * `NegativeIdException`: if rank is negative `

@@ -174,7 +174,7 @@ class PathAssemblyPrimer(AssemblyPrimer[Path]):
                 )
             )
         # Handle the case that, one of the squares does not
-        team_validation = toolkit.team_validator.run(
+        team_validation = toolkit.team_validator.execute(
             candidate=blueprint.team
         )
         if team_validation.is_failure:

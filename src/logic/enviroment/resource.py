@@ -36,7 +36,7 @@ class BoardResourceValidator(Validator[Square, Board]):
   @LoggingLevelRouter.monitor
   def validate(cls, candidate: Tuple[Square, Board]) -> ValidationResult[Tuple[Square, Board]]:
     """"""
-    method = "BoardResourceValidator.validate"
+    method = "BoardResourceValidator.execute"
 
     try:
       if candidate is None:

@@ -11,7 +11,7 @@ from __future__ import annotations
 from typing import Any, List, cast
 
 from err import (
-    TokenQueryNullException, TokenQueryStackEmptyException, TokenQueryValidationException,
+    TokenQueryNullException, TokenQueryStackEmptyException, TokenQueryValidatorException,
     TokenStackNullException
 )
 from model import Token, TokenQuery
@@ -70,7 +70,7 @@ class TokenQueryValidator(Validator[TokenQuery]):
         Raises:
             TypeError
             TokenStackNullException
-            TokenQueryValidationException
+            TokenQueryValidatorException
             TokenQueryStackEmptyException
         """
         method = f"{cls.__name__}._validate"
@@ -80,7 +80,7 @@ class TokenQueryValidator(Validator[TokenQuery]):
         if context_validator is None:
             context_validator = TokenContextValidator()
         
-        validator_priming_result = priming_validator.validate(
+        validator_priming_result = priming_validator.execute(
             candidate=candidate,
             target_model=TokenQuery,
             null_exception=TokenQueryNullException(),
@@ -89,11 +89,11 @@ class TokenQueryValidator(Validator[TokenQuery]):
         if validator_priming_result.failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                TokenQueryValidationException(
+                TokenQueryValidatorException(
                     cls_mthd=method,
                     cls_name=method.__class__.__name__,
-                    msg=TokenQueryValidationException.MSG,
-                    err_code=TokenQueryValidationException.ERR_CODE,
+                    msg=TokenQueryValidatorException.MSG,
+                    err_code=TokenQueryValidatorException.ERR_CODE,
                     mthd_rslt_type=MethodResultType.VALIDATION_RESULT,
                     ex=validator_priming_result.exception,
                 )
@@ -106,16 +106,16 @@ class TokenQueryValidator(Validator[TokenQuery]):
         if context_validation_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                TokenQueryValidationException(
+                TokenQueryValidatorException(
                     cls_mthd=method,
                     cls_name=method.__class__.__name__,
-                    msg=TokenQueryValidationException.MSG,
-                    err_code=TokenQueryValidationException.ERR_CODE,
+                    msg=TokenQueryValidatorException.MSG,
+                    err_code=TokenQueryValidatorException.ERR_CODE,
                     mthd_rslt_type=MethodResultType.VALIDATION_RESULT,
                     ex=context_validation_result.exception
                 )
             )
-        stack_validation_result = validator_priming_result = priming_validator.validate(
+        stack_validation_result = validator_priming_result = priming_validator.execute(
             candidate=query.stack,
             target_model=TokenStackService,
             null_exception=TokenStackNullException(),
@@ -123,11 +123,11 @@ class TokenQueryValidator(Validator[TokenQuery]):
         if stack_validation_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                TokenQueryValidationException(
+                TokenQueryValidatorException(
                     cls_mthd=method,
                     cls_name=method.__class__.__name__,
-                    msg=TokenQueryValidationException.MSG,
-                    err_code=TokenQueryValidationException.ERR_CODE,
+                    msg=TokenQueryValidatorException.MSG,
+                    err_code=TokenQueryValidatorException.ERR_CODE,
                     mthd_rslt_type=MethodResultType.VALIDATION_RESULT,
                     ex=stack_validation_result.exception,
                 )
@@ -136,11 +136,11 @@ class TokenQueryValidator(Validator[TokenQuery]):
         if query.stack.is_empty:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                TokenQueryValidationException(
+                TokenQueryValidatorException(
                     cls_mthd=method,
                     cls_name=method.__class__.__name__,
-                    msg=TokenQueryValidationException.MSG,
-                    err_code=TokenQueryValidationException.ERR_CODE,
+                    msg=TokenQueryValidatorException.MSG,
+                    err_code=TokenQueryValidatorException.ERR_CODE,
                     mthd_rslt_type=MethodResultType.VALIDATION_RESULT,
                     ex=TokenQueryStackEmptyException(
                         msg=TokenQueryStackEmptyException.MSG,

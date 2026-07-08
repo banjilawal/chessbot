@@ -44,7 +44,7 @@ class PersonaValidator(Validator[Persona]):
         Raises:
             TypeError
             NullPersonaException
-            PersonaValidationException
+            PersonaValidatorException
         """
         method = f"{cls.__class__.__name__}.validate"
         
@@ -52,12 +52,12 @@ class PersonaValidator(Validator[Persona]):
         if candidate is None:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                PersonaValidationException(
+                PersonaValidatorException(
                     cls_mthd=method,
-                    op=PersonaValidationException.OP,
-                    msg=PersonaValidationException.MSG,
-                    err_code=PersonaValidationException.ERR_CODE,
-                    mthd_rslt_type=PersonaValidationException.MTHD_RSLT,
+                    op=PersonaValidatorException.OP,
+                    msg=PersonaValidatorException.MSG,
+                    err_code=PersonaValidatorException.ERR_CODE,
+                    mthd_rslt_type=PersonaValidatorException.MTHD_RSLT,
                     ex=NullPersonaException(
                         msg=NullPersonaException.MSG,
                         err_code=NullPersonaException.ERR_CODE,
@@ -68,12 +68,12 @@ class PersonaValidator(Validator[Persona]):
         if not isinstance(candidate, Persona):
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                PersonaValidationException(
+                PersonaValidatorException(
                     cls_mthd=method,
-                    op=PersonaValidationException.OP,
-                    msg=PersonaValidationException.MSG,
-                    err_code=PersonaValidationException.ERR_CODE,
-                    mthd_rslt_type=PersonaValidationException.MTHD_RSLT,
+                    op=PersonaValidatorException.OP,
+                    msg=PersonaValidatorException.MSG,
+                    err_code=PersonaValidatorException.ERR_CODE,
+                    mthd_rslt_type=PersonaValidatorException.MTHD_RSLT,
                     ex=TypeError(f"{method} Expected Persona, got {type(candidate).__name__} instead.")
                 )
             )

@@ -12,7 +12,7 @@ from typing import Any, List, cast
 
 from geometry.square import SquareValidator
 from system import LoggingLevelRouter, ValidationResult, Validator
-from math.span import SquareRay, SquareRayMembersNullException, SquareRayNullException, SquareRayValidationException
+from math.span import SquareRay, SquareRayMembersNullException, SquareRayNullException, SquareRayValidatorException
 
 
 class SquareRayValidator(Validator[SquareRay]):
@@ -54,7 +54,7 @@ class SquareRayValidator(Validator[SquareRay]):
         Raises:
             TypeError
             SquareRayNullException
-            SquareRayValidationException
+            SquareRayValidatorException
         """
         method = f"{cls.__class__.__name__}.validate"
         
@@ -62,12 +62,12 @@ class SquareRayValidator(Validator[SquareRay]):
         if candidate is None:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                SquareRayValidationException(
+                SquareRayValidatorException(
                     cls_mthd=method,
-                    op=SquareRayValidationException.OP,
-                    msg=SquareRayValidationException.MSG,
-                    err_code=SquareRayValidationException.ERR_CODE,
-                    mthd_rslt_type=SquareRayValidationException.MTHD_RSLT,
+                    op=SquareRayValidatorException.OP,
+                    msg=SquareRayValidatorException.MSG,
+                    err_code=SquareRayValidatorException.ERR_CODE,
+                    mthd_rslt_type=SquareRayValidatorException.MTHD_RSLT,
                     ex=SquareRayNullException(
                         var="rank",
                         val="None",
@@ -80,12 +80,12 @@ class SquareRayValidator(Validator[SquareRay]):
         if not isinstance(candidate, SquareRay):
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                SquareRayValidationException(
+                SquareRayValidatorException(
                     cls_mthd=method,
-                    op=SquareRayValidationException.OP,
-                    msg=SquareRayValidationException.MSG,
-                    err_code=SquareRayValidationException.ERR_CODE,
-                    mthd_rslt_type=SquareRayValidationException.MTHD_RSLT,
+                    op=SquareRayValidatorException.OP,
+                    msg=SquareRayValidatorException.MSG,
+                    err_code=SquareRayValidatorException.ERR_CODE,
+                    mthd_rslt_type=SquareRayValidatorException.MTHD_RSLT,
                     ex=TypeError(f"{method} Expected SquareRay, got {type(candidate).__name__} instead.")
                 )
             )
@@ -97,12 +97,12 @@ class SquareRayValidator(Validator[SquareRay]):
         if origin_validation_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                SquareRayValidationException(
+                SquareRayValidatorException(
                     cls_mthd=method,
-                    op=SquareRayValidationException.OP,
-                    msg=SquareRayValidationException.MSG,
-                    err_code=SquareRayValidationException.ERR_CODE,
-                    mthd_rslt_type=SquareRayValidationException.MTHD_RSLT,
+                    op=SquareRayValidatorException.OP,
+                    msg=SquareRayValidatorException.MSG,
+                    err_code=SquareRayValidatorException.ERR_CODE,
+                    mthd_rslt_type=SquareRayValidatorException.MTHD_RSLT,
                     ex=origin_validation_result.exception
                 )
             )
@@ -110,17 +110,17 @@ class SquareRayValidator(Validator[SquareRay]):
         if square_ray.members is None:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                SquareRayValidationException(
+                SquareRayValidatorException(
                     cls_mthd=method,
-                    op=SquareRayValidationException.OP,
-                    msg=SquareRayValidationException.MSG,
-                    err_code=SquareRayValidationException.ERR_CODE,
-                    mthd_rslt_type=SquareRayValidationException.MTHD_RSLT,
+                    op=SquareRayValidatorException.OP,
+                    msg=SquareRayValidatorException.MSG,
+                    err_code=SquareRayValidatorException.ERR_CODE,
+                    mthd_rslt_type=SquareRayValidatorException.MTHD_RSLT,
                     ex=SquareRayMembersNullException(
                         var="ray.members",
                         val="None",
-                        msg=SquareRayValidationException.MSG,
-                        err_code=SquareRayValidationException.ERR_CODE,
+                        msg=SquareRayValidatorException.MSG,
+                        err_code=SquareRayValidatorException.ERR_CODE,
                 
                     )
                 )
@@ -130,17 +130,17 @@ class SquareRayValidator(Validator[SquareRay]):
             # Send the exception chain on failure.
             wrong_type = type(square_ray.members).__name__
             return ValidationResult.failure(
-                SquareRayValidationException(
+                SquareRayValidatorException(
                     cls_mthd=method,
-                    op=SquareRayValidationException.OP,
-                    msg=SquareRayValidationException.MSG,
-                    err_code=SquareRayValidationException.ERR_CODE,
-                    mthd_rslt_type=SquareRayValidationException.MTHD_RSLT,
+                    op=SquareRayValidatorException.OP,
+                    msg=SquareRayValidatorException.MSG,
+                    err_code=SquareRayValidatorException.ERR_CODE,
+                    mthd_rslt_type=SquareRayValidatorException.MTHD_RSLT,
                     ex=SquareRayMembersNullException(
                         var="type(ray.members)",
                         val=wrong_type,
-                        msg=SquareRayValidationException.MSG,
-                        err_code=SquareRayValidationException.ERR_CODE,
+                        msg=SquareRayValidatorException.MSG,
+                        err_code=SquareRayValidatorException.ERR_CODE,
                         ex=TypeError(
                             f"{method} Expected List[Square] for ray, got {wrong_type} instead."
                         )

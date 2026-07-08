@@ -10,14 +10,14 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import ValidationException
+from err import ValidatorException
 
 __all__ = [
     # ======================# VECTOR_OPERAND_VALIDATION_EXCEPTION #======================#
-    "VectorOperandValidationException",
+    "VectorOperandValidatorException",
 ]
 # ======================# VECTOR_OPERAND_VALIDATION_EXCEPTION #======================#
-class VectorOperandValidationException(ValidationException):
+class VectorOperandValidatorException(ValidatorException):
     """
     Role:
         -   Error Tracing
@@ -38,7 +38,7 @@ class VectorOperandValidationException(ValidationException):
     Provides:
 
     Super Class:
-        ValidationException
+        ValidatorException
     """
     MSG = "VectorOperand validation failed."
     ERR_CODE = "VECTOR_OPERAND_VALIDATION_EXCEPTION"

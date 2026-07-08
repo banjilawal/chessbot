@@ -36,7 +36,7 @@ class VisitorSearchContextValidator(Validator[VisitorSearchContext]):
     @LoggingLevelRouter.monitor
     def validate(cls, candidate: Any) -> ValidationResult[VisitorSearchContext]:
         """"""
-        method = "VisitorSearchContextValidator.validate"
+        method = "VisitorSearchContextValidator.execute"
         
         try:
             if candidate is None:

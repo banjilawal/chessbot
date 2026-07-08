@@ -55,9 +55,9 @@ RETURNS:
 RAISES:
   AttackEventBuilderException: Wraps any underlying validate failures that occur during the construction exception.
   This includes:
-    * `IdValidationException`: if `attackEvent_id` fails validate checks
+    * `IdValidatorException`: if `attackEvent_id` fails validate checks
     * `InvalidNameException`: if `visitor_name` fails validate checks
-    * `RankValidationException`: if `bounds` fails validate checks
+    * `RankValidatorException`: if `bounds` fails validate checks
     * `InvalidTeamException`: if `team_name` fails validate checks
     * `InvalidTeamAssignmentException`: If `attackEvent.team_name` is different from `team_name` parameter
     * `FullRankQuotaException`: If the `team_name` has no empty slots for the `attackEvent.bounds`
@@ -174,14 +174,14 @@ Example:
 #       `rollback_exception` (`Exception`) - An exception detailing which naming rule was broken.
 #
 #   Raises:
-#   `IdValidationException`: Wraps any specification violations including:
+#   `IdValidatorException`: Wraps any specification violations including:
 #       * `TypeError`: if rank is not an `int`
 #       * `IdNullException`: if rank is validation
 #       * `NegativeIdException`: if rank is negative `
 #   """
 #   method = "AttackTransaction.execute"
 #
-#   coord_stack_validator = TransferEventValidator.validate(travel)
+#   coord_stack_validator = TransferEventValidator.execute(travel)
 #   if not coord_stack_validator.is_success():
 #     return TransactionResult(travel, coord_stack_validator.rollback_exception)
 #
@@ -307,7 +307,7 @@ Example:
 #
 #
 #
-#   attack_validation = AttackValidator.validate(
+#   attack_validation = AttackValidator.execute(
 #     CaptureContext(owner=travel.traveler, enemy=destination_occupant, board=map.board)
 #   )
 #   if not attack_validation.is_success():
@@ -468,7 +468,7 @@ DEPENDENCIES:
 ------------
 Requires base rollback_exception classes and constants from the kernel system:
 From `logic.system`:
-  * Exception: `ChessException`, `ValidationException`, `NullException`,
+  * Exception: `ChessException`, `ValidatorException`, `NullException`,
         `BuilderException`.
 
 CONTAINS:
@@ -543,7 +543,7 @@ See the list of exception in the `__all__` list following (e.g., `VectorExceptio
 #   ERR_CODE = "NULL_EVENT_EXCEPTION"
 #   MSG = "KingCheckEvent cannot be validation"
 #
-# class InvalidAttackEventException(AttackEventException, ValidationException):
+# class InvalidAttackEventException(AttackEventException, ValidatorException):
 #   """Raised by ExchangeValidators if client fails coord_stack_validator."""
 #   ERR_CODE = "ATTACK_EVENT_VALIDATION_EXCEPTION"
 #   MSG = "KingCheckEvent failed validate"

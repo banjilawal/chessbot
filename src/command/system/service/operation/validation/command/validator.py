@@ -12,7 +12,7 @@ from typing import Any, cast
 
 from command import (
     Command, CommandArgsValidator, CommandNameNotFoundException, CommandTable, CommandTypeSupportException,
-    CommandValidationException, NullCommandException
+    CommandValidatorException, NullCommandException
 )
 from system import IdentityService, LoggingLevelRouter, ValidationResult, Validator
 
@@ -45,7 +45,7 @@ class CommandValidator(Validator[Command]):
             ValidationResult[Command]
         Raises:
             TypeError
-            CommandValidationException
+            CommandValidatorException
             CommandTypeSupportException
             CommandNameNotFoundException
         """
@@ -55,13 +55,13 @@ class CommandValidator(Validator[Command]):
         if candidate is None:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                CommandValidationException(
+                CommandValidatorException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    op=CommandValidationException.OP,
-                    msg=CommandValidationException.MSG,
-                    err_code=CommandValidationException.ERR_CODE,
-                    mthd_rslt_type=CommandValidationException.MTHD_RSLT,
+                    op=CommandValidatorException.OP,
+                    msg=CommandValidatorException.MSG,
+                    err_code=CommandValidatorException.ERR_CODE,
+                    mthd_rslt_type=CommandValidatorException.MTHD_RSLT,
                     ex=NullCommandException(
                         err_code=NullCommandException.ERR_CODE,
                         msg=NullCommandException.MSG,
@@ -72,12 +72,12 @@ class CommandValidator(Validator[Command]):
         if not isinstance(candidate, Command):
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                CommandValidationException(
+                CommandValidatorException(
                     cls_mthd=method,
-                    op=CommandValidationException.OP,
-                    msg=CommandValidationException.MSG,
-                    err_code=CommandValidationException.ERR_CODE,
-                    mthd_rslt_type=CommandValidationException.MTHD_RSLT,
+                    op=CommandValidatorException.OP,
+                    msg=CommandValidatorException.MSG,
+                    err_code=CommandValidatorException.ERR_CODE,
+                    mthd_rslt_type=CommandValidatorException.MTHD_RSLT,
                     ex=TypeError(
                         f"Expected Command type, got "
                         f"{type(candidate).__name__} instead."
@@ -91,12 +91,12 @@ class CommandValidator(Validator[Command]):
         if not isinstance(command, ciphers.command_types):
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                CommandValidationException(
+                CommandValidatorException(
                     cls_mthd=method,
-                    op=CommandValidationException.OP,
-                    msg=CommandValidationException.MSG,
-                    err_code=CommandValidationException.ERR_CODE,
-                    mthd_rslt_type=CommandValidationException.MTHD_RSLT,
+                    op=CommandValidatorException.OP,
+                    msg=CommandValidatorException.MSG,
+                    err_code=CommandValidatorException.ERR_CODE,
+                    mthd_rslt_type=CommandValidatorException.MTHD_RSLT,
                     ex=CommandTypeSupportException(
                         var=command.name,
                         val=command,
@@ -113,12 +113,12 @@ class CommandValidator(Validator[Command]):
         if identity_validation_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                CommandValidationException(
+                CommandValidatorException(
                     cls_mthd=method,
-                    op=CommandValidationException.OP,
-                    msg=CommandValidationException.MSG,
-                    err_code=CommandValidationException.ERR_CODE,
-                    mthd_rslt_type=CommandValidationException.MTHD_RSLT,
+                    op=CommandValidatorException.OP,
+                    msg=CommandValidatorException.MSG,
+                    err_code=CommandValidatorException.ERR_CODE,
+                    mthd_rslt_type=CommandValidatorException.MTHD_RSLT,
                     ex=identity_validation_result.exception
                 )
             )
@@ -126,12 +126,12 @@ class CommandValidator(Validator[Command]):
         if command.name not in ciphers.command_names:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                CommandValidationException(
+                CommandValidatorException(
                     cls_mthd=method,
-                    op=CommandValidationException.OP,
-                    msg=CommandValidationException.MSG,
-                    err_code=CommandValidationException.ERR_CODE,
-                    mthd_rslt_type=CommandValidationException.MTHD_RSLT,
+                    op=CommandValidatorException.OP,
+                    msg=CommandValidatorException.MSG,
+                    err_code=CommandValidatorException.ERR_CODE,
+                    mthd_rslt_type=CommandValidatorException.MTHD_RSLT,
                     ex=CommandNameNotFoundException(
                         var=command.name,
                         val=command,
@@ -141,19 +141,19 @@ class CommandValidator(Validator[Command]):
                 )
             )
         # Handle the case that, the command's arguments are not correct.
-        arguments_validation_results = args_validator.validate(
+        arguments_validation_results = args_validator.execute(
             command=command,
             signature=ciphers.entries[command],
         )
         if arguments_validation_results.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                CommandValidationException(
+                CommandValidatorException(
                     cls_mthd=method,
-                    op=CommandValidationException.OP,
-                    msg=CommandValidationException.MSG,
-                    err_code=CommandValidationException.ERR_CODE,
-                    mthd_rslt_type=CommandValidationException.MTHD_RSLT,
+                    op=CommandValidatorException.OP,
+                    msg=CommandValidatorException.MSG,
+                    err_code=CommandValidatorException.ERR_CODE,
+                    mthd_rslt_type=CommandValidatorException.MTHD_RSLT,
                     ex=arguments_validation_results.exception
                 )
             )

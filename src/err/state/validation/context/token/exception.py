@@ -14,14 +14,14 @@ from typing import Any, Optional
 
 __all__ = [
     # ======================# TOKEN_CONTEXT_VALIDATION_EXCEPTION #======================#
-    "TokenContextValidationException",
+    "TokenContextValidatorException",
 ]
 
-from err import ContextValidationException
+from err import ContextValidatorException
 
 
 # ======================# TOKEN_CONTEXT_VALIDATION_EXCEPTION #======================#
-class TokenContextValidationException(ContextValidationException):
+class TokenContextValidatorException(ContextValidatorException):
     """
     Role:
         -   Error Tracing
@@ -42,7 +42,7 @@ class TokenContextValidationException(ContextValidationException):
     Provides:
 
     Super Class:
-        ContextValidationException
+        ContextValidatorException
     """
     MSG = "No validation logic for TokenContext attribute"
     ERR_CODE = "TOKEN_CONTEXT_VALIDATION_EXCEPTION"

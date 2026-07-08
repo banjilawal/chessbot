@@ -13,7 +13,7 @@ from typing import Any, cast
 
 from system import LoggingLevelRouter, ValidationResult, Validator
 from model.catalog import (
-    SchemaQuery, SchemaQueryIntegrityWorkers, SchemaQueryNullException, SchemaQueryValidationException
+    SchemaQuery, SchemaQueryIntegrityWorkers, SchemaQueryNullException, SchemaQueryValidatorException
 )
 
 
@@ -63,7 +63,7 @@ class SchemaQueryValidator(Validator[SchemaQuery]):
         Raises:
             TypeError
             SchemaStackNullException
-            SchemaQueryValidationException
+            SchemaQueryValidatorException
             SchemaQueryStackEmptyException
         """
         method = f"{cls.__name__}._validate"
@@ -72,13 +72,13 @@ class SchemaQueryValidator(Validator[SchemaQuery]):
         if candidate is None:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                SchemaQueryValidationException(
+                SchemaQueryValidatorException(
                     cls_mthd=method,
                     cls_name=method.__class__.__name__,
-                    op=SchemaQueryValidationException.OP,
-                    msg=SchemaQueryValidationException.MSG,
-                    err_code=SchemaQueryValidationException.ERR_CODE,
-                    mthd_rslt_type=SchemaQueryValidationException.MTHD_RSLT,
+                    op=SchemaQueryValidatorException.OP,
+                    msg=SchemaQueryValidatorException.MSG,
+                    err_code=SchemaQueryValidatorException.ERR_CODE,
+                    mthd_rslt_type=SchemaQueryValidatorException.MTHD_RSLT,
                     ex=SchemaQueryNullException(
                         SchemaQueryNullException.MSG,
                         SchemaQueryNullException.ERR_CODE,
@@ -89,13 +89,13 @@ class SchemaQueryValidator(Validator[SchemaQuery]):
         if not isinstance(candidate, SchemaQuery):
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                SchemaQueryValidationException(
+                SchemaQueryValidatorException(
                     cls_mthd=method,
                     cls_name=method.__class__.__name__,
-                    op=SchemaQueryValidationException.OP,
-                    msg=SchemaQueryValidationException.MSG,
-                    err_code=SchemaQueryValidationException.ERR_CODE,
-                    mthd_rslt_type=SchemaQueryValidationException.MTHD_RSLT,
+                    op=SchemaQueryValidatorException.OP,
+                    msg=SchemaQueryValidatorException.MSG,
+                    err_code=SchemaQueryValidatorException.ERR_CODE,
+                    mthd_rslt_type=SchemaQueryValidatorException.MTHD_RSLT,
                     ex=TypeError(
                         f"Expected SchemaQuery, got {type(candidate).__name__} instead."
                     ),
@@ -109,13 +109,13 @@ class SchemaQueryValidator(Validator[SchemaQuery]):
         if context_validation_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                SchemaQueryValidationException(
+                SchemaQueryValidatorException(
                     cls_mthd=method,
                     cls_name=method.__class__.__name__,
-                    op=SchemaQueryValidationException.OP,
-                    msg=SchemaQueryValidationException.MSG,
-                    err_code=SchemaQueryValidationException.ERR_CODE,
-                    mthd_rslt_type=SchemaQueryValidationException.MTHD_RSLT,
+                    op=SchemaQueryValidatorException.OP,
+                    msg=SchemaQueryValidatorException.MSG,
+                    err_code=SchemaQueryValidatorException.ERR_CODE,
+                    mthd_rslt_type=SchemaQueryValidatorException.MTHD_RSLT,
                     ex=context_validation_result.exception,
                 )
             )
@@ -124,13 +124,13 @@ class SchemaQueryValidator(Validator[SchemaQuery]):
         if schema_validation_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                SchemaQueryValidationException(
+                SchemaQueryValidatorException(
                     cls_mthd=method,
                     cls_name=method.__class__.__name__,
-                    op=SchemaQueryValidationException.OP,
-                    msg=SchemaQueryValidationException.MSG,
-                    err_code=SchemaQueryValidationException.ERR_CODE,
-                    mthd_rslt_type=SchemaQueryValidationException.MTHD_RSLT,
+                    op=SchemaQueryValidatorException.OP,
+                    msg=SchemaQueryValidatorException.MSG,
+                    err_code=SchemaQueryValidatorException.ERR_CODE,
+                    mthd_rslt_type=SchemaQueryValidatorException.MTHD_RSLT,
                     ex=schema_validation_result.exception,
                 )
             )

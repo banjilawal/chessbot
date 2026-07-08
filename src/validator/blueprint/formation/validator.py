@@ -58,7 +58,7 @@ class FormationBlueprintValidator(BlueprintValidator[FormationKey]):
             *   NNullFormationKeyException
             *   ZeroFormationKeysException
             *   ArenaFormationKeysException
-            *   FormationKeyValidationException
+            *   FormationKeyValidatorException
         """
         method = "FormationBlueprint.validate"
         
@@ -66,8 +66,8 @@ class FormationBlueprintValidator(BlueprintValidator[FormationKey]):
         if candidate is None:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                FormationKeyValidationException(
-                    msg=f"{method}: {FormationKeyValidationException.ERR_CODE}",
+                FormationKeyValidatorException(
+                    msg=f"{method}: {FormationKeyValidatorException.ERR_CODE}",
                     ex=NullFormationKeyException(f"{method}: {NullFormationKeyException.MSG}")
                 )
             )
@@ -75,8 +75,8 @@ class FormationBlueprintValidator(BlueprintValidator[FormationKey]):
         if not isinstance(candidate, FormationKey):
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                FormationKeyValidationException(
-                    msg=f"{method}: {FormationKeyValidationException.ERR_CODE}",
+                FormationKeyValidatorException(
+                    msg=f"{method}: {FormationKeyValidatorException.ERR_CODE}",
                     ex=TypeError(
                         f"{method}: Expected FormationKey, got {type(candidate).__designation__} instead."
                     )
@@ -90,8 +90,8 @@ class FormationBlueprintValidator(BlueprintValidator[FormationKey]):
         if len(super_key.to_dict()) == 0:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                FormationKeyValidationException(
-                    msg=f"{method}: {FormationKeyValidationException.ERR_CODE}",
+                FormationKeyValidatorException(
+                    msg=f"{method}: {FormationKeyValidatorException.ERR_CODE}",
                     ex=ZeroFormationKeysException(f"{method}: {ZeroFormationKeysException.MSG}")
                 )
             )
@@ -99,8 +99,8 @@ class FormationBlueprintValidator(BlueprintValidator[FormationKey]):
         if len(super_key.to_dict()) > 1:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                FormationKeyValidationException(
-                    msg=f"{method}: {FormationKeyValidationException.ERR_CODE}",
+                FormationKeyValidatorException(
+                    msg=f"{method}: {FormationKeyValidatorException.ERR_CODE}",
                     ex=ArenaFormationKeysException(
                         f"{method}: {ArenaFormationKeysException.MSG}"
                     )
@@ -115,8 +115,8 @@ class FormationBlueprintValidator(BlueprintValidator[FormationKey]):
             if validator.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
-                    FormationKeyValidationException(
-                        msg=f"{method}: {FormationKeyValidationException.ERR_CODE}",
+                    FormationKeyValidatorException(
+                        msg=f"{method}: {FormationKeyValidatorException.ERR_CODE}",
                         ex=validator.exception
                     )
                 )
@@ -129,8 +129,8 @@ class FormationBlueprintValidator(BlueprintValidator[FormationKey]):
             if validator.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
-                    FormationKeyValidationException(
-                        msg=f"{method}: {FormationKeyValidationException.ERR_CODE}",
+                    FormationKeyValidatorException(
+                        msg=f"{method}: {FormationKeyValidatorException.ERR_CODE}",
                         ex=validator.exception
                     )
                 )
@@ -143,8 +143,8 @@ class FormationBlueprintValidator(BlueprintValidator[FormationKey]):
             if validator.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
-                    FormationKeyValidationException(
-                        msg=f"{method}: {FormationKeyValidationException.ERR_CODE}",
+                    FormationKeyValidatorException(
+                        msg=f"{method}: {FormationKeyValidatorException.ERR_CODE}",
                         ex=validator.exception
                     )
                 )
@@ -156,8 +156,8 @@ class FormationBlueprintValidator(BlueprintValidator[FormationKey]):
             validation = color_validator.build(candidate=super_key.color)
             if validator.is_failure:
                 return ValidationResult.failure(
-                    FormationKeyValidationException(
-                        msg=f"{method}: {FormationKeyValidationException.ERR_CODE}",
+                    FormationKeyValidatorException(
+                        msg=f"{method}: {FormationKeyValidatorException.ERR_CODE}",
                         ex=validator.exception
                     )
                 )
@@ -169,8 +169,8 @@ class FormationBlueprintValidator(BlueprintValidator[FormationKey]):
             validation = persona_service.run.build(candidate=super_key.persona)
             if validator.is_failure:
                 return ValidationResult.failure(
-                    FormationKeyValidationException(
-                        msg=f"{method}: {FormationKeyValidationException.ERR_CODE}",
+                    FormationKeyValidatorException(
+                        msg=f"{method}: {FormationKeyValidatorException.ERR_CODE}",
                         ex=validator.exception
                     )
                 )
@@ -179,8 +179,8 @@ class FormationBlueprintValidator(BlueprintValidator[FormationKey]):
         
         # The default path returns failure
         return ValidationResult.failure(
-            FormationKeyValidationException(
-                msg=f"{method}: {FormationKeyValidationException.ERR_CODE}",
+            FormationKeyValidatorException(
+                msg=f"{method}: {FormationKeyValidatorException.ERR_CODE}",
                 ex=FormationKeyValidationRouteException(
                     f"{method}: {FormationKeyValidationRouteException.MSG}"
                 )

@@ -10,15 +10,15 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import ValidationException
+from err import ValidatorException
 
 __all__ = [
     # ======================# SCHEMA_VALIDATION_EXCEPTION #======================#
-    "SchemaValidationException",
+    "SchemaValidatorException",
 ]
 
 # ======================# SCHEMA_VALIDATION_EXCEPTION #======================#
-class SchemaValidationException(ValidationException):
+class SchemaValidatorException(ValidatorException):
     """
     Role:
         -   Error Tracing
@@ -39,7 +39,7 @@ class SchemaValidationException(ValidationException):
     Provides:
 
     Super Class:
-        ValidationException
+        ValidatorException
     """
     MSG = "SchemaValidation check failed"
     ERR_CODE = "SCHEMA_VALIDATION_EXCEPTION"

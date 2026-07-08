@@ -51,14 +51,14 @@ class TravelTransaction(Transaction[TravelEvent]):
   #       `rollback_exception` (`Exception`) - An exception detailing which naming rule was broken.
   #
   #   Raises:
-  #   `IdValidationException`: Wraps any specification violations including:
+  #   `IdValidatorException`: Wraps any specification violations including:
   #       * `TypeError`: if rank is not an `int`
   #       * `IdNullException`: if rank is validation
   #       * `NegativeIdException`: if rank is negative `
   #   """
   #   method = "TravelEventFactory.execute"
   #
-  #   event_validation = TravelEventValidator.validate(travel)
+  #   event_validation = TravelEventValidator.execute(travel)
   #   if not event_validation.is_success():
   #     return TransactionResult(
   #       checkpoint=travel,
@@ -162,7 +162,7 @@ class TravelTransaction(Transaction[TravelEvent]):
   #     )
   #
   #
-  #   attack_validation = AttackValidator.validate(
+  #   attack_validation = AttackValidator.execute(
   #     CaptureContext(owner=travel.traveler, enemy=destination_occupant, board=map.board)
   #   )
   #   if not attack_validation.is_success():

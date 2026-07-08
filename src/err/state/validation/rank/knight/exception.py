@@ -10,15 +10,15 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import RankValidationException
+from err import RankValidatorException
 
 __all__ = [
     # ======================# KNIGHT_VALIDATION_FAILURE #======================#
-    "KnightValidationException",
+    "KnightValidatorException",
 ]
 
 # ======================# KNIGHT_VALIDATION_FAILURE #======================#
-class KnightValidationException(RankValidationException):
+class KnightValidatorException(RankValidatorException):
     """
     Role:
         -   Error Tracing
@@ -39,7 +39,7 @@ class KnightValidationException(RankValidationException):
     Provides:
 
     Super Class:
-        RankValidationException
+        RankValidatorException
     """
     MSG = "Knight validation check failed."
     ERR_CODE = "KNIGHT_VALIDATION_FAILURE"

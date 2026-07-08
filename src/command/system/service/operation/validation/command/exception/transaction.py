@@ -11,14 +11,14 @@ from typing import Optional
 
 __all__ = [
     # ======================# COMMAND_VALIDATION_FAILURE #======================#
-    "CommandValidationException",
+    "CommandValidatorException",
 ]
 
-from system import ValidationException
+from system import ValidatorException
 
 
 # ======================# COMMAND_VALIDATION_FAILURE #======================#
-class CommandValidationException(ValidationException):
+class CommandValidatorException(ValidatorException):
     """
     Role:
         - Worker Method Identification
@@ -39,7 +39,7 @@ class CommandValidationException(ValidationException):
     Provides:
 
     Super:
-        ValidationException
+        ValidatorException
     """
     ERR_CODE = "COMMAND_VALIDATION_FAILURE"
     MSG = "Command validation check failed."

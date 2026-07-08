@@ -64,7 +64,7 @@ class PlayerBlueprintValidator(BlueprintValidator[Player]):
             *   ArenaPlayerBlueprintFlagsException
             *   InvalidPlayerBlueprintException
         """
-        method = "PlayerBlueprintValidator.validate"
+        method = "PlayerBlueprintValidator.execute"
         try:
             # Handle the nonexistence case.
             if candidate is None:

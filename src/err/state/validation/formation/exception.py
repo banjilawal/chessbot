@@ -10,15 +10,15 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import ValidationException
+from err import ValidatorException
 
 __all__ = [
     # ======================# FORMATION_VALIDATION_EXCEPTION #======================#
-    "FormationValidationException",
+    "FormationValidatorException",
 ]
 
 # ======================# FORMATION_VALIDATION_EXCEPTION #======================#
-class FormationValidationException(ValidationException):
+class FormationValidatorException(ValidatorException):
     """
     Role:
         -   Error Tracing
@@ -39,7 +39,7 @@ class FormationValidationException(ValidationException):
     Provides:
 
     Super Class:
-        ValidationException
+        ValidatorException
     """
     MSG = "FormationValidation check failed"
     ERR_CODE = "FORMATION_VALIDATION_EXCEPTION"

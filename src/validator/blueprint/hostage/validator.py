@@ -55,17 +55,17 @@ class HostageBlueprintValidator(BlueprintValidator[Hostage]):
             * TypeError
             * NullHostageBlueprintException
             * ZeroHostageBlueprintFlagsException
-            * HostageBlueprintValidationException
+            * HostageBlueprintValidatorException
             * HostageBlueprintValidationRouteException
         """
-        method = "HostageBlueprintValidator.validate"
+        method = "HostageBlueprintValidator.execute"
         
         # Handle the nonexistence case.
         if candidate is None:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                HostageBlueprintValidationException(
-                    msg=f"{method}: {HostageBlueprintValidationException.MSG}",
+                HostageBlueprintValidatorException(
+                    msg=f"{method}: {HostageBlueprintValidatorException.MSG}",
                     ex=NullHostageBlueprintException(f"{method}: {NullHostageBlueprintException.MSG}")
                 )
             )
@@ -73,8 +73,8 @@ class HostageBlueprintValidator(BlueprintValidator[Hostage]):
         if not isinstance(candidate, HostageBlueprint):
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                HostageBlueprintValidationException(
-                    msg=f"{method}: {HostageBlueprintValidationException.MSG}",
+                HostageBlueprintValidatorException(
+                    msg=f"{method}: {HostageBlueprintValidatorException.MSG}",
                     ex=TypeError(f"{method}: Expected a HostageBlueprint, got {type(candidate).__name__} instead.")
                 )
             )
@@ -86,8 +86,8 @@ class HostageBlueprintValidator(BlueprintValidator[Hostage]):
         if flag_count == 0:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                HostageBlueprintValidationException(
-                    msg=f"{method}: {HostageBlueprintValidationException.MSG}",
+                HostageBlueprintValidatorException(
+                    msg=f"{method}: {HostageBlueprintValidatorException.MSG}",
                     ex=ZeroHostageBlueprintFlagsException(
                         f"{method}: {ZeroHostageBlueprintFlagsException.MSG}"
                     )
@@ -97,8 +97,8 @@ class HostageBlueprintValidator(BlueprintValidator[Hostage]):
         if flag_count > 1:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                HostageBlueprintValidationException(
-                    msg=f"{method}: {HostageBlueprintValidationException.MSG}",
+                HostageBlueprintValidatorException(
+                    msg=f"{method}: {HostageBlueprintValidatorException.MSG}",
                     ex=ArenaHostageBlueprintFlagsException(
                         f"{method}: {ArenaHostageBlueprintFlagsException.MSG}"
                     )
@@ -112,8 +112,8 @@ class HostageBlueprintValidator(BlueprintValidator[Hostage]):
             if validator.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
-                    HostageBlueprintValidationException(
-                        msg=f"{method}: {HostageBlueprintValidationException.MSG}",
+                    HostageBlueprintValidatorException(
+                        msg=f"{method}: {HostageBlueprintValidatorException.MSG}",
                         ex=validator.exception
                     )
                 )
@@ -126,8 +126,8 @@ class HostageBlueprintValidator(BlueprintValidator[Hostage]):
             if validator.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
-                    HostageBlueprintValidationException(
-                        msg=f"{method}: {HostageBlueprintValidationException.MSG}",
+                    HostageBlueprintValidatorException(
+                        msg=f"{method}: {HostageBlueprintValidatorException.MSG}",
                         ex=validator.exception
                     )
                 )
@@ -140,8 +140,8 @@ class HostageBlueprintValidator(BlueprintValidator[Hostage]):
             if validator.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
-                    HostageBlueprintValidationException(
-                        msg=f"{method}: {HostageBlueprintValidationException.MSG}",
+                    HostageBlueprintValidatorException(
+                        msg=f"{method}: {HostageBlueprintValidatorException.MSG}",
                         ex=validator.exception
                     )
                 )
@@ -154,8 +154,8 @@ class HostageBlueprintValidator(BlueprintValidator[Hostage]):
             if validator.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
-                    HostageBlueprintValidationException(
-                        msg=f"{method}: {HostageBlueprintValidationException.MSG}",
+                    HostageBlueprintValidatorException(
+                        msg=f"{method}: {HostageBlueprintValidatorException.MSG}",
                         ex=validator.exception
                     )
                 )
@@ -164,8 +164,8 @@ class HostageBlueprintValidator(BlueprintValidator[Hostage]):
         
         # Return the exception chain if there was no validation route for the blueprint.
         return ValidationResult.failure(
-            HostageBlueprintValidationException(
-                msg=f"{method}: {HostageBlueprintValidationException.MSG}",
+            HostageBlueprintValidatorException(
+                msg=f"{method}: {HostageBlueprintValidatorException.MSG}",
                 ex=HostageBlueprintValidationRouteException(
                     f"{method}: {HostageBlueprintValidationRouteException.MSG}"
                 )

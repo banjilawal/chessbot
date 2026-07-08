@@ -15,7 +15,7 @@ from result import ValidationResult
 from util import LoggingLevelRouter
 from validator import Validator, PrimingValidator
 from err import (
-    BlueprintNullException, BlueprintValidationException, ExcessBlueprintFlagsException, ZeroBlueprintFlagsException
+    BlueprintNullException, BlueprintValidatorException, ExcessBlueprintFlagsException, ZeroBlueprintFlagsException
 )
 
 
@@ -72,7 +72,7 @@ class BlueprintPrimingValidator(Validator[Blueprint]):
         Returns:
             ValidationResult[]
         Raises:
-            BlueprintValidationException
+            BlueprintValidatorException
             ZeroBlueprintFlagsException
             ExcessBlueprintFlagsException
         """
@@ -85,7 +85,7 @@ class BlueprintPrimingValidator(Validator[Blueprint]):
             priming_validator = PrimingValidator()
         
         # Handle the case that, the validator is not primed.
-        validator_priming_result = priming_validator.validate(
+        validator_priming_result = priming_validator.execute(
             candidate=candidate,
             target_model=blueprint_model,
             null_exception=blueprint_null_exception,
@@ -93,11 +93,11 @@ class BlueprintPrimingValidator(Validator[Blueprint]):
         if validator_priming_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                BlueprintValidationException(
+                BlueprintValidatorException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    msg=BlueprintValidationException.MSG,
-                    err_code=BlueprintValidationException.ERR_CODE,
+                    msg=BlueprintValidatorException.MSG,
+                    err_code=BlueprintValidatorException.ERR_CODE,
                     ex=validator_priming_result.exception,
                 )
             )
@@ -109,11 +109,11 @@ class BlueprintPrimingValidator(Validator[Blueprint]):
         if flag_count == 0:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                BlueprintValidationException(
+                BlueprintValidatorException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    msg=BlueprintValidationException.MSG,
-                    err_code=BlueprintValidationException.ERR_CODE,
+                    msg=BlueprintValidatorException.MSG,
+                    err_code=BlueprintValidatorException.ERR_CODE,
                     ex=ZeroBlueprintFlagsException(
                         msg=f"{blueprint_model.__class__.__name__} does not have any flags enabled.",
                         err_code=ZeroBlueprintFlagsException.ERR_CODE,
@@ -125,11 +125,11 @@ class BlueprintPrimingValidator(Validator[Blueprint]):
         if flag_count > 1:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                BlueprintValidationException(
+                BlueprintValidatorException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    msg=BlueprintValidationException.MSG,
-                    err_code=BlueprintValidationException.ERR_CODE,
+                    msg=BlueprintValidatorException.MSG,
+                    err_code=BlueprintValidatorException.ERR_CODE,
                     ex=ExcessBlueprintFlagsException(
                         msg=f"{blueprint_model.__class__.__name__} has more than one flag enabled.",
                         err_code=ExcessBlueprintFlagsException.ERR_CODE,

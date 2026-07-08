@@ -7,7 +7,7 @@ Created: 2025-10-03
 version: 1.0.0
 """
 
-from system import GameColorException, ValidationException
+from system import GameColorException, ValidatorException
 
 __all__ = [
 #======================# GAME_COLOR_VALIDATION EXCEPTION #======================#
@@ -15,7 +15,7 @@ __all__ = [
 ]
 
 #======================# GAME_COLOR_VALIDATION EXCEPTION #======================#
-class InvalidGameColorException(GameColorException, ValidationException):
+class InvalidGameColorException(GameColorException, ValidatorException):
     """
     Role:Exception Work
 
@@ -25,7 +25,7 @@ class InvalidGameColorException(GameColorException, ValidationException):
 
     Super Class:
         *   GameColorException
-        *   ValidationException
+        *   ValidatorException
 
     Provides:
 

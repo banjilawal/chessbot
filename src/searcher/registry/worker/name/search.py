@@ -79,7 +79,7 @@ class WorkerRegistryNameSearch(Operation):
             key_name_validator = RegistryEntryNameValidator()
         
         # Handle the case that, one of keys is not a valid String.
-        search_key_validation_result = key_name_validator.validate(
+        search_key_validation_result = key_name_validator.execute(
             candidates=[domain, operation_name],
         )
         if search_key_validation_result.is_failure:

@@ -98,7 +98,7 @@ class PlayerStackService(StackService[Player]):
     # def push_item(self, item: Player) -> InsertionResult[Player]:
     #     method = "PlayerStackService.push"
     #     try:
-    #         validation = self.data.item_validator.validate(item)
+    #         validation = self.data.item_validator.execute(item)
     #         if validation.is_failure():
     #             return InsertionResult.failure(validation.exception)
     #         self.bag.append(item)

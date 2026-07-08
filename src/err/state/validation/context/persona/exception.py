@@ -14,14 +14,14 @@ from typing import Any, Optional
 
 __all__ = [
     # ======================# PERSONA_CONTEXT_VALIDATION_EXCEPTION #======================#
-    "PersonaContextValidationException",
+    "PersonaContextValidatorException",
 ]
 
-from err import ContextValidationException
+from err import ContextValidatorException
 
 
 # ======================# PERSONA_CONTEXT_VALIDATION_EXCEPTION #======================#
-class PersonaContextValidationException(ContextValidationException):
+class PersonaContextValidatorException(ContextValidatorException):
     """
     Role:
         -   Error Tracing
@@ -42,7 +42,7 @@ class PersonaContextValidationException(ContextValidationException):
     Provides:
 
     Super Class:
-        ContextValidationException
+        ContextValidatorException
     """
     MSG = "No validation logic for PersonaContext attribute"
     ERR_CODE = "PERSONA_CONTEXT_VALIDATION_EXCEPTION"

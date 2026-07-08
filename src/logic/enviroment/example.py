@@ -2,7 +2,7 @@
 #
 #
 #
-# resource_validation = SquareValidator.validate(resource_candidate)
+# resource_validation = SquareValidator.execute(resource_candidate)
 # if resource_validation.is_failure():
 #   return ValidationResult(rollback_exception=resource_validation.rollback_exception)
 #
@@ -36,7 +36,7 @@
 #       f"{method}: {CheckmatedKingCannotActException.MSG}"
 #     ))
 #
-# environment_validation = Validator.validate(environment_candidate)
+# environment_validation = Validator.execute(environment_candidate)
 # if environment_validation.is_failure():
 #   return ValidationResult(rollback_exception=environment_validation.rollback_exception)
 #
@@ -115,7 +115,7 @@ DEPENDENCIES:
 Requires base rollback_exception classes and constants from the kernel system:
 From `logic.system`:
   * Constants: `NUMBER_OF_ROWS`, `NUMBER_OF_COLUMNS`
-  * Exception: `ChessException`, `ValidationException`, `NullException`,
+  * Exception: `ChessException`, `ValidatorException`, `NullException`,
         `BuilderException`.
 
 CONTAINS:

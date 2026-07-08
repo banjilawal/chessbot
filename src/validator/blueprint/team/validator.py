@@ -15,7 +15,7 @@ from model import Schema, TeamBlueprint
 from result import ValidationResult
 from toolkit import TeamBlueprintToolkit
 from util import LoggingLevelRouter
-from err import SchemaNullException, TeamBlueprintValidationException, TeamBlueprintValidationRouteException
+from err import SchemaNullException, TeamBlueprintValidatorException, TeamBlueprintValidationRouteException
 from validator import BlueprintValidator
 
 
@@ -64,7 +64,7 @@ class TeamBlueprintValidator(BlueprintValidator[Team]):
         Returns:
             ValidationResult[Team]
         Raises:
-            TeamBlueprintValidationException
+            TeamBlueprintValidatorException
             TeamBlueprintValidationRouteException
         """
         method = f"{cls.__name__}.validate"
@@ -83,11 +83,11 @@ class TeamBlueprintValidator(BlueprintValidator[Team]):
         if priming_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                TeamBlueprintValidationException(
+                TeamBlueprintValidatorException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    msg=TeamBlueprintValidationException.MSG,
-                    err_code=TeamBlueprintValidationException.ERR_CODE,
+                    msg=TeamBlueprintValidatorException.MSG,
+                    err_code=TeamBlueprintValidatorException.ERR_CODE,
                     ex=priming_result.exception
                 )
             )
@@ -102,11 +102,11 @@ class TeamBlueprintValidator(BlueprintValidator[Team]):
             if validation_result.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
-                    TeamBlueprintValidationException(
+                    TeamBlueprintValidatorException(
                         cls_mthd=method,
                         cls_name=cls.__name__,
-                        msg=TeamBlueprintValidationException.MSG,
-                        err_code=TeamBlueprintValidationException.ERR_CODE,
+                        msg=TeamBlueprintValidatorException.MSG,
+                        err_code=TeamBlueprintValidatorException.ERR_CODE,
                         ex=validation_result.exception
                     )
                 )
@@ -115,17 +115,17 @@ class TeamBlueprintValidator(BlueprintValidator[Team]):
         
         # Certification for the search-by-owner target.
         if blueprint.owner is not None:
-            validation_result = toolkit.team_toolkit.player_validator.run(
+            validation_result = toolkit.team_toolkit.player_validator.execute(
                 candidate=blueprint.owner
             )
             if validation_result.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
-                    TeamBlueprintValidationException(
+                    TeamBlueprintValidatorException(
                         cls_mthd=method,
                         cls_name=cls.__name__,
-                        msg=TeamBlueprintValidationException.MSG,
-                        err_code=TeamBlueprintValidationException.ERR_CODE,
+                        msg=TeamBlueprintValidatorException.MSG,
+                        err_code=TeamBlueprintValidatorException.ERR_CODE,
                         ex=validation_result.exception
                     )
                 )
@@ -134,18 +134,18 @@ class TeamBlueprintValidator(BlueprintValidator[Team]):
         
         # Certification for the search-by-board target.
         if blueprint.board is not None:
-            validation_result = toolkit.team_toolkit.board_validator.run(
+            validation_result = toolkit.team_toolkit.board_validator.execute(
                 candidate=blueprint.board
             )
             if validation_result.is_failure:
                 if validation_result.is_failure:
                     # Send the exception chain on failure.
                     return ValidationResult.failure(
-                        TeamBlueprintValidationException(
+                        TeamBlueprintValidatorException(
                             cls_mthd=method,
                             cls_name=cls.__name__,
-                            msg=TeamBlueprintValidationException.MSG,
-                            err_code=TeamBlueprintValidationException.ERR_CODE,
+                            msg=TeamBlueprintValidatorException.MSG,
+                            err_code=TeamBlueprintValidatorException.ERR_CODE,
                             ex=validation_result.exception
                         )
                     )
@@ -154,7 +154,7 @@ class TeamBlueprintValidator(BlueprintValidator[Team]):
         
         # Certification for the search-by-color target.
         if blueprint.schema is not None:
-            validation_result = toolkit.team_toolkit.priming_validator.run(
+            validation_result = toolkit.team_toolkit.priming_validator.execute(
                 candidate=blueprint.schema,
                 model_type=Schema,
                 null_exception=SchemaNullException()
@@ -162,11 +162,11 @@ class TeamBlueprintValidator(BlueprintValidator[Team]):
             if validation_result.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
-                    TeamBlueprintValidationException(
+                    TeamBlueprintValidatorException(
                         cls_mthd=method,
                         cls_name=cls.__name__,
-                        msg=TeamBlueprintValidationException.MSG,
-                        err_code=TeamBlueprintValidationException.ERR_CODE,
+                        msg=TeamBlueprintValidatorException.MSG,
+                        err_code=TeamBlueprintValidatorException.ERR_CODE,
                         ex=validation_result.exception
                     )
                 )
@@ -175,11 +175,11 @@ class TeamBlueprintValidator(BlueprintValidator[Team]):
         
         # Return the exception chain if there is no validation route for the blueprint.
         return ValidationResult.failure(
-            TeamBlueprintValidationException(
+            TeamBlueprintValidatorException(
                 cls_mthd=method,
                 cls_name=cls.__name__,
-                msg=TeamBlueprintValidationException.MSG,
-                err_code=TeamBlueprintValidationException.ERR_CODE,
+                msg=TeamBlueprintValidatorException.MSG,
+                err_code=TeamBlueprintValidatorException.ERR_CODE,
                 ex=TeamBlueprintValidationRouteException(
                     msg=TeamBlueprintValidationRouteException.MSG,
                     err_code=TeamBlueprintValidationRouteException.ERR_CODE,

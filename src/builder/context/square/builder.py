@@ -175,7 +175,7 @@ class SquareContextBuilder(Builder[SquareContext]):
         
         # Build the state SquareContext if its flag is enabled.
         if token is not None:
-            validation = square_validator.validate_square_state(candidate=state)
+            validation = square_validator.execute_square_state(candidate=state)
             if validation.is_failure:
                 # Send the exception chain on failure.
                 return BuildResult.failure(

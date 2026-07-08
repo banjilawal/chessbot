@@ -11,7 +11,7 @@ from __future__ import annotations
 import sys
 from typing import Any, Dict
 
-from err import IdentityValidationException
+from err import IdentityValidatorException
 from integrity import NameValidator, NumberValidator
 from result import ValidationResult
 from system import IdFactory, LoggingLevelRouter
@@ -85,11 +85,11 @@ class IdentityService:
         if not class_name_validation_result.is_failure:
             # Send the exception chain on failure.
             ValidationResult.failure(
-                IdentityValidationException(
+                IdentityValidatorException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=IdentityValidationException.MSG,
-                    err_code=IdentityValidationException.ERR_CODE,
+                    msg=IdentityValidatorException.MSG,
+                    err_code=IdentityValidatorException.ERR_CODE,
                     ex=class_name_validation_result.exception
                 )
             )
@@ -99,11 +99,11 @@ class IdentityService:
             if not id_validation_result.is_failure:
                 # Send the exception chain on failure.
                 ValidationResult.failure(
-                    IdentityValidationException(
+                    IdentityValidatorException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        msg=IdentityValidationException.MSG,
-                        err_code=IdentityValidationException.ERR_CODE,
+                        msg=IdentityValidatorException.MSG,
+                        err_code=IdentityValidatorException.ERR_CODE,
                         ex=id_validation_result.exception
                     )
                 )
@@ -133,7 +133,7 @@ class IdentityService:
         Returns:
             ValidationResult[Dict[str, Any]]
         Raises:
-            IdentityValidationException
+            IdentityValidatorException
         """
         method = f"{self.__class__.__name__}.validate_identity"
         
@@ -146,11 +146,11 @@ class IdentityService:
         if id_validation_result.is_failure:
             # Send the exception chain on failure.
             ValidationResult.failure(
-                IdentityValidationException(
+                IdentityValidatorException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=IdentityValidationException.MSG,
-                    err_code=IdentityValidationException.ERR_CODE,
+                    msg=IdentityValidatorException.MSG,
+                    err_code=IdentityValidatorException.ERR_CODE,
                     ex=id_validation_result.exception
                 )
             )
@@ -159,11 +159,11 @@ class IdentityService:
         if name_validation_result.is_failure:
             # Send the exception chain on failure.
             ValidationResult.failure(
-                IdentityValidationException(
+                IdentityValidatorException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=IdentityValidationException.MSG,
-                    err_code=IdentityValidationException.ERR_CODE,
+                    msg=IdentityValidatorException.MSG,
+                    err_code=IdentityValidatorException.ERR_CODE,
                     ex=name_validation_result.exception
                 )
             )

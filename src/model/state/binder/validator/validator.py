@@ -15,7 +15,7 @@ from model.catalog import SchemaService
 from system import LoggingLevelRouter, Validator
 from result.result.result import ValidationResult
 from model.state.team import (
-    BlackTeamHasWrongSchemaException, TeamBinder, TeamBinderNullException, TeamBinderValidationException,
+    BlackTeamHasWrongSchemaException, TeamBinder, TeamBinderNullException, TeamBinderValidatorException,
     TeamValidator, WhiteTeamHasWrongSchemaException
 )
 
@@ -49,16 +49,16 @@ class TeamBinderValidator(Validator[TeamBinder]):
             *   TeamBinderNullException
             *   WhiteTeamHasWrongSchemaException
             *   BlackTeamHasWrongSchemaException
-            *   TeamBinderValidationException
+            *   TeamBinderValidatorException
         """
-        method = "TeamBinderValidator.validate"
+        method = "TeamBinderValidator.execute"
         
         # Handle the nonexistence case.
         if candidate is None:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                TeamBinderValidationException(
-                    msg=f"{method}: {TeamBinderValidationException.MSG}",
+                TeamBinderValidatorException(
+                    msg=f"{method}: {TeamBinderValidatorException.MSG}",
                     ex=TeamBinderNullException(f"{method}: {TeamBinderNullException.MSG}")
                 )
             )
@@ -66,8 +66,8 @@ class TeamBinderValidator(Validator[TeamBinder]):
         if not isinstance(candidate, TeamBinder):
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                TeamBinderValidationException(
-                    msg=f"{method}: {TeamBinderValidationException.MSG}",
+                TeamBinderValidatorException(
+                    msg=f"{method}: {TeamBinderValidatorException.MSG}",
                     ex=TypeError(f"{method}: Expected BoardBinder, got {type(candidate).__name__} instead.")
                 )
             )
@@ -79,8 +79,8 @@ class TeamBinderValidator(Validator[TeamBinder]):
         if white_team_validation_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                TeamBinderValidationException(
-                    msg=f"{method}: {TeamBinderValidationException.MSG}",
+                TeamBinderValidatorException(
+                    msg=f"{method}: {TeamBinderValidatorException.MSG}",
                     ex=white_team_validation_result.exception
                 )
             )
@@ -89,8 +89,8 @@ class TeamBinderValidator(Validator[TeamBinder]):
         if black_team_validation_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                TeamBinderValidationException(
-                    msg=f"{method}: {TeamBinderValidationException.MSG}",
+                TeamBinderValidatorException(
+                    msg=f"{method}: {TeamBinderValidatorException.MSG}",
                     ex=black_team_validation_result.exception
                 )
             )
@@ -98,8 +98,8 @@ class TeamBinderValidator(Validator[TeamBinder]):
         if binder.white_team.schema != schema_service.schema.WHITE:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                TeamBinderValidationException(
-                    msg=f"{method}: {TeamBinderValidationException.MSG}",
+                TeamBinderValidatorException(
+                    msg=f"{method}: {TeamBinderValidatorException.MSG}",
                     ex=WhiteTeamHasWrongSchemaException(
                         f"{method}: {WhiteTeamHasWrongSchemaException.MSG}"
                     )
@@ -109,8 +109,8 @@ class TeamBinderValidator(Validator[TeamBinder]):
         if binder.black_team.schema != schema_service.schema.BLACK:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                TeamBinderValidationException(
-                    msg=f"{method}: {TeamBinderValidationException.MSG}",
+                TeamBinderValidatorException(
+                    msg=f"{method}: {TeamBinderValidatorException.MSG}",
                     ex=BlackTeamHasWrongSchemaException(
                         f"{method}: {BlackTeamHasWrongSchemaException.MSG}"
                     )

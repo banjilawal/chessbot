@@ -14,4 +14,4 @@ version: 1.0.0
 # Modules
 from .validator import TeamBinderValidator
 from .null import TeamBinderNullException
-from .work import TeamBinderValidationException
+from .work import TeamBinderValidatorException

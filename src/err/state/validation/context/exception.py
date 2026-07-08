@@ -10,15 +10,15 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import ValidationException
+from err import ValidatorException
 
 __all__ = [
     # ======================# CONTEXT_VALIDATION_EXCEPTION #======================#
-    "ContextValidationException",
+    "ContextValidatorException",
 ]
 
 # ======================# CONTEXT_VALIDATION_EXCEPTION #======================#
-class ContextValidationException(ValidationException):
+class ContextValidatorException(ValidatorException):
     """
     Role:
         -   Error Tracing
@@ -39,7 +39,7 @@ class ContextValidationException(ValidationException):
     Provides:
 
     Super Class:
-        ValidationException
+        ValidatorException
     """
     MSG = "No validation logic for context's attribute"
     ERR_CODE = "CONTEXT_VALIDATION_EXCEPTION"

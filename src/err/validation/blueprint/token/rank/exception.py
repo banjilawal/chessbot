@@ -11,16 +11,16 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import ValidationException
+from err import ValidatorException
 from result import MethodResultType
 
 __all__ = [
     # ======================# RANK_PROCESSOR_FAILURE #======================#
-    "RankProcessorException",
+    "BlueprintRankExtractorException",
 ]
 
 # ======================# RANK_PROCESSOR_FAILURE #======================#
-class RankProcessorException(ValidationException):
+class BlueprintRankExtractorException(ValidatorException):
     """
     Role:
         -   Error Tracing
@@ -41,7 +41,7 @@ class RankProcessorException(ValidationException):
     Provides:
 
     Super Class:
-        ValidationException
+        ValidatorException
     """
     MSG = "RankProcessor encountered an error."
     ERR_CODE = "RANK_PROCESSOR_FAILURE"

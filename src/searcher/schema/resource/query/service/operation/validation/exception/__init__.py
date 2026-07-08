@@ -15,4 +15,4 @@ version: 1.0.0
 from .stack import SchemaStackNullException
 from .candidate import SchemaQueryNullException
 from .empty import SchemaQueryStackEmptyException
-from .transaction import SchemaQueryValidationException
+from .transaction import SchemaQueryValidatorException

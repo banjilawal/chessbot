@@ -11,10 +11,10 @@ from typing import Any, cast
 
 from schema.persona import (
     ArenaPersonaKeysException, NullPersonaKeyException, PersonaKey, ZeroPersonaKeysException,
-    PersonaKeyValidationException, PersonaKeyValidationRouteException
+    PersonaKeyValidatorException, PersonaKeyValidationRouteException
 )
 from system import (
-    IdentityService, LoggingLevelRouter, NumberValidator, ValidationException, ValidationResult
+    IdentityService, LoggingLevelRouter, NumberValidator, ValidatorException, ValidationResult
 )
 
 
@@ -65,7 +65,7 @@ class PersonaBlueprintValidator(BlueprintValidator[PersonaKey]):
             *   NNullPersonaKeyException
             *   ZeroPersonaKeysException
             *   ArenaPersonaKeysException
-            *   PersonaKeyValidationException
+            *   PersonaKeyValidatorException
         """
         method = "POersonaBlueprint.validate"
         
@@ -73,8 +73,8 @@ class PersonaBlueprintValidator(BlueprintValidator[PersonaKey]):
         if candidate is None:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                PersonaKeyValidationException(
-                    msg=f"{method}: {ValidationException.ERR_CODE}",
+                PersonaKeyValidatorException(
+                    msg=f"{method}: {ValidatorException.ERR_CODE}",
                     ex=NullPersonaKeyException(f"{method}: {NullPersonaKeyException.MSG}")
                 )
             )
@@ -82,8 +82,8 @@ class PersonaBlueprintValidator(BlueprintValidator[PersonaKey]):
         if not isinstance(candidate, PersonaKey):
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                PersonaKeyValidationException(
-                    msg=f"{method}: {ValidationException.ERR_CODE}",
+                PersonaKeyValidatorException(
+                    msg=f"{method}: {ValidatorException.ERR_CODE}",
                     ex=TypeError(f"{method}: Expected PersonaBlueprint, got {type(candidate).__designation__} instead.")
                 )
             )
@@ -95,8 +95,8 @@ class PersonaBlueprintValidator(BlueprintValidator[PersonaKey]):
         if len(super_key.to_dict()) == 0:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                PersonaKeyValidationException(
-                    msg=f"{method}: {ValidationException.ERR_CODE}",
+                PersonaKeyValidatorException(
+                    msg=f"{method}: {ValidatorException.ERR_CODE}",
                     ex=ZeroPersonaKeysException(f"{method}: {ZeroPersonaKeysException.MSG}")
                 )
             )
@@ -104,8 +104,8 @@ class PersonaBlueprintValidator(BlueprintValidator[PersonaKey]):
         if len(super_key.to_dict()) > 1:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                PersonaKeyValidationException(
-                    msg=f"{method}: {ValidationException.ERR_CODE}",
+                PersonaKeyValidatorException(
+                    msg=f"{method}: {ValidatorException.ERR_CODE}",
                     ex=ArenaPersonaKeysException(
                         f"{method}: {ArenaPersonaKeysException.MSG}"
                     )
@@ -120,8 +120,8 @@ class PersonaBlueprintValidator(BlueprintValidator[PersonaKey]):
             if validator.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
-                    PersonaKeyValidationException(
-                        msg=f"{method}: {ValidationException.ERR_CODE}",
+                    PersonaKeyValidatorException(
+                        msg=f"{method}: {ValidatorException.ERR_CODE}",
                         ex=validator.exception
                     )
                 )
@@ -134,8 +134,8 @@ class PersonaBlueprintValidator(BlueprintValidator[PersonaKey]):
             if validator.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
-                    PersonaKeyValidationException(
-                        msg=f"{method}: {ValidationException.ERR_CODE}",
+                    PersonaKeyValidatorException(
+                        msg=f"{method}: {ValidatorException.ERR_CODE}",
                         ex=validator.exception
                     )
                 )
@@ -148,8 +148,8 @@ class PersonaBlueprintValidator(BlueprintValidator[PersonaKey]):
             if validator.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
-                    PersonaKeyValidationException(
-                        msg=f"{method}: {ValidationException.ERR_CODE}",
+                    PersonaKeyValidatorException(
+                        msg=f"{method}: {ValidatorException.ERR_CODE}",
                         ex=validator.exception
                     )
                 )
@@ -162,8 +162,8 @@ class PersonaBlueprintValidator(BlueprintValidator[PersonaKey]):
             if validator.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
-                    PersonaKeyValidationException(
-                        msg=f"{method}: {ValidationException.ERR_CODE}",
+                    PersonaKeyValidatorException(
+                        msg=f"{method}: {ValidatorException.ERR_CODE}",
                         ex=validator.exception
                     )
                 )
@@ -172,8 +172,8 @@ class PersonaBlueprintValidator(BlueprintValidator[PersonaKey]):
         
         # The default returns failure.
         return ValidationResult.failure(
-            PersonaKeyValidationException(
-                msg=f"{method}: {ValidationException.ERR_CODE}",
+            PersonaKeyValidatorException(
+                msg=f"{method}: {ValidatorException.ERR_CODE}",
                 ex=PersonaKeyValidationRouteException(
                     f"{method}: {PersonaKeyValidationRouteException.MSG}"
                 )

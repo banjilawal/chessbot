@@ -10,15 +10,15 @@ Created: 2026-02-24
 from __future__ import annotations
 from typing import Optional
 
-from system import ValidationException
+from system import ValidatorException
 
 __all__ = [
     # ======================# ARGUMENTS_VALIDATION_FAILURE #======================#
-    "ArgumentsValidationException",
+    "ArgumentsValidatorException",
 ]
 
 # ======================# ARGUMENTS_VALIDATION_FAILURE #======================#
-class ArgumentsValidationException(ValidationException):
+class ArgumentsValidatorException(ValidatorException):
     """
     Role:Debug Wrapper, Exception Chain Layer 2, Exception Messaging
 
@@ -27,13 +27,13 @@ class ArgumentsValidationException(ValidationException):
         method.
 
     Super Class:
-        *   ValidationException
+        *   ValidatorException
 
     Provides:
 
 
     # INHERITED ATTRIBUTES:
-        *   See ValidationException class for inherited attributes.
+        *   See ValidatorException class for inherited attributes.
 
     Attributes:
         *   err_code (str)
@@ -47,7 +47,7 @@ class ArgumentsValidationException(ValidationException):
     None
 
     # INHERITED METHODS:
-        *   See ValidationException class for inherited methods.
+        *   See ValidatorException class for inherited methods.
     """
     ERR_CODE = "ARGUMENTS_VALIDATION_FAILURE"
     MSG = "Arguments validation test failed."

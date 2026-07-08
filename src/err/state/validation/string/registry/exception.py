@@ -10,15 +10,15 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import ValidationException
+from err import ValidatorException
 
 __all__ = [
     # ======================# REGISTRY_ENTRY_KEY_STRING_VALIDATION_EXCEPTION #======================#
-    "RegistryEntryKeyStringValidationException",
+    "RegistryEntryKeyStringValidatorException",
 ]
 
 # ======================# REGISTRY_ENTRY_KEY_STRING_VALIDATION_EXCEPTION #======================#
-class RegistryEntryKeyStringValidationException(ValidationException):
+class RegistryEntryKeyStringValidatorException(ValidatorException):
     """
     Role:
         -   Error Tracing
@@ -39,7 +39,7 @@ class RegistryEntryKeyStringValidationException(ValidationException):
     Provides:
 
     Super Class:
-        ValidationException
+        ValidatorException
     """
     MSG = "RegistryEntryKey is not a valid string."
     ERR_CODE = "REGISTRY_ENTRY_KEY_STRING_VALIDATION_EXCEPTION"

@@ -12,13 +12,13 @@ from typing import Optional
 
 __all__ = [
     # ======================# SQUARE_RAY_VALIDATION_FAILURE #======================#
-    "SquareRayValidationException",
+    "SquareRayValidatorException",
 ]
 
-from system import ValidationException
+from system import ValidatorException
 
 # ======================# SQUARE_RAY_VALIDATION_FAILURE #======================#
-class SquareRayValidationException(ValidationException):
+class SquareRayValidatorException(ValidatorException):
     """
     Role:Worker Method Identifier, Exception Chain Layer 1, Exception Messaging
 
@@ -26,13 +26,13 @@ class SquareRayValidationException(ValidationException):
     1.  Identify the SquareRayValidator method where the exception failed.
 
     Super Class:
-        *   ValidationException
+        *   ValidatorException
 
     Provides:
 
 
     # INHERITED ATTRIBUTES:
-        *   See ValidationException class for inherited attributes.
+        *   See ValidatorException class for inherited attributes.
 
     Attributes:
         msg: Optional[str]
@@ -45,7 +45,7 @@ class SquareRayValidationException(ValidationException):
     None
 
     # INHERITED METHODS:
-        *   See ValidationException class for inherited methods.
+        *   See ValidatorException class for inherited methods.
     """
     MTHD_RSLT = "ValidationResult"
     ERR_CODE = "SQUARE_RAY_VALIDATION_FAILURE"

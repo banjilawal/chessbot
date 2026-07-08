@@ -12,13 +12,13 @@ from typing import Optional
 
 __all__ = [
     # ======================# ZONE_VALIDATION_FAILURE #======================#
-    "ZoneValidationException",
+    "ZoneValidatorException",
 ]
 
-from system import ValidationException
+from system import ValidatorException
 
 # ======================# ZONE_VALIDATION_FAILURE #======================#
-class ZoneValidationException(ValidationException):
+class ZoneValidatorException(ValidatorException):
     """
     Role:
         -   Worker Method Identification

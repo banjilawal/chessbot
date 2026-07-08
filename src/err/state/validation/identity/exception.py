@@ -10,15 +10,15 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import ValidationException
+from err import ValidatorException
 
 __all__ = [
     # ======================# IDENTITY_VALIDATION_EXCEPTION #======================#
-    "IdentityValidationException",
+    "IdentityValidatorException",
 ]
 
 # ======================# IDENTITY_VALIDATION_EXCEPTION #======================#
-class IdentityValidationException(ValidationException):
+class IdentityValidatorException(ValidatorException):
     """
     Role:
         -   Error Tracing
@@ -39,7 +39,7 @@ class IdentityValidationException(ValidationException):
     Provides:
 
     Super Class:
-        ValidationException
+        ValidatorException
     """
     MSG = "IdentityValidation check failed"
     ERR_CODE = "IDENTITY_VALIDATION_EXCEPTION"

@@ -12,14 +12,14 @@ from typing import Optional
 
 __all__ = [
     # ======================# SCHEMA_QUERY_VALIDATION_FAILURE #======================#
-    "SchemaQueryValidationException",
+    "SchemaQueryValidatorException",
 ]
 
-from system import ValidationException
+from system import ValidatorException
 
 
 # ======================# SCHEMA_QUERY_VALIDATION_FAILURE #======================#
-class SchemaQueryValidationException(ValidationException):
+class SchemaQueryValidatorException(ValidatorException):
     """
     Role:
         -   Worker Method Identification
@@ -40,7 +40,7 @@ class SchemaQueryValidationException(ValidationException):
     Provides:
 
     Super Class:
-        ValidationException
+        ValidatorException
     """
     MSG = "SchemaQuery validation check failed."
     ERR_CODE = "SCHEMA_QUERY_VALIDATION_FAILURE"

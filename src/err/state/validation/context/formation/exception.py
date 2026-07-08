@@ -14,14 +14,14 @@ from typing import Any, Optional
 
 __all__ = [
     # ======================# FORMATION_CONTEXT_VALIDATION_EXCEPTION #======================#
-    "FormationContextValidationException",
+    "FormationContextValidatorException",
 ]
 
-from err import ContextValidationException
+from err import ContextValidatorException
 
 
 # ======================# FORMATION_CONTEXT_VALIDATION_EXCEPTION #======================#
-class FormationContextValidationException(ContextValidationException):
+class FormationContextValidatorException(ContextValidatorException):
     """
     Role:
         -   Error Tracing
@@ -42,7 +42,7 @@ class FormationContextValidationException(ContextValidationException):
     Provides:
 
     Super Class:
-        ContextValidationException
+        ContextValidatorException
     """
     MSG = "No validation logic for FormationContext attribute"
     ERR_CODE = "FORMATION_CONTEXT_VALIDATION_EXCEPTION"

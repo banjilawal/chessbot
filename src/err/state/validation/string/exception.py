@@ -13,14 +13,14 @@ from typing import Any, Optional
 
 __all__ = [
     # ======================# STRING_VALIDATION_EXCEPTION #======================#
-    "StringValidationException",
+    "StringValidatorException",
 ]
 
-from err import ValidationException
+from err import ValidatorException
 
 
 # ======================# STRING_VALIDATION_EXCEPTION #======================#
-class StringValidationException(ValidationException):
+class StringValidatorException(ValidatorException):
     """
     Role:
         -   Error Tracing
@@ -41,7 +41,7 @@ class StringValidationException(ValidationException):
     Provides:
 
     Super Class:
-        ValidationException
+        ValidatorException
     """
     MSG = "StringValidation check failed"
     ERR_CODE = "STRING_VALIDATION_EXCEPTION"

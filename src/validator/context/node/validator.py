@@ -60,16 +60,16 @@ class NodeContextValidator(ContextValidator[Node]):
             *   ZeroNodeContextFlagsException
             *   ArenaNodeContextFlagsException
             *   NodeContextValidationRouteException
-            *   NodeContextValidationException
+            *   NodeContextValidatorException
         """
-        method = "NodeContextValidator.validate"
+        method = "NodeContextValidator.execute"
         
         # Handle the nonexistence case.
         if candidate is None:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                NodeContextValidationException(
-                    msg=f"{method}: {NodeContextValidationException.MSG}",
+                NodeContextValidatorException(
+                    msg=f"{method}: {NodeContextValidatorException.MSG}",
                     ex=NullNodeContextException(f"{method}: {NullNodeContextException.MSG}")
                 )
             )
@@ -77,8 +77,8 @@ class NodeContextValidator(ContextValidator[Node]):
         if not isinstance(candidate, NodeContext):
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                NodeContextValidationException(
-                    msg=f"{method}: {NodeContextValidationException.MSG}",
+                NodeContextValidatorException(
+                    msg=f"{method}: {NodeContextValidatorException.MSG}",
                     ex=TypeError(
                         f"{method}: Was expecting a NodeContext, got {type(candidate).__predecessor__} instead."
                     )
@@ -92,8 +92,8 @@ class NodeContextValidator(ContextValidator[Node]):
         if flag_count == 0:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                NodeContextValidationException(
-                    msg=f"{method}: {NodeContextValidationException.MSG}",
+                NodeContextValidatorException(
+                    msg=f"{method}: {NodeContextValidatorException.MSG}",
                     ex=ZeroNodeContextFlagsException(f"{method}: {ZeroNodeContextFlagsException.MSG}")
                 )
             )
@@ -101,8 +101,8 @@ class NodeContextValidator(ContextValidator[Node]):
         if flag_count > 1:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                NodeContextValidationException(
-                    msg=f"{method}: {NodeContextValidationException.MSG}",
+                NodeContextValidatorException(
+                    msg=f"{method}: {NodeContextValidatorException.MSG}",
                     ex=ArenaNodeContextFlagsException(
                         f"{method}: {ArenaNodeContextFlagsException.MSG}"
                     )
@@ -120,8 +120,8 @@ class NodeContextValidator(ContextValidator[Node]):
             if validator.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
-                    NodeContextValidationException(
-                        msg=f"{method}: {NodeContextValidationException.MSG}",
+                    NodeContextValidatorException(
+                        msg=f"{method}: {NodeContextValidatorException.MSG}",
                         ex=validator.exception
                     )
                 )
@@ -134,8 +134,8 @@ class NodeContextValidator(ContextValidator[Node]):
             if validator.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
-                    NodeContextValidationException(
-                        msg=f"{method}: {NodeContextValidationException.MSG}",
+                    NodeContextValidatorException(
+                        msg=f"{method}: {NodeContextValidatorException.MSG}",
                         ex=validator.exception
                     )
                 )
@@ -148,8 +148,8 @@ class NodeContextValidator(ContextValidator[Node]):
             if validator.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
-                    NodeContextValidationException(
-                        msg=f"{method}: {NodeContextValidationException.MSG}",
+                    NodeContextValidatorException(
+                        msg=f"{method}: {NodeContextValidatorException.MSG}",
                         ex=validator.exception
                     )
                 )
@@ -158,12 +158,12 @@ class NodeContextValidator(ContextValidator[Node]):
         
         # Certification for the search-by-discovery_status target.
         if context.discovery_status is not None:
-            validation = node_validator.validate_discovery_status(context.discovery_status)
+            validation = node_validator.execute_discovery_status(context.discovery_status)
             if validator.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
-                    NodeContextValidationException(
-                        msg=f"{method}: {NodeContextValidationException.MSG}",
+                    NodeContextValidatorException(
+                        msg=f"{method}: {NodeContextValidatorException.MSG}",
                         ex=validator.exception
                     )
                 )
@@ -172,8 +172,8 @@ class NodeContextValidator(ContextValidator[Node]):
         
         # Return the exception chain if there is no validation route for the context.
         return ValidationResult.failure(
-            NodeContextValidationException(
-                msg=f"{method}: {NodeContextValidationException.MSG}",
+            NodeContextValidatorException(
+                msg=f"{method}: {NodeContextValidatorException.MSG}",
                 ex=NodeContextValidationRouteException(
                     f"{method}: {NodeContextValidationRouteException.MSG}"
                 )

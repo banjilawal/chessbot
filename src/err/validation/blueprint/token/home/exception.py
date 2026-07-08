@@ -11,16 +11,16 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import ValidationException
+from err import ValidatorException
 from result import MethodResultType
 
 __all__ = [
     # ======================# HOME_SQUARE_PROCESSOR_FAILURE #======================#
-    "HomeSquareProcessorException",
+    "BlueprintHomeSquareExtractorException",
 ]
 
 # ======================# HOME_SQUARE_PROCESSOR_FAILURE #======================#
-class HomeSquareProcessorException(ValidationException):
+class BlueprintHomeSquareExtractorException(ValidatorException):
     """
     Role:
         -   Error Tracing
@@ -41,7 +41,7 @@ class HomeSquareProcessorException(ValidationException):
     Provides:
 
     Super Class:
-        ValidationException
+        ValidatorException
     """
     MSG = "HomeSquareProcessor encountered an error."
     ERR_CODE = "HOME_SQUARE_PROCESSOR_FAILURE"

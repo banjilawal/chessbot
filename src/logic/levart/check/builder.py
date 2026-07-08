@@ -2,7 +2,7 @@ from enum import Enum
 
 from assurance import ThrowHelper
 from logic.board import BoardSearch
-from system import IdValidator, BuildResult, IdValidationException
+from system import IdValidator, BuildResult, IdValidatorException
 from logic.event import TargetSquareMismatchException, AttackEvent
 from model.state.token import AttackEventBuilderException
 from model.state.token import TravelEventResourceNotFoundException
@@ -68,9 +68,9 @@ class CheckEventBuilder(Enum):
     RAISES:
       AttackEventBuilderException: Wraps any underlying validate failures that occur during the construction exception.
       This includes:
-        * `IdValidationException`: if `attackEvent_id` fails validate checks
+        * `IdValidatorException`: if `attackEvent_id` fails validate checks
         * `InvalidNameException`: if `visitor_name` fails validate checks
-        * `RankValidationException`: if `bounds` fails validate checks
+        * `RankValidatorException`: if `bounds` fails validate checks
         * `InvalidTeamException`: if `team_name` fails validate checks
         * `InvalidTeamAssignmentException`: If `attackEvent.team_name` is different from `team_name` parameter
         * `FullRankQuotaException`: If the `team_name` has no empty slots for the `attackEvent.bounds`
@@ -159,7 +159,7 @@ class CheckEventBuilder(Enum):
       )
 
     except (
-            IdValidationException,
+            IdValidatorException,
             InvalidAttackException,
             PieceCapturingItSelfException,
             TargetSquareMismatchException,

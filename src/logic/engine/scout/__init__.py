@@ -23,7 +23,7 @@ This package exposes kernel classes and all exception from its sub-modules:
 
 # HOW TO IMPORT
 DO NOT reference submodules directly. Import all kernel classes and exception from this `board_validator` package level
-(e.g., `from logic.board_validator import BoardValidationException`). See USAGE EXAMPLES section
+(e.g., `from logic.board_validator import BoardValidatorException`). See USAGE EXAMPLES section
 
 # USAGE EXAMPLES
 ___

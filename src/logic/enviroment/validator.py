@@ -35,7 +35,7 @@ class TurnSceneValidator(Validator[TurnScene]):
     @LoggingLevelRouter.monitor
     def validate(cls, candidate) -> ValidationResult[TurnScene]:
         """"""
-        method = "TurnSceneValidator.validate"
+        method = "TurnSceneValidator.execute"
         
         try:
             if candidate is None:

@@ -10,15 +10,15 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import RankValidationException
+from err import RankValidatorException
 
 __all__ = [
     # ======================# PAWN_VALIDATION_FAILURE #======================#
-    "PawnValidationException",
+    "PawnValidatorException",
 ]
 
 # ======================# PAWN_VALIDATION_FAILURE #======================#
-class PawnValidationException(RankValidationException):
+class PawnValidatorException(RankValidatorException):
     """
     Role:
         -   Error Tracing
@@ -39,7 +39,7 @@ class PawnValidationException(RankValidationException):
     Provides:
 
     Super Class:
-        RankValidationException
+        RankValidatorException
     """
     MSG = "Pawn validation check failed."
     ERR_CODE = "PAWN_VALIDATION_FAILURE"

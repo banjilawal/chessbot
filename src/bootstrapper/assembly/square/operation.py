@@ -152,7 +152,7 @@ class SquareAssemblyPrimer(AssemblyPrimer[Square]):
                 )
             )
         # Handle the case that, the coord does not pass a validation check.
-        coord_validation_result = toolkit.coord_validator.validate(
+        coord_validation_result = toolkit.coord_validator.execute(
             candidate=blueprint.coord
         )
         if coord_validation_result.is_failure:
@@ -183,7 +183,7 @@ class SquareAssemblyPrimer(AssemblyPrimer[Square]):
                     )
                 )
         # Handle the case that, the board is flagged unsafe.
-        board_validation_result = toolkit.board_validator.validate(
+        board_validation_result = toolkit.board_validator.execute(
             candidate=blueprint.board
         )
         if board_validation_result.is_failure:

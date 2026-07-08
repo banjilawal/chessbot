@@ -64,7 +64,7 @@ class PlayerContextValidator(ContextValidator[Player]):
             *   ArenaPlayerContextFlagsException
             *   InvalidPlayerContextException
         """
-        method = "PlayerContextValidator.validate"
+        method = "PlayerContextValidator.execute"
         try:
             # Handle the nonexistence case.
             if candidate is None:

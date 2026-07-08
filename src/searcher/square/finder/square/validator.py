@@ -10,7 +10,7 @@ from __future__ import annotations
 from typing import Any, List, cast
 
 from logic.square import (
-    Square, SquareDataSourceEmptyException, SquareDataSourceNullException, SquareValidationException
+    Square, SquareDataSourceEmptyException, SquareDataSourceNullException, SquareValidatorException
 )
 from system import LoggingLevelRouter, ValidationResult, Validator
 
@@ -66,12 +66,12 @@ class SquareListValidator(Validator[List[Square]]):
         if candidate is None:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                SquareValidationException(
+                SquareValidatorException(
                     cls_mthd=method,
-                    op=SquareValidationException.OP,
-                    msg=SquareValidationException.MSG,
-                    err_code=SquareValidationException.ERR_CODE,
-                    mthd_rslt_type=SquareValidationException.MTHD_RSLT,
+                    op=SquareValidatorException.OP,
+                    msg=SquareValidatorException.MSG,
+                    err_code=SquareValidatorException.ERR_CODE,
+                    mthd_rslt_type=SquareValidatorException.MTHD_RSLT,
                     ex=SquareDataSourceNullException(
                         msg=SquareDataSourceNullException.MSG,
                         err_code=SquareDataSourceNullException.ERR_CODE,
@@ -82,12 +82,12 @@ class SquareListValidator(Validator[List[Square]]):
         if not isinstance(candidate, List):
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                SquareValidationException(
+                SquareValidatorException(
                     cls_mthd=method,
-                    op=SquareValidationException.OP,
-                    msg=SquareValidationException.MSG,
-                    err_code=SquareValidationException.ERR_CODE,
-                    mthd_rslt_type=SquareValidationException.MTHD_RSLT,
+                    op=SquareValidatorException.OP,
+                    msg=SquareValidatorException.MSG,
+                    err_code=SquareValidatorException.ERR_CODE,
+                    mthd_rslt_type=SquareValidatorException.MTHD_RSLT,
                     ex=TypeError(
                         f"Expected type{List.__name__}, got {type(candidate).__name__} instead."
                     )
@@ -100,12 +100,12 @@ class SquareListValidator(Validator[List[Square]]):
         if len(square_list) == 0:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                SquareValidationException(
+                SquareValidatorException(
                     cls_mthd=method,
-                    op=SquareValidationException.OP,
-                    msg=SquareValidationException.MSG,
-                    err_code=SquareValidationException.ERR_CODE,
-                    mthd_rslt_type=SquareValidationException.MTHD_RSLT,
+                    op=SquareValidatorException.OP,
+                    msg=SquareValidatorException.MSG,
+                    err_code=SquareValidatorException.ERR_CODE,
+                    mthd_rslt_type=SquareValidatorException.MTHD_RSLT,
                     ex=SquareDataSourceEmptyException(
                         msg=SquareDataSourceEmptyException.MSG,
                         err_code=SquareDataSourceEmptyException.ERR_CODE
@@ -116,12 +116,12 @@ class SquareListValidator(Validator[List[Square]]):
         if not isinstance(square_list[0], Square):
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                SquareValidationException(
+                SquareValidatorException(
                     cls_mthd=method,
-                    op=SquareValidationException.OP,
-                    msg=SquareValidationException.MSG,
-                    err_code=SquareValidationException.ERR_CODE,
-                    mthd_rslt_type=SquareValidationException.MTHD_RSLT,
+                    op=SquareValidatorException.OP,
+                    msg=SquareValidatorException.MSG,
+                    err_code=SquareValidatorException.ERR_CODE,
+                    mthd_rslt_type=SquareValidatorException.MTHD_RSLT,
                     ex=TypeError(
                         f"Searching for squares in a dataset of {type(square_list[0]).__name__}."
                     )

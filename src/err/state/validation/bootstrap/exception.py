@@ -10,7 +10,7 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import ValidationException
+from err import ValidatorException
 
 __all__ = [
     # ======================# VALIDATION_PRIMING_FAILURE #======================#
@@ -18,7 +18,7 @@ __all__ = [
 ]
 
 # ======================# VALIDATION_PRIMING_FAILURE #======================#
-class ValidationBootstrapException(ValidationException):
+class ValidationBootstrapException(ValidatorException):
     """
     Role:
         -   Error Tracing
@@ -39,7 +39,7 @@ class ValidationBootstrapException(ValidationException):
     Provides:
 
     Super Class:
-        ValidationException
+        ValidatorException
     """
     MSG = "Validation failed during the bootstrap phase."
     ERR_CODE = "VALIDATION_PRIMING_FAILURE"

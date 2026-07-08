@@ -10,15 +10,15 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import ValidationException
+from err import ValidatorException
 
 __all__ = [
     # ======================# RANK_VALIDATION_EXCEPTION #======================#
-    "RankValidationException",
+    "RankValidatorException",
 ]
 
 # ======================# RANK_VALIDATION_EXCEPTION #======================#
-class RankValidationException(ValidationException):
+class RankValidatorException(ValidatorException):
     """
     Role:
         -   Error Tracing
@@ -39,7 +39,7 @@ class RankValidationException(ValidationException):
     Provides:
 
     Super Class:
-        ValidationException
+        ValidatorException
     """
     MSG = "RankValidation check failed"
     ERR_CODE = "RANK_VALIDATION_EXCEPTION"

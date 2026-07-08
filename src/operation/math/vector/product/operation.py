@@ -86,7 +86,7 @@ class ScalarProduct(Operation[VectorOperand]):
             coord_build_pipeline = CoordBuildPipeline()
         
         # Handle the case that, the scalar is not safe.
-        scalar_validation = scalar_validator.validate(scalar)
+        scalar_validation = scalar_validator.execute(scalar)
         if scalar_validation.is_failure:
             # Send the exception chain on failure.
             return ComputationResult.failure(
@@ -99,7 +99,7 @@ class ScalarProduct(Operation[VectorOperand]):
                 )
             )
         # Handle the case that, the validator flags the operand.
-        operand_validation = operand_validator.validate(operand)
+        operand_validation = operand_validator.execute(operand)
         if operand_validation.is_failure:
             # Send the exception chain on failure.
             return ComputationResult.failure(

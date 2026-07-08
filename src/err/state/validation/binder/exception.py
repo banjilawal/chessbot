@@ -10,15 +10,15 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import ValidationException
+from err import ValidatorException
 
 __all__ = [
     # ======================# BINDER_VALIDATION_EXCEPTION #======================#
-    "BinderValidationException",
+    "BinderValidatorException",
 ]
 
 # ======================# BINDER_VALIDATION_EXCEPTION #======================#
-class BinderValidationException(ValidationException):
+class BinderValidatorException(ValidatorException):
     """
     Role:
         -   Error Tracing
@@ -39,7 +39,7 @@ class BinderValidationException(ValidationException):
     Provides:
 
     Super Class:
-        ValidationException
+        ValidatorException
     """
     MSG = "BinderValidation check failed"
     ERR_CODE = "BINDER_VALIDATION_EXCEPTION"

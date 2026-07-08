@@ -58,16 +58,16 @@ class BoardBlueprintValidator(BlueprintValidator[Board]):
             *   ZeroBoardBlueprintFlagsException
             *   ArenaBoardBlueprintFlagsException
             *   BoardBlueprintValidationRouteException
-            *   BoardBlueprintValidationException
+            *   BoardBlueprintValidatorException
         """
-        method = "BoardBlueprintValidator.validate"
+        method = "BoardBlueprintValidator.execute"
         
         # Handle the nonexistence case.
         if candidate is None:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                BoardBlueprintValidationException(
-                    msg=f"{method}: {BoardBlueprintValidationException.MSG}",
+                BoardBlueprintValidatorException(
+                    msg=f"{method}: {BoardBlueprintValidatorException.MSG}",
                     ex=NullBoardBlueprintException(f"{method}: {NullBoardBlueprintException.MSG}")
                 )
             )
@@ -75,8 +75,8 @@ class BoardBlueprintValidator(BlueprintValidator[Board]):
         if not isinstance(candidate, BoardBlueprint):
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                BoardBlueprintValidationException(
-                    msg=f"{method}: {BoardBlueprintValidationException.MSG}",
+                BoardBlueprintValidatorException(
+                    msg=f"{method}: {BoardBlueprintValidatorException.MSG}",
                     ex=TypeError(f"{method}: Was expecting a BoardBlueprint, got {type(candidate).__name__} instead.")
                 )
             )
@@ -88,8 +88,8 @@ class BoardBlueprintValidator(BlueprintValidator[Board]):
         if flag_count == 0:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                BoardBlueprintValidationException(
-                    msg=f"{method}: {BoardBlueprintValidationException.MSG}",
+                BoardBlueprintValidatorException(
+                    msg=f"{method}: {BoardBlueprintValidatorException.MSG}",
                     ex=ZeroBoardBlueprintFlagsException(f"{method}: {ZeroBoardBlueprintFlagsException.MSG}")
                 )
             )
@@ -97,8 +97,8 @@ class BoardBlueprintValidator(BlueprintValidator[Board]):
         if flag_count > 1:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                BoardBlueprintValidationException(
-                    msg=f"{method}: {BoardBlueprintValidationException.MSG}",
+                BoardBlueprintValidatorException(
+                    msg=f"{method}: {BoardBlueprintValidatorException.MSG}",
                     ex=ArenaBoardBlueprintFlagsException(
                         f"{method}: {ArenaBoardBlueprintFlagsException.MSG}"
                     )
@@ -112,8 +112,8 @@ class BoardBlueprintValidator(BlueprintValidator[Board]):
             if validator.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
-                    BoardBlueprintValidationException(
-                        msg=f"{method}: {BoardBlueprintValidationException.MSG}",
+                    BoardBlueprintValidatorException(
+                        msg=f"{method}: {BoardBlueprintValidatorException.MSG}",
                         ex=validator.exception
                     )
                 )
@@ -126,8 +126,8 @@ class BoardBlueprintValidator(BlueprintValidator[Board]):
             if validator.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
-                    BoardBlueprintValidationException(
-                        msg=f"{method}: {BoardBlueprintValidationException.MSG}",
+                    BoardBlueprintValidatorException(
+                        msg=f"{method}: {BoardBlueprintValidatorException.MSG}",
                         ex=validator.exception
                     )
                 )
@@ -136,8 +136,8 @@ class BoardBlueprintValidator(BlueprintValidator[Board]):
         
         # Return the exception chain if there is no validation route for the blueprint.
         return ValidationResult.failure(
-            BoardBlueprintValidationException(
-                msg=f"{method}: {BoardBlueprintValidationException.MSG}",
+            BoardBlueprintValidatorException(
+                msg=f"{method}: {BoardBlueprintValidatorException.MSG}",
                 ex=BoardBlueprintValidationRouteException(
                     f"{method}: {BoardBlueprintValidationRouteException.MSG}"
                 )

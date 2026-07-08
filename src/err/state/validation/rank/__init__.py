@@ -18,4 +18,4 @@ from .queen import *
 from .rook import *
 
 # Modules
-from .exception import RankValidationException
+from .exception import RankValidatorException

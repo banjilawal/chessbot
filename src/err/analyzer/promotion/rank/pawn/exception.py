@@ -40,7 +40,7 @@ class PromoteToPawnException(PromotionLevelAnalyzerException):
     Provides:
 
     Super Class:
-        RankElevationValidationException
+        RankElevationValidatorException
     """
     MSG = "Cannot promote a pawn to Pawn rank. Its new rank must be higher."
     ERR_CODE = "PROMOTE_PAWN_TO_PAWN_ERROR"

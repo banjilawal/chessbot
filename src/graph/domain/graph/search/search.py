@@ -29,7 +29,7 @@ class DomainVisitorFinder(Finder[Domain, Piece]):
         method = "DomainResidentFinder.searcher"
         
         try:
-            domain_validation = DomainValidator.validate(data_owner)
+            domain_validation = DomainValidator.execute(data_owner)
             if domain_validation.is_failure():
                 return SearchResult.failure(domain_validation.exception)
             

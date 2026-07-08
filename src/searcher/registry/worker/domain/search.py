@@ -72,7 +72,7 @@ class WorkerRegistryDomainSearch(Dict[str, Operation]):
             key_name_validator = RegistryEntryNameValidator()
         
         # Handle the case that, domain is not a valid String.
-        search_key_validation_result = key_name_validator.validate(candidates=[name], )
+        search_key_validation_result = key_name_validator.execute(candidates=[name], )
         if search_key_validation_result.is_failure:
             # Send the exception chain on failure.
             SearchResult.failure(

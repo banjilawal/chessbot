@@ -67,7 +67,7 @@ class ManeuverValidatorBootstrapper(ValidatorBootstrapper):
             toolkit = ManeuverValidatorBootstrapperToolkit()
         
         # Handle the case that, the token does not pass a validation check.
-        validation_result = toolkit.token_validator.run(subject)
+        validation_result = toolkit.token_validator.execute(subject)
         # Send the exception chain on failure.
         if validation_result.is_failure:
             return ValidationResult.failure(

@@ -10,7 +10,7 @@ version: 1.0.0
 from __future__ import annotations
 from typing import Any, cast
 
-from graph.pair import NodeTree, NodeTreeNullException, NodeTreeValidationException
+from graph.pair import NodeTree, NodeTreeNullException, NodeTreeValidatorException
 from system import LoggingLevelRouter, ValidationResult, Validator
 
 
@@ -48,7 +48,7 @@ class NodeTreeValidator(Validator[NodeTree]):
         Raises:
             TypeError
             NodeTreeNullException
-            NodeTreeValidationException
+            NodeTreeValidatorException
         """
         method = f"{cls.__class__.__name__}.validate"
         
@@ -56,12 +56,12 @@ class NodeTreeValidator(Validator[NodeTree]):
         if candidate is None:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                NodeTreeValidationException(
+                NodeTreeValidatorException(
                     cls_mthd=method,
-                    op=NodeTreeValidationException.OP,
-                    msg=NodeTreeValidationException.MSG,
-                    err_code=NodeTreeValidationException.ERR_CODE,
-                    mthd_rslt_type=NodeTreeValidationException.MTHD_RSLT,
+                    op=NodeTreeValidatorException.OP,
+                    msg=NodeTreeValidatorException.MSG,
+                    err_code=NodeTreeValidatorException.ERR_CODE,
+                    mthd_rslt_type=NodeTreeValidatorException.MTHD_RSLT,
                     ex=NodeTreeNullException(
                         var="rank",
                         val="None",
@@ -74,12 +74,12 @@ class NodeTreeValidator(Validator[NodeTree]):
         if not isinstance(candidate, NodeTree):
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                NodeTreeValidationException(
+                NodeTreeValidatorException(
                     cls_mthd=method,
-                    op=NodeTreeValidationException.OP,
-                    msg=NodeTreeValidationException.MSG,
-                    err_code=NodeTreeValidationException.ERR_CODE,
-                    mthd_rslt_type=NodeTreeValidationException.MTHD_RSLT,
+                    op=NodeTreeValidatorException.OP,
+                    msg=NodeTreeValidatorException.MSG,
+                    err_code=NodeTreeValidatorException.ERR_CODE,
+                    mthd_rslt_type=NodeTreeValidatorException.MTHD_RSLT,
                     ex=TypeError(
                         f"{method} Expected NodeTree, got {type(candidate).__name__} instead."
                     )

@@ -10,15 +10,15 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import ValidationException
+from err import ValidatorException
 
 __all__ = [
     # ======================# TEAM_VALIDATION_EXCEPTION #======================#
-    "TeamValidationException",
+    "TeamValidatorException",
 ]
 
 # ======================# TEAM_VALIDATION_EXCEPTION #======================#
-class TeamValidationException(ValidationException):
+class TeamValidatorException(ValidatorException):
     """
     Role:
         -   Error Tracing
@@ -39,7 +39,7 @@ class TeamValidationException(ValidationException):
     Provides:
 
     Super Class:
-        ValidationException
+        ValidatorException
     """
     MSG = "TeamValidation check failed"
     ERR_CODE = "TEAM_VALIDATION_EXCEPTION"

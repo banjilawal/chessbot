@@ -17,7 +17,7 @@ from microservice import RankService
 from model import Token
 from toolkit import PermitterToolkit
 from validator import (
-    BlueprintHomeSquareProcessor, BlueprintRankProcessor, CoordValidator, NumberValidator,
+    BlueprintHomeSquareExtractor, BlueprintRankExtractor, CoordValidator, NumberValidator,
     SquareValidator, TeamValidator
 )
 
@@ -58,7 +58,7 @@ class ManeuverToolkit(PermitterToolkit):
     team_validator: TeamValidator = TeamValidator()
     rank_service: RankService = RankService()
     number_validator: NumberValidator = NumberValidator()
-    blueprint_rank_processor: BlueprintRankProcessor = BlueprintRankProcessor()
-    blueprint_home_square_processor: BlueprintHomeSquareProcessor = BlueprintHomeSquareProcessor()
+    blueprint_rank_processor: BlueprintRankExtractor = BlueprintRankExtractor()
+    blueprint_home_square_processor: BlueprintHomeSquareExtractor = BlueprintHomeSquareExtractor()
     null_exception: TokenNullException = TokenNullException()
     permitter: Token = Token

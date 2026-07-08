@@ -13,19 +13,19 @@ from dataclasses import dataclass
 from typing import Type
 
 from blueprint import TokenBlueprint
-from detection import TokenHomeDetector
+from detector import TokenHomeDetector
 from err import TokenBlueprintNullException, TokenNullException
 from microservice import RankService
 from model import Token
 from toolkit import ModelToolkit
 from validator import (
-    BlueprintHomeSquareProcessor, BlueprintRankProcessor, CoordValidator, NumberValidator,
+    BlueprintHomeSquareExtractor, BlueprintRankExtractor, CoordValidator, NumberValidator,
     SquareValidator, TeamValidator
 )
 
 
 @dataclass
-class TokenToolkit(ModelToolkit):
+class TokenToolkit:
     """
     Role:
         -   Dependency Container
@@ -59,6 +59,7 @@ class TokenToolkit(ModelToolkit):
         blueprint_id_validator: BlueprintIdValidator
         null_exception: TokenNullException
         blueprint_null_exception: TokenBlueprintNullException
+        team_validator: TeamValidator
         
         home_detector: TokenHomeDetector
     """
@@ -68,8 +69,8 @@ class TokenToolkit(ModelToolkit):
     team_validator: TeamValidator = TeamValidator()
     rank_service: RankService = RankService()
     number_validator: NumberValidator = NumberValidator()
-    blueprint_rank_processor: BlueprintRankProcessor = BlueprintRankProcessor()
-    blueprint_home_square_processor: BlueprintHomeSquareProcessor = BlueprintHomeSquareProcessor()
+    blueprint_rank_processor: BlueprintRankExtractor = BlueprintRankExtractor()
+    blueprint_home_square_processor: BlueprintHomeSquareExtractor = BlueprintHomeSquareExtractor()
 
     model: Token = Type[Token]
     blueprint_model = Type[TokenBlueprint]

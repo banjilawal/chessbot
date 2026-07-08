@@ -30,7 +30,7 @@ DEPENDENCIES:
 Requires base rollback_exception classes and constants from the kernel system:
 From `logic.system`:
   * Constants: `NUMBER_OF_ROWS`, `NUMBER_OF_COLUMNS`
-  * Exception: `ChessException`, `ValidationException`, `NullException`,
+  * Exception: `ChessException`, `ValidatorException`, `NullException`,
         `BuilderException`.
 
 CONTAINS:
@@ -39,7 +39,7 @@ See the list of exception in the `__all__` list following (e.g., `ProjectionSear
 `NullProjectionSearchContextException`, `RowAboveBoundsException`).
 """
 
-from system import ContextException, NullException, BuilderException, ValidationException
+from system import ContextException, NullException, BuilderException, ValidatorException
 
 __all__ = [
     'ProjectionSearchContextException',
@@ -75,7 +75,7 @@ class NullProjectionSearchContextException(ProjectionSearchContextException, Nul
     MSG = "TeamSearchContext cannot be validation"
 
 
-class InvalidProjectionSearchContextException(ProjectionSearchContextException, ValidationException):
+class InvalidProjectionSearchContextException(ProjectionSearchContextException, ValidatorException):
     """
     Raised by projectionSearchContextBValidator if projectionSearchContext fails sanity checks. Exists primarily to
     catch all exception raised validating an existing projectionSearchContext

@@ -48,7 +48,7 @@ See the list of exception in the `__all__` list following (e.g., `EventException
 """
 
 
-from system import ChessException, NullException, BuilderException, ValidationException
+from system import ChessException, NullException, BuilderException, ValidatorException
 
 __all__ = [
   'BlockingEventException',
@@ -68,7 +68,7 @@ class BlockingEventException(TravelEventException):
   MSG = "BlockingEvent raised an exception."
 
 #======================# BLOCKING_EVENT VALIDATION EXCEPTION #======================#
-class InvalidBlockingEventException(TravelEventException, ValidationException):
+class InvalidBlockingEventException(TravelEventException, ValidatorException):
   """"""
   ERR_CODE = "BLOCKING_EVENT_EXCEPTION"
   MSG = "BlockingEvent raised an exception."
@@ -107,7 +107,7 @@ class DiscoveryAlreadyExistsException(BlockingEventException):
 #   ERR_CODE = "DOUBLE_BLOCKING_EXCEPTION"
 #   MSG = "The friend has already been encountered."
 #
-# class InvalidEncounterException(BlockingEventException, ValidationException):
+# class InvalidEncounterException(BlockingEventException, ValidatorException):
 #   """"""
 #   ERR_CODE = "INVALID_BLOCKING_EVENT_EXCEPTION"
 #   MSG = "BlockingEventException validation failed."
@@ -157,7 +157,7 @@ class DiscoveryAlreadyExistsException(BlockingEventException):
 # Requires base rollback_exception classes and constants from the kernel system:
 # From `logic.system`:
 #   * Constants: `NUMBER_OF_ROWS`, `NUMBER_OF_COLUMNS`
-#   * Exception: `ChessException`, `ValidationException`, `NullException`,
+#   * Exception: `ChessException`, `ValidatorException`, `NullException`,
 #         `BuilderException`.
 #
 # CONTAINS:
@@ -167,7 +167,7 @@ class DiscoveryAlreadyExistsException(BlockingEventException):
 # """
 #
 # from logic.owner import TravelEventException
-# from logic.system import NullException, ValidationException, InconsistencyException
+# from logic.system import NullException, ValidatorException, InconsistencyException
 #
 # __all__ = [
 #   'TravelActorException',
@@ -202,7 +202,7 @@ class DiscoveryAlreadyExistsException(BlockingEventException):
 #   MSG = "TravelEvent actor_candidate cannot be null."
 #
 #
-# class InvalidTravelActorException(TravelActorException, ValidationException):
+# class InvalidTravelActorException(TravelActorException, ValidatorException):
 #   ERR_CODE = "TRAVEL_ACTOR_VALIDATION_EXCEPTION"
 #   MSG = "TravelEvent actor_candidate validation failed."
 #

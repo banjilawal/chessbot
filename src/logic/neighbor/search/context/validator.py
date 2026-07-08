@@ -38,7 +38,7 @@ class DomainSearchContextValidator(Validator[DomainSearchContext]):
     @LoggingLevelRouter.monitor
     def validate(cls, candidate: T) -> ValidationResult[DomainSearchContext]:
         """"""
-        method = "DomainSearchContextValidator.validate"
+        method = "DomainSearchContextValidator.execute"
         
         try:
             if candidate is None:

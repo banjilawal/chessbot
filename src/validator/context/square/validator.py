@@ -16,7 +16,7 @@ from toolkit import SquareContextToolkit
 from util import LoggingLevelRouter
 from validator import ContextValidator
 from err import (
-    FormationNullException, SquareContextValidationException, SquareContextValidationRouteException,
+    FormationNullException, SquareContextValidatorException, SquareContextValidationRouteException,
     SquareStateNullException
 )
 
@@ -67,7 +67,7 @@ class SquareContextValidator(ContextValidator[Square]):
         Returns:
             ValidationResult[Square]
         Raises:
-            SquareContextValidationException
+            SquareContextValidatorException
             SquareContextValidationRouteException
         """
         method = f"{cls.__name__}.validate"
@@ -86,11 +86,11 @@ class SquareContextValidator(ContextValidator[Square]):
         if priming_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                SquareContextValidationException(
+                SquareContextValidatorException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    msg=SquareContextValidationException.MSG,
-                    err_code=SquareContextValidationException.ERR_CODE,
+                    msg=SquareContextValidatorException.MSG,
+                    err_code=SquareContextValidatorException.ERR_CODE,
                     ex=priming_result.exception
                 )
             )
@@ -105,11 +105,11 @@ class SquareContextValidator(ContextValidator[Square]):
             if validation_result.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
-                    SquareContextValidationException(
+                    SquareContextValidatorException(
                         cls_mthd=method,
                         cls_name=cls.__name__,
-                        msg=SquareContextValidationException.MSG,
-                        err_code=SquareContextValidationException.ERR_CODE,
+                        msg=SquareContextValidatorException.MSG,
+                        err_code=SquareContextValidatorException.ERR_CODE,
                         ex=validation_result.exception
                     )
                 )
@@ -124,11 +124,11 @@ class SquareContextValidator(ContextValidator[Square]):
             if validation_result.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
-                    SquareContextValidationException(
+                    SquareContextValidatorException(
                         cls_mthd=method,
                         cls_name=cls.__name__,
-                        msg=SquareContextValidationException.MSG,
-                        err_code=SquareContextValidationException.ERR_CODE,
+                        msg=SquareContextValidatorException.MSG,
+                        err_code=SquareContextValidatorException.ERR_CODE,
                         ex=validation_result.exception
                     )
                 )
@@ -137,17 +137,17 @@ class SquareContextValidator(ContextValidator[Square]):
         
         # Certification for the search-by-coord target.
         if context.coord is not None:
-            validation_result = toolkit.square_toolkit.coord_validator.validate(
+            validation_result = toolkit.square_toolkit.coord_validator.execute(
                 candidate=context.coord
             )
             if validation_result.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
-                    SquareContextValidationException(
+                    SquareContextValidatorException(
                         cls_mthd=method,
                         cls_name=cls.__name__,
-                        msg=SquareContextValidationException.MSG,
-                        err_code=SquareContextValidationException.ERR_CODE,
+                        msg=SquareContextValidatorException.MSG,
+                        err_code=SquareContextValidatorException.ERR_CODE,
                         ex=validation_result.exception
                     )
                 )
@@ -156,17 +156,17 @@ class SquareContextValidator(ContextValidator[Square]):
         
         # Certification for the search-by-board target.
         if context.board is not None:
-            validation_result = toolkit.square_toolkit.board_validator.validate(
+            validation_result = toolkit.square_toolkit.board_validator.execute(
                 candidate=context.board
             )
             if validation_result.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
-                    SquareContextValidationException(
+                    SquareContextValidatorException(
                         cls_mthd=method,
                         cls_name=cls.__name__,
-                        msg=SquareContextValidationException.MSG,
-                        err_code=SquareContextValidationException.ERR_CODE,
+                        msg=SquareContextValidatorException.MSG,
+                        err_code=SquareContextValidatorException.ERR_CODE,
                         ex=validation_result.exception
                     )
                 )
@@ -181,11 +181,11 @@ class SquareContextValidator(ContextValidator[Square]):
             if validation_result.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
-                    SquareContextValidationException(
+                    SquareContextValidatorException(
                         cls_mthd=method,
                         cls_name=cls.__name__,
-                        msg=SquareContextValidationException.MSG,
-                        err_code=SquareContextValidationException.ERR_CODE,
+                        msg=SquareContextValidatorException.MSG,
+                        err_code=SquareContextValidatorException.ERR_CODE,
                         ex=validation_result.exception
                     )
                 )
@@ -194,7 +194,7 @@ class SquareContextValidator(ContextValidator[Square]):
         
         # Certification for the search-by-state.
         if context.state is not None:
-            validation_result = toolkit.square_toolkit.priming_validator.run(
+            validation_result = toolkit.square_toolkit.priming_validator.execute(
                 candidate=context.state,
                 model_type=SquareState,
                 null_exception=SquareStateNullException()
@@ -202,11 +202,11 @@ class SquareContextValidator(ContextValidator[Square]):
             if validation_result.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
-                    SquareContextValidationException(
+                    SquareContextValidatorException(
                         cls_mthd=method,
                         cls_name=cls.__name__,
-                        msg=SquareContextValidationException.MSG,
-                        err_code=SquareContextValidationException.ERR_CODE,
+                        msg=SquareContextValidatorException.MSG,
+                        err_code=SquareContextValidatorException.ERR_CODE,
                         ex=validation_result.exception
                     )
                 )
@@ -215,7 +215,7 @@ class SquareContextValidator(ContextValidator[Square]):
         
         # Certification for the search-by-formation.
         if context.formation is not None:
-            validation_result = toolkit.square_toolkit.priming_validator.run(
+            validation_result = toolkit.square_toolkit.priming_validator.execute(
                 candidate=context.formation,
                 model_type=Formation,
                 null_exception=FormationNullException()
@@ -223,11 +223,11 @@ class SquareContextValidator(ContextValidator[Square]):
             if validation_result.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
-                    SquareContextValidationException(
+                    SquareContextValidatorException(
                         cls_mthd=method,
                         cls_name=cls.__name__,
-                        msg=SquareContextValidationException.MSG,
-                        err_code=SquareContextValidationException.ERR_CODE,
+                        msg=SquareContextValidatorException.MSG,
+                        err_code=SquareContextValidatorException.ERR_CODE,
                         ex=validation_result.exception
                     )
                 )
@@ -236,11 +236,11 @@ class SquareContextValidator(ContextValidator[Square]):
         
         # Return the exception chain if there is no validation route for the context.
         return ValidationResult.failure(
-            SquareContextValidationException(
+            SquareContextValidatorException(
                 cls_mthd=method,
                 cls_name=cls.__name__,
-                msg=SquareContextValidationException.MSG,
-                err_code=SquareContextValidationException.ERR_CODE,
+                msg=SquareContextValidatorException.MSG,
+                err_code=SquareContextValidatorException.ERR_CODE,
                 ex=SquareContextValidationRouteException(
                     msg=SquareContextValidationRouteException.MSG,
                     err_code=SquareContextValidationRouteException.ERR_CODE,

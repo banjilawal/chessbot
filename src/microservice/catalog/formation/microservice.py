@@ -107,7 +107,7 @@ class FormationService(HashService[Formation]):
             *   NullTeamContextException
             *   ZeroTeamContextFlagsException
             *   ArenaTeamContextFlagsException
-            *   TeamContextValidationException
+            *   TeamContextValidatorException
             *   TeamContextValidationRouteException
         """
         method = "FormationService.get_team_square"

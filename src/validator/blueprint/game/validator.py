@@ -65,7 +65,7 @@ class GameBlueprintValidator(BlueprintValidator[Game]):
             *   ArenaGameBlueprintFlagsException
             *   InvalidGameBlueprintException
         """
-        method = "GameBlueprintValidator.validate"
+        method = "GameBlueprintValidator.execute"
         try:
             # Handle the case that, the rank does not exist.
             if candidate is None:

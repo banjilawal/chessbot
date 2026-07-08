@@ -33,7 +33,7 @@ class AttackEventException(ChessException):
 
 
 #======================# ATTACK_EVENT VALIDATION EXCEPTION #======================#
-class InvalidAttackEventException(TravelEventException, ValidationException):
+class InvalidAttackEventException(TravelEventException, ValidatorException):
   ERR_CODE = "ATTACK_EVENT_VALIDATION_EXCEPTION"
   MSG = "AttackEvent validation failed."
 

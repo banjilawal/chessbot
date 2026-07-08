@@ -10,7 +10,7 @@ version: 1.0.0
 from typing import Any
 
 from controller import WorkerRegistryController
-from err import MaxNameLengthException, MinNameLengthException, NameValidationException
+from err import MaxNameLengthException, MinNameLengthException, NameValidatorException
 
 from operation import StringValidator, Validator
 from result import ValidationResult
@@ -69,7 +69,7 @@ class NameValidator(Validator[str]):
             TypeError
             StringNullException
             StringEmptyException
-            StringValidationException
+            StringValidatorException
         """
         method = f"{cls.__name__}.validate"
         
@@ -79,17 +79,17 @@ class NameValidator(Validator[str]):
         if string_validator is None:
             string_validator = StringValidator()
         
-        string_validation_result = string_validator.validate(candidate)
+        string_validation_result = string_validator.execute(candidate)
         
         # Handle the case that, the candidate is flagged unsafe.
         if string_validation_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                NameValidationException(
+                NameValidatorException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    msg=NameValidationException.MSG,
-                    err_code=NameValidationException.ERR_CODE,
+                    msg=NameValidatorException.MSG,
+                    err_code=NameValidatorException.ERR_CODE,
                     ex=string_validation_result.exception,
                 )
             )
@@ -97,11 +97,11 @@ class NameValidator(Validator[str]):
         if len(string_validation_result.payload) < string_property_table.entry[StringProperty.MIN_LENGTH]:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                NameValidationException(
+                NameValidatorException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    msg=NameValidationException.MSG,
-                    err_code=NameValidationException.ERR_CODE,
+                    msg=NameValidatorException.MSG,
+                    err_code=NameValidatorException.ERR_CODE,
                     ex=MinNameLengthException(
                         msg=MinNameLengthException.MSG,
                         err_code=MinNameLengthException.ERR_CODE,
@@ -112,11 +112,11 @@ class NameValidator(Validator[str]):
         if len(string_validation_result.payload) > string_property_table.entry[StringProperty.MAX_LENGTH]:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                NameValidationException(
+                NameValidatorException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    msg=NameValidationException.MSG,
-                    err_code=NameValidationException.ERR_CODE,
+                    msg=NameValidatorException.MSG,
+                    err_code=NameValidatorException.ERR_CODE,
                     ex=MaxNameLengthException(
                         msg=MaxNameLengthException.MSG,
                         err_code=MaxNameLengthException.ERR_CODE,

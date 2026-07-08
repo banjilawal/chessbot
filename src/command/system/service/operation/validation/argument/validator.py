@@ -11,7 +11,7 @@ from __future__ import annotations
 from typing import Dict, cast
 
 from command import (
-    ArgumentCountException, ArgumentNameException, ArgumentTypeException, ArgumentsValidationException,
+    ArgumentCountException, ArgumentNameException, ArgumentTypeException, ArgumentsValidatorException,
     Command, CommandArgs, NullArgumentsException
 )
 from command.system.service import ArgumentNameTypeBindingException
@@ -73,7 +73,7 @@ class CommandArgsValidator(Validator[Dict]):
         Returns:
             ValidationResult[CommandArgs]
         Raises:
-            ArgumentsValidationException
+            ArgumentsValidatorException
         """
         method = f"{cls.__name__}.validate"
         
@@ -86,12 +86,12 @@ class CommandArgsValidator(Validator[Dict]):
         if type_validation_results.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                ArgumentsValidationException(
+                ArgumentsValidatorException(
                     cls_mthd=method,
-                    op=ArgumentsValidationException.OP,
-                    msg=ArgumentsValidationException.MSG,
-                    err_code=ArgumentsValidationException.ERR_CODE,
-                    mthd_rslt_type=ArgumentsValidationException.MTHD_RSLT,
+                    op=ArgumentsValidatorException.OP,
+                    msg=ArgumentsValidatorException.MSG,
+                    err_code=ArgumentsValidatorException.ERR_CODE,
+                    mthd_rslt_type=ArgumentsValidatorException.MTHD_RSLT,
                     ex=type_validation_results.exception
                 )
             )
@@ -104,12 +104,12 @@ class CommandArgsValidator(Validator[Dict]):
         if not identifier_validation_results.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                ArgumentsValidationException(
+                ArgumentsValidatorException(
                     cls_mthd=method,
-                    op=ArgumentsValidationException.OP,
-                    msg=ArgumentsValidationException.MSG,
-                    err_code=ArgumentsValidationException.ERR_CODE,
-                    mthd_rslt_type=ArgumentsValidationException.MTHD_RSLT,
+                    op=ArgumentsValidatorException.OP,
+                    msg=ArgumentsValidatorException.MSG,
+                    err_code=ArgumentsValidatorException.ERR_CODE,
+                    mthd_rslt_type=ArgumentsValidatorException.MTHD_RSLT,
                     ex=identifier_validation_results.exception
                 )
             )
@@ -146,7 +146,7 @@ class CommandArgsValidator(Validator[Dict]):
             ArgumentTypeException
             NullArgumentsException
             ArgumentCountException
-            ArgumentsValidationException
+            ArgumentsValidatorException
         """
         method = f"{cls.__name__}._run_type_checks"
         
@@ -154,15 +154,15 @@ class CommandArgsValidator(Validator[Dict]):
         if candidate is None:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                ArgumentsValidationException(
+                ArgumentsValidatorException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    op=ArgumentsValidationException.OP,
-                    msg=ArgumentsValidationException.MSG,
-                    err_code=ArgumentsValidationException.ERR_CODE,
-                    mthd_rslt_type=ArgumentsValidationException.MTHD_RSLT,
+                    op=ArgumentsValidatorException.OP,
+                    msg=ArgumentsValidatorException.MSG,
+                    err_code=ArgumentsValidatorException.ERR_CODE,
+                    mthd_rslt_type=ArgumentsValidatorException.MTHD_RSLT,
                     ex=NullArgumentsException(
-                        msg=ArgumentsValidationException.MSG,
+                        msg=ArgumentsValidatorException.MSG,
                         err_code=NullArgumentsException.ERR_CODE,
                     )
                 )
@@ -173,12 +173,12 @@ class CommandArgsValidator(Validator[Dict]):
             signature_type = type(signature).__name__
             actual_type = type(candidate).__name__
             return ValidationResult.failure(
-                ArgumentsValidationException(
+                ArgumentsValidatorException(
                     cls_mthd=method,
-                    op=ArgumentsValidationException.OP,
-                    msg=ArgumentsValidationException.MSG,
-                    err_code=ArgumentsValidationException.ERR_CODE,
-                    mthd_rslt_type=ArgumentsValidationException.MTHD_RSLT,
+                    op=ArgumentsValidatorException.OP,
+                    msg=ArgumentsValidatorException.MSG,
+                    err_code=ArgumentsValidatorException.ERR_CODE,
+                    mthd_rslt_type=ArgumentsValidatorException.MTHD_RSLT,
                     ex=TypeError(
                         f"Expected {signature_type}, got {actual_type}."
                     )
@@ -191,12 +191,12 @@ class CommandArgsValidator(Validator[Dict]):
         if args.count != signature.count:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                ArgumentsValidationException(
+                ArgumentsValidatorException(
                     cls_mthd=method,
-                    op=ArgumentsValidationException.OP,
-                    msg=ArgumentsValidationException.MSG,
-                    err_code=ArgumentsValidationException.ERR_CODE,
-                    mthd_rslt_type=ArgumentsValidationException.MTHD_RSLT,
+                    op=ArgumentsValidatorException.OP,
+                    msg=ArgumentsValidatorException.MSG,
+                    err_code=ArgumentsValidatorException.ERR_CODE,
+                    mthd_rslt_type=ArgumentsValidatorException.MTHD_RSLT,
                     ex=ArgumentCountException(
                         msg=ArgumentCountException.MSG,
                         err_code=ArgumentCountException.ERR_CODE,
@@ -208,12 +208,12 @@ class CommandArgsValidator(Validator[Dict]):
             if not isinstance(genus, signature.types):
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
-                    ArgumentsValidationException(
+                    ArgumentsValidatorException(
                         cls_mthd=method,
-                        op=ArgumentsValidationException.OP,
-                        msg=ArgumentsValidationException.MSG,
-                        err_code=ArgumentsValidationException.ERR_CODE,
-                        mthd_rslt_type=ArgumentsValidationException.MTHD_RSLT,
+                        op=ArgumentsValidatorException.OP,
+                        msg=ArgumentsValidatorException.MSG,
+                        err_code=ArgumentsValidatorException.ERR_CODE,
+                        mthd_rslt_type=ArgumentsValidatorException.MTHD_RSLT,
                         ex=ArgumentTypeException(
                             var=genus.__name__,
                             msg=ArgumentTypeException.MSG,
@@ -250,7 +250,7 @@ class CommandArgsValidator(Validator[Dict]):
             ValidationResult[CommandArgs]
         Raises:
             ArgumentNameException
-            ArgumentsValidationException
+            ArgumentsValidatorException
             ArgumentNameTypeBindingException
         """
         method = f"{cls.__name__}._run_identifier_checks"
@@ -263,12 +263,12 @@ class CommandArgsValidator(Validator[Dict]):
             if str_validation_result.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
-                    ArgumentsValidationException(
+                    ArgumentsValidatorException(
                         cls_mthd=method,
-                        op=ArgumentsValidationException.OP,
-                        msg=ArgumentsValidationException.MSG,
-                        err_code=ArgumentsValidationException.ERR_CODE,
-                        mthd_rslt_type=ArgumentsValidationException.MTHD_RSLT,
+                        op=ArgumentsValidatorException.OP,
+                        msg=ArgumentsValidatorException.MSG,
+                        err_code=ArgumentsValidatorException.ERR_CODE,
+                        mthd_rslt_type=ArgumentsValidatorException.MTHD_RSLT,
                         ex=str_validation_result.exception,
                     )
                 )
@@ -277,12 +277,12 @@ class CommandArgsValidator(Validator[Dict]):
             if identifier.upper() not in signature.identifiers:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
-                    ArgumentsValidationException(
+                    ArgumentsValidatorException(
                         cls_mthd=method,
-                        op=ArgumentsValidationException.OP,
-                        msg=ArgumentsValidationException.MSG,
-                        err_code=ArgumentsValidationException.ERR_CODE,
-                        mthd_rslt_type=ArgumentsValidationException.MTHD_RSLT,
+                        op=ArgumentsValidatorException.OP,
+                        msg=ArgumentsValidatorException.MSG,
+                        err_code=ArgumentsValidatorException.ERR_CODE,
+                        mthd_rslt_type=ArgumentsValidatorException.MTHD_RSLT,
                         ex=ArgumentNameException(
                             var=identifier,
                             msg=ArgumentNameException.MSG,
@@ -295,12 +295,12 @@ class CommandArgsValidator(Validator[Dict]):
                 if not isinstance(candidate.entries[key], signature.entries[key]):
                     # Send the exception chain on failure.
                     return ValidationResult.failure(
-                        ArgumentsValidationException(
+                        ArgumentsValidatorException(
                             cls_mthd=method,
-                            op=ArgumentsValidationException.OP,
-                            msg=ArgumentsValidationException.MSG,
-                            err_code=ArgumentsValidationException.ERR_CODE,
-                            mthd_rslt_type=ArgumentsValidationException.MTHD_RSLT,
+                            op=ArgumentsValidatorException.OP,
+                            msg=ArgumentsValidatorException.MSG,
+                            err_code=ArgumentsValidatorException.ERR_CODE,
+                            mthd_rslt_type=ArgumentsValidatorException.MTHD_RSLT,
                             ex=ArgumentNameTypeBindingException(
                                 var=key,
                                 val=f"expected type: {type(signature.entries[key]).__name__}",

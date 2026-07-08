@@ -121,7 +121,7 @@ class TokenCollisionBootstrapper:
                     )
                 )
             )
-        stream_validation_result = priming_validator.validate(
+        stream_validation_result = priming_validator.execute(
             candidate=stream,
             target_type=TokenStackService,
             nullable=TokenStackNullException()
@@ -190,7 +190,7 @@ class TokenCollisionBootstrapper:
     ) -> ValidationResult[TokenBlueprint]:
         method = f"{cls.__name__}.validate_blueprint"
     
-        validation_result = priming_validator.run(
+        validation_result = priming_validator.execute(
             candidate=blueprint,
             target_type=TokenBlueprint,
             nullable=TokenBlueprintNullException(),

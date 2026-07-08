@@ -12,7 +12,7 @@ from typing import Any, cast
 
 from model.state.node import NodeValidator
 from microservice.edge import HeadCannotBeTailException
-from graph.pair import Pair, NullPairException, PairValidationException
+from graph.pair import Pair, NullPairException, PairValidatorException
 from system import LoggingLevelRouter, ValidationResult, Validator
 
 
@@ -58,7 +58,7 @@ class PairValidator(Validator[Pair]):
         Raises:
             TypeError
             NullPairException
-            PairValidationException
+            PairValidatorException
         """
         method = f"{cls.__class__.__name__}.validate"
         
@@ -66,12 +66,12 @@ class PairValidator(Validator[Pair]):
         if candidate is None:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                PairValidationException(
+                PairValidatorException(
                     cls_mthd=method,
-                    op=PairValidationException.OP,
-                    msg=PairValidationException.MSG,
-                    err_code=PairValidationException.ERR_CODE,
-                    mthd_rslt_type=PairValidationException.MTHD_RSLT,
+                    op=PairValidatorException.OP,
+                    msg=PairValidatorException.MSG,
+                    err_code=PairValidatorException.ERR_CODE,
+                    mthd_rslt_type=PairValidatorException.MTHD_RSLT,
                     ex=NullPairException(
                         var="Candidate",
                         val={type(candidate).__name__},
@@ -84,12 +84,12 @@ class PairValidator(Validator[Pair]):
         if not isinstance(candidate, Pair):
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                PairValidationException(
+                PairValidatorException(
                     cls_mthd=method,
-                    op=PairValidationException.OP,
-                    msg=PairValidationException.MSG,
-                    err_code=PairValidationException.ERR_CODE,
-                    mthd_rslt_type=PairValidationException.MTHD_RSLT,
+                    op=PairValidatorException.OP,
+                    msg=PairValidatorException.MSG,
+                    err_code=PairValidatorException.ERR_CODE,
+                    mthd_rslt_type=PairValidatorException.MTHD_RSLT,
                     ex=TypeError(f"Expected Pair, got {type(candidate).__name__}. instead")
                 )
             )
@@ -102,12 +102,12 @@ class PairValidator(Validator[Pair]):
             if validation_result.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
-                    PairValidationException(
+                    PairValidatorException(
                         cls_mthd=method,
-                        op=PairValidationException.OP,
-                        msg=PairValidationException.MSG,
-                        err_code=PairValidationException.ERR_CODE,
-                        mthd_rslt_type=PairValidationException.MTHD_RSLT,
+                        op=PairValidatorException.OP,
+                        msg=PairValidatorException.MSG,
+                        err_code=PairValidatorException.ERR_CODE,
+                        mthd_rslt_type=PairValidatorException.MTHD_RSLT,
                         ex=validation_result.exception
                     )
                 )
@@ -115,15 +115,15 @@ class PairValidator(Validator[Pair]):
         if pair.head == pair.tail:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                PairValidationException(
+                PairValidatorException(
                     cls_mthd=method,
-                    op=PairValidationException.OP,
-                    msg=PairValidationException.MSG,
-                    err_code=PairValidationException.ERR_CODE,
-                    mthd_rslt_type=PairValidationException.MTHD_RSLT,
+                    op=PairValidatorException.OP,
+                    msg=PairValidatorException.MSG,
+                    err_code=PairValidatorException.ERR_CODE,
+                    mthd_rslt_type=PairValidatorException.MTHD_RSLT,
                     ex=HeadCannotBeTailException(
-                        msg=PairValidationException.MSG,
-                        err_code=PairValidationException.ERR_CODE,
+                        msg=PairValidatorException.MSG,
+                        err_code=PairValidatorException.ERR_CODE,
                     )
                 )
             )

@@ -79,7 +79,7 @@ class AddVector(Operation[VectorOperandRegister]):
             operand_toolkit = VectorOperandToolkit()
         
         # Handle the case that, the register is not valid for addition.
-        register_validation_result = register_validator.validate(register)
+        register_validation_result = register_validator.execute(register)
         if register_validation_result.is_failure:
             # Send the exception chain on failure.
             return ComputationResult.failure(

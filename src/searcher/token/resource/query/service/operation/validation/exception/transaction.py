@@ -12,14 +12,14 @@ from typing import Optional
 
 __all__ = [
     # ======================# TOKEN_QUERY_VALIDATION_FAILURE #======================#
-    "TokenQueryValidationException",
+    "TokenQueryValidatorException",
 ]
 
-from system import ValidationException
+from system import ValidatorException
 
 
 # ======================# TOKEN_QUERY_VALIDATION_FAILURE #======================#
-class TokenQueryValidationException(ValidationException):
+class TokenQueryValidatorException(ValidatorException):
     """
     Role:
         -   Worker Method Identification
@@ -40,7 +40,7 @@ class TokenQueryValidationException(ValidationException):
     Provides:
 
     Super Class:
-        ValidationException
+        ValidatorException
     """
     MSG = "TokenQuery validation check failed."
     ERR_CODE = "TOKEN_QUERY_VALIDATION_FAILURE"

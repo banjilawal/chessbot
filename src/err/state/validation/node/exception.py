@@ -10,15 +10,15 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import ValidationException
+from err import ValidatorException
 
 __all__ = [
     # ======================# NODE_VALIDATION_EXCEPTION #======================#
-    "NodeValidationException",
+    "NodeValidatorException",
 ]
 
 # ======================# NODE_VALIDATION_EXCEPTION #======================#
-class NodeValidationException(ValidationException):
+class NodeValidatorException(ValidatorException):
     """
     Role:
         -   Error Tracing
@@ -39,7 +39,7 @@ class NodeValidationException(ValidationException):
     Provides:
 
     Super Class:
-        ValidationException
+        ValidatorException
     """
     MSG = "NodeValidation check failed"
     ERR_CODE = "NODE_VALIDATION_EXCEPTION"

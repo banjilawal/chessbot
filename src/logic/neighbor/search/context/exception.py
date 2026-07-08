@@ -7,7 +7,7 @@ version: 1.0.0
 """
 
 
-from system import ContextException, NullException, BuilderException, ValidationException
+from system import ContextException, NullException, BuilderException, ValidatorException
 
 __all__ = [
     'VisitationSearchContextException',
@@ -44,7 +44,7 @@ class NullVisitationSearchContextException(VisitationSearchContextException, Nul
     MSG = "VisitationSearchContext cannot be validation"
 
 
-class InvalidVisitationSearchContextException(VisitationSearchContextException, ValidationException):
+class InvalidVisitationSearchContextException(VisitationSearchContextException, ValidatorException):
     """
     Raised by visitationSearchContextBValidator if visitationSearchContext fails sanity checks. Exists primarily to
     catch all exception raised validating an existing visitationSearchContext

@@ -29,7 +29,7 @@ class AttackEventValidator(Validator[AttackEvent]):
     @classmethod
     def validate(cls, candidate: Any) -> ValidationResult[AttackEvent]:
         """"""
-        method = "AttackEventValidator.validate"
+        method = "AttackEventValidator.execute"
         
         try:
             if candidate is None:

@@ -10,7 +10,7 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import ValidationException
+from err import ValidatorException
 
 __all__ = [
     # ======================# TOKEN_VALIDATION_EXCEPTION #======================#
@@ -18,7 +18,7 @@ __all__ = [
 ]
 
 # ======================# TOKEN_VALIDATION_EXCEPTION #======================#
-class TokenValidatorException(ValidationException):
+class TokenValidatorException(ValidatorException):
     """
     Role:
         -   Error Tracing
@@ -39,7 +39,7 @@ class TokenValidatorException(ValidationException):
     Provides:
 
     Super Class:
-        ValidationException
+        ValidatorException
     """
     MSG = "TokenValidation check failed."
     ERR_CODE = "TOKEN_VALIDATION_EXCEPTION"

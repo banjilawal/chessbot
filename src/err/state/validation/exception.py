@@ -14,14 +14,14 @@ from err import StateException
 
 __all__ = [
     # ======================# VALIDATION_FAILURE #======================#
-    "ValidationException",
+    "ValidatorException",
 ]
 
 from result import MethodResultType
 
 
 # ======================# VALIDATION_FAILURE #======================#
-class ValidationException(StateException):
+class ValidatorException(StateException):
     """
     Role:
         -   Failure Tracing

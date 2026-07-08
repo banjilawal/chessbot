@@ -15,4 +15,4 @@ version: 1.0.0
 from .stack import TokenStackNullException
 from .candidate import TokenQueryNullException
 from .empty import TokenQueryStackEmptyException
-from .transaction import TokenQueryValidationException
+from .transaction import TokenQueryValidatorException

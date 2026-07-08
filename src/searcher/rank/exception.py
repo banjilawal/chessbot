@@ -16,7 +16,7 @@ Created: 2025-10-04
 version: 1.0.0
 """
 
-from system import NullException, FinderException, ValidationException
+from system import NullException, FinderException, ValidatorException
 from logic.rank import RankException
 
 __all__ = [
@@ -47,7 +47,7 @@ class NullRankSearchException(RankFinderException, NullException):
 
 
 #========================= RANK_SEARCH_CONTEXT VALIDATION EXCEPTION =========================#
-class InvalidRankSearchException(RankFinderException, ValidationException):
+class InvalidRankSearchException(RankFinderException, ValidatorException):
     """Super Exception for RankSearchContextValidator when a rank fails a sanity check."""
     ERR_CODE = "RANK_SEARCH_CONTEXT_VALIDATION_EXCEPTION"
     MSG = "RankSearchContext validation failed."

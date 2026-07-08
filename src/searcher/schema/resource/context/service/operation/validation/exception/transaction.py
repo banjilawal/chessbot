@@ -12,14 +12,14 @@ from typing import Optional
 
 __all__ = [
     # ======================# SCHEMA_CONTEXT_VALIDATION_FAILURE #======================#
-    "SchemaContextValidationException",
+    "SchemaContextValidatorException",
 ]
 
-from system import ValidationException
+from system import ValidatorException
 
 
 # ======================# SCHEMA_CONTEXT_VALIDATION_FAILURE #======================#
-class SchemaContextValidationException(ValidationException):
+class SchemaContextValidatorException(ValidatorException):
     """
     Role:
         - Worker Method Identification
@@ -40,7 +40,7 @@ class SchemaContextValidationException(ValidationException):
     Provides:
 
     Super:
-        ValidationException
+        ValidatorException
     """
     MSG = "SchemaContext validation check failed."
     ERR_CODE = "SCHEMA_CONTEXT_VALIDATION_FAILURE"

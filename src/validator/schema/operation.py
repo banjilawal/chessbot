@@ -55,7 +55,7 @@ class SchemaValidator(Validator[Schema]):
         Raises:
             TypeError
             NullSchemaException
-            SchemaValidationException
+            SchemaValidatorException
         """
         method = f"{cls.__name__}.validate"
         
@@ -63,16 +63,16 @@ class SchemaValidator(Validator[Schema]):
         if candidate is None:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                SchemaValidationException(
+                SchemaValidatorException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    op=SchemaValidationException.OP,
-                    msg=SchemaValidationException.MSG,
-                    err_code=SchemaValidationException.ERR_CODE,
-                    mthd_rslt_type=SchemaValidationException.MTHD_RSLT,
+                    op=SchemaValidatorException.OP,
+                    msg=SchemaValidatorException.MSG,
+                    err_code=SchemaValidatorException.ERR_CODE,
+                    mthd_rslt_type=SchemaValidatorException.MTHD_RSLT,
                     ex=NullSchemaException(
-                        msg=SchemaValidationException.MSG,
-                        err_code=SchemaValidationException.ERR_CODE,
+                        msg=SchemaValidatorException.MSG,
+                        err_code=SchemaValidatorException.ERR_CODE,
                     )
                 )
             )
@@ -81,13 +81,13 @@ class SchemaValidator(Validator[Schema]):
             # Return the exception chain on failure
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                SchemaValidationException(
+                SchemaValidatorException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    op=SchemaValidationException.OP,
-                    msg=SchemaValidationException.MSG,
-                    err_code=SchemaValidationException.ERR_CODE,
-                    mthd_rslt_type=SchemaValidationException.MTHD_RSLT,
+                    op=SchemaValidatorException.OP,
+                    msg=SchemaValidatorException.MSG,
+                    err_code=SchemaValidatorException.ERR_CODE,
+                    mthd_rslt_type=SchemaValidatorException.MTHD_RSLT,
                     ex=TypeError(
                         f"Expected a Archetype, got {type(candidate).__name__} instead."
                     )

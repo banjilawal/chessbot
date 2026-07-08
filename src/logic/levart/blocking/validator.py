@@ -24,7 +24,7 @@ class BlockingEventValidator(Validator[BlockingEvent]):
     @LoggingLevelRouter.monitor
     def validate(cls, candidate: BlockingEvent) -> ValidationResult[BlockingEvent]:
         """"""
-        method = "BlockingEventValidator.validate"
+        method = "BlockingEventValidator.execute"
         
         try:
             if candidate is None:

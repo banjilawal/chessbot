@@ -10,15 +10,15 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import ValidationException
+from err import ValidatorException
 
 __all__ = [
     # ======================# SCHEMA_VALIDATION_VALIDATION_EXCEPTION #======================#
-    "SchemaHashtableValidationException",
+    "SchemaHashtableValidatorException",
 ]
 
 # ======================# SCHEMA_VALIDATION_VALIDATION_EXCEPTION #======================#
-class SchemaHashtableValidationException(ValidationException):
+class SchemaHashtableValidatorException(ValidatorException):
     """
     Role:
         -   Error Tracing
@@ -39,7 +39,7 @@ class SchemaHashtableValidationException(ValidationException):
     Provides:
 
     Super Class:
-        ValidationException
+        ValidatorException
     """
     MSG = "SchemaDictValidation check failed"
     ERR_CODE = "SCHEMA_VALIDATION_VALIDATION_EXCEPTION"

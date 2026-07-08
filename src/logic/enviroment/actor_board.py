@@ -56,7 +56,7 @@ class BoardActorValidator(Validator[Tuple[Piece, Board]]):
   @LoggingLevelRouter.monitor
   def validate(cls, candidate: Tuple[Piece, Board])-> ValidationResult[Tuple[Piece, Board]]:
     """"""
-    method = "BoardActorValidator.validate"
+    method = "BoardActorValidator.execute"
 
     try:
       if candidate is None:

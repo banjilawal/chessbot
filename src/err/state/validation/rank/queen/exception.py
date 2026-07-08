@@ -10,15 +10,15 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import RankValidationException
+from err import RankValidatorException
 
 __all__ = [
     # ======================# QUEEN_VALIDATION_FAILURE #======================#
-    "QueenValidationException",
+    "QueenValidatorException",
 ]
 
 # ======================# QUEEN_VALIDATION_FAILURE #======================#
-class QueenValidationException(RankValidationException):
+class QueenValidatorException(RankValidatorException):
     """
     Role:
         -   Error Tracing
@@ -39,7 +39,7 @@ class QueenValidationException(RankValidationException):
     Provides:
 
     Super Class:
-        RankValidationException
+        RankValidatorException
     """
     MSG = "Queen validation check failed."
     ERR_CODE = "QUEEN_VALIDATION_FAILURE"

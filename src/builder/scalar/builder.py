@@ -63,7 +63,7 @@ class ScalarBuilder(Builder[Scalar]):
         method = "ScalarBuilder.build"
         
         try:
-            validation = scalar_validator.validate_value(value)
+            validation = scalar_validator.execute_value(value)
             if validation.is_failure():
                 return BuildResult.failure(validation.exception)
             

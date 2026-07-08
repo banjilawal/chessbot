@@ -58,16 +58,16 @@ class BoardContextValidator(ContextValidator[Board]):
             *   ZeroBoardContextFlagsException
             *   ArenaBoardContextFlagsException
             *   BoardContextValidationRouteException
-            *   BoardContextValidationException
+            *   BoardContextValidatorException
         """
-        method = "BoardContextValidator.validate"
+        method = "BoardContextValidator.execute"
         
         # Handle the nonexistence case.
         if candidate is None:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                BoardContextValidationException(
-                    msg=f"{method}: {BoardContextValidationException.MSG}",
+                BoardContextValidatorException(
+                    msg=f"{method}: {BoardContextValidatorException.MSG}",
                     ex=NullBoardContextException(f"{method}: {NullBoardContextException.MSG}")
                 )
             )
@@ -75,8 +75,8 @@ class BoardContextValidator(ContextValidator[Board]):
         if not isinstance(candidate, BoardContext):
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                BoardContextValidationException(
-                    msg=f"{method}: {BoardContextValidationException.MSG}",
+                BoardContextValidatorException(
+                    msg=f"{method}: {BoardContextValidatorException.MSG}",
                     ex=TypeError(f"{method}: Was expecting a BoardContext, got {type(candidate).__name__} instead.")
                 )
             )
@@ -88,8 +88,8 @@ class BoardContextValidator(ContextValidator[Board]):
         if flag_count == 0:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                BoardContextValidationException(
-                    msg=f"{method}: {BoardContextValidationException.MSG}",
+                BoardContextValidatorException(
+                    msg=f"{method}: {BoardContextValidatorException.MSG}",
                     ex=ZeroBoardContextFlagsException(f"{method}: {ZeroBoardContextFlagsException.MSG}")
                 )
             )
@@ -97,8 +97,8 @@ class BoardContextValidator(ContextValidator[Board]):
         if flag_count > 1:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                BoardContextValidationException(
-                    msg=f"{method}: {BoardContextValidationException.MSG}",
+                BoardContextValidatorException(
+                    msg=f"{method}: {BoardContextValidatorException.MSG}",
                     ex=ArenaBoardContextFlagsException(
                         f"{method}: {ArenaBoardContextFlagsException.MSG}"
                     )
@@ -112,8 +112,8 @@ class BoardContextValidator(ContextValidator[Board]):
             if validator.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
-                    BoardContextValidationException(
-                        msg=f"{method}: {BoardContextValidationException.MSG}",
+                    BoardContextValidatorException(
+                        msg=f"{method}: {BoardContextValidatorException.MSG}",
                         ex=validator.exception
                     )
                 )
@@ -126,8 +126,8 @@ class BoardContextValidator(ContextValidator[Board]):
             if validator.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
-                    BoardContextValidationException(
-                        msg=f"{method}: {BoardContextValidationException.MSG}",
+                    BoardContextValidatorException(
+                        msg=f"{method}: {BoardContextValidatorException.MSG}",
                         ex=validator.exception
                     )
                 )
@@ -136,8 +136,8 @@ class BoardContextValidator(ContextValidator[Board]):
         
         # Return the exception chain if there is no validation route for the context.
         return ValidationResult.failure(
-            BoardContextValidationException(
-                msg=f"{method}: {BoardContextValidationException.MSG}",
+            BoardContextValidatorException(
+                msg=f"{method}: {BoardContextValidatorException.MSG}",
                 ex=BoardContextValidationRouteException(
                     f"{method}: {BoardContextValidationRouteException.MSG}"
                 )

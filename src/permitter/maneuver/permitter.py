@@ -139,7 +139,7 @@ class TokenManeuverPermitter(TokenPermitter):
                 )
             )
         for square in [origin, destination]:
-            square_validation_result = toolkit.square_validator.validate(square)
+            square_validation_result = toolkit.square_validator.execute(square)
             if square_validation_result.is_failure:
                 # Return the exception chain on failure
                 return AnalysisResult.failure(

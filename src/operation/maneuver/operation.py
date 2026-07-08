@@ -76,7 +76,7 @@ class Maneuver:
             priming_validator = PrimingValidator()
             
         # Handle the case that, the itinerary is not valid.
-        validation_result = priming_validator.validate(
+        validation_result = priming_validator.execute(
             candidate=report,
             target_type=ManeuverApproval,
             null_ex_cls=ManeuverEventNullException,

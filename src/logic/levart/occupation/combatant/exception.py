@@ -8,7 +8,7 @@ version: 1.0.0
 """
 
 from logic.piece import OccupationEventException
-from system import NullException, ValidationException
+from system import NullException, ValidatorException
 
 __all__ = [
 #====================== OCCUPATION_EVENT EXCEPTION #======================#
@@ -37,7 +37,7 @@ class NullCombatantOccupationEventException(CombatantOccupationEventException, N
   MSG = "An CombatantOccupationEvent cannot be null."
 
 
-class InvalidCombatantOccupationEventException(CombatantOccupationEventException, ValidationException):
+class InvalidCombatantOccupationEventException(CombatantOccupationEventException, ValidatorException):
   """Raised by CombatantOccupationEventValidators if a rank fails coord_stack_validator."""
   ERR_CODE = "OCCUPATION_EVENT_VALIDATION_EXCEPTION"
   MSG = "CombatantOccupationEvent validation failed."

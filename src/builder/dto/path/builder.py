@@ -98,7 +98,7 @@ class TokenPathDtoBuilder:
         origin = origin_search_result.payload[0]
         
         # Handle the case that, the token is already at the destination.
-        token_destination_validation_result = toolkit.destination_validator.run(
+        token_destination_validation_result = toolkit.destination_validator.execute(
             token=token,
             destination=destination,
             token_validator=toolkit.token_validator,

@@ -120,7 +120,7 @@ class BoardTeamBinderService(Microservice[BoardBinder]):
             schema_validator = SchemaValidator()
     
         # Handle the case that, the binder is not certified as safe.
-        binder_validation_result = self._validator.validate(binder)
+        binder_validation_result = self._validator.execute(binder)
         if binder_validation_result.is_failure:
             # Return the exception chain on failure
             return SearchResult.failure(
@@ -133,7 +133,7 @@ class BoardTeamBinderService(Microservice[BoardBinder]):
                 )
             )
         # Handle the case that, the binder is not certified as safe.
-        schema_validation_result = schema_validator.validate(schema)
+        schema_validation_result = schema_validator.execute(schema)
         if schema_validation_result.is_failure:
             # Return the exception chain on failure
             return SearchResult.failure(
@@ -162,7 +162,7 @@ class BoardTeamBinderService(Microservice[BoardBinder]):
             team_validator = TeamValidator()
         
         # Handle the case that, the binder is not certified as safe.
-        binder_validation_result = self._validator.validate(binder)
+        binder_validation_result = self._validator.execute(binder)
         if binder_validation_result.is_failure:
             # Return the exception chain on failure
             return UpdateResult.update_failure(
@@ -176,7 +176,7 @@ class BoardTeamBinderService(Microservice[BoardBinder]):
                 )
             )
         # Handle the case that, the team is flagged.
-        team_validation_result = team_validator.validate(team)
+        team_validation_result = team_validator.execute(team)
         if team_validation_result.is_failure:
             # Return the exception chain on failure
             return UpdateResult.update_failure(

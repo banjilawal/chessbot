@@ -81,7 +81,7 @@ class SquareTokenRelationAnalyzer(RelationAnalyzer[Square, Token]):
             square_validator = SquareValidator()
         
         # Handle the case that, the square is not certified as safe.
-        square_validation_result = square_validator.validate(candidate_primary)
+        square_validation_result = square_validator.execute(candidate_primary)
         if square_validation_result.is_failure:
             # Send the exception chain on failure.
             return AnalysisResult.failure(

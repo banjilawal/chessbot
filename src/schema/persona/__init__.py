@@ -12,5 +12,5 @@ version: 1.0.1
 # Packages
 
 # Modules
-from .archetype import Persona
+from .schema import Persona
 

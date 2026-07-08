@@ -7,7 +7,7 @@ Created: 2025-10-18
 version: 1.0.0
 """
 from logic.piece import TravelEventException
-from system import NullException, ValidationException
+from system import NullException, ValidatorException
 
 __all__ = [
   'CheckEventException',
@@ -34,7 +34,7 @@ class KingCheckingItselfException(CheckEventException):
   ERR_CODE = "KING_CAPTURING_IT_SELF_EXCEPTION"
   MSG = "A occupation cannot check itself."
   
-class InvalidCheckEventException(CheckEventException, ValidationException):
+class InvalidCheckEventException(CheckEventException, ValidatorException):
   """"""
   ERR_CODE = "INVALID_CHECK_EVENT_EXCEPTION"
   MSG = "CheckEvent validation failed."

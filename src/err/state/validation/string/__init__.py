@@ -14,4 +14,4 @@ from .name import *
 from .registry import *
 
 # Modules
-from .exception import StringValidationException
+from .exception import StringValidatorException

@@ -9,16 +9,16 @@ version: 1.0.0
 
 __all__ = [
     # ======================# TEAM_BINDER_VALIDATION_FAILURE #======================#
-    "TeamBinderValidationException",
+    "TeamBinderValidatorException",
 ]
 
 from model.state.team import TeamBinderException
-from system import ValidationException
+from system import ValidatorException
 
 
 
 # ======================# TEAM_BINDER_VALIDATION_FAILURE #======================#
-class TeamBinderValidationException(TeamBinderException, ValidationException):
+class TeamBinderValidatorException(TeamBinderException, ValidatorException):
     """
     Role:Exception Work
 
@@ -28,7 +28,7 @@ class TeamBinderValidationException(TeamBinderException, ValidationException):
 
     Super Class:
         *   TeamBinderException
-        *   ValidationException
+        *   ValidatorException
 
     Provides:
 

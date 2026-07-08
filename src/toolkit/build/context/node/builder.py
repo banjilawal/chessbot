@@ -164,7 +164,7 @@ class NodeContextToolkit(Toolkit[NodeContext]):
         
         # Toolkit the discovery_status NodeContext if its flag is enabled.
         if discovery_status is not None:
-            validation = node_validator.validate_discovery_status(candidate=discovery_status)
+            validation = node_validator.execute_discovery_status(candidate=discovery_status)
             if validation.is_failure:
                 # Send the exception chain on failure.
                 return ToolkitResult.failure(

@@ -83,7 +83,7 @@ class PrimingServiceRegistration(Primer[Microservice]):
             registry_entry_name_validator = RegistryEntryNameValidator()
         
         # Handle the case that, the service is not a valid microservice.
-        service_validation_result = priming_validator.validate(
+        service_validation_result = priming_validator.execute(
             candidate=service,
             target_model=Microservice,
             null_exception=null_exception,
@@ -100,7 +100,7 @@ class PrimingServiceRegistration(Primer[Microservice]):
                 )
             )
         # Handle the case that, either the service's domain or name are not good strings.
-        key_validation_result = registry_entry_name_validator.validate(
+        key_validation_result = registry_entry_name_validator.execute(
             candidates=[service.NAME],
             priming_validator=priming_validator,
         )

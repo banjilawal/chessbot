@@ -115,7 +115,7 @@ class PlayerDatabase(Database[Player]):
     # def push_unique_item(self, item: Player) -> InsertionResult[Player]:
     #     method = "PlayerDatabase.push_unique"
     #     try:
-    #         validation = self.data.item_validator.validate(item)
+    #         validation = self.data.item_validator.execute(item)
     #         if validation.is_failure():
     #             return InsertionResult.failure(validation.exception)
     #

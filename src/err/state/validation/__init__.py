@@ -36,4 +36,4 @@ from .token import *
 from .vector import *
 
 # Modules
-from .exception import ValidationException
+from .exception import ValidatorException

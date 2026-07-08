@@ -10,7 +10,7 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, cast
 
-from err import CoordBlueprintValidationException
+from err import CoordBlueprintValidatorException
 from model import CoordBlueprint
 from result import ValidationResult
 from setting import BoardProperty
@@ -64,7 +64,7 @@ class CoordBlueprintValidator(BlueprintValidator[Coord]):
         Returns:
             ValidationResult[Coord]
         Raises:
-            CoordBlueprintValidationException
+            CoordBlueprintValidatorException
         """
         method = f"{cls.__name__}.validate"
         
@@ -82,11 +82,11 @@ class CoordBlueprintValidator(BlueprintValidator[Coord]):
         if priming_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                CoordBlueprintValidationException(
+                CoordBlueprintValidatorException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    msg=CoordBlueprintValidationException.MSG,
-                    err_code=CoordBlueprintValidationException.ERR_CODE,
+                    msg=CoordBlueprintValidatorException.MSG,
+                    err_code=CoordBlueprintValidatorException.ERR_CODE,
                     ex=priming_result.exception
                 )
             )
@@ -95,7 +95,7 @@ class CoordBlueprintValidator(BlueprintValidator[Coord]):
         
         # Certification whichever attribute is enabled.
         for attribute in [blueprint.row, blueprint.column]:
-            validation_result = toolkit.coord_toolkit.number_validator.run(
+            validation_result = toolkit.coord_toolkit.number_validator.execute(
                 candidate=attribute,
                 ceiling=BoardProperty.MAX_COLUMN_INDEX.value,
                 floor=0,
@@ -103,11 +103,11 @@ class CoordBlueprintValidator(BlueprintValidator[Coord]):
             if validation_result.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
-                    CoordBlueprintValidationException(
+                    CoordBlueprintValidatorException(
                         cls_mthd=method,
                         cls_name=cls.__name__,
-                        msg=CoordBlueprintValidationException.MSG,
-                        err_code=CoordBlueprintValidationException.ERR_CODE,
+                        msg=CoordBlueprintValidatorException.MSG,
+                        err_code=CoordBlueprintValidatorException.ERR_CODE,
                         ex=validation_result.exception
                     )
                 )

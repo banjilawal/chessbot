@@ -12,7 +12,7 @@ from typing import Any, List, cast
 
 from geometry.square import SquareValidator
 from system import LoggingLevelRouter, ValidationResult, Validator
-from math.span import SquareSpanNullException, SquareSpan, SquareSpanRaysNullException, SquareSpanValidationException
+from math.span import SquareSpanNullException, SquareSpan, SquareSpanRaysNullException, SquareSpanValidatorException
 
 
 class SquareSpanValidator(Validator[SquareSpan]):
@@ -54,7 +54,7 @@ class SquareSpanValidator(Validator[SquareSpan]):
         Raises:
             TypeError
             SquareSpanNullException
-            SquareSpanValidationException
+            SquareSpanValidatorException
         """
         method = f"{cls.__class__.__name__}.validate"
         
@@ -62,12 +62,12 @@ class SquareSpanValidator(Validator[SquareSpan]):
         if candidate is None:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                SquareSpanValidationException(
+                SquareSpanValidatorException(
                     cls_mthd=method,
-                    op=SquareSpanValidationException.OP,
-                    msg=SquareSpanValidationException.MSG,
-                    err_code=SquareSpanValidationException.ERR_CODE,
-                    mthd_rslt_type=SquareSpanValidationException.MTHD_RSLT,
+                    op=SquareSpanValidatorException.OP,
+                    msg=SquareSpanValidatorException.MSG,
+                    err_code=SquareSpanValidatorException.ERR_CODE,
+                    mthd_rslt_type=SquareSpanValidatorException.MTHD_RSLT,
                     ex=SquareSpanNullException(
                         var="rank",
                         val="None",
@@ -80,12 +80,12 @@ class SquareSpanValidator(Validator[SquareSpan]):
         if not isinstance(candidate, SquareSpan):
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                SquareSpanValidationException(
+                SquareSpanValidatorException(
                     cls_mthd=method,
-                    op=SquareSpanValidationException.OP,
-                    msg=SquareSpanValidationException.MSG,
-                    err_code=SquareSpanValidationException.ERR_CODE,
-                    mthd_rslt_type=SquareSpanValidationException.MTHD_RSLT,
+                    op=SquareSpanValidatorException.OP,
+                    msg=SquareSpanValidatorException.MSG,
+                    err_code=SquareSpanValidatorException.ERR_CODE,
+                    mthd_rslt_type=SquareSpanValidatorException.MTHD_RSLT,
                     ex=TypeError(f"{method} Expected SquareSpan, got {type(candidate).__name__} instead.")
                 )
             )
@@ -97,12 +97,12 @@ class SquareSpanValidator(Validator[SquareSpan]):
         if origin_validation_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                SquareSpanValidationException(
+                SquareSpanValidatorException(
                     cls_mthd=method,
-                    op=SquareSpanValidationException.OP,
-                    msg=SquareSpanValidationException.MSG,
-                    err_code=SquareSpanValidationException.ERR_CODE,
-                    mthd_rslt_type=SquareSpanValidationException.MTHD_RSLT,
+                    op=SquareSpanValidatorException.OP,
+                    msg=SquareSpanValidatorException.MSG,
+                    err_code=SquareSpanValidatorException.ERR_CODE,
+                    mthd_rslt_type=SquareSpanValidatorException.MTHD_RSLT,
                     ex=origin_validation_result.exception
                 )
             )
@@ -110,17 +110,17 @@ class SquareSpanValidator(Validator[SquareSpan]):
         if square_span.rays is None:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                SquareSpanValidationException(
+                SquareSpanValidatorException(
                     cls_mthd=method,
-                    op=SquareSpanValidationException.OP,
-                    msg=SquareSpanValidationException.MSG,
-                    err_code=SquareSpanValidationException.ERR_CODE,
-                    mthd_rslt_type=SquareSpanValidationException.MTHD_RSLT,
+                    op=SquareSpanValidatorException.OP,
+                    msg=SquareSpanValidatorException.MSG,
+                    err_code=SquareSpanValidatorException.ERR_CODE,
+                    mthd_rslt_type=SquareSpanValidatorException.MTHD_RSLT,
                     ex=SquareSpanRaysNullException(
                         var="square_span.rays",
                         val="None",
-                        msg=SquareSpanValidationException.MSG,
-                        err_code=SquareSpanValidationException.ERR_CODE,
+                        msg=SquareSpanValidatorException.MSG,
+                        err_code=SquareSpanValidatorException.ERR_CODE,
                 
                     )
                 )
@@ -130,17 +130,17 @@ class SquareSpanValidator(Validator[SquareSpan]):
             # Send the exception chain on failure.
             wrong_type = type(square_span.rays).__name__
             return ValidationResult.failure(
-                SquareSpanValidationException(
+                SquareSpanValidatorException(
                     cls_mthd=method,
-                    op=SquareSpanValidationException.OP,
-                    msg=SquareSpanValidationException.MSG,
-                    err_code=SquareSpanValidationException.ERR_CODE,
-                    mthd_rslt_type=SquareSpanValidationException.MTHD_RSLT,
+                    op=SquareSpanValidatorException.OP,
+                    msg=SquareSpanValidatorException.MSG,
+                    err_code=SquareSpanValidatorException.ERR_CODE,
+                    mthd_rslt_type=SquareSpanValidatorException.MTHD_RSLT,
                     ex=SquareSpanRaysNullException(
                         var="type(square_span.rays)",
                         val=wrong_type,
-                        msg=SquareSpanValidationException.MSG,
-                        err_code=SquareSpanValidationException.ERR_CODE,
+                        msg=SquareSpanValidatorException.MSG,
+                        err_code=SquareSpanValidatorException.ERR_CODE,
                         ex=TypeError(
                             f"{method} Expected List[Square] for square_span, got {wrong_type} instead."
                         )

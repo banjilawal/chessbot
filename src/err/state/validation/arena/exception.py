@@ -10,15 +10,15 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import ValidationException
+from err import ValidatorException
 
 __all__ = [
     # ======================# ARENA_VALIDATION_EXCEPTION #======================#
-    "ArenaValidationException",
+    "ArenaValidatorException",
 ]
 
 # ======================# ARENA_VALIDATION_EXCEPTION #======================#
-class ArenaValidationException(ValidationException):
+class ArenaValidatorException(ValidatorException):
     """
     Role:
         -   Error Tracing
@@ -39,7 +39,7 @@ class ArenaValidationException(ValidationException):
     Provides:
 
     Super Class:
-        ValidationException
+        ValidatorException
     """
     MSG = "ArenaValidation check failed"
     ERR_CODE = "ARENA_VALIDATION_EXCEPTION"

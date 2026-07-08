@@ -8,7 +8,7 @@ version: 1.0.0
 """
 
 from system import (
-    ChessException, BuilderException, InconsistencyException, NullException, ValidationException
+    ChessException, BuilderException, InconsistencyException, NullException, ValidatorException
 )
 
 __all__ = [
@@ -44,7 +44,7 @@ class VisitationEventException(ChessException):
 
 
 #======================# VISITATION VALIDATION EXCEPTION #======================#
-class InvalidVisitationEventException(VisitationEventException, ValidationException):
+class InvalidVisitationEventException(VisitationEventException, ValidatorException):
     """Raised by VisitationValidators if client fails coord_stack_validator."""
     ERR_CODE = "VISITATION_VALIDATION_EXCEPTION"
     MSG = "Visitationation validation failed."

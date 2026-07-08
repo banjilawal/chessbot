@@ -63,7 +63,7 @@ class ArenaTeamRelationAnalysis(RelationAnalysis[Arena, Team]):
             *   On error: an Exception
 
         Raises:
-            *   ArenaValidationException
+            *   ArenaValidatorException
         """
         method = "ArenaService.certify_team_arena_relationship"
         # Process the possible arena_validation outcomes.

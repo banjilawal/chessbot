@@ -22,7 +22,7 @@ from validator import (
     ManeuverEndpointValidator, PathValidator, SquareValidator, TokenDestinationCertifier,
     TokenValidator
 )
-from validator.endpoint.origin import TokenOriginCertifier
+from validator.model.endpoint import TokenOriginCertifier
 
 
 class ManeuverToolkit(AnalyzerBootstrapperToolkit[Maneuver]):

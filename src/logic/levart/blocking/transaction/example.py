@@ -78,7 +78,7 @@ DEPENDENCIES:
 ------------
 Requires base rollback_exception classes and constants from the kernel system:
 From `logic.system`:
-  * Exception: `ChessException`, `ValidationException`, `NullException`,
+  * Exception: `ChessException`, `ValidatorException`, `NullException`,
         `BuilderException`.
 
 CONTAINS:
@@ -88,4 +88,4 @@ See the list of exception in the `__all__` list following (e.g., `VectorExceptio
 """
 from logic.event import OccupationEventException
 from logic.transaction import TransactionException, NullTransactionException
-from logic.exception import NullException, ValidationException, BuilderException
+from logic.exception import NullException, ValidatorException, BuilderException

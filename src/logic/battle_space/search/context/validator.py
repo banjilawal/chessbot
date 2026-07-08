@@ -20,7 +20,7 @@ class ProjectionSearchContextValidator(Validator[ProjectionSearchContext]):
     @LoggingLevelRouter.monitor
     def validate(cls, candidate: Any) -> ValidationResult[ProjectionSearchContext]:
         """"""
-        method = "ProjectionSearchContextValidator.validate"
+        method = "ProjectionSearchContextValidator.execute"
         
         try:
             if candidate is None:

@@ -14,14 +14,14 @@ from typing import Any, Optional
 
 __all__ = [
     # ======================# NODE_CONTEXT_VALIDATION_EXCEPTION #======================#
-    "NodeContextValidationException",
+    "NodeContextValidatorException",
 ]
 
-from err import ContextValidationException
+from err import ContextValidatorException
 
 
 # ======================# NODE_CONTEXT_VALIDATION_EXCEPTION #======================#
-class NodeContextValidationException(ContextValidationException):
+class NodeContextValidatorException(ContextValidatorException):
     """
     Role:
         -   Error Tracing
@@ -42,7 +42,7 @@ class NodeContextValidationException(ContextValidationException):
     Provides:
 
     Super Class:
-        ContextValidationException
+        ContextValidatorException
     """
     MSG = "No validation logic for NodeContext attribute"
     ERR_CODE = "NODE_CONTEXT_VALIDATION_EXCEPTION"

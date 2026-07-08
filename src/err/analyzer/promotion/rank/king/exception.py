@@ -40,7 +40,7 @@ class PromoteToKingException(PromotionLevelAnalyzerException):
     Provides:
 
     Super Class:
-        RankElevationValidationException
+        RankElevationValidatorException
     """
     MSG = "Pawn cannot be promoted to King. Teams can only have one king."
     ERR_CODE = "PROMOTE_PAWN_TO_KING_ERROR"

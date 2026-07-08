@@ -82,7 +82,7 @@ class BoardTeamBinderRelationAnalyzer(RelationAnalyzer[Board, BoardBinder]):
             team_binder_validator = BoardTeamBinderValidator()
         
         # Handle the case that, the board is not certified as safe.
-        board_validation_result = board_validator.validate(candidate_primary)
+        board_validation_result = board_validator.execute(candidate_primary)
         if board_validation_result.is_failure:
             # Send the exception chain on failure.
             return AnalysisResult.failure(
@@ -98,7 +98,7 @@ class BoardTeamBinderRelationAnalyzer(RelationAnalyzer[Board, BoardBinder]):
         board = cast(Board, board_validation_result.payload)
         
         # Handle the case that, the binder is not certified as safe.
-        team_binder_validation_result = team_binder_validator.validate(candidate_satellite)
+        team_binder_validation_result = team_binder_validator.execute(candidate_satellite)
         if team_binder_validation_result.is_failure:
             # Send the exception chain on failure.
             return AnalysisResult.failure(

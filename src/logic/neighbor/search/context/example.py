@@ -128,7 +128,7 @@ deserialization, external sources, or need re-validate after modifications.
 Usage:
   ```python
   # Validate an existing discoverySearchContext
-  discoverySearchContext_validation = DiscoverySearchContextValidator.validate(rank)
+  discoverySearchContext_validation = DiscoverySearchContextValidator.execute(rank)
   if not discoverySearchContext_validation.is_success():
     raise discoverySearchContext_validation.err
   discoverySearchContext = cast(DiscoverySearchContext, discoverySearchContext_validation.payload)
@@ -154,7 +154,7 @@ Args
 RAISES:
   `TypeError`: if `rank` is not discoverySearchContext DiscoverySearchContext` object
   `NullDiscoverySearchContextException`: if `rank` is validation
-  `IdValidationException`: if `visitor_id` fails validate checks
+  `IdValidatorException`: if `visitor_id` fails validate checks
   `InvalidCommanderException`: if `owner` fails validate checks
   `NullDiscoverySearchContextProfileException`: if `team_schema` is validation
   `InvalidCommanderAssignmentException`: if the assigned owner does not consistency the validated owner
@@ -308,7 +308,7 @@ DEPENDENCIES:
 Requires base rollback_exception classes and constants from the kernel system:
 From `logic.system`:
   * Constants: `NUMBER_OF_ROWS`, `NUMBER_OF_COLUMNS`
-  * Exception: `ChessException`, `ValidationException`, `NullException`,
+  * Exception: `ChessException`, `ValidatorException`, `NullException`,
         `BuilderException`.
 
 CONTAINS:

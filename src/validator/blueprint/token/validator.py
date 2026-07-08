@@ -12,13 +12,12 @@ from __future__ import annotations
 from typing import Any, Type, cast
 
 from blueprint import TokenBlueprint
-from schema import Formation
 from context import TokenHomeContext
 from err import FormationNullException, TokenBlueprintValidatorException
 from model import HomeSquare
 from result import ValidationResult
+from schema.formation.schema import Formation
 from toolkit import TokenToolkit
-
 from util import LoggingLevelRouter
 from validator import Validator
 
@@ -35,24 +34,29 @@ class TokenBlueprintValidator(Validator[TokenBlueprint]):
         1.  Ensure a TokenBlueprint instance is certified safe, reliable and consistent before use.
 
     Attributes:
+        toolkit: TokenToolkit
 
     Provides:
-        -   def validate(
-                    candidate: Any,
-                    toolkit: TokenBlueprintToolkit,
-            ) -> ValidationResult:
+        -   execute(self, candidate: Any) -> ValidationResult:
 
     Super Class:
         BlueprintValidator
     """
     
-    @classmethod
+    def __init__(self, toolkit: TokenToolkit | None = TokenToolkit()):
+        """
+        Args:
+            toolkit: TokenToolkit
+        """
+        super().__init__(toolkit=toolkit)
+        
+    @property
+    def toolkit(self) -> TokenToolkit:
+        return cast(TokenToolkit, super().toolkit)
+    
+    
     @LoggingLevelRouter.monitor
-    def execute(
-            cls,
-            candidate: Any,
-            toolkit: TokenToolkit | None = None
-    ) -> ValidationResult[TokenBlueprint]:
+    def execute(self, candidate: Any) -> ValidationResult:
         """
         Verify a TokenBlueprint and fill before its used.
 
@@ -66,88 +70,84 @@ class TokenBlueprintValidator(Validator[TokenBlueprint]):
             2.  Send the success result.
         Args:
             candidate: Any
-            toolkit: TokenToolkit
         Returns:
             ValidationResult[Blueprint]
         Raises:
             PrimingTokenAssemblyException
         """
-        method = f"{cls.__name__}.execute"
-        
-        # --- Supply any missing dependencies. ---#
-        if toolkit is None:
-            toolkit = TokenToolkit()
+        method = f"{self.__class__.__name__}.execute"
+    
         
         # Handle the case that, the validator is not primed.
-        validator_priming_result = toolkit.priming_validator.execute(
+        validator_priming_result = self.toolkit.priming_validator.execute(
             candidate=candidate,
-            target_=toolkit.blueprint_model,
-            null_exception=toolkit.blueprint_null_execption,
+            target_=self.toolkit.blueprint_model,
+            null_exception=self.toolkit.blueprint_null_exception,
         )
         if validator_priming_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 TokenBlueprintValidatorException(
                     cls_mthd=method,
-                    cls_name=cls.__name__,
+                    cls_name=self.__class__.__name__,
                     msg=TokenBlueprintValidatorException.MSG,
                     err_code=TokenBlueprintValidatorException.ERR_CODE,
                     ex=validator_priming_result.exception,
                 )
             )
         # --- Cast the candidate into a TokenBlueprint for additional tests. ---#
-        blueprint = cast(toolkit.blueprint_model, candidate)
+        blueprint = cast(self.toolkit.blueprint_model, candidate)
         
         # Handle the case that, any id in the blueprint is flagged.
-        id_validation_result = toolkit.blueprint_id_validator.execute(
+        id_validation_result = self.toolkit.blueprint_id_validator.execute(
             candidate=blueprint.id,
-            identity_service=toolkit.identity_service,
+            identity_service=self.toolkit.identity_service,
         )
         if id_validation_result.is_failure:
         # Send the exception chain on failure.
             return ValidationResult.failure(
                 TokenBlueprintValidatorException(
                     cls_mthd=method,
-                    cls_name=cls.__name__,
+                    cls_name=self.__class__.__name__,
                     msg=TokenBlueprintValidatorException.MSG,
                     err_code=TokenBlueprintValidatorException.ERR_CODE,
                     ex=id_validation_result.exception,
                 )
             )
         # Handle the case that, the team does not pass a validation check.
-        team_validation = toolkit.team_validator.validate(
+        team_validation = self.toolkit.team_validator.execute(
             candidate=blueprint.team
         )
-        if team_validator.is_failure:
+        if team_validation.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 TokenBlueprintValidatorException(
                     cls_mthd=method,
-                    cls_name=cls.__name__,
+                    cls_name=self.__class__.__name__,
                     msg=TokenBlueprintValidatorException.MSG,
                     err_code=TokenBlueprintValidatorException.ERR_CODE,
-                    ex=team_validator.exception,
+                    ex=team_validation.exception,
                 )
             )
         # Handle the case that, the formation does not pass a validation check.
-        formation_validation = toolkit.priming_validator.execute(
+        formation_validation = self.toolkit.priming_validator.execute(
             candidate=blueprint.formation,
             target_model=Type[Formation],
             null_exception=FormationNullException(),
         )
-        if formation_validator.is_failure:
+        if formation_validation.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 TokenBlueprintValidatorException(
                     cls_mthd=method,
-                    cls_name=cls.__name__,
+                    cls_name=self.__class__.__name__,
                     msg=TokenBlueprintValidatorException.MSG,
                     err_code=TokenBlueprintValidatorException.ERR_CODE,
-                    ex=formation_validator.exception,
+                    ex=formation_validation.exception,
                 )
             )
         # Handle the case that, the home_square gets flagged.
-        home_detection_result = toolkit.home_detector.execute(
+        home_detection_result = self.toolkit.home_detector.execute(
             context=TokenHomeContext(
                 board=blueprint.team.board,
                 square_name=blueprint.formation.home_square_name,
@@ -158,23 +158,23 @@ class TokenBlueprintValidator(Validator[TokenBlueprint]):
             return ValidationResult.failure(
                 TokenBlueprintValidatorException(
                     cls_mthd=method,
-                    cls_name=cls.__name__,
+                    cls_name=self.__class__.__name__,
                     msg=TokenBlueprintValidatorException.MSG,
                     err_code=TokenBlueprintValidatorException.ERR_CODE,
                     ex=home_detection_result.exception,
                 )
             )
         # Handle the case that, the rank is not safe to use.
-        rank_validation_result = toolkit.blueprint_rank_processor.execute(
+        rank_validation_result = self.toolkit.blueprint_rank_processor.execute(
             blueprint=blueprint,
-            toolkit=toolkit,
+            toolkit=self.toolkit,
         )
         if rank_validation_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 TokenBlueprintValidatorException(
                     cls_mthd=method,
-                    cls_name=cls.__name__,
+                    cls_name=self.__class__.__name__,
                     msg=TokenBlueprintValidatorException.MSG,
                     err_code=TokenBlueprintValidatorException.ERR_CODE,
                     ex=rank_validation_result.exception,

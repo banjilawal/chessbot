@@ -11,7 +11,7 @@ from __future__ import annotations
 from typing import cast, Any
 
 from logic.zone import Zone, NullZoneException
-from logic.zone.service.operation.validation.exception.transaction import ZoneValidationException
+from logic.zone.service.operation.validation.exception.transaction import ZoneValidatorException
 from system import (
     NUMBER_OF_ROWS, Validator, ValidationResult, LoggingLevelRouter, NumberValidator
 )
@@ -63,7 +63,7 @@ class ZoneValidator(Validator[Zone]):
         Raises:
             TypeError
             NullZoneException
-            ZoneValidationException
+            ZoneValidatorException
         """
         method = f"{cls.__name__}.execute"
         
@@ -71,13 +71,13 @@ class ZoneValidator(Validator[Zone]):
         if candidate is None:
             # Return the exception on failure.
             return ValidationResult.failure(
-                ZoneValidationException(
+                ZoneValidatorException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    op=ZoneValidationException.OP,
-                    msg=ZoneValidationException.MSG,
-                    err_code=ZoneValidationException.ERR_CODE,
-                    mthd_rslt_type=ZoneValidationException.MTHD_RSLT,
+                    op=ZoneValidatorException.OP,
+                    msg=ZoneValidatorException.MSG,
+                    err_code=ZoneValidatorException.ERR_CODE,
+                    mthd_rslt_type=ZoneValidatorException.MTHD_RSLT,
                     ex=NullZoneException(
                         msg=NullZoneException.MSG,
                         err_code=NullZoneException.ERR_CODE,
@@ -88,13 +88,13 @@ class ZoneValidator(Validator[Zone]):
         if not isinstance(candidate, Zone):
             # Return the exception on failure.
             return ValidationResult.failure(
-                ZoneValidationException(
+                ZoneValidatorException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    op=ZoneValidationException.OP,
-                    msg=ZoneValidationException.MSG,
-                    err_code=ZoneValidationException.ERR_CODE,
-                    mthd_rslt_type=ZoneValidationException.MTHD_RSLT,
+                    op=ZoneValidatorException.OP,
+                    msg=ZoneValidatorException.MSG,
+                    err_code=ZoneValidatorException.ERR_CODE,
+                    mthd_rslt_type=ZoneValidatorException.MTHD_RSLT,
                     ex=TypeError(
                         f"Expected a Zone, got {type(candidate).__name__} instead."
                     )
@@ -113,13 +113,13 @@ class ZoneValidator(Validator[Zone]):
             if validate_result.is_failure:
                 # Return the exception on failure.
                 return ValidationResult.failure(
-                    ZoneValidationException(
+                    ZoneValidatorException(
                         cls_mthd=method,
                         cls_name=cls.__name__,
-                        op=ZoneValidationException.OP,
-                        msg=ZoneValidationException.MSG,
-                        err_code=ZoneValidationException.ERR_CODE,
-                        mthd_rslt_type=ZoneValidationException.MTHD_RSLT,
+                        op=ZoneValidatorException.OP,
+                        msg=ZoneValidatorException.MSG,
+                        err_code=ZoneValidatorException.ERR_CODE,
+                        mthd_rslt_type=ZoneValidatorException.MTHD_RSLT,
                         ex=validate_result.exception
                     )
                 )

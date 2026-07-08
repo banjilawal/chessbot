@@ -10,15 +10,15 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import ValidationException
+from err import ValidatorException
 
 __all__ = [
     # ======================# COORD_VALIDATION_EXCEPTION #======================#
-    "CoordValidationException",
+    "CoordValidatorException",
 ]
 
 # ======================# COORD_VALIDATION_EXCEPTION #======================#
-class CoordValidationException(ValidationException):
+class CoordValidatorException(ValidatorException):
     """
     Role:
         -   Error Tracing
@@ -39,7 +39,7 @@ class CoordValidationException(ValidationException):
     Provides:
 
     Super Class:
-        ValidationException
+        ValidatorException
     """
     MSG = "CoordValidation check failed"
     ERR_CODE = "COORD_VALIDATION_EXCEPTION"

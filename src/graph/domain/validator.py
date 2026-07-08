@@ -65,7 +65,7 @@ class DomainValidator(Validator[Domain]):
             * DomainNullFriendsDictException
             * InvalidDomainException
         """
-        method = "DomainValidator.validate"
+        method = "DomainValidator.execute"
         
         try:
             if candidate is None:
@@ -84,7 +84,7 @@ class DomainValidator(Validator[Domain]):
             if id_validation.is_failure():
                 return ValidationResult.failure(id_validation.exception)
             
-            domain_origin_validation = domain_origin_validator.validate(domain.origin)
+            domain_origin_validation = domain_origin_validator.execute(domain.origin)
             if domain_origin_validation.is_failure():
                 return ValidationResult.failure(domain_origin_validation.exception)
       

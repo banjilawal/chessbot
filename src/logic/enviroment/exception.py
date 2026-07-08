@@ -8,7 +8,7 @@ Version: 1.0.1
 """
 
 from system import (
-    ChessException, NullException, ValidationException, BuilderException, InconsistencyException
+    ChessException, NullException, ValidatorException, BuilderException, InconsistencyException
 )
 
 
@@ -48,7 +48,7 @@ class NullTurnSceneException(TurnSceneException, NullException):
   MSG = "A TurnScene cannot be null."
 
 
-class InvalidTurnSceneException(TurnSceneException, ValidationException):
+class InvalidTurnSceneException(TurnSceneException, ValidatorException):
   """"""
   ERR_CODE = "TURN_SCENE_VALIDATION_EXCEPTION"
   MSG = "TurnScene validation failed."

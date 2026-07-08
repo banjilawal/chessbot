@@ -8,7 +8,7 @@ version: 1.0.0
 """
 
 from logic.agent import AgentVarietyException
-from system import ValidationException
+from system import ValidatorException
 
 
 __all__ = [
@@ -18,7 +18,7 @@ __all__ = [
 
 
 #======================# PLAYER_VARIETY VALIDATION EXCEPTION  #======================#
-class InvalidAgentVarietyException(AgentVarietyException, ValidationException):
+class InvalidAgentVarietyException(AgentVarietyException, ValidatorException):
     """
     Role:Exception Work
 
@@ -28,7 +28,7 @@ class InvalidAgentVarietyException(AgentVarietyException, ValidationException):
 
     Super Class:
         *   AgentVarietyException
-        *   ValidationException
+        *   ValidatorException
 
     Provides:
 

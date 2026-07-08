@@ -28,7 +28,7 @@ class FormationLookupFailedException(FormationException, LookupException):
     2.  The FormationLookupFailedException chain is useful for tracing a work to its source.
 
     Super Class:
-        *   FormationValidationException
+        *   FormationValidatorException
         *   LookupServiceException
 
     Provides:

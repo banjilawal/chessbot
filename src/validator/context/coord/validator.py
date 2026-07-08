@@ -10,7 +10,7 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, cast
 
-from err import CoordContextValidationException
+from err import CoordContextValidatorException
 from model import CoordContext
 from result import ValidationResult
 from setting import BoardProperty
@@ -64,7 +64,7 @@ class CoordContextValidator(ContextValidator[Coord]):
         Returns:
             ValidationResult[Coord]
         Raises:
-            CoordContextValidationException
+            CoordContextValidatorException
         """
         method = f"{cls.__name__}.validate"
         
@@ -82,11 +82,11 @@ class CoordContextValidator(ContextValidator[Coord]):
         if priming_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                CoordContextValidationException(
+                CoordContextValidatorException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    msg=CoordContextValidationException.MSG,
-                    err_code=CoordContextValidationException.ERR_CODE,
+                    msg=CoordContextValidatorException.MSG,
+                    err_code=CoordContextValidatorException.ERR_CODE,
                     ex=priming_result.exception
                 )
             )
@@ -103,11 +103,11 @@ class CoordContextValidator(ContextValidator[Coord]):
             if validation_result.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
-                    CoordContextValidationException(
+                    CoordContextValidatorException(
                         cls_mthd=method,
                         cls_name=cls.__name__,
-                        msg=CoordContextValidationException.MSG,
-                        err_code=CoordContextValidationException.ERR_CODE,
+                        msg=CoordContextValidatorException.MSG,
+                        err_code=CoordContextValidatorException.ERR_CODE,
                         ex=validation_result.exception
                     )
                 )

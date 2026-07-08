@@ -82,7 +82,7 @@ class NumberValidator(Validator[int]):
             priming_validator = PrimingValidator()
         
         # Handle the case that, the validator is not primed.
-        validator_priming_result = priming_validator.validate(
+        validator_priming_result = priming_validator.execute(
             candidate=candidate,
             target_model=int,
             null_exception=NumberNullException(),

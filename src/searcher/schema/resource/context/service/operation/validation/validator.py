@@ -14,7 +14,7 @@ from typing import Any, cast
 from system import LoggingLevelRouter, Validator, ValidationResult
 from model.catalog import (
     ExcessSchemaContextFlagsException, NullSchemaContextException, SchemaContext, SchemaContextIntegrityWorkers,
-    SchemaContextValidationException, SchemaContextValidationRouteException, ZeroSchemaContextFlagsException
+    SchemaContextValidatorException, SchemaContextValidationRouteException, ZeroSchemaContextFlagsException
 )
 
 class SchemaContextValidator(Validator[SchemaContext]):
@@ -68,7 +68,7 @@ class SchemaContextValidator(Validator[SchemaContext]):
             TypeError
             NullSchemaContextException
             ZeroSchemaContextFlagsException
-            SchemaContextValidationException
+            SchemaContextValidatorException
             ExcessSchemaContextFlagsException
             TeamContextValidationRouteException
         """
@@ -78,16 +78,16 @@ class SchemaContextValidator(Validator[SchemaContext]):
         if candidate is None:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                SchemaContextValidationException(
+                SchemaContextValidatorException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    op=SchemaContextValidationException.OP,
-                    msg=SchemaContextValidationException.MSG,
-                    err_code=SchemaContextValidationException.ERR_CODE,
-                    mthd_rslt_type=SchemaContextValidationException.MTHD_RSLT,
+                    op=SchemaContextValidatorException.OP,
+                    msg=SchemaContextValidatorException.MSG,
+                    err_code=SchemaContextValidatorException.ERR_CODE,
+                    mthd_rslt_type=SchemaContextValidatorException.MTHD_RSLT,
                     ex=NullSchemaContextException(
-                        msg=SchemaContextValidationException.MSG,
-                        err_code=SchemaContextValidationException.ERR_CODE,
+                        msg=SchemaContextValidatorException.MSG,
+                        err_code=SchemaContextValidatorException.ERR_CODE,
                     )
                 )
             )
@@ -95,13 +95,13 @@ class SchemaContextValidator(Validator[SchemaContext]):
         if not isinstance(candidate, SchemaContext):
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                SchemaContextValidationException(
+                SchemaContextValidatorException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    op=SchemaContextValidationException.OP,
-                    msg=SchemaContextValidationException.MSG,
-                    err_code=SchemaContextValidationException.ERR_CODE,
-                    mthd_rslt_type=SchemaContextValidationException.MTHD_RSLT,
+                    op=SchemaContextValidatorException.OP,
+                    msg=SchemaContextValidatorException.MSG,
+                    err_code=SchemaContextValidatorException.ERR_CODE,
+                    mthd_rslt_type=SchemaContextValidatorException.MTHD_RSLT,
                     ex=TypeError(
                         f"Expected SchemaContext, got {type(candidate).__name__} instead."
                     )
@@ -115,13 +115,13 @@ class SchemaContextValidator(Validator[SchemaContext]):
         if flag_count == 0:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                SchemaContextValidationException(
+                SchemaContextValidatorException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    op=SchemaContextValidationException.OP,
-                    msg=SchemaContextValidationException.MSG,
-                    err_code=SchemaContextValidationException.ERR_CODE,
-                    mthd_rslt_type=SchemaContextValidationException.MTHD_RSLT,
+                    op=SchemaContextValidatorException.OP,
+                    msg=SchemaContextValidatorException.MSG,
+                    err_code=SchemaContextValidatorException.ERR_CODE,
+                    mthd_rslt_type=SchemaContextValidatorException.MTHD_RSLT,
                     ex=ZeroSchemaContextFlagsException(
                         msg=ZeroSchemaContextFlagsException.MSG,
                         err_code=ZeroSchemaContextFlagsException.ERR_CODE,
@@ -132,13 +132,13 @@ class SchemaContextValidator(Validator[SchemaContext]):
         if flag_count > 1:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                SchemaContextValidationException(
+                SchemaContextValidatorException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    op=SchemaContextValidationException.OP,
-                    msg=SchemaContextValidationException.MSG,
-                    err_code=SchemaContextValidationException.ERR_CODE,
-                    mthd_rslt_type=SchemaContextValidationException.MTHD_RSLT,
+                    op=SchemaContextValidatorException.OP,
+                    msg=SchemaContextValidatorException.MSG,
+                    err_code=SchemaContextValidatorException.ERR_CODE,
+                    mthd_rslt_type=SchemaContextValidatorException.MTHD_RSLT,
                     ex=ExcessSchemaContextFlagsException(
                         msg=ExcessSchemaContextFlagsException.MSG,
                         err_code=ExcessSchemaContextFlagsException.ERR_CODE,
@@ -155,13 +155,13 @@ class SchemaContextValidator(Validator[SchemaContext]):
             if validation_result.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
-                    SchemaContextValidationException(
+                    SchemaContextValidatorException(
                         cls_mthd=method,
                         cls_name=cls.__name__,
-                        op=SchemaContextValidationException.OP,
-                        msg=SchemaContextValidationException.MSG,
-                        err_code=SchemaContextValidationException.ERR_CODE,
-                        mthd_rslt_type=SchemaContextValidationException.MTHD_RSLT,
+                        op=SchemaContextValidatorException.OP,
+                        msg=SchemaContextValidatorException.MSG,
+                        err_code=SchemaContextValidatorException.ERR_CODE,
+                        mthd_rslt_type=SchemaContextValidatorException.MTHD_RSLT,
                         ex=validation_result.exception
                     )
                 )
@@ -176,13 +176,13 @@ class SchemaContextValidator(Validator[SchemaContext]):
             if validation_result.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
-                    SchemaContextValidationException(
+                    SchemaContextValidatorException(
                         cls_mthd=method,
                         cls_name=cls.__name__,
-                        op=SchemaContextValidationException.OP,
-                        msg=SchemaContextValidationException.MSG,
-                        err_code=SchemaContextValidationException.ERR_CODE,
-                        mthd_rslt_type=SchemaContextValidationException.MTHD_RSLT,
+                        op=SchemaContextValidatorException.OP,
+                        msg=SchemaContextValidatorException.MSG,
+                        err_code=SchemaContextValidatorException.ERR_CODE,
+                        mthd_rslt_type=SchemaContextValidatorException.MTHD_RSLT,
                         ex=validation_result.exception
                     )
                 )
@@ -197,13 +197,13 @@ class SchemaContextValidator(Validator[SchemaContext]):
             if validation_result.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
-                    SchemaContextValidationException(
+                    SchemaContextValidatorException(
                         cls_mthd=method,
                         cls_name=cls.__name__,
-                        op=SchemaContextValidationException.OP,
-                        msg=SchemaContextValidationException.MSG,
-                        err_code=SchemaContextValidationException.ERR_CODE,
-                        mthd_rslt_type=SchemaContextValidationException.MTHD_RSLT,
+                        op=SchemaContextValidatorException.OP,
+                        msg=SchemaContextValidatorException.MSG,
+                        err_code=SchemaContextValidatorException.ERR_CODE,
+                        mthd_rslt_type=SchemaContextValidatorException.MTHD_RSLT,
                         ex=validation_result.exception
                     )
                 )
@@ -218,13 +218,13 @@ class SchemaContextValidator(Validator[SchemaContext]):
             if validation_result.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
-                    SchemaContextValidationException(
+                    SchemaContextValidatorException(
                         cls_mthd=method,
                         cls_name=cls.__name__,
-                        op=SchemaContextValidationException.OP,
-                        msg=SchemaContextValidationException.MSG,
-                        err_code=SchemaContextValidationException.ERR_CODE,
-                        mthd_rslt_type=SchemaContextValidationException.MTHD_RSLT,
+                        op=SchemaContextValidatorException.OP,
+                        msg=SchemaContextValidatorException.MSG,
+                        err_code=SchemaContextValidatorException.ERR_CODE,
+                        mthd_rslt_type=SchemaContextValidatorException.MTHD_RSLT,
                         ex=validation_result.exception
                     )
                 )
@@ -239,13 +239,13 @@ class SchemaContextValidator(Validator[SchemaContext]):
             if validation_result.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
-                    SchemaContextValidationException(
+                    SchemaContextValidatorException(
                         cls_mthd=method,
                         cls_name=cls.__name__,
-                        op=SchemaContextValidationException.OP,
-                        msg=SchemaContextValidationException.MSG,
-                        err_code=SchemaContextValidationException.ERR_CODE,
-                        mthd_rslt_type=SchemaContextValidationException.MTHD_RSLT,
+                        op=SchemaContextValidatorException.OP,
+                        msg=SchemaContextValidatorException.MSG,
+                        err_code=SchemaContextValidatorException.ERR_CODE,
+                        mthd_rslt_type=SchemaContextValidatorException.MTHD_RSLT,
                         ex=validation_result.exception
                     )
                 )
@@ -260,13 +260,13 @@ class SchemaContextValidator(Validator[SchemaContext]):
             if validation_result.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
-                    SchemaContextValidationException(
+                    SchemaContextValidatorException(
                         cls_mthd=method,
                         cls_name=cls.__name__,
-                        op=SchemaContextValidationException.OP,
-                        msg=SchemaContextValidationException.MSG,
-                        err_code=SchemaContextValidationException.ERR_CODE,
-                        mthd_rslt_type=SchemaContextValidationException.MTHD_RSLT,
+                        op=SchemaContextValidatorException.OP,
+                        msg=SchemaContextValidatorException.MSG,
+                        err_code=SchemaContextValidatorException.ERR_CODE,
+                        mthd_rslt_type=SchemaContextValidatorException.MTHD_RSLT,
                         ex=validation_result.exception
                     )
                 )
@@ -281,13 +281,13 @@ class SchemaContextValidator(Validator[SchemaContext]):
             if validation_result.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
-                    SchemaContextValidationException(
+                    SchemaContextValidatorException(
                         cls_mthd=method,
                         cls_name=cls.__name__,
-                        op=SchemaContextValidationException.OP,
-                        msg=SchemaContextValidationException.MSG,
-                        err_code=SchemaContextValidationException.ERR_CODE,
-                        mthd_rslt_type=SchemaContextValidationException.MTHD_RSLT,
+                        op=SchemaContextValidatorException.OP,
+                        msg=SchemaContextValidatorException.MSG,
+                        err_code=SchemaContextValidatorException.ERR_CODE,
+                        mthd_rslt_type=SchemaContextValidatorException.MTHD_RSLT,
                         ex=validation_result.exception
                     )
                 )
@@ -305,13 +305,13 @@ class SchemaContextValidator(Validator[SchemaContext]):
             if validation_result.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
-                    SchemaContextValidationException(
+                    SchemaContextValidatorException(
                         cls_mthd=method,
                         cls_name=cls.__name__,
-                        op=SchemaContextValidationException.OP,
-                        msg=SchemaContextValidationException.MSG,
-                        err_code=SchemaContextValidationException.ERR_CODE,
-                        mthd_rslt_type=SchemaContextValidationException.MTHD_RSLT,
+                        op=SchemaContextValidatorException.OP,
+                        msg=SchemaContextValidatorException.MSG,
+                        err_code=SchemaContextValidatorException.ERR_CODE,
+                        mthd_rslt_type=SchemaContextValidatorException.MTHD_RSLT,
                         ex=validation_result.exception
                     )
                 )
@@ -320,13 +320,13 @@ class SchemaContextValidator(Validator[SchemaContext]):
         
         # Handle the case that, there is no validation logic for the attribute.
         return ValidationResult.failure(
-            SchemaContextValidationException(
+            SchemaContextValidatorException(
                 cls_mthd=method,
                 cls_name=cls.__name__,
-                op=SchemaContextValidationException.OP,
-                msg=SchemaContextValidationException.MSG,
-                err_code=SchemaContextValidationException.ERR_CODE,
-                mthd_rslt_type=SchemaContextValidationException.MTHD_RSLT,
+                op=SchemaContextValidatorException.OP,
+                msg=SchemaContextValidatorException.MSG,
+                err_code=SchemaContextValidatorException.ERR_CODE,
+                mthd_rslt_type=SchemaContextValidatorException.MTHD_RSLT,
                 ex=SchemaContextValidationRouteException(
                     msg=SchemaContextValidationRouteException.MSG,
                     err_code=SchemaContextValidationRouteException.ERR_CODE,

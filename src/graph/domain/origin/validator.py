@@ -66,7 +66,7 @@ class DomainOriginValidator(Validator[DomainOrigin]):
             * TypeError
             * InvalidDomainOriginException
         """
-        method = "DomainOriginValidator.validate"
+        method = "DomainOriginValidator.execute"
         
         try:
             if candidate is None:
@@ -83,7 +83,7 @@ class DomainOriginValidator(Validator[DomainOrigin]):
             
             domain_origin = cast(DomainOrigin, candidate)
             
-            piece_square_binding_validation = square_validator.validate_piece_square_binding(
+            piece_square_binding_validation = square_validator.execute_piece_square_binding(
                 square_candidate=domain_origin.square,
                 piece_candidate=domain_origin.owner,
                 piece_validator=piece_validator,

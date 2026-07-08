@@ -44,15 +44,15 @@ class FormationValidator(Validator[Formation]):
         Raises:
             *   TypeError
             *   NullFormationException
-            *   FormationValidationException
+            *   FormationValidatorException
         """
-        method = "FormationValidator.validate"
+        method = "FormationValidator.execute"
         # Handle the nonexistence case.
         if candidate is None:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                FormationValidationException(
-                    msg=f"{method}: {FormationValidationException.ERR_CODE}",
+                FormationValidatorException(
+                    msg=f"{method}: {FormationValidatorException.ERR_CODE}",
                     ex=NullFormationException(f"{method} {NullFormationException.MSG}")
                 )
             )
@@ -60,8 +60,8 @@ class FormationValidator(Validator[Formation]):
         if not isinstance(candidate, Formation):
             # Return the exception chain on failure
             return ValidationResult.failure(
-                FormationValidationException(
-                    msg=f"{method}: {FormationValidationException.ERR_CODE}",
+                FormationValidatorException(
+                    msg=f"{method}: {FormationValidatorException.ERR_CODE}",
                     ex=TypeError(f"{method} Expected a Formation, got {type(candidate).__name__} instead.")
                 )
             )

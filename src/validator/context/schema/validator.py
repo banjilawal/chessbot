@@ -58,16 +58,16 @@ class SchemaContextValidator(ContextValidator[SchemaKey]):
             *   NNullSchemaKeyException
             *   ZeroSchemaKeysException
             *   ArenaSchemaKeysException
-            *   SchemaKeyValidationException
+            *   SchemaKeyValidatorException
         """
-        method = "SchemaContextValidator.validate"
+        method = "SchemaContextValidator.execute"
         
         # Handle the nonexistence case.
         if candidate is None:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                SchemaKeyValidationException(
-                    msg=f"{method}: {SchemaKeyValidationException.ERR_CODE}",
+                SchemaKeyValidatorException(
+                    msg=f"{method}: {SchemaKeyValidatorException.ERR_CODE}",
                     ex=NullSchemaKeyException(f"{method}: {NullSchemaKeyException.MSG}")
                 )
             )
@@ -75,8 +75,8 @@ class SchemaContextValidator(ContextValidator[SchemaKey]):
         if not isinstance(candidate, SchemaKey):
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                SchemaKeyValidationException(
-                    msg=f"{method}: {SchemaKeyValidationException.ERR_CODE}",
+                SchemaKeyValidatorException(
+                    msg=f"{method}: {SchemaKeyValidatorException.ERR_CODE}",
                     ex=TypeError(f"{method}: Expected SchemaKey, got {type(candidate).__name__} instead.")
                 )
             )
@@ -89,8 +89,8 @@ class SchemaContextValidator(ContextValidator[SchemaKey]):
         if size  == 0:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                SchemaKeyValidationException(
-                    msg=f"{method}: {SchemaKeyValidationException.ERR_CODE}",
+                SchemaKeyValidatorException(
+                    msg=f"{method}: {SchemaKeyValidatorException.ERR_CODE}",
                     ex=ZeroSchemaKeysException(f"{method}: {ZeroSchemaKeysException.MSG}")
                 )
             )
@@ -98,8 +98,8 @@ class SchemaContextValidator(ContextValidator[SchemaKey]):
         if size > 1:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                SchemaKeyValidationException(
-                    msg=f"{method}: {SchemaKeyValidationException.ERR_CODE}",
+                SchemaKeyValidatorException(
+                    msg=f"{method}: {SchemaKeyValidatorException.ERR_CODE}",
                     ex=ArenaSchemaKeysException(
                         f"{method}: {ArenaSchemaKeysException.MSG}"
                     )
@@ -114,8 +114,8 @@ class SchemaContextValidator(ContextValidator[SchemaKey]):
             # Send the exception chain on failure.
             if validator.is_failure:
                 return ValidationResult.failure(
-                    SchemaKeyValidationException(
-                        msg=f"{method}: {SchemaKeyValidationException.ERR_CODE}",
+                    SchemaKeyValidatorException(
+                        msg=f"{method}: {SchemaKeyValidatorException.ERR_CODE}",
                         ex=validator.exception
                     )
                 )
@@ -128,8 +128,8 @@ class SchemaContextValidator(ContextValidator[SchemaKey]):
             if validator.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
-                    SchemaKeyValidationException(
-                        msg=f"{method}: {SchemaKeyValidationException.ERR_CODE}",
+                    SchemaKeyValidatorException(
+                        msg=f"{method}: {SchemaKeyValidatorException.ERR_CODE}",
                         ex=validator.exception
                     )
                 )
@@ -138,8 +138,8 @@ class SchemaContextValidator(ContextValidator[SchemaKey]):
         
         # The default returns failure.
         return ValidationResult.failure(
-            SchemaKeyValidationException(
-                msg=f"{method}: {SchemaKeyValidationException.ERR_CODE}",
+            SchemaKeyValidatorException(
+                msg=f"{method}: {SchemaKeyValidatorException.ERR_CODE}",
                 ex=SchemaKeyValidationRouteException(
                     f"{method}: {SchemaKeyValidationRouteException.ERR_CODE}"
                 )

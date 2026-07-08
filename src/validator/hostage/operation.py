@@ -62,19 +62,19 @@ class HostageValidator(Validator[Hostage]):
             *   PrisonerCapturedByDifferentEnemyException
             *   UnformedTokenCannotBeVictorException
             *   PrisonerCannotBeActiveCombatantException
-            *   HostageValidationException
+            *   HostageValidatorException
             *   VictorAndPrisonerOnDifferentBoardsException
             *   PrisonerAlreadyHasHostageException
             *   PrisonerCapturedOnDifferentSquareException
         """
-        method = "HostageValidator.validate"
+        method = "HostageValidator.execute"
         
         # Handle the case that, the rank does not exist.
         if candidate is None:
             # Send the exception chain on failure
             return ValidationResult.failure(
-                HostageValidationException(
-                    msg=f"{method}: {HostageValidationException.MSG}",
+                HostageValidatorException(
+                    msg=f"{method}: {HostageValidatorException.MSG}",
                     ex=NullHostageException(f"{method}: {NullHostageException.MSG}")
                 )
             )
@@ -82,8 +82,8 @@ class HostageValidator(Validator[Hostage]):
         if not isinstance(candidate, Hostage):
             # Send the exception chain on failure
             return ValidationResult.failure(
-                HostageValidationException(
-                    msg=f"{method}: {HostageValidationException.MSG}",
+                HostageValidatorException(
+                    msg=f"{method}: {HostageValidatorException.MSG}",
                     ex=TypeError(f"{method}: Expected Hostage, {type(candidate).__name__} instead.")
                 )
             )
@@ -96,8 +96,8 @@ class HostageValidator(Validator[Hostage]):
         if id_validator.failure:
             # Send the exception chain on failure
             return ValidationResult.failure(
-                HostageValidationException(
-                    msg=f"{method}: {HostageValidationException.MSG}",
+                HostageValidatorException(
+                    msg=f"{method}: {HostageValidatorException.MSG}",
                     ex=id_validator.exception
                 )
             )
@@ -106,8 +106,8 @@ class HostageValidator(Validator[Hostage]):
         if captured_square_validator.failure:
             # Send the exception chain on failure
             return ValidationResult.failure(
-                HostageValidationException(
-                    msg=f"{method}: {HostageValidationException.MSG}",
+                HostageValidatorException(
+                    msg=f"{method}: {HostageValidatorException.MSG}",
                     ex=captured_square_validator.exception
                 )
             )
@@ -116,8 +116,8 @@ class HostageValidator(Validator[Hostage]):
         if victor_square_validator.failure:
             # Send the exception chain on failure
             return ValidationResult.failure(
-                HostageValidationException(
-                    msg=f"{method}: {HostageValidationException.MSG}",
+                HostageValidatorException(
+                    msg=f"{method}: {HostageValidatorException.MSG}",
                     ex=victor_square_validator.exception
                 )
             )
@@ -128,8 +128,8 @@ class HostageValidator(Validator[Hostage]):
         if prisoner_validator.failure:
             # Send the exception chain on failure
             return ValidationResult.failure(
-                HostageValidationException(
-                    msg=f"{method}: {HostageValidationException.MSG}",
+                HostageValidatorException(
+                    msg=f"{method}: {HostageValidatorException.MSG}",
                     ex=prisoner_validator.exception
                 )
             )
@@ -137,8 +137,8 @@ class HostageValidator(Validator[Hostage]):
         if manifest.prisoner.is_active:
             # Send the exception chain on failure
             return ValidationResult.failure(
-                HostageValidationException(
-                    msg=f"{method}: {HostageValidationException.MSG}",
+                HostageValidatorException(
+                    msg=f"{method}: {HostageValidatorException.MSG}",
                     ex=PrisonerCannotBeActiveCombatantException(
                         f"{method}: {PrisonerCannotBeActiveCombatantException.MSG}"
                     )
@@ -148,8 +148,8 @@ class HostageValidator(Validator[Hostage]):
         if not manifest.prisoner.being_processed_as_hostage:
             # Send the exception chain on failure
             return ValidationResult.failure(
-                HostageValidationException(
-                    msg=f"{method}: {HostageValidationException.MSG}",
+                HostageValidatorException(
+                    msg=f"{method}: {HostageValidatorException.MSG}",
                     ex=PrisonerAlreadyHasHostageException(
                         f"{method}: {PrisonerAlreadyHasHostageException.MSG}"
                     )
@@ -159,8 +159,8 @@ class HostageValidator(Validator[Hostage]):
         if manifest.prisoner.current_position != manifest.captured_square.coord:
             # Send the exception chain on failure
             return ValidationResult.failure(
-                HostageValidationException(
-                    msg=f"{method}: {HostageValidationException.MSG}",
+                HostageValidatorException(
+                    msg=f"{method}: {HostageValidatorException.MSG}",
                     ex=PrisonerCapturedOnDifferentSquareException(
                         f"{method}: {PrisonerCapturedOnDifferentSquareException.MSG}"
                     )
@@ -176,8 +176,8 @@ class HostageValidator(Validator[Hostage]):
         if victor_validator.failure:
             # Send the exception chain on failure
             return ValidationResult.failure(
-                HostageValidationException(
-                    msg=f"{method}: {HostageValidationException.MSG}",
+                HostageValidatorException(
+                    msg=f"{method}: {HostageValidatorException.MSG}",
                     ex=victor_validator.exception
                 )
             )
@@ -185,8 +185,8 @@ class HostageValidator(Validator[Hostage]):
         if manifest.victor.deployment_state == TokenBoardState.NOT_DEPLOYED:
             # Send the exception chain on failure
             return ValidationResult.failure(
-                HostageValidationException(
-                    msg=f"{method}: {HostageValidationException.MSG}",
+                HostageValidatorException(
+                    msg=f"{method}: {HostageValidatorException.MSG}",
                     ex=UnformedTokenCannotBeVictorException(
                         f"{method}: {UnformedTokenCannotBeVictorException.MSG}"
                     )
@@ -201,8 +201,8 @@ class HostageValidator(Validator[Hostage]):
         if prisoner == victor:
             # Send the exception chain on failure
             return ValidationResult.failure(
-                HostageValidationException(
-                    msg=f"{method}: {HostageValidationException.MSG}",
+                HostageValidatorException(
+                    msg=f"{method}: {HostageValidatorException.MSG}",
                     ex=TokenCannotCaptureItselfException(
                         f"{method}: {TokenCannotCaptureItselfException.MSG}"
                     )
@@ -212,8 +212,8 @@ class HostageValidator(Validator[Hostage]):
         if victor.team.board != prisoner.team.board:
             # Send the exception chain on failure
             return ValidationResult.failure(
-                HostageValidationException(
-                    msg=f"{method}: {HostageValidationException.MSG}",
+                HostageValidatorException(
+                    msg=f"{method}: {HostageValidatorException.MSG}",
                     ex=VictorAndPrisoneOnDifferentBoardsException(
                         f"{method}: {VictorAndPrisoneOnDifferentBoardsException.MSG}"
                     )
@@ -223,8 +223,8 @@ class HostageValidator(Validator[Hostage]):
         if not victor.is_enemy(prisoner):
             # Send the exception chain on failure
             return ValidationResult.failure(
-                HostageValidationException(
-                    msg=f"{method}: {HostageValidationException.MSG}",
+                HostageValidatorException(
+                    msg=f"{method}: {HostageValidatorException.MSG}",
                     ex=FriendCannotCaptureFriendException(
                         f"{method}: {FriendCannotCaptureFriendException.MSG}"
                     )
@@ -234,8 +234,8 @@ class HostageValidator(Validator[Hostage]):
         if prisoner.captor != victor:
             # Send the exception chain on failure
             return ValidationResult.failure(
-                HostageValidationException(
-                    msg=f"{method}: {HostageValidationException.MSG}",
+                HostageValidatorException(
+                    msg=f"{method}: {HostageValidatorException.MSG}",
                     ex=PrisonerCapturedByDifferentEnemyException(
                         f"{method}: {PrisonerCapturedByDifferentEnemyException.MSG}"
                     )

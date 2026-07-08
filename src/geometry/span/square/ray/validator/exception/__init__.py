@@ -13,6 +13,6 @@ version: 1.0.0
 from .null import *
 
 # Modules
-from .work import SquareRayValidationException
+from .work import SquareRayValidatorException
 
 

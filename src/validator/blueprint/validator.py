@@ -8,15 +8,17 @@ version: 1.0.1
 """
 
 from __future__ import annotations
+
+from abc import abstractmethod
 from typing import Any, TypeVar
 
+from blueprint import Blueprint
 from result import ValidationResult
 from util import LoggingLevelRouter
 from validator import Validator
 
-T = TypeVar("T")
 
-class BlueprintValidator(Validator):
+class BlueprintValidator(Validator[Blueprint]):
     """
     Role
         -   Transaction Worker
@@ -33,11 +35,12 @@ class BlueprintValidator(Validator):
         -   def validate(candidate: Any, toolkit: BlueprintToolkit[T],) -> ValidationResult[Blueprint[T]]:
 
     Super Class:
-        BlueprintValidator
+        Validator
     """
-    @classmethod
+    
+    @abstractmethod
     @LoggingLevelRouter.monitor
-    def execute(cls, candidate: Any, toolkit: BlueprintToolkit[T], ) -> ValidationResult[Blueprint[T]]:
+    def execute(self, candidate: Any,) -> ValidationResult:
         pass
-        
+    
     

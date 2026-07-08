@@ -32,7 +32,7 @@ DEPENDENCIES:
 Requires base rollback_exception classes and constants from the kernel system:
 From `logic.system`:
   * Constants: `NUMBER_OF_ROWS`, `NUMBER_OF_COLUMNS`
-  * Exception: `ChessException`, `ValidationException`, `NullException`,
+  * Exception: `ChessException`, `ValidatorException`, `NullException`,
         `BuilderException`.
 
 CONTAINS:
@@ -42,7 +42,7 @@ See the list of exception in the `__all__` list following (e.g., `CoordException
 """
 
 from system import (
-    EventException, NullException, BuilderException, TransactionException, ValidationException,
+    EventException, NullException, BuilderException, TransactionException, ValidatorException,
     ResourceException, InconsistencyException
 )
 

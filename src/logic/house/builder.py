@@ -23,7 +23,7 @@ class HouseBuilder(Builder[House]):
         method = "HouseBuilder.build"
         
         try:
-            turn_scene_validation = TurnSceneValidator.validate(turn_scene)
+            turn_scene_validation = TurnSceneValidator.execute(turn_scene)
             if turn_scene_validation.is_failure():
                 return BuildResult.failure(turn_scene_validation.exception)
             

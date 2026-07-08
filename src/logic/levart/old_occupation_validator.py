@@ -24,9 +24,9 @@ class OldOccupationEventValidator(EventValidator[OccupationEvent]):
       `TypeError`: if `rank` is not OperationEvent
       `NullOccupationEventException`: if `rank` is validation
 
-      `IdValidationException`: if invalid `visitor_id`
-      `PieceValidationException`: if `actor_candidate` fails coord_stack_validator
-      `SquareValidationException`: if `target` fails coord_stack_validator
+      `IdValidatorException`: if invalid `visitor_id`
+      `PieceValidatorException`: if `actor_candidate` fails coord_stack_validator
+      `SquareValidatorException`: if `target` fails coord_stack_validator
 
       `AutoOccupationException`: if target already occupies the square_name
       `KingAttackException`: if the target square_name is occupied by an enemy occupation
@@ -48,7 +48,7 @@ class OldOccupationEventValidator(EventValidator[OccupationEvent]):
 
       id_validation = IdValidator.search_service(event.visitor_id)
       if not id_validation.is_success():
-        raise IdValidationException(f"{method}: {IdValidationException.MSG}")
+        raise IdValidatorException(f"{method}: {IdValidatorException.MSG}")
 
       actor_validation = ActorValidator.search_service(event.actor)
       if not actor_validation.is_success():
@@ -65,8 +65,8 @@ class OldOccupationEventValidator(EventValidator[OccupationEvent]):
 
     except (
         TypeError,
-        IdValidationException,
-        TokenValidationException,
+        IdValidatorException,
+        TokenValidatorException,
         InvalidSqaureException,
         NullOccupationEventException,
         CircularOccupationException

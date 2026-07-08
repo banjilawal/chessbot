@@ -15,7 +15,7 @@ from model import Schema, TeamContext
 from result import ValidationResult
 from toolkit import TeamContextToolkit
 from util import LoggingLevelRouter
-from err import SchemaNullException, TeamContextValidationException, TeamContextValidationRouteException
+from err import SchemaNullException, TeamContextValidatorException, TeamContextValidationRouteException
 from validator import ContextValidator
 
 
@@ -64,7 +64,7 @@ class TeamContextValidator(ContextValidator[Team]):
         Returns:
             ValidationResult[Team]
         Raises:
-            TeamContextValidationException
+            TeamContextValidatorException
             TeamContextValidationRouteException
         """
         method = f"{cls.__name__}.validate"
@@ -83,11 +83,11 @@ class TeamContextValidator(ContextValidator[Team]):
         if priming_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                TeamContextValidationException(
+                TeamContextValidatorException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    msg=TeamContextValidationException.MSG,
-                    err_code=TeamContextValidationException.ERR_CODE,
+                    msg=TeamContextValidatorException.MSG,
+                    err_code=TeamContextValidatorException.ERR_CODE,
                     ex=priming_result.exception
                 )
             )
@@ -102,11 +102,11 @@ class TeamContextValidator(ContextValidator[Team]):
             if validation_result.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
-                    TeamContextValidationException(
+                    TeamContextValidatorException(
                         cls_mthd=method,
                         cls_name=cls.__name__,
-                        msg=TeamContextValidationException.MSG,
-                        err_code=TeamContextValidationException.ERR_CODE,
+                        msg=TeamContextValidatorException.MSG,
+                        err_code=TeamContextValidatorException.ERR_CODE,
                         ex=validation_result.exception
                     )
                 )
@@ -115,17 +115,17 @@ class TeamContextValidator(ContextValidator[Team]):
         
         # Certification for the search-by-owner target.
         if context.owner is not None:
-            validation_result = toolkit.team_toolkit.player_validator.validate(
+            validation_result = toolkit.team_toolkit.player_validator.execute(
                 candidate=context.owner
             )
             if validation_result.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
-                    TeamContextValidationException(
+                    TeamContextValidatorException(
                         cls_mthd=method,
                         cls_name=cls.__name__,
-                        msg=TeamContextValidationException.MSG,
-                        err_code=TeamContextValidationException.ERR_CODE,
+                        msg=TeamContextValidatorException.MSG,
+                        err_code=TeamContextValidatorException.ERR_CODE,
                         ex=validation_result.exception
                     )
                 )
@@ -134,18 +134,18 @@ class TeamContextValidator(ContextValidator[Team]):
         
         # Certification for the search-by-board target.
         if context.board is not None:
-            validation_result = toolkit.team_toolkit.board_validator.validate(
+            validation_result = toolkit.team_toolkit.board_validator.execute(
                 candidate=context.board
             )
             if validation_result.is_failure:
                 if validation_result.is_failure:
                     # Send the exception chain on failure.
                     return ValidationResult.failure(
-                        TeamContextValidationException(
+                        TeamContextValidatorException(
                             cls_mthd=method,
                             cls_name=cls.__name__,
-                            msg=TeamContextValidationException.MSG,
-                            err_code=TeamContextValidationException.ERR_CODE,
+                            msg=TeamContextValidatorException.MSG,
+                            err_code=TeamContextValidatorException.ERR_CODE,
                             ex=validation_result.exception
                         )
                     )
@@ -154,7 +154,7 @@ class TeamContextValidator(ContextValidator[Team]):
         
         # Certification for the search-by-color target.
         if context.schema is not None:
-            validation_result = toolkit.team_toolkit.priming_validator.run(
+            validation_result = toolkit.team_toolkit.priming_validator.execute(
                 candidate=context.schema,
                 model_type=Schema,
                 null_exception=SchemaNullException()
@@ -162,11 +162,11 @@ class TeamContextValidator(ContextValidator[Team]):
             if validation_result.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
-                    TeamContextValidationException(
+                    TeamContextValidatorException(
                         cls_mthd=method,
                         cls_name=cls.__name__,
-                        msg=TeamContextValidationException.MSG,
-                        err_code=TeamContextValidationException.ERR_CODE,
+                        msg=TeamContextValidatorException.MSG,
+                        err_code=TeamContextValidatorException.ERR_CODE,
                         ex=validation_result.exception
                     )
                 )
@@ -175,11 +175,11 @@ class TeamContextValidator(ContextValidator[Team]):
         
         # Return the exception chain if there is no validation route for the context.
         return ValidationResult.failure(
-            TeamContextValidationException(
+            TeamContextValidatorException(
                 cls_mthd=method,
                 cls_name=cls.__name__,
-                msg=TeamContextValidationException.MSG,
-                err_code=TeamContextValidationException.ERR_CODE,
+                msg=TeamContextValidatorException.MSG,
+                err_code=TeamContextValidatorException.ERR_CODE,
                 ex=TeamContextValidationRouteException(
                     msg=TeamContextValidationRouteException.MSG,
                     err_code=TeamContextValidationRouteException.ERR_CODE,

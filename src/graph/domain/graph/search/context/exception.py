@@ -7,7 +7,7 @@ Created: 2025-10-31
 version: 1.0.0
 """
 
-from system import SearchContextException, NullException, BuilderException, ValidationException
+from system import SearchContextException, NullException, BuilderException, ValidatorException
 
 __all__ = [
     "VisitorSearchContextException",
@@ -42,7 +42,7 @@ class NullVisitorSearchContextException(VisitorSearchContextException, NullExcep
     MSG = "VisitorSearchContext cannot be validation"
 
 
-class InvalidVisitorSearchContextException(VisitorSearchContextException, ValidationException):
+class InvalidVisitorSearchContextException(VisitorSearchContextException, ValidatorException):
     """
     Raised by visitorSearchContextBValidator if visitorSearchContext fails sanity checks. Exists primarily to
     catch all exception raised validating an existing visitorSearchContext

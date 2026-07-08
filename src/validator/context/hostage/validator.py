@@ -55,17 +55,17 @@ class HostageContextValidator(ContextValidator[Hostage]):
             * TypeError
             * NullHostageContextException
             * ZeroHostageContextFlagsException
-            * HostageContextValidationException
+            * HostageContextValidatorException
             * HostageContextValidationRouteException
         """
-        method = "HostageContextValidator.validate"
+        method = "HostageContextValidator.execute"
         
         # Handle the nonexistence case.
         if candidate is None:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                HostageContextValidationException(
-                    msg=f"{method}: {HostageContextValidationException.MSG}",
+                HostageContextValidatorException(
+                    msg=f"{method}: {HostageContextValidatorException.MSG}",
                     ex=NullHostageContextException(f"{method}: {NullHostageContextException.MSG}")
                 )
             )
@@ -73,8 +73,8 @@ class HostageContextValidator(ContextValidator[Hostage]):
         if not isinstance(candidate, HostageContext):
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                HostageContextValidationException(
-                    msg=f"{method}: {HostageContextValidationException.MSG}",
+                HostageContextValidatorException(
+                    msg=f"{method}: {HostageContextValidatorException.MSG}",
                     ex=TypeError(f"{method}: Expected a HostageContext, got {type(candidate).__name__} instead.")
                 )
             )
@@ -86,8 +86,8 @@ class HostageContextValidator(ContextValidator[Hostage]):
         if flag_count == 0:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                HostageContextValidationException(
-                    msg=f"{method}: {HostageContextValidationException.MSG}",
+                HostageContextValidatorException(
+                    msg=f"{method}: {HostageContextValidatorException.MSG}",
                     ex=ZeroHostageContextFlagsException(
                         f"{method}: {ZeroHostageContextFlagsException.MSG}"
                     )
@@ -97,8 +97,8 @@ class HostageContextValidator(ContextValidator[Hostage]):
         if flag_count > 1:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                HostageContextValidationException(
-                    msg=f"{method}: {HostageContextValidationException.MSG}",
+                HostageContextValidatorException(
+                    msg=f"{method}: {HostageContextValidatorException.MSG}",
                     ex=ArenaHostageContextFlagsException(
                         f"{method}: {ArenaHostageContextFlagsException.MSG}"
                     )
@@ -112,8 +112,8 @@ class HostageContextValidator(ContextValidator[Hostage]):
             if validator.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
-                    HostageContextValidationException(
-                        msg=f"{method}: {HostageContextValidationException.MSG}",
+                    HostageContextValidatorException(
+                        msg=f"{method}: {HostageContextValidatorException.MSG}",
                         ex=validator.exception
                     )
                 )
@@ -126,8 +126,8 @@ class HostageContextValidator(ContextValidator[Hostage]):
             if validator.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
-                    HostageContextValidationException(
-                        msg=f"{method}: {HostageContextValidationException.MSG}",
+                    HostageContextValidatorException(
+                        msg=f"{method}: {HostageContextValidatorException.MSG}",
                         ex=validator.exception
                     )
                 )
@@ -140,8 +140,8 @@ class HostageContextValidator(ContextValidator[Hostage]):
             if validator.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
-                    HostageContextValidationException(
-                        msg=f"{method}: {HostageContextValidationException.MSG}",
+                    HostageContextValidatorException(
+                        msg=f"{method}: {HostageContextValidatorException.MSG}",
                         ex=validator.exception
                     )
                 )
@@ -154,8 +154,8 @@ class HostageContextValidator(ContextValidator[Hostage]):
             if validator.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
-                    HostageContextValidationException(
-                        msg=f"{method}: {HostageContextValidationException.MSG}",
+                    HostageContextValidatorException(
+                        msg=f"{method}: {HostageContextValidatorException.MSG}",
                         ex=validator.exception
                     )
                 )
@@ -164,8 +164,8 @@ class HostageContextValidator(ContextValidator[Hostage]):
         
         # Return the exception chain if there was no validation route for the context.
         return ValidationResult.failure(
-            HostageContextValidationException(
-                msg=f"{method}: {HostageContextValidationException.MSG}",
+            HostageContextValidatorException(
+                msg=f"{method}: {HostageContextValidatorException.MSG}",
                 ex=HostageContextValidationRouteException(
                     f"{method}: {HostageContextValidationRouteException.MSG}"
                 )

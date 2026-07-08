@@ -78,7 +78,7 @@ DEPENDENCIES:
 ------------
 Requires base rollback_exception classes and constants from the kernel system:
 From `logic.system`:
-  * Exception: `ChessException`, `ValidationException`, `NullException`,
+  * Exception: `ChessException`, `ValidatorException`, `NullException`,
         `BuilderException`.
 
 CONTAINS:
@@ -88,7 +88,7 @@ See the list of exception in the `__all__` list following (e.g., `VectorExceptio
 """
 
 from logic.event import EventException, TransactionException
-from system import ChessException, NullException, BuilderException, ValidationException
+from system import ChessException, NullException, BuilderException, ValidatorException
 
 __all__ = [
   'PromotionEventException',
@@ -125,7 +125,7 @@ class PawnPromotionOnlyException(PromotionEventException):
   ERR_CODE = "CAN_ONLY_PROMOTE_PAWN_EXCEPTION"
   MSG = "Only pawns can be promoted"
 
-class InvalidPromotionEventException(PromotionEventException, ValidationException):
+class InvalidPromotionEventException(PromotionEventException, ValidatorException):
   """
   Raised by PromotionEventValidator if team_name client fails sanity checks. Exists to catch all
   exception raised validating an existing `PromotionEvent` rank.
@@ -240,7 +240,7 @@ DEPENDENCIES:
 Requires base rollback_exception classes and constants from the kernel system:
 From `logic.system`:
   * Constants: `NUMBER_OF_ROWS`, `NUMBER_OF_COLUMNS`
-  * Exception: `ChessException`, `ValidationException`, `NullException`,
+  * Exception: `ChessException`, `ValidatorException`, `NullException`,
         `BuilderException`.
 
 CONTAINS:

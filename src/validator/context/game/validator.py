@@ -65,7 +65,7 @@ class GameContextValidator(ContextValidator[Game]):
             *   ArenaGameContextFlagsException
             *   InvalidGameContextException
         """
-        method = "GameContextValidator.validate"
+        method = "GameContextValidator.execute"
         try:
             # Handle the case that, the rank does not exist.
             if candidate is None:

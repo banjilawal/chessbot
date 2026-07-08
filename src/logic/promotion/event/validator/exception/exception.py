@@ -13,11 +13,11 @@ __all__ = [
 ]
 
 
-from system import ValidationException
+from system import ValidatorException
 from logic.promotion import PromotionEventException
 
 
-class InvalidPromotionEventException(PromotionEventException, ValidationException):
+class InvalidPromotionEventException(PromotionEventException, ValidatorException):
     """
     Raised by PromotionEventValidator if team_name client fails sanity checks. Exists to catch all
     exception raised validating an existing `PromotionEvent` rank.

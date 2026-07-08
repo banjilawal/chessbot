@@ -8,7 +8,7 @@ version: 1.0.0
 """
 
 from system import (
-    ChessException, BuilderException, InconsistencyException, NullException, ValidationException
+    ChessException, BuilderException, InconsistencyException, NullException, ValidatorException
 )
 
 __all__ = [
@@ -45,7 +45,7 @@ class NullDomainException(DomainException, NullException):
 
 
 #======================# DOMAIN VALIDATION EXCEPTION #======================#
-class InvalidDomainException(DomainException, ValidationException):
+class InvalidDomainException(DomainException, ValidatorException):
     """Super Exception for SquareValidator when a rank fails a sanity check.""""""
     ERR_CODE = "DOMAIN_VALIDATION_EXCEPTION"
     MSG = "Domain validation failed."

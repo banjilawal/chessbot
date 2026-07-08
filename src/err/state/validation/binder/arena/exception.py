@@ -10,15 +10,15 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import BinderValidationException
+from err import BinderValidatorException
 
 __all__ = [
     # ======================# ARENA_PLAYER_BINDER_VALIDATION_FAILURE #======================#
-    "ArenaPlayerBinderValidationException",
+    "ArenaPlayerBinderValidatorException",
 ]
 
 # ======================# ARENA_PLAYER_BINDER_VALIDATION_FAILURE #======================#
-class ArenaPlayerBinderValidationException(BinderValidationException):
+class ArenaPlayerBinderValidatorException(BinderValidatorException):
     """
     Role:
         -   Error Tracing
@@ -39,7 +39,7 @@ class ArenaPlayerBinderValidationException(BinderValidationException):
     Provides:
 
     Super Class:
-        BinderValidationException
+        BinderValidatorException
     """
     MSG = "ArenaPlayerBinder validation check failed."
     ERR_CODE = "ARENA_PLAYER_BINDER_VALIDATION_FAILURE"

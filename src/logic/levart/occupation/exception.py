@@ -8,7 +8,7 @@ version: 1.0.0
 """
 
 from logic.piece import TravelEventException
-from system import NullException, ValidationException
+from system import NullException, ValidatorException
 
 __all__ = [
 #====================== OCCUPATION_EVENT EXCEPTION #======================#
@@ -37,7 +37,7 @@ class NullOccupationEventException(OccupationEventException, NullException):
   MSG = "An OccupationEvent cannot be null."
 
 
-class InvalidOccupationEventException(OccupationEventException, ValidationException):
+class InvalidOccupationEventException(OccupationEventException, ValidatorException):
   """Raised by OccupationEventValidators if a rank fails coord_stack_validator."""
   ERR_CODE = "OCCUPATION_EVENT_VALIDATION_EXCEPTION"
   MSG = "OccupationEvent validation failed."

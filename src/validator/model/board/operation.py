@@ -1,0 +1,173 @@
+# src/validator/board/validator.py
+
+"""
+Module: validator.board.validator
+Author: Banji Lawal
+Created: 2026-04-03
+version: 1.0.1
+"""
+
+from __future__ import annotations
+
+from typing import Any
+
+from microservice import ArenaService, IdentityService
+from model import Board
+from operation import Validator
+from result import ValidationResult
+from util import LoggingLevelRouter
+
+
+class BoardValidator(ModelValidator[Board]):
+    """
+     Role:Validation, Data Integrity Guarantor, Security.
+
+    Responsibilities:
+    1.  Ensure a Board instance is certified safe, reliable and consistent before use.
+    2.  If verification fails indicate the reason in an exception, returned to the caller.
+
+    Super Class:
+        *   Validator
+
+    # PROVIDES:
+        * BoardValidator
+
+
+    # INHERITED ATTRIBUTES:
+    None
+    """
+    OPERATION_NAME = "board_validator"
+    
+    @classmethod
+    @LoggingLevelRouter.monitor
+    def validate(
+            cls, candidate: Any,
+            
+            arena_service: ArenaService = ArenaService(),
+            identity_service: IdentityService = IdentityService(),
+    ) -> ValidationResult[Board]:
+        """
+        # ACTION:
+            1.  If the rank fails existence or type checks send an exception chain in the ValidationResult. Else,
+                cast candidate to a Board instance board.
+            2.  If the board's schema or id fails integrity checks send an exception chain in the ValidationResult.
+                Else validate is board using arena_service.
+            3.  If the board's arena fails integrity checks send an exception chain in the ValidationResult. 
+                Else, the board has been successfully validated. Send it in the ValidationResult's payload.
+        # PARAMETERS:
+            *   rank (Any)
+            *   arena_service (ArenaService)
+            *   identity_service: (IdentityService)
+        # RETURNS:
+            *   ValidationResult[Board] containing either:
+                    - On failure: Exception.
+                    - On success: Board in the payload.
+        Raises:
+            *   TypeError
+            *   NullBoardException
+            *   BoardValidatorException
+        """
+        method = "BoardValidator.execute"
+        
+        # Handle the nonexistence case.
+        if candidate is None:
+            # Send the exception chain on failure.
+            return ValidationResult.failure(
+                BoardValidatorException(
+                    msg=f"{method}: {BoardValidatorException.ERR_CODE}",
+                    ex=NullBoardException(f"{method}: {NullBoardException.MSG}")
+                )
+            )
+        # Handle the wrong class case.
+        if not isinstance(candidate, Board):
+            # Send the exception chain on failure.
+            return ValidationResult.failure(
+                BoardValidatorException(
+                    msg=f"{method}: {BoardValidatorException.ERR_CODE}",
+                    ex=TypeError(f"{method}: Expected Board, but, got {type(candidate).__name__} instead.")
+                )
+            )
+        # --- Cast candidate to a Board for additional tests. ---#
+        board = cast(Board, candidate)
+        
+        # Handle the case board.id or board.schema does not pass a validation check.
+        id_validation = identity_service.validate_id(candidate=board.id)
+        if id_validator.is_failure:
+            # Send the exception chain on failure.
+            return ValidationResult.failure(
+                BoardValidatorException(
+                    msg=f"{method}: {BoardValidatorException.ERR_CODE}",
+                    ex=id_validator.exception
+                )
+            )
+        # Handle the case that, board.arena integrity verification and the arena-board relation fails.
+        arena_verification = cls._validate_arena(board=board, arena_service=arena_service)
+        if arena_verification.is_failure:
+            # Send the exception chain on failure.
+            return ValidationResult(
+                BoardValidatorException(
+                    msg=f"{method}: {BoardValidatorException.ERR_CODE}",
+                    ex=arena_verification.exception
+                )
+            )
+        # --- On certification successes send the board instance in the ValidationResult. ---#
+        return ValidationResult.success(payload=board)
+                    
+    @ classmethod
+    @ LoggingLevelRouter.monitor
+    def _validate_arena(cls, board: Board, arena_service: ArenaService = ArenaService() ) -> ValidationResult[Arena]:
+        """
+        # ACTION:
+            1.  If board.arena is not validated by arena_service send an exception chain in the ValidationResult.
+            2.  If the board is not board.arena send an exception chain in the ValidationResult. Else, board.arena
+                has been successfully validated. Send it in the ValidationResult's payload.
+        # PARAMETERS:
+            *   board (Board)
+            *   arena_service (ArenaService)
+        # RETURNS:
+        ValidationResult[Arena] containing either:
+            - On failure: Exception.
+            - On success: Area in the payload.
+        Raises:
+        *   BoardValidatorException
+        """
+        
+        method = "BoardValidator._validate_arena"
+        
+        relation_analysis = arena_service.relation_analysis_analyzer.search_service(
+            candidate_primary=board.arena,
+            candidate_satellite=board,
+        )
+        # Handle the case that, there is a direct failure of analyzer.
+        if relation_analysis.is_failure:
+            # Send the exception chain on failure.
+            return ValidationResult(
+                BoardValidatorException(
+                    msg=f"{method}: {BoardValidatorException.ERR_CODE}",
+                    ex=relation_analysis.exception
+                )
+            )
+        # Handle the case that, the board belongs to a different board.
+        if relation_analysis.does_not_exist:
+            # Send the exception chain on failure.
+            return ValidationResult(
+                BoardValidatorException(
+                    msg=f"{method}: {BoardValidatorException.ERR_CODE}",
+                    ex=BoardOwnedByDifferentArenaException(
+                        f"{method}: {BoardOwnedByDifferentArenaException.MSG}"
+                    )
+                )
+            )
+        # Handle the case that, the board has not been added to the board's boards.
+        if relation_analysis.partially_exists:
+            # Send the exception chain on failure.
+            return ValidationResult(
+                BoardValidatorException(
+                    msg=f"{method}: {BoardValidatorException.ERR_CODE}",
+                    ex=BoardNotSubmittedArenaRegistrationException(
+                        f"{method}: {BoardNotSubmittedArenaRegistrationException.MSG}"
+                    )
+                )
+            )
+        # On certification successes send the board back to the validator.
+        return ValidationResult.success(payload=board.arena)

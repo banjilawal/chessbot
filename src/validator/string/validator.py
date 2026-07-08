@@ -10,7 +10,7 @@ version: 1.0.0
 from typing import Any, cast
 
 from controller import WorkerRegistryController
-from err import StringEmptyException, StringValidationException
+from err import StringEmptyException, StringValidatorException
 from err.null.model.state.string import StringNullException
 from operation import Validator
 from result import ValidationResult
@@ -61,7 +61,7 @@ class StringValidator(Validator[str]):
             TypeError
             StringNullException
             StringEmptyException
-            StringValidationException
+            StringValidatorException
         """
         method = f"{cls.__name__}.validate"
         
@@ -69,11 +69,11 @@ class StringValidator(Validator[str]):
         if candidate is None:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                StringValidationException(
+                StringValidatorException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    msg=StringValidationException.MSG,
-                    err_code=StringValidationException.ERR_CODE,
+                    msg=StringValidatorException.MSG,
+                    err_code=StringValidatorException.ERR_CODE,
                     ex=StringNullException(
                         msg=StringNullException.MSG,
                         err_code=StringNullException.ERR_CODE,
@@ -84,11 +84,11 @@ class StringValidator(Validator[str]):
         if not isinstance(candidate, str):
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                StringValidationException(
+                StringValidatorException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    msg=StringValidationException.MSG,
-                    err_code=StringValidationException.ERR_CODE,
+                    msg=StringValidatorException.MSG,
+                    err_code=StringValidatorException.ERR_CODE,
                     ex=TypeError(f"Expected an str, got {type(candidate).__name__} instead.")
                 )
             )
@@ -98,11 +98,11 @@ class StringValidator(Validator[str]):
         if len(text) == 0:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                StringValidationException(
+                StringValidatorException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    msg=StringValidationException.MSG,
-                    err_code=StringValidationException.ERR_CODE,
+                    msg=StringValidatorException.MSG,
+                    err_code=StringValidatorException.ERR_CODE,
                     ex=StringEmptyException(
                         msg=StringEmptyException.MSG,
                         err_code=StringEmptyException.ERR_CODE,

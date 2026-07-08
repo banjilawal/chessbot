@@ -11,6 +11,7 @@ version: 1.0.1
 
 # Packages
 from .deletion import *
+from .extractor import *
 from .pop import *
 from .promotion import *
 from .push import *

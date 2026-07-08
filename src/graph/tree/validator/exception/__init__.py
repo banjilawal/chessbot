@@ -14,6 +14,6 @@ from .null import *
 
 # Modules
 from .null import NodeTreeNullException
-from .work import NodeTreeValidationException
+from .work import NodeTreeValidatorException
 
 
