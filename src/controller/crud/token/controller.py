@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from controller import CrudController
 from deleter import TokenDeleter
-from model import Query, Token
+from model import Query, Token, TokenQuery
 from popper import TokenPopper
 from pusher import TokenPusher
 from request import DeletionRequest, PopRequest, PushRequest

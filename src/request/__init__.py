@@ -12,9 +12,10 @@ version: 1.0.1
 
 # Packages
 from .deletion import *
-from .deletion import *
+from .maneuver import *
 from .pop import *
 from .push import *
+from .search import *
 from .slot import *
 
 # Modules
