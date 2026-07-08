@@ -70,7 +70,7 @@ class ScalarValidator(ModelValidator[Scalar]):
             toolkit = MathToolkit()
         
         # Handle the case that, the validator is not primed.
-        validator_priming_result = toolkit.priming_validator.build(
+        validator_priming_result = toolkit.priming_validator.execute(
             candidate=candidate,
             target_model=Scalar,
             context_null_exception=ScalarNullException(),

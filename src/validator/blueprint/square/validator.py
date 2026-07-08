@@ -123,8 +123,8 @@ class SquareBlueprintValidator(BlueprintValidator[SquareBlueprint]):
                 )
             )
         # Handle the case that, square.board does not pass a validation check.
-        board_validation_result = self.toolkit.board_validator.execute(blueprint.board)
-        if board_validation_result.is_failure:
+        board_validator_result = self.toolkit.board_validator.execute(blueprint.board)
+        if board_validator_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 SquareBlueprintValidatorException(
@@ -132,7 +132,7 @@ class SquareBlueprintValidator(BlueprintValidator[SquareBlueprint]):
                     cls_name=self.__class__.__name__,
                     msg=SquareBlueprintValidatorException.MSG,
                     err_code=SquareBlueprintValidatorException.ERR_CODE,
-                    ex=board_validation_result.exception,
+                    ex=board_validator_result.exception,
                 )
             )
         # --- Forward the work product to the caller. ---#

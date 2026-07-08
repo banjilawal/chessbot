@@ -73,7 +73,7 @@ class CoordBlueprintValidator(BlueprintValidator[Coord]):
             toolkit = CoordBlueprintToolkit()
         
         # Handle the case that, the validator is not primed.
-        priming_result = toolkit.blueprint_priming_validator.build(
+        priming_result = toolkit.blueprint_priming_validator.execute(
             candidate=candidate,
             blueprint_model=toolkit.blueprint_model_type,
             blueprint_null_exception=toolkit.null_blueprint_exception,

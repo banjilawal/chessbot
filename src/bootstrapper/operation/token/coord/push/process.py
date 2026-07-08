@@ -72,7 +72,7 @@ class TokenPushCoordProcess:
         method = "TokenService.execute_to_token"
         
         # Handle the case that, the token does not pass a validation check.
-        token_validation_result = token_validator.build(token)
+        token_validation_result = token_validator.execute(token)
         if token_validation_result.is_failure:
             # Send the exception chain on failure.
             return InsertionResult.failure(

@@ -124,7 +124,7 @@ class SchemaBlueprintValidator(BlueprintValidator[SchemaKey]):
         
         # Certification for lookup-by-color value.
         if super_key.color is not None:
-            validation = color_validator.build(candidate=super_key.color)
+            validation = color_validator.execute(candidate=super_key.color)
             if validator.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(

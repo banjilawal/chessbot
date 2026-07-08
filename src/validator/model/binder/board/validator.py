@@ -91,9 +91,9 @@ class BoardBinderValidator(ModelValidator[BoardBinder]):
                 )
             )
         binder = validator_priming_result.payload
-        board_validation_result =toolkit.board_service.run.build(binder.primary)
+        board_validator_result =toolkit.board_service.run.build(binder.primary)
         
-        if board_validation_result.is_failure:
+        if board_validator_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 BoardTeamBinderValidatorException(
@@ -101,7 +101,7 @@ class BoardBinderValidator(ModelValidator[BoardBinder]):
                     cls_name=cls.__name__,
                     msg=BoardTeamBinderValidatorException.MSG,
                     err_code=BoardTeamBinderValidatorException.ERR_CODE,
-                    ex=board_validation_result.exception,
+                    ex=board_validator_result.exception,
                 )
             )
         # --- Forward the work product to the caller ---#
@@ -117,7 +117,7 @@ class BoardBinderValidator(ModelValidator[BoardBinder]):
         method = f"{cls.__name__}.run_satellite_table_checks"
         
         # Handle the case that, the satellite is not a dictionary or null.
-        table_validation_result = BinderTablePrimingValidator.build(binder)
+        table_validation_result = BinderTablePrimingvalidator.execute(binder)
         if table_validation_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
@@ -134,7 +134,7 @@ class BoardBinderValidator(ModelValidator[BoardBinder]):
         
         # handle the case that, the keys are not safe schemas.
         for key in table.keys():
-            schema_validation_result = toolkit.schema_service.validator.build(table[key])
+            schema_validation_result = toolkit.schema_service.validator.execute(table[key])
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 BoardTeamBinderValidatorException(
@@ -147,7 +147,7 @@ class BoardBinderValidator(ModelValidator[BoardBinder]):
             )
         # Handle the case that, the values are not safe teams.
         for key in table.keys():
-            team_validation_result = toolkit.schema_service.validator.build(table[key])
+            team_validation_result = toolkit.schema_service.validator.execute(table[key])
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 BoardTeamBinderValidatorException(

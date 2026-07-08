@@ -113,7 +113,7 @@ class BoardAssemblyPrimer(AssemblyPrimer[Board]):
                 )
             )
         # Handle the case that, the arena does not pass a validation check.
-        arena_validator_result = toolkit.arena_validator.build(
+        arena_validator_result = toolkit.arena_validator.execute(
             candidate=blueprint.arena
         )
         if arena_validator_result.is_failure:

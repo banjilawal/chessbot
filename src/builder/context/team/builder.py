@@ -147,7 +147,7 @@ class TeamContextBuilder(Builder[TeamContext]):
         
         # Build the color TeamContext if its flag is enabled.
         if color is not None:
-            validation = color_validator.build(candidate=color)
+            validation = color_validator.execute(candidate=color)
             if validation.is_failure:
                 # Send the exception chain on failure.
                 return BuildResult.failure(

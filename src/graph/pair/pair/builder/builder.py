@@ -85,7 +85,7 @@ class PairBuilder(Builder[Pair]):
                 )
             )
         # Handle the case that, the pair does not pass a validation check.
-        tail_square_validation_result = square_validator.build(candidate=tail_square)
+        tail_square_validation_result = square_validator.execute(candidate=tail_square)
         if tail_square_validation_result.is_failure:
             # Return the exception chain on failure
             return BuildResult.failure(

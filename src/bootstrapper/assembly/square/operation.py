@@ -168,7 +168,7 @@ class SquareAssemblyPrimer(AssemblyPrimer[Square]):
             )
         # Handle the case that, the coord does not pass a validation check.
         if blueprint.formation is not None:
-            formation_validation_result = toolkit.formation_service.validator.build(
+            formation_validation_result = toolkit.formation_service.validator.execute(
                 candidate=blueprint.formation
             )
             if formation_validation_result.is_failure:
@@ -183,10 +183,10 @@ class SquareAssemblyPrimer(AssemblyPrimer[Square]):
                     )
                 )
         # Handle the case that, the board is flagged unsafe.
-        board_validation_result = toolkit.board_validator.execute(
+        board_validator_result = toolkit.board_validator.execute(
             candidate=blueprint.board
         )
-        if board_validation_result.is_failure:
+        if board_validator_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 PrimingSquareAssemblyException(
@@ -194,7 +194,7 @@ class SquareAssemblyPrimer(AssemblyPrimer[Square]):
                     cls_name=cls.__name__,
                     msg=PrimingSquareAssemblyException.MSG,
                     err_code=PrimingSquareAssemblyException.ERR_CODE,
-                    ex=board_validation_result.exception,
+                    ex=board_validator_result.exception,
                 )
             )
         # --- Return the work product. ---#

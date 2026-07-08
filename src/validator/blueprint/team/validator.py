@@ -11,81 +11,76 @@ from __future__ import annotations
 
 from typing import Any, cast
 
-from model import Schema, TeamBlueprint
+from blueprint import TeamBlueprint
+from err import SchemaNullException, TeamBlueprintValidatorException
+from model import Board
+
 from result import ValidationResult
-from toolkit import TeamBlueprintToolkit
+from schema import Archetype
+from toolkit import TeamToolkit
 from util import LoggingLevelRouter
-from err import SchemaNullException, TeamBlueprintValidatorException, TeamBlueprintValidationRouteException
 from validator import BlueprintValidator
 
 
-class TeamBlueprintValidator(BlueprintValidator[Team]):
+class TeamBlueprintValidator(BlueprintValidator[TeamBlueprint]):
     """
     Role
         -   Transaction Worker
         -   Integrity Maintenance
-        -   Consistency Assurance
-        -   Process Runner
 
     Responsibilities:
         1.  Ensure a TeamBlueprint instance is certified safe, reliable and consistent before use.
 
     Attributes:
+        toolkit: TeamToolkit
 
     Provides:
-        -   def validate(
-                    candidate: Any,
-                    toolkit: TeamBlueprintToolkit,
-            ) -> ValidationResult[Team]:
+        -   execute(candidate) -> ValidationResult
 
     Super Class:
         BlueprintValidator
     """
-    @classmethod
+    
+    def __init__(self, toolkit: TeamToolkit | None = TeamToolkit()):
+        super().__init__(toolkit=toolkit)
+        
+    @property
+    def toolkit(self) -> TeamToolkit:
+        return cast(TeamToolkit, self.toolkit)
+    
     @LoggingLevelRouter.monitor
-    def execute(
-            cls,
-            candidate: Any,
-            toolkit: TeamBlueprintToolkit | None = None,
-    ) -> ValidationResult[Team]:
+    def execute(self, candidate: Any) -> ValidationResult:
         """
         Certify a candidate is a TeamBlueprint that is safe to use.
 
         Action:
             1.  Send an exception chain in the ValidationResult if any of the following
                 occur
-                    -   The Validation is not primed.
-                    -   The enabled attribute fails a safety check.
-                    -   There is no validation path for the attribute.
+                    -   The validation_priming fails.
+                    -   Either the board, owner or id get flagged unsafe.
             2.  Otherwise, send the success result.
         Args:
             candidate: Any,
-            toolkit: TeamBlueprintToolkit,
         Returns:
-            ValidationResult[Team]
+            ValidationResult
         Raises:
             TeamBlueprintValidatorException
             TeamBlueprintValidationRouteException
         """
-        method = f"{cls.__name__}.validate"
-        
-        # --- Supply any missing dependencies. ---#
-        if toolkit is None:
-            toolkit = TeamBlueprintToolkit()
+        method = f"{self.__class__.__name__}.validate"
         
         # Handle the case that, the validator is not primed.
-        priming_result = toolkit.blueprint_priming_validator.build(
+        priming_result = self.toolkit.priming_validator.execute(
             candidate=candidate,
-            blueprint_model=toolkit.blueprint_model_type,
-            blueprint_null_exception=toolkit.null_blueprint_exception,
-            validator_bootstrapper=toolkit.team_toolkit.priming_validator
+            blueprint_model=self.toolkit.blueprint_model,
+            blueprint_null_exception=self.toolkit.blueprint_null_exception,
         )
         if priming_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 TeamBlueprintValidatorException(
                     cls_mthd=method,
-                    cls_name=cls.__name__,
+                    cls_name=self.__class__.__name__,
                     msg=TeamBlueprintValidatorException.MSG,
                     err_code=TeamBlueprintValidatorException.ERR_CODE,
                     ex=priming_result.exception
@@ -94,95 +89,75 @@ class TeamBlueprintValidator(BlueprintValidator[Team]):
         # --- Cast the candidate into TeamBlueprint for routing attribute testing ---#
         blueprint = cast(TeamBlueprint, candidate)
         
-        # Certification for the search-by-id target.
-        if blueprint.id is not None:
-            validation_result = toolkit.team_toolkit.identity_service.validate_id(
-                candidate=blueprint.id
-            )
-            if validation_result.is_failure:
-                # Send the exception chain on failure.
-                return ValidationResult.failure(
-                    TeamBlueprintValidatorException(
-                        cls_mthd=method,
-                        cls_name=cls.__name__,
-                        msg=TeamBlueprintValidatorException.MSG,
-                        err_code=TeamBlueprintValidatorException.ERR_CODE,
-                        ex=validation_result.exception
-                    )
+        # Handle the case that, the blueprint's id does not pass.
+        id_validation_result = self.toolkit.blueprint_id_validator.execute(
+            candidate=blueprint.id,
+        )
+        if id_validation_result.is_failure:
+            # Send the exception chain on failure.
+            return ValidationResult.failure(
+                TeamBlueprintValidatorException(
+                    cls_mthd=method,
+                    cls_name=self.__class__.__name__,
+                    msg=TeamBlueprintValidatorException.MSG,
+                    err_code=TeamBlueprintValidatorException.ERR_CODE,
+                    ex=id_validation_result.exception
                 )
-            # On validation success forward the work product to the caller.
-            return ValidationResult.success(blueprint)
-        
-        # Certification for the search-by-owner target.
-        if blueprint.owner is not None:
-            validation_result = toolkit.team_toolkit.player_validator.execute(
-                candidate=blueprint.owner
             )
-            if validation_result.is_failure:
-                # Send the exception chain on failure.
-                return ValidationResult.failure(
-                    TeamBlueprintValidatorException(
-                        cls_mthd=method,
-                        cls_name=cls.__name__,
-                        msg=TeamBlueprintValidatorException.MSG,
-                        err_code=TeamBlueprintValidatorException.ERR_CODE,
-                        ex=validation_result.exception
-                    )
+        # Handle the case that, the owner gets flagged.
+        owner_validation_result = self.toolkit.player_validator.execute(blueprint.owner)
+        if owner_validation_result.is_failure:
+            # Send the exception chain on failure.
+            return ValidationResult.failure(
+                TeamBlueprintValidatorException(
+                    cls_mthd=method,
+                    cls_name=self.__class__.__name__,
+                    msg=TeamBlueprintValidatorException.MSG,
+                    err_code=TeamBlueprintValidatorException.ERR_CODE,
+                    ex=owner_validation_result.exception
                 )
-            # On validation success forward the work product to the caller.
-            return ValidationResult.success(blueprint)
-        
-        # Certification for the search-by-board target.
-        if blueprint.board is not None:
-            validation_result = toolkit.team_toolkit.board_validator.execute(
-                candidate=blueprint.board
             )
-            if validation_result.is_failure:
-                if validation_result.is_failure:
-                    # Send the exception chain on failure.
-                    return ValidationResult.failure(
-                        TeamBlueprintValidatorException(
-                            cls_mthd=method,
-                            cls_name=cls.__name__,
-                            msg=TeamBlueprintValidatorException.MSG,
-                            err_code=TeamBlueprintValidatorException.ERR_CODE,
-                            ex=validation_result.exception
-                        )
-                    )
-                # On validation success forward the work product to the caller.
-                return ValidationResult.success(blueprint)
-        
-        # Certification for the search-by-color target.
-        if blueprint.schema is not None:
-            validation_result = toolkit.team_toolkit.priming_validator.execute(
-                candidate=blueprint.schema,
-                model_type=Schema,
-                null_exception=SchemaNullException()
+        # Handle the case that, the board is not safe.
+        board_validation_result = self.toolkit.board_validator.excute(blueprint.board)
+        if board_validation_result.is_failure:
+            # Send the exception chain on failure.
+            return ValidationResult.failure(
+                TeamBlueprintValidatorException(
+                    cls_mthd=method,
+                    cls_name=self.__class__.__name__,
+                    msg=TeamBlueprintValidatorException.MSG,
+                    err_code=TeamBlueprintValidatorException.ERR_CODE,
+                    ex=owner_validation_result.exception
+                )
             )
-            if validation_result.is_failure:
-                # Send the exception chain on failure.
-                return ValidationResult.failure(
-                    TeamBlueprintValidatorException(
-                        cls_mthd=method,
-                        cls_name=cls.__name__,
-                        msg=TeamBlueprintValidatorException.MSG,
-                        err_code=TeamBlueprintValidatorException.ERR_CODE,
-                        ex=validation_result.exception
-                    )
+        # Handle the case that, the schema is not safe.
+        schema_validation_result = self.toolkit.priming_validator.execute(
+            candidate=blueprint.schema,
+            target_model=type[Archetype],
+            null_exception=SchemaNullException(),
+        )
+        if schema_validation_result.is_failure:
+            # Send the exception chain on failure.
+            return ValidationResult.failure(
+                TeamBlueprintValidatorException(
+                    cls_mthd=method,
+                    cls_name=self.__class__.__name__,
+                    msg=TeamBlueprintValidatorException.MSG,
+                    err_code=TeamBlueprintValidatorException.ERR_CODE,
+                    ex=owner_validation_result.exception
                 )
-                # On validation success forward the work product to the caller.
-            return ValidationResult.success(blueprint)
+            )
+        id = cast(int, id_validation_result.payload)
+        board = cast(Board, board_validation_result.payload)
+        owner = cast(type(blueprint.id), owner_validation_result.payload)
+        schema = cast(Archetype, schema_validation_result.payload)
         
-        # Return the exception chain if there is no validation route for the blueprint.
-        return ValidationResult.failure(
-            TeamBlueprintValidatorException(
-                cls_mthd=method,
-                cls_name=cls.__name__,
-                msg=TeamBlueprintValidatorException.MSG,
-                err_code=TeamBlueprintValidatorException.ERR_CODE,
-                ex=TeamBlueprintValidationRouteException(
-                    msg=TeamBlueprintValidationRouteException.MSG,
-                    err_code=TeamBlueprintValidationRouteException.ERR_CODE,
-                )
+        # On validation success forward the work product to the caller.
+        return ValidationResult.success(
+            TeamBlueprint(
+                id=id,
+                board=board,
+                owner=owner,
+                schema=schema
             )
         )

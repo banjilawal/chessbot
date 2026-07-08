@@ -50,11 +50,11 @@ class TurnSceneValidator(Validator[TurnScene]):
             
             turn_scene = cast(TurnScene, candidate)
             
-            id_validation = IdValidator.build(turn_scene.id)
+            id_validation = Idvalidator.execute(turn_scene.id)
             if id_validation.is_failure():
                 return ValidationResult.failure(id_validation.exception)
 
-            board_validator = BoardValidator.build(turn_scene.board)
+            board_validator = Boardvalidator.execute(turn_scene.board)
             if board_validator.is_failure():
                 return ValidationResult.failure(board_validator.exception)
               
@@ -125,7 +125,7 @@ class TurnSceneValidator(Validator[TurnScene]):
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def actor_board_validation_helper(cls, piece: Piece, board: Board) -> ValidationResult[PieceValidator]:
+    def actor_board_validator_helper(cls, piece: Piece, board: Board) -> ValidationResult[PieceValidator]:
         """"""
         method = "TurnSceneValidator._actor_validation_helper"
         

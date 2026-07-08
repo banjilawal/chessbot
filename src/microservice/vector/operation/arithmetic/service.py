@@ -122,7 +122,7 @@ class VectorService(Microservice[Vector]):
         method = f"{self.__class__.__name__}.multiply_vector_by_scalar"
         
         # Handle the case that, the vector does not pass a validation check.
-        vector_validation_result = self.validator.build(candidate=vector)
+        vector_validation_result = self.validator.execute(candidate=vector)
         if vector_validation_result.is_failure:
             # Send an exception chain on failure.
             return ComputationResult.failure(

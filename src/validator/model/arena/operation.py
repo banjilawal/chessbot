@@ -88,7 +88,7 @@ class ArenaValidator(ModelValidator[Arena]):
                 return ValidationResult.failure(id_validator.exception)
              
             # Verify the board.
-            board_validation = board_service.run.build(arena.board)
+            board_validator = board_service.run.build(arena.board)
             if board_validator.failure:
                 return ValidationResult.failure(board_validator.exception)
             

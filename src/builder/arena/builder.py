@@ -76,9 +76,9 @@ class ArenaBuilder(Builder[Arena]):
                 return BuildResult.failure(id_validation.exception)
             
             # Verify the board.
-            board_validation = board_service.run.search_service(candidate=board)
-            if board_validation.is_failure:
-                return BuildResult.failure(board_validation.exception)
+            board_validator = board_service.run.search_service(candidate=board)
+            if board_validator.is_failure:
+                return BuildResult.failure(board_validator.exception)
             
             return BuildResult.success(payload=Arena(id=id, board=board))
         

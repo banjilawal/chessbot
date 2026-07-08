@@ -98,8 +98,8 @@ class TeamBinderBinderAssemblyPrimer(AssemblyPrimer[TeamBinderBinder]):
                 )
             )
         # Handle the case that, the board does not pass a validation check.
-        board_validation_result = toolkit.board_service.run.build(blueprint.board)
-        if board_validation_result.is_failure:
+        board_validator_result = toolkit.board_service.run.build(blueprint.board)
+        if board_validator_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 PrimingTeamBinderAssemblyException(
@@ -107,7 +107,7 @@ class TeamBinderBinderAssemblyPrimer(AssemblyPrimer[TeamBinderBinder]):
                     cls_name=cls.__name__,
                     msg=PrimingTeamBinderAssemblyException.MSG,
                     err_code=PrimingTeamBinderAssemblyException.ERR_CODE,
-                    ex=board_validation_result.exception,
+                    ex=board_validator_result.exception,
                 )
             )
         return ValidationResult.success(

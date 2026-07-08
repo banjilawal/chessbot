@@ -119,8 +119,8 @@ class SquareValidator(ModelValidator[Square]):
                 )
             )
         # Handle the case that, square.board does not pass a validation check.
-        board_validation_result = toolkit.board_validator.execute(square.board)
-        if board_validation_result.is_failure:
+        board_validator_result = toolkit.board_validator.execute(square.board)
+        if board_validator_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 SquareValidatorException(
@@ -128,7 +128,7 @@ class SquareValidator(ModelValidator[Square]):
                     cls_name=cls.__name__,
                     msg=SquareValidatorException.MSG,
                     err_code=SquareValidatorException.ERR_CODE,
-                    ex=board_validation_result.exception,
+                    ex=board_validator_result.exception,
                 )
             )
         # --- Forward the work product to the caller. ---#
@@ -162,10 +162,10 @@ class SquareValidator(ModelValidator[Square]):
         method = f"{cls.__name__}._run_board_tests"
         
         # Handle the case that, the square's board is nnt certified as safe.
-        board_validation_result = board_service.microservice.run.validat(
+        board_validator_result = board_service.microservice.run.validat(
             candidate=square.board
         )
-        if board_validation_result.is_faiure:
+        if board_validator_result.is_faiure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 SquareValidatorException(
@@ -174,7 +174,7 @@ class SquareValidator(ModelValidator[Square]):
                     msg=SquareValidatorException.MSG,
                     err_code=SquareValidatorException.ERR_CODE,
                     mthd_rslt_type=SquareValidatorException.MTHD_RSLT,
-                    ex=board_validation_result.exception
+                    ex=board_validator_result.exception
                 )
             )
         

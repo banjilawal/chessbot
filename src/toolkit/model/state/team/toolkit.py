@@ -9,10 +9,13 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from microservice import IdentityService
+from typing import Type
+
+from blueprint import TeamBlueprint
+from err import TeamBlueprintNullException, TeamNullException
 from model import Team
 from toolkit import ModelToolkit
-from validator import BoardValidator, PlayerValidator, PrimingValidator
+from validator import BoardValidator
 
 
 class TeamToolkit(ModelToolkit[Team]):
@@ -41,14 +44,13 @@ class TeamToolkit(ModelToolkit[Team]):
     Super Class:
        ModelToolkit
     """
-    DEPENDENCIES = [
-        BoardValidator,
-        PlayerValidator,
-        PrimingValidator
-    ]
-    SERVICE_DEPENDENCIES = [ IdentityService, ]
-    
+    DEPENDENCIES = []
+    SERVICE_DEPENDENCIES = []
     board_validator: BoardValidator = BoardValidator()
-    identity_service: IdentityService = IdentityService()
     player_validator: PlayerValidator = PlayerValidator()
-    priming_validator: PrimingValidator = PrimingValidator()
+    model: Team = Type[Team]
+    blueprint_model: TeamBlueprint = Type[TeamBlueprint]
+    null_exception: TeamNullException()
+    blueprint_null_exception = TeamBlueprintNullException()
+    
+

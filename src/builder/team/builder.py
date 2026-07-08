@@ -171,10 +171,10 @@ class TeamBuilder(Builder[Team]):
             return ValidationResult.failure(owner_validation.exception)
         
         # Handle the case that, the board does not pass a validation check.
-        board_validation = board_service.run.build(candidate=board)
+        board_validator = board_service.run.build(candidate=board)
         if owner_validation.is_failure:
             # Send the exception chain on failure.
-            return ValidationResult.failure(board_validation.exception)
+            return ValidationResult.failure(board_validator.exception)
         
         # --- Send the success result indicating no attribute conditions. ---#
         return ValidationResult.success(4)

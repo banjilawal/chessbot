@@ -68,18 +68,18 @@ class BoardSquareRelationAnalysis(RelationAnalysis[Board, Square]):
         method = f"{cls.__name__}.analyze"
         
         # Handle the case that, the board is not secure.
-        board_validation = board_validator.build(candidate_primary)
-        if board_validation.is_failure:
+        board_validator = board_validator.execute(candidate_primary)
+        if board_validator.is_failure:
             # Send the exception chain on failure.
             return RelationReport.failure(
                 BoardSquareAnalysisException(
                     msg=BoardSquareAnalysisException.MSG,
                     err_code=BoardSquareAnalysisException.ERR_CODE,
-                    ex=board_validation.exception,
+                    ex=board_validator.exception,
                 )
             )
         # Just incase things aren't Liskovian on the candidate_primary, cast the validation payload instead,
-        board = cast(Board, board_validation.payload)
+        board = cast(Board, board_validator.payload)
         
         # Handle the case that, the square is unsecure.
         square_validation = square_service.run.build(candidate_satellite)

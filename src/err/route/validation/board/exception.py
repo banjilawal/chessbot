@@ -15,11 +15,11 @@ from err import ValidationRouteException
 
 
 __all__ = [
-    # ======================# BOARD_VALIDATION_ROUTE #======================#
+    # ======================# BOARD_VALIDATOR_ROUTE #======================#
     "BoardValidationRouteException",
 ]
 
-# ======================# BOARD_VALIDATION_ROUTE #======================#
+# ======================# BOARD_VALIDATOR_ROUTE #======================#
 class BoardValidationRouteException(ValidationRouteException):
     """
     Role:
@@ -44,7 +44,7 @@ class BoardValidationRouteException(ValidationRouteException):
         ValidationRouteException
     """
     MSG = "One of Board validation paths is missing."
-    ERR_CODE = "BOARD_VALIDATION_ROUTE"
+    ERR_CODE = "BOARD_VALIDATOR_ROUTE"
     
     def __init__(
             self,

@@ -54,22 +54,22 @@ class VisitorSearchContextBuilder(Builder[VisitorSearchContext]):
                 )
             
             if id is not None:
-                id_validation = IdValidator.build(id)
+                id_validation = Idvalidator.execute(id)
                 if not id_validation.is_failure():
                     return BuildResult.result(id_validation.exception)
             
             if name is not None:
-                name_validation = NameValidator.build(name)
+                name_validation = Namevalidator.execute(name)
                 if name_validation.is_failure():
                     return BuildResult.failure(name_validation.exception)
             
             if team_id is not None:
-                team_id_validation = IdValidator.build(team_id)
+                team_id_validation = Idvalidator.execute(team_id)
                 if team_id_validation.is_failure():
                     return BuildResult.failure(team_id_validation.exception)
             
             if team_name is not None:
-                team_name_validation = NameValidator.build(team_name)
+                team_name_validation = Namevalidator.execute(team_name)
                 if team_name_validation.is_failure():
                     return BuildResult.failure(team_name_validation.exception)
             
@@ -84,7 +84,7 @@ class VisitorSearchContextBuilder(Builder[VisitorSearchContext]):
                     return BuildResult.failure(ransom_bounds_check.exception)
             
             if coord is not None:
-                coord_validation = CoordValidator.build(coord)
+                coord_validation = Coordvalidator.execute(coord)
                 if coord_validation.is_failure():
                     return BuildResult.failure(coord_validation.exception)
             

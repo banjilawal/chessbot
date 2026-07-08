@@ -82,8 +82,8 @@ class BoardTeamBinderRelationAnalyzer(RelationAnalyzer[Board, BoardBinder]):
             team_binder_validator = BoardTeamBinderValidator()
         
         # Handle the case that, the board is not certified as safe.
-        board_validation_result = board_validator.execute(candidate_primary)
-        if board_validation_result.is_failure:
+        board_validator_result = board_validator.execute(candidate_primary)
+        if board_validator_result.is_failure:
             # Send the exception chain on failure.
             return AnalysisResult.failure(
                 BoardBinderAnalysisAnalysisException(
@@ -91,11 +91,11 @@ class BoardTeamBinderRelationAnalyzer(RelationAnalyzer[Board, BoardBinder]):
                     cls_name=cls.__name__,
                     msg=BoardBinderAnalysisAnalysisException.MSG,
                     err_code=BoardBinderAnalysisAnalysisException.ERR_CODE,
-                    ex=board_validation_result.exception,
+                    ex=board_validator_result.exception,
                 )
             )
         # Just incase things aren't Liskovian on the candidate_primary, cast the validation payload instead,
-        board = cast(Board, board_validation_result.payload)
+        board = cast(Board, board_validator_result.payload)
         
         # Handle the case that, the binder is not certified as safe.
         team_binder_validation_result = team_binder_validator.execute(candidate_satellite)

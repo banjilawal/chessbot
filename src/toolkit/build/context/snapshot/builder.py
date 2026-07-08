@@ -105,7 +105,7 @@ class SnapshotContextToolkit(Toolkit[SnapshotContext]):
 
             # Toolkit the timestamp SnapshotContext if its flag is enabled.
             if timestamp is not None:
-                validation = number_validator.build(candidate=timestamp)
+                validation = number_validator.execute(candidate=timestamp)
                 if validation.is_failure:
                     return ToolkitResult.failure(validation.exception)
                 # On validation success return an timestamp_SnapshotContext in the ToolkitResult.

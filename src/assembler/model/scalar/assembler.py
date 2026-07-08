@@ -69,7 +69,7 @@ class ScalarAssembler(Assembler[Scalar]):
             toolkit = ScalarToolkit()
         
         # Handle the case that, the validator is not primed.
-        validation_result = toolkit.number_validator.build(
+        validation_result = toolkit.number_validator.execute(
             candidate=blueprint.magnitude,
         )
         if validation_result.is_failure:

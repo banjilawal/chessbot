@@ -121,7 +121,7 @@ class TokenPositionPopper:
                 )
             )
         # Handle the case that, the token does not pass a validation check.
-        validation_result = token_validator.build(token)
+        validation_result = token_validator.execute(token)
         if validation_result.is_failure:
             # Send the exception chain on failure.
             return DeletionResult.failure(

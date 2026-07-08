@@ -67,7 +67,7 @@ class ArenaTeamRelationAnalysis(RelationAnalysis[Arena, Team]):
         """
         method = "ArenaService.certify_team_arena_relationship"
         # Process the possible arena_validation outcomes.
-        arena_validation = arena_validator.build(candidate_primary)
+        arena_validation = arena_validator.execute(candidate_primary)
         if arena_validation.is_failure:
             # Send the exception chain on failure.
             return RelationReport.failure(

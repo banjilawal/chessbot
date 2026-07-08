@@ -195,7 +195,7 @@ class TokenContextValidator(ContextValidator):
         
         # Certification for the search-by-rank target.
         if context.rank_level is not None:
-            validation_result = toolkit.rank_service.validator.build(
+            validation_result = toolkit.rank_service.validator.execute(
                 candidate=context.rank_level
             )
             if validation_result.is_failure:

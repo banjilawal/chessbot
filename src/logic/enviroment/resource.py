@@ -46,13 +46,13 @@ class BoardResourceValidator(Validator[Square, Board]):
       
       resource_candidate, environment_candidate = candidate
 
-      resource_validation = SquareValidator.build(resource_candidate)
+      resource_validation = Squarevalidator.execute(resource_candidate)
       if resource_validation.is_failure():
         return ValidationResult.failure(resource_validation.exception)
 
       resource = cast(Square, resource_validation.payload)
 
-      environment_validation = BoardValidator.build(environment_candidate)
+      environment_validation = Boardvalidator.execute(environment_candidate)
       if environment_validation.is_failure():
         return ValidationResult.failure(environment_validation.exception)
 

@@ -110,7 +110,7 @@ class EdgeService(Microservice[Edge]):
                 )
             )
         # Handle the case that, the heuristic is not a number.
-        heuristic_validation_result = number_validator.build(
+        heuristic_validation_result = number_validator.execute(
             candidate=heuristic,
             ceiling=sys.maxsize,
             floor=0,
@@ -175,7 +175,7 @@ class EdgeService(Microservice[Edge]):
                 )
             )
         # Handle the case that, the weight is not a number.
-        weight_validation_result = number_validator.build(
+        weight_validation_result = number_validator.execute(
             candidate=weight,
             ceiling=sys.maxsize,
             floor=(-sys.maxsize + 1),

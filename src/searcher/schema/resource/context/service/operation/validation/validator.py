@@ -275,7 +275,7 @@ class SchemaContextValidator(Validator[SchemaContext]):
         
         # Certification for the search-by-color target.
         if context.color is not None:
-            validation_result = workers.color_validator.build(
+            validation_result = workers.color_validator.execute(
                 candidate=context.color
             )
             if validation_result.is_failure:
@@ -296,7 +296,7 @@ class SchemaContextValidator(Validator[SchemaContext]):
         
         # Certification for the search-by-ransom target.
         if context.ransom is not None:
-            validation_result = workers.number_validator.build(
+            validation_result = workers.number_validator.execute(
                 rank=context.ransom,
                 floor=workers.persona_service.min_ransom,
                 ceiling=workers.persona_service.max_ransom,

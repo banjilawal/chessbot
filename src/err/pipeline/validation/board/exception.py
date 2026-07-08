@@ -13,11 +13,11 @@ from typing import Any, Optional
 from err import ValidationPipelineException
 
 __all__ = [
-    # ======================# BOARD_VALIDATION_PIPELINE_FAILURE #======================#
+    # ======================# BOARD_VALIDATOR_PIPELINE_FAILURE #======================#
     "BoardValidationPipelineException",
 ]
 
-# ======================# BOARD_VALIDATION_PIPELINE_FAILURE #======================#
+# ======================# BOARD_VALIDATOR_PIPELINE_FAILURE #======================#
 class BoardValidationPipelineException(ValidationPipelineException):
     """
     Role:
@@ -42,7 +42,7 @@ class BoardValidationPipelineException(ValidationPipelineException):
         ValidationPipeline
     """
     MSG = "Error in BoardValidationPipeline."
-    ERR_CODE = "BOARD_VALIDATION_PIPELINE_FAILURE"
+    ERR_CODE = "BOARD_VALIDATOR_PIPELINE_FAILURE"
     
     def __init__(
             self,

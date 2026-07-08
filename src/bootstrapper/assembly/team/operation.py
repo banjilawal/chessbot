@@ -144,11 +144,11 @@ class TeamAssemblyPrimer(AssemblyPrimer[Team]):
                 )
             )
         # Handle the case that, the board does not pass a validation check.
-        board_validation_result = cls._verify_board(
+        board_validator_result = cls._verify_board(
             blueprint=blueprint,
             toolkit=toolkit,
         )
-        if board_validation_result.is_failure:
+        if board_validator_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 PrimingTeamAssemblyException(
@@ -156,7 +156,7 @@ class TeamAssemblyPrimer(AssemblyPrimer[Team]):
                     cls_name=cls.__name__,
                     msg=PrimingTeamAssemblyException.MSG,
                     err_code=PrimingTeamAssemblyException.ERR_CODE,
-                    ex=board_validation_result.exception,
+                    ex=board_validator_result.exception,
                 )
             )
         return ValidationResult.success(
@@ -193,10 +193,10 @@ class TeamAssemblyPrimer(AssemblyPrimer[Team]):
         method = f"{cls.__name__}._verify_board"
         
         # Handle the case that, the board is flagged unsafe.
-        board_validation_result = toolkit.board_service.run.build(
+        board_validator_result = toolkit.board_service.run.build(
             candidate=blueprint.board
         )
-        if board_validation_result.is_failure:
+        if board_validator_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 PrimingTeamAssemblyException(
@@ -204,7 +204,7 @@ class TeamAssemblyPrimer(AssemblyPrimer[Team]):
                     cls_name=cls.__name__,
                     msg=PrimingTeamAssemblyException.MSG,
                     err_code=PrimingTeamAssemblyException.ERR_CODE,
-                    ex=board_validation_result.exception,
+                    ex=board_validator_result.exception,
                 )
             )
         # Handle the case that, the schema's binding slot is already occupied.

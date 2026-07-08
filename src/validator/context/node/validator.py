@@ -112,7 +112,7 @@ class NodeContextValidator(ContextValidator[Node]):
         
         # Certification for the search-by-priority target.
         if context.priority is not None:
-            validation = number_validator.build(
+            validation = number_validator.execute(
                 candidate=context.priority,
                 floor=-(sys.maxsize -1),
                 ceiling=sys.maxsize
@@ -130,7 +130,7 @@ class NodeContextValidator(ContextValidator[Node]):
         
         # Certification for the search-by-predecessor target.
         if context.predecessor is not None:
-            validation = node_validator.build(candidate=context.predecessor)
+            validation = node_validator.execute(candidate=context.predecessor)
             if validator.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(

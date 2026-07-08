@@ -77,7 +77,7 @@ class SchemaHashtableValidator(Validator[Dict[Schema, Any]]):
         method = f"{cls.__name__}.validate"
             
         # Handle the case that, the validator is not primed.
-        validator_priming_result = priming_validator.build(
+        validator_priming_result = priming_validator.execute(
             candidate=candidate,
             target_model=Dict[Schema, Any],
             context_null_exception=HashtableNullException(),

@@ -155,8 +155,8 @@ class HomeDetectorBootstrapper(DetectorBootstrapper):
                         ex=name_validation_result.exception,
                     )
                 )
-            board_validation_result = board_validator.execute(board)
-            if board_validation_result.is_failure:
+            board_validator_result = board_validator.execute(board)
+            if board_validator_result.is_failure:
                 # Send the exception chain on failure.
                 return Result.failure(
                     HomeDetectorBootstrapperException(
@@ -164,7 +164,7 @@ class HomeDetectorBootstrapper(DetectorBootstrapper):
                         cls_name=cls.__class__.__name__,
                         msg=HomeDetectorBootstrapperException.MSG,
                         err_code=HomeDetectorBootstrapperException.ERR_CODE,
-                        ex=board_validation_result.exception,
+                        ex=board_validator_result.exception,
                     )
                 )
             

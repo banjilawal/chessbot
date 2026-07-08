@@ -98,7 +98,7 @@ class BoardActorValidator(Validator[Tuple[Piece, Board]]):
             CheckMatedKingCannotMoveException(f"{method}: {CheckMatedKingCannotMoveException.MSG}")
           )
       
-      environment_validation = BoardValidator.build(environment_candidate)
+      environment_validation = Boardvalidator.execute(environment_candidate)
       if environment_validation.is_failure():
         return ValidationResult.failure(environment_validation.exception)
       

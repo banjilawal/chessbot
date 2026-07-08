@@ -11,12 +11,12 @@ from __future__ import annotations
 from typing import Any, cast
 
 from controller import WorkerRegistryController
-from model import Schema, Team
+from model import Team
 from toolkit import TeamToolkit
-from operation import Validator
 from result import ValidationResult
 from util import LoggingLevelRouter
 from err import SchemaNullException, TeamNullException, TeamValidatorException
+from validator import ModelValidator
 
 
 class TeamValidator(ModelValidator[Team]):
@@ -123,7 +123,7 @@ class TeamValidator(ModelValidator[Team]):
                 )
             )
         # Handle the case that, team.owner does not pass a validation check.
-        owner_validation_result = toolkit.owner_validator.build(team.owner)
+        owner_validation_result = toolkit.owner_validator.execute(team.owner)
         if owner_validation_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
@@ -136,8 +136,8 @@ class TeamValidator(ModelValidator[Team]):
                 )
             )
         # Handle the case that, team.board does not pass a validation check.
-        board_validation_result = toolkit.board_validator.execute(team.board)
-        if board_validation_result.is_failure:
+        board_validator_result = toolkit.board_validator.execute(team.board)
+        if board_validator_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 TeamValidatorException(
@@ -145,7 +145,7 @@ class TeamValidator(ModelValidator[Team]):
                     cls_name=cls.__name__,
                     msg=TeamValidatorException.MSG,
                     err_code=TeamValidatorException.ERR_CODE,
-                    ex=board_validation_result.exception,
+                    ex=board_validator_result.exception,
                 )
             )
         # --- Forward the work product to the caller. ---#

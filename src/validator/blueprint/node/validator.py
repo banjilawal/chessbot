@@ -112,7 +112,7 @@ class NodeBlueprintValidator(BlueprintValidator[Node]):
         
         # Certification for the search-by-priority target.
         if blueprint.priority is not None:
-            validation = number_validator.build(
+            validation = number_validator.execute(
                 candidate=blueprint.priority,
                 floor=-(sys.maxsize -1),
                 ceiling=sys.maxsize
@@ -130,7 +130,7 @@ class NodeBlueprintValidator(BlueprintValidator[Node]):
         
         # Certification for the search-by-predecessor target.
         if blueprint.predecessor is not None:
-            validation = node_validator.build(candidate=blueprint.predecessor)
+            validation = node_validator.execute(candidate=blueprint.predecessor)
             if validator.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(

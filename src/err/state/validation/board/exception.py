@@ -13,11 +13,11 @@ from typing import Any, Optional
 from err import ValidatorException
 
 __all__ = [
-    # ======================# BOARD_VALIDATION_EXCEPTION #======================#
+    # ======================# BOARD_VALIDATOR_EXCEPTION #======================#
     "BoardValidatorException",
 ]
 
-# ======================# BOARD_VALIDATION_EXCEPTION #======================#
+# ======================# BOARD_VALIDATOR_EXCEPTION #======================#
 class BoardValidatorException(ValidatorException):
     """
     Role:
@@ -42,7 +42,7 @@ class BoardValidatorException(ValidatorException):
         ValidatorException
     """
     MSG = "BoardValidation check failed"
-    ERR_CODE = "BOARD_VALIDATION_EXCEPTION"
+    ERR_CODE = "BOARD_VALIDATOR_EXCEPTION"
     
     def __init__(
             self,

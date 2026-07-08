@@ -153,7 +153,7 @@ class FormationBlueprintValidator(BlueprintValidator[FormationKey]):
 
         # Certification for the lookup-by-color target.
         if super_key.color is not None:
-            validation = color_validator.build(candidate=super_key.color)
+            validation = color_validator.execute(candidate=super_key.color)
             if validator.is_failure:
                 return ValidationResult.failure(
                     FormationKeyValidatorException(

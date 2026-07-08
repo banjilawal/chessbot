@@ -86,7 +86,7 @@ class GameValidator(ModelValidator[Game]):
             if id_validator.is_failure:
                 return ValidationResult.failure(id_validator.exception)
             
-            board_validation = board_service.run.build(game.board)
+            board_validator = board_service.run.build(game.board)
             if board_validator.is_failure:
                 return ValidationResult.failure(board_validator.exception)
             

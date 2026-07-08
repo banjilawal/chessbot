@@ -247,7 +247,7 @@ class TokenContextToolkit(Toolkit[TokenContext]):
         
         # Toolkit the color TokenContext if its flag is enabled.
         if color is not None:
-            validation = workers.color_validator.build(color)
+            validation = workers.color_validator.execute(color)
             if validation.is_failure:
                 # Send the exception chain on failure.
                 return ToolkitResult.failure(
@@ -266,7 +266,7 @@ class TokenContextToolkit(Toolkit[TokenContext]):
         
         # Toolkit the ransom TokenContext if its flag is enabled.
         if ransom is not None:
-            validation = workers.number_validator.build(
+            validation = workers.number_validator.execute(
                 candidate=ransom,
                 floor=workers.rank_service.persona_service.min_ransom,
                 ceiling=workers.rank_service.persona_service.max_ransom

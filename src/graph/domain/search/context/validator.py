@@ -66,22 +66,22 @@ class ResidentFilterValidator(Validator[ResidentFilter]):
                 )
             
             if search_context.resident_id is not None:
-                id_validation = IdValidator.build(search_context.resident_id)
+                id_validation = Idvalidator.execute(search_context.resident_id)
                 if id_validation.is_failure():
                     return ValidationResult.failure(id_validation.exception)
             
             if search_context.resident_name is not None:
-                name_validation = NameValidator.build(search_context.resident_name)
+                name_validation = Namevalidator.execute(search_context.resident_name)
                 if name_validation.is_failure():
                     return ValidationResult.failure(name_validation.exception)
             
             if search_context.team_id is not None:
-                team_id_validation = IdValidator.build(search_context.team_id)
+                team_id_validation = Idvalidator.execute(search_context.team_id)
                 if team_id_validation.is_failure():
                     return ValidationResult.failure(team_id_validation.exception)
             
             if search_context.resident_team is not None:
-                team_name_validation = NameValidator.build(search_context.resident_team)
+                team_name_validation = Namevalidator.execute(search_context.resident_team)
                 if team_name_validation.is_failure():
                     return ValidationResult.failure(team_name_validation.exception)
             
@@ -96,7 +96,7 @@ class ResidentFilterValidator(Validator[ResidentFilter]):
                     return ValidationResult.failure(ransom_bounds_check.exception)
             
             if search_context.resident_coord is not None:
-                coord_validation = CoordValidator.build(search_context.resident_coord)
+                coord_validation = Coordvalidator.execute(search_context.resident_coord)
                 if coord_validation.is_failure():
                     return ValidationResult.failure(coord_validation.exception)
             

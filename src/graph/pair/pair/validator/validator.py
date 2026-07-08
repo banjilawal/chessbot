@@ -98,7 +98,7 @@ class PairValidator(Validator[Pair]):
         
         # Handle the case that either the head or tail does not pass a validation check.
         for member in pair.members:
-            validation_result = node_validator.build(candidate=member)
+            validation_result = node_validator.execute(candidate=member)
             if validation_result.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(

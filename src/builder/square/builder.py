@@ -160,8 +160,8 @@ class SquareBuilder(Builder[Square]):
                 )
             )
         # Handle the case that, the board is not safe.
-        board_validation = tool.board_service.run.build(board)
-        if board_validation.is_failure:
+        board_validator = tool.board_service.run.build(board)
+        if board_validator.is_failure:
             # Send the exception chain on failure.
             return BuildResult.failure(
                 SquareBuilderException(
@@ -171,7 +171,7 @@ class SquareBuilder(Builder[Square]):
                     msg=SquareBuilderException.MSG,
                     err_code=SquareBuilderException.ERR_CODE,
                     mthd_rslt_type=SquareBuilderException.MTHD_RSLT,
-                    ex=board_validation.exception,
+                    ex=board_validator.exception,
                 )
             )
         # Handle the case that, the square's attributes have already been used.

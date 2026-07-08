@@ -178,7 +178,7 @@ class CoordContextBuilder(Builder[CoordContext]):
         
         for attribute in attributes:
             # Handle the case that, the rowis not safe.
-            validation_result = number_validator.build(
+            validation_result = number_validator.execute(
                 candidate=attribute,
                 ceiling=BOARD_DIMENSION - 1,
                 floor=0,
