@@ -12,7 +12,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 
 from analyzer import SquareTokenRelationAnalyzer, TokenReadinessAnalyzer
-from search import TokenOriginSearcher
+from searcher import TokenOriginSearcher
 from toolkit import PermitterToolkit
 from validator import SquareValidator, TokenValidator
 

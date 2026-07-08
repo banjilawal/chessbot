@@ -18,7 +18,7 @@ from err import (
 from model import SquareContext, Token
 from report import TokenReadinessReport
 from result import MethodResultType, SearchResult
-from search import TokenTokenBuilder
+from searcher import TokenTokenBuilder
 from util import LoggingLevelRouter
 
 

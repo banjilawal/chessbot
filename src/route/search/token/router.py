@@ -16,7 +16,7 @@ from model import Coord, HomeSquare, Rank, Team, Token
 from model.query import TokenQuery
 from result import SearchResult
 from route import SearchRouter
-from search import TokenQueryValidator
+from searcher import TokenQueryValidator
 from system import LoggingLevelRouter
 
 

@@ -5,10 +5,42 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/controller/crud/controller.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/deleter/token/deleter.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/deleter/token/deleter.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/popper/token/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/popper/token/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/popper/token/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/popper/token/popper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/stack/crud/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/coord/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/stack/crud/coord/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/crud/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/stack/crud/coord/crud/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/coord/crud/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/stack/crud/coord/crud/controller.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/coord/crud/controller.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/stack/crud/coord/crud/pop/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/coord/crud/pop/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/stack/crud/coord/crud/pop/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/coord/crud/pop/exception/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/stack/crud/coord/crud/pop/exception/empty.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/coord/crud/pop/exception/empty.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/stack/crud/coord/crud/pop/exception/work.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/coord/crud/pop/exception/work.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/stack/crud/coord/crud/pop/transaction.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/coord/crud/pop/transaction.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/stack/crud/coord/crud/push/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/coord/crud/push/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/stack/crud/coord/crud/push/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/coord/crud/push/exception/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/stack/crud/coord/crud/push/exception/duplicate.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/coord/crud/push/exception/duplicate.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/stack/crud/coord/crud/push/exception/work.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/coord/crud/push/exception/work.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/stack/crud/coord/crud/push/transaction.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/coord/crud/push/transaction.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/stack/crud/square/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/crud/square/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/stack/crud/square/crud/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/crud/square/crud/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/stack/crud/square/crud/controller.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/crud/square/crud/controller.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/stack/crud/square/crud/pop/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/crud/square/crud/pop/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/stack/crud/square/crud/pop/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/crud/square/crud/pop/exception/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/stack/crud/square/crud/pop/exception/empty.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/crud/square/crud/pop/exception/empty.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/stack/crud/square/crud/pop/exception/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/crud/square/crud/pop/exception/wrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/stack/crud/square/crud/pop/popper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/crud/square/crud/pop/popper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/stack/crud/square/crud/push/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/crud/square/crud/push/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/stack/crud/square/crud/push/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/crud/square/crud/push/exception/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/stack/crud/square/crud/push/exception/duplicate.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/crud/square/crud/push/exception/duplicate.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/stack/crud/square/crud/push/exception/full.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/crud/square/crud/push/exception/full.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/stack/crud/square/crud/push/exception/rank.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/crud/square/crud/push/exception/rank.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/stack/crud/square/crud/push/exception/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/crud/square/crud/push/exception/wrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/stack/crud/square/crud/push/process.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/crud/square/crud/push/process.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/stack/crud/token.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/stack/crud/token/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/crud/token/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/stack/crud/token/controller.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/crud/token/controller.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/stack/token/controller.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/stack/token/controller.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,7 +94,7 @@
     "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/err/tester/stack/token",
+    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/controller/crud",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
@@ -74,18 +106,18 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/controller/crud" />
       <recent name="$PROJECT_DIR$/src/err/tester/stack/token" />
       <recent name="$PROJECT_DIR$/src/tester/stack/token" />
       <recent name="$PROJECT_DIR$/src/err/tester/stack" />
       <recent name="$PROJECT_DIR$/src/err/tester" />
-      <recent name="$PROJECT_DIR$/src/err/bootstrapper/permitter" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/controller" />
       <recent name="$PROJECT_DIR$/src/err/tester/stack/token/push" />
       <recent name="$PROJECT_DIR$/src/tester/stack/token" />
       <recent name="$PROJECT_DIR$/src/bootstrapper" />
       <recent name="$PROJECT_DIR$/src/permitter/bootsrapper/push" />
-      <recent name="$PROJECT_DIR$/src/permitter/bootsrapper" />
     </key>
   </component>
   <component name="RunManager" selected="Python.notifier">
@@ -811,7 +843,7 @@
       <workItem from="1782265217166" duration="7062000" />
       <workItem from="1782325486599" duration="56546000" />
       <workItem from="1782732939190" duration="235900000" />
-      <workItem from="1783222430394" duration="176365000" />
+      <workItem from="1783222430394" duration="182744000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />
@@ -1134,7 +1166,7 @@
           <option name="timeStamp" value="196" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/src/controller/stack/crud/token/controller.py</url>
+          <url>file://$PROJECT_DIR$/src/controller/crud/token/controller.py</url>
           <line>9</line>
           <option name="timeStamp" value="197" />
         </line-breakpoint>

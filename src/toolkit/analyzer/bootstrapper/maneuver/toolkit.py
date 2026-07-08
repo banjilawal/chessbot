@@ -16,7 +16,7 @@ from err import ManeuverNullException
 from microservice import Microservice
 from analyzer import Maneuver
 from operation import Operation
-from search import TokenOriginSearcher
+from searcher import TokenOriginSearcher
 from toolkit import AnalyzerBootstrapperToolkit
 from validator import (
     ManeuverEndpointValidator, PathValidator, SquareValidator, TokenDestinationCertifier,

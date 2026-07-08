@@ -11,7 +11,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 
 from operation import RegisterNewWorker
-from search import WorkerRegistryDomainSearch, WorkerRegistryNameSearch
+from searcher import WorkerRegistryDomainSearch, WorkerRegistryNameSearch
 
 
 @dataclass

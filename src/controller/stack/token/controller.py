@@ -10,11 +10,11 @@ version: 1.0.0
 from __future__ import annotations
 
 from analyzer import RankQuotaAnalyzer
-from controller.stack.crud.token import TokenStackCrudController
+from controller.crud import TokenStackCrudController
 from detection import TokenCollisionDetector
 from microservice import TokenService
 from operation import TokenDeleter, TokenHomePlacer, TokenPopper, TokenPusher
-from search.token.searcher import TokenSearcher
+from searcher.token.searcher import TokenSearcher
 
 
 class TokenStackController:

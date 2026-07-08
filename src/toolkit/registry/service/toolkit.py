@@ -11,7 +11,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 
 from operation import RegisterNewService
-from search import ServiceRegistrySearch
+from searcher import ServiceRegistrySearch
 
 
 @dataclass

@@ -15,8 +15,8 @@ from permitter import TokenPopPermitter
 from popper import Popper
 from request import PopRequest
 from result import DeletionResult, MethodResultType
-from stack import TokenStackService, TokenStackState
-from util import IdFactory, LoggingLevelRouter
+from stack import TokenStackState
+from util import LoggingLevelRouter
 
 
 class TokenPopper(Popper[Token]):
@@ -49,14 +49,14 @@ class TokenPopper(Popper[Token]):
         self._permitter = permitter
 
     @LoggingLevelRouter.monitor
-    def execute(self, stack: TokenStackService,) -> DeletionResult:
+    def execute(self, request: PopRequest) -> DeletionResult:
         """
         Action:
             1.  Return an exception chain in the DeletionResult if permission is
                 not granted for the pop.
             2.  Otherwise, remove the topmost token then, send the success result.
         Args:
-            stack: TokenStackService
+            request: PopRequest
         Returns:
             DeletionResult
         Raises:
@@ -65,12 +65,7 @@ class TokenPopper(Popper[Token]):
         method = f"{self.__class__.__name__}.execute"
         
         # Handle the case that, push rights are not granted.
-        permission = self._permitter.run(
-            request=PopRequest(
-                stack=stack,
-                id=IdFactory.next_id(class_name="PopRequest"),
-            )
-        )
+        permission = self._permitter.run(request=request)
         if permission.is_denied:
             # Return the exception chain on failure
             return DeletionResult.failure(
@@ -84,7 +79,7 @@ class TokenPopper(Popper[Token]):
                 )
             )
         # Otherwise, complete the pop steps.
-        target = stack.items.pop(-1)
-        if stack.is_empty:
-            stack.stack_state = TokenStackState.DEPLOYED_ON_BOARD
+        target = request.stack.items.pop(-1)
+        if request.stack.is_empty:
+            request.stack.stack_state = TokenStackState.DEPLOYED_ON_BOARD
         return DeletionResult.success(target)

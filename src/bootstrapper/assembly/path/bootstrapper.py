@@ -15,7 +15,7 @@ from blueprint import PathBlueprint
 from controller import WorkerRegistryController
 from report import CollisionReport
 from toolkit import PathToolkit
-from search import SquareNotFoundException
+from searcher import SquareNotFoundException
 from operation import AssemblyPrimer
 from err import PathAssemblyPrimerException
 from result import AnalysisResult, SearchResult, ValidationResult

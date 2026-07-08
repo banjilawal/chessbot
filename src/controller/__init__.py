@@ -11,6 +11,7 @@ version: 1.0.1
 
 # Packages
 from .binder import *
+from .crud import *
 from .model import *
 from .registry import *
 from .stack import *

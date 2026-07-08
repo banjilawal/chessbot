@@ -7,25 +7,18 @@ Created: 2026-04-03
 version: 1.0.1
 """
 
-from abc import ABC
+from abc import ABC, abstractmethod
 from typing import Generic, TypeVar
 
-
+from request import DeletionRequest
 from result import DeletionResult
-from stack import StackService
 from util import LoggingLevelRouter
 
 T = TypeVar("T")
 
 class Deleter(ABC, Generic[T]):
     
-    @classmethod
+    @abstractmethod
     @LoggingLevelRouter.monitor
-    def execute(
-            cls,
-            item_id: int,
-            stack: StackService[T],
-            *args,
-            **kwargs,
-    ) -> DeletionResult[T]:
+    def execute(self, request: DeletionRequest) -> DeletionResult[T]:
         pass

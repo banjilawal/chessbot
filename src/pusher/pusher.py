@@ -1,22 +1,24 @@
-from abc import ABC
+# src/pusher/pusher.py
+
+"""
+Module: pusher.pusher
+Author: Banji Lawal
+Created: 2026-04-03
+version: 1.0.1
+"""
+
+from abc import ABC, abstractmethod
 from typing import Generic, TypeVar
 
-
+from request import PushRequest
 from result import InsertionResult
-from stack import StackService
 from util import LoggingLevelRouter
 
 T = TypeVar("T")
 
 class Pusher(ABC, Generic[T]):
     
-    @classmethod
+    @abstractmethod
     @LoggingLevelRouter.monitor
-    def execute(
-            cls,
-            item: T,
-            stack: StackService[T],
-            *args,
-            **kwargs,
-    ) -> InsertionResult:
+    def execute(self, request: PushRequest) -> InsertionResult:
         pass
