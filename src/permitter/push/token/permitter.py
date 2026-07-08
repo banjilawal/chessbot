@@ -18,7 +18,7 @@ from permitter import PushPermitter, RankSlotPermitter
 from report import PushApprovalReport
 from request import PushRequest, RankSlotRequest
 from stack import TokenStackService
-from tester.stack import TokenPushRequestTester
+from tester import TokenPushRequestTester
 from util import IdFactory, LoggingLevelRouter
 
 

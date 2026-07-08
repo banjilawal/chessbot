@@ -8,103 +8,82 @@ version: 1.0.1
 """
 
 from __future__ import annotations
-from typing import cast
 
 from deleter import Deleter
 from err import TokenDeleterException
 from model import Token
-from permitter.deletion import TokenDeletionPermitter
-from report import DeletionApprovalReport
+from permitter import TokenDeletionPermitter
+from request import DeletionRequest
 from result import DeletionResult, MethodResultType
-from stack import TokenStackService, TokenStackState
+from stack import TokenStackState
 from util import LoggingLevelRouter
 
 
 class TokenDeleter(Deleter[Token]):
     """
     Role:
-        - Transaction Worker
+        - CRUD Worker
         - Consistency, Integrity Maintenance
         - Process Runner
 
     Responsibilities:
         1.  Token deletion exception owner.
         2.  Prevent deleting from an empty stack.
-        
-    Attributes:
-    
-    Provides:
-        -   execute(
-                item_id: int,
-                stack: TokenStackService,
-                permitter: TokenDeletionPermitter,
-        ) -> DeletionResult[Token]
-        
-    Super:
-    """
 
-    @classmethod
-    @LoggingLevelRouter.monitor
-    def execute(
-            cls, 
-            item_id: int,
-            stack: TokenStackService,
-            permitter: TokenDeletionPermitter | None = None,
-    ) -> DeletionResult[Token]:
-        """
-        Remove the token at the top of the stack.
+    Attributes:
+        permitter: TokenDeletionPermitter
         
-        Action:
-            1.  Send an exception chain in the DeletionResult if the stack is empty.
-            2.  Otherwise, delete the token from the stack.
-            3.  Send the success result containing the finished work product.
+    Provides:
+        -   execute(item_id: int, stack: TokenStackService,) -> DeletionResult
+
+    Super Class:
+        Deleter
+    """
+    _permitter: TokenDeletionPermitter | None = None
+    
+    def __init__(self, permitter: TokenDeletionPermitter | None = TokenDeletionPermitter()):
+        """
         Args:
-            item_id: int
-            stack: TokenStackService
             permitter: TokenDeletionPermitter
+        """
+        self._permitter = permitter
+    
+    @LoggingLevelRouter.monitor
+    def execute(self, request: DeletionRequest,) -> DeletionResult:
+        """
+        Action:
+            1.  Return an exception chain in the DeletionResult if permission is
+                not granted for the deletion.
+            2.  Otherwise, remove the topmost token then, send the success result.
+        Args:
+            request: DeletionRequest
         Returns:
-            DeletionResult[Token]
+            DeletionResult
         Raises:
             TokenDeleterException
         """
-        method = f"{cls.__class__.__name__}.execute"
+        method = f"{self.__class__.__name__}.execute"
         
-        if permitter is None:
-            permitter = TokenDeletionPermitter()
-        
-        permission_analysis_result = permitter.execute(item_id=item_id, stack=stack)
-        # Handle the case that, the push_permitter does not complete analysis.
-        if permission_analysis_result.is_failure:
+        # Handle the case that, push rights are not granted.
+        permission = self._permitter.run(request=request)
+        if permission.is_denied:
             # Return the exception chain on failure
             return DeletionResult.failure(
                 TokenDeleterException(
                     cls_mthd=method,
-                    cls_name=cls.__name__,
+                    cls_name=self.__class__.__name__,
                     msg=TokenDeleterException.MSG,
                     err_code=TokenDeleterException.ERR_CODE,
                     mthd_rslt_type=MethodResultType.DELETION_RESULT,
-                    ex=permission_analysis_result.exception
+                    ex=permission.exception
                 )
             )
-        
-        delete_permission = cast(DeletionApprovalReport, permission_analysis_result.payload)
-        # Handle the case that, push permission is denied.
-        if delete_permission.is_denied:
-            # Return the exception chain on failure
-            return DeletionResult.failure(
-                TokenDeleterException(
-                    cls_mthd=method,
-                    cls_name=cls.__name__,
-                    msg=TokenDeleterException.MSG,
-                    err_code=TokenDeleterException.ERR_CODE,
-                    mthd_rslt_type=MethodResultType.DELETION_RESULT,
-                    ex=delete_permission.exception
-                )
-            )
+        stack = request.stack
+        # Otherwise, complete the deletion steps.
         # --- Loop through the collection to ensure all matches are removed. ---#
         target = None
         for token in stack.items:
-            if token.id == item_id:
+            if token.id == request.item_id:
                 # Record a hit before pulling it from the stack.
                 target = token
                 stack.items.remove(token)

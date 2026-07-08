@@ -72,9 +72,9 @@ class DeletionApprovalReport(OperationApprovalReport):
         )
     
     @classmethod
-    def approve(cls, id: int, stack: StackService[T],) -> DeletionApprovalReport:
+    def approve(cls, item_id: int, stack: StackService[T], ) -> DeletionApprovalReport:
         return cls(
-            id=id,
+            id=item_id,
             stack=stack,
             permission=Permission.GRANTED
         )

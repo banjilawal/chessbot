@@ -24,18 +24,15 @@ class TokenReadinessAnalyzer(Analyzer):
         -   Analysis Factory
         -   Consistency maintenance
         
-
     Responsibilities:
         1.  Analyze a token's aliveness before its used in the brought into play.
         2.  Combine safety and aliveness tests unique to each subclass under one roof.
 
     Attributes:
-
+        bootstrapper: ReadinessAnalyzerBootstrapper
+        
     Provides:
-        -   execute(
-                    token: Token,
-                    token_validator: TokenValidator,
-            ) -> AnalysisResult[TokenFreedomReport]
+        -   execute(token: Token,) -> AnalysisResult
             
     Parent:
         Analyzer

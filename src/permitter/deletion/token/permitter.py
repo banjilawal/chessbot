@@ -9,15 +9,14 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from typing import Optional
+from typing import cast
 
-from err import PoppingEmptyTokenStackException, TokenDeletionPermitterException, TokenStackNullException
-from microservice import IdentityService
+from err import PoppingEmptyTokenStackException, TokenDeletePermitterException
 from report import DeletionApprovalReport
-from result import AnalysisResult, MethodResultType
+from request import DeletionRequest
 from stack import TokenStackService
+from tester import TokenDeletionRequestTester
 from util import LoggingLevelRouter
-from validator import PrimingValidator
 
 
 class TokenDeletionPermitter:
@@ -31,29 +30,22 @@ class TokenDeletionPermitter:
         1.  Run tests to see if permission can be granted to a TokenStackService to execute a deletion.
 
     Attributes:
+        request_tester: TokenDeletionRequestTester
 
     Provides:
-        -   execute(
-                    cls,
-                    token: Token,
-                    token_stack: TokenStackService,
-                    rank_service: RankService = RankService(),
-                    rank_quota_analyzer: RankQuotaAnalyzer = RankQuotaAnalyzer(),
-                    collision_detector: TokenCollisionAnalyst = TokenCollisionAnalyst(),
-            ) -> AnalysisResult
+        -   run(item_id: int, stack: TokenStackService) -> DeletionApprovalReport:
 
     Super Class:
+        DeletionPermitter
     """
+    _request_tester: TokenDeletionRequestTester
+    
+    def __init__(self, request_tester: TokenDeletionRequestTester | None = TokenDeletionRequestTester()):
+        self._request_tester = request_tester
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def execute(
-            cls,
-            stack: TokenStackService,
-            item_id: Optional[int] = None,
-            identity_service: IdentityService | None = None,
-            priming_validator: PrimingValidator | None = None,
-    ) -> AnalysisResult:
+    def run(self, request: DeletionRequest,) -> DeletionApprovalReport:
         """
         Action:
             1.  Return a failure result containing an exception chain if either:
@@ -66,76 +58,47 @@ class TokenDeletionPermitter:
                     -   The quota for the token's rank is full.
             3.  Send an approval if all the tests are passed.
         Args:
-            item_id: int
-            stack: TokenStackService
-            identity_service: IdentityService
-            priming_validator: PrimingValidator
+            request: DeletionRequest
         Returns:
-            AnalysisResult
+            DeletionApprovalReport
         Raises:
             TokenDeletePermitterException
-            TokenStackFullException
+            PoppingEmptyTokenStackException
         """
-        method =  f"{cls.__name__}.execute"
+        method = f"{self.__class__.__name__}.run"
         
-        # --- Supply any missing dependencies. ---#
-        if identity_service is None:
-            identity_service = IdentityService()
-        if priming_validator is None:
-            priming_validator = PrimingValidator()
-        
-        id_validation_result = identity_service.validate_id(candidate=id)
-        if id_validation_result.is_failure:
-            # Return the exception chain on failure
-            return AnalysisResult.failure(
-                TokenDeletionPermitterException(
+        # Handle the case that, the request is not bootstrapped successfully.
+        bootstrap = self._request_tester.execute(candidate=request)
+        if bootstrap.is_failure:
+            # Send an exception chain in the permission denial.
+            return DeletionApprovalReport.deny(
+                TokenDeletePermitterException(
                     cls_mthd=method,
-                    cls_name=cls.__name__,
-                    msg=TokenDeletionPermitterException.MSG,
-                    err_code=TokenDeletionPermitterException.ERR_CODE,
-                    mthd_rslt_type=MethodResultType.ANALYSIS_RESULT,
-                    ex=id_validation_result.exception,
+                    cls_name=self.__class__.__name__,
+                    msg=TokenDeletePermitterException.MSG,
+                    err_code=TokenDeletePermitterException.ERR_CODE,
+                    ex=bootstrap.exception,
                 )
             )
 
-        
-        stack_validation_result = priming_validator.validate(
-            candidate=stack,
-            target_model=TokenStackService,
-            null_exception=TokenStackNullException()
-        )
-        if stack_validation_result.is_failure:
-            # Return the exception chain on failure
-            return AnalysisResult.failure(
-                TokenDeletionPermitterException(
-                    cls_mthd=method,
-                    cls_name=cls.__name__,
-                    msg=TokenDeletionPermitterException.MSG,
-                    err_code=TokenDeletionPermitterException.ERR_CODE,
-                    mthd_rslt_type=MethodResultType.ANALYSIS_RESULT,
-                    ex=stack_validation_result.exception,
-                )
-            )
+        stack = cast(TokenStackService, request.stack)
         if stack.is_empty:
             # Return the exception chain on failure
-            return AnalysisResult.completed(
-                DeletionApprovalReport.deny(
-                    exception=TokenDeletionPermitterException(
+            return DeletionApprovalReport.deny(
+                exception=TokenDeletePermitterException(
+                    cls_mthd=method,
+                    cls_name=self.__class__.__name__,
+                    msg=TokenDeletePermitterException.MSG,
+                    err_code=TokenDeletePermitterException.ERR_CODE,
+                    ex=PoppingEmptyTokenStackException(
                         cls_mthd=method,
-                        cls_name=cls.__name__,
-                        msg=TokenDeletionPermitterException.MSG,
-                        err_code=TokenDeletionPermitterException.ERR_CODE,
-                        mthd_rslt_type=MethodResultType.ANALYSIS_RESULT,
-                        ex=PoppingEmptyTokenStackException(
-                            cls_mthd=method,
-                            cls_name=cls.__name__,
-                            msg=PoppingEmptyTokenStackException.MSG,
-                            err_code=PoppingEmptyTokenStackException.ERR_CODE,
-                        ),
-                    )
+                        cls_name=self.__class__.__name__,
+                        msg=PoppingEmptyTokenStackException.MSG,
+                        err_code=PoppingEmptyTokenStackException.ERR_CODE,
+                    ),
                 )
             )
         # --- Integrity and performance tests are passed. ---#
-        return AnalysisResult.completed(DeletionApprovalReport.approve(id=item_id, stack=stack))
+        return DeletionApprovalReport.approve(item_id=request.item_id, stack=stack)
 
     
