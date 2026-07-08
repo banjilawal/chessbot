@@ -1,7 +1,7 @@
 # src/bootstrapper/permitter/deletion/bootstrapper.py
 
 """
-Module: bootstrapper/permitter.deletion.bootstrapper
+Module: bootstrapper.permitter.deletion.bootstrapper
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

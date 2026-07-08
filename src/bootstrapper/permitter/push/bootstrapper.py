@@ -1,7 +1,7 @@
 # src/bootstrapper/permitter/push/bootstrapper.py
 
 """
-Module: bootstrapper/permitter.push.bootstrapper
+Module: bootstrapper.permitter.push.bootstrapper
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

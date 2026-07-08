@@ -1,7 +1,7 @@
-# src/bootstrapper/permitter/maneuver/bootstrapper.py
+# src/bootstrapper/permitter/search/bootstrapper.py
 
 """
-Module: bootstrapper.permitter.maneuver.bootstrapper
+Module: bootstrapper.permitter.search.bootstrapper
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -11,20 +11,20 @@ from __future__ import annotations
 
 from typing import Type
 
-from err import ManeuverRequestNullException, ManeuverPermitterBootstrapperException
-from permitter import PermitterBootstrapper
-from request import ManeuverRequest
+from bootstrapper import PermitterBootstrapper
+from err import SearchPermitterBootstrapperException, SearchRequestNullException
+from request import SearchRequest
 from result import ValidationResult
 from util import LoggingLevelRouter
 
 
-class ManeuverPermitterBootstrapper(PermitterBootstrapper):
+class SearchPermitterBootstrapper(PermitterBootstrapper):
     """
     Role:
         - Bootstrapper
 
     Responsibilities:
-        1.  Verfiy a ManeuverPermitter receives a well formed ManeuverRequest.
+        1.  Verfiy a SearchPermitter receives a well formed SearchRequest.
 
     Attributes:
 
@@ -46,31 +46,31 @@ class ManeuverPermitterBootstrapper(PermitterBootstrapper):
         Action:
             1.  Send an exception chain in the ValidationResult if the request is either
                     -   Null
-                    -   Not a ManeuverRequest.
+                    -   Not a SearchRequest.
             2.  Otherwise, send the success
         Args:
             request
         Returns:
             ValidationResult
         Raises:
-            ManeuverPermitterBootstrapperException
+            SearchPermitterBootstrapperException
         """
         method = f"{self.__class__.__name__}.bootstrap_request"
         
         # Handle the case that, the request is malformed
         validation_result = self.priming_validator.execute(
             candidate=request,
-            target_model=Type[ManeuverRequest],
-            null_exception=ManeuverRequestNullException()
+            target_model=Type[SearchRequest],
+            null_exception=SearchRequestNullException()
         )
         if validation_result.is_failure:
             # Send the exception chain in the ValidationResult.
             return ValidationResult.failure(
-                ManeuverPermitterBootstrapperException(
+                SearchPermitterBootstrapperException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=ManeuverPermitterBootstrapperException.MSG,
-                    err_code=ManeuverPermitterBootstrapperException.ERR_CODE,
+                    msg=SearchPermitterBootstrapperException.MSG,
+                    err_code=SearchPermitterBootstrapperException.ERR_CODE,
                     ex=validation_result.exception,
                 )
             )

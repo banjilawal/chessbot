@@ -1,7 +1,7 @@
 # src/bootstrapper/permitter/pop/bootstrapper.py
 
 """
-Module: bootstrapper/permitter.pop.bootstrapper
+Module: bootstrapper.permitter.pop.bootstrapper
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
