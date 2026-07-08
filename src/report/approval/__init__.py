@@ -15,6 +15,7 @@ from .maneuver import *
 from .pop import *
 from .promotion import *
 from .push import *
+from .search import *
 from .slot import *
 
 # Modules
