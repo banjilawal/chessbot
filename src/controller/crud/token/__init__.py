@@ -1,13 +1,13 @@
-# src/logic/token/database/kernel/operation/crud/__init__.py
+# src/controller/crud/token/__init__.py
 
 """
-Module: logic.token.database.kernel.OPERATION.CRUD.__init__
+Module: controller.crud.token.__init__
 Author: Banji Lawal
-Created: 2026-02-22
-version: 1.0.0
+Created: 2026-04-03
+version: 1.0.1
 """
 
-# =========== TOKEN.DATABASE.KERNEL.OPERATION.CRUD PACKAGE ===========#
+# =========== CONTROLLER.CRUD.TOKEN PACKAGE ===========#
 
 # Packages
 

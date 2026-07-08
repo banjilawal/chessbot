@@ -14,7 +14,7 @@ from deleter import TokenDeleter
 from model import Query, Token, TokenQuery
 from popper import TokenPopper
 from pusher import TokenPusher
-from request import DeletionRequest, PopRequest, PushRequest
+from request import DeletionRequest, PopRequest, PushRequest, SearchRequest
 from result import DeletionResult, InsertionResult, SearchResult
 from searcher import TokenSearcher
 from util import LoggingLevelRouter
@@ -79,8 +79,8 @@ class TokenCrudController(CrudController[Token]):
         return self._pusher.execute(request)
     
     @LoggingLevelRouter.monitor
-    def search(self, query: TokenQuery) -> SearchResult:
-        return self._searcher.execute(query)
+    def search(self, request: SearchRequest) -> SearchResult:
+        return self._searcher.execute(request)
 
     
     
