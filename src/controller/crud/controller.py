@@ -42,7 +42,7 @@ class CrudController(Controller, Generic[T]):
     
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def search(self, query: Query) -> SearchResult:
+    def search(self, request: SearchResult) -> SearchResult:
         pass
     
     

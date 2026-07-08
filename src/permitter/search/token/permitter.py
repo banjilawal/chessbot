@@ -11,6 +11,7 @@ from __future__ import annotations
 
 from typing import cast
 
+from context import TokenContext
 from detector.token import TokenCollisionDetector
 from err import TokenSearchPermitterException
 from model import Token
@@ -33,8 +34,6 @@ class TokenSearchPermitter(SearchPermitter[Token]):
         1.  Run tests to see if permission can be granted to a TokenStackService to execute a search.
 
     Attributes:
-        collision_detector: TokenCollisionDetector
-        rank_slot_permitter: RankSlotPermitter
         request_tester: TokenSearchRequestTester
 
     Provides:
@@ -43,25 +42,17 @@ class TokenSearchPermitter(SearchPermitter[Token]):
     Super Class:
         SearchPermitter
     """
-    _rank_slot_permitter: RankSlotPermitter
-    _collision_detector: TokenCollisionDetector
     _request_tester: TokenSearchRequestTester
     
     def __init__(
             self,
-            rank_slot_permitter: RankSlotPermitter = RankSlotPermitter(),
-            collision_detector: TokenCollisionDetector | None = TokenCollisionDetector(),
             request_tester: TokenSearchRequestTester | None = TokenSearchRequestTester()
     ):
         """
         Args:
-            collision_detector: TokenCollisionDetector
-            rank_slot_permitter: RankSlotPermitter
             request_tester: TokenSearchRequestTester
         """
         super().__init__()
-        self._collision_detector = collision_detector
-        self._rank_slot_permitter = rank_slot_permitter
         self._request_tester = request_tester
         
         
@@ -102,39 +93,8 @@ class TokenSearchPermitter(SearchPermitter[Token]):
                 )
             )
 
-        token = cast(Token, request.item)
+        context = cast(TokenContext, request.context)
         stack = cast(TokenStackService, request.stack)
-        
-        # Handle the case that, there is no opening for the token's rank.
-        rank_opening = self._rank_slot_permitter.run(
-            RankSlotRequest(
-                id=IdFactory.next_id(class_name="RankSLotRequest"),
-                token_stack=stack,
-                rank=token.rank,
-            )
-        )
-        if rank_opening.is_denied:
-            # Send an exception chain in the permission denial.
-            return SearchApprovalReport.deny(
-                TokenSearchPermitterException(
-                    cls_mthd=method,
-                    cls_name=self.__class__.__name__,
-                    msg=TokenSearchPermitterException.MSG,
-                    err_code=TokenSearchPermitterException.ERR_CODE,
-                    ex=rank_opening.exception,
-                )
-            )
-        # Handle the case that, token conflicts with a current stack member.
-        report = self._collision_detector.execute(attractor=token, stream=stack)
-        if report.collision_exists:
-            SearchApprovalReport.deny(
-                exception=TokenSearchPermitterException(
-                    cls_mthd=method,
-                    cls_name=self.__class__.__name__,
-                    msg=TokenSearchPermitterException.MSG,
-                    err_code=TokenSearchPermitterException.ERR_CODE,
-                    ex=report.exception,
-                )
-            )
+
         # Forward the permission approval.
-        return SearchApprovalReport.approve(item=token, stack=stack)
+        return SearchApprovalReport.approve(context=context, stack=stack)

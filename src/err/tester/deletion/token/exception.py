@@ -1,7 +1,7 @@
-# src/err/tester/stack/exception.py
+# src/err/tester/deletion/token/deletion/exception.py
 
 """
-Module: err.tester.stack.exception
+Module: err.tester.stack.token.deletion.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -13,19 +13,21 @@ from typing import Any, Optional
 from err import TesterException
 from result import MethodResultType
 
+
+
 __all__ = [
-    # ======================# STACK_TESTER_FAILURE #======================#
-    "StackTesterException",
+    # ======================# TOKEN_DELETION_TESTER_FAILURE #======================#
+    "TokenDeletionRequestTesterException",
 ]
 
-# ======================# STACK_TESTER_FAILURE #======================#
-class StackTesterException(TesterException):
+# ======================# TOKEN_DELETION_TESTER_FAILURE #======================#
+class TokenDeletionRequestTesterException(TesterException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a StackTester encountered an error.
+        1.  Indicate that a TokenStackDeletionTester encountered an error.
 
     Cannot Be Tester.s:
             msg: Optional[str]
@@ -42,8 +44,8 @@ class StackTesterException(TesterException):
     Super Class:
         TesterException
     """
-    MSG = "StackTester failure."
-    ERR_CODE = "STACK_TESTER_FAILURE"
+    MSG = "TokenStackDeletionTester failure."
+    ERR_CODE = "TOKEN_DELETION_TESTER_FAILURE"
     
     def __init__(
             self,

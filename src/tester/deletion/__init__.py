@@ -10,7 +10,7 @@ version: 1.0.1
 # =========== TESTER.STACK.TOKEN PACKAGE ===========#
 
 # Packages
-from .deletion import *
+from .token import *
 from .pop import *
 from .push import *
 

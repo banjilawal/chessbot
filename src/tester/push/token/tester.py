@@ -87,7 +87,7 @@ class TokenPushRequestTester:
         method = f"{self.__class__.__name__}.execute"
         
         # Handle the case that, the PushRequest is not bootstrapped successfully.
-        bootstrap = self._bootstrapper.execute(candidate)
+        bootstrap = self._bootstrapper.bootstrap_request(candidate)
         if bootstrap.is_failure:
             # Send the exception chain in the result.
             return ValidationResult.failure(

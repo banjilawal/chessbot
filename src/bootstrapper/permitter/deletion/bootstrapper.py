@@ -11,8 +11,8 @@ from __future__ import annotations
 
 from typing import Type
 
+from bootstrapper import PermitterBootstrapper
 from err import DeletionRequestNullException, DeletionPermitterBootstrapperException
-from permitter import PermitterBootstrapper
 from request import DeletionRequest
 from result import ValidationResult
 from util import LoggingLevelRouter

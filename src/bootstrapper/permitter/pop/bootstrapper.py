@@ -11,8 +11,8 @@ from __future__ import annotations
 
 from typing import Type
 
+from bootstrapper import PermitterBootstrapper
 from err import PopRequestNullException, PopPermitterBootstrapperException
-from permitter import PermitterBootstrapper
 from request import PopRequest
 from result import ValidationResult
 from util import LoggingLevelRouter

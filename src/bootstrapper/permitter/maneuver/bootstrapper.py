@@ -11,8 +11,8 @@ from __future__ import annotations
 
 from typing import Type
 
+from bootstrapper import PermitterBootstrapper
 from err import ManeuverRequestNullException, ManeuverPermitterBootstrapperException
-from permitter import PermitterBootstrapper
 from request import ManeuverRequest
 from result import ValidationResult
 from util import LoggingLevelRouter

@@ -1,4 +1,4 @@
-# src/err/tester/stack/token/deletion/__init__.py
+# src/err/tester/deletion/token/deletion/__init__.py
 
 """
 Module: err.tester.stack.token.deletion.__init__

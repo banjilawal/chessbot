@@ -1,4 +1,4 @@
-# src/err/tester/stack/token/__init__.py
+# src/err/tester/deletion/token/__init__.py
 
 """
 Module: err.tester.stack.token__init__
@@ -10,8 +10,6 @@ version: 1.0.1
 # =========== ERR.TESTER.STACK.TOKEN PACKAGE ===========#
 
 # Packages
-from .pop import *
-from .push import *
-from .deletion import *
+from .token import *
 
 # Modules

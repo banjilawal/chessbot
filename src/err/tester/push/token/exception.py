@@ -1,7 +1,7 @@
-# src/err/tester/stack/token/deletion/exception.py
+# src/err/tester/push/token/exception.py
 
 """
-Module: err.tester.stack.token.deletion.exception
+Module: err.tester.push.token.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,24 +10,24 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import StackTesterException
+from err import TesterException
 from result import MethodResultType
 
 
 
 __all__ = [
-    # ======================# TOKEN_STACK_DELETION_TESTER_FAILURE #======================#
-    "TokenDeletionRequestTesterException",
+    # ======================# TOKEN_PUSH_TESTER_FAILURE #======================#
+    "TokenPushRequestTesterException",
 ]
 
-# ======================# TOKEN_STACK_DELETION_TESTER_FAILURE #======================#
-class TokenDeletionRequestTesterException(StackTesterException):
+# ======================# TOKEN_PUSH_TESTER_FAILURE #======================#
+class TokenPushRequestTesterException(TesterException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a TokenStackDeletionTester encountered an error.
+        1.  Indicate that a TokenStackPushTester encountered an error.
 
     Cannot Be Tester.s:
             msg: Optional[str]
@@ -42,10 +42,10 @@ class TokenDeletionRequestTesterException(StackTesterException):
     Provides:
 
     Super Class:
-        StackTesterException
+        TesterException
     """
-    MSG = "TokenStackDeletionTester failure."
-    ERR_CODE = "TOKEN_STACK_DELETION_TESTER_FAILURE"
+    MSG = "TokenStackPushTester failure."
+    ERR_CODE = "TOKEN_PUSH_TESTER_FAILURE"
     
     def __init__(
             self,

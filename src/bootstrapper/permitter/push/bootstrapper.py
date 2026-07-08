@@ -11,8 +11,8 @@ from __future__ import annotations
 
 from typing import Type
 
+from bootstrapper import PermitterBootstrapper
 from err import PushRequestNullException, PushPermitterBootstrapperException
-from permitter import PermitterBootstrapper
 from request import PushRequest
 from result import ValidationResult
 from util import LoggingLevelRouter

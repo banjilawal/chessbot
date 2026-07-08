@@ -1,7 +1,7 @@
-# src/err/tester/stack/token/pop/exception.py
+# src/err/tester/search/token/search/exception.py
 
 """
-Module: err.tester.stack.token.pop.exception
+Module: err.tester.search.token.search.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,24 +10,24 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import StackTesterException
+from err import TesterException
 from result import MethodResultType
 
 
 
 __all__ = [
-    # ======================# TOKEN_STACK_POP_TESTER_FAILURE #======================#
-    "TokenPopRequestTesterException",
+    # ======================# TOKEN_SEARCH_TESTER_FAILURE #======================#
+    "TokenSearchRequestTesterException",
 ]
 
-# ======================# TOKEN_STACK_POP_TESTER_FAILURE #======================#
-class TokenPopRequestTesterException(StackTesterException):
+# ======================# TOKEN_SEARCH_TESTER_FAILURE #======================#
+class TokenSearchRequestTesterException(TesterException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a TokenStackPopTester encountered an error.
+        1.  Indicate that a TokenStackSearchTester encountered an error.
 
     Cannot Be Tester.s:
             msg: Optional[str]
@@ -42,10 +42,10 @@ class TokenPopRequestTesterException(StackTesterException):
     Provides:
 
     Super Class:
-        StackTesterException
+        TesterException
     """
-    MSG = "TokenStackPopTester failure."
-    ERR_CODE = "TOKEN_STACK_POP_TESTER_FAILURE"
+    MSG = "TokenStackSearchTester failure."
+    ERR_CODE = "TOKEN_SEARCH_TESTER_FAILURE"
     
     def __init__(
             self,
