@@ -109,7 +109,7 @@ class TokenConsistencyValidator(ModelValidator[Token]):
         token = cast(Token, candidate)
         
         # Handle the case that, id or designation are not certified safe.
-        identity_validation_result = tools["identity_service"].validate_identity(
+        identity_validation_result = tools["identity_service"].validate_identity_register(
             id_candidate=token.id,
             name_candidate=token.designation
         )

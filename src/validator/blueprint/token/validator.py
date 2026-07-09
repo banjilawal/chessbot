@@ -97,9 +97,9 @@ class TokenBlueprintValidator(BlueprintValidator[TokenBlueprint]):
         blueprint = cast(self.toolkit.blueprint_model, candidate)
         
         # Handle the case that, any id in the blueprint is flagged.
-        id_validation_result = self.toolkit.blueprint_id_validator.execute(
-            candidate=blueprint.id,
-            identity_service=self.toolkit.identity_service,
+        id_validation_result = self.toolkit.identity_service.validate_blueprint_id(
+            owner_blueprint=blueprint,
+            owner_name=blueprint.owner_name,
         )
         if id_validation_result.is_failure:
         # Send the exception chain on failure.

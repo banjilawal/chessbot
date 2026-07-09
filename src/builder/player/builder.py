@@ -131,7 +131,7 @@ class PlayerFactory(Builder[Player]):
         method = "PlayerBuilder.build_human_player"
         try:
             # Only need to certify the designation and id are correct.
-            validation = identity_service.validate_identity(id_candidate=id, name_candidate=name)
+            validation = identity_service.validate_identity_register(id_candidate=id, name_candidate=name)
             if validation.is_failure():
                 return BuildResult.failure(validation.exception)
             # On success return the HumanPlayer in a BuildResult payload.
@@ -185,7 +185,7 @@ class PlayerFactory(Builder[Player]):
         method = "PlayerBuilder.build_machine_player"
         try:
             # Certify the id and designation are safe.
-            identity_validation = identity_service.validate_identity(id_candidate=id, name_candidate=name)
+            identity_validation = identity_service.validate_identity_register(id_candidate=id, name_candidate=name)
             if identity_validation.is_failure():
                 return BuildResult.failure(identity_validation.exception)
             

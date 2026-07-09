@@ -206,7 +206,7 @@ class TokenCollisionBootstrapper:
                     ex=validation_result.exception
                 )
             )
-        identity_validation_result = identity_service.validate_identity(
+        identity_validation_result = identity_service.validate_identity_register(
             id_candidate=blueprint.id,
             name_candidate=blueprint.formation.designation,
         )

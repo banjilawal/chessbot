@@ -12,7 +12,8 @@ import sys
 from typing import Any, Dict, cast
 
 from blueprint import Blueprint
-from err import IdentityServiceException, IdentityValidatorException
+from err import IdentityServiceException, IdentityServiceException
+from model import IdentityRegister
 from result import ValidationResult
 from tester import BlueprintIdExtractor
 from util import IdFactory, LoggingLevelRouter
@@ -65,10 +66,30 @@ class IdentityService:
     
     @LoggingLevelRouter.monitor
     def next_id(self, class_name: str) -> int:
+        """
+        Produce the unique id for the class.
+        Args:
+            class_name: str
+        Returns:
+            int
+        Raises:
+        """
         return IdFactory.next_id(class_name=class_name)
       
     @LoggingLevelRouter.monitor
     def validate_id(self, candidate: Any) -> ValidationResult:
+        """
+        Verify that an id is safe to use.
+        Action:
+            1.  Send and exception chain if candidate is not safe.
+                Otherwise, send the success result.
+        Args:
+            candidate: Any
+        Returns:
+            ValidationResult
+        Raises:
+            IdentityServiceException
+        """
         method = f"{self.__class__.__name__}.validate_id"
         
         # Handle the case that, the id is not safe to use.
@@ -84,11 +105,23 @@ class IdentityService:
                     ex=validation_result.exception
                 )
             )
-        # --- Forward as the work product. ---#
+        # --- Forward the work product. ---#
         return ValidationResult.success(cast(int, candidate))
     
     @LoggingLevelRouter.monitor
     def validate_name(self, candidate: Any) -> ValidationResult:
+        """
+        Verify that a name is safe to use.
+        Action:
+            1.  Send and exception chain if candidate is not safe.
+                Otherwise, send the success result.
+        Args:
+            candidate: Any
+        Returns:
+            ValidationResult
+        Raises:
+            IdentityServiceException
+        """
         method = f"{self.__class__.__name__}.validate_name"
         
         # Handle the case that, the id is not safe to use.
@@ -104,17 +137,30 @@ class IdentityService:
                     ex=validation_result.exception
                 )
             )
-        # --- Forward as the work product. ---#
+        # --- Forward the work product. ---#
         return ValidationResult.success(cast(str, candidate))
     
     @LoggingLevelRouter.monitor
-    def validate_blueprint_id(self, model_blueprint: Blueprint, model_name: str, ) -> ValidationResult:
+    def validate_blueprint_id(self, owner_blueprint: Blueprint, owner_name: str, ) -> ValidationResult:
+        """
+        Verify that blueprint contains an id that's safe for its owning model.
+        Action:
+            1.  Send and exception chain if candidate is not safe.
+                Otherwise, send the success result.
+        Args:
+            owner_blueprint: Blueprint
+            owner_name: str
+        Returns:
+            ValidationResult
+        Raises:
+            IdentityServiceException
+        """
         method = f"{self.__name__}.validate_blueprint_id"
         
         # Handle the case that, the class_name is flagged unsafe.
         validation_result = self._blueprint_id_extractor.execute(
-            blueprint=model_blueprint,
-            model_name=model_name,
+            blueprint=owner_blueprint,
+            model_name=owner_name,
         )
         if validation_result.is_failure:
             # Send the exception chain in the result.
@@ -132,7 +178,7 @@ class IdentityService:
 
         
     @LoggingLevelRouter.monitor
-    def validate_identity(
+    def validate_identity_register(
             self,
             id_candidate: Any,
             name_candidate: Any
@@ -148,11 +194,13 @@ class IdentityService:
             id_candidate: Any
             name_candidate: Any
         Returns:
-            ValidationResult[Dict[str, Any]]
+            ValidationResult[IdentityRegister]
         Raises:
-            IdentityValidatorException
+            IdentityServiceException
         """
         method = f"{self.__class__.__name__}.execute_identity"
+        
+        priming_validation = se
         
         # Handle the case that, the id gets flagged.
         id_validation_result = self._number_validator.execute(
@@ -163,11 +211,11 @@ class IdentityService:
         if id_validation_result.is_failure:
             # Send the exception chain on failure.
             ValidationResult.failure(
-                IdentityValidatorException(
+                IdentityServiceException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=IdentityValidatorException.MSG,
-                    err_code=IdentityValidatorException.ERR_CODE,
+                    msg=IdentityServiceException.MSG,
+                    err_code=IdentityServiceException.ERR_CODE,
                     ex=id_validation_result.exception
                 )
             )
@@ -176,11 +224,11 @@ class IdentityService:
         if name_validation_result.is_failure:
             # Send the exception chain on failure.
             ValidationResult.failure(
-                IdentityValidatorException(
+                IdentityServiceException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=IdentityValidatorException.MSG,
-                    err_code=IdentityValidatorException.ERR_CODE,
+                    msg=IdentityServiceException.MSG,
+                    err_code=IdentityServiceException.ERR_CODE,
                     ex=name_validation_result.exception
                 )
             )
@@ -189,4 +237,4 @@ class IdentityService:
             "name": name_validation_result.payload
         }
         # --- Forward the work product to the caller. ---#
-        return ValidationResult.success(identity_dict)
+        return ValidationResult.success(IdentityRegister(id=id, name=name))

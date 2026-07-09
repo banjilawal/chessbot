@@ -10,6 +10,7 @@ version: 1.0.1
 # ===========ERR.MODEL.REGISTER PACKAGE ===========#
 
 # Packages
+from .identity import *
 from .operand import *
 from .square import *
 

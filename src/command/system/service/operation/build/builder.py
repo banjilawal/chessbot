@@ -29,7 +29,7 @@ class CommandBuilder(Builder[Command]):
         method = "CommandBuilder.build"
         
         # Handle the case that, the request does not pass a validation check.
-        identity_validation_result = identity_service.validate_identity(
+        identity_validation_result = identity_service.validate_identity_register(
             id_candidate=id,
             name_candidate=name,
         )

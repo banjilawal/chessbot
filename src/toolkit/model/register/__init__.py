@@ -10,6 +10,7 @@ version: 1.0.1
 # =========== TOOLKIT.MODEL.REGISTER PACKAGE ===========#
 
 # Packages
+from .identity import *
 from .operand import *
 from .square import *
 

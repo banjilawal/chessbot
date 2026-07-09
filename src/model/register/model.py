@@ -9,14 +9,14 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from typing import Dict, Generic, List, TypeVar
+from typing import Any, Dict, Generic, List, TypeVar
 
 from model import Model
 
 T = TypeVar("T")
 
 
-class Register(Model, Generic[T]):
+class Register(Model, Generic[Any]):
     """
     Role:
         -   Addressing
@@ -37,10 +37,10 @@ class Register(Model, Generic[T]):
     Super Class:
         Model
     """
-    a: T
-    b: T
+    a: Any
+    b: Any
     
-    def __init__(self, a: T, b:T,):
+    def __init__(self, a: Any, b: Any,):
         """
         Args:
             a: T

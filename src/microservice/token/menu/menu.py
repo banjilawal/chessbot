@@ -94,7 +94,7 @@ class TokenServiceMenu(Router[TokenService]):
         token_command = cast(TokenCommand, command)
         
         # Handle the case that, the command's schema or id fail a safety ccheck.
-        identity_validation_result = identity_service.validate_identity(
+        identity_validation_result = identity_service.validate_identity_register(
             id_candidate=token_command.id,
             name_candidate=token_command.name,
         )

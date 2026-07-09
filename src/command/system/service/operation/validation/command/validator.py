@@ -106,7 +106,7 @@ class CommandValidator(Validator[Command]):
                 )
             )
         # Handle the case that, the command identity is not safe.
-        identity_validation_result = identity_service.validate_identity(
+        identity_validation_result = identity_service.validate_identity_register(
             id_candidate=command.id,
             name_candidate=command.name,
         )

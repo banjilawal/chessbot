@@ -127,7 +127,7 @@ class SquareBuilder(Builder[Square]):
         method = f"{cls.__name__}_run_build_param_checks"
         
         # Handle the case that, either id or schema are not certified safe.
-        identity_validation = tool.identity_service.validate_identity(
+        identity_validation = tool.identity_service.validate_identity_register(
             id_candidate=id,
             name_candidate=name
         )

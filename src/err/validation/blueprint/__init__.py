@@ -31,6 +31,7 @@ from .node import *
 from .persona import *
 from .player import *
 from .rank import *
+from .register import *
 from .schema import *
 from .square import *
 from .team import *

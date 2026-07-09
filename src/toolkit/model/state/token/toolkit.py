@@ -17,11 +17,12 @@ from detector import TokenHomeDetector
 from err import TokenBlueprintNullException, TokenNullException
 from model import Token
 from tester import BlueprintHomeSquareExtractor, BlueprintRankExtractor
+from toolkit import ModelToolkit
 from validator import TeamValidator
 
 
 @dataclass
-class TokenToolkit:
+class TokenToolkit(ModelToolkit[Token]):
     """
     Role:
         -   Dependency Container

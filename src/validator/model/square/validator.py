@@ -89,7 +89,7 @@ class SquareValidator(ModelValidator[Square]):
         square = cast(Square, candidate)
         
         # Handle the case that, square.id or square.schema does not pass a validation check.
-        identity_validation_result = toolkit.identity_service.validate_identity(
+        identity_validation_result = toolkit.identity_service.validate_identity_register(
             id_candidate=square.id,
             name_candidate=square.name
         )
