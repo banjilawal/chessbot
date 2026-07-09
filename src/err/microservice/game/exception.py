@@ -1,7 +1,7 @@
-# src/err/validation/game/exception.py
+# src/err/microservice/game/exception.py
 
 """
-Module: err.validation.game.exception
+Module: err.microservice.game.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,22 +10,22 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import ValidatorException
+from err import MicroserviceException
 from result import MethodResultType
 
 __all__ = [
-    # ======================# GAME_VALIDATOR_FAILURE #======================#
-    "GameValidatorException",
+    # ======================# GAME_MICROSERVICE_FAILURE #======================#
+    "GameMicroserviceException",
 ]
 
-# ======================# GAME_VALIDATOR_FAILURE #======================#
-class GameValidatorException(ValidatorException):
+# ======================# GAME_MICROSERVICE_FAILURE #======================#
+class GameMicroserviceException(MicroserviceException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a candidate did not pass a GameValidator test.
+        1.  Indicate that a candidate did not pass a GameMicroservice failed.
 
     Attributes:
             msg: Optional[str]
@@ -40,10 +40,10 @@ class GameValidatorException(ValidatorException):
     Provides:
 
     Super Class:
-        ValidatorException
+        MicroserviceException
     """
-    MSG = "Candidate did not pass a GameValidator test."
-    ERR_CODE = "GAME_VALIDATOR_FAILURE"
+    MSG = "GameMicroservice failure."
+    ERR_CODE = "GAME_MICROSERVICE_FAILURE"
     
     def __init__(
             self,

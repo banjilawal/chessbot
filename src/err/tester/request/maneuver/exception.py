@@ -1,7 +1,7 @@
-# src/err/tester/request/promotion/exception.py
+# src/err/tester/request/maneuver/exception.py
 
 """
-Module: err.tester.request.promotion.exception
+Module: err.tester.request.maneuver.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -14,18 +14,18 @@ from err import RequestTesterException
 from result import MethodResultType
 
 __all__ = [
-    # ======================# PROMOTION_REQUEST_TESTER_FAILURE #======================#
-    "PromotionRequestTesterException",
+    # ======================# MANEUVER_REQUEST_TESTER_FAILURE #======================#
+    "ManeuverRequestTesterException",
 ]
 
-# ======================# PROMOTION_REQUEST_TESTER_FAILURE #======================#
-class PromotionRequestTesterException(RequestTesterException):
+# ======================# MANEUVER_REQUEST_TESTER_FAILURE #======================#
+class ManeuverRequestTesterException(RequestTesterException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a PromotionRequestTester failed.
+        1.  Indicate that a ManeuverRequestTester failed.
 
     Cannot Be Tester.s:
             msg: Optional[str]
@@ -42,8 +42,8 @@ class PromotionRequestTesterException(RequestTesterException):
     Super Class:
         TesterException
     """
-    MSG = "PromotionRequestTester failure."
-    ERR_CODE = "PROMOTION_REQUEST_TESTER_FAILURE"
+    MSG = "ManeuverRequestTester failure."
+    ERR_CODE = "MANEUVER_REQUEST_TESTER_FAILURE"
     
     def __init__(
             self,

@@ -1,15 +1,15 @@
-# src/err/validation/team/__init__.py
+# src/err/microservice/team/__init__.py
 
 """
-Module: err.validation.team.__init__
+Module: err.microservice.team.__init__
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
 """
 
-# ============ ERR.VALIDATION.TEAM PACKAGE ===========#
+# ============ ERR.MICROSERVICE.TEAM PACKAGE ===========#
 
 # Packages
 
 # Modules
-from .exception import TeamValidatorException
+from .exception import TeamMicroserviceException

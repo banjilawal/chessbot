@@ -1,7 +1,7 @@
-# src/err/validation/path/exception.py
+# src/err/microservice/path/exception.py
 
 """
-Module: err.validation.path.exception
+Module: err.microservice.path.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,22 +10,22 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import ValidatorException
+from err import MicroserviceException
 from result import MethodResultType
 
 __all__ = [
-    # ======================# PATH_VALIDATOR_FAILURE #======================#
-    "PathValidatorException",
+    # ======================# PATH_MICROSERVICE_FAILURE #======================#
+    "PathMicroserviceException",
 ]
 
-# ======================# PATH_VALIDATOR_FAILURE #======================#
-class PathValidatorException(ValidatorException):
+# ======================# PATH_MICROSERVICE_FAILURE #======================#
+class PathMicroserviceException(MicroserviceException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a candidate did not pass a PathValidation check.
+        1.  Indicate that a candidate did not pass a PathMicroservice check.
 
     Attributes:
             msg: Optional[str]
@@ -40,10 +40,10 @@ class PathValidatorException(ValidatorException):
     Provides:
 
     Super Class:
-        ValidatorException
+        MicroserviceException
     """
-    MSG = "Candidate did not pass a PathValidator test."
-    ERR_CODE = "PATH_VALIDATOR_FAILURE"
+    MSG = "PathMicroservice failure."
+    ERR_CODE = "PATH_MICROSERVICE_FAILURE"
     
     def __init__(
             self,

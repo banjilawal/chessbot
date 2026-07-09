@@ -1,7 +1,7 @@
-# src/err/validation/square/exception.py
+# src/err/microservice/square/exception.py
 
 """
-Module: err.validation.square.exception
+Module: err.microservice.square.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,22 +10,22 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import ValidatorException
+from err import MicroserviceException
 from result import MethodResultType
 
 __all__ = [
-    # ======================# SQUARE_VALIDATOR_FAILURE #======================#
-    "SquareValidatorException",
+    # ======================# SQUARE_MICROSERVICE_FAILURE #======================#
+    "SquareMicroserviceException",
 ]
 
-# ======================# SQUARE_VALIDATOR_FAILURE #======================#
-class SquareValidatorException(ValidatorException):
+# ======================# SQUARE_MICROSERVICE_FAILURE #======================#
+class SquareMicroserviceException(MicroserviceException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a candidate did not pass a SquareValidator test.
+        1.  Indicate that a candidate did not pass a SquareMicroservice failed.
 
     Attributes:
         msg: Optional[str]
@@ -40,10 +40,10 @@ class SquareValidatorException(ValidatorException):
     Provides:
 
     Super Class:
-        ValidatorException
+        MicroserviceException
     """
-    MSG = "Candidate did not pass a SquareValidator test."
-    ERR_CODE = "SQUARE_VALIDATOR_FAILURE"
+    MSG = "SquareMicroservice failure."
+    ERR_CODE = "SQUARE_MICROSERVICE_FAILURE"
     
     def __init__(
             self,

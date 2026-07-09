@@ -1,7 +1,7 @@
-# src/err/validation/binder/board/exception.py
+# src/err/microservice/binder/board/exception.py
 
 """
-Module: err.validation.binder.board.exception
+Module: err.microservice.binder.board.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,21 +10,21 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import BinderValidatorException
+from err import BinderMicroserviceException
 
 __all__ = [
-    # ======================# BOARD_TEAM_BINDER_VALIDATOR_FAILURE #======================#
-    "BoardTeamBinderValidatorException",
+    # ======================# BOARD_TEAM_BINDER_MICROSERVICE_FAILURE #======================#
+    "BoardTeamBinderMicroserviceException",
 ]
 
-# ======================# BOARD_TEAM_BINDER_VALIDATOR_FAILURE #======================#
-class BoardTeamBinderValidatorException(BinderValidatorException):
+# ======================# BOARD_TEAM_BINDER_MICROSERVICE_FAILURE #======================#
+class BoardTeamBinderMicroserviceException(BinderMicroserviceException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a candidate did not pass a BoardTeamBinder validator test.
+        1.  Indicate that a candidate did not pass a BoardTeamBinder microservice failed.
 
     Attributes:
         msg: Optional[str]
@@ -39,10 +39,10 @@ class BoardTeamBinderValidatorException(BinderValidatorException):
     Provides:
 
     Super Class:
-        BinderValidatorException
+        BinderMicroserviceException
     """
-    MSG = "Candidate did not pass a BoardTeamBinder validator test."
-    ERR_CODE = "BOARD_TEAM_BINDER_VALIDATOR_FAILURE"
+    MSG = "BoardTeamBinder microservice failure."
+    ERR_CODE = "BOARD_TEAM_BINDER_MICROSERVICE_FAILURE"
     
     def __init__(
             self,

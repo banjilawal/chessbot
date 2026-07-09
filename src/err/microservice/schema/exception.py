@@ -1,7 +1,7 @@
-# src/err/validation/schema/exception.py
+# src/err/microservice/schema/exception.py
 
 """
-Module: err.validation.schema.exception
+Module: err.microservice.schema.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,22 +10,22 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import ValidatorException
+from err import MicroserviceException
 from result import MethodResultType
 
 __all__ = [
-    # ======================# SCHEMA_VALIDATOR_FAILURE #======================#
-    "SchemaValidatorException",
+    # ======================# SCHEMA_MICROSERVICE_FAILURE #======================#
+    "SchemaMicroserviceException",
 ]
 
-# ======================# SCHEMA_VALIDATOR_FAILURE #======================#
-class SchemaValidatorException(ValidatorException):
+# ======================# SCHEMA_MICROSERVICE_FAILURE #======================#
+class SchemaMicroserviceException(MicroserviceException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a candidate did not pass a SchemaValidator test.
+        1.  Indicate that a candidate did not pass a SchemaMicroservice failed.
 
     Attributes:
         msg: Optional[str]
@@ -40,10 +40,10 @@ class SchemaValidatorException(ValidatorException):
     Provides:
 
     Super Class:
-        ValidatorException
+        MicroserviceException
     """
-    MSG = "Candidate did not pass a SchemaValidator test."
-    ERR_CODE = "SCHEMA_VALIDATOR_FAILURE"
+    MSG = "SchemaMicroservice failure."
+    ERR_CODE = "SCHEMA_MICROSERVICE_FAILURE"
     
     def __init__(
             self,

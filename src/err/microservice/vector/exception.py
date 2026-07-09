@@ -1,7 +1,7 @@
-# src/err/validation/vector/exception.py
+# src/err/microservice/vector/exception.py
 
 """
-Module: err.validation.vector.exception
+Module: err.microservice.vector.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,22 +10,22 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import ValidatorException
+from err import MicroserviceException
 from result import MethodResultType
 
 __all__ = [
-    # ======================# VECTOR_VALIDATOR_FAILURE #======================#
-    "VectorValidatorException",
+    # ======================# VECTOR_MICROSERVICE_FAILURE #======================#
+    "VectorMicroserviceException",
 ]
 
-# ======================# VECTOR_VALIDATOR_FAILURE #======================#
-class VectorValidatorException(ValidatorException):
+# ======================# VECTOR_MICROSERVICE_FAILURE #======================#
+class VectorMicroserviceException(MicroserviceException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate a candidate did not pass a VectorValidator test.
+        1.  Indicate a candidate did not pass a VectorMicroservice failed.
 
     Attributes:
         msg: Optional[str]
@@ -40,10 +40,10 @@ class VectorValidatorException(ValidatorException):
     Provides:
 
     Super Class:
-        ValidatorException
+        MicroserviceException
     """
-    MSG = "Candidate did not pass a VectorValidator test."
-    ERR_CODE = "VECTOR_VALIDATOR_FAILURE"
+    MSG = "VectorMicroservice failure."
+    ERR_CODE = "VECTOR_MICROSERVICE_FAILURE"
     
     def __init__(
             self,

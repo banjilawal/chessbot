@@ -1,15 +1,15 @@
-# src/err/validation/hostage/__init__.py
+# src/err/microservice/hostage/__init__.py
 
 """
-Module: err.validation.hostage.__init__
+Module: err.microservice.hostage.__init__
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
 """
 
-# ============ ERR.VALIDATION.HOSTAGE PACKAGE ===========#
+# ============ ERR.MICROSERVICE.HOSTAGE PACKAGE ===========#
 
 # Packages
 
 # Modules
-from .exception import HostageValidatorException
+from .exception import HostageMicroserviceException

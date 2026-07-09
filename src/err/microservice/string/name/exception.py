@@ -1,7 +1,7 @@
-# src/err/validation/string/name/exception.py
+# src/err/microservice/string/name/exception.py
 
 """
-Module: err.validation.string.name.exception
+Module: err.microservice.string.name.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,22 +10,22 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import ValidatorException
+from err import MicroserviceException
 from result import MethodResultType
 
 __all__ = [
-    # ======================# NAME_VALIDATOR_FAILURE #======================#
-    "NameValidatorException",
+    # ======================# NAME_MICROSERVICE_FAILURE #======================#
+    "NameMicroserviceException",
 ]
 
-# ======================# NAME_VALIDATOR_FAILURE #======================#
-class NameValidatorException(ValidatorException):
+# ======================# NAME_MICROSERVICE_FAILURE #======================#
+class NameMicroserviceException(MicroserviceException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a candidate did not pass a NameValidator test.
+        1.  Indicate that a candidate did not pass a NameMicroservice failed.
 
     Attributes:
         msg: Optional[str]
@@ -40,10 +40,10 @@ class NameValidatorException(ValidatorException):
     Provides:
 
     Super Class:
-        ValidatorException
+        MicroserviceException
     """
-    MSG = "Candidate did not pass a NameValidator test."
-    ERR_CODE = "NAME_VALIDATOR_FAILURE"
+    MSG = "NameMicroservice failure."
+    ERR_CODE = "NAME_MICROSERVICE_FAILURE"
     
     def __init__(
             self,

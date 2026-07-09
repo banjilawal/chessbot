@@ -1,7 +1,7 @@
-# src/tester/stack/token/deletion/tester.py
+# src/tester/request/deletion/token/tester.py
 
 """
-Module: tester.stack.token.deletion.tester
+Module: tester.request.deletion.token.tester
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -13,15 +13,16 @@ from __future__ import annotations
 from typing import Any, Type, cast
 
 from bootstrapper import DeletionPermitterBootstrapper, PrimingValidator
-from err import TokenDeletionRequestTesterException, TokenStackNullException
+from err import TokenStackNullException
 from microservice import IdentityService
 from request import DeletionRequest
 from result import MethodResultType, ValidationResult
 from stack import TokenStackService
+from tester import DeletionRequestTester
 from util import LoggingLevelRouter
 
 
-class TokenDeletionRequestTester:
+class TokenDeletionRequestTester(DeletionRequestTester):
     """
     Role:
         -   Helper

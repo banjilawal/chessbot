@@ -1,13 +1,13 @@
-# src/err/validation/endpoint/destination/circular/__init__.py
+# src/err/microservice/endpoint/destination/circular/__init__.py
 
 """
-Module: err.validation.endpoint.destination.circular.__init__
+Module: err.microservice.endpoint.destination.circular.__init__
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
 """
 
-# ============ ERR.VALIDATION.ENDPOINT.DESTINATION.CIRCULAR PACKAGE ===========#
+# ============ ERR.MICROSERVICE.ENDPOINT.DESTINATION.CIRCULAR PACKAGE ===========#
 
 # Packages
 

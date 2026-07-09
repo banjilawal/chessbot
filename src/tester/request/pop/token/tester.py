@@ -1,7 +1,7 @@
-# src/tester/stack/token/pop/tester.py
+# src/tester/request/pop/token/tester.py
 
 """
-Module: tester.stack.token.pop.tester
+Module: tester.request.pop.token.tester
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -17,11 +17,11 @@ from err import TokenStackNullException, TokenPopRequestTesterException
 from request import PopRequest
 from result import MethodResultType, ValidationResult
 from stack import TokenStackService
-from tester import Tester
+from tester import PopRequestTester
 from util import LoggingLevelRouter
 
 
-class TokenPopRequestTester(Tester):
+class TokenPopRequestTester(PopRequestTester):
     """
     Role:
         -   Helper

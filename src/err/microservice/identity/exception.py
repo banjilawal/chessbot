@@ -1,7 +1,7 @@
-# src/err/validation/identity/exception.py
+# src/err/microservice/identity/exception.py
 
 """
-Module: err.validation.identity.exception
+Module: err.microservice.identity.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,22 +10,22 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import ValidatorException
+from err import MicroserviceException
 from result import MethodResultType
 
 __all__ = [
-    # ======================# IDENTITY_VALIDATOR_FAILURE #======================#
-    "IdentityValidatorException",
+    # ======================# IDENTITY_MICROSERVICE_FAILURE #======================#
+    "IdentityServiceException",
 ]
 
-# ======================# IDENTITY_VALIDATOR_FAILURE #======================#
-class IdentityValidatorException(ValidatorException):
+# ======================# IDENTITY_MICROSERVICE_FAILURE #======================#
+class IdentityServiceException(MicroserviceException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an IdentityValidator test.
+        1.  Indicate that an IdentityMicroservice failed.
 
     Attributes:
         msg: Optional[str]
@@ -40,10 +40,10 @@ class IdentityValidatorException(ValidatorException):
     Provides:
 
     Super Class:
-        ValidatorException
+        MicroserviceException
     """
-    MSG = "Candidate did not pass a IdentityValidator test."
-    ERR_CODE = "IDENTITY_VALIDATOR_FAILURE"
+    MSG = "IdentityMicroservice failure."
+    ERR_CODE = "IDENTITY_MICROSERVICE_FAILURE"
     
     def __init__(
             self,

@@ -1,7 +1,7 @@
-# src/err/validation/itinerary/exception.py
+# src/err/microservice/itinerary/exception.py
 
 """
-Module: err.validation.itinerary.exception
+Module: err.microservice.itinerary.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,22 +10,22 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import ValidatorException
+from err import MicroserviceException
 from result import MethodResultType
 
 __all__ = [
-    # ======================# ITINERARY_VALIDATOR_FAILURE #======================#
-    "ItineraryValidatorException",
+    # ======================# ITINERARY_MICROSERVICE_FAILURE #======================#
+    "ItineraryMicroserviceException",
 ]
 
-# ======================# ITINERARY_VALIDATOR_FAILURE #======================#
-class ItineraryValidatorException(ValidatorException):
+# ======================# ITINERARY_MICROSERVICE_FAILURE #======================#
+class ItineraryMicroserviceException(MicroserviceException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate a ItineraryValidator test.
+        1.  Indicate a ItineraryMicroservice failed.
 
     Attributes:
         msg: Optional[str]
@@ -40,10 +40,10 @@ class ItineraryValidatorException(ValidatorException):
     Provides:
 
     Super Class:
-        ValidatorException
+        MicroserviceException
     """
-    MSG = "Candidate did not pass a ItineraryValidator test."
-    ERR_CODE = "ITINERARY_VALIDATOR_FAILURE"
+    MSG = "ItineraryMicroservice failure."
+    ERR_CODE = "ITINERARY_MICROSERVICE_FAILURE"
     
     def __init__(
             self,

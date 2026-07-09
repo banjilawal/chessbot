@@ -1,13 +1,13 @@
-# src/err/validation/rank/__init__.py
+# src/err/microservice/rank/__init__.py
 
 """
-Module: err.validation.rank.__init__
+Module: err.microservice.rank.__init__
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
 """
 
-# ============ ERR.VALIDATION.RANK PACKAGE ===========#
+# ============ ERR.MICROSERVICE.RANK PACKAGE ===========#
 
 # Packages
 from .bishop import *
@@ -18,4 +18,4 @@ from .queen import *
 from .rook import *
 
 # Modules
-from .exception import RankValidatorException
+from .exception import RankMicroserviceException

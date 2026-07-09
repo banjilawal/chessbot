@@ -27,6 +27,7 @@ from .full import *
 from .inconsistent import *
 from .math import *
 from .method import *
+from .microservice import *
 from .model import *
 from .null import *
 from .number import *

@@ -1,13 +1,13 @@
-# src/tester/stack/token/push/__init__.py
+# src/tester/request/push/token/__init__.py
 
 """
-Module: tester.stack.token.push.__init__
+Module: tester.request.push.token.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
 """
 
-# =========== TESTER.STACK.TOKEN.PUSH PACKAGE ===========#
+# =========== TESTER.REQUEST.PUSH.TOKEN PACKAGE ===========#
 
 # Packages
 

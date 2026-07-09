@@ -10,10 +10,9 @@ version: 1.0.1
 # =========== TESTER PACKAGE ===========#
 
 # Packages
-from .deletion import *
 from .extractor import *
-from .pop import *
 from .promotion import *
-from .push import *
+from .request import *
 
 # Modules
+from .tester import Tester

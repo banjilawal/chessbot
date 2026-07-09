@@ -1,7 +1,7 @@
-# src/err/validation/formation/exception.py
+# src/err/microservice/formation/exception.py
 
 """
-Module: err.validation.formation.exception
+Module: err.microservice.formation.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,22 +10,22 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import ValidatorException
+from err import MicroserviceException
 from result import MethodResultType
 
 __all__ = [
-    # ======================# FORMATION_VALIDATOR_FAILURE #======================#
-    "FormationValidatorException",
+    # ======================# FORMATION_MICROSERVICE_FAILURE #======================#
+    "FormationMicroserviceException",
 ]
 
-# ======================# FORMATION_VALIDATOR_FAILURE #======================#
-class FormationValidatorException(ValidatorException):
+# ======================# FORMATION_MICROSERVICE_FAILURE #======================#
+class FormationMicroserviceException(MicroserviceException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a candidate did not pass a FormationValidator test.
+        1.  Indicate that a candidate did not pass a FormationMicroservice failed.
 
     Attributes:
             msg: Optional[str]
@@ -40,10 +40,10 @@ class FormationValidatorException(ValidatorException):
     Provides:
 
     Super Class:
-        ValidatorException
+        MicroserviceException
     """
-    MSG = "Candidate did not pass a FormationValidator test."
-    ERR_CODE = "FORMATION_VALIDATOR_FAILURE"
+    MSG = "FormationMicroservice failure."
+    ERR_CODE = "FORMATION_MICROSERVICE_FAILURE"
     
     def __init__(
             self,

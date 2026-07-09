@@ -1,7 +1,7 @@
-# src/err/tester/pop/token/exception.py
+# src/err/tester/request/pop/token/exception.py
 
 """
-Module: err.tester.stack.token.exception
+Module: err.tester.request.pop.token.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1

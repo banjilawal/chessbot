@@ -1,7 +1,7 @@
-# src/err/validation/string/exception.py
+# src/err/microservice/string/exception.py
 
 """
-Module: err.validation.string.exception
+Module: err.microservice.string.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -12,22 +12,22 @@ from typing import Any, Optional
 
 
 __all__ = [
-    # ======================# STRING_VALIDATOR_FAILURE #======================#
-    "StringValidatorException",
+    # ======================# STRING_MICROSERVICE_FAILURE #======================#
+    "StringMicroserviceException",
 ]
 
-from err import ValidatorException
+from err import MicroserviceException
 from result import MethodResultType
 
 
-# ======================# STRING_VALIDATOR_FAILURE #======================#
-class StringValidatorException(ValidatorException):
+# ======================# STRING_MICROSERVICE_FAILURE #======================#
+class StringMicroserviceException(MicroserviceException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a candidate did not pass a StringValidator test.
+        1.  Indicate that a candidate did not pass a StringMicroservice failed.
 
     Attributes:
         msg: Optional[str]
@@ -42,10 +42,10 @@ class StringValidatorException(ValidatorException):
     Provides:
 
     Super Class:
-        ValidatorException
+        MicroserviceException
     """
-    MSG = "Candidate did not pass a StringValidator test."
-    ERR_CODE = "STRING_VALIDATOR_FAILURE"
+    MSG = "StringMicroservice failure."
+    ERR_CODE = "STRING_MICROSERVICE_FAILURE"
     
     def __init__(
             self,

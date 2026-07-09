@@ -1,7 +1,7 @@
-# src/err/tester/search/token/search/exception.py
+# src/err/tester/request/search/token/exception.py
 
 """
-Module: err.tester.search.token.search.exception
+Module: err.tester.request.search.token.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1

@@ -31,3 +31,5 @@ class Blueprint(ABC, Generic[T]):
     
     Super Class:
     """
+    blue_print_owner: T
+    blue_print_owner_name: str

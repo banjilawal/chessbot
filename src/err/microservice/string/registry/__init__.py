@@ -1,15 +1,15 @@
-# src/err/validation/string/registry/__init__.py
+# src/err/microservice/string/registry/__init__.py
 
 """
-Module: err.validation.string.registry.__init__
+Module: err.microservice.string.registry.__init__
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
 """
 
-# ============ ERR.VALIDATION.STRING.REGISTRY PACKAGE ===========#
+# ============ ERR.MICROSERVICE.STRING.REGISTRY PACKAGE ===========#
 
 # Packages
 
 # Modules
-from .exception import RegistryEntryKeyStringValidatorException
+from .exception import RegistryEntryKeyStringMicroserviceException

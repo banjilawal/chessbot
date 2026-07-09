@@ -1,7 +1,7 @@
-# src/err/validation/endpoint/destination/exception.py
+# src/err/microservice/endpoint/destination/exception.py
 
 """
-Module: err.validation.endpoint.destination.exception
+Module: err.microservice.endpoint.destination.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,7 +10,7 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import ValidatorException
+from err import MicroserviceException
 from result import MethodResultType
 
 __all__ = [
@@ -19,7 +19,7 @@ __all__ = [
 ]
 
 # ======================# TOKEN_DESTINATION_CERTIFIER_FAILURE #======================#
-class TokenDestinationCertifierException(ValidatorException):
+class TokenDestinationCertifierException(MicroserviceException):
     """
     Role:
         -   Error Tracing
@@ -40,7 +40,7 @@ class TokenDestinationCertifierException(ValidatorException):
     Provides:
 
     Super Class:
-        ValidatorException
+        MicroserviceException
     """
     MSG = "Candidate did not pass TokenDestinationCertifier test."
     ERR_CODE = "TOKEN_DESTINATION_CERTIFIER_FAILURE"

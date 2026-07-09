@@ -1,7 +1,7 @@
-# src/err/validation/rank/bishop/exception.py
+# src/err/microservice/rank/bishop/exception.py
 
 """
-Module: err.validation.rank.bishop.exception
+Module: err.microservice.rank.bishop.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,21 +10,21 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import RankValidatorException
+from err import RankMicroserviceException
 
 __all__ = [
-    # ======================# BISHOP_VALIDATOR_FAILURE #======================#
-    "BishopValidatorException",
+    # ======================# BISHOP_MICROSERVICE_FAILURE #======================#
+    "BishopMicroserviceException",
 ]
 
-# ======================# BISHOP_VALIDATOR_FAILURE #======================#
-class BishopValidatorException(RankValidatorException):
+# ======================# BISHOP_MICROSERVICE_FAILURE #======================#
+class BishopMicroserviceException(RankMicroserviceException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a candidate did not pass a Bishop validator test.
+        1.  Indicate that a candidate did not pass a Bishop microservice failed.
 
     Attributes:
         msg: Optional[str]
@@ -39,10 +39,10 @@ class BishopValidatorException(RankValidatorException):
     Provides:
 
     Super Class:
-        RankValidatorException
+        RankMicroserviceException
     """
-    MSG = "Candidate did not pass a Bishop validator test."
-    ERR_CODE = "BISHOP_VALIDATOR_FAILURE"
+    MSG = "Bishop microservice failure."
+    ERR_CODE = "BISHOP_MICROSERVICE_FAILURE"
     
     def __init__(
             self,

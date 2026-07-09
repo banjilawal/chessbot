@@ -1,7 +1,7 @@
-# src/tester/request/promotion/rank/tester.py
+# src/tester/promotion/rank/tester.py
 
 """
-Module: tester.request.promotion.rank.tester
+Module: tester.promotion.rank.tester
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -11,13 +11,13 @@ from __future__ import annotations
 
 from typing import Any, cast
 
-from analyzer import TokenReadinessAnalyzer
+from analyzer import RankReadinessAnalyzer
 from err import PromoteToKingException, PromoteToPawnException, PromotionLevelTesterException
 from model import King, Pawn, Rank
 from result import MethodResultType, ValidationResult
 from tester import Tester
 from util import LoggingLevelRouter
-from validator import TokenValidator
+from validator import RankValidator
 
 
 class PromotionLevelTester(Tester):
@@ -30,28 +30,24 @@ class PromotionLevelTester(Tester):
         1.  Check if the subject is a valid promotion level
         
     Attributes:
-        validator: TokenValidator
-        readiness_analyzer: TokenReadinessAnalyzer
+        validator: RankValidator
           
     Provides:
         -   def execute(self, subject: Any) -> ValidationResult:
             
     Super Class:
     """
-    _validator: TokenValidator
+    _validator: RankValidator
     
     def __init__(
             self,
-            validator: TokenValidator | None = TokenValidator(),
-            readiness_analyzer: TokenReadinessAnalyzer | None = TokenReadinessAnalyzer(),
+            validator: RankValidator | None = RankValidator(),
     ):
         """
         Args:
-            validator: TokenValidator
-            readiness_analyzer: TokenReadinessAnalyzer
+            validator: RankValidator
         """
         self._validator = validator
-        self._readiness_analyzer = readiness_analyzer
     
     
     @LoggingLevelRouter.monitor

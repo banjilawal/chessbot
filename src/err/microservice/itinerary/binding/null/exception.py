@@ -1,7 +1,7 @@
-# src/err/validation/itinerary/binding/null/exception.py
+# src/err/microservice/itinerary/binding/null/exception.py
 
 """
-Module: err.validation.itinerary.binding.null.exception
+Module: err.microservice.itinerary.binding.null.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -42,7 +42,7 @@ class BidirectionalSourceTokenRelationException(ItineraryConsistencyException):
     Super Class:
         ItineraryConsistencyException
     """
-    MSG = "Candidate did not pass a Itinerary's token does not have bidirectional relation with source."
+    MSG = "Itinerary's token does not have bidirectional relation with source."
     ERR_CODE = "NO_SOURCE_TOKEN_BIDIRECTIONAL_RELATION_ERROR"
     
     def __init__(

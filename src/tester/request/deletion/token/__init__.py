@@ -1,13 +1,13 @@
-# src/tester/stack/token/deletion/__init__.py
+# src/tester/request/deletion/token/__init__.py
 
 """
-Module: tester.stack.token.deletion.__init__
+Module: tester.request.deletion.token.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
 """
 
-# =========== TESTER.STACK.TOKEN.DELETION PACKAGE ===========#
+# =========== TESTER.REQUEST.DELETION.TOKEN PACKAGE ===========#
 
 # Packages
 

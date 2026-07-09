@@ -1,7 +1,7 @@
-# src/err/validation/path/king/exception.py
+# src/err/microservice/path/king/exception.py
 
 """
-Module: err.validation.path.king.exception
+Module: err.microservice.path.king.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,22 +10,22 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import PathValidatorException
+from err import PathMicroserviceException
 from result import MethodResultType
 
 __all__ = [
-    # ======================# KING_PATH_VALIDATOR_FAILURE #======================#
-    "KingPathValidatorException",
+    # ======================# KING_PATH_MICROSERVICE_FAILURE #======================#
+    "KingPathMicroserviceException",
 ]
 
-# ======================# KING_PATH_VALIDATOR_FAILURE #======================#
-class KingPathValidatorException(PathValidatorException):
+# ======================# KING_PATH_MICROSERVICE_FAILURE #======================#
+class KingPathMicroserviceException(PathMicroserviceException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a candidate did not pass a KingPathValidator test.
+        1.  Indicate that a candidate did not pass a KingPathMicroservice failed.
 
     Attributes:
             msg: Optional[str]
@@ -40,10 +40,10 @@ class KingPathValidatorException(PathValidatorException):
     Provides:
 
     Super Class:
-        PathValidatorException
+        PathMicroserviceException
     """
-    MSG = "Candidate did not pass an KingPathValidator test."
-    ERR_CODE = "KING_PATH_VALIDATOR_FAILURE"
+    MSG = "Candidate did not pass an KingPathMicroservice failure."
+    ERR_CODE = "KING_PATH_MICROSERVICE_FAILURE"
     
     def __init__(
             self,

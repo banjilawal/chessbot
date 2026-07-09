@@ -1,7 +1,7 @@
-# src/err/validation/register/square/exception.py
+# src/err/microservice/register/square/exception.py
 
 """
-Module: err.validation.register.square.exception
+Module: err.microservice.register.square.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -11,22 +11,22 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import RegisterValidatorException
+from err import RegisterMicroserviceException
 from result import MethodResultType
 
 __all__ = [
-    # ======================# SQUARE_REGISTER_VALIDATOR_FAILURE #======================#
-    "SquareRegisterValidatorException",
+    # ======================# SQUARE_REGISTER_MICROSERVICE_FAILURE #======================#
+    "SquareRegisterMicroserviceException",
 ]
 
-# ======================# SQUARE_REGISTER_VALIDATOR_FAILURE #======================#
-class SquareRegisterValidatorException(RegisterValidatorException):
+# ======================# SQUARE_REGISTER_MICROSERVICE_FAILURE #======================#
+class SquareRegisterMicroserviceException(RegisterMicroserviceException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a candidate did not pass a SquareRegisterValidator test.
+        1.  Indicate that a candidate did not pass a SquareRegisterMicroservice failed.
 
     Attributes:
             msg: Optional[str]
@@ -41,10 +41,10 @@ class SquareRegisterValidatorException(RegisterValidatorException):
     Provides:
 
     Super Class:
-        RegisterValidatorException
+        RegisterMicroserviceException
     """
-    MSG = "Candidate did not pass a SquareRegisterValidator test."
-    ERR_CODE = "SQUARE_REGISTER_VALIDATOR_FAILURE"
+    MSG = "SquareRegisterMicroservice failure."
+    ERR_CODE = "SQUARE_REGISTER_MICROSERVICE_FAILURE"
     
     def __init__(
             self,

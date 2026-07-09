@@ -1,7 +1,7 @@
-# src/tester/request/search/tester.py
+# src/tester/request/push/tester.py
 
 """
-Module: tester.request.search.tester
+Module: tester.request.push.tester
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -12,5 +12,5 @@ from __future__ import annotations
 from tester import RequestTester
 
 
-class SearchRequestTester(RequestTester):
+class PushRequestTester(RequestTester):
     pass

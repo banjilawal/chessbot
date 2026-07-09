@@ -1,7 +1,7 @@
-# src/err/tester/push/token/exception.py
+# src/err/tester/request/push/token/exception.py
 
 """
-Module: err.tester.push.token.exception
+Module: err.tester.request.push.token.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1

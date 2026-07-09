@@ -1,7 +1,7 @@
-# src/err/tester/request/promotion/exception.py
+# src/err/tester/request/pop/exception.py
 
 """
-Module: err.tester.request.promotion.exception
+Module: err.tester.request.pop.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -14,18 +14,18 @@ from err import RequestTesterException
 from result import MethodResultType
 
 __all__ = [
-    # ======================# PROMOTION_REQUEST_TESTER_FAILURE #======================#
-    "PromotionRequestTesterException",
+    # ======================# POP_REQUEST_TESTER_FAILURE #======================#
+    "PopRequestTesterException",
 ]
 
-# ======================# PROMOTION_REQUEST_TESTER_FAILURE #======================#
-class PromotionRequestTesterException(RequestTesterException):
+# ======================# POP_REQUEST_TESTER_FAILURE #======================#
+class PopRequestTesterException(RequestTesterException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a PromotionRequestTester failed.
+        1.  Indicate that a PopRequestTester failed.
 
     Cannot Be Tester.s:
             msg: Optional[str]
@@ -42,8 +42,8 @@ class PromotionRequestTesterException(RequestTesterException):
     Super Class:
         TesterException
     """
-    MSG = "PromotionRequestTester failure."
-    ERR_CODE = "PROMOTION_REQUEST_TESTER_FAILURE"
+    MSG = "PopRequestTester failure."
+    ERR_CODE = "POP_REQUEST_TESTER_FAILURE"
     
     def __init__(
             self,

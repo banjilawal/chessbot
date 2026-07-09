@@ -1,7 +1,7 @@
-# src/err/validation/coord/exception.py
+# src/err/microservice/coord/exception.py
 
 """
-Module: err.validation.coord.exception
+Module: err.microservice.coord.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,22 +10,22 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import ValidatorException
+from err import MicroserviceException
 from result import MethodResultType
 
 __all__ = [
-    # ======================# COORD_VALIDATOR_FAILURE #======================#
-    "CoordValidatorException",
+    # ======================# COORD_MICROSERVICE_FAILURE #======================#
+    "CoordMicroserviceException",
 ]
 
-# ======================# COORD_VALIDATOR_FAILURE #======================#
-class CoordValidatorException(ValidatorException):
+# ======================# COORD_MICROSERVICE_FAILURE #======================#
+class CoordMicroserviceException(MicroserviceException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a candidate did not pass a CoordValidator test.
+        1.  Indicate that a candidate did not pass a CoordMicroservice failed.
 
     Attributes:
         msg: Optional[str]
@@ -40,10 +40,10 @@ class CoordValidatorException(ValidatorException):
     Provides:
 
     Super Class:
-        ValidatorException
+        MicroserviceException
     """
-    MSG = "Candidate did not pass a CoordValidator test."
-    ERR_CODE = "COORD_VALIDATOR_FAILURE"
+    MSG = "CoordMicroservice failure."
+    ERR_CODE = "COORD_MICROSERVICE_FAILURE"
     
     def __init__(
             self,

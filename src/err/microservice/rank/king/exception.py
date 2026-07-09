@@ -1,7 +1,7 @@
-# src/err/validation/rank/king/exception.py
+# src/err/microservice/rank/king/exception.py
 
 """
-Module: err.validation.rank.king.exception
+Module: err.microservice.rank.king.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,21 +10,21 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import RankValidatorException
+from err import RankMicroserviceException
 
 __all__ = [
-    # ======================# KING_VALIDATOR_FAILURE #======================#
-    "KingValidatorException",
+    # ======================# KING_MICROSERVICE_FAILURE #======================#
+    "KingMicroserviceException",
 ]
 
-# ======================# KING_VALIDATOR_FAILURE #======================#
-class KingValidatorException(RankValidatorException):
+# ======================# KING_MICROSERVICE_FAILURE #======================#
+class KingMicroserviceException(RankMicroserviceException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a candidate did not pass a King validator test.
+        1.  Indicate that a candidate did not pass a King microservice failed.
 
     Attributes:
         msg: Optional[str]
@@ -39,10 +39,10 @@ class KingValidatorException(RankValidatorException):
     Provides:
 
     Super Class:
-        RankValidatorException
+        RankMicroserviceException
     """
-    MSG = "Candidate did not pass a King validator test."
-    ERR_CODE = "KING_VALIDATOR_FAILURE"
+    MSG = "King microservice failure."
+    ERR_CODE = "KING_MICROSERVICE_FAILURE"
     
     def __init__(
             self,

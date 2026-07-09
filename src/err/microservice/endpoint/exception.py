@@ -1,7 +1,7 @@
-# src/err/validation/maneuverEndpoint/exception.py
+# src/err/microservice/maneuverEndpoint/exception.py
 
 """
-Module: err.validation.maneuverEndpoint.exception
+Module: err.microservice.maneuverEndpoint.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,22 +10,22 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import ValidatorException
+from err import MicroserviceException
 from result import MethodResultType
 
 __all__ = [
-    # ======================# MANEUVER_ENDPOINT_VALIDATOR_FAILURE #======================#
-    "ManeuverEndpointValidatorException",
+    # ======================# MANEUVER_ENDPOINT_MICROSERVICE_FAILURE #======================#
+    "ManeuverEndpointMicroserviceException",
 ]
 
-# ======================# MANEUVER_ENDPOINT_VALIDATOR_FAILURE #======================#
-class ManeuverEndpointValidatorException(ValidatorException):
+# ======================# MANEUVER_ENDPOINT_MICROSERVICE_FAILURE #======================#
+class ManeuverEndpointMicroserviceException(MicroserviceException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a candidate did not pass a ManeuverEndpointValidator test.
+        1.  Indicate that a candidate did not pass a ManeuverEndpointMicroservice failed.
 
     Attributes:
         msg: Optional[str]
@@ -40,10 +40,10 @@ class ManeuverEndpointValidatorException(ValidatorException):
     Provides:
 
     Super Class:
-        ValidatorException
+        MicroserviceException
     """
-    MSG = "Candidate did not pass a ManeuverEndpointValidator test."
-    ERR_CODE = "MANEUVER_ENDPOINT_VALIDATOR_FAILURE"
+    MSG = "ManeuverEndpointMicroservice failure."
+    ERR_CODE = "MANEUVER_ENDPOINT_MICROSERVICE_FAILURE"
     
     def __init__(
             self,

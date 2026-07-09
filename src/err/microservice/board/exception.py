@@ -1,7 +1,7 @@
-# src/err/validation/board/exception.py
+# src/err/microservice/board/exception.py
 
 """
-Module: err.validation.board.exception
+Module: err.microservice.board.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,22 +10,22 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import ValidatorException
+from err import MicroserviceException
 from result import MethodResultType
 
 __all__ = [
-    # ======================# BOARD_VALIDATOR_FAILURE #======================#
-    "BoardValidatorException",
+    # ======================# BOARD_MICROSERVICE_FAILURE #======================#
+    "BoardMicroserviceException",
 ]
 
-# ======================# BOARD_VALIDATOR_FAILURE #======================#
-class BoardValidatorException(ValidatorException):
+# ======================# BOARD_MICROSERVICE_FAILURE #======================#
+class BoardMicroserviceException(MicroserviceException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a candidate did not pass a BoardValidator test.
+        1.  Indicate that a candidate did not pass a BoardMicroservice failed.
 
     Attributes:
         msg: Optional[str]
@@ -40,10 +40,10 @@ class BoardValidatorException(ValidatorException):
     Provides:
 
     Super Class:
-        ValidatorException
+        MicroserviceException
     """
-    MSG = "Candidate did not pass a BoardValidator test."
-    ERR_CODE = "BOARD_VALIDATOR_FAILURE"
+    MSG = "BoardMicroservice failure."
+    ERR_CODE = "BOARD_MICROSERVICE_FAILURE"
     
     def __init__(
             self,

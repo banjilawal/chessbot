@@ -13,4 +13,4 @@ version: 1.0.1
 
 
 # Modules
-from .validator import BlueprintIdExtractor
+from .extractor import BlueprintIdExtractor

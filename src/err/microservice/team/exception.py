@@ -1,7 +1,7 @@
-# src/err/validation/team/exception.py
+# src/err/microservice/team/exception.py
 
 """
-Module: err.validation.team.exception
+Module: err.microservice.team.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,22 +10,22 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import ValidatorException
+from err import MicroserviceException
 from result import MethodResultType
 
 __all__ = [
-    # ======================# TEAM_VALIDATOR_FAILURE #======================#
-    "TeamValidatorException",
+    # ======================# TEAM_MICROSERVICE_FAILURE #======================#
+    "TeamMicroserviceException",
 ]
 
-# ======================# TEAM_VALIDATOR_FAILURE #======================#
-class TeamValidatorException(ValidatorException):
+# ======================# TEAM_MICROSERVICE_FAILURE #======================#
+class TeamMicroserviceException(MicroserviceException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a candidate did not pass a TeamValidator test.
+        1.  Indicate that a candidate did not pass a TeamMicroservice failed.
 
     Attributes:
             msg: Optional[str]
@@ -40,10 +40,10 @@ class TeamValidatorException(ValidatorException):
     Provides:
 
     Super Class:
-        ValidatorException
+        MicroserviceException
     """
-    MSG = "Candidate did not pass a TeamValidator test."
-    ERR_CODE = "TEAM_VALIDATOR_FAILURE"
+    MSG = "TeamMicroservice failure."
+    ERR_CODE = "TEAM_MICROSERVICE_FAILURE"
     
     def __init__(
             self,

@@ -10,7 +10,7 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import PromotionTesterException
+from err import TesterException
 from result import MethodResultType
 
 
@@ -21,7 +21,7 @@ __all__ = [
 ]
 
 # ======================# PAWN_PROMOTION_TESTER_FAILURE #======================#
-class PromotionPawnTesterException(PromotionTesterException):
+class PromotionPawnTesterException(TesterException):
     """
     Role:
         -   Error Tracing

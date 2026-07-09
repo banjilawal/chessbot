@@ -1,7 +1,7 @@
-# src/tester/search/search/tester.py
+# src/tester/request/search/token/tester.py
 
 """
-Module: tester.search.search.tester
+Module: tester.request.search.token.tester
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -17,12 +17,12 @@ from err import TokenSearchRequestTesterException, TokenStackNullException
 from request import SearchRequest
 from result import MethodResultType, ValidationResult
 from stack import TokenStackService
-from tester import Tester
+from tester import SearchRequestTester
 from util import LoggingLevelRouter
 from validator import TokenContextValidator
 
 
-class TokenSearchRequestTester(Tester):
+class TokenSearchRequestTester(SearchRequestTester):
     """
     Role:
         -   Helper

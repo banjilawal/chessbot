@@ -1,7 +1,7 @@
-# src/err/validation/register/exception.py
+# src/err/microservice/register/exception.py
 
 """
-Module: err.validation.register.exception
+Module: err.microservice.register.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -13,22 +13,22 @@ from typing import Any, Optional
 
 from typing import Any, Optional
 
-from err import ValidatorException
+from err import MicroserviceException
 from result import MethodResultType
 
 __all__ = [
-    # ======================# REGISTER_VALIDATOR_FAILURE #======================#
-    "RegisterValidatorException",
+    # ======================# REGISTER_MICROSERVICE_FAILURE #======================#
+    "RegisterMicroserviceException",
 ]
 
-# ======================# REGISTER_VALIDATOR_FAILURE #======================#
-class RegisterValidatorException(ValidatorException):
+# ======================# REGISTER_MICROSERVICE_FAILURE #======================#
+class RegisterMicroserviceException(MicroserviceException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a candidate did not pass a RegisterValidator test.
+        1.  Indicate that a candidate did not pass a RegisterMicroservice failed.
 
     Attributes:
             msg: Optional[str]
@@ -43,10 +43,10 @@ class RegisterValidatorException(ValidatorException):
     Provides:
 
     Super Class:
-        ValidatorException
+        MicroserviceException
     """
-    MSG = "Candidate did not pass a RegisterValidator test."
-    ERR_CODE = "REGISTER_VALIDATOR_FAILURE"
+    MSG = "RegisterMicroservice failure."
+    ERR_CODE = "REGISTER_MICROSERVICE_FAILURE"
     
     def __init__(
             self,

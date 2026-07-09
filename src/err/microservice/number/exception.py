@@ -1,7 +1,7 @@
-# src/err/validation/number/exception.py
+# src/err/microservice/number/exception.py
 
 """
-Module: err.validation.number.exception
+Module: err.microservice.number.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,22 +10,22 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import ValidatorException
+from err import MicroserviceException
 from result import MethodResultType
 
 __all__ = [
-    # ======================# NUMBER_VALIDATOR_FAILURE #======================#
-    "NumberValidatorException",
+    # ======================# NUMBER_MICROSERVICE_FAILURE #======================#
+    "NumberMicroserviceException",
 ]
 
-# ======================# NUMBER_VALIDATOR_FAILURE #======================#
-class NumberValidatorException(ValidatorException):
+# ======================# NUMBER_MICROSERVICE_FAILURE #======================#
+class NumberMicroserviceException(MicroserviceException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a candidate did not pass a NumberValidator test.
+        1.  Indicate that a candidate did not pass a NumberMicroservice failed.
 
     Attributes:
         msg: Optional[str]
@@ -40,10 +40,10 @@ class NumberValidatorException(ValidatorException):
     Provides:
 
     Super Class:
-        ValidatorException
+        MicroserviceException
     """
-    MSG = "Candidate did not pass a NumberValidator test."
-    ERR_CODE = "NUMBER_VALIDATOR_FAILURE"
+    MSG = "NumberMicroservice failure."
+    ERR_CODE = "NUMBER_MICROSERVICE_FAILURE"
     
     def __init__(
             self,

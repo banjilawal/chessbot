@@ -1,15 +1,15 @@
-# src/err/validation/identity/__init__.py
+# src/err/microservice/identity/__init__.py
 
 """
-Module: err.validation.identity.__init__
+Module: err.microservice.identity.__init__
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
 """
 
-# ============ ERR.VALIDATION.IDENTITY PACKAGE ===========#
+# ============ ERR.MICROSERVICE.IDENTITY PACKAGE ===========#
 
 # Packages
 
 # Modules
-from .exception import IdentityValidatorException
+from .exception import IdentityServiceException

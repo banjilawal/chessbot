@@ -1,7 +1,7 @@
-# src/err/validation/node/exception.py
+# src/err/microservice/node/exception.py
 
 """
-Module: err.validation.node.exception
+Module: err.microservice.node.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,22 +10,22 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import ValidatorException
+from err import MicroserviceException
 from result import MethodResultType
 
 __all__ = [
-    # ======================# NODE_VALIDATOR_FAILURE #======================#
-    "NodeValidatorException",
+    # ======================# NODE_MICROSERVICE_FAILURE #======================#
+    "NodeMicroserviceException",
 ]
 
-# ======================# NODE_VALIDATOR_FAILURE #======================#
-class NodeValidatorException(ValidatorException):
+# ======================# NODE_MICROSERVICE_FAILURE #======================#
+class NodeMicroserviceException(MicroserviceException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a candidate did not pass a NodeValidator test.
+        1.  Indicate that a candidate did not pass a NodeMicroservice failed.
 
     Attributes:
         msg: Optional[str]
@@ -40,10 +40,10 @@ class NodeValidatorException(ValidatorException):
     Provides:
 
     Super Class:
-        ValidatorException
+        MicroserviceException
     """
-    MSG = "Candidate did not pass a NodeValidator test."
-    ERR_CODE = "NODE_VALIDATOR_FAILURE"
+    MSG = "NodeMicroservice failure."
+    ERR_CODE = "NODE_MICROSERVICE_FAILURE"
     
     def __init__(
             self,

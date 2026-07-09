@@ -1,13 +1,13 @@
-# src/tester/search/search/__init__.py
+# src/tester/request/search/token/__init__.py
 
 """
-Module: tester.search.search.__init__
+Module: tester.request.search.token.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
 """
 
-# =========== TESTER.SEARCH.SEARCH PACKAGE ===========#
+# =========== TESTER.REQUEST.SEARCH.TOKEN PACKAGE ===========#
 
 # Packages
 

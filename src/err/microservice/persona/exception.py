@@ -1,7 +1,7 @@
-# src/err/validation/persona/exception.py
+# src/err/microservice/persona/exception.py
 
 """
-Module: err.validation.persona.exception
+Module: err.microservice.persona.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,22 +10,22 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import ValidatorException
+from err import MicroserviceException
 from result import MethodResultType
 
 __all__ = [
-    # ======================# PERSONA_VALIDATOR_FAILURE #======================#
-    "PersonaValidatorException",
+    # ======================# PERSONA_MICROSERVICE_FAILURE #======================#
+    "PersonaMicroserviceException",
 ]
 
-# ======================# PERSONA_VALIDATOR_FAILURE #======================#
-class PersonaValidatorException(ValidatorException):
+# ======================# PERSONA_MICROSERVICE_FAILURE #======================#
+class PersonaMicroserviceException(MicroserviceException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that n PersonaValidator test.
+        1.  Indicate that n PersonaMicroservice failed.
 
     Attributes:
             msg: Optional[str]
@@ -40,10 +40,10 @@ class PersonaValidatorException(ValidatorException):
     Provides:
 
     Super Class:
-        ValidatorException
+        MicroserviceException
     """
-    MSG = "Candidate did not pass a PersonaValidator test."
-    ERR_CODE = "PERSONA_VALIDATOR_FAILURE"
+    MSG = "PersonaMicroservice failure."
+    ERR_CODE = "PERSONA_MICROSERVICE_FAILURE"
     
     def __init__(
             self,

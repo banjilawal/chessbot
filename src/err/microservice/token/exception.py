@@ -1,7 +1,7 @@
-# src/err/validation/token/exception.py
+# src/err/microservice/token/exception.py
 
 """
-Module: err.validation.token.exception
+Module: err.microservice.token.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,22 +10,22 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import ValidatorException
+from err import MicroserviceException
 from result import MethodResultType
 
 __all__ = [
-    # ======================# TOKEN_VALIDATOR_FAILURE #======================#
-    "TokenValidatorException",
+    # ======================# TOKEN_MICROSERVICE_FAILURE #======================#
+    "TokenMicroserviceException",
 ]
 
-# ======================# TOKEN_VALIDATOR_FAILURE #======================#
-class TokenValidatorException(ValidatorException):
+# ======================# TOKEN_MICROSERVICE_FAILURE #======================#
+class TokenMicroserviceException(MicroserviceException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate a TokenValidator test.
+        1.  Indicate a TokenMicroservice failed.
 
     Attributes:
         msg: Optional[str]
@@ -40,10 +40,10 @@ class TokenValidatorException(ValidatorException):
     Provides:
 
     Super Class:
-        ValidatorException
+        MicroserviceException
     """
-    MSG = "Candidate did not pass a TokenValidator test."
-    ERR_CODE = "TOKEN_VALIDATOR_FAILURE"
+    MSG = "TokenMicroservice failure."
+    ERR_CODE = "TOKEN_MICROSERVICE_FAILURE"
     
     def __init__(
             self,

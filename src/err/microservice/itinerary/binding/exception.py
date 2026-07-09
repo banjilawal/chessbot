@@ -1,7 +1,7 @@
-# src/err/validation/itinerary/binding/exception.py
+# src/err/microservice/itinerary/binding/exception.py
 
 """
-Module: err.validation.itinerary.binding.exception
+Module: err.microservice.itinerary.binding.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,7 +10,7 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import ItineraryValidatorException
+from err import ItineraryMicroserviceException
 from result import MethodResultType
 
 __all__ = [
@@ -19,7 +19,7 @@ __all__ = [
 ]
 
 # ======================# ITINERARY_CONSISTENCY_ERROR #======================#
-class ItineraryConsistencyException(ItineraryValidatorException):
+class ItineraryConsistencyException(ItineraryMicroserviceException):
     """
     Role:
         -   Error Tracing
@@ -40,9 +40,9 @@ class ItineraryConsistencyException(ItineraryValidatorException):
     Provides:
 
     Super Class:
-        ItineraryValidatorException
+        ItineraryMicroserviceException
     """
-    MSG = "Candidate did not pass a Inconsistency between the itinerary and an endpoint."
+    MSG = "Inconsistency between the itinerary and an endpoint."
     ERR_CODE = "ITINERARY_CONSISTENCY_ERROR"
     
     def __init__(

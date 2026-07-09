@@ -1,16 +1,16 @@
-# src/err/validation/binder/board/__init__.py
+# src/err/microservice/binder/board/__init__.py
 
 """
-Module: err.validation.binder.board.__init__
+Module: err.microservice.binder.board.__init__
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
 """
 
-# ============ ERR.VALIDATION.BINDER.BOARD PACKAGE ===========#
+# ============ ERR.MICROSERVICE.BINDER.BOARD PACKAGE ===========#
 
 # Packages
 
 
 # Modules
-from .exception import BoardTeamBinderValidatorException
+from .exception import BoardTeamBinderMicroserviceException

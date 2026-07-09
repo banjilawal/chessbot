@@ -1,7 +1,7 @@
-# src/err/validation/hostage/exception.py
+# src/err/microservice/hostage/exception.py
 
 """
-Module: err.validation.hostage.exception
+Module: err.microservice.hostage.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,22 +10,22 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import ValidatorException
+from err import MicroserviceException
 from result import MethodResultType
 
 __all__ = [
-    # ======================# HOSTAGE_VALIDATOR_FAILURE #======================#
-    "HostageValidatorException",
+    # ======================# HOSTAGE_MICROSERVICE_FAILURE #======================#
+    "HostageMicroserviceException",
 ]
 
-# ======================# HOSTAGE_VALIDATOR_FAILURE #======================#
-class HostageValidatorException(ValidatorException):
+# ======================# HOSTAGE_MICROSERVICE_FAILURE #======================#
+class HostageMicroserviceException(MicroserviceException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a candidate did not pass a HostageValidator test.
+        1.  Indicate that a candidate did not pass a HostageMicroservice failed.
 
     Attributes:
         msg: Optional[str]
@@ -40,10 +40,10 @@ class HostageValidatorException(ValidatorException):
     Provides:
 
     Super Class:
-        ValidatorException
+        MicroserviceException
     """
-    MSG = "Candidate did not pass a HostageValidator test."
-    ERR_CODE = "HOSTAGE_VALIDATOR_FAILURE"
+    MSG = "HostageMicroservice failure."
+    ERR_CODE = "HOSTAGE_MICROSERVICE_FAILURE"
     
     def __init__(
             self,

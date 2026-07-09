@@ -1,7 +1,7 @@
-# src/err/tester/request/promotion/exception.py
+# src/err/tester/request/exception.py
 
 """
-Module: err.tester.request.promotion.exception
+Module: err.tester.request.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -14,18 +14,18 @@ from err import TesterException
 from result import MethodResultType
 
 __all__ = [
-    # ======================# PROMOTION_REQUEST_TESTER_FAILURE #======================#
-    "PromotionRequestTesterException",
+    # ======================# REQUEST_TESTER_FAILURE #======================#
+    "RequestTesterException",
 ]
 
-# ======================# PROMOTION_REQUEST_TESTER_FAILURE #======================#
-class PromotionRequestTesterException(TesterException):
+# ======================# REQUEST_TESTER_FAILURE #======================#
+class RequestTesterException(TesterException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a PromotionRequestTester failed.
+        1.  Indicate that a RequestTester failed.
 
     Cannot Be Tester.s:
             msg: Optional[str]
@@ -42,8 +42,8 @@ class PromotionRequestTesterException(TesterException):
     Super Class:
         TesterException
     """
-    MSG = "PromotionRequestTester failure."
-    ERR_CODE = "PROMOTION_REQUEST_TESTER_FAILURE"
+    MSG = "RequestTester failure."
+    ERR_CODE = "REQUEST_TESTER_FAILURE"
     
     def __init__(
             self,

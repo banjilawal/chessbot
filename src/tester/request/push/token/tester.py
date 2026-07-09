@@ -1,7 +1,7 @@
-# src/tester/stack/token/push/tester.py
+# src/tester/request/push/token/tester.py
 
 """
-Module: tester.stack.token.push.tester
+Module: tester.request.push.token.tester
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -17,12 +17,12 @@ from err import TokenStackNullException, TokenPushRequestTesterException
 from request import PushRequest
 from result import MethodResultType, ValidationResult
 from stack import TokenStackService
-from tester import Tester
+from tester import PushRequestTester
 from util import LoggingLevelRouter
 from validator import TokenValidator
 
 
-class TokenPushRequestTester(Tester):
+class TokenPushRequestTester(PushRequestTester):
     """
     Role:
         -   Helper

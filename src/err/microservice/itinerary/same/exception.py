@@ -1,7 +1,7 @@
-# src/err/validation/itinerary/same/exception.py
+# src/err/microservice/itinerary/same/exception.py
 
 """
-Module: err.validation.itinerary.same.exception
+Module: err.microservice.itinerary.same.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,7 +10,7 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import ItineraryValidatorException
+from err import ItineraryMicroserviceException
 from result import MethodResultType
 
 __all__ = [
@@ -19,7 +19,7 @@ __all__ = [
 ]
 
 # ======================# ITINERARY_SOURCE_EQUALS_DESTINATION #======================#
-class ItinerarySourceEqualsDestinationException(ItineraryValidatorException):
+class ItinerarySourceEqualsDestinationException(ItineraryMicroserviceException):
     """
     Role:
         -   Error Tracing
@@ -40,9 +40,9 @@ class ItinerarySourceEqualsDestinationException(ItineraryValidatorException):
     Provides:
 
     Super Class:
-        ItineraryValidatorException
+        ItineraryMicroserviceException
     """
-    MSG = "Candidate did not pass a Itinerary source and destination cannot be the same."
+    MSG = "Itinerary source and destination cannot be the same."
     ERR_CODE = "ITINERARY_SOURCE_EQUALS_DESTINATION"
     
     def __init__(

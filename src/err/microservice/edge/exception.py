@@ -1,7 +1,7 @@
-# src/err/validation/edge/exception.py
+# src/err/microservice/edge/exception.py
 
 """
-Module: err.validation.edge.exception
+Module: err.microservice.edge.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,22 +10,22 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import ValidatorException
+from err import MicroserviceException
 from result import MethodResultType
 
 __all__ = [
-    # ======================# EDGE_VALIDATOR_FAILURE #======================#
-    "EdgeValidatorException",
+    # ======================# EDGE_MICROSERVICE_FAILURE #======================#
+    "EdgeMicroserviceException",
 ]
 
-# ======================# EDGE_VALIDATOR_FAILURE #======================#
-class EdgeValidatorException(ValidatorException):
+# ======================# EDGE_MICROSERVICE_FAILURE #======================#
+class EdgeMicroserviceException(MicroserviceException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an EdgeValidator test.
+        1.  Indicate that an EdgeMicroservice failed.
 
     Attributes:
         msg: Optional[str]
@@ -40,10 +40,10 @@ class EdgeValidatorException(ValidatorException):
     Provides:
 
     Super Class:
-        ValidatorException
+        MicroserviceException
     """
-    MSG = "Candidate did not pass a EdgeValidator test."
-    ERR_CODE = "EDGE_VALIDATOR_FAILURE"
+    MSG = "EdgeMicroservice failure."
+    ERR_CODE = "EDGE_MICROSERVICE_FAILURE"
     
     def __init__(
             self,

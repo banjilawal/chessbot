@@ -1,15 +1,15 @@
-# src/err/validation/game/__init__.py
+# src/err/microservice/game/__init__.py
 
 """
-Module: err.validation.game.__init__
+Module: err.microservice.game.__init__
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
 """
 
-# ============ ERR.VALIDATION.GAME PACKAGE ===========#
+# ============ ERR.MICROSERVICE.GAME PACKAGE ===========#
 
 # Packages
 
 # Modules
-from .exception import GameValidatorException
+from .exception import GameMicroserviceException

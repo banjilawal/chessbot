@@ -1,7 +1,7 @@
-# src/err/validationvector/register/exception.py
+# src/err/microservicevector/register/exception.py
 
 """
-Module: err.validation.vector.register.exception
+Module: err.microservice.vector.register.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -13,22 +13,22 @@ from typing import Any, Optional
 
 
 __all__ = [
-    # ======================# VECTOR_REGISTER_VALIDATOR_FAILURE #======================#
-    "VectorRegisterValidatorException",
+    # ======================# VECTOR_REGISTER_MICROSERVICE_FAILURE #======================#
+    "VectorRegisterMicroserviceException",
 ]
 
-from err import ValidatorException
+from err import MicroserviceException
 from result import MethodResultType
 
 
-# ======================# VECTOR_REGISTER_VALIDATOR_FAILURE #======================#
-class VectorRegisterValidatorException(ValidatorException):
+# ======================# VECTOR_REGISTER_MICROSERVICE_FAILURE #======================#
+class VectorRegisterMicroserviceException(MicroserviceException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a candidate did not pass a VectorRegisterValidator test.
+        1.  Indicate that a candidate did not pass a VectorRegisterMicroservice failed.
 
     Attributes:
             msg: Optional[str]
@@ -43,10 +43,10 @@ class VectorRegisterValidatorException(ValidatorException):
     Provides:
 
     Super Class:
-        ValidatorException
+        MicroserviceException
     """
-    MSG = "Candidate did not pass a VectorRegisterValidation failed."
-    ERR_CODE = "VECTOR_REGISTER_VALIDATOR_FAILURE"
+    MSG = "VectorRegisterMicroservice failed."
+    ERR_CODE = "VECTOR_REGISTER_MICROSERVICE_FAILURE"
     
     def __init__(
             self,

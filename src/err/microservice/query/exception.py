@@ -1,7 +1,7 @@
-# src/err/validation/query/exception.py
+# src/err/microservice/query/exception.py
 
 """
-Module: err.validation.query.exception
+Module: err.microservice.query.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,23 +10,23 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import ValidatorException
+from err import MicroserviceException
 from result import MethodResultType
 
 
 __all__ = [
-    # ======================# QUERY_VALIDATOR_FAILURE #======================#
-    "QueryValidatorException",
+    # ======================# QUERY_MICROSERVICE_FAILURE #======================#
+    "QueryMicroserviceException",
 ]
 
-# ======================# QUERY_VALIDATOR_FAILURE #======================#
-class QueryValidatorException(ValidatorException):
+# ======================# QUERY_MICROSERVICE_FAILURE #======================#
+class QueryMicroserviceException(MicroserviceException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a candidate did not pass a QueryValidator test.
+        1.  Indicate that a candidate did not pass a QueryMicroservice failed.
 
     Attributes:
         msg: Optional[str]
@@ -41,10 +41,10 @@ class QueryValidatorException(ValidatorException):
     Provides:
 
     Super Class:
-        ValidatorException
+        MicroserviceException
     """
-    MSG = "Candidate did not pass a QueryValidator test."
-    ERR_CODE = "QUERY_VALIDATOR_FAILURE"
+    MSG = "QueryMicroservice failure."
+    ERR_CODE = "QUERY_MICROSERVICE_FAILURE"
     
     def __init__(
             self,

@@ -1,7 +1,7 @@
-# src/err/validation/binder/arena/exception.py
+# src/err/microservice/binder/arena/exception.py
 
 """
-Module: err.validation.binder.arena.exception
+Module: err.microservice.binder.arena.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,21 +10,21 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import BinderValidatorException
+from err import BinderMicroserviceException
 
 __all__ = [
-    # ======================# ARENA_PLAYER_BINDER_VALIDATOR_FAILURE #======================#
-    "ArenaPlayerBinderValidatorException",
+    # ======================# ARENA_PLAYER_BINDER_MICROSERVICE_FAILURE #======================#
+    "ArenaPlayerBinderMicroserviceException",
 ]
 
-# ======================# ARENA_PLAYER_BINDER_VALIDATOR_FAILURE #======================#
-class ArenaPlayerBinderValidatorException(BinderValidatorException):
+# ======================# ARENA_PLAYER_BINDER_MICROSERVICE_FAILURE #======================#
+class ArenaPlayerBinderMicroserviceException(BinderMicroserviceException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a candidate did not pass a ArenaPlayerBinder validator test.
+        1.  Indicate that a candidate did not pass a ArenaPlayerBinder microservice failed.
 
     Attributes:
         msg: Optional[str]
@@ -39,10 +39,10 @@ class ArenaPlayerBinderValidatorException(BinderValidatorException):
     Provides:
 
     Super Class:
-        BinderValidatorException
+        BinderMicroserviceException
     """
-    MSG = "Candidate did not pass a ArenaPlayerBinder validator test."
-    ERR_CODE = "ARENA_PLAYER_BINDER_VALIDATOR_FAILURE"
+    MSG = "ArenaPlayerBinder microservice failure."
+    ERR_CODE = "ARENA_PLAYER_BINDER_MICROSERVICE_FAILURE"
     
     def __init__(
             self,

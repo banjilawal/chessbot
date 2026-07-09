@@ -1,7 +1,7 @@
-# src/err/validation/binder/exception.py
+# src/err/microservice/binder/exception.py
 
 """
-Module: err.validation.binder.exception
+Module: err.microservice.binder.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,22 +10,22 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import ValidatorException
+from err import MicroserviceException
 from result import MethodResultType
 
 __all__ = [
-    # ======================# BINDER_VALIDATOR_FAILURE #======================#
-    "BinderValidatorException",
+    # ======================# BINDER_MICROSERVICE_FAILURE #======================#
+    "BinderMicroserviceException",
 ]
 
-# ======================# BINDER_VALIDATOR_FAILURE #======================#
-class BinderValidatorException(ValidatorException):
+# ======================# BINDER_MICROSERVICE_FAILURE #======================#
+class BinderMicroserviceException(MicroserviceException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a candidate did not pass a BinderValidator test.
+        1.  Indicate that a candidate did not pass a BinderMicroservice failed.
 
     Attributes:
         msg: Optional[str]
@@ -40,10 +40,10 @@ class BinderValidatorException(ValidatorException):
     Provides:
 
     Super Class:
-        ValidatorException
+        MicroserviceException
     """
-    MSG = "Candidate did not pass a BinderValidator test."
-    ERR_CODE = "BINDER_VALIDATOR_FAILURE"
+    MSG = "BinderMicroservice failure."
+    ERR_CODE = "BINDER_MICROSERVICE_FAILURE"
     
     def __init__(
             self,

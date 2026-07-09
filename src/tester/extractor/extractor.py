@@ -9,8 +9,8 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from abc import ABC
+from tester import Tester
 
 
-class Tester(ABC):
+class Extractor(Tester):
     pass

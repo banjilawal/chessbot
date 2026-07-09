@@ -1,7 +1,7 @@
-# src/err/validation/scalar/exception.py
+# src/err/microservice/scalar/exception.py
 
 """
-Module: err.validation.scalar.exception
+Module: err.microservice.scalar.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,22 +10,22 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import ValidatorException
+from err import MicroserviceException
 from result import MethodResultType
 
 __all__ = [
-    # ======================# SCALAR_VALIDATOR_FAILURE #======================#
-    "ScalarValidatorException",
+    # ======================# SCALAR_MICROSERVICE_FAILURE #======================#
+    "ScalarMicroserviceException",
 ]
 
-# ======================# SCALAR_VALIDATOR_FAILURE #======================#
-class ScalarValidatorException(ValidatorException):
+# ======================# SCALAR_MICROSERVICE_FAILURE #======================#
+class ScalarMicroserviceException(MicroserviceException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a candidate did not pass a ScalarValidator test.
+        1.  Indicate that a candidate did not pass a ScalarMicroservice failed.
 
     Attributes:
         msg: Optional[str]
@@ -40,10 +40,10 @@ class ScalarValidatorException(ValidatorException):
     Provides:
 
     Super Class:
-        ValidatorException
+        MicroserviceException
     """
-    MSG = "Candidate did not pass a ScalarValidator test."
-    ERR_CODE = "SCALAR_VALIDATOR_FAILURE"
+    MSG = "ScalarMicroservice failure."
+    ERR_CODE = "SCALAR_MICROSERVICE_FAILURE"
     
     def __init__(
             self,

@@ -1,7 +1,7 @@
-# src/err/validation/path/combatant/exception.py
+# src/err/microservice/path/combatant/exception.py
 
 """
-Module: err.validation.path.combatant.exception
+Module: err.microservice.path.combatant.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,22 +10,22 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import PathValidatorException
+from err import PathMicroserviceException
 from result import MethodResultType
 
 __all__ = [
-    # ======================# COMBATANT_PATH_VALIDATOR_FAILURE #======================#
-    "CombatantPathValidatorException",
+    # ======================# COMBATANT_PATH_MICROSERVICE_FAILURE #======================#
+    "CombatantPathMicroserviceException",
 ]
 
-# ======================# COMBATANT_PATH_VALIDATOR_FAILURE #======================#
-class CombatantPathValidatorException(PathValidatorException):
+# ======================# COMBATANT_PATH_MICROSERVICE_FAILURE #======================#
+class CombatantPathMicroserviceException(PathMicroserviceException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a candidate did not pass a CombatantPathValidator test.
+        1.  Indicate that a candidate did not pass a CombatantPathMicroservice failed.
 
     Attributes:
             msg: Optional[str]
@@ -40,10 +40,10 @@ class CombatantPathValidatorException(PathValidatorException):
     Provides:
 
     Super Class:
-        PathValidatorException
+        PathMicroserviceException
     """
-    MSG = "Candidate did not pass an CombatantPathValidator test."
-    ERR_CODE = "COMBATANT_PATH_VALIDATOR_FAILURE"
+    MSG = "Candidate did not pass an CombatantPathMicroservice failure."
+    ERR_CODE = "COMBATANT_PATH_MICROSERVICE_FAILURE"
     
     def __init__(
             self,

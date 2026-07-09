@@ -1,13 +1,13 @@
-# src/err/validation/itinerary/same/__init__.py
+# src/err/microservice/itinerary/same/__init__.py
 
 """
-Module: err.validation.itinerary.same.__init__
+Module: err.microservice.itinerary.same.__init__
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
 """
 
-# ============ ERR.VALIDATION.ITINERARY.SAME PACKAGE ===========#
+# ============ ERR.MICROSERVICE.ITINERARY.SAME PACKAGE ===========#
 
 # Packages
 

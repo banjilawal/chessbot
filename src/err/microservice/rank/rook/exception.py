@@ -1,7 +1,7 @@
-# src/err/validation/rank/rook/exception.py
+# src/err/microservice/rank/rook/exception.py
 
 """
-Module: err.validation.rank.rook.exception
+Module: err.microservice.rank.rook.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,21 +10,21 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import RankValidatorException
+from err import RankMicroserviceException
 
 __all__ = [
-    # ======================# ROOK_VALIDATOR_FAILURE #======================#
-    "RookValidatorException",
+    # ======================# ROOK_MICROSERVICE_FAILURE #======================#
+    "RookMicroserviceException",
 ]
 
-# ======================# ROOK_VALIDATOR_FAILURE #======================#
-class RookValidatorException(RankValidatorException):
+# ======================# ROOK_MICROSERVICE_FAILURE #======================#
+class RookMicroserviceException(RankMicroserviceException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a candidate did not pass a Rook validator test.
+        1.  Indicate that a candidate did not pass a Rook microservice failed.
 
     Attributes:
         msg: Optional[str]
@@ -39,10 +39,10 @@ class RookValidatorException(RankValidatorException):
     Provides:
 
     Super Class:
-        RankValidatorException
+        RankMicroserviceException
     """
-    MSG = "Candidate did not pass a Rook validator test."
-    ERR_CODE = "ROOK_VALIDATOR_FAILURE"
+    MSG = "Rook microservice failure."
+    ERR_CODE = "ROOK_MICROSERVICE_FAILURE"
     
     def __init__(
             self,

@@ -1,13 +1,13 @@
-# src/err/validation/__init__.py
+# src/err/microservice/__init__.py
 
 """
-Module: err.validation.__init__
+Module: err.microservice.__init__
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
 """
 
-# ============ ERR.VALIDATION PACKAGE ===========#
+# ============ ERR.MICROSERVICE PACKAGE ===========#
 
 # Packages
 from .arena import *
@@ -42,4 +42,4 @@ from .token import *
 from .vector import *
 
 # Modules
-from .exception import ValidatorException
+from .exception import MicroserviceException

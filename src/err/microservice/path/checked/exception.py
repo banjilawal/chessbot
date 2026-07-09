@@ -1,7 +1,7 @@
-# src/err/validation/path/checked/exception.py
+# src/err/microservice/path/checked/exception.py
 
 """
-Module: err.validation.path.checked.exception
+Module: err.microservice.path.checked.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,22 +10,22 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import PathValidatorException
+from err import PathMicroserviceException
 from result import MethodResultType
 
 __all__ = [
-    # ======================# CHECKED_PATH_VALIDATOR_FAILURE #======================#
-    "CheckedPathValidatorException",
+    # ======================# CHECKED_PATH_MICROSERVICE_FAILURE #======================#
+    "CheckedPathMicroserviceException",
 ]
 
-# ======================# CHECKED_PATH_VALIDATOR_FAILURE #======================#
-class CheckedPathValidatorException(PathValidatorException):
+# ======================# CHECKED_PATH_MICROSERVICE_FAILURE #======================#
+class CheckedPathMicroserviceException(PathMicroserviceException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a candidate did not pass a CheckedPathValidator test.
+        1.  Indicate that a candidate did not pass a CheckedPathMicroservice failed.
 
     Attributes:
             msg: Optional[str]
@@ -40,10 +40,10 @@ class CheckedPathValidatorException(PathValidatorException):
     Provides:
 
     Super Class:
-        PathValidatorException
+        PathMicroserviceException
     """
-    MSG = "Candidate did not pass an CheckedPathValidator test."
-    ERR_CODE = "CHECKED_PATH_VALIDATOR_FAILURE"
+    MSG = "Candidate did not pass an CheckedPathMicroservice failure."
+    ERR_CODE = "CHECKED_PATH_MICROSERVICE_FAILURE"
     
     def __init__(
             self,

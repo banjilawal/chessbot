@@ -1,7 +1,7 @@
-# src/err/validation/exception.py
+# src/err/microservice/exception.py
 
 """
-Module: err.validation.exception
+Module: err.microservice.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -13,21 +13,21 @@ from typing import Any, Optional
 from err import OperationException
 
 __all__ = [
-    # ======================# VALIDATOR_FAILURE #======================#
-    "ValidatorException",
+    # ======================# MICROSERVICE_FAILURE #======================#
+    "MicroserviceException",
 ]
 
 from result import MethodResultType
 
 
-# ======================# VALIDATOR_FAILURE #======================#
-class ValidatorException(OperationException):
+# ======================# MICROSERVICE_FAILURE #======================#
+class MicroserviceException(OperationException):
     """
     Role:
         -   Failure Tracing
 
     Responsibilities:
-        1.  Indicate that a candidate did not pass a Validator test.
+        1.  Indicate that a candidate did not pass a Microservice failed.
 
     Attributes:
         msg: str
@@ -44,9 +44,9 @@ class ValidatorException(OperationException):
     Super Class:
         OperationException
     """
-    MSG = "Candidate did not pass a Candidate did not pass a Validator test."
-    ERR_CODE = "VALIDATOR_FAILURE"
-    MTHD_RSLT_TYPE = MethodResultType.VALIDATION_RESULT
+    MSG = "Candidate did not pass a Microservice failure."
+    ERR_CODE = "MICROSERVICE_FAILURE"
+    MTHD_RSLT_TYPE = MethodResultType.MICROSERVICE_RESULT
     
     def __init__(
             self,

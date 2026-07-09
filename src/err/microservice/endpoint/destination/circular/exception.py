@@ -1,7 +1,7 @@
-# src/err/validation/endpoint/destination/circular/exception.py
+# src/err/microservice/endpoint/destination/circular/exception.py
 
 """
-Module: err.validation.endpoint.destination.circular.exception
+Module: err.microservice.endpoint.destination.circular.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,7 +10,7 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import ValidatorException
+from err import MicroserviceException
 from result import MethodResultType
 
 __all__ = [
@@ -19,7 +19,7 @@ __all__ = [
 ]
 
 # ======================# TOKEN_ALREADY_AT_DESTINATION_ERROR #======================#
-class TokenAlreadyAtDestinationException(ValidatorException):
+class TokenAlreadyAtDestinationException(MicroserviceException):
     """
     Role:
         -   Error Tracing
@@ -40,9 +40,9 @@ class TokenAlreadyAtDestinationException(ValidatorException):
     Provides:
 
     Super Class:
-        ValidatorException
+        MicroserviceException
     """
-    MSG = "Candidate did not pass a Token is already at the destination."
+    MSG = "Token is already at the destination."
     ERR_CODE = "TOKEN_ALREADY_AT_DESTINATION_ERROR"
     
     def __init__(

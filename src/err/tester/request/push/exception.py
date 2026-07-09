@@ -1,7 +1,7 @@
-# src/err/tester/request/promotion/exception.py
+# src/err/tester/request/push/exception.py
 
 """
-Module: err.tester.request.promotion.exception
+Module: err.tester.request.push.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -14,18 +14,18 @@ from err import RequestTesterException
 from result import MethodResultType
 
 __all__ = [
-    # ======================# PROMOTION_REQUEST_TESTER_FAILURE #======================#
-    "PromotionRequestTesterException",
+    # ======================# PUSH_REQUEST_TESTER_FAILURE #======================#
+    "PushRequestTesterException",
 ]
 
-# ======================# PROMOTION_REQUEST_TESTER_FAILURE #======================#
-class PromotionRequestTesterException(RequestTesterException):
+# ======================# PUSH_REQUEST_TESTER_FAILURE #======================#
+class PushRequestTesterException(RequestTesterException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a PromotionRequestTester failed.
+        1.  Indicate that a PushRequestTester failed.
 
     Cannot Be Tester.s:
             msg: Optional[str]
@@ -42,8 +42,8 @@ class PromotionRequestTesterException(RequestTesterException):
     Super Class:
         TesterException
     """
-    MSG = "PromotionRequestTester failure."
-    ERR_CODE = "PROMOTION_REQUEST_TESTER_FAILURE"
+    MSG = "PushRequestTester failure."
+    ERR_CODE = "PUSH_REQUEST_TESTER_FAILURE"
     
     def __init__(
             self,

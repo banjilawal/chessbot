@@ -15,4 +15,3 @@ from .rank import *
 
 
 # Modules
-from .exception import PromotionTesterException

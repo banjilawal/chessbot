@@ -1,7 +1,7 @@
-# src/err/validation/query/exception.py
+# src/err/microservice/query/exception.py
 
 """
-Module: err.validation.query.exception
+Module: err.microservice.query.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,23 +10,23 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import QueryValidatorException
+from err import QueryMicroserviceException
 from result import MethodResultType
 
 
 __all__ = [
-    # ======================# TOKEN_QUERY_VALIDATOR_FAILURE #======================#
-    "TokenQueryValidatorException",
+    # ======================# TOKEN_QUERY_MICROSERVICE_FAILURE #======================#
+    "TokenQueryMicroserviceException",
 ]
 
-# ======================# TOKEN_QUERY_VALIDATOR_FAILURE #======================#
-class TokenQueryValidatorException(QueryValidatorException):
+# ======================# TOKEN_QUERY_MICROSERVICE_FAILURE #======================#
+class TokenQueryMicroserviceException(QueryMicroserviceException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a candidate did not pass a TokenQueryValidator test.
+        1.  Indicate that a candidate did not pass a TokenQueryMicroservice failed.
 
     Attributes:
         msg: Optional[str]
@@ -41,10 +41,10 @@ class TokenQueryValidatorException(QueryValidatorException):
     Provides:
 
     Super Class:
-        QueryValidatorException
+        QueryMicroserviceException
     """
-    MSG = "Candidate did not pass a TokenQueryValidator test."
-    ERR_CODE = "TOKEN_QUERY_VALIDATOR_FAILURE"
+    MSG = "TokenQueryMicroservice failure."
+    ERR_CODE = "TOKEN_QUERY_MICROSERVICE_FAILURE"
     
     def __init__(
             self,

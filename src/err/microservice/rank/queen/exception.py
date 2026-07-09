@@ -1,7 +1,7 @@
-# src/err/validation/rank/queen/exception.py
+# src/err/microservice/rank/queen/exception.py
 
 """
-Module: err.validation.rank.queen.exception
+Module: err.microservice.rank.queen.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,21 +10,21 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import RankValidatorException
+from err import RankMicroserviceException
 
 __all__ = [
-    # ======================# QUEEN_VALIDATOR_FAILURE #======================#
-    "QueenValidatorException",
+    # ======================# QUEEN_MICROSERVICE_FAILURE #======================#
+    "QueenMicroserviceException",
 ]
 
-# ======================# QUEEN_VALIDATOR_FAILURE #======================#
-class QueenValidatorException(RankValidatorException):
+# ======================# QUEEN_MICROSERVICE_FAILURE #======================#
+class QueenMicroserviceException(RankMicroserviceException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a candidate did not pass a Queen validator test.
+        1.  Indicate that a candidate did not pass a Queen microservice failed.
 
     Attributes:
         msg: Optional[str]
@@ -39,10 +39,10 @@ class QueenValidatorException(RankValidatorException):
     Provides:
 
     Super Class:
-        RankValidatorException
+        RankMicroserviceException
     """
-    MSG = "Candidate did not pass a Queen validator test."
-    ERR_CODE = "QUEEN_VALIDATOR_FAILURE"
+    MSG = "Queen microservice failure."
+    ERR_CODE = "QUEEN_MICROSERVICE_FAILURE"
     
     def __init__(
             self,

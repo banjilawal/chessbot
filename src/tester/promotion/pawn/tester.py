@@ -1,7 +1,7 @@
-# src/tester/request/promotion/pawn/tester.py
+# src/tester/promotion/pawn/tester.py
 
 """
-Module: tester.request.promotion.pawn.tester
+Module: tester.promotion.pawn.tester
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -21,8 +21,8 @@ from model import PawnToken
 from report import TokenReadinessReport
 from result import MethodResultType, ValidationResult
 from tester import Tester
-from util import LoggingLevelRouter
-from validator import TokenValidator
+
+f
 
 
 class PromotionPawnTester(Tester):
@@ -35,28 +35,24 @@ class PromotionPawnTester(Tester):
         1.  Check if the subject is a pawn that can be promoted.
         
     Attributes:
-        validator: TokenValidator
         readiness_analyzer: TokenReadinessAnalyzer
           
     Provides:
         -   def execute(self, subject: Any) -> ValidationResult:
             
     Super Class:
+        Tester
     """
-    _validator: TokenValidator
     _readiness_analyzer: TokenReadinessAnalyzer
     
     def __init__(
             self,
-            validator: TokenValidator | None = TokenValidator(),
             readiness_analyzer: TokenReadinessAnalyzer | None = TokenReadinessAnalyzer(),
     ):
         """
         Args:
-            validator: TokenValidator
             readiness_analyzer: TokenReadinessAnalyzer
         """
-        self._validator = validator
         self._readiness_analyzer = readiness_analyzer
     
     
@@ -86,37 +82,7 @@ class PromotionPawnTester(Tester):
         method = f"{self.__class__.__name__}.execute"
         
         # Handle the case that, the request is malformed
-        validation_result = self._validator.execute(candidate=subject)
-        if validation_result.is_failure:
-            # Send the exception chain in the result.
-            return ValidationResult.failure(
-                PromotionPawnTesterException(
-                    cls_mthd=method,
-                    cls_name=self.__class__.__name__,
-                    msg=PromotionPawnTesterException.MSG,
-                    err_code=PromotionPawnTesterException.ERR_CODE,
-                    mthd_rslt_type=MethodResultType.VALIDATION_RESULT,
-                    ex=validation_result.exception
-                )
-            )
-        # Handle the case that, the subject is not a pawn.
-        if not isinstance(subject, PawnToken):
-            # Send the exception chain in the result.
-            return ValidationResult.failure(
-                PromotionPawnTesterException(
-                    cls_mthd=method,
-                    cls_name=self.__class__.__name__,
-                    msg=PromotionPawnTesterException.MSG,
-                    err_code=PromotionPawnTesterException.ERR_CODE,
-                    mthd_rslt_type=MethodResultType.VALIDATION_RESULT,
-                    ex=TypeError(
-                        f"Expected type PawnToken for promotion. "
-                        f"Got {type(subject).__name__} instead."
-                    )
-                )
-            )
-        pawn = cast(PawnToken, subject)
-        readiness_analysis_result = self._readiness_analyzer.execute(token=pawn)
+        readiness_analysis_result = self._readiness_analyzer.execute(token=subject)
         # Handle the case that, the readiness analysis is not completed.
         if readiness_analysis_result.is_failure:
             # Send the exception chain in the result.
@@ -149,6 +115,23 @@ class PromotionPawnTester(Tester):
                     )
                 )
             )
+        # Handle the case that, the subject is not a pawn.
+        if not isinstance(subject, PawnToken):
+            # Send the exception chain in the result.
+            return ValidationResult.failure(
+                PromotionPawnTesterException(
+                    cls_mthd=method,
+                    cls_name=self.__class__.__name__,
+                    msg=PromotionPawnTesterException.MSG,
+                    err_code=PromotionPawnTesterException.ERR_CODE,
+                    mthd_rslt_type=MethodResultType.VALIDATION_RESULT,
+                    ex=TypeError(
+                        f"Expected type PawnToken for promotion. "
+                        f"Got {type(subject).__name__} instead."
+                    )
+                )
+            )
+        pawn = cast(PawnToken, report.token)
         # Handle the case that, the pawn_token has already been promoted.
         if pawn.is_promoted:
             # Send the exception chain in the result.

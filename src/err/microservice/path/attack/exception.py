@@ -1,7 +1,7 @@
-# src/err/validation/path/attack/exception.py
+# src/err/microservice/path/attack/exception.py
 
 """
-Module: err.validation.path.attack.exception
+Module: err.microservice.path.attack.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,22 +10,22 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import PathValidatorException
+from err import PathMicroserviceException
 from result import MethodResultType
 
 __all__ = [
-    # ======================# ATTACK_PATH_VALIDATOR_FAILURE #======================#
-    "AttackPathValidatorException",
+    # ======================# ATTACK_PATH_MICROSERVICE_FAILURE #======================#
+    "AttackPathMicroserviceException",
 ]
 
-# ======================# ATTACK_PATH_VALIDATOR_FAILURE #======================#
-class AttackPathValidatorException(PathValidatorException):
+# ======================# ATTACK_PATH_MICROSERVICE_FAILURE #======================#
+class AttackPathMicroserviceException(PathMicroserviceException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a candidate did not pass an AttackPathValidator test.
+        1.  Indicate that a candidate did not pass an AttackPathMicroservice failed.
 
     Attributes:
             msg: Optional[str]
@@ -40,10 +40,10 @@ class AttackPathValidatorException(PathValidatorException):
     Provides:
 
     Super Class:
-        PathValidatorException
+        PathMicroserviceException
     """
-    MSG = "Candidate did not pass an AttackPathValidator test."
-    ERR_CODE = "ATTACK_PATH_VALIDATOR_FAILURE"
+    MSG = "Candidate did not pass an AttackPathMicroservice failure."
+    ERR_CODE = "ATTACK_PATH_MICROSERVICE_FAILURE"
     
     def __init__(
             self,

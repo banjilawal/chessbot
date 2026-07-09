@@ -1,7 +1,7 @@
-# src/err/tester/deletion/token/deletion/exception.py
+# src/err/tester/request/deletion/token/exception.py
 
 """
-Module: err.tester.stack.token.deletion.exception
+Module: err.tester.request.deletion.token.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,7 +10,7 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import TesterException
+from err.tester import DeletionRequestTesterException
 from result import MethodResultType
 
 
@@ -21,7 +21,7 @@ __all__ = [
 ]
 
 # ======================# TOKEN_DELETION_TESTER_FAILURE #======================#
-class TokenDeletionRequestTesterException(TesterException):
+class TokenDeletionRequestTesterException(DeletionRequestTesterException):
     """
     Role:
         -   Error Tracing

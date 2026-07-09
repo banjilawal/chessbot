@@ -1,7 +1,7 @@
-# src/err/validation/register/operand/exception.py
+# src/err/microservice/register/operand/exception.py
 
 """
-Module: err.validation.register.operand.exception
+Module: err.microservice.register.operand.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import VectorOperandRegisterValidatorException
+from err import VectorOperandRegisterMicroserviceException
 from result import MethodResultType
 
 __all__ = [
@@ -20,7 +20,7 @@ __all__ = [
 ]
 
 # ======================# VECTOR_OPERAND_REGISTER_MISMATCH_ERROR #======================#
-class VectorOperandRegisterMismatchException(VectorOperandRegisterValidatorException):
+class VectorOperandRegisterMismatchException(VectorOperandRegisterMicroserviceException):
     """
     Role:
         -   Error Tracing
@@ -41,7 +41,7 @@ class VectorOperandRegisterMismatchException(VectorOperandRegisterValidatorExcep
     Provides:
 
     Super Class:
-        VectorOperandRegisterValidatorException
+        VectorOperandRegisterMicroserviceException
     """
     MSG = "VectorOperandRegister slots cannot hold different types."
     ERR_CODE = "VECTOR_OPERAND_REGISTER_MISMATCH_ERROR"

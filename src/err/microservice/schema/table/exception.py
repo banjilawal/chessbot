@@ -1,7 +1,7 @@
-# src/err/validation/schema/table/exception.py
+# src/err/microservice/schema/table/exception.py
 
 """
-Module: err.validation.schema.table.exception
+Module: err.microservice.schema.table.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,22 +10,22 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import ValidatorException
+from err import MicroserviceException
 from result import MethodResultType
 
 __all__ = [
-    # ======================# SCHEMA_VALIDATION_VALIDATOR_FAILURE #======================#
-    "SchemaHashtableValidatorException",
+    # ======================# SCHEMA_MICROSERVICE_MICROSERVICE_FAILURE #======================#
+    "SchemaHashtableMicroserviceException",
 ]
 
-# ======================# SCHEMA_VALIDATION_VALIDATOR_FAILURE #======================#
-class SchemaHashtableValidatorException(ValidatorException):
+# ======================# SCHEMA_MICROSERVICE_MICROSERVICE_FAILURE #======================#
+class SchemaHashtableMicroserviceException(MicroserviceException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a candidate did not pass a SchemaDictValidator test.
+        1.  Indicate that a candidate did not pass a SchemaDictMicroservice failed.
 
     Attributes:
         msg: Optional[str]
@@ -40,10 +40,10 @@ class SchemaHashtableValidatorException(ValidatorException):
     Provides:
 
     Super Class:
-        ValidatorException
+        MicroserviceException
     """
-    MSG = "Candidate did not pass a SchemaDictValidator test."
-    ERR_CODE = "SCHEMA_VALIDATION_VALIDATOR_FAILURE"
+    MSG = "SchemaDictMicroservice failure."
+    ERR_CODE = "SCHEMA_MICROSERVICE_MICROSERVICE_FAILURE"
     
     def __init__(
             self,

@@ -15,3 +15,4 @@ from .id import *
 from .rank import *
 
 # Modules
+from .extractor import Extractor

@@ -1,7 +1,7 @@
-# src/err/validation/player/exception.py
+# src/err/microservice/player/exception.py
 
 """
-Module: err.validation.player.exception
+Module: err.microservice.player.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,22 +10,22 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import ValidatorException
+from err import MicroserviceException
 from result import MethodResultType
 
 __all__ = [
-    # ======================# PLAYER_VALIDATOR_FAILURE #======================#
-    "PlayerValidatorException",
+    # ======================# PLAYER_MICROSERVICE_FAILURE #======================#
+    "PlayerMicroserviceException",
 ]
 
-# ======================# PLAYER_VALIDATOR_FAILURE #======================#
-class PlayerValidatorException(ValidatorException):
+# ======================# PLAYER_MICROSERVICE_FAILURE #======================#
+class PlayerMicroserviceException(MicroserviceException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a candidate did not pass a PlayerValidator test.
+        1.  Indicate that a candidate did not pass a PlayerMicroservice failed.
 
     Attributes:
         msg: Optional[str]
@@ -40,10 +40,10 @@ class PlayerValidatorException(ValidatorException):
     Provides:
 
     Super Class:
-        ValidatorException
+        MicroserviceException
     """
-    MSG = "Candidate did not pass a PlayerValidator test."
-    ERR_CODE = "PLAYER_VALIDATOR_FAILURE"
+    MSG = "PlayerMicroservice failure."
+    ERR_CODE = "PLAYER_MICROSERVICE_FAILURE"
     
     def __init__(
             self,

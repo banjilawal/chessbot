@@ -25,38 +25,38 @@ class PromotionRequest(Request):
      Attributes:
          id: int
          pawn: PawnToken
-         promoted_rank: Rank
+         promotion_level: Rank
 
      Provides:
-        -   def request(id: int, pawn: PawnToken, promoted_rank: Rank) -> PromotionRequest:
+        -   def request(id: int, pawn: PawnToken, promotion_level: Rank) -> PromotionRequest:
 
      Super Class:
         Request
      """
-    _pawn: PawnToken
-    _promoted_rank: Rank
+    _candidate: PawnToken
+    _promotion_level: Rank
     
-    def __init__(self, id: int, pawn: PawnToken, promoted_rank: Rank):
+    def __init__(self, id: int, candidate: PawnToken, promotion_level: Rank):
         """
          Args:
             id: int
-            pawn: PawnToken,
-            promoted_rank: Rank
+            candidate: PawnToken,
+            promotion_level: Rank
         """
         super().__init__(id=id)
-        self._pawn = pawn
-        self._promoted_rank = promoted_rank
+        self._candidate = candidate
+        self._promotion_level = promotion_level
         
     
     @property
     def candidate(self) -> PawnToken:
-        return self._pawn
+        return self._candidate
     
     @property
     def rank_level(self) -> Rank:
-        return self._promoted_rank
+        return self._promotion_level
 
     
     @classmethod
-    def request(cls, id: int, pawn: PawnToken, promoted_rank: Rank) -> PromotionRequest:
-        return cls(id=id, pawn=pawn, promoted_rank=promoted_rank)
+    def request(cls, id: int, candidate: PawnToken, promotion_level: Rank) -> PromotionRequest:
+        return cls(id=id, candidate=candidate, promotion_level=promotion_level)

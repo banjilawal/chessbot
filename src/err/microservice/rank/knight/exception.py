@@ -1,7 +1,7 @@
-# src/err/validation/rank/knight/exception.py
+# src/err/microservice/rank/knight/exception.py
 
 """
-Module: err.validation.rank.knight.exception
+Module: err.microservice.rank.knight.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,21 +10,21 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import RankValidatorException
+from err import RankMicroserviceException
 
 __all__ = [
-    # ======================# KNIGHT_VALIDATOR_FAILURE #======================#
-    "KnightValidatorException",
+    # ======================# KNIGHT_MICROSERVICE_FAILURE #======================#
+    "KnightMicroserviceException",
 ]
 
-# ======================# KNIGHT_VALIDATOR_FAILURE #======================#
-class KnightValidatorException(RankValidatorException):
+# ======================# KNIGHT_MICROSERVICE_FAILURE #======================#
+class KnightMicroserviceException(RankMicroserviceException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a candidate did not pass a Knight validator test.
+        1.  Indicate that a candidate did not pass a Knight microservice failed.
 
     Attributes:
         msg: Optional[str]
@@ -39,10 +39,10 @@ class KnightValidatorException(RankValidatorException):
     Provides:
 
     Super Class:
-        RankValidatorException
+        RankMicroserviceException
     """
-    MSG = "Candidate did not pass a Knight validator test."
-    ERR_CODE = "KNIGHT_VALIDATOR_FAILURE"
+    MSG = "Knight microservice failure."
+    ERR_CODE = "KNIGHT_MICROSERVICE_FAILURE"
     
     def __init__(
             self,
