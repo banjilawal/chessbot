@@ -9,6 +9,7 @@ version: 1.0.1
 
 from __future__ import annotations
 from dataclasses import dataclass
+from typing import Type
 
 from err import ScalarNullException
 from model import Blueprint, Scalar
@@ -32,5 +33,6 @@ class ScalarBlueprint(Blueprint[Scalar]):
         Blueprint
      """
     magnitude: int
-    model_type: Scalar = Scalar
     null_exception: ScalarNullException = ScalarNullException()
+    owner: Scalar = Type[Scalar]
+    owner_name: str = type(owner).__name__

@@ -9,7 +9,7 @@ version: 1.0.1
 
 from __future__ import annotations
 from dataclasses import dataclass
-from typing import Optional
+from typing import Optional, Type
 
 from blueprint import Blueprint
 from err import ManeuverNullException
@@ -41,4 +41,5 @@ class ManeuverBlueprint(Blueprint[Maneuver]):
     token: Token
     id: Optional[int] | None = None
     null_exception: ManeuverNullException = ManeuverNullException()
-    model_type: Maneuver = Maneuver
+    owner: Maneuver = Type[Maneuver]
+    owner_name: str = type(owner).__name__

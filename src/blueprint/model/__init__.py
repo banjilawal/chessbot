@@ -14,6 +14,7 @@ from .arena import *
 from .binder import *
 from .board import *
 from .coord import *
+from .edge import *
 from .itenerary import *
 from .maneuver import *
 from .node import *

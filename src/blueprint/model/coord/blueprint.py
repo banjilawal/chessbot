@@ -9,6 +9,7 @@ version: 1.0.1
 
 from __future__ import annotations
 from dataclasses import dataclass
+from typing import Type
 
 from blueprint import Blueprint
 from err import CoordNullException
@@ -35,3 +36,6 @@ class CoordBlueprint(Blueprint[Coord]):
      """
     row: int
     column: int
+    null_exception: CoordNullException = CoordNullException()
+    owner: Coord = Type[Coord]
+    owner_name: str = type(owner).__name__

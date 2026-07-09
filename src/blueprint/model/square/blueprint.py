@@ -10,10 +10,13 @@ version: 1.0.1
 from __future__ import annotations
 
 from dataclasses import dataclass
-from typing import Optional
+from typing import Optional, Type
 
+from blueprint import Blueprint
 from err import SquareNullException
-from model import Blueprint, Board, Coord, Formation, Square
+from model import Board, Coord, Square
+from schema import Formation
+
 
 @dataclass
 class SquareBlueprint(Blueprint[Square]):
@@ -38,10 +41,22 @@ class SquareBlueprint(Blueprint[Square]):
      Super Class:
         Blueprint
      """
+    """
+    Args:
+        name: str
+        board: Board
+        coord: Coord
+        id: Optional[int]
+        formation: Optional[Formation]
+        null_exception: SquareNullException
+        owner: Square
+        owner_name: str
+    """
     name: str
     board: Board
     coord: Coord
     id: Optional[int] | None = None
     formation: Optional[Formation] | None = None
     null_exception: SquareNullException = SquareNullException()
-    model_type: Square = Square
+    owner: Square = Type[Square]
+    owner_name: str = type(owner).__name__

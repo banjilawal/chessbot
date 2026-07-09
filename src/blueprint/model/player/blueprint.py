@@ -9,10 +9,11 @@ version: 1.0.1
 
 from __future__ import annotations
 from dataclasses import dataclass
-from typing import Optional
+from typing import Optional, Type
 
 from blueprint import Blueprint
 from engine import Engine
+from err import PlayerNullException
 from model import Player
 
 
@@ -39,3 +40,6 @@ class PlayerBlueprint(Blueprint[Player]):
     name: Optional[str] = None
     engine: Optional[Engine] = None
     id: Optional[int] = None
+    null_exception: PlayerNullException = PlayerNullException()
+    owner: Player = Type[Player]
+    owner_name: str = type(owner).__name__

@@ -9,7 +9,7 @@ version: 1.0.1
 
 from __future__ import annotations
 from dataclasses import dataclass
-from typing import Optional
+from typing import Optional, Type
 
 from blueprint import Blueprint
 from err import BoardNullException
@@ -37,6 +37,8 @@ class BoardBlueprint(Blueprint[Board]):
     """
     arena: Arena
     id: Optional[int] = None
-
+    null_exception: BoardNullException = BoardNullException()
+    owner: Board = Type[Board]
+    owner_name: str = type(owner).__name__
     
 

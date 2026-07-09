@@ -9,9 +9,10 @@ version: 1.0.1
 
 from __future__ import annotations
 from dataclasses import dataclass
-from typing import Optional
+from typing import Optional, Type
 
 from blueprint import Blueprint
+from err import NodeNullException
 from model import Node, Square
 
 @dataclass
@@ -34,7 +35,20 @@ class NodeBlueprint(Blueprint[Node]):
      Super Class:
         Blueprint
      """
+    """
+    Args:
+        priority: int
+        square: Square
+        predecessor: Optional[Node]
+        id: Optional[int]
+        null_exception: NodeNullException
+        owner: Node
+        owner_name: str
+    """
     priority: int
     square: Square
     predecessor: Optional[Node]
     id: Optional[int] | None = None
+    null_exception: NodeNullException = NodeNullException()
+    owner: Node = Type[Node]
+    owner_name: str = type(owner).__name__

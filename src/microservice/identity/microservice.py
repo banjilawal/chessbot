@@ -12,7 +12,7 @@ import sys
 from typing import Any, Dict, cast
 
 from blueprint import Blueprint
-from err import IdentityServiceException
+from err import IdentityServiceException, IdentityValidatorException
 from result import ValidationResult
 from tester import BlueprintIdExtractor
 from util import IdFactory, LoggingLevelRouter
@@ -114,9 +114,9 @@ class IdentityService:
         # Handle the case that, the class_name is flagged unsafe.
         validation_result = self._blueprint_id_extractor.execute(
             blueprint=model_blueprint,
-            mol
+            model_name=model_name,
         )
-        if not class_name_validation_result.is_failure:
+        if validation_result.is_failure:
             # Send the exception chain in the result.
             return ValidationResult.failure(
                 IdentityServiceException(
@@ -127,25 +127,8 @@ class IdentityService:
                     ex=validation_result.exception
                 )
             )
-        if id is not None:
-            # Handle the case that, the id is flagged unsafe.
-            id_validation_result = self._number_validator.execute(id)
-            if not id_validation_result.is_failure:
-                # Send the exception chain on failure.
-                ValidationResult.failure(
-                    IdentityValidatorException(
-                        cls_mthd=method,
-                        cls_name=self.__class__.__name__,
-                        msg=IdentityValidatorException.MSG,
-                        err_code=IdentityValidatorException.ERR_CODE,
-                        ex=id_validation_result.exception
-                    )
-                )
-            # --- Otherwise, directly forward the work product. ---#
-            return id_validation_result
-        
-        # --- If the id was null create a new id then, forward as the work product. ---#
-        return ValidationResult.success(IdFactory.next_id(class_name=model_name))
+        # --- Otherwise, directly forward the work product. ---#
+        return validation_result
 
         
     @LoggingLevelRouter.monitor

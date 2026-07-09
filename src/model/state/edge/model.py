@@ -9,6 +9,8 @@ version: 1.0.1
 
 from __future__ import annotations
 
+from typing import Optional
+
 from model import Node
 
 
@@ -16,9 +18,10 @@ class Edge:
     _label: int
     _head: Node
     _tail: Node
-    _weight: int
     _distance: int
-    _heuristic: int
+    _weight: Optional[int]
+    _heuristic: Optional[int]
+    
     
     def __init__(
             self,
@@ -26,14 +29,24 @@ class Edge:
             head: Node,
             tail: Node,
             distance: int,
-            heuristic: int
+            weight: Optional[int] | None = None,
+            heuristic: Optional[int] | None = None,
     ):
+        """
+        Args:
+            label: int
+            head: Node
+            tail: Node
+            distance: int
+            weight: Optional[int]
+            heuristic: Optional[int]
+        """
         self._label = label
         self._head = head
         self._tail = tail
         self._distance = distance
+        self._weight = weight
         self._heuristic = heuristic
-        self._weight = distance + heuristic
         
     @property
     def label(self) -> int:
@@ -52,7 +65,7 @@ class Edge:
         return self._distance
     
     @property
-    def heuristic(self) -> int:
+    def heuristic(self) -> Optional[int]:
         return self._heuristic
     
     @heuristic.setter

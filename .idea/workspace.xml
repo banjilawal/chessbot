@@ -5,186 +5,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bootstrapper/permitter/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/bootstrapper/permitter/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bootstrapper/permitter/promotion/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/bootstrapper/permitter/promotion/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bootstrapper/permitter/promotion/bootstrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/bootstrapper/permitter/promotion/bootstrapper.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/builder/rank/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/builder/rank/builder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/microservice/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/microservice/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/microservice/arena/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/microservice/arena/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/microservice/arena/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/microservice/arena/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/microservice/binder/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/microservice/binder/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/microservice/binder/arena/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/microservice/binder/arena/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/microservice/binder/arena/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/microservice/binder/arena/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/microservice/binder/board/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/microservice/binder/board/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/microservice/binder/board/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/microservice/binder/board/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/microservice/binder/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/microservice/binder/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/microservice/board/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/microservice/board/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/microservice/board/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/microservice/board/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/microservice/coord/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/microservice/coord/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/microservice/coord/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/microservice/coord/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/microservice/edge/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/microservice/edge/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/microservice/edge/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/microservice/edge/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/microservice/endpoint/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/microservice/endpoint/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/microservice/endpoint/destination/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/microservice/endpoint/destination/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/microservice/endpoint/destination/circular/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/microservice/endpoint/destination/circular/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/microservice/endpoint/destination/circular/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/microservice/endpoint/destination/circular/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/microservice/endpoint/destination/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/microservice/endpoint/destination/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/microservice/endpoint/destination/partial/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/microservice/endpoint/destination/partial/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/microservice/endpoint/destination/partial/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/microservice/endpoint/destination/partial/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/microservice/endpoint/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/microservice/endpoint/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/microservice/endpoint/origin/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/microservice/endpoint/origin/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/microservice/endpoint/origin/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/microservice/endpoint/origin/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/microservice/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/microservice/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/microservice/formation/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/microservice/formation/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/microservice/formation/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/microservice/formation/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/microservice/game/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/microservice/game/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/microservice/game/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/microservice/game/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/microservice/hostage/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/microservice/hostage/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/microservice/hostage/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/microservice/hostage/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/microservice/identity/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/microservice/identity/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/microservice/identity/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/microservice/identity/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/microservice/itinerary/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/microservice/itinerary/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/microservice/itinerary/binding/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/microservice/itinerary/binding/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/microservice/itinerary/binding/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/microservice/itinerary/binding/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/microservice/itinerary/binding/null/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/microservice/itinerary/binding/null/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/microservice/itinerary/binding/null/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/microservice/itinerary/binding/null/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/microservice/itinerary/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/microservice/itinerary/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/microservice/itinerary/same/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/microservice/itinerary/same/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/microservice/itinerary/same/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/microservice/itinerary/same/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/microservice/maneuver/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/microservice/maneuver/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/microservice/maneuver/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/microservice/maneuver/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/microservice/node/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/microservice/node/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/microservice/node/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/microservice/node/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/microservice/number/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/microservice/number/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/microservice/number/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/microservice/number/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/microservice/operand/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/microservice/operand/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/microservice/operand/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/microservice/operand/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/microservice/path/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/microservice/path/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/microservice/path/attack/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/microservice/path/attack/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/microservice/path/attack/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/microservice/path/attack/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/microservice/path/blocked/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/microservice/path/blocked/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/microservice/path/blocked/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/microservice/path/blocked/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/microservice/path/checked/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/microservice/path/checked/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/microservice/path/checked/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/microservice/path/checked/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/microservice/path/combatant/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/microservice/path/combatant/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/microservice/path/combatant/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/microservice/path/combatant/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/microservice/path/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/microservice/path/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/microservice/path/king/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/microservice/path/king/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/microservice/path/king/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/microservice/path/king/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/microservice/persona/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/microservice/persona/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/microservice/persona/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/microservice/persona/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/microservice/player/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/microservice/player/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/microservice/player/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/microservice/player/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/microservice/query/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/microservice/query/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/microservice/query/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/microservice/query/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/microservice/query/token/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/microservice/query/token/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/microservice/query/token/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/microservice/query/token/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/microservice/rank/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/microservice/rank/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/microservice/rank/bishop/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/microservice/rank/bishop/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/microservice/rank/bishop/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/microservice/rank/bishop/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/microservice/rank/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/microservice/rank/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/microservice/rank/king/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/microservice/rank/king/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/microservice/rank/king/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/microservice/rank/king/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/microservice/rank/knight/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/microservice/rank/knight/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/microservice/rank/knight/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/microservice/rank/knight/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/microservice/rank/pawn/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/microservice/rank/pawn/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/microservice/rank/pawn/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/microservice/rank/pawn/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/microservice/rank/queen/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/microservice/rank/queen/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/microservice/rank/queen/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/microservice/rank/queen/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/microservice/rank/rook/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/microservice/rank/rook/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/microservice/rank/rook/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/microservice/rank/rook/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/microservice/register/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/microservice/register/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/microservice/register/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/microservice/register/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/microservice/register/operand/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/microservice/register/operand/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/microservice/register/operand/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/microservice/register/operand/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/microservice/register/operand/mismatch/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/microservice/register/operand/mismatch/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/microservice/register/operand/mismatch/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/microservice/register/operand/mismatch/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/microservice/register/square/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/microservice/register/square/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/microservice/register/square/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/microservice/register/square/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/microservice/scalar/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/microservice/scalar/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/microservice/scalar/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/microservice/scalar/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/microservice/schema/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/microservice/schema/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/microservice/schema/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/microservice/schema/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/microservice/schema/table/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/microservice/schema/table/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/microservice/schema/table/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/microservice/schema/table/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/microservice/square/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/microservice/square/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/microservice/square/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/microservice/square/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/microservice/string/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/microservice/string/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/microservice/string/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/microservice/string/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/microservice/string/name/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/microservice/string/name/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/microservice/string/name/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/microservice/string/name/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/microservice/string/registry/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/microservice/string/registry/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/microservice/string/registry/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/microservice/string/registry/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/microservice/team/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/microservice/team/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/microservice/team/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/microservice/team/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/microservice/token/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/microservice/token/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/microservice/token/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/microservice/token/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/microservice/vector/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/microservice/vector/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/microservice/vector/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/microservice/vector/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/microservice/vector/register/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/microservice/vector/register/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/microservice/vector/register/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/microservice/vector/register/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/tester/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/tester/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/tester/promotion/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/tester/promotion/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/tester/promotion/pawn/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/tester/promotion/pawn/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/tester/promotion/rank/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/tester/promotion/rank/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/tester/request/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/tester/request/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/tester/request/deletion/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/tester/request/deletion/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/tester/request/deletion/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/tester/request/deletion/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/tester/request/deletion/token/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/tester/request/deletion/token/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/tester/request/deletion/token/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/tester/request/deletion/token/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/tester/request/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/tester/request/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/tester/request/maneuver/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/tester/request/maneuver/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/tester/request/maneuver/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/tester/request/maneuver/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/tester/request/maneuver/token/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/tester/request/maneuver/token/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/tester/request/pop/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/tester/request/pop/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/tester/request/pop/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/tester/request/pop/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/tester/request/pop/token/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/tester/request/pop/token/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/tester/request/pop/token/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/tester/request/pop/token/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/tester/request/promotion/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/tester/request/promotion/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/tester/request/promotion/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/tester/request/promotion/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/tester/request/push/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/tester/request/push/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/tester/request/push/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/tester/request/push/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/tester/request/push/token/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/tester/request/push/token/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/tester/request/push/token/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/tester/request/push/token/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/tester/request/search/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/tester/request/search/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/tester/request/search/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/tester/request/search/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/tester/request/search/token/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/tester/request/search/token/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/tester/request/search/token/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/tester/request/search/token/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/microservice/identity/microservice.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/microservice/identity/microservice.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/permitter/promotion/permitter.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/permitter/promotion/permitter.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/request/promotion/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/request/promotion/request.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tester/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/tester/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tester/extractor/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/tester/extractor/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tester/extractor/extractor.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/tester/extractor/extractor.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tester/extractor/id/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/tester/extractor/id/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tester/extractor/rank/extractor.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/tester/extractor/rank/extractor.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tester/promotion/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/tester/promotion/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tester/promotion/pawn/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/tester/promotion/pawn/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tester/promotion/pawn/tester.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/tester/promotion/pawn/tester.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tester/promotion/rank/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/tester/promotion/rank/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tester/promotion/rank/tester.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/tester/promotion/rank/tester.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tester/request/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/tester/request/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tester/request/deletion/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/tester/request/deletion/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tester/request/deletion/tester.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/tester/request/deletion/tester.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tester/request/deletion/token/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/tester/request/deletion/token/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tester/request/deletion/token/tester.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/tester/request/deletion/token/tester.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tester/request/pop/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/tester/request/pop/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tester/request/pop/tester.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/tester/request/pop/tester.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tester/request/pop/token/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/tester/request/pop/token/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tester/request/pop/token/tester.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/tester/request/pop/token/tester.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tester/request/promotion/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/tester/request/promotion/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tester/request/promotion/tester.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/tester/request/promotion/tester.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tester/request/push/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/tester/request/push/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tester/request/push/tester.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/tester/request/push/tester.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tester/request/push/token/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/tester/request/push/token/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tester/request/push/token/tester.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/tester/request/push/token/tester.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tester/request/search/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/tester/request/search/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tester/request/search/tester.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/tester/request/search/tester.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tester/request/search/token/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/tester/request/search/token/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tester/request/search/token/tester.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/tester/request/search/token/tester.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tester/tester.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/tester/tester.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/blueprint/model/edge/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/blueprint/model/edge/blueprint.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/blueprint/blueprint.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/blueprint/blueprint.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/blueprint/model/arena/bluelprint.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/blueprint/model/arena/bluelprint.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/blueprint/model/board/blueprint.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/blueprint/model/board/blueprint.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/blueprint/model/coord/blueprint.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/blueprint/model/coord/blueprint.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/blueprint/model/maneuver/blueprint.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/blueprint/model/maneuver/blueprint.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/blueprint/model/node/blueprint.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/blueprint/model/node/blueprint.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/blueprint/model/player/blueprint.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/blueprint/model/player/blueprint.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/blueprint/model/rank/blueprint.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/blueprint/model/rank/blueprint.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/blueprint/model/scalar/blueprint.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/blueprint/model/scalar/blueprint.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/blueprint/model/square/blueprint.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/blueprint/model/square/blueprint.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/blueprint/model/team/blueprint.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/blueprint/model/team/blueprint.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/blueprint/model/token/blueprint.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/blueprint/model/token/blueprint.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/blueprint/model/vector/blueprint.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/blueprint/model/vector/blueprint.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -238,7 +73,7 @@
     "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/err/tester/request/search",
+    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/blueprint/model",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
@@ -250,11 +85,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/blueprint/model" />
       <recent name="$PROJECT_DIR$/src/err/tester/request/search" />
       <recent name="$PROJECT_DIR$/src/err/tester/request/push" />
       <recent name="$PROJECT_DIR$/src/err/tester/request/pop" />
       <recent name="$PROJECT_DIR$/src/err/tester/request/maneuver" />
-      <recent name="$PROJECT_DIR$/src/err/tester/request/deletion" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/err/tester/request/deletion/token" />
@@ -988,7 +823,7 @@
       <workItem from="1782325486599" duration="56546000" />
       <workItem from="1782732939190" duration="235900000" />
       <workItem from="1783222430394" duration="208582000" />
-      <workItem from="1783540905722" duration="28804000" />
+      <workItem from="1783540905722" duration="32131000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />

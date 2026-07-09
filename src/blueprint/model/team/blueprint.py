@@ -10,7 +10,7 @@ version: 1.0.1
 from __future__ import annotations
 
 from dataclasses import dataclass
-from typing import Optional
+from typing import Optional, Type
 
 from blueprint import Blueprint
 from model import Board, Player, Schema, Team
@@ -38,9 +38,20 @@ class TeamBlueprint(Blueprint[Team]):
      Super Class:
         Blueprint
      """
+    """
+    Args:
+        owner: Player
+        board: Board
+        schema: Schema
+        id: Optional[int]
+        owner: Team
+        owner_name: str
+    """
     owner: Player
     board: Board
     schema: Schema
     id: Optional[int] | None = None
+    owner: Team = Type[Team]
+    owner_name: str = type(owner).__name__
     
 

@@ -10,8 +10,10 @@ version: 1.0.1
 from __future__ import annotations
 
 from dataclasses import dataclass
+from typing import Type
 
 from blueprint import Blueprint
+from err import VectorNullException
 from model import Vector
 
 
@@ -35,5 +37,16 @@ class VectorBlueprint(Blueprint[Vector]):
      Super Class:
         Blueprint
      """
+    """
+    Args:
+        x: int
+        y: int
+        null_exception: VectorNullException
+        owner: Vector
+        owner_name: str
+    """
     x: int
     y: int
+    null_exception: VectorNullException = VectorNullException()
+    owner: Vector = Type[Vector]
+    owner_name: str = type(owner).__name__
