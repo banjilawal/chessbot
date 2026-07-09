@@ -11,22 +11,22 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import ValidatorException
+from err import RegisterCertifierException
 from result import MethodResultType
 
 __all__ = [
-    # ======================# VECTOR_OPERAND_REGISTER_FAILURE #======================#
-    "VectorOperandBlueprintException",
+    # ======================# VECTOR_OPERAND_REGISTER_VALIDATOR_FAILURE #======================#
+    "VectorOperandRegisterCertifierException",
 ]
 
-# ======================# VECTOR_OPERAND_REGISTER_FAILURE #======================#
-class VectorOperandBlueprintException(ValidatorException):
+# ======================# VECTOR_OPERAND_REGISTER_VALIDATOR_FAILURE #======================#
+class VectorOperandRegisterCertifierException(RegisterCertifierException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a VectorOperandRegister failed.
+        1.  Indicate that a VectorOperandRegisterCertifier failed.
 
     Attributes:
             msg: Optional[str]
@@ -41,10 +41,10 @@ class VectorOperandBlueprintException(ValidatorException):
     Provides:
 
     Super Class:
-        ValidatorException
+        RegisterCertifierException
     """
-    MSG = "VectorOperandRegister failure."
-    ERR_CODE = "VECTOR_OPERAND_REGISTER_FAILURE"
+    MSG = "VectorOperandRegisterCertifier failure."
+    ERR_CODE = "VECTOR_OPERAND_REGISTER_VALIDATOR_FAILURE"
     
     def __init__(
             self,

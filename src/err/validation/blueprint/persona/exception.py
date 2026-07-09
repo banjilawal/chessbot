@@ -10,22 +10,22 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import BlueprintValidatorException
+from err import CertifierException
 from result import MethodResultType
 
 __all__ = [
     # ======================# PERSONA_BLUEPRINT_VALIDATOR_FAILURE #======================#
-    "PersonaBlueprintValidatorException",
+    "PersonaCertifierException",
 ]
 
 # ======================# PERSONA_BLUEPRINT_VALIDATOR_FAILURE #======================#
-class PersonaBlueprintValidatorException(BlueprintValidatorException):
+class PersonaCertifierException(CertifierException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a candidate did not pass a PersonaBlueprintValidator test.
+        1.  Indicate that a candidate did not pass a PersonaCertifier test.
 
     Attributes:
             msg: Optional[str]
@@ -40,9 +40,9 @@ class PersonaBlueprintValidatorException(BlueprintValidatorException):
     Provides:
 
     Super Class:
-        BlueprintValidatorException
+        CertifierException
     """
-    MSG = "Candidate did not pass a PersonaBlueprintValidator test."
+    MSG = "Candidate did not pass a PersonaCertifier test."
     ERR_CODE = "PERSONA_BLUEPRINT_VALIDATOR_FAILURE"
     
     def __init__(

@@ -24,7 +24,7 @@ class ZeroEdgeBlueprintFlagsException(ZeroBlueprintFlagsException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicates that no EdgeBlueprintValidator test. enabled.
+        1.  Indicates that no EdgeCertifier test. enabled.
 
     Attributes:
         msg: Optional[str]
@@ -40,7 +40,7 @@ class ZeroEdgeBlueprintFlagsException(ZeroBlueprintFlagsException):
     Super Class:
         ZeroBlueprintFlagsException
     """
-    MSG = "Candidate did not pass a No EdgeCBlueprintValidator test. enabled."
+    MSG = "Candidate did not pass a No EdgeCCertifier test. enabled."
     ERR_CODE = "ZERO_EDGE_BLUEPRINT_FLAGS_FAILURE"
     
     def __init__(

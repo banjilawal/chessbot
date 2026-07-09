@@ -40,7 +40,7 @@ class ExcessNodeBlueprintFlagsException(ExcessBlueprintFlagsException):
     Super Class:
         ExcessBlueprintFlagsException
     """
-    MSG = "Candidate did not pass a More than one NodeCBlueprintValidator test. enabled."
+    MSG = "Candidate did not pass a More than one NodeCCertifier test. enabled."
     ERR_CODE = "EXCESS_NODE_BLUEPRINT_FLAGS_FAILURE"
     
     def __init__(

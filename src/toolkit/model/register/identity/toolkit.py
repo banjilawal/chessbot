@@ -11,7 +11,8 @@ from __future__ import annotations
 
 from typing import Type
 
-from err import IdentityRegisterNullException
+from blueprint import IdentityRegisterBlueprint
+from err import IdentityRegisterBlueprintNullException, IdentityRegisterNullException
 from model import IdentityRegister
 from toolkit import RegisterToolkit
 from validator import NameValidator, NumberValidator
@@ -42,4 +43,6 @@ class IdentityRegisterToolkit(RegisterToolkit[IdentityRegister]):
     name_validator: NameValidator = NameValidator()
     null_exception = IdentityRegisterNullException = IdentityRegisterNullException()
     model: Type[IdentityRegister]
+    blueprint_model = Type[IdentityRegisterBlueprint]
+    blueprint_null_exception = IdentityRegisterBlueprintNullException()
     

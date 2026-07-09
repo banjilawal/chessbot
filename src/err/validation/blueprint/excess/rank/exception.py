@@ -40,7 +40,7 @@ class ExcessRankBlueprintFlagsException(ExcessBlueprintFlagsException):
     Super Class:
         ExcessBlueprintFlagsException
     """
-    MSG = "Candidate did not pass a More than one RankCBlueprintValidator test. enabled."
+    MSG = "Candidate did not pass a More than one RankCCertifier test. enabled."
     ERR_CODE = "EXCESS_RANK_BLUEPRINT_FLAGS_FAILURE"
     
     def __init__(

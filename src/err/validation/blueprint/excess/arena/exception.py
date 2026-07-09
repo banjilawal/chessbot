@@ -40,7 +40,7 @@ class ExcessArenaBlueprintFlagsException(ExcessBlueprintFlagsException):
     Super Class:
         ExcessBlueprintFlagsException
     """
-    MSG = "Candidate did not pass a More than one ArenaCBlueprintValidator test. enabled."
+    MSG = "Candidate did not pass a More than one ArenaCCertifier test. enabled."
     ERR_CODE = "EXCESS_ARENA_BLUEPRINT_FLAGS_FAILURE"
     
     def __init__(

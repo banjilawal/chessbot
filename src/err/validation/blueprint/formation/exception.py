@@ -8,22 +8,22 @@ version: 1.0.1
 """
 
 from __future__ import annotations
-from err import BlueprintValidatorException
+from err import CertifierException
 from result import MethodResultType
 
 __all__ = [
     # ======================# FORMATION_BLUEPRINT_VALIDATOR_FAILURE #======================#
-    "FormationBlueprintValidatorException",
+    "FormationCertifierException",
 ]
 
 # ======================# FORMATION_BLUEPRINT_VALIDATOR_FAILURE #======================#
-class FormationBlueprintValidatorException(BlueprintValidatorException):
+class FormationCertifierException(CertifierException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a candidate did not pass a FormationBlueprintValidator test.
+        1.  Indicate that a candidate did not pass a FormationCertifier test.
 
     Attributes:
             msg: Optional[str]
@@ -38,9 +38,9 @@ class FormationBlueprintValidatorException(BlueprintValidatorException):
     Provides:
 
     Super Class:
-        BlueprintValidatorException
+        CertifierException
     """
-    MSG = "Candidate did not pass a FormationBlueprintValidator test."
+    MSG = "Candidate did not pass a FormationCertifier test."
     ERR_CODE = "FORMATION_BLUEPRINT_VALIDATOR_FAILURE"
     
     def __init__(

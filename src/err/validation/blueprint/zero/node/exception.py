@@ -24,7 +24,7 @@ class ZeroNodeBlueprintFlagsException(ZeroBlueprintFlagsException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicates that no NodeBlueprintValidator test. enabled.
+        1.  Indicates that no NodeCertifier test. enabled.
 
     Attributes:
         msg: Optional[str]
@@ -40,7 +40,7 @@ class ZeroNodeBlueprintFlagsException(ZeroBlueprintFlagsException):
     Super Class:
         ZeroBlueprintFlagsException
     """
-    MSG = "Candidate did not pass a No NodeCBlueprintValidator test. enabled."
+    MSG = "Candidate did not pass a No NodeCCertifier test. enabled."
     ERR_CODE = "ZERO_NODE_BLUEPRINT_FLAGS_FAILURE"
     
     def __init__(

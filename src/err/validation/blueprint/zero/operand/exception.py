@@ -40,7 +40,7 @@ class ZeroVectorOperandFlagsException(ZeroBlueprintFlagsException):
     Super Class:
         ZeroBlueprintFlagsException
     """
-    MSG = "Candidate did not pass a No NodeCBlueprintValidator test. enabled."
+    MSG = "Candidate did not pass a No NodeCCertifier test. enabled."
     ERR_CODE = "ZERO_VECTOR_OPERAND_FLAGS_FAILURE"
     
     def __init__(

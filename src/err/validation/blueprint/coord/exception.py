@@ -8,22 +8,22 @@ version: 1.0.1
 """
 
 from __future__ import annotations
-from err import BlueprintValidatorException
+from err import CertifierException
 from result import MethodResultType
 
 __all__ = [
     # ======================# COORD_BLUEPRINT_VALIDATOR_FAILURE #======================#
-    "CoordBlueprintValidatorException",
+    "CoordCertifierException",
 ]
 
 # ======================# COORD_BLUEPRINT_VALIDATOR_FAILURE #======================#
-class CoordBlueprintValidatorException(BlueprintValidatorException):
+class CoordCertifierException(CertifierException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a candidate did not pass a CoordBlueprintValidator test.
+        1.  Indicate that a candidate did not pass a CoordCertifier test.
 
     Attributes:
             msg: Optional[str]
@@ -38,9 +38,9 @@ class CoordBlueprintValidatorException(BlueprintValidatorException):
     Provides:
 
     Super Class:
-        BlueprintValidatorException
+        CertifierException
     """
-    MSG = "Candidate did not pass a CoordBlueprintValidator test."
+    MSG = "Candidate did not pass a CoordCertifier test."
     ERR_CODE = "COORD_BLUEPRINT_VALIDATOR_FAILURE"
     
     def __init__(

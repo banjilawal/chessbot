@@ -24,7 +24,7 @@ class ZeroArenaBlueprintFlagsException(ZeroBlueprintFlagsException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicates that no ArenaBlueprintValidator test. enabled.
+        1.  Indicates that no ArenaCertifier test. enabled.
 
     Attributes:
         msg: Optional[str]
@@ -40,7 +40,7 @@ class ZeroArenaBlueprintFlagsException(ZeroBlueprintFlagsException):
     Super Class:
         ZeroBlueprintFlagsException
     """
-    MSG = "Candidate did not pass a No ArenaCBlueprintValidator test. enabled."
+    MSG = "Candidate did not pass a No ArenaCCertifier test. enabled."
     ERR_CODE = "ZERO_ARENA_BLUEPRINT_FLAGS_FAILURE"
     
     def __init__(

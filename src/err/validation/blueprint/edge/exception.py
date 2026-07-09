@@ -8,22 +8,22 @@ version: 1.0.1
 """
 
 from __future__ import annotations
-from err import BlueprintValidatorException
+from err import CertifierException
 from result import MethodResultType
 
 __all__ = [
     # ======================# EDGE_BLUEPRINT_VALIDATOR_FAILURE #======================#
-    "EdgeBlueprintValidatorException",
+    "EdgeCertifierException",
 ]
 
 # ======================# EDGE_BLUEPRINT_VALIDATOR_FAILURE #======================#
-class EdgeBlueprintValidatorException(BlueprintValidatorException):
+class EdgeCertifierException(CertifierException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a candidate did not pass a EdgeBlueprintValidator test.
+        1.  Indicate that a candidate did not pass a EdgeCertifier test.
 
     Attributes:
             msg: Optional[str]
@@ -38,9 +38,9 @@ class EdgeBlueprintValidatorException(BlueprintValidatorException):
     Provides:
 
     Super Class:
-        BlueprintValidatorException
+        CertifierException
     """
-    MSG = "Candidate did not pass a EdgeBlueprintValidator test."
+    MSG = "Candidate did not pass a EdgeCertifier test."
     ERR_CODE = "EDGE_BLUEPRINT_VALIDATOR_FAILURE"
     
     def __init__(

@@ -12,14 +12,14 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Type
 
-from blueprint import Blueprint
+from blueprint import RegisterBlueprint
 from err import VectorOperandRegisterNullException
 from model import VectorOperand, VectorOperandRegister
 
 
 
 @dataclass
-class VectorOperandRegisterBlueprint(Blueprint[VectorOperandRegister]):
+class VectorOperandRegisterBlueprint(RegisterBlueprint[VectorOperandRegister]):
     """
     Role:
         -   Container
@@ -52,3 +52,6 @@ class VectorOperandRegisterBlueprint(Blueprint[VectorOperandRegister]):
     null_exception: VectorOperandRegisterNullException = VectorOperandRegisterNullException()
     owner: VectorOperandRegister = Type[VectorOperandRegister]
     owner_name: str = type(owner).__name__
+    
+    
+

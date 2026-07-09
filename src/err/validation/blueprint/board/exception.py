@@ -8,22 +8,22 @@ version: 1.0.1
 """
 
 from __future__ import annotations
-from err import BlueprintValidatorException
+from err import CertifierException
 from result import MethodResultType
 
 __all__ = [
     # ======================# BOARD_BLUEPRINT_VALIDATOR_FAILURE #======================#
-    "BoardBlueprintValidatorException",
+    "BoardCertifierException",
 ]
 
 # ======================# BOARD_BLUEPRINT_VALIDATOR_FAILURE #======================#
-class BoardBlueprintValidatorException(BlueprintValidatorException):
+class BoardCertifierException(CertifierException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a candidate did not pass a BoardBlueprintValidator test.
+        1.  Indicate that a candidate did not pass a BoardCertifier test.
 
     Attributes:
             msg: Optional[str]
@@ -38,9 +38,9 @@ class BoardBlueprintValidatorException(BlueprintValidatorException):
     Provides:
 
     Super Class:
-        BlueprintValidatorException
+        CertifierException
     """
-    MSG = "Candidate did not pass a BoardBlueprintValidator test."
+    MSG = "Candidate did not pass a BoardCertifier test."
     ERR_CODE = "BOARD_BLUEPRINT_VALIDATOR_FAILURE"
     
     def __init__(

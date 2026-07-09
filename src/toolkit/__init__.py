@@ -17,7 +17,7 @@ from .context import *
 from .graph import *
 from .math import *
 from .model import *
-from .operand import *
+from toolkit.register.operand import *
 from .endpoint import *
 from .permitter import *
 from .pipeline import *

@@ -24,7 +24,7 @@ class ZeroTokenBlueprintFlagsException(ZeroBlueprintFlagsException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicates that no TokenBlueprintValidator test. enabled.
+        1.  Indicates that no TokenCertifier test. enabled.
 
     Attributes:
         msg: Optional[str]
@@ -40,7 +40,7 @@ class ZeroTokenBlueprintFlagsException(ZeroBlueprintFlagsException):
     Super Class:
         ZeroBlueprintFlagsException
     """
-    MSG = "Candidate did not pass a No TokenCBlueprintValidator test. enabled."
+    MSG = "Candidate did not pass a No TokenCCertifier test. enabled."
     ERR_CODE = "ZERO_TOKEN_BLUEPRINT_FLAGS_FAILURE"
     
     def __init__(

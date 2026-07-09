@@ -10,7 +10,6 @@ version: 1.0.1
 # =========== ERR.VALIDATION.REGISTER.IDENTITY PACKAGE ===========#
 
 # Packages
-from .mismatch import *
 
 # Modules
-from .exception import VectorIdentityRegisterValidatorException
+from .exception import IdentityRegisterValidatorException

@@ -8,22 +8,22 @@ version: 1.0.1
 """
 
 from __future__ import annotations
-from err import BlueprintValidatorException
+from err import CertifierException
 from result import MethodResultType
 
 __all__ = [
     # ======================# RANK_BLUEPRINT_VALIDATOR_FAILURE #======================#
-    "RankBlueprintValidatorException",
+    "RankCertifierException",
 ]
 
 # ======================# RANK_BLUEPRINT_VALIDATOR_FAILURE #======================#
-class RankBlueprintValidatorException(BlueprintValidatorException):
+class RankCertifierException(CertifierException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a candidate did not pass a RankBlueprintValidator test.
+        1.  Indicate that a candidate did not pass a RankCertifier test.
 
     Attributes:
             msg: Optional[str]
@@ -38,9 +38,9 @@ class RankBlueprintValidatorException(BlueprintValidatorException):
     Provides:
 
     Super Class:
-        BlueprintValidatorException
+        CertifierException
     """
-    MSG = "Candidate did not pass a RankBlueprintValidator test."
+    MSG = "Candidate did not pass a RankCertifier test."
     ERR_CODE = "RANK_BLUEPRINT_VALIDATOR_FAILURE"
     
     def __init__(

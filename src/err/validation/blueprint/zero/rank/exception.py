@@ -24,7 +24,7 @@ class ZeroRankBlueprintFlagsException(ZeroBlueprintFlagsException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicates that no RankBlueprintValidator test. enabled.
+        1.  Indicates that no RankCertifier test. enabled.
 
     Attributes:
         msg: Optional[str]
@@ -40,7 +40,7 @@ class ZeroRankBlueprintFlagsException(ZeroBlueprintFlagsException):
     Super Class:
         ZeroBlueprintFlagsException
     """
-    MSG = "Candidate did not pass a No RankCBlueprintValidator test. enabled."
+    MSG = "Candidate did not pass a No RankCCertifier test. enabled."
     ERR_CODE = "ZERO_RANK_BLUEPRINT_FLAGS_FAILURE"
     
     def __init__(

@@ -8,22 +8,22 @@ version: 1.0.1
 """
 
 from __future__ import annotations
-from err import BlueprintValidatorException
+from err import CertifierException
 from result import MethodResultType
 
 __all__ = [
     # ======================# SCHEMA_BLUEPRINT_VALIDATOR_FAILURE #======================#
-    "SchemaBlueprintValidatorException",
+    "SchemaCertifierException",
 ]
 
 # ======================# SCHEMA_BLUEPRINT_VALIDATOR_FAILURE #======================#
-class SchemaBlueprintValidatorException(BlueprintValidatorException):
+class SchemaCertifierException(CertifierException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a candidate did not pass a SchemaBlueprintValidator test.
+        1.  Indicate that a candidate did not pass a SchemaCertifier test.
 
     Attributes:
             msg: Optional[str]
@@ -38,9 +38,9 @@ class SchemaBlueprintValidatorException(BlueprintValidatorException):
     Provides:
 
     Super Class:
-        BlueprintValidatorException
+        CertifierException
     """
-    MSG = "Candidate did not pass a SchemaBlueprintValidator test."
+    MSG = "Candidate did not pass a SchemaCertifier test."
     ERR_CODE = "SCHEMA_BLUEPRINT_VALIDATOR_FAILURE"
     
     def __init__(

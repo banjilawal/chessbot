@@ -24,7 +24,7 @@ class ZeroBlueprintFlagsException(BlueprintException):
         -   Error Tracing
         
     Responsibilities:
-        1.  Indicate that no BlueprintValidator test.s were enabled.
+        1.  Indicate that no Certifier test.s were enabled.
 
     Attributes:
         msg: Optional[str]

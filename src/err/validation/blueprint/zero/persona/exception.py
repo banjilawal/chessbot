@@ -24,7 +24,7 @@ class ZeroPersonaBlueprintFlagsException(ZeroBlueprintFlagsException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicates that no PersonaBlueprintValidator test. enabled.
+        1.  Indicates that no PersonaCertifier test. enabled.
 
     Attributes:
         msg: Optional[str]
@@ -40,7 +40,7 @@ class ZeroPersonaBlueprintFlagsException(ZeroBlueprintFlagsException):
     Super Class:
         ZeroBlueprintFlagsException
     """
-    MSG = "Candidate did not pass a No PersonaCBlueprintValidator test. enabled."
+    MSG = "Candidate did not pass a No PersonaCCertifier test. enabled."
     ERR_CODE = "ZERO_PERSONA_BLUEPRINT_FLAGS_FAILURE"
     
     def __init__(

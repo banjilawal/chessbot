@@ -8,22 +8,22 @@ version: 1.0.1
 """
 
 from __future__ import annotations
-from err import BlueprintValidatorException
+from err import CertifierException
 from result import MethodResultType
 
 __all__ = [
     # ======================# TEAM_BLUEPRINT_VALIDATOR_FAILURE #======================#
-    "TeamBlueprintValidatorException",
+    "TeamCertifierException",
 ]
 
 # ======================# TEAM_BLUEPRINT_VALIDATOR_FAILURE #======================#
-class TeamBlueprintValidatorException(BlueprintValidatorException):
+class TeamCertifierException(CertifierException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a candidate did not pass a TeamBlueprintValidator test.
+        1.  Indicate that a candidate did not pass a TeamCertifier test.
 
     Attributes:
             msg: Optional[str]
@@ -38,9 +38,9 @@ class TeamBlueprintValidatorException(BlueprintValidatorException):
     Provides:
 
     Super Class:
-        BlueprintValidatorException
+        CertifierException
     """
-    MSG = "Candidate did not pass a TeamBlueprintValidator test."
+    MSG = "Candidate did not pass a TeamCertifier test."
     ERR_CODE = "TEAM_BLUEPRINT_VALIDATOR_FAILURE"
     
     def __init__(

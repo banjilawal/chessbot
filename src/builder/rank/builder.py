@@ -44,9 +44,9 @@ class RankBuilder(Builder[Rank]):
      Super Class:
          Builder
      """
-    _bootstrapper: RankBlueprintValidator
+    _bootstrapper: RankCertifier
     
-    def __init__(self, bootstrapper: RankBlueprintValidator | None = RankBlueprintValidator()):
+    def __init__(self, bootstrapper: RankCertifier | None = RankCertifier()):
         self._bootstrapper = bootstrapper
         
     

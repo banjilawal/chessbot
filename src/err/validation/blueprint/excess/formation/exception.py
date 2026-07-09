@@ -40,7 +40,7 @@ class ExcessFormationBlueprintFlagsException(ExcessBlueprintFlagsException):
     Super Class:
         ExcessBlueprintFlagsException
     """
-    MSG = "Candidate did not pass a More than one FormationCBlueprintValidator test. enabled."
+    MSG = "Candidate did not pass a More than one FormationCCertifier test. enabled."
     ERR_CODE = "EXCESS_FORMATION_BLUEPRINT_FLAGS_FAILURE"
     
     def __init__(

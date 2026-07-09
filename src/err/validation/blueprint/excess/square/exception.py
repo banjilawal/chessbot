@@ -40,7 +40,7 @@ class ExcessSquareBlueprintFlagsException(ExcessBlueprintFlagsException):
     Super Class:
         ExcessBlueprintFlagsException
     """
-    MSG = "Candidate did not pass a More than one SquareCBlueprintValidator test. enabled."
+    MSG = "Candidate did not pass a More than one SquareCCertifier test. enabled."
     ERR_CODE = "EXCESS_SQUARE_BLUEPRINT_FLAGS_FAILURE"
     
     def __init__(

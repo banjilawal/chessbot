@@ -39,4 +39,4 @@ from .token import *
 from .zero import *
 
 # Modules
-from .exception import BlueprintValidatorException
+from .exception import CertifierException

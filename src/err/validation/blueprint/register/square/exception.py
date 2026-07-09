@@ -11,22 +11,22 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import ValidatorException
+from err import RegisterCertifierException
 from result import MethodResultType
 
 __all__ = [
-    # ======================# VECTOR_SQUARE_REGISTER_FAILURE #======================#
-    "VectorSquareBlueprintException",
+    # ======================# VECTOR_SQUARE_REGISTER_VALIDATOR_FAILURE #======================#
+    "SquareRegisterCertifierException",
 ]
 
-# ======================# VECTOR_SQUARE_REGISTER_FAILURE #======================#
-class VectorSquareBlueprintException(ValidatorException):
+# ======================# VECTOR_SQUARE_REGISTER_VALIDATOR_FAILURE #======================#
+class SquareRegisterCertifierException(RegisterCertifierException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a VectorSquareRegister failed.
+        1.  Indicate that a VectorSquareRegisterCertifier failed.
 
     Attributes:
             msg: Optional[str]
@@ -41,10 +41,10 @@ class VectorSquareBlueprintException(ValidatorException):
     Provides:
 
     Super Class:
-        ValidatorException
+        RegisterCertifierException
     """
-    MSG = "VectorSquareRegister failure."
-    ERR_CODE = "VECTOR_SQUARE_REGISTER_FAILURE"
+    MSG = "VectorSquareRegisterCertifier failure."
+    ERR_CODE = "VECTOR_SQUARE_REGISTER_VALIDATOR_FAILURE"
     
     def __init__(
             self,

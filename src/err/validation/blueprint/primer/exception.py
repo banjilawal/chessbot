@@ -10,7 +10,7 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import BlueprintValidatorException
+from err import CertifierException
 
 
 __all__ = [
@@ -19,7 +19,7 @@ __all__ = [
 ]
 
 # ======================# BLUEPRINT_VALIDATION_PRIMING_FAILURE #======================#
-class BlueprintValidationPrimingException(BlueprintValidatorException):
+class BlueprintValidationPrimingException(CertifierException):
     """
     Role:
         -   Error Tracing
@@ -40,7 +40,7 @@ class BlueprintValidationPrimingException(BlueprintValidatorException):
     Provides:
 
     Super Class:
-        BlueprintValidatorException
+        CertifierException
     """
     MSG = "Candidate did not pass a BlueprintValidation failed during its priming phase."
     ERR_CODE = "BLUEPRINT_VALIDATION_PRIMING_FAILURE"

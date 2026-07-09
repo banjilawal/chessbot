@@ -8,22 +8,22 @@ version: 1.0.1
 """
 
 from __future__ import annotations
-from err import BlueprintValidatorException
+from err import CertifierException
 from result import MethodResultType
 
 __all__ = [
     # ======================# ARENA_BLUEPRINT_VALIDATOR_FAILURE #======================#
-    "ArenaBlueprintValidatorException",
+    "ArenaCertifierException",
 ]
 
 # ======================# ARENA_BLUEPRINT_VALIDATOR_FAILURE #======================#
-class ArenaBlueprintValidatorException(BlueprintValidatorException):
+class ArenaCertifierException(CertifierException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a candidate did not pass a ArenaBlueprintValidator test.
+        1.  Indicate that a candidate did not pass a ArenaCertifier test.
 
     Attributes:
             msg: Optional[str]
@@ -38,9 +38,9 @@ class ArenaBlueprintValidatorException(BlueprintValidatorException):
     Provides:
 
     Super Class:
-        BlueprintValidatorException
+        CertifierException
     """
-    MSG = "Candidate did not pass a ArenaBlueprintValidator test."
+    MSG = "Candidate did not pass a ArenaCertifier test."
     ERR_CODE = "ARENA_BLUEPRINT_VALIDATOR_FAILURE"
     
     def __init__(

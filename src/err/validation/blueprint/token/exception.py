@@ -8,22 +8,22 @@ version: 1.0.1
 """
 
 from __future__ import annotations
-from err import BlueprintValidatorException
+from err import CertifierException
 from result import MethodResultType
 
 __all__ = [
     # ======================# TOKEN_BLUEPRINT_VALIDATOR_FAILURE #======================#
-    "TokenBlueprintValidatorException",
+    "TokenCertifierException",
 ]
 
 # ======================# TOKEN_BLUEPRINT_VALIDATOR_FAILURE #======================#
-class TokenBlueprintValidatorException(BlueprintValidatorException):
+class TokenCertifierException(CertifierException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a candidate did not pass a TokenBlueprintValidator test.
+        1.  Indicate that a candidate did not pass a TokenCertifier test.
 
     Attributes:
             msg: Optional[str]
@@ -38,9 +38,9 @@ class TokenBlueprintValidatorException(BlueprintValidatorException):
     Provides:
 
     Super Class:
-        BlueprintValidatorException
+        CertifierException
     """
-    MSG = "Candidate did not pass a TokenBlueprintValidator test."
+    MSG = "Candidate did not pass a TokenCertifier test."
     ERR_CODE = "TOKEN_BLUEPRINT_VALIDATOR_FAILURE"
     
     def __init__(

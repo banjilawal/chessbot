@@ -40,7 +40,7 @@ class ExcessSchemaBlueprintFlagsException(ExcessBlueprintFlagsException):
     Super Class:
         ExcessBlueprintFlagsException
     """
-    MSG = "Candidate did not pass a More than one SchemaCBlueprintValidator test. enabled."
+    MSG = "Candidate did not pass a More than one SchemaCCertifier test. enabled."
     ERR_CODE = "EXCESS_SCHEMA_BLUEPRINT_FLAGS_FAILURE"
     
     def __init__(

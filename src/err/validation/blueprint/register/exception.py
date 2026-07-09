@@ -8,22 +8,22 @@ version: 1.0.1
 """
 
 from __future__ import annotations
-from err import BlueprintValidatorException
+from err import CertifierException
 from result import MethodResultType
 
 __all__ = [
     # ======================# REGISTER_BLUEPRINT_VALIDATOR_FAILURE #======================#
-    "RegisterBlueprintValidatorException",
+    "RegisterCertifierException",
 ]
 
 # ======================# REGISTER_BLUEPRINT_VALIDATOR_FAILURE #======================#
-class RegisterBlueprintValidatorException(BlueprintValidatorException):
+class RegisterCertifierException(CertifierException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a candidate did not pass a RegisterBlueprintValidator test.
+        1.  Indicate that a candidate did not pass a RegisterCertifier test.
 
     Attributes:
             msg: Optional[str]
@@ -38,9 +38,9 @@ class RegisterBlueprintValidatorException(BlueprintValidatorException):
     Provides:
 
     Super Class:
-        BlueprintValidatorException
+        CertifierException
     """
-    MSG = "Candidate did not pass a RegisterBlueprintValidator test."
+    MSG = "Candidate did not pass a RegisterCertifier test."
     ERR_CODE = "REGISTER_BLUEPRINT_VALIDATOR_FAILURE"
     
     def __init__(

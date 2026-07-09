@@ -24,7 +24,7 @@ class ExcessBlueprintFlagsException(BlueprintException):
         -   Error Tracing
         
     Responsibilities:
-        1.  Indicate that no BlueprintValidator test.s were enabled.
+        1.  Indicate that no Certifier test.s were enabled.
 
     Attributes:
         msg: Optional[str]
@@ -40,7 +40,7 @@ class ExcessBlueprintFlagsException(BlueprintException):
     Super Class:
         BlueprintException
     """
-    MSG = "Candidate did not pass a More than one BlueprintValidator test. enabled."
+    MSG = "Candidate did not pass a More than one Certifier test. enabled."
     ERR_CODE = "EXCESS_BLUEPRINT_FLAGS_FAILURE"
     
     def __init__(

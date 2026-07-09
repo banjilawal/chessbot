@@ -9,6 +9,9 @@ version: 1.0.1
 
 from __future__ import annotations
 
+from typing import Type, cast
+
+from blueprint import SquareRegisterBlueprint
 from err import SquareRegisterNullException
 from model import Square, SquareRegister
 from toolkit import RegisterToolkit
@@ -35,7 +38,19 @@ class SquareRegisterToolkit(RegisterToolkit[Square]):
     Super Class:
        RegisterToolkit
     """
+    a: Square
+    b: Square
     square_validator: SquareValidator = SquareValidator()
     null_exception = SquareRegisterNullException = SquareRegisterNullException()
-    model: SquareRegister
+    model: SquareRegister = Type[SquareRegister]
+    blueprint_model: SquareRegisterBlueprint = Type[SquareRegisterBlueprint]
+    
+    
+    @property
+    def origin(self) -> Square:
+        return cast(Square, self.a)
+    
+    @property
+    def destination(self) -> Square:
+        return cast(Square, self.b)
     

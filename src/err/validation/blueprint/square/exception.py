@@ -8,22 +8,22 @@ version: 1.0.1
 """
 
 from __future__ import annotations
-from err import BlueprintValidatorException
+from err import CertifierException
 from result import MethodResultType
 
 __all__ = [
     # ======================# SQUARE_BLUEPRINT_VALIDATOR_FAILURE #======================#
-    "SquareBlueprintValidatorException",
+    "SquareCertifierException",
 ]
 
 # ======================# SQUARE_BLUEPRINT_VALIDATOR_FAILURE #======================#
-class SquareBlueprintValidatorException(BlueprintValidatorException):
+class SquareCertifierException(CertifierException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a candidate did not pass a SquareBlueprintValidator test.
+        1.  Indicate that a candidate did not pass a SquareCertifier test.
 
     Attributes:
             msg: Optional[str]
@@ -38,9 +38,9 @@ class SquareBlueprintValidatorException(BlueprintValidatorException):
     Provides:
 
     Super Class:
-        BlueprintValidatorException
+        CertifierException
     """
-    MSG = "Candidate did not pass a SquareBlueprintValidator test."
+    MSG = "Candidate did not pass a SquareCertifier test."
     ERR_CODE = "SQUARE_BLUEPRINT_VALIDATOR_FAILURE"
     
     def __init__(

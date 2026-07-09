@@ -40,7 +40,7 @@ class ExcessTokenBlueprintFlagsException(ExcessBlueprintFlagsException):
     Super Class:
         ExcessBlueprintFlagsException
     """
-    MSG = "Candidate did not pass a More than one TokenCBlueprintValidator test. enabled."
+    MSG = "Candidate did not pass a More than one TokenCCertifier test. enabled."
     ERR_CODE = "EXCESS_TOKEN_BLUEPRINT_FLAGS_FAILURE"
     
     def __init__(

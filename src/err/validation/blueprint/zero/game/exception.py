@@ -24,7 +24,7 @@ class ZeroGameBlueprintFlagsException(ZeroBlueprintFlagsException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicates that no GameBlueprintValidator test. enabled.
+        1.  Indicates that no GameCertifier test. enabled.
 
     Attributes:
         msg: Optional[str]
@@ -40,7 +40,7 @@ class ZeroGameBlueprintFlagsException(ZeroBlueprintFlagsException):
     Super Class:
         ZeroBlueprintFlagsException
     """
-    MSG = "Candidate did not pass a No GameCBlueprintValidator test. enabled."
+    MSG = "Candidate did not pass a No GameCCertifier test. enabled."
     ERR_CODE = "ZERO_GAME_BLUEPRINT_FLAGS_FAILURE"
     
     def __init__(

@@ -24,7 +24,7 @@ class ZeroCoordBlueprintFlagsException(ZeroBlueprintFlagsException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicates that no CoordBlueprintValidator test. enabled.
+        1.  Indicates that no CoordCertifier test. enabled.
 
     Attributes:
         msg: Optional[str]
@@ -40,7 +40,7 @@ class ZeroCoordBlueprintFlagsException(ZeroBlueprintFlagsException):
     Super Class:
         ZeroBlueprintFlagsException
     """
-    MSG = "Candidate did not pass a No CoordCBlueprintValidator test. enabled."
+    MSG = "Candidate did not pass a No CoordCCertifier test. enabled."
     ERR_CODE = "ZERO_COORD_BLUEPRINT_FLAGS_FAILURE"
     
     def __init__(

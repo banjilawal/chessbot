@@ -24,7 +24,7 @@ class ZeroSquareBlueprintFlagsException(ZeroBlueprintFlagsException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicates that no SquareBlueprintValidator test. enabled.
+        1.  Indicates that no SquareCertifier test. enabled.
 
     Attributes:
         msg: Optional[str]
@@ -40,7 +40,7 @@ class ZeroSquareBlueprintFlagsException(ZeroBlueprintFlagsException):
     Super Class:
         ZeroBlueprintFlagsException
     """
-    MSG = "Candidate did not pass a No SquareCBlueprintValidator test. enabled."
+    MSG = "Candidate did not pass a No SquareCCertifier test. enabled."
     ERR_CODE = "ZERO_SQUARE_BLUEPRINT_FLAGS_FAILURE"
     
     def __init__(

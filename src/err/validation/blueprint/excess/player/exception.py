@@ -40,7 +40,7 @@ class ExcessPlayerBlueprintFlagsException(ExcessBlueprintFlagsException):
     Super Class:
         ExcessBlueprintFlagsException
     """
-    MSG = "Candidate did not pass a More than one PlayerCBlueprintValidator test. enabled."
+    MSG = "Candidate did not pass a More than one PlayerCCertifier test. enabled."
     ERR_CODE = "EXCESS_PLAYER_BLUEPRINT_FLAGS_FAILURE"
     
     def __init__(

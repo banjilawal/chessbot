@@ -15,17 +15,17 @@ from result import MethodResultType
 
 __all__ = [
     # ======================# BLUEPRINT_VALIDATOR_FAILURE #======================#
-    "BlueprintValidatorException",
+    "CertifierException",
 ]
 
 # ======================# BLUEPRINT_VALIDATOR_FAILURE #======================#
-class BlueprintValidatorException(ValidatorException):
+class CertifierException(ValidatorException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a candidate did not pass a BlueprintValidator test.
+        1.  Indicate that a candidate did not pass a Certifier test.
 
     Attributes:
             msg: Optional[str]
@@ -42,7 +42,7 @@ class BlueprintValidatorException(ValidatorException):
     Super Class:
         ValidatorException
     """
-    MSG = "Candidate did not pass a BlueprintValidator test."
+    MSG = "Candidate did not pass a Certifier test."
     ERR_CODE = "BLUEPRINT_VALIDATOR_FAILURE"
     
     def __init__(

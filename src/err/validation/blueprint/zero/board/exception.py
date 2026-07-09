@@ -24,7 +24,7 @@ class ZeroBoardBlueprintFlagsException(ZeroBlueprintFlagsException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicates that no BoardBlueprintValidator test. enabled.
+        1.  Indicates that no BoardCertifier test. enabled.
 
     Attributes:
         msg: Optional[str]
@@ -40,7 +40,7 @@ class ZeroBoardBlueprintFlagsException(ZeroBlueprintFlagsException):
     Super Class:
         ZeroBlueprintFlagsException
     """
-    MSG = "Candidate did not pass a No BoardCBlueprintValidator test. enabled."
+    MSG = "Candidate did not pass a No BoardCCertifier test. enabled."
     ERR_CODE = "ZERO_BOARD_BLUEPRINT_FLAGS_FAILURE"
     
     def __init__(

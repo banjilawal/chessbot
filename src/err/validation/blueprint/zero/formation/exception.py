@@ -24,7 +24,7 @@ class ZeroFormationBlueprintFlagsException(ZeroBlueprintFlagsException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicates that no FormationBlueprintValidator test. enabled.
+        1.  Indicates that no FormationCertifier test. enabled.
 
     Attributes:
         msg: Optional[str]
@@ -40,7 +40,7 @@ class ZeroFormationBlueprintFlagsException(ZeroBlueprintFlagsException):
     Super Class:
         ZeroBlueprintFlagsException
     """
-    MSG = "Candidate did not pass a No FormationCBlueprintValidator test. enabled."
+    MSG = "Candidate did not pass a No FormationCCertifier test. enabled."
     ERR_CODE = "ZERO_FORMATION_BLUEPRINT_FLAGS_FAILURE"
     
     def __init__(

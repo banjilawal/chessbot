@@ -40,7 +40,7 @@ class ExcessBoardBlueprintFlagsException(ExcessBlueprintFlagsException):
     Super Class:
         ExcessBlueprintFlagsException
     """
-    MSG = "Candidate did not pass a More than one BoardCBlueprintValidator test. enabled."
+    MSG = "Candidate did not pass a More than one BoardCCertifier test. enabled."
     ERR_CODE = "EXCESS_BOARD_BLUEPRINT_FLAGS_FAILURE"
     
     def __init__(

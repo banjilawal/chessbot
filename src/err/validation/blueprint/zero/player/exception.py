@@ -24,7 +24,7 @@ class ZeroPlayerBlueprintFlagsException(ZeroBlueprintFlagsException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicates that no PlayerBlueprintValidator test. enabled.
+        1.  Indicates that no PlayerCertifier test. enabled.
 
     Attributes:
         msg: Optional[str]
@@ -40,7 +40,7 @@ class ZeroPlayerBlueprintFlagsException(ZeroBlueprintFlagsException):
     Super Class:
         ZeroBlueprintFlagsException
     """
-    MSG = "Candidate did not pass a No PlayerCBlueprintValidator test. enabled."
+    MSG = "Candidate did not pass a No PlayerCCertifier test. enabled."
     ERR_CODE = "ZERO_PLAYER_BLUEPRINT_FLAGS_FAILURE"
     
     def __init__(

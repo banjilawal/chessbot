@@ -15,4 +15,4 @@ from .operand import *
 from .square import *
 
 # Modules
-from .exception import RegisterBlueprintValidatorException
+from .exception import RegisterCertifierException

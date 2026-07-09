@@ -17,7 +17,7 @@ from model import Token
 from result import ValidationResult
 from toolkit import TokenToolkit
 from util import LoggingLevelRouter
-from validator import ModelValidator, TokenBlueprintValidator
+from validator import ModelValidator, TokenCertifier
 
 
 class TokenValidator(ModelValidator[Token]):
@@ -48,7 +48,7 @@ class TokenValidator(ModelValidator[Token]):
             cls,
             candidate: Any,
             toolkit: TokenToolkit | None = None,
-            blueprint_validator: TokenBlueprintValidator | None = None,
+            blueprint_validator: TokenCertifier | None = None,
     ) -> ValidationResult[Token]:
         """
         Verify the object is a Token that is safe to use.
@@ -64,7 +64,7 @@ class TokenValidator(ModelValidator[Token]):
         Args:
             candidate: Any
             toolkit: TokenToolkit
-            blueprint_validator: TokenBlueprintValidator
+            blueprint_validator: TokenCertifier
         Returns:
             ValidationResult[Token]
         Raises:
@@ -76,7 +76,7 @@ class TokenValidator(ModelValidator[Token]):
         if toolkit is None:
             toolkit = TokenToolkit()
         if blueprint_validator is None:
-            blueprint_validator = TokenBlueprintValidator()
+            blueprint_validator = TokenCertifier()
         
         # Handle the case that, the validator is not primed.
         validator_priming_result = toolkit.priming_validator.execute(

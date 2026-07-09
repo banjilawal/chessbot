@@ -15,7 +15,7 @@ from typing import Any
 from model import Model
 from result import ValidationResult
 from toolkit import ModelToolkit
-from validator import Validator
+from validator import Certifier, Validator
 
 
 class ModelValidator(Validator[Model]):
@@ -38,13 +38,15 @@ class ModelValidator(Validator[Model]):
     Super Class:
         Validator
     """
+    _.bootstrapper: Certifier
     
-    def __init__(self, toolkit: ModelToolkit):
+    def __init__(self, toolkit: ModelToolkit, bootstrapper: Certifier):
         super().__init__(toolkit=toolkit)
-        
+        self._bootstrapper = bootstrapper
+
     @property
     @abstractmethod
-    def toolkit(self) -> ModelToolkit:
+    def bootstrapper(self) -> Certifier:
         pass
     
     @abstractmethod

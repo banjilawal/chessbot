@@ -37,6 +37,7 @@ class RegisterToolkit(ModelToolkit):
     """
     null_exception: RegisterNullException = RegisterNullException()
     model: Register = Register
+    blueprint_model = RegisterBlueprint
 
 
     

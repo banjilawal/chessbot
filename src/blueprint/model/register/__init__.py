@@ -10,7 +10,9 @@ version: 1.0.1
 # =========== BLUEPRINT.MODEL.REGISTER PACKAGE ===========#
 
 # Packages
-
+from .identity import *
+from .operand import *
+from .square import *
 
 # Modules
-from blueprint.model.register.operand.blueprint import  RegisterBlueprint
+from .blueprint import RegisterBlueprint

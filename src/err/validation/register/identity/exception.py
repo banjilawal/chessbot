@@ -15,12 +15,12 @@ from err import RegisterValidatorException
 from result import MethodResultType
 
 __all__ = [
-    # ======================# VECTOR_IDENTITY_REGISTER_VALIDATOR_FAILURE #======================#
-    "VectorIdentityRegisterValidatorException",
+    # ======================# IDENTITY_REGISTER_VALIDATOR_FAILURE #======================#
+    "IdentityRegisterValidatorException",
 ]
 
-# ======================# VECTOR_IDENTITY_REGISTER_VALIDATOR_FAILURE #======================#
-class VectorIdentityRegisterValidatorException(RegisterValidatorException):
+# ======================# IDENTITY_REGISTER_VALIDATOR_FAILURE #======================#
+class IdentityRegisterValidatorException(RegisterValidatorException):
     """
     Role:
         -   Error Tracing
@@ -44,7 +44,7 @@ class VectorIdentityRegisterValidatorException(RegisterValidatorException):
         RegisterValidatorException
     """
     MSG = "Candidate did not pass a VectorIdentityRegisterValidator test."
-    ERR_CODE = "VECTOR_IDENTITY_REGISTER_VALIDATOR_FAILURE"
+    ERR_CODE = "IDENTITY_REGISTER_VALIDATOR_FAILURE"
     
     def __init__(
             self,

@@ -10,14 +10,15 @@ version: 1.0.1
 from __future__ import annotations
 
 from dataclasses import dataclass
-from typing import Type
+from typing import Type, cast
 
-from blueprint import Blueprint
+from blueprint import RegisterBlueprint
+from err import IdentityRegisterNullException
 from model import IdentityRegister
 
 
 @dataclass
-class IdentityRegisterBlueprint(Blueprint[IdentityRegister]):
+class IdentityRegisterBlueprint(RegisterBlueprint[IdentityRegister]):
     """
     Role:
         -   Container
@@ -45,8 +46,43 @@ class IdentityRegisterBlueprint(Blueprint[IdentityRegister]):
         owner: IdentityRegister
         owner_name: str
     """
-    id: int
-    name: str
-    null_exception: IdentityRegisterNullException = IdentityRegisterNullException()
-    owner: IdentityRegister = Type[IdentityRegister]
-    owner_name: str = type(owner).__name__
+    
+    def __init__(
+            self,
+            id: int,
+            name: str,
+            null_exception: IdentityRegisterNullException | None = IdentityRegisterNullException(),
+            owner: IdentityRegister | None = Type[IdentityRegister],
+            owner_name: str | None = type(IdentityRegister).__name__,
+    ):
+        """
+        Args:
+            id: int
+            name: int
+            null_exception: IdentityRegisterNullException
+            owner: IdentityRegister
+            owner_name: str
+        """
+        super().__init__(
+            a=id,
+            b=name,
+            owner=owner,
+            null_exception=null_exception,
+            owner_name=owner_name,
+        )
+    
+    @property
+    def id(self) -> int:
+        return cast(int, self.a)
+    
+    @property
+    def name(self) -> str:
+        return cast(str, self.b)
+    
+    @property
+    def model(self):
+        return Type[IdentityRegister]
+    
+    @property
+    def null_exception(self) -> IdentityRegisterNullException:
+        return IdentityRegisterNullException()

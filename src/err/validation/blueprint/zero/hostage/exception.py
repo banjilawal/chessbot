@@ -24,7 +24,7 @@ class ZeroHostageBlueprintFlagsException(ZeroBlueprintFlagsException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicates that no HostageBlueprintValidator test. enabled.
+        1.  Indicates that no HostageCertifier test. enabled.
 
     Attributes:
         msg: Optional[str]
@@ -40,7 +40,7 @@ class ZeroHostageBlueprintFlagsException(ZeroBlueprintFlagsException):
     Super Class:
         ZeroBlueprintFlagsException
     """
-    MSG = "Candidate did not pass a No HostageCBlueprintValidator test. enabled."
+    MSG = "Candidate did not pass a No HostageCCertifier test. enabled."
     ERR_CODE = "ZERO_HOSTAGE_BLUEPRINT_FLAGS_FAILURE"
     
     def __init__(

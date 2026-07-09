@@ -20,7 +20,7 @@ from finalizer import TokenAssemblyFinalizer
 from result import BuildResult
 from toolkit import TokenToolkit
 from util import LoggingLevelRouter
-from validator import TokenBlueprintValidator
+from validator import TokenCertifier
 
 
 class TokenBuilder(Builder[Token]):
@@ -50,19 +50,19 @@ class TokenBuilder(Builder[Token]):
      Super Class:
          Builder
      """
-    _bootstrapper: TokenBlueprintValidator
+    _bootstrapper: TokenCertifier
     _assembler: TokenAssembler
     _finalizer: TokenAssemblyFinalizer
     _toolkit: TokenToolkit
     
     def __init__(
             self,
-            bootstrapper: TokenBlueprintValidator | None = None,
+            bootstrapper: TokenCertifier | None = None,
             assembler : TokenAssembler | None = None,
             finalizer: TokenAssemblyFinalizer | None = None,
             toolkit: TokenToolkit | None = None,
     ):
-        self._bootstrapper = bootstrapper or TokenBlueprintValidator()
+        self._bootstrapper = bootstrapper or TokenCertifier()
         self._assembler = assembler or TokenAssembler()
         self._finalizer = finalizer or TokenAssemblyFinalizer()
         self._toolkit = toolkit or TokenToolkit()
@@ -81,7 +81,7 @@ class TokenBuilder(Builder[Token]):
             2.  Otherwise, send the success result.
         Args:
             blueprint: TokenBlueprint
-            blueprint_validator: BlueprintValidator
+            blueprint_validator: Certifier
             assembler: TokenAssembler
             finalizer: TokenAssemblyFinalizer
         Returns:

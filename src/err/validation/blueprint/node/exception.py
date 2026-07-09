@@ -8,22 +8,22 @@ version: 1.0.1
 """
 
 from __future__ import annotations
-from err import BlueprintValidatorException
+from err import CertifierException
 from result import MethodResultType
 
 __all__ = [
     # ======================# NODE_BLUEPRINT_VALIDATOR_FAILURE #======================#
-    "NodeBlueprintValidatorException",
+    "NodeCertifierException",
 ]
 
 # ======================# NODE_BLUEPRINT_VALIDATOR_FAILURE #======================#
-class NodeBlueprintValidatorException(BlueprintValidatorException):
+class NodeCertifierException(CertifierException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a candidate did not pass a NodeBlueprintValidator test.
+        1.  Indicate that a candidate did not pass a NodeCertifier test.
 
     Attributes:
             msg: Optional[str]
@@ -38,9 +38,9 @@ class NodeBlueprintValidatorException(BlueprintValidatorException):
     Provides:
 
     Super Class:
-        BlueprintValidatorException
+        CertifierException
     """
-    MSG = "Candidate did not pass a NodeBlueprintValidator test."
+    MSG = "Candidate did not pass a NodeCertifier test."
     ERR_CODE = "NODE_BLUEPRINT_VALIDATOR_FAILURE"
     
     def __init__(

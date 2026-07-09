@@ -8,22 +8,22 @@ version: 1.0.1
 """
 
 from __future__ import annotations
-from err import BlueprintValidatorException
+from err import CertifierException
 from result import MethodResultType
 
 __all__ = [
     # ======================# HOSTAGE_BLUEPRINT_VALIDATOR_FAILURE #======================#
-    "HostageBlueprintValidatorException",
+    "HostageCertifierException",
 ]
 
 # ======================# HOSTAGE_BLUEPRINT_VALIDATOR_FAILURE #======================#
-class HostageBlueprintValidatorException(BlueprintValidatorException):
+class HostageCertifierException(CertifierException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a candidate did not pass a HostageBlueprintValidator test.
+        1.  Indicate that a candidate did not pass a HostageCertifier test.
 
     Attributes:
             msg: Optional[str]
@@ -38,9 +38,9 @@ class HostageBlueprintValidatorException(BlueprintValidatorException):
     Provides:
 
     Super Class:
-        BlueprintValidatorException
+        CertifierException
     """
-    MSG = "Candidate did not pass a HostageBlueprintValidator test."
+    MSG = "Candidate did not pass a HostageCertifier test."
     ERR_CODE = "HOSTAGE_BLUEPRINT_VALIDATOR_FAILURE"
     
     def __init__(

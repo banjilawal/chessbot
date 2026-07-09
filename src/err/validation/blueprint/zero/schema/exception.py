@@ -24,7 +24,7 @@ class ZeroSchemaBlueprintFlagsException(ZeroBlueprintFlagsException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicates that no SchemaBlueprintValidator test. enabled.
+        1.  Indicates that no SchemaCertifier test. enabled.
 
     Attributes:
         msg: Optional[str]
@@ -40,7 +40,7 @@ class ZeroSchemaBlueprintFlagsException(ZeroBlueprintFlagsException):
     Super Class:
         ZeroBlueprintFlagsException
     """
-    MSG = "Candidate did not pass a No SchemaCBlueprintValidator test. enabled."
+    MSG = "Candidate did not pass a No SchemaCCertifier test. enabled."
     ERR_CODE = "ZERO_SCHEMA_BLUEPRINT_FLAGS_FAILURE"
     
     def __init__(

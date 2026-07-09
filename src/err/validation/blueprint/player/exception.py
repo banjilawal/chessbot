@@ -8,22 +8,22 @@ version: 1.0.1
 """
 
 from __future__ import annotations
-from err import BlueprintValidatorException
+from err import CertifierException
 from result import MethodResultType
 
 __all__ = [
     # ======================# PLAYER_BLUEPRINT_VALIDATOR_FAILURE #======================#
-    "PlayerBlueprintValidatorException",
+    "PlayerCertifierException",
 ]
 
 # ======================# PLAYER_BLUEPRINT_VALIDATOR_FAILURE #======================#
-class PlayerBlueprintValidatorException(BlueprintValidatorException):
+class PlayerCertifierException(CertifierException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a candidate did not pass a PlayerBlueprintValidator test.
+        1.  Indicate that a candidate did not pass a PlayerCertifier test.
 
     Attributes:
             msg: Optional[str]
@@ -38,9 +38,9 @@ class PlayerBlueprintValidatorException(BlueprintValidatorException):
     Provides:
 
     Super Class:
-        BlueprintValidatorException
+        CertifierException
     """
-    MSG = "Candidate did not pass a PlayerBlueprintValidator test."
+    MSG = "Candidate did not pass a PlayerCertifier test."
     ERR_CODE = "PLAYER_BLUEPRINT_VALIDATOR_FAILURE"
     
     def __init__(
