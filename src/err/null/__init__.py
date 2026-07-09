@@ -10,6 +10,7 @@ version: 1.0.1
 # ============ ERR.NULL PACKAGE ===========#
 
 # Packages
+from .blueprint import *
 from .context import *
 from .microservice import *
 from .model import *

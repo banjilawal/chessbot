@@ -1,48 +1,51 @@
-# src/err/model/register/identity/exception.py
+# src/err/null/blueprint/register/exception.py
 
 """
-Module:err.model.register.identity.exception
+Module: err.null.register.exception
 Author: Banji Lawal
-Created: 2026-04-03
+Created: 2026-04-04
 version: 1.0.1
 """
 
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import RegisterNullException
-from result import MethodResultType
+
 
 __all__ = [
-    # ======================# VECTOR_IDENTITY_REGISTER_NULL_ERROR #======================#
-    "IdentityRegisterNullException",
+    # ======================# VECTOR_IDENTITY_REGISTER_BLUEPRINT_NULL_ERROR #======================#
+    "IdentityRegisterBlueprintNullException",
 ]
 
-# ======================# VECTOR_IDENTITY_REGISTER_NULL_ERROR #======================#
-class IdentityRegisterNullException(RegisterNullException):
+from err import RegisterBlueprintNullException
+
+
+# ======================# VECTOR_IDENTITY_REGISTER_BLUEPRINT_NULL_ERROR #======================#
+class IdentityRegisterBlueprintNullException(RegisterBlueprintNullException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required IdentityRegister encountered is null.
+        1.  Indicate that a required VectorIdentityRegister is null.
 
-    Attributes:
-        msg: Optional[str]
-        var: Optional[str]
-        val: Optional[Any]
-        ex: Optional[Exception]
-        cls_name: Optional[str]
-        cls_mthd: Optional[str]
-        err_code: Optional[str]
-
+    Cannot Be Null.s:
+            msg: Optional[str]
+            var: Optional[str]
+            val: Optional[Any]
+            ex: Optional[Exception]
+            cls_name: Optional[str]
+            cls_mthd: Optional[str]
+            err_code: Optional[str]
+            mthd_rslt_type: Optional[MethodResultType]
+            
     Provides:
 
     Super Class:
-        RegisterNullException
+        RegisterBlueprintNullException
     """
-    MSG = "IdentityRegister cannot be null."
-    ERR_CODE= "VECTOR_IDENTITY_REGISTER_NULL_ERROR"
+    MSG = "VectorIdentityRegister cannot be null."
+    ERR_CODE = "VECTOR_IDENTITY_REGISTER_BLUEPRINT_NULL_ERROR"
     
     def __init__(
             self,
@@ -78,6 +81,3 @@ class IdentityRegisterNullException(RegisterNullException):
             cls_mthd=cls_mthd,
             mthd_rslt_type=mthd_rslt_type,
         )
-
-    
-    

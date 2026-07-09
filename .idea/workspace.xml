@@ -5,49 +5,57 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/err/model/register/identity/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/model/register/identity/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/model/register/identity/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/model/register/identity/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/validation/blueprint/register/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/validation/blueprint/register/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/validation/blueprint/register/identity/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/validation/blueprint/register/identity/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/validation/blueprint/register/operand/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/validation/blueprint/register/operand/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/validation/blueprint/register/square/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/validation/blueprint/register/square/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/validation/register/identity/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/validation/register/identity/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/validation/register/identity/mismatch/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/validation/register/identity/mismatch/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/register/identity/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/register/identity/model.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/toolkit/model/register/identity/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/toolkit/model/register/identity/toolkit.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/validator/model/register/identity/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/validator/model/register/identity/validator.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/blueprint/model/register/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/blueprint/model/register/identity/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/blueprint/model/register/identity/blueprint.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/blueprint/model/register/operand/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/blueprint/model/register/operand/blueprint.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/blueprint/model/register/square/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/blueprint/model/register/square/blueprint.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/blueprint/register/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/blueprint/register/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/blueprint/register/operand/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/blueprint/register/operand/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/blueprint/register/square/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/blueprint/register/square/exception.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bootstrapper/detector/token/bootstrapper/bootstrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/bootstrapper/detector/token/bootstrapper/bootstrapper.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/builder/player/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/builder/player/builder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/builder/square/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/builder/square/builder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/command/system/service/operation/build/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/command/system/service/operation/build/builder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/command/system/service/operation/validation/command/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/command/system/service/operation/validation/command/validator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/detector/token/bootstrapper/bootstrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/detector/token/bootstrapper/bootstrapper.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/model/register/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/model/register/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/null/model/register/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/null/model/register/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/validation/blueprint/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/validation/blueprint/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/validation/register/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/validation/register/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/microservice/identity/microservice.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/microservice/identity/microservice.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/microservice/token/menu/menu.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/microservice/token/menu/menu.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/register/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/register/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/register/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/register/model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/toolkit/model/register/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/toolkit/model/register/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/toolkit/model/state/token/toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/toolkit/model/state/token/toolkit.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/validator/blueprint/token/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/validator/blueprint/token/validator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/validator/model/player/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/validator/model/player/validator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/validator/model/square/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/validator/model/square/validator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/validator/model/token/consistency/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/validator/model/token/consistency/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/blueprint/model/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/blueprint/model/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/null/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/model/register/identity/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/null/model/register/identity/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/model/register/identity/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/null/model/register/identity/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/model/state/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/null/model/state/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/model/state/blueprint/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/null/blueprint/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/model/state/blueprint/arena/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/null/blueprint/arena/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/model/state/blueprint/arena/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/null/blueprint/arena/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/model/state/blueprint/board/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/null/blueprint/board/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/model/state/blueprint/board/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/null/blueprint/board/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/model/state/blueprint/coord/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/null/blueprint/coord/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/model/state/blueprint/coord/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/null/blueprint/coord/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/model/state/blueprint/edge/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/null/blueprint/edge/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/model/state/blueprint/edge/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/null/blueprint/edge/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/model/state/blueprint/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/null/blueprint/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/model/state/blueprint/formation/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/null/blueprint/formation/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/model/state/blueprint/formation/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/null/blueprint/formation/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/model/state/blueprint/game/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/null/blueprint/game/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/model/state/blueprint/game/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/null/blueprint/game/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/model/state/blueprint/hostage/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/null/blueprint/hostage/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/model/state/blueprint/hostage/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/null/blueprint/hostage/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/model/state/blueprint/node/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/null/blueprint/node/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/model/state/blueprint/node/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/null/blueprint/node/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/model/state/blueprint/persona/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/null/blueprint/persona/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/model/state/blueprint/persona/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/null/blueprint/persona/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/model/state/blueprint/player/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/null/blueprint/player/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/model/state/blueprint/player/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/null/blueprint/player/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/model/state/blueprint/rank/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/null/blueprint/rank/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/model/state/blueprint/rank/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/null/blueprint/rank/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/model/state/blueprint/schema/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/null/blueprint/schema/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/model/state/blueprint/schema/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/null/blueprint/schema/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/model/state/blueprint/square/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/null/blueprint/square/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/model/state/blueprint/square/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/null/blueprint/square/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/model/state/blueprint/team/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/null/blueprint/team/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/model/state/blueprint/team/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/null/blueprint/team/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/model/state/blueprint/token/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/null/blueprint/token/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/model/state/blueprint/token/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/null/blueprint/token/exception.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -101,7 +109,7 @@
     "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/err/build",
+    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/err/null/blueprint/register",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
@@ -113,18 +121,18 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/err/build" />
-      <recent name="$PROJECT_DIR$/src/err/validation/register" />
-      <recent name="$PROJECT_DIR$/src/err/validation/blueprint/register" />
-      <recent name="$PROJECT_DIR$/src/err/validation/blueprint" />
-      <recent name="$PROJECT_DIR$/src/err/model/register" />
+      <recent name="$PROJECT_DIR$/src/err/null/blueprint/register" />
+      <recent name="$PROJECT_DIR$/src/err/null/blueprint/register/operand" />
+      <recent name="$PROJECT_DIR$/src/err/null/blueprint" />
+      <recent name="$PROJECT_DIR$/src/blueprint/model/register" />
+      <recent name="$PROJECT_DIR$/src/blueprint/model" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/err/null" />
+      <recent name="$PROJECT_DIR$/src/blueprint/model/register/operand" />
       <recent name="$PROJECT_DIR$/src/err/tester/request/deletion/token" />
       <recent name="$PROJECT_DIR$/src/err/tester/request/pop/token" />
       <recent name="$PROJECT_DIR$/src/err/tester/request/pop" />
-      <recent name="$PROJECT_DIR$/src/err/tester/request/push/token" />
-      <recent name="$PROJECT_DIR$/src/err/tester/request/search/token" />
     </key>
   </component>
   <component name="RunManager" selected="Python.notifier">
@@ -851,7 +859,7 @@
       <workItem from="1782325486599" duration="56546000" />
       <workItem from="1782732939190" duration="235900000" />
       <workItem from="1783222430394" duration="208582000" />
-      <workItem from="1783540905722" duration="40344000" />
+      <workItem from="1783540905722" duration="42942000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />
