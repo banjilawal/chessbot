@@ -1,7 +1,7 @@
-# src/tester/promotion/rank/tester.py
+# src/tester/request/promotion/rank/tester.py
 
 """
-Module: tester.promotion.rank.tester
+Module: tester.request.promotion.rank.tester
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -15,11 +15,12 @@ from analyzer import TokenReadinessAnalyzer
 from err import PromoteToKingException, PromoteToPawnException, PromotionLevelTesterException
 from model import King, Pawn, Rank
 from result import MethodResultType, ValidationResult
+from tester import Tester
 from util import LoggingLevelRouter
 from validator import TokenValidator
 
 
-class PromotionLevelTester:
+class PromotionLevelTester(Tester):
     """
     Role:
         -   Helper

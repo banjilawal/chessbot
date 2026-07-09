@@ -1,7 +1,7 @@
-# src/tester/promotion/pawn/tester.py
+# src/tester/request/promotion/pawn/tester.py
 
 """
-Module: tester.promotion.pawn.tester
+Module: tester.request.promotion.pawn.tester
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -20,11 +20,12 @@ from err import (
 from model import PawnToken
 from report import TokenReadinessReport
 from result import MethodResultType, ValidationResult
+from tester import Tester
 from util import LoggingLevelRouter
 from validator import TokenValidator
 
 
-class PromotionPawnTester:
+class PromotionPawnTester(Tester):
     """
     Role:
         -   Helper
