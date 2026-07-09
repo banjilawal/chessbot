@@ -38,10 +38,9 @@ class ModelValidator(Validator[Model]):
     Super Class:
         Validator
     """
-    _.bootstrapper: Certifier
+    _bootstrapper: Certifier
     
-    def __init__(self, toolkit: ModelToolkit, bootstrapper: Certifier):
-        super().__init__(toolkit=toolkit)
+    def __init__(self, bootstrapper: Certifier):
         self._bootstrapper = bootstrapper
 
     @property

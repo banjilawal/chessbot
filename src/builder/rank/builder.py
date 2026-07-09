@@ -46,7 +46,7 @@ class RankBuilder(Builder[Rank]):
      """
     _bootstrapper: RankCertifier
     
-    def __init__(self, bootstrapper: RankCertifier | None = RankCertifier()):
+    def __init__(self, bootstrapper: RankCertifier | None = RankRootCertifier()):
         self._bootstrapper = bootstrapper
         
     

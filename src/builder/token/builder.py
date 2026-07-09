@@ -62,7 +62,7 @@ class TokenBuilder(Builder[Token]):
             finalizer: TokenAssemblyFinalizer | None = None,
             toolkit: TokenToolkit | None = None,
     ):
-        self._bootstrapper = bootstrapper or TokenCertifier()
+        self._bootstrapper = bootstrapper or TokenRootCertifier()
         self._assembler = assembler or TokenAssembler()
         self._finalizer = finalizer or TokenAssemblyFinalizer()
         self._toolkit = toolkit or TokenToolkit()

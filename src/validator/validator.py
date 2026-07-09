@@ -42,16 +42,6 @@ class Validator(ABC, Generic[T]):
         
     super Class:
     """
-    _toolkit: ModelToolkit[T]
-    
-    def __init__(self, toolkit: ModelToolkit):
-        self._toolkit = toolkit
-        
-    @property
-    @abstractmethod
-    def toolkit(self) -> ModelToolkit[T]:
-        pass
-    
 
     @abstractmethod
     @LoggingLevelRouter.monitor

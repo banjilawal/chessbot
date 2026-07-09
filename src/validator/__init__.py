@@ -18,7 +18,6 @@ from .hostage import *
 from .model import *
 from .number import *
 from .persona import *
-from .primary import *
 from .query import *
 from .schema import *
 from .string import *

@@ -9,11 +9,13 @@ version: 1.0.1
 
 from __future__ import annotations
 
+from ensurepip import bootstrap
 from typing import Any, cast
 
 from blueprint import TokenBlueprint
 from err import TokenValidatorException
-from model import Token
+from model import EntityRegister, Token, TokenEntityRegister
+from primary.token.certifier import TokenRootCertifier
 from result import ValidationResult
 from toolkit import TokenToolkit
 from util import LoggingLevelRouter
@@ -40,16 +42,17 @@ class TokenValidator(ModelValidator[Token]):
     Super Class:
         Validator
     """
-    OPERATION_NAME = "token_validator"
     
-    @classmethod
+    def __init__(self, bootstrapper: TokenRootCertifier | None = TokenRootCertifier()):
+        super().__init__(bootstrapper=bootstrapper)
+        
+    @@property
+    def bootstrapper(self) -> TokenRootCertifier:
+        return cast(TokenRootCertifier, self.bootstrapper)
+    
+
     @LoggingLevelRouter.monitor
-    def execute(
-            cls,
-            candidate: Any,
-            toolkit: TokenToolkit | None = None,
-            blueprint_validator: TokenCertifier | None = None,
-    ) -> ValidationResult[Token]:
+    def execute(self, candidate: Any) -> ValidationResult:
         """
         Verify the object is a Token that is safe to use.
 
@@ -70,59 +73,40 @@ class TokenValidator(ModelValidator[Token]):
         Raises:
              TokenValidatorException
         """
-        method = f"{cls.__name__}.validate"
+        method = f"{self.__class__.__name__}.execute"
         
-        # --- Supply any missing dependencies. ---#
-        if toolkit is None:
-            toolkit = TokenToolkit()
-        if blueprint_validator is None:
-            blueprint_validator = TokenCertifier()
-        
-        # Handle the case that, the validator is not primed.
-        validator_priming_result = toolkit.priming_validator.execute(
-            candidate=candidate,
-            context_model=toolkit.model,
-            null_exception=toolkit.null_exception,
+        entity_test = self.bootstrapper.toolkit.priming_validator.execute(
+            target_model=self.bootstrapper.toolkit.model,
+            null_exception=self.bootstrapper.toolkit.null_exception,
         )
-        if validator_priming_result.is_failure:
+        if entity_test.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 TokenValidatorException(
                     cls_mthd=method,
-                    cls_name=cls.__name__,
+                    cls_name=self.__class__.__name__,
                     msg=TokenValidatorException.MSG,
                     err_code=TokenValidatorException.ERR_CODE,
-                    ex=validator_priming_result.exception,
+                    ex=entity_test.exception,
                 )
             )
-        # --- Cast the candidate into a TokenBlueprint for additional tests. ---#
-        token = cast(Token, candidate)
-        blueprint = TokenBlueprint(
-            id=token.id,
-            team=token.team,
-            rank=token.rank,
-            formation=token.formation,
-            home_square=token.home_square,
-            null_exception=toolkit.null_exception,
+        entity_register = TokenEntityRegister(
+            model=cast(Token, candidate),
+            null_exception=self.bootstrapper.toolkit.null_exception
         )
-        
-        blueprint_validation_result = blueprint_validator.execute(
-            candidate=blueprint,
-            toolkit=toolkit,
-        )
-        # Handle the case that the, blueprint is flagged.
-        if blueprint_validation_result.is_failure:
-            # Send the exception chain on failure.
-            return ValidationResult.failure(
-                TokenValidatorException(
-                    cls_mthd=method,
-                    cls_name=cls.__name__,
-                    msg=TokenValidatorException.MSG,
-                    err_code=TokenValidatorException.ERR_CODE,
-                    ex=blueprint_validation_result.exception,
-                )
-            )
-        ## Since the blueprint is valid by the transitive property the token is valid.
 
+        # Handle the case that, bootstrap is not successful.
+        bootstrap_result = self.bootstrapper.execute(candidate=entity_register)
+        if bootstrap_result.is_failure:
+            # Send the exception chain on failure.
+            return ValidationResult.failure(
+                TokenValidatorException(
+                    cls_mthd=method,
+                    cls_name=self.__class__.__name__,
+                    msg=TokenValidatorException.MSG,
+                    err_code=TokenValidatorException.ERR_CODE,
+                    ex=bootstrap_result.exception,
+                )
+            )
         # --- Forward the work product to the caller. ---#
-        return ValidationResult.success(token)
+        return bootstrap_result

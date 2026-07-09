@@ -69,7 +69,7 @@ class ManeuverToolkit(AnalyzerBootstrapperToolkit[Maneuver]):
     readiness_analyzer: TokenReadinessAnalyzer = TokenReadinessAnalyzer()
     relation_analyzer: SquareTokenRelationAnalyzer = SquareTokenRelationAnalyzer()
     endpoint_validator: ManeuverEndpointValidator = ManeuverEndpointValidator()
-    origin_relation_validator: TokenOriginCertifier = TokenOriginCertifier()
-    destination_relation_validator: TokenDestinationCertifier = TokenDestinationCertifier()
+    origin_relation_validator: TokenOriginCertifier = TokenOriginRootCertifier()
+    destination_relation_validator: TokenDestinationCertifier = TokenDestinationRootCertifier()
     null_exception: ManeuverNullException = ManeuverNullException()
     analyzer: Maneuver = Maneuver

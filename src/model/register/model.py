@@ -9,14 +9,11 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from typing import Any, Dict, Generic, List, TypeVar
-
-from model import Model
-
-T = TypeVar("T")
+from abc import ABC
+from typing import Any, Dict, Generic, List
 
 
-class Register(Model, Generic[Any]):
+class Register(ABC, Generic[Any]):
     """
     Role:
         -   Addressing
@@ -50,17 +47,17 @@ class Register(Model, Generic[Any]):
         self._b = b
     
     @property
-    def a(self) -> T:
+    def a(self) -> A:
         return self._a
     
     @property
-    def b(self) -> T:
+    def b(self) -> A:
         return self._b
     
     @property
-    def to_list(self) -> List[T]:
+    def to_list(self) -> List[A]:
         return [self._a, self._b]
     
     @property
-    def to_dict(self) -> Dict[str, T]:
+    def to_dict(self) -> Dict[str, Any]:
         return {"a": self._a, "v": self._b}

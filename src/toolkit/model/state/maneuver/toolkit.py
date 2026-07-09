@@ -69,7 +69,7 @@ class ManeuverToolkit(ModelToolkit[Maneuver]):
     readiness_analyzer: TokenReadinessAnalyzer = TokenReadinessAnalyzer()
     relation_analyzer: SquareTokenRelationAnalyzer = SquareTokenRelationAnalyzer()
     endpoint_validator: ManeuverEndpointValidator = ManeuverEndpointValidator()
-    origin_certifier: TokenOriginCertifier = TokenOriginCertifier()
-    destination_certifier: TokenDestinationCertifier = TokenDestinationCertifier()
+    origin_certifier: TokenOriginCertifier = TokenOriginRootCertifier()
+    destination_certifier: TokenDestinationCertifier = TokenDestinationRootCertifier()
     null_exception: ManeuverNullException = ManeuverNullException()
     model: Maneuver = Maneuver

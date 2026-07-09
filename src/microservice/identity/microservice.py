@@ -55,7 +55,7 @@ class IdentityService:
             number_validator: NumberValidator | None = NumberValidator(),
             name_validator: NameValidator | None = NameValidator(),
             blueprint_id_extractor: BlueprintIdExtractor | None = BlueprintIdExtractor(),
-            identity_register_certifier: IdentityRegisterCertifier | None = IdentityRegisterCertifier()
+            identity_register_certifier: IdentityRegisterCertifier | None = IdentityRegisterRootCertifier()
     ):
         """
         Args:

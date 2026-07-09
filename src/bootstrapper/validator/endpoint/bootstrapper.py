@@ -74,9 +74,9 @@ class EndpointCertifierBootstrapper(ValidatorBootstrapper):
         
         # --- Supply any missing dependencies. ---#
         if origin_certifier is None:
-            origin_certifier = TokenOriginCertifier(),
+            origin_certifier = TokenOriginRootCertifier(),
         if destination_certifier is None:
-            destination_certifier = TokenDestinationCertifier()
+            destination_certifier = TokenDestinationRootCertifier()
         
         # Handle the case that, the token is not at the origin
         token_origin_relation_analysis_result = origin_certifier.validate(
