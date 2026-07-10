@@ -37,7 +37,7 @@ class ScalarValidator(ModelValidator[Scalar]):
         -   def validate(candidate: Any, toolkit: MathToolkit) -> ValidationResult[Scalar]:
 
     Super Class:
-        Validator
+        ModelValidator
     """
     OPERATION_NAME = "scalar_validator"
     

@@ -1,7 +1,7 @@
 # src/consistency/token/consistency.py
 
 """
-Module: consistency.token.operation
+Module: consistency.token.checker
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -11,12 +11,12 @@ from __future__ import annotations
 
 from typing import Any, cast
 
-from err import TokenConsistencyException
-from model import Token, TokenEntityRegister
+from err import TokenConsistencyCheckerException
+from model import Token
 from primary import TokenRootCertifier
 from result import ValidationResult
 from util import LoggingLevelRouter
-from consistency import ConsistencyChecker
+from consistency import  ConsistencyChecker
 
 
 class TokenConsistencyChecker(ConsistencyChecker[Token]):
@@ -68,7 +68,7 @@ class TokenConsistencyChecker(ConsistencyChecker[Token]):
         Returns:
             ValidationResult[Token]
         Raises:
-             TokenConsistencyException
+             TokenConsistencyCheckerException
         """
         method = f"{self.__class__.__name__}.execute"
         
@@ -79,11 +79,11 @@ class TokenConsistencyChecker(ConsistencyChecker[Token]):
         if entity_test.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                TokenConsistencyException(
+                TokenConsistencyCheckerException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=TokenConsistencyException.MSG,
-                    err_code=TokenConsistencyException.ERR_CODE,
+                    msg=TokenConsistencyCheckerException.MSG,
+                    err_code=TokenConsistencyCheckerException.ERR_CODE,
                     ex=entity_test.exception,
                 )
             )
@@ -97,11 +97,11 @@ class TokenConsistencyChecker(ConsistencyChecker[Token]):
         if bootstrap_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                TokenConsistencyException(
+                TokenConsistencyCheckerException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=TokenConsistencyException.MSG,
-                    err_code=TokenConsistencyException.ERR_CODE,
+                    msg=TokenConsistencyCheckerException.MSG,
+                    err_code=TokenConsistencyCheckerException.ERR_CODE,
                     ex=bootstrap_result.exception,
                 )
             )

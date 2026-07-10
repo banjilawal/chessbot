@@ -10,7 +10,7 @@ version: 1.0.1
 from __future__ import annotations
 
 from model import Player
-from operation import Consistency
+from consistency import  ConsistencyChecker
 
 
 class PlayerConsistencyChecker(ConsistencyChecker[Player]):

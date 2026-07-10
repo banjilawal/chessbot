@@ -41,7 +41,7 @@ class BoardTeamBinderValidator(ModelValidator[BoardBinder]):
             ) -> ValidationResult[BoardTeamBinder]:
 
     Super Class:
-        Validator
+        ModelValidator
     """
     
     @classmethod

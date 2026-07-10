@@ -11,7 +11,7 @@ from typing import Any, cast
 
 from logic.board import BoardService
 from logic.team import Team, UniqueTeamDataService
-from logic.arena import Arena, ArenaConsistencyException, NullArenaException, ArenaTeamsInArenaException
+from logic.arena import Arena, ArenaConsistencyCheckerException, NullArenaException, ArenaTeamsInArenaException
 from system import (
     IdentityService, LoggingLevelRouter, SearchResult, ServiceConsistency, ValidationResult,
     Consistency
@@ -65,7 +65,7 @@ class ArenaConsistencyChecker(ConsistencyChecker[Arena]):
             - On failure: Exception.
 
         Raises:
-            *   ArenaConsistencyException
+            *   ArenaConsistencyCheckerException
         """
         method = "ArenaConsistency.execute"
         try:
@@ -126,11 +126,11 @@ class ArenaConsistencyChecker(ConsistencyChecker[Arena]):
             return ValidationResult.success(arena)
         
         # The flow should only get here if the logic did not route all the types of concrete Arenas.
-        # In that case wrap the unhandled exception inside an ArenaConsistencyException then, return
+        # In that case wrap the unhandled exception inside an ArenaConsistencyCheckerException then, return
         # the exception chain inside a ValidationResult.
         except Exception as ex:
             return ValidationResult.failure(
-                ArenaConsistencyException(
-                    ex=ex, msg=f"{method}: {ArenaConsistencyException.MSG}"
+                ArenaConsistencyCheckerException(
+                    ex=ex, msg=f"{method}: {ArenaConsistencyCheckerException.MSG}"
                 )
             )

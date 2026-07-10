@@ -38,7 +38,7 @@ class ManeuverEndpointValidator:
             ) -> ValidationResult[Square]:
 
     Super Class:
-        Validator
+        ModelValidator
     """
     OPERATION_NAME = "token_destination_relation_validator"
     

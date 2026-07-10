@@ -39,7 +39,7 @@ class TokenDestinationCertifier:
             ) -> ValidationResult[Square]
 
     Super Class:
-        Validator
+        ModelValidator
     """
     
     @classmethod

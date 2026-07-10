@@ -14,4 +14,4 @@ from .destination import *
 from .origin import *
 
 # Modules
-from .consistency import ManeuverEndpointConsistency
+from .checker import ManeuverEndpointConsistencyChecker

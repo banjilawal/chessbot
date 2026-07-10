@@ -205,21 +205,25 @@ class TokenRootCertifier(RootCertifier[TokenBlueprint]):
         
         if operand.is_model_operand:
             return ValidationResult.success(
-                Token(
-                    id=id,
-                    team=team,
-                    rank=rank,
-                    formation=formation,
-                    home_square=home_square,
+                TokenDtoOperand(
+                    model=Token(
+                        id=id,
+                        team=team,
+                        rank=rank,
+                        formation=formation,
+                        home_square=home_square,
+                    )
                 )
             )
         # --- Forward the work product to the caller. ---#
         return ValidationResult.success(
-            TokenBlueprint(
-                id=id,
-                rank=rank,
-                team=team,
-                formation=formation,
-                home_square=home_square,
+            TokenDtoOperand(
+                blueprint=TokenBlueprint(
+                    id=id,
+                    rank=rank,
+                    team=team,
+                    formation=formation,
+                    home_square=home_square,
+                )
             )
         )

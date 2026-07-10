@@ -10,8 +10,6 @@ version: 1.0.1
 # =========== CONSISTENCY.TOKEN PACKAGE ===========#
 
 # Packages
-from .consistency import *
-from .integrity import *
 
 # Modules
-from .consistency import TokenConsistency
+from .checker import TokenConsistencyChecker

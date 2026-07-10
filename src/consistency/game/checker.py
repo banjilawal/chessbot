@@ -96,9 +96,9 @@ class GameConsistencyChecker(ConsistencyChecker[Game]):
                     return ValidationResult.failure(consistencyChecker.exception)
             return ValidationResult.success(game)
         
-        # Finally, for unhandled exception, wrap it inside an GameConsistencyException. Then send the exception-chain
+        # Finally, for unhandled exception, wrap it inside an GameConsistencyCheckerException. Then send the exception-chain
         # in a ValidationResult.
         except Exception as ex:
             return ValidationResult.failure(
-                GameConsistencyException(ex=ex, msg=f"{method}: {GameConsistencyException.MSG}")
+                GameConsistencyCheckerException(ex=ex, msg=f"{method}: {GameConsistencyCheckerException.MSG}")
             )

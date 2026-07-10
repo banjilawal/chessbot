@@ -36,7 +36,7 @@ class TeamValidator(ModelValidator[Team]):
         -   def validate(candidate: Any, toolkit: TeamToolkit) -> ValidationResult[Team]:
 
     Super Class:
-        Validator
+        ModelValidator
     """
     OPERATION_NAME = "text_validator"
     

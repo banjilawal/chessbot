@@ -36,6 +36,7 @@ class SquareValidator(ModelValidator[Square]):
         root_certifier: SquareRootCertifier
     Provides:
         -   def validate(candidate: Any, toolkit: SquareToolkit) -> ValidationResult[Square]:
+            execute(candidate: Any) -> ValidationResult
 
     Super Class:
         ModelValidator

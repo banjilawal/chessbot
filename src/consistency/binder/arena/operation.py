@@ -11,10 +11,10 @@ from __future__ import annotations
 
 from typing import Any, Dict, cast
 
-from err import BoardTeamBinderNullException, BoardTeamBinderConsistencyException
+from err import BoardTeamBinderNullException, BoardTeamBinderConsistencyCheckerException
 from model import BoardBinder, Schema, Team
-from operation import Consistency
-from bootstrapper.consistency.binder.operation import SchemaHashtableConsistency
+from consistency import  ConsistencyChecker
+from bootstrapper.consistency.binder.checker import SchemaHashtableConsistency
 from result import ValidationResult
 from util import LoggingLevelRouter
 from toolkit import BoardTeamBinderToolkit
@@ -70,7 +70,7 @@ class BoardTeamBinderConsistencyChecker(ConsistencyChecker[BoardBinder]):
             TypeError
             BoardTeamBinderNullException
             ZeroBoardTeamBinderFlagsException
-            BoardTeamBinderConsistencyException
+            BoardTeamBinderConsistencyCheckerException
             ExcessBoardTeamBinderFlagsException
         """
         method = f"{self.__class__.__name__}.execute"
@@ -87,11 +87,11 @@ class BoardTeamBinderConsistencyChecker(ConsistencyChecker[BoardBinder]):
         if consistency_priming_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                BoardTeamBinderConsistencyException(
+                BoardTeamBinderConsistencyCheckerException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=BoardTeamBinderConsistencyException.MSG,
-                    err_code=BoardTeamBinderConsistencyException.ERR_CODE,
+                    msg=BoardTeamBinderConsistencyCheckerException.MSG,
+                    err_code=BoardTeamBinderConsistencyCheckerException.ERR_CODE,
                     ex=consistency_priming_result.exception,
                 )
             )
@@ -101,11 +101,11 @@ class BoardTeamBinderConsistencyChecker(ConsistencyChecker[BoardBinder]):
         if board_consistency_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                BoardTeamBinderConsistencyException(
+                BoardTeamBinderConsistencyCheckerException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=BoardTeamBinderConsistencyException.MSG,
-                    err_code=BoardTeamBinderConsistencyException.ERR_CODE,
+                    msg=BoardTeamBinderConsistencyCheckerException.MSG,
+                    err_code=BoardTeamBinderConsistencyCheckerException.ERR_CODE,
                     ex=board_consistency_result.exception,
                 )
             )
@@ -126,11 +126,11 @@ class BoardTeamBinderConsistencyChecker(ConsistencyChecker[BoardBinder]):
         if table_validation_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                BoardTeamBinderConsistencyException(
+                BoardTeamBinderConsistencyCheckerException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=BoardTeamBinderConsistencyException.MSG,
-                    err_code=BoardTeamBinderConsistencyException.ERR_CODE,
+                    msg=BoardTeamBinderConsistencyCheckerException.MSG,
+                    err_code=BoardTeamBinderConsistencyCheckerException.ERR_CODE,
                     ex=table_validation_result.exception
                 )
             )
@@ -142,11 +142,11 @@ class BoardTeamBinderConsistencyChecker(ConsistencyChecker[BoardBinder]):
             schema_validation_result = toolkit.schema_service.consistency.execute(table[key])
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                BoardTeamBinderConsistencyException(
+                BoardTeamBinderConsistencyCheckerException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=BoardTeamBinderConsistencyException.MSG,
-                    err_code=BoardTeamBinderConsistencyException.ERR_CODE,
+                    msg=BoardTeamBinderConsistencyCheckerException.MSG,
+                    err_code=BoardTeamBinderConsistencyCheckerException.ERR_CODE,
                     ex=schema_validation_result.exception
                 )
             )
@@ -155,11 +155,11 @@ class BoardTeamBinderConsistencyChecker(ConsistencyChecker[BoardBinder]):
             team_validation_result = toolkit.schema_service.consistency.execute(table[key])
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                BoardTeamBinderConsistencyException(
+                BoardTeamBinderConsistencyCheckerException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=BoardTeamBinderConsistencyException.MSG,
-                    err_code=BoardTeamBinderConsistencyException.ERR_CODE,
+                    msg=BoardTeamBinderConsistencyCheckerException.MSG,
+                    err_code=BoardTeamBinderConsistencyCheckerException.ERR_CODE,
                     ex=team_validation_result.exception
                 )
             )

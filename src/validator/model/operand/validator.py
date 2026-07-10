@@ -39,7 +39,7 @@ class VectorOperandValidator(Validator[VectorOperand]):
             ) -> ValidationResult[VectorOperand]:
 
     Super Class:
-        Validator
+        ModelValidator
     """
     
     @classmethod

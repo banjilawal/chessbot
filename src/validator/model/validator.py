@@ -36,7 +36,7 @@ class ModelValidator(Validator[Model]):
         -   execute(self, candidate: Any) -> ValidationResult
 
     Super Class:
-        Validator
+        ModelValidator
     """
     _bootstrapper: Certifier
     

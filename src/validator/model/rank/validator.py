@@ -35,7 +35,7 @@ class RankValidator(ModelValidator[Rank]):
         -   def validate(candidate: Any, toolkit: RankToolkit) -> ValidationResult[Rank]:
 
     Super Class:
-        Validator
+        ModelValidator
     """
     OPERATION_NAME = "rank_validator"
     

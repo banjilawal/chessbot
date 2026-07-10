@@ -42,7 +42,7 @@ class ItineraryValidator(ModelValidator[Itinerary]):
             ) -> ValidationResult[Token]:
 
     Super Class:
-        Validator
+        ModelValidator
     """
     OPERATION_NAME = "itinerary_validator"
     

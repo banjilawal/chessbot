@@ -5,226 +5,59 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/consistency/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/consistency/arena/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/consistency/arena/operation.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/consistency/binder/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/consistency/binder/arena/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/consistency/binder/arena/operation.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/consistency/binder/board/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/consistency/binder/board/validator.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/consistency/board/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/consistency/board/operation.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/consistency/checker.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/consistency/endpoint/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/consistency/endpoint/destination/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/consistency/endpoint/destination/validator.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/consistency/endpoint/origin/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/consistency/endpoint/origin/validator.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/consistency/endpoint/validator.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/consistency/game/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/consistency/game/operation.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/consistency/maneuver/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/consistency/maneuver/validator.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/consistency/path/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/consistency/path/validator.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/consistency/player/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/consistency/player/validator.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/consistency/snapshot/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/consistency/snapshot/operation.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/consistency/square/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/consistency/square/validator.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/consistency/team/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/consistency/team/validator.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/consistency/token/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/consistency/token/consistency/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/consistency/token/consistency/validator.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/consistency/token/validator.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistencey/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistencey/arena/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistencey/arena/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistencey/binder/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistencey/binder/arena/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistencey/binder/arena/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistencey/binder/board/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistencey/binder/board/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistencey/binder/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistencey/board/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistencey/board/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistencey/edge/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistencey/edge/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistencey/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistencey/game/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistencey/game/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistencey/hashtable/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistencey/hashtable/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistencey/hashtable/schema/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistencey/hashtable/schema/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistencey/hostage/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistencey/hostage/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistencey/node/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistencey/node/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistencey/operand/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistencey/operand/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistencey/path/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistencey/path/attack/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistencey/path/attack/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistencey/path/blocked/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistencey/path/blocked/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistencey/path/checked/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistencey/path/checked/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistencey/path/circular/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistencey/path/circular/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistencey/path/combatant/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistencey/path/combatant/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistencey/path/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistencey/path/king/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistencey/path/king/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistencey/player/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistencey/player/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistencey/player/human/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistencey/player/human/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistencey/player/machine/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistencey/player/machine/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistencey/register/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistencey/register/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistencey/register/identity/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistencey/register/identity/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistencey/register/operand/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistencey/register/operand/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistencey/register/square/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistencey/register/square/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistencey/registry/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistencey/registry/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistencey/registry/key/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistencey/registry/key/collision/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistencey/registry/key/collision/domain/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistencey/registry/key/collision/domain/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistencey/registry/key/collision/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistencey/registry/key/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistencey/scalar/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistencey/scalar/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistencey/square/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistencey/square/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistencey/square/opening/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistencey/square/opening/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistencey/team/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistencey/team/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistencey/token/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistencey/token/combatant/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistencey/token/combatant/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistencey/token/combatant/pawn/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistencey/token/combatant/pawn/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistencey/token/disabled/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistencey/token/disabled/attack/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistencey/token/disabled/attack/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistencey/token/disabled/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistencey/token/disabled/maneuver/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistencey/token/disabled/maneuver/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistencey/token/disabled/maneuver/undo/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistencey/token/disabled/maneuver/undo/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistencey/token/disabled/pawn/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistencey/token/disabled/pawn/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistencey/token/disabled/pawn/promotion/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistencey/token/disabled/pawn/promotion/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistencey/token/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistencey/token/king/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistencey/token/king/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/consistencey/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/consistencey/arena/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/consistencey/arena/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/consistencey/binder/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/consistencey/binder/arena/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/consistencey/binder/arena/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/consistencey/binder/board/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/consistencey/binder/board/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/consistencey/binder/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/consistencey/board/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/consistencey/board/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/consistencey/edge/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/consistencey/edge/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/consistencey/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/consistencey/game/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/consistencey/game/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/consistencey/hashtable/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/consistencey/hashtable/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/consistencey/hashtable/schema/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/consistencey/hashtable/schema/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/consistencey/hostage/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/consistencey/hostage/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/consistencey/node/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/consistencey/node/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/consistencey/operand/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/consistencey/operand/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/consistencey/path/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/consistencey/path/attack/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/consistencey/path/attack/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/consistencey/path/blocked/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/consistencey/path/blocked/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/consistencey/path/checked/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/consistencey/path/checked/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/consistencey/path/circular/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/consistencey/path/circular/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/consistencey/path/combatant/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/consistencey/path/combatant/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/consistencey/path/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/consistencey/path/king/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/consistencey/path/king/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/consistencey/player/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/consistencey/player/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/consistencey/player/human/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/consistencey/player/human/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/consistencey/player/machine/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/consistencey/player/machine/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/consistencey/register/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/consistencey/register/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/consistencey/register/identity/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/consistencey/register/identity/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/consistencey/register/operand/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/consistencey/register/operand/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/consistencey/register/square/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/consistencey/register/square/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/consistencey/registry/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/consistencey/registry/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/consistencey/registry/key/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/consistencey/registry/key/collision/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/consistencey/registry/key/collision/domain/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/consistencey/registry/key/collision/domain/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/consistencey/registry/key/collision/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/consistencey/registry/key/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/consistencey/scalar/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/consistencey/scalar/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/consistencey/square/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/consistencey/square/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/consistencey/square/opening/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/consistencey/square/opening/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/consistencey/team/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/consistencey/team/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/consistencey/token/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/consistencey/token/combatant/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/consistencey/token/combatant/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/consistencey/token/combatant/pawn/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/consistencey/token/combatant/pawn/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/consistencey/token/disabled/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/consistencey/token/disabled/attack/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/consistencey/token/disabled/attack/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/consistencey/token/disabled/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/consistencey/token/disabled/maneuver/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/consistencey/token/disabled/maneuver/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/consistencey/token/disabled/maneuver/undo/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/consistencey/token/disabled/maneuver/undo/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/consistencey/token/disabled/pawn/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/consistencey/token/disabled/pawn/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/consistencey/token/disabled/pawn/promotion/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/consistencey/token/disabled/pawn/promotion/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/consistencey/token/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/consistencey/token/king/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/consistencey/token/king/exception.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/model/arena/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/model/arena/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/null/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/null/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/for_my_resume.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/for_my_resume.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/consistency/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/consistency/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/consistency/arena/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/consistency/arena/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/consistency/arena/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/consistency/arena/checker.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/consistency/binder/arena/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/consistency/binder/arena/operation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/consistency/binder/board/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/consistency/binder/board/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/consistency/binder/board/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/consistency/binder/board/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/consistency/board/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/consistency/board/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/consistency/board/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/consistency/board/checker.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/consistency/endpoint/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/consistency/endpoint/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/consistency/endpoint/destination/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/consistency/endpoint/destination/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/consistency/endpoint/origin/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/consistency/endpoint/origin/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/consistency/endpoint/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/consistency/endpoint/checker.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/consistency/game/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/consistency/game/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/consistency/game/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/consistency/game/checker.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/consistency/maneuver/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/consistency/maneuver/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/consistency/maneuver/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/consistency/maneuver/checker.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/consistency/path/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/consistency/path/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/consistency/path/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/consistency/path/checker.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/consistency/player/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/consistency/player/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/consistency/player/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/consistency/player/checker.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/consistency/snapshot/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/consistency/snapshot/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/consistency/snapshot/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/consistency/snapshot/checker.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/consistency/square/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/consistency/square/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/consistency/square/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/consistency/square/checker.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/consistency/team/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/consistency/team/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/consistency/team/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/consistency/team/checker.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/consistency/token/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/consistency/token/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/consistency/token/consistency/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/consistency/token/consistency/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/consistency/token/consistency/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/consistency/token/consistency/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/consistency/token/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/consistency/token/checker.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/inconsistent/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/inconsistent/exception.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validator/model/binder/arena/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/validator/model/binder/arena/operation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validator/model/binder/board/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/validator/model/binder/board/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validator/model/coord/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/validator/model/coord/operation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validator/model/endpoint/destination/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/validator/model/endpoint/destination/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validator/model/endpoint/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/validator/model/endpoint/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validator/model/itinerary/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/validator/model/itinerary/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validator/model/maneuver/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/validator/model/maneuver/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validator/model/operand/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/validator/model/operand/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validator/model/path/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/validator/model/path/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validator/model/rank/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/validator/model/rank/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validator/model/register/operand/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/validator/model/register/operand/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validator/model/scalar/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/validator/model/scalar/operation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validator/model/square/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/validator/model/square/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validator/model/team/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/validator/model/team/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validator/model/token/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/validator/model/token/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validator/model/token/consistency/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validator/model/token/consistency/validator.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validator/model/token/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/validator/model/token/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validator/model/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/validator/model/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validator/model/vector/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/validator/model/vector/validator.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -1028,7 +861,7 @@
       <workItem from="1782325486599" duration="56546000" />
       <workItem from="1782732939190" duration="235900000" />
       <workItem from="1783222430394" duration="208582000" />
-      <workItem from="1783540905722" duration="100526000" />
+      <workItem from="1783540905722" duration="102499000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />

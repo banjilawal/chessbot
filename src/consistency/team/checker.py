@@ -1,7 +1,7 @@
 # src/consistency/team/consistency.py
 
 """
-Module: consistency.team.operation
+Module: consistency.team.checker
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -15,8 +15,8 @@ from model import Team
 from toolkit import TeamToolkit
 from result import ValidationResult
 from util import LoggingLevelRouter
-from err import SchemaNullException, TeamNullException, TeamConsistencyException
-from consistency import ConsistencyChecker
+from err import SchemaNullException, TeamNullException, TeamConsistencyCheckerException
+from consistency import  ConsistencyChecker
 
 
 class TeamConsistencyChecker(ConsistencyChecker[Team]):
@@ -64,7 +64,7 @@ class TeamConsistencyChecker(ConsistencyChecker[Team]):
         Returns:
             ValidationResult[Team]
         Raises:
-             TeamConsistencyException
+             TeamConsistencyCheckerException
         """
         method = f"{self.__class__.__name__}.execute"
         
@@ -81,11 +81,11 @@ class TeamConsistencyChecker(ConsistencyChecker[Team]):
         if consistency_priming_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                TeamConsistencyException(
+                TeamConsistencyCheckerException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=TeamConsistencyException.MSG,
-                    err_code=TeamConsistencyException.ERR_CODE,
+                    msg=TeamConsistencyCheckerException.MSG,
+                    err_code=TeamConsistencyCheckerException.ERR_CODE,
                     ex=consistency_priming_result.exception,
                 )
             )
@@ -97,11 +97,11 @@ class TeamConsistencyChecker(ConsistencyChecker[Team]):
         if id_validation_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                TeamConsistencyException(
+                TeamConsistencyCheckerException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=TeamConsistencyException.MSG,
-                    err_code=TeamConsistencyException.ERR_CODE,
+                    msg=TeamConsistencyCheckerException.MSG,
+                    err_code=TeamConsistencyCheckerException.ERR_CODE,
                     ex=id_validation_result.exception,
                 )
             )
@@ -114,11 +114,11 @@ class TeamConsistencyChecker(ConsistencyChecker[Team]):
         if schema_validation_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                TeamConsistencyException(
+                TeamConsistencyCheckerException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=TeamConsistencyException.MSG,
-                    err_code=TeamConsistencyException.ERR_CODE,
+                    msg=TeamConsistencyCheckerException.MSG,
+                    err_code=TeamConsistencyCheckerException.ERR_CODE,
                     ex=schema_validation_result.exception,
                 )
             )
@@ -127,11 +127,11 @@ class TeamConsistencyChecker(ConsistencyChecker[Team]):
         if owner_validation_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                TeamConsistencyException(
+                TeamConsistencyCheckerException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=TeamConsistencyException.MSG,
-                    err_code=TeamConsistencyException.ERR_CODE,
+                    msg=TeamConsistencyCheckerException.MSG,
+                    err_code=TeamConsistencyCheckerException.ERR_CODE,
                     ex=owner_validation_result.exception,
                 )
             )
@@ -140,11 +140,11 @@ class TeamConsistencyChecker(ConsistencyChecker[Team]):
         if board_consistency_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                TeamConsistencyException(
+                TeamConsistencyCheckerException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=TeamConsistencyException.MSG,
-                    err_code=TeamConsistencyException.ERR_CODE,
+                    msg=TeamConsistencyCheckerException.MSG,
+                    err_code=TeamConsistencyCheckerException.ERR_CODE,
                     ex=board_consistency_result.exception,
                 )
             )

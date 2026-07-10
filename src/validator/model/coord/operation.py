@@ -38,7 +38,7 @@ class CoordValidator(ModelValidator[Coord]):
             ) -> ValidationResult[Coord]:
 
     Super Class:
-        Validator
+        ModelValidator
     """
     OPERATION_NAME = "coord_validator"
     

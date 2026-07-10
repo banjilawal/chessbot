@@ -11,8 +11,10 @@ from __future__ import annotations
 
 from typing import Any, cast
 
+from consistency import TokenConsistencyChecker
 from err import TokenValidatorException
-from model import Token, TokenEntityRegister
+from model import HomeSquare, Square, Token
+from operand import TokenDtoOperand
 from primary import TokenRootCertifier
 from result import ValidationResult
 from util import LoggingLevelRouter
@@ -31,17 +33,23 @@ class TokenValidator(ModelValidator[Token]):
         1.  Ensure a Token instance is certified safe, reliable and consistent before use.
 
     Attributes:
+        root_certifier: TokenRootCertifier
 
     Provides:
-        -   def validate(
-                candidate: Any, toolkit: TokenToolkit) -> ValidationResult[Token]:
+        -   execute(self, candidate: Any) -> ValidationResult
 
     Super Class:
-        Validator
+        ModelValidator
     """
+    _consistency_checker: TokenConsistencyChecker
     
-    def __init__(self, root_certifier: TokenRootCertifier | None = TokenRootCertifier()):
+    def __init__(
+            self,
+            root_certifier: TokenRootCertifier | None = TokenRootCertifier(),
+            consistency_checker: TokenConsistencyChecker | None = TokenConsistencyChecker(),
+    ):
         super().__init__(root_certifier=root_certifier)
+        self._consistency_checker = consistency_checker
         
     @property
     def root_certifier(self) -> TokenRootCertifier:
@@ -72,11 +80,11 @@ class TokenValidator(ModelValidator[Token]):
         """
         method = f"{self.__class__.__name__}.execute"
         
-        entity_test = self.root_certifier.toolkit.priming_validator.execute(
+        bootstrap = self.root_certifier.toolkit.priming_validator.execute(
             target_model=self.root_certifier.toolkit.model,
             null_exception=self.root_certifier.toolkit.null_exception,
         )
-        if entity_test.is_failure:
+        if bootstrap.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 TokenValidatorException(
@@ -84,17 +92,13 @@ class TokenValidator(ModelValidator[Token]):
                     cls_name=self.__class__.__name__,
                     msg=TokenValidatorException.MSG,
                     err_code=TokenValidatorException.ERR_CODE,
-                    ex=entity_test.exception,
+                    ex=bootstrap.exception,
                 )
             )
-        entity_register = TokenEntityRegister(
-            model=cast(Token, candidate),
-            null_exception=self.root_certifier.toolkit.null_exception
-        )
-
+        dto = TokenDtoOperand(model=bootstrap.payload)
         # Handle the case that, bootstrap is not successful.
-        bootstrap_result = self.root_certifier.execute(candidate=entity_register)
-        if bootstrap_result.is_failure:
+        root_certification = self.root_certifier.execute(candidate=dto)
+        if root_certification.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 TokenValidatorException(
@@ -102,8 +106,23 @@ class TokenValidator(ModelValidator[Token]):
                     cls_name=self.__class__.__name__,
                     msg=TokenValidatorException.MSG,
                     err_code=TokenValidatorException.ERR_CODE,
-                    ex=bootstrap_result.exception,
+                    ex=root_certification.exception,
                 )
             )
+        # Handle the case that, the square has an inconsistency
+        consistency_check = self._consistency_checker.execute(root_certification.payload)
+        if consistency_check.is_failure:
+            # Send the exception chain on failure.
+            return ValidationResult.failure(
+                TokenValidatorException(
+                    cls_mthd=method,
+                    cls_name=self.__class__.__name__,
+                    msg=TokenValidatorException.MSG,
+                    err_code=TokenValidatorException.ERR_CODE,
+                    ex=consistency_check.exception,
+                )
+            )
+        if isinstance(consistency_check.payload, HomeSquare):
+            return ValidationResult.success(cast(HomeSquare, consistency_check.payload))
         # --- Forward the work product to the caller. ---#
-        return bootstrap_result
+        return ValidationResult.success(cast(Square, consistency_check.payload))

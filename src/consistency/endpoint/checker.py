@@ -10,11 +10,11 @@ version: 1.0.1
 from __future__ import annotations
 
 
-from err import ManeuverEndpointConsistencyException
+from err import ManeuverEndpointConsistencyCheckerException
 from model import Square, Token
 from result import ValidationResult
 from util import LoggingLevelRouter
-from consistency import TokenDestinationCertifier, TokenOriginCertifier
+from consistency import  TokenDestinationCertifier, TokenOriginCertifier
 
 
 class ManeuverEndpointConsistency:
@@ -69,7 +69,7 @@ class ManeuverEndpointConsistency:
         Returns:
             ValidationResult[int]
         Raises:
-            ManeuverEndpointConsistencyException
+            ManeuverEndpointConsistencyCheckerException
         """
         method = f"{self.__class__.__name__}.consistency"
         
@@ -87,11 +87,11 @@ class ManeuverEndpointConsistency:
         if token_origin_relation_analysis_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                ManeuverEndpointConsistencyException(
+                ManeuverEndpointConsistencyCheckerException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=ManeuverEndpointConsistencyException.MSG,
-                    err_code=ManeuverEndpointConsistencyException.ERR_CODE,
+                    msg=ManeuverEndpointConsistencyCheckerException.MSG,
+                    err_code=ManeuverEndpointConsistencyCheckerException.ERR_CODE,
                     ex=token_origin_relation_analysis_result.exception,
                 )
             )
@@ -103,11 +103,11 @@ class ManeuverEndpointConsistency:
         if token_destination_relation_analysis_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                ManeuverEndpointConsistencyException(
+                ManeuverEndpointConsistencyCheckerException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=ManeuverEndpointConsistencyException.MSG,
-                    err_code=ManeuverEndpointConsistencyException.ERR_CODE,
+                    msg=ManeuverEndpointConsistencyCheckerException.MSG,
+                    err_code=ManeuverEndpointConsistencyCheckerException.ERR_CODE,
                     ex=token_destination_relation_analysis_result.exception,
                 )
             )

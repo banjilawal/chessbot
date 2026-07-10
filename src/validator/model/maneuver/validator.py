@@ -38,7 +38,7 @@ class ManeuverValidator:
             ) -> ValidationResult[Maneuver]:
 
     Super Class:
-        Validator
+        ModelValidator
     """
     OPERATION_NAME = "maneuver_validator"
     

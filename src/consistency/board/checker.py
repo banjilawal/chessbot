@@ -13,7 +13,7 @@ from typing import Any
 
 from microservice import ArenaService, IdentityService
 from model import Board
-from operation import Consistency
+from consistency import  ConsistencyChecker
 from result import ValidationResult
 from util import LoggingLevelRouter
 
@@ -65,7 +65,7 @@ class BoardConsistencyChecker(ConsistencyChecker[Board]):
         Raises:
             *   TypeError
             *   NullBoardException
-            *   BoardConsistencyException
+            *   BoardConsistencyCheckerException
         """
         method = "BoardConsistency.execute"
         
@@ -73,8 +73,8 @@ class BoardConsistencyChecker(ConsistencyChecker[Board]):
         if candidate is None:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                BoardConsistencyException(
-                    msg=f"{method}: {BoardConsistencyException.ERR_CODE}",
+                BoardConsistencyCheckerException(
+                    msg=f"{method}: {BoardConsistencyCheckerException.ERR_CODE}",
                     ex=NullBoardException(f"{method}: {NullBoardException.MSG}")
                 )
             )
@@ -82,8 +82,8 @@ class BoardConsistencyChecker(ConsistencyChecker[Board]):
         if not isinstance(candidate, Board):
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                BoardConsistencyException(
-                    msg=f"{method}: {BoardConsistencyException.ERR_CODE}",
+                BoardConsistencyCheckerException(
+                    msg=f"{method}: {BoardConsistencyCheckerException.ERR_CODE}",
                     ex=TypeError(f"{method}: Expected Board, but, got {type(candidate).__name__} instead.")
                 )
             )
@@ -95,8 +95,8 @@ class BoardConsistencyChecker(ConsistencyChecker[Board]):
         if id_validation.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                BoardConsistencyException(
-                    msg=f"{method}: {BoardConsistencyException.ERR_CODE}",
+                BoardConsistencyCheckerException(
+                    msg=f"{method}: {BoardConsistencyCheckerException.ERR_CODE}",
                     ex=id_validation.exception
                 )
             )
@@ -105,8 +105,8 @@ class BoardConsistencyChecker(ConsistencyChecker[Board]):
         if arena_verification.is_failure:
             # Send the exception chain on failure.
             return ValidationResult(
-                BoardConsistencyException(
-                    msg=f"{method}: {BoardConsistencyException.ERR_CODE}",
+                BoardConsistencyCheckerException(
+                    msg=f"{method}: {BoardConsistencyCheckerException.ERR_CODE}",
                     ex=arena_verification.exception
                 )
             )
@@ -129,7 +129,7 @@ class BoardConsistencyChecker(ConsistencyChecker[Board]):
             - On failure: Exception.
             - On success: Area in the payload.
         Raises:
-        *   BoardConsistencyException
+        *   BoardConsistencyCheckerException
         """
         
         method = "BoardConsistency._validate_arena"
@@ -142,8 +142,8 @@ class BoardConsistencyChecker(ConsistencyChecker[Board]):
         if relation_analysis.is_failure:
             # Send the exception chain on failure.
             return ValidationResult(
-                BoardConsistencyException(
-                    msg=f"{method}: {BoardConsistencyException.ERR_CODE}",
+                BoardConsistencyCheckerException(
+                    msg=f"{method}: {BoardConsistencyCheckerException.ERR_CODE}",
                     ex=relation_analysis.exception
                 )
             )
@@ -151,8 +151,8 @@ class BoardConsistencyChecker(ConsistencyChecker[Board]):
         if relation_analysis.does_not_exist:
             # Send the exception chain on failure.
             return ValidationResult(
-                BoardConsistencyException(
-                    msg=f"{method}: {BoardConsistencyException.ERR_CODE}",
+                BoardConsistencyCheckerException(
+                    msg=f"{method}: {BoardConsistencyCheckerException.ERR_CODE}",
                     ex=BoardOwnedByDifferentArenaException(
                         f"{method}: {BoardOwnedByDifferentArenaException.MSG}"
                     )
@@ -162,8 +162,8 @@ class BoardConsistencyChecker(ConsistencyChecker[Board]):
         if relation_analysis.partially_exists:
             # Send the exception chain on failure.
             return ValidationResult(
-                BoardConsistencyException(
-                    msg=f"{method}: {BoardConsistencyException.ERR_CODE}",
+                BoardConsistencyCheckerException(
+                    msg=f"{method}: {BoardConsistencyCheckerException.ERR_CODE}",
                     ex=BoardNotSubmittedArenaRegistrationException(
                         f"{method}: {BoardNotSubmittedArenaRegistrationException.MSG}"
                     )

@@ -10,7 +10,7 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, cast
 
-from err import CircularPathException, PathConsistencyException
+from err import CircularPathException, PathConsistencyCheckerException
 from model import Path
 from result import ValidationResult
 from toolkit import PathToolkit
@@ -68,7 +68,7 @@ class PathConsistency:
         Returns:
             ValidationResult[Path]
         Raises:
-             PathConsistencyException
+             PathConsistencyCheckerException
         """
         method = f"{self.__class__.__name__}.execute"
         
@@ -85,11 +85,11 @@ class PathConsistency:
         if consistency_priming_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                PathConsistencyException(
+                PathConsistencyCheckerException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=PathConsistencyException.MSG,
-                    err_code=PathConsistencyException.ERR_CODE,
+                    msg=PathConsistencyCheckerException.MSG,
+                    err_code=PathConsistencyCheckerException.ERR_CODE,
                     ex=consistency_priming_result.exception,
                 )
             )
@@ -101,11 +101,11 @@ class PathConsistency:
         if id_validation.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                PathConsistencyException(
+                PathConsistencyCheckerException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=PathConsistencyException.MSG,
-                    err_code=PathConsistencyException.ERR_CODE,
+                    msg=PathConsistencyCheckerException.MSG,
+                    err_code=PathConsistencyCheckerException.ERR_CODE,
                     ex=id_validation.exception,
                 )
             )
@@ -115,11 +115,11 @@ class PathConsistency:
             if square_validation_result.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
-                    PathConsistencyException(
+                    PathConsistencyCheckerException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        msg=PathConsistencyException.MSG,
-                        err_code=PathConsistencyException.ERR_CODE,
+                        msg=PathConsistencyCheckerException.MSG,
+                        err_code=PathConsistencyCheckerException.ERR_CODE,
                         ex=square_validation_result.exception,
                     )
                 )
@@ -127,11 +127,11 @@ class PathConsistency:
         if path.origin == path.destination:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                PathConsistencyException(
+                PathConsistencyCheckerException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=PathConsistencyException.MSG,
-                    err_code=PathConsistencyException.ERR_CODE,
+                    msg=PathConsistencyCheckerException.MSG,
+                    err_code=PathConsistencyCheckerException.ERR_CODE,
                     ex=CircularPathException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,

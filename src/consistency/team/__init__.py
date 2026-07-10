@@ -12,4 +12,4 @@ version: 1.0.1
 # Packages
 
 # Modules
-from .consistency import TeamConsistency
+from .checker import TeamConsistencyChecker

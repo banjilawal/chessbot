@@ -40,7 +40,7 @@ class PathValidator:
             ) -> ValidationResult[Path]
 
     Super Class:
-        Validator
+        ModelValidator
     """
     OPERATION_NAME = "path_validator"
     

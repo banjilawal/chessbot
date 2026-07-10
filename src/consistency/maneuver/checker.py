@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Any, cast
 
-from err import ManeuverConsistencyException
+from err import ManeuverConsistencyCheckerException
 from model import Maneuver
 from result import ValidationResult
 from toolkit import ManeuverToolkit
@@ -66,7 +66,7 @@ class ManeuverConsistency:
         Returns:
             ValidationResult[int]
         Raises:
-            ManeuverConsistencyException
+            ManeuverConsistencyCheckerException
         """
         method = f"{self.__class__.__name__}.execute"
         
@@ -83,11 +83,11 @@ class ManeuverConsistency:
         if consistency_priming_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                ManeuverConsistencyException(
+                ManeuverConsistencyCheckerException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=ManeuverConsistencyException.MSG,
-                    err_code=ManeuverConsistencyException.ERR_CODE,
+                    msg=ManeuverConsistencyCheckerException.MSG,
+                    err_code=ManeuverConsistencyCheckerException.ERR_CODE,
                     ex=consistency_priming_result.exception,
                 )
             )
@@ -99,11 +99,11 @@ class ManeuverConsistency:
         if path_validation_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                ManeuverConsistencyException(
+                ManeuverConsistencyCheckerException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=ManeuverConsistencyException.MSG,
-                    err_code=ManeuverConsistencyException.ERR_CODE,
+                    msg=ManeuverConsistencyCheckerException.MSG,
+                    err_code=ManeuverConsistencyCheckerException.ERR_CODE,
                     ex=path_validation_result.exception,
                 )
             )
@@ -112,11 +112,11 @@ class ManeuverConsistency:
         if token_validation_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                ManeuverConsistencyException(
+                ManeuverConsistencyCheckerException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=ManeuverConsistencyException.MSG,
-                    err_code=ManeuverConsistencyException.ERR_CODE,
+                    msg=ManeuverConsistencyCheckerException.MSG,
+                    err_code=ManeuverConsistencyCheckerException.ERR_CODE,
                     ex=token_validation_result.exception,
                 )
             )
@@ -129,11 +129,11 @@ class ManeuverConsistency:
         if token_endpoint_relation_validation_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                ManeuverConsistencyException(
+                ManeuverConsistencyCheckerException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=ManeuverConsistencyException.MSG,
-                    err_code=ManeuverConsistencyException.ERR_CODE,
+                    msg=ManeuverConsistencyCheckerException.MSG,
+                    err_code=ManeuverConsistencyCheckerException.ERR_CODE,
                     ex=token_endpoint_relation_validation_result.exception,
                 )
             )

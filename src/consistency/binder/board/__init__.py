@@ -12,4 +12,4 @@ version: 1.0.1
 # Packages
 
 # Module
-from .consistency import BoardBinderConsistency
+from .checker import BoardBinderConsistencyChecker

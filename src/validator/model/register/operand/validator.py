@@ -44,7 +44,7 @@ class VectorOperandValidator(ModelValidator[VectorOperand]):
             ) -> ValidationResult[VectorOperand]:
 
     Super Class:
-        Validator
+        ModelValidator
     """
     
     def __init__(
