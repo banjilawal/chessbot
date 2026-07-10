@@ -1,7 +1,7 @@
-# src/certifier/square/validator.py
+# src/certifier/square/cerifier.py
 
 """
-Module: certifier.square.validator
+Module: certifier.square.certifier
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -12,11 +12,13 @@ from __future__ import annotations
 from typing import Any, cast
 
 from blueprint import SquareBlueprint
-from err import SquareCertifierException
+from err import SquareCertifierException, SquareDtoOperandNullException
+from model import Board, Coord
+from operand import SquareDtoOperand
+from primary import RootCertifier
 from result import ValidationResult
 from toolkit import SquareToolkit
 from util import LoggingLevelRouter
-from validator import Certifier
 
 
 class SquareRootCertifier(RootCertifier[SquareBlueprint]):
@@ -40,7 +42,10 @@ class SquareRootCertifier(RootCertifier[SquareBlueprint]):
         Certifier
     """
     
-    def __init__(self, toolkit: SquareToolkit | None = SquareToolkit()):
+    def __init__(
+            self,
+            toolkit: SquareToolkit | None = SquareToolkit()
+    ):
         """
         Args:
             toolkit: SquareToolkit
@@ -71,14 +76,12 @@ class SquareRootCertifier(RootCertifier[SquareBlueprint]):
         """
         method = f"{self.__class__.__name__}.execute"
         
-        # Handle the case that, the validator is not primed.
-        priming_result = self.toolkit.priming_validator.execute(
+        operand_validation = self.toolkit.priming_validator.execute(
             candidate=candidate,
-            blueprint_model=self.toolkit.blueprint_model,
-            blueprint_null_exception=self.toolkit.blueprint_null_exception,
-            priming_validator=self.toolkit.priming_validator,
+            target_model=SquareDtoOperand,
+            null_exception=SquareDtoOperandNullException()
         )
-        if priming_result.is_failure:
+        if operand_validation.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 SquareCertifierException(
@@ -86,18 +89,11 @@ class SquareRootCertifier(RootCertifier[SquareBlueprint]):
                     cls_name=self.__class__.__name__,
                     msg=SquareCertifierException.MSG,
                     err_code=SquareCertifierException.ERR_CODE,
-                    ex=priming_result.exception
+                    ex=operand_validation.exception,
                 )
             )
-        # --- Cast the candidate into SquareBlueprint for routing attribute testing. ---#
-        blueprint = cast(SquareBlueprint, candidate)
-        
-        # Handle the case that, any id in the blueprint is flagged.
-        id_validation_result = self.toolkit.blueprint_id_validator.execute(
-            candidate=blueprint.id,
-            identity_service=self.toolkit.identity_service,
-        )
-        if id_validation_result.is_failure:
+        operand = cast(SquareDtoOperand, operand_validation.payload)
+        if operand.is_empty:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 SquareCertifierException(
@@ -105,12 +101,36 @@ class SquareRootCertifier(RootCertifier[SquareBlueprint]):
                     cls_name=self.__class__.__name__,
                     msg=SquareCertifierException.MSG,
                     err_code=SquareCertifierException.ERR_CODE,
-                    ex=id_validation_result.exception,
+                    ex=SquareDtoOperandNullException(
+                        cls_mthd=method,
+                        cls_name=self.__class__.__name__,
+                        msg=SquareDtoOperandNullException.MSG,
+                        err_code=SquareDtoOperandNullException.ERR_CODE,
+                    ),
+                )
+            )
+        # --- Cast the candidate into a TokenBlueprint for additional tests. ---#
+        blueprint = operand.extract_blueprint()
+        
+        # Handle the case that, any id in the blueprint is flagged.
+        id_test = self.toolkit.identity_service.validate_blueprint_id(
+            owner_blueprint=blueprint,
+            owner_name=blueprint.owner_name,
+        )
+        if id_test.is_failure:
+            # Send the exception chain on failure.
+            return ValidationResult.failure(
+                SquareCertifierException(
+                    cls_mthd=method,
+                    cls_name=self.__class__.__name__,
+                    msg=SquareCertifierException.MSG,
+                    err_code=SquareCertifierException.ERR_CODE,
+                    ex=id_test.exception,
                 )
             )
         # Handle the case that, square.coord is not safe.
-        coord_validation_result = self.toolkit.coord_validator.execute(blueprint.coord)
-        if coord_validation_result.is_failure:
+        coord_test = self.toolkit.coord_validator.execute(blueprint.coord)
+        if coord_test.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 SquareCertifierException(
@@ -118,12 +138,12 @@ class SquareRootCertifier(RootCertifier[SquareBlueprint]):
                     cls_name=self.__class__.__name__,
                     msg=SquareCertifierException.MSG,
                     err_code=SquareCertifierException.ERR_CODE,
-                    ex=coord_validation_result.exception,
+                    ex=coord_test.exception,
                 )
             )
         # Handle the case that, square.board does not pass a validation check.
-        board_validator_result = self.toolkit.board_validator.execute(blueprint.board)
-        if board_validator_result.is_failure:
+        board_test = self.toolkit.board_validator.execute(blueprint.board)
+        if board_test.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 SquareCertifierException(
@@ -131,8 +151,34 @@ class SquareRootCertifier(RootCertifier[SquareBlueprint]):
                     cls_name=self.__class__.__name__,
                     msg=SquareCertifierException.MSG,
                     err_code=SquareCertifierException.ERR_CODE,
-                    ex=board_validator_result.exception,
+                    ex=board_test.exception,
+                )
+            )
+        # --- Extract and cast payloads of the validation results. ---#
+        id = cast(int, id_test.payload)
+        board = cast(Board, board_test.payload)
+        coord = cast(Coord, coord_test.payload)
+        
+        if operand.is_home_square_model:
+        
+        
+        if operand.is_model_operand:
+            return ValidationResult.success(
+                Square(
+                    id=id,
+                    team=team,
+                    rank=rank,
+                    formation=formation,
+                    home_square=home_square,
                 )
             )
         # --- Forward the work product to the caller. ---#
-        return ValidationResult.success(blueprint)
+        return ValidationResult.success(
+            TokenBlueprint(
+                id=id,
+                rank=rank,
+                team=team,
+                formation=formation,
+                home_square=home_square,
+            )
+        )

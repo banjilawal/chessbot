@@ -9,10 +9,10 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from typing import Optional
+from typing import Optional, cast
 
 from blueprint import SquareBlueprint
-from model import Square
+from model import HomeSquare, Square
 from operand import DtoOperand
 
 
@@ -32,8 +32,10 @@ class SquareDtoOperand(DtoOperand[Square]):
         is_blueprint_operand: bool
         has_overflow: bool
         is_empty: bool
+        is_home_square_operand: bool
     
     Provides:
+        -   extract_blueprint() -> Optional[SquareBlueprint]
     
     Super Class:
         DtoOperand
@@ -60,11 +62,27 @@ class SquareDtoOperand(DtoOperand[Square]):
     
     @property
     def is_model_operand(self) -> bool:
-        return self._model is not None and self._blueprint is None
+        return (
+                self._model is not None and
+                self._blueprint is None and
+                isinstance(self._model, Square)
+        )
     
     @property
     def is_blueprint_operand(self) -> bool:
-        return self._model is None and self._blueprint is not None
+        return (
+                self._model is not None and
+                self._blueprint is None and
+                isinstance(self._model, SquareBlueprint)
+        )
+    
+    @property
+    def is_home_square_operand(self) -> bool:
+        return (
+                self.is_model_operand and
+                isinstance(self._model, HomeSquare) and
+                self._model.f
+        )
     
     @property
     def is_empty(self) -> bool:
@@ -79,6 +97,23 @@ class SquareDtoOperand(DtoOperand[Square]):
         if self.is_empty: return 0
         if self.is_model_operand or self.is_blueprint_operand: return 1
         return 2
+    
+    def extract_blueprint(self) -> Optional[SquareBlueprint]:
+        if self.is_empty: return None
+        if self.is_blueprint_operand: return self._blueprint
+        if self.is_home_square_operand:
+            home_square = cast(HomeSquare, self._model)
+            return SquareBlueprint(
+                id=home_square.id,
+                board=home_square.board,
+                coord=home_square.coord,
+                formation=home_square.formation,
+            )
+        return SquareBlueprint(
+            id=self._model.id,
+            board=self._model.board,
+            coord=self._model.coord,
+        )
     
     def __eq__(self, other):
         if other is self: return True

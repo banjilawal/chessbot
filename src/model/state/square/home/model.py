@@ -9,9 +9,8 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from model import Coord, Formation, Square
-from model.board import Board
-from model.state.square import TokenHomeClaimState
+from model import Board, Coord, Square, TokenHomeClaimState
+from schema import Formation
 
 
 class HomeSquare(Square):

@@ -58,5 +58,9 @@ class SquareBlueprint(Blueprint[Square]):
     id: Optional[int] | None = None
     formation: Optional[Formation] | None = None
     null_exception: SquareNullException = SquareNullException()
-    owner: Square = Type[Square]
+    owner: Square = Square
     owner_name: str = type(owner).__name__
+    
+    @property
+    def is_home_square_blueprint(self) -> bool:
+        return self.formation is not None

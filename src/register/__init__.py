@@ -10,7 +10,6 @@ version: 1.0.1
 # =========== REGISTER PACKAGE ===========#
 
 # Packages
-from .entity import *
 from .identity import *
 from .point import *
 from .square import *

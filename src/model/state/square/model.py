@@ -10,10 +10,7 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Optional
 
-from model import Coord, SquareState
-from model.board import Board
-from model.state.token import Token
-
+from model import Board, Coord, SquareState, Token
 
 
 class Square:

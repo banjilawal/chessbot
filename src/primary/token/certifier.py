@@ -64,15 +64,17 @@ class TokenRootCertifier(RootCertifier[TokenBlueprint]):
         Action:
             1.  Send an exception chain in the ValidationResult if any of the following
                 occur
-                    -   The validation_priming fails.
-                    -   Either the board, owner or id get flagged unsafe.
-            2.  Otherwise, send the success result.
+                    -   The candidate is not a TokenDtoOperand.
+                    -   The candidate is an empty TokenDtoOperand.
+                    -   Either the board, team, formation, rank or id get flagged unsafe.
+            2.  For a model_operand send a Token in the success result. Otherwise, send a TokeBlueprint.
         Args:
             candidate: Any
         Returns:
             ValidationResult
         Raises:
             TokenCertifierException
+            TokenDtoOperandNullException
         """
         method = f"{self.__class__.__name__}.execute"
         
@@ -107,23 +109,6 @@ class TokenRootCertifier(RootCertifier[TokenBlueprint]):
                         msg=TokenDtoOperandNullException.MSG,
                         err_code=TokenDtoOperandNullException.ERR_CODE,
                     ),
-                )
-            )
-        # Handle the case that, the validator is not primed.
-        validator_priming_result = self.toolkit.priming_validator.execute(
-            candidate=operand.extract_blueprint(),
-            target_=self.toolkit.blueprint_model,
-            null_exception=self.toolkit.blueprint_null_exception,
-        )
-        if validator_priming_result.is_failure:
-            # Send the exception chain on failure.
-            return ValidationResult.failure(
-                TokenCertifierException(
-                    cls_mthd=method,
-                    cls_name=self.__class__.__name__,
-                    msg=TokenCertifierException.MSG,
-                    err_code=TokenCertifierException.ERR_CODE,
-                    ex=validator_priming_result.exception,
                 )
             )
         # --- Cast the candidate into a TokenBlueprint for additional tests. ---#
