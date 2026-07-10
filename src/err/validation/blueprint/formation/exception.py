@@ -17,7 +17,7 @@ __all__ = [
 ]
 
 # ======================# FORMATION_BLUEPRINT_VALIDATOR_FAILURE #======================#
-class FormationCertifierException(CertifierException):
+class FormationCertifierException(RootCertifierException):
     """
     Role:
         -   Error Tracing

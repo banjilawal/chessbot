@@ -15,14 +15,14 @@ from blueprint import TokenBlueprint
 from context import TokenHomeContext
 from err import FormationNullException, NullException, TokenCertifierException
 from model import HomeSquare, Team, Token, TokenBlueprintEntityRegister, TokenEntityRegister
+from primary import RootCertifier
 from result import ValidationResult
 from schema.formation.schema import Formation
 from toolkit import TokenToolkit
 from util import LoggingLevelRouter
-from validator import Certifier
 
 
-class TokenRootCertifier(Certifier[TokenBlueprint]):
+class TokenRootCertifier(RootCertifier[TokenBlueprint]):
     """
     Role
         -   Transaction Worker
@@ -228,3 +228,5 @@ class TokenRootCertifier(Certifier[TokenBlueprint]):
                 home_square=home_square,
             )
         )
+    
+    def

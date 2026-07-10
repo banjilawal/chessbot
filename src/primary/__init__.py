@@ -28,4 +28,4 @@ from .team import *
 from .token import *
 
 # Module
-from .certifier import Certifier
+from .certifier import RootCertifier

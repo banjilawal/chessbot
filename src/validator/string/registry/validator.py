@@ -73,7 +73,7 @@ class RegistryEntryNameValidator(Validator):
             StringValidatorException
             RegistryEntryKeyStringValidatorException
         """
-        method = f"{cls.__name__}.execute"
+        method = f"{self.__class__.__name__}.execute"
         
         # --- Supply any missing dependencies. ---#
         if name_validator is None:
@@ -92,7 +92,7 @@ class RegistryEntryNameValidator(Validator):
             return ValidationResult.failure(
                 RegistryEntryKeyStringValidatorException(
                     cls_mthd=method,
-                    cls_name=cls.__name__,
+                    cls_name=self.__class__.__name__,
                     msg=RegistryEntryKeyStringValidatorException.MSG,
                     err_code=RegistryEntryKeyStringValidatorException.ERR_CODE,
                     ex=list_validation_result.exception,
@@ -107,12 +107,12 @@ class RegistryEntryNameValidator(Validator):
             return ValidationResult.failure(
                 RegistryEntryKeyStringValidatorException(
                     cls_mthd=method,
-                    cls_name=cls.__name__,
+                    cls_name=self.__class__.__name__,
                     msg=RegistryEntryKeyStringValidatorException.MSG,
                     err_code=RegistryEntryKeyStringValidatorException.ERR_CODE,
                     ex=EmptyListException(
                         cls_mthd=method,
-                        cls_name=cls.__name__,
+                        cls_name=self.__class__.__name__,
                         msg=EmptyListException.MSG,
                         err_code=EmptyListException.ERR_CODE,
                     )
@@ -126,7 +126,7 @@ class RegistryEntryNameValidator(Validator):
                 return ValidationResult.failure(
                     StringValidatorException(
                         cls_mthd=method,
-                        cls_name=cls.__name__,
+                        cls_name=self.__class__.__name__,
                         msg=StringValidatorException.MSG,
                         err_code=StringValidatorException.ERR_CODE,
                         ex=name_validation_result.exception,

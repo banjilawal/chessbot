@@ -75,7 +75,7 @@ class NumberValidator(Validator[int]):
             NumberBelowBoundsException
             NumberValidatorException
         """
-        method = f"{cls.__name__}.validate"
+        method = f"{self.__class__.__name__}.execute"
         
         # --- Supply missing dependencies. ---#
         if priming_validator is None:
@@ -92,7 +92,7 @@ class NumberValidator(Validator[int]):
             return ValidationResult.failure(
                NumberValidatorException(
                     cls_mthd=method,
-                    cls_name=cls.__name__,
+                    cls_name=self.__class__.__name__,
                     msg=NumberValidatorException.MSG,
                     err_code=NumberValidatorException.ERR_CODE,
                     ex=validator_priming_result.exception,
@@ -107,7 +107,7 @@ class NumberValidator(Validator[int]):
             return ValidationResult.failure(
                 NumberValidatorException(
                     cls_mthd=method,
-                    cls_name=cls.__name__,
+                    cls_name=self.__class__.__name__,
                     msg=NumberValidatorException.MSG,
                     err_code=NumberValidatorException.ERR_CODE,
                     ex=NegativeNumberException(
@@ -124,7 +124,7 @@ class NumberValidator(Validator[int]):
             return ValidationResult.failure(
                 NumberValidatorException(
                     cls_mthd=method,
-                    cls_name=cls.__name__,
+                    cls_name=self.__class__.__name__,
                     msg=NumberValidatorException.MSG,
                     err_code=NumberValidatorException.ERR_CODE,
                     ex=NumberBelowBoundsException(
@@ -139,7 +139,7 @@ class NumberValidator(Validator[int]):
             return ValidationResult.failure(
                 NumberValidatorException(
                     cls_mthd=method,
-                    cls_name=cls.__name__,
+                    cls_name=self.__class__.__name__,
                     msg=NumberValidatorException.MSG,
                     err_code=NumberValidatorException.ERR_CODE,
                     ex=NumberAboveBoundsException(

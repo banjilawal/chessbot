@@ -17,7 +17,7 @@ __all__ = [
 ]
 
 # ======================# BOARD_BLUEPRINT_VALIDATOR_FAILURE #======================#
-class BoardCertifierException(CertifierException):
+class BoardCertifierException(RootCertifierException):
     """
     Role:
         -   Error Tracing

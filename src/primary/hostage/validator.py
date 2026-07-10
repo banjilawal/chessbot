@@ -10,7 +10,7 @@ version: 1.0.1
 from __future__ import annotations
 
 
-class HostageRootCertifier(Certifier[Hostage]):
+class HostageRootCertifier(RootCertifier[Hostage]):
     """
      Role:Validation, Data Integrity Guarantor, Security.
 

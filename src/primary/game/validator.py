@@ -10,7 +10,7 @@ version: 1.0.1
 from __future__ import annotations
 
 
-class GameRootCertifier(Certifier[Game]):
+class GameRootCertifier(RootCertifier[Game]):
     """
      Role:Validation, Data Integrity Guarantor, Security.
 
@@ -109,7 +109,7 @@ class GameRootCertifier(Certifier[Game]):
             if blueprint.id is not None:
                 validation = identity_service.validate_id(candidate=blueprint.id)
                 if validation.is_failure:
-                    return ValidationResult.failure(certifier.exception)
+                    return ValidationResult.failure(rootCertifier.exception)
                 # On validation success return the id_game_blueprint in a ValidationResult.
                 return ValidationResult.success(blueprint)
             
@@ -117,7 +117,7 @@ class GameRootCertifier(Certifier[Game]):
             if blueprint.agent is not None:
                 validation = agent_service.run.search_service(candidate=blueprint.agent)
                 if validation.is_failure:
-                    return ValidationResult.failure(certifier.exception)
+                    return ValidationResult.failure(rootCertifier.exception)
                 # On validation success return the agent_game_blueprint in a ValidationResult.
                 return ValidationResult.success(blueprint)
             

@@ -67,7 +67,7 @@ class TokenDestinationCertifier:
         Raises:
             TokenDestinationCertifierException
         """
-        method = f"{cls.__name__}.validator"
+        method = f"{self.__class__.__name__}.validator"
         
         # --- Supply any missing dependencies. ---#
         if bootstrapper is None:
@@ -80,7 +80,7 @@ class TokenDestinationCertifier:
             return ValidationResult.failure(
                 TokenDestinationCertifierException(
                     cls_mthd=method,
-                    cls_name=cls.__name__,
+                    cls_name=self.__class__.__name__,
                     msg=TokenDestinationCertifierException.MSG,
                     err_code=TokenDestinationCertifierException.ERR_CODE,
                     ex=validation_result.exception,

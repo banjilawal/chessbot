@@ -68,7 +68,7 @@ class ManeuverValidator:
         Raises:
             ManeuverValidatorException
         """
-        method = f"{cls.__name__}.validate"
+        method = f"{self.__class__.__name__}.execute"
         
         # --- Supply any missing dependencies. ---#
         if toolkit is None:
@@ -85,7 +85,7 @@ class ManeuverValidator:
             return ValidationResult.failure(
                 ManeuverValidatorException(
                     cls_mthd=method,
-                    cls_name=cls.__name__,
+                    cls_name=self.__class__.__name__,
                     msg=ManeuverValidatorException.MSG,
                     err_code=ManeuverValidatorException.ERR_CODE,
                     ex=validator_priming_result.exception,
@@ -101,7 +101,7 @@ class ManeuverValidator:
             return ValidationResult.failure(
                 ManeuverValidatorException(
                     cls_mthd=method,
-                    cls_name=cls.__name__,
+                    cls_name=self.__class__.__name__,
                     msg=ManeuverValidatorException.MSG,
                     err_code=ManeuverValidatorException.ERR_CODE,
                     ex=path_validation_result.exception,
@@ -114,7 +114,7 @@ class ManeuverValidator:
             return ValidationResult.failure(
                 ManeuverValidatorException(
                     cls_mthd=method,
-                    cls_name=cls.__name__,
+                    cls_name=self.__class__.__name__,
                     msg=ManeuverValidatorException.MSG,
                     err_code=ManeuverValidatorException.ERR_CODE,
                     ex=token_validation_result.exception,
@@ -131,7 +131,7 @@ class ManeuverValidator:
             return ValidationResult.failure(
                 ManeuverValidatorException(
                     cls_mthd=method,
-                    cls_name=cls.__name__,
+                    cls_name=self.__class__.__name__,
                     msg=ManeuverValidatorException.MSG,
                     err_code=ManeuverValidatorException.ERR_CODE,
                     ex=token_endpoint_relation_validation_result.exception,

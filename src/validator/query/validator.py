@@ -69,7 +69,7 @@ class QueryValidator(Validator[Query]):
             QueryValidatorException
             ListEmptyException
         """
-        method = f"{cls.__name__}._validate"
+        method = f"{self.__class__.__name__}._validate"
         
         priming_result = blueprint.priming_validator.execute(
             candidate=candidate,
@@ -129,7 +129,7 @@ class QueryValidator(Validator[Query]):
             query: Query,
             blueprint: QueryValidationBlueprint
     ) -> ValidationResult[Query]:
-        method = f"{cls.__name__}._datasource_validator"
+        method = f"{self.__class__.__name__}._datasource_validator"
         
         if isinstance(query, StackQuery):
             stack_query = cast(blueprint.query_model_type, query)
@@ -145,7 +145,7 @@ class QueryValidator(Validator[Query]):
             query: StackQuery,
             blueprint: QueryValidationBlueprint
     ) -> ValidationResult[StackQuery]:
-        method = f"{cls.__name__}._stack_query_validator"
+        method = f"{self.__class__.__name__}._stack_query_validator"
         
         # Handle the case that, the stack is flagged.
         stack_validation_result = blueprint.priming_validator.execute(
@@ -186,7 +186,7 @@ class QueryValidator(Validator[Query]):
             query: CatalogQuery,
             blueprint: QueryValidationBlueprint
     ) -> ValidationResult[CatalogQuery]:
-        method = f"{cls.__name__}._stack_query_validator"
+        method = f"{self.__class__.__name__}._stack_query_validator"
         
         catalog_validation_result = blueprint.priming_validator.execute(
             candidate=query.catalog,

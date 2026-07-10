@@ -17,7 +17,7 @@ __all__ = [
 ]
 
 # ======================# ARENA_BLUEPRINT_VALIDATOR_FAILURE #======================#
-class ArenaCertifierException(CertifierException):
+class ArenaCertifierException(RootCertifierException):
     """
     Role:
         -   Error Tracing

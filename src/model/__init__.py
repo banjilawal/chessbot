@@ -11,9 +11,9 @@ version: 1.0.1
 
 # Packages
 from .coord import *
+from .point import *
 from .quadrant import *
 from .rank import *
-from .register import *
 from .scalar import *
 from .state import *
 from .vector import *

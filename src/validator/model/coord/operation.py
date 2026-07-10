@@ -68,7 +68,7 @@ class CoordValidator(ModelValidator[Coord]):
             NullCoordException
             CoordValidatorException
         """
-        method = f"{cls.__name__}.validate"
+        method = f"{self.__class__.__name__}.execute"
         
         if toolkit is None:
             toolkit = MathToolkit()
@@ -84,7 +84,7 @@ class CoordValidator(ModelValidator[Coord]):
             return ValidationResult.failure(
                 CoordValidatorException(
                     cls_mthd=method,
-                    cls_name=cls.__name__,
+                    cls_name=self.__class__.__name__,
                     msg=CoordValidatorException.MSG,
                     err_code=CoordValidatorException.ERR_CODE,
                     ex=validator_priming_result.exception,
@@ -105,7 +105,7 @@ class CoordValidator(ModelValidator[Coord]):
                 return ValidationResult.failure(
                     CoordValidatorException(
                         cls_mthd=method,
-                        cls_name=cls.__name__,
+                        cls_name=self.__class__.__name__,
                         msg=CoordValidatorException.MSG,
                         err_code=CoordValidatorException.ERR_CODE,
                         ex=number_validation_result.exception

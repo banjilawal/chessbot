@@ -17,7 +17,7 @@ __all__ = [
 ]
 
 # ======================# HOSTAGE_BLUEPRINT_VALIDATOR_FAILURE #======================#
-class HostageCertifierException(CertifierException):
+class HostageCertifierException(RootCertifierException):
     """
     Role:
         -   Error Tracing

@@ -73,7 +73,7 @@ class ItineraryValidator(ModelValidator[Itinerary]):
             ItineraryValidatorException
             ItinerarySourceEqualsDestinationException
         """
-        method = f"{cls.__name__}.validate"
+        method = f"{self.__class__.__name__}.execute"
         
         # --- Supply any missing dependencies. ---#
         if toolkit is None:
@@ -93,7 +93,7 @@ class ItineraryValidator(ModelValidator[Itinerary]):
             return ValidationResult.failure(
                 ItineraryValidatorException(
                     cls_mthd=method,
-                    cls_name=cls.__name__,
+                    cls_name=self.__class__.__name__,
                     msg=ItineraryValidatorException.MSG,
                     err_code=ItineraryValidatorException.ERR_CODE,
                     ex=validator_priming_result.exception,
@@ -111,7 +111,7 @@ class ItineraryValidator(ModelValidator[Itinerary]):
                     return ValidationResult.failure(
                         ItineraryValidatorException(
                             cls_mthd=method,
-                            cls_name=cls.__name__,
+                            cls_name=self.__class__.__name__,
                             msg=ItineraryValidatorException.MSG,
                             err_code=ItineraryValidatorException.ERR_CODE,
                             ex=square_validation_result.exception,
@@ -123,7 +123,7 @@ class ItineraryValidator(ModelValidator[Itinerary]):
             return ValidationResult.failure(
                 ItineraryValidatorException(
                     cls_mthd=method,
-                    cls_name=cls.__name__,
+                    cls_name=self.__class__.__name__,
                     msg=ItineraryValidatorException.MSG,
                     err_code=ItineraryValidatorException.ERR_CODE,
                     ex=ItinerarySourceEqualsDestinationException(
@@ -139,7 +139,7 @@ class ItineraryValidator(ModelValidator[Itinerary]):
             return ValidationResult.failure(
                 ItineraryValidatorException(
                     cls_mthd=method,
-                    cls_name=cls.__name__,
+                    cls_name=self.__class__.__name__,
                     msg=ItineraryValidatorException.MSG,
                     err_code=ItineraryValidatorException.ERR_CODE,
                     ex=freedom_analysis_result.exception,
@@ -152,7 +152,7 @@ class ItineraryValidator(ModelValidator[Itinerary]):
             return ValidationResult.failure(
                 ItineraryValidatorException(
                     cls_mthd=method,
-                    cls_name=cls.__name__,
+                    cls_name=self.__class__.__name__,
                     msg=ItineraryValidatorException.MSG,
                     err_code=ItineraryValidatorException.ERR_CODE,
                     ex=DisabledTokenManeuverException(
@@ -171,7 +171,7 @@ class ItineraryValidator(ModelValidator[Itinerary]):
             return ValidationResult.failure(
                 ItineraryValidatorException(
                     cls_mthd=method,
-                    cls_name=cls.__name__,
+                    cls_name=self.__class__.__name__,
                     msg=ItineraryValidatorException.MSG,
                     err_code=ItineraryValidatorException.ERR_CODE,
                     ex=consistency_validation_result.exception,

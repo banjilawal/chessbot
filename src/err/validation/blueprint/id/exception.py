@@ -17,7 +17,7 @@ __all__ = [
 ]
 
 # ======================# BLUEPRINT_ID_VALIDATOR_FAILURE #======================#
-class BlueprintIdValidatorException(CertifierException):
+class BlueprintIdValidatorException(RootCertifierException):
     """
     Role:
         -   Error Tracing

@@ -10,10 +10,10 @@ version: 1.0.1
 from __future__ import annotations
 
 from builder import Builder
-from model import VectorOperandRegister
+from model import PointRegister
 
 
-class VectorOperandRegisterBuilder(Builder[VectorOperandRegister]):
+class VectorOperandRegisterBuilder(Builder[PointRegister]):
     """
         -   Model
         -   Data Holder
@@ -74,17 +74,17 @@ class VectorOperandRegisterBuilder(Builder[VectorOperandRegister]):
     
     @property
     def is_vector_register(self) -> bool:
-        return self._a.is_vector and self._b.is_vector
+        return self._a.is_vector_point and self._b.is_vector_point
     
     @property
     def is_coord_register(self) -> bool:
-        return self._a.is_coord and self._b.is_coord
+        return self._a.is_coord_point and self._b.is_coord_point
     
     @property
     def is_mismatched_register(self) -> bool:
         return  (
-            (not (self._a.is_coord and self._b.is_coord)) or
-            (not (self._a.is_vector and self.b.is_vector))
+                (not (self._a.is_coord_point and self._b.is_coord_point)) or
+                (not (self._a.is_vector_point and self.b.is_vector_point))
         )
     
     def __eq__(self, other):

@@ -12,13 +12,14 @@ from typing import Any, cast
 
 from err import IdentityRegisterCertifierException
 from model import IdentityRegister
+from primary import RootCertifier
 from result import ValidationResult
 from toolkit import IdentityRegisterToolkit
 from util import LoggingLevelRouter
-from validator import Certifier
 
 
-class IdentityRegisterRootCertifier(Certifier[IdentityRegister]):
+
+class IdentityRegisterRootCertifier(RootCertifier[IdentityRegister]):
     """
     Role
         -   Transaction Worker

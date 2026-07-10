@@ -11,12 +11,12 @@ from __future__ import annotations
 
 from typing import Type
 
-from blueprint import VectorOperandRegisterBlueprint
+from blueprint import PointRegisterBlueprint
 from err import (
     VectorOperandRegisterBlueprintNullException,
     VectorOperandRegisterNullException
 )
-from model import VectorOperand, VectorOperandRegister
+from model import VectorOperand, PointRegister
 from toolkit import RegisterToolkit
 from validator.model.register.operand import VectorOperandValidator
 
@@ -42,9 +42,9 @@ class VectorOperandRegisterToolkit(RegisterToolkit[VectorOperand]):
        RegisterToolkit
     """
     vector_operand_validator: VectorOperandValidator = VectorOperandValidator()
-    model: Type[VectorOperandRegister]
+    model: PointRegister
     null_exception = VectorOperandRegisterNullException()
-    blueprint_model = Type[VectorOperandRegisterBlueprint]
+    blueprint_model = PointRegisterBlueprint
     blueprint_null_exception = VectorOperandRegisterBlueprintNullException()
     #
     # @property

@@ -10,7 +10,7 @@ version: 1.0.1
 from __future__ import annotations
 
 
-class ArenaRootCertifier(Certifier[Arena]):
+class ArenaRootCertifier(RootCertifier[Arena]):
     
     @classmethod
     def validate(cls, candidate: Any, *args, **kwargs) -> ValidationResult[Arena]:

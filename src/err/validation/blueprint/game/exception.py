@@ -20,7 +20,7 @@ __all__ = [
 ]
 
 # ======================# GAME_BLUEPRINT_VALIDATOR_FAILURE #======================#
-class GameCertifierException(CertifierException):
+class GameCertifierException(RootCertifierException):
     """
     Role:
         -   Error Tracing

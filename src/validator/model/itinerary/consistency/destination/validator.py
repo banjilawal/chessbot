@@ -70,7 +70,7 @@ class ItineraryDestinationConsistencyValidator:
             TokenAlreadyAtDestinationException
             PartialTokenDestinationBindingException
         """
-        method = f"{cls.__name__}.validator"
+        method = f"{self.__class__.__name__}.validator"
         
         # --- Supply any missing dependencies. ---#
         if toolkit is None:
@@ -87,7 +87,7 @@ class ItineraryDestinationConsistencyValidator:
             return ValidationResult.failure(
                 ItineraryConsistencyException(
                     cls_mthd=method,
-                    cls_name=cls.__name__,
+                    cls_name=self.__class__.__name__,
                     msg=ItineraryConsistencyException.MSG,
                     err_code=ItineraryConsistencyException.ERR_CODE,
                     ex=relation_result.exception,
@@ -103,7 +103,7 @@ class ItineraryDestinationConsistencyValidator:
             return ValidationResult.failure(
                 ItineraryConsistencyException(
                     cls_mthd=method,
-                    cls_name=cls.__name__,
+                    cls_name=self.__class__.__name__,
                     msg=ItineraryConsistencyException.MSG,
                     err_code=ItineraryConsistencyException.ERR_CODE,
                     ex=PartialTokenDestinationBindingException(
@@ -118,7 +118,7 @@ class ItineraryDestinationConsistencyValidator:
             return ValidationResult.failure(
                 ItineraryConsistencyException(
                     cls_mthd=method,
-                    cls_name=cls.__name__,
+                    cls_name=self.__class__.__name__,
                     msg=ItineraryConsistencyException.MSG,
                     err_code=ItineraryConsistencyException.ERR_CODE,
                     ex=TokenAlreadyAtDestinationException(

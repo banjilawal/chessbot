@@ -67,7 +67,7 @@ class TeamContextValidator(ContextValidator[Team]):
             TeamContextValidatorException
             TeamContextValidationRouteException
         """
-        method = f"{cls.__name__}.validate"
+        method = f"{self.__class__.__name__}.execute"
         
         # --- Supply any missing dependencies. ---#
         if toolkit is None:
@@ -85,7 +85,7 @@ class TeamContextValidator(ContextValidator[Team]):
             return ValidationResult.failure(
                 TeamContextValidatorException(
                     cls_mthd=method,
-                    cls_name=cls.__name__,
+                    cls_name=self.__class__.__name__,
                     msg=TeamContextValidatorException.MSG,
                     err_code=TeamContextValidatorException.ERR_CODE,
                     ex=priming_result.exception
@@ -104,7 +104,7 @@ class TeamContextValidator(ContextValidator[Team]):
                 return ValidationResult.failure(
                     TeamContextValidatorException(
                         cls_mthd=method,
-                        cls_name=cls.__name__,
+                        cls_name=self.__class__.__name__,
                         msg=TeamContextValidatorException.MSG,
                         err_code=TeamContextValidatorException.ERR_CODE,
                         ex=validation_result.exception
@@ -123,7 +123,7 @@ class TeamContextValidator(ContextValidator[Team]):
                 return ValidationResult.failure(
                     TeamContextValidatorException(
                         cls_mthd=method,
-                        cls_name=cls.__name__,
+                        cls_name=self.__class__.__name__,
                         msg=TeamContextValidatorException.MSG,
                         err_code=TeamContextValidatorException.ERR_CODE,
                         ex=validation_result.exception
@@ -143,7 +143,7 @@ class TeamContextValidator(ContextValidator[Team]):
                     return ValidationResult.failure(
                         TeamContextValidatorException(
                             cls_mthd=method,
-                            cls_name=cls.__name__,
+                            cls_name=self.__class__.__name__,
                             msg=TeamContextValidatorException.MSG,
                             err_code=TeamContextValidatorException.ERR_CODE,
                             ex=validation_result.exception
@@ -164,7 +164,7 @@ class TeamContextValidator(ContextValidator[Team]):
                 return ValidationResult.failure(
                     TeamContextValidatorException(
                         cls_mthd=method,
-                        cls_name=cls.__name__,
+                        cls_name=self.__class__.__name__,
                         msg=TeamContextValidatorException.MSG,
                         err_code=TeamContextValidatorException.ERR_CODE,
                         ex=validation_result.exception
@@ -177,7 +177,7 @@ class TeamContextValidator(ContextValidator[Team]):
         return ValidationResult.failure(
             TeamContextValidatorException(
                 cls_mthd=method,
-                cls_name=cls.__name__,
+                cls_name=self.__class__.__name__,
                 msg=TeamContextValidatorException.MSG,
                 err_code=TeamContextValidatorException.ERR_CODE,
                 ex=TeamContextValidationRouteException(

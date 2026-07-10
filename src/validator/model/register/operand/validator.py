@@ -10,8 +10,12 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, cast
 
-from err import ExcessVectorOperandFlagsException, VectorOperandValidatorException, ZeroVectorOperandFlagsException
-from model import VectorOperand
+from err import (
+    ExcessVectorOperandFlagsException, VectorOperandRegisterCertifierException,
+    VectorOperandValidatorException, ZeroVectorOperandFlagsException
+)
+from model import VectorOperand, VectorOperandEntityRegister
+from primary.register.operand.certifier import VectorOperandRegisterRootCertifier
 from result import ValidationResult
 f
 from util import LoggingLevelRouter
@@ -31,6 +35,7 @@ class VectorOperandValidator(ModelValidator[VectorOperand]):
             before use.
 
     Attributes:
+        bootstrapper: VectorOperandRegisterRootCertifier
 
     Properties:
         -   def validate(
@@ -41,15 +46,19 @@ class VectorOperandValidator(ModelValidator[VectorOperand]):
     Super Class:
         Validator
     """
-    bootstrap
     
-    @classmethod
+    def __init__(
+            self,
+            root_certifier: VectorOperandRegisterRootCertifier | None = VectorOperandRegisterRootCertifier(),
+    ):
+        super().__init__(root_certifier=root_certifier)
+        
+    @property
+    def root_certifier(self) -> VectorOperandRegisterRootCertifier:
+        return cast(VectorOperandRegisterRootCertifier, self.root_certifier)
+    
     @LoggingLevelRouter.monitor
-    def execute(
-            cls,
-            candidate: Any,
-            toolkit: VectorOperandToolkit | None = None,
-    ) -> ValidationResult[VectorOperand]:
+    def execute(self, candidate: Any) -> ValidationResult:
         """
         Verify the candidate is a safe VectorOperand.
         
@@ -62,96 +71,47 @@ class VectorOperandValidator(ModelValidator[VectorOperand]):
             3.  Otherwise, Send the success result.
         Args:
             candidate: Any
-            toolkit : VectorOperandToolkit
         Returns:
-            ValidationResult[VectorOperand]
+            ValidationResult
         Raises:
-            TypeError
-            VectorOperandNullException
-            ZeroVectorOperandFlagsException
             VectorOperandValidatorException
-            ExcessVectorOperandFlagsException
         """
-        method = f"{cls.__name__}.validate"
+        method = f"{self.__class__.__name__}.execute"
         
-        # --- Supply missing dependencies. ---#
-        if toolkit is None:
-            toolkit = VectorOperandToolkit()
         
         # Handle the case that, the validator is not primed.
-        validator_priming_result = toolkit.priming_validator.execute(
+        validator_priming_result = self.root_certifier.toolkit.priming_validator.execute(
             candidate=candidate,
-            target_model=toolkit.model,
-            context_null_exception=toolkit.null_exception,
+            target_model=self.root_certifier.toolkit.model,
+            context_null_exception=self.root_certifier.toolkit.null_exception,
         )
         if validator_priming_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 VectorOperandValidatorException(
                     cls_mthd=method,
-                    cls_name=cls.__name__,
+                    cls_name=self.__class__.__name__,
                     msg=VectorOperandValidatorException.MSG,
                     err_code=VectorOperandValidatorException.ERR_CODE,
                     ex=validator_priming_result.exception
                 )
             )
         # --- Cast candidate to a VectorOperand for additional tests. ---#
-        operand = cast(toolkit.model, candidate)
+        register = cast(VectorOperandEntityRegister, candidate)
         
-        # Handle the case that neither option is enabled.
-        if len(operand.to_dict) == 0:
+        root_certification = self.root_certifier.execute(register)
+        if root_certification.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 VectorOperandValidatorException(
                     cls_mthd=method,
-                    cls_name=cls.__name__,
+                    cls_name=self.__class__.__name__,
                     msg=VectorOperandValidatorException.MSG,
                     err_code=VectorOperandValidatorException.ERR_CODE,
-                    ex=ZeroVectorOperandFlagsException(
-                        msg=ZeroVectorOperandFlagsException.MSG,
-                        err_code=ZeroVectorOperandFlagsException.ERR_CODE,
-                    )
+                    ex=root_certification.exception
                 )
             )
-        # Handle the case that, both options are enabled.
-        if len(operand.to_dict) > 1:
-            # Send the exception chain on failure.
-            return ValidationResult.failure(
-                VectorOperandValidatorException(
-                    cls_mthd=method,
-                    cls_name=cls.__name__,
-                    msg=VectorOperandValidatorException.MSG,
-                    err_code=VectorOperandValidatorException.ERR_CODE,
-                    ex=ExcessVectorOperandFlagsException(
-                        msg=ExcessVectorOperandFlagsException.MSG,
-                        err_code=ExcessVectorOperandFlagsException.ERR_CODE,
-                    )
-                )
-            )
-        """
-           Route to the appropriate validator and get its result so only have
-           one failure block.
-        """
-        # ---  ---#
-        validation_result = None
-        if operand.is_vector:
-            validation_result = toolkit.vector.validator.execute(operand.vector)
-        if operand.is_coord:
-            validation_result = toolkit.coord.validator.execute(operand.coord)
-            
-        # Handle the case that context was flagged.
-        if validation_result.is_failure:
-            # Send the exception chain on failure.
-            return ValidationResult.failure(
-                VectorOperandValidatorException(
-                    cls_mthd=method,
-                    cls_name=cls.__name__,
-                    msg=VectorOperandValidatorException.MSG,
-                    err_code=VectorOperandValidatorException.ERR_CODE,
-                    ex=validation_result.exception
-                )
-            )
-        # --- Forward the work product to the caller ---#
-        return ValidationResult.success(operand)
+        
+        return root_certification
 
             

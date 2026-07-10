@@ -57,7 +57,7 @@ class SchemaValidator(Validator[Schema]):
             NullSchemaException
             SchemaValidatorException
         """
-        method = f"{cls.__name__}.validate"
+        method = f"{self.__class__.__name__}.execute"
         
         # Handle the nonexistence case.
         if candidate is None:
@@ -65,7 +65,7 @@ class SchemaValidator(Validator[Schema]):
             return ValidationResult.failure(
                 SchemaValidatorException(
                     cls_mthd=method,
-                    cls_name=cls.__name__,
+                    cls_name=self.__class__.__name__,
                     op=SchemaValidatorException.OP,
                     msg=SchemaValidatorException.MSG,
                     err_code=SchemaValidatorException.ERR_CODE,
@@ -83,7 +83,7 @@ class SchemaValidator(Validator[Schema]):
             return ValidationResult.failure(
                 SchemaValidatorException(
                     cls_mthd=method,
-                    cls_name=cls.__name__,
+                    cls_name=self.__class__.__name__,
                     op=SchemaValidatorException.OP,
                     msg=SchemaValidatorException.MSG,
                     err_code=SchemaValidatorException.ERR_CODE,

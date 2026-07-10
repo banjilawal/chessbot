@@ -17,7 +17,7 @@ __all__ = [
 ]
 
 # ======================# EDGE_BLUEPRINT_VALIDATOR_FAILURE #======================#
-class EdgeCertifierException(CertifierException):
+class EdgeCertifierException(RootCertifierException):
     """
     Role:
         -   Error Tracing

@@ -14,12 +14,12 @@ from typing import Type
 
 from blueprint import RegisterBlueprint
 from err import VectorOperandRegisterNullException
-from model import VectorOperand, VectorOperandRegister
+from model import VectorOperand, PointRegister
 
 
 
 @dataclass
-class VectorOperandRegisterBlueprint(RegisterBlueprint[VectorOperandRegister]):
+class PointRegisterBlueprint(RegisterBlueprint[PointRegister]):
     """
     Role:
         -   Container
@@ -50,7 +50,7 @@ class VectorOperandRegisterBlueprint(RegisterBlueprint[VectorOperandRegister]):
     a: VectorOperand
     b: VectorOperand
     null_exception: VectorOperandRegisterNullException = VectorOperandRegisterNullException()
-    owner: VectorOperandRegister = Type[VectorOperandRegister]
+    owner: PointRegister = Type[PointRegister]
     owner_name: str = type(owner).__name__
     
     

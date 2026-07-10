@@ -17,7 +17,7 @@ __all__ = [
 ]
 
 # ======================# TEAM_BLUEPRINT_VALIDATOR_FAILURE #======================#
-class TeamCertifierException(CertifierException):
+class TeamCertifierException(RootCertifierException):
     """
     Role:
         -   Error Tracing

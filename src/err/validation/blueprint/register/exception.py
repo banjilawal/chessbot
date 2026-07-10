@@ -17,7 +17,7 @@ __all__ = [
 ]
 
 # ======================# REGISTER_BLUEPRINT_VALIDATOR_FAILURE #======================#
-class RegisterCertifierException(CertifierException):
+class RegisterCertifierException(RootCertifierException):
     """
     Role:
         -   Error Tracing

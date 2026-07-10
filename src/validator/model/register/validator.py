@@ -38,12 +38,12 @@ class RegisterValidator(ModelValidator[Register]):
     Super Class:
         ModelValidator
     """
-    def __init__(self, bootstrapper: RegisterCertifier):
-        super().__init__(bootstrapper=bootstrapper)
+    def __init__(self, root_certifier: RegisterCertifier):
+        super().__init__(root_certifier=root_certifier)
         
     @property
     @abstractmethod
-    def bootstrapper(self) -> RegisterCertifier:
+    def root_certifier(self) -> RegisterCertifier:
         pass
     
     @abstractmethod

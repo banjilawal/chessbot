@@ -11,14 +11,14 @@ from __future__ import annotations
 from typing import Any, cast
 
 from err import VectorOperandRegisterCertifierException, VectorOperandRegisterMismatchException
-from model import VectorOperandRegister
+from model import PointRegister
+from primary import RootCertifier
 from result import ValidationResult
 from toolkit import VectorOperandRegisterToolkit
 from util import LoggingLevelRouter
-from validator import Certifier
 
 
-class VectorOperandRegisterRootCertifier(Certifier[VectorOperandRegister]):
+class VectorOperandRegisterRootCertifier(RootCertifier[PointRegister]):
     """
     Role
         -   Transaction Worker

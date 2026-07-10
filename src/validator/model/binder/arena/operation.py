@@ -73,7 +73,7 @@ class BoardTeamBinderValidator(ModelValidator[BoardBinder]):
             BoardTeamBinderValidatorException
             ExcessBoardTeamBinderFlagsException
         """
-        method = f"{cls.__name__}.validate"
+        method = f"{self.__class__.__name__}.execute"
         
         if toolkit is None:
             toolkit = BoardTeamBinderToolkit()
@@ -89,7 +89,7 @@ class BoardTeamBinderValidator(ModelValidator[BoardBinder]):
             return ValidationResult.failure(
                 BoardTeamBinderValidatorException(
                     cls_mthd=method,
-                    cls_name=cls.__name__,
+                    cls_name=self.__class__.__name__,
                     msg=BoardTeamBinderValidatorException.MSG,
                     err_code=BoardTeamBinderValidatorException.ERR_CODE,
                     ex=validator_priming_result.exception,
@@ -103,7 +103,7 @@ class BoardTeamBinderValidator(ModelValidator[BoardBinder]):
             return ValidationResult.failure(
                 BoardTeamBinderValidatorException(
                     cls_mthd=method,
-                    cls_name=cls.__name__,
+                    cls_name=self.__class__.__name__,
                     msg=BoardTeamBinderValidatorException.MSG,
                     err_code=BoardTeamBinderValidatorException.ERR_CODE,
                     ex=board_validator_result.exception,
@@ -119,7 +119,7 @@ class BoardTeamBinderValidator(ModelValidator[BoardBinder]):
             binder: BoardBinder,
             toolkit: BoardTeamBinderToolkit
     ) -> ValidationResult[Dict[Schema, Team]]:
-        method = f"{cls.__name__}.run_satellite_table_checks"
+        method = f"{self.__class__.__name__}.run_satellite_table_checks"
         
         # Handle the case that, the satellite is not a dictionary or null.
         table_validation_result = SchemaHashtableValidator.execute(binder)
@@ -128,7 +128,7 @@ class BoardTeamBinderValidator(ModelValidator[BoardBinder]):
             return ValidationResult.failure(
                 BoardTeamBinderValidatorException(
                     cls_mthd=method,
-                    cls_name=cls.__name__,
+                    cls_name=self.__class__.__name__,
                     msg=BoardTeamBinderValidatorException.MSG,
                     err_code=BoardTeamBinderValidatorException.ERR_CODE,
                     ex=table_validation_result.exception
@@ -144,7 +144,7 @@ class BoardTeamBinderValidator(ModelValidator[BoardBinder]):
             return ValidationResult.failure(
                 BoardTeamBinderValidatorException(
                     cls_mthd=method,
-                    cls_name=cls.__name__,
+                    cls_name=self.__class__.__name__,
                     msg=BoardTeamBinderValidatorException.MSG,
                     err_code=BoardTeamBinderValidatorException.ERR_CODE,
                     ex=schema_validation_result.exception
@@ -157,7 +157,7 @@ class BoardTeamBinderValidator(ModelValidator[BoardBinder]):
             return ValidationResult.failure(
                 BoardTeamBinderValidatorException(
                     cls_mthd=method,
-                    cls_name=cls.__name__,
+                    cls_name=self.__class__.__name__,
                     msg=BoardTeamBinderValidatorException.MSG,
                     err_code=BoardTeamBinderValidatorException.ERR_CODE,
                     ex=team_validation_result.exception

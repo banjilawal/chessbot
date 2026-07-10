@@ -71,7 +71,7 @@ class ManeuverEndpointValidator:
         Raises:
             ManeuverEndpointValidatorException
         """
-        method = f"{cls.__name__}.validator"
+        method = f"{self.__class__.__name__}.validator"
         
         # --- Supply any missing dependencies. ---#
         if origin_certifier is None:
@@ -89,7 +89,7 @@ class ManeuverEndpointValidator:
             return ValidationResult.failure(
                 ManeuverEndpointValidatorException(
                     cls_mthd=method,
-                    cls_name=cls.__name__,
+                    cls_name=self.__class__.__name__,
                     msg=ManeuverEndpointValidatorException.MSG,
                     err_code=ManeuverEndpointValidatorException.ERR_CODE,
                     ex=token_origin_relation_analysis_result.exception,
@@ -105,7 +105,7 @@ class ManeuverEndpointValidator:
             return ValidationResult.failure(
                 ManeuverEndpointValidatorException(
                     cls_mthd=method,
-                    cls_name=cls.__name__,
+                    cls_name=self.__class__.__name__,
                     msg=ManeuverEndpointValidatorException.MSG,
                     err_code=ManeuverEndpointValidatorException.ERR_CODE,
                     ex=token_destination_relation_analysis_result.exception,

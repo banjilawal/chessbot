@@ -74,7 +74,7 @@ class SchemaHashtableValidator(Validator[Dict[Schema, Any]]):
         Raises:
             SchemaHashtableValidatorException
         """
-        method = f"{cls.__name__}.validate"
+        method = f"{self.__class__.__name__}.execute"
             
         # Handle the case that, the validator is not primed.
         validator_priming_result = priming_validator.execute(
@@ -87,7 +87,7 @@ class SchemaHashtableValidator(Validator[Dict[Schema, Any]]):
             return ValidationResult.failure(
                 SchemaHashtableValidatorException(
                     cls_mthd=method,
-                    cls_name=cls.__name__,
+                    cls_name=self.__class__.__name__,
                     msg=SchemaHashtableValidatorException.MSG,
                     err_code=SchemaHashtableValidatorException.ERR_CODE,
                     ex=validator_priming_result.exception,
@@ -101,7 +101,7 @@ class SchemaHashtableValidator(Validator[Dict[Schema, Any]]):
             return ValidationResult.failure(
                 SchemaHashtableValidatorException(
                     cls_mthd=method,
-                    cls_name=cls.__name__,
+                    cls_name=self.__class__.__name__,
                     msg=SchemaHashtableValidatorException.MSG,
                     err_code=SchemaHashtableValidatorException.ERR_CODE,
                     ex=schema_validation_result.exception

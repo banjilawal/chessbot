@@ -10,7 +10,7 @@ version: 1.0.1
 from __future__ import annotations
 
 
-class BoardRootCertifier(Certifier[Board]):
+class BoardRootCertifier(RootCertifier[Board]):
     """
      Role:Validation, Data Integrity Guarantor, Security.
 

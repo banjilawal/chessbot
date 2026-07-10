@@ -10,7 +10,7 @@ version: 1.0.1
 from __future__ import annotations
 
 
-class EdgeRootCertifier(Certifier[Edge]):
+class EdgeRootCertifier(RootCertifier[Edge]):
     """
      Role:Validation, Data Integrity Guarantor, Security.
 

@@ -71,7 +71,7 @@ class ItineraryConsistencyValidator:
         Raises:
             ItineraryConsistencyException
         """
-        method = f"{cls.__name__}.validate"
+        method = f"{self.__class__.__name__}.execute"
         
         # --- Supply any missing dependencies. ---#
         if toolkit is None:
@@ -91,7 +91,7 @@ class ItineraryConsistencyValidator:
             return ValidationResult.failure(
                 ItineraryConsistencyException(
                     cls_mthd=method,
-                    cls_name=cls.__name__,
+                    cls_name=self.__class__.__name__,
                     msg=ItineraryConsistencyException.MSG,
                     err_code=ItineraryConsistencyException.ERR_CODE,
                     ex=source_consistency_result.exception,
@@ -107,7 +107,7 @@ class ItineraryConsistencyValidator:
             return ValidationResult.failure(
                 ItineraryConsistencyException(
                     cls_mthd=method,
-                    cls_name=cls.__name__,
+                    cls_name=self.__class__.__name__,
                     msg=ItineraryConsistencyException.MSG,
                     err_code=ItineraryConsistencyException.ERR_CODE,
                     ex=destination_consistency_result.exception,

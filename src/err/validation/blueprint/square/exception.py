@@ -17,7 +17,7 @@ __all__ = [
 ]
 
 # ======================# SQUARE_BLUEPRINT_VALIDATOR_FAILURE #======================#
-class SquareCertifierException(CertifierException):
+class SquareCertifierException(RootCertifierException):
     """
     Role:
         -   Error Tracing

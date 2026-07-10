@@ -19,7 +19,7 @@ __all__ = [
 ]
 
 # ======================# BLUEPRINT_VALIDATION_PRIMING_FAILURE #======================#
-class BlueprintValidationPrimingException(CertifierException):
+class BlueprintValidationPrimingException(RootCertifierException):
     """
     Role:
         -   Error Tracing

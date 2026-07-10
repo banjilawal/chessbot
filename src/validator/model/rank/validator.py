@@ -62,7 +62,7 @@ class RankValidator(ModelValidator[Rank]):
         Raises:
              RankValidatorException
         """
-        method = f"{cls.__name__}.validate"
+        method = f"{self.__class__.__name__}.execute"
         
         if toolkit is None:
             toolkit = RankToolkit()
@@ -78,7 +78,7 @@ class RankValidator(ModelValidator[Rank]):
             return ValidationResult.failure(
                 RankValidatorException(
                     cls_mthd=method,
-                    cls_name=cls.__name__,
+                    cls_name=self.__class__.__name__,
                     msg=RankValidatorException.MSG,
                     err_code=RankValidatorException.ERR_CODE,
                     ex=validator_priming_result.exception,
@@ -94,7 +94,7 @@ class RankValidator(ModelValidator[Rank]):
             return ValidationResult.failure(
                 RankValidatorException(
                     cls_mthd=method,
-                    cls_name=cls.__name__,
+                    cls_name=self.__class__.__name__,
                     msg=RankValidatorException.MSG,
                     err_code=RankValidatorException.ERR_CODE,
                     ex=id_validation_result.exception,
@@ -111,7 +111,7 @@ class RankValidator(ModelValidator[Rank]):
             return ValidationResult.failure(
                 RankValidatorException(
                     cls_mthd=method,
-                    cls_name=cls.__name__,
+                    cls_name=self.__class__.__name__,
                     msg=RankValidatorException.MSG,
                     err_code=RankValidatorException.ERR_CODE,
                     ex=rank_persona_validation_result.exception,

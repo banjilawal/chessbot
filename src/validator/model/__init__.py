@@ -16,6 +16,7 @@ from .coord import *
 from .edge import *
 from .game import *
 from .node import *
+from .operand import *
 from .rank import *
 from .scalar import *
 from .snapshot import *

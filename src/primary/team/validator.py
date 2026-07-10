@@ -22,7 +22,7 @@ from util import LoggingLevelRouter
 from validator import Certifier
 
 
-class TeamRootCertifier(Certifier[TeamBlueprint]):
+class TeamRootCertifier(RootCertifier[TeamBlueprint]):
     """
     Role
         -   Transaction Worker

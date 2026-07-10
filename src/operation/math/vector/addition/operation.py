@@ -15,10 +15,10 @@ from util import LoggingLevelRouter
 from err import VectorAdditionException
 from toolkit import VectorOperandToolkit
 from operation import Operation, VectorRegisterValidator
-from model import Coord, CoordBlueprint, RegisterContentType, Vector, VectorBlueprint, VectorOperandRegister
+from model import Coord, CoordBlueprint, RegisterContentType, Vector, VectorBlueprint, PointRegister
 
 
-class AddVector(Operation[VectorOperandRegister]):
+class AddVector(Operation[PointRegister]):
     """
     Role:
         -   Operation
@@ -46,7 +46,7 @@ class AddVector(Operation[VectorOperandRegister]):
     @LoggingLevelRouter.monitor
     def execute(
             cls,
-            register: VectorOperandRegister,
+            register: PointRegister,
             register_validator: VectorRegisterValidator | None = None,
             operand_toolkit: VectorOperandToolkit | None = None,
     ) -> ComputationResult[Coord|Vector]:

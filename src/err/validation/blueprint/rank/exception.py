@@ -17,7 +17,7 @@ __all__ = [
 ]
 
 # ======================# RANK_BLUEPRINT_VALIDATOR_FAILURE #======================#
-class RankCertifierException(CertifierException):
+class RankCertifierException(RootCertifierException):
     """
     Role:
         -   Error Tracing

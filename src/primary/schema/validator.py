@@ -12,7 +12,7 @@ from __future__ import annotations
 from validator import Certifier
 
 
-class SchemaRootCertifier(Certifier[SchemaKey]):
+class SchemaRootCertifier(RootCertifier[SchemaKey]):
     """
      Role:Validation, Data Integrity Guarantor, Security.
 

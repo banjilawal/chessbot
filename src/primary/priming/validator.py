@@ -19,7 +19,7 @@ from err import (
 )
 
 
-class BlueprintPrimingValidator(Certifier[Blueprint]):
+class BlueprintPrimingValidator(RootCertifier[Blueprint]):
     """
     Role
         -   Transaction Worker

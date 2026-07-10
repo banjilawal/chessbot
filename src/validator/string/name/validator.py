@@ -71,7 +71,7 @@ class NameValidator(Validator[str]):
             StringEmptyException
             StringValidatorException
         """
-        method = f"{cls.__name__}.validate"
+        method = f"{self.__class__.__name__}.execute"
         
         # --- Supply any missing dependencies. ---#
         if string_property_table is None:
@@ -87,7 +87,7 @@ class NameValidator(Validator[str]):
             return ValidationResult.failure(
                 NameValidatorException(
                     cls_mthd=method,
-                    cls_name=cls.__name__,
+                    cls_name=self.__class__.__name__,
                     msg=NameValidatorException.MSG,
                     err_code=NameValidatorException.ERR_CODE,
                     ex=string_validation_result.exception,
@@ -99,7 +99,7 @@ class NameValidator(Validator[str]):
             return ValidationResult.failure(
                 NameValidatorException(
                     cls_mthd=method,
-                    cls_name=cls.__name__,
+                    cls_name=self.__class__.__name__,
                     msg=NameValidatorException.MSG,
                     err_code=NameValidatorException.ERR_CODE,
                     ex=MinNameLengthException(
@@ -114,7 +114,7 @@ class NameValidator(Validator[str]):
             return ValidationResult.failure(
                 NameValidatorException(
                     cls_mthd=method,
-                    cls_name=cls.__name__,
+                    cls_name=self.__class__.__name__,
                     msg=NameValidatorException.MSG,
                     err_code=NameValidatorException.ERR_CODE,
                     ex=MaxNameLengthException(

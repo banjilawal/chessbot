@@ -73,7 +73,7 @@ class TokenQueryValidator(Validator[TokenQuery]):
             TokenQueryValidatorException
             TokenQueryStackEmptyException
         """
-        method = f"{cls.__name__}._validate"
+        method = f"{self.__class__.__name__}._validate"
         
         if priming_validator is None:
             priming_validator = PrimingValidator()

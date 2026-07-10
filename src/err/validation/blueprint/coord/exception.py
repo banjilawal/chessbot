@@ -17,7 +17,7 @@ __all__ = [
 ]
 
 # ======================# COORD_BLUEPRINT_VALIDATOR_FAILURE #======================#
-class CoordCertifierException(CertifierException):
+class CoordCertifierException(RootCertifierException):
     """
     Role:
         -   Error Tracing

@@ -10,7 +10,7 @@ version: 1.0.1
 from __future__ import annotations
 
 
-class PlayerRootCertifier(Certifier[Player]):
+class PlayerRootCertifier(RootCertifier[Player]):
     """
      Role:Validation, Data Integrity Guarantor, Security.
 
@@ -100,25 +100,25 @@ class PlayerRootCertifier(Certifier[Player]):
             if blueprint.id is not None:
                 validation = identity_service.validate_id(candidate=blueprint.id)
                 if validation.is_failure:
-                    return ValidationResult.failure(certifier.exception)
+                    return ValidationResult.failure(rootCertifier.exception)
                 return ValidationResult.success(blueprint)
             
             if blueprint.designation is not None:
                 validation = identity_service.validate_name(candidate=blueprint.designation)
                 if validation.is_failure:
-                    return ValidationResult.failure(certifier.exception)
+                    return ValidationResult.failure(rootCertifier.exception)
                 return ValidationResult.success(blueprint)
             
             if blueprint.team is not None:
                 validation = team_service.run.build(candidate=blueprint.team)
                 if validation.is_failure:
-                    return ValidationResult.failure(certifier.exception)
+                    return ValidationResult.failure(rootCertifier.exception)
                 return ValidationResult.success(blueprint)
             
             if blueprint.game is not None:
                 validation = game_service.run.build(candidate=blueprint.game)
                 if validation.is_failure:
-                    return ValidationResult.failure(certifier.exception)
+                    return ValidationResult.failure(rootCertifier.exception)
                 return ValidationResult.success(blueprint)
             
             if blueprint.variety is not None:

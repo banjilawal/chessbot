@@ -9,17 +9,14 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from ensurepip import bootstrap
 from typing import Any, cast
 
-from blueprint import TokenBlueprint
 from err import TokenValidatorException
-from model import EntityRegister, Token, TokenEntityRegister
-from primary.token.certifier import TokenRootCertifier
+from model import Token, TokenEntityRegister
+from primary import TokenRootCertifier
 from result import ValidationResult
-from toolkit import TokenToolkit
 from util import LoggingLevelRouter
-from validator import ModelValidator, TokenCertifier
+from validator import ModelValidator
 
 
 class TokenValidator(ModelValidator[Token]):
@@ -43,12 +40,12 @@ class TokenValidator(ModelValidator[Token]):
         Validator
     """
     
-    def __init__(self, bootstrapper: TokenRootCertifier | None = TokenRootCertifier()):
-        super().__init__(bootstrapper=bootstrapper)
+    def __init__(self, root_certifier: TokenRootCertifier | None = TokenRootCertifier()):
+        super().__init__(root_certifier=root_certifier)
         
-    @@property
-    def bootstrapper(self) -> TokenRootCertifier:
-        return cast(TokenRootCertifier, self.bootstrapper)
+    @property
+    def root_certifier(self) -> TokenRootCertifier:
+        return cast(TokenRootCertifier, self.root_certifier)
     
 
     @LoggingLevelRouter.monitor
@@ -75,9 +72,9 @@ class TokenValidator(ModelValidator[Token]):
         """
         method = f"{self.__class__.__name__}.execute"
         
-        entity_test = self.bootstrapper.toolkit.priming_validator.execute(
-            target_model=self.bootstrapper.toolkit.model,
-            null_exception=self.bootstrapper.toolkit.null_exception,
+        entity_test = self.root_certifier.toolkit.priming_validator.execute(
+            target_model=self.root_certifier.toolkit.model,
+            null_exception=self.root_certifier.toolkit.null_exception,
         )
         if entity_test.is_failure:
             # Send the exception chain on failure.
@@ -92,11 +89,11 @@ class TokenValidator(ModelValidator[Token]):
             )
         entity_register = TokenEntityRegister(
             model=cast(Token, candidate),
-            null_exception=self.bootstrapper.toolkit.null_exception
+            null_exception=self.root_certifier.toolkit.null_exception
         )
 
         # Handle the case that, bootstrap is not successful.
-        bootstrap_result = self.bootstrapper.execute(candidate=entity_register)
+        bootstrap_result = self.root_certifier.execute(candidate=entity_register)
         if bootstrap_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(

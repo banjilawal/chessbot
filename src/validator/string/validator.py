@@ -63,7 +63,7 @@ class StringValidator(Validator[str]):
             StringEmptyException
             StringValidatorException
         """
-        method = f"{cls.__name__}.validate"
+        method = f"{self.__class__.__name__}.execute"
         
         # Handle the nonexistence case.
         if candidate is None:
@@ -71,7 +71,7 @@ class StringValidator(Validator[str]):
             return ValidationResult.failure(
                 StringValidatorException(
                     cls_mthd=method,
-                    cls_name=cls.__name__,
+                    cls_name=self.__class__.__name__,
                     msg=StringValidatorException.MSG,
                     err_code=StringValidatorException.ERR_CODE,
                     ex=StringNullException(
@@ -86,7 +86,7 @@ class StringValidator(Validator[str]):
             return ValidationResult.failure(
                 StringValidatorException(
                     cls_mthd=method,
-                    cls_name=cls.__name__,
+                    cls_name=self.__class__.__name__,
                     msg=StringValidatorException.MSG,
                     err_code=StringValidatorException.ERR_CODE,
                     ex=TypeError(f"Expected an str, got {type(candidate).__name__} instead.")
@@ -100,7 +100,7 @@ class StringValidator(Validator[str]):
             return ValidationResult.failure(
                 StringValidatorException(
                     cls_mthd=method,
-                    cls_name=cls.__name__,
+                    cls_name=self.__class__.__name__,
                     msg=StringValidatorException.MSG,
                     err_code=StringValidatorException.ERR_CODE,
                     ex=StringEmptyException(

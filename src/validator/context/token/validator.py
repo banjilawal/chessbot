@@ -71,7 +71,7 @@ class TokenContextValidator(ContextValidator):
             TokenContextValidatorException
             TokenContextValidationRouteException
         """
-        method = f"{cls.__name__}.validate"
+        method = f"{self.__class__.__name__}.execute"
         
         # --- Supply any missing dependencies. ---#
         if toolkit is None:
@@ -89,7 +89,7 @@ class TokenContextValidator(ContextValidator):
             return ValidationResult.failure(
                 TokenContextValidatorException(
                     cls_mthd=method,
-                    cls_name=cls.__name__,
+                    cls_name=self.__class__.__name__,
                     msg=TokenContextValidatorException.MSG,
                     err_code=TokenContextValidatorException.ERR_CODE,
                     ex=priming_result.exception
@@ -108,7 +108,7 @@ class TokenContextValidator(ContextValidator):
                 return ValidationResult.failure(
                     TokenContextValidatorException(
                         cls_mthd=method,
-                        cls_name=cls.__name__,
+                        cls_name=self.__class__.__name__,
                         msg=TokenContextValidatorException.MSG,
                         err_code=TokenContextValidatorException.ERR_CODE,
                         ex=validation_result.exception
@@ -127,7 +127,7 @@ class TokenContextValidator(ContextValidator):
                 return ValidationResult.failure(
                     TokenContextValidatorException(
                         cls_mthd=method,
-                        cls_name=cls.__name__,
+                        cls_name=self.__class__.__name__,
                         msg=TokenContextValidatorException.MSG,
                         err_code=TokenContextValidatorException.ERR_CODE,
                         ex=validation_result.exception
@@ -146,7 +146,7 @@ class TokenContextValidator(ContextValidator):
                 return ValidationResult.failure(
                     TokenContextValidatorException(
                         cls_mthd=method,
-                        cls_name=cls.__name__,
+                        cls_name=self.__class__.__name__,
                         msg=TokenContextValidatorException.MSG,
                         err_code=TokenContextValidatorException.ERR_CODE,
                         ex=validation_result.exception
@@ -165,7 +165,7 @@ class TokenContextValidator(ContextValidator):
                 return ValidationResult.failure(
                     TokenContextValidatorException(
                         cls_mthd=method,
-                        cls_name=cls.__name__,
+                        cls_name=self.__class__.__name__,
                         msg=TokenContextValidatorException.MSG,
                         err_code=TokenContextValidatorException.ERR_CODE,
                         ex=validation_result.exception
@@ -184,7 +184,7 @@ class TokenContextValidator(ContextValidator):
                 return ValidationResult.failure(
                     TokenContextValidatorException(
                         cls_mthd=method,
-                        cls_name=cls.__name__,
+                        cls_name=self.__class__.__name__,
                         msg=TokenContextValidatorException.MSG,
                         err_code=TokenContextValidatorException.ERR_CODE,
                         ex=validation_result.exception
@@ -203,7 +203,7 @@ class TokenContextValidator(ContextValidator):
                 return ValidationResult.failure(
                     TokenContextValidatorException(
                         cls_mthd=method,
-                        cls_name=cls.__name__,
+                        cls_name=self.__class__.__name__,
                         msg=TokenContextValidatorException.MSG,
                         err_code=TokenContextValidatorException.ERR_CODE,
                         ex=validation_result.exception
@@ -224,7 +224,7 @@ class TokenContextValidator(ContextValidator):
                 return ValidationResult.failure(
                     TokenContextValidatorException(
                         cls_mthd=method,
-                        cls_name=cls.__name__,
+                        cls_name=self.__class__.__name__,
                         msg=TokenContextValidatorException.MSG,
                         err_code=TokenContextValidatorException.ERR_CODE,
                         ex=validation_result.exception
@@ -245,7 +245,7 @@ class TokenContextValidator(ContextValidator):
                 return ValidationResult.failure(
                     TokenContextValidatorException(
                         cls_mthd=method,
-                        cls_name=cls.__name__,
+                        cls_name=self.__class__.__name__,
                         msg=TokenContextValidatorException.MSG,
                         err_code=TokenContextValidatorException.ERR_CODE,
                         ex=validation_result.exception
@@ -258,7 +258,7 @@ class TokenContextValidator(ContextValidator):
         return ValidationResult.failure(
             TokenContextValidatorException(
                 cls_mthd=method,
-                cls_name=cls.__name__,
+                cls_name=self.__class__.__name__,
                 msg=TokenContextValidatorException.MSG,
                 err_code=TokenContextValidatorException.ERR_CODE,
                 ex=TokenContextValidationRouteException(

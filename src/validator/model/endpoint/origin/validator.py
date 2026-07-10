@@ -67,7 +67,7 @@ class TokenOriginCertifier:
             TokenOriginCertifierException
             TokenOriginRelationNullException
         """
-        method = f"{cls.__name__}.validator"
+        method = f"{self.__class__.__name__}.validator"
         
         # --- Supply any missing dependencies. ---#
         if toolkit is None:
@@ -86,7 +86,7 @@ class TokenOriginCertifier:
             return ValidationResult.failure(
                 TokenOriginCertifierException(
                     cls_mthd=method,
-                    cls_name=cls.__name__,
+                    cls_name=self.__class__.__name__,
                     msg=TokenOriginCertifierException.MSG,
                     err_code=TokenOriginCertifierException.ERR_CODE,
                     ex=validation_result.exception,

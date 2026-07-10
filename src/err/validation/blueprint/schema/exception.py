@@ -17,7 +17,7 @@ __all__ = [
 ]
 
 # ======================# SCHEMA_BLUEPRINT_VALIDATOR_FAILURE #======================#
-class SchemaCertifierException(CertifierException):
+class SchemaCertifierException(RootCertifierException):
     """
     Role:
         -   Error Tracing

@@ -9,13 +9,13 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from model import VectorOperandRegister
+from model import PointRegister
 from suite import ModelOperationSuite
 from toolkit import VectorOperandRegisterToolkit
 from validator import VectorOperandRegisterValidator
 
 
-class VectorOperandRegisterSuite(ModelOperationSuite[VectorOperandRegister]):
+class VectorOperandRegisterSuite(ModelOperationSuite[PointRegister]):
     """
     Role:
         -   Dependency Container

@@ -66,7 +66,7 @@ class TeamValidator(ModelValidator[Team]):
         Raises:
              TeamValidatorException
         """
-        method = f"{cls.__name__}.validate"
+        method = f"{self.__class__.__name__}.execute"
         
         # --- Supply any missing dependencies. ---#
         if toolkit is None:
@@ -83,7 +83,7 @@ class TeamValidator(ModelValidator[Team]):
             return ValidationResult.failure(
                 TeamValidatorException(
                     cls_mthd=method,
-                    cls_name=cls.__name__,
+                    cls_name=self.__class__.__name__,
                     msg=TeamValidatorException.MSG,
                     err_code=TeamValidatorException.ERR_CODE,
                     ex=validator_priming_result.exception,
@@ -99,7 +99,7 @@ class TeamValidator(ModelValidator[Team]):
             return ValidationResult.failure(
                 TeamValidatorException(
                     cls_mthd=method,
-                    cls_name=cls.__name__,
+                    cls_name=self.__class__.__name__,
                     msg=TeamValidatorException.MSG,
                     err_code=TeamValidatorException.ERR_CODE,
                     ex=id_validation_result.exception,
@@ -116,7 +116,7 @@ class TeamValidator(ModelValidator[Team]):
             return ValidationResult.failure(
                 TeamValidatorException(
                     cls_mthd=method,
-                    cls_name=cls.__name__,
+                    cls_name=self.__class__.__name__,
                     msg=TeamValidatorException.MSG,
                     err_code=TeamValidatorException.ERR_CODE,
                     ex=schema_validation_result.exception,
@@ -129,7 +129,7 @@ class TeamValidator(ModelValidator[Team]):
             return ValidationResult.failure(
                 TeamValidatorException(
                     cls_mthd=method,
-                    cls_name=cls.__name__,
+                    cls_name=self.__class__.__name__,
                     msg=TeamValidatorException.MSG,
                     err_code=TeamValidatorException.ERR_CODE,
                     ex=owner_validation_result.exception,
@@ -142,7 +142,7 @@ class TeamValidator(ModelValidator[Team]):
             return ValidationResult.failure(
                 TeamValidatorException(
                     cls_mthd=method,
-                    cls_name=cls.__name__,
+                    cls_name=self.__class__.__name__,
                     msg=TeamValidatorException.MSG,
                     err_code=TeamValidatorException.ERR_CODE,
                     ex=board_validator_result.exception,

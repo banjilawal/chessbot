@@ -19,7 +19,7 @@ from util import LoggingLevelRouter
 from validator import Certifier
 
 
-class SquareRootCertifier(Certifier[SquareBlueprint]):
+class SquareRootCertifier(RootCertifier[SquareBlueprint]):
     """
     Role
         -   Transaction Worker

@@ -66,7 +66,7 @@ class CoordContextValidator(ContextValidator[Coord]):
         Raises:
             CoordContextValidatorException
         """
-        method = f"{cls.__name__}.validate"
+        method = f"{self.__class__.__name__}.execute"
         
         # --- Supply any missing dependencies. ---#
         if toolkit is None:
@@ -84,7 +84,7 @@ class CoordContextValidator(ContextValidator[Coord]):
             return ValidationResult.failure(
                 CoordContextValidatorException(
                     cls_mthd=method,
-                    cls_name=cls.__name__,
+                    cls_name=self.__class__.__name__,
                     msg=CoordContextValidatorException.MSG,
                     err_code=CoordContextValidatorException.ERR_CODE,
                     ex=priming_result.exception
@@ -105,7 +105,7 @@ class CoordContextValidator(ContextValidator[Coord]):
                 return ValidationResult.failure(
                     CoordContextValidatorException(
                         cls_mthd=method,
-                        cls_name=cls.__name__,
+                        cls_name=self.__class__.__name__,
                         msg=CoordContextValidatorException.MSG,
                         err_code=CoordContextValidatorException.ERR_CODE,
                         ex=validation_result.exception

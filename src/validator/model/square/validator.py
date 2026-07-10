@@ -63,7 +63,7 @@ class SquareValidator(ModelValidator[Square]):
         Raises:
              SquareValidatorException
         """
-        method = f"{cls.__name__}.validate"
+        method = f"{self.__class__.__name__}.execute"
         
         if toolkit is None:
             toolkit = SquareToolkit()
@@ -79,7 +79,7 @@ class SquareValidator(ModelValidator[Square]):
             return ValidationResult.failure(
                 SquareValidatorException(
                     cls_mthd=method,
-                    cls_name=cls.__name__,
+                    cls_name=self.__class__.__name__,
                     msg=SquareValidatorException.MSG,
                     err_code=SquareValidatorException.ERR_CODE,
                     ex=validator_priming_result.exception,
@@ -98,7 +98,7 @@ class SquareValidator(ModelValidator[Square]):
             return ValidationResult.failure(
                 SquareValidatorException(
                     cls_mthd=method,
-                    cls_name=cls.__name__,
+                    cls_name=self.__class__.__name__,
                     msg=SquareValidatorException.MSG,
                     err_code=SquareValidatorException.ERR_CODE,
                     ex=identity_validation_result.exception,
@@ -111,7 +111,7 @@ class SquareValidator(ModelValidator[Square]):
             return ValidationResult.failure(
                 SquareValidatorException(
                     cls_mthd=method,
-                    cls_name=cls.__name__,
+                    cls_name=self.__class__.__name__,
                     msg=SquareValidatorException.MSG,
                     err_code=SquareValidatorException.ERR_CODE,
                     ex=identity_validation_result.exception,
@@ -124,7 +124,7 @@ class SquareValidator(ModelValidator[Square]):
             return ValidationResult.failure(
                 SquareValidatorException(
                     cls_mthd=method,
-                    cls_name=cls.__name__,
+                    cls_name=self.__class__.__name__,
                     msg=SquareValidatorException.MSG,
                     err_code=SquareValidatorException.ERR_CODE,
                     ex=board_validator_result.exception,
@@ -158,7 +158,7 @@ class SquareValidator(ModelValidator[Square]):
             SquareOnDifferentBoardException
             SquareBoardRegisteredException
         """
-        method = f"{cls.__name__}._run_board_tests"
+        method = f"{self.__class__.__name__}._run_board_tests"
         
         # Handle the case that, the square's board is nnt certified as safe.
         board_validator_result = board_service.microservice.run.validat(
@@ -266,7 +266,7 @@ class SquareValidator(ModelValidator[Square]):
             NullSquareStateException
             SquareValidatorException
         """
-        method = f"{cls.__name__}.validate_square_state"
+        method = f"{self.__class__.__name__}.execute_square_state"
         
         # Handle the nonexistence case.
         if candidate is None:

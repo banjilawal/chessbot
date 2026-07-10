@@ -19,7 +19,7 @@ from util import LoggingLevelRouter
 from validator import Certifier
 
 
-class CoordRootCertifier(Certifier[Coord]):
+class CoordRootCertifier(RootCertifier[Coord]):
     """
     Role
         -   Transaction Worker

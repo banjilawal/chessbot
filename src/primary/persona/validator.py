@@ -18,7 +18,7 @@ from system import (
 )
 
 
-class PersonaRootCertifier(Certifier[PersonaKey]):
+class PersonaRootCertifier(RootCertifier[PersonaKey]):
     """
      Role:Validation, Data Integrity Guarantor, Security.
 

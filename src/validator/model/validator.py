@@ -40,12 +40,12 @@ class ModelValidator(Validator[Model]):
     """
     _bootstrapper: Certifier
     
-    def __init__(self, bootstrapper: Certifier):
-        self._bootstrapper = bootstrapper
+    def __init__(self, root_certifier: Certifier):
+        self._bootstrapper = root_certifier
 
     @property
     @abstractmethod
-    def bootstrapper(self) -> Certifier:
+    def root_certifier(self) -> Certifier:
         pass
     
     @abstractmethod

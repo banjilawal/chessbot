@@ -67,7 +67,7 @@ class TokenConsistencyValidator(ModelValidator[Token]):
         Raises:
              TokenValidatorException
         """
-        method = f"{cls.__name__}.validate"
+        method = f"{self.__class__.__name__}.execute"
         
         team = token.team
         board = team.board
@@ -80,7 +80,7 @@ class TokenConsistencyValidator(ModelValidator[Token]):
             return ValidationResult.failure(
                 TokenValidatorException(
                     cls_mthd=method,
-                    cls_name=cls.__name__,
+                    cls_name=self.__class__.__name__,
                     msg=TokenValidatorException.MSG,
                     err_code=TokenValidatorException.ERR_CODE,
                     ex=toolkit_build_result.exception,
@@ -99,7 +99,7 @@ class TokenConsistencyValidator(ModelValidator[Token]):
             return ValidationResult.failure(
                 TokenValidatorException(
                     cls_mthd=method,
-                    cls_name=cls.__name__,
+                    cls_name=self.__class__.__name__,
                     msg=TokenValidatorException.MSG,
                     err_code=TokenValidatorException.ERR_CODE,
                     ex=validator_priming_result.exception,
@@ -118,7 +118,7 @@ class TokenConsistencyValidator(ModelValidator[Token]):
             return ValidationResult.failure(
                 TokenValidatorException(
                     cls_mthd=method,
-                    cls_name=cls.__name__,
+                    cls_name=self.__class__.__name__,
                     msg=TokenValidatorException.MSG,
                     err_code=TokenValidatorException.ERR_CODE,
                     ex=identity_validation_result.exception,
@@ -131,7 +131,7 @@ class TokenConsistencyValidator(ModelValidator[Token]):
             return ValidationResult.failure(
                 TokenValidatorException(
                     cls_mthd=method,
-                    cls_name=cls.__name__,
+                    cls_name=self.__class__.__name__,
                     msg=TokenValidatorException.MSG,
                     err_code=TokenValidatorException.ERR_CODE,
                     ex=team_validation_result.exception,
@@ -144,7 +144,7 @@ class TokenConsistencyValidator(ModelValidator[Token]):
             return ValidationResult.failure(
                 TokenValidatorException(
                     cls_mthd=method,
-                    cls_name=cls.__name__,
+                    cls_name=self.__class__.__name__,
                     msg=TokenValidatorException.MSG,
                     err_code=TokenValidatorException.ERR_CODE,
                     ex=home_square_validation_result.exception,
@@ -157,7 +157,7 @@ class TokenConsistencyValidator(ModelValidator[Token]):
             return ValidationResult.failure(
                 TokenValidatorException(
                     cls_mthd=method,
-                    cls_name=cls.__name__,
+                    cls_name=self.__class__.__name__,
                     msg=TokenValidatorException.MSG,
                     err_code=TokenValidatorException.ERR_CODE,
                     ex=rank_validation_result.exception,
@@ -174,7 +174,7 @@ class TokenConsistencyValidator(ModelValidator[Token]):
             return ValidationResult.failure(
                 TokenValidatorException(
                     cls_mthd=method,
-                    cls_name=cls.__name__,
+                    cls_name=self.__class__.__name__,
                     msg=TokenValidatorException.MSG,
                     err_code=TokenValidatorException.ERR_CODE,
                     ex=coord_database_validation_result,
@@ -328,7 +328,7 @@ class TokenConsistencyValidator(ModelValidator[Token]):
     
     @classmethod
     def _get_toolkit(cls, toolkit: TokenToolkit) -> BuildResult[TokenToolkit]:
-        method = f"{cls.__name__}._get_toolkit"
+        method = f"{self.__class__.__name__}._get_toolkit"
         
         build_result = ToolkitFactory.build_toolkit(toolkit_class=TokenToolkit, )
         if build_result.is_failure:
@@ -336,7 +336,7 @@ class TokenConsistencyValidator(ModelValidator[Token]):
             return BuildResult.failure(
                 TokenValidatorException(
                     cls_mthd=method,
-                    cls_name=cls.__name__,
+                    cls_name=self.__class__.__name__,
                     msg=TokenValidatorException.MSG,
                     err_code=TokenValidatorException.ERR_CODE,
                     ex=build_result.exception,

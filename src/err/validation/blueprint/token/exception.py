@@ -17,7 +17,7 @@ __all__ = [
 ]
 
 # ======================# TOKEN_BLUEPRINT_VALIDATOR_FAILURE #======================#
-class TokenCertifierException(CertifierException):
+class TokenCertifierException(RootCertifierException):
     """
     Role:
         -   Error Tracing

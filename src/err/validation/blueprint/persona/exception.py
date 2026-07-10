@@ -19,7 +19,7 @@ __all__ = [
 ]
 
 # ======================# PERSONA_BLUEPRINT_VALIDATOR_FAILURE #======================#
-class PersonaCertifierException(CertifierException):
+class PersonaCertifierException(RootCertifierException):
     """
     Role:
         -   Error Tracing

@@ -64,7 +64,7 @@ class ScalarValidator(ModelValidator[Scalar]):
         Raises:
              ScalarValidatorException
         """
-        method = f"{cls.__name__}.validate"
+        method = f"{self.__class__.__name__}.execute"
         
         if toolkit is None:
             toolkit = MathToolkit()
@@ -80,7 +80,7 @@ class ScalarValidator(ModelValidator[Scalar]):
             return ValidationResult.failure(
                 ScalarValidatorException(
                     cls_mthd=method,
-                    cls_name=cls.__name__,
+                    cls_name=self.__class__.__name__,
                     msg=ScalarValidatorException.MSG,
                     err_code=ScalarValidatorException.ERR_CODE,
                     ex=validator_priming_result.exception,
@@ -99,7 +99,7 @@ class ScalarValidator(ModelValidator[Scalar]):
             return ValidationResult.failure(
                 ScalarValidatorException(
                     cls_mthd=method,
-                    cls_name=cls.__name__,
+                    cls_name=self.__class__.__name__,
                     msg=ScalarValidatorException.MSG,
                     err_code=ScalarValidatorException.ERR_CODE,
                     ex=validator_priming_result.exception,

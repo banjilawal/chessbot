@@ -17,7 +17,7 @@ __all__ = [
 ]
 
 # ======================# PLAYER_BLUEPRINT_VALIDATOR_FAILURE #======================#
-class PlayerCertifierException(CertifierException):
+class PlayerCertifierException(RootCertifierException):
     """
     Role:
         -   Error Tracing

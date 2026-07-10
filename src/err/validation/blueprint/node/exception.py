@@ -17,7 +17,7 @@ __all__ = [
 ]
 
 # ======================# NODE_BLUEPRINT_VALIDATOR_FAILURE #======================#
-class NodeCertifierException(CertifierException):
+class NodeCertifierException(RootCertifierException):
     """
     Role:
         -   Error Tracing
