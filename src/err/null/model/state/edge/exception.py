@@ -18,9 +18,6 @@ __all__ = [
     "EdgeNullException",
 ]
 
-from result import MethodResultType
-
-
 # ======================# EDGE_NULL_ERROR #======================#
 class EdgeNullException(NullException):
     """

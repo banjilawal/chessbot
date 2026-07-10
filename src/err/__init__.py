@@ -17,6 +17,7 @@ from .bootstrapper import *
 from .build import *
 from .collider import *
 from .config import *
+from .consistencey import *
 from .context import *
 from .controller import *
 from .detection import *

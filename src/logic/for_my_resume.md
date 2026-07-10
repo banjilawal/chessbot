@@ -8,7 +8,7 @@ Python, SQLAlchemy, Domain-Driven Design
 
     Atomicity via Unit of Work pattern with atomic commit/rollback for move transactions
 
-    Consistency through validation service layer enforcing 50+ business rules
+    ConsistencyChecker through validation service layer enforcing 50+ business rules
 
     Isolation with REPEATABLE_READ transactions preventing dirty reads
 

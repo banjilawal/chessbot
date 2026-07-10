@@ -11,6 +11,7 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from err import ModelException
+from result import MethodResultType
 
 __all__ = [
     # ======================# ARENA_ERROR #======================#
@@ -24,7 +25,7 @@ class ArenaException(ModelException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an Arena encountered an error.
+        1.  Indicate that a Arena encountered an error.
 
     Attributes:
         msg: Optional[str]
