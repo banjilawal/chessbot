@@ -10,39 +10,37 @@ version: 1.0.1
 from __future__ import annotations
 
 from abc import ABC, abstractmethod
-from typing import Any, Generic, TypeVar
+from typing import Generic, TypeVar
 
-from err import NullException
+from operand import DtoOperand
 from result import ValidationResult
 from toolkit import ModelToolkit
 from util import LoggingLevelRouter
 
-T = TypeVar("T", bound="Model")
+T = TypeVar("T",)
 
 
 class RootCertifier(ABC, Generic[T]):
     """
     Role
-        -   Transaction Worker
-        -   Integrity Maintenance
-        -   Consistency Assurance
-        -   Process Runner
+        -   Validation Worker
+        -   Integrity Assurance
 
     Responsibilities:
-        1.  Ensure a Blueprint instance is certified safe, reliable and consistent before use.
+        1.  Ensures a DtoOperand's data satisfies its model's type and integrity requirements.
 
     Attributes:
-        toolkit: ModelToolkit
+        toolkit: ModelToolkit[T]
 
     Provides:
-        -   def validate(candidate: Any, toolkit: ModelToolkit[T],) -> ValidationResult[Blueprint[T]]:
+        -   execute( dto_operand: DtoOperand[T]) -> ValidationResult:
 
     Super Class:
     """
     _toolkit: ModelToolkit[T]
     
     def __init__(self, toolkit: ModelToolkit[T]):
-        super().__init__(toolkit=toolkit)
+        self._toolkit = toolkit
         
     @property
     @abstractmethod
@@ -51,7 +49,18 @@ class RootCertifier(ABC, Generic[T]):
     
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def execute(self, model: Any, null_exception: NullException) -> ValidationResult:
+    def execute(self, dto_operand: DtoOperand[T]) -> ValidationResult:
+        """
+            -   Certify a DtoOperand's data satisfies a model's integrity constraints.
+
+        Action:
+            1.  Implement validation tests here.
+        Args:
+            dto_operand: DtoOperand[T]
+        Returns:
+            ValidationResult[DtoOperand[T]]
+        Raises:
+        """
         pass
     
     
