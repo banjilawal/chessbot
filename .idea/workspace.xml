@@ -5,72 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blueprint/model/square/blueprint.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/blueprint/model/square/blueprint.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/state/square/home/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/state/square/home/model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/state/square/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/state/square/model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/primary/square/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/primary/square/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/primary/square/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/primary/square/certifier.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/primary/token/certifier.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/primary/token/certifier.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/register/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/register/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/register/entity/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/register/entity/arena/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/register/entity/arena/blueprint/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/register/entity/arena/blueprint/model.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/register/entity/arena/model.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/register/entity/board/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/register/entity/board/blueprint/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/register/entity/board/blueprint/model.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/register/entity/board/model.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/register/entity/coord/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/register/entity/coord/blueprint/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/register/entity/coord/blueprint/model.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/register/entity/coord/model.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/register/entity/edge/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/register/entity/edge/blueprint/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/register/entity/edge/blueprint/model.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/register/entity/edge/model.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/register/entity/game/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/register/entity/game/blueprint/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/register/entity/game/blueprint/model.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/register/entity/game/model.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/register/entity/model.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/register/entity/node/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/register/entity/node/blueprint/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/register/entity/node/blueprint/model.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/register/entity/node/model.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/register/entity/operand/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/register/entity/operand/blueprint/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/register/entity/operand/blueprint/model.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/register/entity/operand/model.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/register/entity/player/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/register/entity/player/blueprint/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/register/entity/player/blueprint/model.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/register/entity/player/model.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/register/entity/prisoner/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/register/entity/prisoner/blueprint/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/register/entity/prisoner/blueprint/model.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/register/entity/prisoner/model.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/register/entity/scalar/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/register/entity/scalar/blueprint/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/register/entity/scalar/blueprint/model.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/register/entity/scalar/model.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/register/entity/square/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/register/entity/square/blueprint/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/register/entity/square/blueprint/model.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/register/entity/square/model.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/register/entity/team/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/register/entity/team/blueprint/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/register/entity/team/blueprint/model.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/register/entity/team/model.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/register/entity/token/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/register/entity/token/blueprint/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/register/entity/token/blueprint/model.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/register/entity/token/model.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/register/entity/vector/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/register/entity/vector/blueprint/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/register/entity/vector/blueprint/model.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/register/entity/vector/model.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/primary/square/certifier.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/primary/square/certifier.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -124,7 +59,7 @@
     "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/err/null",
+    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/operand/dto",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
@@ -136,11 +71,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/operand/dto" />
       <recent name="$PROJECT_DIR$/src/err/null" />
       <recent name="$PROJECT_DIR$/src/err" />
       <recent name="$PROJECT_DIR$/src/operand/dto/register" />
       <recent name="$PROJECT_DIR$/src/operand/dto/register/identity" />
-      <recent name="$PROJECT_DIR$/src/operand/dto" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src" />
@@ -874,7 +809,7 @@
       <workItem from="1782325486599" duration="56546000" />
       <workItem from="1782732939190" duration="235900000" />
       <workItem from="1783222430394" duration="208582000" />
-      <workItem from="1783540905722" duration="85688000" />
+      <workItem from="1783540905722" duration="88067000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />

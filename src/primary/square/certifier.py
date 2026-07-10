@@ -12,11 +12,12 @@ from __future__ import annotations
 from typing import Any, cast
 
 from blueprint import SquareBlueprint
-from err import SquareCertifierException, SquareDtoOperandNullException
-from model import Board, Coord
+from err import FormationNullException, SquareCertifierException, SquareDtoOperandNullException
+from model import Board, Coord, HomeSquare, Square
 from operand import SquareDtoOperand
 from primary import RootCertifier
 from result import ValidationResult
+from schema import Formation
 from toolkit import SquareToolkit
 from util import LoggingLevelRouter
 
@@ -128,6 +129,20 @@ class SquareRootCertifier(RootCertifier[SquareBlueprint]):
                     ex=id_test.exception,
                 )
             )
+        name_test = self.toolkit.identity_service.validate_name.execute(
+            candidate=blueprint.name,
+        )
+        if name_test.is_failure:
+            # Send the exception chain on failure.
+            return ValidationResult.failure(
+                SquareCertifierException(
+                    cls_mthd=method,
+                    cls_name=self.__class__.__name__,
+                    msg=SquareCertifierException.MSG,
+                    err_code=SquareCertifierException.ERR_CODE,
+                    ex=name_test.exception,
+                )
+            )
         # Handle the case that, square.coord is not safe.
         coord_test = self.toolkit.coord_validator.execute(blueprint.coord)
         if coord_test.is_failure:
@@ -154,31 +169,61 @@ class SquareRootCertifier(RootCertifier[SquareBlueprint]):
                     ex=board_test.exception,
                 )
             )
+
+        formation = None
+        if operand.is_home_square_operand:
+            formation_test = self.toolkit.priming_validator.execute(
+                candidate=blueprint.formation,
+                target_model=Formation,
+                null_exception=FormationNullException()
+            )
+            if formation_test.is_failure:
+                # Send the exception chain on failure.
+                return ValidationResult.failure(
+                    SquareCertifierException(
+                        cls_mthd=method,
+                        cls_name=self.__class__.__name__,
+                        msg=SquareCertifierException.MSG,
+                        err_code=SquareCertifierException.ERR_CODE,
+                        ex=formation_test.exception,
+                    )
+                )
+            formation = cast(Formation, formation_test.payload)
+            
+            
         # --- Extract and cast payloads of the validation results. ---#
         id = cast(int, id_test.payload)
+        name = cast(str, name_test.payload)
         board = cast(Board, board_test.payload)
         coord = cast(Coord, coord_test.payload)
         
-        if operand.is_home_square_model:
         
-        
+        if operand.is_home_square_operand:
+            return ValidationResult.success(
+                HomeSquare(
+                    id=id,
+                    name=name,
+                    board=board,
+                    coord=coord,
+                    formation=formation,
+                )
+            )
         if operand.is_model_operand:
             return ValidationResult.success(
                 Square(
                     id=id,
-                    team=team,
-                    rank=rank,
-                    formation=formation,
-                    home_square=home_square,
+                    name=name,
+                    board=board,
+                    coord=coord,
                 )
             )
         # --- Forward the work product to the caller. ---#
         return ValidationResult.success(
-            TokenBlueprint(
+            SquareBlueprint(
                 id=id,
-                rank=rank,
-                team=team,
+                name=name,
+                board=board,
+                coord=coord,
                 formation=formation,
-                home_square=home_square,
             )
         )

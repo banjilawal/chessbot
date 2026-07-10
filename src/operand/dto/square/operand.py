@@ -79,9 +79,11 @@ class SquareDtoOperand(DtoOperand[Square]):
     @property
     def is_home_square_operand(self) -> bool:
         return (
-                self.is_model_operand and
+            (self.is_model_operand and
                 isinstance(self._model, HomeSquare) and
-                self._model.f
+                self._model.formation is not None
+             ) or
+            self._blueprint and self._blueprint.formation is not None
         )
     
     @property
