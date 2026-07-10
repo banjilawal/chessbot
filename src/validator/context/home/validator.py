@@ -75,7 +75,7 @@ class TokenHomeContextValidator(ContextValidator[TokenHomeContext]):
         # Handle the case that, the validator is not primed.
         priming_result = toolkit.priming_validator.execute(
             candidate=candidate,
-            context_model=candidate,
+            target_model=candidate,
             context_null_exception=HomeContext,
             priming_validator=HomeContextNullException()
         )

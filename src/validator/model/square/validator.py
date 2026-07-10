@@ -12,11 +12,13 @@ from __future__ import annotations
 from typing import Any, cast
 
 from controller import WorkerRegistryController
-from err import SquareNullException, SquareValidatorException
+from err import SquareValidatorException
 from model import Square
+from operand import SquareDtoOperand
+from primary import SquareRootCertifier
 from result import ValidationResult
 from util import LoggingLevelRouter
-from toolkit import SquareToolkit
+from validator import ModelValidator
 
 
 class SquareValidator(ModelValidator[Square]):
@@ -31,20 +33,31 @@ class SquareValidator(ModelValidator[Square]):
         1.  Ensure a Square instance is certified safe, reliable and consistent before use.
 
     Attributes:
-
+        root_certifier: SquareRootCertifier
     Provides:
         -   def validate(candidate: Any, toolkit: SquareToolkit) -> ValidationResult[Square]:
 
     Super Class:
-        Validator
+        ModelValidator
     """
+    
+    
+    def __init__(
+            self,
+            root_certifier: SquareRootCertifier = SquareRootCertifier(),
+    ):
+        """
+        Args:
+            root_certifier: SquareRootCertifier
+        """
+        super().__init__(root_certifier=root_certifier)
+        
+    @property
+    def root_certifier(self) -> SquareRootCertifier:
+        return cast(SquareRootCertifier, self.root_certifier)
 
     @LoggingLevelRouter.monitor
-    def validate(
-            cls,
-            candidate: Any,
-            toolkit: SquareToolkit,
-    ) -> ValidationResult[Square]:
+    def execute(self, candidate: Any) -> ValidationResult:
         """
         Verify the object is a Square that is safe to use.
 
@@ -57,7 +70,6 @@ class SquareValidator(ModelValidator[Square]):
             2.  Otherwise, send the success result.
         Args:
             candidate: Any
-            toolkit: SquareToolkit
         Returns:
             ValidationResult[Square]
         Raises:
@@ -65,16 +77,11 @@ class SquareValidator(ModelValidator[Square]):
         """
         method = f"{self.__class__.__name__}.execute"
         
-        if toolkit is None:
-            toolkit = SquareToolkit()
-        
-        # Handle the case that, the validator is not primed.
-        validator_priming_result = toolkit.priming_validator.execute(
-            candidate=candidate,
-            context_model=Square,
-            null_exception=SquareNullException(),
+        bootstrap = self.root_certifier.toolkit.priming_validator.execute(
+            target_model=self.root_certifier.toolkit.model,
+            null_exception=self.root_certifier.toolkit.null_exception,
         )
-        if validator_priming_result.is_failure:
+        if bootstrap.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 SquareValidatorException(
@@ -82,18 +89,13 @@ class SquareValidator(ModelValidator[Square]):
                     cls_name=self.__class__.__name__,
                     msg=SquareValidatorException.MSG,
                     err_code=SquareValidatorException.ERR_CODE,
-                    ex=validator_priming_result.exception,
+                    ex=bootstrap.exception,
                 )
             )
-        # --- Cast candidate to a Square for additional tests. ---#
-        square = cast(Square, candidate)
-        
-        # Handle the case that, square.id or square.schema does not pass a validation check.
-        identity_validation_result = toolkit.identity_service.validate_identity_register(
-            id_candidate=square.id,
-            name_candidate=square.name
+        root_certification = self.root_certifier.execute(
+            candidate=SquareDtoOperand(model=bootstrap.payload)
         )
-        if identity_validation_result.is_failure:
+        if root_certification.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 SquareValidatorException(
@@ -101,37 +103,11 @@ class SquareValidator(ModelValidator[Square]):
                     cls_name=self.__class__.__name__,
                     msg=SquareValidatorException.MSG,
                     err_code=SquareValidatorException.ERR_CODE,
-                    ex=identity_validation_result.exception,
-                )
-            )
-        # Handle the case that, square.coordis not safe.
-        coord_validation_result = toolkit.coord_validator.execute(square.coord)
-        if coord_validation_result.is_failure:
-            # Send the exception chain on failure.
-            return ValidationResult.failure(
-                SquareValidatorException(
-                    cls_mthd=method,
-                    cls_name=self.__class__.__name__,
-                    msg=SquareValidatorException.MSG,
-                    err_code=SquareValidatorException.ERR_CODE,
-                    ex=identity_validation_result.exception,
-                )
-            )
-        # Handle the case that, square.board does not pass a validation check.
-        board_validator_result = toolkit.board_validator.execute(square.board)
-        if board_validator_result.is_failure:
-            # Send the exception chain on failure.
-            return ValidationResult.failure(
-                SquareValidatorException(
-                    cls_mthd=method,
-                    cls_name=self.__class__.__name__,
-                    msg=SquareValidatorException.MSG,
-                    err_code=SquareValidatorException.ERR_CODE,
-                    ex=board_validator_result.exception,
+                    ex=root_certification.exception,
                 )
             )
         # --- Forward the work product to the caller. ---#
-        return ValidationResult.success(square)
+        return root_certification
     
     @classmethod
     @LoggingLevelRouter.monitor
@@ -141,7 +117,7 @@ class SquareValidator(ModelValidator[Square]):
             board_service: BoardService = BoardService()
     ) -> ValidationResult[Square]:
         """
-        Tests that the token belongs to a secure board.
+        Tests that the Square belongs to a secure board.
         
         Action:
             1.  Send an exception chain in the ValidationResult If:

@@ -84,7 +84,7 @@ class ItineraryValidator(ModelValidator[Itinerary]):
         # Use the validation primer for existence and type checking.
         validator_priming_result = toolkit.priming_validator.execute(
             candidate=candidate,
-            context_model=toolkit.model_type,
+            target_model=toolkit.model_type,
             context_null_exception=toolkit.null_exception,
         )
         # Handle the case that, the base checks are not passed.

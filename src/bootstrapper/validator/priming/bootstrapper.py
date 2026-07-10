@@ -8,7 +8,7 @@ version: 1.0.1
 """
 
 from __future__ import annotations
-from typing import Any, TypeVar, cast
+from typing import Any, Type, TypeVar, cast
 
 from bootstrapper import ValidatorBootstrapper
 from result import ValidationResult
@@ -51,7 +51,7 @@ class PrimingValidator(ValidatorBootstrapper):
     def execute(
             cls,
             candidate: Any,
-            target_model: T,
+            target_model: Type[T],
             null_exception: NullException,
     ) -> ValidationResult[T]:
         """
@@ -89,7 +89,7 @@ class PrimingValidator(ValidatorBootstrapper):
                 )
             )
         # Handle the wrong class case.
-        if not isinstance(candidate, type(target_model)):
+        if not isinstance(candidate, target_model):
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 PrimingValidatorException(
@@ -104,6 +104,6 @@ class PrimingValidator(ValidatorBootstrapper):
                 )
             )
         # --- Cast the candidate to the target_model then forward the work product. ---#
-        return ValidationResult.success(cast(target_model, candidate))
+        return ValidationResult.success(cast(T, candidate))
     
 

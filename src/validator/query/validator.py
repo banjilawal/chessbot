@@ -73,7 +73,7 @@ class QueryValidator(Validator[Query]):
         
         priming_result = blueprint.priming_validator.execute(
             candidate=candidate,
-            context_model=blueprint.query_model_type,
+            target_model=blueprint.query_model_type,
             null_exception=blueprint.query_null_exception,
         )
         if priming_result.is_failure:
@@ -150,7 +150,7 @@ class QueryValidator(Validator[Query]):
         # Handle the case that, the stack is flagged.
         stack_validation_result = blueprint.priming_validator.execute(
             candidate=query.stack,
-            context_model=blueprint.stack_model_type,
+            target_model=blueprint.stack_model_type,
             null_exception=blueprint.stack_null_exception,
         )
         if stack_validation_result.is_failure:
@@ -190,7 +190,7 @@ class QueryValidator(Validator[Query]):
         
         catalog_validation_result = blueprint.priming_validator.execute(
             candidate=query.catalog,
-            context_model=blueprint.stack_model_type,
+            target_model=blueprint.stack_model_type,
             null_exception=blueprint.stack_null_exception,
         )
         if catalog_validation_result.is_failure:

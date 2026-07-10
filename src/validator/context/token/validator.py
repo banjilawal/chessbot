@@ -80,7 +80,7 @@ class TokenContextValidator(ContextValidator):
         # Handle the case that, the validator is not primed.
         priming_result = toolkit.priming_validator.execute(
             candidate=candidate,
-            context_model=candidate,
+            target_model=candidate,
             context_null_exception=TokenContext,
             priming_validator=TokenContextNullException()
         )

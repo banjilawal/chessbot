@@ -70,7 +70,7 @@ class RankValidator(ModelValidator[Rank]):
         # Handle the case that, the validator is not primed.
         validator_priming_result = toolkit.priming_validator.execute(
             candidate=candidate,
-            context_model=Rank,
+            target_model=Rank,
             context_null_exception=RankNullException(),
         )
         if validator_priming_result.is_failure:
@@ -103,7 +103,7 @@ class RankValidator(ModelValidator[Rank]):
         # Handle the case that, the rank has the wrong persona.
         rank_persona_validation_result = toolkit.priming_validator.execute(
             candidate=rank.persona,
-            context_model=Persona,
+            target_model=Persona,
             context_null_exception=PersonaNullException(),
         )
         if rank_persona_validation_result.is_failure:

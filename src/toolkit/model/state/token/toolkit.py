@@ -65,7 +65,7 @@ class TokenToolkit(ModelToolkit[Token]):
     blueprint_rank_extractor: BlueprintRankExtractor = BlueprintRankExtractor()
     blueprint_home_square_extractor: BlueprintHomeSquareExtractor = BlueprintHomeSquareExtractor()
 
-    model: Token = type(Token)
+    model: Token = Type[Token]
     blueprint_model = Type[TokenBlueprint]
     null_exception: TokenNullException = TokenNullException()
     blueprint_null_exception: TokenBlueprintNullException = TokenBlueprintNullException()
