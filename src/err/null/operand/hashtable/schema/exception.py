@@ -15,11 +15,11 @@ from err import HashtableException
 
 __all__ = [
     # ======================# SCHEMA_HASHTABLE_OPERAND_ERROR #======================#
-    "SchemaHashtableOperandNullException",
+    "SchemaHashtableDtoOperandNullException",
 ]
 
 # ======================# SCHEMA_HASHTABLE_OPERAND_ERROR #======================#
-class SchemaHashtableOperandNullException(NullHashtableException):
+class SchemaHashtableDtoOperandNullException(NullHashtableException):
     """
     Role:
         -   Error Tracing

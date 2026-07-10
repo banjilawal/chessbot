@@ -15,11 +15,11 @@ from err import PlayerException
 
 __all__ = [
     # ======================# HUMAN_PLAYER_OPERAND_ERROR #======================#
-    "HumanPlayerOperandException",
+    "HumanPlayerDtoOperandException",
 ]
 
 # ======================# HUMAN_PLAYER_OPERAND_ERROR #======================#
-class HumanPlayerOperandException(PlayerException):
+class HumanPlayerDtoOperandException(PlayerException):
     """
     Role:
         -   Error Tracing

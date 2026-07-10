@@ -13,4 +13,4 @@ version: 1.0.1
 from .opening import *
 
 # Modules
-from .exception import SquareException
+from .exception import SquareDtoOperandNullException

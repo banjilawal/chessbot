@@ -15,11 +15,11 @@ from err import BinderException
 
 __all__ = [
     # ======================# BOARD_TEAM_BINDER_OPERAND_ERROR #======================#
-    "BoardTeamBinderOperandException",
+    "BoardTeamBinderDtoOperandException",
 ]
 
 # ======================# BOARD_TEAM_BINDER_OPERAND_ERROR #======================#
-class BoardTeamBinderOperandException(BinderException):
+class BoardTeamBinderDtoOperandException(BinderException):
     """
     Role:
         -   Error Tracing

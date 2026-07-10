@@ -18,4 +18,4 @@ from .combatant import *
 from .king import *
 
 # Modules
-from .exception import PathException
+from .exception import PathDtoOperandNullException

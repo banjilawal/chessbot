@@ -15,11 +15,11 @@ from err import RankException
 
 __all__ = [
     # ======================# BISHOP_OPERAND_ERROR #======================#
-    "BishopOperandException",
+    "BishopDtoOperandException",
 ]
 
 # ======================# BISHOP_OPERAND_ERROR #======================#
-class BishopOperandException(RankException):
+class BishopDtoOperandException(RankException):
     """
     Role:
         -   Error Tracing

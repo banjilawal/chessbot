@@ -36,4 +36,4 @@ from .vector import *
 
 
 # Modules
-from .exception import OperandNullException
+from .exception import DtoOperandNullException

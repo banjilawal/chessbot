@@ -10,17 +10,17 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import OperandException
+from err import DtoOperandException
 from result import MethodResultType
 
 
 __all__ = [
     # ======================# SCALAR_OPERAND_ERROR #======================#
-    "ScalarOperandException",
+    "ScalarDtoOperandException",
 ]
 
 # ======================# SCALAR_OPERAND_ERROR #======================#
-class ScalarOperandException(OperandException):
+class ScalarDtoOperandException(DtoOperandException):
     """
     Role:
         -   Error Tracing
@@ -41,7 +41,7 @@ class ScalarOperandException(OperandException):
     Provides:
 
     Super Class:
-        OperandException
+        DtoOperandException
     """
     MSG = "ScalarOperand error."
     ERR_CODE = "SCALAR_OPERAND_ERROR"

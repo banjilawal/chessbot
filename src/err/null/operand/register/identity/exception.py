@@ -15,11 +15,11 @@ from result import MethodResultType
 
 __all__ = [
     # ======================# VECTOR_IDENTITY_REGISTER_OPERAND_ERROR #======================#
-    "VectorIdentityRegisterOperandNullException",
+    "VectorIdentityRegisterDtoOperandNullException",
 ]
 
 # ======================# VECTOR_IDENTITY_REGISTER_OPERAND_ERROR #======================#
-class VectorIdentityRegisterOperandNullException(NullRegisterException):
+class VectorIdentityRegisterDtoOperandNullException(NullRegisterException):
     """
     Role:
         -   Error Tracing

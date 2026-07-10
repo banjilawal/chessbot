@@ -15,11 +15,11 @@ from err import SquareException
 
 __all__ = [
     # ======================# OPENING_OPERAND_ERROR #======================#
-    "OpeningSquareOperandException",
+    "OpeningSquareDtoOperandException",
 ]
 
 # ======================# OPENING_OPERAND_ERROR #======================#
-class OpeningSquareOperandException(SquareException):
+class OpeningSquareDtoOperandException(SquareException):
     """
     Role:
         -   Error Tracing

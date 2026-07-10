@@ -10,18 +10,18 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import OperandException
+from err import DtoOperandException
 from result import MethodResultType
 
 
 __all__ = [
     # ======================# POINT_OPERAND_OPERAND_ERROR #======================#
-    "PointOperandException",
+    "PointDtoOperandException",
 ]
 
 
 # ======================# POINT_OPERAND_OPERAND_ERROR #======================#
-class PointOperandException(OperandException):
+class PointDtoOperandException(DtoOperandException):
     """
     Role:
         -   Error Tracing
@@ -42,7 +42,7 @@ class PointOperandException(OperandException):
     Provides:
 
     Super Class:
-        OperandException
+        DtoOperandException
     """
     MSG = "VectorOperandOperand error."
     ERR_CODE = "POINT_OPERAND_OPERAND_ERROR"

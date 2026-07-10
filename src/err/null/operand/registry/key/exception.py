@@ -15,11 +15,11 @@ from err import RegistryException
 
 __all__ = [
     # ======================# REGISTRY_KEY_OPERAND_ERROR #======================#
-    "RegistryKeyOperandNullException",
+    "RegistryKeyDtoOperandNullException",
 ]
 
 # ======================# REGISTRY_KEY_OPERAND_ERROR #======================#
-class RegistryKeyOperandNullException(NullRegistryException):
+class RegistryKeyDtoOperandNullException(NullRegistryException):
     """
     Role:
         -   Error Tracing

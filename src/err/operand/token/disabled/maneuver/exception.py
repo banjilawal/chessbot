@@ -15,11 +15,11 @@ from result import MethodResultType
 
 __all__ = [
     # ======================# DISABLED_TOKEN_MANEUVER_OPERAND_ERROR #======================#
-    "DisabledTokenManeuverOperandException",
+    "DisabledTokenManeuverDtoOperandException",
 ]
 
 # ======================# DISABLED_TOKEN_MANEUVER_OPERAND_ERROR #======================#
-class DisabledTokenManeuverOperandException(DisabledTokenException):
+class DisabledTokenManeuverDtoOperandException(DisabledTokenException):
     """
     Role:
         -   Error Tracing

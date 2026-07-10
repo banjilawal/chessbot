@@ -10,17 +10,17 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import OperandException
+from err import DtoOperandException
 from result import MethodResultType
 
 
 __all__ = [
     # ======================# HOSTAGE_OPERAND_ERROR #======================#
-    "HostageOperandException",
+    "HostageDtoOperandException",
 ]
 
 # ======================# HOSTAGE_OPERAND_ERROR #======================#
-class HostageOperandException(OperandException):
+class HostageDtoOperandException(DtoOperandException):
     """
     Role:
         -   Error Tracing
@@ -41,7 +41,7 @@ class HostageOperandException(OperandException):
     Provides:
 
     Super Class:
-        OperandException
+        DtoOperandException
     """
     MSG = "HostageOperand error."
     ERR_CODE = "HOSTAGE_OPERAND_ERROR"

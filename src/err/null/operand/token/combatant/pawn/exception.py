@@ -15,11 +15,11 @@ from err import TokenException
 
 __all__ = [
     # ======================# PAWN_TOKEN_OPERAND_ERROR #======================#
-    "PawnTokenOperandNullException",
+    "PawnTokenDtoOperandNullException",
 ]
 
 # ======================# PAWN_TOKEN_OPERAND_ERROR #======================#
-class PawnTokenOperandNullException(NullTokenException):
+class PawnTokenDtoOperandNullException(NullTokenException):
     """
     Role:
         -   Error Tracing

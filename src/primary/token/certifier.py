@@ -13,11 +13,12 @@ from typing import Any, Type, cast
 
 from blueprint import TokenBlueprint
 from context import TokenHomeContext
-from err import FormationNullException, NullException, TokenCertifierException, TokenNullException
-from model import HomeSquare, Team, Token, TokenBlueprintEntityRegister, TokenOperand
+from err import FormationNullException, TokenCertifierException, TokenDtoOperandNullException
+from model import HomeSquare, Team, Token
+from operand import TokenDtoOperand
 from primary import RootCertifier
 from result import ValidationResult
-from schema.formation.schema import Formation
+from schema import Formation
 from toolkit import TokenToolkit
 from util import LoggingLevelRouter
 
@@ -67,8 +68,7 @@ class TokenRootCertifier(RootCertifier[TokenBlueprint]):
                     -   Either the board, owner or id get flagged unsafe.
             2.  Otherwise, send the success result.
         Args:
-            model: Any
-            null_exception: NullException
+            candidate: Any
         Returns:
             ValidationResult
         Raises:
@@ -78,32 +78,40 @@ class TokenRootCertifier(RootCertifier[TokenBlueprint]):
         
         operand_validation = self.toolkit.priming_validator.execute(
             candidate=candidate,
-            target_model=TokenOperand,
-            null_exception=TokenNullException()
+            target_model=TokenDtoOperand,
+            null_exception=TokenDtoOperandNullException()
         )
-        
-        if isinstance(model, TokenOperand) or isinstance(model, TokenBlueprintEntityRegister):
-            register = cast(TokenOperand, model)
-            candidate  = TokenBlueprint(
-                id=register.model.id,
-                team=register.model.team,
-                formation=register.model.formation,
-                rank=register.model.rank,
-                home_square=register.model.home_square,
-            )
-        else:
+        if operand_validation.is_failure:
+            # Send the exception chain on failure.
             return ValidationResult.failure(
                 TokenCertifierException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
                     msg=TokenCertifierException.MSG,
                     err_code=TokenCertifierException.ERR_CODE,
+                    ex=operand_validation.exception,
                 )
             )
-            
+        operand = cast(TokenDtoOperand, operand_validation.payload)
+        if operand.is_empty:
+            # Send the exception chain on failure.
+            return ValidationResult.failure(
+                TokenCertifierException(
+                    cls_mthd=method,
+                    cls_name=self.__class__.__name__,
+                    msg=TokenCertifierException.MSG,
+                    err_code=TokenCertifierException.ERR_CODE,
+                    ex=TokenDtoOperandNullException(
+                        cls_mthd=method,
+                        cls_name=self.__class__.__name__,
+                        msg=TokenDtoOperandNullException.MSG,
+                        err_code=TokenDtoOperandNullException.ERR_CODE,
+                    ),
+                )
+            )
         # Handle the case that, the validator is not primed.
         validator_priming_result = self.toolkit.priming_validator.execute(
-            candidate=candidate,
+            candidate=operand.extract_blueprint(),
             target_=self.toolkit.blueprint_model,
             null_exception=self.toolkit.blueprint_null_exception,
         )
@@ -119,7 +127,7 @@ class TokenRootCertifier(RootCertifier[TokenBlueprint]):
                 )
             )
         # --- Cast the candidate into a TokenBlueprint for additional tests. ---#
-        blueprint = cast(self.toolkit.blueprint_model, candidate)
+        blueprint = operand.extract_blueprint()
         
         # Handle the case that, any id in the blueprint is flagged.
         id_test = self.toolkit.identity_service.validate_blueprint_id(
@@ -210,7 +218,7 @@ class TokenRootCertifier(RootCertifier[TokenBlueprint]):
         home_square = cast(HomeSquare, home_detection.payload)
         rank = cast(blueprint.formation.persona.rank, rank_test.payload)
         
-        if register.is_token_entity_register:
+        if operand.is_model_operand:
             return ValidationResult.success(
                 Token(
                     id=id,
@@ -220,7 +228,6 @@ class TokenRootCertifier(RootCertifier[TokenBlueprint]):
                     home_square=home_square,
                 )
             )
-
         # --- Forward the work product to the caller. ---#
         return ValidationResult.success(
             TokenBlueprint(
@@ -231,5 +238,3 @@ class TokenRootCertifier(RootCertifier[TokenBlueprint]):
                 home_square=home_square,
             )
         )
-    
-    def

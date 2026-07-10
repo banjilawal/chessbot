@@ -10,17 +10,17 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import OperandException
+from err import DtoOperandException
 from result import MethodResultType
 
 
 __all__ = [
     # ======================# TEAM_OPERAND_ERROR #======================#
-    "TeamOperandException",
+    "TeamDtoOperandException",
 ]
 
 # ======================# TEAM_OPERAND_ERROR #======================#
-class TeamOperandException(OperandException):
+class TeamDtoOperandException(DtoOperandException):
     """
     Role:
         -   Error Tracing
@@ -41,7 +41,7 @@ class TeamOperandException(OperandException):
     Provides:
 
     Super Class:
-        OperandException
+        DtoOperandException
     """
     MSG = "TeamOperand error."
     ERR_CODE = "TEAM_OPERAND_ERROR"

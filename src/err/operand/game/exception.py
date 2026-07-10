@@ -10,17 +10,17 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import OperandException
+from err import DtoOperandException
 from result import MethodResultType
 
 
 __all__ = [
     # ======================# GAME_OPERAND_ERROR #======================#
-    "GameOperandException",
+    "GameDtoOperandException",
 ]
 
 # ======================# GAME_OPERAND_ERROR #======================#
-class GameOperandException(OperandException):
+class GameDtoOperandException(DtoOperandException):
     """
     Role:
         -   Error Tracing
@@ -41,7 +41,7 @@ class GameOperandException(OperandException):
     Provides:
 
     Super Class:
-        OperandException
+        DtoOperandException
     """
     MSG = "GameOperand error."
     ERR_CODE = "GAME_OPERAND_ERROR"

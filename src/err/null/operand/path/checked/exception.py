@@ -16,11 +16,11 @@ from result import MethodResultType
 
 __all__ = [
     # ======================# CHECKED_PATH_OPERAND_ERROR #======================#
-    "CheckedPathOperandNullException",
+    "CheckedPathDtoOperandNullException",
 ]
 
 # ======================# CHECKED_PATH_OPERAND_ERROR #======================#
-class CheckedPathOperandNullException(NullPathException):
+class CheckedPathDtoOperandNullException(NullPathException):
     """
     Role:
         -   Error Tracing

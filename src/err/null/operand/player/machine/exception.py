@@ -15,11 +15,11 @@ from err import PlayerException
 
 __all__ = [
     # ======================# MACHINE_PLAYER_OPERAND_ERROR #======================#
-    "MachinePlayerOperandNullException",
+    "MachinePlayerDtoOperandNullException",
 ]
 
 # ======================# MACHINE_PLAYER_OPERAND_ERROR #======================#
-class MachinePlayerOperandNullException(NullPlayerException):
+class MachinePlayerDtoOperandNullException(NullPlayerException):
     """
     Role:
         -   Error Tracing

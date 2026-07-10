@@ -15,11 +15,11 @@ from result import MethodResultType
 
 __all__ = [
     # ======================# DISABLED_PAWN_PROMOTION_OPERAND_ERROR #======================#
-    "DisabledPawnPromotionOperandNullException",
+    "DisabledPawnPromotionDtoOperandNullException",
 ]
 
 # ======================# DISABLED_PAWN_PROMOTION_OPERAND_ERROR #======================#
-class DisabledPawnPromotionOperandNullException(NullDisabledPawnException):
+class DisabledPawnPromotionDtoOperandNullException(NullDisabledPawnException):
     """
     Role:
         -   Error Tracing

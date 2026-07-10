@@ -15,11 +15,11 @@ from err import RegistryKeyCollisionException
 
 __all__ = [
     # ======================# REGISTRY_DOMAIN_KEY_COLLISION_EXCEPTION #======================#
-    "RegistryDomainKeyCollisionOperandNullException",
+    "RegistryDomainKeyCollisionDtoOperandNullException",
 ]
 
 # ======================# REGISTRY_DOMAIN_KEY_COLLISION_EXCEPTION #======================#
-class RegistryDomainKeyCollisionOperandNullException(NullRegistryKeyCollisionException):
+class RegistryDomainKeyCollisionDtoOperandNullException(NullRegistryKeyCollisionException):
     """
     Role:
         -   Error Tracing

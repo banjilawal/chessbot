@@ -10,17 +10,17 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import OperandNullException
+from err import DtoOperandNullException
 from result import MethodResultType
 
 
 __all__ = [
     # ======================# NODE_OPERAND_ERROR #======================#
-    "NodeOperandNullException",
+    "NodeDtoOperandNullException",
 ]
 
 # ======================# NODE_OPERAND_ERROR #======================#
-class NodeOperandNullException(OperandNullException):
+class NodeDtoOperandNullException(DtoOperandNullException):
     """
     Role:
         -   Error Tracing

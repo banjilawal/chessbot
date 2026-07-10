@@ -10,17 +10,17 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import OperandException
+from err import DtoOperandException
 from result import MethodResultType
 
 
 __all__ = [
     # ======================# SQUARE_OPERAND_ERROR #======================#
-    "SquareOperandException",
+    "SquareDtoOperandException",
 ]
 
 # ======================# SQUARE_OPERAND_ERROR #======================#
-class SquareOperandException(OperandException):
+class SquareDtoOperandException(DtoOperandException):
     """
     Role:
         -   Error Tracing
@@ -41,7 +41,7 @@ class SquareOperandException(OperandException):
     Provides:
 
     Super Class:
-        OperandException
+        DtoOperandException
     """
     MSG = "SquareOperand error."
     ERR_CODE = "SQUARE_OPERAND_ERROR"

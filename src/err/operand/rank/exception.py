@@ -10,17 +10,17 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import OperandException
+from err import DtoOperandException
 from result import MethodResultType
 
 
 __all__ = [
     # ======================# RANK_OPERAND_ERROR #======================#
-    "RankOperandException",
+    "RankDtoOperandException",
 ]
 
 # ======================# RANK_OPERAND_ERROR #======================#
-class RankOperandException(OperandException):
+class RankDtoOperandException(DtoOperandException):
     """
     Role:
         -   Error Tracing
@@ -41,7 +41,7 @@ class RankOperandException(OperandException):
     Provides:
 
     Super Class:
-        OperandException
+        DtoOperandException
     """
     MSG = "RankOperand error."
     ERR_CODE = "RANK_OPERAND_ERROR"

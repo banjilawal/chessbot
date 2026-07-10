@@ -14,11 +14,11 @@ from err import  NullException
 
 __all__ = [
     # ======================# OPERAND_OPERAND_ERROR #======================#
-    "OperandNullException",
+    "DtoOperandNullException",
 ]
 
 # ======================# OPERAND_OPERAND_ERROR #======================#
-class OperandNullException(NullException):
+class DtoOperandNullException(NullException):
     """
     Role:
         -   Error Tracing

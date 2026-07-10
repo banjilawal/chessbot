@@ -13,14 +13,14 @@ from typing import Any, Optional
 
 __all__ = [
     # ======================# VECTOR_REGISTER_MISMATCH_OPERAND_ERROR #======================#
-    "VectorRegisterMismatchOperandException",
+    "VectorRegisterMismatchDtoOperandException",
 ]
 
 from err import VectorOperationException
 
 
 # ======================# VECTOR_REGISTER_MISMATCH_OPERAND_ERROR #======================#
-class VectorRegisterMismatchOperandException(VectorOperationException):
+class VectorRegisterMismatchDtoOperandException(VectorOperationException):
     """
     Role:
         -   Error Tracing

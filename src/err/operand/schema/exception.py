@@ -10,17 +10,17 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import OperandException
+from err import DtoOperandException
 from result import MethodResultType
 
 
 __all__ = [
     # ======================# SCHEMA_OPERAND_ERROR #======================#
-    "SchemaOperandException",
+    "SchemaDtoOperandException",
 ]
 
 # ======================# SCHEMA_OPERAND_ERROR #======================#
-class SchemaOperandException(OperandException):
+class SchemaDtoOperandException(DtoOperandException):
     """
     Role:
         -   Error Tracing
@@ -41,7 +41,7 @@ class SchemaOperandException(OperandException):
     Provides:
 
     Super Class:
-        OperandException
+        DtoOperandException
     """
     MSG = "SchemaOperand error."
     ERR_CODE = "SCHEMA_OPERAND_ERROR"

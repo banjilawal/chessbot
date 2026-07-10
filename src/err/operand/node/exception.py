@@ -10,17 +10,17 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import OperandException
+from err import DtoOperandException
 from result import MethodResultType
 
 
 __all__ = [
     # ======================# NODE_OPERAND_ERROR #======================#
-    "NodeOperandException",
+    "NodeDtoOperandException",
 ]
 
 # ======================# NODE_OPERAND_ERROR #======================#
-class NodeOperandException(OperandException):
+class NodeDtoOperandException(DtoOperandException):
     """
     Role:
         -   Error Tracing
@@ -41,7 +41,7 @@ class NodeOperandException(OperandException):
     Provides:
 
     Super Class:
-        OperandException
+        DtoOperandException
     """
     MSG = "NodeOperand error."
     ERR_CODE = "NODE_OPERAND_ERROR"

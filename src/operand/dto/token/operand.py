@@ -34,6 +34,7 @@ class TokenDtoOperand(DtoOperand[Token]):
         is_empty: bool
     
     Provides:
+        -   extract_blueprint() -> Optional[TokenBlueprint]
     
     Super Class:
         DtoOperand
@@ -60,11 +61,19 @@ class TokenDtoOperand(DtoOperand[Token]):
     
     @property
     def is_model_operand(self) -> bool:
-        return self._model is not None and self._blueprint is None
+        return (
+                self._model is not None and
+                self._blueprint is None and
+                isinstance(self._model, Token)
+        )
     
     @property
     def is_blueprint_operand(self) -> bool:
-        return self._model is None and self._blueprint is not None
+        return (
+                self._model is not None and
+                self._blueprint is None and
+                isinstance(self._model, TokenBlueprint)
+        )
     
     @property
     def is_empty(self) -> bool:
@@ -79,6 +88,17 @@ class TokenDtoOperand(DtoOperand[Token]):
         if self.is_empty: return 0
         if self.is_model_operand or self.is_blueprint_operand: return 1
         return 2
+    
+    def extract_blueprint(self) -> Optional[TokenBlueprint]:
+        if self.is_empty: return None
+        if self.is_blueprint_operand: return self._blueprint
+        return TokenBlueprint(
+            id=self._model.id,
+            team=self._model.team,
+            rank=self._model.rank,
+            formation=self._model.formation,
+            home_square=self._model.home_square,
+        )
     
     def __eq__(self, other):
         if other is self: return True

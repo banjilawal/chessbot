@@ -10,17 +10,17 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import OperandException
+from err import DtoOperandException
 from result import MethodResultType
 
 
 __all__ = [
     # ======================# REGISTER_OPERAND_ERROR #======================#
-    "RegisterOperandException",
+    "RegisterDtoOperandException",
 ]
 
 # ======================# REGISTER_OPERAND_ERROR #======================#
-class RegisterOperandException(OperandException):
+class RegisterDtoOperandException(DtoOperandException):
     """
     Role:
         -   Error Tracing
@@ -41,7 +41,7 @@ class RegisterOperandException(OperandException):
     Provides:
 
     Super Class:
-        OperandException
+        DtoOperandException
     """
     MSG = "RegisterOperand error."
     ERR_CODE = "REGISTER_OPERAND_ERROR"

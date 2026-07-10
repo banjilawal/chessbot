@@ -15,11 +15,11 @@ from err import BinderException
 
 __all__ = [
     # ======================# ARENA_PLAYER_BINDER_OPERAND_ERROR #======================#
-    "ArenaPlayerBinderOperandException",
+    "ArenaPlayerBinderDtoOperandException",
 ]
 
 # ======================# ARENA_PLAYER_BINDER_OPERAND_ERROR #======================#
-class ArenaPlayerBinderOperandException(BinderException):
+class ArenaPlayerBinderDtoOperandException(BinderException):
     """
     Role:
         -   Error Tracing

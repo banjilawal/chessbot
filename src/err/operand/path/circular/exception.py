@@ -16,11 +16,11 @@ from result import MethodResultType
 
 __all__ = [
     # ======================# CIRCULAR_PATH_OPERAND_ERROR #======================#
-    "CircularPathOperandException",
+    "CircularPathDtoOperandException",
 ]
 
 # ======================# CIRCULAR_PATH_OPERAND_ERROR #======================#
-class CircularPathOperandException(PathException):
+class CircularPathDtoOperandException(PathException):
     """
     Role:
         -   Error Tracing

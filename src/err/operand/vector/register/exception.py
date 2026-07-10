@@ -10,14 +10,14 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import OperandException
+from err import DtoOperandException
 
 _all_ = [
     # ======================# VECTOR_REGISTER_EXCEPTION #======================#
-    "VectorRegisterOperandException",
+    "VectorRegisterDtoOperandException",
 ]
 # ======================# VECTOR_REGISTER_EXCEPTION #======================#
-class VectorRegisterOperandException(OperandException):
+class VectorRegisterDtoOperandException(DtoOperandException):
     """
     Role:
         -   Error Tracing

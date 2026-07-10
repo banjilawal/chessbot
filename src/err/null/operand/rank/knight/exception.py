@@ -15,11 +15,11 @@ from err import RankException
 
 __all__ = [
     # ======================# KNIGHT_OPERAND_ERROR #======================#
-    "KnightOperandNullException",
+    "KnightDtoOperandNullException",
 ]
 
 # ======================# KNIGHT_OPERAND_ERROR #======================#
-class KnightOperandNullException(NullRankException):
+class KnightDtoOperandNullException(NullRankException):
     """
     Role:
         -   Error Tracing

@@ -10,17 +10,17 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import OperandException
+from err import DtoOperandException
 from result import MethodResultType
 
 
 __all__ = [
     # ======================# HASHTABLE_OPERAND_ERROR #======================#
-    "HashtableOperandException",
+    "HashtableDtoOperandException",
 ]
 
 # ======================# HASHTABLE_OPERAND_ERROR #======================#
-class HashtableOperandException(OperandException):
+class HashtableDtoOperandException(DtoOperandException):
     """
     Role:
         -   Error Tracing
@@ -41,7 +41,7 @@ class HashtableOperandException(OperandException):
     Provides:
 
     Super Class:
-        OperandException
+        DtoOperandException
     """
     MSG = "HashtableOperand error."
     ERR_CODE = "HASHTABLE_OPERAND_ERROR"

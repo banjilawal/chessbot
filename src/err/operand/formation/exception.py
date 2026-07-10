@@ -10,17 +10,17 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import OperandException
+from err import DtoOperandException
 from result import MethodResultType
 
 
 __all__ = [
     # ======================# FORMATION_OPERAND_ERROR #======================#
-    "FormationOperandException",
+    "FormationDtoOperandException",
 ]
 
 # ======================# FORMATION_OPERAND_ERROR #======================#
-class FormationOperandException(OperandException):
+class FormationDtoOperandException(DtoOperandException):
     """
     Role:
         -   Error Tracing
@@ -41,7 +41,7 @@ class FormationOperandException(OperandException):
     Provides:
 
     Super Class:
-        OperandException
+        DtoOperandException
     """
     MSG = "FormationOperand error."
     ERR_CODE = "FORMATION_OPERAND_ERROR"

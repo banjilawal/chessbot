@@ -10,17 +10,17 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import OperandNullException
+from err import DtoOperandNullException
 from result import MethodResultType
 
 
 __all__ = [
     # ======================# PERSONA_OPERAND_ERROR #======================#
-    "PersonaOperandNullException",
+    "PersonaDtoOperandNullException",
 ]
 
 # ======================# PERSONA_OPERAND_ERROR #======================#
-class PersonaOperandNullException(OperandNullException):
+class PersonaDtoOperandNullException(DtoOperandNullException):
     """
     Role:
         -   Error Tracing

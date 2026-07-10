@@ -10,17 +10,17 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import OperandException
+from err import DtoOperandException
 from result import MethodResultType
 
 
 __all__ = [
     # ======================# PATH_OPERAND_ERROR #======================#
-    "PathOperandException",
+    "PathDtoOperandException",
 ]
 
 # ======================# PATH_OPERAND_ERROR #======================#
-class PathOperandException(OperandException):
+class PathDtoOperandException(DtoOperandException):
     """
     Role:
         -   Error Tracing
@@ -41,7 +41,7 @@ class PathOperandException(OperandException):
     Provides:
 
     Super Class:
-        OperandException
+        DtoOperandException
     """
     MSG = "PathOperand error."
     ERR_CODE = "PATH_OPERAND_ERROR"

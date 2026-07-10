@@ -10,17 +10,17 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import OperandException
+from err import DtoOperandException
 from result import MethodResultType
 
 
 __all__ = [
     # ======================# PERSONA_OPERAND_ERROR #======================#
-    "PersonaOperandException",
+    "PersonaDtoOperandException",
 ]
 
 # ======================# PERSONA_OPERAND_ERROR #======================#
-class PersonaOperandException(OperandException):
+class PersonaDtoOperandException(DtoOperandException):
     """
     Role:
         -   Error Tracing
@@ -41,7 +41,7 @@ class PersonaOperandException(OperandException):
     Provides:
 
     Super Class:
-        OperandException
+        DtoOperandException
     """
     MSG = "PersonaOperand error."
     ERR_CODE = "PERSONA_OPERAND_ERROR"

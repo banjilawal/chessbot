@@ -16,11 +16,11 @@ from result import MethodResultType
 
 __all__ = [
     # ======================# KING_TOKEN_OPERAND_ERROR #======================#
-    "KingTokenOperandException",
+    "KingTokenDtoOperandException",
 ]
 
 # ======================# KING_TOKEN_OPERAND_ERROR #======================#
-class KingTokenOperandException(TokenException):
+class KingTokenDtoOperandException(TokenException):
     """
     Role:
         -   Error Tracing

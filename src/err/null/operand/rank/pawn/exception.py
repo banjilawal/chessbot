@@ -15,11 +15,11 @@ from err import RankException
 
 __all__ = [
     # ======================# PAWN_OPERAND_ERROR #======================#
-    "PawnOperandNullException",
+    "PawnDtoOperandNullException",
 ]
 
 # ======================# PAWN_OPERAND_ERROR #======================#
-class PawnOperandNullException(NullRankException):
+class PawnDtoOperandNullException(NullRankException):
     """
     Role:
         -   Error Tracing

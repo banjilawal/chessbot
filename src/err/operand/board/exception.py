@@ -10,17 +10,17 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import OperandException
+from err import DtoOperandException
 from result import MethodResultType
 
 
 __all__ = [
     # ======================# BOARD_OPERAND_ERROR #======================#
-    "BoardOperandException",
+    "BoardDtoOperandException",
 ]
 
 # ======================# BOARD_OPERAND_ERROR #======================#
-class BoardOperandException(OperandException):
+class BoardDtoOperandException(DtoOperandException):
     """
     Role:
         -   Error Tracing
@@ -41,7 +41,7 @@ class BoardOperandException(OperandException):
     Provides:
 
     Super Class:
-        OperandException
+        DtoOperandException
     """
     MSG = "BoardOperand error."
     ERR_CODE = "BOARD_OPERAND_ERROR"

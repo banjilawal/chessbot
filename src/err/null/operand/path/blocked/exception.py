@@ -16,11 +16,11 @@ from result import MethodResultType
 
 __all__ = [
     # ======================# BLOCKED_PATH_OPERAND_ERROR #======================#
-    "BlockedPathOperandNullException",
+    "BlockedPathDtoOperandNullException",
 ]
 
 # ======================# BLOCKED_PATH_OPERAND_ERROR #======================#
-class BlockedPathOperandNullException(NullPathException):
+class BlockedPathDtoOperandNullException(NullPathException):
     """
     Role:
         -   Error Tracing

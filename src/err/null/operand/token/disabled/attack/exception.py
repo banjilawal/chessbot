@@ -15,11 +15,11 @@ from result import MethodResultType
 
 __all__ = [
     # ======================# DISABLED_TOKEN_LAUNCH_ATTACK_OPERAND_ERROR #======================#
-    "DisabledTokenLaunchAttackOperandNullException",
+    "DisabledTokenLaunchAttackDtoOperandNullException",
 ]
 
 # ======================# DISABLED_TOKEN_LAUNCH_ATTACK_OPERAND_ERROR #======================#
-class DisabledTokenLaunchAttackOperandNullException(NullDisabledTokenException):
+class DisabledTokenLaunchAttackDtoOperandNullException(NullDisabledTokenException):
     """
     Role:
         -   Error Tracing

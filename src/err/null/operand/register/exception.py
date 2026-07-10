@@ -10,17 +10,17 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import OperandNullException
+from err import DtoOperandNullException
 from result import MethodResultType
 
 
 __all__ = [
     # ======================# REGISTER_OPERAND_ERROR #======================#
-    "RegisterOperandNullException",
+    "RegisterDtoOperandNullException",
 ]
 
 # ======================# REGISTER_OPERAND_ERROR #======================#
-class RegisterOperandNullException(OperandNullException):
+class RegisterDtoOperandNullException(DtoOperandNullException):
     """
     Role:
         -   Error Tracing

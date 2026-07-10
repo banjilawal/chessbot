@@ -10,17 +10,17 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import OperandException
+from err import DtoOperandException
 from result import MethodResultType
 
 
 __all__ = [
     # ======================# COORD_OPERAND_ERROR #======================#
-    "CoordOperandException",
+    "CoordDtoOperandException",
 ]
 
 # ======================# COORD_OPERAND_ERROR #======================#
-class CoordOperandException(OperandException):
+class CoordDtoOperandException(DtoOperandException):
     """
     Role:
         -   Error Tracing
@@ -41,7 +41,7 @@ class CoordOperandException(OperandException):
     Provides:
 
     Super Class:
-        OperandException
+        DtoOperandException
     """
     MSG = "CoordOperand error."
     ERR_CODE = "COORD_OPERAND_ERROR"

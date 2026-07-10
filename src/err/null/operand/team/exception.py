@@ -10,17 +10,17 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import OperandNullException
+from err import DtoOperandNullException
 from result import MethodResultType
 
 
 __all__ = [
     # ======================# TEAM_OPERAND_ERROR #======================#
-    "TeamOperandNullException",
+    "TeamDtoOperandNullException",
 ]
 
 # ======================# TEAM_OPERAND_ERROR #======================#
-class TeamOperandNullException(OperandNullException):
+class TeamDtoOperandNullException(DtoOperandNullException):
     """
     Role:
         -   Error Tracing

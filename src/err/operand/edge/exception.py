@@ -10,17 +10,17 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import OperandException
+from err import DtoOperandException
 from result import MethodResultType
 
 
 __all__ = [
     # ======================# EDGE_OPERAND_ERROR #======================#
-    "EdgeOperandException",
+    "EdgeDtoOperandException",
 ]
 
 # ======================# EDGE_OPERAND_ERROR #======================#
-class EdgeOperandException(OperandException):
+class EdgeDtoOperandException(DtoOperandException):
     """
     Role:
         -   Error Tracing
@@ -41,7 +41,7 @@ class EdgeOperandException(OperandException):
     Provides:
 
     Super Class:
-        OperandException
+        DtoOperandException
     """
     MSG = "EdgeOperand error."
     ERR_CODE = "EDGE_OPERAND_ERROR"

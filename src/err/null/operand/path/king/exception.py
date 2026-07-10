@@ -16,11 +16,11 @@ from result import MethodResultType
 
 __all__ = [
     # ======================# KING_PATH_OPERAND_ERROR #======================#
-    "KingPathOperandNullException",
+    "KingPathDtoOperandNullException",
 ]
 
 # ======================# KING_PATH_OPERAND_ERROR #======================#
-class KingPathOperandNullException(NullPathException):
+class KingPathDtoOperandNullException(NullPathException):
     """
     Role:
         -   Error Tracing

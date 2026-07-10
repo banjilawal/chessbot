@@ -10,17 +10,17 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import OperandException
+from err import DtoOperandException
 from result import MethodResultType
 
 
 __all__ = [
     # ======================# TOKEN_OPERAND_ERROR #======================#
-    "TokenOperandException",
+    "TokenDtoOperandException",
 ]
 
 # ======================# TOKEN_OPERAND_ERROR #======================#
-class TokenOperandException(OperandException):
+class TokenDtoOperandException(DtoOperandException):
     """
     Role:
         -   Error Tracing
@@ -41,7 +41,7 @@ class TokenOperandException(OperandException):
     Provides:
 
     Super Class:
-        OperandException
+        DtoOperandException
     """
     MSG = "TokenOperand encountered anOperand error."
     ERR_CODE = "TOKEN_OPERAND_ERROR"

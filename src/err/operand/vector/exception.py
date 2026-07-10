@@ -10,17 +10,17 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import OperandException
+from err import DtoOperandException
 from result import MethodResultType
 
 
 __all__ = [
     # ======================# VECTOR_OPERAND_ERROR #======================#
-    "VectorOperandException",
+    "VectorDtoOperandException",
 ]
 
 # ======================# VECTOR_OPERAND_ERROR #======================#
-class VectorOperandException(OperandException):
+class VectorDtoOperandException(DtoOperandException):
     """
     Role:
         -   Error Tracing
@@ -41,7 +41,7 @@ class VectorOperandException(OperandException):
     Provides:
 
     Super Class:
-        OperandException
+        DtoOperandException
     """
     MSG = "VectorOperand error."
     ERR_CODE = "VECTOR_OPERAND_ERROR"

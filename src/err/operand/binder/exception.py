@@ -10,17 +10,17 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import OperandException
+from err import DtoOperandException
 from result import MethodResultType
 
 
 __all__ = [
     # ======================# BINDER_OPERAND_ERROR #======================#
-    "BinderOperandException",
+    "BinderDtoOperandException",
 ]
 
 # ======================# BINDER_OPERAND_ERROR #======================#
-class BinderOperandException(OperandException):
+class BinderDtoOperandException(DtoOperandException):
     """
     Role:
         -   Error Tracing
@@ -41,7 +41,7 @@ class BinderOperandException(OperandException):
     Provides:
 
     Super Class:
-        OperandException
+        DtoOperandException
     """
     MSG = "BinderOperand error."
     ERR_CODE = "BINDER_OPERAND_ERROR"

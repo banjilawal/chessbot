@@ -10,15 +10,15 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import OperandNullException
+from err import DtoOperandNullException
 
 __all__ = [
     # ======================# ARENA_OPERAND_ERROR #======================#
-    "ArenaOperandNullException",
+    "ArenaDtoOperandNullException",
 ]
 
 # ======================# ARENA_OPERAND_ERROR #======================#
-class ArenaOperandNullException(OperandNullException):
+class ArenaDtoOperandNullException(DtoOperandNullException):
     """
     Role:
         -   Error Tracing

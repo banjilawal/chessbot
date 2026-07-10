@@ -15,11 +15,11 @@ from err import RankException
 
 __all__ = [
     # ======================# QUEEN_OPERAND_ERROR #======================#
-    "QueenOperandNullException",
+    "QueenDtoOperandNullException",
 ]
 
 # ======================# QUEEN_OPERAND_ERROR #======================#
-class QueenOperandNullException(NullRankException):
+class QueenDtoOperandNullException(NullRankException):
     """
     Role:
         -   Error Tracing

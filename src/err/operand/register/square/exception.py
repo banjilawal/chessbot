@@ -15,11 +15,11 @@ from result import MethodResultType
 
 __all__ = [
     # ======================# SQUARE_REGISTER_OPERAND_ERROR #======================#
-    "SquareRegisterOperandException",
+    "SquareRegisterDtoOperandException",
 ]
 
 # ======================# SQUARE_REGISTER_OPERAND_ERROR #======================#
-class SquareRegisterOperandException(RegisterException):
+class SquareRegisterDtoOperandException(RegisterException):
     """
     Role:
         -   Error Tracing
