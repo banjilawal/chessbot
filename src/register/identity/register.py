@@ -1,7 +1,7 @@
-# src/model/register/identity/model.py
+# src/register/identity/py
 
 """
-Module: model.register.identity.model
+Module: register.identity.model
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

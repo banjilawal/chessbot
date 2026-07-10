@@ -1,13 +1,13 @@
-# src/model/register/entity/player/blueprint/__init__.py
+# src/register/entity/player/blueprint/__init__.py
 
 """
-Module: model.register.entity.player.blueprint.__init__
+Module: register.entity.player.blueprint.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
 """
 
-# =========== MODEL.REGISTER.ENTITY.PLAYER.BLUEPRINT PACKAGE ===========#
+# =========== REGISTER.ENTITY.PLAYER.BLUEPRINT PACKAGE ===========#
 
 # Packages
 

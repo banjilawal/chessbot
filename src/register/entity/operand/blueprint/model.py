@@ -1,7 +1,7 @@
-# src/model/register/entity/operand/blueprint/model.py
+# src/register/entity/operand/blueprint/py
 
 """
-Module: model.register.entity.operand.blueprint.model
+Module: register.entity.operand.blueprint.model
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

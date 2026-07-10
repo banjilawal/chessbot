@@ -1,7 +1,7 @@
-# src/model/register/entity/prisoner/blueprint/model.py
+# src/register/entity/prisoner/blueprint/py
 
 """
-Module: model.register.entity.prisoner.blueprint.model
+Module: register.entity.prisoner.blueprint.model
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

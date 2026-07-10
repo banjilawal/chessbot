@@ -13,8 +13,8 @@ from typing import Any, Type, cast
 
 from blueprint import TokenBlueprint
 from context import TokenHomeContext
-from err import FormationNullException, NullException, TokenCertifierException
-from model import HomeSquare, Team, Token, TokenBlueprintEntityRegister, TokenEntityRegister
+from err import FormationNullException, NullException, TokenCertifierException, TokenNullException
+from model import HomeSquare, Team, Token, TokenBlueprintEntityRegister, TokenOperand
 from primary import RootCertifier
 from result import ValidationResult
 from schema.formation.schema import Formation
@@ -56,7 +56,7 @@ class TokenRootCertifier(RootCertifier[TokenBlueprint]):
     
     
     @LoggingLevelRouter.monitor
-    def execute(self, model: Any, null_exception: NullException) -> ValidationResult:
+    def execute(self, candidate: Any) -> ValidationResult:
         """
         Certify a candidate is a TokenBlueprint that is safe to use.
 
@@ -76,11 +76,14 @@ class TokenRootCertifier(RootCertifier[TokenBlueprint]):
         """
         method = f"{self.__class__.__name__}.execute"
         
-        candidate = None
-        register = None
+        operand_validation = self.toolkit.priming_validator.execute(
+            candidate=candidate,
+            target_model=TokenOperand,
+            null_exception=TokenNullException()
+        )
         
-        if isinstance(model, TokenEntityRegister) or isinstance(model, TokenBlueprintEntityRegister):
-            register = cast(TokenEntityRegister, model)
+        if isinstance(model, TokenOperand) or isinstance(model, TokenBlueprintEntityRegister):
+            register = cast(TokenOperand, model)
             candidate  = TokenBlueprint(
                 id=register.model.id,
                 team=register.model.team,

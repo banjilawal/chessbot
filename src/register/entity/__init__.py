@@ -1,13 +1,13 @@
-# src/model/register/entity/__init__.py
+# src/register/entity/__init__.py
 
 """
-Module: model.register.entity.__init__
+Module: register.entity.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
 """
 
-# =========== MODEL.REGISTER.ENTITY PACKAGE ===========#
+# =========== REGISTER.ENTITY PACKAGE ===========#
 
 # Packages
 from .arena import *

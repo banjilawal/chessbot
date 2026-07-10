@@ -1,7 +1,7 @@
-# src/model/register/entity/square/blueprint/model.py
+# src/register/entity/square/blueprint/py
 
 """
-Module: model.register.entity.square.blueprint.model
+Module: register.entity.square.blueprint.model
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

@@ -1,7 +1,7 @@
-# src/model/register/entity/arena/blueprint/model.py
+# src/register/entity/arena/blueprint/py
 
 """
-Module: model.register.entity.arena.blueprint.model
+Module: register.entity.arena.blueprint.model
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

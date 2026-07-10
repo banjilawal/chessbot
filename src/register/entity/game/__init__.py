@@ -1,13 +1,13 @@
-# src/model/register/entity/game/__init__.py
+# src/register/entity/game/__init__.py
 
 """
-Module: model.register.entity.game.__init__
+Module: register.entity.game.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
 """
 
-# =========== MODEL.REGISTER.ENTITY.GAME PACKAGE ===========#
+# =========== REGISTER.ENTITY.GAME PACKAGE ===========#
 
 # Packages
 from .blueprint import *

@@ -1,7 +1,7 @@
-# src/model/register/square/model.py
+# src/register/square/py
 
 """
-Module: model.register.square.model
+Module: register.square.model
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

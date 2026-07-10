@@ -1,7 +1,7 @@
-# src/model/register/entity/team/blueprint/model.py
+# src/register/entity/team/blueprint/py
 
 """
-Module: model.register.entity.team.blueprint.model
+Module: register.entity.team.blueprint.model
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

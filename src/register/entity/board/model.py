@@ -1,7 +1,7 @@
-# src/model/register/entity/model.py
+# src/register/entity/py
 
 """
-Module: model.register.entity.model
+Module: register.entity.model
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

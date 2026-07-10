@@ -1,7 +1,7 @@
-# src/model/register/entity/scalar/blueprint/model.py
+# src/register/entity/scalar/blueprint/py
 
 """
-Module: model.register.entity.scalar.blueprint.model
+Module: register.entity.scalar.blueprint.model
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

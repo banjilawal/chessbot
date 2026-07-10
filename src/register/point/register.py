@@ -1,7 +1,7 @@
-# src/model/register/operand/model.py
+# src/register/operand/py
 
 """
-Module: model.register.operand.model
+Module: register.operand.model
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

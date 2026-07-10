@@ -1,7 +1,7 @@
-# src/model/register/entity/token/blueprint/model.py
+# src/register/entity/token/blueprint/py
 
 """
-Module: model.register.entity.token.blueprint.model
+Module: register.entity.token.blueprint.model
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

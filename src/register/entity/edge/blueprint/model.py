@@ -1,7 +1,7 @@
-# src/model/register/entity/edge/blueprint/model.py
+# src/register/entity/edge/blueprint/py
 
 """
-Module: model.register.entity.edge.blueprint.model
+Module: register.entity.edge.blueprint.model
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
