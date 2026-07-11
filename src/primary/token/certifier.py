@@ -23,7 +23,7 @@ from toolkit import TokenToolkit
 from util import LoggingLevelRouter
 
 
-class TokenRootCertifier(RootCertifier[TokenBlueprint]):
+class TokenRootCertifier(RootCertifier[Token]):
     """
     Role
         -   Transaction Worker
@@ -57,7 +57,7 @@ class TokenRootCertifier(RootCertifier[TokenBlueprint]):
     
     
     @LoggingLevelRouter.monitor
-    def execute(self, candidate: Any) -> ValidationResult:
+    def execute(self, dto_operand: TokenDtoOperand) -> ValidationResult:
         """
         Certify a candidate is a TokenBlueprint that is safe to use.
 
@@ -69,7 +69,7 @@ class TokenRootCertifier(RootCertifier[TokenBlueprint]):
                     -   Either the board, team, formation, rank or id get flagged unsafe.
             2.  For a model_operand send a Token in the success result. Otherwise, send a TokeBlueprint.
         Args:
-            candidate: Any
+            dto_operand: TokenDtoOperand
         Returns:
             ValidationResult
         Raises:
@@ -79,7 +79,7 @@ class TokenRootCertifier(RootCertifier[TokenBlueprint]):
         method = f"{self.__class__.__name__}.execute"
         
         operand_validation = self.toolkit.priming_validator.execute(
-            candidate=candidate,
+            candidate=dto_operand,
             target_model=TokenDtoOperand,
             null_exception=TokenDtoOperandNullException()
         )

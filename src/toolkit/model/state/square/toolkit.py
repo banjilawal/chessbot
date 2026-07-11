@@ -17,6 +17,7 @@ from bootstrapper import PrimingValidator
 from detector import SquareCollisionDetector
 from err import SquareBlueprintNullException, SquareNullException
 from model import Square
+from operand import SquareDtoOperand
 from toolkit import ModelToolkit
 from validator import BoardValidator, CoordValidator, TokenValidator
 
@@ -34,30 +35,34 @@ class SquareToolkit(ModelToolkit[Square]):
         3.  Simplifies entry points.
 
     Attributes:
+        model: Square = Square
+        blueprint_model = SquareBlueprint
+        operand_model: SquareDtoOperand
+        
+        null_exception: SquareNullException = SquareNullException()
+        blueprint_null_exception: SquareBlueprintNullException = SquareBlueprintNullException()
+
         token_validator: TokenValidator
         board_validator: BoardValidator
         coord_validator: CoordValidator
         priming_validator: PrimingValidator
         collision_detector: SquareCollisionDetector
-        
-        model: Square = type(Square)
-        blueprint_model = type(SquareBlueprint)
-        null_exception: SquareNullException = SquareNullException()
-        blueprint_null_exception: SquareBlueprintNullException = SquareBlueprintNullException()
 
     Provides:
 
     Super Class:
        ModelToolkit
     """
+    model: Square = Type[Square]
+    blueprint_model = Type[SquareBlueprint]
+    operand_model: SquareDtoOperand = Type[SquareDtoOperand]
+
+    null_exception: SquareNullException = SquareNullException()
+    blueprint_null_exception: SquareBlueprintNullException = SquareBlueprintNullException()
+    
     token_validator: TokenValidator = TokenValidator()
     board_validator: BoardValidator = BoardValidator()
     coord_validator: CoordValidator = CoordValidator()
     priming_validator: PrimingValidator = PrimingValidator()
     collision_detector: SquareCollisionDetector = SquareCollisionDetector()
-    
-    model: Square = Type[Square]
-    blueprint_model = Type[SquareBlueprint]
-    null_exception: SquareNullException = SquareNullException()
-    blueprint_null_exception: SquareBlueprintNullException = SquareBlueprintNullException()
 

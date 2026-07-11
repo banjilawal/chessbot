@@ -28,19 +28,19 @@ class StateModelToolkit(ModelToolkit[StateModel]):
         3.  Simplifies entry points.
 
     Attributes:
-        DEPENDENCIES: List[Operation] = []
-        SERVICE_DEPENDENCIES: List[Microservice] = []
+        model: StateModel
+        
+        blueprint_model: Blueprint
+        operand_model: DtoOperand
+
+        null_exception: ModelNullException
+        blueprint_null_exception: BlueprintNullException
+        operand_null_exception: DtoOperandNullException[T]
 
         identity_service: IdentityService
         priming_validator: PrimingValidator
-        blueprint_id_validator: BlueprintIdValidator
-
-        _entries: Dict[str, Any]
 
     Provides:
-        -   def resolve_dependencies(s -> SearchResult[List[Dict[str, Any]]]:
-        -   def _resolve_service_dependencies() -> SearchResult[List[Dict[str, Microservice]]]:
-        -   def _resolve_dependencies(self) -> SearchResult[List[Dict[str, Operation]]]
 
     Super Class:
        ModelToolkit

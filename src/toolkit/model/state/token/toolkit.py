@@ -14,8 +14,9 @@ from typing import Type
 
 from blueprint import TokenBlueprint
 from detector import TokenHomeDetector
-from err import TokenBlueprintNullException, TokenNullException
+from err import TokenBlueprintNullException, TokenDtoOperandNullException, TokenNullException
 from model import Token
+from operand import TokenDtoOperand
 from tester import BlueprintHomeSquareExtractor, BlueprintRankExtractor
 from toolkit import ModelToolkit
 from validator import TeamValidator
@@ -51,21 +52,28 @@ class TokenToolkit(ModelToolkit[Token]):
     Args:
         model: Token
         blueprint_model: TokenBlueprint
+        operand_model: TokenDtoOperand
+        
         null_exception: TokenNullException
         blueprint_null_exception: TokenBlueprintNullException
+        operand_null_exception: TokenDtoOperandNullException
         priming_validator: PrimingValidator
-        blueprint_id_validator: BlueprintIdValidator
+
+identity_service: IdentityService
         home_detector: TokenHomeDetector
         blueprint_rank_extractor: BlueprintRankExtractor
         blueprint_home_square_extractor: BlueprintHomeSquareExtractor
         team_validator: TeamValidator
     """
+    model: Token = Type[Token]
+    blueprint_model: TokenBlueprint = Type[TokenBlueprint]
+    operand_model: TokenDtoOperand = Type[TokenDtoOperand]
+    
+    null_exception: TokenNullException = TokenNullException()
+    blueprint_null_exception: TokenBlueprintNullException = TokenBlueprintNullException()
+    operand_null_exception: TokenDtoOperandNullException =TokenDtoOperandNullException()
+    
     home_detector: TokenHomeDetector = TokenHomeDetector()
     team_validator: TeamValidator = TeamValidator()
     blueprint_rank_extractor: BlueprintRankExtractor = BlueprintRankExtractor()
     blueprint_home_square_extractor: BlueprintHomeSquareExtractor = BlueprintHomeSquareExtractor()
-
-    model: Token = Type[Token]
-    blueprint_model = Type[TokenBlueprint]
-    null_exception: TokenNullException = TokenNullException()
-    blueprint_null_exception: TokenBlueprintNullException = TokenBlueprintNullException()

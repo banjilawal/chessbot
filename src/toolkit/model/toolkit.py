@@ -12,8 +12,9 @@ from __future__ import annotations
 from typing import Generic, TypeVar
 
 from blueprint import Blueprint
-from err import BlueprintNullException, ModelNullException, NullException
+from err import BlueprintNullException, DtoOperandNullException, ModelNullException, NullException
 from microservice import IdentityService
+from operand import DtoOperand
 from toolkit import Toolkit
 from validator import BlueprintIdExtractor
 
@@ -54,15 +55,22 @@ class ModelToolkit(Toolkit, Generic[T]):
     Args:
         model: T
         blueprint_model: Blueprint[T]
-        identity_service: IdentityService
-        priming_validator: PrimingValidator
-        blueprint_id_validator: BlueprintIdValidator
+        operand_model: DtoOperand[T]
+
         null_exception: ModelNullException
         blueprint_null_exception: BlueprintNullException
+        operand_null_exception: DtoOperandNullException[T]
+        
+        identity_service: IdentityService
+        priming_validator: PrimingValidator
     """
     model: T
+    operand_model: DtoOperand[T]
     blueprint_model: Blueprint[T]
+    
     null_exception: ModelNullException
     blueprint_null_exception: BlueprintNullException
+    operand_null_exception: DtoOperandNullException[T]
+    
     identity_service: IdentityService = IdentityService()
-    blueprint_id_validator: BlueprintIdExtractor = BlueprintIdExtractor()
+
