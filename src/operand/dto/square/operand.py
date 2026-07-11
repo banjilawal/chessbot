@@ -25,11 +25,12 @@ class SquareDtoOperand(DtoOperand[Square]):
         2.  Transports either a Square or its Blueprint.
 
     Attributes:
-        entity: [Square|SquareBlueprint]       
-        is_empty: bool
-        has_overflow: bool
+        entity: [Square|SquareBlueprint]
         is_model_operand: bool
         is_blueprint_operand: bool
+        
+        is_empty: bool
+        has_overflow: bool
         to_dict: Dict[str, Any]
         size: int
 

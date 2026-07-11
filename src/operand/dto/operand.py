@@ -25,11 +25,12 @@ class DtoOperand(Operand, Generic[T]):
         2.  Transports either an Object or its Blueprint.
 
     Attributes:
+        is_model_operand: bool
+        is_blueprint_operand: bool
+        
         entity: [T | Blueprint[T]]
         is_empty: bool
         has_overflow: bool
-        is_model_operand: bool
-        is_blueprint_operand: bool
         to_dict: Dict[str, Any]
         size: int
 
@@ -53,21 +54,6 @@ class DtoOperand(Operand, Generic[T]):
     @property
     @abstractmethod
     def is_blueprint_operand(self) -> bool:
-        pass
-    
-    @property
-    @abstractmethod
-    def is_empty(self) -> bool:
-        pass
-    
-    @property
-    @abstractmethod
-    def has_overflow(self) -> bool:
-        pass
-    
-    @property
-    @abstractmethod
-    def size(self) -> int:
         pass
     
     @abstractmethod
