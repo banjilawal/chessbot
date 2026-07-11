@@ -7,7 +7,7 @@ Created: 2026-04-03
 version: 1.0.1
 """
 from abc import abstractmethod
-from typing import AnyStr
+from typing import Any, Dict
 
 
 class Operand:
@@ -16,26 +16,24 @@ class Operand:
         -   Data Holder
 
     Responsibilities:
-        1. Represent an item that has properties.
+        1. Contains one of two types of entity.
 
     Attributes:
+        entity: Any
+        to_dict: Dict[str, Any]
 
     Provides:
 
     Super Class:
     """
-    _a: Optional[Any]
-    _b: Optional[Any]
-    
-    def __init__(self, a: Optional[Any] | None = None, b: Optional[b] | None = None,):
-        """
-        Args:
-            a: Any
-            b: Any
-        """
         
     @property
     @abstractmethod
-    def operand(self) -> Any:
+    def entity(self) -> Any:
+        pass
+    
+    @property
+    @abstractmethod
+    def to_dict(self) -> Dict[str, Any]:
         pass
     

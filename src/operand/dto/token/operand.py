@@ -9,7 +9,7 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from typing import Optional
+from typing import Any, Dict, Optional
 
 from blueprint import TokenBlueprint
 from model import Token
@@ -19,23 +19,23 @@ from operand import DtoOperand
 class TokenDtoOperand(DtoOperand[Token]):
     """
     Role:
-        -   Addressing
-        -   Data-Holder
-    
+        -   DTO
+
     Responsibilities:
-        1.  Dto for transporting either a Token or TokenBlueprint
-    
+        2.  Transports either a Token or its Blueprint.
+
     Attributes:
-        model: Optional[Token]
-        blueprint: Optional[TokenBlueprint]
+        entity: [Token|TokenBlueprint]
+        is_empty: bool
+        has_overflow: bool
         is_model_operand: bool
         is_blueprint_operand: bool
-        has_overflow: bool
-        is_empty: bool
-    
+        to_dict: Dict[str, Any]
+        size: int
+
     Provides:
         -   extract_blueprint() -> Optional[TokenBlueprint]
-    
+
     Super Class:
         DtoOperand
     """
@@ -74,21 +74,7 @@ class TokenDtoOperand(DtoOperand[Token]):
                 self._blueprint is None and
                 isinstance(self._model, TokenBlueprint)
         )
-    
-    @property
-    def is_empty(self) -> bool:
-        return self._model is None and self._blueprint is None
-    
-    @property
-    def has_overflow(self) -> bool:
-        return self._model is not None and self._blueprint is not None
-    
-    @property
-    def size(self) -> int:
-        if self.is_empty: return 0
-        if self.is_model_operand or self.is_blueprint_operand: return 1
-        return 2
-    
+
     def extract_blueprint(self) -> Optional[TokenBlueprint]:
         if self.is_empty: return None
         if self.is_blueprint_operand: return self._blueprint
@@ -99,6 +85,25 @@ class TokenDtoOperand(DtoOperand[Token]):
             formation=self._model.formation,
             home_square=self._model.home_square,
         )
+    
+    @property
+    def to_dict(self) -> Dict[str, Any]:
+        return {
+            "model": self._model,
+            "blueprint": self._blueprint
+        }
+    
+    @property
+    def is_empty(self) -> bool:
+        return len(self.to_dict) == 0
+    
+    @property
+    def has_overflow(self) -> bool:
+        return len(self.to_dict) > 1
+    
+    @property
+    def size(self) -> int:
+        return len(self.to_dict)
     
     def __eq__(self, other):
         if other is self: return True
