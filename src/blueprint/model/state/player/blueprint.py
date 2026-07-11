@@ -1,7 +1,7 @@
-# src/blueprint/model/player/blueprint.py
+# src/blueprint/model/state/player/blueprint.py
 
 """
-Module: blueprint.model.player.blueprint
+Module: blueprint.model.state.player.blueprint
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -11,14 +11,14 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Optional, Type
 
-from blueprint import ModelBlueprint
+from blueprint import StateModelBlueprint
 from engine import Engine
 from err import PlayerNullException
 from model import Player
 
 
 @dataclass
-class PlayerBlueprint(ModelBlueprint[Player]):
+class PlayerBlueprint(StateModelBlueprint[Player]):
     """
     Role:
         -   Container
@@ -35,7 +35,7 @@ class PlayerBlueprint(ModelBlueprint[Player]):
     Provides:
 
      Super Class:
-        ModelBlueprint
+        StateModelBlueprint
      """
     name: Optional[str] = None
     engine: Optional[Engine] = None

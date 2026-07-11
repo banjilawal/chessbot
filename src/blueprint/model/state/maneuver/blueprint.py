@@ -1,7 +1,7 @@
-# src/blueprint/model/maneuver/blueprint.py
+# src/blueprint/model/state/maneuver/blueprint.py
 
 """
-Module: blueprint.model.maneuver.blueprint
+Module: blueprint.model.state.maneuver.blueprint
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -11,13 +11,13 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Optional, Type
 
-from blueprint import ModelBlueprint
+from blueprint import StateModelBlueprint
 from err import ManeuverNullException
 from model import Path, Maneuver, Token
 
 
 @dataclass
-class ManeuverBlueprint(ModelBlueprint[Maneuver]):
+class ManeuverBlueprint(StateModelBlueprint[Maneuver]):
     """
     Role:
         -   Container
@@ -35,7 +35,7 @@ class ManeuverBlueprint(ModelBlueprint[Maneuver]):
     Provides:
 
      Super Class:
-        ModelBlueprint
+        StateModelBlueprint
      """
     path: Path
     token: Token

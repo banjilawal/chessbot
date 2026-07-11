@@ -1,41 +1,62 @@
-# src/blueprint/model/coord/blueprint.py
+# src/blueprint/model/column/blueprint.py
 
 """
-Module: blueprint.model.coord.blueprint
+Module: blueprint.model.column.blueprint
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
 """
 
 from __future__ import annotations
-from dataclasses import dataclass
-from typing import Type
+
+from typing import Optional, Type, cast
 
 from blueprint import ModelBlueprint
-from err import CoordNullException
 from model import Coord
 
 
-@dataclass
-class CoordBlueprint(ModelBlueprint[Coord]):
+class ColumnBlueprint(ModelBlueprint[Coord]):
     """
     Role:
         -   Container
 
     Responsibilities:
-        1.  Provides values for instantiating a Coord object.
+        1.  Provides values for instantiating a Column object.
 
     Attributes:
-        row: int
-        column: int
+       row:Row,
+        column: Column
+        id: Optional[int]
+        formation Optional[Formation]
+        model_class: Type[Column]
         
     Provides:
 
      Super Class:
         ModelBlueprint
      """
-    row: int
-    column: int
-    null_exception: CoordNullException = CoordNullException()
-    model_class: Coord = Type[Coord]
-    owner_name: str = type(owner).__name__
+    _row: int
+    _column: int
+    
+    def __init__( self, row: int,  column: int, model_class: Type[Coord],):
+        """
+        Args:
+            row: int
+            column: int
+            model_class: Type[Coord]
+        """
+        super().__init__(model_class=model_class)
+        self._row = int
+        self._column = int
+        
+    @property
+    def mode_class(self) -> Type[Coord]:
+        return cast(Type[Coord], self.model_class)
+    
+    @property
+    def row(self) -> int:
+        return self._row
+    
+    @property
+    def column(self) -> int:
+        return self._column

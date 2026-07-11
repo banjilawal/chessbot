@@ -1,7 +1,7 @@
-# src/blueprint/model/node/blueprint.py
+# src/blueprint/model/state/node/blueprint.py
 
 """
-Module: blueprint.model.node.blueprint
+Module: blueprint.model.state.node.blueprint
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -11,12 +11,12 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Optional, Type
 
-from blueprint import ModelBlueprint
+from blueprint import StateModelBlueprint
 from err import NodeNullException
 from model import Node, Square
 
 @dataclass
-class NodeBlueprint(ModelBlueprint[Node]):
+class NodeBlueprint(StateModelBlueprint[Node]):
     """
     Role:
         -   Container
@@ -33,7 +33,7 @@ class NodeBlueprint(ModelBlueprint[Node]):
     Provides:
 
      Super Class:
-        ModelBlueprint
+        StateModelBlueprint
      """
     """
     Args:

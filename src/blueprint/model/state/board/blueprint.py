@@ -1,7 +1,7 @@
-# src/blueprint/model/board/blueprint.py
+# src/blueprint/model/state/board/blueprint.py
 
 """
-Module: blueprint.model.board.blueprint
+Module: blueprint.model.state.board.blueprint
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -11,13 +11,13 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Optional, Type
 
-from blueprint import ModelBlueprint
+from blueprint import StateModelBlueprint
 from err import BoardNullException
 from model import Arena, Board
 
 
 @dataclass
-class BoardBlueprint(ModelBlueprint[Board]):
+class BoardBlueprint(StateModelBlueprint[Board]):
     """
     Role:
         -   Container

@@ -1,7 +1,7 @@
-# src/blueprint/model/square/blueprint.py
+# src/blueprint/model/state/square/blueprint.py
 
 """
-Module: blueprint.model.square.blueprint
+Module: blueprint.model.state.square.blueprint
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -11,13 +11,12 @@ from __future__ import annotations
 
 from typing import Optional, Type, cast
 
-from blueprint import ModelBlueprint
-from err import SquareNullException
+from blueprint import StateModelBlueprint
 from model import Board, Coord, Square
-from schema import Coord, Formation
+from schema import Formation
 
 
-class SquareBlueprint(ModelBlueprint[Square]):
+class SquareBlueprint(StateModelBlueprint[Square]):
     """
     Role:
         -   Container
@@ -28,15 +27,18 @@ class SquareBlueprint(ModelBlueprint[Square]):
     Attributes:
         board: Board,
         coord: Coord
-        id: Optional[int]
         formation Optional[Formation]
         model_class: Type[Square]
         
     Provides:
 
      Super Class:
-        ModelBlueprint
+        StateModelBlueprint
      """
+    _board: Board
+    _coord: Coord
+    _formation: Optional[Formation]
+    
     def __init__(
             self,
             board: Board,
@@ -56,7 +58,7 @@ class SquareBlueprint(ModelBlueprint[Square]):
         self._board = board
         self._coord = coord
         self._formation = formation
-        
+    
     @property
     def mode_class(self) -> Type[Square]:
         return cast(Type[Square], self.model_class)
@@ -68,6 +70,10 @@ class SquareBlueprint(ModelBlueprint[Square]):
     @property
     def coord(self) -> Coord:
         return self._coord
+    
+    @property
+    def formation(self) -> Optional[Formation]:
+        return self._formation
     
     @property
     def is_home_square_blueprint(self) -> bool:

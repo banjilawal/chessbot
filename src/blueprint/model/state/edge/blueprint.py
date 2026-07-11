@@ -1,7 +1,7 @@
-# src/blueprint/model/edge/blueprint.py
+# src/blueprint/model/state/edge/blueprint.py
 
 """
-Module: blueprint.model.edge.blueprint
+Module: blueprint.model.state.edge.blueprint
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -11,12 +11,12 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Optional, Type
 
-from blueprint import ModelBlueprint
+from blueprint import StateModelBlueprint
 from err import EdgeNullException
 from model import Edge, Node, Square
 
 @dataclass
-class EdgeBlueprint(ModelBlueprint[Edge]):
+class EdgeBlueprint(StateModelBlueprint[Edge]):
     """
     Role:
         -   Container
@@ -33,7 +33,7 @@ class EdgeBlueprint(ModelBlueprint[Edge]):
     Provides:
 
      Super Class:
-        ModelBlueprint
+        StateModelBlueprint
      """
     """
     Args:

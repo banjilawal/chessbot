@@ -1,23 +1,22 @@
-# src/blueprint/model/token/blueprint.py
+# src/blueprint/model/state/token/blueprint.py
 
 """
-Module: blueprint.model.token.blueprint
+Module: blueprint.model.state.token.blueprint
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
 """
 
 from __future__ import annotations
-from dataclasses import dataclass
-from tabnanny import process_tokens
+
 from typing import Optional, Type, cast
 
-from blueprint import ModelBlueprint
+from blueprint import StateModelBlueprint
 from model import HomeSquare, Rank, Team, Token
 from schema import Formation
 
 
-class TokenBlueprint(ModelBlueprint[Token]):
+class TokenBlueprint(StateModelBlueprint[Token]):
     """
     Role:
         -   Container
@@ -37,7 +36,7 @@ class TokenBlueprint(ModelBlueprint[Token]):
     Provides:
 
      Super Class:
-        ModelBlueprint
+        StateModelBlueprint
      """
     
     def __init__(
