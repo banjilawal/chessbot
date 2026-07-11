@@ -11,6 +11,7 @@ version: 1.0.1
 
 # Packages
 from .coord import *
+from .path import *
 from .quadrant import *
 from .rank import *
 from .scalar import *

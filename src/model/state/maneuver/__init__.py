@@ -10,6 +10,7 @@ version: 1.0.1
 # =========== MODEL.STATE.MANEUVER PACKAGE ===========#
 
 # Packages
+from .checked import *
 from .combatant import *
 from .king import *
 

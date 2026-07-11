@@ -11,8 +11,7 @@ from __future__ import annotations
 
 from typing import cast
 
-from model import King, KingToken, Maneuver, Path
-from model.state.maneuver.king.state import KingManeuverWarning
+from model import King, KingManeuverWarning, KingToken, Maneuver, Path
 
 
 class KingManeuver(Maneuver[King]):
@@ -25,18 +24,15 @@ class KingManeuver(Maneuver[King]):
         1.  Provide information about a path a KingToken might follow.
 
     Attributes:
-        id: int
         king: KingToken
-        origin: Square
-        destination: Square
-        cost: Optional[int]
+        maneuver_warning: KingManeuverWarning
 
     Provides:
 
     Super Class:
         Path
     """
-    maneuver_warning: KingManeuverWarning
+    _maneuver_warning: KingManeuverWarning
     
     def __init__(
             self,
@@ -69,7 +65,7 @@ class KingManeuver(Maneuver[King]):
                 self.maneuver_warning == KingManeuverWarning.DESTINATION_UNDER_CHECK
         )
     
-    @@property
+    @property
     def is_not_checked(self) -> bool:
         return not self.is_checked
     
@@ -77,16 +73,14 @@ class KingManeuver(Maneuver[King]):
     def maneuver_warning(self, other: KingManeuverWarning):
         self._maneuver_warning = other
     
-    
     def __eq__(self, other):
         if other is None:
             return False
         if other == self:
             return True
         if isinstance(other, KingManeuver):
-            return super.__eq__(other)
+            return super().__eq__(other)
         return False
-    
     
     def __hash__(self):
         return super.__hash__(self)

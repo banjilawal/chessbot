@@ -19,7 +19,6 @@ from .edge import *
 from .game import *
 from .graph import *
 from .hostage import *
-from .path import *
 from .maneuver import *
 from .math import *
 from .node import *

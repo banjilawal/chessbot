@@ -94,10 +94,7 @@ class Maneuver(StateModel, Generic[T]):
         if other == self: return True
         if other is None: return False
         if isinstance(other, Maneuver):
-            return (
-                self._token == other.token and
-                self.is_same_path(other)
-            )
+            return self.id == other.id
         return False
         
         
