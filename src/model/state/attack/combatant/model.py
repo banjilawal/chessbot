@@ -1,4 +1,4 @@
-# src/model/state/attack/combatant/model/state.py
+# src/model/state/attack/combatant/model.py
 
 """
 Module: model.state.attack.combatant.model
@@ -8,12 +8,12 @@ version: 1.0.1
 """
 
 from __future__ import annotations
-from typing import Optional
+from typing import Optional, cast
 
-from model import Attack, CombatantToken, Maneuver
+from model import Attack, CombatantAttackState, CombatantToken, Maneuver, Token
 
 
-class AttackCombatant(Attack):
+class AttackCombatant(Attack[CombatantToken]):
     """
     Role:
         -   Model
@@ -21,12 +21,12 @@ class AttackCombatant(Attack):
 
     Responsibilities:
         1.  Provide information about a Path which might be used to attack
-            an enemy's CombatantToken.
+            an victim's CombatantToken.
 
     Attributes:
         id: int
         maneuver: Maneuver
-        enemy: CombatantToken
+        victim: CombatantToken
         benefit: Optional[int]
 
     Provides:
@@ -34,32 +34,54 @@ class AttackCombatant(Attack):
     Super Class:
         Attack
     """
-    _enemy: CombatantToken
+    _attack_state: CombatantAttackState
     
     def __init__(
             self,
             id: int,
             maneuver: Maneuver,
-            enemy: CombatantToken,
-            benefit: Optional[int] | None,
+            victim: CombatantToken,
+            attacker_benefit: Optional[int] | None,
     ):
         """
         Args:
             id: int
+            victim: CombatantToken
             maneuver: Maneuver
-            enemy: CombatantToken
-            benefit: Optional[int]
+            attacker_benefit: Optional[int]
         """
         super().__init__(
             id=id,
+            victim=victim,
             maneuver=maneuver,
-            benefit=benefit,
+            attacker_benefit=attacker_benefit
         )
-        self._enemy = enemy
+        self._attack_state = CombatantAttackState.ATTACK_NOT_COMPLETED
+    
+    @property
+    def attacker(self) -> Token:
+        return self.maneuver.token
         
     @property
-    def enemy(self) -> CombatantToken:
-        return self._enemy
+    def victim(self) -> CombatantToken:
+        return cast(CombatantToken, self.victim)
+    
+    @property
+    def attack_state(self) -> CombatantAttackState:
+        return self._attack_state
+    
+    @property
+    def is_attack_completed(self) -> bool:
+        return (
+            self._maneuver.is_completed and
+            self.victim.captor == self.attacker and
+            self._attack_state == CombatantAttackState.ATTACK_COMPLETED
+        )
+    
+    @property
+    def is_attack_noy_completed(self) -> bool:
+        return self.is_attack_completed
+    
     
     def __eq__(self, other):
         if other is None:
@@ -69,7 +91,7 @@ class AttackCombatant(Attack):
         if isinstance(other, AttackCombatant):
             return (
                     super().__eq__(other) and
-                    self.enemy == other.enemy
+                    self.victim == other.victim
             )
         return False
     

@@ -1,7 +1,7 @@
-# src/model/state/attack/king/__init__.py
+# src/model/state/attack/king/model.py
 
 """
-Module: model.state.attack.king.__init__
+Module: model.state.attack.king.model
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -10,7 +10,7 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Optional, cast
 
-from model import Attack, KingAttackState, KingToken, Maneuver
+from model import Attack, KingAttackState, KingToken, Maneuver, Token
 
 
 class AttackKing(Attack[KingToken]):
@@ -57,6 +57,10 @@ class AttackKing(Attack[KingToken]):
             attacker_benefit=attacker_benefit
         )
         self._attack_state = KingAttackState.ATTACK_NOT_COMPLETED
+    
+    @property
+    def attacker(self) -> Token:
+        return self._maneuver.token
         
     @property
     def victim(self) -> KingToken:
@@ -68,7 +72,15 @@ class AttackKing(Attack[KingToken]):
     
     @property
     def check_completed(self) -> bool:
+        return (
+                self._maneuver.token.has_checked_enemy_king and
+                self._maneuver.path.endpoints.destination.occupant == self.victim and
+                self._attack_state == KingAttackState.CHECKED_ENEMY_KING
+        )
     
+    @property
+    def check_not_completed(self) -> bool:
+        return not self.check_completed
     
     def __eq__(self, other):
         if other is None:
