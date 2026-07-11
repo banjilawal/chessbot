@@ -36,7 +36,7 @@ class IdentityRegisterBlueprint(RegisterBlueprint[IdentityRegister]):
     Provides:
 
      Super Class:
-        Blueprint
+        ModelBlueprint
      """
     """
     Args:

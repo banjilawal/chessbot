@@ -11,12 +11,12 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Optional, Type
 
-from blueprint import Blueprint
+from blueprint import ModelBlueprint
 from err import NodeNullException
 from model import Node, Square
 
 @dataclass
-class NodeBlueprint(Blueprint[Node]):
+class NodeBlueprint(ModelBlueprint[Node]):
     """
     Role:
         -   Container
@@ -33,7 +33,7 @@ class NodeBlueprint(Blueprint[Node]):
     Provides:
 
      Super Class:
-        Blueprint
+        ModelBlueprint
      """
     """
     Args:
@@ -50,5 +50,5 @@ class NodeBlueprint(Blueprint[Node]):
     predecessor: Optional[Node]
     id: Optional[int] | None = None
     null_exception: NodeNullException = NodeNullException()
-    owner: Node = Type[Node]
+    model_class: Node = Type[Node]
     owner_name: str = type(owner).__name__

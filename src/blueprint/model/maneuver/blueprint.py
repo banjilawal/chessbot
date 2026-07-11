@@ -11,13 +11,13 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Optional, Type
 
-from blueprint import Blueprint
+from blueprint import ModelBlueprint
 from err import ManeuverNullException
 from model import Path, Maneuver, Token
 
 
 @dataclass
-class ManeuverBlueprint(Blueprint[Maneuver]):
+class ManeuverBlueprint(ModelBlueprint[Maneuver]):
     """
     Role:
         -   Container
@@ -35,11 +35,11 @@ class ManeuverBlueprint(Blueprint[Maneuver]):
     Provides:
 
      Super Class:
-        Blueprint
+        ModelBlueprint
      """
     path: Path
     token: Token
     id: Optional[int] | None = None
     null_exception: ManeuverNullException = ManeuverNullException()
-    owner: Maneuver = Type[Maneuver]
+    model_class: Maneuver = Type[Maneuver]
     owner_name: str = type(owner).__name__

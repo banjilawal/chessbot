@@ -87,7 +87,7 @@ class PlayerTeamRelationAnalyst(RelationAnalyst[Player, Team]):
         team = cast(Team, team_validation.payload)
         
         # If the team belongs to a different owner it's not a satellite of the owner. They are not related.
-        if player != team.owner:
+        if player != team.model_class:
             return RelationReport.not_related()
         
         # For complete coverage and certainty search the assignments not just the current_team.

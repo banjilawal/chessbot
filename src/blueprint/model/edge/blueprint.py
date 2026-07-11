@@ -11,12 +11,12 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Optional, Type
 
-from blueprint import Blueprint
+from blueprint import ModelBlueprint
 from err import EdgeNullException
 from model import Edge, Node, Square
 
 @dataclass
-class EdgeBlueprint(Blueprint[Edge]):
+class EdgeBlueprint(ModelBlueprint[Edge]):
     """
     Role:
         -   Container
@@ -33,7 +33,7 @@ class EdgeBlueprint(Blueprint[Edge]):
     Provides:
 
      Super Class:
-        Blueprint
+        ModelBlueprint
      """
     """
     Args:
@@ -54,5 +54,5 @@ class EdgeBlueprint(Blueprint[Edge]):
     weight: Optional[int]
     heuristic: Optional[int]
     null_exception: EdgeNullException = EdgeNullException()
-    owner: Edge = Type[Edge]
+    model_class: Edge = Type[Edge]
     owner_name: str = type(owner).__name__

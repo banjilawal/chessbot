@@ -9,15 +9,15 @@ version: 1.0.1
 
 from __future__ import annotations
 from dataclasses import dataclass
-from typing import Optional, Type
+from tabnanny import process_tokens
+from typing import Optional, Type, cast
 
-from blueprint import Blueprint
+from blueprint import ModelBlueprint
 from model import HomeSquare, Rank, Team, Token
 from schema import Formation
 
 
-@dataclass
-class TokenBlueprint(Blueprint[Token]):
+class TokenBlueprint(ModelBlueprint[Token]):
     """
     Role:
         -   Container
@@ -28,31 +28,63 @@ class TokenBlueprint(Blueprint[Token]):
         2.  DTO
         
     Attributes:
-        id: Optional[int]
-        team: Team
-        rank: Rank
+        team: Team,
         formation: Formation
-        home_square: OpeningSquare
+        rank: Optional[Rank]
+        home_square: Optional[HomeSquare]
+        model_class: Type[Token]
         
     Provides:
 
      Super Class:
-        Blueprint
+        ModelBlueprint
      """
-    """
-    Args:
-        team: Team
-        formation: Formation
-        id: Optional[int]
-        rank: Optional[Rank]
-        home_square: HomeSquare
-        owner: Token
-        owner_name: str
-    """
-    team: Team
-    formation: Formation
-    id: Optional[int] | None = None
-    rank: Optional[Rank] | None = None
-    home_square: HomeSquare | None = None
-    owner: Token = Type[Token]
-    owner_name: str = type(owner).__name__
+    
+    def __init__(
+            self,
+            team: Team,
+            formation: Formation,
+            id: Optional[int] | None = None,
+            rank: Optional[Rank] | None = None,
+            home_square: Optional[HomeSquare] | None = None,
+            model_class: Type[Token] = Token,
+    ):
+        """
+        Args:
+            team: Team,
+            formation: Formation
+            id: Optional[int]
+            rank: Optional[Rank]
+            home_square: Optional[HomeSquare]
+            model_class: Type[Token] = Type[Token]
+        """
+        super().__init__(model_class=model_class, id=id)
+        self._team = team
+        self._rank = rank
+        self._formation = formation
+        self._home_square = home_square
+        
+    @property
+    def model_class(self) -> Type[Token]:
+        return cast(Type[Token], self.model_class)
+    
+    @property
+    def team(self) -> Team:
+        return self._team
+    
+    @property
+    def formation(self) -> Formation:
+        return self._formation
+    
+    @property
+    def rank(self) -> Optional[Rank]:
+        return self._rank
+    
+    @property
+    def home_square(self) -> Optional[HomeSquare]:
+        return self._home_square
+    
+    
+
+        
+        

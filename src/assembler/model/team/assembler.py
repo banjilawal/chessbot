@@ -35,7 +35,7 @@ class TeamAssembler(Assembler[Team]):
             Team(
                 id=blueprint.id,
                 board=blueprint.board,
-                owner=blueprint.owner,
+                owner=blueprint.model_class,
                 schema=blueprint.schema,
             )
         )

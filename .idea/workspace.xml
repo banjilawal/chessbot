@@ -5,10 +5,46 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/blueprint/model/blueprint.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bootstrapper/validator/bootstrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/bootstrapper/validator/bootstrapper.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bootstrapper/validator/priming/bootstrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/bootstrapper/validator/priming/bootstrapper.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/validator/model/token/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/validator/model/token/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/analyzer/relation/team/player/analyst.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/analyzer/relation/team/player/analyst.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assembler/model/team/assembler.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assembler/model/team/assembler.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/blueprint/blueprint.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/blueprint/blueprint.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/blueprint/model/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/blueprint/model/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/blueprint/model/arena/bluelprint.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/blueprint/model/arena/bluelprint.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/blueprint/model/binder/arena/blueprint.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/blueprint/model/binder/arena/blueprint.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/blueprint/model/binder/board/blueprint.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/blueprint/model/binder/board/blueprint.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/blueprint/model/board/blueprint.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/blueprint/model/board/blueprint.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/blueprint/model/coord/blueprint.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/blueprint/model/coord/blueprint.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/blueprint/model/edge/blueprint.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/blueprint/model/edge/blueprint.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/blueprint/model/itenerary/blueprint.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/blueprint/model/itenerary/blueprint.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/blueprint/model/maneuver/blueprint.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/blueprint/model/maneuver/blueprint.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/blueprint/model/node/blueprint.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/blueprint/model/node/blueprint.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/blueprint/model/path/blueprint.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/blueprint/model/path/blueprint.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/blueprint/model/player/blueprint.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/blueprint/model/player/blueprint.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/blueprint/model/rank/blueprint.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/blueprint/model/rank/blueprint.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/blueprint/model/register/blueprint.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/blueprint/model/register/blueprint.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/blueprint/model/register/operand/blueprint.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/blueprint/model/register/operand/blueprint.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/blueprint/model/scalar/blueprint.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/blueprint/model/scalar/blueprint.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/blueprint/model/square/blueprint.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/blueprint/model/square/blueprint.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/blueprint/model/team/blueprint.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/blueprint/model/team/blueprint.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/blueprint/model/token/blueprint.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/blueprint/model/token/blueprint.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/blueprint/model/vector/blueprint.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/blueprint/model/vector/blueprint.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bootstrapper/assembly/team/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/bootstrapper/assembly/team/operation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/consistency/arena/checker.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/consistency/arena/checker.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/graph/domain/graph/search/domain/search.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/graph/domain/graph/search/domain/search.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/neighbor/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/neighbor/builder.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/turn/director.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/turn/director.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/state/square/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/state/square/model.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/state/team/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/state/team/model.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/state/token/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/state/token/model.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operand/dto/coord/operand.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operand/dto/coord/operand.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operand/dto/team/operand.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operand/dto/team/operand.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/route/search/schema/router.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/route/search/schema/router.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/route/search/team/router.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/route/search/team/router.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/searcher/snapshot/snapshot/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/searcher/snapshot/snapshot/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validator/context/team/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/validator/context/team/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validator/model/arena/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/validator/model/arena/operation.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,7 +98,7 @@
     "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/err/null",
+    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/blueprint/model",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
@@ -74,11 +110,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/blueprint/model" />
+      <recent name="$PROJECT_DIR$/src/operand/dto" />
       <recent name="$PROJECT_DIR$/src/err/null" />
       <recent name="$PROJECT_DIR$/src/err" />
       <recent name="$PROJECT_DIR$/src" />
-      <recent name="$PROJECT_DIR$/src/operand/dto" />
-      <recent name="$PROJECT_DIR$/src/operand/dto/register" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/consistency" />
@@ -812,7 +848,7 @@
       <workItem from="1782325486599" duration="56546000" />
       <workItem from="1782732939190" duration="235900000" />
       <workItem from="1783222430394" duration="208582000" />
-      <workItem from="1783540905722" duration="118064000" />
+      <workItem from="1783540905722" duration="131015000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />

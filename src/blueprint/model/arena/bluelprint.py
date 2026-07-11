@@ -12,13 +12,13 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Optional, Type
 
-from blueprint import Blueprint
+from blueprint import ModelBlueprint
 from err import ArenaNullException
 from model import Arena, Game
 
 
 @dataclass
-class ArenaBlueprint(Blueprint[Arena]):
+class ArenaBlueprint(ModelBlueprint[Arena]):
     """
     Role:
         -   Container
@@ -39,6 +39,6 @@ class ArenaBlueprint(Blueprint[Arena]):
     game: Game
     id: Optional[int] | None = None
     null_exception: ArenaNullException = ArenaNullException()
-    owner: Arena = Type[Arena]
+    model_class: Arena = Type[Arena]
     owner_name: str = type(owner).__name__
 

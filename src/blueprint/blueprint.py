@@ -10,31 +10,42 @@ version: 1.0.1
 from __future__ import annotations
 
 from abc import ABC
-from typing import Generic, TypeVar
+from typing import Generic, Type, TypeVar
 
 
 T = TypeVar("T")
 
 class Blueprint(ABC, Generic[T]):
     """
-    Role:
-        -   Container
-        -   DTO
-        
-    Responsibilities:
-        1.  Provides values for instantiating an object.
-        2.  DTO
+     Role:
+         -   Container
+         -   DTO
+
+     Responsibilities:
+         1.  Provides values for instantiating an object.
+         2.  DTO
+
+     Attributes:
+         model_class: Type[T]
+         model_class_name: str
+         
+     Provides:
+
+     Super Class:
+     """
+    _model_class: Type[T]
     
-    Attributes:
-        
-    Provides:
+    def __init__(self, model_class: Type[T],):
+        """
+        Args:
+            model_class: Type[T]
+        """
+        self._model_class = model_class
     
-    Super Class:
-    """
-    """
-    Args:
-        owner: T
-        owner_name: str
-    """
-    owner: T
-    owner_name: str
+    @property
+    def model_class(self) -> Type[T]:
+        return self._model_class
+    
+    @property
+    def model_class_name(self) -> str:
+        return self._model_class.__class__.__name__

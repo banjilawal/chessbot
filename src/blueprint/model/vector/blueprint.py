@@ -12,13 +12,13 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Type
 
-from blueprint import Blueprint
+from blueprint import ModelBlueprint
 from err import VectorNullException
 from model import Vector
 
 
 @dataclass
-class VectorBlueprint(Blueprint[Vector]):
+class VectorBlueprint(ModelBlueprint[Vector]):
     """
     Role:
         -   Container
@@ -35,7 +35,7 @@ class VectorBlueprint(Blueprint[Vector]):
     Provides:
 
      Super Class:
-        Blueprint
+        ModelBlueprint
      """
     """
     Args:
@@ -48,5 +48,5 @@ class VectorBlueprint(Blueprint[Vector]):
     x: int
     y: int
     null_exception: VectorNullException = VectorNullException()
-    owner: Vector = Type[Vector]
+    model_class: Vector = Type[Vector]
     owner_name: str = type(owner).__name__

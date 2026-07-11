@@ -15,7 +15,7 @@ from err import ScalarNullException
 from model import Blueprint, Scalar
 
 @dataclass
-class ScalarBlueprint(Blueprint[Scalar]):
+class ScalarBlueprint(ModelBlueprint[Scalar]):
     """
     Role:
         -   Container
@@ -30,7 +30,7 @@ class ScalarBlueprint(Blueprint[Scalar]):
     Provides:
 
      Super Class:
-        Blueprint
+        ModelBlueprint
      """
     magnitude: int
     null_exception: ScalarNullException = ScalarNullException()

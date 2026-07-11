@@ -9,15 +9,15 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from dataclasses import dataclass
 from typing import Optional, Type
 
-from blueprint import Blueprint
-from model import Board, Player, Schema, Team
+from blueprint import ModelBlueprint
+from model import Board, Player, Team
+from schema import Archetype
 
 
-@dataclass
-class TeamBlueprint(Blueprint[Team]):
+
+class TeamBlueprint(ModelBlueprint[Team]):
     """
     Role:
         -   Container
@@ -31,27 +31,27 @@ class TeamBlueprint(Blueprint[Team]):
         id: Optional[int]
         owner: Player
         board: Board
-        schema: Schema
+        archetype: Archetype
         
     Provides:
 
      Super Class:
-        Blueprint
+        ModelBlueprint
      """
     """
     Args:
         owner: Player
         board: Board
-        schema: Schema
+        archetype: Archetype
         id: Optional[int]
         owner: Team
         owner_name: str
     """
-    owner: Player
+    ownerr: Player
     board: Board
-    schema: Schema
+    archetype: Archetype
     id: Optional[int] | None = None
-    owner: Team = Type[Team]
+    model_class: Type[Team] = Team
     owner_name: str = type(owner).__name__
     
 

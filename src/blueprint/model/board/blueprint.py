@@ -11,13 +11,13 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Optional, Type
 
-from blueprint import Blueprint
+from blueprint import ModelBlueprint
 from err import BoardNullException
 from model import Arena, Board
 
 
 @dataclass
-class BoardBlueprint(Blueprint[Board]):
+class BoardBlueprint(ModelBlueprint[Board]):
     """
     Role:
         -   Container
@@ -38,7 +38,7 @@ class BoardBlueprint(Blueprint[Board]):
     arena: Arena
     id: Optional[int] = None
     null_exception: BoardNullException = BoardNullException()
-    owner: Board = Type[Board]
+    model_class: Board = Type[Board]
     owner_name: str = type(owner).__name__
     
 

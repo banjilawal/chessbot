@@ -29,3 +29,4 @@ from .token import *
 from .vector import *
 
 # Modules
+from .blueprint import ModelBlueprint

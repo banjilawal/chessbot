@@ -99,8 +99,8 @@ class TokenSearchRouter(SearchRouter[Token]):
             if context.arena is not None:
                 return cls._find_by_arena(dataset=dataset, arena=context.arena)
             # Entry point into searching by team's owner.
-            if context.owner is not None:
-                return cls._find_by_player(dataset, context.owner)
+            if context.model_class is not None:
+                return cls._find_by_player(dataset, context.model_class)
             # Entry point into searching by team's color.
             if context.color is not None:
                 return cls._find_by_color(dataset=dataset, team=context.color)
@@ -184,7 +184,7 @@ class TokenSearchRouter(SearchRouter[Token]):
                 *   TeamSearchException
             """
             method = "TeamFinder._find_by_player"
-            matches = [team for team in dataset if team.owner == player]
+            matches = [team for team in dataset if team.model_class == player]
             # Handle the nothing found case.
             if len(matches) == 0:
                 return SearchResult.empty()

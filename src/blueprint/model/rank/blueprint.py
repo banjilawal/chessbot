@@ -12,14 +12,14 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Type
 
-from blueprint import Blueprint
+from blueprint import ModelBlueprint
 from err import RankNullException
 from model import Rank
 from schema import Persona
 
 
 @dataclass
-class RankBlueprint(Blueprint[Rank]):
+class RankBlueprint(ModelBlueprint[Rank]):
     """
     Role:
         -   Container
@@ -35,7 +35,7 @@ class RankBlueprint(Blueprint[Rank]):
     Provides:
 
      Super Class:
-        Blueprint
+        ModelBlueprint
      """
     """
     Args:
@@ -46,5 +46,5 @@ class RankBlueprint(Blueprint[Rank]):
     """
     persona: Persona
     null_exception: RankNullException = RankNullException()
-    owner: Rank = Type[Rank]
+    model_class: Rank = Type[Rank]
     owner_name: str = type(owner).__name__

@@ -77,7 +77,7 @@ class GraphDomainFinder(Finder[Graph, Domain]):
         method = "GraphDomainFinder._id_search"
         
         try:
-            matches = [domain for domain in graph.domains if domain.owner.id == id]
+            matches = [domain for domain in graph.domains if domain.model_class.id == id]
             if len(matches) == 0:
                 return SearchResult.empty()
             elif len(matches) == 1:
@@ -94,7 +94,7 @@ class GraphDomainFinder(Finder[Graph, Domain]):
         method = "GraphDomainFinder._name_search"
         
         try:
-            matches = [domain for domain in graph.domains if domain.owner.designation.upper == name.upper()]
+            matches = [domain for domain in graph.domains if domain.model_class.designation.upper == name.upper()]
             if len(matches) == 0:
                 return SearchResult.empty()
             elif len(matches) == 1:
@@ -161,7 +161,7 @@ class GraphDomainFinder(Finder[Graph, Domain]):
         method = "GraphDomainFinder._ransom_search"
         
         try:
-            matches = [domain for domain in graph.domains if domain.owner.rank_level.ransom == ransom]
+            matches = [domain for domain in graph.domains if domain.model_class.rank_level.ransom == ransom]
             if len(matches) == 0:
                 return SearchResult.empty()
             
@@ -194,7 +194,7 @@ class GraphDomainFinder(Finder[Graph, Domain]):
         method = "GraphDomainFinder._team_name_search"
         
         try:
-            matches = [domain for domain in graph.domains if domain.owner.team.designation.uppper() == name.upper()]
+            matches = [domain for domain in graph.domains if domain.model_class.team.designation.uppper() == name.upper()]
             if len(matches) == 0:
                 return SearchResult.empty()
             

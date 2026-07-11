@@ -37,7 +37,7 @@ class PointRegisterBlueprint(RegisterBlueprint[PointRegister]):
     Provides:
 
      Super Class:
-        Blueprint
+        ModelBlueprint
      """
     """
     Args:
@@ -50,7 +50,7 @@ class PointRegisterBlueprint(RegisterBlueprint[PointRegister]):
     a: VectorOperand
     b: VectorOperand
     null_exception: VectorOperandRegisterNullException = VectorOperandRegisterNullException()
-    owner: PointRegister = Type[PointRegister]
+    model_class: PointRegister = Type[PointRegister]
     owner_name: str = type(owner).__name__
     
     

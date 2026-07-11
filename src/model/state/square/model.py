@@ -10,10 +10,10 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Optional
 
-from model import Board, Coord, SquareState, Token
+from model import Board, Coord, SquareState, StateModel, Token
 
 
-class Square:
+class Square(StateModel):
     """
     Role:
         -   Model
@@ -55,6 +55,7 @@ class Square:
             board: Board
             coord: Coord
         """
+        super().__init__()
         self._id = id
         self._name = name
         self._coord = coord

@@ -98,8 +98,8 @@ class TokenSearchRouter(SearchRouter[Token]):
             if context.arena is not None:
                 return cls._find_by_arena(dataset=dataset, arena=context.arena)
             # Entry point into searching by square's owner.
-            if context.owner is not None:
-                return cls._find_by_player(dataset, context.owner)
+            if context.model_class is not None:
+                return cls._find_by_player(dataset, context.model_class)
             # Entry point into searching by square's color.
             if context.color is not None:
                 return cls._find_by_color(dataset=dataset, square=context.color)
@@ -183,7 +183,7 @@ class TokenSearchRouter(SearchRouter[Token]):
                 *   SquareSearchException
             """
             method = "SquareFinder._find_by_player"
-            matches = [square for square in dataset if square.owner == player]
+            matches = [square for square in dataset if square.model_class == player]
             # Handle the nothing found case.
             if len(matches) == 0:
                 return SearchResult.empty()

@@ -37,7 +37,7 @@ class SquareRegisterBlueprint(RegisterBlueprint[SquareRegister]):
     Provides:
 
      Super Class:
-        Blueprint
+        ModelBlueprint
      """
 
     # a: Square

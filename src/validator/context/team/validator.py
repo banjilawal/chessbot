@@ -114,9 +114,9 @@ class TeamContextValidator(ContextValidator[Team]):
             return ValidationResult.success(context)
         
         # Certification for the search-by-owner target.
-        if context.owner is not None:
+        if context.model_class is not None:
             validation_result = toolkit.team_toolkit.player_validator.execute(
-                candidate=context.owner
+                candidate=context.model_class
             )
             if validation_result.is_failure:
                 # Send the exception chain on failure.

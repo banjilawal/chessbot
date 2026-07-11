@@ -130,7 +130,7 @@ class TeamAssemblyPrimer(AssemblyPrimer[Team]):
             )
         # Handle the case that, the owner does not pass a validation check.
         owner_validation_result = toolkit.player_service.run.build(
-            candidate=blueprint.owner
+            candidate=blueprint.model_class
         )
         if owner_validation_result.is_failure:
             # Send the exception chain on failure.
@@ -163,7 +163,7 @@ class TeamAssemblyPrimer(AssemblyPrimer[Team]):
             TeamBlueprint(
                 id=id_validation_result.payload,
                 schema=blueprint.schema,
-                owner=blueprint.owner,
+                owner=blueprint.model_class,
                 board=blueprint.board,
             )
         )

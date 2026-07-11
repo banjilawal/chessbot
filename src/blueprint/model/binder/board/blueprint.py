@@ -15,7 +15,7 @@ from microservice import TeamService
 from model import Blueprint, Board, Schema, BoardBinder
 
 @dataclass
-class BoardBinderBlueprint(Blueprint[BoardBinder]):
+class BoardBinderBlueprint(ModelBlueprint[BoardBinder]):
     """
     Role:
         -   Container

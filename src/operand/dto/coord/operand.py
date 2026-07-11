@@ -9,7 +9,7 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from typing import Optional
+from typing import Any, Dict, Optional
 
 from blueprint import CoordBlueprint
 from model import Coord
@@ -19,22 +19,23 @@ from operand import DtoOperand
 class CoordDtoOperand(DtoOperand[Coord]):
     """
     Role:
-        -   Addressing
-        -   Data-Holder
-    
+        -   DTO
+
     Responsibilities:
-        1.  Dto for transporting either a Coord or CoordBlueprint
-    
+        2.  Transports either a Coord or its Blueprint.
+
     Attributes:
-        model: Optional[Coord]
-        blueprint: Optional[CoordBlueprint]
+        entity: [Coord|CoordBlueprint]
+        is_empty: bool
+        has_overflow: bool
         is_model_operand: bool
         is_blueprint_operand: bool
-        has_overflow: bool
-        is_empty: bool
-    
+        to_dict: Dict[str, Any]
+        size: int
+
     Provides:
-    
+        -   extract_blueprint() -> Optional[CoordBlueprint]
+
     Super Class:
         DtoOperand
     """
@@ -60,25 +61,46 @@ class CoordDtoOperand(DtoOperand[Coord]):
     
     @property
     def is_model_operand(self) -> bool:
-        return self._model is not None and self._blueprint is None
+        return (
+                self._model is not None and
+                self._blueprint is None and
+                isinstance(self._model, Coord)
+        )
     
     @property
     def is_blueprint_operand(self) -> bool:
-        return self._model is None and self._blueprint is not None
+        return (
+                self._model is not None and
+                self._blueprint is None and
+                isinstance(self._model, CoordBlueprint)
+        )
+
+    def extract_blueprint(self) -> Optional[CoordBlueprint]:
+        if self.is_empty: return None
+        if self.is_blueprint_operand: return self._blueprint
+        return CoordBlueprint(
+            row=self._model.row,
+            column=self._model.column,
+        )
+    
+    @property
+    def to_dict(self) -> Dict[str, Any]:
+        return {
+            "model": self._model,
+            "blueprint": self._blueprint
+        }
     
     @property
     def is_empty(self) -> bool:
-        return self._model is None and self._blueprint is None
+        return len(self.to_dict) == 0
     
     @property
     def has_overflow(self) -> bool:
-        return self._model is not None and self._blueprint is not None
+        return len(self.to_dict) > 1
     
     @property
     def size(self) -> int:
-        if self.is_empty: return 0
-        if self.is_model_operand or self.is_blueprint_operand: return 1
-        return 2
+        return len(self.to_dict)
     
     def __eq__(self, other):
         if other is self: return True

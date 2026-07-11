@@ -9,17 +9,15 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from dataclasses import dataclass
-from typing import Optional, Type
+from typing import Optional, Type, cast
 
-from blueprint import Blueprint
+from blueprint import ModelBlueprint
 from err import SquareNullException
 from model import Board, Coord, Square
-from schema import Formation
+from schema import Coord, Formation
 
 
-@dataclass
-class SquareBlueprint(Blueprint[Square]):
+class SquareBlueprint(ModelBlueprint[Square]):
     """
     Role:
         -   Container
@@ -28,39 +26,49 @@ class SquareBlueprint(Blueprint[Square]):
         1.  Provides values for instantiating a Square object.
 
     Attributes:
-        name: str
-        board: Board
+        board: Board,
         coord: Coord
         id: Optional[int]
-        formation: Optional[Formation]
-        null_exception: SquareNullException
-        model_type: Square
+        formation Optional[Formation]
+        model_class: Type[Square]
         
     Provides:
 
      Super Class:
-        Blueprint
+        ModelBlueprint
      """
-    """
-    Args:
-        name: str
-        board: Board
-        coord: Coord
-        id: Optional[int]
-        formation: Optional[Formation]
-        null_exception: SquareNullException
-        owner: Square
-        owner_name: str
-    """
-    name: str
-    board: Board
-    coord: Coord
-    id: Optional[int] | None = None
-    formation: Optional[Formation] | None = None
-    null_exception: SquareNullException = SquareNullException()
-    owner: Square = Square
-    owner_name: str = type(owner).__name__
+    def __init__(
+            self,
+            board: Board,
+            coord: Coord,
+            id: Optional[int] | None = None,
+            formation: Optional[Formation] | None = None,
+            model_class: Type[Square] = Square,
+    ):
+        """
+        Args:
+            board: Board
+            coord: Coord
+            formation: OptionalFormation
+            model_class: Type[Square] = Type[Square]            
+        """
+        super().__init__(id=id, model_class=model_class)
+        self._board = board
+        self._coord = coord
+        self._formation = formation
+        
+    @property
+    def mode_class(self) -> Type[Square]:
+        return cast(Type[Square], self.model_class)
+    
+    @property
+    def board(self) -> Board:
+        return self._board
+    
+    @property
+    def coord(self) -> Coord:
+        return self._coord
     
     @property
     def is_home_square_blueprint(self) -> bool:
-        return self.formation is not None
+        return self._formation is not None

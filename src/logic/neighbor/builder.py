@@ -40,7 +40,7 @@ class VisitationEventBuilder(Builder[VisitationEvent]):
             if piece_validation.is_failure():
                 return BuildResult.failure(piece_validation.exception)
             
-            if domain_visitor == domain.owner:
+            if domain_visitor == domain.model_class:
                 return BuildResult.failure(
                     ChessException(f"{method}: Domain Owner cannot be its own domain visitor")
                 )

@@ -11,13 +11,13 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Optional
 
-from blueprint import Blueprint
+from blueprint import ModelBlueprint
 from err import PathNullException
 from model import Square, Path
 
 
 @dataclass
-class PathBlueprint(Blueprint[Path]):
+class PathBlueprint(ModelBlueprint[Path]):
     """
     Role:
         -   Container
@@ -36,7 +36,7 @@ class PathBlueprint(Blueprint[Path]):
     Provides:
 
      Super Class:
-        Blueprint
+        ModelBlueprint
      """
     origin: Square
     destination: Square

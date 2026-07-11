@@ -11,13 +11,13 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Type
 
-from blueprint import Blueprint
+from blueprint import ModelBlueprint
 from err import CoordNullException
 from model import Coord
 
 
 @dataclass
-class CoordBlueprint(Blueprint[Coord]):
+class CoordBlueprint(ModelBlueprint[Coord]):
     """
     Role:
         -   Container
@@ -32,10 +32,10 @@ class CoordBlueprint(Blueprint[Coord]):
     Provides:
 
      Super Class:
-        Blueprint
+        ModelBlueprint
      """
     row: int
     column: int
     null_exception: CoordNullException = CoordNullException()
-    owner: Coord = Type[Coord]
+    model_class: Coord = Type[Coord]
     owner_name: str = type(owner).__name__

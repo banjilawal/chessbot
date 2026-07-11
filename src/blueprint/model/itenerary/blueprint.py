@@ -11,13 +11,13 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Optional
 
-from blueprint import Blueprint
+from blueprint import ModelBlueprint
 from err import ItineraryNullException
 from model import Itinerary, Square, Token
 
 
 @dataclass
-class ItineraryBlueprint(Blueprint[Itinerary]):
+class ItineraryBlueprint(ModelBlueprint[Itinerary]):
     """
     Role:
         -   Container
@@ -37,7 +37,7 @@ class ItineraryBlueprint(Blueprint[Itinerary]):
     Provides:
 
      Super Class:
-        Blueprint
+        ModelBlueprint
      """
     token: Token
     destination: Square

@@ -15,7 +15,7 @@ from microservice import PlayerService
 from model import Blueprint, Arena, Schema, ArenaBinder
 
 @dataclass
-class ArenaBinderBlueprint(Blueprint[ArenaBinder]):
+class ArenaBinderBlueprint(ModelBlueprint[ArenaBinder]):
     """
     Role:
         -   Container

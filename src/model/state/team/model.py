@@ -9,13 +9,12 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from model.board import Board
-from model.state.player import Player
-from model.state.team import TeamState
-from model.catalog import Schema
 from database import TokenDatabase
+from model import Board, Player, StateModel, TeamState
+from schema import Archetype
 
-class Team:
+
+class Team(StateModel):
     """
     Role:
         -   Model
@@ -29,7 +28,7 @@ class Team:
         id: int
         board: Board
         owner: Player
-        schema: Schema
+        archetype: Archetype
         roster: TokenDatabase
         
     Provides:
@@ -44,27 +43,29 @@ class Team:
     _id: int
     _board: Board
     _owner: Player
-    _schema: Schema
-    _state: TeamState
+    _archetype: Archetype
     _roster: TokenDatabase
+    _state: TeamState
 
     def __init__(
             self,
             id: int,
             board: Board,
-            schema: Schema,
             owner: Player,
+            archetype: Archetype,
     ):
         """
         Args:
             id: int
             board: Board
-            schema: Schema
             owner: Player
+            archetype: Archetype
+
         """
+        super().__init__()
         self._id = id
         self._board = board
-        self._schema = schema
+        self._archetype = archetype
         self._owner = owner
         self._state = TeamState.NOT_READY_TO_PLAY
         self._roster = TokenDatabase()
@@ -82,16 +83,16 @@ class Team:
         return self._board
     
     @property
-    def schema(self) -> Schema:
-        return self._schema
+    def archetype(self) -> Archetype:
+        return self._archetype
     
     @property
-    def enemy_schema(self) -> Schema:
-        return self._schema.enemy_schema
+    def enemy_archetype(self) -> Archetype:
+        return self._archetype.enemy_archetype
     
     @property
     def enemy_rank_row(self) -> int:
-        return self.enemy_schema.rank_row
+        return self.enemy_archetype.rank_row
 
     @property
     def roster(self) -> TokenDatabase:
@@ -125,4 +126,4 @@ class Team:
         return hash(self._id)
     
     def __str__(self) -> str:
-        return f"Team{{id:{self._id} {self._owner.name} {self._schema}}}"
+        return f"Team{{id:{self._id} {self._owner.name} {self._archetype}}}"

@@ -11,13 +11,13 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Any, Type
 
-from blueprint import Blueprint
+from blueprint import ModelBlueprint
 from err import RegisterNullException
 from model import Register
 
 
 @dataclass
-class RegisterBlueprint(Blueprint[Register]):
+class RegisterBlueprint(ModelBlueprint[Register]):
     """
     Role:
         -   Container
@@ -33,10 +33,10 @@ class RegisterBlueprint(Blueprint[Register]):
     Provides:
 
      Super Class:
-        Blueprint
+        ModelBlueprint
      """
     a: Any
     b: Any
     null_exception: RegisterNullException = RegisterNullException()
-    owner: Register = Type[Register]
+    model_class: Register = Type[Register]
     owner_name: str = type(owner).__name__

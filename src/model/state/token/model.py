@@ -12,10 +12,11 @@ from abc import ABC, abstractmethod
 from typing import Optional
 
 from database import CoordDatabase
-from model import Coord, HomeSquare, Rank, Team, TokenActivityState, DeploymentState
+from model import Coord, HomeSquare, Rank, StateModel, Team, TokenActivityState, DeploymentState
+from schema import Formation
 
 
-class Token(ABC):
+class Token(StateModel):
     """
     Role:
         -   Stateful Data Holder
@@ -72,6 +73,7 @@ class Token(ABC):
             formation: Formation
             home_square: OpeningSquare
         """
+        super().__init__()
         self._id = id
         self._team = team
         self._rank = rank
