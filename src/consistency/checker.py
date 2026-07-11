@@ -12,6 +12,8 @@ from __future__ import annotations
 from abc import ABC, abstractmethod
 from typing import Any, Generic, TypeVar
 
+from bootstrapper import PrimingValidator
+from operand import DtoOperand
 from result import ValidationResult
 from util import LoggingLevelRouter
 
@@ -35,15 +37,28 @@ class ConsistencyChecker(ABC, Generic[T]):
         1.  Ensure data-holders are safe before they are used or saved.
         
     Attributes:
+        priming_validator: PrimingValidator
     
     Provides:
-        -   execute(candidate: Any) -> ValidationResult
+        -   execute(dto_operand: DtoOperand[T]) -> ValidationResult
         
     super Class:
     """
+    _priming_validator: PrimingValidator
+    
+    def __init__(
+            self,
+            priming_validator: PrimingValidator | None = PrimingValidator()
+    ):
+        self._priming_validator = priming_validator
+        
+    @property
+    def priming_validator(self) -> PrimingValidator:
+        return self._priming_validator
+        
 
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def execute(self, candidate: Any,) -> ValidationResult:
+    def execute(self, dto_operand: DtoOperand[T],) -> ValidationResult:
         """Implement in subclass."""
         pass

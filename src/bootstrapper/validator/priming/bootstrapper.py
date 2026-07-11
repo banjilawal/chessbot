@@ -53,7 +53,7 @@ class PrimingValidator(ValidatorBootstrapper):
             candidate: Any,
             target_model: Type[T],
             null_exception: NullException,
-    ) -> ValidationResult[T]:
+    ) -> ValidationResult:
         """
         Bootstrap a validator by running existence and type checks.
 

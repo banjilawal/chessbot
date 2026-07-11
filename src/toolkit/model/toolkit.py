@@ -9,7 +9,7 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from typing import Generic, TypeVar
+from typing import Generic, Type, TypeVar
 
 from blueprint import Blueprint
 from err import BlueprintNullException, DtoOperandNullException, ModelNullException, NullException
@@ -53,24 +53,24 @@ class ModelToolkit(Toolkit, Generic[T]):
     """
     """
     Args:
-        model: T
-        blueprint_model: Blueprint[T]
-        operand_model: DtoOperand[T]
+        model: Type[T]
+        operand_model: Type[DtoOperand[T]]
+        blueprint_model: Type[Blueprint[T]]
 
         null_exception: ModelNullException
         blueprint_null_exception: BlueprintNullException
-        operand_null_exception: DtoOperandNullException[T]
+        operand_null_exception: DtoOperandNullException
         
         identity_service: IdentityService
         priming_validator: PrimingValidator
     """
-    model: T
-    operand_model: DtoOperand[T]
-    blueprint_model: Blueprint[T]
+    model: Type[T]
+    operand_model: Type[DtoOperand[T]]
+    blueprint_model: Type[Blueprint[T]]
     
     null_exception: ModelNullException
     blueprint_null_exception: BlueprintNullException
-    operand_null_exception: DtoOperandNullException[T]
+    operand_null_exception: DtoOperandNullException
     
     identity_service: IdentityService = IdentityService()
 

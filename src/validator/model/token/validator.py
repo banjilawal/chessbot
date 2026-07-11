@@ -13,7 +13,7 @@ from typing import Any, cast
 
 from consistency import TokenConsistencyChecker
 from err import TokenValidatorException
-from model import HomeSquare, Square, Token
+from model import HomeSquare, KingToken, PawnToken, Square, Token
 from operand import TokenDtoOperand
 from primary import TokenRootCertifier
 from result import ValidationResult
@@ -80,6 +80,56 @@ class TokenValidator(ModelValidator[Token]):
         """
         method = f"{self.__class__.__name__}.execute"
         
+        bootstrap = self._bootstrapper(candidate=candidate)
+        if bootstrap.is_failure:
+            # Send the exception chain on failure.
+            return ValidationResult.failure(
+                TokenValidatorException(
+                    cls_mthd=method,
+                    cls_name=self.__class__.__name__,
+                    msg=TokenValidatorException.MSG,
+                    err_code=TokenValidatorException.ERR_CODE,
+                    ex=bootstrap.exception,
+                )
+            )
+        # Handle the case that, bootstrap is not successful.
+        certification = self.root_certifier.execute(
+            dto_operand=cast(TokenDtoOperand, bootstrap.payload)
+        )
+        if certification.is_failure:
+            # Send the exception chain on failure.
+            return ValidationResult.failure(
+                TokenValidatorException(
+                    cls_mthd=method,
+                    cls_name=self.__class__.__name__,
+                    msg=TokenValidatorException.MSG,
+                    err_code=TokenValidatorException.ERR_CODE,
+                    ex=certification.exception,
+                )
+            )
+        # --- Forward the work product to the caller. ---#
+        return ValidationResult.success(
+            cast(self.root_certifier.toolkit.model, certification.payload)
+        )
+    
+    @LoggingLevelRouter.monitor
+    def _bootstrapper(self, candidate: Any) -> ValidationResult:
+        """
+        Verify the object is a Token that is safe to use.
+
+        Action:
+            1.  Send an exception chain in the ValidationResult any of the cases occur:
+                    -   Candidate is null or not a token.
+            2.  Otherwise, encapsulate in a TokenDtoOperand then, send the success result.
+        Args:
+            candidate: Any
+        Returns:
+            ValidationResult[TokenDtoOperand]
+        Raises:
+             TokenValidatorException
+        """
+        method = f"{self.__class__.__name__}._bootstrapper"
+        
         bootstrap = self.root_certifier.toolkit.priming_validator.execute(
             target_model=self.root_certifier.toolkit.model,
             null_exception=self.root_certifier.toolkit.null_exception,
@@ -95,34 +145,31 @@ class TokenValidator(ModelValidator[Token]):
                     ex=bootstrap.exception,
                 )
             )
-        dto = TokenDtoOperand(model=bootstrap.payload)
-        # Handle the case that, bootstrap is not successful.
-        root_certification = self.root_certifier.execute(candidate=dto)
-        if root_certification.is_failure:
-            # Send the exception chain on failure.
-            return ValidationResult.failure(
-                TokenValidatorException(
-                    cls_mthd=method,
-                    cls_name=self.__class__.__name__,
-                    msg=TokenValidatorException.MSG,
-                    err_code=TokenValidatorException.ERR_CODE,
-                    ex=root_certification.exception,
-                )
-            )
-        # Handle the case that, the square has an inconsistency
-        consistency_check = self._consistency_checker.execute(root_certification.payload)
-        if consistency_check.is_failure:
-            # Send the exception chain on failure.
-            return ValidationResult.failure(
-                TokenValidatorException(
-                    cls_mthd=method,
-                    cls_name=self.__class__.__name__,
-                    msg=TokenValidatorException.MSG,
-                    err_code=TokenValidatorException.ERR_CODE,
-                    ex=consistency_check.exception,
-                )
-            )
-        if isinstance(consistency_check.payload, HomeSquare):
-            return ValidationResult.success(cast(HomeSquare, consistency_check.payload))
         # --- Forward the work product to the caller. ---#
-        return ValidationResult.success(cast(Square, consistency_check.payload))
+        return ValidationResult.success(
+            cast(self.root_certifier.toolkit.model, bootstrap.payload)
+        )
+    
+    @LoggingLevelRouter.monitor
+    def _token_caster(self, dto: TokenDtoOperand) -> Token:
+        """
+        Verify the object is a Token that is safe to use.
+
+        Action:
+            1.  Send an exception chain in the ValidationResult any of the cases occur:
+                    -   Candidate is null or not a token.
+            2.  Otherwise, encapsulate in a TokenDtoOperand then, send the success result.
+        Args:
+            candidate: Any
+        Returns:
+            ValidationResult[TokenDtoOperand]
+        Raises:
+             TokenValidatorException
+        """
+        method = f"{self.__class__.__name__}._finalizer"
+        
+        if isinstance(dto.operand, KingToken):
+            return cast(KingToken, dto.operand)
+        if isinstance(dto.operand, PawnToken):
+            return cast(PawnToken, dto.operand)
+        return cast(Token, dto.operand)
