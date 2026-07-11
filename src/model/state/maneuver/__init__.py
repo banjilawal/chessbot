@@ -10,6 +10,9 @@ version: 1.0.1
 # =========== MODEL.STATE.MANEUVER PACKAGE ===========#
 
 # Packages
+from .combatant import *
+from .king import *
 
 # Modules
 from .model import Maneuver
+from .state import ManeuverState

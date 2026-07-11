@@ -5,24 +5,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/register/model/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/register/model/cartesian/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/register/model/register.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/model/state/maneuver/state.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blueprint/model/blueprint.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/blueprint/model/blueprint.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blueprint/model/coord/blueprint.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/blueprint/model/coord/blueprint.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blueprint/model/state/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/blueprint/model/state/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operand/dto/coord/operand.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operand/dto/coord/operand.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operand/dto/operand.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operand/dto/operand.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operand/dto/square/operand.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operand/dto/square/operand.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operand/dto/token/operand.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operand/dto/token/operand.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/register/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/register/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/register/identity/register.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/register/identity/register.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/register/point/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/register/point/register.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/register/model/cartesian/register.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/register/register.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/register/register.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/register/square/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/register/model/square/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/register/square/register.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/register/model/square/register.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/state/maneuver/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/state/maneuver/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/state/maneuver/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/state/maneuver/model.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/state/path/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/state/path/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/state/path/checked/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/state/maneuver/checked/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/state/path/checked/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/state/maneuver/checked/model.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/state/path/combatant/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/state/maneuver/combatant/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/state/path/combatant/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/state/maneuver/combatant/model.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/state/path/dto/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/state/path/dto/model.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/state/path/king/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/state/maneuver/king/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/state/path/king/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/state/maneuver/king/model.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/state/path/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/state/path/model.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -95,11 +91,11 @@
       <recent name="$PROJECT_DIR$/src/operand/dto" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/model/state/maneuver" />
       <recent name="$PROJECT_DIR$/src/register/model" />
       <recent name="$PROJECT_DIR$/src/operand" />
       <recent name="$PROJECT_DIR$/src/blueprint/model/state" />
       <recent name="$PROJECT_DIR$/src/blueprint/model" />
-      <recent name="$PROJECT_DIR$/src/consistency" />
     </key>
   </component>
   <component name="RunManager" selected="Python.notifier">
@@ -826,7 +822,7 @@
       <workItem from="1782325486599" duration="56546000" />
       <workItem from="1782732939190" duration="235900000" />
       <workItem from="1783222430394" duration="208582000" />
-      <workItem from="1783540905722" duration="140038000" />
+      <workItem from="1783540905722" duration="143536000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />

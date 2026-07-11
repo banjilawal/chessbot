@@ -1,7 +1,7 @@
-# src/model/state/path/model/state/king.py
+# src/model/state/path/model/state/combatant.py
 
 """
-Module: model.state.path.model.king
+Module: model.state.path.model.combatant
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -11,24 +11,24 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Optional
 
-from model import KingToken, Path, Square
+from model import CombatantToken, Path, Square
 
 
-@dataclass
-class KingPath(Path):
+
+class CombatantManeuver(Maneuver):
     """
     Role:
         -   Model
         -   Data Holder
 
     Responsibilities:
-        1.  Provide information about a path a KingToken might follow.
+        1.  Provide information about a path a CombatantToken might follow.
 
     Attributes:
         id: int
-        king: KingToken
         origin: Square
         destination: Square
+        combatant: CombatantToken
         cost: Optional[int]
 
     Provides:
@@ -36,12 +36,12 @@ class KingPath(Path):
     Super Class:
         Path
     """
-    _king: KingToken
+    _combatant: CombatantToken
     
     def __init__(
             self,
             id: int,
-            king: KingToken,
+            combatant: CombatantToken,
             origin: Square,
             destination: Square,
             cost: Optional[int] | None,
@@ -49,7 +49,7 @@ class KingPath(Path):
         """
         Args:
             id: int
-            king: KingToken
+            combatant: CombatantToken
             origin: Square
             destination: Square
             cost: Optional[int]
@@ -60,19 +60,19 @@ class KingPath(Path):
             destination=destination,
             cost=cost,
         )
-        self._king = king
+        self._combatant = combatant
         
     @property
-    def king(self) -> KingToken:
-        return self._king
+    def combatant(self) -> CombatantToken:
+        return self._combatant
     
     def __eq__(self, other):
         if other is None:
             return False
         if other == self:
             return True
-        if isinstance(other, KingPath):
-            return super.__eq__(other) and self.king == other.king
+        if isinstance(other, CombatantPath):
+            return super.__eq__(other) and self.combatant == other.combatant
         return False
     
     def __hash__(self):

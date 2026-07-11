@@ -12,7 +12,8 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Optional
 
-from model import SquareRegister
+from register import SquareRegister
+
 
 @dataclass
 class Path:

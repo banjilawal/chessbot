@@ -10,10 +10,7 @@ version: 1.0.1
 # =========== MODEL.STATE.PATH PACKAGE ===========#
 
 # Packages
-from .checked import *
-from .combatant import *
 from .dto import *
-from .king import *
 
 # Modules
 from .model import Path

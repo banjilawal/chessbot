@@ -13,7 +13,7 @@ from typing import Optional
 from model import KingToken, Path, Square, Token
 
 
-class CheckedPath(Path):
+class CheckedManeuver(Maneuver):
     """
     Role:
         -   Model
