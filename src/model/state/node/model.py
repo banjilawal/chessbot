@@ -11,13 +11,15 @@ from __future__ import annotations
 
 from typing import Optional
 
+from report import OperationApprovalReport
 from stack import EdgeStackService
-from model import DiscoveryStatus, Square
+from model import DiscoveryStatus, Square, StateModel
 
 
-class Node:
+class Node(StateModel):
     _priority: int
     _square: Square
+    _approval: OperationApprovalReport
     _predecessor:Optional[Node]
     _incoming_edges: EdgeStackService
     _outgoing_edges: EdgeStackService

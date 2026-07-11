@@ -12,7 +12,7 @@ from abc import ABC, abstractmethod
 from typing import Optional
 
 from database import CoordDatabase
-from model import Coord, HomeSquare, Rank, StateModel, Team, TokenActivityState, DeploymentState
+from model import Coord, HomeSquare, KingToken, Rank, StateModel, Team, TokenActivityState, DeploymentState
 from schema import Formation
 
 
@@ -56,6 +56,7 @@ class Token(StateModel):
     _previous_address: Optional[Coord]
     _deployment_state: DeploymentState
     _readiness_state: TokenActivityState
+    _checked_enemy_king: Optional[KingToken]
 
     def __init__(
             self,
@@ -84,6 +85,7 @@ class Token(StateModel):
         self._previous_address = self._positions.previous_coord
         self._deployment_state = DeploymentState.NOT_DEPLOYED
         self._readiness_state = TokenActivityState.NOT_INITIALIZED
+        self._checked_enemy_king = None
     
     @property
     def id(self) -> int:
@@ -114,12 +116,20 @@ class Token(StateModel):
         return self._home_square
     
     @property
+    def checked_enemy_king(self) -> Optional[KingToken]:
+        return self._checked_enemy_king
+    
+    @property
     def readiness_state(self) -> TokenActivityState:
         return self._readiness_state
     
     @readiness_state.setter
     def readiness_state(self, readiness_state: TokenActivityState):
         self._readiness_state = readiness_state
+        
+    @checked_enemy_king.setter
+    def checked_enemy_king(self, other: KingToken):
+        self._checked_enemy_king = other
     
     @property
     def positions(self) -> CoordDatabase:
@@ -172,6 +182,15 @@ class Token(StateModel):
     
     def is_enemy(self, token: Token) -> bool:
         return not self.is_friend(token)
+    
+    def has_checked_enemy_king(self) -> bool:
+        return (
+                self._checked_enemy_king is not None and
+                self.is_enemy(self._checked_enemy_king)
+        )
+    
+    def is_no_enemy_checked(self) -> bool:
+        return not self.has_checked_enemy_king
     
     def __eq__(self, other: object) -> bool:
         if other is self: return True

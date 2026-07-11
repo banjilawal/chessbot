@@ -14,7 +14,10 @@ from database import HostageDatabase, SquareDatabase
 from model.arena import Arena
 from model.board import BoardState
 
-class Board:
+from model import StateModel
+
+
+class Board(StateModel):
     """
     Role:Data-Holder/Data Owner
   

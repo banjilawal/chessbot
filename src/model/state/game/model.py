@@ -14,7 +14,7 @@ from model.arena import Arena
 from model.state.game import Snapshot, GameTimeline
 
 
-class Game:
+class Game(StateModel):
     """
     Role:Controller
 

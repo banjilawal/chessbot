@@ -1,19 +1,19 @@
-# src/model/state/attack/king/model/state.py
+# src/model/state/attack/king/__init__.py
 
 """
-Module: model.state.attack.king.model
+Module: model.state.attack.king.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
 """
 
 from __future__ import annotations
-from typing import Optional
+from typing import Optional, cast
 
-from model import Attack, KingToken, Maneuver
+from model import Attack, KingAttackState, KingToken, Maneuver
 
 
-class AttackKing(Attack):
+class AttackKing(Attack[KingToken]):
     """
     Role:
         -   Model
@@ -21,12 +21,12 @@ class AttackKing(Attack):
 
     Responsibilities:
         1.  Provide information about a Path which might be used to attack
-            an enemy's KingToken.
+            an victim's KingToken.
 
     Attributes:
         id: int
         maneuver: Maneuver
-        enemy: KingToken
+        victim: KingToken
         benefit: Optional[int]
 
     Provides:
@@ -34,32 +34,41 @@ class AttackKing(Attack):
     Super Class:
         Attack
     """
-    _enemy: KingToken
+    _attack_state: KingAttackState
     
     def __init__(
             self,
             id: int,
             maneuver: Maneuver,
-            enemy: KingToken,
-            benefit: Optional[int] | None,
+            victim: KingToken,
+            attacker_benefit: Optional[int] | None,
     ):
         """
         Args:
             id: int
+            victim: KingToken
             maneuver: Maneuver
-            enemy: KingToken
-            benefit: Optional[int]
+            attacker_benefit: Optional[int]
         """
         super().__init__(
             id=id,
+            victim=victim,
             maneuver=maneuver,
-            benefit=benefit,
+            attacker_benefit=attacker_benefit
         )
-        self._enemy = enemy
+        self._attack_state = KingAttackState.ATTACK_NOT_COMPLETED
         
     @property
-    def enemy(self) -> KingToken:
-        return self._enemy
+    def victim(self) -> KingToken:
+        return cast(KingToken, self.victim)
+    
+    @property
+    def attack_state(self) -> KingAttackState:
+        return self._attack_state
+    
+    @property
+    def check_completed(self) -> bool:
+    
     
     def __eq__(self, other):
         if other is None:
@@ -69,7 +78,7 @@ class AttackKing(Attack):
         if isinstance(other, AttackKing):
             return (
                     super().__eq__(other) and
-                    self.enemy == other.enemy
+                    self.victim == other.victim
             )
         return False
     

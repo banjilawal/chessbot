@@ -9,15 +9,10 @@ version: 1.0.0
 
 from __future__ import annotations
 
-from abc import ABC
-from typing import Optional, cast
-
-from database import TeamDatabase
-from integrity import NameValidator
-from model import Coord, Team, Token
+from model import StateModel
 
 
-class Player(ABC):
+class Player(StateModel):
     """
     Role:Controller
 

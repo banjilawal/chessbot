@@ -11,10 +11,10 @@ from __future__ import annotations
 
 from typing import Optional
 
-from model import Node
+from model import Node, StateModel
 
 
-class Edge:
+class Edge(StateModel):
     _label: int
     _head: Node
     _tail: Node
