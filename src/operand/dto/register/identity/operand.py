@@ -52,12 +52,12 @@ class IdentityRegisterDtoOperand(RegisterDtoOperand[IdentityRegister]):
         super().__init__(model=model, blueprint=blueprint)
     
     @property
-    def operand(self) -> [IdentityRegister| IdentityRegisterBlueprint]:
+    def entity(self) -> [IdentityRegister | IdentityRegisterBlueprint]:
         if self.is_empty:
             return None
         if self.is_model_operand:
-            return cast(IdentityRegister, self.operand)
-        return cast(IdentityRegisterBlueprint, self.operand)
+            return cast(IdentityRegister, self.entity)
+        return cast(IdentityRegisterBlueprint, self.entity)
     
     @property
     def is_model_operand(self) -> bool:
@@ -85,9 +85,9 @@ class IdentityRegisterDtoOperand(RegisterDtoOperand[IdentityRegister]):
         if other is self: return True
         if other is None: return False
         if isinstance(other, RegisterDtoOperand):
-            return self.operand == other.operand
+            return self.entity == other.entity
         return False
     
     def __hash__(self):
-        return hash(self.operand)
+        return hash(self.entity)
 

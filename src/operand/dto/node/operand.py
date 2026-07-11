@@ -55,7 +55,7 @@ class NodeDtoOperand(DtoOperand[Node]):
         self._blueprint = blueprint
     
     @property
-    def operand(self) -> [Node|NodeBlueprint]:
+    def entity(self) -> [Node | NodeBlueprint]:
         return self._model or self._blueprint
     
     @property
@@ -84,9 +84,9 @@ class NodeDtoOperand(DtoOperand[Node]):
         if other is self: return True
         if other is None: return False
         if isinstance(other, NodeDtoOperand):
-            return self.operand == other.operand
+            return self.entity == other.entity
         return False
     
     def __hash__(self):
-        return hash(self.operand)
+        return hash(self.entity)
 

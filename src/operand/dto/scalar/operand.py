@@ -55,7 +55,7 @@ class ScalarDtoOperand(DtoOperand[Scalar]):
         self._blueprint = blueprint
     
     @property
-    def operand(self) -> [Scalar|ScalarBlueprint]:
+    def entity(self) -> [Scalar | ScalarBlueprint]:
         return self._model or self._blueprint
     
     @property
@@ -84,9 +84,9 @@ class ScalarDtoOperand(DtoOperand[Scalar]):
         if other is self: return True
         if other is None: return False
         if isinstance(other, ScalarDtoOperand):
-            return self.operand == other.operand
+            return self.entity == other.entity
         return False
     
     def __hash__(self):
-        return hash(self.operand)
+        return hash(self.entity)
 

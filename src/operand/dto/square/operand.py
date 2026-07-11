@@ -57,7 +57,7 @@ class SquareDtoOperand(DtoOperand[Square]):
         self._blueprint = blueprint
     
     @property
-    def operand(self) -> [Square|SquareBlueprint]:
+    def entity(self) -> [Square | SquareBlueprint]:
         return self._model or self._blueprint
     
     @property
@@ -121,9 +121,9 @@ class SquareDtoOperand(DtoOperand[Square]):
         if other is self: return True
         if other is None: return False
         if isinstance(other, SquareDtoOperand):
-            return self.operand == other.operand
+            return self.entity == other.entity
         return False
     
     def __hash__(self):
-        return hash(self.operand)
+        return hash(self.entity)
 

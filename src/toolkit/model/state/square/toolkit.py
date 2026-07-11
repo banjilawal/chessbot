@@ -53,9 +53,9 @@ class SquareToolkit(ModelToolkit[Square]):
     Super Class:
        ModelToolkit
     """
-    model: Square = Type[Square]
-    blueprint_model = Type[SquareBlueprint]
-    operand_model: SquareDtoOperand = Type[SquareDtoOperand]
+    model: Type[Square] = Square
+    blueprint_model: Type[SquareBlueprint] = SquareBlueprint
+    operand_model: Type[SquareDtoOperand] = SquareDtoOperand
 
     null_exception: SquareNullException = SquareNullException()
     blueprint_null_exception: SquareBlueprintNullException = SquareBlueprintNullException()

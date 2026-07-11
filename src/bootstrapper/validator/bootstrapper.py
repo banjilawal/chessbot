@@ -17,8 +17,6 @@ from util import LoggingLevelRouter
 
 
 class ValidatorBootstrapper(Bootstrapper):
-    DOMAIN = "BootStrap"
-    PACAKGE = "Validator"
     
     @classmethod
     @abstractmethod

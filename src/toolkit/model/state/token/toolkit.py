@@ -65,9 +65,9 @@ identity_service: IdentityService
         blueprint_home_square_extractor: BlueprintHomeSquareExtractor
         team_validator: TeamValidator
     """
-    model: Token = Type[Token]
-    blueprint_model: TokenBlueprint = Type[TokenBlueprint]
-    operand_model: TokenDtoOperand = Type[TokenDtoOperand]
+    model: Type[Token] = Token
+    blueprint_model: Type[TokenBlueprint] = TokenBlueprint
+    operand_model: Type[TokenDtoOperand] = TokenDtoOperand
     
     null_exception: TokenNullException = TokenNullException()
     blueprint_null_exception: TokenBlueprintNullException = TokenBlueprintNullException()

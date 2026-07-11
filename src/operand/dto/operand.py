@@ -33,6 +33,6 @@ class DtoOperand(ABC, Generic[T]):
         
     @property
     @abstractmethod
-    def operand(self) -> [T|Blueprint[t]]:
+    def entity(self) -> [T | Blueprint[T]]:
         pass
     

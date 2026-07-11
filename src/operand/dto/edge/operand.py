@@ -55,7 +55,7 @@ class EdgeDtoOperand(DtoOperand[Edge]):
         self._blueprint = blueprint
     
     @property
-    def operand(self) -> [Edge|EdgeBlueprint]:
+    def entity(self) -> [Edge | EdgeBlueprint]:
         return self._model or self._blueprint
     
     @property
@@ -84,9 +84,9 @@ class EdgeDtoOperand(DtoOperand[Edge]):
         if other is self: return True
         if other is None: return False
         if isinstance(other, EdgeDtoOperand):
-            return self.operand == other.operand
+            return self.entity == other.entity
         return False
     
     def __hash__(self):
-        return hash(self.operand)
+        return hash(self.entity)
 

@@ -52,12 +52,12 @@ class SquareRegisterDtoOperand(RegisterDtoOperand[SquareRegister]):
         super().__init__(model=model, blueprint=blueprint)
     
     @property
-    def operand(self) -> [SquareRegister| SquareRegisterBlueprint]:
+    def entity(self) -> [SquareRegister | SquareRegisterBlueprint]:
         if self.is_empty:
             return None
         if self.is_model_operand:
-            return cast(SquareRegister, self.operand)
-        return cast(SquareRegisterBlueprint, self.operand)
+            return cast(SquareRegister, self.entity)
+        return cast(SquareRegisterBlueprint, self.entity)
     
     @property
     def is_model_operand(self) -> bool:
@@ -85,9 +85,9 @@ class SquareRegisterDtoOperand(RegisterDtoOperand[SquareRegister]):
         if other is self: return True
         if other is None: return False
         if isinstance(other, RegisterDtoOperand):
-            return self.operand == other.operand
+            return self.entity == other.entity
         return False
     
     def __hash__(self):
-        return hash(self.operand)
+        return hash(self.entity)
 

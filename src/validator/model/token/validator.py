@@ -13,7 +13,7 @@ from typing import Any, cast
 
 from consistency import TokenConsistencyChecker
 from err import TokenValidatorException
-from model import HomeSquare, KingToken, PawnToken, Square, Token
+from model import Token
 from operand import TokenDtoOperand
 from primary import TokenRootCertifier
 from result import ValidationResult
@@ -36,7 +36,9 @@ class TokenValidator(ModelValidator[Token]):
         root_certifier: TokenRootCertifier
 
     Provides:
-        -   execute(self, candidate: Any) -> ValidationResult
+        -   execute(candidate: Any) -> ValidationResult
+        -   _bootstrapper(candidate: Any) -> ValidationResult
+        -   _model_extractor(payload) -> Token
 
     Super Class:
         ModelValidator
@@ -63,16 +65,12 @@ class TokenValidator(ModelValidator[Token]):
 
         Action:
             1.  Send an exception chain in the ValidationResult any of the cases occur:
-                    -   Candidate is null
-                    -   It's not a number.
-                    _   A Team check fails
-                    -   A Rank check fails
-                    -   Identity check fails
-            2.  Otherwise, send the success result.
+                    -   The candidate cannot get bootstrapped into a TokenDtoOperand.
+                    -   The dto_operand cannot is not certified as safe.
+            2.  Otherwise, extract the Token from the dto_operand then, send it in the
+                success result.
         Args:
             candidate: Any
-            toolkit: TokenToolkit
-            blueprint_validator: TokenCertifier
         Returns:
             ValidationResult[Token]
         Raises:
@@ -80,6 +78,7 @@ class TokenValidator(ModelValidator[Token]):
         """
         method = f"{self.__class__.__name__}.execute"
         
+        # Handle the case that, the bootstrap does not produce a TokenDtoOperand
         bootstrap = self._bootstrapper(candidate=candidate)
         if bootstrap.is_failure:
             # Send the exception chain on failure.
@@ -92,9 +91,12 @@ class TokenValidator(ModelValidator[Token]):
                     ex=bootstrap.exception,
                 )
             )
-        # Handle the case that, bootstrap is not successful.
+        # Handle the case that, TokenDtoOperand is not certified as safe.
         certification = self.root_certifier.execute(
-            dto_operand=cast(TokenDtoOperand, bootstrap.payload)
+            dto_operand=cast(
+                self.root_certifier.toolkit.operand_model,
+                bootstrap.payload,
+            )
         )
         if certification.is_failure:
             # Send the exception chain on failure.
@@ -107,15 +109,16 @@ class TokenValidator(ModelValidator[Token]):
                     ex=certification.exception,
                 )
             )
+        # Extract the token from certification payload
+        model = self._model_extractor(certification.payload)
+
         # --- Forward the work product to the caller. ---#
-        return ValidationResult.success(
-            cast(self.root_certifier.toolkit.model, certification.payload)
-        )
+        return ValidationResult.success(model)
     
     @LoggingLevelRouter.monitor
     def _bootstrapper(self, candidate: Any) -> ValidationResult:
         """
-        Verify the object is a Token that is safe to use.
+        Put a safe Token in a DtoOperand.
 
         Action:
             1.  Send an exception chain in the ValidationResult any of the cases occur:
@@ -131,6 +134,7 @@ class TokenValidator(ModelValidator[Token]):
         method = f"{self.__class__.__name__}._bootstrapper"
         
         bootstrap = self.root_certifier.toolkit.priming_validator.execute(
+            candidate=candidate,
             target_model=self.root_certifier.toolkit.model,
             null_exception=self.root_certifier.toolkit.null_exception,
         )
@@ -145,31 +149,33 @@ class TokenValidator(ModelValidator[Token]):
                     ex=bootstrap.exception,
                 )
             )
-        # --- Forward the work product to the caller. ---#
-        return ValidationResult.success(
-            cast(self.root_certifier.toolkit.model, bootstrap.payload)
+        dto_operand = TokenDtoOperand(
+            model=cast(
+                self.root_certifier.toolkit.model,
+                bootstrap.payload,
+            )
         )
+        # --- Forward the work product to the caller. ---#
+        return ValidationResult.success(dto_operand)
     
     @LoggingLevelRouter.monitor
-    def _token_caster(self, dto: TokenDtoOperand) -> Token:
+    def _model_extractor(self, payload) -> Token:
         """
-        Verify the object is a Token that is safe to use.
+        Extract the Token in a DtoOperand
 
         Action:
-            1.  Send an exception chain in the ValidationResult any of the cases occur:
-                    -   Candidate is null or not a token.
-            2.  Otherwise, encapsulate in a TokenDtoOperand then, send the success result.
+            1.  Cast the payload into a TokenDtoOperand.
+            2.  Extract and cast its content into a Token.
+            3.  Return the Token.
         Args:
-            candidate: Any
+            payload
         Returns:
             ValidationResult[TokenDtoOperand]
         Raises:
              TokenValidatorException
         """
-        method = f"{self.__class__.__name__}._finalizer"
-        
-        if isinstance(dto.operand, KingToken):
-            return cast(KingToken, dto.operand)
-        if isinstance(dto.operand, PawnToken):
-            return cast(PawnToken, dto.operand)
-        return cast(Token, dto.operand)
+        operand = cast(
+            self.root_certifier.toolkit.operand_model,
+            payload
+        )
+        return cast(self.root_certifier.toolkit.model, operand.entity)

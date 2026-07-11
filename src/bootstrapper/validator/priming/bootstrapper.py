@@ -1,26 +1,24 @@
-# src/validation/priming.py
+# src/bootstrapper/validator/priming/bootstrapper.py
 
 """
-Module: validation.priming
+Module: bootstrapper.validator.priming.bootstrapper
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
 """
-
 from __future__ import annotations
 from typing import Any, Type, TypeVar, cast
 
-from bootstrapper import ValidatorBootstrapper
+from bootstrapper import Bootstrapper
 from result import ValidationResult
 from util import LoggingLevelRouter
-from validator import Validator
 from err import NullException, PrimingValidatorException
 
 
 T = TypeVar("T")
 
 
-class PrimingValidator(ValidatorBootstrapper):
+class PrimingValidator(Bootstrapper):
     """
     Role
         -   Transaction Worker
@@ -35,14 +33,14 @@ class PrimingValidator(ValidatorBootstrapper):
     Attributes:
 
     Provides:
-        -   def validate(
+        -   validate(
                     candidate: Any,
-                    target_model: T,
+                    target_model: Type[T],
                     null_exception: NullException,
             ) -> ValidationResult:
 
     Super Class:
-        Validator
+        Bootstrapper
     """
 
     
@@ -55,7 +53,7 @@ class PrimingValidator(ValidatorBootstrapper):
             null_exception: NullException,
     ) -> ValidationResult:
         """
-        Bootstrap a validator by running existence and type checks.
+        Makes sure a candidate is the expected type and not null.
 
         Action:
             1.  Send an exception chain in the ValidationResult any of the cases occur:
@@ -64,7 +62,7 @@ class PrimingValidator(ValidatorBootstrapper):
             2.  Otherwise, send the success result.
         Args:
             candidate: Any
-            target_model: T
+            target_model: Type[T]
             null_exception: NullException
         Returns:
             ValidationResult[T]

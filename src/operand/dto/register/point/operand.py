@@ -52,12 +52,12 @@ class PointRegisterDtoOperand(RegisterDtoOperand[PointRegister]):
         super().__init__(model=model, blueprint=blueprint)
     
     @property
-    def operand(self) -> [PointRegister| PointRegisterBlueprint]:
+    def entity(self) -> [PointRegister | PointRegisterBlueprint]:
         if self.is_empty:
             return None
         if self.is_model_operand:
-            return cast(PointRegister, self.operand)
-        return cast(PointRegisterBlueprint, self.operand)
+            return cast(PointRegister, self.entity)
+        return cast(PointRegisterBlueprint, self.entity)
     
     @property
     def is_model_operand(self) -> bool:
@@ -85,9 +85,9 @@ class PointRegisterDtoOperand(RegisterDtoOperand[PointRegister]):
         if other is self: return True
         if other is None: return False
         if isinstance(other, RegisterDtoOperand):
-            return self.operand == other.operand
+            return self.entity == other.entity
         return False
     
     def __hash__(self):
-        return hash(self.operand)
+        return hash(self.entity)
 

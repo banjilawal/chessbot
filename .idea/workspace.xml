@@ -5,8 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/src/consistency/checker.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/consistency/checker.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/consistency/token/checker.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/consistency/token/checker.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bootstrapper/validator/bootstrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/bootstrapper/validator/bootstrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bootstrapper/validator/priming/bootstrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/bootstrapper/validator/priming/bootstrapper.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/validator/model/token/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/validator/model/token/validator.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -811,7 +812,7 @@
       <workItem from="1782325486599" duration="56546000" />
       <workItem from="1782732939190" duration="235900000" />
       <workItem from="1783222430394" duration="208582000" />
-      <workItem from="1783540905722" duration="112810000" />
+      <workItem from="1783540905722" duration="118064000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />
