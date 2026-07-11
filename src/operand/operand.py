@@ -22,6 +22,7 @@ class Operand:
         entity: Any
         to_dict: Dict[str, Any]
         is_empty: bool
+        is_full: bool
         has_overflow: bool
         size: int
 
@@ -43,6 +44,11 @@ class Operand:
     @property
     @abstractmethod
     def is_empty(self) -> bool:
+        pass
+    
+    @property
+    @abstractmethod
+    def is_full(self) -> bool:
         pass
     
     @property

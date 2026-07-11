@@ -25,13 +25,8 @@ class TeamDtoOperand(DtoOperand[Team]):
         2.  Transports either a Team or its Blueprint.
 
     Attributes:
-        entity: [Team|TeamBlueprint]
-        is_empty: bool
-        has_overflow: bool
-        is_model_operand: bool
-        is_blueprint_operand: bool
-        to_dict: Dict[str, Any]
-        size: int
+        model: Optional[Team]
+        blueprint: Optional[TeamBlueprint]
 
     Provides:
         -   extract_blueprint() -> Optional[TeamBlueprint]
@@ -39,8 +34,6 @@ class TeamDtoOperand(DtoOperand[Team]):
     Super Class:
         DtoOperand
     """
-    _model: Optional[Team]
-    _blueprint: Optional[TeamBlueprint]
     
     def __init__(
             self,
@@ -80,10 +73,9 @@ class TeamDtoOperand(DtoOperand[Team]):
         if self.is_blueprint_operand: return self._blueprint
         return TeamBlueprint(
             id=self._model.id,
-            boadr=self._model.board,
+            board=self._model.board,
             owner=self._model.owner,
-            archetype=self._model.,
-            home_square=self._model.home_square,
+            archetype=self._model.archetype,
         )
     
     @property
@@ -98,8 +90,12 @@ class TeamDtoOperand(DtoOperand[Team]):
         return len(self.to_dict) == 0
     
     @property
+    def is_full(self) -> bool:
+        return len(self.to_dict) == 1
+    
+    @property
     def has_overflow(self) -> bool:
-        return len(self.to_dict) > 1
+        return len(self.to_dict) >= 2
     
     @property
     def size(self) -> int:
