@@ -1,7 +1,7 @@
-# src/register/state.py
+# src/register/model/register.model.py
 
 """
-Module: register.model
+Module: register.register
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -9,10 +9,13 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from typing import Any, Dict, List
+from typing import Dict, Generic, List, TypeVar
 
+from register import Register
 
-class Register(Any):
+T = TypeVar("T", bound="Model")
+
+class ModelRegister(Register, Generic[T]):
     """
     Role:
         -   Addressing
@@ -23,40 +26,36 @@ class Register(Any):
             the same type.
         
     Attributes:
-        a: Any
-        b: Any
-        to_list: List[Any]:
-        to_dict: Dict[str, Any]:
+        a: T
+        b: T
         
     Provides:
     
     Super Class:
         Model
     """
-    a: Any
-    b: Any
     
-    def __init__(self, a: Any, b: Any,):
+    def __init__(self, a: T, b: T,):
         """
         Args:
-            a: Any
-            b: Any
+            a: T
+            b: T
         """
-        self._a = a
-        self._b = b
+        super().__init__(a=a, b=b)
+
     
     @property
-    def a(self) -> Any:
+    def a(self) -> T:
         return self._a
     
     @property
-    def b(self) -> Any:
+    def b(self) -> T:
         return self._b
     
     @property
-    def to_list(self) -> List[Any]:
+    def to_list(self) -> List[T]:
         return [self._a, self._b]
     
     @property
-    def to_dict(self) -> Dict[str, Any]:
+    def to_dict(self) -> Dict[str, T]:
         return {"a": self._a, "v": self._b}

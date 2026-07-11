@@ -12,7 +12,6 @@ version: 1.0.1
 # Packages
 
 from .arena import *
-
 from .board import *
 from .edge import *
 from .maneuver import *

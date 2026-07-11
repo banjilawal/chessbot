@@ -112,8 +112,12 @@ class SquareDtoOperand(DtoOperand[Square]):
         return len(self.to_dict) == 0
     
     @property
+    def is_full(self) -> bool:
+        return len(self.to_dict) == 1
+    
+    @property
     def has_overflow(self) -> bool:
-        return len(self.to_dict) > 1
+        return len(self.to_dict) >= 2
     
     @property
     def size(self) -> int:

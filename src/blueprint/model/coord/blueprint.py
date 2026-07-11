@@ -9,13 +9,13 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from typing import Optional, Type, cast
+from typing import Type, cast
 
 from blueprint import ModelBlueprint
 from model import Coord
 
 
-class ColumnBlueprint(ModelBlueprint[Coord]):
+class CoordBlueprint(ModelBlueprint[Coord]):
     """
     Role:
         -   Container
@@ -24,11 +24,8 @@ class ColumnBlueprint(ModelBlueprint[Coord]):
         1.  Provides values for instantiating a Column object.
 
     Attributes:
-       row:Row,
-        column: Column
-        id: Optional[int]
-        formation Optional[Formation]
-        model_class: Type[Column]
+        row: int
+        column: int
         
     Provides:
 
@@ -46,8 +43,8 @@ class ColumnBlueprint(ModelBlueprint[Coord]):
             model_class: Type[Coord]
         """
         super().__init__(model_class=model_class)
-        self._row = int
-        self._column = int
+        self._row = row
+        self._column = column
         
     @property
     def mode_class(self) -> Type[Coord]:

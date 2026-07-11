@@ -1,7 +1,7 @@
-# src/register/operand/py
+# src/register/model/cartesian/register.py
 
 """
-Module: register.operand.model
+Module: register.model.cartesian.register
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -9,29 +9,28 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from typing import Optional
+from typing import Dict, List
 
-from model import Register, Point
+from operand import CartesianPoint
+from register import ModelRegister
 
 
-class PointRegister(Register[Point]):
+class CartesianPointRegister(ModelRegister[CartesianPoint]):
     """
         -   Model
         -   Data Holder
 
     Responsibilities:
-        1.  Contains Points passed to vector algebra.
+        1.  Contains CartesianPoints passed for Vector Algebra
 
     Attributes:
-        a: Point
-        b: Point
-        
-        a_equals_b: bool
-        a_does_not_equal_b: bool
+        a: CartesianPoint
+        b: CartesianPoint
+
         is_vector_register:bool
         is_coord_register: bool
-        to_list: List[Point]
-        to_dict: Dict[str, Point]
+        to_list: List[Cartesian]
+        to_dict: Dict[str, Cartesian]
 
     Super Class:
         Register
@@ -39,22 +38,22 @@ class PointRegister(Register[Point]):
     
     def __init__(
             self,
-            a: Point,
-            b: Point,
+            a: CartesianPoint,
+            b: CartesianPoint,
     ):
         """
         Args:
-            a: Point
-            b: Point
+            a: CartesianPoint
+            b: CartesianPoint
         """
         super().__init__(a=a, b=b)
         
     @property
-    def a(self) -> Point:
+    def a(self) -> CartesianPoint:
         return self._a
     
     @property
-    def b(self) -> Point:
+    def b(self) -> CartesianPoint:
         return self._b
     
     @property
@@ -80,10 +79,21 @@ class PointRegister(Register[Point]):
                 (not (self._a.is_vector_point and self.b.is_vector_point))
         )
     
+    @property
+    def to_list(self) -> List[CartesianPoint]:
+        return [self.a, self.b]
+    
+    @property
+    def to_dict(self) -> Dict[str, CartesianPoint]:
+        return {
+            "a": self.a,
+            "b": self.b,
+        }
+    
     def __eq__(self, other):
         if other is self: return True
         if other is None: return False
-        if isinstance(other, PointRegister):
+        if isinstance(other, CartesianPointRegister):
             return (
                     self._a == other.b and
                     self._b == other.b

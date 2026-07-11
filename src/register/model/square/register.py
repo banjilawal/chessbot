@@ -1,7 +1,7 @@
-# src/register/square/py
+# src/register/model/square/register.py
 
 """
-Module: register.square.model
+Module: register.model.square.register
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -9,10 +9,13 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from model import Register, Square
+from typing import Dict, List
+
+from model import Square
+from register import ModelRegister
 
 
-class SquareRegister(Register[Square]):
+class SquareRegister(ModelRegister[Square]):
     """
     Role:
         -   Model
@@ -53,11 +56,22 @@ class SquareRegister(Register[Square]):
 
     @property
     def origin_is_destination(self) -> bool:
-        return self._origin == self._destination
+        return self.origin == self.destination
     
     @property
     def origin_is_not_destination(self) -> bool:
-        return self.origin_is_destination
+        return not self.origin_is_destination
+    
+    @property
+    def to_list(self) -> List[Square]:
+        return [self.origin, self.destination]
+    
+    @property
+    def to_dict(self) -> Dict[str, Square]:
+        return {
+            "origin": self.origin,
+            "destination": self.destination,
+        }
     
     def __eq__(self, other):
         if other is self: return True

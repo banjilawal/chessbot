@@ -27,7 +27,6 @@ class ModelBlueprint(Blueprint[Model[T]]):
          2.  DTO
 
      Attributes:
-         id: Optional[int]
          model_class: Type[Model[T]]
          
      Provides:
@@ -35,25 +34,15 @@ class ModelBlueprint(Blueprint[Model[T]]):
      Super Class:
         Blueprint
      """
-    _id: Optional[int]
     
-    def __init__(
-            self,
-            model_class: Type[Model[T]],
-            id: Optional[int] | None = None,
-    ):
+    def __init__( self, model_class: Type[Model[T]],):
         """
         Args:
             model_class: Type[Model[T]]
         
         """
         super().__init__(model_class=model_class,)
-        self._id = id
     
     @property
     def model_class(self) -> Type[Model[T]]:
         return cast(Type[Model[T]], self.model_class)
-    
-    @property
-    def id(self) -> Optional[int]:
-        return self._id

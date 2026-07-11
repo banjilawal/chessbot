@@ -1,7 +1,7 @@
-# src/register/identity/py
+# src/register/identity/register.py
 
 """
-Module: register.identity.model
+Module: register.identity.register
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -9,12 +9,12 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from typing import Any, cast
+from typing import cast
 
-from model import Register
+from register import Register
 
 
-class IdentityRegister(Register[Any]):
+class IdentityRegister(Register):
     """
     Role:
         -   Model

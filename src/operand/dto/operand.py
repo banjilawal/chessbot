@@ -43,7 +43,7 @@ class DtoOperand(Operand, Generic[T]):
 
     @property
     @abstractmethod
-    def entity(self) -> [T | Blueprint[T]]:
+    def entity(self) -> [T|Blueprint[T]]:
         pass
     
     @property

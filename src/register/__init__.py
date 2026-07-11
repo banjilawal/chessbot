@@ -11,8 +11,7 @@ version: 1.0.1
 
 # Packages
 from .identity import *
-from .point import *
-from .square import *
+from .model import *
 
 # Modules
 from .register import Register
