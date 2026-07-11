@@ -8,12 +8,16 @@ version: 1.0.1
 """
 
 from __future__ import annotations
-from typing import Optional
 
-from model import Maneuver, Square, Token
+from abc import ABC
+from typing import Generic, Optional, TypeVar
+
+from model import Maneuver
+
+T = TypeVar("T", bound="Token")
 
 
-class Attack:
+class Attack(ABC, Generic[T]):
     """
     Role:
         -   Model
@@ -26,7 +30,7 @@ class Attack:
     Attributes:
         id: int
         maneuver: Maneuver
-        benefit: Optional[int]
+        attacker_benefit: Optional[int]
 
     Provides:
 
@@ -34,24 +38,28 @@ class Attack:
         Model
     """
     _id: int
+    _victim: T
     _maneuver: Maneuver
-    _benefit: Optional[int]
+    _attacker_benefit: Optional[int]
     
     def __init__(
             self,
             id: int,
+            victim: T,
             maneuver: Maneuver,
-            benefit: Optional[int] | None,
+            attacker_benefit: Optional[int] | None = None,
     ):
         """
         Args:
             id: int
+            victim: 
             maneuver: Maneuver
-            benefit: Optional[int]
+            attacker_benefit: Optional[int]
         """
         self._id = id
+        self._victim: victim
         self._maneuver = maneuver
-        self._benefit = benefit
+        self._attacker_benefit = attacker_benefit
         
     @property
     def id(self) -> int:
@@ -62,24 +70,24 @@ class Attack:
         return self._maneuver
         
     @property
-    def attacker(self) -> Token:
+    def victim(self) -> T:
         return self._maneuver.token
     
     @property
-    def attack_origin(self) -> Square:
-        return self._maneuver.path.origin
+    def attacker_benefit(self) -> Optional[int]:
+        return self._attacker_benefit
     
-    @property
-    def target_square(self) -> Square:
-        return self._maneuver.path.origin
+    @attacker_benefit.setter
+    def attacker_benefit(self, attacker_benefit: Optional[int]):
+        self._attacker_benefit = attacker_benefit
     
-    @property
-    def benefit(self) -> Optional[int]:
-        return self._benefit
-    
-    @benefit.setter
-    def benefit(self, benefit: Optional[int]):
-        self._benefit = benefit
+    def is_same_attack(self, attack: Attack) -> bool:
+        if attack is self: return True
+        if attack is None: return False
+        return (
+                self._maneuver.token == attack.maneuver.token and
+                self.maneuver.is_same_path(attack.maneuver)
+        )
     
     def __eq__(self, other):
         if other is None:
@@ -90,12 +98,15 @@ class Attack:
             return (
                     self._id == other.id and
                     self._maneuver == other.maneuver and
-                    self._benefit == other.benefit
+                    self._attacker_benefit == other.attacker_benefit
             )
         return False
     
     def __hash__(self):
         return hash(self._id)
+    
+
+
         
         
         
