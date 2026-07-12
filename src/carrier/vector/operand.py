@@ -76,7 +76,7 @@ class VectorCarrier(EntityCarrier[Vector]):
     
     @property
     def size(self) -> int:
-        if self.is_empty: return 0
+        if self.no_active_toggles: return 0
         if self.is_model_operand or self.is_blueprint_operand: return 1
         return 2
     

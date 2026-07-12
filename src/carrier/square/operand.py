@@ -84,7 +84,7 @@ class SquareCarrier(EntityCarrier[Square]):
         )
     
     def extract_blueprint(self) -> Optional[SquareBlueprint]:
-        if self.is_empty: return None
+        if self.no_active_toggles: return None
         if self.is_blueprint_operand: return self._blueprint
         if self.is_home_square_operand:
             home_square = cast(HomeSquare, self._model)

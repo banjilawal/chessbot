@@ -76,7 +76,7 @@ class CoordCarrier(EntityCarrier[Coord]):
         )
 
     def extract_blueprint(self) -> Optional[CoordBlueprint]:
-        if self.is_empty: return None
+        if self.no_active_toggles: return None
         if self.is_blueprint_operand: return self._blueprint
         return CoordBlueprint(
             row=self._model.row,

@@ -38,8 +38,11 @@ class EntityCarrier(Toggle, Generic[T]):
         -   extract_blueprint() -> Optional[Blueprint[T]]
 
     Super Class:
-        Operand
+        Toggle
     """
+    
+    def __init__(self):
+        super().__init__()
 
     @property
     @abstractmethod

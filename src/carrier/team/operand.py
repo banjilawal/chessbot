@@ -69,7 +69,7 @@ class TeamCarrier(EntityCarrier[Team]):
         )
 
     def extract_blueprint(self) -> Optional[TeamBlueprint]:
-        if self.is_empty: return None
+        if self.no_active_toggles: return None
         if self.is_blueprint_operand: return self._blueprint
         return TeamBlueprint(
             id=self._model.id,

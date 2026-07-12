@@ -9,12 +9,11 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from abc import ABC, abstractmethod, abstractproperty
+from abc import ABC, abstractmethod
 from typing import Any, Dict
 
 
 class Toggle(ABC):
-    pass
 
     _max_enabled_toggles: int
     
@@ -28,6 +27,10 @@ class Toggle(ABC):
     @property
     def no_active_toggles(self) -> bool:
         return self.active_toggles == 0
+    
+    @property
+    def excess_toggles(self) -> bool:
+        return self.active_toggles > self._max_enabled_toggles
     
     @property
     def active_toggles(self) -> int:

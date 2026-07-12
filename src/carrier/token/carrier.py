@@ -52,6 +52,7 @@ class TokenCarrier(EntityCarrier[Token]):
             model: Optional[Token]
             blueprint: Optional[TokenBlueprint]
         """
+        super().__init__()
         self._model = model
         self._blueprint = blueprint
     
@@ -76,7 +77,7 @@ class TokenCarrier(EntityCarrier[Token]):
         )
 
     def extract_blueprint(self) -> Optional[TokenBlueprint]:
-        if self.is_empty: return None
+        if self.no_active_toggles: return None
         if self.is_blueprint_operand: return self._blueprint
         return TokenBlueprint(
             id=self._model.id,
@@ -92,23 +93,7 @@ class TokenCarrier(EntityCarrier[Token]):
             "model": self._model,
             "blueprint": self._blueprint
         }
-    
-    @property
-    def is_empty(self) -> bool:
-        return len(self.to_dict) == 0
-    
-    @property
-    def is_full(self) -> bool:
-        return len(self.to_dict) == 1
-    
-    @property
-    def has_overflow(self) -> bool:
-        return len(self.to_dict) >= 2
-    
-    @property
-    def size(self) -> int:
-        return len(self.to_dict)
-    
+
     def __eq__(self, other):
         if other is self: return True
         if other is None: return False
