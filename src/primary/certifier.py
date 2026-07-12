@@ -12,7 +12,8 @@ from __future__ import annotations
 from abc import ABC, abstractmethod
 from typing import Generic, TypeVar
 
-from operand import EntityCarrier
+from bootstrapper import ToggleValidator
+from carrier import EntityCarrier
 from result import ValidationResult
 from toolkit import ModelToolkit
 from util import LoggingLevelRouter
@@ -27,19 +28,24 @@ class RootCertifier(ABC, Generic[T]):
         -   Integrity Assurance
 
     Responsibilities:
-        1.  Ensures a DtoOperand's data satisfies its model's type and integrity requirements.
+        1.  Ensures a DtoCarrier's data satisfies its model's type and integrity requirements.
 
     Attributes:
         toolkit: ModelToolkit[T]
 
     Provides:
-        -   execute( dto_operand: DtoOperand[T]) -> ValidationResult:
+        -   execute( carrier: DtoCarrier[T]) -> ValidationResult:
 
     Super Class:
     """
     _toolkit: ModelToolkit[T]
+    _toggle_validator: ToggleValidator
     
-    def __init__(self, toolkit: ModelToolkit[T]):
+    def __init__(
+            self,
+            toolkit: ModelToolkit[T],
+            toggle_validator: ToggleValidator | None = ToggleValidator(),
+    ):
         self._toolkit = toolkit
         
     @property
@@ -47,18 +53,22 @@ class RootCertifier(ABC, Generic[T]):
     def toolkit(self) -> ModelToolkit[T]:
         pass
     
+    @property
+    def toggle_validator(self) -> ToggleValidator:
+        return self._toggle_validator
+    
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def execute(self, dto_operand: EntityCarrier[T]) -> ValidationResult:
+    def execute(self, carrier: EntityCarrier[T]) -> ValidationResult:
         """
-            -   Certify a DtoOperand's data satisfies a model's integrity constraints.
+            -   Certify a DtoCarrier's data satisfies a model's integrity constraints.
 
         Action:
             1.  Implement validation tests here.
         Args:
-            dto_operand: DtoOperand[T]
+            carrier: DtoCarrier[T]
         Returns:
-            ValidationResult[DtoOperand[T]]
+            ValidationResult[DtoCarrier[T]]
         Raises:
         """
         pass

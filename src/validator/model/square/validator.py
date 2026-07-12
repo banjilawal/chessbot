@@ -65,8 +65,8 @@ class SquareValidator(ModelValidator[Square]):
         Action:
             1.  Send an exception chain in the ValidationResult any of the cases occur:
                     -   The candidate cannot get bootstrapped into a SquareDtoOperand.
-                    -   The dto_operand cannot is not certified as safe.
-            2.  Otherwise, extract the Square from the dto_operand then, send it in the
+                    -   The carrier cannot is not certified as safe.
+            2.  Otherwise, extract the Square from the carrier then, send it in the
                 success result.
         Args:
             candidate: Any
@@ -92,7 +92,7 @@ class SquareValidator(ModelValidator[Square]):
             )
         # Handle the case that, SquareDtoOperand is not certified as safe.
         certification = self.root_certifier.execute(
-            dto_operand=cast(
+            carrier=cast(
                 self.root_certifier.toolkit.operand_model,
                 bootstrap.payload,
             )
@@ -148,14 +148,14 @@ class SquareValidator(ModelValidator[Square]):
                     ex=bootstrap.exception,
                 )
             )
-        dto_operand = SquareCarrier(
+        carrier = SquareCarrier(
             model=cast(
                 self.root_certifier.toolkit.model,
                 bootstrap.payload,
             )
         )
         # --- Forward the work product to the caller. ---#
-        return ValidationResult.success(dto_operand)
+        return ValidationResult.success(carrier)
     
     @LoggingLevelRouter.monitor
     def _model_extractor(self, payload) -> Square:

@@ -30,4 +30,4 @@ from .team import *
 from .token import *
 
 # Modules
-from .exception import ExcessContextFlagsException
+from .exception import ExcessTogglesException

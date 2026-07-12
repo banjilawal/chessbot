@@ -28,4 +28,4 @@ from .team import *
 from .token import *
 
 # Modules
-from .exception import ZeroContextFlagsException
+from .exception import NoActiveTogglesException

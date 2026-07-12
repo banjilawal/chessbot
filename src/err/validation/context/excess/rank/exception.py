@@ -10,7 +10,7 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import ExcessContextFlagsException
+from err import ExcessTogglesException
 
 _all_ = [
     # ======================# EXCESS_RANK_CONTEXT_FLAGS_FAILURE #======================#
@@ -18,7 +18,7 @@ _all_ = [
 ]
 
 # ======================# EXCESS_RANK_CONTEXT_FLAGS_FAILURE #======================#
-class ExcessRankContextFlagsException(ExcessContextFlagsException):
+class ExcessRankTogglesException(ExcessTogglesException):
     """
     Role:
         -   Error Tracing

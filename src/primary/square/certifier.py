@@ -14,7 +14,7 @@ from typing import Any, cast
 from blueprint import SquareBlueprint
 from err import FormationNullException, SquareCertifierException, SquareCarrierNullException
 from model import Board, Coord, HomeSquare, Square
-from operand import SquareCarrier
+from carrier import SquareCarrier
 from primary import RootCertifier
 from result import ValidationResult
 from schema import Formation
@@ -77,12 +77,12 @@ class SquareRootCertifier(RootCertifier[SquareBlueprint]):
         """
         method = f"{self.__class__.__name__}.execute"
         
-        operand_validation = self.toolkit.priming_validator.execute(
+        carrier_validation = self.toolkit.priming_validator.execute(
             candidate=candidate,
             target_model=SquareCarrier,
             null_exception=SquareCarrierNullException()
         )
-        if operand_validation.is_failure:
+        if carrier_validation.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 SquareCertifierException(
@@ -90,11 +90,11 @@ class SquareRootCertifier(RootCertifier[SquareBlueprint]):
                     cls_name=self.__class__.__name__,
                     msg=SquareCertifierException.MSG,
                     err_code=SquareCertifierException.ERR_CODE,
-                    ex=operand_validation.exception,
+                    ex=carrier_validation.exception,
                 )
             )
-        operand = cast(SquareCarrier, operand_validation.payload)
-        if operand.is_empty:
+        carrier = cast(SquareCarrier, carrier_validation.payload)
+        if carrier.no_active_toggles:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 SquareCertifierException(
@@ -111,7 +111,7 @@ class SquareRootCertifier(RootCertifier[SquareBlueprint]):
                 )
             )
         # --- Cast the candidate into a TokenBlueprint for additional tests. ---#
-        blueprint = operand.extract_blueprint()
+        blueprint = carrier.extract_blueprint()
         
         # Handle the case that, any id in the blueprint is flagged.
         id_test = self.toolkit.identity_service.validate_blueprint_id(
@@ -171,7 +171,7 @@ class SquareRootCertifier(RootCertifier[SquareBlueprint]):
             )
 
         formation = None
-        if operand.is_home_square_operand:
+        if carrier.is_home_square_carrier:
             formation_test = self.toolkit.priming_validator.execute(
                 candidate=blueprint.formation,
                 target_model=Formation,
@@ -198,7 +198,7 @@ class SquareRootCertifier(RootCertifier[SquareBlueprint]):
         coord = cast(Coord, coord_test.payload)
         
         
-        if operand.is_home_square_operand:
+        if carrier.is_home_square_carrier:
             return ValidationResult.success(
                 HomeSquare(
                     id=id,
@@ -208,7 +208,7 @@ class SquareRootCertifier(RootCertifier[SquareBlueprint]):
                     formation=formation,
                 )
             )
-        if operand.is_model_operand:
+        if carrier.is_model_carrier:
             return ValidationResult.success(
                 Square(
                     id=id,

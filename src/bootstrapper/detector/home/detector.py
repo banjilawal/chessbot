@@ -14,8 +14,8 @@ from typing import Optional, cast
 from bootstrapper import DetectorBootstrapper
 from context import TokenHomeContext
 from err import (
-    ExcessContextFlagsException, HomeDetectorBootstrapperException, HomeSquareSearchResultEmptyException,
-    ZeroContextFlagsException
+    ExcessTogglesException, HomeDetectorBootstrapperException, HomeSquareSearchResultEmptyException,
+    NoActiveTogglesException
 )
 from microservice import IdentityService
 from model import Board, HomeSquare, SquareContext, Token
@@ -97,11 +97,11 @@ class HomeDetectorBootstrapper(DetectorBootstrapper):
                     cls_name=cls.__class__.__name__,
                     msg=HomeDetectorBootstrapperException.MSG,
                     err_code=HomeDetectorBootstrapperException.ERR_CODE,
-                    ex=ZeroContextFlagsException(
+                    ex=NoActiveTogglesException(
                         cls_mthd=method,
                         cls_name=cls.__name__,
-                        msg=ZeroContextFlagsException.MSG,
-                        err_code=ZeroContextFlagsException.ERR_CODE,
+                        msg=NoActiveTogglesException.MSG,
+                        err_code=NoActiveTogglesException.ERR_CODE,
                     ),
                 )
             )
@@ -114,11 +114,11 @@ class HomeDetectorBootstrapper(DetectorBootstrapper):
                     cls_name=cls.__class__.__name__,
                     msg=HomeDetectorBootstrapperException.MSG,
                     err_code=HomeDetectorBootstrapperException.ERR_CODE,
-                    ex=ExcessContextFlagsException(
+                    ex=ExcessTogglesException(
                         cls_mthd=method,
                         cls_name=cls.__name__,
-                        msg=ExcessContextFlagsException.MSG,
-                        err_code=ExcessContextFlagsException.ERR_CODE,
+                        msg=ExcessTogglesException.MSG,
+                        err_code=ExcessTogglesException.ERR_CODE,
                     ),
                 )
             )
@@ -131,11 +131,11 @@ class HomeDetectorBootstrapper(DetectorBootstrapper):
                     cls_name=cls.__class__.__name__,
                     msg=HomeDetectorBootstrapperException.MSG,
                     err_code=HomeDetectorBootstrapperException.ERR_CODE,
-                    ex=ExcessContextFlagsException(
+                    ex=ExcessTogglesException(
                         cls_mthd=method,
                         cls_name=cls.__name__,
-                        msg=ExcessContextFlagsException.MSG,
-                        err_code=ExcessContextFlagsException.ERR_CODE,
+                        msg=ExcessTogglesException.MSG,
+                        err_code=ExcessTogglesException.ERR_CODE,
                     ),
                 )
             )

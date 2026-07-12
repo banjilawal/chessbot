@@ -11,10 +11,10 @@ from __future__ import annotations
 
 from typing import Any, cast
 
+from carrier import TokenCarrier
 from consistency import TokenConsistencyChecker
 from err import TokenValidatorException
 from model import Token
-from operand import TokenCarrier
 from primary import TokenRootCertifier
 from result import ValidationResult
 from util import LoggingLevelRouter
@@ -66,8 +66,8 @@ class TokenValidator(ModelValidator[Token]):
         Action:
             1.  Send an exception chain in the ValidationResult any of the cases occur:
                     -   The candidate cannot get bootstrapped into a TokenDtoOperand.
-                    -   The dto_operand cannot is not certified as safe.
-            2.  Otherwise, extract the Token from the dto_operand then, send it in the
+                    -   The carrier cannot is not certified as safe.
+            2.  Otherwise, extract the Token from the carrier then, send it in the
                 success result.
         Args:
             candidate: Any
@@ -93,7 +93,7 @@ class TokenValidator(ModelValidator[Token]):
             )
         # Handle the case that, TokenDtoOperand is not certified as safe.
         certification = self.root_certifier.execute(
-            dto_operand=cast(
+            carrier=cast(
                 self.root_certifier.toolkit.operand_model,
                 bootstrap.payload,
             )
@@ -149,14 +149,14 @@ class TokenValidator(ModelValidator[Token]):
                     ex=bootstrap.exception,
                 )
             )
-        dto_operand = TokenCarrier(
+        carrier = TokenCarrier(
             model=cast(
                 self.root_certifier.toolkit.model,
                 bootstrap.payload,
             )
         )
         # --- Forward the work product to the caller. ---#
-        return ValidationResult.success(dto_operand)
+        return ValidationResult.success(carrier)
     
     @LoggingLevelRouter.monitor
     def _model_extractor(self, payload) -> Token:

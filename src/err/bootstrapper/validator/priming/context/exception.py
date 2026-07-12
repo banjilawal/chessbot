@@ -15,11 +15,11 @@ from result import MethodResultType
 
 __all__ = [
     # ======================# PRIMING_CONTEXT_VALIDATOR_FAILURE #======================#
-    "PrimingContextValidatorException",
+    "ToggleValidatorException",
 ]
 
 # ======================# PRIMING_CONTEXT_VALIDATOR_FAILURE #======================#
-class PrimingContextValidatorException(ValidatorBootstrapperException):
+class ToggleValidatorException(ValidatorBootstrapperException):
     """
     Role:
         -   Error Tracing

@@ -13,8 +13,8 @@ from typing import Optional
 
 from blueprint import TokenBlueprint
 from err import (
-    ExcessTeamContextFlagsException, TokenBlueprintNullException, TokenCollisionBootstrapperException,
-    TokenStackNullException, ZeroTokenContextFlagsException
+    ExcessTeamTogglesException, TokenBlueprintNullException, TokenCollisionBootstrapperException,
+    TokenStackNullException, NoActiveTogglesException
 )
 from microservice import IdentityService
 from model import Token
@@ -100,9 +100,9 @@ class TokenCollisionBootstrapper:
                     cls_name=cls.__name__,
                     msg=TokenCollisionBootstrapperException.MSG,
                     err_code=TokenCollisionBootstrapperException.ERR_CODE,
-                    ex=ZeroTokenContextFlagsException(
-                        msg=ZeroTokenContextFlagsException.MSG,
-                        err_code=ZeroTokenContextFlagsException.ERR_CODE,
+                    ex=NoActiveTogglesException(
+                        msg=NoActiveTogglesException.MSG,
+                        err_code=NoActiveTogglesException.ERR_CODE,
                     )
                 )
             )
@@ -115,9 +115,9 @@ class TokenCollisionBootstrapper:
                     cls_name=cls.__name__,
                     msg=TokenCollisionBootstrapperException.MSG,
                     err_code=TokenCollisionBootstrapperException.ERR_CODE,
-                    ex=ExcessTeamContextFlagsException(
-                        msg=ExcessTeamContextFlagsException.MSG,
-                        err_code=ExcessTeamContextFlagsException.ERR_CODE,
+                    ex=ExcessTeamTogglesException(
+                        msg=ExcessTeamTogglesException.MSG,
+                        err_code=ExcessTeamTogglesException.ERR_CODE,
                     )
                 )
             )

@@ -12,10 +12,10 @@ from __future__ import annotations
 from typing import Any, Type, cast
 
 from blueprint import TokenBlueprint
+from carrier import TokenCarrier
 from context import TokenHomeContext
 from err import FormationNullException, TokenCertifierException, TokenCarrierNullException
 from model import HomeSquare, Team, Token
-from operand import TokenCarrier
 from primary import RootCertifier
 from result import ValidationResult
 from schema import Formation
@@ -57,33 +57,33 @@ class TokenRootCertifier(RootCertifier[Token]):
     
     
     @LoggingLevelRouter.monitor
-    def execute(self, dto_operand: TokenCarrier) -> ValidationResult:
+    def execute(self, carrier: TokenCarrier) -> ValidationResult:
         """
         Certify a candidate is a TokenBlueprint that is safe to use.
 
         Action:
             1.  Send an exception chain in the ValidationResult if any of the following
                 occur
-                    -   The candidate is not a TokenDtoOperand.
-                    -   The candidate is an empty TokenDtoOperand.
+                    -   The candidate is not a TokenDtoCarrier.
+                    -   The candidate is an empty TokenDtoCarrier.
                     -   Either the board, team, formation, rank or id get flagged unsafe.
-            2.  For a model_operand send a Token in the success result. Otherwise, send a TokeBlueprint.
+            2.  For a model_carrier send a Token in the success result. Otherwise, send a TokeBlueprint.
         Args:
-            dto_operand: TokenDtoOperand
+            carrier: TokenDtoCarrier
         Returns:
             ValidationResult
         Raises:
             TokenCertifierException
-            TokenDtoOperandNullException
+            TokenDtoCarrierNullException
         """
         method = f"{self.__class__.__name__}.execute"
         
-        operand_validation = self.toolkit.priming_validator.execute(
-            candidate=dto_operand,
-            target_model=TokenCarrier,
-            null_exception=TokenCarrierNullException()
+        carrier_validation = self.toggle_validator.execute(
+            candidate=carrier,
+            target_model=self.toolkit.carrier_model,
+            null_exception=self.toolkit.carrier_null_exception,
         )
-        if operand_validation.is_failure:
+        if carrier_validation.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 TokenCertifierException(
@@ -91,33 +91,18 @@ class TokenRootCertifier(RootCertifier[Token]):
                     cls_name=self.__class__.__name__,
                     msg=TokenCertifierException.MSG,
                     err_code=TokenCertifierException.ERR_CODE,
-                    ex=operand_validation.exception,
+                    ex=carrier_validation.exception,
                 )
             )
-        operand = cast(TokenCarrier, operand_validation.payload)
-        if operand.is_empty:
-            # Send the exception chain on failure.
-            return ValidationResult.failure(
-                TokenCertifierException(
-                    cls_mthd=method,
-                    cls_name=self.__class__.__name__,
-                    msg=TokenCertifierException.MSG,
-                    err_code=TokenCertifierException.ERR_CODE,
-                    ex=TokenCarrierNullException(
-                        cls_mthd=method,
-                        cls_name=self.__class__.__name__,
-                        msg=TokenCarrierNullException.MSG,
-                        err_code=TokenCarrierNullException.ERR_CODE,
-                    ),
-                )
-            )
+        carrier = cast(TokenCarrier, carrier_validation.payload)
+
         # --- Cast the candidate into a TokenBlueprint for additional tests. ---#
-        blueprint = operand.extract_blueprint()
+        blueprint = carrier.extract_blueprint()
         
         # Handle the case that, any id in the blueprint is flagged.
         id_test = self.toolkit.identity_service.validate_blueprint_id(
             owner_blueprint=blueprint,
-            owner_name=blueprint.owner_name,
+            owner_name=blueprint.model_class_name,
         )
         if id_test.is_failure:
         # Send the exception chain on failure.
@@ -201,9 +186,9 @@ class TokenRootCertifier(RootCertifier[Token]):
         team = cast(Team, team_test.payload)
         formation = cast(Formation, formation_test.payload)
         home_square = cast(HomeSquare, home_detection.payload)
-        rank = cast(blueprint.formation.persona.rank, rank_test.payload)
+        rank = cast(type(rank_test.payload), rank_test.payload)
         
-        if operand.is_model_operand:
+        if carrier.is_model_operand:
             return ValidationResult.success(
                 TokenCarrier(
                     model=Token(

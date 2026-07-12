@@ -11,8 +11,7 @@ from __future__ import annotations
 from typing import Any, Type, cast
 from typing_extensions import TypeVar
 
-from bootstrapper import PrimingValidator
-from err import NullException, PrimingContextValidatorException
+from err import ExcessTogglesException, NullException, ToggleValidatorException, NoActiveTogglesException
 from result import ValidationResult
 from util import LoggingLevelRouter
 
@@ -28,121 +27,111 @@ class ToggleValidator:
         -   Process Runner
 
     Responsibilities:
-        1.  Run checks for
-                -   existence
-                -   type
-                -   Flag count
-            checks which are common to all Context validation candidates.
+        1.  Verify the candidate meets basic requirements of a Toggle class.
 
     Attributes:
 
     Provides:
-        -   def validate(
-                    model: Context,
-                    exception: ContextNullException,
-                    validator_primer: ValidatorPrimer,
+        -   execute(
+                    candidate: Any,
+                    toggle_model: Type[T],
+                    null_exception: NullException,
             ) -> ValidationResult:
 
     Super Class:
     """
-    _priming_validator: PrimingValidator
-    
-    def __init__(
-            self,
-            priming_validator: PrimingValidator = PrimingValidator(),
-    ):
-        """
-        Args:
-            priming_validator: PrimingValidator
-        """
-        self._priming_validator = priming_validator
         
         
     @LoggingLevelRouter.monitor
     def execute(
             self,
             candidate: Any,
-            target_model: Type[T],
+            toggle_model: Type[T],
             null_exception: NullException,
-            max_flags: int | None = 1,
     ) -> ValidationResult:
         """
-        Run tests that are common to Context subclasses
+        Perform integrity tests common to all Toggle objects.
 
         Action:
             1.  Send an exception chain in the ValidationResult if any of the following
                 occur
-                    -   A validator_primer test fails.
-                    -   Exactly one attribute is not enabled.
+                    -   The candidate is null.
+                    -   The candidate is not an instance of the toggle_model.
+                    _   It has no active toggles.
+                    _   It has excess toggles.
             2.  Otherwise, send the success result.
         Args:
             candidate: Any
-            max_flags: int
-            context_model: Context
-            null_exception: ContextNullException
-            priming_validator: PrimingValidator
+            toggle_model: Type[T]
+            null_exception: NullException
         Returns:
             ValidationResult
         Raises:
-            PrimingContextValidatorException
-            ZeroContextFlagsException
-            ExcessContextFlagsException
+            ToggleValidatorException
+            NoActiveTogglesException
+            ExcessTogglesException
+            TypeError
         """
         method = f"{self.__class__.__name__}.execute"
         
-        # Handle the case that, the validator is not primed.
-        priming = self._priming_validator.execute(
-            candidate=candidate,
-            target_model=target_model,
-            null_exception=null_exception,
-        )
-        if priming.is_failure:
+        if candidate is None:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                PrimingContextValidatorException(
+                ToggleValidatorException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=PrimingContextValidatorException.MSG,
-                    err_code=PrimingContextValidatorException.ERR_CODE,
-                    ex=priming.exception,
+                    msg=ToggleValidatorException.MSG,
+                    err_code=ToggleValidatorException.ERR_CODE,
+                    ex=null_exception,
+                )
+            )
+        if not isinstance(candidate, toggle_model):
+            # Send the exception chain on failure.
+            return ValidationResult.failure(
+                ToggleValidatorException(
+                    cls_mthd=method,
+                    cls_name=self.__class__.__name__,
+                    msg=ToggleValidatorException.MSG,
+                    err_code=ToggleValidatorException.ERR_CODE,
+                    ex=TypeError(
+                        f"Expected {type(toggle_model).__name__}. Got "
+                        f"{type(candidate).__name__} instead."
+                    ),
                 )
             )
         # --- Cast the candidate into the expected Context subclass for additional tests. ---#
-        context = cast(context_model, candidate)
+        toggle = cast(toggle_model, candidate)
 
         # Handle the case of searching with no attribute-value provided.
-        flag_count = len(context.to_dict())
-        if flag_count == 0:
+        if toggle.no_active_toggles:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                PrimingContextValidatorException(
+                ToggleValidatorException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=PrimingContextValidatorException.MSG,
-                    err_code=PrimingContextValidatorException.ERR_CODE,
-                    ex=ZeroContextFlagsException(
-                        msg=f"{context_model.__class__.__name__} does not have any flags enabled.",
-                        err_code=ZeroContextFlagsException.ERR_CODE,
-                        var=context_model.__class__.__name__
+                    msg=ToggleValidatorException.MSG,
+                    err_code=ToggleValidatorException.ERR_CODE,
+                    ex=NoActiveTogglesException(
+                        msg=NoActiveTogglesException.MSG,
+                        err_code=NoActiveTogglesException.ERR_CODE,
                     ),
                 )
             )
         # Handle the case of too many attributes being used in a search.
-        if flag_count > max_flags:
+        if toggle.excess_toggles:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                PrimingContextValidatorException(
+                ToggleValidatorException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=PrimingContextValidatorException.MSG,
-                    err_code=PrimingContextValidatorException.ERR_CODE,
-                    ex=ExcessContextFlagsException(
-                        msg=f"{context_model.__class__.__name__} has more than one flag enabled.",
-                        err_code=ExcessContextFlagsException.ERR_CODE,
-                        var=context_model.__class__.__name__
+                    msg=ToggleValidatorException.MSG,
+                    err_code=ToggleValidatorException.ERR_CODE,
+                    ex=ExcessTogglesException(
+                        msg=ExcessTogglesException.MSG,
+                        err_code=ExcessTogglesException.ERR_CODE,
                     ),
                 )
             )
         # --- Forward the work product to the caller. ---#
-        return ValidationResult.success(context)
+        return ValidationResult.success(toggle)
     

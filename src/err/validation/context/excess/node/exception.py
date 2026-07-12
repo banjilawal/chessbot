@@ -10,7 +10,7 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import ExcessContextFlagsException
+from err import ExcessTogglesException
 
 _all_ = [
     # ======================# EXCESS_NODE_CONTEXT_FLAGS_FAILURE #======================#
@@ -18,7 +18,7 @@ _all_ = [
 ]
 
 # ======================# EXCESS_NODE_CONTEXT_FLAGS_FAILURE #======================#
-class ExcessNodeContextFlagsException(ExcessContextFlagsException):
+class ExcessNodeTogglesException(ExcessTogglesException):
     """
     Role:
         -   Error Tracing

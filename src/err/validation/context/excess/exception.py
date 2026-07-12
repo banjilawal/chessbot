@@ -18,7 +18,7 @@ _all_ = [
 ]
 
 # ======================# EXCESS_CONTEXT_FLAGS_FAILURE #======================#
-class ExcessContextFlagsException(ContextException):
+class ExcessTogglesException(ContextException):
     """
     Role:
         -   Error Tracing

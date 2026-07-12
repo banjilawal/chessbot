@@ -1,7 +1,7 @@
-# src/certifier/register/operand/validator.py
+# src/certifier/register/carrier/validator.py
 
 """
-Module: certifier.register.operand.validator
+Module: certifier.register.carrier.validator
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

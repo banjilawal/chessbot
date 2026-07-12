@@ -10,7 +10,7 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import ZeroContextFlagsException
+from err import NoActiveTogglesException
 
 _all_ = [
     # ======================# ZERO_TEAM_CONTEXT_FLAGS_EXCEPTION #======================#
@@ -18,7 +18,7 @@ _all_ = [
 ]
 
 # ======================# ZERO_TEAM_CONTEXT_FLAGS_EXCEPTION #======================#
-class ZeroTeamContextFlagsException(ZeroContextFlagsException):
+class NoActiveTogglesException(NoActiveTogglesException):
     """
     Role:
         -   Error Tracing

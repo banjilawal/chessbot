@@ -18,7 +18,7 @@ _all_ = [
 ]
 
 # ======================# ZERO_CONTEXT_FLAGS_FAILURE #======================#
-class ZeroContextFlagsException(ContextException):
+class NoActiveTogglesException(ContextException):
     """
     Role:
         -   Error Tracing
