@@ -15,6 +15,7 @@ from .array import *
 from .bidirectional import *
 from .bootstrapper import *
 from .build import *
+from .carrier import *
 from .collider import *
 from .config import *
 from .consistencey import *

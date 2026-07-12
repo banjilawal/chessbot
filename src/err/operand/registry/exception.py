@@ -10,17 +10,17 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import EntityOperandException
+from err import OperandException
 from result import MethodResultType
 
 
 __all__ = [
     # ======================# REGISTRY_OPERAND_ERROR #======================#
-    "RegistryEntityOperandException",
+    "RegistryOperandException",
 ]
 
 # ======================# REGISTRY_OPERAND_ERROR #======================#
-class RegistryEntityOperandException(EntityOperandException):
+class RegistryOperandException(OperandException):
     """
     Role:
         -   Error Tracing
