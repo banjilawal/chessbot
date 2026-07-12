@@ -39,8 +39,6 @@ class TokenCarrierValidator(CarrierValidator[TokenCarrier]):
     Super Class:
         ModelValidator
     """
-    _toolkit: TokenToolkit
-    _bootstrapper: TokenRootCertifier
     
     def __init__(
             self,
@@ -51,9 +49,13 @@ class TokenCarrierValidator(CarrierValidator[TokenCarrier]):
         Args:
             root_certifier: TokenRootCertifier
         """
-        super().__init__(root_certifier=root_certifier)
+        super().__init__(toolkit=toolkit, root_certifier=root_certifier)
 
+    @property
+    def toolkit(self) -> TokenToolkit:
+        return cast(TokenToolkit, self.toolkit)
     
+    @property
     def root_certifier(self) -> TokenRootCertifier:
         return cast(TokenRootCertifier, self.root_certifier)
     
@@ -63,7 +65,11 @@ class TokenCarrierValidator(CarrierValidator[TokenCarrier]):
     def execute(self, candidate: Any) -> ValidationResult:
         method = f"{self.__class__.__name__}.execute"
         
-        priming = self._toolkit.priming_validator.execute(candidate)
+        priming = self.toolkit.priming_validator.execute(
+            candiate=candidate,
+            target_model=self.toolkit.carrier_model,
+            null_exception=self.toolkit.
+        )
         if priming.is_failure:
         
     

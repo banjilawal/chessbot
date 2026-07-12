@@ -12,7 +12,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Generic, Optional, TypeVar
 
-from bootstrapper import PrimingContextValidator
+from bootstrapper import ToggleValidator
 from context import Context
 from err import ContextNullException
 from toolkit import Toolkit
@@ -49,4 +49,4 @@ class ContextToolkit(Toolkit, Generic[T]):
     context_model: Context[T]
     context_null_exception: ContextNullException
     model_toolkit: Optional[Toolkit[T]] | None = None
-    context_priming_validator: PrimingContextValidator = PrimingContextValidator()
+    context_priming_validator: ToggleValidator = ToggleValidator()

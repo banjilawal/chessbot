@@ -16,12 +16,13 @@ from xml.dom.minidom import Entity
 from carrier import EntityCarrier
 from primary import RootCertifier
 from result import ValidationResult
+from toolkit import ModelToolkit, Toolkit
 from validator import Validator
 
 T = TypeVar("T", bound="Model")
 
 
-class CarrierValidator(Validator, Generic[Entity[T]]):
+class CarrierValidator(Validator, Generic[EntityCarrier[T]]):
     """
     Role
         -   Transaction Worker
@@ -41,15 +42,24 @@ class CarrierValidator(Validator, Generic[Entity[T]]):
     Super Class:
         ModelValidator
     """
-    _bootstrapper: RootCertifier[T]
+    _root_certifier: RootCertifier[T]
+    _toolkit: ModelToolkit[T]
     
-    def __init__(self, root_certifier: RootCertifier[T]):
-        self._bootstrapper = root_certifier
+    def __init__(
+            self, 
+            toolkit: ModelToolkit[T],
+            root_certifier: RootCertifier[T],
+    ):
+        self._toolkit = toolkit
+        self._root_certifier = root_certifier
+        
+    @property
+    def toolkit(self) -> ModelToolkit[T]:
+        return self._toolkit
 
     @property
-    @abstractmethod
     def root_certifier(self) -> RootCertifier[T]:
-        pass
+        return self._root_certifier
     
     @abstractmethod
     def execute(self, candidate: Any) -> ValidationResult:

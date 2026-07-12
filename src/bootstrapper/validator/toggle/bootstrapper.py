@@ -1,30 +1,29 @@
-# src/bootstrapper/validator/context/priming/bootstrapper.py
+# src/bootstrapper/validator/toggle/bootstrapper.py
 
 """
-Module: bootstrapper.validator.context.priming.bootstrapper
+Module: bootstrapper.validator.toggle.bootstrapper
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
 """
 
 from __future__ import annotations
-from typing import Any, cast
+from typing import Any, Type, cast
+from typing_extensions import TypeVar
 
-from bootstrapper import PrimingValidator, ValidatorBootstrapper
-from context import Context
-from err import (
-    ContextNullException, ExcessContextFlagsException, PrimingContextValidatorException,
-    ZeroContextFlagsException
-)
+from bootstrapper import PrimingValidator
+from err import NullException, PrimingContextValidatorException
 from result import ValidationResult
 from util import LoggingLevelRouter
 
+T = TypeVar("T", bound="Context")
 
-class PrimingContextValidator(ValidatorBootstrapper[Context]):
+
+class ToggleValidator:
     """
     Role
         -   Transaction Worker
-        -   Integrity Maintenance
+        -   Toggle Maintenance
         -   Consistency Assurance
         -   Process Runner
 
@@ -45,17 +44,27 @@ class PrimingContextValidator(ValidatorBootstrapper[Context]):
             ) -> ValidationResult:
 
     Super Class:
-        ContextValidator
     """
-    @classmethod
+    _priming_validator: PrimingValidator
+    
+    def __init__(
+            self,
+            priming_validator: PrimingValidator = PrimingValidator(),
+    ):
+        """
+        Args:
+            priming_validator: PrimingValidator
+        """
+        self._priming_validator = priming_validator
+        
+        
     @LoggingLevelRouter.monitor
     def execute(
-            cls,
+            self,
             candidate: Any,
-            context_model: Context,
+            target_model: Type[T],
+            null_exception: NullException,
             max_flags: int | None = 1,
-            null_exception: ContextNullException | None = None,
-            priming_validator: PrimingValidator | None = None,
     ) -> ValidationResult:
         """
         Run tests that are common to Context subclasses
@@ -79,29 +88,24 @@ class PrimingContextValidator(ValidatorBootstrapper[Context]):
             ZeroContextFlagsException
             ExcessContextFlagsException
         """
-        method = f"{cls.__name__}.validate"
+        method = f"{self.__class__.__name__}.execute"
         
-        # --- Supply any missing dependencies. ---#
-        if null_exception is None:
-            null_exception = ContextNullException()
-        if priming_validator is None:
-            priming_validator = PrimingValidator()
         
         # Handle the case that, the validator is not primed.
-        validator_priming_result = priming_validator.execute(
+        priming = self._priming_validator.execute(
             candidate=candidate,
-            target_model=context_model,
+            target_model=target_model,
             null_exception=null_exception,
         )
-        if validator_priming_result.is_failure:
+        if priming.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 PrimingContextValidatorException(
                     cls_mthd=method,
-                    cls_name=cls.__name__,
+                    cls_name=self.__class__.__name__,
                     msg=PrimingContextValidatorException.MSG,
                     err_code=PrimingContextValidatorException.ERR_CODE,
-                    ex=validator_priming_result.exception,
+                    ex=priming.exception,
                 )
             )
         # --- Cast the candidate into the expected Context subclass for additional tests. ---#
@@ -114,7 +118,7 @@ class PrimingContextValidator(ValidatorBootstrapper[Context]):
             return ValidationResult.failure(
                 PrimingContextValidatorException(
                     cls_mthd=method,
-                    cls_name=cls.__name__,
+                    cls_name=self.__class__.__name__,
                     msg=PrimingContextValidatorException.MSG,
                     err_code=PrimingContextValidatorException.ERR_CODE,
                     ex=ZeroContextFlagsException(
@@ -130,7 +134,7 @@ class PrimingContextValidator(ValidatorBootstrapper[Context]):
             return ValidationResult.failure(
                 PrimingContextValidatorException(
                     cls_mthd=method,
-                    cls_name=cls.__name__,
+                    cls_name=self.__class__.__name__,
                     msg=PrimingContextValidatorException.MSG,
                     err_code=PrimingContextValidatorException.ERR_CODE,
                     ex=ExcessContextFlagsException(

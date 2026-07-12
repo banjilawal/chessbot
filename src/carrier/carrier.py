@@ -12,11 +12,11 @@ from abc import abstractmethod
 from typing import Generic, Optional, TypeVar
 
 from blueprint import Blueprint
-from operand import Operand
+from toggle import Toggle
 
 T = TypeVar("T")
 
-class EntityCarrier(Operand, Generic[T]):
+class EntityCarrier(Toggle, Generic[T]):
     """
     Role:
         -   ENTITY

@@ -9,14 +9,15 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from dataclasses import dataclass
 from typing import Generic, Optional, TypeVar
-from abc import ABC, abstractmethod
+from abc import abstractmethod
+
+from toggle import Toggle
 
 T = TypeVar("T")
 
-@dataclass
-class Context(ABC, Generic[T]):
+
+class Context(Toggle, Generic[T]):
     """
     Role:
         -   Selection
