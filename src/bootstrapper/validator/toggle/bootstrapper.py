@@ -16,7 +16,7 @@ from err import NullException, PrimingContextValidatorException
 from result import ValidationResult
 from util import LoggingLevelRouter
 
-T = TypeVar("T", bound="Context")
+T = TypeVar("T", bound="Toggle")
 
 
 class ToggleValidator:
@@ -89,7 +89,6 @@ class ToggleValidator:
             ExcessContextFlagsException
         """
         method = f"{self.__class__.__name__}.execute"
-        
         
         # Handle the case that, the validator is not primed.
         priming = self._priming_validator.execute(
