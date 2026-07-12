@@ -1,4 +1,4 @@
-# src/err/null/stack/arena/exception.py
+# src/err/null/model/stack/arena/exception.py
 
 """
 Module: err.null.stack.arena.exception

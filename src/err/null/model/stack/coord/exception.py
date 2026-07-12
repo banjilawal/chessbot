@@ -1,4 +1,4 @@
-# src/err/null/stack/coord/exception.py
+# src/err/null/model/stack/coord/exception.py
 
 """
 Module: err.null.stack.coord.exception

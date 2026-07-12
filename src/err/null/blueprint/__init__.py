@@ -14,18 +14,15 @@ from .arena import *
 from .board import *
 from .coord import *
 from .edge import *
-from .formation import *
 from .game import *
-from .hostage import *
 from .node import *
-from .persona import *
 from .player import *
 from .rank import *
 from .register import *
-from .schema import *
 from .square import *
 from .team import *
 from .token import *
+from .vector import *
 
 # Modules
 from .exception import BlueprintNullException

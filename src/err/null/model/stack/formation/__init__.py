@@ -1,4 +1,4 @@
-# src/err/null/blueprint/formation/__init__.py
+# src/err/null/model/blueprint/formation/__init__.py
 
 """
 Module: err.null.formation.__init__

@@ -1,7 +1,7 @@
-# src/err/null/token/exception.py
+# src/err/null/model/state/token/exception.py
 
 """
-Module: err.null.token.exception
+Module: err.null.model.state.token.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1

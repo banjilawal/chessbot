@@ -13,11 +13,11 @@ from dataclasses import dataclass
 
 from err import PathNullException
 from model import Path
-from toolkit import ModelToolkit
+from toolkit import StateModelToolkit
 from validator import SquareValidator
 
 @dataclass
-class PathToolkit(ModelToolkit):
+class PathToolkit(StateModelToolkit):
     """
     Role:
         -   Container

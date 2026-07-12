@@ -1,4 +1,4 @@
-# src/toolkit/model/stae/__init__.py
+# src/toolkit/model/state/__init__.py
 
 """
 Module: toolkit.model.state.__init__
@@ -13,22 +13,17 @@ version: 1.0.1
 from .arena import *
 from .binder import *
 from .board import *
-from .coord import *
 from .path import *
 from .edge import *
 from .game import *
-from .hostage import *
-from .itinerary import *
 from .maneuver import *
 from .node import *
-from .number import *
 from .path import *
 from .rank import *
 from .scalar import *
 from .square import *
 from .team import *
 from .token import *
-from .vector import *
 
 # Modules
 from .toolkit import StateModelToolkit

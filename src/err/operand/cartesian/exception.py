@@ -19,7 +19,6 @@ __all__ = [
     "CartesianOperandException",
 ]
 
-
 # ======================# CARTESIAN_OPERAND_ERROR #======================#
 class CartesianOperandException(OperandException):
     """

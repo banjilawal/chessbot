@@ -1,4 +1,4 @@
-# src/err/null/blueprint/persona/exception.py
+# src/err/null/model/blueprint/persona/exception.py
 
 """
 Module: err.null.persona.exception

@@ -1,4 +1,4 @@
-# src/err/null/stack/team/__init__.py
+# src/err/null/model/stack/team/__init__.py
 
 """
 Module: err.null.stack.team.__init__

@@ -1,4 +1,4 @@
-# src/err/null/blueprint/schema/__init__.py
+# src/err/null/model/blueprint/schema/__init__.py
 
 """
 Module: err.null.schema.__init__

@@ -11,10 +11,10 @@ from __future__ import annotations
 
 from microservice import ArenaService, IdentityService, SchemaService, PlayerService
 from model import ArenaBinder
-from toolkit import ModelToolkit
+from toolkit import StateModelToolkit
 
 
-class ArenaPlayerBinderToolkit(ModelToolkit[ArenaBinder]):
+class ArenaPlayerBinderToolkit(StateModelToolkit[ArenaBinder]):
     """
     Role:
         -   Container

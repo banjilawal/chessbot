@@ -13,17 +13,17 @@ from dataclasses import dataclass
 from typing import Type
 
 from blueprint import TokenBlueprint
+from carrier import TokenCarrier
 from detector import TokenHomeDetector
 from err import TokenBlueprintNullException, TokenCarrierNullException, TokenNullException
 from model import Token
-from operand import TokenCarrier
 from tester import BlueprintHomeSquareExtractor, BlueprintRankExtractor
-from toolkit import ModelToolkit
+from toolkit import StateModelToolkit
 from validator import TeamValidator
 
 
 @dataclass
-class TokenToolkit(ModelToolkit[Token]):
+class TokenToolkit(StateModelToolkit[Token]):
     """
     Role:
         -   Dependency Container
@@ -35,13 +35,18 @@ class TokenToolkit(ModelToolkit[Token]):
         3.  Simplifies entry points.
 
     Attributes:
-        model: Token
-        blueprint_model: TokenBlueprint
-        identity_service: IdentityService
-        priming_validator: PrimingValidator
-        blueprint_id_validator: BlueprintIdValidator
+        model: Type[Token]
+        carrier_model: Type[TokenCarrier]
+        blueprint_model: Type[TokenBlueprint]
+        
         null_exception: TokenNullException
+        carrier_null_exception: TokenCarrierNullException
         blueprint_null_exception: TokenBlueprintNullException
+        
+        team_validator: TeamValidator
+        home_detector: TokenHomeDetector
+        rank_extractor: BlueprintRankExtractor
+        home_square_extractor: BlueprintHomeSquareExtractor
 
     Provides:
 
@@ -49,14 +54,14 @@ class TokenToolkit(ModelToolkit[Token]):
        ModelToolkit
     """
     model: Type[Token] = Token
-    blueprint_model: Type[TokenBlueprint] = TokenBlueprint
     carrier_model: Type[TokenCarrier] = TokenCarrier
+    blueprint_model: Type[TokenBlueprint] = TokenBlueprint
     
     null_exception: TokenNullException = TokenNullException()
+    carrier_null_exception: TokenCarrierNullException = TokenCarrierNullException()
     blueprint_null_exception: TokenBlueprintNullException = TokenBlueprintNullException()
-    carrier_null_exception: TokenCarrierNullException =TokenCarrierNullException()
     
-    home_detector: TokenHomeDetector = TokenHomeDetector()
     team_validator: TeamValidator = TeamValidator()
-    blueprint_rank_extractor: BlueprintRankExtractor = BlueprintRankExtractor()
-    blueprint_home_square_extractor: BlueprintHomeSquareExtractor = BlueprintHomeSquareExtractor()
+    home_detector: TokenHomeDetector = TokenHomeDetector()
+    rank_extractor: BlueprintRankExtractor = BlueprintRankExtractor()
+    home_square_extractor: BlueprintHomeSquareExtractor = BlueprintHomeSquareExtractor()

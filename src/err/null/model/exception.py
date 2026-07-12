@@ -1,4 +1,4 @@
-# src/err/null/model/exception.py
+# src/err/null/model/model/exception.py
 
 """
 Module: err.null.model.exception

@@ -1,4 +1,4 @@
-# src/err/null/stack/snapshot/exception.py
+# src/err/null/model/stack/snapshot/exception.py
 
 """
 Module: err.null.stack.snapshot.exception

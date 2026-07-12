@@ -1,4 +1,4 @@
-# src/err/null/stack/snapshot/__init__.py
+# src/err/null/model/stack/snapshot/__init__.py
 
 """
 Module: err.null.stack.snapshot.__init__

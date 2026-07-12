@@ -1,4 +1,4 @@
-# src/err/null/stack/edge/__init__.py
+# src/err/null/model/stack/edge/__init__.py
 
 """
 Module: err.null.stack.edge.__init__

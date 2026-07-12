@@ -12,12 +12,12 @@ from __future__ import annotations
 from dataclasses import dataclass
 
 from model import Scalar
-from toolkit import ModelToolkit
+from toolkit import StateModelToolkit
 from validator import NumberValidator
 
 
 @dataclass
-class ScalarToolkit(ModelToolkit[Scalar]):
+class ScalarToolkit(StateModelToolkit[Scalar]):
     """
     Role:
         -   Container

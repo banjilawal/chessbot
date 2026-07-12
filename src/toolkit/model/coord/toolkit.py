@@ -10,15 +10,18 @@ version: 1.0.1
 from __future__ import annotations
 
 from dataclasses import dataclass
+from typing import Type
 
-from err import CoordNullException
+from blueprint import CoordBlueprint
+from carrier import CoordCarrier
+from err import CoordBlueprintNullException, CoordCarrierNullException, CoordNullException
 from model import Coord
 from toolkit import ModelToolkit
 from validator import NumberValidator
 
 
 @dataclass
-class CoordToolkit(ModelToolkit):
+class CoordToolkit(ModelToolkit[Coord]):
     """
     Role:
         -   Container
@@ -29,18 +32,29 @@ class CoordToolkit(ModelToolkit):
         3.  No logic in the Toolkit.
 
     Attributes:
-        number_validator: NumberValidator
+        model: Type[Coord]
+        carrier_model: Type[CoordCarrier]
+        blueprint_model: Type[CoordBlueprint]
+        
         null_exception: CoordNullException
-        model: Coord = Coord
+        carrier_null_exception: CoordCarrierNullException
+        blueprint_null_exception: CoordBlueprintNullException
+    
+        number_validator: NumberValidator
 
     Provides:
 
     Super Class:
        ModelToolkit
     """
-    number_validator: NumberValidator = NumberValidator()
+    model: Type[Coord] = Coord
+    carrier_model: Type[CoordCarrier] = CoordCarrier
+    blueprint_model: Type[CoordBlueprint] = CoordBlueprint
+    
     null_exception: CoordNullException = CoordNullException()
-    model: Coord = Coord
+    carrier_null_exception: CoordCarrierNullException = CoordCarrierNullException()
+    blueprint_null_exception: CoordBlueprintNullException = CoordBlueprintNullException()
 
+    number_validator: NumberValidator = NumberValidator()
 
     

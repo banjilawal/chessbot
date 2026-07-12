@@ -1,4 +1,4 @@
-# src/err/null/stack/game/__init__.py
+# src/err/null/model/stack/game/__init__.py
 
 """
 Module: err.null.stack.game.__init__

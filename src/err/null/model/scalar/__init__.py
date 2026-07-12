@@ -1,4 +1,4 @@
-# src/err/null/scalar/__init__.py
+# src/err/null/model/scalar/__init__.py
 
 """
 Module: err.null.scalar.__init__

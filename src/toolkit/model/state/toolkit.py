@@ -9,14 +9,17 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from err import NullException
-from model import StateModel
+from typing import Generic, Type, TypeVar
+
+from blueprint import Blueprint
+from carrier import EntityCarrier
+from err import BlueprintNullException, EntityCarrierNullException, StateModelNullException
 from toolkit import ModelToolkit
 
+T = TypeVar("T", bound="StateModel")
 
 
-
-class StateModelToolkit(ModelToolkit[StateModel]):
+class StateModelToolkit(ModelToolkit, Generic[T]):
     """
     Role:
         -   Dependency Container
@@ -49,5 +52,10 @@ class StateModelToolkit(ModelToolkit[StateModel]):
         -   ModelToolkit for an empty class which makes managing toolkits easier.
         -   Any toolkits for a model should be a ModelToolkit subclass.
     """
-    model: StateModel
-    null_exception: NullException
+    model: Type[T]
+    carrier_model: Type[EntityCarrier[T]]
+    blueprint_model: Type[Blueprint[T]]
+    
+    null_exception: StateModelNullException
+    blueprint_null_exception: BlueprintNullException
+    carrier_null_exception: EntityCarrierNullException

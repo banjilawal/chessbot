@@ -1,4 +1,4 @@
-# src/err/null/model/__init__.py
+# src/err/null/model/model/__init__.py
 
 """
 Module: err.null.model.__init__
@@ -10,7 +10,12 @@ version: 1.0.1
 # ============ ERR.NULL.MODEL PACKAGE ===========#
 
 # Packages
+from .binder import *
+from .coord import *
+from .rank import *
+from .scalar import *
 from .state import *
+from .vector import *
 
 # Modules
 from .exception import ModelNullException

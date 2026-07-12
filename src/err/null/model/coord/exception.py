@@ -1,4 +1,4 @@
-# src/err/null/coord/exception.py
+# src/err/null/model/coord/exception.py
 
 """
 Module: err.null.coord.exception

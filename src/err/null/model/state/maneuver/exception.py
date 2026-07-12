@@ -1,7 +1,7 @@
-# src/err/null/maneuver/exception.py
+# src/err/null/model/state/maneuver/exception.py
 
 """
-Module: err.null.maneuver.exception
+Module: err.null.model.state.maneuver.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1

@@ -11,10 +11,10 @@ from __future__ import annotations
 
 from model import Board
 from operation import ArenaValidator
-from toolkit import ModelToolkit
+from toolkit import StateModelToolkit
 from microservice import BoardTeamBinderService
 
-class BoardToolkit(ModelToolkit[Board]):
+class BoardToolkit(StateModelToolkit[Board]):
     """
     Role:
         -   Container

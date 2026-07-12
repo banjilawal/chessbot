@@ -10,10 +10,10 @@ version: 1.0.1
 from __future__ import annotations
 
 from model import Player
-from toolkit import ModelToolkit
+from toolkit import StateModelToolkit
 
 
-class PlayerToolkit(ModelToolkit[Player]):
+class PlayerToolkit(StateModelToolkit[Player]):
     """
     Role:
         -   Container

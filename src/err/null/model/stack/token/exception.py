@@ -1,4 +1,4 @@
-# src/err/null/stack/token/exception.py
+# src/err/null/model/stack/token/exception.py
 
 """
 Module: err.null.stack.token.exception

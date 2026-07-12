@@ -1,4 +1,4 @@
-# src/err/null/rank/exception.py
+# src/err/null/model/rank/exception.py
 
 """
 Module: err.null.rank.exception

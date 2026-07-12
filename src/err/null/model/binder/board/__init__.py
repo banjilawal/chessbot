@@ -1,4 +1,4 @@
-# src/err/null/binder/board/__init__.py
+# src/err/null/model/binder/board/__init__.py
 
 """
 Module: err.null.binder.board.__init__

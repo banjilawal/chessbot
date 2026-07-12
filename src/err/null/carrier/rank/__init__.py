@@ -10,12 +10,6 @@ version: 1.0.1
 # ============ ERR.NULL.CARRIER.RANK PACKAGE ===========#
 
 # Packages
-from .bishop import *
-from .king import *
-from .knight import *
-from .pawn import *
-from .queen import *
-from .rook import *
 
 # Modules
-from .exception import RankException
+from .exception import RankCarrierNullException

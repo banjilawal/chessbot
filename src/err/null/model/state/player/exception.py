@@ -1,7 +1,7 @@
-# src/err/null/player/exception.py
+# src/err/null/model/state/player/exception.py
 
 """
-Module: err.null.player.exception
+Module: err.null.model.state.player.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1

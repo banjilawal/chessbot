@@ -11,10 +11,10 @@ from __future__ import annotations
 
 from microservice import BoardService, SchemaService, TeamService
 from bootstrapper.validator.priming import PrimingValidator
-from toolkit import ModelToolkit
+from toolkit import StateModelToolkit
 
 
-class BoardTeamBinderToolkit(ModelToolkit):
+class BoardTeamBinderToolkit(StateModelToolkit):
     """
     Role:
         -   Container

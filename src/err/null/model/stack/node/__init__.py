@@ -1,4 +1,4 @@
-# src/err/null/stack/node/__init__.py
+# src/err/null/model/stack/node/__init__.py
 
 """
 Module: err.null.stack.node.__init__

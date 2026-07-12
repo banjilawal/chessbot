@@ -15,7 +15,7 @@ from microservice.node import NodeService
 from system import Toolkit, ToolkitResult, LoggingLevelRouter, NumberValidator
 
 
-class EdgeToolkit(ModelToolkit[Edge]):
+class EdgeToolkit(StateModelToolkit[Edge]):
     """
      Role:
         -   Container

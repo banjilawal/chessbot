@@ -1,4 +1,4 @@
-# src/err/null/stack/square/exception.py
+# src/err/null/model/stack/square/exception.py
 
 """
 Module: err.null.stack.square.exception

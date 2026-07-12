@@ -1,13 +1,13 @@
-# src/err/null/path/blocked/__init__.py
+# src/err/null/model/state/path/blocked/__init__.py
 
 """
-Module: err.null.blocked.__init__
+Module: err.null.model.state.blocked.__init__
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
 """
 
-# =========== ERR.NULL.BLOCKED PACKAGE ===========#
+# =========== ERR.null.model.state.BLOCKED PACKAGE ===========#
 
 # Packages
 

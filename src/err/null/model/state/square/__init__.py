@@ -1,13 +1,13 @@
-# src/err/null/square/__init__.py
+# src/err/null/model/state/square/__init__.py
 
 """
-Module: err.null.square.__init__
+Module: err.null.model.state.square.__init__
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
 """
 
-# ============ ERR.NULL.SQUARE PACKAGE ===========#
+# ============ ERR.null.model.state.SQUARE PACKAGE ===========#
 
 # Packages
 

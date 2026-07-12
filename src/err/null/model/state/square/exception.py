@@ -1,7 +1,7 @@
-# src/err/null/square/exception.py
+# src/err/null/model/state/square/exception.py
 
 """
-Module: err.null.square.exception
+Module: err.null.model.state.square.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1

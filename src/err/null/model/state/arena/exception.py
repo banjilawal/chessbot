@@ -1,7 +1,7 @@
-# src/err/null/arena/exception.py
+# src/err/null/model/state/arena/exception.py
 
 """
-Module: err.null.arena.exception
+Module: err.null.model.state.arena.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1

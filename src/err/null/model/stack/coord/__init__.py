@@ -1,4 +1,4 @@
-# src/err/null/stack/coord/__init__.py
+# src/err/null/model/stack/coord/__init__.py
 
 """
 Module: err.null.stack.coord.__init__

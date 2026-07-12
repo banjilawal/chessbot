@@ -14,7 +14,7 @@ from model.state.game import Game, GameToolkitException
 from system import Toolkit, ToolkitResult, LoggingLevelRouter
 
 
-class GameToolkit(ModelToolkit[Game]):
+class GameToolkit(StateModelToolkit[Game]):
     """
     Role:
         -   Container

@@ -1,7 +1,7 @@
-# src/err/null/path/blocked/exception.py
+# src/err/null/model/state/path/blocked/exception.py
 
 """
-Module: err.null.blocked.exception
+Module: err.null.model.state.blocked.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1

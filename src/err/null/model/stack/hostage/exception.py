@@ -1,4 +1,4 @@
-# src/err/null/stack/hostage/exception.py
+# src/err/null/model/stack/hostage/exception.py
 
 """
 Module: err.null.stack.hostage.exception

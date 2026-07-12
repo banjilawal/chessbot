@@ -1,4 +1,4 @@
-# src/err/null/blueprint/formation/exception.py
+# src/err/null/model/blueprint/formation/exception.py
 
 """
 Module: err.null.formation.exception

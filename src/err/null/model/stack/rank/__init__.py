@@ -1,4 +1,4 @@
-# src/err/null/blueprint/rank/__init__.py
+# src/err/null/model/blueprint/rank/__init__.py
 
 """
 Module: err.null.rank.__init__

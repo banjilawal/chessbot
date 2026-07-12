@@ -1,4 +1,4 @@
-# src/err/null/binder/arena/exception.py
+# src/err/null/model/binder/arena/exception.py
 
 """
 Module: err.null.binder.arena.exception

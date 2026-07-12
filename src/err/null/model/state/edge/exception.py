@@ -1,7 +1,7 @@
-# src/err/null/edge/exception.py
+# src/err/null/model/state/edge/exception.py
 
 """
-Module: err.null.edge.exception
+Module: err.null.model.state.edge.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1

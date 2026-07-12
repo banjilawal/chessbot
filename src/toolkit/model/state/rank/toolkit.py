@@ -13,12 +13,12 @@ from typing import List
 
 from microservice import IdentityService, Microservice
 from model import Rank
-from toolkit import ModelToolkit
+from toolkit import StateModelToolkit
 from operation import Operation, PersonaValidator
 from validator import PrimingValidator
 
 
-class RankToolkit(ModelToolkit[Rank]):
+class RankToolkit(StateModelToolkit[Rank]):
     """
     Role:
         -   Dependency Container

@@ -1,4 +1,4 @@
-# src/err/null/blueprint/rank/exception.py
+# src/err/null/model/blueprint/rank/exception.py
 
 """
 Module: err.null.rank.exception

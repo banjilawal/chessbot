@@ -181,7 +181,7 @@ class TokenRootCertifier(RootCertifier[Token]):
                 )
             )
         # Handle the case that, the rank is not safe to use.
-        rank_test = self.toolkit.blueprint_rank_extractor.execute(
+        rank_test = self.toolkit.rank_extractor.execute(
             blueprint=blueprint,
             toolkit=self.toolkit,
         )

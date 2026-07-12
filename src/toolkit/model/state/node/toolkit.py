@@ -10,10 +10,10 @@ version: 1.0.1
 from __future__ import annotations
 
 from model import Node
-from toolkit import ModelToolkit
+from toolkit import StateModelToolkit
 
 
-class NodeToolkit(ModelToolkit[Node]):
+class NodeToolkit(StateModelToolkit[Node]):
     """
     Role:
         -   Container

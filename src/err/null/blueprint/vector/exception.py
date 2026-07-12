@@ -1,7 +1,7 @@
-# src/err/carrier/pawn/exception.py
+# src/err/null/blueprint/vector/exception.py
 
 """
-Module: err.carrier.pawn.exception
+Module: err.null.vector.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,40 +10,42 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import RankException
 
 
 __all__ = [
-    # ======================# PAWN_CARRIER_ERROR #======================#
-    "PawnCarrierException",
+    # ======================# VECTOR_BLUEPRINT_NULL_ERROR #======================#
+    "VectorBlueprintNullException",
 ]
 
-# ======================# PAWN_CARRIER_ERROR #======================#
-class PawnCarrierException(RankException):
+from err import BlueprintNullException
+
+
+# ======================# VECTOR_BLUEPRINT_NULL_ERROR #======================#
+class VectorBlueprintNullException(BlueprintNullException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a PawnCarrier encountered an error.
+        1.  Indicate that a required vectorBlueprint is null.
 
-    Attributes:
-        msg: Optional[str]
-        var: Optional[str]
-        val: Optional[Any]
-        ex: Optional[Exception]
-        cls_name: Optional[str]
-        cls_mthd: Optional[str]
-        err_code: Optional[str]
-        Mthd_Rslt_Type: Optional[MethodResultType]
-        
+    Cannot Be Null.s:
+            msg: Optional[str]
+            var: Optional[str]
+            val: Optional[Any]
+            ex: Optional[Exception]
+            cls_name: Optional[str]
+            cls_mthd: Optional[str]
+            err_code: Optional[str]
+            mthd_rslt_type: Optional[MethodResultType]
+            
     Provides:
 
     Super Class:
-        RankException
+        BlueprintNullException
     """
-    MSG = "PawnCarrier error."
-    ERR_CODE = "PAWN_CARRIER_ERROR"
+    MSG = "vectorBlueprint cannot be null."
+    ERR_CODE = "VECTOR_BLUEPRINT_NULL_ERROR"
     
     def __init__(
             self,

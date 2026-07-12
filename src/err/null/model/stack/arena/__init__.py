@@ -1,4 +1,4 @@
-# src/err/null/stack/arena/__init__.py
+# src/err/null/model/stack/arena/__init__.py
 
 """
 Module: err.null.stack.arena.__init__

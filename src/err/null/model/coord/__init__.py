@@ -1,4 +1,4 @@
-# src/err/null/coord/__init__.py
+# src/err/null/model/coord/__init__.py
 
 """
 Module: err.null.coord.__init__

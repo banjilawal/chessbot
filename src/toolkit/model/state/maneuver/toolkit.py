@@ -17,7 +17,7 @@ from microservice import Microservice
 from model import Maneuver
 from operation import Operation
 from searcher import TokenOriginSearcher
-from toolkit import ModelToolkit
+from toolkit import StateModelToolkit
 from validator import (
     ManeuverEndpointValidator, PathValidator, SquareValidator, TokenDestinationCertifier,
     TokenValidator
@@ -25,7 +25,7 @@ from validator import (
 from validator.model.endpoint import TokenOriginCertifier
 
 
-class ManeuverToolkit(ModelToolkit[Maneuver]):
+class ManeuverToolkit(StateModelToolkit[Maneuver]):
     """
     Role:
         -   Dependency Container

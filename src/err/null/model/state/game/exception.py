@@ -1,7 +1,7 @@
-# src/err/null/game/exception.py
+# src/err/null/model/state/game/exception.py
 
 """
-Module: err.null.game.exception
+Module: err.null.model.state.game.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1

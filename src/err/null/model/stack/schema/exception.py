@@ -1,4 +1,4 @@
-# src/err/null/blueprint/schema/exception.py
+# src/err/null/model/blueprint/schema/exception.py
 
 """
 Module: err.null.schema.exception

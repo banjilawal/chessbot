@@ -1,4 +1,4 @@
-# src/err/null/stack/game/exception.py
+# src/err/null/model/stack/game/exception.py
 
 """
 Module: err.null.stack.game.exception

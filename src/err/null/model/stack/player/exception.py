@@ -1,4 +1,4 @@
-# src/err/null/stack/player/exception.py
+# src/err/null/model/stack/player/exception.py
 
 """
 Module: err.null.stack.player.exception

@@ -1,4 +1,4 @@
-# src/err/null/stack/board/exception.py
+# src/err/null/model/stack/board/exception.py
 
 """
 Module: err.null.stack.board.exception

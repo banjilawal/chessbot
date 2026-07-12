@@ -1,4 +1,4 @@
-# src/err/null/stack/player/__init__.py
+# src/err/null/model/stack/player/__init__.py
 
 """
 Module: err.null.stack.player.__init__

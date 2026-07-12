@@ -20,7 +20,7 @@ __all__ = [
 ]
 
 # ======================# VECTOR_CARRIER_ERROR #======================#
-class VectorCarrierException(EntityEntityCarrierException):
+class VectorCarrierException(EntityCarrierException):
     """
     Role:
         -   Error Tracing

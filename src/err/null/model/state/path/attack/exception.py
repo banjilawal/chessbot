@@ -1,7 +1,7 @@
-# src/err/null/path/attack/exception.py
+# src/err/null/model/state/path/attack/exception.py
 
 """
-Module: err.null.attack.exception
+Module: err.null.model.state.attack.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1

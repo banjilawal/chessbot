@@ -1,4 +1,4 @@
-# src/err/null/stack/hostage/__init__.py
+# src/err/null/model/stack/hostage/__init__.py
 
 """
 Module: err.null.stack.hostage.__init__

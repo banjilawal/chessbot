@@ -1,4 +1,4 @@
-# src/err/null/scalar/exception.py
+# src/err/null/model/scalar/exception.py
 
 """
 Module: err.null.scalar.exception

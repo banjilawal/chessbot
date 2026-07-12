@@ -12,7 +12,9 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Type
 
-from err import VectorNullException
+from blueprint import VectorBlueprint
+from carrier import VectorCarrier
+from err import VectorBlueprintNullException, VectorCarrierNullException, VectorNullException
 from model import Vector
 from toolkit import ModelToolkit
 from validator import NumberValidator
@@ -30,9 +32,15 @@ class VectorToolkit(ModelToolkit[Vector]):
         3.  No logic in the Toolkit.
 
     Attributes:
-        number_validator: NumberValidator
+        model: Type[Vector]
+        carrier_model: Type[VectorCarrier]
+        blueprint_model: Type[VectorBlueprint]
+        
         null_exception: VectorNullException
-        model: Vector = Vector
+        carrier_null_exception: VectorCarrierNullException
+        blueprint_null_exception: VectorBlueprintNullException
+    
+        number_validator: NumberValidator
 
     Provides:
 
@@ -40,13 +48,13 @@ class VectorToolkit(ModelToolkit[Vector]):
        ModelToolkit
     """
     model: Type[Vector] = Vector
-    carrier_model: Type[VectorEntityoperand] = VectorEntitOperand
-    blueprint_model: Type[VectorBlueprint] =
+    carrier_model: Type[VectorCarrier] = VectorCarrier
+    blueprint_model: Type[VectorBlueprint] = VectorBlueprint
     
-    null_exception: VectorNullException()
-    blueprint_null_exception:VectorBlueprintNullException()
-    carrier_null_exception: VectorEntityOperandNullException()
-    
+    null_exception: VectorNullException = VectorNullException()
+    carrier_null_exception: VectorCarrierNullException = VectorCarrierNullException()
+    blueprint_null_exception: VectorBlueprintNullException = VectorBlueprintNullException()
+
     number_validator: NumberValidator = NumberValidator()
 
     

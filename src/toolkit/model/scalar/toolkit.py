@@ -10,15 +10,18 @@ version: 1.0.1
 from __future__ import annotations
 
 from dataclasses import dataclass
+from typing import Type
 
-from err import ScalarNullException
+from blueprint import ScalarBlueprint
+from carrier import ScalarCarrier
+from err import ScalarBlueprintNullException, ScalarCarrierNullException, ScalarNullException
 from model import Scalar
 from toolkit import ModelToolkit
 from validator import NumberValidator
 
 
 @dataclass
-class ScalarToolkit(ModelToolkit):
+class ScalarToolkit(ModelToolkit[Scalar]):
     """
     Role:
         -   Container
@@ -29,18 +32,29 @@ class ScalarToolkit(ModelToolkit):
         3.  No logic in the Toolkit.
 
     Attributes:
-        number_validator: NumberValidator
+        model: Type[Scalar]
+        carrier_model: Type[ScalarCarrier]
+        blueprint_model: Type[ScalarBlueprint]
+        
         null_exception: ScalarNullException
-        model: Scalar = Scalar
+        carrier_null_exception: ScalarCarrierNullException
+        blueprint_null_exception: ScalarBlueprintNullException
+    
+        number_validator: NumberValidator
 
     Provides:
 
     Super Class:
        ModelToolkit
     """
-    number_validator: NumberValidator = NumberValidator()
+    model: Type[Scalar] = Scalar
+    carrier_model: Type[ScalarCarrier] = ScalarCarrier
+    blueprint_model: Type[ScalarBlueprint] = ScalarBlueprint
+    
     null_exception: ScalarNullException = ScalarNullException()
-    model: Scalar = Scalar
+    carrier_null_exception: ScalarCarrierNullException = ScalarCarrierNullException()
+    blueprint_null_exception: ScalarBlueprintNullException = ScalarBlueprintNullException()
 
+    number_validator: NumberValidator = NumberValidator()
 
     

@@ -1,13 +1,13 @@
-# src/err/null/edge/__init__.py
+# src/err/null/model/state/edge/__init__.py
 
 """
-Module: err.null.edge.__init__
+Module: err.null.model.state.edge.__init__
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
 """
 
-# ============ ERR.NULL.EDGE PACKAGE ===========#
+# ============ ERR.null.model.state.EDGE PACKAGE ===========#
 
 # Packages
 

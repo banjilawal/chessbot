@@ -1,4 +1,4 @@
-# src/err/null/blueprint/persona/__init__.py
+# src/err/null/model/blueprint/persona/__init__.py
 
 """
 Module: err.null.persona.__init__

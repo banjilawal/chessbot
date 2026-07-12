@@ -1,4 +1,4 @@
-# src/err/null/binder/exception.py
+# src/err/null/model/binder/exception.py
 
 """
 Module: err.null.binder.exception

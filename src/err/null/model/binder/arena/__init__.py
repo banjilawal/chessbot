@@ -1,4 +1,4 @@
-# src/err/null/binder/arena/__init__.py
+# src/err/null/model/binder/arena/__init__.py
 
 """
 Module: err.null.binder.arena.__init__

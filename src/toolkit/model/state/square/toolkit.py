@@ -14,16 +14,16 @@ from typing import Type
 
 from blueprint import SquareBlueprint
 from bootstrapper import PrimingValidator
+from carrier import SquareCarrier
 from detector import SquareCollisionDetector
 from err import SquareBlueprintNullException, SquareNullException
 from model import Square
-from operand import SquareCarrier
-from toolkit import ModelToolkit
+from toolkit import StateModelToolkit
 from validator import BoardValidator, CoordValidator, TokenValidator
 
 
 @dataclass
-class SquareToolkit(ModelToolkit[Square]):
+class SquareToolkit(StateModelToolkit[Square]):
     """
     Role:
         -   Dependency Container

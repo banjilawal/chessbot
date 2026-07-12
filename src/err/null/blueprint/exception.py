@@ -25,7 +25,7 @@ class BlueprintNullException(NullException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required BlueprintNull failed.
+        1.  Indicate that a required Blueprint is null.
 
     Cannot Be Null.s:
             msg: Optional[str]
@@ -42,7 +42,7 @@ class BlueprintNullException(NullException):
     Super Class:
         NullException
     """
-    MSG = "blueprint's cannot be null."
+    MSG = "Blueprint cannot be null."
     ERR_CODE = "BLUEPRINT_NULL_ERROR"
     
     def __init__(
