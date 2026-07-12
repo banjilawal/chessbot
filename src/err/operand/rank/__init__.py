@@ -18,4 +18,4 @@ from .queen import *
 from .rook import *
 
 # Modules
-from .exception import RankDtoOperandException
+from .exception import RankEntityOperandException

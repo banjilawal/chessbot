@@ -10,17 +10,17 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import DtoOperandException
+from err import EntityOperandException
 from result import MethodResultType
 
 
 __all__ = [
     # ======================# BOARD_OPERAND_ERROR #======================#
-    "BoardDtoOperandException",
+    "BoardEntityOperandException",
 ]
 
 # ======================# BOARD_OPERAND_ERROR #======================#
-class BoardDtoOperandException(DtoOperandException):
+class BoardEntityOperandException(EntityOperandException):
     """
     Role:
         -   Error Tracing

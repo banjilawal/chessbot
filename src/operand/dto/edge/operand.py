@@ -13,10 +13,10 @@ from typing import Optional
 
 from blueprint import EdgeBlueprint
 from model import Edge
-from operand import DtoOperand
+from operand import EntityOperand
 
 
-class EdgeDtoOperand(DtoOperand[Edge]):
+class EdgeEntityOperand(EntityOperand[Edge]):
     """
     Role:
         -   Addressing
@@ -83,7 +83,7 @@ class EdgeDtoOperand(DtoOperand[Edge]):
     def __eq__(self, other):
         if other is self: return True
         if other is None: return False
-        if isinstance(other, EdgeDtoOperand):
+        if isinstance(other, EdgeEntityOperand):
             return self.entity == other.entity
         return False
     

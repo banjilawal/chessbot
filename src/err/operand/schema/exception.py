@@ -10,17 +10,17 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import DtoOperandException
+from err import EntityOperandException
 from result import MethodResultType
 
 
 __all__ = [
     # ======================# SCHEMA_OPERAND_ERROR #======================#
-    "SchemaDtoOperandException",
+    "SchemaEntityOperandException",
 ]
 
 # ======================# SCHEMA_OPERAND_ERROR #======================#
-class SchemaDtoOperandException(DtoOperandException):
+class SchemaEntityOperandException(EntityOperandException):
     """
     Role:
         -   Error Tracing

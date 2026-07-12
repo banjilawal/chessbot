@@ -13,10 +13,10 @@ from typing import Optional
 
 from blueprint import RankBlueprint
 from model import Rank
-from operand import DtoOperand
+from operand import EntityOperand
 
 
-class RankDtoOperand(DtoOperand[Rank]):
+class RankEntityOperand(EntityOperand[Rank]):
     """
     Role:
         -   Addressing
@@ -83,7 +83,7 @@ class RankDtoOperand(DtoOperand[Rank]):
     def __eq__(self, other):
         if other is self: return True
         if other is None: return False
-        if isinstance(other, RankDtoOperand):
+        if isinstance(other, RankEntityOperand):
             return self.entity == other.entity
         return False
     

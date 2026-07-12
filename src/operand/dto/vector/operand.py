@@ -13,10 +13,10 @@ from typing import Optional
 
 from blueprint import VectorBlueprint
 from model import Vector
-from operand import DtoOperand
+from operand import EntityOperand
 
 
-class VectorDtoOperand(DtoOperand[Vector]):
+class VectorEntityOperand(EntityOperand[Vector]):
     """
     Role:
         -   Addressing
@@ -83,7 +83,7 @@ class VectorDtoOperand(DtoOperand[Vector]):
     def __eq__(self, other):
         if other is self: return True
         if other is None: return False
-        if isinstance(other, VectorDtoOperand):
+        if isinstance(other, VectorEntityOperand):
             return self.entity == other.entity
         return False
     

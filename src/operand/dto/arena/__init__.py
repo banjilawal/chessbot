@@ -12,4 +12,4 @@ version: 1.0.1
 # Packages
 
 # Modules
-from .operand import ArenaDtoOperand
+from .operand import ArenaEntityOperand

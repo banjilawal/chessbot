@@ -12,9 +12,9 @@ from __future__ import annotations
 from typing import Generic, Type, TypeVar
 
 from blueprint import Blueprint
-from err import BlueprintNullException, DtoOperandNullException, ModelNullException, NullException
+from err import BlueprintNullException, EntityOperandNullException, ModelNullException, NullException
 from microservice import IdentityService
-from operand import DtoOperand
+from operand import EntityOperand
 from toolkit import Toolkit
 from validator import BlueprintIdExtractor
 
@@ -65,12 +65,12 @@ class ModelToolkit(Toolkit, Generic[T]):
         priming_validator: PrimingValidator
     """
     model: Type[T]
-    operand_model: Type[DtoOperand[T]]
+    operand_model: Type[EntityOperand[T]]
     blueprint_model: Type[Blueprint[T]]
     
     null_exception: ModelNullException
     blueprint_null_exception: BlueprintNullException
-    operand_null_exception: DtoOperandNullException
+    operand_null_exception: EntityOperandNullException
     
     identity_service: IdentityService = IdentityService()
 

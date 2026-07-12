@@ -24,4 +24,4 @@ from .token import *
 from .vector import *
 
 # Modules
-from .operand import DtoOperand
+from .operand import EntityOperand

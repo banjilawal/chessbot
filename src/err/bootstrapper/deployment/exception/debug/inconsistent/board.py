@@ -1,4 +1,4 @@
-# src/logic//service/operation/promotion/exception/debug/double.py
+# src/logic/service/operation/promotion/exception/debug/double.py
 
 """
 Module: logic.service.operation.promotion.exception.debug.double

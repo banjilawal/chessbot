@@ -14,7 +14,7 @@ from typing import cast
 from consistency import ConsistencyChecker
 from err import TokenConsistencyCheckerException
 from model import Token
-from operand import TokenDtoOperand
+from operand import TokenEntityOperand
 from result import ValidationResult
 from setting.board.dimension.config import board_size
 from toolkit import TokenToolkit
@@ -48,7 +48,7 @@ class TokenConsistencyChecker(ConsistencyChecker[Token]):
     
 
     @LoggingLevelRouter.monitor
-    def execute(self, dto_operand: TokenDtoOperand) -> ValidationResult:
+    def execute(self, dto_operand: TokenEntityOperand) -> ValidationResult:
         """
         Verify the object is a Token that is safe to use.
 
@@ -84,7 +84,7 @@ class TokenConsistencyChecker(ConsistencyChecker[Token]):
                     ex=priming_test.exception,
                 )
             )
-        dto = cast(TokenDtoOperand, priming_test.payload)
+        dto = cast(TokenEntityOperand, priming_test.payload)
         if not dto.is_model_operand:
             # Send the exception chain on failure.
             return ValidationResult.failure(

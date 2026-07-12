@@ -9,13 +9,9 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from abc import ABC
-from typing import TypeVar
 
 from bootstrapper import PrimingValidator
 
-
-T = TypeVar("T")
 
 
 

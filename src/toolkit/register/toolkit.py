@@ -13,8 +13,8 @@ from dataclasses import dataclass
 from typing import Generic, Type, TypeVar
 
 from blueprint import RegisterBlueprint
-from err import RegisterBlueprintNullException, RegisterNullException
-from operand import RegisterDtoOperand
+from err import RegisterBlueprintNullException, RegisterEntityNullException, RegisterNullException
+from operand import RegisterEntityOperand
 from register import Register
 from toolkit import Toolkit
 
@@ -39,7 +39,7 @@ class RegisterToolkit(Toolkit, Generic[T]):
         
         null_exception: RegisterNullException
         blueprint_null_exception: RegisterBlueprintNullException
-        operand_null_exception: RegisterDtoOperandNullException
+        operand_null_exception: RegisterDtoNullException
 
     Provides:
 
@@ -48,11 +48,11 @@ class RegisterToolkit(Toolkit, Generic[T]):
     """
     model: Type[Register] = Register
     blueprint_model: Type[RegisterBlueprint] = RegisterBlueprint
-    operand_model: Type[RegisterDtoOperand] = RegisterDtoOperand
+    operand_model: Type[RegisterEntityOperand] = RegisterEntityOperand
     
     null_exception: RegisterNullException = RegisterNullException()
     blueprint_null_exception: RegisterBlueprintNullException = RegisterBlueprintNullException()
-    operand_null_exception: RegisterDtoOperandNullException = RegisterDtoOperandNullException()
+    operand_null_exception: RegisterEntityNullException = RegisterEntityNullException()
 
 
     

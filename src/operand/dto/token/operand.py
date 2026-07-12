@@ -13,10 +13,10 @@ from typing import Any, Dict, Optional
 
 from blueprint import TokenBlueprint
 from model import Token
-from operand import DtoOperand
+from operand import EntityOperand
 
 
-class TokenDtoOperand(DtoOperand[Token]):
+class TokenEntityOperand(EntityOperand[Token]):
     """
     Role:
         -   DTO
@@ -112,7 +112,7 @@ class TokenDtoOperand(DtoOperand[Token]):
     def __eq__(self, other):
         if other is self: return True
         if other is None: return False
-        if isinstance(other, TokenDtoOperand):
+        if isinstance(other, TokenEntityOperand):
             return self.entity == other.entity
         return False
     

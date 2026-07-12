@@ -13,10 +13,10 @@ from typing import Optional
 
 from blueprint import NodeBlueprint
 from model import Node
-from operand import DtoOperand
+from operand import EntityOperand
 
 
-class NodeDtoOperand(DtoOperand[Node]):
+class NodeEntityOperand(EntityOperand[Node]):
     """
     Role:
         -   Addressing
@@ -83,7 +83,7 @@ class NodeDtoOperand(DtoOperand[Node]):
     def __eq__(self, other):
         if other is self: return True
         if other is None: return False
-        if isinstance(other, NodeDtoOperand):
+        if isinstance(other, NodeEntityOperand):
             return self.entity == other.entity
         return False
     

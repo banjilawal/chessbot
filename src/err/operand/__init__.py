@@ -35,4 +35,4 @@ from .token import *
 from .vector import *
 
 # Modules
-from .exception import DtoOperandException
+from .exception import EntityOperandException

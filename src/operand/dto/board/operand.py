@@ -13,10 +13,10 @@ from typing import Optional
 
 from blueprint import BoardBlueprint
 from model import Board
-from operand import DtoOperand
+from operand import EntityOperand
 
 
-class BoardDtoOperand(DtoOperand[Board]):
+class BoardEntityOperand(EntityOperand[Board]):
     """
     Role:
         -   Addressing
@@ -83,7 +83,7 @@ class BoardDtoOperand(DtoOperand[Board]):
     def __eq__(self, other):
         if other is self: return True
         if other is None: return False
-        if isinstance(other, BoardDtoOperand):
+        if isinstance(other, BoardEntityOperand):
             return self.entity == other.entity
         return False
     

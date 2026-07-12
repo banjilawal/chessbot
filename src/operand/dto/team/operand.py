@@ -13,10 +13,10 @@ from typing import Any, Dict, Optional
 
 from blueprint import TeamBlueprint
 from model import Team
-from operand import DtoOperand
+from operand import EntityOperand
 
 
-class TeamDtoOperand(DtoOperand[Team]):
+class TeamEntityOperand(EntityOperand[Team]):
     """
     Role:
         -   DTO
@@ -104,7 +104,7 @@ class TeamDtoOperand(DtoOperand[Team]):
     def __eq__(self, other):
         if other is self: return True
         if other is None: return False
-        if isinstance(other, TeamDtoOperand):
+        if isinstance(other, TeamEntityOperand):
             return self.entity == other.entity
         return False
     

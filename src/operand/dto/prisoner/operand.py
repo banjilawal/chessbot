@@ -13,10 +13,10 @@ from typing import Optional
 
 from blueprint import PrisonerBlueprint
 from model import Prisoner
-from operand import DtoOperand
+from operand import EntityOperand
 
 
-class PrisonerDtoOperand(DtoOperand[Prisoner]):
+class PrisonerEntityOperand(EntityOperand[Prisoner]):
     """
     Role:
         -   Addressing
@@ -83,7 +83,7 @@ class PrisonerDtoOperand(DtoOperand[Prisoner]):
     def __eq__(self, other):
         if other is self: return True
         if other is None: return False
-        if isinstance(other, PrisonerDtoOperand):
+        if isinstance(other, PrisonerEntityOperand):
             return self.entity == other.entity
         return False
     

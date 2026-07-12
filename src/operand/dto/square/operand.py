@@ -13,10 +13,10 @@ from typing import Any, Dict, Optional, cast
 
 from blueprint import SquareBlueprint
 from model import HomeSquare, Square
-from operand import DtoOperand
+from operand import EntityOperand
 
 
-class SquareDtoOperand(DtoOperand[Square]):
+class SquareEntityOperand(EntityOperand[Square]):
     """
     Role:
         -   DTO
@@ -126,7 +126,7 @@ class SquareDtoOperand(DtoOperand[Square]):
     def __eq__(self, other):
         if other is self: return True
         if other is None: return False
-        if isinstance(other, SquareDtoOperand):
+        if isinstance(other, SquareEntityOperand):
             return self.entity == other.entity
         return False
     

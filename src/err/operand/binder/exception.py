@@ -10,17 +10,17 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import DtoOperandException
+from err import EntityOperandException
 from result import MethodResultType
 
 
 __all__ = [
     # ======================# BINDER_OPERAND_ERROR #======================#
-    "BinderDtoOperandException",
+    "BinderEntityOperandException",
 ]
 
 # ======================# BINDER_OPERAND_ERROR #======================#
-class BinderDtoOperandException(DtoOperandException):
+class BinderEntityOperandException(EntityOperandException):
     """
     Role:
         -   Error Tracing

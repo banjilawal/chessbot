@@ -14,9 +14,9 @@ from typing import Type
 
 from blueprint import TokenBlueprint
 from detector import TokenHomeDetector
-from err import TokenBlueprintNullException, TokenDtoOperandNullException, TokenNullException
+from err import TokenBlueprintNullException, TokenEntityOperandNullException, TokenNullException
 from model import Token
-from operand import TokenDtoOperand
+from operand import TokenEntityOperand
 from tester import BlueprintHomeSquareExtractor, BlueprintRankExtractor
 from toolkit import ModelToolkit
 from validator import TeamValidator
@@ -50,11 +50,11 @@ class TokenToolkit(ModelToolkit[Token]):
     """
     model: Type[Token] = Token
     blueprint_model: Type[TokenBlueprint] = TokenBlueprint
-    operand_model: Type[TokenDtoOperand] = TokenDtoOperand
+    operand_model: Type[TokenEntityOperand] = TokenEntityOperand
     
     null_exception: TokenNullException = TokenNullException()
     blueprint_null_exception: TokenBlueprintNullException = TokenBlueprintNullException()
-    operand_null_exception: TokenDtoOperandNullException =TokenDtoOperandNullException()
+    operand_null_exception: TokenEntityOperandNullException =TokenEntityOperandNullException()
     
     home_detector: TokenHomeDetector = TokenHomeDetector()
     team_validator: TeamValidator = TeamValidator()

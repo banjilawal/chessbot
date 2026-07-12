@@ -10,15 +10,15 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import DtoOperandException
+from err import EntityOperandException
 
 __all__ = [
     # ======================# ARENA_OPERAND_ERROR #======================#
-    "ArenaDtoOperandException",
+    "ArenaEntityOperandException",
 ]
 
 # ======================# ARENA_OPERAND_ERROR #======================#
-class ArenaDtoOperandException(DtoOperandException):
+class ArenaEntityOperandException(EntityOperandException):
     """
     Role:
         -   Error Tracing

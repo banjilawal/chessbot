@@ -10,7 +10,7 @@ version: 1.0.1
 # ============ ERR.NULL.OPERAND PACKAGE ===========#
 
 # Packages
-from .dto import *
+from .entity import *
 
 
 # Modules

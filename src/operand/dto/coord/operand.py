@@ -13,10 +13,10 @@ from typing import Any, Dict, Optional
 
 from blueprint import CoordBlueprint
 from model import Coord
-from operand import DtoOperand
+from operand import EntityOperand
 
 
-class CoordDtoOperand(DtoOperand[Coord]):
+class CoordEntityOperand(EntityOperand[Coord]):
     """
     Role:
         -   DTO
@@ -109,7 +109,7 @@ class CoordDtoOperand(DtoOperand[Coord]):
     def __eq__(self, other):
         if other is self: return True
         if other is None: return False
-        if isinstance(other, CoordDtoOperand):
+        if isinstance(other, CoordEntityOperand):
             return self.entity == other.entity
         return False
     

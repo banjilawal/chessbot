@@ -16,7 +16,7 @@ from operand import Operand
 
 T = TypeVar("T")
 
-class DtoOperand(Operand, Generic[T]):
+class EntityOperand(Operand, Generic[T]):
     """
     Role:
         -   DTO

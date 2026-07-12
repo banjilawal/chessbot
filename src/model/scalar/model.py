@@ -14,35 +14,25 @@ from model import Model
 
 class Scalar(Model):
     """
-    Role:Computation, Transformation, Data-Holder
-    
-    Responsibilities:
-    1.  A 1-D quantity.
-    2.  Creating new 2-D object which can be either a
-            *   Vector
-            *   Coords
-        by multiplying an originating 2-D by the scalar.
+     Role:
+         -  Data Holder
+         -
 
-    Super Class:
-    None
+     Responsibilities:
+        1.  A 1-D quantity.
+        2.  Creating new 2-D object which can be either a
+                -   Vector
+                -   Coords
+            by multiplying an originating 2-D by the scalar.
 
-    Provides:
+     Attributes:
+         magnitude: int
 
-    # LOCAL ATTRIBUTES:
-        *   magnitude (int)
+     Provides:
 
-    # INHERITED ATTRIBUTES:
-    None
-
-    Attributes:
-        *   magnitude (int)
-
-    # LOCAL METHODS:
-    None
-
-    # INHERITED METHODS:
-    None
-    """
+     Super Class:
+        Model
+     """
     _magnitude: int
     
     def __init__(self, magnitude: int):

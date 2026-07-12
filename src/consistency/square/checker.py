@@ -14,7 +14,7 @@ from typing import Any, cast
 from controller import WorkerRegistryController
 from err import SquareConsistencyCheckerException
 from model import Square
-from operand import SquareDtoOperand
+from operand import SquareEntityOperand
 from primary import SquareRootCertifier
 from result import ValidationResult
 from util import LoggingLevelRouter
@@ -93,7 +93,7 @@ class SquareConsistencyChecker(ConsistencyChecker[Square]):
                 )
             )
         root_certification = self.root_certifier.execute(
-            candidate=SquareDtoOperand(model=bootstrap.payload)
+            candidate=SquareEntityOperand(model=bootstrap.payload)
         )
         if root_certification.is_failure:
             # Send the exception chain on failure.

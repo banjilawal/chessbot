@@ -15,4 +15,4 @@ from .point import *
 from .square import *
 
 # Modules
-from .operand import RegisterDtoOperand
+from .operand import RegisterEntityOperand

@@ -10,17 +10,17 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import DtoOperandException
+from err import EntityOperandException
 from result import MethodResultType
 
 
 __all__ = [
     # ======================# TOKEN_OPERAND_ERROR #======================#
-    "TokenDtoOperandException",
+    "TokenEntityOperandException",
 ]
 
 # ======================# TOKEN_OPERAND_ERROR #======================#
-class TokenDtoOperandException(DtoOperandException):
+class TokenEntityOperandException(EntityOperandException):
     """
     Role:
         -   Error Tracing

@@ -13,10 +13,10 @@ from typing import Optional, cast
 
 from blueprint import PointRegisterBlueprint
 from model import  PointRegister
-from operand import RegisterDtoOperand
+from operand import RegisterEntityOperand
 
 
-class PointRegisterDtoOperand(RegisterDtoOperand[PointRegister]):
+class PointRegisterDtoOperand(RegisterEntityOperand[PointRegister]):
     """
     Role:
         -   Addressing
@@ -84,7 +84,7 @@ class PointRegisterDtoOperand(RegisterDtoOperand[PointRegister]):
     def __eq__(self, other):
         if other is self: return True
         if other is None: return False
-        if isinstance(other, RegisterDtoOperand):
+        if isinstance(other, RegisterEntityOperand):
             return self.entity == other.entity
         return False
     

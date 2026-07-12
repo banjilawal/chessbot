@@ -13,4 +13,4 @@ version: 1.0.1
 from .register import *
 
 # Modules
-from .exception import VectorDtoOperandException
+from .exception import VectorEntityOperandException

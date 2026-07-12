@@ -13,10 +13,10 @@ from typing import Optional
 
 from blueprint import ScalarBlueprint
 from model import Scalar
-from operand import DtoOperand
+from operand import EntityOperand
 
 
-class ScalarDtoOperand(DtoOperand[Scalar]):
+class ScalarEntityOperand(EntityOperand[Scalar]):
     """
     Role:
         -   Addressing
@@ -83,7 +83,7 @@ class ScalarDtoOperand(DtoOperand[Scalar]):
     def __eq__(self, other):
         if other is self: return True
         if other is None: return False
-        if isinstance(other, ScalarDtoOperand):
+        if isinstance(other, ScalarEntityOperand):
             return self.entity == other.entity
         return False
     

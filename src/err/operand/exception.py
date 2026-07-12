@@ -14,11 +14,11 @@ from err import ChessException
 
 __all__ = [
     # ======================# OPERAND_OPERAND_ERROR #======================#
-    "DtoOperandException",
+    "EntityOperandException",
 ]
 
 # ======================# OPERAND_OPERAND_ERROR #======================#
-class DtoOperandException(ChessException):
+class EntityOperandException(ChessException):
     """
     Role:
         -   Error Tracing

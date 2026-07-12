@@ -13,10 +13,10 @@ from typing import Optional
 
 from blueprint import PlayerBlueprint
 from model import Player
-from operand import DtoOperand
+from operand import EntityOperand
 
 
-class PlayerDtoOperand(DtoOperand[Player]):
+class PlayerEntityOperand(EntityOperand[Player]):
     """
     Role:
         -   Addressing
@@ -83,7 +83,7 @@ class PlayerDtoOperand(DtoOperand[Player]):
     def __eq__(self, other):
         if other is self: return True
         if other is None: return False
-        if isinstance(other, PlayerDtoOperand):
+        if isinstance(other, PlayerEntityOperand):
             return self.entity == other.entity
         return False
     

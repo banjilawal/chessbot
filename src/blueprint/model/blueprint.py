@@ -37,7 +37,6 @@ class ModelBlueprint(Blueprint[Model]):
         """
         Args:
             model_class: Type[Model[T]]
-        
         """
         super().__init__(model_class=model_class,)
     

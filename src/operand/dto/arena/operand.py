@@ -13,10 +13,10 @@ from typing import Optional
 
 from blueprint import ArenaBlueprint
 from model import Arena
-from operand import DtoOperand
+from operand import EntityOperand
 
 
-class ArenaDtoOperand(DtoOperand[Arena]):
+class ArenaEntityOperand(EntityOperand[Arena]):
     """
     Role:
         -   Addressing
@@ -83,7 +83,7 @@ class ArenaDtoOperand(DtoOperand[Arena]):
     def __eq__(self, other):
         if other is self: return True
         if other is None: return False
-        if isinstance(other, ArenaDtoOperand):
+        if isinstance(other, ArenaEntityOperand):
             return self.entity == other.entity
         return False
     

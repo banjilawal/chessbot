@@ -13,7 +13,7 @@ from abc import ABC, abstractmethod
 from typing import Any, Generic, TypeVar
 
 from bootstrapper import PrimingValidator
-from operand import DtoOperand
+from operand import EntityOperand
 from result import ValidationResult
 from util import LoggingLevelRouter
 
@@ -59,6 +59,6 @@ class ConsistencyChecker(ABC, Generic[T]):
 
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def execute(self, dto_operand: DtoOperand[T],) -> ValidationResult:
+    def execute(self, dto_operand: EntityOperand[T], ) -> ValidationResult:
         """Implement in subclass."""
         pass

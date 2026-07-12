@@ -10,18 +10,18 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import DtoOperandException
+from err import EntityOperandException
 from result import MethodResultType
 
 
 __all__ = [
     # ======================# POINT_OPERAND_OPERAND_ERROR #======================#
-    "PointDtoOperandException",
+    "PointEntityOperandException",
 ]
 
 
 # ======================# POINT_OPERAND_OPERAND_ERROR #======================#
-class PointDtoOperandException(DtoOperandException):
+class PointEntityOperandException(EntityOperandException):
     """
     Role:
         -   Error Tracing

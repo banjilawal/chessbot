@@ -14,4 +14,4 @@ from .human import *
 from .machine import *
 
 # Modules
-from .exception import PlayerDtoOperandException
+from .exception import PlayerEntityOperandException
