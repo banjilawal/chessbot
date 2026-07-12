@@ -10,6 +10,7 @@ version: 1.0.1
 # =========== MODEL.PACKAGE ===========#
 
 # Packages
+from .binder import *
 from .coord import *
 from .path import *
 from .quadrant import *

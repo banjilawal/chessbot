@@ -12,7 +12,7 @@ from copy import deepcopy
 
 from err import AttackDestinationEmptyException, AttackEventNullException, AttackException
 from event import AttackEvent
-from model import Hostage, SquareState
+from model import SquareState
 from operation import Maneuver
 from report import AttackApproval, ManeuverApproval
 from result import EventResult, MethodResultType
@@ -20,7 +20,7 @@ from util import IdFactory, LoggingLevelRouter
 from validator import PrimingValidator
 
 
-class Attack:
+class LaunchAttack:
     """
     Role:
         - Transaction Worker
@@ -46,13 +46,8 @@ class Attack:
     Super Class:
     """
     
-    @classmethod
     @LoggingLevelRouter.monitor
-    def execute(
-            cls,
-            report: AttackApproval,
-            priming_validator: PrimingValidator | None = None,
-    ) -> EventResult:
+    def execute(self, approval: AttackApproval,) -> EventResult:
         """
         Action:
             1.  Send the original square along with an exception chain in the validation result if:

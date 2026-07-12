@@ -74,14 +74,14 @@ class AttackCombatant(Attack[CombatantToken]):
     def is_attack_completed(self) -> bool:
         return (
             self._maneuver.is_completed and
+            self.victim.is_captured and
             self.victim.captor == self.attacker and
             self._attack_state == CombatantAttackState.ATTACK_COMPLETED
         )
     
     @property
-    def is_attack_noy_completed(self) -> bool:
+    def is_attack_not_completed(self) -> bool:
         return self.is_attack_completed
-    
     
     def __eq__(self, other):
         if other is None:

@@ -4,7 +4,49 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="" />
+    <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/src/model/state/attack/combatant/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/state/attack/combatant/model.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/state/dto/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/state/dto/model.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/state/dto/path/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/state/dto/path/model.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/state/hostage/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/state/hostage/model.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/state/notification/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/state/notification/model.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/state/transition/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/state/transition/arena/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/state/transition/arena/model.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/state/transition/board/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/state/transition/board/model.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/state/transition/coord/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/state/transition/coord/model.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/state/transition/edge/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/state/transition/edge/model.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/state/transition/formation/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/state/transition/formation/model.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/state/transition/game/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/state/transition/game/model.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/state/transition/hostage/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/state/transition/hostage/model.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/state/transition/model.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/state/transition/node/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/state/transition/node/model.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/state/transition/persona/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/state/transition/persona/model.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/state/transition/player/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/state/transition/player/model.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/state/transition/rank/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/state/transition/rank/model.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/state/transition/schema/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/state/transition/schema/model.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/state/transition/square/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/state/transition/square/model.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/state/transition/team/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/state/transition/team/model.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/state/transition/token/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/state/transition/token/model.py" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -57,7 +99,7 @@
     "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/model/state/maneuver",
+    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/model/state/attack",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
@@ -69,11 +111,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/model/state/attack" />
       <recent name="$PROJECT_DIR$/src/model/state/maneuver" />
       <recent name="$PROJECT_DIR$/src/model/state/maneuver/king" />
       <recent name="$PROJECT_DIR$/src/register/model" />
       <recent name="$PROJECT_DIR$/src/blueprint/model/state" />
-      <recent name="$PROJECT_DIR$/src/blueprint/model" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/model" />
@@ -807,7 +849,7 @@
       <workItem from="1782325486599" duration="56546000" />
       <workItem from="1782732939190" duration="235900000" />
       <workItem from="1783222430394" duration="208582000" />
-      <workItem from="1783540905722" duration="150273000" />
+      <workItem from="1783540905722" duration="153302000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />
