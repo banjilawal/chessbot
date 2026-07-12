@@ -1,17 +1,17 @@
-# src/blueprint/model/register/__init__.py
+# src/blueprint/register/__init__.py
 
 """
-Module: blueprint.model.register.__init__
+Module: blueprint.register.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
 """
 
-# =========== BLUEPRINT.MODEL.REGISTER PACKAGE ===========#
+# =========== BLUEPRINT.REGISTER PACKAGE ===========#
 
 # Packages
 from .identity import *
-from .operand import *
+from .cartesian import *
 from .square import *
 
 # Modules

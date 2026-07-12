@@ -1,7 +1,7 @@
-# src/blueprint/model/column/blueprint.py
+# src/blueprint/model/coord/blueprint.py
 
 """
-Module: blueprint.model.column.blueprint
+Module: blueprint.model.coord.blueprint
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -21,7 +21,7 @@ class CoordBlueprint(ModelBlueprint[Coord]):
         -   Container
 
     Responsibilities:
-        1.  Provides values for instantiating a Column object.
+        1.  Provides values for instantiating a Coord object.
 
     Attributes:
         row: int
@@ -35,7 +35,12 @@ class CoordBlueprint(ModelBlueprint[Coord]):
     _row: int
     _column: int
     
-    def __init__( self, row: int,  column: int, model_class: Type[Coord],):
+    def __init__(
+            self,
+            row: int,
+            column: int,
+            model_class: Type[Coord] = Coord,
+    ):
         """
         Args:
             row: int

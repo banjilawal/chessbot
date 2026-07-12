@@ -9,42 +9,56 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from dataclasses import dataclass
-from typing import Type
+from typing import Type, cast
 
 from blueprint import ModelBlueprint
-from err import RankNullException
 from model import Rank
 from schema import Persona
 
 
-@dataclass
 class RankBlueprint(ModelBlueprint[Rank]):
     """
     Role:
         -   Container
-
+        -   DTO
+        
     Responsibilities:
         1.  Provides values for instantiating a Rank object.
-
+        2.  DTO
+        
     Attributes:
-        id: Optional[int]
         persona: Persona
-
-            
+        
     Provides:
 
      Super Class:
         ModelBlueprint
      """
-    """
-    Args:
-        persona: Persona
-        null_exception: RankNullException
-        owner: Rank
-        owner_name: str
-    """
-    persona: Persona
-    null_exception: RankNullException = RankNullException()
-    model_class: Rank = Type[Rank]
-    owner_name: str = type(owner).__name__
+    _persona: Persona
+    
+    def __init__(
+            self,
+            persona: Persona,
+            model_class: Type[Rank] = Rank,
+    ):
+        """
+        Args:
+            persona: Persona
+            model_class: Type[Rank]
+        """
+        super().__init__(model_class=model_class)
+        self._persona = persona
+        
+    @property
+    def model_class(self) -> Type[Rank]:
+        return cast(Type[Rank], self.model_class)
+    
+    @property
+    def persona(self) -> Persona:
+        return self._persona
+
+    
+    
+
+        
+        

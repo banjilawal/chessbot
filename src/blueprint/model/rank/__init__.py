@@ -13,4 +13,4 @@ version: 1.0.1
 
 
 # Modules
-from .blueprint import  RankBlueprint
+from .blueprint import RankBlueprint

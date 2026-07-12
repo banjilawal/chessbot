@@ -9,17 +9,12 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from abc import ABC, abstractmethod
-from typing import Dict
-
-from schema import Persona
-from geometry import CoordSpan
 from microservice import CoordService, VectorService
-from result import ComputationResult
-from util import LoggingLevelRouter
+from model import Model
+from schema import Persona
 
 
-class Rank(ABC):
+class Rank(Model):
     """
     Role:Computation
     
@@ -28,7 +23,6 @@ class Rank(ABC):
         2.  How many points its worth.
         
     Attributes:
-        id: int
         persona: Persona
         coord_service: CoordService
         vector_service: VectorService
@@ -39,32 +33,20 @@ class Rank(ABC):
     Super Class:
         Model
     """
-    _id: int
     _persona: Persona
     _coord_service: CoordService
     _vector_service: VectorService
     
     def __init__(self,
-            id: int,
             persona: Persona,
-            coord_service: CoordService | None = CoordService(),
-            vector_service: VectorService | None = VectorService(),
     ):
         """
         Args:
-            id: int
             persona: Persona
-            coord_service: CoordService
-            vector_service: VectorService
         """
-        self._id = id
         self._persona = persona
-        self._coord_service = coord_service
-        self._vector_service = vector_service
-    
-    @property
-    def id(self) -> int:
-        return self._id
+        self._coord_service = CoordService()
+        self._vector_service = VectorService()
     
     @property
     def coord_service(self) -> CoordService:
@@ -89,7 +71,7 @@ class Rank(ABC):
         if other is None:
             return False
         if isinstance(other, Rank):
-            return self._id == other.id
+            return self._persona == other.persona
         return False
     
     def __hash__(self):

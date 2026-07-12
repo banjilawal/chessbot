@@ -12,11 +12,12 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Optional
 
+from model import Model
 from register import SquareRegister
 
 
 @dataclass
-class Path:
+class Path(Model):
     """
     Role:
         -   Model

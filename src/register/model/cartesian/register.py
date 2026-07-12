@@ -15,7 +15,7 @@ from operand import CartesianPoint
 from register import ModelRegister
 
 
-class CartesianPointRegister(ModelRegister[CartesianPoint]):
+class CartesianRegister(ModelRegister[CartesianPoint]):
     """
         -   Model
         -   Data Holder
@@ -93,7 +93,7 @@ class CartesianPointRegister(ModelRegister[CartesianPoint]):
     def __eq__(self, other):
         if other is self: return True
         if other is None: return False
-        if isinstance(other, CartesianPointRegister):
+        if isinstance(other, CartesianRegister):
             return (
                     self._a == other.b and
                     self._b == other.b
