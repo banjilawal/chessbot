@@ -9,20 +9,19 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from abc import abstractmethod
+from abc import ABC, abstractmethod
 from typing import Any, Generic, TypeVar
-from xml.dom.minidom import Entity
 
+from bootstrapper import ToggleValidator
 from carrier import EntityCarrier
-from primary import RootCertifier
 from result import ValidationResult
-from toolkit import ModelToolkit, Toolkit
+from toolkit import ModelToolkit
 from validator import Validator
 
-T = TypeVar("T", bound="Model")
+T = TypeVar("T", bound="EntityCarrier")
 
 
-class CarrierValidator(Validator, Generic[EntityCarrier[T]]):
+class CarrierValidator(ABC, Generic[T]):
     """
     Role
         -   Transaction Worker
@@ -42,24 +41,23 @@ class CarrierValidator(Validator, Generic[EntityCarrier[T]]):
     Super Class:
         ModelValidator
     """
-    _root_certifier: RootCertifier[T]
+    _bootstrapper: ToggleValidator
     _toolkit: ModelToolkit[T]
     
     def __init__(
-            self, 
-            toolkit: ModelToolkit[T],
-            root_certifier: RootCertifier[T],
+            self,
+            toolkit: ModelToolkit,
+            bootstrapper: ToggleValidator | None = ToggleValidator(),
     ):
-        self._toolkit = toolkit
-        self._root_certifier = root_certifier
+        self._bootstrapper = bootstrapper
         
+    @property
+    def bootstrapper(self) -> ToggleValidator:
+        return self._bootstrapper
+    
     @property
     def toolkit(self) -> ModelToolkit[T]:
         return self._toolkit
-
-    @property
-    def root_certifier(self) -> RootCertifier[T]:
-        return self._root_certifier
     
     @abstractmethod
     def execute(self, candidate: Any) -> ValidationResult:

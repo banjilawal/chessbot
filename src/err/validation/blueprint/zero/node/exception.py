@@ -40,7 +40,7 @@ class ZeroNodeBlueprintFlagsException(ZeroBlueprintFlagsException):
     Super Class:
         ZeroBlueprintFlagsException
     """
-    MSG = "Candidate did not pass a No NodeCCertifier test. enabled."
+    MSG = "No NodeCCertifier test. enabled."
     ERR_CODE = "ZERO_NODE_BLUEPRINT_FLAGS_FAILURE"
     
     def __init__(

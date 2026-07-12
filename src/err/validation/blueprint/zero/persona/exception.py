@@ -40,7 +40,7 @@ class ZeroPersonaBlueprintFlagsException(ZeroBlueprintFlagsException):
     Super Class:
         ZeroBlueprintFlagsException
     """
-    MSG = "Candidate did not pass a No PersonaCCertifier test. enabled."
+    MSG = "No PersonaCCertifier test. enabled."
     ERR_CODE = "ZERO_PERSONA_BLUEPRINT_FLAGS_FAILURE"
     
     def __init__(

@@ -42,7 +42,7 @@ class BidirectionalSourceTokenRelationException(ItineraryConsistencyException):
     Super Class:
         ItineraryConsistencyException
     """
-    MSG = "Candidate did not pass a Itinerary's token does not have bidirectional relation with source."
+    MSG = "Itinerary's token does not have bidirectional relation with source."
     ERR_CODE = "NO_SOURCE_TOKEN_BIDIRECTIONAL_RELATION_ERROR"
     
     def __init__(

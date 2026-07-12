@@ -28,7 +28,7 @@ class RegisterValidatorException(ValidatorException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a candidate did not pass a RegisterValidator test.
+        1.  Indicate that a RegisterValidator test.
 
     Attributes:
             msg: Optional[str]
@@ -45,7 +45,7 @@ class RegisterValidatorException(ValidatorException):
     Super Class:
         ValidatorException
     """
-    MSG = "Candidate did not pass a RegisterValidator test."
+    MSG = "Register validation failed."
     ERR_CODE = "REGISTER_VALIDATOR_FAILURE"
     
     def __init__(

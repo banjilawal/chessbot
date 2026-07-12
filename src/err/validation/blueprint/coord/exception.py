@@ -23,7 +23,7 @@ class CoordCertifierException(RootCertifierException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a candidate did not pass a CoordCertifier test.
+        1.  Indicate that a CoordCertifier test.
 
     Attributes:
             msg: Optional[str]
@@ -40,7 +40,7 @@ class CoordCertifierException(RootCertifierException):
     Super Class:
         CertifierException
     """
-    MSG = "Candidate did not pass a CoordCertifier test."
+    MSG = "CoordCertifier test."
     ERR_CODE = "COORD_BLUEPRINT_VALIDATOR_FAILURE"
     
     def __init__(

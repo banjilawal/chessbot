@@ -40,7 +40,7 @@ class ZeroArenaBlueprintFlagsException(ZeroBlueprintFlagsException):
     Super Class:
         ZeroBlueprintFlagsException
     """
-    MSG = "Candidate did not pass a No ArenaCCertifier test. enabled."
+    MSG = "No ArenaCCertifier test. enabled."
     ERR_CODE = "ZERO_ARENA_BLUEPRINT_FLAGS_FAILURE"
     
     def __init__(

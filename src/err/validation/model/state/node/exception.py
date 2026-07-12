@@ -25,7 +25,7 @@ class NodeValidatorException(ValidatorException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a candidate did not pass a NodeValidator test.
+        1.  Indicate that a NodeValidator test.
 
     Attributes:
         msg: Optional[str]
@@ -42,7 +42,7 @@ class NodeValidatorException(ValidatorException):
     Super Class:
         ValidatorException
     """
-    MSG = "Candidate did not pass a NodeValidator test."
+    MSG = "Node validation failed."
     ERR_CODE = "NODE_VALIDATOR_FAILURE"
     
     def __init__(

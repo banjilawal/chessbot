@@ -74,6 +74,7 @@ class ToggleValidator:
         """
         method = f"{self.__class__.__name__}.execute"
         
+        # Handle the case that, the candidate does not exist.
         if candidate is None:
             # Send the exception chain on failure.
             return ValidationResult.failure(
@@ -85,6 +86,7 @@ class ToggleValidator:
                     ex=null_exception,
                 )
             )
+        # Handle the case that, the candidate is the wrong class.
         if not isinstance(candidate, toggle_model):
             # Send the exception chain on failure.
             return ValidationResult.failure(
@@ -99,10 +101,10 @@ class ToggleValidator:
                     ),
                 )
             )
-        # --- Cast the candidate into the expected Context subclass for additional tests. ---#
+        # --- Cast the candidate into the expected class for additional tests. ---#
         toggle = cast(toggle_model, candidate)
 
-        # Handle the case of searching with no attribute-value provided.
+        # Handle the case that, all switches are off.
         if toggle.no_active_toggles:
             # Send the exception chain on failure.
             return ValidationResult.failure(
@@ -117,7 +119,7 @@ class ToggleValidator:
                     ),
                 )
             )
-        # Handle the case of too many attributes being used in a search.
+        # Handle the case of too many switches are turned no.
         if toggle.excess_toggles:
             # Send the exception chain on failure.
             return ValidationResult.failure(

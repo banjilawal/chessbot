@@ -25,7 +25,7 @@ class CoordValidatorException(ValidatorException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a candidate did not pass a CoordValidator test.
+        1.  Indicate that a CoordValidator test.
 
     Attributes:
         msg: Optional[str]
@@ -42,7 +42,7 @@ class CoordValidatorException(ValidatorException):
     Super Class:
         ValidatorException
     """
-    MSG = "Candidate did not pass a CoordValidator test."
+    MSG = "Coord validation failed."
     ERR_CODE = "COORD_VALIDATOR_FAILURE"
     
     def __init__(

@@ -23,7 +23,7 @@ class RankCertifierException(RootCertifierException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a candidate did not pass a RankCertifier test.
+        1.  Indicate that a RankCertifier test.
 
     Attributes:
             msg: Optional[str]
@@ -40,7 +40,7 @@ class RankCertifierException(RootCertifierException):
     Super Class:
         CertifierException
     """
-    MSG = "Candidate did not pass a RankCertifier test."
+    MSG = "RankCertifier test."
     ERR_CODE = "RANK_BLUEPRINT_VALIDATOR_FAILURE"
     
     def __init__(

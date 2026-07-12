@@ -42,7 +42,7 @@ class IdentityValidatorException(ValidatorException):
     Super Class:
         ValidatorException
     """
-    MSG = "Candidate did not pass a IdentityValidator test."
+    MSG = "Identity validation failed."
     ERR_CODE = "IDENTITY_VALIDATOR_FAILURE"
     
     def __init__(

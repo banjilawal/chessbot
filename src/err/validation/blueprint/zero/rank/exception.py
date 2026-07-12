@@ -40,7 +40,7 @@ class ZeroRankBlueprintFlagsException(ZeroBlueprintFlagsException):
     Super Class:
         ZeroBlueprintFlagsException
     """
-    MSG = "Candidate did not pass a No RankCCertifier test. enabled."
+    MSG = "No RankCCertifier test. enabled."
     ERR_CODE = "ZERO_RANK_BLUEPRINT_FLAGS_FAILURE"
     
     def __init__(

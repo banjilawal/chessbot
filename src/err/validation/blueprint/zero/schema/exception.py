@@ -40,7 +40,7 @@ class ZeroSchemaBlueprintFlagsException(ZeroBlueprintFlagsException):
     Super Class:
         ZeroBlueprintFlagsException
     """
-    MSG = "Candidate did not pass a No SchemaCCertifier test. enabled."
+    MSG = "No SchemaCCertifier test. enabled."
     ERR_CODE = "ZERO_SCHEMA_BLUEPRINT_FLAGS_FAILURE"
     
     def __init__(

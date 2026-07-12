@@ -25,7 +25,7 @@ class PathValidatorException(ValidatorException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a candidate did not pass a PathValidation check.
+        1.  Indicate that a PathValidation check.
 
     Attributes:
             msg: Optional[str]
@@ -42,7 +42,7 @@ class PathValidatorException(ValidatorException):
     Super Class:
         ValidatorException
     """
-    MSG = "Candidate did not pass a PathValidator test."
+    MSG = "Path validation failed."
     ERR_CODE = "PATH_VALIDATOR_FAILURE"
     
     def __init__(

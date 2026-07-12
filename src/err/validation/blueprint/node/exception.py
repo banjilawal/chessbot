@@ -23,7 +23,7 @@ class NodeCertifierException(RootCertifierException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a candidate did not pass a NodeCertifier test.
+        1.  Indicate that a NodeCertifier test.
 
     Attributes:
             msg: Optional[str]
@@ -40,7 +40,7 @@ class NodeCertifierException(RootCertifierException):
     Super Class:
         CertifierException
     """
-    MSG = "Candidate did not pass a NodeCertifier test."
+    MSG = "NodeCertifier test."
     ERR_CODE = "NODE_BLUEPRINT_VALIDATOR_FAILURE"
     
     def __init__(

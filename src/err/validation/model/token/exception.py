@@ -42,7 +42,7 @@ class TokenValidatorException(ValidatorException):
     Super Class:
         ValidatorException
     """
-    MSG = "Candidate did not pass a TokenValidator test."
+    MSG = "Token validation failed."
     ERR_CODE = "TOKEN_VALIDATOR_FAILURE"
     
     def __init__(

@@ -24,7 +24,7 @@ class RookValidatorException(RankValidatorException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a candidate did not pass a Rook validator test.
+        1.  Indicate that a Rook validator test.
 
     Attributes:
         msg: Optional[str]
@@ -41,7 +41,7 @@ class RookValidatorException(RankValidatorException):
     Super Class:
         RankValidatorException
     """
-    MSG = "Candidate did not pass a Rook validator test."
+    MSG = "Rook  validation failed."
     ERR_CODE = "ROOK_VALIDATOR_FAILURE"
     
     def __init__(

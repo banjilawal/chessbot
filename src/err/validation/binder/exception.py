@@ -25,7 +25,7 @@ class BinderValidatorException(ValidatorException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a candidate did not pass a BinderValidator test.
+        1.  Indicate that a BinderValidator test.
 
     Attributes:
         msg: Optional[str]
@@ -42,7 +42,7 @@ class BinderValidatorException(ValidatorException):
     Super Class:
         ValidatorException
     """
-    MSG = "Candidate did not pass a BinderValidator test."
+    MSG = "Binder validation failed."
     ERR_CODE = "BINDER_VALIDATOR_FAILURE"
     
     def __init__(

@@ -23,7 +23,7 @@ class TeamCertifierException(RootCertifierException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a candidate did not pass a TeamCertifier test.
+        1.  Indicate that a TeamCertifier test.
 
     Attributes:
             msg: Optional[str]
@@ -40,7 +40,7 @@ class TeamCertifierException(RootCertifierException):
     Super Class:
         CertifierException
     """
-    MSG = "Candidate did not pass a TeamCertifier test."
+    MSG = "TeamCertifier test."
     ERR_CODE = "TEAM_BLUEPRINT_VALIDATOR_FAILURE"
     
     def __init__(

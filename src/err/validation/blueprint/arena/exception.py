@@ -23,7 +23,7 @@ class ArenaCertifierException(RootCertifierException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a candidate did not pass a ArenaCertifier test.
+        1.  Indicate that a ArenaCertifier test.
 
     Attributes:
             msg: Optional[str]
@@ -40,7 +40,7 @@ class ArenaCertifierException(RootCertifierException):
     Super Class:
         CertifierException
     """
-    MSG = "Candidate did not pass a ArenaCertifier test."
+    MSG = "ArenaCertifier test."
     ERR_CODE = "ARENA_BLUEPRINT_VALIDATOR_FAILURE"
     
     def __init__(

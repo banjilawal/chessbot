@@ -40,7 +40,7 @@ class ExcessPersonaBlueprintFlagsException(ExcessBlueprintFlagsException):
     Super Class:
         ExcessBlueprintFlagsException
     """
-    MSG = "Candidate did not pass a More than one PersonaCCertifier test. enabled."
+    MSG = "More than one PersonaCCertifier test. enabled."
     ERR_CODE = "EXCESS_PERSONA_BLUEPRINT_FLAGS_FAILURE"
     
     def __init__(

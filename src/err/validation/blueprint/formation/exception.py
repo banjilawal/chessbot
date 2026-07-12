@@ -23,7 +23,7 @@ class FormationCertifierException(RootCertifierException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a candidate did not pass a FormationCertifier test.
+        1.  Indicate that a FormationCertifier test.
 
     Attributes:
             msg: Optional[str]
@@ -40,7 +40,7 @@ class FormationCertifierException(RootCertifierException):
     Super Class:
         CertifierException
     """
-    MSG = "Candidate did not pass a FormationCertifier test."
+    MSG = "FormationCertifier test."
     ERR_CODE = "FORMATION_BLUEPRINT_VALIDATOR_FAILURE"
     
     def __init__(

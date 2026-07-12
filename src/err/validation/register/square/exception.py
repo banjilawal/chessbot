@@ -26,7 +26,7 @@ class SquareRegisterValidatorException(RegisterValidatorException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a candidate did not pass a SquareRegisterValidator test.
+        1.  Indicate that a SquareRegisterValidator test.
 
     Attributes:
             msg: Optional[str]
@@ -43,7 +43,7 @@ class SquareRegisterValidatorException(RegisterValidatorException):
     Super Class:
         RegisterValidatorException
     """
-    MSG = "Candidate did not pass a SquareRegisterValidator test."
+    MSG = "SquareRegister validation failed."
     ERR_CODE = "SQUARE_REGISTER_VALIDATOR_FAILURE"
     
     def __init__(

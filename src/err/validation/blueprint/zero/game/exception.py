@@ -40,7 +40,7 @@ class ZeroGameBlueprintFlagsException(ZeroBlueprintFlagsException):
     Super Class:
         ZeroBlueprintFlagsException
     """
-    MSG = "Candidate did not pass a No GameCCertifier test. enabled."
+    MSG = "No GameCCertifier test. enabled."
     ERR_CODE = "ZERO_GAME_BLUEPRINT_FLAGS_FAILURE"
     
     def __init__(

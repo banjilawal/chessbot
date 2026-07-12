@@ -26,7 +26,7 @@ class GameCertifierException(RootCertifierException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a candidate did not pass a GameCertifier test.
+        1.  Indicate that a GameCertifier test.
 
     Attributes:
             msg: Optional[str]
@@ -43,7 +43,7 @@ class GameCertifierException(RootCertifierException):
     Super Class:
         CertifierException
     """
-    MSG = "Candidate did not pass a GameCertifier test."
+    MSG = "GameCertifier test."
     ERR_CODE = "GAME_BLUEPRINT_VALIDATOR_FAILURE"
     
     def __init__(

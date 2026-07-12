@@ -23,7 +23,7 @@ class HostageCertifierException(RootCertifierException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a candidate did not pass a HostageCertifier test.
+        1.  Indicate that a HostageCertifier test.
 
     Attributes:
             msg: Optional[str]
@@ -40,7 +40,7 @@ class HostageCertifierException(RootCertifierException):
     Super Class:
         CertifierException
     """
-    MSG = "Candidate did not pass a HostageCertifier test."
+    MSG = "HostageCertifier test."
     ERR_CODE = "HOSTAGE_BLUEPRINT_VALIDATOR_FAILURE"
     
     def __init__(

@@ -26,7 +26,7 @@ class TokenQueryValidatorException(QueryValidatorException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a candidate did not pass a TokenQueryValidator test.
+        1.  Indicate that a TokenQueryValidator test.
 
     Attributes:
         msg: Optional[str]
@@ -43,7 +43,7 @@ class TokenQueryValidatorException(QueryValidatorException):
     Super Class:
         QueryValidatorException
     """
-    MSG = "Candidate did not pass a TokenQueryValidator test."
+    MSG = "TokenQuery validation failed."
     ERR_CODE = "TOKEN_QUERY_VALIDATOR_FAILURE"
     
     def __init__(

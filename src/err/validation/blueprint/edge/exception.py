@@ -23,7 +23,7 @@ class EdgeCertifierException(RootCertifierException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a candidate did not pass a EdgeCertifier test.
+        1.  Indicate that a EdgeCertifier test.
 
     Attributes:
             msg: Optional[str]
@@ -40,7 +40,7 @@ class EdgeCertifierException(RootCertifierException):
     Super Class:
         CertifierException
     """
-    MSG = "Candidate did not pass a EdgeCertifier test."
+    MSG = "EdgeCertifier test."
     ERR_CODE = "EDGE_BLUEPRINT_VALIDATOR_FAILURE"
     
     def __init__(

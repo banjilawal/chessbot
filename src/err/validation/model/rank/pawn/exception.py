@@ -24,7 +24,7 @@ class PawnValidatorException(RankValidatorException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a candidate did not pass a Pawn validator test.
+        1.  Indicate that a Pawn validator test.
 
     Attributes:
         msg: Optional[str]
@@ -41,7 +41,7 @@ class PawnValidatorException(RankValidatorException):
     Super Class:
         RankValidatorException
     """
-    MSG = "Candidate did not pass a Pawn validator test."
+    MSG = "Pawn  validation failed."
     ERR_CODE = "PAWN_VALIDATOR_FAILURE"
     
     def __init__(

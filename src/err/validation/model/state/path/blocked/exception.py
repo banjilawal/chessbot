@@ -25,7 +25,7 @@ class BlockedPathValidatorException(PathValidatorException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a candidate did not pass a BlockedPathValidator test.
+        1.  Indicate that a BlockedPathValidator test.
 
     Attributes:
             msg: Optional[str]
@@ -42,7 +42,7 @@ class BlockedPathValidatorException(PathValidatorException):
     Super Class:
         PathValidatorException
     """
-    MSG = "Candidate did not pass an BlockedPathValidator test."
+    MSG = "Candidate did not pass an BlockedPath validation failed."
     ERR_CODE = "BLOCKED_PATH_VALIDATOR_FAILURE"
     
     def __init__(

@@ -40,7 +40,7 @@ class ExcessHostageBlueprintFlagsException(ExcessBlueprintFlagsException):
     Super Class:
         ExcessBlueprintFlagsException
     """
-    MSG = "Candidate did not pass a More than one HostageCCertifier test. enabled."
+    MSG = "More than one HostageCCertifier test. enabled."
     ERR_CODE = "EXCESS_HOSTAGE_BLUEPRINT_FLAGS_FAILURE"
     
     def __init__(

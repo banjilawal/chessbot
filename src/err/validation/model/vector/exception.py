@@ -25,7 +25,7 @@ class VectorValidatorException(ValidatorException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate a candidate did not pass a VectorValidator test.
+        1.  Indicate a VectorValidator test.
 
     Attributes:
         msg: Optional[str]
@@ -42,7 +42,7 @@ class VectorValidatorException(ValidatorException):
     Super Class:
         ValidatorException
     """
-    MSG = "Candidate did not pass a VectorValidator test."
+    MSG = "Vector validation failed."
     ERR_CODE = "VECTOR_VALIDATOR_FAILURE"
     
     def __init__(

@@ -13,7 +13,6 @@ from abc import ABC, abstractmethod
 from typing import Any, Generic, TypeVar
 
 from result import ValidationResult
-from toolkit import ModelToolkit, Toolkit
 from util import LoggingLevelRouter
 
 T = TypeVar("T")
@@ -45,6 +44,6 @@ class Validator(ABC, Generic[T]):
 
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def execute(self, candidate: Any,) -> ValidationResult:
+    def execute(self, candidate: Any, *arg, **kwargs,) -> ValidationResult:
         """Implement in subclass."""
         pass

@@ -25,7 +25,7 @@ class PersonaCertifierException(RootCertifierException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a candidate did not pass a PersonaCertifier test.
+        1.  Indicate that a PersonaCertifier test.
 
     Attributes:
             msg: Optional[str]
@@ -42,7 +42,7 @@ class PersonaCertifierException(RootCertifierException):
     Super Class:
         CertifierException
     """
-    MSG = "Candidate did not pass a PersonaCertifier test."
+    MSG = "PersonaCertifier test."
     ERR_CODE = "PERSONA_BLUEPRINT_VALIDATOR_FAILURE"
     
     def __init__(

@@ -40,7 +40,7 @@ class ZeroSquareBlueprintFlagsException(ZeroBlueprintFlagsException):
     Super Class:
         ZeroBlueprintFlagsException
     """
-    MSG = "Candidate did not pass a No SquareCCertifier test. enabled."
+    MSG = "No SquareCCertifier test. enabled."
     ERR_CODE = "ZERO_SQUARE_BLUEPRINT_FLAGS_FAILURE"
     
     def __init__(

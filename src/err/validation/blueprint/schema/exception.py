@@ -23,7 +23,7 @@ class SchemaCertifierException(RootCertifierException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a candidate did not pass a SchemaCertifier test.
+        1.  Indicate that a SchemaCertifier test.
 
     Attributes:
             msg: Optional[str]
@@ -40,7 +40,7 @@ class SchemaCertifierException(RootCertifierException):
     Super Class:
         CertifierException
     """
-    MSG = "Candidate did not pass a SchemaCertifier test."
+    MSG = "SchemaCertifier test."
     ERR_CODE = "SCHEMA_BLUEPRINT_VALIDATOR_FAILURE"
     
     def __init__(

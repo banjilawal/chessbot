@@ -25,7 +25,7 @@ class BlueprintValidationPrimingException(RootCertifierException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a candidate did not pass a BlueprintValidation failed during its priming phase.
+        1.  Indicate that a BlueprintValidation failed during its priming phase.
 
     Attributes:
             msg: Optional[str]
@@ -42,7 +42,7 @@ class BlueprintValidationPrimingException(RootCertifierException):
     Super Class:
         CertifierException
     """
-    MSG = "Candidate did not pass a BlueprintValidation failed during its priming phase."
+    MSG = "BlueprintValidation failed during its priming phase."
     ERR_CODE = "BLUEPRINT_VALIDATION_PRIMING_FAILURE"
     
     def __init__(

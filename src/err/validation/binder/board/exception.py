@@ -24,7 +24,7 @@ class BoardTeamBinderValidatorException(BinderValidatorException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a candidate did not pass a BoardTeamBinder validator test.
+        1.  Indicate that a BoardTeamBinder validator test.
 
     Attributes:
         msg: Optional[str]
@@ -41,7 +41,7 @@ class BoardTeamBinderValidatorException(BinderValidatorException):
     Super Class:
         BinderValidatorException
     """
-    MSG = "Candidate did not pass a BoardTeamBinder validator test."
+    MSG = "BoardTeamBinder  validation failed."
     ERR_CODE = "BOARD_TEAM_BINDER_VALIDATOR_FAILURE"
     
     def __init__(

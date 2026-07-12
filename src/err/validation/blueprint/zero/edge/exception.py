@@ -40,7 +40,7 @@ class ZeroEdgeBlueprintFlagsException(ZeroBlueprintFlagsException):
     Super Class:
         ZeroBlueprintFlagsException
     """
-    MSG = "Candidate did not pass a No EdgeCCertifier test. enabled."
+    MSG = "No EdgeCCertifier test. enabled."
     ERR_CODE = "ZERO_EDGE_BLUEPRINT_FLAGS_FAILURE"
     
     def __init__(

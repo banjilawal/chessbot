@@ -40,7 +40,7 @@ class ZeroFormationBlueprintFlagsException(ZeroBlueprintFlagsException):
     Super Class:
         ZeroBlueprintFlagsException
     """
-    MSG = "Candidate did not pass a No FormationCCertifier test. enabled."
+    MSG = "No FormationCCertifier test. enabled."
     ERR_CODE = "ZERO_FORMATION_BLUEPRINT_FLAGS_FAILURE"
     
     def __init__(

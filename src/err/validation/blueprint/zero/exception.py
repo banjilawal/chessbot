@@ -40,7 +40,7 @@ class ZeroBlueprintFlagsException(BlueprintException):
     Super Class:
         BlueprintException
     """
-    MSG = "Candidate did not pass a No Blueprint flag is enabled."
+    MSG = "No Blueprint flag is enabled."
     ERR_CODE = "ZERO_BLUEPRINT_FLAGS_FAILURE"
     
     def __init__(

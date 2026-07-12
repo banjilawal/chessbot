@@ -40,7 +40,7 @@ class ZeroHostageBlueprintFlagsException(ZeroBlueprintFlagsException):
     Super Class:
         ZeroBlueprintFlagsException
     """
-    MSG = "Candidate did not pass a No HostageCCertifier test. enabled."
+    MSG = "No HostageCCertifier test. enabled."
     ERR_CODE = "ZERO_HOSTAGE_BLUEPRINT_FLAGS_FAILURE"
     
     def __init__(

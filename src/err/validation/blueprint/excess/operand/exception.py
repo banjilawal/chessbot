@@ -40,7 +40,7 @@ class ExcessVectorOperandFlagsException(ExcessBlueprintFlagsException):
     Super Class:
         ExcessBlueprintFlagsException
     """
-    MSG = "Candidate did not pass a More than one VectorOperand attribute enabled."
+    MSG = "More than one VectorOperand attribute enabled."
     ERR_CODE = "EXCESS_CARTESIAN_FLAGS_FAILURE"
     
     def __init__(

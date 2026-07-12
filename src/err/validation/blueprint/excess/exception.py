@@ -40,7 +40,7 @@ class ExcessBlueprintFlagsException(BlueprintException):
     Super Class:
         BlueprintException
     """
-    MSG = "Candidate did not pass a More than one Certifier test. enabled."
+    MSG = "More than one Certifier test. enabled."
     ERR_CODE = "EXCESS_BLUEPRINT_FLAGS_FAILURE"
     
     def __init__(

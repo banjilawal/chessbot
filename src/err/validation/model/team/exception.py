@@ -25,7 +25,7 @@ class TeamValidatorException(ValidatorException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a candidate did not pass a TeamValidator test.
+        1.  Indicate that a TeamValidator test.
 
     Attributes:
             msg: Optional[str]
@@ -42,7 +42,7 @@ class TeamValidatorException(ValidatorException):
     Super Class:
         ValidatorException
     """
-    MSG = "Candidate did not pass a TeamValidator test."
+    MSG = "Team validation failed."
     ERR_CODE = "TEAM_VALIDATOR_FAILURE"
     
     def __init__(

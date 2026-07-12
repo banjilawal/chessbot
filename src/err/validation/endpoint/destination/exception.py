@@ -25,7 +25,7 @@ class TokenDestinationCertifierException(ValidatorException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a candidate did not pass a TokenDestinationCertifier test.
+        1.  Indicate that a TokenDestinationCertifier test.
 
     Attributes:
         msg: Optional[str]

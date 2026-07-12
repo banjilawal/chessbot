@@ -25,7 +25,7 @@ class CertifierException(ValidatorException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a candidate did not pass a Certifier test.
+        1.  Indicate that a Certifier test.
 
     Attributes:
             msg: Optional[str]
@@ -42,7 +42,7 @@ class CertifierException(ValidatorException):
     Super Class:
         ValidatorException
     """
-    MSG = "Candidate did not pass a Certifier test."
+    MSG = "Certifier test."
     ERR_CODE = "BLUEPRINT_VALIDATOR_FAILURE"
     
     def __init__(

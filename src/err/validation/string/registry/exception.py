@@ -25,7 +25,7 @@ class RegistryEntryKeyStringValidatorException(ValidatorException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a candidate did not pass a RegistryEntry key failed a String validation check.
+        1.  Indicate that a RegistryEntry key failed a String validation check.
 
     Attributes:
         msg: Optional[str]
@@ -42,7 +42,7 @@ class RegistryEntryKeyStringValidatorException(ValidatorException):
     Super Class:
         ValidatorException
     """
-    MSG = "Candidate did not pass a RegistryEntryKey is not a valid string."
+    MSG = "RegistryEntryKey is not a valid string."
     ERR_CODE = "REGISTRY_ENTRY_KEY_STRING_VALIDATOR_FAILURE"
     
     def __init__(

@@ -24,7 +24,7 @@ class BishopValidatorException(RankValidatorException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a candidate did not pass a Bishop validator test.
+        1.  Indicate that a Bishop validator test.
 
     Attributes:
         msg: Optional[str]
@@ -41,7 +41,7 @@ class BishopValidatorException(RankValidatorException):
     Super Class:
         RankValidatorException
     """
-    MSG = "Candidate did not pass a Bishop validator test."
+    MSG = "Bishop  validation failed."
     ERR_CODE = "BISHOP_VALIDATOR_FAILURE"
     
     def __init__(

@@ -23,7 +23,7 @@ class SquareCertifierException(RootCertifierException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a candidate did not pass a SquareCertifier test.
+        1.  Indicate that a SquareCertifier test.
 
     Attributes:
             msg: Optional[str]
@@ -40,7 +40,7 @@ class SquareCertifierException(RootCertifierException):
     Super Class:
         CertifierException
     """
-    MSG = "Candidate did not pass a SquareCertifier test."
+    MSG = "SquareCertifier test."
     ERR_CODE = "SQUARE_BLUEPRINT_VALIDATOR_FAILURE"
     
     def __init__(

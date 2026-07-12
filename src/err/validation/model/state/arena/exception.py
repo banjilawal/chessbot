@@ -42,7 +42,7 @@ class ArenaValidatorException(ValidatorException):
     Super Class:
         ValidatorException
     """
-    MSG = "Candidate did not pass a ArenaValidator test."
+    MSG = "Arena validation failed."
     ERR_CODE = "ARENA_VALIDATOR_FAILURE"
     
     def __init__(

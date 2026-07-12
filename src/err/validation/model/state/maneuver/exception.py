@@ -25,7 +25,7 @@ class ManeuverValidatorException(ValidatorException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a candidate did not pass a ManeuverValidator test.
+        1.  Indicate that a ManeuverValidator test.
 
     Attributes:
         msg: Optional[str]
@@ -42,7 +42,7 @@ class ManeuverValidatorException(ValidatorException):
     Super Class:
         ValidatorException
     """
-    MSG = "Candidate did not pass a ManeuverValidator test."
+    MSG = "Maneuver validation failed."
     ERR_CODE = "MANEUVER_VALIDATOR_FAILURE"
     
     def __init__(

@@ -24,7 +24,7 @@ class KingValidatorException(RankValidatorException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a candidate did not pass a King validator test.
+        1.  Indicate that a King validator test.
 
     Attributes:
         msg: Optional[str]
@@ -41,7 +41,7 @@ class KingValidatorException(RankValidatorException):
     Super Class:
         RankValidatorException
     """
-    MSG = "Candidate did not pass a King validator test."
+    MSG = "King  validation failed."
     ERR_CODE = "KING_VALIDATOR_FAILURE"
     
     def __init__(

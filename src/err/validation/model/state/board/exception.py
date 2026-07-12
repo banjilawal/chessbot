@@ -25,7 +25,7 @@ class BoardValidatorException(ValidatorException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a candidate did not pass a BoardValidator test.
+        1.  Indicate that a BoardValidator test.
 
     Attributes:
         msg: Optional[str]
@@ -42,7 +42,7 @@ class BoardValidatorException(ValidatorException):
     Super Class:
         ValidatorException
     """
-    MSG = "Candidate did not pass a BoardValidator test."
+    MSG = "Board validation failed."
     ERR_CODE = "BOARD_VALIDATOR_FAILURE"
     
     def __init__(

@@ -42,7 +42,7 @@ class ItineraryValidatorException(ValidatorException):
     Super Class:
         ValidatorException
     """
-    MSG = "Candidate did not pass a ItineraryValidator test."
+    MSG = "Itinerary validation failed."
     ERR_CODE = "ITINERARY_VALIDATOR_FAILURE"
     
     def __init__(

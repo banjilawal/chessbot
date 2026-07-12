@@ -26,7 +26,7 @@ class CartesianRegisterValidatorException(RegisterValidatorException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a candidate did not pass a CartesianRegisterValidator test.
+        1.  Indicate that a CartesianRegisterValidator test.
 
     Attributes:
             msg: Optional[str]
@@ -43,7 +43,7 @@ class CartesianRegisterValidatorException(RegisterValidatorException):
     Super Class:
         RegisterValidatorException
     """
-    MSG = "CartesianRegisterValidator test."
+    MSG = "CartesianRegister validation failed."
     ERR_CODE = "CARTESIAN_REGISTER_VALIDATOR_FAILURE"
     
     def __init__(

@@ -40,7 +40,7 @@ class ExcessTeamBlueprintFlagsException(ExcessBlueprintFlagsException):
     Super Class:
         ExcessBlueprintFlagsException
     """
-    MSG = "Candidate did not pass a More than one TeamCCertifier test. enabled."
+    MSG = "More than one TeamCCertifier test. enabled."
     ERR_CODE = "EXCESS_TEAM_BLUEPRINT_FLAGS_FAILURE"
     
     def __init__(

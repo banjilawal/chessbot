@@ -27,7 +27,7 @@ class StringValidatorException(ValidatorException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a candidate did not pass a StringValidator test.
+        1.  Indicate that a StringValidator test.
 
     Attributes:
         msg: Optional[str]
@@ -44,7 +44,7 @@ class StringValidatorException(ValidatorException):
     Super Class:
         ValidatorException
     """
-    MSG = "Candidate did not pass a StringValidator test."
+    MSG = "String validation failed."
     ERR_CODE = "STRING_VALIDATOR_FAILURE"
     
     def __init__(

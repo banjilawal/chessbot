@@ -24,7 +24,7 @@ class KnightValidatorException(RankValidatorException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a candidate did not pass a Knight validator test.
+        1.  Indicate that a Knight validator test.
 
     Attributes:
         msg: Optional[str]
@@ -41,7 +41,7 @@ class KnightValidatorException(RankValidatorException):
     Super Class:
         RankValidatorException
     """
-    MSG = "Candidate did not pass a Knight validator test."
+    MSG = "Knight  validation failed."
     ERR_CODE = "KNIGHT_VALIDATOR_FAILURE"
     
     def __init__(

@@ -42,7 +42,7 @@ class EdgeValidatorException(ValidatorException):
     Super Class:
         ValidatorException
     """
-    MSG = "Candidate did not pass a EdgeValidator test."
+    MSG = "Edge validation failed."
     ERR_CODE = "EDGE_VALIDATOR_FAILURE"
     
     def __init__(

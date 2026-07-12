@@ -23,7 +23,7 @@ class BlueprintIdValidatorException(RootCertifierException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a candidate did not pass a BlueprintIdValidator test.
+        1.  Indicate that a BlueprintIdValidator test.
 
     Attributes:
             msg: Optional[str]
@@ -40,7 +40,7 @@ class BlueprintIdValidatorException(RootCertifierException):
     Super Class:
         CertifierException
     """
-    MSG = "Candidate did not pass a BlueprintIdValidator test."
+    MSG = "BlueprintId validation failed."
     ERR_CODE = "BLUEPRINT_ID_VALIDATOR_FAILURE"
     
     def __init__(

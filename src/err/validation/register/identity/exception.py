@@ -26,7 +26,7 @@ class IdentityRegisterValidatorException(RegisterValidatorException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a candidate did not pass a VectorIdentityRegisterValidator test.
+        1.  Indicate that a VectorIdentityRegisterValidator test.
 
     Attributes:
             msg: Optional[str]
@@ -43,7 +43,7 @@ class IdentityRegisterValidatorException(RegisterValidatorException):
     Super Class:
         RegisterValidatorException
     """
-    MSG = "Candidate did not pass a VectorIdentityRegisterValidator test."
+    MSG = "VectorIdentityRegister validation failed."
     ERR_CODE = "IDENTITY_REGISTER_VALIDATOR_FAILURE"
     
     def __init__(

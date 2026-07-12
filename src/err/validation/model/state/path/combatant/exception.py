@@ -25,7 +25,7 @@ class CombatantPathValidatorException(PathValidatorException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a candidate did not pass a CombatantPathValidator test.
+        1.  Indicate that a CombatantPathValidator test.
 
     Attributes:
             msg: Optional[str]
@@ -42,7 +42,7 @@ class CombatantPathValidatorException(PathValidatorException):
     Super Class:
         PathValidatorException
     """
-    MSG = "Candidate did not pass an CombatantPathValidator test."
+    MSG = "Candidate did not pass an CombatantPath validation failed."
     ERR_CODE = "COMBATANT_PATH_VALIDATOR_FAILURE"
     
     def __init__(

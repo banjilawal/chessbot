@@ -40,7 +40,7 @@ class ZeroTeamBlueprintFlagsException(ZeroBlueprintFlagsException):
     Super Class:
         ZeroBlueprintFlagsException
     """
-    MSG = "Candidate did not pass a No TeamCCertifier test. enabled."
+    MSG = "No TeamCCertifier test. enabled."
     ERR_CODE = "ZERO_TEAM_BLUEPRINT_FLAGS_FAILURE"
     
     def __init__(

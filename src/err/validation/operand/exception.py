@@ -24,7 +24,7 @@ class VectorOperandValidatorException(ValidatorException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a candidate did not pass a VectorOperandValidator test.
+        1.  Indicate that a VectorOperandValidator test.
 
     Attributes:
             msg: Optional[str]
@@ -41,7 +41,7 @@ class VectorOperandValidatorException(ValidatorException):
     Super Class:
         ValidatorException
     """
-    MSG = "Candidate did not pass a VectorOperand validation failed."
+    MSG = "VectorOperand validation failed."
     ERR_CODE = "CARTESIAN_VALIDATOR_FAILURE"
     
     def __init__(

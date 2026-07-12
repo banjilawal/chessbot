@@ -26,7 +26,7 @@ class QueryValidatorException(ValidatorException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a candidate did not pass a QueryValidator test.
+        1.  Indicate that a QueryValidator test.
 
     Attributes:
         msg: Optional[str]
@@ -43,7 +43,7 @@ class QueryValidatorException(ValidatorException):
     Super Class:
         ValidatorException
     """
-    MSG = "Candidate did not pass a QueryValidator test."
+    MSG = "Query validation failed."
     ERR_CODE = "QUERY_VALIDATOR_FAILURE"
     
     def __init__(

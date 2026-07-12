@@ -23,7 +23,7 @@ class PlayerCertifierException(RootCertifierException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a candidate did not pass a PlayerCertifier test.
+        1.  Indicate that a PlayerCertifier test.
 
     Attributes:
             msg: Optional[str]
@@ -40,7 +40,7 @@ class PlayerCertifierException(RootCertifierException):
     Super Class:
         CertifierException
     """
-    MSG = "Candidate did not pass a PlayerCertifier test."
+    MSG = "PlayerCertifier test."
     ERR_CODE = "PLAYER_BLUEPRINT_VALIDATOR_FAILURE"
     
     def __init__(

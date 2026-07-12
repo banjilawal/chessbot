@@ -43,34 +43,33 @@ class TokenCarrierValidator(CarrierValidator[TokenCarrier]):
     def __init__(
             self,
             toolkit: TokenToolkit | None = TokenToolkit(),
-            root_certifier: TokenRootCertifier | None = TokenRootCertifier(),
     ):
         """
         Args:
             root_certifier: TokenRootCertifier
         """
-        super().__init__(toolkit=toolkit, root_certifier=root_certifier)
+        super().__init__(toolkit=toolkit)
 
     @property
     def toolkit(self) -> TokenToolkit:
         return cast(TokenToolkit, self.toolkit)
-    
-    @property
-    def root_certifier(self) -> TokenRootCertifier:
-        return cast(TokenRootCertifier, self.root_certifier)
-    
     
     
     @abstractmethod
     def execute(self, candidate: Any) -> ValidationResult:
         method = f"{self.__class__.__name__}.execute"
         
-        priming = self.toolkit.priming_validator.execute(
+        bootstrap = self.bootstrapper.execute(
             candiate=candidate,
             target_model=self.toolkit.carrier_model,
-            null_exception=self.toolkit.
+            null_exception=self.toolkit.carrier_null_exception,
         )
-        if priming.is_failure:
+        if bootstrap.is_failure:
+            return ValidationResult.failure(
+                TokenCarrierValidatorException(
+                
+                )
+            )
         
     
     

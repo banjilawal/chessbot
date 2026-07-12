@@ -23,7 +23,7 @@ class BoardCertifierException(RootCertifierException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a candidate did not pass a BoardCertifier test.
+        1.  Indicate that a BoardCertifier test.
 
     Attributes:
             msg: Optional[str]
@@ -40,7 +40,7 @@ class BoardCertifierException(RootCertifierException):
     Super Class:
         CertifierException
     """
-    MSG = "Candidate did not pass a BoardCertifier test."
+    MSG = "BoardCertifier test."
     ERR_CODE = "BOARD_BLUEPRINT_VALIDATOR_FAILURE"
     
     def __init__(

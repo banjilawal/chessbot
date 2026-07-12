@@ -42,7 +42,7 @@ class TokenAlreadyAtDestinationException(ValidatorException):
     Super Class:
         ValidatorException
     """
-    MSG = "Candidate did not pass a Token is already at the destination."
+    MSG = "Token is already at the destination."
     ERR_CODE = "TOKEN_ALREADY_AT_DESTINATION_ERROR"
     
     def __init__(

@@ -40,7 +40,7 @@ class ZeroPlayerBlueprintFlagsException(ZeroBlueprintFlagsException):
     Super Class:
         ZeroBlueprintFlagsException
     """
-    MSG = "Candidate did not pass a No PlayerCCertifier test. enabled."
+    MSG = "No PlayerCCertifier test. enabled."
     ERR_CODE = "ZERO_PLAYER_BLUEPRINT_FLAGS_FAILURE"
     
     def __init__(

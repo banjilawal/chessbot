@@ -25,7 +25,7 @@ class KingPathValidatorException(PathValidatorException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a candidate did not pass a KingPathValidator test.
+        1.  Indicate that a KingPathValidator test.
 
     Attributes:
             msg: Optional[str]
@@ -42,7 +42,7 @@ class KingPathValidatorException(PathValidatorException):
     Super Class:
         PathValidatorException
     """
-    MSG = "Candidate did not pass an KingPathValidator test."
+    MSG = "Candidate did not pass an KingPath validation failed."
     ERR_CODE = "KING_PATH_VALIDATOR_FAILURE"
     
     def __init__(

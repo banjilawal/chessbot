@@ -40,7 +40,7 @@ class ZeroTokenBlueprintFlagsException(ZeroBlueprintFlagsException):
     Super Class:
         ZeroBlueprintFlagsException
     """
-    MSG = "Candidate did not pass a No TokenCCertifier test. enabled."
+    MSG = "No TokenCCertifier test. enabled."
     ERR_CODE = "ZERO_TOKEN_BLUEPRINT_FLAGS_FAILURE"
     
     def __init__(

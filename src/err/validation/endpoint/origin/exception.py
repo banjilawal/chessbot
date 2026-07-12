@@ -25,7 +25,7 @@ class TokenOriginCertifierException(ValidatorException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a candidate did not pass a TokenOriginCertifier test.
+        1.  Indicate that a TokenOriginCertifier test.
 
     Attributes:
         msg: Optional[str]
