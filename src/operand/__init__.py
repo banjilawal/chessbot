@@ -10,7 +10,7 @@ version: 1.0.1
 # =========== OPERAND PACKAGE ===========#
 
 # Packages
-from .point import *
+from .cartesian import *
 
 # Modules
 from .operand import Operand

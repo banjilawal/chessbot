@@ -10,19 +10,19 @@ version: 1.0.1
 # =========== VALIDATOR.MODEL PACKAGE ===========#
 
 # Packages
-from .arena import *
-from .board import *
+from validator.model.state.arena import *
+from validator.model.state.board import *
 from .coord import *
-from .edge import *
+from validator.model.state.edge import *
 from .game import *
-from .node import *
+from validator.model.state.node import *
 from .operand import *
 from .rank import *
 from .scalar import *
 from .snapshot import *
-from .square import *
-from .team import *
-from .token import *
+from validator.model.state.square import *
+from validator.model.state.team import *
+from validator.model.state.token import *
 from .vector import *
 
 # Modules

@@ -44,6 +44,6 @@ class Validator(ABC, Generic[T]):
 
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def execute(self, candidate: Any, *arg, **kwargs,) -> ValidationResult:
+    def execute(self, candidate: Any) -> ValidationResult:
         """Implement in subclass."""
         pass

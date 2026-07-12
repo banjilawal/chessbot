@@ -10,6 +10,7 @@ version: 1.0.1
 # =========== VALIDATOR.OPERAND PACKAGE ===========#
 
 # Packages
+from .cartesian import *
 
 # Modules
 from .validator import OperandValidator

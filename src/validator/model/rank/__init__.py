@@ -1,15 +1,15 @@
-# src/validator/rank/__init__.py
+# src/validator/token/__init__.py
 
 """
-Module: validator.rank.__init__
+Module: validator.token.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
 """
 
-# =========== VALIDATOR.RANK PACKAGE ===========#
+# =========== VALIDATOR.TOKEN PACKAGE ===========#
 
 # Packages
 
 # Modules
-from .validator import RankValidator
+from .validator import TokenValidator

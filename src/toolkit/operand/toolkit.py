@@ -10,40 +10,46 @@ version: 1.0.1
 from __future__ import annotations
 
 from dataclasses import dataclass
+from typing import Type
 
-from err import VectorOperandNullException, CartesianRegisterNullException
-from model import VectorOperand
-from suite import CoordOperationSuite, VectorOperationSuite
-from toolkit import ModelToolkit
+from blueprint import CartesianOperandBlueprint
+from err import CartesianOperandNullException, CartesianRegisterNullException
+from operand import CartesianOperand
+
+from suite import CoordOperationSuite, CartesianOperationSuite, VectorOperationSuite
+from toolkit import Toolkit
 
 
 @dataclass
 @dataclass
-class VectorOperandToolkit(ModelToolkit[VectorOperand]):
+class CartesianOperandToolkit(Toolkit[CartesianOperand]):
     """
     Role:
         -   Container
 
     Responsibilities:
-        1.  Collection of workers and validators that are required for VectorOperand tasks.
+        1.  Collection of workers and validators that are required for CartesianOperand tasks.
         2.  Simplifies entry points.
         3.  No logic in the Toolkit.
 
     Attributes:
         coord: CoordOperationSuite
-        vector: VectorOperationSuite
-        null_exception: VectorOperandNullException
-        model: VectorOperand
+        cartesian: CartesianOperationSuite
+        null_exception: CartesianOperandNullException
+        model: CartesianOperand
 
     Provides:
 
     Super Class:
         Toolkit
     """
+    model: Type[CartesianOperand] = CartesianOperand
+    blueprint_model: CartesianOperandBlueprint = CartesianOperandBlueprint
+    
+    null_exception: CartesianOperandNullException = CartesianRegisterNullException()
+    null_exception: CartesianOperandNullException = CartesianOperandNullException()
+    blueprint_null_exception: CartesianOperandBlueprintNullException = CartesianOperandBlueprintNullException()
+    
     coord: CoordOperationSuite = CoordOperationSuite()
     vector: VectorOperationSuite = VectorOperationSuite()
-    null_exception: VectorOperandNullException = CartesianRegisterNullException()
-    model: VectorOperand = VectorOperand
-    blueprint_model: VectorOperandBlueprint = VectorOperandBlueprint
-    null_exception: VectorOperandNullException = VectorOperandNullException()
-    blueprint_null_exception: VectorOperandBlueprintNullException = VectorOperandBlueprintNullException()
+

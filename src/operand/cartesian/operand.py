@@ -85,22 +85,22 @@ class CartesianOperand(Operand):
                 self._coord is None and
                 isinstance(self._vector, Vector)
         )
-    
-    @property
-    def is_empty(self) -> bool:
-        return len(self.to_dict) == 0
-    
-    @property
-    def is_full(self) -> bool:
-        return len(self.to_dict) == 1
-    
-    @property
-    def has_overflow(self) -> bool:
-        return len(self.to_dict) >= 2
-    
-    @property
-    def size(self) -> int:
-        return len(self.to_dict)
+    #
+    # @property
+    # def is_empty(self) -> bool:
+    #     return len(self.to_dict) == 0
+    #
+    # @property
+    # def is_full(self) -> bool:
+    #     return len(self.to_dict) == 1
+    #
+    # @property
+    # def has_overflow(self) -> bool:
+    #     return len(self.to_dict) >= 2
+    #
+    # @property
+    # def size(self) -> int:
+    #     return len(self.to_dict)
     
     def __eq__(self, other):
         if other is self: return True

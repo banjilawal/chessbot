@@ -6,11 +6,13 @@ Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
 """
-from abc import abstractmethod
+from abc import ABC, abstractmethod
 from typing import Any, Dict
 
+from toggle import Toggle
 
-class Operand:
+
+class Operand(Toggle, ABC):
     """
     Role:
         -   Data Holder
@@ -30,34 +32,34 @@ class Operand:
 
     Super Class:
     """
-        
-    @property
-    @abstractmethod
-    def entity(self) -> Any:
-        pass
     
-    @property
-    @abstractmethod
-    def to_dict(self) -> Dict[str, Any]:
-        pass
-    
-    @property
-    @abstractmethod
-    def is_empty(self) -> bool:
-        pass
-    
-    @property
-    @abstractmethod
-    def is_full(self) -> bool:
-        pass
-    
-    @property
-    @abstractmethod
-    def has_overflow(self) -> bool:
-        pass
-    
-    @property
-    @abstractmethod
-    def size(self) -> int:
-        pass
+    # @property
+    # @abstractmethod
+    # def entity(self) -> Any:
+    #     pass
+    #
+    # @property
+    # @abstractmethod
+    # def to_dict(self) -> Dict[str, Any]:
+    #     pass
+    #
+    # @property
+    # @abstractmethod
+    # def is_empty(self) -> bool:
+    #     pass
+    #
+    # @property
+    # @abstractmethod
+    # def is_full(self) -> bool:
+    #     pass
+    #
+    # @property
+    # @abstractmethod
+    # def has_overflow(self) -> bool:
+    #     pass
+    #
+    # @property
+    # @abstractmethod
+    # def size(self) -> int:
+    #     pass
     

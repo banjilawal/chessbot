@@ -11,8 +11,8 @@ from __future__ import annotations
 
 from builder import VectorBuilder
 from model import Vector
-from toolkit import ModelOperationSuite, VectorToolkit
-from validator import VectorValidator
+from suite import ModelOperationSuite
+from toolkit import VectorToolkit
 
 
 class VectorOperationSuite(ModelOperationSuite[Vector]):
