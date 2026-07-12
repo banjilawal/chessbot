@@ -1,7 +1,7 @@
 # src/err/consistency/register/identity/exception.py
 
 """
-Module:err.consistency.register.identity.exception
+Module: err.consistency.register.identity.exception
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

@@ -48,23 +48,6 @@ class TokenToolkit(ModelToolkit[Token]):
     Super Class:
        ModelToolkit
     """
-    """
-    Args:
-        model: Token
-        blueprint_model: TokenBlueprint
-        operand_model: TokenDtoOperand
-        
-        null_exception: TokenNullException
-        blueprint_null_exception: TokenBlueprintNullException
-        operand_null_exception: TokenDtoOperandNullException
-        priming_validator: PrimingValidator
-
-identity_service: IdentityService
-        home_detector: TokenHomeDetector
-        blueprint_rank_extractor: BlueprintRankExtractor
-        blueprint_home_square_extractor: BlueprintHomeSquareExtractor
-        team_validator: TeamValidator
-    """
     model: Type[Token] = Token
     blueprint_model: Type[TokenBlueprint] = TokenBlueprint
     operand_model: Type[TokenDtoOperand] = TokenDtoOperand

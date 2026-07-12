@@ -11,20 +11,22 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from err import  NullException
+from result import MethodResultType
+
 
 __all__ = [
-    # ======================# OPERAND_OPERAND_ERROR #======================#
-    "DtoOperandNullException",
+    # ======================# OPERAND_NULL_ERROR #======================#
+    "OperandNullException",
 ]
 
-# ======================# OPERAND_OPERAND_ERROR #======================#
-class DtoOperandNullException(NullException):
+# ======================# OPERAND_NULL_ERROR #======================#
+class OperandNullException(NullException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a data-holding objectOperand encountered an error.
+        1.  Indicate that a required Operand is null.
 
     Attributes:
         msg: Optional[str]
@@ -41,8 +43,8 @@ class DtoOperandNullException(NullException):
     Super Class:
         ChessException
     """
-    MSG = "Data objectOperand error."
-    ERR_CODE = "OPERAND_OPERAND_ERROR"
+    MSG = "Operand cannot be null."
+    ERR_CODE = "OPERAND_NULL_ERROR"
     
     def __init__(
             self,

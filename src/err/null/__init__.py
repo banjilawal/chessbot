@@ -17,8 +17,11 @@ from .microservice import *
 from .model import *
 from .operand import *
 from .operation import *
+from .query import *
+from .register import *
 from .relation import *
 from .request import *
+from .schema import *
 
 # Modules
 from .exception import NullException

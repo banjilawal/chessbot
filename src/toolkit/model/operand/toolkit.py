@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 
-from err import VectorOperandNullException, VectorOperandRegisterNullException
+from err import VectorOperandNullException, CartesianRegisterNullException
 from model import VectorOperand
 from suite import CoordOperationSuite, VectorOperationSuite
 from toolkit import ModelToolkit
@@ -42,7 +42,7 @@ class VectorOperandToolkit(ModelToolkit[VectorOperand]):
     """
     coord: CoordOperationSuite = CoordOperationSuite()
     vector: VectorOperationSuite = VectorOperationSuite()
-    null_exception: VectorOperandNullException = VectorOperandRegisterNullException()
+    null_exception: VectorOperandNullException = CartesianRegisterNullException()
     model: VectorOperand = VectorOperand
     blueprint_model: VectorOperandBlueprint = VectorOperandBlueprint
     null_exception: VectorOperandNullException = VectorOperandNullException()

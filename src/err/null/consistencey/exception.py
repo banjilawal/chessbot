@@ -41,7 +41,7 @@ class ConsistencyCheckerNullException(NullException):
     Super Class:
         NullException
     """
-    MSG = "Data objectConsistencyChecker cannot be null."
+    MSG = "ConsistencyChecker cannot be null."
     ERR_CODE = "CONSISTENCY_CHECKER_NULL_ERROR"
     
     def __init__(

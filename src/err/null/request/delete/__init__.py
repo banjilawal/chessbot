@@ -1,13 +1,13 @@
 # src/err/request/delete/__init__.py
 
 """
-Module:err.request.delete.__init__
+Module: err.request.delete.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
 """
 
-# ===========ERR.REQUEST.DELETE PACKAGE ===========#
+# =========== ERR.REQUEST.DELETE PACKAGE ===========#
 
 # Packages
 

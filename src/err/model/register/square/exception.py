@@ -1,7 +1,7 @@
 # src/err/model/register/square/exception.py
 
 """
-Module:err.model.register.square.exception
+Module: err.model.register.square.exception
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

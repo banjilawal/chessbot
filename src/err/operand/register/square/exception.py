@@ -1,7 +1,7 @@
 # src/err/operand/register/square/exception.py
 
 """
-Module:err.operand.register.square.exception
+Module: err.operand.register.square.exception
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

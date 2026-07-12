@@ -11,7 +11,6 @@ version: 1.0.1
 
 # Packages
 from .coord import *
-from .register import *
 from .scalar import *
 from .state import *
 from .vector import *

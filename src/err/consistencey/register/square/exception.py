@@ -1,7 +1,7 @@
 # src/err/consistency/register/square/exception.py
 
 """
-Module:err.consistency.register.square.exception
+Module: err.consistency.register.square.exception
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
