@@ -10,6 +10,7 @@ version: 1.0.1
 # =========== PERMITTER.PUSH PACKAGE ===========#
 
 # Packages
+from .square import *
 from .token import *
 
 # Modules
