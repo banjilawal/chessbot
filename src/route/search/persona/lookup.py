@@ -74,11 +74,11 @@ class PersonaLookupProcess(HashLookupProcess[Persona]):
         # After verification use the hash key to route to the appropriate lookup method.
         
         # Entry point into forward lookups by schema.
-        if super_key.designation is not None:
-            return cls._query_by_name(designation=super_key.designation)
+        if super_key.name is not None:
+            return cls._query_by_name(designation=super_key.name)
         # Entry point into forward lookups by designation.
-        if super_key.designation is not None:
-            return cls._query_by_designation(designation=super_key.designation)
+        if super_key.name is not None:
+            return cls._query_by_designation(designation=super_key.name)
         # Entry point into forward lookups by ransom.
         if super_key.ransom is not None:
             return cls._query_by_ransom(ransom=super_key.ransom)

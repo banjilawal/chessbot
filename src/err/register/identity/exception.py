@@ -1,7 +1,7 @@
-# src/err/operand/register/identity/exception.py
+# src/err/register/identity/exception.py
 
 """
-Module: err.operand.register.identity.exception
+Module: err.register.identity.exception
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -14,18 +14,18 @@ from err import RegisterException
 from result import MethodResultType
 
 __all__ = [
-    # ======================# VECTOR_IDENTITY_REGISTER_OPERAND_ERROR #======================#
-    "VectorIdentityRegisterDtoOperandException",
+    # ======================# IDENTITY_REGISTER_ERROR #======================#
+    "IdentityRegisterException",
 ]
 
-# ======================# VECTOR_IDENTITY_REGISTER_OPERAND_ERROR #======================#
-class VectorIdentityRegisterDtoOperandException(RegisterException):
+# ======================# IDENTITY_REGISTER_ERROR #======================#
+class IdentityRegisterException(RegisterException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a VectorIdentityRegisterOperand encountered an error.
+        1.  Indicate that an IdentityRegister encountered an error.
 
     Attributes:
         msg: Optional[str]
@@ -41,8 +41,8 @@ class VectorIdentityRegisterDtoOperandException(RegisterException):
     Super Class:
         RegisterException
     """
-    MSG = "VectorIdentityRegisterOperand error."
-    ERR_CODE = "VECTOR_IDENTITY_REGISTER_OPERAND_ERROR"
+    MSG = "IdentityRegister error."
+    ERR_CODE = "IDENTITY_REGISTER_ERROR"
     
     def __init__(
             self,

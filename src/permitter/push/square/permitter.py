@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import cast
 
-from detector.square import SquareCollisionDetector
+from detector import SquareCollisionDetector
 from err import SquarePushPermitterException
 from model import Square
 from permitter import PushPermitter, RankSlotPermitter

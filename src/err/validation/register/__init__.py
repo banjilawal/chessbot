@@ -11,7 +11,7 @@ version: 1.0.1
 
 # Packages
 from .identity import *
-from .operand import *
+from .cartesian import *
 from .square import *
 
 # Modules

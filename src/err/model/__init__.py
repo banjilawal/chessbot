@@ -10,28 +10,28 @@ version: 1.0.1
 # ============ ERR.MODEL PACKAGE ===========#
 
 # Packages
-from .arena import *
+from err.model.state.arena import *
 from .binder import *
-from .board import *
+from err.model.state.board import *
 from .coord import *
-from .edge import *
+from err.model.state.edge import *
 from .formation import *
-from .game import *
+from err.model.state.game import *
 from .hashtable import *
 from .hostage import *
-from .path import *
-from .node import *
+from err.model.state.path import *
+from err.model.state.node import *
 from .operand import *
 from .persona import *
-from .player import *
+from err.model.state.player import *
 from .rank import *
 from .register import *
 from .registry import *
 from .scalar import *
 from .schema import *
-from .square import *
-from .team import *
-from .token import *
+from err.model.state.square import *
+from err.model.state.team import *
+from err.model.state.token import *
 from .vector import *
 
 

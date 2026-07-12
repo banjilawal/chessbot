@@ -7,7 +7,7 @@ Created: 2026-04-04
 version: 1.0.1
 """
 
-# ============ ERR.null.model.state.TEAM PACKAGE ===========#
+# ============ ERR.NULL.MODEL.STATE.TEAM PACKAGE ===========#
 
 # Packages
 

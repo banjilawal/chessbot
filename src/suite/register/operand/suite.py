@@ -11,23 +11,23 @@ from __future__ import annotations
 
 from model import PointRegister
 from suite import ModelOperationSuite
-from toolkit import VectorOperandRegisterToolkit
-from validator import VectorOperandRegisterValidator
+from toolkit import CartesianRegisterToolkit
+from validator import CartesianRegisterValidator
 
 
-class VectorOperandRegisterSuite(ModelOperationSuite[PointRegister]):
+class CartesianRegisterSuite(ModelOperationSuite[PointRegister]):
     """
     Role:
         -   Dependency Container
         -   Dynamic Dependency Provider
 
     Responsibilities:
-        1.  Contains the operations that can be performed on a VectorOperandRegister.
+        1.  Contains the operations that can be performed on a CartesianRegister.
 
     Attributes:
-        toolkit: VectorOperandRegisterToolkit
-        builder: VectorOperandRegisterBuilder
-        validator: VectorOperandRegisterValidator
+        toolkit: CartesianRegisterToolkit
+        builder: CartesianRegisterBuilder
+        validator: CartesianRegisterValidator
 
     Provides:
 
@@ -38,8 +38,8 @@ class VectorOperandRegisterSuite(ModelOperationSuite[PointRegister]):
         -   Suite for an empty class which makes managing toolkits easier.
         -   Any toolkits for a suite should be a Suite subclass.
     """
-    toolkit: VectorOperandRegisterToolkit = VectorOperandRegisterToolkit()
-    builder: VectorOperandRegisterBuilder = VectorOperandRegisterBuilder()
-    validator: VectorOperandRegisterValidator = VectorOperandRegisterValidator()
+    toolkit: CartesianRegisterToolkit = CartesianRegisterToolkit()
+    builder: CartesianRegisterBuilder = CartesianRegisterBuilder()
+    validator: CartesianRegisterValidator = CartesianRegisterValidator()
 
     

@@ -13,7 +13,7 @@ from builder import Builder
 from model import PointRegister
 
 
-class VectorOperandRegisterBuilder(Builder[PointRegister]):
+class CartesianRegisterBuilder(Builder[PointRegister]):
     """
         -   Model
         -   Data Holder
@@ -90,7 +90,7 @@ class VectorOperandRegisterBuilder(Builder[PointRegister]):
     def __eq__(self, other):
         if other is self: return True
         if other is None: return False
-        if isinstance(other, VectorOperandRegisterBuilder):
+        if isinstance(other, CartesianRegisterBuilder):
             return (
                     self._a == other.b and
                     self._b == other.b

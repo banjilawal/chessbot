@@ -14,10 +14,10 @@ from err import ValidatorException
 from result import MethodResultType
 
 __all__ = [
-    # ======================# VECTOR_OPERAND_VALIDATOR_FAILURE #======================#
+    # ======================# CARTESIAN_VALIDATOR_FAILURE #======================#
     "VectorOperandValidatorException",
 ]
-# ======================# VECTOR_OPERAND_VALIDATOR_FAILURE #======================#
+# ======================# CARTESIAN_VALIDATOR_FAILURE #======================#
 class VectorOperandValidatorException(ValidatorException):
     """
     Role:
@@ -42,7 +42,7 @@ class VectorOperandValidatorException(ValidatorException):
         ValidatorException
     """
     MSG = "Candidate did not pass a VectorOperand validation failed."
-    ERR_CODE = "VECTOR_OPERAND_VALIDATOR_FAILURE"
+    ERR_CODE = "CARTESIAN_VALIDATOR_FAILURE"
     
     def __init__(
             self,

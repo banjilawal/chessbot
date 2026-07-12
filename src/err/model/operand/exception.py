@@ -15,12 +15,12 @@ from result import MethodResultType
 
 
 __all__ = [
-    # ======================# VECTOR_OPERAND_ERROR #======================#
+    # ======================# CARTESIAN_ERROR #======================#
     "VectorOperandException",
 ]
 
 
-# ======================# VECTOR_OPERAND_ERROR #======================#
+# ======================# CARTESIAN_ERROR #======================#
 class VectorOperandException(ModelException):
     """
     Role:
@@ -45,7 +45,7 @@ class VectorOperandException(ModelException):
         ModelException
     """
     MSG = "VectorOperand error."
-    ERR_CODE = "VECTOR_OPERAND_ERROR"
+    ERR_CODE = "CARTESIAN_ERROR"
     
     def __init__(
             self,

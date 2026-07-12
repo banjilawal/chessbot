@@ -1,17 +1,17 @@
-# src/err/operand/register/__init__.py
+# src/err/register/__init__.py
 
 """
-Module: err.operand.register.__init__
+Module: err.register.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
 """
 
-# =========== ERR.OPERAND.REGISTER PACKAGE ===========#
+# =========== ERR.REGISTER PACKAGE ===========#
 
 # Packages
 from .identity import *
-from .operand import *
+from .cartesian import *
 from .square import *
 
 # Modules

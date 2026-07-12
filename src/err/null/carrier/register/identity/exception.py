@@ -14,18 +14,18 @@ from err import RegisterEntityNullException
 from result import MethodResultType
 
 __all__ = [
-    # ======================# IDENTITY_REGISTER_ENTITY_CARRIER_NULL_ERROR #======================#
+    # ======================# IDENTITY_REGISTER_CARRIER_NULL_ERROR #======================#
     "IdentityRegisterEntityNullException",
 ]
 
-# ======================# IDENTITY_REGISTER_ENTITY_CARRIER_NULL_ERROR #======================#
+# ======================# IDENTITY_REGISTER_CARRIER_NULL_ERROR #======================#
 class IdentityRegisterEntityNullException(RegisterEntityNullException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required IdentityRegisterEntityCarrier is null.
+        1.  Indicate that a required IdentityRegisterCarrier is null.
 
     Attributes:
         msg: Optional[str]
@@ -39,10 +39,10 @@ class IdentityRegisterEntityNullException(RegisterEntityNullException):
     Provides:
 
     Super Class:
-        RegisterEntityCarrierNullException
+        RegisterCarrierNullException
     """
-    MSG = "IdentityRegisterEntityEntityCarrier cannot be null."
-    ERR_CODE= "IDENTITY_REGISTER_ENTITY_CARRIER_NULL_ERROR"
+    MSG = "IdentityRegisterEntityCarrier cannot be null."
+    ERR_CODE= "IDENTITY_REGISTER_CARRIER_NULL_ERROR"
     
     def __init__(
             self,
@@ -53,7 +53,7 @@ class IdentityRegisterEntityNullException(RegisterEntityNullException):
             cls_name: Optional[str] | None = None,
             cls_mthd: Optional[str] | None = None,
             err_code: Optional[str] | None = None,
-            mthd_rslt_type: Optional[MethodResultType] | None = None,
+            MTHD_RSLT_TYPE: Optional[MethodResultType] | None = None,
     ):
         """
         args:
@@ -64,7 +64,7 @@ class IdentityRegisterEntityNullException(RegisterEntityNullException):
             cls_name: Optional[Str]
             cls_mthd: Optional[str]
             err_code: Optional[str]
-            mthd_rslt_type: Optional[MethodResultType]
+            MTHD_RSLT_TYPE: Optional[MethodResultType]
         """
         msg = msg or self.MSG
         err_code = err_code or self.ERR_CODE
@@ -76,7 +76,7 @@ class IdentityRegisterEntityNullException(RegisterEntityNullException):
             err_code=err_code,
             cls_name=cls_name,
             cls_mthd=cls_mthd,
-            mthd_rslt_type=mthd_rslt_type,
+            MTHD_RSLT_TYPE=MTHD_RSLT_TYPE,
         )
 
     

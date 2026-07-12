@@ -10,36 +10,36 @@ version: 1.0.1
 # ============ ERR.VALIDATION PACKAGE ===========#
 
 # Packages
-from .arena import *
+from err.validation.model.state.arena import *
 from .binder import *
 from .blueprint import *
-from .board import *
+from err.validation.model.state.board import *
 from .context import *
-from .coord import *
-from .edge import *
+from err.validation.model.state.coord import *
+from err.validation.model.state.edge import *
 from .endpoint import *
 from .formation import *
-from .game import *
+from err.validation.model.state.game import *
 from .hostage import *
 from .identity import *
 from .itinerary import *
-from .maneuver import *
-from .node import *
+from err.validation.model.state.maneuver import *
+from err.validation.model.state.node import *
 from .number import *
 from .operand import *
-from .path import *
+from err.validation.model.state.path import *
 from .persona import *
-from .player import *
+from err.validation.model.player import *
 from .query import *
-from .rank import *
+from err.validation.model.rank import *
 from .register import *
-from .scalar import *
+from err.validation.model.scalar import *
 from .schema import *
 from .string import *
-from .square import *
-from .team import *
-from .token import *
-from .vector import *
+from err.validation.model.square import *
+from err.validation.model.team import *
+from err.validation.model.token import *
+from err.validation.model.vector import *
 
 # Modules
 from .exception import ValidatorException

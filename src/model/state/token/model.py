@@ -96,7 +96,7 @@ class Token(StateModel):
         return self._formation
     
     @property
-    def designation(self) -> str:
+    def name(self) -> str:
         return self._formation.designation
     
     @property

@@ -10,7 +10,7 @@ version: 1.0.1
 from __future__ import annotations
 from enum import Enum
 
-from model.schema import Persona
+from schema import Persona
 from setting import GameColor
 
 

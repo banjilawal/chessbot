@@ -14,18 +14,18 @@ from err import RegisterException
 from result import MethodResultType
 
 __all__ = [
-    # ======================# VECTOR_OPERAND_REGISTER_CONSISTENCY_CHECKER_NULL_ERROR #======================#
-    "VectorOperandRegisterConsistencyCheckerNullException",
+    # ======================# CARTESIAN_REGISTER_CONSISTENCY_CHECKER_NULL_ERROR #======================#
+    "CartesianRegisterConsistencyCheckerNullException",
 ]
 
-# ======================# VECTOR_OPERAND_REGISTER_CONSISTENCY_CHECKER_NULL_ERROR #======================#
-class VectorOperandRegisterConsistencyCheckerNullException(RegisterException):
+# ======================# CARTESIAN_REGISTER_CONSISTENCY_CHECKER_NULL_ERROR #======================#
+class CartesianRegisterConsistencyCheckerNullException(RegisterException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a VectorOperandRegisterConsistencyChecker is null.
+        1.  Indicate that a required CartesianRegisterConsistencyChecker is null.
 
     Attributes:
         msg: Optional[str]
@@ -41,8 +41,8 @@ class VectorOperandRegisterConsistencyCheckerNullException(RegisterException):
     Super Class:
         RegisterException
     """
-    MSG = "VectorOperandRegisterConsistencyChecker cannot be null."
-    ERR_CODE = "VECTOR_OPERAND_REGISTER_CONSISTENCY_CHECKER_NULL_ERROR"
+    MSG = "CartesianRegisterConsistencyChecker cannot be null."
+    ERR_CODE = "CARTESIAN_REGISTER_CONSISTENCY_CHECKER_NULL_ERROR"
     
     def __init__(
             self,
@@ -53,7 +53,7 @@ class VectorOperandRegisterConsistencyCheckerNullException(RegisterException):
             cls_name: Optional[str] | None = None,
             cls_mthd: Optional[str] | None = None,
             err_code: Optional[str] | None = None,
-            mthd_rslt_type: Optional[MethodResultType] | None = None,
+            MTHD_RSLT_TYPE: Optional[MethodResultType] | None = None,
     ):
         """
         args:
@@ -64,7 +64,7 @@ class VectorOperandRegisterConsistencyCheckerNullException(RegisterException):
             cls_name: Optional[Str]
             cls_mthd: Optional[str]
             err_code: Optional[str]
-            mthd_rslt_type: Optional[MethodResultType]
+            MTHD_RSLT_TYPE: Optional[MethodResultType]
         """
         msg = msg or self.MSG
         err_code = err_code or self.ERR_CODE
@@ -76,7 +76,7 @@ class VectorOperandRegisterConsistencyCheckerNullException(RegisterException):
             err_code=err_code,
             cls_name=cls_name,
             cls_mthd=cls_mthd,
-            mthd_rslt_type=mthd_rslt_type,
+            MTHD_RSLT_TYPE=MTHD_RSLT_TYPE,
         )
 
     

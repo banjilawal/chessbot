@@ -110,8 +110,8 @@ class FormationContextValidator(ContextValidator[FormationKey]):
         # Route to the appropriate validation branch.
         
         # Certification for lookup-by-schema value.
-        if super_key.designation is not None:
-            validation = identity_service.validate_name(candidate=super_key.designation)
+        if super_key.name is not None:
+            validation = identity_service.validate_name(candidate=super_key.name)
             if validation.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
@@ -124,8 +124,8 @@ class FormationContextValidator(ContextValidator[FormationKey]):
             return ValidationResult.success(super_key)
 
         # Certification for lookup-by-designation value.
-        if super_key.designation is not None:
-            validation = identity_service.validate_name(candidate=super_key.designation)
+        if super_key.name is not None:
+            validation = identity_service.validate_name(candidate=super_key.name)
             if validation.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(

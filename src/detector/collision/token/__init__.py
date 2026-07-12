@@ -12,4 +12,4 @@ version: 1.0.1
 # Modules
 
 # Packages
-from .ddetector import TokenCollider
+from .detector import TokenCollider

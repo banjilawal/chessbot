@@ -78,7 +78,7 @@ class PersonaService(HashService[Persona]):
     @property
     def designations(self) -> List[str]:
         """Returns a list of all permissible persona designations in upper case."""
-        return [entry.designation.upper() for entry in Persona]
+        return [entry.name.upper() for entry in Persona]
     
     @property
     def quotas(self) -> List[int]:

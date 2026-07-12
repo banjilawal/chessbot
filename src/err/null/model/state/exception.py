@@ -1,7 +1,7 @@
-# src/err/null/model/state/model/exception.py
+# src/err/null/model/state/exception.py
 
 """
-Module: err.null.model.state.model.exception
+Module: err.null.model.state.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -14,18 +14,18 @@ from err import ModelNullException
 from result import MethodResultType
 
 __all__ = [
-    # ======================# MODEL_NULL_ERROR #======================#
+    # ======================# STATE_MODEL_NULL_ERROR #======================#
     "StateModelNullException",
 ]
 
-# ======================# MODEL_NULL_ERROR #======================#
+# ======================# STATE_MODEL_NULL_ERROR #======================#
 class StateModelNullException(ModelNullException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a StateModel is null.
+        1.  Indicate that a required StateModel is null.
 
     Attributes:
             msg: Optional[str]
@@ -35,15 +35,15 @@ class StateModelNullException(ModelNullException):
             cls_name: Optional[str]
             cls_mthd: Optional[str]
             err_code: Optional[str]
-            mthd_rslt_type: Optional[MethodResultType]
+            MTHD_RSLT_TYPE: Optional[MethodResultType]
             
     Provides:
 
     Super Class:
         ModelNullException
     """
-    MSG = "Model cannot be null."
-    ERR_CODE = "MODEL_NULL_ERROR"
+    MSG = "StateModel cannot be null."
+    ERR_CODE = "STATE_MODEL_NULL_ERROR"
     
     def __init__(
             self,
@@ -54,7 +54,7 @@ class StateModelNullException(ModelNullException):
             cls_name: Optional[str] | None = None,
             cls_mthd: Optional[str] | None = None,
             err_code: Optional[str] | None = None,
-            mthd_rslt_type: Optional[MethodResultType] | None = None,
+            MTHD_RSLT_TYPE: Optional[MethodResultType] | None = None,
     ):
         """
         args:
@@ -65,7 +65,7 @@ class StateModelNullException(ModelNullException):
             cls_name: Optional[Str]
             cls_mthd: Optional[str]
             err_code: Optional[str]
-            mthd_rslt_type: Optional[MethodResultType]
+            MTHD_RSLT_TYPE: Optional[MethodResultType]
         """
         msg = msg or self.MSG
         err_code = err_code or self.ERR_CODE
@@ -77,5 +77,5 @@ class StateModelNullException(ModelNullException):
             err_code=err_code,
             cls_name=cls_name,
             cls_mthd=cls_mthd,
-            mthd_rslt_type=mthd_rslt_type,
+            MTHD_RSLT_TYPE=MTHD_RSLT_TYPE,
         )

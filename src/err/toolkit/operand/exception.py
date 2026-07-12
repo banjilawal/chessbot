@@ -14,12 +14,12 @@ from err import ToolkitException
 
 
 __all__ = [
-    # ======================# VECTOR_OPERAND_ERROR #======================#
+    # ======================# CARTESIAN_ERROR #======================#
     "VectorOperandException",
 ]
 
 
-# ======================# VECTOR_OPERAND_ERROR #======================#
+# ======================# CARTESIAN_ERROR #======================#
 class VectorOperandException(ToolkitException):
     """
     Role:
@@ -44,7 +44,7 @@ class VectorOperandException(ToolkitException):
         ToolkitException
     """
     MSG = "VectorOperand error state."
-    ERR_CODE = "VECTOR_OPERAND_ERROR"
+    ERR_CODE = "CARTESIAN_ERROR"
     
     def __init__(
             self,

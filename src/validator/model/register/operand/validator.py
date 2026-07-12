@@ -11,11 +11,11 @@ from __future__ import annotations
 from typing import Any, cast
 
 from err import (
-    ExcessVectorOperandFlagsException, VectorOperandRegisterCertifierException,
+    ExcessVectorOperandFlagsException, CartesianRegisterCertifierException,
     VectorOperandValidatorException, ZeroVectorOperandFlagsException
 )
 from model import VectorOperand, VectorOperandEntityRegister
-from primary.register.operand.certifier import VectorOperandRegisterRootCertifier
+from primary.register.operand.certifier import CartesianRegisterRootCertifier
 from result import ValidationResult
 f
 from util import LoggingLevelRouter
@@ -35,7 +35,7 @@ class VectorOperandValidator(ModelValidator[VectorOperand]):
             before use.
 
     Attributes:
-        bootstrapper: VectorOperandRegisterRootCertifier
+        bootstrapper: CartesianRegisterRootCertifier
 
     Properties:
         -   def validate(
@@ -49,13 +49,13 @@ class VectorOperandValidator(ModelValidator[VectorOperand]):
     
     def __init__(
             self,
-            root_certifier: VectorOperandRegisterRootCertifier | None = VectorOperandRegisterRootCertifier(),
+            root_certifier: CartesianRegisterRootCertifier | None = CartesianRegisterRootCertifier(),
     ):
         super().__init__(root_certifier=root_certifier)
         
     @property
-    def root_certifier(self) -> VectorOperandRegisterRootCertifier:
-        return cast(VectorOperandRegisterRootCertifier, self.root_certifier)
+    def root_certifier(self) -> CartesianRegisterRootCertifier:
+        return cast(CartesianRegisterRootCertifier, self.root_certifier)
     
     @LoggingLevelRouter.monitor
     def execute(self, candidate: Any) -> ValidationResult:

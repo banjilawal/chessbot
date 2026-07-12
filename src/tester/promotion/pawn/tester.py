@@ -163,7 +163,7 @@ class PromotionPawnTester(Tester):
                     ex=PawnPromotionRowException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        var=pawn.designation,
+                        var=pawn.name,
                         msg=PawnPromotionRowException.MSG,
                         err_code=PawnPromotionRowException.ERR_CODE,
                     )

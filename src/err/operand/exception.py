@@ -13,18 +13,18 @@ from typing import Any, Optional
 from err import ChessException
 
 __all__ = [
-    # ======================# OPERAND_OPERAND_ERROR #======================#
+    # ======================# OPERAND_ERROR #======================#
     "OperandException",
 ]
 
-# ======================# OPERAND_OPERAND_ERROR #======================#
+# ======================# OPERAND_ERROR #======================#
 class OperandException(ChessException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a data-holding objectOperand encountered an error.
+        1.  Indicate that an Operand encountered an error.
 
     Attributes:
         msg: Optional[str]
@@ -41,8 +41,8 @@ class OperandException(ChessException):
     Super Class:
         ChessException
     """
-    MSG = "Data objectOperand error."
-    ERR_CODE = "OPERAND_OPERAND_ERROR"
+    MSG = "Operand error."
+    ERR_CODE = "OPERAND_ERROR"
     
     def __init__(
             self,

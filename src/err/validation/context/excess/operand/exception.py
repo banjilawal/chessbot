@@ -13,11 +13,11 @@ from typing import Any, Optional
 from err import ExcessContextFlagsException
 
 _all_ = [
-    # ======================# EXCESS_VECTOR_OPERAND_FLAGS_FAILURE #======================#
+    # ======================# EXCESS_CARTESIAN_FLAGS_FAILURE #======================#
     "ExcessVectorOperandFlagsException",
 ]
 
-# ======================# EXCESS_VECTOR_OPERAND_FLAGS_FAILURE #======================#
+# ======================# EXCESS_CARTESIAN_FLAGS_FAILURE #======================#
 class ExcessVectorOperandFlagsException(ExcessContextFlagsException):
     """
     Role:
@@ -41,7 +41,7 @@ class ExcessVectorOperandFlagsException(ExcessContextFlagsException):
         ExcessContextFlagsException
     """
     MSG = "Candidate did not pass a More than one VectorOperand attribute enabled."
-    ERR_CODE = "EXCESS_VECTOR_OPERAND_FLAGS_FAILURE"
+    ERR_CODE = "EXCESS_CARTESIAN_FLAGS_FAILURE"
     
     def __init__(
             self,

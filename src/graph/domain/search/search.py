@@ -87,7 +87,7 @@ class DomainResidentFinder(Finder[Domain, Piece]):
         method = "DomainResidentFinder._name_search"
         
         try:
-            matches = [resident for resident in domain.residents if resident.designation.upper == name.upper()]
+            matches = [resident for resident in domain.residents if resident.name.upper == name.upper()]
             if len(matches) == 0:
                 return SearchResult.empty()
             elif len(matches) == 1:
@@ -123,7 +123,7 @@ class DomainResidentFinder(Finder[Domain, Piece]):
         method = "DomainResidentFinder._rank_name_search"
         
         try:
-            matches = [resident for resident in domain.residents if resident.rank_level.designation.upper() == name.upper()]
+            matches = [resident for resident in domain.residents if resident.rank_level.name.upper() == name.upper()]
             if len(matches) == 0:
                 return SearchResult.empty()
             
@@ -174,7 +174,7 @@ class DomainResidentFinder(Finder[Domain, Piece]):
         method = "DomainResidentFinder._team_name_search"
         
         try:
-            matches = [resident for resident in domain.resident if resident.team_name.designation.uppper() == name.upper()]
+            matches = [resident for resident in domain.resident if resident.team_name.name.uppper() == name.upper()]
             if len(matches) == 0:
                 return SearchResult.empty()
             
@@ -198,7 +198,7 @@ class DomainResidentFinder(Finder[Domain, Piece]):
             # the target should only leave duplicates
             uniques = [
                 piece for piece in duplicates if piece.id == target.id and (
-                        piece.designation.upper() != target.designation.upper() or piece.current_position != target.current_position
+                        piece.name.upper() != target.name.upper() or piece.current_position != target.current_position
                 )
             ]
             
@@ -228,7 +228,7 @@ class DomainResidentFinder(Finder[Domain, Piece]):
         try:
             target = duplicates.pop()
             uniques = [
-                piece for piece in duplicates if piece.designation.upper() == target.designation.upper() and (
+                piece for piece in duplicates if piece.name.upper() == target.name.upper() and (
                         piece.id != target.id or piece.current_position != target.current_position
                 )
             ]
@@ -294,7 +294,7 @@ class DomainResidentFinder(Finder[Domain, Piece]):
             for resident in domain.residents:
                 if (
                         resident.id == target.id and
-                        resident.designation.upper() == target.designation.upper() and
+                        resident.name.upper() == target.name.upper() and
                         resident.current_position == target.current_position
                 ):
                     domain.residents.remove(resident)

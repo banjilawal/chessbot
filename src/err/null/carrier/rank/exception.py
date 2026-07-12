@@ -15,18 +15,18 @@ from result import MethodResultType
 
 
 __all__ = [
-    # ======================# RANK_ENTITY_CARRIER_NULL_ERROR #======================#
+    # ======================# RANK_CARRIER_NULL_ERROR #======================#
     "RankCarrierNullException",
 ]
 
-# ======================# RANK_ENTITY_CARRIER_NULL_ERROR #======================#
+# ======================# RANK_CARRIER_NULL_ERROR #======================#
 class RankCarrierNullException(EntityCarrierNullException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a RankEntityCarrier is null.
+        1.  Indicate that a required RankCarrier is null.
 
     Attributes:
         msg: Optional[str]
@@ -36,15 +36,15 @@ class RankCarrierNullException(EntityCarrierNullException):
         cls_name: Optional[str]
         cls_mthd: Optional[str]
         err_code: Optional[str]
-        Mthd_Rslt_Type: Optional[MethodResultType]
+        MTHD_RSLT_TYPE: Optional[MethodResultType]
             
     Provides:
 
     Super Class:
         CarrierException
     """
-    MSG = "RankEntityCarrier cannot be null."
-    ERR_CODE = "RANK_ENTITY_CARRIER_NULL_ERROR"
+    MSG = "RankCarrier cannot be null."
+    ERR_CODE = "RANK_CARRIER_NULL_ERROR"
     
     def __init__(
             self,
@@ -55,7 +55,7 @@ class RankCarrierNullException(EntityCarrierNullException):
             cls_name: Optional[str] | None = None,
             cls_mthd: Optional[str] | None = None,
             err_code: Optional[str] | None = None,
-            mthd_rslt_type: Optional[MethodResultType] | None = None,
+            MTHD_RSLT_TYPE: Optional[MethodResultType] | None = None,
     ):
         """
         args:
@@ -66,7 +66,7 @@ class RankCarrierNullException(EntityCarrierNullException):
             cls_name: Optional[Str]
             cls_mthd: Optional[str]
             err_code: Optional[str]
-            mthd_rslt_type: Optional[MethodResultType]
+            MTHD_RSLT_TYPE: Optional[MethodResultType]
         """
         msg = msg or self.MSG
         err_code = err_code or self.ERR_CODE
@@ -78,5 +78,5 @@ class RankCarrierNullException(EntityCarrierNullException):
             err_code=err_code,
             cls_name=cls_name,
             cls_mthd=cls_mthd,
-            mthd_rslt_type=mthd_rslt_type,
+            MTHD_RSLT_TYPE=MTHD_RSLT_TYPE,
         )

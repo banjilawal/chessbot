@@ -7,7 +7,7 @@ Created: 2026-04-04
 version: 1.0.1
 """
 
-# =========== ERR.null.model.state.ATTACK PACKAGE ===========#
+# =========== ERR.NULL.MODEL.STATE.ATTACK PACKAGE ===========#
 
 # Packages
 

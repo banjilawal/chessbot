@@ -232,9 +232,9 @@ class TokenDeploymentPrimer(Operation[Token]):
                     mthd_rslt_type=TokenDeploymentException.MTHD_RSLT,
                     ex=SquareOccupiedException(
                         var="square_occupant",
-                        msg=f"square:{square.name} already occupied by {square.occupant.designation}",
+                        msg=f"square:{square.name} already occupied by {square.occupant.name}",
                         err_code=SquareOccupiedException.ERR_CODE,
-                        val=home_square_search_result.payload[0].occupant.designation,
+                        val=home_square_search_result.payload[0].occupant.name,
                     )
                 )
             )

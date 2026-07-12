@@ -14,10 +14,10 @@ from err import MicroserviceException
 from result import MethodResultType
 
 __all__ = [
-    # ======================# VECTOR_OPERAND_MICROSERVICE_FAILURE #======================#
+    # ======================# CARTESIAN_MICROSERVICE_FAILURE #======================#
     "VectorOperandMicroserviceException",
 ]
-# ======================# VECTOR_OPERAND_MICROSERVICE_FAILURE #======================#
+# ======================# CARTESIAN_MICROSERVICE_FAILURE #======================#
 class VectorOperandMicroserviceException(MicroserviceException):
     """
     Role:
@@ -42,7 +42,7 @@ class VectorOperandMicroserviceException(MicroserviceException):
         MicroserviceException
     """
     MSG = "VectorOperand microservice failed."
-    ERR_CODE = "VECTOR_OPERAND_MICROSERVICE_FAILURE"
+    ERR_CODE = "CARTESIAN_MICROSERVICE_FAILURE"
     
     def __init__(
             self,

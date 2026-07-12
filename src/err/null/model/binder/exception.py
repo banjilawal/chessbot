@@ -10,16 +10,16 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import NullException
+from err import ModelNullException
 from result import MethodResultType
 
 __all__ = [
     # ======================# BINDER_NULL_ERROR #======================#
-    "BinderNullException",
+    "BinderModelNullException",
 ]
 
 # ======================# BINDER_NULL_ERROR #======================#
-class BinderNullException(NullException):
+class BinderModelNullException(ModelNullException):
     """
     Role:
         -   Error Tracing
@@ -35,12 +35,12 @@ class BinderNullException(NullException):
             cls_name: Optional[str]
             cls_mthd: Optional[str]
             err_code: Optional[str]
-            mthd_rslt_type: Optional[MethodResultType]
+            MTHD_RSLT_TYPE: Optional[MethodResultType]
             
     Provides:
 
     Super Class:
-        NullException
+        ModelNullException
     """
     MSG = "Binder cannot be null"
     ERR_CODE = "BINDER_NULL_ERROR"
@@ -54,7 +54,7 @@ class BinderNullException(NullException):
             cls_name: Optional[str] | None = None,
             cls_mthd: Optional[str] | None = None,
             err_code: Optional[str] | None = None,
-            mthd_rslt_type: Optional[MethodResultType] | None = None,
+            MTHD_RSLT_TYPE: Optional[MethodResultType] | None = None,
     ):
         """
         args:
@@ -65,7 +65,7 @@ class BinderNullException(NullException):
             cls_name: Optional[Str]
             cls_mthd: Optional[str]
             err_code: Optional[str]
-            mthd_rslt_type: Optional[MethodResultType]
+            MTHD_RSLT_TYPE: Optional[MethodResultType]
         """
         msg = msg or self.MSG
         err_code = err_code or self.ERR_CODE
@@ -77,5 +77,5 @@ class BinderNullException(NullException):
             err_code=err_code,
             cls_name=cls_name,
             cls_mthd=cls_mthd,
-            mthd_rslt_type=mthd_rslt_type,
+            MTHD_RSLT_TYPE=MTHD_RSLT_TYPE,
         )

@@ -10,7 +10,7 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import NullException
+from err import StateModelNullException
 from result import MethodResultType
 
 __all__ = [
@@ -19,13 +19,13 @@ __all__ = [
 ]
 
 # ======================# TOKEN_NULL_ERROR #======================#
-class TokenNullException(NullException):
+class TokenNullException(StateModelNullException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate a Token is null.
+        1.  Indicate that a required Token is null.
 
     Attributes:
         msg: Optional[str]
@@ -35,14 +35,14 @@ class TokenNullException(NullException):
         cls_name: Optional[str]
         cls_mthd: Optional[str]
         err_code: Optional[str]
-        Mthd_Rslt_Type: Optional[MethodResultType]
+        MTHD_RSLT_TYPE: Optional[MethodResultType]
         
     Provides:
 
     Super Class:
-        NullException
+        StateModelNullException
     """
-    MSG = "Token is null."
+    MSG = "Token cannot be null."
     ERR_CODE = "TOKEN_NULL_ERROR"
     
     def __init__(
@@ -54,7 +54,7 @@ class TokenNullException(NullException):
             cls_name: Optional[str] | None = None,
             cls_mthd: Optional[str] | None = None,
             err_code: Optional[str] | None = None,
-            mthd_rslt_type: Optional[MethodResultType] | None = None,
+            MTHD_RSLT_TYPE: Optional[MethodResultType] | None = None,
     ):
         """
         Args:
@@ -68,7 +68,7 @@ class TokenNullException(NullException):
         """
         msg = msg or self.MSG
         err_code = err_code or self.ERR_CODE
-        mthd_rslt_type = mthd_rslt_type or self.MTHD_RSLT_TYPE
+        MTHD_RSLT_TYPE = MTHD_RSLT_TYPE or self.MTHD_RSLT_TYPE
         super().__init__(
             ex=ex,
             msg=msg,
@@ -77,5 +77,5 @@ class TokenNullException(NullException):
             err_code=err_code,
             cls_name=cls_name,
             cls_mthd=cls_mthd,
-            mthd_rslt_type=mthd_rslt_type,
+            MTHD_RSLT_TYPE=MTHD_RSLT_TYPE,
         )

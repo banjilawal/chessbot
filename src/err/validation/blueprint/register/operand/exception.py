@@ -15,18 +15,18 @@ from err import RegisterCertifierException
 from result import MethodResultType
 
 __all__ = [
-    # ======================# VECTOR_OPERAND_REGISTER_VALIDATOR_FAILURE #======================#
-    "VectorOperandRegisterCertifierException",
+    # ======================# CARTESIAN_REGISTER_VALIDATOR_FAILURE #======================#
+    "CartesianRegisterCertifierException",
 ]
 
-# ======================# VECTOR_OPERAND_REGISTER_VALIDATOR_FAILURE #======================#
-class VectorOperandRegisterCertifierException(RegisterCertifierException):
+# ======================# CARTESIAN_REGISTER_VALIDATOR_FAILURE #======================#
+class CartesianRegisterCertifierException(RegisterCertifierException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a VectorOperandRegisterCertifier failed.
+        1.  Indicate that a CartesianRegisterCertifier failed.
 
     Attributes:
             msg: Optional[str]
@@ -43,8 +43,8 @@ class VectorOperandRegisterCertifierException(RegisterCertifierException):
     Super Class:
         RegisterCertifierException
     """
-    MSG = "VectorOperandRegisterCertifier failure."
-    ERR_CODE = "VECTOR_OPERAND_REGISTER_VALIDATOR_FAILURE"
+    MSG = "CartesianRegisterCertifier failure."
+    ERR_CODE = "CARTESIAN_REGISTER_VALIDATOR_FAILURE"
     
     def __init__(
             self,

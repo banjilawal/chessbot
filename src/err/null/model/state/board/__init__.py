@@ -7,7 +7,7 @@ Created: 2026-04-04
 version: 1.0.1
 """
 
-# ============ ERR.null.model.state.BOARD PACKAGE ===========#
+# ============ ERR.NULL.MODEL.STATE.BOARD PACKAGE ===========#
 
 # Packages
 

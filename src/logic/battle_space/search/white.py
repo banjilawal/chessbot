@@ -113,7 +113,7 @@ class WhiteTeamProjectionFinder(Finder[ProjectionService, Projection]):
     def _name_search(cls, board: Board, name: str) -> SearchResult[List[Piece]]:
         method = "BoardPieceFinder._name_search"
         try:
-            matches = [piece for piece in board.pieces if piece.designation.upper == name.upper()]
+            matches = [piece for piece in board.pieces if piece.name.upper == name.upper()]
             if len(matches) == 0:
                 return SearchResult()
             elif len(matches) == 1:
@@ -145,7 +145,7 @@ class WhiteTeamProjectionFinder(Finder[ProjectionService, Projection]):
         method = "BoardPieceFinder._resolve_matching_ids"
         target = matches.pop()
         misses = [piece for piece in matches if piece.id == target.id and (
-                piece.designation.upper() != target.designation.upper() or piece.current_position != target.current_position
+                piece.name.upper() != target.name.upper() or piece.current_position != target.current_position
             )
         ]
         if len(misses) == 0:
@@ -153,7 +153,7 @@ class WhiteTeamProjectionFinder(Finder[ProjectionService, Projection]):
             for piece in board.pieces:
                 if (
                     piece.id == target.id and
-                    piece.designation.upper() == target.designation.upper() and
+                    piece.name.upper() == target.name.upper() and
                     piece.current_position == target.current_position
                 ):
                     board.pieces.remove(piece)
@@ -169,7 +169,7 @@ class WhiteTeamProjectionFinder(Finder[ProjectionService, Projection]):
     def _resolve_matching_names(cls, matches: List[Piece], board: Board) -> SearchResult[List[Piece]]:
         method = "BoardPieceFinder._resolve_matching_names"
         target = matches.pop()
-        misses = [piece for piece in matches if piece.designation.upper() == target.designation.upper() and (
+        misses = [piece for piece in matches if piece.name.upper() == target.name.upper() and (
                 piece.id != target.id or piece.current_position != target.current_position
             )
                   ]
@@ -178,7 +178,7 @@ class WhiteTeamProjectionFinder(Finder[ProjectionService, Projection]):
             for piece in board.pieces:
                 if (
                     piece.id == target.id and
-                    piece.designation.upper() == target.designation.upper() and
+                    piece.name.upper() == target.name.upper() and
                     piece.current_position == target.current_position
                 ):
                     board.pieces.remove(piece)
@@ -195,7 +195,7 @@ class WhiteTeamProjectionFinder(Finder[ProjectionService, Projection]):
         method = "BoardPiceSearch._resolve_matching_coords"
         target = matches.pop()
         misses = [piece for piece in matches if piece.current_position == target.current_position and (
-                piece.designation.upper() != target.designation.upper() or piece.id != target.id
+                piece.name.upper() != target.name.upper() or piece.id != target.id
             )
         ]
         if len(misses) == 0:
@@ -203,7 +203,7 @@ class WhiteTeamProjectionFinder(Finder[ProjectionService, Projection]):
             for piece in board.pieces:
                 if (
                     piece.id == target.id and
-                    piece.designation.upper() == target.designation.upper() and
+                    piece.name.upper() == target.name.upper() and
                     piece.current_position == target.current_position
                 ):
                     board.pieces.remove(piece)

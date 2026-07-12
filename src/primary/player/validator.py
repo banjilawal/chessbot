@@ -103,8 +103,8 @@ class PlayerRootCertifier(RootCertifier[Player]):
                     return ValidationResult.failure(rootCertifier.exception)
                 return ValidationResult.success(blueprint)
             
-            if blueprint.designation is not None:
-                validation = identity_service.validate_name(candidate=blueprint.designation)
+            if blueprint.name is not None:
+                validation = identity_service.validate_name(candidate=blueprint.name)
                 if validation.is_failure:
                     return ValidationResult.failure(rootCertifier.exception)
                 return ValidationResult.success(blueprint)

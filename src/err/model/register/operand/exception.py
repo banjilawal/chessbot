@@ -14,18 +14,18 @@ from err import RegisterException
 from result import MethodResultType
 
 __all__ = [
-    # ======================# VECTOR_OPERAND_REGISTER_ERROR #======================#
-    "VectorOperandRegisterException",
+    # ======================# CARTESIAN_REGISTER_ERROR #======================#
+    "CartesianRegisterException",
 ]
 
-# ======================# VECTOR_OPERAND_REGISTER_ERROR #======================#
-class VectorOperandRegisterException(RegisterException):
+# ======================# CARTESIAN_REGISTER_ERROR #======================#
+class CartesianRegisterException(RegisterException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a VectorOperandRegister encountered an error.
+        1.  Indicate that a CartesianRegister encountered an error.
 
     Attributes:
         msg: Optional[str]
@@ -41,8 +41,8 @@ class VectorOperandRegisterException(RegisterException):
     Super Class:
         RegisterException
     """
-    MSG = "VectorOperandRegister error."
-    ERR_CODE = "VECTOR_OPERAND_REGISTER_ERROR"
+    MSG = "CartesianRegister error."
+    ERR_CODE = "CARTESIAN_REGISTER_ERROR"
     
     def __init__(
             self,

@@ -1,7 +1,7 @@
-# src/err/operand/register/square/exception.py
+# src/err/register/square/exception.py
 
 """
-Module: err.operand.register.square.exception
+Module: err.register.square.exception
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -14,18 +14,18 @@ from err import RegisterException
 from result import MethodResultType
 
 __all__ = [
-    # ======================# SQUARE_REGISTER_OPERAND_ERROR #======================#
-    "SquareRegisterDtoOperandException",
+    # ======================# SQUARE_REGISTER_ERROR #======================#
+    "SquareRegisterException",
 ]
 
-# ======================# SQUARE_REGISTER_OPERAND_ERROR #======================#
-class SquareRegisterDtoOperandException(RegisterException):
+# ======================# SQUARE_REGISTER_ERROR #======================#
+class SquareRegisterException(RegisterException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a SquareRegisterOperand encountered an error.
+        1.  Indicate that a SquareRegister encountered an error.
 
     Attributes:
         msg: Optional[str]
@@ -41,8 +41,8 @@ class SquareRegisterDtoOperandException(RegisterException):
     Super Class:
         RegisterException
     """
-    MSG = "SquareRegisterOperand error."
-    ERR_CODE = "SQUARE_REGISTER_OPERAND_ERROR"
+    MSG = "SquareRegister error."
+    ERR_CODE = "SQUARE_REGISTER_ERROR"
     
     def __init__(
             self,

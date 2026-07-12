@@ -7,7 +7,7 @@ Created: 2026-04-04
 version: 1.0.1
 """
 
-# ============ ERR.null.model.state.GAME PACKAGE ===========#
+# ============ ERR.NULL.MODEL.STATE.GAME PACKAGE ===========#
 
 # Packages
 

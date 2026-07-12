@@ -84,7 +84,7 @@ class PlayerValidator(ModelValidator[Player]):
             player = cast(PlayerPlayer, candidate)
             
             # Verify the id and designation are safe.
-            identity_validation = identity_service.validate_identity_register(player.id, player.designation)
+            identity_validation = identity_service.validate_identity_register(player.id, player.name)
             if identity_validation.is_failure():
                 return ValidationResult.failure(identity_validator.exception)
             

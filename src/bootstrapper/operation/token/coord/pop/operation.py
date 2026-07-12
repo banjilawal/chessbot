@@ -148,7 +148,7 @@ class TokenPositionPopper:
                         mthd_rslt_type=TokenPopCoordException.MTHD_RSLT,
                         ex=InactiveTokenPoppingCoordException(
                             var="token",
-                            val=token.designation,
+                            val=token.name,
                             msg=InactiveTokenPoppingCoordException.MSG,
                             err_code=InactiveTokenPoppingCoordException.ERR_CODE,
                         )
@@ -168,7 +168,7 @@ class TokenPositionPopper:
                         mthd_rslt_type=TokenPopCoordException.MTHD_RSLT,
                         ex=UnopenedTokenPoppingCoordException(
                             var="token",
-                            val=token.designation,
+                            val=token.name,
                             msg=UnopenedTokenPoppingCoordException.MSG,
                             err_code=UnopenedTokenPoppingCoordException.ERR_CODE,
                         )
@@ -185,7 +185,7 @@ class TokenPositionPopper:
                     err_code=TokenPopCoordException.ERR_CODE,
                     mthd_rslt_type=TokenPopCoordException.MTHD_RSLT,
                     ex=MoveUndoLimitException(
-                        var=token.designation,
+                        var=token.name,
                         msg=MoveUndoLimitException.MSG,
                         err_code=MoveUndoLimitException.ERR_CODE,
                     )

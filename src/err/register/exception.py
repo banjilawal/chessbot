@@ -1,7 +1,7 @@
-# src/err/operand/register/exception.py
+# src/err/register/exception.py
 
 """
-Module: err.operand.register.exception
+Module: err.register.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,23 +10,23 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import OperandException
+from err import ChessException
 from result import MethodResultType
 
 
 __all__ = [
-    # ======================# REGISTER_OPERAND_ERROR #======================#
-    "RegisterOperandException",
+    # ======================# REGISTER_ERROR #======================#
+    "RegisterException",
 ]
 
-# ======================# REGISTER_OPERAND_ERROR #======================#
-class RegisterOperandException(OperandException):
+# ======================# REGISTER_ERROR #======================#
+class RegisterException(ChessException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a RegisterOperand encountered an error.
+        1.  Indicate that a Register encountered an error.
 
     Attributes:
         msg: Optional[str]
@@ -41,10 +41,10 @@ class RegisterOperandException(OperandException):
     Provides:
 
     Super Class:
-        DtoOperandException
+        ChessException
     """
-    MSG = "RegisterOperand error."
-    ERR_CODE = "REGISTER_OPERAND_ERROR"
+    MSG = "Register error."
+    ERR_CODE = "REGISTER_ERROR"
     
     def __init__(
             self,

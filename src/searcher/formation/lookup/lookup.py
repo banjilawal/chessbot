@@ -78,8 +78,8 @@ class FormationLookupProcess(HashLookupProcess[Formation]):
         # --- Route to the lookup method which matches the super_key attribute. ---#
         
         # Entry point into forward lookups by designation.
-        if super_key.designation is not None:
-            return cls._by_designation(designation=super_key.designation)
+        if super_key.name is not None:
+            return cls._by_designation(designation=super_key.name)
         # Entry point into forward lookups by square_name.
         if super_key.home_square_name is not None:
             return cls._by_square_name(square=super_key.home_square_name)
@@ -117,7 +117,7 @@ class FormationLookupProcess(HashLookupProcess[Formation]):
             *   FormationLookupFailedException
         """
         method = "FormationLookupProcess._find_by_designation"
-        matches = [entry for entry in Formation if entry.designation.upper() == designation.upper()]
+        matches = [entry for entry in Formation if entry.name.upper() == designation.upper()]
         
         # Finding at least one match is success.
         if len(matches) >= 1:

@@ -87,7 +87,7 @@ class DomainVisitorFinder(Finder[Domain, Piece]):
         method = "DomainResidentFinder._name_search"
         
         try:
-            matches = [visitor for visitor in domain.residents if visitor.designation.upper == name.upper()]
+            matches = [visitor for visitor in domain.residents if visitor.name.upper == name.upper()]
             if len(matches) == 0:
                 return SearchResult.empty()
             elif len(matches) == 1:
@@ -123,7 +123,7 @@ class DomainVisitorFinder(Finder[Domain, Piece]):
         method = "DomainResidentFinder._rank_name_search"
         
         try:
-            matches = [visitor for visitor in domain.residents if visitor.rank_level.designation.upper() == rank_name.upper()]
+            matches = [visitor for visitor in domain.residents if visitor.rank_level.name.upper() == rank_name.upper()]
             if len(matches) == 0:
                 return SearchResult.empty()
             
@@ -198,7 +198,7 @@ class DomainVisitorFinder(Finder[Domain, Piece]):
             # the target should only leave duplicates
             uniques = [
                 piece for piece in duplicates if piece.id == target.id and (
-                        piece.designation.upper() != target.designation.upper() or piece.current_position != target.current_position
+                        piece.name.upper() != target.name.upper() or piece.current_position != target.current_position
                 )
             ]
             
@@ -228,7 +228,7 @@ class DomainVisitorFinder(Finder[Domain, Piece]):
         try:
             target = duplicates.pop()
             uniques = [
-                piece for piece in duplicates if piece.designation.upper() == target.designation.upper() and (
+                piece for piece in duplicates if piece.name.upper() == target.name.upper() and (
                         piece.id != target.id or piece.current_position != target.current_position
                 )
             ]
@@ -294,7 +294,7 @@ class DomainVisitorFinder(Finder[Domain, Piece]):
             for visitor in domain.residents:
                 if (
                         visitor.id == target.id and
-                        visitor.designation.upper() == target.designation.upper() and
+                        visitor.name.upper() == target.name.upper() and
                         visitor.current_position == target.current_position
                 ):
                     domain.residents.remove(visitor)

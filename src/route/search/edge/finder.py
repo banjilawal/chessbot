@@ -110,8 +110,8 @@ class EdgeFinder(StackSearchRouter[Edge]):
         if context.id is not None:
             return cls._find_by_id(dataset=dataset, id=context.id)
         # Entry point into finding by item's schema.
-        if context.designation is not None:
-            return cls._find_by_name(dataset=dataset, name=context.designation)
+        if context.name is not None:
+            return cls._find_by_name(dataset=dataset, name=context.name)
         # Entry point into finding by item's coord.
         if context.coord is not None:
             return cls._find_by_coord(dataset=dataset, coord=context.coord)

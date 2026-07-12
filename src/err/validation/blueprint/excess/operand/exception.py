@@ -13,11 +13,11 @@ from typing import Any, Optional
 from err import ExcessBlueprintFlagsException
 
 _all_ = [
-    # ======================# EXCESS_VECTOR_OPERAND_FLAGS_FAILURE #======================#
+    # ======================# EXCESS_CARTESIAN_FLAGS_FAILURE #======================#
     "ExcessVectorOperandFlagsException",
 ]
 
-# ======================# EXCESS_VECTOR_OPERAND_FLAGS_FAILURE #======================#
+# ======================# EXCESS_CARTESIAN_FLAGS_FAILURE #======================#
 class ExcessVectorOperandFlagsException(ExcessBlueprintFlagsException):
     """
     Role:
@@ -41,7 +41,7 @@ class ExcessVectorOperandFlagsException(ExcessBlueprintFlagsException):
         ExcessBlueprintFlagsException
     """
     MSG = "Candidate did not pass a More than one VectorOperand attribute enabled."
-    ERR_CODE = "EXCESS_VECTOR_OPERAND_FLAGS_FAILURE"
+    ERR_CODE = "EXCESS_CARTESIAN_FLAGS_FAILURE"
     
     def __init__(
             self,

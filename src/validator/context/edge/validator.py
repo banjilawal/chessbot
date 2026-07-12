@@ -126,8 +126,8 @@ class EdgeContextValidator(ContextValidator[Edge]):
             return ValidationResult.success(payload=context)
         
         # Certification for the search-by-schema target.
-        if context.designation is not None:
-            validation = identity_service.validate_name(context.designation)
+        if context.name is not None:
+            validation = identity_service.validate_name(context.name)
             if validation.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(

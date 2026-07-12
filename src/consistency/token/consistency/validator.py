@@ -111,7 +111,7 @@ class TokenConsistencyConsistencyChecker(ConsistencyChecker[Token]):
         # Handle the case that, id or designation are not certified safe.
         identity_validation_result = tools["identity_service"].validate_identity_register(
             id_candidate=token.id,
-            name_candidate=token.designation
+            name_candidate=token.name
         )
         if identity_validation_result.is_failure:
             # Send the exception chain on failure.

@@ -115,8 +115,8 @@ class PersonaRootCertifier(RootCertifier[PersonaKey]):
         # Route to the appropriate validation branch.
         
         # Certification for the lookup-by-schema target.
-        if super_key.designation is not None:
-            validation = identity_service.validate_name(candidate=super_key.designation)
+        if super_key.name is not None:
+            validation = identity_service.validate_name(candidate=super_key.name)
             if validation.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
@@ -129,8 +129,8 @@ class PersonaRootCertifier(RootCertifier[PersonaKey]):
             return ValidationResult.success(super_key)
         
         # Certification for the lookup-by-designation target.
-        if super_key.designation is not None:
-            validation = identity_service.validate_name(candidate=super_key.designation)
+        if super_key.name is not None:
+            validation = identity_service.validate_name(candidate=super_key.name)
             if validation.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(

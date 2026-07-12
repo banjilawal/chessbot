@@ -14,18 +14,18 @@ from err import RegisterException
 from result import MethodResultType
 
 __all__ = [
-    # ======================# VECTOR_OPERAND_REGISTER_CONSISTENCY_CHECKER_FAILURE #======================#
-    "VectorOperandRegisterConsistencyCheckerException",
+    # ======================# CARTESIAN_REGISTER_CONSISTENCY_CHECKER_FAILURE #======================#
+    "CartesianRegisterConsistencyCheckerException",
 ]
 
-# ======================# VECTOR_OPERAND_REGISTER_CONSISTENCY_CHECKER_FAILURE #======================#
-class VectorOperandRegisterConsistencyCheckerException(RegisterException):
+# ======================# CARTESIAN_REGISTER_CONSISTENCY_CHECKER_FAILURE #======================#
+class CartesianRegisterConsistencyCheckerException(RegisterException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a VectorOperandRegisterConsistencyChecker raised an error.
+        1.  Indicate that a CartesianRegisterConsistencyChecker raised an error.
 
     Attributes:
         msg: Optional[str]
@@ -41,8 +41,8 @@ class VectorOperandRegisterConsistencyCheckerException(RegisterException):
     Super Class:
         RegisterException
     """
-    MSG = "VectorOperandRegister consistency error."
-    ERR_CODE = "VECTOR_OPERAND_REGISTER_CONSISTENCY_CHECKER_FAILURE"
+    MSG = "CartesianRegister consistency error."
+    ERR_CODE = "CARTESIAN_REGISTER_CONSISTENCY_CHECKER_FAILURE"
     
     def __init__(
             self,

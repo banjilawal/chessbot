@@ -152,7 +152,7 @@ class PawnPromotionApprovalManager(Analyzer):
                     PawnPromotionRowException(
                         cls_mthd=method,
                         cls_name=cls.__name__,
-                        var=pawn.designation,
+                        var=pawn.name,
                         msg=PawnPromotionRowException.MSG,
                         err_code=PawnPromotionRowException.ERR_CODE,
                     )

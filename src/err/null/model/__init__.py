@@ -1,4 +1,4 @@
-# src/err/null/model/model/__init__.py
+# src/err/null/model/__init__.py
 
 """
 Module: err.null.model.__init__

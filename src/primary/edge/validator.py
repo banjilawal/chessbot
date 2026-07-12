@@ -126,8 +126,8 @@ class EdgeRootCertifier(RootCertifier[Edge]):
             return ValidationResult.success(payload=blueprint)
         
         # Certification for the search-by-schema target.
-        if blueprint.designation is not None:
-            validation = identity_service.validate_name(blueprint.designation)
+        if blueprint.name is not None:
+            validation = identity_service.validate_name(blueprint.name)
             if validation.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(

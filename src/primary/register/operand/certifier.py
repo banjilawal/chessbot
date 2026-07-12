@@ -10,15 +10,15 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, cast
 
-from err import VectorOperandRegisterCertifierException, VectorOperandRegisterMismatchException
+from err import CartesianRegisterCertifierException, CartesianRegisterMismatchException
 from model import PointRegister
 from primary import RootCertifier
 from result import ValidationResult
-from toolkit import VectorOperandRegisterToolkit
+from toolkit import CartesianRegisterToolkit
 from util import LoggingLevelRouter
 
 
-class VectorOperandRegisterRootCertifier(RootCertifier[PointRegister]):
+class CartesianRegisterRootCertifier(RootCertifier[PointRegister]):
     """
     Role
         -   Transaction Worker
@@ -31,7 +31,7 @@ class VectorOperandRegisterRootCertifier(RootCertifier[PointRegister]):
             before use in a binary arithmetic operation.
 
     Attributes:
-        toolkit: VectorOperandRegisterToolkit   
+        toolkit: CartesianRegisterToolkit   
     Properties:
         -   execute(candidate: Any,) -> ValidationResult
 
@@ -40,13 +40,13 @@ class VectorOperandRegisterRootCertifier(RootCertifier[PointRegister]):
     """
     def __init__(
             self, 
-            toolkit: VectorOperandRegisterToolkit | None = VectorOperandRegisterToolkit()
+            toolkit: CartesianRegisterToolkit | None = CartesianRegisterToolkit()
     ):
         super().__init__(toolkit=toolkit)
         
     @property
-    def toolkit(self) -> VectorOperandRegisterToolkit:
-        return cast(VectorOperandRegisterToolkit, self.toolkit)
+    def toolkit(self) -> CartesianRegisterToolkit:
+        return cast(CartesianRegisterToolkit, self.toolkit)
     
     @LoggingLevelRouter.monitor
     def execute(self, candidate: Any,) -> ValidationResult:
@@ -65,8 +65,8 @@ class VectorOperandRegisterRootCertifier(RootCertifier[PointRegister]):
         Returns:
             ValidationResult
         Raises:
-            VectorOperandRegisterCertifierException
-            VectorOperandRegisterMismatchException
+            CartesianRegisterCertifierException
+            CartesianRegisterMismatchException
         """
         method = f"{self.__class__.__name__}.execute"
         
@@ -79,11 +79,11 @@ class VectorOperandRegisterRootCertifier(RootCertifier[PointRegister]):
         if validator_priming_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                VectorOperandRegisterCertifierException(
+                CartesianRegisterCertifierException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=VectorOperandRegisterCertifierException.MSG,
-                    err_code=VectorOperandRegisterCertifierException.ERR_CODE,
+                    msg=CartesianRegisterCertifierException.MSG,
+                    err_code=CartesianRegisterCertifierException.ERR_CODE,
                     ex=validator_priming_result.exception,
                 )
             )
@@ -94,28 +94,28 @@ class VectorOperandRegisterRootCertifier(RootCertifier[PointRegister]):
         if register.is_mismatched_register:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                VectorOperandRegisterCertifierException(
+                CartesianRegisterCertifierException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=VectorOperandRegisterCertifierException.MSG,
-                    err_code=VectorOperandRegisterCertifierException.ERR_CODE,
-                    ex=VectorOperandRegisterMismatchException(
-                        msg=VectorOperandRegisterMismatchException.MSG,
-                        err_code=VectorOperandRegisterMismatchException.ERR_CODE,
+                    msg=CartesianRegisterCertifierException.MSG,
+                    err_code=CartesianRegisterCertifierException.ERR_CODE,
+                    ex=CartesianRegisterMismatchException(
+                        msg=CartesianRegisterMismatchException.MSG,
+                        err_code=CartesianRegisterMismatchException.ERR_CODE,
                     )
                 )
             )
         # Handle the case that, either slot does not contain a safe vector_opernad.
         for item in [blueprint.a, blueprint.b]:
-            validation = self.toolkit.vector_operand_validator.execute(item)
+            validation = self.toolkit.cartesian_validator.execute(item)
             if validation.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
-                    VectorOperandRegisterCertifierException(
+                    CartesianRegisterCertifierException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        msg=VectorOperandRegisterCertifierException.MSG,
-                        err_code=VectorOperandRegisterCertifierException.ERR_CODE,
+                        msg=CartesianRegisterCertifierException.MSG,
+                        err_code=CartesianRegisterCertifierException.ERR_CODE,
                         ex=validation.exception,
                     )
                 )

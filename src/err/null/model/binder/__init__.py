@@ -14,4 +14,4 @@ from .arena import *
 from .board import *
 
 # Modules
-from .exception import BinderNullException
+from .exception import BinderModelNullException

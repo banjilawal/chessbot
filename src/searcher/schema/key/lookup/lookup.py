@@ -71,8 +71,8 @@ class SchemaLookupProcess(HashLookupProcess[Schema]):
         # After verification use the hash key to route to the appropriate lookup method.
         
         # Entry point into forward lookups by schema.
-        if super_key.designation is not None:
-            return cls._query_by_name(name=super_key.designation)
+        if super_key.name is not None:
+            return cls._query_by_name(name=super_key.name)
         # Entry point into forward lookups by color.
         if super_key.color is not None:
             return cls._query_by_color(color=super_key.color)

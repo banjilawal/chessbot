@@ -11,22 +11,22 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import VectorOperandRegisterMicroserviceException
+from err import CartesianRegisterMicroserviceException
 from result import MethodResultType
 
 __all__ = [
-    # ======================# VECTOR_OPERAND_REGISTER_MISMATCH_ERROR #======================#
-    "VectorOperandRegisterMismatchException",
+    # ======================# CARTESIAN_REGISTER_MISMATCH_ERROR #======================#
+    "CartesianRegisterMismatchException",
 ]
 
-# ======================# VECTOR_OPERAND_REGISTER_MISMATCH_ERROR #======================#
-class VectorOperandRegisterMismatchException(VectorOperandRegisterMicroserviceException):
+# ======================# CARTESIAN_REGISTER_MISMATCH_ERROR #======================#
+class CartesianRegisterMismatchException(CartesianRegisterMicroserviceException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a VectorOperandRegister's a-b slots contain different types.
+        1.  Indicate that a CartesianRegister's a-b slots contain different types.
 
     Attributes:
             msg: Optional[str]
@@ -41,10 +41,10 @@ class VectorOperandRegisterMismatchException(VectorOperandRegisterMicroserviceEx
     Provides:
 
     Super Class:
-        VectorOperandRegisterMicroserviceException
+        CartesianRegisterMicroserviceException
     """
-    MSG = "VectorOperandRegister slots cannot hold different types."
-    ERR_CODE = "VECTOR_OPERAND_REGISTER_MISMATCH_ERROR"
+    MSG = "CartesianRegister slots cannot hold different types."
+    ERR_CODE = "CARTESIAN_REGISTER_MISMATCH_ERROR"
     
     def __init__(
             self,

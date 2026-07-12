@@ -73,10 +73,10 @@ class TokenSearchRouter(SearchRouter[Token]):
                 id=query.context.id
             )
         # token.designation search entry point
-        if query.context.designation is not None:
+        if query.context.name is not None:
             return cls._find_by_designation(
                 items=query.token_stack.items,
-                designation=query.context.designation
+                designation=query.context.name
             )
         # token.home_square_name search entry point.
         if query.context.home_square is not None:
@@ -175,7 +175,7 @@ class TokenSearchRouter(SearchRouter[Token]):
         """
         matches = [
             token for token in items if
-                (token.designation.upper() == designation.upper())
+                (token.name.upper() == designation.upper())
         ]
         # Handle the nothing found case.
         if len(matches) == 0:

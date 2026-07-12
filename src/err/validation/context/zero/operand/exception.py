@@ -13,11 +13,11 @@ from typing import Any, Optional
 from err import ZeroContextFlagsException
 
 _all_ = [
-    # ======================# ZERO_VECTOR_OPERAND_FLAGS_FAILURE #======================#
+    # ======================# ZERO_CARTESIAN_FLAGS_FAILURE #======================#
     "ZeroVectorOperandFlagsException",
 ]
 
-# ======================# ZERO_VECTOR_OPERAND_FLAGS_FAILURE #======================#
+# ======================# ZERO_CARTESIAN_FLAGS_FAILURE #======================#
 class ZeroVectorOperandFlagsException(ZeroContextFlagsException):
     """
     Role:
@@ -41,7 +41,7 @@ class ZeroVectorOperandFlagsException(ZeroContextFlagsException):
         ZeroContextFlagsException
     """
     MSG = "Candidate did not pass a No NodeCContextValidator test. enabled."
-    ERR_CODE = "ZERO_VECTOR_OPERAND_FLAGS_FAILURE"
+    ERR_CODE = "ZERO_CARTESIAN_FLAGS_FAILURE"
     
     def __init__(
             self,

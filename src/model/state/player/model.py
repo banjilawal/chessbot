@@ -145,7 +145,7 @@ class Player(StateModel):
                 raise TokenCoordNullException(f"{method}: {TokenCoordNullException.MSG}")
             
             if isinstance(token, CombatantToken) and token.victor is not None:
-                raise PrisonerEscapeException(f"{method}: Cannot move {token.designation} it has been captured.")
+                raise PrisonerEscapeException(f"{method}: Cannot move {token.name} it has been captured.")
             
             validation = CoordValidator.search_service(destination)
             if not validation.is_success():

@@ -15,12 +15,12 @@ from result import MethodResultType
 
 
 __all__ = [
-    # ======================# VECTOR_OPERAND_CONSISTENCY_CHECKER_FAILURE #======================#
+    # ======================# CARTESIAN_CONSISTENCY_CHECKER_FAILURE #======================#
     "VectorOperandConsistencyCheckerException",
 ]
 
 
-# ======================# VECTOR_OPERAND_CONSISTENCY_CHECKER_FAILURE #======================#
+# ======================# CARTESIAN_CONSISTENCY_CHECKER_FAILURE #======================#
 class VectorOperandConsistencyCheckerException(ConsistencyCheckerException):
     """
     Role:
@@ -45,7 +45,7 @@ class VectorOperandConsistencyCheckerException(ConsistencyCheckerException):
         ConsistencyCheckerException
     """
     MSG = "VectorOperand consistency error."
-    ERR_CODE = "VECTOR_OPERAND_CONSISTENCY_CHECKER_FAILURE"
+    ERR_CODE = "CARTESIAN_CONSISTENCY_CHECKER_FAILURE"
     
     def __init__(
             self,

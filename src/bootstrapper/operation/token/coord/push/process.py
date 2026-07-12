@@ -99,7 +99,7 @@ class TokenPushCoordProcess:
                     mthd_rslt_type=TokenPushCoordException.MTHD_RSLT,
                     ex=InactiveTokenPushingCoordException(
                         var="token",
-                        val=token.designation,
+                        val=token.name,
                         msg=InactiveTokenPushingCoordException.MSG,
                         err_code=InactiveTokenPushingCoordException.ERR_CODE,
                     )
@@ -132,7 +132,7 @@ class TokenPushCoordProcess:
                     err_code=TokenPushCoordException.ERR_CODE,
                     mthd_rslt_type=TokenPushCoordException.MTHD_RSLT,
                     ex=DuplicateCoordPushException(
-                        var=token.designation,
+                        var=token.name,
                         val=token.current_position,
                         msg=DuplicateCoordPushException.MSG,
                         err_code=DuplicateCoordPushException.ERR_CODE,

@@ -39,5 +39,5 @@ class CommandTable:
     def command_names(self) -> List[str]:
         names = []
         for key in self._entries:
-            names.append(key.designation)
+            names.append(key.name)
         return names

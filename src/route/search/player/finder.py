@@ -85,8 +85,8 @@ class AgentFinder(DataFinder[PlayerAgent]):
             if context.id is not None:
                 return cls._find_by_id(dataset, context.id)
             # Entry point into searching by owner.designation.
-            if context.designation is not None:
-                return cls._find_by_name(dataset, context.designation)
+            if context.name is not None:
+                return cls._find_by_name(dataset, context.name)
             # Entry point into searching by owner's team.
             if context.team is not None:
                 return cls._find_by_team(dataset, context.team)
@@ -176,7 +176,7 @@ class AgentFinder(DataFinder[PlayerAgent]):
         method = "AgentFinder._find_by_name"
         try:
             # Get the list of agents with the same schema in upper case.
-            matches = [agent for agent in dataset if player.designation.upper() == name.upper()]
+            matches = [agent for agent in dataset if player.name.upper() == name.upper()]
             
             # An empty array means nothing was found.
             if len(matches) == 0:

@@ -72,7 +72,7 @@ class TokenCollider:
             TokenOpeningSquareCollisionException
             TokenCollisionDetectionException
         """
-        method = f"{cls.__class__.__name__}.detect"
+        method = f"{self.__class__.__name__}.execute"
         # --- Loop through the collider_candidates to find matches. ---#
         
         for item in stream.items:
@@ -94,14 +94,14 @@ class TokenCollider:
                     )
                 )
             # Handle the case that, a token already has the target's id.
-            if item.designation == target.formation.designation.upper():
+            if item.name == target.formation.designation.upper():
                 # Return the collision details in the report.
                 return AnalysisResult.completed(
                     CollisionReport.collision(
                         collider=item,
                         target_set=target,
                         colliding_variable="designation",
-                        collision_value=item.designation,
+                        collision_value=item.name,
                         exception=TokenNameCollisionException(
                             cls_mthd=method,
                             cls_name=cls.__name__,

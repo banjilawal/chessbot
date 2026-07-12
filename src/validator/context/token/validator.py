@@ -118,9 +118,9 @@ class TokenContextValidator(ContextValidator):
             return ValidationResult.success(context)
         
         # Certification for the search-by-designation target.
-        if context.designation is not None:
+        if context.name is not None:
             validation_result = toolkit.identity_service.validate_name(
-                candidate=context.designation
+                candidate=context.name
             )
             if validation_result.is_failure:
                 # Send the exception chain on failure.
