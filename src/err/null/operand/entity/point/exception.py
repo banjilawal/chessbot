@@ -10,18 +10,18 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import EntityOperandNullException
+from err import EntityCarrierNullException
 from result import MethodResultType
 
 
 __all__ = [
     # ======================# POINT_OPERAND_ENTITY_OPERAND_NULL_ERROR #======================#
-    "PointEntityOperandNullException",
+    "PointCarrierNullException",
 ]
 
 
 # ======================# POINT_OPERAND_ENTITY_OPERAND_NULL_ERROR #======================#
-class PointEntityOperandNullException(EntityOperandNullException):
+class PointCarrierNullException(EntityCarrierNullException):
     """
     Role:
         -   Error Tracing

@@ -9,10 +9,7 @@ version: 1.0.1
 
 from __future__ import annotations
 
-
 from bootstrapper import PrimingValidator
-
-
 
 
 class Toolkit:
@@ -33,8 +30,19 @@ class Toolkit:
         
     Super Class:
     """
-    """
-    Args:
-        priming_validator: PrimingValidator
-    """
-    priming_validator: PrimingValidator = PrimingValidator()
+    _priming_validator: PrimingValidator
+    
+    def __init__(
+            self,
+            priming_validator: PrimingValidator | None = PrimingValidator(),
+    ):
+        
+        """
+        Args:
+            priming_validator: PrimingValidator
+        """
+        self._priming_validator = priming_validator
+        
+    @property
+    def priming_validator(self) -> PrimingValidator:
+        return self._priming_validator

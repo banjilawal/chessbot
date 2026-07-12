@@ -14,7 +14,7 @@ from typing import Any, cast
 from consistency import SquareConsistencyChecker
 from err import SquareValidatorException
 from model import Square
-from operand import SquareEntityOperand
+from operand import SquareCarrier
 from primary import SquareRootCertifier
 from result import ValidationResult
 from util import LoggingLevelRouter
@@ -148,7 +148,7 @@ class SquareValidator(ModelValidator[Square]):
                     ex=bootstrap.exception,
                 )
             )
-        dto_operand = SquareEntityOperand(
+        dto_operand = SquareCarrier(
             model=cast(
                 self.root_certifier.toolkit.model,
                 bootstrap.payload,

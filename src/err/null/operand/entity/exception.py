@@ -16,11 +16,11 @@ from result import MethodResultType
 
 __all__ = [
     # ======================# ENTITY_OPERAND_NULL_ERROR #======================#
-    "EntityOperandNullException",
+    "EntityCarrierNullException",
 ]
 
 # ======================# ENTITY_OPERAND_NULL_ERROR #======================#
-class EntityOperandNullException(OperandNullException):
+class EntityCarrierNullException(OperandNullException):
     """
     Role:
         -   Error Tracing

@@ -12,11 +12,10 @@ from __future__ import annotations
 from typing import Generic, Type, TypeVar
 
 from blueprint import Blueprint
-from err import BlueprintNullException, EntityOperandNullException, ModelNullException, NullException
+from err import BlueprintNullException, EntityCarrierNullException, ModelNullException
 from microservice import IdentityService
-from operand import EntityOperand
+from operand import EntityCarrier
 from toolkit import Toolkit
-from validator import BlueprintIdExtractor
 
 T = TypeVar("T", bound="Model")
 
@@ -34,43 +33,28 @@ class ModelToolkit(Toolkit, Generic[T]):
         3.  Simplifies entry points.
 
     Attributes:
-        model: T
-        blueprint_model: Blueprint[T]
-        identity_service: IdentityService
-        priming_validator: PrimingValidator
-        blueprint_id_validator: BlueprintIdValidator
+        model: Type[T]
+        carrier_model: Type[EntityCarrier[T]]
+        blueprint_model: Type[Blueprint[T]]
+        
         null_exception: ModelNullException
         blueprint_null_exception: BlueprintNullException
+        carrier_null_exception: EntityCarrierNullException
+        
+        identity_service: IdentityService
         
     Provides:
         
     Super Class:
-       ModelToolkit
-        
-    Notes:
-        -   ModelToolkit for an empty class which makes managing toolkits easier.
-        -   Any toolkits for a model should be a ModelToolkit subclass.
-    """
-    """
-    Args:
-        model: Type[T]
-        operand_model: Type[DtoOperand[T]]
-        blueprint_model: Type[Blueprint[T]]
-
-        null_exception: ModelNullException
-        blueprint_null_exception: BlueprintNullException
-        operand_null_exception: DtoOperandNullException
-        
-        identity_service: IdentityService
-        priming_validator: PrimingValidator
+       Toolkit
     """
     model: Type[T]
-    operand_model: Type[EntityOperand[T]]
+    carrier_model: Type[EntityCarrier[T]]
     blueprint_model: Type[Blueprint[T]]
     
     null_exception: ModelNullException
     blueprint_null_exception: BlueprintNullException
-    operand_null_exception: EntityOperandNullException
+    carrier_null_exception: EntityCarrierNullException
     
     identity_service: IdentityService = IdentityService()
 

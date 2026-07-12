@@ -10,17 +10,17 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import EntityOperandNullException
+from err import EntityCarrierNullException
 from result import MethodResultType
 
 
 __all__ = [
     # ======================# PLAYER_ENTITY_OPERAND_NULL_ERROR #======================#
-    "PlayerEntityOperandNullException",
+    "PlayerCarrierNullException",
 ]
 
 # ======================# PLAYER_ENTITY_OPERAND_NULL_ERROR #======================#
-class PlayerEntityOperandNullException(EntityOperandNullException):
+class PlayerCarrierNullException(EntityCarrierNullException):
     """
     Role:
         -   Error Tracing

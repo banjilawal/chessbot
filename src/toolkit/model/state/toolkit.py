@@ -31,11 +31,11 @@ class StateModelToolkit(ModelToolkit[StateModel]):
         model: StateModel
         
         blueprint_model: Blueprint
-        operand_model: DtoOperand
+        carrier_model: DtoOperand
 
         null_exception: ModelNullException
         blueprint_null_exception: BlueprintNullException
-        operand_null_exception: DtoOperandNullException[T]
+        carrier_null_exception: DtoOperandNullException[T]
 
         identity_service: IdentityService
         priming_validator: PrimingValidator

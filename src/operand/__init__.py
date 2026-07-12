@@ -10,7 +10,6 @@ version: 1.0.1
 # =========== OPERAND PACKAGE ===========#
 
 # Packages
-from .dto import *
 from .point import *
 
 # Modules

@@ -10,17 +10,17 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import EntityOperandNullException
+from err import EntityCarrierNullException
 from result import MethodResultType
 
 
 __all__ = [
     # ======================# EDGE_ENTITY_OPERAND_NULL_ERROR #======================#
-    "EdgeEntityOperandNullException",
+    "EdgeCarrierNullException",
 ]
 
 # ======================# EDGE_ENTITY_OPERAND_NULL_ERROR #======================#
-class EdgeEntityOperandNullException(EntityOperandNullException):
+class EdgeCarrierNullException(EntityCarrierNullException):
     """
     Role:
         -   Error Tracing

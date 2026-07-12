@@ -14,7 +14,7 @@ from typing import Any, cast
 from consistency import TokenConsistencyChecker
 from err import TokenValidatorException
 from model import Token
-from operand import TokenEntityOperand
+from operand import TokenCarrier
 from primary import TokenRootCertifier
 from result import ValidationResult
 from util import LoggingLevelRouter
@@ -149,7 +149,7 @@ class TokenValidator(ModelValidator[Token]):
                     ex=bootstrap.exception,
                 )
             )
-        dto_operand = TokenEntityOperand(
+        dto_operand = TokenCarrier(
             model=cast(
                 self.root_certifier.toolkit.model,
                 bootstrap.payload,

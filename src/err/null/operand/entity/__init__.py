@@ -27,4 +27,4 @@ from .token import *
 from .vector import  *
 
 # Modules
-from .exception import EntityOperandNullException
+from .exception import EntityCarrierNullException

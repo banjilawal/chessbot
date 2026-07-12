@@ -17,7 +17,7 @@ from bootstrapper import PrimingValidator
 from detector import SquareCollisionDetector
 from err import SquareBlueprintNullException, SquareNullException
 from model import Square
-from operand import SquareEntityOperand
+from operand import SquareCarrier
 from toolkit import ModelToolkit
 from validator import BoardValidator, CoordValidator, TokenValidator
 
@@ -55,7 +55,7 @@ class SquareToolkit(ModelToolkit[Square]):
     """
     model: Type[Square] = Square
     blueprint_model: Type[SquareBlueprint] = SquareBlueprint
-    operand_model: Type[SquareEntityOperand] = SquareEntityOperand
+    carrier_model: Type[SquareCarrier] = SquareCarrier
 
     null_exception: SquareNullException = SquareNullException()
     blueprint_null_exception: SquareBlueprintNullException = SquareBlueprintNullException()

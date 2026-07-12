@@ -12,7 +12,7 @@ from __future__ import annotations
 from abc import ABC, abstractmethod
 from typing import Generic, TypeVar
 
-from operand import EntityOperand
+from operand import EntityCarrier
 from result import ValidationResult
 from toolkit import ModelToolkit
 from util import LoggingLevelRouter
@@ -49,7 +49,7 @@ class RootCertifier(ABC, Generic[T]):
     
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def execute(self, dto_operand: EntityOperand[T]) -> ValidationResult:
+    def execute(self, dto_operand: EntityCarrier[T]) -> ValidationResult:
         """
             -   Certify a DtoOperand's data satisfies a model's integrity constraints.
 

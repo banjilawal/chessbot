@@ -10,7 +10,7 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import EntityOperandNullException
+from err import EntityCarrierNullException
 from result import MethodResultType
 
 
@@ -20,7 +20,7 @@ __all__ = [
 ]
 
 # ======================# REGISTER_ENTITY_OPERAND_NULL_ERROR #======================#
-class RegisterEntityNullException(EntityOperandNullException):
+class RegisterEntityNullException(EntityCarrierNullException):
     """
     Role:
         -   Error Tracing

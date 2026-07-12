@@ -19,7 +19,7 @@ from validator import NumberValidator
 
 
 @dataclass
-class VectorToolkit(ModelToolkit):
+class VectorToolkit(ModelToolkit[Vector]):
     """
     Role:
         -   Container
@@ -39,9 +39,14 @@ class VectorToolkit(ModelToolkit):
     Super Class:
        ModelToolkit
     """
+    model: Type[Vector] = Vector
+    carrier_model: Type[VectorEntityoperand] = VectorEntitOperand
+    blueprint_model: Type[VectorBlueprint] =
+    
+    null_exception: VectorNullException()
+    blueprint_null_exception:VectorBlueprintNullException()
+    carrier_null_exception: VectorEntityOperandNullException()
+    
     number_validator: NumberValidator = NumberValidator()
-    null_exception: VectorNullException = VectorNullException()
-    model: Vector = Type[Vector]
-
 
     

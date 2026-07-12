@@ -10,17 +10,17 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import EntityOperandNullException
+from err import EntityCarrierNullException
 from result import MethodResultType
 
 
 __all__ = [
     # ======================# TOKEN_ENTITY_OPERAND_NULL_ERROR #======================#
-    "TokenEntityOperandNullException",
+    "TokenCarrierNullException",
 ]
 
 # ======================# TOKEN_ENTITY_OPERAND_NULL_ERROR #======================#
-class TokenEntityOperandNullException(EntityOperandNullException):
+class TokenCarrierNullException(EntityCarrierNullException):
     """
     Role:
         -   Error Tracing

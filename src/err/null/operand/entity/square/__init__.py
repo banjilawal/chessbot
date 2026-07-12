@@ -13,4 +13,4 @@ version: 1.0.1
 from .opening import *
 
 # Modules
-from .exception import SquareEntityOperandNullException
+from .exception import SquareCarrierNullException

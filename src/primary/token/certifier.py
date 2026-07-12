@@ -13,9 +13,9 @@ from typing import Any, Type, cast
 
 from blueprint import TokenBlueprint
 from context import TokenHomeContext
-from err import FormationNullException, TokenCertifierException, TokenEntityOperandNullException
+from err import FormationNullException, TokenCertifierException, TokenCarrierNullException
 from model import HomeSquare, Team, Token
-from operand import TokenEntityOperand
+from operand import TokenCarrier
 from primary import RootCertifier
 from result import ValidationResult
 from schema import Formation
@@ -57,7 +57,7 @@ class TokenRootCertifier(RootCertifier[Token]):
     
     
     @LoggingLevelRouter.monitor
-    def execute(self, dto_operand: TokenEntityOperand) -> ValidationResult:
+    def execute(self, dto_operand: TokenCarrier) -> ValidationResult:
         """
         Certify a candidate is a TokenBlueprint that is safe to use.
 
@@ -80,8 +80,8 @@ class TokenRootCertifier(RootCertifier[Token]):
         
         operand_validation = self.toolkit.priming_validator.execute(
             candidate=dto_operand,
-            target_model=TokenEntityOperand,
-            null_exception=TokenEntityOperandNullException()
+            target_model=TokenCarrier,
+            null_exception=TokenCarrierNullException()
         )
         if operand_validation.is_failure:
             # Send the exception chain on failure.
@@ -94,7 +94,7 @@ class TokenRootCertifier(RootCertifier[Token]):
                     ex=operand_validation.exception,
                 )
             )
-        operand = cast(TokenEntityOperand, operand_validation.payload)
+        operand = cast(TokenCarrier, operand_validation.payload)
         if operand.is_empty:
             # Send the exception chain on failure.
             return ValidationResult.failure(
@@ -103,11 +103,11 @@ class TokenRootCertifier(RootCertifier[Token]):
                     cls_name=self.__class__.__name__,
                     msg=TokenCertifierException.MSG,
                     err_code=TokenCertifierException.ERR_CODE,
-                    ex=TokenEntityOperandNullException(
+                    ex=TokenCarrierNullException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        msg=TokenEntityOperandNullException.MSG,
-                        err_code=TokenEntityOperandNullException.ERR_CODE,
+                        msg=TokenCarrierNullException.MSG,
+                        err_code=TokenCarrierNullException.ERR_CODE,
                     ),
                 )
             )
@@ -205,7 +205,7 @@ class TokenRootCertifier(RootCertifier[Token]):
         
         if operand.is_model_operand:
             return ValidationResult.success(
-                TokenEntityOperand(
+                TokenCarrier(
                     model=Token(
                         id=id,
                         team=team,
@@ -217,7 +217,7 @@ class TokenRootCertifier(RootCertifier[Token]):
             )
         # --- Forward the work product to the caller. ---#
         return ValidationResult.success(
-            TokenEntityOperand(
+            TokenCarrier(
                 blueprint=TokenBlueprint(
                     id=id,
                     rank=rank,

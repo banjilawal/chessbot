@@ -12,9 +12,9 @@ from __future__ import annotations
 from typing import Any, cast
 
 from blueprint import SquareBlueprint
-from err import FormationNullException, SquareCertifierException, SquareEntityOperandNullException
+from err import FormationNullException, SquareCertifierException, SquareCarrierNullException
 from model import Board, Coord, HomeSquare, Square
-from operand import SquareEntityOperand
+from operand import SquareCarrier
 from primary import RootCertifier
 from result import ValidationResult
 from schema import Formation
@@ -79,8 +79,8 @@ class SquareRootCertifier(RootCertifier[SquareBlueprint]):
         
         operand_validation = self.toolkit.priming_validator.execute(
             candidate=candidate,
-            target_model=SquareEntityOperand,
-            null_exception=SquareEntityOperandNullException()
+            target_model=SquareCarrier,
+            null_exception=SquareCarrierNullException()
         )
         if operand_validation.is_failure:
             # Send the exception chain on failure.
@@ -93,7 +93,7 @@ class SquareRootCertifier(RootCertifier[SquareBlueprint]):
                     ex=operand_validation.exception,
                 )
             )
-        operand = cast(SquareEntityOperand, operand_validation.payload)
+        operand = cast(SquareCarrier, operand_validation.payload)
         if operand.is_empty:
             # Send the exception chain on failure.
             return ValidationResult.failure(
@@ -102,11 +102,11 @@ class SquareRootCertifier(RootCertifier[SquareBlueprint]):
                     cls_name=self.__class__.__name__,
                     msg=SquareCertifierException.MSG,
                     err_code=SquareCertifierException.ERR_CODE,
-                    ex=SquareEntityOperandNullException(
+                    ex=SquareCarrierNullException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        msg=SquareEntityOperandNullException.MSG,
-                        err_code=SquareEntityOperandNullException.ERR_CODE,
+                        msg=SquareCarrierNullException.MSG,
+                        err_code=SquareCarrierNullException.ERR_CODE,
                     ),
                 )
             )

@@ -10,15 +10,15 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import EntityOperandNullException
+from err import EntityCarrierNullException
 
 __all__ = [
     # ======================# ARENA_ENTITY_OPERAND_NULL_ERROR #======================#
-    "ArenaEntityOperandNullException",
+    "ArenaCarrierNullException",
 ]
 
 # ======================# ARENA_ENTITY_OPERAND_NULL_ERROR #======================#
-class ArenaEntityOperandNullException(EntityOperandNullException):
+class ArenaCarrierNullException(EntityCarrierNullException):
     """
     Role:
         -   Error Tracing
