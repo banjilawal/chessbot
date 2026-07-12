@@ -61,7 +61,7 @@ class TokenCarrier(EntityCarrier[Token]):
         return self._model or self._blueprint
     
     @property
-    def is_model_operand(self) -> bool:
+    def is_model_carrier(self) -> bool:
         return (
                 self._model is not None and
                 self._blueprint is None and

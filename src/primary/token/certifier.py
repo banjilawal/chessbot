@@ -57,7 +57,7 @@ class TokenRootCertifier(RootCertifier[Token]):
     
     
     @LoggingLevelRouter.monitor
-    def execute(self, carrier: TokenCarrier) -> ValidationResult:
+    def execute(self, candidate, Any) -> ValidationResult:
         """
         Certify a candidate is a TokenBlueprint that is safe to use.
 
@@ -79,7 +79,7 @@ class TokenRootCertifier(RootCertifier[Token]):
         method = f"{self.__class__.__name__}.execute"
         
         carrier_validation = self.toggle_validator.execute(
-            candidate=carrier,
+            candidate=candidate,
             target_model=self.toolkit.carrier_model,
             null_exception=self.toolkit.carrier_null_exception,
         )
@@ -94,7 +94,7 @@ class TokenRootCertifier(RootCertifier[Token]):
                     ex=carrier_validation.exception,
                 )
             )
-        carrier = cast(TokenCarrier, carrier_validation.payload)
+        carrier = cast(self.toolkit.carrier_model, carrier_validation.payload)
 
         # --- Cast the candidate into a TokenBlueprint for additional tests. ---#
         blueprint = carrier.extract_blueprint()
@@ -188,7 +188,7 @@ class TokenRootCertifier(RootCertifier[Token]):
         home_square = cast(HomeSquare, home_detection.payload)
         rank = cast(type(rank_test.payload), rank_test.payload)
         
-        if carrier.is_model_operand:
+        if carrier.is_model_carrier:
             return ValidationResult.success(
                 TokenCarrier(
                     model=Token(

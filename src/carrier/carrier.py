@@ -51,7 +51,7 @@ class EntityCarrier(Toggle, Generic[T]):
     
     @property
     @abstractmethod
-    def is_model_operand(self) -> bool:
+    def is_model_carrier(self) -> bool:
         pass
     
     @property

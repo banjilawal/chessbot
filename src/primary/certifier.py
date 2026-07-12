@@ -10,7 +10,7 @@ version: 1.0.1
 from __future__ import annotations
 
 from abc import ABC, abstractmethod
-from typing import Generic, TypeVar
+from typing import Any, Generic, TypeVar
 
 from bootstrapper import ToggleValidator
 from carrier import EntityCarrier
@@ -47,11 +47,12 @@ class RootCertifier(ABC, Generic[T]):
             toggle_validator: ToggleValidator | None = ToggleValidator(),
     ):
         self._toolkit = toolkit
+        self._toggle_validator = toggle_validator
         
     @property
     @abstractmethod
     def toolkit(self) -> ModelToolkit[T]:
-        pass
+        return self._toolkit
     
     @property
     def toggle_validator(self) -> ToggleValidator:
@@ -59,14 +60,14 @@ class RootCertifier(ABC, Generic[T]):
     
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def execute(self, carrier: EntityCarrier[T]) -> ValidationResult:
+    def execute(self, candidate: Any) -> ValidationResult:
         """
             -   Certify a DtoCarrier's data satisfies a model's integrity constraints.
 
         Action:
             1.  Implement validation tests here.
         Args:
-            carrier: DtoCarrier[T]
+            candidate: Any
         Returns:
             ValidationResult[DtoCarrier[T]]
         Raises:

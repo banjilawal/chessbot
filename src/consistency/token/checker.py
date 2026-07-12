@@ -85,7 +85,7 @@ class TokenConsistencyChecker(ConsistencyChecker[Token]):
                 )
             )
         dto = cast(TokenCarrier, priming_test.payload)
-        if not dto.is_model_operand:
+        if not dto.is_model_carrier:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 TokenConsistencyCheckerException(

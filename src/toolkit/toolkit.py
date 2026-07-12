@@ -9,7 +9,7 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from bootstrapper import PrimingValidator
+from bootstrapper import PrimingValidator, ToggleValidator
 from microservice import IdentityService
 
 
@@ -27,18 +27,20 @@ class Toolkit:
     Attributes:
         identity_service: IdentityService
         priming_validator: PrimingValidator
-    
+        toggle_validator: ToggleValidator
     Provides:
         
     Super Class:
     """
     _identity_service: IdentityService
     _priming_validator: PrimingValidator
+    _toggle_validator: ToggleValidator
     
     def __init__(
             self,
             identity_service: IdentityService  | None= IdentityService(),
             priming_validator: PrimingValidator | None = PrimingValidator(),
+            toggle_validator: ToggleValidator | None = ToggleValidator(),
     ):
         """
         Args:
@@ -47,6 +49,7 @@ class Toolkit:
         """
         self._priming_validator = priming_validator
         self._identity_service = identity_service
+        self._toggle_validator = toggle_validator
         
     @property
     def priming_validator(self) -> PrimingValidator:
@@ -55,3 +58,7 @@ class Toolkit:
     @property
     def identity_service(self) -> IdentityService:
         return self._identity_service
+    
+    @property
+    def toggle_valiator(self) -> ToggleValidator:
+        return self._toggle_validator
