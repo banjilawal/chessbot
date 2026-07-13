@@ -37,7 +37,7 @@ class Quadrant(Register):
     """
     _terminal_vector: Vector
     
-    def __init__(self, x_step: int, slope: int, terminal_vector):
+    def __init__(self, x_step: int, slope: int, terminal_vector: Vector):
         """
         Args:
             x_step: int

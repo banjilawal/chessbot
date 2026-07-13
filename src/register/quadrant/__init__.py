@@ -12,6 +12,8 @@ version: 1.0.1
 # Packages
 from .northeast import *
 from .northwest import *
+from .southeast import *
+from .southwest import *
 
 # Modules
 from .register import Quadrant

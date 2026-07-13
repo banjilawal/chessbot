@@ -10,9 +10,10 @@ version: 1.0.1
 # =========== REGISTER PACKAGE ===========#
 
 # Packages
-from .quadrant import *
+from .axis import *
 from .identity import *
 from .model import *
+from .quadrant import *
 
 # Modules
 from .register import Register
