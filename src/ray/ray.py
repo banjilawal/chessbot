@@ -12,11 +12,15 @@ from __future__ import annotations
 from abc import abstractmethod
 from typing import List
 
-from model import Vector
+from model import Coord, Vector
 
 
 class Ray:
     
     @abstractmethod
-    def compute(self, coord) -> List[Vector]:
+    def vector_ray(self,) -> List[Vector]:
+        pass
+    
+    @abstractmethod
+    def coord_ray(self) -> List[Coord]:
         pass

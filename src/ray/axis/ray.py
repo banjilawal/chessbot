@@ -9,7 +9,6 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from abc import abstractmethod
 from typing import List
 
 from bounds import AxisBounds
@@ -23,18 +22,21 @@ class AxisRay(Ray):
     def __init__(self, coord: Coord):
         self._bounds = AxisBounds()
     
-    @abstractmethod
-    def compute(self, coord) -> List[Vector]:
-        pass
     
-    def compute(self) -> List[Vector]:
-        cursor = self._axis.origin
+    def vector_ray(self,) -> List[Vector]:
+        cursor = self._bounds.axis.origin
         vectors: List[Vector] = []
         
-        while cursor != self._terminus:
+        while cursor != self._bounds.terminus:
             vectors.append(cursor)
             cursor = Vector(
-                x=self._axis.delta.x + cursor.x,
-                y=self._axis.delta.y + cursor.y
+                x=self._bounds.axis.delta.x + cursor.x,
+                y=self._bounds.axis.delta.y + cursor.y
             )
-        return vectors
+            return vectors
+        
+    def coord_ray(self) -> List[Coord]:
+        coords: List[Coord] = []
+        for vector in self.vector_ray():
+            coords.append(Coord(column=vector.x, row=vector.y))
+        return coords
