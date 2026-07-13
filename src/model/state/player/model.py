@@ -9,9 +9,10 @@ version: 1.0.0
 
 from __future__ import annotations
 
-from model import StateModel
+from model import Graph, StateModel
 from report import ManeuverApprovalReport
 from result import TurnResult
+from turn import TurnAdviser
 
 
 class Player(StateModel):
@@ -39,6 +40,7 @@ class Player(StateModel):
     """
     _id: int
     _name: str
+    _adviser: TurnAdviser
     _current_team: Team
     _teams: TeamDatabase
     
@@ -46,6 +48,7 @@ class Player(StateModel):
             self,
             id: int,
             name: str,
+            adviser: TurnAdviser
     ):
         """
         # ACTION:
@@ -61,6 +64,7 @@ class Player(StateModel):
         method = "PlayerQueryService.owner"
         self._id = id
         self._name = name
+        self._adviser = adviser
         self._teams = TeamDatabase()
         self._current_team = self._teams.current_team
     
@@ -84,6 +88,10 @@ class Player(StateModel):
     def current_team(self) -> Optional[Team]:
         return self._teams.current_team
     
+    @property
+    def adviser(self) -> TurnAdviser:
+        return self._adviser
+    
     def __eq__(self, other):
         if other is self: return True
         if other is None: return False
@@ -93,9 +101,6 @@ class Player(StateModel):
     
     def __hash__(self):
         return hash(self.id)
-    
-    def execute_move(self, approval: ManeuverApprovalReport) -> TurnResult:
-        pass
     
     # def __str__(self):
     #     total_games = self.team_service.size()

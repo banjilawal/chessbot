@@ -15,8 +15,8 @@ from util import LoggingLevelRouter
 
 
 class TurnAdviser:
-    _graph: Graph
+    
     
     @LoggingLevelRouter.monitor
-    def advice(self) -> ManeuverApprovalReport:
+    def advice(self, graph: Graph) -> ManeuverApprovalReport:
         pass
