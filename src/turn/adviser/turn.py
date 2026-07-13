@@ -1,19 +1,22 @@
-# src/turn/optimizer/__init__.py
+# src/turn/adviser/__init__.py
 
 """
-Module: turn.optimizer.__init__
+Module: turn.adviser.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
 """
+
+from __future__ import annotations
+
 from model import Graph
 from report import ManeuverApprovalReport
 from util import LoggingLevelRouter
 
 
-class TurnOptimizer:
+class TurnAdviser:
     _graph: Graph
     
     @LoggingLevelRouter.monitor
-    def execute(self) -> ManeuverApprovalReport:
+    def advice(self) -> ManeuverApprovalReport:
         pass

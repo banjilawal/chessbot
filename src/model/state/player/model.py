@@ -10,6 +10,8 @@ version: 1.0.0
 from __future__ import annotations
 
 from model import StateModel
+from report import ManeuverApprovalReport
+from result import TurnResult
 
 
 class Player(StateModel):
@@ -91,6 +93,9 @@ class Player(StateModel):
     
     def __hash__(self):
         return hash(self.id)
+    
+    def execute_move(self, approval: ManeuverApprovalReport) -> TurnResult:
+        pass
     
     # def __str__(self):
     #     total_games = self.team_service.size()

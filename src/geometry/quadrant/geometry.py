@@ -1,7 +1,7 @@
-# src/register/quadrant/register.py
+# src/geometry/quadrant/geometry.py
 
 """
-Module: register.quadrant.register
+Module: geometry.quadrant.geometry
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -12,10 +12,10 @@ from __future__ import annotations
 from typing import cast
 
 from model import Vector
-from register import Register
+from geometry import Geometry
 
 
-class Quadrant(Register):
+class Quadrant(Geometry):
     """
     Role:
         -   Addressing
@@ -33,7 +33,7 @@ class Quadrant(Register):
     Provides:
 
     Super Class:
-        Register
+        Geometry
     """
     _terminal_vector: Vector
     

@@ -1,7 +1,7 @@
-# src/register/axis/register.py
+# src/geometry/axis/geometry.py
 
 """
-Module: register.axis.register
+Module: geometry.axis.geometry
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -12,10 +12,10 @@ from __future__ import annotations
 from typing import cast
 
 from model import Coord, Vector
-from register import Register
+from geometry import Geometry
 
 
-class Axis(Register):
+class Axis(Geometry):
     """
     Role:
         -   Addressing
@@ -32,7 +32,7 @@ class Axis(Register):
     Provides:
 
     Super Class:
-        Register
+        Geometry
     """
     EAST_DELTA: Vector = Vector(x=1, y=0)
     NORTH_DELTA = Vector(x=0, y=-1)

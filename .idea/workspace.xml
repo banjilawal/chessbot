@@ -5,13 +5,34 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/ray/quadrant/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ray/quadrant/ray.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ray/register/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ray/register/axis/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ray/register/axis/east/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ray/register/axis/east/register.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ray/register/axis/register.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/state/player/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/state/player/model.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/register/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/register/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/register/axis/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometry/axis/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/register/axis/east/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/register/axis/east/register.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/register/axis/north/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/register/axis/north/register.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/register/axis/plane.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometry/axis/plane.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/register/axis/register.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometry/axis/geometry.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/register/axis/south/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/register/axis/south/register.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/register/axis/west/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/register/axis/west/register.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/register/quadrant/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometry/quadrant/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/register/quadrant/northeast/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/register/quadrant/northeast/register.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/register/quadrant/northwest/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/register/quadrant/northwest/register.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/register/quadrant/register.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometry/quadrant/geometry.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/register/quadrant/southeast/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/register/quadrant/southeast/register.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/register/quadrant/southwest/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/register/quadrant/southwest/register.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/turn/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/turn/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/turn/optimizer/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/turn/adviser/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/turn/optimizer/optimizer.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/turn/adviser/turn.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/turn/turn.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/turn/turn.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -84,11 +105,11 @@
       <recent name="$PROJECT_DIR$/src/register/axis" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/geometry" />
       <recent name="$PROJECT_DIR$/src" />
       <recent name="$PROJECT_DIR$/src/ray/axis" />
       <recent name="$PROJECT_DIR$/src/factor/diagonal" />
       <recent name="$PROJECT_DIR$/src/register/factor/perpendicular" />
-      <recent name="$PROJECT_DIR$/src/validator/model/operand/cartesian" />
     </key>
   </component>
   <component name="RunManager" selected="Python.notifier">
@@ -815,7 +836,7 @@
       <workItem from="1782325486599" duration="56546000" />
       <workItem from="1782732939190" duration="235900000" />
       <workItem from="1783222430394" duration="208582000" />
-      <workItem from="1783540905722" duration="257749000" />
+      <workItem from="1783540905722" duration="259785000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />
@@ -1333,7 +1354,7 @@
           <option name="timeStamp" value="247" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/src/register/axis/plane.py</url>
+          <url>file://$PROJECT_DIR$/src/geometry/axis/plane.py</url>
           <line>9</line>
           <option name="timeStamp" value="249" />
         </line-breakpoint>
