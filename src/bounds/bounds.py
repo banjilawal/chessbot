@@ -13,8 +13,8 @@ from abc import ABC, abstractmethod
 from typing import List
 
 import setting
+from geometry.axis import Axis
 from model import Coord, Vector
-from register import Axis, EastAxis
 
 
 class AxisBounds(ABC):

@@ -10,10 +10,6 @@ version: 1.0.1
 # =========== BOUNDS.AXIS PACKAGE ===========#
 
 # Packages
-from .east import *
-from .north import *
-from .south import *
-from .west import *
 
 # Modules
 from .bounds import AxisBounds

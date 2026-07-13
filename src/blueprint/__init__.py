@@ -11,8 +11,9 @@ version: 1.0.1
 
 # Packages
 from .context import *
-from .model import *
 from .either import *
+from .model import *
+from .quadrant import *
 from .register import *
 from .validation import *
 

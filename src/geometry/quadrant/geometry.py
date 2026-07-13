@@ -12,10 +12,10 @@ from __future__ import annotations
 from typing import cast
 
 from model import Vector
-from geometry import Geometry
+from register import Register
 
 
-class Quadrant(Geometry):
+class Quadrant(Register):
     """
     Role:
         -   Addressing
@@ -58,5 +58,8 @@ class Quadrant(Geometry):
     @property
     def terminal_vector(self) -> Vector:
         return self._terminal_vector
+    
+    @classmethod
+    def northeast_quadrant(cls, ):
         
     
