@@ -1,7 +1,7 @@
-# src/err/operand/exception.py
+# src/err/chooser/exception.py
 
 """
-Module: err.operand.exception
+Module: err.chooser.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -13,18 +13,18 @@ from typing import Any, Optional
 from err import ChessException
 
 __all__ = [
-    # ======================# OPERAND_ERROR #======================#
-    "OperandException",
+    # ======================# CHOOSER_ERROR #======================#
+    "ChooserNullException",
 ]
 
-# ======================# OPERAND_ERROR #======================#
-class OperandException(ChessException):
+# ======================# CHOOSER_ERROR #======================#
+class ChooserNullException(ChessException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an Operand encountered an error.
+        1.  Indicate that an Chooser encountered an error.
 
     Attributes:
         msg: Optional[str]
@@ -41,8 +41,8 @@ class OperandException(ChessException):
     Super Class:
         ChessException
     """
-    MSG = "Operand error."
-    ERR_CODE = "OPERAND_ERROR"
+    MSG = "Chooser error."
+    ERR_CODE = "CHOOSER_ERROR"
     
     def __init__(
             self,

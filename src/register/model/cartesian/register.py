@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Dict, List
 
-from operand import CartesianPoint
+from chooser import CartesianPoint
 from register import ModelRegister
 
 

@@ -13,7 +13,7 @@ from typing import Any, Dict, Optional
 
 from blueprint import CoordBlueprint
 from model import Coord
-from operand import EntityCarrier
+from chooser import EntityCarrier
 
 
 class CoordCarrier(EntityCarrier[Coord]):

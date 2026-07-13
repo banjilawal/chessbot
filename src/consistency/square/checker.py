@@ -14,7 +14,7 @@ from typing import Any, cast
 from controller import WorkerRegistryController
 from err import SquareConsistencyCheckerException
 from model import Square
-from operand import SquareCarrier
+from chooser import SquareCarrier
 from primary import SquareRootCertifier
 from result import ValidationResult
 from util import LoggingLevelRouter

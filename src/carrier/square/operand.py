@@ -13,7 +13,7 @@ from typing import Any, Dict, Optional, cast
 
 from blueprint import SquareBlueprint
 from model import HomeSquare, Square
-from operand import EntityCarrier
+from chooser import EntityCarrier
 
 
 class SquareCarrier(EntityCarrier[Square]):

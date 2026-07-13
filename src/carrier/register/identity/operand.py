@@ -13,7 +13,7 @@ from typing import Optional, cast
 
 from blueprint import IdentityRegisterBlueprint
 from model import IdentityRegister
-from operand import RegisterCarrier
+from chooser import RegisterCarrier
 
 
 class IdentityRegisterEntityOperand(RegisterCarrier[IdentityRegister]):

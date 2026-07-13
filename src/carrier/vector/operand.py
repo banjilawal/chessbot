@@ -13,7 +13,7 @@ from typing import Optional
 
 from blueprint import VectorBlueprint
 from model import Vector
-from operand import EntityCarrier
+from chooser import EntityCarrier
 
 
 class VectorCarrier(EntityCarrier[Vector]):

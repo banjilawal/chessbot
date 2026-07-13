@@ -18,6 +18,7 @@ from microservice import IdentityService
 from request.promotion import PromotionRequest
 from result import MethodResultType, ValidationResult
 from tester import PromotionLevelTester, PromotionPawnTester, RequestTester
+from util import LoggingLevelRouter
 
 
 class PromotionRequestTester(RequestTester):

@@ -10,7 +10,7 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import OperandException
+from err import ChooserNullException
 from result import MethodResultType
 
 
@@ -20,7 +20,7 @@ __all__ = [
 ]
 
 # ======================# REGISTRY_OPERAND_ERROR #======================#
-class RegistryOperandException(OperandException):
+class RegistryOperandException(ChooserNullException):
     """
     Role:
         -   Error Tracing

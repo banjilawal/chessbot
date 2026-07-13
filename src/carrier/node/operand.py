@@ -13,7 +13,7 @@ from typing import Optional
 
 from blueprint import NodeBlueprint
 from model import Node
-from operand import EntityCarrier
+from chooser import EntityCarrier
 
 
 class NodeCarrier(EntityCarrier[Node]):

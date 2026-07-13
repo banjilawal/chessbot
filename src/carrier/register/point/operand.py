@@ -13,7 +13,7 @@ from typing import Optional, cast
 
 from blueprint import PointRegisterBlueprint
 from model import  PointRegister
-from operand import RegisterCarrier
+from chooser import RegisterCarrier
 
 
 class PointRegisterEntityOperand(RegisterCarrier[PointRegister]):

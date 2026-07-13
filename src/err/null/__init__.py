@@ -17,7 +17,7 @@ from .consistencey import *
 from .context import *
 from .microservice import *
 from .model import *
-from .operand import *
+from .either import *
 from .operation import *
 from .query import *
 from .register import *

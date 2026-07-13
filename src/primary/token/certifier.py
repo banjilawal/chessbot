@@ -69,7 +69,7 @@ class TokenRootCertifier(RootCertifier[Token]):
                     -   Either the board, team, formation, rank or id get flagged unsafe.
             2.  For a model_carrier send a Token in the success result. Otherwise, send a TokeBlueprint.
         Args:
-            carrier: TokenDtoCarrier
+            candidate, Any
         Returns:
             ValidationResult
         Raises:

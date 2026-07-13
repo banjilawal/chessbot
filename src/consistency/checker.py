@@ -13,7 +13,7 @@ from abc import ABC, abstractmethod
 from typing import Any, Generic, TypeVar
 
 from bootstrapper import PrimingValidator
-from operand import EntityCarrier
+from chooser import EntityCarrier
 from result import ValidationResult
 from util import LoggingLevelRouter
 

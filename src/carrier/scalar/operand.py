@@ -13,7 +13,7 @@ from typing import Optional
 
 from blueprint import ScalarBlueprint
 from model import Scalar
-from operand import EntityCarrier
+from chooser import EntityCarrier
 
 
 class ScalarCarrier(EntityCarrier[Scalar]):

@@ -11,7 +11,6 @@ version: 1.0.1
 # =========== VALIDATOR PACKAGE ===========#
 
 # Packages
-from .carrier import *
 from .context import *
 from .model import *
 from .number import *

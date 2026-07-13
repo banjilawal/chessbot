@@ -18,7 +18,7 @@ from .edge import *
 from .game import *
 from .maneuver import *
 from .node import *
-from .operand import *
+
 from .path import *
 from .player import *
 

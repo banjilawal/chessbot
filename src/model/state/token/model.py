@@ -8,7 +8,7 @@ version: 1.0.1
 """
 
 from __future__ import annotations
-from abc import ABC, abstractmethod
+from abc import abstractmethod
 from typing import Optional
 
 from database import CoordDatabase

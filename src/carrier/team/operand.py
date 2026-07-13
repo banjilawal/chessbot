@@ -13,7 +13,7 @@ from typing import Any, Dict, Optional
 
 from blueprint import TeamBlueprint
 from model import Team
-from operand import EntityCarrier
+from chooser import EntityCarrier
 
 
 class TeamCarrier(EntityCarrier[Team]):

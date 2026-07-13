@@ -14,7 +14,7 @@ from typing import Generic, Type, TypeVar
 
 from blueprint import RegisterBlueprint
 from err import RegisterBlueprintNullException, RegisterEntityNullException, RegisterNullException
-from operand import RegisterCarrier
+from chooser import RegisterCarrier
 from register import Register
 from toolkit import Toolkit
 

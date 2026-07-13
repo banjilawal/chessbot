@@ -13,7 +13,7 @@ from typing import Optional
 
 from blueprint import EdgeBlueprint
 from model import Edge
-from operand import EntityCarrier
+from chooser import EntityCarrier
 
 
 class EdgeCarrier(EntityCarrier[Edge]):

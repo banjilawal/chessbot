@@ -13,7 +13,7 @@ from typing import Optional
 
 from blueprint import ArenaBlueprint
 from model import Arena
-from operand import EntityCarrier
+from chooser import EntityCarrier
 
 
 class ArenaCarrier(EntityCarrier[Arena]):

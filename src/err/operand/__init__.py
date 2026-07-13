@@ -14,4 +14,4 @@ from .cartesian import *
 from .registry import *
 
 # Modules
-from .exception import OperandException
+from .exception import ChooserNullException

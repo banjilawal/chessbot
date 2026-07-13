@@ -13,7 +13,7 @@ from typing import Optional
 
 from blueprint import RankBlueprint
 from model import Rank
-from operand import EntityCarrier
+from chooser import EntityCarrier
 
 
 class RankCarrier(EntityCarrier[Rank]):

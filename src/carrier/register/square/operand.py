@@ -13,7 +13,7 @@ from typing import Optional, cast
 
 from blueprint import SquareRegisterBlueprint
 from model import SquareRegister
-from operand import RegisterCarrier
+from chooser import RegisterCarrier
 
 
 class SquareRegisterEntityOperand(RegisterCarrier[SquareRegister]):

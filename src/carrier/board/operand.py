@@ -13,7 +13,7 @@ from typing import Optional
 
 from blueprint import BoardBlueprint
 from model import Board
-from operand import EntityCarrier
+from chooser import EntityCarrier
 
 
 class BoardCarrier(EntityCarrier[Board]):

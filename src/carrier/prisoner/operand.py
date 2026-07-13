@@ -13,7 +13,7 @@ from typing import Optional
 
 from blueprint import PrisonerBlueprint
 from model import Prisoner
-from operand import EntityCarrier
+from chooser import EntityCarrier
 
 
 class PrisonerCarrier(EntityCarrier[Prisoner]):

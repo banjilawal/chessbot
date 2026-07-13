@@ -16,7 +16,7 @@ from .coord import *
 from validator.model.state.edge import *
 from .game import *
 from validator.model.state.node import *
-from .operand import *
+from .chooser import *
 from .rank import *
 from .scalar import *
 from .snapshot import *

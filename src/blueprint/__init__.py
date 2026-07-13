@@ -12,7 +12,7 @@ version: 1.0.1
 # Packages
 from .context import *
 from .model import *
-from .operand import *
+from .either import *
 from .register import *
 from .validation import *
 

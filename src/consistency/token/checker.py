@@ -14,7 +14,7 @@ from typing import cast
 from consistency import ConsistencyChecker
 from err import TokenConsistencyCheckerException
 from model import Token
-from operand import TokenCarrier
+from chooser import TokenCarrier
 from result import ValidationResult
 from setting.board.dimension.config import board_size
 from toolkit import TokenToolkit

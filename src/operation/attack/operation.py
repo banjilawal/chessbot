@@ -13,7 +13,7 @@ from copy import deepcopy
 from err import AttackDestinationEmptyException, AttackEventNullException, AttackException
 from event import AttackEvent
 from model import SquareState
-from operation import Maneuver
+from operation import ManeuverLauncher
 from report import AttackApproval, ManeuverApproval
 from result import EventResult, MethodResultType
 from util import IdFactory, LoggingLevelRouter
@@ -109,7 +109,7 @@ class LaunchAttack:
         hostage = cls._capture_enemy(report)
 
         departure_result = cls._depart(origin=report.origin,)
-        maneuver_result = Maneuver.execute(
+        maneuver_result = ManeuverLauncher.execute(
             ManeuverApproval(
                 id=IdFactory.next_id("Maneuver"),
                 origin=report.origin,

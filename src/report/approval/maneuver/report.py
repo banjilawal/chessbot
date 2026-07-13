@@ -10,7 +10,8 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Optional
 
-from model import CheckedManeuver, Maneuver, Token, Maneuver
+from model import CombatantManeuver, KingManeuver, Maneuver
+from model.state.maneuver.checked.model import CheckedManeuver
 from report import OperationApprovalReport, Permission
 
 
@@ -63,6 +64,14 @@ class ManeuverApprovalReport(OperationApprovalReport):
     @property
     def is_denied(self) -> bool:
         return not not self.is_granted
+    
+    @property
+    def is_king_maneuver(self) -> bool:
+        return self._maneuver is not None and isinstance(self._maneuver, KingManeuver)
+    
+    @property
+    def is_combatant_maneuver(self) -> bool:
+        return self._maneuver is not None and isinstance(self._maneuver, CombatantManeuver)
 
     
     @classmethod

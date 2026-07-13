@@ -13,7 +13,7 @@ from dataclasses import dataclass
 from typing import Type, cast
 
 from blueprint import RegisterBlueprint
-from operand import CartesianPoint
+from chooser import CartesianPoint
 from register import CartesianRegister
 
 
