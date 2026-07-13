@@ -10,6 +10,7 @@ version: 1.0.1
 # =========== RAY PACKAGE ===========#
 
 # Packages
-from .register import *
+from .axis import *
 
 # Modules
+from .ray import Ray

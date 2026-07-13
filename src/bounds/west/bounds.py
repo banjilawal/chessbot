@@ -33,14 +33,5 @@ class WestAxisBounds(AxisBounds):
     def terminus(self) -> Vector:
         return self._terminus
     
-    def compute(self) -> List[Vector]:
-        cursor = self._axis.origin
-        vectors: List[Vector] = []
-        
-        while cursor != self._terminus:
-            vectors.append(cursor)
-            cursor = Vector(
-                x=self._axis.delta.x + cursor.x,
-                y=self._axis.delta.y + cursor.y
-            )
-        return vectors
+    
+    

@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import cast
 
-from model import Vector
+from model import Coord, Vector
 from register import Register
 
 
@@ -34,6 +34,14 @@ class Axis(Register):
     Super Class:
         Register
     """
+    EAST_DELTA: Vector = Vector(x=1, y=0)
+    NORTH_DELTA = Vector(x=0, y=-1)
+    SOUTH_DELTA = Vector(x=0, y=1)
+    WEST_DELTA = Vector(x=-1, y=0)
+    
+    _origin: Vector
+    _delta: Vector
+    
     
     def __init__(self, origin: Vector, delta: Vector):
         """
@@ -50,4 +58,32 @@ class Axis(Register):
     @property
     def delta(self) -> Vector:
         return cast(Vector, self.b)
+    
+    @classmethod
+    def east_axis(cls, coord: Coord) -> Axis:
+        return cls(
+            origin=Vector(x=coord.column, y=coord.row),
+            delta=cls.EAST_DELTA,
+        )
+    
+    @classmethod
+    def north_axis(cls, coord: Coord) -> Axis:
+        return cls(
+            origin=Vector(x=coord.column, y=coord.row),
+            delta=cls.NORTH_DELTA,
+        )
+    
+    @classmethod
+    def south_axis(cls, coord: Coord) -> Axis:
+        return cls(
+            origin=Vector(x=coord.column, y=coord.row),
+            delta=cls.SOUTH_DELTA,
+        )
+    
+    @classmethod
+    def west_axis(cls, coord: Coord) -> Axis:
+        return cls(
+            origin=Vector(x=coord.column, y=coord.row),
+            delta=cls.WEST_DELTA,
+        )
     
