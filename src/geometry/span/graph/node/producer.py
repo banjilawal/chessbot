@@ -11,6 +11,7 @@ from __future__ import annotations
 
 from typing import Dict
 
+from graph import NodeTree
 from graph.domain.graph import Graph
 from math.span import (
     PairInsertionException, NodeStackServiceProductionException, SquareGraphHandlerException,

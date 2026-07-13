@@ -11,7 +11,7 @@ from __future__ import annotations
 from enum import Enum
 
 import setting.board.dimension
-from model import Quadrant, Scalar
+from model import OldQuadrant, Scalar
 from setting import GameColor
 
 
@@ -59,7 +59,7 @@ class Archetype(Enum):
             color: GameColor,
             rank_row: int,
             advancing_step: Scalar,
-            home_quadrant: Quadrant,
+            home_quadrant: OldQuadrant,
     ):
         """
         Args:
@@ -75,8 +75,8 @@ class Archetype(Enum):
         obj._home_quadrant = home_quadrant
         return obj
     
-    WHITE = (GameColor.WHITE, 0, Scalar(1), Quadrant.N,)
-    BLACK = (GameColor.BLACK, (setting.board.dimension.config.number_of_rows - 1), Scalar(-1), Quadrant.S,)
+    WHITE = (GameColor.WHITE, 0, Scalar(1), OldQuadrant.N,)
+    BLACK = (GameColor.BLACK, (setting.board.dimension.config.number_of_rows - 1), Scalar(-1), OldQuadrant.S,)
     
     @property
     def color(self) -> GameColor:
@@ -87,7 +87,7 @@ class Archetype(Enum):
         return self._advancing_step
     
     @property
-    def home_quadrant(self) -> Quadrant:
+    def home_quadrant(self) -> OldQuadrant:
         return self.home_quadrant
     
     @property

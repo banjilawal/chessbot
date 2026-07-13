@@ -13,7 +13,7 @@ version: 1.0.1
 from .binder import *
 from .coord import *
 from .path import *
-from .quadrant import *
+from .old_quadrant import *
 from .rank import *
 from .scalar import *
 from .state import *

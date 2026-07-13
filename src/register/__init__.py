@@ -10,6 +10,7 @@ version: 1.0.1
 # =========== REGISTER PACKAGE ===========#
 
 # Packages
+from .quadrant import *
 from .identity import *
 from .model import *
 

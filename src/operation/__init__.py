@@ -11,7 +11,7 @@ version: 1.0.1
 
 # Packages
 from .insertion import *
-from .math import *
+from .algebra import *
 from .maneuver import *
 from .stack import *
 from .token import *

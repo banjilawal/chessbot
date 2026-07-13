@@ -14,7 +14,7 @@ from enum import Enum, auto
 from model import Vector
 
 
-class Quadrant(Enum):
+class OldQuadrant(Enum):
     """
     Role:
         -   Model
@@ -56,11 +56,11 @@ class Quadrant(Enum):
         return self._vector
     
     def __str__(self) -> str:
-        return f"Quadrant[ id:{self._id} name:{self.name} {self._vector}"
+        return f"OldQuadrant[ id:{self._id} name:{self.name} {self._vector}"
 
 
 def main():
-    for quadrant in Quadrant:
+    for quadrant in OldQuadrant:
         print(quadrant)
 
 
