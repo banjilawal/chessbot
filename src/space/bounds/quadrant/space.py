@@ -32,21 +32,21 @@ class QuadrantBounds(SpaceBounds):
         )
     
     @classmethod
-    def northwest_bounds(cls, origin: Vector) -> QuadrantBounds:
+    def northwest(cls, origin: Vector) -> QuadrantBounds:
         return cls(
             origin=origin,
             terminus=cls.terminus_entry.northwest
         )
     
     @classmethod
-    def southeast_bounds(cls, origin: Vector) -> QuadrantBounds:
+    def southeast(cls, origin: Vector) -> QuadrantBounds:
         return cls(
             origin=origin,
             terminus=cls.terminus_entry.southeast
         )
     
     @classmethod
-    def southwest_bounds(cls, origin: Vector) -> QuadrantBounds:
+    def southwest(cls, origin: Vector) -> QuadrantBounds:
         return cls(
             origin=origin,
             terminus=cls.terminus_entry.southwest

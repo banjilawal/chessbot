@@ -1,7 +1,7 @@
-# src/space/axis/delta/space.py
+# src/space/interval/axis/space.py
 
 """
-Module: space.axis.delta.space
+Module: space.interval.axis.space
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
