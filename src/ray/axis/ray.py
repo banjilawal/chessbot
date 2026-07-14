@@ -39,6 +39,7 @@ class AxisRayComputer(RayComputer):
         
         while cursor != terminus:
             vectors.append(cursor)
+            
             addition = self.math.add_vector.execute(
                 VectorRegister(u=cursor, v=self.space.delta_bound.delta)
             )

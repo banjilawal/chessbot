@@ -11,8 +11,10 @@ from __future__ import annotations
 
 from typing import cast
 
-from model import Coord, Vector
-from space import AxisBounds, AxisDeltaEntry, DeltaBound, DeltaBoundHash, Space, SpaceBounds
+from model import Vector
+from result import ComputationResult
+from space import AxisBounds, AxisStepper, Space, SpaceBounds
+from util import LoggingLevelRouter
 
 
 class Axis(Space):
@@ -26,39 +28,40 @@ class Axis(Space):
             token's position.
 
     Attributes:
-        origin: Vector
-        delta: Vector
+        bounds: AxisBounds
+        stepper: AxisStepper
 
     Provides:
-
+        -   next(self, current: Vector) -> ComputationResult
+        -   north_axis(cls, origin: Vector) -> Axis
+        -   east_axis(cls, origin: Vector) -> Axis
+        -   south_axis(cls, origin: Vector) -> Axis
+        -   west_axis(cls, origin: Vector) -> Axis
+        
     Super Class:
         Space
     """
-    delta_entry: AxisDeltaEntry = AxisDeltaEntry()
-    hash: DeltaBoundHash = DeltaBoundHash(Coord(0,0))
-    
-    _origin: Vector
-    _delta: Vector
-    _delta_bound: DeltaBound
     _bounds: AxisBounds
+    _stepper: AxisStepper
+
     
-    def __init__(self, delta: Vector, bounds: AxisBounds):
+    def __init__(
+            self,
+            bounds: AxisBounds,
+            stepper: AxisStepper,
+    ):
         """
         Args:
-            delta: Vector
             bounds: AxisBounds
+            stepper: AxisStepper
         """
         super().__init__(bounds=bounds)
-        self._delta = delta
+        self._steeper = stepper
         self._bounds = bounds
         
     @property
     def bounds(self) -> SpaceBounds:
         return cast(AxisBounds, self.bounds)
-    
-    @property
-    def delta(self) -> Vector:
-        return self._delta
     
     @property
     def origin(self) -> Vector:
@@ -68,33 +71,43 @@ class Axis(Space):
     def terminus(self) -> Vector:
         return self.bounds.terminus
     
+    @LoggingLevelRouter.monitor
+    def next(self, current: Vector) -> ComputationResult:
+        method = f"{self.__class__.__name__}.next"
+        
+        computation = self._stepper.next(u=current)
+        if computation.is_failure:
+            return ComputationResult.failure(
+                computation.exception
+            )
+        return computation
 
     
     @classmethod
     def east_axis(cls, origin: Vector) -> Axis:
         return cls(
-            delta=cls.delta_entry.east,
+            stepper=AxisStepper.east(),
             bounds=AxisBounds.east(origin=origin),
         )
     
     @classmethod
     def north_axis(cls, origin: Vector) -> Axis:
         return cls(
-            delta=cls.delta_entry.north,
+            stepper=AxisStepper.east(),
             bounds=AxisBounds.north(origin=origin)
         )
     
     @classmethod
     def south_axis(cls, origin: Vector) -> Axis:
         return cls(
-            delta=cls.delta_entry.south,
+            stepper=AxisStepper.east(),
             bounds=AxisBounds.south(origin=origin)
         )
     
     @classmethod
     def west_axis(cls, origin: Vector) -> Axis:
         return cls(
-            delta=cls.delta_entry.west,
+            stepper=AxisStepper.west(),
             bounds=AxisBounds.west(origin=origin)
         )
     

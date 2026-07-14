@@ -18,43 +18,49 @@ from space import Axis, Stepper
 from util import LoggingLevelRouter
 
 
-class AxisDeltaEntry(Stepper[Axis]):
+class AxisStepper(Stepper[Axis]):
+    DELTA = {
+        "east": Vector(x=1, y=0),
+        "north": Vector(x=0, y=-1),
+        "south": Vector(x=0, y=1),
+        "west": Vector(x=-1, y=0),
+    }
+
+    _delta: Vector
     
-    _entry: Dict[str, Vector]
-    
-    def __init__(self):
-        self._entry = {
-            "east": Vector(x=1, y=0),
-            "north": Vector(x=0, y=-1),
-            "south": Vector(x=0, y=1),
-            "west": Vector(x=-1, y=0),
-        }
+    def __init__(self, delta: Vector):
+        super().__init__()
+        self._delta = delta
         
     @property
-    def east(self) -> Vector:
-        return self._entry["east"]
-    
-    @property
-    def north(self) -> Vector:
-        return self._entry["north"]
-    
-    @property
-    def west(self) -> Vector:
-        return self._entry["west"]
-    
-    @property
-    def south(self) -> Vector:
-        return self._entry["south"]
+    def delta(self) -> Vector:
+        return self._delta
     
     @LoggingLevelRouter.monitor
-    def next(self, u: Vector, space: Axis) -> ComputationResult:
+    def next(self, u: Vector) -> ComputationResult:
         method = f"{self.__class__.__name__}"
         
         computation = self.math.add_vector.execute(
-            VectorRegister(u=u, v=space.delta)
+            VectorRegister(u=u, v=self._delta)
         )
         if computation.is_failure:
             return ComputationResult.failure(
                 computation.exception
             )
         return computation
+    
+    @classmethod
+    def east(cls) -> AxisStepper:
+        return cls(delta=cls.DELTA["east"])
+    
+    @classmethod
+    def north(cls) -> AxisStepper:
+        return cls(delta=cls.DELTA["north"])
+    
+    @classmethod
+    def west(cls) -> AxisStepper:
+        return cls(delta=cls.DELTA["west"])
+    
+    @classmethod
+    def south(cls) -> AxisStepper:
+        return cls(delta=cls.DELTA["south"])
