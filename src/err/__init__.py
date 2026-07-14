@@ -43,6 +43,7 @@ from .rollback import *
 from .route import *
 from .search import *
 from .service import *
+from .space import *
 from .stack import *
 from .state import *
 from .string import *
