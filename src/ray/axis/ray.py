@@ -14,7 +14,6 @@ from typing import List, cast
 from err import AxisRayComputerException
 from model import Coord, Vector
 from ray import RayComputer
-from register import VectorRegister
 from result import ComputationResult
 from space import Axis
 

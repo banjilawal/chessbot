@@ -11,11 +11,12 @@ from __future__ import annotations
 
 from model import Vector
 from register import NumberRegister
-from space import Quadrant
+from result import ComputationResult
+from space import Quadrant, Stepper
 from util import LoggingLevelRouter
 
 
-class QuadrantStepper:
+class QuadrantStepper(Stepper):
     _register: NumberRegister
     
     def __int__(self, x_step: int, slope: int,):
@@ -34,6 +35,21 @@ class QuadrantStepper:
     def slope(self) -> int:
         return self._register.b
     
+    @LoggingLevelRouter.monitor
+    def next(self, current: Vector) -> ComputationResult:
+        method = f"{self.__class__.__name__}"
+        
+        build = self.math.vector.builder.execute(
+            x=current.x,
+            y=(2 * current.y * self.slope) + self.slope
+        )
+        
+        if build.is_failure:
+            return ComputationResult.failure(
+                build.exception
+            )
+        return ComputationResult.success(cast(Vector, build.payload))
+    
     
     @classmethod
     def northeast(cls) -> QuadrantStepper:
@@ -49,17 +65,4 @@ class QuadrantStepper:
         
     @classmethod
     def southeast(cls) -> QuadrantStepper:
-        return cls.(x_step=1, slope=1,)
-    
-    @LoggingLevelRouter.monitor
-    def next(self, u: Vector, space: Quadrant) -> ComputationResult:
-        method = f"{self.__class__.__name__}"
-        
-        computation = self.math.add_vector.execute(
-            VectorRegister(u=u, v=space.delta)
-        )
-        if computation.is_failure:
-            return ComputationResult.failure(
-                computation.exception
-            )
-        return computation
+        return cls(x_step=1, slope=1,)

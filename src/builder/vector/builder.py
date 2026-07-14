@@ -39,7 +39,7 @@ class VectorBuilder(Builder[Vector]):
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def build(
+    def execute(
             cls,
             x: int,
             y: int,
