@@ -1,7 +1,7 @@
-# src/space/axis/delta/bounds/space/axis/space.axis.delta.py
+# src/space/axis/terminus/bounds/space/axis/space.axis.terminus.py
 
 """
-Module: space.axis.delta.bounds.delta
+Module: space.axis.terminus.bounds.terminus
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -16,13 +16,13 @@ from model import Vector
 from register import Register
 
 
-class DeltaBound(Register):
+class terminusBound(Register):
     
-    def __init__(self, delta: Vector, bounds: AxisBounds):
-        super().__init__(a=delta, b=bounds)
+    def __init__(self, terminus: Vector, bounds: AxisBounds):
+        super().__init__(a=terminus, b=bounds)
         
     @property
-    def delta(self) -> Vector:
+    def terminus(self) -> Vector:
         return cast(Vector, self.a)
     
     @property

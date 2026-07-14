@@ -14,4 +14,4 @@ from .bounds import *
 from .hash import *
 
 # Modules
-from .space import AxisDelta
+from .space import AxisDeltaEntry

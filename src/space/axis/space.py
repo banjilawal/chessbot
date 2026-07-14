@@ -11,7 +11,7 @@ from __future__ import annotations
 
 
 from model import Coord, Vector
-from space import DeltaBound, DeltaBoundHash, Space
+from space import AxisBounds, AxisDeltaEntry, DeltaBound, DeltaBoundHash, Space
 
 
 class Axis(Space):
@@ -33,58 +33,61 @@ class Axis(Space):
     Super Class:
         Space
     """
-    hash: DeltaBoundHash = DeltaBoundHash()
+    delta_entry: AxisDeltaEntry = AxisDeltaEntry()
+    hash: DeltaBoundHash = DeltaBoundHash(Coord(0,0))
     
     _origin: Vector
+    _delta: Vector
     _delta_bound: DeltaBound
+    _bounds: AxisBounds
     
-    def __init__(self, origin: Vector, delta_bound: DeltaBound):
+    def __init__(self, delta: Vector, bounds: AxisBounds):
         """
         Args:
-            origin: Vector
-            delta_bound: DeltaBound
+            delta: Vector
+            bounds: AxisBounds
         """
         super().__init__()
-        self._origin = origin
-        self._delta_bound = delta_bound
+        self._delta = delta
+        self._bounds = bounds
         
     @property
     def origin(self) -> Vector:
-        return self._origin
+        return self._bounds.origin
     
     @property
     def terminus(self) -> Vector:
-        return self.delta_bound.bounds.terminus
+        return self._bounds.terminus
     
     @property
     def delta_bound(self) -> DeltaBound:
         return self._delta_bound
     
     @classmethod
-    def east_axis(cls, coord: Coord) -> Axis:
+    def east_axis(cls, origin: Vector) -> Axis:
         return cls(
-            origin=Vector(x=coord.column, y=coord.row),
-            delta_bound=cls.hash.east,
+            delta=cls.delta_entry.east,
+            bounds=AxisBounds.east(origin=origin),
         )
     
     @classmethod
-    def north_axis(cls, coord: Coord) -> Axis:
+    def north_axis(cls, origin: Vector) -> Axis:
         return cls(
-            origin=Vector(x=coord.column, y=coord.row),
-            delta_bound=cls.hash.north,
+            delta=cls.delta_entry.north,
+            bounds=AxisBounds.north(origin=origin)
         )
     
     @classmethod
-    def south_axis(cls, coord: Coord) -> Axis:
+    def south_axis(cls, origin: Vector) -> Axis:
         return cls(
-            origin=Vector(x=coord.column, y=coord.row),
-            delta_bound=cls.hash.south,
+            delta=cls.delta_entry.south,
+            bounds=AxisBounds.south(origin=origin)
         )
     
     @classmethod
-    def west_axis(cls, coord: Coord) -> Axis:
+    def west_axis(cls, origin: Vector) -> Axis:
         return cls(
-            origin=Vector(x=coord.column, y=coord.row),
-            delta_bound=cls.hash.west
+            delta=cls.delta_entry.west,
+            bounds=AxisBounds.west(origin=origin)
         )
     

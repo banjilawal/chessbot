@@ -11,35 +11,35 @@ from __future__ import annotations
 
 from typing import Dict
 
-from ray.bounds import AxisRayBounds
-from space.axis.delta import AxisDelta, DeltaBound
+from space.bounds import AxisBounds
+from space.axis.delta import AxisDeltaEntry, DeltaBound
 from model import Coord
 
 
 class DeltaBoundHash:
-    _axis_delta: AxisDelta = AxisDelta()
+    _axis_delta: AxisDeltaEntry = AxisDeltaEntry()
     
     _hash: Dict[str: DeltaBound]
     
     def __init__(self, coord: Coord):
-        self._axis_delta = AxisDelta()
+        self._axis_delta = AxisDeltaEntry()
         
         self._hash = {
             "north": DeltaBound(
                 delta=self._axis_space.axis.delta.north,
-                bounds=AxisRayBounds.north_bounds(coord=coord)
+                bounds=AxisBounds.north(coord=coord)
             ),
             "east": DeltaBound(
                 delta=self._axis_space.axis.delta.east,
-                bounds=AxisRayBounds.east_bounds(coord=coord)
+                bounds=AxisBounds.east(coord=coord)
             ),
             "south": DeltaBound(
                 delta=self._axis_space.axis.delta.south,
-                bounds=AxisRayBounds.south_bounds(coord=coord),
+                bounds=AxisBounds.south(coord=coord),
             ),
             "west": DeltaBound(
                 delta=self._axis_space.axis.delta.west,
-                bounds=AxisRayBounds.west_bounds(coord=coord),
+                bounds=AxisBounds.west(coord=coord),
             ),
         }
         

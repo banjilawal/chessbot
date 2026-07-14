@@ -1,7 +1,7 @@
-# src/ray/bounds/quadrant/ray.py
+# src/space/bounds/quadrant/space.py
 
 """
-Module: ray.bounds.quadrant.ray
+Module: space.bounds.quadrant.space
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -11,11 +11,11 @@ from __future__ import annotations
 
 
 from model import Vector
-from ray import RayBounds
+from space import SpaceBounds
 from space import QuadrantTerminusEntry
 
 
-class QuadrantRayBounds(RayBounds):
+class QuadrantBounds(SpaceBounds):
     
     terminus_entry: QuadrantTerminusEntry = QuadrantTerminusEntry()
     
@@ -25,28 +25,28 @@ class QuadrantRayBounds(RayBounds):
 
     
     @classmethod
-    def northeast_bounds(cls, origin: Vector) -> QuadrantRayBounds:
+    def northeast_bounds(cls, origin: Vector) -> QuadrantBounds:
         return cls(
             origin=origin,
             terminus=cls.terminus_entry.northeast,
         )
     
     @classmethod
-    def northwest_bounds(cls, origin: Vector) -> QuadrantRayBounds:
+    def northwest_bounds(cls, origin: Vector) -> QuadrantBounds:
         return cls(
             origin=origin,
             terminus=cls.terminus_entry.northwest
         )
     
     @classmethod
-    def southeast_bounds(cls, origin: Vector) -> QuadrantRayBounds:
+    def southeast_bounds(cls, origin: Vector) -> QuadrantBounds:
         return cls(
             origin=origin,
             terminus=cls.terminus_entry.southeast
         )
     
     @classmethod
-    def southwest_bounds(cls, origin: Vector) -> QuadrantRayBounds:
+    def southwest_bounds(cls, origin: Vector) -> QuadrantBounds:
         return cls(
             origin=origin,
             terminus=cls.terminus_entry.southwest

@@ -12,14 +12,18 @@ from __future__ import annotations
 from abc import ABC, abstractmethod
 
 from model import Vector
+from space import SpaceBounds
 
 
 class Space(ABC):
+    _bounds: SpaceBounds
     
+    def __init__(self, bounds: SpaceBounds):
+        self._bounds = bounds
     
-    def __init__(self,):
-        pass
-    
+    @property
+    def bounds(self) -> SpaceBounds:
+        return self._bounds
     
     @property
     @abstractmethod

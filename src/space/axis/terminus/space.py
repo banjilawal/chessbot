@@ -1,7 +1,7 @@
-# src/space/axis/delta/space.py
+# src/space/axis/terminus/space.py
 
 """
-Module: space.axis.delta.space
+Module: space.axis.terminus.space
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -14,8 +14,7 @@ from typing import Dict
 from model import Vector
 
 
-class AxisDeltaEntry:
-
+class AxisTerminusEntry:
     
     _entry: Dict[str, Vector]
     

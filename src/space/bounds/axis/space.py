@@ -1,7 +1,7 @@
-# src/ray/bounds/axis/ray.py
+# src/space/bounds/axis/space.py
 
 """
-Module: ray.bounds.axis.ray
+Module: space.bounds.axis.space
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -14,10 +14,10 @@ import setting
 
 
 from model import Vector
-from ray import RayBounds
+from space import SpaceBounds
 
 
-class AxisRayBounds(RayBounds):
+class AxisBounds(SpaceBounds):
 
     
     def __init__(self, origin: Vector, terminus: Vector):
@@ -25,7 +25,7 @@ class AxisRayBounds(RayBounds):
     
     
     @classmethod
-    def east_bounds(cls, origin: Vector) -> AxisRayBounds:
+    def east(cls, origin: Vector) -> AxisBounds:
         return cls(
             origin=origin,
             terminus = Vector(
@@ -35,14 +35,14 @@ class AxisRayBounds(RayBounds):
         )
     
     @classmethod
-    def north_bounds(cls, origin: Vector) -> AxisRayBounds:
+    def north(cls, origin: Vector) -> AxisBounds:
         return cls(
             origin=origin,
             terminus=Vector(x=origin.x, y=0),
         )
     
     @classmethod
-    def south_bounds(cls, origin: Vector) -> AxisRayBounds:
+    def south(cls, origin: Vector) -> AxisBounds:
         return cls(
             origin=origin,
             terminus=Vector(
@@ -52,7 +52,7 @@ class AxisRayBounds(RayBounds):
         )
     
     @classmethod
-    def west_bounds(cls, origin: Vector) -> AxisRayBounds:
+    def west(cls, origin: Vector) -> AxisBounds:
         return cls(
             origin=Vector(x=0, y=origin.y),
             terminus=origin
