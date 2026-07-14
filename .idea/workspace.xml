@@ -5,29 +5,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/blueprint/quadrant/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/blueprint/quadrant/blueprint.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/blueprint/quadrant/northeast/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/blueprint/quadrant/northeast/blueprint.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/blueprint/quadrant/northwest/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/blueprint/quadrant/northwest/blueprint.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/blueprint/quadrant/southeast/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/blueprint/quadrant/southeast/blueprint.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/blueprint/quadrant/southwest/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/blueprint/quadrant/southwest/blueprint.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/bounds/axis/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/bounds/axis/bounds.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/bounds/quadrant/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/bounds/quadrant/bounds.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/geometry/point/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/geometry/point/cardinal/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/geometry/point/cardinal/geometry.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/register/model/coord/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/register/model/coord/register.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/register/model/vector/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/register/model/vector/register.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blueprint/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/blueprint/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/blueprint/quadrant/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/blueprint/quadrant/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/blueprint/quadrant/blueprint.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/blueprint/quadrant/blueprint.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/bounds/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/bounds/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/bounds/bounds.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/bounds/bounds.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bounds/east/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bounds/east/bounds.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bounds/north/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bounds/north/bounds.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bounds/south/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bounds/south/bounds.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bounds/west/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bounds/west/bounds.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/geometry/quadrant/geometry.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometry/quadrant/geometry.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/register/model/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/register/model/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/register/model/square/register.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/register/model/square/register.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/register/register.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/register/register.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -81,7 +78,7 @@
     "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/blueprint/quadrant",
+    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/register/model",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
@@ -93,18 +90,18 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/register/model" />
+      <recent name="$PROJECT_DIR$/src/bounds" />
       <recent name="$PROJECT_DIR$/src/blueprint/quadrant" />
       <recent name="$PROJECT_DIR$/src/blueprint/quadrant/northeast" />
       <recent name="$PROJECT_DIR$/src/ray/axis" />
-      <recent name="$PROJECT_DIR$/src/ray/register/axis/east" />
-      <recent name="$PROJECT_DIR$/src/ray" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/geometry/point/cardinal" />
+      <recent name="$PROJECT_DIR$/src/bounds/axis" />
       <recent name="$PROJECT_DIR$/src/geometry" />
       <recent name="$PROJECT_DIR$/src" />
       <recent name="$PROJECT_DIR$/src/ray/axis" />
-      <recent name="$PROJECT_DIR$/src/factor/diagonal" />
-      <recent name="$PROJECT_DIR$/src/register/factor/perpendicular" />
     </key>
   </component>
   <component name="RunManager" selected="Python.notifier">
@@ -831,7 +828,7 @@
       <workItem from="1782325486599" duration="56546000" />
       <workItem from="1782732939190" duration="235900000" />
       <workItem from="1783222430394" duration="208582000" />
-      <workItem from="1783540905722" duration="265033000" />
+      <workItem from="1783540905722" duration="272005000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />
@@ -1352,6 +1349,11 @@
           <url>file://$PROJECT_DIR$/src/geometry/axis/plane.py</url>
           <line>9</line>
           <option name="timeStamp" value="249" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/bounds/quadrant/bounds.py</url>
+          <line>9</line>
+          <option name="timeStamp" value="250" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

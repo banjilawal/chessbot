@@ -60,3 +60,15 @@ class Register(Any):
     @property
     def to_dict(self) -> Dict[str, Any]:
         return {"a": self._a, "v": self._b}
+    
+    @property
+    def is_empty(self) -> bool:
+        return self._a is None and self._b is None
+    
+    @property
+    def is_full(self) -> bool:
+        return self._a is not None and self._b is not None
+    
+    @property
+    def size(self) -> int:
+        return len(self._to_list)

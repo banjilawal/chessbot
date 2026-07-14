@@ -44,4 +44,11 @@ class QuadrantBlueprint(Blueprint, ABC):
     def terminus(self) -> Vector:
         return self._terminus
     
+    def quadrant_from_blueprint(self) -> Quadrant:
+        return Quadrant(
+            x_step=self._x_step,
+            slope=self._slope,
+            terminus=self._terminus
+        )
+    
     

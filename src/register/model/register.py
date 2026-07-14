@@ -9,7 +9,7 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from typing import Dict, Generic, List, TypeVar
+from typing import Generic, TypeVar
 
 from register import Register
 
@@ -42,20 +42,3 @@ class ModelRegister(Register, Generic[T]):
             b: T
         """
         super().__init__(a=a, b=b)
-
-    
-    @property
-    def a(self) -> T:
-        return self._a
-    
-    @property
-    def b(self) -> T:
-        return self._b
-    
-    @property
-    def to_list(self) -> List[T]:
-        return [self._a, self._b]
-    
-    @property
-    def to_dict(self) -> Dict[str, T]:
-        return {"a": self._a, "v": self._b}

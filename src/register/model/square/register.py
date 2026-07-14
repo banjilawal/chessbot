@@ -9,7 +9,7 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from typing import Dict, List
+from typing import Dict, List, cast
 
 from model import Square
 from register import ModelRegister
@@ -48,11 +48,11 @@ class SquareRegister(ModelRegister[Square]):
         
     @property
     def origin(self) -> Square:
-        return self.a
+        return cast(Square, self.a)
     
     @property
     def destination(self) -> Square:
-        return self.b
+        return cast(Square, self.b)
 
     @property
     def origin_is_destination(self) -> bool:
