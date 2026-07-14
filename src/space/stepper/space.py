@@ -12,6 +12,7 @@ from __future__ import annotations
 from abc import ABC, abstractmethod
 from typing import Generic, TypeVar
 
+from model import Vector
 from result import ComputationResult
 from toolkit import MathToolkit
 from util import LoggingLevelRouter
@@ -33,5 +34,5 @@ class Stepper(ABC, Generic[T]):
     
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def next(self) -> ComputationResult:
+    def next(self, current: Vector) -> ComputationResult:
         pass
