@@ -14,7 +14,7 @@ from model import Vector
 from register import VectorRegister
 
 
-class RayBound:
+class RayBounds:
     endpoints: VectorRegister
     
     def __init__(self, origin: Vector, terminus: Vector):

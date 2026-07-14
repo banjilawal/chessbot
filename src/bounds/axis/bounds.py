@@ -11,13 +11,13 @@ from __future__ import annotations
 
 
 import setting
-from bounds import RayBound
+from bounds import RayBounds
 from geometry import Axis
 
 from model import Coord, Vector
 
 
-class AxisBounds(RayBound):
+class AxisBounds(RayBounds):
 
     
     def __init__(self, axis: Vector, terminus: Vector):

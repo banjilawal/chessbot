@@ -9,12 +9,12 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from bounds import RayBound
+from bounds import RayBounds
 from bounds.terminus.bounds import QuadrantTerminus
 from model import Coord, Vector
 
 
-class QuadrantBound(RayBound):
+class QuadrantBounds(RayBounds):
     
     terminus: QuadrantTerminus = QuadrantTerminus()
     
@@ -23,28 +23,28 @@ class QuadrantBound(RayBound):
 
     
     @classmethod
-    def northeast_bounds(cls, coord: Coord,) -> QuadrantBound:
+    def northeast_bounds(cls, coord: Coord,) -> QuadrantBounds:
         return cls(
             origin=Vector(x=coord.column, y=coord.row),
             terminus=cls.terminus.northeast,
         )
     
     @classmethod
-    def northwest_bounds(cls, coord: Coord) -> QuadrantBound:
+    def northwest_bounds(cls, coord: Coord) -> QuadrantBounds:
         return cls(
             origin=Vector(x=coord.column, y=coord.row),
             terminus=cls.terminus.northwest
         )
     
     @classmethod
-    def southeast_bounds(cls, coord: Coord) -> QuadrantBound:
+    def southeast_bounds(cls, coord: Coord) -> QuadrantBounds:
         return cls(
             origin=Vector(x=coord.column, y=coord.row),
             terminus=cls.terminus.southeast
         )
     
     @classmethod
-    def southwest_bounds(cls, coord: Coord) -> QuadrantBound:
+    def southwest_bounds(cls, coord: Coord) -> QuadrantBounds:
         return cls(
             origin=Vector(x=coord.column, y=coord.row),
             terminus=cls.terminus.southwest

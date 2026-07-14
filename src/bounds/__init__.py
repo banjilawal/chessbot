@@ -14,4 +14,4 @@ from .axis import *
 from .quadrant import *
 
 # Modules
-from .bounds import RayBound
+from .bounds import RayBounds
