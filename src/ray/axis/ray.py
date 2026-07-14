@@ -11,7 +11,8 @@ from __future__ import annotations
 
 from typing import List, cast
 
-from bounds import AxisBounds
+
+from geometry import Axis
 from model import Coord, Vector
 from ray import Ray
 
@@ -19,25 +20,25 @@ from ray import Ray
 class AxisRay(Ray):
    
     
-    def __init__(self, bounds: AxisBounds):
-        super().__init__(bounds=bounds)
+    def __init__(self, basis: Axis):
+        super().__init__(basis=basis)
         
     @property
-    def bounds(self) -> AxisBounds:
-        return cast(AxisBounds, self.bounds)
+    def basis(self) -> Axis:
+        return cast(Axis, self.basis)
     
     
     def vector_ray(self,) -> List[Vector]:
-        cursor = self.bounds.origin
+        cursor = self.basis.delta_bound.origin
         vectors: List[Vector] = []
         
-        while cursor != self._bounds.terminus:
+        while cursor != self.basis.delta_bound.terminus:
             vectors.append(cursor)
             cursor = Vector(
-                x=self._bounds.axis.delta.x + cursor.x,
-                y=self._bounds.axis.delta.y + cursor.y
+                x=self.basis.delta_bound.delta.x + cursor.x,
+                y=self.basis.delta_bound.delta.y + cursor.y
             )
-            return vectors
+        return vectors
         
     def coord_ray(self) -> List[Coord]:
         coords: List[Coord] = []

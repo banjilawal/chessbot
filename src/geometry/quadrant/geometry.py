@@ -9,14 +9,13 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from typing import cast
 
-from blueprint import NortheastQuadrantBlueprint
+from geometry import Basis
 from model import Vector
-from register import Register
 
 
-class Quadrant(Register):
+
+class Quadrant(Basis):
     """
     Role:
         -   Addressing
@@ -34,8 +33,10 @@ class Quadrant(Register):
     Provides:
 
     Super Class:
-        Geometry
+        Line
     """
+    _x_step: int
+    _slope: int
     _terminus: Vector
     
     def __init__(self, x_step: int, slope: int, terminus: Vector):
@@ -45,25 +46,26 @@ class Quadrant(Register):
             slope: int
             terminus: Vector
         """
-        super().__init__(a=x_step, b=slope)
+        super().__init__()
+        self._x_step = x_step
+        self._slope = slope
         self._terminus = terminus
         
     @property
     def x_step(self) -> int:
-        return cast(int, self.a)
+        return self._x_step
     
     @property
     def slope(self) -> int:
-        return cast(int, self.b)
+        return self._slope
     
     @property
     def terminus(self) -> Vector:
         return self._terminus
     
-    @classmethod
-    def northeast_quadrant(
-            cls,
-            blueprint: NortheastQuadrantBlueprint = NortheastQuadrantBlueprint()
-    ):
+    @property
+    def terminus(self) -> Vector:
+        return self._terminus
+
         
     

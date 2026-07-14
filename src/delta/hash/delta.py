@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Dict
 
 from bounds import AxisBounds
-from geometry import AxisDelta, DeltaBound
+from delta import AxisDelta, DeltaBound
 from model import Coord
 
 

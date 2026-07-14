@@ -8,11 +8,11 @@ version: 1.0.1
 """
 
 
-# =========== PACKAGE ===========#
+# =========== GEOMETRY PACKAGE ===========#
 
 # Packages
 from .axis import *
-from .delta import *
+from .basis import *
 from .point import *
 from .quadrant import *
 from .span import *

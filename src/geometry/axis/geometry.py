@@ -9,12 +9,12 @@ version: 1.0.1
 
 from __future__ import annotations
 
-
-from geometry import DeltaBound, DeltaBoundHash
+from delta import DeltaBound, DeltaBoundHash
+from geometry import Basis
 from model import Coord, Vector
 
 
-class Axis:
+class Axis(Basis):
     """
     Role:
         -   Addressing
@@ -47,10 +47,13 @@ class Axis:
         self._origin = origin
         self._delta_bound = delta_bound
         
-        
     @property
     def origin(self) -> Vector:
         return self._origin
+    
+    @property
+    def terminus(self) -> Vector:
+        return self.delta_bound.bounds.terminus
     
     @property
     def delta_bound(self) -> DeltaBound:

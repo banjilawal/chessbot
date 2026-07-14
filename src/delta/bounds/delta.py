@@ -28,3 +28,11 @@ class DeltaBound(Register):
     @property
     def bounds(self) -> AxisBounds:
         return cast(AxisBounds, self.b)
+    
+    @property
+    def origin(self) -> Vector:
+        return self.bounds.origin
+    
+    @property
+    def terminus(self) -> Vector:
+        return self.bounds.terminus

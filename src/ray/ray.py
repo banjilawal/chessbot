@@ -12,19 +12,20 @@ from __future__ import annotations
 from abc import abstractmethod
 from typing import List
 
-from bounds import RayBounds
+
+from geometry import Basis
 from model import Coord, Vector
 
 
 class Ray:
-    _bounds: RayBounds
+    _basis: Basis
     
-    def __init__(self, bounds: RayBounds):
-        self._bounds = bounds
+    def __init__(self, basis: Basis):
+        self._basis = basis
         
     @property
-    def bounds(self) -> RayBounds:
-        return self._bounds
+    def basis(self) -> Basis:
+        return self._basis
     
     @abstractmethod
     def vector_ray(self,) -> List[Vector]:
