@@ -14,11 +14,11 @@ from typing import Dict
 from model import Vector
 from register import VectorRegister
 from result import ComputationResult
-from space import Axis, Stepper
+from space import AxisSpace, Stepper
 from util import LoggingLevelRouter
 
 
-class AxisStepper(Stepper[Axis]):
+class AxisStepper(Stepper[AxisSpace]):
     DELTA = {
         "east": Vector(x=1, y=0),
         "north": Vector(x=0, y=-1),

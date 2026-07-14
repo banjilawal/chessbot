@@ -15,18 +15,18 @@ from err import AxisRayComputerException
 from model import Coord, Vector
 from ray import RayComputer
 from result import ComputationResult
-from space import Axis
+from space import AxisSpace
 
 
 class AxisRayComputer(RayComputer):
    
     
-    def __init__(self, space: Axis):
+    def __init__(self, space: AxisSpace):
         super().__init__(space=space)
         
     @property
-    def space(self) -> Axis:
-        return cast(Axis, self.space)
+    def space(self) -> AxisSpace:
+        return cast(AxisSpace, self.space)
     
     
     def vector_ray(self,) -> ComputationResult:
