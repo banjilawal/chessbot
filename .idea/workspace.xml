@@ -5,12 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/geometry/delta/bounds.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/geometry/delta/hash.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/delta/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/delta/bounds/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/delta/bounds/delta.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/delta/delta.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/delta/hash/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/delta/hash/delta.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/geometry/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometry/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/geometry/axis/geometry.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometry/axis/geometry.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/geometry/delta/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometry/delta/__init__.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,37 +58,37 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Python.notifier.executor&quot;: &quot;Debug&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/griot/PycharmProjects/chessbot/src/register/model&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.tabs&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Python.notifier.executor": "Debug",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "main",
+    "ignore.virus.scanning.warn.message": "true",
+    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "run.code.analysis.last.selected.profile": "pProject Default",
+    "settings.editor.selected.configurable": "editor.preferences.tabs",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src" />
       <recent name="$PROJECT_DIR$/src/register/model" />
       <recent name="$PROJECT_DIR$/src/bounds" />
       <recent name="$PROJECT_DIR$/src/blueprint/quadrant" />
       <recent name="$PROJECT_DIR$/src/blueprint/quadrant/northeast" />
-      <recent name="$PROJECT_DIR$/src/ray/axis" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/delta/hash" />
+      <recent name="$PROJECT_DIR$/src/delta/bounds" />
       <recent name="$PROJECT_DIR$/src/geometry/point/cardinal" />
       <recent name="$PROJECT_DIR$/src/bounds/axis" />
       <recent name="$PROJECT_DIR$/src/geometry" />
-      <recent name="$PROJECT_DIR$/src" />
-      <recent name="$PROJECT_DIR$/src/ray/axis" />
     </key>
   </component>
   <component name="RunManager" selected="Python.notifier">
@@ -815,7 +816,7 @@
       <workItem from="1782732939190" duration="235900000" />
       <workItem from="1783222430394" duration="208582000" />
       <workItem from="1783540905722" duration="272528000" />
-      <workItem from="1783990000280" duration="7521000" />
+      <workItem from="1783990000280" duration="8564000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />
