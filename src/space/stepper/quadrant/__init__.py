@@ -1,13 +1,13 @@
-# src/space/interval/quadrant/__init__.py
+# src/space/stepper/quadrant/__init__.py
 
 """
-Module: space.interval.quadrant.__init__
+Module: space.stepper.quadrant.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
 """
 
-# =========== SPACE.INTERVAL.QUADRANT PACKAGE ===========#
+# =========== SPACE.STEPPER.QUADRANT PACKAGE ===========#
 
 # Packages
 

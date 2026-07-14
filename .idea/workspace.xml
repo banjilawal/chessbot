@@ -4,20 +4,7 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/space/interval/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/space/axis/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/axis/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/space/axis/delta/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/interval/axis/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/space/axis/delta/bounds/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/space/axis/delta/bounds/space.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/space/axis/delta/hash/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/space/axis/delta/hash/space.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/space/axis/delta/space.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/interval/axis/space.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/space/bounds/quadrant/space.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/bounds/quadrant/space.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/space/quadrant/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/quadrant/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/space/quadrant/stepper/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/interval/quadrant/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/space/quadrant/stepper/space.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/interval/quadrant/space.py" afterDir="false" />
-    </list>
+    <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -71,7 +58,7 @@
     "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/space/quadrant/stepper",
+    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/space",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
@@ -83,18 +70,18 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/space" />
       <recent name="$PROJECT_DIR$/src/space/quadrant/stepper" />
       <recent name="$PROJECT_DIR$/src/register/model" />
       <recent name="$PROJECT_DIR$/src/space/axis/terminus" />
       <recent name="$PROJECT_DIR$/src/space/axis" />
-      <recent name="$PROJECT_DIR$/src/err/ray" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/space/terminus/quadrant" />
       <recent name="$PROJECT_DIR$/src/space/interval" />
       <recent name="$PROJECT_DIR$/src/space" />
       <recent name="$PROJECT_DIR$/src/ray" />
       <recent name="$PROJECT_DIR$/src/space/quadrant" />
-      <recent name="$PROJECT_DIR$/src/space/axis" />
     </key>
   </component>
   <component name="RunManager" selected="Python.ray">
@@ -801,7 +788,7 @@
       <workItem from="1783540905722" duration="272528000" />
       <workItem from="1783990000280" duration="26468000" />
       <workItem from="1784029158325" duration="10323000" />
-      <workItem from="1784040408484" duration="4115000" />
+      <workItem from="1784040408484" duration="7069000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />
@@ -1342,6 +1329,11 @@
           <url>file://$PROJECT_DIR$/src/register/model/number/register.py</url>
           <line>12</line>
           <option name="timeStamp" value="253" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/schema/archetype/schema.py</url>
+          <line>9</line>
+          <option name="timeStamp" value="254" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

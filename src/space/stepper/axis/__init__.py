@@ -1,13 +1,13 @@
-# src/space/interval/axis/__init__.py
+# src/space/stepper/axis/__init__.py
 
 """
-Module: space.interval.axis.__init__
+Module: space.stepper.axis.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
 """
 
-# =========== SPACE.INTERVAL.AXIS PACKAGE ===========#
+# =========== SPACE.STEPPER.AXIS PACKAGE ===========#
 
 # Packages
 
