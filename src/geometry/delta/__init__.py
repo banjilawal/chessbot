@@ -12,4 +12,6 @@ version: 1.0.1
 # Packages
 
 # Modules
+from .bounds import DeltaBound
 from .geometry import AxisDelta
+from .hash import DeltaBoundHash

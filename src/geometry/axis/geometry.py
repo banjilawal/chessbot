@@ -9,14 +9,12 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from typing import cast
 
-from bounds import AxisBounds
+from geometry import DeltaBound, DeltaBoundHash
 from model import Coord, Vector
-from geometry import Geometry
 
 
-class Axis(Geometry):
+class Axis:
     """
     Role:
         -   Addressing
@@ -35,43 +33,41 @@ class Axis(Geometry):
     Super Class:
         Geometry
     """
-    EAST_DELTA: Vector = Vector(x=1, y=0)
-    NORTH_DELTA = Vector(x=0, y=-1)
-    SOUTH_DELTA = Vector(x=0, y=1)
-    WEST_DELTA = Vector(x=-1, y=0)
+    hash: DeltaBoundHash = DeltaBoundHash()
     
     _origin: Vector
-    _delta: Vector
-    _bounds: AxisBounds
+    _delta_bound: DeltaBound
     
-    def __init__(self, origin: Vector, delta: Vector):
+    def __init__(self, origin: Vector, delta_bound:DeltaBound):
         """
         Args:
-            delta: Vector
             origin: Vector
+            delta_bound: DeltaBound
         """
-        super().__init__(a=origin, b=delta)
+        self._origin = origin
+        self._delta_bound = delta_bound
+        
         
     @property
     def origin(self) -> Vector:
-        return cast(Vector, self.a)
+        return self._origin
     
     @property
-    def delta(self) -> Vector:
-        return cast(Vector, self.b)
+    def delta_bound(self) -> DeltaBound:
+        return self._delta_bound
     
     @classmethod
     def east_axis(cls, coord: Coord) -> Axis:
         return cls(
             origin=Vector(x=coord.column, y=coord.row),
-            delta=cls.EAST_DELTA,
+            delta_bound=cls.hash.east,
         )
     
     @classmethod
     def north_axis(cls, coord: Coord) -> Axis:
         return cls(
             origin=Vector(x=coord.column, y=coord.row),
-            delta=cls.NORTH_DELTA,
+            delta=cls.hash.north,
         )
     
     @classmethod

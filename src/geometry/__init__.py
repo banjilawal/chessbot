@@ -12,6 +12,7 @@ version: 1.0.1
 
 # Packages
 from .axis import *
+from .delta import *
 from .point import *
 from .quadrant import *
 from .span import *
