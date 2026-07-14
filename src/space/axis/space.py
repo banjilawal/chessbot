@@ -92,15 +92,13 @@ class Axis(Space):
     @classmethod
     def east_axis(cls, origin: Vector) -> Axis:
         """
-        Action:
-            1.  Produce the points east from the origin.
-                from:
-                    *   origin.column, origin.row
-                to:
-                    *   origin.row, NUMBER_OF_COLUMNS - 1
-            2.  Increments
-                    *   x-coordinate by 1 to get to the last column.
-                    *   y-coordinate is constant
+        Create an Axis in 1D plane
+        
+        Bounds:
+            east => [u, Vector(num_columns - 1, u.y)]
+        Delta:
+            d_x => increments u.x by 1 till x = number_of_columns - 1
+            d_y => 0
         """
         return cls(
             stepper=AxisStepper.east(),
@@ -110,15 +108,13 @@ class Axis(Space):
     @classmethod
     def north_axis(cls, origin: Vector) -> Axis:
         """
-        Action:
-            1.  Produce the points north of the origin.
-                from:
-                    *   origin.column, origin.row
-                to:
-                    *   origin.column, 0
-            2.  Increments
-                    *   y-coordinate by -1 to get to the first row.
-                    *   x-coordinate is constant
+        Create an Axis in 1D plane.
+
+        Bounds:
+            north => [u, Vector(u.x, 0)]
+        Delta:
+            d_x => 0
+            d_y => increments u.y by -1 till y = 0
         """
         return cls(
             stepper=AxisStepper.east(),
@@ -128,15 +124,13 @@ class Axis(Space):
     @classmethod
     def south_axis(cls, origin: Vector) -> Axis:
         """
-        Action:
-            1.  Produce the points south of the origin.
-                from:
-                    *   origin.column, origin.row
-                to:
-                    *   origin.column, NUMBER_OF_ROWS - 1
-            2.  Increments
-                    *   y-coordinate by 1 to get to the last row.
-                    *   x-coordinate is constant
+        Create an Axis in 1D plane.
+
+        Bounds:
+            south => [u, Vector(u.x, num_rows - 1)]
+        Delta:
+            d_x => 0
+            d_y => increments u.y by 1 till y = num_rows - 1
         """
         return cls(
             stepper=AxisStepper.east(),
@@ -146,15 +140,13 @@ class Axis(Space):
     @classmethod
     def west_axis(cls, origin: Vector) -> Axis:
         """
-        Action:
-            1.  Produce the points west from the origin.
-                from:
-                    *   origin.column, origin.row
-                to:
-                    *   0, origin.row
-            2.  Increments
-                    *   x-coordinate by -1 to get to the first column.
-                    *   y-coordinate is constant
+        Create an Axis in 1D plane.
+
+        Bounds:
+            west => [u, Vector(0, u.y)]
+        Delta:
+            d_x => increments u.x by -1 till x = 0
+            d_y => 0
         """
         return cls(
             stepper=AxisStepper.west(),

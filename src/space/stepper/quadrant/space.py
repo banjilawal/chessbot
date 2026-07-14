@@ -63,6 +63,17 @@ class QuadrantStepper(Stepper[Quadrant]):
     
     @classmethod
     def northeast(cls) -> QuadrantStepper:
+        """
+        Action:
+            1.  Produce the points northeast from the origin to the top right corner.
+                from:
+                    *   origin.column, origin.row
+                to:
+                    *   NUMBER_OF_COLUMNS-1, 0
+            2.  Increments
+                    *   x-coordinate by 1 to get to the end of the columns.
+                    *   y-coordinate by -1 to get to the first row.
+        """
         return cls(
             x_step=cls.ENTRY["northeast"].a,
             slope=cls.ENTRY["northeast"].b,
@@ -70,6 +81,17 @@ class QuadrantStepper(Stepper[Quadrant]):
         
     @classmethod
     def northwest(cls) -> QuadrantStepper:
+        """
+        Action:
+            1.  Produce the points northwest from the origin to the top left corner.
+                from:
+                    *   origin.column, origin.row
+                to:
+                    *    first column, first row
+            2.  Decrements
+                    *   x-coordinate by 1 to get to the first column.
+                    *   y-coordinate by 1 to get to the first row.
+        """
         return cls(
             x_step=cls.ENTRY["northwest"].a,
             slope=cls.ENTRY["northwest"].b,
@@ -77,6 +99,17 @@ class QuadrantStepper(Stepper[Quadrant]):
         
     @classmethod
     def southwest(cls) -> QuadrantStepper:
+        """
+        Action:
+            1.  Produce the points southwest from the origin to the bottom left corner.
+                from:
+                    *   origin.column, origin.row
+                to:
+                    *   first column, last row
+            2.  Increments
+                    *   x-coordinate by -1 to get to the first column.
+                    *   y-coordinate by 1 to get to the first row.
+        """
         return cls(
             x_step=cls.ENTRY["southwest"].a,
             slope=cls.ENTRY["southwest"].b,
@@ -84,7 +117,19 @@ class QuadrantStepper(Stepper[Quadrant]):
         
     @classmethod
     def southeast(cls) -> QuadrantStepper:
+        """
+        Action:
+            1.  Produce the points southeast from the origin to the bottom right corner.
+                from:
+                    *   origin.column, origin.row
+                to:
+                    *   last column, last row
+            2.  Decrements
+                    *   x-coordinate by 1 to get to the end of the columns.
+                    *   y-coordinate by 1 to get to the first row.
+        """
         return cls(
             x_step=cls.ENTRY["southeast"].a,
             slope=cls.ENTRY["southeast"].b,
         )
+ 
