@@ -9,10 +9,13 @@ version: 1.0.1
 
 from __future__ import annotations
 
+from pickletools import uint1
 from typing import cast
 
 from model import Vector
+from result import ComputationResult
 from space import QuadrantBounds, QuadrantStepper, Space
+from util import LoggingLevelRouter
 
 
 class Quadrant(Space):
@@ -49,14 +52,6 @@ class Quadrant(Space):
     @property
     def bounds(self) -> QuadrantBounds:
         return cast(QuadrantBounds, self.bounds)
-        
-    @property
-    def x_step(self) -> int:
-        return self._stepper.x_step
-    
-    @property
-    def slope(self) -> int:
-        return self._stepper.slope
     
     @property
     def origin(self) -> Vector:
@@ -65,6 +60,18 @@ class Quadrant(Space):
     @property
     def terminus(self) -> Vector:
         return self.bounds.terminus
+    
+    @LoggingLevelRouter.monitor
+    def next(self, current: Vector) -> ComputationResult:
+        method = f"{self.__class__.__name__}"
+        
+        result = self._stepper.next(current=current)
+        if result.is_failure:
+            return ComputationResult.failure(
+                result.exception
+            )
+        return result
+        
     
     @classmethod
     def northeast(cls, origin: Vector) -> Quadrant:
