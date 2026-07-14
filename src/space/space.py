@@ -16,14 +16,18 @@ from model import Vector
 
 class Space(ABC):
     
-    _terminus: Vector
     
-    def __init__(self, terminus: Vector):
-        self._terminus = terminus
+    def __init__(self,):
+        pass
     
     
     @property
     @abstractmethod
+    def origin(self) -> Vector:
+        pass
+    
+    @property
+    @abstractmethod
     def terminus(self) -> Vector:
-        return self._terminus
+        pass
     

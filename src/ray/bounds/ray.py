@@ -15,7 +15,8 @@ from register import VectorRegister
 
 
 class RayBounds:
-    endpoints: VectorRegister
+    
+    _endpoints: VectorRegister
     
     def __init__(self, origin: Vector, terminus: Vector):
         self._endpoints = VectorRegister(u=origin, v=terminus)

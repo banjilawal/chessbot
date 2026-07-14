@@ -44,6 +44,7 @@ class Axis(Space):
             origin: Vector
             delta_bound: DeltaBound
         """
+        super().__init__()
         self._origin = origin
         self._delta_bound = delta_bound
         

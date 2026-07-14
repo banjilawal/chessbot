@@ -15,7 +15,7 @@ import setting
 from model import Vector
 
 
-class QuadrantTerminus:
+class QuadrantTerminusHash:
     
     _NORTHWEST_TERMINUS: Vector = Vector(x=0, y=0, )
     _NORTHEAST_TERMINUS = Vector(

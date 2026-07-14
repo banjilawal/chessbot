@@ -12,41 +12,42 @@ from __future__ import annotations
 
 from model import Coord, Vector
 from ray import RayBounds
-from space import QuadrantTerminus
+from space import QuadrantTerminusHash
 
 
 class QuadrantBounds(RayBounds):
     
-    terminus: QuadrantTerminus = QuadrantTerminus()
+    endpoint: QuadrantTerminusHash = QuadrantTerminusHash()
     
     def __init__(self, origin: Vector, terminus: Vector,):
         super().__init__(origin=origin, terminus=terminus)
+        
 
     
     @classmethod
     def northeast_bounds(cls, coord: Coord,) -> QuadrantBounds:
         return cls(
             origin=Vector(x=coord.column, y=coord.row),
-            terminus=cls.terminus.northeast,
+            terminus=cls.endpoint.northeast,
         )
     
     @classmethod
     def northwest_bounds(cls, coord: Coord) -> QuadrantBounds:
         return cls(
             origin=Vector(x=coord.column, y=coord.row),
-            terminus=cls.terminus.northwest
+            terminus=cls.endpoint.northwest
         )
     
     @classmethod
     def southeast_bounds(cls, coord: Coord) -> QuadrantBounds:
         return cls(
             origin=Vector(x=coord.column, y=coord.row),
-            terminus=cls.terminus.southeast
+            terminus=cls.endpoint.southeast
         )
     
     @classmethod
     def southwest_bounds(cls, coord: Coord) -> QuadrantBounds:
         return cls(
             origin=Vector(x=coord.column, y=coord.row),
-            terminus=cls.terminus.southwest
+            terminus=cls.endpoint.southwest
         )
