@@ -1,7 +1,7 @@
-# src/delta/py
+# src/space/axis/delta/space.py
 
 """
-Module: delta.geometry
+Module: space.axis.delta.space
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

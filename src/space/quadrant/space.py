@@ -10,9 +10,9 @@ version: 1.0.1
 from __future__ import annotations
 
 
-from space.quadrant.space import Space
-from model import Vector
 
+from model import Vector
+from space import Space
 
 
 class Quadrant(Space):

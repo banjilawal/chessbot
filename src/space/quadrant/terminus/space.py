@@ -1,7 +1,7 @@
-# src/bounds/terminus/bounds.py
+# src/space/quadrant/terminus/space.py
 
 """
-Module: bounds.terminus.bounds
+Module: space.quadrant.terminus.space
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

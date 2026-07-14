@@ -10,6 +10,7 @@ version: 1.0.1
 # =========== SPACE.AXIS PACKAGE ===========#
 
 # Packages
+from .delta import *
 
 # Modules
 from .space import Axis

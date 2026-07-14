@@ -1,7 +1,7 @@
-# src/delta/bounds/delta.py
+# src/space/axis/delta/bounds/space/axis/space.axis.delta.py
 
 """
-Module: delta.bounds.delta
+Module: space.axis.delta.bounds.delta
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import cast
 
-from bounds import AxisBounds
+from ray.bounds import AxisBounds
 from model import Vector
 from register import Register
 

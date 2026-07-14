@@ -1,7 +1,7 @@
-# src/bounds/axis/bounds.py
+# src/ray/bounds/axis/ray.py
 
 """
-Module: bounds.axis.bounds
+Module: ray.bounds.axis.ray
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -11,9 +11,10 @@ from __future__ import annotations
 
 
 import setting
-from bounds import RayBounds
+
 
 from model import Coord, Vector
+from ray import RayBounds
 
 
 class AxisBounds(RayBounds):

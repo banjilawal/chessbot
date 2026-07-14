@@ -1,17 +1,17 @@
-# src/bounds/__init__.py
+# src/ray/bounds/__init__.py
 
 """
-Module: bounds.__init__
+Module: ray.bounds.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
 """
 
-# =========== BOUNDS PACKAGE ===========#
+# =========== RAY.BOUNDS PACKAGE ===========#
 
 # Packages
 from .axis import *
 from .quadrant import *
 
 # Modules
-from .bounds import RayBounds
+from .ray import RayBounds

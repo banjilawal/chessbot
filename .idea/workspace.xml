@@ -6,18 +6,25 @@
   <component name="ChangeListManager">
     <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blueprint/quadrant/blueprint.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/blueprint/quadrant/blueprint.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bounds/axis/bounds.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/bounds/axis/bounds.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/geometry/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometry/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/geometry/axis/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometry/space/axis/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/geometry/axis/geometry.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometry/space/axis/space.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/geometry/axis/plane.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometry/space/axis/plane.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/geometry/basis/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometry/space/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/geometry/basis/geometry.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometry/space/space.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/geometry/quadrant/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometry/space/quadrant/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/geometry/quadrant/geometry.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometry/space/quadrant/space.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ray/axis/ray.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/ray/axis/ray.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ray/ray.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/ray/ray.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bounds/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/ray/bounds/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bounds/axis/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/ray/bounds/axis/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bounds/axis/bounds.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/ray/bounds/axis/ray.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bounds/bounds.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/ray/bounds/ray.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bounds/quadrant/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/ray/bounds/quadrant/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bounds/quadrant/bounds.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/ray/bounds/quadrant/ray.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bounds/terminus/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/quadrant/terminus/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bounds/terminus/bounds.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/quadrant/terminus/space.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/delta/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/axis/delta/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/delta/bounds/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/axis/delta/bounds/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/delta/bounds/delta.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/axis/delta/bounds/space.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/delta/delta.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/axis/delta/space.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/delta/hash/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/axis/delta/hash/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/delta/hash/delta.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/axis/delta/hash/space.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ray/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/ray/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/space/axis/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/axis/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/space/axis/space.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/axis/space.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/space/quadrant/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/quadrant/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/space/quadrant/space.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/quadrant/space.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,6 +74,7 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "Python.notifier.executor": "Debug",
+    "Python.ray.executor": "Coverage",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "main",
@@ -90,14 +98,14 @@
       <recent name="$PROJECT_DIR$/src/blueprint/quadrant/northeast" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/ray" />
+      <recent name="$PROJECT_DIR$/src/space/quadrant" />
+      <recent name="$PROJECT_DIR$/src/space/axis" />
+      <recent name="$PROJECT_DIR$/src" />
       <recent name="$PROJECT_DIR$/src/geometry/space" />
-      <recent name="$PROJECT_DIR$/src/delta/hash" />
-      <recent name="$PROJECT_DIR$/src/delta/bounds" />
-      <recent name="$PROJECT_DIR$/src/geometry/point/cardinal" />
-      <recent name="$PROJECT_DIR$/src/bounds/axis" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.notifier">
+  <component name="RunManager" selected="Python.ray">
     <configuration default="true" type="PythonConfigurationType" factoryName="Python">
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -205,52 +213,6 @@
       <module name="" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="builder" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="chessbot" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src/logic/token/service/operation/build" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/logic/token/service/operation/build/builder.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="exception" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="chessbot" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src/err/context/excess" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/err/context/excess/exception.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -343,6 +305,29 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/operation/vector/addition/operation.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="ray" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="chessbot" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src/ray/bounds/axis" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/ray/bounds/axis/ray.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -445,11 +430,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.ray" />
         <item itemvalue="Python.notifier" />
         <item itemvalue="Python.util" />
         <item itemvalue="Python.result" />
         <item itemvalue="Python.operation" />
-        <item itemvalue="Python.exception" />
       </list>
     </recent_temporary>
   </component>
@@ -822,7 +807,7 @@
       <workItem from="1782732939190" duration="235900000" />
       <workItem from="1783222430394" duration="208582000" />
       <workItem from="1783540905722" duration="272528000" />
-      <workItem from="1783990000280" duration="15548000" />
+      <workItem from="1783990000280" duration="17218000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />
@@ -1340,12 +1325,12 @@
           <option name="timeStamp" value="247" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/src/geometry/space/axis/plane.py</url>
+          <url>file://$PROJECT_DIR$/src/space/axis/plane.py</url>
           <line>9</line>
           <option name="timeStamp" value="249" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/src/bounds/quadrant/bounds.py</url>
+          <url>file://$PROJECT_DIR$/src/ray/bounds/quadrant/ray.py</url>
           <line>9</line>
           <option name="timeStamp" value="250" />
         </line-breakpoint>

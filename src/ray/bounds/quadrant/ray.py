@@ -1,7 +1,7 @@
-# src/bounds/quadrant/bounds.py
+# src/ray/bounds/quadrant/ray.py
 
 """
-Module: bounds.quadrant.bounds
+Module: ray.bounds.quadrant.ray
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -9,9 +9,10 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from bounds import RayBounds
-from bounds.terminus.bounds import QuadrantTerminus
+
 from model import Coord, Vector
+from ray import RayBounds
+from space import QuadrantTerminus
 
 
 class QuadrantBounds(RayBounds):

@@ -9,8 +9,9 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from delta import DeltaBound, DeltaBoundHash
+
 from model import Coord, Vector
+from space import DeltaBound, DeltaBoundHash, Space
 
 
 class Axis(Space):
@@ -37,7 +38,7 @@ class Axis(Space):
     _origin: Vector
     _delta_bound: DeltaBound
     
-    def __init__(self, origin: Vector, delta_bound:DeltaBound):
+    def __init__(self, origin: Vector, delta_bound: DeltaBound):
         """
         Args:
             origin: Vector
