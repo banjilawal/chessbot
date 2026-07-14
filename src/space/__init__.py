@@ -11,8 +11,8 @@ version: 1.0.1
 
 # Packages
 from .axis import *
-from .interval import *
 from .bounds import *
+from .stepper import *
 from .quadrant import *
 
 
