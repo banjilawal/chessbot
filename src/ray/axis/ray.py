@@ -33,17 +33,15 @@ class AxisRayComputer(RayComputer):
     def vector_ray(self,) -> ComputationResult:
         method = f"{self.__class__.__name__}.vector_ray"
         
-        cursor = self.space.delta_bound.origin
-        terminus = self.space.delta_bound.terminus
+        cursor = self.space.origin
+        terminus = self.space.terminus
         vectors: List[Vector] = []
         
         while cursor != terminus:
             vectors.append(cursor)
             
-            addition = self.math.add_vector.execute(
-                VectorRegister(u=cursor, v=self.space.delta_bound.delta)
-            )
-            if addition.is_failure:
+            result = self.space.next(current=cursor)
+            if result.is_failure:
                 # Send the exception chain in the result.
                 return ComputationResult.failure(
                     AxisRayComputerException(
@@ -52,13 +50,10 @@ class AxisRayComputer(RayComputer):
                         msg=AxisRayComputerException.MSG,
                         err_code=AxisRayComputerException.ERR_CODE,
                         mthd_rslt_type=AxisRayComputerException.MTHD_RSLT_TYPE,
-                        ex=addition.exception,
+                        ex=result.exception,
                     )
                 )
-            cursor = cast(Vector, addition.payload)
-            # cursor = Vector(
-            #     x=self.space.delta_bound.delta.x + cursor.x,
-            #     y=self.space.delta_bound.delta.y + cursor.y
+            cursor = cast(Vector, result.payload)
         return ComputationResult.success(vectors)
         
     def coord_ray(self) -> ComputationResult:
