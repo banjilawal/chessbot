@@ -11,6 +11,7 @@ from __future__ import annotations
 
 from typing import cast
 
+from bounds import AxisBounds
 from model import Coord, Vector
 from geometry import Geometry
 
@@ -41,7 +42,7 @@ class Axis(Geometry):
     
     _origin: Vector
     _delta: Vector
-    
+    _bounds: AxisBounds
     
     def __init__(self, origin: Vector, delta: Vector):
         """

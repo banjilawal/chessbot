@@ -10,6 +10,6 @@ version: 1.0.1
 # =========== GEOMETRY.POINT PACKAGE ===========#
 
 # Packages
-
+from .cardinal import *
 
 # Modules

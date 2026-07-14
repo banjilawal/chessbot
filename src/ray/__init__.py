@@ -11,6 +11,7 @@ version: 1.0.1
 
 # Packages
 from .axis import *
+from .quadrant import *
 
 # Modules
 from .ray import Ray

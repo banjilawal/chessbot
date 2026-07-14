@@ -9,7 +9,7 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from typing import List
+from typing import List, cast
 
 from bounds import AxisBounds
 from model import Coord, Vector
@@ -17,14 +17,18 @@ from ray import Ray
 
 
 class AxisRay(Ray):
-    _bounds: AxisBounds
+   
     
-    def __init__(self, coord: Coord):
-        self._bounds = AxisBounds()
+    def __init__(self, bounds: AxisBounds):
+        super().__init__(bounds=bounds)
+        
+    @property
+    def bounds(self) -> AxisBounds:
+        return cast(AxisBounds, self.bounds)
     
     
     def vector_ray(self,) -> List[Vector]:
-        cursor = self._bounds.axis.origin
+        cursor = self.bounds.origin
         vectors: List[Vector] = []
         
         while cursor != self._bounds.terminus:
