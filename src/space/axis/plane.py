@@ -1,7 +1,7 @@
-# src/geometry/span/coord/ray/diagonal/provider/plane.py
+# src/space/span/coord/ray/diagonal/provider/plane.py
 
 """
-Module: geometry.span.coord.ray.diagonal.provider.plane
+Module: space.span.coord.ray.diagonal.provider.plane
 Author: Banji Lawal
 Created: 2026-03-8
 version: 1.0.0

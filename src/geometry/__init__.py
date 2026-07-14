@@ -11,10 +11,7 @@ version: 1.0.1
 # =========== GEOMETRY PACKAGE ===========#
 
 # Packages
-from .axis import *
-from .basis import *
 from .point import *
-from .quadrant import *
 from .span import *
 
 # Modules

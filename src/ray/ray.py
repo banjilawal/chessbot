@@ -13,18 +13,18 @@ from abc import abstractmethod
 from typing import List
 
 
-from geometry import Basis
+from geometry import Space
 from model import Coord, Vector
 
 
 class Ray:
-    _basis: Basis
+    _basis: Space
     
-    def __init__(self, basis: Basis):
+    def __init__(self, basis: Space):
         self._basis = basis
         
     @property
-    def basis(self) -> Basis:
+    def basis(self) -> Space:
         return self._basis
     
     @abstractmethod

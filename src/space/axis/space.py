@@ -1,7 +1,7 @@
-# src/geometry/axis/geometry.py
+# src/space/axis/space.py
 
 """
-Module: geometry.axis.geometry
+Module: space.axis.space
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -10,11 +10,10 @@ version: 1.0.1
 from __future__ import annotations
 
 from delta import DeltaBound, DeltaBoundHash
-from geometry import Basis
 from model import Coord, Vector
 
 
-class Axis(Basis):
+class Axis(Space):
     """
     Role:
         -   Addressing
@@ -31,7 +30,7 @@ class Axis(Basis):
     Provides:
 
     Super Class:
-        Geometry
+        Space
     """
     hash: DeltaBoundHash = DeltaBoundHash()
     

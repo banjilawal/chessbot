@@ -5,18 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/geometry/basis/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/geometry/basis/geometry.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/delta/bounds/delta.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/delta/bounds/delta.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/blueprint/quadrant/blueprint.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/blueprint/quadrant/blueprint.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bounds/axis/bounds.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/bounds/axis/bounds.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/geometry/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometry/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/geometry/axis/geometry.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometry/axis/geometry.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/geometry/delta/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/geometry/delta/bounds.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/geometry/delta/geometry.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/geometry/delta/hash.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/geometry/point/cardinal/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometry/point/cardinal/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/geometry/quadrant/geometry.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometry/quadrant/geometry.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/geometry/axis/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometry/space/axis/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/geometry/axis/geometry.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometry/space/axis/space.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/geometry/axis/plane.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometry/space/axis/plane.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/geometry/basis/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometry/space/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/geometry/basis/geometry.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometry/space/space.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/geometry/quadrant/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometry/space/quadrant/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/geometry/quadrant/geometry.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometry/space/quadrant/space.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ray/axis/ray.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/ray/axis/ray.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ray/ray.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/ray/ray.py" afterDir="false" />
     </list>
@@ -91,11 +90,11 @@
       <recent name="$PROJECT_DIR$/src/blueprint/quadrant/northeast" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/geometry/space" />
       <recent name="$PROJECT_DIR$/src/delta/hash" />
       <recent name="$PROJECT_DIR$/src/delta/bounds" />
       <recent name="$PROJECT_DIR$/src/geometry/point/cardinal" />
       <recent name="$PROJECT_DIR$/src/bounds/axis" />
-      <recent name="$PROJECT_DIR$/src/geometry" />
     </key>
   </component>
   <component name="RunManager" selected="Python.notifier">
@@ -823,7 +822,7 @@
       <workItem from="1782732939190" duration="235900000" />
       <workItem from="1783222430394" duration="208582000" />
       <workItem from="1783540905722" duration="272528000" />
-      <workItem from="1783990000280" duration="11914000" />
+      <workItem from="1783990000280" duration="15548000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />
@@ -1341,7 +1340,7 @@
           <option name="timeStamp" value="247" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/src/geometry/axis/plane.py</url>
+          <url>file://$PROJECT_DIR$/src/geometry/space/axis/plane.py</url>
           <line>9</line>
           <option name="timeStamp" value="249" />
         </line-breakpoint>

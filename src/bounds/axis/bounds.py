@@ -12,7 +12,6 @@ from __future__ import annotations
 
 import setting
 from bounds import RayBounds
-from geometry import Axis
 
 from model import Coord, Vector
 

@@ -1,7 +1,7 @@
-# src/geometry/quadrant/geometry.py
+# src/space/quadrant/space.py
 
 """
-Module: geometry.quadrant.geometry
+Module: space.quadrant.space
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -10,12 +10,12 @@ version: 1.0.1
 from __future__ import annotations
 
 
-from geometry import Basis
+from space.quadrant.space import Space
 from model import Vector
 
 
 
-class Quadrant(Basis):
+class Quadrant(Space):
     """
     Role:
         -   Addressing
@@ -58,10 +58,6 @@ class Quadrant(Basis):
     @property
     def slope(self) -> int:
         return self._slope
-    
-    @property
-    def terminus(self) -> Vector:
-        return self._terminus
     
     @property
     def terminus(self) -> Vector:

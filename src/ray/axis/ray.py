@@ -30,9 +30,10 @@ class AxisRay(Ray):
     
     def vector_ray(self,) -> List[Vector]:
         cursor = self.basis.delta_bound.origin
+        terminus = self.basis.delta_bound.terminus
         vectors: List[Vector] = []
         
-        while cursor != self.basis.delta_bound.terminus:
+        while cursor != terminus:
             vectors.append(cursor)
             cursor = Vector(
                 x=self.basis.delta_bound.delta.x + cursor.x,

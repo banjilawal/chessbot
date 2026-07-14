@@ -13,7 +13,7 @@ from abc import ABC
 from typing import Type, cast
 
 from blueprint import Blueprint
-from geometry.quadrant import Quadrant
+from space.quadrant import Quadrant
 from model import Vector
 
 
