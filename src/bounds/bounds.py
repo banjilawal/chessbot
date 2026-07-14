@@ -9,21 +9,21 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from typing import cast
 
 from model import Vector
-from register import Register
+from register import VectorRegister
 
 
-class RayBounds(Register[]):
-    endpoints: Register[Vector]
+class RayBound:
+    endpoints: VectorRegister
     
-    def bounds(self, origin: Vector, terminus: Vector):
-        endpoints =
+    def __init__(self, origin: Vector, terminus: Vector):
+        self._endpoints = VectorRegister(u=origin, v=terminus)
         
     @property
     def origin(self) -> Vector:
-        return cast(Vector, self.a)
+        return self._endpoints.u
     
     @property
-    def
+    def terminus(self) -> Vector:
+        return self._endpoints.v

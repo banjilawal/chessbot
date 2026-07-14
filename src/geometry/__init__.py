@@ -7,13 +7,13 @@ Created: 2026-04-03
 version: 1.0.1
 """
 
-import logging
-
-log = logging.getLogger("chessbot")
 
 # =========== PACKAGE ===========#
 
 # Packages
+from .axis import *
+from .point import *
+from .quadrant import *
 from .span import *
 
 # Modules

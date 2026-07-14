@@ -9,29 +9,20 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from abc import ABC
 
 import setting
-from geometry.axis import Axis
+from bounds import RayBound
+from geometry import Axis
+
 from model import Coord, Vector
 
 
-class AxisBounds(ABC):
-    _axis: Axis
-    _terminus: Vector
+class AxisBounds(RayBound):
+
     
-    def __init__(self, axis: Axis, terminus):
-        self._axis = axis
-        self._terminus = terminus
+    def __init__(self, axis: Vector, terminus: Vector):
+        super().__init__(origin=axis, terminus=terminus)
     
-    
-    @property
-    def axis(self) -> Axis:
-        return self._axis
-    
-    @property
-    def terminus(self) -> Vector:
-        return self._terminus
     
     @classmethod
     def east_bounds(cls, coord: Coord) -> AxisBounds:

@@ -9,67 +9,43 @@ version: 1.0.1
 
 from __future__ import annotations
 
-import setting
-from geometry.quadrant import Quadrant
+from bounds import RayBound
+from bounds.terminus.bounds import QuadrantTerminus
 from model import Coord, Vector
 
 
-class QuadrantBounds:
-    NORTHWEST_TERMINUS = Vector(x=0, y=0, )
-    NORTHEAST_TERMINUS = Vector(
-        x=setting.board.dimension.config.number_of_columns - 1,
-        y=0,
-    )
-    SOUTHEAST_TERMINUS = Vector(
-        x=setting.board.dimension.config.number_of_columns - 1,
-        y=setting.board.dimension.config.number_of_rows - 1,
-    )
-    SOUTHWEST_TERMINUS = Vector(
-        x=0,
-        y=setting.board.dimension.config.number_of_rows - 1,
-    )
-    _origin: Vector
-    _terminus: Vector
+class QuadrantBound(RayBound):
+    
+    terminus: QuadrantTerminus = QuadrantTerminus()
     
     def __init__(self, origin: Vector, terminus: Vector,):
-        self._origin = origin
-        self._quadrant = terminus
-    
-    @property
-    def origin(self) -> Vector:
-        return self._origin
-    
-    @property
-    def terminus(self) -> Vector:
-        return self._terminus
+        super().__init__(origin=origin, terminus=terminus)
+
     
     @classmethod
-    def northeast_bounds(
-            cls,
-            coord: Coord,
-    ) -> QuadrantBounds:
+    def northeast_bounds(cls, coord: Coord,) -> QuadrantBound:
         return cls(
             origin=Vector(x=coord.column, y=coord.row),
-            terminus=cls.NORTHEAST_TERMINUS,
+            terminus=cls.terminus.northeast,
         )
     
     @classmethod
-    def northwest_bounds(cls, coord: Coord) -> QuadrantBounds:
+    def northwest_bounds(cls, coord: Coord) -> QuadrantBound:
         return cls(
             origin=Vector(x=coord.column, y=coord.row),
-            terminus=cls.NORTHWEST_TERMINUS
+            terminus=cls.terminus.northwest
         )
     
     @classmethod
-    def southeast_bounds(cls, coord: Coord) -> QuadrantBounds:
+    def southeast_bounds(cls, coord: Coord) -> QuadrantBound:
         return cls(
             origin=Vector(x=coord.column, y=coord.row),
-            terminus=cls.NORTHEAST_TERMINUS
+            terminus=cls.terminus.southeast
         )
     
     @classmethod
-    def southwest_bounds(cls, coord: Coord) -> QuadrantBounds:
+    def southwest_bounds(cls, coord: Coord) -> QuadrantBound:
         return cls(
             origin=Vector(x=coord.column, y=coord.row),
-            terminus=cls.SOUTHWEST_TERMINUS
+            terminus=cls.terminus.southwest
         )

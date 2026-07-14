@@ -23,6 +23,7 @@
       <change beforePath="$PROJECT_DIR$/src/bounds/bounds.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/bounds/bounds.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/geometry/quadrant/geometry.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometry/quadrant/geometry.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/register/model/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/register/model/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/register/model/register.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/register/model/register.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/register/model/square/register.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/register/model/square/register.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/register/register.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/register/register.py" afterDir="false" />
     </list>
@@ -828,7 +829,7 @@
       <workItem from="1782325486599" duration="56546000" />
       <workItem from="1782732939190" duration="235900000" />
       <workItem from="1783222430394" duration="208582000" />
-      <workItem from="1783540905722" duration="272005000" />
+      <workItem from="1783540905722" duration="272528000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />
