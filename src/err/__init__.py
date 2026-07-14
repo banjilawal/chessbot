@@ -14,7 +14,7 @@ from .analyzer import *
 from .array import *
 from .bidirectional import *
 from .bootstrapper import *
-from .build import *
+from .builder import *
 from .carrier import *
 from .collider import *
 from .config import *

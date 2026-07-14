@@ -9,11 +9,10 @@ version: 1.0.1
 
 from __future__ import annotations
 
-
+from typing import cast
 
 from model import Vector
-from ray import QuadrantBounds
-from space import Space
+from space import QuadrantBounds, Space
 
 
 class Quadrant(Space):
@@ -34,12 +33,11 @@ class Quadrant(Space):
     Provides:
 
     Super Class:
-        Line
+        Space
     """
     _x_step: int
     _slope: int
     _bounds: QuadrantBounds
-    _terminus: Vector
     
     def __init__(self, x_step: int, slope: int, bounds: QuadrantBounds):
         """
@@ -48,10 +46,13 @@ class Quadrant(Space):
             slope: int
             bounds: QuadrantBounds
         """
-        super().__init__()
+        super().__init__(bounds=bounds)
         self._x_step = x_step
         self._slope = slope
-        self._bounds = bounds
+        
+    @property
+    def bounds(self) -> QuadrantBounds:
+        return cast(QuadrantBounds, self.bounds)
         
     @property
     def x_step(self) -> int:
@@ -63,11 +64,18 @@ class Quadrant(Space):
     
     @property
     def origin(self) -> Vector:
-        return self._bounds.origin
+        return self.bounds.origin
     
     @property
     def terminus(self) -> Vector:
-        return self._bounds.terminus
+        return self.bounds.terminus
+    
+    
+    @classmethod
+    def northeast(cls, origin: Vector) -> Quadrant:
+        return cls(
+            bounds=QuadrantBounds.northeast(origin=origin)
+        )
 
         
     

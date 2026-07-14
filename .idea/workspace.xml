@@ -5,26 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/space/axis/terminus/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/space/axis/terminus/bounds/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/space/axis/terminus/bounds/space.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/space/axis/terminus/hash/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/space/axis/terminus/hash/space.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/space/axis/terminus/space.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/space/quadrant/line/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ray/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/ray/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ray/bounds/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/bounds/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ray/bounds/axis/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/bounds/axis/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ray/bounds/axis/ray.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/bounds/axis/space.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ray/bounds/quadrant/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/bounds/quadrant/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ray/bounds/quadrant/ray.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/bounds/quadrant/ray.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ray/bounds/ray.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/bounds/space.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/space/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/space/axis/delta/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/axis/delta/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/space/axis/delta/bounds/space.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/axis/delta/bounds/space.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/space/axis/delta/hash/space.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/axis/delta/hash/space.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/space/axis/delta/space.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/axis/delta/space.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/space/axis/space.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/axis/space.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/space/bounds/quadrant/ray.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/bounds/quadrant/space.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/space/quadrant/space.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/quadrant/space.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -72,24 +57,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Python.notifier.executor": "Debug",
-    "Python.ray.executor": "Coverage",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "main",
-    "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/space/axis/terminus",
-    "node.js.detected.package.eslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "run.code.analysis.last.selected.profile": "pProject Default",
-    "settings.editor.selected.configurable": "editor.preferences.tabs",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Python.notifier.executor&quot;: &quot;Debug&quot;,
+    &quot;Python.ray.executor&quot;: &quot;Coverage&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/griot/PycharmProjects/chessbot/src/space/axis/terminus&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.tabs&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/space/axis/terminus" />
@@ -809,7 +794,8 @@
       <workItem from="1783222430394" duration="208582000" />
       <workItem from="1783540905722" duration="272528000" />
       <workItem from="1783990000280" duration="26468000" />
-      <workItem from="1784029158325" duration="8378000" />
+      <workItem from="1784029158325" duration="10323000" />
+      <workItem from="1784040408484" duration="546000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />

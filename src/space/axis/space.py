@@ -9,9 +9,10 @@ version: 1.0.1
 
 from __future__ import annotations
 
+from typing import cast
 
 from model import Coord, Vector
-from space import AxisBounds, AxisDeltaEntry, DeltaBound, DeltaBoundHash, Space
+from space import AxisBounds, AxisDeltaEntry, DeltaBound, DeltaBoundHash, Space, SpaceBounds
 
 
 class Axis(Space):
@@ -47,21 +48,27 @@ class Axis(Space):
             delta: Vector
             bounds: AxisBounds
         """
-        super().__init__()
+        super().__init__(bounds=bounds)
         self._delta = delta
         self._bounds = bounds
         
     @property
+    def bounds(self) -> SpaceBounds:
+        return cast(AxisBounds, self.bounds)
+    
+    @property
+    def delta(self) -> Vector:
+        return self._delta
+    
+    @property
     def origin(self) -> Vector:
-        return self._bounds.origin
+        return self.bounds.origin
     
     @property
     def terminus(self) -> Vector:
-        return self._bounds.terminus
+        return self.bounds.terminus
     
-    @property
-    def delta_bound(self) -> DeltaBound:
-        return self._delta_bound
+
     
     @classmethod
     def east_axis(cls, origin: Vector) -> Axis:
