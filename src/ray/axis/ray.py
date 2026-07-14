@@ -12,32 +12,32 @@ from __future__ import annotations
 from typing import List, cast
 
 
-from geometry import Axis
 from model import Coord, Vector
 from ray import Ray
+from space import Axis
 
 
 class AxisRay(Ray):
    
     
-    def __init__(self, basis: Axis):
-        super().__init__(basis=basis)
+    def __init__(self, space: Axis):
+        super().__init__(space=space)
         
     @property
-    def basis(self) -> Axis:
-        return cast(Axis, self.basis)
+    def space(self) -> Axis:
+        return cast(Axis, self.space)
     
     
     def vector_ray(self,) -> List[Vector]:
-        cursor = self.basis.delta_bound.origin
-        terminus = self.basis.delta_bound.terminus
+        cursor = self.space.delta_bound.origin
+        terminus = self.space.delta_bound.terminus
         vectors: List[Vector] = []
         
         while cursor != terminus:
             vectors.append(cursor)
             cursor = Vector(
-                x=self.basis.delta_bound.delta.x + cursor.x,
-                y=self.basis.delta_bound.delta.y + cursor.y
+                x=self.space.delta_bound.delta.x + cursor.x,
+                y=self.space.delta_bound.delta.y + cursor.y
             )
         return vectors
         

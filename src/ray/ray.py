@@ -13,19 +13,19 @@ from abc import abstractmethod
 from typing import List
 
 
-from geometry import Space
 from model import Coord, Vector
+from space import Space
 
 
 class Ray:
-    _basis: Space
+    _space: Space
     
-    def __init__(self, basis: Space):
-        self._basis = basis
+    def __init__(self, space: Space):
+        self._space = space
         
     @property
     def basis(self) -> Space:
-        return self._basis
+        return self._space
     
     @abstractmethod
     def vector_ray(self,) -> List[Vector]:
