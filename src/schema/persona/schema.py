@@ -12,7 +12,7 @@ from __future__ import annotations
 from enum import Enum
 from typing import List, Optional
 
-from model import OldQuadrant, Vector
+from model import Vector
 
 
 class Persona(Enum):
@@ -54,7 +54,6 @@ class Persona(Enum):
             designation: str,
             quota: int,
             ransom: int,
-            quadrants: List[OldQuadrant],
             vectors: Optional[List[Vector]]
     ):
         """
@@ -69,14 +68,13 @@ class Persona(Enum):
         obj._designation = designation
         obj._quota = quota
         obj._ransom = ransom
-        obj._quadrants = quadrants
         obj._vectors = vectors
         return obj
     
-    PAWN = ("P", 8, 1, [OldQuadrant.NE, OldQuadrant.SE, OldQuadrant.NW, OldQuadrant.SW], None)
-    BISHOP = ("B", 2, 3, [OldQuadrant.NE, OldQuadrant.NW, OldQuadrant.SE, OldQuadrant.SW], None)
-    ROOK = ("C", 2, 5, [OldQuadrant.N, OldQuadrant.S, OldQuadrant.E, OldQuadrant.W], None)
-    KNIGHT = ("N", 2, 3, [OldQuadrant.N, OldQuadrant.NE, OldQuadrant.NW, OldQuadrant.E, OldQuadrant.SE, OldQuadrant.SW],
+    PAWN = ("P", 8, 1, None)
+    BISHOP = ("B", 2, 3, None)
+    ROOK = ("C", 2, 5, None)
+    KNIGHT = ("N", 2, 3,
               [
                   Vector(1, 2), Vector(-1, 2), Vector(1, -2), Vector(-1, -2), Vector(2, 1),
                   Vector(2, -1), Vector(-2, 1), Vector(-2, -1),
@@ -84,16 +82,12 @@ class Persona(Enum):
     )
     KING = (
         "K", 1, 0,
-        [OldQuadrant.N, OldQuadrant.NE, OldQuadrant.E, OldQuadrant.SE, OldQuadrant.S, OldQuadrant.SW, OldQuadrant.W, OldQuadrant.NW],
         [
             Vector(1, 0), Vector(-1, 0), Vector(0, 1), Vector(1, 1), Vector(-1, 1),
             Vector(-1, -1), Vector(1, -1)
         ]
     )
-    QUEEN = (
-        "Q", 1, 9,
-        [OldQuadrant.N, OldQuadrant.NE, OldQuadrant.E, OldQuadrant.SE, OldQuadrant.S, OldQuadrant.SW, OldQuadrant.W, OldQuadrant.NW]
-    )
+    QUEEN = ("Q", 1, 9, None)
     
     @property
     def designation(self) -> str:
@@ -108,16 +102,8 @@ class Persona(Enum):
         return self._ransom
     
     @property
-    def quadrants(self) -> List[OldQuadrant]:
-        return self._quadrants
-    
-    @property
     def vectors(self) -> List[Vector]:
         return self._vectors
-    
-    @classmethod
-    def allowed_quadrants(cls) -> List[List[OldQuadrant]]:
-        return [member.quadrants for member in cls]
     
     def __str__(self) -> str:
         return (
@@ -125,10 +111,6 @@ class Persona(Enum):
             f"{self._designation} "
             f"per_rank:{self._quota} "
             f"value:{self._ransom} "
-            f"quadrants:({len(self.quadrants_str())})"
             f"] "
         )
-    
-    def quadrants_str(self) -> str:
-        return " ".join(q.name for q in self._quadrants)
 
