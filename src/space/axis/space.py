@@ -40,6 +40,12 @@ class Axis(Space):
         
     Super Class:
         Space
+        
+    1.  Derive the factors for computing the ray projections from an origin to its
+            * North (0,j)
+            * West (-i, 0)
+            * South (0, -j)
+            * East (i, 0)
     """
     _bounds: AxisBounds
     _stepper: AxisStepper
@@ -85,6 +91,17 @@ class Axis(Space):
     
     @classmethod
     def east_axis(cls, origin: Vector) -> Axis:
+        """
+        Action:
+            1.  Produce the points east from the origin.
+                from:
+                    *   origin.column, origin.row
+                to:
+                    *   origin.row, NUMBER_OF_COLUMNS - 1
+            2.  Increments
+                    *   x-coordinate by 1 to get to the last column.
+                    *   y-coordinate is constant
+        """
         return cls(
             stepper=AxisStepper.east(),
             bounds=AxisBounds.east(origin=origin),
@@ -92,6 +109,17 @@ class Axis(Space):
     
     @classmethod
     def north_axis(cls, origin: Vector) -> Axis:
+        """
+        Action:
+            1.  Produce the points north of the origin.
+                from:
+                    *   origin.column, origin.row
+                to:
+                    *   origin.column, 0
+            2.  Increments
+                    *   y-coordinate by -1 to get to the first row.
+                    *   x-coordinate is constant
+        """
         return cls(
             stepper=AxisStepper.east(),
             bounds=AxisBounds.north(origin=origin)
@@ -99,6 +127,17 @@ class Axis(Space):
     
     @classmethod
     def south_axis(cls, origin: Vector) -> Axis:
+        """
+        Action:
+            1.  Produce the points south of the origin.
+                from:
+                    *   origin.column, origin.row
+                to:
+                    *   origin.column, NUMBER_OF_ROWS - 1
+            2.  Increments
+                    *   y-coordinate by 1 to get to the last row.
+                    *   x-coordinate is constant
+        """
         return cls(
             stepper=AxisStepper.east(),
             bounds=AxisBounds.south(origin=origin)
@@ -106,6 +145,17 @@ class Axis(Space):
     
     @classmethod
     def west_axis(cls, origin: Vector) -> Axis:
+        """
+        Action:
+            1.  Produce the points west from the origin.
+                from:
+                    *   origin.column, origin.row
+                to:
+                    *   0, origin.row
+            2.  Increments
+                    *   x-coordinate by -1 to get to the first column.
+                    *   y-coordinate is constant
+        """
         return cls(
             stepper=AxisStepper.west(),
             bounds=AxisBounds.west(origin=origin)
