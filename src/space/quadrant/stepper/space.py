@@ -1,7 +1,7 @@
-# src/space/bounds/quadrant/space.py
+# src/space/quadrant/stepper/space.py
 
 """
-Module: space.bounds.quadrant.space
+Module: space.quadrant.stepper.space
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -9,12 +9,7 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from typing import Dict
-
-from model import Vector
 from register import NumberRegister
-from space import SpaceBounds
-from space import QuadrantTerminusEntry
 
 
 class QuadrantStepper:
@@ -32,27 +27,18 @@ class QuadrantStepper:
         return self._register.b
     
     
-    
-    def __init__(self):
-        self._entry = {
-            "east": Vector(x=1, y=0),
-            "north": Vector(x=0, y=-1),
-            "south": Vector(x=0, y=1),
-            "west": Vector(x=-1, y=0),
-        }
-    
-    @property
-    def east(self) -> Vector:
-        return self._entry["east"]
-    
-    @property
-    def north(self) -> Vector:
-        return self._entry["north"]
-    
-    @property
-    def west(self) -> Vector:
-        return self._entry["west"]
-    
-    @property
-    def south(self) -> Vector:
-        return self._entry["south"]
+    @classmethod
+    def northeast(cls) -> QuadrantStepper:
+        return cls.(x_step=1, slope=-1,)
+        
+    @classmethod
+    def northwest(cls) -> QuadrantStepper:
+        return cls.(x_step=-1, slope=-1,)
+        
+    @classmethod
+    def southwest(cls) -> QuadrantStepper:
+        return cls.(x_step=-1, slope=1,)
+        
+    @classmethod
+    def southeast(cls) -> QuadrantStepper:
+        return cls.(x_step=1, slope=1,)

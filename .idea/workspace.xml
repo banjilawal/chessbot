@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="" />
+    <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/src/space/quadrant/stepper/space.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/quadrant/stepper/space.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -58,7 +60,7 @@
     "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/register/model",
+    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/space/quadrant/stepper",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
@@ -70,11 +72,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/space/quadrant/stepper" />
       <recent name="$PROJECT_DIR$/src/register/model" />
       <recent name="$PROJECT_DIR$/src/space/axis/terminus" />
       <recent name="$PROJECT_DIR$/src/space/axis" />
       <recent name="$PROJECT_DIR$/src/err/ray" />
-      <recent name="$PROJECT_DIR$/src/err" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/space" />
@@ -788,7 +790,7 @@
       <workItem from="1783540905722" duration="272528000" />
       <workItem from="1783990000280" duration="26468000" />
       <workItem from="1784029158325" duration="10323000" />
-      <workItem from="1784040408484" duration="1450000" />
+      <workItem from="1784040408484" duration="2662000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />
