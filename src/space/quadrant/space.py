@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import cast
 
 from model import Vector
-from space import QuadrantBounds, Space
+from space import QuadrantBounds, QuadrantStepper, Space
 
 
 class Quadrant(Space):
@@ -38,8 +38,9 @@ class Quadrant(Space):
     _x_step: int
     _slope: int
     _bounds: QuadrantBounds
+    _stepper: QuadrantStepper
     
-    def __init__(self, x_step: int, slope: int, bounds: QuadrantBounds):
+    def __init__(self, stepper: QuadrantStepper, bounds: QuadrantBounds):
         """
         Args:
             x_step: int
@@ -47,8 +48,7 @@ class Quadrant(Space):
             bounds: QuadrantBounds
         """
         super().__init__(bounds=bounds)
-        self._x_step = x_step
-        self._slope = slope
+        self._stepper = stepper
         
     @property
     def bounds(self) -> QuadrantBounds:

@@ -29,15 +29,15 @@ class QuadrantStepper:
     
     @classmethod
     def northeast(cls) -> QuadrantStepper:
-        return cls.(x_step=1, slope=-1,)
+        return cls(x_step=1, slope=-1,)
         
     @classmethod
     def northwest(cls) -> QuadrantStepper:
-        return cls.(x_step=-1, slope=-1,)
+        return cls(x_step=-1, slope=-1,)
         
     @classmethod
     def southwest(cls) -> QuadrantStepper:
-        return cls.(x_step=-1, slope=1,)
+        return cls(x_step=-1, slope=1,)
         
     @classmethod
     def southeast(cls) -> QuadrantStepper:
