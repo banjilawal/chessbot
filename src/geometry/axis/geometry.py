@@ -67,20 +67,20 @@ class Axis:
     def north_axis(cls, coord: Coord) -> Axis:
         return cls(
             origin=Vector(x=coord.column, y=coord.row),
-            delta=cls.hash.north,
+            delta_bound=cls.hash.north,
         )
     
     @classmethod
     def south_axis(cls, coord: Coord) -> Axis:
         return cls(
             origin=Vector(x=coord.column, y=coord.row),
-            delta=cls.SOUTH_DELTA,
+            delta_bound=cls.hash.south,
         )
     
     @classmethod
     def west_axis(cls, coord: Coord) -> Axis:
         return cls(
             origin=Vector(x=coord.column, y=coord.row),
-            delta=cls.WEST_DELTA,
+            delta_bound=cls.hash.west
         )
     

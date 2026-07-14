@@ -17,16 +17,16 @@ from model import Vector
 
 class QuadrantTerminus:
     
-    NORTHWEST_TERMINUS: Vector = Vector(x=0, y=0, )
-    NORTHEAST_TERMINUS = Vector(
+    _NORTHWEST_TERMINUS: Vector = Vector(x=0, y=0, )
+    _NORTHEAST_TERMINUS = Vector(
         x=setting.board.dimension.config.number_of_columns - 1,
         y=0,
     )
-    SOUTHEAST_TERMINUS = Vector(
+    _SOUTHEAST_TERMINUS = Vector(
         x=setting.board.dimension.config.number_of_columns - 1,
         y=setting.board.dimension.config.number_of_rows - 1,
     )
-    SOUTHWEST_TERMINUS = Vector(
+    _SOUTHWEST_TERMINUS = Vector(
         x=0,
         y=setting.board.dimension.config.number_of_rows - 1,
     )
@@ -36,10 +36,10 @@ class QuadrantTerminus:
     def __init__(self):
         
         self._hash = {
-            "northwest": self.NORTHWEST_TERMINUS,
-            "northeast": self.NORTHEAST_TERMINUS,
-            "southeast": self.SOUTHEAST_TERMINUS,
-            "southwest": self.SOUTHWEST_TERMINUS,
+            "northwest": self._NORTHWEST_TERMINUS,
+            "northeast": self._NORTHEAST_TERMINUS,
+            "southeast": self._SOUTHEAST_TERMINUS,
+            "southwest": self._SOUTHWEST_TERMINUS,
         }
         
     @property
