@@ -26,26 +26,22 @@ class Quadrant(Space):
             token's position.
 
     Attributes:
-        x_step: int
-        slope: int
         bounds: QuadrantBounds
+        stepper: QuadrantStepper
 
     Provides:
 
     Super Class:
         Space
     """
-    _x_step: int
-    _slope: int
     _bounds: QuadrantBounds
     _stepper: QuadrantStepper
     
     def __init__(self, stepper: QuadrantStepper, bounds: QuadrantBounds):
         """
         Args:
-            x_step: int
-            slope: int
             bounds: QuadrantBounds
+            stepper: QuadrantStepper
         """
         super().__init__(bounds=bounds)
         self._stepper = stepper
@@ -56,11 +52,11 @@ class Quadrant(Space):
         
     @property
     def x_step(self) -> int:
-        return self._x_step
+        return self._stepper.x_step
     
     @property
     def slope(self) -> int:
-        return self._slope
+        return self._stepper.slope
     
     @property
     def origin(self) -> Vector:
@@ -70,12 +66,32 @@ class Quadrant(Space):
     def terminus(self) -> Vector:
         return self.bounds.terminus
     
-    
     @classmethod
     def northeast(cls, origin: Vector) -> Quadrant:
         return cls(
+            stepper=QuadrantStepper.northeast(),
             bounds=QuadrantBounds.northeast(origin=origin)
         )
-
+    
+    @classmethod
+    def northwest(cls, origin: Vector) -> Quadrant:
+        return cls(
+            stepper=QuadrantStepper.northwest(),
+            bounds=QuadrantBounds.northwest(origin=origin)
+        )
+    
+    @classmethod
+    def southeast(cls, origin: Vector) -> Quadrant:
+        return cls(
+            stepper=QuadrantStepper.southeast(),
+            bounds=QuadrantBounds.southeast(origin=origin)
+        )
+    
+    @classmethod
+    def southwest(cls, origin: Vector) -> Quadrant:
+        return cls(
+            stepper=QuadrantStepper.southwest(),
+            bounds=QuadrantBounds.southwest(origin=origin)
+        )
         
     
