@@ -72,7 +72,7 @@ class PairBuilder(Builder[Pair]):
         method = f"{cls.__class__.__name__}._build"
         
         # Handle the case that, the head does not pass a validation check.
-        node_validation_result = node_service.run.build(candidate=head)
+        node_validation_result = node_service.run.execute(candidate=head)
         if node_validation_result.is_failure:
             # Return the exception chain on failure
             return BuildResult.failure(
@@ -115,7 +115,7 @@ class PairBuilder(Builder[Pair]):
                 )
             )
         # --- Attempt building the tail node. ---#
-        tail_node_build_result = node_service.builder.build(
+        tail_node_build_result = node_service.builder.execute(
             square=tail_square,
             square_validator=square_validator,
         )

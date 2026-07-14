@@ -38,7 +38,7 @@ class CoordBuilder(Builder[Coord]):
      """
     @classmethod
     @LoggingLevelRouter.monitor
-    def build(
+    def execute(
             cls,
             row: int,
             column: int,

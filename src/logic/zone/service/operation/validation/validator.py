@@ -105,7 +105,7 @@ class ZoneValidator(Validator[Zone]):
         
         # Handle the case that, either the row or column are not between [0-7] inclusive.
         for attribute in [zone.row, zone.column]:
-            validate_result = number_validation.build(
+            validate_result = number_validation.execute(
                 ceiling=NUMBER_OF_ROWS,
                 candidate=attribute,
                 floor=0,

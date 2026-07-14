@@ -87,7 +87,7 @@ class HostageBuilder(Builder[Hostage]):
                 )
             )
         # Handle the case that, the captured_squareis not safe.
-        captured_square_validation = square_service.run.build(candidate=captured_square)
+        captured_square_validation = square_service.run.execute(candidate=captured_square)
         if captured_square_validation.failure:
             # Send the exception chain on failure
             return BuildResult.failure(

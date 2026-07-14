@@ -63,7 +63,7 @@ class MultiplyCoordTransaction:
         method = f"{cls.__name__}.execute"
         
         # Handle the case that, the coord does not pass a validation check.
-        coord_validation_result =coord_service.run.build(coord)
+        coord_validation_result =coord_service.run.execute(coord)
         if coord_validation_result.is_failure:
             # Return exception chain on failure.
             return ComputationResult.failure(
@@ -78,7 +78,7 @@ class MultiplyCoordTransaction:
                 )
             )
         # Handle the case that, the scalar does not pass a validation check.
-        scalar_validation_result = scalar_service.run.build(candidate=scalar)
+        scalar_validation_result = scalar_service.run.execute(candidate=scalar)
         if scalar_validation_result.is_failure:
             # Return exception chain on failure.
             return ComputationResult.failure(
@@ -93,7 +93,7 @@ class MultiplyCoordTransaction:
                 )
             )
         # --- Create the product. ---#
-        product_build_result = coord_service.builder.build(
+        product_build_result = coord_service.builder.execute(
             row=coord.row * scalar.magnitude,
             column=coord.column * scalar.magnitude
         )

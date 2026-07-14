@@ -110,13 +110,13 @@ class PlayerRootCertifier(RootCertifier[Player]):
                 return ValidationResult.success(blueprint)
             
             if blueprint.team is not None:
-                validation = team_service.run.build(candidate=blueprint.team)
+                validation = team_service.run.execute(candidate=blueprint.team)
                 if validation.is_failure:
                     return ValidationResult.failure(rootCertifier.exception)
                 return ValidationResult.success(blueprint)
             
             if blueprint.game is not None:
-                validation = game_service.run.build(candidate=blueprint.game)
+                validation = game_service.run.execute(candidate=blueprint.game)
                 if validation.is_failure:
                     return ValidationResult.failure(rootCertifier.exception)
                 return ValidationResult.success(blueprint)

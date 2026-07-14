@@ -75,7 +75,7 @@ class ArenaService(Microservice[Arena]):
     @LoggingLevelRouter.monitor
     def add_team(self, arena: Arena, team: Team, team_service: TeamService = ()) -> InsertionResult[Team]:
         method = "ArenaService.add_team"
-        relation = self._arena_team_relation_analyzer.build(
+        relation = self._arena_team_relation_analyzer.execute(
             candidate_primary=arena,
             candidate_satellite=team,
             arena_validator=self.validator,
@@ -141,7 +141,7 @@ class ArenaService(Microservice[Arena]):
                     msg=f"{method}: {ArenaServiceException.ERR_CODE}", ex=arena_validation.exception
                 )
             )
-        schema_validation = schema_service.run.build(schema)
+        schema_validation = schema_service.run.execute(schema)
         if schema_validation.is_failure:
             return SearchResult.failure(
                 ArenaServiceException(

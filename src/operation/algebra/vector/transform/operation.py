@@ -82,12 +82,12 @@ class VectorTransform(Operation):
         
         conversion_result = None
         if context.vector is not None:
-            conversion_result = toolkit.coord_service.builder.build(
+            conversion_result = toolkit.coord_service.builder.execute(
                 row=context.vector.y,
                 column=context.vector.x,
             )
         if context.coord is not None:
-            conversion_result = toolkit.vector_service.builder.build(
+            conversion_result = toolkit.vector_service.builder.execute(
                 row=context.vector.y,
                 column=context.vector.x,
             )

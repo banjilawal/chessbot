@@ -38,7 +38,7 @@ class AxisBounds(RayBounds):
     def north_bounds(cls, coord: Coord) -> AxisBounds:
         return cls(
             origin=Vector(x=coord.column, y=coord.row),
-            terminus=Vector(x=coord.column, y=coord.row),
+            terminus=Vector(x=coord.column, y=0),
         )
     
     @classmethod
@@ -54,6 +54,6 @@ class AxisBounds(RayBounds):
     @classmethod
     def west_bounds(cls, coord: Coord) -> AxisBounds:
         return cls(
-            origin=Vector(x=coord.column, y=coord.row),
-            terminus=Vector(x=coord.column, y=0)
+            origin=Vector(x=0, y=coord.row),
+            terminus=Vector(x=coord.column, y=coord.row)
         )

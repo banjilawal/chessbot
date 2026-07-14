@@ -86,7 +86,7 @@ class GameConsistencyChecker(ConsistencyChecker[Game]):
             if id_validation.is_failure:
                 return ValidationResult.failure(id_consistency.exception)
             
-            board_consistency = board_service.run.build(game.board)
+            board_consistency = board_service.run.execute(game.board)
             if board_validation.is_failure:
                 return ValidationResult.failure(board_consistency.exception)
             

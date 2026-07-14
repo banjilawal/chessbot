@@ -122,7 +122,7 @@ class NodeStackService(StackService[Node]):
         method = "NodeStackService.push"
         
         # Handle the case that, the item is unsafe.
-        validation = self.integrity_service.run.build(candidate=item)
+        validation = self.integrity_service.run.execute(candidate=item)
         if validation.is_failure:
             # Send the exception chain on failure.
             return InsertionResult.failure(

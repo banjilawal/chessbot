@@ -202,7 +202,7 @@ class TokenDeploymentWorker(Worker):
                     ex=token_validation_result.exception
                 )
             )
-        home_square_search = square_stack.microservice.build(
+        home_square_search = square_stack.microservice.execute(
             context=SquareContext(name=token.home_square_name)
         )
         # Handle the case that the search fails

@@ -62,7 +62,7 @@ class SquareRayBuilder(Builder[SquareRay]):
         
         # --- Map the coord_ray's points to squares. ---#
         for coord in coord_ray.members:
-            member_square_search_result = square_stack.build(context=SquareContext(coord))
+            member_square_search_result = square_stack.execute(context=SquareContext(coord))
             
             # Handle the case that the search does not succeed.
             if member_square_search_result.is_failure:
@@ -107,7 +107,7 @@ class SquareRayBuilder(Builder[SquareRay]):
         """
         method = f"{cls.__class__.__name__}._search_square_by_coord"
         
-        search_result = square_stack.build(context=SquareContext(coord=coord))
+        search_result = square_stack.execute(context=SquareContext(coord=coord))
         # Handle the case that the context is not completed.
         if search_result.is_failure:
             # Send the exception chain on failure.

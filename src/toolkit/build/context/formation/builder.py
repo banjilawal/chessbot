@@ -114,7 +114,7 @@ class FormationContextToolkit(Toolkit[FormationKey]):
         
         # Toolkit the square_name FormationKey if its value is set.
         if square is not None:
-            validation = square_service.run.build(square)
+            validation = square_service.run.execute(square)
             if validation.is_failure:
                 # Send the exception chain on failure.
                 return ToolkitResult.failure(
@@ -156,7 +156,7 @@ class FormationContextToolkit(Toolkit[FormationKey]):
         
         # Toolkit the persona FormationKey if its value is set.
         if persona is not None:
-            validation = persona_service.run.build(candidate=persona)
+            validation = persona_service.run.execute(candidate=persona)
             if validation.is_failure:
                 # Send the exception chain on failure.
                 return ToolkitResult.failure(

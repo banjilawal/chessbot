@@ -110,7 +110,7 @@ class VectorContextBuilder(Builder[VectorOperand]):
         
         # Build the coord VectorContext if its flag is enabled.
         if coord is not None:
-            build_result = toolkit.coord_service.run.build(coord)
+            build_result = toolkit.coord_service.run.execute(coord)
             if build_result.is_failure:
                 # Send the exception chain on failure.
                 return BuildResult.failure(
@@ -129,7 +129,7 @@ class VectorContextBuilder(Builder[VectorOperand]):
             return BuildResult.success(VectorOperand(coord=coord))
         
         # Deal with the alternate case.
-        build_result = toolkit.vector_service.run.build(vector)
+        build_result = toolkit.vector_service.run.execute(vector)
         if build_result.is_failure:
             # Send the exception chain on failure.
             return BuildResult.failure(

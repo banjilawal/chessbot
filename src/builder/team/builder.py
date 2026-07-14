@@ -159,19 +159,19 @@ class TeamBuilder(Builder[Team]):
             return ValidationResult.failure(id_validation.exception)
         
         # Handle the case that, the schema does not pass a validation check.
-        schema_validation = schema_service.run.build(candidate=schema)
+        schema_validation = schema_service.run.execute(candidate=schema)
         if schema_validation.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(schema_validation.exception)
         
         # Handle the case that, the owner does not pass a validation check.
-        owner_validation = player_service.run.build(candidate=owner)
+        owner_validation = player_service.run.execute(candidate=owner)
         if owner_validation.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(owner_validation.exception)
         
         # Handle the case that, the board does not pass a validation check.
-        board_validator = board_service.run.build(candidate=board)
+        board_validator = board_service.run.execute(candidate=board)
         if owner_validation.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(board_validator.exception)

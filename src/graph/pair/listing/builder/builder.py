@@ -82,7 +82,7 @@ class PairListBuilder(Builder[PairList]):
         method = f"{cls.__class__.__name__}.build"
         
         # Handle the case that, the parent_node does not pass a validation check.
-        parent_validation_result = node_service.run.build(parent_node)
+        parent_validation_result = node_service.run.execute(parent_node)
         if not parent_validation_result.is_failure:
             # Send the exception chain on failure.
             BuildResult.failure(
@@ -96,7 +96,7 @@ class PairListBuilder(Builder[PairList]):
                 )
             )
         # Handle the case that, the ray does not pass a validation check.
-        square_ray_validation_result = square_ray_service.run.build(square_ray)
+        square_ray_validation_result = square_ray_service.run.execute(square_ray)
         if square_ray_validation_result.is_failure:
             # Send the exception chain on failure.
             BuildResult.failure(

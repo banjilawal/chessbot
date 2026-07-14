@@ -88,7 +88,7 @@ class ArenaConsistencyChecker(ConsistencyChecker[Arena]):
                 return ValidationResult.failure(id_consistency.exception)
              
             # Verify the board.
-            board_consistency = board_service.run.build(arena.board)
+            board_consistency = board_service.run.execute(arena.board)
             if board_consistency.failure:
                 return ValidationResult.failure(board_consistency.exception)
             

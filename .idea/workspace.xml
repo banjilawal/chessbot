@@ -6,25 +6,15 @@
   <component name="ChangeListManager">
     <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bounds/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/ray/bounds/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bounds/axis/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/ray/bounds/axis/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bounds/axis/bounds.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/ray/bounds/axis/ray.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bounds/bounds.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/ray/bounds/ray.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bounds/quadrant/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/ray/bounds/quadrant/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bounds/quadrant/bounds.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/ray/bounds/quadrant/ray.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bounds/terminus/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/quadrant/terminus/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bounds/terminus/bounds.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/quadrant/terminus/space.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/delta/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/axis/delta/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/delta/bounds/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/axis/delta/bounds/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/delta/bounds/delta.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/axis/delta/bounds/space.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/delta/delta.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/axis/delta/space.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/delta/hash/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/axis/delta/hash/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/delta/hash/delta.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/axis/delta/hash/space.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ray/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/ray/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/space/axis/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/axis/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/space/axis/space.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/axis/space.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/space/quadrant/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/quadrant/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/geometry/span/coord/ray/diagonal/provider/provider.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/algebra/vector/addition/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/algebra/vector/addition/operation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ray/axis/ray.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/ray/axis/ray.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ray/bounds/axis/ray.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/ray/bounds/axis/ray.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ray/ray.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/ray/ray.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/space/quadrant/space.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/quadrant/space.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/space/quadrant/terminus/space.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/quadrant/terminus/space.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/toolkit/math/vector/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/toolkit/math/vector/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/toolkit/math/vector/toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/toolkit/math/vector/toolkit.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -807,7 +797,7 @@
       <workItem from="1782732939190" duration="235900000" />
       <workItem from="1783222430394" duration="208582000" />
       <workItem from="1783540905722" duration="272528000" />
-      <workItem from="1783990000280" duration="17218000" />
+      <workItem from="1783990000280" duration="23844000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />
@@ -1333,6 +1323,11 @@
           <url>file://$PROJECT_DIR$/src/ray/bounds/quadrant/ray.py</url>
           <line>9</line>
           <option name="timeStamp" value="250" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/toolkit/math/vector/toolkit.py</url>
+          <line>9</line>
+          <option name="timeStamp" value="251" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

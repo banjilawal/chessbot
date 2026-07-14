@@ -40,7 +40,6 @@ class AddVector(Operation[PointRegister]):
     Super Class:
         Operation
     """
-    NAME = "vector_addition"
     
     @classmethod
     @LoggingLevelRouter.monitor
@@ -123,6 +122,4 @@ class AddVector(Operation[PointRegister]):
         # --- Forward the work product to the caller. ---#
         return ComputationResult.success(build_result.payload)
 
-# Register the operation.
-WorkerRegistryController.register_worker(worker=AddVector)
         

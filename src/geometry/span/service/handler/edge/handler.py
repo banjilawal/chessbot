@@ -52,7 +52,7 @@ class NodeEdgeHandler:
             else:
                 tal_node = node_dict["head"]
                 
-            build_result = edge_builder.build(
+            build_result = edge_builder.execute(
                 head=head_node,
                 tail=tail_node,
             )   
@@ -100,7 +100,7 @@ class NodeEdgeHandler:
         """
         method = f"{cls.__class__.__name__}.build"
         
-        build_result = edge_builder.build(
+        build_result = edge_builder.execute(
             head=node_dict["head"],
             tail=node_dict["tail"],
         )

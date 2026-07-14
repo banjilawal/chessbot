@@ -145,7 +145,7 @@ class SquareBuilder(Builder[Square]):
                 )
             )
         # Handle the case that, the coord is not safe.
-        coord_validation = tool.coord_service.run.build(coord)
+        coord_validation = tool.coord_service.run.execute(coord)
         if coord_validation.is_failure:
             # Send the exception chain on failure.
             return BuildResult.failure(
@@ -160,7 +160,7 @@ class SquareBuilder(Builder[Square]):
                 )
             )
         # Handle the case that, the board is not safe.
-        board_validator = tool.board_service.run.build(board)
+        board_validator = tool.board_service.run.execute(board)
         if board_validation.is_failure:
             # Send the exception chain on failure.
             return BuildResult.failure(
@@ -175,7 +175,7 @@ class SquareBuilder(Builder[Square]):
                 )
             )
         # Handle the case that, the square's attributes have already been used.
-        collision_detection_result = tool.collision_analyst.build(
+        collision_detection_result = tool.collision_analyst.execute(
             item_id=id,
             name=name,
             coord=coord,

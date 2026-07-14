@@ -190,7 +190,7 @@ class TokenContextBuilder(Builder[TokenContext]):
         
         # Build the current_position TokenContext if its flag is enabled.
         if current_position is not None:
-            validation = workers.coord_service.run.build(current_position)
+            validation = workers.coord_service.run.execute(current_position)
             if validation.is_failure:
                 # Send the exception chain on failure.
                 return BuildResult.failure(
@@ -209,7 +209,7 @@ class TokenContextBuilder(Builder[TokenContext]):
         
         # Build the rank TokenContext if its flag is enabled.
         if rank is not None:
-            validation = workers.rank_service.run.build(rank)
+            validation = workers.rank_service.run.execute(rank)
             if validation.is_failure:
                 # Send the exception chain on failure.
                 return BuildResult.failure(
@@ -228,7 +228,7 @@ class TokenContextBuilder(Builder[TokenContext]):
         
         # Build the team TokenContext if its flag is enabled.
         if team is not None:
-            validation = workers.team_service.run.build(team)
+            validation = workers.team_service.run.execute(team)
             if validation.is_failure:
                 # Send the exception chain on failure.
                 return BuildResult.failure(

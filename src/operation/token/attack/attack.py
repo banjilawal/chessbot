@@ -46,7 +46,7 @@ class Attack:
                 )
             )
         # Handle the case the item does not pass a validation check.
-        square_validation = square_database.microservice.run.build(candidate=square)
+        square_validation = square_database.microservice.run.execute(candidate=square)
         if square_validation.is_failure:
             # Send the exception chain on failure.
             return AttackResult.failure(
@@ -169,7 +169,7 @@ class Attack:
             )
         
         # Build the hostage manifest
-        manifest_build_result = hostage_service.builder.build(
+        manifest_build_result = hostage_service.builder.execute(
             prisoner=prisoner,
             captured_square=square,
             token_service=token_service,

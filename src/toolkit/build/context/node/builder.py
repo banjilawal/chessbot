@@ -136,7 +136,7 @@ class NodeContextToolkit(Toolkit[NodeContext]):
         
         # Toolkit the square NodeContext if its flag is enabled.
         if square is not None:
-            validation = square_service.run.build(candidate=square)
+            validation = square_service.run.execute(candidate=square)
             if validation.is_failure:
                 # Send the exception chain on failure.
                 return ToolkitResult.failure(

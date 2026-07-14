@@ -198,13 +198,13 @@ class TokenServiceMenu(Router[TokenService]):
         
         # Select the TokenBuild worker
         if isinstance(command, BuildTokenCommand):
-            return self._service.builder.build(
+            return self._service.builder.execute(
                 owner=command.parameters["owner"],
                 formation=command.parameters["formation"],
             )
         # Select the TokenValidation worker
         if isinstance(command, ValidateTokenCommand):
-            return self._service.run.build(
+            return self._service.run.execute(
                 rank=command.parameters["rank"]
             )
         # Select the TokenDeployment worker.

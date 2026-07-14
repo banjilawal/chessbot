@@ -112,7 +112,7 @@ class TokenService(Microservice[Token]):
         method = f"{self.__class__.__name__}.pop_coord_from_token"
         
         #--- Forward the request to the controller. ---#
-        popping_coord_result = self._controller.position_controller.pop.build(
+        popping_coord_result = self._controller.position_controller.pop.execute(
             target=token,
             token_validation=self.validator,
         )
@@ -158,7 +158,7 @@ class TokenService(Microservice[Token]):
             coord_service = CoordService()
         
         # --- Forward the request to the controller. ---#
-        insertion_result = self._controller.position_controller..position.push.build(
+        insertion_result = self._controller.position_controller..position.push.execute(
             target=token,
             coord=coord,
             coord_service=coord_service,

@@ -15,16 +15,23 @@ from typing import List
 
 from model import Coord, Vector
 from space import Space
+from toolkit import MathToolkit
 
 
 class Ray:
     _space: Space
+    _math: MathToolkit
     
-    def __init__(self, space: Space):
+    def __init__(self, space: Space, math: MathToolkit | None = MathToolkit()):
         self._space = space
+        self._math = math
         
     @property
-    def basis(self) -> Space:
+    def math(self) -> MathToolkit:
+        return self._math
+        
+    @property
+    def space(self) -> Space:
         return self._space
     
     @abstractmethod

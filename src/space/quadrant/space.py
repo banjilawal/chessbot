@@ -29,7 +29,7 @@ class Quadrant(Space):
     Attributes:
         x_step: int
         slope: int
-        terminus: Vector
+        bounds: QuadrantBounds
 
     Provides:
 
@@ -46,7 +46,7 @@ class Quadrant(Space):
         Args:
             x_step: int
             slope: int
-            terminus: Vector
+            bounds: QuadrantBounds
         """
         super().__init__()
         self._x_step = x_step
@@ -67,7 +67,7 @@ class Quadrant(Space):
     
     @property
     def terminus(self) -> Vector:
-        return self._bounds.endpoint
+        return self._bounds.terminus
 
         
     

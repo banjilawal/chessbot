@@ -144,7 +144,7 @@ class NodeContextValidator(ContextValidator[Node]):
         
         # Certification for the search-by-square target.
         if context.home_square is not None:
-            validation = square_service.run.build(context.home_square)
+            validation = square_service.run.execute(context.home_square)
             if validation.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(

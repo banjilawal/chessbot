@@ -89,7 +89,7 @@ class TokenConsistencyConsistencyChecker(ConsistencyChecker[Token]):
         tools = toolkit_build_result.payload
         
         # Handle the case that, the consistency is not primed.
-        consistency_priming_result = tools["priming_consistency"].build(
+        consistency_priming_result = tools["priming_consistency"].execute(
             candidate=candidate,
             target_model=Token,
             context_null_exception=TokenNullException(),
@@ -125,7 +125,7 @@ class TokenConsistencyConsistencyChecker(ConsistencyChecker[Token]):
                 )
             )
         # Handle the case that, the occupant's team fails consistency.
-        team_validation_result = tools["team_consistency"].build(token.team)
+        team_validation_result = tools["team_consistency"].execute(token.team)
         if team_validation_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
@@ -138,7 +138,7 @@ class TokenConsistencyConsistencyChecker(ConsistencyChecker[Token]):
                 )
             )
         # Handle the case that, the roster or home_square_name are not acceptable.
-        home_square_validation_result = toolkit["square_consistency"].build(token.home_square)
+        home_square_validation_result = toolkit["square_consistency"].execute(token.home_square)
         if home_square_validation_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
@@ -151,7 +151,7 @@ class TokenConsistencyConsistencyChecker(ConsistencyChecker[Token]):
                 )
             )
         # Handle the case that, the rank is not safe.
-        rank_validation_result = tools["rank_service.consistency"].build(rank=token.rank)
+        rank_validation_result = tools["rank_service.consistency"].execute(rank=token.rank)
         if rank_validation_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
@@ -164,7 +164,7 @@ class TokenConsistencyConsistencyChecker(ConsistencyChecker[Token]):
                 )
             )
         # Handle the case that the token's CoordDatabase fails it safety checks.
-        coord_database_validation_result = tools["priming_consistency"].build(
+        coord_database_validation_result = tools["priming_consistency"].execute(
             candidate=token.positions,
             target_model=CoordDatabase,
             context_null_exception=CoordDatabaseNullException()

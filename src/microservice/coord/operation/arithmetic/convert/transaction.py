@@ -60,7 +60,7 @@ class ConvertVectorToCoordTransaction:
         method = f"{cls.__name__}.execute"
         
         # Handle the case that, the vector does not pass a validation check.
-        vector_validation_result = vector_service.run.build(vector)
+        vector_validation_result = vector_service.run.execute(vector)
         if vector_validation_result.is_failure:
             # Return exception chain on failure.
             return ComputationResult.failure(
@@ -75,7 +75,7 @@ class ConvertVectorToCoordTransaction:
                 )
             )
         # --- Create the Coord. ---#
-        conversion_result = coord_service.builder.build(
+        conversion_result = coord_service.builder.execute(
             row=vector.y,
             column=vector.x
         )

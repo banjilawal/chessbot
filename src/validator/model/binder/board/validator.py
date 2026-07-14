@@ -91,7 +91,7 @@ class BoardBinderValidator(ModelValidator[BoardBinder]):
                 )
             )
         binder = validator_priming_result.payload
-        board_validator_result =toolkit.board_service.run.build(binder.primary)
+        board_validator_result =toolkit.board_service.run.execute(binder.primary)
         
         if board_validator_result.is_failure:
             # Send the exception chain on failure.

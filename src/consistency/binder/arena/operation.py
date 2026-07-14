@@ -96,7 +96,7 @@ class BoardTeamBinderConsistencyChecker(ConsistencyChecker[BoardBinder]):
                 )
             )
         binder = consistency_priming_result.payload
-        board_consistency_result =toolkit.board_service.run.build(binder.primary)
+        board_consistency_result =toolkit.board_service.run.execute(binder.primary)
         
         if board_consistency_result.is_failure:
             # Send the exception chain on failure.

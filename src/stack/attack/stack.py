@@ -169,7 +169,7 @@ class AttackStackService(StackService[AttackEvent]):
         method = f"{self.__class__.__name__}.pop"
         
         # --- Handoff request fulfilment to the ops_controller. ---#
-        request_result = self._ops_controller.crud.pop.build()
+        request_result = self._ops_controller.crud.pop.execute()
         
         # Handle the case that, the request was not fulfilled.
         if request_result.is_failure:
@@ -204,7 +204,7 @@ class AttackStackService(StackService[AttackEvent]):
         method = f"{self.__class__.__name__}.push"
         
         # --- Handoff request fulfilment to the ops_controller. ---#
-        request_result = self._ops_controller.crud.push.build(
+        request_result = self._ops_controller.crud.push.execute(
             attack=item,
             stream=self,
             rank_quota_analyzer=self._ops_controller.rank_quota_analyzer,
@@ -288,7 +288,7 @@ class AttackStackService(StackService[AttackEvent]):
         method = f"{self.__class__.__name__}.context"
         
         # --- Handoff request fulfilment to the ops_controller. ---#
-        request_result = self._ops_controller.crud.query.build(context=context)
+        request_result = self._ops_controller.crud.query.execute(context=context)
         
         # Handle the case that, the request was not fulfilled.
         if request_result.is_failure:

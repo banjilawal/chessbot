@@ -11,12 +11,14 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 
-from toolkit import CoordOperationSuite, ScalarOperationSuite, Toolkit, VectorOperationSuite
+from operation import AddVector, EuclideanDistance, ScalarProduct, VectorTransform
+from suite import CoordOperationSuite, ScalarOperationSuite, VectorOperationSuite
+from toolkit import Toolkit
 from validator import NumberValidator
 
 
 @dataclass
-class VectorAlgebraToolkit(Toolkit):
+class MathToolkit(Toolkit):
     """
     Role:
         -   Container
@@ -43,4 +45,8 @@ class VectorAlgebraToolkit(Toolkit):
     scalar: ScalarOperationSuite = ScalarOperationSuite()
     vector: VectorOperationSuite = VectorOperationSuite()
     number_validator: NumberValidator = NumberValidator()
+    add_vector: AddVector = AddVector()
+    scalar_product: ScalarProduct = ScalarProduct()
+    transform: VectorTransform = VectorTransform()
+    euclidean_distance: EuclideanDistance = EuclideanDistance()
 

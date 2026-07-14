@@ -17,29 +17,24 @@ from model import Vector
 
 class QuadrantTerminusHash:
     
-    _NORTHWEST_TERMINUS: Vector = Vector(x=0, y=0, )
-    _NORTHEAST_TERMINUS = Vector(
-        x=setting.board.dimension.config.number_of_columns - 1,
-        y=0,
-    )
-    _SOUTHEAST_TERMINUS = Vector(
-        x=setting.board.dimension.config.number_of_columns - 1,
-        y=setting.board.dimension.config.number_of_rows - 1,
-    )
-    _SOUTHWEST_TERMINUS = Vector(
-        x=0,
-        y=setting.board.dimension.config.number_of_rows - 1,
-    )
-    
     _hash: Dict[str, Vector]
     
     def __init__(self):
         
         self._hash = {
-            "northwest": self._NORTHWEST_TERMINUS,
-            "northeast": self._NORTHEAST_TERMINUS,
-            "southeast": self._SOUTHEAST_TERMINUS,
-            "southwest": self._SOUTHWEST_TERMINUS,
+            "northwest": Vector(x=0, y=0,),
+            "northeast": Vector(
+                x=setting.board.dimension.config.number_of_columns - 1,
+                y=0,
+            ),
+            "southeast": Vector(
+                x=setting.board.dimension.config.number_of_columns - 1,
+                y=setting.board.dimension.config.number_of_rows - 1,
+            ),
+            "southwest": Vector(
+                x=0,
+                y=setting.board.dimension.config.number_of_rows - 1,
+            ),
         }
         
     @property

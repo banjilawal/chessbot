@@ -83,7 +83,7 @@ class TeamBinderBinderAssemblyPrimer(AssemblyPrimer[TeamBinderBinder]):
                 )
             )
         # Handle the case that, the schema does not pass a validation check.
-        schema_validation_result = toolkit.schema_service.run.build(
+        schema_validation_result = toolkit.schema_service.run.execute(
             candidate=blueprint.schema
         )
         if schema_validation_result.is_failure:
@@ -98,7 +98,7 @@ class TeamBinderBinderAssemblyPrimer(AssemblyPrimer[TeamBinderBinder]):
                 )
             )
         # Handle the case that, the board does not pass a validation check.
-        board_validator_result = toolkit.board_service.run.build(blueprint.board)
+        board_validator_result = toolkit.board_service.run.execute(blueprint.board)
         if board_validator_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(

@@ -98,7 +98,7 @@ class NodeService(Microservice[Node]):
                 )
             )
         # Using the node.incoming_edges handle the case that the edge does not pass a validation check.
-        edge_validation_result = node.incoming_edges.service.run.build(candidate=edge)
+        edge_validation_result = node.incoming_edges.service.run.execute(candidate=edge)
         if edge_validation_result.is_failure:
             # Send the exception chain on failure.
             return InsertionResult.failure(
@@ -179,7 +179,7 @@ class NodeService(Microservice[Node]):
                 )
             )
         # Using the node.incoming_edges handle the case that the edge does not pass a validation check.
-        edge_validation_result = node.incoming_edges.service.run.build(candidate=edge)
+        edge_validation_result = node.incoming_edges.service.run.execute(candidate=edge)
         if edge_validation_result.is_failure:
             # Send the exception chain on failure.
             return InsertionResult.failure(
@@ -260,7 +260,7 @@ class NodeService(Microservice[Node]):
                 )
             )
         # Using the node.incoming_edges handle the case that the edge does not pass a validation check.
-        edge_validation_result = node.incoming_edges.service.run.build(candidate=edge)
+        edge_validation_result = node.incoming_edges.service.run.execute(candidate=edge)
         if edge_validation_result.is_failure:
             # Send the exception chain on failure.
             return DeletionResult.failure(
@@ -325,7 +325,7 @@ class NodeService(Microservice[Node]):
                 )
             )
         # Using the node.outgoing_edges handle the case that the edge does not pass a validation check.
-        edge_validation_result = node.outgoing_edges.service.run.build(candidate=edge)
+        edge_validation_result = node.outgoing_edges.service.run.execute(candidate=edge)
         if edge_validation_result.is_failure:
             # Send the exception chain on failure.
             return InsertionResult.failure(
@@ -407,7 +407,7 @@ def remove_outgoing_edge(self, node: Node, edge: Edge) -> DeletionResult[Edge]:
             )
         )
     # Using the node.outgoing_edges handle the case that the edge does not pass a validation check.
-    edge_validation_result = node.outgoing_edges.service.run.build(candidate=edge)
+    edge_validation_result = node.outgoing_edges.service.run.execute(candidate=edge)
     if edge_validation_result.is_failure:
         # Send the exception chain on failure.
         return DeletionResult.failure(

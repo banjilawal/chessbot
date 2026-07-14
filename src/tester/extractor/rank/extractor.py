@@ -90,7 +90,7 @@ class BlueprintRankExtractor(Extractor):
         # --- If the TokenBlueprint does not have its rank set find it. ---#
         if blueprint.rank is None:
             # Handle the case that the _build_rank raised an error.
-            build_result = self._rank_service.builder.build(blueprint.formation.persona)
+            build_result = self._rank_service.builder.execute(blueprint.formation.persona)
             if build_result.is_failure:
                 # Send the exception chain in the validation result.
                 return ValidationResult.failure(

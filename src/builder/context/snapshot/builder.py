@@ -121,7 +121,7 @@ class SnapshotContextBuilder(Builder[SnapshotContext]):
             
             # Build the team SnapshotContext if its flag is enabled.
             if team is not None:
-                validation = team_service.run.build(candidate=team)
+                validation = team_service.run.execute(candidate=team)
                 if validation.is_failure:
                     return BuildResult.failure(validation.exception)
                 # On validation success return a team_SnapshotContext in the BuildResult.
