@@ -12,6 +12,7 @@ version: 1.0.1
 # Packages
 from .cartesian import *
 from .coord import *
+from .number import *
 from .square import *
 from .vector import *
 
