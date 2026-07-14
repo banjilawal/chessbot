@@ -9,7 +9,7 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from typing import Dict
+from typing import Dict, cast
 
 from model import Vector
 from register import VectorRegister
@@ -37,17 +37,34 @@ class AxisStepper(Stepper[AxisSpace]):
         return self._delta
     
     @LoggingLevelRouter.monitor
-    def next(self, u: Vector) -> ComputationResult:
+    def next(self, u: Vector) -> ComputationResult[Vector]:
+        """
+        Project a new, safe, vector, from the current.
+
+        Action:
+            1.  If VectorAdder cannot produce a solution, send an exception chain in the reesult.
+            2.  Otherwise, send the cast product in the success result.
+        Args:
+            current: Vector
+        Returns:
+            ComputationResult[Vector]
+        Raises:
+             AxisSpaceException
+        """
         method = f"{self.__class__.__name__}"
         
+        # --- Safely add delta and current. ---#
         computation = self.math.add_vector.execute(
             VectorRegister(u=u, v=self._delta)
         )
+        # Handle the case that, the computation is aborted.
         if computation.is_failure:
+            # Send an exception chain in the result.
             return ComputationResult.failure(
                 computation.exception
             )
-        return computation
+        # --- Forward the work product to the caller. ---#
+        return ComputationResult.success(cast(Vector, computation.payload))
     
     @classmethod
     def east(cls) -> AxisStepper:
