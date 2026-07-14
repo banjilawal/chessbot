@@ -37,6 +37,7 @@ from .operation import *
 from .permitter import *
 from .pipeline import *
 from .query import *
+from .ray import *
 from .resource import *
 from .rollback import *
 from .route import *

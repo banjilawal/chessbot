@@ -15,13 +15,13 @@ import setting
 from model import Vector
 
 
-class QuadrantTerminusHash:
+class QuadrantTerminusEntry:
     
-    _hash: Dict[str, Vector]
+    _entry: Dict[str, Vector]
     
     def __init__(self):
         
-        self._hash = {
+        self._entry = {
             "northwest": Vector(x=0, y=0,),
             "northeast": Vector(
                 x=setting.board.dimension.config.number_of_columns - 1,
@@ -39,16 +39,16 @@ class QuadrantTerminusHash:
         
     @property
     def northwest(self) -> Vector:
-        return self._hash["northwest"]
+        return self._entry["northwest"]
     
     @property
     def northeast(self) -> Vector:
-        return self._hash["northeast"]
+        return self._entry["northeast"]
     
     @property
     def southwest(self) -> Vector:
-        return self._hash["southwest"]
+        return self._entry["southwest"]
     
     @property
     def southeast(self) -> Vector:
-        return self._hash["southeast"]
+        return self._entry["southeast"]

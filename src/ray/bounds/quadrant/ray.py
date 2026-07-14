@@ -10,14 +10,14 @@ version: 1.0.1
 from __future__ import annotations
 
 
-from model import Coord, Vector
+from model import Vector
 from ray import RayBounds
-from space import QuadrantTerminusHash
+from space import QuadrantTerminusEntry
 
 
-class QuadrantBounds(RayBounds):
+class QuadrantRayBounds(RayBounds):
     
-    endpoint: QuadrantTerminusHash = QuadrantTerminusHash()
+    terminus_entry: QuadrantTerminusEntry = QuadrantTerminusEntry()
     
     def __init__(self, origin: Vector, terminus: Vector,):
         super().__init__(origin=origin, terminus=terminus)
@@ -25,29 +25,29 @@ class QuadrantBounds(RayBounds):
 
     
     @classmethod
-    def northeast_bounds(cls, coord: Coord,) -> QuadrantBounds:
+    def northeast_bounds(cls, origin: Vector) -> QuadrantRayBounds:
         return cls(
-            origin=Vector(x=coord.column, y=coord.row),
-            terminus=cls.endpoint.northeast,
+            origin=origin,
+            terminus=cls.terminus_entry.northeast,
         )
     
     @classmethod
-    def northwest_bounds(cls, coord: Coord) -> QuadrantBounds:
+    def northwest_bounds(cls, origin: Vector) -> QuadrantRayBounds:
         return cls(
-            origin=Vector(x=coord.column, y=coord.row),
-            terminus=cls.endpoint.northwest
+            origin=origin,
+            terminus=cls.terminus_entry.northwest
         )
     
     @classmethod
-    def southeast_bounds(cls, coord: Coord) -> QuadrantBounds:
+    def southeast_bounds(cls, origin: Vector) -> QuadrantRayBounds:
         return cls(
-            origin=Vector(x=coord.column, y=coord.row),
-            terminus=cls.endpoint.southeast
+            origin=origin,
+            terminus=cls.terminus_entry.southeast
         )
     
     @classmethod
-    def southwest_bounds(cls, coord: Coord) -> QuadrantBounds:
+    def southwest_bounds(cls, origin: Vector) -> QuadrantRayBounds:
         return cls(
-            origin=Vector(x=coord.column, y=coord.row),
-            terminus=cls.endpoint.southwest
+            origin=origin,
+            terminus=cls.terminus_entry.southwest
         )

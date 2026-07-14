@@ -18,7 +18,7 @@ from space import Space
 from toolkit import MathToolkit
 
 
-class Ray:
+class RayComputer:
     _space: Space
     _math: MathToolkit
     

@@ -12,11 +12,11 @@ from __future__ import annotations
 from typing import List, cast
 
 from model import Coord, Vector
-from ray import Ray
+from ray import RayComputer
 from space import Quadrant
 
 
-class QuadrantRay(Ray):
+class QuadrantRayComputer(RayComputer):
     
     _space: Quadrant
     

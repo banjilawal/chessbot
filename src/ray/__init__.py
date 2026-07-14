@@ -15,4 +15,4 @@ from .bounds import *
 from .quadrant import *
 
 # Modules
-from .ray import Ray
+from .ray import RayComputer

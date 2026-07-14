@@ -11,15 +11,15 @@ from __future__ import annotations
 
 from typing import List, cast
 
-
+from err import AxisRayComputerException
 from model import Coord, Vector
-from ray import Ray
+from ray import RayComputer
 from register import VectorRegister
 from result import ComputationResult
 from space import Axis
 
 
-class AxisRay(Ray):
+class AxisRayComputer(RayComputer):
    
     
     def __init__(self, space: Axis):
@@ -45,7 +45,14 @@ class AxisRay(Ray):
             if addition.is_failure:
                 # Send the exception chain in the result.
                 return ComputationResult.failure(
-                    addition.exception
+                    AxisRayComputerException(
+                        cls_mthd=method,
+                        cls_name=self.__class__.__name__,
+                        msg=AxisRayComputerException.MSG,
+                        err_code=AxisRayComputerException.ERR_CODE,
+                        mthd_rslt_type=AxisRayComputerException.MTHD_RSLT_TYPE,
+                        ex=addition.exception,
+                    )
                 )
             cursor = cast(Vector, addition.payload)
             # cursor = Vector(
@@ -61,7 +68,14 @@ class AxisRay(Ray):
         if computation.is_failure:
             # Send the exception chain on the failure.
             return ComputationResult.failure(
-                computation.exception
+                AxisRayComputerException(
+                    cls_mthd=method,
+                    cls_name=self.__class__.__name__,
+                    msg=AxisRayComputerException.MSG,
+                    err_code=AxisRayComputerException.ERR_CODE,
+                    mthd_rslt_type=AxisRayComputerException.MTHD_RSLT_TYPE,
+                    ex=computation.exception,
+                )
             )
         vectors = cast(List[Vector], computation.payload)
         for vector in vectors:
@@ -69,7 +83,14 @@ class AxisRay(Ray):
             if build.is_failure:
                 # Send the exception chain on failure.
                 return ComputationResult.failure(
-                    build.exception
+                    AxisRayComputerException(
+                        cls_mthd=method,
+                        cls_name=self.__class__.__name__,
+                        msg=AxisRayComputerException.MSG,
+                        err_code=AxisRayComputerException.ERR_CODE,
+                        mthd_rslt_type=AxisRayComputerException.MTHD_RSLT_TYPE,
+                        ex=build.exception,
+                    )
                 )
             coords.append(cast(Coord, build.payload))
         return ComputationResult.success(coords)

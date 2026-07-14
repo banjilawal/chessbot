@@ -13,4 +13,4 @@ version: 1.0.1
 
 
 # Modules
-from .ray import QuadrantRay
+from .ray import QuadrantRayComputer

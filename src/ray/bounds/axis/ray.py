@@ -13,11 +13,11 @@ from __future__ import annotations
 import setting
 
 
-from model import Coord, Vector
+from model import Vector
 from ray import RayBounds
 
 
-class AxisBounds(RayBounds):
+class AxisRayBounds(RayBounds):
 
     
     def __init__(self, origin: Vector, terminus: Vector):
@@ -25,35 +25,35 @@ class AxisBounds(RayBounds):
     
     
     @classmethod
-    def east_bounds(cls, coord: Coord) -> AxisBounds:
+    def east_bounds(cls, origin: Vector) -> AxisRayBounds:
         return cls(
-            origin=Vector(x=coord.column, y=coord.row),
+            origin=origin,
             terminus = Vector(
                 x=setting.board.dimension.config.number_of_columns - 1,
-                y=coord.row,
+                y=origin.y,
             )
         )
     
     @classmethod
-    def north_bounds(cls, coord: Coord) -> AxisBounds:
+    def north_bounds(cls, origin: Vector) -> AxisRayBounds:
         return cls(
-            origin=Vector(x=coord.column, y=coord.row),
-            terminus=Vector(x=coord.column, y=0),
+            origin=origin,
+            terminus=Vector(x=origin.x, y=0),
         )
     
     @classmethod
-    def south_bounds(cls, coord: Coord) -> AxisBounds:
+    def south_bounds(cls, origin: Vector) -> AxisRayBounds:
         return cls(
-            origin=Vector(x=coord.column, y=coord.row),
+            origin=origin,
             terminus=Vector(
-                x=coord.column,
+                x=origin.x,
                 y=setting.board.dimension.config.number_of_rows - 1,
             )
         )
     
     @classmethod
-    def west_bounds(cls, coord: Coord) -> AxisBounds:
+    def west_bounds(cls, origin: Vector) -> AxisRayBounds:
         return cls(
-            origin=Vector(x=0, y=coord.row),
-            terminus=Vector(x=coord.column, y=coord.row)
+            origin=Vector(x=0, y=origin.y),
+            terminus=origin
         )

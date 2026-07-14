@@ -12,7 +12,7 @@ from __future__ import annotations
 
 
 from model import Vector
-from ray import QuadrantBounds
+from ray import QuadrantRayBounds
 from space import Space
 
 
@@ -38,10 +38,10 @@ class Quadrant(Space):
     """
     _x_step: int
     _slope: int
-    _bounds: QuadrantBounds
+    _bounds: QuadrantRayBounds
     _terminus: Vector
     
-    def __init__(self, x_step: int, slope: int, bounds: QuadrantBounds):
+    def __init__(self, x_step: int, slope: int, bounds: QuadrantRayBounds):
         """
         Args:
             x_step: int

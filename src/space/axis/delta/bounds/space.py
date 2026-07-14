@@ -11,14 +11,14 @@ from __future__ import annotations
 
 from typing import cast
 
-from ray.bounds import AxisBounds
+from ray.bounds import AxisRayBounds
 from model import Vector
 from register import Register
 
 
 class DeltaBound(Register):
     
-    def __init__(self, delta: Vector, bounds: AxisBounds):
+    def __init__(self, delta: Vector, bounds: AxisRayBounds):
         super().__init__(a=delta, b=bounds)
         
     @property
@@ -26,8 +26,8 @@ class DeltaBound(Register):
         return cast(Vector, self.a)
     
     @property
-    def bounds(self) -> AxisBounds:
-        return cast(AxisBounds, self.b)
+    def bounds(self) -> AxisRayBounds:
+        return cast(AxisRayBounds, self.b)
     
     @property
     def origin(self) -> Vector:
