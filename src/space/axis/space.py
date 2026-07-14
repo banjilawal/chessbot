@@ -20,12 +20,11 @@ from util import LoggingLevelRouter
 class Axis(Space):
     """
     Role:
-        -   Addressing
-        -   Data-Holder
+        -   Dataset
 
     Responsibilities:
-        1.  Defines the delta_x/delta_y and bounds of an axis relative to a
-            token's position.
+        1.  Define a set of all possible points a token can reach from its position.
+        2.  Provide a function that steps through every point in the plane,
 
     Attributes:
         bounds: AxisBounds
@@ -40,12 +39,6 @@ class Axis(Space):
         
     Super Class:
         Space
-        
-    1.  Derive the factors for computing the ray projections from an origin to its
-            * North (0,j)
-            * West (-i, 0)
-            * South (0, -j)
-            * East (i, 0)
     """
     _bounds: AxisBounds
     _stepper: AxisStepper
@@ -95,9 +88,10 @@ class Axis(Space):
         Create an Axis in 1D plane
         
         Bounds:
-            east => [u, Vector(num_columns - 1, u.y)]
+        
+            east => [u, Vector(num_columns - 1, u.y)], (i, 0)
         Delta:
-            d_x => increments u.x by 1 till x = number_of_columns - 1
+            d_x => increments u.x by 1 till x = num_columns - 1
             d_y => 0
         """
         return cls(
@@ -111,7 +105,7 @@ class Axis(Space):
         Create an Axis in 1D plane.
 
         Bounds:
-            north => [u, Vector(u.x, 0)]
+            north => [u, Vector(u.x, 0)], (0, -j)
         Delta:
             d_x => 0
             d_y => increments u.y by -1 till y = 0
@@ -127,7 +121,7 @@ class Axis(Space):
         Create an Axis in 1D plane.
 
         Bounds:
-            south => [u, Vector(u.x, num_rows - 1)]
+            south => [u, Vector(u.x, num_rows - 1)], (0, j)
         Delta:
             d_x => 0
             d_y => increments u.y by 1 till y = num_rows - 1
@@ -143,7 +137,7 @@ class Axis(Space):
         Create an Axis in 1D plane.
 
         Bounds:
-            west => [u, Vector(0, u.y)]
+            west => [u, Vector(0, u.y)], (-i, 0)
         Delta:
             d_x => increments u.x by -1 till x = 0
             d_y => 0
