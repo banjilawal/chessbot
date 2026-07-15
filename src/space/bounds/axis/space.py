@@ -26,11 +26,8 @@ class AxisBounds(SpaceBounds):
     Responsibilities:
         1.  Prevent ArrayIndexOutOfBounds errors by calculating the last point in the direction
             of travel
-            
 
     Attributes:
-        DELTA: Dict[str, Vector]
-        delta: Vector
 
     Provides:
         -   east(origin: Vector) -> AxisBounds

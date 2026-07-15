@@ -11,14 +11,41 @@ from __future__ import annotations
 
 from typing import cast
 
+from err.space.setter.quadrant.exception import QuadrantSpaceSetterException
 from model import Vector
 from register import NumberRegister
-from result import ComputationResult
+from result import ComputationResult, MethodResultType
 from space import Quadrant, Stepper
 from util import LoggingLevelRouter
 
 
 class QuadrantStepper(Stepper[Quadrant]):
+    """
+    Role:
+        -   Lookup Table
+
+    Responsibilities:
+        1.  Produce y from the  range of x in a seres projected from the quadrant's origin.
+
+    Attributes:
+        ENTRY: Dict[str, NumberRegister]
+        
+        x_step: int
+        slope: int
+
+    Provides:
+        -   def next(current: Vector) -> ComputationResult[Vector]
+        -   def northeast() -> QuadrantStepper
+        -   def northwest() -> QuadrantStepper
+        -   def southwest() -> QuadrantStepper
+        -   def southeast() -> QuadrantStepper
+
+    Super Class:
+        Stepper
+
+    WARNING:
+        *****===ONLY_INSTANTIATE_WITH_THE_FACTORY_METHODS===*****
+    """
     ENTRY = {
         "northeast": NumberRegister(a=1, b=-1),
         "northwest": NumberRegister(a=-1, b=-1),
@@ -48,17 +75,44 @@ class QuadrantStepper(Stepper[Quadrant]):
     
     @LoggingLevelRouter.monitor
     def next(self, current: Vector) -> ComputationResult:
+        """
+        Project a new, safe, vector, from the current.
+
+        Action:
+            1.  Set
+                    x_next = x_current
+                    y_next = (2 * slope * y_current) + slope
+            2.  If VectorBuilder cannot create a safe Vector from x_next, y_next, send
+                an exception chain in the ComputationResult.
+            3.  Otherwise, cast the build product, then send in the success result.
+        Args:
+            current: Vector
+        Returns:
+            ComputationResult[Vector]
+        Raises:
+             QuadrantStepperException
+        """
         method = f"{self.__class__.__name__}"
         
+        # --- Build a new vector from the old. ---#
         build = self.math.vector.builder.execute(
             x=current.x,
             y=(2 * current.y * self.slope) + self.slope
         )
-        
+        # Handle the case that, the build is not successful.
         if build.is_failure:
+            # Send an exception chain in the result.
             return ComputationResult.failure(
-                build.exception
+                QuadrantSpaceSetterException(
+                    cls_mthd=method,
+                    cls_name=self.__class__.__name__,
+                    msg=QuadrantSpaceSetterException.MSG,
+                    err_code=QuadrantSpaceSetterException.ERR_CODE,
+                    mthd_rslt_type=MethodResultType.COMPUTATION_RESULT,
+                    ex=build.exception,
+                ),
             )
+        # --- Forward the work product to the caller. ---#
         return ComputationResult.success(cast(Vector, build.payload))
     
     

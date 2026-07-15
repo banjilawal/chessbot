@@ -11,11 +11,34 @@ from __future__ import annotations
 
 
 from model import Vector
-from space import SpaceBounds
-from space import QuadrantTerminusEntry
+from space import QuadrantTerminusEntry, SpaceBounds
 
 
 class QuadrantBounds(SpaceBounds):
+    """
+    Role:
+        -   Computation Worker
+        -   Integrity Management
+
+    Responsibilities:
+        1.  Prevent ArrayIndexOutOfBounds errors by calculating the upper and lower bounds
+            vectors of a Quadrant's incline.
+
+    Attributes:
+        terminus_entry: QuadrantTerminusEntry
+        
+    Provides:
+        -   def northeast(cls, origin: Vector) -> QuadrantBounds
+        -   def northwest(cls, origin: Vector) -> QuadrantBounds
+        -   def southwest(cls, origin: Vector) -> QuadrantBounds
+        -   def southeast(cls, origin: Vector) -> QuadrantBounds
+
+    Super Class:
+        SpaceBounds
+
+    WARNING:
+        *****===ONLY_INSTANTIATE_WITH_THE_FACTORY_METHODS===*****
+    """
     
     terminus_entry: QuadrantTerminusEntry = QuadrantTerminusEntry()
     
