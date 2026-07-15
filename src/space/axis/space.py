@@ -19,7 +19,31 @@ from util import LoggingLevelRouter
 
 
 class Axis(Space):
+    """
+    Role:
+        -   Dataset
 
+    Responsibilities:
+        1.  Define a set of Vectors from an origin..
+        2.  Provide the next point in the direction of travel.
+
+    Attributes:
+        bounds: AxisBounds
+        stepper: AxisStepper
+
+    Provides:
+        -   def next(current: Vector) -> ComputationResult
+        -   def northeast(origin: Vector) -> Axis
+        -   def northwest(origin: Vector) -> Axis
+        -   def southeast(origin: Vector) -> Axis
+        -   def southwest(origin: Vector) -> Axis
+
+    Super Class:
+        Space
+
+    WARNING:
+        *****===ONLY_INSTANTIATE_WITH_THE_FACTORY_METHODS===*****
+    """
     _bounds: AxisBounds
     _stepper: AxisStepper
 
