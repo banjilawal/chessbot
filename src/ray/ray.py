@@ -58,5 +58,5 @@ class RayComputer(ABC, Generic[T]):
         return self._space
     
     @abstractmethod
-    def vector_ray(self,) -> ComputationResult[VectorRay]:
+    def execute(self, ) -> ComputationResult[VectorRay]:
         pass

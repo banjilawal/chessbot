@@ -17,7 +17,7 @@ from model.ray.model import T
 
 class CoordRay(Ray[Coord]):
     
-    def __init__(self, origin: Coord):
+    def __init__(self, origin: Optional[Coord] | None = None):
         """
         Args:
             origin: Coord
@@ -26,11 +26,11 @@ class CoordRay(Ray[Coord]):
     
     @property
     def origin(self) -> Optional[Coord]:
-        return cast(Coord, self._points[0])
+        return cast(Coord, self.origin)
     
     @property
     def terminus(self) -> Optional[Coord]:
-        return cast(Coord, self._points[-1])
+        return cast(Coord, self.terminus)
     
     @property
     def iterator(self) -> Iterator[Coord]:

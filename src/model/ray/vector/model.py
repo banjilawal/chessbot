@@ -17,7 +17,7 @@ from model.ray.model import T
 
 class VectorRay(Ray[Vector]):
     
-    def __init__(self, origin: Vector):
+    def __init__(self, origin: Optional[Vector] | None = None,):
         """
         Args:
             origin: Vector
@@ -26,11 +26,11 @@ class VectorRay(Ray[Vector]):
     
     @property
     def origin(self) -> Optional[Vector]:
-        return cast(Vector, self._points[0])
+        return cast(Vector, self.origin)
     
     @property
     def terminus(self) -> Optional[Vector]:
-        return cast(Vector, self._points[-1])
+        return cast(Vector, self.terminus)
     
     @property
     def iterator(self) -> Iterator[Vector]:

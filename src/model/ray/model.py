@@ -20,16 +20,21 @@ T = TypeVar("T")
 class Ray(Model, Generic[T]):
     _points: List[T]
     
-    def __init__(self, origin: T):
+    def __init__(self, origin: Optional[T] | None = None,):
         self._points = []
-        self._points.append(origin)
+        if origin is not None:
+            self._points.append(origin)
         
     @property
     def origin(self) -> Optional[T]:
+        if self.is_empty:
+            return None
         return self._points[0]
     
     @property
     def terminus(self) -> Optional[T]:
+        if self.is_empty:
+            return None
         return self._points[-1]
     
     @property

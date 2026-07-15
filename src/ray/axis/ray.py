@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import List, cast
 
 from err import AxisRayComputerException
-from model import Coord, Vector
+from model import Coord, Vector, VectorRay
 from ray import RayComputer
 from result import ComputationResult
 from space import Axis
@@ -50,7 +50,7 @@ class AxisRayComputer(RayComputer[Axis]):
         return cast(Axis, self.space)
     
     
-    def vector_ray(self,) -> ComputationResult[List[Vector]]:
+    def execute(self, ) -> ComputationResult[VectorRay]:
         """
         Get the series of Vectors from the origin of the axis till its end.
 
@@ -60,25 +60,25 @@ class AxisRayComputer(RayComputer[Axis]):
             2.  Otherwise, append the stepper's payload to the array and advance the cursor.
         Args:
         Returns:
-            ComputationResult[List[Vector]]
+            ComputationResult[VectorRay]
         Raises:
              AxisRayComputerException
         """
-        method = f"{self.__class__.__name__}.vector_ray"
+        method = f"{self.__class__.__name__}.execute"
         
+        ray: VectorRay = VectorRay()
         
+        if self.space.is_empty:
+            return ComputationResult.success(ray)
 
         # --- Set up for the loop ---#
         cursor = self.space.origin
         terminus = self.space.terminus
-        vectors: List[Vector] = []
-        
-        
-        
         
         # Less than is not a good choice for iterating through vectors.
         while cursor != terminus:
-            vectors.append(cursor)
+            ray.add_point(cursor)
+            
             # --- Request the vector from the space. ---#
             computation = self.space.stepper.next(current=cursor)
             
@@ -97,6 +97,7 @@ class AxisRayComputer(RayComputer[Axis]):
                 )
             # Advance the cursor.
             cursor = cast(Vector, computation.payload)
+            ray.add_point(cursor)
             
         # --- Forward the work product to the caller. ---#
-        return ComputationResult.success(vectors)
+        return ComputationResult.success(ray)
