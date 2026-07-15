@@ -12,7 +12,7 @@ from __future__ import annotations
 from abc import ABC, abstractmethod
 from typing import Generic, List, TypeVar
 
-from model import Coord, Vector
+from model import Coord, Vector, VectorRay
 from result import ComputationResult
 from toolkit import MathToolkit
 
@@ -58,9 +58,5 @@ class RayComputer(ABC, Generic[T]):
         return self._space
     
     @abstractmethod
-    def vector_ray(self,) -> ComputationResult[List[Vector]]:
-        pass
-    
-    @abstractmethod
-    def coord_ray(self) -> ComputationResult[List[Coord]]:
+    def vector_ray(self,) -> ComputationResult[VectorRay]:
         pass

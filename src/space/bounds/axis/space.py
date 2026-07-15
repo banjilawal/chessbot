@@ -9,6 +9,7 @@ version: 1.0.1
 
 from __future__ import annotations
 
+from multiprocessing.sharedctypes import prop_cache
 
 import setting
 

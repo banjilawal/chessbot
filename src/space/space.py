@@ -53,12 +53,9 @@ class Space(ABC):
         return self._stepper
     
     @property
-    @abstractmethod
-    def origin(self) -> Vector:
-        pass
+    def is_empty(self) -> bool:
+        return self._bounds.is_empty
     
     @property
-    @abstractmethod
-    def terminus(self) -> Vector:
-        pass
-    
+    def is_cycle(self) -> bool:
+        return self._bounds.is_cycle

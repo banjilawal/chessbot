@@ -48,3 +48,11 @@ class SpaceBounds:
     @property
     def terminus(self) -> Vector:
         return self._endpoints.v
+    
+    @property
+    def is_empty(self) -> bool:
+        return self._endpoints.is_empty
+    
+    @property
+    def is_cycle(self) -> bool:
+        return self._endpoints.u_is_v
