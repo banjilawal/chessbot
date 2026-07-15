@@ -15,14 +15,14 @@ from err import AxisSpaceSetterException
 from model import Vector
 from register import VectorRegister
 from result import ComputationResult, MethodResultType
-from space import AxisSpace, Stepper
+from space import AxisSpace, SpaceStepper
 from util import LoggingLevelRouter
 
 
-class AxisStepper(Stepper[AxisSpace]):
+class AxisStepper(SpaceStepper[AxisSpace]):
     """
     Role:
-        -   Lookup Table
+        -   Computation Worker
 
     Responsibilities:
         1.  Produce the next vector on axis by taking a step of size delta_vector.

@@ -21,11 +21,30 @@ from util import LoggingLevelRouter
 T = TypeVar("T", bound="Space")
 
 
-class Stepper(ABC, Generic[T]):
+class SpaceStepper(ABC, Generic[T]):
+    """
+    Role:
+        -   Computation Worker
+
+    Responsibilities:
+        1.  Get the next Vector that exists in the direction of travel
+
+    Attributes:
+        math: MathToolkit
+
+    Provides:
+        -   def next(current: Vector) -> ComputationResult[Vector]:
+
+    Super Class:
+    """
     
     _math_toolkit: MathToolkit
     
     def __init__(self, math_toolkit: MathToolkit | None = MathToolkit ):
+        """
+        Args
+            math_toolkit: MathToolkit
+        """
         self._math_toolkit = math_toolkit
         
     @property
@@ -34,5 +53,5 @@ class Stepper(ABC, Generic[T]):
     
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def next(self, current: Vector) -> ComputationResult:
+    def next(self, current: Vector) -> ComputationResult[Vector]:
         pass

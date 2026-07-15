@@ -14,4 +14,4 @@ from .axis import *
 from .quadrant import *
 
 # Modules
-from .space import Stepper
+from .space import SpaceStepper

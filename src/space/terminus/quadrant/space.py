@@ -16,6 +16,23 @@ from model import Vector
 
 
 class QuadrantTerminusEntry:
+    """
+    Role:
+        -   Lookup Table
+
+    Responsibilities:
+        1.  Provides an easy way of getting a quadrant's terminus.
+
+    Attributes:
+        northeast: Vector
+        northwest: Vector
+        southwest: Vector
+        southeast: Vector
+        
+    Provides:
+
+    Super Class:
+    """
     
     _entry: Dict[str, Vector]
     

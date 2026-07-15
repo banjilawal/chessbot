@@ -24,8 +24,8 @@ class Quadrant(Space):
         -   Dataset
 
     Responsibilities:
-        1.  Define a bounded 2D space.
-        2.  Provide Provide the next point in the direction of of travel.
+        1.  Define a bounded linear function from 2D space.
+        2.  Provide the next point in the direction of travel.
 
     Attributes:
         bounds: QuadrantBounds
@@ -53,13 +53,16 @@ class Quadrant(Space):
             bounds: QuadrantBounds
             stepper: QuadrantStepper
         """
-        super().__init__(bounds=bounds)
+        super().__init__(bounds=bounds, stepper=stepper)
         """INTERNAL: Use factory methods instead of direct constructor."""
-        self._stepper = stepper
         
     @property
     def bounds(self) -> QuadrantBounds:
         return cast(QuadrantBounds, self.bounds)
+    
+    @property
+    def stepper(self) -> QuadrantStepper:
+        return cast(QuadrantStepper, self.stepper)
     
     @property
     def origin(self) -> Vector:

@@ -19,31 +19,7 @@ from util import LoggingLevelRouter
 
 
 class AxisSpace(Space):
-    """
-    Role:
-        -   Dataset
 
-    Responsibilities:
-        1.  Define a set of all possible points a token can reach from its position.
-        2.  Provide a function that steps through every point in the plane,
-
-    Attributes:
-        bounds: AxisBounds
-        stepper: AxisStepper
-
-    Provides:
-        -   next(self, current: Vector) -> ComputationResult
-        -   north_axis(cls, origin: Vector) -> Axis
-        -   east_axis(cls, origin: Vector) -> Axis
-        -   south_axis(cls, origin: Vector) -> Axis
-        -   west_axis(cls, origin: Vector) -> Axis
-        
-    Super Class:
-        Space
-        
-    WARNING:
-        *****===ONLY_INSTANTIATE_WITH_THE_FACTORY_METHODS===*****
-    """
     _bounds: AxisBounds
     _stepper: AxisStepper
 
@@ -58,13 +34,16 @@ class AxisSpace(Space):
             bounds: AxisBounds
             stepper: AxisStepper
         """
-        super().__init__(bounds=bounds)
-        self._steeper = stepper
-        self._bounds = bounds
-        
+        super().__init__(bounds=bounds, stepper=stepper)
+    """INTERNAL: Use factory methods instead of direct constructor."""
+    
     @property
-    def bounds(self) -> SpaceBounds:
+    def bounds(self) -> AxisBounds:
         return cast(AxisBounds, self.bounds)
+    
+    @property
+    def stepper(self) -> AxisStepper:
+        return cast(AxisStepper, self.stepper)
     
     @property
     def origin(self) -> Vector:

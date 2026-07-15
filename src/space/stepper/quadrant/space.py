@@ -15,14 +15,14 @@ from err.space.setter.quadrant.exception import QuadrantSpaceSetterException
 from model import Vector
 from register import NumberRegister
 from result import ComputationResult, MethodResultType
-from space import Quadrant, Stepper
+from space import Quadrant, SpaceStepper
 from util import LoggingLevelRouter
 
 
-class QuadrantStepper(Stepper[Quadrant]):
+class QuadrantStepper(SpaceStepper[Quadrant]):
     """
     Role:
-        -   Lookup Table
+        -   Computation Worker
         
     Background:
     1.  Consider the diagonal series: p_1(0,0), p_2(1,1), p_3(2,2), ., p_n(n,n). For any
