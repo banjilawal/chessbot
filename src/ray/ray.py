@@ -9,54 +9,110 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from abc import ABC, abstractmethod
-from typing import Generic, List, TypeVar
+from typing import Generic, Iterator, List, Optional, TypeVar, cast
 
-from model import Coord, Vector, VectorRay
-from result import ComputationResult
-from toolkit import MathToolkit
+from model import Model
 
-T = TypeVar("T", bound= "Space")
+T = TypeVar("T")
 
 
-class RayComputer(ABC, Generic[T]):
+class Ray(Model, Generic[T]):
     """
     Role:
-        -   Computation Worker
+        -   DTO
+        -   Transform
 
     Responsibilities:
-        1.  Produce a ray of Vectors from an origin to a terminus.
-
+        1.  Lightweight data structure of elements with 2D addressing.
+        2.  Elements are ordered by discovery in a 1D space (line).
+        3.  Resource for creating Nodes and Edges in GraphFactory.
+  
     Attributes:
-        space: T
-        math_toolkit: MathToolkit
+        origin: Optional[T]
+        terminus: Optional[T]
+        iterator: Iterator[T]:
+        is_empty: bool
+        is_cycle: bool
+        size: int
 
     Provides:
-        -   def vector_ray() -> ComputationResult[List[Vector]]
-        -   def coord_ray(self) -> ComputationResult[List[Coord]]
+        -   def add_point(point: T)
+        -   def have_same_origin(other) -> bool
+        -   def origins_are_different(other) -> bool
+        -   def have_same_terminus(other) -> bool
+        -   def terminus_is_different(other) -> bool
 
     Super Class:
+
+    WARNING:
+        *****===DOES NOT GUARANTEE UNIQUENESS, INTEGRITY OR CONSISTENCY===*****
     """
-    _space: T
-    _math_toolkit: MathToolkit
+    _points: List[T]
     
-    def __init__(self, space: T, math_toolkit: MathToolkit | None = MathToolkit()):
-        """
-        Args:
-            space: T
-            math_toolkit: MathToolkit
-        """
-        self._space = space
-        self._math_toolkit = math_toolkit
+    def __init__(self, origin: Optional[T] | None = None,):
+        self._points = []
+        if origin is not None:
+            self._points.append(origin)
         
     @property
-    def math(self) -> MathToolkit:
-        return self._math_toolkit
-        
-    @property
-    def space(self) -> T:
-        return self._space
+    def origin(self) -> Optional[T]:
+        if self.is_empty:
+            return None
+        return self._points[0]
     
-    @abstractmethod
-    def execute(self, ) -> ComputationResult[VectorRay]:
-        pass
+    @property
+    def terminus(self) -> Optional[T]:
+        if self.is_empty:
+            return None
+        return self._points[-1]
+    
+    @property
+    def size(self) -> int:
+        return len(self._points)
+    
+    @property
+    def iterator(self) -> Iterator[T]:
+        return iter(self._points)
+    
+    @property
+    def is_empty(self) -> bool:
+        return len(self._points) == 0
+    
+    @property
+    def is_cycle(self) -> bool:
+        if self.is_empty:
+            return False
+        if self.size == 1:
+            return False
+        return True
+    
+    def add_point(self, point: T):
+        self._points.append(point)
+        
+
+    def have_same_origin(self, other) -> bool:
+        if not self._bool_helper(other):
+            return False
+        ray = cast(Ray, other)
+        return self.is_empty or ray.is_empty
+    
+    def origins_are_different(self, other) -> bool:
+        return not self.have_same_origin(other)
+        
+    def have_same_terminus(self, other) -> bool:
+        return self.have_same_origin(other)
+    
+    def terminus_is_different(self, other) -> bool:
+        return self.have_same_origin(other)
+    
+    def _bool_helper(self, other) -> bool:
+        if other is self:
+            return True
+        if other is None:
+            return False
+        return isinstance(other, Ray)
+        
+    
+        
+    
+        

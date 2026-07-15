@@ -9,16 +9,17 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from typing import Optional
+from typing import Optional, cast
 
-
+from model import Square
+from node import DiscoveryStatus, Node
+from stack import EdgeStackService
 
 
 class SquareNode(Node[Square]):
     _priority: int
     _square: Square
-    _approval: OperationApprovalReport
-    _predecessor:Optional[Node]
+    _predecessor:Optional[SquareNode]
     _incoming_edges: EdgeStackService
     _outgoing_edges: EdgeStackService
     _discovery_status: DiscoveryStatus
@@ -36,8 +37,8 @@ class SquareNode(Node[Square]):
         )
         
     @property
-    def square(self) -> Square:
-        return self._square
+    def element(self) -> Square:
+        return cast(Square, self._element)
     
     @property
     def incoming_edges(self) -> EdgeStackService:
@@ -64,20 +65,22 @@ class SquareNode(Node[Square]):
         self._priority = priority
         
     @property
-    def predecessor(self) -> Node:
+    def predecessor(self) -> SquareNode:
         return self._predecessor
     
     @predecessor.setter
-    def predecessor(self, predecessor: Node):
+    def predecessor(self, predecessor: SquareNode):
         self._predecessor = predecessor
         
     def __eq__(self, other):
         if other is self: return True
         if other is None: return False
-        if isinstance(other, Node): return self.square == other.square
+        if isinstance(other, SquareNode):
+            node = cast(SquareNode)
+            return self.element == node.element
         return False
     
     def __hash__(self):
-        return hash(self.square)
+        return hash(self.element.__hash__())
         
     

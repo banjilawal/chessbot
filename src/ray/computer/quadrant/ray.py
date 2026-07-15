@@ -1,7 +1,7 @@
-# src/ray/axis/ray.py
+# src/ray/computer/quadrant/ray.py
 
 """
-Module: ray.axis.ray
+Module: ray.computer.quadrant.ray
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -11,23 +11,23 @@ from __future__ import annotations
 
 from typing import List, cast
 
-from err import AxisRayComputerException
+from err import QuadrantRayComputerException
 from model import Coord, Vector, VectorRay
 from ray import RayComputer
 from result import ComputationResult
-from space import Axis
+from space import Quadrant
 
 
-class AxisRayComputer(RayComputer[Axis]):
+class QuadrantRayComputer(RayComputer[Quadrant]):
     """
     Role:
         -   Computation Worker
 
     Responsibilities:
-        1.  Produce a ray of Vectors from the origin of an axis to its terminus.
+        1.  Produce a ray of Vectors from the origin of an quadrant to its terminus.
 
     Attributes:
-        space: Axis
+        space: Quadrant
         math_toolkit: MathToolkit
 
     Provides:
@@ -37,22 +37,18 @@ class AxisRayComputer(RayComputer[Axis]):
     Super Class:
         RayComputer
     """
+    _space: Quadrant
     
-    def __init__(self, space: Axis):
-        """
-        Args:
-            space: Axis
-        """
-        super().__init__(space=space)
+    def __init(self, space: Quadrant):
+        self._space = space
         
     @property
-    def space(self) -> Axis:
-        return cast(Axis, self.space)
-    
+    def space(self) -> Quadrant:
+        return cast(Quadrant, self.space)
     
     def execute(self, ) -> ComputationResult[VectorRay]:
         """
-        Get the series of Vectors from the origin of the axis till its end.
+        Get the series of Vectors from the origin of the quadrant till its end.
 
         Action:
             1.  Send an exception chain in the ComputationResult if the stepper does not finish its
@@ -62,7 +58,7 @@ class AxisRayComputer(RayComputer[Axis]):
         Returns:
             ComputationResult[VectorRay]
         Raises:
-             AxisRayComputerException
+             QuadrantRayComputerException
         """
         method = f"{self.__class__.__name__}.execute"
         
@@ -70,14 +66,14 @@ class AxisRayComputer(RayComputer[Axis]):
         
         if self.space.is_empty:
             return ComputationResult.success(ray)
-
+        
         # --- Set up for the loop ---#
         cursor = self.space.origin
         terminus = self.space.terminus
         
         # Less than is not a good choice for iterating through vectors.
         while cursor != terminus:
-            ray.add_point(cursor)
+            ray.computer.add_point(cursor)
             
             # --- Request the vector from the space. ---#
             computation = self.space.stepper.next(current=cursor)
@@ -86,18 +82,18 @@ class AxisRayComputer(RayComputer[Axis]):
             if computation.is_failure:
                 # Send the exception chain in the result.
                 return ComputationResult.failure(
-                    AxisRayComputerException(
+                    QuadrantRayComputerException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        msg=AxisRayComputerException.MSG,
-                        err_code=AxisRayComputerException.ERR_CODE,
-                        mthd_rslt_type=AxisRayComputerException.MTHD_RSLT_TYPE,
+                        msg=QuadrantRayComputerException.MSG,
+                        err_code=QuadrantRayComputerException.ERR_CODE,
+                        mthd_rslt_type=QuadrantRayComputerException.MTHD_RSLT_TYPE,
                         ex=computation.exception,
                     )
                 )
             # Advance the cursor.
             cursor = cast(Vector, computation.payload)
-            ray.add_point(cursor)
-            
+            ray.computer.add_point(cursor)
+        
         # --- Forward the work product to the caller. ---#
         return ComputationResult.success(ray)

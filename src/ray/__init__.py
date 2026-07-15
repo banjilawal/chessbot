@@ -10,8 +10,9 @@ version: 1.0.1
 # =========== RAY PACKAGE ===========#
 
 # Packages
-from .axis import *
-from .quadrant import *
+from computer import *
+from coord import *
+from .vector import *
 
 # Modules
-from .ray import RayComputer
+from .ray import Ray

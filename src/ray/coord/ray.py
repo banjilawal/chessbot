@@ -1,7 +1,7 @@
-# src/model/ray/coord/model.py
+# src/ray/coord/ray.py
 
 """
-Module: model.ray.coord.model
+Module: ray.coord.ray
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Iterator, Optional, cast
 
 from model import Coord, Ray, Vector, VectorRay
-from model.ray.model import T
+from ray.ray import T
 
 
 class CoordRay(Ray[Coord]):
@@ -40,7 +40,7 @@ class CoordRay(Ray[Coord]):
     def is_cycle(self) -> bool:
         return super().is_cycle and self.origin == self.terminus
     
-    def have_same_origin(self, other: Ray[Coord]) -> bool:
+    def have_same_origin(self, other) -> bool:
         if not super().have_same_origin(other):
             return False
         if not isinstance(other, CoordRay):
@@ -49,7 +49,7 @@ class CoordRay(Ray[Coord]):
         return self.origin == ray.origin
     
     def origins_are_different(self, other) -> bool:
-        return not self.have_same_origin()
+        return not self.have_same_origin(other)
     
     def have_same_terminus(self, other) -> bool:
         if not super().have_same_origin(other):
@@ -57,10 +57,10 @@ class CoordRay(Ray[Coord]):
         if not isinstance(other, CoordRay):
             return False
         ray = cast(CoordRay, other)
-        return self.terminus == ray.terminus_is_different()
+        return self.terminus == ray.terminus
     
-    def terminus_is_different(self, ray: Ray[T]) -> bool:
-        return not self.have_same_terminus()
+    def terminus_is_different(self, other) -> bool:
+        return not self.have_same_terminus(other)
     
     def add_point(self, point: Coord):
         self._points.append(point)
