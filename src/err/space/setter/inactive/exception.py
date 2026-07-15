@@ -1,7 +1,7 @@
-# src/err/space/promotion/rank/exception.py
+# src/err/space/setter/inactive/exception.py
 
 """
-Module: err.space.promotion.rank.exception
+Module: err.space.setter.inactive.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -14,21 +14,20 @@ from err import SpaceException
 from result import MethodResultType
 
 __all__ = [
-    # ======================# RANK_ELEVATION_VALIDATION_ERROR #======================#
-    "PromotionLevelSpaceException",
+    # ======================# PROMOTE_INACTIVE_PAWN_ERROR #======================#
+    "PromoteInactivePawnException",
 ]
 
-# ======================# RANK_ELEVATION_VALIDATION_ERROR #======================#
-class PromotionLevelSpaceException(SpaceException):
+# ======================# PROMOTE_INACTIVE_PAWN_ERROR #======================#
+class PromoteInactivePawnException(SpaceException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate a rank elevation check was not passed.
+        1.  Indicate that an attempt was made to promote an inactive pawn.
 
     Attributes:
-        msg: Optional[str]
         var: Optional[str]
         val: Optional[Any]
         ex: Optional[Exception]
@@ -42,8 +41,8 @@ class PromotionLevelSpaceException(SpaceException):
     Super Class:
         SpaceException
     """
-    MSG = "Rank elevation check was not passed."
-    ERR_CODE = "RANK_ELEVATION_VALIDATION_ERROR"
+    MSG = "Cannot promote an inactive pawn."
+    ERR_CODE = "PROMOTE_INACTIVE_PAWN_ERROR"
     
     def __init__(
             self,
@@ -57,18 +56,19 @@ class PromotionLevelSpaceException(SpaceException):
             mthd_rslt_type: Optional[MethodResultType] | None = None,
     ):
         """
-        args:
-            Msg: Optional[str]
-            Var: Optional[str]
-            val: Optional[any]
+        Args:
+            msg: Optional[str]
+            var: Optional[str]
+            val: Optional[Any]
             ex: Optional[Exception]
-            cls_name: Optional[Str]
+            cls_name: Optional[str]
             cls_mthd: Optional[str]
             err_code: Optional[str]
             mthd_rslt_type: Optional[MethodResultType]
         """
         msg = msg or self.MSG
         err_code = err_code or self.ERR_CODE
+        mthd_rslt_type = mthd_rslt_type
         super().__init__(
             ex=ex,
             msg=msg,

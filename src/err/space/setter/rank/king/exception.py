@@ -1,7 +1,7 @@
-# src/err/space/promotion/rank/king/exception.py
+# src/err/space/setter/rank/king/exception.py
 
 """
-Module: err.space.promotion.rank.king.exception
+Module: err.space.setter.rank.king.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,7 +10,7 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import PromotionLevelSpaceException
+from err import SetterLevelSpaceException
 from result import MethodResultType
 
 __all__ = [
@@ -19,7 +19,7 @@ __all__ = [
 ]
 
 # ======================# PROMOTE_PAWN_TO_KING_ERROR #======================#
-class PromoteToKingException(PromotionLevelSpaceException):
+class PromoteToKingException(SetterLevelSpaceException):
     """
     Role:
         -   Error Tracing

@@ -1,7 +1,7 @@
-# src/err/space/promotion/rank/king/exception.py
+# src/err/space/setter/axis/exception.py
 
 """
-Module: err.space.promotion.rank.king.exception
+Module: err.space.setter.axis.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,23 +10,23 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import PromotionLevelSpaceException
+from err import SpaceSetterException
 from result import MethodResultType
 
 __all__ = [
-    # ======================# PROMOTE_PAWN_TO_PAWN_ERROR #======================#
-    "PromoteToPawnException",
+    # ======================# AXIS_SPACE_SETTER_FAILURE #======================#
+    "AxisSpaceSetterException",
 ]
 
-# ======================# PROMOTE_PAWN_TO_PAWN_ERROR #======================#
-class PromoteToPawnException(PromotionLevelSpaceException):
+# ======================# AXIS_SPACE_SETTER_FAILURE #======================#
+class AxisSpaceSetterException(SpaceSetterException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate an attempt to promote a pawn to Pawn rank occurred.
-
+        1.  Indicate that an error prevented an AxisSpaceSetter from completing its task. 
+        
     Attributes:
         msg: Optional[str]
         var: Optional[str]
@@ -40,35 +40,36 @@ class PromoteToPawnException(PromotionLevelSpaceException):
     Provides:
 
     Super Class:
-        RankElevationValidatorException
+        SpaceSetterException
     """
-    MSG = "Cannot promote a pawn to Pawn rank. Its new rank must be higher."
-    ERR_CODE = "PROMOTE_PAWN_TO_PAWN_ERROR"
-    
+    MSG = "AxisSpaceSetter failure."
+    ERR_CODE = "AXIS_SPACE_SETTER_FAILURE"
+
     def __init__(
             self,
             msg: Optional[str] | None = None,
             var: Optional[str] | None = None,
             val: Optional[Any] | None = None,
-            ex: Optional[Exception] | None = None,
-            cls_name: Optional[str] | None = None,
             cls_mthd: Optional[str] | None = None,
+            cls_name: Optional[str] | None = None,
+            ex: Optional[Exception] | None = None,
             err_code: Optional[str] | None = None,
             mthd_rslt_type: Optional[MethodResultType] | None = None,
     ):
         """
-        args:
-            Msg: Optional[str]
-            Var: Optional[str]
-            val: Optional[any]
+        Args:
+            msg: Optional[str]
+            var: Optional[str]
+            val: Optional[Any]
             ex: Optional[Exception]
-            cls_name: Optional[Str]
+            cls_name: Optional[str]
             cls_mthd: Optional[str]
             err_code: Optional[str]
             mthd_rslt_type: Optional[MethodResultType]
         """
         msg = msg or self.MSG
         err_code = err_code or self.ERR_CODE
+        mthd_rslt_type = mthd_rslt_type
         super().__init__(
             ex=ex,
             msg=msg,

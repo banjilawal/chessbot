@@ -37,7 +37,7 @@ class AxisStepper(Stepper[AxisSpace]):
         return self._delta
     
     @LoggingLevelRouter.monitor
-    def next(self, u: Vector) -> ComputationResult[Vector]:
+    def next(self, current: Vector) -> ComputationResult[Vector]:
         """
         Project a new, safe, vector, from the current.
 
@@ -49,7 +49,7 @@ class AxisStepper(Stepper[AxisSpace]):
         Returns:
             ComputationResult[Vector]
         Raises:
-             AxisSpaceException
+             AxisStepperException
         """
         method = f"{self.__class__.__name__}"
         

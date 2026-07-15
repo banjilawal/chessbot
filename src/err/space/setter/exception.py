@@ -1,7 +1,7 @@
-# src/err/space/promotion/manager/exception.py
+# src/err/space/setter/exception.py
 
 """
-Module: err.space.promotion.manager.exception
+Module: err.space.setter.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -14,20 +14,21 @@ from err import SpaceException
 from result import MethodResultType
 
 __all__ = [
-    # ======================# PAWN_PROMOTION_SPACE_ERROR #======================#
-    "PromotionApprovalManagerException",
+    # ======================# SPACE_SETTER_FAILURE #======================#
+    "SpaceSetterException",
 ]
 
-# ======================# PAWN_PROMOTION_SPACE_ERROR #======================#
-class PromotionApprovalManagerException(SpaceException):
+# ======================# SPACE_SETTER_FAILURE #======================#
+class SpaceSetterException(SpaceException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an error occurred during a pawn promotion analysis.
-
+        1.  Indicate that an error prevented a SpaceSetter from completing its task. 
+        
     Attributes:
+        msg: Optional[str]
         var: Optional[str]
         val: Optional[Any]
         ex: Optional[Exception]
@@ -41,17 +42,17 @@ class PromotionApprovalManagerException(SpaceException):
     Super Class:
         SpaceException
     """
-    MSG = "Error occurred during a pawn promotion analysis."
-    ERR_CODE = "PAWN_PROMOTION_SPACE_ERROR"
-    
+    MSG = "SpaceSetter failure."
+    ERR_CODE = "SPACE_SETTER_FAILURE"
+
     def __init__(
             self,
             msg: Optional[str] | None = None,
             var: Optional[str] | None = None,
             val: Optional[Any] | None = None,
-            ex: Optional[Exception] | None = None,
-            cls_name: Optional[str] | None = None,
             cls_mthd: Optional[str] | None = None,
+            cls_name: Optional[str] | None = None,
+            ex: Optional[Exception] | None = None,
             err_code: Optional[str] | None = None,
             mthd_rslt_type: Optional[MethodResultType] | None = None,
     ):

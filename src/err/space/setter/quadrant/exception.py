@@ -1,7 +1,7 @@
-# src/err/space/promotion/double/exception.py
+# src/err/space/setter/quadrant/exception.py
 
 """
-Module: err.space.promotion.double.exception
+Module: err.space.setter.quadrant.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,24 +10,25 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import SpaceException
+from err import SpaceSetterException
 from result import MethodResultType
 
 __all__ = [
-    # ======================# PAWN_DOUBLE_PROMOTION_ERROR #======================#
-    "PawnDoublePromotionException",
+    # ======================# QUADRANT_SPACE_SETTER_FAILURE #======================#
+    "QuadrantSpaceSetterException",
 ]
 
-# ======================# PAWN_DOUBLE_PROMOTION_ERROR #======================#
-class PawnDoublePromotionException(SpaceException):
+# ======================# QUADRANT_SPACE_SETTER_FAILURE #======================#
+class QuadrantSpaceSetterException(SpaceSetterException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an attempt was made to promote a pawn twice.
-
+        1.  Indicate that an error prevented an QuadrantSpaceSetter from completing its task. 
+        
     Attributes:
+        msg: Optional[str]
         var: Optional[str]
         val: Optional[Any]
         ex: Optional[Exception]
@@ -39,19 +40,19 @@ class PawnDoublePromotionException(SpaceException):
     Provides:
 
     Super Class:
-        SpaceException
+        SpaceSetterException
     """
-    MSG = "Cannot promote a pwan twice."
-    ERR_CODE = "PAWN_DOUBLE_PROMOTION_ERROR"
-    
+    MSG = "QuadrantSpaceSetter failure."
+    ERR_CODE = "QUADRANT_SPACE_SETTER_FAILURE"
+
     def __init__(
             self,
             msg: Optional[str] | None = None,
             var: Optional[str] | None = None,
             val: Optional[Any] | None = None,
-            ex: Optional[Exception] | None = None,
-            cls_name: Optional[str] | None = None,
             cls_mthd: Optional[str] | None = None,
+            cls_name: Optional[str] | None = None,
+            ex: Optional[Exception] | None = None,
             err_code: Optional[str] | None = None,
             mthd_rslt_type: Optional[MethodResultType] | None = None,
     ):

@@ -1,7 +1,7 @@
-# src/err/space/promotion/inactive/exception.py
+# src/err/space/setter/manager/exception.py
 
 """
-Module: err.space.promotion.inactive.exception
+Module: err.space.setter.manager.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -14,18 +14,18 @@ from err import SpaceException
 from result import MethodResultType
 
 __all__ = [
-    # ======================# PROMOTE_INACTIVE_PAWN_ERROR #======================#
-    "PromoteInactivePawnException",
+    # ======================# PAWN_SETTER_SPACE_ERROR #======================#
+    "SetterApprovalManagerException",
 ]
 
-# ======================# PROMOTE_INACTIVE_PAWN_ERROR #======================#
-class PromoteInactivePawnException(SpaceException):
+# ======================# PAWN_SETTER_SPACE_ERROR #======================#
+class SetterApprovalManagerException(SpaceException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an attempt was made to promote an inactive pawn.
+        1.  Indicate that an error occurred during a pawn setter analysis.
 
     Attributes:
         var: Optional[str]
@@ -41,8 +41,8 @@ class PromoteInactivePawnException(SpaceException):
     Super Class:
         SpaceException
     """
-    MSG = "Cannot promote an inactive pawn."
-    ERR_CODE = "PROMOTE_INACTIVE_PAWN_ERROR"
+    MSG = "Error occurred during a pawn setter analysis."
+    ERR_CODE = "PAWN_SETTER_SPACE_ERROR"
     
     def __init__(
             self,

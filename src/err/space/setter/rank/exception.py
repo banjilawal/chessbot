@@ -1,7 +1,7 @@
-# src/err/space/promotion/row/exception.py
+# src/err/space/setter/rank/exception.py
 
 """
-Module: err.space.promotion.row.exception
+Module: err.space.setter.rank.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -14,19 +14,18 @@ from err import SpaceException
 from result import MethodResultType
 
 __all__ = [
-    # ======================# PAWN_PROMOTION_ROW_ERROR #======================#
-    "PawnPromotionRowException",
+    # ======================# RANK_ELEVATION_VALIDATION_ERROR #======================#
+    "SetterLevelSpaceException",
 ]
 
-# ======================# PAWN_PROMOTION_ROW_ERROR #======================#
-class PawnPromotionRowException(SpaceException):
+# ======================# RANK_ELEVATION_VALIDATION_ERROR #======================#
+class SetterLevelSpaceException(SpaceException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a pawn was not promoted because it was not on its enemy's 
-            row row.
+        1.  Indicate a rank elevation check was not passed.
 
     Attributes:
         msg: Optional[str]
@@ -43,8 +42,8 @@ class PawnPromotionRowException(SpaceException):
     Super Class:
         SpaceException
     """
-    MSG = "Pawn cannot be promoted. It is not on the enemy row row."
-    ERR_CODE = "PAWN_PROMOTION_ROW_ERROR"
+    MSG = "Rank elevation check was not passed."
+    ERR_CODE = "RANK_ELEVATION_VALIDATION_ERROR"
     
     def __init__(
             self,
