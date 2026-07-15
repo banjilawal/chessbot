@@ -11,27 +11,29 @@ from __future__ import annotations
 
 from typing import Optional
 
-from report import OperationApprovalReport
-from stack import EdgeStackService
-from model import DiscoveryStatus, Square, StateModel
 
 
-class Node(StateModel):
+
+class SquareNode(Node[Square]):
     _priority: int
     _square: Square
     _approval: OperationApprovalReport
     _predecessor:Optional[Node]
     _incoming_edges: EdgeStackService
     _outgoing_edges: EdgeStackService
-    _discovery_status: DiscoveryStatus    
-    def __init__(self, square: Square):
-        self._square = square
-        
-        self._priority = 0
-        self._predecessor = None
-        self._incoming_edges = EdgeStackService()
-        self._outgoing_edges = EdgeStackService()
-        self._discovery_status = DiscoveryStatus.UNKNOWN
+    _discovery_status: DiscoveryStatus
+    
+    def __init__(
+            self,
+            element: Square,
+            incoming_edges: EdgeStackService | None = EdgeStackService(),
+            outgoing_edges: EdgeStackService | None = EdgeStackService(),
+    ):
+        super().__init__(
+            element=element,
+            incoming_edges=incoming_edges,
+            outgoing_edges=outgoing_edges,
+        )
         
     @property
     def square(self) -> Square:

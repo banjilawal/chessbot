@@ -18,7 +18,7 @@ from stack import EdgeStackService
 T = TypeVar("T")
 
 class Node(StateModel, Generic[T]):
-    _item: T
+    _element: T
     _priority: Optional[int]
     _predecessor:Optional[Node[T]]
     _incoming_edges: EdgeStackService
@@ -26,25 +26,30 @@ class Node(StateModel, Generic[T]):
     _discovery_status: DiscoveryStatus
     
     
-    def __init__(self, item: T):
-        self._item = item
+    def __init__(
+            self,
+            element: T,
+            incoming_edges: EdgeStackService | None = EdgeStackService(),
+            outgoing_edges: EdgeStackService | None = EdgeStackService(),
+    ):
+        self._element = element
+        self._incoming_edges = incoming_edges
+        self._outgoing_edges = outgoing_edges
         
         self._priority = None
         self._predecessor = None
-        self._incoming_edges = EdgeStackService[T]()
-        self._outgoing_edges = EdgeStackService[T]()
         self._discovery_status = DiscoveryStatus.UNKNOWN
         
     @property
-    def item(self) -> T:
-        return self._item
+    def element(self) -> T:
+        return self._element
     
     @property
-    def incoming_edges(self) -> EdgeStackService[T]:
+    def incoming_edges(self) -> EdgeStackService:
         return self._incoming_edges
     
     @property
-    def outgoing_edges(self) -> EdgeStackService[T]:
+    def outgoing_edges(self) -> EdgeStackService:
         return self._outgoing_edges
     
     @property
