@@ -12,7 +12,8 @@ from __future__ import annotations
 from typing import cast
 
 from err import AxisSpaceException
-from model import Vector
+from model import Scalar, Vector
+from register import VectorRegister
 from result import ComputationResult, MethodResultType
 from space import AxisBounds, AxisStepper, Space, SpaceBounds
 from util import LoggingLevelRouter
@@ -78,6 +79,30 @@ class Axis(Space):
         return self.bounds.terminus
     
     @LoggingLevelRouter.monitor
+    def distance(self) -> ComputationResult[Scalar]:
+        method = f"{self.__class__.__name__}.distance"
+        
+        computation = self.math.euclidean_distance.execute(VectorRegister(u=self.origin, v=self.terminus))
+        
+        # Handle the case that, the computation is aborted.
+        if computation.is_failure:
+            # Send an exception chain in the result.
+            return ComputationResult.failure(
+                AxisSpaceException(
+                    cls_mthd=method,
+                    cls_name=self.__class__.__name__,
+                    msg=AxisSpaceException.MSG,
+                    err_code=AxisSpaceException.ERR_CODE,
+                    mthd_rslt_type=MethodResultType.COMPUTATION_RESULT,
+                    ex=computation.exception,
+                ),
+            )
+        # --- Forward the work product to the caller. ---#
+        return ComputationResult.success(cast(Scalar, computation.payload))
+    
+        
+    
+    @LoggingLevelRouter.monitor
     def next(self, current: Vector) -> ComputationResult[Vector]:
         """
         Get the next vector in the direction of travel.
@@ -111,7 +136,7 @@ class Axis(Space):
                 ),
             )
         # --- Forward the work product to the caller. ---#
-        return ComputationResult.success(cast(computation.payload))
+        return ComputationResult.success(cast(Vector, computation.payload))
 
     
     @classmethod

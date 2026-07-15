@@ -11,8 +11,10 @@ from __future__ import annotations
 
 from abc import ABC, abstractmethod
 
-from model import Vector
+from model import Scalar, Vector
+from result import ComputationResult
 from space import SpaceBounds, SpaceStepper
+from toolkit import MathToolkit
 
 
 class Space(ABC):
@@ -34,8 +36,9 @@ class Space(ABC):
     """
     _bounds: SpaceBounds
     _stepper: SpaceStepper
+    _math_toolkit: MathToolkit
     
-    def __init__(self, bounds: SpaceBounds, stepper: SpaceStepper):
+    def __init__(self, bounds: SpaceBounds, stepper: SpaceStepper, math_toolkit: MathToolkit | None = MathToolkit()):
         """
         Args:
             bounds: SpaceBounds
@@ -43,6 +46,7 @@ class Space(ABC):
         """
         self._bounds = bounds
         self._stepper = stepper
+        self._math_toolkit = math_toolkit
     
     @property
     def bounds(self) -> SpaceBounds:
@@ -53,9 +57,17 @@ class Space(ABC):
         return self._stepper
     
     @property
+    def math(self) -> MathToolkit:
+        return self._math_toolkit
+    
+    @property
     def is_empty(self) -> bool:
         return self._bounds.is_empty
     
     @property
     def is_cycle(self) -> bool:
         return self._bounds.is_cycle
+    
+    @abstractmethod
+    def distance(self) -> ComputationResult[Scalar]:
+        pass

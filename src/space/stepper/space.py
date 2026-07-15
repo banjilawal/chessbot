@@ -40,7 +40,7 @@ class SpaceStepper(ABC, Generic[T]):
     
     _math_toolkit: MathToolkit
     
-    def __init__(self, math_toolkit: MathToolkit | None = MathToolkit ):
+    def __init__(self, math_toolkit: MathToolkit | None = MathToolkit() ):
         """
         Args
             math_toolkit: MathToolkit
