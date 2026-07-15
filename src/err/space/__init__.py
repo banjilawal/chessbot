@@ -12,12 +12,7 @@ version: 1.0.1
 # Packages
 from .axis import *
 from .bounds import *
-from .itinerary import *
-
 from .quadrant import *
-from .quota import *
-from .readiness import *
-from .relation import *
 from .setter import *
 
 # Modules

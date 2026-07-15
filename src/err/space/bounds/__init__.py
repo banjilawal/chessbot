@@ -10,8 +10,8 @@ version: 1.0.1
 # ============ ERR.SPACE.BOUNDS PACKAGE ===========#
 
 # Packages
-from .combatant import *
-from .king import *
+from .axis import *
+from .quadrant import *
 
 # Modules
-from .exception import BoundsshipSpaceException
+from .exception import SpaceBoundaryException

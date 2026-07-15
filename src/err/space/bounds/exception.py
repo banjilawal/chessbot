@@ -14,18 +14,18 @@ from err import SpaceException
 from result import MethodResultType
 
 __all__ = [
-    # ======================# BOUNDSSHIP_SPACE_ERROR #======================#
-    "BoundsshipSpaceException",
+    # ======================# SPACE_BOUNDARY_ERROR #======================#
+    "SpaceBoundaryException",
 ]
 
-# ======================# BOUNDSSHIP_SPACE_ERROR #======================#
-class BoundsshipSpaceException(SpaceException):
+# ======================# SPACE_BOUNDARY_ERROR #======================#
+class SpaceBoundaryException(SpaceException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an error prevented a BoundsshipSpace from completing its task. 
+        1.  Indicate that an attempt was made to access points outside the Space.
 
     Attributes:
         var: Optional[str]
@@ -41,8 +41,8 @@ class BoundsshipSpaceException(SpaceException):
     Super Class:
         SpaceException
     """
-    MSG = "BoundsshipSpace encountered an error. Analysis aborted."
-    ERR_CODE = "BOUNDSSHIP_SPACE_ERROR"
+    MSG = "Outside the Space boundaries."
+    ERR_CODE = "SPACE_BOUNDARY_ERROR"
     
     def __init__(
             self,

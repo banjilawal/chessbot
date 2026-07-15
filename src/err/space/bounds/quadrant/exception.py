@@ -1,7 +1,7 @@
-# src/err/space/quota/exception.py
+# src/err/space/bounds/quadrant/exception.py
 
 """
-Module: err.space.quota.exception
+Module: err.space.bounds.quadrant.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,22 +10,22 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import SpaceException
+from err import SpaceBoundaryException
 from result import MethodResultType
 
 __all__ = [
-    # ======================# RANK_QUOTA_SPACE_ERROR #======================#
-    "RankQuotaSpaceException",
+    # ======================# QUADRANT_SPACE_BOUNDS_ERROR #======================#
+    "QuadrantBoundaryException",
 ]
 
-# ======================# RANK_QUOTA_SPACE_ERROR #======================#
-class RankQuotaSpaceException(SpaceException):
+# ======================# QUADRANT_SPACE_BOUNDS_ERROR #======================#
+class QuadrantBoundaryException(SpaceBoundaryException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an error occurred during a TokenStack's rank quota analysis.
+        1.  Indicate that an attempt was made to access points outside the QuadrantSpace.
 
     Attributes:
         var: Optional[str]
@@ -39,10 +39,10 @@ class RankQuotaSpaceException(SpaceException):
     Provides:
 
     Super Class:
-        SpaceException
+        SpaceBoundaryException
     """
-    MSG = "Error occurred during a TokenStack's rank quota analysis."
-    ERR_CODE = "RANK_QUOTA_SPACE_ERROR"
+    MSG = "Outside the QuadrantSpace boundaries."
+    ERR_CODE = "QUADRANT_SPACE_BOUNDS_ERROR"
     
     def __init__(
             self,

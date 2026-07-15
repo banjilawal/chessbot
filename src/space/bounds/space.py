@@ -15,10 +15,30 @@ from register import VectorRegister
 
 
 class SpaceBounds:
+    """
+    Role:
+        -   Data Holder
+
+    Responsibilities:
+        1.  Store upper and lower bounds of a Space. basic integrity and sanity checking.
+
+    Attributes:
+        origin: Vector
+        terminus: Vector
+
+    Provides:
+
+    Super Class:
+    """
     
     _endpoints: VectorRegister
     
     def __init__(self, origin: Vector, terminus: Vector):
+        """
+        Args:
+            origin: Vector
+            terminus: Vector
+        """
         self._endpoints = VectorRegister(u=origin, v=terminus)
         
     @property

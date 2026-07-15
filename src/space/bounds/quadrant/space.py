@@ -17,8 +17,7 @@ from space import QuadrantTerminusEntry, SpaceBounds
 class QuadrantBounds(SpaceBounds):
     """
     Role:
-        -   Computation Worker
-        -   Integrity Management
+        -   Data Holder
 
     Responsibilities:
         1.  Prevent ArrayIndexOutOfBounds errors by calculating the upper and lower bounds
