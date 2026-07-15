@@ -9,7 +9,7 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from typing import Iterator, Optional, cast
+from typing import Iterator, List, Optional, cast
 
 from model import Coord, CoordRay, Ray, Vector
 from ray.ray import T
@@ -24,6 +24,7 @@ class VectorRay(Ray[Vector]):
     Responsibilities:
         1.  List of Vectors in order of discovery on a line.
         2.  Resource for a GraphFactory needs for creating Edge and Node products.
+        3.  No direct access to the list.
 
     Attributes:
         origin: Optional[Vector]
@@ -50,12 +51,14 @@ class VectorRay(Ray[Vector]):
         *****===DOES NOT GUARANTEE UNIQUENESS, INTEGRITY OR CONSISTENCY===*****
     """
     
-    def __init__(self, origin: Optional[Vector] | None = None,):
+    def __init__(self, points: Optional[List[Vector]]):
         """
         Args:
-            origin: Vector
+            points: List[Vector]
         """
-        super().__init__(origin=origin)
+        super().__init__(points=points)
+        if points is None:
+            points = []
     
     @property
     def origin(self) -> Optional[Vector]:
@@ -71,7 +74,16 @@ class VectorRay(Ray[Vector]):
     
     @property
     def is_cycle(self) -> bool:
-        return super().is_cycle and self.origin == self.terminus
+        if not super().is_cycle:
+            return False
+        return self.origin == self.terminus
+    
+    @property
+    def is_not_cycle(self) -> bool:
+        return not self.is_cycle
+    
+    def add_point(self, point: Vector):
+        self._points.append(point)
     
     def have_same_origin(self, other: Ray[Vector]) -> bool:
         if not super().have_same_origin(other):
@@ -81,22 +93,21 @@ class VectorRay(Ray[Vector]):
         ray = cast(VectorRay, other)
         return self.origin == ray.origin
     
-    def origins_are_different(self, other) -> bool:
-        return not self.have_same_origin()
-    
     def have_same_terminus(self, other) -> bool:
         if not super().have_same_origin(other):
             return False
         if not isinstance(other, VectorRay):
             return False
         ray = cast(VectorRay, other)
-        return self.terminus == ray.terminus_is_different()
+        return self.terminus == ray.terminus
     
-    def terminus_is_different(self, ray: Ray[T]) -> bool:
-        return not self.have_same_terminus()
+    def origins_are_different(self, other) -> bool:
+        return not self.have_same_origin(other)
     
-    def add_point(self, point: Vector):
-        self._points.append(point)
+    def termini_are_different(self, other) -> bool:
+        return not self.have_same_terminus(other)
+    
+
         
     def to_coord_ray(self) -> CoordRay:
         
