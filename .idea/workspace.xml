@@ -5,31 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/err/space/setter/axis/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/space/setter/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/space/setter/inactive/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/space/setter/manager/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/space/setter/rank/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/space/setter/rank/king/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/space/setter/rank/pawn/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/space/setter/row/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/space/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/space/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/space/promotion/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/space/setter/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/space/promotion/double/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/space/promotion/double/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/space/setter/axis/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/space/promotion/inactive/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/space/promotion/inactive/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/space/setter/inactive/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/space/promotion/manager/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/space/promotion/manager/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/space/setter/manager/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/space/promotion/rank/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/space/promotion/rank/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/space/setter/rank/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/space/promotion/rank/king/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/space/promotion/rank/king/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/space/setter/rank/king/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/space/promotion/rank/pawn/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/space/promotion/rank/pawn/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/space/setter/rank/pawn/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/space/promotion/row/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/space/promotion/row/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/space/setter/row/exception.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/space/stepper/axis/space.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/stepper/axis/space.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -85,7 +60,7 @@
     "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/err/space/setter/axis",
+    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/err/space/setter",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
@@ -97,11 +72,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/err/space/setter" />
       <recent name="$PROJECT_DIR$/src/err/space/setter/axis" />
       <recent name="$PROJECT_DIR$/src/err/space/promotion" />
       <recent name="$PROJECT_DIR$/src/err/space" />
       <recent name="$PROJECT_DIR$/src/err" />
-      <recent name="$PROJECT_DIR$/src/space" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/space/terminus/quadrant" />
@@ -817,7 +792,7 @@
       <workItem from="1784029158325" duration="10323000" />
       <workItem from="1784040408484" duration="7069000" />
       <workItem from="1784050719673" duration="78000" />
-      <workItem from="1784055454795" duration="14615000" />
+      <workItem from="1784055454795" duration="15143000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />

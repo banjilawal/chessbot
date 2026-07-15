@@ -20,7 +20,31 @@ from util import LoggingLevelRouter
 
 
 class AxisStepper(Stepper[AxisSpace]):
-    DELTA = {
+    """
+    Role:
+        -   Computation Worker
+
+    Responsibilities:
+        1.  Produce the next vector on axis by taking a step of size delta_vector.
+
+    Attributes:
+        DELTA: Dict[str, Vector]
+        delta: Vector
+
+    Provides:
+        -   next(current: Vector) -> ComputationResult[Vector]
+        -   east() -> AxisStepper
+        -   north() -> AxisStepper
+        -   west() -> AxisStepper
+        -   south() -> AxisStepper
+
+    Super Class:
+        Stepper
+    
+    WARNING:
+        *****===ONLY_INSTANTIATE_WITH_THE_FACTORY_METHODS===*****
+    """
+    DELTA: Dict[str, Vector] = {
         "east": Vector(x=1, y=0),
         "north": Vector(x=0, y=-1),
         "south": Vector(x=0, y=1),
@@ -30,6 +54,10 @@ class AxisStepper(Stepper[AxisSpace]):
     _delta: Vector
     
     def __init__(self, delta: Vector):
+        """
+        Args:
+            deltat: Vector
+        """
         super().__init__()
         self._delta = delta
         
@@ -56,7 +84,7 @@ class AxisStepper(Stepper[AxisSpace]):
         
         # --- Safely add delta and current. ---#
         computation = self.math.add_vector.execute(
-            VectorRegister(u=u, v=self._delta)
+            VectorRegister(u=current, v=self._delta)
         )
         # Handle the case that, the computation is aborted.
         if computation.is_failure:
@@ -76,16 +104,32 @@ class AxisStepper(Stepper[AxisSpace]):
     
     @classmethod
     def east(cls) -> AxisStepper:
+        """
+        AxisStepper for going east (right), towards num_columns - 1.
+            -   delta ==> dx(1, 0)
+        """
         return cls(delta=cls.DELTA["east"])
     
     @classmethod
     def north(cls) -> AxisStepper:
+        """
+        AxisStepper for going north (up), towards 0
+            -   delta ==> dy(0, -1)
+        """
         return cls(delta=cls.DELTA["north"])
     
     @classmethod
     def west(cls) -> AxisStepper:
+        """
+        AxisStepper for going west (left), towards 0
+            -   delta ==> dx(-1, 0)
+        """
         return cls(delta=cls.DELTA["west"])
     
     @classmethod
     def south(cls) -> AxisStepper:
+        """
+        AxisStepper for going south (down), towards 0
+            -   delta ==> dy(0, 1)
+        """
         return cls(delta=cls.DELTA["south"])

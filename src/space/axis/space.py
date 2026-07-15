@@ -40,6 +40,9 @@ class AxisSpace(Space):
         
     Super Class:
         Space
+        
+    WARNING:
+        *****===ONLY_INSTANTIATE_WITH_THE_FACTORY_METHODS===*****
     """
     _bounds: AxisBounds
     _stepper: AxisStepper
