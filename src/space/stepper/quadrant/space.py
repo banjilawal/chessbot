@@ -59,8 +59,6 @@ class QuadrantStepper(Stepper[Quadrant]):
     Attributes:
         ENTRY: Dict[str, NumberRegister]
         
-        x_
-        
         x_step: int
         slope: int
 
