@@ -35,6 +35,7 @@ class QuadrantStepper(Stepper[Quadrant]):
             slope: int
         """
         super().__init__()
+        """INTERNAL: Use factory methods instead of direct constructor."""
         self._register = NumberRegister(a=x_step, b=slope)
         
     @property

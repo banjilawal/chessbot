@@ -21,6 +21,7 @@ class QuadrantBounds(SpaceBounds):
     
     def __init__(self, origin: Vector, terminus: Vector,):
         super().__init__(origin=origin, terminus=terminus)
+        """INTERNAL: Use factory methods instead of direct constructor."""
         
 
     

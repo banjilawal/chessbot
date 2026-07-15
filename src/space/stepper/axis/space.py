@@ -22,7 +22,7 @@ from util import LoggingLevelRouter
 class AxisStepper(Stepper[AxisSpace]):
     """
     Role:
-        -   Computation Worker
+        -   Lookup Table
 
     Responsibilities:
         1.  Produce the next vector on axis by taking a step of size delta_vector.
@@ -56,9 +56,10 @@ class AxisStepper(Stepper[AxisSpace]):
     def __init__(self, delta: Vector):
         """
         Args:
-            deltat: Vector
+            delta: Vector
         """
         super().__init__()
+        """INTERNAL: Use factory methods instead of direct constructor."""
         self._delta = delta
         
     @property

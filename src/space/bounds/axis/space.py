@@ -18,14 +18,42 @@ from space import SpaceBounds
 
 
 class AxisBounds(SpaceBounds):
+    """
+    Role:
+        -   Computation Worker
+        -   Integrity Management
 
-    
+    Responsibilities:
+        1.  Prevent ArrayIndexOutOfBounds errors by calculating the last point in the direction
+            of travel
+            
+
+    Attributes:
+        DELTA: Dict[str, Vector]
+        delta: Vector
+
+    Provides:
+        -   east(origin: Vector) -> AxisBounds
+        -   north(origin: Vector) -> AxisBounds
+        -   west(origin: Vector) -> AxisBounds
+        -   south(origin: Vector) -> AxisBounds
+
+    Super Class:
+        SpaceBounds
+
+    WARNING:
+        *****===ONLY_INSTANTIATE_WITH_THE_FACTORY_METHODS===*****
+    """
     def __init__(self, origin: Vector, terminus: Vector):
         super().__init__(origin=origin, terminus=terminus)
+        """INTERNAL: Use factory methods instead of direct constructor."""
     
     
     @classmethod
     def east(cls, origin: Vector) -> AxisBounds:
+        """
+        East towards num_columns - 1 (right)
+        """
         return cls(
             origin=origin,
             terminus = Vector(
@@ -36,6 +64,9 @@ class AxisBounds(SpaceBounds):
     
     @classmethod
     def north(cls, origin: Vector) -> AxisBounds:
+        """
+        North towards 0  (up)
+        """
         return cls(
             origin=origin,
             terminus=Vector(x=origin.x, y=0),
@@ -43,6 +74,9 @@ class AxisBounds(SpaceBounds):
     
     @classmethod
     def south(cls, origin: Vector) -> AxisBounds:
+        """
+        South towards num_rows - 1 (up)
+        """
         return cls(
             origin=origin,
             terminus=Vector(
@@ -53,6 +87,9 @@ class AxisBounds(SpaceBounds):
     
     @classmethod
     def west(cls, origin: Vector) -> AxisBounds:
+        """
+        West towards 0 (left)
+        """
         return cls(
             origin=Vector(x=0, y=origin.y),
             terminus=origin

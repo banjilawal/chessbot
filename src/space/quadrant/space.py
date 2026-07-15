@@ -47,6 +47,7 @@ class Quadrant(Space):
             stepper: QuadrantStepper
         """
         super().__init__(bounds=bounds)
+        """INTERNAL: Use factory methods instead of direct constructor."""
         self._stepper = stepper
         
     @property
