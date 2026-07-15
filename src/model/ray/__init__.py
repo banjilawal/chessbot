@@ -11,6 +11,7 @@ version: 1.0.1
 
 # Packages
 from .coord import *
+from .vector import *
 
 # Modules
 from .model import Ray

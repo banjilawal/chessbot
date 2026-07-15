@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Iterator, Optional, cast
 
-from model import Coord, Ray, Vector
+from model import Coord, Ray, Vector, VectorRay
 from model.ray.model import T
 
 
@@ -66,7 +66,6 @@ class CoordRay(Ray[Coord]):
         self._points.append(point)
         
     def to_vector_ray(self) -> VectorRay:
-        
         ray = VectorRay(
             origin=Vector(
                 x=self.origin.column,
