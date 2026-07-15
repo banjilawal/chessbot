@@ -11,9 +11,10 @@ from __future__ import annotations
 
 from typing import Dict, cast
 
+from err import AxisSpaceSetterException
 from model import Vector
 from register import VectorRegister
-from result import ComputationResult
+from result import ComputationResult, MethodResultType
 from space import AxisSpace, Stepper
 from util import LoggingLevelRouter
 
@@ -61,7 +62,14 @@ class AxisStepper(Stepper[AxisSpace]):
         if computation.is_failure:
             # Send an exception chain in the result.
             return ComputationResult.failure(
-                computation.exception
+                AxisSpaceSetterException(
+                    cls_mthd=method,
+                    cls_name=self.__class__.__name__,
+                    msg=AxisSpaceSetterException.MSG,
+                    err_code=AxisSpaceSetterException.ERR_CODE,
+                    mthd_rslt_type=MethodResultType.COMPUTATION_RESULT,
+                    ex=computation.exception,
+                ),
             )
         # --- Forward the work product to the caller. ---#
         return ComputationResult.success(cast(Vector, computation.payload))
