@@ -90,7 +90,7 @@ __all__ = [
 ]
 
 from system import SearchException
-from model.state.node import NodeException
+from node import NodeException
 
 
 # ======================# NODE_SEARCH_FAILURE #======================#

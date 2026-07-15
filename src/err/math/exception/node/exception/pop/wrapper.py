@@ -12,7 +12,7 @@ __all__ = [
     "NodePopException",
 ]
 
-from model.state.node import NodeStackException
+from node import NodeStackException
 from system import DeletionException
 
 

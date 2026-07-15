@@ -14,7 +14,7 @@ from typing import Dict
 from model.math.coord import Coord, CoordService
 from microservice.edge import Edge, EdgeBuilder
 from graph.domain.graph import Graph
-from model.state.node import Node, NodeBuilder
+from node import Node, NodeBuilder
 from math.span import BishopSpanServiceException, BishopSpanner, CoordSpan, SpanMicroservice
 from geometry.square import Square, SquareContext, SquareDatabase
 from system import BuildResult, ComputationResult, IdFactory, LoggingLevelRouter

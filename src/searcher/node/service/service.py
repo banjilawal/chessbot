@@ -11,7 +11,7 @@ from __future__ import annotations
 from typing import cast
 
 from system import QueryService, id_emitter
-from model.state.node import NodeContext, NodeContextBuilder, NodeContextValidator, NodeFinder
+from node import NodeContext, NodeContextBuilder, NodeContextValidator, NodeFinder
 
 
 class NodeQueryService(QueryService[NodeContext]):

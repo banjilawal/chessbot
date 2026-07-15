@@ -10,7 +10,7 @@ version: 1.0.0
 from __future__ import annotations
 
 from microservice.edge import EdgeStack
-from model.state.node import NodeStackService
+from node import NodeStackService
 
 
 class Graph:

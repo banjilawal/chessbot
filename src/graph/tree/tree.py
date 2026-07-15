@@ -11,7 +11,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import List
 
-from model.state.node import Node
+from node import Node
 from graph.pair import PairList
 from graph.pair.listing.service import PairListService
 

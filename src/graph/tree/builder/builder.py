@@ -9,7 +9,7 @@ version: 1.0.0
 
 from __future__ import annotations
 
-from model.state.node import NodeService
+from node import NodeService
 from graph.pair import PairListBuilder, NodeTreeBuilderException
 from graph.pair.pair.service.service import PairService
 from graph.tree.tree import NodeTree

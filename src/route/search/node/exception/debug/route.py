@@ -15,7 +15,7 @@ __all__ = [
     "NodeSearchRouteException",
 ]
 
-from model.state.node import NodeDebugException
+from node import NodeDebugException
 
 
 # ======================# NO_NODE_SEARCH_ROUTE_ROUTE_EXCEPTION #======================#

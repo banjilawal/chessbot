@@ -9,7 +9,7 @@ version: 1.0.0
 
 from __future__ import annotations
 
-from model.state.node import Node, NodeService
+from node import Node, NodeService
 from graph.pair import PairBuilder, PairList, PairListBuilderException, TreeDoesNotOwnRayException
 from math.span import SquareRay, SquareRayService
 from system import BuildResult, Builder, LoggingLevelRouter

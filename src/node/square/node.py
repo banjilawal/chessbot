@@ -1,7 +1,7 @@
-# src/model/state/node/model/state.py
+# src/node/square/node.py
 
 """
-Module: model.state.node.model
+Module: node.square.node
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

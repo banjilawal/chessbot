@@ -17,7 +17,6 @@ from .edge import *
 from .game import *
 from .graph import *
 from .maneuver import *
-from .node import *
 from .player import *
 from .query import *
 from .registry import *

@@ -17,7 +17,7 @@ from math.span import (
     PairInsertionException, NodeStackServiceProductionException, SquareGraphHandlerException,
     SquareRay, SquareSpan
 )
-from model.state.node import Node, NodeService,
+from node import Node, NodeService,
 from math.span.service.handler import PairBuilderException
 from system import BuildResult, InsertionResult, LoggingLevelRouter
 

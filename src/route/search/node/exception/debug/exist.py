@@ -15,7 +15,7 @@ __all__ = [
     "NodeNotFoundException",
 ]
 
-from model.state.node import NodeDebugException
+from node import NodeDebugException
 
 
 # ======================# NODE_NOT_FOUND_EXCEPTION #======================#
