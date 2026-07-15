@@ -14,7 +14,6 @@ from .binder import *
 from .coord import *
 from .path import *
 from .rank import *
-from .ray import *
 from .scalar import *
 from .state import *
 from .vector import *

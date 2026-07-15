@@ -12,8 +12,8 @@ from __future__ import annotations
 from typing import List, cast
 
 from err import AxisRayComputerException
-from model import Coord, Vector, VectorRay
-from ray import RayComputer
+from model import Vector
+from ray import RayComputer, VectorRay
 from result import ComputationResult
 from space import Axis
 
@@ -68,6 +68,7 @@ class AxisRayComputer(RayComputer[Axis]):
         
         ray: VectorRay = VectorRay()
         
+        # Deal with an empty Space.
         if self.space.is_empty:
             return ComputationResult.success(ray)
 

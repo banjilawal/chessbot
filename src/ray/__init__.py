@@ -13,6 +13,7 @@ version: 1.0.1
 from .computer import *
 from .coord import *
 from .vector import *
+from .token import *
 from .square import *
 
 # Modules

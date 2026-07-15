@@ -10,11 +10,12 @@ version: 1.0.1
 from __future__ import annotations
 
 from abc import ABC, abstractmethod
-from typing import Generic, List, TypeVar
+from typing import Generic, TypeVar
 
-from model import Coord, Vector, VectorRay
+from ray import VectorRay
 from result import ComputationResult
 from toolkit import MathToolkit
+from util import LoggingLevelRouter
 
 T = TypeVar("T", bound= "Space")
 
@@ -40,7 +41,11 @@ class RayComputer(ABC, Generic[T]):
     _space: T
     _math_toolkit: MathToolkit
     
-    def __init__(self, space: T, math_toolkit: MathToolkit | None = MathToolkit()):
+    def __init__(
+            self,
+            space: T,
+            math_toolkit: MathToolkit | None = MathToolkit()
+    ):
         """
         Args:
             space: T
@@ -58,5 +63,6 @@ class RayComputer(ABC, Generic[T]):
         return self._space
     
     @abstractmethod
+    @LoggingLevelRouter.monitor
     def execute(self, ) -> ComputationResult[VectorRay]:
         pass

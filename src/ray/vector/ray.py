@@ -11,8 +11,8 @@ from __future__ import annotations
 
 from typing import Iterator, List, Optional, cast
 
-from model import Coord, CoordRay, Ray, Vector
-from ray.ray import T
+from model import Coord, Vector
+from ray import CoordRay, Ray
 
 
 class VectorRay(Ray[Vector]):
@@ -51,14 +51,15 @@ class VectorRay(Ray[Vector]):
         *****===DOES NOT GUARANTEE UNIQUENESS, INTEGRITY OR CONSISTENCY===*****
     """
     
-    def __init__(self, points: Optional[List[Vector]]):
+    def __init__(
+            self,
+            points: Optional[List[Vector]] | None = None
+    ):
         """
         Args:
             points: List[Vector]
         """
         super().__init__(points=points)
-        if points is None:
-            points = []
     
     @property
     def origin(self) -> Optional[Vector]:
@@ -109,13 +110,7 @@ class VectorRay(Ray[Vector]):
 
         
     def to_coord_ray(self) -> CoordRay:
-        
-        ray = CoordRay(
-            origin=Coord(
-                column=self.origin.x,
-                row=self.origin.y,
-            )
-        )
+        ray = CoordRay()
         for point in self._points:
             ray.add_point(Coord(column=point.x, row=point.y))
         return ray
