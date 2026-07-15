@@ -39,7 +39,7 @@ class AxisRayComputer(RayComputer):
             2.  Otherwise, append the stepper's payload to the array and advance the cursor.
         Args:
         Returns:
-            ComputationResult[Vector]
+            ComputationResult[List[Vector]]
         Raises:
              AxisRayComputerException
         """
@@ -76,11 +76,27 @@ class AxisRayComputer(RayComputer):
         # --- Forward the work product to the caller. ---#
         return ComputationResult.success(vectors)
         
-    def coord_ray(self) -> ComputationResult:
+    def coord_ray(self) -> ComputationResult[List[Coord]]:
+        """
+        Get the series of Coords from the space's origin to its terminus.
+
+        Action:
+            1.  Send an exception chain in the ComputationResult if the list cannot be generated.
+            2.  Otherwise, send the success result.
+        Args:
+        Returns:
+            ComputationResult[List[Coord]]
+        Raises:
+             AxisRayComputerException
+        """
         method = f"{self.__class__.__name__}.coord_ray"
         
         coords: List[Coord] = []
+        
+        # --- Get the Vector ray. ---#
         computation = self.vector_ray()
+        
+        # Handle the case that, the vector ray was not produced
         if computation.is_failure:
             # Send the exception chain on the failure.
             return ComputationResult.failure(
@@ -93,9 +109,14 @@ class AxisRayComputer(RayComputer):
                     ex=computation.exception,
                 )
             )
+        # --- Extract and cast the vector list. ---#
         vectors = cast(List[Vector], computation.payload)
+        
+        # Loop through the vectors to process them into Coords
         for vector in vectors:
+            
             build = self.math.coord.builder.execute(row=vector.x, column=vector.y)
+            # Handle the case that, a Coord could not be created from the Vector
             if build.is_failure:
                 # Send the exception chain on failure.
                 return ComputationResult.failure(
@@ -108,5 +129,8 @@ class AxisRayComputer(RayComputer):
                         ex=build.exception,
                     )
                 )
+            # Add to the list.
             coords.append(cast(Coord, build.payload))
+            
+        # --- Forward the work product to the caller. ---#
         return ComputationResult.success(coords)
