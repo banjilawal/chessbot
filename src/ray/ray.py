@@ -78,8 +78,6 @@ class Ray(Model, Generic[T]):
     def is_empty(self) -> bool:
         return len(self._points) == 0
     
-
-    
     def add_point(self, point: T):
         self._points.append(point)
     
@@ -151,7 +149,6 @@ class Ray(Model, Generic[T]):
         ray = cast(Ray, other)
         return self.is_empty or ray.is_empty
     
-
     @abstractmethod
     def is_not_cycle(self) -> bool:
         pass

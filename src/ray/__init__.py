@@ -10,9 +10,10 @@ version: 1.0.1
 # =========== RAY PACKAGE ===========#
 
 # Packages
-from computer import *
-from coord import *
+from .computer import *
+from .coord import *
 from .vector import *
+from .square import *
 
 # Modules
 from .ray import Ray

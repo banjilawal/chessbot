@@ -9,10 +9,10 @@ version: 1.0.1
 
 from __future__ import annotations
 from math import sqrt
-from typing import cast
+from typing import Optional, cast
 
 from controller import WorkerRegistryController
-from pipeline import ScalarBuildPipeline
+from pipeline import ScalarBuilder
 from result import ComputationResult
 from util import LoggingLevelRouter
 from err import VectorEuclideanException
@@ -35,7 +35,7 @@ class EuclideanDistance(Operation[PointRegister]):
         -   def execute(
                 register: VectorRegister,
                 register_validator: VectorRegisterValidator | None = None,
-                scalar_assembler: ScalarBuildPipeline | None = None,
+                scalar_assembler: ScalarBuilder | None = None,
             ) -> ComputationResult[Scalar]:
 
     Super Class:
@@ -48,8 +48,8 @@ class EuclideanDistance(Operation[PointRegister]):
     def execute(
             cls,
             register: PointRegister,
-            register_validator: VectorRegisterValidator | None = None,
-            scalar_build_pipeline: ScalarBuildPipeline | None = None,
+            register_validator: Optional[VectorRegisterValidator] | None = None,
+            scalar_build_pipeline: Optional[ScalarBuilder] | None = None,
     ) -> ComputationResult[Scalar]:
         """
         Compute the Euclidean distance between the register's contents.
@@ -65,7 +65,7 @@ class EuclideanDistance(Operation[PointRegister]):
             register: VectorRegister
             register_validator: VectorRegisterValidator
             operand_toolkit: VectorOperandToolkit
-            scalar_build_pipeline: ScalarBuildPipeline
+            scalar_build_pipeline: ScalarBuilder
         Result:
             ComputationResult[Scalar]:
         Raises:
@@ -77,7 +77,7 @@ class EuclideanDistance(Operation[PointRegister]):
             register_validator = VectorRegisterValidator()
             
         if scalar_build_pipeline is None:
-            scalar_build_pipeline = ScalarBuildPipeline()
+            scalar_build_pipeline = ScalarBuilder()
         
         # Handle the case that, the register is flagged.
         register_validation_result = register_validator.execute(register)
@@ -125,7 +125,4 @@ class EuclideanDistance(Operation[PointRegister]):
                 )
             )
         # --- Forward the work product to the caller. ---#
-        return ComputationResult.success(scalar_assembly_result.payload)
-    
-# Register the operation.
-WorkerRegistryController.register_worker(worker=EuclideanDistance)
+        return ComputationResult.success(cast(Scalar, scalar_assembly_result.payload))

@@ -80,11 +80,26 @@ class Axis(Space):
     
     @LoggingLevelRouter.monitor
     def distance(self) -> ComputationResult[Scalar]:
+        """
+        Get the Euclidean distance between the Space's endpoints.
+
+        Action:
+            1.  Send an exception chain in the ComputationResult if the math toolkit
+                cannot produce a solution.
+            2.  Otherwise, send the computed vector in the success result.
+        Args:
+        Returns:
+            ComputationResult[Scalar]
+        Raises:
+             AxisSpaceException
+        """
         method = f"{self.__class__.__name__}.distance"
         
-        computation = self.math.euclidean_distance.execute(VectorRegister(u=self.origin, v=self.terminus))
-        
-        # Handle the case that, the computation is aborted.
+        # Request the Euclidean distance
+        computation = self.math.euclidean_distance.execute(
+            register=VectorRegister(u=self.origin, v=self.terminus)
+        )
+        # Handle the case that, the computation is not satisfied.
         if computation.is_failure:
             # Send an exception chain in the result.
             return ComputationResult.failure(
@@ -100,7 +115,6 @@ class Axis(Space):
         # --- Forward the work product to the caller. ---#
         return ComputationResult.success(cast(Scalar, computation.payload))
     
-        
     
     @LoggingLevelRouter.monitor
     def next(self, current: Vector) -> ComputationResult[Vector]:

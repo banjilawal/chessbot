@@ -1,7 +1,7 @@
-# src/ray/vector/ray.py
+# src/ray/square/ray.py
 
 """
-Module: ray.vector.ray
+Module: ray.square.ray
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -11,31 +11,31 @@ from __future__ import annotations
 
 from typing import Iterator, List, Optional, cast
 
-from model import Coord, CoordRay, Ray, Vector
+from model import Coord, CoordRay, Ray, Square
 from ray.ray import T
 
 
-class VectorRay(Ray[Vector]):
+class SquareRay(Ray[Square]):
     """
     Role:
         -   DTO, Data Holder
         -   Transform
 
     Responsibilities:
-        1.  List of Vectors in order of discovery on a line.
+        1.  List of Squares in order of discovery on a line.
         2.  Resource for a GraphFactory needs for creating Edge and Node products.
         3.  No direct access to the list.
 
     Attributes:
-        origin: Optional[Vector]
-        terminus: Optional[Vector]
-        iterator: Iterator[Vector]:
+        origin: Optional[Square]
+        terminus: Optional[Square]
+        iterator: Iterator[Square]:
         is_empty: bool
         is_cycle: bool
         size: int
 
     Provides:
-        -   def add_point(point: Vector)
+        -   def add_point(point: Square)
         -   def to_coord_ray() -> CoordRay
         
         -   def have_same_origin(other) -> bool
@@ -51,25 +51,25 @@ class VectorRay(Ray[Vector]):
         *****===DOES NOT GUARANTEE UNIQUENESS, INTEGRITY OR CONSISTENCY===*****
     """
     
-    def __init__(self, points: Optional[List[Vector]]):
+    def __init__(self, points: Optional[List[Square]]):
         """
         Args:
-            points: List[Vector]
+            points: List[Square]
         """
         super().__init__(points=points)
         if points is None:
             points = []
     
     @property
-    def origin(self) -> Optional[Vector]:
-        return cast(Vector, self.origin)
+    def origin(self) -> Optional[Square]:
+        return cast(Square, self.origin)
     
     @property
-    def terminus(self) -> Optional[Vector]:
-        return cast(Vector, self.terminus)
+    def terminus(self) -> Optional[Square]:
+        return cast(Square, self.terminus)
     
     @property
-    def iterator(self) -> Iterator[Vector]:
+    def iterator(self) -> Iterator[Square]:
         return iter(self._points)
     
     @property
@@ -82,23 +82,23 @@ class VectorRay(Ray[Vector]):
     def is_not_cycle(self) -> bool:
         return not self.is_cycle
     
-    def add_point(self, point: Vector):
+    def add_point(self, point: Square):
         self._points.append(point)
     
-    def have_same_origin(self, other: Ray[Vector]) -> bool:
+    def have_same_origin(self, other: Ray[Square]) -> bool:
         if not super().have_same_origin(other):
             return False
-        if not isinstance(other, VectorRay):
+        if not isinstance(other, SquareRay):
             return False
-        ray = cast(VectorRay, other)
+        ray = cast(SquareRay, other)
         return self.origin == ray.origin
     
     def have_same_terminus(self, other) -> bool:
         if not super().have_same_origin(other):
             return False
-        if not isinstance(other, VectorRay):
+        if not isinstance(other, SquareRay):
             return False
-        ray = cast(VectorRay, other)
+        ray = cast(SquareRay, other)
         return self.terminus == ray.terminus
     
     def origins_are_different(self, other) -> bool:

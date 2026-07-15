@@ -10,11 +10,13 @@ version: 1.0.1
 from __future__ import annotations
 
 from abc import ABC, abstractmethod
+from typing import Optional
 
 from model import Scalar, Vector
 from result import ComputationResult
 from space import SpaceBounds, SpaceStepper
 from toolkit import MathToolkit
+from util import LoggingLevelRouter
 
 
 class Space(ABC):
@@ -29,6 +31,7 @@ class Space(ABC):
     Attributes:
         bounds: SpaceBounds
         stepper: Stepper
+        math_toolkit: Optional[MathToolkit]
 
     Provides:
 
@@ -36,13 +39,19 @@ class Space(ABC):
     """
     _bounds: SpaceBounds
     _stepper: SpaceStepper
-    _math_toolkit: MathToolkit
+    _math_toolkit: Optional[MathToolkit]
     
-    def __init__(self, bounds: SpaceBounds, stepper: SpaceStepper, math_toolkit: MathToolkit | None = MathToolkit()):
+    def __init__(
+            self,
+            bounds: SpaceBounds,
+            stepper: SpaceStepper,
+            math_toolkit: Optional[MathToolkit] | None = MathToolkit()
+    ):
         """
         Args:
             bounds: SpaceBounds
             stepper: Stepper
+            math_toolkit: Optional[MathToolkit]
         """
         self._bounds = bounds
         self._stepper = stepper
@@ -69,5 +78,6 @@ class Space(ABC):
         return self._bounds.is_cycle
     
     @abstractmethod
+    @LoggingLevelRouter.monitor
     def distance(self) -> ComputationResult[Scalar]:
         pass

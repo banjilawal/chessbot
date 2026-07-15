@@ -5,24 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/ray/computer/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ray/computer/ray.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ray/s.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/ray/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/ray/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/ray/coord/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/ray/coord/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/ray/coord/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/ray/coord/ray.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/ray/model.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/ray/vector/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/ray/vector/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/ray/vector/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/ray/vector/ray.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/node/square/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/node/square/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/node/square/node.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/node/square/node.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/algebra/vector/distance/euclidean/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/algebra/vector/distance/euclidean/operation.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ray/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/ray/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ray/axis/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/ray/computer/axis/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ray/axis/ray.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/ray/computer/axis/ray.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ray/quadrant/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/ray/computer/quadrant/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ray/quadrant/ray.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/ray/computer/quadrant/ray.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ray/coord/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ray/coord/ray.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ray/ray.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/ray/ray.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ray/vector/ray.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/ray/vector/ray.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/space/axis/space.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/axis/space.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/space/bounds/axis/space.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/bounds/axis/space.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/space/space.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/space.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -78,7 +70,7 @@
     "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/node/square",
+    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/ray",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
@@ -90,11 +82,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/ray" />
       <recent name="$PROJECT_DIR$/src/node/square" />
       <recent name="$PROJECT_DIR$/src/model/ray" />
       <recent name="$PROJECT_DIR$/src/model/ray/coord" />
       <recent name="$PROJECT_DIR$/src/err/space/bounds" />
-      <recent name="$PROJECT_DIR$/src/err/space/bounds/axis" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/ray" />
@@ -787,7 +779,7 @@
       <workItem from="1784029158325" duration="10323000" />
       <workItem from="1784040408484" duration="7069000" />
       <workItem from="1784050719673" duration="78000" />
-      <workItem from="1784055454795" duration="54204000" />
+      <workItem from="1784055454795" duration="62713000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />
