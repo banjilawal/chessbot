@@ -29,18 +29,36 @@ class AxisRayComputer(RayComputer):
         return cast(AxisSpace, self.space)
     
     
-    def vector_ray(self,) -> ComputationResult:
+    def vector_ray(self,) -> ComputationResult[List[Vector]]:
+        """
+        Get the series of Vectors from the origin of the axis till its end.
+
+        Action:
+            1.  Send an exception chain in the ComputationResult if the stepper does not finish its
+                work before the loop invariant hits.
+            2.  Otherwise, append the stepper's payload to the array and advance the cursor.
+        Args:
+        Returns:
+            ComputationResult[Vector]
+        Raises:
+             AxisRayComputerException
+        """
         method = f"{self.__class__.__name__}.vector_ray"
         
+        # --- Set up for the loop ---#
         cursor = self.space.origin
         terminus = self.space.terminus
         vectors: List[Vector] = []
         
+        
+        # Less than is not a good choice for iterating through vectors.
         while cursor != terminus:
             vectors.append(cursor)
+            # --- Request the vector from the space. ---#
+            computation = self.space.stepper.next(current=cursor)
             
-            result = self.space.next(current=cursor)
-            if result.is_failure:
+            # Handle the case that, request is not granted..
+            if computation.is_failure:
                 # Send the exception chain in the result.
                 return ComputationResult.failure(
                     AxisRayComputerException(
@@ -49,10 +67,13 @@ class AxisRayComputer(RayComputer):
                         msg=AxisRayComputerException.MSG,
                         err_code=AxisRayComputerException.ERR_CODE,
                         mthd_rslt_type=AxisRayComputerException.MTHD_RSLT_TYPE,
-                        ex=result.exception,
+                        ex=computation.exception,
                     )
                 )
-            cursor = cast(Vector, result.payload)
+            # Advance the cursor.
+            cursor = cast(Vector, computation.payload)
+            
+        # --- Forward the work product to the caller. ---#
         return ComputationResult.success(vectors)
         
     def coord_ray(self) -> ComputationResult:
