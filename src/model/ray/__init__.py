@@ -10,6 +10,7 @@ version: 1.0.1
 # =========== MODEL.RAY PACKAGE ===========#
 
 # Packages
+from .coord import *
 
 # Modules
 from .model import Ray

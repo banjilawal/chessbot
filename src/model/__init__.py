@@ -13,8 +13,8 @@ version: 1.0.1
 from .binder import *
 from .coord import *
 from .path import *
-from .old_quadrant import *
 from .rank import *
+from .ray import *
 from .scalar import *
 from .state import *
 from .vector import *

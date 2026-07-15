@@ -9,7 +9,8 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from typing import Generic, Iterator, List, Optional, TypeVar
+from abc import abstractmethod
+from typing import Generic, Iterator, List, Optional, TypeVar, cast
 
 from model import Model
 
@@ -32,10 +33,6 @@ class Ray(Model, Generic[T]):
         return self._points[-1]
     
     @property
-    def is_empty(self) -> bool:
-        return len(self._points) == 0
-    
-    @property
     def size(self) -> int:
         return len(self._points)
     
@@ -43,8 +40,42 @@ class Ray(Model, Generic[T]):
     def iterator(self) -> Iterator[T]:
         return iter(self._points)
     
+    @property
+    def is_empty(self) -> bool:
+        return len(self._points) == 0
+    
+    @property
+    def is_cycle(self) -> bool:
+        if self.is_empty:
+            return False
+        if self.size == 1:
+            return False
+    
     def add_point(self, point: T):
         self._points.append(point)
+        
+
+    def have_same_origin(self, other) -> bool:
+        if not self._bool_helper(other):
+            return False
+        ray = cast(Ray, other)
+        return self.is_empty or ray.is_empty
+    
+    def origins_are_different(self, other) -> bool:
+        return not self.have_same_origin(other)
+        
+    def have_same_terminus(self, other) -> bool:
+        return self.have_same_origin(other)
+    
+    def terminus_is_different(self, ray: Ray[T]) -> bool:
+        return self.have_same_origin(other)
+    
+    def _bool_helper(self, other) -> bool:
+        if other is self:
+            return True
+        if other is None:
+            return False
+        return isinstance(other, Ray)
         
     
         
