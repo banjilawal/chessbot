@@ -18,7 +18,7 @@ from space import AxisBounds, AxisStepper, Space, SpaceBounds
 from util import LoggingLevelRouter
 
 
-class AxisSpace(Space):
+class Axis(Space):
 
     _bounds: AxisBounds
     _stepper: AxisStepper
@@ -91,7 +91,7 @@ class AxisSpace(Space):
 
     
     @classmethod
-    def east_axis(cls, origin: Vector) -> AxisSpace:
+    def east_axis(cls, origin: Vector) -> Axis:
         """
         Create an Axis in 1D plane
         
@@ -108,7 +108,7 @@ class AxisSpace(Space):
         )
     
     @classmethod
-    def north_axis(cls, origin: Vector) -> AxisSpace:
+    def north_axis(cls, origin: Vector) -> Axis:
         """
         Create an Axis in 1D plane.
 
@@ -124,7 +124,7 @@ class AxisSpace(Space):
         )
     
     @classmethod
-    def south_axis(cls, origin: Vector) -> AxisSpace:
+    def south_axis(cls, origin: Vector) -> Axis:
         """
         Create an Axis in 1D plane.
 
@@ -140,7 +140,7 @@ class AxisSpace(Space):
         )
     
     @classmethod
-    def west_axis(cls, origin: Vector) -> AxisSpace:
+    def west_axis(cls, origin: Vector) -> Axis:
         """
         Create an Axis in 1D plane.
 

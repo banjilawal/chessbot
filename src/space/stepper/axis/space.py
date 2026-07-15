@@ -15,11 +15,11 @@ from err import AxisSpaceSetterException
 from model import Vector
 from register import VectorRegister
 from result import ComputationResult, MethodResultType
-from space import AxisSpace, SpaceStepper
+from space import Axis, SpaceStepper
 from util import LoggingLevelRouter
 
 
-class AxisStepper(SpaceStepper[AxisSpace]):
+class AxisStepper(SpaceStepper[Axis]):
     """
     Role:
         -   Computation Worker

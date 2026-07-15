@@ -11,13 +11,32 @@ from __future__ import annotations
 
 from typing import List, cast
 
+from err import QuadrantRayComputerException
 from model import Coord, Vector
 from ray import RayComputer
+from result import ComputationResult
 from space import Quadrant
 
 
-class QuadrantRayComputer(RayComputer):
-    
+class QuadrantRayComputer(RayComputer[Quadrant]):
+    """
+    Role:
+        -   Computation Worker
+
+    Responsibilities:
+        1.  Produce a ray of Vectors from the origin of an quadrant to its terminus.
+
+    Attributes:
+        space: Quadrant
+        math_toolkit: MathToolkit
+
+    Provides:
+        -   def vector_ray() -> ComputationResult[List[Vector]]
+        -   def coord_ray(self) -> ComputationResult[List[Coord]]
+
+    Super Class:
+        RayComputer
+    """
     _space: Quadrant
     
     def __init(self, space: Quadrant):
@@ -27,40 +46,107 @@ class QuadrantRayComputer(RayComputer):
     def space(self) -> Quadrant:
         return cast(Quadrant, self.space)
     
-    def vector_ray(self) -> List[Vector]:
-        cursor = Vector(
-            x=self.space.origin.x,
-            y=self._f_of_x(x=self.space.origin.x, slope=self.space.slope)
-        )
+    def vector_ray(self) -> ComputationResult[List[Vector]]:
+        """
+        Get the series of Vectors from the quadrant's diagonal
+
+        Action:
+            1.  Send an exception chain in the ComputationResult if the stepper does not finish its
+                work before the loop invariant hits.
+            2.  Otherwise, append the stepper's payload to the array and advance the cursor.
+        Args:
+        Returns:
+            ComputationResult[List[Vector]]
+        Raises:
+             QuadrantRayComputerException
+        """
+        method = f"{self.__class__.__name__}.vector_ray"
+        
+        # --- Set up for the loop ---#
+        cursor = self.space.origin
         terminus = self.space.terminus
         vectors: List[Vector] = []
         
+        # Less than is not a good choice for iterating through vectors.
         while cursor != terminus:
             vectors.append(cursor)
-            cursor = Vector(
-                x=cursor.x,
-                y=self._f_of_x(x=cursor.x, slope=self.space.slope)
-            )
-        return vectors
+            # --- Request the vector from the space. ---#
+            computation = self.space.stepper.next(current=cursor)
+            
+            # Handle the case that, request is not granted..
+            if computation.is_failure:
+                # Send the exception chain in the result.
+                return ComputationResult.failure(
+                    QuadrantRayComputerException(
+                        cls_mthd=method,
+                        cls_name=self.__class__.__name__,
+                        msg=QuadrantRayComputerException.MSG,
+                        err_code=QuadrantRayComputerException.ERR_CODE,
+                        mthd_rslt_type=QuadrantRayComputerException.MTHD_RSLT_TYPE,
+                        ex=computation.exception,
+                    )
+                )
+            # Advance the cursor.
+            cursor = cast(Vector, computation.payload)
+        
+        # --- Forward the work product to the caller. ---#
+        return ComputationResult.success(vectors)
     
-    def coord_ray(self) -> List[Coord]:
-        coords: List[Coord] = []
-        for vector in self.vector_ray():
-            coords.append(Coord(column=vector.x, row=vector.y))
-        return coords
-    
-    def _f_of_x(self, x: int, slope: int) -> int:
+    def coord_ray(self) -> ComputationResult[List[Coord]]:
         """
+        Get the series of Coords from the space's origin to its terminus.
+
         Action:
-            Calculate the y component of a vector using the line's
-                *   slope
-                *   its x component
+            1.  Send an exception chain in the ComputationResult if the list cannot be generated.
+            2.  Otherwise, send the success result.
         Args:
-            x: int
-            slope: int
         Returns:
-            int
+            ComputationResult[List[Coord]]
         Raises:
-            None
+             QuadrantRayComputerException
         """
-        return (2 * slope * x) + slope
+        method = f"{self.__class__.__name__}.coord_ray"
+        
+        coords: List[Coord] = []
+        
+        # --- Get the Vector ray. ---#
+        computation = self.vector_ray()
+        
+        # Handle the case that, the vector ray was not produced
+        if computation.is_failure:
+            # Send the exception chain on the failure.
+            return ComputationResult.failure(
+                QuadrantRayComputerException(
+                    cls_mthd=method,
+                    cls_name=self.__class__.__name__,
+                    msg=QuadrantRayComputerException.MSG,
+                    err_code=QuadrantRayComputerException.ERR_CODE,
+                    mthd_rslt_type=QuadrantRayComputerException.MTHD_RSLT_TYPE,
+                    ex=computation.exception,
+                )
+            )
+        # --- Extract and cast the vector list. ---#
+        vectors = cast(List[Vector], computation.payload)
+        
+        # Loop through the vectors to process them into Coords
+        for vector in vectors:
+            
+            build = self.math.coord.builder.execute(row=vector.x, column=vector.y)
+            # Handle the case that, a Coord could not be created from the Vector
+            if build.is_failure:
+                # Send the exception chain on failure.
+                return ComputationResult.failure(
+                    QuadrantRayComputerException(
+                        cls_mthd=method,
+                        cls_name=self.__class__.__name__,
+                        msg=QuadrantRayComputerException.MSG,
+                        err_code=QuadrantRayComputerException.ERR_CODE,
+                        mthd_rslt_type=QuadrantRayComputerException.MTHD_RSLT_TYPE,
+                        ex=build.exception,
+                    )
+                )
+            # Add to the list.
+            coords.append(cast(Coord, build.payload))
+        
+        # --- Forward the work product to the caller. ---#
+        return ComputationResult.success(coords)

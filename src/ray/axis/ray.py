@@ -15,18 +15,39 @@ from err import AxisRayComputerException
 from model import Coord, Vector
 from ray import RayComputer
 from result import ComputationResult
-from space import AxisSpace
+from space import Axis
 
 
-class AxisRayComputer(RayComputer):
-   
+class AxisRayComputer(RayComputer[Axis]):
+    """
+    Role:
+        -   Computation Worker
+
+    Responsibilities:
+        1.  Produce a ray of Vectors from the origin of an axis to its terminus.
+
+    Attributes:
+        space: Axis
+        math_toolkit: MathToolkit
+
+    Provides:
+        -   def vector_ray() -> ComputationResult[List[Vector]]
+        -   def coord_ray(self) -> ComputationResult[List[Coord]]
+
+    Super Class:
+        RayComputer
+    """
     
-    def __init__(self, space: AxisSpace):
+    def __init__(self, space: Axis):
+        """
+        Args:
+            space: Axis
+        """
         super().__init__(space=space)
         
     @property
-    def space(self) -> AxisSpace:
-        return cast(AxisSpace, self.space)
+    def space(self) -> Axis:
+        return cast(Axis, self.space)
     
     
     def vector_ray(self,) -> ComputationResult[List[Vector]]:
