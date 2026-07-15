@@ -15,11 +15,11 @@ from err.space.setter.quadrant.exception import QuadrantSpaceSetterException
 from model import Vector
 from register import NumberRegister
 from result import ComputationResult, MethodResultType
-from space import Quadrant, SpaceStepper
+from space import KnightSpace, SpaceStepper
 from util import LoggingLevelRouter
 
 
-class QuadrantStepper(SpaceStepper[Quadrant]):
+class QuadrantStepper(SpaceStepper[KnightSpace]):
     """
     Role:
         -   Computation Worker

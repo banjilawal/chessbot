@@ -35,7 +35,7 @@ class QuadrantTerminusEntry:
     """
     
     _entry: Dict[str, Vector]
-    
+
     def __init__(self):
         
         self._entry = {

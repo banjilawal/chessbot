@@ -1,7 +1,7 @@
-# src/space/quadrant/space.py
+# src/space/linear/quadrant/space.py
 
 """
-Module: space.quadrant.space
+Module: space.linear.quadrant.space
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -12,13 +12,14 @@ from __future__ import annotations
 from typing import cast
 
 from err import QuadrantSpaceException
-from model import Vector
+from model import Scalar, Vector
+from register import VectorRegister
 from result import ComputationResult, MethodResultType
-from space import QuadrantBounds, QuadrantStepper, Space
+from space import LinearSpace, QuadrantBounds, QuadrantStepper
 from util import LoggingLevelRouter
 
 
-class Quadrant(Space):
+class KnightSpace(LinearSpace):
     """
     Role:
         -   Dataset
@@ -73,6 +74,43 @@ class Quadrant(Space):
         return self.bounds.terminus
     
     @LoggingLevelRouter.monitor
+    def distance(self) -> ComputationResult[Scalar]:
+        """
+        Get the Euclidean distance between the Space's endpoints.
+
+        Action:
+            1.  Send an exception chain in the ComputationResult if the math toolkit
+                cannot produce a solution.
+            2.  Otherwise, send the computed vector in the success result.
+        Args:
+        Returns:
+            ComputationResult[Scalar]
+        Raises:
+             QuadrantSpaceException
+        """
+        method = f"{self.__class__.__name__}.distance"
+        
+        # Request the Euclidean distance
+        computation = self.math.euclidean_distance.execute(
+            register=VectorRegister(u=self.origin, v=self.terminus)
+        )
+        # Handle the case that, the computation is not satisfied.
+        if computation.is_failure:
+            # Send an exception chain in the result.
+            return ComputationResult.failure(
+                QuadrantSpaceException(
+                    cls_mthd=method,
+                    cls_name=self.__class__.__name__,
+                    msg=QuadrantSpaceException.MSG,
+                    err_code=QuadrantSpaceException.ERR_CODE,
+                    mthd_rslt_type=MethodResultType.COMPUTATION_RESULT,
+                    ex=computation.exception,
+                ),
+            )
+        # --- Forward the work product to the caller. ---#
+        return ComputationResult.success(cast(Scalar, computation.payload))
+    
+    @LoggingLevelRouter.monitor
     def next(self, current: Vector) -> ComputationResult:
         """
         Get the next vector in the direction of travel.
@@ -109,7 +147,7 @@ class Quadrant(Space):
         return ComputationResult.success(cast(Vector, computation.payload))
 
     @classmethod
-    def northeast(cls, origin: Vector) -> Quadrant:
+    def northeast(cls, origin: Vector) -> KnightSpace:
         """
         Create a 2D space
 
@@ -125,7 +163,7 @@ class Quadrant(Space):
         )
     
     @classmethod
-    def northwest(cls, origin: Vector) -> Quadrant:
+    def northwest(cls, origin: Vector) -> KnightSpace:
         """
         Create a 2D space
 
@@ -141,7 +179,7 @@ class Quadrant(Space):
         )
     
     @classmethod
-    def southeast(cls, origin: Vector) -> Quadrant:
+    def southeast(cls, origin: Vector) -> KnightSpace:
         """
         Create a 2D space
 
@@ -157,7 +195,7 @@ class Quadrant(Space):
         )
     
     @classmethod
-    def southwest(cls, origin: Vector) -> Quadrant:
+    def southwest(cls, origin: Vector) -> KnightSpace:
         """
         Create a 2D space
 

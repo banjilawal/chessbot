@@ -13,7 +13,7 @@ from abc import ABC
 from typing import Type, cast
 
 from blueprint import Blueprint
-from space.quadrant import Quadrant
+from space.linear.quadrant import KnightSpace
 from model import Vector
 
 
@@ -23,14 +23,14 @@ class QuadrantBlueprint(Blueprint, ABC):
     _terminus: Vector
     
     def __init__(self, x_step: int, slope: int, terminus: Vector):
-        super().__init__(model_class=Type[Quadrant])
+        super().__init__(model_class=Type[KnightSpace])
         self._x_step = x_step
         self._slope = slope
         self._terminus = terminus
     
     @property
-    def model_class(self) -> Type[Quadrant]:
-        return cast(Type[Quadrant], self.model_class)
+    def model_class(self) -> Type[KnightSpace]:
+        return cast(Type[KnightSpace], self.model_class)
     
     @property
     def x_step(self) -> int:
@@ -44,8 +44,8 @@ class QuadrantBlueprint(Blueprint, ABC):
     def terminus(self) -> Vector:
         return self._terminus
     
-    def quadrant_from_blueprint(self) -> Quadrant:
-        return Quadrant(
+    def quadrant_from_blueprint(self) -> KnightSpace:
+        return KnightSpace(
             x_step=self._x_step,
             slope=self._slope,
             terminus=self._terminus

@@ -1,7 +1,7 @@
-# src/space/axis/space.py
+# src/space/linear/axis/space.py
 
 """
-Module: space.axis.space
+Module: space.linear.axis.space
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -19,7 +19,7 @@ from space import AxisBounds, AxisStepper, Space, SpaceBounds
 from util import LoggingLevelRouter
 
 
-class Axis(Space):
+class Axis(LinearSpace):
     """
     Role:
         -   Dataset

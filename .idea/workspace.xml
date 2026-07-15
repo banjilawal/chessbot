@@ -5,10 +5,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/src/model/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ray/computer/axis/ray.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/ray/computer/axis/ray.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ray/computer/ray.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/ray/computer/ray.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ray/vector/ray.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/ray/vector/ray.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/space/bounds/knight/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/space/bounds/knight/space.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/space/linear/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/space/linear/space.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/space/terminus/knight/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/space/terminus/knight/space.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/blueprint/quadrant/blueprint.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/blueprint/quadrant/blueprint.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/space/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/space/axis/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/linear/axis/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/space/axis/space.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/linear/axis/space.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/space/quadrant/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/linear/quadrant/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/space/quadrant/space.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/linear/quadrant/space.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/space/terminus/quadrant/space.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/terminus/quadrant/space.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,7 +74,7 @@
     "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/ray",
+    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/space/linear",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
@@ -76,18 +86,18 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/space/linear" />
+      <recent name="$PROJECT_DIR$/src/space/terminus" />
+      <recent name="$PROJECT_DIR$/src/space/bounds" />
       <recent name="$PROJECT_DIR$/src/ray" />
       <recent name="$PROJECT_DIR$/src/node/square" />
-      <recent name="$PROJECT_DIR$/src/model/ray" />
-      <recent name="$PROJECT_DIR$/src/model/ray/coord" />
-      <recent name="$PROJECT_DIR$/src/err/space/bounds" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/space/linear" />
       <recent name="$PROJECT_DIR$/src/ray" />
       <recent name="$PROJECT_DIR$/src/ray/computer" />
       <recent name="$PROJECT_DIR$/src/ray/computer/quadrant" />
       <recent name="$PROJECT_DIR$/src" />
-      <recent name="$PROJECT_DIR$/src/space/terminus/quadrant" />
     </key>
   </component>
   <component name="RunManager" selected="Python.stack">
@@ -773,7 +783,7 @@
       <workItem from="1784029158325" duration="10323000" />
       <workItem from="1784040408484" duration="7069000" />
       <workItem from="1784050719673" duration="78000" />
-      <workItem from="1784055454795" duration="64110000" />
+      <workItem from="1784055454795" duration="69760000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />

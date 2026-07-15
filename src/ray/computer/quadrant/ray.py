@@ -15,10 +15,10 @@ from err import QuadrantRayComputerException
 from model import Coord, Vector, VectorRay
 from ray import RayComputer
 from result import ComputationResult
-from space import Quadrant
+from space import KnightSpace
 
 
-class QuadrantRayComputer(RayComputer[Quadrant]):
+class QuadrantRayComputer(RayComputer[KnightSpace]):
     """
     Role:
         -   Computation Worker
@@ -37,14 +37,14 @@ class QuadrantRayComputer(RayComputer[Quadrant]):
     Super Class:
         RayComputer
     """
-    _space: Quadrant
+    _space: KnightSpace
     
-    def __init(self, space: Quadrant):
+    def __init(self, space: KnightSpace):
         self._space = space
         
     @property
-    def space(self) -> Quadrant:
-        return cast(Quadrant, self.space)
+    def space(self) -> KnightSpace:
+        return cast(KnightSpace, self.space)
     
     def execute(self, ) -> ComputationResult[VectorRay]:
         """

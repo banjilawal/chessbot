@@ -10,9 +10,8 @@ version: 1.0.1
 # =========== SPACE PACKAGE ===========#
 
 # Packages
-from .axis import *
 from .bounds import *
-from .quadrant import *
+from .linear import *
 from .stepper import *
 from .terminus import *
 
