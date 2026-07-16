@@ -10,11 +10,9 @@ version: 1.0.1
 # =========== SPACE PACKAGE ===========#
 
 # Packages
-from .bounds import *
 from .linear import *
-from .stepper import *
-from .terminus import *
-
+from .ray import *
+from .space import *
 
 # Modules
 from .space import Space

@@ -1,7 +1,7 @@
-# src/span/basis/validator.py
+# src/span/movement/validator.py
 
 """
-Module: span.basis.validator
+Module: span.validator
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -16,29 +16,29 @@ from bootstrapper import PrimingValidator
 from container import VectorSet
 from err import NullException
 from result import ValidationResult
-from space.span import VectorBasis
+from space.span import VectorMovement
 from validator import Validator
 
 
-class BasisValidator(Validator[VectorBasis]):
+class MovementValidator(Validator[VectorMovement]):
 
     _vector_validator: VectorValidator = VectorValidator()
     _priming_validator: PrimingValidator = PrimingValidator()
     
     
-    def execute(self, candidate: Any) -> ValidationResult[VectorBasis]:
+    def execute(self, candidate: Any) -> ValidationResult[VectorMovement]:
         priming = self._priming_validator.execute(
             candidate=candidate,
-            target_model=Type[VectorBasis],
+            target_model=Type[VectorMovement],
             null_exception=NullException()
         )
         if priming.is_failure:
             return ValidationResult.failure(
                 priming.exception
             )
-        basis = cast(VectorBasis, priming.payload)
+        movement = cast(VectorMovement, priming.payload)
         vector_set_validation = self._priming_validator.execute(
-            candidate=basis.movement_vectors,
+            candidate=movement_vectors,
             target_model=Type[VectorSet],
             null_exception=NullException()
         )
@@ -46,5 +46,5 @@ class BasisValidator(Validator[VectorBasis]):
             return ValidationResult.failure(
                 priming.exception
             )
-        return ValidationResult.success(basis)
+        return ValidationResult.success(movement)
         
