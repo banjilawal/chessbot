@@ -68,6 +68,7 @@ class DestinationSpanComputer:
     def execute(self, vector_basis: VectorBasis) -> ComputationResult[VectorSet]:
         method = f"{self.__class__.__name__}.destination_vectors"
         
+        # Handle the case that, the vector_basis is not safe.
         validation = self._basis_validator.execute(vector_basis)
         if validation.is_failure:
             return ComputationResult.failure(validation.exception)

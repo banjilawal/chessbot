@@ -1,7 +1,7 @@
-# src/err/space/setter/quadrant/exception.py
+# src/err/span/computer/exception.py
 
 """
-Module: err.space.setter.quadrant.exception
+Module: err.span.computer.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,22 +10,22 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import SpaceSetterException
+from err import SpanException
 from result import MethodResultType
 
 __all__ = [
-    # ======================# QUADRANT_SPACE_SETTER_FAILURE #======================#
-    "QuadrantSpaceSetterException",
+    # ======================# SPAN_COMPUTER_FAILURE #======================#
+    "SpanComputerException",
 ]
 
-# ======================# QUADRANT_SPACE_SETTER_FAILURE #======================#
-class QuadrantSpaceSetterException(SpaceSetterException):
+# ======================# SPAN_COMPUTER_FAILURE #======================#
+class SpanComputerException(SpanException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an error prevented an QuadrantSpaceSetter from completing its task. 
+        1.  Indicate that an error prevented a SpanComputer from completing its task. 
         
     Attributes:
         msg: Optional[str]
@@ -40,10 +40,10 @@ class QuadrantSpaceSetterException(SpaceSetterException):
     Provides:
 
     Super Class:
-        SpaceSetterException
+        SpanException
     """
-    MSG = "QuadrantSpaceSetter failure."
-    ERR_CODE = "QUADRANT_SPACE_SETTER_FAILURE"
+    MSG = "SpanComputer failure."
+    ERR_CODE = "SPAN_COMPUTER_FAILURE"
 
     def __init__(
             self,

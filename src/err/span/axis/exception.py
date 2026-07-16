@@ -1,7 +1,7 @@
-# src/err/space/setter/exception.py
+# src/err/span/axis/exception.py
 
 """
-Module: err.space.setter.exception
+Module: err.span.axis.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,25 +10,24 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import SpaceException
+from err import SpanException
 from result import MethodResultType
 
 __all__ = [
-    # ======================# SPACE_SETTER_FAILURE #======================#
-    "SpaceSetterException",
+    # ======================# AXIS_SPAN_ERROR #======================#
+    "AxisSpanException",
 ]
 
-# ======================# SPACE_SETTER_FAILURE #======================#
-class SpaceSetterException(SpaceException):
+# ======================# AXIS_SPAN_ERROR #======================#
+class AxisSpanException(SpanException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an error prevented a SpaceSetter from completing its task. 
-        
+        1.  Indicate that an error occurred in an AxisSpan.
+
     Attributes:
-        msg: Optional[str]
         var: Optional[str]
         val: Optional[Any]
         ex: Optional[Exception]
@@ -40,19 +39,19 @@ class SpaceSetterException(SpaceException):
     Provides:
 
     Super Class:
-        SpaceException
+        SpanException
     """
-    MSG = "SpaceSetter failure."
-    ERR_CODE = "SPACE_SETTER_FAILURE"
-
+    MSG = "AxisSpan error."
+    ERR_CODE = "AXIS_SPAN_ERROR"
+    
     def __init__(
             self,
             msg: Optional[str] | None = None,
             var: Optional[str] | None = None,
             val: Optional[Any] | None = None,
-            cls_mthd: Optional[str] | None = None,
-            cls_name: Optional[str] | None = None,
             ex: Optional[Exception] | None = None,
+            cls_name: Optional[str] | None = None,
+            cls_mthd: Optional[str] | None = None,
             err_code: Optional[str] | None = None,
             mthd_rslt_type: Optional[MethodResultType] | None = None,
     ):

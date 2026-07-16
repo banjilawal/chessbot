@@ -1,7 +1,7 @@
-# src/err/space/setter/axis/exception.py
+# src/err/span/setter/exception.py
 
 """
-Module: err.space.setter.axis.exception
+Module: err.span.setter.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,22 +10,22 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import SpaceSetterException
+from err import SpanException
 from result import MethodResultType
 
 __all__ = [
-    # ======================# AXIS_SPACE_SETTER_FAILURE #======================#
-    "AxisSpaceSetterException",
+    # ======================# SPAN_SETTER_FAILURE #======================#
+    "SpanSetterException",
 ]
 
-# ======================# AXIS_SPACE_SETTER_FAILURE #======================#
-class AxisSpaceSetterException(SpaceSetterException):
+# ======================# SPAN_SETTER_FAILURE #======================#
+class SpanSetterException(SpanException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an error prevented an AxisSpaceSetter from completing its task. 
+        1.  Indicate that an error prevented a SpanSetter from completing its task. 
         
     Attributes:
         msg: Optional[str]
@@ -40,10 +40,10 @@ class AxisSpaceSetterException(SpaceSetterException):
     Provides:
 
     Super Class:
-        SpaceSetterException
+        SpanException
     """
-    MSG = "AxisSpaceSetter failure."
-    ERR_CODE = "AXIS_SPACE_SETTER_FAILURE"
+    MSG = "SpanSetter failure."
+    ERR_CODE = "SPAN_SETTER_FAILURE"
 
     def __init__(
             self,

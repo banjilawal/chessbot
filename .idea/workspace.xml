@@ -5,48 +5,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/span/basis/opening/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/span/basis/opening/span.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/span/basis/pawn/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/span/basis/pawn/span.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/span/computer/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/span/computer/pawn/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/span/movement/king/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/span/movement/king/span.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/span/movement/pawn/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/span/movement/pawn/attack/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/span/movement/pawn/attack/developed/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/span/movement/pawn/attack/developed/span.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/span/movement/pawn/attack/opening/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/span/movement/pawn/attack/opening/span.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/span/movement/pawn/attack/span.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/span/movement/pawn/maneuver/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/span/movement/pawn/maneuver/developed/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/span/movement/pawn/maneuver/developed/span.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/span/movement/pawn/maneuver/opening/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/span/movement/pawn/maneuver/opening/span.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/span/movement/pawn/maneuver/span.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/span/movement/pawn/span.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/validator/basis/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/span/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/span/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/span/basis/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/span/basis/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/span/basis/knight/span.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/span/basis/knight/span.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/span/basis/span.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/span/basis/span.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/span/basis/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/validator/basis/validator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/span/knight/span.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/span/knight/span.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/span/movement/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/span/movement/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/span/movement/knight/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/span/movement/knight/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/span/movement/knight/span.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/span/movement/knight/span.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/span/movement/span.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/span/movement/span.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/span/span.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/span/computer/span.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/span/table/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/span/table/knight/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/span/table/knight/span.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/span/table/pawn/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/span/table/pawn/span.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/span/table/span.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/validator/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/validator/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/span/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/span/axis/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/span/axis/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/span/bounds/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/span/bounds/axis/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/span/bounds/axis/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/span/bounds/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/span/bounds/quadrant/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/span/bounds/quadrant/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/span/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/span/quadrant/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/span/quadrant/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/span/setter/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/span/setter/axis/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/span/setter/axis/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/span/setter/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/span/setter/quadrant/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/span/setter/quadrant/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/span/computer/span.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/span/computer/span.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -102,7 +80,7 @@
     "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/validator",
+    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/err",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
@@ -114,11 +92,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/err" />
       <recent name="$PROJECT_DIR$/src/validator" />
       <recent name="$PROJECT_DIR$/src/span/movement/pawn" />
       <recent name="$PROJECT_DIR$/src/span/movement/pawn/maneuver" />
       <recent name="$PROJECT_DIR$/src/span/movement/pawn/maneuver/opening" />
-      <recent name="$PROJECT_DIR$/src/span/movement" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/span/computer" />
@@ -811,7 +789,7 @@
       <workItem from="1784029158325" duration="10323000" />
       <workItem from="1784040408484" duration="7069000" />
       <workItem from="1784050719673" duration="78000" />
-      <workItem from="1784055454795" duration="112931000" />
+      <workItem from="1784055454795" duration="114335000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />

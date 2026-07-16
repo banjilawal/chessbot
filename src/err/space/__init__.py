@@ -13,7 +13,7 @@ version: 1.0.1
 from .axis import *
 from .bounds import *
 from .quadrant import *
-from .setter import *
+from .computer import *
 
 # Modules
 from .exception import SpaceException
