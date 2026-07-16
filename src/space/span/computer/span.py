@@ -13,9 +13,10 @@ from __future__ import annotations
 from typing import List, Optional, cast
 
 from container import VectorSet
+from err import DestinationSpanComputerException
 from model import Vector
 from register import VectorRegister
-from result import ComputationResult
+from result import ComputationResult, MethodResultType
 from space.span import VectorBasis
 from toolkit import MathToolkit
 from util import LoggingLevelRouter
@@ -68,30 +69,55 @@ class DestinationSpanComputer:
     def execute(self, vector_basis: VectorBasis) -> ComputationResult[VectorSet]:
         method = f"{self.__class__.__name__}.destination_vectors"
         
-        # Handle the case that, the vector_basis is not safe.
+        # Handle the case that, the vector_basis is not safe to use.
         validation = self._basis_validator.execute(vector_basis)
         if validation.is_failure:
-            return ComputationResult.failure(validation.exception)
+            # Send an exception in chain in the result.
+            return ComputationResult.failure(
+                DestinationSpanComputerException(
+                    cls_mthd=method,
+                    cls_name=self.__class__.__name__,
+                    msg=DestinationSpanComputerException.MSG,
+                    err_code=DestinationSpanComputerException.ERR_CODE,
+                    mthd_rslt_type=MethodResultType.COMPUTATION_RESULT,
+                    ex=validation.exception,
+                ),
+            )
+        # --- Cast the validation product for additional processing ---#
         basis = cast(VectorBasis, validation.payload)
-        
         solutions: List[Vector] = []
         
         # Handle the empty basis set first.
         if  basis.is_empty:
             return ComputationResult.success(VectorSet())
         
+        # --- Process nonempty basis sets. ---#
         origin = basis.origin
         for movement_vector in basis.movement_vectors:
+            # Request that, a solution for the destination vector.
             computation = self.math.add_vector.execute(
-                register=VectorRegister(u=origin, v=movement_vector)
+                register=VectorRegister(
+                    u=origin,
+                    v=movement_vector
+                )
             )
-            # Handle the case that, the no solution is provided.
+            # Handle the case that, the request is not fulfilled.
             if computation.is_failure:
                 # Send an exception in chain in the result.
-                ComputationResult.failure(computation.exception,)
-            # On success cast and append to the solution set.
+                return ComputationResult.failure(
+                    DestinationSpanComputerException(
+                        cls_mthd=method,
+                        cls_name=self.__class__.__name__,
+                        msg=DestinationSpanComputerException.MSG,
+                        err_code=DestinationSpanComputerException.ERR_CODE,
+                        mthd_rslt_type=MethodResultType.COMPUTATION_RESULT,
+                        ex=computation.exception,
+                    ),
+                )
+            # On success cast and append to destination vector to the solution set.
             solutions.append(cast(Vector, computation.payload))
             
+        # Convert the solution set into a Tuple, for a VectorSet.
         destination_vector_set = VectorSet(entries=tuple(solutions))
         
         # --- Forward the work product to the caller. ---#

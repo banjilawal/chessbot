@@ -4,31 +4,7 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/err/space/span/basis/bishop/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/space/span/basis/border/bishop/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/space/span/basis/border/king/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/space/span/basis/border/knight/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/space/span/basis/border/pawn/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/space/span/basis/border/pawn/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/space/span/basis/border/queen/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/space/span/basis/border/queen/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/space/span/basis/border/rook/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/space/span/basis/border/rook/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/space/span/basis/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/space/span/basis/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/space/span/basis/axis/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/space/span/basis/axis/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/space/span/basis/bishop/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/space/span/basis/border/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/space/span/basis/border/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/space/span/basis/border/axis/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/space/span/basis/border/axis/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/space/span/basis/border/bishop/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/space/span/basis/border/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/space/span/basis/border/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/space/span/basis/border/quadrant/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/space/span/basis/border/quadrant/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/space/span/basis/border/knight/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/space/span/basis/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/space/span/basis/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/space/span/basis/quadrant/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/space/span/basis/quadrant/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/space/span/basis/border/king/exception.py" afterDir="false" />
-    </list>
+    <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -792,7 +768,7 @@
       <workItem from="1784029158325" duration="10323000" />
       <workItem from="1784040408484" duration="7069000" />
       <workItem from="1784050719673" duration="78000" />
-      <workItem from="1784055454795" duration="133016000" />
+      <workItem from="1784055454795" duration="133446000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />

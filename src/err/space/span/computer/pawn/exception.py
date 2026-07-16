@@ -10,7 +10,7 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import SpanComputerException
+from err import DestinationSpanComputerException
 from result import MethodResultType
 
 __all__ = [
@@ -19,7 +19,7 @@ __all__ = [
 ]
 
 # ======================# PAWN_SPAN_COMPUTER_FAILURE #======================#
-class PawnSpanComputerException(SpanComputerException):
+class PawnSpanComputerException(DestinationSpanComputerException):
     """
     Role:
         -   Error Tracing

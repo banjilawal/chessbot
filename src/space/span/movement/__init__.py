@@ -16,4 +16,3 @@ from .pawn import *
 
 # Modules
 from .span import MovementVectorSet
-from .validator import MovementValidator

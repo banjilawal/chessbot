@@ -15,11 +15,11 @@ from result import MethodResultType
 
 __all__ = [
     # ======================# SPAN_COMPUTER_FAILURE #======================#
-    "SpanComputerException",
+    "DestinationSpanComputerException",
 ]
 
 # ======================# SPAN_COMPUTER_FAILURE #======================#
-class SpanComputerException(SpanException):
+class DestinationSpanComputerException(SpanException):
     """
     Role:
         -   Error Tracing
