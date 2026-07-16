@@ -1,7 +1,7 @@
-# src/err/space/span/basis/axis/exception.py
+# src/err/space/span/basis/border/rook/exception.py
 
 """
-Module: err.space.span.basis.axis.exception
+Module: err.space.span.basis.border.rook.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,22 +10,22 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import SpanBasisException
+from err import BasisSetBorderException
 from result import MethodResultType
 
 __all__ = [
-    # ======================# AXIS_SPAN_BASIS_ERROR #======================#
-    "AxisBasisException",
+    # ======================# ROOK_BASIS_SET_BORDER_ERROR #======================#
+    "RookBasisSetBorderException",
 ]
 
-# ======================# AXIS_SPAN_BASIS_ERROR #======================#
-class AxisBasisException(SpanBasisException):
+# ======================# ROOK_BASIS_SET_BORDER_ERROR #======================#
+class RookBasisSetBorderException(BasisSetBorderException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an attempt was made to access points outside the AxisSpan.
+        1.  Indicate that an attempt was made to access points outside the RookSpanBasis.
 
     Attributes:
         var: Optional[str]
@@ -39,10 +39,10 @@ class AxisBasisException(SpanBasisException):
     Provides:
 
     Super Class:
-        SpanBasisException
+        SpanBasisBorderException
     """
-    MSG = "Outside the AxisSpan boundaries."
-    ERR_CODE = "AXIS_SPAN_BASIS_ERROR"
+    MSG = "Outside the RookSpanBasis border."
+    ERR_CODE = "ROOK_BASIS_SET_BORDER_ERROR"
     
     def __init__(
             self,

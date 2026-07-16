@@ -1,7 +1,7 @@
-# src/err/space/span/basis/quadrant/exception.py
+# src/err/space/span/basis/border/knight/exception.py
 
 """
-Module: err.space.span.basis.quadrant.exception
+Module: err.space.span.basis.border.knight.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,22 +10,22 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import SpanBasisException
+from err import BasisSetBorderException
 from result import MethodResultType
 
 __all__ = [
-    # ======================# QUADRANT_SPAN_BASIS_ERROR #======================#
-    "QuadrantBasisException",
+    # ======================# KNIGHT_BASIS_SET_BORDER_ERROR #======================#
+    "KnightBasisSetBorderException",
 ]
 
-# ======================# QUADRANT_SPAN_BASIS_ERROR #======================#
-class QuadrantBasisException(SpanBasisException):
+# ======================# KNIGHT_BASIS_SET_BORDER_ERROR #======================#
+class KnightBasisSetBorderException(BasisSetBorderException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an attempt was made to access points outside the QuadrantSpan.
+        1.  Indicate that an attempt was made to access points outside the KnightSpanBasis.
 
     Attributes:
         var: Optional[str]
@@ -39,10 +39,10 @@ class QuadrantBasisException(SpanBasisException):
     Provides:
 
     Super Class:
-        SpanBasisException
+        SpanBasisBorderException
     """
-    MSG = "Outside the QuadrantSpan boundaries."
-    ERR_CODE = "QUADRANT_SPAN_BASIS_ERROR"
+    MSG = "Outside the KnightSpanBasis border."
+    ERR_CODE = "KNIGHT_BASIS_SET_BORDER_ERROR"
     
     def __init__(
             self,

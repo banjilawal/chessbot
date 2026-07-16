@@ -10,8 +10,8 @@ version: 1.0.1
 # ============ ERR.SPACE.SPAN.BASIS PACKAGE ===========#
 
 # Packages
-from .axis import *
-from .quadrant import *
+from .bishop import *
+from .border import *
 
 # Modules
 from .exception import SpanBasisException

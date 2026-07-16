@@ -1,7 +1,7 @@
-# src/err/space/span/basis/border/exception.py
+# src/err/space/span/basis/knight/exception.py
 
 """
-Module: err.space.span.basis.border.exception
+Module: err.space.span.basis.knight.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -14,18 +14,18 @@ from err import SpanBasisException
 from result import MethodResultType
 
 __all__ = [
-    # ======================# SPAN_BASIS_SET_BORDER_ERROR #======================#
-    "BasisSetBorderException",
+    # ======================# KNIGHT_SPAN_BASIS_ERRORR #======================#
+    "KnightSpanBasisException",
 ]
 
-# ======================# SPAN_BASIS_SET_BORDER_ERROR #======================#
-class BasisSetBorderException(SpanBasisException):
+# ======================# KNIGHT_SPAN_BASIS_ERRORR #======================#
+class KnightSpanBasisException(SpanBasisException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an attempt was made to access points outside the SpanBasis.
+         1.  Indicate that a KnightSpanBasis instance encountered an error.
 
     Attributes:
         var: Optional[str]
@@ -41,8 +41,8 @@ class BasisSetBorderException(SpanBasisException):
     Super Class:
         SpanBasisException
     """
-    MSG = "Outside the SpanBasis border."
-    ERR_CODE = "SPAN_BASIS_SET_BORDER_ERROR"
+    MSG = "An error occurred with a KnightSpanBasis."
+    ERR_CODE = "KNIGHT_SPAN_BASIS_ERRORR"
     
     def __init__(
             self,

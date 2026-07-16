@@ -25,7 +25,7 @@ class SpanBasisException(SpanException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an attempt was made to access points outside the Span.
+         1.  Indicate that a SpanBasis instance encountered an error.
 
     Attributes:
         var: Optional[str]
@@ -41,9 +41,9 @@ class SpanBasisException(SpanException):
     Super Class:
         SpanException
     """
-    MSG = "Outside the Span boundaries."
+    MSG = "An error occurred with a SpanBasis."
     ERR_CODE = "SPAN_BASIS_ERROR"
-    
+
     def __init__(
             self,
             msg: Optional[str] | None = None,

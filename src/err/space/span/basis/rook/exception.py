@@ -1,7 +1,7 @@
-# src/err/space/span/border/axis/exception.py
+# src/err/space/span/basis/rook/exception.py
 
 """
-Module: err.space.span.border.axis.exception
+Module: err.space.span.basis.rook.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,22 +10,22 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import SpanBorderException
+from err import SpanBasisException
 from result import MethodResultType
 
 __all__ = [
-    # ======================# AXIS_SPAN_BORDER_ERROR #======================#
-    "AxisBorderException",
+    # ======================# ROOK_SPAN_BASIS_ERRORR #======================#
+    "RookSpanBasisException",
 ]
 
-# ======================# AXIS_SPAN_BORDER_ERROR #======================#
-class AxisBorderException(SpanBorderException):
+# ======================# ROOK_SPAN_BASIS_ERRORR #======================#
+class RookSpanBasisException(SpanBasisException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an attempt was made to access points outside the AxisSpan.
+         1.  Indicate that a RookSpanBasis instance encountered an error.
 
     Attributes:
         var: Optional[str]
@@ -39,10 +39,10 @@ class AxisBorderException(SpanBorderException):
     Provides:
 
     Super Class:
-        SpanBorderException
+        SpanBasisException
     """
-    MSG = "Outside the AxisSpan boundaries."
-    ERR_CODE = "AXIS_SPAN_BORDER_ERROR"
+    MSG = "An error occurred with a RookSpanBasis."
+    ERR_CODE = "ROOK_SPAN_BASIS_ERRORR"
     
     def __init__(
             self,

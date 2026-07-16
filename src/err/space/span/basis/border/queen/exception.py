@@ -1,7 +1,7 @@
-# src/err/space/span/basis/border/exception.py
+# src/err/space/span/basis/border/queen/exception.py
 
 """
-Module: err.space.span.basis.border.exception
+Module: err.space.span.basis.border.queen.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,22 +10,22 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import SpanBasisException
+from err import BasisSetBorderException
 from result import MethodResultType
 
 __all__ = [
-    # ======================# SPAN_BASIS_SET_BORDER_ERROR #======================#
-    "BasisSetBorderException",
+    # ======================# QUEEN_BASIS_SET_BORDER_ERROR #======================#
+    "QueenBasisSetBorderException",
 ]
 
-# ======================# SPAN_BASIS_SET_BORDER_ERROR #======================#
-class BasisSetBorderException(SpanBasisException):
+# ======================# QUEEN_BASIS_SET_BORDER_ERROR #======================#
+class QueenBasisSetBorderException(BasisSetBorderException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an attempt was made to access points outside the SpanBasis.
+        1.  Indicate that an attempt was made to access points outside the QueenSpanBasis.
 
     Attributes:
         var: Optional[str]
@@ -39,10 +39,10 @@ class BasisSetBorderException(SpanBasisException):
     Provides:
 
     Super Class:
-        SpanBasisException
+        SpanBasisBorderException
     """
-    MSG = "Outside the SpanBasis border."
-    ERR_CODE = "SPAN_BASIS_SET_BORDER_ERROR"
+    MSG = "Outside the QueenSpanBasis border."
+    ERR_CODE = "QUEEN_BASIS_SET_BORDER_ERROR"
     
     def __init__(
             self,
