@@ -1,7 +1,7 @@
-# src/err/ray/axis/exception.py
+# src/err/ray/square/exception.py
 
 """
-Module: err.ray.axis.exception
+Module: err.ray.square.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,22 +10,22 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import RayComputerException
+from err import RayException
 from result import MethodResultType
 
 __all__ = [
-    # ======================# AXIS_RAY_COMPUTER_FAILURE #======================#
-    "AxisRayComputerException",
+    # ======================# SQUARE_RAY_ERROR #======================#
+    "SquareRayException",
 ]
 
-# ======================# AXIS_RAY_COMPUTER_FAILURE #======================#
-class AxisRayComputerException(RayComputerException):
+# ======================# SQUARE_RAY_ERROR #======================#
+class SquareRayException(RayException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an AxisRayComputer failed.
+        1.  Indicate that a SquareRay instance encountered an error.
 
     Attributes:
         var: Optional[str]
@@ -39,11 +39,10 @@ class AxisRayComputerException(RayComputerException):
     Provides:
 
     Super Class:
-        RayComputerException
+        RayException
     """
-    MSG = "AxisRayComputer failure."
-    ERR_CODE = "AXIS_RAY_COMPUTER_FAILURE"
-    MTHD_RSLT_TYPE = MethodResultType.ANALYSIS_RESULT
+    MSG = "An error occurred with a Ray."
+    ERR_CODE = "SQUARE_RAY_ERROR"
     
     def __init__(
             self,
@@ -69,7 +68,6 @@ class AxisRayComputerException(RayComputerException):
         """
         msg = msg or self.MSG
         err_code = err_code or self.ERR_CODE
-        mthd_rslt_type = mthd_rslt_type or self.MTHD_RSLT_TYPE
         super().__init__(
             ex=ex,
             msg=msg,

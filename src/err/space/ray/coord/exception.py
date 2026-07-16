@@ -1,7 +1,7 @@
-# src/err/ray/promotion/rank/king/exception.py
+# src/err/ray/coord/exception.py
 
 """
-Module: err.ray.promotion.rank.king.exception
+Module: err.ray.coord.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,25 +10,24 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import PromotionLevelRayComputerException
+from err import RayException
 from result import MethodResultType
 
 __all__ = [
-    # ======================# PROMOTE_PAWN_TO_PAWN_ERROR #======================#
-    "PromoteToPawnException",
+    # ======================# COORD_RAY_ERROR #======================#
+    "CoordRayException",
 ]
 
-# ======================# PROMOTE_PAWN_TO_PAWN_ERROR #======================#
-class PromoteToPawnException(PromotionLevelRayComputerException):
+# ======================# COORD_RAY_ERROR #======================#
+class CoordRayException(RayException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate an attempt to promote a pawn to Pawn rank occurred.
+        1.  Indicate that a CoordRay instance encountered an error.
 
     Attributes:
-        msg: Optional[str]
         var: Optional[str]
         val: Optional[Any]
         ex: Optional[Exception]
@@ -40,10 +39,10 @@ class PromoteToPawnException(PromotionLevelRayComputerException):
     Provides:
 
     Super Class:
-        RankElevationValidatorException
+        RayException
     """
-    MSG = "Cannot promote a pawn to Pawn rank. Its new rank must be higher."
-    ERR_CODE = "PROMOTE_PAWN_TO_PAWN_ERROR"
+    MSG = "An error occurred with a Ray."
+    ERR_CODE = "COORD_RAY_ERROR"
     
     def __init__(
             self,
@@ -57,12 +56,12 @@ class PromoteToPawnException(PromotionLevelRayComputerException):
             mthd_rslt_type: Optional[MethodResultType] | None = None,
     ):
         """
-        args:
-            Msg: Optional[str]
-            Var: Optional[str]
-            val: Optional[any]
+        Args:
+            msg: Optional[str]
+            var: Optional[str]
+            val: Optional[Any]
             ex: Optional[Exception]
-            cls_name: Optional[Str]
+            cls_name: Optional[str]
             cls_mthd: Optional[str]
             err_code: Optional[str]
             mthd_rslt_type: Optional[MethodResultType]

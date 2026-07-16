@@ -10,21 +10,21 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import ChessException
+from err import SpaceException
 from result import MethodResultType
 
 __all__ = [
     # ======================# RAY_COMPUTER_FAILURE #======================#
-    "RayComputerException",
+    "RayException",
 ]
 # ======================# RAY_COMPUTER_FAILURE #======================#
-class RayComputerException(ChessException):
+class RayException(SpaceException):
     """
     Role:
         -   Failure Tracing
 
     Responsibilities:
-        1.  Indicate that an error occurred during a Ray computation.
+        1.  Indicate that a Ray instance encountered an error.
 
     Attributes:
         msg: str
@@ -39,11 +39,10 @@ class RayComputerException(ChessException):
     Provides:
 
     Super Class:
-        ChessException
+        SpaceException
     """
-    MSG = "Ray computation failure."
-    ERR_CODE = "RAY_COMPUTER_FAILURE"
-    MTHD_RSLT_TYPE = MethodResultType.ANALYSIS_RESULT
+    MSG = "An error occurred with a Ray."
+    ERR_CODE = "RAY_ERROR"
     
     def __init__(
             self,
@@ -69,7 +68,6 @@ class RayComputerException(ChessException):
         """
         msg = msg or self.MSG
         err_code = err_code or self.ERR_CODE
-        mthd_rslt_type = mthd_rslt_type or self.MTHD_RSLT_TYPE
         super().__init__(
             ex=ex,
             msg=msg,

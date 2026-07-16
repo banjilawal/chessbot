@@ -1,7 +1,7 @@
-# src/err/ray/promotion/rank/exception.py
+# src/err/ray/vector/exception.py
 
 """
-Module: err.ray.promotion.rank.exception
+Module: err.ray.vector.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,25 +10,24 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import RayComputerException
+from err import RayException
 from result import MethodResultType
 
 __all__ = [
-    # ======================# RANK_ELEVATION_VALIDATION_COMPUTER_FAILURE #======================#
-    "PromotionLevelRayComputerException",
+    # ======================# VECTOR_RAY_ERROR #======================#
+    "VectorRayException",
 ]
 
-# ======================# RANK_ELEVATION_VALIDATION_COMPUTER_FAILURE #======================#
-class PromotionLevelRayComputerException(RayComputerException):
+# ======================# VECTOR_RAY_ERROR #======================#
+class VectorRayException(RayException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate a rank elevation check was not passed.
+        1.  Indicate that a VectorRay instance encountered an error.
 
     Attributes:
-        msg: Optional[str]
         var: Optional[str]
         val: Optional[Any]
         ex: Optional[Exception]
@@ -40,10 +39,10 @@ class PromotionLevelRayComputerException(RayComputerException):
     Provides:
 
     Super Class:
-        RayComputerException
+        RayException
     """
-    MSG = "Rank elevation check was not passed."
-    ERR_CODE = "RANK_ELEVATION_VALIDATION_COMPUTER_FAILURE"
+    MSG = "An error occurred with a Ray."
+    ERR_CODE = "VECTOR_RAY_ERROR"
     
     def __init__(
             self,
@@ -57,12 +56,12 @@ class PromotionLevelRayComputerException(RayComputerException):
             mthd_rslt_type: Optional[MethodResultType] | None = None,
     ):
         """
-        args:
-            Msg: Optional[str]
-            Var: Optional[str]
-            val: Optional[any]
+        Args:
+            msg: Optional[str]
+            var: Optional[str]
+            val: Optional[Any]
             ex: Optional[Exception]
-            cls_name: Optional[Str]
+            cls_name: Optional[str]
             cls_mthd: Optional[str]
             err_code: Optional[str]
             mthd_rslt_type: Optional[MethodResultType]
