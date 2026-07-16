@@ -1,7 +1,7 @@
-# src/err/span/basis/axis/exception.py
+# src/err/space/span/basis/axis/exception.py
 
 """
-Module: err.span.basis.axis.exception
+Module: err.space.span.basis.axis.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1

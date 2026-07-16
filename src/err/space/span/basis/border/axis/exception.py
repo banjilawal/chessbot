@@ -1,7 +1,7 @@
-# src/err/space/span/exception.py
+# src/err/space/span/border/axis/exception.py
 
 """
-Module: err.space.span.exception
+Module: err.space.span.border.axis.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,60 +10,60 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import ChessException
+from err import SpanBorderException
 from result import MethodResultType
 
 __all__ = [
-    # ======================# SPAN_ERROR #======================#
-    "SpanException",
+    # ======================# AXIS_SPAN_BORDER_ERROR #======================#
+    "AxisBorderException",
 ]
-# ======================# SPAN_ERROR #======================#
-class SpanException(ChessException):
+
+# ======================# AXIS_SPAN_BORDER_ERROR #======================#
+class AxisBorderException(SpanBorderException):
     """
     Role:
-        -   Failure Tracing
+        -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a Span instance encountered an error.
+        1.  Indicate that an attempt was made to access points outside the AxisSpan.
 
     Attributes:
-        msg: str
-        err_code: str
         var: Optional[str]
         val: Optional[Any]
+        ex: Optional[Exception]
         cls_name: Optional[str]
         cls_mthd: Optional[str]
-        ex: Optional[Exception]
+        err_code: Optional[str]
         mthd_rslt_type: Optional[MethodResultType]
             
     Provides:
 
     Super Class:
-        ChessException
+        SpanBorderException
     """
-    MSG = "An error occurred with a Span."
-    ERR_CODE = "SPAN_ERROR"
+    MSG = "Outside the AxisSpan boundaries."
+    ERR_CODE = "AXIS_SPAN_BORDER_ERROR"
     
     def __init__(
             self,
-            msg: str = MSG,
-            err_code: str = ERR_CODE,
+            msg: Optional[str] | None = None,
             var: Optional[str] | None = None,
             val: Optional[Any] | None = None,
+            ex: Optional[Exception] | None = None,
             cls_name: Optional[str] | None = None,
             cls_mthd: Optional[str] | None = None,
-            ex: Optional[Exception] | None = None,
+            err_code: Optional[str] | None = None,
             mthd_rslt_type: Optional[MethodResultType] | None = None,
     ):
         """
-            Args:
-            msg: str
-            err_code: str
+        Args:
+            msg: Optional[str]
             var: Optional[str]
             val: Optional[Any]
+            ex: Optional[Exception]
             cls_name: Optional[str]
             cls_mthd: Optional[str]
-            ex: Optional[Exception]
+            err_code: Optional[str]
             mthd_rslt_type: Optional[MethodResultType]
         """
         msg = msg or self.MSG

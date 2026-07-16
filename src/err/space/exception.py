@@ -10,7 +10,7 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import ChessException
+from err import SpaceException
 from result import MethodResultType
 
 __all__ = [
@@ -18,7 +18,7 @@ __all__ = [
     "SpaceException",
 ]
 # ======================# SPACE_ERROR #======================#
-class SpaceException(ChessException):
+class SpaceException(SpaceException):
     """
     Role:
         -   Failure Tracing
@@ -39,7 +39,7 @@ class SpaceException(ChessException):
     Provides:
 
     Super Class:
-        ChessException
+        SpaceException
     """
     MSG = "Space computation failure."
     ERR_CODE = "SPACE_ERROR"

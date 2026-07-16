@@ -1,7 +1,7 @@
-# src/err/span/axis/exception.py
+# src/err/space/span/setter/rook/exception.py
 
 """
-Module: err.span.axis.exception
+Module: err.space.span.movement.rook.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,24 +10,25 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import SpanException
+from err import MovementVectorSetException
 from result import MethodResultType
 
 __all__ = [
-    # ======================# AXIS_SPAN_ERROR #======================#
-    "AxisSpanException",
+    # ======================# ROOK_MOVEMENT_VECTOR_SET_ERROR #======================#
+    "RookMovementVectorSetException",
 ]
 
-# ======================# AXIS_SPAN_ERROR #======================#
-class AxisSpanException(SpanException):
+# ======================# ROOK_MOVEMENT_VECTOR_SET_ERROR #======================#
+class RookMovementVectorSetException(MovementVectorSetException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an error occurred in an AxisSpan.
-
+         1.  Indicate that a RookMovementVectorSet instance encountered an error.
+        
     Attributes:
+        msg: Optional[str]
         var: Optional[str]
         val: Optional[Any]
         ex: Optional[Exception]
@@ -39,19 +40,19 @@ class AxisSpanException(SpanException):
     Provides:
 
     Super Class:
-        SpanException
+        MovementVectorSetException
     """
-    MSG = "AxisSpan error."
-    ERR_CODE = "AXIS_SPAN_ERROR"
-    
+    MSG = "An error occurred with a RookMovementVectorSet."
+    ERR_CODE = "ROOK_MOVEMENT_VECTOR_SET_ERROR"
+
     def __init__(
             self,
             msg: Optional[str] | None = None,
             var: Optional[str] | None = None,
             val: Optional[Any] | None = None,
-            ex: Optional[Exception] | None = None,
-            cls_name: Optional[str] | None = None,
             cls_mthd: Optional[str] | None = None,
+            cls_name: Optional[str] | None = None,
+            ex: Optional[Exception] | None = None,
             err_code: Optional[str] | None = None,
             mthd_rslt_type: Optional[MethodResultType] | None = None,
     ):

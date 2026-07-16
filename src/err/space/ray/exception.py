@@ -14,10 +14,10 @@ from err import SpaceException
 from result import MethodResultType
 
 __all__ = [
-    # ======================# RAY_COMPUTER_FAILURE #======================#
+    # ======================# RAY_ERROR #======================#
     "RayException",
 ]
-# ======================# RAY_COMPUTER_FAILURE #======================#
+# ======================# RAY_ERROR #======================#
 class RayException(SpaceException):
     """
     Role:

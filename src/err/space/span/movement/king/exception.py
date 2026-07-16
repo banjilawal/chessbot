@@ -1,7 +1,7 @@
-# src/err/space/span/exception.py
+# src/err/space/span/setter/king/exception.py
 
 """
-Module: err.space.span.exception
+Module: err.space.span.movement.king.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,60 +10,61 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import ChessException
+from err import MovementVectorSetException
 from result import MethodResultType
 
 __all__ = [
-    # ======================# SPAN_ERROR #======================#
-    "SpanException",
+    # ======================# KING_MOVEMENT_VECTOR_SET_ERROR #======================#
+    "KingMovementVectorSetException",
 ]
-# ======================# SPAN_ERROR #======================#
-class SpanException(ChessException):
+
+# ======================# KING_MOVEMENT_VECTOR_SET_ERROR #======================#
+class KingMovementVectorSetException(MovementVectorSetException):
     """
     Role:
-        -   Failure Tracing
+        -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a Span instance encountered an error.
-
+         1.  Indicate that a KingMovementVectorSet instance encountered an error.
+        
     Attributes:
-        msg: str
-        err_code: str
+        msg: Optional[str]
         var: Optional[str]
         val: Optional[Any]
+        ex: Optional[Exception]
         cls_name: Optional[str]
         cls_mthd: Optional[str]
-        ex: Optional[Exception]
+        err_code: Optional[str]
         mthd_rslt_type: Optional[MethodResultType]
             
     Provides:
 
     Super Class:
-        ChessException
+        MovementVectorSetException
     """
-    MSG = "An error occurred with a Span."
-    ERR_CODE = "SPAN_ERROR"
-    
+    MSG = "An error occurred with a KingMovementVectorSet."
+    ERR_CODE = "KING_MOVEMENT_VECTOR_SET_ERROR"
+
     def __init__(
             self,
-            msg: str = MSG,
-            err_code: str = ERR_CODE,
+            msg: Optional[str] | None = None,
             var: Optional[str] | None = None,
             val: Optional[Any] | None = None,
-            cls_name: Optional[str] | None = None,
             cls_mthd: Optional[str] | None = None,
+            cls_name: Optional[str] | None = None,
             ex: Optional[Exception] | None = None,
+            err_code: Optional[str] | None = None,
             mthd_rslt_type: Optional[MethodResultType] | None = None,
     ):
         """
-            Args:
-            msg: str
-            err_code: str
+        Args:
+            msg: Optional[str]
             var: Optional[str]
             val: Optional[Any]
+            ex: Optional[Exception]
             cls_name: Optional[str]
             cls_mthd: Optional[str]
-            ex: Optional[Exception]
+            err_code: Optional[str]
             mthd_rslt_type: Optional[MethodResultType]
         """
         msg = msg or self.MSG

@@ -1,7 +1,7 @@
-# src/err/span/basis/exception.py
+# src/err/space/span/basis/exception.py
 
 """
-Module: err.span.basis.exception
+Module: err.space.span.basis.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1

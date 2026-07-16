@@ -1,7 +1,7 @@
-# src/err/span/setter/axis/exception.py
+# src/err/space/span/setter/bishop/exception.py
 
 """
-Module: err.span.setter.axis.exception
+Module: err.space.span.movement.bishop.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,22 +10,22 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import SpanSetterException
+from err import MovementVectorSetException
 from result import MethodResultType
 
 __all__ = [
-    # ======================# AXIS_SPAN_SETTER_FAILURE #======================#
-    "AxisSpanSetterException",
+    # ======================# BISHOP_MOVEMENT_VECTOR_SET_ERROR #======================#
+    "BishopMovementVectorSetException",
 ]
 
-# ======================# AXIS_SPAN_SETTER_FAILURE #======================#
-class AxisSpanSetterException(SpanSetterException):
+# ======================# BISHOP_MOVEMENT_VECTOR_SET_ERROR #======================#
+class BishopMovementVectorSetException(MovementVectorSetException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an error prevented an AxisSpanSetter from completing its task. 
+         1.  Indicate that a BishopMovementVectorSet instance encountered an error.
         
     Attributes:
         msg: Optional[str]
@@ -40,10 +40,10 @@ class AxisSpanSetterException(SpanSetterException):
     Provides:
 
     Super Class:
-        SpanSetterException
+        MovementVectorSetException
     """
-    MSG = "AxisSpanSetter failure."
-    ERR_CODE = "AXIS_SPAN_SETTER_FAILURE"
+    MSG = "An error occurred with a BishopMovementVectorSet."
+    ERR_CODE = "BISHOP_MOVEMENT_VECTOR_SET_ERROR"
 
     def __init__(
             self,

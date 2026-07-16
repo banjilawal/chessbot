@@ -1,7 +1,7 @@
-# src/err/span/basis/quadrant/exception.py
+# src/err/space/span/basis/quadrant/exception.py
 
 """
-Module: err.span.basis.quadrant.exception
+Module: err.space.span.basis.quadrant.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1

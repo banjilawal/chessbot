@@ -1,7 +1,7 @@
-# src/err/span/quadrant/exception.py
+# src/err/space/span/setter/quadrant/exception.py
 
 """
-Module: err.span.quadrant.exception
+Module: err.space.span.setter.quadrant.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,24 +10,25 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import SpanException
+from err import SpanSetterException
 from result import MethodResultType
 
 __all__ = [
-    # ======================# QUADRANT_SPAN_ERROR #======================#
-    "QuadrantSpanException",
+    # ======================# QUADRANT_SPAN_SETTER_FAILURE #======================#
+    "QuadrantSpanSetterException",
 ]
 
-# ======================# QUADRANT_SPAN_ERROR #======================#
-class QuadrantSpanException(SpanException):
+# ======================# QUADRANT_SPAN_SETTER_FAILURE #======================#
+class QuadrantSpanSetterException(SpanSetterException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an error occurred in an QuadrantSpan.
-
+        1.  Indicate that an error prevented an QuadrantSpanSetter from completing its task. 
+        
     Attributes:
+        msg: Optional[str]
         var: Optional[str]
         val: Optional[Any]
         ex: Optional[Exception]
@@ -39,19 +40,19 @@ class QuadrantSpanException(SpanException):
     Provides:
 
     Super Class:
-        SpanException
+        SpanSetterException
     """
-    MSG = "QuadrantSpan error."
-    ERR_CODE = "QUADRANT_SPAN_ERROR"
-    
+    MSG = "QuadrantSpanSetter failure."
+    ERR_CODE = "QUADRANT_SPAN_SETTER_FAILURE"
+
     def __init__(
             self,
             msg: Optional[str] | None = None,
             var: Optional[str] | None = None,
             val: Optional[Any] | None = None,
-            ex: Optional[Exception] | None = None,
-            cls_name: Optional[str] | None = None,
             cls_mthd: Optional[str] | None = None,
+            cls_name: Optional[str] | None = None,
+            ex: Optional[Exception] | None = None,
             err_code: Optional[str] | None = None,
             mthd_rslt_type: Optional[MethodResultType] | None = None,
     ):

@@ -1,7 +1,7 @@
-# src/err/span/setter/quadrant/exception.py
+# src/err/space/span/border/exception.py
 
 """
-Module: err.span.setter.quadrant.exception
+Module: err.space.span.border.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,25 +10,24 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import SpanSetterException
+from err import SpanException
 from result import MethodResultType
 
 __all__ = [
-    # ======================# QUADRANT_SPAN_SETTER_FAILURE #======================#
-    "QuadrantSpanSetterException",
+    # ======================# SPAN_BORDER_ERROR #======================#
+    "SpanBorderException",
 ]
 
-# ======================# QUADRANT_SPAN_SETTER_FAILURE #======================#
-class QuadrantSpanSetterException(SpanSetterException):
+# ======================# SPAN_BORDER_ERROR #======================#
+class SpanBorderException(SpanException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an error prevented an QuadrantSpanSetter from completing its task. 
-        
+        1.  Indicate that an attempt was made to access points outside the Span.
+
     Attributes:
-        msg: Optional[str]
         var: Optional[str]
         val: Optional[Any]
         ex: Optional[Exception]
@@ -40,19 +39,19 @@ class QuadrantSpanSetterException(SpanSetterException):
     Provides:
 
     Super Class:
-        SpanSetterException
+        SpanException
     """
-    MSG = "QuadrantSpanSetter failure."
-    ERR_CODE = "QUADRANT_SPAN_SETTER_FAILURE"
-
+    MSG = "Outside the Span boundaries."
+    ERR_CODE = "SPAN_BORDER_ERROR"
+    
     def __init__(
             self,
             msg: Optional[str] | None = None,
             var: Optional[str] | None = None,
             val: Optional[Any] | None = None,
-            cls_mthd: Optional[str] | None = None,
-            cls_name: Optional[str] | None = None,
             ex: Optional[Exception] | None = None,
+            cls_name: Optional[str] | None = None,
+            cls_mthd: Optional[str] | None = None,
             err_code: Optional[str] | None = None,
             mthd_rslt_type: Optional[MethodResultType] | None = None,
     ):
