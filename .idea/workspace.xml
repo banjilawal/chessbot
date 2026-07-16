@@ -5,30 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/container/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/container/container.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/span/knight/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/span/basis/validator.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/span/king/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/span/king/span.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/space/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/span/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/span/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/span/area/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/span/area/knight/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/span/area/knight/span.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/span/knight/span.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/span/area/span.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/span/span.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/span/bounds/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/span/basis/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/span/bounds/knight/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/span/basis/knight/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/span/bounds/knight/span.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/span/basis/knight/span.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/span/bounds/span.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/span/basis/span.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/span/delta/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/container/vector/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/span/delta/knight/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/span/delta/knight/span.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/span/delta/span.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/container/vector/container.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/span/stepper/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/span/stepper/axis/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/span/stepper/axis/space.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/span/stepper/quadrant/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/span/stepper/quadrant/space.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/span/stepper/span.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/span/basis/span.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/span/basis/span.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/span/knight/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/span/knight/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/span/span.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/span/span.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -84,7 +68,7 @@
     "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/container",
+    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/span",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
@@ -96,11 +80,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/span" />
       <recent name="$PROJECT_DIR$/src/container" />
       <recent name="$PROJECT_DIR$/src/span/terminus" />
       <recent name="$PROJECT_DIR$/src" />
       <recent name="$PROJECT_DIR$/src/space" />
-      <recent name="$PROJECT_DIR$/src/space/bounds" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/container" />
@@ -793,7 +777,7 @@
       <workItem from="1784029158325" duration="10323000" />
       <workItem from="1784040408484" duration="7069000" />
       <workItem from="1784050719673" duration="78000" />
-      <workItem from="1784055454795" duration="89812000" />
+      <workItem from="1784055454795" duration="92846000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />

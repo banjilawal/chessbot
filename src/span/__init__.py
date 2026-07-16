@@ -10,8 +10,9 @@ version: 1.0.1
 # =========== SPAN PACKAGE ===========#
 
 # Packages
-from .area import *
 from .basis import *
-from .computer import *
+from .knight import *
+
 
 # Modules
+from .span import Span

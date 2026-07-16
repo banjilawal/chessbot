@@ -14,3 +14,4 @@ from .knight import *
 
 # Modules
 from .span import VectorBasis
+from .validator import BasisValidator

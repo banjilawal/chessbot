@@ -10,10 +10,10 @@ version: 1.0.1
 from __future__ import annotations
 
 from abc import ABC
-from typing import Generic, Optional, TypeVar
+from typing import Generic,  TypeVar
 
+from container import VectorSet
 from model import Vector
-from span import VectorSet
 
 T = TypeVar("T", bound="Rank")
 
@@ -50,7 +50,7 @@ class VectorBasis(ABC, Generic[T]):
         return self._origin
     
     @property
-    def movement_vectors(self) -> VectorSet[T]:
+    def movement_vectors(self) -> VectorSet:
         return self._movement_vectors
     
     @property

@@ -10,16 +10,18 @@ version: 1.0.1
 from __future__ import annotations
 
 from abc import ABC, abstractmethod
-from typing import Generic, Optional, TypeVar
+from typing import Generic, List, Optional, TypeVar, cast
 
-from result import ComputationResult
-from span import VectorBasis, VectorSet
+from model import Vector
+from register import VectorRegister
+from result import ComputationResult, ValidationResult
+from span import BasisValidator, VectorBasis, VectorSet
 from toolkit import MathToolkit
 from util import LoggingLevelRouter
 
 T = TypeVar("T", basis="Rank")
 
-class Span(ABC, Generic[T]):
+class SpanComputer:
     """
     Role:
         -   Dataset
@@ -38,12 +40,14 @@ class Span(ABC, Generic[T]):
     Super Class:
     """
     _basis: VectorBasis[T]
+    _basis_validator: BasisValidator =
     _math_toolkit: Optional[MathToolkit]
     
     def __init__(
             self,
             basis: VectorBasis[T],
-            math_toolkit: Optional[MathToolkit] | None = MathToolkit()
+            basis_validator: BasisValidator | None = BasisValidator(),
+        math_toolkit: Optional[MathToolkit] | None = MathToolkit(),
     ):
         """
         Args:
@@ -52,6 +56,7 @@ class Span(ABC, Generic[T]):
         """
         self._basis = basis
         self._math_toolkit = math_toolkit
+        self._basis_validator = basis_validator
     
     @property
     def basis(self) -> VectorBasis[T]:
@@ -67,5 +72,33 @@ class Span(ABC, Generic[T]):
     
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def compute_destinations(self) -> ComputationResult[VectorSet]:
-        pass
+    def execute(self, basis: VectorBasis) -> ComputationResult[VectorSet]:
+        method = f"{self.__class__.__name__}.destination_vectors"
+        
+        validation = self._basis_validator.execute(basis)
+        if validation.is_failure:
+            return ComputationResult.failure(validation.exception)
+        source = cast(VectorBasis, validation.payload)
+        
+        solutions: List[Vector] = []
+        
+        # Handle the empty basis set first.
+        if  source.is_empty:
+            return ComputationResult.success(VectorSet())
+        
+        origin = source.origin
+        for movement_vector in source.movement_vectors.entries:
+            computation = self.math.add_vector.execute(
+                register=VectorRegister(u=origin, v=movement_vector)
+            )
+            # Handle the case that, the no solution is provided.
+            if computation.is_failure:
+                # Send an exception in chain in the result.
+                ComputationResult.failure(computation.exception,)
+            # On success cast and append to the solution set.
+            solutions.append(cast(Vector, computation.payload))
+            
+        destination_vector_set = VectorSet(entries=tuple(solutions))
+        
+        # --- Forward the work product to the caller. ---#
+        return ComputationResult.success(destination_vector_set)
