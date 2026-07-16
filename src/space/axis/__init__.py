@@ -1,7 +1,7 @@
-# src/space/linear/axis/__init__.py
+# src/space/axis/__init__.py
 
 """
-Module: space.linear.axis.__init__
+Module: space.axis.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -12,4 +12,4 @@ version: 1.0.1
 # Packages
 
 # Modules
-from .space import Axis
+from .space import AxisSpace

@@ -1,7 +1,7 @@
-# src/space/linear/quadrant/space.py
+# src/space/quadrant/space.py
 
 """
-Module: space.linear.quadrant.space
+Module: space.quadrant.space
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -15,11 +15,11 @@ from err import QuadrantSpaceException
 from model import Scalar, Vector
 from register import VectorRegister
 from result import ComputationResult, MethodResultType
-from space import LinearSpace, QuadrantBounds, QuadrantStepper
+from space import Space, QuadrantBounds, QuadrantStepper
 from util import LoggingLevelRouter
 
 
-class KnightSpace(LinearSpace):
+class QuadrantSpace(Space):
     """
     Role:
         -   Dataset
@@ -147,7 +147,7 @@ class KnightSpace(LinearSpace):
         return ComputationResult.success(cast(Vector, computation.payload))
 
     @classmethod
-    def northeast(cls, origin: Vector) -> KnightSpace:
+    def northeast(cls, origin: Vector) -> QuadrantSpace:
         """
         Create a 2D space
 
@@ -163,7 +163,7 @@ class KnightSpace(LinearSpace):
         )
     
     @classmethod
-    def northwest(cls, origin: Vector) -> KnightSpace:
+    def northwest(cls, origin: Vector) -> QuadrantSpace:
         """
         Create a 2D space
 
@@ -179,7 +179,7 @@ class KnightSpace(LinearSpace):
         )
     
     @classmethod
-    def southeast(cls, origin: Vector) -> KnightSpace:
+    def southeast(cls, origin: Vector) -> QuadrantSpace:
         """
         Create a 2D space
 
@@ -195,7 +195,7 @@ class KnightSpace(LinearSpace):
         )
     
     @classmethod
-    def southwest(cls, origin: Vector) -> KnightSpace:
+    def southwest(cls, origin: Vector) -> QuadrantSpace:
         """
         Create a 2D space
 

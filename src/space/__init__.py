@@ -12,6 +12,7 @@ version: 1.0.1
 # Packages
 from .bounds import *
 from .linear import *
+from .nonlinear import *
 from .stepper import *
 from .terminus import *
 

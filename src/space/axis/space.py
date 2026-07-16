@@ -1,7 +1,7 @@
-# src/space/linear/axis/space.py
+# src/space/axis/space.py
 
 """
-Module: space.linear.axis.space
+Module: space.axis.space
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -15,11 +15,11 @@ from err import AxisSpaceException
 from model import Scalar, Vector
 from register import VectorRegister
 from result import ComputationResult, MethodResultType
-from space import AxisBounds, AxisStepper, Space, SpaceBounds
+from space import AxisBounds, AxisStepper, Space
 from util import LoggingLevelRouter
 
 
-class Axis(LinearSpace):
+class AxisSpace(Space):
     """
     Role:
         -   Dataset
@@ -99,7 +99,7 @@ class Axis(LinearSpace):
         computation = self.math.euclidean_distance.execute(
             register=VectorRegister(u=self.origin, v=self.terminus)
         )
-        # Handle the case that, the computation is not satisfied.
+        # Handle the case that, the request is not satisfied.
         if computation.is_failure:
             # Send an exception chain in the result.
             return ComputationResult.failure(
@@ -154,7 +154,7 @@ class Axis(LinearSpace):
 
     
     @classmethod
-    def east_axis(cls, origin: Vector) -> Axis:
+    def east_axis(cls, origin: Vector) -> AxisSpace:
         """
         Create an Axis in 1D plane
         
@@ -171,7 +171,7 @@ class Axis(LinearSpace):
         )
     
     @classmethod
-    def north_axis(cls, origin: Vector) -> Axis:
+    def north_axis(cls, origin: Vector) -> AxisSpace:
         """
         Create an Axis in 1D plane.
 
@@ -187,7 +187,7 @@ class Axis(LinearSpace):
         )
     
     @classmethod
-    def south_axis(cls, origin: Vector) -> Axis:
+    def south_axis(cls, origin: Vector) -> AxisSpace:
         """
         Create an Axis in 1D plane.
 
@@ -203,7 +203,7 @@ class Axis(LinearSpace):
         )
     
     @classmethod
-    def west_axis(cls, origin: Vector) -> Axis:
+    def west_axis(cls, origin: Vector) -> AxisSpace:
         """
         Create an Axis in 1D plane.
 

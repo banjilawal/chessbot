@@ -1,7 +1,7 @@
-# src/space/space.py
+# src/span/area/span.py
 
 """
-Module: space.space
+Module: span.area.span
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -9,24 +9,27 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from abc import abstractmethod
-from typing import Optional
+from abc import ABC, abstractmethod
+from typing import Generic, Optional, TypeVar
 
-from space import Space
+from result import ComputationResult
+from span import SpanBounds, VectorSet
+from toolkit import MathToolkit
 from util import LoggingLevelRouter
 
+T = TypeVar("T", bounds="Rank")
 
-class LinearSpace(Space):
+class Span(ABC, Generic[T]):
     """
     Role:
         -   Dataset
 
     Responsibilities:
-        1.  Define points in a bounded space.
+        1.  Define points in a bounded span.
         2.  Provide a function that steps through every point in the plane,
 
     Attributes:
-        bounds: SpaceBounds
+        area: Span.AreaArea
         stepper: Stepper
         math_toolkit: Optional[MathToolkit]
 
@@ -34,33 +37,25 @@ class LinearSpace(Space):
 
     Super Class:
     """
-    _bounds: SpaceBounds
-    _stepper: SpaceStepper
+    _bounds: SpanBounds[T]
     _math_toolkit: Optional[MathToolkit]
     
     def __init__(
             self,
-            bounds: SpaceBounds,
-            stepper: SpaceStepper,
+            bounds: SpanBounds[T],
             math_toolkit: Optional[MathToolkit] | None = MathToolkit()
     ):
         """
         Args:
-            bounds: SpaceBounds
-            stepper: Stepper
+            bounds: SpanBounds[T]
             math_toolkit: Optional[MathToolkit]
         """
         self._bounds = bounds
-        self._stepper = stepper
         self._math_toolkit = math_toolkit
     
     @property
-    def bounds(self) -> SpaceBounds:
+    def bounds(self) -> SpanBounds[T]:
         return self._bounds
-    
-    @property
-    def stepper(self) -> SpaceStepper:
-        return self._stepper
     
     @property
     def math(self) -> MathToolkit:
@@ -70,11 +65,7 @@ class LinearSpace(Space):
     def is_empty(self) -> bool:
         return self._bounds.is_empty
     
-    @property
-    def is_cycle(self) -> bool:
-        return self._bounds.is_cycle
-    
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def distance(self) -> ComputationResult[Scalar]:
+    def destination_vectors(self) -> ComputationResult[VectorSet]:
         pass

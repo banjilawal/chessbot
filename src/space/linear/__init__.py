@@ -1,7 +1,7 @@
-# src/space/linear/__init__.py
+# src/space/__init__.py
 
 """
-Module: space.linear.__init__
+Module: space.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -10,8 +10,6 @@ version: 1.0.1
 # =========== SPACE PACKAGE ===========#
 
 # Packages
-from .axis import *
-from .quadrant import *
 
 # Modules
 from .space import LinearSpace

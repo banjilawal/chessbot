@@ -15,10 +15,10 @@ from err import AxisRayComputerException
 from model import Vector
 from ray import RayComputer, VectorRay
 from result import ComputationResult
-from space import Axis
+from space import AxisSpace
 
 
-class AxisRayComputer(RayComputer[Axis]):
+class AxisRayComputer(RayComputer[AxisSpace]):
     """
     Role:
         -   Computation Worker
@@ -38,7 +38,7 @@ class AxisRayComputer(RayComputer[Axis]):
         RayComputer
     """
     
-    def __init__(self, space: Axis):
+    def __init__(self, space: AxisSpace):
         """
         Args:
             space: Axis
@@ -46,8 +46,8 @@ class AxisRayComputer(RayComputer[Axis]):
         super().__init__(space=space)
         
     @property
-    def space(self) -> Axis:
-        return cast(Axis, self.space)
+    def space(self) -> AxisSpace:
+        return cast(AxisSpace, self.space)
     
     
     def execute(self, ) -> ComputationResult[VectorRay]:

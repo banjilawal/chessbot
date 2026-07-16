@@ -1,7 +1,7 @@
-# src/space/stepper/axis/space.py
+# src/span/stepper/axis/span.py
 
 """
-Module: space.stepper.axis.space
+Module: span.stepper.axis.span
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -11,15 +11,15 @@ from __future__ import annotations
 
 from typing import Dict, cast
 
-from err import AxisSpaceSetterException
+from err import AxisSpanSetterException
 from model import Vector
 from register import VectorRegister
 from result import ComputationResult, MethodResultType
-from space import AxisSpace, SpaceStepper
+from span import AxisSpan, SpanStepper
 from util import LoggingLevelRouter
 
 
-class AxisStepper(SpaceStepper[AxisSpace]):
+class AxisStepper(SpanStepper[AxisSpan]):
     """
     Role:
         -   Computation Worker
@@ -91,11 +91,11 @@ class AxisStepper(SpaceStepper[AxisSpace]):
         if computation.is_failure:
             # Send an exception chain in the result.
             return ComputationResult.failure(
-                AxisSpaceSetterException(
+                AxisSpanSetterException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=AxisSpaceSetterException.MSG,
-                    err_code=AxisSpaceSetterException.ERR_CODE,
+                    msg=AxisSpanSetterException.MSG,
+                    err_code=AxisSpanSetterException.ERR_CODE,
                     mthd_rslt_type=MethodResultType.COMPUTATION_RESULT,
                     ex=computation.exception,
                 ),
