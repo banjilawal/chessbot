@@ -11,6 +11,8 @@ version: 1.0.1
 
 # Packages
 from .maneuver import *
+from .attack import *
+
 
 # Modules
-from .exception import PawnMovementVectorSetException
+from .exception import PawnVectorSetException

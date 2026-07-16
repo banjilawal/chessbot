@@ -10,6 +10,9 @@ version: 1.0.1
 # ============ ERR.SPACE.SPAN.MOVEMENT.PAWN.MANEUVER PACKAGE ===========#
 
 # Packages
+from .opening import *
+from .developed import *
+
 
 # Modules
 from .exception import PawnManeuverVectorSetException

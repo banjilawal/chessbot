@@ -5,8 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/err/space/span/movement/pawn/maneuver/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/space/span/movement/pawn/maneuver/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/space/span/movement/pawn/maneuver/opening/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/space/span/movement/pawn/maneuver/opening/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/space/span/movement/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/space/span/movement/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/space/span/movement/pawn/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/space/span/movement/pawn/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/space/span/movement/pawn/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/space/span/movement/pawn/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/space/span/movement/pawn/maneuver/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/space/span/movement/pawn/maneuver/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/space/span/movement/pawn/maneuver/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/space/span/movement/pawn/maneuver/exception.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -75,10 +81,10 @@
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/err/space/span/movement/pawn/maneuver" />
+      <recent name="$PROJECT_DIR$/src/err/space/span/movement/pawn" />
+      <recent name="$PROJECT_DIR$/src/err/space/span/movement/pawn/maneuver/opening" />
       <recent name="$PROJECT_DIR$/src/err/space/span/movement" />
       <recent name="$PROJECT_DIR$/src/err/space/span" />
-      <recent name="$PROJECT_DIR$/src/err/space/ray" />
-      <recent name="$PROJECT_DIR$/src/err/space/linear/stepper" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/err/space/span/basis" />
@@ -771,7 +777,7 @@
       <workItem from="1784029158325" duration="10323000" />
       <workItem from="1784040408484" duration="7069000" />
       <workItem from="1784050719673" duration="78000" />
-      <workItem from="1784055454795" duration="127223000" />
+      <workItem from="1784055454795" duration="129754000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />

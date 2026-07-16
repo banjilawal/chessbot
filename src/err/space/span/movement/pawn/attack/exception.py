@@ -1,7 +1,7 @@
-# src/err/space/span/setter/pawn/exception.py
+# src/err/space/span/setter/pawn/attack/exception.py
 
 """
-Module: err.space.span.movement.pawn.exception
+Module: err.space.span.movement.pawn.attack.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,22 +10,22 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import MovementVectorSetException
+from err import PawnVectorSetException
 from result import MethodResultType
 
 __all__ = [
-    # ======================# PAWN_VECTOR_SET_ERROR #======================#
-    "PawnVectorSetException",
+    # ======================# PAWN_ATTACK_VECTOR_SET_ERROR #======================#
+    "PawnAttackVectorSetException",
 ]
 
-# ======================# PAWN_VECTOR_SET_ERROR #======================#
-class PawnVectorSetException(MovementVectorSetException):
+# ======================# PAWN_ATTACK_VECTOR_SET_ERROR #======================#
+class PawnAttackVectorSetException(PawnVectorSetException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-         1.  Indicate that a PawnMovementVectorSet instance encountered an error.
+         1.  Indicate that a PawnAttackVectorSet instance encountered an error.
         
     Attributes:
         msg: Optional[str]
@@ -40,10 +40,10 @@ class PawnVectorSetException(MovementVectorSetException):
     Provides:
 
     Super Class:
-        MovementVectorSetException
+        PawnVectorSetException
     """
-    MSG = "An error occurred with a PawnMovementVectorSet."
-    ERR_CODE = "PAWN_VECTOR_SET_ERROR"
+    MSG = "An error occurred with a PawnAttackVectorSet."
+    ERR_CODE = "PAWN_ATTACK_VECTOR_SET_ERROR"
 
     def __init__(
             self,

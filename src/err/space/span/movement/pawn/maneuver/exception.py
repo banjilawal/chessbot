@@ -10,7 +10,7 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import PawnMovementVectorSetException
+from err import PawnVectorSetException
 from result import MethodResultType
 
 __all__ = [
@@ -19,7 +19,7 @@ __all__ = [
 ]
 
 # ======================# PAWN_MANEUVER_VECTOR_SET_ERROR #======================#
-class PawnManeuverVectorSetException(PawnMovementVectorSetException):
+class PawnManeuverVectorSetException(PawnVectorSetException):
     """
     Role:
         -   Error Tracing
@@ -40,7 +40,7 @@ class PawnManeuverVectorSetException(PawnMovementVectorSetException):
     Provides:
 
     Super Class:
-        PawnMovementVectorSetException
+        PawnVectorSetException
     """
     MSG = "An error occurred with a PawnManeuverVectorSet."
     ERR_CODE = "PAWN_MANEUVER_VECTOR_SET_ERROR"
