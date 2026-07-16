@@ -1,7 +1,7 @@
-# src/err/space/axis/exception.py
+# src/err/linear/stepper/quadrant/exception.py
 
 """
-Module: err.space.axis.exception
+Module: err.linear.stepper.quadrant.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,24 +10,25 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import SpaceException
+from err import LinearStepperException
 from result import MethodResultType
 
 __all__ = [
-    # ======================# AXIS_SPACE_ERROR #======================#
-    "AxisSpaceException",
+    # ======================# QUADRANT_LINEAR_STEPPER_FAILURE #======================#
+    "QuadrantLinearStepperException",
 ]
 
-# ======================# AXIS_SPACE_ERROR #======================#
-class AxisSpaceException(SpaceException):
+# ======================# QUADRANT_LINEAR_STEPPER_FAILURE #======================#
+class QuadrantLinearStepperException(LinearStepperException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an error occurred in an AxisSpace.
-
+        1.  Indicate that an QuadrantLinearStepper was aborted by an exception.
+        
     Attributes:
+        msg: Optional[str]
         var: Optional[str]
         val: Optional[Any]
         ex: Optional[Exception]
@@ -39,19 +40,19 @@ class AxisSpaceException(SpaceException):
     Provides:
 
     Super Class:
-        SpaceException
+        LinearStepperException
     """
-    MSG = "AxisSpace error."
-    ERR_CODE = "AXIS_SPACE_ERROR"
-    
+    MSG = "QuadrantLinearStepper failure."
+    ERR_CODE = "QUADRANT_LINEAR_STEPPER_FAILURE"
+
     def __init__(
             self,
             msg: Optional[str] | None = None,
             var: Optional[str] | None = None,
             val: Optional[Any] | None = None,
-            ex: Optional[Exception] | None = None,
-            cls_name: Optional[str] | None = None,
             cls_mthd: Optional[str] | None = None,
+            cls_name: Optional[str] | None = None,
+            ex: Optional[Exception] | None = None,
             err_code: Optional[str] | None = None,
             mthd_rslt_type: Optional[MethodResultType] | None = None,
     ):

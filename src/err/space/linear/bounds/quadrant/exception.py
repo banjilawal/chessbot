@@ -1,7 +1,7 @@
-# src/err/span/computer/exception.py
+# src/err/space/linear/bounds/quadrant/exception.py
 
 """
-Module: err.span.computer.exception
+Module: err.space.linear.bounds.quadrant.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,25 +10,24 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import SpanException
+from err import LinearBoundsViolationExceptions
 from result import MethodResultType
 
 __all__ = [
-    # ======================# SPAN_COMPUTER_FAILURE #======================#
-    "SpanComputerException",
+    # ======================# QUADRANT_SPACE_BOUNDS_VIOLATION_ERROR #======================#
+    "QuadrantBoundsViolationException",
 ]
 
-# ======================# SPAN_COMPUTER_FAILURE #======================#
-class SpanComputerException(SpanException):
+# ======================# QUADRANT_SPACE_BOUNDS_VIOLATION_ERROR #======================#
+class QuadrantBoundsViolationException(LinearBoundsViolationExceptions):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an error prevented a SpanComputer from completing its task. 
-        
+        1.  Indicate that an operation accessed data outside the QuadrantLinearSpace bounds.
+
     Attributes:
-        msg: Optional[str]
         var: Optional[str]
         val: Optional[Any]
         ex: Optional[Exception]
@@ -40,19 +39,19 @@ class SpanComputerException(SpanException):
     Provides:
 
     Super Class:
-        SpanException
+        LinearBoundsViolationExceptions
     """
-    MSG = "SpanComputer failure."
-    ERR_CODE = "SPAN_COMPUTER_FAILURE"
-
+    MSG = "Outside LinearSpace bounds."
+    ERR_CODE = "QUADRANT_SPACE_BOUNDS_VIOLATION_ERROR"
+    
     def __init__(
             self,
             msg: Optional[str] | None = None,
             var: Optional[str] | None = None,
             val: Optional[Any] | None = None,
-            cls_mthd: Optional[str] | None = None,
-            cls_name: Optional[str] | None = None,
             ex: Optional[Exception] | None = None,
+            cls_name: Optional[str] | None = None,
+            cls_mthd: Optional[str] | None = None,
             err_code: Optional[str] | None = None,
             mthd_rslt_type: Optional[MethodResultType] | None = None,
     ):

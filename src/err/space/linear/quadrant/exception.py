@@ -1,7 +1,7 @@
-# src/err/ray/relation/binder/exception.py
+# src/err/space/linear/quadrant/exception.py
 
 """
-Module: err.ray.relation.binder.exception
+Module: err.space.linear.quadrant.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,26 +10,24 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
+from err import LinearSpaceException
+from result import MethodResultType
 
 __all__ = [
-    # ======================# BOARD_BINDER_RELATION_RAY_COMPUTER_FAILURE #======================#
-    "BoardBinderRayRayComputerException",
+    # ======================# LINEAR_QUADRANT_SPACE_ERROR #======================#
+    "QuadrantLinearSpaceException",
 ]
 
-from err.ray.relation import RelationRayComputerException
-
-
-# ======================# BOARD_BINDER_RELATION_RAY_COMPUTER_FAILURE #======================#
-class BoardBinderRayRayComputerException(RelationRayComputerException):
+# ======================# LINEAR_QUADRANT_SPACE_ERROR #======================#
+class QuadrantLinearSpaceException(LinearSpaceException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an error prevented a BoardBinderRelations ray from completing.
+        1.  Indicate that a LinearQuadrantSpace instance encountered an error.
 
     Attributes:
-        msg: Optional[str]
         var: Optional[str]
         val: Optional[Any]
         ex: Optional[Exception]
@@ -41,10 +39,10 @@ class BoardBinderRayRayComputerException(RelationRayComputerException):
     Provides:
 
     Super Class:
-        IdRelationException
+        LinearSpaceException
     """
-    MSG = "A BoardBinderRelations ray step failed."
-    ERR_CODE = "BOARD_BINDER_RELATION_RAY_COMPUTER_FAILURE"
+    MSG = "An error occurred in an QuadrantLinearSpace."
+    ERR_CODE = "QUADRANT_LINEAR_SPACE_ERROR"
     
     def __init__(
             self,
@@ -58,18 +56,19 @@ class BoardBinderRayRayComputerException(RelationRayComputerException):
             mthd_rslt_type: Optional[MethodResultType] | None = None,
     ):
         """
-        args:
-            Msg: Optional[str]
-            Var: Optional[str]
-            val: Optional[any]
+        Args:
+            msg: Optional[str]
+            var: Optional[str]
+            val: Optional[Any]
             ex: Optional[Exception]
-            cls_name: Optional[Str]
+            cls_name: Optional[str]
             cls_mthd: Optional[str]
             err_code: Optional[str]
             mthd_rslt_type: Optional[MethodResultType]
         """
         msg = msg or self.MSG
         err_code = err_code or self.ERR_CODE
+        mthd_rslt_type = mthd_rslt_type
         super().__init__(
             ex=ex,
             msg=msg,

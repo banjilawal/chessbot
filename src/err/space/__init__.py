@@ -10,10 +10,9 @@ version: 1.0.1
 # ============ ERR.SPACE PACKAGE ===========#
 
 # Packages
-from .axis import *
-from .bounds import *
-from .quadrant import *
-from .computer import *
+from .linear import *
+from .ray import *
+from .span import *
 
 # Modules
 from .exception import SpaceException

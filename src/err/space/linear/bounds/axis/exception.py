@@ -1,7 +1,7 @@
-# src/err/space/quadrant/exception.py
+# src/err/space/linear/bounds/axis/exception.py
 
 """
-Module: err.space.quadrant.exception
+Module: err.space.linear.bounds.axis.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,22 +10,22 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import SpaceException
+from err import LinearBoundsViolationExceptions
 from result import MethodResultType
 
 __all__ = [
-    # ======================# QUADRANT_SPACE_ERROR #======================#
-    "QuadrantSpaceException",
+    # ======================# AXIS_SPACE_BOUNDS_VIOLATION_ERROR #======================#
+    "AxisBoundsViolationException",
 ]
 
-# ======================# QUADRANT_SPACE_ERROR #======================#
-class QuadrantSpaceException(SpaceException):
+# ======================# AXIS_SPACE_BOUNDS_VIOLATION_ERROR #======================#
+class AxisBoundsViolationException(LinearBoundsViolationExceptions):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an error occurred in an QuadrantSpace.
+        1.  Indicate that an operation accessed data outside the AxisLinearSpace bounds.
 
     Attributes:
         var: Optional[str]
@@ -39,10 +39,10 @@ class QuadrantSpaceException(SpaceException):
     Provides:
 
     Super Class:
-        SpaceException
+        LinearBoundsViolationExceptions
     """
-    MSG = "QuadrantSpace error."
-    ERR_CODE = "QUADRANT_SPACE_ERROR"
+    MSG = "Outside LinearSpace bounds."
+    ERR_CODE = "AXIS_SPACE_BOUNDS_VIOLATION_ERROR"
     
     def __init__(
             self,

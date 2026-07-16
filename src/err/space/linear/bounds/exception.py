@@ -1,7 +1,7 @@
-# src/err/space/bounds/exception.py
+# src/err/space/linear/bounds/exception.py
 
 """
-Module: err.space.bounds.exception
+Module: err.space.linear.bounds.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,22 +10,22 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import SpaceException
+from err import LinearSpaceException
 from result import MethodResultType
 
 __all__ = [
-    # ======================# SPACE_BOUNDARY_ERROR #======================#
-    "SpaceBoundaryException",
+    # ======================# LINEAR_SPACE_BOUNDS_VIOLATION__ERROR #======================#
+    "LinearBoundsViolationExceptions",
 ]
 
-# ======================# SPACE_BOUNDARY_ERROR #======================#
-class SpaceBoundaryException(SpaceException):
+# ======================# LINEAR_SPACE_BOUNDS_VIOLATION__ERROR #======================#
+class LinearBoundsViolationExceptions(LinearSpaceException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an attempt was made to access points outside the Space.
+        1.  Indicate that an operation accessed data outside the LinearSpace bounds.
 
     Attributes:
         var: Optional[str]
@@ -39,10 +39,10 @@ class SpaceBoundaryException(SpaceException):
     Provides:
 
     Super Class:
-        SpaceException
+        LinearSpaceException
     """
-    MSG = "Outside the Space boundaries."
-    ERR_CODE = "SPACE_BOUNDARY_ERROR"
+    MSG = "Outside LinearSpace bounds."
+    ERR_CODE = "LINEAR_SPACE_BOUNDS_VIOLATION__ERROR"
     
     def __init__(
             self,

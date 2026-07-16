@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import cast
 
-from err.space.computer.quadrant.exception import QuadrantSpaceSetterException
+from err.space.linear.stepper.quadrant.exception import QuadrantSpaceSetterException
 from model import Vector
 from register import NumberRegister
 from result import ComputationResult, MethodResultType

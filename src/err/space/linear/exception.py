@@ -1,7 +1,7 @@
-# src/err/span/computer/quadrant/exception.py
+# src/err/space/linear/exception.py
 
 """
-Module: err.span.computer.quadrant.exception
+Module: err.space.linear.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,61 +10,60 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import SpanComputerException
+from err import SpaceException
 from result import MethodResultType
 
 __all__ = [
-    # ======================# QUADRANT_SPAN_COMPUTER_FAILURE #======================#
-    "QuadrantSpanComputerException",
+    # ======================# LINEAR_SPACE_ERROR #======================#
+    "LinearSpaceException",
 ]
-
-# ======================# QUADRANT_SPAN_COMPUTER_FAILURE #======================#
-class QuadrantSpanComputerException(SpanComputerException):
+# ======================# LINEAR_SPACE_ERROR #======================#
+class LinearSpaceException(SpaceException):
     """
     Role:
-        -   Error Tracing
+        -   Failure Tracing
 
     Responsibilities:
-        1.  Indicate that an error prevented an QuadrantSpanComputer from completing its task. 
-        
+        1.  Indicate that a LinearSpace instance encountered an error.
+
     Attributes:
-        msg: Optional[str]
+        msg: str
+        err_code: str
         var: Optional[str]
         val: Optional[Any]
-        ex: Optional[Exception]
         cls_name: Optional[str]
         cls_mthd: Optional[str]
-        err_code: Optional[str]
+        ex: Optional[Exception]
         mthd_rslt_type: Optional[MethodResultType]
             
     Provides:
 
     Super Class:
-        SpanComputerException
+        SpaceException
     """
-    MSG = "QuadrantSpanComputer failure."
-    ERR_CODE = "QUADRANT_SPAN_COMPUTER_FAILURE"
-
+    MSG = "An error occurred in a LinearSpace."
+    ERR_CODE = "LINEAR_SPACE_ERROR"
+    
     def __init__(
             self,
-            msg: Optional[str] | None = None,
+            msg: str = MSG,
+            err_code: str = ERR_CODE,
             var: Optional[str] | None = None,
             val: Optional[Any] | None = None,
-            cls_mthd: Optional[str] | None = None,
             cls_name: Optional[str] | None = None,
+            cls_mthd: Optional[str] | None = None,
             ex: Optional[Exception] | None = None,
-            err_code: Optional[str] | None = None,
             mthd_rslt_type: Optional[MethodResultType] | None = None,
     ):
         """
-        Args:
-            msg: Optional[str]
+            Args:
+            msg: str
+            err_code: str
             var: Optional[str]
             val: Optional[Any]
-            ex: Optional[Exception]
             cls_name: Optional[str]
             cls_mthd: Optional[str]
-            err_code: Optional[str]
+            ex: Optional[Exception]
             mthd_rslt_type: Optional[MethodResultType]
         """
         msg = msg or self.MSG
