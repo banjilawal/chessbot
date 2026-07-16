@@ -25,7 +25,7 @@ class ReadinessAnalyzerBootstrapperException(AnalyzerBootstrapperException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an error prevented a ReadinessAnalyzerBootstrapper from
+        1.  Indicate that a ReadinessAnalyzerBootstrapper from
             completing its task.
         
     Attributes:

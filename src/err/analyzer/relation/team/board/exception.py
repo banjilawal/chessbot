@@ -26,7 +26,7 @@ class BoardTeamRelationAnalyzerException(RelationAnalyzerException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an error prevented the team-board relation analyzer from completing.
+        1.  Indicate that a team-board relation analyzer from completing.
 
     Attributes:
         msg: Optional[str]

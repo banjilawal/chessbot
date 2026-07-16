@@ -25,7 +25,7 @@ class SearchPermitterBootstrapperException(BootstrapperException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an error prevented a SearchPermitterBootstrapper from
+        1.  Indicate that a SearchPermitterBootstrapper from
             completing its task.
         
     Attributes:

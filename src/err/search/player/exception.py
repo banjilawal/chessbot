@@ -26,7 +26,7 @@ class PlayerSearcherException(SearcherException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an error prevented a PlayerSearcher from
+        1.  Indicate that a PlayerSearcher from
             completing its task.
 
     Attributes:

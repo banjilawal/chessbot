@@ -28,9 +28,9 @@ class PersonaBinderBuilderBootstrapperException(BinderBuilderBootstrapperExcepti
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an error prevented the PersonaBinderBuilderBootstrapper from completing its task.
+        1.  Indicate that a PersonaBinderBuilderBootstrapper was aborted by an exception.
 
-   BuilderBootstrapper from completing its task.s:
+   BuilderBootstrapper was aborted by an exception.s:
             msg: Optional[str]
             var: Optional[str]
             val: Optional[Any]

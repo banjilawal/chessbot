@@ -25,7 +25,7 @@ class TokenBuilderBootstrapperException(BuilderBootstrapperException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate a TokenBuilderBootstrapper from completing its task.
+        1.  Indicate a TokenBuilderBootstrapper was aborted by an exception.
 
     Attributes:
         msg: Optional[str]

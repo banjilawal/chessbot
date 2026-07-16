@@ -25,7 +25,7 @@ class PushPermitterBootstrapperException(BootstrapperException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an error prevented a PushPermitterBootstrapper from
+        1.  Indicate that a PushPermitterBootstrapper from
             completing its task.
         
     Attributes:

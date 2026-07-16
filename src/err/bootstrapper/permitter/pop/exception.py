@@ -25,7 +25,7 @@ class PopPermitterBootstrapperException(BootstrapperException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an error prevented a PopPermitterBootstrapper from
+        1.  Indicate that a PopPermitterBootstrapper from
             completing its task.
         
     Attributes:

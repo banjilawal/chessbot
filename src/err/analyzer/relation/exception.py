@@ -26,7 +26,7 @@ class RelationAnalyzerException(AnalyzerException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an error prevented a relation analyzer from completing.
+        1.  Indicate that a relation analyzer from completing.
         
     Attributes:
         msg: Optional[str]

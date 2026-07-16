@@ -25,7 +25,7 @@ class OriginSearcherBootstrapperException(SearcherBootstrapperException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an error prevented a OriginSearcherBootstrapper from
+        1.  Indicate that a OriginSearcherBootstrapper from
             completing its task.
         
     Attributes:

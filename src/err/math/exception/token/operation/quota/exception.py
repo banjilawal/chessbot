@@ -27,7 +27,7 @@ class RankQuotaAnalysisException(OperationException):
         - Exception Messaging
 
     Responsibilities:
-        1.  Indicate that an error prevented a quota analysis from completing.
+        1.  Indicate that a quota analysis from completing.
         2.  Trace the method calls.
 
     Attributes:

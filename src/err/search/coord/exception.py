@@ -26,7 +26,7 @@ class CoordSearcherException(SearcherException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an error prevented a CoordSearcher from
+        1.  Indicate that a CoordSearcher from
             completing its task.
 
     Attributes:

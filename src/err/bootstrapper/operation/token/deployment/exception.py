@@ -25,7 +25,7 @@ class TokenDeploymentException(TokenOperationBootstrapperException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an error prevented a Token getting deployed to its opening square.
+        1.  Indicate that a Token getting deployed to its opening square.
 
     Attributes:
         msg: Optional[str]

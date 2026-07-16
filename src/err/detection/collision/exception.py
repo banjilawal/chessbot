@@ -25,7 +25,7 @@ class CollisionDetectorException(DetectorException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a detector experienced an error that prevented it from completing its task.
+        1.  Indicate that a detector experienced an error that prevented it was aborted by an exception.
         
     Attributes:
         msg: Optional[str]

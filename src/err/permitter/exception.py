@@ -25,7 +25,7 @@ class PermitterException(ChessException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an error prevented the permitter from completing its
+        1.  Indicate that a permitter from completing its
             permission analysis.
 
     Attributes:

@@ -26,7 +26,7 @@ class BoardBinderAnalyzerAnalyzerException(RelationAnalyzerException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an error prevented a BoardBinderRelations analyzer from completing.
+        1.  Indicate that a BoardBinderRelations analyzer from completing.
 
     Attributes:
         msg: Optional[str]

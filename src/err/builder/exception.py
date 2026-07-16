@@ -26,7 +26,7 @@ class BuilderException(ChessException):
         -   Failure Tracing
 
     Responsibilities:
-        1.  Indicate that an error prevented the build from completing.
+        1.  Indicate that a build from completing.
 
     Attributes:
         msg: str

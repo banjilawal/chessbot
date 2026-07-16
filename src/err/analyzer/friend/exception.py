@@ -25,7 +25,7 @@ class FriendshipAnalyzerException(AnalyzerException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an error prevented a FriendshipAnalyzer from completing its task. 
+        1.  Indicate that a FriendshipAnalyzer was aborted by an exception.
 
     Attributes:
         var: Optional[str]

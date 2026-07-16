@@ -25,7 +25,7 @@ class ManeuverPermitterException(PermitterException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an error prevented a ManeuverPermitter from completing its task.
+        1.  Indicate that a ManeuverPermitter was aborted by an exception.
 
     Attributes:
         msg: Optional[str]

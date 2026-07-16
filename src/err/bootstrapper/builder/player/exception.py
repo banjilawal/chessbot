@@ -25,7 +25,7 @@ class PlayerBuilderBootstrapperException(BuilderBootstrapperException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an error prevented the PlayerBuilderBootstrapper from completing its task.
+        1.  Indicate that a PlayerBuilderBootstrapper was aborted by an exception.
 
     Attributes:
         msg: Optional[str]

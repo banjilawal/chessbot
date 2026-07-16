@@ -24,7 +24,7 @@ class VectorStateException(StateException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an error prevented a VectorStatefrom completing their task.
+        1.  Indicate that a VectorStatefrom completing their task.
 
     Attributes:
         msg: Optional[str]

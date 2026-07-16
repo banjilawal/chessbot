@@ -26,7 +26,7 @@ class CheckSearcherException(SearcherException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an error prevented a CheckSearcher from
+        1.  Indicate that a CheckSearcher from
             completing its task.
 
     Attributes:

@@ -25,7 +25,7 @@ class SquareBuilderBootstrapperException(BuilderBootstrapperException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an error prevented the SquareBuilderBootstrapper from completing its task.
+        1.  Indicate that a SquareBuilderBootstrapper was aborted by an exception.
 
     Attributes:
         msg: Optional[str]

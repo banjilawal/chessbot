@@ -25,7 +25,7 @@ class PersonaBuilderBootstrapperException(BuilderBootstrapperException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that n PersonaBuilderBootstrapper from completing its task.
+        1.  Indicate that n PersonaBuilderBootstrapper was aborted by an exception.
 
     Attributes:
             msg: Optional[str]

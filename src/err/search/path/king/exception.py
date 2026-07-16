@@ -26,7 +26,7 @@ class KingPathSearcherException(PathSearcherException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an error prevented an KingPathSearcher from
+        1.  Indicate that an KingPathSearcher from
             completing its task.
 
     Attributes:

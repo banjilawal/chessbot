@@ -26,7 +26,7 @@ class SquareTokenRelationAnalyzerException(RelationAnalyzerException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an error prevented the token-square relation analyzer from completing.
+        1.  Indicate that a token-square relation analyzer from completing.
 
     Attributes:
         msg: Optional[str]

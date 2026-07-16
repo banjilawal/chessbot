@@ -26,7 +26,7 @@ class BlockedPathSearcherException(PathSearcherException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an error prevented an BlockedPathSearcher from
+        1.  Indicate that an BlockedPathSearcher from
             completing its task.
 
     Attributes:

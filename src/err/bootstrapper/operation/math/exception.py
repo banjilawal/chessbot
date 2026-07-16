@@ -24,7 +24,7 @@ class VectorOperationBootstrapperException(OperationBootstrapperException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an error prevented a VectorOperation from completing their task.
+        1.  Indicate that a VectorOperation from completing their task.
 
     Attributes:
         msg: Optional[str]

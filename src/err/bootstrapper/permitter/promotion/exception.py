@@ -25,7 +25,7 @@ class PromotionPermitterBootstrapperException(BootstrapperException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an error prevented a PromotionPermitterBootstrapper from
+        1.  Indicate that a PromotionPermitterBootstrapper from
             completing its task.
         
     Attributes:

@@ -26,7 +26,7 @@ class PathSearcherException(SearcherException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an error prevented a PathSearcher from
+        1.  Indicate that a PathSearcher from
             completing its task.
 
     Attributes:

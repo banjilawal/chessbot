@@ -25,7 +25,7 @@ class OperationException(ChessException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an error prevented the operation from completing the task.
+        1.  Indicate that a operation from completing the task.
 
     Attributes:
         msg: str

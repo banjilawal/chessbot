@@ -1,7 +1,7 @@
-# src/err/space/span/setter/exception.py
+# src/err/space/span/computer/exception.py
 
 """
-Module: err.space.span.setter.exception
+Module: err.space.span.computer.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -14,18 +14,18 @@ from err import SpanException
 from result import MethodResultType
 
 __all__ = [
-    # ======================# SPAN_SETTER_FAILURE #======================#
-    "SpanSetterException",
+    # ======================# SPAN_COMPUTER_FAILURE #======================#
+    "SpanComputerException",
 ]
 
-# ======================# SPAN_SETTER_FAILURE #======================#
-class SpanSetterException(SpanException):
+# ======================# SPAN_COMPUTER_FAILURE #======================#
+class SpanComputerException(SpanException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an error prevented a SpanSetter from completing its task. 
+        1.  Indicate that a SpanComputer was aborted by an exception.
         
     Attributes:
         msg: Optional[str]
@@ -42,8 +42,8 @@ class SpanSetterException(SpanException):
     Super Class:
         SpanException
     """
-    MSG = "SpanSetter failure."
-    ERR_CODE = "SPAN_SETTER_FAILURE"
+    MSG = "SpanComputer failure."
+    ERR_CODE = "SPAN_COMPUTER_FAILURE"
 
     def __init__(
             self,

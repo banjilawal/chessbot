@@ -25,7 +25,7 @@ class PermitterBootstrapperException(BootstrapperException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an error prevented a PermitterBootstrapper from
+        1.  Indicate that a PermitterBootstrapper from
             completing its task.
         
     Attributes:

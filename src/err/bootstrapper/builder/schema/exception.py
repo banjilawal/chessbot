@@ -25,7 +25,7 @@ class SchemaBuilderBootstrapperException(BuilderBootstrapperException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an error prevented the SchemaBuilderBootstrapper from completing its task.
+        1.  Indicate that a SchemaBuilderBootstrapper was aborted by an exception.
 
     Attributes:
         msg: Optional[str]

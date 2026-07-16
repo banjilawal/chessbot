@@ -25,7 +25,7 @@ class AnalyzerBootstrapperException(BootstrapperException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an error prevented an AnalyzerBootstrapper from
+        1.  Indicate that an AnalyzerBootstrapper from
             completing its task.
         
     Attributes:

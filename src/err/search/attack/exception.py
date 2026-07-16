@@ -26,7 +26,7 @@ class AttackSearcherException(SearcherException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an error prevented a AttackSearcher from
+        1.  Indicate that a AttackSearcher from
             completing its task.
 
     Attributes:

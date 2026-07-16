@@ -26,7 +26,7 @@ class BoardBuilderBootstrapperException(BuilderBootstrapperException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an error prevented the BoardBuilderBootstrapper from completing its task.
+        1.  Indicate that a BoardBuilderBootstrapper was aborted by an exception.
 
     Attributes:
         msg: Optional[str]

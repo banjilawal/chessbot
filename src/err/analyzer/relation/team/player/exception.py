@@ -26,7 +26,7 @@ class PlayerTeamRelationAnalyzerException(RelationAnalyzerException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an error prevented the team-player relation analyzer from completing.
+        1.  Indicate that a team-player relation analyzer from completing.
 
     Attributes:
         msg: Optional[str]

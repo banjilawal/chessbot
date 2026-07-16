@@ -25,7 +25,7 @@ class DeletionPermitterBootstrapperException(BootstrapperException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an error prevented a DeletionPermitterBootstrapper from
+        1.  Indicate that a DeletionPermitterBootstrapper from
             completing its task.
         
     Attributes:

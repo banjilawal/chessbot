@@ -25,7 +25,7 @@ class BootstrapperException(ChessException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an error prevented a Bootstrapper from completing its task.
+        1.  Indicate that a Bootstrapper was aborted by an exception.
         
     Attributes:
         msg: Optional[str]

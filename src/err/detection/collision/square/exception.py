@@ -27,7 +27,7 @@ class SquareCollisionDetectorException(DetectorException):
 
     Responsibilities:
         1.  Indicate that a SquareCollisionDetector experienced an error that prevented
-            it from completing its task.
+            it was aborted by an exception.
 
     Attributes:
         msg: Optional[str]

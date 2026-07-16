@@ -25,7 +25,7 @@ class TeamBuilderBootstrapperException(BuilderBootstrapperException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an error prevented the TeamBuilderBootstrapper from completing its task.
+        1.  Indicate that a TeamBuilderBootstrapper was aborted by an exception.
 
     Attributes:
             msg: Optional[str]

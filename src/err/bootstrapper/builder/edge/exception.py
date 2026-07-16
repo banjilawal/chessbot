@@ -25,7 +25,7 @@ class EdgeBuilderBootstrapperException(BuilderBootstrapperException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an EdgeBuilderBootstrapper from completing its task.
+        1.  Indicate that an EdgeBuilderBootstrapper was aborted by an exception.
 
     Attributes:
         msg: Optional[str]

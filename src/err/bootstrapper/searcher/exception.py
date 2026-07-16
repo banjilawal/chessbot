@@ -25,7 +25,7 @@ class SearcherBootstrapperException(BootstrapperException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an error prevented an SearcherBootstrapper from
+        1.  Indicate that an SearcherBootstrapper from
             completing its task.
         
     Attributes:

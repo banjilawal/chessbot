@@ -27,7 +27,7 @@ class AssemblyException(StateException):
         -   Failure Tracing
 
     Responsibilities:
-        1.  Indicate that an error prevented the assembly from completing.
+        1.  Indicate that a assembly from completing.
 
     Attributes:
         msg: str

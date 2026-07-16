@@ -26,7 +26,7 @@ class CheckedPathSearcherException(PathSearcherException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an error prevented an CheckedPathSearcher from
+        1.  Indicate that an CheckedPathSearcher from
             completing its task.
 
     Attributes:

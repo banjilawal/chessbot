@@ -25,7 +25,7 @@ class ManeuverValidatorBootstrapperException(ValidatorBootstrapperException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an error prevented a ManeuverValidatorBootstrapper from
+        1.  Indicate that a ManeuverValidatorBootstrapper from
             completing its task.
         
     Attributes:

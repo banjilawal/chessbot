@@ -25,7 +25,7 @@ class ManeuverPermitterBootstrapperException(BootstrapperException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an error prevented a ManeuverPermitterBootstrapper from
+        1.  Indicate that a ManeuverPermitterBootstrapper from
             completing its task.
         
     Attributes:

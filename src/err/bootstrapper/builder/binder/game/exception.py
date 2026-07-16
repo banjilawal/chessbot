@@ -28,9 +28,9 @@ class GameBinderBuilderBootstrapperException(BinderBuilderBootstrapperException)
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an error prevented the GameBinderBuilderBootstrapper from completing its task.
+        1.  Indicate that a GameBinderBuilderBootstrapper was aborted by an exception.
 
-   BuilderBootstrapper from completing its task.s:
+   BuilderBootstrapper was aborted by an exception.s:
             msg: Optional[str]
             var: Optional[str]
             val: Optional[Any]

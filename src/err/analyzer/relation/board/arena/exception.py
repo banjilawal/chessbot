@@ -26,7 +26,7 @@ class ArenaBoardRelationAnalyzerException(RelationAnalyzerException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an error prevented the board-arena relation analyzer from completing.
+        1.  Indicate that a board-arena relation analyzer from completing.
 
     Attributes:
         msg: Optional[str]

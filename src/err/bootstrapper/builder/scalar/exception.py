@@ -25,7 +25,7 @@ class ScalarBuilderBootstrapperException(BuilderBootstrapperException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an error prevented the ScalarBuilderBootstrapper from completing its task.
+        1.  Indicate that a ScalarBuilderBootstrapper was aborted by an exception.
 
     Attributes:
         msg: Optional[str]

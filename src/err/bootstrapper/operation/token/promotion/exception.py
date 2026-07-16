@@ -25,7 +25,7 @@ class PawnPromoterException(TokenOperationBootstrapperException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an error prevented a pawn from being promoted.
+        1.  Indicate that a pawn from being promoted.
 
     Attributes:
         msg: Optional[str]

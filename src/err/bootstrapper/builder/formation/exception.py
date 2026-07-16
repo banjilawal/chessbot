@@ -25,7 +25,7 @@ class FormationBuilderBootstrapperException(BuilderBootstrapperException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an error prevented the FormationBuilderBootstrapper from completing its task.
+        1.  Indicate that a FormationBuilderBootstrapper was aborted by an exception.
 
     Attributes:
             msg: Optional[str]

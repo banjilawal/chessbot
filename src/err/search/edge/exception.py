@@ -26,7 +26,7 @@ class EdgeSearcherException(SearcherException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an error prevented a EdgeSearcher from
+        1.  Indicate that a EdgeSearcher from
             completing its task.
 
     Attributes:
