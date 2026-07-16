@@ -14,8 +14,7 @@ from typing import Generic, List, Optional, TypeVar, cast
 
 from model import Vector
 from register import VectorRegister
-from result import ComputationResult, ValidationResult
-from span import BasisValidator, VectorBasis, VectorSet
+from result import ComputationResult
 from toolkit import MathToolkit
 from util import LoggingLevelRouter
 

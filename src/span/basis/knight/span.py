@@ -32,10 +32,10 @@ class KnightVectorBasis(VectorBasis[Knight]):
     Super Class:
         SpanBasis
     """
-    MOVEMENT_VECTORS: Tuple[Vector, ...] = (
-        Vector(1, 2), Vector(-1, 2), Vector(1, -2), Vector(-1, -2),
-        Vector(2, 1), Vector(2, -1), Vector(-2, 1), Vector(-2, -1),
-    )
     
-    def __init__(self, origin: Vector, movement_vectors: VectorSet = MOVEMENT_VECTORS):
+    def __init__(
+            self,
+            origin: Vector,
+            movement_vectors: VectorSet | None = RankVectorSetTable().knight_movement_vectors,
+    ):
         super().__init__(origin=origin, movement_vectors=movement_vectors)
