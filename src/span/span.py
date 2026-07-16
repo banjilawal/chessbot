@@ -1,7 +1,7 @@
-# src/span/area/span.py
+# src/span/span.py
 
 """
-Module: span.area.span
+Module: span.span
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -13,11 +13,11 @@ from abc import ABC, abstractmethod
 from typing import Generic, Optional, TypeVar
 
 from result import ComputationResult
-from span import SpanBounds, VectorSet
+from span import VectorBasis, VectorSet
 from toolkit import MathToolkit
 from util import LoggingLevelRouter
 
-T = TypeVar("T", bounds="Rank")
+T = TypeVar("T", basis="Rank")
 
 class Span(ABC, Generic[T]):
     """
@@ -29,7 +29,7 @@ class Span(ABC, Generic[T]):
         2.  Provide a function that steps through every point in the plane,
 
     Attributes:
-        area: Span.AreaArea
+        area: SpanArea
         stepper: Stepper
         math_toolkit: Optional[MathToolkit]
 
@@ -37,25 +37,25 @@ class Span(ABC, Generic[T]):
 
     Super Class:
     """
-    _bounds: SpanBounds[T]
+    _basis: VectorBasis[T]
     _math_toolkit: Optional[MathToolkit]
     
     def __init__(
             self,
-            bounds: SpanBounds[T],
+            basis: VectorBasis[T],
             math_toolkit: Optional[MathToolkit] | None = MathToolkit()
     ):
         """
         Args:
-            bounds: SpanBounds[T]
+            basis: VectorBasis[T]
             math_toolkit: Optional[MathToolkit]
         """
-        self._bounds = bounds
+        self._basis = basis
         self._math_toolkit = math_toolkit
     
     @property
-    def bounds(self) -> SpanBounds[T]:
-        return self._bounds
+    def basis(self) -> VectorBasis[T]:
+        return self._basis
     
     @property
     def math(self) -> MathToolkit:
@@ -63,9 +63,9 @@ class Span(ABC, Generic[T]):
     
     @property
     def is_empty(self) -> bool:
-        return self._bounds.is_empty
+        return self._basis.is_empty
     
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def destination_vectors(self) -> ComputationResult[VectorSet]:
+    def compute_destinations(self) -> ComputationResult[VectorSet]:
         pass

@@ -1,7 +1,7 @@
-# src/span/bounds/span.py
+# src/span/basis/span.py
 
 """
-Module: span.bounds.span
+Module: span.basis.span
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -17,49 +17,45 @@ from span import VectorSet
 
 T = TypeVar("T", bound="Rank")
 
-class SpanBounds(ABC, Generic[T]):
+class VectorBasis(ABC, Generic[T]):
     """
     Role:
         -   Data Holder
 
     Responsibilities:
-        1.  Store upper and lower bounds of a Span. basic integrity and sanity checking.
+        1.  Store upper and lower basis of a Span. basic integrity and sanity checking.
 
     Attributes:
         origin: Vector
-        delta_vectors: DeltaSet
+        movement_vectors: DeltaSet
 
     Provides:
 
     Super Class:
     """
     _origin: Vector
-    _delta_vectors: VectorSet
+    _movement_vectors: VectorSet
     
-    def __init__(
-            self, 
-            origin: Vector, 
-            delta_vectors: VectorSet[T],
-    ):
+    def __init__(self, origin: Vector, movement_vectors: VectorSet,):
         """
         Args:
             origin: Vector
-            delta_vectors: DeltaSet
+            movement_vectors: DeltaSet
         """
         self._origin = origin
-        self._delta_vectors = delta_vectors
+        self._movement_vectors = movement_vectors
         
     @property
     def origin(self) -> Vector:
         return self._origin
     
     @property
-    def delta_vectors(self) -> VectorSet[T]:
-        return self._delta_vectors
+    def movement_vectors(self) -> VectorSet[T]:
+        return self._movement_vectors
     
     @property
     def is_empty(self) -> bool:
-        return self._delta_vectors.is_empty and self._origin is None
+        return self._movement_vectors.is_empty and self._origin is None
     
     @property
     def is_not_empty(self) -> bool:
@@ -67,8 +63,8 @@ class SpanBounds(ABC, Generic[T]):
     
     @property
     def is_a_line(self) -> bool:
-        return self.origin is not None and self._delta_vectors.is_a_point
+        return self.origin is not None and self._movement_vectors.is_a_point
     
     @property
-    def is_an_bounds(self):
-        return self._origin is not None and self._delta_vectors.is_linear
+    def is_an_area(self):
+        return self._origin is not None and self._movement_vectors.is_linear

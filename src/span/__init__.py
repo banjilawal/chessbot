@@ -11,9 +11,7 @@ version: 1.0.1
 
 # Packages
 from .area import *
-from .bounds import *
-from .stepper import *
-from .delta import *
-
+from .basis import *
+from .computer import *
 
 # Modules

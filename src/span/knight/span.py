@@ -1,7 +1,7 @@
-# src/span/area/knight/span.py
+# src/span/knight/span.py
 
 """
-Module: span.area.knight.span
+Module: span.knight.span
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -15,11 +15,12 @@ from typing import cast
 from model import Knight, Vector
 from register import VectorRegister
 from result import ComputationResult, MethodResultType
-from span import KnightSpanBounds, Span, VectorSet
+from span import Span
+
 from util import LoggingLevelRouter
 
 
-class KnightSpanningSet(Span[Knight]):
+class KnightSpan(Span[Knight]):
     """
     Role:
         -   Dataset
@@ -33,17 +34,10 @@ class KnightSpanningSet(Span[Knight]):
         stepper: KnightStepper
 
     Provides:
-        -   def next(current: Vector) -> ComputationResult
-        -   def northeast(origin: Vector) -> Knight
-        -   def northwest(origin: Vector) -> Knight
-        -   def southeast(origin: Vector) -> Knight
-        -   def southwest(origin: Vector) -> Knight
+        -   destination_vectors(self) -> ComputationResult[VectorSet]
 
     Super Class:
-        Span
-
-    WARNING:
-        *****===ONLY_INSTANTIATE_WITH_THE_FACTORY_METHODS===*****
+        SpanningSet
     """
 
     
@@ -54,7 +48,6 @@ class KnightSpanningSet(Span[Knight]):
             stepper: KnightStepper
         """
         super().__init__(bounds=bounds)
-    """INTERNAL: Use factory methods instead of direct constructor."""
     
     @property
     def bounds(self) -> KnightSpanBounds:
@@ -62,7 +55,7 @@ class KnightSpanningSet(Span[Knight]):
     
 
     @LoggingLevelRouter.monitor
-    def destination_vectors(self) -> ComputationResult[VectorSet]:
+    def compute_destinations(self) -> ComputationResult[VectorSet]:
         method = f"{self.__class__.__name__}.destination_vectors"
         solutions: List[Vector] = []
         
