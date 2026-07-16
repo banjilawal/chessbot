@@ -1,7 +1,7 @@
-# src/span/movement/pawn/span.py
+# src/space/span/movement/pawn/space/span.py
 
 """
-Module: span.movement.pawn.span
+Module: space.span.movement.pawn.span
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -18,17 +18,15 @@ from space.span import PawnManeuverVectorSet
 class DevelopedManeuverVectorSet(PawnManeuverVectorSet):
     """
     Role:
-        -   Computation Worker
-        -   Integrity Management
+        -   Data Holder
 
     Responsibilities:
-        1.  Prevent ArrayIndexOutOfMovement errors by calculating the last point in the direction
-            of travel
-
+        1.  The second component of a DevelopedPawnManeuverBasis. Necessary for computing destinations for
+            after a PawnToken's first move.
 
     Attributes:
         movement_vectors: VectorSet
-        
+
     Provides:
 
     Super Class:

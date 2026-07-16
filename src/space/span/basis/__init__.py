@@ -1,13 +1,13 @@
-# src/span/basis/__init__.py
+# src/space/span/basis/__init__.py
 
 """
-Module: span.basis.__init__
+Module: space.span.basis.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
 """
 
-# =========== SPAN.BASIS PACKAGE ===========#
+# =========== SPACE.SPAN.BASIS PACKAGE ===========#
 
 # Packages
 from .knight import *

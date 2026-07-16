@@ -91,7 +91,7 @@ class SquareRay(Ray[Square]):
         if not isinstance(other, SquareRay):
             return False
         ray = cast(SquareRay, other)
-        return self.origin == space.ray.origin
+        return self.origin == other.origin
     
     def have_same_terminus(self, other) -> bool:
         if not super().have_same_origin(other):
@@ -99,7 +99,7 @@ class SquareRay(Ray[Square]):
         if not isinstance(other, SquareRay):
             return False
         ray = cast(SquareRay, other)
-        return self.terminus == space.ray.terminus
+        return self.terminus == other.terminus
     
     def origins_are_different(self, other) -> bool:
         return not self.have_same_origin(other)

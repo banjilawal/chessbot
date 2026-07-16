@@ -12,7 +12,7 @@ version: 1.0.1
 # Packages
 from .linear import *
 from .ray import *
-from .space import *
+from .span import *
 
 # Modules
 from .space import Space

@@ -1,13 +1,15 @@
-# src/span/basis/knight/span.py
+# src/space/span/basis/knight/space/span.py
 
 """
-Module: span.basis.knight.span
+Module: space.span.basis.knight.span
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
 """
 
 from __future__ import annotations
+
+from typing import Optional
 
 from model import Knight, Vector
 from space.span import KnightMovementVectorSet, VectorBasis
@@ -17,14 +19,16 @@ class KnightVectorBasis(VectorBasis[Knight]):
     """
     Role:
         -   Computation Worker
-        -   Integrity Management
+        -   Integrity Assurance
 
     Responsibilities:
-        1.  Prevent ArrayIndexOutOfBasis errors by calculating the last point in the direction
-            of travel
+        1.  Produce a set of destination vectors by adding a Knight's current position to each of the
+            Knight's movement_vectors
 
     Attributes:
-
+            origin: Vector
+            movement_vectors: Optional[KnightMovementVectorSet]
+            
     Provides:
 
     Super Class:
@@ -34,6 +38,11 @@ class KnightVectorBasis(VectorBasis[Knight]):
     def __init__(
             self,
             origin: Vector,
-            movement_vectors: KnightMovementVectorSet | None = KnightMovementVectorSet(),
+            movement_vectors: Optional[KnightMovementVectorSet] | None = KnightMovementVectorSet(),
     ):
+        """
+        Args:
+            origin: Vector
+            movement_vectors: Optional[KnightMovementVectorSet]
+        """
         super().__init__(origin=origin, movement_vectors=movement_vectors)

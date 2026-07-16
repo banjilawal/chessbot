@@ -1,7 +1,7 @@
-# src/span/movement/pawn/span.py
+# src/space/span/movement/pawn/space/span.py
 
 """
-Module: span.movement.pawn.span
+Module: space.span.movement.pawn.span
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

@@ -1,13 +1,13 @@
-# src/span/computer/pawn/__init__.py
+# src/space/span/computer/pawn/__init__.py
 
 """
-Module: span.computer.pawn.__init__
+Module: space.span.computer.pawn.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
 """
 
-# =========== SPAN.COMPUTER.PAWN PACKAGE ===========#
+# =========== SPACE.SPAN.COMPUTER.PAWN PACKAGE ===========#
 
 # Packages
 

@@ -1,13 +1,13 @@
-# src/space/stepper/quadrant/__init__.py
+# src/space/linear/stepper/quadrant/__init__.py
 
 """
-Module: space.stepper.quadrant.__init__
+Module: space.linear.stepper.quadrant.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
 """
 
-# =========== SPACE.STEPPER.QUADRANT PACKAGE ===========#
+# =========== SPACE.LINEAR.STEPPER.QUADRANT PACKAGE ===========#
 
 # Packages
 

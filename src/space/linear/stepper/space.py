@@ -1,7 +1,7 @@
-# src/space/stepper/space.py
+# src/space/linear/stepper/space.py
 
 """
-Module: space.stepper.space
+Module: space.linear.stepper.space
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

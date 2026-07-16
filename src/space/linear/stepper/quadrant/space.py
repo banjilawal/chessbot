@@ -1,7 +1,7 @@
-# src/space/stepper/quadrant/space.py
+# src/space/linear/stepper/quadrant/space.py
 
 """
-Module: space.stepper.quadrant.space
+Module: space.linear.stepper.quadrant.space
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

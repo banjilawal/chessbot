@@ -1,7 +1,7 @@
-# src/span/movement/span.py
+# src/space/span/movement/space/span.py
 
 """
-Module: span.span
+Module: space.span.span
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -23,7 +23,8 @@ class MovementVectorSet(ABC, Generic[T]):
         -   Data Holder
 
     Responsibilities:
-        1.  Store upper and lower movement of a Span. basic integrity and sanity checking.
+        1.  Provide a set of vectors that are each added to an origin to produce a span of destination
+            vectors.
 
     Attributes:
         movement_vectors: DeltaSet
@@ -56,3 +57,9 @@ class MovementVectorSet(ABC, Generic[T]):
     @property
     def is_not_empty(self) -> bool:
         return not self.is_empty
+    
+    @property
+    def is_a_point(self) -> bool:
+        return self._movement_vectors.size == 1
+    
+    

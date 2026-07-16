@@ -1,7 +1,7 @@
-# src/space/terminus/quadrant/space.py
+# src/space/linear/terminus/quadrant/space.py
 
 """
-Module: space.terminus.quadrant.space
+Module: space.linear.terminus.quadrant.space
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

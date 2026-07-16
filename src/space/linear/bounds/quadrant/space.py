@@ -1,7 +1,7 @@
-# src/space/bounds/quadrant/space.py
+# src/space/linear/bounds/quadrant/space.py
 
 """
-Module: space.bounds.quadrant.space
+Module: space.linear.bounds.quadrant.space
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

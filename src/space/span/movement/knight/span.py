@@ -1,7 +1,7 @@
-# src/span/movement/knight/span.py
+# src/space/span/movement/knight/space/span.py
 
 """
-Module: span.movement.knight.span
+Module: space.span.movement.knight.span
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -11,22 +11,20 @@ from __future__ import annotations
 
 from container import VectorSet
 from model import Knight, Vector
-from space.span import MovementVectorSet
+from space import MovementVectorSet
 
 
 class KnightMovementVectorSet(MovementVectorSet[Knight]):
     """
     Role:
-        -   Computation Worker
-        -   Integrity Management
+        -   Data Holder
 
     Responsibilities:
-        1.  Prevent ArrayIndexOutOfMovement errors by calculating the last point in the direction
-            of travel
+        1.  The second component of a KnightBasis. Necessary for computing a KnightToken's destination vectors.
 
     Attributes:
-        movement_vectors: MovementVectorSet
-        
+        movement_vectors: VectorSet
+
     Provides:
 
     Super Class:
@@ -35,7 +33,6 @@ class KnightMovementVectorSet(MovementVectorSet[Knight]):
     
     def __init__(self,):
         """
-        Args:t
         """
         super().__init__(
             movement_vectors=VectorSet(

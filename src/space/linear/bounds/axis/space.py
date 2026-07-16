@@ -1,7 +1,7 @@
-# src/space/bounds/axis/space.py
+# src/space/linear/bounds/axis/space.py
 
 """
-Module: space.bounds.axis.space
+Module: space.linear.bounds.axis.space
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

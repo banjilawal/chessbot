@@ -1,7 +1,7 @@
-# src/space/stepper/axis/space.py
+# src/space/linear/stepper/axis/space.py
 
 """
-Module: space.stepper.axis.space
+Module: space.linear.stepper.axis.space
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

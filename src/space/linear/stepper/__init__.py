@@ -1,13 +1,13 @@
-# src/space/stepper/__init__.py
+# src/space/linear/stepper/__init__.py
 
 """
-Module: space.stepper.__init__
+Module: space.linear.stepper.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
 """
 
-# =========== SPACE.STEPPER PACKAGE ===========#
+# =========== SPACE.LINEAR.STEPPER PACKAGE ===========#
 
 # Packages
 from .axis import *

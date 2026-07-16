@@ -1,7 +1,7 @@
-# src/span/movement/pawn/span.py
+# src/space/span/movement/pawn/space/span.py
 
 """
-Module: span.movement.pawn.span
+Module: space.span.movement.pawn.span
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -18,21 +18,19 @@ from space.span import PawnMovementVectorSet
 class PawnAttackVectorSet(ABC, PawnMovementVectorSet):
     """
     Role:
-        -   Computation Worker
-        -   Integrity Management
+        -   Data Holder
 
     Responsibilities:
-        1.  Prevent ArrayIndexOutOfMovement errors by calculating the last point in the direction
-            of travel
-
+        1.  The second component of a PawnBasis. They are necessary for computing a PawnToken's
+            destination vectors.
 
     Attributes:
-        movement_vectors: VectorSet
-        
+        movement_vectors: DeltaSet
+
     Provides:
 
     Super Class:
-        PawnMovementVectorSet
+        MovementVectorSet
     """
     
     def __init__(self, movement_vectors: VectorSet):

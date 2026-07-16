@@ -1,13 +1,13 @@
-# src/space/bounds/quadrant/__init__.py
+# src/space/linear/bounds/quadrant/__init__.py
 
 """
-Module: space.bounds.quadrant.__init__
+Module: space.linear.bounds.quadrant.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
 """
 
-# =========== SPACE.BOUNDS.QUADRANT PACKAGE ===========#
+# =========== SPACE.LINEAR.BOUNDS.QUADRANT PACKAGE ===========#
 
 # Packages
 

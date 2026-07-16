@@ -4,7 +4,30 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="" />
+    <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/space/linear/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/linear/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/space/ray/square/ray.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/ray/square/ray.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/space/space.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/space.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/space/span/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/span/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/space/span/basis/knight/span.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/span/basis/knight/span.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/space/span/basis/opening/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/space/span/basis/opening/span.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/space/span/basis/span.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/span/basis/span.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/space/span/king/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/space/span/king/span.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/space/span/knight/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/space/span/knight/span.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/space/span/movement/king/span.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/span/movement/king/span.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/space/span/movement/knight/span.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/span/movement/knight/span.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/space/span/movement/pawn/attack/developed/span.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/span/movement/pawn/attack/developed/span.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/space/span/movement/pawn/attack/opening/span.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/span/movement/pawn/attack/opening/span.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/space/span/movement/pawn/attack/span.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/span/movement/pawn/attack/span.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/space/span/movement/pawn/maneuver/developed/span.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/span/movement/pawn/maneuver/developed/span.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/space/span/movement/pawn/maneuver/opening/span.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/span/movement/pawn/maneuver/opening/span.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/space/span/movement/pawn/span.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/span/movement/pawn/span.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/space/span/movement/span.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/span/movement/span.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -768,7 +791,7 @@
       <workItem from="1784029158325" duration="10323000" />
       <workItem from="1784040408484" duration="7069000" />
       <workItem from="1784050719673" duration="78000" />
-      <workItem from="1784055454795" duration="135291000" />
+      <workItem from="1784055454795" duration="143475000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />
@@ -1319,11 +1342,6 @@
           <url>file://$PROJECT_DIR$/src/space/linear/bounds/linear/__init__.py</url>
           <line>12</line>
           <option name="timeStamp" value="257" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/src/space/span/computer/span.py</url>
-          <line>9</line>
-          <option name="timeStamp" value="258" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/src/space/span/movement/pawn/attack/__init__.py</url>
