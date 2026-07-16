@@ -26,19 +26,20 @@ from validator import BasisValidator
 class DestinationSpanComputer:
     """
     Role:
-        -   Dataset
+        -   Computation Worker
+        -   Integrity Assurance
 
     Responsibilities:
-        1.  Define points in a bounded span.
-        2.  Provide a function that steps through every point in the plane,
+        1.  Provide a set of destination vectors spanned from a basis set of movement vectors and
+            an origin.
 
     Attributes:
-        area: SpanArea
-        stepper: Stepper
+        basis_validator: BasisValidator
         math_toolkit: Optional[MathToolkit]
 
     Provides:
-
+        -   def execute(vector_basis: VectorBasis) -> ComputationResult[VectorSet]
+        
     Super Class:
     """
     _basis_validator: BasisValidator
@@ -67,6 +68,22 @@ class DestinationSpanComputer:
     
     @LoggingLevelRouter.monitor
     def execute(self, vector_basis: VectorBasis) -> ComputationResult[VectorSet]:
+        """
+        Verify the object is a String that is safe to use.
+
+        Action:
+            1.  Send an exception chain in the ComputationResult if any of the following occur.
+                    -   The basis gets flagged unsafe.
+                    -   VectorAdder cannot provide a solution.
+            2.  Otherwise, after each VectorAdder solution is stored put them in a VectorSet then,
+                sendi in the success result.
+        Args:
+            vector_basis: VectorBasis
+        Returns:
+            ComputationResult[VectorSet]
+        Raises:
+            DestinationSpanComputerException
+        """
         method = f"{self.__class__.__name__}.destination_vectors"
         
         # Handle the case that, the vector_basis is not safe to use.
@@ -93,7 +110,7 @@ class DestinationSpanComputer:
         
         # --- Process nonempty basis sets. ---#
         origin = basis.origin
-        for movement_vector in basis.movement_vectors:
+        for movement_vector in basis.movement_vectors.iterator:
             # Request that, a solution for the destination vector.
             computation = self.math.add_vector.execute(
                 register=VectorRegister(
