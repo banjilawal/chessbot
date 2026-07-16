@@ -13,11 +13,10 @@ from _ast import List
 from typing import cast
 
 from container import VectorSet
-from model import Knight, Vector
-from register import VectorRegister
-from result import ComputationResult, MethodResultType
-from span import KnightVectorBasis, Span
-from span.span import SpanComputer
+from model import Vector
+from result import ComputationResult
+from span import KnightVectorBasis
+from span.computer.span import DestinationSpanComputer
 
 from util import LoggingLevelRouter
 
@@ -41,7 +40,7 @@ class KnightSpanner:
     Super Class:
         SpanningSet
     """
-    _span_computer: SpanComputer
+    _span_computer: DestinationSpanComputer
     _basis: KnightVectorBasis = KnightVectorBasis()
     
     

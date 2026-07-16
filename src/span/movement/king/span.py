@@ -1,7 +1,7 @@
-# src/span/movement/knight/span.py
+# src/span/movement/king/span.py
 
 """
-Module: span.movement.knight.span
+Module: span.movement.king.span
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -10,11 +10,11 @@ version: 1.0.1
 from __future__ import annotations
 
 from container import VectorSet
-from model import Knight, Vector
+from model import King, Vector
 from span import MovementVectorSet
 
 
-class KnightMovementVectorSet(MovementVectorSet[Knight]):
+class KingMovementVectorSet(MovementVectorSet[King]):
     """
     Role:
         -   Computation Worker
@@ -25,7 +25,7 @@ class KnightMovementVectorSet(MovementVectorSet[Knight]):
             of travel
 
     Attributes:
-        movement_vectors: MovementVectorSet
+        movement_vectors: VectorSet
         
     Provides:
 
@@ -39,10 +39,10 @@ class KnightMovementVectorSet(MovementVectorSet[Knight]):
         """
         super().__init__(
             movement_vectors=VectorSet(
-                (
-                    Vector(1, 2), Vector(-1, 2), Vector(1, -2), Vector(-1, -2),
-                    Vector(2, 1), Vector(2, -1), Vector(-2, 1), Vector(-2, -1),
-                )
+                    (
+                        Vector(1, 0), Vector(-1, 0), Vector(0, 1),
+                        Vector(1, 1), Vector(-1, 1), Vector(-1, -1), Vector(1, -1)
+                    )
             )
         )
     

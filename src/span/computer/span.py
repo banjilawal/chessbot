@@ -9,18 +9,20 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from abc import ABC, abstractmethod
-from typing import Generic, List, Optional, TypeVar, cast
 
+from typing import List, Optional, cast
+
+from container import VectorSet
 from model import Vector
 from register import VectorRegister
 from result import ComputationResult
+from span import VectorBasis
 from toolkit import MathToolkit
 from util import LoggingLevelRouter
+from validator import BasisValidator
 
-T = TypeVar("T", basis="Rank")
 
-class SpanComputer:
+class DestinationSpanComputer:
     """
     Role:
         -   Dataset
@@ -38,55 +40,47 @@ class SpanComputer:
 
     Super Class:
     """
-    _basis: VectorBasis[T]
-    _basis_validator: BasisValidator =
+    _basis_validator: BasisValidator
     _math_toolkit: Optional[MathToolkit]
     
     def __init__(
             self,
-            basis: VectorBasis[T],
             basis_validator: BasisValidator | None = BasisValidator(),
-        math_toolkit: Optional[MathToolkit] | None = MathToolkit(),
+            math_toolkit: Optional[MathToolkit] | None = MathToolkit(),
     ):
         """
         Args:
-            basis: VectorBasis[T]
+            basis_validator: BasisValidator
             math_toolkit: Optional[MathToolkit]
         """
-        self._basis = basis
         self._math_toolkit = math_toolkit
         self._basis_validator = basis_validator
     
     @property
-    def basis(self) -> VectorBasis[T]:
-        return self._basis
+    def basis_validator(self) -> BasisValidator:
+        return self._basis_validator
     
     @property
     def math(self) -> MathToolkit:
         return self._math_toolkit
     
-    @property
-    def is_empty(self) -> bool:
-        return self._basis.is_empty
-    
-    @abstractmethod
     @LoggingLevelRouter.monitor
-    def execute(self, basis: VectorBasis) -> ComputationResult[VectorSet]:
+    def execute(self, vector_basis: VectorBasis) -> ComputationResult[VectorSet]:
         method = f"{self.__class__.__name__}.destination_vectors"
         
-        validation = self._basis_validator.execute(basis)
+        validation = self._basis_validator.execute(vector_basis)
         if validation.is_failure:
             return ComputationResult.failure(validation.exception)
-        source = cast(VectorBasis, validation.payload)
+        basis = cast(VectorBasis, validation.payload)
         
         solutions: List[Vector] = []
         
         # Handle the empty basis set first.
-        if  source.is_empty:
+        if  basis.is_empty:
             return ComputationResult.success(VectorSet())
         
-        origin = source.origin
-        for movement_vector in source.movement_vectors.entries:
+        origin = basis.origin
+        for movement_vector in basis.movement_vectors:
             computation = self.math.add_vector.execute(
                 register=VectorRegister(u=origin, v=movement_vector)
             )

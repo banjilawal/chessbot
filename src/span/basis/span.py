@@ -12,8 +12,8 @@ from __future__ import annotations
 from abc import ABC
 from typing import Generic,  TypeVar
 
-from container import VectorSet
 from model import Vector
+from span import MovementVectorSet
 
 T = TypeVar("T", bound="Rank")
 
@@ -27,20 +27,20 @@ class VectorBasis(ABC, Generic[T]):
 
     Attributes:
         origin: Vector
-        movement_vectors: DeltaSet
+        movement_vectors: MovementVectorSet[T]
 
     Provides:
 
     Super Class:
     """
     _origin: Vector
-    _movement_vectors: VectorSet
+    _movement_vectors: MovementVectorSet[T]
     
-    def __init__(self, origin: Vector, movement_vectors: VectorSet,):
+    def __init__(self, origin: Vector, movement_vectors: MovementVectorSet[T],):
         """
         Args:
             origin: Vector
-            movement_vectors: DeltaSet
+            movement_vectors: MovementVectorSet
         """
         self._origin = origin
         self._movement_vectors = movement_vectors
@@ -50,7 +50,7 @@ class VectorBasis(ABC, Generic[T]):
         return self._origin
     
     @property
-    def movement_vectors(self) -> VectorSet:
+    def movement_vectors(self) -> MovementVectorSet[T]:
         return self._movement_vectors
     
     @property

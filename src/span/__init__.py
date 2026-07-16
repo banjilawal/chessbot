@@ -11,8 +11,9 @@ version: 1.0.1
 
 # Packages
 from .basis import *
-from .knight import *
+from .computer import *
+from .movement import *
+from .spanner import *
 
 
 # Modules
-from .span import Span

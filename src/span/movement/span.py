@@ -10,7 +10,7 @@ version: 1.0.1
 from __future__ import annotations
 
 from abc import ABC
-from typing import Generic,  TypeVar
+from typing import Generic, Iterator, TypeVar
 
 from container import VectorSet
 from model import Vector
@@ -40,7 +40,19 @@ class MovementVectorSet(ABC, Generic[T]):
             movement_vectors: VectorSet
         """
         self._movement_vectors = movement_vectors
+
+    @property
+    def iterator(self) -> Iterator[Vector]:
+        return self._movement_vectors.iterator
     
     @property
-    def movement_vectors(self) -> VectorSet:
-        return self._movement_vectors
+    def size(self) -> int:
+        return self._movement_vectors.size
+    
+    @property
+    def is_empty(self) -> bool:
+        return self._movement_vectors.is_empty
+    
+    @property
+    def is_not_empty(self) -> bool:
+        return not self.is_empty

@@ -1,7 +1,7 @@
-# src/span/movement/knight/span.py
+# src/span/movement/pawn/span.py
 
 """
-Module: span.movement.knight.span
+Module: span.movement.pawn.span
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -9,12 +9,13 @@ version: 1.0.1
 
 from __future__ import annotations
 
+
 from container import VectorSet
-from model import Knight, Vector
-from span import MovementVectorSet
+from model import Vector
+from span import PawnAttackVectorSet
 
 
-class KnightMovementVectorSet(MovementVectorSet[Knight]):
+class OpeningAttackVectorSet(PawnAttackVectorSet):
     """
     Role:
         -   Computation Worker
@@ -24,25 +25,27 @@ class KnightMovementVectorSet(MovementVectorSet[Knight]):
         1.  Prevent ArrayIndexOutOfMovement errors by calculating the last point in the direction
             of travel
 
+
     Attributes:
-        movement_vectors: MovementVectorSet
+        movement_vectors: VectorSet
         
     Provides:
 
     Super Class:
-        MovementVectorSet
+        PawnAttackVectorSet
     """
     
-    def __init__(self,):
+    def __init__(self, ):
         """
-        Args:t
         """
         super().__init__(
             movement_vectors=VectorSet(
                 (
-                    Vector(1, 2), Vector(-1, 2), Vector(1, -2), Vector(-1, -2),
-                    Vector(2, 1), Vector(2, -1), Vector(-2, 1), Vector(-2, -1),
+                   Vector(x=-1, y=1), Vector(x=1, y=1),
+                   Vector(x=-1, y=2), Vector(x=1, y=2),
                 )
             )
         )
+   
+    
     

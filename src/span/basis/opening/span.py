@@ -1,7 +1,7 @@
-# src/span/basis/knight/span.py
+# src/span/basis/pawn/span.py
 
 """
-Module: span.basis.knight.span
+Module: span.basis.pawn.span
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -10,12 +10,11 @@ version: 1.0.1
 from __future__ import annotations
 
 from container import VectorSet
-from model import Knight, Vector
-from span import KnightMovementVectorSet, VectorBasis
-from span.table import RankVectorSetTable
+from model import Pawn, Vector
+from span import VectorBasis
 
 
-class KnightVectorBasis(VectorBasis[Knight]):
+class PawnVectorBasis(VectorBasis[Pawn]):
     """
     Role:
         -   Computation Worker
@@ -36,6 +35,6 @@ class KnightVectorBasis(VectorBasis[Knight]):
     def __init__(
             self,
             origin: Vector,
-            movement_vectors: KnightMovementVectorSet | None = KnightMovementVectorSet(),
+            movement_vectors: VectorSet | None = RankVectorSetTable().pawn_movement_vectors,
     ):
         super().__init__(origin=origin, movement_vectors=movement_vectors)
