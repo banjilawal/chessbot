@@ -9,16 +9,16 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from typing import List, Tuple, cast
+from typing import List, Optional, Tuple, cast
 
-from container import DestinationVectorSet
 from container.vector.destination.linear.container import LinearVectorSet
 from err import AxisException
 from model import Scalar, Vector
 from register import VectorRegister
 from result import ComputationResult, MethodResultType
-from space import AxisBounds, AxisStepper, LinearSpace, Space
+from space import AxisSection, AxisStepper, LinearSpace, Space
 from util import LoggingLevelRouter
+from validator import AxisValidator
 
 
 class Axis(LinearSpace):
@@ -31,7 +31,7 @@ class Axis(LinearSpace):
         2.  Provide the next point in the direction of travel.
 
     Attributes:
-        bounds: AxisBounds
+        linear_section: AxisLinear_Section
         stepper: AxisStepper
 
     Provides:
@@ -47,27 +47,25 @@ class Axis(LinearSpace):
     WARNING:
         *****===ONLY_INSTANTIATE_WITH_THE_FACTORY_METHODS===*****
     """
-    _bounds: AxisBounds
+    _section: AxisSection
     _stepper: AxisStepper
-    _validator:
-
     
     def __init__(
             self,
-            bounds: AxisBounds,
-            stepper: AxisStepper,
+            linear_section: AxisSection,
+            stepper: Optional[AxisStepper] | None = AxisStepper(),
     ):
         """
         Args:
-            bounds: AxisBounds
+            linear_section: AxisLinear_Section
             stepper: AxisStepper
         """
-        super().__init__(bounds=bounds, stepper=stepper)
+        super().__init__(linear_section=linear_section, stepper=stepper)
     """INTERNAL: Use factory methods instead of direct constructor."""
     
     @property
-    def bounds(self) -> AxisBounds:
-        return cast(AxisBounds, self.bounds)
+    def linear_section(self) -> AxisSection:
+        return cast(AxisSection, self.linear_section)
     
     @property
     def stepper(self) -> AxisStepper:
@@ -75,11 +73,11 @@ class Axis(LinearSpace):
     
     @property
     def origin(self) -> Vector:
-        return self.bounds.origin
+        return self.linear_section.origin
     
     @property
     def terminus(self) -> Vector:
-        return self.bounds.terminus
+        return self.linear_section.terminus
     
     @LoggingLevelRouter.monitor
     def distance(self) -> ComputationResult[Scalar]:
@@ -97,6 +95,8 @@ class Axis(LinearSpace):
              AxisException
         """
         method = f"{self.__class__.__name__}.distance"
+        
+        
         
         # Request the Euclidean distance
         computation = self.math.euclidean_distance.execute(
@@ -122,29 +122,29 @@ class Axis(LinearSpace):
     @LoggingLevelRouter.monitor
     def destination_vectors(self) -> ComputationResult[LinearVectorSet]:
         """
-        Get the next vector in the direction of travel.
+        Get DestinationVectors from the origin to the terminus
 
         Action:
             1.  Send an exception chain in the ComputationResult if the stepper aborts.
             2.  Otherwise, send the computed vector in the success result.
         Args:
-            current: Vector
         Returns:
-            ComputationResult[Vector]
+            ComputationResult[LinearVectorSet]
         Raises:
              AxisException
         """
         method = f"{self.__class__.__name__}.next"
         
+        # --- Set up looping variables ---#
         terminus = self.terminus
         cursor = self.origin
         solutions: List[Vector] = []
-        solutions.append(cursor)
+
         
-        # Append before entering the loop so terminus is added at the last iteration
+        # --- Less than is not a good choice for iterating through vectors.  ---#
         while cursor != terminus:
             # --- Request the next Vector for the stepper. ---#
-            computation = self._stepper.next(u=current)
+            computation = self._stepper.next(cursor)
             
             # Handle the case that, the computation is aborted.
             if computation.is_failure:
@@ -159,15 +159,16 @@ class Axis(LinearSpace):
                         ex=computation.exception,
                     ),
                 )
+            # --- Cast and append the curso to the list. ---#
             cursor = cast(Vector, computation.payload)
             solutions.append(cursor)
-
-        destination_vectors = LinearVectorSet(
+        # Create the DestinationVector set.
+        linear_vectors = LinearVectorSet(
             root=self.origin,
             entries=tuple(solutions)
         )
         # --- Forward the work product to the caller. ---#
-        return ComputationResult.success(destination_vectors)
+        return ComputationResult.success(linear_vectors)
 
     
     @classmethod
@@ -175,7 +176,7 @@ class Axis(LinearSpace):
         """
         Create an Axis in 1D plane
         
-        Bounds:
+        Linear_Section:
         
             east => [u, Vector(num_columns - 1, u.y)], (i, 0)
         Delta:
@@ -184,7 +185,7 @@ class Axis(LinearSpace):
         """
         return cls(
             stepper=AxisStepper.east(),
-            bounds=AxisBounds.east(origin=origin),
+            linear_section=AxisSection.east(origin=origin),
         )
     
     @classmethod
@@ -192,7 +193,7 @@ class Axis(LinearSpace):
         """
         Create an Axis in 1D plane.
 
-        Bounds:
+        Linear_Section:
             north => [u, Vector(u.x, 0)], (0, -j)
         Delta:
             d_x => 0
@@ -200,7 +201,7 @@ class Axis(LinearSpace):
         """
         return cls(
             stepper=AxisStepper.east(),
-            bounds=AxisBounds.north(origin=origin)
+            linear_section=AxisSection.north(origin=origin)
         )
     
     @classmethod
@@ -208,7 +209,7 @@ class Axis(LinearSpace):
         """
         Create an Axis in 1D plane.
 
-        Bounds:
+        Linear_Section:
             south => [u, Vector(u.x, num_rows - 1)], (0, j)
         Delta:
             d_x => 0
@@ -216,7 +217,7 @@ class Axis(LinearSpace):
         """
         return cls(
             stepper=AxisStepper.east(),
-            bounds=AxisBounds.south(origin=origin)
+            linear_section=AxisSection.south(origin=origin)
         )
     
     @classmethod
@@ -224,7 +225,7 @@ class Axis(LinearSpace):
         """
         Create an Axis in 1D plane.
 
-        Bounds:
+        Linear_Section:
             west => [u, Vector(0, u.y)], (-i, 0)
         Delta:
             d_x => increments u.x by -1 till x = 0
@@ -232,6 +233,6 @@ class Axis(LinearSpace):
         """
         return cls(
             stepper=AxisStepper.west(),
-            bounds=AxisBounds.west(origin=origin)
+            linear_section=AxisSection.west(origin=origin)
         )
     

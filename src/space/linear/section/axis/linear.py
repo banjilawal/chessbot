@@ -1,7 +1,7 @@
-# src/space/linear/bounds/axis/space.py
+# src/space/linear/section/axis/space.py
 
 """
-Module: space.linear.bounds.axis.space
+Module: space.linear.section.axis.space
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -14,29 +14,29 @@ import setting
 
 
 from model import Vector
-from space import LinearBounds
+from space import LinearSection
 
 
-class AxisBounds(LinearBounds):
+class AxisSection(LinearSection):
     """
     Role:
         -   Computation Worker
         -   Integrity Management
 
     Responsibilities:
-        1.  Prevent ArrayIndexOutOfBounds errors by calculating the last point in the direction
+        1.  Prevent ArrayIndexOutOfSection errors by calculating the last point in the direction
             of travel
 
     Attributes:
 
     Provides:
-        -   east(origin: Vector) -> AxisBounds
-        -   north(origin: Vector) -> AxisBounds
-        -   west(origin: Vector) -> AxisBounds
-        -   south(origin: Vector) -> AxisBounds
+        -   east(origin: Vector) -> AxisSection
+        -   north(origin: Vector) -> AxisSection
+        -   west(origin: Vector) -> AxisSection
+        -   south(origin: Vector) -> AxisSection
 
     Super Class:
-        SpaceBounds
+        SpaceSection
 
     WARNING:
         *****===ONLY_INSTANTIATE_WITH_THE_FACTORY_METHODS===*****
@@ -47,7 +47,7 @@ class AxisBounds(LinearBounds):
     
     
     @classmethod
-    def east(cls, origin: Vector) -> AxisBounds:
+    def east(cls, origin: Vector) -> AxisSection:
         """
         East towards num_columns - 1 (right)
         """
@@ -60,7 +60,7 @@ class AxisBounds(LinearBounds):
         )
     
     @classmethod
-    def north(cls, origin: Vector) -> AxisBounds:
+    def north(cls, origin: Vector) -> AxisSection:
         """
         North towards 0  (up)
         """
@@ -70,7 +70,7 @@ class AxisBounds(LinearBounds):
         )
     
     @classmethod
-    def south(cls, origin: Vector) -> AxisBounds:
+    def south(cls, origin: Vector) -> AxisSection:
         """
         South towards num_rows - 1 (up)
         """
@@ -83,7 +83,7 @@ class AxisBounds(LinearBounds):
         )
     
     @classmethod
-    def west(cls, origin: Vector) -> AxisBounds:
+    def west(cls, origin: Vector) -> AxisSection:
         """
         West towards 0 (left)
         """

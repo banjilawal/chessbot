@@ -16,7 +16,7 @@ from model import Vector
 from result import ComputationResult
 from toolkit import MathToolkit
 from util import LoggingLevelRouter
-
+from validator import Validator
 
 T = TypeVar("T", bound="LinearSpace")
 
@@ -37,10 +37,12 @@ class LinearStepper(ABC, Generic[T]):
 
     Super Class:
     """
-    
     _math_toolkit: MathToolkit
     
-    def __init__(self, math_toolkit: MathToolkit | None = MathToolkit() ):
+    def __init__(
+            self,
+            math_toolkit: MathToolkit | None = MathToolkit(),
+    ):
         """
         Args
             math_toolkit: MathToolkit
@@ -50,6 +52,11 @@ class LinearStepper(ABC, Generic[T]):
     @property
     def math(self) -> MathToolkit:
         return self._math_toolkit
+    
+    @property
+    @abstractmethod
+    def validator(self) -> Validator[T]:
+        pass
     
     @abstractmethod
     @LoggingLevelRouter.monitor

@@ -14,10 +14,11 @@ from typing import Optional
 
 from model import Scalar
 from result import ComputationResult
-from space import LinearStepper, Space, LinearBounds
+from space import LinearStepper, Space, LinearSection
 from toolkit import MathToolkit
 from util import LoggingLevelRouter
 from validator import Validator
+
 
 
 class LinearSpace(Space):
@@ -38,40 +39,40 @@ class LinearSpace(Space):
 
     Super Class:
     """
-    _bounds: LinearBounds
+    _section: LinearSection
     _stepper: LinearStepper
-    _validator: Validator[T]
+
     _math_toolkit: Optional[MathToolkit]
     
     def __init__(
             self,
-            bounds: LinearBounds,
+            linear_section: LinearSection,
             stepper: LinearStepper,
-            validator: Validator[T],
+            validator: LinearSectionValidator,
             math_toolkit: Optional[MathToolkit] | None = MathToolkit(),
     ):
         """
         Args:
-            bounds: SpaceBounds
+            linear_section: SpaceBounds
             stepper: Stepper
             validator: Validator
             math_toolkit: Optional[MathToolkit]
         """
-        self._bounds = bounds
+        self._section = linear_section
         self._stepper = stepper
         self._validator = validator
         self._math_toolkit = math_toolkit
     
     @property
-    def bounds(self) -> LinearBounds:
-        return self._bounds
+    def bounds(self) -> LinearSection:
+        return self._section
     
     @property
     def stepper(self) -> LinearStepper:
         return self._stepper
     
     @property
-    def validator(self) -> Validator[T]:
+    def validator(self) -> Validator:
         return self._validator
     
     @property
@@ -80,11 +81,11 @@ class LinearSpace(Space):
     
     @property
     def is_empty(self) -> bool:
-        return self._bounds.is_empty
+        return self._section.is_empty
     
     @property
     def is_cycle(self) -> bool:
-        return self._bounds.is_cycle
+        return self._section.is_cycle
     
     @abstractmethod
     @LoggingLevelRouter.monitor

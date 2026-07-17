@@ -15,7 +15,7 @@ from err import QuadrantException
 from model import Scalar, Vector
 from register import VectorRegister
 from result import ComputationResult, MethodResultType
-from space import LinearSpace, QuadrantBounds, QuadrantStepper
+from space import LinearSpace, QuadrantSection, QuadrantStepper
 from util import LoggingLevelRouter
 
 
@@ -45,21 +45,21 @@ class Quadrant(LinearSpace):
     WARNING:
         *****===ONLY_INSTANTIATE_WITH_THE_FACTORY_METHODS===*****
     """
-    _bounds: QuadrantBounds
+    _section: QuadrantSection
     _stepper: QuadrantStepper
     
-    def __init__(self, stepper: QuadrantStepper, bounds: QuadrantBounds):
+    def __init__(self, stepper: QuadrantStepper, linear_section: QuadrantSection):
         """
         Args:
-            bounds: QuadrantBounds
+            linear_section: QuadrantBounds
             stepper: QuadrantStepper
         """
-        super().__init__(bounds=bounds, stepper=stepper)
+        super().__init__(linear_section=linear_section, stepper=stepper)
         """INTERNAL: Use factory methods instead of direct constructor."""
         
     @property
-    def bounds(self) -> QuadrantBounds:
-        return cast(QuadrantBounds, self.bounds)
+    def bounds(self) -> QuadrantSection:
+        return cast(QuadrantSection, self.bounds)
     
     @property
     def stepper(self) -> QuadrantStepper:
@@ -159,7 +159,7 @@ class Quadrant(LinearSpace):
         """
         return cls(
             stepper=QuadrantStepper.northeast(),
-            bounds=QuadrantBounds.northeast(origin=origin)
+            linear_section=QuadrantSection.northeast(origin=origin)
         )
     
     @classmethod
@@ -175,7 +175,7 @@ class Quadrant(LinearSpace):
         """
         return cls(
             stepper=QuadrantStepper.northwest(),
-            bounds=QuadrantBounds.northwest(origin=origin)
+            linear_section=QuadrantSection.northwest(origin=origin)
         )
     
     @classmethod
@@ -191,7 +191,7 @@ class Quadrant(LinearSpace):
         """
         return cls(
             stepper=QuadrantStepper.southeast(),
-            bounds=QuadrantBounds.southeast(origin=origin)
+            linear_section=QuadrantSection.southeast(origin=origin)
         )
     
     @classmethod
@@ -207,7 +207,7 @@ class Quadrant(LinearSpace):
         """
         return cls(
             stepper=QuadrantStepper.southwest(),
-            bounds=QuadrantBounds.southwest(origin=origin)
+            linear_section=QuadrantSection.southwest(origin=origin)
         )
         
     

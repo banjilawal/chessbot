@@ -11,7 +11,7 @@ version: 1.0.1
 
 # Packages
 from .axis import *
-from .bounds import *
+from .section import *
 from .quadrant import *
 from .stepper import *
 from .terminus import *

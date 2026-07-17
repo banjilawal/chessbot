@@ -1,7 +1,7 @@
-# src/space/linear/bounds/quadrant/linear.py
+# src/space/linear/section/quadrant/linear.py
 
 """
-Module: space.linear.bounds.quadrant.linear
+Module: space.linear.section.quadrant.linear
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -11,29 +11,29 @@ from __future__ import annotations
 
 
 from model import Vector
-from space import QuadrantTerminusEntry, LinearBounds
+from space import QuadrantTerminusEntry, LinearSection
 
 
-class QuadrantBounds(LinearBounds):
+class QuadrantSection(LinearSection):
     """
     Role:
         -   Data Holder
 
     Responsibilities:
-        1.  Prevent ArrayIndexOutOfBounds errors by calculating the upper and lower bounds
+        1.  Prevent ArrayIndexOutOfSection errors by calculating the upper and lower section
             vectors of a Quadrant's incline.
 
     Attributes:
         terminus_entry: QuadrantTerminusEntry
         
     Provides:
-        -   def northeast(cls, origin: Vector) -> QuadrantBounds
-        -   def northwest(cls, origin: Vector) -> QuadrantBounds
-        -   def southwest(cls, origin: Vector) -> QuadrantBounds
-        -   def southeast(cls, origin: Vector) -> QuadrantBounds
+        -   def northeast(cls, origin: Vector) -> QuadrantSection
+        -   def northwest(cls, origin: Vector) -> QuadrantSection
+        -   def southwest(cls, origin: Vector) -> QuadrantSection
+        -   def southeast(cls, origin: Vector) -> QuadrantSection
 
     Super Class:
-        SpaceBounds
+        SpaceSection
 
     WARNING:
         *****===ONLY_INSTANTIATE_WITH_THE_FACTORY_METHODS===*****
@@ -47,28 +47,28 @@ class QuadrantBounds(LinearBounds):
 
     
     @classmethod
-    def northeast(cls, origin: Vector) -> QuadrantBounds:
+    def northeast(cls, origin: Vector) -> QuadrantSection:
         return cls(
             origin=origin,
             terminus=cls.terminus_entry.northeast,
         )
     
     @classmethod
-    def northwest(cls, origin: Vector) -> QuadrantBounds:
+    def northwest(cls, origin: Vector) -> QuadrantSection:
         return cls(
             origin=origin,
             terminus=cls.terminus_entry.northwest
         )
     
     @classmethod
-    def southeast(cls, origin: Vector) -> QuadrantBounds:
+    def southeast(cls, origin: Vector) -> QuadrantSection:
         return cls(
             origin=origin,
             terminus=cls.terminus_entry.southeast
         )
     
     @classmethod
-    def southwest(cls, origin: Vector) -> QuadrantBounds:
+    def southwest(cls, origin: Vector) -> QuadrantSection:
         return cls(
             origin=origin,
             terminus=cls.terminus_entry.southwest

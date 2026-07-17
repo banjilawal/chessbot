@@ -1,7 +1,7 @@
-# src/space/linear/bounds/linear.py
+# src/space/linear/section/linear.py
 
 """
-Module: space.linear.bounds.linear
+Module: space.linear.section.linear
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -14,13 +14,13 @@ from model import Vector
 from register import VectorRegister
 
 
-class LinearBounds:
+class LinearSection:
     """
     Role:
         -   Data Holder
 
     Responsibilities:
-        1.  Store upper and lower bounds of a Space. basic integrity and sanity checking.
+        1.  Store upper and lower section of a Space. basic integrity and sanity checking.
 
     Attributes:
         origin: Vector

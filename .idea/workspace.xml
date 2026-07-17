@@ -5,24 +5,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/err/validation/space/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/validation/space/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/validation/space/linear/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/validation/space/linear/axis/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/validation/space/linear/axis/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/validation/space/linear/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/validation/space/linear/quadrant/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/validation/space/linear/quadrant/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/validation/space/span/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/validation/space/span/axis/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/validation/space/span/axis/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/validation/space/span/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/validation/space/span/quadrant/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/validation/space/span/quadrant/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/space/linear/section/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/space/linear/section/axis/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/space/linear/section/quadrant/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/validation/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/validation/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/validator/space/linear/axis/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/validator/space/linear/axis/validator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/validator/space/linear/quadrant/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/validator/space/linear/quadrant/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/space/linear/bounds/axis/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/space/linear/bounds/axis/exception.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/space/linear/bounds/quadrant/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/space/linear/bounds/quadrant/exception.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/space/linear/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/linear/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/space/linear/axis/linear.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/linear/axis/linear.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/space/linear/bounds/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/space/linear/bounds/axis/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/space/linear/bounds/axis/linear.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/linear/section/axis/linear.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/space/linear/bounds/linear.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/linear/section/linear.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/space/linear/bounds/quadrant/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/space/linear/bounds/quadrant/linear.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/linear/section/quadrant/linear.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/space/linear/linear.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/linear/linear.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/space/linear/quadrant/linear.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/linear/quadrant/linear.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/space/linear/stepper/linear.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/linear/stepper/linear.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,25 +70,25 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Python.notifier.executor": "Debug",
-    "Python.ray.executor": "Coverage",
-    "Python.stack.executor": "Debug",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "main",
-    "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/err/validation/space",
-    "node.js.detected.package.eslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "run.code.analysis.last.selected.profile": "pProject Default",
-    "settings.editor.selected.configurable": "editor.preferences.tabs",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Python.notifier.executor&quot;: &quot;Debug&quot;,
+    &quot;Python.ray.executor&quot;: &quot;Coverage&quot;,
+    &quot;Python.stack.executor&quot;: &quot;Debug&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/griot/PycharmProjects/chessbot/src/err/validation/space&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.tabs&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/err/validation/space" />
@@ -787,7 +788,8 @@
       <workItem from="1784029158325" duration="10323000" />
       <workItem from="1784040408484" duration="7069000" />
       <workItem from="1784050719673" duration="78000" />
-      <workItem from="1784055454795" duration="185683000" />
+      <workItem from="1784055454795" duration="186991000" />
+      <workItem from="1784319839949" duration="547000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />
@@ -1305,7 +1307,7 @@
           <option name="timeStamp" value="247" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/src/space/linear/bounds/quadrant/ray.py</url>
+          <url>file://$PROJECT_DIR$/src/space/linear/section/quadrant/ray.py</url>
           <line>9</line>
           <option name="timeStamp" value="250" />
         </line-breakpoint>
@@ -1335,7 +1337,7 @@
           <option name="timeStamp" value="256" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/src/space/linear/bounds/linear/__init__.py</url>
+          <url>file://$PROJECT_DIR$/src/space/linear/section/linear/__init__.py</url>
           <line>12</line>
           <option name="timeStamp" value="257" />
         </line-breakpoint>
