@@ -1,7 +1,7 @@
-# src/space/linear/space.py
+# src/space/linear/linear.py
 
 """
-Module: space.linear.space
+Module: space.linear.linear
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -12,7 +12,10 @@ from __future__ import annotations
 from abc import abstractmethod
 from typing import Optional
 
-from space import Space
+from model import Scalar
+from result import ComputationResult
+from space import LinearStepper, Space, LinearBounds
+from toolkit import MathToolkit
 from util import LoggingLevelRouter
 
 
@@ -34,14 +37,14 @@ class LinearSpace(Space):
 
     Super Class:
     """
-    _bounds: SpaceBounds
-    _stepper: SpaceStepper
+    _bounds: LinearBounds
+    _stepper: LinearStepper
     _math_toolkit: Optional[MathToolkit]
     
     def __init__(
             self,
-            bounds: SpaceBounds,
-            stepper: SpaceStepper,
+            bounds: LinearBounds,
+            stepper: LinearStepper,
             math_toolkit: Optional[MathToolkit] | None = MathToolkit()
     ):
         """
@@ -55,11 +58,11 @@ class LinearSpace(Space):
         self._math_toolkit = math_toolkit
     
     @property
-    def bounds(self) -> SpaceBounds:
+    def bounds(self) -> LinearBounds:
         return self._bounds
     
     @property
-    def stepper(self) -> SpaceStepper:
+    def stepper(self) -> LinearStepper:
         return self._stepper
     
     @property

@@ -1,7 +1,7 @@
-# src/space/linear/bounds/space.py
+# src/space/linear/bounds/linear.py
 
 """
-Module: space.linear.bounds.space
+Module: space.linear.bounds.linear
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -14,7 +14,7 @@ from model import Vector
 from register import VectorRegister
 
 
-class SpaceBounds:
+class LinearBounds:
     """
     Role:
         -   Data Holder

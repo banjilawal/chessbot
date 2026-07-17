@@ -14,18 +14,18 @@ from err import LinearStepperException
 from result import MethodResultType
 
 __all__ = [
-    # ======================# AXIS_LINEAR_STEPPER_FAILURE #======================#
-    "AxisLinearStepperException",
+    # ======================# AXIS_STEPPER_FAILURE #======================#
+    "AxisStepperException",
 ]
 
-# ======================# AXIS_LINEAR_STEPPER_FAILURE #======================#
-class AxisLinearStepperException(LinearStepperException):
+# ======================# AXIS_STEPPER_FAILURE #======================#
+class AxisStepperException(LinearStepperException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an AxisLinearStepper was aborted by an exception.
+        1.  Indicate that an AxisStepper was aborted by an exception.
         
     Attributes:
         msg: Optional[str]
@@ -42,8 +42,8 @@ class AxisLinearStepperException(LinearStepperException):
     Super Class:
         LinearStepperException
     """
-    MSG = "AxisLinearStepper failure."
-    ERR_CODE = "AXIS_LINEAR_STEPPER_FAILURE"
+    MSG = "AxisStepper failure."
+    ERR_CODE = "AXIS_STEPPER_FAILURE"
 
     def __init__(
             self,

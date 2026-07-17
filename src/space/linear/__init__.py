@@ -13,7 +13,8 @@ version: 1.0.1
 from .axis import *
 from .bounds import *
 from .quadrant import *
+from .stepper import *
 from .terminus import *
 
 # Modules
-from .space import LinearSpace
+from .linear import LinearSpace

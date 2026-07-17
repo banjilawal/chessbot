@@ -15,11 +15,11 @@ from result import MethodResultType
 
 __all__ = [
     # ======================# LINEAR_QUADRANT_SPACE_ERROR #======================#
-    "QuadrantLinearSpaceException",
+    "QuadrantException",
 ]
 
 # ======================# LINEAR_QUADRANT_SPACE_ERROR #======================#
-class QuadrantLinearSpaceException(LinearSpaceException):
+class QuadrantException(LinearSpaceException):
     """
     Role:
         -   Error Tracing

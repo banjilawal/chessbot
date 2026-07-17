@@ -14,10 +14,10 @@ import setting
 
 
 from model import Vector
-from space import SpaceBounds
+from space import LinearBounds
 
 
-class AxisBounds(SpaceBounds):
+class AxisBounds(LinearBounds):
     """
     Role:
         -   Computation Worker

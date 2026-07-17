@@ -5,10 +5,36 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/container/register/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/container/register/container.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/container/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/container/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/container/vector/destination/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/container/vector/destination/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/space/linear/axis/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/space/linear/axis/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/space/linear/axis/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/space/linear/axis/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/space/linear/quadrant/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/space/linear/quadrant/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/space/linear/quadrant/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/space/linear/quadrant/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/space/linear/stepper/axis/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/space/linear/stepper/axis/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/space/linear/stepper/axis/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/space/linear/stepper/axis/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/space/linear/stepper/quadrant/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/space/linear/stepper/quadrant/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/space/linear/stepper/quadrant/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/space/linear/stepper/quadrant/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/space/linear/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/linear/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/space/linear/axis/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/linear/axis/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/space/linear/axis/space.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/linear/axis/linear.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/space/linear/bounds/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/linear/bounds/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/space/linear/bounds/axis/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/linear/bounds/axis/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/space/linear/bounds/axis/space.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/linear/bounds/axis/linear.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/space/linear/bounds/quadrant/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/linear/bounds/quadrant/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/space/linear/bounds/quadrant/space.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/linear/bounds/quadrant/linear.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/space/linear/bounds/space.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/linear/bounds/linear.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/space/linear/quadrant/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/linear/quadrant/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/space/linear/quadrant/space.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/linear/quadrant/linear.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/space/linear/space.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/linear/linear.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/space/linear/stepper/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/linear/stepper/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/space/linear/stepper/axis/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/linear/stepper/axis/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/space/linear/stepper/axis/space.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/linear/stepper/axis/linear.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/space/linear/stepper/quadrant/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/linear/stepper/quadrant/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/space/linear/stepper/quadrant/space.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/linear/stepper/quadrant/linear.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/space/linear/stepper/space.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/linear/stepper/linear.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/space/linear/terminus/quadrant/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/linear/terminus/quadrant/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/space/linear/terminus/quadrant/space.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/linear/terminus/quadrant/linear.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/space/ray/computer/axis/ray.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/ray/computer/axis/ray.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -773,7 +799,7 @@
       <workItem from="1784029158325" duration="10323000" />
       <workItem from="1784040408484" duration="7069000" />
       <workItem from="1784050719673" duration="78000" />
-      <workItem from="1784055454795" duration="153398000" />
+      <workItem from="1784055454795" duration="158098000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />

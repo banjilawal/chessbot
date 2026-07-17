@@ -1,7 +1,7 @@
-# src/space/linear/bounds/quadrant/space.py
+# src/space/linear/bounds/quadrant/linear.py
 
 """
-Module: space.linear.bounds.quadrant.space
+Module: space.linear.bounds.quadrant.linear
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -11,10 +11,10 @@ from __future__ import annotations
 
 
 from model import Vector
-from space import QuadrantTerminusEntry, SpaceBounds
+from space import QuadrantTerminusEntry, LinearBounds
 
 
-class QuadrantBounds(SpaceBounds):
+class QuadrantBounds(LinearBounds):
     """
     Role:
         -   Data Holder
@@ -38,7 +38,6 @@ class QuadrantBounds(SpaceBounds):
     WARNING:
         *****===ONLY_INSTANTIATE_WITH_THE_FACTORY_METHODS===*****
     """
-    
     terminus_entry: QuadrantTerminusEntry = QuadrantTerminusEntry()
     
     def __init__(self, origin: Vector, terminus: Vector,):

@@ -14,12 +14,12 @@ from err import LinearStepperException
 from result import MethodResultType
 
 __all__ = [
-    # ======================# QUADRANT_LINEAR_STEPPER_FAILURE #======================#
-    "QuadrantLinearStepperException",
+    # ======================# QUADRANT_STEPPER_FAILURE #======================#
+    "QuadrantStepperException",
 ]
 
-# ======================# QUADRANT_LINEAR_STEPPER_FAILURE #======================#
-class QuadrantLinearStepperException(LinearStepperException):
+# ======================# QUADRANT_STEPPER_FAILURE #======================#
+class QuadrantStepperException(LinearStepperException):
     """
     Role:
         -   Error Tracing
@@ -43,7 +43,7 @@ class QuadrantLinearStepperException(LinearStepperException):
         LinearStepperException
     """
     MSG = "QuadrantLinearStepper failure."
-    ERR_CODE = "QUADRANT_LINEAR_STEPPER_FAILURE"
+    ERR_CODE = "QUADRANT_STEPPER_FAILURE"
 
     def __init__(
             self,

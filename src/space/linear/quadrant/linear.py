@@ -1,7 +1,7 @@
-# src/space/linear/quadrant/space.py
+# src/space/linear/quadrant/linear.py
 
 """
-Module: space.linear.quadrant.space
+Module: space.linear.quadrant.linear
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -11,15 +11,15 @@ from __future__ import annotations
 
 from typing import cast
 
-from err import QuadrantSpaceException
+from err import QuadrantException
 from model import Scalar, Vector
 from register import VectorRegister
 from result import ComputationResult, MethodResultType
-from space import Space, QuadrantBounds, QuadrantStepper
+from space import LinearSpace, QuadrantBounds, QuadrantStepper
 from util import LoggingLevelRouter
 
 
-class QuadrantSpace(Space):
+class Quadrant(LinearSpace):
     """
     Role:
         -   Dataset
@@ -86,7 +86,7 @@ class QuadrantSpace(Space):
         Returns:
             ComputationResult[Scalar]
         Raises:
-             QuadrantSpaceException
+             QuadrantException
         """
         method = f"{self.__class__.__name__}.distance"
         
@@ -98,11 +98,11 @@ class QuadrantSpace(Space):
         if computation.is_failure:
             # Send an exception chain in the result.
             return ComputationResult.failure(
-                QuadrantSpaceException(
+                QuadrantException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=QuadrantSpaceException.MSG,
-                    err_code=QuadrantSpaceException.ERR_CODE,
+                    msg=QuadrantException.MSG,
+                    err_code=QuadrantException.ERR_CODE,
                     mthd_rslt_type=MethodResultType.COMPUTATION_RESULT,
                     ex=computation.exception,
                 ),
@@ -123,7 +123,7 @@ class QuadrantSpace(Space):
         Returns:
             ComputationResult[Vector]
         Raises:
-             QuadrantSpaceException
+             QuadrantException
         """
         method = f"{self.__class__.__name__}"
         
@@ -134,11 +134,11 @@ class QuadrantSpace(Space):
         if computation.is_failure:
             # Send an exception chain in the result.
             return ComputationResult.failure(
-                QuadrantSpaceException(
+                QuadrantException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=QuadrantSpaceException.MSG,
-                    err_code=QuadrantSpaceException.ERR_CODE,
+                    msg=QuadrantException.MSG,
+                    err_code=QuadrantException.ERR_CODE,
                     mthd_rslt_type=MethodResultType.COMPUTATION_RESULT,
                     ex=computation.exception,
                 ),
@@ -147,7 +147,7 @@ class QuadrantSpace(Space):
         return ComputationResult.success(cast(Vector, computation.payload))
 
     @classmethod
-    def northeast(cls, origin: Vector) -> QuadrantSpace:
+    def northeast(cls, origin: Vector) -> Quadrant:
         """
         Create a 2D space
 
@@ -163,7 +163,7 @@ class QuadrantSpace(Space):
         )
     
     @classmethod
-    def northwest(cls, origin: Vector) -> QuadrantSpace:
+    def northwest(cls, origin: Vector) -> Quadrant:
         """
         Create a 2D space
 
@@ -179,7 +179,7 @@ class QuadrantSpace(Space):
         )
     
     @classmethod
-    def southeast(cls, origin: Vector) -> QuadrantSpace:
+    def southeast(cls, origin: Vector) -> Quadrant:
         """
         Create a 2D space
 
@@ -195,7 +195,7 @@ class QuadrantSpace(Space):
         )
     
     @classmethod
-    def southwest(cls, origin: Vector) -> QuadrantSpace:
+    def southwest(cls, origin: Vector) -> Quadrant:
         """
         Create a 2D space
 

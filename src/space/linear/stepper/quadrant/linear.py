@@ -11,15 +11,15 @@ from __future__ import annotations
 
 from typing import cast
 
-from err.space.linear.stepper.quadrant.exception import QuadrantSpaceSetterException
+from err import QuadrantStepperException
 from model import Vector
 from register import NumberRegister
 from result import ComputationResult, MethodResultType
-from space import KnightSpace, SpaceStepper
+from space import LinearStepper, Quadrant
 from util import LoggingLevelRouter
 
 
-class QuadrantStepper(SpaceStepper[KnightSpace]):
+class QuadrantStepper(LinearStepper[Quadrant]):
     """
     Role:
         -   Computation Worker
@@ -103,7 +103,7 @@ class QuadrantStepper(SpaceStepper[KnightSpace]):
         return self._register.b
     
     @LoggingLevelRouter.monitor
-    def next(self, current: Vector) -> ComputationResult:
+    def next(self, current: Vector) -> ComputationResult[Vector]:
         """
         Project a new, safe, vector, from the current.
 
@@ -132,11 +132,11 @@ class QuadrantStepper(SpaceStepper[KnightSpace]):
         if build.is_failure:
             # Send an exception chain in the result.
             return ComputationResult.failure(
-                QuadrantSpaceSetterException(
+                QuadrantStepperException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=QuadrantSpaceSetterException.MSG,
-                    err_code=QuadrantSpaceSetterException.ERR_CODE,
+                    msg=QuadrantStepperException.MSG,
+                    err_code=QuadrantStepperException.ERR_CODE,
                     mthd_rslt_type=MethodResultType.COMPUTATION_RESULT,
                     ex=build.exception,
                 ),

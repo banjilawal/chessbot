@@ -13,4 +13,4 @@ version: 1.0.1
 
 
 # Modules
-from .space import QuadrantTerminusEntry
+from .linear import QuadrantTerminusEntry

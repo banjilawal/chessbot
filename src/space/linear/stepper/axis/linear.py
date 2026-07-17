@@ -1,7 +1,7 @@
-# src/space/linear/stepper/axis/space.py
+# src/space/linear/stepper/axis/linear.py
 
 """
-Module: space.linear.stepper.axis.space
+Module: space.linear.stepper.axis.linear
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -11,15 +11,16 @@ from __future__ import annotations
 
 from typing import Dict, cast
 
-from err import AxisSpaceSetterException
+from err import AxisStepperException
 from model import Vector
 from register import VectorRegister
 from result import ComputationResult, MethodResultType
-from space import AxisSpace, SpaceStepper
+from space import Axis, LinearStepper
+
 from util import LoggingLevelRouter
 
 
-class AxisStepper(SpaceStepper[AxisSpace]):
+class AxisStepper(LinearStepper[Axis]):
     """
     Role:
         -   Computation Worker
@@ -91,11 +92,11 @@ class AxisStepper(SpaceStepper[AxisSpace]):
         if computation.is_failure:
             # Send an exception chain in the result.
             return ComputationResult.failure(
-                AxisSpaceSetterException(
+                AxisStepperException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=AxisSpaceSetterException.MSG,
-                    err_code=AxisSpaceSetterException.ERR_CODE,
+                    msg=AxisStepperException.MSG,
+                    err_code=AxisStepperException.ERR_CODE,
                     mthd_rslt_type=MethodResultType.COMPUTATION_RESULT,
                     ex=computation.exception,
                 ),

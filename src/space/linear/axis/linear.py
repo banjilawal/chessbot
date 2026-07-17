@@ -9,17 +9,19 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from typing import cast
+from typing import List, Tuple, cast
 
-from err import AxisSpaceException
+from container import DestinationVectorSet
+from container.vector.destination.linear.container import LinearDestinationVectorSet
+from err import AxisException
 from model import Scalar, Vector
 from register import VectorRegister
 from result import ComputationResult, MethodResultType
-from space import AxisBounds, AxisStepper, Space
+from space import AxisBounds, AxisStepper, LinearSpace, Space
 from util import LoggingLevelRouter
 
 
-class AxisSpace(Space):
+class Axis(LinearSpace):
     """
     Role:
         -   Dataset
@@ -91,7 +93,7 @@ class AxisSpace(Space):
         Returns:
             ComputationResult[Scalar]
         Raises:
-             AxisSpaceException
+             AxisException
         """
         method = f"{self.__class__.__name__}.distance"
         
@@ -103,11 +105,11 @@ class AxisSpace(Space):
         if computation.is_failure:
             # Send an exception chain in the result.
             return ComputationResult.failure(
-                AxisSpaceException(
+                AxisException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=AxisSpaceException.MSG,
-                    err_code=AxisSpaceException.ERR_CODE,
+                    msg=AxisException.MSG,
+                    err_code=AxisException.ERR_CODE,
                     mthd_rslt_type=MethodResultType.COMPUTATION_RESULT,
                     ex=computation.exception,
                 ),
@@ -117,7 +119,9 @@ class AxisSpace(Space):
     
     
     @LoggingLevelRouter.monitor
-    def next(self, current: Vector) -> ComputationResult[Vector]:
+    def compute_destination_vectors(
+            self, current: Vector
+    ) -> ComputationResult[LinearDestinationVectorSet]:
         """
         Get the next vector in the direction of travel.
 
@@ -129,32 +133,46 @@ class AxisSpace(Space):
         Returns:
             ComputationResult[Vector]
         Raises:
-             AxisSpaceException
+             AxisException
         """
         method = f"{self.__class__.__name__}.next"
         
-        # --- Request the next Vector for the stepper. ---#
-        computation = self._stepper.next(u=current)
+        terminus = self.terminus
+        cursor = self.origin
+        solutions: List[Vector] = []
+        solutions.append(cursor)
         
-        # Handle the case that, the computation is aborted.
-        if computation.is_failure:
-            # Send an exception chain in the result.
-            return ComputationResult.failure(
-                AxisSpaceException(
-                    cls_mthd=method,
-                    cls_name=self.__class__.__name__,
-                    msg=AxisSpaceException.MSG,
-                    err_code=AxisSpaceException.ERR_CODE,
-                    mthd_rslt_type=MethodResultType.COMPUTATION_RESULT,
-                    ex=computation.exception,
-                ),
-            )
+        while cursor != terminus:
+            computation = self._stepper.next(u=current)
+            
+            # Handle the case that, the computation is aborted.
+            if computation.is_failure:
+                # Send an exception chain in the result.
+                return ComputationResult.failure(
+                    AxisException(
+                        cls_mthd=method,
+                        cls_name=self.__class__.__name__,
+                        msg=AxisException.MSG,
+                        err_code=AxisException.ERR_CODE,
+                        mthd_rslt_type=MethodResultType.COMPUTATION_RESULT,
+                        ex=computation.exception,
+                    ),
+                )
+            solutions.append(cast(Vector, computation.payload))
+             # --- Request the next Vector for the stepper. ---#
+        destination_vectors = LinearDestinationVectorSet(
+            root=self.origin,
+            entries=tuple(solutions)
+        )
+
+        
+
         # --- Forward the work product to the caller. ---#
-        return ComputationResult.success(cast(Vector, computation.payload))
+        return ComputationResult.success(destination_vectors)
 
     
     @classmethod
-    def east_axis(cls, origin: Vector) -> AxisSpace:
+    def east_axis(cls, origin: Vector) -> Axis:
         """
         Create an Axis in 1D plane
         
@@ -171,7 +189,7 @@ class AxisSpace(Space):
         )
     
     @classmethod
-    def north_axis(cls, origin: Vector) -> AxisSpace:
+    def north_axis(cls, origin: Vector) -> Axis:
         """
         Create an Axis in 1D plane.
 
@@ -187,7 +205,7 @@ class AxisSpace(Space):
         )
     
     @classmethod
-    def south_axis(cls, origin: Vector) -> AxisSpace:
+    def south_axis(cls, origin: Vector) -> Axis:
         """
         Create an Axis in 1D plane.
 
@@ -203,7 +221,7 @@ class AxisSpace(Space):
         )
     
     @classmethod
-    def west_axis(cls, origin: Vector) -> AxisSpace:
+    def west_axis(cls, origin: Vector) -> Axis:
         """
         Create an Axis in 1D plane.
 

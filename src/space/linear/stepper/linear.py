@@ -1,7 +1,7 @@
-# src/space/linear/stepper/space.py
+# src/space/linear/stepper/linear.py
 
 """
-Module: space.linear.stepper.space
+Module: space.linear.stepper.linear
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -18,10 +18,10 @@ from toolkit import MathToolkit
 from util import LoggingLevelRouter
 
 
-T = TypeVar("T", bound="Space")
+T = TypeVar("T", bound="LinearSpace")
 
 
-class SpaceStepper(ABC, Generic[T]):
+class LinearStepper(ABC, Generic[T]):
     """
     Role:
         -   Computation Worker

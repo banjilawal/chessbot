@@ -15,17 +15,17 @@ from result import MethodResultType
 
 __all__ = [
     # ======================# LINEAR_AXIS_SPACE_ERROR #======================#
-    "AxisLinearSpaceException",
+    "AxisException",
 ]
 
 # ======================# LINEAR_AXIS_SPACE_ERROR #======================#
-class AxisLinearSpaceException(LinearSpaceException):
+class AxisException(LinearSpaceException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a LinearAxisSpace instance encountered an error.
+        1.  Indicate that an Axis instance encountered an error.
 
     Attributes:
         var: Optional[str]
