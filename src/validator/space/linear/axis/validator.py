@@ -15,10 +15,10 @@ from typing import Any
 from result import ValidationResult
 from space import Axis
 from util import LoggingLevelRouter
-from validator import SpaceValidator
+from validator import LinearSpaceValidator
 
 
-class AxisValidator(SpaceValidator[Axis]):
+class AxisValidator(LinearSpaceValidator[Axis]):
     
     @LoggingLevelRouter.monitor
     def execute(self, candidate: Any) -> ValidationResult[Axis]:

@@ -20,6 +20,7 @@ from .number import *
 from .operand import *
 from .query import *
 from .register import *
+from .space import *
 from .string import *
 from .toggle import *
 

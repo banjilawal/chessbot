@@ -15,10 +15,10 @@ from typing import Any
 from result import ValidationResult
 from space import Quadrant
 from util import LoggingLevelRouter
-from validator import SpaceValidator
+from validator import LinearSpaceValidator
 
 
-class QuadrantValidator(SpaceValidator[Quadrant]):
+class QuadrantValidator(LinearSpaceValidator[Quadrant]):
     
     @LoggingLevelRouter.monitor
     def execute(self, candidate: Any) -> ValidationResult[Quadrant]:
