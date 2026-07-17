@@ -39,7 +39,8 @@ class KingVectorBasis(VectorBasis[King]):
     def __init__(
             self,
             origin: Vector,
-            movement_vectors: Optional[KingMovementVectorSet] | None = KingMovementVectorSet(),
+            movement_vectors: Optional[KingMovementVectorSet] |
+                              None = KingMovementVectorSet(),
             destination_span_computer: Optional[DestinationSpanComputer] |
                                        None = DestinationSpanComputer(),
     ):

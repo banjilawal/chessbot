@@ -9,13 +9,13 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from typing import  Optional, Tuple
+from typing import Optional, Tuple, cast
 
 from container import DestinationVectorSet
 from model import Vector
 
 
-class LinearDestinationVectorSet(DestinationVectorSet):
+class LinearDestinationSet(DestinationVectorSet):
     """
     Role:
         -   Data Holder
@@ -46,5 +46,13 @@ class LinearDestinationVectorSet(DestinationVectorSet):
             entries: Optional[Tuple[Vector, ...]]
         """
         super().__init__(root=root, entries=entries)
+        
+        
+    def remove_root_destination(self) -> LinearDestinationSet:
+        if not self.is_root_in_destinations:
+            return self
+        vector_set = super().remove_root_from_destinations()
+        return cast(LinearDestinationSet, vector_set)
+        
 
         

@@ -15,7 +15,7 @@ from container import DestinationVectorSet
 from model import Vector
 
 
-class SpanDestinationVectorSet(DestinationVectorSet):
+class SpanDestinationSet(DestinationVectorSet):
     """
     Role:
         -   Data Holder

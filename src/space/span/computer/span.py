@@ -13,6 +13,7 @@ from __future__ import annotations
 from typing import List, Optional, cast
 
 from container import VectorSet
+from container.vector.destination.span.container import SpanDestinationSet
 from err import DestinationSpanComputerException
 from model import Vector
 from register import VectorRegister
@@ -67,7 +68,10 @@ class DestinationSpanComputer:
         return self._math_toolkit
     
     @LoggingLevelRouter.monitor
-    def execute(self, vector_basis: VectorBasis) -> ComputationResult[VectorSet]:
+    def execute(
+            self,
+            vector_basis: VectorBasis
+    ) -> ComputationResult[SpanDestinationSet]:
         """
         Verify the object is a String that is safe to use.
 
@@ -135,7 +139,10 @@ class DestinationSpanComputer:
             solutions.append(cast(Vector, computation.payload))
             
         # Convert the solution set into a Tuple, for a VectorSet.
-        destination_vector_set = VectorSet(entries=tuple(solutions))
+        destination_vector_set = SpanDestinationSet(
+            root=basis.origin,
+            entries=tuple(solutions),
+        )
         
         # --- Forward the work product to the caller. ---#
         return ComputationResult.success(destination_vector_set)

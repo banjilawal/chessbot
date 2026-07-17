@@ -51,6 +51,17 @@ class DestinationVectorSet(ABC, VectorSet):
         
     @property
     def root(self) -> Vector:
-        return self._vetor
-
+        return self._root
+    
+    @property
+    def is_root_in_destinations(self) -> bool:
+        return self._root in self.entries
+    
+    def remove_root_from_destinations(self) -> DestinationVectorSet:
+        old_list = self.to_list
+        new_list = []
+        for item in old_list:
+            if item != self.root:
+                new_list.append(item)
+        return DestinationVectorSet(self._root, tuple(new_list))
         

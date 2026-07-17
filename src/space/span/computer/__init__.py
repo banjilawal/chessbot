@@ -10,7 +10,7 @@ version: 1.0.1
 # =========== SPACE.SPAN.COMPUTER PACKAGE ===========#
 
 # Packages
-from .pawn import *
+
 
 # Modules
 from .span import DestinationSpanComputer

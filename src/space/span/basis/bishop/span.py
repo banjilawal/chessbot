@@ -38,7 +38,8 @@ class BishopVectorBasis(VectorBasis[Bishop]):
     def __init__(
             self,
             origin: Vector,
-            movement_vectors: Optional[BishopMovementVectorSet] | None = BishopMovementVectorSet(),
+            movement_vectors: Optional[BishopMovementVectorSet] |
+                              None = BishopMovementVectorSet(),
             destination_span_computer: Optional[DestinationSpanComputer] |
                                        None = DestinationSpanComputer(),
     ):

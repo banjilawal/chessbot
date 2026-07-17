@@ -9,7 +9,7 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from typing import Iterator, Optional, Tuple, cast
+from typing import Iterator, List, Optional, Tuple, cast
 
 from container import Container
 from model import Coord, Vector
@@ -46,6 +46,10 @@ class VectorSet(Container[Vector]):
     @property
     def iterator(self) -> Iterator[Vector]:
         return iter(self.entries)
+    
+    @property
+    def to_list(self) -> List[Vector]:
+        return [entry for entry in self._entries]
     
     def to_coord_tuple(self) -> Tuple[Coord, ...]:
         return tuple(Coord(column=entry.x, row=entry.y) for entry in self._entries)

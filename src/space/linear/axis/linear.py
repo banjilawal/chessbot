@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import List, Tuple, cast
 
 from container import DestinationVectorSet
-from container.vector.destination.linear.container import LinearDestinationVectorSet
+from container.vector.destination.linear.container import LinearDestinationSet
 from err import AxisException
 from model import Scalar, Vector
 from register import VectorRegister
@@ -119,9 +119,7 @@ class Axis(LinearSpace):
     
     
     @LoggingLevelRouter.monitor
-    def compute_destination_vectors(
-            self, current: Vector
-    ) -> ComputationResult[LinearDestinationVectorSet]:
+    def compute_destination_vectors(self) -> ComputationResult[LinearDestinationSet]:
         """
         Get the next vector in the direction of travel.
 
@@ -142,7 +140,9 @@ class Axis(LinearSpace):
         solutions: List[Vector] = []
         solutions.append(cursor)
         
+        # Append before entering the loop so terminus is added at the last iteration
         while cursor != terminus:
+            # --- Request the next Vector for the stepper. ---#
             computation = self._stepper.next(u=current)
             
             # Handle the case that, the computation is aborted.
@@ -158,15 +158,13 @@ class Axis(LinearSpace):
                         ex=computation.exception,
                     ),
                 )
-            solutions.append(cast(Vector, computation.payload))
-             # --- Request the next Vector for the stepper. ---#
-        destination_vectors = LinearDestinationVectorSet(
+            cursor = cast(Vector, computation.payload)
+            solutions.append(cursor)
+
+        destination_vectors = LinearDestinationSet(
             root=self.origin,
             entries=tuple(solutions)
         )
-
-        
-
         # --- Forward the work product to the caller. ---#
         return ComputationResult.success(destination_vectors)
 

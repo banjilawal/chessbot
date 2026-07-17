@@ -56,7 +56,7 @@ class TokenSearchService(SearchMicroservice[Token]):
         self._resource_host = resource_host
     
     @property
-    def router(self) ->TokenSearchRouter:
+    def router(self) -> TokenSearchRouter:
         return self._resource_host.search_router
     
     @property
