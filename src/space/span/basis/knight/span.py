@@ -1,4 +1,4 @@
-# src/space/span/basis/knight/space/span.py
+# src/space/span/basis/knight/span.py
 
 """
 Module: space.span.basis.knight.span

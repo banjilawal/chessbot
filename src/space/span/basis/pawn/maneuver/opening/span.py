@@ -1,7 +1,7 @@
-# src/space/span/basis/pawn/attack/opening/span.py
+# src/space/span/basis/pawn/maneuver/opening/span.py
 
 """
-Module: space.span.basis.pawn.attack.opening.span
+Module: space.span.basis.pawn.maneuver.opening.span
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -12,41 +12,41 @@ from __future__ import annotations
 from typing import Optional
 
 from model import Vector
-from space import DestinationSpanComputer, OpeningAttackVectorSet
+from space import DestinationSpanComputer, OpeningManeuverVectorSet, PawnManeuverVectorBasis
 
 
-class OpeningPawnVectorBasis(PawnAttackVectorBasis):
+class OpeningPawnManeuverVectorBasis(PawnManeuverVectorBasis):
     """
     Role:
         -   Computation Worker
         -   Integrity Assurance
 
     Responsibilities:
-        1.  Produce a set of destination vectors  for a Pawn which has not made its opening move.
+        1.  Produce a set of destination vectors for a Pawn which has not made its opening move.
 
     Attributes:
         origin: Vector
-        movement_vectors: Optional[OpeningAttackVectorSet]
+        movement_vectors: Optional[OpeningManeuverVectorSet]
         destination_span_computer: Optional[DestinationSpanComputer]
             
     Provides:
 
     Super Class:
-        PawnAttackVectorBasis
+        PawnManeuverVectorBasis
     """
     
     def __init__(
             self,
             origin: Vector,
-            movement_vectors: Optional[OpeningAttackVectorSet] |
-                              None = OpeningAttackVectorSet(),
+            movement_vectors: Optional[OpeningManeuverVectorSet] |
+                              None = OpeningManeuverVectorSet(),
             destination_span_computer: Optional[DestinationSpanComputer] |
                                        None = DestinationSpanComputer(),
     ):
         """
         Args:
             origin: Vector
-            movement_vectors: Optional[OpeningAttackVectorSet]
+            movement_vectors: Optional[OpeningManeuverVectorSet]
             destination_span_computer: Optional[DestinationSpanComputer]
         """
         super().__init__(

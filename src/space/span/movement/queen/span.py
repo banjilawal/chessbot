@@ -1,4 +1,4 @@
-# src/space/span/movement/queen/space/span.py
+# src/space/span/movement/queen/span.py
 
 """
 Module: space.span.movement.queen.span

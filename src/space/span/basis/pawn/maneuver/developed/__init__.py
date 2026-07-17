@@ -1,16 +1,16 @@
-# src/space/span/basis/pawn/attack/developed/__init__.py
+# src/space/span/basis/pawn/maneuver/developed/__init__.py
 
 """
-Module: space.span.basis.pawn.attack.developed.__init__
+Module: space.span.basis.pawn.maneuver.developed.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
 """
 
-# =========== SPACE.SPAN.BASIS.PAWN.ATTACK.DEVELOPED PACKAGE ===========#
+# =========== SPACE.SPAN.BASIS.PAWN.MANEUVER.DEVELOPED PACKAGE ===========#
 
 # Packages
 
 
 # Modules
-from .span import DevelopedPawnVectorBasis
+from .span import DevelopedPawnManeuverVectorBasis

@@ -1,4 +1,4 @@
-# src/space/span/basis/pawn/space/span.py
+# src/space/span/basis/pawn/span.py
 
 """
 Module: space.span.basis.pawn.span
@@ -13,12 +13,12 @@ from abc import ABC
 from typing import Optional, TypeVar
 
 from model import Vector
-from space import DestinationSpanComputer, PawnAttackVectorSet, PawnVectorBasis
+from space import DestinationSpanComputer, PawnManeuverVectorSet, PawnVectorBasis
 
-T = TypeVar("T", bound="PawnAttackVectorSet")
+T = TypeVar("T", bound="PawnManeuverVectorSet")
 
 
-class PawnAttackVectorBasis(ABC, PawnVectorBasis):
+class PawnManeuverVectorBasis(ABC, PawnVectorBasis):
     """
     Role:
         -   Computation Worker
@@ -42,7 +42,7 @@ class PawnAttackVectorBasis(ABC, PawnVectorBasis):
     def __init__(
             self,
             origin: Vector,
-            movement_vectors: PawnAttackVectorSet[T],
+            movement_vectors: PawnManeuverVectorSet[T],
             destination_span_computer: Optional[DestinationSpanComputer] |
                                        None = DestinationSpanComputer(),
     ):

@@ -1,4 +1,4 @@
-# src/space/span/movement/bishop/space/span.py
+# src/space/span/movement/bishop/span.py
 
 """
 Module: space.span.movement.bishop.span

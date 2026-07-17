@@ -1,4 +1,4 @@
-# src/space/span/basis/rook/space/span.py
+# src/space/span/basis/rook/span.py
 
 """
 Module: space.span.basis.rook.span
