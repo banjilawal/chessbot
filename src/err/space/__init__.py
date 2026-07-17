@@ -10,6 +10,7 @@ version: 1.0.1
 # ============ ERR.SPACE PACKAGE ===========#
 
 # Packages
+from .conversion import *
 from .linear import *
 from .ray import *
 from .span import *

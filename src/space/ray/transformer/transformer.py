@@ -13,11 +13,9 @@ from abc import ABC, abstractmethod
 from typing import Generic, TypeVar
 
 from container import SpanVectorSet
-from model import Vector
-from space import LinearSpace
 from result import ComputationResult
-from toolkit import MathToolkit
 from util import LoggingLevelRouter
+from validator import Validator
 
 T = TypeVar("T", bound= "LinearSpace")
 
@@ -25,14 +23,17 @@ T = TypeVar("T", bound= "LinearSpace")
 class LinearSpanTransformer(ABC, Generic[T]):
     """
     Role:
-        -   Computation Worker
+        -   Transformer
+        -   Integrity assurance
 
     Responsibilities:
-        1.  Produce a ray of Vectors from an origin to a terminus.
+        1.  Produce a SpanVectorSet from an LinearSpace instead
+            of a LinearVectorSet..
+
 
     Attributes:
         space: T
-        math_toolkit: MathToolkit
+        validator: Validator[T]
 
     Provides:
         -   def execute() -> ComputationResult[SpanVectorSet]
@@ -40,28 +41,28 @@ class LinearSpanTransformer(ABC, Generic[T]):
     Super Class:
     """
     _linear_space: T
-    _math_toolkit: MathToolkit
+    _validator: Validator[T]
     
     def __init__(
             self,
             linear_space: T,
-            math_toolkit: MathToolkit | None = MathToolkit()
+            validator: Validator[T]
     ):
         """
         Args:
             linear_space: T
-            math_toolkit: MathToolkit
+            validator: Validator[T]
         """
         self._linear_space = linear_space
-        self._math_toolkit = math_toolkit
-        
-    @property
-    def math(self) -> MathToolkit:
-        return self._math_toolkit
-        
+        self._validator = validator
+    
     @property
     def linear_space(self) -> T:
         return self._linear_space
+    
+    @property
+    def validator(self) -> Validator[T]:
+        return self._validator
     
     @abstractmethod
     @LoggingLevelRouter.monitor

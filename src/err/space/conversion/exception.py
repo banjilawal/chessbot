@@ -1,7 +1,7 @@
-# src/err/space/exception.py
+# src/err/space/conversion/exception.py
 
 """
-Module: err.space.exception
+Module: err.space.conversion.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,21 +10,21 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import ChessException
+from err import SpaceException
 from result import MethodResultType
 
 __all__ = [
-    # ======================# SPACE_ERROR #======================#
-    "SpaceException",
+    # ======================# CONVERSION_SPACE_ERROR #======================#
+    "ConversionSpaceException",
 ]
-# ======================# SPACE_ERROR #======================#
-class SpaceException(ChessException):
+# ======================# CONVERSION_SPACE_ERROR #======================#
+class ConversionSpaceException(SpaceException):
     """
     Role:
         -   Failure Tracing
 
     Responsibilities:
-        1.  Indicate that an error occurred in a Space instance.
+        1.  Indicate that a ConversionSpace instance encountered an error.
 
     Attributes:
         msg: str
@@ -39,10 +39,10 @@ class SpaceException(ChessException):
     Provides:
 
     Super Class:
-        ChessException
+        SpaceException
     """
-    MSG = "Space computation failure."
-    ERR_CODE = "SPACE_ERROR"
+    MSG = "An error occurred in a ConversionSpace."
+    ERR_CODE = "CONVERSION_SPACE_ERROR"
     
     def __init__(
             self,

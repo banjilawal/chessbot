@@ -21,12 +21,14 @@ class AxisSpanTransformer(LinearSpanTransformer[Axis]):
     """
     Role:
         -   Transformer
+        -   Integrity assurance
 
     Responsibilities:
         1.  Produce a SpanVectorSet from an Axis.
 
     Attributes:
         linear_space: Axis
+        validator: AxisValidator
 
     Provides:
         -   def execute(self,) -> ComputationResult[SpanVectorSet]
@@ -35,16 +37,25 @@ class AxisSpanTransformer(LinearSpanTransformer[Axis]):
         LinearSpanTransformer
     """
     
-    def __init__(self, linear_space: Axis):
+    def __init__(
+            self,
+            linear_space: Axis,
+            validator: AxisValidator | None = AxisValidator()
+    ):
         """
         Args:
             linear_space: Axis
+            validator: AxisValidator
         """
-        super().__init__(linear_space=linear_space)
+        super().__init__(linear_space=linear_space, validator=validator)
         
     @property
     def linear_space(self) -> Axis:
         return cast(Axis, self.linear_space)
+    
+    @property
+    def validator(self) -> AxisValidator:
+        return cast(AxisValidator, self.validator)
     
     @LoggingLevelRouter.monitor
     def execute(self,) -> ComputationResult[SpanVectorSet]:

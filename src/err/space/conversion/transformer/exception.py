@@ -1,7 +1,7 @@
-# src/err/space/exception.py
+# src/err/conversion/transformer/exception.py
 
 """
-Module: err.space.exception
+Module: err.conversion.transformer.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,60 +10,61 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import ChessException
+from err import ConversionSpaceException
 from result import MethodResultType
 
 __all__ = [
-    # ======================# SPACE_ERROR #======================#
-    "SpaceException",
+    # ======================# CONVERSION_SPAN_TRANSFORMER_FAILURE #======================#
+    "SpanTransformerException",
 ]
-# ======================# SPACE_ERROR #======================#
-class SpaceException(ChessException):
+
+# ======================# CONVERSION_SPAN_TRANSFORMER_FAILURE #======================#
+class SpanTransformerException(ConversionSpaceException):
     """
     Role:
-        -   Failure Tracing
+        -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an error occurred in a Space instance.
-
+        1.  Indicate that a SpanTransformer was aborted by an exception.
+        
     Attributes:
-        msg: str
-        err_code: str
+        msg: Optional[str]
         var: Optional[str]
         val: Optional[Any]
+        ex: Optional[Exception]
         cls_name: Optional[str]
         cls_mthd: Optional[str]
-        ex: Optional[Exception]
+        err_code: Optional[str]
         mthd_rslt_type: Optional[MethodResultType]
             
     Provides:
 
     Super Class:
-        ChessException
+        ConversionSpaceException
     """
-    MSG = "Space computation failure."
-    ERR_CODE = "SPACE_ERROR"
-    
+    MSG = "SpanTransformer failure."
+    ERR_CODE = "CONVERSION_SPAN_TRANSFORMER_FAILURE"
+
     def __init__(
             self,
-            msg: str = MSG,
-            err_code: str = ERR_CODE,
+            msg: Optional[str] | None = None,
             var: Optional[str] | None = None,
             val: Optional[Any] | None = None,
-            cls_name: Optional[str] | None = None,
             cls_mthd: Optional[str] | None = None,
+            cls_name: Optional[str] | None = None,
             ex: Optional[Exception] | None = None,
+            err_code: Optional[str] | None = None,
             mthd_rslt_type: Optional[MethodResultType] | None = None,
     ):
         """
-            Args:
-            msg: str
-            err_code: str
+        Args:
+            msg: Optional[str]
             var: Optional[str]
             val: Optional[Any]
+            ex: Optional[Exception]
             cls_name: Optional[str]
             cls_mthd: Optional[str]
-            ex: Optional[Exception]
+            err_code: Optional[str]
             mthd_rslt_type: Optional[MethodResultType]
         """
         msg = msg or self.MSG
