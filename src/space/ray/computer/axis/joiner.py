@@ -11,16 +11,14 @@ from __future__ import annotations
 
 from typing import List, cast
 
-from container.vector.destination.linear.container import LinearDestinationSet
-from container.vector.destination.span.container import SpanDestinationSet
-from err import AxisRayComputerException
+from container import SpanVectorSet
 from model import Vector
-from space.ray import RayComputer, VectorRay
 from result import ComputationResult
-from space import Axis, VectorBasis
+from space import Axis, LinearJoiner
+from util import LoggingLevelRouter
 
 
-class AxisJoiner(RayComputer[Axis]):
+class AxisJoiner(LinearJoiner[Axis]):
     """
     Role:
         -   Computation Worker
@@ -37,13 +35,13 @@ class AxisJoiner(RayComputer[Axis]):
         -   def coord_ray(self) -> ComputationResult[List[Coord]]
 
     Super Class:
-        RayComputer
+        LinearJoiner
     """
     
     def __init__(self, linear_space: Axis):
         """
         Args:
-            space: Axis
+            linear_space: Axis
         """
         super().__init__(linear_space=linear_space)
         
@@ -51,8 +49,8 @@ class AxisJoiner(RayComputer[Axis]):
     def linear_space(self) -> Axis:
         return cast(Axis, self.linear_space)
     
-    
-    def execute(self, origin: Vector) -> ComputationResult[SpanDestinationSet]:
+    @LoggingLevelRouter.monitor
+    def execute(self, origin: Vector) -> ComputationResult[SpanVectorSet]:
         """
         Get the series of Vectors from the origin of the axis till its end.
 
@@ -77,7 +75,7 @@ class AxisJoiner(RayComputer[Axis]):
         vector_sets: List[LinearDestinationSet] = []
         
         for axis in axes:
-            solution = axis.compute_destination_vectors()
+            solution = axis.destination_vectors()
             if solution.is_failure:
                 # Send the exception chain in the result.
                 return ComputationResult.failure(
@@ -100,7 +98,7 @@ class AxisJoiner(RayComputer[Axis]):
         for item in vector_sets:
             vector_list.extend(item.to_list)
         return ComputationResult(
-            SpanDestinationSet(
+            SpanVectorSet(
                 root=origin,
                 entries=tuple(vector_list)
             )
@@ -108,19 +106,19 @@ class AxisJoiner(RayComputer[Axis]):
         
         
         # Deal with an empty Space.
-        if self.space.is_empty:
+        if self.linear_space.is_empty:
             return ComputationResult.success(ray)
 
         # --- Set up for the loop ---#
-        cursor = self.space.origin
-        terminus = self.space.terminus
+        cursor = self.linear_space.origin
+        terminus = self.linear_space.terminus
         
         # Less than is not a good choice for iterating through vectors.
         while cursor != terminus:
             ray.computer.add_point(cursor)
             
             # --- Request the vector from the space. ---#
-            computation = self.space.stepper.next(current=cursor)
+            computation = self.linear_space.stepper.next(current=cursor)
             
             # Handle the case that, request is not granted..
             if computation.is_failure:

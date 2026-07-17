@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import List, Tuple, cast
 
 from container import DestinationVectorSet
-from container.vector.destination.linear.container import LinearDestinationSet
+from container.vector.destination.linear.container import LinearVectorSet
 from err import AxisException
 from model import Scalar, Vector
 from register import VectorRegister
@@ -119,7 +119,7 @@ class Axis(LinearSpace):
     
     
     @LoggingLevelRouter.monitor
-    def compute_destination_vectors(self) -> ComputationResult[LinearDestinationSet]:
+    def destination_vectors(self) -> ComputationResult[LinearVectorSet]:
         """
         Get the next vector in the direction of travel.
 
@@ -161,7 +161,7 @@ class Axis(LinearSpace):
             cursor = cast(Vector, computation.payload)
             solutions.append(cursor)
 
-        destination_vectors = LinearDestinationSet(
+        destination_vectors = LinearVectorSet(
             root=self.origin,
             entries=tuple(solutions)
         )

@@ -13,12 +13,12 @@ from typing import cast
 
 from err import QuadrantRayComputerException
 from model import Vector, VectorRay
-from space.ray import RayComputer
+from space.ray import LinearJoiner
 from result import ComputationResult
 from space import KnightSpace
 
 
-class QuadrantRayComputer(RayComputer[KnightSpace]):
+class QuadrantRayComputer(LinearJoiner[KnightSpace]):
     """
     Role:
         -   Computation Worker
@@ -37,14 +37,14 @@ class QuadrantRayComputer(RayComputer[KnightSpace]):
     Super Class:
         RayComputer
     """
-    _space: KnightSpace
+    _linear_space: KnightSpace
     
     def __init(self, space: KnightSpace):
         self._space = space
         
     @property
-    def space(self) -> KnightSpace:
-        return cast(KnightSpace, self.space)
+    def linear_space(self) -> KnightSpace:
+        return cast(KnightSpace, self.linear_space)
     
     def execute(self, ) -> ComputationResult[VectorRay]:
         """
@@ -64,19 +64,19 @@ class QuadrantRayComputer(RayComputer[KnightSpace]):
         
         ray: VectorRay = VectorRay()
         
-        if self.space.is_empty:
+        if self.linear_space.is_empty:
             return ComputationResult.success(ray)
         
         # --- Set up for the loop ---#
-        cursor = self.space.origin
-        terminus = self.space.terminus
+        cursor = self.linear_space.origin
+        terminus = self.linear_space.terminus
         
         # Less than is not a good choice for iterating through vectors.
         while cursor != terminus:
             ray.computer.add_point(cursor)
             
             # --- Request the vector from the space. ---#
-            computation = self.space.stepper.next(current=cursor)
+            computation = self.linear_space.stepper.next(current=cursor)
             
             # Handle the case that, request is not granted..
             if computation.is_failure:

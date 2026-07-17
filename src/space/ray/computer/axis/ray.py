@@ -13,12 +13,12 @@ from typing import cast
 
 from err import AxisRayComputerException
 from model import Vector
-from space.ray import RayComputer, VectorRay
+from space.ray import LinearJoiner, VectorRay
 from result import ComputationResult
 from space import Axis
 
 
-class AxisRayComputer(RayComputer[Axis]):
+class AxisRayComputer(LinearJoiner[Axis]):
     """
     Role:
         -   Computation Worker
@@ -38,16 +38,16 @@ class AxisRayComputer(RayComputer[Axis]):
         RayComputer
     """
     
-    def __init__(self, space: Axis):
+    def __init__(self, linear_space: Axis):
         """
         Args:
-            space: Axis
+            linear_space: Axis
         """
-        super().__init__(space=space)
+        super().__init__(linear_space=linear_space)
         
     @property
-    def space(self) -> Axis:
-        return cast(Axis, self.space)
+    def linear_space(self) -> Axis:
+        return cast(Axis, self.linear_space)
     
     
     def execute(self, ) -> ComputationResult[VectorRay]:
@@ -69,19 +69,19 @@ class AxisRayComputer(RayComputer[Axis]):
         ray: VectorRay = VectorRay()
         
         # Deal with an empty Space.
-        if self.space.is_empty:
+        if self.linear_space.is_empty:
             return ComputationResult.success(ray)
 
         # --- Set up for the loop ---#
-        cursor = self.space.origin
-        terminus = self.space.terminus
+        cursor = self.linear_space.origin
+        terminus = self.linear_space.terminus
         
         # Less than is not a good choice for iterating through vectors.
         while cursor != terminus:
             ray.computer.add_point(cursor)
             
             # --- Request the vector from the space. ---#
-            computation = self.space.stepper.next(current=cursor)
+            computation = self.linear_space.stepper.next(current=cursor)
             
             # Handle the case that, request is not granted..
             if computation.is_failure:

@@ -14,4 +14,4 @@ from .axis import *
 from .quadrant import *
 
 # Modules
-from .joiner import LinearJoiner
+from .transformer import LinearSpanTransformer

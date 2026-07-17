@@ -13,5 +13,4 @@ version: 1.0.1
 
 
 # Modules
-from .joiner import AxisJoiner
-from .ray import AxisRayComputer
+from .transformer import AxisSpanTransformer

@@ -12,6 +12,8 @@ from __future__ import annotations
 from abc import ABC, abstractmethod
 from typing import Generic, TypeVar
 
+from container.vector.destination.span.container import SpanVectorSet
+from model import Vector
 from space.ray import VectorRay
 from result import ComputationResult
 from toolkit import MathToolkit
@@ -20,7 +22,7 @@ from util import LoggingLevelRouter
 T = TypeVar("T", bound= "Space")
 
 
-class RayComputer(ABC, Generic[T]):
+class LinearJoiner(ABC, Generic[T]):
     """
     Role:
         -   Computation Worker
@@ -38,20 +40,20 @@ class RayComputer(ABC, Generic[T]):
 
     Super Class:
     """
-    _space: T
+    _linear_space: T
     _math_toolkit: MathToolkit
     
     def __init__(
             self,
-            space: T,
+            linear_space: T,
             math_toolkit: MathToolkit | None = MathToolkit()
     ):
         """
         Args:
-            space: T
+            linear_space: T
             math_toolkit: MathToolkit
         """
-        self._space = space
+        self._linear_space = linear_space
         self._math_toolkit = math_toolkit
         
     @property
@@ -59,10 +61,10 @@ class RayComputer(ABC, Generic[T]):
         return self._math_toolkit
         
     @property
-    def space(self) -> T:
-        return self._space
+    def linear_space(self) -> T:
+        return self._linear_space
     
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def execute(self, ) -> ComputationResult[VectorRay]:
+    def execute(self, origin: Vector) -> ComputationResult[SpanVectorSet]:
         pass

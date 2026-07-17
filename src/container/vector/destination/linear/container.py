@@ -15,7 +15,7 @@ from container import DestinationVectorSet
 from model import Vector
 
 
-class LinearDestinationSet(DestinationVectorSet):
+class LinearVectorSet(DestinationVectorSet):
     """
     Role:
         -   Data Holder
@@ -48,11 +48,11 @@ class LinearDestinationSet(DestinationVectorSet):
         super().__init__(root=root, entries=entries)
         
         
-    def remove_root_destination(self) -> LinearDestinationSet:
+    def remove_root_destination(self) -> LinearVectorSet:
         if not self.is_root_in_destinations:
             return self
         vector_set = super().remove_root_from_destinations()
-        return cast(LinearDestinationSet, vector_set)
+        return cast(LinearVectorSet, vector_set)
         
 
         
