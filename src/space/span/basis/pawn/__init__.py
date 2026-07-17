@@ -10,6 +10,8 @@ version: 1.0.1
 # =========== SPACE.SPAN.BASIS.PAWN PACKAGE ===========#
 
 # Packages
+from .attack import *
+from .maneuver import *
 
 # Modules
 from .span import PawnVectorBasis

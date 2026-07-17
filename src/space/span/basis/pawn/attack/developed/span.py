@@ -1,7 +1,7 @@
-# src/space/span/basis/knight/space/span.py
+# src/space/span/basis/pawn/maneuver/developed/span.py
 
 """
-Module: space.span.basis.knight.span
+Module: space.span.basis.pawn.maneuver.developed.span
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -11,43 +11,42 @@ from __future__ import annotations
 
 from typing import Optional
 
-from model import Knight, Vector
-from space import DestinationSpanComputer, KnightMovementVectorSet, VectorBasis
+from model import Vector
+from space import DestinationSpanComputer, DevelopedManeuverVectorSet, PawnManeuverVectorBasis
 
 
-class KnightVectorBasis(VectorBasis[Knight]):
+class DevelopedPawnVectorBasis(PawnManeuverVectorBasis):
     """
     Role:
         -   Computation Worker
         -   Integrity Assurance
 
     Responsibilities:
-        1.  Produce a set of destinations for a Knight by adding it's position to  each
-            KnightMovementVector.
+        1.  Produce a set of destination vectors for a Pawn after it has opened.
 
     Attributes:
-            origin: Vector
-            movement_vectors: Optional[KnightMovementVectorSet]
-            destination_span_computer: Optional[DestinationSpanComputer]      
-                  
+        origin: Vector
+        movement_vectors: Optional[DevelopedManeuverVectorSet]
+        destination_span_computer: Optional[DestinationSpanComputer]
+            
     Provides:
 
     Super Class:
-        SpanBasis
+        PawnManeuverVectorBasis
     """
     
     def __init__(
             self,
             origin: Vector,
-            movement_vectors: Optional[KnightMovementVectorSet] |
-                              None = KnightMovementVectorSet(),
+            movement_vectors: Optional[DevelopedManeuverVectorSet] |
+                              None = DevelopedManeuverVectorSet(),
             destination_span_computer: Optional[DestinationSpanComputer] |
                                        None = DestinationSpanComputer(),
     ):
         """
         Args:
             origin: Vector
-            movement_vectors: Optional[KnightMovementVectorSet]
+            movement_vectors: Optional[DevelopedManeuverVectorSet]
             destination_span_computer: Optional[DestinationSpanComputer]
         """
         super().__init__(
@@ -55,3 +54,4 @@ class KnightVectorBasis(VectorBasis[Knight]):
             movement_vectors=movement_vectors,
             destination_span_computer=destination_span_computer,
         )
+

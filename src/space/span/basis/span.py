@@ -10,7 +10,7 @@ version: 1.0.1
 from __future__ import annotations
 
 from abc import ABC
-from typing import Generic,  TypeVar
+from typing import Generic, Optional, TypeVar
 
 from model import Vector
 from space import DestinationSpanComputer
@@ -31,7 +31,7 @@ class VectorBasis(ABC, Generic[T]):
     Attributes:
         origin: Vector
         movement_vectors: MovementVectorSet[T]
-        destination_span_computer: DestinationSpanComputer
+        destination_span_computer: Optional[DestinationSpanComputer]
         
         is_empty: bool
         is_not_empty: bool
@@ -52,13 +52,14 @@ class VectorBasis(ABC, Generic[T]):
             self,
             origin: Vector,
             movement_vectors: MovementVectorSet[T],
-            destination_span_computer: DestinationSpanComputer | None = DestinationSpanComputer(),
+            destination_span_computer: Optional[DestinationSpanComputer] |
+                                       None = DestinationSpanComputer(),
     ):
         """
         Args:
             origin: Vector
             movement_vectors: MovementVectorSet
-            destination_span_computer: DestinationSpanComputer
+            destination_span_computer: Optional[DestinationSpanComputer]
         """
         self._origin = origin
         self._movement_vectors = movement_vectors

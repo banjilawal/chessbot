@@ -10,9 +10,12 @@ version: 1.0.1
 # =========== SPACE.SPAN.MOVEMENT PACKAGE ===========#
 
 # Packages
+from .bishop import *
 from .king import *
 from .knight import *
 from .pawn import *
+from .queen import *
+from .rook import *
 
 # Modules
 from .span import MovementVectorSet

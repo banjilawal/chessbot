@@ -9,23 +9,32 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from container import VectorSet
+from abc import ABC
+from typing import Optional, TypeVar
+
+from space import DestinationSpanComputer, PawnMovementVectorSet, VectorBasis
+
+T = TypeVar("T", bound="PawnMovementVectorSet")
+
 from model import Pawn, Vector
-from space.span import VectorBasis
 
 
-class PawnVectorBasis(VectorBasis[Pawn]):
+
+class PawnVectorBasis(ABC, VectorBasis[Pawn]):
     """
     Role:
         -   Computation Worker
-        -   Integrity Management
+        -   Integrity Assurance
 
     Responsibilities:
-        1.  Prevent ArrayIndexOutOfBasis errors by calculating the last point in the direction
-            of travel
+        1.  Produce a set of destinations for a Pawn by adding it's position to  each
+            PawnMovementVector.
 
     Attributes:
-
+            origin: Vector
+            movement_vectors: PawnMovementVectorSet
+            destination_span_computer: Optional[DestinationSpanComputer]
+            
     Provides:
 
     Super Class:
@@ -35,6 +44,18 @@ class PawnVectorBasis(VectorBasis[Pawn]):
     def __init__(
             self,
             origin: Vector,
-            movement_vectors: VectorSet | None = RankVectorSetTable().pawn_movement_vectors,
+            movement_vectors: PawnMovementVectorSet[T],
+            destination_span_computer: Optional[DestinationSpanComputer] |
+                                       None = DestinationSpanComputer(),
     ):
-        super().__init__(origin=origin, movement_vectors=movement_vectors)
+        """
+        Args:
+            origin: Vector
+            movement_vectors: PawnMovementVectorSet
+            destination_span_computer: Optional[DestinationSpanComputer]
+        """
+        super().__init__(
+            origin=origin,
+            movement_vectors=movement_vectors,
+            destination_span_computer=destination_span_computer,
+        )
