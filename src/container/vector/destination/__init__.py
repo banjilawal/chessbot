@@ -10,6 +10,7 @@ version: 1.0.1
 # =========== CONTAINER.VECTOR.DESTINATION PACKAGE ===========#
 
 # Packages
+from .linear import *
 from .span import *
 
 # Modules

@@ -1,7 +1,7 @@
-# src/container/vector/container.py
+# src/container/register/container.py
 
 """
-Module: container.vector.container
+Module: container.register.container
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -12,19 +12,19 @@ from __future__ import annotations
 from typing import Iterator, Optional, Tuple, cast
 
 from container import Container
-from model import Coord, Vector
+from model import Coord, Register
 
 
-class VectorSet(Container[Vector]):
+class RegisterSet(Container[Register]):
     """
     Role:
         -   Data Holder
         
     Responsibilities:
-        1.  A bag of vectors whose order is not guaranteed.
+        1.  A bag of registers whose order is not guaranteed.
 
     Attributes:
-        entries: Tuple[Vector, ...]
+        entries: Tuple[Register, ...]
 
     Provides:
 
@@ -32,19 +32,19 @@ class VectorSet(Container[Vector]):
         Container
     """
     
-    def __init__(self, entries: Optional[Tuple[Vector, ...]] | None = None):
+    def __init__(self, entries: Optional[Tuple[Register, ...]] | None = None):
         """
         Args:
-            entries: Optional[Tuple[Vector, ...]]
+            entries: Optional[Tuple[Register, ...]]
         """
         super().__init__(entries=entries)
         
     @property
-    def entries(self) -> Tuple[Vector, ...]:
-        return cast(Tuple[Vector, ...], self.entries)
+    def entries(self) -> Tuple[Register, ...]:
+        return cast(Tuple[Register, ...], self.entries)
     
     @property
-    def iterator(self) -> Iterator[Vector]:
+    def iterator(self) -> Iterator[Register]:
         return iter(self.entries)
     
     def to_coord_tuple(self) -> Tuple[Coord, ...]:
