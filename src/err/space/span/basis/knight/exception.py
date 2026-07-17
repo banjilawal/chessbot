@@ -10,22 +10,22 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import SpanBasisException
+from err import BasisException
 from result import MethodResultType
 
 __all__ = [
-    # ======================# KNIGHT_SPAN_BASIS_ERRORR #======================#
-    "KnightSpanBasisException",
+    # ======================# KNIGHT_BASIS_ERRORR #======================#
+    "KnightBasisException",
 ]
 
-# ======================# KNIGHT_SPAN_BASIS_ERRORR #======================#
-class KnightSpanBasisException(SpanBasisException):
+# ======================# KNIGHT_BASIS_ERRORR #======================#
+class KnightBasisException(BasisException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-         1.  Indicate that a KnightSpanBasis instance encountered an error.
+         1.  Indicate that a KnightBasis instance encountered an error.
 
     Attributes:
         var: Optional[str]
@@ -39,10 +39,10 @@ class KnightSpanBasisException(SpanBasisException):
     Provides:
 
     Super Class:
-        SpanBasisException
+        BasisException
     """
-    MSG = "An error occurred with a KnightSpanBasis."
-    ERR_CODE = "KNIGHT_SPAN_BASIS_ERRORR"
+    MSG = "An error occurred with a KnightBasis."
+    ERR_CODE = "KNIGHT_BASIS_ERRORR"
     
     def __init__(
             self,

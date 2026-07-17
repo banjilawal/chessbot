@@ -10,22 +10,22 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import SpanBasisException
+from err import BasisException
 from result import MethodResultType
 
 __all__ = [
-    # ======================# PAWN_SPAN_BASIS_ERRORR #======================#
-    "PawnSpanBasisException",
+    # ======================# PAWN_BASIS_ERRORR #======================#
+    "PawnBasisException",
 ]
 
-# ======================# PAWN_SPAN_BASIS_ERRORR #======================#
-class PawnSpanBasisException(SpanBasisException):
+# ======================# PAWN_BASIS_ERRORR #======================#
+class PawnBasisException(BasisException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-         1.  Indicate that a PawnSpanBasis instance encountered an error.
+         1.  Indicate that a PawnBasis instance encountered an error.
 
     Attributes:
         var: Optional[str]
@@ -39,10 +39,10 @@ class PawnSpanBasisException(SpanBasisException):
     Provides:
 
     Super Class:
-        SpanBasisException
+        BasisException
     """
-    MSG = "An error occurred with a PawnSpanBasis."
-    ERR_CODE = "PAWN_SPAN_BASIS_ERRORR"
+    MSG = "An error occurred with a PawnBasis."
+    ERR_CODE = "PAWN_BASIS_ERRORR"
     
     def __init__(
             self,

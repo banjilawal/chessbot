@@ -12,10 +12,10 @@ from __future__ import annotations
 from typing import Optional
 
 from model import King, Vector
-from space import DestinationSpanComputer, KingMovementVectorSet, VectorBasis
+from space import DestinationSpanComputer, KingMovementVectorSet, Basis
 
 
-class KingVectorBasis(VectorBasis[King]):
+class KingBasis(Basis[King]):
     """
     Role:
         -   Computation Worker

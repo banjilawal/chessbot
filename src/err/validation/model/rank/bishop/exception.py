@@ -1,7 +1,7 @@
-# src/err/validation/rank/bishop/exception.py
+# src/err/validation/model/rank/bishop/exception.py
 
 """
-Module: err.validation.rank.bishop.exception
+Module: err.validation.model.rank.bishop.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1

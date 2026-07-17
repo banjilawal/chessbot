@@ -10,16 +10,16 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import LinearBoundsViolationExceptions
+from err import LinearSectionBoundsException
 from result import MethodResultType
 
 __all__ = [
     # ======================# QUADRANT_SPACE_BOUNDS_VIOLATION_ERROR #======================#
-    "QuadrantBoundsViolationException",
+    "QuadrantSectionBoundsViolationException",
 ]
 
 # ======================# QUADRANT_SPACE_BOUNDS_VIOLATION_ERROR #======================#
-class QuadrantBoundsViolationException(LinearBoundsViolationExceptions):
+class QuadrantSectionBoundsViolationException(LinearSectionBoundsException):
     """
     Role:
         -   Error Tracing

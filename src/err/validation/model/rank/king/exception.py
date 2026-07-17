@@ -1,7 +1,7 @@
-# src/err/validation/rank/king/exception.py
+# src/err/validation/model/rank/king/exception.py
 
 """
-Module: err.validation.rank.king.exception
+Module: err.validation.model.rank.king.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1

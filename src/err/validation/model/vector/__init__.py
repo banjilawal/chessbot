@@ -1,13 +1,13 @@
-# src/err/validation/vector/__init__.py
+# src/err/validation/model/vector/__init__.py
 
 """
-Module: err.validation.vector.__init__
+Module: err.validation.model.vector.__init__
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
 """
 
-# ============ ERR.VALIDATION.VECTOR PACKAGE ===========#
+# ============ ERR.VALIDATION.MODEL.VECTOR PACKAGE ===========#
 
 # Packages
 from .register import *

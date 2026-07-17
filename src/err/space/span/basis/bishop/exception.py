@@ -10,22 +10,22 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import SpanBasisException
+from err import BasisException
 from result import MethodResultType
 
 __all__ = [
-    # ======================# BISHOP_SPAN_BASIS_ERRORR #======================#
-    "BishopSpanBasisException",
+    # ======================# BISHOP_BASIS_ERRORR #======================#
+    "BishopBasisException",
 ]
 
-# ======================# BISHOP_SPAN_BASIS_ERRORR #======================#
-class BishopSpanBasisException(SpanBasisException):
+# ======================# BISHOP_BASIS_ERRORR #======================#
+class BishopBasisException(BasisException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-         1.  Indicate that a BishopSpanBasis instance encountered an error.
+         1.  Indicate that a BishopBasis instance encountered an error.
 
     Attributes:
         var: Optional[str]
@@ -39,10 +39,10 @@ class BishopSpanBasisException(SpanBasisException):
     Provides:
 
     Super Class:
-        SpanBasisException
+        BasisException
     """
-    MSG = "An error occurred with a BishopSpanBasis."
-    ERR_CODE = "BISHOP_SPAN_BASIS_ERRORR"
+    MSG = "An error occurred with a BishopBasis."
+    ERR_CODE = "BISHOP_BASIS_ERRORR"
     
     def __init__(
             self,

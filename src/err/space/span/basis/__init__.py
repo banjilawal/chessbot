@@ -14,4 +14,4 @@ from .bishop import *
 from .border import *
 
 # Modules
-from .exception import SpanBasisException
+from .exception import BasisException

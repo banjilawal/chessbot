@@ -1,7 +1,7 @@
-# src/err/validation/team/exception.py
+# src/err/validation/model/state/token/exception.py
 
 """
-Module: err.validation.team.exception
+Module: err.validation.model.state.token.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,40 +10,40 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import ValidatorException
+from err import StateModelValidatorException
 from result import MethodResultType
 
 __all__ = [
-    # ======================# TEAM_VALIDATOR_FAILURE #======================#
-    "TeamValidatorException",
+    # ======================# TOKEN_VALIDATOR_FAILURE #======================#
+    "TokenValidatorException",
 ]
 
-# ======================# TEAM_VALIDATOR_FAILURE #======================#
-class TeamValidatorException(ValidatorException):
+# ======================# TOKEN_VALIDATOR_FAILURE #======================#
+class TokenValidatorException(StateModelValidatorException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a TeamValidator test.
+        1.  Indicate a TokenValidator test.
 
     Attributes:
-            msg: Optional[str]
-            var: Optional[str]
-            val: Optional[Any]
-            ex: Optional[Exception]
-            cls_name: Optional[str]
-            cls_mthd: Optional[str]
-            err_code: Optional[str]
-            mthd_rslt_type: Optional[MethodResultType]
+        msg: Optional[str]
+        var: Optional[str]
+        val: Optional[Any]
+        ex: Optional[Exception]
+        cls_name: Optional[str]
+        cls_mthd: Optional[str]
+        err_code: Optional[str]
+        mthd_rslt_type: Optional[MethodResultType]
             
     Provides:
 
     Super Class:
-        ValidatorException
+        StateModelValidatorException
     """
-    MSG = "Team validation failed."
-    ERR_CODE = "TEAM_VALIDATOR_FAILURE"
+    MSG = "Token validation failed."
+    ERR_CODE = "TOKEN_VALIDATOR_FAILURE"
     
     def __init__(
             self,

@@ -14,18 +14,18 @@ from err import LinearSpaceException
 from result import MethodResultType
 
 __all__ = [
-    # ======================# LINEAR_SPACE_BOUNDS_VIOLATION__ERROR #======================#
-    "LinearBoundsViolationExceptions",
+    # ======================# LINEAR_SECTION_ERROR #======================#
+    "LinearSectionBoundsException",
 ]
 
-# ======================# LINEAR_SPACE_BOUNDS_VIOLATION__ERROR #======================#
-class LinearBoundsViolationExceptions(LinearSpaceException):
+# ======================# LINEAR_SECTION_ERROR #======================#
+class LinearSectionBoundsException(LinearSpaceException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an operation accessed data outside the LinearSpace bounds.
+        1.  Indicate that a data was accessed beyond the LinearSection's endpoints.
 
     Attributes:
         var: Optional[str]
@@ -41,8 +41,8 @@ class LinearBoundsViolationExceptions(LinearSpaceException):
     Super Class:
         LinearSpaceException
     """
-    MSG = "Outside LinearSpace bounds."
-    ERR_CODE = "LINEAR_SPACE_BOUNDS_VIOLATION__ERROR"
+    MSG = "LinearSection error."
+    ERR_CODE = "LINEAR_SECTION_ERROR"
     
     def __init__(
             self,

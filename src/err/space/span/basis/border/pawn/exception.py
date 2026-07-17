@@ -25,7 +25,7 @@ class PawnBasisSetBorderException(BasisSetBorderException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an attempt was made to access points outside the PawnSpanBasis.
+        1.  Indicate that an attempt was made to access points outside the PawnBasis.
 
     Attributes:
         var: Optional[str]
@@ -39,9 +39,9 @@ class PawnBasisSetBorderException(BasisSetBorderException):
     Provides:
 
     Super Class:
-        SpanBasisBorderException
+        BasisBorderException
     """
-    MSG = "Outside the PawnSpanBasis border."
+    MSG = "Outside the PawnBasis border."
     ERR_CODE = "PAWN_BASIS_SET_BORDER_ERROR"
     
     def __init__(

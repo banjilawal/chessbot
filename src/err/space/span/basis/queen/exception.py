@@ -10,22 +10,22 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import SpanBasisException
+from err import BasisException
 from result import MethodResultType
 
 __all__ = [
-    # ======================# QUEEN_SPAN_BASIS_ERRORR #======================#
-    "QueenSpanBasisException",
+    # ======================# QUEEN_BASIS_ERRORR #======================#
+    "QueenBasisException",
 ]
 
-# ======================# QUEEN_SPAN_BASIS_ERRORR #======================#
-class QueenSpanBasisException(SpanBasisException):
+# ======================# QUEEN_BASIS_ERRORR #======================#
+class QueenBasisException(BasisException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-         1.  Indicate that a QueenSpanBasis instance encountered an error.
+         1.  Indicate that a QueenBasis instance encountered an error.
 
     Attributes:
         var: Optional[str]
@@ -39,10 +39,10 @@ class QueenSpanBasisException(SpanBasisException):
     Provides:
 
     Super Class:
-        SpanBasisException
+        BasisException
     """
-    MSG = "An error occurred with a QueenSpanBasis."
-    ERR_CODE = "QUEEN_SPAN_BASIS_ERRORR"
+    MSG = "An error occurred with a QueenBasis."
+    ERR_CODE = "QUEEN_BASIS_ERRORR"
     
     def __init__(
             self,

@@ -17,6 +17,7 @@ from result import ComputationResult
 from space import LinearStepper, Space, LinearBounds
 from toolkit import MathToolkit
 from util import LoggingLevelRouter
+from validator import Validator
 
 
 class LinearSpace(Space):
@@ -39,22 +40,26 @@ class LinearSpace(Space):
     """
     _bounds: LinearBounds
     _stepper: LinearStepper
+    _validator: Validator[T]
     _math_toolkit: Optional[MathToolkit]
     
     def __init__(
             self,
             bounds: LinearBounds,
             stepper: LinearStepper,
-            math_toolkit: Optional[MathToolkit] | None = MathToolkit()
+            validator: Validator[T],
+            math_toolkit: Optional[MathToolkit] | None = MathToolkit(),
     ):
         """
         Args:
             bounds: SpaceBounds
             stepper: Stepper
+            validator: Validator
             math_toolkit: Optional[MathToolkit]
         """
         self._bounds = bounds
         self._stepper = stepper
+        self._validator = validator
         self._math_toolkit = math_toolkit
     
     @property
@@ -64,6 +69,10 @@ class LinearSpace(Space):
     @property
     def stepper(self) -> LinearStepper:
         return self._stepper
+    
+    @property
+    def validator(self) -> Validator[T]:
+        return self._validator
     
     @property
     def math(self) -> MathToolkit:

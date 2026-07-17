@@ -14,18 +14,18 @@ from err import SpanException
 from result import MethodResultType
 
 __all__ = [
-    # ======================# SPAN_BASIS_ERROR #======================#
-    "SpanBasisException",
+    # ======================# BASIS_ERROR #======================#
+    "BasisException",
 ]
 
-# ======================# SPAN_BASIS_ERROR #======================#
-class SpanBasisException(SpanException):
+# ======================# BASIS_ERROR #======================#
+class BasisException(SpanException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-         1.  Indicate that a SpanBasis instance encountered an error.
+         1.  Indicate that a Basis instance encountered an error.
 
     Attributes:
         var: Optional[str]
@@ -41,8 +41,8 @@ class SpanBasisException(SpanException):
     Super Class:
         SpanException
     """
-    MSG = "An error occurred with a SpanBasis."
-    ERR_CODE = "SPAN_BASIS_ERROR"
+    MSG = "An error occurred with a Basis."
+    ERR_CODE = "BASIS_ERROR"
 
     def __init__(
             self,

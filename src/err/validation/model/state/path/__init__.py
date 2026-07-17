@@ -1,13 +1,13 @@
-# src/err/validation/path/__init__.py
+# src/err/validation/model/state/path/__init__.py
 
 """
-Module: err.validation.path.__init__
+Module: err.validation.model.state.path.__init__
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
 """
 
-# =========== ERR.VALIDATION.PATH PACKAGE ===========#
+# =========== ERR.VALIDATION.MODEL.STATE.PATH PACKAGE ===========#
 
 # Packages
 from .attack import *

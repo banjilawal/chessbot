@@ -49,6 +49,7 @@ class Axis(LinearSpace):
     """
     _bounds: AxisBounds
     _stepper: AxisStepper
+    _validator:
 
     
     def __init__(

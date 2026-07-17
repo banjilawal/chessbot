@@ -25,7 +25,7 @@ class KingBasisSetBorderException(BasisSetBorderException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an attempt was made to access points outside the KingSpanBasis.
+        1.  Indicate that an attempt was made to access points outside the KingBasis.
 
     Attributes:
         var: Optional[str]
@@ -39,9 +39,9 @@ class KingBasisSetBorderException(BasisSetBorderException):
     Provides:
 
     Super Class:
-        SpanBasisBorderException
+        BasisBorderException
     """
-    MSG = "Outside the KingSpanBasis border."
+    MSG = "Outside the KingBasis border."
     ERR_CODE = "KING_BASIS_SET_BORDER_ERROR"
     
     def __init__(

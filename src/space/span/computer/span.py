@@ -18,7 +18,7 @@ from err import DestinationSpanComputerException
 from model import Vector
 from register import VectorRegister
 from result import ComputationResult, MethodResultType
-from space.span import VectorBasis
+from space.span import Basis
 from toolkit import MathToolkit
 from util import LoggingLevelRouter
 from validator import BasisValidator
@@ -70,7 +70,7 @@ class DestinationSpanComputer:
     @LoggingLevelRouter.monitor
     def execute(
             self,
-            vector_basis: VectorBasis
+            vector_basis: Basis
     ) -> ComputationResult[SpanVectorSet]:
         """
         Verify the object is a String that is safe to use.
@@ -105,7 +105,7 @@ class DestinationSpanComputer:
                 ),
             )
         # --- Cast the validation product for additional processing ---#
-        basis = cast(VectorBasis, validation.payload)
+        basis = cast(Basis, validation.payload)
         solutions: List[Vector] = []
         
         # Handle the empty basis set first.

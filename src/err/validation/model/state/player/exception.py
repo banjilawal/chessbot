@@ -1,7 +1,7 @@
-# src/err/validation/coord/exception.py
+# src/err/validation/model/state/player/exception.py
 
 """
-Module: err.validation.coord.exception
+Module: err.validation.model.state.player.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,22 +10,22 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import ValidatorException
+from err import StateModelValidatorException
 from result import MethodResultType
 
 __all__ = [
-    # ======================# COORD_VALIDATOR_FAILURE #======================#
-    "CoordValidatorException",
+    # ======================# PLAYER_VALIDATOR_FAILURE #======================#
+    "PlayerValidatorException",
 ]
 
-# ======================# COORD_VALIDATOR_FAILURE #======================#
-class CoordValidatorException(ValidatorException):
+# ======================# PLAYER_VALIDATOR_FAILURE #======================#
+class PlayerValidatorException(StateModelValidatorException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a CoordValidator test.
+        1.  Indicate that a PlayerValidator test.
 
     Attributes:
         msg: Optional[str]
@@ -40,10 +40,10 @@ class CoordValidatorException(ValidatorException):
     Provides:
 
     Super Class:
-        ValidatorException
+        StateModelValidatorException
     """
-    MSG = "Coord validation failed."
-    ERR_CODE = "COORD_VALIDATOR_FAILURE"
+    MSG = "Player validation failed."
+    ERR_CODE = "PLAYER_VALIDATOR_FAILURE"
     
     def __init__(
             self,

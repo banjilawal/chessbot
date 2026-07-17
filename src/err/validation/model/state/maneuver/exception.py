@@ -1,7 +1,7 @@
-# src/err/validation/maneuver/exception.py
+# src/err/validation/model/state/maneuver/exception.py
 
 """
-Module: err.validation.maneuver.exception
+Module: err.validation.model.state.maneuver.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,7 +10,7 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import ValidatorException
+from err import StateModelValidatorException
 from result import MethodResultType
 
 __all__ = [
@@ -19,7 +19,7 @@ __all__ = [
 ]
 
 # ======================# MANEUVER_VALIDATOR_FAILURE #======================#
-class ManeuverValidatorException(ValidatorException):
+class ManeuverValidatorException(StateModelValidatorException):
     """
     Role:
         -   Error Tracing
@@ -40,7 +40,7 @@ class ManeuverValidatorException(ValidatorException):
     Provides:
 
     Super Class:
-        ValidatorException
+        StateModelValidatorException
     """
     MSG = "Maneuver validation failed."
     ERR_CODE = "MANEUVER_VALIDATOR_FAILURE"

@@ -10,22 +10,22 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import SpanBasisException
+from err import BasisException
 from result import MethodResultType
 
 __all__ = [
-    # ======================# ROOK_SPAN_BASIS_ERRORR #======================#
-    "RookSpanBasisException",
+    # ======================# ROOK_BASIS_ERRORR #======================#
+    "RookBasisException",
 ]
 
-# ======================# ROOK_SPAN_BASIS_ERRORR #======================#
-class RookSpanBasisException(SpanBasisException):
+# ======================# ROOK_BASIS_ERRORR #======================#
+class RookBasisException(BasisException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-         1.  Indicate that a RookSpanBasis instance encountered an error.
+         1.  Indicate that a RookBasis instance encountered an error.
 
     Attributes:
         var: Optional[str]
@@ -39,10 +39,10 @@ class RookSpanBasisException(SpanBasisException):
     Provides:
 
     Super Class:
-        SpanBasisException
+        BasisException
     """
-    MSG = "An error occurred with a RookSpanBasis."
-    ERR_CODE = "ROOK_SPAN_BASIS_ERRORR"
+    MSG = "An error occurred with a RookBasis."
+    ERR_CODE = "ROOK_BASIS_ERRORR"
     
     def __init__(
             self,

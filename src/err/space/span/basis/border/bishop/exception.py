@@ -25,7 +25,7 @@ class BishopBasisSetBorderException(BasisSetBorderException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an attempt was made to access points outside the BishopSpanBasis.
+        1.  Indicate that an attempt was made to access points outside the BishopBasis.
 
     Attributes:
         var: Optional[str]
@@ -39,9 +39,9 @@ class BishopBasisSetBorderException(BasisSetBorderException):
     Provides:
 
     Super Class:
-        SpanBasisBorderException
+        BasisBorderException
     """
-    MSG = "Outside the BishopSpanBasis border."
+    MSG = "Outside the BishopBasis border."
     ERR_CODE = "BISHOP_BASIS_SET_BORDER_ERROR"
     
     def __init__(

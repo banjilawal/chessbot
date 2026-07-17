@@ -1,7 +1,7 @@
-# src/err/validation/arena/exception.py
+# src/err/validation/model/state/arena/exception.py
 
 """
-Module: err.validation.arena.exception
+Module: err.validation.model.state.arena.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,7 +10,7 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import ValidatorException
+from err import StateModelValidatorException
 from result import MethodResultType
 
 __all__ = [
@@ -19,7 +19,7 @@ __all__ = [
 ]
 
 # ======================# ARENA_VALIDATOR_FAILURE #======================#
-class ArenaValidatorException(ValidatorException):
+class ArenaValidatorException(StateModelValidatorException):
     """
     Role:
         -   Error Tracing
@@ -40,7 +40,7 @@ class ArenaValidatorException(ValidatorException):
     Provides:
 
     Super Class:
-        ValidatorException
+        StateModelValidatorException
     """
     MSG = "Arena validation failed."
     ERR_CODE = "ARENA_VALIDATOR_FAILURE"

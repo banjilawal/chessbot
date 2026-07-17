@@ -1,7 +1,7 @@
-# src/err/validation/vector/exception.py
+# src/err/validation/model/vector/exception.py
 
 """
-Module: err.validation.vector.exception
+Module: err.validation.model.vector.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,7 +10,7 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import ValidatorException
+from err import ModelValidatorException
 from result import MethodResultType
 
 __all__ = [
@@ -19,7 +19,7 @@ __all__ = [
 ]
 
 # ======================# VECTOR_VALIDATOR_FAILURE #======================#
-class VectorValidatorException(ValidatorException):
+class VectorValidatorException(ModelValidatorException):
     """
     Role:
         -   Error Tracing
@@ -40,7 +40,7 @@ class VectorValidatorException(ValidatorException):
     Provides:
 
     Super Class:
-        ValidatorException
+        ModelValidatorException
     """
     MSG = "Vector validation failed."
     ERR_CODE = "VECTOR_VALIDATOR_FAILURE"

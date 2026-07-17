@@ -10,14 +10,11 @@ version: 1.0.1
 # ============ ERR.VALIDATION.MODEL PACKAGE ===========#
 
 # Packages
-
-from .player import *
+from .coord import *
 from .rank import *
 from .scalar import *
-from .square import *
 from .state import *
-from .team import *
-from .token import *
 from .vector import *
 
 # Modules
+from .exception import ModelValidatorException

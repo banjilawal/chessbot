@@ -25,7 +25,7 @@ class KnightBasisSetBorderException(BasisSetBorderException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an attempt was made to access points outside the KnightSpanBasis.
+        1.  Indicate that an attempt was made to access points outside the KnightBasis.
 
     Attributes:
         var: Optional[str]
@@ -39,9 +39,9 @@ class KnightBasisSetBorderException(BasisSetBorderException):
     Provides:
 
     Super Class:
-        SpanBasisBorderException
+        BasisBorderException
     """
-    MSG = "Outside the KnightSpanBasis border."
+    MSG = "Outside the KnightBasis border."
     ERR_CODE = "KNIGHT_BASIS_SET_BORDER_ERROR"
     
     def __init__(

@@ -25,7 +25,7 @@ class RookBasisSetBorderException(BasisSetBorderException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an attempt was made to access points outside the RookSpanBasis.
+        1.  Indicate that an attempt was made to access points outside the RookBasis.
 
     Attributes:
         var: Optional[str]
@@ -39,9 +39,9 @@ class RookBasisSetBorderException(BasisSetBorderException):
     Provides:
 
     Super Class:
-        SpanBasisBorderException
+        BasisBorderException
     """
-    MSG = "Outside the RookSpanBasis border."
+    MSG = "Outside the RookBasis border."
     ERR_CODE = "ROOK_BASIS_SET_BORDER_ERROR"
     
     def __init__(

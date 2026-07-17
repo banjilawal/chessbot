@@ -1,7 +1,7 @@
-# src/err/validation/path/blocked/exception.py
+# src/err/validation/model/state/path/blocked/exception.py
 
 """
-Module: err.validation.path.blocked.exception
+Module: err.validation.model.state.path.blocked.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1

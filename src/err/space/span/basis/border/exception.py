@@ -10,22 +10,22 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import SpanBasisException
+from err import BasisException
 from result import MethodResultType
 
 __all__ = [
-    # ======================# SPAN_BASIS_SET_BORDER_ERROR #======================#
+    # ======================# BASIS_SET_BORDER_ERROR #======================#
     "BasisSetBorderException",
 ]
 
-# ======================# SPAN_BASIS_SET_BORDER_ERROR #======================#
-class BasisSetBorderException(SpanBasisException):
+# ======================# BASIS_SET_BORDER_ERROR #======================#
+class BasisSetBorderException(BasisException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an attempt was made to access points outside the SpanBasis.
+        1.  Indicate that an attempt was made to access points outside the Basis.
 
     Attributes:
         var: Optional[str]
@@ -39,10 +39,10 @@ class BasisSetBorderException(SpanBasisException):
     Provides:
 
     Super Class:
-        SpanBasisException
+        BasisException
     """
-    MSG = "Outside the SpanBasis border."
-    ERR_CODE = "SPAN_BASIS_SET_BORDER_ERROR"
+    MSG = "Outside the Basis border."
+    ERR_CODE = "BASIS_SET_BORDER_ERROR"
     
     def __init__(
             self,

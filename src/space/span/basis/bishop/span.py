@@ -12,10 +12,10 @@ from __future__ import annotations
 from typing import Optional
 
 from model import Bishop, Vector
-from space import BishopMovementVectorSet, DestinationSpanComputer, VectorBasis
+from space import BishopMovementVectorSet, DestinationSpanComputer, Basis
 
 
-class BishopVectorBasis(VectorBasis[Bishop]):
+class BishopBasis(Basis[Bishop]):
     """
     Role:
         -   Computation Worker

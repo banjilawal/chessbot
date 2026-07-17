@@ -18,7 +18,7 @@ from space.span import MovementVectorSet
 
 T = TypeVar("T", bound="Rank")
 
-class VectorBasis(ABC, Generic[T]):
+class Basis(ABC, Generic[T]):
     """
     Role:
         -   Computation Worker

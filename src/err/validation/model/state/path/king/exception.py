@@ -1,7 +1,7 @@
-# src/err/validation/path/king/exception.py
+# src/err/validation/model/state/path/king/exception.py
 
 """
-Module: err.validation.path.king.exception
+Module: err.validation.model.state.path.king.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1

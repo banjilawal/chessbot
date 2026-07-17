@@ -14,4 +14,4 @@ from .attack import *
 from .maneuver import *
 
 # Modules
-from .span import PawnVectorBasis
+from .span import PawnBasis

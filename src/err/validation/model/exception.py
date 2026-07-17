@@ -1,7 +1,7 @@
-# src/err/validationvector/register/exception.py
+# src/err/validation/model/exception.py
 
 """
-Module: err.validation.vector.register.exception
+Module: err.validation.model.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,43 +10,41 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-
-
-__all__ = [
-    # ======================# VECTOR_REGISTER_VALIDATOR_FAILURE #======================#
-    "VectorRegisterValidatorException",
-]
-
 from err import ValidatorException
 from result import MethodResultType
 
 
-# ======================# VECTOR_REGISTER_VALIDATOR_FAILURE #======================#
-class VectorRegisterValidatorException(ValidatorException):
+__all__ = [
+    # ======================# MODEL_VALIDATOR_FAILURE #======================#
+    "ModelValidatorException",
+]
+
+# ======================# MODEL_VALIDATOR_FAILURE #======================#
+class ModelValidatorException(ValidatorException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a VectorRegisterValidator test.
+        1.  Indicate that a ModelValidator test.
 
     Attributes:
-            msg: Optional[str]
-            var: Optional[str]
-            val: Optional[Any]
-            ex: Optional[Exception]
-            cls_name: Optional[str]
-            cls_mthd: Optional[str]
-            err_code: Optional[str]
-            mthd_rslt_type: Optional[MethodResultType]
+        msg: Optional[str]
+        var: Optional[str]
+        val: Optional[Any]
+        ex: Optional[Exception]
+        cls_name: Optional[str]
+        cls_mthd: Optional[str]
+        err_code: Optional[str]
+        mthd_rslt_type: Optional[MethodResultType]
             
     Provides:
 
     Super Class:
         ValidatorException
     """
-    MSG = "VectorRegisterValidation failed."
-    ERR_CODE = "VECTOR_REGISTER_VALIDATOR_FAILURE"
+    MSG = "Model validation failed."
+    ERR_CODE = "MODEL_VALIDATOR_FAILURE"
     
     def __init__(
             self,

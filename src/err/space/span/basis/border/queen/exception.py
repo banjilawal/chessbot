@@ -25,7 +25,7 @@ class QueenBasisSetBorderException(BasisSetBorderException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an attempt was made to access points outside the QueenSpanBasis.
+        1.  Indicate that an attempt was made to access points outside the QueenBasis.
 
     Attributes:
         var: Optional[str]
@@ -39,9 +39,9 @@ class QueenBasisSetBorderException(BasisSetBorderException):
     Provides:
 
     Super Class:
-        SpanBasisBorderException
+        BasisBorderException
     """
-    MSG = "Outside the QueenSpanBasis border."
+    MSG = "Outside the QueenBasis border."
     ERR_CODE = "QUEEN_BASIS_SET_BORDER_ERROR"
     
     def __init__(

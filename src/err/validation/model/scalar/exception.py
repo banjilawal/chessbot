@@ -1,7 +1,7 @@
-# src/err/validation/scalar/exception.py
+# src/err/validation/model/scalar/exception.py
 
 """
-Module: err.validation.scalar.exception
+Module: err.validation.model.scalar.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,7 +10,7 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import ValidatorException
+from err import ModelValidatorException
 from result import MethodResultType
 
 __all__ = [
@@ -19,7 +19,7 @@ __all__ = [
 ]
 
 # ======================# SCALAR_VALIDATOR_FAILURE #======================#
-class ScalarValidatorException(ValidatorException):
+class ScalarValidatorException(ModelValidatorException):
     """
     Role:
         -   Error Tracing
@@ -40,7 +40,7 @@ class ScalarValidatorException(ValidatorException):
     Provides:
 
     Super Class:
-        ValidatorException
+        ModelValidatorException
     """
     MSG = "Scalar validation failed."
     ERR_CODE = "SCALAR_VALIDATOR_FAILURE"

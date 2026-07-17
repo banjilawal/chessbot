@@ -1,7 +1,7 @@
-# src/err/validation/rank/rook/exception.py
+# src/err/validation/model/rank/rook/exception.py
 
 """
-Module: err.validation.rank.rook.exception
+Module: err.validation.model.rank.rook.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1

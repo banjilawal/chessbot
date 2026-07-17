@@ -13,12 +13,12 @@ from abc import ABC
 from typing import Optional, TypeVar
 
 from model import Vector
-from space import DestinationSpanComputer, PawnManeuverVectorSet, PawnVectorBasis
+from space import DestinationSpanComputer, PawnManeuverVectorSet, PawnBasis
 
 T = TypeVar("T", bound="PawnManeuverVectorSet")
 
 
-class PawnManeuverVectorBasis(ABC, PawnVectorBasis):
+class PawnManeuverVectorBasis(ABC, PawnBasis):
     """
     Role:
         -   Computation Worker

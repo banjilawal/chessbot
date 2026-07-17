@@ -12,10 +12,10 @@ from __future__ import annotations
 from typing import Optional
 
 from model import Knight, Vector
-from space import DestinationSpanComputer, KnightMovementVectorSet, VectorBasis
+from space import DestinationSpanComputer, KnightMovementVectorSet, Basis
 
 
-class KnightVectorBasis(VectorBasis[Knight]):
+class KnightBasis(Basis[Knight]):
     """
     Role:
         -   Computation Worker

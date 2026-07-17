@@ -10,16 +10,16 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import LinearBoundsViolationExceptions
+from err import LinearSectionBoundsException
 from result import MethodResultType
 
 __all__ = [
     # ======================# AXIS_SPACE_BOUNDS_VIOLATION_ERROR #======================#
-    "AxisBoundsViolationException",
+    "AxisSectionBoundsViolationException",
 ]
 
 # ======================# AXIS_SPACE_BOUNDS_VIOLATION_ERROR #======================#
-class AxisBoundsViolationException(LinearBoundsViolationExceptions):
+class AxisSectionBoundsViolationException(LinearSectionBoundsException):
     """
     Role:
         -   Error Tracing

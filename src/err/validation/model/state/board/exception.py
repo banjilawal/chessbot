@@ -1,7 +1,7 @@
-# src/err/validation/board/exception.py
+# src/err/validation/model/state/board/exception.py
 
 """
-Module: err.validation.board.exception
+Module: err.validation.model.state.board.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,7 +10,7 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import ValidatorException
+from err import StateModelValidatorException
 from result import MethodResultType
 
 __all__ = [
@@ -19,7 +19,7 @@ __all__ = [
 ]
 
 # ======================# BOARD_VALIDATOR_FAILURE #======================#
-class BoardValidatorException(ValidatorException):
+class BoardValidatorException(StateModelValidatorException):
     """
     Role:
         -   Error Tracing
@@ -40,7 +40,7 @@ class BoardValidatorException(ValidatorException):
     Provides:
 
     Super Class:
-        ValidatorException
+        StateModelValidatorException
     """
     MSG = "Board validation failed."
     ERR_CODE = "BOARD_VALIDATOR_FAILURE"

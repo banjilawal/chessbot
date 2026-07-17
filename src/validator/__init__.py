@@ -11,11 +11,11 @@ version: 1.0.1
 # =========== VALIDATOR PACKAGE ===========#
 
 # Packages
-from .basis import *
 from .context import *
 from .model import *
 from .number import *
 from .query import *
+from .space import *
 from .string import *
 
 # Module

@@ -1,7 +1,7 @@
-# src/err/validation/rank/exception.py
+# src/err/validation/model/rank/exception.py
 
 """
-Module: err.validation.rank.exception
+Module: err.validation.model.rank.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,7 +10,7 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import ValidatorException
+from err import ModelValidatorException
 from result import MethodResultType
 
 __all__ = [
@@ -19,7 +19,7 @@ __all__ = [
 ]
 
 # ======================# RANK_VALIDATOR_FAILURE #======================#
-class RankValidatorException(ValidatorException):
+class RankValidatorException(ModelValidatorException):
     """
     Role:
         -   Error Tracing
@@ -40,7 +40,7 @@ class RankValidatorException(ValidatorException):
     Provides:
 
     Super Class:
-        ValidatorException
+        ModelValidatorException
     """
     MSG = "Rank validation failed."
     ERR_CODE = "RANK_VALIDATOR_FAILURE"

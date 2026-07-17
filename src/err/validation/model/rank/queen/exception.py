@@ -1,7 +1,7 @@
-# src/err/validation/rank/queen/exception.py
+# src/err/validation/model/rank/queen/exception.py
 
 """
-Module: err.validation.rank.queen.exception
+Module: err.validation.model.rank.queen.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1

@@ -18,4 +18,4 @@ from .queen import *
 from .rook import *
 
 # Modules
-from .span import VectorBasis
+from .span import Basis

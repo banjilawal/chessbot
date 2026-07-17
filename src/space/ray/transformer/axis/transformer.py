@@ -12,6 +12,7 @@ from __future__ import annotations
 from typing import cast
 
 from container import LinearVectorSet, SpanVectorSet
+from err import AxisSpanTransformerException
 from result import ComputationResult
 from space import Axis, LinearSpanTransformer
 from util import LoggingLevelRouter

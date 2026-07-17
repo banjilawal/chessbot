@@ -1,7 +1,7 @@
-# src/err/validation/path/attack/exception.py
+# src/err/validation/model/state/path/attack/exception.py
 
 """
-Module: err.validation.path.attack.exception
+Module: err.validation.model.state.path.attack.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1

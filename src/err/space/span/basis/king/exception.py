@@ -10,22 +10,22 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import SpanBasisException
+from err import BasisException
 from result import MethodResultType
 
 __all__ = [
-    # ======================# KING_SPAN_BASIS_ERRORR #======================#
-    "KingSpanBasisException",
+    # ======================# KING_BASIS_ERRORR #======================#
+    "KingBasisException",
 ]
 
-# ======================# KING_SPAN_BASIS_ERRORR #======================#
-class KingSpanBasisException(SpanBasisException):
+# ======================# KING_BASIS_ERRORR #======================#
+class KingBasisException(BasisException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-         1.  Indicate that a KingSpanBasis instance encountered an error.
+         1.  Indicate that a KingBasis instance encountered an error.
 
     Attributes:
         var: Optional[str]
@@ -39,10 +39,10 @@ class KingSpanBasisException(SpanBasisException):
     Provides:
 
     Super Class:
-        SpanBasisException
+        BasisException
     """
-    MSG = "An error occurred with a KingSpanBasis."
-    ERR_CODE = "KING_SPAN_BASIS_ERRORR"
+    MSG = "An error occurred with a KingBasis."
+    ERR_CODE = "KING_BASIS_ERRORR"
     
     def __init__(
             self,
