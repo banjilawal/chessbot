@@ -1,7 +1,7 @@
-# src/space/ray/computer/register/__init__.py
+# src/space/builder/register/__init__.py
 
 """
-Module: space.ray.computer.register.__init__
+Module: space.builder.register.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -9,54 +9,46 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from typing import List
+from abc import ABC, abstractmethod
+from typing import Generic, TypeVar
 
 from bootstrapper import PrimingValidator
 from container import RegisterSet
-from register import VectorRegister
 from result import BuildResult
-from space import LinearDestinationSet
-from util import IdFactory
+from util import LoggingLevelRouter
+
+T = TypeVar("T", bound="DestinationVectorSet")
 
 
-class LinearSpaceRegisterSetBuilder:
-    _linear_sett: LinearDestinationSet
+class RegisterBuilder(ABC, Generic[T]):
+    _points: T
     _priming_validator: PrimingValidator
     
     def __init__(
             self,
-            linear_sett: LinearDestinationSet,
+            points: T,
             priming_validator: PrimingValidator | None = PrimingValidator(),
     ):
         """
         Args:
-            linear_sett: LinearVectorSet,
+            points: T
             priming_validator: PrimingValidator            
         """
-        self._linear_sett = linear_sett
+        self._points = points
         self._priming_validator = priming_validator
         
+    @property
+    def points(self) -> T:
+        return self._points
+    
+    @property
+    def priming_validator(self) -> PrimingValidator:
+        return self._priming_validator
         
+    @abstractmethod
+    @LoggingLevelRouter.monitor
     def execute(self) -> BuildResult[RegisterSet]:
-        method = f"{self.__class__.__name__}.execute"
-        
-        registers: List[VectorRegister] = []
-        previous = self._linear_sett.root
-        current = previous
-        
-        for vector in self._linear_sett.destinations.iterator:
-            current = vector
-            register = VectorRegister(
-                id=IdFactory.next_id(class_name="VectorRegister"),
-                u=previous,
-                v=current,
-            )
-            registers.append(register)
-            previous = current
-        return BuildResult.success(
-            RegisterSet(tuple(registers))
-        )
-        
+        pass
         
 
         
