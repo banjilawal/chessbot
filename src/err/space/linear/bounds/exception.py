@@ -15,17 +15,17 @@ from result import MethodResultType
 
 __all__ = [
     # ======================# LINEAR_SECTION_ERROR #======================#
-    "LinearSectionBoundsException",
+    "LineSegmentBoundryException",
 ]
 
 # ======================# LINEAR_SECTION_ERROR #======================#
-class LinearSectionBoundsException(LinearSpaceException):
+class LineSegmentBoundryException(LinearSpaceException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a data was accessed beyond the LinearSection's endpoints.
+        1.  Indicate reading or writing outside the segement.
 
     Attributes:
         var: Optional[str]

@@ -53,11 +53,6 @@ class LinearStepper(ABC, Generic[T]):
     def math(self) -> MathToolkit:
         return self._math_toolkit
     
-    @property
-    @abstractmethod
-    def validator(self) -> Validator[T]:
-        pass
-    
     @abstractmethod
     @LoggingLevelRouter.monitor
     def next(self, current: Vector) -> ComputationResult[Vector]:

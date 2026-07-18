@@ -9,9 +9,10 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from typing import cast
+from typing import List, cast
 
-from err import QuadrantException
+from container import LinearDestinationSet
+from err import AxisException, QuadrantException
 from model import Scalar, Vector
 from register import VectorRegister
 from result import ComputationResult, MethodResultType
@@ -45,16 +46,16 @@ class Quadrant(LinearSpace):
     WARNING:
         *****===ONLY_INSTANTIATE_WITH_THE_FACTORY_METHODS===*****
     """
-    _section: QuadrantSection
+    _segment: QuadrantSection
     _stepper: QuadrantStepper
     
-    def __init__(self, stepper: QuadrantStepper, linear_section: QuadrantSection):
+    def __init__(self, stepper: QuadrantStepper, segment: QuadrantSection):
         """
         Args:
-            linear_section: QuadrantBounds
+            segment: QuadrantBounds
             stepper: QuadrantStepper
         """
-        super().__init__(linear_section=linear_section, stepper=stepper)
+        super().__init__(segment=segment, stepper=stepper)
         """INTERNAL: Use factory methods instead of direct constructor."""
         
     @property
@@ -111,40 +112,54 @@ class Quadrant(LinearSpace):
         return ComputationResult.success(cast(Scalar, computation.payload))
     
     @LoggingLevelRouter.monitor
-    def next(self, current: Vector) -> ComputationResult:
+    def destination_vectors(self) -> ComputationResult[LinearDestinationSet]:
         """
-        Get the next vector in the direction of travel.
+        Get DestinationVectors from the origin to the terminus
 
         Action:
             1.  Send an exception chain in the ComputationResult if the stepper aborts.
             2.  Otherwise, send the computed vector in the success result.
         Args:
-            current: Vector
         Returns:
-            ComputationResult[Vector]
+            ComputationResult[LinearVectorSet]
         Raises:
-             QuadrantException
+             AxisException
         """
-        method = f"{self.__class__.__name__}"
+        method = f"{self.__class__.__name__}.next"
         
-        # --- Request the next Vector for the stepper. ---#
-        computation = self._stepper.next(current=current)
+        # --- Set up looping variables ---#
+        terminus = self.terminus
+        cursor = self.origin
+        solutions: List[Vector] = []
         
-        # Handle the case that, the computation is aborted.
-        if computation.is_failure:
-            # Send an exception chain in the result.
-            return ComputationResult.failure(
-                QuadrantException(
-                    cls_mthd=method,
-                    cls_name=self.__class__.__name__,
-                    msg=QuadrantException.MSG,
-                    err_code=QuadrantException.ERR_CODE,
-                    mthd_rslt_type=MethodResultType.COMPUTATION_RESULT,
-                    ex=computation.exception,
-                ),
-            )
+        # --- Less than is not a good choice for iterating through vectors.  ---#
+        while cursor != terminus:
+            # --- Request the next Vector for the stepper. ---#
+            computation = self._stepper.next(cursor)
+            
+            # Handle the case that, the computation is aborted.
+            if computation.is_failure:
+                # Send an exception chain in the result.
+                return ComputationResult.failure(
+                    AxisException(
+                        cls_mthd=method,
+                        cls_name=self.__class__.__name__,
+                        msg=AxisException.MSG,
+                        err_code=AxisException.ERR_CODE,
+                        mthd_rslt_type=MethodResultType.COMPUTATION_RESULT,
+                        ex=computation.exception,
+                    ),
+                )
+            # --- Cast and append the curso to the list. ---#
+            cursor = cast(Vector, computation.payload)
+            solutions.append(cursor)
+        # Create the DestinationVector set.
+        linear_vectors = LinearDestinationSet(
+            root=self.origin,
+            entries=tuple(solutions)
+        )
         # --- Forward the work product to the caller. ---#
-        return ComputationResult.success(cast(Vector, computation.payload))
+        return ComputationResult.success(linear_vectors)
 
     @classmethod
     def northeast(cls, origin: Vector) -> Quadrant:
@@ -159,7 +174,7 @@ class Quadrant(LinearSpace):
         """
         return cls(
             stepper=QuadrantStepper.northeast(),
-            linear_section=QuadrantSection.northeast(origin=origin)
+            segment=QuadrantSection.northeast(origin=origin)
         )
     
     @classmethod
@@ -175,7 +190,7 @@ class Quadrant(LinearSpace):
         """
         return cls(
             stepper=QuadrantStepper.northwest(),
-            linear_section=QuadrantSection.northwest(origin=origin)
+            segment=QuadrantSection.northwest(origin=origin)
         )
     
     @classmethod
@@ -191,7 +206,7 @@ class Quadrant(LinearSpace):
         """
         return cls(
             stepper=QuadrantStepper.southeast(),
-            linear_section=QuadrantSection.southeast(origin=origin)
+            segment=QuadrantSection.southeast(origin=origin)
         )
     
     @classmethod
@@ -207,7 +222,7 @@ class Quadrant(LinearSpace):
         """
         return cls(
             stepper=QuadrantStepper.southwest(),
-            linear_section=QuadrantSection.southwest(origin=origin)
+            segment=QuadrantSection.southwest(origin=origin)
         )
         
     

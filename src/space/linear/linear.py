@@ -14,7 +14,7 @@ from typing import Optional
 
 from model import Scalar
 from result import ComputationResult
-from space import LinearStepper, Space, LinearSection
+from space import LinearStepper, Space, LineSegment
 from toolkit import MathToolkit
 from util import LoggingLevelRouter
 from validator import Validator
@@ -31,49 +31,42 @@ class LinearSpace(Space):
         2.  Provide a function that steps through every point in the plane,
 
     Attributes:
-        bounds: SpaceBounds
-        stepper: Stepper
+        segment: LineSegment
+        stepper: LinearStepper
         math_toolkit: Optional[MathToolkit]
 
     Provides:
 
     Super Class:
     """
-    _section: LinearSection
+    _segment: LineSegment
     _stepper: LinearStepper
-
     _math_toolkit: Optional[MathToolkit]
     
     def __init__(
             self,
-            linear_section: LinearSection,
+            segment: LineSegment,
             stepper: LinearStepper,
-            validator: LinearSectionValidator,
             math_toolkit: Optional[MathToolkit] | None = MathToolkit(),
     ):
         """
         Args:
-            linear_section: SpaceBounds
+            segment: LineSegment
             stepper: Stepper
             validator: Validator
             math_toolkit: Optional[MathToolkit]
         """
-        self._section = linear_section
+        self._segment = segment
         self._stepper = stepper
-        self._validator = validator
         self._math_toolkit = math_toolkit
     
     @property
-    def bounds(self) -> LinearSection:
-        return self._section
+    def segment(self) -> LineSegment:
+        return self._segment
     
     @property
     def stepper(self) -> LinearStepper:
         return self._stepper
-    
-    @property
-    def validator(self) -> Validator:
-        return self._validator
     
     @property
     def math(self) -> MathToolkit:
@@ -81,11 +74,11 @@ class LinearSpace(Space):
     
     @property
     def is_empty(self) -> bool:
-        return self._section.is_empty
+        return self._segment.is_empty
     
     @property
     def is_cycle(self) -> bool:
-        return self._section.is_cycle
+        return self._segment.is_cycle
     
     @abstractmethod
     @LoggingLevelRouter.monitor

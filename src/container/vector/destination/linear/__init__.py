@@ -13,4 +13,4 @@ version: 1.0.1
 
 
 # Modules
-from .container import LinearVectorSet
+from .container import LinearDestinationSet

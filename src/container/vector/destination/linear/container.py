@@ -9,13 +9,14 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from typing import Optional, Tuple, cast
+from typing import Optional, cast
 
-from container import DestinationVectorSet
+from container import DestinationVectorSet, VectorSet
 from model import Vector
+from register import VectorRegister
 
 
-class LinearVectorSet(DestinationVectorSet):
+class LinearDestinationSet(DestinationVectorSet):
     """
     Role:
         -   Data Holder
@@ -25,34 +26,64 @@ class LinearVectorSet(DestinationVectorSet):
             a Stepper.
 
     Attributes:
-        root: Vector
-        entries: Optional[Tuple[Vector, ...]]
+        endpoints: VectorRegister,
+        destinations: Optional[VectorSet]
         
     Provides:
 
     Super Class:
         DestinationVectorSet
     """
-    _root: Vector
+    _endpoints: VectorRegister
     
     def __init__(
             self,
-            root: Vector,
-            entries: Optional[Tuple[Vector, ...]] | None = None
+            endpoints: VectorRegister,
+            destinations: Optional[VectorSet] | None = None,
     ):
         """
         Args:
-            root: Vector
-            entries: Optional[Tuple[Vector, ...]]
+            endpoints: VectorRegister,
+            destinations: Optional[VectorSet]
         """
-        super().__init__(root=root, entries=entries)
+        super().__init__(root=endpoints.u, destinations=destinations)
+        self._endpoints = endpoints
         
-        
-    def remove_root_destination(self) -> LinearVectorSet:
-        if not self.is_root_in_destinations:
+    @property
+    def terminus(self) -> Vector:
+        return self._endpoints.v
+    
+    @property
+    def is_circle(self) -> bool:
+        return self._endpoints.u_is_v
+    
+    @property
+    def is_not_circle(self) -> bool:
+        return not self.is_circle
+    
+    @property
+    def terminus_is_destination(self) -> bool:
+        return self.terminus in self.destinations
+    
+    @property
+    def terminus_not_in_destinations(self) -> bool:
+        return not self.terminus_is_destination
+    
+    def remove_root_from_destinations(self) -> LinearDestinationSet:
+        if self.root_is_not_destination:
             return self
-        vector_set = super().remove_root_from_destinations()
-        return cast(LinearVectorSet, vector_set)
+        return cast(LinearDestinationSet, super().remove_root_from_destinations())
+    
+    def add_terminus_destination(self) -> LinearDestinationSet:
+        if self.terminus_is_destination:
+            return self
+        temp = self.destinations.to_list
+        temp.append(self.terminus)
+        return LinearDestinationSet(
+            endpoints=self._endpoints,
+            destinations=VectorSet(tuple(temp)),
+            
+        )
         
 
         

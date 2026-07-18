@@ -14,7 +14,7 @@ from model import Vector
 from register import VectorRegister
 
 
-class LinearSection:
+class LineSegment:
     """
     Role:
         -   Data Holder

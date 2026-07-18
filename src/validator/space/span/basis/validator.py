@@ -11,6 +11,7 @@ from __future__ import annotations
 
 from abc import abstractmethod
 from typing import Any, Generic
+from typing_extensions import TypeVar
 
 from result import ValidationResult
 from validator import SpanValidator

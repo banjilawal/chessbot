@@ -11,10 +11,10 @@ from __future__ import annotations
 
 
 from model import Vector
-from space import QuadrantTerminusEntry, LinearSection
+from space import QuadrantTerminusEntry, LineSegment
 
 
-class QuadrantSection(LinearSection):
+class QuadrantSection(LineSegment):
     """
     Role:
         -   Data Holder

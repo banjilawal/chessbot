@@ -11,11 +11,12 @@ from __future__ import annotations
 
 from typing import cast
 
-from container import LinearVectorSet, SpanVectorSet
+from container import LinearDestinationSet, SpanVectorSet
 from err import AxisSpanTransformerException
 from result import ComputationResult
 from space import Axis, LinearSpanTransformer
 from util import LoggingLevelRouter
+from validator import AxisValidator
 
 
 class AxisSpanTransformer(LinearSpanTransformer[Axis]):
@@ -95,7 +96,7 @@ class AxisSpanTransformer(LinearSpanTransformer[Axis]):
                 )
             )
         # On success extract the linear solutions.
-        linear_vectors = cast(LinearVectorSet, solution.payload).remove_root_destination()
+        linear_vectors = cast(LinearDestinationSet, solution.payload).remove_root_destination()
         
         # Create a spanned vector set
         span_destination_set = SpanVectorSet(

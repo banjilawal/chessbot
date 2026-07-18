@@ -14,4 +14,4 @@ from .axis import *
 from .quadrant import *
 
 # Modules
-from .exception import LinearSectionBoundsException
+from .exception import LineSegmentBoundryException

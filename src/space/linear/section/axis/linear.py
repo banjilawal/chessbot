@@ -14,10 +14,10 @@ import setting
 
 
 from model import Vector
-from space import LinearSection
+from space import LineSegment
 
 
-class AxisSection(LinearSection):
+class AxisSection(LineSegment):
     """
     Role:
         -   Computation Worker

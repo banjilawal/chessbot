@@ -14,4 +14,4 @@ from .axis import *
 from .quadrant import *
 
 # Modules
-from .linear import LinearSection
+from .linear import LineSegment

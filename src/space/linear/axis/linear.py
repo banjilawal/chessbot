@@ -9,16 +9,15 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from typing import List, Optional, Tuple, cast
+from typing import List, Optional, cast
 
-from container.vector.destination.linear.container import LinearVectorSet
+from container import LinearDestinationSet
 from err import AxisException
 from model import Scalar, Vector
 from register import VectorRegister
 from result import ComputationResult, MethodResultType
-from space import AxisSection, AxisStepper, LinearSpace, Space
+from space import AxisSection, AxisStepper, LinearSpace
 from util import LoggingLevelRouter
-from validator import AxisValidator
 
 
 class Axis(LinearSpace):
@@ -47,20 +46,20 @@ class Axis(LinearSpace):
     WARNING:
         *****===ONLY_INSTANTIATE_WITH_THE_FACTORY_METHODS===*****
     """
-    _section: AxisSection
+    _segment: AxisSection
     _stepper: AxisStepper
     
     def __init__(
             self,
-            linear_section: AxisSection,
+            segment: AxisSection,
             stepper: Optional[AxisStepper] | None = AxisStepper(),
     ):
         """
         Args:
-            linear_section: AxisLinear_Section
+            segment: AxisLinear_Section
             stepper: AxisStepper
         """
-        super().__init__(linear_section=linear_section, stepper=stepper)
+        super().__init__(segment=segment, stepper=stepper)
     """INTERNAL: Use factory methods instead of direct constructor."""
     
     @property
@@ -97,7 +96,6 @@ class Axis(LinearSpace):
         method = f"{self.__class__.__name__}.distance"
         
         
-        
         # Request the Euclidean distance
         computation = self.math.euclidean_distance.execute(
             register=VectorRegister(u=self.origin, v=self.terminus)
@@ -120,7 +118,7 @@ class Axis(LinearSpace):
     
     
     @LoggingLevelRouter.monitor
-    def destination_vectors(self) -> ComputationResult[LinearVectorSet]:
+    def destination_vectors(self) -> ComputationResult[LinearDestinationSet]:
         """
         Get DestinationVectors from the origin to the terminus
 
@@ -139,7 +137,6 @@ class Axis(LinearSpace):
         terminus = self.terminus
         cursor = self.origin
         solutions: List[Vector] = []
-
         
         # --- Less than is not a good choice for iterating through vectors.  ---#
         while cursor != terminus:
@@ -163,8 +160,9 @@ class Axis(LinearSpace):
             cursor = cast(Vector, computation.payload)
             solutions.append(cursor)
         # Create the DestinationVector set.
-        linear_vectors = LinearVectorSet(
+        linear_vectors = LinearDestinationSet(
             root=self.origin,
+            terminus=self.terminus,
             entries=tuple(solutions)
         )
         # --- Forward the work product to the caller. ---#
@@ -185,7 +183,7 @@ class Axis(LinearSpace):
         """
         return cls(
             stepper=AxisStepper.east(),
-            linear_section=AxisSection.east(origin=origin),
+            segment=AxisSection.east(origin=origin),
         )
     
     @classmethod
@@ -201,7 +199,7 @@ class Axis(LinearSpace):
         """
         return cls(
             stepper=AxisStepper.east(),
-            linear_section=AxisSection.north(origin=origin)
+            segment=AxisSection.north(origin=origin)
         )
     
     @classmethod
@@ -217,7 +215,7 @@ class Axis(LinearSpace):
         """
         return cls(
             stepper=AxisStepper.east(),
-            linear_section=AxisSection.south(origin=origin)
+            segment=AxisSection.south(origin=origin)
         )
     
     @classmethod
@@ -233,6 +231,6 @@ class Axis(LinearSpace):
         """
         return cls(
             stepper=AxisStepper.west(),
-            linear_section=AxisSection.west(origin=origin)
+            segment=AxisSection.west(origin=origin)
         )
     

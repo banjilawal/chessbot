@@ -5,25 +5,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/space/linear/section/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/space/linear/section/axis/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/space/linear/section/quadrant/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/space/ray/transformer/register/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/space/ray/transformer/register/transformer.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/space/linear/bounds/axis/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/space/linear/bounds/axis/exception.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/space/linear/bounds/quadrant/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/space/linear/bounds/quadrant/exception.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/space/linear/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/linear/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/container/vector/destination/container.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/container/vector/destination/container.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/container/vector/destination/linear/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/container/vector/destination/linear/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/container/vector/destination/linear/container.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/container/vector/destination/linear/container.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/container/vector/destination/span/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/container/vector/destination/span/container.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/space/linear/bounds/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/space/linear/bounds/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/space/linear/bounds/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/space/linear/bounds/exception.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/space/linear/axis/linear.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/linear/axis/linear.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/space/linear/bounds/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/space/linear/bounds/axis/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/space/linear/bounds/axis/linear.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/linear/section/axis/linear.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/space/linear/bounds/linear.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/linear/section/linear.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/space/linear/bounds/quadrant/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/space/linear/bounds/quadrant/linear.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/linear/section/quadrant/linear.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/space/linear/linear.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/linear/linear.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/space/linear/quadrant/linear.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/linear/quadrant/linear.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/space/linear/section/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/linear/section/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/space/linear/section/axis/linear.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/linear/section/axis/linear.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/space/linear/section/linear.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/linear/section/linear.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/space/linear/section/quadrant/linear.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/linear/section/quadrant/linear.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/space/linear/stepper/linear.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/linear/stepper/linear.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/space/ray/transformer/axis/transformer.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/ray/transformer/axis/transformer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validator/space/span/basis/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/validator/space/span/basis/validator.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -789,7 +790,7 @@
       <workItem from="1784040408484" duration="7069000" />
       <workItem from="1784050719673" duration="78000" />
       <workItem from="1784055454795" duration="186991000" />
-      <workItem from="1784319839949" duration="547000" />
+      <workItem from="1784319839949" duration="15435000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />
@@ -1365,6 +1366,11 @@
           <url>file://$PROJECT_DIR$/src/err/validation/model/scalar/exception.py</url>
           <line>9</line>
           <option name="timeStamp" value="269" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/container/vector/destination/linear/container.py</url>
+          <line>48</line>
+          <option name="timeStamp" value="270" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
