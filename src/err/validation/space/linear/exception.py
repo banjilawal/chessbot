@@ -1,7 +1,7 @@
-# src/err/validation/space/linear/exception.py
+# src/err/validator/space/linear/exception.py
 
 """
-Module: err.validation.space.linear.space.exception
+Module: err.validator.space.linear.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -12,7 +12,6 @@ from typing import Any, Optional
 
 from err import SpaceValidatorException
 from result import MethodResultType
-
 
 __all__ = [
     # ======================# LINEAR_SPACE_VALIDATOR_FAILURE #======================#
@@ -26,7 +25,7 @@ class LinearSpaceValidatorException(SpaceValidatorException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a candidate failed a LinearSpaceValidator test.
+        1.  Indicate that a candidate failed LinearSpaceValidator test.
 
     Attributes:
         msg: Optional[str]
@@ -36,14 +35,14 @@ class LinearSpaceValidatorException(SpaceValidatorException):
         cls_name: Optional[str]
         cls_mthd: Optional[str]
         err_code: Optional[str]
-        mthd_rslt_type: Optional[MethodResultType]
-
+        Mthd_Rslt_Type: Optional[MethodResultType]
+        
     Provides:
 
     Super Class:
         SpaceValidatorException
     """
-    MSG = "LinearSpace validation failed."
+    MSG = "LinearSpace validation failure."
     ERR_CODE = "LINEAR_SPACE_VALIDATOR_FAILURE"
     
     def __init__(
@@ -70,7 +69,6 @@ class LinearSpaceValidatorException(SpaceValidatorException):
         """
         msg = msg or self.MSG
         err_code = err_code or self.ERR_CODE
-        mthd_rslt_type = mthd_rslt_type or self.mthd_rslt_type
         super().__init__(
             ex=ex,
             msg=msg,

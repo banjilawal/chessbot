@@ -1,7 +1,7 @@
-# src/err/validation/space/exception.py
+# src/err/validator/space/exception.py
 
 """
-Module: err.validation.space.exception
+Module: err.validator.space.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -12,7 +12,6 @@ from typing import Any, Optional
 
 from err import ValidatorException
 from result import MethodResultType
-
 
 __all__ = [
     # ======================# SPACE_VALIDATOR_FAILURE #======================#
@@ -26,7 +25,7 @@ class SpaceValidatorException(ValidatorException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a candidate failed a SpaceValidator test.
+        1.  Indicate that a candidate failed SpaceValidator test.
 
     Attributes:
         msg: Optional[str]
@@ -36,14 +35,14 @@ class SpaceValidatorException(ValidatorException):
         cls_name: Optional[str]
         cls_mthd: Optional[str]
         err_code: Optional[str]
-        mthd_rslt_type: Optional[MethodResultType]
-
+        Mthd_Rslt_Type: Optional[MethodResultType]
+        
     Provides:
 
     Super Class:
         ValidatorException
     """
-    MSG = "Space validation failed."
+    MSG = "Space validation failure."
     ERR_CODE = "SPACE_VALIDATOR_FAILURE"
     
     def __init__(
@@ -70,7 +69,6 @@ class SpaceValidatorException(ValidatorException):
         """
         msg = msg or self.MSG
         err_code = err_code or self.ERR_CODE
-        mthd_rslt_type = mthd_rslt_type or self.mthd_rslt_type
         super().__init__(
             ex=ex,
             msg=msg,

@@ -23,7 +23,7 @@ class ArenaCertifierException(RootCertifierException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a ArenaCertifier test.
+        1.  Indicate that a candidate failed a ArenaCertifier test.
 
     Attributes:
             msg: Optional[str]

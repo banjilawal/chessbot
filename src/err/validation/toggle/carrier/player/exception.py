@@ -27,7 +27,7 @@ class PlayerCarrierValidatorException(EntityCarrierValidatorException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a PlayerCarrierValidator test.
+        1.  Indicate that a candidate failed a PlayerCarrierValidator test.
 
     Attributes:
             msg: Optional[str]

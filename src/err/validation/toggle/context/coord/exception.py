@@ -26,7 +26,7 @@ class CoordContextValidatorException(EntityContextValidatorException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a CoordContextValidator test.
+        1.  Indicate that a candidate failed a CoordContextValidator test.
 
     Attributes:
             msg: Optional[str]

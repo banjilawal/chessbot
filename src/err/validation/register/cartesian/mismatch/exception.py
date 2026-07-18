@@ -26,7 +26,7 @@ class CartesianRegisterMismatchException(CartesianRegisterValidatorException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a CartesianRegister's a-b slots contain different types.
+        1.  Indicate that a candidate failed a CartesianRegister's a-b slots contain different types.
 
     Attributes:
             msg: Optional[str]

@@ -28,7 +28,7 @@ class RegisterValidatorException(ValidatorException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a RegisterValidator test.
+        1.  Indicate that a candidate failed a RegisterValidator test.
 
     Attributes:
             msg: Optional[str]

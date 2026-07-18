@@ -23,7 +23,7 @@ class NodeCertifierException(RootCertifierException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a NodeCertifier test.
+        1.  Indicate that a candidate failed a NodeCertifier test.
 
     Attributes:
             msg: Optional[str]

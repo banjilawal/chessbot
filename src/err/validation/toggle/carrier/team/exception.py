@@ -27,7 +27,7 @@ class TeamCarrierValidatorException(EntityCarrierValidatorException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a TeamCarrierValidator test.
+        1.  Indicate that a candidate failed a TeamCarrierValidator test.
 
     Attributes:
             msg: Optional[str]

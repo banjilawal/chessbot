@@ -13,7 +13,6 @@ from typing import Any, Optional
 from err import NullException
 from result import MethodResultType
 
-
 __all__ = [
     # ======================# REGISTER_NULL_ERROR #======================#
     "RegisterNullException",
@@ -36,15 +35,15 @@ class RegisterNullException(NullException):
         cls_name: Optional[str]
         cls_mthd: Optional[str]
         err_code: Optional[str]
-        MTHD_RSLT_TYPE: Optional[MethodResultType]
-            
+        Mthd_Rslt_Type: Optional[MethodResultType]
+        
     Provides:
 
     Super Class:
         NullException
     """
     MSG = "Register cannot be null."
-    ERR_CODE= "REGISTER_NULL_ERROR"
+    ERR_CODE = "REGISTER_NULL_ERROR"
     
     def __init__(
             self,
@@ -55,7 +54,7 @@ class RegisterNullException(NullException):
             cls_name: Optional[str] | None = None,
             cls_mthd: Optional[str] | None = None,
             err_code: Optional[str] | None = None,
-            MTHD_RSLT_TYPE: Optional[MethodResultType] | None = None,
+            mthd_rslt_type: Optional[MethodResultType] | None = None,
     ):
         """
         args:
@@ -66,7 +65,7 @@ class RegisterNullException(NullException):
             cls_name: Optional[Str]
             cls_mthd: Optional[str]
             err_code: Optional[str]
-            MTHD_RSLT_TYPE: Optional[MethodResultType]
+            mthd_rslt_type: Optional[MethodResultType]
         """
         msg = msg or self.MSG
         err_code = err_code or self.ERR_CODE
@@ -78,5 +77,5 @@ class RegisterNullException(NullException):
             err_code=err_code,
             cls_name=cls_name,
             cls_mthd=cls_mthd,
-            MTHD_RSLT_TYPE=MTHD_RSLT_TYPE,
+            mthd_rslt_type=mthd_rslt_type,
         )

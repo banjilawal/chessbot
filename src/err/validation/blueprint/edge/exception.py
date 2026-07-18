@@ -23,7 +23,7 @@ class EdgeCertifierException(RootCertifierException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a EdgeCertifier test.
+        1.  Indicate that a candidate failed a EdgeCertifier test.
 
     Attributes:
             msg: Optional[str]

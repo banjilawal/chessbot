@@ -25,7 +25,7 @@ class CertifierException(ValidatorException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a Certifier test.
+        1.  Indicate that a candidate failed a Certifier test.
 
     Attributes:
             msg: Optional[str]

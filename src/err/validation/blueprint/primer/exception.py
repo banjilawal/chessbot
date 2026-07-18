@@ -25,7 +25,7 @@ class BlueprintValidationPrimingException(RootCertifierException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a BlueprintValidation failed during its priming phase.
+        1.  Indicate that a candidate failed a BlueprintValidation failed during its priming phase.
 
     Attributes:
             msg: Optional[str]

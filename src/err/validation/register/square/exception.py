@@ -26,7 +26,7 @@ class SquareRegisterValidatorException(RegisterValidatorException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a SquareRegisterValidator test.
+        1.  Indicate that a candidate failed a SquareRegisterValidator test.
 
     Attributes:
             msg: Optional[str]

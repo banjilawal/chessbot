@@ -27,7 +27,7 @@ class ToggleValidatorException(ValidatorException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a ToggleValidator test.
+        1.  Indicate that a candidate failed a ToggleValidator test.
 
     Attributes:
         msg: Optional[str]

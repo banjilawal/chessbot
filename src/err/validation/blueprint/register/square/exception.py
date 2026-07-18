@@ -26,7 +26,7 @@ class SquareRegisterCertifierException(RegisterCertifierException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a VectorSquareRegisterCertifier failed.
+        1.  Indicate that a candidate failed a VectorSquareRegisterCertifier failed.
 
     Attributes:
             msg: Optional[str]

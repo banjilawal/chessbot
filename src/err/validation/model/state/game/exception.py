@@ -25,7 +25,7 @@ class GameValidatorException(StateModelValidatorException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a GameValidator test.
+        1.  Indicate that a candidate failed a GameValidator test.
 
     Attributes:
             msg: Optional[str]

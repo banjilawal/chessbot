@@ -27,7 +27,7 @@ class ValidatorException(OperationException):
         -   Failure Tracing
 
     Responsibilities:
-        1.  Indicate that a Validator test.
+        1.  Indicate that a candidate failed a Validator test.
 
     Attributes:
         msg: str

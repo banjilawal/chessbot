@@ -1,7 +1,7 @@
-# src/err/validation/space/span/basis/exception.py
+# src/err/validator/space/span/basis/exception.py
 
 """
-Module: err.validation.space.span.basis.exception
+Module: err.validator.space.span.basis.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -25,7 +25,7 @@ class BasisValidatorException(SpanValidatorException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a candidate failed an BasisValidator test.
+        1.  Indicate that a candidate failed BasisSetValidator test.
 
     Attributes:
         msg: Optional[str]
@@ -35,14 +35,14 @@ class BasisValidatorException(SpanValidatorException):
         cls_name: Optional[str]
         cls_mthd: Optional[str]
         err_code: Optional[str]
-        mthd_rslt_type: Optional[MethodResultType]
-            
+        Mthd_Rslt_Type: Optional[MethodResultType]
+        
     Provides:
 
     Super Class:
         SpanValidatorException
     """
-    MSG = "Basis validation failed."
+    MSG = "Basis validation failure."
     ERR_CODE = "BASIS_VALIDATOR_FAILURE"
     
     def __init__(
@@ -69,7 +69,6 @@ class BasisValidatorException(SpanValidatorException):
         """
         msg = msg or self.MSG
         err_code = err_code or self.ERR_CODE
-        mthd_rslt_type = mthd_rslt_type or self.mthd_rslt_type
         super().__init__(
             ex=ex,
             msg=msg,

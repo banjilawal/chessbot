@@ -25,7 +25,7 @@ class ContextValidatorException(ValidatorException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a ContextValidator test.
+        1.  Indicate that a candidate failed a ContextValidator test.
 
     Attributes:
             msg: Optional[str]

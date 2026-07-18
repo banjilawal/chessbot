@@ -27,7 +27,7 @@ class NodeCarrierValidatorException(EntityCarrierValidatorException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a NodeCarrierValidator test.
+        1.  Indicate that a candidate failed a NodeCarrierValidator test.
 
     Attributes:
             msg: Optional[str]

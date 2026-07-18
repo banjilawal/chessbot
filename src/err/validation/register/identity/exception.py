@@ -26,7 +26,7 @@ class IdentityRegisterValidatorException(RegisterValidatorException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a VectorIdentityRegisterValidator test.
+        1.  Indicate that a candidate failed a VectorIdentityRegisterValidator test.
 
     Attributes:
             msg: Optional[str]

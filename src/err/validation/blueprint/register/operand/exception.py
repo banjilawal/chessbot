@@ -26,7 +26,7 @@ class CartesianRegisterCertifierException(RegisterCertifierException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a CartesianRegisterCertifier failed.
+        1.  Indicate that a candidate failed a CartesianRegisterCertifier failed.
 
     Attributes:
             msg: Optional[str]

@@ -25,7 +25,7 @@ class NumberValidatorException(ValidatorException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a NumberValidator test.
+        1.  Indicate that a candidate failed a NumberValidator test.
 
     Attributes:
         msg: Optional[str]

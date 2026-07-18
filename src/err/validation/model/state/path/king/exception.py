@@ -25,7 +25,7 @@ class KingPathValidatorException(PathValidatorException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a KingPathValidator test.
+        1.  Indicate that a candidate failed a KingPathValidator test.
 
     Attributes:
             msg: Optional[str]

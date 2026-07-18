@@ -23,7 +23,7 @@ class TokenCertifierException(RootCertifierException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a TokenCertifier test.
+        1.  Indicate that a candidate failed a TokenCertifier test.
 
     Attributes:
             msg: Optional[str]

@@ -24,7 +24,7 @@ class RookValidatorException(RankValidatorException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a Rook validator test.
+        1.  Indicate that a candidate failed a Rook validator test.
 
     Attributes:
         msg: Optional[str]

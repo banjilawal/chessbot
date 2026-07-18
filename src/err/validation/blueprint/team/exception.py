@@ -23,7 +23,7 @@ class TeamCertifierException(RootCertifierException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a TeamCertifier test.
+        1.  Indicate that a candidate failed a TeamCertifier test.
 
     Attributes:
             msg: Optional[str]

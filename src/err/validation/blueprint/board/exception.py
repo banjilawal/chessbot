@@ -23,7 +23,7 @@ class BoardCertifierException(RootCertifierException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a BoardCertifier test.
+        1.  Indicate that a candidate failed a BoardCertifier test.
 
     Attributes:
             msg: Optional[str]

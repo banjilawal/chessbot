@@ -27,7 +27,7 @@ class RankContextValidatorException(EntityContextValidatorException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a RankContextValidator test.
+        1.  Indicate that a candidate failed a RankContextValidator test.
 
     Attributes:
             msg: Optional[str]

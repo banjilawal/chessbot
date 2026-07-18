@@ -23,7 +23,7 @@ class RegisterCertifierException(RootCertifierException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a RegisterCertifier test.
+        1.  Indicate that a candidate failed a RegisterCertifier test.
 
     Attributes:
             msg: Optional[str]

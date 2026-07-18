@@ -23,7 +23,7 @@ class FormationCertifierException(RootCertifierException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a FormationCertifier test.
+        1.  Indicate that a candidate failed a FormationCertifier test.
 
     Attributes:
             msg: Optional[str]

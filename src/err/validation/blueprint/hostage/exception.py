@@ -23,7 +23,7 @@ class HostageCertifierException(RootCertifierException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a HostageCertifier test.
+        1.  Indicate that a candidate failed a HostageCertifier test.
 
     Attributes:
             msg: Optional[str]

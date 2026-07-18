@@ -23,7 +23,7 @@ class SquareCertifierException(RootCertifierException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a SquareCertifier test.
+        1.  Indicate that a candidate failed a SquareCertifier test.
 
     Attributes:
             msg: Optional[str]

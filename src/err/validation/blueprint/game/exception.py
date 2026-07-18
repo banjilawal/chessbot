@@ -26,7 +26,7 @@ class GameCertifierException(RootCertifierException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a GameCertifier test.
+        1.  Indicate that a candidate failed a GameCertifier test.
 
     Attributes:
             msg: Optional[str]

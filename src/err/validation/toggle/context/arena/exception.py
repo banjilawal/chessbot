@@ -27,7 +27,7 @@ class ArenaContextValidatorException(EntityContextValidatorException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a ArenaContextValidator test.
+        1.  Indicate that a candidate failed a ArenaContextValidator test.
 
     Attributes:
             msg: Optional[str]

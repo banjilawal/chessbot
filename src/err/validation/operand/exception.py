@@ -24,7 +24,7 @@ class VectorOperandValidatorException(ValidatorException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a VectorOperandValidator test.
+        1.  Indicate that a candidate failed a VectorOperandValidator test.
 
     Attributes:
             msg: Optional[str]

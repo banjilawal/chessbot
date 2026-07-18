@@ -26,7 +26,7 @@ class ModelValidatorException(ValidatorException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a ModelValidator test.
+        1.  Indicate that a candidate failed a ModelValidator test.
 
     Attributes:
         msg: Optional[str]

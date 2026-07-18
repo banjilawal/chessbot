@@ -25,7 +25,7 @@ class PersonaCertifierException(RootCertifierException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a PersonaCertifier test.
+        1.  Indicate that a candidate failed a PersonaCertifier test.
 
     Attributes:
             msg: Optional[str]

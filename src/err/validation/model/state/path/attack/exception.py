@@ -25,7 +25,7 @@ class AttackPathValidatorException(PathValidatorException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a candidate did not pass an AttackPathValidator test.
+        1.  Indicate that a candidate failed a candidate did not pass an AttackPathValidator test.
 
     Attributes:
             msg: Optional[str]

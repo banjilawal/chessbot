@@ -26,7 +26,7 @@ class BlueprintHomeSquareExtractorException(ValidatorException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a HomeSquareProcessor encountered an error.
+        1.  Indicate that a candidate failed a HomeSquareProcessor encountered an error.
 
     Attributes:
             msg: Optional[str]

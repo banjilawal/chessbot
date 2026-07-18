@@ -27,7 +27,7 @@ class EdgeContextValidatorException(EntityContextValidatorException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a EdgeContextValidator test.
+        1.  Indicate that a candidate failed a EdgeContextValidator test.
 
     Attributes:
             msg: Optional[str]

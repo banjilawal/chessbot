@@ -23,7 +23,7 @@ class SchemaCertifierException(RootCertifierException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a SchemaCertifier test.
+        1.  Indicate that a candidate failed a SchemaCertifier test.
 
     Attributes:
             msg: Optional[str]

@@ -1,7 +1,7 @@
-# src/err/validation/space/span/exception.py
+# src/err/validator/space/span/exception.py
 
 """
-Module: err.validation.space.span.space.exception
+Module: err.validator.space.span.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -13,20 +13,19 @@ from typing import Any, Optional
 from err import SpaceValidatorException
 from result import MethodResultType
 
-
 __all__ = [
-    # ======================# SPAN_SPACE_VALIDATOR_FAILURE #======================#
+    # ======================# MODEL_SPACE_VALIDATOR_FAILURE #======================#
     "SpanValidatorException",
 ]
 
-# ======================# SPAN_SPACE_VALIDATOR_FAILURE #======================#
+# ======================# MODEL_SPACE_VALIDATOR_FAILURE #======================#
 class SpanValidatorException(SpaceValidatorException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a candidate failed a SpanSpaceValidator test.
+        1.  Indicate that a candidate failed SpanValidator test.
 
     Attributes:
         msg: Optional[str]
@@ -36,15 +35,15 @@ class SpanValidatorException(SpaceValidatorException):
         cls_name: Optional[str]
         cls_mthd: Optional[str]
         err_code: Optional[str]
-        mthd_rslt_type: Optional[MethodResultType]
-
+        Mthd_Rslt_Type: Optional[MethodResultType]
+        
     Provides:
 
     Super Class:
         SpaceValidatorException
     """
-    MSG = "SpanSpace validation failed."
-    ERR_CODE = "SPAN_SPACE_VALIDATOR_FAILURE"
+    MSG = "Span validation failure."
+    ERR_CODE = "MODEL_SPACE_VALIDATOR_FAILURE"
     
     def __init__(
             self,
@@ -70,7 +69,6 @@ class SpanValidatorException(SpaceValidatorException):
         """
         msg = msg or self.MSG
         err_code = err_code or self.ERR_CODE
-        mthd_rslt_type = mthd_rslt_type or self.mthd_rslt_type
         super().__init__(
             ex=ex,
             msg=msg,

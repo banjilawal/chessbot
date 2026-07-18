@@ -23,7 +23,7 @@ class CoordCertifierException(RootCertifierException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a CoordCertifier test.
+        1.  Indicate that a candidate failed a CoordCertifier test.
 
     Attributes:
             msg: Optional[str]

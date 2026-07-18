@@ -25,7 +25,7 @@ class ManeuverValidatorException(StateModelValidatorException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a ManeuverValidator test.
+        1.  Indicate that a candidate failed a ManeuverValidator test.
 
     Attributes:
         msg: Optional[str]
