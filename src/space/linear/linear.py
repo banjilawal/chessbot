@@ -17,7 +17,6 @@ from result import ComputationResult
 from space import LinearStepper, Space, LineSegment
 from toolkit import MathToolkit
 from util import LoggingLevelRouter
-from validator import Validator
 
 
 

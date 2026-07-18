@@ -10,12 +10,11 @@ version: 1.0.1
 # ============ ERR.EMPTY.REGISTER PACKAGE ===========#
 
 # Packages
-from .arena import *
+from .identity import *
 from .board import *
 from .coord import *
 from .edge import *
 from .game import *
-from .hostage import *
 from .model import *
 from .node import *
 from .player import *

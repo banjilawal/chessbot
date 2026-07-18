@@ -16,6 +16,7 @@ from .graph import *
 from .model import *
 from .query import *
 from .register import *
+from .space import *
 from .stack import *
 
 # Modules
