@@ -55,17 +55,17 @@ class RegisterBuilder(ABC, Generic[T]):
 
         
         
-    # def _validation(self, candidate: Any) -> ValidationResult[LinearDestinationSet]:
+    # def _validation(self, candidate: Any) -> ValidationResult[LinearTargetSet]:
     #     method = f"{self.__class__.__name__}"
     #     
     #     priming = self._priming_validator.execute(
     #         candidate=self._linear_sett,
-    #         target_model=Type[LinearDestinationSet],
+    #         target_model=Type[LinearTargetSet],
     #         null_exception=NullException(),
     #     )
     #     if priming.is_failure:
     #         return ValidationResult.failure(priming.exception)
-    #     linear_sett = cast(LinearDestinationSet, priming.payload)
+    #     linear_sett = cast(LinearTargetSet, priming.payload)
     #     
     #     if linear_sett.is_empty:
     #         return BuildResult.failure(

@@ -12,7 +12,7 @@ from __future__ import annotations
 from abc import ABC, abstractmethod
 from typing import Generic, TypeVar
 
-from container import SpanVectorSet
+from container import TargetVectorSet
 from result import ComputationResult
 from util import LoggingLevelRouter
 from validator import Validator
@@ -27,7 +27,7 @@ class LinearSpanTransformer(ABC, Generic[T]):
         -   Integrity assurance
 
     Responsibilities:
-        1.  Produce a SpanVectorSet from an LinearSpace instead
+        1.  Produce a TargetVectorSet from an LinearSpace instead
             of a LinearVectorSet..
 
 
@@ -36,7 +36,7 @@ class LinearSpanTransformer(ABC, Generic[T]):
         validator: Validator[T]
 
     Provides:
-        -   def execute() -> ComputationResult[SpanVectorSet]
+        -   def execute() -> ComputationResult[TargetVectorSet]
         
     Super Class:
     """
@@ -66,5 +66,5 @@ class LinearSpanTransformer(ABC, Generic[T]):
     
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def execute(self,) -> ComputationResult[SpanVectorSet]:
+    def execute(self,) -> ComputationResult[TargetVectorSet]:
         pass

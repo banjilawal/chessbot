@@ -5,142 +5,99 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/model/software/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/software/application/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/software/application/combatant/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/software/application/combatant/model.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/software/application/combatant/pawn/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/software/application/combatant/pawn/model.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/software/application/combatant/pawn/state.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/software/application/king/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/software/application/king/model.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/software/application/model.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/software/application/state/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/software/application/state/activity.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/software/application/state/board.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/software/arena/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/software/arena/model.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/software/attack/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/software/attack/combatant/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/software/attack/combatant/model.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/software/attack/combatant/state.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/software/attack/king/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/software/attack/king/model.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/software/attack/king/state.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/software/attack/model.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/software/board/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/software/board/model.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/software/board/state.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/software/edge/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/software/edge/model.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/software/graph/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/software/graph/graph/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/software/graph/graph/model.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/software/license/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/software/license/model.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/software/maneuver/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/software/maneuver/checked/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/software/maneuver/checked/model.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/software/maneuver/combatant/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/software/maneuver/combatant/model.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/software/maneuver/combatant/state.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/software/maneuver/king/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/software/maneuver/king/model.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/software/maneuver/king/state.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/software/maneuver/model.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/software/maneuver/state.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/software/model.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/software/player/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/software/player/human/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/software/player/human/model.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/software/player/machine/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/software/player/machine/model.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/software/player/model.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/software/query/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/software/query/catalog/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/software/query/catalog/formation/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/software/query/catalog/formation/model.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/software/query/catalog/model.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/software/query/catalog/persona/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/software/query/catalog/persona/model.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/software/query/catalog/schema/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/software/query/catalog/schema/model.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/software/query/model.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/software/query/stack/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/software/query/stack/arena/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/software/query/stack/arena/model.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/software/query/stack/board/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/software/query/stack/board/model.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/software/query/stack/coord/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/software/query/stack/coord/model.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/software/query/stack/edge/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/software/query/stack/edge/model.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/software/query/stack/game/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/software/query/stack/game/model.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/software/query/stack/hostage/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/software/query/stack/hostage/model.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/software/query/stack/model.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/software/query/stack/node/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/software/query/stack/node/model.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/software/query/stack/player/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/software/query/stack/player/model.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/software/query/stack/rank/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/software/query/stack/rank/model.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/software/query/stack/square/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/software/query/stack/square/model.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/software/query/stack/team/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/software/query/stack/team/model.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/software/query/stack/token/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/software/query/stack/token/model.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/software/registry/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/software/registry/service/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/software/registry/service/model.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/software/registry/worker/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/software/registry/worker/model.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/software/square/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/software/square/home/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/software/square/home/model.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/software/square/home/state.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/software/square/model.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/software/square/state.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/software/subscriber/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/software/subscriber/model.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/software/team/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/software/team/model.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/software/team/roster/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/software/team/roster/analyzer/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/software/team/roster/analyzer/analyzer.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/software/team/roster/analyzer/exception/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/software/team/roster/analyzer/exception/wrapper.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/software/team/roster/exception/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/software/team/roster/exception/catchall.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/software/team/roster/exception/delete/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/software/team/roster/exception/delete/active.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/software/team/roster/exception/delete/empty.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/software/team/roster/exception/delete/owner.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/software/team/roster/exception/delete/unfound.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/software/team/roster/exception/delete/wrapper.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/software/team/roster/exception/insert/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/software/team/roster/exception/insert/duplicate.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/software/team/roster/exception/insert/enemy.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/software/team/roster/exception/insert/full.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/software/team/roster/exception/insert/prisoner.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/software/team/roster/exception/insert/wrapper.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/software/team/roster/util.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/software/team/state.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/software/token/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/software/token/combatant/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/software/token/combatant/model.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/software/token/combatant/pawn/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/software/token/combatant/pawn/model.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/software/token/combatant/pawn/state.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/software/token/king/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/software/token/king/model.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/software/token/model.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/software/token/state/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/software/token/state/activity.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/software/token/state/board.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/space/basis/maneuver/bishop/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/space/basis/maneuver/king/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/space/basis/maneuver/knight/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/space/basis/maneuver/pawn/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/space/basis/maneuver/pawn/attack/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/space/basis/maneuver/pawn/attack/developed/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/space/basis/maneuver/pawn/attack/opening/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/space/basis/maneuver/pawn/maneuver/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/space/basis/maneuver/pawn/maneuver/developed/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/space/basis/maneuver/pawn/maneuver/opening/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/space/basis/maneuver/pawn/maneuver/span.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/space/basis/maneuver/queen/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/space/basis/maneuver/rook/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/space/linear/category/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/space/target/span/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/space/target/span/space.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/blueprint/quadrant/blueprint.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/blueprint/quadrant/blueprint.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/space/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/space/builder/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/builder/builder.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/space/builder/linear/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/builder/linear/builder.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/space/builder/span/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/builder/span/builder.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/space/destination/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/target/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/space/destination/linear/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/target/linear/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/space/destination/linear/space.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/target/linear/space.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/space/destination/space.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/target/space.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/space/linear/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/linear/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/space/linear/axis/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/linear/category/axis/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/space/linear/axis/linear.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/linear/category/axis/linear.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/space/linear/linear.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/linear/category/linear.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/space/linear/quadrant/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/linear/category/quadrant/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/space/linear/quadrant/linear.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/linear/category/quadrant/linear.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/space/ray/computer/axis/joiner.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/ray/computer/axis/joiner.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/space/ray/computer/joiner.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/ray/computer/joiner.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/space/ray/transformer/axis/transformer.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/ray/transformer/axis/transformer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/space/ray/transformer/register/transformer.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/ray/transformer/register/transformer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/space/ray/transformer/transformer.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/ray/transformer/transformer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/space/space.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/space.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/space/span/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/basis/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/space/span/basis/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/basis/category/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/space/span/basis/bishop/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/basis/category/bishop/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/space/span/basis/bishop/span.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/basis/category/bishop/span.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/space/span/basis/king/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/basis/category/king/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/space/span/basis/king/span.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/basis/category/king/span.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/space/span/basis/knight/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/basis/category/knight/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/space/span/basis/knight/span.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/basis/category/knight/span.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/space/span/basis/pawn/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/basis/category/pawn/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/space/span/basis/pawn/attack/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/basis/category/pawn/attack/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/space/span/basis/pawn/attack/developed/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/basis/category/pawn/attack/developed/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/space/span/basis/pawn/attack/developed/span.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/basis/category/pawn/attack/developed/span.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/space/span/basis/pawn/attack/opening/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/basis/category/pawn/attack/opening/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/space/span/basis/pawn/attack/opening/span.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/basis/category/pawn/attack/opening/span.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/space/span/basis/pawn/attack/span.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/basis/category/pawn/attack/span.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/space/span/basis/pawn/maneuver/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/basis/category/pawn/maneuver/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/space/span/basis/pawn/maneuver/developed/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/basis/category/pawn/maneuver/developed/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/space/span/basis/pawn/maneuver/developed/span.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/basis/category/pawn/maneuver/developed/span.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/space/span/basis/pawn/maneuver/opening/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/basis/category/pawn/maneuver/opening/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/space/span/basis/pawn/maneuver/opening/span.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/basis/category/pawn/maneuver/opening/span.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/space/span/basis/pawn/maneuver/span.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/basis/category/pawn/maneuver/span.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/space/span/basis/pawn/span.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/basis/category/pawn/span.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/space/span/basis/queen/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/basis/category/queen/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/space/span/basis/queen/span.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/basis/category/queen/span.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/space/span/basis/rook/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/basis/category/rook/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/space/span/basis/rook/span.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/basis/category/rook/span.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/space/span/basis/span.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/basis/category/span.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/space/span/computer/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/basis/computer/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/space/span/computer/span.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/basis/computer/span.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/space/span/movement/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/basis/maneuver/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/space/span/movement/bishop/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/space/span/movement/bishop/span.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/basis/maneuver/bishop/span.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/space/span/movement/king/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/space/span/movement/king/span.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/basis/maneuver/king/span.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/space/span/movement/knight/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/space/span/movement/knight/span.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/basis/maneuver/knight/span.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/space/span/movement/pawn/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/space/span/movement/pawn/attack/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/space/span/movement/pawn/attack/developed/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/space/span/movement/pawn/attack/developed/span.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/basis/maneuver/pawn/attack/developed/span.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/space/span/movement/pawn/attack/opening/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/space/span/movement/pawn/attack/opening/span.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/basis/maneuver/pawn/attack/opening/span.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/space/span/movement/pawn/attack/span.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/basis/maneuver/pawn/attack/span.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/space/span/movement/pawn/maneuver/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/space/span/movement/pawn/maneuver/developed/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/space/span/movement/pawn/maneuver/developed/span.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/basis/maneuver/pawn/maneuver/developed/span.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/space/span/movement/pawn/maneuver/opening/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/space/span/movement/pawn/maneuver/opening/span.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/basis/maneuver/pawn/maneuver/opening/span.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/space/span/movement/pawn/maneuver/span.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/space/span/movement/pawn/span.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/basis/maneuver/pawn/span.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/space/span/movement/queen/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/space/span/movement/queen/span.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/basis/maneuver/queen/span.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/space/span/movement/rook/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/space/span/movement/rook/span.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/basis/maneuver/rook/span.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/space/span/movement/span.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/basis/maneuver/span.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -196,7 +153,7 @@
     "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/model/software",
+    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/space/target",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
@@ -208,18 +165,18 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/space/target" />
       <recent name="$PROJECT_DIR$/src/model/software" />
       <recent name="$PROJECT_DIR$/src/model/application" />
       <recent name="$PROJECT_DIR$/src/model" />
       <recent name="$PROJECT_DIR$/src/model/state" />
-      <recent name="$PROJECT_DIR$/src/err/validation" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/space/linear/category" />
+      <recent name="$PROJECT_DIR$/src/space/span/basis" />
       <recent name="$PROJECT_DIR$/src/err/empty/space/span/basis" />
       <recent name="$PROJECT_DIR$/src/err/empty/space/span/pawn" />
       <recent name="$PROJECT_DIR$/src/err/empty/space/span/pawn/bishop" />
-      <recent name="$PROJECT_DIR$/src/err/empty/space/linear" />
-      <recent name="$PROJECT_DIR$/src/err/empty/model/binder" />
     </key>
   </component>
   <component name="RunManager" selected="Python.stack">
@@ -906,7 +863,7 @@
       <workItem from="1784040408484" duration="7069000" />
       <workItem from="1784050719673" duration="78000" />
       <workItem from="1784055454795" duration="186991000" />
-      <workItem from="1784319839949" duration="46051000" />
+      <workItem from="1784319839949" duration="50137000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />
@@ -1459,7 +1416,7 @@
           <option name="timeStamp" value="257" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/src/space/span/movement/pawn/attack/__init__.py</url>
+          <url>file://$PROJECT_DIR$/src/space/basis/maneuver/pawn/attack/__init__.py</url>
           <line>12</line>
           <option name="timeStamp" value="260" />
         </line-breakpoint>
@@ -1484,7 +1441,7 @@
           <option name="timeStamp" value="269" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/src/space/destination/linear/space.py</url>
+          <url>file://$PROJECT_DIR$/src/space/target/linear/space.py</url>
           <line>48</line>
           <option name="timeStamp" value="270" />
         </line-breakpoint>
@@ -1502,6 +1459,11 @@
           <url>file://$PROJECT_DIR$/src/err/empty/space/span/movement/exception.py</url>
           <line>9</line>
           <option name="timeStamp" value="273" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/space/basis/maneuver/__init__.py</url>
+          <line>12</line>
+          <option name="timeStamp" value="274" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

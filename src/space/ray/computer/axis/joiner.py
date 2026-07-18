@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import List, cast
 
-from container import SpanVectorSet
+from container import TargetVectorSet
 from model import Vector
 from result import ComputationResult
 from space import Axis, LinearJoiner
@@ -50,7 +50,7 @@ class AxisJoiner(LinearJoiner[Axis]):
         return cast(Axis, self.linear_space)
     
     @LoggingLevelRouter.monitor
-    def execute(self, origin: Vector) -> ComputationResult[SpanVectorSet]:
+    def execute(self, origin: Vector) -> ComputationResult[TargetVectorSet]:
         """
         Get the series of Vectors from the origin of the axis till its end.
 
@@ -72,10 +72,10 @@ class AxisJoiner(LinearJoiner[Axis]):
             Axis.east_axis(origin),
             Axis.west_axis(origin),
         ]
-        vector_sets: List[LinearDestinationSet] = []
+        vector_sets: List[LinearTargetSet] = []
         
         for axis in axes:
-            solution = axis.destination_vectors()
+            solution = axis.target_vectors()
             if solution.is_failure:
                 # Send the exception chain in the result.
                 return ComputationResult.failure(
@@ -89,7 +89,7 @@ class AxisJoiner(LinearJoiner[Axis]):
                     )
                 )
             cleaned_set = cast(
-                LinearDestinationSet,
+                LinearTargetSet,
                 solution.payload
             ).remove_root_destination()
             vector_sets.append(cleaned_set)
@@ -98,7 +98,7 @@ class AxisJoiner(LinearJoiner[Axis]):
         for item in vector_sets:
             vector_list.extend(item.to_list)
         return ComputationResult(
-            SpanVectorSet(
+            TargetVectorSet(
                 root=origin,
                 entries=tuple(vector_list)
             )
@@ -140,5 +140,5 @@ class AxisJoiner(LinearJoiner[Axis]):
         # --- Forward the work product to the caller. ---#
         return ComputationResult.success(ray)
     
-    def _helper(self, origin: Vector) -> ComputationResult[List[LinearDestinationSet]]:
+    def _helper(self, origin: Vector) -> ComputationResult[List[LinearTargetSet]]:
         north_axis = Axis.north_axis()

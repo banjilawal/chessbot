@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import cast
 
-from container import LinearDestinationSet, SpanVectorSet
+from container import LinearTargetSet, TargetVectorSet
 from err import AxisSpanTransformerException
 from result import ComputationResult
 from space import Axis, LinearSpanTransformer
@@ -26,14 +26,14 @@ class AxisSpanTransformer(LinearSpanTransformer[Axis]):
         -   Integrity assurance
 
     Responsibilities:
-        1.  Produce a SpanVectorSet from an Axis.
+        1.  Produce a TargetVectorSet from an Axis.
 
     Attributes:
         linear_space: Axis
         validator: AxisValidator
 
     Provides:
-        -   def execute(self,) -> ComputationResult[SpanVectorSet]
+        -   def execute(self,) -> ComputationResult[TargetVectorSet]
 
     Super Class:
         LinearSpanTransformer
@@ -60,9 +60,9 @@ class AxisSpanTransformer(LinearSpanTransformer[Axis]):
         return cast(AxisValidator, self.validator)
     
     @LoggingLevelRouter.monitor
-    def execute(self,) -> ComputationResult[SpanVectorSet]:
+    def execute(self,) -> ComputationResult[TargetVectorSet]:
         """
-        Create a SpanVectorSet from a LinearSpace.
+        Create a TargetVectorSet from a LinearSpace.
 
         Action:
             1.  Send an exception chain in the ComputationResult if 
@@ -73,14 +73,14 @@ class AxisSpanTransformer(LinearSpanTransformer[Axis]):
             3.  Send the SpanVecorSet in the ComputationResult.
         Args:
         Returns:
-            ComputationResult[SpanVectorSet]
+            ComputationResult[TargetVectorSet]
         Raises:
              AxisSpanTransformerException
         """
         method = f"{self.__class__.__name__}.execute"
         
         # --- Request the linear destination set. ---#
-        solution = self.linear_space.destination_vectors()
+        solution = self.linear_space.target_vectors()
         
         # Handle the case that, request is not granted.
         if solution.is_failure:
@@ -96,10 +96,10 @@ class AxisSpanTransformer(LinearSpanTransformer[Axis]):
                 )
             )
         # On success extract the linear solutions.
-        linear_vectors = cast(LinearDestinationSet, solution.payload).remove_root_destination()
+        linear_vectors = cast(LinearTargetSet, solution.payload).remove_root_destination()
         
         # Create a spanned vector set
-        span_destination_set = SpanVectorSet(
+        span_destination_set = TargetVectorSet(
             root=linear_vectors.root,
             entries=linear_vectors.entries
         )

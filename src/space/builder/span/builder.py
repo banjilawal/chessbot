@@ -16,16 +16,16 @@ from container import RegisterSet
 from register import VectorRegister
 from result import BuildResult
 
-from space import DestinationVectorSet, LinearDestinationSet, RegisterBuilder
+from space import TargetVectorSet, TargetSpanSet, RegisterBuilder
 from util import IdFactory, LoggingLevelRouter
 
 
-class RegisterSetSpanBuilder(RegisterBuilder[DestinationVectorSet]):
+class RegisterSetSpanBuilder(RegisterBuilder[TargetVectorSet]):
 
     
     def __init__(
             self,
-            points: DestinationVectorSet,
+            points: TargetVectorSet,
             priming_validator: PrimingValidator | None = PrimingValidator(),
     ):
         """
@@ -36,8 +36,8 @@ class RegisterSetSpanBuilder(RegisterBuilder[DestinationVectorSet]):
         super().__init__(points=points, priming_validator=priming_validator)
         
     @property
-    def points(self) -> LinearDestinationSet:
-        return cast(LinearDestinationSet, self.points)
+    def points(self) -> TargetSpanSet:
+        return cast(TargetSpanSet, self.points)
     
     
     @LoggingLevelRouter.monitor
