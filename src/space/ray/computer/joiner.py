@@ -12,9 +12,8 @@ from __future__ import annotations
 from abc import ABC, abstractmethod
 from typing import Generic, TypeVar
 
-from container.vector.destination.span.container import SpanVectorSet
+from err.space.destination import SpanVectorSet
 from model import Vector
-from space.ray import VectorRay
 from result import ComputationResult
 from toolkit import MathToolkit
 from util import LoggingLevelRouter

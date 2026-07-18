@@ -13,7 +13,7 @@ from __future__ import annotations
 from typing import List, Optional, cast
 
 from container import VectorSet
-from container.vector.destination.span.container import SpanVectorSet
+from err.space.destination import SpanVectorSet
 from err import DestinationSpanComputerException
 from model import Vector
 from register import VectorRegister
