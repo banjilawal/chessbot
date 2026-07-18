@@ -11,6 +11,7 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from err import EmptyException
+from result import MethodResultType
 
 __all__ = [
     # ======================# LIST_EMPTY_ERROR #======================#

@@ -1,49 +1,46 @@
-# src/err/empty/database/exception.py
+# src/err/empty/model/binder/board/exception.py
 
 """
-Module: err.empty.database.exception
+Module: err.empty.model.binder.board.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
 """
 
 from __future__ import annotations
-from typing import Any, Optional
 
-from err import EmptyException
-from result import MethodResultType
+from err import BinderEmptyException
 
 __all__ = [
-    # ======================# DATABASE_EMPTY_ERROR #======================#
-    "DatabaseEmptyException",
+    # ======================# BOARD_TEAM_BINDER_EMPTY_ERROR #======================#
+    "BoardTeamBinderEmptyException",
 ]
-
-# ======================# DATABASE_EMPTY_ERROR #======================#
-class DatabaseEmptyException(EmptyException):
+# ======================# BOARD_TEAM_BINDER_EMPTY_ERROR #======================#
+class BoardTeamBinderEmptyException(BinderEmptyException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required Database is empty.
+        1.  Indicate that a required BoardTeamBinder is empty.
 
     Attributes:
-        msg: Optional[str]
-        var: Optional[str]
-        val: Optional[Any]
-        ex: Optional[Exception]
-        cls_name: Optional[str]
-        cls_mthd: Optional[str]
-        err_code: Optional[str]
-        Mthd_Rslt_Type: Optional[MethodResultType]
-        
+            msg: Optional[str]
+            var: Optional[str]
+            val: Optional[Any]
+            ex: Optional[Exception]
+            cls_name: Optional[str]
+            cls_mthd: Optional[str]
+            err_code: Optional[str]
+            mthd_rslt_type: Optional[MethodResultType]
+            
     Provides:
 
     Super Class:
-        EmptyException
+        BinderEmptyException
     """
-    MSG = "Database cannot be empty."
-    ERR_CODE = "DATABASE_EMPTY_ERROR"
+    MSG = "BoardTeamBinder cannot be empty."
+    ERR_CODE = "BOARD_TEAM_BINDER_EMPTY_ERROR"
     
     def __init__(
             self,

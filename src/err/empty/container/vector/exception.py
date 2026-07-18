@@ -1,7 +1,7 @@
-# src/err/empty/database/exception.py
+# src/err/empty/container/vector/exception.py
 
 """
-Module: err.empty.database.exception
+Module: err.empty.container.vector.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,22 +10,22 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import EmptyException
+from err import ContainerEmptyException
 from result import MethodResultType
 
 __all__ = [
-    # ======================# DATABASE_EMPTY_ERROR #======================#
-    "DatabaseEmptyException",
+    # ======================# VECTOR_SET_EMPTY_ERROR #======================#
+    "VectorSetEmptyException",
 ]
 
-# ======================# DATABASE_EMPTY_ERROR #======================#
-class DatabaseEmptyException(EmptyException):
+# ======================# VECTOR_SET_EMPTY_ERROR #======================#
+class VectorSetEmptyException(ContainerEmptyException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required Database is empty.
+        1.  Indicate that a required VectorSet is empty.
 
     Attributes:
         msg: Optional[str]
@@ -36,14 +36,14 @@ class DatabaseEmptyException(EmptyException):
         cls_mthd: Optional[str]
         err_code: Optional[str]
         Mthd_Rslt_Type: Optional[MethodResultType]
-        
+            
     Provides:
 
     Super Class:
-        EmptyException
+        ContainerEmptyException
     """
-    MSG = "Database cannot be empty."
-    ERR_CODE = "DATABASE_EMPTY_ERROR"
+    MSG = "VectorSet cannot be empty."
+    ERR_CODE = "VECTOR_SET_EMPTY_ERROR"
     
     def __init__(
             self,

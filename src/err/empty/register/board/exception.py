@@ -1,7 +1,7 @@
-# src/err/empty/database/exception.py
+# src/err/empty/register/board/exception.py
 
 """
-Module: err.empty.database.exception
+Module: err.empty.register.board.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,22 +10,22 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import EmptyException
-from result import MethodResultType
+from err import RegisterEmptyException
+from result import methodResultType
 
 __all__ = [
-    # ======================# DATABASE_EMPTY_ERROR #======================#
-    "DatabaseEmptyException",
+    # ======================# BOARD_REGISTER_EMPTY_ERROR #======================#
+    "BoardRegisterEmptyException",
 ]
 
-# ======================# DATABASE_EMPTY_ERROR #======================#
-class DatabaseEmptyException(EmptyException):
+# ======================# BOARD_REGISTER_EMPTY_ERROR #======================#
+class BoardRegisterEmptyException(RegisterEmptyException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required Database is empty.
+        1.  Indicate that a required BoardRegister is empty.
 
     Attributes:
         msg: Optional[str]
@@ -40,10 +40,10 @@ class DatabaseEmptyException(EmptyException):
     Provides:
 
     Super Class:
-        EmptyException
+        RegisterEmptyException
     """
-    MSG = "Database cannot be empty."
-    ERR_CODE = "DATABASE_EMPTY_ERROR"
+    MSG = "BoardRegister cannot be empty."
+    ERR_CODE = "BOARD_REGISTER_EMPTY_ERROR"
     
     def __init__(
             self,

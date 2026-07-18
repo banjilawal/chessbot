@@ -1,7 +1,7 @@
-# src/err/empty/database/exception.py
+# src/err/empty/register/model/arena/exception.py
 
 """
-Module: err.empty.database.exception
+Module: err.empty.register.model.arena.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,22 +10,22 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import EmptyException
+from err import ModelRegisterEmptyExceptionException
 from result import MethodResultType
 
 __all__ = [
-    # ======================# DATABASE_EMPTY_ERROR #======================#
-    "DatabaseEmptyException",
+    # ======================# ARENA_REGISTER_EMPTY_ERROR #======================#
+    "ArenaRegisterEmptyException",
 ]
 
-# ======================# DATABASE_EMPTY_ERROR #======================#
-class DatabaseEmptyException(EmptyException):
+# ======================# ARENA_REGISTER_EMPTY_ERROR #======================#
+class ArenaRegisterEmptyException(RegisterEmptyExceptionException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required Database is empty.
+        1.  Indicate that a required ArenaRegister is empty.
 
     Attributes:
         msg: Optional[str]
@@ -40,10 +40,10 @@ class DatabaseEmptyException(EmptyException):
     Provides:
 
     Super Class:
-        EmptyException
+        ModelRegisterEmptyExceptionException
     """
-    MSG = "Database cannot be empty."
-    ERR_CODE = "DATABASE_EMPTY_ERROR"
+    MSG = "ArenaRegister cannot be empty."
+    ERR_CODE = "ARENA_REGISTER_EMPTY_ERROR"
     
     def __init__(
             self,

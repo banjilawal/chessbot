@@ -10,13 +10,12 @@ version: 1.0.1
 # ============ ERR.EMPTY PACKAGE ===========#
 
 # Packages
-from .arena import *
 from .array import *
-from .binder import *
-from .board import *
+from .container import *
 from .graph import *
+from .model import *
 from .query import *
-from .square import *
+from .register import *
 from .stack import *
 
 # Modules
