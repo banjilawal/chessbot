@@ -19,6 +19,7 @@ from .carrier import *
 from .collider import *
 from .config import *
 from .consistencey import *
+from .container import *
 from .context import *
 from .controller import *
 from .detection import *

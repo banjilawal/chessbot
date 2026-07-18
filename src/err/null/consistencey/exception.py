@@ -24,7 +24,7 @@ class ConsistencyCheckerNullException(NullException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required data-holding objectConsistencyChecker is null.
+        1.  Indicate that a required ConsistencyChecker is null.
 
     Attributes:
         msg: Optional[str]

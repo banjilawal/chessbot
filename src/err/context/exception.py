@@ -10,7 +10,7 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import ModelException
+from err import ChessException
 from result import MethodResultType
 
 
@@ -20,13 +20,13 @@ __all__ = [
 ]
 
 # ======================# CONTEXT_ERROR #======================#
-class ContextException(ModelException):
+class ContextException(ChessException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a ContextNull failed.
+        1.  Indicate that a Context encountered an error.
 
     Attributes:
             msg: Optional[str]
@@ -41,9 +41,9 @@ class ContextException(ModelException):
     Provides:
 
     Super Class:
-        ModelException
+        ChessException
     """
-    MSG = "context's error."
+    MSG = "Context error."
     ERR_CODE = "CONTEXT_ERROR"
     
     def __init__(

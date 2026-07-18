@@ -1,7 +1,7 @@
-# src/err/toolkit/exception.py
+# src/err/container/register/exception.py
 
 """
-Module: err.toolkit.exception
+Module: err.container.register.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,48 +10,50 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import ChessException
+from err import ContainerException
+from result import MethodResultType
+
 
 __all__ = [
-    # ======================# TOOLKIT_ERROR #======================#
-    "ToolkitException",
+    # ======================# REGISTER_SET_ERROR #======================#
+    "RegisterSetException",
 ]
 
-# ======================# TOOLKIT_ERROR #======================#
-class ToolkitException(ChessException):
+# ======================# REGISTER_SET_ERROR #======================#
+class RegisterSetException(ContainerException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a  encountered an error.
+        1.  Indicate that a RegisterSet encountered an error.
 
     Attributes:
-        msg: Optional[str]
-        var: Optional[str]
-        val: Optional[Any]
-        ex: Optional[Exception]
-        cls_name: Optional[str]
-        cls_mthd: Optional[str]
-        err_code: Optional[str]
-        Mthd_Rslt_Type: Optional[MethodResultType]
+            msg: Optional[str]
+            var: Optional[str]
+            val: Optional[Any]
+            ex: Optional[Exception]
+            cls_name: Optional[str]
+            cls_mthd: Optional[str]
+            err_code: Optional[str]
+            mthd_rslt_type: Optional[MethodResultType]
             
     Provides:
 
     Super Class:
-        ChessException
+        ContainerException
     """
-    MSG = "Data object error state."
-    ERR_CODE = "TOOLKIT_ERROR"
+    MSG = "RegisterSet error."
+    ERR_CODE = "REGISTER_SET_ERROR"
     
     def __init__(
             self,
             msg: Optional[str] | None = None,
             var: Optional[str] | None = None,
             val: Optional[Any] | None = None,
-            cls_mthd: Optional[str] | None = None,
-            cls_name: Optional[str] | None = None,
             ex: Optional[Exception] | None = None,
+            cls_name: Optional[str] | None = None,
+            cls_mthd: Optional[str] | None = None,
             err_code: Optional[str] | None = None,
             mthd_rslt_type: Optional[MethodResultType] | None = None,
     ):

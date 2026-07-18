@@ -11,6 +11,7 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from err import ChessException
+from result import MethodResultType
 
 __all__ = [
     # ======================# MODEL_ERROR #======================#
@@ -24,7 +25,7 @@ class ModelException(ChessException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a data-holding object encountered an error.
+        1.  Indicate that a Model encountered an error.
 
     Attributes:
         msg: Optional[str]
@@ -41,7 +42,7 @@ class ModelException(ChessException):
     Super Class:
         ChessException
     """
-    MSG = "Data object error."
+    MSG = "Model error."
     ERR_CODE = "MODEL_ERROR"
     
     def __init__(

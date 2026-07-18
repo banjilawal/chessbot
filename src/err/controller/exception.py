@@ -24,7 +24,7 @@ class ControllerException(ChessException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a data-holding object encountered an error.
+        1.  Indicate that a  encountered an error.
 
     Attributes:
         msg: Optional[str]

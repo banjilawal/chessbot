@@ -5,10 +5,48 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/validator/register/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/validator/register/validator.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/container/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/container/arena/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/container/arena/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/container/board/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/container/board/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/container/coord/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/container/coord/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/container/edge/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/container/edge/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/container/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/container/formation/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/container/formation/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/container/game/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/container/game/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/container/home/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/container/home/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/container/hostage/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/container/hostage/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/container/node/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/container/node/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/container/persona/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/container/persona/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/container/player/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/container/player/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/container/rank/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/container/rank/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/container/schema/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/container/schema/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/container/square/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/container/square/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/container/team/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/container/team/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/container/token/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/container/token/exception.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/validator/model/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/validator/model/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/consistencey/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/consistencey/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/context/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/context/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/controller/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/controller/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/model/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/model/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/consistencey/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/null/consistencey/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/toolkit/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/toolkit/exception.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,7 +102,7 @@
     "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/validator/register",
+    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/err",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
@@ -76,11 +114,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/err" />
+      <recent name="$PROJECT_DIR$/src/blueprint" />
       <recent name="$PROJECT_DIR$/src/validator/register" />
       <recent name="$PROJECT_DIR$/src/space/builder" />
       <recent name="$PROJECT_DIR$/src/space" />
-      <recent name="$PROJECT_DIR$/src/err/validation/space" />
-      <recent name="$PROJECT_DIR$/src/err/validation/space/linear" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/space" />
@@ -774,7 +812,7 @@
       <workItem from="1784040408484" duration="7069000" />
       <workItem from="1784050719673" duration="78000" />
       <workItem from="1784055454795" duration="186991000" />
-      <workItem from="1784319839949" duration="25949000" />
+      <workItem from="1784319839949" duration="28628000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />
@@ -1355,6 +1393,11 @@
           <url>file://$PROJECT_DIR$/src/space/destination/linear/space.py</url>
           <line>48</line>
           <option name="timeStamp" value="270" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/blueprint/container/vector/blueprint.py</url>
+          <line>9</line>
+          <option name="timeStamp" value="271" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
