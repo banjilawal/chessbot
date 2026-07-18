@@ -9,7 +9,7 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from typing import Dict, List, cast
+from typing import Dict, List, Optional, cast
 
 from model import Vector
 from register import ModelRegister
@@ -33,18 +33,16 @@ class VectorRegister(ModelRegister[Vector]):
     Provides:
 
     Super Class:
-        Register
+        ModekRegister
     """
-    _u: Vector
-    _v: Vector
     
-    def __init__(self, u: Vector, v: Vector,):
+    def __init__(self, u: Vector, v: Vector, id: Optional[int] | None = None,):
         """
         Args:
             u: Vector
             v: Vector
         """
-        super().__init__(a=u, b=v)
+        super().__init__(a=u, b=v, id=id)
         
     @property
     def u(self) -> Vector:

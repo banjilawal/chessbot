@@ -1,7 +1,7 @@
-# src/container/vector/destination/container.py
+# src/space/destination/space.py
 
 """
-Module: container.vector.destination.container
+Module: space.destination.space
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -9,7 +9,7 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from typing import  Optional
+from typing import Optional
 
 from container import VectorSet
 from model import Vector
@@ -21,8 +21,7 @@ class DestinationVectorSet:
         -   Data Holder
         
     Responsibilities:
-        1.  Store Vectors that have a common root.
-        2.  Stores the output of SpanSteppers or DestinationSpanComputers.
+        1.  Stores vectors that can be journeyed to from the root.
 
     Attributes:
         root: Vector
@@ -38,15 +37,15 @@ class DestinationVectorSet:
     def __init__(
             self,
             root: Vector,
-            destinations: Optional[VectorSet] | None = VectorSet()
+            destinations: Optional[VectorSet] | None = None,
     ):
         """
         Args:
             root: Vector
-            entries: Optional[Tuple[Vector, ...]]
+            destinations: Optional[VectorSet]
         """
         self._root = root
-        self._destinations = destinations
+        self._destinations = destinations or VectorSet()
         
     @property
     def root(self) -> Vector:

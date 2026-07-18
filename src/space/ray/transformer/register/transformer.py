@@ -9,63 +9,86 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from typing import Type, cast
+from typing import List
 
 from bootstrapper import PrimingValidator
-from container import LinearDestinationSet, RegisterSet
-from err import LinearSpaceRegisterBuilderException, NullException
-from result import BuildResult, MethodResultType
+from container import RegisterSet
+from register import VectorRegister
+from result import BuildResult
+from space import LinearDestinationSet
+from util import IdFactory
 
 
 class LinearSpaceRegisterSetBuilder:
-    _linear_vectors: LinearDestinationSet
+    _destination_set: LinearDestinationSet
     _priming_validator: PrimingValidator
     
     def __init__(
             self,
-            linear_vectors: LinearDestinationSet,
+            destination_set: LinearDestinationSet,
             priming_validator: PrimingValidator | None = PrimingValidator(),
     ):
         """
         Args:
-            linear_vectors: LinearVectorSet,
+            destination_set: LinearVectorSet,
             priming_validator: PrimingValidator            
         """
-        self._linear_vectors = linear_vectors
+        self._destination_set = destination_set
         self._priming_validator = priming_validator
         
         
     def execute(self) -> BuildResult[RegisterSet]:
         method = f"{self.__class__.__name__}.execute"
         
-        priming = self._priming_validator.execute(
-            candidate=self._linear_vectors,
-            target_model=Type[LinearDestinationSet],
-            null_exception=NullException(),
-        )
-        if priming.is_failure:
-            return BuildResult.failure(priming.exception)
-        temp = cast(LinearDestinationSet, priming.payload)
-        self._linear_vectors = temp
+        registers: List[VectorRegister] = []
+        previous = self._destination_set.root
+        current = previous
         
-        if temp.is_empty:
-            return BuildResult.failure(
-                LinearSpaceRegisterBuilderException(
-                    cls_mthd=method,
-                    cls_name=self.__class__.__name__,
-                    msg=LinearSpaceRegisterBuilderException.MSG,
-                    err_code=LinearSpaceRegisterBuilderException.ERR_CODE,
-                    mthd_rslt_type=MethodResultType.BUILD_RESULT,
-                    ex=EmptyLinearVectorSetException(
-                        cls_mthd=method,
-                        cls_name=self.__class__.__name__,
-                        msg=EmptyLinearVectorSetException.MSG,
-                        err_code=EmptyLinearVectorSetException.ERR_CODE,
-                    )
-                )
+        for vector in self._destination_set.destinations:
+            current = vector
+            register = VectorRegister(
+                id=IdFactory.next_id(class_name="VectorRegister"),
+                u=previous,
+                v=current,
             )
-        self._linear_vectors = temp.remove_root_from_destinations()
+            registers.append(register)
+            previous = current
+        return BuildResult.success(
+            RegisterSet(tuple(registers))
+        )
         
-        cursor = self._linear_vectors.root
-        terminus = self
         
+
+        
+
+        
+        
+    # def _validation(self, candidate: Any) -> ValidationResult[LinearDestinationSet]:
+    #     method = f"{self.__class__.__name__}"
+    #     
+    #     priming = self._priming_validator.execute(
+    #         candidate=self._destination_set,
+    #         target_model=Type[LinearDestinationSet],
+    #         null_exception=NullException(),
+    #     )
+    #     if priming.is_failure:
+    #         return ValidationResult.failure(priming.exception)
+    #     destination_set = cast(LinearDestinationSet, priming.payload)
+    #     
+    #     if destination_set.is_empty:
+    #         return BuildResult.failure(
+    #             LinearSpaceRegisterBuilderException(
+    #                 cls_mthd=method,
+    #                 cls_name=self.__class__.__name__,
+    #                 msg=LinearSpaceRegisterBuilderException.MSG,
+    #                 err_code=LinearSpaceRegisterBuilderException.ERR_CODE,
+    #                 mthd_rslt_type=MethodResultType.BUILD_RESULT,
+    #                 ex=EmptyLinearVectorSetException(
+    #                     cls_mthd=method,
+    #                     cls_name=self.__class__.__name__,
+    #                     msg=EmptyLinearVectorSetException.MSG,
+    #                     err_code=EmptyLinearVectorSetException.ERR_CODE,
+    #                 )
+    #             )
+    #         )
+    #     self._destination_set = temp

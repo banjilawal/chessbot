@@ -1,7 +1,7 @@
-# src/container/vector/destination/linear/container.py
+# src/space/destination/linear/space.py
 
 """
-Module: container.vector.destination.linear.container
+Module: space.destination.linear.space
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -11,9 +11,10 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from container import DestinationVectorSet, VectorSet
+
 from model import Vector
 from register import VectorRegister
+from space import DestinationVectorSet
 
 
 class LinearDestinationSet(DestinationVectorSet):

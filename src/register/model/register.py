@@ -9,7 +9,7 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from typing import Generic, TypeVar
+from typing import Generic, Optional, TypeVar, cast
 
 from register import Register
 
@@ -32,13 +32,22 @@ class ModelRegister(Register, Generic[T]):
     Provides:
     
     Super Class:
-        Model
+        Register
     """
     
-    def __init__(self, a: T, b: T,):
+    def __init__(self, a: T, b: T, id: Optional[int] | None= None,):
         """
         Args:
             a: T
             b: T
+            id: Optional[int]
         """
-        super().__init__(a=a, b=b)
+        super().__init__(a=a, b=b, id=id)
+        
+        @property
+        def a(self) -> T:
+            return cast(T, super().a)
+        
+        @property
+        def b(self) -> T:
+            return cast(T, super().a)

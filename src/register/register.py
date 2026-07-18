@@ -9,7 +9,7 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from typing import Any, Dict, List
+from typing import Any, Dict, List, Optional
 
 
 class Register(Any):
@@ -25,18 +25,25 @@ class Register(Any):
     Attributes:
         a: Any
         b: Any
-        to_list: List[Any]:
-        to_dict: Dict[str, Any]:
+        id: Optional[int]
+        to_list: List[Any]
+        to_dict: Dict[str, Any]
         
     Provides:
     
     Super Class:
         Model
     """
-    a: Any
-    b: Any
+    _a: Any
+    _b: Any
+    _id: Optional[int]
     
-    def __init__(self, a: Any, b: Any,):
+    def __init__(
+            self,
+            a: Any,
+            b: Any,
+            id: Optional[int] | None = None,
+    ):
         """
         Args:
             a: Any
@@ -44,6 +51,7 @@ class Register(Any):
         """
         self._a = a
         self._b = b
+        self._id = id
     
     @property
     def a(self) -> Any:
@@ -52,6 +60,10 @@ class Register(Any):
     @property
     def b(self) -> Any:
         return self._b
+    
+    @property
+    def id(self) -> Optional[int]:
+        return self._id
     
     @property
     def to_list(self) -> List[Any]:
