@@ -1,7 +1,7 @@
-# src/validator/model/validator.py
+# src/validator/register/validator.py
 
 """
-Module: validator.model.validator
+Module: validator.register.validator
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -12,12 +12,12 @@ from __future__ import annotations
 from abc import abstractmethod
 from typing import Any
 
-from model import Model
+from register import Register
 from result import ValidationResult
-from validator import Certifier, Validator
+from validator import Validator
 
 
-class ModelValidator(Validator[Model]):
+class RegisterValidator(Validator[Register]):
     """
     Role
         -   Transaction Worker
@@ -26,26 +26,17 @@ class ModelValidator(Validator[Model]):
         -   Validation Process Owner
 
     Responsibilities:
-        1.  Ensure a Model instance is certified safe, reliable and consistent before use.
+        1.  Ensure a Register instance is certified safe, reliable and consistent before use.
 
     Attributes:
-        toolkit: ModelToolkit
         
     Provides:
         -   execute(self, candidate: Any) -> ValidationResult
 
     Super Class:
-        ModelValidator
+        Validator
     """
-    _bootstrapper: Certifier
-    
-    def __init__(self, root_certifier: Certifier):
-        self._bootstrapper = root_certifier
 
-    @property
-    @abstractmethod
-    def root_certifier(self) -> Certifier:
-        pass
     
     @abstractmethod
     def execute(self, candidate: Any) -> ValidationResult:

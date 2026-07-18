@@ -1,7 +1,7 @@
-# src/blueprint/model/vector/blueprint.py
+# src/blueprint/container/vector/blueprint.py
 
 """
-Module: blueprint.model.vector.blueprint
+Module: blueprint.container.vector.blueprint
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -12,13 +12,13 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Type
 
-from blueprint import ModelBlueprint
-
-from model import Vector
+from blueprint import ContainerBlueprint
+from err import VectorNullException
+from container import Vector
 
 
 @dataclass
-class VectorBlueprint(ModelBlueprint[Vector]):
+class VectorSetBlueprint(ContainerBlueprint[Vector]):
     """
     Role:
         -   Container
@@ -35,7 +35,7 @@ class VectorBlueprint(ModelBlueprint[Vector]):
     Provides:
 
      Super Class:
-        ModelBlueprint
+        ContainerBlueprint
      """
     """
     Args:
@@ -45,8 +45,8 @@ class VectorBlueprint(ModelBlueprint[Vector]):
         owner: Vector
         owner_name: str
     """
-    x: int
+    entr: int
     y: int
     null_exception: VectorNullException = VectorNullException()
-    model_class: Vector = Type[Vector]
+    container_class: Vector = Type[Vector]
     owner_name: str = type(owner).__name__
