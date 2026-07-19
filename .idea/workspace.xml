@@ -5,15 +5,38 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/schema/delta/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/schema/delta/schema.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/space/cateoory/linear/axis/east/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/space/cateoory/linear/axis/east/space.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/space/stepper/axis/east/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/space/stepper/axis/east/linear.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/space/stepper/axis/north/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/space/stepper/axis/north/linear.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/space/stepper/axis/south/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/space/stepper/axis/south/linear.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/space/stepper/axis/west/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/space/stepper/axis/west/linear.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/schema/stepper/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/schema/stepper/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/space/cateoory/linear/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/cateoory/linear/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/space/cateoory/linear/category/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/space/cateoory/linear/category/axis/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/cateoory/linear/axis/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/space/cateoory/linear/category/axis/space.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/cateoory/linear/axis/space.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/space/cateoory/linear/category/space.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/cateoory/linear/space.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/space/cateoory/linear/quadrant/northeast/space.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/cateoory/linear/quadrant/northeast/space.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/schema/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/schema/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/space/cateoory/linear/axis/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/cateoory/linear/axis/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/space/cateoory/linear/axis/space.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/cateoory/linear/axis/space.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/space/cateoory/linear/quadrant/space.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/cateoory/linear/quadrant/space.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/space/computer/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/computer/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/space/computer/stepper/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/stepper/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/space/computer/stepper/axis/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/stepper/axis/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/space/computer/stepper/axis/linear.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/stepper/axis/linear.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/space/computer/stepper/linear.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/stepper/linear.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/space/computer/stepper/quadrant/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/stepper/quadrant/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/space/computer/stepper/quadrant/linear.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/stepper/quadrant/linear.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/space/computer/stepper/quadrant/northeast/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/stepper/quadrant/northeast/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/space/computer/stepper/quadrant/northeast/linear.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/stepper/quadrant/northeast/linear.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/space/computer/stepper/quadrant/northwest/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/stepper/quadrant/northwest/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/space/computer/stepper/quadrant/northwest/linear.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/stepper/quadrant/northwest/linear.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/space/computer/stepper/quadrant/southeast/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/stepper/quadrant/southeast/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/space/computer/stepper/quadrant/southeast/linear.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/stepper/quadrant/southeast/linear.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/space/computer/stepper/quadrant/southwest/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/stepper/quadrant/southwest/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/space/computer/stepper/quadrant/southwest/linear.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/stepper/quadrant/southwest/linear.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,7 +92,7 @@
     "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/schema",
+    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/space/computer/stepper/axis",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
@@ -81,18 +104,18 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/space/computer/stepper/axis" />
       <recent name="$PROJECT_DIR$/src/schema" />
+      <recent name="$PROJECT_DIR$/src/space/computer/stepper/axis/north" />
+      <recent name="$PROJECT_DIR$/src/space/cateoory/linear/axis/east" />
       <recent name="$PROJECT_DIR$/src/space/computer/stepper/quadrant" />
-      <recent name="$PROJECT_DIR$/src/space/computer/stepper/quadrant/northeast" />
-      <recent name="$PROJECT_DIR$/src/space/cateoory/linear/quadrant" />
-      <recent name="$PROJECT_DIR$/src/space/cateoory/linear/category/quadrant/northeast" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/space" />
       <recent name="$PROJECT_DIR$/src/space/cateoory/linear" />
       <recent name="$PROJECT_DIR$/src/builder/space" />
       <recent name="$PROJECT_DIR$/src/space/cateoory/linear/endpoint/quadrant" />
       <recent name="$PROJECT_DIR$/src/space/cateoory/linear/endpoint/axial" />
-      <recent name="$PROJECT_DIR$/src/space/cateoory/linear/category/quadrant" />
     </key>
   </component>
   <component name="RunManager" selected="Python.stack">
@@ -779,7 +802,7 @@
       <workItem from="1784040408484" duration="7069000" />
       <workItem from="1784050719673" duration="78000" />
       <workItem from="1784055454795" duration="186991000" />
-      <workItem from="1784319839949" duration="88125000" />
+      <workItem from="1784319839949" duration="90867000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />
@@ -1380,6 +1403,11 @@
           <url>file://$PROJECT_DIR$/src/space/cateoory/basis/maneuver/__init__.py</url>
           <line>12</line>
           <option name="timeStamp" value="274" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/space/stepper/axis/north/linear.py</url>
+          <line>9</line>
+          <option name="timeStamp" value="275" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

@@ -11,7 +11,5 @@ version: 1.0.1
 
 # Packages
 from .computer import *
-from .stepper import *
-
 
 # Modules

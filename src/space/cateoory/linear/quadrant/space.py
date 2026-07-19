@@ -41,8 +41,6 @@ class Quadrant(LinearSpace):
         """
         super().__init__(endpoints=endpoints, stepper=stepper)
         
-
-    
     @property
     def stepper(self) -> QuadrantStepper:
         return cast(QuadrantStepper, self.stepper)

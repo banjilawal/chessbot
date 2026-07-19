@@ -11,16 +11,10 @@ from __future__ import annotations
 
 from typing import List, Optional, cast
 
-
-from err import AxisException
-from model import Scalar, Vector
-from register import VectorRegister
-from result import ComputationResult, MethodResultType
-from space import AxisEndpointFactory, AxisStepper, LinearSpace, LinearTargetSet, TargetSpanSet
-from util import LoggingLevelRouter
+from space import Axis
 
 
-class Axis(LinearSpace):
+class EastAxis(Axis):
     """
     Role:
         -   Dataset

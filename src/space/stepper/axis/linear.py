@@ -1,7 +1,7 @@
-# src/space/linear/stepper/axis/linear.py
+# src/space/stepper/axis/linear.py
 
 """
-Module: space.linear.stepper.axis.linear
+Module: space.stepper.axis.linear
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -9,18 +9,17 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from typing import Dict, cast
+from typing import cast
 
 from err import AxisStepperException
 from model import Vector
 from register import VectorRegister
 from result import ComputationResult, MethodResultType
-from space import Axis, LinearStepper
-
+from space import LinearStepper
 from util import LoggingLevelRouter
 
 
-class AxisStepper(LinearStepper[Axis]):
+class AxisStepper(LinearStepper):
     """
     Role:
         -   Computation Worker
@@ -29,29 +28,14 @@ class AxisStepper(LinearStepper[Axis]):
         1.  Produce the next vector on axis by taking a step of size delta_vector.
 
     Attributes:
-        DELTA: Dict[str, Vector]
         delta: Vector
 
     Provides:
         -   next(current: Vector) -> ComputationResult[Vector]
-        -   east() -> AxisStepper
-        -   north() -> AxisStepper
-        -   west() -> AxisStepper
-        -   south() -> AxisStepper
 
     Super Class:
         Stepper
-    
-    WARNING:
-        *****===ONLY_INSTANTIATE_WITH_THE_FACTORY_METHODS===*****
     """
-    DELTA: Dict[str, Vector] = {
-        "east": Vector(x=1, y=0),
-        "north": Vector(x=0, y=-1),
-        "south": Vector(x=0, y=1),
-        "west": Vector(x=-1, y=0),
-    }
-
     _delta: Vector
     
     def __init__(self, delta: Vector):
@@ -60,7 +44,6 @@ class AxisStepper(LinearStepper[Axis]):
             delta: Vector
         """
         super().__init__()
-        """INTERNAL: Use factory methods instead of direct constructor."""
         self._delta = delta
         
     @property
@@ -103,35 +86,4 @@ class AxisStepper(LinearStepper[Axis]):
             )
         # --- Forward the work product to the caller. ---#
         return ComputationResult.success(cast(Vector, computation.payload))
-    
-    @classmethod
-    def east(cls) -> AxisStepper:
-        """
-        AxisStepper for going east (right), towards num_columns - 1.
-            -   delta ==> dx(1, 0)
-        """
-        return cls(delta=cls.DELTA["east"])
-    
-    @classmethod
-    def north(cls) -> AxisStepper:
-        """
-        AxisStepper for going north (up), towards 0
-            -   delta ==> dy(0, -1)
-        """
-        return cls(delta=cls.DELTA["north"])
-    
-    @classmethod
-    def west(cls) -> AxisStepper:
-        """
-        AxisStepper for going west (left), towards 0
-            -   delta ==> dx(-1, 0)
-        """
-        return cls(delta=cls.DELTA["west"])
-    
-    @classmethod
-    def south(cls) -> AxisStepper:
-        """
-        AxisStepper for going south (down), towards 0
-            -   delta ==> dy(0, 1)
-        """
-        return cls(delta=cls.DELTA["south"])
+ 
