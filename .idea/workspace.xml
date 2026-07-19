@@ -5,17 +5,28 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/builder/space/linear/endpoint/axial/east/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/builder/space/linear/endpoint/axial/north/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/builder/space/linear/endpoint/axial/north/builder.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/builder/space/linear/endpoint/axial/south/builder.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/builder/space/linear/endpoint/axial/west/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/builder/space/linear/endpoint/axial/west/builder.py" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/err/builder/space/endpoint/linear/east/__init__.py" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/err/builder/space/endpoint/linear/north/__init__.py" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/err/builder/space/endpoint/linear/north/exception.py" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/err/builder/space/endpoint/linear/south/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/builder/space/endpoint/linear/south/exception.py" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/err/builder/space/endpoint/linear/west/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/builder/space/endpoint/linear/west/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/schema/orientation/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/schema/orientation/axis/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/schema/orientation/axis/schema.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/schema/orientation/quadrant/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/schema/orientation/quadrant/schema.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/builder/space/linear/endpoint/axial/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/builder/space/linear/endpoint/axial/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/builder/space/linear/endpoint/axial/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/builder/space/linear/endpoint/axial/builder.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/builder/space/linear/endpoint/axial/southern/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/builder/space/linear/endpoint/axial/south/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/builder/space/linear/endpoint/axial/southern/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/builder/space/linear/endpoint/axial/south/builder.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/builder/space/linear/endpoint/axial/southern/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/builder/space/linear/endpoint/axial/east/builder.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/builder/space/linear/endpoint/quadrant/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/builder/space/linear/endpoint/quadrant/builder.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/err/builder/space/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/builder/space/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/err/builder/space/endpoint/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/builder/space/endpoint/__init__.py" afterDir="false" />
@@ -26,12 +37,14 @@
       <change beforePath="$PROJECT_DIR$/src/err/builder/space/endpoint/endpoint/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/builder/space/endpoint/linear/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/err/builder/space/endpoint/endpoint/axis/__init__.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/err/builder/space/endpoint/endpoint/axis/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/builder/space/endpoint/linear/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/builder/space/endpoint/endpoint/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/builder/space/endpoint/linear/south/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/builder/space/endpoint/endpoint/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/builder/space/endpoint/linear/east/exception.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/err/builder/space/endpoint/endpoint/quadrant/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/builder/space/endpoint/endpoint/quadrant/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/builder/space/endpoint/linear/east/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/builder/space/endpoint/endpoint/quadrant/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/builder/space/endpoint/linear/west/exception.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/err/builder/space/endpoint/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/builder/space/endpoint/exception.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/err/builder/space/endpoint/quadrant/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/builder/space/endpoint/quadrant/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/err/builder/space/endpoint/quadrant/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/builder/space/endpoint/quadrant/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/schema/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/schema/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/schema/terminus/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/schema/terminus/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/space/stepper/quadrant/northeast/linear.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/stepper/quadrant/northeast/linear.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/space/stepper/quadrant/northwest/linear.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/stepper/quadrant/northwest/linear.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/space/stepper/quadrant/southeast/linear.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/stepper/quadrant/southeast/linear.py" afterDir="false" />
@@ -91,7 +104,7 @@
     "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/builder/space/linear/endpoint/axial",
+    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/schema",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
@@ -103,11 +116,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/schema" />
       <recent name="$PROJECT_DIR$/src/builder/space/linear/endpoint/axial" />
       <recent name="$PROJECT_DIR$/src/err/builder/space/endpoint/linear" />
       <recent name="$PROJECT_DIR$/src/err/builder/space/endpoint/linear/south" />
       <recent name="$PROJECT_DIR$/src/err/builder/space" />
-      <recent name="$PROJECT_DIR$/src/err/builder" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/schema/terminus/quadrant" />
@@ -801,7 +814,7 @@
       <workItem from="1784040408484" duration="7069000" />
       <workItem from="1784050719673" duration="78000" />
       <workItem from="1784055454795" duration="186991000" />
-      <workItem from="1784319839949" duration="98682000" />
+      <workItem from="1784319839949" duration="100900000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />

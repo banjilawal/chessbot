@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from builder import AxisEndpointFactory, VectorBuilder
+from builder import VectorBuilder
 from err import SouthAxisEndPointBuilderException
 from model import Vector
 from register import VectorRegister

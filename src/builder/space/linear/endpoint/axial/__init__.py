@@ -10,7 +10,10 @@ version: 1.0.1
 # =========== BUILDER.SPACE.LINEAR.ENDPOINT.AXIS PACKAGE ===========#
 
 # Packages
+from .east import *
+from .north import *
 from .south import *
+from .west import *
 
 # Modules
 from .builder import AxisEndpointFactory

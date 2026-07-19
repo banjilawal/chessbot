@@ -45,6 +45,8 @@ class AxisEndpointFactory(LinearEndpointFactory):
     _vector_service: VectorService
     _orientation: AxisOrientation
     
+    _
+    
     def __init__(
             self,
             origin: Vector,
