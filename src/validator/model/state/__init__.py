@@ -19,6 +19,7 @@ from .node import *
 from .square import *
 from .team import *
 from .token import *
+from .vector import *
 
 
 # Modules

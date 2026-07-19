@@ -105,7 +105,7 @@ class AxisSpaceFactory(Builder[Axis]):
     @LoggingLevelRouter.monitor
     def execute(self) -> BuildResult[Axis]:
         
-        request: BuildResult
+        request: BuildResult = BuildResult.failure()
         if self.orientation == AxisOrientation.NORTH:
             request = NorthAxisBuilder.execute(origin=self._origin)
         if self.orientation == AxisOrientation.SOUTH:

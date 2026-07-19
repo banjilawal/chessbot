@@ -1,16 +1,19 @@
-# src/space/linear/segment/quadrant/__init__.py
+# src/builder/endpoint/quadrant/__init__.py
 
 """
-Module: space.linear.segment.quadrant.__init__
+Module: builder.endpoint.quadrant.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
 """
 
-# =========== SPACE.LINEAR.SEGMENT.QUADRANT PACKAGE ===========#
+# =========== BUILDER.ENDPOINT.QUADRANT PACKAGE ===========#
 
 # Packages
-
+from .northeast import *
+from .northwest import *
+from .southeast import *
+from .west import *
 
 # Modules
-from .builder import QuadrantEndpointFactory
+from .factory import QuadrantEndpointFactory

@@ -130,9 +130,9 @@ class CartesianPontValidator(ChooserValidator[CartesianPoint]):
             )
         # Pick a route for integrity testing the operand's entity.
         validation_result = ValidationResult.failure(NodeValidationRouteException())
-        if operand.is_coord_point:
+        if operand.is_coord_selector:
             validation_result = self.toolkit.coord.validator.execute(operand.entity)
-        if operand.is_vector_point:
+        if operand.is_vector_selector:
             validation_result = self.toolkit.vector.validator.execute(operand.entity)
    
         # Handle the case that, the entity is not safe to use.

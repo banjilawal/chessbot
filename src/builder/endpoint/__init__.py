@@ -10,8 +10,7 @@ version: 1.0.1
 # =========== BUILDER.ENDPOINT PACKAGE ===========#
 
 # Packages
-from .axial import *
-from .quadrant import *
+from .space import *
 
 # Modules
-from .linear import LinearEndpointFactory
+from builder.endpoint.space.factory.linear.linear import LinearEndpointFactory

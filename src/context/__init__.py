@@ -19,6 +19,7 @@ from .game import *
 from .home import *
 from .hostage import *
 from .node import *
+from .orientation import *
 from .persona import *
 from .player import *
 from .rank import *

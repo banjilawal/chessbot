@@ -15,6 +15,7 @@ from .context import *
 from .model import *
 from .number import *
 from .query import *
+from .selector import *
 from .space import *
 from .string import *
 

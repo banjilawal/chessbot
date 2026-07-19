@@ -53,7 +53,7 @@ class EastAxisBuilder(Builder[EastAxis]):
             )
         endpoints = cast(VectorRegister, endpoint_build.payload)
         
-        stepper_build = SteperFactory(orientation=orientation).execute()
+        stepper_build = StepperFactory(orientation=orientation).execute()
         if endpoint_build.is_failure:
             return BuildResult.failure(
                 EastAxisBuilderException(

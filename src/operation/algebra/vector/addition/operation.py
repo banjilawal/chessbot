@@ -9,16 +9,12 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from controller import WorkerRegistryController
-from result import ComputationResult
+from operation import Operation
+from selector import VectorSelector
 from util import LoggingLevelRouter
-from err import VectorAdditionException
-from toolkit import VectorOperandToolkit
-from operation import Operation, VectorRegisterValidator
-from model import Coord, CoordBlueprint, RegisterContentType, Vector, VectorBlueprint, PointRegister
 
 
-class AddVector(Operation[PointRegister]):
+class AddVector(Operation[VectorSelector]):
     """
     Role:
         -   Operation

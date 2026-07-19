@@ -74,17 +74,17 @@ class CartesianRegisterBuilder(Builder[PointRegister]):
     
     @property
     def is_vector_register(self) -> bool:
-        return self._a.is_vector_point and self._b.is_vector_point
+        return self._a.is_vector_selector and self._b.is_vector_selector
     
     @property
     def is_coord_register(self) -> bool:
-        return self._a.is_coord_point and self._b.is_coord_point
+        return self._a.is_coord_selector and self._b.is_coord_selector
     
     @property
     def is_mismatched_register(self) -> bool:
         return  (
-                (not (self._a.is_coord_point and self._b.is_coord_point)) or
-                (not (self._a.is_vector_point and self.b.is_vector_point))
+                (not (self._a.is_coord_selector and self._b.is_coord_selector)) or
+                (not (self._a.is_vector_selector and self.b.is_vector_selector))
         )
     
     def __eq__(self, other):
