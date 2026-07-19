@@ -12,5 +12,5 @@ version: 1.0.1
 # Packages
 
 # Modules
-from .schema import QuadrantTerminus
+from schema.terminus.quadrant.schema import QuadrantTerminus
 

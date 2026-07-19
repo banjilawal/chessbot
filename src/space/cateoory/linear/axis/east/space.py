@@ -11,7 +11,8 @@ from __future__ import annotations
 
 from typing import List, Optional, cast
 
-from space import Axis
+from register import VectorRegister
+from space import Axis, EastAxisStepper
 
 
 class EastAxis(Axis):
@@ -46,7 +47,7 @@ class EastAxis(Axis):
     def __init__(
             self,
             endpoints: VectorRegister,
-            stepper: Optional[AxisStepper] | None = AxisStepper(),
+            stepper: Optional[EastAxisStepper] | None = EastAxisStepper(),
     ):
         """
         Args:
@@ -61,106 +62,10 @@ class EastAxis(Axis):
         return self._endpoints
     
     @property
-    def stepper(self) -> AxisStepper:
-        return cast(AxisStepper, self.stepper)
+    def stepper(self) -> EastAxisStepper:
+        return cast(EastAxisStepper, self.stepper)
     
-    @property
-    def origin(self) -> Vector:
-        return self._endpoints.u
-    
-    @property
-    def terminus(self) -> Vector:
-        return self._endpoints.v
-    
-    @LoggingLevelRouter.monitor
-    def distance(self) -> ComputationResult[Scalar]:
-        """
-        Get the Euclidean distance between the Space's endpoints.
-
-        Action:
-            1.  Send an exception chain in the ComputationResult if the math toolkit
-                cannot produce a solution.
-            2.  Otherwise, send the computed vector in the success result.
-        Args:
-        Returns:
-            ComputationResult[Scalar]
-        Raises:
-             AxisException
-        """
-        method = f"{self.__class__.__name__}.distance"
-        
-        
-        # Request the Euclidean distance
-        computation = self.math.euclidean_distance.execute(
-            register=VectorRegister(u=self.origin, v=self.terminus)
-        )
-        # Handle the case that, the request is not satisfied.
-        if computation.is_failure:
-            # Send an exception chain in the result.
-            return ComputationResult.failure(
-                AxisException(
-                    cls_mthd=method,
-                    cls_name=self.__class__.__name__,
-                    msg=AxisException.MSG,
-                    err_code=AxisException.ERR_CODE,
-                    mthd_rslt_type=MethodResultType.COMPUTATION_RESULT,
-                    ex=computation.exception,
-                ),
-            )
-        # --- Forward the work product to the caller. ---#
-        return ComputationResult.success(cast(Scalar, computation.payload))
-    
-    
-    @LoggingLevelRouter.monitor
-    def target_vectors(self) -> ComputationResult[LinearTargetSet]:
-        """
-        Get DestinationVectors from the origin to the terminus
-
-        Action:
-            1.  Send an exception chain in the ComputationResult if the stepper aborts.
-            2.  Otherwise, send the computed vector in the success result.
-        Args:
-        Returns:
-            ComputationResult[LinearVectorSet]
-        Raises:
-             AxisException
-        """
-        method = f"{self.__class__.__name__}.next"
-        
-        # --- Set up looping variables ---#
-        terminus = self.terminus
-        cursor = self.origin
-        solutions: List[Vector] = []
-        
-        # --- Less than is not a good choice for iterating through vectors.  ---#
-        while cursor != terminus:
-            # --- Request the next Vector for the stepper. ---#
-            computation = self._stepper.next(cursor)
-            
-            # Handle the case that, the computation is aborted.
-            if computation.is_failure:
-                # Send an exception chain in the result.
-                return ComputationResult.failure(
-                    AxisException(
-                        cls_mthd=method,
-                        cls_name=self.__class__.__name__,
-                        msg=AxisException.MSG,
-                        err_code=AxisException.ERR_CODE,
-                        mthd_rslt_type=MethodResultType.COMPUTATION_RESULT,
-                        ex=computation.exception,
-                    ),
-                )
-            # --- Cast and append the curso to the list. ---#
-            cursor = cast(Vector, computation.payload)
-            solutions.append(cursor)
-        # Create the DestinationVector set.
-        linear_vectors = TargetSpanSet(
-            root=self.origin,
-            terminus=self.terminus,
-            entries=tuple(solutions)
-        )
-        # --- Forward the work product to the caller. ---#
-        return ComputationResult.success(linear_vectors)
+ 
 
     
     @classmethod

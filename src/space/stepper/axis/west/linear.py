@@ -10,7 +10,7 @@ version: 1.0.1
 from __future__ import annotations
 
 from model import Vector
-from schema.delta.schema import AxisDelta
+from schema import AxisDelta
 from space import AxisStepper
 
 
@@ -20,7 +20,7 @@ class WestAxisStepper(AxisStepper):
         -   Computation Worker
 
     Responsibilities:
-        1.  Produce the next vector on axis by taking a step of size delta_vector.
+        1.  Produce the next vector on axis west of the origin.
 
     Attributes:
         delta: Vector

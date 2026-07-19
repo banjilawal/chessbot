@@ -13,14 +13,13 @@ from __future__ import annotations
 from typing import List, Optional, cast
 
 from container import VectorSet
-from err import QuadrantException
+from err import LinearSpaceException
 from model import Scalar, Vector
 from register import VectorRegister
 from result import ComputationResult, MethodResultType
-from space import LinearStepper, LinearTargetSet, TargetSpanSet, Space
+from space import LinearStepper, LinearTargetSet, Space
 from toolkit import MathToolkit
 from util import LoggingLevelRouter
-
 
 
 class LinearSpace(Space):
@@ -29,12 +28,11 @@ class LinearSpace(Space):
         -   Dataset
 
     Responsibilities:
-        1.  Define points in a bounded space.
-        2.  Provide a function that steps through every point in the plane,
+        1.  Get the series of targets on a line between the origin and terminus
 
     Attributes:
-        segment: VectorRegister
-        stepper: LinearStepper
+        endpoints: VectorRegister
+        stepper: Stepper
         math_toolkit: Optional[MathToolkit]
 
     Provides:
@@ -102,7 +100,7 @@ class LinearSpace(Space):
         Returns:
             ComputationResult[Scalar]
         Raises:
-             QuadrantException
+             LinearSpaceException
         """
         method = f"{self.__class__.__name__}.distance"
         
@@ -114,11 +112,11 @@ class LinearSpace(Space):
         if computation.is_failure:
             # Send an exception chain in the result.
             return ComputationResult.failure(
-                QuadrantException(
+                LinearSpaceException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=QuadrantException.MSG,
-                    err_code=QuadrantException.ERR_CODE,
+                    msg=LinearSpaceException.MSG,
+                    err_code=LinearSpaceException.ERR_CODE,
                     mthd_rslt_type=MethodResultType.COMPUTATION_RESULT,
                     ex=computation.exception,
                 ),
@@ -138,7 +136,7 @@ class LinearSpace(Space):
         Returns:
             ComputationResult[LinearVectorSet]
         Raises:
-             QuadrantException
+             LinearSpaceException
         """
         method = f"{self.__class__.__name__}.next"
         
@@ -156,11 +154,11 @@ class LinearSpace(Space):
             if computation.is_failure:
                 # Send an exception chain in the result.
                 return ComputationResult.failure(
-                    QuadrantException(
+                    LinearSpaceException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        msg=QuadrantException.MSG,
-                        err_code=QuadrantException.ERR_CODE,
+                        msg=LinearSpaceException.MSG,
+                        err_code=LinearSpaceException.ERR_CODE,
                         mthd_rslt_type=MethodResultType.COMPUTATION_RESULT,
                         ex=computation.exception,
                     ),

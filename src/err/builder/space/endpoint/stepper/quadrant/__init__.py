@@ -1,0 +1,15 @@
+# src/err/builder/linear/stepper/quadrant/__init__.py
+
+"""
+Module: err.builder.linear.stepper.quadrant.__init__
+Author: Banji Lawal
+Created: 2026-04-04
+version: 1.0.1
+"""
+
+# ============ ERR.BUILDER.LINEAR.STEPPER.QUADRANT PACKAGE ===========#
+
+# Packages
+
+# Modules
+from .exception import QuadrantStepperException

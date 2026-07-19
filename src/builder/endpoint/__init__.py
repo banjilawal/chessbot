@@ -11,7 +11,6 @@ version: 1.0.1
 
 # Packages
 from .builder import *
-from .endpoint import *
 from .ray import *
 
 # Modules

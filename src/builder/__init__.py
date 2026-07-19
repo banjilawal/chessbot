@@ -24,6 +24,7 @@ from .node import *
 from .rank import *
 from .scalar import *
 from .snapshot import *
+from .space import *
 from .endpoint import *
 from .square import *
 from .team import *
