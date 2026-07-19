@@ -10,14 +10,15 @@ version: 1.0.1
 from __future__ import annotations
 
 from dataclasses import dataclass
-from typing import Type, cast
+from typing import Optional, Type, cast
 
 from blueprint import RegisterBlueprint
 from chooser import CartesianPoint
+from err import CartesianRegisterNullException, RegisterNullException
 from register import CartesianRegister
 
 
-@dataclass
+
 class CartesianRegisterBlueprint(RegisterBlueprint[CartesianRegister]):
     """
     Role:
@@ -29,6 +30,8 @@ class CartesianRegisterBlueprint(RegisterBlueprint[CartesianRegister]):
     Attributes:
         a: CartesianPoint
         b: CartesianPoint
+        model_class: Optional[Type[CartesianRegister]]
+        null_exception: Optional[CartesianRegisterNullException]
     
     Provides:
     
@@ -42,19 +45,26 @@ class CartesianRegisterBlueprint(RegisterBlueprint[CartesianRegister]):
             self,
             a: CartesianPoint,
             b: CartesianPoint,
-            model_class: Type[CartesianRegister] = CartesianRegister,
+            model_class: Optional[Type[CartesianRegister]] | None = CartesianRegister,
+            null_exception: Optional[CartesianRegisterNullException] |
+                            None = CartesianRegisterNullException(),
     ):
         """
         Args:
             a: CartesianPoint
             b: CartesianPoint
-            model_class: Type[CartesianPoint]
+            model_class: Optional[Type[CartesianRegister]]
+            null_exception: Optional[CartesianRegisterNullException]
         """
-        super().__init__(a=a, b=b, model_class=model_class)
+        super().__init__(a=a, b=b, model_class=model_class, null_exception=null_exception)
     
     @property
-    def mode_class(self) -> Type[CartesianPoint]:
+    def model_class(self) -> Type[CartesianPoint]:
         return cast(Type[CartesianPoint], self.model_class)
+    
+    @property
+    def null_exception(self) -> RegisterNullException:
+        return cast(RegisterNullException, self.null_exception)
     
     @property
     def a(self) -> CartesianPoint:

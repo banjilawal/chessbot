@@ -60,7 +60,7 @@ class SquareBlueprint(StateModelBlueprint[Square]):
         self._formation = formation
     
     @property
-    def mode_class(self) -> Type[Square]:
+    def model_class(self) -> Type[Square]:
         return cast(Type[Square], self.model_class)
     
     @property

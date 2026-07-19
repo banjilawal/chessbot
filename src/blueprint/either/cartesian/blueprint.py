@@ -56,7 +56,7 @@ class CartesianPointBlueprint(EitherBlueprint[CartesianPoint]):
         self._vector = vector
     
     @property
-    def mode_class(self) -> Type[CartesianPoint]:
+    def model_class(self) -> Type[CartesianPoint]:
         return cast(Type[CartesianPoint], self.model_class)
     
     @property

@@ -5,65 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/blueprint/container/register/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/blueprint/container/register/blueprint.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/container/tuple/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/container/tuple/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/empty/container/tuple/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/empty/container/tuple/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/container/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/container/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/container/register/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/container/register/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/container/tuple/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/container/tuple/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/container/vector/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/container/vector/exception.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blueprint/blueprint.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/blueprint/blueprint.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blueprint/container/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/blueprint/container/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blueprint/container/binder/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blueprint/container/binder/arena/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blueprint/container/binder/arena/blueprint.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blueprint/container/binder/board/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blueprint/container/binder/board/blueprint.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/blueprint/container/blueprint.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/blueprint/container/blueprint.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blueprint/container/coord/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blueprint/container/coord/blueprint.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blueprint/container/path/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blueprint/container/path/blueprint.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blueprint/container/rank/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blueprint/container/rank/blueprint.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blueprint/container/scalar/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blueprint/container/scalar/blueprint.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blueprint/container/state/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blueprint/container/state/arena/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blueprint/container/state/arena/bluelprint.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blueprint/container/state/blueprint.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blueprint/container/state/board/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blueprint/container/state/board/blueprint.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blueprint/container/state/edge/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blueprint/container/state/edge/blueprint.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blueprint/container/state/maneuver/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blueprint/container/state/maneuver/blueprint.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blueprint/container/state/node/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blueprint/container/state/node/blueprint.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blueprint/container/state/player/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blueprint/container/state/player/blueprint.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blueprint/container/state/square/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blueprint/container/state/square/blueprint.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blueprint/container/state/team/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blueprint/container/state/team/blueprint.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blueprint/container/state/token/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blueprint/container/state/token/blueprint.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/blueprint/container/register/blueprint.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/blueprint/container/register/blueprint.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/blueprint/container/vector/blueprint.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/blueprint/container/vector/blueprint.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/container/register/container.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/container/register/container.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/container/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/container/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/empty/container/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/empty/container/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/null/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/null/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/space/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/space/builder/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/builder/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/space/computer/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/computer/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/blueprint/register/blueprint.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/blueprint/register/blueprint.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/blueprint/register/cartesian/blueprint.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/blueprint/register/cartesian/blueprint.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/blueprint/register/identity/blueprint.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/blueprint/register/identity/blueprint.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/blueprint/register/square/blueprint.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/blueprint/register/square/blueprint.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -829,7 +778,7 @@
       <workItem from="1784040408484" duration="7069000" />
       <workItem from="1784050719673" duration="78000" />
       <workItem from="1784055454795" duration="186991000" />
-      <workItem from="1784319839949" duration="54613000" />
+      <workItem from="1784319839949" duration="60105000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />

@@ -9,9 +9,10 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from typing import Type, cast
+from typing import Optional, Type, cast
 
 from blueprint import RegisterBlueprint
+from err import RegisterNullException, SquareRegisterEntityNullException, SquareRegisterNullException
 from model import Square
 from register import SquareRegister
 
@@ -27,6 +28,8 @@ class SquareRegisterBlueprint(RegisterBlueprint[SquareRegister]):
     Attributes:
         origin: Square
         destination: Square
+        model_class: Type[SquareRegister]
+        null_exception: Optional[SquareRegisterNullException]
 
     Provides:
 
@@ -39,17 +42,25 @@ class SquareRegisterBlueprint(RegisterBlueprint[SquareRegister]):
             origin: Square,
             destination: Square,
             model_class: Type[SquareRegister] = SquareRegister,
+            null_exception: Optional[SquareRegisterNullException] |
+                            None = SquareRegisterEntityNullException(),
     ):
         """
         Args:
             origin: Square
             destination: Square
             model_class: Type[SquareRegister]
+            null_exception: Optional[SquareRegisterNullException]
         """
-        super().__init__(a=origin, b=destination, model_class=model_class)
+        super().__init__(
+            a=origin,
+            b=destination,
+            model_class=model_class,
+            null_exception=null_exception,
+        )
     
     @property
-    def mode_class(self) -> Type[SquareRegister]:
+    def model_class(self) -> Type[SquareRegister]:
         return cast(Type[SquareRegister], self.model_class)
     
     @property
@@ -59,3 +70,7 @@ class SquareRegisterBlueprint(RegisterBlueprint[SquareRegister]):
     @property
     def destination(self) -> Square:
         return cast(Square, self.b)
+    
+    @property
+    def null_exception(self) -> RegisterNullException:
+        return cast(SquareRegisterNullException, self._null_exception)

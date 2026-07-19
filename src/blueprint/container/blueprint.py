@@ -45,7 +45,7 @@ class ContainerBlueprint(Blueprint[Container]):
     def __init__(
             self,
             entries: Tuple[T, ...],
-            container_class: Type[Container[T]],
+            container_class: Type[Container[T]] = Container,
             null_exception: ContainerNullException | None = ContainerNullException(),
             tuple_null_exception: Optional[TupleNullException] | None = TupleNullException(),
     ):

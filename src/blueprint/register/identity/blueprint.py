@@ -12,6 +12,7 @@ from __future__ import  annotations
 from typing import Type, cast
 
 from blueprint import RegisterBlueprint
+from err import IdentityRegisterNullException
 from register import IdentityRegister
 
 
@@ -27,7 +28,7 @@ class IdentityRegisterBlueprint(RegisterBlueprint[IdentityRegister]):
         id: int
         name: str
         model_class: Type[IdentityRegister]
-
+        null_exception: IdentityRegisterNullException
     Provides:
 
     Super Class:
@@ -39,17 +40,25 @@ class IdentityRegisterBlueprint(RegisterBlueprint[IdentityRegister]):
             id: int,
             name: str,
             model_class: Type[IdentityRegister] = IdentityRegister,
+            null_exception: IdentityRegisterNullException |
+                            None = IdentityRegisterNullException(),
     ):
         """
         Args:
             id: int
             name: str
             model_class: Type[IdentityRegister]
+            null_exception: IdentityRegisterNullException
         """
-        super().__init__(a=id, b=name, model_class=model_class)
+        super().__init__(
+            a=id,
+            b=name,
+            model_class=model_class,
+            null_exception=null_exception,
+        )
     
     @property
-    def mode_class(self) -> Type[IdentityRegister]:
+    def model_class(self) -> Type[IdentityRegister]:
         return cast(Type[IdentityRegister], self.model_class)
     
     @property

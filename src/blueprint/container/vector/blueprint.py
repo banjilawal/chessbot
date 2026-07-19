@@ -40,8 +40,8 @@ class VectorSetBlueprint(ContainerBlueprint[Vector]):
     
     def __init__(
             self,
-            entries: Tuple[Vector, ...],
-            container_class: Type[VectorSet],
+            entries: Tuple[Vector],
+            container_class: Type[VectorSet] = VectorSet,
             null_exception: VectorSetNullException | None = VectorSetNullException(),
     ):
         """

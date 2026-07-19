@@ -22,26 +22,26 @@ class RegisterSetBlueprint(ContainerBlueprint[Register]):
     Role:
         -   Container
         -   DTO
-
+        
     Responsibilities:
         1.  Provides values for instantiating a Register object.
         2.  DTO
-
+    
     Attributes:
         entries: Tuple[Register, ...],
         container_class: Type[RegisterSet],
         null_exception: RegisterSetNullException
-            
+    
     Provides:
-
-     Super Class:
+    
+    Super Class:
         ContainerBlueprint
-     """
+    """
     
     def __init__(
             self,
             entries: Tuple[Register],
-            container_class: Type[RegisterSet],
+            container_class: Type[RegisterSet] = RegisterSet,
             null_exception: RegisterSetNullException | None = RegisterSetNullException(),
     ):
         """

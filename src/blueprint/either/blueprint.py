@@ -40,5 +40,5 @@ class EitherBlueprint(Blueprint[Chooser]):
         super().__init__(model_class=model_class)
     
     @property
-    def mode_class(self) -> Type[Chooser]:
+    def model_class(self) -> Type[Chooser]:
         return cast(Type[Chooser], self.model_class)

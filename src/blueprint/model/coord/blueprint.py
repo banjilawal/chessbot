@@ -52,7 +52,7 @@ class CoordBlueprint(ModelBlueprint[Coord]):
         self._column = column
         
     @property
-    def mode_class(self) -> Type[Coord]:
+    def model_class(self) -> Type[Coord]:
         return cast(Type[Coord], self.model_class)
     
     @property

@@ -61,7 +61,7 @@ class TeamBlueprint(StateModelBlueprint[Team]):
         self._archetype = archetype
         
     @property
-    def mode_class(self) -> Type[Team]:
+    def model_class(self) -> Type[Team]:
         return cast(Type[Team], self.model_class)
     
     @property

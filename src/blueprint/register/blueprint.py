@@ -12,42 +12,56 @@ from __future__ import annotations
 from typing import Any, Type, cast
 
 from blueprint import Blueprint
+from err import RegisterNullException
 from register import Register
 
 
 class RegisterBlueprint(Blueprint[Register]):
     """
     Role:
-        -   Container
-
+    -   Container
+    
     Responsibilities:
-        1.  Provides values for instantiating a B object.
-
+        1.  Provides values for instantiating a Register object.
+    
     Attributes:
         a: Any
         b: Any
         model_type: Type[Register]
-
-    Provides:
-
-     Super Class:
-        Blueprint
-     """
+        null_exception: RegisterNullException
     
-    def __init__(self, a: Any, b: Any, model_class: Type[Register]):
+    Provides:
+    
+    Super Class:
+        Blueprint
+    """
+    
+    def __init__(
+            self,
+            a: Any,
+            b: Any,
+            model_class: Type[Register] = Register,
+            null_exception: RegisterNullException | None = RegisterNullException(),
+    ):
         """
         Args:
             a: Any
             b: Any
             model_class: Type[Register]
+            null_exception: RegisterNullException
         """
-        super().__init__(model_class=model_class)
+        super().__init__(model_class=model_class, null_exception=null_exception)
         self._a = a
         self._b = b
+        
     
     @property
-    def mode_class(self) -> Type[Register]:
+    def model_class(self) -> Type[Register]:
         return cast(Type[Register], self.model_class)
+    
+    @property
+    def null_exception(self) -> RegisterNullException:
+        return cast(RegisterNullException, self.null_exception)
     
     @property
     def a(self) -> Any:
