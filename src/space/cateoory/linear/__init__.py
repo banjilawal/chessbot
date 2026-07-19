@@ -10,7 +10,9 @@ version: 1.0.1
 # =========== SPACE.LINEAR PACKAGE ===========#
 
 # Packages
-from .category import *
+from .axis import *
+from .quadrant import *
 
 
 # Modules
+from .space import LinearSpace

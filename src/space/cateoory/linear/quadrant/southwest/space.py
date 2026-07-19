@@ -24,7 +24,7 @@ class NorthEastQuadrant(Quadrant):
         2.  Provide the next point in the direction of travel.
 
     Attributes:
-        bounds: QuadrantBounds
+        endpoints: VectorRegister
         stepper: QuadrantStepper
 
     Provides:

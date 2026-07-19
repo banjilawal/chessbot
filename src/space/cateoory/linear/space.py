@@ -1,7 +1,7 @@
-# src/space/linear/quadrant/northeast/space.py
+# src/space/linear/linear.py
 
 """
-Module: space.linear.quadrant.northeast.space
+Module: space.linear.category.linear
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -9,71 +9,85 @@ version: 1.0.1
 
 from __future__ import annotations
 
+
 from typing import List, Optional, cast
 
-from builder import QuadrantEndpointFactory
-from model import Vector
+from container import VectorSet
+from err import QuadrantException
+from model import Scalar, Vector
 from register import VectorRegister
-from space import NortheastQuadrantStepper
+from result import ComputationResult, MethodResultType
+from space import LinearStepper, LinearTargetSet, TargetSpanSet, Space
+from toolkit import MathToolkit
+from util import LoggingLevelRouter
 
 
-class NorthEastQuadrant(Quadrant):
+
+class LinearSpace(Space):
     """
     Role:
         -   Dataset
 
     Responsibilities:
-        1.  Define a bounded linear function from 2D space.
-        2.  Provide the next point in the direction of travel.
+        1.  Define points in a bounded space.
+        2.  Provide a function that steps through every point in the plane,
 
     Attributes:
-        endpoints: VectorRegister
-        stepper: QuadrantStepper
+        segment: VectorRegister
+        stepper: LinearStepper
+        math_toolkit: Optional[MathToolkit]
 
     Provides:
-        -   def next(current: Vector) -> ComputationResult
-        -   def northeast(origin: Vector) -> Quadrant
-        -   def northwest(origin: Vector) -> Quadrant
-        -   def southeast(origin: Vector) -> Quadrant
-        -   def southwest(origin: Vector) -> Quadrant
 
     Super Class:
-        Space
-
-    WARNING:
-        *****===ONLY_INSTANTIATE_WITH_THE_FACTORY_METHODS===*****
     """
     _endpoints: VectorRegister
-    _stepper: Optional[NortheastQuadrantStepper]
+    _stepper: LinearStepper
+    _math_toolkit: Optional[MathToolkit]
     
     def __init__(
             self,
             endpoints: VectorRegister,
-            stepper: Optional[NortheastQuadrantStepper] |
-                     None = NortheastQuadrantStepper(),
+            stepper: LinearStepper,
+            math_toolkit: Optional[MathToolkit] | None = MathToolkit(),
+    ):
         """
         Args:
-            endpoints: QuadrantBounds
-            stepper: QuadrantStepper
+            endpoints: VectorRegister
+            stepper: Stepper
+            math_toolkit: Optional[MathToolkit]
         """
-        super().__init__(endpoints=endpoints, stepper=stepper)
-        """INTERNAL: Use factory methods instead of direct constructor."""
+        self._endpoints = endpoints
+        self._stepper = stepper
+        self._math_toolkit = math_toolkit
         
     @property
-    def bounds(self) -> QuadrantEndpointFactory:
-        return cast(QuadrantEndpointFactory, self.bounds)
-    
-    @property
-    def stepper(self) -> NortheastQuadrantStepper:
-        return cast(NortheastQuadrantStepper, self.stepper)
+    def endpoints(self) -> VectorRegister:
+        return self._endpoints
     
     @property
     def origin(self) -> Vector:
-        return self.origin
+        return self._endpoints.u
     
     @property
     def terminus(self) -> Vector:
-        return self.bounds.terminus
+        return self._endpoints.v
+    
+    @property
+    def stepper(self) -> LinearStepper:
+        return self._stepper
+    
+    @property
+    def math(self) -> MathToolkit:
+        return self._math_toolkit
+    
+    @property
+    def is_empty(self) -> bool:
+        return self._endpoints.is_empty
+    
+    @property
+    def is_cycle(self) -> bool:
+        return self._endpoints.is_cycle
     
     @LoggingLevelRouter.monitor
     def distance(self) -> ComputationResult[Scalar]:
@@ -113,7 +127,7 @@ class NorthEastQuadrant(Quadrant):
         return ComputationResult.success(cast(Scalar, computation.payload))
     
     @LoggingLevelRouter.monitor
-    def destination_vectors(self) -> ComputationResult[LinearTargetSet]:
+    def target_vectors(self) -> ComputationResult[LinearTargetSet]:
         """
         Get DestinationVectors from the origin to the terminus
 
@@ -124,7 +138,7 @@ class NorthEastQuadrant(Quadrant):
         Returns:
             ComputationResult[LinearVectorSet]
         Raises:
-             AxisException
+             QuadrantException
         """
         method = f"{self.__class__.__name__}.next"
         
@@ -142,11 +156,11 @@ class NorthEastQuadrant(Quadrant):
             if computation.is_failure:
                 # Send an exception chain in the result.
                 return ComputationResult.failure(
-                    AxisException(
+                    QuadrantException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        msg=AxisException.MSG,
-                        err_code=AxisException.ERR_CODE,
+                        msg=QuadrantException.MSG,
+                        err_code=QuadrantException.ERR_CODE,
                         mthd_rslt_type=MethodResultType.COMPUTATION_RESULT,
                         ex=computation.exception,
                     ),
@@ -154,79 +168,12 @@ class NorthEastQuadrant(Quadrant):
             # --- Cast and append the curso to the list. ---#
             cursor = cast(Vector, computation.payload)
             solutions.append(cursor)
+        
         # Create the DestinationVector set.
+        target_set = VectorSet(tuple(solutions))
         linear_vectors = LinearTargetSet(
-            root=self.origin,
-            entries=tuple(solutions)
+            endpoints=self.endpoints,
+            targets=target_set
         )
         # --- Forward the work product to the caller. ---#
         return ComputationResult.success(linear_vectors)
-
-    @classmethod
-    def northeast(
-            cls,
-            origin: Vector,
-    ) -> NorthEastQuadrant:
-        """
-        Create a 2D space
-
-        Bounds:
-            northeast => [u, Vector(num_columns - 1, 0)], (i, 0)
-        Functions:
-            f(x) = x + 1
-            g(x) = -2x + 1
-        """
-        return cls(
-            stepper=QuadrantStepper.northeast(),
-            endpoints=QuadrantEndpointFactory.northeast(origin=origin)
-        )
-    
-    @classmethod
-    def northwest(cls, origin: Vector) -> Quadrant:
-        """
-        Create a 2D space
-
-        Bounds:
-            northwest => [u, Vector(0, 0)], (i, 0)
-        Functions:
-            f(x) = x - 1
-            g(x) = -2x + 1
-        """
-        return cls(
-            stepper=QuadrantStepper.northwest(),
-            endpoints=QuadrantEndpointFactory.northwest(origin=origin)
-        )
-    
-    @classmethod
-    def southeast(cls, origin: Vector) -> Quadrant:
-        """
-        Create a 2D space
-
-        Bounds:
-            southeast => [u, Vector(num_columns - 1, num_rows - 1)], (i, 0)
-        Functions:
-            f(x) = x + 1
-            g(x) = 2x + 1
-        """
-        return cls(
-            stepper=QuadrantStepper.southeast(),
-            endpoints=QuadrantEndpointFactory.southeast(origin=origin)
-        )
-    
-    @classmethod
-    def southwest(cls, origin: Vector) -> Quadrant:
-        """
-        Create a 2D space
-
-        Bounds:
-            southwest => [u, Vector(0, num_rows - 1)]
-        Functions:
-            f(x) = x - 1
-            g(x) = 2x + 1
-        """
-        return cls(
-            stepper=QuadrantStepper.southwest(),
-            endpoints=QuadrantEndpointFactory.southwest(origin=origin)
-        )
-        
-    

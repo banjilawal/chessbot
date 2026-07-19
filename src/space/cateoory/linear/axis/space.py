@@ -1,4 +1,4 @@
-# src/space/linear/category/axis/space.py
+# src/space/linear/axis/space.py
 
 """
 Module: space.linear.category.axis.space
