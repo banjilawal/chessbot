@@ -16,7 +16,7 @@ from err import AxisException
 from model import Scalar, Vector
 from register import VectorRegister
 from result import ComputationResult, MethodResultType
-from space import AxisSegment, AxisStepper, LinearSpace, TargetSpanSet
+from space import AxisEndpointFactory, AxisStepper, LinearSpace, TargetSpanSet
 from util import LoggingLevelRouter
 
 
@@ -46,25 +46,25 @@ class Axis(LinearSpace):
     WARNING:
         *****===ONLY_INSTANTIATE_WITH_THE_FACTORY_METHODS===*****
     """
-    _segment: AxisSegment
+    _endpoints: AxisEndpointFactory
     _stepper: AxisStepper
     
     def __init__(
             self,
-            segment: AxisSegment,
+            endpoints: AxisEndpointFactory,
             stepper: Optional[AxisStepper] | None = AxisStepper(),
     ):
         """
         Args:
-            segment: AxisLinear_Section
+            endpoints: AxisLinear_Section
             stepper: AxisStepper
         """
-        super().__init__(segment=segment, stepper=stepper)
+        super().__init__(endpoints=endpoints, stepper=stepper)
     """INTERNAL: Use factory methods instead of direct constructor."""
     
     @property
-    def linear_section(self) -> AxisSegment:
-        return cast(AxisSegment, self.linear_section)
+    def linear_section(self) -> AxisEndpointFactory:
+        return cast(AxisEndpointFactory, self.linear_section)
     
     @property
     def stepper(self) -> AxisStepper:
@@ -183,7 +183,7 @@ class Axis(LinearSpace):
         """
         return cls(
             stepper=AxisStepper.east(),
-            segment=AxisSegment.east(origin=origin),
+            endpoints=AxisEndpointFactory.east(origin=origin),
         )
     
     @classmethod
@@ -199,7 +199,7 @@ class Axis(LinearSpace):
         """
         return cls(
             stepper=AxisStepper.east(),
-            segment=AxisSegment.north(origin=origin)
+            endpoints=AxisEndpointFactory.north(origin=origin)
         )
     
     @classmethod
@@ -215,7 +215,7 @@ class Axis(LinearSpace):
         """
         return cls(
             stepper=AxisStepper.east(),
-            segment=AxisSegment.south(origin=origin)
+            endpoints=AxisEndpointFactory.south(origin=origin)
         )
     
     @classmethod
@@ -231,6 +231,6 @@ class Axis(LinearSpace):
         """
         return cls(
             stepper=AxisStepper.west(),
-            segment=AxisSegment.west(origin=origin)
+            endpoints=AxisEndpointFactory.west(origin=origin)
         )
     

@@ -14,4 +14,4 @@ from .axis import *
 from .quadrant import *
 
 # Modules
-from .span import LinearSpace
+from .space import LinearSpace

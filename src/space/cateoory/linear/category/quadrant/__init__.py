@@ -14,3 +14,4 @@ version: 1.0.1
 
 # Modules
 from .span import Quadrant
+from space.cateoory.linear.endpoint.quadrant.factory import

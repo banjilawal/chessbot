@@ -16,6 +16,7 @@ from .either import *
 from .model import *
 from .quadrant import *
 from .register import *
+from .space import *
 from .validation import *
 
 # Modules

@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-
+from container import VectorSet
 from model import Vector
 from register import VectorRegister
 from space import TargetVectorSet
