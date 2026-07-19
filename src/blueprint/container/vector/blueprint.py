@@ -9,15 +9,14 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from dataclasses import dataclass
-from typing import Type
+from typing import Tuple, Type, cast
 
 from blueprint import ContainerBlueprint
-from err import VectorNullException
-from container import Vector
+from container import VectorSet
+from err import VectorSetNullException
+from model import Vector
 
 
-@dataclass
 class VectorSetBlueprint(ContainerBlueprint[Vector]):
     """
     Role:
@@ -29,24 +28,42 @@ class VectorSetBlueprint(ContainerBlueprint[Vector]):
         2.  DTO
 
     Attributes:
-        x: int
-        y: int
+        entries: Tuple[Vector, ...],
+        container_class: Type[VectorSet],
+        null_exception: VectorSetNullException
             
     Provides:
 
      Super Class:
         ContainerBlueprint
      """
-    """
-    Args:
-        x: int
-        y: int
-        null_exception: VectorNullException
-        owner: Vector
-        owner_name: str
-    """
-    entr: int
-    y: int
-    null_exception: VectorNullException = VectorNullException()
-    container_class: Vector = Type[Vector]
-    owner_name: str = type(owner).__name__
+    
+    def __init__(
+            self,
+            entries: Tuple[Vector, ...],
+            container_class: Type[VectorSet],
+            null_exception: VectorSetNullException | None = VectorSetNullException(),
+    ):
+        """
+        Args:
+            entries: Tuple[Vector, ...],
+            container_class: Type[VectorSet],
+            null_exception: VectorSetNullException
+        """
+        super().__init__(
+            entries=entries,
+            container_class=container_class,
+            null_exception=null_exception,
+        )
+        
+    @property
+    def entries(self) -> Tuple[Vector]:
+        return cast(Tuple[Vector], self.entries)
+    
+    @property
+    def container_class(self) -> VectorSet:
+        return cast(VectorSet, self.container_class)
+    
+    @property
+    def null_exception(self) -> VectorSetNullException:
+        return cast(VectorSetNullException, self.null_exception)

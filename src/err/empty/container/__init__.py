@@ -10,6 +10,8 @@ version: 1.0.1
 # ============ ERR.EMPTY.CONTAINER PACKAGE ===========#
 
 # Packages
+from .register import *
+from .tuple import *
 from .vector import *
 
 

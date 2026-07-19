@@ -11,6 +11,7 @@ version: 1.0.1
 
 # Packages
 from .register import *
+from .tuple import *
 from .vector import *
 
 # Modules

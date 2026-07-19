@@ -10,10 +10,8 @@ version: 1.0.1
 # =========== SPACE.COMPUTER PACKAGE ===========#
 
 # Packages
-from space.computer.category.axis import *
-from .segment import *
-from space.computer.category.quadrant import *
+from .computer import *
 from .stepper import *
-from .terminus import *
+
 
 # Modules

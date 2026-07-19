@@ -10,11 +10,7 @@ version: 1.0.1
 # =========== BLUEPRINT.CONTAINER PACKAGE ===========#
 
 # Packages
-from .binder import *
-from .coord import *
-from .rank import *
-from .scalar import *
-from .state import *
+from .register import *
 from .vector import *
 
 # Modules

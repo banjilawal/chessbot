@@ -10,10 +10,10 @@ version: 1.0.1
 # =========== SPACE PACKAGE ===========#
 
 # Packages
-from space.cateoory.basis import *
 from .builder import *
+from .cateoory import *
+from .computer import *
 from .target import *
-from space.cateoory.linear import *
 from .ray import *
 
 # Modules

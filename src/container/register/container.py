@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Iterator, Optional, Tuple, cast
 
 from container import Container
-from model import Coord, Register
+from register import Register
 
 
 class RegisterSet(Container[Register]):
