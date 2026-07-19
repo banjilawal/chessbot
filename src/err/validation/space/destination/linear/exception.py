@@ -10,22 +10,22 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import DestinationVectorSetValidatorException
+from err import TargetVectorSetValidatorException
 from result import MethodResultType
 
 __all__ = [
     # ======================# ARENA_SPACE_VALIDATOR_FAILURE #======================#
-    "LinearDestinationSetValidatorException",
+    "LinearTargetSetValidatorException",
 ]
 
 # ======================# ARENA_SPACE_VALIDATOR_FAILURE #======================#
-class LinearDestinationSetValidatorException(DestinationVectorSetValidatorException):
+class LinearTargetSetValidatorException(TargetVectorSetValidatorException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a candidate failed LinearDestinationSetValidator test.
+        1.  Indicate that a candidate failed LinearTargetSetValidator test.
 
     Attributes:
         msg: Optional[str]
@@ -40,9 +40,9 @@ class LinearDestinationSetValidatorException(DestinationVectorSetValidatorExcept
     Provides:
 
     Super Class:
-        DestinationVectorSetValidatorException
+        TargetVectorSetValidatorException
     """
-    MSG = "LinearDestinationSet validation failure."
+    MSG = "LinearTargetSet validation failure."
     ERR_CODE = "ARENA_SPACE_VALIDATOR_FAILURE"
     
     def __init__(

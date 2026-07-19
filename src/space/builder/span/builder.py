@@ -30,7 +30,7 @@ class RegisterSetSpanBuilder(RegisterBuilder[TargetVectorSet]):
     ):
         """
         Args:
-            points: DestinationVectorSet,
+            points: TargetVectorSet,
             priming_validator: PrimingValidator            
         """
         super().__init__(points=points, priming_validator=priming_validator)

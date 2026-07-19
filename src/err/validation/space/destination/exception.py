@@ -15,17 +15,17 @@ from result import MethodResultType
 
 __all__ = [
     # ======================# MODEL_SPACE_VALIDATOR_FAILURE #======================#
-    "DestinationVectorSetValidatorException",
+    "TargetVectorSetValidatorException",
 ]
 
 # ======================# MODEL_SPACE_VALIDATOR_FAILURE #======================#
-class DestinationVectorSetValidatorException(SpaceValidatorException):
+class TargetVectorSetValidatorException(SpaceValidatorException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a candidate failed DestinationVectorSetValidator test.
+        1.  Indicate that a candidate failed TargetVectorSetValidator test.
 
     Attributes:
         msg: Optional[str]
@@ -42,7 +42,7 @@ class DestinationVectorSetValidatorException(SpaceValidatorException):
     Super Class:
         SpaceValidatorException
     """
-    MSG = "DestinationVectorSet validation failure."
+    MSG = "TargetVectorSet validation failure."
     ERR_CODE = "MODEL_SPACE_VALIDATOR_FAILURE"
     
     def __init__(

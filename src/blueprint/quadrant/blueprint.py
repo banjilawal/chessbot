@@ -13,7 +13,7 @@ from abc import ABC
 from typing import Type, cast
 
 from blueprint import Blueprint
-from space.cateoory.linear.category.quadrant import KnightSpace
+from space.cateoory.linear.quadrant import KnightSpace
 from model import Vector
 
 

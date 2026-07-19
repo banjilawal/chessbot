@@ -10,11 +10,9 @@ version: 1.0.1
 # ============ ERR.NULL.SPACE PACKAGE ===========#
 
 # Packages
-
-from .destination import *
 from .linear import *
 from .span import *
-
+from .target import *
 
 
 # Modules

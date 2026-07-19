@@ -14,4 +14,4 @@ from .linear import *
 
 
 # Modules
-from .exception import DestinationVectorSetEmptyException
+from .exception import TargetVectorSetEmptyException

@@ -9,17 +9,15 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from typing import cast
 
 from err import QuadrantStepperException
 from model import Vector
-from register import NumberRegister
 from result import ComputationResult, MethodResultType
-from space import LinearStepper, Quadrant
+from space import LinearStepper
 from util import LoggingLevelRouter
 
 
-class QuadrantStepper(LinearStepper[Quadrant]):
+class QuadrantStepper(LinearStepper):
     """
     Role:
         -   Computation Worker
@@ -57,32 +55,17 @@ class QuadrantStepper(LinearStepper[Quadrant]):
         1.  Produce y from the  range of x in a seres projected from the quadrant's origin.
 
     Attributes:
-        ENTRY: Dict[str, NumberRegister]
-        
         x_step: int
         slope: int
 
     Provides:
         -   def next(current: Vector) -> ComputationResult[Vector]
-        -   def northeast() -> QuadrantStepper
-        -   def northwest() -> QuadrantStepper
-        -   def southwest() -> QuadrantStepper
-        -   def southeast() -> QuadrantStepper
 
     Super Class:
         Stepper
-
-    WARNING:
-        *****===ONLY_INSTANTIATE_WITH_THE_FACTORY_METHODS===*****
     """
-    ENTRY = {
-        "northeast": NumberRegister(a=1, b=-1),
-        "northwest": NumberRegister(a=-1, b=-1),
-        "southwest": NumberRegister(a=-1, b=1),
-        "southeast": NumberRegister(a=1, b=1,)
-    }
-    _register: NumberRegister
-    
+    _x_step: int
+    _slope: int
     
     def __init__(self, x_step: int, slope: int,):
         """
@@ -91,16 +74,16 @@ class QuadrantStepper(LinearStepper[Quadrant]):
             slope: int
         """
         super().__init__()
-        """INTERNAL: Use factory methods instead of direct constructor."""
-        self._register = NumberRegister(a=x_step, b=slope)
+        self._x_step = x_step
+        self._slope = slope
         
     @property
     def x_step(self) -> int:
-        return self._register.a
+        return self._x_step
     
     @property
     def slope(self) -> int:
-        return self._register.b
+        return self._slope
     
     @LoggingLevelRouter.monitor
     def next(self, current: Vector) -> ComputationResult[Vector]:
@@ -143,53 +126,3 @@ class QuadrantStepper(LinearStepper[Quadrant]):
             )
         # --- Forward the work product to the caller. ---#
         return ComputationResult.success(cast(Vector, build.payload))
-    
-    
-    @classmethod
-    def northeast(cls) -> QuadrantStepper:
-        """
-        QuadrantStepper for going northeast toward top left corner (0, 0)
-            -   x_step = -1,
-            -   slope = -1
-        """
-        return cls(
-            x_step=cls.ENTRY["northeast"].a,
-            slope=cls.ENTRY["northeast"].b,
-        )
-        
-    @classmethod
-    def northwest(cls) -> QuadrantStepper:
-        """
-        QuadrantStepper for going northeast toward top right corner (num_rows - 1, 0)
-            -   x_step = 1,
-            -   slope = 1
-        """
-        return cls(
-            x_step=cls.ENTRY["northwest"].a,
-            slope=cls.ENTRY["northwest"].b,
-        )
-        
-    @classmethod
-    def southwest(cls) -> QuadrantStepper:
-        """
-        QuadrantStepper for going northeast toward bottom left corner (0, num_columns - 1)
-            -   x_step = -1,
-            -   slope = 1
-        """
-        return cls(
-            x_step=cls.ENTRY["southwest"].a,
-            slope=cls.ENTRY["southwest"].b,
-        )
-        
-    @classmethod
-    def southeast(cls) -> QuadrantStepper:
-        """
-        QuadrantStepper for going northeast toward bottom right corner (num_rows - 1, num_columns - 1)
-            -   x_step = 1,
-            -   slope = 1
-        """
-        return cls(
-            x_step=cls.ENTRY["southeast"].a,
-            slope=cls.ENTRY["southeast"].b,
-        )
- 

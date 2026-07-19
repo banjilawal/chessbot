@@ -16,6 +16,7 @@ from .board import *
 from .coord import *
 from .dto import *
 from .edge import *
+from .endpoint import *
 from .game import *
 from .graph import *
 from .hostage import *
@@ -23,6 +24,7 @@ from .node import *
 from .rank import *
 from .scalar import *
 from .snapshot import *
+from .endpoint import *
 from .square import *
 from .team import *
 from .token import *

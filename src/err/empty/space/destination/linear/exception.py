@@ -10,22 +10,22 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import DestinationVectorSetEmptyException
+from err import TargetVectorSetEmptyException
 from result import MethodResultType
 
 __all__ = [
     # ======================# ARENA_SPACE_EMPTY_ERROR #======================#
-    "LinearDestinationSetEmptyException",
+    "LinearTargetSetEmptyException",
 ]
 
 # ======================# ARENA_SPACE_EMPTY_ERROR #======================#
-class LinearDestinationSetEmptyException(DestinationVectorSetEmptyException):
+class LinearTargetSetEmptyException(TargetVectorSetEmptyException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required LinearDestinationSet is empty.
+        1.  Indicate that a required LinearTargetSet is empty.
 
     Attributes:
         msg: Optional[str]
@@ -40,9 +40,9 @@ class LinearDestinationSetEmptyException(DestinationVectorSetEmptyException):
     Provides:
 
     Super Class:
-        DestinationVectorSetEmptyException
+        TargetVectorSetEmptyException
     """
-    MSG = "LinearDestinationSet cannot be empty."
+    MSG = "LinearTargetSet cannot be empty."
     ERR_CODE = "ARENA_SPACE_EMPTY_ERROR"
     
     def __init__(

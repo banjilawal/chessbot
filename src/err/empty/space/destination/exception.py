@@ -15,17 +15,17 @@ from result import MethodResultType
 
 __all__ = [
     # ======================# MODEL_SPACE_EMPTY_ERROR #======================#
-    "DestinationVectorSetEmptyException",
+    "TargetVectorSetEmptyException",
 ]
 
 # ======================# MODEL_SPACE_EMPTY_ERROR #======================#
-class DestinationVectorSetEmptyException(SpaceEmptyException):
+class TargetVectorSetEmptyException(SpaceEmptyException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required DestinationVectorSet is empty.
+        1.  Indicate that a required TargetVectorSet is empty.
 
     Attributes:
         msg: Optional[str]
@@ -42,7 +42,7 @@ class DestinationVectorSetEmptyException(SpaceEmptyException):
     Super Class:
         SpaceEmptyException
     """
-    MSG = "DestinationVectorSet cannot be empty."
+    MSG = "TargetVectorSet cannot be empty."
     ERR_CODE = "MODEL_SPACE_EMPTY_ERROR"
     
     def __init__(

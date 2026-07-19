@@ -16,7 +16,7 @@ from err import AxisException
 from model import Scalar, Vector
 from register import VectorRegister
 from result import ComputationResult, MethodResultType
-from space import AxisEndpointFactory, AxisStepper, LinearSpace, TargetSpanSet
+from space import AxisEndpointFactory, AxisStepper, LinearSpace, LinearTargetSet, TargetSpanSet
 from util import LoggingLevelRouter
 
 
@@ -118,7 +118,7 @@ class Axis(LinearSpace):
     
     
     @LoggingLevelRouter.monitor
-    def target_vectors(self) -> ComputationResult[TargetSpanSet]:
+    def target_vectors(self) -> ComputationResult[LinearTargetSet]:
         """
         Get DestinationVectors from the origin to the terminus
 

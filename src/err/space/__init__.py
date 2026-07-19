@@ -14,6 +14,7 @@ from .conversion import *
 from .linear import *
 from .ray import *
 from .span import *
+from .target import *
 
 # Modules
 from .exception import SpaceException

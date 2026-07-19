@@ -74,6 +74,6 @@ class QuadrantTerminus(Enum):
     
     @property
     def terminus(self) -> Vector:
-        return self._vector
+        return self._terminus
 
 

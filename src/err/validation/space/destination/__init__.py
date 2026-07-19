@@ -14,4 +14,4 @@ from .linear import *
 
 
 # Modules
-from .exception import DestinationVectorSetValidatorException
+from .exception import TargetVectorSetValidatorException

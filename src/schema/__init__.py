@@ -13,6 +13,7 @@ version: 1.0.1
 from .archetype import *
 from .formation import *
 from .persona import *
+from .stepper import *
 from .terminus import *
 
 # Modules

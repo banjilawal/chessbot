@@ -39,7 +39,7 @@ class LinearSpace(Space):
 
     Super Class:
     """
-    _endpoints: Segment
+    _endpoints: VectorRegister
     _stepper: LinearStepper
     _math_toolkit: Optional[MathToolkit]
     
