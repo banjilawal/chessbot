@@ -9,7 +9,7 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from schema.stepper.schema import QuadrantStepFunction
+from schema import QuadrantStepFunction
 from space import QuadrantStepper
 
 

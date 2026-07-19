@@ -15,6 +15,7 @@ from .linear import *
 from .ray import *
 from .span import *
 from .target import *
+from .endpoint import *
 
 # Modules
 from .exception import SpaceBuilderException

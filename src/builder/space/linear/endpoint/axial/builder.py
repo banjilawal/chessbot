@@ -11,19 +11,19 @@ from __future__ import annotations
 
 from typing import Optional
 
-import setting
-from builder import LinearEndpointFactory, VectorBuilder
+from service import LinearEndpointFactory, VectorService
 
+from err import AxisEndpointFactoryException
 from model import Vector
 from register import VectorRegister
-from schema.terminus.axis import AxisTerminus
+from result import BuildResult, MethodResultType
+from schema import AxisOrientation
 
 
-
-class AxisEndpointBuilder(LinearEndpointFactory):
+class AxisEndpointFactory(LinearEndpointFactory):
     """
     Role:
-        -   Builder
+        -   Service
         -   Integrity Management
 
     Responsibilities:
@@ -31,7 +31,7 @@ class AxisEndpointBuilder(LinearEndpointFactory):
 
     Attributes:
         _origin: Vector
-        _vector_builder: VectorBuilder
+        _vector_service: VectorService
 
     Provides:
         -   def eastern_endpoints() -> VectorRegister
@@ -42,29 +42,59 @@ class AxisEndpointBuilder(LinearEndpointFactory):
     Super Class:
     """
     _origin: Vector
-    _vector_builder: VectorBuilder
+    _vector_service: VectorService
+    _orientation: AxisOrientation
     
     def __init__(
             self,
             origin: Vector,
-            vector_builder: Optional[VectorBuilder] | None = VectorBuilder()
+            orientation: AxisOrientation,
+            vector_service: Optional[VectorService] | None = VectorService()
     ):
         """
         Args:
             origin: Vector
-            vector_builder: Optional[VectorBuilder]
+            vector_service: Optional[VectorService]
         """
         self._origin = origin
+        self._orientation = orientation
+        self._vector_service = vector_service
         
     @property
     def origin(self) -> Vector:
         return self._origin
     
     @property
-    def vector_builder(self) -> VectorBuilder:
-        return self._vector_builder
+    def vector_service(self) -> VectorService:
+        return self._vector_service
     
-    def eastern_endpoints(self) -> VectorRegister:
+    @property
+    def orientation(self) -> AxisOrientation:
+        return self._orientation
+    
+    def eastern_endpoints(self) -> BuildResult[VectorRegister]:
+        method = f"{self.__class__.__name__}.execute"
+        
+        # Handle the case that the origin is not safe to use.
+        validation = self._vector_service.validator.execute(
+            candidate=self._origin
+        )
+        # Send the exception chain in the result.
+        if validation.is_failure:
+            return BuildResult.failure(
+                AxisEndpointFactoryException(
+                    cls_mthd=method,
+                    cls_name=self.__class__name__,
+                    msg=AxisEndpointFactoryException.MSG,
+                    err_code=AxisEndpointFactory.ERR_CODE,
+                    mthd_rslt_type=MethodResultType.BUILD_RESULT,
+                    ex=validation.exception
+                )
+            )
+        build_result: BuildResult
+        
+        if self.orientation == AxisOrientation.EAST:
+            build_result = self._
         """
         East towards num_columns - 1 (right)
         """
@@ -89,7 +119,7 @@ class AxisEndpointBuilder(LinearEndpointFactory):
         """
         South towards num_rows - 1 (up)
         """
-        return VectorRegist er(
+        return VectorReg ist er(
             u=self._origin,
             v=Vector(
                 x=self._origin.x + AxisTerminus.SOUTH.delta.x,

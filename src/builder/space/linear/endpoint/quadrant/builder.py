@@ -9,7 +9,7 @@ version: 1.0.1
 
 from __future__ import annotations
 
-
+from builder import LinearEndpointFactory
 from model import Vector
 from register import VectorRegister
 from schema import QuadrantTerminus

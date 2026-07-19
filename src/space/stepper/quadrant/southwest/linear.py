@@ -9,6 +9,7 @@ version: 1.0.1
 
 from __future__ import annotations
 
+from schema import QuadrantStepFunction
 from space import QuadrantStepper
 
 
@@ -35,4 +36,4 @@ class SouthwestQuadrantStepper(QuadrantStepper):
             x_step: int = QuadrantStepFunction.SOUTHWEST.x_step,
             slope: int = QuadrantStepFunction.SOUTHWEST.slope,
     ):
-        super().__init__()
+        super().__init__(x_step=x_step, slope=slope)

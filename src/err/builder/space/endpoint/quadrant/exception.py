@@ -1,7 +1,7 @@
-# src/err/builder/space/linear/quadrant/exception.py
+# src/err/builder/space/linear/endpoint/quadrant/exception.py
 
 """
-Module: err.builder.space.linear.quadrant.exception
+Module: err.builder.space.endpoint.quadrant.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1

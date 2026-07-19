@@ -9,20 +9,18 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from typing import cast
+from typing import Optional, cast
 
-import setting
-from builder import AxisEndpointBuilder
-
+from builder import AxisEndpointFactory, VectorBuilder
+from err import SouthAxisEndPointBuilderException
 from model import Vector
 from register import VectorRegister
 from result import BuildResult
 from schema.terminus.axis import AxisTerminus
-from space import AxisStepper
 from util import LoggingLevelRouter
 
 
-class SouthernAxisEndpointBuilder(AxisEndpointBuilder):
+class SouthernAxisEndpointBuilder:
     """
     Role:
         -   Builder
@@ -40,21 +38,34 @@ class SouthernAxisEndpointBuilder(AxisEndpointBuilder):
     Super Class:
     """
     _delta: Vector
+    _origin: Vector
+    _vector_builder: VectorBuilder
     
     def __init__(
             self,
-            origin: Vector
+            origin: Vector,
+            vector_builder: Optional[VectorBuilder] | None = VectorBuilder(),
     ):
         """
         Args:
             origin: Vector
+            vector_builder: Optional[VectorBuilder]
         """
-        super().__init__(origin=origin)
+        self._origin = origin
+        self._vector_builder = vector_builder
         self._delta = Vector(
-            x=self.origin.x + AxisTerminus.SOUTH.delta.x,
-            y=self.origin.y + AxisTerminus.SOUTH.delta.y,
+            x=origin.x + AxisTerminus.SOUTH.delta.x,
+            y=origin.y + AxisTerminus.SOUTH.delta.y,
         )
         
+    @property
+    def origin(self) -> Vector:
+        return self._origin
+    
+    @property
+    def delta(self) -> Vector:
+        return self._delta
+    
     @LoggingLevelRouter.monitor
     def execute(self) -> BuildResult[VectorRegister]:
         """
@@ -73,24 +84,24 @@ class SouthernAxisEndpointBuilder(AxisEndpointBuilder):
         method = f"{self.__class__.__name__}.execute"
         
         # Request a product from the vector builder.
-        result = self.vector_builder.execute(
-            x=self.origin.x + self._delta.x,
-            y=self.origin.y + self._delta.y,
+        result = self._vector_builder.execute(
+            x=self._origin.x + self._delta.x,
+            y=self._origin.y + self._delta.y,
         )
         # Handle the case that, the request is not fulfilled.
         if result.is_failure:
             return BuildResult.failure(
-                SoutherAxisEndPointBuilderException(
-                    mthd_name=method,
+                SouthAxisEndPointBuilderException(
+                    cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=SoutherAxisEndPointBuilderException.MSG,
-                    err_code=SoutherAxisEndPointBuilderException.ERR_CODE,
+                    msg=SouthAxisEndPointBuilderException.MSG,
+                    err_code=SouthAxisEndPointBuilderException.ERR_CODE,
                     ex=result.exception,
                 )
             )
         # Create the endpoint register.
         vector_register = VectorRegister(
-            u=self.origin,
+            u=self._origin,
             v=cast(Vector, result.payload)
         )
         # --- Forward the work product to the caller. ---#

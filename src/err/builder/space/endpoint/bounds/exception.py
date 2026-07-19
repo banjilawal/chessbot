@@ -1,7 +1,7 @@
-# src/err/builder/space/linear/bounds/exception.py
+# src/err/builder/space/linear/endpoint/bounds/exception.py
 
 """
-Module: err.builder.space.linear.bounds.exception
+Module: err.builder.space.endpoint.bounds.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1

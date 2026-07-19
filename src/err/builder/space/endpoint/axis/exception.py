@@ -1,7 +1,7 @@
-# src/err/builder/space/linear/axis/exception.py
+# src/err/builder/space/linear/endpoint/axis/exception.py
 
 """
-Module: err.builder.space.linear.axis.exception
+Module: err.builder.space.endpoint.axis.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1

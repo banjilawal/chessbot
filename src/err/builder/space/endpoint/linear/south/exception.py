@@ -1,7 +1,7 @@
-# src/err/builder/linear/stepper/exception.py
+# src/err/builder/space/linear/endpoint/exception.py
 
 """
-Module: err.builder.linear.stepper.exception
+Module: err.builder.space.endpoint.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,61 +10,60 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import LinearSpaceBuilderException
+from err import AxisEndpointFactoryException
 from result import MethodResultType
 
 __all__ = [
-    # ======================# LINEAR_STEPPER_FAILURE #======================#
-    "LinearStepperException",
+    # ======================# SPACE_ENDPOINT_BUILDER_FAILED #======================#
+    "SouthAxisEndPointBuilderException",
 ]
-
-# ======================# LINEAR_STEPPER_FAILURE #======================#
-class LinearStepperException(LinearSpaceBuilderException):
+# ======================# SOUTH_AXIS_ENDPOINT_BUILDER_FAILED #======================#
+class SouthAxisEndPointBuilderException(AxisEndpointFactoryException):
     """
     Role:
-        -   Error Tracing
+        -   Failure Tracing
 
     Responsibilities:
-        1.  Indicate that a LinearStepper was aborted by an exception.
-        
+        1.  Indicate that a SouthAxisSpaceEndpointBuilder failed.
+
     Attributes:
-        msg: Optional[str]
+        msg: str
+        err_code: str
         var: Optional[str]
         val: Optional[Any]
-        ex: Optional[Exception]
         cls_name: Optional[str]
         cls_mthd: Optional[str]
-        err_code: Optional[str]
+        ex: Optional[Exception]
         mthd_rslt_type: Optional[MethodResultType]
             
     Provides:
 
     Super Class:
-        LinearSpaceBuilderException
+        AxisEndpointFactoryException
     """
-    MSG = "LinearStepper failure."
-    ERR_CODE = "LINEAR_STEPPER_FAILURE"
-
+    MSG = "SouthAxisSpaceEndpointBuilder failed."
+    ERR_CODE = "SOUTH_AXIS_ENDPOINT_BUILDER_FAILED"
+    
     def __init__(
             self,
-            msg: Optional[str] | None = None,
+            msg: str = MSG,
+            err_code: str = ERR_CODE,
             var: Optional[str] | None = None,
             val: Optional[Any] | None = None,
-            cls_mthd: Optional[str] | None = None,
             cls_name: Optional[str] | None = None,
+            cls_mthd: Optional[str] | None = None,
             ex: Optional[Exception] | None = None,
-            err_code: Optional[str] | None = None,
             mthd_rslt_type: Optional[MethodResultType] | None = None,
     ):
         """
-        Args:
-            msg: Optional[str]
+            Args:
+            msg: str
+            err_code: str
             var: Optional[str]
             val: Optional[Any]
-            ex: Optional[Exception]
             cls_name: Optional[str]
             cls_mthd: Optional[str]
-            err_code: Optional[str]
+            ex: Optional[Exception]
             mthd_rslt_type: Optional[MethodResultType]
         """
         msg = msg or self.MSG

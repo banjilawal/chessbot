@@ -10,21 +10,21 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import SpaceBuilderException
+from err import SpaceEndpointFactoryException
 from result import MethodResultType
 
 __all__ = [
     # ======================# SPACE_ENDPOINT_FACTORY_FAILED #======================#
-    "SpaceEndpointFactoryException",
+    "AxisEndpointFactoryException",
 ]
-# ======================# SPACE_ENDPOINT_FACTORY_FAILED #======================#
-class SpaceEndpointFactoryException(SpaceBuilderException):
+# ======================# AXIS_ENDPOINT_FACTORY_FAILED #======================#
+class AxisEndpointFactoryException(SpaceEndpointFactoryException):
     """
     Role:
         -   Failure Tracing
 
     Responsibilities:
-        1.  Indicate that a SpaceEndpointFactory failed.
+        1.  Indicate that an AxisSpaceEndpointFactory failed.
 
     Attributes:
         msg: str
@@ -39,9 +39,9 @@ class SpaceEndpointFactoryException(SpaceBuilderException):
     Provides:
 
     Super Class:
-        SpaceBuilderException
+        SpaceEndpointFactoryException
     """
-    MSG = "SpaceEndpointFactory failed."
+    MSG = "AxisSpaceEndpointFactory failed."
     ERR_CODE = "SPACE_ENDPOINT_FACTORY_FAILED"
     
     def __init__(
