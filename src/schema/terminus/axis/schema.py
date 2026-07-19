@@ -36,18 +36,25 @@ class AxisTerminus(Enum):
     def __new__(
             cls,
             orientation: str,
-            delta: Vector,
+            vector: Vector,
     ):
         """
         Args:
             orientation: str
-            delta: Vector
+            vector: Vector
         """
         obj = object.__new__(cls)
         obj._orientation = orientation
-        obj._delta = delta
+        obj._vector = vector
         return obj
     
+    NORTH = (
+        "north",
+        Vector(
+            x=0,
+            y=-setting.board.dimension.config.number_of_rows - 1,
+        )
+    )
     EAST = (
         "east",
         Vector(
@@ -62,11 +69,18 @@ class AxisTerminus(Enum):
             y=setting.board.dimension.config.number_of_rows - 1,
         )
     )
+    WEST = (
+        "west",
+        Vector(
+            x=setting.board.dimension.config.number_of_columns - 1,
+            y=0,
+        )
+    )
     
     @property
     def orientation(self) -> str:
         return self._orientation
     
     @property
-    def delta(self) -> Vector:
-        return self._delta
+    def vector(self) -> Vector:
+        return self._vector

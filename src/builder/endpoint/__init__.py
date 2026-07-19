@@ -10,7 +10,8 @@ version: 1.0.1
 # =========== BUILDER.ENDPOINT PACKAGE ===========#
 
 # Packages
-from .builder import *
-from .ray import *
+from .axial import *
+from .quadrant import *
 
 # Modules
+from .linear import LinearEndpointFactory

@@ -10,7 +10,6 @@ version: 1.0.1
 # =========== BUILDER.SPACE PACKAGE ===========#
 
 # Packages
-from builder.space.linear.endpoint import *
 from .linear import *
 
 # Modules
