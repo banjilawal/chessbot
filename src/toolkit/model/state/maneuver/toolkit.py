@@ -9,7 +9,7 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from typing import List
+from typing import List, Type
 
 from analyzer import SquareTokenRelationAnalyzer, TokenReadinessAnalyzer
 from err import ManeuverNullException
@@ -58,9 +58,6 @@ class ManeuverToolkit(StateModelToolkit[Maneuver]):
     Super Class:
        ModelToolkit
     """
-
-    DEPENDENCIES: List[Operation] = []
-    SERVICE_DEPENDENCIES: List[Microservice] = []
     
     path_validator: PathValidator = PathValidator()
     token_validator: TokenValidator = TokenValidator()
@@ -72,4 +69,4 @@ class ManeuverToolkit(StateModelToolkit[Maneuver]):
     origin_certifier: TokenOriginCertifier = TokenOriginRootCertifier()
     destination_certifier: TokenDestinationCertifier = TokenDestinationRootCertifier()
     null_exception: ManeuverNullException = ManeuverNullException()
-    model: Maneuver = Maneuver
+    model: Type[Maneuver] = Maneuver

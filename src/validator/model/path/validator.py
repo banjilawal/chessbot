@@ -8,7 +8,7 @@ version: 1.0.1
 """
 
 from __future__ import annotations
-from typing import Any, cast
+from typing import Any, Optional, cast
 
 from err import CircularPathException, PathValidatorException
 from model import Path
@@ -29,28 +29,29 @@ class PathValidator:
         1.  Ensure a Path instance is certified safe, reliable and consistent before use.
 
     Attributes:
-
+        toolkit: Optional[PathToolkit]
+        
     Provides:
-        -   def validator(
-                    cls,
-                    candidate,
-                    identity_service: IdentityService,
-                    square_validator: SquareValidator,
-                    priming_validator: PrimingValidator,
-            ) -> ValidationResult[Path]
+        -   def execute(candidate: Any,) -> ValidationResult[Path]
 
     Super Class:
         ModelValidator
     """
-    OPERATION_NAME = "path_validator"
+    _toolkit: PathToolkit
     
-    @classmethod
+    def __init__(self, toolkit: Optional[PathToolkit] | None = PathToolkit()):
+        """
+        Args:
+            toolkit: Optional[PathToolkit]
+        """
+        self._toolkit = toolkit
+        
+    @property
+    def toolkit(self) -> PathToolkit:
+        return self._toolkit
+    
     @LoggingLevelRouter.monitor
-    def validate(
-            cls,
-            candidate: Any,
-            toolkit: PathToolkit | None = None,
-    ) -> ValidationResult[Path]:
+    def execute(self, candidate: Any,) -> ValidationResult[Path]:
         """
         Verify the object is a Path that is safe to use.
 
@@ -72,15 +73,13 @@ class PathValidator:
         """
         method = f"{self.__class__.__name__}.execute"
         
-        # --- Supply any missing dependencies. ---#
-        if toolkit is None:
-            toolkit = PathToolkit()
+
         
         # Handle the case that, the validator is not primed.
-        validator_priming_result = toolkit.priming_validator.execute(
+        validator_priming_result = self._toolkit.priming_validator.execute(
             candidate=candidate,
-            target_model=toolkit.model,
-            null_exception=toolkit.null_exception,
+            target_model=self._toolkit.model,
+            null_exception=self._toolkit.null_exception,
         )
         if validator_priming_result.is_failure:
             # Send the exception chain on failure.
@@ -97,7 +96,7 @@ class PathValidator:
         path = cast(Path, candidate)
         
         # Handle the case that, the path's id gets flagged.
-        id_validation = toolkit.identity_service.validate_id(path.id)
+        id_validation = self._toolkit.identity_service.validate_id(path.id)
         if id_validation.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
@@ -110,8 +109,8 @@ class PathValidator:
                 )
             )
         # Handle the case that either the source or destination are not safe.
-        for square in [path.origin, path.destination]:
-            square_validation_result = toolkit.square_validator.execute(square)
+        for square in [path.endpoints.to_list]:
+            square_validation_result = self._toolkit.square_validator.execute(square)
             if square_validation_result.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
@@ -124,7 +123,7 @@ class PathValidator:
                     )
                 )
         # Handle the case that, the origin and the destination are the same.
-        if path.origin == path.destination:
+        if path.endpoints.origin_is_destination:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 PathValidatorException(

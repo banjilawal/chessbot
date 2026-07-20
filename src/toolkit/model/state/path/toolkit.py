@@ -10,6 +10,7 @@ version: 1.0.1
 from __future__ import annotations
 
 from dataclasses import dataclass
+from typing import Type
 
 from err import PathNullException
 from model import Path
@@ -39,7 +40,7 @@ class PathToolkit(StateModelToolkit):
     """
     square_validator: SquareValidator = SquareValidator()
     null_exception: PathNullException = PathNullException()
-    model: Path = Path
+    model: Type[Path] = Path
 
 
     
