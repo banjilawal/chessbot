@@ -12,13 +12,15 @@ from __future__ import annotations
 from abc import ABC
 from typing import Optional, TypeVar
 
-from model import Vector
-from space import VectorTargetingComputer, PawnManeuverVectorSet, PawnBasis
+from space import VectorTargetingComputer, PawnMovementVector, BasisSpace
 
 T = TypeVar("T", bound="PawnManeuverVectorSet")
 
+from model import Pawn, Vector
 
-class PawnManeuverVectorBasis(ABC, PawnBasis):
+
+
+class PawnBasis(ABC, BasisSpace[Pawn]):
     """
     Role:
         -   Computation Worker
@@ -29,20 +31,20 @@ class PawnManeuverVectorBasis(ABC, PawnBasis):
             PawnMovementVector.
 
     Attributes:
-        origin: Vector
-        maneuver_vectors: PawnManeuverVectorSet
-        targeting_computer: Optional[DestinationSpanComputer]
+            origin: Vector
+            maneuver_vectors: PawnManeuverVectorSet
+            targeting_computer: Optional[DestinationSpanComputer]
             
     Provides:
 
     Super Class:
-        PawnVectorBasis
+        SpanBasis
     """
     
     def __init__(
             self,
             origin: Vector,
-            maneuver_vectors: PawnManeuverVectorSet[T],
+            maneuver_vectors: PawnMovementVector[T],
             targeting_computer: Optional[VectorTargetingComputer] |
                                 None = VectorTargetingComputer(),
     ):

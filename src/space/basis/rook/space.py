@@ -1,7 +1,7 @@
-# src/space/basis/basis/pawn/space.py
+# src/space/basis/basis/rook/space.py
 
 """
-Module: space.basis.basis.pawn.space
+Module: space.basis.basis.rook.space
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -9,47 +9,45 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from abc import ABC
-from typing import Optional, TypeVar
+from typing import Optional
 
-from model import Vector
-from space import VectorTargetingComputer, PawnManeuverVectorSet, PawnBasis
-
-T = TypeVar("T", bound="PawnManeuverVectorSet")
+from model import Rook, Vector
+from space import VectorTargetingComputer, RookMovementVector, BasisSpace
 
 
-class PawnManeuverVectorBasis(ABC, PawnBasis):
+class RookBasis(BasisSpace[Rook]):
     """
     Role:
         -   Computation Worker
         -   Integrity Assurance
 
     Responsibilities:
-        1.  Produce a set of destinations for a Pawn by adding it's position to  each
-            PawnMovementVector.
+        1.  Produce a set of destinations for a Rook by adding it's position to  each
+            RookMovementVector.
 
     Attributes:
-        origin: Vector
-        maneuver_vectors: PawnManeuverVectorSet
-        targeting_computer: Optional[DestinationSpanComputer]
+            origin: Vector
+            maneuver_vectors: Optional[RookManeuverVectorSet]
+            targeting_computer: Optional[DestinationSpanComputer]
             
     Provides:
 
     Super Class:
-        PawnVectorBasis
+        SpanBasis
     """
     
     def __init__(
             self,
             origin: Vector,
-            maneuver_vectors: PawnManeuverVectorSet[T],
+            maneuver_vectors: Optional[RookMovementVector] |
+                              None = RookMovementVector(),
             targeting_computer: Optional[VectorTargetingComputer] |
                                 None = VectorTargetingComputer(),
     ):
         """
         Args:
             origin: Vector
-            maneuver_vectors: PawnManeuverVectorSet
+            maneuver_vectors: Optional[RookManeuverVectorSet]
             targeting_computer: Optional[DestinationSpanComputer]
         """
         super().__init__(

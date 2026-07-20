@@ -10,8 +10,9 @@ version: 1.0.1
 # =========== BUILDER.SPACE PACKAGE ===========#
 
 # Packages
-from .maneuver import *
-from .linear import *
+from .bishop import *
+from .queen import *
+from .rook import *
 
 
 # Modules

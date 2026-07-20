@@ -1,15 +1,15 @@
-# src/space/span/basis/king/__init__.py
+# src/space/basis/basis/king/__init__.py
 
 """
-Module: space.span.basis.king.__init__
+Module: space.basis.basis.king.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
 """
 
-# =========== SPACE.SPAN.BASIS.KING PACKAGE ===========#
+# =========== SPACE.BASIS.BASIS.KING PACKAGE ===========#
 
 # Packages
 
 # Modules
-from .span import KingBasis
+from .space import KingBasis
