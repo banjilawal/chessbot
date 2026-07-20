@@ -16,4 +16,4 @@ from .south import *
 from .west import *
 
 # Modules
-from .factory import  AxisSpaceFactory
+from .space import Axis

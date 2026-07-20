@@ -1,7 +1,7 @@
-# src/space/linear/axis/east/__init__.py
+# src/space/linear/axis/south/__init__.py
 
 """
-Module: space.linear.axis.east.__init__
+Module: space.linear.axis.south.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -12,4 +12,4 @@ version: 1.0.1
 # Packages
 
 # Modules
-from .builder import EastAxisBuilder
+from .builder import SouthAxisBuilder

@@ -18,7 +18,7 @@ from err import DestinationSpanComputerException
 from model import Vector
 from register import VectorRegister
 from result import ComputationResult, MethodResultType
-from space.cateoory.basis import Basis
+from space.basis import Basis
 from toolkit import MathToolkit
 from util import LoggingLevelRouter
 from validator import BasisValidator

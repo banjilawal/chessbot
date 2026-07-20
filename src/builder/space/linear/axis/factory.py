@@ -9,16 +9,18 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from typing import List, Optional, cast
+from typing import Optional, cast
 
-from builder import Builder
-from err import AxisException
-from model import Scalar, Vector
+from builder import Builder, EastAxisBuilder, NorthAxisBuilder, SouthAxisBuilder, WestAxisBuilder
+from factory import AxisEndpointFactory
+from model import Vector
 from register import VectorRegister
-from result import BuildResult, ComputationResult, MethodResultType
+from result import BuildResult
 from schema import AxisOrientation
-from space import Axis, AxisEndpointFactory, AxisStepper, LinearSpace, LinearTargetSet, TargetSpanSet
+from space import Axis, AxisStepper
+from toggle import OrientationToggle
 from util import LoggingLevelRouter
+from validator import VectorValidator
 
 
 class AxisSpaceFactory(Builder[Axis]):
@@ -33,13 +35,7 @@ class AxisSpaceFactory(Builder[Axis]):
     Attributes:
         origin: Vector
         stepper: AxisStepper
-        orientation: AxisOrientation
-        
-        east_axis_builder: Optional[EastAxisBuilder]
-        north_axis_builder: Optional[NorthAxisBuilder]
-        south_axis_builder: Optional[SouthAxisBuilder]
-        west_axis_builder: Optional[WestAxisBuilder]
-        axis_endpoint_factory: Optional[AxisEndpointFactory]
+        toggle: OrientationToggle
         
     Provides:
         -   def execute(self) -> BuildResult[Axis]
@@ -48,74 +44,109 @@ class AxisSpaceFactory(Builder[Axis]):
         LinearSpaceFactory
     """
     _orientation: Vector
-    _endpoints: VectorRegister
     _stepper: AxisStepper
-    _orientation: AxisOrientation
-    
-    _east_axis_builder: EastAxisBuilder
-    _north_axis_builder: NorthAxisBuilder
-    _south_axis_builder: SouthAxisBuilder
-    _west_axis_builder: WestAxisBuilder
-    
-    _axis_endpoint_factory: AxisEndpointFactory
+    _toggle: OrientationToggle
+    _vector_validator: Optional[VectorValidator]
     
     def __init__(
             self,
             origin: Vector,
-            endpoints: VectorRegister,
             stepper: AxisStepper,
-            orientation: AxisOrientation,
-            
-            east_axis_builder: Optional[EastAxisBuilder] | None = EastAxisBuilder(),
-            north_axis_builder: Optional[NorthAxisBuilder] | None = NorthAxisBuilder(),
-            south_axis_builder: Optional[SouthAxisBuilder] | None = SouthAxisBuilder(),
-            west_axis_builder: Optional[WestAxisBuilder] | None = WestAxisBuilder(),
-            axis_endpoint_factory: Optional[AxisEndpointFactory] | None = AxisEndpointFactory()
+            toggle: OrientationToggle,
+            vector_validator: Optional[VectorValidator] | None = VectorValidator(),
     ):
         """
         Args:
             endpoints: AxisLinear_Section
             stepper: AxisStepper
-            orientation: AxisOrientation
-            
-            east_axis_builder: Optional[EastAxisBuilder]
-            north_axis_builder: Optional[NorthAxisBuilder]
-            south_axis_builder: Optional[SouthAxisBuilder]
-            west_axis_builder: Optional[WestAxisBuilder]
-            axis_endpoint_factory: Optional[AxisEndpointFactory]
+            toggle: OrientationToggle
+            vector_validator: Optional[VectorValidator]
         """
-        super().__init__(endpoints=endpoints, stepper=stepper)
-        self._endpoints = endpoints
         self._stepper = stepper
-        self._orientation = orientation
+        self._toggle = toggle
         self._origin = origin
+        self._vector_validator = vector_validator
         
     @property
-    def orientation(self) ->AxisOrientation:
-        return self._orientation
+    def toggle(self) -> OrientationToggle:
+        return self._toggle
     
     @property
     def stepper(self) -> AxisStepper:
         return self._stepper
     
     @property
-    def endpoints(self) -> VectorRegister:
-        return self._endpoints
+    def vector_validator(self) -> VectorValidator:
+        return self._vector_validator
     
     @LoggingLevelRouter.monitor
     def execute(self) -> BuildResult[Axis]:
+        method = f"{self.__class__.__name__}.execute"
         
+        # Handle the case that. the origin is flagged unsafe.
+        validation = self._vector_validator.execute(self._origin)
+        if validation.is_failure:
+            # Send the exception chain in the result.
+            return BuildResult.failure(
+                AxisSpaceFactoryException(
+                    cls_mth=method,
+                    cls_name=self.__class__.__name__,
+                    msg=AxisSpaceFactoryException.MSG,
+                    err_code=AxisSpaceFactoryException.ERR_CODE,
+                    mthd_rslt_type=MethodResultType.BUILD_RESULT,
+                    ex=WrongToggleException(
+                        cls_mth=method,
+                        cls_name=self.__class__.__name__,
+                        msg=AxisSpaceFactoryException.MSG,
+                        err_code=AxisSpaceFactoryException.ERR_CODE,
+                        mthd_rslt_type=MethodResultType.BUILD_RESULT,
+                    )
+                )
+            )
+        origin = cast(Vector, validation.payload
+                      )
+        # Handle the case that, the orientation is toggled for a quadrant.
+        if not self._toggle.is_axis_toggle:
+            # Send the exception chain in the result.
+            return BuildResult.failure(
+                AxisSpaceFactoryException(
+                    cls_mth=method,
+                    cls_name=self.__class__.__name__,
+                    msg=AxisSpaceFactoryException.MSG,
+                    err_code=AxisSpaceFactoryException.ERR_CODE,
+                    mthd_rslt_type=MethodResultType.BUILD_RESULT,
+                    ex=WrongToggleException(
+                        cls_mth=method,
+                        cls_name=self.__class__.__name__,
+                        msg=AxisSpaceFactoryException.MSG,
+                        err_code=AxisSpaceFactoryException.ERR_CODE,
+                        mthd_rslt_type=MethodResultType.BUILD_RESULT,
+                    )
+                )
+            )
         request: BuildResult = BuildResult.failure()
-        if self.orientation == AxisOrientation.NORTH:
-            request = NorthAxisBuilder.execute(origin=self._origin)
-        if self.orientation == AxisOrientation.SOUTH:
-            request = SouthAxisBuilder.execute(origin=self._origin)
-        if self.orientation == AxisOrientation.EAST:
-            request = EastAxisBuilder.execute(origin=self._origin)
-        if self.orientation == AxisOrientation.WEST:
-            request = WestAxisBuilder.execute(origin=self._origin)
-            
+        
+        # Route to the appropriate AxisBuilder.
+        if self._toggle.entity == AxisOrientation.NORTH:
+            request = NorthAxisBuilder.execute(
+                origin=origin
+            )
+        if self._toggle.entity == AxisOrientation.SOUTH:
+            request = SouthAxisBuilder.execute(
+                origin=origin
+            )
+        if self._toggle.entity == AxisOrientation.EAST:
+            request = EastAxisBuilder.execute(
+                origin=origin
+            )
+        if self._toggle.entity == AxisOrientation.WEST:
+            request = WestAxisBuilder.execute(
+                origin=origin
+            )
+         
+        # Handle the case that, the request is not fulfilled.
         if request.is_failure:
+            # Send the exception chain in the result.
             return BuildResult.failure(
                 AxisSpaceFactoryException(
                     cls_mth=method,
@@ -126,73 +157,5 @@ class AxisSpaceFactory(Builder[Axis]):
                     ex=request.exception
                 )
             )
-        return BuildResult.success(
-            cast(Axis, request.payload)
-        )
-
-    
-    @classmethod
-    def east_axis(cls, origin: Vector) -> Axis:
-        """
-        Create an Axis in 1D plane
-        
-        Linear_Section:
-        
-            east => [u, Vector(num_columns - 1, u.y)], (i, 0)
-        Delta:
-            d_x => increments u.x by 1 till x = num_columns - 1
-            d_y => 0
-        """
-        return cls(
-            stepper=AxisStepper.east(),
-            endpoints=AxisEndpointFactory.east(origin=origin),
-        )
-    
-    @classmethod
-    def north_axis(cls, origin: Vector) -> Axis:
-        """
-        Create an Axis in 1D plane.
-
-        Linear_Section:
-            north => [u, Vector(u.x, 0)], (0, -j)
-        Delta:
-            d_x => 0
-            d_y => increments u.y by -1 till y = 0
-        """
-        return cls(
-            stepper=AxisStepper.east(),
-            endpoints=AxisEndpointFactory.north(origin=origin)
-        )
-    
-    @classmethod
-    def south_axis(cls, origin: Vector) -> Axis:
-        """
-        Create an Axis in 1D plane.
-
-        Linear_Section:
-            south => [u, Vector(u.x, num_rows - 1)], (0, j)
-        Delta:
-            d_x => 0
-            d_y => increments u.y by 1 till y = num_rows - 1
-        """
-        return cls(
-            stepper=AxisStepper.east(),
-            endpoints=AxisEndpointFactory.south(origin=origin)
-        )
-    
-    @classmethod
-    def west_axis(cls, origin: Vector) -> Axis:
-        """
-        Create an Axis in 1D plane.
-
-        Linear_Section:
-            west => [u, Vector(0, u.y)], (-i, 0)
-        Delta:
-            d_x => increments u.x by -1 till x = 0
-            d_y => 0
-        """
-        return cls(
-            stepper=AxisStepper.west(),
-            endpoints=AxisEndpointFactory.west(origin=origin)
-        )
+        return BuildResult.success(cast(Axis, request.payload))
     

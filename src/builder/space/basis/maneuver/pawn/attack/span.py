@@ -12,7 +12,7 @@ from __future__ import annotations
 from abc import ABC
 
 from container import VectorSet
-from space.cateoory.basis import PawnManeuverVector
+from space.basis import PawnManeuverVector
 
 
 class PawnAttackVectorSet(ABC, PawnManeuverVector):

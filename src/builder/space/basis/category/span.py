@@ -15,7 +15,7 @@ from typing import Generic, Optional, TypeVar
 from model import Vector
 from result import ComputationResult
 from space import VectorTargetingComputer, TargetVectorSet
-from space.cateoory.basis import ManeuverVectorSet
+from space.basis import ManeuverVectorSet
 from util import LoggingLevelRouter
 
 T = TypeVar("T", bound="Rank")

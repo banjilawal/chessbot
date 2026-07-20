@@ -11,11 +11,11 @@ version: 1.0.1
 
 # Packages
 from .builder import *
-from .cateoory import *
 from .computer import *
+from .linear import *
 from .target import *
 from .stepper import *
 from .ray import *
 
 # Modules
-from .cateoory import Space
+from .space import Space

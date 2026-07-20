@@ -12,7 +12,7 @@ from __future__ import annotations
 
 from container import VectorSet
 from model import Vector
-from space.cateoory.basis import PawnAttackVectorSet
+from space.basis import PawnAttackVectorSet
 
 
 class OpeningAttackVectorSet(PawnAttackVectorSet):
