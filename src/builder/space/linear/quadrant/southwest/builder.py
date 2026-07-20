@@ -15,9 +15,7 @@ from builder import Builder, SouthwestQuadrantEndpointBuilder
 from model import Vector
 from register import VectorRegister
 from result import BuildResult
-
-from space import EastAxis, SouthwestQuadrant, SouthwestQuadrantStepper
-
+from space import SouthwestQuadrantStepper
 from util import LoggingLevelRouter
 from validator import VectorValidator
 

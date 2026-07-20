@@ -15,11 +15,11 @@ from typing import Optional, Type, cast
 from blueprint import RegisterBlueprint
 from chooser import CartesianPoint
 from err import CartesianRegisterNullException, RegisterNullException
-from register import CartesianRegister
+from register import VectorToggleRegister
 
 
 
-class CartesianRegisterBlueprint(RegisterBlueprint[CartesianRegister]):
+class CartesianRegisterBlueprint(RegisterBlueprint[VectorToggleRegister]):
     """
     Role:
         -   Container
@@ -45,7 +45,7 @@ class CartesianRegisterBlueprint(RegisterBlueprint[CartesianRegister]):
             self,
             a: CartesianPoint,
             b: CartesianPoint,
-            model_class: Optional[Type[CartesianRegister]] | None = CartesianRegister,
+            model_class: Optional[Type[VectorToggleRegister]] | None = VectorToggleRegister,
             null_exception: Optional[CartesianRegisterNullException] |
                             None = CartesianRegisterNullException(),
     ):

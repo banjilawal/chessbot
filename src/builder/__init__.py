@@ -24,6 +24,7 @@ from .graph import *
 from .hostage import *
 from .node import *
 from .rank import *
+from .register import *
 from .scalar import *
 from .snapshot import *
 from .space import *

@@ -10,8 +10,10 @@ version: 1.0.1
 # =========== BUILDER.REGISTER PACKAGE ===========#
 
 # Packages
-from .operand import *
+from .toggle import *
 from .square import *
+from .vector import *
 
 # Modules
+from .builder import RegisterBuilder
 

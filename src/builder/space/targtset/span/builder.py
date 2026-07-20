@@ -20,7 +20,7 @@ from space import TargetVectorSet, TargetSpanSet, RegisterBuilder
 from util import IdFactory, LoggingLevelRouter
 
 
-class RegisterSetSpanBuilder(RegisterBuilder[TargetS]):
+class RegisterSetSpanBuilder(RegisterBuilder[TargetVectorSet]):
 
     
     def __init__(

@@ -83,3 +83,33 @@ class RegisterSetLinearBuilder(RegisterBuilder[LinearTargetSet]):
             previous = current
         
         BuildResult.success(RegisterSet(tuple(registers)))
+    
+    # def _validation(self, candidate: Any) -> ValidationResult[LinearTargetSet]:
+    #     method = f"{self.__class__.__name__}"
+    #
+    #     priming = self._priming_validator.execute(
+    #         candidate=self._linear_sett,
+    #         target_model=Type[LinearTargetSet],
+    #         null_exception=NullException(),
+    #     )
+    #     if priming.is_failure:
+    #         return ValidationResult.failure(priming.exception)
+    #     linear_sett = cast(LinearTargetSet, priming.payload)
+    #
+    #     if linear_sett.is_empty:
+    #         return BuildResult.failure(
+    #             LinearSpaceRegisterBuilderException(
+    #                 cls_mthd=method,
+    #                 cls_name=self.__class__.__name__,
+    #                 msg=LinearSpaceRegisterBuilderException.MSG,
+    #                 err_code=LinearSpaceRegisterBuilderException.ERR_CODE,
+    #                 mthd_rslt_type=MethodResultType.BUILD_RESULT,
+    #                 ex=EmptyLinearVectorSetException(
+    #                     cls_mthd=method,
+    #                     cls_name=self.__class__.__name__,
+    #                     msg=EmptyLinearVectorSetException.MSG,
+    #                     err_code=EmptyLinearVectorSetException.ERR_CODE,
+    #                 )
+    #             )
+    #         )
+    #     self._linear_sett = temp

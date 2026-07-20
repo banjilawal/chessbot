@@ -8,7 +8,7 @@ version: 1.0.1
 """
 
 from __future__ import annotations
-from typing import Any, cast
+from typing import Any, Optional, cast
 
 import setting
 from err import VectorValidatorException
@@ -43,9 +43,9 @@ class VectorValidator(ModelValidator[Vector]):
         Validator
     """
     
-    @property
-    def root_certifier(self) -> RootCertifier:
-        pass
+    def __init__(self, root_certifier: Optional[RootCertifier[Vector]] | None = None):
+        super().__init__(root_certifier=root_certifier)
+    
     
     @classmethod
     @LoggingLevelRouter.monitor

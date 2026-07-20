@@ -11,11 +11,11 @@ from __future__ import annotations
 
 from typing import Dict, List
 
-from chooser import CartesianPoint
 from register import ModelRegister
+from toggle import VectorToggle
 
 
-class CartesianRegister(ModelRegister[CartesianPoint]):
+class VectorToggleRegister(ModelRegister[VectorToggle]):
     """
         -   Model
         -   Data Holder
@@ -93,7 +93,7 @@ class CartesianRegister(ModelRegister[CartesianPoint]):
     def __eq__(self, other):
         if other is self: return True
         if other is None: return False
-        if isinstance(other, CartesianRegister):
+        if isinstance(other, VectorToggleRegister):
             return (
                     self._a == other.b and
                     self._b == other.b

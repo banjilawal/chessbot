@@ -1,7 +1,7 @@
-# src/builder/register/square/model.py
+# src/builder/register/square/builder.py
 
 """
-Module: builder.register.square.model
+Module: builder.register.square.builder
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -9,11 +9,15 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from builder import Builder
-from model import SquareRegister
+from typing import Optional, cast
+
+from builder import RegisterBuilder
+from model import Square
+from register import SquareRegister
+from util import LoggingLevelRouter
 
 
-class SquareRegisterBuilder(Builder[SquareRegister]):
+class SquareRegisterBuilder(RegisterBuilder[SquareRegister]):
     """
     Role:
         -   Model
@@ -33,39 +37,40 @@ class SquareRegisterBuilder(Builder[SquareRegister]):
     Super Class:
         Register
     """
-    _origin: Square
-    _destination: Square
     
-    def __init__(self, origin: Square,destination: Square,):
+    def __init__(
+            self,
+            origin: Square,
+            destination: Square,
+            endpoint_validator: Optional[SquareValidator] | None = SquareValidator()):
         """
         Args:
             origin: Square
             destination: Square
+            endpoint_validator: Optional[SquareValidator]
         """
-        super().__init__(a=origin, b=destination)
+        super().__init__(
+            a=origin,
+            b=destination,
+            endpoint_validator=endpoint_validator
+        )
+
         
     @property
     def origin(self) -> Square:
-        return self.a
+        return cast(Square, self.a)
     
     @property
     def destination(self) -> Square:
-        return self.b
+        return cast(Square, self.b)
+    
+    @property
+    def endpoint_validator(self) -> SquareValidator:
+        return cast(SquareValidator, self.endpoint_validator)
+    
+    @LoggingLevelRouter.monitor
+    def execute(self) -> BuildResult[SquareRegister]:
+        pass
 
-    @property
-    def origin_is_destination(self) -> bool:
-        return self._origin == self._destination
-    
-    @property
-    def origin_is_not_destination(self) -> bool:
-        return self.origin_is_destination
-    
-    def __eq__(self, other):
-        if other is self: return True
-        if other is None: return False
-        if isinstance(other, SquareRegister):
-            return (
-                    self._origin == other.origin and
-                    self._destination == other.destination
-            )
+
     

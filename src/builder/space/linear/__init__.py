@@ -15,4 +15,3 @@ from .quadrant import *
 
 
 # Modules
-from .space import LinearSpace

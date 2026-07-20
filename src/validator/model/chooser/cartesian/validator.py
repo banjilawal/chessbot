@@ -18,7 +18,7 @@ from util import LoggingLevelRouter
 from validator import ChooserValidator
 
 
-class CartesianPontValidator(ChooserValidator[CartesianPoint]):
+class VectorToggleValidator(ChooserValidator[CartesianPoint]):
     """
     Role
         -   Transaction Worker

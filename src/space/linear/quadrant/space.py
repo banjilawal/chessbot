@@ -9,7 +9,7 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from typing import cast
+from typing import List, cast
 
 from container import VectorSet
 from err import QuadrantException
