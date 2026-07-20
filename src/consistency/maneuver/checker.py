@@ -78,7 +78,7 @@ class ManeuverConsistency:
         consistency_priming_result = toolkit.priming_consistency.execute(
             candidate=candidate,
             target_model=toolkit.model,
-            null_exception=toolkit.null_exception,
+            model_null_exception=toolkit.null_exception,
         )
         if consistency_priming_result.is_failure:
             # Send the exception chain on failure.

@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Generic, Type, TypeVar
 
 from blueprint import Blueprint
-from toggle.carrier import EntityCarrier
+from toggle.carrier import EntityCarrierToggle
 from err import BlueprintNullException, EntityCarrierNullException, ModelNullException
 from toolkit import Toolkit
 
@@ -46,7 +46,7 @@ class ModelToolkit(Toolkit, Generic[T]):
        Toolkit
     """
     model: Type[T]
-    carrier_model: Type[EntityCarrier[T]]
+    carrier_model: Type[EntityCarrierToggle[T]]
     blueprint_model: Type[Blueprint[T]]
     
     null_exception: ModelNullException

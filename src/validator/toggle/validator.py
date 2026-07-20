@@ -10,18 +10,20 @@ version: 1.0.1
 from __future__ import annotations
 
 from abc import abstractmethod
-from typing import Any, TypeVar
+from typing import Any, Generic, TypeVar, cast
 
-from bootstrapper import ToggleValidator
+
+from primary import ToggleRootCertifier
 from result import ValidationResult
-from toolkit import Toolkit
+from toolkit import ToggleToolkit
+
 from validator import Validator
 
-T = TypeVar("T", bound="Selector")
+T = TypeVar("T", bound="Toggle")
 
 
 
-class SelectorValidator(Validator[T]):
+class ToggleValidator(Validator, Generic[T]):
     """
     Role
         -   Transaction Worker
@@ -41,28 +43,25 @@ class SelectorValidator(Validator[T]):
     Super Class:
         OperandValidator
     """
-    _toolkit: Toolkit
-    _toggle_validator: SelectorValidator
     
     def __init__(
             self,
-            toolkit: Toolkit,
-            toggle_validator: SelectorValidator | None = ToggleValidator(),
+            toolkit: ToggleToolkit[T],
+            root_certifier: ToggleRootCertifier[T],
     ):
-        self._toolkit = toolkit
-        self._toggle_validator = toggle_validator
+        super().__init__(toolk=toolkit, root_certifier=root_certifier)
         
     
     @property
-    def toolkit(self) -> Toolkit:
-        return self._toolkit
+    def toolkit(self) -> ToggleToolkit:
+        return cast(ToggleToolkit[T], self.toolkit)
     
     @property
-    def toggle_validator(self) -> SelectorValidator:
-        return self._toggle_validator
+    def root_certifier(self) -> ToggleRootCertifier[T]:
+        return cast(ToggleRootCertifier[T], self.root_certifier)
     
     @abstractmethod
-    def execute(self, candidate: Any) -> ValidationResult:
+    def execute(self, candidate: Any) -> ValidationResult[T]:
         pass
 
 

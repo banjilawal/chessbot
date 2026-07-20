@@ -16,11 +16,11 @@ from result import MethodResultType
 
 __all__ = [
     # ======================# CARTESIAN_REGISTER_VALIDATOR_FAILURE #======================#
-    "CartesianRegisterCertifierException",
+    "VectorToggleRegisterCertifierException",
 ]
 
 # ======================# CARTESIAN_REGISTER_VALIDATOR_FAILURE #======================#
-class CartesianRegisterCertifierException(RegisterCertifierException):
+class VectorToggleRegisterCertifierException(RegisterCertifierException):
     """
     Role:
         -   Error Tracing

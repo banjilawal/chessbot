@@ -13,7 +13,7 @@ from dataclasses import dataclass
 from typing import Type
 
 from blueprint import TokenBlueprint
-from toggle.carrier import TokenCarrier
+from toggle.carrier import TokenCarrierToggle
 from detector import TokenHomeDetector
 from err import TokenBlueprintNullException, TokenCarrierNullException, TokenNullException
 from model import Token
@@ -54,7 +54,7 @@ class TokenToolkit(StateModelToolkit[Token]):
        ModelToolkit
     """
     model: Type[Token] = Token
-    carrier_model: Type[TokenCarrier] = TokenCarrier
+    carrier_model: Type[TokenCarrierToggle] = TokenCarrierToggle
     blueprint_model: Type[TokenBlueprint] = TokenBlueprint
     
     null_exception: TokenNullException = TokenNullException()

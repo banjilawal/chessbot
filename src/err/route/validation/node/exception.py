@@ -1,7 +1,7 @@
-# src/err/route/validation/node/exception.py
+# src/err/route/validation/no/exception.py
 
 """
-Module: err.route.validation.node.exception
+Module: err.route.validation.no.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -13,18 +13,18 @@ from err import ValidationRouteException
 
 
 __all__ = [
-    # ======================# NODE_VALIDATION_ROUTE #======================#
-    "NodeValidationRouteException",
+    # ======================# NO_VALIDATION_ROUTE #======================#
+    "NoValidationRouteException",
 ]
 
-# ======================# NODE_VALIDATION_ROUTE #======================#
-class NodeValidationRouteException(ValidationRouteException):
+# ======================# NO_VALIDATION_ROUTE #======================#
+class NoValidationRouteException(ValidationRouteException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that one of Node validation routes is missing.
+        1.  Indicate that one of No validation routes is missing.
 
     Attributes:
         msg: Optional[str]
@@ -41,8 +41,8 @@ class NodeValidationRouteException(ValidationRouteException):
     Super Class:
         ValidationRouteException
     """
-    MSG = "One of Node validation paths is missing."
-    ERR_CODE = "NODE_VALIDATION_ROUTE"
+    MSG = "One of No validation paths is missing."
+    ERR_CODE = "NO_VALIDATION_ROUTE"
     
     def __init__(
             self,

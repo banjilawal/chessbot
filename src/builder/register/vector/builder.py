@@ -54,7 +54,7 @@ class VectorRegisterBuilder(RegisterBuilder[VectorRegister]):
         super().__init__(
             a=u,
             b=v,
-            endpoint_validator=endpoint_validator,
+            endpoint_validator=endpoint_validator
         )
 
         

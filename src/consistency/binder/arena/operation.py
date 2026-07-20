@@ -82,7 +82,7 @@ class BoardTeamBinderConsistencyChecker(ConsistencyChecker[BoardBinder]):
         consistency_priming_result = toolkit.priming_consistency.execute(
             candidate=candidate,
             target_model=BoardBinder,
-            null_exception=BoardTeamBinderNullException(),
+            model_null_exception=BoardTeamBinderNullException(),
         )
         if consistency_priming_result.is_failure:
             # Send the exception chain on failure.

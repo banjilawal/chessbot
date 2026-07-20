@@ -13,4 +13,4 @@ version: 1.0.1
 
 
 # Modules
-from .exception import VectorOperandValidatorException
+from .exception import VectorToggleValidatorException

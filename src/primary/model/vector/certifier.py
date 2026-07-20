@@ -74,10 +74,10 @@ class VectorRootCertifier(RootCertifier[Vector]):
         """
         method = f"{self.__class__.__name__}.execute"
         
-        carrier_validation = self.toggle_validator.execute(
+        carrier_validation = self.model_carrier_validator.execute(
             candidate=candidate,
             target_model=self.toolkit.carrier_model,
-            null_exception=self.toolkit.carrier_null_exception,
+            model_null_exception=self.toolkit.carrier_null_exception,
         )
         if carrier_validation.is_failure:
             # Send the exception chain on failure.

@@ -14,11 +14,11 @@ from typing import Optional, Type, cast
 
 from blueprint import EitherBlueprint
 from model import Coord, Vector
-from chooser import CartesianPoint
+from chooser import VectorToggle
 
 
 
-class CartesianPointBlueprint(EitherBlueprint[CartesianPoint]):
+class VectorToggleBlueprint(EitherBlueprint[VectorToggle]):
     """
     Role:
         -   Container
@@ -29,7 +29,7 @@ class CartesianPointBlueprint(EitherBlueprint[CartesianPoint]):
     Attributes:
         vector: Optional[Vector]
         coord: Optional[Coord]
-        model_class: Type[CartesianPoint]
+        model_class: Type[VectorToggle]
     
     Provides:
     
@@ -43,21 +43,21 @@ class CartesianPointBlueprint(EitherBlueprint[CartesianPoint]):
             self,
             coord: Optional[Coord] | None = None,
             vector: Optional[Vector] | None = None,
-            model_class: Type[CartesianPoint] = CartesianPoint,
+            model_class: Type[VectorToggle] = VectorToggle,
     ):
         """
         Args:
             vector: Optional[Vector]
             coord: Optional[Coord]
-            model_class: Type[CartesianPoint]
+            model_class: Type[VectorToggle]
         """
         super().__init__(model_class=model_class)
         self._coord = coord
         self._vector = vector
     
     @property
-    def model_class(self) -> Type[CartesianPoint]:
-        return cast(Type[CartesianPoint], self.model_class)
+    def model_class(self) -> Type[VectorToggle]:
+        return cast(Type[VectorToggle], self.model_class)
     
     @property
     def coord(self) -> Optional[Coord]:

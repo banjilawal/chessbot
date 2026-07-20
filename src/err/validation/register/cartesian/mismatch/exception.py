@@ -16,11 +16,11 @@ from result import MethodResultType
 
 __all__ = [
     # ======================# CARTESIAN_REGISTER_MISMATCH_ERROR #======================#
-    "CartesianRegisterMismatchException",
+    "VectorToggleRegisterMismatchException",
 ]
 
 # ======================# CARTESIAN_REGISTER_MISMATCH_ERROR #======================#
-class CartesianRegisterMismatchException(CartesianRegisterValidatorException):
+class VectorToggleRegisterMismatchException(CartesianRegisterValidatorException):
     """
     Role:
         -   Error Tracing

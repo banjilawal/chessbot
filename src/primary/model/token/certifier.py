@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Type, cast
 
 from blueprint import TokenBlueprint
-from toggle.carrier import TokenCarrier
+from toggle.carrier import TokenCarrierToggle
 from context import TokenHomeContext
 from err import FormationNullException, TokenCertifierException
 from model import HomeSquare, Team, Token
@@ -78,10 +78,10 @@ class TokenRootCertifier(RootCertifier[Token]):
         """
         method = f"{self.__class__.__name__}.execute"
         
-        carrier_validation = self.toggle_validator.execute(
+        carrier_validation = self.model_carrier_validator.execute(
             candidate=candidate,
             target_model=self.toolkit.carrier_model,
-            null_exception=self.toolkit.carrier_null_exception,
+            model_null_exception=self.toolkit.carrier_null_exception,
         )
         if carrier_validation.is_failure:
             # Send the exception chain on failure.
@@ -190,7 +190,7 @@ class TokenRootCertifier(RootCertifier[Token]):
         
         if carrier.is_model_carrier:
             return ValidationResult.success(
-                TokenCarrier(
+                TokenCarrierToggle(
                     model=Token(
                         id=id,
                         team=team,
@@ -202,7 +202,7 @@ class TokenRootCertifier(RootCertifier[Token]):
             )
         # --- Forward the work product to the caller. ---#
         return ValidationResult.success(
-            TokenCarrier(
+            TokenCarrierToggle(
                 blueprint=TokenBlueprint(
                     id=id,
                     rank=rank,

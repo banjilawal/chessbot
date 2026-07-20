@@ -9,18 +9,19 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from abc import ABC, abstractmethod
-from typing import Any, Generic, TypeVar
+from abc import abstractmethod
+from typing import Any, Generic, TypeVar, cast
 
 from bootstrapper import EntityCarrierToggleValidator
+from primary import RootCertifier
 from result import ValidationResult
-from toolkit import Toolkit
+from toolkit import ModelToolkit
 from util import LoggingLevelRouter
 
-T = TypeVar("T",)
+T = TypeVar("T", bound="Model")
 
 
-class RootCertifier(ABC, Generic[T]):
+class ModelRootCertifier(RootCertifier, Generic[T]):
     """
     Role
         -   Validation Worker
@@ -37,25 +38,22 @@ class RootCertifier(ABC, Generic[T]):
 
     Super Class:
     """
-    _toolkit: Toolkit
-    _model_carrier_validator: EntityCarrierToggleValidator
     
     def __init__(
             self,
-            toolkit: Toolkit,
-            model_carrier_validator: EntityCarrierToggleValidator |
-                                     None = EntityCarrierToggleValidator(),
+            toolkit: ModelToolkit[T],
+            model_carrier_validator: EntityCarrierToggleValidator,
     ):
-        self._toolkit = toolkit
-        self._model_carrier_validator = model_carrier_validator
+        super().__init__(toolkit=toolkit, model_carrier_validator=model_carrier_validator)
+
         
     @property
-    def toolkit(self) -> Toolkit:
-        return self._toolkit
+    def toolkit(self) -> ModelToolkit[T]:
+        return cast(ModelToolkit[T], self.toolkit)
     
     @property
     def model_carrier_validator(self) -> EntityCarrierToggleValidator:
-        return self._model_carrier_validator
+        return self.model_carrier_validator
     
     @abstractmethod
     @LoggingLevelRouter.monitor

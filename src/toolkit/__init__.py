@@ -16,7 +16,7 @@ from .context import *
 from .graph import *
 from .math import *
 from .model import *
-from .chooser import *
+from .toggle import *
 from .permitter import *
 from .pipeline import *
 from .registry import *

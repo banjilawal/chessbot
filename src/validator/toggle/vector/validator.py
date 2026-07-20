@@ -10,12 +10,15 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, cast
 
-from selector import VectorToggle
+from err import VectorToggleValidatorException
+from primary import VectorToggleRootCertifier
+from result import ValidationResult
+from toggle import VectorToggle
 from util import LoggingLevelRouter
-from validator import ModelValidator
+from validator import Validator
 
 
-class VectorSelectorValidator(ModelValidator[VectorToggle]):
+class VectorToggleValidator(Validator[VectorToggle]):
     """
     Role
         -   Transaction Worker
@@ -42,16 +45,16 @@ class VectorSelectorValidator(ModelValidator[VectorToggle]):
     
     def __init__(
             self,
-            root_certifier: CartesianRegisterRootCertifier | None = CartesianRegisterRootCertifier(),
+            root_certifier: VectorToggleRootCertifier | None = VectorToggleRootCertifier(),
     ):
         super().__init__(root_certifier=root_certifier)
         
     @property
-    def root_certifier(self) -> CartesianRegisterRootCertifier:
-        return cast(CartesianRegisterRootCertifier, self.root_certifier)
+    def root_certifier(self) -> VectorToggleRootCertifier:
+        return cast(VectorToggleRootCertifier, self.root_certifier)
     
     @LoggingLevelRouter.monitor
-    def execute(self, candidate: Any) -> ValidationResult:
+    def execute(self, candidate: Any) -> ValidationResult[VectorToggle]:
         """
         Verify the candidate is a safe VectorOperand.
         
@@ -73,38 +76,23 @@ class VectorSelectorValidator(ModelValidator[VectorToggle]):
         
         
         # Handle the case that, the validator is not primed.
-        validator_priming_result = self.root_certifier.toolkit.priming_validator.execute(
+        certification = self.root_certifier.execute(
             candidate=candidate,
             target_model=self.root_certifier.toolkit.model,
             context_null_exception=self.root_certifier.toolkit.null_exception,
         )
-        if validator_priming_result.is_failure:
+        if certification.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                VectorOperandValidatorException(
+                VectorToggleValidatorException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=VectorOperandValidatorException.MSG,
-                    err_code=VectorOperandValidatorException.ERR_CODE,
-                    ex=validator_priming_result.exception
+                    msg=VectorToggleValidatorException.MSG,
+                    err_code=VectorToggleValidatorException.ERR_CODE,
+                    ex=certification.exception
                 )
             )
         # --- Cast candidate to a VectorOperand for additional tests. ---#
-        register = cast(VectorOperandEntityRegister, candidate)
-        
-        root_certification = self.root_certifier.execute(register)
-        if root_certification.is_failure:
-            # Send the exception chain on failure.
-            return ValidationResult.failure(
-                VectorOperandValidatorException(
-                    cls_mthd=method,
-                    cls_name=self.__class__.__name__,
-                    msg=VectorOperandValidatorException.MSG,
-                    err_code=VectorOperandValidatorException.ERR_CODE,
-                    ex=root_certification.exception
-                )
-            )
-        
-        return root_certification
+        return ValidationResult.success(cast(VectorToggle, certification.payload))
 
             

@@ -74,7 +74,7 @@ class QueryValidator(Validator[Query]):
         priming_result = blueprint.priming_validator.execute(
             candidate=candidate,
             target_model=blueprint.query_model_type,
-            null_exception=blueprint.query_null_exception,
+            model_null_exception=blueprint.query_null_exception,
         )
         if priming_result.is_failure:
             # Send the exception chain on failure.
@@ -151,7 +151,7 @@ class QueryValidator(Validator[Query]):
         stack_validation_result = blueprint.priming_validator.execute(
             candidate=query.stack,
             target_model=blueprint.stack_model_type,
-            null_exception=blueprint.stack_null_exception,
+            model_null_exception=blueprint.stack_null_exception,
         )
         if stack_validation_result.is_failure:
             # Send the exception chain on failure.
@@ -191,7 +191,7 @@ class QueryValidator(Validator[Query]):
         catalog_validation_result = blueprint.priming_validator.execute(
             candidate=query.catalog,
             target_model=blueprint.stack_model_type,
-            null_exception=blueprint.stack_null_exception,
+            model_null_exception=blueprint.stack_null_exception,
         )
         if catalog_validation_result.is_failure:
             # Send the exception chain on failure.

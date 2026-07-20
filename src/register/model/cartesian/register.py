@@ -21,11 +21,11 @@ class VectorToggleRegister(ModelRegister[VectorToggle]):
         -   Data Holder
 
     Responsibilities:
-        1.  Contains CartesianPoints passed for Vector Algebra
+        1.  Contains VectorToggles passed for Vector Algebra
 
     Attributes:
-        a: CartesianPoint
-        b: CartesianPoint
+        a: VectorToggle
+        b: VectorToggle
 
         is_vector_register:bool
         is_coord_register: bool
@@ -38,22 +38,22 @@ class VectorToggleRegister(ModelRegister[VectorToggle]):
     
     def __init__(
             self,
-            a: CartesianPoint,
-            b: CartesianPoint,
+            a: VectorToggle,
+            b: VectorToggle,
     ):
         """
         Args:
-            a: CartesianPoint
-            b: CartesianPoint
+            a: VectorToggle
+            b: VectorToggle
         """
         super().__init__(a=a, b=b)
         
     @property
-    def a(self) -> CartesianPoint:
+    def a(self) -> VectorToggle:
         return self._a
     
     @property
-    def b(self) -> CartesianPoint:
+    def b(self) -> VectorToggle:
         return self._b
     
     @property
@@ -80,11 +80,11 @@ class VectorToggleRegister(ModelRegister[VectorToggle]):
         )
     
     @property
-    def to_list(self) -> List[CartesianPoint]:
+    def to_list(self) -> List[VectorToggle]:
         return [self.a, self.b]
     
     @property
-    def to_dict(self) -> Dict[str, CartesianPoint]:
+    def to_dict(self) -> Dict[str, VectorToggle]:
         return {
             "a": self.a,
             "b": self.b,

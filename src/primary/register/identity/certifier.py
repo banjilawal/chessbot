@@ -75,7 +75,7 @@ class IdentityRegisterRootCertifier(RootCertifier[IdentityRegister]):
         validator_priming_result = self.toolkit.priming_validator.execute(
             candidate=candidate,
             target_blueprint=self.toolkit.blueprint_model,
-            null_exception=self.toolkit.blueprint_null_exception,
+            model_null_exception=self.toolkit.blueprint_null_exception,
         )
         if validator_priming_result.is_failure:
             # Send the exception chain on failure.

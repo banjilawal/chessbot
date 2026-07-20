@@ -15,10 +15,10 @@ from err import ExcessTogglesException, NullException, ToggleValidatorException,
 from result import ValidationResult
 from util import LoggingLevelRouter
 
-T = TypeVar("T", bound="Toggle")
+T = TypeVar("T", bound="EntityCarrierToggle")
 
 
-class ToggleValidator:
+class EntityCarrierToggleValidator:
     """
     Role
         -   Transaction Worker
@@ -34,7 +34,7 @@ class ToggleValidator:
     Provides:
         -   execute(
                     candidate: Any,
-                    toggle_model: Type[T],
+                    model_carrier_toggle: Type[T],
                     null_exception: NullException,
             ) -> ValidationResult:
 
@@ -46,8 +46,8 @@ class ToggleValidator:
     def execute(
             self,
             candidate: Any,
-            toggle_model: Type[T],
-            null_exception: NullException,
+            model_carrier_toggle: Type[T],
+            model_null_exception: NullException,
     ) -> ValidationResult:
         """
         Perform integrity tests common to all Toggle objects.
@@ -56,14 +56,14 @@ class ToggleValidator:
             1.  Send an exception chain in the ValidationResult if any of the following
                 occur
                     -   The candidate is null.
-                    -   The candidate is not an instance of the toggle_model.
+                    -   The candidate is not an instance of the model_carrier_toggle.
                     _   It has no active toggles.
                     _   It has excess toggles.
             2.  Otherwise, send the success result.
         Args:
             candidate: Any
-            toggle_model: Type[T]
-            null_exception: NullException
+            model_carrier_toggle: Type[T]
+            model_null_exception: NullException
         Returns:
             ValidationResult
         Raises:
@@ -83,11 +83,11 @@ class ToggleValidator:
                     cls_name=self.__class__.__name__,
                     msg=ToggleValidatorException.MSG,
                     err_code=ToggleValidatorException.ERR_CODE,
-                    ex=null_exception,
+                    ex=model_null_exception,
                 )
             )
         # Handle the case that, the candidate is the wrong class.
-        if not isinstance(candidate, toggle_model):
+        if not isinstance(candidate, model_carrier_toggle):
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 ToggleValidatorException(
@@ -96,13 +96,13 @@ class ToggleValidator:
                     msg=ToggleValidatorException.MSG,
                     err_code=ToggleValidatorException.ERR_CODE,
                     ex=TypeError(
-                        f"Expected {type(toggle_model).__name__}. Got "
+                        f"Expected {type(model_carrier_toggle).__name__}. Got "
                         f"{type(candidate).__name__} instead."
                     ),
                 )
             )
         # --- Cast the candidate into the expected class for additional tests. ---#
-        toggle = cast(toggle_model, candidate)
+        toggle = cast(model_carrier_toggle, candidate)
 
         # Handle the case that, all switches are off.
         if toggle.no_active_toggles:

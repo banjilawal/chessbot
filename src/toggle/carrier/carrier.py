@@ -16,7 +16,7 @@ from toggle import Toggle
 
 T = TypeVar("T")
 
-class EntityCarrier(Toggle, Generic[T]):
+class EntityCarrierToggle(Toggle, Generic[T]):
     """
     Role:
         -   ENTITY

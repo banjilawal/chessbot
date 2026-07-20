@@ -12,6 +12,7 @@ version: 1.0.1
 # Packages
 from .binder import *
 from .coord import *
+from .identity import *
 from .path import *
 from .rank import *
 from .scalar import *

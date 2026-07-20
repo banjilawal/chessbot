@@ -1,7 +1,7 @@
-# src/validator/operand/validator.py
+# src/primary/toggle/vector/certifier.py
 
 """
-Module: validator.operand.operation
+Module: primary.toggle.vector.certifier
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -10,15 +10,16 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, cast
 
+
 from err import ExcessTogglesException, NoActiveTogglesException, NodeValidationRouteException, NullException
-from chooser import CartesianPoint
+from primary import RootCertifier
 from result import ValidationResult
-from toolkit import CartesianPointToolkit
+from toggle import VectorToggle
+from toolkit import VectorToggleToolkit
 from util import LoggingLevelRouter
-from validator import ChooserValidator
 
 
-class VectorToggleValidator(ChooserValidator[CartesianPoint]):
+class VectorToggleRootCertifier(RootCertifier[VectorToggle]):
     """
     Role
         -   Transaction Worker
@@ -27,7 +28,7 @@ class VectorToggleValidator(ChooserValidator[CartesianPoint]):
         -   Validation Process Owner
 
     Responsibilities:
-        1.  Ensure a CartesianOperand instance is certified safe, reliable and consistent
+        1.  Ensure a VectorToggle instance is certified safe, reliable and consistent
             before use.
 
     Attributes:
@@ -35,8 +36,8 @@ class VectorToggleValidator(ChooserValidator[CartesianPoint]):
     Properties:
         -   def validate(
                     candidate: Any,
-                    toolkit : CartesianPointToolkit,
-            ) -> ValidationResult[CartesianOperand]:
+                    toolkit : VectorToggleToolkit,
+            ) -> ValidationResult[VectorToggle]:
 
     Super Class:
         ModelValidator
@@ -44,69 +45,69 @@ class VectorToggleValidator(ChooserValidator[CartesianPoint]):
     
     def __init__(
             self,
-            toolkit: CartesianPointToolkit = CartesianPointToolkit(),
+            toolkit: VectorToggleToolkit = VectorToggleToolkit(),
     ):
         super().__init__(toolkit=toolkit)
         
     @property
-    def toolkit(self) -> CartesianPointToolkit:
-        return cast(CartesianPointToolkit, self.toolkit)
+    def toolkit(self) -> VectorToggleToolkit:
+        return cast(VectorToggleToolkit, self.toolkit)
     
     
     @LoggingLevelRouter.monitor
-    def execute(self, candidate: Any) -> ValidationResult:
+    def execute(self, candidate: Any) -> ValidationResult[VectorToggle]:
         """
-        Verify the candidate is a safe CartesianOperand.
+        Verify the candidate is a safe VectorToggle.
 
         Action:
             1.  Send an exception in the ValidationResult any of these
                 conditions occur.
                     -   candidate is null.
-                    -   It's not a CartesianOperand.
-                    -   The cartesianOperand's payload is flagged unsafe.
+                    -   It's not a VectorToggle.
+                    -   The vectorToggle's payload is flagged unsafe.
             3.  Otherwise, Send the success result.
         Args:
             candidate: Any
-            toolkit : CartesianPointToolkit
+            toolkit : VectorToggleToolkit
         Returns:
-            ValidationResult[CartesianOperand]
+            ValidationResult[VectorToggle]
         Raises:
             TypeError
-            CartesianOperandNullException
-            ZeroCartesianOperandFlagsException
-            CartesianPointValidator
-            ExcessCartesianOperandFlagsException
+            VectorToggleNullException
+            ZeroVectorToggleFlagsException
+            VectorToggleRootCertifierException
+            ExcessVectorToggleFlagsException
         """
         method = f"{self.__class__.__name__}.validate"
         
-        bootstrap = self.toggle_validator.execute(
+        bootstrap = self.toolkit.priming_validator.execute(
             candidate=candidate,
-            toggle_model=self.toolkit.model,
-            null_exception=NullException(),
+            target_model=self.toolkit.model,
+            model_null_exception=self.toolkit.null_exception,
         )
         if bootstrap.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                CartesianPointValidator(
+                VectorToggleRootCertifierException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=CartesianPointValidator.MSG,
-                    err_code=CartesianPointValidator.ERR_CODE,
+                    msg=VectorToggleRootCertifierException.MSG,
+                    err_code=VectorToggleRootCertifierException.ERR_CODE,
                     ex=bootstrap.exception
                 )
             )
-        # --- Cast candidate to a CartesianOperand for additional tests. ---#
-        operand = cast(self.toolkit.model, candidate)
+        # --- Cast candidate to a VectorToggle for additional tests. ---#
+        toggle = cast(self.toolkit, candidate)
         
         # Handle the case that neither option is enabled.
-        if operand.no_active_toggles:
+        if toggle.no_active_toggles:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                CartesianPointValidator(
+                VectorToggleRootCertifierException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=CartesianPointValidator.MSG,
-                    err_code=CartesianPointValidator.ERR_CODE,
+                    msg=VectorToggleRootCertifierException.MSG,
+                    err_code=VectorToggleRootCertifierException.ERR_CODE,
                     ex=NoActiveTogglesException(
                         msg=NoActiveTogglesException.MSG,
                         err_code=NoActiveTogglesException.ERR_CODE,
@@ -114,38 +115,38 @@ class VectorToggleValidator(ChooserValidator[CartesianPoint]):
                 )
             )
         # Handle the case that, both options are enabled.
-        if operand.excess_toggles:
+        if toggle.excess_toggles:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                CartesianPointValidator(
+                VectorToggleRootCertifierException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=CartesianPointValidator.MSG,
-                    err_code=CartesianPointValidator.ERR_CODE,
+                    msg=VectorToggleRootCertifierException.MSG,
+                    err_code=VectorToggleRootCertifierException.ERR_CODE,
                     ex=ExcessTogglesException(
                         msg=ExcessTogglesException.MSG,
                         err_code=ExcessTogglesException.ERR_CODE,
                     )
                 )
             )
-        # Pick a route for integrity testing the operand's entity.
+        # Pick a route for integrity testing the toggle's entity.
         validation_result = ValidationResult.failure(NodeValidationRouteException())
-        if operand.is_coord_selector:
-            validation_result = self.toolkit.coord.validator.execute(operand.entity)
-        if operand.is_vector_selector:
-            validation_result = self.toolkit.vector.validator.execute(operand.entity)
+        if toggle.is_coord_selector:
+            validation_result = self.toolkit.coord.primary.execute(toggle.entity)
+        if toggle.is_vector_selector:
+            validation_result = self.toolkit.vector.primary.execute(toggle.entity)
    
         # Handle the case that, the entity is not safe to use.
         if validation_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                CartesianPointValidator(
+                VectorToggleRootCertifierException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=CartesianPointValidator.MSG,
-                    err_code=CartesianPointValidator.ERR_CODE,
+                    msg=VectorToggleRootCertifierException.MSG,
+                    err_code=VectorToggleRootCertifierException.ERR_CODE,
                     ex=validation_result.exception
                 )
             )
         # --- Forward the work product to the caller ---#
-        return ValidationResult.success(operand)
+        return ValidationResult.success(toggle)

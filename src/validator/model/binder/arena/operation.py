@@ -82,7 +82,7 @@ class BoardTeamBinderValidator(ModelValidator[BoardBinder]):
         validator_priming_result = toolkit.priming_validator.execute(
             candidate=candidate,
             target_model=BoardBinder,
-            null_exception=BoardTeamBinderNullException(),
+            model_null_exception=BoardTeamBinderNullException(),
         )
         if validator_priming_result.is_failure:
             # Send the exception chain on failure.

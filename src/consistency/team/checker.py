@@ -76,7 +76,7 @@ class TeamConsistencyChecker(ConsistencyChecker[Team]):
         consistency_priming_result = toolkit.priming_consistency.execute(
             candidate=candidate,
             target_model=Team,
-            null_exception=TeamNullException(),
+            model_null_exception=TeamNullException(),
         )
         if consistency_priming_result.is_failure:
             # Send the exception chain on failure.
@@ -109,7 +109,7 @@ class TeamConsistencyChecker(ConsistencyChecker[Team]):
         schema_validation_result = toolkit.priming_consistency.execute(
             candidate=candidate,
             target_model=Schema,
-            null_exception=SchemaNullException(),
+            model_null_exception=SchemaNullException(),
         )
         if schema_validation_result.is_failure:
             # Send the exception chain on failure.

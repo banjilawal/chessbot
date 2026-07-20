@@ -10,15 +10,15 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, cast
 
-from err import CartesianRegisterCertifierException, CartesianRegisterMismatchException
-from model import PointRegister
+from err import VectorToggleRegisterMismatchException, VectorToggleRegisterCertifierException
 from primary import RootCertifier
+from register import VectorToggleRegister
 from result import ValidationResult
-from toolkit import CartesianRegisterToolkit
+from toolkit.register import VectorToggleRegisterToolkit
 from util import LoggingLevelRouter
 
 
-class CartesianRegisterRootCertifier(RootCertifier[PointRegister]):
+class VectorToggleRegisterCertifier(RootCertifier[VectorToggleRegister]):
     """
     Role
         -   Transaction Worker
@@ -40,13 +40,13 @@ class CartesianRegisterRootCertifier(RootCertifier[PointRegister]):
     """
     def __init__(
             self, 
-            toolkit: CartesianRegisterToolkit | None = CartesianRegisterToolkit()
+            toolkit: VectorToggleRegisterToolkit | None = VectorToggleRegisterToolkit()
     ):
         super().__init__(toolkit=toolkit)
         
     @property
-    def toolkit(self) -> CartesianRegisterToolkit:
-        return cast(CartesianRegisterToolkit, self.toolkit)
+    def toolkit(self) -> VectorToggleRegisterToolkit:
+        return cast(VectorToggleRegisterToolkit, self.toolkit)
     
     @LoggingLevelRouter.monitor
     def execute(self, candidate: Any,) -> ValidationResult:
@@ -65,7 +65,7 @@ class CartesianRegisterRootCertifier(RootCertifier[PointRegister]):
         Returns:
             ValidationResult
         Raises:
-            CartesianRegisterCertifierException
+            VectorToggleRegisterCertifierException
             CartesianRegisterMismatchException
         """
         method = f"{self.__class__.__name__}.execute"
@@ -74,16 +74,16 @@ class CartesianRegisterRootCertifier(RootCertifier[PointRegister]):
         validator_priming_result = self.toolkit.priming_validator.execute(
             candidate=candidate,
             target_blueprint=self.toolkit.blueprint_model,
-            null_exception=self.toolkit.blueprint_null_exception,
+            model_null_exception=self.toolkit.blueprint_null_exception,
         )
         if validator_priming_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                CartesianRegisterCertifierException(
+                VectorToggleRegisterCertifierException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=CartesianRegisterCertifierException.MSG,
-                    err_code=CartesianRegisterCertifierException.ERR_CODE,
+                    msg=VectorToggleRegisterCertifierException.MSG,
+                    err_code=VectorToggleRegisterCertifierException.ERR_CODE,
                     ex=validator_priming_result.exception,
                 )
             )
@@ -91,31 +91,31 @@ class CartesianRegisterRootCertifier(RootCertifier[PointRegister]):
         blueprint = cast(self.toolkit.blueprint_model, candidate)
         
         # Handle the case that the register has mixed contents.
-        if register.is_mismatched_register:
+        if blueprint.is_mismatched_register:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                CartesianRegisterCertifierException(
+                VectorToggleRegisterCertifierException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=CartesianRegisterCertifierException.MSG,
-                    err_code=CartesianRegisterCertifierException.ERR_CODE,
-                    ex=CartesianRegisterMismatchException(
-                        msg=CartesianRegisterMismatchException.MSG,
-                        err_code=CartesianRegisterMismatchException.ERR_CODE,
+                    msg=VectorToggleRegisterCertifierException.MSG,
+                    err_code=VectorToggleRegisterCertifierException.ERR_CODE,
+                    ex=VectorToggleRegisterMismatchException(
+                        msg=VectorToggleRegisterMismatchException.MSG,
+                        err_code=VectorToggleRegisterMismatchException.ERR_CODE,
                     )
                 )
             )
         # Handle the case that, either slot does not contain a safe vector_opernad.
         for item in [blueprint.a, blueprint.b]:
-            validation = self.toolkit.cartesian_validator.execute(item)
+            validation = self.toolkit.vector_toggle_validator.execute(item)
             if validation.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
-                    CartesianRegisterCertifierException(
+                    VectorToggleRegisterCertifierException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        msg=CartesianRegisterCertifierException.MSG,
-                        err_code=CartesianRegisterCertifierException.ERR_CODE,
+                        msg=VectorToggleRegisterCertifierException.MSG,
+                        err_code=VectorToggleRegisterCertifierException.ERR_CODE,
                         ex=validation.exception,
                     )
                 )

@@ -12,7 +12,7 @@ from typing import Any, Optional, cast
 
 from err import VectorValidatorException
 from model import Vector
-from primary.vector import VectorRootCertifier
+from primary.model.vector import VectorRootCertifier
 from result import ValidationResult
 from util import LoggingLevelRouter
 from validator import ModelValidator

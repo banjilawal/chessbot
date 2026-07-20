@@ -21,7 +21,7 @@ from toolkit import RegisterToolkit
 from validator.register.operand import VectorOperandValidator
 
 
-class CartesianRegisterToolkit(RegisterToolkit[VectorOperand]):
+class VectorToggleRegisterToolkit(RegisterToolkit[VectorOperand]):
     """
     Role:
         -   Container
@@ -32,7 +32,7 @@ class CartesianRegisterToolkit(RegisterToolkit[VectorOperand]):
         3.  No logic in the Toolkit.
 
     Attributes:
-        cartesian_validator: VectorOperandValidator
+        vector_toggle_validator: VectorOperandValidator
         null_exception = CartesianRegisterNullException
         : CartesianRegister
 
@@ -41,7 +41,7 @@ class CartesianRegisterToolkit(RegisterToolkit[VectorOperand]):
     Super Class:
        RegisterToolkit
     """
-    cartesian_validator: VectorOperandValidator = VectorOperandValidator()
+    vector_toggle_validator: VectorOperandValidator = VectorOperandValidator()
     : PointRegister
     null_exception = CartesianRegisterNullException()
     blueprint_ = PointRegisterBlueprint

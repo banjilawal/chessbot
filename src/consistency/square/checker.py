@@ -79,7 +79,7 @@ class SquareConsistencyChecker(ConsistencyChecker[Square]):
         
         bootstrap = self.root_certifier.toolkit.priming_consistency.execute(
             target_model=self.root_certifier.toolkit.model,
-            null_exception=self.root_certifier.toolkit.null_exception,
+            model_null_exception=self.root_certifier.toolkit.null_exception,
         )
         if bootstrap.is_failure:
             # Send the exception chain on failure.

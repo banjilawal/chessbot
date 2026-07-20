@@ -13,7 +13,7 @@ from dataclasses import dataclass
 from typing import Optional, Type, cast
 
 from blueprint import RegisterBlueprint
-from chooser import CartesianPoint
+from chooser import VectorToggle
 from err import CartesianRegisterNullException, RegisterNullException
 from register import VectorToggleRegister
 
@@ -25,11 +25,11 @@ class CartesianRegisterBlueprint(RegisterBlueprint[VectorToggleRegister]):
         -   Container
     
     Responsibilities:
-        1.  Provides values for instantiating a CartesianPoint object.
+        1.  Provides values for instantiating a VectorToggle object.
     
     Attributes:
-        a: CartesianPoint
-        b: CartesianPoint
+        a: VectorToggle
+        b: VectorToggle
         model_class: Optional[Type[CartesianRegister]]
         null_exception: Optional[CartesianRegisterNullException]
     
@@ -38,40 +38,40 @@ class CartesianRegisterBlueprint(RegisterBlueprint[VectorToggleRegister]):
     Super Class:
         RegisterBlueprint
     """
-    _a: CartesianPoint
-    _b: CartesianPoint
+    _a: VectorToggle
+    _b: VectorToggle
     
     def __init__(
             self,
-            a: CartesianPoint,
-            b: CartesianPoint,
+            a: VectorToggle,
+            b: VectorToggle,
             model_class: Optional[Type[VectorToggleRegister]] | None = VectorToggleRegister,
             null_exception: Optional[CartesianRegisterNullException] |
                             None = CartesianRegisterNullException(),
     ):
         """
         Args:
-            a: CartesianPoint
-            b: CartesianPoint
+            a: VectorToggle
+            b: VectorToggle
             model_class: Optional[Type[CartesianRegister]]
             null_exception: Optional[CartesianRegisterNullException]
         """
         super().__init__(a=a, b=b, model_class=model_class, null_exception=null_exception)
     
     @property
-    def model_class(self) -> Type[CartesianPoint]:
-        return cast(Type[CartesianPoint], self.model_class)
+    def model_class(self) -> Type[VectorToggle]:
+        return cast(Type[VectorToggle], self.model_class)
     
     @property
     def null_exception(self) -> RegisterNullException:
         return cast(RegisterNullException, self.null_exception)
     
     @property
-    def a(self) -> CartesianPoint:
+    def a(self) -> VectorToggle:
         return self._a
     
     @property
-    def b(self) -> CartesianPoint:
+    def b(self) -> VectorToggle:
         return self._b
     
     

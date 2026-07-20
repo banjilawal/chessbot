@@ -15,10 +15,10 @@ from result import MethodResultType
 
 __all__ = [
     # ======================# CARTESIAN_VALIDATOR_FAILURE #======================#
-    "VectorOperandValidatorException",
+    "VectorToggleValidatorException",
 ]
 # ======================# CARTESIAN_VALIDATOR_FAILURE #======================#
-class VectorOperandValidatorException(ValidatorException):
+class VectorToggleValidatorException(ValidatorException):
     """
     Role:
         -   Error Tracing

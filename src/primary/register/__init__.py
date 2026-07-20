@@ -11,7 +11,8 @@ version: 1.0.1
 
 # Packages
 from .identity import *
-from .carrier import *
 from .square import *
+from .vector import *
 
 # Modules
+from .certifier import RegisterRootCertifier

@@ -12,11 +12,11 @@ from __future__ import annotations
 from typing import Any, Dict, Optional
 
 from blueprint import TokenBlueprint
-from toggle.carrier import EntityCarrier
+from toggle.carrier import EntityCarrierToggle
 from model import Token
 
 
-class TokenCarrier(EntityCarrier[Token]):
+class TokenCarrierToggle(EntityCarrierToggle[Token]):
     """
     Role:
         -   ENTITY
@@ -97,7 +97,7 @@ class TokenCarrier(EntityCarrier[Token]):
     def __eq__(self, other):
         if other is self: return True
         if other is None: return False
-        if isinstance(other, TokenCarrier):
+        if isinstance(other, TokenCarrierToggle):
             return self.entity == other.entity
         return False
     

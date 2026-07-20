@@ -24,4 +24,4 @@ from .token import *
 from .vector import *
 
 # Modules
-from .carrier import EntityCarrier
+from .carrier import EntityCarrierToggle

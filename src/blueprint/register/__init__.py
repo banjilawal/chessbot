@@ -11,7 +11,7 @@ version: 1.0.1
 
 # Packages
 from .identity import *
-from .cartesian import *
+from .vectortoggle import *
 from .square import *
 
 # Modules
