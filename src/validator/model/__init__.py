@@ -12,7 +12,6 @@ version: 1.0.1
 # Packages
 from .binder import *
 from .coord import *
-from .endpoint import *
 from .maneuver import *
 from .path import *
 from .rank import *

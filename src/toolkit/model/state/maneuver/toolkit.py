@@ -9,20 +9,18 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from typing import List, Type
+from typing import Type
 
 from analyzer import SquareTokenRelationAnalyzer, TokenReadinessAnalyzer
 from err import ManeuverNullException
-from microservice import Microservice
 from model import Maneuver
-from operation import Operation
 from searcher import TokenOriginSearcher
 from toolkit import StateModelToolkit
 from validator import (
     ManeuverEndpointValidator, PathValidator, SquareValidator, TokenDestinationCertifier,
     TokenValidator
 )
-from validator.model.endpoint import TokenOriginCertifier
+from endpoint.maneuver import TokenOriginCertifier
 
 
 class ManeuverToolkit(StateModelToolkit[Maneuver]):

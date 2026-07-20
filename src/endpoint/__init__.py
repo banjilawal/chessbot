@@ -10,7 +10,6 @@ version: 1.0.1
 # =========== ENDPOINT PACKAGE ===========#
 
 # Packages
-from .token import *
+from .maneuver import *
 
 # Modules
-from .endpoint import Endpoint
