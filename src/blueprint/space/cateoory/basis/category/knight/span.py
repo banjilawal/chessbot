@@ -12,10 +12,10 @@ from __future__ import annotations
 from typing import Optional
 
 from model import Knight, Vector
-from space import VectorTargetingComputer, KnightMovementVector, Basis
+from space import VectorTargetingComputer, KnightMovementVector, BasisSpace
 
 
-class KnightBasis(Basis[Knight]):
+class KnightBasis(BasisSpace[Knight]):
     """
     Role:
         -   Computation Worker

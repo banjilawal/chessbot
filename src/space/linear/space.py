@@ -14,10 +14,10 @@ from typing import List, Optional, cast
 
 from container import VectorSet
 from err import LinearSpaceException
-from model import Scalar, Vector
+from model import LinearTargetSet, Scalar, Vector
 from register import VectorRegister
 from result import ComputationResult, MethodResultType
-from space import LinearStepper, LinearTargetSet, Space
+from space import LinearStepper, Space
 from toolkit import MathToolkit
 from util import LoggingLevelRouter
 

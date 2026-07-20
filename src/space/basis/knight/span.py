@@ -1,7 +1,7 @@
-# src/space/span/basis/pawn/span.py
+# src/space/span/basis/knight/span.py
 
 """
-Module: space.span.basis.pawn.span
+Module: space.span.basis.knight.span
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -9,32 +9,27 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from abc import ABC
-from typing import Optional, TypeVar
+from typing import Optional
 
-from space import VectorTargetingComputer, PawnMovementVector, Basis
-
-T = TypeVar("T", bound="PawnManeuverVectorSet")
-
-from model import Pawn, Vector
+from model import Knight, Vector
+from space import VectorTargetingComputer, KnightMovementVector, BasisSpace
 
 
-
-class PawnBasis(ABC, Basis[Pawn]):
+class KnightBasis(BasisSpace[Knight]):
     """
     Role:
         -   Computation Worker
         -   Integrity Assurance
 
     Responsibilities:
-        1.  Produce a set of destinations for a Pawn by adding it's position to  each
-            PawnMovementVector.
+        1.  Produce a set of destinations for a Knight by adding it's position to  each
+            KnightMovementVector.
 
     Attributes:
             origin: Vector
-            maneuver_vectors: PawnManeuverVectorSet
-            targeting_computer: Optional[DestinationSpanComputer]
-            
+            maneuver_vectors: Optional[KnightManeuverVectorSet]
+            targeting_computer: Optional[DestinationSpanComputer]      
+                  
     Provides:
 
     Super Class:
@@ -44,14 +39,15 @@ class PawnBasis(ABC, Basis[Pawn]):
     def __init__(
             self,
             origin: Vector,
-            maneuver_vectors: PawnMovementVector[T],
+            maneuver_vectors: Optional[KnightMovementVector] |
+                              None = KnightMovementVector(),
             targeting_computer: Optional[VectorTargetingComputer] |
                                 None = VectorTargetingComputer(),
     ):
         """
         Args:
             origin: Vector
-            maneuver_vectors: PawnManeuverVectorSet
+            maneuver_vectors: Optional[KnightManeuverVectorSet]
             targeting_computer: Optional[DestinationSpanComputer]
         """
         super().__init__(

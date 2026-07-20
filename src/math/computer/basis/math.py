@@ -1,7 +1,7 @@
-# src/space/span/span.py
+# src/math/span/span.py
 
 """
-Module: space.span.span
+Module: math.span.span
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -10,21 +10,24 @@ version: 1.0.1
 from __future__ import annotations
 
 
-from typing import List, Optional, cast
+from typing import List, Optional, TypeVar, cast
 
+from blueprint import TargetSpanSet
 from container import VectorSet
-from model.target import TargetVectorSet
 from err import BasisTargetVectorSpannerException
-from model import Vector
+from math import Computer
+from model import TargetVectorSet, Vector
 from register import VectorRegister
 from result import ComputationResult, MethodResultType
-from space.basis import BasisSpace
+from space import BasisSpace
 from toolkit import MathToolkit
 from util import LoggingLevelRouter
 from validator import BasisValidator
 
+T = TypeVar("T", bound="BasisSpace")
 
-class VectorTargetingComputer:
+
+class BasisTargetVectorSpanner(Computer):
     """
     Role:
         -   Computation Worker
@@ -43,11 +46,13 @@ class VectorTargetingComputer:
         
     Super Class:
     """
+    _basis: BasisSpace[T]
     _basis_validator: BasisValidator
     _math_toolkit: Optional[MathToolkit]
     
     def __init__(
             self,
+            basis: BasisSpace[T],
             basis_validator: BasisValidator | None = BasisValidator(),
             math_toolkit: Optional[MathToolkit] | None = MathToolkit(),
     ):
@@ -56,8 +61,14 @@ class VectorTargetingComputer:
             basis_validator: BasisValidator
             math_toolkit: Optional[MathToolkit]
         """
+        self._basis = basis
         self._math_toolkit = math_toolkit
         self._basis_validator = basis_validator
+        
+    @property
+    def basis(self) -> BasisSpace[T]:
+        return cast(T, self._basis)
+        
     
     @property
     def basis_validator(self) -> BasisValidator:
@@ -68,10 +79,7 @@ class VectorTargetingComputer:
         return self._math_toolkit
     
     @LoggingLevelRouter.monitor
-    def execute(
-            self,
-            vector_basis: BasisSpace
-    ) -> ComputationResult[TargetVectorSet]:
+    def execute(self) -> ComputationResult[TargetVectorSet]:
         """
         Verify the object is a String that is safe to use.
 
@@ -91,7 +99,7 @@ class VectorTargetingComputer:
         method = f"{self.__class__.__name__}.destination_vectors"
         
         # Handle the case that, the vector_basis is not safe to use.
-        validation = self._basis_validator.execute(vector_basis)
+        validation = self._basis_validator.execute(self._basis)
         if validation.is_failure:
             # Send an exception in chain in the result.
             return ComputationResult.failure(
@@ -139,9 +147,9 @@ class VectorTargetingComputer:
             solutions.append(cast(Vector, computation.payload))
             
         # Convert the solution set into a Tuple, for a VectorSet.
-        destination_vector_set = TargetVectorSet(
+        destination_vector_set = TargetSpanSet(
             root=basis.origin,
-            entries=tuple(solutions),
+            targets=tuple(solutions),
         )
         
         # --- Forward the work product to the caller. ---#

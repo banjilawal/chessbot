@@ -1,7 +1,7 @@
-# src/space/span/basis/knight/span.py
+# src/space/span/basis/queen/span.py
 
 """
-Module: space.span.basis.knight.span
+Module: space.span.basis.queen.span
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -11,25 +11,25 @@ from __future__ import annotations
 
 from typing import Optional
 
-from model import Knight, Vector
-from space import VectorTargetingComputer, KnightMovementVector, Basis
+from model import Queen, Vector
+from space import VectorTargetingComputer, QueenMovementVector, BasisSpace
 
 
-class KnightBasis(Basis[Knight]):
+class QueenBasis(BasisSpace[Queen]):
     """
     Role:
         -   Computation Worker
         -   Integrity Assurance
 
     Responsibilities:
-        1.  Produce a set of destinations for a Knight by adding it's position to  each
-            KnightMovementVector.
+        1.  Produce a set of destinations for a Queen by adding it's position to  each
+            QueenMovementVector.
 
     Attributes:
             origin: Vector
-            maneuver_vectors: Optional[KnightManeuverVectorSet]
-            targeting_computer: Optional[DestinationSpanComputer]      
-                  
+            maneuver_vectors: Optional[QueenManeuverVectorSet]
+            targeting_computer: Optional[DestinationSpanComputer]
+            
     Provides:
 
     Super Class:
@@ -39,15 +39,15 @@ class KnightBasis(Basis[Knight]):
     def __init__(
             self,
             origin: Vector,
-            maneuver_vectors: Optional[KnightMovementVector] |
-                              None = KnightMovementVector(),
+            maneuver_vectors: Optional[QueenMovementVector] |
+                              None = QueenMovementVector(),
             targeting_computer: Optional[VectorTargetingComputer] |
                                 None = VectorTargetingComputer(),
     ):
         """
         Args:
             origin: Vector
-            maneuver_vectors: Optional[KnightManeuverVectorSet]
+            maneuver_vectors: Optional[QueenManeuverVectorSet]
             targeting_computer: Optional[DestinationSpanComputer]
         """
         super().__init__(

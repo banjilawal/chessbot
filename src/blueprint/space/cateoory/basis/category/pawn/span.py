@@ -12,7 +12,7 @@ from __future__ import annotations
 from abc import ABC
 from typing import Optional, TypeVar
 
-from space import VectorTargetingComputer, PawnMovementVector, Basis
+from space import VectorTargetingComputer, PawnMovementVector, BasisSpace
 
 T = TypeVar("T", bound="PawnManeuverVectorSet")
 
@@ -20,7 +20,7 @@ from model import Pawn, Vector
 
 
 
-class PawnBasis(ABC, Basis[Pawn]):
+class PawnBasis(ABC, BasisSpace[Pawn]):
     """
     Role:
         -   Computation Worker

@@ -10,8 +10,13 @@ version: 1.0.1
 # =========== SPACE.SPAN PACKAGE ===========#
 
 # Packages
-from .category import *
+from .bishop import *
+from .king import *
+from .pawn import *
+from .queen import *
+from .rook import *
 from .maneuver import *
 
 
 # Modules
+from .span import BasisSpace

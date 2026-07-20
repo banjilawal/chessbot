@@ -12,10 +12,10 @@ from __future__ import annotations
 from typing import Optional
 
 from model import Rook, Vector
-from space import VectorTargetingComputer, RookMovementVector, Basis
+from space import VectorTargetingComputer, RookMovementVector, BasisSpace
 
 
-class RookBasis(Basis[Rook]):
+class RookBasis(BasisSpace[Rook]):
     """
     Role:
         -   Computation Worker

@@ -10,7 +10,7 @@ version: 1.0.1
 # =========== SPACE PACKAGE ===========#
 
 # Packages
-from .builder import *
+from .basis import *
 from .computer import *
 from .linear import *
 from .stepper import *

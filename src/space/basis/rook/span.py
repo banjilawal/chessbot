@@ -1,7 +1,7 @@
-# src/space/span/basis/bishop/span.py
+# src/space/span/basis/rook/span.py
 
 """
-Module: space.span.basis.bishop.span
+Module: space.span.basis.rook.span
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -11,23 +11,24 @@ from __future__ import annotations
 
 from typing import Optional
 
-from model import Bishop, Vector
-from space import BishopMovementVector, VectorTargetingComputer, Basis
+from model import Rook, Vector
+from space import VectorTargetingComputer, RookMovementVector, BasisSpace
 
 
-class BishopBasis(Basis[Bishop]):
+class RookBasis(BasisSpace[Rook]):
     """
     Role:
         -   Computation Worker
         -   Integrity Assurance
 
     Responsibilities:
-        1.  Produce a set of destinations for a Bishop by adding it's position to  each
-            BishopMovementVector.
+        1.  Produce a set of destinations for a Rook by adding it's position to  each
+            RookMovementVector.
 
     Attributes:
             origin: Vector
-            maneuver_vectors: Optional[BishopManeuverVectorSet]
+            maneuver_vectors: Optional[RookManeuverVectorSet]
+            targeting_computer: Optional[DestinationSpanComputer]
             
     Provides:
 
@@ -38,15 +39,15 @@ class BishopBasis(Basis[Bishop]):
     def __init__(
             self,
             origin: Vector,
-            maneuver_vectors: Optional[BishopMovementVector] |
-                              None = BishopMovementVector(),
+            maneuver_vectors: Optional[RookMovementVector] |
+                              None = RookMovementVector(),
             targeting_computer: Optional[VectorTargetingComputer] |
                                 None = VectorTargetingComputer(),
     ):
         """
         Args:
             origin: Vector
-            maneuver_vectors: Optional[BishopManeuverVectorSet]
+            maneuver_vectors: Optional[RookManeuverVectorSet]
             targeting_computer: Optional[DestinationSpanComputer]
         """
         super().__init__(

@@ -1,7 +1,7 @@
-# src/space/span/basis/king/span.py
+# src/space/span/basis/pawn/span.py
 
 """
-Module: space.span.basis.king.span
+Module: space.span.basis.pawn.span
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -9,25 +9,30 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from typing import Optional
+from abc import ABC
+from typing import Optional, TypeVar
 
-from model import King, Vector
-from space import VectorTargetingComputer, KingMovementVector, Basis
+from space import VectorTargetingComputer, PawnMovementVector, BasisSpace
+
+T = TypeVar("T", bound="PawnManeuverVectorSet")
+
+from model import Pawn, Vector
 
 
-class KingBasis(Basis[King]):
+
+class PawnBasis(ABC, BasisSpace[Pawn]):
     """
     Role:
         -   Computation Worker
         -   Integrity Assurance
 
     Responsibilities:
-        1.  Produce a set of destinations for a King by adding it's position to  each
-            KingMovementVector.
+        1.  Produce a set of destinations for a Pawn by adding it's position to  each
+            PawnMovementVector.
 
     Attributes:
             origin: Vector
-            maneuver_vectors: Optional[KingManeuverVectorSet]
+            maneuver_vectors: PawnManeuverVectorSet
             targeting_computer: Optional[DestinationSpanComputer]
             
     Provides:
@@ -39,15 +44,14 @@ class KingBasis(Basis[King]):
     def __init__(
             self,
             origin: Vector,
-            maneuver_vectors: Optional[KingMovementVector] |
-                              None = KingMovementVector(),
+            maneuver_vectors: PawnMovementVector[T],
             targeting_computer: Optional[VectorTargetingComputer] |
                                 None = VectorTargetingComputer(),
     ):
         """
         Args:
             origin: Vector
-            maneuver_vectors: Optional[KingManeuverVectorSet]
+            maneuver_vectors: PawnManeuverVectorSet
             targeting_computer: Optional[DestinationSpanComputer]
         """
         super().__init__(

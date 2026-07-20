@@ -12,10 +12,10 @@ from __future__ import annotations
 from typing import Optional
 
 from model import King, Vector
-from space import VectorTargetingComputer, KingMovementVector, Basis
+from space import VectorTargetingComputer, KingMovementVector, BasisSpace
 
 
-class KingBasis(Basis[King]):
+class KingBasis(BasisSpace[King]):
     """
     Role:
         -   Computation Worker

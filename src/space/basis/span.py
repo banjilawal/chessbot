@@ -12,15 +12,15 @@ from __future__ import annotations
 from abc import ABC, abstractmethod
 from typing import Generic, Optional, TypeVar
 
+from math import BasisTargetVectorSpanner
 from model import Vector
 from result import ComputationResult
-from space import VectorTargetingComputer, TargetVectorSet
 from space.basis import ManeuverVectorSet
 from util import LoggingLevelRouter
 
 T = TypeVar("T", bound="Rank")
 
-class Basis(ABC, Generic[T]):
+class BasisSpace(ABC, Generic[T]):
     """
     Role:
         -   Computation Worker
@@ -48,14 +48,14 @@ class Basis(ABC, Generic[T]):
     """
     _origin: Vector
     _maneuver_vectors: ManeuverVectorSet[T]
-    _targeting_computer: VectorTargetingComputer
+    _targeting_computer: BasisTargetVectorSpanner
     
     def __init__(
             self,
             origin: Vector,
             maneuver_vectors: ManeuverVectorSet[T],
-            targeting_computer: Optional[VectorTargetingComputer] |
-                                None = VectorTargetingComputer(),
+            targeting_computer: Optional[BasisTargetVectorSpanner] |
+                                None = BasisTargetVectorSpanner(),
     ):
         """
         Args:
@@ -76,7 +76,7 @@ class Basis(ABC, Generic[T]):
         return self._maneuver_vectors
     
     @property
-    def targeting_computer(self) -> VectorTargetingComputer:
+    def targeting_computer(self) -> BasisTargetVectorSpanner:
         return self._targeting_computer
     
     @property
