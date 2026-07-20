@@ -13,8 +13,7 @@ from typing import cast
 
 from analyzer import TokenReadinessAnalyzer
 from err import (
-    DisabledTokenUndoMoveException, MaxMoveUndoException, UndeployedTovenMoveException,
-    TokenUndoMovePermitterException
+    DisabledTokenUndoMoveException, MaxMoveUndoException, TokenUndoMovePermitterException
 )
 from model import Token
 from permitter import TokenManeuverPermitter
@@ -139,6 +138,6 @@ class TokenUndoMovePermitter(TokenManeuverPermitter):
                 )
             )
         # --- Forward the work product to the caller. ---#
-        return AnalysisResult.completed(PopApprovalReport.approve(token.positions.))
+        return AnalysisResult.completed(PopApprovalReport.approve(requestor.positions))
         
 

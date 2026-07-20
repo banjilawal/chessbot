@@ -9,9 +9,9 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from typing import cast
+from typing import Optional, cast
 
-from bootstrapper import ValidatorBootstrapper
+from analyzer import SquareTokenRelationAnalyzer
 from err import (
     BlockedPathException, DestinationCertifierBootstrapperException, PartialTokenDestinationRelationException,
     TokenAlreadyAtDestinationException
@@ -19,11 +19,10 @@ from err import (
 from model import Square, Token
 from report import RelationReport
 from result import ValidationResult
-from toolkit import TokenEndpointRelationToolkit
 from util import LoggingLevelRouter
 
 
-class DestinationCertifierBootstrapper(ValidatorBootstrapper):
+class DestinationCertifierBootstrapper:
     """
     Role
         -   Validation Worker
@@ -36,27 +35,41 @@ class DestinationCertifierBootstrapper(ValidatorBootstrapper):
         2.  Prevents visiting friendly squares.
 
     Attributes:
-
+        token: Token
+        destination: Square
+        relation_analyzer: Optional[SquareTokenRelationAnalyzer]
+        
     Provides:
-        -   def validator(
-                    token: Token,
-                    destination: Square,
-                    toolkit: TokenEndpointRelationToolkit,
-            ) -> ValidationResult[Square]:
+        -   ddef execute(self,) -> ValidationResult[Square]:
 
     Super Class:
         Validator
     """
-    OPERATION_NAME = "destination_relation_validator"
     
-    @classmethod
-    @LoggingLevelRouter.monitor
-    def execute(
-            cls,
+    _token: Token
+    _destination: Square
+    _relation_analyzer: Optional[SquareTokenRelationAnalyzer]
+    
+    def __init__(
+            self,
             token: Token,
             destination: Square,
-            toolkit: TokenEndpointRelationToolkit | None = None,
-    ) -> ValidationResult[Square]:
+            relation_analyzer: Optional[SquareTokenRelationAnalyzer] |
+                               None = SquareTokenRelationAnalyzer()
+    ):
+        """
+        Args:
+            token: Token
+            destination: Square
+            relation_analyzer: Optional[SquareTokenRelationAnalyzer]
+        """
+        self._token = token
+        self._destination = destination
+        self._relation_analyzer = relation_analyzer
+        
+
+    @LoggingLevelRouter.monitor
+    def execute(self,) -> ValidationResult[Square]:
         """
         Makes sure a Token can travel to a destination.
 
@@ -77,18 +90,13 @@ class DestinationCertifierBootstrapper(ValidatorBootstrapper):
             TokenAlreadyAtDestinationException
             PartialTokenDestinationRelationException
         """
-        method = f"{cls.__name__}.validate"
+        method = f"{self.__class__.__name__}.execute"
         
-        # --- Supply any missing dependencies. ---#
-        if toolkit is None:
-            toolkit = TokenEndpointRelationToolkit()
         
         # --- Run the relation analyzer. ---#
-        relation_analysis_result = toolkit.relation_analyzer.execute(
-            candidate_primary=destination,
-            candidate_satellite=token,
-            token_validator=toolkit.token_validator,
-            square_validator=toolkit.square_validator,
+        relation_analysis_result = self._relation_analyzer.execute(
+            candidate_primary=self._destination,
+            candidate_satellite=self._token,
         )
         # Handle the case that, the relation_analysis is not completed.
         if relation_analysis_result.is_failure:
@@ -96,7 +104,7 @@ class DestinationCertifierBootstrapper(ValidatorBootstrapper):
             return ValidationResult.failure(
                 DestinationCertifierBootstrapperException(
                     cls_mthd=method,
-                    cls_name=cls.__name__,
+                    cls_name=self.__class__.__name__,
                     msg=DestinationCertifierBootstrapperException.MSG,
                     err_code=DestinationCertifierBootstrapperException.ERR_CODE,
                     ex=relation_analysis_result.exception,
@@ -114,7 +122,7 @@ class DestinationCertifierBootstrapper(ValidatorBootstrapper):
             return ValidationResult.failure(
                 DestinationCertifierBootstrapperException(
                     cls_mthd=method,
-                    cls_name=cls.__name__,
+                    cls_name=self.__class__.__name__,
                     msg=DestinationCertifierBootstrapperException.MSG,
                     err_code=DestinationCertifierBootstrapperException.ERR_CODE,
                     ex=PartialTokenDestinationRelationException(
@@ -129,7 +137,7 @@ class DestinationCertifierBootstrapper(ValidatorBootstrapper):
             return ValidationResult.failure(
                 DestinationCertifierBootstrapperException(
                     cls_mthd=method,
-                    cls_name=cls.__name__,
+                    cls_name=self.__class__.__name__,
                     msg=DestinationCertifierBootstrapperException.MSG,
                     err_code=DestinationCertifierBootstrapperException.ERR_CODE,
                     ex=TokenAlreadyAtDestinationException(
@@ -139,22 +147,22 @@ class DestinationCertifierBootstrapper(ValidatorBootstrapper):
                 )
             )
         # Handle the case that, the destination is occupied by a friend.
-        occupant = destination.occupant
-        if token.is_enemy(occupant):
+        occupant = self._destination.occupant
+        if self._token.is_enemy(occupant):
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 DestinationCertifierBootstrapperException(
                     cls_mthd=method,
-                    cls_name=cls.__name__,
+                    cls_name=self.__class__.__name__,
                     msg=DestinationCertifierBootstrapperException.MSG,
                     err_code=DestinationCertifierBootstrapperException.ERR_CODE,
                     ex=BlockedPathException(
                         cls_mthd=method,
-                        cls_name=cls.__name__,
+                        cls_name=self.__class__.__name__,
                         msg=BlockedPathException.MSG,
                         err_code=BlockedPathException.ERR_CODE,
                     ),
                 )
             )
         # --- Forward the work product to the caller. ---#
-        return ValidationResult.success(destination)
+        return ValidationResult.success(self._destination)

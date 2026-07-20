@@ -12,6 +12,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 
 from analyzer import SquareTokenRelationAnalyzer, TokenReadinessAnalyzer
+from bootstrapper import DestinationCertifierBootstrapper
 from searcher import TokenOriginSearcher
 from toolkit import PermitterToolkit
 from validator import SquareValidator, TokenValidator
@@ -47,4 +48,4 @@ class TokenManeuverToolkit(PermitterToolkit):
     square_validator: SquareValidator = SquareValidator()
     origin_searcher: TokenOriginSearcher = TokenOriginSearcher()
     readiness_analyzer: TokenReadinessAnalyzer = TokenReadinessAnalyzer()
-    destination_relation_validator: TokenDestinationRelationValidator = TokenDestinationRelationValidator()
+    destination_certifier: DestinationCertifierBootstrapper = DestinationCertifierBootstrapper()

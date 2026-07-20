@@ -9,16 +9,17 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from err import TokenManeuverPermitterException
+from err import ManeuverPermitterException
 from model import Maneuver, Path, Square, Token
-from permitter import TokenPermitter
+
+from register import SquareRegister
 from report import ManeuverApprovalReport
 from result import AnalysisResult, MethodResultType
 from toolkit import TokenManeuverToolkit
 from util import IdFactory, LoggingLevelRouter
 
 
-class TokenManeuverPermitter(TokenPermitter):
+class TokenManeuverPermitter:
     """
     Role:
         - Transaction Worker
@@ -80,11 +81,11 @@ class TokenManeuverPermitter(TokenPermitter):
         if readiness_analysis_result.is_failure:
             # Return the exception chain on failure
             return AnalysisResult.failure(
-                TokenManeuverPermitterException(
+                ManeuverPermitterException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    msg=TokenManeuverPermitterException.MSG,
-                    err_code=TokenManeuverPermitterException.ERR_CODE,
+                    msg=ManeuverPermitterException.MSG,
+                    err_code=ManeuverPermitterException.ERR_CODE,
                     mthd_rslt_type=MethodResultType.ANALYSIS_RESULT,
                     ex=readiness_analysis_result.exception,
                 )
@@ -94,48 +95,48 @@ class TokenManeuverPermitter(TokenPermitter):
         if token_origin_search_result.is_failure:
             # Return the exception chain on failure
             return AnalysisResult.failure(
-                TokenManeuverPermitterException(
+                ManeuverPermitterException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    msg=TokenManeuverPermitterException.MSG,
-                    err_code=TokenManeuverPermitterException.ERR_CODE,
+                    msg=ManeuverPermitterException.MSG,
+                    err_code=ManeuverPermitterException.ERR_CODE,
                     mthd_rslt_type=MethodResultType.ANALYSIS_RESULT,
                     ex=token_origin_search_result.exception,
                 )
             )
         origin = token_origin_search_result.payload[0]
         
-        destination_relation_analysis = toolkit.destination_relation_analyzer.execute(
+        destination_certification = toolkit.destination_certifier.execute(
             candidate_primary=destination,
             candidate_satellite=requestor,
             token_validator=toolkit.token_validator,
             square_validator=toolkit.square_validator,
         )
 
-        # Handle the case that, the destination_relation_analyzer aborts.
-        if destination_relation_analysis.is_failure:
+        # Handle the case that, the destination_certifier aborts.
+        if destination_certification.is_failure:
             # Return the exception chain on failure
             return AnalysisResult.failure(
-                TokenManeuverPermitterException(
+                ManeuverPermitterException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    msg=TokenManeuverPermitterException.MSG,
-                    err_code=TokenManeuverPermitterException.ERR_CODE,
+                    msg=ManeuverPermitterException.MSG,
+                    err_code=ManeuverPermitterException.ERR_CODE,
                     mthd_rslt_type=MethodResultType.ANALYSIS_RESULT,
-                    ex=destination_relation_analysis.exception,
+                    ex=destination_certification.exception,
                 )
             )
         # Handle the case that, the token and destination are related in some fashion.
-        if destination_relation_analysis.is_failure:
+        if destination_certification.is_failure:
             # Return the exception chain on failure
             return AnalysisResult.failure(
-                TokenManeuverPermitterException(
+                ManeuverPermitterException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    msg=TokenManeuverPermitterException.MSG,
-                    err_code=TokenManeuverPermitterException.ERR_CODE,
+                    msg=ManeuverPermitterException.MSG,
+                    err_code=ManeuverPermitterException.ERR_CODE,
                     mthd_rslt_type=MethodResultType.ANALYSIS_RESULT,
-                    ex=destination_relation_analysis.exception,
+                    ex=destination_certification.exception,
                 )
             )
         for square in [origin, destination]:
@@ -143,11 +144,11 @@ class TokenManeuverPermitter(TokenPermitter):
             if square_validation_result.is_failure:
                 # Return the exception chain on failure
                 return AnalysisResult.failure(
-                    TokenManeuverPermitterException(
+                    ManeuverPermitterException(
                         cls_mthd=method,
                         cls_name=cls.__name__,
-                        msg=TokenManeuverPermitterException.MSG,
-                        err_code=TokenManeuverPermitterException.ERR_CODE,
+                        msg=ManeuverPermitterException.MSG,
+                        err_code=ManeuverPermitterException.ERR_CODE,
                         mthd_rslt_type=MethodResultType.ANALYSIS_RESULT,
                         ex=square_validation_result.exception,
                     )
@@ -158,8 +159,7 @@ class TokenManeuverPermitter(TokenPermitter):
                 Maneuver(
                     token=requestor,
                     path=Path(
-                        origin=origin,
-                        destination=destination,
+                        endpoints=SquareRegister(origin=origin, destination=destination),
                         id=IdFactory.next_id(class_name="Path")
                     ),
                     id=IdFactory.next_id(class_name="Maneuver")
