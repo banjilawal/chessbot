@@ -12,14 +12,14 @@ from __future__ import annotations
 from typing import cast
 
 from err import AxisStepperException
+from math import LinearTargetVectorComputer
 from model import Vector
 from register import VectorRegister
 from result import ComputationResult, MethodResultType
-from space import LinearStepper
 from util import LoggingLevelRouter
 
 
-class AxisStepper(LinearStepper):
+class AxisStepper(LinearTargetVectorComputer):
     """
     Role:
         -   Computation Worker

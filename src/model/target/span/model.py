@@ -36,22 +36,22 @@ class TargetSpanSet(TargetVectorSet):
     
     def __init__(
             self,
-            root: Vector,
-            targets: Optional[VectorSet] | None = None,
+            hunter: Vector,
+            group: Optional[VectorSet] | None = None,
     ):
         """
         Args:
-            root: Vector
-            targets: Optional[VectorSet]
+            hunter: Vector
+            group: Optional[VectorSet]
         """
-        super().__init__(root=root, targets=targets)
+        super().__init__(hunter=hunter, group=group)
 
-    def remove_root_from_targets(self) -> TargetVectorSet:
-        if self.root_is_not_target:
+    def remove_hunter_from_targets(self) -> TargetVectorSet:
+        if self.hunter_not_targeting_itself:
             return self
         return cast(
             TargetSpanSet,
-            super().remove_root_from_targets()
+            super().remove_hunter_from_targets()
         )
         
 

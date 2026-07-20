@@ -16,4 +16,4 @@ from .southeast import *
 from .southwest import *
 
 # Modules
-from .linear import QuadrantStepper
+from .math import QuadrantStepper

@@ -40,14 +40,14 @@ class LinearTargetSet(TargetVectorSet):
     def __init__(
             self,
             endpoints: VectorRegister,
-            targets: Optional[VectorSet] | None = None,
+            group: Optional[VectorSet] | None = None,
     ):
         """
         Args:
             endpoints: VectorRegister,
-            targets: Optional[VectorSet]
+            group: Optional[VectorSet]
         """
-        super().__init__(root=endpoints.u, targets=targets)
+        super().__init__(hunter=endpoints.u, group=group)
         self._endpoints = endpoints
         
     @property
@@ -64,25 +64,25 @@ class LinearTargetSet(TargetVectorSet):
     
     @property
     def terminus_is_target(self) -> bool:
-        return self.terminus in self.targets
+        return self.terminus in self.group
     
     @property
     def terminus_not_in_targets(self) -> bool:
         return not self.terminus_is_target
     
-    def remove_root_from_targets(self) -> LinearTargetSet:
-        if self.root_is_not_target:
+    def remove_hunter_from_targets(self) -> LinearTargetSet:
+        if self.hunter_not_targeting_itself:
             return self
-        return cast(LinearTargetSet, super().remove_root_from_targets())
+        return cast(LinearTargetSet, super().remove_hunter_from_targets())
     
     def add_terminus_target(self) -> LinearTargetSet:
         if self.terminus_is_target:
             return self
-        temp = self.targets.to_list
+        temp = self.group.to_list
         temp.append(self.terminus)
         return LinearTargetSet(
             endpoints=self._endpoints,
-            targets=VectorSet(tuple(temp)),
+            group=VectorSet(tuple(temp)),
             
         )
         

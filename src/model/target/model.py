@@ -32,63 +32,63 @@ class TargetVectorSet(ABC):
 
     Super Class:
     """
-    _root: Vector
-    _targets: VectorSet
+    _hunter: Vector
+    _group: VectorSet
     
     def __init__(
             self,
-            root: Vector,
-            targets: Optional[VectorSet] | None = None,
+            hunter: Vector,
+            group: Optional[VectorSet] | None = None,
     ):
         """
         Args:
-            root: Vector
-            targets: Optional[VectorSet]
+            hunter: Vector
+            group: Optional[VectorSet]
         """
-        self._root = root
-        self._targets = targets or VectorSet()
+        self._hunter = hunter
+        self._group = group or VectorSet()
         
     @property
-    def root(self) -> Vector:
-        return self._root
+    def hunter(self) -> Vector:
+        return self._hunter
     
     @property
-    def targets(self) -> VectorSet:
-        return self.targets
+    def group(self) -> VectorSet:
+        return self.group
     
     @property
-    def root_is_a_target(self) -> bool:
-        return self._root in self._targets
+    def hunter_targeting_itself(self) -> bool:
+        return self._hunter in self._group
     
     @property
-    def root_is_not_target(self) -> bool:
-        return not self.root_is_a_target
+    def hunter_not_targeting_itself(self) -> bool:
+        return not self.hunter_targeting_itself
     
     @property
     def target_count(self) -> int:
-        return self._targets.size
+        return self._group.size
     
     @property
     def targets_are_null(self) -> bool:
-        return self._targets is None
+        return self._group is None
     
     @property
     def has_targets(self) -> bool:
-        return self._targets.is_not_empty
+        return self._group.is_not_empty
     
     @property
     def has_no_targets(self) -> bool:
         return not self.has_targets
     
-    def remove_root_from_targets(self) -> TargetVectorSet:
-        if self.root_is_not_target:
+    def remove_hunter_from_targets(self) -> TargetVectorSet:
+        if self.hunter_not_targeting_itself:
             return self
         temp = []
-        for target in self._targets.to_list:
-            if target != self.root:
+        for target in self._group.to_list:
+            if target != self.hunter:
                 temp.append(target)
         return TargetVectorSet(
-            root=self._root,
-            targets=VectorSet(tuple(temp))
+            hunter=self._hunter,
+            group=VectorSet(tuple(temp))
         )
         

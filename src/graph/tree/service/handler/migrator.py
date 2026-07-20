@@ -66,7 +66,7 @@ class NodeTreeStackMigrator:
             )
         # --- Create the return target, then insert the root node.---#
         node_stack_service = NodeStackService()
-        insertion_result = node_stack_service.push(item=node_tree.root)
+        insertion_result = node_stack_service.push(item=node_tree.hunter)
         
         # Handle the case that, the insertion produces no work.
         if validation_result.is_failure:

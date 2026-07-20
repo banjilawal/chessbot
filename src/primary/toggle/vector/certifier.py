@@ -11,7 +11,8 @@ from __future__ import annotations
 from typing import Any, cast
 
 
-from err import ExcessTogglesException, NoActiveTogglesException, NodeValidationRouteException, NullException
+from err import ExcessTogglesException, NoActiveTogglesException
+from err.route.validation.node.exception import NoValidationRouteException
 from primary import RootCertifier
 from result import ValidationResult
 from toggle import VectorToggle
@@ -130,7 +131,7 @@ class VectorToggleRootCertifier(RootCertifier[VectorToggle]):
                 )
             )
         # Pick a route for integrity testing the toggle's entity.
-        validation_result = ValidationResult.failure(NodeValidationRouteException())
+        validation_result = ValidationResult.failure(NoValidationRouteException())
         if toggle.is_coord_selector:
             validation_result = self.toolkit.coord.primary.execute(toggle.entity)
         if toggle.is_vector_selector:

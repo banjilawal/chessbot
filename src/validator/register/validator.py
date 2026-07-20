@@ -14,7 +14,6 @@ from typing import Any, Generic, TypeVar
 
 from primary import RegisterRootCertifier
 from result import ValidationResult
-from toolkit import RegisterToolkit
 from validator import Validator
 
 T = TypeVar("T", bound="Register")

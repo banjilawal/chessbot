@@ -55,7 +55,7 @@ class ManeuverRootCertifier(RootCertifier[Maneuver]):
     
 
     @LoggingLevelRouter.monitor
-    def validator(self, candidate: Any,) -> ValidationResult[Maneuver]:
+    def execute(self, candidate: Any,) -> ValidationResult[Maneuver]:
         """
         Verify there is consistency between the itinerary's elements.
 

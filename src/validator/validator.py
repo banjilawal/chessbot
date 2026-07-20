@@ -12,6 +12,7 @@ from __future__ import annotations
 from abc import ABC, abstractmethod
 from typing import Any, Generic, TypeVar
 
+from primary import RootCertifier
 from result import ValidationResult
 from util import LoggingLevelRouter
 
@@ -41,9 +42,17 @@ class Validator(ABC, Generic[T]):
         
     super Class:
     """
+    _root_certifier: RootCertifier[T]
+    
+    def __init__(self, root_certifier: RootCertifier[[T]]):
+        self._root_certifier = root_certifier
+        
+    @property
+    def root_certifier(self) -> RootCertifier[T]:
+        return self._root_certifier
 
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def execute(self, candidate: Any) -> ValidationResult:
+    def execute(self, candidate: Any) -> ValidationResult[T]:
         """Implement in subclass."""
         pass

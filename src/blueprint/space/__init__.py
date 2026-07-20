@@ -10,11 +10,8 @@ version: 1.0.1
 # =========== SPACE PACKAGE ===========#
 
 # Packages
-from .builder import *
-from .cateoory import *
 
-from .target import *
-from .ray import *
+
 
 # Modules
-from blueprint.space.cateoory.blueprint import SpaceBlueprint
+from .blueprint import SpaceBlueprint

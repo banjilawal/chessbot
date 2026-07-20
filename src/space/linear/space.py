@@ -9,16 +9,15 @@ version: 1.0.1
 
 from __future__ import annotations
 
-
 from typing import List, Optional, cast
 
 from container import VectorSet
 from err import LinearSpaceException
+from math import LinearTargetVectorComputer
 from model import LinearTargetSet, Scalar, Vector
 from register import VectorRegister
 from result import ComputationResult, MethodResultType
-from space import LinearStepper, Space
-from toolkit import MathToolkit
+from space import Space
 from util import LoggingLevelRouter
 
 
@@ -43,7 +42,7 @@ class LinearSpace(Space):
         Space
     """
     _endpoints: VectorRegister
-    _stepper: LinearStepper
+    _stepper: LinearTargetVectorComputer[T]
     _math_toolkit: Optional[MathToolkit]
     
     def __init__(
@@ -174,7 +173,7 @@ class LinearSpace(Space):
         target_set = VectorSet(tuple(solutions))
         linear_vectors = LinearTargetSet(
             endpoints=self.endpoints,
-            targets=target_set
+            group=target_set
         )
         # --- Forward the work product to the caller. ---#
         return ComputationResult.success(linear_vectors)

@@ -14,11 +14,11 @@ from typing import Any, Generic, TypeVar
 
 
 from result import ValidationResult
-from toolkit import ModelToolkit
+from toolkit import RegisterToolkit
 from util import LoggingLevelRouter
 from validator import Validator
 
-T = TypeVar("T", bound="Model")
+T = TypeVar("T", bound="Register")
 
 
 class RegisterRootCertifier(ABC, Generic[T]):
@@ -33,21 +33,21 @@ class RegisterRootCertifier(ABC, Generic[T]):
         1.  Ensure a Blueprint instance is certified safe, reliable and consistent before use.
 
     Attributes:
-        toolkit: ModelToolkit
+        toolkit: RegisterToolkit
 
     Provides:
-        -   def validate(candidate: Any, toolkit: ModelToolkit[T],) -> ValidationResult[Blueprint[T]]:
+        -   def validate(candidate: Any, toolkit: RegisterToolkit[T],) -> ValidationResult[Blueprint[T]]:
 
     Super Class:
     """
 
     
-    def __init__(self, toolkit: ModelToolkit[T]):
+    def __init__(self, toolkit: RegisterToolkit[T]):
         super().__init__(toolkit=toolkit)
         
     @property
     @abstractmethod
-    def toolkit(self) -> ModelToolkit[T]:
+    def toolkit(self) -> RegisterToolkit[T]:
         pass
     
     @abstractmethod

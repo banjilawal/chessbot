@@ -43,8 +43,8 @@ class GraphDomainFinder(Finder[Graph, Domain]):
             if search_context.name is not None:
                 return cls._name_search(graph=data_owner, name=search_context.name)
             
-            if search_context.root is not None:
-                return cls._root_search(graph=data_owner, coord=search_context.root)
+            if search_context.hunter is not None:
+                return cls._root_search(graph=data_owner, coord=search_context.hunter)
             
             if search_context.previous_root is not None:
                 return cls._previous_root_search(graph=data_owner, coord=search_context.previous_root)

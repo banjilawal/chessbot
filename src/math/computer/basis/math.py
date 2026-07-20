@@ -12,11 +12,11 @@ from __future__ import annotations
 
 from typing import List, Optional, TypeVar, cast
 
-from blueprint import TargetSpanSet
+
 from container import VectorSet
 from err import BasisTargetVectorSpannerException
 from math import Computer
-from model import TargetVectorSet, Vector
+from model import TargetSpanSet, TargetVectorSet, Vector
 from register import VectorRegister
 from result import ComputationResult, MethodResultType
 from space import BasisSpace
@@ -147,10 +147,10 @@ class BasisTargetVectorSpanner(Computer):
             solutions.append(cast(Vector, computation.payload))
             
         # Convert the solution set into a Tuple, for a VectorSet.
-        destination_vector_set = TargetSpanSet(
-            root=basis.origin,
-            targets=tuple(solutions),
+        target_vector_set = TargetSpanSet(
+            hunter=basis.origin,
+            group=VectorSet(tuple(solutions)),
         )
         
         # --- Forward the work product to the caller. ---#
-        return ComputationResult.success(destination_vector_set)
+        return ComputationResult.success(target_vector_set)

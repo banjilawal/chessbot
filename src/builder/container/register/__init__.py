@@ -10,6 +10,8 @@ version: 1.0.1
 # =========== BUILDER.CONTAINER.REGISTER PACKAGE ===========#
 
 # Packages
+from .linear import *
+from .span import *
 
 # Modules
 from .builder import RegisterSetBuilder
