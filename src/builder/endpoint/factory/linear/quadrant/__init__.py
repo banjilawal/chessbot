@@ -10,11 +10,7 @@ version: 1.0.1
 # =========== BUILDER.ENDPOINT.QUADRANT PACKAGE ===========#
 
 # Packages
-from .northeast import *
-from .northwest import *
-from .old_northwest import *
-from .southeast import *
-from .southwest import *
+
 
 # Modules
-
+from .factory import QuadrantEndpointFactory

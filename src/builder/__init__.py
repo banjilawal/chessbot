@@ -17,6 +17,7 @@ from .coord import *
 from .dto import *
 from .edge import *
 from .endpoint import *
+from .function import *
 from .old_endpoint import *
 from .game import *
 from .graph import *

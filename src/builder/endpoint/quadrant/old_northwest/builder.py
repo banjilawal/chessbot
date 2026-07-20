@@ -1,7 +1,7 @@
-# src/builder/endpoint/quadrant/northwest/builder.py
+# src/space/linear/segment/axial/space.py
 
 """
-Module: builder.endpoint.quadrant.northwest.builder
+Module: space.linear.segment.axial.space
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -9,31 +9,30 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from typing import Optional
+from typing import Optional, cast
 
-
+from builder import VectorBuilder
 from model import Vector
 from register import VectorRegister
 from result import BuildResult
-from schema.terminus.quadrant import QuadrantTerminus
+from schema import QuadrantTerminus
 from util import LoggingLevelRouter
-from validator import VectorValidator
 
 
-class NorthwestQuadrantEndpointBuilder:
+class OldnorthwestQuadrantEndpointBuilder:
     """
     Role:
         -   Builder
         -   Integrity Management
 
     Responsibilities:
-        1.  Create a VectorRegister for the quadrant northwest of the origin.
+        1.  Create a VectoRegister for an AxialSpace endpoints.
 
     Attributes:
+        delta: Vector
         origin: Vector
-        terminus: Vector
-        vector_validator: Optional[VectorValidator]
-        
+        vector_builder: Optional[VectorBuilder]
+
     Provides:
         -   def execute() -> BuildResult[VectorRegister]
 
@@ -41,21 +40,28 @@ class NorthwestQuadrantEndpointBuilder:
     """
     _origin: Vector
     _terminus: Vector
-    _vector_validator: VectorValidator
+    _vector_builder: VectorBuilder
     
     def __init__(
             self,
             origin: Vector,
-            vector_validator: Optional[VectorValidator] | None = VectorValidator(),
+            vector_builder: Optional[VectorBuilder] | None = VectorBuilder(),
     ):
         """
         Args:
             origin: Vector
-            vector_validator: Optional[VectorValidator]
+            vector_builder: Optional[VectorBuilder]
         """
         self._origin = origin
-        self._vector_validator = vector_validator
-        self._terminus = QuadrantTerminus.NORTHWEST.vector
+        self._vector_builder = vector_builder
+        self._delta = Vector(
+            x=origin.x + 0,
+            y=origin.y + QuadrantTerminus.OLDNORTHWEST.vector.y,
+        )
+        self._terminus = Vector(
+            x=self._origin.x,
+            y=QuadrantTerminus.OLDNORTHWEST.vector.y
+        )
         
     @property
     def origin(self) -> Vector:
@@ -67,57 +73,44 @@ class NorthwestQuadrantEndpointBuilder:
     
     @LoggingLevelRouter.monitor
     def execute(self) -> BuildResult[VectorRegister]:
-        method = f"{self.__class__.__name__}.execute"
-        
-        # Handle the case that the origin is not a safe vector.
-        validation = self._vector_validator.execute(self._origin)
-        if validation.is_failure:
-            # Handle the case that, the request is not fulfilled.
-            if validation.is_failure:
-                return BuildResult.failure(
-                    NorthwestQuadrantEndPointBuilderException(
-                        cls_mthd=method,
-                        cls_name=self.__class__.__name__,
-                        msg=NorthwestQuadrantEndPointBuilderException.MSG,
-                        err_code=NorthwestQuadrantEndPointBuilderException.ERR_CODE,
-                        ex=validation.exception,
-                    )
-                )
-        # --- Forward the work product to the caller. ---#
         return BuildResult.success(
             VectorRegister(u=self._origin, v=self._terminus)
         )
     
+    # @property
+    # def delta(self) -> Vector:
+    #     return self._delta
+    #
     # @LoggingLevelRouter.monitor
     # def execute(self) -> BuildResult[VectorRegister]:
     #     """
-    #     Construct the endpoints for a NorthwestQuadrant instance.
+    #     Construct the endpoints for a OldnorthwesternQuadrant instance.
     #
     #     Action:
-    #         1.  Send an exception chain in the BuildResult if the VectorValidator instance
+    #         1.  Send an exception chain in the BuildResult if the VectorBuilder instance
     #             fails.
     #         2.  Otherwise, create the VectorRegister product and send in the success result.
     #     Args:
     #     Returns:
     #         BuildResult[VectorRegister]
     #     Raises:
-    #          NorthwestQuadrantEndPointBuilderException
+    #          OldnorthwesternQuadrantEndPointBuilderException
     #     """
     #     method = f"{self.__class__.__name__}.execute"
     #
     #     # Request a product from the vector builder.
-    #     result = self._vector_validator.execute(
+    #     result = self._vector_builder.execute(
     #         x=self._origin.x + self._delta.x,
     #         y=self._origin.y + self._delta.y,
     #     )
     #     # Handle the case that, the request is not fulfilled.
     #     if result.is_failure:
     #         return BuildResult.failure(
-    #             NorthwestQuadrantEndPointBuilderException(
+    #             OldnorthwestQuadrantEndPointBuilderException(
     #                 cls_mthd=method,
     #                 cls_name=self.__class__.__name__,
-    #                 msg=NorthwestQuadrantEndPointBuilderException.MSG,
-    #                 err_code=NorthwestQuadrantEndPointBuilderException.ERR_CODE,
+    #                 msg=OldnorthwestQuadrantEndPointBuilderException.MSG,
+    #                 err_code=OldnorthwestQuadrantEndPointBuilderException.ERR_CODE,
     #                 ex=result.exception,
     #             )
     #         )
@@ -126,5 +119,5 @@ class NorthwestQuadrantEndpointBuilder:
     #         u=self._origin,
     #         v=cast(Vector, result.payload)
     #     )
-    #     --- Forward the work product to the caller. ---#
+    #     # --- Forward the work product to the caller. ---#
     #     return BuildResult.success(payload=vector_register)

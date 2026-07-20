@@ -13,6 +13,7 @@ from typing import Any, cast
 import setting
 from err import VectorValidatorException
 from model import Vector
+from primary import RootCertifier
 from result import ValidationResult
 from toolkit import VectorToolkit
 from util import LoggingLevelRouter
@@ -41,6 +42,10 @@ class VectorValidator(ModelValidator[Vector]):
     Super Class:
         Validator
     """
+    
+    @property
+    def root_certifier(self) -> RootCertifier:
+        pass
     
     @classmethod
     @LoggingLevelRouter.monitor

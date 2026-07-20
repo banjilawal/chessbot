@@ -27,7 +27,7 @@ class QuadrantTerminus(Enum):
 
     Attributes:
         orientation: str
-        terminus: Vector
+        vector: Vector
 
     Super Class:
         Enum
@@ -36,16 +36,16 @@ class QuadrantTerminus(Enum):
     def __new__(
             cls,
             orientation: str,
-            terminus: Vector,
+            vector: Vector,
     ):
         """
         Args:
             orientation: str
-            terminus: Vector
+            vector: Vector
         """
         obj = object.__new__(cls)
         obj._orientation = orientation
-        obj._terminus = terminus
+        obj._vector = vector
         return obj
     
     NORTHWEST = (
@@ -73,7 +73,7 @@ class QuadrantTerminus(Enum):
         return self._orientation
     
     @property
-    def terminus(self) -> Vector:
-        return self._terminus
+    def vector(self) -> Vector:
+        return self._vector
 
 

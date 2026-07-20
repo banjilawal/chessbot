@@ -7,9 +7,12 @@ Created: 2026-04-03
 version: 1.0.1
 """
 
-# =========== FACTORY PACKAGE ===========#
+
+# =========== FACTORY.PACKAGE ===========#
 
 # Packages
-from .toolkit import *
+from .endpoint import *
+
 
 # Modules
+from .factory import Factory

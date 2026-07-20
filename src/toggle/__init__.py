@@ -10,6 +10,8 @@ version: 1.0.1
 # =========== TOGGLE PACKAGE ===========#
 
 # Packages
+from .orientation import *
+from .vector import *
 
 # Modules
 from .toggle import Toggle

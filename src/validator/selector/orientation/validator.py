@@ -10,12 +10,12 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, cast
 
-from selector import OrientationSelector
+from selector import OrientationToggle
 from util import LoggingLevelRouter
 from validator import ModelValidator
 
 
-class OrientationSelectorValidator(ModelValidator[OrientationSelector]):
+class OrientationSelectorValidator(ModelValidator[OrientationToggle]):
     """
     Role
         -   Transaction Worker

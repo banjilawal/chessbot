@@ -10,12 +10,12 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, cast
 
-from selector import VectorSelector
+from selector import VectorToggle
 from util import LoggingLevelRouter
 from validator import ModelValidator
 
 
-class VectorSelectorValidator(ModelValidator[VectorSelector]):
+class VectorSelectorValidator(ModelValidator[VectorToggle]):
     """
     Role
         -   Transaction Worker

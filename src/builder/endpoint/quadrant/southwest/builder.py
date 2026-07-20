@@ -1,7 +1,7 @@
-# src/builder/endpoint/quadrant/northwest/builder.py
+# src/builder/endpoint/quadrant/southwest/builder.py
 
 """
-Module: builder.endpoint.quadrant.northwest.builder
+Module: builder.endpoint.quadrant.southwest.builder
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -20,14 +20,14 @@ from util import LoggingLevelRouter
 from validator import VectorValidator
 
 
-class NorthwestQuadrantEndpointBuilder:
+class SouthwestQuadrantEndpointBuilder:
     """
     Role:
         -   Builder
         -   Integrity Management
 
     Responsibilities:
-        1.  Create a VectorRegister for the quadrant northwest of the origin.
+        1.  Create a VectorRegister for the quadrant southwest of the origin.
 
     Attributes:
         origin: Vector
@@ -55,7 +55,7 @@ class NorthwestQuadrantEndpointBuilder:
         """
         self._origin = origin
         self._vector_validator = vector_validator
-        self._terminus = QuadrantTerminus.NORTHWEST.vector
+        self._terminus = QuadrantTerminus.SOUTHWEST.vector
         
     @property
     def origin(self) -> Vector:
@@ -75,11 +75,11 @@ class NorthwestQuadrantEndpointBuilder:
             # Handle the case that, the request is not fulfilled.
             if validation.is_failure:
                 return BuildResult.failure(
-                    NorthwestQuadrantEndPointBuilderException(
+                    SouthwestQuadrantEndPointBuilderException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        msg=NorthwestQuadrantEndPointBuilderException.MSG,
-                        err_code=NorthwestQuadrantEndPointBuilderException.ERR_CODE,
+                        msg=SouthwestQuadrantEndPointBuilderException.MSG,
+                        err_code=SouthwestQuadrantEndPointBuilderException.ERR_CODE,
                         ex=validation.exception,
                     )
                 )
@@ -91,7 +91,7 @@ class NorthwestQuadrantEndpointBuilder:
     # @LoggingLevelRouter.monitor
     # def execute(self) -> BuildResult[VectorRegister]:
     #     """
-    #     Construct the endpoints for a NorthwestQuadrant instance.
+    #     Construct the endpoints for a SouthwestQuadrant instance.
     #
     #     Action:
     #         1.  Send an exception chain in the BuildResult if the VectorValidator instance
@@ -101,7 +101,7 @@ class NorthwestQuadrantEndpointBuilder:
     #     Returns:
     #         BuildResult[VectorRegister]
     #     Raises:
-    #          NorthwestQuadrantEndPointBuilderException
+    #          SouthwestQuadrantEndPointBuilderException
     #     """
     #     method = f"{self.__class__.__name__}.execute"
     #
@@ -113,11 +113,11 @@ class NorthwestQuadrantEndpointBuilder:
     #     # Handle the case that, the request is not fulfilled.
     #     if result.is_failure:
     #         return BuildResult.failure(
-    #             NorthwestQuadrantEndPointBuilderException(
+    #             SouthwestQuadrantEndPointBuilderException(
     #                 cls_mthd=method,
     #                 cls_name=self.__class__.__name__,
-    #                 msg=NorthwestQuadrantEndPointBuilderException.MSG,
-    #                 err_code=NorthwestQuadrantEndPointBuilderException.ERR_CODE,
+    #                 msg=SouthwestQuadrantEndPointBuilderException.MSG,
+    #                 err_code=SouthwestQuadrantEndPointBuilderException.ERR_CODE,
     #                 ex=result.exception,
     #             )
     #         )

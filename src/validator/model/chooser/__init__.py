@@ -13,4 +13,3 @@ version: 1.0.1
 from .cartesian import *
 
 # Modules
-from .validator import ChooserValidator

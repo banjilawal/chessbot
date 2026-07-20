@@ -10,8 +10,9 @@ version: 1.0.1
 from __future__ import annotations
 
 from abc import ABC, abstractmethod
-from typing import Any, Dict
+from typing import Any, Dict, TypeVar
 
+T = TypeVar("T")
 
 class Toggle(ABC):
 

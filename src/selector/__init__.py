@@ -10,8 +10,6 @@ version: 1.0.1
 # =========== SELECTOR PACKAGE ===========#
 
 # Packages
-from .orientation import *
-from .vector import *
 
 # Modules
-from .selector import Selector
+from .toggle import Toggle

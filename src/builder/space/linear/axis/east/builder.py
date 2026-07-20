@@ -1,5 +1,8 @@
+from typing import cast
+
 from bootstrapper import VectorAssemblyPrimer
 from builder import AxisEndpointFactory
+from register import VectorRegister
 from result import BuildResult
 from schema import AxisOrientation
 from space import EastAxisStepper
@@ -12,6 +15,7 @@ class EastAxisBuilder(Builder[EastAxis]):
     _orientation: AxisOrientation
     _endpoint_factory: AxisEndpointFactory
     _stepper_factory: AxisStepperFactory
+    _vector_validator: VectorValidator
     
     def __init__(
             self,
@@ -19,18 +23,21 @@ class EastAxisBuilder(Builder[EastAxis]):
             orientation: Optional[AxisOrientation] | None = AxisOrientation.EAST,
             endpoint_factory: Optional[AxisEndpointFactory] | None = AxisEndpointFactory(),
             stepper_factory: Optional[StepperFactory] | None = AxisStepperFactory(),
+            vector_validator: Optional[VectorValidator] | None = VectorValidator(),
     ):
         """
         Args:
             origin: Vector,
             orientation: Optional[AxisOrientation]
             endpoint_factory: Optional[AxisEndpointFactory]
-            stepper_factory: Optional[AxisStepperFactory]            
+            stepper_factory: Optional[AxisStepperFactory]
+            vector_validator: Optional[VectorValidator]
         """
         self._origin = origin
         self._origin = orientation
         self._endpoint_factory = endpoint_factory
         self._stepper_factory = stepper_factory
+        self._vector_validator = vector_validator
         
         
     @LoggingLevelRouter.monitor

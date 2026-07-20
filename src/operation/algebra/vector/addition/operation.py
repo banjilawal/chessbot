@@ -10,11 +10,11 @@ version: 1.0.1
 from __future__ import annotations
 
 from operation import Operation
-from selector import VectorSelector
+from selector import VectorToggle
 from util import LoggingLevelRouter
 
 
-class AddVector(Operation[VectorSelector]):
+class AddVector(Operation[VectorToggle]):
     """
     Role:
         -   Operation
