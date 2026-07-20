@@ -1,7 +1,7 @@
-# src/err/builder/hostage/exception.py
+# src/err/builder/container/exception.py
 
 """
-Module: err.builder.hostage.exception
+Module: err.builder.container.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -14,36 +14,35 @@ from err import BuilderException
 from result import MethodResultType
 
 __all__ = [
-    # ======================# HOSTAGE_BUILDER_FAILURE #======================#
-    "HostageBuilderException",
+    # ======================# CONTAINER_BUILDER_FAILURE #======================#
+    "ContainerBuilderException",
 ]
 
-# ======================# HOSTAGE_BUILDER_FAILURE #======================#
-class HostageBuilderException(BuilderException):
+# ======================# CONTAINER_BUILDER_FAILURE #======================#
+class ContainerBuilderException(BuilderException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a HostageBuilder failed.
+        1.  Indicate that a ContainerBuilder failed.
 
-    Attributes:
-        msg: Optional[str]
-        var: Optional[str]
-        val: Optional[Any]
-        ex: Optional[Exception]
-        cls_name: Optional[str]
-        cls_mthd: Optional[str]
-        err_code: Optional[str]
-        mthd_rslt_type: Optional[MethodResultType]
+   Builder failed.s:
+            msg: Optional[str]
+            var: Optional[str]
+            val: Optional[Any]
+            ex: Optional[Exception]
+            cls_name: Optional[str]
+            cls_mthd: Optional[str]
+            err_code: Optional[str]
             
     Provides:
 
     Super Class:
         BuilderException
     """
-    MSG = "HostageBuilder failed."
-    ERR_CODE = "HOSTAGE_BUILDER_FAILURE"
+    MSG = "ContainerBuilder failed."
+    ERR_CODE = "CONTAINER_BUILDER_FAILURE"
     
     def __init__(
             self,

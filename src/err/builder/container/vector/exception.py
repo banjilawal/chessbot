@@ -1,7 +1,7 @@
-# src/err/builder/formation/exception.py
+# src/err/builder/container/vector/exception.py
 
 """
-Module: err.builder.formation.exception
+Module: err.builder.container.vector.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,24 +10,24 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import BuilderException
+from err import ContainerBuilderException
 from result import MethodResultType
 
 __all__ = [
-    # ======================# FORMATION_BUILDER_FAILURE #======================#
-    "FormationBuilderException",
+    # ======================# VECTOR_SET_BUILDER_FAILURE #======================#
+    "VectorSetBuilderException",
 ]
 
-# ======================# FORMATION_BUILDER_FAILURE #======================#
-class FormationBuilderException(BuilderException):
+# ======================# VECTOR_SET_BUILDER_FAILURE #======================#
+class VectorSetBuilderException(ContainerBuilderException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a FormationBuilder failed.
+        1.  Indicate that a VectorSetBuilderExceptio failed.
 
-    Attributes:
+   Builder failed.s:
             msg: Optional[str]
             var: Optional[str]
             val: Optional[Any]
@@ -35,15 +35,14 @@ class FormationBuilderException(BuilderException):
             cls_name: Optional[str]
             cls_mthd: Optional[str]
             err_code: Optional[str]
-            mthd_rslt_type: Optional[MethodResultType]
             
     Provides:
 
     Super Class:
-        BuilderException
+        ContainerBuilderException
     """
-    MSG = "FormationBuilder failed."
-    ERR_CODE = "FORMATION_BUILDER_FAILURE"
+    MSG = "VectorSetBuilder failed."
+    ERR_CODE = "VECTOR_SET_BUILDER_FAILURE"
     
     def __init__(
             self,

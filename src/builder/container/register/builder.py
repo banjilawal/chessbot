@@ -9,7 +9,7 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from typing import List, TypeVar, cast
+from typing import List, TypeVar
 
 from builder import ContainerBuilder
 from container import RegisterSet
@@ -17,51 +17,50 @@ from model import TargetVectorSet
 from register import VectorRegister
 from result import BuildResult
 from util import IdFactory, LoggingLevelRouter
-from validator import TargetSetValidator
 
 T = TypeVar("T", bound="Register")
 
 class RegisterSetBuilder(ContainerBuilder[RegisterSet]):
     
     _target_vector_set: TargetVectorSet
-    _validator: TargetSetValidator
+    # _validator: TargetSetValidator
     
     def __init__(
             self,
             target_vector_set: TargetVectorSet,
-            target_set_validator: TargetSetValidator | None = TargetSetValidator(),
+            # target_set_validator: TargetSetValidator | None = TargetSetValidator(),
     ):
         super().__init__()
         self._target_vector_set = target_vector_set
-        self._target_set_validator = target_set_validator
-        
-    @property
-    def target_set_validator(self) -> TargetSetValidator[T]:
-        return self._target_set_validator
+    #     self._target_set_validator = target_set_validator
+    #
+    # @property
+    # def target_set_validator(self) -> TargetSetValidator[T]:
+    #     return self._target_set_validator
 
     @LoggingLevelRouter.monitor
     def execute(self) -> BuildResult[RegisterSet]:
         method = f"{self.__class__.__name__}.execute"
         
-        # Handle the case that, the target_vector_set is not safe to use.
-        validation = target_set_validator.execute(self._target_vector_set)
-        if validation.is_failure:
-            return BuildResult.failure(
-                RegisterSetFactoryException(
-                    cls_mthd=method,
-                    cls_name=self.__class__.__name__,
-                    msg=RegisterSetFactoryException.MSG,
-                    err_code=RegisterSetFactoryException.ERR_CODE,
-                    ex=certification.exception,
-                )
-                
-            )
-        targets = cast(TargetVectorSet, validation.payload)
+        # # Handle the case that, the target_vector_set is not safe to use.
+        # validation = target_set_validator.execute(self._target_vector_set)
+        # if validation.is_failure:
+        #     return BuildResult.failure(
+        #         RegisterSetBuilderException(
+        #             cls_mthd=method,
+        #             cls_name=self.__class__.__name__,
+        #             msg=RegisterSetBuilderException.MSG,
+        #             err_code=RegisterSetBuilderException.ERR_CODE,
+        #             ex=certification.exception,
+        #         )
+        #
+        #     )
+        # targets = cast(TargetVectorSet, validation.payload)
         
         registers: List[VectorRegister] = []
-        previous = targets.hunter
+        previous = self._target_vector_set.hunter
         
-        for target in targets.group.iterator:
+        for target in self._target_vector_set.group.iterator:
             current = target
             register = VectorRegister(
                 id=IdFactory.next_id(class_name="VectorRegister"),

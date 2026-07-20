@@ -1,7 +1,7 @@
-# src/err/builder/persona/exception.py
+# src/err/builder/container/register/exception.py
 
 """
-Module: err.builder.persona.exception
+Module: err.builder.container.register.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,24 +10,24 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import BuilderException
+from err import ContainerBuilderException
 from result import MethodResultType
 
 __all__ = [
-    # ======================# PERSONA_BUILDER_FAILURE #======================#
-    "PersonaBuilderException",
+    # ======================# REGISTER_SET_BUILDER_FAILURE #======================#
+    "RegisterSetBuilderException",
 ]
 
-# ======================# PERSONA_BUILDER_FAILURE #======================#
-class PersonaBuilderException(BuilderException):
+# ======================# REGISTER_SET_BUILDER_FAILURE #======================#
+class RegisterSetBuilderException(ContainerBuilderException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that n PersonaBuilder failed.
+        1.  Indicate that a RegisterSetBuilderExceptio failed.
 
-    Attributes:
+   Builder failed.s:
             msg: Optional[str]
             var: Optional[str]
             val: Optional[Any]
@@ -35,15 +35,14 @@ class PersonaBuilderException(BuilderException):
             cls_name: Optional[str]
             cls_mthd: Optional[str]
             err_code: Optional[str]
-            mthd_rslt_type: Optional[MethodResultType]
             
     Provides:
 
     Super Class:
-        BuilderException
+        ContainerBuilderException
     """
-    MSG = "PersonaBuilder failed."
-    ERR_CODE = "PERSONA_BUILDER_FAILURE"
+    MSG = "RegisterSetBuilder failed."
+    ERR_CODE = "REGISTER_SET_BUILDER_FAILURE"
     
     def __init__(
             self,
