@@ -10,6 +10,7 @@ version: 1.0.1
 # =========== BUILDER.SPACE PACKAGE ===========#
 
 # Packages
+from .basis import *
 from .linear import *
 
 # Modules

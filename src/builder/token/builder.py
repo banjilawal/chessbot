@@ -68,7 +68,7 @@ class TokenBuilder(Builder[Token]):
         self._toolkit = toolkit or TokenToolkit()
     
     @LoggingLevelRouter.monitor
-    def build(self, blueprint: TokenBlueprint,) -> BuildResult[Token]:
+    def execute(self, blueprint: TokenBlueprint, ) -> BuildResult[Token]:
         """
         Build a safe Token.
         

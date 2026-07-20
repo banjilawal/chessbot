@@ -14,7 +14,7 @@ from typing import List, cast
 
 
 
-class NorthEastQuadrant(Quadrant):
+class NortheastQuadrant(Quadrant):
     """
     Role:
         -   Dataset

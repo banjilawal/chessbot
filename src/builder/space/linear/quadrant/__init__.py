@@ -17,4 +17,3 @@ from .southwest import *
 
 
 # Modules
-from .space import Quadrant

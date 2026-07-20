@@ -79,7 +79,7 @@ class OrientationToggle(Toggle):
         )
     
     @property
-    def is_quadrant_point(self) -> bool:
+    def is_quadrant_toggle(self) -> bool:
         return (
                 self._quadrant is not None and
                 self._axis is None and

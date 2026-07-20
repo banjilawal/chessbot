@@ -41,7 +41,7 @@ class Builder(ABC, Generic[T]):
     @classmethod
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def build(cls, *args, **kwargs) -> BuildResult[T]:
+    def execute(cls, *args, **kwargs) -> BuildResult[T]:
         """
         # ACTION:
         1. Run integrity checks on each parameter required for constructing V.

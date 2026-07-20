@@ -14,7 +14,6 @@ from typing import Optional, cast
 from builder import Builder, EastAxisBuilder, NorthAxisBuilder, SouthAxisBuilder, WestAxisBuilder
 from factory import AxisEndpointFactory
 from model import Vector
-from register import VectorRegister
 from result import BuildResult
 from schema import AxisOrientation
 from space import Axis, AxisStepper
