@@ -5,169 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/builder/container/register/factory.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/factory/container/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/factory/container/register/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blueprint/space/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/blueprint/space/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blueprint/space/builder/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blueprint/space/builder/linear/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/builder/container/register/linear/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blueprint/space/builder/span/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blueprint/space/cateoory/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blueprint/space/cateoory/basis/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blueprint/space/cateoory/basis/category/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blueprint/space/cateoory/basis/category/bishop/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blueprint/space/cateoory/basis/category/bishop/span.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blueprint/space/cateoory/basis/category/king/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blueprint/space/cateoory/basis/category/king/span.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blueprint/space/cateoory/basis/category/knight/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blueprint/space/cateoory/basis/category/knight/span.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blueprint/space/cateoory/basis/category/pawn/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blueprint/space/cateoory/basis/category/pawn/attack/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blueprint/space/cateoory/basis/category/pawn/attack/developed/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blueprint/space/cateoory/basis/category/pawn/attack/developed/span.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blueprint/space/cateoory/basis/category/pawn/attack/opening/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blueprint/space/cateoory/basis/category/pawn/attack/opening/span.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blueprint/space/cateoory/basis/category/pawn/attack/span.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blueprint/space/cateoory/basis/category/pawn/maneuver/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blueprint/space/cateoory/basis/category/pawn/maneuver/developed/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blueprint/space/cateoory/basis/category/pawn/maneuver/developed/span.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blueprint/space/cateoory/basis/category/pawn/maneuver/opening/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blueprint/space/cateoory/basis/category/pawn/maneuver/opening/span.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blueprint/space/cateoory/basis/category/pawn/maneuver/span.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blueprint/space/cateoory/basis/category/pawn/span.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blueprint/space/cateoory/basis/category/queen/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blueprint/space/cateoory/basis/category/queen/span.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blueprint/space/cateoory/basis/category/rook/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blueprint/space/cateoory/basis/category/rook/span.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blueprint/space/cateoory/basis/category/span.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blueprint/space/cateoory/blueprint.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/blueprint/space/blueprint.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blueprint/space/cateoory/linear/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blueprint/space/cateoory/linear/blueprint.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blueprint/space/cateoory/linear/category/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blueprint/space/cateoory/linear/category/axis/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blueprint/space/cateoory/linear/category/axis/span.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blueprint/space/cateoory/linear/category/quadrant/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blueprint/space/cateoory/linear/category/quadrant/span.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blueprint/space/cateoory/linear/category/span.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blueprint/space/cateoory/linear/segment/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blueprint/space/cateoory/linear/segment/axis/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blueprint/space/cateoory/linear/segment/axis/linear.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blueprint/space/cateoory/linear/segment/linear.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blueprint/space/cateoory/linear/segment/quadrant/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blueprint/space/cateoory/linear/segment/quadrant/linear.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blueprint/space/cateoory/linear/terminus/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blueprint/space/cateoory/linear/terminus/axis/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blueprint/space/cateoory/linear/terminus/quadrant/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blueprint/space/cateoory/linear/terminus/quadrant/linear.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blueprint/space/ray/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blueprint/space/ray/computer/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blueprint/space/ray/computer/axis/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blueprint/space/ray/computer/axis/joiner.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blueprint/space/ray/computer/axis/ray.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blueprint/space/ray/computer/joiner.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blueprint/space/ray/computer/quadrant/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blueprint/space/ray/computer/quadrant/ray.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blueprint/space/ray/coord/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blueprint/space/ray/coord/ray.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blueprint/space/ray/joiner.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blueprint/space/ray/square/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blueprint/space/ray/square/ray.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blueprint/space/ray/test_joiner/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blueprint/space/ray/test_joiner/axis/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blueprint/space/ray/test_joiner/quadrant/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blueprint/space/ray/test_joiner/quadrant/ray.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blueprint/space/ray/test_joiner/ray.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blueprint/space/ray/token/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blueprint/space/ray/token/ray.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blueprint/space/ray/transformer/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/transformer/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blueprint/space/ray/transformer/axis/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/transformer/axis/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blueprint/space/ray/transformer/axis/transformer.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/transformer/axis/transformer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blueprint/space/ray/transformer/register/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/transformer/register/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blueprint/space/ray/transformer/register/transformer.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/transformer/register/transformer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blueprint/space/ray/transformer/transformer.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/transformer/transformer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blueprint/space/ray/vector/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blueprint/space/ray/vector/joiner.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blueprint/space/target/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blueprint/space/target/linear/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blueprint/space/target/linear/space.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blueprint/space/target/space.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blueprint/space/target/span/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blueprint/space/target/span/space.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/builder/container/register/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/builder/container/register/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/builder/space/targtset/linear/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/builder/space/targtset/linear/builder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/builder/space/targtset/span/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/builder/space/targtset/span/builder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/graph/domain/graph/search/domain/search.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/graph/domain/graph/search/domain/search.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/graph/tree/service/handler/migrator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/graph/tree/service/handler/migrator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/math/computer/basis/math.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/math/computer/basis/math.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/math/computer/linear/axis/linear.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/math/computer/linear/axis/linear.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/math/computer/linear/quadrant/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/math/computer/linear/quadrant/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/math/computer/linear/quadrant/linear.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/math/computer/linear/quadrant/math.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/target/linear/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/target/linear/model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/target/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/target/model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/target/span/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/target/span/model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/primary/model/maneuver/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/primary/model/maneuver/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/primary/register/certifier.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/primary/register/certifier.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/primary/toggle/vector/certifier.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/primary/toggle/vector/certifier.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/space/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/space/computer/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/space/computer/computer/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/space/computer/computer/span.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/space/linear/space.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/linear/space.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/space/ray/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/space/ray/computer/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/space/ray/computer/axis/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/space/ray/computer/axis/joiner.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/space/ray/computer/axis/ray.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/space/ray/computer/joiner.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/space/ray/computer/quadrant/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/space/ray/computer/quadrant/ray.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/space/ray/coord/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/space/ray/coord/ray.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/space/ray/joiner.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/space/ray/square/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/space/ray/square/ray.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/space/ray/test_joiner/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/space/ray/test_joiner/axis/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/space/ray/test_joiner/quadrant/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/space/ray/test_joiner/quadrant/ray.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/space/ray/test_joiner/ray.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/space/ray/token/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/space/ray/token/ray.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/space/ray/transformer/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/space/ray/transformer/axis/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/space/ray/transformer/axis/transformer.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/space/ray/transformer/register/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/space/ray/transformer/register/transformer.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/space/ray/transformer/transformer.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/space/ray/vector/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/space/ray/vector/joiner.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/space/register_set_linear_builder/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/builder/container/register/span/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/space/register_set_linear_builder/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/builder/container/register/linear/builder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/space/span/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/space/span/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/builder/container/register/span/builder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/space/stepper/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/space/stepper/axis/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/space/stepper/axis/east/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/space/stepper/axis/east/linear.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/space/stepper/axis/linear.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/space/stepper/axis/north/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/space/stepper/axis/north/linear.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/space/stepper/axis/south/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/space/stepper/axis/south/linear.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/space/stepper/axis/west/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/space/stepper/axis/west/linear.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/space/stepper/linear.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/space/stepper/quadrant/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/space/stepper/quadrant/linear.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/space/stepper/quadrant/northeast/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/space/stepper/quadrant/northeast/linear.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/space/stepper/quadrant/northwest/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/space/stepper/quadrant/northwest/linear.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/space/stepper/quadrant/southeast/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/space/stepper/quadrant/southeast/linear.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/space/stepper/quadrant/southwest/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/space/stepper/quadrant/southwest/linear.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/validator/model/maneuver/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/validator/model/maneuver/validator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/validator/register/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/validator/register/validator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/validator/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/validator/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/builder/container/register/builder.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/builder/container/register/linear/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/builder/container/register/linear/builder.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/builder/container/register/span/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/builder/container/register/span/builder.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/factory/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/factory/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validator/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/validator/__init__.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -223,7 +72,7 @@
     "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src",
+    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/factory",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
@@ -235,11 +84,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/factory" />
       <recent name="$PROJECT_DIR$/src" />
       <recent name="$PROJECT_DIR$/src/validator/model" />
       <recent name="$PROJECT_DIR$/src/primary/model" />
       <recent name="$PROJECT_DIR$/src/validator/model/state" />
-      <recent name="$PROJECT_DIR$/src/primary/toggle" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/builder/container/register" />
@@ -933,7 +782,7 @@
       <workItem from="1784040408484" duration="7069000" />
       <workItem from="1784050719673" duration="78000" />
       <workItem from="1784055454795" duration="186991000" />
-      <workItem from="1784319839949" duration="173213000" />
+      <workItem from="1784319839949" duration="177800000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />
@@ -1541,7 +1390,7 @@
           <option name="timeStamp" value="276" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/src/builder/container/register/builder.py</url>
+          <url>file://$PROJECT_DIR$/src/builder/container/register/factory.py</url>
           <line>9</line>
           <option name="timeStamp" value="277" />
         </line-breakpoint>
