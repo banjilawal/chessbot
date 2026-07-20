@@ -9,7 +9,7 @@ version: 1.0.1
 
 from __future__ import annotations
 
-
+from builder import ContainerBuilder
 from container import VectorSet
 from result import BuildResult
 from util import LoggingLevelRouter

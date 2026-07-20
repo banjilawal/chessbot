@@ -67,23 +67,40 @@ class NorthwestQuadrantEndpointBuilder:
     
     @LoggingLevelRouter.monitor
     def execute(self) -> BuildResult[VectorRegister]:
+        """
+        Construct the endpoints for a SouthernAxis instance.
+
+        Action:
+            1.  Send an exception chain in the BuildResult if the VectorValidator instance
+                fails.
+            2.  Otherwise, create the VectorRegister product and send in the success result.
+        Args:
+        Returns:
+            BuildResult[VectorRegister]
+        Raises:
+             SouthernAxisEndPointBuilderException
+        """
         method = f"{self.__class__.__name__}.execute"
         
-        # Handle the case that the origin is not a safe vector.
-        validation = self._vector_validator.execute(self._origin)
-        if validation.is_failure:
-            # Handle the case that, the request is not fulfilled.
-            if validation.is_failure:
-                return BuildResult.failure(
-                    NorthwestQuadrantEndPointBuilderException(
-                        cls_mthd=method,
-                        cls_name=self.__class__.__name__,
-                        msg=NorthwestQuadrantEndPointBuilderException.MSG,
-                        err_code=NorthwestQuadrantEndPointBuilderException.ERR_CODE,
-                        ex=validation.exception,
-                    )
-                )
-        # --- Forward the work product to the caller. ---#
-        return BuildResult.success(
-            VectorRegister(u=self._origin, v=self._terminus)
+        # Handle the case that, the origin is not safe to use.
+        validation = self._vector_validator.execute(
+            self._origin
         )
+        # Send the exception chain in the result.
+        if validation.is_failure:
+            return BuildResult.failure(
+                NorthwestQuadrantEndPointBuilderException(
+                    cls_mthd=method,
+                    cls_name=self.__class__.__name__,
+                    msg=NorthwestQuadrantEndPointBuilderException.MSG,
+                    err_code=NorthwestQuadrantEndPointBuilderException.ERR_CODE,
+                    ex=validation.exception,
+                )
+            )
+        # Create the endpoint register.
+        vector_register = VectorRegister(
+            u=cast(Vector, validation.payload),
+            v=self._terminus,
+        )
+        # --- Forward the work product to the caller. ---#
+        return BuildResult.success(vector_register)

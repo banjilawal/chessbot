@@ -14,10 +14,10 @@ version: 1.0.1
 from .arena import *
 from .board import *
 from .coord import *
+from .container import *
 from .dto import *
 from .edge import *
 from .endpoint import *
-from .function import *
 from .old_endpoint import *
 from .game import *
 from .graph import *

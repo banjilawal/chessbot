@@ -9,14 +9,14 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from builder import RegisterBuilder
+from builder import ContainerBuilder
 from container import RegisterSet
 from result import BuildResult
 from util import LoggingLevelRouter
 from validator import RegisterValidator
 
 
-class RegisterSetBuilder(RegisterBuilder[RegisterSet]):
+class RegisterSetBuilder(ContainerBuilder[RegisterSet]):
     
     _register_validator: RegisterValidator
     

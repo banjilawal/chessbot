@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from builder import VectorBuilder
+from builder import VectorValidator
 from model import Vector
 from register import VectorRegister
 from result import BuildResult
@@ -31,7 +31,7 @@ class NorthAxisEndpointBuilder:
     Attributes:
         delta: Vector
         origin: Vector
-        vector_builder: Optional[VectorBuilder]
+        vector_validator: Optional[VectorValidator]
 
     Provides:
         -   def execute() -> BuildResult[VectorRegister]
@@ -40,20 +40,20 @@ class NorthAxisEndpointBuilder:
     """
     _origin: Vector
     _terminus: Vector
-    _vector_builder: VectorBuilder
+    _vector_validator: VectorValidator
     
     def __init__(
             self,
             origin: Vector,
-            vector_builder: Optional[VectorBuilder] | None = VectorBuilder(),
+            vector_validator: Optional[VectorValidator] | None = VectorValidator(),
     ):
         """
         Args:
             origin: Vector
-            vector_builder: Optional[VectorBuilder]
+            vector_validator: Optional[VectorValidator]
         """
         self._origin = origin
-        self._vector_builder = vector_builder
+        self._vector_validator = vector_validator
         self._delta = Vector(
             x=origin.x + 0,
             y=origin.y + AxisTerminus.NORTH.vector.y,
@@ -73,9 +73,41 @@ class NorthAxisEndpointBuilder:
     
     @LoggingLevelRouter.monitor
     def execute(self) -> BuildResult[VectorRegister]:
-        return BuildResult.success(
-            VectorRegister(u=self._origin, v=self._terminus)
+        """
+        Construct the endpoints for a NorthernAxis instance.
+
+        Action:
+            1.  Send an exception chain in the BuildResult if the VectorValidator instance
+                fails.
+            2.  Otherwise, create the VectorRegister product and send in the success result.
+        Args:
+        Returns:
+            BuildResult[VectorRegister]
+        Raises:
+             NorthernAxisEndPointBuilderException
+        """
+        method = f"{self.__class__.__name__}.execute"
+        
+        # Handle the case that, the origin is not safe to use.
+        validation = self._vector_validator.execute(self._origin)
+        # Send the exception chain in the result.
+        if validation.is_failure:
+            return BuildResult.failure(
+                NorthAxisEndPointBuilderException(
+                    cls_mthd=method,
+                    cls_name=self.__class__.__name__,
+                    msg=NorthAxisEndPointBuilderException.MSG,
+                    err_code=NorthAxisEndPointBuilderException.ERR_CODE,
+                    ex=validation.exception,
+                )
+            )
+        # Create the endpoint register.
+        vector_register = VectorRegister(
+            u=cast(Vector, validation.payload),
+            v=self._terminus,
         )
+        # --- Forward the work product to the caller. ---#
+        return BuildResult.success(vector_register)
     
     # @property
     # def delta(self) -> Vector:
@@ -87,7 +119,7 @@ class NorthAxisEndpointBuilder:
     #     Construct the endpoints for a NorthernAxis instance.
     #
     #     Action:
-    #         1.  Send an exception chain in the BuildResult if the VectorBuilder instance
+    #         1.  Send an exception chain in the BuildResult if the VectorValidator instance
     #             fails.
     #         2.  Otherwise, create the VectorRegister product and send in the success result.
     #     Args:
@@ -99,7 +131,7 @@ class NorthAxisEndpointBuilder:
     #     method = f"{self.__class__.__name__}.execute"
     #
     #     # Request a product from the vector builder.
-    #     result = self._vector_builder.execute(
+    #     result = self._vector_validator.execute(
     #         x=self._origin.x + self._delta.x,
     #         y=self._origin.y + self._delta.y,
     #     )

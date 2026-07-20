@@ -11,12 +11,11 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from builder import VectorBuilder
-from err import WestAxisEndPointBuilderException
+from builder import VectorValidator
 from model import Vector
 from register import VectorRegister
 from result import BuildResult
-from schema.terminus.axis import AxisTerminus
+from schema import AxisTerminus
 from util import LoggingLevelRouter
 
 
@@ -32,30 +31,29 @@ class WestAxisEndpointBuilder:
     Attributes:
         delta: Vector
         origin: Vector
-        vector_builder: Optional[VectorBuilder]
+        vector_service: Optional[VectorValidator]
 
     Provides:
         -   def execute() -> BuildResult[VectorRegister]
 
     Super Class:
     """
-    _delta: Vector
     _origin: Vector
     _terminus: Vector
-    _vector_builder: VectorBuilder
+    _vector_service: VectorValidator
     
     def __init__(
             self,
             origin: Vector,
-            vector_builder: Optional[VectorBuilder] | None = VectorBuilder(),
+            vector_service: Optional[VectorValidator] | None = VectorValidator(),
     ):
         """
         Args:
             origin: Vector
-            vector_builder: Optional[VectorBuilder]
+            vector_service: Optional[VectorValidator]
         """
         self._origin = origin
-        self._vector_builder = vector_builder
+        self._vector_service = vector_service
         self._delta = Vector(
             x=origin.x + AxisTerminus.WEST.vector.x,
             y=0,
@@ -79,9 +77,41 @@ class WestAxisEndpointBuilder:
     
     @LoggingLevelRouter.monitor
     def execute(self) -> BuildResult[VectorRegister]:
-        return BuildResult.success(
-            VectorRegister(u=self._origin, v=self._terminus)
+        """
+        Construct the endpoints for a WesternAxis instance.
+
+        Action:
+            1.  Send an exception chain in the BuildResult if the VectorValidator instance
+                fails.
+            2.  Otherwise, create the VectorRegister product and send in the success result.
+        Args:
+        Returns:
+            BuildResult[VectorRegister]
+        Raises:
+             WesternAxisEndPointBuilderException
+        """
+        method = f"{self.__class__.__name__}.execute"
+        
+        # Handle the case that, the origin is not safe to use.
+        validation = self._vector_validator.execute(self._origin)
+        # Send the exception chain in the result.
+        if validation.is_failure:
+            return BuildResult.failure(
+                WestAxisEndPointBuilderException(
+                    cls_mthd=method,
+                    cls_name=self.__class__.__name__,
+                    msg=WestAxisEndPointBuilderException.MSG,
+                    err_code=WestAxisEndPointBuilderException.ERR_CODE,
+                    ex=validation.exception,
+                )
+            )
+        # Create the endpoint register.
+        vector_register = VectorRegister(
+            u=cast(Vector, validation.payload),
+            v=self._terminus,
         )
+        # --- Forward the work product to the caller. ---#
+        return BuildResult.success(vector_register)
     #
     # @LoggingLevelRouter.monitor
     # def execute(self) -> BuildResult[VectorRegister]:
@@ -89,7 +119,7 @@ class WestAxisEndpointBuilder:
     #     Construct the endpoints for a WesternAxis instance.
     #
     #     Action:
-    #         1.  Send an exception chain in the BuildResult if the VectorBuilder instance
+    #         1.  Send an exception chain in the BuildResult if the VectorValidator instance
     #             fails.
     #         2.  Otherwise, create the VectorRegister product and send in the success result.
     #     Args:
@@ -101,7 +131,7 @@ class WestAxisEndpointBuilder:
     #     method = f"{self.__class__.__name__}.execute"
     #
     #     # Request a product from the vector builder.
-    #     result = self._vector_builder.execute(
+    #     result = self._vector_service.execute(
     #         x=self._origin.x + self._delta.x,
     #         y=self._origin.y + self._delta.y,
     #     )
@@ -116,10 +146,10 @@ class WestAxisEndpointBuilder:
     #                 ex=result.exception,
     #             )
     #         )
-    #     # Create the endpoint register.
-    #     vector_register = VectorRegister(
-    #         u=self._origin,
-    #         v=cast(Vector, result.payload)
-    #     )
-    #     # --- Forward the work product to the caller. ---#
+        # Create the endpoint register.
+        vector_register = VectorRegister(
+            u=self._origin,
+            v=cast(Vector, result.payload)
+        )
+        # --- Forward the work product to the caller. ---#
     #     return BuildResult.success(payload=vector_register)

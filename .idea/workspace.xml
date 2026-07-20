@@ -5,13 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/builder/container/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/builder/container/builder.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/builder/container/register/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/builder/container/register/builder.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/builder/container/vector/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/builder/container/vector/builder.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/builder/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/builder/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/builder/container/register/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/builder/container/register/builder.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/builder/container/vector/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/builder/container/vector/builder.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/builder/endpoint/axis/east/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/builder/endpoint/axis/east/builder.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/builder/endpoint/axis/north/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/builder/endpoint/axis/north/builder.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/builder/endpoint/axis/south/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/builder/endpoint/axis/south/builder.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/builder/endpoint/axis/west/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/builder/endpoint/axis/west/builder.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/builder/endpoint/quadrant/northeast/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/builder/endpoint/quadrant/northeast/builder.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/builder/endpoint/quadrant/northwest/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/builder/endpoint/quadrant/northwest/builder.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/builder/endpoint/quadrant/southeast/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/builder/endpoint/quadrant/southeast/builder.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/builder/endpoint/quadrant/southwest/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/builder/endpoint/quadrant/southwest/builder.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -777,7 +782,7 @@
       <workItem from="1784040408484" duration="7069000" />
       <workItem from="1784050719673" duration="78000" />
       <workItem from="1784055454795" duration="186991000" />
-      <workItem from="1784319839949" duration="133915000" />
+      <workItem from="1784319839949" duration="136446000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />
