@@ -1,7 +1,7 @@
-# src/err/builder/binder/persona/exception.py
+# src/err/builder/model/binder/persona/exception.py
 
 """
-Module: err.builder.binder.persona.exception
+Module: err.builder.model.binder.persona.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,18 +10,19 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import BuilderException
+from err import ModelBuilderException
 from result import MethodResultType
 
+
 __all__ = [
-    # ======================# PERSONA_BINDER_BUILDER_FAILURE #======================#
+    # ======================# PERSONA_BINDER__MODEL_BUILDER_FAILURE #======================#
     "PersonaBinderBuilderException",
 ]
 
 from err import BinderBuilderException
 
 
-# ======================# PERSONA_BINDER_BUILDER_FAILURE #======================#
+# ======================# PERSONA_BINDER__MODEL_BUILDER_FAILURE #======================#
 class PersonaBinderBuilderException(BinderBuilderException):
     """
     Role:
@@ -45,7 +46,7 @@ class PersonaBinderBuilderException(BinderBuilderException):
         BinderBuilderException
     """
     MSG = "PersonaBinderBuilder failed."
-    ERR_CODE = "PERSONA_BINDER_BUILDER_FAILURE"
+    ERR_CODE = "PERSONA_BINDER__MODEL_BUILDER_FAILURE"
     
     def __init__(
             self,

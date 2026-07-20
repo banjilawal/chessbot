@@ -13,6 +13,7 @@ from typing import Any, Optional
 from err import RequestTesterException
 from result import MethodResultType
 
+
 __all__ = [
     # ======================# PUSH_REQUEST_TESTER_FAILURE #======================#
     "PushRequestTesterException",

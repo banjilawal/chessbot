@@ -13,6 +13,7 @@ from typing import Any, Optional
 from err import SearcherException
 from result import MethodResultType
 
+
 __all__ = [
     # ======================# REQUIRED_ITEM_NOT_FOUND #======================#
     "SearchResultEmptyException",

@@ -1,7 +1,7 @@
-# src/err/builder/binder/formation/exception.py
+# src/err/builder/model/binder/formation/exception.py
 
 """
-Module: err.builder.binder.formation.exception
+Module: err.builder.model.binder.formation.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,18 +10,19 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import BuilderException
+from err import ModelBuilderException
 from result import MethodResultType
 
+
 __all__ = [
-    # ======================# FORMATION_BINDER_BUILDER_FAILURE #======================#
+    # ======================# FORMATION_BINDER__MODEL_BUILDER_FAILURE #======================#
     "FormationBinderBuilderException",
 ]
 
 from err import BinderBuilderException
 
 
-# ======================# FORMATION_BINDER_BUILDER_FAILURE #======================#
+# ======================# FORMATION_BINDER__MODEL_BUILDER_FAILURE #======================#
 class FormationBinderBuilderException(BinderBuilderException):
     """
     Role:
@@ -45,7 +46,7 @@ class FormationBinderBuilderException(BinderBuilderException):
         BinderBuilderException
     """
     MSG = "FormationBinderBuilder failed."
-    ERR_CODE = "FORMATION_BINDER_BUILDER_FAILURE"
+    ERR_CODE = "FORMATION_BINDER__MODEL_BUILDER_FAILURE"
     
     def __init__(
             self,

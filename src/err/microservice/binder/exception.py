@@ -13,6 +13,7 @@ from typing import Any, Optional
 from err import MicroserviceException
 from result import MethodResultType
 
+
 __all__ = [
     # ======================# BINDER_MICROSERVICE_FAILURE #======================#
     "BinderMicroserviceException",

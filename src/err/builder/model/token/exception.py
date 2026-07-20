@@ -1,7 +1,7 @@
-# src/err/builder/token/exception.py
+# src/err/builder/model/token/exception.py
 
 """
-Module: err.builder.token.exception
+Module: err.builder.model.token.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,16 +10,17 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import BuilderException
+from err import ModelBuilderException
 from result import MethodResultType
 
+
 __all__ = [
-    # ======================# TOKEN_BUILDER_FAILURE #======================#
+    # ======================# TOKEN__MODEL_BUILDER_FAILURE #======================#
     "TokenBuilderException",
 ]
 
-# ======================# TOKEN_BUILDER_FAILURE #======================#
-class TokenBuilderException(BuilderException):
+# ======================# TOKEN__MODEL_BUILDER_FAILURE #======================#
+class TokenBuilderException(ModelBuilderException):
     """
     Role:
         -   Error Tracing
@@ -40,10 +41,10 @@ class TokenBuilderException(BuilderException):
     Provides:
 
     Super Class:
-        BuilderException
+       ModelBuilderException
     """
     MSG = "TokenBuilder failed."
-    ERR_CODE = "TOKEN_BUILDER_FAILURE"
+    ERR_CODE = "TOKEN__MODEL_BUILDER_FAILURE"
     
     def __init__(
             self,

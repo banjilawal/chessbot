@@ -13,6 +13,7 @@ from typing import Any, Optional
 from err import ManeuverMovementSetValidatorException
 from result import MethodResultType
 
+
 __all__ = [
     # ======================# DEVELOPED_MANEUVER_MOVEMENT_VALIDATOR_FAILURE #======================#
     "DevelopedManeuverMovementSetValidatorException",

@@ -13,6 +13,7 @@ from typing import Any, Optional
 from err import ManeuverPermitterException
 from result import MethodResultType
 
+
 __all__ = [
     # ======================# TOKEN_UNDO_MOVE_PERMISSION_DENIAL #======================#
     "TokenUndoMovePermitterException",

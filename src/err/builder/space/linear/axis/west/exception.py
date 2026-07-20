@@ -10,23 +10,23 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import LinearSpaceBuilderException
+from err import AxisBuilderException
 from result import MethodResultType
 
 
 __all__ = [
-    # ======================# LINEAR_AXIS_SPACE_BUILDER_FAILURE #======================#
-    "AxisBuilderException",
+    # ======================# WEST_AXIS_BUILDER_FAILURE #======================#
+    "WestAxisBuilderException",
 ]
 
-# ======================# LINEAR_AXIS_SPACE_BUILDER_FAILURE #======================#
-class AxisBuilderException(LinearSpaceBuilderException):
+# ======================# WEST_AXIS_BUILDER_FAILURE #======================#
+class WestAxisBuilderException(AxisBuilderException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an AxisSpaceBuilder failed.
+        1.  Indicate that a WestAxisSpaceBuilder failed.
 
     Attributes:
         var: Optional[str]
@@ -40,10 +40,10 @@ class AxisBuilderException(LinearSpaceBuilderException):
     Provides:
 
     Super Class:
-        LinearSpaceBuilderException
+        AxisBuilderException
     """
-    MSG = "AxisLinearSpaceBuilder failed."
-    ERR_CODE = "AXIS_LINEAR_SPACE_BUILDER_FAILURE"
+    MSG = "WestAxisBuilder failed."
+    ERR_CODE = "WEST_AXIS_BUILDER_FAILURE"
     
     def __init__(
             self,

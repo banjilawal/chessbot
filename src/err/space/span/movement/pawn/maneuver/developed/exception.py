@@ -13,6 +13,7 @@ from typing import Any, Optional
 from err import PawnManeuverVectorSetException
 from result import MethodResultType
 
+
 __all__ = [
     # ======================# PAWN_DEVELOPED_MANEUVER_VECTOR_SET_ERROR #======================#
     "DevelopedPawnManeuverVectorSetException",

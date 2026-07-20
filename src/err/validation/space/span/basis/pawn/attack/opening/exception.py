@@ -13,6 +13,7 @@ from typing import Any, Optional
 from err import AttackBasisValidatorException
 from result import MethodResultType
 
+
 __all__ = [
     # ======================# OPENING_ATTACK_BASIS_VALIDATOR_FAILURE #======================#
     "OpeningAttackBasisValidatorException",

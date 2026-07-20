@@ -13,6 +13,7 @@ from typing import Any, Optional
 from err import DeletePermitterException
 from result import MethodResultType
 
+
 __all__ = [
     # ======================# TOKEN_DELETE_PERMISSION_DENIAL #======================#
     "TokenDeletePermitterException",

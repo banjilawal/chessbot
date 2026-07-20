@@ -1,12 +1,23 @@
+# src/space/linear/axis/north/builder.py
+
+"""
+Module: space.linear.axis.north.builder
+Author: Banji Lawal
+Created: 2026-04-03
+version: 1.0.1
+"""
+
+from __future__ import annotations
+
 from typing import Optional, cast
 
 from builder import Builder, NorthAxisEndpointBuilder
+from err import NorthAxisBuilderException
+from math import NorthAxisStepper
 from model import Vector
 from register import VectorRegister
 from result import BuildResult, MethodResultType
-
-from space import NorthAxis, NorthAxisStepper
-
+from space import NorthAxis
 from util import LoggingLevelRouter
 from validator import VectorValidator
 
@@ -62,7 +73,7 @@ class NorthAxisBuilder(Builder[NorthAxis]):
                 # Send the exception in the result.
                 return BuildResult.failure(
                     NorthAxisBuilderException(
-                        cls_mth=method,
+                        cls_mthd=method,
                         cls_name=self.__class__.__name__,
                         msg=NorthAxisBuilderException.MSG,
                         err_code=NorthAxisBuilderException.ERR_CODE,
@@ -81,7 +92,7 @@ class NorthAxisBuilder(Builder[NorthAxis]):
             # Send the exception in the result.
             return BuildResult.failure(
                 NorthAxisBuilderException(
-                    cls_mth=method,
+                    cls_mthd=method,
                     cls_name=self.__class__.__name__,
                     msg=NorthAxisBuilderException.MSG,
                     err_code=NorthAxisBuilderException.ERR_CODE,

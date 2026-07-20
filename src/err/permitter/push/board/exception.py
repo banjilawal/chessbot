@@ -13,6 +13,7 @@ from typing import Any, Optional
 from err import PusherPermitterException
 from result import MethodResultType
 
+
 __all__ = [
     # ======================# BOARD_PUSH_PERMISSION_DENIAL #======================#
     "BoardPushPermitterException",

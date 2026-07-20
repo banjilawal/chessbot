@@ -14,6 +14,7 @@ from typing import Any, Optional
 from err import VectorIdentityRegisterBuilderException
 from result import MethodResultType
 
+
 __all__ = [
     # ======================# VECTOR_IDENTITY_REGISTER_MISMATCH_ERROR #======================#
     "VectorIdentityRegisterMismatchException",

@@ -13,6 +13,7 @@ from typing import Any, Optional
 from err import ItineraryValidatorException
 from result import MethodResultType
 
+
 __all__ = [
     # ======================# ITINERARY_SOURCE_EQUALS_DESTINATION #======================#
     "ItinerarySourceEqualsDestinationException",

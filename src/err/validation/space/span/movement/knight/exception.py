@@ -13,6 +13,7 @@ from typing import Any, Optional
 from err import MovementVectorSetValidatorException
 from result import MethodResultType
 
+
 __all__ = [
     # ======================# KNIGHT_MOVEMENT_VALIDATOR_FAILURE #======================#
     "KnightMovementSetValidatorException",

@@ -13,19 +13,20 @@ from typing import Any, Optional
 from err import LinearSpaceBuilderException
 from result import MethodResultType
 
+
 __all__ = [
-    # ======================# LINEAR_QUADRANT_SPACE_BUILDER_FAILURE #======================#
-    "QuadrantException",
+    # ======================# QUADRANT_SPACE_BUILDER_FAILURE #======================#
+    "QuadrantBuilderException",
 ]
 
-# ======================# LINEAR_QUADRANT_SPACE_BUILDER_FAILURE #======================#
-class QuadrantException(LinearSpaceBuilderException):
+# ======================# QUADRANT_SPACE_BUILDER_FAILURE #======================#
+class QuadrantBuilderException(LinearSpaceBuilderException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a LinearQuadrantSpace instance encountered an error.
+        1.  Indicate that an QuadrantSpaceBuilder failed.
 
     Attributes:
         var: Optional[str]
@@ -41,7 +42,7 @@ class QuadrantException(LinearSpaceBuilderException):
     Super Class:
         LinearSpaceBuilderException
     """
-    MSG = "An error occurred in an QuadrantLinearSpace."
+    MSG = "QuadrantLinearSpaceBuilder failed."
     ERR_CODE = "QUADRANT_LINEAR_SPACE_BUILDER_FAILURE"
     
     def __init__(

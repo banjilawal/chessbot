@@ -10,6 +10,10 @@ version: 1.0.1
 # ============ ERR.BUILDER.SPACE.LINEAR.QUADRANT PACKAGE ===========#
 
 # Packages
+from .northeast import *
+from .northwest import *
+from .southeast import *
+from .southwest import *
 
 # Modules
-from .exception import QuadrantException
+from .exception import QuadrantBuilderException

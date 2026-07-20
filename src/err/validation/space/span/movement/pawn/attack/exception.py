@@ -13,6 +13,7 @@ from typing import Any, Optional
 from err import PawnMovementSetValidatorException
 from result import MethodResultType
 
+
 __all__ = [
     # ======================# PAWN_ATTACK_MOVEMENT_VALIDATOR_FAILURE #======================#
     "AttackMovementSetValidatorException",

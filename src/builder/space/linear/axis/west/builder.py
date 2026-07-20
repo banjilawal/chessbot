@@ -1,12 +1,23 @@
+# src/space/linear/axis/west/builder.py
+
+"""
+Module: space.linear.axis.west.builder
+Author: Banji Lawal
+Created: 2026-04-03
+version: 1.0.1
+"""
+
+from __future__ import annotations
+
 from typing import Optional, cast
 
-from builder import Builder
+from builder import Builder, WestAxisEndpointBuilder
+from err import WestAxisBuilderException
+from math import WestAxisStepper
 from model import Vector
 from register import VectorRegister
-from result import BuildResult
-
-from space import WestAxis, WestAxisStepper
-
+from result import BuildResult, MethodResultType
+from space import WestAxis
 from util import LoggingLevelRouter
 from validator import VectorValidator
 
@@ -62,7 +73,7 @@ class WestAxisBuilder(Builder[WestAxis]):
                 # Send the exception in the result.
                 return BuildResult.failure(
                     WestAxisBuilderException(
-                        cls_mth=method,
+                        cls_mthd=method,
                         cls_name=self.__class__.__name__,
                         msg=WestAxisBuilderException.MSG,
                         err_code=WestAxisBuilderException.ERR_CODE,
@@ -81,7 +92,7 @@ class WestAxisBuilder(Builder[WestAxis]):
             # Send the exception in the result.
             return BuildResult.failure(
                 WestAxisBuilderException(
-                    cls_mth=method,
+                    cls_mthd=method,
                     cls_name=self.__class__.__name__,
                     msg=WestAxisBuilderException.MSG,
                     err_code=WestAxisBuilderException.ERR_CODE,

@@ -13,6 +13,7 @@ from typing import Any, Optional
 from err import BasisTargetVectorSpannerException
 from result import MethodResultType
 
+
 __all__ = [
     # ======================# PAWN_SPAN_COMPUTER_FAILURE #======================#
     "PawnSpanComputerException",

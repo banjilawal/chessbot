@@ -13,6 +13,7 @@ from typing import Any, Optional
 from err import NullException
 from result import MethodResultType
 
+
 __all__ = [
     # ======================# STRING_NULL_ERROR #======================#
     "StringNullException",

@@ -13,6 +13,7 @@ from typing import Any, Optional
 from err import ItineraryAnalyzerException
 from result import MethodResultType
 
+
 __all__ = [
     # ======================# VISITOR_FROM_WRONG_BOARD EXCEPTION #======================#
     "SquareVisitorBoardException",

@@ -13,6 +13,7 @@ from typing import Any, Optional
 from err import SpanValidatorException
 from result import MethodResultType
 
+
 __all__ = [
     # ======================# MOVEMENT_VALIDATOR_FAILURE #======================#
     "MovementVectorSetValidatorException",

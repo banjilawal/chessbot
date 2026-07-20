@@ -13,6 +13,7 @@ from typing import Any, Optional
 from err import DuplicateItemException
 from result import MethodResultType
 
+
 __all__ = [
     # ======================# DUPLICATE_BOARD_ERROR #======================#
     "DuplicateBoardException",

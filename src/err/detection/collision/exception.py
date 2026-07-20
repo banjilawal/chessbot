@@ -13,6 +13,7 @@ from typing import Any, Optional
 from err import DetectorException
 from result import MethodResultType
 
+
 __all__ = [
     # ======================# COLLISION_DETECTOR_ERROR #======================#
     "CollisionDetectorException",

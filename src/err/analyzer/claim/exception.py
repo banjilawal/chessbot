@@ -13,6 +13,7 @@ from typing import Any, Optional
 from err import AnalyzerException
 from result import MethodResultType
 
+
 __all__ = [
     # ======================# HOME_SQUARE_CLAIM_ANALYZER_ERROR #======================#
     "HomeSquareClaimAnalyzerException",

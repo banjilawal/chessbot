@@ -1,7 +1,7 @@
-# src/err/builder/binder/edge/exception.py
+# src/err/builder/model/binder/edge/exception.py
 
 """
-Module: err.builder.binder.edge.exception
+Module: err.builder.model.binder.edge.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,18 +10,19 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import BuilderException
+from err import ModelBuilderException
 from result import MethodResultType
 
+
 __all__ = [
-    # ======================# EDGE_BINDER_BUILDER_FAILURE #======================#
+    # ======================# EDGE_BINDER__MODEL_BUILDER_FAILURE #======================#
     "EdgeBinderBuilderException",
 ]
 
 from err import BinderBuilderException
 
 
-# ======================# EDGE_BINDER_BUILDER_FAILURE #======================#
+# ======================# EDGE_BINDER__MODEL_BUILDER_FAILURE #======================#
 class EdgeBinderBuilderException(BinderBuilderException):
     """
     Role:
@@ -45,7 +46,7 @@ class EdgeBinderBuilderException(BinderBuilderException):
         BinderBuilderException
     """
     MSG = "EdgeBinderBuilder failed."
-    ERR_CODE = "EDGE_BINDER_BUILDER_FAILURE"
+    ERR_CODE = "EDGE_BINDER__MODEL_BUILDER_FAILURE"
     
     def __init__(
             self,

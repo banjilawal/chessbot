@@ -13,6 +13,7 @@ from typing import Any, Optional
 from err import SpaceException
 from result import MethodResultType
 
+
 __all__ = [
     # ======================# CONVERSION_SPACE_ERROR #======================#
     "ConversionSpaceException",

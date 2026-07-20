@@ -1,12 +1,23 @@
+# src/space/linear/axis/east/builder.py
+
+"""
+Module: space.linear.axis.east.builder
+Author: Banji Lawal
+Created: 2026-04-03
+version: 1.0.1
+"""
+
+from __future__ import annotations
+
 from typing import Optional, cast
 
-from builder import Builder
+from builder import Builder, EastAxisEndpointBuilder
+from err import EastAxisBuilderException
+from math import EastAxisStepper
 from model import Vector
 from register import VectorRegister
-from result import BuildResult
-
-from space import EastAxis, EastAxisStepper
-
+from result import BuildResult, MethodResultType
+from space import EastAxis
 from util import LoggingLevelRouter
 from validator import VectorValidator
 
@@ -62,7 +73,7 @@ class EastAxisBuilder(Builder[EastAxis]):
                 # Send the exception in the result.
                 return BuildResult.failure(
                     EastAxisBuilderException(
-                        cls_mth=method,
+                        cls_mthd=method,
                         cls_name=self.__class__.__name__,
                         msg=EastAxisBuilderException.MSG,
                         err_code=EastAxisBuilderException.ERR_CODE,
@@ -81,7 +92,7 @@ class EastAxisBuilder(Builder[EastAxis]):
             # Send the exception in the result.
             return BuildResult.failure(
                 EastAxisBuilderException(
-                    cls_mth=method,
+                    cls_mthd=method,
                     cls_name=self.__class__.__name__,
                     msg=EastAxisBuilderException.MSG,
                     err_code=EastAxisBuilderException.ERR_CODE,

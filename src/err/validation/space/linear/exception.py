@@ -13,6 +13,7 @@ from typing import Any, Optional
 from err import SpaceValidatorException
 from result import MethodResultType
 
+
 __all__ = [
     # ======================# LINEAR_SPACE_VALIDATOR_FAILURE #======================#
     "LinearSpaceValidatorException",

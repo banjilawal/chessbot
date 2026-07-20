@@ -13,6 +13,7 @@ from typing import Any, Optional
 from err import TokenUndoMovePermitterException
 from result import MethodResultType
 
+
 __all__ = [
     # ======================# MAX_UNDO_MOVE_ERROR #======================#
     "MaxMoveUndoException",

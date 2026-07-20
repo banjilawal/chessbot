@@ -13,6 +13,7 @@ from typing import Any, Optional
 from err import BasisEmptyException
 from result import MethodResultType
 
+
 __all__ = [
     # ======================# PAWN_BASIS_EMPTY_ERROR #======================#
     "PawnBasisEmptyException",

@@ -13,6 +13,7 @@ from typing import Any, Optional
 from err import CertifierException
 from result import MethodResultType
 
+
 __all__ = [
     # ======================# PERSONA_BLUEPRINT_VALIDATOR_FAILURE #======================#
     "PersonaCertifierException",

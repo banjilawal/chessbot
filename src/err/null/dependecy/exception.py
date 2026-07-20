@@ -13,6 +13,7 @@ from typing import Any, Optional
 from err import NullException
 from result import MethodResultType
 
+
 __all__ = [
     # ======================# DEPENDENCY_LIST_NULL_ERROR #======================#
     "DependencyListNullException",

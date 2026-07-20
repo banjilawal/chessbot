@@ -13,6 +13,7 @@ from typing import Any, Optional
 from err import ContextBuilderBootstrapperException
 from result import MethodResultType
 
+
 __all__ = [
     # ======================# COORD_CONTEXT_BUILDER_BOOTSTRAPPER_FAILURE #======================#
     "CoordContextBuilderBootstrapperException",

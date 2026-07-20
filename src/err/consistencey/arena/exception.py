@@ -13,6 +13,7 @@ from typing import Any, Optional
 from err import ConsistencyCheckerException
 from result import MethodResultType
 
+
 __all__ = [
     # ======================# ARENA_CONSISTENCY_CHECKER_FAILURE #======================#
     "ArenaConsistencyCheckerException",

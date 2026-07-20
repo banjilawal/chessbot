@@ -13,6 +13,7 @@ from typing import Any, Optional
 from err import BootstrapperException
 from result import MethodResultType
 
+
 __all__ = [
     # ======================# POP_PERMITTER_BOOTSTRAPPER_FAILURE #======================#
     "PopPermitterBootstrapperException",

@@ -13,6 +13,7 @@ from typing import Any, Optional
 from err import BuilderException
 from result import MethodResultType
 
+
 __all__ = [
     # ======================# DTO_BUILDER_FAILURE #======================#
     "DtoBuilderException",

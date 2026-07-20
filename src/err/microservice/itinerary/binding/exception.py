@@ -13,6 +13,7 @@ from typing import Any, Optional
 from err import ItineraryMicroserviceException
 from result import MethodResultType
 
+
 __all__ = [
     # ======================# ITINERARY_CONSISTENCY_ERROR #======================#
     "ItineraryConsistencyException",

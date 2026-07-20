@@ -12,6 +12,7 @@ from typing import Any, Optional
 
 from result import MethodResultType
 
+
 __all__ = [
     # ======================#  ROOT APPLICATION EXCEPTION CLASS #======================#
     "ChessException",

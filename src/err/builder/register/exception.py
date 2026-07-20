@@ -16,6 +16,7 @@ from typing import Any, Optional
 from err import BuilderException
 from result import MethodResultType
 
+
 __all__ = [
     # ======================# REGISTER_BUILDER_FAILURE #======================#
     "RegisterBuilderException",

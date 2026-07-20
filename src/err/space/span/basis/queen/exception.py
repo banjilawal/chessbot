@@ -13,6 +13,7 @@ from typing import Any, Optional
 from err import BasisException
 from result import MethodResultType
 
+
 __all__ = [
     # ======================# QUEEN_BASIS_ERRORR #======================#
     "QueenBasisException",

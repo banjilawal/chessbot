@@ -13,6 +13,7 @@ from typing import Any, Optional
 from err import TargetVectorSetValidatorException
 from result import MethodResultType
 
+
 __all__ = [
     # ======================# ARENA_SPACE_VALIDATOR_FAILURE #======================#
     "LinearTargetSetValidatorException",

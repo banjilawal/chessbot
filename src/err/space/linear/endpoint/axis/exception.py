@@ -13,6 +13,7 @@ from typing import Any, Optional
 from err import LinearStepperException
 from result import MethodResultType
 
+
 __all__ = [
     # ======================# AXIS_STEPPER_FAILURE #======================#
     "AxisStepperException",

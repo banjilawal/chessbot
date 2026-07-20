@@ -13,6 +13,7 @@ from typing import Any, Optional
 from err import SpanTransformerException
 from result import MethodResultType
 
+
 __all__ = [
     # ======================# AXIS_SPAN_TRANSFORMER_FAILURE #======================#
     "AxisSpanTransformerException",

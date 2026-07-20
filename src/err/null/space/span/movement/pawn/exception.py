@@ -13,6 +13,7 @@ from typing import Any, Optional
 from err import MovementVectorSetNullException
 from result import MethodResultType
 
+
 __all__ = [
     # ======================# PAWN_MOVEMENT_NULL_ERROR #======================#
     "PawnMovementSetNullException",

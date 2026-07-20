@@ -13,6 +13,7 @@ from typing import Any, Optional
 from err import BasisException
 from result import MethodResultType
 
+
 __all__ = [
     # ======================# ROOK_BASIS_ERRORR #======================#
     "RookBasisException",

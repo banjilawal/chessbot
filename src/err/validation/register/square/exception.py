@@ -14,6 +14,7 @@ from typing import Any, Optional
 from err import RegisterValidatorException
 from result import MethodResultType
 
+
 __all__ = [
     # ======================# SQUARE_REGISTER_VALIDATOR_FAILURE #======================#
     "SquareRegisterValidatorException",

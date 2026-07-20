@@ -13,6 +13,7 @@ from typing import Any, Optional
 from err import StateModelNullException
 from result import MethodResultType
 
+
 __all__ = [
     # ======================# TOKEN_NULL_ERROR #======================#
     "TokenNullException",

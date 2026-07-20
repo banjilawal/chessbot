@@ -13,6 +13,7 @@ from typing import Any, Optional
 from err import SpanEmptyException
 from result import MethodResultType
 
+
 __all__ = [
     # ======================# MOVEMENT_EMPTY_ERROR #======================#
     "MovementVectorSetEmptyException",

@@ -13,6 +13,7 @@ from typing import Any, Optional
 from err import AttackBasisNullException
 from result import MethodResultType
 
+
 __all__ = [
     # ======================# OPENING_ATTACK_BASIS_NULL_ERROR #======================#
     "OpeningAttackBasisNullException",

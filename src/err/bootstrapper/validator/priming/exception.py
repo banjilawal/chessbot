@@ -13,6 +13,7 @@ from typing import Any, Optional
 from err import ValidatorBootstrapperException
 from result import MethodResultType
 
+
 __all__ = [
     # ======================# PRIMING_VALIDATOR_FAILURE #======================#
     "PrimingValidatorException",

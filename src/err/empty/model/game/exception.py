@@ -13,6 +13,7 @@ from typing import Any, Optional
 from err import ModelEmptyException
 from result import MethodResultType
 
+
 __all__ = [
     # ======================# GAME_EMPTY_ERROR #======================#
     "GameEmptyException",

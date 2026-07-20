@@ -1,7 +1,7 @@
-# src/err/builder/binder/rank/exception.py
+# src/err/builder/model/binder/rank/exception.py
 
 """
-Module: err.builder.binder.rank.exception
+Module: err.builder.model.binder.rank.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,18 +10,19 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import BuilderException
+from err import ModelBuilderException
 from result import MethodResultType
 
+
 __all__ = [
-    # ======================# RANK_BINDER_BUILDER_FAILURE #======================#
+    # ======================# RANK_BINDER__MODEL_BUILDER_FAILURE #======================#
     "RankBinderBuilderException",
 ]
 
 from err import BinderBuilderException
 
 
-# ======================# RANK_BINDER_BUILDER_FAILURE #======================#
+# ======================# RANK_BINDER__MODEL_BUILDER_FAILURE #======================#
 class RankBinderBuilderException(BinderBuilderException):
     """
     Role:
@@ -45,7 +46,7 @@ class RankBinderBuilderException(BinderBuilderException):
         BinderBuilderException
     """
     MSG = "RankBinderBuilder failed."
-    ERR_CODE = "RANK_BINDER_BUILDER_FAILURE"
+    ERR_CODE = "RANK_BINDER__MODEL_BUILDER_FAILURE"
     
     def __init__(
             self,

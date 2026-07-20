@@ -15,7 +15,7 @@ from register import VectorRegister
 from space import NortheastQuadrantStepper, Quadrant
 
 
-class NorthEastQuadrant(Quadrant):
+class NortheastQuadrant(Quadrant):
     """
     Role:
         -   Computation Worker

@@ -13,6 +13,7 @@ from typing import Any, Optional
 from err import PopperException
 from result import MethodResultType
 
+
 __all__ = [
     # ======================# TOKEN_POPPER_FAILURE #======================#
     "TokenPopperException",

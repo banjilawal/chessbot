@@ -1,7 +1,7 @@
-# src/err/builder/binder/coord/exception.py
+# src/err/builder/model/binder/coord/exception.py
 
 """
-Module: err.builder.binder.coord.exception
+Module: err.builder.model.binder.coord.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,18 +10,19 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import BuilderException
+from err import ModelBuilderException
 from result import MethodResultType
 
+
 __all__ = [
-    # ======================# COORD_BINDER_BUILDER_FAILURE #======================#
+    # ======================# COORD_BINDER__MODEL_BUILDER_FAILURE #======================#
     "CoordBinderBuilderException",
 ]
 
 from err import BinderBuilderException
 
 
-# ======================# COORD_BINDER_BUILDER_FAILURE #======================#
+# ======================# COORD_BINDER__MODEL_BUILDER_FAILURE #======================#
 class CoordBinderBuilderException(BinderBuilderException):
     """
     Role:
@@ -45,7 +46,7 @@ class CoordBinderBuilderException(BinderBuilderException):
         BinderBuilderException
     """
     MSG = "CoordBinderBuilder failed."
-    ERR_CODE = "COORD_BINDER_BUILDER_FAILURE"
+    ERR_CODE = "COORD_BINDER__MODEL_BUILDER_FAILURE"
     
     def __init__(
             self,

@@ -13,6 +13,7 @@ from typing import Any, Optional
 from err import TargetVectorSetNullException
 from result import MethodResultType
 
+
 __all__ = [
     # ======================# SPAN_TARGET_SET_NULL_ERROR #======================#
     "SpanTargetSetNullException",

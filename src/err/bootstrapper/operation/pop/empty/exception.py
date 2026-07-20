@@ -13,6 +13,7 @@ from typing import Any, Optional
 from err import PopperException
 from result import MethodResultType
 
+
 __all__ = [
     # ======================# POPPING_EMPTY_STACK_ERROR #======================#
     "PoppingEmptyStackException",

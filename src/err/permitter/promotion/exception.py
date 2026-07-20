@@ -13,6 +13,7 @@ from typing import Any, Optional
 from err import PermitterException
 from result import MethodResultType
 
+
 __all__ = [
     # ======================# PROMOTION_PERMISSION_DENIAL #======================#
     "PromotionPermitterException",

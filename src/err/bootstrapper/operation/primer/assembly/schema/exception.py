@@ -13,6 +13,7 @@ from typing import Any, Optional
 from err import AssemblyPrimerException
 from result import MethodResultType
 
+
 __all__ = [
     # ======================# SCHEMA_ASSEMBLY_PRIMER_FAILURE #======================#
     "SchemaAssemblyPrimerException",

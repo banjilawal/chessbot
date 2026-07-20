@@ -13,6 +13,7 @@ from typing import Any, Optional
 from err import DetectorBootstrapperException
 from result import MethodResultType
 
+
 __all__ = [
     # ======================# COLLISION_DETECTOR_ERROR #======================#
     "ColliderBootstrapperException",

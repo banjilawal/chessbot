@@ -13,6 +13,7 @@ from typing import Any, Optional
 from err import AssemblyPrimerException
 from result import MethodResultType
 
+
 __all__ = [
     # ======================# PRIMER_SCALAR_ASSEMBLY_FAILURE #======================#
     "PrimingScalarAssemblyException",

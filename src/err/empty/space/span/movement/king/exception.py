@@ -13,6 +13,7 @@ from typing import Any, Optional
 from err import MovementVectorSetEmptyException
 from result import MethodResultType
 
+
 __all__ = [
     # ======================# KING_MOVEMENT_EMPTY_ERROR #======================#
     "KingMovementSetEmptyException",

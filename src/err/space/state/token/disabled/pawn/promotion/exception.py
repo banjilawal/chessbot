@@ -13,6 +13,7 @@ from typing import Any, Optional
 from err import DisabledPawnException
 from result import MethodResultType
 
+
 __all__ = [
     # ======================# DISABLED_PAWN_PROMOTION_ERROR #======================#
     "DisabledPawnPromotionException",

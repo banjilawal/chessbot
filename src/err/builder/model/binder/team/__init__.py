@@ -1,13 +1,13 @@
-# src/err/builder/binder/team/__init__.py
+# src/err/builder/model/binder/team/__init__.py
 
 """
-Module: err.builder.binder.team.__init__
+Module: err.builder.model.binder.team.__init__
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
 """
 
-# =========== ERR.builder.BINDER.TEAM PACKAGE ===========#
+# =========== ERR.builder.model.BINDER.TEAM PACKAGE ===========#
 
 # Packages
 

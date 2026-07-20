@@ -13,6 +13,7 @@ from typing import Any, Optional
 from err import SpaceEmptyException
 from result import MethodResultType
 
+
 __all__ = [
     # ======================# LINEAR_SPACE_EMPTY_ERROR #======================#
     "LinearSpaceEmptyException",

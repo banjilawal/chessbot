@@ -1,7 +1,7 @@
-# src/err/builder/scalar/exception.py
+# src/err/builder/model/scalar/exception.py
 
 """
-Module: err.builder.scalar.exception
+Module: err.builder.model.scalar.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,16 +10,17 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import BuilderException
+from err import ModelBuilderException
 from result import MethodResultType
 
+
 __all__ = [
-    # ======================# SCALAR_BUILDER_FAILURE #======================#
+    # ======================# SCALAR__MODEL_BUILDER_FAILURE #======================#
     "ScalarBuilderException",
 ]
 
-# ======================# SCALAR_BUILDER_FAILURE #======================#
-class ScalarBuilderException(BuilderException):
+# ======================# SCALAR__MODEL_BUILDER_FAILURE #======================#
+class ScalarBuilderException(ModelBuilderException):
     """
     Role:
         -   Error Tracing
@@ -40,10 +41,10 @@ class ScalarBuilderException(BuilderException):
     Provides:
 
     Super Class:
-        BuilderException
+       ModelBuilderException
     """
     MSG = "ScalarBuilder failed."
-    ERR_CODE = "SCALAR_BUILDER_FAILURE"
+    ERR_CODE = "SCALAR__MODEL_BUILDER_FAILURE"
     
     def __init__(
             self,

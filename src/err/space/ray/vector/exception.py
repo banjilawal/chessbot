@@ -13,6 +13,7 @@ from typing import Any, Optional
 from err import RayException
 from result import MethodResultType
 
+
 __all__ = [
     # ======================# VECTOR_RAY_ERROR #======================#
     "VectorRayException",

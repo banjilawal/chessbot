@@ -1,7 +1,7 @@
-# src/err/builder/vector/exception.py
+# src/err/builder/model/vector/exception.py
 
 """
-Module: err.builder.vector.exception
+Module: err.builder.model.vector.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,16 +10,17 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import BuilderException
+from err import ModelBuilderException
 from result import MethodResultType
 
+
 __all__ = [
-    # ======================# VECTOR_BUILDER_FAILURE #======================#
+    # ======================# VECTOR__MODEL_BUILDER_FAILURE #======================#
     "VectorBuilderException",
 ]
 
-# ======================# VECTOR_BUILDER_FAILURE #======================#
-class VectorBuilderException(BuilderException):
+# ======================# VECTOR__MODEL_BUILDER_FAILURE #======================#
+class VectorBuilderException(ModelBuilderException):
     """
     Role:
         -   Error Tracing
@@ -40,10 +41,10 @@ class VectorBuilderException(BuilderException):
     Provides:
 
     Super Class:
-        BuilderException
+       ModelBuilderException
     """
     MSG = "VectorBuilder failed."
-    ERR_CODE = "VECTOR_BUILDER_FAILURE"
+    ERR_CODE = "VECTOR__MODEL_BUILDER_FAILURE"
     
     def __init__(
             self,

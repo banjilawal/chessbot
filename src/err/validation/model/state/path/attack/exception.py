@@ -13,6 +13,7 @@ from typing import Any, Optional
 from err import PathValidatorException
 from result import MethodResultType
 
+
 __all__ = [
     # ======================# ATTACK_PATH_VALIDATOR_FAILURE #======================#
     "AttackPathValidatorException",

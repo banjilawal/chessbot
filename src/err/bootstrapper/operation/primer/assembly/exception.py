@@ -13,6 +13,7 @@ from typing import Any, Optional
 from err import PrimingException
 from result import MethodResultType
 
+
 __all__ = [
     # ======================# ASSEMBLY_PRIMER_FAILURE #======================#
     "AssemblyPrimerException",

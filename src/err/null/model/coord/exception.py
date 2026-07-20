@@ -13,6 +13,7 @@ from typing import Any, Optional
 from err import ModelNullException
 from result import MethodResultType
 
+
 __all__ = [
     # ======================# COORD_NULL_ERROR #======================#
     "CoordModelNullException",

@@ -13,6 +13,7 @@ from typing import Any, Optional
 from err import ItineraryConsistencyException
 from result import MethodResultType
 
+
 __all__ = [
     # ======================# NO_SOURCE_TOKEN_BIDIRECTIONAL_RELATION_ERROR #======================#
     "BidirectionalSourceTokenRelationException",

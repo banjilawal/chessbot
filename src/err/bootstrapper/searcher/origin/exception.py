@@ -13,6 +13,7 @@ from typing import Any, Optional
 from err import SearcherBootstrapperException
 from result import MethodResultType
 
+
 __all__ = [
     # ======================# ORIGIN_SEARCHER_BOOTSTRAPPER_FAILURE #======================#
     "OriginSearcherBootstrapperException",

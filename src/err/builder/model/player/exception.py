@@ -1,7 +1,7 @@
-# src/err/builder/player/exception.py
+# src/err/builder/model/player/exception.py
 
 """
-Module: err.builder.player.exception
+Module: err.builder.model.player.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,16 +10,17 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import BuilderException
+from err import ModelBuilderException
 from result import MethodResultType
 
+
 __all__ = [
-    # ======================# PLAYER_BUILDER_FAILURE #======================#
+    # ======================# PLAYER__MODEL_BUILDER_FAILURE #======================#
     "PlayerBuilderException",
 ]
 
-# ======================# PLAYER_BUILDER_FAILURE #======================#
-class PlayerBuilderException(BuilderException):
+# ======================# PLAYER__MODEL_BUILDER_FAILURE #======================#
+class PlayerBuilderException(ModelBuilderException):
     """
     Role:
         -   Error Tracing
@@ -40,10 +41,10 @@ class PlayerBuilderException(BuilderException):
     Provides:
 
     Super Class:
-        BuilderException
+       ModelBuilderException
     """
     MSG = "PlayerBuilder failed."
-    ERR_CODE = "PLAYER_BUILDER_FAILURE"
+    ERR_CODE = "PLAYER__MODEL_BUILDER_FAILURE"
     
     def __init__(
             self,

@@ -13,6 +13,7 @@ from typing import Any, Optional
 from err import DtoBuilderException
 from result import MethodResultType
 
+
 __all__ = [
     # ======================# PATH_DTO_BUILDER_FAILURE #======================#
     "TokenPathDtoBuilderException",

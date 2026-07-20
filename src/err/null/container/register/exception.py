@@ -13,6 +13,7 @@ from typing import Any, Optional
 from err import ContainerNullException
 from result import MethodResultType
 
+
 __all__ = [
     # ======================# REGISTER_SET_NULL_ERROR #======================#
     "RegisterSetNullException",

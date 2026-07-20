@@ -13,6 +13,7 @@ from typing import Any, Optional
 from err import LineSegmentEmptyException
 from result import MethodResultType
 
+
 __all__ = [
     # ======================# AXIS_LINE_SEGMENT_EMPTY_ERROR #======================#
     "AxisLineSegmentEmptyException",

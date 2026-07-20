@@ -13,6 +13,7 @@ from typing import Any, Optional
 from err import LineSegmentValidatorException
 from result import MethodResultType
 
+
 __all__ = [
     # ======================# LINE_SEGEMENT_TERMINUS_VALIDATOR_FAILURE #======================#
     "LineSegmentTerminusValidatorException",

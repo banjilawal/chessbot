@@ -1,7 +1,7 @@
-# src/err/builder/binder/player/exception.py
+# src/err/builder/model/binder/player/exception.py
 
 """
-Module: err.builder.binder.player.exception
+Module: err.builder.model.binder.player.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,18 +10,19 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import BuilderException
+from err import ModelBuilderException
 from result import MethodResultType
 
+
 __all__ = [
-    # ======================# PLAYER_BINDER_BUILDER_FAILURE #======================#
+    # ======================# PLAYER_BINDER__MODEL_BUILDER_FAILURE #======================#
     "PlayerBinderBuilderException",
 ]
 
 from err import BinderBuilderException
 
 
-# ======================# PLAYER_BINDER_BUILDER_FAILURE #======================#
+# ======================# PLAYER_BINDER__MODEL_BUILDER_FAILURE #======================#
 class PlayerBinderBuilderException(BinderBuilderException):
     """
     Role:
@@ -45,7 +46,7 @@ class PlayerBinderBuilderException(BinderBuilderException):
         BinderBuilderException
     """
     MSG = "PlayerBinderBuilder failed."
-    ERR_CODE = "PLAYER_BINDER_BUILDER_FAILURE"
+    ERR_CODE = "PLAYER_BINDER__MODEL_BUILDER_FAILURE"
     
     def __init__(
             self,

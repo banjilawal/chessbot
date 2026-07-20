@@ -13,6 +13,7 @@ from typing import Any, Optional
 from err import ContainerBuilderException
 from result import MethodResultType
 
+
 __all__ = [
     # ======================# REGISTER_SET_BUILDER_FAILURE #======================#
     "RegisterSetBuilderException",

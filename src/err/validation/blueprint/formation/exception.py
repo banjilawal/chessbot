@@ -11,6 +11,7 @@ from __future__ import annotations
 from err import CertifierException
 from result import MethodResultType
 
+
 __all__ = [
     # ======================# FORMATION_BLUEPRINT_VALIDATOR_FAILURE #======================#
     "FormationCertifierException",

@@ -13,6 +13,7 @@ from typing import Any, Optional
 from err import PopperPermitterException
 from result import MethodResultType
 
+
 __all__ = [
     # ======================# TOKEN_POP_PERMISSION_DENIAL #======================#
     "TokenPopPermitterException",

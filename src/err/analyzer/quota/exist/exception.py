@@ -13,6 +13,7 @@ from typing import Any, Optional
 from err import RankQuotaAnalyzerException
 from result import MethodResultType
 
+
 __all__ = [
     # ======================# HOME_SQUARE_ALREADY_QUOTAED_ERROR #======================#
     "RankAlreadyQuotaedException",

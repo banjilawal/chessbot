@@ -13,6 +13,7 @@ from typing import Any, Optional
 from err import DisabledTokenManeuverException
 from result import MethodResultType
 
+
 __all__ = [
     # ======================# DISABLED_TOKEN_UNDO_MOVE_ERROR #======================#
     "DisabledTokenUndoMoveException",

@@ -13,6 +13,7 @@ from typing import Any, Optional
 from err import PawnBasisEmptyException
 from result import MethodResultType
 
+
 __all__ = [
     # ======================# PAWN_MANEUVER_BASIS_EMPTY_ERROR #======================#
     "ManeuverBasisEmptyException",

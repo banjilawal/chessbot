@@ -12,12 +12,12 @@ from __future__ import annotations
 from typing import Optional, cast
 
 from builder import Builder, NortheastQuadrantEndpointBuilder
+from err import NortheastQuadrantBuilderException
+from math import NortheastQuadrantStepper
 from model import Vector
 from register import VectorRegister
-from result import BuildResult
-
-from space import EastAxis, NortheastQuadrant, NortheastQuadrantStepper
-
+from result import BuildResult, MethodResultType
+from space import NortheastQuadrant
 from util import LoggingLevelRouter
 from validator import VectorValidator
 
@@ -62,7 +62,7 @@ class NortheastQuadrantBuilder(Builder[NortheastQuadrant]):
         self._vector_validator = vector_validator
      
     @LoggingLevelRouter.monitor
-    def execute(self) -> BuildResult[EastAxis]:
+    def execute(self) -> BuildResult[NortheastQuadrant]:
         method = f"{self.__class__.__name__}.execute"
         
         # Handle the case that, the origin is flagged unsafe.
@@ -73,7 +73,7 @@ class NortheastQuadrantBuilder(Builder[NortheastQuadrant]):
                 # Send the exception in the result.
                 return BuildResult.failure(
                     NortheastQuadrantBuilderException(
-                        cls_mth=method,
+                        cls_mthd=method,
                         cls_name=self.__class__.__name__,
                         msg=NortheastQuadrantBuilderException.MSG,
                         err_code=NortheastQuadrantBuilderException.ERR_CODE,
@@ -85,14 +85,14 @@ class NortheastQuadrantBuilder(Builder[NortheastQuadrant]):
         
         # Request a register of the endpoints.
         endpoint_request = NortheastQuadrantEndpointBuilder(
-            origin=self._origin,
+            origin=origin,
         ).execute()
         # Handle the case that the request is not satisfied.
         if endpoint_request.is_failure:
             # Send the exception in the result.
             return BuildResult.failure(
                 NortheastQuadrantBuilderException(
-                    cls_mth=method,
+                    cls_mthd=method,
                     cls_name=self.__class__.__name__,
                     msg=NortheastQuadrantBuilderException.MSG,
                     err_code=NortheastQuadrantBuilderException.ERR_CODE,

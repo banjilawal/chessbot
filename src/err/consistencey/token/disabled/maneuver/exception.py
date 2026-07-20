@@ -13,6 +13,7 @@ from typing import Any, Optional
 from err import DisabledTokenException
 from result import MethodResultType
 
+
 __all__ = [
     # ======================# DISABLED_TOKEN_MANEUVER_CONSISTENCY_CHECKER_FAILURE #======================#
     "DisabledTokenManeuverConsistencyCheckerException",

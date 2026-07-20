@@ -13,6 +13,7 @@ from typing import Any, Optional
 from err import ContextBuilderException
 from result import MethodResultType
 
+
 __all__ = [
     # ======================# FORMATION_CONTEXT_BUILDER_FAILURE #======================#
     "FormationContextBuilderException",

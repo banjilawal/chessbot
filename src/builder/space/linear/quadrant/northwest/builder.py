@@ -12,12 +12,12 @@ from __future__ import annotations
 from typing import Optional, cast
 
 from builder import Builder, NorthwestQuadrantEndpointBuilder
+from err import NorthwestQuadrantBuilderException
+from math import NorthwestQuadrantStepper
 from model import Vector
 from register import VectorRegister
-from result import BuildResult
-
-from space import EastAxis, NorthwestQuadrant, NorthwestQuadrantStepper
-
+from result import BuildResult, MethodResultType
+from space import NorthwestQuadrant
 from util import LoggingLevelRouter
 from validator import VectorValidator
 
@@ -62,7 +62,7 @@ class NorthwestQuadrantBuilder(Builder[NorthwestQuadrant]):
         self._vector_validator = vector_validator
      
     @LoggingLevelRouter.monitor
-    def execute(self) -> BuildResult[EastAxis]:
+    def execute(self) -> BuildResult[NorthwestQuadrant]:
         method = f"{self.__class__.__name__}.execute"
         
         # Handle the case that, the origin is flagged unsafe.
@@ -73,7 +73,7 @@ class NorthwestQuadrantBuilder(Builder[NorthwestQuadrant]):
                 # Send the exception in the result.
                 return BuildResult.failure(
                     NorthwestQuadrantBuilderException(
-                        cls_mth=method,
+                        cls_mthd=method,
                         cls_name=self.__class__.__name__,
                         msg=NorthwestQuadrantBuilderException.MSG,
                         err_code=NorthwestQuadrantBuilderException.ERR_CODE,
@@ -92,7 +92,7 @@ class NorthwestQuadrantBuilder(Builder[NorthwestQuadrant]):
             # Send the exception in the result.
             return BuildResult.failure(
                 NorthwestQuadrantBuilderException(
-                    cls_mth=method,
+                    cls_mthd=method,
                     cls_name=self.__class__.__name__,
                     msg=NorthwestQuadrantBuilderException.MSG,
                     err_code=NorthwestQuadrantBuilderException.ERR_CODE,

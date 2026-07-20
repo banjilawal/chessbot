@@ -13,6 +13,7 @@ from typing import Any, Optional
 from err import PromotionLevelAnalyzerException
 from result import MethodResultType
 
+
 __all__ = [
     # ======================# PROMOTE_PAWN_TO_KING_ERROR #======================#
     "PromoteToKingException",

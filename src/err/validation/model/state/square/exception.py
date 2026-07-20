@@ -13,6 +13,7 @@ from typing import Any, Optional
 from err import StateModelValidatorException
 from result import MethodResultType
 
+
 __all__ = [
     # ======================# SQUARE_VALIDATOR_FAILURE #======================#
     "SquareValidatorException",

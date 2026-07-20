@@ -17,6 +17,7 @@ from .path import *
 from .rank import *
 from .scalar import *
 from .state import *
+from .vector import *
 
 # Modules
 from .validator import ModelValidator

@@ -13,6 +13,7 @@ from typing import Any, Optional
 from err import SpanNullException
 from result import MethodResultType
 
+
 __all__ = [
     # ======================# BASIS_NULL_ERROR #======================#
     "BasisNullException",

@@ -13,6 +13,7 @@ from typing import Any, Optional
 from err import IdCollisionException
 from result import MethodResultType
 
+
 __all__ = [
     # ======================# BOARD_ID_COLLISION_ERROR #======================#
     "BoardIdCollisionException",

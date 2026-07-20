@@ -12,10 +12,12 @@ from __future__ import annotations
 from typing import Optional, cast
 
 from builder import Builder, SouthwestQuadrantEndpointBuilder
+from err import SouthwestQuadrantBuilderException
+from math import SouthwestQuadrantStepper
 from model import Vector
 from register import VectorRegister
-from result import BuildResult
-from space import SouthwestQuadrant, SouthwestQuadrantStepper
+from result import BuildResult, MethodResultType
+from space import SouthwestQuadrant
 from util import LoggingLevelRouter
 from validator import VectorValidator
 
@@ -60,7 +62,7 @@ class SouthwestQuadrantBuilder(Builder[SouthwestQuadrant]):
         self._vector_validator = vector_validator
      
     @LoggingLevelRouter.monitor
-    def execute(self) -> BuildResult[EastAxis]:
+    def execute(self) -> BuildResult[SouthwestQuadrant]:
         method = f"{self.__class__.__name__}.execute"
         
         # Handle the case that, the origin is flagged unsafe.
@@ -71,7 +73,7 @@ class SouthwestQuadrantBuilder(Builder[SouthwestQuadrant]):
                 # Send the exception in the result.
                 return BuildResult.failure(
                     SouthwestQuadrantBuilderException(
-                        cls_mth=method,
+                        cls_mthd=method,
                         cls_name=self.__class__.__name__,
                         msg=SouthwestQuadrantBuilderException.MSG,
                         err_code=SouthwestQuadrantBuilderException.ERR_CODE,
@@ -90,7 +92,7 @@ class SouthwestQuadrantBuilder(Builder[SouthwestQuadrant]):
             # Send the exception in the result.
             return BuildResult.failure(
                 SouthwestQuadrantBuilderException(
-                    cls_mth=method,
+                    cls_mthd=method,
                     cls_name=self.__class__.__name__,
                     msg=SouthwestQuadrantBuilderException.MSG,
                     err_code=SouthwestQuadrantBuilderException.ERR_CODE,

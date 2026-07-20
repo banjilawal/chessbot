@@ -1,7 +1,7 @@
-# src/err/builder/team/exception.py
+# src/err/builder/model/team/exception.py
 
 """
-Module: err.builder.team.exception
+Module: err.builder.model.team.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,16 +10,17 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import BuilderException
+from err import ModelBuilderException
 from result import MethodResultType
 
+
 __all__ = [
-    # ======================# TEAM_BUILDER_FAILURE #======================#
+    # ======================# TEAM__MODEL_BUILDER_FAILURE #======================#
     "TeamBuilderException",
 ]
 
-# ======================# TEAM_BUILDER_FAILURE #======================#
-class TeamBuilderException(BuilderException):
+# ======================# TEAM__MODEL_BUILDER_FAILURE #======================#
+class TeamBuilderException(ModelBuilderException):
     """
     Role:
         -   Error Tracing
@@ -40,10 +41,10 @@ class TeamBuilderException(BuilderException):
     Provides:
 
     Super Class:
-        BuilderException
+       ModelBuilderException
     """
     MSG = "TeamBuilder failed."
-    ERR_CODE = "TEAM_BUILDER_FAILURE"
+    ERR_CODE = "TEAM__MODEL_BUILDER_FAILURE"
     
     def __init__(
             self,

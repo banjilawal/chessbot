@@ -1,7 +1,7 @@
-# src/err/builder/node/exception.py
+# src/err/builder/model/node/exception.py
 
 """
-Module: err.builder.node.exception
+Module: err.builder.model.node.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -9,16 +9,17 @@ version: 1.0.1
 
 from __future__ import annotations
 from typing import Any, Optional
-from err import BuilderException
+from err import ModelBuilderException
 from result import MethodResultType
 
+
 __all__ = [
-    # ======================# NODE_BUILDER_FAILURE #======================#
+    # ======================# NODE__MODEL_BUILDER_FAILURE #======================#
     "NodeBuilderException",
 ]
 
-# ======================# NODE_BUILDER_FAILURE #======================#
-class NodeBuilderException(BuilderException):
+# ======================# NODE__MODEL_BUILDER_FAILURE #======================#
+class NodeBuilderException(ModelBuilderException):
     """
     Role:
         -   Error Tracing
@@ -39,10 +40,10 @@ class NodeBuilderException(BuilderException):
     Provides:
 
     Super Class:
-        BuilderException
+       ModelBuilderException
     """
     MSG = "NodeBuilder failed."
-    ERR_CODE = "NODE_BUILDER_FAILURE"
+    ERR_CODE = "NODE__MODEL_BUILDER_FAILURE"
     
     def __init__(
             self,

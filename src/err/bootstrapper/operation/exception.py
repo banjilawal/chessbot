@@ -13,6 +13,7 @@ from typing import Any, Optional
 from err import ChessException
 from result import MethodResultType
 
+
 __all__ = [
     # ======================# OPERATION_ERROR #======================#
     "OperationBootstrapperException",

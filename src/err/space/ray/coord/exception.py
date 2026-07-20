@@ -13,6 +13,7 @@ from typing import Any, Optional
 from err import RayException
 from result import MethodResultType
 
+
 __all__ = [
     # ======================# COORD_RAY_ERROR #======================#
     "CoordRayException",

@@ -1,7 +1,7 @@
-# src/err/builder/binder/node/exception.py
+# src/err/builder/model/binder/node/exception.py
 
 """
-Module: err.builder.binder.node.exception
+Module: err.builder.model.binder.node.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,18 +10,19 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import BuilderException
+from err import ModelBuilderException
 from result import MethodResultType
 
+
 __all__ = [
-    # ======================# NODE_BINDER_BUILDER_FAILURE #======================#
+    # ======================# NODE_BINDER__MODEL_BUILDER_FAILURE #======================#
     "NodeBinderBuilderException",
 ]
 
 from err import BinderBuilderException
 
 
-# ======================# NODE_BINDER_BUILDER_FAILURE #======================#
+# ======================# NODE_BINDER__MODEL_BUILDER_FAILURE #======================#
 class NodeBinderBuilderException(BinderBuilderException):
     """
     Role:
@@ -45,7 +46,7 @@ class NodeBinderBuilderException(BinderBuilderException):
         BinderBuilderException
     """
     MSG = "NodeBinderBuilder failed."
-    ERR_CODE = "NODE_BINDER_BUILDER_FAILURE"
+    ERR_CODE = "NODE_BINDER__MODEL_BUILDER_FAILURE"
     
     def __init__(
             self,

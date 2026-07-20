@@ -1,7 +1,7 @@
-# src/err/builder/board/exception.py
+# src/err/builder/model/board/exception.py
 
 """
-Module: err.builder.board.exception
+Module: err.builder.model.board.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -11,16 +11,17 @@ from __future__ import annotations
 from typing import Any, Optional
 
 
-from err import BuilderException
+from err import ModelBuilderException
 from result import MethodResultType
 
+
 __all__ = [
-    # ======================# BOARD_BUILDER_FAILURE #======================#
+    # ======================# BOARD__MODEL_BUILDER_FAILURE #======================#
     "BoardBuilderException",
 ]
 
-# ======================# BOARD_BUILDER_FAILURE #======================#
-class BoardBuilderException(BuilderException):
+# ======================# BOARD__MODEL_BUILDER_FAILURE #======================#
+class BoardBuilderException(ModelBuilderException):
     """
     Role:
         -   Error Tracing
@@ -41,10 +42,10 @@ class BoardBuilderException(BuilderException):
     Provides:
 
     Super Class:
-        BuilderException
+       ModelBuilderException
     """
     MSG = "BoardBuilder failed."
-    ERR_CODE = "BOARD_BUILDER_FAILURE"
+    ERR_CODE = "BOARD__MODEL_BUILDER_FAILURE"
     
     def __init__(
             self,

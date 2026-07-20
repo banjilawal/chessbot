@@ -13,6 +13,7 @@ from typing import Any, Optional
 from err import ContainerEmptyException
 from result import MethodResultType
 
+
 __all__ = [
     # ======================# TUPLE_EMPTY_ERROR #======================#
     "TupleEmptyException",

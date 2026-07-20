@@ -13,6 +13,7 @@ from typing import Any, Optional
 from err import ModelNullException
 from result import MethodResultType
 
+
 __all__ = [
     # ======================# STATE_MODEL_NULL_ERROR #======================#
     "StateModelNullException",

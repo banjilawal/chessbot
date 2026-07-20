@@ -13,6 +13,7 @@ from typing import Any, Optional
 from err import ManeuverBasisValidatorException
 from result import MethodResultType
 
+
 __all__ = [
     # ======================# DEVELOPED_MANEUVER_BASIS_VALIDATOR_FAILURE #======================#
     "DevelopedManeuverBasisValidatorException",

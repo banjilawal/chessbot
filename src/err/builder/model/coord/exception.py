@@ -1,7 +1,7 @@
-# src/err/builder/coord/exception.py
+# src/err/builder/model/coord/exception.py
 
 """
-Module: err.builder.coord.exception
+Module: err.builder.model.coord.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,16 +10,17 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import BuilderException
+from err import ModelBuilderException
 from result import MethodResultType
 
+
 __all__ = [
-    # ======================# COORD_BUILDER_FAILURE #======================#
+    # ======================# COORD__MODEL_BUILDER_FAILURE #======================#
     "CoordBuilderException",
 ]
 
-# ======================# COORD_BUILDER_FAILURE #======================#
-class CoordBuilderException(BuilderException):
+# ======================# COORD__MODEL_BUILDER_FAILURE #======================#
+class CoordBuilderException(ModelBuilderException):
     """
     Role:
         -   Error Tracing
@@ -40,10 +41,10 @@ class CoordBuilderException(BuilderException):
     Provides:
 
     Super Class:
-        BuilderException
+       ModelBuilderException
     """
     MSG = "CoordBuilder failed."
-    ERR_CODE = "COORD_BUILDER_FAILURE"
+    ERR_CODE = "COORD__MODEL_BUILDER_FAILURE"
     
     def __init__(
             self,

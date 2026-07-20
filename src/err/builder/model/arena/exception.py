@@ -1,7 +1,7 @@
-# src/err/builder/arena/exception.py
+# src/err/builder/model/arena/exception.py
 
 """
-Module: err.builder.arena.exception
+Module: err.builder.model.arena.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,16 +10,17 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import BuilderException
+from err import ModelBuilderException
 from result import MethodResultType
 
+
 __all__ = [
-    # ======================# ARENA_BUILDER_FAILURE #======================#
+    # ======================# ARENA__MODEL_BUILDER_FAILURE #======================#
     "ArenaBuilderException",
 ]
 
-# ======================# ARENA_BUILDER_FAILURE #======================#
-class ArenaBuilderException(BuilderException):
+# ======================# ARENA__MODEL_BUILDER_FAILURE #======================#
+class ArenaBuilderException(ModelBuilderException):
     """
     Role:
         -   Error Tracing
@@ -40,10 +41,10 @@ class ArenaBuilderException(BuilderException):
     Provides:
 
     Super Class:
-        BuilderException
+       ModelBuilderException
     """
     MSG = "ArenaBuilder failed."
-    ERR_CODE = "ARENA_BUILDER_FAILURE"
+    ERR_CODE = "ARENA__MODEL_BUILDER_FAILURE"
     
     def __init__(
             self,

@@ -13,6 +13,7 @@ from typing import Any, Optional
 from err import PermitterException
 from result import MethodResultType
 
+
 __all__ = [
     # ======================# PUSH_PERMISSION_DENIAL #======================#
     "PusherPermitterException",

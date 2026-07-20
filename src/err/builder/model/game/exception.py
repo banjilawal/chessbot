@@ -1,7 +1,7 @@
-# src/err/builder/game/exception.py
+# src/err/builder/model/game/exception.py
 
 """
-Module: err.builder.game.exception
+Module: err.builder.model.game.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,16 +10,17 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import BuilderException
+from err import ModelBuilderException
 from result import MethodResultType
 
+
 __all__ = [
-    # ======================# GAME_BUILDER_FAILURE #======================#
+    # ======================# GAME__MODEL_BUILDER_FAILURE #======================#
     "GameBuilderException",
 ]
 
-# ======================# GAME_BUILDER_FAILURE #======================#
-class GameBuilderException(BuilderException):
+# ======================# GAME__MODEL_BUILDER_FAILURE #======================#
+class GameBuilderException(ModelBuilderException):
     """
     Role:
         -   Error Tracing
@@ -40,10 +41,10 @@ class GameBuilderException(BuilderException):
     Provides:
 
     Super Class:
-        BuilderException
+       ModelBuilderException
     """
     MSG = "GameBuilder failed."
-    ERR_CODE = "GAME_BUILDER_FAILURE"
+    ERR_CODE = "GAME__MODEL_BUILDER_FAILURE"
     
     def __init__(
             self,

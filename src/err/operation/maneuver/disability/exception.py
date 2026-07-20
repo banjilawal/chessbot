@@ -13,6 +13,7 @@ from typing import Any, Optional
 from err import ManeuverException
 from result import MethodResultType
 
+
 __all__ = [
     # ======================# MANEUVERING_DISABLED_TOKEN_ERROR #======================#
     "DisabledTokenManeuverException",

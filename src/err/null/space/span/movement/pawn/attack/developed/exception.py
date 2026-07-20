@@ -13,6 +13,7 @@ from typing import Any, Optional
 from err import AttackMovementSetNullException
 from result import MethodResultType
 
+
 __all__ = [
     # ======================# DEVELOPED_ATTACK_MOVEMENT_NULL_ERROR #======================#
     "DevelopedAttackMovementSetNullException",

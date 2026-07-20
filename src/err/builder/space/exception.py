@@ -10,21 +10,22 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import ChessException
+from err import BuilderException
 from result import MethodResultType
 
+
 __all__ = [
-    # ======================# SPACE_ERROR #======================#
+    # ======================# SPACE_BUILDER_FAILURE #======================#
     "SpaceBuilderException",
 ]
-# ======================# SPACE_ERROR #======================#
-class SpaceBuilderException(ChessException):
+# ======================# SPACE_BUILDER_FAILURE #======================#
+class SpaceBuilderException(BuilderException):
     """
     Role:
         -   Failure Tracing
 
     Responsibilities:
-        1.  Indicate that an error occurred in a Space instance.
+        1.  Indicate that a SpaceBuilder failed.
 
     Attributes:
         msg: str
@@ -39,10 +40,10 @@ class SpaceBuilderException(ChessException):
     Provides:
 
     Super Class:
-        ChessException
+        BuilderException
     """
-    MSG = "Space computation failure."
-    ERR_CODE = "SPACE_ERROR"
+    MSG = "SpaceBuilder failed."
+    ERR_CODE = "SPACE_BUILDER_FAILURE"
     
     def __init__(
             self,

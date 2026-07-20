@@ -13,6 +13,7 @@ from typing import Any, Optional
 from err import StateException
 from result import MethodResultType
 
+
 __all__ = [
     # ======================# PUSH _FAILURE #======================#
     "Push Exception",

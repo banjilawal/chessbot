@@ -13,6 +13,7 @@ from typing import Any, Optional
 from err import SpaceNullException
 from result import MethodResultType
 
+
 __all__ = [
     # ======================# MODEL_SPACE_NULL_ERROR #======================#
     "SpanNullException",

@@ -13,6 +13,7 @@ from typing import Any, Optional
 from err import StateModelNullException
 from result import MethodResultType
 
+
 __all__ = [
     # ======================# EDGE_NULL_ERROR #======================#
     "EdgeNullException",

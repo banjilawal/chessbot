@@ -1,13 +1,13 @@
-# src/err/builder/board/__init__.py
+# src/err/builder/model/board/__init__.py
 
 """
-Module: err.builder.state.board.__init__
+Module: err.builder.model.state.board.__init__
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
 """
 
-# ============ ERR.BUILDER.STATE.BOARD PACKAGE ===========#
+# ============ ERR.BUILDER.MODEL.STATE.BOARD PACKAGE ===========#
 
 # Packages
 

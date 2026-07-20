@@ -13,6 +13,7 @@ from typing import Any, Optional
 from err import ManeuverBasisNullException
 from result import MethodResultType
 
+
 __all__ = [
     # ======================# OPENING_MANEUVER_BASIS_NULL_ERROR #======================#
     "OpeningManeuverBasisNullException",

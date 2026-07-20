@@ -15,18 +15,18 @@ from result import MethodResultType
 
 
 __all__ = [
-    # ======================# WEST_AXIS_BUILDER_FAILURE #======================#
-    "WestAxisBuilderException",
+    # ======================# SOUTH_AXIS_BUILDER_FAILURE #======================#
+    "SouthAxisBuilderException",
 ]
 
-# ======================# WEST_AXIS_BUILDER_FAILURE #======================#
-class WestAxisBuilderException(AxisBuilderException):
+# ======================# SOUTH_AXIS_BUILDER_FAILURE #======================#
+class SouthAxisBuilderException(AxisBuilderException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a WestAxisSpaceBuilder failed.
+        1.  Indicate that a SouthAxisSpaceBuilder failed.
 
     Attributes:
         var: Optional[str]
@@ -42,8 +42,8 @@ class WestAxisBuilderException(AxisBuilderException):
     Super Class:
         AxisBuilderException
     """
-    MSG = "WestAxisBuilder failed."
-    ERR_CODE = "WEST_AXIS_BUILDER_FAILURE"
+    MSG = "SouthAxisBuilder failed."
+    ERR_CODE = "SOUTH_AXIS_BUILDER_FAILURE"
     
     def __init__(
             self,

@@ -13,6 +13,7 @@ from typing import Any, Optional
 from err import LinearSpaceException
 from result import MethodResultType
 
+
 __all__ = [
     # ======================# LINEAR_AXIS_SPACE_ERROR #======================#
     "AxisException",

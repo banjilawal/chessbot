@@ -13,6 +13,7 @@ from typing import Any, Optional
 from err import BinderEmptyException
 from result import MethodResultType
 
+
 __all__ = [
     # ======================# ARENA_PLAYER_BINDER_EMPTY_ERROR #======================#
     "ArenaPlayerBinderEmptyException",

@@ -1,7 +1,7 @@
-# src/err/builder/binder/team/exception.py
+# src/err/builder/model/binder/team/exception.py
 
 """
-Module: err.builder.binder.team.exception
+Module: err.builder.model.binder.team.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,18 +10,19 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import BuilderException
+from err import ModelBuilderException
 from result import MethodResultType
 
+
 __all__ = [
-    # ======================# TEAM_BINDER_BUILDER_FAILURE #======================#
+    # ======================# TEAM_BINDER__MODEL_BUILDER_FAILURE #======================#
     "TeamBinderBuilderException",
 ]
 
 from err import BinderBuilderException
 
 
-# ======================# TEAM_BINDER_BUILDER_FAILURE #======================#
+# ======================# TEAM_BINDER__MODEL_BUILDER_FAILURE #======================#
 class TeamBinderBuilderException(BinderBuilderException):
     """
     Role:
@@ -45,7 +46,7 @@ class TeamBinderBuilderException(BinderBuilderException):
         BinderBuilderException
     """
     MSG = "TeamBinderBuilder failed."
-    ERR_CODE = "TEAM_BINDER_BUILDER_FAILURE"
+    ERR_CODE = "TEAM_BINDER__MODEL_BUILDER_FAILURE"
     
     def __init__(
             self,

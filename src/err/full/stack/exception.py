@@ -13,6 +13,7 @@ from typing import Any, Optional
 from err import CapacityFullException
 from result import MethodResultType
 
+
 __all__ = [
     # ======================# STACK_FULL_ERROR #======================#
     "StackFullException",

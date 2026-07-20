@@ -13,6 +13,7 @@ from typing import Any, Optional
 from err import EmptyException
 from result import MethodResultType
 
+
 __all__ = [
     # ======================# REGISTER_EMPTY_ERROR #======================#
     "RegisterEmptyException",

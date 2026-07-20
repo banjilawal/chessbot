@@ -13,6 +13,7 @@ from typing import Any, Optional
 from err import RelationNullException
 from result import MethodResultType
 
+
 __all__ = [
     # ======================# TOKEN_ORIGIN_RELATION_NULL_ERROR #======================#
     "TokenOriginRelationNullException",

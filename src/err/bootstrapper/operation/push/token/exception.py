@@ -13,6 +13,7 @@ from typing import Any, Optional
 from err import PusherException
 from result import MethodResultType
 
+
 __all__ = [
     # ======================# TOKEN_STACK_PUSH_FAILURE #======================#
     "TokenPusherException",

@@ -13,6 +13,7 @@ from typing import Any, Optional
 from err import LinearSpaceEmptyException
 from result import MethodResultType
 
+
 __all__ = [
     # ======================# EMPTY_LINE_SEGMENT_ENDPOINTS_ERROR #======================#
     "LineSegmentEmptyException",

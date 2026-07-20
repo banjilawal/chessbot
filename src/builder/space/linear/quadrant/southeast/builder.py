@@ -12,12 +12,12 @@ from __future__ import annotations
 from typing import Optional, cast
 
 from builder import Builder, SoutheastQuadrantEndpointBuilder
+from err import SoutheastQuadrantBuilderException
+from math import SoutheastQuadrantStepper
 from model import Vector
 from register import VectorRegister
-from result import BuildResult
-
-from space import EastAxis, SoutheastQuadrant, SoutheastQuadrantStepper
-
+from result import BuildResult, MethodResultType
+from space import SoutheastQuadrant
 from util import LoggingLevelRouter
 from validator import VectorValidator
 
@@ -62,7 +62,7 @@ class SoutheastQuadrantBuilder(Builder[SoutheastQuadrant]):
         self._vector_validator = vector_validator
      
     @LoggingLevelRouter.monitor
-    def execute(self) -> BuildResult[EastAxis]:
+    def execute(self) -> BuildResult[SoutheastQuadrant]:
         method = f"{self.__class__.__name__}.execute"
         
         # Handle the case that, the origin is flagged unsafe.
@@ -73,7 +73,7 @@ class SoutheastQuadrantBuilder(Builder[SoutheastQuadrant]):
                 # Send the exception in the result.
                 return BuildResult.failure(
                     SoutheastQuadrantBuilderException(
-                        cls_mth=method,
+                        cls_mthd=method,
                         cls_name=self.__class__.__name__,
                         msg=SoutheastQuadrantBuilderException.MSG,
                         err_code=SoutheastQuadrantBuilderException.ERR_CODE,
@@ -92,7 +92,7 @@ class SoutheastQuadrantBuilder(Builder[SoutheastQuadrant]):
             # Send the exception in the result.
             return BuildResult.failure(
                 SoutheastQuadrantBuilderException(
-                    cls_mth=method,
+                    cls_mthd=method,
                     cls_name=self.__class__.__name__,
                     msg=SoutheastQuadrantBuilderException.MSG,
                     err_code=SoutheastQuadrantBuilderException.ERR_CODE,

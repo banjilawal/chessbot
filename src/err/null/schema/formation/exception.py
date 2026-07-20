@@ -13,6 +13,7 @@ from typing import Any, Optional
 from err import SchemaNullException
 from result import MethodResultType
 
+
 __all__ = [
     # ======================# FORMATION_NULL_ERROR #======================#
     "FormationNullException",

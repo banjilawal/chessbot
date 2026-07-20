@@ -13,6 +13,7 @@ from typing import Any, Optional
 from err import ValidatorException
 from result import MethodResultType
 
+
 __all__ = [
     # ======================# PARTIAL_TOKEN_DESTINATION_RELATION_ERROR #======================#
     "PartialTokenDestinationRelationException",

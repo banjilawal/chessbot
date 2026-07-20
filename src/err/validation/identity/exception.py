@@ -13,6 +13,7 @@ from typing import Any, Optional
 from err import ValidatorException
 from result import MethodResultType
 
+
 __all__ = [
     # ======================# IDENTITY_VALIDATOR_FAILURE #======================#
     "IdentityValidatorException",

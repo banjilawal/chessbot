@@ -13,6 +13,7 @@ from typing import Any, Optional
 from err import RegisterEntityNullException
 from result import MethodResultType
 
+
 __all__ = [
     # ======================# IDENTITY_REGISTER_CARRIER_NULL_ERROR #======================#
     "IdentityRegisterEntityNullException",

@@ -13,6 +13,7 @@ from typing import Any, Optional
 from err import LinearSpaceNullException
 from result import MethodResultType
 
+
 __all__ = [
     # ======================# AXIS_NULL_ERROR #======================#
     "AxisNullException",

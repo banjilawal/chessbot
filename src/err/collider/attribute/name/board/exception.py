@@ -13,6 +13,7 @@ from typing import Any, Optional
 from err import NameCollisionException
 from result import MethodResultType
 
+
 __all__ = [
     # ======================# BOARD_NAME_COLLISION_ERROR #======================#
     "BoardNameCollisionException",

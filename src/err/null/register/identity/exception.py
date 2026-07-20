@@ -11,7 +11,8 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from err import RegisterNullException
-from result import methodResultType
+from result import MethodResultType
+
 
 __all__ = [
     # ======================# IDENTITY_REGISTER_NULL_ERROR #======================#

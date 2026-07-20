@@ -13,6 +13,7 @@ from typing import Any, Optional
 from err import MicroserviceException
 from result import MethodResultType
 
+
 __all__ = [
     # ======================# PATH_MICROSERVICE_FAILURE #======================#
     "PathMicroserviceException",

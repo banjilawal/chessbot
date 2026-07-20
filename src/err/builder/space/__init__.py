@@ -10,12 +10,8 @@ version: 1.0.1
 # ============ ERR.BUILDER.SPACE PACKAGE ===========#
 
 # Packages
-from .conversion import *
 from .linear import *
-from .ray import *
-from .span import *
-from .target import *
-from .endpoint import *
+
 
 # Modules
 from .exception import SpaceBuilderException

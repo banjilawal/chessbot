@@ -13,6 +13,7 @@ from typing import Any, Optional
 from err import ModelValidatorException
 from result import MethodResultType
 
+
 __all__ = [
     # ======================# SCALAR_VALIDATOR_FAILURE #======================#
     "ScalarValidatorException",

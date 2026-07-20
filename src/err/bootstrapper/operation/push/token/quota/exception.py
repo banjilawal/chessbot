@@ -13,6 +13,7 @@ from typing import Any, Optional
 from err import TokenPusherException
 from result import MethodResultType
 
+
 __all__ = [
     # ======================# NO_OPENINGS_FOR_RANK_EXCEPTION #======================#
     "RankQuotaFullException",

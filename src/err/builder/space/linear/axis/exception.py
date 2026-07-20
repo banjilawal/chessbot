@@ -13,19 +13,20 @@ from typing import Any, Optional
 from err import LinearSpaceBuilderException
 from result import MethodResultType
 
+
 __all__ = [
-    # ======================# LINEAR_AXIS_SPACE_BUILDER_FAILURE #======================#
-    "AxisException",
+    # ======================# AXIS_SPACE_BUILDER_FAILURE #======================#
+    "AxisBuilderException",
 ]
 
-# ======================# LINEAR_AXIS_SPACE_BUILDER_FAILURE #======================#
-class AxisException(LinearSpaceBuilderException):
+# ======================# AXIS_SPACE_BUILDER_FAILURE #======================#
+class AxisBuilderException(LinearSpaceBuilderException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an Axis instance encountered an error.
+        1.  Indicate that an AxisSpaceBuilder failed.
 
     Attributes:
         var: Optional[str]
@@ -41,7 +42,7 @@ class AxisException(LinearSpaceBuilderException):
     Super Class:
         LinearSpaceBuilderException
     """
-    MSG = "An error occurred in an AxisLinearSpace."
+    MSG = "AxisLinearSpaceBuilder failed."
     ERR_CODE = "AXIS_LINEAR_SPACE_BUILDER_FAILURE"
     
     def __init__(

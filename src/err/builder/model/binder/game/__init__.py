@@ -1,13 +1,13 @@
-# src/err/builder/binder/game/__init__.py
+# src/err/builder/model/binder/game/__init__.py
 
 """
-Module: err.builder.binder.game.__init__
+Module: err.builder.model.binder.game.__init__
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
 """
 
-# =========== ERR.builder.BINDER.GAME PACKAGE ===========#
+# =========== ERR.builder.model.BINDER.GAME PACKAGE ===========#
 
 # Packages
 

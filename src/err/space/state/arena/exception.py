@@ -13,6 +13,7 @@ from typing import Any, Optional
 from err import ModelException
 from result import MethodResultType
 
+
 __all__ = [
     # ======================# ARENA_ERROR #======================#
     "ArenaException",

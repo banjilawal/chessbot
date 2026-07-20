@@ -13,6 +13,7 @@ from typing import Any, Optional
 from err import EmptyException
 from result import MethodResultType
 
+
 __all__ = [
     # ======================# QUERY_STACK_EMPTY_ERROR #======================#
     "QueryStackEmptyException",

@@ -1,7 +1,7 @@
-# src/err/builder/exception.py
+# src/err/builder/model/exception.py
 
 """
-Module: err.builder.exception
+Module: err.builder.model.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,17 +10,18 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import ChessException
+from err import BuilderException
 from result import MethodResultType
 
+
 __all__ = [
-    # ======================# BUILDER_FAILURE #======================#
-    "BuilderException"
+    # ======================# _MODEL_BUILDER_FAILURE #======================#
+    "ModelBuilderException"
 ]
 
 
-# ======================# BUILDER_FAILURE #======================#
-class BuilderException(ChessException):
+# ======================# _MODEL_BUILDER_FAILURE #======================#
+class ModelBuilderException(BuilderException):
     """
     Role:
         -   Failure Tracing
@@ -41,10 +42,10 @@ class BuilderException(ChessException):
     Provides:
 
     Super Class:
-        ChessException
+        BuilderException
     """
     MSG = "Builder failed"
-    ERR_CODE = "BUILDER_FAILURE"
+    ERR_CODE = "_MODEL_BUILDER_FAILURE"
     MTHD_RSLT_TYPE = MethodResultType.BUILDER_RESULT
     
     def __init__(

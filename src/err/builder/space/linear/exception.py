@@ -13,6 +13,7 @@ from typing import Any, Optional
 from err import SpaceBuilderException
 from result import MethodResultType
 
+
 __all__ = [
     # ======================# LINEAR_SPACE_BUILDER_FAILURE #======================#
     "LinearSpaceBuilderException",
@@ -24,7 +25,7 @@ class LinearSpaceBuilderException(SpaceBuilderException):
         -   Failure Tracing
 
     Responsibilities:
-        1.  Indicate that a LinearSpace instance encountered an error.
+        1.  Indicate that a LinearSpaceBuilder failed.
 
     Attributes:
         msg: str
@@ -41,7 +42,7 @@ class LinearSpaceBuilderException(SpaceBuilderException):
     Super Class:
         SpaceBuilderException
     """
-    MSG = "An error occurred in a LinearSpace."
+    MSG = "An error occurred in a LinearSpaceBuilder failed."
     ERR_CODE = "LINEAR_SPACE_BUILDER_FAILURE"
     
     def __init__(

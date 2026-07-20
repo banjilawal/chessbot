@@ -13,6 +13,7 @@ from typing import Any, Optional
 from err import TokenOperationBootstrapperException
 from result import MethodResultType
 
+
 __all__ = [
     # ======================# PAWN_PROMOTION_FAILURE #======================#
     "PawnPromoterException",

@@ -13,6 +13,7 @@ from typing import Any, Optional
 from err import AssemblyPrimerException
 from result import MethodResultType
 
+
 __all__ = [
     # ======================# FORMATION_ASSEMBLY_PRIMER_FAILURE #======================#
     "FormationAssemblyPrimerException",

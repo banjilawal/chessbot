@@ -12,6 +12,7 @@ from typing import Any, Optional
 from err import BuilderBootstrapperException
 from result import MethodResultType
 
+
 __all__ = [
     # ======================# NODE_BUILDER_BOOTSTRAPPER_FAILURE #======================#
     "NodeBuilderBootstrapperException",

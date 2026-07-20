@@ -1,7 +1,7 @@
-# src/err/builder/edge/exception.py
+# src/err/builder/model/edge/exception.py
 
 """
-Module: err.builder.edge.exception
+Module: err.builder.model.edge.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,16 +10,17 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import BuilderException
+from err import ModelBuilderException
 from result import MethodResultType
 
+
 __all__ = [
-    # ======================# EDGE_BUILDER_FAILURE #======================#
+    # ======================# EDGE__MODEL_BUILDER_FAILURE #======================#
     "EdgeBuilderException",
 ]
 
-# ======================# EDGE_BUILDER_FAILURE #======================#
-class EdgeBuilderException(BuilderException):
+# ======================# EDGE__MODEL_BUILDER_FAILURE #======================#
+class EdgeBuilderException(ModelBuilderException):
     """
     Role:
         -   Error Tracing
@@ -40,10 +41,10 @@ class EdgeBuilderException(BuilderException):
     Provides:
 
     Super Class:
-        BuilderException
+       ModelBuilderException
     """
     MSG = "EdgeBuilder failed."
-    ERR_CODE = "EDGE_BUILDER_FAILURE"
+    ERR_CODE = "EDGE__MODEL_BUILDER_FAILURE"
     
     def __init__(
             self,

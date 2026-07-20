@@ -13,6 +13,7 @@ from typing import Any, Optional
 from err import LineSegmentEmptyException
 from result import MethodResultType
 
+
 __all__ = [
     # ======================# LINE_SEGEMENT_TERMINUS_EMPTY_ERROR #======================#
     "LineSegmentTerminusEmptyException",

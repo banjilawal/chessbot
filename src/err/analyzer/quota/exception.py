@@ -13,6 +13,7 @@ from typing import Any, Optional
 from err import AnalyzerException
 from result import MethodResultType
 
+
 __all__ = [
     # ======================# RANK_QUOTA_ANALYZER_ERROR #======================#
     "RankQuotaAnalyzerException",

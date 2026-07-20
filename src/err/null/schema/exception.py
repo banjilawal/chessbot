@@ -13,6 +13,7 @@ from typing import Any, Optional
 from err import NullException
 from result import MethodResultType
 
+
 __all__ = [
     # ======================# SCHEMA_NULL_ERROR #======================#
     "SchemaNullException",

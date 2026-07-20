@@ -13,6 +13,7 @@ from typing import Any, Optional
 from err import DetectorException
 from result import MethodResultType
 
+
 __all__ = [
     # ======================# HOME_SQUARE_DETECTOR_FAILURE #======================#
     "HomeSquareDetectorException",

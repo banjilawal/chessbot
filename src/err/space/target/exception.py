@@ -13,6 +13,7 @@ from typing import Any, Optional
 from err import SpanException
 from result import MethodResultType
 
+
 __all__ = [
     # ======================# TARGET_VECTOR_SET_ERROR #======================#
     "TargetVectorSetException",

@@ -13,6 +13,7 @@ from typing import Any, Optional
 from err import PawnBasisNullException
 from result import MethodResultType
 
+
 __all__ = [
     # ======================# PAWN_ATTACK_BASIS_NULL_ERROR #======================#
     "AttackBasisNullException",

@@ -13,6 +13,7 @@ from typing import Any, Optional
 from err import MicroserviceException
 from result import MethodResultType
 
+
 __all__ = [
     # ======================# TOKEN_ORIGIN_CERTIFIER_FAILURE #======================#
     "TokenOriginCertifierException",

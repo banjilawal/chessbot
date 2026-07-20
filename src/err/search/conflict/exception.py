@@ -13,6 +13,7 @@ from typing import Any, Optional
 from err import SearcherException
 from result import MethodResultType
 
+
 __all__ = [
     # ======================# ITEM_SEARCH_CONFLICTING_HITS_ERROR #======================#
     "SearchHitConflictException",

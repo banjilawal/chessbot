@@ -13,6 +13,7 @@ from typing import Any, Optional
 from err import TokenCollisionException
 from result import MethodResultType
 
+
 __all__ = [
     # ======================# HOME_SQUARE_COLLISION_ERROR #======================#
     "OpeningSquareCollisionException",

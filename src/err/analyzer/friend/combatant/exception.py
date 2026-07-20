@@ -13,6 +13,7 @@ from typing import Any, Optional
 from err import AnalyzerException
 from result import MethodResultType
 
+
 __all__ = [
     # ======================# ENEMY_COMBATANT_ANALYZER_FAILURE #======================#
     "EnemyCombatantAnalyzerException",

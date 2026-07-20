@@ -1,7 +1,7 @@
-# src/err/builder/binder/arena/exception.py
+# src/err/builder/model/binder/arena/exception.py
 
 """
-Module: err.builder.binder.arena.exception
+Module: err.builder.model.binder.arena.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,18 +10,19 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import BuilderException
+from err import ModelBuilderException
 from result import MethodResultType
 
+
 __all__ = [
-    # ======================# ARENA_BINDER_BUILDER_FAILURE #======================#
+    # ======================# ARENA_BINDER__MODEL_BUILDER_FAILURE #======================#
     "ArenaBinderBuilderException",
 ]
 
 from err import BinderBuilderException
 
 
-# ======================# ARENA_BINDER_BUILDER_FAILURE #======================#
+# ======================# ARENA_BINDER__MODEL_BUILDER_FAILURE #======================#
 class ArenaBinderBuilderException(BinderBuilderException):
     """
     Role:
@@ -45,7 +46,7 @@ class ArenaBinderBuilderException(BinderBuilderException):
         BinderBuilderException
     """
     MSG = "ArenaBinderBuilder failed."
-    ERR_CODE = "ARENA_BINDER_BUILDER_FAILURE"
+    ERR_CODE = "ARENA_BINDER__MODEL_BUILDER_FAILURE"
     
     def __init__(
             self,

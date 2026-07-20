@@ -14,6 +14,7 @@ from typing import Any, Optional
 from err import RegisterBuilderException
 from result import MethodResultType
 
+
 __all__ = [
     # ======================# CARTESIAN_REGISTER_BUILDER_FAILURE #======================#
     "CartesianRegisterBuilderException",

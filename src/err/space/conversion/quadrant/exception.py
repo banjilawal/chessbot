@@ -13,6 +13,7 @@ from typing import Any, Optional
 from err import ConversionSpaceException
 from result import MethodResultType
 
+
 __all__ = [
     # ======================# CONVERSION_QUADRANT_SPACE_ERROR #======================#
     "QuadrantException",

@@ -1,15 +1,25 @@
+# src/space/linear/axis/south/builder.py
+
+"""
+Module: space.linear.axis.south.builder
+Author: Banji Lawal
+Created: 2026-04-03
+version: 1.0.1
+"""
+
+from __future__ import annotations
+
 from typing import Optional, cast
 
-from builder import Builder
+from builder import Builder, SouthAxisEndpointBuilder
+from err import SouthAxisBuilderException
+from math import SouthAxisStepper
 from model import Vector
 from register import VectorRegister
-from result import BuildResult
-
-from space import SouthAxis, SouthAxisStepper
-
+from result import BuildResult, MethodResultType
+from space import SouthAxis
 from util import LoggingLevelRouter
 from validator import VectorValidator
-
 
 class SouthAxisBuilder(Builder[SouthAxis]):
     """
@@ -62,7 +72,7 @@ class SouthAxisBuilder(Builder[SouthAxis]):
                 # Send the exception in the result.
                 return BuildResult.failure(
                     SouthAxisBuilderException(
-                        cls_mth=method,
+                        cls_mthd=method,
                         cls_name=self.__class__.__name__,
                         msg=SouthAxisBuilderException.MSG,
                         err_code=SouthAxisBuilderException.ERR_CODE,
@@ -81,7 +91,7 @@ class SouthAxisBuilder(Builder[SouthAxis]):
             # Send the exception in the result.
             return BuildResult.failure(
                 SouthAxisBuilderException(
-                    cls_mth=method,
+                    cls_mthd=method,
                     cls_name=self.__class__.__name__,
                     msg=SouthAxisBuilderException.MSG,
                     err_code=SouthAxisBuilderException.ERR_CODE,

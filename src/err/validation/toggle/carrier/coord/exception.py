@@ -14,6 +14,7 @@ from typing import Any, Optional
 from err import EntityCarrierValidatorException
 from result import MethodResultType
 
+
 __all__ = [
     # ======================# COORD_CARRIER_VALIDATOR_FAILURE #======================#
     "CoordCarrierValidatorException",

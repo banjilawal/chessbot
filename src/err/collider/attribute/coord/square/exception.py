@@ -13,6 +13,7 @@ from typing import Any, Optional
 from err import CoordCollisionException
 from result import MethodResultType
 
+
 __all__ = [
     # ======================# SQUARE_COORD_COLLISION_ERROR #======================#
     "SquareCoordCollisionException",

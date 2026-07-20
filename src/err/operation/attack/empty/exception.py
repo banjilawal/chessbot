@@ -13,6 +13,7 @@ from typing import Any, Optional
 from err import AttackException
 from result import MethodResultType
 
+
 __all__ = [
     # ======================# EMPTY_ATTACK_DESTINATION_ERROR #======================#
     "AttackDestinationEmptyException",

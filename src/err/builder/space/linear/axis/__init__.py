@@ -10,6 +10,10 @@ version: 1.0.1
 # ============ ERR.BUILDER.SPACE.LINEAR.AXIS PACKAGE ===========#
 
 # Packages
+from .east import *
+from .north import *
+from .south import *
+from .west import *
 
 # Modules
-from .exception import AxisException
+from .exception import AxisBuilderException

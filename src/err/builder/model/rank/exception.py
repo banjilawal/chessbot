@@ -1,7 +1,7 @@
-# src/err/builder/rank/exception.py
+# src/err/builder/model/rank/exception.py
 
 """
-Module: err.builder.rank.exception
+Module: err.builder.model.rank.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,16 +10,17 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import BuilderException
+from err import ModelBuilderException
 from result import MethodResultType
 
+
 __all__ = [
-    # ======================# RANK_BUILDER_FAILURE #======================#
+    # ======================# RANK__MODEL_BUILDER_FAILURE #======================#
     "RankBuilderException",
 ]
 
-# ======================# RANK_BUILDER_FAILURE #======================#
-class RankBuilderException(BuilderException):
+# ======================# RANK__MODEL_BUILDER_FAILURE #======================#
+class RankBuilderException(ModelBuilderException):
     """
     Role:
         -   Error Tracing
@@ -40,10 +41,10 @@ class RankBuilderException(BuilderException):
     Provides:
 
     Super Class:
-        BuilderException
+       ModelBuilderException
     """
     MSG = "RankBuilder failed."
-    ERR_CODE = "RANK_BUILDER_FAILURE"
+    ERR_CODE = "RANK__MODEL_BUILDER_FAILURE"
     
     def __init__(
             self,

@@ -13,6 +13,7 @@ from typing import Any, Optional
 from err import RegisterException
 from result import MethodResultType
 
+
 __all__ = [
     # ======================# IDENTITY_REGISTER_ERROR #======================#
     "IdentityRegisterException",

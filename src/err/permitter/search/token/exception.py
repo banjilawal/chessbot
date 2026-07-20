@@ -13,6 +13,7 @@ from typing import Any, Optional
 from err import SearcherPermitterException
 from result import MethodResultType
 
+
 __all__ = [
     # ======================# TOKEN_SEARCH_PERMISSION_DENIAL #======================#
     "TokenSearchPermitterException",

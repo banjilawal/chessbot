@@ -12,6 +12,7 @@ from typing import Any, Optional
 from err import AssemblyPrimerException
 from result import MethodResultType
 
+
 __all__ = [
     # ======================# PRIMER_NODE_ASSEMBLY_ #======================#
     "PrimingNodeAssemblyException",

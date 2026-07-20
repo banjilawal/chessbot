@@ -13,6 +13,7 @@ from typing import Any, Optional
 from err import TargetVectorSetException
 from result import MethodResultType
 
+
 __all__ = [
     # ======================# LINEAR_TARGET_SET_ERROR #======================#
     "LinearTargetSetException",

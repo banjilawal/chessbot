@@ -13,6 +13,7 @@ from typing import Any, Optional
 from err import ColliderException
 from result import MethodResultType
 
+
 __all__ = [
     # ======================# ATTRIBUTE_COLLISION_ERROR #======================#
     "AttributeCollisionException",

@@ -13,6 +13,7 @@ from typing import Any, Optional
 from err import StackFullException
 from result import MethodResultType
 
+
 __all__ = [
     # ======================# EDGE_STACK_FULL_ERROR #======================#
     "EdgeStackFullException",

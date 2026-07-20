@@ -13,6 +13,7 @@ from typing import Any, Optional
 from err import ManeuverBasisEmptyException
 from result import MethodResultType
 
+
 __all__ = [
     # ======================# DEVELOPED_MANEUVER_BASIS_EMPTY_ERROR #======================#
     "DevelopedManeuverBasisEmptyException",

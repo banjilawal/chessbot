@@ -13,6 +13,7 @@ from typing import Any, Optional
 from err import LineSegmentNullException
 from result import MethodResultType
 
+
 __all__ = [
     # ======================# LINE_SEGEMENT_ORIGIN_NULL_ERROR #======================#
     "LineSegmentOriginNullException",

@@ -13,6 +13,7 @@ from typing import Any, Optional
 from err import TokenStateException
 from result import MethodResultType
 
+
 __all__ = [
     # ======================# TOKEN_OPENING_DEPLOYMENT_FAILURE #======================#
     "TokenDeploymentException",

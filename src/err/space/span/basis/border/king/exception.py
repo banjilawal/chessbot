@@ -13,6 +13,7 @@ from typing import Any, Optional
 from err import BasisSetBorderException
 from result import MethodResultType
 
+
 __all__ = [
     # ======================# KING_BASIS_SET_BORDER_ERROR #======================#
     "KingBasisSetBorderException",

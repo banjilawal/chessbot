@@ -14,6 +14,7 @@ from typing import Any, Optional
 from err import BuilderBootstrapperException
 from result import MethodResultType
 
+
 __all__ = [
     # ======================# BOARD_BUILDER_BOOTSTRAPPER_FAILURE #======================#
     "BoardBuilderBootstrapperException",

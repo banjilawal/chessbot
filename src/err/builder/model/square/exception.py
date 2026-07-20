@@ -1,7 +1,7 @@
-# src/err/builder/square/exception.py
+# src/err/builder/model/square/exception.py
 
 """
-Module: err.builder.square.exception
+Module: err.builder.model.square.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,16 +10,17 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import BuilderException
+from err import ModelBuilderException
 from result import MethodResultType
 
+
 __all__ = [
-    # ======================# SQUARE_BUILDER_FAILURE #======================#
+    # ======================# SQUARE__MODEL_BUILDER_FAILURE #======================#
     "SquareBuilderException",
 ]
 
-# ======================# SQUARE_BUILDER_FAILURE #======================#
-class SquareBuilderException(BuilderException):
+# ======================# SQUARE__MODEL_BUILDER_FAILURE #======================#
+class SquareBuilderException(ModelBuilderException):
     """
     Role:
         -   Error Tracing
@@ -40,10 +41,10 @@ class SquareBuilderException(BuilderException):
     Provides:
 
     Super Class:
-        BuilderException
+       ModelBuilderException
     """
     MSG = "SquareBuilder failed."
-    ERR_CODE = "SQUARE_BUILDER_FAILURE"
+    ERR_CODE = "SQUARE__MODEL_BUILDER_FAILURE"
     
     def __init__(
             self,

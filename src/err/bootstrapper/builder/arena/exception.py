@@ -13,6 +13,7 @@ from typing import Any, Optional
 from err import BuilderBootstrapperException
 from result import MethodResultType
 
+
 __all__ = [
     # ======================# ARENA_BUILDER_BOOTSTRAPPER_FAILURE #======================#
     "ArenaBuilderBootstrapperException",

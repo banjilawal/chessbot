@@ -13,6 +13,7 @@ from typing import Any, Optional
 from err import BuilderBootstrapperException
 from result import MethodResultType
 
+
 __all__ = [
     # ======================# VECTOR_BUILDER_BOOTSTRAPPER_FAILURE #======================#
     "VectorBuilderBootstrapperException",

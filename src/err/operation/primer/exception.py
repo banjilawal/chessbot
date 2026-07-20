@@ -13,6 +13,7 @@ from typing import Any, Optional
 from err import OperationException
 from result import MethodResultType
 
+
 __all__ = [
     # ======================# PRIMING_FAILURE #======================#
     "PrimingException",

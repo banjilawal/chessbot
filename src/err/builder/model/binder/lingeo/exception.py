@@ -1,7 +1,7 @@
-# src/err/builder/binder/Vector/exception.py
+# src/err/builder/model/binder/Vector/exception.py
 
 """
-Module: err.builder.binder.Vector.exception
+Module: err.builder.model.binder.Vector.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -13,11 +13,11 @@ from typing import Any, Optional
 from err import BinderBuilderException
 
 __all__ = [
-    # ======================# VECTOR_BINDER_BUILDER_FAILURE #======================#
+    # ======================# VECTOR_BINDER__MODEL_BUILDER_FAILURE #======================#
     "VectorBinderBuilderException",
 ]
 
-# ======================# VECTOR_BINDER_BUILDER_FAILURE #======================#
+# ======================# VECTOR_BINDER__MODEL_BUILDER_FAILURE #======================#
 class VectorBinderBuilderException(BinderBuilderException):
     """
     Role:
@@ -41,7 +41,7 @@ class VectorBinderBuilderException(BinderBuilderException):
         BinderBuilderException
     """
     MSG = "VectorBinderBuilder failed."
-    ERR_CODE = "VECTOR_BINDER_BUILDER_FAILURE"
+    ERR_CODE = "VECTOR_BINDER__MODEL_BUILDER_FAILURE"
     
     def __init__(
             self,

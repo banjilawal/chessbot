@@ -13,6 +13,7 @@ from typing import Any, Optional
 from err import AnalyzerException
 from result import MethodResultType
 
+
 __all__ = [
     # ======================# PAWN_DOUBLE_PROMOTION_ERROR #======================#
     "PawnDoublePromotionException",
