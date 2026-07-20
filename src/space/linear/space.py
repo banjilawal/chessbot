@@ -36,8 +36,11 @@ class LinearSpace(Space):
         math_toolkit: Optional[MathToolkit]
 
     Provides:
+        -   def distance() -> ComputationResult[Scalar]
+        -   def target_vectors() -> ComputationResult[LinearTargetSet]:
 
     Super Class:
+        Space
     """
     _endpoints: VectorRegister
     _stepper: LinearStepper

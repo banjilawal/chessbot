@@ -17,6 +17,7 @@ from .rank import *
 from .scalar import *
 from .software import *
 from .state import *
+from .target import *
 from .vector import *
 
 # Modules

@@ -13,7 +13,6 @@ version: 1.0.1
 from .builder import *
 from .computer import *
 from .linear import *
-from .target import *
 from .stepper import *
 from .ray import *
 

@@ -1,7 +1,7 @@
-# src/space/target/space.py
+# src/model/target/model.py
 
 """
-Module: space.target.space
+Module: model.target.model
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -9,13 +9,14 @@ version: 1.0.1
 
 from __future__ import annotations
 
+from abc import ABC
 from typing import Optional
 
 from container import VectorSet
 from model import Vector
 
 
-class TargetVectorSet:
+class TargetVectorSet(ABC):
     """
     Role:
         -   Data Holder

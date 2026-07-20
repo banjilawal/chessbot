@@ -12,7 +12,7 @@ from __future__ import annotations
 from abc import ABC, abstractmethod
 from typing import Generic, TypeVar
 
-from space.target import TargetVectorSet
+from model.target import TargetVectorSet
 from model import Vector
 from result import ComputationResult
 from toolkit import MathToolkit

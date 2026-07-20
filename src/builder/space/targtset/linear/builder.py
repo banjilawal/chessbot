@@ -72,7 +72,7 @@ class RegisterSetLinearBuilder(RegisterBuilder[LinearTargetSet]):
         registers: List[VectorRegister] = []
         previous = self.space.root
         
-        for target in self._space.space.iterator
+        for target in self._space.space.iterator:
             current = target
             register = VectorRegister(
                 id=IdFactory.next_id("VectorRegister"), 
