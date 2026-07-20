@@ -13,11 +13,10 @@ from dataclasses import dataclass
 from typing import Type
 
 from blueprint import RankBlueprint
-from carrier import RankCarrier
+from toggle.carrier import RankCarrier
 from err import RankBlueprintNullException, RankCarrierNullException, RankNullException
 from model import Rank
 from toolkit import ModelToolkit
-from validator import NumberValidator
 
 
 @dataclass

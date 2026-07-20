@@ -9,16 +9,12 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from typing import Any, Type, cast
+from typing import cast
 
-from blueprint import VectorBlueprint
-from carrier import VectorCarrier
-from context import VectorHomeContext
-from err import FormationNullException, VectorCertifierException, VectorCarrierNullException
-from model import HomeSquare, Team, Vector
+from toggle.carrier import VectorCarrier
+from model import Vector
 from primary import RootCertifier
 from result import ValidationResult
-from schema import Formation
 from toolkit import VectorToolkit
 from util import LoggingLevelRouter
 
@@ -116,13 +112,7 @@ class VectorRootCertifier(RootCertifier[Vector]):
                 )
             numbers.append(cast(int, validation.payload))
 
-        # --- Extract and cast payloads of the validation results. ---#
-        x = cast(int, id_test.payload)
-        team = cast(Team, team_test.payload)
-        formation = cast(Formation, formation_test.payload)
-        home_square = cast(HomeSquare, home_detection.payload)
-        rank = cast(type(rank_test.payload), rank_test.payload)
-        
+        # --- Use the validated numbers to build the appropriate object. ---#
         if carrier.is_model_carrier:
             return ValidationResult.success(
                 VectorCarrier(

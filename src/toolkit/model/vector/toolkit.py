@@ -13,7 +13,7 @@ from dataclasses import dataclass
 from typing import Type
 
 from blueprint import VectorBlueprint
-from carrier import VectorCarrier
+from toggle.carrier import VectorCarrier
 from err import VectorBlueprintNullException, VectorCarrierNullException, VectorNullException
 from model import Vector
 from toolkit import ModelToolkit

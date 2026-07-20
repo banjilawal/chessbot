@@ -10,6 +10,7 @@ version: 1.0.1
 # =========== TOGGLE PACKAGE ===========#
 
 # Packages
+from .carrier import *
 from .orientation import *
 from .vector import *
 

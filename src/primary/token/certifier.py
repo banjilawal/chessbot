@@ -9,12 +9,12 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from typing import Any, Type, cast
+from typing import Type, cast
 
 from blueprint import TokenBlueprint
-from carrier import TokenCarrier
+from toggle.carrier import TokenCarrier
 from context import TokenHomeContext
-from err import FormationNullException, TokenCertifierException, TokenCarrierNullException
+from err import FormationNullException, TokenCertifierException
 from model import HomeSquare, Team, Token
 from primary import RootCertifier
 from result import ValidationResult
