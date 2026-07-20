@@ -1,13 +1,13 @@
-# src/validator/endpoint/__init__.py
+# src/validator/model/endpoint/__init__.py
 
 """
-Module: validator.endpoint.__init__
+Module: validator.model.endpoint.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
 """
 
-# =========== VALIDATOR.ENDPOINT PACKAGE ===========#
+# =========== VALIDATOR.MODEL.ENDPOINT PACKAGE ===========#
 
 # Packages
 from .destination import *

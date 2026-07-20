@@ -10,14 +10,16 @@ version: 1.0.1
 from __future__ import annotations
 
 from abc import abstractmethod
-from typing import Any
+from typing import Any, Generic, TypeVar
 
-from register import Register
+from primary import RegisterRootCertifier
 from result import ValidationResult
+from toolkit import RegisterToolkit
 from validator import Validator
 
+T = TypeVar("T", bound="Register")
 
-class RegisterValidator(Validator[Register]):
+class RegisterValidator(Validator, Generic[T]):
     """
     Role
         -   Transaction Worker
@@ -26,9 +28,10 @@ class RegisterValidator(Validator[Register]):
         -   Validation Process Owner
 
     Responsibilities:
-        1.  Ensure a Register instance is certified safe, reliable and consistent before use.
+        1.  Ensure a Model instance is certified safe, reliable and consistent before use.
 
     Attributes:
+        root_certifier: RegisterRootCertifier[T]
         
     Provides:
         -   execute(self, candidate: Any) -> ValidationResult
@@ -36,12 +39,23 @@ class RegisterValidator(Validator[Register]):
     Super Class:
         Validator
     """
-
+    _root_certifier: RegisterRootCertifier[T]
+    
+    def __init__(self, root_certifier: RegisterRootCertifier[T]):
+        self._root_certifier = root_certifier
+        # super().__init__(root_certifier=root_certifier)
+    
+    @property
+    def root_certifier(self) -> RegisterRootCertifier:
+        return self._root_certifier
+    
+    # @property
+    # def root_certifier(self) -> RegisterRootCertifier:
+    #     return cast(RegisterRootCertifier[T], self.root_certifier)
     
     @abstractmethod
-    def execute(self, candidate: Any) -> ValidationResult:
+    def execute(self, candidate: Any) -> ValidationResult[T]:
         pass
-    
     
         
         

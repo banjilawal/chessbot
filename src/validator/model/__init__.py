@@ -12,12 +12,10 @@ version: 1.0.1
 # Packages
 from .binder import *
 from .coord import *
-from .chooser import *
 from .endpoint import *
 from .maneuver import *
 from .path import *
 from .rank import *
-from .register import *
 from .scalar import *
 from .state import *
 

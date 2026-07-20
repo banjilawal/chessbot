@@ -1,7 +1,7 @@
-# src/validator/path/validator.py
+# src/validator/model/path/validator.py
 
 """
-Module: validator.path.validator
+Module: validator.model.path.validator
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

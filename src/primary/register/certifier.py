@@ -40,7 +40,7 @@ class RegisterRootCertifier(ABC, Generic[T]):
 
     Super Class:
     """
-    _toolkit: ModelToolkit[T]
+
     
     def __init__(self, toolkit: ModelToolkit[T]):
         super().__init__(toolkit=toolkit)

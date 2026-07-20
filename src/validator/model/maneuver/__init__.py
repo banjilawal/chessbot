@@ -1,13 +1,13 @@
-# src/validator/maneuver/__init__.py
+# src/validator/model/maneuver/__init__.py
 
 """
-Module: validator.maneuver.__init__
+Module: validator.model.maneuver.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
 """
 
-# =========== VALIDATOR.MANEUVER PACKAGE ===========#
+# =========== VALIDATOR.MODEL.MANEUVER PACKAGE ===========#
 
 # Packages
 

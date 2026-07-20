@@ -19,6 +19,7 @@ from .model import *
 from .toggle import *
 from .permitter import *
 from .pipeline import *
+from .register import *
 from .registry import *
 
 # Modules

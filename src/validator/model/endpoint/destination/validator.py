@@ -1,7 +1,7 @@
-# src/validator/endpoint/destination/validator.py
+# src/validator/model/endpoint/destination/validator.py
 
 """
-Module: validator.endpoint.destination.validator
+Module: validator.model.endpoint.destination.validator
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
