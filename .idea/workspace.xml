@@ -5,38 +5,42 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/builder/register/vector/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/builder/register/vector/builder.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/builder/space/targtset/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/primary/vector/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/primary/vector/certifier.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blueprint/register/cartesian/blueprint.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/blueprint/register/cartesian/blueprint.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/builder/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/builder/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/builder/old_endpoint/builder/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/builder/old_endpoint/builder/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/builder/register/builder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/builder/old_endpoint/builder/linear/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/builder/space/targtset/linear/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/builder/old_endpoint/builder/linear/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/builder/space/targtset/linear/builder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/builder/old_endpoint/builder/span/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/builder/space/targtset/span/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/builder/old_endpoint/builder/span/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/builder/space/targtset/span/builder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/builder/register/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/builder/register/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/builder/register/operand/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/builder/register/toggle/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/builder/register/operand/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/builder/register/toggle/builder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/builder/register/square/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/builder/register/square/builder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/builder/space/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/builder/space/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/builder/space/linear/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/builder/space/linear/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/builder/space/linear/axis/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/builder/space/linear/axis/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/builder/endpoint/quadrant/southwest/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/builder/endpoint/quadrant/southwest/builder.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/builder/old_endpoint/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/builder/old_endpoint/ray/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/builder/old_endpoint/ray/computer/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/builder/old_endpoint/ray/computer/axis/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/builder/old_endpoint/ray/computer/axis/joiner.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/builder/old_endpoint/ray/computer/axis/ray.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/builder/old_endpoint/ray/computer/joiner.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/builder/old_endpoint/ray/computer/quadrant/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/builder/old_endpoint/ray/computer/quadrant/ray.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/builder/old_endpoint/ray/coord/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/builder/old_endpoint/ray/coord/ray.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/builder/old_endpoint/ray/joiner.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/builder/old_endpoint/ray/square/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/builder/old_endpoint/ray/square/ray.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/builder/old_endpoint/ray/test_joiner/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/builder/old_endpoint/ray/test_joiner/axis/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/builder/old_endpoint/ray/test_joiner/quadrant/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/builder/old_endpoint/ray/test_joiner/quadrant/ray.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/builder/old_endpoint/ray/test_joiner/ray.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/builder/old_endpoint/ray/token/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/builder/old_endpoint/ray/token/ray.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/builder/old_endpoint/ray/transformer/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/builder/old_endpoint/ray/transformer/axis/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/builder/old_endpoint/ray/transformer/axis/transformer.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/builder/old_endpoint/ray/transformer/register/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/builder/old_endpoint/ray/transformer/register/transformer.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/builder/old_endpoint/ray/transformer/transformer.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/builder/old_endpoint/ray/vector/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/builder/old_endpoint/ray/vector/joiner.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/builder/space/linear/quadrant/southwest/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/builder/space/linear/quadrant/southwest/builder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/register/model/cartesian/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/register/model/cartesian/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/register/model/cartesian/register.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/register/model/cartesian/register.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/space/linear/quadrant/northeast/space.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/linear/quadrant/northeast/space.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/space/linear/quadrant/northwest/space.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/linear/quadrant/northwest/space.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/space/linear/quadrant/southeast/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/space/linear/quadrant/southeast/space.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/space/linear/quadrant/southwest/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/space/linear/quadrant/southwest/space.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/space/linear/quadrant/space.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/space/linear/quadrant/space.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/validator/model/chooser/cartesian/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/validator/model/chooser/cartesian/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/validator/model/chooser/cartesian/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/validator/model/chooser/cartesian/validator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/validator/model/state/vector/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/validator/model/state/vector/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validator/model/state/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/validator/model/state/__init__.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -92,7 +96,7 @@
     "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/space/linear/quadrant",
+    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/primary",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
@@ -104,11 +108,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/primary" />
       <recent name="$PROJECT_DIR$/src/space/linear/quadrant" />
       <recent name="$PROJECT_DIR$/src/builder/register" />
       <recent name="$PROJECT_DIR$/src/builder/container" />
       <recent name="$PROJECT_DIR$/src/factory/space" />
-      <recent name="$PROJECT_DIR$/src/builder/space/linear/quadrant" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/builder/space/targtset" />
@@ -802,7 +806,7 @@
       <workItem from="1784040408484" duration="7069000" />
       <workItem from="1784050719673" duration="78000" />
       <workItem from="1784055454795" duration="186991000" />
-      <workItem from="1784319839949" duration="142079000" />
+      <workItem from="1784319839949" duration="143067000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />

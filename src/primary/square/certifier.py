@@ -116,7 +116,7 @@ class SquareRootCertifier(RootCertifier[SquareBlueprint]):
         # Handle the case that, any id in the blueprint is flagged.
         id_test = self.toolkit.identity_service.validate_blueprint_id(
             owner_blueprint=blueprint,
-            owner_name=blueprint.owner_name,
+            owner_name=blueprint.model_class_name,
         )
         if id_test.is_failure:
             # Send the exception chain on failure.

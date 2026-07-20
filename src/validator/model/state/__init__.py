@@ -12,10 +12,8 @@ version: 1.0.1
 # Packages
 from .arena import *
 from .board import *
-
 from .edge import *
 from .node import *
-
 from .square import *
 from .team import *
 from .token import *
