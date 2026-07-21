@@ -13,7 +13,7 @@ from typing import Any, cast
 
 from err import ArenaValidatorException
 from model import Arena
-from err.root import ArenaRootCertifier
+from root import ArenaRootCertifier
 from result import ValidationResult
 from util import LoggingLevelRouter
 from validator import ModelValidator

@@ -16,7 +16,7 @@ from assembler import ModelAssembler
 from blueprint import ModelBlueprint
 from builder import Builder
 from result import BuildResult
-from err.root import ModelRootCertifier
+from root import ModelRootCertifier
 from util import LoggingLevelRouter
 
 T = TypeVar("T", bound="Model")

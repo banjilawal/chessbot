@@ -15,7 +15,7 @@ from typing import Generic, TypeVar, cast
 from assembler import Assembler
 from blueprint import Blueprint
 from result import BuildResult
-from err.root import RootCertifier
+from root import RootCertifier
 from util import LoggingLevelRouter
 
 T = TypeVar("T")

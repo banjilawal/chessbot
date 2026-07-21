@@ -12,7 +12,7 @@ from typing import Any, Optional, cast
 
 from err import CircularPathException, PathValidatorException
 from model import Path
-from err.root import ModelRootCertifier
+from root import ModelRootCertifier
 from result import ValidationResult
 from toolkit import PathToolkit
 from util import LoggingLevelRouter

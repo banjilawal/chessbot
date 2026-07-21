@@ -13,7 +13,7 @@ from abc import abstractmethod
 from typing import Any, Generic, TypeVar, cast
 
 from bootstrapper import EntityCarrierToggleValidator
-from err.root import RootCertifier
+from root import RootCertifier
 from result import ValidationResult
 from toolkit import ModelToolkit
 from util import LoggingLevelRouter

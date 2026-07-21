@@ -16,7 +16,7 @@ from carrier import TokenCarrierToggle
 from context import TokenHomeContext
 from err import FormationNullException, TokenRootCertifierException
 from model import HomeSquare, Team, Token
-from err.root import ModelRootCertifier
+from root import ModelRootCertifier
 from result import ValidationResult
 from schema import Formation
 from toolkit import TokenToolkit

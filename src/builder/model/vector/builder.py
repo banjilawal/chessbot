@@ -17,7 +17,7 @@ from builder import ModelBuilder
 from err import VectorBuilderException
 from model import Vector
 from result import BuildResult, MethodResultType
-from err.root import VectorRootCertifier
+from root import VectorRootCertifier
 from util import LoggingLevelRouter
 
 

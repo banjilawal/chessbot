@@ -13,7 +13,7 @@ from typing import Any, cast
 
 from err import RankValidatorException
 from model import Rank
-from err.root import RankRootCertifier
+from root import RankRootCertifier
 from result import ValidationResult
 from util import LoggingLevelRouter
 from validator import ModelValidator

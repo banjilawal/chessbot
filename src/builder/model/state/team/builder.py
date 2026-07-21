@@ -18,7 +18,7 @@ from model import Team
 from operation import TeamAssembler
 from finalizer import TeamAssemblyFinalizer
 from result import BuildResult
-from err.root import TeamRootCertifier
+from root import TeamRootCertifier
 from toolkit import TeamToolkit
 from util import LoggingLevelRouter
 from validator import TeamCertifier

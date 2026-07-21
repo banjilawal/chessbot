@@ -13,7 +13,7 @@ from typing import Any, cast
 
 from err import ExcessTogglesException, NoActiveTogglesException
 from err.route.validation.node.exception import NoValidationRouteException
-from err.root import ToggleRootCertifier
+from root import ToggleRootCertifier
 from result import ValidationResult
 from toggle import VectorToggle
 from toolkit import VectorToggleToolkit

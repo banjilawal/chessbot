@@ -19,7 +19,7 @@ from finalizer import TokenBuilderFinalizer
 from model import Token
 
 from result import BuildResult, MethodResultType
-from err.root import TokenRootCertifier
+from root import TokenRootCertifier
 from util import LoggingLevelRouter
 
 

@@ -10,16 +10,15 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, cast
 
-from err import IdentityRegisterCertifierException
-from register import IdentityRegister
-from err.root import RootCertifier
+from err import VectorToggleRegisterMismatchException, VectorToggleRegisterCertifierException
+from root import RootCertifier
+from register import VectorToggleRegister
 from result import ValidationResult
-from toolkit import IdentityRegisterToolkit
+from toolkit.register import VectorToggleRegisterToolkit
 from util import LoggingLevelRouter
 
 
-
-class IdentityRegisterRootCertifier(RootCertifier[IdentityRegister]):
+class VectorToggleRegisterCertifier(RootCertifier[VectorToggleRegister]):
     """
     Role
         -   Transaction Worker
@@ -32,7 +31,7 @@ class IdentityRegisterRootCertifier(RootCertifier[IdentityRegister]):
             before use in a binary arithmetic operation.
 
     Attributes:
-        toolkit: IdentityRegisterToolkit   
+        toolkit: CartesianRegisterToolkit   
     Properties:
         -   execute(candidate: Any,) -> ValidationResult
 
@@ -41,13 +40,13 @@ class IdentityRegisterRootCertifier(RootCertifier[IdentityRegister]):
     """
     def __init__(
             self, 
-            toolkit: IdentityRegisterToolkit | None = IdentityRegisterToolkit()
+            toolkit: VectorToggleRegisterToolkit | None = VectorToggleRegisterToolkit()
     ):
         super().__init__(toolkit=toolkit)
         
     @property
-    def toolkit(self) -> IdentityRegisterToolkit:
-        return cast(IdentityRegisterToolkit, super().toolkit)
+    def toolkit(self) -> VectorToggleRegisterToolkit:
+        return cast(VectorToggleRegisterToolkit, super().toolkit)
     
     @LoggingLevelRouter.monitor
     def execute(self, candidate: Any,) -> ValidationResult:
@@ -58,16 +57,16 @@ class IdentityRegisterRootCertifier(RootCertifier[IdentityRegister]):
             1.  Send an exception in the ValidationResult any of these
                 conditions occur.
                     -   Validator priming fails.
-                    -   The vectorRegister's payload is flagged unsafe.
+                    -   The vectorRegisterBlueprint's payload is flagged unsafe.
                     -   There is a mismatch between the contexts.
             3.  Otherwise, Send the success result.
         Args:
             candidate: Any
         Returns:
-            ValidationResult[VectorRegister]
+            ValidationResult
         Raises:
-            IdentityRegisterCertifierException
-            IdentityRegisterMismatchException
+            VectorToggleRegisterCertifierException
+            CartesianRegisterMismatchException
         """
         method = f"{self.__class__.__name__}.execute"
         
@@ -80,43 +79,45 @@ class IdentityRegisterRootCertifier(RootCertifier[IdentityRegister]):
         if validator_priming_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                IdentityRegisterCertifierException(
+                VectorToggleRegisterCertifierException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=IdentityRegisterCertifierException.MSG,
-                    err_code=IdentityRegisterCertifierException.ERR_CODE,
+                    msg=VectorToggleRegisterCertifierException.MSG,
+                    err_code=VectorToggleRegisterCertifierException.ERR_CODE,
                     ex=validator_priming_result.exception,
                 )
             )
         # --- Cast candidate to a VectorRegister for additional tests. ---#
         blueprint = cast(self.toolkit.blueprint_model, candidate)
         
-        # Handle the case that, the id is not safe.
-        id_validation_result = self.toolkit.number_validator.execute(blueprint.id)
-        if validator_priming_result.is_failure:
+        # Handle the case that the register has mixed contents.
+        if blueprint.is_mismatched_register:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                IdentityRegisterCertifierException(
+                VectorToggleRegisterCertifierException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=IdentityRegisterCertifierException.MSG,
-                    err_code=IdentityRegisterCertifierException.ERR_CODE,
-                    ex=id_validation_result.exception,
+                    msg=VectorToggleRegisterCertifierException.MSG,
+                    err_code=VectorToggleRegisterCertifierException.ERR_CODE,
+                    ex=VectorToggleRegisterMismatchException(
+                        msg=VectorToggleRegisterMismatchException.MSG,
+                        err_code=VectorToggleRegisterMismatchException.ERR_CODE,
+                    )
                 )
             )
-        # Handle the case that, the name is not safe.
-        name_validation_result = self.toolkit.name_validator.execute(blueprint.id)
-        if validator_priming_result.is_failure:
-            # Send the exception chain on failure.
-            return ValidationResult.failure(
-                IdentityRegisterCertifierException(
-                    cls_mthd=method,
-                    cls_name=self.__class__.__name__,
-                    msg=IdentityRegisterCertifierException.MSG,
-                    err_code=IdentityRegisterCertifierException.ERR_CODE,
-                    ex=name_validation_result.exception,
+        # Handle the case that, either slot does not contain a safe vector_opernad.
+        for item in [blueprint.a, blueprint.b]:
+            validation = self.toolkit.vector_toggle_validator.execute(item)
+            if validation.is_failure:
+                # Send the exception chain on failure.
+                return ValidationResult.failure(
+                    VectorToggleRegisterCertifierException(
+                        cls_mthd=method,
+                        cls_name=self.__class__.__name__,
+                        msg=VectorToggleRegisterCertifierException.MSG,
+                        err_code=VectorToggleRegisterCertifierException.ERR_CODE,
+                        ex=validation.exception,
+                    )
                 )
-            )
         # --- Forward the work product to the caller. ---#
         return ValidationResult.success(blueprint)
-            

@@ -14,7 +14,7 @@ from typing import Optional, cast
 from assembler import VectorToggleAssembler
 from builder import ToggleBuilder
 from result import BuildResult
-from err.root import VectorToggleRootCertifier
+from root import VectorToggleRootCertifier
 from toggle import Toggle, VectorToggle
 from util import LoggingLevelRouter
 

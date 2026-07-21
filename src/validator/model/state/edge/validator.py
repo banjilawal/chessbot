@@ -13,7 +13,7 @@ from typing import Any, cast
 
 from err import EdgeValidatorException
 from model import Edge
-from err.root import EdgeRootCertifier
+from root import EdgeRootCertifier
 from result import ValidationResult
 from util import LoggingLevelRouter
 from validator import ModelValidator

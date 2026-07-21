@@ -17,7 +17,7 @@ from assembler import ToggleAssembler
 from blueprint.toggle import ToggleBlueprint
 from builder import Builder
 from result import BuildResult
-from err.root import ToggleRootCertifier
+from root import ToggleRootCertifier
 from util import LoggingLevelRouter
 
 T = TypeVar("T", bound="Toggle")

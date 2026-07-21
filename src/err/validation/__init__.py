@@ -11,7 +11,6 @@ version: 1.0.1
 
 # Packages
 from .binder import *
-from .blueprint import *
 from .endpoint import *
 from .identity import *
 from .itinerary import *

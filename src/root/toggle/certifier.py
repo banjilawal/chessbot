@@ -12,7 +12,7 @@ from __future__ import annotations
 from abc import abstractmethod
 from typing import Any, Generic, TypeVar, cast
 
-from err.root import RootCertifier
+from root import RootCertifier
 from result import ValidationResult
 from toolkit import ToggleToolkit
 from util import LoggingLevelRouter

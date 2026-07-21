@@ -14,7 +14,7 @@ from typing import cast
 from blueprint import VectorBlueprint
 from carrier import VectorCarrier
 from model import Vector
-from err.root import ModelRootCertifier
+from root import ModelRootCertifier
 from result import ValidationResult
 from toolkit import VectorToolkit
 from util import LoggingLevelRouter
