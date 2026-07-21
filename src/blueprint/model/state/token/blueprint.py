@@ -65,7 +65,7 @@ class TokenBlueprint(StateModelBlueprint[Token]):
         
     @property
     def model_class(self) -> Type[Token]:
-        return cast(Type[Token], self.model_class)
+        return cast(Type[Token], super().model_class)
     
     @property
     def team(self) -> Team:

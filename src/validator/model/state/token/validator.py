@@ -13,7 +13,7 @@ from typing import Any, cast
 
 from err import TokenValidatorException
 from model import Token
-from root import TokenRootCertifier
+from err.root import TokenRootCertifier
 from result import ValidationResult
 from util import LoggingLevelRouter
 from validator import ModelValidator

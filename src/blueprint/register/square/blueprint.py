@@ -61,7 +61,7 @@ class SquareRegisterBlueprint(RegisterBlueprint[SquareRegister]):
     
     @property
     def model_class(self) -> Type[SquareRegister]:
-        return cast(Type[SquareRegister], self.model_class)
+        return cast(Type[SquareRegister], super().model_class)
     
     @property
     def origin(self) -> Square:
@@ -72,5 +72,13 @@ class SquareRegisterBlueprint(RegisterBlueprint[SquareRegister]):
         return cast(Square, self.b)
     
     @property
+    def a(self) -> Square:
+        return cast(Square, self.a)
+    
+    @property
+    def b(self) -> Square:
+        return cast(Square, self.b)
+    
+    @property
     def null_exception(self) -> RegisterNullException:
-        return cast(SquareRegisterNullException, self._null_exception)
+        return cast(SquareRegisterNullException, super().null_exception)

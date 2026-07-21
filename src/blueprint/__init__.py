@@ -12,11 +12,11 @@ version: 1.0.1
 # Packages
 from .container import *
 from .context import *
-from .either import *
 from .model import *
 from .quadrant import *
 from .register import *
 from .space import *
+from .toggle import *
 from .validation import *
 
 # Modules

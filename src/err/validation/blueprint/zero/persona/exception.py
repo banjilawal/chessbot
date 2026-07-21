@@ -1,7 +1,7 @@
-# src/err/validation/blueprint/zero/persona/__init__.py
+# src/err/root/zero/persona/__init__.py
 
 """
-Module: err.validation.blueprint.zero.persona.exception
+Module: err.root.zero.persona.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -24,7 +24,7 @@ class ZeroPersonaBlueprintFlagsException(ZeroBlueprintFlagsException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicates that no PersonaCertifier test. enabled.
+        1.  Indicates that no PersonaRootCertifier test. enabled.
 
     Attributes:
         msg: Optional[str]
@@ -40,7 +40,7 @@ class ZeroPersonaBlueprintFlagsException(ZeroBlueprintFlagsException):
     Super Class:
         ZeroBlueprintFlagsException
     """
-    MSG = "No PersonaCCertifier test. enabled."
+    MSG = "No PersonaCRootCertifier test. enabled."
     ERR_CODE = "ZERO_PERSONA_BLUEPRINT_FLAGS_FAILURE"
     
     def __init__(

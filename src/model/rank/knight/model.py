@@ -38,14 +38,12 @@ class Knight(Rank):
 
     def __init__(
             self,
-            id: int,
             persona: Persona | None = Persona.KNIGHT,
             spanner: KnightSpanner | None = KnightSpanner(),
     ):
         """
         Args:
-            id: int
-            persona: Persona
+                        persona: Persona
             spanner: KnightSpanner
         """
         super().__init__(

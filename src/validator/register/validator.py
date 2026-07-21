@@ -12,7 +12,7 @@ from __future__ import annotations
 from abc import abstractmethod
 from typing import Any, Generic, TypeVar
 
-from root import RegisterRootCertifier
+from err.root import RegisterRootCertifier
 from result import ValidationResult
 from validator import Validator
 

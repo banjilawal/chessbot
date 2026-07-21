@@ -1,7 +1,7 @@
-# src/err/validation/blueprint/game/exception.py
+# src/err/root/game/exception.py
 
 """
-Module: err.validation.blueprint.game.exception
+Module: err.root.game.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -9,25 +9,25 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from typing import Optional
+from typing import Any, Optional
 
-from err import CertifierException
+from err import RootCertifierException
 from result import MethodResultType
 
 
 __all__ = [
-    # ======================# GAME_BLUEPRINT_VALIDATOR_FAILURE #======================#
-    "GameCertifierException",
+    # ======================# GAME_ROOT_CERTIFIER_FAILURE #======================#
+    "GameRootCertifierException",
 ]
 
-# ======================# GAME_BLUEPRINT_VALIDATOR_FAILURE #======================#
-class GameCertifierException(RootCertifierException):
+# ======================# GAME_ROOT_CERTIFIER_FAILURE #======================#
+class GameRootCertifierException(RootCertifierException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a candidate failed a GameCertifier test.
+        1.  Indicate that a candidate failed a GameRootCertifier test.
 
     Attributes:
             msg: Optional[str]
@@ -42,10 +42,10 @@ class GameCertifierException(RootCertifierException):
     Provides:
 
     Super Class:
-        CertifierException
+        RootCertifierException
     """
-    MSG = "GameCertifier test."
-    ERR_CODE = "GAME_BLUEPRINT_VALIDATOR_FAILURE"
+    MSG = "Game root certification failure."
+    ERR_CODE = "GAME_ROOT_CERTIFIER_FAILURE"
     
     def __init__(
             self,

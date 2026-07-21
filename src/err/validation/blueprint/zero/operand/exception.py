@@ -1,7 +1,7 @@
-# src/err/validation/blueprint/zero/vector/exception.py
+# src/err/root/zero/vector/exception.py
 
 """
-Module: err.validation.blueprint.zero.vector.exception
+Module: err.root.zero.vector.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -40,7 +40,7 @@ class ZeroVectorOperandFlagsException(ZeroBlueprintFlagsException):
     Super Class:
         ZeroBlueprintFlagsException
     """
-    MSG = "No NodeCCertifier test. enabled."
+    MSG = "No NodeCRootCertifier test. enabled."
     ERR_CODE = "ZERO_CARTESIAN_FLAGS_FAILURE"
     
     def __init__(

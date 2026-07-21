@@ -1,30 +1,33 @@
-# src/err/validation/blueprint/board/exception.py
+# src/err/root/board/exception.py
 
 """
-Module: err.validation.blueprint.board.exception
+Module: err.root.board.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
 """
 
 from __future__ import annotations
-from err import CertifierException
+
+from typing import Any, Optional
+
+from err import RootCertifierException
 from result import MethodResultType
 
 
 __all__ = [
-    # ======================# BOARD_BLUEPRINT_VALIDATOR_FAILURE #======================#
-    "BoardCertifierException",
+    # ======================# BOARD_ROOT_CERTIFIER_FAILURE #======================#
+    "BoardRootCertifierException",
 ]
 
-# ======================# BOARD_BLUEPRINT_VALIDATOR_FAILURE #======================#
-class BoardCertifierException(RootCertifierException):
+# ======================# BOARD_ROOT_CERTIFIER_FAILURE #======================#
+class BoardRootCertifierException(RootCertifierException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a candidate failed a BoardCertifier test.
+        1.  Indicate that a candidate failed a BoardRootCertifier test.
 
     Attributes:
             msg: Optional[str]
@@ -39,10 +42,10 @@ class BoardCertifierException(RootCertifierException):
     Provides:
 
     Super Class:
-        CertifierException
+        RootCertifierException
     """
-    MSG = "BoardCertifier test."
-    ERR_CODE = "BOARD_BLUEPRINT_VALIDATOR_FAILURE"
+    MSG = "Board root certification failure."
+    ERR_CODE = "BOARD_ROOT_CERTIFIER_FAILURE"
     
     def __init__(
             self,

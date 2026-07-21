@@ -1,7 +1,7 @@
-# src/builder/graph/__init__.py
+# src/builder/model/graph/__init__.py
 
 """
-Module: builder.graph.__init__
+Module: builder.model.graph.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

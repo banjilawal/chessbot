@@ -57,11 +57,11 @@ class RegisterBlueprint(Blueprint[Register]):
     
     @property
     def model_class(self) -> Type[Register]:
-        return cast(Type[Register], self.model_class)
+        return cast(Type[Register], super().model_class)
     
     @property
     def null_exception(self) -> RegisterNullException:
-        return cast(RegisterNullException, self.null_exception)
+        return cast(RegisterNullException, super().null_exception)
     
     @property
     def a(self) -> Any:

@@ -1,7 +1,7 @@
-# src/err/validation/blueprint/excess/exception.py
+# src/err/root/excess/exception.py
 
 """
-Module: err.validation.blueprint.excess.exception
+Module: err.root.excess.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -24,7 +24,7 @@ class ExcessBlueprintFlagsException(BlueprintException):
         -   Error Tracing
         
     Responsibilities:
-        1.  Indicate that no Certifier test.s were enabled.
+        1.  Indicate that no RootCertifier test.s were enabled.
 
     Attributes:
         msg: Optional[str]
@@ -40,7 +40,7 @@ class ExcessBlueprintFlagsException(BlueprintException):
     Super Class:
         BlueprintException
     """
-    MSG = "More than one Certifier test. enabled."
+    MSG = "More than one RootCertifier test. enabled."
     ERR_CODE = "EXCESS_BLUEPRINT_FLAGS_FAILURE"
     
     def __init__(

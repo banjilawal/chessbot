@@ -39,14 +39,12 @@ class Pawn(Rank):
 
     def __init__(
             self,
-            id: int,
             persona: Persona | None = Persona.PAWN,
             spanner: PawnSpanner | None = PawnSpanner(),
     ):
         """
         Args:
-            id: int
-            persona: Persona
+                        persona: Persona
             spanner: PawnSpanner
         """
         super().__init__(id=id, persona=persona,)

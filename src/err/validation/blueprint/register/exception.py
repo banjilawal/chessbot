@@ -1,30 +1,33 @@
-# src/err/validation/blueprint/register/exception.py
+# src/err/root/register/exception.py
 
 """
-Module: err.validation.blueprint.register.exception
+Module: err.root.register.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
 """
 
 from __future__ import annotations
-from err import CertifierException
+
+from typing import Any, Optional
+
+from err import RootCertifierException
 from result import MethodResultType
 
 
 __all__ = [
-    # ======================# REGISTER_BLUEPRINT_VALIDATOR_FAILURE #======================#
-    "RegisterCertifierException",
+    # ======================# REGISTER_ROOT_CERTIFIER_FAILURE #======================#
+    "RegisterRootCertifierException",
 ]
 
-# ======================# REGISTER_BLUEPRINT_VALIDATOR_FAILURE #======================#
-class RegisterCertifierException(RootCertifierException):
+# ======================# REGISTER_ROOT_CERTIFIER_FAILURE #======================#
+class RegisterRootCertifierException(RootCertifierException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a candidate failed a RegisterCertifier test.
+        1.  Indicate that a candidate failed a RegisterRootCertifier test.
 
     Attributes:
             msg: Optional[str]
@@ -39,10 +42,10 @@ class RegisterCertifierException(RootCertifierException):
     Provides:
 
     Super Class:
-        CertifierException
+        RootCertifierException
     """
-    MSG = "RegisterCertifier test."
-    ERR_CODE = "REGISTER_BLUEPRINT_VALIDATOR_FAILURE"
+    MSG = "Register root certification failure."
+    ERR_CODE = "REGISTER_ROOT_CERTIFIER_FAILURE"
     
     def __init__(
             self,

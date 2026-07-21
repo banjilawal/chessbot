@@ -1,7 +1,7 @@
-# src/err/validation/blueprint/zero/game/__init__.py
+# src/err/root/zero/game/__init__.py
 
 """
-Module: err.validation.blueprint.zero.game.exception
+Module: err.root.zero.game.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -24,7 +24,7 @@ class ZeroGameBlueprintFlagsException(ZeroBlueprintFlagsException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicates that no GameCertifier test. enabled.
+        1.  Indicates that no GameRootCertifier test. enabled.
 
     Attributes:
         msg: Optional[str]
@@ -40,7 +40,7 @@ class ZeroGameBlueprintFlagsException(ZeroBlueprintFlagsException):
     Super Class:
         ZeroBlueprintFlagsException
     """
-    MSG = "No GameCCertifier test. enabled."
+    MSG = "No GameCRootCertifier test. enabled."
     ERR_CODE = "ZERO_GAME_BLUEPRINT_FLAGS_FAILURE"
     
     def __init__(

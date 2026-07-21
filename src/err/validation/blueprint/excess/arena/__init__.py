@@ -1,13 +1,13 @@
-# src/err/validation/blueprint/excess/arena/__init__.py
+# src/err/root/excess/arena/__init__.py
 
 """
-Module: err.validation.blueprint.excess.arena.__init__
+Module: err.root.excess.arena.__init__
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
 """
 
-# =========== ERR.VALIDATION.BLUEPRINT.EXCESS.ARENA PACKAGE ===========#
+# =========== ERR.ROOT.EXCESS.ARENA PACKAGE ===========#
 
 # Packages
 

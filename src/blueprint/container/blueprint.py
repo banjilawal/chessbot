@@ -65,11 +65,11 @@ class ContainerBlueprint(Blueprint[Container]):
     
     @property
     def container_class(self) -> Type[Container]:
-        return cast(Type[Container], self.model_class)
+        return cast(Type[Container], super().model_class)
     
     @property
     def null_exception(self) -> ContainerNullException:
-        return cast(ContainerNullException, self._null_exception)
+        return cast(ContainerNullException, super().null_exception)
     
     @property
     def entries(self) -> Tuple[T, ...]:

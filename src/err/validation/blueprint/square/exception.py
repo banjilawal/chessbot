@@ -1,30 +1,33 @@
-# src/err/validation/blueprint/square/exception.py
+# src/err/root/square/exception.py
 
 """
-Module: err.validation.blueprint.square.exception
+Module: err.root.square.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
 """
 
 from __future__ import annotations
-from err import CertifierException
+
+from typing import Any, Optional
+
+from err import RootCertifierException
 from result import MethodResultType
 
 
 __all__ = [
-    # ======================# SQUARE_BLUEPRINT_VALIDATOR_FAILURE #======================#
-    "SquareCertifierException",
+    # ======================# SQUARE_ROOT_CERTIFIER_FAILURE #======================#
+    "SquareRootCertifierException",
 ]
 
-# ======================# SQUARE_BLUEPRINT_VALIDATOR_FAILURE #======================#
-class SquareCertifierException(RootCertifierException):
+# ======================# SQUARE_ROOT_CERTIFIER_FAILURE #======================#
+class SquareRootCertifierException(RootCertifierException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a candidate failed a SquareCertifier test.
+        1.  Indicate that a candidate failed a SquareRootCertifier test.
 
     Attributes:
             msg: Optional[str]
@@ -39,10 +42,10 @@ class SquareCertifierException(RootCertifierException):
     Provides:
 
     Super Class:
-        CertifierException
+        RootCertifierException
     """
-    MSG = "SquareCertifier test."
-    ERR_CODE = "SQUARE_BLUEPRINT_VALIDATOR_FAILURE"
+    MSG = "Square root certification failure."
+    ERR_CODE = "SQUARE_ROOT_CERTIFIER_FAILURE"
     
     def __init__(
             self,

@@ -1,15 +1,15 @@
-# src/err/validation/blueprint/schema/__init__.py
+# src/err/root/schema/__init__.py
 
 """
-Module: err.validation.blueprint.schema.__init__
+Module: err.root.schema.__init__
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
 """
 
-# =========== ERR.VALIDATION.BLUEPRINT.SCHEMA PACKAGE ===========#
+# =========== ERR.ROOT.SCHEMA PACKAGE ===========#
 
 # Packages
 
 # Modules
-from .exception import SchemaCertifierException
+from .exception import SchemaRootCertifierException

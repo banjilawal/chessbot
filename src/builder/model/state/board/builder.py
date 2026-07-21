@@ -1,7 +1,7 @@
-# src/builder/board/builder.py
+# src/builder/model/board/builder.py
 
 """
-Module: builder.board.builder
+Module: builder.model.board.builder
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -12,7 +12,7 @@ from logic.board import ArenaAlreadyContainsBoardException, Board, BoardBuilderE
 from system import Builder, BuildResult, BOARD_DIMENSION, IdentityService, LoggingLevelRouter, id_emitter
 
 
-class BoardBuilder(Builder[Board]):
+class BoardBuilder(ModelBuilder[Board]):
     """
     Role
         -   Transaction Worker

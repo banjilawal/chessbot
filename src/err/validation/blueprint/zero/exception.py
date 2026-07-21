@@ -1,7 +1,7 @@
-# src/err/validation/blueprint/zero/exception.py
+# src/err/root/zero/exception.py
 
 """
-Module: err.validation.blueprint.zero.exception
+Module: err.root.zero.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -24,7 +24,7 @@ class ZeroBlueprintFlagsException(BlueprintException):
         -   Error Tracing
         
     Responsibilities:
-        1.  Indicate that no Certifier test.s were enabled.
+        1.  Indicate that no RootCertifier test.s were enabled.
 
     Attributes:
         msg: Optional[str]

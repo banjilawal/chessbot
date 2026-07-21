@@ -9,21 +9,36 @@ version: 1.0.1
 
 from __future__ import annotations
 
+
+from assembler import ModelAssembler
+from blueprint import BoardBlueprint
+from model import Board
 from result import BuildResult
-from operation import Assembler
 from util import LoggingLevelRouter
-from model import Board, BoardBlueprint
-from controller import WorkerRegistryController
 
 
-class BoardAssembler(Assembler[Board]):
-    NAME = "board_assembler"
+class BoardAssembler(ModelAssembler[Board]):
+    """
+    Role
+        -   Build Process Owner
+
+    Responsibilities:
+        1.  Create a Board instance from the safe blueprint.
+
+    Attributes:
+
+    Provides:
+        -   def execute(self, blueprint: BoardBlueprint,) -> BuildResult[Board]
+
+    Super Class:
+        ModelAssembler
+    """
     
-    @classmethod
+    
     @LoggingLevelRouter.monitor
-    def execute(cls, blueprint: BoardBlueprint,) -> BuildResult[Board]:
+    def execute(self, blueprint: BoardBlueprint,) -> BuildResult[Board]:
         """
-        Assemble the appropriate Board.
+        Assemble a Board from the Blueprint's contents.
 
         Args:
             blueprint: BoardBlueprint
@@ -31,12 +46,10 @@ class BoardAssembler(Assembler[Board]):
             BuildResult[Board]
         Raises:
         """
-        method = f"{cls.__name__}.execute"
+        method = f"{self.__class__.__name__}.execute"
         
         return BuildResult.success(Board(id=blueprint.id, arena=blueprint.arena,))
 
-# Register the 
-WorkerRegistryController.register_worker(worker=BoardAssembler)
     
         
         

@@ -1,7 +1,7 @@
-# src/builder/vector/builder.py
+# src/builder/model/vector/builder.py
 
 """
-Module: builder.vector.builder
+Module: builder.model.vector.builder
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -13,16 +13,15 @@ from typing import cast
 
 from assembler import VectorAssembler
 from blueprint import VectorBlueprint
-from builder import Builder
+from builder import ModelBuilder
 from err import VectorBuilderException
 from model import Vector
 from result import BuildResult, MethodResultType
-from root import VectorRootCertifier
-from toolkit import VectorToolkit
+from err.root import VectorRootCertifier
 from util import LoggingLevelRouter
 
 
-class VectorBuilder(Builder[Vector]):
+class VectorBuilder(ModelBuilder[Vector]):
     """
     Role
         -   Integrity Maintenance
@@ -40,19 +39,22 @@ class VectorBuilder(Builder[Vector]):
      Super Class:
          Builder
      """
-    _bootstrapper: VectorRootCertifier
-    _assembler: VectorAssembler
-    _toolkit: VectorToolkit
     
     def __init__(
             self,
             bootstrapper: VectorRootCertifier | None = VectorRootCertifier(),
             assembler: VectorAssembler | None = VectorAssembler(),
-            toolkit: VectorToolkit | None = VectorToolkit(),
     ):
-        self._bootstrapper = bootstrapper
-        self._assembler = assembler
-        self._toolkit = toolkit
+        super().__init__(bootstrapper=bootstrapper, assembler=assembler)
+    
+    @property
+    def bootstrapper(self) -> VectorRootCertifier:
+        return cast(VectorRootCertifier, super().bootstrapper)
+    
+    @property
+    def assembler(self) -> VectorAssembler:
+        return cast(VectorAssembler, super().assembler)
+    
     
     @LoggingLevelRouter.monitor
     def execute(self, blueprint: VectorBlueprint) -> BuildResult[Vector]:

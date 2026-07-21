@@ -1,7 +1,7 @@
-# src/err/validation/blueprint/exception.py
+# src/err/root/exception.py
 
 """
-Module: err.validation.blueprint.exception
+Module: err.root.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,23 +10,23 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import ValidatorException
+from err import ChessException
 from result import MethodResultType
 
 
 __all__ = [
-    # ======================# BLUEPRINT_VALIDATOR_FAILURE #======================#
-    "CertifierException",
+    # ======================# ROOT_CERTIFIER_FAILURE #======================#
+    "RootCertifierException",
 ]
 
-# ======================# BLUEPRINT_VALIDATOR_FAILURE #======================#
-class CertifierException(ValidatorException):
+# ======================# ROOT_CERTIFIER_FAILURE #======================#
+class RootCertifierException(ChessException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a candidate failed a Certifier test.
+        1.  Indicate that a candidate failed a RootCertifier test.
 
     Attributes:
             msg: Optional[str]
@@ -41,10 +41,11 @@ class CertifierException(ValidatorException):
     Provides:
 
     Super Class:
-        ValidatorException
+        ChessException
     """
-    MSG = "Certifier test."
-    ERR_CODE = "BLUEPRINT_VALIDATOR_FAILURE"
+    MSG = " root certification failure."
+    ERR_CODE = "ROOT_CERTIFIER_FAILURE"
+    MTHD_RSLT_TYPE = MethodResultType.VALIDATION_RESULT
     
     def __init__(
             self,
@@ -70,7 +71,7 @@ class CertifierException(ValidatorException):
         """
         msg = msg or self.MSG
         err_code = err_code or self.ERR_CODE
-        mthd_rslt_type = mthd_rslt_type or self.mthd_rslt_type
+        mthd_rslt_type = mthd_rslt_type or self.MTHD_RSLT_TYPE
         super().__init__(
             ex=ex,
             msg=msg,

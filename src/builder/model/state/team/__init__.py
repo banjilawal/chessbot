@@ -1,7 +1,7 @@
-# src/builder/team/__init__.py
+# src/builder/model/team/__init__.py
 
 """
-Module: builder.team.__init__
+Module: builder.model.team.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

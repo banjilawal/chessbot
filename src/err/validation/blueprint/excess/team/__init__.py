@@ -1,13 +1,13 @@
-# src/err/validation/blueprint/excess/team/__init__.py
+# src/err/root/excess/team/__init__.py
 
 """
-Module: err.validation.blueprint.excess.team.__init__
+Module: err.root.excess.team.__init__
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
 """
 
-# =========== ERR.VALIDATION.BLUEPRINT.EXCESS.TEAM PACKAGE ===========#
+# =========== ERR.ROOT.EXCESS.TEAM PACKAGE ===========#
 
 # Packages
 

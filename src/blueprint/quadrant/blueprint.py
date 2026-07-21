@@ -30,7 +30,7 @@ class QuadrantBlueprint(Blueprint, ABC):
     
     @property
     def model_class(self) -> Type[KnightSpace]:
-        return cast(Type[KnightSpace], self.model_class)
+        return cast(Type[KnightSpace], super().model_class)
     
     @property
     def x_step(self) -> int:

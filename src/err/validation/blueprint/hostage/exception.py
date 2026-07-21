@@ -1,30 +1,33 @@
-# src/err/validation/blueprint/hostage/exception.py
+# src/err/root/hostage/exception.py
 
 """
-Module: err.validation.blueprint.hostage.exception
+Module: err.root.hostage.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
 """
 
 from __future__ import annotations
-from err import CertifierException
+
+from typing import Any, Optional
+
+from err import RootCertifierException
 from result import MethodResultType
 
 
 __all__ = [
-    # ======================# HOSTAGE_BLUEPRINT_VALIDATOR_FAILURE #======================#
-    "HostageCertifierException",
+    # ======================# HOSTAGE_ROOT_CERTIFIER_FAILURE #======================#
+    "HostageRootCertifierException",
 ]
 
-# ======================# HOSTAGE_BLUEPRINT_VALIDATOR_FAILURE #======================#
-class HostageCertifierException(RootCertifierException):
+# ======================# HOSTAGE_ROOT_CERTIFIER_FAILURE #======================#
+class HostageRootCertifierException(RootCertifierException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a candidate failed a HostageCertifier test.
+        1.  Indicate that a candidate failed a HostageRootCertifier test.
 
     Attributes:
             msg: Optional[str]
@@ -39,10 +42,10 @@ class HostageCertifierException(RootCertifierException):
     Provides:
 
     Super Class:
-        CertifierException
+        RootCertifierException
     """
-    MSG = "HostageCertifier test."
-    ERR_CODE = "HOSTAGE_BLUEPRINT_VALIDATOR_FAILURE"
+    MSG = "Hostage root certification failure."
+    ERR_CODE = "HOSTAGE_ROOT_CERTIFIER_FAILURE"
     
     def __init__(
             self,

@@ -13,7 +13,7 @@ from typing import Any, cast
 
 from err import TeamValidatorException
 from model import Team
-from root import TeamRootCertifier
+from err.root import TeamRootCertifier
 from result import ValidationResult
 from util import LoggingLevelRouter
 from validator import ModelValidator

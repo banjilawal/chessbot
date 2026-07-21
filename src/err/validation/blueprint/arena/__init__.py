@@ -1,15 +1,15 @@
-# src/err/validation/blueprint/arena/__init__.py
+# src/err/root/arena/__init__.py
 
 """
-Module: err.validation.blueprint.arena.__init__
+Module: err.root.arena.__init__
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
 """
 
-# =========== ERR.VALIDATION.BLUEPRINT.ARENA PACKAGE ===========#
+# =========== ERR.ROOT.ARENA PACKAGE ===========#
 
 # Packages
 
 # Modules
-from .exception import ArenaCertifierException
+from .exception import ArenaRootCertifierException

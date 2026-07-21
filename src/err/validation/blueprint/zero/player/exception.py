@@ -1,7 +1,7 @@
-# src/err/validation/blueprint/zero/player/__init__.py
+# src/err/root/zero/player/__init__.py
 
 """
-Module: err.validation.blueprint.zero.player.exception
+Module: err.root.zero.player.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -24,7 +24,7 @@ class ZeroPlayerBlueprintFlagsException(ZeroBlueprintFlagsException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicates that no PlayerCertifier test. enabled.
+        1.  Indicates that no PlayerRootCertifier test. enabled.
 
     Attributes:
         msg: Optional[str]
@@ -40,7 +40,7 @@ class ZeroPlayerBlueprintFlagsException(ZeroBlueprintFlagsException):
     Super Class:
         ZeroBlueprintFlagsException
     """
-    MSG = "No PlayerCCertifier test. enabled."
+    MSG = "No PlayerCRootCertifier test. enabled."
     ERR_CODE = "ZERO_PLAYER_BLUEPRINT_FLAGS_FAILURE"
     
     def __init__(

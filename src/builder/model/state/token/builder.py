@@ -1,7 +1,7 @@
-# src/builder/token/builder.py
+# src/builder/model/token/builder.py
 
 """
-Module: builder.token.builder
+Module: builder.model.token.builder
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -13,18 +13,17 @@ from typing import cast
 
 from assembler import TokenAssembler
 from blueprint import TokenBlueprint
-from builder import Builder
+from builder import ModelBuilder
 from err import TokenBuilderException
 from finalizer import TokenBuilderFinalizer
 from model import Token
 
 from result import BuildResult, MethodResultType
-from root import TokenRootCertifier
-from toolkit import TokenToolkit
+from err.root import TokenRootCertifier
 from util import LoggingLevelRouter
 
 
-class TokenBuilder(Builder[Token]):
+class TokenBuilder(ModelBuilder[Token]):
     """
     Role
         -   Integrity Maintenance
@@ -42,22 +41,18 @@ class TokenBuilder(Builder[Token]):
      Super Class:
          Builder
      """
-    _bootstrapper: TokenRootCertifier
-    _assembler: TokenAssembler
     _finalizer: TokenBuilderFinalizer
-    _toolkit: TokenToolkit
+
     
     def __init__(
             self,
             bootstrapper: TokenRootCertifier | None = None,
             assembler : TokenAssembler | None = None,
             finalizer: TokenBuilderFinalizer | None = None,
-            toolkit: TokenToolkit | None = None,
     ):
-        self._bootstrapper = bootstrapper or TokenRootCertifier()
-        self._assembler = assembler or TokenAssembler()
+        super(bootstrapper=bootstrapper, assembler=assembler)
         self._finalizer = finalizer or TokenBuilderFinalizer()
-        self._toolkit = toolkit or TokenToolkit()
+
     
     @LoggingLevelRouter.monitor
     def execute(self, blueprint: TokenBlueprint, ) -> BuildResult[Token]:
@@ -96,7 +91,7 @@ class TokenBuilder(Builder[Token]):
         assembly = self._assembler.execute(
             blueprint=cast(TokenBlueprint, bootstrap.payload)
         )
-        if bootstrap.is_failure:
+        if assembly.is_failure:
             # Send the exception chain on failure.
             return BuildResult.failure(
                 TokenBuilderException(
@@ -105,7 +100,7 @@ class TokenBuilder(Builder[Token]):
                     msg=TokenBuilderException.MSG,
                     err_code=TokenBuilderException.ERR_CODE,
                     mthd_rslt_type=MethodResultType.BUILD_RESULT,
-                    ex=bootstrap.exception
+                    ex=assembly.exception
                 )
             )
         # --- Handoff the product for consistency and other finalization steps. ---#

@@ -1,7 +1,7 @@
-# src/builder/edge/builder.py
+# src/builder/model/edge/builder.py
 
 """
-Module: builder.edge.builder
+Module: builder.model.edge.builder
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -13,7 +13,7 @@ from microservice.edge import Edge, EdgeBuilderException
 from system import Builder, BuildResult, LoggingLevelRouter, NumberValidator
 
 
-class EdgeBuilder(Builder[Edge]):
+class EdgeBuilder(ModelBuilder[Edge]):
     """
     Role
         -   Transaction Worker

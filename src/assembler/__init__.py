@@ -11,8 +11,9 @@ version: 1.0.1
 
 # Packages
 from .binder import *
-from .binder import *
 from .model import *
+from .register import *
+from .toggle import *
 
 # Modules
 from .assembler import Assembler

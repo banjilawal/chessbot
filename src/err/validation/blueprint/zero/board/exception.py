@@ -1,7 +1,7 @@
-# src/err/validation/blueprint/zero/board/__init__.py
+# src/err/root/zero/board/__init__.py
 
 """
-Module: err.validation.blueprint.zero.board.exception
+Module: err.root.zero.board.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -24,7 +24,7 @@ class ZeroBoardBlueprintFlagsException(ZeroBlueprintFlagsException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicates that no BoardCertifier test. enabled.
+        1.  Indicates that no BoardRootCertifier test. enabled.
 
     Attributes:
         msg: Optional[str]
@@ -40,7 +40,7 @@ class ZeroBoardBlueprintFlagsException(ZeroBlueprintFlagsException):
     Super Class:
         ZeroBlueprintFlagsException
     """
-    MSG = "No BoardCCertifier test. enabled."
+    MSG = "No BoardCRootCertifier test. enabled."
     ERR_CODE = "ZERO_BOARD_BLUEPRINT_FLAGS_FAILURE"
     
     def __init__(

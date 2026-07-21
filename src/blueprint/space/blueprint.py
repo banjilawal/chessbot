@@ -51,8 +51,8 @@ class SpaceBlueprint(Blueprint, Generic[T]):
     
     @property
     def model_class(self) -> Type[T]:
-        return cast(Type[T], self.model_class)
+        return cast(Type[T], super().model_class)
     
     @property
     def null_exception(self) -> SpaceNullException:
-        return cast(SpaceNullException, self._null_exception)
+        return cast(SpaceNullException, super().null_exception)

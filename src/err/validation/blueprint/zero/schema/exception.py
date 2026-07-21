@@ -1,7 +1,7 @@
-# src/err/validation/blueprint/zero/schema/__init__.py
+# src/err/root/zero/schema/__init__.py
 
 """
-Module: err.validation.blueprint.zero.schema.exception
+Module: err.root.zero.schema.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -24,7 +24,7 @@ class ZeroSchemaBlueprintFlagsException(ZeroBlueprintFlagsException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicates that no SchemaCertifier test. enabled.
+        1.  Indicates that no SchemaRootCertifier test. enabled.
 
     Attributes:
         msg: Optional[str]
@@ -40,7 +40,7 @@ class ZeroSchemaBlueprintFlagsException(ZeroBlueprintFlagsException):
     Super Class:
         ZeroBlueprintFlagsException
     """
-    MSG = "No SchemaCCertifier test. enabled."
+    MSG = "No SchemaCRootCertifier test. enabled."
     ERR_CODE = "ZERO_SCHEMA_BLUEPRINT_FLAGS_FAILURE"
     
     def __init__(

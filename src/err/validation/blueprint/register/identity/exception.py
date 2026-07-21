@@ -1,7 +1,7 @@
-# src/err/validation/blueprint/register/identity/exception.py
+# src/err/root/register/identity/exception.py
 
 """
-Module: err.validation.blueprint.register.identity.exception
+Module: err.root.register.identity.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -11,17 +11,18 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import RegisterCertifierException
+
+from err import RegisterRootCertifierException
 from result import MethodResultType
 
 
 __all__ = [
     # ======================# VECTOR_IDENTITY_REGISTER_VALIDATOR_FAILURE #======================#
-    "IdentityRegisterCertifierException",
+    "IdentityRegisterRootCertifierException",
 ]
 
 # ======================# VECTOR_IDENTITY_REGISTER_VALIDATOR_FAILURE #======================#
-class IdentityRegisterCertifierException(RegisterCertifierException):
+class IdentityRegisterRootCertifierException(RegisterRootCertifierException):
     """
     Role:
         -   Error Tracing
@@ -42,7 +43,7 @@ class IdentityRegisterCertifierException(RegisterCertifierException):
     Provides:
 
     Super Class:
-        RegisterCertifierException
+        RegisterRootCertifierException
     """
     MSG = "VectorIdentityRegisterCertifier failure."
     ERR_CODE = "VECTOR_IDENTITY_REGISTER_VALIDATOR_FAILURE"

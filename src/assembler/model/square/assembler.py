@@ -9,64 +9,45 @@ version: 1.0.1
 
 from __future__ import annotations
 
-
+from blueprint import SquareBlueprint
+from model import HomeSquare, Square
 from result import BuildResult
-from operation import Assembler
+from assembler import ModelAssembler
 from util import LoggingLevelRouter
-from controller import WorkerRegistryController
-from model import HomeSquare, Square, SquareBlueprint
 
 
-class SquareAssembler(Assembler[Square]):
+class SquareAssembler(ModelAssembler[Square]):
     """
     Role
-        -   Transaction Worker
-        -   Integrity Maintenance
-        -   Consistency Assurance
         -   Build Process Owner
 
     Responsibilities:
-        1.  Ensure a new Square instance is born safe and reliable.
+        1.  Create a Vector instance from the safe blueprint.
 
     Attributes:
 
     Provides:
-        -   def execute(
-                    owner: Square,
-                    id: int = IdFactory,
-                    formation: Formation,
-                    rank_service: RankService,
-                    identity_service: IdentityService,
-                    formation_service: FormationService,
-                    square_validator: SquareValidator,
-            ) -> BuildResult[Square]
+        -   def execute(self, blueprint: VectorBlueprint,) -> BuildResult[Vector]
 
-     Super Class:
-        Assembler
-     """
-    NAME = "square_assembler"
+    Super Class:
+        ModelAssembler
+    """
     
-    @classmethod
+
     @LoggingLevelRouter.monitor()
-    def execute(cls, blueprint: SquareBlueprint,) -> BuildResult[Square]:
+    def execute(self, blueprint: SquareBlueprint,) -> BuildResult[Square]:
         """
         Action:
-            1.  Send an exception chain in the BuildResult if
-                    -   Any build param fails does not pass a validation check.
-                    -   The square's attributes have already been used on the board.
-            2.  Build the Square instance with the params.
-            3.  Send an exception chain in the BuildResult if
-                    * The square requires insertion into the board but the insertion fails.
-            4.  Return the Square instance in the BuildResult.
+            1.  Assemble the square from the Blueprint.
         Args:
             blueprint: SquareBlueprint
         Returns:
             BuildResult[Square]
-            
         Raises:
         """
-        method = f"{cls.__class__.__name__}.build"
+        method = f"{self.__class__.__name__}.execute"
         
+        # Handle the case that, the blueprint is for a HomeSquare.
         if blueprint.formation is not None:
             return BuildResult.success(
                 HomeSquare(
@@ -77,6 +58,7 @@ class SquareAssembler(Assembler[Square]):
                     formation=blueprint.formation,
                 )
             )
+        # For the alternative return a plain old Square,
         return BuildResult.success(
             Square(
                 id=blueprint.id,
@@ -85,6 +67,3 @@ class SquareAssembler(Assembler[Square]):
                 board=blueprint.board,
             )
         )
-
-# Register the 
-WorkerRegistryController.register_worker(worker=SquareAssembler)

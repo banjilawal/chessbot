@@ -37,9 +37,7 @@ class Rank(Model):
     _coord_service: CoordService
     _vector_service: VectorService
     
-    def __init__(self,
-            persona: Persona,
-    ):
+    def __init__(self,persona: Persona,):
         """
         Args:
             persona: Persona
@@ -73,9 +71,7 @@ class Rank(Model):
         if isinstance(other, Rank):
             return self._persona == other.persona
         return False
-    
-    def __hash__(self):
-        return hash(self._id)
+
     
     # def __str__(self):
     #     return (

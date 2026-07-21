@@ -1,7 +1,7 @@
-# src/err/validation/blueprint/excess/board/exception.py
+# src/err/root/excess/board/exception.py
 
 """
-Module: err.validation.blueprint.excess.board.exception
+Module: err.root.excess.board.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -40,7 +40,7 @@ class ExcessBoardBlueprintFlagsException(ExcessBlueprintFlagsException):
     Super Class:
         ExcessBlueprintFlagsException
     """
-    MSG = "More than one BoardCCertifier test. enabled."
+    MSG = "More than one BoardCRootCertifier test. enabled."
     ERR_CODE = "EXCESS_BOARD_BLUEPRINT_FLAGS_FAILURE"
     
     def __init__(

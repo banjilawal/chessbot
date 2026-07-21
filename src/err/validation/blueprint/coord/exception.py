@@ -1,30 +1,33 @@
-# src/err/validation/blueprint/coord/exception.py
+# src/err/root/coord/exception.py
 
 """
-Module: err.validation.blueprint.coord.exception
+Module: err.root.coord.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
 """
 
 from __future__ import annotations
-from err import CertifierException
+
+from typing import Any, Optional
+
+from err import RootCertifierException
 from result import MethodResultType
 
 
 __all__ = [
-    # ======================# COORD_BLUEPRINT_VALIDATOR_FAILURE #======================#
-    "CoordCertifierException",
+    # ======================# COORD_ROOT_CERTIFIER_FAILURE #======================#
+    "CoordRootCertifierException",
 ]
 
-# ======================# COORD_BLUEPRINT_VALIDATOR_FAILURE #======================#
-class CoordCertifierException(RootCertifierException):
+# ======================# COORD_ROOT_CERTIFIER_FAILURE #======================#
+class CoordRootCertifierException(RootCertifierException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a candidate failed a CoordCertifier test.
+        1.  Indicate that a candidate failed a CoordRootCertifier test.
 
     Attributes:
             msg: Optional[str]
@@ -39,10 +42,10 @@ class CoordCertifierException(RootCertifierException):
     Provides:
 
     Super Class:
-        CertifierException
+        RootCertifierException
     """
-    MSG = "CoordCertifier test."
-    ERR_CODE = "COORD_BLUEPRINT_VALIDATOR_FAILURE"
+    MSG = "Coord root certification failure."
+    ERR_CODE = "COORD_ROOT_CERTIFIER_FAILURE"
     
     def __init__(
             self,

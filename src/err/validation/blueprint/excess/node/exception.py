@@ -1,7 +1,7 @@
-# src/err/validation/blueprint/excess/node/exception.py
+# src/err/root/excess/node/exception.py
 
 """
-Module: err.validation.blueprint.excess.node.exception
+Module: err.root.excess.node.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -40,7 +40,7 @@ class ExcessNodeBlueprintFlagsException(ExcessBlueprintFlagsException):
     Super Class:
         ExcessBlueprintFlagsException
     """
-    MSG = "More than one NodeCCertifier test. enabled."
+    MSG = "More than one NodeCRootCertifier test. enabled."
     ERR_CODE = "EXCESS_NODE_BLUEPRINT_FLAGS_FAILURE"
     
     def __init__(

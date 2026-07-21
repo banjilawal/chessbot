@@ -1,30 +1,33 @@
-# src/err/validation/blueprint/rank/exception.py
+# src/err/root/rank/exception.py
 
 """
-Module: err.validation.blueprint.rank.exception
+Module: err.root.rank.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
 """
 
 from __future__ import annotations
-from err import CertifierException
+
+from typing import Any, Optional
+
+from err import RootCertifierException
 from result import MethodResultType
 
 
 __all__ = [
-    # ======================# RANK_BLUEPRINT_VALIDATOR_FAILURE #======================#
-    "RankCertifierException",
+    # ======================# RANK_ROOT_CERTIFIER_FAILURE #======================#
+    "RankRootCertifierException",
 ]
 
-# ======================# RANK_BLUEPRINT_VALIDATOR_FAILURE #======================#
-class RankCertifierException(RootCertifierException):
+# ======================# RANK_ROOT_CERTIFIER_FAILURE #======================#
+class RankRootCertifierException(RootCertifierException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a candidate failed a RankCertifier test.
+        1.  Indicate that a candidate failed a RankRootCertifier test.
 
     Attributes:
             msg: Optional[str]
@@ -39,10 +42,10 @@ class RankCertifierException(RootCertifierException):
     Provides:
 
     Super Class:
-        CertifierException
+        RootCertifierException
     """
-    MSG = "RankCertifier test."
-    ERR_CODE = "RANK_BLUEPRINT_VALIDATOR_FAILURE"
+    MSG = "Rank root certification failure."
+    ERR_CODE = "RANK_ROOT_CERTIFIER_FAILURE"
     
     def __init__(
             self,

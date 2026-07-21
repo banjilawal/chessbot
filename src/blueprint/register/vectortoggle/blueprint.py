@@ -28,8 +28,8 @@ class VectorToggleRegisterBlueprint(RegisterBlueprint[VectorToggleRegister]):
     Attributes:
         a: VectorToggle
         b: VectorToggle
-        model_class: Optional[Type[VectortoggleRegister]]
-        null_exception: Optional[VectortoggleRegisterNullException]
+        model_class: Optional[Type[VectorToggleRegister]]
+        null_exception: Optional[VectorToggleRegisterNullException]
     
     Provides:
     
@@ -50,8 +50,8 @@ class VectorToggleRegisterBlueprint(RegisterBlueprint[VectorToggleRegister]):
         Args:
             a: VectorToggle
             b: VectorToggle
-            model_class: Optional[Type[VectortoggleRegister]]
-            null_exception: Optional[VectortoggleRegisterNullException]
+            model_class: Optional[Type[VectorToggleRegister]]
+            null_exception: Optional[VectorToggleRegisterNullException]
         """
         super().__init__(
             a=a,
@@ -62,11 +62,11 @@ class VectorToggleRegisterBlueprint(RegisterBlueprint[VectorToggleRegister]):
     
     @property
     def model_class(self) -> Type[VectorToggle]:
-        return cast(Type[VectorToggle], self.model_class)
+        return cast(Type[VectorToggle], super().model_class)
     
     @property
     def null_exception(self) -> VectorToggleRegisterNullException:
-        return cast(VectorToggleRegisterNullException, self.null_exception)
+        return cast(VectorToggleRegisterNullException, super().null_exception)
     
     @property
     def a(self) -> VectorToggle:

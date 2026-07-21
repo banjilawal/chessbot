@@ -53,7 +53,7 @@ class CoordBlueprint(ModelBlueprint[Coord]):
         
     @property
     def model_class(self) -> Type[Coord]:
-        return cast(Type[Coord], self.model_class)
+        return cast(Type[Coord], super().model_class)
     
     @property
     def row(self) -> int:

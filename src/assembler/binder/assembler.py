@@ -20,10 +20,10 @@ from model.state.team import (
 class TeamTableBuilder(Builder[TeamBinder]):
     OPERATION_NAME = "binder_assembler"
     
-    @classmethod
+    
     @LoggingLevelRouter.monitor
     def build(
-            cls,
+            self,
             blueprint: BoardBinderBlueprint,
             toolkit: TeamBinderToolkit | None = None,
     ) -> BuildResult[TeamBinder]:

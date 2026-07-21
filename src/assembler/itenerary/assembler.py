@@ -11,16 +11,16 @@ from __future__ import annotations
 
 from blueprint import ItineraryBlueprint
 from result import BuildResult
-from operation import Assembler
+from assembler import Assembler
 from util import  LoggingLevelRouter
 from model import Itinerary
 
 class ItineraryAssembler(Assembler[Itinerary]):
     NAME = "itinerary_assembler"
     
-    @classmethod
+    
     @LoggingLevelRouter.monitor
-    def execute(cls, blueprint: ItineraryBlueprint,) -> BuildResult[Itinerary]:
+    def execute(self, blueprint: ItineraryBlueprint,) -> BuildResult[Itinerary]:
         """
         Assemble the appropriate Itinerary.
 
@@ -30,7 +30,7 @@ class ItineraryAssembler(Assembler[Itinerary]):
             BuildResult[Itinerary]
         Raises:
         """
-        method = f"{cls.__name__}.execute"
+        method = f"{self.__class__.__name__}.execute"
         return BuildResult.success(
             Itinerary(
                 id=blueprint.id,

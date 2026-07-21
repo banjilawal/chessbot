@@ -1,7 +1,7 @@
-# src/builder/game/builder.py
+# src/builder/model/game/builder.py
 
 """
-Module: builder.game.builder
+Module: builder.model.game.builder
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -13,7 +13,7 @@ from model.state.game import Game, GameBuilderException
 from system import Builder, BuildResult, LoggingLevelRouter
 
 
-class GameBuilder(Builder[Game]):
+class GameBuilder(ModelBuilder[Game]):
     """
     Role
         -   Transaction Worker

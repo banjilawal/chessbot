@@ -1,30 +1,33 @@
-# src/err/validation/blueprint/team/exception.py
+# src/err/root/team/exception.py
 
 """
-Module: err.validation.blueprint.team.exception
+Module: err.root.team.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
 """
 
 from __future__ import annotations
-from err import CertifierException
+
+from typing import Any, Optional
+
+from err import RootCertifierException
 from result import MethodResultType
 
 
 __all__ = [
-    # ======================# TEAM_BLUEPRINT_VALIDATOR_FAILURE #======================#
-    "TeamCertifierException",
+    # ======================# TEAM_ROOT_CERTIFIER_FAILURE #======================#
+    "TeamRootCertifierException",
 ]
 
-# ======================# TEAM_BLUEPRINT_VALIDATOR_FAILURE #======================#
-class TeamCertifierException(RootCertifierException):
+# ======================# TEAM_ROOT_CERTIFIER_FAILURE #======================#
+class TeamRootCertifierException(RootCertifierException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a candidate failed a TeamCertifier test.
+        1.  Indicate that a candidate failed a TeamRootCertifier test.
 
     Attributes:
             msg: Optional[str]
@@ -39,10 +42,10 @@ class TeamCertifierException(RootCertifierException):
     Provides:
 
     Super Class:
-        CertifierException
+        RootCertifierException
     """
-    MSG = "TeamCertifier test."
-    ERR_CODE = "TEAM_BLUEPRINT_VALIDATOR_FAILURE"
+    MSG = "Team root certification failure."
+    ERR_CODE = "TEAM_ROOT_CERTIFIER_FAILURE"
     
     def __init__(
             self,

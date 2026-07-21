@@ -10,7 +10,7 @@ version: 1.0.1
 # =========== REGISTER.MODEL PACKAGE ===========#
 
 # Packages
-from .cartesian import *
+from .vectortoggle import *
 from .coord import *
 from .number import *
 from .square import *

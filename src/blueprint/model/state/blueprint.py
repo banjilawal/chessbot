@@ -52,7 +52,7 @@ class StateModelBlueprint(ModelBlueprint[[T]]):
     
     @property
     def model_class(self) -> Type[Model[T]]:
-        return cast(Type[Model[T]], self.model_class)
+        return cast(Type[Model[T]], super().model_class)
     
     @property
     def id(self) -> Optional[int]:

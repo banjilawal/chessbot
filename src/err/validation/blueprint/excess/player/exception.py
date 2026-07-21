@@ -1,7 +1,7 @@
-# src/err/validation/blueprint/excess/player/exception.py
+# src/err/root/excess/player/exception.py
 
 """
-Module: err.validation.blueprint.excess.player.exception
+Module: err.root.excess.player.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -40,7 +40,7 @@ class ExcessPlayerBlueprintFlagsException(ExcessBlueprintFlagsException):
     Super Class:
         ExcessBlueprintFlagsException
     """
-    MSG = "More than one PlayerCCertifier test. enabled."
+    MSG = "More than one PlayerCRootCertifier test. enabled."
     ERR_CODE = "EXCESS_PLAYER_BLUEPRINT_FLAGS_FAILURE"
     
     def __init__(

@@ -1,30 +1,33 @@
-# src/err/validation/blueprint/token/exception.py
+# src/err/root/token/exception.py
 
 """
-Module: err.validation.blueprint.token.exception
+Module: err.root.token.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
 """
 
 from __future__ import annotations
-from err import CertifierException
+
+from typing import Any, Optional
+
+from err import RootCertifierException
 from result import MethodResultType
 
 
 __all__ = [
-    # ======================# TOKEN_BLUEPRINT_VALIDATOR_FAILURE #======================#
-    "TokenCertifierException",
+    # ======================# TOKEN_ROOT_CERTIFIER_FAILURE #======================#
+    "TokenRootCertifierException",
 ]
 
-# ======================# TOKEN_BLUEPRINT_VALIDATOR_FAILURE #======================#
-class TokenCertifierException(RootCertifierException):
+# ======================# TOKEN_ROOT_CERTIFIER_FAILURE #======================#
+class TokenRootCertifierException(RootCertifierException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a candidate failed a TokenCertifier test.
+        1.  Indicate that a candidate failed a TokenRootCertifier test.
 
     Attributes:
             msg: Optional[str]
@@ -39,10 +42,10 @@ class TokenCertifierException(RootCertifierException):
     Provides:
 
     Super Class:
-        CertifierException
+        RootCertifierException
     """
-    MSG = "TokenCertifier test."
-    ERR_CODE = "TOKEN_BLUEPRINT_VALIDATOR_FAILURE"
+    MSG = "Token root certification failure."
+    ERR_CODE = "TOKEN_ROOT_CERTIFIER_FAILURE"
     
     def __init__(
             self,

@@ -11,15 +11,15 @@ from __future__ import annotations
 
 from model import Query
 from result import BuildResult
-from operation import Assembler
+from assembler import Assembler
 from util import LoggingLevelRouter
 
 class QueryAssembler(Assembler[Query]):
     NAME = "query_assembler"
     
-    @classmethod
+    
     @LoggingLevelRouter.monitor
-    def execute(cls, blueprint: QueryBlueprint,) -> BuildResult[Query]:
+    def execute(self, blueprint: QueryBlueprint,) -> BuildResult[Query]:
         """
         Assemble the appropriate Query.
 
@@ -29,7 +29,7 @@ class QueryAssembler(Assembler[Query]):
             BuildResult[Query]
         Raises:
         """
-        method = f"{cls.__name__}.execute"
+        method = f"{self.__class__.__name__}.execute"
         return BuildResult.success(
             Query(
                 x=blueprint.x,

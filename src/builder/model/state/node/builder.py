@@ -1,7 +1,7 @@
-# src/builder/node/builder.py
+# src/builder/model/node/builder.py
 
 """
-Module: builder.node.builder
+Module: builder.model.node.builder
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -14,7 +14,7 @@ from logic.square import Square, SquareValidator
 from system import BuildResult, Builder, LoggingLevelRouter
 
 
-class NodeBuilder(Builder[Node]):
+class NodeBuilder(ModelBuilder[Node]):
     """
     Role
         -   Transaction Worker

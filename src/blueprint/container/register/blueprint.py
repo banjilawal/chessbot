@@ -66,4 +66,4 @@ class RegisterSetBlueprint(ContainerBlueprint[Register]):
     
     @property
     def null_exception(self) -> RegisterSetNullException:
-        return cast(RegisterSetNullException, self.null_exception)
+        return cast(RegisterSetNullException, super().null_exception)

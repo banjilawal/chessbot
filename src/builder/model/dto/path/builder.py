@@ -1,7 +1,7 @@
-# src/builder/dto/path/builder.py
+# src/builder/model/dto/path/builder.py
 
 """
-Module: builder.dto.path.builder
+Module: builder.model.dto.path.builder
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

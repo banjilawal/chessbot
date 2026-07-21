@@ -1,30 +1,33 @@
-# src/err/validation/blueprint/schema/exception.py
+# src/err/root/schema/exception.py
 
 """
-Module: err.validation.blueprint.schema.exception
+Module: err.root.schema.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
 """
 
 from __future__ import annotations
-from err import CertifierException
+
+from typing import Any, Optional
+
+from err import RootCertifierException
 from result import MethodResultType
 
 
 __all__ = [
-    # ======================# SCHEMA_BLUEPRINT_VALIDATOR_FAILURE #======================#
-    "SchemaCertifierException",
+    # ======================# SCHEMA_ROOT_CERTIFIER_FAILURE #======================#
+    "SchemaRootCertifierException",
 ]
 
-# ======================# SCHEMA_BLUEPRINT_VALIDATOR_FAILURE #======================#
-class SchemaCertifierException(RootCertifierException):
+# ======================# SCHEMA_ROOT_CERTIFIER_FAILURE #======================#
+class SchemaRootCertifierException(RootCertifierException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a candidate failed a SchemaCertifier test.
+        1.  Indicate that a candidate failed a SchemaRootCertifier test.
 
     Attributes:
             msg: Optional[str]
@@ -39,10 +42,10 @@ class SchemaCertifierException(RootCertifierException):
     Provides:
 
     Super Class:
-        CertifierException
+        RootCertifierException
     """
-    MSG = "SchemaCertifier test."
-    ERR_CODE = "SCHEMA_BLUEPRINT_VALIDATOR_FAILURE"
+    MSG = "Schema root certification failure."
+    ERR_CODE = "SCHEMA_ROOT_CERTIFIER_FAILURE"
     
     def __init__(
             self,

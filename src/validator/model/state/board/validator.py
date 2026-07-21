@@ -13,7 +13,7 @@ from typing import Any, cast
 
 from err import BoardValidatorException
 from model import Board
-from root import BoardRootCertifier
+from err.root import BoardRootCertifier
 from result import ValidationResult
 from util import LoggingLevelRouter
 from validator import ModelValidator

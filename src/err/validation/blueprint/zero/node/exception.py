@@ -1,7 +1,7 @@
-# src/err/validation/blueprint/zero/node/__init__.py
+# src/err/root/zero/node/__init__.py
 
 """
-Module: err.validation.blueprint.zero.node.exception
+Module: err.root.zero.node.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -24,7 +24,7 @@ class ZeroNodeBlueprintFlagsException(ZeroBlueprintFlagsException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicates that no NodeCertifier test. enabled.
+        1.  Indicates that no NodeRootCertifier test. enabled.
 
     Attributes:
         msg: Optional[str]
@@ -40,7 +40,7 @@ class ZeroNodeBlueprintFlagsException(ZeroBlueprintFlagsException):
     Super Class:
         ZeroBlueprintFlagsException
     """
-    MSG = "No NodeCCertifier test. enabled."
+    MSG = "No NodeCRootCertifier test. enabled."
     ERR_CODE = "ZERO_NODE_BLUEPRINT_FLAGS_FAILURE"
     
     def __init__(

@@ -59,7 +59,7 @@ class IdentityRegisterBlueprint(RegisterBlueprint[IdentityRegister]):
     
     @property
     def model_class(self) -> Type[IdentityRegister]:
-        return cast(Type[IdentityRegister], self.model_class)
+        return cast(Type[IdentityRegister], super().model_class)
     
     @property
     def id(self) -> int:

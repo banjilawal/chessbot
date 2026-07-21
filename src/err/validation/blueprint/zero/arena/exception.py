@@ -1,7 +1,7 @@
-# src/err/validation/blueprint/zero/arena/__init__.py
+# src/err/root/zero/arena/__init__.py
 
 """
-Module: err.validation.blueprint.zero.arena.exception
+Module: err.root.zero.arena.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -24,7 +24,7 @@ class ZeroArenaBlueprintFlagsException(ZeroBlueprintFlagsException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicates that no ArenaCertifier test. enabled.
+        1.  Indicates that no ArenaRootCertifier test. enabled.
 
     Attributes:
         msg: Optional[str]
@@ -40,7 +40,7 @@ class ZeroArenaBlueprintFlagsException(ZeroBlueprintFlagsException):
     Super Class:
         ZeroBlueprintFlagsException
     """
-    MSG = "No ArenaCCertifier test. enabled."
+    MSG = "No ArenaCRootCertifier test. enabled."
     ERR_CODE = "ZERO_ARENA_BLUEPRINT_FLAGS_FAILURE"
     
     def __init__(

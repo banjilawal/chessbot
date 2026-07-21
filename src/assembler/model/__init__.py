@@ -10,7 +10,6 @@ version: 1.0.1
 # =========== ASSEMBLER.MODEL.MODEL PACKAGE ===========#
 
 # Packages
-from .binder import *
 from .board import *
 from .coord import *
 from .rank import *
@@ -21,3 +20,4 @@ from .token import *
 from .vector import *
 
 # Modules
+from .assembler import ModelAssembler

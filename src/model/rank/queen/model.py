@@ -38,14 +38,12 @@ class Queen(Rank):
 
     def __init__(
             self,
-            id: int,
             persona: Persona | None = Persona.QUEEN,
             spanner: QueenSpanner = QueenSpanner(),
     ):
         """
         Args:
-            id: int
-            persona: Persona
+                        persona: Persona
             spanner: QueenSpanner
         """
         super().__init__(

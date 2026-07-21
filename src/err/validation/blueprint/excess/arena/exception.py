@@ -1,7 +1,7 @@
-# src/err/validation/blueprint/excess/arena/exception.py
+# src/err/root/excess/arena/exception.py
 
 """
-Module: err.validation.blueprint.excess.arena.exception
+Module: err.root.excess.arena.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -40,7 +40,7 @@ class ExcessArenaBlueprintFlagsException(ExcessBlueprintFlagsException):
     Super Class:
         ExcessBlueprintFlagsException
     """
-    MSG = "More than one ArenaCCertifier test. enabled."
+    MSG = "More than one ArenaCRootCertifier test. enabled."
     ERR_CODE = "EXCESS_ARENA_BLUEPRINT_FLAGS_FAILURE"
     
     def __init__(

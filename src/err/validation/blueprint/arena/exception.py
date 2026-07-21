@@ -1,30 +1,33 @@
-# src/err/validation/blueprint/arena/exception.py
+# src/err/root/arena/exception.py
 
 """
-Module: err.validation.blueprint.arena.exception
+Module: err.root.arena.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
 """
 
 from __future__ import annotations
-from err import CertifierException
+
+from typing import Any, Optional
+
+
 from result import MethodResultType
 
 
 __all__ = [
-    # ======================# ARENA_BLUEPRINT_VALIDATOR_FAILURE #======================#
-    "ArenaCertifierException",
+    # ======================# ARENA_ROOT_CERTIFIER_FAILURE #======================#
+    "ArenaRootCertifierException",
 ]
 
-# ======================# ARENA_BLUEPRINT_VALIDATOR_FAILURE #======================#
-class ArenaCertifierException(RootCertifierException):
+# ======================# ARENA_ROOT_CERTIFIER_FAILURE #======================#
+class ArenaRootCertifierException(RootCertifierException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a candidate failed a ArenaCertifier test.
+        1.  Indicate that a candidate failed an ArenaRootCertifier test.
 
     Attributes:
             msg: Optional[str]
@@ -39,10 +42,10 @@ class ArenaCertifierException(RootCertifierException):
     Provides:
 
     Super Class:
-        CertifierException
+        RootCertifierException
     """
-    MSG = "ArenaCertifier test."
-    ERR_CODE = "ARENA_BLUEPRINT_VALIDATOR_FAILURE"
+    MSG = "Arena root certification failure."
+    ERR_CODE = "ARENA_ROOT_CERTIFIER_FAILURE"
     
     def __init__(
             self,

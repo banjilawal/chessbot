@@ -1,7 +1,7 @@
-# src/err/validation/blueprint/excess/team/exception.py
+# src/err/root/excess/team/exception.py
 
 """
-Module: err.validation.blueprint.excess.team.exception
+Module: err.root.excess.team.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -40,7 +40,7 @@ class ExcessTeamBlueprintFlagsException(ExcessBlueprintFlagsException):
     Super Class:
         ExcessBlueprintFlagsException
     """
-    MSG = "More than one TeamCCertifier test. enabled."
+    MSG = "More than one TeamCRootCertifier test. enabled."
     ERR_CODE = "EXCESS_TEAM_BLUEPRINT_FLAGS_FAILURE"
     
     def __init__(

@@ -1,7 +1,7 @@
-# src/builder/binder/builder.py
+# src/builder/model/binder/builder.py
 
 """
-Module: builder.binder.builder
+Module: builder.model.binder.builder
 Author: Banji Lawal
 Created: 2025-02-08
 version: 1.0.0

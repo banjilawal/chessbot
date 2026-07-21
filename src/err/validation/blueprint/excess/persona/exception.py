@@ -1,7 +1,7 @@
-# src/err/validation/blueprint/excess/persona/exception.py
+# src/err/root/excess/persona/exception.py
 
 """
-Module: err.validation.blueprint.excess.persona.exception
+Module: err.root.excess.persona.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -40,7 +40,7 @@ class ExcessPersonaBlueprintFlagsException(ExcessBlueprintFlagsException):
     Super Class:
         ExcessBlueprintFlagsException
     """
-    MSG = "More than one PersonaCCertifier test. enabled."
+    MSG = "More than one PersonaCRootCertifier test. enabled."
     ERR_CODE = "EXCESS_PERSONA_BLUEPRINT_FLAGS_FAILURE"
     
     def __init__(

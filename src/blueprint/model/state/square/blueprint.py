@@ -65,7 +65,7 @@ class SquareBlueprint(StateModelBlueprint[Square]):
     
     @property
     def model_class(self) -> Type[Square]:
-        return cast(Type[Square], self.model_class)
+        return cast(Type[Square], super().model_class)
     
     @property
     def name(self) -> str:

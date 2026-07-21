@@ -1,7 +1,7 @@
-# src/err/validation/blueprint/zero/team/__init__.py
+# src/err/root/zero/team/__init__.py
 
 """
-Module: err.validation.blueprint.zero.team.exception
+Module: err.root.zero.team.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -24,7 +24,7 @@ class ZeroTeamBlueprintFlagsException(ZeroBlueprintFlagsException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicates that no TeamCertifier test. enabled.
+        1.  Indicates that no TeamRootCertifier test. enabled.
 
     Attributes:
         msg: Optional[str]
@@ -40,7 +40,7 @@ class ZeroTeamBlueprintFlagsException(ZeroBlueprintFlagsException):
     Super Class:
         ZeroBlueprintFlagsException
     """
-    MSG = "No TeamCCertifier test. enabled."
+    MSG = "No TeamCRootCertifier test. enabled."
     ERR_CODE = "ZERO_TEAM_BLUEPRINT_FLAGS_FAILURE"
     
     def __init__(

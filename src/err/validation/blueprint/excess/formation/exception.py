@@ -1,7 +1,7 @@
-# src/err/validation/blueprint/excess/formation/exception.py
+# src/err/root/excess/formation/exception.py
 
 """
-Module: err.validation.blueprint.excess.formation.exception
+Module: err.root.excess.formation.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -40,7 +40,7 @@ class ExcessFormationBlueprintFlagsException(ExcessBlueprintFlagsException):
     Super Class:
         ExcessBlueprintFlagsException
     """
-    MSG = "More than one FormationCCertifier test. enabled."
+    MSG = "More than one FormationCRootCertifier test. enabled."
     ERR_CODE = "EXCESS_FORMATION_BLUEPRINT_FLAGS_FAILURE"
     
     def __init__(

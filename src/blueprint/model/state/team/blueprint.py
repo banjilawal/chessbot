@@ -62,7 +62,7 @@ class TeamBlueprint(StateModelBlueprint[Team]):
         
     @property
     def model_class(self) -> Type[Team]:
-        return cast(Type[Team], self.model_class)
+        return cast(Type[Team], super().model_class)
     
     @property
     def board(self) -> Board:

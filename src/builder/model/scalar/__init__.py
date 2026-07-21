@@ -1,7 +1,7 @@
-# src/builder/scalar/__init__.py
+# src/builder/model/scalar/__init__.py
 
 """
-Module: builder.scalar.__init__
+Module: builder.model.scalar.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

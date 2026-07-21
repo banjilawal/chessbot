@@ -1,7 +1,7 @@
-# src/err/validation/blueprint/excess/game/exception.py
+# src/err/root/excess/game/exception.py
 
 """
-Module: err.validation.blueprint.excess.game.exception
+Module: err.root.excess.game.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -40,7 +40,7 @@ class ExcessGameBlueprintFlagsException(ExcessBlueprintFlagsException):
     Super Class:
         ExcessBlueprintFlagsException
     """
-    MSG = "More than one GameCCertifier test. enabled."
+    MSG = "More than one GameCRootCertifier test. enabled."
     ERR_CODE = "EXCESS_GAME_BLUEPRINT_FLAGS_FAILURE"
     
     def __init__(

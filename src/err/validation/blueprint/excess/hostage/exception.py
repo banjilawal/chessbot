@@ -1,7 +1,7 @@
-# src/err/validation/blueprint/excess/hostage/exception.py
+# src/err/root/excess/hostage/exception.py
 
 """
-Module: err.validation.blueprint.excess.hostage.exception
+Module: err.root.excess.hostage.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -40,7 +40,7 @@ class ExcessHostageBlueprintFlagsException(ExcessBlueprintFlagsException):
     Super Class:
         ExcessBlueprintFlagsException
     """
-    MSG = "More than one HostageCCertifier test. enabled."
+    MSG = "More than one HostageCRootCertifier test. enabled."
     ERR_CODE = "EXCESS_HOSTAGE_BLUEPRINT_FLAGS_FAILURE"
     
     def __init__(

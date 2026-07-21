@@ -1,14 +1,17 @@
-# src/err/validation/blueprint/id/exception.py
+# src/err/root/id/exception.py
 
 """
-Module: err.validation.blueprint.id.exception
+Module: err.root.id.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
 """
 
 from __future__ import annotations
-from err import CertifierException
+
+from typing import Any, Optional
+
+from err import RootCertifierException
 from result import MethodResultType
 
 
@@ -39,7 +42,7 @@ class BlueprintIdValidatorException(RootCertifierException):
     Provides:
 
     Super Class:
-        CertifierException
+        RootCertifierException
     """
     MSG = "BlueprintId validation failed."
     ERR_CODE = "BLUEPRINT_ID_VALIDATOR_FAILURE"

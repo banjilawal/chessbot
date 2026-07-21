@@ -56,7 +56,7 @@ class VectorToggleBlueprint(ToggleBlueprint[VectorToggle]):
     
     @property
     def model_class(self) -> Type[VectorToggle]:
-        return cast(Type[VectorToggle], self.model_class)
+        return cast(Type[VectorToggle], super().model_class)
     
     @property
     def coord(self) -> Optional[Coord]:

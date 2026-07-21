@@ -38,13 +38,11 @@ class Rook(Rank):
 
     def __init__(
             self,
-            id: int,
             persona: Persona | None = Persona.ROOK,
             spanner: RookSpanner | None = RookSpanner(),
     ):
         """
         Args:
-            id: int
             persona: Persona
             spanner: RookSpanner
             coord_service: CoordService

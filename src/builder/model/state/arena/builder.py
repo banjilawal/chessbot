@@ -1,7 +1,7 @@
-# src/builder/arena/builder.py
+# src/builder/model/arena/builder.py
 
 """
-Module: builder.arena.builder
+Module: builder.model.arena.builder
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -16,7 +16,7 @@ from logic.arena import Arena, ArenaBuilderException, DuplicatePlayerInArenaExce
 from system import Builder, BuildResult, IdentityService, LoggingLevelRouter, ValidationResult, id_emitter
 
 
-class ArenaBuilder(Builder[Arena]):
+class ArenaBuilder(ModelBuilder[Arena]):
     """
     Role
         -   Transaction Worker

@@ -1,7 +1,7 @@
-# src/err/validation/blueprint/persona/exception.py
+# src/err/root/persona/exception.py
 
 """
-Module: err.validation.blueprint.persona.exception
+Module: err.root.persona.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,23 +10,23 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import CertifierException
+from err import RootCertifierException
 from result import MethodResultType
 
 
 __all__ = [
-    # ======================# PERSONA_BLUEPRINT_VALIDATOR_FAILURE #======================#
-    "PersonaCertifierException",
+    # ======================# PERSONA_ROOT_CERTIFIER_FAILURE #======================#
+    "PersonaRootCertifierException",
 ]
 
-# ======================# PERSONA_BLUEPRINT_VALIDATOR_FAILURE #======================#
-class PersonaCertifierException(RootCertifierException):
+# ======================# PERSONA_ROOT_CERTIFIER_FAILURE #======================#
+class PersonaRootCertifierException(RootCertifierException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a candidate failed a PersonaCertifier test.
+        1.  Indicate that a candidate failed a PersonaRootCertifier test.
 
     Attributes:
             msg: Optional[str]
@@ -41,10 +41,10 @@ class PersonaCertifierException(RootCertifierException):
     Provides:
 
     Super Class:
-        CertifierException
+        RootCertifierException
     """
-    MSG = "PersonaCertifier test."
-    ERR_CODE = "PERSONA_BLUEPRINT_VALIDATOR_FAILURE"
+    MSG = "Persona root certification failure."
+    ERR_CODE = "PERSONA_ROOT_CERTIFIER_FAILURE"
     
     def __init__(
             self,

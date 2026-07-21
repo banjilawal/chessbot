@@ -1,7 +1,7 @@
-# src/err/validation/blueprint/register/square/exception.py
+# src/err/root/register/square/exception.py
 
 """
-Module: err.validation.blueprint.register.square.exception
+Module: err.root.register.square.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -11,17 +11,18 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import RegisterCertifierException
+
+from err import RegisterRootCertifierException
 from result import MethodResultType
 
 
 __all__ = [
     # ======================# VECTOR_SQUARE_REGISTER_VALIDATOR_FAILURE #======================#
-    "SquareRegisterCertifierException",
+    "SquareRegisterRootCertifierException",
 ]
 
 # ======================# VECTOR_SQUARE_REGISTER_VALIDATOR_FAILURE #======================#
-class SquareRegisterCertifierException(RegisterCertifierException):
+class SquareRegisterRootCertifierException(RegisterRootCertifierException):
     """
     Role:
         -   Error Tracing
@@ -42,7 +43,7 @@ class SquareRegisterCertifierException(RegisterCertifierException):
     Provides:
 
     Super Class:
-        RegisterCertifierException
+        RegisterRootCertifierException
     """
     MSG = "VectorSquareRegisterCertifier failure."
     ERR_CODE = "VECTOR_SQUARE_REGISTER_VALIDATOR_FAILURE"

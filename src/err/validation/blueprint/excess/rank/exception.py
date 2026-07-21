@@ -1,7 +1,7 @@
-# src/err/validation/blueprint/excess/rank/exception.py
+# src/err/root/excess/rank/exception.py
 
 """
-Module: err.validation.blueprint.excess.rank.exception
+Module: err.root.excess.rank.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -40,7 +40,7 @@ class ExcessRankBlueprintFlagsException(ExcessBlueprintFlagsException):
     Super Class:
         ExcessBlueprintFlagsException
     """
-    MSG = "More than one RankCCertifier test. enabled."
+    MSG = "More than one RankCRootCertifier test. enabled."
     ERR_CODE = "EXCESS_RANK_BLUEPRINT_FLAGS_FAILURE"
     
     def __init__(

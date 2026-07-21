@@ -1,30 +1,33 @@
-# src/err/validation/blueprint/edge/exception.py
+# src/err/root/edge/exception.py
 
 """
-Module: err.validation.blueprint.edge.exception
+Module: err.root.edge.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
 """
 
 from __future__ import annotations
-from err import CertifierException
+
+from typing import Any, Optional
+
+from err import RootCertifierException
 from result import MethodResultType
 
 
 __all__ = [
-    # ======================# EDGE_BLUEPRINT_VALIDATOR_FAILURE #======================#
-    "EdgeCertifierException",
+    # ======================# EDGE_ROOT_CERTIFIER_FAILURE #======================#
+    "EdgeRootCertifierException",
 ]
 
-# ======================# EDGE_BLUEPRINT_VALIDATOR_FAILURE #======================#
-class EdgeCertifierException(RootCertifierException):
+# ======================# EDGE_ROOT_CERTIFIER_FAILURE #======================#
+class EdgeRootCertifierException(RootCertifierException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a candidate failed a EdgeCertifier test.
+        1.  Indicate that a candidate failed a EdgeRootCertifier test.
 
     Attributes:
             msg: Optional[str]
@@ -39,10 +42,10 @@ class EdgeCertifierException(RootCertifierException):
     Provides:
 
     Super Class:
-        CertifierException
+        RootCertifierException
     """
-    MSG = "EdgeCertifier test."
-    ERR_CODE = "EDGE_BLUEPRINT_VALIDATOR_FAILURE"
+    MSG = "Edge root certification failure."
+    ERR_CODE = "EDGE_ROOT_CERTIFIER_FAILURE"
     
     def __init__(
             self,

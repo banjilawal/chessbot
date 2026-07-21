@@ -1,30 +1,33 @@
-# src/err/validation/blueprint/formation/exception.py
+# src/err/root/formation/exception.py
 
 """
-Module: err.validation.blueprint.formation.exception
+Module: err.root.formation.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
 """
 
 from __future__ import annotations
-from err import CertifierException
+
+from typing import Any, Optional
+
+from err import RootCertifierException
 from result import MethodResultType
 
 
 __all__ = [
-    # ======================# FORMATION_BLUEPRINT_VALIDATOR_FAILURE #======================#
-    "FormationCertifierException",
+    # ======================# FORMATION_ROOT_CERTIFIER_FAILURE #======================#
+    "FormationRootCertifierException",
 ]
 
-# ======================# FORMATION_BLUEPRINT_VALIDATOR_FAILURE #======================#
-class FormationCertifierException(RootCertifierException):
+# ======================# FORMATION_ROOT_CERTIFIER_FAILURE #======================#
+class FormationRootCertifierException(RootCertifierException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a candidate failed a FormationCertifier test.
+        1.  Indicate that a candidate failed a FormationRootCertifier test.
 
     Attributes:
             msg: Optional[str]
@@ -39,10 +42,10 @@ class FormationCertifierException(RootCertifierException):
     Provides:
 
     Super Class:
-        CertifierException
+        RootCertifierException
     """
-    MSG = "FormationCertifier test."
-    ERR_CODE = "FORMATION_BLUEPRINT_VALIDATOR_FAILURE"
+    MSG = "Formation root certification failure."
+    ERR_CODE = "FORMATION_ROOT_CERTIFIER_FAILURE"
     
     def __init__(
             self,

@@ -9,22 +9,35 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from assembler import Assembler
+from assembler import ModelAssembler
 from blueprint import TokenBlueprint
 from result import BuildResult
 
 from util import LoggingLevelRouter
-from controller import WorkerRegistryController
 from model import CombatantToken, King, KingToken, Pawn, PawnToken, Token
 
-class TokenAssembler(Assembler[Token]):
-    NAME = "token_assembler"
+class TokenAssembler(ModelAssembler[Token]):
+    """
+    Role
+        -   Build Process Owner
+
+    Responsibilities:
+        1.  Create a Token instance from the safe blueprint.
+
+    Attributes:
+
+    Provides:
+        -   def execute(self, blueprint: TokenBlueprint,) -> BuildResult[Token]
+
+    Super Class:
+        ModelAssembler
+    """
     
-    @classmethod
+    
     @LoggingLevelRouter.monitor
-    def execute(cls, blueprint: TokenBlueprint,) -> BuildResult[Token]:
+    def execute(self, blueprint: TokenBlueprint,) -> BuildResult[Token]:
         """
-        Assemble the appropriate Token.
+        Assemble a Token from the Blueprint's contents.
 
         Args:
             blueprint: TokenBlueprint
@@ -32,7 +45,7 @@ class TokenAssembler(Assembler[Token]):
             BuildResult[Token]
         Raises:
         """
-        method = f"{cls.__name__}.execute"
+        method = f"{self.__class__.__name__}.execute"
         
         if isinstance(blueprint.rank, Pawn):
             return BuildResult.success(

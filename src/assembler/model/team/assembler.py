@@ -9,20 +9,20 @@ version: 1.0.1
 
 from __future__ import annotations
 
-
+from assembler import ModelAssembler
+from blueprint import TeamBlueprint
+from model import Team
 from result import BuildResult
 from util import LoggingLevelRouter
-from model import Team, TeamBlueprint
-from controller import WorkerRegistryController
 
-class TeamAssembler(Assembler[Team]):
-    NAME = "team_assembler"
+
+class TeamAssembler(ModelAssembler[Team]):
     
-    @classmethod
+    
     @LoggingLevelRouter.monitor
-    def execute(cls, blueprint: TeamBlueprint,) -> BuildResult[Team]:
+    def execute(self, blueprint: TeamBlueprint,) -> BuildResult[Team]:
         """
-        Assemble the appropriate Team.
+        Assemble a Team from the Blueprint's contents.
 
         Args:
             blueprint: TeamBlueprint
@@ -30,16 +30,14 @@ class TeamAssembler(Assembler[Team]):
             BuildResult[Team]
         Raises:
         """
-        method = f"{cls.__name__}.execute"
+        method = f"{self.__class__.__name__}.execute"
         return BuildResult.success(
             Team(
                 id=blueprint.id,
                 board=blueprint.board,
-                owner=blueprint.model_class,
-                schema=blueprint.schema,
+                owner=blueprint.owner,
+                archetype=blueprint.archetype,
             )
         )
 
-# Register the 
-WorkerRegistryController.register_worker(worker=TeamAssembler)
         

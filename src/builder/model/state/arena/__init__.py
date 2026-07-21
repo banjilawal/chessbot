@@ -1,7 +1,7 @@
-# src/builder/arena/__init__.py
+# src/builder/model/arena/__init__.py
 
 """
-Module: builder.arena.__init__
+Module: builder.model.arena.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

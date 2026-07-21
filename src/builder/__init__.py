@@ -11,26 +11,14 @@ version: 1.0.1
 # =========== BUILDER.PACKAGE ===========#
 
 # Packages
-from builder.model.state import *
-from builder.model.state import *
-from builder.model.coord import *
+
 from .container import *
-from builder.model.dto import *
-from builder.model.state.edge import *
+from .context import *
 from .endpoint import *
-from builder.model.state import *
-from builder.model.graph import *
-from builder.model.hostage import *
-from builder.model.state.node import *
-from builder.model.rank import *
+from .model import *
 from .register import *
-from builder.model.scalar import *
-from builder.model.scalar.snapshot import *
-from builder.model.space import *
-from builder.model.state import *
-from builder.model.state.team import *
-from builder.model.state import *
-from builder.model.vector import *
+from .space import *
+from .toggle import *
 
 # Modules
 from .builder import Builder

@@ -1,7 +1,7 @@
-# src/err/validation/blueprint/zero/rank/__init__.py
+# src/err/root/zero/rank/__init__.py
 
 """
-Module: err.validation.blueprint.zero.rank.exception
+Module: err.root.zero.rank.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -24,7 +24,7 @@ class ZeroRankBlueprintFlagsException(ZeroBlueprintFlagsException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicates that no RankCertifier test. enabled.
+        1.  Indicates that no RankRootCertifier test. enabled.
 
     Attributes:
         msg: Optional[str]
@@ -40,7 +40,7 @@ class ZeroRankBlueprintFlagsException(ZeroBlueprintFlagsException):
     Super Class:
         ZeroBlueprintFlagsException
     """
-    MSG = "No RankCCertifier test. enabled."
+    MSG = "No RankCRootCertifier test. enabled."
     ERR_CODE = "ZERO_RANK_BLUEPRINT_FLAGS_FAILURE"
     
     def __init__(

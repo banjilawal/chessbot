@@ -1,7 +1,7 @@
-# src/err/validation/blueprint/excess/schema/exception.py
+# src/err/root/excess/schema/exception.py
 
 """
-Module: err.validation.blueprint.excess.schema.exception
+Module: err.root.excess.schema.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -40,7 +40,7 @@ class ExcessSchemaBlueprintFlagsException(ExcessBlueprintFlagsException):
     Super Class:
         ExcessBlueprintFlagsException
     """
-    MSG = "More than one SchemaCCertifier test. enabled."
+    MSG = "More than one SchemaCRootCertifier test. enabled."
     ERR_CODE = "EXCESS_SCHEMA_BLUEPRINT_FLAGS_FAILURE"
     
     def __init__(

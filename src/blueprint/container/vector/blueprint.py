@@ -66,4 +66,4 @@ class VectorSetBlueprint(ContainerBlueprint[Vector]):
     
     @property
     def null_exception(self) -> VectorSetNullException:
-        return cast(VectorSetNullException, self.null_exception)
+        return cast(VectorSetNullException, super().null_exception)

@@ -1,7 +1,7 @@
-# src/err/validation/blueprint/zero/edge/__init__.py
+# src/err/root/zero/edge/__init__.py
 
 """
-Module: err.validation.blueprint.zero.edge.exception
+Module: err.root.zero.edge.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -24,7 +24,7 @@ class ZeroEdgeBlueprintFlagsException(ZeroBlueprintFlagsException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicates that no EdgeCertifier test. enabled.
+        1.  Indicates that no EdgeRootCertifier test. enabled.
 
     Attributes:
         msg: Optional[str]
@@ -40,7 +40,7 @@ class ZeroEdgeBlueprintFlagsException(ZeroBlueprintFlagsException):
     Super Class:
         ZeroBlueprintFlagsException
     """
-    MSG = "No EdgeCCertifier test. enabled."
+    MSG = "No EdgeCRootCertifier test. enabled."
     ERR_CODE = "ZERO_EDGE_BLUEPRINT_FLAGS_FAILURE"
     
     def __init__(

@@ -51,7 +51,7 @@ class RankBlueprint(ModelBlueprint[Rank]):
         
     @property
     def model_class(self) -> Type[Rank]:
-        return cast(Type[Rank], self.model_class)
+        return cast(Type[Rank], super().model_class)
     
     @property
     def persona(self) -> Persona:

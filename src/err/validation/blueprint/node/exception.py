@@ -1,30 +1,33 @@
-# src/err/validation/blueprint/node/exception.py
+# src/err/root/node/exception.py
 
 """
-Module: err.validation.blueprint.node.exception
+Module: err.root.node.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
 """
 
 from __future__ import annotations
-from err import CertifierException
+
+from typing import Any, Optional
+
+from err import RootCertifierException
 from result import MethodResultType
 
 
 __all__ = [
-    # ======================# NODE_BLUEPRINT_VALIDATOR_FAILURE #======================#
-    "NodeCertifierException",
+    # ======================# NODE_ROOT_CERTIFIER_FAILURE #======================#
+    "NodeRootCertifierException",
 ]
 
-# ======================# NODE_BLUEPRINT_VALIDATOR_FAILURE #======================#
-class NodeCertifierException(RootCertifierException):
+# ======================# NODE_ROOT_CERTIFIER_FAILURE #======================#
+class NodeRootCertifierException(RootCertifierException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a candidate failed a NodeCertifier test.
+        1.  Indicate that a candidate failed a NodeRootCertifier test.
 
     Attributes:
             msg: Optional[str]
@@ -39,10 +42,10 @@ class NodeCertifierException(RootCertifierException):
     Provides:
 
     Super Class:
-        CertifierException
+        RootCertifierException
     """
-    MSG = "NodeCertifier test."
-    ERR_CODE = "NODE_BLUEPRINT_VALIDATOR_FAILURE"
+    MSG = "Node root certification failure."
+    ERR_CODE = "NODE_ROOT_CERTIFIER_FAILURE"
     
     def __init__(
             self,

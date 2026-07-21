@@ -61,7 +61,7 @@ class VectorRegisterBlueprint(RegisterBlueprint[VectorRegister]):
     
     @property
     def model_class(self) -> Type[VectorRegister]:
-        return cast(Type[VectorRegister], self.model_class)
+        return cast(Type[VectorRegister], super().model_class)
     
     @property
     def u(self) -> Vector:
@@ -81,4 +81,4 @@ class VectorRegisterBlueprint(RegisterBlueprint[VectorRegister]):
     
     @property
     def null_exception(self) -> RegisterNullException:
-        return cast(VectorRegisterNullException, self._null_exception)
+        return cast(VectorRegisterNullException, super().null_exception)

@@ -49,7 +49,7 @@ class Blueprint(ABC, Generic[T]):
             null_exception: Optional[NullException]
         """
         self._model_class = model_class
-        self._null_exception = null_exception
+        super().null_exception = null_exception
     
     @property
     def model_class(self) -> Type[T]:
@@ -61,4 +61,4 @@ class Blueprint(ABC, Generic[T]):
     
     @property
     def null_exception(self) -> NullException:
-        return self._null_exception
+        return super().null_exception

@@ -1,7 +1,7 @@
-# src/err/validation/blueprint/register/operand/exception.py
+# src/err/root/register/operand/exception.py
 
 """
-Module: err.validation.blueprint.register.operand.exception
+Module: err.root.register.operand.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -11,17 +11,18 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import RegisterCertifierException
+
+from err import RegisterRootCertifierException
 from result import MethodResultType
 
 
 __all__ = [
     # ======================# CARTESIAN_REGISTER_VALIDATOR_FAILURE #======================#
-    "VectorToggleRegisterCertifierException",
+    "VectorToggleRegisterRootCertifierException",
 ]
 
 # ======================# CARTESIAN_REGISTER_VALIDATOR_FAILURE #======================#
-class VectorToggleRegisterCertifierException(RegisterCertifierException):
+class VectorToggleRegisterRootCertifierException(RegisterRootCertifierException):
     """
     Role:
         -   Error Tracing
@@ -42,7 +43,7 @@ class VectorToggleRegisterCertifierException(RegisterCertifierException):
     Provides:
 
     Super Class:
-        RegisterCertifierException
+        RegisterRootCertifierException
     """
     MSG = "CartesianRegisterCertifier failure."
     ERR_CODE = "CARTESIAN_REGISTER_VALIDATOR_FAILURE"

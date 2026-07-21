@@ -1,7 +1,7 @@
-# src/builder/team/builder.py
+# src/builder/model/team/builder.py
 
 """
-Module: builder.team.builder
+Module: builder.model.team.builder
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -12,19 +12,19 @@ from __future__ import annotations
 from typing import cast
 
 from blueprint import TeamBlueprint
-from builder import Builder
+from builder import ModelBuilder
 from err import TeamBuilderException
 from model import Team
 from operation import TeamAssembler
 from finalizer import TeamAssemblyFinalizer
 from result import BuildResult
-from root import TeamRootCertifier
+from err.root import TeamRootCertifier
 from toolkit import TeamToolkit
 from util import LoggingLevelRouter
 from validator import TeamCertifier
 
 
-class TeamBuilder(Builder[Team]):
+class TeamBuilder(ModelBuilder[Team]):
     """
     Role
         -   Transaction Worker

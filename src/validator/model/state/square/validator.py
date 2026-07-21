@@ -13,7 +13,7 @@ from typing import Any, cast
 
 from err import SquareValidatorException
 from model import Square
-from root import SquareRootCertifier
+from err.root import SquareRootCertifier
 from result import ValidationResult
 from util import LoggingLevelRouter
 from validator import ModelValidator

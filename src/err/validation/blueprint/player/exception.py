@@ -1,30 +1,33 @@
-# src/err/validation/blueprint/player/exception.py
+# src/err/root/player/exception.py
 
 """
-Module: err.validation.blueprint.player.exception
+Module: err.root.player.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
 """
 
 from __future__ import annotations
-from err import CertifierException
+
+from typing import Any, Optional
+
+from err import RootCertifierException
 from result import MethodResultType
 
 
 __all__ = [
-    # ======================# PLAYER_BLUEPRINT_VALIDATOR_FAILURE #======================#
-    "PlayerCertifierException",
+    # ======================# PLAYER_ROOT_CERTIFIER_FAILURE #======================#
+    "PlayerRootCertifierException",
 ]
 
-# ======================# PLAYER_BLUEPRINT_VALIDATOR_FAILURE #======================#
-class PlayerCertifierException(RootCertifierException):
+# ======================# PLAYER_ROOT_CERTIFIER_FAILURE #======================#
+class PlayerRootCertifierException(RootCertifierException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a candidate failed a PlayerCertifier test.
+        1.  Indicate that a candidate failed a PlayerRootCertifier test.
 
     Attributes:
             msg: Optional[str]
@@ -39,10 +42,10 @@ class PlayerCertifierException(RootCertifierException):
     Provides:
 
     Super Class:
-        CertifierException
+        RootCertifierException
     """
-    MSG = "PlayerCertifier test."
-    ERR_CODE = "PLAYER_BLUEPRINT_VALIDATOR_FAILURE"
+    MSG = "Player root certification failure."
+    ERR_CODE = "PLAYER_ROOT_CERTIFIER_FAILURE"
     
     def __init__(
             self,

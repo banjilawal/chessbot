@@ -11,7 +11,7 @@ from __future__ import annotations
 from typing import Any, cast
 
 from err import VectorToggleValidatorException
-from root import VectorToggleRootCertifier
+from err.root import VectorToggleRootCertifier
 from result import ValidationResult
 from toggle import VectorToggle
 from util import LoggingLevelRouter

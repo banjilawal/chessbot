@@ -1,7 +1,7 @@
-# src/err/validation/blueprint/excess/vector/exception.py
+# src/err/root/excess/vector/exception.py
 
 """
-Module: err.validation.blueprint.excess.vector.exception
+Module: err.root.excess.vector.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1

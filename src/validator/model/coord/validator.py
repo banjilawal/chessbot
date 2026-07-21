@@ -13,7 +13,7 @@ from typing import Any, cast
 
 from err import CoordValidatorException
 from model import Coord
-from root import CoordRootCertifier
+from err.root import CoordRootCertifier
 from result import ValidationResult
 from util import LoggingLevelRouter
 from validator import ModelValidator

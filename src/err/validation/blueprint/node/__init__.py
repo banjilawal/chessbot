@@ -1,15 +1,15 @@
-# src/err/validation/blueprint/node/__init__.py
+# src/err/root/node/__init__.py
 
 """
-Module: err.validation.blueprint.node.__init__
+Module: err.root.node.__init__
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
 """
 
-# =========== ERR.VALIDATION.BLUEPRINT.NODE PACKAGE ===========#
+# =========== ERR.ROOT.NODE PACKAGE ===========#
 
 # Packages
 
 # Modules
-from .exception import NodeCertifierException
+from .exception import NodeRootCertifierException

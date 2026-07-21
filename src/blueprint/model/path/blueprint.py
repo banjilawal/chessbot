@@ -62,7 +62,7 @@ class PathBlueprint(ModelBlueprint[Path]):
         
     @property
     def model_class(self) -> Type[Path]:
-        return cast(Type[Path], self.model_class)
+        return cast(Type[Path], super().model_class)
     
     @property
     def id(self) -> int:

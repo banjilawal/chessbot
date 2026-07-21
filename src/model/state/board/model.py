@@ -11,10 +11,9 @@ from __future__ import annotations
 
 from controller import BoardTeamBinderController
 from database import HostageDatabase, SquareDatabase
-from model.arena import Arena
-from model.board import BoardState
 
-from model import StateModel
+
+from model import Arena, BoardState, StateModel
 
 
 class Board(StateModel):

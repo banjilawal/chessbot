@@ -1,16 +1,19 @@
-# src/builder/scalar/builder.py
+# src/builder/model/scalar/builder.py
 
 """
-Module: builder.scalar.builder
+Module: builder.model.scalar.builder
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
 """
 
+from __future__ import annotations
+
+from builder import ModelBuilder
+from model import Scalar
 
 
-
-class ScalarBuilder(Builder[Scalar]):
+class ScalarBuilder(ModelBuilder[Scalar]):
     """
     Role
         -   Transaction Worker

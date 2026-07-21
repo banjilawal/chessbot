@@ -11,19 +11,32 @@ from __future__ import annotations
 
 from blueprint import CoordBlueprint
 from result import BuildResult
-from operation import Assembler
+from assembler import ModelAssembler
 from util import LoggingLevelRouter
 from model import Coord
 from controller import WorkerRegistryController
 
-class CoordAssembler(Assembler[Coord]):
-    NAME = "coord_assembler"
-    
-    @classmethod
+class CoordAssembler(ModelAssembler[Coord]):
+    """
+    Role
+        -   Build Process Owner
+
+    Responsibilities:
+        1.  Create a Coord instance from the safe blueprint.
+
+    Attributes:
+
+    Provides:
+        -   def execute(self, blueprint: CoordBlueprint,) -> BuildResult[Coord]
+
+    Super Class:
+        ModelAssembler
+    """
+
     @LoggingLevelRouter.monitor
-    def execute(cls, blueprint: CoordBlueprint,) -> BuildResult[Coord]:
+    def execute(self, blueprint: CoordBlueprint,) -> BuildResult[Coord]:
         """
-        Assemble the appropriate Coord.
+        Assemble a Coord from the Blueprint's contents.
 
         Args:
             blueprint: CoordBlueprint
@@ -31,15 +44,9 @@ class CoordAssembler(Assembler[Coord]):
             BuildResult[Coord]
         Raises:
         """
-        method = f"{cls.__name__}.execute"
+        method = f"{self.__class__.__name__}.execute"
         return BuildResult.success(
-            Coord(
-                row=blueprint.row,
-                column=blueprint.column,
-            )
+            Coord(row=blueprint.row, column=blueprint.column,)
         )
-
-# Register the 
-WorkerRegistryController.register_worker(worker=CoordAssembler)
         
         

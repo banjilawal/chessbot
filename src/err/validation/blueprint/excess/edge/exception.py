@@ -1,7 +1,7 @@
-# src/err/validation/blueprint/excess/edge/exception.py
+# src/err/root/excess/edge/exception.py
 
 """
-Module: err.validation.blueprint.excess.edge.exception
+Module: err.root.excess.edge.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -40,7 +40,7 @@ class ExcessEdgeBlueprintFlagsException(ExcessBlueprintFlagsException):
     Super Class:
         ExcessBlueprintFlagsException
     """
-    MSG = "More than one EdgeCCertifier test. enabled."
+    MSG = "More than one EdgeCRootCertifier test. enabled."
     ERR_CODE = "EXCESS_EDGE_BLUEPRINT_FLAGS_FAILURE"
     
     def __init__(

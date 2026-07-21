@@ -1,7 +1,7 @@
-# src/builder/square/builder.py
+# src/builder/model/square/builder.py
 
 """
-Module: builder.square.builder
+Module: builder.model.square.builder
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -11,7 +11,7 @@ from __future__ import annotations
 
 
 
-class SquareBuilder(Builder[Square]):
+class SquareBuilder(ModelBuilder[Square]):
     """
     Role
         -   Transaction Worker

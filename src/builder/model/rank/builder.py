@@ -1,7 +1,7 @@
-# src/builder/rank/builder.py
+# src/builder/model/rank/builder.py
 
 """
-Module: builder.rank.builder
+Module: builder.model.rank.builder
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -10,14 +10,14 @@ version: 1.0.1
 from __future__ import annotations
 
 from blueprint import RankBlueprint
-from builder import Builder
+from builder import ModelBuilder
 from err import RankBuildRouteException, RankBuilderException
 from model import Bishop, King, Knight, Pawn, Queen, Rank, Rook
 from result import BuildResult
 from schema import Persona
 
 
-class RankBuilder(Builder[Rank]):
+class RankBuilder(ModelBuilder[Rank]):
     """
     Role
         -   Transaction Worker

@@ -40,14 +40,12 @@ class Bishop(Rank):
     
     def __init__(
             self,
-            id: int,
             persona: Persona | None = Persona.BISHOP,
             spanner: BishopSpanner | None = BishopSpanner(),
     ):
         """
         Args:
-            id: int
-            persona: Persona
+                        persona: Persona
             spanner: BishopSpanner
         """
         super().__init__(

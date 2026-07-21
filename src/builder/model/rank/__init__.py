@@ -1,7 +1,7 @@
-# src/builder/rank/__init__.py
+# src/builder/model/rank/__init__.py
 
 """
-Module: builder.rank.__init__
+Module: builder.model.rank.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

@@ -1,7 +1,7 @@
-# src/err/validation/blueprint/zero/coord/__init__.py
+# src/err/root/zero/coord/__init__.py
 
 """
-Module: err.validation.blueprint.zero.coord.exception
+Module: err.root.zero.coord.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -24,7 +24,7 @@ class ZeroCoordBlueprintFlagsException(ZeroBlueprintFlagsException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicates that no CoordCertifier test. enabled.
+        1.  Indicates that no CoordRootCertifier test. enabled.
 
     Attributes:
         msg: Optional[str]
@@ -40,7 +40,7 @@ class ZeroCoordBlueprintFlagsException(ZeroBlueprintFlagsException):
     Super Class:
         ZeroBlueprintFlagsException
     """
-    MSG = "No CoordCCertifier test. enabled."
+    MSG = "No CoordCRootCertifier test. enabled."
     ERR_CODE = "ZERO_COORD_BLUEPRINT_FLAGS_FAILURE"
     
     def __init__(

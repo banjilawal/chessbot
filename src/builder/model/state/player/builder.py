@@ -1,7 +1,7 @@
-# src/builder/player/builder.py
+# src/builder/model/player/builder.py
 
 """
-Module: builder.player.builder
+Module: builder.model.player.builder
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -20,7 +20,7 @@ from logic.player import (
 )
 
 
-class PlayerFactory(Builder[Player]):
+class PlayerFactory(ModelBuilder[Player]):
     """
     Role
         -   Transaction Worker

@@ -1,7 +1,7 @@
-# src/builder/coord/builder.py
+# src/builder/model/coord/builder.py
 
 """
-Module: builder.coord.builder
+Module: builder.model.coord.builder
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -13,7 +13,7 @@ from logic.coord import Coord, CoordBuilderException
 from system import COORD_DIMENSION, Builder, BuildResult, LoggingLevelRouter, NumberValidator
 
 
-class CoordBuilder(Builder[Coord]):
+class CoordBuilder(ModelBuilder[Coord]):
     """
     Role
         -   Transaction Worker

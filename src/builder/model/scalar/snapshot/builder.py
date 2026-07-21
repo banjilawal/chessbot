@@ -1,7 +1,7 @@
-# src/builder/snapshot/builder.py
+# src/builder/model/snapshot/builder.py
 
 """
-Module: builder.snapshot.builder
+Module: builder.model.snapshot.builder
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -12,7 +12,7 @@ from system import BuildResult, Builder
 
 
 
-class SnapshotBuilder(Builder[Snapshot]):
+class SnapshotBuilder(ModelBuilder[Snapshot]):
     @classmethod
     def build(cls, *args, **kwargs) -> BuildResult[Snapshot]:
         pass

@@ -9,19 +9,34 @@ version: 1.0.1
 
 from __future__ import annotations
 
+from blueprint import VectorBlueprint
+from model import Vector
 from result import BuildResult
-from operation import Assembler
+from assembler import ModelAssembler
 from util import  LoggingLevelRouter
-from model import Vector, VectorBlueprint
+  
+  
+class VectorAssembler(ModelAssembler[Vector]):
+    """
+    Role
+        -   Build Process Owner
 
-class VectorAssembler(Assembler[Vector]):
-    NAME = "vector_assembler"
+    Responsibilities:
+        1.  Create a Vector instance from the safe blueprint.
+
+    Attributes:
+
+    Provides:
+        -   def execute(self, blueprint: VectorBlueprint,) -> BuildResult[Vector]
+
+    Super Class:
+        ModelAssembler
+    """
     
-    @classmethod
     @LoggingLevelRouter.monitor
-    def execute(cls, blueprint: VectorBlueprint,) -> BuildResult[Vector]:
+    def execute(self, blueprint: VectorBlueprint,) -> BuildResult[Vector]:
         """
-        Assemble the appropriate Vector.
+        Assemble a Vector from the Blueprint's contents.
 
         Args:
             blueprint: VectorBlueprint
@@ -29,12 +44,7 @@ class VectorAssembler(Assembler[Vector]):
             BuildResult[Vector]
         Raises:
         """
-        method = f"{cls.__name__}.execute"
-        return BuildResult.success(
-            Vector(
-                x=blueprint.x,
-                y=blueprint.y,
-            )
-        )
+        method = f"{self.__class__.__name__}.execute"
+        return BuildResult.success(Vector(x=blueprint.x, y=blueprint.y))
         
         

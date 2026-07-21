@@ -1,7 +1,7 @@
-# src/builder/coord/__init__.py
+# src/builder/model/coord/__init__.py
 
 """
-Module: builder.coord.__init__
+Module: builder.model.coord.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

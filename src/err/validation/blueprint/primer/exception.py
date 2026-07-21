@@ -1,7 +1,7 @@
-# src/err/validation/blueprint/primer/exception.py
+# src/err/root/primer/exception.py
 
 """
-Module: err.validation.blueprint.primer.exception
+Module: err.root.primer.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,7 +10,7 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import CertifierException
+from err import RootCertifierException
 
 
 __all__ = [
@@ -40,7 +40,7 @@ class BlueprintValidationPrimingException(RootCertifierException):
     Provides:
 
     Super Class:
-        CertifierException
+        RootCertifierException
     """
     MSG = "BlueprintValidation failed during its priming phase."
     ERR_CODE = "BLUEPRINT_VALIDATION_PRIMING_FAILURE"

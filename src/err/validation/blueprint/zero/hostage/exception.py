@@ -1,7 +1,7 @@
-# src/err/validation/blueprint/zero/hostage/__init__.py
+# src/err/root/zero/hostage/__init__.py
 
 """
-Module: err.validation.blueprint.zero.hostage.exception
+Module: err.root.zero.hostage.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -24,7 +24,7 @@ class ZeroHostageBlueprintFlagsException(ZeroBlueprintFlagsException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicates that no HostageCertifier test. enabled.
+        1.  Indicates that no HostageRootCertifier test. enabled.
 
     Attributes:
         msg: Optional[str]
@@ -40,7 +40,7 @@ class ZeroHostageBlueprintFlagsException(ZeroBlueprintFlagsException):
     Super Class:
         ZeroBlueprintFlagsException
     """
-    MSG = "No HostageCCertifier test. enabled."
+    MSG = "No HostageCRootCertifier test. enabled."
     ERR_CODE = "ZERO_HOSTAGE_BLUEPRINT_FLAGS_FAILURE"
     
     def __init__(

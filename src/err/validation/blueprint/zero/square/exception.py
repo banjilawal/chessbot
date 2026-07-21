@@ -1,7 +1,7 @@
-# src/err/validation/blueprint/zero/square/__init__.py
+# src/err/root/zero/square/__init__.py
 
 """
-Module: err.validation.blueprint.zero.square.exception
+Module: err.root.zero.square.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -24,7 +24,7 @@ class ZeroSquareBlueprintFlagsException(ZeroBlueprintFlagsException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicates that no SquareCertifier test. enabled.
+        1.  Indicates that no SquareRootCertifier test. enabled.
 
     Attributes:
         msg: Optional[str]
@@ -40,7 +40,7 @@ class ZeroSquareBlueprintFlagsException(ZeroBlueprintFlagsException):
     Super Class:
         ZeroBlueprintFlagsException
     """
-    MSG = "No SquareCCertifier test. enabled."
+    MSG = "No SquareCRootCertifier test. enabled."
     ERR_CODE = "ZERO_SQUARE_BLUEPRINT_FLAGS_FAILURE"
     
     def __init__(
