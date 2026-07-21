@@ -12,7 +12,7 @@ from __future__ import annotations
 from enum import Enum
 from typing import Dict
 
-from builder import SouthwestQuadrantBuilder
+
 from space import (
     EastTraversalPattern, NorthTraversalPattern, NortheastTraversalPattern, NorthwestTraversalPattern,
     SouthTraversalPattern, SoutheastTraversalPattern,
@@ -23,11 +23,11 @@ from space import (
 class Ruleset(Enum):
     def __new__(
             cls,
-            entry: Dict[str: TraversalPattern],
+            entries: Dict[str: TraversalPattern],
     ):
         """
         Args:
-            name: Dict[str: TraversalPattern]
+            entries: Dict[str: TraversalPattern]
         """
         obj = object.__new__(cls)
         obj._entry = Dict[str: TraversalPattern]
@@ -65,7 +65,7 @@ class Ruleset(Enum):
     ),
     
     @property
-    def entry(self) -> Dict[str: TraversalPattern]:
+    def entries(self) -> Dict[str: TraversalPattern]:
         return self._entry
     
 

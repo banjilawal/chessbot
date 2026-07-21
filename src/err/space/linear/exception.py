@@ -16,10 +16,10 @@ from result import MethodResultType
 
 __all__ = [
     # ======================# LINEAR_SPACE_ERROR #======================#
-    "LinearSpaceException",
+    "TraversalPatternExceptionException",
 ]
 # ======================# LINEAR_SPACE_ERROR #======================#
-class LinearSpaceException(SpaceException):
+class TraversalPatternExceptionException(SpaceException):
     """
     Role:
         -   Failure Tracing

@@ -13,7 +13,7 @@ from abc import abstractmethod
 from typing import Any, Generic, TypeVar, cast
 
 
-from primary import ToggleRootCertifier
+from root import ToggleRootCertifier
 from result import ValidationResult
 from toolkit import ToggleToolkit
 

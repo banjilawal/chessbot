@@ -11,8 +11,9 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
+from math import NorthAxisStepper
 from register import VectorRegister
-from space import AxisTraversalPattern, NorthAxisStepper
+from space import AxisTraversalPattern
 
 
 class NorthTraversalPattern(AxisTraversalPattern):
@@ -24,32 +25,23 @@ class NorthTraversalPattern(AxisTraversalPattern):
         1.  Provide a set of target vectors which are north of origin.
 
     Attributes:
-        endpoints: VectorRegister
-        stepper: NorthAxisStepper
+        stepper: Optional[NorthAxisStepper]
 
     Provides:
 
     Super Class:
-        Axis
+        AxisTraversalPattern
     """
-    _endpoints: VectorRegister
-    _stepper: NorthAxisStepper
     
     def __init__(
             self,
-            endpoints: VectorRegister,
             stepper: Optional[NorthAxisStepper] | None = NorthAxisStepper(),
     ):
         """
         Args:
-            endpoints: VectorRegister
-            stepper: NorthAxisStepper
+            stepper: Optional[NorthAxisStepper]
         """
-        super().__init__(endpoints=endpoints, stepper=stepper)
-    
-    @property
-    def endpoints(self) -> VectorRegister:
-        return self._endpoints
+        super().__init__(stepper=stepper)
     
     @property
     def stepper(self) -> NorthAxisStepper:

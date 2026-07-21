@@ -13,7 +13,7 @@ from typing import Any, cast
 
 from err import ManeuverValidatorException
 from model import Maneuver
-from primary import ManeuverRootCertifier
+from root import ManeuverRootCertifier
 from result import ValidationResult
 from toolkit import ManeuverToolkit
 from util import LoggingLevelRouter

@@ -10,6 +10,8 @@ version: 1.0.1
 # =========== MATH PACKAGE ===========#
 
 # Packages
-from .computer import *
+from .basis import *
+from .stepper import *
 
 # Modules
+from .math import MathFunction

@@ -11,8 +11,8 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from register import VectorRegister
-from space import AxisTraversalPattern, SouthAxisStepper
+from math import SouthAxisStepper
+from space import AxisTraversalPattern
 
 
 class SouthTraversalPattern(AxisTraversalPattern):
@@ -24,33 +24,24 @@ class SouthTraversalPattern(AxisTraversalPattern):
         1.  Provide a set of target vectors which are south of origin.
 
     Attributes:
-        endpoints: VectorRegister
-        stepper: SouthAxisStepper
+        stepper: Optional[SouthAxisStepper]
 
     Provides:
 
     Super Class:
-        Axis
+        AxisTraversalPattern
     """
-    _endpoints: VectorRegister
-    _stepper: SouthAxisStepper
     
     def __init__(
             self,
-            endpoints: VectorRegister,
             stepper: Optional[SouthAxisStepper] | None = SouthAxisStepper(),
     ):
         """
         Args:
-            endpoints: VectorRegister
-            stepper: SouthAxisStepper
+            stepper: Optional[SouthAxisStepper]
         """
-        super().__init__(endpoints=endpoints, stepper=stepper)
-    
-    @property
-    def endpoints(self) -> VectorRegister:
-        return self._endpoints
-    
+        super().__init__(stepper=stepper,)
+
     @property
     def stepper(self) -> SouthAxisStepper:
         return cast(SouthAxisStepper, self.stepper)

@@ -12,8 +12,8 @@ from __future__ import annotations
 from typing import List, Optional, cast
 
 from container import VectorSet
-from err import LinearSpaceException
-from math import LinearTargetVectorComputer
+from err import TraversalPatternExceptionException
+from math import Stepper
 from model import LinearTargetSet, Scalar, Vector
 from register import VectorRegister
 from result import ComputationResult, MethodResultType
@@ -42,7 +42,7 @@ class LinearSpace:
         Space
     """
     _endpoints: VectorRegister
-    _stepper: LinearTargetVectorComputer[T]
+    _stepper: Stepper[T]
     _math_toolkit: Optional[MathToolkit]
     
     def __init__(
@@ -114,11 +114,11 @@ class LinearSpace:
         if computation.is_failure:
             # Send an exception chain in the result.
             return ComputationResult.failure(
-                LinearSpaceException(
+                TraversalPatternExceptionException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=LinearSpaceException.MSG,
-                    err_code=LinearSpaceException.ERR_CODE,
+                    msg=TraversalPatternExceptionException.MSG,
+                    err_code=TraversalPatternExceptionException.ERR_CODE,
                     mthd_rslt_type=MethodResultType.COMPUTATION_RESULT,
                     ex=computation.exception,
                 ),
@@ -156,11 +156,11 @@ class LinearSpace:
             if computation.is_failure:
                 # Send an exception chain in the result.
                 return ComputationResult.failure(
-                    LinearSpaceException(
+                    TraversalPatternExceptionException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        msg=LinearSpaceException.MSG,
-                        err_code=LinearSpaceException.ERR_CODE,
+                        msg=TraversalPatternExceptionException.MSG,
+                        err_code=TraversalPatternExceptionException.ERR_CODE,
                         mthd_rslt_type=MethodResultType.COMPUTATION_RESULT,
                         ex=computation.exception,
                     ),

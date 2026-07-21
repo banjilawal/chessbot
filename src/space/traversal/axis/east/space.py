@@ -11,8 +11,8 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from register import VectorRegister
-from space import AxisTraversalPattern, EastAxisStepper
+from math import EastAxisStepper
+from space import AxisTraversalPattern
 
 
 class EastTraversalPattern(AxisTraversalPattern):
@@ -24,32 +24,23 @@ class EastTraversalPattern(AxisTraversalPattern):
         1.  Provide a set of target vectors which are east of origin.
 
     Attributes:
-        endpoints: VectorRegister
-        stepper: EastAxisStepper
+        stepper: Optional[EastAxisStepper]
 
     Provides:
 
     Super Class:
-        Axis
+        AxisTraversalPattern
     """
-    _endpoints: VectorRegister
-    _stepper: EastAxisStepper
     
     def __init__(
             self,
-            endpoints: VectorRegister,
             stepper: Optional[EastAxisStepper] | None = EastAxisStepper(),
     ):
         """
         Args:
-            endpoints: VectorRegister
-            stepper: EastAxisStepper
+            stepper: Optional[EastAxisStepper]
         """
-        super().__init__(endpoints=endpoints, stepper=stepper)
-    
-    @property
-    def endpoints(self) -> VectorRegister:
-        return self._endpoints
+        super().__init__(stepper=stepper)
     
     @property
     def stepper(self) -> EastAxisStepper:

@@ -16,4 +16,4 @@ from .quadrant import *
 from .stepper import *
 
 # Modules
-from .exception import LinearSpaceException
+from .exception import TraversalPatternExceptionException

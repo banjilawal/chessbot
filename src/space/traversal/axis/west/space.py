@@ -11,8 +11,8 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from register import VectorRegister
-from space import AxisTraversalPattern, WestAxisStepper
+from math import WestAxisStepper
+from space import AxisTraversalPattern
 
 
 class WestTraversalPattern(AxisTraversalPattern):
@@ -24,32 +24,23 @@ class WestTraversalPattern(AxisTraversalPattern):
         1.  Provide a set of target vectors which are west of origin.
 
     Attributes:
-        endpoints: VectorRegister
-        stepper: WestAxisStepper
+        stepper: Optional[WestAxisStepper]
 
     Provides:
 
     Super Class:
-        Axis
+        AxisTraversalPattern
     """
-    _endpoints: VectorRegister
-    _stepper: WestAxisStepper
     
     def __init__(
             self,
-            endpoints: VectorRegister,
             stepper: Optional[WestAxisStepper] | None = WestAxisStepper(),
     ):
         """
         Args:
-            endpoints: VectorRegister
-            stepper: WestAxisStepper
+            stepper: Optional[WestAxisStepper]
         """
-        super().__init__(endpoints=endpoints, stepper=stepper)
-    
-    @property
-    def endpoints(self) -> VectorRegister:
-        return self._endpoints
+        super().__init__(stepper=stepper)
     
     @property
     def stepper(self) -> WestAxisStepper:

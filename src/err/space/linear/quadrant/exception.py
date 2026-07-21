@@ -10,7 +10,7 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import LinearSpaceException
+from err import TraversalPatternExceptionException
 from result import MethodResultType
 
 
@@ -20,7 +20,7 @@ __all__ = [
 ]
 
 # ======================# LINEAR_QUADRANT_SPACE_ERROR #======================#
-class QuadrantException(LinearSpaceException):
+class QuadrantException(TraversalPatternExceptionException):
     """
     Role:
         -   Error Tracing

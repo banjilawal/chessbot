@@ -11,8 +11,8 @@ from __future__ import annotations
 
 from typing import cast
 
-from register import VectorRegister
-from space import TraversalPattern, QuadrantStepper
+from math import QuadrantStepper
+from space import TraversalPattern
 
 
 class QuadrantTraversalPattern(TraversalPattern):
@@ -25,25 +25,19 @@ class QuadrantTraversalPattern(TraversalPattern):
         2.  Provide the next point in the direction of travel.
 
     Attributes:
-        endpoints: VectorRegister
         stepper: QuadrantStepper
 
     Provides:
 
     Super Class:
-        LinearSpace
+        TraversalPattern
     """    
-    def __init__(
-            self,
-            endpoints: VectorRegister,
-            stepper: QuadrantStepper,
-    ):
+    def __init__(self, stepper: QuadrantStepper,):
         """
         Args:
-            endpoints: QuadrantBounds
             stepper: QuadrantStepper
         """
-        super().__init__(endpoints=endpoints, stepper=stepper)
+        super().__init__(stepper=stepper)
         
     @property
     def stepper(self) -> QuadrantStepper:

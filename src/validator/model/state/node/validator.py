@@ -13,7 +13,7 @@ from typing import Any, cast
 
 from err import NodeValidatorException
 from model import Node
-from primary import NodeRootCertifier
+from root import NodeRootCertifier
 from result import ValidationResult
 from util import LoggingLevelRouter
 from validator import ModelValidator

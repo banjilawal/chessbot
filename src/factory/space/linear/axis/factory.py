@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Optional, cast
 
 from builder import Builder, EastAxisBuilder, NorthAxisBuilder, SouthAxisBuilder, WestAxisBuilder
-from math import AxisStepper, LinearTargetVectorComputer
+from math import AxisStepper, Stepper
 from model import Vector
 from result import BuildResult
 from schema import AxisOrientation
@@ -43,7 +43,7 @@ class AxisSpaceFactory(Builder[AxisTraversalPattern]):
         LinearSpaceFactory
     """
     _orientation: Vector
-    _stepper: LinearTargetVectorComputer[]
+    _stepper: Stepper[]
     _toggle: OrientationToggle
     _vector_validator: Optional[VectorValidator]
     

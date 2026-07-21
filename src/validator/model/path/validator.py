@@ -13,7 +13,7 @@ from typing import Any, cast
 
 from err import PathValidatorException
 from model import Path
-from primary import PathRootCertifier
+from root import PathRootCertifier
 from result import ValidationResult
 from util import LoggingLevelRouter
 from validator import ModelValidator

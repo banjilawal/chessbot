@@ -11,8 +11,8 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from register import VectorRegister
-from space import SoutheastQuadrantStepper, QuadrantTraversalPattern
+from math import SoutheastQuadrantStepper
+from space import QuadrantTraversalPattern
 
 
 class SoutheastTraversalPattern(QuadrantTraversalPattern):
@@ -24,26 +24,23 @@ class SoutheastTraversalPattern(QuadrantTraversalPattern):
         1.  Find the set of target vectors southeast of the origin.
 
     Attributes:
-        endpoints: VectorRegister,
         stepper: Optional[SoutheastQuadrantStepper]
 
     Provides:
 
     Super Class:
-        Quadrant
+        QuadrantTraversalPattern
     """
     
     def __init__(
             self,
-            endpoints: VectorRegister,
             stepper: Optional[SoutheastQuadrantStepper] | None = SoutheastQuadrantStepper(),
     ):
         """
         Args:
-            endpoints: VectorRegister,
             stepper: Optional[SoutheastQuadrantStepper]
         """
-        super().__init__(endpoints=endpoints, stepper=stepper)
+        super().__init__(stepper=stepper)
         
 
     @property
