@@ -11,14 +11,14 @@ from __future__ import annotations
 
 from typing import List, Optional, cast
 
-from blueprint import SoutheastQuadrantBlueprint
+
 from builder import ManeuverBuilder
 from factory import QuadrantSpaceFactory
 from model import TargetVectorSet, Vector
 
 from result import BuildResult
 from schema import QuadrantOrientation
-from space import BishopManeuverVectors, NortheastQuadrant, NorthwestQuadrant, SoutheastQuadrant, SouthwestQuadrant
+from space import BishopManeuverVectors, NortheastTraversalPattern, NorthwestTraversalPattern, SoutheastTraversalPattern, SouthwestTraversalPattern
 from toggle import OrientationToggle
 from util import LoggingLevelRouter
 from validator import VectorValidator
@@ -26,10 +26,10 @@ from validator import VectorValidator
 
 class BishopManeuverBuilder(ManeuverBuilder[BishopManeuverVectors]):
     _vector_validator: Optional[VectorValidator]
-    _ne_quadrant: NortheastQuadrant
-    _nw_quadrant: NorthwestQuadrant
-    se_quadrant: SoutheastQuadrant
-    sw_quadrant: SouthwestQuadrant
+    _ne_quadrant: NortheastTraversalPattern
+    _nw_quadrant: NorthwestTraversalPattern
+    se_quadrant: SoutheastTraversalPattern
+    sw_quadrant: SouthwestTraversalPattern
     
     def __init__(
             self,
@@ -54,28 +54,28 @@ class BishopManeuverBuilder(ManeuverBuilder[BishopManeuverVectors]):
             oring=origin,
             toggle=OrientationToggle(quadrant=QuadrantOrientation.NORTHEAST)
         )
-        ne_quad = cast(NortheastQuadrant, quadrant.payload)
+        ne_quad = cast(NortheastTraversalPattern, quadrant.payload)
         ne_targets = ne_quad.target_vectors()
         
         quadrant = self._quadrant_factory.execute(
             oring=origin,
             toggle=OrientationToggle(quadrant=QuadrantOrientation.NORTHWEST)
         )
-        nw_quad = cast(NorthwestQuadrant, quadrant.payload)
+        nw_quad = cast(NorthwestTraversalPattern, quadrant.payload)
         nw_targets = nw_quad.target_vectors()
         
         quadrant = self._quadrant_factory.execute(
             oring=origin,
             toggle=OrientationToggle(quadrant=QuadrantOrientation.SOUTHEAST)
         )
-        se_quad = cast(SoutheastQuadrant, quadrant.payload)
+        se_quad = cast(SoutheastTraversalPattern, quadrant.payload)
         se_targets = ne_quad.target_vectors()
         
         quadrant = self._quadrant_factory.execute(
             oring=origin,
             toggle=OrientationToggle(quadrant=QuadrantOrientation.SOUTHWEST)
         )
-        sw_quad = cast(NorthwestQuadrant, quadrant.payload)
+        sw_quad = cast(NorthwestTraversalPattern, quadrant.payload)
         sw_targets = nw_quad.target_vectors()
         
         targets.append(cast(TargetVectorSet, ne_targets.payload))

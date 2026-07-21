@@ -16,13 +16,13 @@ from math import AxisStepper, LinearTargetVectorComputer
 from model import Vector
 from result import BuildResult
 from schema import AxisOrientation
-from space import Axis
+from space import AxisTraversalPattern
 from toggle import OrientationToggle
 from util import LoggingLevelRouter
 from validator import VectorValidator
 
 
-class AxisSpaceFactory(Builder[Axis]):
+class AxisSpaceFactory(Builder[AxisTraversalPattern]):
     """
     Role:
         -   Dataset
@@ -83,7 +83,7 @@ class AxisSpaceFactory(Builder[Axis]):
             self,
             origin: Vector,
             orientation_toggle: OrientationToggle
-    ) -> BuildResult[Axis]:
+    ) -> BuildResult[AxisTraversalPattern]:
         method = f"{self.__class__.__name__}.execute"
         
         # Handle the case that. the origin is flagged unsafe.
@@ -160,5 +160,5 @@ class AxisSpaceFactory(Builder[Axis]):
                     ex=request.exception
                 )
             )
-        return BuildResult.success(cast(Axis, request.payload))
+        return BuildResult.success(cast(AxisTraversalPattern, request.payload))
     

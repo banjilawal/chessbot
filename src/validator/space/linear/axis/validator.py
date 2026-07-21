@@ -13,15 +13,15 @@ from __future__ import annotations
 from typing import Any
 
 from result import ValidationResult
-from space import Axis
+from space import AxisTraversalPattern
 from util import LoggingLevelRouter
 from validator import LinearSpaceValidator
 
 
-class AxisValidator(LinearSpaceValidator[Axis]):
+class AxisValidator(LinearSpaceValidator[AxisTraversalPattern]):
     
     @LoggingLevelRouter.monitor
-    def execute(self, candidate: Any) -> ValidationResult[Axis]:
+    def execute(self, candidate: Any) -> ValidationResult[AxisTraversalPattern]:
         pass
     
     

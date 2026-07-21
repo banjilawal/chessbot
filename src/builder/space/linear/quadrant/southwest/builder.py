@@ -17,12 +17,12 @@ from math import SouthwestQuadrantStepper
 from model import Vector
 from register import VectorRegister
 from result import BuildResult, MethodResultType
-from space import SouthwestQuadrant
+from space import SouthwestTraversalPattern
 from util import LoggingLevelRouter
 from validator import VectorValidator
 
 
-class SouthwestQuadrantBuilder(Builder[SouthwestQuadrant]):
+class SouthwestQuadrantBuilder(Builder[SouthwestTraversalPattern]):
     """
     Role:
         -   Builder
@@ -62,7 +62,7 @@ class SouthwestQuadrantBuilder(Builder[SouthwestQuadrant]):
         self._vector_validator = vector_validator
      
     @LoggingLevelRouter.monitor
-    def execute(self) -> BuildResult[SouthwestQuadrant]:
+    def execute(self) -> BuildResult[SouthwestTraversalPattern]:
         method = f"{self.__class__.__name__}.execute"
         
         # Handle the case that, the origin is flagged unsafe.
@@ -102,6 +102,6 @@ class SouthwestQuadrantBuilder(Builder[SouthwestQuadrant]):
             )
         # Otherwise, extract and cast the product.
         endpoints = cast(VectorRegister, endpoint_request.payload)
-        quadrant = SouthwestQuadrant(endpoints=endpoints, stepper=self._stepper)
+        quadrant = SouthwestTraversalPattern(endpoints=endpoints, stepper=self._stepper)
 
         return BuildResult.success(quadrant)

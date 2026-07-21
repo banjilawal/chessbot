@@ -13,15 +13,15 @@ from __future__ import annotations
 from typing import Any
 
 from result import ValidationResult
-from space import Quadrant
+from space import QuadrantTraversalPattern
 from util import LoggingLevelRouter
 from validator import LinearSpaceValidator
 
 
-class QuadrantValidator(LinearSpaceValidator[Quadrant]):
+class QuadrantValidator(LinearSpaceValidator[QuadrantTraversalPattern]):
     
     @LoggingLevelRouter.monitor
-    def execute(self, candidate: Any) -> ValidationResult[Quadrant]:
+    def execute(self, candidate: Any) -> ValidationResult[QuadrantTraversalPattern]:
         pass
     
     

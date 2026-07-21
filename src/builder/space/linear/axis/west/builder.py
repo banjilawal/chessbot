@@ -17,12 +17,12 @@ from math import WestAxisStepper
 from model import Vector
 from register import VectorRegister
 from result import BuildResult, MethodResultType
-from space import WestAxis
+from space import WestTraversalPattern
 from util import LoggingLevelRouter
 from validator import VectorValidator
 
 
-class WestAxisBuilder(Builder[WestAxis]):
+class WestAxisBuilder(Builder[WestTraversalPattern]):
     """
     Role:
         -   Builder
@@ -62,7 +62,7 @@ class WestAxisBuilder(Builder[WestAxis]):
         self._vector_validator = vector_validator
      
     @LoggingLevelRouter.monitor
-    def execute(self) -> BuildResult[WestAxis]:
+    def execute(self) -> BuildResult[WestTraversalPattern]:
         method = f"{self.__class__.__name__}.execute"
         
         # Handle the case that, the origin is flagged unsafe.
@@ -102,6 +102,6 @@ class WestAxisBuilder(Builder[WestAxis]):
             )
         # Otherwise, extract and cast the product.
         endpoints = cast(VectorRegister, endpoint_request.payload)
-        axis = WestAxis(endpoints=endpoints, stepper=self._stepper)
+        axis = WestTraversalPattern(endpoints=endpoints, stepper=self._stepper)
 
         return BuildResult.success(axis)

@@ -15,4 +15,4 @@ from .developed import *
 
 
 # Modules
-from .exception import PawnAttackVectorSetException
+from .exception import PawnAttackOffsetPatternException

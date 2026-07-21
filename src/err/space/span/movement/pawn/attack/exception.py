@@ -16,17 +16,17 @@ from result import MethodResultType
 
 __all__ = [
     # ======================# PAWN_ATTACK_VECTOR_SET_ERROR #======================#
-    "PawnAttackVectorSetException",
+    "PawnAttackOffsetPatternException",
 ]
 
 # ======================# PAWN_ATTACK_VECTOR_SET_ERROR #======================#
-class PawnAttackVectorSetException(PawnVectorSetException):
+class PawnAttackOffsetPatternException(PawnVectorSetException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-         1.  Indicate that a PawnAttackVectorSet instance encountered an error.
+         1.  Indicate that a PawnAttackOffsetPattern instance encountered an error.
         
     Attributes:
         msg: Optional[str]
@@ -43,7 +43,7 @@ class PawnAttackVectorSetException(PawnVectorSetException):
     Super Class:
         PawnVectorSetException
     """
-    MSG = "An error occurred with a PawnAttackVectorSet."
+    MSG = "An error occurred with a PawnAttackOffsetPattern."
     ERR_CODE = "PAWN_ATTACK_VECTOR_SET_ERROR"
 
     def __init__(

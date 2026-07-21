@@ -11,8 +11,9 @@ version: 1.0.1
 
 # Packages
 from .basis import *
-from .linear import *
-from .maneuver import *
+from .traversal import *
+from .ruleset import *
+from .offset import *
 
 # Modules
-from .space import Space
+from .space import MovementPattern

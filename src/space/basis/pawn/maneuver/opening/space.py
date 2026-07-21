@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Optional
 
 from model import Vector
-from space import VectorTargetingComputer, OpeningManeuverVectorSet, PawnManeuverVectorBasis
+from space import VectorTargetingComputer, OpeningManeuverOffsetPattern, PawnManeuverVectorBasis
 
 
 class OpeningPawnManeuverVectorBasis(PawnManeuverVectorBasis):
@@ -38,8 +38,8 @@ class OpeningPawnManeuverVectorBasis(PawnManeuverVectorBasis):
     def __init__(
             self,
             origin: Vector,
-            maneuver_vectors: Optional[OpeningManeuverVectorSet] |
-                              None = OpeningManeuverVectorSet(),
+            maneuver_vectors: Optional[OpeningManeuverOffsetPattern] |
+                              None = OpeningManeuverOffsetPattern(),
             targeting_computer: Optional[VectorTargetingComputer] |
                                 None = VectorTargetingComputer(),
     ):

@@ -10,17 +10,17 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import PawnAttackVectorSetException
+from err import PawnAttackOffsetPatternException
 from result import MethodResultType
 
 
 __all__ = [
     # ======================# PAWN_DEVELOPED_ATTACK_VECTOR_SET_ERROR #======================#
-    "DevelopedPawnAttackVectorSetException",
+    "DevelopedPawnAttackOffsetPatternException",
 ]
 
 # ======================# PAWN_DEVELOPED_ATTACK_VECTOR_SET_ERROR #======================#
-class DevelopedPawnAttackVectorSetException(PawnAttackVectorSetException):
+class DevelopedPawnAttackOffsetPatternException(PawnAttackOffsetPatternException):
     """
     Role:
         -   Error Tracing
@@ -41,7 +41,7 @@ class DevelopedPawnAttackVectorSetException(PawnAttackVectorSetException):
     Provides:
 
     Super Class:
-        PawnAttackVectorSetException
+        PawnAttackOffsetPatternException
     """
     MSG = "An error occurred with a PawnDevelopedAttackVectorSet."
     ERR_CODE = "PAWN_DEVELOPED_ATTACK_VECTOR_SET_ERROR"

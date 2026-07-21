@@ -15,13 +15,13 @@ from builder import Builder, EastQuadrantBuilder, NortheastQuadrantBuilder, Sout
 from model import Vector
 from result import BuildResult
 from schema import QuadrantOrientation
-from space import Quadrant, QuadrantStepper
+from space import QuadrantTraversalPattern, QuadrantStepper
 from toggle import OrientationToggle
 from util import LoggingLevelRouter
 from validator import VectorValidator
 
 
-class QuadrantSpaceFactory(Builder[Quadrant]):
+class QuadrantSpaceFactory(Builder[QuadrantTraversalPattern]):
     """
     Role:
         -   Dataset
@@ -81,7 +81,7 @@ class QuadrantSpaceFactory(Builder[Quadrant]):
     def execute(self,
             origin: Vector,
             toggle: OrientationToggle,
-    ) -> BuildResult[Quadrant]:
+    ) -> BuildResult[QuadrantTraversalPattern]:
         method = f"{self.__class__.__name__}.execute"
         
         # Handle the case that. the origin is flagged unsafe.
@@ -158,5 +158,5 @@ class QuadrantSpaceFactory(Builder[Quadrant]):
                     ex=request.exception
                 )
             )
-        return BuildResult.success(cast(Quadrant, request.payload))
+        return BuildResult.success(cast(QuadrantTraversalPattern, request.payload))
     
