@@ -12,6 +12,7 @@ version: 1.0.1
 # Packages
 from .basis import *
 from .linear import *
+from .maneuver import *
 
 # Modules
 from .space import Space

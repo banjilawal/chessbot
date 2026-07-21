@@ -14,7 +14,7 @@ from model import Knight, Vector
 from space import ManeuverVectorSet
 
 
-class KnightManeuverVector(ManeuverVectorSet[Knight]):
+class KnightManeuverVectors(ManeuverVectorSet[Knight]):
     """
     Role:
         -   Data Holder

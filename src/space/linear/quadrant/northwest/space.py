@@ -11,8 +11,9 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
+from math import NorthwestQuadrantStepper
 from register import VectorRegister
-from space import NorthwestQuadrantStepper, Quadrant
+from space import Quadrant
 
 
 class NorthwestQuadrant(Quadrant):

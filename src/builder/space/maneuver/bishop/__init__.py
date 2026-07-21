@@ -10,9 +10,7 @@ version: 1.0.1
 # =========== BUILDER.SPACE.MANEUVER PACKAGE ===========#
 
 # Packages
-from .bishop import *
-
 
 
 # Modules
-from .builder import ManeuverBuilder
+from .builder import BishopManeuverBuilder

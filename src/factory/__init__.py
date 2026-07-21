@@ -13,6 +13,7 @@ version: 1.0.1
 # Packages
 from .container import *
 from .endpoint import *
+from .space import *
 
 
 # Modules

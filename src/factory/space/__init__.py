@@ -10,5 +10,6 @@ version: 1.0.1
 # =========== FACTORY.SPACE PACKAGE ===========#
 
 # Packages
+from .linear import *
 
 # Modules

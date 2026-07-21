@@ -14,7 +14,7 @@ from model import Bishop, Vector
 from space import ManeuverVectorSet
 
 
-class BishopManeuverVector(ManeuverVectorSet[Bishop]):
+class BishopManeuverVectors(ManeuverVectorSet[Bishop]):
     """
     Role:
         -   Data Holder

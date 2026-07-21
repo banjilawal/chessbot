@@ -12,11 +12,11 @@ from __future__ import annotations
 from typing import Optional, cast
 
 from builder import Builder, EastAxisBuilder, NorthAxisBuilder, SouthAxisBuilder, WestAxisBuilder
-from factory import AxisEndpointFactory
+from math import AxisStepper, LinearTargetVectorComputer
 from model import Vector
 from result import BuildResult
 from schema import AxisOrientation
-from space import Axis, AxisStepper
+from space import Axis
 from toggle import OrientationToggle
 from util import LoggingLevelRouter
 from validator import VectorValidator
@@ -43,7 +43,7 @@ class AxisSpaceFactory(Builder[Axis]):
         LinearSpaceFactory
     """
     _orientation: Vector
-    _stepper: AxisStepper
+    _stepper: LinearTargetVectorComputer[]
     _toggle: OrientationToggle
     _vector_validator: Optional[VectorValidator]
     
@@ -79,11 +79,15 @@ class AxisSpaceFactory(Builder[Axis]):
         return self._vector_validator
     
     @LoggingLevelRouter.monitor
-    def execute(self) -> BuildResult[Axis]:
+    def execute(
+            self,
+            origin: Vector,
+            orientation_toggle: OrientationToggle
+    ) -> BuildResult[Axis]:
         method = f"{self.__class__.__name__}.execute"
         
         # Handle the case that. the origin is flagged unsafe.
-        validation = self._vector_validator.execute(self._origin)
+        validation = self._vector_validator.execute(origin)
         if validation.is_failure:
             # Send the exception chain in the result.
             return BuildResult.failure(
@@ -102,10 +106,10 @@ class AxisSpaceFactory(Builder[Axis]):
                     )
                 )
             )
-        origin = cast(Vector, validation.payload
+        source = cast(Vector, validation.payload
                       )
         # Handle the case that, the orientation is toggled for a quadrant.
-        if not self._toggle.is_axis_toggle:
+        if not orientation_toggle.is_axis_toggle:
             # Send the exception chain in the result.
             return BuildResult.failure(
                 AxisSpaceFactoryException(
@@ -126,19 +130,19 @@ class AxisSpaceFactory(Builder[Axis]):
         request: BuildResult = BuildResult.failure()
         
         # Route to the appropriate AxisBuilder.
-        if self._toggle.entity == AxisOrientation.NORTH:
+        if orientation_toggle.entity == AxisOrientation.NORTH:
             request = NorthAxisBuilder.execute(
                 origin=origin
             )
-        if self._toggle.entity == AxisOrientation.SOUTH:
+        if orientation_toggle.entity == AxisOrientation.SOUTH:
             request = SouthAxisBuilder.execute(
                 origin=origin
             )
-        if self._toggle.entity == AxisOrientation.EAST:
+        if orientation_toggle.entity == AxisOrientation.EAST:
             request = EastAxisBuilder.execute(
                 origin=origin
             )
-        if self._toggle.entity == AxisOrientation.WEST:
+        if orientation_toggle.entity == AxisOrientation.WEST:
             request = WestAxisBuilder.execute(
                 origin=origin
             )

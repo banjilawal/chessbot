@@ -14,7 +14,7 @@ from model import Queen, Vector
 from space import ManeuverVectorSet
 
 
-class QueenManeuverVector(ManeuverVectorSet[Queen]):
+class QueenManeuverVectors(ManeuverVectorSet[Queen]):
     """
     Role:
         -   Data Holder

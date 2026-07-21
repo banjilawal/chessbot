@@ -14,7 +14,7 @@ from model import Rook, Vector
 from space import ManeuverVectorSet
 
 
-class RookManeuverVector(ManeuverVectorSet[Rook]):
+class RookManeuverVectors(ManeuverVectorSet[Rook]):
     """
     Role:
         -   Data Holder

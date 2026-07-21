@@ -78,7 +78,10 @@ class QuadrantSpaceFactory(Builder[Quadrant]):
         return self._vector_validator
     
     @LoggingLevelRouter.monitor
-    def execute(self) -> BuildResult[Quadrant]:
+    def execute(self,
+            origin: Vector,
+            toggle: OrientationToggle,
+    ) -> BuildResult[Quadrant]:
         method = f"{self.__class__.__name__}.execute"
         
         # Handle the case that. the origin is flagged unsafe.
