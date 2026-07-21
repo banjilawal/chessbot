@@ -11,6 +11,7 @@ version: 1.0.1
 
 # Packages
 
+
 # Modules
 from .result import UpdateResult
 from .state import UpdateState

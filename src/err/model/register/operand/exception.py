@@ -15,18 +15,18 @@ from result import MethodResultType
 
 
 __all__ = [
-    # ======================# CARTESIAN_REGISTER_ERROR #======================#
-    "CartesianRegisterException",
+    # ======================# VECTOR_TOGGLE_REGISTER_ERROR #======================#
+    "VectorToggleRegisterException",
 ]
 
-# ======================# CARTESIAN_REGISTER_ERROR #======================#
-class CartesianRegisterException(RegisterException):
+# ======================# VECTOR_TOGGLE_REGISTER_ERROR #======================#
+class VectorToggleRegisterException(RegisterException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a CartesianRegister encountered an error.
+        1.  Indicate that a VectorToggleRegister encountered an error.
 
     Attributes:
         msg: Optional[str]
@@ -42,8 +42,8 @@ class CartesianRegisterException(RegisterException):
     Super Class:
         RegisterException
     """
-    MSG = "CartesianRegister error."
-    ERR_CODE = "CARTESIAN_REGISTER_ERROR"
+    MSG = "VectorToggleRegister error."
+    ERR_CODE = "VECTOR_TOGGLE_REGISTER_ERROR"
     
     def __init__(
             self,

@@ -1,7 +1,7 @@
-# src/err/null/register/model/cartesian/exception.py
+# src/err/null/register/model/vectortoggle/exception.py
 
 """
-Module: err.null.register.model.cartesian.exception
+Module: err.null.register.model.vectortoggle.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -15,18 +15,18 @@ from result import MethodResultType
 
 
 __all__ = [
-    # ======================# CARTESIAN_REGISTER_NULL_ERROR #======================#
+    # ======================# VECTOR_TOGGLE_REGISTER_NULL_ERROR #======================#
     "VectorToggleRegisterNullException",
 ]
 
-# ======================# CARTESIAN_REGISTER_NULL_ERROR #======================#
+# ======================# VECTOR_TOGGLE_REGISTER_NULL_ERROR #======================#
 class VectorToggleRegisterNullException(ModelRegisterNullException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required CartesianRegister is null.
+        1.  Indicate that a required VectorToggleRegister is null.
 
     Attributes:
         msg: Optional[str]
@@ -43,8 +43,8 @@ class VectorToggleRegisterNullException(ModelRegisterNullException):
     Super Class:
         ModelRegisterNullException
     """
-    MSG = "CartesianRegister cannot be null."
-    ERR_CODE = "CARTESIAN_REGISTER_NULL_ERROR"
+    MSG = "VectorToggleRegister cannot be null."
+    ERR_CODE = "VECTOR_TOGGLE_REGISTER_NULL_ERROR"
     
     def __init__(
             self,

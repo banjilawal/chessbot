@@ -1,7 +1,7 @@
-# src/err/validation/register/cartesian/exception.py
+# src/err/validation/register/vectortoggle/exception.py
 
 """
-Module: err.validation.register.cartesian.exception
+Module: err.validation.register.vectortoggle.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -11,23 +11,23 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import CartesianRegisterValidatorException
+from err import VectorToggleRegisterValidatorException
 from result import MethodResultType
 
 
 __all__ = [
-    # ======================# CARTESIAN_REGISTER_MISMATCH_ERROR #======================#
+    # ======================# VECTOR_TOGGLE_REGISTER_MISMATCH_ERROR #======================#
     "VectorToggleRegisterMismatchException",
 ]
 
-# ======================# CARTESIAN_REGISTER_MISMATCH_ERROR #======================#
-class VectorToggleRegisterMismatchException(CartesianRegisterValidatorException):
+# ======================# VECTOR_TOGGLE_REGISTER_MISMATCH_ERROR #======================#
+class VectorToggleRegisterMismatchException(VectorToggleRegisterValidatorException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a candidate failed a CartesianRegister's a-b slots contain different types.
+        1.  Indicate that a candidate failed a VectorToggleRegister's a-b slots contain different types.
 
     Attributes:
             msg: Optional[str]
@@ -42,10 +42,10 @@ class VectorToggleRegisterMismatchException(CartesianRegisterValidatorException)
     Provides:
 
     Super Class:
-        CartesianRegisterValidatorException
+        VectorToggleRegisterValidatorException
     """
-    MSG = "CartesianRegister slots cannot hold different types."
-    ERR_CODE = "CARTESIAN_REGISTER_MISMATCH_ERROR"
+    MSG = "VectorToggleRegister slots cannot hold different types."
+    ERR_CODE = "VECTOR_TOGGLE_REGISTER_MISMATCH_ERROR"
     
     def __init__(
             self,

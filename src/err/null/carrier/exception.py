@@ -26,7 +26,7 @@ class EntityCarrierNullException(NullException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an Carrier is null.
+        1.  Indicate that an CarrierToggle is null.
 
     Attributes:
             msg: Optional[str]
@@ -43,7 +43,7 @@ class EntityCarrierNullException(NullException):
     Super Class:
         NullException
     """
-    MSG = "Carrier cannot be null."
+    MSG = "CarrierToggle cannot be null."
     ERR_CODE = "ENTITY_CARRIER_NULL_ERROR"
     
     def __init__(

@@ -11,6 +11,7 @@ version: 1.0.1
 
 # Packages
 
+
 # Modules
 from .state import AttackStackState
 from .stack import AttackStackService

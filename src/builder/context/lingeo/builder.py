@@ -10,13 +10,13 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Optional
 
-from err import ExcessVectorOperandFlagsException, VectorContextBuilderException
+from err import ExcessVectorToggleFlagsException, VectorContextBuilderException
 from integrity import Builder
-from model import Coord, VectorOperand, Vector
+from model import Coord, VectorToggle, Vector
 from result import BuildResult
 from toolkit  import VectorContextToolkit
 
-class VectorContextBuilder(Builder[VectorOperand]):
+class VectorContextBuilder(Builder[VectorToggle]):
     """
     Role
         -   Transaction Worker
@@ -45,7 +45,7 @@ class VectorContextBuilder(Builder[VectorOperand]):
             coord: Optional[Coord] = None,
             vector: Optional[Vector] = None,
             toolkit : VectorContextToolkit = VectorContextToolkit()
-    ) -> BuildResult[VectorOperand]:
+    ) -> BuildResult[VectorToggle]:
         """
         Build a safe VectorContext.
 
@@ -99,9 +99,9 @@ class VectorContextBuilder(Builder[VectorOperand]):
                     cls_name=cls.__name__,
                     msg=VectorContextBuilderException.MSG,
                     err_code=VectorContextBuilderException.ERR_CODE,
-                    ex=ExcessVectorOperandFlagsException(
-                        msg=ExcessVectorOperandFlagsException.MSG,
-                        err_code=ExcessVectorOperandFlagsException.ERR_CODE,
+                    ex=ExcessVectorToggleFlagsException(
+                        msg=ExcessVectorToggleFlagsException.MSG,
+                        err_code=ExcessVectorToggleFlagsException.ERR_CODE,
                     )
                 )
             )
@@ -119,14 +119,14 @@ class VectorContextBuilder(Builder[VectorOperand]):
                         cls_name=cls.__name__,
                         msg=VectorContextBuilderException.MSG,
                         err_code=VectorContextBuilderException.ERR_CODE,
-                        ex=ExcessVectorOperandFlagsException(
-                            msg=ExcessVectorOperandFlagsException.MSG,
-                            err_code=ExcessVectorOperandFlagsException.ERR_CODE,
+                        ex=ExcessVectorToggleFlagsException(
+                            msg=ExcessVectorToggleFlagsException.MSG,
+                            err_code=ExcessVectorToggleFlagsException.ERR_CODE,
                         )
                     )
                 )
             # On Build success, forward the work product.
-            return BuildResult.success(VectorOperand(coord=coord))
+            return BuildResult.success(VectorToggle(coord=coord))
         
         # Deal with the alternate case.
         build_result = toolkit.vector_service.run.execute(vector)
@@ -142,5 +142,5 @@ class VectorContextBuilder(Builder[VectorOperand]):
                 )
             )
         # --- Forward the work product to the caller ---#
-        return BuildResult.success(VectorOperand(vector=vector))
+        return BuildResult.success(VectorToggle(vector=vector))
             

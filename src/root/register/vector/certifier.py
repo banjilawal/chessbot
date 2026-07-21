@@ -8,9 +8,9 @@ version: 1.0.1
 """
 
 from __future__ import annotations
-from typing import Any, cast
+from typing import Any, Type, cast
 
-from err import VectorToggleRegisterMismatchException, VectorToggleRegisterCertifierException
+from err import VectorToggleRegisterCertifierException, VectorToggleRegisterMismatchException
 from root import RootCertifier
 from register import VectorToggleRegister
 from result import ValidationResult
@@ -31,7 +31,7 @@ class VectorToggleRegisterCertifier(RootCertifier[VectorToggleRegister]):
             before use in a binary arithmetic operation.
 
     Attributes:
-        toolkit: CartesianRegisterToolkit   
+        toolkit: VectorToggleRegisterToolkit   
     Properties:
         -   execute(candidate: Any,) -> ValidationResult
 
@@ -66,7 +66,7 @@ class VectorToggleRegisterCertifier(RootCertifier[VectorToggleRegister]):
             ValidationResult
         Raises:
             VectorToggleRegisterCertifierException
-            CartesianRegisterMismatchException
+            VectorToggleRegisterMismatchException
         """
         method = f"{self.__class__.__name__}.execute"
         
@@ -88,10 +88,10 @@ class VectorToggleRegisterCertifier(RootCertifier[VectorToggleRegister]):
                 )
             )
         # --- Cast candidate to a VectorRegister for additional tests. ---#
-        blueprint = cast(self.toolkit.blueprint_model, candidate)
+        register = cast(self.toolkit.model, candidate)
         
         # Handle the case that the register has mixed contents.
-        if blueprint.is_mismatched_register:
+        if register:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 VectorToggleRegisterCertifierException(

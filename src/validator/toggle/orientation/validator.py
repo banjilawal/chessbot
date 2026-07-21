@@ -28,7 +28,7 @@ class OrientationSelectorValidator(ModelValidator[OrientationToggle]):
             before use.
 
     Attributes:
-        bootstrapper: CartesianRegisterRootCertifier
+        bootstrapper: VectorToggleRegisterRootCertifier
 
     Properties:
         -   def validate(
@@ -42,13 +42,13 @@ class OrientationSelectorValidator(ModelValidator[OrientationToggle]):
     
     def __init__(
             self,
-            root_certifier: CartesianRegisterRootCertifier | None = CartesianRegisterRootCertifier(),
+            root_certifier: VectorToggleRegisterRootCertifier | None = VectorToggleRegisterRootCertifier(),
     ):
         super().__init__(root_certifier=root_certifier)
         
     @property
-    def root_certifier(self) -> CartesianRegisterRootCertifier:
-        return cast(CartesianRegisterRootCertifier, self.root_certifier)
+    def root_certifier(self) -> VectorToggleRegisterRootCertifier:
+        return cast(VectorToggleRegisterRootCertifier, self.root_certifier)
     
     @LoggingLevelRouter.monitor
     def execute(self, candidate: Any) -> ValidationResult:

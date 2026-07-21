@@ -11,6 +11,7 @@ version: 1.0.0
 
 # Packages
 
+
 # Modules
 from .color import FormationColorBoundsException
 from .route import FormationLookupRouteException

@@ -16,18 +16,18 @@ from result import MethodResultType
 
 
 __all__ = [
-    # ======================# CARTESIAN_REGISTER_MICROSERVICE_FAILURE #======================#
-    "CartesianRegisterMicroserviceException",
+    # ======================# VECTOR_TOGGLE_REGISTER_MICROSERVICE_FAILURE #======================#
+    "VectorToggleRegisterMicroserviceException",
 ]
 
-# ======================# CARTESIAN_REGISTER_MICROSERVICE_FAILURE #======================#
-class CartesianRegisterMicroserviceException(RegisterMicroserviceException):
+# ======================# VECTOR_TOGGLE_REGISTER_MICROSERVICE_FAILURE #======================#
+class VectorToggleRegisterMicroserviceException(RegisterMicroserviceException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a candidate did not pass a CartesianRegisterMicroservice failed.
+        1.  Indicate that a candidate did not pass a VectorToggleRegisterMicroservice failed.
 
     Attributes:
             msg: Optional[str]
@@ -44,8 +44,8 @@ class CartesianRegisterMicroserviceException(RegisterMicroserviceException):
     Super Class:
         RegisterMicroserviceException
     """
-    MSG = "CartesianRegisterMicroservice failure."
-    ERR_CODE = "CARTESIAN_REGISTER_MICROSERVICE_FAILURE"
+    MSG = "VectorToggleRegisterMicroservice failure."
+    ERR_CODE = "VECTOR_TOGGLE_REGISTER_MICROSERVICE_FAILURE"
     
     def __init__(
             self,

@@ -15,19 +15,19 @@ from result import MethodResultType
 
 
 __all__ = [
-    # ======================# CARTESIAN_CONSISTENCY_CHECKER_NULL_ERROR #======================#
-    "VectorOperandConsistencyCheckerNullException",
+    # ======================# VECTOR_TOGGLE_CONSISTENCY_CHECKER_NULL_ERROR #======================#
+    "VectorToggleConsistencyCheckerNullException",
 ]
 
 
-# ======================# CARTESIAN_CONSISTENCY_CHECKER_NULL_ERROR #======================#
-class VectorOperandConsistencyCheckerNullException(ConsistencyCheckerNullException):
+# ======================# VECTOR_TOGGLE_CONSISTENCY_CHECKER_NULL_ERROR #======================#
+class VectorToggleConsistencyCheckerNullException(ConsistencyCheckerNullException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required VectorOperandConsistencyChecker is null.
+        1.  Indicate that a required VectorToggleConsistencyChecker is null.
 
     Attributes:
             msg: Optional[str]
@@ -44,8 +44,8 @@ class VectorOperandConsistencyCheckerNullException(ConsistencyCheckerNullExcepti
     Super Class:
         ConsistencyCheckerNullException
     """
-    MSG = "VectorOperandConsistencyChecker cannot be null."
-    ERR_CODE = "CARTESIAN_CONSISTENCY_CHECKER_NULL_ERROR"
+    MSG = "VectorToggleConsistencyChecker cannot be null."
+    ERR_CODE = "VECTOR_TOGGLE_CONSISTENCY_CHECKER_NULL_ERROR"
     
     def __init__(
             self,

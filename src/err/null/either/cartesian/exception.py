@@ -1,7 +1,7 @@
-# src/err/null/either/cartesian/exception.py
+# src/err/null/toggle/vectortoggle/exception.py
 
 """
-Module: err.null.either.cartesian.exception
+Module: err.null.toggle.vectortoggle.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -15,11 +15,11 @@ from result import MethodResultType
 
 
 __all__ = [
-    # ======================# CARTESIAN_NULL_ERROR #======================#
+    # ======================# VECTOR_TOGGLE_NULL_ERROR #======================#
     "VectorToggleNullException",
 ]
 
-# ======================# CARTESIAN_NULL_ERROR #======================#
+# ======================# VECTOR_TOGGLE_NULL_ERROR #======================#
 class VectorToggleNullException(EitherNullException):
     """
     Role:
@@ -44,7 +44,7 @@ class VectorToggleNullException(EitherNullException):
         EitherNullException
     """
     MSG = "CartesianEither cannot be null."
-    ERR_CODE = "CARTESIAN_NULL_ERROR"
+    ERR_CODE = "VECTOR_TOGGLE_NULL_ERROR"
     
     def __init__(
             self,

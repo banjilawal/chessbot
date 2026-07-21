@@ -64,7 +64,7 @@ class EuclideanDistance(Operation[PointRegister]):
         Args:
             register: VectorRegister
             register_validator: VectorRegisterValidator
-            operand_toolkit: VectorOperandToolkit
+            operand_toolkit: VectorToggleToolkit
             scalar_build_pipeline: ScalarBuilder
         Result:
             ComputationResult[Scalar]:

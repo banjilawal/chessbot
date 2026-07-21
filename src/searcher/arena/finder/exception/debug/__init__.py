@@ -10,6 +10,7 @@ version: 1.0.0
 
 # Packages
 
+
 # Modules
 from .route import ArenaSearchRouteException
 from .id import ArenaSearchIdCollisionException

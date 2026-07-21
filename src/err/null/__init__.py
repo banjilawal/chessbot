@@ -19,11 +19,11 @@ from .container import *
 from .context import *
 from .database import *
 from .dependecy import *
-from .either import *
+from .toggle import *
 from .identifier import *
 from .microservice import *
 from .model import *
-from .either import *
+from .toggle import *
 from .number import *
 from .operation import *
 from .query import *

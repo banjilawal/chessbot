@@ -15,17 +15,17 @@ from result import MethodResultType
 
 
 __all__ = [
-    # ======================# CARTESIAN_MICROSERVICE_FAILURE #======================#
-    "VectorOperandMicroserviceException",
+    # ======================# VECTOR_TOGGLE_MICROSERVICE_FAILURE #======================#
+    "VectorToggleMicroserviceException",
 ]
-# ======================# CARTESIAN_MICROSERVICE_FAILURE #======================#
-class VectorOperandMicroserviceException(MicroserviceException):
+# ======================# VECTOR_TOGGLE_MICROSERVICE_FAILURE #======================#
+class VectorToggleMicroserviceException(MicroserviceException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a candidate did not pass a VectorOperandMicroservice failed.
+        1.  Indicate that a candidate did not pass a VectorToggleMicroservice failed.
 
     Attributes:
             msg: Optional[str]
@@ -42,8 +42,8 @@ class VectorOperandMicroserviceException(MicroserviceException):
     Super Class:
         MicroserviceException
     """
-    MSG = "VectorOperand microservice failed."
-    ERR_CODE = "CARTESIAN_MICROSERVICE_FAILURE"
+    MSG = "VectorToggle microservice failed."
+    ERR_CODE = "VECTOR_TOGGLE_MICROSERVICE_FAILURE"
     
     def __init__(
             self,

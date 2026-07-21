@@ -10,5 +10,6 @@ version: 1.0.1
 # =========== SEARCHER.ORIGIN PACKAGE ===========#
 # Packages
 
+
 # Modules
 from .searcher import TokenOriginSearcher

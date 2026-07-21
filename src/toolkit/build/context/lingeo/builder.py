@@ -10,13 +10,13 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Optional
 
-from err import ExcessVectorOperandFlagsException, VectorContextToolkitException
+from err import ExcessVectorToggleFlagsException, VectorContextToolkitException
 from integrity import Toolkit
-from model import Coord, VectorOperand, Vector
+from model import Coord, VectorToggle, Vector
 from result import ToolkitResult
 from toolkit  import VectorContextToolkit
 
-class VectorContextToolkit(Toolkit[VectorOperand]):
+class VectorContextToolkit(Toolkit[VectorToggle]):
     """
     Role
         -   Transaction Worker
@@ -45,7 +45,7 @@ class VectorContextToolkit(Toolkit[VectorOperand]):
             coord: Optional[Coord] = None,
             vector: Optional[Vector] = None,
             toolkit : VectorContextToolkit = VectorContextToolkit()
-    ) -> ToolkitResult[VectorOperand]:
+    ) -> ToolkitResult[VectorToggle]:
         """
         Toolkit a safe VectorContext.
 
@@ -99,9 +99,9 @@ class VectorContextToolkit(Toolkit[VectorOperand]):
                     cls_name=cls.__name__,
                     msg=VectorContextToolkitException.MSG,
                     err_code=VectorContextToolkitException.ERR_CODE,
-                    ex=ExcessVectorOperandFlagsException(
-                        msg=ExcessVectorOperandFlagsException.MSG,
-                        err_code=ExcessVectorOperandFlagsException.ERR_CODE,
+                    ex=ExcessVectorToggleFlagsException(
+                        msg=ExcessVectorToggleFlagsException.MSG,
+                        err_code=ExcessVectorToggleFlagsException.ERR_CODE,
                     )
                 )
             )
@@ -119,14 +119,14 @@ class VectorContextToolkit(Toolkit[VectorOperand]):
                         cls_name=cls.__name__,
                         msg=VectorContextToolkitException.MSG,
                         err_code=VectorContextToolkitException.ERR_CODE,
-                        ex=ExcessVectorOperandFlagsException(
-                            msg=ExcessVectorOperandFlagsException.MSG,
-                            err_code=ExcessVectorOperandFlagsException.ERR_CODE,
+                        ex=ExcessVectorToggleFlagsException(
+                            msg=ExcessVectorToggleFlagsException.MSG,
+                            err_code=ExcessVectorToggleFlagsException.ERR_CODE,
                         )
                     )
                 )
             # On Toolkit success, forward the work product.
-            return ToolkitResult.success(VectorOperand(coord=coord))
+            return ToolkitResult.success(VectorToggle(coord=coord))
         
         # Deal with the alternate case.
         toolkit_result = toolkit.vector_service.run.execute(vector)
@@ -142,5 +142,5 @@ class VectorContextToolkit(Toolkit[VectorOperand]):
                 )
             )
         # --- Forward the work product to the caller ---#
-        return ToolkitResult.success(VectorOperand(vector=vector))
+        return ToolkitResult.success(VectorToggle(vector=vector))
             

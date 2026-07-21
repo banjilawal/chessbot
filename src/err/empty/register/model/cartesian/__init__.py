@@ -1,7 +1,7 @@
-# src/err/empty/register/model/cartesian/__init__.py
+# src/err/empty/register/model/vectortoggle/__init__.py
 
 """
-Module: err.empty.register.model.cartesian.__init__
+Module: err.empty.register.model.vectortoggle.__init__
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -13,4 +13,4 @@ version: 1.0.1
 
 
 # Modules
-from .exception import CartesianRegisterEmptyException
+from .exception import VectorToggleRegisterEmptyException

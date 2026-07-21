@@ -94,7 +94,7 @@ class AddVector(Operation[VectorToggle]):
             register_validator = VectorRegisterValidator()
             
         if operand_toolkit is None:
-            operand_toolkit = VectorOperandToolkit()
+            operand_toolkit = VectorToggleToolkit()
             
         
         

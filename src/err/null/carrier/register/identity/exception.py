@@ -10,23 +10,23 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import RegisterEntityNullException
+from err import RegisterCarrierNullException
 from result import MethodResultType
 
 
 __all__ = [
     # ======================# IDENTITY_REGISTER_CARRIER_NULL_ERROR #======================#
-    "IdentityRegisterEntityNullException",
+    "IdentityRegisterCarrierNullException",
 ]
 
 # ======================# IDENTITY_REGISTER_CARRIER_NULL_ERROR #======================#
-class IdentityRegisterEntityNullException(RegisterEntityNullException):
+class IdentityRegisterCarrierNullException(RegisterCarrierNullException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required IdentityRegisterCarrier is null.
+        1.  Indicate that a required IdentityRegisterCarrierToggle is null.
 
     Attributes:
         msg: Optional[str]
@@ -42,7 +42,7 @@ class IdentityRegisterEntityNullException(RegisterEntityNullException):
     Super Class:
         RegisterCarrierNullException
     """
-    MSG = "IdentityRegisterEntityCarrier cannot be null."
+    MSG = "IdentityRegisterCarrierToggle cannot be null."
     ERR_CODE= "IDENTITY_REGISTER_CARRIER_NULL_ERROR"
     
     def __init__(

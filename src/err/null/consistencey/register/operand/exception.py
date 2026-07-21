@@ -15,18 +15,18 @@ from result import MethodResultType
 
 
 __all__ = [
-    # ======================# CARTESIAN_REGISTER_CONSISTENCY_CHECKER_NULL_ERROR #======================#
-    "CartesianRegisterConsistencyCheckerNullException",
+    # ======================# VECTOR_TOGGLE_REGISTER_CONSISTENCY_CHECKER_NULL_ERROR #======================#
+    "VectorToggleRegisterConsistencyCheckerNullException",
 ]
 
-# ======================# CARTESIAN_REGISTER_CONSISTENCY_CHECKER_NULL_ERROR #======================#
-class CartesianRegisterConsistencyCheckerNullException(RegisterException):
+# ======================# VECTOR_TOGGLE_REGISTER_CONSISTENCY_CHECKER_NULL_ERROR #======================#
+class VectorToggleRegisterConsistencyCheckerNullException(RegisterException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required CartesianRegisterConsistencyChecker is null.
+        1.  Indicate that a required VectorToggleRegisterConsistencyChecker is null.
 
     Attributes:
         msg: Optional[str]
@@ -42,8 +42,8 @@ class CartesianRegisterConsistencyCheckerNullException(RegisterException):
     Super Class:
         RegisterException
     """
-    MSG = "CartesianRegisterConsistencyChecker cannot be null."
-    ERR_CODE = "CARTESIAN_REGISTER_CONSISTENCY_CHECKER_NULL_ERROR"
+    MSG = "VectorToggleRegisterConsistencyChecker cannot be null."
+    ERR_CODE = "VECTOR_TOGGLE_REGISTER_CONSISTENCY_CHECKER_NULL_ERROR"
     
     def __init__(
             self,

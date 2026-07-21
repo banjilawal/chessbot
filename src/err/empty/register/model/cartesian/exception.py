@@ -1,7 +1,7 @@
-# src/err/empty/register/model/cartesian/exception.py
+# src/err/empty/register/model/vectortoggle/exception.py
 
 """
-Module: err.empty.register.model.cartesian.exception
+Module: err.empty.register.model.vectortoggle.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -15,18 +15,18 @@ from result import MethodResultType
 
 
 __all__ = [
-    # ======================# CARTESIAN_REGISTER_EMPTY_ERROR #======================#
-    "CartesianRegisterEmptyException",
+    # ======================# VECTOR_TOGGLE_REGISTER_EMPTY_ERROR #======================#
+    "VectorToggleRegisterEmptyException",
 ]
 
-# ======================# CARTESIAN_REGISTER_EMPTY_ERROR #======================#
-class CartesianRegisterEmptyException(ModelRegisterEmptyException):
+# ======================# VECTOR_TOGGLE_REGISTER_EMPTY_ERROR #======================#
+class VectorToggleRegisterEmptyException(ModelRegisterEmptyException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required CartesianRegister is empty.
+        1.  Indicate that a required VectorToggleRegister is empty.
 
     Attributes:
         msg: Optional[str]
@@ -43,8 +43,8 @@ class CartesianRegisterEmptyException(ModelRegisterEmptyException):
     Super Class:
         ModelRegisterEmptyException
     """
-    MSG = "CartesianRegister cannot be empty."
-    ERR_CODE = "CARTESIAN_REGISTER_EMPTY_ERROR"
+    MSG = "VectorToggleRegister cannot be empty."
+    ERR_CODE = "VECTOR_TOGGLE_REGISTER_EMPTY_ERROR"
     
     def __init__(
             self,

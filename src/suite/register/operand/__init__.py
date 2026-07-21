@@ -11,5 +11,6 @@ version: 1.0.1
 
 # Packages
 
+
 # Modules
-from .suite import CartesianRegisterSuite
+from .suite import VectorToggleRegisterSuite

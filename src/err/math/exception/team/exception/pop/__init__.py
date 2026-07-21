@@ -12,6 +12,7 @@ version: 1.0.0
 
 # Packages
 
+
 # Modules
 from .work import PoppingTeamStackFailedException
 from .empty import PoppingEmptyTeamStackException

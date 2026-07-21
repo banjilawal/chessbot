@@ -27,17 +27,17 @@ class VectorToggleValidator(Validator[VectorToggle]):
         -   Validation Process Owner
 
     Responsibilities:
-        1.  Ensure a VectorOperand instance is certified safe, reliable and consistent
+        1.  Ensure a VectorToggle instance is certified safe, reliable and consistent
             before use.
 
     Attributes:
-        bootstrapper: CartesianRegisterRootCertifier
+        bootstrapper: VectorToggleRegisterRootCertifier
 
     Properties:
         -   def validate(
                     candidate: Any,
-                    toolkit : VectorOperandToolkit,
-            ) -> ValidationResult[VectorOperand]:
+                    toolkit : VectorToggleToolkit,
+            ) -> ValidationResult[VectorToggle]:
 
     Super Class:
         ModelValidator
@@ -56,21 +56,21 @@ class VectorToggleValidator(Validator[VectorToggle]):
     @LoggingLevelRouter.monitor
     def execute(self, candidate: Any) -> ValidationResult[VectorToggle]:
         """
-        Verify the candidate is a safe VectorOperand.
+        Verify the candidate is a safe VectorToggle.
         
         Action:
             1.  Send an exception in the ValidationResult any of these
                 conditions occur.
                     -   candidate is null.
-                    -   It's not a VectorOperand.
-                    -   The vectorOperand's payload is flagged unsafe.
+                    -   It's not a VectorToggle.
+                    -   The vectorToggle's payload is flagged unsafe.
             3.  Otherwise, Send the success result.
         Args:
             candidate: Any
         Returns:
             ValidationResult
         Raises:
-            VectorOperandValidatorException
+            VectorToggleValidatorException
         """
         method = f"{self.__class__.__name__}.execute"
         
@@ -92,7 +92,7 @@ class VectorToggleValidator(Validator[VectorToggle]):
                     ex=certification.exception
                 )
             )
-        # --- Cast candidate to a VectorOperand for additional tests. ---#
+        # --- Cast candidate to a VectorToggle for additional tests. ---#
         return ValidationResult.success(cast(VectorToggle, certification.payload))
 
             

@@ -1,7 +1,7 @@
-# src/err/operand/cartesian/exception.py
+# src/err/operand/vectortoggle/exception.py
 
 """
-Module: err.operand.cartesian.exception
+Module: err.operand.vectortoggle.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -15,11 +15,11 @@ from result import MethodResultType
 
 
 __all__ = [
-    # ======================# CARTESIAN_OPERAND_ERROR #======================#
+    # ======================# VECTOR_TOGGLE_OPERAND_ERROR #======================#
     "CartesianOperandException",
 ]
 
-# ======================# CARTESIAN_OPERAND_ERROR #======================#
+# ======================# VECTOR_TOGGLE_OPERAND_ERROR #======================#
 class CartesianOperandException(ToggleNullException):
     """
     Role:
@@ -44,7 +44,7 @@ class CartesianOperandException(ToggleNullException):
         DtoOperandException
     """
     MSG = "CartesianOperand error."
-    ERR_CODE = "CARTESIAN_OPERAND_ERROR"
+    ERR_CODE = "VECTOR_TOGGLE_OPERAND_ERROR"
     
     def __init__(
             self,

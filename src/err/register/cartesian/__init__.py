@@ -1,15 +1,16 @@
-# src/err/register/cartesian/__init__.py
+# src/err/register/vectortoggle/__init__.py
 
 """
-Module: err.register.cartesian.__init__
+Module: err.register.vectortoggle.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
 """
 
-# =========== ERR.REGISTER.CARTESIAN PACKAGE ===========#
+# =========== ERR.REGISTER.VECTOR_TOGGLE PACKAGE ===========#
 
 # Packages
 
+
 # Modules
-from .exception import CartesianRegisterException
+from .exception import VectorToggleRegisterException

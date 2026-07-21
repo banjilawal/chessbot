@@ -13,18 +13,18 @@ from typing import Any, Optional
 from err import ExcessTogglesException
 
 _all_ = [
-    # ======================# EXCESS_CARTESIAN_FLAGS_EXCEPTION #======================#
-    "ExcessVectorOperandFlagsException",
+    # ======================# EXCESS_VECTOR_TOGGLE_FLAGS_EXCEPTION #======================#
+    "ExcessVectorToggleFlagsException",
 ]
 
-# ======================# EXCESS_CARTESIAN_FLAGS_EXCEPTION #======================#
-class ExcessVectorOperandFlagsException(ExcessTogglesException):
+# ======================# EXCESS_VECTOR_TOGGLE_FLAGS_EXCEPTION #======================#
+class ExcessVectorToggleFlagsException(ExcessTogglesException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicates that more than one VectorOperand option was enabled.
+        1.  Indicates that more than one VectorToggle option was enabled.
 
     Attributes:
         msg: Optional[str]
@@ -40,8 +40,8 @@ class ExcessVectorOperandFlagsException(ExcessTogglesException):
     Super Class:
         ExcessContextFlagsException
     """
-    MSG = "More than one VectorOperand attribute enabled."
-    ERR_CODE = "EXCESS_CARTESIAN_FLAGS_EXCEPTION"
+    MSG = "More than one VectorToggle attribute enabled."
+    ERR_CODE = "EXCESS_VECTOR_TOGGLE_FLAGS_EXCEPTION"
     
     def __init__(
             self,

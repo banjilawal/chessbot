@@ -10,5 +10,6 @@ Created: 2026-02-24
 
 # Packages
 
+
 # Modules
 from .transaction import CommandBuilderException

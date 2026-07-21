@@ -41,6 +41,7 @@ from .query import *
 from .register import *
 from .resource import *
 from .rollback import *
+from .root import *
 from .route import *
 from .search import *
 from .service import *

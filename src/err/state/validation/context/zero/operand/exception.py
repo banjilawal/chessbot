@@ -13,18 +13,18 @@ from typing import Any, Optional
 from err import NoActiveTogglesException
 
 _all_ = [
-    # ======================# ZERO_CARTESIAN_FLAGS_EXCEPTION #======================#
-    "ZeroVectorOperandFlagsException",
+    # ======================# ZERO_VECTOR_TOGGLE_FLAGS_EXCEPTION #======================#
+    "ZeroVectorToggleFlagsException",
 ]
 
-# ======================# ZERO_CARTESIAN_FLAGS_EXCEPTION #======================#
-class ZeroVectorOperandFlagsException(NoActiveTogglesException):
+# ======================# ZERO_VECTOR_TOGGLE_FLAGS_EXCEPTION #======================#
+class ZeroVectorToggleFlagsException(NoActiveTogglesException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicates that no VectorOperand option was enabled.
+        1.  Indicates that no VectorToggle option was enabled.
 
     Attributes:
         msg: Optional[str]
@@ -41,7 +41,7 @@ class ZeroVectorOperandFlagsException(NoActiveTogglesException):
         ZeroContextFlagsException
     """
     MSG = "No NodeCcontext attribute enabled."
-    ERR_CODE = "ZERO_CARTESIAN_FLAGS_EXCEPTION"
+    ERR_CODE = "ZERO_VECTOR_TOGGLE_FLAGS_EXCEPTION"
     
     def __init__(
             self,

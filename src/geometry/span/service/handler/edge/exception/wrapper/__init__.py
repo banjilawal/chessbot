@@ -11,6 +11,7 @@ version: 1.0.0
 
 # Packages
 
+
 # Modules
 from .push import EdgePairInsertionException
 from .symmetric import SymmetricEdgeBuilderException

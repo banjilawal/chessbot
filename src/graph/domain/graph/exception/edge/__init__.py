@@ -11,6 +11,7 @@ version: 1.0.0
 
 # Packages
 
+
 # Modules
 from .insert import NodeInsertionException
 from .delete import NodeDeletionException

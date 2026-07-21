@@ -11,5 +11,6 @@ Version: 1.0.0
 
 # Packages
 
+
 # Modules
 from .work import FreedomAnalystException

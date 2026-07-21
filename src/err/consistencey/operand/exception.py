@@ -15,19 +15,19 @@ from result import MethodResultType
 
 
 __all__ = [
-    # ======================# CARTESIAN_CONSISTENCY_CHECKER_FAILURE #======================#
-    "VectorOperandConsistencyCheckerException",
+    # ======================# VECTOR_TOGGLE_CONSISTENCY_CHECKER_FAILURE #======================#
+    "VectorToggleConsistencyCheckerException",
 ]
 
 
-# ======================# CARTESIAN_CONSISTENCY_CHECKER_FAILURE #======================#
-class VectorOperandConsistencyCheckerException(ConsistencyCheckerException):
+# ======================# VECTOR_TOGGLE_CONSISTENCY_CHECKER_FAILURE #======================#
+class VectorToggleConsistencyCheckerException(ConsistencyCheckerException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a VectorOperandConsistencyChecker raised an error.
+        1.  Indicate that a VectorToggleConsistencyChecker raised an error.
 
     Attributes:
             msg: Optional[str]
@@ -44,8 +44,8 @@ class VectorOperandConsistencyCheckerException(ConsistencyCheckerException):
     Super Class:
         ConsistencyCheckerException
     """
-    MSG = "VectorOperand consistency error."
-    ERR_CODE = "CARTESIAN_CONSISTENCY_CHECKER_FAILURE"
+    MSG = "VectorToggle consistency error."
+    ERR_CODE = "VECTOR_TOGGLE_CONSISTENCY_CHECKER_FAILURE"
     
     def __init__(
             self,

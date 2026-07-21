@@ -19,7 +19,7 @@ class NumberToolkit(AnalyzerBootstrapperToolkit[int]):
         -   Container
 
     Responsibilities:
-        1.  Collection of workers and services that are required for VectorOperand tasks.
+        1.  Collection of workers and services that are required for VectorToggle tasks.
         2.  Simplifies entry points.
         3.  No logic in the Toolkit.
 

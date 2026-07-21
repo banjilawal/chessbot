@@ -10,6 +10,7 @@ Created: 2026-02-24
 
 # Packages
 
+
 # Modules
 from .name import ArgumentNameException
 from .genus import ArgumentTypeException

@@ -10,6 +10,7 @@ Created: 2026-02-24
 
 # Packages
 
+
 # Modules
 from .null import NullCommandException
 from .name import CommandNameNotFoundException

@@ -14,19 +14,19 @@ from err import ToolkitException
 
 
 __all__ = [
-    # ======================# CARTESIAN_ERROR #======================#
-    "VectorOperandException",
+    # ======================# VECTOR_TOGGLE_ERROR #======================#
+    "VectorToggleException",
 ]
 
 
-# ======================# CARTESIAN_ERROR #======================#
-class VectorOperandException(ToolkitException):
+# ======================# VECTOR_TOGGLE_ERROR #======================#
+class VectorToggleException(ToolkitException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a VectorOperand encountered an error.
+        1.  Indicate that a VectorToggle encountered an error.
 
     Attributes:
             msg: Optional[str]
@@ -43,8 +43,8 @@ class VectorOperandException(ToolkitException):
     Super Class:
         ToolkitException
     """
-    MSG = "VectorOperand error state."
-    ERR_CODE = "CARTESIAN_ERROR"
+    MSG = "VectorToggle error state."
+    ERR_CODE = "VECTOR_TOGGLE_ERROR"
     
     def __init__(
             self,

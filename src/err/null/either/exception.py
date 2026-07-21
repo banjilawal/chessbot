@@ -1,7 +1,7 @@
-# src/err/null/either/exception.py
+# src/err/null/toggle/exception.py
 
 """
-Module: err.null.either.exception
+Module: err.null.toggle.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1

@@ -11,55 +11,67 @@ from __future__ import annotations
 
 from typing import Type
 
-from blueprint import PointRegisterBlueprint
-from err import (
-    CartesianRegisterBlueprintNullException,
-    VectorToggleRegisterNullException
-)
-from  import VectorOperand, PointRegister
+from blueprint import VectorToggleRegisterBlueprint
+from carrier import VectorToggleRegisterCarrierToggle
+from err import VectorToggleRegisterBlueprintNullException, VectorToggleRegisterNullException
+from register import VectorToggleRegister
+from toggle import VectorToggle
 from toolkit import RegisterToolkit
-from validator.register.operand import VectorOperandValidator
+from validator import VectorToggleValidator
 
 
-class VectorToggleRegisterToolkit(RegisterToolkit[VectorOperand]):
+class VectorToggleRegisterToolkit(RegisterToolkit[VectorToggle]):
     """
     Role:
         -   Container
 
     Responsibilities:
-        1.  Collection of workers and services that are required for CartesianRegister tasks.
+        1.  Collection of workers and services that are required for VectorToggleRegister tasks.
         2.  Simplifies entry points.
         3.  No logic in the Toolkit.
 
     Attributes:
-        vector_toggle_validator: VectorOperandValidator
-        null_exception = CartesianRegisterNullException
-        : CartesianRegister
+        vector_toggle_validator: VectorToggleValidator
+        null_exception = VectorToggleRegisterNullException
+        : VectorToggleRegister
 
     Provides:
 
     Super Class:
        RegisterToolkit
     """
-    vector_toggle_validator: VectorOperandValidator = VectorOperandValidator()
-    : PointRegister
-    null_exception = VectorToggleRegisterNullException()
-    blueprint_ = PointRegisterBlueprint
-    blueprint_null_exception = CartesianRegisterBlueprintNullException()
+    model: Type[VectorToggleRegister] = VectorToggleRegister
+    carrier_model: Type[VectorToggleRegisterCarrierToggle] = VectorToggleRegisterCarrierToggle
+    blueprint_model: Type[VectorToggleRegisterBlueprint] = VectorToggleRegisterBlueprint
+    
+    null_exception: VectorToggleRegisterNullException = (
+        VectorToggleRegisterNullException()
+    )
+    carrier_null_exception: VectorToggleRegisterCarrierNullException = (
+        VectorToggleRegisterCarrierNullException()
+    )
+    blueprint_null_exception: VectorToggleRegisterBlueprintNullException = (
+        VectorToggleRegisterBlueprintNullException()
+    )
+    
+
+    vector_toggle_validator: VectorToggleValidator = VectorToggleValidator()
+
+
     #
     # @property
-    # def (self) -> Type[VectorOperand]:
-    #     return Type[CartesianRegister]
+    # def (self) -> Type[VectorToggle]:
+    #     return Type[VectorToggleRegister]
     #
     # @property
-    # def null_exception(self) -> CartesianRegisterNullException:
-    #     return CartesianRegisterNullException()
+    # def null_exception(self) -> VectorToggleRegisterNullException:
+    #     return VectorToggleRegisterNullException()
     #
     # @property
-    # def blueprint_(self) -> CartesianRegisterBlueprint:
-    #     return Type[CartesianRegisterBlueprint]
+    # def blueprint_(self) -> VectorToggleRegisterBlueprint:
+    #     return Type[VectorToggleRegisterBlueprint]
     #
     # @property
-    # def blueprint_null_exception(self) -> CartesianRegisterBlueprintNullException:
-    #     return CartesianRegisterBlueprintNullException()
+    # def blueprint_null_exception(self) -> VectorToggleRegisterBlueprintNullException:
+    #     return VectorToggleRegisterBlueprintNullException()
     

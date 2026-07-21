@@ -13,21 +13,21 @@ from typing import Any, Optional
 
 
 __all__ = [
-    # ======================# CARTESIAN_REGISTER_BLUEPRINT_NULL_ERROR #======================#
-    "CartesianRegisterBlueprintNullException",
+    # ======================# VECTOR_TOGGLE_REGISTER_BLUEPRINT_NULL_ERROR #======================#
+    "VectorToggleRegisterBlueprintNullException",
 ]
 
 from err import RegisterBlueprintNullException
 
 
-# ======================# CARTESIAN_REGISTER_BLUEPRINT_NULL_ERROR #======================#
-class CartesianRegisterBlueprintNullException(RegisterBlueprintNullException):
+# ======================# VECTOR_TOGGLE_REGISTER_BLUEPRINT_NULL_ERROR #======================#
+class VectorToggleRegisterBlueprintNullException(RegisterBlueprintNullException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required CartesianRegister is null.
+        1.  Indicate that a required VectorToggleRegister is null.
 
     Cannot Be Null.s:
             msg: Optional[str]
@@ -44,8 +44,8 @@ class CartesianRegisterBlueprintNullException(RegisterBlueprintNullException):
     Super Class:
         RegisterBlueprintNullException
     """
-    MSG = "CartesianRegister cannot be null."
-    ERR_CODE = "CARTESIAN_REGISTER_BLUEPRINT_NULL_ERROR"
+    MSG = "VectorToggleRegister cannot be null."
+    ERR_CODE = "VECTOR_TOGGLE_REGISTER_BLUEPRINT_NULL_ERROR"
     
     def __init__(
             self,

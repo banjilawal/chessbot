@@ -15,19 +15,19 @@ from result import MethodResultType
 
 
 __all__ = [
-    # ======================# CARTESIAN_ERROR #======================#
-    "VectorOperandException",
+    # ======================# VECTOR_TOGGLE_ERROR #======================#
+    "VectorToggleException",
 ]
 
 
-# ======================# CARTESIAN_ERROR #======================#
-class VectorOperandException(ModelException):
+# ======================# VECTOR_TOGGLE_ERROR #======================#
+class VectorToggleException(ModelException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a VectorOperand encountered an error.
+        1.  Indicate that a VectorToggle encountered an error.
 
     Attributes:
             msg: Optional[str]
@@ -44,8 +44,8 @@ class VectorOperandException(ModelException):
     Super Class:
         ModelException
     """
-    MSG = "VectorOperand error."
-    ERR_CODE = "CARTESIAN_ERROR"
+    MSG = "VectorToggle error."
+    ERR_CODE = "VECTOR_TOGGLE_ERROR"
     
     def __init__(
             self,

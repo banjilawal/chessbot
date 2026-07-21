@@ -10,23 +10,23 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import RegisterEntityNullException
+from err import RegisterCarrierNullException
 from result import MethodResultType
 
 
 __all__ = [
     # ======================# SQUARE_REGISTER_CARRIER_NULL_ERROR #======================#
-    "SquareRegisterEntityNullException",
+    "SquareRegisterCarrierNullException",
 ]
 
 # ======================# SQUARE_REGISTER_CARRIER_NULL_ERROR #======================#
-class SquareRegisterEntityNullException(RegisterEntityNullException):
+class SquareRegisterCarrierNullException(RegisterCarrierNullException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required SquareRegisterCarrier is null.
+        1.  Indicate that a required SquareRegisterCarrierToggle is null.
 
     Attributes:
         msg: Optional[str]
@@ -42,7 +42,7 @@ class SquareRegisterEntityNullException(RegisterEntityNullException):
     Super Class:
         RegisterCarrierNullException
     """
-    MSG = "SquareRegisterEntityCarrier cannot be null."
+    MSG = "SquareRegisterCarrierToggle cannot be null."
     ERR_CODE= "SQUARE_REGISTER_CARRIER_NULL_ERROR"
     
     def __init__(

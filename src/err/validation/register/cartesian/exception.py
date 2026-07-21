@@ -16,18 +16,18 @@ from result import MethodResultType
 
 
 __all__ = [
-    # ======================# CARTESIAN_REGISTER_VALIDATOR_FAILURE #======================#
-    "CartesianRegisterValidatorException",
+    # ======================# VECTOR_TOGGLE_REGISTER_VALIDATOR_FAILURE #======================#
+    "VectorToggleRegisterValidatorException",
 ]
 
-# ======================# CARTESIAN_REGISTER_VALIDATOR_FAILURE #======================#
-class CartesianRegisterValidatorException(RegisterValidatorException):
+# ======================# VECTOR_TOGGLE_REGISTER_VALIDATOR_FAILURE #======================#
+class VectorToggleRegisterValidatorException(RegisterValidatorException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a candidate failed a CartesianRegisterValidator test.
+        1.  Indicate that a candidate failed a VectorToggleRegisterValidator test.
 
     Attributes:
             msg: Optional[str]
@@ -44,8 +44,8 @@ class CartesianRegisterValidatorException(RegisterValidatorException):
     Super Class:
         RegisterValidatorException
     """
-    MSG = "CartesianRegister validation failed."
-    ERR_CODE = "CARTESIAN_REGISTER_VALIDATOR_FAILURE"
+    MSG = "VectorToggleRegister validation failed."
+    ERR_CODE = "VECTOR_TOGGLE_REGISTER_VALIDATOR_FAILURE"
     
     def __init__(
             self,

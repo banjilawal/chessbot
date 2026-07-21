@@ -15,17 +15,17 @@ from result import MethodResultType
 
 
 __all__ = [
-    # ======================# CARTESIAN_VALIDATOR_FAILURE #======================#
+    # ======================# VECTOR_TOGGLE_VALIDATOR_FAILURE #======================#
     "VectorToggleValidatorException",
 ]
-# ======================# CARTESIAN_VALIDATOR_FAILURE #======================#
+# ======================# VECTOR_TOGGLE_VALIDATOR_FAILURE #======================#
 class VectorToggleValidatorException(ValidatorException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a candidate failed a VectorOperandValidator test.
+        1.  Indicate that a candidate failed a VectorToggleValidator test.
 
     Attributes:
             msg: Optional[str]
@@ -42,8 +42,8 @@ class VectorToggleValidatorException(ValidatorException):
     Super Class:
         ValidatorException
     """
-    MSG = "VectorOperand validation failed."
-    ERR_CODE = "CARTESIAN_VALIDATOR_FAILURE"
+    MSG = "VectorToggle validation failed."
+    ERR_CODE = "VECTOR_TOGGLE_VALIDATOR_FAILURE"
     
     def __init__(
             self,

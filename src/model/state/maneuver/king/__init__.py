@@ -11,6 +11,7 @@ version: 1.0.1
 
 # Packages
 
+
 # Modules
 from .model import KingManeuver
 from .state import KingManeuverWarning

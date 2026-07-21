@@ -13,17 +13,17 @@ from typing import Any, Optional
 from err import ValidatorException
 
 __all__ = [
-    # ======================# CARTESIAN_VALIDATION_EXCEPTION #======================#
-    "VectorOperandValidatorException",
+    # ======================# VECTOR_TOGGLE_VALIDATION_EXCEPTION #======================#
+    "VectorToggleValidatorException",
 ]
-# ======================# CARTESIAN_VALIDATION_EXCEPTION #======================#
-class VectorOperandValidatorException(ValidatorException):
+# ======================# VECTOR_TOGGLE_VALIDATION_EXCEPTION #======================#
+class VectorToggleValidatorException(ValidatorException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a VectorOperandValidation check failed.
+        1.  Indicate that a VectorToggleValidation check failed.
 
     Attributes:
             msg: Optional[str]
@@ -40,8 +40,8 @@ class VectorOperandValidatorException(ValidatorException):
     Super Class:
         ValidatorException
     """
-    MSG = "VectorOperand validation failed."
-    ERR_CODE = "CARTESIAN_VALIDATION_EXCEPTION"
+    MSG = "VectorToggle validation failed."
+    ERR_CODE = "VECTOR_TOGGLE_VALIDATION_EXCEPTION"
     
     def __init__(
             self,

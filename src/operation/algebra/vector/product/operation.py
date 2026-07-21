@@ -13,13 +13,13 @@ from controller import WorkerRegistryController
 from result import ComputationResult
 from util import LoggingLevelRouter
 from err import ScalarProductException
-from model import Coord, CoordBlueprint, OperandCategory, Vector, VectorBlueprint, VectorOperand, Scalar
+from model import Coord, CoordBlueprint, OperandCategory, Vector, VectorBlueprint, VectorToggle, Scalar
 from pipeline import CoordBuildPipeline, VectorBuildPipeline
 
-from operation import Operation, ScalarValidator, VectorOperandValidator
+from operation import Operation, ScalarValidator, VectorToggleValidator
 
 
-class ScalarProduct(Operation[VectorOperand]):
+class ScalarProduct(Operation[VectorToggle]):
     """
     Role:
         -   Operation
@@ -33,9 +33,9 @@ class ScalarProduct(Operation[VectorOperand]):
     Properties:
     
     -   def execute(
-            operand: VectorOperand,
-            toolkit : VectorOperandToolkit = VectorOperandToolkit(),
-            operand_validator: VectorOperandValidator = VectorOperandValidator(),
+            operand: VectorToggle,
+            toolkit : VectorToggleToolkit = VectorToggleToolkit(),
+            operand_validator: VectorToggleValidator = VectorToggleValidator(),
         ) -> ComputationResult[Any]:
 
     Super Class:
@@ -48,9 +48,9 @@ class ScalarProduct(Operation[VectorOperand]):
     def execute(
             cls,
             scalar: Scalar,
-            operand: VectorOperand,
+            operand: VectorToggle,
             scalar_validator: ScalarValidator | None = None,
-            operand_validator: VectorOperandValidator | None = None,
+            operand_validator: VectorToggleValidator | None = None,
             vector_build_pipeline: VectorBuildPipeline | None = None,
             coord_build_pipeline: CoordBuildPipeline | None = None,
     ) -> ComputationResult[Vector|Coord]:
@@ -66,9 +66,9 @@ class ScalarProduct(Operation[VectorOperand]):
             2.  Otherwise, send the success result.
         Args:
             scalar: Scalar,
-            operand: VectorOperand
+            operand: VectorToggle
             scalar_validator: ScalarValidator
-            operand_validator: VectorOperandValidator
+            operand_validator: VectorToggleValidator
         Result:
             ComputationResult[Union[Vector, Coord]]:
         Raises:
@@ -79,7 +79,7 @@ class ScalarProduct(Operation[VectorOperand]):
         if scalar_validator is None:
             scalar_validator = ScalarValidator()
         if operand_validator is None:
-            operand_validator = VectorOperandValidator()
+            operand_validator = VectorToggleValidator()
         if vector_build_pipeline is None:
             vector_build_pipeline = VectorBuildPipeline()
         if coord_build_pipeline is None:

@@ -16,17 +16,17 @@ from result import MethodResultType
 
 __all__ = [
     # ======================# REGISTER_CARRIER_NULL_ERROR #======================#
-    "RegisterEntityNullException",
+    "RegisterCarrierNullException",
 ]
 
 # ======================# REGISTER_CARRIER_NULL_ERROR #======================#
-class RegisterEntityNullException(EntityCarrierNullException):
+class RegisterCarrierNullException(EntityCarrierNullException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required RegisterCarrier is null.
+        1.  Indicate that a required RegisterCarrierToggle is null.
 
     Attributes:
         msg: Optional[str]
@@ -43,7 +43,7 @@ class RegisterEntityNullException(EntityCarrierNullException):
     Super Class:
         CarrierNullException
     """
-    MSG = "RegisterEntityCarrier cannot be null."
+    MSG = "RegisterCarrierToggle cannot be null."
     ERR_CODE= "REGISTER_CARRIER_NULL_ERROR"
     
     def __init__(

@@ -11,23 +11,23 @@ from __future__ import annotations
 
 from model import PointRegister
 from suite import ModelOperationSuite
-from toolkit import CartesianRegisterToolkit
-from validator import CartesianRegisterValidator
+from toolkit import VectorToggleRegisterToolkit
+from validator import VectorToggleRegisterValidator
 
 
-class CartesianRegisterSuite(ModelOperationSuite[PointRegister]):
+class VectorToggleRegisterSuite(ModelOperationSuite[PointRegister]):
     """
     Role:
         -   Dependency Container
         -   Dynamic Dependency Provider
 
     Responsibilities:
-        1.  Contains the operations that can be performed on a CartesianRegister.
+        1.  Contains the operations that can be performed on a VectorToggleRegister.
 
     Attributes:
-        toolkit: CartesianRegisterToolkit
-        builder: CartesianRegisterBuilder
-        validator: CartesianRegisterValidator
+        toolkit: VectorToggleRegisterToolkit
+        builder: VectorToggleRegisterBuilder
+        validator: VectorToggleRegisterValidator
 
     Provides:
 
@@ -38,8 +38,8 @@ class CartesianRegisterSuite(ModelOperationSuite[PointRegister]):
         -   Suite for an empty class which makes managing toolkits easier.
         -   Any toolkits for a suite should be a Suite subclass.
     """
-    toolkit: CartesianRegisterToolkit = CartesianRegisterToolkit()
-    builder: CartesianRegisterBuilder = CartesianRegisterBuilder()
-    validator: CartesianRegisterValidator = CartesianRegisterValidator()
+    toolkit: VectorToggleRegisterToolkit = VectorToggleRegisterToolkit()
+    builder: VectorToggleRegisterBuilder = VectorToggleRegisterBuilder()
+    validator: VectorToggleRegisterValidator = VectorToggleRegisterValidator()
 
     

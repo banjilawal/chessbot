@@ -11,6 +11,7 @@ version: 1.0.0
 
 # Packages
 
+
 # Modules
 from .work import BoardDeletionException
 from. emptty import PoppingEmptyBoardStackException
