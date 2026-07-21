@@ -13,7 +13,7 @@ from dataclasses import dataclass
 from typing import Type
 
 from blueprint import ScalarBlueprint
-from carrier import ScalarCarrier
+from carrier import ScalarCarrierToggle
 from err import ScalarBlueprintNullException, ScalarCarrierNullException, ScalarNullException
 from model import Scalar
 from toolkit import ModelToolkit
@@ -48,7 +48,7 @@ class ScalarToolkit(ModelToolkit[Scalar]):
        ModelToolkit
     """
     model: Type[Scalar] = Scalar
-    carrier_model: Type[ScalarCarrier] = ScalarCarrier
+    carrier_model: Type[ScalarCarrierToggle] = ScalarCarrierToggle
     blueprint_model: Type[ScalarBlueprint] = ScalarBlueprint
     
     null_exception: ScalarNullException = ScalarNullException()

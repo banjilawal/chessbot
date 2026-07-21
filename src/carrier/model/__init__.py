@@ -16,7 +16,6 @@ from .node import *
 from .player import *
 from .prisoner import *
 from .rank import *
-from .register import *
 from .scalar import *
 from .square import *
 from .team import *

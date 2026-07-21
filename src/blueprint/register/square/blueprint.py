@@ -43,7 +43,7 @@ class SquareRegisterBlueprint(RegisterBlueprint[SquareRegister]):
             destination: Square,
             model_class: Type[SquareRegister] = SquareRegister,
             null_exception: Optional[SquareRegisterNullException] |
-                            None = SquareRegisterEntityNullException(),
+                            None = SquareRegisterNullException(),
     ):
         """
         Args:

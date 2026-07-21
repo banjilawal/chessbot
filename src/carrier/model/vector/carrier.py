@@ -13,10 +13,10 @@ from typing import Optional
 
 from blueprint import VectorBlueprint
 from model import Vector
-from chooser import EntityCarrier
+from carrier import EntityCarrierToggle
 
 
-class VectorCarrier(EntityCarrier[Vector]):
+class VectorCarrier(EntityCarrierToggle[Vector]):
     """
     Role:
         -   Addressing
@@ -28,15 +28,15 @@ class VectorCarrier(EntityCarrier[Vector]):
     Attributes:
         model: Optional[Vector]
         blueprint: Optional[VectorBlueprint]
-        is_model_operand: bool
-        is_blueprint_operand: bool
+        is_model_carrier: bool
+        is_blueprint_carrier: bool
         has_overflow: bool
         is_empty: bool
     
     Provides:
     
     Super Class:
-        EntityOperand
+        EntityCarrierToggle
     """
     _model: Optional[Vector]
     _blueprint: Optional[VectorBlueprint]
@@ -59,11 +59,11 @@ class VectorCarrier(EntityCarrier[Vector]):
         return self._model or self._blueprint
     
     @property
-    def is_model_operand(self) -> bool:
+    def is_model_carrier(self) -> bool:
         return self._model is not None and self._blueprint is None
     
     @property
-    def is_blueprint_operand(self) -> bool:
+    def is_blueprint_carrier(self) -> bool:
         return self._model is None and self._blueprint is not None
     
     @property
@@ -77,7 +77,7 @@ class VectorCarrier(EntityCarrier[Vector]):
     @property
     def size(self) -> int:
         if self.no_active_toggles: return 0
-        if self.is_model_operand or self.is_blueprint_operand: return 1
+        if self.is_model_carrier or self.is_blueprint_carrier: return 1
         return 2
     
     def __eq__(self, other):

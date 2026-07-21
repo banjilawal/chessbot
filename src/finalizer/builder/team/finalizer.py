@@ -43,6 +43,4 @@ class TeamBuilderFinalizer(BuilderFinalizer[Team]):
         # --- Forward the work product to the caller. ---#
         return BuildResult.success(product)
 
-# Register the operation.
-WorkerRegistryController.register_worker(worker=TeamBuilderFinalizer)
         

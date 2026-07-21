@@ -8,9 +8,10 @@ version: 1.0.1
 """
 
 from __future__ import annotations
-from typing import Type, cast
+from typing import Optional, Type, cast
 
 from blueprint import Blueprint
+from err import ModelNullException, NullException
 from model import Model
 
 
@@ -26,6 +27,7 @@ class ModelBlueprint(Blueprint[Model]):
 
      Attributes:
          model_class: Type[Model]
+         null_exception: Optional[ModelNullException]
          
      Provides:
 
@@ -33,13 +35,27 @@ class ModelBlueprint(Blueprint[Model]):
         Blueprint
      """
     
-    def __init__(self, model_class: Type[Model]):
+    def __init__(
+            self,
+            model_class: Type[Model],
+            null_exception: Optional[ModelNullException] | None = ModelNullException(),
+    ):
         """
         Args:
             model_class: Type[Model[T]]
+            null_exception: Optional[ModelNullException]
         """
-        super().__init__(model_class=model_class,)
+        super().__init__(
+            model_class=model_class,
+            null_exception=null_exception
+        )
     
     @property
     def model_class(self) -> Type[Model]:
-        return cast(Type[Model], self.model_class)
+        return cast(Type[Model], super().model_class)
+    
+    @property
+    def null_exception(self) -> ModelNullException:
+        return cast(ModelNullException, super().null_exception)
+    
+    

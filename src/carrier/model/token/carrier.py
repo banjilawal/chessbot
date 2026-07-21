@@ -12,7 +12,8 @@ from __future__ import annotations
 from typing import Any, Dict, Optional
 
 from blueprint import TokenBlueprint
-from carrier.model.token.carrier import EntityCarrierToggle
+from carrier import EntityCarrierToggle
+
 from model import Token
 
 
@@ -28,8 +29,8 @@ class TokenCarrierToggle(EntityCarrierToggle[Token]):
         entity: [Token|TokenBlueprint]
         is_empty: bool
         has_overflow: bool
-        is_model_operand: bool
-        is_blueprint_operand: bool
+        is_model_carrier: bool
+        is_blueprint_carrier: bool
         to_dict: Dict[str, Any]
         size: int
 
@@ -37,7 +38,7 @@ class TokenCarrierToggle(EntityCarrierToggle[Token]):
         -   extract_blueprint() -> Optional[TokenBlueprint]
 
     Super Class:
-        EntityOperand
+        EntityCarrierToggle
     """
     _model: Optional[Token]
     _blueprint: Optional[TokenBlueprint]
@@ -57,8 +58,12 @@ class TokenCarrierToggle(EntityCarrierToggle[Token]):
         self._blueprint = blueprint
     
     @property
-    def entity(self) -> [Token | TokenBlueprint]:
-        return self._model or self._blueprint
+    def entity(self) -> [Token | TokenBlueprint | None]:
+        if self.no_active_toggles:
+            return None
+        if self.is_model_carrier:
+            return self._model
+        return self._blueprint
     
     @property
     def is_model_carrier(self) -> bool:
@@ -69,7 +74,7 @@ class TokenCarrierToggle(EntityCarrierToggle[Token]):
         )
     
     @property
-    def is_blueprint_operand(self) -> bool:
+    def is_blueprint_carrier(self) -> bool:
         return (
                 self._model is not None and
                 self._blueprint is None and
@@ -78,7 +83,7 @@ class TokenCarrierToggle(EntityCarrierToggle[Token]):
 
     def extract_blueprint(self) -> Optional[TokenBlueprint]:
         if self.no_active_toggles: return None
-        if self.is_blueprint_operand: return self._blueprint
+        if self.is_blueprint_carrier: return self._blueprint
         return TokenBlueprint(
             id=self._model.id,
             team=self._model.team,

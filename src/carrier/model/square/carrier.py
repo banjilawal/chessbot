@@ -13,10 +13,10 @@ from typing import Any, Dict, Optional, cast
 
 from blueprint import SquareBlueprint
 from model import HomeSquare, Square
-from chooser import EntityCarrier
+from carrier import EntityCarrierToggle
 
 
-class SquareCarrier(EntityCarrier[Square]):
+class SquareCarrierToggle(EntityCarrierToggle[Square]):
     """
     Role:
         -   ENTITY
@@ -26,8 +26,8 @@ class SquareCarrier(EntityCarrier[Square]):
 
     Attributes:
         entity: [Square|SquareBlueprint]
-        is_model_operand: bool
-        is_blueprint_operand: bool
+        is_model_carrier: bool
+        is_blueprint_carrier: bool
         
         is_empty: bool
         has_overflow: bool
@@ -38,7 +38,7 @@ class SquareCarrier(EntityCarrier[Square]):
         -   extract_blueprint() -> Optional[SquareBlueprint]
 
     Super Class:
-        EntityOperand
+        EntityCarrierToggle
     """
     _model: Optional[Square]
     _blueprint: Optional[SquareBlueprint]
@@ -53,15 +53,20 @@ class SquareCarrier(EntityCarrier[Square]):
             model: Optional[Square]
             blueprint: Optional[SquareBlueprint]
         """
+        super().__init__()
         self._model = model
         self._blueprint = blueprint
     
     @property
-    def entity(self) -> [Square | SquareBlueprint]:
-        return self._model or self._blueprint
+    def entity(self) -> [Square | SquareBlueprint | None]:
+        if self.no_active_toggles:
+            return None
+        if self.is_model_carrier:
+            return self._model
+        return self._blueprint
     
     @property
-    def is_model_operand(self) -> bool:
+    def is_model_carrier(self) -> bool:
         return (
                 self._model is not None and
                 self._blueprint is None and
@@ -71,12 +76,12 @@ class SquareCarrier(EntityCarrier[Square]):
     @property
     def is_home_square_operand(self) -> bool:
         return (
-                self.is_model_operand and
+                self.is_model_carrier and
                 isinstance(self._model, HomeSquare)
         )
     
     @property
-    def is_blueprint_operand(self) -> bool:
+    def is_blueprint_carrier(self) -> bool:
         return (
                 self._model is not None and
                 self._blueprint is None and
@@ -85,7 +90,7 @@ class SquareCarrier(EntityCarrier[Square]):
     
     def extract_blueprint(self) -> Optional[SquareBlueprint]:
         if self.no_active_toggles: return None
-        if self.is_blueprint_operand: return self._blueprint
+        if self.is_blueprint_carrier: return self._blueprint
         if self.is_home_square_operand:
             home_square = cast(HomeSquare, self._model)
             return SquareBlueprint(
@@ -107,26 +112,10 @@ class SquareCarrier(EntityCarrier[Square]):
             "blueprint": self._blueprint
         }
     
-    @property
-    def is_empty(self) -> bool:
-        return len(self.to_dict) == 0
-    
-    @property
-    def is_full(self) -> bool:
-        return len(self.to_dict) == 1
-    
-    @property
-    def has_overflow(self) -> bool:
-        return len(self.to_dict) >= 2
-    
-    @property
-    def size(self) -> int:
-        return len(self.to_dict)
-    
     def __eq__(self, other):
         if other is self: return True
         if other is None: return False
-        if isinstance(other, SquareCarrier):
+        if isinstance(other, SquareCarrierToggle):
             return self.entity == other.entity
         return False
     

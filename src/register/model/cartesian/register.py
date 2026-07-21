@@ -66,17 +66,17 @@ class VectorToggleRegister(ModelRegister[VectorToggle]):
     
     @property
     def is_vector_register(self) -> bool:
-        return self._a.is_vector_selector and self._b.is_vector_selector
+        return self._a.is_vector_toggle and self._b.is_vector_toggle
     
     @property
     def is_coord_register(self) -> bool:
-        return self._a.is_coord_selector and self._b.is_coord_selector
+        return self._a.is_coord_toggle and self._b.is_coord_toggle
     
     @property
     def is_mismatched_register(self) -> bool:
         return  (
-                (not (self._a.is_coord_selector and self._b.is_coord_selector)) or
-                (not (self._a.is_vector_selector and self.b.is_vector_selector))
+                (not (self._a.is_coord_toggle and self._b.is_coord_toggle)) or
+                (not (self._a.is_vector_toggle and self.b.is_vector_selector))
         )
     
     @property

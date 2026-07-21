@@ -25,8 +25,8 @@ class EntityCarrierToggle(ABC, Generic[T]):
         2.  Transports either an Object or its Blueprint.
 
     Attributes:
-        is_model_operand: bool
-        is_blueprint_operand: bool
+        is_model_carrier: bool
+        is_blueprint_carrier: bool
         
         entity: [T | Blueprint[T]]
         is_empty: bool
@@ -56,12 +56,10 @@ class EntityCarrierToggle(ABC, Generic[T]):
     
     @property
     @abstractmethod
-    def is_blueprint_operand(self) -> bool:
+    def is_blueprint_carrier(self) -> bool:
         pass
     
-    @abstractmethod
-    def extract_blueprint(self) -> Optional[Blueprint[T]]:
-        pass
+
     
     @property
     def no_active_toggles(self) -> bool:
@@ -78,6 +76,10 @@ class EntityCarrierToggle(ABC, Generic[T]):
     @property
     @abstractmethod
     def to_dict(self) -> Dict[str, Any]:
+        pass
+    
+    @abstractmethod
+    def extract_blueprint(self) -> Optional[Blueprint[T]]:
         pass
 
     

@@ -22,6 +22,7 @@ from .rank import *
 from .square import *
 from .team import *
 from .token import *
+from .vector import *
 
 # Module
 from .certifier import ModelRootCertifier

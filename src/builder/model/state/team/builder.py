@@ -1,7 +1,7 @@
-# src/builder/token/builder.py
+# src/builder/team/builder.py
 
 """
-Module: builder.token.builder
+Module: builder.team.builder
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -11,19 +11,20 @@ from __future__ import annotations
 
 from typing import cast
 
-from blueprint import TokenBlueprint
+from blueprint import TeamBlueprint
 from builder import Builder
-from err import TokenBuilderException
-from model import Token
-from operation import TokenAssembler
-from finalizer import TokenAssemblyFinalizer
+from err import TeamBuilderException
+from model import Team
+from operation import TeamAssembler
+from finalizer import TeamAssemblyFinalizer
 from result import BuildResult
-from toolkit import TokenToolkit
+from root import TeamRootCertifier
+from toolkit import TeamToolkit
 from util import LoggingLevelRouter
-from validator import TokenCertifier
+from validator import TeamCertifier
 
 
-class TokenBuilder(Builder[Token]):
+class TeamBuilder(Builder[Team]):
     """
     Role
         -   Transaction Worker
@@ -32,7 +33,7 @@ class TokenBuilder(Builder[Token]):
         -   Build Process Owner
         
    Responsibilities:
-        1.  Ensure a new Token instance is born safe and reliable.
+        1.  Ensure a new Team instance is born safe and reliable.
 
      Attributes:
 
@@ -45,83 +46,83 @@ class TokenBuilder(Builder[Token]):
                     identity_service: IdentityService,
                     formation_service: FormationService,
                     team_validator: TeamValidator,
-            ) -> BuildResult[Token]
+            ) -> BuildResult[Team]
 
      Super Class:
          Builder
      """
-    _bootstrapper: TokenCertifier
-    _assembler: TokenAssembler
-    _finalizer: TokenAssemblyFinalizer
-    _toolkit: TokenToolkit
+    _bootstrapper: TeamCertifier
+    _assembler: TeamAssembler
+    _finalizer: TeamAssemblyFinalizer
+    _toolkit: TeamToolkit
     
     def __init__(
             self,
-            bootstrapper: TokenCertifier | None = None,
-            assembler : TokenAssembler | None = None,
-            finalizer: TokenAssemblyFinalizer | None = None,
-            toolkit: TokenToolkit | None = None,
+            bootstrapper: TeamCertifier | None = None,
+            assembler : TeamAssembler | None = None,
+            finalizer: TeamAssemblyFinalizer | None = None,
+            toolkit: TeamToolkit | None = None,
     ):
-        self._bootstrapper = bootstrapper or TokenRootCertifier()
-        self._assembler = assembler or TokenAssembler()
-        self._finalizer = finalizer or TokenAssemblyFinalizer()
-        self._toolkit = toolkit or TokenToolkit()
+        self._bootstrapper = bootstrapper or TeamRootCertifier()
+        self._assembler = assembler or TeamAssembler()
+        self._finalizer = finalizer or TeamAssemblyFinalizer()
+        self._toolkit = toolkit or TeamToolkit()
     
     @LoggingLevelRouter.monitor
-    def execute(self, blueprint: TokenBlueprint, ) -> BuildResult[Token]:
+    def execute(self, blueprint: TeamBlueprint, ) -> BuildResult[Team]:
         """
-        Build a safe Token.
+        Build a safe Team.
         
         Action:
             1.  Send an exception chain in the BuildResult if any of the following
                 occur:
                     -   The blueprint is not validated.
-                    -   The token cannot be assembled from the blueprint.
+                    -   The team cannot be assembled from the blueprint.
                     -   An error occurs during the clean up.
             2.  Otherwise, send the success result.
         Args:
-            blueprint: TokenBlueprint
+            blueprint: TeamBlueprint
             blueprint_validator: Certifier
-            assembler: TokenAssembler
-            finalizer: TokenAssemblyFinalizer
+            assembler: TeamAssembler
+            finalizer: TeamAssemblyFinalizer
         Returns:
-            BuildResult[Token]
+            BuildResult[Team]
         Raises:
-            TokenBuilderException
+            TeamBuilderException
         """
         method = f"{cls.__name__}.build"
         
 
-        bootstrap_result = self._bootstrapper.execute(
+        bootstrap = self._bootstrapper.execute(
             candidate=blueprint,
             toolkit=self._toolkit,
         )
-        # Handle the case that, the blueprint is flagged.
-        if bootstrap_result.is_failure:
+        # Handle the case that, the bootstrap is not successful.
+        if bootstrap.is_failure:
             # Send the exception chain on failure.
             return BuildResult.failure(
-                TokenBuilderException(
+                TeamBuilderException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=TokenBuilderException.MSG,
-                    err_code=TokenBuilderException.ERR_CODE,
-                    ex=bootstrap_result.exception,
+                    msg=TeamBuilderException.MSG,
+                    err_code=TeamBuilderException.ERR_CODE,
+                    ex=bootstrap.exception,
                 )
             )
         # --- Handoff the validated blueprint to the assembler. ---#
-        assembly_result = self._assembler.execute(
-            blueprint=cast(TokenBlueprint, bootstrap_result.payload)
+        assembly = self._assembler.execute(
+            blueprint=cast(TeamBlueprint, bootstrap.payload)
         )
         # Handle the case that, the assembly is not completed.
-        if assembly_result.is_failure:
+        if assembly.is_failure:
             # Send the exception chain on failure.
             return BuildResult.failure(
-                TokenBuilderException(
+                TeamBuilderException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=TokenBuilderException.MSG,
-                    err_code=TokenBuilderException.ERR_CODE,
-                    ex=assembly_result.exception,
+                    msg=TeamBuilderException.MSG,
+                    err_code=TeamBuilderException.ERR_CODE,
+                    ex=assembly.exception,
                 )
             )
         # --- Handoff the product for consistency and other finalization steps. ---#
@@ -132,11 +133,11 @@ class TokenBuilder(Builder[Token]):
         if finalization_result.is_failure:
             # Send the exception chain on failure.
             return BuildResult.failure(
-                TokenBuilderException(
+                TeamBuilderException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=TokenBuilderException.MSG,
-                    err_code=TokenBuilderException.ERR_CODE,
+                    msg=TeamBuilderException.MSG,
+                    err_code=TeamBuilderException.ERR_CODE,
                     ex=finalization_result.exception,
                 )
             )

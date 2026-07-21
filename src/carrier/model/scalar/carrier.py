@@ -9,14 +9,14 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from typing import Optional
+from typing import Any, Dict, Optional
 
 from blueprint import ScalarBlueprint
 from model import Scalar
-from chooser import EntityCarrier
+from carrier import EntityCarrierToggle
 
 
-class ScalarCarrier(EntityCarrier[Scalar]):
+class ScalarCarrierToggle(EntityCarrierToggle[Scalar]):
     """
     Role:
         -   Addressing
@@ -28,15 +28,15 @@ class ScalarCarrier(EntityCarrier[Scalar]):
     Attributes:
         model: Optional[Scalar]
         blueprint: Optional[ScalarBlueprint]
-        is_model_operand: bool
-        is_blueprint_operand: bool
+        is_model_carrier: bool
+        is_blueprint_carrier: bool
         has_overflow: bool
         is_empty: bool
     
     Provides:
     
     Super Class:
-        EntityOperand
+        EntityCarrierToggle
     """
     _model: Optional[Scalar]
     _blueprint: Optional[ScalarBlueprint]
@@ -51,39 +51,59 @@ class ScalarCarrier(EntityCarrier[Scalar]):
             model: Optional[Scalar]
             blueprint: Optional[ScalarBlueprint]
         """
+        super()
         self._model = model
         self._blueprint = blueprint
     
     @property
-    def entity(self) -> [Scalar | ScalarBlueprint]:
-        return self._model or self._blueprint
+    def entity(self) -> [Scalar | ScalarBlueprint | None]:
+        if self.no_active_toggles:
+            return None
+        if self.is_model_carrier:
+            return self._model
+        return self._blueprint
     
     @property
-    def is_model_operand(self) -> bool:
-        return self._model is not None and self._blueprint is None
+    def is_model_carrier(self) -> bool:
+        return (
+                self._model is not None and
+                self._blueprint is None and
+                isinstance(self._model, Scalar)
+        )
     
     @property
-    def is_blueprint_operand(self) -> bool:
-        return self._model is None and self._blueprint is not None
+    def is_blueprint_carrier(self) -> bool:
+        return (
+                self._model is not None and
+                self._blueprint is None and
+                isinstance(self._model, ScalarBlueprint)
+        )
+    
+    def extract_blueprint(self) -> Optional[ScalarBlueprint]:
+        if self.no_active_toggles: return None
+        if self.is_blueprint_carrier: return self._blueprint
+        return ScalarBlueprint(
+             magnitude=self._model.magnitude,
+        )
     
     @property
-    def is_empty(self) -> bool:
-        return self._model is None and self._blueprint is None
-    
-    @property
-    def has_overflow(self) -> bool:
-        return self._model is not None and self._blueprint is not None
-    
-    @property
-    def size(self) -> int:
-        if self.no_active_toggles: return 0
-        if self.is_model_operand or self.is_blueprint_operand: return 1
-        return 2
+    def to_dict(self) -> Dict[str, Any]:
+        return {
+            "model": self._model,
+            "blueprint": self._blueprint
+        }
     
     def __eq__(self, other):
         if other is self: return True
         if other is None: return False
-        if isinstance(other, ScalarCarrier):
+        if isinstance(other, ScalarCarrierToggle):
+            return self.entity == other.entity
+        return False
+    
+    def __eq__(self, other):
+        if other is self: return True
+        if other is None: return False
+        if isinstance(other, ScalarCarrierToggle):
             return self.entity == other.entity
         return False
     

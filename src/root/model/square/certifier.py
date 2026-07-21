@@ -14,7 +14,7 @@ from typing import Any, cast
 from blueprint import SquareBlueprint
 from err import FormationNullException, SquareCertifierException, SquareCarrierNullException
 from model import Board, Coord, HomeSquare, Square
-from carrier import SquareCarrier
+from carrier import SquareCarrierToggle
 from root import RootCertifier
 from result import ValidationResult
 from schema import Formation
@@ -79,7 +79,7 @@ class SquareRootCertifier(RootCertifier[SquareBlueprint]):
         
         carrier_validation = self.toolkit.priming_validator.execute(
             candidate=candidate,
-            target_model=SquareCarrier,
+            target_model=SquareCarrierToggle,
             null_exception=SquareCarrierNullException()
         )
         if carrier_validation.is_failure:
@@ -93,7 +93,7 @@ class SquareRootCertifier(RootCertifier[SquareBlueprint]):
                     ex=carrier_validation.exception,
                 )
             )
-        carrier = cast(SquareCarrier, carrier_validation.payload)
+        carrier = cast(SquareCarrierToggle, carrier_validation.payload)
         if carrier.no_active_toggles:
             # Send the exception chain on failure.
             return ValidationResult.failure(

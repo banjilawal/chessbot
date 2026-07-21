@@ -35,8 +35,6 @@ class SquareRegister(ModelRegister[Square]):
     Super Class:
         Register
     """
-    _origin: Square
-    _destination: Square
     
     def __init__(self, origin: Square,destination: Square,):
         """
@@ -45,10 +43,18 @@ class SquareRegister(ModelRegister[Square]):
             destination: Square
         """
         super().__init__(a=origin, b=destination)
-        
+    
+    @property
+    def a(self) -> Square:
+        return cast(Square, self.a)
+    
+    @property
+    def b(self) -> Square:
+        return cast(Square, super().b)
+    
     @property
     def origin(self) -> Square:
-        return cast(Square, self.a)
+        return cast(Square, super().a)
     
     @property
     def destination(self) -> Square:

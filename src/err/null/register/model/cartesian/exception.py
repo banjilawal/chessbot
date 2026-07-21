@@ -16,11 +16,11 @@ from result import MethodResultType
 
 __all__ = [
     # ======================# CARTESIAN_REGISTER_NULL_ERROR #======================#
-    "CartesianRegisterNullException",
+    "VectorToggleRegisterNullException",
 ]
 
 # ======================# CARTESIAN_REGISTER_NULL_ERROR #======================#
-class CartesianRegisterNullException(ModelRegisterNullException):
+class VectorToggleRegisterNullException(ModelRegisterNullException):
     """
     Role:
         -   Error Tracing

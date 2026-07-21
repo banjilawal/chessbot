@@ -14,4 +14,4 @@ from .cartesian import *
 from .registry import *
 
 # Modules
-from .exception import ChooserNullException
+from .exception import ToggleNullException

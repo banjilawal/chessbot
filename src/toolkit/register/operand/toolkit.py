@@ -14,7 +14,7 @@ from typing import Type
 from blueprint import PointRegisterBlueprint
 from err import (
     CartesianRegisterBlueprintNullException,
-    CartesianRegisterNullException
+    VectorToggleRegisterNullException
 )
 from  import VectorOperand, PointRegister
 from toolkit import RegisterToolkit
@@ -43,7 +43,7 @@ class VectorToggleRegisterToolkit(RegisterToolkit[VectorOperand]):
     """
     vector_toggle_validator: VectorOperandValidator = VectorOperandValidator()
     : PointRegister
-    null_exception = CartesianRegisterNullException()
+    null_exception = VectorToggleRegisterNullException()
     blueprint_ = PointRegisterBlueprint
     blueprint_null_exception = CartesianRegisterBlueprintNullException()
     #

@@ -13,10 +13,10 @@ from typing import Optional
 
 from blueprint import PlayerBlueprint
 from model import Player
-from chooser import EntityCarrier
+from carrier import EntityCarrierToggle
 
 
-class PlayerCarrier(EntityCarrier[Player]):
+class PlayerCarrier(EntityCarrierToggle[Player]):
     """
     Role:
         -   Addressing
@@ -28,15 +28,15 @@ class PlayerCarrier(EntityCarrier[Player]):
     Attributes:
         model: Optional[Player]
         blueprint: Optional[PlayerBlueprint]
-        is_model_operand: bool
-        is_blueprint_operand: bool
+        is_model_carrier: bool
+        is_blueprint_carrier: bool
         has_overflow: bool
         is_empty: bool
     
     Provides:
     
     Super Class:
-        EntityOperand
+        EntityCarrierToggle
     """
     _model: Optional[Player]
     _blueprint: Optional[PlayerBlueprint]
@@ -59,11 +59,11 @@ class PlayerCarrier(EntityCarrier[Player]):
         return self._model or self._blueprint
     
     @property
-    def is_model_operand(self) -> bool:
+    def is_model_carrier(self) -> bool:
         return self._model is not None and self._blueprint is None
     
     @property
-    def is_blueprint_operand(self) -> bool:
+    def is_blueprint_carrier(self) -> bool:
         return self._model is None and self._blueprint is not None
     
     @property
@@ -77,7 +77,7 @@ class PlayerCarrier(EntityCarrier[Player]):
     @property
     def size(self) -> int:
         if self.no_active_toggles: return 0
-        if self.is_model_operand or self.is_blueprint_operand: return 1
+        if self.is_model_carrier or self.is_blueprint_carrier: return 1
         return 2
     
     def __eq__(self, other):

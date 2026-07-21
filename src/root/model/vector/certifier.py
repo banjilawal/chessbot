@@ -69,7 +69,7 @@ class VectorRootCertifier(RootCertifier[Vector]):
         Returns:
             ValidationResult
         Raises:
-            VectorCertifierException
+            VectorRootCertifierException
             VectorDtoCarrierNullException
         """
         method = f"{self.__class__.__name__}.execute"
@@ -82,11 +82,11 @@ class VectorRootCertifier(RootCertifier[Vector]):
         if carrier_validation.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                VectorCertifierException(
+                VectorRootCertifierException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=VectorCertifierException.MSG,
-                    err_code=VectorCertifierException.ERR_CODE,
+                    msg=VectorRootCertifierException.MSG,
+                    err_code=VectorRootCertifierException.ERR_CODE,
                     ex=carrier_validation.exception,
                 )
             )
@@ -102,11 +102,11 @@ class VectorRootCertifier(RootCertifier[Vector]):
             if validation.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
-                    VectorCertifierException(
+                    VectorRootCertifierException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        msg=VectorCertifierException.MSG,
-                        err_code=VectorCertifierException.ERR_CODE,
+                        msg=VectorRootCertifierException.MSG,
+                        err_code=VectorRootCertifierException.ERR_CODE,
                         ex=validation.exception,
                     )
                 )

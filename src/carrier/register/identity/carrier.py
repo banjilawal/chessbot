@@ -9,14 +9,15 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from typing import Optional, cast
+from _ast import Dict
+from typing import Any, Optional, cast
 
 from blueprint import IdentityRegisterBlueprint
-from model import IdentityRegister
-from chooser import RegisterCarrier
+from carrier import RegisterCarrierToggle
+from register import IdentityRegister
 
 
-class IdentityRegisterEntityOperand(RegisterCarrier[IdentityRegister]):
+class IdentityRegisterCarrierToggle(RegisterCarrierToggle[IdentityRegister]):
     """
     Role:
         -   Addressing
@@ -28,16 +29,18 @@ class IdentityRegisterEntityOperand(RegisterCarrier[IdentityRegister]):
     Attributes:
         model: Optional[IdentityRegister]
         blueprint: Optional[IdentityRegisterBlueprint]
-        is_model_operand: bool
-        is_blueprint_operand: bool
+        is_model_carrier: bool
+        is_blueprint_carrier: bool
         has_overflow: bool
         is_empty: bool
     
     Provides:
     
     Super Class:
-        RegisterEntityOperand
+        RegisterEntityCarrierToggle
     """
+    _model: Optional[IdentityRegister]
+    _blueprint: Optional[IdentityRegisterBlueprint]
     
     def __init__(
             self,
@@ -46,45 +49,56 @@ class IdentityRegisterEntityOperand(RegisterCarrier[IdentityRegister]):
     ):
         """
         Args:
-            model: Optional[Register]
-            blueprint: Optional[RegisterBlueprint]
+            model: Optional[IdentityRegister] | None = None,
+            blueprint: Optional[IdentityRegisterBlueprint]
         """
-        super().__init__(model=model, blueprint=blueprint)
+        super().__init__()
+        self._model = model
+        self._blueprint = blueprint
     
     @property
-    def entity(self) -> [IdentityRegister | IdentityRegisterBlueprint]:
+    def entity(self) -> [IdentityRegister | IdentityRegisterBlueprint | None]:
         if self.no_active_toggles:
             return None
-        if self.is_model_operand:
-            return cast(IdentityRegister, self.entity)
-        return cast(IdentityRegisterBlueprint, self.entity)
+        if self.is_model_carrier:
+            return self._blueprint
+        return self._blueprint
     
     @property
-    def is_model_operand(self) -> bool:
-        return self._model is not None and self._blueprint is None
+    def is_model_carrier(self) -> bool:
+        return (
+                self._model is not None and
+                self._blueprint is None and
+                isinstance(self._model, IdentityRegister)
+        )
     
     @property
-    def is_blueprint_operand(self) -> bool:
-        return self._model is None and self._blueprint is not None
+    def is_blueprint_carrier(self) -> bool:
+        return (
+                not self.is_model_carrier and
+                isinstance(self._blueprint, IdentityRegisterBlueprint)
+        )
     
-    @property
-    def is_empty(self) -> bool:
-        return self._model is None and self._blueprint is None
+    def extract_blueprint(self) -> Optional[IdentityRegisterBlueprint]:
+        if self.no_active_toggles:
+            return None
+        if self.is_blueprint_carrier:
+            return self._blueprint
+        return IdentityRegisterBlueprint(
+            id=self._model.id,
+            name=self._model.name,
+        )
     
-    @property
-    def has_overflow(self) -> bool:
-        return self._model is not None and self._blueprint is not None
-    
-    @property
-    def size(self) -> int:
-        if self.no_active_toggles: return 0
-        if self.is_model_operand or self.is_blueprint_operand: return 1
-        return 2
+    def to_dict(self) -> Dict[str, Any]:
+        return {
+            "model": self._model,
+            "blueprint": self._blueprint,
+        }
     
     def __eq__(self, other):
         if other is self: return True
         if other is None: return False
-        if isinstance(other, RegisterCarrier):
+        if isinstance(other, RegisterCarrierToggle):
             return self.entity == other.entity
         return False
     

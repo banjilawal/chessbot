@@ -13,10 +13,10 @@ from typing import Any, Dict, Optional
 
 from blueprint import CoordBlueprint
 from model import Coord
-from chooser import EntityCarrier
+from carrier import EntityCarrierToggle
 
 
-class CoordCarrier(EntityCarrier[Coord]):
+class CoordCarrier(EntityCarrierToggle[Coord]):
     """
     Role:
         -   ENTITY
@@ -28,8 +28,8 @@ class CoordCarrier(EntityCarrier[Coord]):
         entity: [Coord|CoordBlueprint]
         is_empty: bool
         has_overflow: bool
-        is_model_operand: bool
-        is_blueprint_operand: bool
+        is_model_carrier: bool
+        is_blueprint_carrier: bool
         to_dict: Dict[str, Any]
         size: int
 
@@ -37,7 +37,7 @@ class CoordCarrier(EntityCarrier[Coord]):
         -   extract_blueprint() -> Optional[CoordBlueprint]
 
     Super Class:
-        EntityOperand
+        EntityCarrierToggle
     """
     _model: Optional[Coord]
     _blueprint: Optional[CoordBlueprint]
@@ -60,7 +60,7 @@ class CoordCarrier(EntityCarrier[Coord]):
         return self._model or self._blueprint
     
     @property
-    def is_model_operand(self) -> bool:
+    def is_model_carrier(self) -> bool:
         return (
                 self._model is not None and
                 self._blueprint is None and
@@ -68,7 +68,7 @@ class CoordCarrier(EntityCarrier[Coord]):
         )
     
     @property
-    def is_blueprint_operand(self) -> bool:
+    def is_blueprint_carrier(self) -> bool:
         return (
                 self._model is not None and
                 self._blueprint is None and
@@ -77,7 +77,7 @@ class CoordCarrier(EntityCarrier[Coord]):
 
     def extract_blueprint(self) -> Optional[CoordBlueprint]:
         if self.no_active_toggles: return None
-        if self.is_blueprint_operand: return self._blueprint
+        if self.is_blueprint_carrier: return self._blueprint
         return CoordBlueprint(
             row=self._model.row,
             column=self._model.column,

@@ -9,14 +9,14 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from typing import Optional, cast
-
-from blueprint import VectorRegisterBlueprint
-from model import VectorRegister
-from chooser import RegisterCarrier
+from typing import Any, Dict, Optional, cast
 
 
-class VectorRegisterEntityOperand(RegisterCarrier[VectorRegister]):
+from carrier import EntityCarrierToggle, RegisterCarrierToggle
+from register import VectorRegister
+
+
+class VectorRegisterCarrierToggle(EntityCarrierToggle[VectorRegister]):
     """
     Role:
         -   Addressing
@@ -28,16 +28,18 @@ class VectorRegisterEntityOperand(RegisterCarrier[VectorRegister]):
     Attributes:
         model: Optional[VectorRegister]
         blueprint: Optional[VectorRegisterBlueprint]
-        is_model_operand: bool
-        is_blueprint_operand: bool
+        is_model_carrier: bool
+        is_blueprint_carrier: bool
         has_overflow: bool
         is_empty: bool
     
     Provides:
     
     Super Class:
-        RegisterEntityOperand
+        RegisterEntityCarrierToggle
     """
+    _model: Optional[VectorRegister]
+    _blueprint: Optional[VectorRegisterBlueprint]
     
     def __init__(
             self,
@@ -49,42 +51,53 @@ class VectorRegisterEntityOperand(RegisterCarrier[VectorRegister]):
             model: Optional[Register]
             blueprint: Optional[RegisterBlueprint]
         """
-        super().__init__(model=model, blueprint=blueprint)
-    
+        super().__init__()
+        self._model = model
+        self._blueprint = blueprint
+        
     @property
-    def entity(self) -> [VectorRegister | VectorRegisterBlueprint]:
+    def entity(self) -> [VectorRegister | VectorRegisterBlueprint | None]:
         if self.no_active_toggles:
             return None
-        if self.is_model_operand:
-            return cast(VectorRegister, self.entity)
-        return cast(VectorRegisterBlueprint, self.entity)
+        if self.is_model_carrier:
+            return self._model
+        return self._blueprint
     
     @property
-    def is_model_operand(self) -> bool:
-        return self._model is not None and self._blueprint is None
+    def is_model_carrier(self) -> bool:
+        return (
+                self._model is not None and
+                self._blueprint is None and
+                isinstance(self._model, VectorRegister)
+        )
     
     @property
-    def is_blueprint_operand(self) -> bool:
-        return self._model is None and self._blueprint is not None
+    def is_blueprint_carrier(self) -> bool:
+        return not (
+                self.is_model_carrier and
+                isinstance(self._blueprint, VectorRegisterBlueprint)
+        )
+    
+    def extract_blueprint(self) -> Optional[VectorRegisterBlueprint]:
+        if self.no_active_toggles: return None
+        if self.is_blueprint_carrier: return self._blueprint
+        return VectorRegisterBlueprint(
+            id=self._model.id,
+            u=self._model.u,
+            v=self._model.v,
+        )
     
     @property
-    def is_empty(self) -> bool:
-        return self._model is None and self._blueprint is None
-    
-    @property
-    def has_overflow(self) -> bool:
-        return self._model is not None and self._blueprint is not None
-    
-    @property
-    def size(self) -> int:
-        if self.no_active_toggles: return 0
-        if self.is_model_operand or self.is_blueprint_operand: return 1
-        return 2
+    def to_dict(self) -> Dict[str, Any]:
+        return {
+            "model": self._model,
+            "blueprint": self._blueprint
+        }
     
     def __eq__(self, other):
         if other is self: return True
         if other is None: return False
-        if isinstance(other, RegisterCarrier):
+        if isinstance(other, RegisterCarrierToggle):
             return self.entity == other.entity
         return False
     

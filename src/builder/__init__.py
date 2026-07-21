@@ -11,26 +11,26 @@ version: 1.0.1
 # =========== BUILDER.PACKAGE ===========#
 
 # Packages
-from .arena import *
-from .board import *
-from .coord import *
+from builder.model.state import *
+from builder.model.state import *
+from builder.model.coord import *
 from .container import *
-from .dto import *
-from .edge import *
+from builder.model.dto import *
+from builder.model.state.edge import *
 from .endpoint import *
-from .game import *
-from .graph import *
-from .hostage import *
-from .node import *
-from .rank import *
+from builder.model.state import *
+from builder.model.graph import *
+from builder.model.hostage import *
+from builder.model.state.node import *
+from builder.model.rank import *
 from .register import *
-from .scalar import *
-from .snapshot import *
-from .space import *
-from .square import *
-from .team import *
-from .token import *
-from .vector import *
+from builder.model.scalar import *
+from builder.model.scalar.snapshot import *
+from builder.model.space import *
+from builder.model.state import *
+from builder.model.state.team import *
+from builder.model.state import *
+from builder.model.vector import *
 
 # Modules
 from .builder import Builder

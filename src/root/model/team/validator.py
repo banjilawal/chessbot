@@ -11,18 +11,12 @@ from __future__ import annotations
 
 from typing import Any, cast
 
-from blueprint import TeamBlueprint
-from err import SchemaNullException, TeamCertifierException
-from model import Board
-
-from result import ValidationResult
-from schema import Archetype
+from model import Team
+from root import RootCertifier
 from toolkit import TeamToolkit
-from util import LoggingLevelRouter
-from validator import Certifier
 
 
-class TeamRootCertifier(RootCertifier[TeamBlueprint]):
+class TeamRootCertifier(RootCertifier[Team]):
     """
     Role
         -   Transaction Worker
@@ -46,7 +40,7 @@ class TeamRootCertifier(RootCertifier[TeamBlueprint]):
         
     @property
     def toolkit(self) -> TeamToolkit:
-        return cast(TeamToolkit, self.toolkit)
+        return cast(TeamToolkit, super().toolkit)
     
     @LoggingLevelRouter.monitor
     def execute(self, candidate: Any) -> ValidationResult:

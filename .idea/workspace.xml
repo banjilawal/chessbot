@@ -5,56 +5,71 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/builder/endpoint/axis/builder.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/builder/endpoint/builder.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/toggle/carrier/register/toggle/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/toggle/carrier/register/vector/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/toggle/carrier/register/vector/carrier.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/blueprint/register/vector/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/blueprint/register/vector/blueprint.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/carrier/toggle/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/carrier/toggle/carrier.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/carrier/toggle/vector/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/carrier/toggle/vector/toggle.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/builder/endpoint/axis/west/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/builder/endpoint/axis/west/builder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/builder/register/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/builder/register/builder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/builder/register/toggle/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/builder/register/toggle/builder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/algebra/vector/addition/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/algebra/vector/addition/operation.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/root/toggle/vector/certifier.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/toggle/vector/certifier.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/toggle/carrier/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/toggle/carrier/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/toggle/carrier/arena/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/toggle/carrier/arena/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/toggle/carrier/arena/operand.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/toggle/carrier/arena/carrier.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/toggle/carrier/board/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/toggle/carrier/board/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/toggle/carrier/board/operand.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/toggle/carrier/board/carrier.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/toggle/carrier/carrier.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/toggle/carrier/carrier.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/toggle/carrier/coord/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/toggle/carrier/coord/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/toggle/carrier/coord/operand.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/toggle/carrier/coord/carrier.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/toggle/carrier/edge/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/toggle/carrier/edge/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/toggle/carrier/edge/operand.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/toggle/carrier/edge/carrier.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/toggle/carrier/node/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/toggle/carrier/node/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/toggle/carrier/node/operand.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/toggle/carrier/node/carrier.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/toggle/carrier/player/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/toggle/carrier/player/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/toggle/carrier/player/operand.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/toggle/carrier/player/carrier.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/toggle/carrier/prisoner/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/toggle/carrier/prisoner/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/toggle/carrier/prisoner/operand.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/toggle/carrier/prisoner/carrier.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/toggle/carrier/rank/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/toggle/carrier/rank/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/toggle/carrier/rank/operand.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/toggle/carrier/rank/carrier.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/toggle/carrier/register/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/toggle/carrier/register/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/toggle/carrier/register/identity/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/toggle/carrier/register/identity/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/toggle/carrier/register/identity/operand.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/toggle/carrier/register/identity/carrier.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/toggle/carrier/register/operand.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/toggle/carrier/register/operand.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/toggle/carrier/register/point/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/toggle/carrier/register/point/operand.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/toggle/carrier/register/toggle/carrier.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/toggle/carrier/register/square/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/toggle/carrier/register/square/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/toggle/carrier/register/square/operand.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/toggle/carrier/register/square/carrier.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/toggle/carrier/scalar/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/toggle/carrier/scalar/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/toggle/carrier/scalar/operand.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/toggle/carrier/scalar/operand.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/toggle/carrier/square/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/toggle/carrier/square/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/toggle/carrier/square/operand.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/toggle/carrier/square/operand.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/toggle/carrier/team/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/toggle/carrier/team/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/toggle/carrier/team/operand.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/toggle/carrier/team/operand.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/toggle/carrier/token/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/toggle/carrier/token/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/toggle/carrier/token/carrier.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/toggle/carrier/token/carrier.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/toggle/carrier/vector/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/toggle/carrier/vector/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/toggle/carrier/vector/operand.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/toggle/carrier/vector/operand.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/toggle/vector/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/toggle/vector/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/toggle/vector/selector.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/toggle/vector/toggle.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/validator/toggle/vector/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/validator/toggle/vector/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/blueprint/either/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/blueprint/toggle/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/blueprint/either/blueprint.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/blueprint/toggle/blueprint.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/blueprint/either/cartesian/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/blueprint/toggle/vector/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/blueprint/either/cartesian/blueprint.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/blueprint/toggle/vector/blueprint.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/blueprint/model/blueprint.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/blueprint/model/blueprint.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/blueprint/register/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/blueprint/register/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/blueprint/register/square/blueprint.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/blueprint/register/square/blueprint.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/blueprint/register/vectortoggle/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/blueprint/register/vectortoggle/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/blueprint/register/vectortoggle/blueprint.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/blueprint/register/vectortoggle/blueprint.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/builder/team/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/builder/team/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/builder/team/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/builder/team/builder.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/builder/token/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/builder/token/builder.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/builder/vector/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/builder/vector/builder.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/carrier/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/carrier/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/carrier/carrier.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/carrier/carrier.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/carrier/model/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/carrier/model/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/carrier/model/arena/carrier.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/carrier/model/arena/carrier.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/carrier/model/board/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/carrier/model/board/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/carrier/model/board/carrier.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/carrier/model/board/carrier.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/carrier/model/coord/carrier.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/carrier/model/coord/carrier.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/carrier/model/edge/carrier.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/carrier/model/edge/carrier.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/carrier/model/node/carrier.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/carrier/model/node/carrier.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/carrier/model/player/carrier.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/carrier/model/player/carrier.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/carrier/model/prisoner/carrier.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/carrier/model/prisoner/carrier.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/carrier/model/rank/carrier.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/carrier/model/rank/carrier.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/carrier/model/scalar/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/carrier/model/scalar/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/carrier/model/scalar/carrier.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/carrier/model/scalar/carrier.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/carrier/model/square/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/carrier/model/square/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/carrier/model/square/carrier.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/carrier/model/square/carrier.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/carrier/model/team/carrier.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/carrier/model/team/carrier.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/carrier/model/token/carrier.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/carrier/model/token/carrier.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/carrier/model/vector/carrier.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/carrier/model/vector/carrier.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/carrier/register/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/carrier/register/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/carrier/register/carrier.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/carrier/register/carrier.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/carrier/register/identity/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/carrier/register/identity/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/carrier/register/identity/carrier.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/carrier/register/identity/carrier.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/carrier/register/square/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/carrier/register/square/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/carrier/register/square/carrier.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/carrier/register/square/carrier.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/carrier/register/toggle/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/carrier/register/toggle/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/carrier/register/toggle/carrier.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/carrier/register/toggle/carrier.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/carrier/register/vector/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/carrier/register/vector/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/carrier/register/vector/carrier.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/carrier/register/vector/carrier.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/register/model/cartesian/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/null/register/model/cartesian/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/register/model/cartesian/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/null/register/model/cartesian/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/operand/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operand/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/operand/cartesian/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operand/cartesian/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/operand/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operand/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/operand/registry/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operand/registry/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/finalizer/builder/team/finalizer.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/finalizer/builder/team/finalizer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/register/model/cartesian/register.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/register/model/cartesian/register.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/register/model/square/register.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/register/model/square/register.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/root/model/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/model/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/root/model/square/certifier.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/model/square/certifier.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/root/model/team/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/model/team/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/root/model/vector/certifier.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/model/vector/certifier.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/toolkit/model/scalar/toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/toolkit/model/scalar/toolkit.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/toolkit/model/state/square/toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/toolkit/model/state/square/toolkit.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/toolkit/register/operand/toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/toolkit/register/operand/toolkit.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -110,7 +125,7 @@
     "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/toggle/carrier/register",
+    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/builder",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
@@ -122,18 +137,18 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/builder/endpoint/axis" />
-      <recent name="$PROJECT_DIR$/src/builder/endpoint" />
-      <recent name="$PROJECT_DIR$/src/schema" />
-      <recent name="$PROJECT_DIR$/src/space" />
-      <recent name="$PROJECT_DIR$/src/space/linear" />
+      <recent name="$PROJECT_DIR$/src/builder" />
+      <recent name="$PROJECT_DIR$/src/builder/register" />
+      <recent name="$PROJECT_DIR$/src/blueprint/register" />
+      <recent name="$PROJECT_DIR$/src/carrier" />
+      <recent name="$PROJECT_DIR$/src/toggle/carrier/register" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src" />
+      <recent name="$PROJECT_DIR$/src/toggle/carrier/model" />
       <recent name="$PROJECT_DIR$/src/math" />
       <recent name="$PROJECT_DIR$/src/schema/ruleset" />
       <recent name="$PROJECT_DIR$/src/space/traversal" />
-      <recent name="$PROJECT_DIR$/src/space" />
-      <recent name="$PROJECT_DIR$/src/space/offset" />
     </key>
   </component>
   <component name="RunManager" selected="Python.stack">
@@ -822,7 +837,7 @@
       <workItem from="1784055454795" duration="186991000" />
       <workItem from="1784319839949" duration="197060000" />
       <workItem from="1784614812729" duration="11899000" />
-      <workItem from="1784633157389" duration="3855000" />
+      <workItem from="1784633157389" duration="15122000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />
@@ -1448,6 +1463,11 @@
           <url>file://$PROJECT_DIR$/src/math/stepper/quadrant/math.py</url>
           <line>9</line>
           <option name="timeStamp" value="280" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/carrier/register/square/carrier.py</url>
+          <line>68</line>
+          <option name="timeStamp" value="281" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

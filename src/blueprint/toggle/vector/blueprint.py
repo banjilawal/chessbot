@@ -1,7 +1,7 @@
-# src/blueprint/either/cartesian/blueprint.py
+# src/blueprint/toggle/vector/blueprint.py
 
 """
-Module: blueprint.either.cartesian.blueprint
+Module: blueprint.toggle.vector.blueprint
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -12,19 +12,18 @@ from __future__ import annotations
 
 from typing import Optional, Type, cast
 
-from blueprint import EitherBlueprint
+from blueprint import ToggleBlueprint
 from model import Coord, Vector
-from chooser import VectorToggle
+from toggle import VectorToggle
 
 
-
-class VectorToggleBlueprint(EitherBlueprint[VectorToggle]):
+class VectorToggleBlueprint(ToggleBlueprint[VectorToggle]):
     """
     Role:
         -   Container
     
     Responsibilities:
-        1.  Provides values for instantiating a CartesianEither object.
+        1.  Provides values for instantiating a VectorToggle object.
     
     Attributes:
         vector: Optional[Vector]
@@ -34,7 +33,7 @@ class VectorToggleBlueprint(EitherBlueprint[VectorToggle]):
     Provides:
     
     Super Class:
-        EitherBlueprint
+        ToggleBlueprint
     """
     _vector: Optional[Vector]
     _coord: Optional[Coord]

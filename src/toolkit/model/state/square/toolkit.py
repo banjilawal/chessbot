@@ -14,7 +14,7 @@ from typing import Type
 
 from blueprint import SquareBlueprint
 from bootstrapper import PrimingValidator
-from carrier import SquareCarrier
+from carrier import SquareCarrierToggle
 from detector import SquareCollisionDetector
 from err import SquareBlueprintNullException, SquareNullException
 from model import Square
@@ -55,7 +55,7 @@ class SquareToolkit(StateModelToolkit[Square]):
     """
     model: Type[Square] = Square
     blueprint_model: Type[SquareBlueprint] = SquareBlueprint
-    carrier_model: Type[SquareCarrier] = SquareCarrier
+    carrier_model: Type[SquareCarrierToggle] = SquareCarrierToggle
 
     null_exception: SquareNullException = SquareNullException()
     blueprint_null_exception: SquareBlueprintNullException = SquareBlueprintNullException()

@@ -11,80 +11,91 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from blueprint import PointRegisterBlueprint
-from model import  PointRegister
-from chooser import RegisterCarrier
+from carrier import RegisterCarrierToggle
+from register import VectorToggleRegister
+from toggle import VectorToggle
 
 
-class PointRegisterEntityOperand(RegisterCarrier[PointRegister]):
+class VectorToggleRegisterCarrierToggle(RegisterCarrierToggle[VectorToggle]):
     """
     Role:
         -   Addressing
         -   Data-Holder
     
     Responsibilities:
-        1.  Entity for transporting either an PointRegister or PointRegisterBlueprint
+        1.  Entity for transporting either an VectorToggleRegister or VectorToggleRegisterBlueprint
     
     Attributes:
-        model: Optional[PointRegister]
-        blueprint: Optional[PointRegisterBlueprint]
-        is_model_operand: bool
-        is_blueprint_operand: bool
+        model: Optional[VectorToggleRegister]
+        blueprint: Optional[VectorToggleRegisterBlueprint]
+        is_model_carrier: bool
+        is_blueprint_carrier: bool
         has_overflow: bool
         is_empty: bool
     
     Provides:
     
     Super Class:
-        RegisterEntityOperand
+        RegisterEntityCarrierToggle
     """
     
     def __init__(
             self,
-            model: Optional[PointRegister] | None = None,
-            blueprint: Optional[PointRegisterBlueprint] | None = None,
+            model: Optional[VectorToggleRegister] | None = None,
+            blueprint: Optional[VectorToggleRegisterBlueprint] | None = None,
     ):
         """
         Args:
             model: Optional[Register]
             blueprint: Optional[RegisterBlueprint]
         """
-        super().__init__(model=model, blueprint=blueprint)
+        super().__init__()
+        self._model = model
+        self._blueprint = blueprint
     
     @property
-    def entity(self) -> [PointRegister | PointRegisterBlueprint]:
+    def entity(self) -> [VectorToggleRegister | VectorToggleRegisterBlueprint | None]:
         if self.no_active_toggles:
             return None
-        if self.is_model_operand:
-            return cast(PointRegister, self.entity)
-        return cast(PointRegisterBlueprint, self.entity)
+        if self.is_model_carrier:
+            return self._model
+        return self._blueprint
     
     @property
-    def is_model_operand(self) -> bool:
-        return self._model is not None and self._blueprint is None
+    def is_model_carrier(self) -> bool:
+        return (
+                self._model is not None and
+                self._blueprint is None and
+                isinstance(self._model, VectorToggleRegister)
+        )
     
     @property
-    def is_blueprint_operand(self) -> bool:
-        return self._model is None and self._blueprint is not None
+    def is_blueprint_carrier(self) -> bool:
+        return not (
+                self.is_model_carrier and
+                isinstance(self._blueprint, VectorToggleRegisterBlueprint)
+        )
+    
+    def extract_blueprint(self) -> Optional[VectorToggleRegisterBlueprint]:
+        if self.no_active_toggles: return None
+        if self.is_blueprint_carrier: return self._blueprint
+        return VectorToggleRegisterBlueprint(
+            id=self._model.id,
+            u=self._model.u,
+            v=self._model.v,
+        )
     
     @property
-    def is_empty(self) -> bool:
-        return self._model is None and self._blueprint is None
-    
-    @property
-    def has_overflow(self) -> bool:
-        return self._model is not None and self._blueprint is not None
-    
-    @property
-    def size(self) -> int:
-        if self.no_active_toggles: return 0
-        if self.is_model_operand or self.is_blueprint_operand: return 1
-        return 2
+    def to_dict(self) -> Dict[str, Any]:
+        return {
+            "model": self._model,
+            "blueprint": self._blueprint
+        }
     
     def __eq__(self, other):
         if other is self: return True
         if other is None: return False
-        if isinstance(other, RegisterCarrier):
+        if isinstance(other, RegisterCarrierToggle):
             return self.entity == other.entity
         return False
     

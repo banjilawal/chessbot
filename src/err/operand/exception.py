@@ -14,11 +14,11 @@ from err import ChessException
 
 __all__ = [
     # ======================# CHOOSER_ERROR #======================#
-    "ChooserNullException",
+    "ToggleNullException",
 ]
 
 # ======================# CHOOSER_ERROR #======================#
-class ChooserNullException(ChessException):
+class ToggleNullException(ChessException):
     """
     Role:
         -   Error Tracing
