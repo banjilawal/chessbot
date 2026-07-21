@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import cast
 
-from toggle.carrier import VectorCarrier
+from carrier import VectorCarrier
 from model import Vector
 from root import RootCertifier
 from result import ValidationResult

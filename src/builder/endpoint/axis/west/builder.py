@@ -11,15 +11,18 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from builder import VectorValidator
+from builder.endpoint.axis.builder import AxisEndpointBuilder
 from model import Vector
 from register import VectorRegister
-from result import BuildResult
+from result import BuildResult, ComputationResult
 from schema import AxisTerminus
+from space import WestTraversalPattern
+from toolkit import MathToolkit
 from util import LoggingLevelRouter
+from validator import VectorValidator
 
 
-class WestAxisEndpointBuilder:
+class WestAxisEndpointBuilder(AxisEndpointBuilder[WestTraversalPattern]):
     """
     Role:
         -   Builder
@@ -29,31 +32,29 @@ class WestAxisEndpointBuilder:
         1.  Create a VectoRegister for an AxialSpace endpoints.
 
     Attributes:
-        delta: Vector
-        origin: Vector
-        vector_service: Optional[VectorValidator]
+        math_toolkit: Optional[MathToolkit]
+        vector_validator: Optional[VectorValidator]
 
     Provides:
-        -   def execute() -> BuildResult[VectorRegister]
+        -   def execute(origin: Vector) -> BuildResult[VectorRegister]
 
     Super Class:
     """
-    _origin: Vector
-    _terminus: Vector
-    _vector_service: VectorValidator
+    _math_toolkit: MathToolkit
+    _vector_validator: Optional[VectorValidator]
     
     def __init__(
             self,
-            origin: Vector,
-            vector_service: Optional[VectorValidator] | None = VectorValidator(),
+            math_toolkit: Optional[MathToolkit] | None = MathToolkit(),
+            vector_validator: Optional[VectorValidator] | None = VectorValidator(),
     ):
         """
         Args:
-            origin: Vector
+            math_toolkit: Optional[MathToolkit]
             vector_service: Optional[VectorValidator]
         """
-        self._origin = origin
-        self._vector_service = vector_service
+        self._math_toolkit = math_toolkit
+        self._vector_validator = vector_validator
         self._delta = Vector(
             x=origin.x + AxisTerminus.WEST.vector.x,
             y=0,
@@ -62,21 +63,9 @@ class WestAxisEndpointBuilder:
             x=AxisTerminus.WEST.vector.x,
             y=origin.y
         )
-        
-    @property
-    def origin(self) -> Vector:
-        return self._origin
-    
-    @property
-    def delta(self) -> Vector:
-        return self._delta
-    
-    @property
-    def terminus(self) -> Vector:
-        return self._terminus
-    
+
     @LoggingLevelRouter.monitor
-    def execute(self) -> BuildResult[VectorRegister]:
+    def execute(self, origin: Vector) -> ComputationResult[VectorRegister]:
         """
         Construct the endpoints for a WesternAxis instance.
 
@@ -93,7 +82,7 @@ class WestAxisEndpointBuilder:
         method = f"{self.__class__.__name__}.execute"
         
         # Handle the case that, the origin is not safe to use.
-        validation = self._vector_validator.execute(self._origin)
+        validation = self._vector_validator.execute(origin)
         # Send the exception chain in the result.
         if validation.is_failure:
             return BuildResult.failure(
@@ -105,8 +94,26 @@ class WestAxisEndpointBuilder:
                     ex=validation.exception,
                 )
             )
+        delta = Vector(
+            x=origin.x + AxisTerminus.WEST.vector.x,
+            y=0,
+        )
+        terminus_request = self._math_toolkit.vector.builder.execute(
+            x=origin.x + delta.x,
+            y=origin.y + delta.y,
+        )
+        if terminus_request.is_failure:
+            return BuildResult.failure(
+                WestAxisEndPointBuilderException(
+                    cls_mthd=method,
+                    cls_name=self.__class__.__name__,
+                    msg=WestAxisEndPointBuilderException.MSG,
+                    err_code=WestAxisEndPointBuilderException.ERR_CODE,
+                    ex=terminus_request.exception,
+                )
+            )
         # Create the endpoint register.
-        vector_register = VectorRegister(
+        vector_register = VectorRegisterBuilder.execute(
             u=cast(Vector, validation.payload),
             v=self._terminus,
         )

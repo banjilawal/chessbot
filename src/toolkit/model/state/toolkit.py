@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Generic, Type, TypeVar
 
 from blueprint import Blueprint
-from toggle.carrier import EntityCarrierToggle
+from carrier import EntityCarrierToggle
 from err import BlueprintNullException, EntityCarrierNullException, StateModelNullException
 from toolkit import ModelToolkit
 

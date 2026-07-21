@@ -13,7 +13,7 @@ from dataclasses import dataclass
 from typing import Type
 
 from blueprint import RankBlueprint
-from toggle.carrier import RankCarrier
+from carrier import RankCarrier
 from err import RankBlueprintNullException, RankCarrierNullException, RankNullException
 from model import Rank
 from toolkit import ModelToolkit

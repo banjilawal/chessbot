@@ -13,7 +13,7 @@ from dataclasses import dataclass
 from typing import Type
 
 from blueprint import ScalarBlueprint
-from toggle.carrier import ScalarCarrier
+from carrier import ScalarCarrier
 from err import ScalarBlueprintNullException, ScalarCarrierNullException, ScalarNullException
 from model import Scalar
 from toolkit import ModelToolkit

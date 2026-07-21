@@ -98,7 +98,7 @@ class VectorToggleRootCertifier(RootCertifier[VectorToggle]):
                 )
             )
         # --- Cast candidate to a VectorToggle for additional tests. ---#
-        toggle = cast(self.toolkit, candidate)
+        toggle = cast(self.toolkit.model, candidate)
         
         # Handle the case that neither option is enabled.
         if toggle.no_active_toggles:
@@ -133,9 +133,9 @@ class VectorToggleRootCertifier(RootCertifier[VectorToggle]):
         # Pick a route for integrity testing the toggle's entity.
         validation_result = ValidationResult.failure(NoValidationRouteException())
         if toggle.is_coord_selector:
-            validation_result = self.toolkit.coord.root.execute(toggle.entity)
+            validation_result = self.toolkit.coord.validator.execute(toggle.entity)
         if toggle.is_vector_selector:
-            validation_result = self.toolkit.vector.root.execute(toggle.entity)
+            validation_result = self.toolkit.vector.validator.execute(toggle.entity)
    
         # Handle the case that, the entity is not safe to use.
         if validation_result.is_failure:

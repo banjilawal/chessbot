@@ -14,7 +14,7 @@ from typing import Type
 
 from blueprint import SquareBlueprint
 from bootstrapper import PrimingValidator
-from toggle.carrier import SquareCarrier
+from carrier import SquareCarrier
 from detector import SquareCollisionDetector
 from err import SquareBlueprintNullException, SquareNullException
 from model import Square

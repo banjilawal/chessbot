@@ -9,8 +9,13 @@ version: 1.0.1
 
 from __future__ import annotations
 
+from typing import Optional
+
+from builder import RegisterBuilder, VectorToggleRegisterBuilder
 from operation import Operation
 from selector import VectorToggle
+
+from toolkit import VectorToggleToolkit
 from util import LoggingLevelRouter
 
 
@@ -36,15 +41,29 @@ class AddVector(Operation[VectorToggle]):
     Super Class:
         Operation
     """
+    _register_builder: Optional[RegisterBuilder]
+    _vector_toggle_toolkit: Optional[VectorToggleToolkit]
     
-    @classmethod
+    def __init__(
+            self,
+            register_builder: Optional[VectorToggleRegisterBuilder]
+                              | None = VectorToggleRegisterBuilder(),
+            vector_toggle_toolkit: Optional[VectorToggleToolkit] | None = VectorToggleToolkit(),
+    ):
+        """
+        Args:
+            register_builder: Optional[VectorToggleRegisterBuilder]
+            vector_toggle_toolkit: Optional[VectorToggleToolkit]
+        """
+        self._register_builder = register_builder
+        self._vector_toggle_toolkit = vector_toggle_toolkit
+        
     @LoggingLevelRouter.monitor
     def execute(
-            cls,
-            register: PointRegister,
-            register_validator: VectorRegisterValidator | None = None,
-            operand_toolkit: VectorOperandToolkit | None = None,
-    ) -> ComputationResult[Coord|Vector]:
+            self,
+            u: VectorToggle,
+            v: VectorToggle,
+    ) -> ComputationResult[VectorToggle]:
         """
         Add the contents of a VectorRegister to each other.
         
@@ -65,13 +84,19 @@ class AddVector(Operation[VectorToggle]):
         Raises:
            VectorCoordConversionException
         """
-        method = f"{cls.__name__}.execute"
+        method = f"{self.__class__.__name__}.execute"
+        
+        register_build_result =
+        for operand in [u, v]:
+            validation = self._vector_toggle_toolkit.v
         
         if register_validator is None:
             register_validator = VectorRegisterValidator()
             
         if operand_toolkit is None:
             operand_toolkit = VectorOperandToolkit()
+            
+        
         
         # Handle the case that, the register is not valid for addition.
         register_validation_result = register_validator.execute(register)

@@ -14,7 +14,7 @@ from typing import Any, cast
 from blueprint import SquareBlueprint
 from err import FormationNullException, SquareCertifierException, SquareCarrierNullException
 from model import Board, Coord, HomeSquare, Square
-from toggle.carrier import SquareCarrier
+from carrier import SquareCarrier
 from root import RootCertifier
 from result import ValidationResult
 from schema import Formation

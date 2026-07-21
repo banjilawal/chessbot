@@ -22,33 +22,18 @@ T = TypeVar("T")
 
 
 class RegisterBuilder(Builder, Generic[T]):
-    _a: T
-    _b: T
     _endpoint_validator: Validator[T]
     
     def __init__(
             self,
-            a: T,
-            b: T,
             endpoint_validator: Validator[T]
     ):
         """
         Args:
-            a: T,
-            b: T,
             endpoint_validator: Validator[T]
         """
-        self._a = a
-        self._b = b
         self._endpoint_validator = endpoint_validator
         
-    @property
-    def a(self) -> T:
-        return self._a
-    
-    @property
-    def b(self) -> T:
-        return self._b
     
     @property
     def endpoint_validator(self) -> Validator[T]:
@@ -56,5 +41,5 @@ class RegisterBuilder(Builder, Generic[T]):
         
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def execute(self) -> BuildResult[Register[T]]:
+    def execute(self, a: T, b: T) -> BuildResult[Register[T]]:
         pass

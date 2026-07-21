@@ -13,7 +13,7 @@ from dataclasses import dataclass
 from typing import Type
 
 from blueprint import TokenBlueprint
-from toggle.carrier import TokenCarrierToggle
+from carrier import TokenCarrierToggle
 from detector import TokenHomeDetector
 from err import TokenBlueprintNullException, TokenCarrierNullException, TokenNullException
 from model import Token

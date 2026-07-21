@@ -13,7 +13,7 @@ from dataclasses import dataclass
 from typing import Type
 
 from blueprint import CoordBlueprint
-from toggle.carrier import CoordCarrier
+from carrier import CoordCarrier
 from err import CoordBlueprintNullException, CoordCarrierNullException, CoordNullException
 from model import Coord
 from toolkit import ModelToolkit

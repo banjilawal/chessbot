@@ -16,7 +16,6 @@ from register import VectorToggleRegister, Register
 from result import BuildResult
 from toggle import VectorToggle
 from util import LoggingLevelRouter
-from validator import VectorToggleValidator, VectorValidator
 
 
 class VectorToggleRegisterBuilder(RegisterBuilder[VectorToggle]):
@@ -38,39 +37,23 @@ class VectorToggleRegisterBuilder(RegisterBuilder[VectorToggle]):
     
     def __init__(
             self,
-            a: VectorToggle,
-            b: VectorToggle,
             endpoint_validator: Optional[VectorToggleValidator] | None = VectorToggleValidator(),
     ):
         """
         Args:
-            a: VectorToggle
-            b: VectorToggle
             endpoint_validator: Optional[VectorToggleValidator]
         """
-        super().__init__(a=a, b=b, endpoint_validator=endpoint_validator)
-        
-    @property
-    def u(self) -> VectorToggle:
-        return cast(VectorToggle, self.u)
-    
-    @property
-    def v(self) -> VectorToggle:
-        return cast(VectorToggle, self.v)
-    
-    @property
-    def a(self) -> VectorToggle:
-        return cast(VectorToggle, self.a)
-    
-    @property
-    def b(self) -> VectorToggle:
-        return cast(VectorToggle, self.b)
+        super().__init__(endpoint_validator=endpoint_validator)
+
     
     @property
     def endpoint_validator(self) -> VectorToggleValidator:
         return cast(VectorToggleValidator, self.endpoint_validator)
     
     @LoggingLevelRouter.monitor
-    def execute(self) -> BuildResult[VectorToggleRegister]:
+    def execute(
+            u: VectorToggle,
+            v: VectorToggle,
+    ) -> BuildResult[VectorToggleRegister]:
         pass
         

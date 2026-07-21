@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Type
 
 from blueprint import TeamBlueprint, TokenBlueprint
-from toggle.carrier import TokenCarrierToggle
+from carrier import TokenCarrierToggle
 from detector import TokenHomeDetector
 from err import (
     TeamBlueprintNullException, TeamNullException, TokenBlueprintNullException, TokenCarrierNullException,

@@ -9,7 +9,7 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from toggle.carrier import TokenCarrierToggle
+from carrier import TokenCarrierToggle
 from err import (
     OpeningSquareCollisionException,TokenIdCollisionException, TokenNameCollisionException
 )

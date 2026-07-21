@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Type, cast
 
 from blueprint import TokenBlueprint
-from toggle.carrier import TokenCarrierToggle
+from carrier import TokenCarrierToggle
 from context import TokenHomeContext
 from err import FormationNullException, TokenCertifierException
 from model import HomeSquare, Team, Token
