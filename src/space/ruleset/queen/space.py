@@ -9,12 +9,14 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from container import VectorSet
-from model import Queen, Vector
-from space import OffsetPattern, TraversalPattern
+from typing import Dict
+
+from model import Queen
+from schema import Ruleset
+from space import TraversalPattern, TraversalRuleset
 
 
-class QueenTraversalPattern(TraversalPattern):
+class QueenTraversalRuleset(TraversalRuleset[Queen]):
     """
     Role:
         -   Data Holder
@@ -23,24 +25,20 @@ class QueenTraversalPattern(TraversalPattern):
         1.  The second component of a QueenBasis. Necessary for computing a QueenToken's destination vectors.
 
     Attributes:
-        maneuver_vectors: VectorSet
 
     Provides:
 
     Super Class:
-        ManeuverVectorSet
+        TraversalRuleset
     """
     
-    def __init__(self,):
+    def __init__(
+            self,
+            entries: Dict[str: TraversalPattern] = Ruleset.QUEEN.entries
+    ):
         """
-        Args:t
+        Args:
+            entries: Dict[str: TraversalPattern]
         """
-        super().__init__(
-            maneuver_vectors=VectorSet(
-                    (
-                        Vector(1, 0), Vector(-1, 0), Vector(0, 1),
-                        Vector(1, 1), Vector(-1, 1), Vector(-1, -1), Vector(1, -1)
-                    )
-            )
-        )
+        super().__init__(entries=entries)
     

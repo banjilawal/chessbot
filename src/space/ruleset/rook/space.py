@@ -9,9 +9,12 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from container import VectorSet
-from model import Rook, Vector
-from space import TraversalRuleset
+from typing import Dict
+
+
+from model import Rook
+from schema import Ruleset
+from space import TraversalPattern, TraversalRuleset
 
 
 class RookTraversalRuleset(TraversalRuleset[Rook]):
@@ -23,24 +26,19 @@ class RookTraversalRuleset(TraversalRuleset[Rook]):
         1.  The second component of a RookBasis. Necessary for computing a RookToken's destination vectors.
 
     Attributes:
-        maneuver_vectors: VectorSet
 
     Provides:
 
     Super Class:
-        ManeuverVectorSet
+        TraversalRuleset
     """
     
-    def __init__(self,):
+    def __init__(
+            self, entries: Dict[str: TraversalPattern] = Ruleset.ROOK.entries
+    ):
         """
-        Args:t
+        Args:
+            entries: Dict[str: TraversalPattern] = Ruleset.ROOK.entries
         """
-        super().__init__(
-            maneuver_vectors=VectorSet(
-                    (
-                        Vector(1, 0), Vector(-1, 0), Vector(0, 1),
-                        Vector(1, 1), Vector(-1, 1), Vector(-1, -1), Vector(1, -1)
-                    )
-            )
-        )
+        super().__init__(entries=entries)
     

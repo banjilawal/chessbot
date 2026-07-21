@@ -12,7 +12,10 @@ from __future__ import annotations
 from abc import ABC
 from typing import Dict, Generic, List, Optional, TypeVar, cast
 
+from model import TargetVectorSet, Vector
+from result import ComputationResult
 from space import TraversalPattern
+from util import LoggingLevelRouter
 
 T = TypeVar("T", bound="Rank")
 
@@ -35,7 +38,7 @@ class TraversalRuleset(ABC, Generic[T]):
 
     Super Class:
     """
-    _entries: Dict[str: TraversalPattern]
+    _ruleset: Dict[str: TraversalPattern]
     
     def __init__(
             self,
@@ -45,15 +48,15 @@ class TraversalRuleset(ABC, Generic[T]):
         Args:
             entries: Optional[Dict[str: TraversalPattern]]
         """
-        self._entries = entries or {}
+        self._ruleset = entries or {}
         
     @property
-    def entries(self) -> Dict[str: TraversalPattern]:
-        return self._entries
+    def ruleset(self) -> Dict[str: TraversalPattern]:
+        return self._ruleset
     
     @property
     def size(self) -> int:
-        return len(self._entries)
+        return len(self._ruleset)
     
     @property
     def is_empty(self) -> bool:
@@ -65,4 +68,10 @@ class TraversalRuleset(ABC, Generic[T]):
     
     @property
     def to_list(self) -> List[TraversalPattern]:
-        return list(self._entries)
+        return list(self._ruleset)
+    
+    @LoggingLevelRouter.monitor
+    def execute(self, origin: Vector) -> ComputationResult[TargetVectorSet]:
+        for rule in self.ruleset.entries:
+            for entry in rule
+        

@@ -9,12 +9,13 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from container import VectorSet
-from model import Vector
-from space import TraversalPattern
+from typing import Dict
+
+from schema import Ruleset
+from space import TraversalPattern, TraversalRuleset
 
 
-class BishopTraversalPattern(TraversalPattern):
+class BishopTraversalRuleset(TraversalRuleset):
     """
     Role:
         -   Data Holder
@@ -23,24 +24,20 @@ class BishopTraversalPattern(TraversalPattern):
         1.  The second component of a BishopBasis. Necessary for computing a BishopToken's destination vectors.
 
     Attributes:
-        maneuver_vectors: VectorSet
 
     Provides:
 
     Super Class:
-        ManeuverVectorSet
+        TraversalRuleset
     """
     
-    def __init__(self,):
+    def __init__(
+            self,
+            entries: Dict[str: TraversalPattern] = Ruleset.BISHOP.entries
+    ):
         """
         Args:
+            entries: Dict[str: TraversalPattern]
         """
-        super().__init__(
-            maneuver_vectors=VectorSet(
-                    (
-                        Vector(1, 0), Vector(-1, 0), Vector(0, 1),
-                        Vector(1, 1), Vector(-1, 1), Vector(-1, -1), Vector(1, -1)
-                    )
-            )
-        )
+        super().__init__(entries=entries)
     

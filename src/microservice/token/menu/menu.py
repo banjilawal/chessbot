@@ -178,7 +178,7 @@ class TokenServiceMenu(Router[TokenService]):
             )
         # Handle the case that, a param is the wrong type
         for key in token_command.parameters.entries.keys():
-            if not isinstance(token_command.parameters.entries[key], cipher.entries[key]):
+            if not isinstance(token_command.parameters.entries[key], cipher.ruleset[key]):
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
                     TokenServiceMenuException(
