@@ -89,3 +89,11 @@ class RegisterBlueprint(Blueprint[Register]):
     def size(self) -> int:
         return len([self._a, self._b])
     
+    @property
+    def registers_are_same_type(self) -> bool:
+        return isinstance(self._a, type(self._b))
+    
+    @property
+    def registers_have_different_types(self) -> bool:
+        return not self.registers_are_same_type
+    

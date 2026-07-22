@@ -1,7 +1,7 @@
-# src/register/model/vectortoggle/register.py
+# src/register/model/vector_toggle/register.py
 
 """
-Module: register.model.vectortoggle.register
+Module: register.model.vector_toggle.register
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -9,7 +9,7 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from typing import Dict, List
+from typing import Dict, List, cast
 
 from register import ModelRegister
 from toggle import VectorToggle
@@ -38,19 +38,31 @@ class VectorToggleRegister(ModelRegister[VectorToggle]):
     
     def __init__(
             self,
-            a: VectorToggle,
-            b: VectorToggle,
+            u: VectorToggle,
+            v: VectorToggle,
     ):
         """
         Args:
-            a: VectorToggle
-            b: VectorToggle
+            u: VectorToggle
+            v: VectorToggle
         """
-        super().__init__(a=a, b=b)
+        super().__init__(a=u, b=v)
+    
+    @property
+    def u(self) -> VectorToggle:
+        return cast(VectorToggle, super().a)
+    
+    @property
+    def v(self) -> VectorToggle:
+        return cast(VectorToggle, super().b)
         
     @property
     def a(self) -> VectorToggle:
-        return self._a
+        return self.u
+    
+    @property
+    def b(self) -> VectorToggle:
+        return self.v
     
     @property
     def b(self) -> VectorToggle:
@@ -71,12 +83,13 @@ class VectorToggleRegister(ModelRegister[VectorToggle]):
     @property
     def is_coord_register(self) -> bool:
         return self._a.is_coord_toggle and self._b.is_coord_toggle
-    
+
     @property
-    def is_mismatched_register(self) -> bool:
-        return  (
-                (not (self._a.is_coord_toggle and self._b.is_coord_toggle)) or
-                (not (self._a.is_vector_toggle and self.b.is_vector_selector))
+    def toggles_are_carrying_different_types(self) -> bool:
+        return (
+            not self.is_vector_register and
+            not self.is_coord_register
+            
         )
     
     @property

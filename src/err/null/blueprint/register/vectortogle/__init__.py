@@ -1,7 +1,7 @@
-# src/err/null/blueprint/register/vectortoggle/__init__.py
+# src/err/null/blueprint/register/vector_toggle/__init__.py
 
 """
-Module: err.null.blueprint.register.vectortoggle.__init__
+Module: err.null.blueprint.register.vector_toggle.__init__
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1

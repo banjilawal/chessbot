@@ -10,7 +10,7 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import ModelRootCertifierException
+from err import RootCertifierException
 from result import MethodResultType
 
 
@@ -20,7 +20,7 @@ __all__ = [
 ]
 
 # ======================# MODEL_MODEL_ROOT_CERTIFIER_FAILURE #======================#
-class ModelRootCertifierException(ModelRootCertifierException):
+class ModelRootCertifierException(RootCertifierException):
     """
     Role:
         -   Error Tracing

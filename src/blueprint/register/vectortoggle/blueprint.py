@@ -1,7 +1,7 @@
-# src/blueprint/register/vectortoggle/blueprint.py
+# src/blueprint/register/vector_toggle/blueprint.py
 
 """
-Module: blueprint.register.vectortoggle.blueprint
+Module: blueprint.register.vector_toggle.blueprint
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -39,8 +39,8 @@ class VectorToggleRegisterBlueprint(RegisterBlueprint[VectorToggleRegister]):
     
     def __init__(
             self,
-            a: VectorToggle,
-            b: VectorToggle,
+            u: VectorToggle,
+            v: VectorToggle,
             model_class: Optional[Type[VectorToggleRegister]]
                          | None = VectorToggleRegister,
             null_exception: Optional[VectorToggleRegisterNullException] |
@@ -48,14 +48,14 @@ class VectorToggleRegisterBlueprint(RegisterBlueprint[VectorToggleRegister]):
     ):
         """
         Args:
-            a: VectorToggle
-            b: VectorToggle
+            u: VectorToggle
+            v: VectorToggle
             model_class: Optional[Type[VectorToggleRegister]]
             null_exception: Optional[VectorToggleRegisterNullException]
         """
         super().__init__(
-            a=a,
-            b=b,
+            a=u,
+            b=v,
             model_class=model_class,
             null_exception=null_exception
         )
@@ -75,6 +75,14 @@ class VectorToggleRegisterBlueprint(RegisterBlueprint[VectorToggleRegister]):
     @property
     def b(self) -> VectorToggle:
         return cast(VectorToggle, super().b)
+    
+    @property
+    def toggles_are_same_type(self) -> bool:
+        return isinstance(self.a.entity, type(self.b.entity))
+    
+    @property
+    def toggles_are_different_types(self) -> bool:
+        return not self.toggles_are_same_type
     
     
 

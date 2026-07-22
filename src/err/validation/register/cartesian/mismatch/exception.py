@@ -1,7 +1,7 @@
-# src/err/validation/register/vectortoggle/exception.py
+# src/err/validation/register/vector_toggle/exception.py
 
 """
-Module: err.validation.register.vectortoggle.exception
+Module: err.validation.register.vector_toggle.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1

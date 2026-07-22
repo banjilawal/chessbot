@@ -1,7 +1,7 @@
-# src/err/empty/register/model/vectortoggle/exception.py
+# src/err/empty/register/model/vector_toggle/exception.py
 
 """
-Module: err.empty.register.model.vectortoggle.exception
+Module: err.empty.register.model.vector_toggle.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1

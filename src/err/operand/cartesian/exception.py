@@ -1,7 +1,7 @@
-# src/err/operand/vectortoggle/exception.py
+# src/err/operand/vector_toggle/exception.py
 
 """
-Module: err.operand.vectortoggle.exception
+Module: err.operand.vector_toggle.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1

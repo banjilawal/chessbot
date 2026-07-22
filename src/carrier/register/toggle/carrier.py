@@ -9,7 +9,7 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from typing import Optional
+from typing import Any, Dict, Optional
 
 from blueprint import VectorToggleRegisterBlueprint
 from carrier import RegisterCarrier
@@ -42,8 +42,10 @@ class VectorToggleRegisterCarrier(RegisterCarrier[VectorToggle]):
     
     def __init__(
             self,
-            model: Optional[VectorToggleRegister] | None = None,
-            blueprint: Optional[VectorToggleRegisterBlueprint] | None = None,
+            model: Optional[VectorToggleRegister] |
+                   None = None,
+            blueprint: Optional[VectorToggleRegisterBlueprint] |
+                       None = None,
     ):
         """
         Args:
@@ -81,9 +83,8 @@ class VectorToggleRegisterCarrier(RegisterCarrier[VectorToggle]):
         if self.is_not_carrying_anything: return None
         if self.is_carrying_blueprint: return self._blueprint
         return VectorToggleRegisterBlueprint(
-            id=self._model.id,
-            u=self._model.u,
-            v=self._model.v,
+            u=self._model.a,
+            v=self._model.b,
         )
     
     @property

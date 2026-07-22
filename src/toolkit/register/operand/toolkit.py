@@ -43,10 +43,15 @@ class VectorToggleRegisterToolkit(RegisterToolkit[VectorToggle]):
     Super Class:
        RegisterToolkit
     """
-    model: Type[VectorToggleRegister] = VectorToggleRegister
-    carrier_model: Type[VectorToggleRegisterCarrier] = VectorToggleRegisterCarrier
-    blueprint_model: Type[VectorToggleRegisterBlueprint] = VectorToggleRegisterBlueprint
-    
+    model: Type[VectorToggleRegister] = (
+        VectorToggleRegister
+    )
+    carrier_model: Type[VectorToggleRegisterCarrier] = (
+        VectorToggleRegisterCarrier
+    )
+    blueprint_model: Type[VectorToggleRegisterBlueprint] = (
+        VectorToggleRegisterBlueprint
+    )
     null_exception: VectorToggleRegisterNullException = (
         VectorToggleRegisterNullException()
     )

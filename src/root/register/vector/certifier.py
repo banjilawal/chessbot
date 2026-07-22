@@ -8,12 +8,18 @@ version: 1.0.1
 """
 
 from __future__ import annotations
-from typing import Any, Type, cast
+from typing import Any, List, Type, cast
 
-from err import VectorToggleRegisterCertifierException, VectorToggleRegisterMismatchException
+from blueprint import VectorToggleRegisterBlueprint
+from carrier import TokenCarrierToggle, VectorToggleRegisterCarrier
+from err import (
+    RegisterEmptyException, RegisterException, RegisterSizeException, VectorToggleRegisterCertifierException,
+    VectorToggleRegisterMismatchException
+)
 from root import RootCertifier
 from register import VectorToggleRegister
 from result import MethodResultType, ValidationResult
+from toggle import VectorToggle
 from toolkit.register import VectorToggleRegisterToolkit
 from util import LoggingLevelRouter
 
@@ -98,8 +104,7 @@ class VectorToggleRegisterCertifier(RootCertifier[VectorToggleRegister]):
         blueprint= carrier.extract_blueprint()
         
         # Handle the wrong number of toggles cases.
-        if blueprint.
-            
+        if blueprint.is_empty:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 VectorToggleRegisterCertifierException(
@@ -108,13 +113,15 @@ class VectorToggleRegisterCertifier(RootCertifier[VectorToggleRegister]):
                     msg=VectorToggleRegisterCertifierException.MSG,
                     err_code=VectorToggleRegisterCertifierException.ERR_CODE,
                     mthd_rslt_type=MethodResultType.VALIDATION_RESULT,
-                    ex=NoActiveVectorToggleException(
-                        NoAc
+                    ex=RegisterEmptyException(
+                        cls_mthd=method,
+                        cls_name=self.__class__.__name__,
+                        msg=RegisterEmptyException.MSG,
+                        err_code=RegisterEmptyException.ERR_CODE,
                     )
                 )
             )
-        
-        if toggle_count == 0:
+        if blueprint.is_wrong_size:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 VectorToggleRegisterCertifierException(
@@ -122,13 +129,35 @@ class VectorToggleRegisterCertifier(RootCertifier[VectorToggleRegister]):
                     cls_name=self.__class__.__name__,
                     msg=VectorToggleRegisterCertifierException.MSG,
                     err_code=VectorToggleRegisterCertifierException.ERR_CODE,
+                    mthd_rslt_type=MethodResultType.VALIDATION_RESULT,
+                    ex=RegisterSizeException(
+                        cls_mthd=method,
+                        cls_name=self.__class__.__name__,
+                        msg=RegisterSizeException.MSG,
+                        err_code=RegisterSizeException.ERR_CODE,
+                    )
+                )
+            )
+        if blueprint.toggles_are_different_types:
+            # Send the exception chain on failure.
+            return ValidationResult.failure(
+                VectorToggleRegisterCertifierException(
+                    cls_mthd=method,
+                    cls_name=self.__class__.__name__,
+                    msg=VectorToggleRegisterCertifierException.MSG,
+                    err_code=VectorToggleRegisterCertifierException.ERR_CODE,
+                    mthd_rslt_type=MethodResultType.VALIDATION_RESULT,
                     ex=VectorToggleRegisterMismatchException(
+                        cls_mthd=method,
+                        cls_name=self.__class__.__name__,
                         msg=VectorToggleRegisterMismatchException.MSG,
                         err_code=VectorToggleRegisterMismatchException.ERR_CODE,
                     )
                 )
             )
-        # Handle the case that, either slot does not contain a safe vector_opernad.
+        # Handle the case that, either slot is not safe.
+        toggles: List[VectorToggle] = []
+        
         for item in [blueprint.a, blueprint.b]:
             validation = self.toolkit.vector_toggle_validator.execute(item)
             if validation.is_failure:
@@ -142,5 +171,21 @@ class VectorToggleRegisterCertifier(RootCertifier[VectorToggleRegister]):
                         ex=validation.exception,
                     )
                 )
+            toggles.append(cast(VectorToggle, validation.payload))
+            
+        # --- Extract and cast payloads of the validation results. ---#
+        u = toggles[0]
+        v = toggles[1]
+        
+        if carrier.is_carrying_model:
+            return ValidationResult.success(
+                VectorToggleRegisterCarrier(
+                    model=VectorToggleRegister(u=u, v=v)
+                )
+            )
         # --- Forward the work product to the caller. ---#
-        return ValidationResult.success(blueprint)
+        return ValidationResult.success(
+            VectorToggleRegisterCarrier(
+                blueprint=VectorToggleRegisterBlueprint(u=u, v=v)
+            )
+        )
