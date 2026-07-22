@@ -1,7 +1,7 @@
-# src/err/validation/register/square/exception.py
+# src/err/validation/register/vector/exception.py
 
 """
-Module: err.validation.register.square.exception
+Module: err.validation.register.vector.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -16,18 +16,18 @@ from result import MethodResultType
 
 
 __all__ = [
-    # ======================# SQUARE_REGISTER_BUILDER_FAILURE #======================#
-    "SquareRegisterBuilderException",
+    # ======================# VECTOR_REGISTER_BUILDER_FAILURE #======================#
+    "VectorRegisterBuilderException",
 ]
 
-# ======================# SQUARE_REGISTER_BUILDER_FAILURE #======================#
-class SquareRegisterBuilderException(RegisterBuilderException):
+# ======================# VECTOR_REGISTER_BUILDER_FAILURE #======================#
+class VectorRegisterBuilderException(RegisterBuilderException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a SquareRegisterBuilder failure.
+        1.  Indicate that a VectorRegisterBuilder failure.
 
     Attributes:
             msg: Optional[str]
@@ -44,8 +44,8 @@ class SquareRegisterBuilderException(RegisterBuilderException):
     Super Class:
         RegisterBuilderException
     """
-    MSG = "SquareRegisterBuilder failure."
-    ERR_CODE = "SQUARE_REGISTER_BUILDER_FAILURE"
+    MSG = "VectorRegisterBuilder failure."
+    ERR_CODE = "VECTOR_REGISTER_BUILDER_FAILURE"
     
     def __init__(
             self,

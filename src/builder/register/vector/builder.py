@@ -9,8 +9,11 @@ version: 1.0.1
 
 from __future__ import annotations
 
+from typing import cast
+
 from blueprint import VectorRegisterBlueprint
 from builder import RegisterBuilder
+from err import VectorRegisterBuilderException
 from register import VectorRegister
 from result import BuildResult, MethodResultType
 from root import VectorRegisterRootCertifier

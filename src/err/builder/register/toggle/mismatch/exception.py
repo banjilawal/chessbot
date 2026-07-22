@@ -1,7 +1,7 @@
-# src/err/validation/register/operand/exception.py
+# src/err/validation/register/toggle/exception.py
 
 """
-Module: err.validation.register.operand.exception
+Module: err.validation.register.toggle.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1

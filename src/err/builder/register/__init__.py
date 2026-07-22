@@ -11,8 +11,9 @@ version: 1.0.1
 
 # Packages
 from .identity import *
-from .operand import *
 from .square import *
+from .toggle import *
+from .vector import *
 
 # Modules
 from .exception import RegisterBuilderException
