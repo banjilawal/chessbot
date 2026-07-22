@@ -10,14 +10,12 @@ version: 1.0.1
 from __future__ import annotations
 
 from abc import abstractmethod
-from ensurepip import bootstrap
-from typing import Generic, TypeVar
+from typing import Generic, TypeVar, cast
 
-from assembler import RegisterAssembler
-from blueprint import Blueprint
+from blueprint import RegisterBlueprint
 from builder import Builder
 from result import BuildResult
-from root import RegisterRootCertifier
+from toolkit import RegisterBuilderToolkit
 from util import LoggingLevelRouter
 
 T = TypeVar("T", bound="Register")
@@ -34,8 +32,7 @@ class RegisterBuilder(Builder, Generic[T]):
         1.  Ensure a new Register instance is born safe and reliable.
 
     Attributes:
-            assembler: [RegisterAssembler[T]],
-            bootstrapper: [RegisterRootCertifier[T]]
+            builder_toolkit: [RegisterBuilderToolkit[T]]
 
     Provides:
         -   def execute(self, blueprint: RegisterBlueprint[T]) -> BuildResult[Register]
@@ -44,27 +41,18 @@ class RegisterBuilder(Builder, Generic[T]):
          Builder
      """
     
-    def __init__(
-            self, 
-            assembler: [RegisterAssembler[T]],
-            bootstrapper: [RegisterRootCertifier[T]],
-    ):
+    def __init__(self, builder_toolkit: [RegisterBuilderToolkit[T]]):
         """
         Args:
-            assembler: [RegisterAssembler[T]],
-            bootstrapper: [RegisterRootCertifier[T]]            
+            builder_toolkit: [RegisterBuilderToolkit[T]]
         """
-        super().__init__(bootstrapper=bootstrapper, assembler=assembler)
+        super().__init__(builder_toolkit=builder_toolkit)
         
     @property
-    def bootstrapper(self) -> RegisterRootCertifier[T]:
-        return cast(RegisterRootCertifier[T], super().bootstrapper)
-    
-    @property
-    def assembler(self) -> RegisterAssembler[T]:
-        return cast(RegisterAssembler, super().assembler)
+    def builder_toolkit(self) -> RegisterBuilderToolkit[T]:
+        return cast([RegisterBuilderToolkit[T]], super().builder_toolkit)
     
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def execute(self, blueprint: Blueprint[T]) -> BuildResult[T]:
+    def execute(self, blueprint: RegisterBlueprint[T]) -> BuildResult[T]:
         pass

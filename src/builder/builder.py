@@ -10,12 +10,12 @@ version: 1.0.1
 from __future__ import annotations
 
 from abc import ABC, abstractmethod
-from typing import Generic, TypeVar, cast
+from typing import Generic, TypeVar
 
-from assembler import Assembler
+
 from blueprint import Blueprint
 from result import BuildResult
-from root import RootCertifier
+from toolkit import BuilderToolkit
 from util import LoggingLevelRouter
 
 T = TypeVar("T")
@@ -42,47 +42,20 @@ class Builder(ABC, Generic[T]):
         
     Super Class:
     """
-    _bootstrapper: RootCertifier[T]
-    _assembler: Assembler[T]
+    _builder_toolkit: BuilderToolkit[T]
     
-    def __init__(
-            self, bootstrapper: RootCertifier[T], assembler: Assembler[T],
-    ):
+    def __init__(self, builder_toolkit: BuilderToolkit[T]):
         """
         Args:
-            bootstrapper: RootCertifier[T]
-            assembler: Assembler[T]
-            
+           builder_toolkit: BuilderToolkit[T
         """
-        self._bootstrapper = bootstrapper
-        self._assembler =assembler
+        self._builder_toolkit = builder_toolkit
     
     @property
-    def bootstrapper(self) -> RootCertifier[T]:
-        return cast(RootCertifier[T], self._bootstrapper)
-    
-    @property
-    def assembler(self) -> Assembler[T]:
-        return cast(Assembler[T], self._assembler)
+    def builder_toolkit(self) -> BuilderToolkit[T]:
+        return self._builder_toolkit
 
     @abstractmethod
     @LoggingLevelRouter.monitor
     def execute(self, blueprint: Blueprint[T]) -> BuildResult[T]:
-        """
-        # ACTION:
-        1. Run integrity checks on each parameter required for constructing V.
-        2. If any check fails it raises an exception that is returned inside a BuildResult.
-        3. When all checks pass, construct V then return it inside a BuildResult.
-
-        # PARAMETERS:
-            * args: Parameters for constructing V.
-
-        # RETURNS:
-        BuildResult[V] containing either:
-            - On success: V in the payload.
-            - On failure: Exception.
-
-        # RAISES:
-          * BuildFailedException
-        """
         pass
