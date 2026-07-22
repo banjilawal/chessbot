@@ -10,8 +10,13 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, cast
 
-
-from err import ExcessToggleActivationException, NoActiveTogglesException, NoValidationRouteException
+from blueprint import VectorToggleBlueprint
+from carrier import VectorToggleCarrier
+from err import (
+    ExcessToggleActivationException, NoActiveTogglesException, NoValidationRouteException,
+    VectorToggleRootCertifierException
+)
+from model import Coord, Vector
 from root import ToggleRootCertifier
 from result import ValidationResult
 from toggle import VectorToggle
@@ -80,7 +85,7 @@ class VectorToggleRootCertifier(ToggleRootCertifier[VectorToggle]):
         if carrier_validation.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                VectorToggleRooteCertifierException(
+                VectorToggleRootCertifierException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
                     msg=VectorToggleRootCertifierException.MSG,
@@ -91,7 +96,7 @@ class VectorToggleRootCertifier(ToggleRootCertifier[VectorToggle]):
         carrier = cast(self.toolkit.carrier_model, carrier_validation.payload)
         
         # --- Cast the candidate into a VectorToggleBlueprint for additional tests. ---#
-        blueprint = cast(self.toolkit.model, candidate)
+        blueprint = cast(self.toolkit.blueprint_model, carrier)
         
         # Handle the case that neither option is enabled.
         if blueprint.no_active_toggles:
@@ -124,14 +129,18 @@ class VectorToggleRootCertifier(ToggleRootCertifier[VectorToggle]):
                 )
             )
         # Pick a route for integrity testing the toggle's entity.
-        validation_result = ValidationResult.failure(NoValidationRouteException())
-        if toggle.is_coord_selector:
-            validation_result = self.toolkit.coord.validator.execute(toggle.entity)
-        if toggle.is_vector_selector:
-            validation_result = self.toolkit.vector.validator.execute(toggle.entity)
-   
+        validation = ValidationResult.failure(NoValidationRouteException())
+
+        if blueprint.for_coord_toggle:
+            validation = self.toolkit.coord.validator.execute(
+                blueprint.coord
+            )
+        if blueprint.for_vector_toggle:
+            validation = self.toolkit.vector.validator.execute(
+                blueprint.vector
+            )
         # Handle the case that, the entity is not safe to use.
-        if validation_result.is_failure:
+        if validation.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 VectorToggleRootCertifierException(
@@ -139,8 +148,37 @@ class VectorToggleRootCertifier(ToggleRootCertifier[VectorToggle]):
                     cls_name=self.__class__.__name__,
                     msg=VectorToggleRootCertifierException.MSG,
                     err_code=VectorToggleRootCertifierException.ERR_CODE,
-                    ex=validation_result.exception
+                    ex=validation.exception
                 )
             )
-        # --- Forward the work product to the caller ---#
-        return ValidationResult.success(toggle)
+        # --- Extract and cast payloads of the validation results. ---#
+        if carrier.is_carrying_model:
+            return ValidationResult.success(
+                self._process_model_carrier(validation.payload)
+            )
+        return ValidationResult.success(
+            self._process_blueprint_carrier(validation.payload)
+        )
+        
+        
+    def _process_model_carrier(self, item) -> VectorToggleCarrier:
+        if isinstance(item, Coord):
+            coord = cast(Coord, item)
+            return VectorToggleCarrier(
+                model=VectorToggle(coord=coord)
+            )
+        vector = cast(Vector, item)
+        return VectorToggleCarrier(
+            model=VectorToggle(vector=vector)
+        )
+    
+    def _process_blueprint_carrier(self, item) -> VectorToggleCarrier:
+        if isinstance(item, Coord):
+            coord = cast(Coord, item)
+            return VectorToggleCarrier(
+                blueprint=VectorToggleBlueprint(coord=coord)
+            )
+        vector = cast(Vector, item)
+        return VectorToggleCarrier(
+            blueprint=VectorToggleBlueprint(vector=vector)
+        )

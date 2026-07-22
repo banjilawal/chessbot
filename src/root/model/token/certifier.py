@@ -187,7 +187,7 @@ class TokenRootCertifier(ModelRootCertifier[Token]):
         home_square = cast(HomeSquare, home_detection.payload)
         rank = cast(type(rank_test.payload), rank_test.payload)
         
-        if carrier.is_model_carrier:
+        if carrier.is_carrying_model:
             return ValidationResult.success(
                 TokenCarrierToggle(
                     model=Token(

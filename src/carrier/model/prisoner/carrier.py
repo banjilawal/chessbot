@@ -59,11 +59,11 @@ class PrisonerCarrier(EntityCarrierToggle[Prisoner]):
         return self._model or self._blueprint
     
     @property
-    def is_model_carrier(self) -> bool:
+    def is_carrying_model(self) -> bool:
         return self._model is not None and self._blueprint is None
     
     @property
-    def is_blueprint_carrier(self) -> bool:
+    def is_carrying_blueprint(self) -> bool:
         return self._model is None and self._blueprint is not None
     
     @property
@@ -76,8 +76,8 @@ class PrisonerCarrier(EntityCarrierToggle[Prisoner]):
     
     @property
     def size(self) -> int:
-        if self.no_active_toggles: return 0
-        if self.is_model_carrier or self.is_blueprint_carrier: return 1
+        if self.is_not_carrying_anything: return 0
+        if self.is_carrying_model or self.is_carrying_blueprint: return 1
         return 2
     
     def __eq__(self, other):

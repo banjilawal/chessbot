@@ -57,14 +57,14 @@ class VectorRegisterCarrierToggle(EntityCarrierToggle[VectorRegister]):
         
     @property
     def entity(self) -> [VectorRegister | VectorRegisterBlueprint | None]:
-        if self.no_active_toggles:
+        if self.is_not_carrying_anything:
             return None
-        if self.is_model_carrier:
+        if self.is_carrying_model:
             return self._model
         return self._blueprint
     
     @property
-    def is_model_carrier(self) -> bool:
+    def is_carrying_model(self) -> bool:
         return (
                 self._model is not None and
                 self._blueprint is None and
@@ -72,15 +72,15 @@ class VectorRegisterCarrierToggle(EntityCarrierToggle[VectorRegister]):
         )
     
     @property
-    def is_blueprint_carrier(self) -> bool:
+    def is_carrying_blueprint(self) -> bool:
         return not (
-                self.is_model_carrier and
+                self.is_carrying_model and
                 isinstance(self._blueprint, VectorRegisterBlueprint)
         )
     
     def extract_blueprint(self) -> Optional[VectorRegisterBlueprint]:
-        if self.no_active_toggles: return None
-        if self.is_blueprint_carrier: return self._blueprint
+        if self.is_not_carrying_anything: return None
+        if self.is_carrying_blueprint: return self._blueprint
         return VectorRegisterBlueprint(
             id=self._model.id,
             u=self._model.u,

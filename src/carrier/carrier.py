@@ -51,22 +51,20 @@ class EntityCarrierToggle(ABC, Generic[T]):
     
     @property
     @abstractmethod
-    def is_model_carrier(self) -> bool:
+    def is_carrying_model(self) -> bool:
         pass
     
     @property
     @abstractmethod
-    def is_blueprint_carrier(self) -> bool:
+    def is_carrying_blueprint(self) -> bool:
         pass
     
-
-    
     @property
-    def no_active_toggles(self) -> bool:
+    def is_not_carrying_anything(self) -> bool:
         return self.active_toggles == 0
     
     @property
-    def excess_toggles(self) -> bool:
+    def is_carrying_too_much(self) -> bool:
         return self.active_toggles > 1
     
     @property

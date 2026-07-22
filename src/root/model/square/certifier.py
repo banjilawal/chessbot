@@ -93,7 +93,7 @@ class SquareRootCertifier(ModelRootCertifier[SquareBlueprint]):
                 )
             )
         carrier = cast(SquareCarrierToggle, carrier_validation.payload)
-        if carrier.no_active_toggles:
+        if carrier.is_not_carrying_anything:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 SquareCertifierException(
@@ -207,7 +207,7 @@ class SquareRootCertifier(ModelRootCertifier[SquareBlueprint]):
                     formation=formation,
                 )
             )
-        if carrier.is_model_carrier:
+        if carrier.is_carrying_model:
             return ValidationResult.success(
                 Square(
                     id=id,

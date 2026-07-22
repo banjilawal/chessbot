@@ -57,14 +57,14 @@ class ScalarCarrierToggle(EntityCarrierToggle[Scalar]):
     
     @property
     def entity(self) -> [Scalar | ScalarBlueprint | None]:
-        if self.no_active_toggles:
+        if self.is_not_carrying_anything:
             return None
-        if self.is_model_carrier:
+        if self.is_carrying_model:
             return self._model
         return self._blueprint
     
     @property
-    def is_model_carrier(self) -> bool:
+    def is_carrying_model(self) -> bool:
         return (
                 self._model is not None and
                 self._blueprint is None and
@@ -72,7 +72,7 @@ class ScalarCarrierToggle(EntityCarrierToggle[Scalar]):
         )
     
     @property
-    def is_blueprint_carrier(self) -> bool:
+    def is_carrying_blueprint(self) -> bool:
         return (
                 self._model is not None and
                 self._blueprint is None and
@@ -80,8 +80,8 @@ class ScalarCarrierToggle(EntityCarrierToggle[Scalar]):
         )
     
     def extract_blueprint(self) -> Optional[ScalarBlueprint]:
-        if self.no_active_toggles: return None
-        if self.is_blueprint_carrier: return self._blueprint
+        if self.is_not_carrying_anything: return None
+        if self.is_carrying_blueprint: return self._blueprint
         return ScalarBlueprint(
              magnitude=self._model.magnitude,
         )

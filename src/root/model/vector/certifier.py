@@ -114,7 +114,7 @@ class VectorRootCertifier(ModelRootCertifier[Vector]):
             numbers.append(cast(int, validation.payload))
 
         # --- Use the validated numbers to build the appropriate object. ---#
-        if carrier.is_model_carrier:
+        if carrier.is_carrying_model:
             return ValidationResult.success(
                 VectorCarrier(
                     model=Vector(

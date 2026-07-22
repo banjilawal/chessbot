@@ -15,7 +15,7 @@ from carrier import EntityCarrierToggle
 from toggle import Toggle
 
 
-class ToggleEntityCarrier(EntityCarrierToggle[Toggle], ABC):
+class ToggleCarrier(EntityCarrierToggle[Toggle], ABC):
     pass
         
         

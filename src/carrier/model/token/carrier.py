@@ -59,14 +59,14 @@ class TokenCarrierToggle(EntityCarrierToggle[Token]):
     
     @property
     def entity(self) -> [Token | TokenBlueprint | None]:
-        if self.no_active_toggles:
+        if self.is_not_carrying_anything:
             return None
-        if self.is_model_carrier:
+        if self.is_carrying_model:
             return self._model
         return self._blueprint
     
     @property
-    def is_model_carrier(self) -> bool:
+    def is_carrying_model(self) -> bool:
         return (
                 self._model is not None and
                 self._blueprint is None and
@@ -74,7 +74,7 @@ class TokenCarrierToggle(EntityCarrierToggle[Token]):
         )
     
     @property
-    def is_blueprint_carrier(self) -> bool:
+    def is_carrying_blueprint(self) -> bool:
         return (
                 self._model is not None and
                 self._blueprint is None and
@@ -82,8 +82,8 @@ class TokenCarrierToggle(EntityCarrierToggle[Token]):
         )
 
     def extract_blueprint(self) -> Optional[TokenBlueprint]:
-        if self.no_active_toggles: return None
-        if self.is_blueprint_carrier: return self._blueprint
+        if self.is_not_carrying_anything: return None
+        if self.is_carrying_blueprint: return self._blueprint
         return TokenBlueprint(
             id=self._model.id,
             team=self._model.team,

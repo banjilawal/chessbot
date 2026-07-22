@@ -60,7 +60,7 @@ class CoordCarrier(EntityCarrierToggle[Coord]):
         return self._model or self._blueprint
     
     @property
-    def is_model_carrier(self) -> bool:
+    def is_carrying_model(self) -> bool:
         return (
                 self._model is not None and
                 self._blueprint is None and
@@ -68,7 +68,7 @@ class CoordCarrier(EntityCarrierToggle[Coord]):
         )
     
     @property
-    def is_blueprint_carrier(self) -> bool:
+    def is_carrying_blueprint(self) -> bool:
         return (
                 self._model is not None and
                 self._blueprint is None and
@@ -76,8 +76,8 @@ class CoordCarrier(EntityCarrierToggle[Coord]):
         )
 
     def extract_blueprint(self) -> Optional[CoordBlueprint]:
-        if self.no_active_toggles: return None
-        if self.is_blueprint_carrier: return self._blueprint
+        if self.is_not_carrying_anything: return None
+        if self.is_carrying_blueprint: return self._blueprint
         return CoordBlueprint(
             row=self._model.row,
             column=self._model.column,

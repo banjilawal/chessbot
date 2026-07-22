@@ -78,6 +78,21 @@ class VectorToggleBlueprint(ToggleBlueprint[VectorToggle]):
     def enabled_toggles_count(self) -> int:
         return len([self._coord, self._vector])
     
+    @property
+    def for_vector_toggle(self) -> bool:
+        return (
+            self._vector is not None and
+            self._coord is None and
+            isinstance(self._vector, Vector)
+        )
+    
+    @property
+    def for_coord_toggle(self) -> bool:
+        return (
+                not self.for_vector_toggle and
+                isinstance(self._coord, Coord)
+        )
+    
     
     
 

@@ -71,7 +71,7 @@ class VectorToggle(Toggle):
         }
     
     @property
-    def is_coord_selector(self) -> bool:
+    def switched_coord_on(self) -> bool:
         return (
                 self._vector is None and
                 self._coord is not None and
@@ -102,7 +102,7 @@ class VectorToggle(Toggle):
         return False
     
     def _equal_coord_points(self, point: VectorToggle) -> bool:
-        if self.is_coord_selector and point.is_coord_selector:
+        if self.switched_coord_on and point.switched_coord_on:
             return self.entity == point.entity
         return False
     

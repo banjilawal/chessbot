@@ -58,14 +58,14 @@ class IdentityRegisterCarrierToggle(RegisterCarrierToggle[IdentityRegister]):
     
     @property
     def entity(self) -> [IdentityRegister | IdentityRegisterBlueprint | None]:
-        if self.no_active_toggles:
+        if self.is_not_carrying_anything:
             return None
-        if self.is_model_carrier:
+        if self.is_carrying_model:
             return self._blueprint
         return self._blueprint
     
     @property
-    def is_model_carrier(self) -> bool:
+    def is_carrying_model(self) -> bool:
         return (
                 self._model is not None and
                 self._blueprint is None and
@@ -73,16 +73,16 @@ class IdentityRegisterCarrierToggle(RegisterCarrierToggle[IdentityRegister]):
         )
     
     @property
-    def is_blueprint_carrier(self) -> bool:
+    def is_carrying_blueprint(self) -> bool:
         return (
-                not self.is_model_carrier and
+                not self.is_carrying_model and
                 isinstance(self._blueprint, IdentityRegisterBlueprint)
         )
     
     def extract_blueprint(self) -> Optional[IdentityRegisterBlueprint]:
-        if self.no_active_toggles:
+        if self.is_not_carrying_anything:
             return None
-        if self.is_blueprint_carrier:
+        if self.is_carrying_blueprint:
             return self._blueprint
         return IdentityRegisterBlueprint(
             id=self._model.id,

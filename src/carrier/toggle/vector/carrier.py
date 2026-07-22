@@ -1,7 +1,7 @@
-# src/selector/vector/selector.py
+# src/toggle/vector/toggle.py
 
 """
-Module: selector.vector.selector
+Module: toggle.vector.toggle
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -12,12 +12,12 @@ from typing import Any, Dict, Optional, cast
 
 from blueprint import VectorToggleBlueprint
 from carrier.register.vector.carrier import VectorRegisterCarrierToggle
-from carrier.toggle.carrier import ToggleEntityCarrier
+from carrier.toggle.carrier import ToggleCarrier
 from model import Coord, Vector
 from toggle import Toggle, VectorToggle
 
 
-class VectorToggleCarrier(ToggleEntityCarrier[VectorToggle]):
+class VectorToggleCarrier(ToggleCarrier[VectorToggle]):
     """
     Role:
         -   Selection
@@ -25,10 +25,10 @@ class VectorToggleCarrier(ToggleEntityCarrier[VectorToggle]):
         -   Data-Holder
 
     Responsibilities:
-        1.  Picks selector a
+        1.  Picks toggle a
                 -   Coord: Geometric quantity
                 -   Vector: Linear Vector
-            as an selector for multiplication, conversion or simple addition.
+            as an toggle for multiplication, conversion or simple addition.
 
     Attributes:
         vector: Optional[Vector]
@@ -42,7 +42,7 @@ class VectorToggleCarrier(ToggleEntityCarrier[VectorToggle]):
         -   _equal_vector_points(point: Point) -> bool
         -  _equal_coord_points(self, point: Point) -> bool
     Super Class:
-        Selector
+        Toggle
     """
     _model: Optional[VectorToggle]
     _blueprint: Optional[VectorToggleBlueprint]
@@ -63,14 +63,14 @@ class VectorToggleCarrier(ToggleEntityCarrier[VectorToggle]):
     
     @property
     def entity(self) -> [VectorToggle | VectorToggleBlueprint | None]:
-        if self.no_active_toggles:
+        if self.is_not_carrying_anything:
             return None
-        if self.is_model_carrier:
+        if self.is_carrying_model:
             return self._model
         return self._blueprint
     
     @property
-    def is_model_carrier(self) -> bool:
+    def is_carrying_model(self) -> bool:
         return (
                 self._model is not None and
                 self._blueprint is None and
@@ -78,21 +78,20 @@ class VectorToggleCarrier(ToggleEntityCarrier[VectorToggle]):
         )
     
     @property
-    def is_blueprint_carrier(self) -> bool:
+    def is_carrying_blueprint(self) -> bool:
         return (
-                not self.is_model_carrier and
+                not self.is_carrying_model and
                 isinstance(self._blueprint, VectorToggleBlueprint)
         )
     
     def extract_blueprint(self) -> Optional[VectorToggleBlueprint]:
-        if self.no_active_toggles:
+        if self.is_not_carrying_anything:
             return None
-        if self.is_blueprint_carrier:
+        if self.is_carrying_blueprint:
             return self._blueprint
-        return VectorToggleBlueprint(
-            coord=self._model.coord,
-            vector=self._model.vector,
-        )
+        if self._model.switched_coord_on:
+            return VectorToggleBlueprint(coord=self._model.entity)
+        return VectorToggleBlueprint(vector=self._model.entity)
     
     def to_dict(self) -> Dict[str, Any]:
         return {

@@ -15,7 +15,7 @@ from typing import Type
 from blueprint import TokenBlueprint
 from carrier import TokenCarrierToggle
 from detector import TokenHomeDetector
-from err import TokenBlueprintNullException, TokenCarrierNullException, TokenNullException
+from err import TokenBlueprintNullException, TokenNullException
 from model import Token
 from tester import BlueprintHomeSquareExtractor, BlueprintRankExtractor
 from toolkit import StateModelToolkit
@@ -53,13 +53,25 @@ class TokenToolkit(StateModelToolkit[Token]):
     Super Class:
        ModelToolkit
     """
-    model: Type[Token] = Token
-    carrier_model: Type[TokenCarrierToggle] = TokenCarrierToggle
-    blueprint_model: Type[TokenBlueprint] = TokenBlueprint
+    model: Type[Token] = (
+        Token
+    )
+    carrier_model: Type[TokenCarrierToggle] = (
+        TokenCarrierToggle
+    )
+    blueprint_model: Type[TokenBlueprint] = (
+        TokenBlueprint
+    )
     
-    null_exception: TokenNullException = TokenNullException()
-    carrier_null_exception: TokenCarrierNullException = TokenCarrierNullException()
-    blueprint_null_exception: TokenBlueprintNullException = TokenBlueprintNullException()
+    null_exception: TokenNullException = (
+        TokenNullException()
+    )
+    carrier_null_exception: TokenCarrierNullException = (
+        TokenCarrierNullException()
+    )
+    blueprint_null_exception: TokenBlueprintNullException = (
+        TokenBlueprintNullException()
+    )
     
     team_validator: TeamValidator = TeamValidator()
     home_detector: TokenHomeDetector = TokenHomeDetector()
