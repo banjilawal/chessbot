@@ -17,7 +17,9 @@ from register import VectorToggleRegister
 from toggle import VectorToggle
 
 
-class VectorToggleRegisterBlueprint(RegisterBlueprint[VectorToggleRegister]):
+class VectorToggleRegisterBlueprint(
+    RegisterBlueprint[VectorToggleRegister]
+):
     """
     Role:
         -   Container

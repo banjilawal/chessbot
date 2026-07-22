@@ -10,7 +10,7 @@ version: 1.0.1
 from __future__ import annotations
 
 from abc import abstractmethod
-from typing import Any, Generic, TypeVar
+from typing import Any, Generic, TypeVar, cast
 
 from root import RegisterRootCertifier
 from result import ValidationResult
@@ -38,19 +38,13 @@ class RegisterValidator(Validator, Generic[T]):
     Super Class:
         Validator
     """
-    _root_certifier: RegisterRootCertifier[T]
     
-    def __init__(self, root_certifier: RegisterRootCertifier[T]):
-        self._root_certifier = root_certifier
-        # super().__init__(root_certifier=root_certifier)
+    def __init__(self, root_certifier: [RegisterRootCertifier[T]]):
+        super().__init__(root_certifier=root_certifier)
     
     @property
     def root_certifier(self) -> RegisterRootCertifier:
-        return self._root_certifier
-    
-    # @property
-    # def root_certifier(self) -> RegisterRootCertifier:
-    #     return cast(RegisterRootCertifier[T], self.root_certifier)
+        return cast(RegisterRootCertifier[T], super().root_certifier)
     
     @abstractmethod
     def execute(self, candidate: Any) -> ValidationResult[T]:

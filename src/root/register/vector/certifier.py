@@ -8,23 +8,25 @@ version: 1.0.1
 """
 
 from __future__ import annotations
-from typing import Any, List, Type, cast
+from typing import List, cast
 
 from blueprint import VectorToggleRegisterBlueprint
-from carrier import TokenCarrierToggle, VectorToggleRegisterCarrier
+from carrier import VectorToggleRegisterCarrier
 from err import (
-    RegisterEmptyException, RegisterException, RegisterSizeException, VectorToggleRegisterCertifierException,
+    RegisterEmptyException, RegisterSizeException, VectorToggleRegisterCertifierException,
     VectorToggleRegisterMismatchException
 )
-from root import RootCertifier
 from register import VectorToggleRegister
 from result import MethodResultType, ValidationResult
+from root import RootCertifier
 from toggle import VectorToggle
-from toolkit.register import VectorToggleRegisterToolkit
+from toolkit import VectorToggleRegisterToolkit
 from util import LoggingLevelRouter
 
 
-class VectorToggleRegisterCertifier(RootCertifier[VectorToggleRegister]):
+class VectorToggleRegisterCertifier(
+    RootCertifier[VectorToggleRegister]
+):
     """
     Role
         -   Integrity Maintenance
@@ -61,7 +63,7 @@ class VectorToggleRegisterCertifier(RootCertifier[VectorToggleRegister]):
         return cast(VectorToggleRegisterToolkit, super().toolkit)
     
     @LoggingLevelRouter.monitor
-    def execute(self, candidate, Any) -> ValidationResult:
+    def execute(self, candidate, Any) -> ValidationResult[VectorToggleRegister]:
         """
         Certify a candidate is a VectorToggleRegisterBlueprint that is safe to use.
 

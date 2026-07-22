@@ -64,22 +64,3 @@ class VectorToggleRegisterToolkit(RegisterToolkit[VectorToggle]):
     
 
     vector_toggle_validator: VectorToggleValidator = VectorToggleValidator()
-
-
-    #
-    # @property
-    # def (self) -> Type[VectorToggle]:
-    #     return Type[VectorToggleRegister]
-    #
-    # @property
-    # def null_exception(self) -> VectorToggleRegisterNullException:
-    #     return VectorToggleRegisterNullException()
-    #
-    # @property
-    # def blueprint_(self) -> VectorToggleRegisterBlueprint:
-    #     return Type[VectorToggleRegisterBlueprint]
-    #
-    # @property
-    # def blueprint_null_exception(self) -> VectorToggleRegisterBlueprintNullException:
-    #     return VectorToggleRegisterBlueprintNullException()
-    
