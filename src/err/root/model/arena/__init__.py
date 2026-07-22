@@ -1,13 +1,13 @@
-# src/err/root/arena/__init__.py
+# src/err/root/model/arena/__init__.py
 
 """
-Module: err.root.arena.__init__
+Module: err.root.model.arena.__init__
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
 """
 
-# =========== ERR.ROOT.ARENA PACKAGE ===========#
+# =========== ERR.ROOT.MODEL.ARENA PACKAGE ===========#
 
 # Packages
 

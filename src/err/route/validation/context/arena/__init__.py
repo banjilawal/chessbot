@@ -1,13 +1,13 @@
 # src/err/route/validation/context/arena/__init__.py
 
 """
-Module: err.route.validation.context.arena.__init__
+Module: err.route.validation.arena.__init__
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
 """
 
-# =========== ERR.ROUTE.VALIDATION.CONTEXT.ARENA PACKAGE ===========#
+# =========== ERR.ROUTE.VALIDATION.ARENA PACKAGE ===========#
 
 # Packages
 

@@ -1,7 +1,7 @@
-# src/err/root/token/home/exception.py
+# src/err/root/model/token/home/exception.py
 
 """
-Module: err.root.token.home.exception
+Module: err.root.model.token.home.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1

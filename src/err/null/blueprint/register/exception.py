@@ -1,24 +1,24 @@
 # src/err/null/blueprint/register/exception.py
 
 """
-Module: err.null.register.exception
+Module: err.null.blueprint.register.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
 """
 
 from __future__ import annotations
+
 from typing import Any, Optional
 
+from err import RegisterBlueprintNullException
+from result import MethodResultType
 
 
 __all__ = [
     # ======================# REGISTER_BLUEPRINT_NULL_ERROR #======================#
     "RegisterBlueprintNullException",
 ]
-
-from err import BlueprintNullException
-
 
 # ======================# REGISTER_BLUEPRINT_NULL_ERROR #======================#
 class RegisterBlueprintNullException(BlueprintNullException):

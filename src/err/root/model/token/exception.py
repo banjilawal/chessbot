@@ -1,7 +1,7 @@
-# src/err/root/token/exception.py
+# src/err/root/model/token/exception.py
 
 """
-Module: err.root.token.exception
+Module: err.root.model.token.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import RootCertifierException
+from err import ModelRootCertifierException
 from result import MethodResultType
 
 
@@ -21,7 +21,7 @@ __all__ = [
 ]
 
 # ======================# TOKEN_ROOT_CERTIFIER_FAILURE #======================#
-class TokenRootCertifierException(RootCertifierException):
+class TokenRootCertifierException(ModelRootCertifierException):
     """
     Role:
         -   Error Tracing
@@ -42,7 +42,7 @@ class TokenRootCertifierException(RootCertifierException):
     Provides:
 
     Super Class:
-        RootCertifierException
+        ModelRootCertifierException
     """
     MSG = "Token root certification failure."
     ERR_CODE = "TOKEN_ROOT_CERTIFIER_FAILURE"

@@ -1,13 +1,13 @@
 # src/err/route/validation/context/game/__init__.py
 
 """
-Module: err.route.validation.context.game.__init__
+Module: err.route.validation.game.__init__
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
 """
 
-# =========== ERR.ROUTE.VALIDATION.CONTEXT.GAME PACKAGE ===========#
+# =========== ERR.ROUTE.VALIDATION.GAME PACKAGE ===========#
 
 # Packages
 

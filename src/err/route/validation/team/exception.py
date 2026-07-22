@@ -10,16 +10,16 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import ValidationRouteException
+from err import NoValidationRouteException
 
 
 __all__ = [
     # ======================# TEAM_VALIDATION_ROUTE #======================#
-    "TeamValidationRouteException",
+    "TeamNoValidationRouteException",
 ]
 
 # ======================# TEAM_VALIDATION_ROUTE #======================#
-class TeamValidationRouteException(ValidationRouteException):
+class TeamNoValidationRouteException(NoValidationRouteException):
     """
     Role:
         -   Error Tracing

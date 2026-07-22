@@ -11,14 +11,15 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from err import ToggleValidatorException
+from result import MethodResultType
 
 _all_ = [
-    # ======================# EXCESS_TOGGLES_ERROR #======================#
+    # ======================# EXCESSIVE_TOGGLE_ACTIVATION_ERROR #======================#
     "ExcessToggleFlagsException",
 ]
 
-# ======================# EXCESS_TOGGLES_ERROR #======================#
-class ExcessTogglesException(ToggleValidatorException):
+# ======================# EXCESSIVE_TOGGLE_ACTIVATION_ERROR #======================#
+class ExcessToggleActivationException(ToggleValidatorException):
     """
     Role:
         -   Error Tracing
@@ -40,8 +41,8 @@ class ExcessTogglesException(ToggleValidatorException):
     Super Class:
         ToggleValidatorException
     """
-    MSG = "Too many toggles are enabled."
-    ERR_CODE = "EXCESS_TOGGLES_ERROR"
+    MSG = "Too many Toggle switches are enabled."
+    ERR_CODE = "EXCESSIVE_TOGGLE_ACTIVATION_ERROR"
     
     def __init__(
             self,

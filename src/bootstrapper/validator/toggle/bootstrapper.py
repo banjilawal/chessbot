@@ -11,7 +11,7 @@ from __future__ import annotations
 from typing import Any, Type, cast
 from typing_extensions import TypeVar
 
-from err import ExcessTogglesException, NullException, ToggleValidatorException, NoActiveTogglesException
+from err import ExcessToggleActivationException, NullException, ToggleValidatorException, NoActiveTogglesException
 from result import ValidationResult
 from util import LoggingLevelRouter
 
@@ -128,9 +128,9 @@ class EntityCarrierToggleValidator:
                     cls_name=self.__class__.__name__,
                     msg=ToggleValidatorException.MSG,
                     err_code=ToggleValidatorException.ERR_CODE,
-                    ex=ExcessTogglesException(
-                        msg=ExcessTogglesException.MSG,
-                        err_code=ExcessTogglesException.ERR_CODE,
+                    ex=ExcessToggleActivationException(
+                        msg=ExcessToggleActivationException.MSG,
+                        err_code=ExcessToggleActivationException.ERR_CODE,
                     ),
                 )
             )

@@ -1,7 +1,7 @@
 # src/err/route/validation/context/exception.py
 
 """
-Module: err.route.validation.context.exception
+Module: err.route.validation.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,16 +10,16 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import ValidationRouteException
+from err import NoValidationRouteException
 
 
 __all__ = [
     # ======================# CONTEXT_VALIDATION_ROUTE #======================#
-    "ContextValidationRouteException",
+    "ContextNoValidationRouteException",
 ]
 
 # ======================# CONTEXT_VALIDATION_ROUTE #======================#
-class ContextValidationRouteException(ValidationRouteException):
+class ContextNoValidationRouteException(NoValidationRouteException):
     """
     Role:
         -   Error Tracing

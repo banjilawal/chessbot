@@ -30,7 +30,7 @@ class Toggle(ABC):
         return self.active_toggles == 0
     
     @property
-    def excess_toggles(self) -> bool:
+    def excess_active_toggles(self) -> bool:
         return self.active_toggles > self._max_enabled_toggles
     
     @property

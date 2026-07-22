@@ -1,33 +1,33 @@
 # src/err/null/blueprint/register/exception.py
 
 """
-Module: err.null.register.exception
+Module: err.null.blueprint.register.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
 """
 
 from __future__ import annotations
+
 from typing import Any, Optional
 
+from err import RegisterBlueprintNullException
+from result import MethodResultType
 
 
 __all__ = [
-    # ======================# VECTOR_IDENTITY_REGISTER_BLUEPRINT_NULL_ERROR #======================#
+    # ======================# IDENTITY_REGISTER_BLUEPRINT_NULL_ERROR #======================#
     "IdentityRegisterBlueprintNullException",
 ]
 
-from err import RegisterBlueprintNullException
-
-
-# ======================# VECTOR_IDENTITY_REGISTER_BLUEPRINT_NULL_ERROR #======================#
+# ======================# IDENTITY_REGISTER_BLUEPRINT_NULL_ERROR #======================#
 class IdentityRegisterBlueprintNullException(RegisterBlueprintNullException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required VectorIdentityRegister is null.
+        1.  Indicate that a required IdentityRegister is null.
 
     Cannot Be Null.s:
             msg: Optional[str]
@@ -44,8 +44,8 @@ class IdentityRegisterBlueprintNullException(RegisterBlueprintNullException):
     Super Class:
         RegisterBlueprintNullException
     """
-    MSG = "VectorIdentityRegister cannot be null."
-    ERR_CODE = "VECTOR_IDENTITY_REGISTER_BLUEPRINT_NULL_ERROR"
+    MSG = "IdentityRegister cannot be null."
+    ERR_CODE = "IDENTITY_REGISTER_BLUEPRINT_NULL_ERROR"
     
     def __init__(
             self,

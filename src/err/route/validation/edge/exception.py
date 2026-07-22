@@ -10,16 +10,16 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import ValidationRouteException
+from err import NoValidationRouteException
 
 
 __all__ = [
     # ======================# EDGE_VALIDATION_ROUTE #======================#
-    "EdgeValidationRouteException",
+    "EdgeNoValidationRouteException",
 ]
 
 # ======================# EDGE_VALIDATION_ROUTE #======================#
-class EdgeValidationRouteException(ValidationRouteException):
+class EdgeNoValidationRouteException(NoValidationRouteException):
     """
     Role:
         -   Error Tracing

@@ -1,7 +1,7 @@
-# src/err/root/coord/exception.py
+# src/err/root/model/coord/exception.py
 
 """
-Module: err.root.coord.exception
+Module: err.root.model.coord.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import RootCertifierException
+from err import ModelRootCertifierException
 from result import MethodResultType
 
 
@@ -21,7 +21,7 @@ __all__ = [
 ]
 
 # ======================# COORD_ROOT_CERTIFIER_FAILURE #======================#
-class CoordRootCertifierException(RootCertifierException):
+class CoordRootCertifierException(ModelRootCertifierException):
     """
     Role:
         -   Error Tracing
@@ -42,7 +42,7 @@ class CoordRootCertifierException(RootCertifierException):
     Provides:
 
     Super Class:
-        RootCertifierException
+        ModelRootCertifierException
     """
     MSG = "Coord root certification failure."
     ERR_CODE = "COORD_ROOT_CERTIFIER_FAILURE"

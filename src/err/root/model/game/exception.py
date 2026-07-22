@@ -1,7 +1,7 @@
-# src/err/root/game/exception.py
+# src/err/root/model/game/exception.py
 
 """
-Module: err.root.game.exception
+Module: err.root.model.game.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import RootCertifierException
+from err import ModelRootCertifierException
 from result import MethodResultType
 
 
@@ -21,7 +21,7 @@ __all__ = [
 ]
 
 # ======================# GAME_ROOT_CERTIFIER_FAILURE #======================#
-class GameRootCertifierException(RootCertifierException):
+class GameRootCertifierException(ModelRootCertifierException):
     """
     Role:
         -   Error Tracing
@@ -42,7 +42,7 @@ class GameRootCertifierException(RootCertifierException):
     Provides:
 
     Super Class:
-        RootCertifierException
+        ModelRootCertifierException
     """
     MSG = "Game root certification failure."
     ERR_CODE = "GAME_ROOT_CERTIFIER_FAILURE"

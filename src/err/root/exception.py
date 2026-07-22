@@ -43,7 +43,7 @@ class RootCertifierException(ChessException):
     Super Class:
         ChessException
     """
-    MSG = " root certification failure."
+    MSG = "Root certification failure."
     ERR_CODE = "ROOT_CERTIFIER_FAILURE"
     MTHD_RSLT_TYPE = MethodResultType.VALIDATION_RESULT
     

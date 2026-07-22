@@ -1,7 +1,7 @@
-# src/err/root/team/exception.py
+# src/err/root/model/team/exception.py
 
 """
-Module: err.root.team.exception
+Module: err.root.model.team.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import RootCertifierException
+from err import ModelRootCertifierException
 from result import MethodResultType
 
 
@@ -21,7 +21,7 @@ __all__ = [
 ]
 
 # ======================# TEAM_ROOT_CERTIFIER_FAILURE #======================#
-class TeamRootCertifierException(RootCertifierException):
+class TeamRootCertifierException(ModelRootCertifierException):
     """
     Role:
         -   Error Tracing
@@ -42,7 +42,7 @@ class TeamRootCertifierException(RootCertifierException):
     Provides:
 
     Super Class:
-        RootCertifierException
+        ModelRootCertifierException
     """
     MSG = "Team root certification failure."
     ERR_CODE = "TEAM_ROOT_CERTIFIER_FAILURE"

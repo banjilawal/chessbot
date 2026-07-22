@@ -1,7 +1,7 @@
-# src/err/root/square/exception.py
+# src/err/root/model/square/exception.py
 
 """
-Module: err.root.square.exception
+Module: err.root.model.square.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import RootCertifierException
+from err import ModelRootCertifierException
 from result import MethodResultType
 
 
@@ -21,7 +21,7 @@ __all__ = [
 ]
 
 # ======================# SQUARE_ROOT_CERTIFIER_FAILURE #======================#
-class SquareRootCertifierException(RootCertifierException):
+class SquareRootCertifierException(ModelRootCertifierException):
     """
     Role:
         -   Error Tracing
@@ -42,7 +42,7 @@ class SquareRootCertifierException(RootCertifierException):
     Provides:
 
     Super Class:
-        RootCertifierException
+        ModelRootCertifierException
     """
     MSG = "Square root certification failure."
     ERR_CODE = "SQUARE_ROOT_CERTIFIER_FAILURE"

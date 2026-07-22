@@ -1,24 +1,24 @@
 # src/err/null/blueprint/register/exception.py
 
 """
-Module: err.null.register.exception
+Module: err.null.blueprint.register.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
 """
 
 from __future__ import annotations
+
 from typing import Any, Optional
 
+from err import RegisterBlueprintNullException
+from result import MethodResultType
 
 
 __all__ = [
     # ======================# VECTOR_SQUARE_REGISTER_BLUEPRINT_NULL_ERROR #======================#
     "SquareRegisterBlueprintNullException",
 ]
-
-from err import RegisterBlueprintNullException
-
 
 # ======================# VECTOR_SQUARE_REGISTER_BLUEPRINT_NULL_ERROR #======================#
 class SquareRegisterBlueprintNullException(RegisterBlueprintNullException):
@@ -27,7 +27,7 @@ class SquareRegisterBlueprintNullException(RegisterBlueprintNullException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required VectorSquareRegister is null.
+        1.  Indicate that a required SquareRegister is null.
 
     Cannot Be Null.s:
             msg: Optional[str]
@@ -44,8 +44,8 @@ class SquareRegisterBlueprintNullException(RegisterBlueprintNullException):
     Super Class:
         RegisterBlueprintNullException
     """
-    MSG = "VectorSquareRegister cannot be null."
-    ERR_CODE = "VECTOR_SQUARE_REGISTER_BLUEPRINT_NULL_ERROR"
+    MSG = "SquareRegister cannot be null."
+    ERR_CODE = "SQUARE_REGISTER_BLUEPRINT_NULL_ERROR"
     
     def __init__(
             self,

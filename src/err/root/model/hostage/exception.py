@@ -1,7 +1,7 @@
-# src/err/root/hostage/exception.py
+# src/err/root/model/hostage/exception.py
 
 """
-Module: err.root.hostage.exception
+Module: err.root.model.hostage.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import RootCertifierException
+from err import ModelRootCertifierException
 from result import MethodResultType
 
 
@@ -21,7 +21,7 @@ __all__ = [
 ]
 
 # ======================# HOSTAGE_ROOT_CERTIFIER_FAILURE #======================#
-class HostageRootCertifierException(RootCertifierException):
+class HostageRootCertifierException(ModelRootCertifierException):
     """
     Role:
         -   Error Tracing
@@ -42,7 +42,7 @@ class HostageRootCertifierException(RootCertifierException):
     Provides:
 
     Super Class:
-        RootCertifierException
+        ModelRootCertifierException
     """
     MSG = "Hostage root certification failure."
     ERR_CODE = "HOSTAGE_ROOT_CERTIFIER_FAILURE"

@@ -11,8 +11,7 @@ from __future__ import annotations
 from typing import Any, cast
 
 
-from err import ExcessTogglesException, NoActiveTogglesException
-from err.route.validation.node.exception import NoValidationRouteException
+from err import ExcessToggleActivationException, NoActiveTogglesException
 from root import ToggleRootCertifier
 from result import ValidationResult
 from toggle import VectorToggle
@@ -23,81 +22,75 @@ from util import LoggingLevelRouter
 class VectorToggleRootCertifier(ToggleRootCertifier[VectorToggle]):
     """
     Role
-        -   Transaction Worker
         -   Integrity Maintenance
         -   Consistency Assurance
-        -   Validation Process Owner
+
 
     Responsibilities:
-        1.  Ensure a VectorToggle instance is certified safe, reliable and consistent
-            before use.
+        1.  Ensure a VectorToggleBlueprint instance is certified safe, reliable and consistent before use.
 
     Attributes:
+        toolkit: VectorToggleToolkit
 
-    Properties:
-        -   def validate(
-                    candidate: Any,
-                    toolkit : VectorToggleToolkit,
-            ) -> ValidationResult[VectorToggle]:
+    Provides:
+        -   execute(self, candidate: Any) -> ValidationResult:
 
     Super Class:
-        ModelValidator
+        Certifier
     """
     
-    def __init__(
-            self,
-            toolkit: VectorToggleToolkit = VectorToggleToolkit(),
-    ):
+    def __init__(self, toolkit: VectorToggleToolkit | None = VectorToggleToolkit()):
+        """
+        Args:
+            toolkit: VectorToggleToolkit
+        """
         super().__init__(toolkit=toolkit)
-        
+    
     @property
     def toolkit(self) -> VectorToggleToolkit:
         return cast(VectorToggleToolkit, super().toolkit)
     
-    
     @LoggingLevelRouter.monitor
-    def execute(self, candidate: Any) -> ValidationResult[VectorToggle]:
+    def execute(self, candidate, Any) -> ValidationResult:
         """
-        Verify the candidate is a safe VectorToggle.
+        Certify a candidate is a VectorToggleBlueprint that is safe to use.
 
         Action:
-            1.  Send an exception in the ValidationResult any of these
-                conditions occur.
-                    -   candidate is null.
-                    -   It's not a VectorToggle.
-                    -   The vectorToggle's payload is flagged unsafe.
-            3.  Otherwise, Send the success result.
+            1.  Send an exception chain in the ValidationResult if any of the following
+                occur
+                    -   The candidate is not a VectorToggleDtoCarrier.
+                    -   The candidate is an empty VectorToggleDtoCarrier.
+                    -   Either the board, team, formation, rank or id get flagged unsafe.
+            2.  For a model_carrier send a VectorToggle in the success result. Otherwise, send a TokeBlueprint.
         Args:
-            candidate: Any
-            toolkit : VectorToggleToolkit
+            candidate, Any
         Returns:
-            ValidationResult[VectorToggle]
+            ValidationResult
         Raises:
-            TypeError
-            VectorToggleNullException
-            ZeroVectorToggleFlagsException
-            VectorToggleRootCertifierException
-            ExcessVectorToggleFlagsException
+            VectorToggleCertifierException
+            VectorToggleDtoCarrierNullException
         """
-        method = f"{self.__class__.__name__}.validate"
+        method = f"{self.__class__.__name__}.execute"
         
-        bootstrap = self.toolkit.priming_validator.execute(
+        carrier_validation = self.model_carrier_validator.execute(
             candidate=candidate,
-            target_model=self.toolkit.model,
-            model_null_exception=self.toolkit.null_exception,
+            target_model=self.toolkit.carrier_model,
+            model_null_exception=self.toolkit.carrier_null_exception,
         )
-        if bootstrap.is_failure:
+        if carrier_validation.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                VectorToggleRootCertifierException(
+                VectorToggleRooteCertifierException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
                     msg=VectorToggleRootCertifierException.MSG,
                     err_code=VectorToggleRootCertifierException.ERR_CODE,
-                    ex=bootstrap.exception
+                    ex=carrier_validation.exception,
                 )
             )
-        # --- Cast candidate to a VectorToggle for additional tests. ---#
+        carrier = cast(self.toolkit.carrier_model, carrier_validation.payload)
+        
+        # --- Cast the candidate into a VectorToggleBlueprint for additional tests. ---#
         toggle = cast(self.toolkit.model, candidate)
         
         # Handle the case that neither option is enabled.
@@ -116,7 +109,7 @@ class VectorToggleRootCertifier(ToggleRootCertifier[VectorToggle]):
                 )
             )
         # Handle the case that, both options are enabled.
-        if toggle.excess_toggles:
+        if toggle.excess_active_toggles:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 VectorToggleRootCertifierException(
@@ -124,14 +117,14 @@ class VectorToggleRootCertifier(ToggleRootCertifier[VectorToggle]):
                     cls_name=self.__class__.__name__,
                     msg=VectorToggleRootCertifierException.MSG,
                     err_code=VectorToggleRootCertifierException.ERR_CODE,
-                    ex=ExcessTogglesException(
-                        msg=ExcessTogglesException.MSG,
-                        err_code=ExcessTogglesException.ERR_CODE,
+                    ex=ExcessToggleActivationException(
+                        msg=ExcessToggleActivationException.MSG,
+                        err_code=ExcessToggleActivationException.ERR_CODE,
                     )
                 )
             )
         # Pick a route for integrity testing the toggle's entity.
-        validation_result = ValidationResult.failure(NoValidationRouteException())
+        validation_result = ValidationResult.failure(NodeNoValidationRouteException())
         if toggle.is_coord_selector:
             validation_result = self.toolkit.coord.validator.execute(toggle.entity)
         if toggle.is_vector_selector:

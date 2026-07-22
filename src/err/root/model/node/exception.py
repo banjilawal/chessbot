@@ -1,7 +1,7 @@
-# src/err/root/node/exception.py
+# src/err/root/model/node/exception.py
 
 """
-Module: err.root.node.exception
+Module: err.root.model.node.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import RootCertifierException
+from err import ModelRootCertifierException
 from result import MethodResultType
 
 
@@ -21,7 +21,7 @@ __all__ = [
 ]
 
 # ======================# NODE_ROOT_CERTIFIER_FAILURE #======================#
-class NodeRootCertifierException(RootCertifierException):
+class NodeRootCertifierException(ModelRootCertifierException):
     """
     Role:
         -   Error Tracing
@@ -42,7 +42,7 @@ class NodeRootCertifierException(RootCertifierException):
     Provides:
 
     Super Class:
-        RootCertifierException
+        ModelRootCertifierException
     """
     MSG = "Node root certification failure."
     ERR_CODE = "NODE_ROOT_CERTIFIER_FAILURE"

@@ -1,7 +1,7 @@
 # src/err/route/validation/context/player/exception.py
 
 """
-Module: err.route.validation.context.player.exception
+Module: err.route.validation.player.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,7 +10,7 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import ValidationRouteException
+from err import NoValidationRouteException
 
 
 __all__ = [
@@ -18,11 +18,11 @@ __all__ = [
     "PlayerContextValidationRouteException",
 ]
 
-from err import ContextValidationRouteException
+from err import ContextNoValidationRouteException
 
 
 # ======================# PLAYER_CONTEXT_VALIDATION_ROUTE #======================#
-class PlayerContextValidationRouteException(ContextValidationRouteException):
+class PlayerContextValidationRouteException(ContextNoValidationRouteException):
     """
     Role:
         -   Error Tracing

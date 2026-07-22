@@ -13,6 +13,7 @@ from dataclasses import dataclass
 from typing import Type
 
 from blueprint import VectorToggleBlueprint
+from carrier.toggle.vector.toggle import VectorToggleCarrier
 from err import VectorToggleNullException
 from suite import  CoordOperationSuite, VectorOperationSuite
 from toggle import VectorToggle
@@ -46,6 +47,7 @@ class VectorToggleToolkit(ToggleToolkit[VectorToggle]):
     """
     model: Type[VectorToggle] = VectorToggle
     blueprint_toggle: Type[VectorToggleBlueprint] = VectorToggleBlueprint
+    carrier_model = Type[VectorToggleCarrier] = VectorToggleCarrier
     
     null_exception: VectorToggleNullException = VectorToggleNullException()
     blueprint_null_exception: VectorToggleBlueprintNullException = VectorToggleBlueprintNullException()

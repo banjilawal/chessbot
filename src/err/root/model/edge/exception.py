@@ -1,7 +1,7 @@
-# src/err/root/edge/exception.py
+# src/err/root/model/edge/exception.py
 
 """
-Module: err.root.edge.exception
+Module: err.root.model.edge.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import RootCertifierException
+from err import ModelRootCertifierException
 from result import MethodResultType
 
 
@@ -21,7 +21,7 @@ __all__ = [
 ]
 
 # ======================# EDGE_ROOT_CERTIFIER_FAILURE #======================#
-class EdgeRootCertifierException(RootCertifierException):
+class EdgeRootCertifierException(ModelRootCertifierException):
     """
     Role:
         -   Error Tracing
@@ -42,7 +42,7 @@ class EdgeRootCertifierException(RootCertifierException):
     Provides:
 
     Super Class:
-        RootCertifierException
+        ModelRootCertifierException
     """
     MSG = "Edge root certification failure."
     ERR_CODE = "EDGE_ROOT_CERTIFIER_FAILURE"

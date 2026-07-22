@@ -8,8 +8,11 @@ version: 1.0.1
 """
 
 from __future__ import annotations
+
 from typing import Any, Optional
 
+From Err Import BlueprintNullException
+From Result Import MethodResultType
 from err import NullException
 from result import MethodResultType
 

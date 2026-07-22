@@ -1,7 +1,7 @@
-# src/err/root/rank/exception.py
+# src/err/root/model/rank/exception.py
 
 """
-Module: err.root.rank.exception
+Module: err.root.model.rank.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import RootCertifierException
+from err import ModelRootCertifierException
 from result import MethodResultType
 
 
@@ -21,7 +21,7 @@ __all__ = [
 ]
 
 # ======================# RANK_ROOT_CERTIFIER_FAILURE #======================#
-class RankRootCertifierException(RootCertifierException):
+class RankRootCertifierException(ModelRootCertifierException):
     """
     Role:
         -   Error Tracing
@@ -42,7 +42,7 @@ class RankRootCertifierException(RootCertifierException):
     Provides:
 
     Super Class:
-        RootCertifierException
+        ModelRootCertifierException
     """
     MSG = "Rank root certification failure."
     ERR_CODE = "RANK_ROOT_CERTIFIER_FAILURE"

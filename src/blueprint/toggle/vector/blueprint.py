@@ -66,5 +66,18 @@ class VectorToggleBlueprint(ToggleBlueprint[VectorToggle]):
     def vector(self) -> Optional[Vector]:
         return self._vector
     
+    @property
+    def excess_active_toggles(self) -> bool:
+        return self.enabled_toggles_count > self.max_enabled_toggles
+    
+    @property
+    def no_active_toggles(self) -> bool:
+        return self.enabled_toggles_count == 0
+    
+    @property
+    def enabled_toggles_count(self) -> int:
+        return len([self._coord, self._vector])
+    
+    
     
 

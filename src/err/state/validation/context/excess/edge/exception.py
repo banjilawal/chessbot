@@ -10,7 +10,7 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import ExcessTogglesException
+from err import ExcessToggleActivationException
 
 _all_ = [
     # ======================# EXCESS_EDGE_CONTEXT_FLAGS_EXCEPTION #======================#
@@ -18,7 +18,7 @@ _all_ = [
 ]
 
 # ======================# EXCESS_EDGE_CONTEXT_FLAGS_EXCEPTION #======================#
-class ExcessEdgeTogglesException(ExcessTogglesException):
+class ExcessEdgeToggleActivationException(ExcessToggleActivationException):
     """
     Role:
         -   Error Tracing

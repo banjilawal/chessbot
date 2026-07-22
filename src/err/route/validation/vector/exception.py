@@ -10,16 +10,16 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import ValidationRouteException
+from err import NoValidationRouteException
 
 
 __all__ = [
     # ======================# VECTOR_VALIDATION_ROUTE #======================#
-    "VectorValidationRouteException",
+    "VectorNoValidationRouteException",
 ]
 
 # ======================# VECTOR_VALIDATION_ROUTE #======================#
-class VectorValidationRouteException(ValidationRouteException):
+class VectorNoValidationRouteException(NoValidationRouteException):
     """
     Role:
         -   Error Tracing

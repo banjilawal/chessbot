@@ -10,16 +10,16 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import ValidationRouteException
+from err import NoValidationRouteException
 
 
 __all__ = [
     # ======================# SCALAR_VALIDATION_ROUTE #======================#
-    "ScalarValidationRouteException",
+    "ScalarNoValidationRouteException",
 ]
 
 # ======================# SCALAR_VALIDATION_ROUTE #======================#
-class ScalarValidationRouteException(ValidationRouteException):
+class ScalarNoValidationRouteException(NoValidationRouteException):
     """
     Role:
         -   Error Tracing

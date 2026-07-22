@@ -1,7 +1,7 @@
-# src/err/root/arena/exception.py
+# src/err/root/model/arena/exception.py
 
 """
-Module: err.root.arena.exception
+Module: err.root.model.arena.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -21,7 +21,7 @@ __all__ = [
 ]
 
 # ======================# ARENA_ROOT_CERTIFIER_FAILURE #======================#
-class ArenaRootCertifierException(RootCertifierException):
+class ArenaRootCertifierException(ModelRootCertifierException):
     """
     Role:
         -   Error Tracing
@@ -42,7 +42,7 @@ class ArenaRootCertifierException(RootCertifierException):
     Provides:
 
     Super Class:
-        RootCertifierException
+        ModelRootCertifierException
     """
     MSG = "Arena root certification failure."
     ERR_CODE = "ARENA_ROOT_CERTIFIER_FAILURE"

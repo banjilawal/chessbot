@@ -1,7 +1,7 @@
 # src/err/route/validation/context/node/exception.py
 
 """
-Module: err.route.validation.context.node.exception
+Module: err.route.validation.node.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,7 +10,7 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import ValidationRouteException
+from err import NoValidationRouteException
 
 
 __all__ = [
@@ -18,11 +18,11 @@ __all__ = [
     "NodeContextValidationRouteException",
 ]
 
-from err import ContextValidationRouteException
+from err import ContextNoValidationRouteException
 
 
 # ======================# NODE_CONTEXT_VALIDATION_ROUTE #======================#
-class NodeContextValidationRouteException(ContextValidationRouteException):
+class NodeContextValidationRouteException(ContextNoValidationRouteException):
     """
     Role:
         -   Error Tracing

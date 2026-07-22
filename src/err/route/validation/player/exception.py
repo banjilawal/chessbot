@@ -10,16 +10,16 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import ValidationRouteException
+from err import NoValidationRouteException
 
 
 __all__ = [
     # ======================# PLAYER_VALIDATION_ROUTE #======================#
-    "PlayerValidationRouteException",
+    "PlayerNoValidationRouteException",
 ]
 
 # ======================# PLAYER_VALIDATION_ROUTE #======================#
-class PlayerValidationRouteException(ValidationRouteException):
+class PlayerNoValidationRouteException(NoValidationRouteException):
     """
     Role:
         -   Error Tracing

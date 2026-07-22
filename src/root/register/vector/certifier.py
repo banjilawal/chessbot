@@ -13,7 +13,7 @@ from typing import Any, Type, cast
 from err import VectorToggleRegisterCertifierException, VectorToggleRegisterMismatchException
 from root import RootCertifier
 from register import VectorToggleRegister
-from result import ValidationResult
+from result import MethodResultType, ValidationResult
 from toolkit.register import VectorToggleRegisterToolkit
 from util import LoggingLevelRouter
 
@@ -21,62 +21,61 @@ from util import LoggingLevelRouter
 class VectorToggleRegisterCertifier(RootCertifier[VectorToggleRegister]):
     """
     Role
-        -   Transaction Worker
-        -   Operation Maintenance
+        -   Integrity Maintenance
         -   Consistency Assurance
-        -   Validation Process Owner
+
 
     Responsibilities:
-        1.  Ensure a VectorRegister instance is certified safe, reliable and consistent
-            before use in a binary arithmetic operation.
+        1.  Ensure a VectorToggleRegisterBlueprint instance is certified safe, reliable and consistent before use.
 
     Attributes:
-        toolkit: VectorToggleRegisterToolkit   
-    Properties:
-        -   execute(candidate: Any,) -> ValidationResult
+        toolkit: VectorToggleRegisterToolkit
+
+    Provides:
+        -   execute(self, candidate: Any) -> ValidationResult:
 
     Super Class:
         Certifier
     """
-    def __init__(
-            self, 
-            toolkit: VectorToggleRegisterToolkit | None = VectorToggleRegisterToolkit()
-    ):
+    
+    def __init__(self, toolkit: VectorToggleRegisterToolkit | None = VectorToggleRegisterToolkit()):
+        """
+        Args:
+            toolkit: VectorToggleRegisterToolkit
+        """
         super().__init__(toolkit=toolkit)
-        
+    
     @property
     def toolkit(self) -> VectorToggleRegisterToolkit:
         return cast(VectorToggleRegisterToolkit, super().toolkit)
     
     @LoggingLevelRouter.monitor
-    def execute(self, candidate: Any,) -> ValidationResult:
+    def execute(self, candidate, Any) -> ValidationResult:
         """
-        Verify the candidate is a safe VectorRegister.
-        
+        Certify a candidate is a VectorToggleRegisterBlueprint that is safe to use.
+
         Action:
-            1.  Send an exception in the ValidationResult any of these
-                conditions occur.
-                    -   Validator priming fails.
-                    -   The vectorRegisterBlueprint's payload is flagged unsafe.
-                    -   There is a mismatch between the contexts.
-            3.  Otherwise, Send the success result.
+            1.  Send an exception chain in the ValidationResult if any of the following
+                occur
+                    -   The candidate is not a VectorToggleRegisterDtoCarrier.
+                    -   The candidate is an empty VectorToggleRegisterDtoCarrier.
+                    -   Either the board, team, formation, rank or id get flagged unsafe.
+            2.  For a model_carrier send a VectorToggleRegister in the success result. Otherwise, send a TokeBlueprint.
         Args:
-            candidate: Any
+            candidate, Any
         Returns:
             ValidationResult
         Raises:
             VectorToggleRegisterCertifierException
-            VectorToggleRegisterMismatchException
         """
         method = f"{self.__class__.__name__}.execute"
         
-        # Handle the case that, the validator is not primed.
-        validator_priming_result = self.toolkit.priming_validator.execute(
+        carrier_validation = self.model_carrier_validator.execute(
             candidate=candidate,
-            target_blueprint=self.toolkit.blueprint_model,
-            model_null_exception=self.toolkit.blueprint_null_exception,
+            target_model=self.toolkit.carrier_model,
+            model_null_exception=self.toolkit.carrier_null_exception,
         )
-        if validator_priming_result.is_failure:
+        if carrier_validation.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 VectorToggleRegisterCertifierException(
@@ -84,14 +83,32 @@ class VectorToggleRegisterCertifier(RootCertifier[VectorToggleRegister]):
                     cls_name=self.__class__.__name__,
                     msg=VectorToggleRegisterCertifierException.MSG,
                     err_code=VectorToggleRegisterCertifierException.ERR_CODE,
-                    ex=validator_priming_result.exception,
+                    ex=carrier_validation.exception,
                 )
             )
-        # --- Cast candidate to a VectorRegister for additional tests. ---#
-        register = cast(self.toolkit.model, candidate)
+        # Otherwise, get the payload.
+        carrier = cast(self.toolkit.carrier_model, carrier_validation.payload)
         
-        # Handle the case that the register has mixed contents.
-        if register:
+        # --- extract the carrier's blueprint for additional tests. ---#
+        blueprint= carrier.extract_blueprint()
+        
+        # Handle the wrong number of toggles cases.
+        blueprint. == 0:
+            # Send the exception chain on failure.
+            return ValidationResult.failure(
+                VectorToggleRegisterCertifierException(
+                    cls_mthd=method,
+                    cls_name=self.__class__.__name__,
+                    msg=VectorToggleRegisterCertifierException.MSG,
+                    err_code=VectorToggleRegisterCertifierException.ERR_CODE,
+                    mthd_rslt_type=MethodResultType.VALIDATION_RESULT,
+                    ex=NoActiveVectorToggleException(
+                        NoAc
+                    )
+                )
+            )
+        
+        if toggle_count == 0:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 VectorToggleRegisterCertifierException(

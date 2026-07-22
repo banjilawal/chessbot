@@ -14,7 +14,7 @@ from typing import Optional, cast
 from bootstrapper import DetectorBootstrapper
 from context import TokenHomeContext
 from err import (
-    ExcessTogglesException, HomeDetectorBootstrapperException, HomeSquareSearchResultEmptyException,
+    ExcessToggleActivationException, HomeDetectorBootstrapperException, HomeSquareSearchResultEmptyException,
     NoActiveTogglesException
 )
 from microservice import IdentityService
@@ -114,11 +114,11 @@ class HomeDetectorBootstrapper(DetectorBootstrapper):
                     cls_name=cls.__class__.__name__,
                     msg=HomeDetectorBootstrapperException.MSG,
                     err_code=HomeDetectorBootstrapperException.ERR_CODE,
-                    ex=ExcessTogglesException(
+                    ex=ExcessToggleActivationException(
                         cls_mthd=method,
                         cls_name=cls.__name__,
-                        msg=ExcessTogglesException.MSG,
-                        err_code=ExcessTogglesException.ERR_CODE,
+                        msg=ExcessToggleActivationException.MSG,
+                        err_code=ExcessToggleActivationException.ERR_CODE,
                     ),
                 )
             )
@@ -131,11 +131,11 @@ class HomeDetectorBootstrapper(DetectorBootstrapper):
                     cls_name=cls.__class__.__name__,
                     msg=HomeDetectorBootstrapperException.MSG,
                     err_code=HomeDetectorBootstrapperException.ERR_CODE,
-                    ex=ExcessTogglesException(
+                    ex=ExcessToggleActivationException(
                         cls_mthd=method,
                         cls_name=cls.__name__,
-                        msg=ExcessTogglesException.MSG,
-                        err_code=ExcessTogglesException.ERR_CODE,
+                        msg=ExcessToggleActivationException.MSG,
+                        err_code=ExcessToggleActivationException.ERR_CODE,
                     ),
                 )
             )

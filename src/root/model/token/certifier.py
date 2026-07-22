@@ -26,10 +26,9 @@ from util import LoggingLevelRouter
 class TokenRootCertifier(ModelRootCertifier[Token]):
     """
     Role
-        -   Transaction Worker
         -   Integrity Maintenance
         -   Consistency Assurance
-        -   Process Runner
+
 
     Responsibilities:
         1.  Ensure a TokenBlueprint instance is certified safe, reliable and consistent before use.

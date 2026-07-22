@@ -1,16 +1,16 @@
 # src/err/route/validation/rank/__init__.py
 
 """
-Module: err.route.validation.context.rank.__init__
+Module: err.route.validation.rank.__init__
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
 """
 
-# ============ ERR.ROUTE.VALIDATION.CONTEXT.RANK PACKAGE ===========#
+# ============ ERR.ROUTE.VALIDATION.RANK PACKAGE ===========#
 
 # Packages
 
 
 # Modules
-from .exception import RankValidationRouteException
+from .exception import RankNoValidationRouteException

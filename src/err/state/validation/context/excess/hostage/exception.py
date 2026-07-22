@@ -10,7 +10,7 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import ExcessTogglesException
+from err import ExcessToggleActivationException
 
 _all_ = [
     # ======================# EXCESS_HOSTAGE_CONTEXT_FLAGS_EXCEPTION #======================#
@@ -18,7 +18,7 @@ _all_ = [
 ]
 
 # ======================# EXCESS_HOSTAGE_CONTEXT_FLAGS_EXCEPTION #======================#
-class ExcessHostageTogglesException(ExcessTogglesException):
+class ExcessHostageToggleActivationException(ExcessToggleActivationException):
     """
     Role:
         -   Error Tracing

@@ -14,14 +14,14 @@ from err import ExecutionRouteException
 
 __all__ = [
     # ======================# VALIDATION_ROUTE #======================#
-    "ValidationRouteException",
+    "NoValidationRouteException",
 ]
 
 from result import MethodResultType
 
 
 # ======================# VALIDATION_ROUTE #======================#
-class ValidationRouteException(ExecutionRouteException):
+class NoValidationRouteException(ExecutionRouteException):
     """
     Role:
         -   Error Tracing

@@ -1,7 +1,7 @@
-# src/err/root/board/exception.py
+# src/err/root/model/board/exception.py
 
 """
-Module: err.root.board.exception
+Module: err.root.model.board.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import RootCertifierException
+from err import ModelRootCertifierException
 from result import MethodResultType
 
 
@@ -21,7 +21,7 @@ __all__ = [
 ]
 
 # ======================# BOARD_ROOT_CERTIFIER_FAILURE #======================#
-class BoardRootCertifierException(RootCertifierException):
+class BoardRootCertifierException(ModelRootCertifierException):
     """
     Role:
         -   Error Tracing
@@ -42,7 +42,7 @@ class BoardRootCertifierException(RootCertifierException):
     Provides:
 
     Super Class:
-        RootCertifierException
+        ModelRootCertifierException
     """
     MSG = "Board root certification failure."
     ERR_CODE = "BOARD_ROOT_CERTIFIER_FAILURE"

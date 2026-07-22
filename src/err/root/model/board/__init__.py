@@ -1,13 +1,13 @@
-# src/err/root/board/__init__.py
+# src/err/root/model/board/__init__.py
 
 """
-Module: err.root.board.__init__
+Module: err.root.model.board.__init__
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
 """
 
-# =========== ERR.ROOT.BOARD PACKAGE ===========#
+# =========== ERR.ROOT.MODEL.BOARD PACKAGE ===========#
 
 # Packages
 

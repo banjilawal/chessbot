@@ -11,21 +11,21 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from err import ToggleValidatorException
+from result import MethodResultType
 
 _all_ = [
-    # ======================# NO_ACTIVE_TOGGLES_ERROR #======================#
-    "NoActiveTogglesException",
+    # ======================# ZEROIVE_TOGGLE_ACTIVATION_ERROR #======================#
+    "ZeroToggleFlagsException",
 ]
 
-# ======================# NO_ACTIVE_TOGGLES_ERROR #======================#
-class NoActiveTogglesException(ToggleValidatorException):
+# ======================# ZEROIVE_TOGGLE_ACTIVATION_ERROR #======================#
+class ZeroToggleActivationException(ToggleValidatorException):
     """
     Role:
         -   Error Tracing
         
     Responsibilities:
-        1.  Indicate that no switches in a Toggle are on. At least one must be
-            on.
+        1.  Indicate that too many switches in a Toggle are on. 
 
     Attributes:
         msg: Optional[str]
@@ -41,8 +41,8 @@ class NoActiveTogglesException(ToggleValidatorException):
     Super Class:
         ToggleValidatorException
     """
-    MSG = "No toggles have been activated."
-    ERR_CODE = "NO_ACTIVE_TOGGLES_ERROR"
+    MSG = "Too many Toggle switches are enabled."
+    ERR_CODE = "ZEROIVE_TOGGLE_ACTIVATION_ERROR"
     
     def __init__(
             self,

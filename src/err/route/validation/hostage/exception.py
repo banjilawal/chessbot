@@ -10,16 +10,16 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import ValidationRouteException
+from err import NoValidationRouteException
 
 
 __all__ = [
     # ======================# HOSTAGE_VALIDATION_ROUTE #======================#
-    "HostageValidationRouteException",
+    "HostageNoValidationRouteException",
 ]
 
 # ======================# HOSTAGE_VALIDATION_ROUTE #======================#
-class HostageValidationRouteException(ValidationRouteException):
+class HostageNoValidationRouteException(NoValidationRouteException):
     """
     Role:
         -   Error Tracing
