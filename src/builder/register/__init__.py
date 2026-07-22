@@ -10,8 +10,8 @@ version: 1.0.1
 # =========== BUILDER.REGISTER PACKAGE ===========#
 
 # Packages
-from .toggle import *
 from .square import *
+from .toggle import *
 from .vector import *
 
 # Modules

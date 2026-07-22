@@ -5,39 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/err/root/register/vector/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/root/register/vector/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/root/register/toggle/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/root/register/toggle/certifier.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/toolkit/register/vector/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/toolkit/register/vector/toolkit.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/validator/register/vector/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/validator/register/vector/validator.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blueprint/register/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/blueprint/register/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blueprint/register/blueprint.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/blueprint/register/blueprint.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blueprint/register/square/blueprint.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/blueprint/register/square/blueprint.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blueprint/register/vector/blueprint.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/blueprint/register/vector/blueprint.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blueprint/register/vectortoggle/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/blueprint/register/toggle/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blueprint/register/vectortoggle/blueprint.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/blueprint/register/toggle/blueprint.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/builder/endpoint/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/builder/endpoint/builder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/carrier/carrier.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/carrier/carrier.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/carrier/register/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/carrier/register/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/carrier/register/vector/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/carrier/register/vector/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/null/carrier/model/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/null/carrier/model/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/root/register/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/root/register/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/root/register/vectortoggle/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/root/register/toggle/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/root/register/vectortoggle/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/root/register/toggle/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/validation/register/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/validation/register/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/validation/register/cartesian/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/validation/register/toggle/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/validation/register/cartesian/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/validation/register/toggle/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/validation/register/cartesian/mismatch/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/validation/register/toggle/mismatch/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/validation/register/cartesian/mismatch/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/validation/register/toggle/mismatch/exception.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/root/register/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/register/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/root/register/identity/certifier.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/register/identity/certifier.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/root/register/square/certifier.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/register/square/certifier.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/root/register/vector/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/register/vector/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/root/register/vector/certifier.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/register/vector/certifier.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/toolkit/model/state/token/toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/toolkit/model/state/token/toolkit.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/toolkit/register/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/toolkit/register/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/toolkit/register/operand/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/toolkit/register/toggle/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/toolkit/register/operand/toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/toolkit/register/toggle/toolkit.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/toolkit/register/square/toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/toolkit/register/square/toolkit.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validator/register/vector/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/validator/register/vector/validator.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -805,7 +780,7 @@
       <workItem from="1784055454795" duration="186991000" />
       <workItem from="1784319839949" duration="197060000" />
       <workItem from="1784614812729" duration="11899000" />
-      <workItem from="1784633157389" duration="66787000" />
+      <workItem from="1784633157389" duration="68969000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />

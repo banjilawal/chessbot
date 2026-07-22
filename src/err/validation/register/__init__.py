@@ -11,8 +11,9 @@ version: 1.0.1
 
 # Packages
 from .identity import *
-from .cartesian import *
+from .vector import *
 from .square import *
+from .toggle import *
 
 # Modules
 from .exception import RegisterValidatorException

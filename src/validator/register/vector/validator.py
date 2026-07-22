@@ -11,7 +11,11 @@ from __future__ import annotations
 
 from typing import Any, cast
 
+from err import VectorRegisterValidatorException
 from register import VectorRegister
+from result import ValidationResult
+from root import VectorRegisterRootCertifier
+from util import LoggingLevelRouter
 from validator import RegisterValidator
 
 
@@ -48,7 +52,7 @@ class VectorRegisterValidator(RegisterValidator[VectorRegister]):
     
 
     @LoggingLevelRouter.monitor
-    def execute(self, candidate: Any) -> ValidationResult:
+    def execute(self, candidate: Any) -> ValidationResult[VectorRegister]:
         """
         Verify the object is a VectorRegister that is safe to use.
 
@@ -81,8 +85,5 @@ class VectorRegisterValidator(RegisterValidator[VectorRegister]):
             )
         # --- Forward the work product to the caller. ---#
         return ValidationResult.success(
-            cast(
-                self.root_certifier.toolkit.register,
-                certification.payload
-            )
+            cast(self.root_certifier.toolkit.model, certification.payload)
         )

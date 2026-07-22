@@ -13,6 +13,7 @@ version: 1.0.1
 from .identity import *
 from .square import *
 from .toggle import *
+from .vector import *
 
 # Modules
 from .certifier import RegisterRootCertifier
