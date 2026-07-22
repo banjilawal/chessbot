@@ -7,12 +7,11 @@ Created: 2026-04-04
 version: 1.0.1
 """
 
-
-# Packages
 # =========== ERR.VALIDATION.TOGGLE.EXCESS PACKAGE ===========#
 
 # Packages
 from .vector import *
+from .orientation import *
 
 # Modules
 from .exception import ExcessToggleActivationException

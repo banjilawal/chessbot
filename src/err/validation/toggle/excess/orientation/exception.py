@@ -1,7 +1,7 @@
-# src/err/validation/toggle/excess/exception.py
+# src/err/validation/toggle/excess/orientation/exception.py
 
 """
-Module: err.validation.toggle.excess.exception
+Module: err.validation.toggle.excess.orientation.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -13,18 +13,18 @@ from typing import Any, Optional
 from err import ExcessToggleActivationException
 
 _all_ = [
-    # ======================# EXCESSIVE_ORIENTAION_TOGGLE_ACTIVATION_ERROR #======================#
+    # ======================# EXCESSIVE_ORIENTATION_TOGGLE_ACTIVATION_ERROR #======================#
     "ExcessToggleFlagsException",
 ]
 
-# ======================# EXCESSIVE_ORIENTAION_TOGGLE_ACTIVATION_ERROR #======================#
-class ExcessOrientaionToggleActivationException(ExcessToggleActivationException):
+# ======================# EXCESSIVE_ORIENTATION_TOGGLE_ACTIVATION_ERROR #======================#
+class ExcessOrientationToggleActivationException(ExcessToggleActivationException):
     """
     Role:
         -   Error Tracing
         
     Responsibilities:
-        1.  Indicate that too many switches in a OrientaionToggle are on. 
+        1.  Indicate that too many switches in an OrientationToggle are on.
 
     Attributes:
         msg: Optional[str]
@@ -40,8 +40,8 @@ class ExcessOrientaionToggleActivationException(ExcessToggleActivationException)
     Super Class:
         ExcessTogglesException
     """
-    MSG = "Too many OrientaionToggle switches are enabled."
-    ERR_CODE = "EXCESSIVE_ORIENTAION_TOGGLE_ACTIVATION_ERROR"
+    MSG = "Too many OrientationToggle switches are enabled."
+    ERR_CODE = "EXCESSIVE_ORIENTATION_TOGGLE_ACTIVATION_ERROR"
     
     def __init__(
             self,

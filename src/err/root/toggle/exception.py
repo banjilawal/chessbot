@@ -10,7 +10,7 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import ToggleRootCertifierException
+from err import RootCertifierException
 from result import MethodResultType
 
 
@@ -20,7 +20,7 @@ __all__ = [
 ]
 
 # ======================# TOGGLE_ROOT_CERTIFIER_FAILURE #======================#
-class ToggleRootCertifierException(ToggleRootCertifierException):
+class ToggleRootCertifierException(RootCertifierException):
     """
     Role:
         -   Error Tracing
@@ -41,7 +41,7 @@ class ToggleRootCertifierException(ToggleRootCertifierException):
     Provides:
 
     Super Class:
-        ToggleRootCertifierException
+        RootCertifierException
     """
     MSG = "Toggle root certification failure."
     ERR_CODE = "TOGGLE_ROOT_CERTIFIER_FAILURE"

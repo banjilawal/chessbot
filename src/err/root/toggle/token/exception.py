@@ -16,18 +16,18 @@ from result import MethodResultType
 
 
 __all__ = [
-    # ======================# TOKEN_ROOT_CERTIFIER_FAILURE #======================#
-    "TokenRootCertifierException",
+    # ======================# TOKEN_TOGGLE_ROOT_CERTIFIER_FAILURE #======================#
+    "TokenToggleRootCertifierException",
 ]
 
-# ======================# TOKEN_ROOT_CERTIFIER_FAILURE #======================#
-class TokenRootCertifierException(ToggleRootCertifierException):
+# ======================# TOKEN_TOGGLE_ROOT_CERTIFIER_FAILURE #======================#
+class TokenToggleRootCertifierException(ToggleRootCertifierException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a candidate failed a TokenRootCertifier test.
+        1.  Indicate that a candidate failed a TokenToggleRootCertifier test.
 
     Attributes:
             msg: Optional[str]
@@ -45,7 +45,7 @@ class TokenRootCertifierException(ToggleRootCertifierException):
         ToggleRootCertifierException
     """
     MSG = "Token root certification failure."
-    ERR_CODE = "TOKEN_ROOT_CERTIFIER_FAILURE"
+    ERR_CODE = "TOKEN_TOGGLE_ROOT_CERTIFIER_FAILURE"
     
     def __init__(
             self,

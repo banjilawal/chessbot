@@ -16,18 +16,18 @@ from result import MethodResultType
 
 
 __all__ = [
-    # ======================# NODE_ROOT_CERTIFIER_FAILURE #======================#
-    "NodeRootCertifierException",
+    # ======================# NODE_TOGGLE_ROOT_CERTIFIER_FAILURE #======================#
+    "NodeToggleRootCertifierException",
 ]
 
-# ======================# NODE_ROOT_CERTIFIER_FAILURE #======================#
-class NodeRootCertifierException(ToggleRootCertifierException):
+# ======================# NODE_TOGGLE_ROOT_CERTIFIER_FAILURE #======================#
+class NodeToggleRootCertifierException(ToggleRootCertifierException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a candidate failed a NodeRootCertifier test.
+        1.  Indicate that a candidate failed a NodeToggleRootCertifier test.
 
     Attributes:
             msg: Optional[str]
@@ -45,7 +45,7 @@ class NodeRootCertifierException(ToggleRootCertifierException):
         ToggleRootCertifierException
     """
     MSG = "Node root certification failure."
-    ERR_CODE = "NODE_ROOT_CERTIFIER_FAILURE"
+    ERR_CODE = "NODE_TOGGLE_ROOT_CERTIFIER_FAILURE"
     
     def __init__(
             self,

@@ -1,7 +1,7 @@
-# src/err/validation/toggle/zero/exception.py
+# src/err/validation/toggle/zero/orientation/exception.py
 
 """
-Module: err.validation.toggle.zero.exception
+Module: err.validation.toggle.zero.orientation.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -13,18 +13,18 @@ from typing import Any, Optional
 from err import ZeroToggleActivationException
 
 _all_ = [
-    # ======================# ZEROIVE_ORIENTAION_TOGGLE_ACTIVATION_ERROR #======================#
+    # ======================# ZEROIVE_ORIENTATION_TOGGLE_ACTIVATION_ERROR #======================#
     "ZeroToggleFlagsException",
 ]
 
-# ======================# ZEROIVE_ORIENTAION_TOGGLE_ACTIVATION_ERROR #======================#
-class ZeroOrientaionToggleActivationException(ZeroToggleActivationException):
+# ======================# ZEROIVE_ORIENTATION_TOGGLE_ACTIVATION_ERROR #======================#
+class ZeroOrientationToggleActivationException(ZeroToggleActivationException):
     """
     Role:
         -   Error Tracing
         
     Responsibilities:
-        1.  Indicate that too many switches in a OrientaionToggle are on. 
+        1.  Indicate that too many switches in an OrientationToggle are on.
 
     Attributes:
         msg: Optional[str]
@@ -40,8 +40,8 @@ class ZeroOrientaionToggleActivationException(ZeroToggleActivationException):
     Super Class:
         ZeroTogglesException
     """
-    MSG = "Too many OrientaionToggle switches are enabled."
-    ERR_CODE = "ZEROIVE_ORIENTAION_TOGGLE_ACTIVATION_ERROR"
+    MSG = "Too many OrientationToggle switches are enabled."
+    ERR_CODE = "ZEROIVE_ORIENTATION_TOGGLE_ACTIVATION_ERROR"
     
     def __init__(
             self,

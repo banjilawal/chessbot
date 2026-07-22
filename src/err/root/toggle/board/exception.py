@@ -16,18 +16,18 @@ from result import MethodResultType
 
 
 __all__ = [
-    # ======================# BOARD_ROOT_CERTIFIER_FAILURE #======================#
-    "BoardRootCertifierException",
+    # ======================# BOARD_TOGGLE_ROOT_CERTIFIER_FAILURE #======================#
+    "BoardToggleRootCertifierException",
 ]
 
-# ======================# BOARD_ROOT_CERTIFIER_FAILURE #======================#
-class BoardRootCertifierException(ToggleRootCertifierException):
+# ======================# BOARD_TOGGLE_ROOT_CERTIFIER_FAILURE #======================#
+class BoardToggleRootCertifierException(ToggleRootCertifierException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a candidate failed a BoardRootCertifier test.
+        1.  Indicate that a candidate failed a BoardToggleRootCertifier test.
 
     Attributes:
             msg: Optional[str]
@@ -45,7 +45,7 @@ class BoardRootCertifierException(ToggleRootCertifierException):
         ToggleRootCertifierException
     """
     MSG = "Board root certification failure."
-    ERR_CODE = "BOARD_ROOT_CERTIFIER_FAILURE"
+    ERR_CODE = "BOARD_TOGGLE_ROOT_CERTIFIER_FAILURE"
     
     def __init__(
             self,

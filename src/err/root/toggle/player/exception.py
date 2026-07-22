@@ -16,18 +16,18 @@ from result import MethodResultType
 
 
 __all__ = [
-    # ======================# PLAYER_ROOT_CERTIFIER_FAILURE #======================#
-    "PlayerRootCertifierException",
+    # ======================# PLAYER_TOGGLE_ROOT_CERTIFIER_FAILURE #======================#
+    "PlayerToggleRootCertifierException",
 ]
 
-# ======================# PLAYER_ROOT_CERTIFIER_FAILURE #======================#
-class PlayerRootCertifierException(ToggleRootCertifierException):
+# ======================# PLAYER_TOGGLE_ROOT_CERTIFIER_FAILURE #======================#
+class PlayerToggleRootCertifierException(ToggleRootCertifierException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a candidate failed a PlayerRootCertifier test.
+        1.  Indicate that a candidate failed a PlayerToggleRootCertifier test.
 
     Attributes:
             msg: Optional[str]
@@ -45,7 +45,7 @@ class PlayerRootCertifierException(ToggleRootCertifierException):
         ToggleRootCertifierException
     """
     MSG = "Player root certification failure."
-    ERR_CODE = "PLAYER_ROOT_CERTIFIER_FAILURE"
+    ERR_CODE = "PLAYER_TOGGLE_ROOT_CERTIFIER_FAILURE"
     
     def __init__(
             self,

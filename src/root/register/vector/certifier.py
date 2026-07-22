@@ -93,7 +93,7 @@ class VectorToggleRegisterCertifier(RootCertifier[VectorToggleRegister]):
         blueprint= carrier.extract_blueprint()
         
         # Handle the wrong number of toggles cases.
-        blueprint. == 0:
+        :
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 VectorToggleRegisterCertifierException(

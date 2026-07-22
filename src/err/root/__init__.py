@@ -22,6 +22,7 @@ from .excess import *
 from .id import *
 from .model import *
 from .register import *
+from .toggle import *
 from .zero import *
 
 # Modules

@@ -11,7 +11,7 @@ from __future__ import annotations
 from typing import Any, cast
 
 
-from err import ExcessToggleActivationException, NoActiveTogglesException
+from err import ExcessToggleActivationException, NoActiveTogglesException, NoValidationRouteException
 from root import ToggleRootCertifier
 from result import ValidationResult
 from toggle import VectorToggle
@@ -91,10 +91,10 @@ class VectorToggleRootCertifier(ToggleRootCertifier[VectorToggle]):
         carrier = cast(self.toolkit.carrier_model, carrier_validation.payload)
         
         # --- Cast the candidate into a VectorToggleBlueprint for additional tests. ---#
-        toggle = cast(self.toolkit.model, candidate)
+        blueprint = cast(self.toolkit.model, candidate)
         
         # Handle the case that neither option is enabled.
-        if toggle.no_active_toggles:
+        if blueprint.no_active_toggles:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 VectorToggleRootCertifierException(
@@ -109,7 +109,7 @@ class VectorToggleRootCertifier(ToggleRootCertifier[VectorToggle]):
                 )
             )
         # Handle the case that, both options are enabled.
-        if toggle.excess_active_toggles:
+        if blueprint.excess_active_toggles:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 VectorToggleRootCertifierException(
@@ -124,7 +124,7 @@ class VectorToggleRootCertifier(ToggleRootCertifier[VectorToggle]):
                 )
             )
         # Pick a route for integrity testing the toggle's entity.
-        validation_result = ValidationResult.failure(NodeNoValidationRouteException())
+        validation_result = ValidationResult.failure(NoValidationRouteException())
         if toggle.is_coord_selector:
             validation_result = self.toolkit.coord.validator.execute(toggle.entity)
         if toggle.is_vector_selector:

@@ -16,18 +16,18 @@ from result import MethodResultType
 
 
 __all__ = [
-    # ======================# GAME_ROOT_CERTIFIER_FAILURE #======================#
-    "GameRootCertifierException",
+    # ======================# GAME_TOGGLE_ROOT_CERTIFIER_FAILURE #======================#
+    "GameToggleRootCertifierException",
 ]
 
-# ======================# GAME_ROOT_CERTIFIER_FAILURE #======================#
-class GameRootCertifierException(ToggleRootCertifierException):
+# ======================# GAME_TOGGLE_ROOT_CERTIFIER_FAILURE #======================#
+class GameToggleRootCertifierException(ToggleRootCertifierException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a candidate failed a GameRootCertifier test.
+        1.  Indicate that a candidate failed a GameToggleRootCertifier test.
 
     Attributes:
             msg: Optional[str]
@@ -45,7 +45,7 @@ class GameRootCertifierException(ToggleRootCertifierException):
         ToggleRootCertifierException
     """
     MSG = "Game root certification failure."
-    ERR_CODE = "GAME_ROOT_CERTIFIER_FAILURE"
+    ERR_CODE = "GAME_TOGGLE_ROOT_CERTIFIER_FAILURE"
     
     def __init__(
             self,

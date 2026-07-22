@@ -13,7 +13,10 @@ from typing import Type
 
 from blueprint import VectorToggleRegisterBlueprint
 from carrier import VectorToggleRegisterCarrierToggle
-from err import VectorToggleRegisterBlueprintNullException, VectorToggleRegisterNullException
+from err import (
+    VectorToggleRegisterBlueprintNullException, VectorToggleRegisterCarrierNullException,
+    VectorToggleRegisterNullException
+)
 from register import VectorToggleRegister
 from toggle import VectorToggle
 from toolkit import RegisterToolkit
@@ -41,7 +44,7 @@ class VectorToggleRegisterToolkit(RegisterToolkit[VectorToggle]):
        RegisterToolkit
     """
     model: Type[VectorToggleRegister] = VectorToggleRegister
-    carrier_model: Type[VectorToggleRegisterCarrierToggle] = VectorToggleRegisterCarrierToggle
+    carrier_model: Type[VectorToggleRegisterCarrier] = VectorToggleRegisterCarrier
     blueprint_model: Type[VectorToggleRegisterBlueprint] = VectorToggleRegisterBlueprint
     
     null_exception: VectorToggleRegisterNullException = (
