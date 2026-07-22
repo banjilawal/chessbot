@@ -17,28 +17,23 @@ from toolkit import BuilderToolkit
 
 T = TypeVar("T", bound="Register")
 
-class RegisterBuilderToolkit(BuilderToolkit, Generic[T]):
+class RegisterBuildToolkit(BuilderToolkit, Generic[T]):
     """
     Role:
-        -   Dependency Container
-        -   Dynamic Dependency Provider
+        -   Dependency Management
         
     Responsibilities:
-        1.  Aggregates workers and services an entity requires for its tasks.
-        2.  Separates dependencies from data objects in operation calls.
-        3.  Simplifies entry points.
+        1.  Bundles RegisterBuilder dependencies.
 
     Attributes:
-        assembler: Assembler[T],
-        root_certifier: RootCertifier[T]
+        assembler: [RegisterAssembler[T]],
+        root_certifier: [RegisterRootCertifier[T]]
         
     Provides:
     
     Super Class:
-        Toolkit
+        BuildToolkit
     """
-    _assembler: [RegisterAssembler[T]]
-    _root_certifier: [RegisterRootCertifier[T]]
     
     def __init__(
             self,
@@ -47,8 +42,8 @@ class RegisterBuilderToolkit(BuilderToolkit, Generic[T]):
     ):
         """
         Args:
-            assembler: Assembler[T],
-            root_certifier: RootCertifier[T]
+            assembler: [RegisterAssembler[T]],
+            root_certifier: [RegisterRootCertifier[T]
         """
         super().__init__(assembler=assembler, root_certifier=root_certifier)
 
@@ -59,4 +54,4 @@ class RegisterBuilderToolkit(BuilderToolkit, Generic[T]):
         
     @property
     def root_certifier(self) -> [RegisterRootCertifier[T]]:
-        return cast([RegisterRootCertifier[T]], self._root_certifier)
+        return cast([RegisterRootCertifier[T]], super()._root_certifier)

@@ -1,7 +1,7 @@
-# src/toolkit/builder/register/model/vector/toolkit.py
+# src/toolkit/builder/model/model/vector/toolkit.py
 
 """
-Module: toolkit.builder.register.model.vector.register
+Module: toolkit.builder.model.model.vector.model
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -11,38 +11,41 @@ from __future__ import annotations
 
 from typing import Dict, List, Optional, cast
 
-from model import Vector
-from register import ModelRegister
+
+from model import VectorModel
+from root import VectorModelRootCertifier
+from toolkit import ModelBuildToolkit
 
 
-class VectorRegister(ModelRegister[Vector]):
+class VectorModelBuildToolkit(ModelBuildToolkit[VectorModel]):
     """
     Role:
-        -   Model
-        -   Data Holder
-
+        -   Dependency Management
+        
     Responsibilities:
-        1.  Contains the endpoints of a journey.
+        1.  Bundles VectorModel build dependencies.
 
     Attributes:
-        u: Vector
-        v: Vector
-        u_is_v: bool
-        u_is_not_v: bool
+        assembler: Optional[VectorModelAssembler]
+        root_certifier: Optional[VectorModelRootCertifier]
             
     Provides:
 
     Super Class:
-        ModekRegister
+        ModelBuildToolkit
     """
     
-    def __init__(self, u: Vector, v: Vector, id: Optional[int] | None = None,):
+    def __init__(
+            self,
+            assembler: Optional[VectorModelAssembler] | None = VectorModelAssembler(),
+            root_certifier: Optional[VectorModelRootCertifier] | None = VectorModelRootCertifier(),
+    ):
         """
         Args:
-            u: Vector
-            v: Vector
+            assembler: Optional[VectorModelAssembler]
+            root_certifier: Optional[VectorModelRootCertifier]
         """
-        super().__init__(a=u, b=v, id=id)
+        super().__init__(assembler=assembler, root_certifier=root_certifier)
         
     @property
     def u(self) -> Vector:
@@ -74,7 +77,7 @@ class VectorRegister(ModelRegister[Vector]):
     def __eq__(self, other):
         if other is self: return True
         if other is None: return False
-        if isinstance(other, VectorRegister):
+        if isinstance(other, VectorModel):
             return (
                     self._u == other.u and
                     self._v == other.v

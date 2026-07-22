@@ -10,11 +10,10 @@ version: 1.0.1
 # =========== TOOLKIT.BUILDER.REGISTER.MODEL PACKAGE ===========#
 
 # Packages
-from .vectortoggle import *
+from .toggle import *
 from .coord import *
 from .number import *
 from .square import *
 from .vector import *
 
 # Modules
-from .register import ModelRegister

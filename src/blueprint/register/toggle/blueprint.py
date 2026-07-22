@@ -71,12 +71,20 @@ class VectorToggleRegisterBlueprint(
         return cast(VectorToggleRegisterNullException, super().null_exception)
     
     @property
-    def a(self) -> VectorToggle:
+    def u(self) -> VectorToggle:
         return cast(VectorToggle, super().a)
     
     @property
-    def b(self) -> VectorToggle:
+    def v(self) -> VectorToggle:
         return cast(VectorToggle, super().b)
+    
+    @property
+    def a(self) -> VectorToggle:
+        return self.u
+    
+    @property
+    def b(self) -> VectorToggle:
+        return self.v
     
     @property
     def toggles_are_same_type(self) -> bool:

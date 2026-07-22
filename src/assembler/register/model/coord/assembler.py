@@ -1,4 +1,4 @@
-# src/assembler/register/model/coord/py
+# src/assembler/register/model/coord/assembler.py
 
 """
 Module: assembler.register.model.coord.assembler
@@ -13,11 +13,12 @@ from __future__ import annotations
 from assembler import RegisterAssembler
 from blueprint import CoordBlueprint
 from model import Coord
+from register import CoordRegister
 from result import BuildResult
 from util import LoggingLevelRouter
 
 
-class CoordAssembler(RegisterAssembler[Coord]):
+class CoordRegisterAssembler(RegisterAssembler[CoordRegister]):
     """
     Role
         -   Transaction Worker

@@ -11,6 +11,7 @@ version: 1.0.1
 # =========== TOOLKIT.BUILDER PACKAGE ===========#
 
 # Packages
+from .model import *
 from .register import *
 
 

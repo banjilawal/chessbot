@@ -22,8 +22,7 @@ from validator import BoardValidator, CoordValidator, TokenValidator, PrimingVal
 class SquareToolkit(AnalyzerBootstrapperToolkit[Square]):
     """
     Role:
-        -   Dependency Container
-        -   Dynamic Dependency Provider
+        -   Dependency Management
 
     Responsibilities:
         1.  Aggregates workers and services a Square requires for its tasks.

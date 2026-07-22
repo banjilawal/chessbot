@@ -14,4 +14,4 @@ version: 1.0.1
 
 
 # Modules
-from .finalizer import TokenBuilderFinalizer
+from .finalizer import TokenBuildFinalizer

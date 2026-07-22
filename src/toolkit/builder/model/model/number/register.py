@@ -1,7 +1,7 @@
-# src/toolkit/builder/register/model/number/toolkit.py
+# src/toolkit/builder/model/model/number/toolkit.py
 
 """
-Module: toolkit.builder.register.model.number.register
+Module: toolkit.builder.model.model.number.model
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -11,10 +11,10 @@ from __future__ import annotations
 
 from typing import Dict, List, cast
 
-from register import ModelRegister
+from model import ModelModel
 
 
-class NumberRegister(ModelRegister[int]):
+class NumberModel(ModelModel[int]):
     """
     Role:
         -   Model
@@ -32,7 +32,7 @@ class NumberRegister(ModelRegister[int]):
     Provides:
 
     Super Class:
-        Register
+        Model
     """
     
     def __init__(self, a: int, b: int,):
@@ -73,7 +73,7 @@ class NumberRegister(ModelRegister[int]):
     def __eq__(self, other):
         if other is self: return True
         if other is None: return False
-        if isinstance(other, NumberRegister):
+        if isinstance(other, NumberModel):
             return (
                     self._a == other.a and
                     self._b == other.b

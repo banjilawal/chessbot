@@ -13,4 +13,4 @@ version: 1.0.1
 
 
 # Modules
-from .register import VectorRegister
+from .toolkit import VectorRegisterBuildToolkit

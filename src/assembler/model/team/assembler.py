@@ -1,4 +1,4 @@
-# src/assembler/model/team/py
+# src/assembler/model/team/assembler.py
 
 """
 Module: assembler.model.team.assembler

@@ -26,8 +26,7 @@ from validator import BoardValidator, CoordValidator, TokenValidator
 class SquareToolkit(StateModelToolkit[Square]):
     """
     Role:
-        -   Dependency Container
-        -   Dynamic Dependency Provider
+        -   Dependency Management
 
     Responsibilities:
         1.  Aggregates workers and services a Square requires for its tasks.

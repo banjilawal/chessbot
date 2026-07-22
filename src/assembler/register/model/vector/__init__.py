@@ -13,4 +13,4 @@ version: 1.0.1
 
 
 # Modules
-from .assembler import VectorAssembler
+from .assembler import VectorRegisterAssembler

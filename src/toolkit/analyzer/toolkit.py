@@ -21,8 +21,7 @@ T = TypeVar("T")
 class AnalyzerToolkit(Toolkit[T]):
     """
     Role:
-        -   Dependency Container
-        -   Dynamic Dependency Provider
+        -   Dependency Management
         
     Responsibilities:
         1.  Aggregates workers and services a analyzer requires for its tasks.

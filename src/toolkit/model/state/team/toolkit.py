@@ -28,13 +28,12 @@ from validator import BoardValidator, TeamValidator
 class TokenToolkit(StateModelToolkit[Token]):
     """
     Role:
-        -   Dependency Container
-        -   Dynamic Dependency Provider
+        -   Dependency Management
 
     Responsibilities:
-        1.  Aggregates workers and services an entity requires for its tasks.
-        2.  Separates dependencies from data objects in operation calls.
-        3.  Simplifies entry points.
+        1.  Bundles dependencies a worker needs to complete its task.
+        2.  Loose Coupling between an operation and its resources.
+        3.  Simplify Entry points.
 
     Attributes:
         model: Type[Token]
@@ -72,8 +71,7 @@ class TokenToolkit(StateModelToolkit[Token]):
 class TeamToolkit(StateModelToolkit[Team]):
     """
     Role:
-        -   Dependency Container
-        -   Dynamic Dependency Provider
+        -   Dependency Management
 
     Responsibilities:
         1.  Aggregates workers and services a Team requires for its tasks.

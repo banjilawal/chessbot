@@ -22,8 +22,7 @@ T = TypeVar("T", bound="StateModel")
 class StateModelToolkit(ModelToolkit, Generic[T]):
     """
     Role:
-        -   Dependency Container
-        -   Dynamic Dependency Provider
+        -   Dependency Management
 
     Responsibilities:
         1.  Aggregates workers and services a stateful model requires for its tasks.

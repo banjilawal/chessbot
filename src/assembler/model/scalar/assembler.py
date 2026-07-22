@@ -1,4 +1,4 @@
-# src/assembler/model/scalar/py
+# src/assembler/model/scalar/assembler.py
 
 """
 Module: assembler.model.scalar.assembler
@@ -13,15 +13,14 @@ from blueprint import ScalarBlueprint
 from model import Scalar
 from result import BuildResult
 from assembler import ModelAssembler
-from toolkit import ScalarToolkit
 from util import LoggingLevelRouter
-from err import ScalarAssemblyException
+
 
 
 class ScalarAssembler(ModelAssembler[Scalar]):
     """
     Role
-        -   Build Process Owner
+        -   Builder
     
     Responsibilities:
         1.  Create a Scalar instance from the safe blueprint.

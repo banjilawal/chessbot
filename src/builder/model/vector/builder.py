@@ -24,9 +24,10 @@ from util import LoggingLevelRouter
 class VectorBuilder(ModelBuilder[Vector]):
     """
     Role
-        -   Integrity Maintenance
+        -   Build Pipeline
+        -   Integrity Management
         -   Consistency Assurance
-        -   Build Process Owner
+        -   Workflow Owner
         
    Responsibilities:
         1.  Ensure a new Vector instance is born safe and reliable.

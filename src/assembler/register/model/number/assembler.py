@@ -1,4 +1,4 @@
-# src/assembler/register/model/number/py
+# src/assembler/register/model/number/assembler.py
 
 """
 Module: assembler.register.model.number.assembler

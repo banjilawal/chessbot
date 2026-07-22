@@ -1,4 +1,4 @@
-# src/assembler/register/model/vectorToggleRegister/py
+# src/assembler/register/model/vectorToggleRegister/assembler.py
 
 """
 Module: assembler.register.model.vectorToggleRegister.assembler
@@ -21,7 +21,7 @@ class VectorToggleRegisterAssembler(
 ):
     """
     Role
-        -   Build Process Owner
+        -   Builder
 
     Responsibilities:
         1.  Create a VectorToggleRegister instance from the safe blueprint.
@@ -53,8 +53,5 @@ class VectorToggleRegisterAssembler(
         """
         method = f"{self.__class__.__name__}.validate"
         return BuildResult.success(
-            VectorToggleRegister(
-                a=blueprint.a,
-                b=blueprint.b,
-            )
+            VectorToggleRegister(u=blueprint.u,v=blueprint.v,)
         )

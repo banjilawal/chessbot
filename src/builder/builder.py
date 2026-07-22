@@ -52,7 +52,7 @@ class Builder(ABC, Generic[T]):
         self._builder_toolkit = builder_toolkit
     
     @property
-    def builder_toolkit(self) -> BuilderToolkit[T]:
+    def build_toolkit(self) -> BuilderToolkit[T]:
         return self._builder_toolkit
 
     @abstractmethod

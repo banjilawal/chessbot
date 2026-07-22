@@ -1,4 +1,4 @@
-# src/assembler/model/rank/py
+# src/assembler/model/rank/assembler.py
 
 """
 Module: assembler.model.rank.assembler
@@ -21,7 +21,7 @@ from util import LoggingLevelRouter
 class RankAssembler(ModelAssembler[Rank]):
     """
     Role
-        -   Build Process Owner
+        -   Builder
 
     Responsibilities:
         1.  Create a Rank instance from the safe blueprint.

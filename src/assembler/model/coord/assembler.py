@@ -1,4 +1,4 @@
-# src/assembler/model/coord/py
+# src/assembler/model/coord/assembler.py
 
 """
 Module: assembler.model.coord.assembler
@@ -14,12 +14,11 @@ from result import BuildResult
 from assembler import ModelAssembler
 from util import LoggingLevelRouter
 from model import Coord
-from controller import WorkerRegistryController
 
 class CoordAssembler(ModelAssembler[Coord]):
     """
     Role
-        -   Build Process Owner
+        -   Builder
 
     Responsibilities:
         1.  Create a Coord instance from the safe blueprint.

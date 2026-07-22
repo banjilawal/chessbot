@@ -1,7 +1,7 @@
-# src/toolkit/builder/register/model/vector_toggle/toolkit.py
+# src/toolkit/builder/model/model/vector_toggle/toolkit.py
 
 """
-Module: toolkit.builder.register.model.vector_toggle.register
+Module: toolkit.builder.model.model.vector_toggle.model
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -11,11 +11,11 @@ from __future__ import annotations
 
 from typing import Dict, List, cast
 
-from register import ModelRegister
+from model import ModelModel
 from toggle import VectorToggle
 
 
-class VectorToggleRegister(ModelRegister[VectorToggle]):
+class VectorToggleModel(ModelModel[VectorToggle]):
     """
         -   Model
         -   Data Holder
@@ -27,13 +27,13 @@ class VectorToggleRegister(ModelRegister[VectorToggle]):
         a: VectorToggle
         b: VectorToggle
 
-        is_vector_register:bool
-        is_coord_register: bool
+        is_vector_model:bool
+        is_coord_model: bool
         to_list: List[Vectortoggle]
         to_dict: Dict[str, Vectortoggle]
 
     Super Class:
-        Register
+        Model
     """
     
     def __init__(
@@ -77,18 +77,18 @@ class VectorToggleRegister(ModelRegister[VectorToggle]):
         return not self.a_equals_b
     
     @property
-    def is_vector_register(self) -> bool:
+    def is_vector_model(self) -> bool:
         return self._a.is_vector_toggle and self._b.is_vector_toggle
     
     @property
-    def is_coord_register(self) -> bool:
+    def is_coord_model(self) -> bool:
         return self._a.is_coord_toggle and self._b.is_coord_toggle
 
     @property
     def toggles_are_carrying_different_types(self) -> bool:
         return (
-            not self.is_vector_register and
-            not self.is_coord_register
+            not self.is_vector_model and
+            not self.is_coord_model
             
         )
     
@@ -106,7 +106,7 @@ class VectorToggleRegister(ModelRegister[VectorToggle]):
     def __eq__(self, other):
         if other is self: return True
         if other is None: return False
-        if isinstance(other, VectorToggleRegister):
+        if isinstance(other, VectorToggleModel):
             return (
                     self._a == other.b and
                     self._b == other.b

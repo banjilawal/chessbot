@@ -20,8 +20,7 @@ P = TypeVar("P", bound=Permitter)
 class PermitterToolkit(Toolkit[Permitter, Generic[P]]):
     """
     Role:
-        -   Dependency Container
-        -   Dynamic Dependency Provider
+        -   Dependency Management
         
     Responsibilities:
         1.  Aggregates workers and services a permitter requires for its tasks.

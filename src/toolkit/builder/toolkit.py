@@ -22,13 +22,10 @@ T = TypeVar("T")
 class BuilderToolkit(Toolkit, Generic[T]):
     """
     Role:
-        -   Dependency Container
-        -   Dynamic Dependency Provider
+        -   Dependency Management
         
     Responsibilities:
-        1.  Aggregates workers and services an entity requires for its tasks.
-        2.  Separates dependencies from data objects in operation calls.
-        3.  Simplifies entry points.
+        1.  Bundles Builder dependencies.
 
     Attributes:
         assembler: Assembler[T],

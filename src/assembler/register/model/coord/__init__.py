@@ -13,5 +13,5 @@ version: 1.0.1
 
 
 # Modules
-from .assembler import CoordAssembler
+from .assembler import CoordRegisterAssembler
 

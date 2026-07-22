@@ -1,7 +1,7 @@
-# src/builder/register/toggle/builder.py
+# src/builder/register/vector/builder.py
 
 """
-Module: builder.register.toggle.builder
+Module: builder.register.vector.builder
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -11,49 +11,99 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
+from blueprint import VectorRegisterBlueprint
 from builder import RegisterBuilder
-from register import VectorToggleRegister, Register
-from result import BuildResult
-from toggle import VectorToggle
+from err import VectorRegisterBuilderException
+from register import VectorRegister
+from result import BuildResult, MethodResultType
 from util import LoggingLevelRouter
 
 
-class VectorToggleRegisterBuilder(RegisterBuilder[VectorToggle]):
+class VectorRegisterBuilder(RegisterBuilder[VectorRegister]):
     """
-        -   Model
-        -   Data Holder
+    Role
+        -   Build Pipeline
+        -   Integrity Management
+        -   Consistency Assurance
+        -   Workflow Owner
 
-    Responsibilities:
-        1.  Contains VectorToggles passed to vector algebra.
+   Responsibilities:
+        1.  Ensure a new Register instance is born safe and reliable.
 
     Attributes:
-        a: VectorToggle
-        b: VectorToggle
-        endpoint_validator: Optional[VectorToggleValidator]
+            build_toolkit: Optional[VectorRegisterBuildToolkit]
 
-    Super Class:
-        RegisterBuilder
-    """
+    Provides:
+        -   def execute(self, blueprint: RegisterVectorRegisteBlueprint) -> BuildResult[Register]
+
+     Super Class:
+         Builder
+     """
     
     def __init__(
             self,
-            endpoint_validator: Optional[VectorToggleValidator] | None = VectorToggleValidator(),
+            build_toolkit: Optional[VectorRegisterBuildToolkit] | 
+                           None = VectorRegisterBuildToolkit()
     ):
         """
         Args:
-            endpoint_validator: Optional[VectorToggleValidator]
+            build_toolkit: Optional[VectorRegisterBuildToolkit]
         """
-        super().__init__(endpoint_validator=endpoint_validator)
-
+        super().__init__(builder_toolkit=build_toolkit)
     
     @property
-    def endpoint_validator(self) -> VectorToggleValidator:
-        return cast(VectorToggleValidator, self.endpoint_validator)
+    def build_toolkit(self) -> VectorRegisterBuildToolkit:
+        return cast(VectorRegisterBuildToolkit, super().build_toolkit)
     
     @LoggingLevelRouter.monitor
-    def execute(
-            u: VectorToggle,
-            v: VectorToggle,
-    ) -> BuildResult[VectorToggleRegister]:
-        pass
+    def execute(self, blueprint: VectorRegisterBlueprint) -> BuildResult[VectorRegister]:
+        """
+        Build a safe VectorRegister.
+
+        Action:
+            1.  Send an exception chain in the BuildResult if either
+                    -   The bootstrap is not successful.
+                    -   The assembler does not return a product.
+            2.  Otherwise, cast the assemble product then, send in the success result,
+        Args:
+            blueprint: VectorRegisterBlueprint
+        Returns:
+            BuildResult[VectorRegister]
+        Raises:
+            VectorRegisterBuilderException
+        """
+        method = f"{self.__class__.__name__}.build"
         
+        # Handle the case that, the bootstrap is not successful.
+        bootstrap = self.build_toolkit.bootstrapper.execute(candidate=blueprint)
+        if bootstrap.is_failure:
+            # Send the exception chain on failure.
+            return BuildResult.failure(
+                VectorRegisterBuilderException(
+                    cls_mthd=method,
+                    cls_name=self.__class__.__name__,
+                    msg=VectorRegisterBuilderException.MSG,
+                    err_code=VectorRegisterBuilderException.ERR_CODE,
+                    mthd_rslt_type=MethodResultType.BUILD_RESULT,
+                    ex=bootstrap.exception
+                )
+            )
+        # --- Handoff the validated blueprint to the assembler. ---#
+        assembly = self.build_toolkit.assembler.execute(
+            blueprint=cast(VectorRegisterBlueprint, bootstrap.payload)
+        )
+        if assembly.is_failure:
+            # Send the exception chain on failure.
+            return BuildResult.failure(
+                VectorRegisterBuilderException(
+                    cls_mthd=method,
+                    cls_name=self.__class__.__name__,
+                    msg=VectorRegisterBuilderException.MSG,
+                    err_code=VectorRegisterBuilderException.ERR_CODE,
+                    mthd_rslt_type=MethodResultType.BUILD_RESULT,
+                    ex=assembly.exception
+                )
+            )
+        
+        # --- Forward the work product to the caller. ---#
+        return BuildResult.success(cast(VectorRegister, assembly.payload))        

@@ -9,9 +9,10 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from abc import ABC
+
 from typing import Generic, TypeVar
 
+from assembler import Assembler
 from blueprint import ModelBlueprint
 from result import BuildResult
 from util import LoggingLevelRouter
@@ -19,10 +20,10 @@ from util import LoggingLevelRouter
 
 T = TypeVar("T", bound="Model")
 
-class ModelAssembler(ABC, Generic[T]):
+class ModelAssembler(Assembler, Generic[T]):
     """
     Role
-        -   Build Process Owner
+        -   Builder
 
     Responsibilities:
         1.  Create a Model instance from the safe blueprint.
@@ -33,10 +34,13 @@ class ModelAssembler(ABC, Generic[T]):
         -   def execute(self, blueprint: ModelBlueprint,) -> BuildResult[Model]
 
     Super Class:
-        ModelAssembler
+        Assembler
     """
+    def __init__(self):
+        super().__init__()
+    
     
     
     @LoggingLevelRouter.monitor
-    def execute(self, blueprint: ModelBlueprint[T],) -> BuildResult[T]:
+    def execute(self, blueprint: [ModelBlueprint[T]],) -> BuildResult[T]:
         pass

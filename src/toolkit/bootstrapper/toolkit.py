@@ -21,8 +21,7 @@ T = TypeVar("T", bound="Bootstrapper")
 class BootstrapperToolkit(Toolkit, Generic[T]):
     """
     Role:
-        -   Dependency Container
-        -   Dynamic Dependency Provider
+        -   Dependency Management
         
     Responsibilities:
         1.  Aggregates workers and services a bootstrapper requires for its tasks.

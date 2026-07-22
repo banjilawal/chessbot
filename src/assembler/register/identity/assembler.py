@@ -1,4 +1,4 @@
-# src/assembler/register/identity/py
+# src/assembler/register/identity/assembler.py
 
 """
 Module: assembler.register.identity.assembler
@@ -20,7 +20,7 @@ from util import LoggingLevelRouter
 class IdentityRegisterAssembler(RegisterAssembler[IdentityRegister]):
     """
     Role
-        -   Build Process Owner
+        -   Builder
 
     Responsibilities:
         1.  Create an IdentityRegister instance from the safe blueprint.

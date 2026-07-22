@@ -18,8 +18,7 @@ from validator import BoardValidator, PlayerValidator, PrimingValidator
 class TeamToolkit(AnalyzerBootstrapperToolkit[Team]):
     """
     Role:
-        -   Dependency Container
-        -   Dynamic Dependency Provider
+        -   Dependency Management
 
     Responsibilities:
         1.  Aggregates workers and services a Team requires for its tasks.

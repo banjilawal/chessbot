@@ -1,4 +1,4 @@
-# src/assembler/model/token/py
+# src/assembler/model/token/assembler.py
 
 """
 Module: assembler.model.token.assembler
@@ -19,7 +19,7 @@ from model import CombatantToken, King, KingToken, Pawn, PawnToken, Token
 class TokenAssembler(ModelAssembler[Token]):
     """
     Role
-        -   Build Process Owner
+        -   Builder
 
     Responsibilities:
         1.  Create a Token instance from the safe blueprint.
@@ -74,6 +74,3 @@ class TokenAssembler(ModelAssembler[Token]):
                 rank=blueprint.rank
             )
         )
-
-# Register the 
-WorkerRegistryController.register_worker(TokenAssembler)

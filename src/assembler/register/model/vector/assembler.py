@@ -1,4 +1,4 @@
-# src/assembler/register/model/vector/py
+# src/assembler/register/model/vector/assembler.py
 
 """
 Module: assembler.register.model.vector.assembler
@@ -10,16 +10,17 @@ version: 1.0.1
 from __future__ import annotations
 
 from assembler import RegisterAssembler
-from blueprint import VectorBlueprint
+from blueprint import VectorBlueprint, VectorRegisterBlueprint
 from model import Vector
+from register import VectorRegister
 from result import BuildResult
 from util import LoggingLevelRouter
 
 
-class VectorAssembler(RegisterAssembler[Vector]):
+class VectorRegisterAssembler(RegisterAssembler[VectorRegister]):
     """
     Role
-        -   Build Process Owner
+        -   Builder
 
     Responsibilities:
         1.  Create a VectorRegister instance from the safe blueprint.
@@ -35,7 +36,7 @@ class VectorAssembler(RegisterAssembler[Vector]):
     
     
     @LoggingLevelRouter.monitor
-    def execute(self, blueprint: VectorBlueprint,) -> BuildResult[Vector]:
+    def execute(self, blueprint: VectorRegisterBlueprint,) -> BuildResult[VectorRegister]:
         """
         Assemble a VectorRegister from the Blueprint's contents.
 
@@ -47,7 +48,7 @@ class VectorAssembler(RegisterAssembler[Vector]):
         """
         method = f"{self.__class__.__name__}.execute"
         return BuildResult.success(
-            Vector(x=blueprint.x, y=blueprint.y,)
+            VectorRegister(u=blueprint.u, v=blueprint.v)
         )
         
         

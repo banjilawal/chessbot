@@ -44,25 +44,16 @@ class ModelBuilder(Builder, Generic[T]):
     Super Class:
         Builder
     """
-    def __init__(
-            self,
-            bootstrapper: ModelRootCertifier[T],
-            assembler: [ModelAssembler[T]],
-    ):
+    def __init__(self, build_toolkit: [ModelBuilderToolkit[T]]):
         """
         Args:
-            bootstrapper: ModelRootCertifier[T]
-            assembler: ModelAssembler[T]
+            build_toolkit: [ModelBuilderToolkit[T]]
         """
-        super().__init__(bootstrapper=bootstrapper, assembler=assembler)
+        super().__init__(builder_toolkit=build_toolkit)
     
     @property
-    def bootstrapper(self) -> ModelRootCertifier[T]:
-        return cast(ModelRootCertifier[T], super().bootstrapper)
-    
-    @property
-    def assembler(self) -> ModelAssembler[T]:
-        return cast(ModelAssembler[T], super().assembler)
+    def build_toolkit(self) -> ModelBuilderToolkit[T]:
+        return cast(ModelAssembler[T], super().builder_toolkitr)
     
     @abstractmethod
     @LoggingLevelRouter.monitor

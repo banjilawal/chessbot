@@ -1,4 +1,4 @@
-# src/assembler/toggle/vector/py
+# src/assembler/toggle/vector/assembler.py
 
 """
 Module: assembler.toggle.vector.assembler
@@ -20,7 +20,7 @@ from util import LoggingLevelRouter
 class VectorToggleAssembler(ToggleAssembler[VectorToggle]):
     """
     Role
-        -   Build Process Owner
+        -   Builder
 
     Responsibilities:
         1.  Create a VectorToggle instance from the safe blueprint.
@@ -33,6 +33,8 @@ class VectorToggleAssembler(ToggleAssembler[VectorToggle]):
     Super Class:
         ToggleAssembler
     """
+    def __init__(self):
+        super().__init__()
     
     
     @LoggingLevelRouter.monitor

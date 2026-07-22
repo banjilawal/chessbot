@@ -9,20 +9,21 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from abc import ABC
+from abc import abstractmethod
 from typing import Generic, TypeVar
 
-from blueprint.toggle import ToggleBlueprint
+from assembler import Assembler
+from blueprint import ToggleBlueprint
 from result import BuildResult
 from util import LoggingLevelRouter
 
 
 T = TypeVar("T", bound="Toggle")
 
-class ToggleAssembler(ABC, Generic[T]):
+class ToggleAssembler(Assembler, Generic[T]):
     """
     Role
-        -   Build Process Owner
+        -   Builder
 
     Responsibilities:
         1.  Create a Toggle instance from the safe blueprint.
@@ -35,7 +36,10 @@ class ToggleAssembler(ABC, Generic[T]):
     Super Class:
          Assembler
     """
+    def __init__(self):
+        super().__init__()
     
+    @abstractmethod
     @LoggingLevelRouter.monitor
     def execute(self, blueprint: ToggleBlueprint[T],) -> BuildResult[T]:
         pass

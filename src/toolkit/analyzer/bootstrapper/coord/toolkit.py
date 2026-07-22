@@ -19,8 +19,7 @@ from validator import NumberValidator, PrimingValidator
 class CoordToolkit(AnalyzerBootstrapperToolkit[Coord]):
     """
     Role:
-        -   Dependency Container
-        -   Dynamic Dependency Provider
+        -   Dependency Management
 
     Responsibilities:
         1.  Aggregates workers and services a Coord requires for its tasks.

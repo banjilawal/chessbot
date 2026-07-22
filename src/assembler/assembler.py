@@ -1,4 +1,4 @@
-# src/assembler/py
+# src/assembler/assembler.py
 
 """
 Module: assembler.assembler
@@ -9,7 +9,7 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from abc import ABC
+from abc import ABC, abstractmethod
 from typing import Generic, TypeVar
 
 from blueprint import Blueprint
@@ -22,7 +22,7 @@ T = TypeVar("T")
 class Assembler(ABC, Generic[T]):
     """
     Role
-        -   Build Process Owner
+        -   Builder
 
     Responsibilities:
         1.  Create an object from the safe blueprint.
@@ -33,9 +33,12 @@ class Assembler(ABC, Generic[T]):
         -   def execute(blueprint: Blueprint[T]) -> BuildResult[T]
 
     Super Class:
-        ToggleAssembler
     """
     
+    def __init__(self):
+        pass
+    
+    @abstractmethod
     @LoggingLevelRouter.monitor
     def execute(self, blueprint: Blueprint[T],) -> BuildResult[T]:
         pass

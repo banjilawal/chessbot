@@ -17,7 +17,7 @@ from result import BuildResult
 from util import LoggingLevelRouter
 
 
-class TokenBuilderFinalizer(BuilderFinalizer[Token]):
+class TokenBuildFinalizer(BuilderFinalizer[Token]):
     
     @classmethod
     @LoggingLevelRouter.monitor

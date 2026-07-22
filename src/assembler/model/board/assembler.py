@@ -1,4 +1,4 @@
-# src/assembler/model/board/py
+# src/assembler/model/board/assembler.py
 
 """
 Module: assembler.model.board.assembler
@@ -20,7 +20,7 @@ from util import LoggingLevelRouter
 class BoardAssembler(ModelAssembler[Board]):
     """
     Role
-        -   Build Process Owner
+        -   Builder
 
     Responsibilities:
         1.  Create a Board instance from the safe blueprint.

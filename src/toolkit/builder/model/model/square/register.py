@@ -1,7 +1,7 @@
-# src/toolkit/builder/register/model/square/toolkit.py
+# src/toolkit/builder/model/model/square/toolkit.py
 
 """
-Module: toolkit.builder.register.model.square.register
+Module: toolkit.builder.model.model.square.model
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -12,10 +12,10 @@ from __future__ import annotations
 from typing import Dict, List, cast
 
 from model import Square
-from register import ModelRegister
+from model import ModelModel
 
 
-class SquareRegister(ModelRegister[Square]):
+class SquareModel(ModelModel[Square]):
     """
     Role:
         -   Model
@@ -33,7 +33,7 @@ class SquareRegister(ModelRegister[Square]):
     Provides:
 
     Super Class:
-        Register
+        Model
     """
     
     def __init__(self, origin: Square,destination: Square,):
@@ -82,7 +82,7 @@ class SquareRegister(ModelRegister[Square]):
     def __eq__(self, other):
         if other is self: return True
         if other is None: return False
-        if isinstance(other, SquareRegister):
+        if isinstance(other, SquareModel):
             return (
                     self._origin == other.origin and
                     self._destination == other.destination

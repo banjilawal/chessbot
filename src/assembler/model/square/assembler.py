@@ -1,4 +1,4 @@
-# src/assembler/model/square/py
+# src/assembler/model/square/assembler.py
 
 """
 Module: assembler.model.square.assembler
@@ -19,7 +19,7 @@ from util import LoggingLevelRouter
 class SquareAssembler(ModelAssembler[Square]):
     """
     Role
-        -   Build Process Owner
+        -   Builder
 
     Responsibilities:
         1.  Create a Vector instance from the safe blueprint.

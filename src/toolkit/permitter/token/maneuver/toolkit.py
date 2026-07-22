@@ -21,8 +21,7 @@ from validator import SquareValidator, TokenValidator
 class TokenManeuverToolkit(PermitterToolkit):
     """
     Role:
-        -   Dependency Container
-        -   Dynamic Dependency Provider
+        -   Dependency Management
 
     Responsibilities:
         1.  Aggregates workers and services TokenManeuverPermitter requires for its tasks.

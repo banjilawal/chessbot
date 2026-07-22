@@ -15,8 +15,7 @@ from toolkit import BootstrapperToolkit
 class DetectorBootstrapperToolkit(BootstrapperToolkit):
     """
     Role:
-        -   Dependency Container
-        -   Dynamic Dependency Provider
+        -   Dependency Management
 
     Responsibilities:
         1.  Aggregates workers and services a bootstrapperful bootstrapper requires for its tasks.

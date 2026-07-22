@@ -13,53 +13,48 @@ from typing import cast
 
 from blueprint import VectorRegisterBlueprint
 from builder import RegisterBuilder
+from builder.register.builder import T
 from err import VectorRegisterBuilderException
 from register import VectorRegister
 from result import BuildResult, MethodResultType
 from root import VectorRegisterRootCertifier
+from toolkit import RegisterBuildToolkit
 from util import LoggingLevelRouter
 
 
 class VectorRegisterBuilder(RegisterBuilder[VectorRegister]):
     """
     Role
-        -   Integrity Maintenance
+        -   Build Pipeline
+        -   Integrity Management
         -   Consistency Assurance
-        -   Build Process Owner
+        -   Workflow Owner
 
    Responsibilities:
         1.  Ensure a new Register instance is born safe and reliable.
 
     Attributes:
-            assembler: Optional[VectorRegisterAssembler]
-            bootstrapper: Optional[VectorRegisterRootCertifier]
+            build_toolkit: VectorRegisterBuildToolkit
 
     Provides:
         -   def execute(self, blueprint: RegisterVectorRegisteBlueprint) -> BuildResult[Register]
 
      Super Class:
-         Builder
+         RegisterBuilder
      """
     
-    def __init__(
-            self,
-            assembler: Optional[VectorRegisterAssembler] | None = VectorRegisterAssembler(),
-            bootstrapper: Optional[VectorRegisterRootCertifier] | None = VectorRegisterRootCertifier(),
+    def __init__(self, build_toolkit: VectorRegisterBuildToolkit | 
+                                      None = VectorRegisterBuildToolkit()
     ):
         """
         Args:
-            assembler: Optional[VectorRegisterAssembler],
-            bootstrapper: Optional[VectorRegisterRootCertifier]
+            build_toolkit: VectorRegisterBuildToolkit
         """
-        super().__init__(bootstrapper=bootstrapper, assembler=assembler)
+        super().__init__(build_toolkit=build_toolkit)
     
     @property
-    def bootstrapper(self) -> VectorRegisterRootCertifier:
-        return cast(VectorRegisterRootCertifier, super().bootstrapper)
-    
-    @property
-    def assembler(self) -> VectorRegisterAssembler:
-        return cast(VectorRegisterAssembler, super().assembler)
+    def build_toolkit(self) -> VectorRegisterBuildToolkit:
+        return cast(VectorRegisterBuildToolkit, super().build_toolkit)
     
 
     @LoggingLevelRouter.monitor
@@ -82,7 +77,7 @@ class VectorRegisterBuilder(RegisterBuilder[VectorRegister]):
         method = f"{self.__class__.__name__}.build"
         
         # Handle the case that, the bootstrap is not successful.
-        bootstrap = self._bootstrapper.execute(candidate=blueprint)
+        bootstrap = self.build_toolkit.bootstrapper.execute(candidate=blueprint)
         if bootstrap.is_failure:
             # Send the exception chain on failure.
             return BuildResult.failure(
@@ -96,7 +91,7 @@ class VectorRegisterBuilder(RegisterBuilder[VectorRegister]):
                 )
             )
         # --- Handoff the validated blueprint to the assembler. ---#
-        assembly = self._assembler.execute(
+        assembly = self.build_toolkit.assembler.execute(
             blueprint=cast(VectorRegisterBlueprint, bootstrap.payload)
         )
         if assembly.is_failure:

@@ -12,8 +12,10 @@ from __future__ import annotations
 from typing import Optional, cast
 
 from builder import RegisterBuilder
+from builder.register.builder import T
 from model import Square
 from register import SquareRegister
+from toolkit import RegisterBuildToolkit
 from util import LoggingLevelRouter
 
 
@@ -27,49 +29,32 @@ class SquareRegisterBuilder(RegisterBuilder[SquareRegister]):
         1.  Contains the endpoints of a journey.
 
     Attributes:
-        origin: Square
-        destination: Square
-        origin_is_destination: bool
-        origin_is_not_destination: bool
+        build_toolkit: Optional[SquareRegisterBuildToolkit]
             
     Provides:
 
     Super Class:
-        Register
+        RegisterBuilder
     """
     
     def __init__(
             self,
-            origin: Square,
-            destination: Square,
-            endpoint_validator: Optional[SquareValidator] | None = SquareValidator()):
+            build_toolkit: Optional[SquareRegisterBuildToolkit] |
+                           None = SquareRegisterBuildToolkit()
+    ):
         """
         Args:
-            origin: Square
-            destination: Square
-            endpoint_validator: Optional[SquareValidator]
+            build_toolkit: Optional[SquareRegisterBuildToolkit]
         """
-        super().__init__(
-            a=origin,
-            b=destination,
-            endpoint_validator=endpoint_validator
-        )
+        super().__init__(builder_toolkit=build_toolkit)
 
         
     @property
-    def origin(self) -> Square:
-        return cast(Square, self.a)
-    
-    @property
-    def destination(self) -> Square:
-        return cast(Square, self.b)
-    
-    @property
-    def endpoint_validator(self) -> SquareValidator:
-        return cast(SquareValidator, self.endpoint_validator)
+    def build_toolkit(self) -> SquareRegisterBuildToolkit:
+        return cast(SquareRegisterBuildToolkit, super().build_toolkit)
     
     @LoggingLevelRouter.monitor
-    def execute(self) -> BuildResult[SquareRegister]:
+    def execute(self, blueprint: SquareRegisterBlueprint) -> BuildResult[SquareRegister]:
         pass
 
 

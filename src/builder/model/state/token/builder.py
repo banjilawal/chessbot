@@ -10,28 +10,28 @@ version: 1.0.1
 from __future__ import annotations
 
 from typing import cast
-
-from assembler import TokenAssembler
+r
 from blueprint import TokenBlueprint
 from builder import ModelBuilder
 from err import TokenBuilderException
-from finalizer import TokenBuilderFinalizer
+from finalizer import TokenBuildFinalizer
 from model import Token
 
 from result import BuildResult, MethodResultType
-from root import TokenRootCertifier
 from util import LoggingLevelRouter
 
 
 class TokenBuilder(ModelBuilder[Token]):
     """
     Role
-        -   Integrity Maintenance
+        -   Build Pipeline
+        -   Integrity Management
         -   Consistency Assurance
-        -   Build Process Owner
+        -   Workflow Owner
 
    Responsibilities:
-        1.  Ensure a new Token instance is born safe and reliable.
+        1.  Owns the Token build lifecycle.
+        2.  Preserve the chain of error custody when a Token build fails.
 
     Attributes:
 
@@ -39,19 +39,22 @@ class TokenBuilder(ModelBuilder[Token]):
         -   def execute(self, blueprint: TokenBlueprint) -> BuildResult[Token]
 
      Super Class:
-         Builder
+         ModelBuilder
      """
-    _finalizer: TokenBuilderFinalizer
+    _finalizer: TokenBuildFinalizer
 
     
     def __init__(
-            self,
-            bootstrapper: TokenRootCertifier | None = TokenRootCertifier(),
-            assembler : TokenAssembler | None = TokenAssembler(),
-            finalizer: TokenBuilderFinalizer | None = TokenBuilderFinalizer(),
+        self,
+        build_toolkit: TokenBuildToolkit | None = TokenBuildToolkit(),
+        finalizer: TokenBuildFinalizer | None = TokenBuildFinalizer(),
     ):
-        super().__init__(bootstrapper=bootstrapper, assembler=assembler)
-        self._finalizer = finalizer or TokenBuilderFinalizer()
+        super().__init__(build_toolkit=build_toolkit)
+        self._finalizer = finalizer
+        
+    @property
+    def build_toolkit(self) -> ModelBuildToolkit[T]:
+        return cast(TokenBuildToolkit, super().build_toolkit)
 
     
     @LoggingLevelRouter.monitor
@@ -74,7 +77,7 @@ class TokenBuilder(ModelBuilder[Token]):
         method = f"{self.__class__.__name__}.build"
         
         # Handle the case that, the bootstrap is not successful.
-        bootstrap = self._bootstrapper.execute(candidate=blueprint)
+        bootstrap = self.build_toolkit.bootstrapper.execute(candidate=blueprint)
         if bootstrap.is_failure:
             # Send the exception chain on failure.
             return BuildResult.failure(
@@ -88,7 +91,7 @@ class TokenBuilder(ModelBuilder[Token]):
                 )
             )
         # --- Handoff the validated blueprint to the assembler. ---#
-        assembly = self._assembler.execute(
+        assembly = self.build_toolkit.assembler.execute(
             blueprint=cast(TokenBlueprint, bootstrap.payload)
         )
         if assembly.is_failure:

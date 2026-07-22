@@ -1,7 +1,7 @@
-# src/toolkit/builder/register/model/coord/toolkit.py
+# src/toolkit/builder/model/model/coord/toolkit.py
 
 """
-Module: toolkit.builder.register.model.coord.register
+Module: toolkit.builder.model.model.coord.model
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -12,10 +12,10 @@ from __future__ import annotations
 from typing import Dict, List, cast
 
 from model import Coord
-from register import ModelRegister
+from model import ModelModel
 
 
-class CoordRegister(ModelRegister[Coord]):
+class CoordModel(ModelModel[Coord]):
     """
     Role:
         -   Model
@@ -33,7 +33,7 @@ class CoordRegister(ModelRegister[Coord]):
     Provides:
 
     Super Class:
-        Register
+        Model
     """
     _origin: Coord
     _terminus: Coord
@@ -76,7 +76,7 @@ class CoordRegister(ModelRegister[Coord]):
     def __eq__(self, other):
         if other is self: return True
         if other is None: return False
-        if isinstance(other, CoordRegister):
+        if isinstance(other, CoordModel):
             return (
                     self._origin == other.origin and
                     self._terminus == other.terminus

@@ -26,8 +26,7 @@ from validator.endpoint.maneuver import TokenOriginCertifier
 class ManeuverToolkit(StateModelToolkit[Maneuver]):
     """
     Role:
-        -   Dependency Container
-        -   Dynamic Dependency Provider
+        -   Dependency Management
 
     Responsibilities:
         1.  Aggregates workers and services a Maneuver object requires for its tasks.

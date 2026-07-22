@@ -9,9 +9,10 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from abc import ABC
+from abc import abstractmethod
 from typing import Generic, TypeVar
 
+from assembler import Assembler
 from blueprint import RegisterBlueprint
 from result import BuildResult
 from util import LoggingLevelRouter
@@ -19,10 +20,10 @@ from util import LoggingLevelRouter
 
 T = TypeVar("T", bound="Register")
 
-class RegisterAssembler(ABC, Generic[T]):
+class RegisterAssembler(Assembler, Generic[T]):
     """
     Role
-        -   Build Process Owner
+        -   Builder
 
     Responsibilities:
         1.  Create a Register instance from the safe blueprint.
@@ -36,6 +37,7 @@ class RegisterAssembler(ABC, Generic[T]):
         Assembler
     """
     
+    @abstractmethod
     @LoggingLevelRouter.monitor
     def execute(self, blueprint: RegisterBlueprint[T],) -> BuildResult[T]:
         pass

@@ -14,4 +14,4 @@ from .identity import *
 from .model import *
 
 # Modules
-from .toolkit import RegisterBuilderToolkit
+from .toolkit import RegisterBuildToolkit

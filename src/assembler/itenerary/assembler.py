@@ -1,4 +1,4 @@
-# src/assembler/itinerary/py
+# src/assembler/itinerary/assembler.py
 
 """
 Module: assembler.itinerary.assembler

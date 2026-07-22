@@ -1,4 +1,4 @@
-# src/assembler/model/vector/py
+# src/assembler/model/vector/assembler.py
 
 """
 Module: assembler.model.vector.assembler
@@ -19,7 +19,7 @@ from util import  LoggingLevelRouter
 class VectorAssembler(ModelAssembler[Vector]):
     """
     Role
-        -   Build Process Owner
+        -   Builder
 
     Responsibilities:
         1.  Create a Vector instance from the safe blueprint.

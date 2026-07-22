@@ -1,4 +1,4 @@
-# src/assembler/query/py
+# src/assembler/query/assembler.py
 
 """
 Module: assembler.query.assembler

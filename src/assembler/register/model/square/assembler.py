@@ -1,4 +1,4 @@
-# src/assembler/register/model/square/py
+# src/assembler/register/model/square/assembler.py
 
 """
 Module: assembler.register.model.square.assembler

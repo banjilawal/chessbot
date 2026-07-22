@@ -1,7 +1,7 @@
-# src/toolkit/builder/register/model/register.model.py
+# src/toolkit/builder/model/model/model.model.py
 
 """
-Module: toolkit.builder.register.register
+Module: toolkit.builder.model.model
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -11,16 +11,15 @@ from __future__ import annotations
 
 from typing import Generic, Optional, TypeVar, cast
 
-from register import Register
+from model import Model
 
 T = TypeVar("T", bound="Model")
 
-class ModelRegister(Register, Generic[T]):
+class ModelModel(Model, Generic[T]):
     """
     Role:
-        -   Addressing
-        -   Data-Holder
-  
+        -   Dependency Management
+        
     Responsibilities:
         1.  Contains a pair used in a binary operation whose operands must have
             the same type.
@@ -32,7 +31,7 @@ class ModelRegister(Register, Generic[T]):
     Provides:
     
     Super Class:
-        Register
+        Model
     """
     
     def __init__(self, a: T, b: T, id: Optional[int] | None= None,):
