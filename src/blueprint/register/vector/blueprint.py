@@ -65,20 +65,46 @@ class VectorRegisterBlueprint(RegisterBlueprint[VectorRegister]):
     
     @property
     def u(self) -> Vector:
-        return cast(Vector, self.a)
+        return cast(Vector, super().a)
     
     @property
     def v(self) -> Vector:
-        return cast(Vector, self.b)
+        return cast(Vector, super().b)
     
     @property
     def a(self) -> Vector:
-        return cast(Vector, self.a)
+        return self.u
     
     @property
     def b(self) -> Vector:
-        return cast(Vector, self.b)
+        return self.v
     
     @property
     def null_exception(self) -> RegisterNullException:
         return cast(VectorRegisterNullException, super().null_exception)
+    #
+    # @property
+    # def is_empty(self) -> bool:
+    #     return self.size == 0
+    #
+    # @property
+    # def is_right_size(self) -> bool:
+    #     return self.size == 2
+    #
+    # @property
+    # def is_wrong_size(self) -> bool:
+    #     return not (
+    #             self.is_empty and self.is_right_size
+    #     )
+    #
+    # @property
+    # def size(self) -> int:
+    #     return len([self.a, self.b])
+    #
+    # @property
+    # def registers_are_same_type(self) -> bool:
+    #     return isinstance(self.u, type(self.v))
+    #
+    # @property
+    # def registers_have_different_types(self) -> bool:
+    #     return not self.registers_are_same_type

@@ -11,8 +11,10 @@ version: 1.0.1
 
 # Packages
 from .identity import *
-from .toggle import *
 from .square import *
+from .toggle import *
+from .vector import *
+
 
 # Modules
 from .carrier import RegisterCarrier

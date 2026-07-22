@@ -12,6 +12,8 @@ from __future__ import annotations
 from typing import Generic, TypeVar
 
 from builder import Builder
+from register import VectorRegister
+from result import BuildResult
 from util import LoggingLevelRouter
 
 T = TypeVar("T", bound="TraversalPattern")

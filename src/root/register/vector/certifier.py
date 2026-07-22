@@ -8,25 +8,20 @@ version: 1.0.1
 """
 
 from __future__ import annotations
-from typing import List, cast
+from typing import Any, List, cast
 
-from blueprint import VectorToggleRegisterBlueprint
-from carrier import VectorToggleRegisterCarrier
-from err import (
-    RegisterEmptyException, RegisterSizeException, VectorToggleRegisterCertifierException,
-    VectorToggleRegisterMismatchException
-)
-from register import VectorToggleRegister
-from result import MethodResultType, ValidationResult
+from blueprint import VectorRegisterBlueprint
+from carrier import VectorRegisterCarrierToggle
+from err import RegisterEmptyException, RegisterSetSizeException, VectorRegisterRootCertifierException
+from model import Vector
+from register import VectorRegister
+from result import ValidationResult
 from root import RootCertifier
-from toggle import VectorToggle
-from toolkit import VectorToggleRegisterToolkit
+from toolkit import VectorRegisterToolkit
 from util import LoggingLevelRouter
 
 
-class VectorToggleRegisterCertifier(
-    RootCertifier[VectorToggleRegister]
-):
+class VectorRegisterRootCertifier(RootCertifier[VectorRegister]):
     """
     Role
         -   Integrity Maintenance
@@ -34,11 +29,10 @@ class VectorToggleRegisterCertifier(
 
 
     Responsibilities:
-        1.  Ensure a VectorToggleRegisterBlueprint instance is certified safe,
-            reliable and consistent before use.
+        1.  Ensure a VectorRegisterBlueprint instance is certified safe, reliable and consistent before use.
 
     Attributes:
-        toolkit: VectorToggleRegisterToolkit
+        toolkit: VectorRegisterToolkit
 
     Provides:
         -   execute(self, candidate: Any) -> ValidationResult:
@@ -47,39 +41,36 @@ class VectorToggleRegisterCertifier(
         Certifier
     """
     
-    def __init__(
-            self,
-            toolkit: VectorToggleRegisterToolkit |
-                     None = VectorToggleRegisterToolkit()
-    ):
+    def __init__(self, toolkit: VectorRegisterToolkit | None = VectorRegisterToolkit()):
         """
         Args:
-            toolkit: VectorToggleRegisterToolkit
+            toolkit: VectorRegisterToolkit
         """
         super().__init__(toolkit=toolkit)
     
     @property
-    def toolkit(self) -> VectorToggleRegisterToolkit:
-        return cast(VectorToggleRegisterToolkit, super().toolkit)
+    def toolkit(self) -> VectorRegisterToolkit:
+        return cast(VectorRegisterToolkit, super().toolkit)
     
     @LoggingLevelRouter.monitor
-    def execute(self, candidate, Any) -> ValidationResult[VectorToggleRegister]:
+    def execute(self, candidate, Any) -> ValidationResult:
         """
-        Certify a candidate is a VectorToggleRegisterBlueprint that is safe to use.
+        Certify a candidate is a VectorRegisterBlueprint that is safe to use.
 
         Action:
             1.  Send an exception chain in the ValidationResult if any of the following
                 occur
-                    -   The candidate is not a VectorToggleRegisterDtoCarrier.
-                    -   The candidate is an empty VectorToggleRegisterDtoCarrier.
+                    -   The candidate is not a VectorRegisterDtoCarrier.
+                    -   The candidate is an empty VectorRegisterDtoCarrier.
                     -   Either the board, team, formation, rank or id get flagged unsafe.
-            2.  For a model_carrier send a VectorToggleRegister in the success result. Otherwise, send a TokeBlueprint.
+            2.  For a model_carrier send a VectorRegister in the success result. Otherwise, send a TokeBlueprint.
         Args:
             candidate, Any
         Returns:
             ValidationResult
         Raises:
-            VectorToggleRegisterCertifierException
+            VectorRegisterCertifierException
+            VectorRegisterDtoCarrierNullException
         """
         method = f"{self.__class__.__name__}.execute"
         
@@ -91,30 +82,28 @@ class VectorToggleRegisterCertifier(
         if carrier_validation.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                VectorToggleRegisterCertifierException(
+                VectorRegisterRootCertifierException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=VectorToggleRegisterCertifierException.MSG,
-                    err_code=VectorToggleRegisterCertifierException.ERR_CODE,
+                    msg=VectorRegisterRootCertifierException.MSG,
+                    err_code=VectorRegisterRootCertifierException.ERR_CODE,
                     ex=carrier_validation.exception,
                 )
             )
-        # Otherwise, get the payload.
-        carrier = cast(self.toolkit.carrier_model, carrier_validation.payload)
+        carrier = cast(VectorRegisterCarrierToggle, carrier_validation.payload)
         
-        # --- extract the carrier's blueprint for additional tests. ---#
-        blueprint= carrier.extract_blueprint()
+        # --- Cast the candidate into a VectorRegisterBlueprint for additional tests. ---#
+        blueprint = carrier.extract_blueprint()
         
-        # Handle the wrong number of toggles cases.
+        # Handle the case that, both slots are empty
         if blueprint.is_empty:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                VectorToggleRegisterCertifierException(
+                VectorRegisterRootCertifierException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=VectorToggleRegisterCertifierException.MSG,
-                    err_code=VectorToggleRegisterCertifierException.ERR_CODE,
-                    mthd_rslt_type=MethodResultType.VALIDATION_RESULT,
+                    msg=VectorRegisterRootCertifierException.MSG,
+                    err_code=VectorRegisterRootCertifierException.ERR_CODE,
                     ex=RegisterEmptyException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
@@ -123,71 +112,52 @@ class VectorToggleRegisterCertifier(
                     )
                 )
             )
+        # Handle the case that, one slot is empty.
         if blueprint.is_wrong_size:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                VectorToggleRegisterCertifierException(
+                VectorRegisterRootCertifierException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=VectorToggleRegisterCertifierException.MSG,
-                    err_code=VectorToggleRegisterCertifierException.ERR_CODE,
-                    mthd_rslt_type=MethodResultType.VALIDATION_RESULT,
-                    ex=RegisterSizeException(
+                    msg=VectorRegisterRootCertifierException.MSG,
+                    err_code=VectorRegisterRootCertifierException.ERR_CODE,
+                    ex=RegisterSetSizeException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        msg=RegisterSizeException.MSG,
-                        err_code=RegisterSizeException.ERR_CODE,
+                        msg=RegisterSetSizeException.MSG,
+                        err_code=RegisterSetSizeException.ERR_CODE,
                     )
                 )
             )
-        if blueprint.toggles_are_different_types:
-            # Send the exception chain on failure.
-            return ValidationResult.failure(
-                VectorToggleRegisterCertifierException(
-                    cls_mthd=method,
-                    cls_name=self.__class__.__name__,
-                    msg=VectorToggleRegisterCertifierException.MSG,
-                    err_code=VectorToggleRegisterCertifierException.ERR_CODE,
-                    mthd_rslt_type=MethodResultType.VALIDATION_RESULT,
-                    ex=VectorToggleRegisterMismatchException(
-                        cls_mthd=method,
-                        cls_name=self.__class__.__name__,
-                        msg=VectorToggleRegisterMismatchException.MSG,
-                        err_code=VectorToggleRegisterMismatchException.ERR_CODE,
-                    )
-                )
-            )
-        # Handle the case that, either slot is not safe.
-        toggles: List[VectorToggle] = []
+        vectors: List[Vector] = []
         
-        for item in [blueprint.a, blueprint.b]:
-            validation = self.toolkit.vector_toggle_validator.execute(item)
+        for vector in blueprint.to_list:
+            validation = self.toolkit.vector_validator.execute(vector)
             if validation.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
-                    VectorToggleRegisterCertifierException(
+                    VectorRegisterRootCertifierException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        msg=VectorToggleRegisterCertifierException.MSG,
-                        err_code=VectorToggleRegisterCertifierException.ERR_CODE,
-                        ex=validation.exception,
+                        msg=VectorRegisterRootCertifierException.MSG,
+                        err_code=VectorRegisterRootCertifierException.ERR_CODE,
+                        ex=validation.exception
                     )
                 )
-            toggles.append(cast(VectorToggle, validation.payload))
-            
+            vectors.append(cast(Vector, validation.payload))
         # --- Extract and cast payloads of the validation results. ---#
-        u = toggles[0]
-        v = toggles[1]
+        u = vectors[0]
+        v = vectors[1]
         
         if carrier.is_carrying_model:
             return ValidationResult.success(
-                VectorToggleRegisterCarrier(
-                    model=VectorToggleRegister(u=u, v=v)
+                VectorRegisterCarrierToggle(
+                    model=VectorRegister(u=u, v=v)
                 )
             )
         # --- Forward the work product to the caller. ---#
         return ValidationResult.success(
-            VectorToggleRegisterCarrier(
-                blueprint=VectorToggleRegisterBlueprint(u=u, v=v)
+            VectorRegisterCarrierToggle(
+                blueprint=VectorRegisterBlueprint(u=u, v=v  )
             )
         )

@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Any, Dict, Optional, cast
 
-
+from blueprint import VectorRegisterBlueprint
 from carrier import EntityCarrierToggle, RegisterCarrier
 from register import VectorRegister
 
@@ -82,7 +82,6 @@ class VectorRegisterCarrierToggle(EntityCarrierToggle[VectorRegister]):
         if self.is_not_carrying_anything: return None
         if self.is_carrying_blueprint: return self._blueprint
         return VectorRegisterBlueprint(
-            id=self._model.id,
             u=self._model.u,
             v=self._model.v,
         )

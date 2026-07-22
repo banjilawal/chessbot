@@ -9,14 +9,16 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from typing import Any, Type, cast
+from typing import Any, Generic, List, Type, TypeVar, cast
 
 from blueprint import Blueprint
 from err import RegisterNullException
 from register import Register
 
+T = TypeVar("T", bound="Register")
 
-class RegisterBlueprint(Blueprint[Register]):
+
+class RegisterBlueprint(Blueprint, Generic[T]):
     """
     Role:
     -   Container
@@ -96,4 +98,8 @@ class RegisterBlueprint(Blueprint[Register]):
     @property
     def registers_have_different_types(self) -> bool:
         return not self.registers_are_same_type
+    
+    @property
+    def to_list(self) -> List[T]:
+        return [self._a, self._b]
     

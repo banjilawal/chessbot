@@ -6,13 +6,16 @@ Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
 """
-from _ast import Dict
+
+from __future__ import annotations
+
+
 from abc import ABC, abstractmethod
 
-from typing import Any, Generic, Optional, TypeVar
+from typing import Any, Dict, Generic, Optional, TypeVar
 
 from blueprint import Blueprint
-from toggle import Toggle
+
 
 T = TypeVar("T")
 

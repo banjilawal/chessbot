@@ -1,7 +1,7 @@
-# src/certifier/register/carrier/validator.py
+# src/certifier/register/identity/validator.py
 
 """
-Module: certifier.register.carrier.validator
+Module: certifier.register.identity.validator
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -10,7 +10,7 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, cast
 
-from err import IdentityRegisterCertifierException
+
 from register import IdentityRegister
 from root import RootCertifier
 from result import ValidationResult

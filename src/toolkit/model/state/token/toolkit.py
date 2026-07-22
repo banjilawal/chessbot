@@ -15,7 +15,7 @@ from typing import Type
 from blueprint import TokenBlueprint
 from carrier import TokenCarrierToggle
 from detector import TokenHomeDetector
-from err import TokenBlueprintNullException, TokenNullException
+from err import TokenBlueprintNullException, TokenCarrierNullException, TokenNullException
 from model import Token
 from tester import BlueprintHomeSquareExtractor, BlueprintRankExtractor
 from toolkit import StateModelToolkit

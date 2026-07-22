@@ -1,7 +1,7 @@
-# src/toolkit/register/operand/toolkit.py
+# src/toolkit/register/toggle/toolkit.py
 
 """
-Module: toolkit.register.operand.toolkit
+Module: toolkit.register.toggle.toolkit
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -62,5 +62,4 @@ class VectorToggleRegisterToolkit(RegisterToolkit[VectorToggle]):
         VectorToggleRegisterBlueprintNullException()
     )
     
-
     vector_toggle_validator: VectorToggleValidator = VectorToggleValidator()

@@ -1,7 +1,7 @@
-# src/blueprint/register/vector_toggle/blueprint.py
+# src/blueprint/register/toggle/blueprint.py
 
 """
-Module: blueprint.register.vector_toggle.blueprint
+Module: blueprint.register.toggle.blueprint
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

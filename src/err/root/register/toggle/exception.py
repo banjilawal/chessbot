@@ -1,7 +1,7 @@
-# src/err/root/register/vector_toggle/exception.py
+# src/err/root/register/toggle/exception.py
 
 """
-Module: err.root.register.vector_toggle.exception
+Module: err.root.register.toggle.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -17,11 +17,11 @@ from result import MethodResultType
 
 
 __all__ = [
-    # ======================# VECTOR_TOGGLE_REGISTER_ROOT_CERTIFIER_FAILURE #======================#
+    # ======================# TOGGLE_REGISTER_ROOT_CERTIFIER_FAILURE #======================#
     "VectorToggleRegisterCertifierException",
 ]
 
-# ======================# VECTOR_TOGGLE_REGISTER_ROOT_CERTIFIER_FAILURE #======================#
+# ======================# TOGGLE_REGISTER_ROOT_CERTIFIER_FAILURE #======================#
 class VectorToggleRegisterCertifierException(RegisterRootCertifierException):
     """
     Role:
@@ -46,7 +46,7 @@ class VectorToggleRegisterCertifierException(RegisterRootCertifierException):
         RegisterRootCertifierException
     """
     MSG = "VectorToggleRegisterCertifier failure."
-    ERR_CODE = "VECTOR_TOGGLE_REGISTER_ROOT_CERTIFIER_FAILURE"
+    ERR_CODE = "TOGGLE_REGISTER_ROOT_CERTIFIER_FAILURE"
     
     def __init__(
             self,

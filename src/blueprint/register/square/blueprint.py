@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Optional, Type, cast
 
 from blueprint import RegisterBlueprint
-from err import RegisterNullException, SquareRegisterEntityNullException, SquareRegisterNullException
+from err import RegisterNullException, SquareRegisterNullException
 from model import Square
 from register import SquareRegister
 

@@ -1,21 +1,22 @@
-# src/certifier/register/carrier/validator.py
+# src/certifier/register/square/validator.py
 
 """
-Module: certifier.register.carrier.validator
+Module: certifier.register.square.validator
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
 """
 
 from __future__ import annotations
+
 from typing import Any, cast
 
-from err import SquareRegisterCertifierException
-from model import SquareRegister
+from err import SquareRegisterRootCertifierException
+from register import SquareRegister
 from result import ValidationResult
+from root import RootCertifier
 from toolkit import SquareRegisterToolkit
 from util import LoggingLevelRouter
-from validator import Certifier
 
 
 class SquareRegisterRootCertifier(RootCertifier[SquareRegister]):
@@ -49,7 +50,7 @@ class SquareRegisterRootCertifier(RootCertifier[SquareRegister]):
         return cast(SquareRegisterToolkit, super().toolkit)
     
     @LoggingLevelRouter.monitor
-    def execute(self, candidate: Any,) -> ValidationResult:
+    def execute(self, candidate: Any,) -> ValidationResult[SquareRegister]:
         """
         Verify the candidate is a safe VectorRegister.
         
@@ -65,7 +66,7 @@ class SquareRegisterRootCertifier(RootCertifier[SquareRegister]):
         Returns:
             ValidationResult[VectorRegister]
         Raises:
-            SquareRegisterCertifierException
+            SquareRegisterRootCertifierException
             SquareRegisterMismatchException
         """
         method = f"{self.__class__.__name__}.execute"
@@ -79,11 +80,11 @@ class SquareRegisterRootCertifier(RootCertifier[SquareRegister]):
         if validator_priming_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                SquareRegisterCertifierException(
+                SquareRegisterRootCertifierException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=SquareRegisterCertifierException.MSG,
-                    err_code=SquareRegisterCertifierException.ERR_CODE,
+                    msg=SquareRegisterRootCertifierException.MSG,
+                    err_code=SquareRegisterRootCertifierException.ERR_CODE,
                     ex=validator_priming_result.exception,
                 )
             )
@@ -96,11 +97,11 @@ class SquareRegisterRootCertifier(RootCertifier[SquareRegister]):
             if validation.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
-                    SquareRegisterCertifierException(
+                    SquareRegisterRootCertifierException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        msg=SquareRegisterCertifierException.MSG,
-                        err_code=SquareRegisterCertifierException.ERR_CODE,
+                        msg=SquareRegisterRootCertifierException.MSG,
+                        err_code=SquareRegisterRootCertifierException.ERR_CODE,
                         ex=validation.exception,
                     )
                 )

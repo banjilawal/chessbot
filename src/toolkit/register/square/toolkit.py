@@ -12,13 +12,16 @@ from __future__ import annotations
 from typing import Type, cast
 
 from blueprint import SquareRegisterBlueprint
-from err import SquareRegisterNullException
-from  import Square, SquareRegister
+from carrier import SquareRegisterCarrierToggle
+from err import (
+    SquareRegisterBlueprintNullException, SquareRegisterCarrierNullException, SquareRegisterNullException
+)
+from register import SquareRegister
 from toolkit import RegisterToolkit
 from validator import SquareValidator
 
 
-class SquareRegisterToolkit(RegisterToolkit[Square]):
+class SquareRegisterToolkit(RegisterToolkit[SquareRegister]):
     """
     Role:
         -   Container
@@ -38,19 +41,25 @@ class SquareRegisterToolkit(RegisterToolkit[Square]):
     Super Class:
        RegisterToolkit
     """
-    a: Square
-    b: Square
+    model: Type[SquareRegister] = (
+        SquareRegister
+    )
+    carrier_model: Type[SquareRegisterCarrierToggle] = (
+        SquareRegisterCarrierToggle
+    )
+    blueprint_model: Type[SquareRegisterBlueprint] = (
+        SquareRegisterBlueprint
+    )
+    
+    null_exception: SquareRegisterNullException = (
+        SquareRegisterNullException()
+    )
+    carrier_null_exception: SquareRegisterCarrierNullException = (
+        SquareRegisterCarrierNullException()
+    )
+    blueprint_null_exception: SquareRegisterBlueprintNullException = (
+        SquareRegisterBlueprintNullException()
+    )
+
     square_validator: SquareValidator = SquareValidator()
-    null_exception = SquareRegisterNullException = SquareRegisterNullException()
-    : SquareRegister = Type[SquareRegister]
-    blueprint_: SquareRegisterBlueprint = Type[SquareRegisterBlueprint]
-    
-    
-    @property
-    def origin(self) -> Square:
-        return cast(Square, self.a)
-    
-    @property
-    def destination(self) -> Square:
-        return cast(Square, self.b)
     
