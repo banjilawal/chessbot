@@ -42,11 +42,12 @@ class ModelBuilder(Builder, Generic[T]):
         -   def execute(self, blueprint: Blueprint[T]) -> BuildResult[T]
 
     Super Class:
+        Builder
     """
     def __init__(
             self,
             bootstrapper: ModelRootCertifier[T],
-            assembler: ModelAssembler[T],
+            assembler: [ModelAssembler[T]],
     ):
         """
         Args:
@@ -60,7 +61,7 @@ class ModelBuilder(Builder, Generic[T]):
         return cast(ModelRootCertifier[T], super().bootstrapper)
     
     @property
-    def assembler(self) -> ModelRootCertifier[T]:
+    def assembler(self) -> ModelAssembler[T]:
         return cast(ModelAssembler[T], super().assembler)
     
     @abstractmethod

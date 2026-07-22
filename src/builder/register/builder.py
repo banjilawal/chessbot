@@ -10,36 +10,61 @@ version: 1.0.1
 from __future__ import annotations
 
 from abc import abstractmethod
+from ensurepip import bootstrap
 from typing import Generic, TypeVar
 
+from assembler import RegisterAssembler
+from blueprint import Blueprint
 from builder import Builder
-from register import Register
 from result import BuildResult
+from root import RegisterRootCertifier
 from util import LoggingLevelRouter
-from validator import Validator
 
-T = TypeVar("T")
+T = TypeVar("T", bound="Register")
 
 
 class RegisterBuilder(Builder, Generic[T]):
-    _endpoint_validator: Validator[T]
+    """
+    Role
+        -   Integrity Maintenance
+        -   Consistency Assurance
+        -   Build Process Owner
+
+   Responsibilities:
+        1.  Ensure a new Register instance is born safe and reliable.
+
+    Attributes:
+            assembler: [RegisterAssembler[T]],
+            bootstrapper: [RegisterRootCertifier[T]]
+
+    Provides:
+        -   def execute(self, blueprint: RegisterBlueprint[T]) -> BuildResult[Register]
+
+     Super Class:
+         Builder
+     """
     
     def __init__(
-            self,
-            endpoint_validator: Validator[T]
+            self, 
+            assembler: [RegisterAssembler[T]],
+            bootstrapper: [RegisterRootCertifier[T]],
     ):
         """
         Args:
-            endpoint_validator: Validator[T]
+            assembler: [RegisterAssembler[T]],
+            bootstrapper: [RegisterRootCertifier[T]]            
         """
-        self._endpoint_validator = endpoint_validator
+        super().__init__(bootstrapper=bootstrapper, assembler=assembler)
         
+    @property
+    def bootstrapper(self) -> RegisterRootCertifier[T]:
+        return cast(RegisterRootCertifier[T], super().bootstrapper)
     
     @property
-    def endpoint_validator(self) -> Validator[T]:
-        return self._endpoint_validator
-        
+    def assembler(self) -> RegisterAssembler[T]:
+        return cast(RegisterAssembler, super().assembler)
+    
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def execute(self, a: T, b: T) -> BuildResult[Register[T]]:
+    def execute(self, blueprint: Blueprint[T]) -> BuildResult[T]:
         pass

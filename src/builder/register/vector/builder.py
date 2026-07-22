@@ -9,84 +9,105 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from typing import Optional, cast
-
+from blueprint import VectorRegisterBlueprint
 from builder import RegisterBuilder
-from model import Vector
 from register import VectorRegister
-from result import BuildResult
+from result import BuildResult, MethodResultType
+from root import VectorRegisterRootCertifier
 from util import LoggingLevelRouter
-from validator import VectorValidator
 
 
 class VectorRegisterBuilder(RegisterBuilder[VectorRegister]):
     """
-    Role:
-        -   Model
-        -   Data Holder
+    Role
+        -   Integrity Maintenance
+        -   Consistency Assurance
+        -   Build Process Owner
 
-    Responsibilities:
-        1.  Contains the endpoints of a journey.
+   Responsibilities:
+        1.  Ensure a new Register instance is born safe and reliable.
 
     Attributes:
-        u: Vector
-        v: Vector
-        endpoint_validator: Optional[VectorValidator]
+            assembler: Optional[VectorRegisterAssembler]
+            bootstrapper: Optional[VectorRegisterRootCertifier]
 
     Provides:
+        -   def execute(self, blueprint: RegisterVectorRegisteBlueprint) -> BuildResult[Register]
 
-    Super Class:
-        RegisterBuilder
-    """
+     Super Class:
+         Builder
+     """
     
     def __init__(
             self,
-            u: Vector,
-            v: Vector,
-            endpoint_validator: Optional[VectorValidator] | None = VectorValidator(),
+            assembler: Optional[VectorRegisterAssembler] | None = VectorRegisterAssembler(),
+            bootstrapper: Optional[VectorRegisterRootCertifier] | None = VectorRegisterRootCertifier(),
     ):
         """
         Args:
-            u: Vector
-            v: Vector
-            endpoint_validator: Optional[VectorValidator]
+            assembler: Optional[VectorRegisterAssembler],
+            bootstrapper: Optional[VectorRegisterRootCertifier]
         """
-        super().__init__(
-            a=u,
-            b=v,
-            endpoint_validator=endpoint_validator
-        )
+        super().__init__(bootstrapper=bootstrapper, assembler=assembler)
+    
+    @property
+    def bootstrapper(self) -> VectorRegisterRootCertifier:
+        return cast(VectorRegisterRootCertifier, super().bootstrapper)
+    
+    @property
+    def assembler(self) -> VectorRegisterAssembler:
+        return cast(VectorRegisterAssembler, super().assembler)
+    
 
-        
-    @property
-    def u(self) -> Vector:
-        return cast(Vector, self.a)
-    
-    @property
-    def v(self) -> Vector:
-        return cast(Vector, self.b)
-    
-    @property
-    def endpoint_validator(self) -> VectorValidator:
-        return cast(VectorValidator, self.endpoint_validator)
-    
     @LoggingLevelRouter.monitor
-    def execute(self) -> BuildResult[VectorRegister]:
-        method = f"{self.__class__.__name__}.execute"
+    def execute(self, blueprint: VectorRegisterBlueprint) -> BuildResult[VectorRegister]:
+        """
+        Build a safe VectorRegister.
+
+        Action:
+            1.  Send an exception chain in the BuildResult if either
+                    -   The bootstrap is not successful.
+                    -   The assembler does not return a product.
+            2.  Otherwise, cast the assemble product then, send in the success result,
+        Args:
+            blueprint: VectorRegisterBlueprint
+        Returns:
+            BuildResult[VectorRegister]
+        Raises:
+            VectorRegisterBuilderException
+        """
+        method = f"{self.__class__.__name__}.build"
         
-        for vector in [self.u, self.v]:
-            validation = self.endpoint_validator.execute(vector)
-            # Send the exception chain in the result.
+        # Handle the case that, the bootstrap is not successful.
+        bootstrap = self._bootstrapper.execute(candidate=blueprint)
+        if bootstrap.is_failure:
+            # Send the exception chain on failure.
             return BuildResult.failure(
                 VectorRegisterBuilderException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
                     msg=VectorRegisterBuilderException.MSG,
                     err_code=VectorRegisterBuilderException.ERR_CODE,
-                    mthd_rslt=MethodResultType.BUILD_RESULT,
-                    ex=validation.exception,
+                    mthd_rslt_type=MethodResultType.BUILD_RESULT,
+                    ex=bootstrap.exception
                 )
             )
-        return BuildResult.success(VectorRegister(u=self.u, v=self.v))
-
+        # --- Handoff the validated blueprint to the assembler. ---#
+        assembly = self._assembler.execute(
+            blueprint=cast(VectorRegisterBlueprint, bootstrap.payload)
+        )
+        if assembly.is_failure:
+            # Send the exception chain on failure.
+            return BuildResult.failure(
+                VectorRegisterBuilderException(
+                    cls_mthd=method,
+                    cls_name=self.__class__.__name__,
+                    msg=VectorRegisterBuilderException.MSG,
+                    err_code=VectorRegisterBuilderException.ERR_CODE,
+                    mthd_rslt_type=MethodResultType.BUILD_RESULT,
+                    ex=assembly.exception
+                )
+            )
     
+        # --- Forward the work product to the caller. ---#
+        return BuildResult.success(cast(VectorRegister, assembly.payload))

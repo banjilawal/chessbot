@@ -6,13 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/validation/register/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/validation/register/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/validation/register/cartesian/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/validation/register/toggle/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/validation/register/cartesian/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/validation/register/toggle/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/validation/register/cartesian/mismatch/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/validation/register/toggle/mismatch/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/validation/register/cartesian/mismatch/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/validation/register/toggle/mismatch/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/root/register/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/register/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/validator/register/vector/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/validator/register/vector/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/builder/model/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/builder/model/builder.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/builder/model/state/token/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/builder/model/state/token/builder.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/builder/register/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/builder/register/builder.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/builder/register/vector/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/builder/register/vector/builder.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,7 +65,7 @@
     "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/err/root/register",
+    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/err/validation/register",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
@@ -80,11 +77,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/err/validation/register" />
       <recent name="$PROJECT_DIR$/src/err/root/register" />
       <recent name="$PROJECT_DIR$/src/toolkit/register" />
       <recent name="$PROJECT_DIR$/src/root/register" />
       <recent name="$PROJECT_DIR$/src/validator/register" />
-      <recent name="$PROJECT_DIR$/src/err" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/err/carrier/model" />
@@ -780,7 +777,7 @@
       <workItem from="1784055454795" duration="186991000" />
       <workItem from="1784319839949" duration="197060000" />
       <workItem from="1784614812729" duration="11899000" />
-      <workItem from="1784633157389" duration="68969000" />
+      <workItem from="1784633157389" duration="71840000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />

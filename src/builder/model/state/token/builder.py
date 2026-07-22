@@ -46,11 +46,11 @@ class TokenBuilder(ModelBuilder[Token]):
     
     def __init__(
             self,
-            bootstrapper: TokenRootCertifier | None = None,
-            assembler : TokenAssembler | None = None,
-            finalizer: TokenBuilderFinalizer | None = None,
+            bootstrapper: TokenRootCertifier | None = TokenRootCertifier(),
+            assembler : TokenAssembler | None = TokenAssembler(),
+            finalizer: TokenBuilderFinalizer | None = TokenBuilderFinalizer(),
     ):
-        super(bootstrapper=bootstrapper, assembler=assembler)
+        super().__init__(bootstrapper=bootstrapper, assembler=assembler)
         self._finalizer = finalizer or TokenBuilderFinalizer()
 
     
