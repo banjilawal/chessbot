@@ -5,39 +5,27 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/carrier/toggle/vector_toggle/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/carrier/toggle/vector_toggle/carrier.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/root/model/vector/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/root/model/vector/home/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/root/model/vector/home/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/root/model/vector/rank/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/root/model/vector/rank/exception.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blueprint/toggle/vector/blueprint.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/blueprint/toggle/vector/blueprint.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/carrier/carrier.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/carrier/carrier.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/carrier/model/arena/carrier.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/carrier/model/arena/carrier.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/carrier/model/board/carrier.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/carrier/model/board/carrier.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/carrier/model/coord/carrier.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/carrier/model/coord/carrier.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/carrier/model/edge/carrier.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/carrier/model/edge/carrier.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/carrier/model/node/carrier.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/carrier/model/node/carrier.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/carrier/model/player/carrier.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/carrier/model/player/carrier.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/carrier/model/prisoner/carrier.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/carrier/model/prisoner/carrier.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/carrier/model/rank/carrier.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/carrier/model/rank/carrier.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/carrier/model/scalar/carrier.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/carrier/model/scalar/carrier.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/carrier/model/square/carrier.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/carrier/model/square/carrier.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/carrier/model/team/carrier.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/carrier/model/team/carrier.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/carrier/model/token/carrier.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/carrier/model/token/carrier.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/carrier/model/vector/carrier.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/carrier/model/vector/carrier.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/carrier/register/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/carrier/register/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/carrier/register/carrier.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/carrier/register/carrier.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/carrier/register/identity/carrier.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/carrier/register/identity/carrier.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/carrier/register/square/carrier.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/carrier/register/square/carrier.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/carrier/register/toggle/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/carrier/register/toggle/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/carrier/register/toggle/carrier.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/carrier/register/toggle/carrier.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/carrier/register/vector/carrier.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/carrier/register/vector/carrier.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/carrier/toggle/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/carrier/toggle/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/carrier/toggle/vector/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/carrier/toggle/vector/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/carrier/toggle/vector/toggle.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/carrier/toggle/vector/carrier.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/consistency/token/checker.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/consistency/token/checker.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/carrier/register/rank/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/carrier/register/rank/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/carrier/toggle/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/carrier/toggle/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/root/model/square/certifier.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/model/square/certifier.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/root/model/token/certifier.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/model/token/certifier.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/root/model/vector/certifier.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/model/vector/certifier.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/root/toggle/vector/certifier.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/toggle/vector/certifier.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/toggle/vector/toggle.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/toggle/vector/toggle.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/toolkit/model/state/token/toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/toolkit/model/state/token/toolkit.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/toolkit/toggle/vector/toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/toolkit/toggle/vector/toolkit.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/root/model/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/root/model/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/root/model/arena/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/root/model/arena/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/root/model/hostage/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/root/model/hostage/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/root/model/vector/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/root/register/vector/certifier.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/register/vector/certifier.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/toolkit/register/operand/toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/toolkit/register/operand/toolkit.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -93,7 +81,7 @@
     "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/err/carrier/toggle",
+    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/carrier/toggle",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
@@ -105,11 +93,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/carrier/toggle" />
+      <recent name="$PROJECT_DIR$/src/err/root/model" />
       <recent name="$PROJECT_DIR$/src/err/carrier/toggle" />
       <recent name="$PROJECT_DIR$/src/err/carrier" />
       <recent name="$PROJECT_DIR$/src/err/carrier/register" />
-      <recent name="$PROJECT_DIR$/src/err/carrier/model/arena" />
-      <recent name="$PROJECT_DIR$/src/err/validation/toggle" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/err/carrier/model" />
@@ -805,7 +793,7 @@
       <workItem from="1784055454795" duration="186991000" />
       <workItem from="1784319839949" duration="197060000" />
       <workItem from="1784614812729" duration="11899000" />
-      <workItem from="1784633157389" duration="56557000" />
+      <workItem from="1784633157389" duration="57801000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />

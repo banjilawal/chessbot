@@ -1,7 +1,7 @@
-# src/err/root/model/arena/exception.py
+# src/err/root/model/vector/rank/exception.py
 
 """
-Module: err.root.model.arena.exception
+Module: err.root.model.vector.rank.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -11,23 +11,24 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import ModelRootCertifierException
+
+from err import ValidatorException
 from result import MethodResultType
 
 
 __all__ = [
-    # ======================# ARENA_ROOT_CERTIFIER_FAILURE #======================#
-    "ArenaRootCertifierException",
+    # ======================# RANK_PROCESSOR_FAILURE #======================#
+    "BlueprintRankExtractorException",
 ]
 
-# ======================# ARENA_ROOT_CERTIFIER_FAILURE #======================#
-class ArenaRootCertifierException(ModelRootCertifierException):
+# ======================# RANK_PROCESSOR_FAILURE #======================#
+class BlueprintRankExtractorException(ValidatorException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a candidate failed an ArenaRootCertifier test.
+        1.  Indicate that a candidate failed a RankProcessor encountered an error.
 
     Attributes:
             msg: Optional[str]
@@ -42,10 +43,10 @@ class ArenaRootCertifierException(ModelRootCertifierException):
     Provides:
 
     Super Class:
-        ModelRootCertifierException
+        ValidatorException
     """
-    MSG = "Arena root certification failure."
-    ERR_CODE = "ARENA_ROOT_CERTIFIER_FAILURE"
+    MSG = "RankProcessor encountered an error."
+    ERR_CODE = "RANK_PROCESSOR_FAILURE"
     
     def __init__(
             self,

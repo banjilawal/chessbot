@@ -75,11 +75,17 @@ class Register(Any):
     
     @property
     def is_empty(self) -> bool:
-        return self._a is None and self._b is None
+        return self.size == 0
     
     @property
-    def is_full(self) -> bool:
-        return self._a is not None and self._b is not None
+    def is_right_size(self) -> bool:
+        return self.size == 2
+    
+    @property
+    def is_wrong_size(self) -> bool:
+        return not (
+                self.is_empty and self.is_right_size
+        )
     
     @property
     def size(self) -> int:

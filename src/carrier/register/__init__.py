@@ -15,4 +15,4 @@ from .toggle import *
 from .square import *
 
 # Modules
-from .carrier import RegisterCarrierToggle
+from .carrier import RegisterCarrier

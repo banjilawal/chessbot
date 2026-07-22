@@ -1,7 +1,7 @@
-# src/err/root/model/arena/exception.py
+# src/err/root/model/vector/exception.py
 
 """
-Module: err.root.model.arena.exception
+Module: err.root.model.vector.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -16,18 +16,18 @@ from result import MethodResultType
 
 
 __all__ = [
-    # ======================# ARENA_ROOT_CERTIFIER_FAILURE #======================#
-    "ArenaRootCertifierException",
+    # ======================# VECTOR_ROOT_CERTIFIER_FAILURE #======================#
+    "VectorRootCertifierException",
 ]
 
-# ======================# ARENA_ROOT_CERTIFIER_FAILURE #======================#
-class ArenaRootCertifierException(ModelRootCertifierException):
+# ======================# VECTOR_ROOT_CERTIFIER_FAILURE #======================#
+class VectorRootCertifierException(ModelRootCertifierException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a candidate failed an ArenaRootCertifier test.
+        1.  Indicate that a candidate failed a VectorRootCertifier test.
 
     Attributes:
             msg: Optional[str]
@@ -44,8 +44,8 @@ class ArenaRootCertifierException(ModelRootCertifierException):
     Super Class:
         ModelRootCertifierException
     """
-    MSG = "Arena root certification failure."
-    ERR_CODE = "ARENA_ROOT_CERTIFIER_FAILURE"
+    MSG = "Vector root certification failure."
+    ERR_CODE = "VECTOR_ROOT_CERTIFIER_FAILURE"
     
     def __init__(
             self,

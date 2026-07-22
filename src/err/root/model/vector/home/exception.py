@@ -1,7 +1,7 @@
-# src/err/root/model/hostage/exception.py
+# src/err/root/model/vector/home/exception.py
 
 """
-Module: err.root.model.hostage.exception
+Module: err.root.model.vector.home.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -11,23 +11,24 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import ModelRootCertifierException
+
+from err import ValidatorException
 from result import MethodResultType
 
 
 __all__ = [
-    # ======================# HOSTAGE_ROOT_CERTIFIER_FAILURE #======================#
-    "HostageRootCertifierException",
+    # ======================# HOME_SQUARE_PROCESSOR_FAILURE #======================#
+    "BlueprintHomeSquareExtractorException",
 ]
 
-# ======================# HOSTAGE_ROOT_CERTIFIER_FAILURE #======================#
-class HostageRootCertifierException(ModelRootCertifierException):
+# ======================# HOME_SQUARE_PROCESSOR_FAILURE #======================#
+class BlueprintHomeSquareExtractorException(ValidatorException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a candidate failed a HostageRootCertifier test.
+        1.  Indicate that a candidate failed a HomeSquareProcessor encountered an error.
 
     Attributes:
             msg: Optional[str]
@@ -42,10 +43,10 @@ class HostageRootCertifierException(ModelRootCertifierException):
     Provides:
 
     Super Class:
-        ModelRootCertifierException
+        ValidatorException
     """
-    MSG = "Hostage root certification failure."
-    ERR_CODE = "HOSTAGE_ROOT_CERTIFIER_FAILURE"
+    MSG = "HomeSquareProcessor encountered an error."
+    ERR_CODE = "HOME_SQUARE_PROCESSOR_FAILURE"
     
     def __init__(
             self,

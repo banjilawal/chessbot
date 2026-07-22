@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, Dict, Optional, cast
 
 
-from carrier import EntityCarrierToggle, RegisterCarrierToggle
+from carrier import EntityCarrierToggle, RegisterCarrier
 from register import VectorRegister
 
 
@@ -97,7 +97,7 @@ class VectorRegisterCarrierToggle(EntityCarrierToggle[VectorRegister]):
     def __eq__(self, other):
         if other is self: return True
         if other is None: return False
-        if isinstance(other, RegisterCarrierToggle):
+        if isinstance(other, RegisterCarrier):
             return self.entity == other.entity
         return False
     

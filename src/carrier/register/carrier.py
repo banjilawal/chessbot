@@ -15,8 +15,11 @@ from carrier import EntityCarrierToggle
 from register import Register
 
 
-class RegisterCarrierToggle(EntityCarrierToggle[Register], ABC):
-    pass
+class RegisterCarrier(EntityCarrierToggle[Register], ABC):
+    def __init__(self):
+        super().__init__()
+
+
 
 
 

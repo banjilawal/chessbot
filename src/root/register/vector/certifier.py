@@ -26,7 +26,8 @@ class VectorToggleRegisterCertifier(RootCertifier[VectorToggleRegister]):
 
 
     Responsibilities:
-        1.  Ensure a VectorToggleRegisterBlueprint instance is certified safe, reliable and consistent before use.
+        1.  Ensure a VectorToggleRegisterBlueprint instance is certified safe,
+            reliable and consistent before use.
 
     Attributes:
         toolkit: VectorToggleRegisterToolkit
@@ -38,7 +39,11 @@ class VectorToggleRegisterCertifier(RootCertifier[VectorToggleRegister]):
         Certifier
     """
     
-    def __init__(self, toolkit: VectorToggleRegisterToolkit | None = VectorToggleRegisterToolkit()):
+    def __init__(
+            self,
+            toolkit: VectorToggleRegisterToolkit |
+                     None = VectorToggleRegisterToolkit()
+    ):
         """
         Args:
             toolkit: VectorToggleRegisterToolkit
@@ -93,7 +98,8 @@ class VectorToggleRegisterCertifier(RootCertifier[VectorToggleRegister]):
         blueprint= carrier.extract_blueprint()
         
         # Handle the wrong number of toggles cases.
-        :
+        if blueprint.
+            
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 VectorToggleRegisterCertifierException(

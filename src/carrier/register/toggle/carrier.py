@@ -9,14 +9,15 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from typing import Optional, cast
+from typing import Optional
 
-from carrier import RegisterCarrierToggle
+from blueprint import VectorToggleRegisterBlueprint
+from carrier import RegisterCarrier
 from register import VectorToggleRegister
 from toggle import VectorToggle
 
 
-class VectorToggleRegisterCarrierToggle(RegisterCarrierToggle[VectorToggle]):
+class VectorToggleRegisterCarrier(RegisterCarrier[VectorToggle]):
     """
     Role:
         -   Addressing
@@ -95,7 +96,7 @@ class VectorToggleRegisterCarrierToggle(RegisterCarrierToggle[VectorToggle]):
     def __eq__(self, other):
         if other is self: return True
         if other is None: return False
-        if isinstance(other, RegisterCarrierToggle):
+        if isinstance(other, RegisterCarrier):
             return self.entity == other.entity
         return False
     

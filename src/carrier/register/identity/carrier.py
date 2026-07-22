@@ -13,11 +13,11 @@ from _ast import Dict
 from typing import Any, Optional, cast
 
 from blueprint import IdentityRegisterBlueprint
-from carrier import RegisterCarrierToggle
+from carrier import RegisterCarrier
 from register import IdentityRegister
 
 
-class IdentityRegisterCarrierToggle(RegisterCarrierToggle[IdentityRegister]):
+class IdentityRegisterCarrier(RegisterCarrier[IdentityRegister]):
     """
     Role:
         -   Addressing
@@ -98,7 +98,7 @@ class IdentityRegisterCarrierToggle(RegisterCarrierToggle[IdentityRegister]):
     def __eq__(self, other):
         if other is self: return True
         if other is None: return False
-        if isinstance(other, RegisterCarrierToggle):
+        if isinstance(other, RegisterCarrier):
             return self.entity == other.entity
         return False
     

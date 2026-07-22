@@ -70,3 +70,22 @@ class RegisterBlueprint(Blueprint[Register]):
     @property
     def b(self) -> Any:
         return self._b
+    
+    @property
+    def is_empty(self) -> bool:
+        return self.size == 0
+    
+    @property
+    def is_right_size(self) -> bool:
+        return self.size == 2
+    
+    @property
+    def is_wrong_size(self) -> bool:
+        return not (
+                self.is_empty and self.is_right_size
+        )
+    
+    @property
+    def size(self) -> int:
+        return len([self._a, self._b])
+    
