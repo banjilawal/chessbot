@@ -11,7 +11,7 @@ from __future__ import annotations
 
 
 from schema import QuadrantStepFunction
-from stepper import QuadrantStepper
+from mapping import QuadrantStepper
 
 
 class SouthwestQuadrantStepper(QuadrantStepper):

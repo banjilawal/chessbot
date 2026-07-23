@@ -1,7 +1,7 @@
-# src/stepper/axis/west/stepper.py
+# src/mapping/axis/west/mapping.py
 
 """
-Module: stepper.axis.west.stepper
+Module: mapping.axis.west.mapping
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -9,12 +9,14 @@ version: 1.0.1
 
 from __future__ import annotations
 
+from mapping import AxialMappingFunction
 from model import Vector
+from schema import AxialDelta
 from space import WestAxis
-from stepper import AxialDelta
 
 
-class WestAxisDelta(AxialDelta[WestAxis]):
+
+class WestAxisMapper(AxialMappingFunction[WestAxis]):
     """
     Role:
         -   Computation
@@ -23,18 +25,17 @@ class WestAxisDelta(AxialDelta[WestAxis]):
         Define delta_vector for getting the next vector on west of origin.
             
     Attributes:
-        delta: Vector
+        delta: Vector = AxialMappingFunction.WEST.vecto
 
     Provides:
 
     Super Class:
-        AxialDelta
+        AxialMappingFunction
     """
     
-    def __init__(self, delta: Vector = AxialDelta):
+    def __init__(self, delta: Vector = AxialDelta.WEST.vector):
         """
         Args:
-            origin: Vector,
-            delta: Vector = AxialDelta.WEST.vector
+            delta: Vector = AxialMappingFunction.WEST.vector
         """
         super().__init__(delta=delta)

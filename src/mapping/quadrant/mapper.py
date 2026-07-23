@@ -1,7 +1,7 @@
-# src/stepper/axis/stepper.py
+# src/mapping/quadrant/mapping.py
 
 """
-Module: stepper.axis.stepper
+Module: mapping.quadrant.mapping
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -11,52 +11,59 @@ from __future__ import annotations
 
 from typing import Generic, TypeVar, cast
 
-from err import AxisStepperException
+from err import QuadrantMappingException
 from model import Vector
 from result import ComputationResult, MethodResultType
-from stepper import SpaceStepper
+from mapping import SpaceMappingFunction
 from util import LoggingLevelRouter
 
-T = TypeVar("T", bound="AxialSpace")
+T = TypeVar("T", bound="QuadrantSpace")
 
-class AxialDelta(SpaceStepper, Generic[T]):
+class QuadrantMappingFunction(SpaceMappingFunction, Generic[T]):
     """
     Role:
         -   Computation
 
     Responsibilities:
-        1.  Get the next vector, V, after U in Axial Space, by addition of a delta_vector
-                -   V.x = U.x + delta.x
-                -   V.y = U.x + delta.y
+        1.  Get the next vector, V, after U in Quadrant Space, using the linear functions:
+                -   V.x = U.x + x_step
+                -   V.y = (2 * slope * U.y) + slope
 
     Attributes:
-        origin: Vector
-        delta: Vector
+        x_step: int
+        slope: int
 
     Provides:
         def next(self, vector: Vector) -> ComputationResult[Vector]
 
     Super Class:
-        SpaceStepper
+        SpaceMappingFunction
     """
-    _delta: Vector
+    _x_step: int
+    _slope: int
     
-    def __init__(self, delta: Vector,):
+    def __init__(self, x_step: int, slope: int,):
         """
         Args:
-            delta: Vector
+            x_step: int
+            slope: int
         """
         super().__init__()
-        self._delta = delta
+        self._x_step = x_step
+        self._slope = slope
         
     @property
-    def delta(self) -> Vector:
-        return self._delta
+    def x_step(self) -> int:
+        return self._x_step
+    
+    @property
+    def slope(self) -> int:
+        return self._slope
     
     @LoggingLevelRouter.monitor
     def next(self, vector: Vector) -> ComputationResult[Vector]:
         """
-        Get the next Vector using addition.
+        Get the next Vector using a linear function.
 
         Action:
             1.  Set
@@ -70,7 +77,7 @@ class AxialDelta(SpaceStepper, Generic[T]):
         Returns:
             ComputationResult[Vector]
         Raises:
-             AxisStepperException
+             QuadrantMappingException
         """
         method = f"{self.__class__.__name__}.next"
         
@@ -79,34 +86,34 @@ class AxialDelta(SpaceStepper, Generic[T]):
         if validation.is_failure:
             # Send an exception chain in the result.
             return ComputationResult.failure(
-                AxisStepperException(
+                QuadrantMappingException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=AxisStepperException.MSG,
-                    err_code=AxisStepperException.ERR_CODE,
+                    msg=QuadrantMappingException.MSG,
+                    err_code=QuadrantMappingException.ERR_CODE,
                     mthd_rslt_type=MethodResultType.COMPUTATION_RESULT,
                     ex=validation.exception,
                 ),
             )
         current = cast(Vector, validation.payload)
         
-        # --- Get next by adding current and delta. ---#
-        addition = self.math.add_vector.execute(
-            u=current,
-            v=self._delta,
+        # --- Build a new vector from the current. ---#
+        build = self.math.vector.builder.execute(
+            x=current.x + self._x_step,
+            y=(2 * current.y * self._slope) + self.slope
         )
-        # Handle the case that, the addition does not produce a result.
-        if addition.is_failure:
+        # Handle the case that, the build is not successful.
+        if build.is_failure:
             # Send an exception chain in the result.
             return ComputationResult.failure(
-                AxisStepperException(
+                QuadrantMappingException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=AxisStepperException.MSG,
-                    err_code=AxisStepperException.ERR_CODE,
+                    msg=QuadrantMappingException.MSG,
+                    err_code=QuadrantMappingException.ERR_CODE,
                     mthd_rslt_type=MethodResultType.COMPUTATION_RESULT,
-                    ex=addition.exception,
+                    ex=build.exception,
                 ),
             )
         # --- Forward the work product to the caller. ---#
-        return ComputationResult.success(cast(Vector, addition.payload))
+        return ComputationResult.success(cast(Vector, build.payload))

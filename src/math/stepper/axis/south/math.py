@@ -29,7 +29,7 @@ class SouthAxisStepper(AxisStepper):
     Provides:
 
     Super Class:
-        AxialDelta
+        AxialMappingFunction
     """
 
     

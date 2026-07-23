@@ -1,7 +1,7 @@
-# src/stepper/quadrant/northwest/stepper.py
+# src/mapping/quadrant/northwest/mapping.py
 
 """
-Module: stepper.quadrant.northwest.stepper
+Module: mapping.quadrant.northwest.mapping
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -9,13 +9,13 @@ version: 1.0.1
 
 from __future__ import annotations
 
-
+from mapping import QuadrantMappingFunction
 from schema import QuadrantStepFunction
 from space import NorthwestQuadrant
-from stepper import QuadrantStepper
 
 
-class NorthwestQuadrantStepper(QuadrantStepper[NorthwestQuadrant]):
+
+class NorthwestMapFunction(QuadrantMappingFunction[NorthwestQuadrant]):
     """
     Role:
         -   Computation
@@ -32,7 +32,7 @@ class NorthwestQuadrantStepper(QuadrantStepper[NorthwestQuadrant]):
     Provides:
 
     Super Class:
-        QuadrantStepper
+        QuadrantMappingFunction
     """
     
     def __init__(

@@ -1,7 +1,7 @@
-# src/stepper/stepper.py
+# src/mapping/mapping.py
 
 """
-Module: stepper.stepper
+Module: mapping.mapping
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -20,7 +20,7 @@ from util import LoggingLevelRouter
 T = TypeVar("T", bound="Space")
 
 
-class SpaceStepper(ABC, Generic[T]):
+class SpaceMappingFunction(ABC, Generic[T]):
     """
     Role:
         -   Computation

@@ -29,7 +29,7 @@ class EastAxisStepper(AxisStepper):
     Provides:
 
     Super Class:
-        AxialDelta
+        AxialMappingFunction
     """
 
     def __init__(self, delta: Vector = AxialDelta.EAST.vector):

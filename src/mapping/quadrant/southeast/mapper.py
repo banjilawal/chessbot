@@ -1,7 +1,7 @@
-# src/stepper/quadrant/southeast/stepper.py
+# src/mapping/quadrant/southeast/mapping.py
 
 """
-Module: stepper.quadrant.southeast.stepper
+Module: mapping.quadrant.southeast.mapping
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -9,13 +9,13 @@ version: 1.0.1
 
 from __future__ import annotations
 
-
+from mapping import QuadrantMappingFunction
 from schema import QuadrantStepFunction
 from space import SoutheastQuadrant
-from stepper import QuadrantStepper
 
 
-class SoutheastQuadrantStepper(QuadrantStepper[SoutheastQuadrant]):
+
+class SoutheastMapFunction(QuadrantMappingFunction[SoutheastQuadrant]):
     """
     Role:
         -   Computation
@@ -32,7 +32,7 @@ class SoutheastQuadrantStepper(QuadrantStepper[SoutheastQuadrant]):
     Provides:
 
     Super Class:
-        QuadrantStepper
+        QuadrantMappingFunction
     """
     
     def __init__(

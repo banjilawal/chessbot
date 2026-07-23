@@ -16,11 +16,11 @@ from result import MethodResultType
 
 __all__ = [
     # ======================# QUADRANT_STEPPER_FAILURE #======================#
-    "QuadrantStepperException",
+    "QuadrantMappingException",
 ]
 
 # ======================# QUADRANT_STEPPER_FAILURE #======================#
-class QuadrantStepperException(LinearStepperException):
+class QuadrantMappingException(LinearStepperException):
     """
     Role:
         -   Error Tracing

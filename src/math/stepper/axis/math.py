@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import cast
 
-from err import AxisStepperException
+from err import AxisMappingException
 from math import Stepper
 from model import Vector
 from register import VectorRegister
@@ -63,7 +63,7 @@ class AxisStepper(Stepper):
         Returns:
             ComputationResult[Vector]
         Raises:
-             AxisStepperException
+             AxisMappingException
         """
         method = f"{self.__class__.__name__}"
         
@@ -75,11 +75,11 @@ class AxisStepper(Stepper):
         if computation.is_failure:
             # Send an exception chain in the result.
             return ComputationResult.failure(
-                AxisStepperException(
+                AxisMappingException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=AxisStepperException.MSG,
-                    err_code=AxisStepperException.ERR_CODE,
+                    msg=AxisMappingException.MSG,
+                    err_code=AxisMappingException.ERR_CODE,
                     mthd_rslt_type=MethodResultType.COMPUTATION_RESULT,
                     ex=computation.exception,
                 ),
