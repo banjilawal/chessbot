@@ -1,21 +1,18 @@
-# src/space/__init__.py
+# src/stepper/__init__.py
 
 """
-Module: space.__init__
+Module: stepper.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
 """
 
-# =========== SPACE PACKAGE ===========#
+# =========== STEPPER PACKAGE ===========#
 
 # Packages
-from .basis import *
-from .offset import *
-from .pawn import *
-from .traversal import *
-from .ruleset import *
+from .axis import *
+from .quadrant import *
 
 
 # Modules
-from .space import MovementPattern
+from .stepper import SpaceStepper

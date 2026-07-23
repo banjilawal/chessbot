@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from math import AxisStepper
 from model import Vector
-from schema import AxisDelta
+from schema import AxialDelta
 
 
 
@@ -29,11 +29,11 @@ class SouthAxisStepper(AxisStepper):
     Provides:
 
     Super Class:
-        AxisStepper
+        AxialDelta
     """
 
     
-    def __init__(self, delta: Vector = AxisDelta.SOUTH.vector):
+    def __init__(self, delta: Vector = AxialDelta.SOUTH.vector):
         """
         Args:
             delta: Vector

@@ -13,5 +13,5 @@ version: 1.0.1
 
 
 # Modules
-from .schema import AxisDelta
+from .schema import AxialDelta
 

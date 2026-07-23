@@ -33,7 +33,7 @@ class AxisSpaceFactory(Builder[AxisTraversalPattern]):
 
     Attributes:
         origin: Vector
-        stepper: AxisStepper
+        stepper: AxialDelta
         toggle: OrientationToggle
         
     Provides:
@@ -57,7 +57,7 @@ class AxisSpaceFactory(Builder[AxisTraversalPattern]):
         """
         Args:
             endpoints: AxisLinear_Section
-            stepper: AxisStepper
+            stepper: AxialDelta
             toggle: OrientationToggle
             vector_validator: Optional[VectorValidator]
         """

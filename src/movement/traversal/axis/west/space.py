@@ -24,7 +24,7 @@ class WestTraversalPattern(AxisTraversalPattern):
         1.  Provide a set of target vectors which are west of origin.
 
     Attributes:
-        stepper: Optional[WestAxisStepper]
+        stepper: Optional[WestAxisDelta]
 
     Provides:
 
@@ -38,7 +38,7 @@ class WestTraversalPattern(AxisTraversalPattern):
     ):
         """
         Args:
-            stepper: Optional[WestAxisStepper]
+            stepper: Optional[WestAxisDelta]
         """
         super().__init__(stepper=stepper)
     

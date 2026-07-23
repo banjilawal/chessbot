@@ -10,8 +10,6 @@ version: 1.0.1
 # =========== MATH.STEPPER PACKAGE ===========#
 
 # Packages
-from .axis import *
-from .quadrant import *
 
 # Modules
 from .math import Stepper
