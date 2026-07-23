@@ -42,25 +42,9 @@ class OffsetPattern(MovementPattern, Generic[T]):
             offsets: VectorSet
         """
         self._offsets = offsets
-
+        
     @property
-    def iterator(self) -> Iterator[Vector]:
-        return self._offsets.iterator
-    
-    @property
-    def size(self) -> int:
-        return self._offsets.size
-    
-    @property
-    def is_empty(self) -> bool:
-        return self._offsets.is_empty
-    
-    @property
-    def is_not_empty(self) -> bool:
-        return not self.is_empty
-    
-    @property
-    def is_a_point(self) -> bool:
-        return self._offsets.size == 1
+    def offsets(self) -> VectorSet:
+        return self._offsets
     
     
