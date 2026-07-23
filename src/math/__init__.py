@@ -10,7 +10,7 @@ version: 1.0.1
 # =========== MATH PACKAGE ===========#
 
 # Packages
-from .basis import *
+from .sequence import *
 from .stepper import *
 
 # Modules

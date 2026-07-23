@@ -1,7 +1,7 @@
 # src/math/math.py
 
 """
-Module: math.space
+Module: math.math
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
