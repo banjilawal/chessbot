@@ -9,18 +9,19 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from abc import ABC, abstractmethod
+from abc import abstractmethod
 from typing import Any, Generic, TypeVar
 
 
 from result import ValidationResult
+from root import RootCertifier
 from toolkit import RegisterToolkit
 from util import LoggingLevelRouter
 
 T = TypeVar("T", bound="Register")
 
 
-class RegisterRootCertifier(ABC, Generic[T]):
+class RegisterRootCertifier(RootCertifier, Generic[T]):
     """
     Role
         -   Validator

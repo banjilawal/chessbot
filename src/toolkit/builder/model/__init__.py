@@ -10,8 +10,7 @@ version: 1.0.1
 # =========== TOOLKIT.BUILDER.MODEL PACKAGE ===========#
 
 # Packages
-from .identity import *
-from .model import *
+from .vector import *
 
 # Modules
-from .toolkit import ModelBuildToolkit
+from .toolkit import ModelBuilderToolkit

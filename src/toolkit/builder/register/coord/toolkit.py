@@ -14,10 +14,10 @@ from typing import Optional, cast
 from assembler import CoordRegisterAssembler
 from register import CoordRegister
 from root import CoordRegisterRootCertifier
-from toolkit import RegisterBuildToolkit
+from toolkit import RegisterBuilderToolkit
 
 
-class CoordRegisterBuildToolkit(RegisterBuildToolkit[CoordRegister]):
+class CoordRegisterBuilderToolkit(RegisterBuilderToolkit[CoordRegister]):
     """
     Role:
         -   Dependency Management
@@ -32,7 +32,7 @@ class CoordRegisterBuildToolkit(RegisterBuildToolkit[CoordRegister]):
     Provides:
 
     Super Class:
-        RegisterBuildToolkit
+        RegisterBuilderToolkit
     """
     
     def __init__(

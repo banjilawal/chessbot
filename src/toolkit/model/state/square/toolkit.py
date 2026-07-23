@@ -36,7 +36,7 @@ class SquareToolkit(StateModelToolkit[Square]):
     Attributes:
         model: Square = Square
         blueprint_model = SquareBlueprint
-        operand_model: SquareDtoOperand
+        carrier_model: SquareDtoOperand
         
         null_exception: SquareNullException = SquareNullException()
         blueprint_null_exception: SquareBlueprintNullException = SquareBlueprintNullException()

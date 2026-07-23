@@ -14,10 +14,10 @@ from typing import Optional, cast
 from assembler import NumberRegisterAssembler
 from register import NumberRegister
 from root import NumberRegisterRootCertifier
-from toolkit import RegisterBuildToolkit
+from toolkit import RegisterBuilderToolkit
 
 
-class NumberRegisterBuildToolkit(RegisterBuildToolkit[NumberRegister]):
+class NumberRegisterBuilderToolkit(RegisterBuilderToolkit[NumberRegister]):
     """
     Role:
         -   Dependency Management
@@ -32,7 +32,7 @@ class NumberRegisterBuildToolkit(RegisterBuildToolkit[NumberRegister]):
     Provides:
 
     Super Class:
-        RegisterBuildToolkit
+        RegisterBuilderToolkit
     """
     
     def __init__(

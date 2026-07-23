@@ -15,7 +15,7 @@ from builder import RegisterBuilder
 from builder.register.builder import T
 from model import Square
 from register import SquareRegister
-from toolkit import RegisterBuildToolkit
+from toolkit import RegisterBuilderToolkit
 from util import LoggingLevelRouter
 
 

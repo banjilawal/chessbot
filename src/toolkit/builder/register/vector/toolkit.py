@@ -14,10 +14,10 @@ from typing import Optional, cast
 from assembler import VectorRegisterAssembler
 from register import VectorRegister
 from root import VectorRegisterRootCertifier
-from toolkit import RegisterBuildToolkit
+from toolkit import RegisterBuilderToolkit
 
 
-class VectorRegisterBuildToolkit(RegisterBuildToolkit[VectorRegister]):
+class VectorRegisterBuilderToolkit(RegisterBuilderToolkit[VectorRegister]):
     """
     Role:
         -   Dependency Management
@@ -32,7 +32,7 @@ class VectorRegisterBuildToolkit(RegisterBuildToolkit[VectorRegister]):
     Provides:
 
     Super Class:
-        RegisterBuildToolkit
+        RegisterBuilderToolkit
     """
     
     def __init__(

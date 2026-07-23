@@ -17,7 +17,7 @@ from toolkit import BuilderToolkit
 
 T = TypeVar("T", bound="Model")
 
-class ModelBuildToolkit(BuilderToolkit, Generic[T]):
+class ModelBuilderToolkit(BuilderToolkit, Generic[T]):
     """
     Role:
         -   Dependency Management

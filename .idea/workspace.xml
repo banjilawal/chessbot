@@ -5,144 +5,105 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/toolkit/builder/model/vector/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/toolkit/builder/model/vector/toolkit.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/toolkit/builder/register/coord/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/toolkit/builder/register/coord/toolkit.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/toolkit/builder/register/number/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/toolkit/builder/register/number/toolkit.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/toolkit/builder/register/toggle/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/toolkit/builder/register/toggle/toolkit.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/toolkit/validator/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/toolkit/validator/context/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/toolkit/validator/context/board/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/toolkit/validator/context/board/builder.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/toolkit/validator/context/coord/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/toolkit/validator/context/coord/builder.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/toolkit/validator/context/edge/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/toolkit/validator/context/edge/builder.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/toolkit/validator/context/formation/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/toolkit/validator/context/formation/builder.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/toolkit/validator/context/game/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/toolkit/validator/context/game/builder.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/toolkit/validator/context/hostage/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/toolkit/validator/context/hostage/builder.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/toolkit/validator/context/lingeo/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/toolkit/validator/context/lingeo/builder.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/toolkit/validator/context/node/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/toolkit/validator/context/node/builder.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/toolkit/validator/context/persona/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/toolkit/validator/context/persona/builder.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/toolkit/validator/context/player/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/toolkit/validator/context/player/builder.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/toolkit/validator/context/rank/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/toolkit/validator/context/rank/builder.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/toolkit/validator/context/schema/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/toolkit/validator/context/schema/builder.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/toolkit/validator/context/snapshot/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/toolkit/validator/context/snapshot/builder.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/toolkit/validator/context/square/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/toolkit/validator/context/square/builder.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/toolkit/validator/context/team/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/toolkit/validator/context/team/builder.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/toolkit/validator/context/token/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/toolkit/validator/context/token/builder.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/toolkit/validator/model/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/toolkit/validator/model/toolkit.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/toolkit/validator/model/vector/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/toolkit/validator/model/vector/toolkit.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/toolkit/validator/register/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/toolkit/validator/register/coord/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/toolkit/validator/register/coord/toolkit.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/toolkit/validator/register/number/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/toolkit/validator/register/number/toolkit.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/toolkit/validator/register/toggle/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/toolkit/validator/register/toggle/toolkit.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/toolkit/validator/register/toolkit.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/toolkit/validator/register/vector/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/toolkit/validator/register/vector/toolkit.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/toolkit/validator/toolkit.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/validator/priming/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/validator/priming/priming.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/toolkit/builder/context/square/toolkit.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/toolkit/builder/model/arena/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/toolkit/builder/model/arena/toolkit.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/toolkit/builder/model/board/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/toolkit/builder/model/board/toolkit.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/toolkit/builder/model/coord/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/toolkit/builder/model/coord/toolkit.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/toolkit/builder/model/player/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/toolkit/builder/model/player/toolkit.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/toolkit/builder/model/rank/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/toolkit/builder/model/rank/toolkit.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/toolkit/builder/model/scalar/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/toolkit/builder/model/scalar/toolkit.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/toolkit/builder/model/square/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/toolkit/builder/model/square/toolkit.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/toolkit/builder/model/team/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/toolkit/builder/model/team/toolkit.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/toolkit/builder/model/token/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/toolkit/builder/model/token/toolkit.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/toolkit/builder/toggle/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/toolkit/builder/toggle/toolkit.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/toolkit/builder/toggle/vector/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/toolkit/builder/toggle/vector/toolkit.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/bootstrapper/validator/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/bootstrapper/validator/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bootstrapper/validator/toggle/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/bootstrapper/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bootstrapper/validator/toggle/bootstrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/bootstrapper/bootstrapper.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/carrier/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/carrier/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/carrier/carrier.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/carrier/carrier.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/carrier/model/arena/carrier.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/carrier/model/arena/carrier.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/carrier/model/board/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/carrier/model/board/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/carrier/model/board/carrier.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/carrier/model/board/carrier.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/carrier/model/coord/carrier.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/carrier/model/coord/carrier.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/carrier/model/edge/carrier.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/carrier/model/edge/carrier.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/carrier/model/node/carrier.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/carrier/model/node/carrier.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/carrier/model/player/carrier.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/carrier/model/player/carrier.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/carrier/model/prisoner/carrier.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/carrier/model/prisoner/carrier.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/carrier/model/rank/carrier.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/carrier/model/rank/carrier.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/carrier/model/scalar/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/carrier/model/scalar/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/carrier/model/scalar/carrier.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/carrier/model/scalar/carrier.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/carrier/model/square/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/carrier/model/square/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/carrier/model/square/carrier.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/carrier/model/square/carrier.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/carrier/model/team/carrier.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/carrier/model/team/carrier.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/carrier/model/token/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/carrier/model/token/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/carrier/model/token/carrier.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/carrier/model/token/carrier.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/carrier/model/vector/carrier.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/carrier/model/vector/carrier.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/carrier/register/carrier.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/carrier/register/carrier.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/carrier/register/identity/carrier.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/carrier/register/identity/carrier.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/carrier/register/square/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/carrier/register/square/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/carrier/register/square/carrier.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/carrier/register/square/carrier.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/carrier/register/toggle/carrier.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/carrier/register/toggle/carrier.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/carrier/register/vector/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/carrier/register/vector/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/carrier/register/vector/carrier.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/carrier/register/vector/carrier.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/carrier/toggle/carrier.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/carrier/toggle/carrier.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/carrier/toggle/vector/carrier.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/carrier/toggle/vector/carrier.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/detector/collision/token/detector.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/detector/collision/token/detector.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/validation/toggle/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/validation/toggle/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/validation/toggle/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/validation/toggle/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/validation/toggle/excess/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/validation/toggle/excess/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/validation/toggle/zero/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/validation/toggle/zero/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bootstrapper/validator/bootstrapper.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/builder/register/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/builder/register/builder.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/builder/register/square/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/builder/register/square/builder.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/builder/register/toggle/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/builder/register/toggle/builder.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/builder/register/vector/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/builder/register/vector/builder.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/root/certifier.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/certifier.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/root/model/certifier.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/model/certifier.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/root/model/square/certifier.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/model/square/certifier.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/root/model/token/certifier.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/model/token/certifier.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/root/priming/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/root/priming/validator.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/root/register/certifier.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/register/certifier.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/root/register/vector/certifier.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/register/vector/certifier.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/root/toggle/certifier.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/toggle/certifier.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/toolkit/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/toolkit/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/toolkit/builder/model/identity/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/toolkit/builder/model/identity/register.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/toolkit/builder/model/model/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/toolkit/builder/model/model/coord/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/toolkit/builder/model/model/coord/register.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/toolkit/builder/model/model/number/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/toolkit/builder/model/model/number/register.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/toolkit/builder/model/model/register.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/toolkit/builder/model/model/square/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/toolkit/builder/model/model/square/register.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/toolkit/builder/model/model/toggle/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/toolkit/builder/model/model/toggle/register.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/toolkit/builder/model/model/vector/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/toolkit/builder/model/model/vector/toolkit.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/toolkit/builder/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/toolkit/builder/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/toolkit/builder/model/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/toolkit/builder/model/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/toolkit/builder/model/toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/toolkit/builder/model/toolkit.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/toolkit/builder/model/vector/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/toolkit/builder/model/vector/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/toolkit/builder/model/vector/toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/toolkit/builder/model/vector/toolkit.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/toolkit/builder/register/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/toolkit/builder/register/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/toolkit/builder/register/identity/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/toolkit/builder/register/identity/register.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/toolkit/builder/register/model/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/toolkit/builder/register/model/vector/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/toolkit/builder/register/vector/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/toolkit/builder/register/model/vector/toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/toolkit/builder/register/vector/toolkit.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/toolkit/builder/toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/toolkit/builder/toolkit.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/toolkit/context/toollkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/toolkit/context/toollkit.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/toolkit/model/scalar/toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/toolkit/model/scalar/toolkit.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/toolkit/builder/register/coord/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/toolkit/builder/register/coord/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/toolkit/builder/register/coord/toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/toolkit/builder/register/coord/toolkit.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/toolkit/builder/register/number/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/toolkit/builder/register/number/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/toolkit/builder/register/number/toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/toolkit/builder/register/number/toolkit.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/toolkit/builder/register/toggle/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/toolkit/builder/register/toggle/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/toolkit/builder/register/toggle/toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/toolkit/builder/register/toggle/toolkit.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/toolkit/builder/register/toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/toolkit/builder/register/toolkit.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/toolkit/builder/register/vector/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/toolkit/builder/register/vector/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/toolkit/builder/register/vector/toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/toolkit/builder/register/vector/toolkit.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/toolkit/model/state/square/toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/toolkit/model/state/square/toolkit.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/toolkit/model/state/team/toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/toolkit/model/state/team/toolkit.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/toolkit/model/state/token/toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/toolkit/model/state/token/toolkit.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/toolkit/model/state/toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/toolkit/model/state/toolkit.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/toolkit/model/toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/toolkit/model/toolkit.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/toolkit/register/square/toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/toolkit/register/square/toolkit.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/toolkit/register/vector/toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/toolkit/register/vector/toolkit.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/toolkit/toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/toolkit/toolkit.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/toolkit/register/toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/toolkit/register/toolkit.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/toolkit/validator/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/toolkit/validator/context/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/toolkit/validator/context/board/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/toolkit/validator/context/board/builder.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/toolkit/validator/context/coord/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/toolkit/validator/context/coord/builder.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/toolkit/validator/context/edge/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/toolkit/validator/context/edge/builder.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/toolkit/validator/context/formation/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/toolkit/validator/context/formation/builder.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/toolkit/validator/context/game/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/toolkit/validator/context/game/builder.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/toolkit/validator/context/hostage/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/toolkit/validator/context/hostage/builder.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/toolkit/validator/context/lingeo/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/toolkit/validator/context/lingeo/builder.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/toolkit/validator/context/node/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/toolkit/validator/context/node/builder.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/toolkit/validator/context/persona/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/toolkit/validator/context/persona/builder.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/toolkit/validator/context/player/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/toolkit/validator/context/player/builder.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/toolkit/validator/context/rank/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/toolkit/validator/context/rank/builder.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/toolkit/validator/context/schema/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/toolkit/validator/context/schema/builder.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/toolkit/validator/context/snapshot/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/toolkit/validator/context/snapshot/builder.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/toolkit/validator/context/square/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/toolkit/validator/context/square/builder.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/toolkit/validator/context/team/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/toolkit/validator/context/team/builder.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/toolkit/validator/context/token/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/toolkit/validator/context/token/builder.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/toolkit/validator/model/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/toolkit/validator/model/toolkit.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/toolkit/validator/model/vector/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/toolkit/validator/model/vector/toolkit.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/toolkit/validator/register/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/toolkit/validator/register/coord/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/toolkit/validator/register/coord/toolkit.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/toolkit/validator/register/number/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/toolkit/validator/register/number/toolkit.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/toolkit/validator/register/toggle/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/toolkit/validator/register/toggle/toolkit.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/toolkit/validator/register/toolkit.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/toolkit/validator/register/vector/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/toolkit/validator/register/vector/toolkit.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/toolkit/validator/toolkit.py" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -198,7 +159,7 @@
     "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/root",
+    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/toolkit/builder/model",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
@@ -210,11 +171,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/toolkit/builder/model" />
+      <recent name="$PROJECT_DIR$/src/toolkit/builder/context" />
+      <recent name="$PROJECT_DIR$/src/toolkit/builder" />
       <recent name="$PROJECT_DIR$/src/root" />
       <recent name="$PROJECT_DIR$/src/toolkit" />
-      <recent name="$PROJECT_DIR$/src/toolkit/builder/register" />
-      <recent name="$PROJECT_DIR$/src/toolkit/builder" />
-      <recent name="$PROJECT_DIR$/src/toolkit/builder/register/model" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/validator" />
@@ -910,7 +871,7 @@
       <workItem from="1784055454795" duration="186991000" />
       <workItem from="1784319839949" duration="197060000" />
       <workItem from="1784614812729" duration="11899000" />
-      <workItem from="1784633157389" duration="94147000" />
+      <workItem from="1784633157389" duration="97077000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />
@@ -1599,7 +1560,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/src/toolkit/builder/model/__init__.py</url>
-          <line>12</line>
+          <line>11</line>
           <option name="timeStamp" value="296" />
         </line-breakpoint>
       </breakpoints>

@@ -15,7 +15,7 @@ from typing import Generic, TypeVar, cast
 from blueprint import RegisterBlueprint
 from builder import Builder
 from result import BuildResult
-from toolkit import RegisterBuildToolkit
+from toolkit import RegisterBuilderToolkit
 from util import LoggingLevelRouter
 
 T = TypeVar("T", bound="Register")
@@ -42,7 +42,7 @@ class RegisterBuilder(Builder, Generic[T]):
          Builder
      """
     
-    def __init__(self, builder_toolkit: [RegisterBuildToolkit[T]]):
+    def __init__(self, builder_toolkit: [RegisterBuilderToolkit[T]]):
         """
         Args:
             builder_toolkit: [RegisterBuilderToolkit[T]]
@@ -50,8 +50,8 @@ class RegisterBuilder(Builder, Generic[T]):
         super().__init__(builder_toolkit=builder_toolkit)
         
     @property
-    def build_toolkit(self) -> RegisterBuildToolkit[T]:
-        return cast([RegisterBuildToolkit[T]], super().build_toolkit)
+    def build_toolkit(self) -> RegisterBuilderToolkit[T]:
+        return cast([RegisterBuilderToolkit[T]], super().build_toolkit)
     
     @abstractmethod
     @LoggingLevelRouter.monitor

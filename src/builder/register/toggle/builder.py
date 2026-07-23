@@ -31,7 +31,7 @@ class VectorRegisterBuilder(RegisterBuilder[VectorRegister]):
         1.  Ensure a new Register instance is born safe and reliable.
 
     Attributes:
-            build_toolkit: Optional[VectorRegisterBuildToolkit]
+            build_toolkit: Optional[VectorRegisterBuilderToolkit]
 
     Provides:
         -   def execute(self, blueprint: RegisterVectorRegisteBlueprint) -> BuildResult[Register]
@@ -47,7 +47,7 @@ class VectorRegisterBuilder(RegisterBuilder[VectorRegister]):
     ):
         """
         Args:
-            build_toolkit: Optional[VectorRegisterBuildToolkit]
+            build_toolkit: Optional[VectorRegisterBuilderToolkit]
         """
         super().__init__(builder_toolkit=build_toolkit)
     

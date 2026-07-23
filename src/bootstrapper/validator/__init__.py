@@ -14,4 +14,3 @@ from .endpoint import *
 from .maneuver import *
 
 # Modules
-from .bootstrapper import  PrimingValidator

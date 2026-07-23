@@ -17,7 +17,7 @@ from toolkit import BuilderToolkit
 
 T = TypeVar("T", bound="Register")
 
-class RegisterBuildToolkit(BuilderToolkit, Generic[T]):
+class RegisterBuilderToolkit(BuilderToolkit, Generic[T]):
     """
     Role:
         -   Dependency Management

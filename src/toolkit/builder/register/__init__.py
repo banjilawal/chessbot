@@ -16,4 +16,4 @@ from .toggle import *
 from .vector import *
 
 # Modules
-from .toolkit import RegisterBuildToolkit
+from .toolkit import RegisterBuilderToolkit

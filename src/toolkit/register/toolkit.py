@@ -13,8 +13,8 @@ from dataclasses import dataclass
 from typing import Generic, Type, TypeVar
 
 from blueprint import RegisterBlueprint
-from err import RegisterBlueprintNullException, RegisterEntityNullException, RegisterNullException
-from chooser import RegisterCarrier
+from carrier import RegisterCarrier
+from err import RegisterBlueprintNullException, RegisterCarrierNullException, RegisterNullException
 from register import Register
 from toolkit import Toolkit
 
@@ -34,11 +34,11 @@ class RegisterToolkit(Toolkit, Generic[T]):
     Attributes:
         model: Type[Register]
         blueprint_model: Type[RegisterBlueprint]
-        operand_model: Type[RegisterDtoOperand]
+        carrier_model: Type[RegisterDtoOperand]
         
         null_exception: RegisterNullException
         blueprint_null_exception: RegisterBlueprintNullException
-        operand_null_exception: RegisterDtoNullException
+        carrier_null_exception: RegisterDtoNullException
 
     Provides:
 
@@ -47,11 +47,11 @@ class RegisterToolkit(Toolkit, Generic[T]):
     """
     model: Type[Register] = Register
     blueprint_model: Type[RegisterBlueprint] = RegisterBlueprint
-    operand_model: Type[RegisterCarrier] = RegisterCarrier
+    carrier_model: Type[RegisterCarrier] = RegisterCarrier
     
     null_exception: RegisterNullException = RegisterNullException()
     blueprint_null_exception: RegisterBlueprintNullException = RegisterBlueprintNullException()
-    operand_null_exception: RegisterEntityNullException = RegisterEntityNullException()
+    carrier_null_exception: RegisterCarrierNullException = RegisterCarrierNullException()
 
 
     

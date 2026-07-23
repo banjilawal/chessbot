@@ -14,10 +14,10 @@ from typing import Optional, cast
 from assembler import ToggleRegisterAssembler
 from register import ToggleRegister
 from root import ToggleRegisterRootCertifier
-from toolkit import RegisterBuildToolkit
+from toolkit import RegisterBuilderToolkit
 
 
-class ToggleRegisterBuildToolkit(RegisterBuildToolkit[ToggleRegister]):
+class ToggleRegisterBuilderToolkit(RegisterBuilderToolkit[ToggleRegister]):
     """
     Role:
         -   Dependency Management
@@ -32,7 +32,7 @@ class ToggleRegisterBuildToolkit(RegisterBuildToolkit[ToggleRegister]):
     Provides:
 
     Super Class:
-        RegisterBuildToolkit
+        RegisterBuilderToolkit
     """
     
     def __init__(

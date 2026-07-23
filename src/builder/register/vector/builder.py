@@ -18,7 +18,7 @@ from err import VectorRegisterBuilderException
 from register import VectorRegister
 from result import BuildResult, MethodResultType
 from root import VectorRegisterRootCertifier
-from toolkit import RegisterBuildToolkit
+from toolkit import RegisterBuilderToolkit
 from util import LoggingLevelRouter
 
 
@@ -34,7 +34,7 @@ class VectorRegisterBuilder(RegisterBuilder[VectorRegister]):
         1.  Ensure a new Register instance is born safe and reliable.
 
     Attributes:
-            build_toolkit: VectorRegisterBuildToolkit
+            build_toolkit: VectorRegisterBuilderToolkit
 
     Provides:
         -   def execute(self, blueprint: RegisterVectorRegisteBlueprint) -> BuildResult[Register]
@@ -48,7 +48,7 @@ class VectorRegisterBuilder(RegisterBuilder[VectorRegister]):
     ):
         """
         Args:
-            build_toolkit: VectorRegisterBuildToolkit
+            build_toolkit: VectorRegisterBuilderToolkit
         """
         super().__init__(build_toolkit=build_toolkit)
     

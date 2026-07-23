@@ -41,7 +41,7 @@ class ToggleRootCertifier(RootCertifier, Generic[T]):
     Super Class:
     """
 
-    def __init__(self, toolkit: ToggleToolkit,):
+    def __init__(self, toolkit: ToggleToolkit[T],):
         super().__init__(toolkit=toolkit)
         
     @property

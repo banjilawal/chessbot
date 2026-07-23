@@ -46,7 +46,6 @@ class RootCertifier(ABC, Generic[T]):
     """
     _toolkit: Toolkit
     _bootstrapper: EntityCarrierValidator
-    # _carrier_validator: EntityCarrierToggleValidator
     
     def __init__(
             self,
