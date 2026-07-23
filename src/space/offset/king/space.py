@@ -11,6 +11,7 @@ from __future__ import annotations
 
 from container import VectorSet
 from model import King, Vector
+from schema import Offset
 from space import OffsetPattern
 
 
@@ -31,16 +32,9 @@ class KingOffsetPattern(OffsetPattern[King]):
         ManeuverVectorSet
     """
     
-    def __init__(self,):
+    def __init__(self, offsets: VectorSet = Offset.entries):
         """
         Args:t
         """
-        super().__init__(
-            offsets=VectorSet(
-                    (
-                        Vector(1, 0), Vector(-1, 0), Vector(0, 1),
-                        Vector(1, 1), Vector(-1, 1), Vector(-1, -1), Vector(1, -1)
-                    )
-            )
-        )
+        super().__init__(offsets=offsets)
     

@@ -10,7 +10,8 @@ version: 1.0.1
 from __future__ import annotations
 
 from container import VectorSet
-from model import Knight, Vector
+from model import Knight
+from schema import Offset
 from space import OffsetPattern
 
 
@@ -28,18 +29,11 @@ class KnightOffsetPattern(OffsetPattern[Knight]):
     Provides:
 
     Super Class:
-        ManeuverVectorSet
+        OffsetPattern
     """
     
-    def __init__(self,):
+    def __init__(self,  offsets: VectorSet = Offset.KNIGHT.entries):
         """
         """
-        super().__init__(
-            offsets=VectorSet(
-                (
-                    Vector(1, 2), Vector(-1, 2), Vector(1, -2), Vector(-1, -2),
-                    Vector(2, 1), Vector(2, -1), Vector(-2, 1), Vector(-2, -1),
-                )
-            )
-        )
+        super().__init__(offsets=offsets)
     

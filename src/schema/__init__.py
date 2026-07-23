@@ -13,6 +13,7 @@ version: 1.0.1
 from .archetype import *
 from .delta import *
 from .formation import *
+from .offset import *
 from .orientation import *
 from .persona import *
 from .ruleset import *
