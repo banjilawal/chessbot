@@ -11,6 +11,5 @@ version: 1.0.1
 
 # Packages
 from .generator import *
-from .specification import *
 
 # Modules

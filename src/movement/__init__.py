@@ -10,7 +10,7 @@ version: 1.0.1
 # =========== SPACE PACKAGE ===========#
 
 # Packages
-from .basis import *
+from .generator import *
 from .offset import *
 from .pawn import *
 from .traversal import *
@@ -18,4 +18,4 @@ from .ruleset import *
 
 
 # Modules
-from .movement import MovementPattern
+from .pattern import MovementPattern

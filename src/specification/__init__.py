@@ -1,0 +1,16 @@
+# src/spec/__init__.py
+
+"""
+Module: spec.__init__
+Author: Banji Lawal
+Created: 2026-04-03
+version: 1.0.1
+"""
+
+# =========== SPEC PACKAGE ===========#
+
+# Packages
+from specification.sequence.vector import *
+
+# Modules
+from .spec import SequenceSpec

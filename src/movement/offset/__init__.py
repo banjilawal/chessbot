@@ -14,4 +14,4 @@ from .king import *
 from .knight import *
 
 # Modules
-from .space import OffsetPattern
+from .pattern import OffsetPattern
