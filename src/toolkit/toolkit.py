@@ -9,8 +9,10 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from bootstrapper import PrimingValidator, EntityCarrierValidator
+
 from microservice import IdentityService
+from root import EntityCarrierValidator
+from validator import PrimingValidator
 
 
 class Toolkit:

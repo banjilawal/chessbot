@@ -13,4 +13,4 @@ version: 1.0.1
 
 
 # Modules
-from .mapper import WestAxisMapper
+from .mapper import WestAxisMapFunction

@@ -10,7 +10,6 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Type, TypeVar, cast
 
-from validator import Validator
 from result import ValidationResult
 from util import LoggingLevelRouter
 from err import NullException, PrimingException
@@ -19,7 +18,7 @@ from err import NullException, PrimingException
 T = TypeVar("T")
 
 
-class PrimingValidator(Validator):
+class PrimingValidator:
     """
     Role
         -   Transaction Worker

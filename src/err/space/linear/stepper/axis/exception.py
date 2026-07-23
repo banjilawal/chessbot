@@ -26,7 +26,7 @@ class AxisMappingException(LinearStepperException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an AxialMappingFunction was aborted by an exception.
+        1.  Indicate that an AxialMapFunction was aborted by an exception.
         
     Attributes:
         msg: Optional[str]
@@ -43,7 +43,7 @@ class AxisMappingException(LinearStepperException):
     Super Class:
         LinearStepperException
     """
-    MSG = "AxialMappingFunction failure."
+    MSG = "AxialMapFunction failure."
     ERR_CODE = "AXIS_STEPPER_FAILURE"
 
     def __init__(

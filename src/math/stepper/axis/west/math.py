@@ -29,7 +29,7 @@ class WestAxisStepper(AxisStepper):
     Provides:
 
     Super Class:
-        AxialMappingFunction
+        AxialMapFunction
     """
 
     

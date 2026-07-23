@@ -5,16 +5,63 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/math/sequence/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/math/sequence/generator/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/math/sequence/generator/math.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/math/sequence/specification/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/math/sequence/specification/math.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sequence/generator/vector/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sequence/specification/quadrant/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sequence/specification/quadrant/axis/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sequence/specification/quadrant/axis/east/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sequence/specification/quadrant/axis/east/specification.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sequence/specification/quadrant/axis/north/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sequence/specification/quadrant/axis/north/specification.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sequence/specification/quadrant/axis/south/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sequence/specification/quadrant/axis/south/specification.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sequence/specification/quadrant/axis/specification.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sequence/specification/quadrant/axis/west/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sequence/specification/quadrant/axis/west/specification.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sequence/specification/quadrant/specification.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sequence/specification/specification.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sequence/specification/vector/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sequence/specification/vector/axis/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sequence/specification/vector/axis/east/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sequence/specification/vector/axis/east/specification.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sequence/specification/vector/axis/north/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sequence/specification/vector/axis/north/specification.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sequence/specification/vector/axis/south/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sequence/specification/vector/axis/south/specification.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sequence/specification/vector/axis/specification.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sequence/specification/vector/axis/west/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sequence/specification/vector/axis/west/specification.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/space/linear/endpoint/axis/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/space/linear/endpoint/axis/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/space/linear/stepper/axis/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/space/linear/stepper/axis/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/factory/space/linear/axis/factory.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/factory/space/linear/axis/factory.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mapping/axis/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/mapping/axis/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mapping/axis/east/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/mapping/axis/east/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mapping/axis/east/mapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/mapping/axis/east/mapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mapping/axis/mapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/mapping/axis/mapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mapping/axis/north/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/mapping/axis/north/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mapping/axis/north/mapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/mapping/axis/north/mapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mapping/axis/south/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/mapping/axis/south/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mapping/axis/south/mapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/mapping/axis/south/mapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mapping/axis/west/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/mapping/axis/west/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mapping/axis/west/mapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/mapping/axis/west/mapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mapping/quadrant/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/mapping/quadrant/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mapping/quadrant/mapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/mapping/quadrant/mapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mapping/quadrant/northeast/mapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/mapping/quadrant/northeast/mapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mapping/quadrant/northwest/mapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/mapping/quadrant/northwest/mapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mapping/quadrant/southeast/mapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/mapping/quadrant/southeast/mapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mapping/quadrant/southwest/mapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/mapping/quadrant/southwest/mapper.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/math/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/math/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/math/basis/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/math/basis/math.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/math/math.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/math/math.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/math/sequence/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/sequence/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/math/sequence/generator/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/sequence/generator/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/math/sequence/generator/math.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/sequence/generator/vector/sequence.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/math/sequence/specification/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/sequence/specification/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/math/sequence/specification/math.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/sequence/specification/vector/specification.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/math/stepper/axis/east/math.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/math/stepper/axis/east/math.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/math/stepper/axis/north/math.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/math/stepper/axis/north/math.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/math/stepper/axis/south/math.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/math/stepper/axis/south/math.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/math/stepper/axis/west/math.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/math/stepper/axis/west/math.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/movement/traversal/axis/space.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/movement/traversal/axis/space.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/movement/traversal/axis/west/space.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/movement/traversal/axis/west/space.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -70,7 +117,7 @@
     "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/math/sequence",
+    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/sequence/specification",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
@@ -82,18 +129,18 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/sequence/specification" />
+      <recent name="$PROJECT_DIR$/src/sequence/specification/vector/axis" />
       <recent name="$PROJECT_DIR$/src/math/sequence" />
       <recent name="$PROJECT_DIR$/src/mapping/axis" />
       <recent name="$PROJECT_DIR$/src/stepper" />
-      <recent name="$PROJECT_DIR$/src/stepper/quadrant" />
-      <recent name="$PROJECT_DIR$/src/math/stepper" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/sequence/specification/vector" />
+      <recent name="$PROJECT_DIR$/src/sequence/generator/vecror" />
+      <recent name="$PROJECT_DIR$/src" />
       <recent name="$PROJECT_DIR$/src/math/sequence/generator" />
       <recent name="$PROJECT_DIR$/src/math/stepper" />
-      <recent name="$PROJECT_DIR$/src/stepper" />
-      <recent name="$PROJECT_DIR$/src/space" />
-      <recent name="$PROJECT_DIR$/src/validator" />
     </key>
   </component>
   <component name="RunManager" selected="Python.stack">
@@ -782,7 +829,7 @@
       <workItem from="1784055454795" duration="186991000" />
       <workItem from="1784319839949" duration="197060000" />
       <workItem from="1784614812729" duration="11899000" />
-      <workItem from="1784633157389" duration="139368000" />
+      <workItem from="1784633157389" duration="145379000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />

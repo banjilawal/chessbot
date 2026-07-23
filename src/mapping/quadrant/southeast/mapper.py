@@ -9,13 +9,13 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from mapping import QuadrantMappingFunction
+from mapping import QuadrantMapFunction
 from schema import QuadrantStepFunction
 from space import SoutheastQuadrant
 
 
 
-class SoutheastMapFunction(QuadrantMappingFunction[SoutheastQuadrant]):
+class SoutheastMapFunction(QuadrantMapFunction[SoutheastQuadrant]):
     """
     Role:
         -   Computation
@@ -32,7 +32,7 @@ class SoutheastMapFunction(QuadrantMappingFunction[SoutheastQuadrant]):
     Provides:
 
     Super Class:
-        QuadrantMappingFunction
+        QuadrantMapFunction
     """
     
     def __init__(

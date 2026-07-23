@@ -9,13 +9,13 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from mapping import QuadrantMappingFunction
+from mapping import QuadrantMapFunction
 from schema import QuadrantStepFunction
 from space import NorthwestQuadrant
 
 
 
-class NorthwestMapFunction(QuadrantMappingFunction[NorthwestQuadrant]):
+class NorthwestMapFunction(QuadrantMapFunction[NorthwestQuadrant]):
     """
     Role:
         -   Computation
@@ -32,7 +32,7 @@ class NorthwestMapFunction(QuadrantMappingFunction[NorthwestQuadrant]):
     Provides:
 
     Super Class:
-        QuadrantMappingFunction
+        QuadrantMapFunction
     """
     
     def __init__(

@@ -19,7 +19,7 @@ from util import LoggingLevelRouter
 
 T = TypeVar("T", bound="AxialSpace")
 
-class AxialMappingFunction(SpaceMappingFunction, Generic[T]):
+class AxialMapFunction(SpaceMappingFunction, Generic[T]):
     """
     Role:
         -   Computation

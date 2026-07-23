@@ -17,4 +17,4 @@ from .west import *
 
 
 # Modules
-from .mapper import AxialMappingFunction
+from .mapper import AxialMapFunction

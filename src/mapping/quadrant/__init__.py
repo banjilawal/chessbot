@@ -13,4 +13,4 @@ version: 1.0.1
 from .southwest import *
 
 # Modules
-from .mapper import QuadrantMappingFunction
+from .mapper import QuadrantMapFunction

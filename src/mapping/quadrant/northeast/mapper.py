@@ -9,16 +9,17 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from mapping import QuadrantMappingFunction
+from mapping import QuadrantMapFunction
 from schema import QuadrantStepFunction
 from space import NortheastQuadrant
 
 
 
-class NortheastMapFunction(QuadrantMappingFunction[NortheastQuadrant]):
+class NortheastMapFunction(QuadrantMapFunction[NortheastQuadrant]):
     """
     Role:
         -   Computation
+        -   Integrity Assurance
 
     Responsibilities:
         Define x_step and slope for getting the next vector northeast of origin.
@@ -32,7 +33,7 @@ class NortheastMapFunction(QuadrantMappingFunction[NortheastQuadrant]):
     Provides:
 
     Super Class:
-        QuadrantMappingFunction
+        QuadrantMapFunction
     """
     
     def __init__(
