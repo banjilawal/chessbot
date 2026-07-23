@@ -97,12 +97,12 @@ class ArenaConsistencyChecker(ConsistencyChecker[Arena]):
             if team_service_consistency.failure:
                 return ValidationResult.failure(team_service_consistency.exception)
             
-            if arena.team_service.size < 2:
+            if arena.team_service.rule_count < 2:
                 return ValidationResult.failure(
                     NotEnoughTeamsInArenaException(f"{method}: {NotEnoughTeamsInArenaException.MSG}")
                 )
             
-            if arena.team_service.size > 2:
+            if arena.team_service.rule_count > 2:
                 return ValidationResult.failure(
                     ArenaTeamsInArenaException(f"{method}: {ArenaTeamsInArenaException.MSG}")
                 )

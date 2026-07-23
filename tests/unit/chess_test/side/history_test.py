@@ -49,7 +49,7 @@ class TeamStackTest(unittest.TestCase):
     popped_team = list(team_stack.items).pop()
 
     self.assertEqual(popped_team, team)
-    self.assertEqual(team_stack.size(), 1)
+    self.assertEqual(team_stack.rule_count(), 1)
     self.assertEqual(team_stack.current_team, team)
 
 
@@ -57,16 +57,16 @@ class TeamStackTest(unittest.TestCase):
     mock_team = create_autospec(Side, instance=True)
 
     team_stack = SideRecord()
-    original_size = team_stack.size()
-    self.assertEqual(team_stack.size(), 0)
+    original_size = team_stack.rule_count()
+    self.assertEqual(team_stack.rule_count(), 0)
 
     team_stack.push_team_to_player(mock_team)
-    self.assertEqual(team_stack.size(), original_size + 1)
+    self.assertEqual(team_stack.rule_count(), original_size + 1)
 
 
   def test_is_empty_corresponds_to_zero_stack_size(self):
     team_stack = SideRecord()
-    self.assertTrue(team_stack.is_empty() and team_stack.size() == 0)
+    self.assertTrue(team_stack.is_empty() and team_stack.rule_count() == 0)
 
 
   def test_is_empty_false_when_stack_has_items(self):
@@ -74,7 +74,7 @@ class TeamStackTest(unittest.TestCase):
     team_stack = SideRecord()
     team_stack.push_team_to_player(mock_team)
 
-    self.assertTrue(not team_stack.is_empty() and team_stack.size() > 0)
+    self.assertTrue(not team_stack.is_empty() and team_stack.rule_count() > 0)
 
 
   def test_if_stack_Is_empty_then_current_team_is_null(self):

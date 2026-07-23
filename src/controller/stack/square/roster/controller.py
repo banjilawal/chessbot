@@ -126,7 +126,7 @@ class SquareStackRosterHandler:
                 )
             )
         # Handle the case that, the team is not at full strength.
-        if  0 < team.roster.size < Team.MAX_ROSTER_SIZE:
+        if  0 < team.roster.rule_count < Team.MAX_ROSTER_SIZE:
             # Send the exception chain on failure.
             return UpdateResult.update_failure(
                 original=team,

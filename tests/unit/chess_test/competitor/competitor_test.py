@@ -15,7 +15,7 @@ class CompetitorTest(unittest.TestCase):
     sides_played = create_autospec(SideRecord, instance=True)
 
     sides_played.is_empty.return_value = True
-    sides_played.size.return_value = 0
+    sides_played.rule_count.return_value = 0
     sides_played.items = []
     sides_played.current_team = None
 

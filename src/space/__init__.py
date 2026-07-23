@@ -10,10 +10,9 @@ version: 1.0.1
 # =========== SPACE PACKAGE ===========#
 
 # Packages
-from .basis import *
-from .traversal import *
-from .ruleset import *
-from .offset import *
+from .axis import *
+from .quadrant import *
+
 
 # Modules
-from .space import MovementPattern
+from .space import Space

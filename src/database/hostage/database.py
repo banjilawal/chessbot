@@ -92,7 +92,7 @@ class HostageDatabase(Database[Hostage]):
     
     @property
     def size(self) -> int:
-        return self._database_core.size
+        return self._database_core.rule_count
     
     @property
     def is_empty(self) -> bool:

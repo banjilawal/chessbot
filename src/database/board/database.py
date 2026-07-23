@@ -87,7 +87,7 @@ class BoardDatabase(Database[Board]):
     
     @property
     def size(self) -> int:
-        return self._board_database_core.size
+        return self._board_database_core.rule_count
     
     @property
     def is_empty(self) -> bool:

@@ -30,12 +30,41 @@ class Offset(Enum):
         return obj
     
     KNIGHT = (
+        VectorSet(
+            (
+                Vector(1, 2), Vector(-1, 2), Vector(1, -2), Vector(-1, -2),
+                Vector(2, 1), Vector(2, -1), Vector(-2, 1), Vector(-2, -1),
+            )
+        )
     ),
     KING = (
         VectorSet(
             (
                 Vector(1, 0), Vector(-1, 0), Vector(0, 1),
                 Vector(1, 1), Vector(-1, 1), Vector(-1, -1), Vector(1, -1)
+            )
+        )
+    )
+    DEVELOPED_PAWN_MANEUVER = (
+        VectorSet(
+            (Vector(x=0, y=1),)
+        )
+    )
+    OPENING_PAWN_MANEUVER = (
+        VectorSet(
+            (Vector(x=0, y=1), Vector(x=0, y=2),)
+        )
+    )
+    DEVELOPED_PAWN_ATTACK = (
+        VectorSet(
+            (Vector(x=-1, y=1), Vector(x=1, y=1),)
+        )
+    )
+    OPENING_PAWN_ATTACK = (
+        VectorSet(
+            (
+                Vector(x=-1, y=1), Vector(x=1, y=1),
+                Vector(x=-1, y=2), Vector(x=1, y=2),
             )
         )
     )

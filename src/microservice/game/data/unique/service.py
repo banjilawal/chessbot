@@ -66,7 +66,7 @@ class UniqueGameDataService(Database[Game]):
     
     @property
     def size(self) -> int:
-        return self.data_service.size
+        return self.data_service.rule_count
     
     @property
     def is_empty(self) -> bool:

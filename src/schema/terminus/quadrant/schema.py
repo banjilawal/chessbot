@@ -65,7 +65,10 @@ class QuadrantTerminus(Enum):
     )
     SOUTHWEST = (
         "southwest",
-        Vector(x=0, y=setting.board.dimension.config.number_of_rows - 1)
+        Vector(
+            x=0,
+            y=setting.board.dimension.config.number_of_rows - 1,
+        )
     )
     
     @property

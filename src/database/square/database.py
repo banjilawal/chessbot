@@ -103,7 +103,7 @@ class SquareDatabase(Database[Square]):
     
     @property
     def size(self) -> int:
-        return self._stack_service.size
+        return self._stack_service.rule_count
     
     @property
     def max_capacity(self) -> int:

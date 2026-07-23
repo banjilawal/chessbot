@@ -131,7 +131,7 @@ class SoftwareLicense:
     @property
     def is_deployed(self) -> bool:
         return (
-                self.positions.size >= 1 and
+                self.positions.rule_count >= 1 and
                 self._deployment_software == DeploymentSoftware.DEPLOYED
         )
     
