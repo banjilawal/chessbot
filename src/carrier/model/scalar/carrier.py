@@ -1,7 +1,7 @@
-# src/carrier/scalar/operand.py
+# src/carrier/scalar/carrier.py
 
 """
-Module: carrier.scalar.operand
+Module: carrier.scalar.carrier
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -13,10 +13,10 @@ from typing import Any, Dict, Optional
 
 from blueprint import ScalarBlueprint
 from model import Scalar
-from carrier import EntityCarrierToggle
+from carrier import EntityCarrier
 
 
-class ScalarCarrierToggle(EntityCarrierToggle[Scalar]):
+class ScalarCarrier(EntityCarrier[Scalar]):
     """
     Role:
         -   Addressing
@@ -96,14 +96,14 @@ class ScalarCarrierToggle(EntityCarrierToggle[Scalar]):
     def __eq__(self, other):
         if other is self: return True
         if other is None: return False
-        if isinstance(other, ScalarCarrierToggle):
+        if isinstance(other, ScalarCarrier):
             return self.entity == other.entity
         return False
     
     def __eq__(self, other):
         if other is self: return True
         if other is None: return False
-        if isinstance(other, ScalarCarrierToggle):
+        if isinstance(other, ScalarCarrier):
             return self.entity == other.entity
         return False
     

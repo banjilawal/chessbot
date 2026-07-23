@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Type
 
 from blueprint import VectorRegisterBlueprint
-from carrier import VectorRegisterCarrierToggle
+from carrier import VectorRegisterCarrier
 from err import VectorRegisterBlueprintNullException, VectorRegisterCarrierNullException, VectorRegisterNullException
 from register import VectorRegister
 from toolkit import RegisterToolkit
@@ -42,8 +42,8 @@ class VectorRegisterToolkit(RegisterToolkit[VectorRegister]):
     model: Type[VectorRegister] = (
         VectorRegister
     )
-    carrier_model: Type[VectorRegisterCarrierToggle] = (
-        VectorRegisterCarrierToggle
+    carrier_model: Type[VectorRegisterCarrier] = (
+        VectorRegisterCarrier
     )
     blueprint_model: Type[VectorRegisterBlueprint] = (
         VectorRegisterBlueprint

@@ -1,7 +1,7 @@
-# src/certifier/validator.py
+# src/certifier/certifier.py
 
 """
-Module: certifier.validator
+Module: certifier.certifier
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -10,10 +10,13 @@ version: 1.0.1
 from __future__ import annotations
 
 from abc import ABC, abstractmethod
-from typing import Any, Generic, TypeVar
+from typing import Any, Generic, Optional, TypeVar
 
-from bootstrapper import EntityCarrierToggleValidator
+from blueprint import Blueprint
+from carrier import EntityCarrier
+
 from result import ValidationResult
+from root import EntityCarrierValidator
 from toolkit import Toolkit
 from util import LoggingLevelRouter
 
@@ -23,54 +26,53 @@ T = TypeVar("T",)
 class RootCertifier(ABC, Generic[T]):
     """
     Role
-        -   Validation Worker
+        -   Validator
         -   Integrity Assurance
+        -   Consistency Assurance
 
     Responsibilities:
-        1.  Ensures a DtoCarrier's data satisfies its model's type and integrity requirements.
+        1.  Run integrity checks on an object or its blueprint encapsulated inside their
+            EntityCarrier.
+        2.  Makes sure objects or their blueprints are safe before they are used.
+        3.  Pluggable validation module.
 
     Attributes:
-        toolkit: ModelToolkit[T]
+        toolkit: Toolkit
 
     Provides:
-        -   execute( carrier: DtoCarrier[T]) -> ValidationResult:
+        -   def validate(candidate: Any, toolkit: Toolkit,) -> ValidationResult[Blueprint[T]]:
 
     Super Class:
     """
     _toolkit: Toolkit
-    _model_carrier_validator: EntityCarrierToggleValidator
+    _bootstrapper: EntityCarrierValidator
+    # _carrier_validator: EntityCarrierToggleValidator
     
     def __init__(
             self,
             toolkit: Toolkit,
-            model_carrier_validator: EntityCarrierToggleValidator |
-                                     None = EntityCarrierToggleValidator(),
+            bootstrapper: Optional[EntityCarrierValidator] | None = EntityCarrierValidator()
     ):
+        """
+        Args:
+            toolkit: Toolkit,
+            bootstrapper: Optional[EntityCarrierValidator]
+        """
         self._toolkit = toolkit
-        self._model_carrier_validator = model_carrier_validator
+        self._bootstrapper = bootstrapper
         
     @property
     def toolkit(self) -> Toolkit:
         return self._toolkit
     
     @property
-    def model_carrier_validator(self) -> EntityCarrierToggleValidator:
-        return self._model_carrier_validator
+    def carrier_validator(self) -> EntityCarrierValidator:
+        return self._bootstrapper
+    
     
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def execute(self, candidate: Any) -> ValidationResult:
-        """
-            -   Certify a DtoCarrier's data satisfies a model's integrity constraints.
-
-        Action:
-            1.  Implement validation tests here.
-        Args:
-            candidate: Any
-        Returns:
-            ValidationResult[DtoCarrier[T]]
-        Raises:
-        """
+    def execute(self, candidate: Any) -> ValidationResult[Blueprint[T]]:
         pass
     
     

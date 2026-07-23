@@ -13,7 +13,7 @@ from typing import Any, Optional
 
 __all__ = [
     # ======================# TOGGLE_VALIDATOR_FAILURE #======================#
-    "ToggleValidatorException",
+    "EntityCarrierValidatorException",
 ]
 
 from err import ValidatorException
@@ -21,7 +21,7 @@ from result import MethodResultType
 
 
 # ======================# TOGGLE_VALIDATOR_FAILURE #======================#
-class ToggleValidatorException(ValidatorException):
+class EntityCarrierValidatorException(ValidatorException):
     """
     Role:
         -   Error Tracing

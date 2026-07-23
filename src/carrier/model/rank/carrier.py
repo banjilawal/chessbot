@@ -1,7 +1,7 @@
-# src/carrier/rank/operand.py
+# src/carrier/rank/carrier.py
 
 """
-Module: carrier.rank.operand
+Module: carrier.rank.carrier
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -13,10 +13,10 @@ from typing import Optional
 
 from blueprint import RankBlueprint
 from model import Rank
-from carrier import EntityCarrierToggle
+from carrier import EntityCarrier
 
 
-class RankCarrier(EntityCarrierToggle[Rank]):
+class RankCarrier(EntityCarrier[Rank]):
     """
     Role:
         -   Addressing

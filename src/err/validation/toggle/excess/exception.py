@@ -10,7 +10,7 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import ToggleValidatorException
+from err import EntityCarrierValidatorException
 from result import MethodResultType
 
 _all_ = [
@@ -19,7 +19,7 @@ _all_ = [
 ]
 
 # ======================# EXCESSIVE_TOGGLE_ACTIVATION_ERROR #======================#
-class ExcessToggleActivationException(ToggleValidatorException):
+class ExcessToggleActivationException(EntityCarrierValidatorException):
     """
     Role:
         -   Error Tracing

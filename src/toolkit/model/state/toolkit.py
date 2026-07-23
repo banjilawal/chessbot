@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Generic, Type, TypeVar
 
 from blueprint import Blueprint
-from carrier import EntityCarrierToggle
+from carrier import EntityCarrier
 from err import BlueprintNullException, EntityCarrierNullException, StateModelNullException
 from toolkit import ModelToolkit
 
@@ -52,7 +52,7 @@ class StateModelToolkit(ModelToolkit, Generic[T]):
         -   Any toolkits for a model should be a ModelToolkit subclass.
     """
     model: Type[T]
-    carrier_model: Type[EntityCarrierToggle[T]]
+    carrier_model: Type[EntityCarrier[T]]
     blueprint_model: Type[Blueprint[T]]
     
     null_exception: StateModelNullException

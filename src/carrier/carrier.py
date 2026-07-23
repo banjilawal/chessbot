@@ -1,7 +1,7 @@
-# src/carrier/operand.py
+# src/carrier/carrier.py
 
 """
-Module: carrier.operand
+Module: carrier.carrier
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -19,7 +19,7 @@ from blueprint import Blueprint
 
 T = TypeVar("T")
 
-class EntityCarrierToggle(ABC, Generic[T]):
+class EntityCarrier(ABC, Generic[T]):
     """
     Role:
         -   ENTITY

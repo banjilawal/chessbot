@@ -1,7 +1,7 @@
-# src/carrier/arena/operand.py
+# src/carrier/arena/carrier.py
 
 """
-Module: carrier.arena.operand
+Module: carrier.arena.carrier
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -13,10 +13,10 @@ from typing import Optional
 
 from blueprint import ArenaBlueprint
 from model import Arena
-from carrier import EntityCarrierToggle
+from carrier import EntityCarrier
 
 
-class ArenaCarrier(EntityCarrierToggle[Arena]):
+class ArenaCarrier(EntityCarrier[Arena]):
     """
     Role:
         -   Addressing

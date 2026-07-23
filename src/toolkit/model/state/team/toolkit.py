@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Type
 
 from blueprint import TeamBlueprint, TokenBlueprint
-from carrier import TokenCarrierToggle
+from carrier import TokenCarrier
 from detector import TokenHomeDetector
 from err import (
     TeamBlueprintNullException, TeamNullException, TokenBlueprintNullException, TokenCarrierNullException,
@@ -55,7 +55,7 @@ class TokenToolkit(StateModelToolkit[Token]):
        ModelToolkit
     """
     model: Type[Token] = Token
-    carrier_model: Type[TokenCarrierToggle] = TokenCarrierToggle
+    carrier_model: Type[TokenCarrier] = TokenCarrier
     blueprint_model: Type[TokenBlueprint] = TokenBlueprint
     
     null_exception: TokenNullException = TokenNullException()

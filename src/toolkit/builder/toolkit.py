@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Generic, TypeVar
 
 from assembler import Assembler
-from bootstrapper import PrimingValidator, EntityCarrierToggleValidator
+from bootstrapper import PrimingValidator, EntityCarrierValidator
 from microservice import IdentityService
 from root import RootCertifier
 from toolkit import Toolkit
@@ -45,7 +45,7 @@ class BuilderToolkit(Toolkit, Generic[T]):
             root_certifier: RootCertifier[T],
             identity_service: IdentityService  | None= IdentityService(),
             priming_validator: PrimingValidator | None = PrimingValidator(),
-            toggle_validator: EntityCarrierToggleValidator | None = EntityCarrierToggleValidator(),
+            toggle_validator: EntityCarrierValidator | None = EntityCarrierValidator(),
     ):
         """
         Args:

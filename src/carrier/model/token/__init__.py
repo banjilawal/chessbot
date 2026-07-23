@@ -13,4 +13,4 @@ version: 1.0.1
 
 
 # Modules
-from .carrier import TokenCarrierToggle
+from .carrier import TokenCarrier

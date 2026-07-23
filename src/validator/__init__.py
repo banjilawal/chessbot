@@ -14,6 +14,7 @@ version: 1.0.1
 from .context import *
 from .model import *
 from .number import *
+from .priming import *
 from .query import *
 from .register import *
 from .toggle import *

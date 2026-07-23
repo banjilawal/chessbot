@@ -9,7 +9,7 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from bootstrapper import PrimingValidator, EntityCarrierToggleValidator
+from bootstrapper import PrimingValidator, EntityCarrierValidator
 from microservice import IdentityService
 
 
@@ -33,13 +33,13 @@ class Toolkit:
     """
     _identity_service: IdentityService
     _priming_validator: PrimingValidator
-    _toggle_validator: EntityCarrierToggleValidator
+    _toggle_validator: EntityCarrierValidator
     
     def __init__(
             self,
             identity_service: IdentityService  | None= IdentityService(),
             priming_validator: PrimingValidator | None = PrimingValidator(),
-            toggle_validator: EntityCarrierToggleValidator | None = EntityCarrierToggleValidator(),
+            toggle_validator: EntityCarrierValidator | None = EntityCarrierValidator(),
     ):
         """
         Args:
@@ -59,5 +59,5 @@ class Toolkit:
         return self._identity_service
     
     @property
-    def toggle_valiator(self) -> EntityCarrierToggleValidator:
+    def toggle_valiator(self) -> EntityCarrierValidator:
         return self._toggle_validator

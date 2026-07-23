@@ -1,7 +1,7 @@
-# src/carrier/register/square/operand.py
+# src/carrier/register/square/carrier.py
 
 """
-Module: carrier.register.square.operand
+Module: carrier.register.square.carrier
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -13,12 +13,12 @@ from _ast import Dict
 from typing import Any, Optional, Type, cast
 
 from blueprint import SquareRegisterBlueprint
-from carrier import EntityCarrierToggle
+from carrier import EntityCarrier
 from err import SquareRegisterNullException
 from register import SquareRegister
 
 
-class SquareRegisterCarrierToggle(EntityCarrierToggle[SquareRegister]):
+class SquareRegisterCarrier(EntityCarrier[SquareRegister]):
     """
     Role:
         -   Addressing

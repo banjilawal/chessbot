@@ -1,7 +1,7 @@
-# src/carrier/node/operand.py
+# src/carrier/node/carrier.py
 
 """
-Module: carrier.node.operand
+Module: carrier.node.carrier
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -13,10 +13,10 @@ from typing import Optional
 
 from blueprint import NodeBlueprint
 from model import Node
-from carrier import EntityCarrierToggle
+from carrier import EntityCarrier
 
 
-class NodeCarrier(EntityCarrierToggle[Node]):
+class NodeCarrier(EntityCarrier[Node]):
     """
     Role:
         -   Addressing

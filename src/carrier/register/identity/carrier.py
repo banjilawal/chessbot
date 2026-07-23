@@ -1,7 +1,7 @@
-# src/carrier/register/identity/operand.py
+# src/carrier/register/identity/carrier.py
 
 """
-Module: carrier.register.identity.operand
+Module: carrier.register.identity.carrier
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

@@ -1,7 +1,7 @@
-# src/carrier/vector/operand.py
+# src/carrier/vector/carrier.py
 
 """
-Module: carrier.vector.operand
+Module: carrier.vector.carrier
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -13,10 +13,10 @@ from typing import Optional
 
 from blueprint import VectorBlueprint
 from model import Vector
-from carrier import EntityCarrierToggle
+from carrier import EntityCarrier
 
 
-class VectorCarrier(EntityCarrierToggle[Vector]):
+class VectorCarrier(EntityCarrier[Vector]):
     """
     Role:
         -   Addressing

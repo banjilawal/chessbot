@@ -9,7 +9,7 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from carrier import TokenCarrierToggle
+from carrier import TokenCarrier
 from err import (
     OpeningSquareCollisionException,TokenIdCollisionException, TokenNameCollisionException
 )
@@ -44,7 +44,7 @@ class TokenCollider:
     def execute(
             self,
             stream: TokenStackService,
-            target: TokenCarrierToggle,
+            target: TokenCarrier,
     ) -> CollisionReport:
         """
         Report if any schema member has the same id, designation or

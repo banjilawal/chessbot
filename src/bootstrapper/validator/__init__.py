@@ -10,7 +10,6 @@ version: 1.0.1
 # =========== BOOTSTRAPPER.VALIDATOR PACKAGE ===========#
 
 # Packages
-from .toggle import *
 from .endpoint import *
 from .maneuver import *
 

@@ -11,11 +11,11 @@ from __future__ import annotations
 
 from abc import ABC
 
-from carrier import EntityCarrierToggle
+from carrier import EntityCarrier
 from toggle import Toggle
 
 
-class ToggleCarrier(EntityCarrierToggle[Toggle], ABC):
+class ToggleCarrier(EntityCarrier[Toggle], ABC):
     pass
         
         

@@ -22,6 +22,7 @@ from .permitter import *
 from .pipeline import *
 from .register import *
 from .registry import *
+from .validator import *
 
 # Modules
 from .toolkit import Toolkit

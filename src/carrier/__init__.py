@@ -15,4 +15,4 @@ from .register import *
 from .toggle import *
 
 # Modules
-from .carrier import EntityCarrierToggle
+from .carrier import EntityCarrier

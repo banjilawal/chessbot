@@ -12,7 +12,7 @@ from __future__ import annotations
 from abc import abstractmethod
 from typing import Any, Generic, TypeVar, cast
 
-from bootstrapper import EntityCarrierToggleValidator
+from bootstrapper import EntityCarrierValidator
 from root import RootCertifier
 from result import ValidationResult
 from toolkit import ModelToolkit
@@ -42,9 +42,10 @@ class ModelRootCertifier(RootCertifier, Generic[T]):
     def __init__(
             self,
             toolkit: ModelToolkit[T],
-            model_carrier_validator: EntityCarrierToggleValidator,
+            # model_carrier_validator: EntityCarrierToggleValidator,
     ):
-        super().__init__(toolkit=toolkit, model_carrier_validator=model_carrier_validator)
+        super().__init__(toolkit=toolkit)
+        # , model_carrier_validator=model_carrier_validator)
 
         
     @property
@@ -52,7 +53,7 @@ class ModelRootCertifier(RootCertifier, Generic[T]):
         return cast(ModelToolkit[T], super().toolkit)
     
     @property
-    def model_carrier_validator(self) -> EntityCarrierToggleValidator:
+    def model_carrier_validator(self) -> EntityCarrierValidator:
         return self.model_carrier_validator
     
     @abstractmethod

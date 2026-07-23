@@ -1,7 +1,7 @@
-# src/carrier/team/operand.py
+# src/carrier/team/carrier.py
 
 """
-Module: carrier.team.operand
+Module: carrier.team.carrier
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -13,10 +13,10 @@ from typing import Any, Dict, Optional
 
 from blueprint import TeamBlueprint
 from model import Team
-from carrier import EntityCarrierToggle
+from carrier import EntityCarrier
 
 
-class TeamCarrier(EntityCarrierToggle[Team]):
+class TeamCarrier(EntityCarrier[Team]):
     """
     Role:
         -   ENTITY

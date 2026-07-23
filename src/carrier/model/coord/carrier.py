@@ -1,7 +1,7 @@
-# src/carrier/coord/operand.py
+# src/carrier/coord/carrier.py
 
 """
-Module: carrier.coord.operand
+Module: carrier.coord.carrier
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -13,10 +13,10 @@ from typing import Any, Dict, Optional
 
 from blueprint import CoordBlueprint
 from model import Coord
-from carrier import EntityCarrierToggle
+from carrier import EntityCarrier
 
 
-class CoordCarrier(EntityCarrierToggle[Coord]):
+class CoordCarrier(EntityCarrier[Coord]):
     """
     Role:
         -   ENTITY

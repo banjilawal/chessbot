@@ -1,7 +1,7 @@
-# src/carrier/board/operand.py
+# src/carrier/board/carrier.py
 
 """
-Module: carrier.board.operand
+Module: carrier.board.carrier
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -13,10 +13,10 @@ from typing import Optional
 
 from blueprint import BoardBlueprint
 from model import Board
-from carrier import EntityCarrierToggle
+from carrier import EntityCarrier
 
 
-class BoardCarrierToggle(EntityCarrierToggle[Board]):
+class BoardCarrier(EntityCarrier[Board]):
     """
     Role:
         -   Addressing
@@ -83,7 +83,7 @@ class BoardCarrierToggle(EntityCarrierToggle[Board]):
     def __eq__(self, other):
         if other is self: return True
         if other is None: return False
-        if isinstance(other, BoardCarrierToggle):
+        if isinstance(other, BoardCarrier):
             return self.entity == other.entity
         return False
     

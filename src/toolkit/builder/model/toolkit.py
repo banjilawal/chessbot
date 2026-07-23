@@ -15,7 +15,6 @@ from assembler import ModelAssembler
 from root import ModelRootCertifier
 from toolkit import BuilderToolkit
 
-
 T = TypeVar("T", bound="Model")
 
 class ModelBuildToolkit(BuilderToolkit, Generic[T]):
@@ -23,12 +22,12 @@ class ModelBuildToolkit(BuilderToolkit, Generic[T]):
     Role:
         -   Dependency Management
         
-    Role:
-        -   Dependency Management
+    Responsibilities:
+        1.  Bundles ModelBuilder dependencies.
 
     Attributes:
-        assembler: ModelAssembler[T],
-        root_certifier: ModelRootCertifier[T]
+        assembler: [ModelAssembler[T]],
+        root_certifier: [ModelRootCertifier[T]]
         
     Provides:
     
@@ -43,8 +42,8 @@ class ModelBuildToolkit(BuilderToolkit, Generic[T]):
     ):
         """
         Args:
-            assembler: [ModelAssembler[T]]
-            root_certifier: [ModelRootCertifier[T]]
+            assembler: [ModelAssembler[T]],
+            root_certifier: [ModelRootCertifier[T]
         """
         super().__init__(assembler=assembler, root_certifier=root_certifier)
 
@@ -55,4 +54,4 @@ class ModelBuildToolkit(BuilderToolkit, Generic[T]):
         
     @property
     def root_certifier(self) -> [ModelRootCertifier[T]]:
-        return cast([ModelRootCertifier[T]], self._root_certifier)
+        return cast([ModelRootCertifier[T]], super()._root_certifier)

@@ -24,24 +24,24 @@ T = TypeVar("T", bound="Toggle")
 class ToggleRootCertifier(RootCertifier, Generic[T]):
     """
     Role
-        -   Transaction Worker
-        -   Integrity Maintenance
+        -   Validator
+        -   Integrity Assurance
         -   Consistency Assurance
-        -   Process Runner
 
     Responsibilities:
-        1.  Ensure a Blueprint instance is certified safe, reliable and consistent before use.
+        1.  Runs integrity checks on Toggles and ToggleBlueprints before they are used.
+        2.  Pluggable validation module.
 
     Attributes:
-        toolkit: ModelToolkit
+        toolkit: ToggleToolkit
 
     Provides:
-        -   def validate(candidate: Any, toolkit: ModelToolkit[T],) -> ValidationResult[Blueprint[T]]:
+        -   def validate(candidate: Any, toolkit: ToggleToolkit,) -> ValidationResult[Blueprint[T]]:
 
     Super Class:
     """
 
-    def __init__(self, toolkit: ToggleToolkit[T],):
+    def __init__(self, toolkit: ToggleToolkit,):
         super().__init__(toolkit=toolkit)
         
     @property

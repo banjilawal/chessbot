@@ -1,7 +1,7 @@
-# src/carrier/square/operand.py
+# src/carrier/square/carrier.py
 
 """
-Module: carrier.square.operand
+Module: carrier.square.carrier
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -13,10 +13,10 @@ from typing import Any, Dict, Optional, cast
 
 from blueprint import SquareBlueprint
 from model import HomeSquare, Square
-from carrier import EntityCarrierToggle
+from carrier import EntityCarrier
 
 
-class SquareCarrierToggle(EntityCarrierToggle[Square]):
+class SquareCarrier(EntityCarrier[Square]):
     """
     Role:
         -   ENTITY
@@ -74,7 +74,7 @@ class SquareCarrierToggle(EntityCarrierToggle[Square]):
         )
     
     @property
-    def is_home_square_operand(self) -> bool:
+    def is_home_square_carrier(self) -> bool:
         return (
                 self.is_carrying_model and
                 isinstance(self._model, HomeSquare)
@@ -91,7 +91,7 @@ class SquareCarrierToggle(EntityCarrierToggle[Square]):
     def extract_blueprint(self) -> Optional[SquareBlueprint]:
         if self.is_not_carrying_anything: return None
         if self.is_carrying_blueprint: return self._blueprint
-        if self.is_home_square_operand:
+        if self.is_home_square_carrier:
             home_square = cast(HomeSquare, self._model)
             return SquareBlueprint(
                 id=home_square.id,
@@ -115,7 +115,7 @@ class SquareCarrierToggle(EntityCarrierToggle[Square]):
     def __eq__(self, other):
         if other is self: return True
         if other is None: return False
-        if isinstance(other, SquareCarrierToggle):
+        if isinstance(other, SquareCarrier):
             return self.entity == other.entity
         return False
     

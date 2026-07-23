@@ -10,6 +10,7 @@ version: 1.0.1
 # =========== CERTIFIER PACKAGE ===========#
 
 # Packages
+from .bootstrapper import *
 from .model import *
 from .register import *
 from .toggle import *

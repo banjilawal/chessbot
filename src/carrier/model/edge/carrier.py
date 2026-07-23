@@ -1,7 +1,7 @@
-# src/carrier/edge/operand.py
+# src/carrier/edge/carrier.py
 
 """
-Module: carrier.edge.operand
+Module: carrier.edge.carrier
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -13,10 +13,10 @@ from typing import Optional
 
 from blueprint import EdgeBlueprint
 from model import Edge
-from carrier import EntityCarrierToggle
+from carrier import EntityCarrier
 
 
-class EdgeCarrier(EntityCarrierToggle[Edge]):
+class EdgeCarrier(EntityCarrier[Edge]):
     """
     Role:
         -   Addressing

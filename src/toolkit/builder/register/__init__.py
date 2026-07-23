@@ -10,8 +10,10 @@ version: 1.0.1
 # =========== TOOLKIT.BUILDER.REGISTER PACKAGE ===========#
 
 # Packages
-from .identity import *
-from .model import *
+from .coord import *
+from .number import *
+from .toggle import *
+from .vector import *
 
 # Modules
 from .toolkit import RegisterBuildToolkit

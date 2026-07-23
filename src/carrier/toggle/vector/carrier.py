@@ -11,7 +11,7 @@ from __future__ import annotations
 from typing import Any, Dict, Optional, cast
 
 from blueprint import VectorToggleBlueprint
-from carrier.register.vector.carrier import VectorRegisterCarrierToggle
+from carrier.register.vector.carrier import VectorRegisterCarrier
 from carrier.toggle.carrier import ToggleCarrier
 from model import Coord, Vector
 from toggle import Toggle, VectorToggle

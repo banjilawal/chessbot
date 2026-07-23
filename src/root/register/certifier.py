@@ -23,13 +23,13 @@ T = TypeVar("T", bound="Register")
 class RegisterRootCertifier(ABC, Generic[T]):
     """
     Role
-        -   Transaction Worker
-        -   Integrity Maintenance
+        -   Validator
+        -   Integrity Assurance
         -   Consistency Assurance
-        -   Process Runner
 
     Responsibilities:
-        1.  Ensure a Blueprint instance is certified safe, reliable and consistent before use.
+        1.  Runs integrity checks on an object or its blueprint before they are used.b
+        3.  Pluggable validation module.
 
     Attributes:
         toolkit: RegisterToolkit

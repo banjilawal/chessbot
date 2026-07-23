@@ -1,7 +1,7 @@
-# src/carrier/prisoner/operand.py
+# src/carrier/prisoner/carrier.py
 
 """
-Module: carrier.prisoner.operand
+Module: carrier.prisoner.carrier
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -13,10 +13,10 @@ from typing import Optional
 
 from blueprint import PrisonerBlueprint
 from model import Prisoner
-from carrier import EntityCarrierToggle
+from carrier import EntityCarrier
 
 
-class PrisonerCarrier(EntityCarrierToggle[Prisoner]):
+class PrisonerCarrier(EntityCarrier[Prisoner]):
     """
     Role:
         -   Addressing

@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Type, cast
 
 from blueprint import SquareRegisterBlueprint
-from carrier import SquareRegisterCarrierToggle
+from carrier import SquareRegisterCarrier
 from err import (
     SquareRegisterBlueprintNullException, SquareRegisterCarrierNullException, SquareRegisterNullException
 )
@@ -44,8 +44,8 @@ class SquareRegisterToolkit(RegisterToolkit[SquareRegister]):
     model: Type[SquareRegister] = (
         SquareRegister
     )
-    carrier_model: Type[SquareRegisterCarrierToggle] = (
-        SquareRegisterCarrierToggle
+    carrier_model: Type[SquareRegisterCarrier] = (
+        SquareRegisterCarrier
     )
     blueprint_model: Type[SquareRegisterBlueprint] = (
         SquareRegisterBlueprint

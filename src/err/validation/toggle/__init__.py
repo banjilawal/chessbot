@@ -16,4 +16,4 @@ from .excess import *
 from .zero import *
 
 # Modules
-from .exception import ToggleValidatorException
+from .exception import EntityCarrierValidatorException

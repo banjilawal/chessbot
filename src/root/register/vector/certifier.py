@@ -11,7 +11,7 @@ from __future__ import annotations
 from typing import Any, List, cast
 
 from blueprint import VectorRegisterBlueprint
-from carrier import VectorRegisterCarrierToggle
+from carrier import VectorRegisterCarrier
 from err import RegisterEmptyException, RegisterSetSizeException, VectorRegisterRootCertifierException
 from model import Vector
 from register import VectorRegister
@@ -90,7 +90,7 @@ class VectorRegisterRootCertifier(RootCertifier[VectorRegister]):
                     ex=carrier_validation.exception,
                 )
             )
-        carrier = cast(VectorRegisterCarrierToggle, carrier_validation.payload)
+        carrier = cast(VectorRegisterCarrier, carrier_validation.payload)
         
         # --- Cast the candidate into a VectorRegisterBlueprint for additional tests. ---#
         blueprint = carrier.extract_blueprint()
@@ -151,13 +151,13 @@ class VectorRegisterRootCertifier(RootCertifier[VectorRegister]):
         
         if carrier.is_carrying_model:
             return ValidationResult.success(
-                VectorRegisterCarrierToggle(
+                VectorRegisterCarrier(
                     model=VectorRegister(u=u, v=v)
                 )
             )
         # --- Forward the work product to the caller. ---#
         return ValidationResult.success(
-            VectorRegisterCarrierToggle(
+            VectorRegisterCarrier(
                 blueprint=VectorRegisterBlueprint(u=u, v=v  )
             )
         )

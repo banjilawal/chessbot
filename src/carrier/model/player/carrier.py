@@ -1,7 +1,7 @@
-# src/carrier/player/operand.py
+# src/carrier/player/carrier.py
 
 """
-Module: carrier.player.operand
+Module: carrier.player.carrier
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -13,10 +13,10 @@ from typing import Optional
 
 from blueprint import PlayerBlueprint
 from model import Player
-from carrier import EntityCarrierToggle
+from carrier import EntityCarrier
 
 
-class PlayerCarrier(EntityCarrierToggle[Player]):
+class PlayerCarrier(EntityCarrier[Player]):
     """
     Role:
         -   Addressing

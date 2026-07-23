@@ -1,7 +1,7 @@
-# src/carrier/register/point/operand.py
+# src/carrier/register/point/carrier.py
 
 """
-Module: carrier.register.point.operand
+Module: carrier.register.point.carrier
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

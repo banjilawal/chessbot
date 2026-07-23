@@ -1,7 +1,7 @@
-# src/carrier/register/vector/operand.py
+# src/carrier/register/vector/carrier.py
 
 """
-Module: carrier.register.vector.operand
+Module: carrier.register.vector.carrier
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -12,11 +12,11 @@ from __future__ import annotations
 from typing import Any, Dict, Optional, cast
 
 from blueprint import VectorRegisterBlueprint
-from carrier import EntityCarrierToggle, RegisterCarrier
+from carrier import EntityCarrier, RegisterCarrier
 from register import VectorRegister
 
 
-class VectorRegisterCarrierToggle(EntityCarrierToggle[VectorRegister]):
+class VectorRegisterCarrier(EntityCarrier[VectorRegister]):
     """
     Role:
         -   Addressing
