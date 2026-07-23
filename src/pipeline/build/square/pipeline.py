@@ -33,7 +33,7 @@ class SquareBuildPipeline(BuildPipeline[Square]):
     Attributes:
         assembler: SquareAssembler
         finalizer: SquareAssemblyFinalizer
-        bootstrapper: SquareAssemblyBootstrapper
+        carrier_validator: SquareAssemblyBootstrapper
         
     Provides:
         -   def run(blueprint: SquareBlueprint, toolkit: SquareToolkit) -> BuildResult[Square]:
@@ -88,7 +88,7 @@ class SquareBuildPipeline(BuildPipeline[Square]):
             blueprint=blueprint,
             toolkit=self._toolkit
         )
-        # Handle the case that the bootstrapper flags an build param.
+        # Handle the case that the carrier_validator flags an build param.
         if bootstrap_result.is_failure:
             # Return the exception on failure.
             return BuildResult.failure(

@@ -25,7 +25,7 @@ class OpeningAttackOffsetPattern(PawnAttackOffsetPattern):
             attack destination vectors for its first move.
 
     Attributes:
-        maneuver_vectors: VectorSet
+        offsets: VectorSet
         
     Provides:
 

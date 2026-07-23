@@ -1,7 +1,7 @@
 # src/err/bootstrap/validator/maneuver/__init__.py
 
 """
-Module: err.bootstrapper.validator.maneuver.__init__
+Module: err.carrier_validator.validator.maneuver.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

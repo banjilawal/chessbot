@@ -1,7 +1,7 @@
-# src/certifier/validator.py
+# src/certifier/register/certifier.py
 
 """
-Module: certifier.validator
+Module: certifier.register/certifier.certifier
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -10,8 +10,7 @@ version: 1.0.1
 from __future__ import annotations
 
 from abc import abstractmethod
-from typing import Any, Generic, TypeVar
-
+from typing import Any, Generic, TypeVar, cast
 
 from result import ValidationResult
 from root import RootCertifier
@@ -36,9 +35,10 @@ class RegisterRootCertifier(RootCertifier, Generic[T]):
         toolkit: RegisterToolkit
 
     Provides:
-        -   def validate(candidate: Any, toolkit: RegisterToolkit[T],) -> ValidationResult[Blueprint[T]]:
+        -   def execute(self, candidate: Any,) -> ValidationResult[T]
 
     Super Class:
+        RootCertifier
     """
 
     
@@ -46,13 +46,12 @@ class RegisterRootCertifier(RootCertifier, Generic[T]):
         super().__init__(toolkit=toolkit)
         
     @property
-    @abstractmethod
     def toolkit(self) -> RegisterToolkit[T]:
-        pass
+        return  cast(RegisterToolkit, super().toolkit)
     
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def execute(self, candidate: Any,) -> ValidationResult:
+    def execute(self, candidate: Any,) -> ValidationResult[T]:
         pass
     
     

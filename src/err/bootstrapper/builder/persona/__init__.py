@@ -1,13 +1,13 @@
-# src/err/bootstrapper/builder/persona/__init__.py
+# src/err/carrier_validator/builder/persona/__init__.py
 
 """
-Module: err.bootstrapper.builder.state.persona.__init__
+Module: err.carrier_validator.builder.state.persona.__init__
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
 """
 
-# ============ err.bootstrapper.builder.STATE.PERSONA PACKAGE ===========#
+# ============ err.carrier_validator.builder.STATE.PERSONA PACKAGE ===========#
 
 # Packages
 

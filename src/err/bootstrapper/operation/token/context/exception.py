@@ -1,7 +1,7 @@
-# src/err/bootstrapper/operation/token/context/exception.py
+# src/err/carrier_validator/operation/token/context/exception.py
 
 """
-Module: err.bootstrapper.operation.token.context.exception
+Module: err.carrier_validator.operation.token.context.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1

@@ -38,7 +38,7 @@ class RookTraversalRuleset(TraversalRuleset[Rook]):
     ):
         """
         Args:
-            entries: Dict[str: TraversalPattern] = Ruleset.ROOK.entries
+            entries: Dict[str: TraversalPattern] = Ruleset.ROOK.items
         """
         super().__init__(entries=entries)
     

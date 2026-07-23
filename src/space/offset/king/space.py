@@ -23,7 +23,7 @@ class KingOffsetPattern(OffsetPattern[King]):
         1.  The second component of a KingBasis. Necessary for computing a KingToken's destination vectors.
 
     Attributes:
-        maneuver_vectors: VectorSet
+        offsets: VectorSet
 
     Provides:
 
@@ -36,7 +36,7 @@ class KingOffsetPattern(OffsetPattern[King]):
         Args:t
         """
         super().__init__(
-            maneuver_vectors=VectorSet(
+            offsets=VectorSet(
                     (
                         Vector(1, 0), Vector(-1, 0), Vector(0, 1),
                         Vector(1, 1), Vector(-1, 1), Vector(-1, -1), Vector(1, -1)

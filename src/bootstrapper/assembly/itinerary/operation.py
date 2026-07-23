@@ -1,7 +1,7 @@
-# src/bootstrapper/assembly/coord/operation.py
+# src/carrier_validator/assembly/coord/operation.py
 
 """
-Module: bootstrapper.assembly.coord.operation
+Module: carrier_validator.assembly.coord.operation
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

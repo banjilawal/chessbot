@@ -10,8 +10,7 @@ version: 1.0.1
 # =========== TOOLKIT.BUILDER.TOGGLE PACKAGE ===========#
 
 # Packages
-from .identity import *
-from .toggle import *
+from .vector import *
 
 # Modules
 from .toolkit import ToggleBuilderToolkit

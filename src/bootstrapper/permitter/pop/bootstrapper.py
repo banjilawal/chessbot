@@ -1,7 +1,7 @@
-# src/bootstrapper/permitter/pop/bootstrapper.py
+# src/carrier_validator/permitter/pop/carrier_validator.py
 
 """
-Module: bootstrapper.permitter.pop.bootstrapper
+Module: carrier_validator.permitter.pop.carrier_validator
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

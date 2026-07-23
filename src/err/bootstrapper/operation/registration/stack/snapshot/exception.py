@@ -1,7 +1,7 @@
-# src/err/bootstrapper/operation/registration/stack/snapshot/exception.py
+# src/err/carrier_validator/operation/registration/stack/snapshot/exception.py
 
 """
-Module: err.bootstrapper.operation.registration.stack.snapshot.exception
+Module: err.carrier_validator.operation.registration.stack.snapshot.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1

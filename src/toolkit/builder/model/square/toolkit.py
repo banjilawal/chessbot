@@ -32,7 +32,7 @@ class SquareBuilderToolkit(ModelBuilderToolkit[Square]):
     Provides:
 
     Super Class:
-        ModelBuildToolkit
+        ModelBuilderToolkit
     """
     
     def __init__(

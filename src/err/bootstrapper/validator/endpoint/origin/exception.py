@@ -1,7 +1,7 @@
 # src/err/bootstrap/validator/endpoint/origin/exception.py
 
 """
-Module: err.bootstrapper.validator.endpoint.origin.exception
+Module: err.carrier_validator.validator.endpoint.origin.exception
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

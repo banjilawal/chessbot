@@ -1,7 +1,7 @@
-# src/err/bootstrapper/operation/vector/orange/operation.py
+# src/err/carrier_validator/operation/vector/orange/operation.py
 
 """
-Module: err.bootstrapper.operation.vector.orange.operation
+Module: err.carrier_validator.operation.vector.orange.operation
 Author: Banji Lawal
 Created: 2026-04-07
 version: 1.0.0

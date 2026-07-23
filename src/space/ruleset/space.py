@@ -31,7 +31,7 @@ class TraversalRuleset(ABC, Generic[T]):
         size: int
         is_empty: bool
         is_not_empty: bool
-        entries: Dict[str: TraversalPattern]
+        items: Dict[str: TraversalPattern]
         to_list: List[TraversalPattern]:
 
     Provides:
@@ -72,6 +72,6 @@ class TraversalRuleset(ABC, Generic[T]):
     
     @LoggingLevelRouter.monitor
     def execute(self, origin: Vector) -> ComputationResult[TargetVectorSet]:
-        for rule in self.ruleset.entries:
+        for rule in self.ruleset.items:
             for entry in rule
         

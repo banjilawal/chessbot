@@ -1,13 +1,13 @@
-# src/err/bootstrapper/builder/vector/__init__.py
+# src/err/carrier_validator/builder/vector/__init__.py
 
 """
-Module: err.bootstrapper.builder.state.vector.__init__
+Module: err.carrier_validator.builder.state.vector.__init__
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
 """
 
-# ============ err.bootstrapper.builder.STATE.VECTOR PACKAGE ===========#
+# ============ err.carrier_validator.builder.STATE.VECTOR PACKAGE ===========#
 
 # Packages
 

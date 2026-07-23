@@ -112,7 +112,7 @@ class BishopSpanService(SpanMicroservice):
 
                 previous_point: Coord = ray.origin
                 current_coord: Coord = ray.origin
-                for point in ray.members:
+                for point in ray.items:
                     
                     tail_square_search_result = square_database.execute(context=SquareContext(coord=previous_point))
                     # Handle the case that the search is not completed
@@ -205,7 +205,7 @@ class BishopSpanService(SpanMicroservice):
                 
                 previous_point: Coord = ray.origin
                 current_coord: Coord = ray.origin
-                for point in ray.members:
+                for point in ray.items:
                     
                     tail_square_search_result = square_database.execute(
                         context=SquareContext(coord=previous_point)

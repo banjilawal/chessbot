@@ -1,7 +1,7 @@
-# src/err/bootstrapper/operation/attack/exception.py
+# src/err/carrier_validator/operation/attack/exception.py
 
 """
-Module: err.bootstrapper.operation.attack.exception
+Module: err.carrier_validator.operation.attack.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1

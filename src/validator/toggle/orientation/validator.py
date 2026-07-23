@@ -28,7 +28,7 @@ class OrientationSelectorValidator(ModelValidator[OrientationToggle]):
             before use.
 
     Attributes:
-        bootstrapper: VectorToggleRegisterRootCertifier
+        carrier_validator: VectorToggleRegisterRootCertifier
 
     Properties:
         -   def validate(

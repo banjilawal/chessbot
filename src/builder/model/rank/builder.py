@@ -9,65 +9,77 @@ version: 1.0.1
 
 from __future__ import annotations
 
+from typing import Optional, cast
+
 from blueprint import RankBlueprint
 from builder import ModelBuilder
-from err import RankBuildRouteException, RankBuilderException
-from model import Bishop, King, Knight, Pawn, Queen, Rank, Rook
-from result import BuildResult
-from schema import Persona
+from err import RankBuilderException
+from model import Rank
+from result import BuildResult, MethodResultType
+from toolkit import RankBuilderToolkit
+from util import LoggingLevelRouter
 
 
 class RankBuilder(ModelBuilder[Rank]):
     """
     Role
-        -   Transaction Worker
-        -   Integrity Maintenance
+        -   Build Pipeline
+        -   Integrity Management
         -   Consistency Assurance
-        -   Build Process Owner
+        -   Workflow Owner
 
    Responsibilities:
-        1.  Ensure a new Token instance is born safe and reliable.
+        1.  Ensure a new Rank instance is born safe and reliable.
 
-     Attributes:
+    Attributes:
+            builder_toolkit: Optional[RankBuilderToolkit]
 
     Provides:
-        -   def execute(
-                    owner: Team,
-                    id: int = IdFactory,
-                    formation: Formation,
-                    rank_service: RankService,
-                    identity_service: IdentityService,
-                    formation_service: FormationService,
-                    team_validator: TeamValidator,
-            ) -> BuildResult[Token]
+        -   def execute(self, blueprint: RankBlueprint) -> BuildResult[Rank]
 
      Super Class:
-         Builder
+         ModelBuilder
      """
-    _bootstrapper: RankCertifier
     
-    def __init__(self, bootstrapper: RankCertifier | None = RankRootCertifier()):
-        self._bootstrapper = bootstrapper
-        
-    
-
-    @LoggingLevelRouter.monitor
-    def execute(self, blueprint: RankBlueprint) -> BuildResult:
+    def __init__(
+            self,
+            builder_toolkit: Optional[RankBuilderToolkit] | None = RankBuilderToolkit(),
+    ):
         """
-        Build a concrete Rank base on the Person instance.
+        Args:
+            builder_toolkit: Optional[RankBuilderToolkit]
+        """
+        super().__init__(builder_toolkit=builder_toolkit)
+    
+    @property
+    def builder_toolkit(self) -> RankBuilderToolkit:
+        return cast(RankBuilderToolkit, super().builder_toolkit)
+    
+    
+    @LoggingLevelRouter.monitor
+    def execute(self, blueprint: RankBlueprint) -> BuildResult[Rank]:
+        """
+        Build a safe Rank.
 
+        Action:
+            1.  Send an exception chain in the BuildResult if either
+                    -   The RankBlueprint object is flagged unsafe.
+                    -   The assembler does not return a product.
+            2.  Otherwise, cast the assembler product as a Rank then, send in the success result,
         Args:
             blueprint: RankBlueprint
-        Raises:
-          BuildResult
+        Returns:
+            BuildResult[Rank]
         Raises:
             RankBuilderException
         """
         method = f"{self.__class__.__name__}.build"
         
-        # Handle the case that, the persona does not pass a validation check.
-        bootstrap = self._bootstrapper.execute(blueprint)
-        if bootstrap.is_failure:
+        # Handle the case that, the blueprint is not certified safe.
+        blueprint_validation = self.builder_toolkit.root_certifier.execute(
+            candidate=blueprint
+        )
+        if blueprint_validation.is_failure:
             # Send the exception chain on failure.
             return BuildResult.failure(
                 RankBuilderException(
@@ -75,42 +87,29 @@ class RankBuilder(ModelBuilder[Rank]):
                     cls_name=self.__class__.__name__,
                     msg=RankBuilderException.MSG,
                     err_code=RankBuilderException.ERR_CODE,
-                    ex=bootstrap.exception
+                    mthd_rslt_type=MethodResultType.BUILD_RESULT,
+                    ex=blueprint_validation.exception
                 )
             )
-        # --- Route to the appropriate concrete builder. ---#
-        
-        # Entry point into building a King instance.
-        if blueprint.persona == Persona.KING:
-            return BuildResult.success(King(persona=blueprint.persona))
-        # Entry point into building a Pawn instance.
-        if blueprint.persona == Persona.PAWN:
-            return BuildResult.success(Pawn( persona=blueprint.persona))
-        # Entry point into building a Knight instance.
-        if blueprint.persona == Persona.KNIGHT:
-            return BuildResult.success(Knight(persona=blueprint.persona))
-        # Entry point into building a Bishop instance.
-        if blueprint.persona == Persona.BISHOP:
-            return BuildResult.success(Bishop(persona=blueprint.persona))
-        # Entry point into building a Rook instance.
-        if blueprint.persona == Persona.ROOK:
-            return BuildResult.success(Rook(persona=blueprint.persona))
-        # Entry point into building a Queen instance.
-        if blueprint.persona == Persona.QUEEN:
-            return BuildResult.success(Queen(persona=blueprint.persona))
-            
-        # If there is no build path exists for a persona, Return an exception chain.
-        return BuildResult.failure(
-            RankBuilderException(
-                cls_mthd=method,
-                cls_name=self.__class__.__name__,
-                msg=RankBuilderException.MSG,
-                err_code=RankBuilderException.ERR_CODE,
-                ex=RankBuildRouteException(
-                    var="persona",
-                    val=f"{blueprint.persona}",
-                    msg=RankBuildRouteException.MSG,
-                    err_code=RankBuildRouteException.ERR_CODE,
-                )
+        # --- Handoff the validated blueprint to the assembler. ---#
+        assembly = self.builder_toolkit.assembler.execute(
+            blueprint=cast(
+                RankBlueprint,
+                blueprint_validation.payload
             )
         )
+        # Handle the case that assembler cannot satisfy the product request.
+        if blueprint_validation.is_failure:
+        # Send the exception chain on failure.
+            return BuildResult.failure(
+                RankBuilderException(
+                    cls_mthd=method,
+                    cls_name=self.__class__.__name__,
+                    msg=RankBuilderException.MSG,
+                    err_code=RankBuilderException.ERR_CODE,
+                    mthd_rslt_type=MethodResultType.BUILD_RESULT,
+                    ex=blueprint_validation.exception
+                )
+            )
+        # --- Forward the work product to the caller. ---#
+        return BuildResult.success(cast(Rank, assembly.payload))

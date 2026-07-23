@@ -26,7 +26,7 @@ class DevelopedManeuverOffsetPattern(PawnManeuverOffsetPattern):
             after a PawnToken's first move.
 
     Attributes:
-        maneuver_vectors: VectorSet
+        offsets: VectorSet
 
     Provides:
 

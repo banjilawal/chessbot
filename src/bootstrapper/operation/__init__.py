@@ -1,7 +1,7 @@
-# src/bootstrapper/operation/__init__.py
+# src/carrier_validator/operation/__init__.py
 
 """
-Module: bootstrapper.operation.__init__
+Module: carrier_validator.operation.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

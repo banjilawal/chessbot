@@ -25,7 +25,7 @@ class PawnOffsetPattern(ABC, OffsetPattern[Pawn]):
         1.  The second component of a PawnBasis. Necessary for computing a PawnToken's destination vectors.
 
     Attributes:
-        maneuver_vectors: DeltaSet
+        offsets: DeltaSet
 
     Provides:
 
@@ -33,10 +33,10 @@ class PawnOffsetPattern(ABC, OffsetPattern[Pawn]):
         ManeuverVectorSet
     """
     
-    def __init__(self, maneuver_vectors: VectorSet):
+    def __init__(self, offsets: VectorSet):
         """
         Args:
-            maneuver_vectors: VectorSet
+            offsets: VectorSet
         """
-        super().__init__(maneuver_vectors=maneuver_vectors)
+        super().__init__(offsets=offsets)
     

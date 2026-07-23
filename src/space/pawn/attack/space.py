@@ -26,7 +26,7 @@ class PawnAttOffsetPattern(PawnOffsetPattern):
             destination vectors.
 
     Attributes:
-        maneuver_vectors: DeltaSet
+        offsets: DeltaSet
 
     Provides:
 

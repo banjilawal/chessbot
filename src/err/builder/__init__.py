@@ -17,6 +17,7 @@ from .dto import *
 from .model import *
 from .register import *
 from .space import *
+from .toggle import *
 
 
 # Modules

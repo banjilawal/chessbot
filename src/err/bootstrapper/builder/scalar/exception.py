@@ -1,7 +1,7 @@
-# src/err/bootstrapper/builder/scalar/exception.py
+# src/err/carrier_validator/builder/scalar/exception.py
 
 """
-Module: err.bootstrapper.builder.scalar.exception
+Module: err.carrier_validator.builder.scalar.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1

@@ -27,7 +27,7 @@ class KnightBasis(BasisSpace[Knight]):
 
     Attributes:
             origin: Vector
-            maneuver_vectors: Optional[KnightManeuverVectorSet]
+            offsets: Optional[KnightManeuverVectorSet]
             targeting_computer: Optional[DestinationSpanComputer]      
                   
     Provides:

@@ -1,7 +1,7 @@
-# src/err/bootstrapper/builder/binder/exception.py
+# src/err/carrier_validator/builder/binder/exception.py
 
 """
-Module: err.bootstrapper.builder.binder.exception
+Module: err.carrier_validator.builder.binder.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1

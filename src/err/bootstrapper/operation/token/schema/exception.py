@@ -1,7 +1,7 @@
-# src/err/bootstrapper/token/schema/exception.py
+# src/err/carrier_validator/token/schema/exception.py
 
 """
-Module: err.bootstrapper.token.schema.exception
+Module: err.carrier_validator.token.schema.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1

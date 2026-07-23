@@ -24,22 +24,20 @@ T = TypeVar("T")
 class Builder(ABC, Generic[T]):
     """
     Role
-        -   Transaction Worker
-        -   Integrity Maintenance
+        -   Build Pipeline
+        -   Integrity Management
         -   Consistency Assurance
-        -   Process Runner
-
+        -   Workflow Owner
+    
     Responsibilities:
-        1.  Creation process owners.
-        2.  Assure objects comply with business logic at point of creation.
-        3.  Ensure stateful data-holding build resources satisfy contracts.
+        1.  Ensure a new T instance is born safe and reliable.
     
     Attributes:
-        root_certifier: RootCertifier[T]
-
+        builder_toolkit: [BuilderToolkit[T]]
+    
     Provides:
         -   def execute(self, blueprint: Blueprint[T]) -> BuildResult[T]
-        
+    
     Super Class:
     """
     _builder_toolkit: BuilderToolkit[T]
@@ -47,12 +45,12 @@ class Builder(ABC, Generic[T]):
     def __init__(self, builder_toolkit: BuilderToolkit[T]):
         """
         Args:
-           builder_toolkit: BuilderToolkit[T
+           builder_toolkit: BuilderToolkit[T]
         """
         self._builder_toolkit = builder_toolkit
     
     @property
-    def build_toolkit(self) -> BuilderToolkit[T]:
+    def builder_toolkit(self) -> BuilderToolkit[T]:
         return self._builder_toolkit
 
     @abstractmethod

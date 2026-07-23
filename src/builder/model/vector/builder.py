@@ -9,15 +9,14 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from typing import cast
+from typing import Optional, cast
 
-from assembler import VectorAssembler
 from blueprint import VectorBlueprint
 from builder import ModelBuilder
 from err import VectorBuilderException
 from model import Vector
 from result import BuildResult, MethodResultType
-from root import VectorRootCertifier
+from toolkit import VectorBuilderToolkit
 from util import LoggingLevelRouter
 
 
@@ -28,33 +27,33 @@ class VectorBuilder(ModelBuilder[Vector]):
         -   Integrity Management
         -   Consistency Assurance
         -   Workflow Owner
-        
+
    Responsibilities:
         1.  Ensure a new Vector instance is born safe and reliable.
-    
+
     Attributes:
-    
+            builder_toolkit: Optional[VectorBuilderToolkit]
+
     Provides:
         -   def execute(self, blueprint: VectorBlueprint) -> BuildResult[Vector]
-    
+
      Super Class:
-         Builder
+         ModelBuilder
      """
     
     def __init__(
             self,
-            bootstrapper: VectorRootCertifier | None = VectorRootCertifier(),
-            assembler: VectorAssembler | None = VectorAssembler(),
+            builder_toolkit: Optional[VectorBuilderToolkit] | None = VectorBuilderToolkit(),
     ):
-        super().__init__(bootstrapper=bootstrapper, assembler=assembler)
+        """
+        Args:
+            builder_toolkit: Optional[VectorBuilderToolkit]
+        """
+        super().__init__(builder_toolkit=builder_toolkit)
     
     @property
-    def bootstrapper(self) -> VectorRootCertifier:
-        return cast(VectorRootCertifier, super().bootstrapper)
-    
-    @property
-    def assembler(self) -> VectorAssembler:
-        return cast(VectorAssembler, super().assembler)
+    def builder_toolkit(self) -> VectorBuilderToolkit:
+        return cast(VectorBuilderToolkit, super().builder_toolkit)
     
     
     @LoggingLevelRouter.monitor
@@ -64,9 +63,9 @@ class VectorBuilder(ModelBuilder[Vector]):
 
         Action:
             1.  Send an exception chain in the BuildResult if either
-                    -   The bootstrap is not successful.
+                    -   The VectorBlueprint object is flagged unsafe.
                     -   The assembler does not return a product.
-            2.  Otherwise, cast the assemble product then, send in the success result,
+            2.  Otherwise, cast the assembler product as a Vector then, send in the success result,
         Args:
             blueprint: VectorBlueprint
         Returns:
@@ -76,9 +75,11 @@ class VectorBuilder(ModelBuilder[Vector]):
         """
         method = f"{self.__class__.__name__}.build"
         
-        # Handle the case that, the bootstrap is not successful.
-        bootstrap = self._bootstrapper.execute(candidate=blueprint)
-        if bootstrap.is_failure:
+        # Handle the case that, the blueprint is not certified safe.
+        blueprint_validation = self.builder_toolkit.root_certifier.execute(
+            candidate=blueprint
+        )
+        if blueprint_validation.is_failure:
             # Send the exception chain on failure.
             return BuildResult.failure(
                 VectorBuilderException(
@@ -87,14 +88,18 @@ class VectorBuilder(ModelBuilder[Vector]):
                     msg=VectorBuilderException.MSG,
                     err_code=VectorBuilderException.ERR_CODE,
                     mthd_rslt_type=MethodResultType.BUILD_RESULT,
-                    ex=bootstrap.exception
+                    ex=blueprint_validation.exception
                 )
             )
         # --- Handoff the validated blueprint to the assembler. ---#
-        assembly = self._assembler.execute(
-            blueprint=cast(VectorBlueprint, bootstrap.payload)
+        assembly = self.builder_toolkit.assembler.execute(
+            blueprint=cast(
+                VectorBlueprint,
+                blueprint_validation.payload
+            )
         )
-        if bootstrap.is_failure:
+        # Handle the case that assembler cannot satisfy the product request.
+        if blueprint_validation.is_failure:
         # Send the exception chain on failure.
             return BuildResult.failure(
                 VectorBuilderException(
@@ -103,7 +108,7 @@ class VectorBuilder(ModelBuilder[Vector]):
                     msg=VectorBuilderException.MSG,
                     err_code=VectorBuilderException.ERR_CODE,
                     mthd_rslt_type=MethodResultType.BUILD_RESULT,
-                    ex=bootstrap.exception
+                    ex=blueprint_validation.exception
                 )
             )
         # --- Forward the work product to the caller. ---#

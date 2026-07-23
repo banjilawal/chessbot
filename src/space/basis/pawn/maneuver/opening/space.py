@@ -26,7 +26,7 @@ class OpeningPawnManeuverVectorBasis(PawnManeuverVectorBasis):
 
     Attributes:
         origin: Vector
-        maneuver_vectors: Optional[OpeningManeuverVectorSet]
+        offsets: Optional[OpeningManeuverVectorSet]
         targeting_computer: Optional[DestinationSpanComputer]
             
     Provides:

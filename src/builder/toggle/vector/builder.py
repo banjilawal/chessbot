@@ -11,15 +11,16 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from assembler import VectorToggleAssembler
+from blueprint import VectorToggleBlueprint
 from builder import ToggleBuilder
-from result import BuildResult
-from root import VectorToggleRootCertifier
-from toggle import Toggle, VectorToggle
+from err import VectorToggleBuilderException
+from result import BuildResult, MethodResultType
+from toggle import VectorToggle
+from toolkit import VectorToggleBuilderToolkit
 from util import LoggingLevelRouter
 
 
-class VectorToggleBuilder(ToggleBuilder[Toggle]):
+class VectorToggleBuilder(ToggleBuilder[VectorToggle]):
     """
     Role:
         -   Selection
@@ -33,39 +34,29 @@ class VectorToggleBuilder(ToggleBuilder[Toggle]):
             as an toggle for multiplication, conversion or simple addition.
 
     Attributes:
-        vector: Optional[Vector]
-        coord: Optional[Coord]
-        entity: Optional[Coord|Vector]
-        is_coord_point: bool
-        is_vector_point: bool
+        builder_toolkit: Optional[VectorToggleBuilderToolkit]
 
     Provides:
         
         -   _equal_vector_points(point: Point) -> bool
         -  _equal_coord_points(self, point: Point) -> bool
     Super Class:
-        Toggle
+        ToggleBuilder
     """
     
-    def __init__(
-            self,
-            assembler: Optional[VectorToggleAssembler] | None = VectorToggleAssembler(),
-            bootstrapper: Optional[VectorToggleRootCertifier] | None = VectorToggleRootCertifier(),
+    def __init__(self, builder_toolkit: Optional[VectorToggleBuilderToolkit] |
+                                        None = VectorToggleBuilderToolkit()
     ):
         """
         Args:
-            assembler: [VectorToggleAssembler]
-            bootstrapper: Optional[VectorToggleRootCertifier]
+            builder_toolkit: Optional[VectorToggleBuilderToolkit]
         """
-        super().__init__(bootstrapper=bootstrapper, assembler=assembler)
+        super().__init__(builder_toolkit=builder_toolkit)
         
     @property
-    def bootstrapper(self) -> VectorToggleRootCertifier:
-        return cast(VectorToggleRootCertifier, super().bootstrapper)
-    
-    @property
-    def assembler(self) -> VectorToggleAssembler:
-        return cast(VectorToggleAssembler, super().assembler)
+    def builder_toolkit(self) -> VectorToggleBuilderToolkit:
+        return cast(VectorToggleBuilderToolkit, super().builder_toolkit)
+        
     
     @LoggingLevelRouter.monitor
     def execute(self, blueprint: VectorToggleBlueprint,) -> BuildResult[VectorToggle]:
@@ -87,8 +78,8 @@ class VectorToggleBuilder(ToggleBuilder[Toggle]):
         method = f"{self.__class__.__name__}.build"
         
         # Handle the case that, the bootstrap is not successful.
-        bootstrap = self.bootstrapper.execute(candidate=blueprint)
-        if bootstrap.is_failure:
+        blueprint_validation = self.builder_toolkit.root_certifier.execute(candidate=blueprint)
+        if blueprint_validation.is_failure:
             # Send the exception chain on failure.
             return BuildResult.failure(
                 VectorToggleBuilderException(
@@ -97,12 +88,12 @@ class VectorToggleBuilder(ToggleBuilder[Toggle]):
                     msg=VectorToggleBuilderException.MSG,
                     err_code=VectorToggleBuilderException.ERR_CODE,
                     mthd_rslt_type=MethodResultType.BUILD_RESULT,
-                    ex=bootstrap.exception
+                    ex=blueprint_validation.exception
                 )
             )
         # --- Handoff the validated blueprint to the assembler. ---#
-        assembly = self.assembler.execute(
-            blueprint=cast(VectorToggleBlueprint, bootstrap.payload)
+        assembly = self.builder_toolkit.assembler.execute(
+            blueprint=cast(VectorToggleBlueprint, blueprint_validation.payload)
         )
         if assembly.is_failure:
             # Send the exception chain on failure.
@@ -113,7 +104,7 @@ class VectorToggleBuilder(ToggleBuilder[Toggle]):
                     msg=VectorToggleBuilderException.MSG,
                     err_code=VectorToggleBuilderException.ERR_CODE,
                     mthd_rslt_type=MethodResultType.BUILD_RESULT,
-                    ex=self.assembly.exception
+                    ex=assembly.exception
                 )
             )
         # --- Forward the work product to the caller. ---#

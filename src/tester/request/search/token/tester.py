@@ -34,7 +34,7 @@ class TokenSearchRequestTester(SearchRequestTester):
     Attributes:
         item_validator: TokenContextValidator
         priming_validator: PrimingValidator
-        bootstrapper: SearchPermitterBootstrapper
+        carrier_validator: SearchPermitterBootstrapper
           
     Provides:
         -   def execute(self, subject: Any) -> ValidationResult:

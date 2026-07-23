@@ -130,7 +130,7 @@ class PairListBuilder(Builder[PairList]):
         pair_list: PairList = PairList()
 
         # --- Do the pair building work on each ray member. ---#
-        for member in square_ray.members:
+        for member in square_ray.items:
             build_result = pair_builder.build(
                 head=cursor,
                 tail_square=member,

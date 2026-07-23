@@ -1,7 +1,7 @@
 # src/err/bootstrap/validator/priming.context.exception.py
 
 """
-Module: err.bootstrapper.validator.priming.context.exception
+Module: err.carrier_validator.validator.priming.context.exception
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

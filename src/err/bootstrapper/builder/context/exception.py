@@ -1,7 +1,7 @@
-# src/err/bootstrapper/builder/context/exception.py
+# src/err/carrier_validator/builder/context/exception.py
 
 """
-Module: err.bootstrapper.builder.context.exception
+Module: err.carrier_validator.builder.context.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1

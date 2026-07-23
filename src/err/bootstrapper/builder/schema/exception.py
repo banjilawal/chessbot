@@ -1,7 +1,7 @@
-# src/err/bootstrapper/builder/schema/exception.py
+# src/err/carrier_validator/builder/schema/exception.py
 
 """
-Module: err.bootstrapper.builder.schema.exception
+Module: err.carrier_validator.builder.schema.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1

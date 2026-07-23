@@ -26,7 +26,7 @@ class OpeningPawnAttackVectorBasis(PawnAttackVectorBasis):
 
     Attributes:
         origin: Vector
-        maneuver_vectors: Optional[OpeningAttackVectorSet]
+        offsets: Optional[OpeningAttackVectorSet]
         targeting_computer: Optional[DestinationSpanComputer]
             
     Provides:

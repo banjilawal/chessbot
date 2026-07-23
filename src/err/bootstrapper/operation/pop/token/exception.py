@@ -1,7 +1,7 @@
-# src/err/bootstrapper/operation/pop/token/exception.py
+# src/err/carrier_validator/operation/pop/token/exception.py
 
 """
-Module: err.bootstrapper.operation.pop.token.exception
+Module: err.carrier_validator.operation.pop.token.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1

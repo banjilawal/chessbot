@@ -1,7 +1,7 @@
-# src/err/bootstrapper/operation/visit/empty/stack/board/exception.py
+# src/err/carrier_validator/operation/visit/empty/stack/board/exception.py
 
 """
-Module: err.bootstrapper.operation.visit.empty.stack.board.exception
+Module: err.carrier_validator.operation.visit.empty.stack.board.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1

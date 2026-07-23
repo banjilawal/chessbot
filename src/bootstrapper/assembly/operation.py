@@ -1,7 +1,7 @@
-# src/bootstrapper/priming.py
+# src/carrier_validator/priming.py
 
 """
-Module: bootstrapper.priming
+Module: carrier_validator.priming
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

@@ -1,7 +1,7 @@
-# src/err/bootstrapper/operation/primer/assembly/persona/exception.py
+# src/err/carrier_validator/operation/primer/assembly/persona/exception.py
 
 """
-Module: err.bootstrapper.priming.assembly.persona.exception
+Module: err.carrier_validator.priming.assembly.persona.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1

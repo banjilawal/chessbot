@@ -18,7 +18,7 @@ from validator import SpanValidator
 
 
 
-# from bootstrapper import PrimingValidator
+# from carrier_validator import PrimingValidator
 # from container import VectorSet
 # from err import NullException
 # from result import ValidationResult

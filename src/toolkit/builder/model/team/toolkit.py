@@ -32,7 +32,7 @@ class TeamBuilderToolkit(ModelBuilderToolkit[Team]):
     Provides:
 
     Super Class:
-        ModelBuildToolkit
+        ModelBuilderToolkit
     """
     
     def __init__(

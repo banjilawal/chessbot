@@ -1,7 +1,7 @@
-# src/err/bootstrapper/assembly/edge/exception.py
+# src/err/carrier_validator/assembly/edge/exception.py
 
 """
-Module: err.bootstrapper.assembly.edge.exception
+Module: err.carrier_validator.assembly.edge.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1

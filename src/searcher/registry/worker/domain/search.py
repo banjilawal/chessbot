@@ -24,7 +24,7 @@ class WorkerRegistryDomainSearch(Dict[str, Operation]):
         -   Search Worker
 
     Responsibilities:
-        1.  Search the WorkerRegistry for entries in a domain.
+        1.  Search the WorkerRegistry for items in a domain.
 
     Attributes:
 
@@ -55,7 +55,7 @@ class WorkerRegistryDomainSearch(Dict[str, Operation]):
             1.  Send an exception chain in the SearchResult if the name is not a valid String.
             2.  Otherwise, search the WorkerRegistry for the domain.
                     -   If the domain does not exist, send an empty SearchResult.
-                    -   Else, send the domain's entries in a SearchResult.
+                    -   Else, send the domain's items in a SearchResult.
         Args:
             name: str
             registry: WorkerRegistry   
@@ -88,7 +88,7 @@ class WorkerRegistryDomainSearch(Dict[str, Operation]):
         if name.upper() not in registry.domains:
             return SearchResult.empty()
         
-        # --- Otherwise, return the domain's entries in the work product. ---#
+        # --- Otherwise, return the domain's items in the work product. ---#
         workers = registry.entries[name.upper()]
         return SearchResult.success([workers])
 

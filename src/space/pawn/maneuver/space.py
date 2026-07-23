@@ -28,7 +28,7 @@ class PawnManeuverOffsetPattern(ABC, PawnOffsetPattern):
 
 
     Attributes:
-        maneuver_vectors: VectorSet
+        offsets: VectorSet
         
     Provides:
 

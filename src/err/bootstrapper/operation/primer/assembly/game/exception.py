@@ -1,7 +1,7 @@
-# src/err/bootstrapper/operation/primer/assembly/game/exception.py
+# src/err/carrier_validator/operation/primer/assembly/game/exception.py
 
 """
-Module: err.bootstrapper.priming.assembly.game.exception
+Module: err.carrier_validator.priming.assembly.game.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1

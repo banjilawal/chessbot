@@ -19,33 +19,34 @@ class Container(ABC, Generic[T]):
     """
     Role:
         -   Data Holder
+        -   Data protection
         
     Responsibilities:
-        1.  Lists a Knight's possible destinations from its current postion.
+        1.  Immutable unordered set of items.
 
     Attributes:
-        termini: Tuple[T, ...]
+        items: Tuple[T, ...]
 
     Provides:
 
     Super Class:
     """
-    _entries: Tuple[T, ...]
+    _items: Tuple[T, ...]
     
-    def __init__(self, entries: Optional[Tuple[T, ...]] | None = None):
-        self._entries = entries or ()
+    def __init__(self, items: Optional[Tuple[T, ...]] | None = None):
+        self._items = items or ()
         
     @property
-    def entries(self) -> Tuple[T, ...]:
-        return self._entries
+    def items(self) -> Tuple[T, ...]:
+        return self._items
     
     @property
     def size(self) -> int:
-        return len(self._entries)
+        return len(self._items)
     
     @property
     def iterator(self) -> Iterator[T]:
-        return iter(self._entries)
+        return iter(self._items)
     
     @property
     def is_empty(self) -> bool:

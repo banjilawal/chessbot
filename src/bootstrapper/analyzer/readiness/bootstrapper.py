@@ -1,7 +1,7 @@
-# src/bootstrapper/analyzer/readiness/bootstrapper.py
+# src/carrier_validator/analyzer/readiness/carrier_validator.py
 
 """
-Module: bootstrapper.analyzer.readiness.bootstrapper
+Module: carrier_validator.analyzer.readiness.carrier_validator
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

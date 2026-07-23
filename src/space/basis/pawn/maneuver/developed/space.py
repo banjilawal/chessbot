@@ -26,7 +26,7 @@ class DevelopedPawnManeuverVectorBasis(PawnManeuverVectorBasis):
 
     Attributes:
         origin: Vector
-        maneuver_vectors: Optional[DevelopedManeuverVectorSet]
+        offsets: Optional[DevelopedManeuverVectorSet]
         targeting_computer: Optional[DestinationSpanComputer]
             
     Provides:

@@ -1,7 +1,7 @@
-# src/bootstrapper/assembly/rank/operation.py
+# src/carrier_validator/assembly/rank/operation.py
 
 """
-Module: bootstrapper.assembly.rank.operation
+Module: carrier_validator.assembly.rank.operation
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

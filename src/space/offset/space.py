@@ -28,32 +28,32 @@ class OffsetPattern(MovementPattern, Generic[T]):
             vectors.
 
     Attributes:
-        maneuver_vectors: DeltaSet
+        offsets: DeltaSet
 
     Provides:
 
     Super Class:
     """
-    _maneuver_vectors: VectorSet
+    _offsets: VectorSet
     
-    def __init__(self, maneuver_vectors: VectorSet,):
+    def __init__(self, offsets: VectorSet, ):
         """
         Args:
-            maneuver_vectors: VectorSet
+            offsets: VectorSet
         """
-        self._maneuver_vectors = maneuver_vectors
+        self._offsets = offsets
 
     @property
     def iterator(self) -> Iterator[Vector]:
-        return self._maneuver_vectors.iterator
+        return self._offsets.iterator
     
     @property
     def size(self) -> int:
-        return self._maneuver_vectors.size
+        return self._offsets.size
     
     @property
     def is_empty(self) -> bool:
-        return self._maneuver_vectors.is_empty
+        return self._offsets.is_empty
     
     @property
     def is_not_empty(self) -> bool:
@@ -61,6 +61,6 @@ class OffsetPattern(MovementPattern, Generic[T]):
     
     @property
     def is_a_point(self) -> bool:
-        return self._maneuver_vectors.size == 1
+        return self._offsets.size == 1
     
     

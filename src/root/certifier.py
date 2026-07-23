@@ -13,8 +13,6 @@ from abc import ABC, abstractmethod
 from typing import Any, Generic, Optional, TypeVar
 
 from blueprint import Blueprint
-from carrier import EntityCarrier
-
 from result import ValidationResult
 from root import EntityCarrierValidator
 from toolkit import Toolkit
@@ -45,20 +43,20 @@ class RootCertifier(ABC, Generic[T]):
     Super Class:
     """
     _toolkit: Toolkit
-    _bootstrapper: EntityCarrierValidator
+    _carrier_validator: EntityCarrierValidator
     
     def __init__(
             self,
             toolkit: Toolkit,
-            bootstrapper: Optional[EntityCarrierValidator] | None = EntityCarrierValidator()
+            carrier_validator: Optional[EntityCarrierValidator] | None = EntityCarrierValidator()
     ):
         """
         Args:
             toolkit: Toolkit,
-            bootstrapper: Optional[EntityCarrierValidator]
+            carrier_validator: Optional[EntityCarrierValidator]
         """
         self._toolkit = toolkit
-        self._bootstrapper = bootstrapper
+        self._carrier_validator = carrier_validator
         
     @property
     def toolkit(self) -> Toolkit:
@@ -66,7 +64,7 @@ class RootCertifier(ABC, Generic[T]):
     
     @property
     def carrier_validator(self) -> EntityCarrierValidator:
-        return self._bootstrapper
+        return self._carrier_validator
     
     
     @abstractmethod

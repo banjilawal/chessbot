@@ -8,7 +8,7 @@ version: 1.0.1
 """
 
 from __future__ import annotations
-from typing import List, cast
+from typing import List, Optional, cast
 
 from blueprint import VectorToggleRegisterBlueprint
 from carrier import VectorToggleRegisterCarrier
@@ -38,7 +38,7 @@ class VectorToggleRegisterCertifier(
             reliable and consistent before use.
 
     Attributes:
-        toolkit: VectorToggleRegisterToolkit
+        toolkit: Optional[VectorToggleRegisterToolkit]
 
     Provides:
         -   execute(self, candidate: Any) -> ValidationResult:
@@ -49,12 +49,11 @@ class VectorToggleRegisterCertifier(
     
     def __init__(
             self,
-            toolkit: VectorToggleRegisterToolkit |
-                     None = VectorToggleRegisterToolkit()
+            toolkit: Optional[VectorToggleRegisterToolkit] |None = VectorToggleRegisterToolkit()
     ):
         """
         Args:
-            toolkit: VectorToggleRegisterToolkit
+            toolkit: Optional[VectorToggleRegisterToolkit]
         """
         super().__init__(toolkit=toolkit)
     
@@ -83,7 +82,7 @@ class VectorToggleRegisterCertifier(
         """
         method = f"{self.__class__.__name__}.execute"
         
-        carrier_validation = self.model_carrier_validator.execute(
+        carrier_validation = self.carrier_validator.execute(
             candidate=candidate,
             target_model=self.toolkit.carrier_model,
             model_null_exception=self.toolkit.carrier_null_exception,

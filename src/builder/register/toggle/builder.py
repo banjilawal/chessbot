@@ -31,7 +31,7 @@ class VectorRegisterBuilder(RegisterBuilder[VectorRegister]):
         1.  Ensure a new Register instance is born safe and reliable.
 
     Attributes:
-            build_toolkit: Optional[VectorRegisterBuilderToolkit]
+            builder_toolkit: Optional[VectorRegisterBuilderToolkit]
 
     Provides:
         -   def execute(self, blueprint: RegisterVectorRegisteBlueprint) -> BuildResult[Register]
@@ -42,18 +42,18 @@ class VectorRegisterBuilder(RegisterBuilder[VectorRegister]):
     
     def __init__(
             self,
-            build_toolkit: Optional[VectorRegisterBuildToolkit] | 
-                           None = VectorRegisterBuildToolkit()
+            builder_toolkit: Optional[VectorRegisterBuilderToolkit] | 
+                           None = VectorRegisterBuilderToolkit()
     ):
         """
         Args:
-            build_toolkit: Optional[VectorRegisterBuilderToolkit]
+            builder_toolkit: Optional[VectorRegisterBuilderToolkit]
         """
-        super().__init__(builder_toolkit=build_toolkit)
+        super().__init__(builder_toolkit=builder_toolkit)
     
     @property
-    def build_toolkit(self) -> VectorRegisterBuildToolkit:
-        return cast(VectorRegisterBuildToolkit, super().build_toolkit)
+    def builder_toolkit(self) -> VectorRegisterBuilderToolkit:
+        return cast(VectorRegisterBuilderToolkit, super().builder_toolkit)
     
     @LoggingLevelRouter.monitor
     def execute(self, blueprint: VectorRegisterBlueprint) -> BuildResult[VectorRegister]:
@@ -75,8 +75,8 @@ class VectorRegisterBuilder(RegisterBuilder[VectorRegister]):
         method = f"{self.__class__.__name__}.build"
         
         # Handle the case that, the bootstrap is not successful.
-        bootstrap = self.build_toolkit.bootstrapper.execute(candidate=blueprint)
-        if bootstrap.is_failure:
+        blueprint_validation = self.builder_toolkit.bootstrapper.execute(candidate=blueprint)
+        if blueprint_validation.is_failure:
             # Send the exception chain on failure.
             return BuildResult.failure(
                 VectorRegisterBuilderException(
@@ -85,12 +85,12 @@ class VectorRegisterBuilder(RegisterBuilder[VectorRegister]):
                     msg=VectorRegisterBuilderException.MSG,
                     err_code=VectorRegisterBuilderException.ERR_CODE,
                     mthd_rslt_type=MethodResultType.BUILD_RESULT,
-                    ex=bootstrap.exception
+                    ex=blueprint_validation.exception
                 )
             )
         # --- Handoff the validated blueprint to the assembler. ---#
-        assembly = self.build_toolkit.assembler.execute(
-            blueprint=cast(VectorRegisterBlueprint, bootstrap.payload)
+        assembly = self.builder_toolkit.assembler.execute(
+            blueprint=cast(VectorRegisterBlueprint, blueprint_validation.payload)
         )
         if assembly.is_failure:
             # Send the exception chain on failure.

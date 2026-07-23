@@ -1,7 +1,7 @@
-# src/bootstrapper/operation/bootstrapper.py
+# src/carrier_validator/operation/carrier_validator.py
 
 """
-Module: bootstrapper.operation.bootstrapper
+Module: carrier_validator.operation.carrier_validator
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

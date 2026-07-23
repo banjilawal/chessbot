@@ -31,7 +31,7 @@ class VectorToggleValidator(Validator[VectorToggle]):
             before use.
 
     Attributes:
-        bootstrapper: VectorToggleRegisterRootCertifier
+        carrier_validator: VectorToggleRegisterRootCertifier
 
     Properties:
         -   def validate(

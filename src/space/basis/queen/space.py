@@ -27,7 +27,7 @@ class QueenBasis(BasisSpace[Queen]):
 
     Attributes:
             origin: Vector
-            maneuver_vectors: Optional[QueenManeuverVectorSet]
+            offsets: Optional[QueenManeuverVectorSet]
             targeting_computer: Optional[DestinationSpanComputer]
             
     Provides:

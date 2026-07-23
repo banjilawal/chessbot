@@ -77,7 +77,7 @@ class TokenRootCertifier(ModelRootCertifier[Token]):
         """
         method = f"{self.__class__.__name__}.execute"
         
-        carrier_validation = self.model_carrier_validator.execute(
+        carrier_validation = self.carrier_validator.execute(
             candidate=candidate,
             target_model=self.toolkit.carrier_model,
             model_null_exception=self.toolkit.carrier_null_exception,

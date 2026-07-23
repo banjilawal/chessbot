@@ -35,7 +35,7 @@ class PermitterToolkit(Toolkit[Permitter, Generic[P]]):
         priming_validator: PrimingValidator
         blueprint_id_validator: BlueprintIdValidator
         
-        _entries: Dict[str, Any]
+        _items: Dict[str, Any]
     
     Provides:
         -   def resolve_dependencies(s -> SearchResult[List[Dict[str, Any]]]:

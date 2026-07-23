@@ -31,7 +31,7 @@ class VectorBuildPipeline(BuildPipeline[Vector]):
     
     Attributes:
         assembler: VectorAssembler
-        bootstrapper: VectorAssemblyBootstrapper
+        carrier_validator: VectorAssemblyBootstrapper
         
     Provides:
         -   def run(blueprint: VectorBlueprint, toolkit: MathToolkit) -> BuildResult[Vector]:
@@ -80,7 +80,7 @@ class VectorBuildPipeline(BuildPipeline[Vector]):
             blueprint=blueprint,
             toolkit=self._toolkit,
         )
-        # Handle the case that the bootstrapper flags an build param.
+        # Handle the case that the carrier_validator flags an build param.
         if bootstrap_result.is_failure:
             # Return the exception on failure.
             return BuildResult.failure(

@@ -29,7 +29,7 @@ class PromotionPermitter(Permitter):
         1.  Evaluate if promotion request can be granted.
         
     Attributes:
-        bootstrapper: PromotionRequestTester
+        carrier_validator: PromotionRequestTester
         
     Provides:
         -   run(self, request: PromotionRequest) -> PromotionApprovalReport

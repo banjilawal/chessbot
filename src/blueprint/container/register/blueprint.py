@@ -28,7 +28,7 @@ class RegisterSetBlueprint(ContainerBlueprint[Register]):
         2.  DTO
     
     Attributes:
-        entries: Tuple[Register, ...],
+        items: Tuple[Register, ...],
         container_class: Type[RegisterSet],
         null_exception: RegisterSetNullException
     

@@ -1,7 +1,7 @@
-# src/suite/bootstrapper/toolkit.py
+# src/suite/carrier_validator/toolkit.py
 
 """
-Module: suite.bootstrapper.toolkit
+Module: suite.carrier_validator.toolkit
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

@@ -1,7 +1,7 @@
-# src/certifier/validator.py
+# src/certifier/model/validator.py
 
 """
-Module: certifier.validator
+Module: certifier.model.validator
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -12,7 +12,6 @@ from __future__ import annotations
 from abc import abstractmethod
 from typing import Any, Generic, TypeVar, cast
 
-from bootstrapper import EntityCarrierValidator
 from root import RootCertifier
 from result import ValidationResult
 from toolkit import ModelToolkit
@@ -37,39 +36,19 @@ class ModelRootCertifier(RootCertifier, Generic[T]):
         -   execute( carrier: DtoCarrier[T]) -> ValidationResult:
 
     Super Class:
+        RootCertifier
     """
     
-    def __init__(
-            self,
-            toolkit: ModelToolkit[T],
-            # model_carrier_validator: EntityCarrierToggleValidator,
-    ):
+    def __init__(self, toolkit: ModelToolkit[T]):
         super().__init__(toolkit=toolkit)
-        # , model_carrier_validator=model_carrier_validator)
-
         
     @property
     def toolkit(self) -> ModelToolkit[T]:
         return cast(ModelToolkit[T], super().toolkit)
     
-    @property
-    def model_carrier_validator(self) -> EntityCarrierValidator:
-        return self.model_carrier_validator
-    
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def execute(self, candidate: Any) -> ValidationResult:
-        """
-            -   Certify a DtoCarrier's data satisfies a model's integrity constraints.
-
-        Action:
-            1.  Implement validation tests here.
-        Args:
-            candidate: Any
-        Returns:
-            ValidationResult[DtoCarrier[T]]
-        Raises:
-        """
+    def execute(self, candidate: Any) -> ValidationResult[T]:
         pass
     
     

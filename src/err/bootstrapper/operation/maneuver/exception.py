@@ -1,7 +1,7 @@
-# src/err/bootstrapper/operation/maneuver/exception.py
+# src/err/carrier_validator/operation/maneuver/exception.py
 
 """
-Module: err.bootstrapper.operation.maneuver.exception
+Module: err.carrier_validator.operation.maneuver.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1

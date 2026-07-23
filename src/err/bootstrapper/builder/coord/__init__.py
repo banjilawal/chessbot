@@ -1,13 +1,13 @@
-# src/err/bootstrapper/builder/coord/__init__.py
+# src/err/carrier_validator/builder/coord/__init__.py
 
 """
-Module: err.bootstrapper.builder.state.coord.__init__
+Module: err.carrier_validator.builder.state.coord.__init__
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
 """
 
-# ============ err.bootstrapper.builder.STATE.COORD PACKAGE ===========#
+# ============ err.carrier_validator.builder.STATE.COORD PACKAGE ===========#
 
 # Packages
 

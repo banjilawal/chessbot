@@ -1,7 +1,7 @@
-# src/err/bootstrapper/operation/registration/register/token/exception.py
+# src/err/carrier_validator/operation/registration/register/token/exception.py
 
 """
-Module: err.bootstrapper.operation.registration.register.token.exception
+Module: err.carrier_validator.operation.registration.register.token.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1

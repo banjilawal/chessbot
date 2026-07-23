@@ -23,7 +23,7 @@ class KnightOffsetPattern(OffsetPattern[Knight]):
         1.  The second component of a KnightBasis. Necessary for computing a KnightToken's destination vectors.
 
     Attributes:
-        maneuver_vectors: VectorSet
+        offsets: VectorSet
 
     Provides:
 
@@ -35,7 +35,7 @@ class KnightOffsetPattern(OffsetPattern[Knight]):
         """
         """
         super().__init__(
-            maneuver_vectors=VectorSet(
+            offsets=VectorSet(
                 (
                     Vector(1, 2), Vector(-1, 2), Vector(1, -2), Vector(-1, -2),
                     Vector(2, 1), Vector(2, -1), Vector(-2, 1), Vector(-2, -1),

@@ -32,7 +32,7 @@ class ArenaBuildPipeline(BuildPipeline[Arena]):
     Attributes:
         assembler: ArenaAssembler
         finalizer: ArenaAssemblyFinalizer
-        bootstrapper: ArenaAssemblyBootstrapper
+        carrier_validator: ArenaAssemblyBootstrapper
         
     Provides:
         -   def run(blueprint: ArenaBlueprint, toolkit: ArenaToolkit) -> BuildResult[Arena]:
@@ -87,7 +87,7 @@ class ArenaBuildPipeline(BuildPipeline[Arena]):
             blueprint=blueprint,
             toolkit=self._toolkit
         )
-        # Handle the case that the bootstrapper flags an build param.
+        # Handle the case that the carrier_validator flags an build param.
         if bootstrap_result.is_failure:
             # Return the exception on failure.
             return BuildResult.failure(

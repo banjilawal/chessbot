@@ -1,13 +1,13 @@
-# src/err/bootstrapper/builder/formation/__init__.py
+# src/err/carrier_validator/builder/formation/__init__.py
 
 """
-Module: err.bootstrapper.builder.state.formation.__init__
+Module: err.carrier_validator.builder.state.formation.__init__
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
 """
 
-# ============ err.bootstrapper.builder.STATE.FORMATION PACKAGE ===========#
+# ============ err.carrier_validator.builder.STATE.FORMATION PACKAGE ===========#
 
 # Packages
 

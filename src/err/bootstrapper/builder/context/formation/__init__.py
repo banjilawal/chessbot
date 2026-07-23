@@ -1,13 +1,13 @@
-# src/err/bootstrapper/builder/context/formation/__init__.py
+# src/err/carrier_validator/builder/context/formation/__init__.py
 
 """
-Module: err.bootstrapper.builder.context.formation.__init__
+Module: err.carrier_validator.builder.context.formation.__init__
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
 """
 
-# =========== err.bootstrapper.builder.CONTEXT.FORMATION PACKAGE ===========#
+# =========== err.carrier_validator.builder.CONTEXT.FORMATION PACKAGE ===========#
 
 # Packages
 

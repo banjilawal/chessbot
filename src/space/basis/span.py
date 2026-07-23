@@ -32,7 +32,7 @@ class BasisSpace(ABC, Generic[T]):
 
     Attributes:
         origin: Vector
-        maneuver_vectors: ManeuverVectorSet[T]
+        offsets: ManeuverVectorSet[T]
         targeting_computer: Optional[DestinationSpanComputer]
         
         is_empty: bool

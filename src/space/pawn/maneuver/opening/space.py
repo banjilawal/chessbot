@@ -25,7 +25,7 @@ class OpeningManeuverOffsetPattern(PawnManeuverOffsetPattern):
             a PawnToken's first move.
 
     Attributes:
-        maneuver_vectors: VectorSet
+        offsets: VectorSet
 
     Provides:
 

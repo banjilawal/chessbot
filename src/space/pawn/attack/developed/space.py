@@ -25,7 +25,7 @@ class DevelopedAttackOffsetPattern(PawnAttackOffsetPattern):
             attack destination vectors, after its first move.
 
     Attributes:
-        maneuver_vectors: DeltaSet
+        offsets: DeltaSet
 
     Provides:
 
@@ -36,7 +36,7 @@ class DevelopedAttackOffsetPattern(PawnAttackOffsetPattern):
     def __init__(self,):
         """
         Args:
-            maneuver_vectors: VectorSet
+            offsets: VectorSet
         """
         super().__init__(
             maneuver_vectors=VectorSet(

@@ -1,7 +1,7 @@
-# src/err/bootstrapper/token/token/__init__.py
+# src/err/carrier_validator/token/token/__init__.py
 
 """
-Module: err.bootstrapper.token.operation.token.__init__
+Module: err.carrier_validator.token.operation.token.__init__
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1

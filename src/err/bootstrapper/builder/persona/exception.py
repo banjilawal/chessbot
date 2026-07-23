@@ -1,7 +1,7 @@
-# src/err/bootstrapper/builder/persona/exception.py
+# src/err/carrier_validator/builder/persona/exception.py
 
 """
-Module: err.bootstrapper.builder.persona.exception
+Module: err.carrier_validator.builder.persona.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1

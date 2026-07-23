@@ -1,7 +1,7 @@
-# src/err/bootstrapper/operation/vector/product/operation.py
+# src/err/carrier_validator/operation/vector/product/operation.py
 
 """
-Module: err.bootstrapper.operation.vector.product.operation
+Module: err.carrier_validator.operation.vector.product.operation
 Author: Banji Lawal
 Created: 2026-04-07
 version: 1.0.0

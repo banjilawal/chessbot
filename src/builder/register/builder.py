@@ -50,8 +50,8 @@ class RegisterBuilder(Builder, Generic[T]):
         super().__init__(builder_toolkit=builder_toolkit)
         
     @property
-    def build_toolkit(self) -> RegisterBuilderToolkit[T]:
-        return cast([RegisterBuilderToolkit[T]], super().build_toolkit)
+    def builder_toolkit(self) -> RegisterBuilderToolkit[T]:
+        return cast([RegisterBuilderToolkit[T]], super().builder_toolkit)
     
     @abstractmethod
     @LoggingLevelRouter.monitor

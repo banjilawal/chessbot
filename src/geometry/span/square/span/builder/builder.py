@@ -155,7 +155,7 @@ class SquareSpanBuilder(Builder[SquareSpan]):
         square_ray = SquareRay(origin=square_ray_origin_result.payload[0], points=[])
         
         # --- Map the coord_ray's points to squares. ---#
-        for coord in coord_ray.members:
+        for coord in coord_ray.items:
             square_search_result = cls._square_from_coord(
                 coord=coord,
                 square_stack=square_stack
@@ -174,8 +174,8 @@ class SquareSpanBuilder(Builder[SquareSpan]):
                     )
                 )
              # --- Append the found square into ray's members ---#
-            if square_search_result.payload[0] not in square_ray.members:
-                square_ray.members.append(square_search_result.payload[0])
+            if square_search_result.payload[0] not in square_ray.items:
+                square_ray.items.append(square_search_result.payload[0])
     
         # --- Send the built ray to the caller. ---#
         return ComputationResult.success(square_ray)

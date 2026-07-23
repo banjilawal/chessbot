@@ -26,7 +26,7 @@ class WorkerRegistry:
     Attributes:
         invocation_counters: dict[str, int]
         registration_counters: dict[str, int]
-        entries: Dict[str, Dict[str, Operation]]
+        items: Dict[str, Dict[str, Operation]]
     
     Provides:
         -   def domains(self) -> List[str]:

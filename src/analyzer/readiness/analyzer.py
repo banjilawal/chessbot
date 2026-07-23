@@ -29,7 +29,7 @@ class TokenReadinessAnalyzer(Analyzer):
         2.  Combine safety and aliveness tests unique to each subclass under one roof.
 
     Attributes:
-        bootstrapper: ReadinessAnalyzerBootstrapper
+        carrier_validator: ReadinessAnalyzerBootstrapper
         
     Provides:
         -   execute(token: Token,) -> AnalysisResult
@@ -65,7 +65,7 @@ class TokenReadinessAnalyzer(Analyzer):
         
         Args:
             token: Token
-            bootstrapper: ReadinessAnalyzerBootstrapper
+            carrier_validator: ReadinessAnalyzerBootstrapper
         Returns:
               AnalysisResult[TokenFreedomReport]
         Raises:

@@ -1,7 +1,7 @@
-# src/err/bootstrapper/builder/binder/hostage/exception.py
+# src/err/carrier_validator/builder/binder/hostage/exception.py
 
 """
-Module: err.bootstrapper.builder.binder.hostage.exception
+Module: err.carrier_validator.builder.binder.hostage.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1

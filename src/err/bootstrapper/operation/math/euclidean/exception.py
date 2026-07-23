@@ -1,7 +1,7 @@
-# src/err/bootstrapper/operation/vector/euclidean/operation.py
+# src/err/carrier_validator/operation/vector/euclidean/operation.py
 
 """
-Module: err.bootstrapper.operation.vector.euclidean.operation
+Module: err.carrier_validator.operation.vector.euclidean.operation
 Author: Banji Lawal
 Created: 2026-04-07
 version: 1.0.0

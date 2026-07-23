@@ -1,7 +1,7 @@
-# src/err/bootstrapper/token/game/exception.py
+# src/err/carrier_validator/token/game/exception.py
 
 """
-Module: err.bootstrapper.token.game.exception
+Module: err.carrier_validator.token.game.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1

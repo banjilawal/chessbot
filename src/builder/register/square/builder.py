@@ -21,37 +21,40 @@ from util import LoggingLevelRouter
 
 class SquareRegisterBuilder(RegisterBuilder[SquareRegister]):
     """
-    Role:
-        -   Model
-        -   Data Holder
+    Role
+        -   Build Pipeline
+        -   Integrity Management
+        -   Consistency Assurance
+        -   Workflow Owner
 
-    Responsibilities:
-        1.  Contains the endpoints of a journey.
+   Responsibilities:
+        1.  Ensure a new SquareRegister instance is born safe and reliable.
 
     Attributes:
-        build_toolkit: Optional[SquareRegisterBuildToolkit]
-            
-    Provides:
+            builder_toolkit: [RegisterBuilderToolkit[T]]
 
-    Super Class:
-        RegisterBuilder
-    """
+    Provides:
+        -   def execute(self, blueprint: RegisterBlueprint[T]) -> BuildResult[Register]
+
+     Super Class:
+         Builder
+     """
     
     def __init__(
             self,
-            build_toolkit: Optional[SquareRegisterBuildToolkit] |
-                           None = SquareRegisterBuildToolkit()
+            builder_toolkit: Optional[SquareRegisterBuilderToolkit] |
+                           None = SquareRegisterBuilderToolkit()
     ):
         """
         Args:
-            build_toolkit: Optional[SquareRegisterBuildToolkit]
+            builder_toolkit: Optional[SquareRegisterBuilderToolkit]
         """
-        super().__init__(builder_toolkit=build_toolkit)
+        super().__init__(builder_toolkit=builder_toolkit)
 
         
     @property
-    def build_toolkit(self) -> SquareRegisterBuildToolkit:
-        return cast(SquareRegisterBuildToolkit, super().build_toolkit)
+    def builder_toolkit(self) -> SquareRegisterBuilderToolkit:
+        return cast(SquareRegisterBuilderToolkit, super().builder_toolkit)
     
     @LoggingLevelRouter.monitor
     def execute(self, blueprint: SquareRegisterBlueprint) -> BuildResult[SquareRegister]:

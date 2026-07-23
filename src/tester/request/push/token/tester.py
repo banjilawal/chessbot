@@ -34,7 +34,7 @@ class TokenPushRequestTester(PushRequestTester):
     Attributes:
         item_validator: TokenValidator
         priming_validator: PrimingValidator
-        bootstrapper: PushPermitterBootstrapper
+        carrier_validator: PushPermitterBootstrapper
           
     Provides:
         -   def execute(self, subject: Any) -> ValidationResult:

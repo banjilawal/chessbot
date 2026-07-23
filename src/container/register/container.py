@@ -24,7 +24,7 @@ class RegisterSet(Container[Register]):
         1.  A bag of registers whose order is not guaranteed.
 
     Attributes:
-        entries: Tuple[Register, ...]
+        items: Tuple[Register, ...]
 
     Provides:
 
@@ -32,21 +32,21 @@ class RegisterSet(Container[Register]):
         Container
     """
     
-    def __init__(self, entries: Optional[Tuple[Register, ...]] | None = None):
+    def __init__(self, items: Optional[Tuple[Register, ...]] | None = None):
         """
         Args:
-            entries: Optional[Tuple[Register, ...]]
+            items: Optional[Tuple[Register, ...]]
         """
-        super().__init__(entries=entries)
+        super().__init__(items=items)
         
     @property
-    def entries(self) -> Tuple[Register, ...]:
-        return cast(Tuple[Register, ...], self.entries)
+    def items(self) -> Tuple[Register, ...]:
+        return cast(Tuple[Register, ...], self.items)
     
     @property
     def iterator(self) -> Iterator[Register]:
-        return iter(self.entries)
+        return iter(self.items)
     
     def to_coord_tuple(self) -> Tuple[Coord, ...]:
-        return tuple(Coord(column=entry.x, row=entry.y) for entry in self._entries)
+        return tuple(Coord(column=entry.x, row=entry.y) for entry in self._items)
         

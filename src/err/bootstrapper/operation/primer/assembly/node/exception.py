@@ -1,7 +1,7 @@
-# src/err/bootstrapper/operation/primer/assembly/node/exception.py
+# src/err/carrier_validator/operation/primer/assembly/node/exception.py
 
 """
-Module: err.bootstrapper.priming.assembly.node.exception
+Module: err.carrier_validator.priming.assembly.node.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1

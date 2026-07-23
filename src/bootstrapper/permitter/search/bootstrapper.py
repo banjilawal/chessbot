@@ -1,7 +1,7 @@
-# src/bootstrapper/permitter/search/bootstrapper.py
+# src/carrier_validator/permitter/search/carrier_validator.py
 
 """
-Module: bootstrapper.permitter.search.bootstrapper
+Module: carrier_validator.permitter.search.carrier_validator
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

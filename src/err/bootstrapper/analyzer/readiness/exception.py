@@ -1,7 +1,7 @@
 # src/err/bootstrap/analyzer/readiness/exception.py
 
 """
-Module: err.bootstrapper.analyzer.readiness.exception
+Module: err.carrier_validator.analyzer.readiness.exception
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

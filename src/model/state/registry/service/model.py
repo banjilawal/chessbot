@@ -26,7 +26,7 @@ class ServiceRegistry:
     Attributes:
         invocation_counters: dict[str, int]
         registration_counters: dict[str, int]
-        entries: Dict[str, Dict[str, Microservice]]
+        items: Dict[str, Dict[str, Microservice]]
     
     Provides:
         -   def domains(self) -> List[str]:

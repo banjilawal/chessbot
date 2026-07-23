@@ -32,7 +32,7 @@ class PawnBasis(ABC, BasisSpace[Pawn]):
 
     Attributes:
             origin: Vector
-            maneuver_vectors: PawnManeuverVectorSet
+            offsets: PawnManeuverVectorSet
             targeting_computer: Optional[DestinationSpanComputer]
             
     Provides:

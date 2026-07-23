@@ -1,7 +1,7 @@
-# src/certifier/bootstrap/bootstrapper.py
+# src/certifier/bootstrap/carrier_validator.py
 
 """
-Module: certifier.bootstrap.bootstrapper
+Module: certifier.bootstrap.carrier_validator
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

@@ -1,7 +1,7 @@
-# src/err/bootstrapper/operation/push/token/quota/exception.py
+# src/err/carrier_validator/operation/push/token/quota/exception.py
 
 """
-Module: err.bootstrapper.operation.push.token.quota.exception
+Module: err.carrier_validator.operation.push.token.quota.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1

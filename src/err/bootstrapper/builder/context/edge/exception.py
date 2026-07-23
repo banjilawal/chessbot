@@ -1,7 +1,7 @@
-# src/err/bootstrapper/builder/context/edge/exception.py
+# src/err/carrier_validator/builder/context/edge/exception.py
 
 """
-Module: err.bootstrapper.builder.context.edge.exception
+Module: err.carrier_validator.builder.context.edge.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1

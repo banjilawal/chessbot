@@ -19,12 +19,13 @@ class VectorSet(Container[Vector]):
     """
     Role:
         -   Data Holder
-        
+        -   Data protection
+
     Responsibilities:
-        1.  A bag of vectors whose order is not guaranteed.
+        1.  Immutable unordered set of vectors.
 
     Attributes:
-        entries: Tuple[Vector, ...]
+        items: Tuple[Vector, ...]
 
     Provides:
 
@@ -32,25 +33,25 @@ class VectorSet(Container[Vector]):
         Container
     """
     
-    def __init__(self, entries: Optional[Tuple[Vector, ...]] | None = None):
+    def __init__(self, items: Optional[Tuple[Vector, ...]] | None = None):
         """
         Args:
-            entries: Optional[Tuple[Vector, ...]]
+            items: Optional[Tuple[Vector, ...]]
         """
-        super().__init__(entries=entries)
+        super().__init__(items=items)
         
     @property
-    def entries(self) -> Tuple[Vector, ...]:
-        return cast(Tuple[Vector, ...], self.entries)
+    def items(self) -> Tuple[Vector, ...]:
+        return cast(Tuple[Vector, ...], super().items)
     
     @property
     def iterator(self) -> Iterator[Vector]:
-        return iter(self.entries)
+        return iter(self.items)
     
     @property
     def to_list(self) -> List[Vector]:
-        return [entry for entry in self._entries]
+        return [item for item in self._items]
     
     def to_coord_tuple(self) -> Tuple[Coord, ...]:
-        return tuple(Coord(column=entry.x, row=entry.y) for entry in self._entries)
+        return tuple(Coord(column=item.x, row=item.y) for item in self._items)
         

@@ -1,7 +1,7 @@
-# src/toolkit/analyzer/bootstrapper/toolkit.py
+# src/toolkit/analyzer/carrier_validator/toolkit.py
 
 """
-Module: toolkit.analyzer.bootstrapper.toolkit
+Module: toolkit.analyzer.carrier_validator.toolkit
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -33,7 +33,7 @@ class AnalyzerBootstrapperToolkit(AnalyzerToolkit):
         priming_validator: PrimingValidator
         blueprint_id_validator: BlueprintIdValidator
 
-        _entries: Dict[str, Any]
+        _items: Dict[str, Any]
 
     Provides:
         -   def resolve_dependencies(s -> SearchResult[List[Dict[str, Any]]]:

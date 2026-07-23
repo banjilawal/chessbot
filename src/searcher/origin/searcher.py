@@ -33,7 +33,7 @@ class TokenOriginSearcher:
         -   execute(
                     cls,
                     token: Token,
-                    bootstrapper: OriginSearcherBootstrapper,
+                    carrier_validator: OriginSearcherBootstrapper,
             ) -> SearchResult
 
     Super Class:

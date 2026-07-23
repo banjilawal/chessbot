@@ -107,7 +107,7 @@ class SquareRayValidator(Validator[SquareRay]):
                 )
             )
         # Handle the case that, the members are null
-        if square_ray.members is None:
+        if square_ray.items is None:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 SquareRayValidatorException(
@@ -126,9 +126,9 @@ class SquareRayValidator(Validator[SquareRay]):
                 )
             )
         # Handle the case that, ray.members is null.
-        if not isinstance(square_ray.members, List):
+        if not isinstance(square_ray.items, List):
             # Send the exception chain on failure.
-            wrong_type = type(square_ray.members).__name__
+            wrong_type = type(square_ray.items).__name__
             return ValidationResult.failure(
                 SquareRayValidatorException(
                     cls_mthd=method,

@@ -1,7 +1,7 @@
-# src/bootstrapper/assembly/path/operation.py
+# src/carrier_validator/assembly/path/operation.py
 
 """
-Module: bootstrapper.assembly.path.operation
+Module: carrier_validator.assembly.path.operation
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

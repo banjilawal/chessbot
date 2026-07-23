@@ -1,7 +1,7 @@
-# src/err/bootstrapper/operation/visit/occupied/exception.py
+# src/err/carrier_validator/operation/visit/occupied/exception.py
 
 """
-Module: err.bootstrapper.operation.visit.occupied.exception
+Module: err.carrier_validator.operation.visit.occupied.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1

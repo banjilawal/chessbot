@@ -1,7 +1,7 @@
-# src/err/bootstrapper/operation/token/context/arena/exception.py
+# src/err/carrier_validator/operation/token/context/arena/exception.py
 
 """
-Module: err.bootstrapper.operation.token.context.arena.exception
+Module: err.carrier_validator.operation.token.context.arena.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1

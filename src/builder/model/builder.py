@@ -12,12 +12,11 @@ from __future__ import annotations
 from abc import abstractmethod
 from typing import Generic, TypeVar, cast
 
-from assembler import ModelAssembler
 from blueprint import ModelBlueprint
-from builder import Builder
 from result import BuildResult
-from root import ModelRootCertifier
 from util import LoggingLevelRouter
+from builder import Builder
+from toolkit import ModelBuilderToolkit
 
 T = TypeVar("T", bound="Model")
 
@@ -25,35 +24,33 @@ T = TypeVar("T", bound="Model")
 class ModelBuilder(Builder, Generic[T]):
     """
     Role
-        -   Transaction Worker
-        -   Integrity Maintenance
+        -   Build Pipeline
+        -   Integrity Management
         -   Consistency Assurance
-        -   Process Runner
+        -   Workflow Owner
 
-    Responsibilities:
-        1.  Creation process owners.
-        2.  Assure objects comply with business logic at point of creation.
-        3.  Ensure stateful data-holding build resources satisfy contracts.
+   Responsibilities:
+        1.  Ensure a new Model instance is born safe and reliable.
 
     Attributes:
-        bootstrapper: ModelRootCertifier[T]
+            builder_toolkit: ModelBuilderToolkit[T]
 
     Provides:
-        -   def execute(self, blueprint: Blueprint[T]) -> BuildResult[T]
+        -   def execute(self, blueprint: ModelBlueprint[T]) -> BuildResult[T]
 
-    Super Class:
-        Builder
-    """
-    def __init__(self, build_toolkit: [ModelBuilderToolkit[T]]):
+     Super Class:
+         Builder
+     """
+    def __init__(self, builder_toolkit: [ModelBuilderToolkit[T]]):
         """
         Args:
-            build_toolkit: [ModelBuilderToolkit[T]]
+            builder_toolkit: [ModelBuilderToolkit[T]]
         """
-        super().__init__(builder_toolkit=build_toolkit)
+        super().__init__(builder_toolkit=builder_toolkit)
     
     @property
-    def build_toolkit(self) -> ModelBuilderToolkit[T]:
-        return cast(ModelAssembler[T], super().builder_toolkitr)
+    def builder_toolkit(self) -> ModelBuilderToolkit[T]:
+        return cast(ModelBuilderToolkit[T], super().builder_toolkit)
     
     @abstractmethod
     @LoggingLevelRouter.monitor

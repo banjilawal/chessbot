@@ -1,7 +1,7 @@
-# src/err/bootstrapper/operation/assembly/binder/persona/exception.py
+# src/err/carrier_validator/operation/assembly/binder/persona/exception.py
 
 """
-Module: err.bootstrapper.operation.assembly.binder.persona.exception
+Module: err.carrier_validator.operation.assembly.binder.persona.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1

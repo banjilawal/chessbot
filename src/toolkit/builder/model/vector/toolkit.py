@@ -32,7 +32,7 @@ class VectorBuilderToolkit(ModelBuilderToolkit[Vector]):
     Provides:
 
     Super Class:
-        ModelBuildToolkit
+        ModelBuilderToolkit
     """
     
     def __init__(

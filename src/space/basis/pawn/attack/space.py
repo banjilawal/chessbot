@@ -30,7 +30,7 @@ class PawnAttackVectorBasis(ABC, PawnBasis):
 
     Attributes:
         origin: Vector
-        maneuver_vectors: PawnManeuverVectorSet
+        offsets: PawnManeuverVectorSet
         targeting_computer: Optional[DestinationSpanComputer]
             
     Provides:

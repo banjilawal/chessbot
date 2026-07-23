@@ -27,7 +27,7 @@ class KingBasis(BasisSpace[King]):
 
     Attributes:
             origin: Vector
-            maneuver_vectors: Optional[KingManeuverVectorSet]
+            offsets: Optional[KingManeuverVectorSet]
             targeting_computer: Optional[DestinationSpanComputer]
             
     Provides:

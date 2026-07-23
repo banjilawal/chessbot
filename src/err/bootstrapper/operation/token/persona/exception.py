@@ -1,7 +1,7 @@
-# src/err/bootstrapper/token/persona/exception.py
+# src/err/carrier_validator/token/persona/exception.py
 
 """
-Module: err.bootstrapper.token.persona.exception
+Module: err.carrier_validator.token.persona.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1

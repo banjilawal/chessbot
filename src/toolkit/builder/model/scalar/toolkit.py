@@ -32,7 +32,7 @@ class ScalarBuilderToolkit(ModelBuilderToolkit[Scalar]):
     Provides:
 
     Super Class:
-        ModelBuildToolkit
+        ModelBuilderToolkit
     """
     
     def __init__(

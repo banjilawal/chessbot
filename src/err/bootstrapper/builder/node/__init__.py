@@ -1,13 +1,13 @@
-# src/err/bootstrapper/builder/node/__init__.py
+# src/err/carrier_validator/builder/node/__init__.py
 
 """
-Module: err.bootstrapper.builder.state.node.__init__
+Module: err.carrier_validator.builder.state.node.__init__
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
 """
 
-# ============ err.bootstrapper.builder.STATE.NODE PACKAGE ===========#
+# ============ err.carrier_validator.builder.STATE.NODE PACKAGE ===========#
 
 # Packages
 

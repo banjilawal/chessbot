@@ -71,5 +71,5 @@ class RegisterSetBuilder(ContainerBuilder[RegisterSet]):
             previous = current
 
         return BuildResult.success(
-            RegisterSet(entries=tuple(registers))
+            RegisterSet(items=tuple(registers))
         )

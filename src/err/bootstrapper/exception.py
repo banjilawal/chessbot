@@ -1,7 +1,7 @@
-# src/err/bootstrapper/exception.py
+# src/err/carrier_validator/exception.py
 
 """
-Module: err.bootstrapper.exception
+Module: err.carrier_validator.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1

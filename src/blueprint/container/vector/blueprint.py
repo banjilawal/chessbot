@@ -28,7 +28,7 @@ class VectorSetBlueprint(ContainerBlueprint[Vector]):
         2.  DTO
 
     Attributes:
-        entries: Tuple[Vector, ...],
+        items: Tuple[Vector, ...],
         container_class: Type[VectorSet],
         null_exception: VectorSetNullException
             

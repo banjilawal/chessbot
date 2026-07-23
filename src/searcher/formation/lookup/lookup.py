@@ -50,7 +50,7 @@ class FormationLookupProcess(HashLookupProcess[Formation]):
         # ACTION:
             1.  Certify the provided key with the validation.
             2.  If the key validation fails return the exception in a validation result. Otherwise, return
-                the formation entries with the targeted key-values.
+                the formation items with the targeted key-values.
         # PARAMETERS:
             *   key: FormationKey
             *   key_validator: FormationContext

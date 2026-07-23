@@ -32,7 +32,7 @@ class TokenBuilderToolkit(ModelBuilderToolkit[Token]):
     Provides:
 
     Super Class:
-        ModelBuildToolkit
+        ModelBuilderToolkit
     """
     
     def __init__(

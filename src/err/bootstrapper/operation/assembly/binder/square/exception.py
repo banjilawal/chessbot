@@ -1,7 +1,7 @@
-# src/err/bootstrapper/operation/assembly/binder/square/exception.py
+# src/err/carrier_validator/operation/assembly/binder/square/exception.py
 
 """
-Module: err.bootstrapper.operation.assembly.binder.square.exception
+Module: err.carrier_validator.operation.assembly.binder.square.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1

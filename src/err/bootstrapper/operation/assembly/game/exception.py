@@ -1,7 +1,7 @@
-# src/err/bootstrapper/assembly/game/exception.py
+# src/err/carrier_validator/assembly/game/exception.py
 
 """
-Module: err.bootstrapper.assembly.game.exception
+Module: err.carrier_validator.assembly.game.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1

@@ -35,7 +35,7 @@ class TokenOriginCertifier:
                     token: Token,
                     origin: Square,
                     toolkit: TokenEndpointRelationToolkit
-                    bootstrapper: TokenEndpointRelationBootstrapper,
+                    carrier_validator: TokenEndpointRelationBootstrapper,
             ) -> ValidationResult[Square]:
 
     Super Class:

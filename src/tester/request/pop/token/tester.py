@@ -32,7 +32,7 @@ class TokenPopRequestTester(PopRequestTester):
         
     Attributes:
         priming_validator: PrimingValidator
-        bootstrapper: PopPermitterBootstrapper
+        carrier_validator: PopPermitterBootstrapper
           
     Provides:
         -   def execute(self, subject: Any) -> ValidationResult:

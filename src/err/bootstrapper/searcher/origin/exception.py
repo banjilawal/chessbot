@@ -1,7 +1,7 @@
-# src/err/bootstrap/bootstrapper/searcher/origin/exception.py
+# src/err/bootstrap/carrier_validator/searcher/origin/exception.py
 
 """
-Module: err.bootstrapper.searcher.origin.exception
+Module: err.carrier_validator.searcher.origin.exception
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

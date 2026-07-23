@@ -32,7 +32,7 @@ class PlayerBuilderToolkit(ModelBuilderToolkit[Player]):
     Provides:
 
     Super Class:
-        ModelBuildToolkit
+        ModelBuilderToolkit
     """
     
     def __init__(

@@ -1,7 +1,7 @@
-# src/err/bootstrapper/assembly/edge/__init__.py
+# src/err/carrier_validator/assembly/edge/__init__.py
 
 """
-Module: err.bootstrapper.assembly.operation.edge.__init__
+Module: err.carrier_validator.assembly.operation.edge.__init__
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1

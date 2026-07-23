@@ -330,7 +330,7 @@ class TokenConsistencyConsistencyChecker(ConsistencyChecker[Token]):
     def _get_toolkit(cls, toolkit: TokenToolkit) -> BuildResult[TokenToolkit]:
         method = f"{self.__class__.__name__}._get_toolkit"
         
-        build_result = ToolkitFactory.build_toolkit(toolkit_class=TokenToolkit, )
+        build_result = ToolkitFactory.builder_toolkit(toolkit_class=TokenToolkit, )
         if build_result.is_failure:
             # Send the exception chain on failure.
             return BuildResult.failure(

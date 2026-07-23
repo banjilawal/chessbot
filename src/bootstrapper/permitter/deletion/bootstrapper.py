@@ -1,7 +1,7 @@
-# src/bootstrapper/permitter/deletion/bootstrapper.py
+# src/carrier_validator/permitter/deletion/carrier_validator.py
 
 """
-Module: bootstrapper.permitter.deletion.bootstrapper
+Module: carrier_validator.permitter.deletion.carrier_validator
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

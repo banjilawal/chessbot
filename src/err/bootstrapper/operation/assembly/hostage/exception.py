@@ -1,7 +1,7 @@
-# src/err/bootstrapper/assembly/hostage/exception.py
+# src/err/carrier_validator/assembly/hostage/exception.py
 
 """
-Module: err.bootstrapper.assembly.hostage.exception
+Module: err.carrier_validator.assembly.hostage.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1

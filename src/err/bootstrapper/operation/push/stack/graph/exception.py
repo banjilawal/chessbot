@@ -1,7 +1,7 @@
-# src/err/bootstrapper/operation/push/stack/graph/exception.py
+# src/err/carrier_validator/operation/push/stack/graph/exception.py
 
 """
-Module: err.bootstrapper.operation.push.stack.graph.exception
+Module: err.carrier_validator.operation.push.stack.graph.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1

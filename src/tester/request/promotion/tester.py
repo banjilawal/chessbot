@@ -34,7 +34,7 @@ class PromotionRequestTester(RequestTester):
         pawn_tester: PromotionPawnTester
         identity_service: IdentityService
         priming_validator: PrimingValidator
-        bootstrapper: PromotionPermitterBootstrapper
+        carrier_validator: PromotionPermitterBootstrapper
           
     Provides:
         -   def execute(self, subject: Any) -> ValidationResult:

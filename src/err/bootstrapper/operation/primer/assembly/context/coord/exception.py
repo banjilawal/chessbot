@@ -1,7 +1,7 @@
-# src/err/bootstrapper/operation/primer/assembly/context/coord/exception.py
+# src/err/carrier_validator/operation/primer/assembly/context/coord/exception.py
 
 """
-Module: err.bootstrapper.operation.primer.assembly.context.coord.exception
+Module: err.carrier_validator.operation.primer.assembly.context.coord.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1

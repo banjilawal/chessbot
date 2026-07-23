@@ -40,7 +40,7 @@ class CoordRegisterAssembler(RegisterAssembler[CoordRegister]):
     
     
     @LoggingLevelRouter.monitor
-    def execute(self, blueprint: CoordBlueprint,) -> BuildResult[Coord]:
+    def execute(self, blueprint: CoordRegisterlueprint,) -> BuildResult[CoordRegister]:
         """
         Assemble a CoordRegister from the Blueprint's contents.
 

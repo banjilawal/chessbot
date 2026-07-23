@@ -31,7 +31,7 @@ class RankQuotaAnalyzer(Analyzer):
 
 
     Attributes:
-        bootstrapper: QuotaAnalyzerBootstrapper
+        carrier_validator: QuotaAnalyzerBootstrapper
 
     Provides:
         -   execute(rank: Rank, token_stack: TokenStackService,) -> AnalysisResult[RankQuotaReport]
@@ -70,7 +70,7 @@ class RankQuotaAnalyzer(Analyzer):
         method = f"{self.__class__.__name__}.execute"
         
         bootstrapper_result = self._bootstrapper.execute(rank=rank, token_stack=token_stack)
-        # Handle the case that the bootstrapper does not produce a result.
+        # Handle the case that the carrier_validator does not produce a result.
         if bootstrapper_result.is_failure:
             # Send the exception chain on failure.
             return AnalysisResult.failure(

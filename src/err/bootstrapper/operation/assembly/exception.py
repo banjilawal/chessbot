@@ -1,7 +1,7 @@
-# src/err/bootstrapper/operation/assembly/assembly.py
+# src/err/carrier_validator/operation/assembly/assembly.py
 
 """
-Module: err.bootstrapper.operation.assembly.assembly
+Module: err.carrier_validator.operation.assembly.assembly
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1

@@ -1,7 +1,7 @@
-# src/toolkit/bootstrapper/bootstrapper/toolkit.py
+# src/toolkit/carrier_validator/carrier_validator/toolkit.py
 
 """
-Module: toolkit.bootstrapper.bootstrapper.toolkit
+Module: toolkit.carrier_validator.carrier_validator.toolkit
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -18,7 +18,7 @@ class DetectorBootstrapperToolkit(BootstrapperToolkit):
         -   Dependency Management
 
     Responsibilities:
-        1.  Aggregates workers and services a bootstrapperful bootstrapper requires for its tasks.
+        1.  Aggregates workers and services a bootstrapperful carrier_validator requires for its tasks.
         2.  Separates dependencies from data objects in operation calls.
         3.  Simplifies entry points.
 
@@ -30,7 +30,7 @@ class DetectorBootstrapperToolkit(BootstrapperToolkit):
         priming_validator: PrimingValidator
         blueprint_id_validator: BlueprintIdValidator
 
-        _entries: Dict[str, Any]
+        _items: Dict[str, Any]
 
     Provides:
         -   def resolve_dependencies(s -> SearchResult[List[Dict[str, Any]]]:
@@ -42,6 +42,6 @@ class DetectorBootstrapperToolkit(BootstrapperToolkit):
 
     Notes:
         -   BootstrapperToolkit for an empty class which makes managing toolkits easier.
-        -   Any toolkits for a bootstrapper should be a BootstrapperToolkit subclass.
+        -   Any toolkits for a carrier_validator should be a BootstrapperToolkit subclass.
     """
 

@@ -27,7 +27,7 @@ class BishopBasis(BasisSpace[Bishop]):
 
     Attributes:
             origin: Vector
-            maneuver_vectors: Optional[BishopManeuverVectorSet]
+            offsets: Optional[BishopManeuverVectorSet]
             
     Provides:
 

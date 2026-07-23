@@ -1,7 +1,7 @@
-# src/toolkit/bootstrapper/token/toolkit.py
+# src/toolkit/carrier_validator/token/toolkit.py
 
 """
-Module: toolkit.bootstrapper.token.toolkit
+Module: toolkit.carrier_validator.token.toolkit
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

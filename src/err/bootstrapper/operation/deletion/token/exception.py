@@ -1,7 +1,7 @@
-# src/err/bootstrapper/operation/deletion/token/exception.py
+# src/err/carrier_validator/operation/deletion/token/exception.py
 
 """
-Module: err.bootstrapper.operation.deletion.token.exception
+Module: err.carrier_validator.operation.deletion.token.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1

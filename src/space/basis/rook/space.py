@@ -27,7 +27,7 @@ class RookBasis(BasisSpace[Rook]):
 
     Attributes:
             origin: Vector
-            maneuver_vectors: Optional[RookManeuverVectorSet]
+            offsets: Optional[RookManeuverVectorSet]
             targeting_computer: Optional[DestinationSpanComputer]
             
     Provides:

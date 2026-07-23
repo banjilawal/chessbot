@@ -34,7 +34,7 @@ class TokenDeletionRequestTester(DeletionRequestTester):
     Attributes:
         identity_service: IdentityService
         priming_validator: PrimingValidator
-        bootstrapper: DeletionPermitterBootstrapper
+        carrier_validator: DeletionPermitterBootstrapper
           
     Provides:
         -   def execute(self, subject: Any) -> ValidationResult:

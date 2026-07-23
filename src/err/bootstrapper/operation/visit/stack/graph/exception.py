@@ -1,7 +1,7 @@
-# src/err/bootstrapper/operation/visit/stack/graph/exception.py
+# src/err/carrier_validator/operation/visit/stack/graph/exception.py
 
 """
-Module: err.bootstrapper.operation.visit.stack.graph.exception
+Module: err.carrier_validator.operation.visit.stack.graph.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1

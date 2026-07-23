@@ -32,7 +32,7 @@ class RankBuilderToolkit(ModelBuilderToolkit[Rank]):
     Provides:
 
     Super Class:
-        ModelBuildToolkit
+        ModelBuilderToolkit
     """
     
     def __init__(

@@ -35,7 +35,7 @@ class TokenDestinationCertifier:
         -   def validate(
                     token: Token,
                     square: Square,
-                    bootstrapper: DestinationCertifierBootstrapper,
+                    carrier_validator: DestinationCertifierBootstrapper,
             ) -> ValidationResult[Square]
 
     Super Class:

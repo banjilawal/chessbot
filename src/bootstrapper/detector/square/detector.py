@@ -1,7 +1,7 @@
-# src/bootstrapper/detector/square/detector.py
+# src/carrier_validator/detector/square/detector.py
 
 """
-Module: bootstrapper.detector.square.detector
+Module: carrier_validator.detector.square.detector
 Author: Banji Lawal
 Created: 2026-03-30
 version: 1.0.1

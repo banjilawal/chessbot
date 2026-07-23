@@ -32,7 +32,7 @@ class BoardBuildPipeline(BuildPipeline[Board]):
     Attributes:
         assembler: BoardAssembler
         finalizer: BoardAssemblyFinalizer
-        bootstrapper: BoardAssemblyBootstrapper
+        carrier_validator: BoardAssemblyBootstrapper
         
     Provides:
         -   def run(blueprint: BoardBlueprint, toolkit: BoardToolkit) -> BuildResult[Board]:
@@ -87,7 +87,7 @@ class BoardBuildPipeline(BuildPipeline[Board]):
             blueprint=blueprint,
             toolkit=self._toolkit
         )
-        # Handle the case that the bootstrapper flags an build param.
+        # Handle the case that the carrier_validator flags an build param.
         if bootstrap_result.is_failure:
             # Return the exception on failure.
             return BuildResult.failure(

@@ -32,7 +32,7 @@ class RegisterBuilderToolkit(BuilderToolkit, Generic[T]):
     Provides:
     
     Super Class:
-        BuildToolkit
+        BuilderToolkit
     """
     
     def __init__(
