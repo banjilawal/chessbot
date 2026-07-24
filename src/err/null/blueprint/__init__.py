@@ -12,6 +12,7 @@ version: 1.0.1
 # Packages
 from .model import *
 from .register import *
+from .space import *
 from .toggle import *
 
 # Modules

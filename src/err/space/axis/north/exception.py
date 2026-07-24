@@ -10,7 +10,7 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import AxisSpaceException
+from err import AxisException
 from result import MethodResultType
 
 
@@ -19,7 +19,7 @@ __all__ = [
     "NorthAxisException",
 ]
 # ======================# NORTH_AXIS_ERROR #======================#
-class NorthAxisException(AxisSpaceException):
+class NorthAxisException(AxisException):
     """
     Role:
         -   Failure Tracing

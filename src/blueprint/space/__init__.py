@@ -10,6 +10,7 @@ version: 1.0.1
 # =========== BLUEPRINT.SPACE PACKAGE ===========#
 
 # Packages
+from .axis import *
 from .quadrant import *
 
 # Modules

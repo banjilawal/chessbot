@@ -11,14 +11,14 @@ from __future__ import annotations
 from typing import Generic, Optional, Type, TypeVar, cast
 
 from blueprint import SpaceBlueprint
-from err import QuadrantNullException, SpaceNullException
+from err import QuadrantNullException
 from model import Vector
-from space import Space, QuadrantSpace
+from space import QuadrantSpace
 
 T = TypeVar("T", bound="QuadrantSpace")
 
 
-class QuadrantSpaceBlueprint(SpaceBlueprint, Generic[T]):
+class QuadrantBlueprint(SpaceBlueprint, Generic[T]):
     """
      Role:
          -   Container
@@ -61,7 +61,7 @@ class QuadrantSpaceBlueprint(SpaceBlueprint, Generic[T]):
     
     @property
     def null_exception(self) -> QuadrantNullException:
-        return cast(Type[QuadrantNullException], super().null_exception)
+        return cast(QuadrantNullException, super().null_exception)
     
     @property
     def origin(self) -> Vector:

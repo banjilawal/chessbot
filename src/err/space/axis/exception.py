@@ -16,10 +16,10 @@ from result import MethodResultType
 
 __all__ = [
     # ======================# AXIS_SPACE_ERROR #======================#
-    "AxisSpaceException",
+    "AxisException",
 ]
 # ======================# AXIS_SPACE_ERROR #======================#
-class AxisSpaceException(SpaceException):
+class AxisException(SpaceException):
     """
     Role:
         -   Failure Tracing

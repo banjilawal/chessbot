@@ -10,7 +10,7 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import QuadrantSpaceException
+from err import QuadrantException
 from result import MethodResultType
 
 
@@ -19,7 +19,7 @@ __all__ = [
     "NorthwestQuadrantException",
 ]
 # ======================# NORTHWEST_QUADRANT_ERROR #======================#
-class NorthwestQuadrantException(QuadrantSpaceException):
+class NorthwestQuadrantException(QuadrantException):
     """
     Role:
         -   Failure Tracing

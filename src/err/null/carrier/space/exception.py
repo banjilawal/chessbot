@@ -1,4 +1,4 @@
-# src/err/null/carrier/space/exception.py
+# src/err/null/carrier/space/quadrant/exception.py
 
 """
 Module: err.null.carrier.space.exception
@@ -10,7 +10,7 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import EntityCarrierNullException
+from err import CarrierNullException
 from result import MethodResultType
 
 
@@ -18,58 +18,58 @@ __all__ = [
     # ======================# SPACE_CARRIER_NULL_ERROR #======================#
     "SpaceCarrierNullException",
 ]
-
 # ======================# SPACE_CARRIER_NULL_ERROR #======================#
-class SpaceCarrierNullException(EntityCarrierNullException):
+class SpaceCarrierNullException(CarrierNullException):
     """
     Role:
-        -   Error Tracing
+        -   Failure Tracing
 
     Responsibilities:
-        1.  Indicate that a required SpaceCarrierToggle is null.
+        1.  Indicate that a required Space.
 
     Attributes:
-            msg: Optional[str]
-            var: Optional[str]
-            val: Optional[Any]
-            ex: Optional[Exception]
-            cls_name: Optional[str]
-            cls_mthd: Optional[str]
-            err_code: Optional[str]
-            MTHD_RSLT_TYPE: Optional[MethodResultType]
+        msg: str
+        err_code: str
+        var: Optional[str]
+        val: Optional[Any]
+        cls_name: Optional[str]
+        cls_mthd: Optional[str]
+        ex: Optional[Exception]
+        mthd_rslt_type: Optional[MethodResultType]
             
     Provides:
 
     Super Class:
-        EntityCarrierNullException
+        CarrierNullException
     """
-    MSG = "SpaceCarrierToggle cannot be null."
+    MSG = "SpaceCarrier cannot be null."
     ERR_CODE = "SPACE_CARRIER_NULL_ERROR"
     
     def __init__(
             self,
-            msg: Optional[str] | None = None,
+            msg: str = MSG,
+            err_code: str = ERR_CODE,
             var: Optional[str] | None = None,
             val: Optional[Any] | None = None,
-            ex: Optional[Exception] | None = None,
             cls_name: Optional[str] | None = None,
             cls_mthd: Optional[str] | None = None,
-            err_code: Optional[str] | None = None,
-            MTHD_RSLT_TYPE: Optional[MethodResultType] | None = None,
+            ex: Optional[Exception] | None = None,
+            mthd_rslt_type: Optional[MethodResultType] | None = None,
     ):
         """
-        args:
-            Msg: Optional[str]
-            Var: Optional[str]
-            val: Optional[any]
-            ex: Optional[Exception]
-            cls_name: Optional[Str]
+            Args:
+            msg: str
+            err_code: str
+            var: Optional[str]
+            val: Optional[Any]
+            cls_name: Optional[str]
             cls_mthd: Optional[str]
-            err_code: Optional[str]
-            MTHD_RSLT_TYPE: Optional[MethodResultType]
+            ex: Optional[Exception]
+            mthd_rslt_type: Optional[MethodResultType]
         """
         msg = msg or self.MSG
         err_code = err_code or self.ERR_CODE
+        mthd_rslt_type = mthd_rslt_type
         super().__init__(
             ex=ex,
             msg=msg,
@@ -78,5 +78,5 @@ class SpaceCarrierNullException(EntityCarrierNullException):
             err_code=err_code,
             cls_name=cls_name,
             cls_mthd=cls_mthd,
-            MTHD_RSLT_TYPE=MTHD_RSLT_TYPE,
+            mthd_rslt_type=mthd_rslt_type,
         )

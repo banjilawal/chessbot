@@ -11,9 +11,9 @@ version: 1.0.1
 
 # Packages
 from .northeast import *
-from .west import *
-from .east import *
-from .south import *
+from .northwest import *
+from .southeast import *
+from .southwest import *
 
 # Modules
-from .exception import QuadrantSpaceException
+from .exception import QuadrantException

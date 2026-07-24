@@ -13,7 +13,7 @@ from dataclasses import dataclass
 from typing import Type
 
 from blueprint import VectorSpaceBlueprint
-from carrier.space.vector.carrier import VectorSpaceCarrier
+from err.carrier.space import VectorSpaceCarrier
 from err import VectorSpaceBlueprintNullException, VectorSpaceCarrierNullException, VectorSpaceNullException
 from suite import  CoordOperationSuite, VectorOperationSuite
 from space import VectorSpace

@@ -10,13 +10,13 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Generic, Optional, Type, TypeVar, cast
 
-from blueprint import QuadrantSpaceBlueprint, SpaceBlueprint
-from err import QuadrantNullException
+from blueprint import QuadrantBlueprint, SpaceBlueprint
+from err import NortheastQuadrantNullException, QuadrantNullException
 from model import Vector
 from space import NortheastQuadrant, Space, QuadrantSpace
 
 
-class NortheastQuadrantBlueprint(QuadrantSpaceBlueprint[NortheastQuadrant]):
+class NortheastQuadrantBlueprint(QuadrantBlueprint[NortheastQuadrant]):
     """
      Role:
          -   Container
@@ -62,5 +62,5 @@ class NortheastQuadrantBlueprint(QuadrantSpaceBlueprint[NortheastQuadrant]):
         return cast(Type[NortheastQuadrant], super().model_class)
     
     @property
-    def origin(self) -> Vector:
-        return self._origin
+    def null_exception(self) -> NortheastQuadrantNullException:
+        return cast(NortheastQuadrantNullException, super().null_exception)

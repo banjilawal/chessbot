@@ -1,21 +1,17 @@
-# src/err/validator/space/__init__.py
+# src/err/validation/space/quadrant/__init__.py
 
 """
-Module: err.validator.space.__init__
+Module: err.validation.space.__init__
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
 """
 
-# ============ ERR.VALIDATOR.SPACE PACKAGE ===========#
+# ============ ERR.VALIDATION.SPACE PACKAGE ===========#
 
 # Packages
-
-from .destination import *
-from .linear import *
-from .span import *
-
-
+from .axis import *
+from .quadrant import *
 
 # Modules
 from .exception import SpaceValidatorException

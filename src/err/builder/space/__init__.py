@@ -1,4 +1,4 @@
-# src/err/builder/space/__init__.py
+# src/err/builder/space/quadrant/__init__.py
 
 """
 Module: err.builder.space.__init__
@@ -10,8 +10,8 @@ version: 1.0.1
 # ============ ERR.BUILDER.SPACE PACKAGE ===========#
 
 # Packages
-from .linear import *
-
+from .axis import *
+from .quadrant import *
 
 # Modules
 from .exception import SpaceBuilderException

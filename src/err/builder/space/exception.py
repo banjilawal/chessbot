@@ -1,4 +1,4 @@
-# src/err/builder/space/exception.py
+# src/err/builder/space/quadrant/exception.py
 
 """
 Module: err.builder.space.exception
@@ -25,7 +25,7 @@ class SpaceBuilderException(BuilderException):
         -   Failure Tracing
 
     Responsibilities:
-        1.  Indicate that a SpaceBuilder failed.
+        1.  Indicate that a SpaceBuilder failed. 
 
     Attributes:
         msg: str
@@ -42,7 +42,7 @@ class SpaceBuilderException(BuilderException):
     Super Class:
         BuilderException
     """
-    MSG = "SpaceBuilder failed."
+    MSG = "SpaceBuilder failure. "
     ERR_CODE = "SPACE_BUILDER_FAILURE"
     
     def __init__(
