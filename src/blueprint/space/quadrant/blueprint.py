@@ -44,7 +44,7 @@ class QuadrantBlueprint(SpaceBlueprint, Generic[T]):
     def __init__(
             self,
             origin: Vector,
-            model_class: Type[QuadrantSpace],
+            model_class: Type[T],
             terminus: Optional[Vector] | None = None,
             null_exception: Optional[QuadrantNullException] | None = QuadrantNullException(),
     ):
@@ -57,6 +57,7 @@ class QuadrantBlueprint(SpaceBlueprint, Generic[T]):
         """
         super().__init__(model_class=model_class, null_exception=null_exception)
         self._origin = origin
+        self._terminus = terminus
 
     @property
     def model_class(self) -> Type[QuadrantSpace]:
@@ -70,7 +71,7 @@ class QuadrantBlueprint(SpaceBlueprint, Generic[T]):
     def origin(self) -> Vector:
         return self._origin
     
-    @@property
+    @property
     def terminus(self) -> Optional[Vector]:
         return self._terminus
     

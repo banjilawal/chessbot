@@ -19,11 +19,12 @@ from carrier import ModelCarrier
 class BoardCarrier(ModelCarrier[Board]):
     """
     Role:
-        -   Addressing
-        -   Data-Holder
-    
+        -   Data Transport
+
     Responsibilities:
-        1.  Entity for transporting either a Board or BoardBlueprint
+        2.  Transports either a:
+            -   Board
+            -   BoardBlueprint
     
     Attributes:
         model: Optional[Board]

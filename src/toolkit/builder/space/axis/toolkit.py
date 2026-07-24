@@ -47,7 +47,6 @@ class AxisBuilderToolkit(SpaceBuilderToolkit, Generic[T]):
         """
         super().__init__(assembler=assembler, root_certifier=root_certifier)
 
-        
     @property
     def assembler(self) -> [AxisAssembler[T]]:
         return cast([AxisAssembler[T]], super()._assembler)

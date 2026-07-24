@@ -23,7 +23,9 @@ class ModelCarrier(EntityCarrier, ABC, Generic[T]):
         -   Data Transport
 
     Responsibilities:
-        1.  Transports either a Model or its Blueprint.
+        1.  Transports either:
+            -   a Model
+            -   a ModeBlueprint.
 
     Attributes:
         is_model_carrier: bool

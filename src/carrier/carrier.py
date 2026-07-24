@@ -25,7 +25,9 @@ class EntityCarrier(ABC, Generic[T]):
         -   Data Transport
 
     Responsibilities:
-        2.  Transports either an Object or its Blueprint.
+        1.  Transport either:
+            -   an Object
+            -   an ObjectBlueprint
 
     Attributes:
         is_model_carrier: bool

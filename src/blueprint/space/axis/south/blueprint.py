@@ -8,15 +8,15 @@ version: 1.0.1
 """
 
 from __future__ import annotations
-from typing import Generic, Optional, Type, TypeVar, cast
+from typing import Optional, Type, cast
 
-from blueprint import AxisBlueprint, SpaceBlueprint
-from err import southAxisNullException, AxisNullException
+from blueprint import AxisBlueprint
+from err import SouthAxisNullException
 from model import Vector
-from space import southAxis, Space, AxisSpace
+from space import SouthAxis
 
 
-class SouthAxisBlueprint(AxisBlueprint[southAxis]):
+class SouthAxisBlueprint(AxisBlueprint[SouthAxis]):
     """
      Role:
          -   Container
@@ -28,8 +28,8 @@ class SouthAxisBlueprint(AxisBlueprint[southAxis]):
 
      Attributes:
         origin: Vector
-        model_class: Type[southAxis]
-        null_exception: Optional[southAxisNullException]
+        model_class: Type[SouthAxis]
+        null_exception: Optional[SouthAxisNullException]
 
      Provides:
 
@@ -40,27 +40,26 @@ class SouthAxisBlueprint(AxisBlueprint[southAxis]):
     def __init__(
             self,
             origin: Vector,
-            model_class: Type[southAxis],
-            null_exception: Optional[southAxisNullException] |
-                            None = southAxisNullException(),
+            model_class: Type[SouthAxis],
+            null_exception: Optional[SouthAxisNullException] |
+                            None = SouthAxisNullException(),
     ):
         """
         Args:
             origin: Vector
-            model_class: Type[southAxis]
-            null_exception: Optional[southAxisNullException]
+            model_class: Type[SouthAxis]
+            null_exception: Optional[SouthAxisNullException]
         """
         super().__init__(
             origin=origin,
             model_class=model_class,
             null_exception=null_exception
         )
-        
     
     @property
-    def model_class(self) -> Type[southAxis]:
-        return cast(Type[southAxis], super().model_class)
+    def model_class(self) -> Type[SouthAxis]:
+        return cast(Type[SouthAxis], super().model_class)
     
     @property
-    def null_exception(self) -> southAxisNullException:
-        return cast(southAxisNullException, super().null_exception)
+    def null_exception(self) -> SouthAxisNullException:
+        return cast(SouthAxisNullException, super().null_exception)

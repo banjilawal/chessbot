@@ -1,7 +1,7 @@
-# src/err/root/model/exception.py
+# src/err/root/space/quadrant/exception.py
 
 """
-Module: err.root.model.exception
+Module: err.root.space.quadrant.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,23 +10,23 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import RootCertifierException
+from err import QuadrantRootCertifierException
 from result import MethodResultType
 
 
 __all__ = [
-    # ======================# MODEL__ROOT_CERTIFIER_FAILURE #======================#
-    "ModelRootCertifierException",
+    # ======================# NORTHEAST_QUADRANT_ROOT_CERTIFIER_FAILURE #======================#
+    "NortheastQuadrantRootCertifierException",
 ]
 
-# ======================# MODEL__ROOT_CERTIFIER_FAILURE #======================#
-class ModelRootCertifierException(RootCertifierException):
+# ======================# NORTHEAST_QUADRANT_ROOT_CERTIFIER_FAILURE #======================#
+class NortheastQuadrantRootCertifierException(QuadrantRootCertifierException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a candidate failed a ModelRootCertifier test.
+        1.  Indicate that a candidate failed an NortheastQuadrantSRootCertifier test.
 
     Attributes:
             msg: Optional[str]
@@ -41,10 +41,10 @@ class ModelRootCertifierException(RootCertifierException):
     Provides:
 
     Super Class:
-        ModelRootCertifierException
+        NortheastQuadrantRootCertifierException
     """
-    MSG = "Model root certification failure."
-    ERR_CODE = "MODEL_ROOT_CERTIFIER_FAILURE"
+    MSG = "NortheastQuadrantRootCerfier failure."
+    ERR_CODE = "NORTHEAST_QUADRANT_ROOT_CERTIFIER_FAILURE"
     
     def __init__(
             self,

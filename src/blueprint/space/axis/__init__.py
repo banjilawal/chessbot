@@ -10,8 +10,8 @@ version: 1.0.1
 # =========== BLUEPRINT.SPACE.AXIS PACKAGE ===========#
 
 # Packages
+from .east import *
 from .north import *
-from .west import *
 from .south import *
 from .west import *
 

@@ -74,7 +74,6 @@ class NorthAxisCarrier(SpaceCarrier[NorthAxis]):
         if self.is_carrying_blueprint: return self._blueprint
         return NorthAxisBlueprint(
             origin=self._model.origin,
-            terminus=self._model.terminus,
         )
         
     @property

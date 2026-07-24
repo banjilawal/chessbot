@@ -16,6 +16,7 @@ from root import RootCertifier
 from result import ValidationResult
 from util import LoggingLevelRouter
 
+
 T = TypeVar("T")
 
 
@@ -26,25 +27,28 @@ class Validator(ABC, Generic[T]):
         -   Integrity Maintenance
         -   Consistency Assurance
         -   Process Runner
-        
-    Naming Conventions:
-        -   Workers are named <EntityName>Validator.
-        -   Worker modules are named validator.
-        -   Exception modules are named transaction.
 
     Responsibilities:
         1.  Ensure data-holders are safe before they are used or saved.
         
     Attributes:
+        root_certifier: RootCertifier[T]
     
     Provides:
-        -   execute(candidate: Any) -> ValidationResult
+        -   def execute(candidate: Any) -> ValidationResult[T]
         
     super Class:
     """
     _root_certifier: RootCertifier[T]
     
-    def __init__(self, root_certifier: RootCertifier[[T]]):
+    def __init__(
+            self,
+            root_certifier: RootCertifier[[T]],
+    ):
+        """
+        Args:
+            root_certifier: RootCertifier[T]
+        """
         self._root_certifier = root_certifier
         
     @property

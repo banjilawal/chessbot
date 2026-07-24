@@ -44,7 +44,7 @@ class AxisBlueprint(SpaceBlueprint, Generic[T]):
     def __init__(
             self,
             origin: Vector,
-            model_class: Type[AxisSpace],
+            model_class: Type[AxisSpace] = AxisSpace,
             terminus: Optional[Vector] | None = None,
             null_exception: Optional[AxisNullException] | None = AxisNullException(),
     ):

@@ -13,7 +13,6 @@ from typing import Any, List, cast
 
 from blueprint import NorthAxisBlueprint
 from carrier import NorthAxisCarrier
-from err import NorthAxisCarrierNullException, NorthAxisRootCertifierException
 from model import Vector
 from result import ValidationResult
 from root import AxisRootCertifier
@@ -130,7 +129,9 @@ class NorthAxisRootCertifier(AxisRootCertifier[NorthAxisBlueprint]):
             vectors.append(cast(Vector, vector_validation.payload))
         # --- Extract and cast payloads of the validation results. ---#
         origin = vectors[0]
-
+        terminus = None
+        if len(vectors) == 2:
+            terminus = vectors[1]
 
         if carrier.is_carrying_model:
             return ValidationResult.success(

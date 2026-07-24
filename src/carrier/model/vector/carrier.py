@@ -19,11 +19,12 @@ from carrier import ModelCarrier
 class VectorCarrier(ModelCarrier[Vector]):
     """
     Role:
-        -   Addressing
-        -   Data-Holder
-    
+        -   Data Transport
+
     Responsibilities:
-        1.  Entity for transporting either a Vector or VectorBlueprint
+        2.  Transports either a
+            -   Vector
+            -   VectorBlueprint.
     
     Attributes:
         model: Optional[Vector]
@@ -100,22 +101,3 @@ class VectorCarrier(ModelCarrier[Vector]):
     def __hash__(self):
         return hash(self.entity)
 
-    
-
-    
-    @property
-    def is_carrying_too_much(self) -> bool:
-        return self.active_toggles > 1
-    
-    @property
-    def active_toggles(self) -> int:
-        return len(self.to_dict)
-    
-    @property
-    @abstractmethod
-    def to_dict(self) -> Dict[str, Any]:
-        pass
-    
-    @abstractmethod
-    def extract_blueprint(self) -> Optional[Blueprint[T]]:
-        pass

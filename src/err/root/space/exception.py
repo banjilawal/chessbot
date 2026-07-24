@@ -1,7 +1,7 @@
-# src/err/root/model/exception.py
+# src/err/root/space/exception.py
 
 """
-Module: err.root.model.exception
+Module: err.root.space.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -15,18 +15,18 @@ from result import MethodResultType
 
 
 __all__ = [
-    # ======================# MODEL__ROOT_CERTIFIER_FAILURE #======================#
-    "ModelRootCertifierException",
+    # ======================# SPACE_ROOT_CERTIFIER_FAILURE #======================#
+    "SpaceRootCertifierException",
 ]
 
-# ======================# MODEL__ROOT_CERTIFIER_FAILURE #======================#
-class ModelRootCertifierException(RootCertifierException):
+# ======================# SPACE_ROOT_CERTIFIER_FAILURE #======================#
+class SpaceRootCertifierException(RootCertifierException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a candidate failed a ModelRootCertifier test.
+        1.  Indicate that a candidate failed a SpaceRootCertifier test.
 
     Attributes:
             msg: Optional[str]
@@ -41,10 +41,10 @@ class ModelRootCertifierException(RootCertifierException):
     Provides:
 
     Super Class:
-        ModelRootCertifierException
+        SpaceRootCertifierException
     """
-    MSG = "Model root certification failure."
-    ERR_CODE = "MODEL_ROOT_CERTIFIER_FAILURE"
+    MSG = "SpaceRootCertifier failure."
+    ERR_CODE = "SPACE_ROOT_CERTIFIER_FAILURE"
     
     def __init__(
             self,

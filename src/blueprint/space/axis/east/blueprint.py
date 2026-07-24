@@ -9,7 +9,11 @@ version: 1.0.1
 
 from __future__ import annotations
 
+from typing import Optional, Type, cast
+
 from blueprint import AxisBlueprint
+from err import EastAxisNullException
+from model import Vector
 from space import EastAxis
 
 

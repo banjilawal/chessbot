@@ -1,7 +1,7 @@
-# src/err/root/model/exception.py
+# src/err/root/space/axis/exception.py
 
 """
-Module: err.root.model.exception
+Module: err.root.space.axis.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,23 +10,23 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import RootCertifierException
+from err import SpaceRootCertifierException
 from result import MethodResultType
 
 
 __all__ = [
-    # ======================# MODEL__ROOT_CERTIFIER_FAILURE #======================#
-    "ModelRootCertifierException",
+    # ======================# AXIS_ROOT_CERTIFIER_FAILURE #======================#
+    "AxisRootCertifierException",
 ]
 
-# ======================# MODEL__ROOT_CERTIFIER_FAILURE #======================#
-class ModelRootCertifierException(RootCertifierException):
+# ======================# AXIS_ROOT_CERTIFIER_FAILURE #======================#
+class AxisRootCertifierException(SpaceRootCertifierException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a candidate failed a ModelRootCertifier test.
+        1.  Indicate that a candidate failed an AxisSRootCertifier test.
 
     Attributes:
             msg: Optional[str]
@@ -41,10 +41,10 @@ class ModelRootCertifierException(RootCertifierException):
     Provides:
 
     Super Class:
-        ModelRootCertifierException
+        AxisSpaceRootCertifierException
     """
-    MSG = "Model root certification failure."
-    ERR_CODE = "MODEL_ROOT_CERTIFIER_FAILURE"
+    MSG = "AxisRootCerfier failure."
+    ERR_CODE = "AXIS_ROOT_CERTIFIER_FAILURE"
     
     def __init__(
             self,

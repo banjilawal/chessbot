@@ -1,7 +1,7 @@
-# src/certifier/space/axis/north/cerifier.py
+# src/certifier/space/axis/south/cerifier.py
 
 """
-Module: certifier.space.axis.north.certifier
+Module: certifier.space.axis.south.certifier
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -11,18 +11,17 @@ from __future__ import annotations
 
 from typing import Any, List, cast
 
-from blueprint import NorthAxisBlueprint
-from carrier import NorthAxisCarrier
-from err import NorthAxisCarrierNullException, NorthAxisRootCertifierException
+from blueprint import SouthAxisBlueprint
+from carrier import SouthAxisCarrier
 from model import Vector
 from result import ValidationResult
 from root import AxisRootCertifier
-from space import NorthAxis
-from toolkit.space.axis.north import NorthAxisToolkit
+from space import SouthAxis
+from toolkit.space.axis.south import SouthAxisToolkit
 from util import LoggingLevelRouter
 
 
-class NorthAxisRootCertifier(AxisRootCertifier[NorthAxisBlueprint]):
+class SouthAxisRootCertifier(AxisRootCertifier[SouthAxisBlueprint]):
     """
     Role
         -   Transaction Worker
@@ -31,10 +30,10 @@ class NorthAxisRootCertifier(AxisRootCertifier[NorthAxisBlueprint]):
         -   Process Runner
 
     Responsibilities:
-        1.  Ensure a NorthAxisBlueprint instance is certified safe, reliable and consistent before use.
+        1.  Ensure a SouthAxisBlueprint instance is certified safe, reliable and consistent before use.
 
     Attributes:
-        toolkit: NorthAxisToolkit
+        toolkit: SouthAxisToolkit
 
     Provides:
         -   execute(self, candidate: Any) -> ValidationResult:
@@ -43,21 +42,21 @@ class NorthAxisRootCertifier(AxisRootCertifier[NorthAxisBlueprint]):
         Certifier
     """
     
-    def __init__(self, toolkit: NorthAxisToolkit | None = NorthAxisToolkit()):
+    def __init__(self, toolkit: SouthAxisToolkit | None = SouthAxisToolkit()):
         """
         Args:
-            toolkit: NorthAxisToolkit
+            toolkit: SouthAxisToolkit
         """
         super().__init__(toolkit=toolkit)
     
     @property
-    def toolkit(self) -> NorthAxisToolkit:
-        return cast(NorthAxisToolkit, super().toolkit)
+    def toolkit(self) -> SouthAxisToolkit:
+        return cast(SouthAxisToolkit, super().toolkit)
     
     @LoggingLevelRouter.monitor
-    def execute(self, candidate: Any) -> ValidationResult[NorthAxis| NorthAxisBlueprint]:
+    def execute(self, candidate: Any) -> ValidationResult[SouthAxis| SouthAxisBlueprint]:
         """
-        Certify a candidate is a NorthAxisBlueprint that is safe to use.
+        Certify a candidate is a SouthAxisBlueprint that is safe to use.
 
         Action:
             1.  Send an exception chain in the ValidationResult if any of the following
@@ -70,7 +69,7 @@ class NorthAxisRootCertifier(AxisRootCertifier[NorthAxisBlueprint]):
         Returns:
             ValidationResult
         Raises:
-            NorthAxisRootCertifierException
+            SouthAxisRootCertifierException
         """
         method = f"{self.__class__.__name__}.execute"
         
@@ -82,28 +81,28 @@ class NorthAxisRootCertifier(AxisRootCertifier[NorthAxisBlueprint]):
         if carrier_validation.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                NorthAxisRootCertifierException(
+                SouthAxisRootCertifierException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=NorthAxisRootCertifierException.MSG,
-                    err_code=NorthAxisRootCertifierException.ERR_CODE,
+                    msg=SouthAxisRootCertifierException.MSG,
+                    err_code=SouthAxisRootCertifierException.ERR_CODE,
                     ex=carrier_validation.exception,
                 )
             )
-        carrier = cast(NorthAxisCarrier, carrier_validation.payload)
+        carrier = cast(SouthAxisCarrier, carrier_validation.payload)
         if carrier.is_not_carrying_anything:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                NorthAxisRootCertifierException(
+                SouthAxisRootCertifierException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=NorthAxisRootCertifierException.MSG,
-                    err_code=NorthAxisRootCertifierException.ERR_CODE,
-                    ex=NorthAxisCarrierNullException(
+                    msg=SouthAxisRootCertifierException.MSG,
+                    err_code=SouthAxisRootCertifierException.ERR_CODE,
+                    ex=SouthAxisCarrierNullException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        msg=NorthAxisCarrierNullException.MSG,
-                        err_code=NorthAxisCarrierNullException.ERR_CODE,
+                        msg=SouthAxisCarrierNullException.MSG,
+                        err_code=SouthAxisCarrierNullException.ERR_CODE,
                     ),
                 )
             )
@@ -119,24 +118,26 @@ class NorthAxisRootCertifier(AxisRootCertifier[NorthAxisBlueprint]):
             if vector_validation.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
-                    NorthAxisRootCertifierException(
+                    SouthAxisRootCertifierException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        msg=NorthAxisRootCertifierException.MSG,
-                        err_code=NorthAxisRootCertifierException.ERR_CODE,
+                        msg=SouthAxisRootCertifierException.MSG,
+                        err_code=SouthAxisRootCertifierException.ERR_CODE,
                         ex=vector_validation.exception,
                     )
                 )
             vectors.append(cast(Vector, vector_validation.payload))
         # --- Extract and cast payloads of the validation results. ---#
         origin = vectors[0]
-
+        terminus = None
+        if len(vectors) == 2:
+            terminus = vectors[1]
 
         if carrier.is_carrying_model:
             return ValidationResult.success(
-                NorthAxis(origin=origin)
+                SouthAxis(origin=origin)
             )
         # --- Forward the work product to the caller. ---#
         return ValidationResult.success(
-            NorthAxisBlueprint(origin=origin)
+            SouthAxisBlueprint(origin=origin)
         )

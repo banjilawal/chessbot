@@ -8,12 +8,12 @@ version: 1.0.1
 """
 
 from __future__ import annotations
-from typing import Generic, Optional, Type, TypeVar, cast
+from typing import Optional, Type,  cast
 
-from blueprint import AxisBlueprint, SpaceBlueprint
-from err import NorthAxisNullException, AxisNullException
+from blueprint import AxisBlueprint
+from err import NorthAxisNullException
 from model import Vector
-from space import NorthAxis, Space, AxisSpace
+from space import NorthAxis
 
 
 class NorthAxisBlueprint(AxisBlueprint[NorthAxis]):
@@ -28,7 +28,7 @@ class NorthAxisBlueprint(AxisBlueprint[NorthAxis]):
 
      Attributes:
         origin: Vector
-        model_class: Type[NorthAxis]
+        model_class: Optional[Type[NorthAxis]]
         null_exception: Optional[NorthAxisNullException]
 
      Provides:
@@ -40,14 +40,14 @@ class NorthAxisBlueprint(AxisBlueprint[NorthAxis]):
     def __init__(
             self,
             origin: Vector,
-            model_class: Type[NorthAxis],
+            model_class: Type[NorthAxis] = NorthAxis,
             null_exception: Optional[NorthAxisNullException] |
                             None = NorthAxisNullException(),
     ):
         """
         Args:
             origin: Vector
-            model_class: Type[NorthAxis]
+            model_class: Type[NorthAxis] = NorthAxis
             null_exception: Optional[NorthAxisNullException]
         """
         super().__init__(
@@ -56,7 +56,6 @@ class NorthAxisBlueprint(AxisBlueprint[NorthAxis]):
             null_exception=null_exception
         )
         
-    
     @property
     def model_class(self) -> Type[NorthAxis]:
         return cast(Type[NorthAxis], super().model_class)
