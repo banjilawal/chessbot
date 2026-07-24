@@ -10,11 +10,7 @@ version: 1.0.1
 # =========== TOOLKIT.BUILDER.SPACE.AXIS PACKAGE ===========#
 
 # Packages
-from .east import *
-from .north import *
-from .south import *
-from .west import *
 
 
 # Modules
-from .toolkit import AxisBuilderToolkit
+from .toolkit import SouthAxisBuilderToolkit

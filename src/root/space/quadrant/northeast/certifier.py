@@ -1,7 +1,7 @@
-# src/certifier/space/axis/north/cerifier.py
+# src/certifier/space/quadrant/northeast/cerifier.py
 
 """
-Module: certifier.space.axis.north.certifier
+Module: certifier.space.quadrant.northeast.certifier
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -11,17 +11,18 @@ from __future__ import annotations
 
 from typing import Any, List, cast
 
-from blueprint import NorthAxisBlueprint
-from carrier import NorthAxisCarrier
+from blueprint import NortheastQuadrantBlueprint
+from err import NortheastQuadrantCarrierNullException, NortheastQuadrantRootCertifierException
+from carrier import NortheastQuadrantCarrier
 from model import Vector
 from result import ValidationResult
-from root import AxisRootCertifier
-from space import NorthAxis
-from toolkit.space.axis.north import NorthAxisToolkit
+from root import QuadrantRootCertifier
+from space import NortheastQuadrant
+from toolkit.space.quadrant.northeast import NortheastQuadrantToolkit
 from util import LoggingLevelRouter
 
 
-class NorthAxisRootCertifier(AxisRootCertifier[NorthAxisBlueprint]):
+class NortheastQuadrantRootCertifier(QuadrantRootCertifier[NortheastQuadrant]):
     """
     Role
         -   Transaction Worker
@@ -30,10 +31,10 @@ class NorthAxisRootCertifier(AxisRootCertifier[NorthAxisBlueprint]):
         -   Process Runner
 
     Responsibilities:
-        1.  Ensure a NorthAxisBlueprint instance is certified safe, reliable and consistent before use.
+        1.  Ensure a NortheastQuadrantBlueprint instance is certified safe, reliable and consistent before use.
 
     Attributes:
-        toolkit: NorthAxisToolkit
+        toolkit: NortheastQuadrantToolkit
 
     Provides:
         -   execute(self, candidate: Any) -> ValidationResult:
@@ -42,21 +43,21 @@ class NorthAxisRootCertifier(AxisRootCertifier[NorthAxisBlueprint]):
         Certifier
     """
     
-    def __init__(self, toolkit: NorthAxisToolkit | None = NorthAxisToolkit()):
+    def __init__(self, toolkit: NortheastQuadrantToolkit | None = NortheastQuadrantToolkit()):
         """
         Args:
-            toolkit: NorthAxisToolkit
+            toolkit: NortheastQuadrantToolkit
         """
         super().__init__(toolkit=toolkit)
     
     @property
-    def toolkit(self) -> NorthAxisToolkit:
-        return cast(NorthAxisToolkit, super().toolkit)
+    def toolkit(self) -> NortheastQuadrantToolkit:
+        return cast(NortheastQuadrantToolkit, super().toolkit)
     
     @LoggingLevelRouter.monitor
-    def execute(self, candidate: Any) -> ValidationResult[NorthAxis| NorthAxisBlueprint]:
+    def execute(self, candidate: Any) -> ValidationResult[NortheastQuadrant | NortheastQuadrantBlueprint]:
         """
-        Certify a candidate is a NorthAxisBlueprint that is safe to use.
+        Certify a candidate is a NortheastQuadrantBlueprint that is safe to use.
 
         Action:
             1.  Send an exception chain in the ValidationResult if any of the following
@@ -69,7 +70,7 @@ class NorthAxisRootCertifier(AxisRootCertifier[NorthAxisBlueprint]):
         Returns:
             ValidationResult
         Raises:
-            NorthAxisRootCertifierException
+            NortheastQuadrantRootCertifierException
         """
         method = f"{self.__class__.__name__}.execute"
         
@@ -81,28 +82,28 @@ class NorthAxisRootCertifier(AxisRootCertifier[NorthAxisBlueprint]):
         if carrier_validation.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                NorthAxisRootCertifierException(
+                NortheastQuadrantRootCertifierException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=NorthAxisRootCertifierException.MSG,
-                    err_code=NorthAxisRootCertifierException.ERR_CODE,
+                    msg=NortheastQuadrantRootCertifierException.MSG,
+                    err_code=NortheastQuadrantRootCertifierException.ERR_CODE,
                     ex=carrier_validation.exception,
                 )
             )
-        carrier = cast(NorthAxisCarrier, carrier_validation.payload)
+        carrier = cast(NortheastQuadrantCarrier, carrier_validation.payload)
         if carrier.is_not_carrying_anything:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                NorthAxisRootCertifierException(
+                NortheastQuadrantRootCertifierException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=NorthAxisRootCertifierException.MSG,
-                    err_code=NorthAxisRootCertifierException.ERR_CODE,
-                    ex=NorthAxisCarrierNullException(
+                    msg=NortheastQuadrantRootCertifierException.MSG,
+                    err_code=NortheastQuadrantRootCertifierException.ERR_CODE,
+                    ex=NortheastQuadrantCarrierNullException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        msg=NorthAxisCarrierNullException.MSG,
-                        err_code=NorthAxisCarrierNullException.ERR_CODE,
+                        msg=NortheastQuadrantCarrierNullException.MSG,
+                        err_code=NortheastQuadrantCarrierNullException.ERR_CODE,
                     ),
                 )
             )
@@ -118,11 +119,11 @@ class NorthAxisRootCertifier(AxisRootCertifier[NorthAxisBlueprint]):
             if vector_validation.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
-                    NorthAxisRootCertifierException(
+                    NortheastQuadrantRootCertifierException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        msg=NorthAxisRootCertifierException.MSG,
-                        err_code=NorthAxisRootCertifierException.ERR_CODE,
+                        msg=NortheastQuadrantRootCertifierException.MSG,
+                        err_code=NortheastQuadrantRootCertifierException.ERR_CODE,
                         ex=vector_validation.exception,
                     )
                 )
@@ -135,9 +136,9 @@ class NorthAxisRootCertifier(AxisRootCertifier[NorthAxisBlueprint]):
 
         if carrier.is_carrying_model:
             return ValidationResult.success(
-                NorthAxis(origin=origin)
+                NortheastQuadrant(origin=origin)
             )
         # --- Forward the work product to the caller. ---#
         return ValidationResult.success(
-            NorthAxisBlueprint(origin=origin)
+            NortheastQuadrantBlueprint(origin=origin)
         )

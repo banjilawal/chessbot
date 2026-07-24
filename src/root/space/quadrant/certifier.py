@@ -1,7 +1,7 @@
-# src/space/axis/space.py
+# src/space/quadrant/space.py
 
 """
-Module: space.axis.space
+Module: space.quadrant.space
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -15,12 +15,12 @@ from typing import Any, Generic, TypeVar, cast
 
 from result import ValidationResult
 from root import SpaceRootCertifier
-from toolkit import AxisToolkit
+from toolkit import QuadrantToolkit
 from util import LoggingLevelRouter
 
-T = TypeVar("T", bound="AxisSpace")
+T = TypeVar("T", bound="QuadrantSpace")
 
-class AxisRootCertifier(SpaceRootCertifier, Generic[T]):
+class QuadrantRootCertifier(SpaceRootCertifier, Generic[T]):
     """
     Role:
         -   Definition
@@ -38,16 +38,16 @@ class AxisRootCertifier(SpaceRootCertifier, Generic[T]):
         SpaceRootCertifier
     """
 
-    def __init__(self, toolkit: AxisToolkit[T]):
+    def __init__(self, toolkit: QuadrantToolkit[T]):
         """
         Args:
-            toolkit: AxisToolkit[T]
+            toolkit: QuadrantToolkit[T]
         """
         super().__init__(toolkit=toolkit)
     
     @property
-    def toolkit(self) -> AxisToolkit[T]:
-        return cast(AxisToolkit[T], super().toolkit)
+    def toolkit(self) -> QuadrantToolkit[T]:
+        return cast(QuadrantToolkit[T], super().toolkit)
     
     @abstractmethod
     @LoggingLevelRouter.monitor

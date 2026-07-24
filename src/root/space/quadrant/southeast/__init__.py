@@ -1,16 +1,16 @@
-# src/space/quadrant/southeast/__init__.py
+# src/certifier/space/quadrant/southeast/__init__.py
 
 """
-Module: space.quadrant.southeast.__init__
+Module: certifier.space.quadrant.southeast.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
 """
 
-# =========== SPACE.QUADRANT.SOUTHEAST PACKAGE ===========#
+# =========== CERTIFIER.SPACE.QUADRANT.SOUTHEAST PACKAGE ===========#
 
 # Packages
 
 
 # Modules
-from .space import SoutheastQuadrant
+from .certifier import SoutheastQuadrantRootCertifier

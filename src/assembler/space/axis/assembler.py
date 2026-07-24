@@ -9,13 +9,13 @@ version: 1.0.1
 
 from __future__ import annotations
 
-
+from abc import abstractmethod
 from typing import Generic, TypeVar
 
-from assembler import Assembler, SpaceAssembler
+from assembler import SpaceAssembler
 from blueprint import AxisBlueprint
 from result import BuildResult
-from space import AxisSpace
+
 from util import LoggingLevelRouter
 
 
@@ -40,8 +40,7 @@ class AxisAssembler(SpaceAssembler, Generic[T]):
     def __init__(self):
         super().__init__()
     
-    
-    
+    @abstractmethod
     @LoggingLevelRouter.monitor
     def execute(self, blueprint: [AxisBlueprint[T]],) -> BuildResult[T]:
         pass

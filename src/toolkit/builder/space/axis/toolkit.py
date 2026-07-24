@@ -32,7 +32,7 @@ class AxisBuilderToolkit(SpaceBuilderToolkit, Generic[T]):
     Provides:
     
     Super Class:
-        BuilderToolkit
+        SpaceBuilderToolkit
     """
     
     def __init__(

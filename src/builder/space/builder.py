@@ -9,14 +9,14 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from abc import ABC, abstractmethod
-from typing import Generic, Optional, TypeVar
+from abc import abstractmethod
+from typing import Generic, Optional, TypeVar, cast
 
 from builder import Builder
 from model import Vector
 
 from result import BuildResult
-from toolkit import MathToolkit
+from toolkit import MathToolkit, SpaceBuilderToolkit
 from util import LoggingLevelRouter
 
 
@@ -27,12 +27,21 @@ class SpaceBuilder(Builder, Generic[T]):
     
     def __init__(
             self,
-            builder_toolkit: [SpaceBuilderToolkit],
+            builder_toolkit: Optional[SpaceBuilderToolkit] |
+                             None = SpaceBuilderToolkit(),
             math_toolkit: Optional[MathToolkit] | None = MathToolkit(),
     ):
+        """
+        Args:
+            builder_toolkit: Optional[SpaceBuilderToolkit]
+            math_toolkit: Optional[MathToolkit]
+        """
         super().__init__(builder_toolkit=builder_toolkit)
         self._math_toolkit = math_toolkit
         
+    @property
+    def builder_toolkit(self) -> SpaceBuilderToolkit:
+        return cast(SpaceBuilderToolkit, super().builder_toolkit)
         
     @property
     def math(self) -> MathToolkit:

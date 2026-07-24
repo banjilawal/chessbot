@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import cast
 
-from builder import QuadrantSpaceBuilder
+from builder import QuadrantBuilder
 from err import NortheastQuadrantBuilderException
 from model import Vector, vector
 from result import BuildResult, MethodResultType
@@ -19,7 +19,7 @@ from space import NortheastQuadrant
 from util import LoggingLevelRouter
 
 
-class NorthEastQuadrantBuilder(QuadrantSpaceBuilder[NortheastQuadrant]):
+class NorthEastQuadrantBuilder(QuadrantBuilder[NortheastQuadrant]):
     """
     Role:
         -   Builder
@@ -35,12 +35,13 @@ class NorthEastQuadrantBuilder(QuadrantSpaceBuilder[NortheastQuadrant]):
 
     Super Class:
     """
-    super().__init__()
+    def __init__(self, builder_toolkit: NorthEastQuadran):
+        super().__init__()
     
     
     @LoggingLevelRouter.monitor
-    def execute(self) -> BuildResult[NortheastQuadrant]:
-        method = f"{self.__class__.__name__}"
+    def execute(self, blueprint) -> BuildResult[NortheastQuadrant]:
+        method = f"{self.__class__.__name__}.execute"
         validation = self.math.vector.validator.execult(origin)
         if validation.is_failure:
             # Handle the case that the request is not satisfied.

@@ -14,4 +14,4 @@ from .northeast import *
 
 
 # Modules
-from .builder import QuadrantSpaceBuilder
+from .builder import QuadrantBuilder
