@@ -10,11 +10,13 @@ version: 1.0.1
 from __future__ import annotations
 
 from abc import ABC
+from typing import Generic, TypeVar
 
 from carrier import SpaceCarrier
 
+T = TypeVar("T", bound="Quadrant")
 
-class QuadrantCarrier(SpaceCarrier, ABC):
+class QuadrantCarrier(SpaceCarrier, ABC, Generic[T]):
     """
     Role:
         -   Data Transport

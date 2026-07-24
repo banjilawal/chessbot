@@ -10,11 +10,13 @@ version: 1.0.1
 from __future__ import annotations
 
 from abc import ABC
+from typing import Generic, TypeVar
 
 from carrier import EntityCarrier
 
+T = TypeVar("T", bound="Space")
 
-class SpaceCarrier(EntityCarrier, ABC):
+class SpaceCarrier(EntityCarrier, Generic[T], ABC):
     """
     Role:
         -   Data Transport

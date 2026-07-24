@@ -16,4 +16,4 @@ from .south import *
 from .west import *
 
 # Modules
-from .space import AxialSpace
+from .space import AxisSpace

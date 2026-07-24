@@ -10,12 +10,14 @@ version: 1.0.1
 from __future__ import annotations
 
 from abc import ABC
+from typing import Generic
 
 from carrier import EntityCarrier
-from toggle import Toggle
+
+T = TypeVar("T", bound="Toggle")
 
 
-class ToggleCarrier(EntityCarrier[Toggle], ABC):
+class ToggleCarrier(EntityCarrier, ABC, Generic[T]):
     def __init__(self):
         super().__init__()
         

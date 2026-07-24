@@ -15,7 +15,7 @@ from typing import Generic, TypeVar
 from assembler import Assembler, SpaceAssembler
 from blueprint import QuadrantBlueprint
 from result import BuildResult
-from space import AxialSpace
+from space import AxisSpace
 from util import LoggingLevelRouter
 
 

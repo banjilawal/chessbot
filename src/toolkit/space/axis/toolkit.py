@@ -1,7 +1,7 @@
-# src/toolkit/space/toolkit.py
+# src/toolkit/space/axis/toolkit.py
 
 """
-Module: toolkit.space.toolkit
+Module: toolkit.space.axis.toolkit
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -15,13 +15,13 @@ from typing import Generic, Type, TypeVar
 
 from blueprint import Blueprint
 from carrier import EntityCarrier
-from err import SpaceBlueprintNullException, SpaceCarrierNullException, SpaceNullException
-from toolkit import MathToolkit, Toolkit
+from err import AxisBlueprintNullException, AxisCarrierNullException, AxisNullException
+from toolkit import SpaceToolkit
 
-T = TypeVar("T", bound="Space")
+T = TypeVar("T", bound="AxisSpace")
 
 @dataclass
-class SpaceToolkit(Toolkit, Generic[T]):
+class AxisToolkit(SpaceToolkit, Generic[T]):
     """
     Role:
         -   Container
@@ -47,9 +47,7 @@ class SpaceToolkit(Toolkit, Generic[T]):
     carrier_model: Type[EntityCarrier[T]]
     blueprint_model: Type[Blueprint[T]]
     
-    null_exception: SpaceNullException = SpaceNullException()
-    carrier_null_exception: SpaceCarrierNullException = SpaceCarrierNullException()
-    blueprint_null_exception: SpaceBlueprintNullException = SpaceBlueprintNullException()
-    
-    math_toolkit: MathToolkit = MathToolkit()
+    null_exception: AxisNullException = AxisNullException()
+    carrier_null_exception: AxisCarrierNullException = AxisCarrierNullException()
+    blueprint_null_exception: AxisBlueprintNullException = AxisBlueprintNullException()
 

@@ -10,11 +10,14 @@ version: 1.0.1
 from __future__ import annotations
 
 from abc import ABC
+from typing import Generic, TypeVar
 
 from carrier import SpaceCarrier
 
+T = TypeVar("T", bound="Axis")
 
-class AxisCarrier(SpaceCarrier, ABC):
+
+class AxisCarrier(SpaceCarrier, ABC, Generic[T]):
     """
     Role:
         -   Data Transport

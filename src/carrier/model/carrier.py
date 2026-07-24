@@ -10,11 +10,14 @@ version: 1.0.1
 from __future__ import annotations
 
 from abc import ABC
+from typing import Generic, TypeVar
 
 from carrier import EntityCarrier
 
+T = TypeVar("T", bound="Model")
 
-class ModelCarrier(EntityCarrier, ABC):
+
+class ModelCarrier(EntityCarrier, ABC, Generic[T]):
     """
     Role:
         -   Data Transport
