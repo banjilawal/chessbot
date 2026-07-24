@@ -15,7 +15,7 @@ from assembler import AxisAssembler
 from root import AxisRootCertifier
 from toolkit import SpaceBuilderToolkit
 
-T = TypeVar("T", bound="Axial")
+T = TypeVar("T", bound="Axis")
 
 class AxisBuilderToolkit(SpaceBuilderToolkit, Generic[T]):
     """

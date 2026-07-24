@@ -16,4 +16,4 @@ from .south import *
 from .west import *
 
 # Modules
-from .ruleset import AxialVectorSpec
+from .ruleset import AxisVectorSpec

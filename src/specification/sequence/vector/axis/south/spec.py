@@ -13,10 +13,10 @@ from typing import Optional, cast
 
 from mapping import SouthAxisMapFunction
 from space import SouthAxis
-from specification import AxialVectorSequenceSpec
+from specification import AxisVectorSequenceSpec
 
 
-class SouthAxisVectorSpec(AxialVectorSequenceSpec[SouthAxis]):
+class SouthAxisVectorSpec(AxisVectorSequenceSpec[SouthAxis]):
     """
     Role:
         -   Computation
@@ -32,7 +32,7 @@ class SouthAxisVectorSpec(AxialVectorSequenceSpec[SouthAxis]):
     Provides:
 
     Super Class:
-        AxialVectorSequenceSpec
+        AxisVectorSequenceSpec
     """
     
     def __init__(

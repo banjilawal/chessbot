@@ -15,16 +15,16 @@ from typing import Generic, TypeVar, cast
 from mapping import SpaceMappingFunction
 from ruleset import VectorSequenceSpec
 
-T = TypeVar("T", bound="AxialSpace")
+T = TypeVar("T", bound="AxisSpace")
 
-class AxialVectorSpec(VectorSequenceSpec, Generic[T]):
+class AxisVectorSpec(VectorSequenceSpec, Generic[T]):
     """
     Role:
         -   Computation
         -   Iterator
 
     Responsibilities:
-        1.  Provide a recurrence relation for iterating to the next AxialSpace vector
+        1.  Provide a recurrence relation for iterating to the next AxisSpace vector
 
     Attributes:
         space: T

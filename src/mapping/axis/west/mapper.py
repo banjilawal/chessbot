@@ -9,14 +9,14 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from mapping import AxialMapFunction
+from mapping import AxisMapFunction
 from model import Vector
-from schema import AxialDelta
+from schema import AxisDelta
 from space import WestAxis
 
 
 
-class WestAxisMapFunction(AxialMapFunction[WestAxis]):
+class WestAxisMapFunction(AxisMapFunction[WestAxis]):
     """
     Role:
         -   Computation
@@ -25,17 +25,17 @@ class WestAxisMapFunction(AxialMapFunction[WestAxis]):
         Define delta_vector for getting the next vector on west of origin.
             
     Attributes:
-        delta: Vector = AxialMapFunction.WEST.vecto
+        delta: Vector = AxisMapFunction.WEST.vecto
 
     Provides:
 
     Super Class:
-        AxialMapFunction
+        AxisMapFunction
     """
     
-    def __init__(self, delta: Vector = AxialDelta.WEST.vector):
+    def __init__(self, delta: Vector = AxisDelta.WEST.vector):
         """
         Args:
-            delta: Vector = AxialMapFunction.WEST.vector
+            delta: Vector = AxisMapFunction.WEST.vector
         """
         super().__init__(delta=delta)

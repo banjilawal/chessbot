@@ -25,7 +25,7 @@ class AxisTraversalPattern(TraversalPattern):
         2.  Provide the next point in the direction of travel.
 
     Attributes:
-        stepper: AxialMapFunction
+        stepper: AxisMapFunction
 
     Provides:
 
@@ -36,7 +36,7 @@ class AxisTraversalPattern(TraversalPattern):
     def __init__(self, stepper: AxisStepper,):
         """
         Args:
-            stepper: AxialMapFunction
+            stepper: AxisMapFunction
         """
         super().__init__(stepper=stepper)
     

@@ -13,10 +13,10 @@ from typing import Optional, cast
 
 from mapping import NorthAxisMapFunction
 from space import NorthAxis
-from specification import AxialVectorSequenceSpec
+from specification import AxisVectorSequenceSpec
 
 
-class NorthAxisVectorSequenceSpec(AxialVectorSequenceSpec[NorthAxis]):
+class NorthAxisVectorSequenceSpec(AxisVectorSequenceSpec[NorthAxis]):
     """
     Role:
         -   Computation
@@ -32,7 +32,7 @@ class NorthAxisVectorSequenceSpec(AxialVectorSequenceSpec[NorthAxis]):
     Provides:
 
     Super Class:
-        AxialVectorSequenceSpec
+        AxisVectorSequenceSpec
     """
     
     def __init__(

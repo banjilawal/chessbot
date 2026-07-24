@@ -16,4 +16,4 @@ from .west import *
 from .west import *
 
 # Modules
-from .spec import AxialVectorSequenceSpec
+from .spec import AxisVectorSequenceSpec

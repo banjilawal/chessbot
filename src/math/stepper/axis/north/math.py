@@ -10,7 +10,7 @@ version: 1.0.1
 from __future__ import annotations
 
 from model import Vector
-from schema import AxialDelta
+from schema import AxisDelta
 from space import AxisStepper
 
 
@@ -28,11 +28,11 @@ class NorthAxisStepper(AxisStepper):
     Provides:
 
     Super Class:
-        AxialMapFunction
+        AxisMapFunction
     """
 
     
-    def __init__(self, delta: Vector = AxialDelta.NORTH.vector):
+    def __init__(self, delta: Vector = AxisDelta.NORTH.vector):
         """
         Args:
             delta: Vector

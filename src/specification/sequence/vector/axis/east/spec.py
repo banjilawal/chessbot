@@ -13,10 +13,10 @@ from typing import Optional, cast
 
 from mapping import EastAxisMapFunction
 from space import EastAxis
-from specification import AxialVectorSequenceSpec
+from specification import AxisVectorSequenceSpec
 
 
-class EastAxisVectorSpec(AxialVectorSequenceSpec[EastAxis]):
+class EastAxisVectorSpec(AxisVectorSequenceSpec[EastAxis]):
     """
     Role:
         -   Computation
@@ -32,7 +32,7 @@ class EastAxisVectorSpec(AxialVectorSequenceSpec[EastAxis]):
     Provides:
 
     Super Class:
-        AxialVectorSequenceSpec
+        AxisVectorSequenceSpec
     """
     
     def __init__(

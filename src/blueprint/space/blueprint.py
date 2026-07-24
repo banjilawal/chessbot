@@ -43,13 +43,14 @@ class SpaceBlueprint(Blueprint[Space]):
         """
         Args:
             model_class: Type[Space[T]]
+            terminus: Optional[Vector]
             null_exception: Optional[SpaceNullException]
         """
         super().__init__(
             model_class=model_class,
             null_exception=null_exception
         )
-    
+
     @property
     def space_class(self) -> Type[Space]:
         return cast(Type[Space], super().model_class)
@@ -57,5 +58,3 @@ class SpaceBlueprint(Blueprint[Space]):
     @property
     def null_exception(self) -> SpaceNullException:
         return cast(SpaceNullException, super().null_exception)
-    
-    

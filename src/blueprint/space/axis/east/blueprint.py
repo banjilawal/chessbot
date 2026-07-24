@@ -8,15 +8,12 @@ version: 1.0.1
 """
 
 from __future__ import annotations
-from typing import Generic, Optional, Type, TypeVar, cast
 
-from blueprint import AxisBlueprint, SpaceBlueprint
-from err import eastAxisNullException, AxisNullException
-from model import Vector
-from space import eastAxis, Space, AxisSpace
+from blueprint import AxisBlueprint
+from space import EastAxis
 
 
-class EastAxisBlueprint(AxisBlueprint[eastAxis]):
+class EastAxisBlueprint(AxisBlueprint[EastAxis]):
     """
      Role:
          -   Container
@@ -28,8 +25,8 @@ class EastAxisBlueprint(AxisBlueprint[eastAxis]):
 
      Attributes:
         origin: Vector
-        model_class: Type[eastAxis]
-        null_exception: Optional[eastAxisNullException]
+        model_class: Type[EastAxis]
+        null_exception: Optional[EastAxisNullException]
 
      Provides:
 
@@ -40,15 +37,15 @@ class EastAxisBlueprint(AxisBlueprint[eastAxis]):
     def __init__(
             self,
             origin: Vector,
-            model_class: Type[eastAxis],
-            null_exception: Optional[eastAxisNullException] |
-                            None = eastAxisNullException(),
+            model_class: Type[EastAxis],
+            null_exception: Optional[EastAxisNullException] |
+                            None = EastAxisNullException(),
     ):
         """
         Args:
             origin: Vector
-            model_class: Type[eastAxis]
-            null_exception: Optional[eastAxisNullException]
+            model_class: Type[EastAxis]
+            null_exception: Optional[EastAxisNullException]
         """
         super().__init__(
             origin=origin,
@@ -58,9 +55,9 @@ class EastAxisBlueprint(AxisBlueprint[eastAxis]):
         
     
     @property
-    def model_class(self) -> Type[eastAxis]:
-        return cast(Type[eastAxis], super().model_class)
+    def model_class(self) -> Type[EastAxis]:
+        return cast(Type[EastAxis], super().model_class)
     
     @property
-    def null_exception(self) -> eastAxisNullException:
-        return cast(eastAxisNullException, super().null_exception)
+    def null_exception(self) -> EastAxisNullException:
+        return cast(EastAxisNullException, super().null_exception)

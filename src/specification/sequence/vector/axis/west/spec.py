@@ -13,10 +13,10 @@ from typing import Optional, cast
 
 from mapping import WestAxisMapFunction
 from space import WestAxis
-from specification import AxialVectorSequenceSpec
+from specification import AxisVectorSequenceSpec
 
 
-class WestAxisVectorSpec(AxialVectorSequenceSpec[WestAxis]):
+class WestAxisVectorSpec(AxisVectorSequenceSpec[WestAxis]):
     """
     Role:
         -   Computation
@@ -32,7 +32,7 @@ class WestAxisVectorSpec(AxialVectorSequenceSpec[WestAxis]):
     Provides:
 
     Super Class:
-        AxialVectorSequenceSpec
+        AxisVectorSequenceSpec
     """
     
     def __init__(

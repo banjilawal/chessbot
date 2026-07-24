@@ -17,15 +17,15 @@ from result import ComputationResult, MethodResultType
 from mapping import SpaceMappingFunction
 from util import LoggingLevelRouter
 
-T = TypeVar("T", bound="AxialSpace")
+T = TypeVar("T", bound="AxisSpace")
 
-class AxialMapFunction(SpaceMappingFunction, Generic[T]):
+class AxisMapFunction(SpaceMappingFunction, Generic[T]):
     """
     Role:
         -   Computation
 
     Responsibilities:
-        1.  Get the next vector, V, after U in Axial Space, by addition of a delta_vector
+        1.  Get the next vector, V, after U in Axis Space, by addition of a delta_vector
                 -   V.x = U.x + delta.x
                 -   V.y = U.x + delta.y
 

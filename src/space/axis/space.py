@@ -1,7 +1,7 @@
-# src/space/axial/space.py
+# src/space/axis/space.py
 
 """
-Module: space.axial.space
+Module: space.axis.space
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

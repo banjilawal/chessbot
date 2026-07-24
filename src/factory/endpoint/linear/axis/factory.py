@@ -24,7 +24,7 @@ class AxisEndpointFactory(LinearEndpointFactory):
         -   Integrity Management
 
     Responsibilities:
-        1.  Create a VectoRegister for an AxialSpace endpoints.
+        1.  Create a VectoRegister for an AxisSpace endpoints.
 
     Attributes:
         _origin: Vector

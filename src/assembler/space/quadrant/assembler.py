@@ -19,7 +19,7 @@ from space import AxisSpace
 from util import LoggingLevelRouter
 
 
-T = TypeVar("T", bound="AxialSpace")
+T = TypeVar("T", bound="AxisSpace")
 
 class QuadrantAssembler(SpaceAssembler, Generic[T]):
     """

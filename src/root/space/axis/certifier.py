@@ -1,7 +1,7 @@
-# src/space/axial/space.py
+# src/space/axis/space.py
 
 """
-Module: space.axial.space
+Module: space.axis.space
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -10,15 +10,15 @@ version: 1.0.1
 from __future__ import annotations
 
 from abc import abstractmethod
-from typing import Any, Generic, TypeVar, cast
+from typing import Any, Generic, Type, TypeVar, cast
 
 
 from result import ValidationResult
 from root import SpaceRootCertifier
-from toolkit import SpaceToolkit
+from toolkit import AxisToolkit, SpaceToolkit
 from util import LoggingLevelRouter
 
-T = TypeVar("T", bound="AxialSpace")
+T = TypeVar("T", bound="AxisSpace")
 
 class AxisRootCertifier(SpaceRootCertifier, Generic[T]):
     """
@@ -46,8 +46,8 @@ class AxisRootCertifier(SpaceRootCertifier, Generic[T]):
         super().__init__(toolkit=toolkit)
     
     @property
-    def toolkit(self) -> SpaceToolkit[T]:
-        return cast(AxisToolkit, super().toolkit)
+    def toolkit(self) -> AxisToolkit[T]:
+        return cast(AxisToolkit[T], super().toolkit)
     
     @abstractmethod
     @LoggingLevelRouter.monitor

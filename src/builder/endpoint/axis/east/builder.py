@@ -1,7 +1,7 @@
-# src/space/linear/segment/axial/space.py
+# src/space/linear/segment/axis/space.py
 
 """
-Module: space.linear.segment.axial.space
+Module: space.linear.segment.axis.space
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -25,7 +25,7 @@ class EastAxisEndpointBuilder:
         -   Integrity Management
 
     Responsibilities:
-        1.  Create a VectoRegister for an AxialSpace endpoints.
+        1.  Create a VectoRegister for an AxisSpace endpoints.
 
     Attributes:
         origin: Vector

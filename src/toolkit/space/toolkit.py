@@ -51,5 +51,5 @@ class SpaceToolkit(Toolkit, Generic[T]):
     carrier_null_exception: SpaceCarrierNullException = SpaceCarrierNullException()
     blueprint_null_exception: SpaceBlueprintNullException = SpaceBlueprintNullException()
     
-    math_toolkit: MathToolkit = MathToolkit()
+    math: MathToolkit = MathToolkit()
 

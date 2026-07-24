@@ -8,7 +8,7 @@ version: 1.0.1
 """
 
 from __future__ import annotations
-from typing import Generic, Optional, Type, TypeVar, cast
+from typing import Generic, List, Optional, Type, TypeVar, cast
 
 from blueprint import SpaceBlueprint
 from err import AxisNullException
@@ -39,11 +39,13 @@ class AxisBlueprint(SpaceBlueprint, Generic[T]):
         SpaceBlueprint
      """
     _origin: Vector
+    _terminus: Optional[Vector]
     
     def __init__(
             self,
             origin: Vector,
             model_class: Type[AxisSpace],
+            terminus: Optional[Vector] | None = None,
             null_exception: Optional[AxisNullException] | None = AxisNullException(),
     ):
         """
@@ -54,6 +56,15 @@ class AxisBlueprint(SpaceBlueprint, Generic[T]):
         """
         super().__init__(model_class=model_class, null_exception=null_exception)
         self._origin = origin
+        self._terminus = terminus
+        
+    @property
+    def origin(self) -> Vector:
+        return self._origin
+    
+    @property
+    def terminus(self) -> Optional[Vector]:
+        return self._terminus
 
     @property
     def model_class(self) -> Type[AxisSpace]:
@@ -64,5 +75,15 @@ class AxisBlueprint(SpaceBlueprint, Generic[T]):
         return cast(AxisNullException, super().null_exception)
     
     @property
-    def origin(self) -> Vector:
-        return self._origin
+    def endpoints_to_list(self) -> List[Vector]:
+        return [self._origin, self._terminus]
+    
+    @property
+    def terminus_exists(self) -> bool:
+        return self._terminus is not None
+    
+    @property
+    def terminus_does_not_exist(self) -> bool:
+        return not self.terminus_exists
+    
+

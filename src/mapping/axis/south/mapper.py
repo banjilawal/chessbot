@@ -9,14 +9,14 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from mapping import AxialMapFunction
+from mapping import AxisMapFunction
 from model import Vector
-from schema import AxialDelta
+from schema import AxisDelta
 from space import SouthAxis
 
 
 
-class SouthAxisMapFunction(AxialMapFunction[SouthAxis]):
+class SouthAxisMapFunction(AxisMapFunction[SouthAxis]):
     """
     Role:
         -   Computation
@@ -25,17 +25,17 @@ class SouthAxisMapFunction(AxialMapFunction[SouthAxis]):
         Define delta_vector for getting the next vector on south of origin.
             
     Attributes:
-        delta: Vector = AxialMapFunction.SOUTH.vecto
+        delta: Vector = AxisMapFunction.SOUTH.vecto
 
     Provides:
 
     Super Class:
-        AxialMapFunction
+        AxisMapFunction
     """
     
-    def __init__(self, delta: Vector = AxialDelta.SOUTH.vector):
+    def __init__(self, delta: Vector = AxisDelta.SOUTH.vector):
         """
         Args:
-            delta: Vector = AxialMapFunction.SOUTH.vector
+            delta: Vector = AxisMapFunction.SOUTH.vector
         """
         super().__init__(delta=delta)

@@ -12,12 +12,12 @@ from __future__ import annotations
 from typing import Optional, cast
 
 from mapping import WestAxisMapFunction
-from ruleset import AxialVectorSpec
+from ruleset import AxisVectorSpec
 
 from space import WestAxis
 
 
-class WestAxisVectorSpec(AxialVectorSpec[WestAxis]):
+class WestAxisVectorSpec(AxisVectorSpec[WestAxis]):
     """
     Role:
         -   Computation
@@ -33,7 +33,7 @@ class WestAxisVectorSpec(AxialVectorSpec[WestAxis]):
     Provides:
 
     Super Class:
-        AxialVectorSpec
+        AxisVectorSpec
     """
     
     def __init__(

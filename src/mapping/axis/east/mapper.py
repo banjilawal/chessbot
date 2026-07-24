@@ -9,14 +9,14 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from mapping import AxialMapFunction
+from mapping import AxisMapFunction
 from model import Vector
-from schema import AxialDelta
+from schema import AxisDelta
 from space import EastAxis
 
 
 
-class EastAxisMapFunction(AxialMapFunction[EastAxis]):
+class EastAxisMapFunction(AxisMapFunction[EastAxis]):
     """
     Role:
         -   Computation
@@ -25,17 +25,17 @@ class EastAxisMapFunction(AxialMapFunction[EastAxis]):
         Define delta_vector for getting the next vector on east of origin.
             
     Attributes:
-        delta: Vector = AxialMapFunction.EAST.vecto
+        delta: Vector = AxisMapFunction.EAST.vecto
 
     Provides:
 
     Super Class:
-        AxialMapFunction
+        AxisMapFunction
     """
     
-    def __init__(self, delta: Vector = AxialDelta.EAST.vector):
+    def __init__(self, delta: Vector = AxisDelta.EAST.vector):
         """
         Args:
-            delta: Vector = AxialMapFunction.EAST.vector
+            delta: Vector = AxisMapFunction.EAST.vector
         """
         super().__init__(delta=delta)

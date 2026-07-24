@@ -15,7 +15,7 @@ import setting
 from model import Vector
 
 
-class AxialDelta(Enum):
+class AxisDelta(Enum):
     """
     Role:
         -   Configuration Table

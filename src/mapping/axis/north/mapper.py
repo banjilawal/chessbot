@@ -9,14 +9,14 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from mapping import AxialMapFunction
+from mapping import AxisMapFunction
 from model import Vector
-from schema import AxialDelta
+from schema import AxisDelta
 from space import NorthAxis
 
 
 
-class NorthAxisMapFunction(AxialMapFunction[NorthAxis]):
+class NorthAxisMapFunction(AxisMapFunction[NorthAxis]):
     """
     Role:
         -   Computation
@@ -25,17 +25,17 @@ class NorthAxisMapFunction(AxialMapFunction[NorthAxis]):
         Define delta_vector for getting the next vector on north of origin.
             
     Attributes:
-        delta: Vector = AxialMapFunction.NORTH.vecto
+        delta: Vector = AxisMapFunction.NORTH.vecto
 
     Provides:
 
     Super Class:
-        AxialMapFunction
+        AxisMapFunction
     """
     
-    def __init__(self, delta: Vector = AxialDelta.NORTH.vector):
+    def __init__(self, delta: Vector = AxisDelta.NORTH.vector):
         """
         Args:
-            delta: Vector = AxialMapFunction.NORTH.vector
+            delta: Vector = AxisMapFunction.NORTH.vector
         """
         super().__init__(delta=delta)

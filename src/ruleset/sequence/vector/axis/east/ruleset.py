@@ -12,11 +12,11 @@ from __future__ import annotations
 from typing import Optional, cast
 
 from mapping import EastAxisMapFunction
-from ruleset import AxialVectorSpec
+from ruleset import AxisVectorSpec
 from space import EastAxis
 
 
-class EastAxisVectorSpec(AxialVectorSpec[EastAxis]):
+class EastAxisVectorSpec(AxisVectorSpec[EastAxis]):
     """
     Role:
         -   Computation
@@ -32,7 +32,7 @@ class EastAxisVectorSpec(AxialVectorSpec[EastAxis]):
     Provides:
 
     Super Class:
-        AxialVectorSpec
+        AxisVectorSpec
     """
     
     def __init__(
