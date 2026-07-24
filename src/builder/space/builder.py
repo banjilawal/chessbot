@@ -12,7 +12,7 @@ from __future__ import annotations
 from abc import ABC, abstractmethod
 from typing import Generic, Optional, TypeVar
 
-
+from builder import Builder
 from model import Vector
 
 from result import BuildResult
@@ -22,10 +22,15 @@ from util import LoggingLevelRouter
 
 T = TypeVar("T", bound="Space")
 
-class SpaceBuilder(ABC, Generic[T]):
+class SpaceBuilder(Builder, Generic[T]):
     _math_toolkit: MathToolkit
     
-    def __init__(self, math_toolkit: Optional[MathToolkit] | None = MathToolkit()):
+    def __init__(
+            self,
+            builder_toolkit: [SpaceBuilderToolkit],
+            math_toolkit: Optional[MathToolkit] | None = MathToolkit(),
+    ):
+        super().__init__(builder_toolkit=builder_toolkit)
         self._math_toolkit = math_toolkit
         
         

@@ -15,4 +15,4 @@ from .quadrant import *
 
 
 # Modules
-from .space import Space
+from .certifier import SpaceRootCertifier

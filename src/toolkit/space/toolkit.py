@@ -11,14 +11,14 @@ from __future__ import annotations
 
 
 from dataclasses import dataclass
-from typing import Generic, Type, TypeVar
+from typing import Generic, Type
 
-from blueprint import Blueprint
+from blueprint import Blueprint, SpaceBlueprint
 from carrier import EntityCarrier
-from err import SpaceBlueprintNullException, SpaceCarrierNullException, SpaceNullException
+from err import SpaceCarrierNullException, SpaceNullException
+from space import Space
 from toolkit import Toolkit
 
-T = TypeVar("T", bound="Space")
 
 @dataclass
 class SpaceToolkit(Toolkit, Generic[T]):
@@ -43,11 +43,11 @@ class SpaceToolkit(Toolkit, Generic[T]):
     Super Class:
         Toolkit
     """
-    model: Type[T]
-    carrier_model: Type[EntityCarrier[T]]
-    blueprint_model: Type[Blueprint[T]]
+    model: Type[Space] = Space
+    carrier_model: Type[SpaceCarrier]
+    blueprint_model: Type[SpaceBlueprint] = SpaceBlueprint
     
     null_exception: SpaceNullException = SpaceNullException()
-    carrier_null_exception: SpaceCarrierNullException = SpaceNullException()
+    carrier_null_exception: SpaceCarrierNullException = SpaceCarrierNullException()
     blueprint_null_exception: SpaceBlueprintNullException = SpaceBlueprintNullException()
 
