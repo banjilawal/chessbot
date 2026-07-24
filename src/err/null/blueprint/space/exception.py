@@ -10,16 +10,16 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import blueprintNullException
+from err import BlueprintNullException
 from result import MethodResultType
 
 
 __all__ = [
-    # ======================# SPACE_blueprint_NULL_ERROR #======================#
-    "SpaceblueprintNullException",
+    # ======================# SPACE_BLUEPRINT_NULL_ERROR #======================#
+    "SpaceBlueprintNullException",
 ]
-# ======================# SPACE_blueprint_NULL_ERROR #======================#
-class SpaceblueprintNullException(blueprintNullException):
+# ======================# SPACE_BLUEPRINT_NULL_ERROR #======================#
+class SpaceBlueprintNullException(BlueprintNullException):
     """
     Role:
         -   Failure Tracing
@@ -40,10 +40,10 @@ class SpaceblueprintNullException(blueprintNullException):
     Provides:
 
     Super Class:
-        blueprintNullException
+        BlueprintNullException
     """
-    MSG = "Spaceblueprint cannot be null."
-    ERR_CODE = "SPACE_blueprint_NULL_ERROR"
+    MSG = "SpaceBlueprint cannot be null."
+    ERR_CODE = "SPACE_BLUEPRINT_NULL_ERROR"
     
     def __init__(
             self,

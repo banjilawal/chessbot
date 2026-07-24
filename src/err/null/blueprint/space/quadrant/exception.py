@@ -1,7 +1,7 @@
 # src/err/null/blueprint/space/quadrant/exception.py
 
 """
-Module: err.null.blueprint.space.Quadrant is null.exception
+Module: err.null.blueprint.space.quadrant.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,16 +10,16 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import SpaceblueprintNullException
+from err import SpaceBlueprintNullException
 from result import MethodResultType
 
 
 __all__ = [
-    # ======================# QUADRANT_SPACE_blueprint_NULL_ERROR #======================#
-    "QuadrantblueprintNullException",
+    # ======================# QUADRANT_SPACE_BLUEPRINT_NULL_ERROR #======================#
+    "QuadrantBlueprintNullException",
 ]
-# ======================# QUADRANT_SPACE_blueprint_NULL_ERROR #======================#
-class QuadrantblueprintNullException(SpaceblueprintNullException):
+# ======================# QUADRANT_SPACE_BLUEPRINT_NULL_ERROR #======================#
+class QuadrantBlueprintNullException(SpaceBlueprintNullException):
     """
     Role:
         -   Failure Tracing
@@ -40,10 +40,10 @@ class QuadrantblueprintNullException(SpaceblueprintNullException):
     Provides:
 
     Super Class:
-        SpaceblueprintNullException
+        SpaceBlueprintNullException
     """
-    MSG = "QuadrantSpaceblueprint cannot be null."
-    ERR_CODE = "QUADRANT_SPACE_blueprint_NULL_ERROR"
+    MSG = "QuadrantSpaceBlueprint cannot be null."
+    ERR_CODE = "QUADRANT_SPACE_BLUEPRINT_NULL_ERROR"
     
     def __init__(
             self,

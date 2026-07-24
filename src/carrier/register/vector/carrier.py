@@ -9,7 +9,7 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from typing import Any, Dict, Optional, cast
+from typing import Optional
 
 from blueprint import VectorRegisterBlueprint
 from carrier import EntityCarrier, RegisterCarrier
@@ -85,14 +85,15 @@ class VectorRegisterCarrier(EntityCarrier[VectorRegister]):
             u=self._model.u,
             v=self._model.v,
         )
+        
+    @property
+    def is_not_carrying_anything(self) -> bool:
+        return self._model is None and self._blueprint is None
     
     @property
-    def to_dict(self) -> Dict[str, Any]:
-        return {
-            "model": self._model,
-            "blueprint": self._blueprint
-        }
-    
+    def is_carrying_too_much(self) -> bool:
+        return not self.is_not_carrying_anything
+
     def __eq__(self, other):
         if other is self: return True
         if other is None: return False

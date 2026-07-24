@@ -13,10 +13,10 @@ from typing import Optional
 
 from blueprint import VectorBlueprint
 from model import Vector
-from carrier import EntityCarrier
+from carrier import ModelCarrier
 
 
-class VectorCarrier(EntityCarrier[Vector]):
+class VectorCarrier(ModelCarrier[Vector]):
     """
     Role:
         -   Addressing
@@ -36,7 +36,7 @@ class VectorCarrier(EntityCarrier[Vector]):
     Provides:
     
     Super Class:
-        EntityCarrierToggle
+        ModelCarrier
     """
     _model: Optional[Vector]
     _blueprint: Optional[VectorBlueprint]
@@ -51,6 +51,7 @@ class VectorCarrier(EntityCarrier[Vector]):
             model: Optional[Vector]
             blueprint: Optional[VectorBlueprint]
         """
+        super().__init__()
         self._model = model
         self._blueprint = blueprint
     
@@ -60,26 +61,35 @@ class VectorCarrier(EntityCarrier[Vector]):
     
     @property
     def is_carrying_model(self) -> bool:
-        return self._model is not None and self._blueprint is None
+        return (
+                self._model is not None and
+                self._blueprint is None and
+                isinstance(self._model, Vector)
+        )
     
     @property
     def is_carrying_blueprint(self) -> bool:
-        return self._model is None and self._blueprint is not None
+        return (
+                not self.is_carrying_model and
+                isinstance(self._blueprint, VectorBlueprint)
+        )
     
     @property
-    def is_empty(self) -> bool:
-        return self._model is None and self._blueprint is None
-    
-    @property
-    def has_overflow(self) -> bool:
+    def is_not_carrying_anything(self) -> bool:
         return self._model is not None and self._blueprint is not None
     
     @property
-    def size(self) -> int:
-        if self.is_not_carrying_anything: return 0
-        if self.is_carrying_model or self.is_carrying_blueprint: return 1
-        return 2
+    def is_carrying_too_much(self) -> bool:
+        return not self.is_not_carrying_anything
     
+    def extract_blueprint(self) -> Optional[VectorBlueprint]:
+        if self.is_not_carrying_anything: return None
+        if self.is_carrying_blueprint: return self._blueprint
+        return VectorBlueprint(
+            x=self._model.x,
+            y=self._model.y,
+        )
+
     def __eq__(self, other):
         if other is self: return True
         if other is None: return False
@@ -90,3 +100,22 @@ class VectorCarrier(EntityCarrier[Vector]):
     def __hash__(self):
         return hash(self.entity)
 
+    
+
+    
+    @property
+    def is_carrying_too_much(self) -> bool:
+        return self.active_toggles > 1
+    
+    @property
+    def active_toggles(self) -> int:
+        return len(self.to_dict)
+    
+    @property
+    @abstractmethod
+    def to_dict(self) -> Dict[str, Any]:
+        pass
+    
+    @abstractmethod
+    def extract_blueprint(self) -> Optional[Blueprint[T]]:
+        pass

@@ -16,6 +16,7 @@ from toggle import Toggle
 
 
 class ToggleCarrier(EntityCarrier[Toggle], ABC):
-    pass
+    def __init__(self):
+        super().__init__()
         
         

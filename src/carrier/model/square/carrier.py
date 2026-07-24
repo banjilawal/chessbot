@@ -9,17 +9,17 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from typing import Any, Dict, Optional, cast
+from typing import Optional, cast
 
 from blueprint import SquareBlueprint
 from model import HomeSquare, Square
-from carrier import EntityCarrier
+from carrier import ModelCarrier
 
 
-class SquareCarrier(EntityCarrier[Square]):
+class SquareCarrier(ModelCarrier[Square]):
     """
     Role:
-        -   ENTITY
+        -   Data Transport
 
     Responsibilities:
         2.  Transports either a Square or its Blueprint.
@@ -38,7 +38,7 @@ class SquareCarrier(EntityCarrier[Square]):
         -   extract_blueprint() -> Optional[SquareBlueprint]
 
     Super Class:
-        EntityCarrierToggle
+        ModelCarrier
     """
     _model: Optional[Square]
     _blueprint: Optional[SquareBlueprint]
@@ -106,12 +106,13 @@ class SquareCarrier(EntityCarrier[Square]):
         )
     
     @property
-    def to_dict(self) -> Dict[str, Any]:
-        return {
-            "model": self._model,
-            "blueprint": self._blueprint
-        }
+    def is_not_carrying_anything(self) -> bool:
+        return self._model is None and self._blueprint is None
     
+    @property
+    def is_carrying_too_much(self) -> bool:
+        return not self.is_not_carrying_anything
+
     def __eq__(self, other):
         if other is self: return True
         if other is None: return False

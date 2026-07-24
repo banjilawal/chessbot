@@ -9,17 +9,17 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from typing import Any, Dict, Optional
+from typing import Optional
 
 from blueprint import TeamBlueprint
 from model import Team
-from carrier import EntityCarrier
+from carrier import ModelCarrier
 
 
-class TeamCarrier(EntityCarrier[Team]):
+class TeamCarrier(ModelCarrier[Team]):
     """
     Role:
-        -   ENTITY
+        -   Data Transport
 
     Responsibilities:
         2.  Transports either a Team or its Blueprint.
@@ -32,7 +32,7 @@ class TeamCarrier(EntityCarrier[Team]):
         -   extract_blueprint() -> Optional[TeamBlueprint]
 
     Super Class:
-        EntityCarrierToggle
+        ModelCarrier
     """
     
     def __init__(
@@ -45,6 +45,7 @@ class TeamCarrier(EntityCarrier[Team]):
             model: Optional[Team]
             blueprint: Optional[TeamBlueprint]
         """
+        super().__init__()
         self._model = model
         self._blueprint = blueprint
     
@@ -77,30 +78,15 @@ class TeamCarrier(EntityCarrier[Team]):
             owner=self._model.owner,
             archetype=self._model.archetype,
         )
+        
+    @property
+    def is_not_carrying_anything(self) -> bool:
+        return self._model is None and self._blueprint is None
     
     @property
-    def to_dict(self) -> Dict[str, Any]:
-        return {
-            "model": self._model,
-            "blueprint": self._blueprint
-        }
-    
-    @property
-    def is_empty(self) -> bool:
-        return len(self.to_dict) == 0
-    
-    @property
-    def is_full(self) -> bool:
-        return len(self.to_dict) == 1
-    
-    @property
-    def has_overflow(self) -> bool:
-        return len(self.to_dict) >= 2
-    
-    @property
-    def size(self) -> int:
-        return len(self.to_dict)
-    
+    def is_carrying_too_much(self) -> bool:
+        return not self.is_not_carrying_anything
+
     def __eq__(self, other):
         if other is self: return True
         if other is None: return False

@@ -13,7 +13,6 @@ version: 1.0.1
 from .arena import *
 from .attack import *
 from .board import *
-from .edge import *
 from .game import *
 from .graph import *
 from .maneuver import *

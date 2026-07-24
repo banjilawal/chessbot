@@ -10,7 +10,7 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import CarrierException
+from err import EntityCarrierException
 from result import MethodResultType
 
 
@@ -19,7 +19,7 @@ __all__ = [
     "SpaceCarrierException",
 ]
 # ======================# SPACE_CARRIER_ERROR #======================#
-class SpaceCarrierException(CarrierException):
+class SpaceCarrierException(EntityCarrierException):
     """
     Role:
         -   Failure Tracing
@@ -40,7 +40,7 @@ class SpaceCarrierException(CarrierException):
     Provides:
 
     Super Class:
-        CarrierException
+        EntityCarrierException
     """
     MSG = "SpaceCarrier error."
     ERR_CODE = "SPACE_CARRIER_ERROR"

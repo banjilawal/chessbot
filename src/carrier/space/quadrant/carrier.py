@@ -1,0 +1,45 @@
+# src/carrier/space/quadrant/carrier.py
+
+"""
+Module: carrier.space.quadrant.carrier
+Author: Banji Lawal
+Created: 2026-04-03
+version: 1.0.1
+"""
+
+from __future__ import annotations
+
+from abc import ABC
+
+from carrier import SpaceCarrier
+
+
+class QuadrantCarrier(SpaceCarrier, ABC):
+    """
+    Role:
+        -   Data Transport
+
+    Responsibilities:
+        1.  Transports either a Space or its Blueprint.
+
+    Attributes:
+        is_space_carrier: bool
+        is_blueprint_carrier: bool
+        
+        entity: [T | Blueprint[T]]
+        is_empty: bool
+        has_overflow: bool
+        to_dict: Dict[str, Any]
+        size: int
+
+    Provides:
+        -   extract_blueprint() -> Optional[Blueprint[T]]
+
+    Super Class:
+       EntityCarrier
+    """
+    def __init__(self):
+        super().__init__()
+
+
+    

@@ -1,7 +1,7 @@
 # src/err/null/blueprint/space/axis/exception.py
 
 """
-Module: err.null.blueprint.space.Axis is null.exception
+Module: err.null.blueprint.space.axis.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,16 +10,16 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import SpaceblueprintNullException
+from err import SpaceBlueprintNullException
 from result import MethodResultType
 
 
 __all__ = [
-    # ======================# AXIS_SPACE_blueprint_NULL_ERROR #======================#
-    "AxisblueprintNullException",
+    # ======================# AXIS_SPACE_BLUEPRINT_NULL_ERROR #======================#
+    "AxisBlueprintNullException",
 ]
-# ======================# AXIS_SPACE_blueprint_NULL_ERROR #======================#
-class AxisblueprintNullException(SpaceblueprintNullException):
+# ======================# AXIS_SPACE_BLUEPRINT_NULL_ERROR #======================#
+class AxisBlueprintNullException(SpaceBlueprintNullException):
     """
     Role:
         -   Failure Tracing
@@ -40,10 +40,10 @@ class AxisblueprintNullException(SpaceblueprintNullException):
     Provides:
 
     Super Class:
-        SpaceblueprintNullException
+        SpaceBlueprintNullException
     """
-    MSG = "AxisSpaceblueprint cannot be null."
-    ERR_CODE = "AXIS_SPACE_blueprint_NULL_ERROR"
+    MSG = "AxisSpaceBlueprint cannot be null."
+    ERR_CODE = "AXIS_SPACE_BLUEPRINT_NULL_ERROR"
     
     def __init__(
             self,

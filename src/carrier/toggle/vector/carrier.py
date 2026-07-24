@@ -98,7 +98,15 @@ class VectorToggleCarrier(ToggleCarrier[VectorToggle]):
             "model": self._model,
             "blueprint": self._blueprint,
         }
+        
+    @property
+    def is_not_carrying_anything(self) -> bool:
+        return self._model is None and self._blueprint is None
     
+    @property
+    def is_carrying_too_much(self) -> bool:
+        return not self.is_not_carrying_anything
+
     def __eq__(self, other):
         if other is self: return True
         if other is None: return False

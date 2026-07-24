@@ -1,7 +1,7 @@
-# src/model/state/edge/model/state.py
+# src/edge/model/state.py
 
 """
-Module: model.state.edge.model
+Module: edge.model
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

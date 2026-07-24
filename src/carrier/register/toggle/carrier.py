@@ -9,7 +9,7 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from typing import Any, Dict, Optional
+from typing import Optional
 
 from blueprint import VectorToggleRegisterBlueprint
 from carrier import RegisterCarrier
@@ -86,14 +86,15 @@ class VectorToggleRegisterCarrier(RegisterCarrier[VectorToggle]):
             u=self._model.a,
             v=self._model.b,
         )
+        
+    @property
+    def is_not_carrying_anything(self) -> bool:
+        return self._model is None and self._blueprint is None
     
     @property
-    def to_dict(self) -> Dict[str, Any]:
-        return {
-            "model": self._model,
-            "blueprint": self._blueprint
-        }
-    
+    def is_carrying_too_much(self) -> bool:
+        return not self.is_not_carrying_anything
+
     def __eq__(self, other):
         if other is self: return True
         if other is None: return False

@@ -1,7 +1,7 @@
 # src/err/null/blueprint/space/quadrant/southwest/exception.py
 
 """
-Module: err.null.blueprint.space.Quadrant is null.southwest.exception
+Module: err.null.blueprint.space.quadrant.southwest.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,16 +10,16 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import QuadrantblueprintNullException
+from err import QuadrantBlueprintNullException
 from result import MethodResultType
 
 
 __all__ = [
-    # ======================# SOUTHWEST_QUADRANT_blueprint_NULL_ERROR #======================#
-    "SouthwestQuadrantblueprintNullException",
+    # ======================# SOUTHWEST_QUADRANT_BLUEPRINT_NULL_ERROR #======================#
+    "SouthwestQuadrantBlueprintNullException",
 ]
-# ======================# SOUTHWEST_QUADRANT_blueprint_NULL_ERROR #======================#
-class SouthwestQuadrantblueprintNullException(QuadrantblueprintNullException):
+# ======================# SOUTHWEST_QUADRANT_BLUEPRINT_NULL_ERROR #======================#
+class SouthwestQuadrantBlueprintNullException(QuadrantBlueprintNullException):
     """
     Role:
         -   Failure Tracing
@@ -40,10 +40,10 @@ class SouthwestQuadrantblueprintNullException(QuadrantblueprintNullException):
     Provides:
 
     Super Class:
-        QuadrantSpaceblueprintNullException
+        QuadrantSpaceBlueprintNullException
     """
-    MSG = "SouthwestQuadrantblueprint cannot be null."
-    ERR_CODE = "SOUTHWEST_QUADRANT_blueprint_NULL_ERROR"
+    MSG = "SouthwestQuadrantBlueprint cannot be null."
+    ERR_CODE = "SOUTHWEST_QUADRANT_BLUEPRINT_NULL_ERROR"
     
     def __init__(
             self,

@@ -22,7 +22,7 @@ T = TypeVar("T")
 class EntityCarrier(ABC, Generic[T]):
     """
     Role:
-        -   ENTITY
+        -   Data Transport
 
     Responsibilities:
         2.  Transports either an Object or its Blueprint.
@@ -63,20 +63,13 @@ class EntityCarrier(ABC, Generic[T]):
         pass
     
     @property
+    @abstractmethod
     def is_not_carrying_anything(self) -> bool:
-        return self.active_toggles == 0
-    
-    @property
-    def is_carrying_too_much(self) -> bool:
-        return self.active_toggles > 1
-    
-    @property
-    def active_toggles(self) -> int:
-        return len(self.to_dict)
+        pass
     
     @property
     @abstractmethod
-    def to_dict(self) -> Dict[str, Any]:
+    def is_carrying_too_much(self) -> bool:
         pass
     
     @abstractmethod

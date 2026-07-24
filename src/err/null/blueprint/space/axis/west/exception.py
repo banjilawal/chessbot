@@ -1,7 +1,7 @@
 # src/err/null/blueprint/space/axis/west/exception.py
 
 """
-Module: err.null.blueprint.space.Axis is null.west.exception
+Module: err.null.blueprint.space.axis.west.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,16 +10,16 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import AxisblueprintNullException
+from err import AxisBlueprintNullException
 from result import MethodResultType
 
 
 __all__ = [
-    # ======================# WEST_AXIS_blueprint_NULL_ERROR #======================#
-    "WestAxisblueprintNullException",
+    # ======================# WEST_AXIS_BLUEPRINT_NULL_ERROR #======================#
+    "WestAxisBlueprintNullException",
 ]
-# ======================# WEST_AXIS_blueprint_NULL_ERROR #======================#
-class WestAxisblueprintNullException(AxisblueprintNullException):
+# ======================# WEST_AXIS_BLUEPRINT_NULL_ERROR #======================#
+class WestAxisBlueprintNullException(AxisBlueprintNullException):
     """
     Role:
         -   Failure Tracing
@@ -40,10 +40,10 @@ class WestAxisblueprintNullException(AxisblueprintNullException):
     Provides:
 
     Super Class:
-        AxisSpaceblueprintNullException
+        AxisSpaceBlueprintNullException
     """
-    MSG = "WestAxisblueprint cannot be null."
-    ERR_CODE = "WEST_AXIS_blueprint_NULL_ERROR"
+    MSG = "WestAxisBlueprint cannot be null."
+    ERR_CODE = "WEST_AXIS_BLUEPRINT_NULL_ERROR"
     
     def __init__(
             self,

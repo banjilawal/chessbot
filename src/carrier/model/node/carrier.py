@@ -12,11 +12,12 @@ from __future__ import annotations
 from typing import Optional
 
 from blueprint import NodeBlueprint
-from model import Node
-from carrier import EntityCarrier
+
+from carrier import ModelCarrier
+from node import Node
 
 
-class NodeCarrier(EntityCarrier[Node]):
+class NodeCarrier(ModelCarrier[Node]):
     """
     Role:
         -   Addressing
@@ -36,7 +37,7 @@ class NodeCarrier(EntityCarrier[Node]):
     Provides:
     
     Super Class:
-        EntityCarrierToggle
+        ModelCarrier
     """
     _model: Optional[Node]
     _blueprint: Optional[NodeBlueprint]
@@ -51,6 +52,7 @@ class NodeCarrier(EntityCarrier[Node]):
             model: Optional[Node]
             blueprint: Optional[NodeBlueprint]
         """
+        super().__init__()
         self._model = model
         self._blueprint = blueprint
     
@@ -60,26 +62,27 @@ class NodeCarrier(EntityCarrier[Node]):
     
     @property
     def is_carrying_model(self) -> bool:
-        return self._model is not None and self._blueprint is None
+        return (
+                self._model is not None and
+                self._blueprint is None and
+                isinstance(self._model, Node)
+        )
     
     @property
     def is_carrying_blueprint(self) -> bool:
-        return self._model is None and self._blueprint is not None
-    
+        return (
+                not self.is_carrying_model and
+                isinstance(self._blueprint, NodeBlueprint)
+        )
+        
     @property
-    def is_empty(self) -> bool:
+    def is_not_carrying_anything(self) -> bool:
         return self._model is None and self._blueprint is None
     
     @property
-    def has_overflow(self) -> bool:
-        return self._model is not None and self._blueprint is not None
-    
-    @property
-    def size(self) -> int:
-        if self.is_not_carrying_anything: return 0
-        if self.is_carrying_model or self.is_carrying_blueprint: return 1
-        return 2
-    
+    def is_carrying_too_much(self) -> bool:
+        return not self.is_not_carrying_anything
+
     def __eq__(self, other):
         if other is self: return True
         if other is None: return False

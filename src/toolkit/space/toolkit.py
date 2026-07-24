@@ -15,7 +15,7 @@ from typing import Generic, Type
 
 from blueprint import Blueprint, SpaceBlueprint
 from carrier import EntityCarrier
-from err import SpaceCarrierNullException, SpaceNullException
+from err import SpaceBlueprintNullException, SpaceCarrierNullException, SpaceNullException
 from space import Space
 from toolkit import Toolkit
 

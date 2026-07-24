@@ -9,14 +9,14 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from typing import Any, Dict, Optional
+from typing import Optional
 
 from blueprint import ScalarBlueprint
 from model import Scalar
-from carrier import EntityCarrier
+from carrier import ModelCarrier
 
 
-class ScalarCarrier(EntityCarrier[Scalar]):
+class ScalarCarrier(ModelCarrier[Scalar]):
     """
     Role:
         -   Addressing
@@ -36,7 +36,7 @@ class ScalarCarrier(EntityCarrier[Scalar]):
     Provides:
     
     Super Class:
-        EntityCarrierToggle
+        ModelCarrier
     """
     _model: Optional[Scalar]
     _blueprint: Optional[ScalarBlueprint]
@@ -51,7 +51,7 @@ class ScalarCarrier(EntityCarrier[Scalar]):
             model: Optional[Scalar]
             blueprint: Optional[ScalarBlueprint]
         """
-        super()
+        super().__init__()
         self._model = model
         self._blueprint = blueprint
     
@@ -85,21 +85,15 @@ class ScalarCarrier(EntityCarrier[Scalar]):
         return ScalarBlueprint(
              magnitude=self._model.magnitude,
         )
+        
+    @property
+    def is_not_carrying_anything(self) -> bool:
+        return self._model is None and self._blueprint is None
     
     @property
-    def to_dict(self) -> Dict[str, Any]:
-        return {
-            "model": self._model,
-            "blueprint": self._blueprint
-        }
-    
-    def __eq__(self, other):
-        if other is self: return True
-        if other is None: return False
-        if isinstance(other, ScalarCarrier):
-            return self.entity == other.entity
-        return False
-    
+    def is_carrying_too_much(self) -> bool:
+        return not self.is_not_carrying_anything
+
     def __eq__(self, other):
         if other is self: return True
         if other is None: return False

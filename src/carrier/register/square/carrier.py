@@ -9,8 +9,7 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from _ast import Dict
-from typing import Any, Optional, Type, cast
+from typing import Optional, Type
 
 from blueprint import SquareRegisterBlueprint
 from carrier import EntityCarrier
@@ -77,7 +76,7 @@ class SquareRegisterCarrier(EntityCarrier[SquareRegister]):
     @property
     def is_carrying_blueprint(self) -> bool:
         return not (
-                self.is_carrying_model and
+                not self.is_carrying_model and
                 isinstance(self._blueprint, SquareRegisterBlueprint)
         )
     
@@ -90,19 +89,19 @@ class SquareRegisterCarrier(EntityCarrier[SquareRegister]):
             model_class=Type[SquareRegister],
             null_exception=SquareRegisterNullException(),
         )
+
+    @property
+    def is_not_carrying_anything(self) -> bool:
+        return self._model is None and self._blueprint is None
     
     @property
-    def to_dict(self) -> Dict[str, Any]:
-        return {
-            "model": self._model,
-            "blueprint": self._blueprint
-        }
+    def is_carrying_too_much(self) -> bool:
+        return not self.is_not_carrying_anything
 
-    
     def __eq__(self, other):
         if other is self: return True
         if other is None: return False
-        if isinstance(other, RegisterCarrier):
+        if isinstance(other, SquareRegisterCarrier):
             return self.entity == other.entity
         return False
     

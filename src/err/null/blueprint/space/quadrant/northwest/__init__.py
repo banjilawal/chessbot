@@ -1,16 +1,16 @@
 # src/err/null/blueprint/space/quadrant/northwest/__init__.py
 
 """
-Module: err.null.blueprint.space.Quadrant is null.northwest.__init__
+Module: err.null.blueprint.space.quadrant.northwest.__init__
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
 """
 
-# ============ ERR.NULL.blueprint.SPACE.Quadrant is null.NORTHWEST PACKAGE ===========#
+# ============ ERR.NULL.BLUEPRINT.SPACE.QUADRANT.NORTHWEST PACKAGE ===========#
 
 # Packages
 
 
 # Modules
-from .exception import NorthwestQuadrantblueprintNullException
+from .exception import NorthwestQuadrantBlueprintNullException

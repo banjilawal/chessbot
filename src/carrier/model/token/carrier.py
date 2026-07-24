@@ -12,15 +12,15 @@ from __future__ import annotations
 from typing import Any, Dict, Optional
 
 from blueprint import TokenBlueprint
-from carrier import EntityCarrier
+from carrier import ModelCarrier
 
 from model import Token
 
 
-class TokenCarrier(EntityCarrier[Token]):
+class TokenCarrier(ModelCarrier[Token]):
     """
     Role:
-        -   ENTITY
+        -   Data Transport
 
     Responsibilities:
         2.  Transports either a Token or its Blueprint.
@@ -38,7 +38,7 @@ class TokenCarrier(EntityCarrier[Token]):
         -   extract_blueprint() -> Optional[TokenBlueprint]
 
     Super Class:
-        EntityCarrierToggle
+        ModelCarrier
     """
     _model: Optional[Token]
     _blueprint: Optional[TokenBlueprint]
@@ -93,11 +93,12 @@ class TokenCarrier(EntityCarrier[Token]):
         )
     
     @property
-    def to_dict(self) -> Dict[str, Any]:
-        return {
-            "model": self._model,
-            "blueprint": self._blueprint
-        }
+    def is_not_carrying_anything(self) -> bool:
+        return self._model is None and self._blueprint is None
+    
+    @property
+    def is_carrying_too_much(self) -> bool:
+        return not self.is_not_carrying_anything
 
     def __eq__(self, other):
         if other is self: return True

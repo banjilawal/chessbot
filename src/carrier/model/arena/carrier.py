@@ -13,10 +13,10 @@ from typing import Optional
 
 from blueprint import ArenaBlueprint
 from model import Arena
-from carrier import EntityCarrier
+from carrier import ModelCarrier
 
 
-class ArenaCarrier(EntityCarrier[Arena]):
+class ArenaCarrier(ModelCarrier[Arena]):
     """
     Role:
         -   Addressing
@@ -36,7 +36,7 @@ class ArenaCarrier(EntityCarrier[Arena]):
     Provides:
     
     Super Class:
-        EntityCarrierToggle
+        ModelCarrier
     """
     _model: Optional[Arena]
     _blueprint: Optional[ArenaBlueprint]
@@ -51,6 +51,7 @@ class ArenaCarrier(EntityCarrier[Arena]):
             model: Optional[Arena]
             blueprint: Optional[ArenaBlueprint]
         """
+        super().__init__()
         self._model = model
         self._blueprint = blueprint
     
@@ -60,26 +61,27 @@ class ArenaCarrier(EntityCarrier[Arena]):
     
     @property
     def is_carrying_model(self) -> bool:
-        return self._model is not None and self._blueprint is None
+        return (
+                self._model is not None and
+                self._blueprint is None and
+                isinstance(self._model, Arena)
+        )
     
     @property
     def is_carrying_blueprint(self) -> bool:
-        return self._model is None and self._blueprint is not None
-    
+        return (
+                not self.is_carrying_model and
+                isinstance(self._blueprint, ArenaBlueprint)
+        )
+        
     @property
-    def is_empty(self) -> bool:
+    def is_not_carrying_anything(self) -> bool:
         return self._model is None and self._blueprint is None
     
     @property
-    def has_overflow(self) -> bool:
-        return self._model is not None and self._blueprint is not None
-    
-    @property
-    def size(self) -> int:
-        if self.is_not_carrying_anything: return 0
-        if self.is_carrying_model or self.is_carrying_blueprint: return 1
-        return 2
-    
+    def is_carrying_too_much(self) -> bool:
+        return not self.is_not_carrying_anything
+
     def __eq__(self, other):
         if other is self: return True
         if other is None: return False
