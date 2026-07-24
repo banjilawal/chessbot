@@ -1,7 +1,7 @@
-# src/err/space/quadrant/exception.py
+# src/err/space/quadrant/southwest/exception.py
 
 """
-Module: err.space.exception
+Module: err.space.quadrant.southwest.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,22 +10,22 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import ChessException
+from err import QuadrantSpaceException
 from result import MethodResultType
 
 
 __all__ = [
-    # ======================# SPACE_ERROR #======================#
-    "SpaceException",
+    # ======================# SOUTHWEST_QUADRANT_ERROR #======================#
+    "SouthwestQuadrantException",
 ]
-# ======================# SPACE_ERROR #======================#
-class SpaceException(ChessException):
+# ======================# SOUTHWEST_QUADRANT_ERROR #======================#
+class SouthwestQuadrantException(QuadrantSpaceException):
     """
     Role:
         -   Failure Tracing
 
     Responsibilities:
-        1.  Indicate that an error occurred in a Space instance.
+        1.  Indicate that an error occurred in a SouthwestQuadrant.
 
     Attributes:
         msg: str
@@ -40,10 +40,10 @@ class SpaceException(ChessException):
     Provides:
 
     Super Class:
-        ChessException
+        QuadrantSpaceException
     """
-    MSG = "Space error."
-    ERR_CODE = "SPACE_ERROR"
+    MSG = "SouthwestQuadrant error."
+    ERR_CODE = "SOUTHWEST_QUADRANT_ERROR"
     
     def __init__(
             self,

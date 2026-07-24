@@ -1,7 +1,7 @@
-# src/err/space/quadrant/exception.py
+# src/err/space/axis/south/exception.py
 
 """
-Module: err.space.exception
+Module: err.space.axis.south.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,22 +10,22 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import ChessException
+from err import AxisSpaceException
 from result import MethodResultType
 
 
 __all__ = [
-    # ======================# SPACE_ERROR #======================#
-    "SpaceException",
+    # ======================# SOUTH_AXIS_ERROR #======================#
+    "SouthAxisException",
 ]
-# ======================# SPACE_ERROR #======================#
-class SpaceException(ChessException):
+# ======================# SOUTH_AXIS_ERROR #======================#
+class SouthAxisException(AxisSpaceException):
     """
     Role:
         -   Failure Tracing
 
     Responsibilities:
-        1.  Indicate that an error occurred in a Space instance.
+        1.  Indicate that an error occurred in a SouthAxis.
 
     Attributes:
         msg: str
@@ -40,10 +40,10 @@ class SpaceException(ChessException):
     Provides:
 
     Super Class:
-        ChessException
+        AxisSpaceException
     """
-    MSG = "Space error."
-    ERR_CODE = "SPACE_ERROR"
+    MSG = "SouthAxis error."
+    ERR_CODE = "SOUTH_AXIS_ERROR"
     
     def __init__(
             self,

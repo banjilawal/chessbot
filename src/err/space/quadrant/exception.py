@@ -1,7 +1,7 @@
 # src/err/space/quadrant/exception.py
 
 """
-Module: err.space.exception
+Module: err.space.quadrant.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,22 +10,22 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import ChessException
+from err import SpaceException
 from result import MethodResultType
 
 
 __all__ = [
-    # ======================# SPACE_ERROR #======================#
-    "SpaceException",
+    # ======================# QUADRANT_SPACE_ERROR #======================#
+    "QuadrantSpaceException",
 ]
-# ======================# SPACE_ERROR #======================#
-class SpaceException(ChessException):
+# ======================# QUADRANT_SPACE_ERROR #======================#
+class QuadrantSpaceException(SpaceException):
     """
     Role:
         -   Failure Tracing
 
     Responsibilities:
-        1.  Indicate that an error occurred in a Space instance.
+        1.  Indicate that an error occurred in a QuadrantSpace instance.
 
     Attributes:
         msg: str
@@ -40,10 +40,10 @@ class SpaceException(ChessException):
     Provides:
 
     Super Class:
-        ChessException
+        SpaceException
     """
-    MSG = "Space error."
-    ERR_CODE = "SPACE_ERROR"
+    MSG = "QuadrantSpace error."
+    ERR_CODE = "QUADRANT_SPACE_ERROR"
     
     def __init__(
             self,

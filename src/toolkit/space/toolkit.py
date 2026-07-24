@@ -1,7 +1,7 @@
-# src/toolkit/toggle/vector/toolkit.py
+# src/toolkit/space/vector/toolkit.py
 
 """
-Module: toolkit.toggle.vector.toolkit
+Module: toolkit.space.vector.toolkit
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -15,13 +15,13 @@ from typing import Generic, Type, TypeVar
 
 from blueprint import Blueprint
 from carrier import EntityCarrier
-from err import ToggleBlueprintNullException, ToggleCarrierNullException, ToggleNullException
+from err import SpaceBlueprintNullException, SpaceCarrierNullException, SpaceNullException
 from toolkit import Toolkit
 
-T = TypeVar("T", bound="Toggle")
+T = TypeVar("T", bound="Space")
 
 @dataclass
-class ToggleToolkit(Toolkit, Generic[T]):
+class SpaceToolkit(Toolkit, Generic[T]):
     """
     Role:
         -   Container
@@ -32,11 +32,11 @@ class ToggleToolkit(Toolkit, Generic[T]):
         3.  No logic in the Toolkit.
 
     Attributes:
-        toggle: Type[T]
-        blueprint_toggle: Blueprint[T]
+        space: Type[T]
+        blueprint_space: Blueprint[T]
         
-        null_exception: ToggleNullException
-        blueprint_null_exception: ToggleBlueprintNullException
+        null_exception: SpaceNullException
+        blueprint_null_exception: SpaceBlueprintNullException
 
     Provides:
 
@@ -47,7 +47,7 @@ class ToggleToolkit(Toolkit, Generic[T]):
     carrier_model: Type[EntityCarrier[T]]
     blueprint_model: Type[Blueprint[T]]
     
-    null_exception: ToggleNullException = ToggleNullException()
-    carrier_null_exception: ToggleCarrierNullException = ToggleNullException()
-    blueprint_null_exception: ToggleBlueprintNullException = ToggleBlueprintNullException()
+    null_exception: SpaceNullException = SpaceNullException()
+    carrier_null_exception: SpaceCarrierNullException = SpaceNullException()
+    blueprint_null_exception: SpaceBlueprintNullException = SpaceBlueprintNullException()
 

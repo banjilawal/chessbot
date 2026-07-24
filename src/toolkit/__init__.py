@@ -22,6 +22,8 @@ from .permitter import *
 from .pipeline import *
 from .register import *
 from .registry import *
+from .space import *
+from .toggle import *
 
 # Modules
 from .toolkit import Toolkit

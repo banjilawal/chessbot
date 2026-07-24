@@ -8,18 +8,17 @@ version: 1.0.1
 """
 
 from __future__ import annotations
-
-from typing import Generic, Optional, Type, TypeVar, cast
+from typing import Optional, Type, cast
 
 from blueprint import Blueprint
 from err import SpaceNullException
+from space import Space
 
-T = TypeVar("T", bound="Space")
 
-class SpaceBlueprint(Blueprint, Generic[T]):
+class SpaceBlueprint(Blueprint[Space]):
     """
      Role:
-         -   Space
+         -   Container
          -   DTO
 
      Responsibilities:
@@ -27,8 +26,8 @@ class SpaceBlueprint(Blueprint, Generic[T]):
          2.  DTO
 
      Attributes:
-        model_class: Type[T]
-        null_exception: Optional[SpaceNullException]
+         space_class: Type[Space]
+         null_exception: Optional[SpaceNullException]
          
      Provides:
 
@@ -38,7 +37,7 @@ class SpaceBlueprint(Blueprint, Generic[T]):
     
     def __init__(
             self,
-            model_class: Type[T],
+            model_class: Type[Space],
             null_exception: Optional[SpaceNullException] | None = SpaceNullException(),
     ):
         """
@@ -46,13 +45,17 @@ class SpaceBlueprint(Blueprint, Generic[T]):
             model_class: Type[Space[T]]
             null_exception: Optional[SpaceNullException]
         """
-        super().__init__(model_class=model_class, null_exception=null_exception,)
-        
+        super().__init__(
+            model_class=model_class,
+            null_exception=null_exception
+        )
     
     @property
-    def model_class(self) -> Type[T]:
-        return cast(Type[T], super().model_class)
+    def space_class(self) -> Type[Space]:
+        return cast(Type[Space], super().model_class)
     
     @property
     def null_exception(self) -> SpaceNullException:
         return cast(SpaceNullException, super().null_exception)
+    
+    
