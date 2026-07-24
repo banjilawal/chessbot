@@ -10,6 +10,7 @@ version: 1.0.1
 # =========== CONTAINER PACKAGE ===========#
 
 # Packages
+from .quadrant import *
 from .register import *
 from .vector import *
 

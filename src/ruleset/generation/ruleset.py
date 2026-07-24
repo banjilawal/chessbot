@@ -10,7 +10,7 @@ version: 1.0.1
 from __future__ import annotations
 
 from abc import ABC
-from typing import Generic, List, Tuple, TypeVar
+from typing import Generic, Tuple, TypeVar
 
 from ruleset import SequenceSpec
 
@@ -20,10 +20,11 @@ T = TypeVar("T", bound="Rank")
 class PatternGenerationRuleset(ABC, Generic[T]):
     _ruleset: Tuple[SequenceSpec, ...]
     
-    def __init__(self, ruleset: List[SequenceSpec]):
-        self._ruleset = tuple(ruleset)
+    def __init__(self, ruleset: Tuple[SequenceSpec, ...]):
+        self._ruleset = ruleset
         
     @property
+    @abstractmethod
     def ruleset(self) -> Tuple[SequenceSpec, ...]:
         return self._ruleset
     
