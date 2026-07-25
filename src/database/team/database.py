@@ -35,7 +35,7 @@ class TeamDatabase(Database[Team]):
         -   insert(item: T) -> InsertionResult:
         -   delete_by_id(id: int) -> DeletionResult[T]:
         -   search(context: Context[T]) -> SearchResult[List[T]]
-    """
+
     Role:Unique Data Stack, Search Microservice, CRUD Controller, Encapsulation, API layer.
 
     Responsibilities:

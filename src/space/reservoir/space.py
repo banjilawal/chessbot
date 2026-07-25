@@ -1,7 +1,7 @@
-# src/space/hashtable/space.py
+# src/space/reservoir/space.py
 
 """
-Module: space.hashtable.space
+Module: space.reservoir.space
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -10,15 +10,14 @@ version: 1.0.1
 from __future__ import annotations
 
 from abc import ABC, abstractmethod
-from typing import Dict, Generic, Optional, Tuple, Type, TypeVar
+from typing import Generic, TypeVar
 
 from model import Vector
-from space import Space
 
 T = TypeVar("T", bound="Space")
 
 
-class SpaceHashSet(ABC, Generic[T]):
+class SpaceReservoir(ABC, Generic[T]):
     """
     Role:
         -   Data Holder
@@ -36,11 +35,10 @@ class SpaceHashSet(ABC, Generic[T]):
     _origin: Vector
 
     
-    def __init__(self, origin: Vector, hash_table: Optional[Dict[str, T]] | None = None):
+    def __init__(self, origin: Vector):
         """
         Args:
             origin: Vector
-            hash_table: Optional[Dict[str, T]]
         """
         self._origin = origin
         
@@ -48,10 +46,6 @@ class SpaceHashSet(ABC, Generic[T]):
     def origin(self) -> Vector:
         return  self._origin
     
-    @property
-    @abstractmethod
-    def hash_table(self) -> Dict[str, T]:
-        pass
     
     @property
     @abstractmethod
@@ -66,4 +60,9 @@ class SpaceHashSet(ABC, Generic[T]):
     @property
     @abstractmethod
     def is_not_empty(self) -> bool:
+        pass
+    
+    @property
+    @abstractmethod
+    def iterator(self) -> iter:
         pass

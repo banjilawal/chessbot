@@ -13,10 +13,10 @@ from typing import Dict
 
 from model import Vector
 from space import (
-    Quadrant, NortheastQuadrant, NorthwestQuadrant, SoutheastQuadrant, SpaceHashSet, SouthwestQuadrant
+    Quadrant, NortheastQuadrant, NorthwestQuadrant, SoutheastQuadrant, SpaceReservoir, SouthwestQuadrant
 )
 
-class QuadrantHashSet(SpaceHashSet[Quadrant]):
+class QuadrantReservoir(SpaceReservoir[Quadrant]):
     _expected_size: int
     _hash_table: Dict[str, Quadrant]
     

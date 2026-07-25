@@ -11,27 +11,30 @@ from __future__ import annotations
 
 from typing import Dict
 
-from mapping import AxisMapFunction, EastAxisMapFunction
+from mapping import AxisMappingFunction, EastAxisMapFunction
 from model import Vector
 from recurrence import RecurrenceHashSet
 from space import (
-    Axis, AxisHashSet, EastAxis, NorthAxis, SouthAxis, WestAxis
+    Axis, AxisReservoir, EastAxis, NorthAxis, SouthAxis, WestAxis
 )
 
 class AxisRecurrenceHashSet(RecurrenceHashSet[Axis]):
     _expected_size: int
-    _axis_hash_set: AxisHashSet
+    _axis_hash_set: AxisReservoir
     
     def __init__(self, origin: Vector,):
         super().__init__(origin=origin)
         
-        self._axis_hash_set = AxisHashSet(self.origin)
-        east_axis = EastAxis(self.)
+        self._axis_hash_set = AxisReservoir(self.origin)
+        east_axis = EastAxis(self.origin)
+        north_axis = NorthAxis(self.origin)
+        south_axis = SouthAxis(self.origin)
+        WestAxis(self.origin)
         self._hash_table = {
-            "east_axis": {EastEastAxis(self.origin): EastAxisMapFunction(),
-            "north_axis": NorthAxis(self.origin),
-            "south_axis": SouthAxis(self.origin),
-            "west_axis": WestAxis(self.origin),
+            "east_axis": {: EastAxisMapFunction(),
+            "north_axis": ,
+            "south_axis": ,
+            "west_axis": ,
         }
         self._expected_size = len(self._hash_table)
         

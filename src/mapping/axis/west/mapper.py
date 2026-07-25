@@ -9,14 +9,14 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from mapping import AxisMapFunction
+from mapping import AxisMappingFunction
 from model import Vector
 from schema import AxisDelta
 from space import WestAxis
 
 
 
-class WestAxisMapFunction(AxisMapFunction[WestAxis]):
+class WestAxisMapFunction(AxisMappingFunction[WestAxis]):
     """
     Role:
         -   Computation

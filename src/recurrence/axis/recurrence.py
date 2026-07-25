@@ -12,7 +12,7 @@ from __future__ import annotations
 
 from typing import Generic, TypeVar, cast
 
-from mapping import AxisMapFunction
+from mapping import AxisMappingFunction
 from recurrence import Recurrence
 
 T = TypeVar("T", bound="Axis")
@@ -37,7 +37,7 @@ class AxisRecurrence(Recurrence, Generic[T]):
         VectorSequenceRecurrence
     """
     
-    def __init__(self, space: T, space_mapping_function: AxisMapFunction[T]):
+    def __init__(self, space: T, space_mapping_function: AxisMappingFunction[T]):
         super().__init__(space=space, space_mapping_function=space_mapping_function)
         
     @property
@@ -45,5 +45,5 @@ class AxisRecurrence(Recurrence, Generic[T]):
         return cast(T, super().space)
     
     @property
-    def space_mapping_function(self) -> AxisMapFunction[T]:
-        return cast(AxisMapFunction[T], super().space_mapping_function)
+    def space_mapping_function(self) -> AxisMappingFunction[T]:
+        return cast(AxisMappingFunction[T], super().space_mapping_function)

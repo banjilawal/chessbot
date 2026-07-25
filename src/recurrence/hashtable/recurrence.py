@@ -36,22 +36,17 @@ class RecurrenceHashSet(ABC, Generic[T]):
     _origin: Vector
 
     
-    def __init__(self, origin: Vector, hash_table: Optional[Dict[str, T]] | None = None):
+    def __init__(self, origin: Vector):
         """
         Args:
             origin: Vector
-            hash_table: Optional[Dict[str, T]]
         """
         self._origin = origin
         
     @property
     def origin(self) -> Vector:
         return  self._origin
-    
-    @property
-    @abstractmethod
-    def hash_table(self) -> Dict[str, T]:
-        pass
+
     
     @property
     @abstractmethod
@@ -66,4 +61,9 @@ class RecurrenceHashSet(ABC, Generic[T]):
     @property
     @abstractmethod
     def is_not_empty(self) -> bool:
+        pass
+    
+    @property
+    @abstractmethod
+    def iterator(self) -> iter:
         pass
