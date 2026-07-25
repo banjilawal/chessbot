@@ -20,21 +20,25 @@ T = TypeVar("T", bound="Space")
 class SpaceReservoir(ABC, Generic[T]):
     """
     Role:
-        -   Data Holder
+        -   Selection
+        -   Routing mask
 
     Responsibilities:
-        1.  Store a set of space relations to run as a job.
+        1.  Interface for creating Space selecting objects.
 
     Attributes:
-        space_set: Tuple[Space, ...]
-        
-    Provides:
+        size: int
+        origin: Vector
+        iterator: iter
+        is_empty: bool
+        is_not_empty: bool
 
+    Provides:
+   
     Super Class:
     """
     _origin: Vector
 
-    
     def __init__(self, origin: Vector):
         """
         Args:

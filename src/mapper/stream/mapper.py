@@ -15,7 +15,7 @@ from typing import Generic, TypeVar
 
 T = TypeVar("T", bound="SpaceReservoir")
 
-class MapFunctionStream(ABC, Generic[T]):
+class SpaceMapFunctionStream(ABC, Generic[T]):
     _space_reservoir: T
     
     def __init__(self, space_reservoir: T):

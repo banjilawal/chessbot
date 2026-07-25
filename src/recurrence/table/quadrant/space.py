@@ -1,7 +1,7 @@
-# src/space/hashtable/quadrant/space.py
+# src/recurrence/table/quadrant/space.py
 
 """
-Module: space.hashtable.quadrant.space
+Module: recurrence.table.quadrant.space
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

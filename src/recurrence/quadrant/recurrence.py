@@ -12,10 +12,10 @@ from __future__ import annotations
 
 from typing import Generic, TypeVar, cast
 
-from mapping import SpaceMappingFunction
+from mapper import QuadrantMappingFunction
 from recurrence import Recurrence
 
-T = TypeVar("T", bound="QuadrantSpace")
+T = TypeVar("T", bound="Quadrant")
 
 
 class QuadrantRecurrence(Recurrence, Generic[T]):
@@ -29,15 +29,20 @@ class QuadrantRecurrence(Recurrence, Generic[T]):
 
     Attributes:
         space: T
-        mapping_function: SpaceMappingFunction[T]
+        space_mapping_function: QuadrantMappingFunction[T]
 
     Provides:
 
     Super Class:
-        VectorSequenceRecurrence
+        Recurrence
     """
     
-    def __init__(self, space: T, space_mapping_function: SpaceMappingFunction[T]):
+    def __init__(self, space: T, space_mapping_function: QuadrantMappingFunction[T]):
+        """
+        Args:
+            space: T
+            space_mapping_function: QuadrantMappingFunction[T]
+        """
         super().__init__(space=space, space_mapping_function=space_mapping_function)
         
     @property
@@ -45,5 +50,8 @@ class QuadrantRecurrence(Recurrence, Generic[T]):
         return cast(T, super().space)
     
     @property
-    def space_mapping_function(self) -> SpaceMappingFunction[T]:
-        return cast(SpaceMappingFunction[T], super().space_mapping_function)
+    def space_mapping_function(self) -> QuadrantMappingFunction[T]:
+        return cast(
+            QuadrantMappingFunction[T],
+            super().space_mapping_function
+        )

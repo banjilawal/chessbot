@@ -19,7 +19,7 @@ from util import LoggingLevelRouter
 
 T = TypeVar("T", bound="QuadrantSpace")
 
-class QuadrantMapFunction(SpaceMappingFunction, Generic[T]):
+class QuadrantMappingFunction(SpaceMappingFunction, Generic[T]):
     """
     Role:
         -   Computation

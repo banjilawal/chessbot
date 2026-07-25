@@ -9,17 +9,17 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from typing import Dict, List, Optional, cast
+from typing import Dict, List, Optional, Tuple, cast
 
-from mapping import (
-    AxisMappingFunction, EastAxisMapFunction, NorthAxisMapFunction, SouthAxisMapFunction,
-    WestAxisMapFunction
+from mapper import (
+    AxisMappingFunction, EastAxisMapFunction, SpaceMapFunctionStream, NorthAxisMapFunction,
+    SouthAxisMapFunction, WestAxisMapFunction
 )
-from mapping.stream import MapFunctionStream
-from space import Axis, AxisReservoir
+from space import Axis, AxisReservoir, EastAxis, NorthAxis, SouthAxis, WestAxis
 
 
-class AxisMappingStream(MapFunctionStream[Axis]):
+class AxisMappingFunctionStream(SpaceMapFunctionStream[Axis]):
+
     
     _function_stream: Dict[Axis, AxisMappingFunction]
  
@@ -51,7 +51,7 @@ class AxisMappingStream(MapFunctionStream[Axis]):
         return not self.streams_are_empty
     
     @property
-    def east_mapping_function(self) -> Optional[EastAxisMapFunction]:
+    def east_mapping_function(self) -> EastAxisMapFunction:
         return cast(
             EastAxisMapFunction,
             self._function_stream[self.space_reservoir.east]
@@ -76,6 +76,34 @@ class AxisMappingStream(MapFunctionStream[Axis]):
         return cast(
             SouthAxisMapFunction,
             self._function_stream[self.space_reservoir.south]
+        )
+    
+    @property
+    def east_axis_map_tuple(self) -> Tuple[EastAxis, EastAxisMapFunction]:
+        return (
+            self.space_reservoir.east,
+            self.east_mapping_function,
+        )
+    
+    @property
+    def north_axis_map_tuple(self) -> Tuple[NorthAxis, NorthAxisMapFunction]:
+        return (
+            self.space_reservoir.north,
+            self.north_mapping_function,
+        )
+    
+    @property
+    def west_axis_map_tuple(self) -> Tuple[WestAxis, WestAxisMapFunction]:
+        return (
+            self.space_reservoir.west,
+            self.west_mapping_function,
+        )
+    
+    @property
+    def south_axis_map_tuple(self) -> Tuple[SouthAxis, SouthAxisMapFunction]:
+        return (
+            self.space_reservoir.south,
+            self.south_mapping_function,
         )
     
     @property

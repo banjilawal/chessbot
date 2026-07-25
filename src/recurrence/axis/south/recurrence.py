@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from mapping import SouthAxisMapFunction
+from mapper import SouthAxisMapFunction
 from recurrence import AxisRecurrence
 
 from space import SouthAxis
@@ -55,5 +55,8 @@ class SouthRecurrence(AxisRecurrence[SouthAxis]):
     
     @property
     def space_mapping_function(self) -> SouthAxisMapFunction:
-        return cast(SouthAxisMapFunction, super().space_mapping_function)
+        return cast(
+            SouthAxisMapFunction,
+            super().space_mapping_function,
+        )
 

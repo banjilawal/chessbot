@@ -11,7 +11,7 @@ version: 1.0.1
 
 # Packages
 from .axis import *
-from .hashtable import *
+from .table import *
 from .quadrant import *
 from .series import *
 

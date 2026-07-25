@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from mapping import EastAxisMapFunction
+from mapper import EastAxisMapFunction
 from recurrence import AxisRecurrence
 from space import EastAxis
 
@@ -39,7 +39,7 @@ class EastAxisRecurrence(AxisRecurrence[EastAxis]):
     def __init__(
             self,
             space: EastAxis,
-            space_mapping_function: Optional[EastAxisMapFunction] | None = EastAxisMapFunction()
+            space_mapping_function: Optional[EastAxisMapFunction] | None = EastAxisMapFunction(),
     ):
         """
         Args:

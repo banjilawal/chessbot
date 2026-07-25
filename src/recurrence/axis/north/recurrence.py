@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from mapping import NorthAxisMapFunction
+from mapper import NorthAxisMapFunction
 from recurrence import AxisRecurrence
 from space import NorthAxis
 
@@ -39,7 +39,7 @@ class NorthAxisRecurrence(AxisRecurrence[NorthAxis]):
     def __init__(
             self,
             space: NorthAxis,
-            space_mapping_function: Optional[NorthAxisMapFunction] | None = NorthAxisMapFunction()
+            space_mapping_function: Optional[NorthAxisMapFunction] | None = NorthAxisMapFunction(),
     ):
         """
         Args:
@@ -54,5 +54,8 @@ class NorthAxisRecurrence(AxisRecurrence[NorthAxis]):
     
     @property
     def space_mapping_function(self) -> NorthAxisMapFunction:
-        return cast(NorthAxisMapFunction, super().space_mapping_function)
+        return cast(
+            NorthAxisMapFunction,
+            super().space_mapping_function
+        )
 

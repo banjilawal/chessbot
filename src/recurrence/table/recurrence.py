@@ -1,7 +1,7 @@
-# src/space/hashtable/space.py
+# src/recurrence/table/space.py
 
 """
-Module: space.hashtable.space
+Module: recurrence.table.space
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -10,15 +10,15 @@ version: 1.0.1
 from __future__ import annotations
 
 from abc import ABC, abstractmethod
-from typing import Dict, Generic, Optional, Tuple, Type, TypeVar
+from typing import Generic, TypeVar
 
-from model import Vector
-from space import Space
+from mapper import SpaceMapFunctionStream
+
 
 T = TypeVar("T", bound="Space")
 
 
-class RecurrenceHashSet(ABC, Generic[T]):
+class SpaceRecurrenceTable(ABC, Generic[T]):
     """
     Role:
         -   Data Holder
@@ -33,24 +33,27 @@ class RecurrenceHashSet(ABC, Generic[T]):
 
     Super Class:
     """
-    _origin: Vector
+    _space_mapping_function_stream: SpaceMapFunctionStream[T]
 
     
-    def __init__(self, origin: Vector):
+    def __init__(
+            self,
+            space_mapping_function_stream: SpaceMapFunctionStream[T]
+    ):
         """
         Args:
-            origin: Vector
+            space_mapping_function_stream: SpaceMapFunctionStream[T]
         """
-        self._origin = origin
+        self.__space_mapping_function_stream = space_mapping_function_stream
         
     @property
-    def origin(self) -> Vector:
-        return  self._origin
+    def space_mapping_function_stream(self) -> SpaceMapFunctionStream[T]:
+        return  self._space_mapping_function_stream
 
     
     @property
     @abstractmethod
-    def size(self) -> int:
+    def table_size(self) -> int:
         pass
     
     @property

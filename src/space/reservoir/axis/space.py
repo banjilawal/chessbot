@@ -17,6 +17,34 @@ from space import (
 )
 
 class AxisReservoir(SpaceReservoir[Axis]):
+    """
+    Role:
+        -   Selection
+        -   Routing mask
+
+    Responsibilities:
+        1.  Implements SpaceReservoir for selecting from the origin's different axes.
+
+    Attributes:
+        size: int
+        origin: Vector
+        iterator: iter
+        is_empty: bool
+        is_not_empty: bool
+        
+        east: Optional[EastAxis]
+        north: Optional[NorthAxis]:
+        south: Optional[SouthAxis]:
+        west: Optional[WestAxis]:
+
+    Provides:
+
+    Super Class:
+        SpaceReservoir
+        
+    Note:
+        -   When the iterator is used each item it produces must be cast to the correct type.
+    """
     
     _reservoir: Dict[str, Axis]
     

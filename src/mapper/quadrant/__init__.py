@@ -16,4 +16,4 @@ from .southeast import *
 from .southwest import *
 
 # Modules
-from .mapper import QuadrantMapFunction
+from .mapper import QuadrantMappingFunction

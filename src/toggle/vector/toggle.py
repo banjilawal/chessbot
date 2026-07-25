@@ -39,7 +39,7 @@ class VectorToggle(Toggle):
         -   _equal_vector_points(point: Point) -> bool
         -  _equal_coord_points(self, point: Point) -> bool
     Super Class:
-        Selector
+        Toggle
     """
     _vector: Optional[Vector]
     _coord: Optional[Coord]

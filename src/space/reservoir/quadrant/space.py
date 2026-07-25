@@ -17,6 +17,34 @@ from space import (
 )
 
 class QuadrantReservoir(SpaceReservoir[Quadrant]):
+    """
+    Role:
+        -   Selection
+        -   Routing mask
+
+    Responsibilities:
+        1.  Implements SpaceReservoir for selecting from the origin's different quadrants.
+
+    Attributes:
+        size: int
+        origin: Vector
+        iterator: iter
+        is_empty: bool
+        is_not_empty: bool
+
+        northeast: Optional[NortheastQuadrant]
+        northwest: Optional[NorthwestQuadrant]:
+        southeast: Optional[SouthEastQuadrant]:
+        southwest: Optional[SouthWestQuadrant]:
+
+    Provides:
+
+    Super Class:
+        SpaceReservoir
+
+    Note:
+        -   When the iterator is used, each item it produces must be cast to the correct type.
+    """
 
     _reservoir: Dict[str, Quadrant]
     

@@ -13,4 +13,4 @@ version: 1.0.1
 from .axis import *
 
 # Modules
-from .mapper import MapFunctionStream
+from .mapper import SpaceMapFunctionStream

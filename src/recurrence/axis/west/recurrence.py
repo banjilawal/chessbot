@@ -1,7 +1,7 @@
 # src/recurrence/axis/west/recurrence.py
 
 """
-Module: recurrence.axis.westt.recurrence
+Module: recurrence.axis.west.recurrence
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from mapping import WestAxisMapFunction
+from mapper import WestAxisMapFunction
 from recurrence import AxisRecurrence
 from space import WestAxis
 

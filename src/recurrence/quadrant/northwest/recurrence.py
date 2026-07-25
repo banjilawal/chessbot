@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from mapping import NorthwestMapFunction
+from mapper import NorthwestMapFunction
 from recurrence import QuadrantRecurrence
 from space import NorthwestQuadrant
 
@@ -27,8 +27,8 @@ class NorthwestQuadrantRecurrence(QuadrantRecurrence[NorthwestQuadrant]):
         1.  Provide a recurrence relation for iterating to the next NorthwestQuadrant vector.
 
     Attributes:
-        space: NorthwestQuadrant
-        mapping_function: Optional[NorthwestMapFunction]
+        space: NorthwestQuadrant,
+        space_mapping_function: Optional[NorthwestMapFunction]
 
     Provides:
 
@@ -43,7 +43,7 @@ class NorthwestQuadrantRecurrence(QuadrantRecurrence[NorthwestQuadrant]):
     ):
         """
         Args:
-            space: NorthwestQuadrant
+            space: NorthwestQuadrant,
             space_mapping_function: Optional[NorthwestMapFunction]
         """
         super().__init__(space=space, space_mapping_function=space_mapping_function)
@@ -54,5 +54,8 @@ class NorthwestQuadrantRecurrence(QuadrantRecurrence[NorthwestQuadrant]):
     
     @property
     def space_mapping_function(self) -> NorthwestMapFunction:
-        return cast(NorthwestMapFunction, super().space_mapping_function)
+        return cast(
+            NorthwestMapFunction,
+            super().space_mapping_function
+        )
 

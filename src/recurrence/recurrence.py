@@ -12,7 +12,7 @@ from __future__ import annotations
 from abc import ABC
 from typing import Generic, TypeVar
 
-from mapping import SpaceMappingFunction
+from mapper import SpaceMappingFunction
 
 T = TypeVar("T", bound="Space")
 
@@ -27,17 +27,16 @@ class Recurrence(ABC, Generic[T]):
 
     Attributes:
         space: T
-        mapping_function: SpaceMappingFunction[T]
+        space_mapping_function: SpaceMappingFunction[T]
         
     Provides:
 
     Super Class:
     """
-    
     _space: T
     _space_mapping_function: SpaceMappingFunction[T]
     
-    def __init__(self, space: T, space_mapping_function: SpaceMappingFunction[T], ):
+    def __init__(self, space: T, space_mapping_function: SpaceMappingFunction[T],):
         """
         Args:
             space: T
