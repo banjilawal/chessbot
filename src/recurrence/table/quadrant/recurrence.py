@@ -9,7 +9,7 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from typing import Dict, List, cast
+from typing import Dict, List, Type, cast
 
 from mapper import QuadrantMappingFunctionStream
 from recurrence import (
@@ -111,14 +111,14 @@ class QuadrantRecurrenceTable(SpaceRecurrenceTable[Quadrant]):
         )
     
     @property
-    def north_quadrant_recurrence(self) -> NorthwestQuadrantRecurrence:
+    def northwest_quadrant_recurrence(self) -> NorthwestQuadrantRecurrence:
         return cast(
             NorthwestQuadrantRecurrence,
             self._recurrence_table["northwest"]
         )
     
     @property
-    def south_quadrant_recurrence(self) -> SoutheastQuadrantRecurrence:
+    def southeast_quadrant_recurrence(self) -> SoutheastQuadrantRecurrence:
         return cast(
             SoutheastQuadrantRecurrence,
             self._recurrence_table["southeast"]
@@ -130,4 +130,13 @@ class QuadrantRecurrenceTable(SpaceRecurrenceTable[Quadrant]):
             SouthwestQuadrantRecurrence,
             self._recurrence_table["southwest"]
         )
-
+    
+    @property
+    def type_recurrence_dict(self) -> Dict[Type[Quadrant], QuadrantRecurrence]:
+        return {
+            Type[NortheastQuadrantRecurrence]: self.northeast_quadrant_recurrence,
+            Type[NorthwestQuadrantRecurrence]: self.northwest_quadrant_recurrence,
+            Type[SouthwestQuadrantRecurrence]: self.southwest_quadrant_recurrence,
+            Type[SoutheastQuadrantRecurrence]: self.southeast_quadrant_recurrence,
+            
+        }

@@ -9,7 +9,7 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from typing import Dict, List, cast
+from typing import Dict, List, Type, cast
 
 from mapper import AxisMappingFunctionStream
 from recurrence import (
@@ -130,4 +130,15 @@ class AxisRecurrenceTable(SpaceRecurrenceTable[Axis]):
             WestAxisRecurrence,
             self._recurrence_table["west"]
         )
+    
+    @property
+    def type_recurrence_dict(self) -> Dict[Type[Axis], AxisRecurrence]:
+
+        return {
+            Type[EastAxisRecurrence]: self.east_axis_recurrence,
+            Type[NorthAxisRecurrence]: self.north_axis_recurrence,
+            Type[WestAxisRecurrence]: self.west_axis_recurrence,
+            Type[SouthAxisRecurrence]: self.south_axis_recurrence,
+            
+        }
 

@@ -35,7 +35,7 @@ class VectorSequenceGenerator:
         math: Optional[MathToolkit]
 
     Provides:
-        -   def execute(specification: VectorSequenceSpec) -> ComputationResult[VectorSet]
+        -   def execute(specification: Recurrence) -> ComputationResult[VectorSet]
         
     Super Class:
         QuadrantMapFunction
@@ -65,7 +65,7 @@ class VectorSequenceGenerator:
                 an exception chain in the ComputationResult.
             3.  Otherwise, cast the build product, then send in the success result.
         Args:
-            recurrence: VectorSequenceSpec
+            recurrence: Recurrence
         Returns:
             ComputationResult[VectorSet]
         Raises:
@@ -76,8 +76,8 @@ class VectorSequenceGenerator:
         # Handle the case that, the sequence gets flagged,
         validation = self._math.priming_validator.execute(
             candidate=recurrence,
-            target_model=VectorSequenceSpec,
-            null_exception=VectorSequenceSpecNullException(),
+            target_model=Recurrence,
+            null_exception=RecurrenceNullException(),
         )
         if validation.is_failure:
             # Send an exception chain in the result.
@@ -92,15 +92,15 @@ class VectorSequenceGenerator:
                 ),
             )
         # --- Cast the validation product and setup for the iteration. ---#
-        spec = cast(VectorSequenceSpec, validation.payload)
+        recur  = cast(Recurrence, validation.payload)
         sequence: List[Vector] = []
-        cursor = spec.space.origin
+        cursor = recur.space.origin
         
-        while cursor != spec.space.terminus:
+        while cursor != recur.space.terminus:
             sequence.append(cursor)
             
             # Request that the update for the cursor.
-            step = spec.space_mapping_function.next(cursor)
+            step = recur.space_mapping_function.next(cursor)
             
             # Handle the case that, the request is not satisfied.
             if step.is_failure:
