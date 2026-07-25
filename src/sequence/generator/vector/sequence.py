@@ -13,8 +13,9 @@ from typing import List, Optional, cast
 
 from container import VectorSet
 from model import Vector
+from recurrence import Recurrence
 from result import ComputationResult
-from ruleset import VectorSequenceSpec
+
 from toolkit import MathToolkit
 from util import LoggingLevelRouter
 
@@ -52,7 +53,7 @@ class VectorSequenceGenerator:
     
     
     @LoggingLevelRouter.monitor
-    def execute(self, sequencing_spec: VectorSequenceSpec) -> ComputationResult[VectorSet]:
+    def execute(self, recurrence: Recurrence) -> ComputationResult[VectorSet]:
         """
         Get the next Vector using addition.
 
@@ -64,7 +65,7 @@ class VectorSequenceGenerator:
                 an exception chain in the ComputationResult.
             3.  Otherwise, cast the build product, then send in the success result.
         Args:
-            sequencing_spec: VectorSequenceSpec
+            recurrence: VectorSequenceSpec
         Returns:
             ComputationResult[VectorSet]
         Raises:
@@ -74,7 +75,7 @@ class VectorSequenceGenerator:
         
         # Handle the case that, the sequence gets flagged,
         validation = self._math.priming_validator.execute(
-            candidate=sequencing_spec,
+            candidate=recurrence,
             target_model=VectorSequenceSpec,
             null_exception=VectorSequenceSpecNullException(),
         )
@@ -99,7 +100,7 @@ class VectorSequenceGenerator:
             sequence.append(cursor)
             
             # Request that the update for the cursor.
-            step = spec.mapping_function.next(cursor)
+            step = spec.space_mapping_function.next(cursor)
             
             # Handle the case that, the request is not satisfied.
             if step.is_failure:

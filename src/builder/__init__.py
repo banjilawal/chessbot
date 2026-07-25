@@ -17,7 +17,6 @@ from .context import *
 from .endpoint import *
 from .model import *
 from .register import *
-from .sequence import *
 from .space import *
 from .toggle import *
 

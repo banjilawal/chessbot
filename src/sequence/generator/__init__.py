@@ -10,6 +10,7 @@ version: 1.0.1
 # =========== SEQUENCE.GENERATOR PACKAGE ===========#
 
 # Packages
+from .bishop import *
 from .vector import *
 
 # Modules

@@ -1,0 +1,49 @@
+# src/recurrence//axis/recurrence.py
+
+"""
+Module: recurrence.axis.recurrenceification
+Author: Banji Lawal
+Created: 2026-04-03
+version: 1.0.1
+"""
+
+from __future__ import annotations
+
+
+from typing import Generic, TypeVar, cast
+
+from mapping import AxisMapFunction
+from recurrence import Recurrence
+
+T = TypeVar("T", bound="Axis")
+
+
+class AxisRecurrence(Recurrence, Generic[T]):
+    """
+    Role:
+        -   Computation
+        -   Iterator
+
+    Responsibilities:
+        1.  Provide a recurrence relation for iterating to the next AxisSpace vector
+
+    Attributes:
+        space: T
+        mapping_function: AxisMapFunction[T]
+
+    Provides:
+
+    Super Class:
+        VectorSequenceRecurrence
+    """
+    
+    def __init__(self, space: T, space_mapping_function: AxisMapFunction[T]):
+        super().__init__(space=space, space_mapping_function=space_mapping_function)
+        
+    @property
+    def space(self) -> T:
+        return cast(T, super().space)
+    
+    @property
+    def space_mapping_function(self) -> AxisMapFunction[T]:
+        return cast(AxisMapFunction[T], super().space_mapping_function)

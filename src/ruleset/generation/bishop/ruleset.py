@@ -14,9 +14,9 @@ from typing import List, Tuple
 
 from model import Bishop
 from ruleset import (
-    NortheastQuadrantVectorSpec, NorthwestQuadrantVectorSpec, PatternGenerationRuleset, SequenceSpec,
-    SoutheastQuadrantVectorSpec,
-    SouthwestQuadrantVectorSpec
+    NortheastQuadrantRecurrence, NorthwestQuadrantRecurrence, PatternGenerationRuleset, SequenceSpec,
+    SoutheastQuadrantRecurrence,
+    SouthwestQuadrantRecurrence
 )
 
 
@@ -28,8 +28,8 @@ class BishopPatternRuleset(PatternGenerationRuleset[Bishop]):
         super().__init__(ruleset=ruleset)
         if ruleset is None:
             ruleset = [
-                NortheastQuadrantVectorSpec(),
-                NorthwestQuadrantVectorSpec(),
-                SoutheastQuadrantVectorSpec(),
-                SouthwestQuadrantVectorSpec(),
+                NortheastQuadrantRecurrence(),
+                NorthwestQuadrantRecurrence(),
+                SoutheastQuadrantRecurrence(),
+                SouthwestQuadrantRecurrence(),
             ]
