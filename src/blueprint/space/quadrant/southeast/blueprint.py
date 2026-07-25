@@ -13,7 +13,7 @@ from typing import Generic, Optional, Type, TypeVar, cast
 from blueprint import QuadrantBlueprint, SpaceBlueprint
 from err import southeastQuadrantNullException, QuadrantNullException
 from model import Vector
-from space import southeastQuadrant, Space, QuadrantSpace
+from space import southeastQuadrant, Space, Quadrant
 
 
 class southeastQuadrantBlueprint(QuadrantBlueprint[southeastQuadrant]):

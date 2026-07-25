@@ -16,6 +16,7 @@ from typing import Any, Generic, TypeVar, cast
 from result import ValidationResult
 from root import SpaceRootCertifier
 from toolkit import QuadrantToolkit
+
 from util import LoggingLevelRouter
 
 T = TypeVar("T", bound="QuadrantSpace")

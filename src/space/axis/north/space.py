@@ -11,10 +11,10 @@ from __future__ import annotations
 
 
 from model import Vector
-from space import AxisSpace
+from space import Axis
 
 
-class NorthAxis(AxisSpace):
+class NorthAxis(Axis):
     """
     Role:
         -   Data Holder

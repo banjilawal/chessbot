@@ -11,10 +11,10 @@ from __future__ import annotations
 
 
 from model import Vector
-from space import QuadrantSpace
+from space import Quadrant
 
 
-class SoutheastQuadrant(QuadrantSpace):
+class SoutheastQuadrant(Quadrant):
     """
     Role:
         -   Data Holder

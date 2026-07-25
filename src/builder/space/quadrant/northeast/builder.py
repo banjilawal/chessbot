@@ -20,7 +20,9 @@ from toolkit import NortheastQuadrantBuilderToolkit
 from util import LoggingLevelRouter
 
 
-class NorthEastQuadrantBuilder(QuadrantBuilder[NortheastQuadrant]):
+class NorthEastQuadrantBuilder(
+    QuadrantBuilder[NortheastQuadrant]
+):
     """
     Role:
         -   Builder

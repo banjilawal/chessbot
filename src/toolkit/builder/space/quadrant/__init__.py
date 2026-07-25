@@ -12,8 +12,8 @@ version: 1.0.1
 # Packages
 from .northeast import *
 from .northwest import *
-from .southwest import *
 from .southeast import *
+from .southwest import *
 
 
 # Modules

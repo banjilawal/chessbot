@@ -12,10 +12,10 @@ from __future__ import annotations
 from typing import Iterator, List, Optional, Tuple, cast
 
 from container import Container
-from space import QuadrantSpace
+from space import Quadrant
 
 
-class QuadrantSet(Container[QuadrantSpace]):
+class QuadrantSet(Container[Quadrant]):
     """
     Role:
         -   Data Holder
@@ -33,7 +33,7 @@ class QuadrantSet(Container[QuadrantSpace]):
         Container
     """
     
-    def __init__(self, items: Optional[Tuple[QuadrantSpace, ...]] | None = None):
+    def __init__(self, items: Optional[Tuple[Quadrant, ...]] | None = None):
         """
         Args:
             items: Optional[Tuple[Quadrant, ...]]
@@ -41,15 +41,15 @@ class QuadrantSet(Container[QuadrantSpace]):
         super().__init__(items=items)
         
     @property
-    def items(self) -> Tuple[QuadrantSpace, ...]:
-        return cast(Tuple[QuadrantSpace, ...], super().items)
+    def items(self) -> Tuple[Quadrant, ...]:
+        return cast(Tuple[Quadrant, ...], super().items)
     
     @property
-    def iterator(self) -> Iterator[QuadrantSpace]:
+    def iterator(self) -> Iterator[Quadrant]:
         return iter(self.items)
     
     @property
-    def to_list(self) -> List[QuadrantSpace]:
+    def to_list(self) -> List[Quadrant]:
         return [item for item in self._items]
 
         

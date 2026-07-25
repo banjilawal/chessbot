@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Generic, TypeVar, cast
 
-from err import AxisMappingException
+
 from model import Vector
 from result import ComputationResult, MethodResultType
 from mapping import SpaceMappingFunction

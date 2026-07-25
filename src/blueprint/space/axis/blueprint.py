@@ -13,7 +13,7 @@ from typing import Generic, List, Optional, Type, TypeVar, cast
 from blueprint import SpaceBlueprint
 from err import AxisNullException
 from model import Vector
-from space import AxisSpace
+from space import Axis
 
 T = TypeVar("T", bound="AxisSpace")
 
@@ -44,7 +44,7 @@ class AxisBlueprint(SpaceBlueprint, Generic[T]):
     def __init__(
             self,
             origin: Vector,
-            model_class: Type[AxisSpace] = AxisSpace,
+            model_class: Type[Axis] = Axis,
             terminus: Optional[Vector] | None = None,
             null_exception: Optional[AxisNullException] | None = AxisNullException(),
     ):
@@ -67,8 +67,8 @@ class AxisBlueprint(SpaceBlueprint, Generic[T]):
         return self._terminus
 
     @property
-    def model_class(self) -> Type[AxisSpace]:
-        return cast(Type[AxisSpace], super().model_class)
+    def model_class(self) -> Type[Axis]:
+        return cast(Type[Axis], super().model_class)
     
     @property
     def null_exception(self) -> AxisNullException:

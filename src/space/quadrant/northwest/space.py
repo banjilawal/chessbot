@@ -12,10 +12,10 @@ from __future__ import annotations
 
 from model import Vector
 from schema import QuadrantTerminus
-from space import QuadrantSpace
+from space import Quadrant
 
 
-class NorthwestQuadrant(QuadrantSpace):
+class NorthwestQuadrant(Quadrant):
     """
     Role:
         -   Data Holder

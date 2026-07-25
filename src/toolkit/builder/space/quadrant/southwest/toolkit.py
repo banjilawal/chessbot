@@ -17,7 +17,9 @@ from space import SouthwestQuadrant
 from toolkit import QuadrantBuilderToolkit
 
 
-class SouthwestQuadrantBuilderToolkit(QuadrantBuilderToolkit[SouthwestQuadrant]):
+class SouthwestQuadrantBuilderToolkit(
+    QuadrantBuilderToolkit[SouthwestQuadrant]
+):
     """
     Role:
         -   Dependency Management
@@ -37,8 +39,10 @@ class SouthwestQuadrantBuilderToolkit(QuadrantBuilderToolkit[SouthwestQuadrant])
     
     def __init__(
             self,
-            assembler: Optional[SouthwestQuadrantAssembler] | None = SouthwestQuadrantAssembler(),
-            root_certifier: Optional[SouthwestQuadrantRootCertifier] |  None = SouthwestQuadrantRootCertifier(),
+            assembler: Optional[SouthwestQuadrantAssembler] |
+                       None = SouthwestQuadrantAssembler(),
+            root_certifier: Optional[SouthwestQuadrantRootCertifier] |
+                            None = SouthwestQuadrantRootCertifier(),
     ):
         """
         Args:

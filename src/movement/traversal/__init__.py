@@ -15,4 +15,4 @@ from .quadrant import *
 
 
 # Modules
-from .space import TraversalPattern
+from .pattern import TraversalPattern

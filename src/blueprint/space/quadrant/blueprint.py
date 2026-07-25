@@ -13,7 +13,7 @@ from typing import Generic, List, Optional, Type, TypeVar, cast
 from blueprint import SpaceBlueprint
 from err import QuadrantNullException
 from model import Vector
-from space import QuadrantSpace
+from space import Quadrant
 
 T = TypeVar("T", bound="QuadrantSpace")
 
@@ -60,8 +60,8 @@ class QuadrantBlueprint(SpaceBlueprint, Generic[T]):
         self._terminus = terminus
 
     @property
-    def model_class(self) -> Type[QuadrantSpace]:
-        return cast(Type[QuadrantSpace], super().model_class)
+    def model_class(self) -> Type[Quadrant]:
+        return cast(Type[Quadrant], super().model_class)
     
     @property
     def null_exception(self) -> QuadrantNullException:

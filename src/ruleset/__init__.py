@@ -11,6 +11,5 @@ version: 1.0.1
 
 # Packages
 from .generation import *
-from .sequence import *
 
 # Modules

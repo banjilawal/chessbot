@@ -13,7 +13,7 @@ from model import Vector
 from space import Space
 
 
-class AxisSpace(Space):
+class Axis(Space):
     """
     Role:
         -   Definition

@@ -12,10 +12,9 @@ from __future__ import annotations
 from typing import List, Optional, cast
 
 from container import VectorSet
-from err import NullException
 from model import Vector
 from result import ComputationResult
-from sequence import VectorSequenceSpec
+from ruleset import VectorSequenceSpec
 from toolkit import MathToolkit
 from util import LoggingLevelRouter
 
@@ -53,7 +52,7 @@ class VectorSequenceGenerator:
     
     
     @LoggingLevelRouter.monitor
-    def execute(self, specification: VectorSequenceSpec) -> ComputationResult[VectorSet]:
+    def execute(self, sequencing_spec: VectorSequenceSpec) -> ComputationResult[VectorSet]:
         """
         Get the next Vector using addition.
 
@@ -65,9 +64,9 @@ class VectorSequenceGenerator:
                 an exception chain in the ComputationResult.
             3.  Otherwise, cast the build product, then send in the success result.
         Args:
-            vector: Vector
+            sequencing_spec: VectorSequenceSpec
         Returns:
-            ComputationResult[Vector]
+            ComputationResult[VectorSet]
         Raises:
              AxisMappingException
         """
@@ -75,9 +74,9 @@ class VectorSequenceGenerator:
         
         # Handle the case that, the sequence gets flagged,
         validation = self._math.priming_validator.execute(
-            candidate=specification,
+            candidate=sequencing_spec,
             target_model=VectorSequenceSpec,
-            null_exception=NullException(),
+            null_exception=VectorSequenceSpecNullException(),
         )
         if validation.is_failure:
             # Send an exception chain in the result.
@@ -95,9 +94,8 @@ class VectorSequenceGenerator:
         spec = cast(VectorSequenceSpec, validation.payload)
         sequence: List[Vector] = []
         cursor = spec.space.origin
-        terminus = spec.space.terminus
         
-        while cursor != terminus:
+        while cursor != spec.space.terminus:
             sequence.append(cursor)
             
             # Request that the update for the cursor.

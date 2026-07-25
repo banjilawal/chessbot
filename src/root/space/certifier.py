@@ -12,8 +12,10 @@ from __future__ import annotations
 from abc import abstractmethod
 from typing import Any, Generic, TypeVar, cast
 
+from blueprint import SpaceBlueprint
 from root import RootCertifier
 from result import ValidationResult
+from space import Space
 from toolkit import SpaceToolkit
 from util import LoggingLevelRouter
 
@@ -50,7 +52,7 @@ class SpaceRootCertifier(RootCertifier, Generic[T]):
     
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def execute(self, candidate: Any,) -> ValidationResult[T]:
+    def execute(self, candidate: Any,) -> ValidationResult:
         pass
     
     

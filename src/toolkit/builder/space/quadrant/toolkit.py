@@ -48,7 +48,7 @@ class QuadrantBuilderToolkit(SpaceBuilderToolkit, Generic[T]):
         super().__init__(assembler=assembler, root_certifier=root_certifier)
 
     @property
-    def assembler(self) -> [QuadrantAssembler[T]]:
+    def assembler(self) -> QuadrantAssembler[T]:
         return cast(QuadrantAssembler[T], super()._assembler)
         
     @property

@@ -13,7 +13,7 @@ from model import Vector
 from space import Space
 
 
-class QuadrantSpace(Space):
+class Quadrant(Space):
     """
     Role:
         -   Definition

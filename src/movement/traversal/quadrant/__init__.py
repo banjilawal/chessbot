@@ -17,4 +17,4 @@ from .southwest import *
 
 
 # Modules
-from .space import QuadrantTraversalPattern
+from .pattern import QuadrantTraversalPattern

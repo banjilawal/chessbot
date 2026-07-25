@@ -13,7 +13,7 @@ from typing import Generic, Optional, Type, TypeVar, cast
 from blueprint import AxisBlueprint, SpaceBlueprint
 from err import westAxisNullException, AxisNullException
 from model import Vector
-from space import westAxis, Space, AxisSpace
+from space import westAxis, Space, Axis
 
 
 class WestAxisBlueprint(AxisBlueprint[westAxis]):

@@ -12,10 +12,10 @@ from __future__ import annotations
 
 from model import Vector
 from schema import AxisTerminus
-from space import AxisSpace
+from space import Axis
 
 
-class EastAxis(AxisSpace):
+class EastAxis(Axis):
     """
     Role:
         -   Data Holder

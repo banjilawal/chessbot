@@ -16,4 +16,4 @@ from .south import *
 from .west import *
 
 # Modules
-from .space import AxisTraversalPattern
+from .pattern import AxisTraversalPattern

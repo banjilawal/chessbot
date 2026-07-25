@@ -48,7 +48,8 @@ class RootCertifier(ABC, Generic[T]):
     def __init__(
             self,
             toolkit: Toolkit,
-            carrier_validator: Optional[EntityCarrierValidator] | None = EntityCarrierValidator()
+            carrier_validator: Optional[EntityCarrierValidator]
+                               | None = EntityCarrierValidator()
     ):
         """
         Args:
