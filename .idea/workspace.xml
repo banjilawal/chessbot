@@ -5,25 +5,36 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/builder/space/axis/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/builder/space/axis/builder.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/builder/space/axis/east/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/builder/space/axis/east/builder.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/builder/space/axis/north/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/builder/space/axis/north/builder.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/builder/space/axis/south/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/builder/space/axis/south/builder.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/builder/space/axis/west/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/builder/space/axis/west/builder.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assembler/space/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assembler/space/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/builder/model/token/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/builder/model/token/builder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/builder/space/quadrant/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/builder/space/quadrant/builder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/builder/space/quadrant/northeast/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/builder/space/quadrant/northeast/builder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/root/model/square/certifier.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/model/square/certifier.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/root/space/axis/east/certifier.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/space/axis/east/certifier.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/root/space/axis/north/certifier.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/space/axis/north/certifier.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/root/space/axis/south/certifier.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/space/axis/south/certifier.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/root/space/axis/west/certifier.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/space/axis/west/certifier.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/root/space/quadrant/northeast/certifier.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/space/quadrant/northeast/certifier.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/root/space/quadrant/northwest/certifier.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/space/quadrant/northwest/certifier.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/root/space/quadrant/southeast/certifier.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/space/quadrant/southeast/certifier.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/root/space/quadrant/southwest/certifier.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/space/quadrant/southwest/certifier.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/toolkit/builder/space/axis/north/toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/toolkit/builder/space/axis/north/toolkit.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/toolkit/builder/space/quadrant/northeast/toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/toolkit/builder/space/quadrant/northeast/toolkit.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/toolkit/builder/space/quadrant/toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/toolkit/builder/space/quadrant/toolkit.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/toolkit/builder/space/toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/toolkit/builder/space/toolkit.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/toolkit/builder/toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/toolkit/builder/toolkit.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/builder/space/linear/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/builder/space/linear/axis/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/builder/space/linear/axis/east/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/builder/space/linear/axis/east/builder.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/builder/space/linear/axis/north/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/builder/space/linear/axis/north/builder.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/builder/space/linear/axis/south/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/builder/space/linear/axis/south/builder.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/builder/space/linear/axis/west/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/builder/space/linear/axis/west/builder.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/builder/space/linear/quadrant/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/builder/space/linear/quadrant/northeast/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/builder/space/linear/quadrant/northeast/builder.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/builder/space/linear/quadrant/northwest/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/builder/space/linear/quadrant/northwest/builder.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/builder/space/linear/quadrant/southeast/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/builder/space/linear/quadrant/southeast/builder.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/builder/space/linear/quadrant/southwest/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/builder/space/linear/quadrant/southwest/builder.py" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -79,7 +90,7 @@
     "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/toolkit/builder/space",
+    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/builder/space",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
@@ -91,11 +102,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/builder/space" />
+      <recent name="$PROJECT_DIR$/src/builder/space/quadrant" />
       <recent name="$PROJECT_DIR$/src/toolkit/builder/space" />
       <recent name="$PROJECT_DIR$/src/toolkit/builder/space/axis" />
       <recent name="$PROJECT_DIR$/src/root/space" />
-      <recent name="$PROJECT_DIR$/src/toolkit/builder/space/axis/north" />
-      <recent name="$PROJECT_DIR$/src/err/root/space" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src" />
@@ -791,7 +802,7 @@
       <workItem from="1784055454795" duration="186991000" />
       <workItem from="1784319839949" duration="197060000" />
       <workItem from="1784614812729" duration="11899000" />
-      <workItem from="1784633157389" duration="213633000" />
+      <workItem from="1784633157389" duration="214356000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />
