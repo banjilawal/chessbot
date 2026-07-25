@@ -1,16 +1,16 @@
-# src/recurrence/table/quadrant/__init__.py
+# src/recurrence/table/axis/__init__.py
 
 """
-Module: recurrence.table.quadrant.__init__
+Module: recurrence.table.axis.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
 """
 
-# =========== RECURRENCE.TABLE.QUADRANT PACKAGE ===========#
+# =========== RECURRENCE.TABLE.AXIS PACKAGE ===========#
 
 # Packages
 
 
 # Modules
-from .space import QuadrantReservoir
+from .recurrence import AxisReservoir
