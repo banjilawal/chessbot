@@ -10,12 +10,12 @@ version: 1.0.1
 from __future__ import annotations
 
 from abc import abstractmethod
-from typing import Generic, TypeVar
+from typing import Generic, TypeVar, cast
 
-from blueprint import Blueprint
+from blueprint import Blueprint, QuadrantBlueprint
 from builder import SpaceBuilder
 from result import BuildResult
-from toolkit import BuilderToolkit, SpaceBuilderToolkit
+from toolkit import QuadrantBuilderToolkit
 from util import LoggingLevelRouter
 
 T = TypeVar("T", bound="QuadrantSpace")
@@ -29,6 +29,7 @@ class QuadrantBuilder(SpaceBuilder, Generic[T]):
         
     @property
     def builder_toolkit(self) -> QuadrantBuilderToolkit:
+        return cast(QuadrantBuilderToolkit[T], super().builder_toolkit)
         
     @abstractmethod
     @LoggingLevelRouter.monitor

@@ -15,6 +15,7 @@ from assembler import SpaceAssembler
 from root import SpaceRootCertifier
 from toolkit import BuilderToolkit
 
+
 T = TypeVar("T", bound="Space")
 
 class SpaceBuilderToolkit(BuilderToolkit, Generic[T]):
@@ -37,8 +38,8 @@ class SpaceBuilderToolkit(BuilderToolkit, Generic[T]):
     
     def __init__(
             self,
-            assembler: [SpaceAssembler[T]],
-            root_certifier: [SpaceRootCertifier[T]],
+            assembler: SpaceAssembler[T],
+            root_certifier: SpaceRootCertifier[T],
     ):
         """
         Args:
@@ -49,9 +50,9 @@ class SpaceBuilderToolkit(BuilderToolkit, Generic[T]):
 
         
     @property
-    def assembler(self) -> [SpaceAssembler[T]]:
-        return cast([SpaceAssembler[T]], super()._assembler)
+    def assembler(self) -> SpaceAssembler[T]:
+        return cast(SpaceAssembler[T], super()._assembler)
         
     @property
-    def root_certifier(self) -> [SpaceRootCertifier[T]]:
-        return cast([SpaceRootCertifier[T]], super()._root_certifier)
+    def root_certifier(self) -> SpaceRootCertifier[T]:
+        return cast(SpaceRootCertifier[T], super()._root_certifier)

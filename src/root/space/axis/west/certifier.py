@@ -1,4 +1,4 @@
-# src/certifier/space/axis/west/cerifier.py
+# src/certifier/space/axis/west/certifier.py
 
 """
 Module: certifier.space.axis.west.certifier

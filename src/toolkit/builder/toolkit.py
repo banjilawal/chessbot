@@ -12,8 +12,7 @@ from __future__ import annotations
 from typing import Generic, TypeVar
 
 from assembler import Assembler
-from bootstrapper import PrimingValidator, EntityCarrierValidator
-from microservice import IdentityService
+
 from root import RootCertifier
 from toolkit import Toolkit
 
@@ -39,11 +38,7 @@ class BuilderToolkit(Toolkit, Generic[T]):
     _assembler: Assembler[T]
     _root_certifier: RootCertifier[T]
     
-    def __init__(
-            self,
-            assembler: Assembler[T],
-            root_certifier: RootCertifier[T],
-    ):
+    def __init__(self, assembler: Assembler[T], root_certifier: RootCertifier[T],):
         """
         Args:
             assembler: Assembler[T],

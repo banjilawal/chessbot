@@ -1,4 +1,4 @@
-# src/certifier/square/cerifier.py
+# src/certifier/square/certifier.py
 
 """
 Module: certifier.square.certifier

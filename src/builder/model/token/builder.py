@@ -43,7 +43,8 @@ class TokenBuilder(ModelBuilder[Token]):
     
     def __init__(
             self,
-            builder_toolkit: Optional[TokenBuilderToolkit] | None = TokenBuilderToolkit(),
+            builder_toolkit: Optional[TokenBuilderToolkit] |
+                             None = TokenBuilderToolkit(),
     ):
         """
         Args:
@@ -76,10 +77,10 @@ class TokenBuilder(ModelBuilder[Token]):
         method = f"{self.__class__.__name__}.build"
         
         # Handle the case that, the blueprint is not certified safe.
-        blueprint_validation = self.builder_toolkit.root_certifier.execute(
+        validation = self.builder_toolkit.root_certifier.execute(
             candidate=blueprint
         )
-        if blueprint_validation.is_failure:
+        if validation.is_failure:
             # Send the exception chain on failure.
             return BuildResult.failure(
                 TokenBuilderException(
@@ -88,18 +89,15 @@ class TokenBuilder(ModelBuilder[Token]):
                     msg=TokenBuilderException.MSG,
                     err_code=TokenBuilderException.ERR_CODE,
                     mthd_rslt_type=MethodResultType.BUILD_RESULT,
-                    ex=blueprint_validation.exception
+                    ex=validation.exception
                 )
             )
         # --- Handoff the validated blueprint to the assembler. ---#
         assembly = self.builder_toolkit.assembler.execute(
-            blueprint=cast(
-                TokenBlueprint,
-                blueprint_validation.payload
-            )
+            blueprint=cast(TokenBlueprint, validation.payload)
         )
         # Handle the case that assembler cannot satisfy the product request.
-        if blueprint_validation.is_failure:
+        if assembly.is_failure:
         # Send the exception chain on failure.
             return BuildResult.failure(
                 TokenBuilderException(
@@ -108,7 +106,7 @@ class TokenBuilder(ModelBuilder[Token]):
                     msg=TokenBuilderException.MSG,
                     err_code=TokenBuilderException.ERR_CODE,
                     mthd_rslt_type=MethodResultType.BUILD_RESULT,
-                    ex=blueprint_validation.exception
+                    ex=assembly.exception
                 )
             )
         # --- Forward the work product to the caller. ---#

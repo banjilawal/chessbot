@@ -37,8 +37,8 @@ class QuadrantBuilderToolkit(SpaceBuilderToolkit, Generic[T]):
     
     def __init__(
             self,
-            assembler: [QuadrantAssembler[T]],
-            root_certifier: [QuadrantRootCertifier[T]],
+            assembler: QuadrantAssembler[T],
+            root_certifier: QuadrantRootCertifier[T],
     ):
         """
         Args:
@@ -49,8 +49,8 @@ class QuadrantBuilderToolkit(SpaceBuilderToolkit, Generic[T]):
 
     @property
     def assembler(self) -> [QuadrantAssembler[T]]:
-        return cast([QuadrantAssembler[T]], super()._assembler)
+        return cast(QuadrantAssembler[T], super()._assembler)
         
     @property
-    def root_certifier(self) -> [QuadrantRootCertifier[T]]:
-        return cast([QuadrantRootCertifier[T]], super()._root_certifier)
+    def root_certifier(self) -> QuadrantRootCertifier[T]:
+        return cast(QuadrantRootCertifier[T], super()._root_certifier)

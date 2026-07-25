@@ -37,8 +37,10 @@ class NortheastQuadrantBuilderToolkit(QuadrantBuilderToolkit[NortheastQuadrant])
     
     def __init__(
             self,
-            assembler: Optional[NortheastQuadrantAssembler] | None = NortheastQuadrantAssembler(),
-            root_certifier: Optional[NortheastQuadrantRootCertifier] |  None = NortheastQuadrantRootCertifier(),
+            assembler: Optional[NortheastQuadrantAssembler] |
+                       None = NortheastQuadrantAssembler(),
+            root_certifier: Optional[NortheastQuadrantRootCertifier] |
+                            None = NortheastQuadrantRootCertifier(),
     ):
         """
         Args:
