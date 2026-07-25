@@ -89,7 +89,7 @@ class TeamDatabase(Database[Team]):
     
     @property
     def is_empty(self) -> bool:
-        return self.data_service.is_empty
+        return self.data_service.are_no_recurrences
     
     @property
     def current_team(self) -> Optional[Team]:

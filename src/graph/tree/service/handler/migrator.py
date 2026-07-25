@@ -81,7 +81,7 @@ class NodeTreeStackMigrator:
                 )
             )
         # Handle the case that the tree has no branches.
-        if node_tree.is_empty:
+        if node_tree.are_no_recurrences:
             return BuildResult.success(node_stack_service)
             
         # --- Process the insertions from each branch.---#

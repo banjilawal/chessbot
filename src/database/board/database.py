@@ -91,7 +91,7 @@ class BoardDatabase(Database[Board]):
     
     @property
     def is_empty(self) -> bool:
-        return self._board_database_core.is_empty
+        return self._board_database_core.are_no_recurrences
     
     @LoggingLevelRouter.monitor
     def add_unique_board(self, board: Board) -> InsertionResult[Board]:

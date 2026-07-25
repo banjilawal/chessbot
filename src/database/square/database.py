@@ -115,7 +115,7 @@ class SquareDatabase(Database[Square]):
     
     @property
     def is_empty(self) -> bool:
-        return self._stack_service.is_empty
+        return self._stack_service.are_no_recurrences
     
     @property
     def token_map(self) -> dict[Token, Square]:

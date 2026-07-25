@@ -18,7 +18,7 @@ from space import SouthAxis
 
 
 
-class SouthRecurrence(AxisRecurrence[SouthAxis]):
+class SouthAxisRecurrence(AxisRecurrence[SouthAxis]):
     """
     Role:
         -   Computation

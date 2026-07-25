@@ -12,7 +12,7 @@ version: 1.0.1
 # Packages
 from .east import *
 from .north import *
-from .west import *
+from .south import *
 from .west import *
 
 # Modules

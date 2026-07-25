@@ -205,7 +205,7 @@ class HomeDetectorBootstrapper(DetectorBootstrapper):
                 )
             )
         # Handle the case that, the opening square is not found.
-        if home_search_result.is_empty:
+        if home_search_result.are_no_recurrences:
             # Send the exception chain on failure.
             return Result.failure(
                 HomeDetectorBootstrapperException(

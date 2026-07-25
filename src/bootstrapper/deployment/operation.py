@@ -202,7 +202,7 @@ class TokenDeploymentPrimer(Operation[Token]):
                 )
             )
         # Handle the case that, the token's square is not found.
-        if home_square_search_result.is_empty:
+        if home_square_search_result.are_no_recurrences:
             # Send the exception chain on failure.
             return SearchResult.failure(
                 exception=TokenDeploymentException(

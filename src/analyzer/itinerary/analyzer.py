@@ -88,7 +88,7 @@ class ItineraryAnalyzer:
                 )
             )
         # Handle the case that, the destination is not occupied.
-        if itinerary.destination.is_empty:
+        if itinerary.destination.are_no_recurrences:
             return AnalysisResult.completed(
                 ManeuverApproval(
                     recipient=itinerary.token,

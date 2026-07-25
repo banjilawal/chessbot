@@ -122,7 +122,7 @@ class SquareRayBuilder(Builder[SquareRay]):
                 )
             )
         # Handle the case that, a square is not found.
-        if search_result.is_empty:
+        if search_result.are_no_recurrences:
             # Send the exception chain on failure.
             SearchResult.failure(
                 SquareRayBuilderException(

@@ -144,7 +144,7 @@ class FormationService(HashService[Formation]):
                 )
             )
         # Handle the case that, no square was found.
-        if square_search_result.is_empty:
+        if square_search_result.are_no_recurrences:
             # Send the exception chain on failure.
             return SearchResult.failure(
                 FormationServiceException(

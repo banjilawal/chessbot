@@ -129,10 +129,10 @@ class TeamTokenRelationAnalyzer(RelationAnalyzer[Team, Token]):
                     ex=token_search_result.exception,
                 )
             )
-        if token.team != team and token_search_result.is_empty:
+        if token.team != team and token_search_result.are_no_recurrences:
             return AnalysisResult.success(RelationReport.no_relation())
         
-        if token.team == team and token_search_result.is_empty:
+        if token.team == team and token_search_result.are_no_recurrences:
             return AnalysisResult.success(RelationReport.registration_missing(satellite=token))
         
         if token.team != team and token_search_result.is_success:

@@ -90,7 +90,7 @@ class LaunchAttack:
                 )
             )
         # Handle the case that, the destination is not empty.
-        if report.target_square.is_empty:
+        if report.target_square.are_no_recurrences:
             # Send the exception chain on failure.
             return EventResult.failure(
                 AttackException(

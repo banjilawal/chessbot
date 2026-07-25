@@ -9,12 +9,14 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from typing import Dict, cast
+from typing import Dict, List, cast
 
-from mapper import AxisMappingFunction, AxisMappingFunctionStream
-from recurrence import EastAxisRecurrence, NorthAxisRecurrence, SpaceRecurrenceTable
-from space import Axis, AxisReservoir
-
+from mapper import AxisMappingFunctionStream
+from recurrence import (
+    AxisRecurrence, EastAxisRecurrence, NorthAxisRecurrence, SouthAxisRecurrence,
+    SpaceRecurrenceTable, WestAxisRecurrence
+)
+from space import Axis
 
 
 class AxisRecurrenceTable(SpaceRecurrenceTable[Axis]):
@@ -33,39 +35,46 @@ class AxisRecurrenceTable(SpaceRecurrenceTable[Axis]):
     Super Class:
     """
     _space_mapping_function_stream: AxisMappingFunctionStream
-    _recurrence_table: Dict[str, AxisReservoir]
+    _recurrence_table: Dict[str, AxisRecurrence]
     
     def __init__(
             self,
-            space_mapping_function_stream: AxisMappingFunctionStream[T]
+            space_mapping_function_stream: AxisMappingFunctionStream
     ):
         """
         Args:
             space_mapping_function_stream: AxisMappingFunctionStream[T]
         """
         super().__init__(space_mapping_function_stream=space_mapping_function_stream)
-        
-        map_stream = cast(AxisMappingFunctionStream, space_mapping_function_stream)
         self._space_mapping_function_stream = space_mapping_function_stream
         
-        east_axis = map_stream.space_reservoir.east
-        north_axis = map_stream.space_reservoir.north
-        south_axis = map_stream.space_reservoir.south
-        west_axis = map_stream.space_reservoir.west
+        # Make an independent copy for filing the recurrence table.
+        map_stream = cast(AxisMappingFunctionStream, space_mapping_function_stream)
         
-        east_tuple = map_stream.east_axis_map_tuple
-        north_tuple = map_stream.north_axis_map_tuple
-        west_tuple = map_stream.west_axis_map_tuple
-        south_tuple = map_stream.south_axis_map_tuple
-        
-        
-        self._recurrence_table{
-            "east": EastAxisRecurrence(
-                space=east_tuple[0],
-                space_mapping_function=east_tuple[1]
-            )
-            
-        }
+        # Add the eastern recurrence entry.
+        space, space_mapping_function = map_stream.east_axis_map_tuple
+        self._recurrence_table["east"] = EastAxisRecurrence(
+                space=space,
+                space_mapping_function=space_mapping_function
+        )
+        # Add the northern recurrence entry.
+        space, space_mapping_function = map_stream.north_axis_map_tuple
+        self._recurrence_table["north"] = NorthAxisRecurrence(
+                space=space,
+                space_mapping_function=space_mapping_function
+        )
+        # Add the southern recurrence entry.
+        space, space_mapping_function = map_stream.south_axis_map_tuple
+        self._recurrence_table["south"] = SouthAxisRecurrence(
+            space=space,
+            space_mapping_function=space_mapping_function
+        )
+        # Add the western recurrence entry.
+        space, space_mapping_function = map_stream.west_axis_map_tuple
+        self._recurrence_table["north"] = WestAxisRecurrence(
+            space=space,
+            space_mapping_function=space_mapping_function
+        )
     
     @property
     def space_mapping_function_stream(self) -> AxisMappingFunctionStream[T]:
@@ -75,22 +84,50 @@ class AxisRecurrenceTable(SpaceRecurrenceTable[Axis]):
         )
     
     @property
-    @abstractmethod
-    def table_size(self) -> int:
-        pass
+    def number_of_recurrences(self) -> int:
+        return len(self._recurrence_table)
     
     @property
-    @abstractmethod
-    def is_empty(self) -> bool:
-        pass
+    def are_no_recurrences(self) -> bool:
+        return self.number_of_recurrences == 0
     
     @property
-    @abstractmethod
-    def is_not_empty(self) -> bool:
-        pass
+    def recurrences_exist(self) -> bool:
+        return not self.are_no_recurrences
     
     @property
-    @abstractmethod
     def iterator(self) -> iter:
-        pass
+        recurrences: List[AxisRecurrence] = []
+        
+        for key in self._recurrence_table.keys():
+            recurrences.append(self._recurrence_table[key])
+        return recurrences.__iter__()
+    
+    @property
+    def east_axis_recurrence(self) -> EastAxisRecurrence:
+        return cast(
+            EastAxisRecurrence,
+            self._recurrence_table["east"]
+        )
+    
+    @property
+    def north_axis_recurrence(self) -> NorthAxisRecurrence:
+        return cast(
+            NorthAxisRecurrence,
+            self._recurrence_table["north"]
+        )
+    
+    @property
+    def south_axis_recurrence(self) -> SouthAxisRecurrence:
+        return cast(
+            SouthAxisRecurrence,
+            self._recurrence_table["south"]
+        )
+    
+    @property
+    def west_axis_recurrence(self) -> WestAxisRecurrence:
+        return cast(
+            WestAxisRecurrence,
+            self._recurrence_table["west"]
+        )
 

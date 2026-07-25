@@ -124,7 +124,7 @@ class SoftwareLicense:
     @property
     def is_not_deployed(self) -> bool:
         return (
-                self.positions.is_empty and
+                self.positions.are_no_recurrences and
                 self._deployment_software == DeploymentSoftware.NOT_DEPLOYED
         )
     

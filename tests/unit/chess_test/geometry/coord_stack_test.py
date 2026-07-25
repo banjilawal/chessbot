@@ -80,18 +80,18 @@ class CoordinateStackTest(unittest.TestCase):
   def test_is_empty_corresponds_to_zero_stack_size(self):
     coordinate_stack = CoordinateStack()
 
-    self.assertTrue(coordinate_stack.is_empty() and coordinate_stack.rule_count() == 0)
+    self.assertTrue(coordinate_stack.are_no_recurrences() and coordinate_stack.rule_count() == 0)
 
   def test_is_empty_false_when_stack_has_items(self):
     coordinate_stack = CoordinateStack()
     coordinate_stack.search_service(Coord(row=0, column=0))
 
-    self.assertTrue(not coordinate_stack.is_empty() and coordinate_stack.rule_count() > 0)
+    self.assertTrue(not coordinate_stack.are_no_recurrences() and coordinate_stack.rule_count() > 0)
 
   def test_if_stack_Is_empty_then_current_coordinate_is_null(self):
     coordinate_stack = CoordinateStack()
     self.assertTrue(
-      coordinate_stack.is_empty() and coordinate_stack.current_coord is None
+        coordinate_stack.are_no_recurrences() and coordinate_stack.current_coord is None
     )
 
 

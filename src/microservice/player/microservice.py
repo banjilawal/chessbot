@@ -106,7 +106,7 @@ class PlayerService(Microservice[Player]):
                 )
             )
         # Handle the case that, the owner does not have any teams.
-        if player.teams.is_empty:
+        if player.teams.are_no_recurrences:
             # Send the exception chain on failure.
             return DeletionResult.failure(
                 PlayerServiceException(

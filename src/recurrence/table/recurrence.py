@@ -53,17 +53,17 @@ class SpaceRecurrenceTable(ABC, Generic[T]):
     
     @property
     @abstractmethod
-    def table_size(self) -> int:
+    def number_of_recurrences(self) -> int:
         pass
     
     @property
     @abstractmethod
-    def is_empty(self) -> bool:
+    def are_no_recurrences(self) -> bool:
         pass
     
     @property
     @abstractmethod
-    def is_not_empty(self) -> bool:
+    def recurrences_exist(self) -> bool:
         pass
     
     @property

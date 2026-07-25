@@ -223,7 +223,7 @@ class TeamAssemblyPrimer(AssemblyPrimer[Team]):
                     ex=slot_search_result.exception,
                 )
             )
-        if not slot_search_result.is_empty:
+        if not slot_search_result.are_no_recurrences:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 PrimingTeamAssemblyException(

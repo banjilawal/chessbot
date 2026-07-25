@@ -276,7 +276,7 @@ class EdgeFinder(StackSearchRouter[Edge]):
         Raises:
             None
         """
-        matches = [edge for edge in dataset if edge.is_empty]
+        matches = [edge for edge in dataset if edge.are_no_recurrences]
         # Handle the nothing found case.
         if len(matches) == 0:
             return SearchResult.empty()

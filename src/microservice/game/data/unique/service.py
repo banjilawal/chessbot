@@ -70,7 +70,7 @@ class UniqueGameDataService(Database[Game]):
     
     @property
     def is_empty(self) -> bool:
-        return self.data_service.is_empty
+        return self.data_service.are_no_recurrences
     
     @LoggingLevelRouter.monitor
     def add_game(self, game: Game) -> InsertionResult[Game]:

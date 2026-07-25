@@ -59,7 +59,7 @@ class BoardResourceValidator(Validator[Square, Board]):
       environment = cast(Board, environment_validation.payload)
 
       search_result = BoardSquareFinder.search_service(board=environment, search_context=BoardContext(id=resource.id))
-      if search_result.is_empty():
+      if search_result.are_no_recurrences():
         return ValidationResult.failure(
           SquareInvariantBreachException(f"{method}: {SquareInvariantBreachException.MSG}")
         )
