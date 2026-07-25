@@ -132,7 +132,7 @@ class QuadrantRecurrenceTable(SpaceRecurrenceTable[Quadrant]):
         )
     
     @property
-    def type_recurrence_dict(self) -> Dict[Type[Quadrant], QuadrantRecurrence]:
+    def type_recurrence_dict(self) -> Dict[Type[QuadrantRecurrence], QuadrantRecurrence]:
         return {
             Type[NortheastQuadrantRecurrence]: self.northeast_quadrant_recurrence,
             Type[NorthwestQuadrantRecurrence]: self.northwest_quadrant_recurrence,

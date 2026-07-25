@@ -9,23 +9,24 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from typing import List, Optional, cast
+from typing import List, Optional, Type, cast
 
 from container import VectorSet
 from recurrence.table.quadrant.recurrence import QuadrantRecurrenceTable
 from result import ComputationResult
+from sequence.generator.sequence import VectorSequenceGenerator
 from toolkit import MathToolkit
 from util import LoggingLevelRouter
 
 
-class BishopPatternGenerator:
+class BishopVectorSetGenerator:
     _math: MathToolkit
-    _sequence_generator: BishopPatternGenerator
+    _sequence_generator: VectorSequenceGenerator
     
     def __init__(
             self, 
             math_toolkit: Optional[MathToolkit] | None = MathToolkit(),
-            vector_sequence_generator:  Optional[BishopPatternGenerator] | None = BishopPatternGenerator(),
+            vector_sequence_generator:  Optional[VectorSequenceGenerator] | None = VectorSequenceGenerator(),
     ):
         """
         Args:
@@ -55,10 +56,10 @@ class BishopPatternGenerator:
                 ),
             )
         # --- Cast the validation product and setup for the iteration. ---#
-        recurrences  = cast(Recurrence, validation.payload)
+        recurrences  = cast(QuadrantRecurrenceTable, validation.payload)
         solutions: List[VectorSet] = []
         
-        computation = self.sequence_generator.execute(recurrences.northeast)
+        computation = self.sequence_generator.execute(recurrences.northwest_quadrant_recurrence)
         if computation.is_failure:
             # Send an exception chain in the result.
             return ComputationResult.failure(
@@ -74,7 +75,7 @@ class BishopPatternGenerator:
         solutions.append(cast(VectorSet, computation.payload))
 
 
-        computation = self.sequence_generator.execute(recurrences.northwest)
+        computation = self.sequence_generator.execute(recurrences.northeast_quadrant_recurrence)
         if computation.is_failure:
             # Send an exception chain in the result.
             return ComputationResult.failure(
@@ -88,4 +89,38 @@ class BishopPatternGenerator:
                 ),
             )
         solutions.append(cast(VectorSet, computation.payload))
+        
+        computation = self.sequence_generator.execute(recurrences.southeast_quadrant_recurrence)
+        if computation.is_failure:
+            # Send an exception chain in the result.
+            return ComputationResult.failure(
+                BishopPatternGeneratorException(
+                    cls_mthd=method,
+                    cls_name=self.__class__.__name__,
+                    msg=BishopPatternGeneratorException.MSG,
+                    err_code=BishopPatternGeneratorException.ERR_CODE,
+                    mthd_rslt_type=MethodResultType.COMPUTATION_RESULT,
+                    ex=computation.exception,
+                ),
+            )
+        solutions.append(cast(VectorSet, computation.payload))
+        
+        computation = self.sequence_generator.execute(recurrences.southwest_quadrant_recurrence)
+        if computation.is_failure:
+            # Send an exception chain in the result.
+            return ComputationResult.failure(
+                BishopPatternGeneratorException(
+                    cls_mthd=method,
+                    cls_name=self.__class__.__name__,
+                    msg=BishopPatternGeneratorException.MSG,
+                    err_code=BishopPatternGeneratorException.ERR_CODE,
+                    mthd_rslt_type=MethodResultType.COMPUTATION_RESULT,
+                    ex=computation.exception,
+                ),
+            )
+        solutions.append(cast(VectorSet, computation.payload))
+        return ComputationResult.success(solutions)
+
+        
+        
     
