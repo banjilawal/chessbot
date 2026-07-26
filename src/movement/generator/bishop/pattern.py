@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import List, Optional, Type, cast
 
 from container import VectorSet
-from err import NullException
+from err import BishopPatternGeneratorException
 from math import VectorSequenceGenerator
 from recurrence import QuadrantRecurrenceTable
 from result import ComputationResult, MethodResultType
@@ -22,7 +22,7 @@ from util import LoggingLevelRouter
 from validator import PrimingValidator
 
 
-class BishopVectorSetGenerator:
+class BishopPatternGenerator:
     _math: MathToolkit
     _sequence_generator: VectorSequenceGenerator
     _priming_validator: PrimingValidator
@@ -50,7 +50,7 @@ class BishopVectorSetGenerator:
         validation = self._priming_validator.execute(
             candidate=recurrence_table,
             target=Type[QuadrantRecurrenceTable],
-            null_exception=NullException(),
+            null_exception=BishopPatternNullException(),
         )
         if validation.is_failure:
             # Send an exception chain in the result.

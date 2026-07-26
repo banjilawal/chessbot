@@ -13,4 +13,4 @@ version: 1.0.1
 
 
 # Modules
-from .movement import KnightOffsetPattern
+from .exception import KnightOffsetPatternException
