@@ -1,7 +1,7 @@
 # src/err/movement/offset/knight/pattern.py
 
 """
-Module: movement.offset.knight.pattern
+Module: err.movement.offset.knight.pattern
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

@@ -1,7 +1,7 @@
 # src/err/movement/pawn/pattern.py
 
 """
-Module: movement.pawn.pattern
+Module: err.movement.pawn.pattern
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

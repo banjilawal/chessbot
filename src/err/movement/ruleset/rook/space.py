@@ -1,7 +1,7 @@
 # src/err/movement/ruleset/rook/pattern.py
 
 """
-Module: movement.ruleset.rook.pattern
+Module: err.movement.ruleset.rook.pattern
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

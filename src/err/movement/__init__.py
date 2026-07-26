@@ -1,13 +1,13 @@
 # src/err/movement/__init__.py
 
 """
-Module: movement.__init__
+Module: err.movement.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
 """
 
-# =========== MOVEMENT PACKAGE ===========#
+# =========== ERR.MOVEMENT PACKAGE ===========#
 
 # Packages
 from .generator import *
@@ -18,4 +18,4 @@ from .ruleset import *
 
 
 # Modules
-from .exception import MovementPattern
+from .exception import MovementPatternException

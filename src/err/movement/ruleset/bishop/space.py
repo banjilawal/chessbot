@@ -1,7 +1,7 @@
 # src/err/movement/ruleset/bishop/pattern.py
 
 """
-Module: movement.ruleset.bishop.pattern
+Module: err.movement.ruleset.bishop.pattern
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

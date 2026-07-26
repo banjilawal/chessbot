@@ -1,7 +1,7 @@
-# src/err/null/exception.py
+# src/err/err/movement/traversal/queen/exception.py
 
 """
-Module: err.null.exception
+Module: err.movement.traversal.queen.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,23 +10,23 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import ChessException
+from err import TraversalPatternException
 from result import MethodResultType
 
-
 __all__ = [
-    # ======================# NULL_ERROR #======================#
-    "NullException",
+    # ======================# QUEEN_TRAVERSAL_PATTERN_ERROR #======================#
+    "QueenTraversalPatternException",
 ]
 
-# ======================# NULL_ERROR #======================#
-class NullException(ChessException):
+
+# ======================# QUEEN_TRAVERSAL_PATTERN_ERROR #======================#
+class QueenTraversalPatternException(TraversalPatternException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required object is null.
+        1.  Indicate that an error occurred in a QueenTraversalPattern instance.
 
     Attributes:
         msg: Optional[str]
@@ -37,14 +37,14 @@ class NullException(ChessException):
         cls_mthd: Optional[str]
         err_code: Optional[str]
         MTHD_RSLT_TYPE: Optional[MethodResultType]
-            
+
     Provides:
 
     Super Class:
-        ChessException
+        TraversalPatternException
     """
-    MSG = "Object cannot be null."
-    ERR_CODE = "NULL_ERROR"
+    MSG = "QueenTraversalPattern."
+    ERR_CODE = "QUEEN_TRAVERSAL_PATTERN_ERROR"
     
     def __init__(
             self,

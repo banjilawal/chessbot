@@ -1,7 +1,7 @@
 # src/err/movement/generator/ruleset/pattern.py
 
 """
-Module: movement.generator.ruleset.pattern
+Module: err.movement.generator.ruleset.pattern
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

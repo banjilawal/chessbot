@@ -1,13 +1,13 @@
 # src/err/movement/ruleset/rook/__init__.py
 
 """
-Module: movement.ruleset.rook.__init__
+Module: err.movement.ruleset.rook.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
 """
 
-# =========== MOVEMENT.RULESET.ROOK PACKAGE ===========#
+# =========== ERR.MOVEMENT.RULESET.ROOK PACKAGE ===========#
 
 # Packages
 

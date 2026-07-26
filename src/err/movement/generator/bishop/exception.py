@@ -1,7 +1,7 @@
-# src/err/null/exception.py
+# src/err/err/movement/generator/bishop/exception.py
 
 """
-Module: err.null.exception
+Module: err.movement.generator.bishop.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,23 +10,23 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import ChessException
+from err import PatternGeneratorException
 from result import MethodResultType
 
-
 __all__ = [
-    # ======================# NULL_ERROR #======================#
-    "NullException",
+    # ======================# BISHOP_PATTERN_GENERATOR_FAILURE #======================#
+    "BishopPatternGeneratorException",
 ]
 
-# ======================# NULL_ERROR #======================#
-class NullException(ChessException):
+
+# ======================# BISHOP_PATTERN_GENERATOR_FAILURE #======================#
+class BishopPatternGeneratorException(PatternGeneratorException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required object is null.
+        1.  Indicate that a BishopPatternGenerator did not complete its task.
 
     Attributes:
         msg: Optional[str]
@@ -37,14 +37,14 @@ class NullException(ChessException):
         cls_mthd: Optional[str]
         err_code: Optional[str]
         MTHD_RSLT_TYPE: Optional[MethodResultType]
-            
+
     Provides:
 
     Super Class:
-        ChessException
+        PatternGeneratorException
     """
-    MSG = "Object cannot be null."
-    ERR_CODE = "NULL_ERROR"
+    MSG = "BishopPatternGenerator failure."
+    ERR_CODE = "BISHOP_PATTERN_GENERATOR_FAILURE"
     
     def __init__(
             self,
@@ -80,3 +80,7 @@ class NullException(ChessException):
             cls_mthd=cls_mthd,
             mthd_rslt_type=mthd_rslt_type,
         )
+
+        
+        
+    

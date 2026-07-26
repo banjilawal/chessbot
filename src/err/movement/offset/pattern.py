@@ -1,7 +1,7 @@
 # src/err/movement/offset/pattern.py
 
 """
-Module: movement.pattern
+Module: err.movement.pattern
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

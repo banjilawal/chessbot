@@ -27,7 +27,7 @@ class ModelBuilderException(BuilderException):
         -   Failure Tracing
 
     Responsibilities:
-        1.  Indicate that a build from completing.
+        1.  Indicate that a ModelBuilder did not complete its task..
 
     Attributes:
         msg: str

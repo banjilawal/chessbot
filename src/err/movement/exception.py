@@ -1,4 +1,4 @@
-# src/err/err/movement/__init__.py
+# src/err/err/movement/exception.py
 
 """
 Module: err.movement.exception
@@ -26,7 +26,7 @@ class MovementPatternException(ChessException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required object is movement.
+        1.  Indicate that an error occurred in a MovementPattern instance.
 
     Attributes:
         msg: Optional[str]
@@ -43,7 +43,7 @@ class MovementPatternException(ChessException):
     Super Class:
         ChessException
     """
-    MSG = "Data-Holder is movement."
+    MSG = "MovementPattern error."
     ERR_CODE = "MOVEMENT_PATTERN_ERROR"
     
     def __init__(

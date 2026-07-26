@@ -1,7 +1,7 @@
 # src/err/movement/ruleset/pattern.py
 
 """
-Module: movement.ruleset.pattern
+Module: err.movement.ruleset.pattern
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

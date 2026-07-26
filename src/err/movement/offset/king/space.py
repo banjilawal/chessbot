@@ -1,7 +1,7 @@
 # src/err/movement/offset/king/pattern.py
 
 """
-Module: movement.offset.king.pattern
+Module: err.movement.offset.king.pattern
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

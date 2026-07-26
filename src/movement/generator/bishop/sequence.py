@@ -39,6 +39,7 @@ class BishopVectorSetGenerator:
             vector_sequence_generator: Optional[BishopPatternGenerator]
         """
         self._math = math_toolkit
+        self._priming_validator = priming_validator
         self.sequence_generator = vector_sequence_generator
         
     
