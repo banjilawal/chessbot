@@ -37,7 +37,7 @@ class NodeContextNullException(ContextNullException):
             cls_name: Optional[str]
             cls_mthd: Optional[str]
             err_code: Optional[str]
-            MTHD_RSLT_TYPE: Optional[MethodResultType]
+            mthd_rslt_type: Optional[MethodResultType]
             
     Provides:
 
@@ -67,7 +67,7 @@ class NodeContextNullException(ContextNullException):
             cls_name: Optional[Str]
             cls_mthd: Optional[str]
             err_code: Optional[str]
-            MTHD_RSLT_TYPE: Optional[MethodResultType]
+            mthd_rslt_type: Optional[MethodResultType]
         """
         msg = msg or self.MSG
         err_code = err_code or self.ERR_CODE

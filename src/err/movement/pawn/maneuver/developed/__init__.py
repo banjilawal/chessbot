@@ -1,4 +1,4 @@
-# src/err/movement/pawn/developed/__init__.py
+# src/err/movement/pawn/maneuver/developed/__init__.py
 
 """
 Module: err.movement.pawn.maneuver.developed.__init__
@@ -7,10 +7,10 @@ Created: 2026-04-03
 version: 1.0.1
 """
 
-# =========== ERR.MOVEMENT.PAWN.MANEUVER.DEVELOPED PACKAGE ===========#
+# =========== ERR.MOVEMENT.PAWN.maneuver.developed PACKAGE ===========#
 
 # Packages
 
 
 # Modules
-from .pattern import DevelopedManeuverOffsetPattern
+from .exception import developedmaneuverOffsetPatternException

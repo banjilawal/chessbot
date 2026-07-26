@@ -14,7 +14,6 @@ from .generator import *
 from .offset import *
 from .pawn import *
 from .traversal import *
-from .ruleset import *
 
 
 # Modules

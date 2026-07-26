@@ -1,4 +1,4 @@
-# src/err/movement/pawn/opening/__init__.py
+# src/err/movement/pawn/maneuver/opening/__init__.py
 
 """
 Module: err.movement.pawn.maneuver.opening.__init__
@@ -7,10 +7,10 @@ Created: 2026-04-03
 version: 1.0.1
 """
 
-# =========== ERR.MOVEMENT.PAWN.MANEUVER.OPENING PACKAGE ===========#
+# =========== ERR.MOVEMENT.PAWN.maneuver.OPENING PACKAGE ===========#
 
 # Packages
 
 
 # Modules
-from .pattern import OpeningManeuverOffsetPattern
+from .exception import OpeningmaneuverOffsetPatternException

@@ -36,14 +36,14 @@ class BishopTraversalPatternException(TraversalPatternException):
         cls_name: Optional[str]
         cls_mthd: Optional[str]
         err_code: Optional[str]
-        MTHD_RSLT_TYPE: Optional[MethodResultType]
+        mthd_rslt_type: Optional[MethodResultType]
 
     Provides:
 
     Super Class:
         TraversalPatternException
     """
-    MSG = "BishopTraversalPattern."
+    MSG = "BishopTraversalPattern error."
     ERR_CODE = "BISHOP_TRAVERSAL_PATTERN_ERROR"
     
     def __init__(
@@ -66,7 +66,7 @@ class BishopTraversalPatternException(TraversalPatternException):
             cls_name: Optional[Str]
             cls_mthd: Optional[str]
             err_code: Optional[str]
-            MTHD_RSLT_TYPE: Optional[MethodResultType]
+            mthd_rslt_type: Optional[MethodResultType]
         """
         msg = msg or self.MSG
         err_code = err_code or self.ERR_CODE

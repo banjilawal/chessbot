@@ -7,10 +7,10 @@ Created: 2026-04-03
 version: 1.0.1
 """
 
-# =========== ERR.MOVEMENT.PAWN.ATTACK.DEVELOPED PACKAGE ===========#
+# =========== ERR.MOVEMENT.PAWN.ATTACK.developed PACKAGE ===========#
 
 # Packages
 
 
 # Modules
-from .pattern import DevelopedAttackOffsetPattern
+from .exception import developedAttackOffsetPatternException

@@ -36,7 +36,7 @@ class TokenNullException(StateModelNullException):
         cls_name: Optional[str]
         cls_mthd: Optional[str]
         err_code: Optional[str]
-        MTHD_RSLT_TYPE: Optional[MethodResultType]
+        mthd_rslt_type: Optional[MethodResultType]
         
     Provides:
 

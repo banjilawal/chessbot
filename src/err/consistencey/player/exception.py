@@ -36,7 +36,7 @@ class PlayerConsistencyCheckerException(ConsistencyCheckerException):
         cls_name: Optional[str]
         cls_mthd: Optional[str]
         err_code: Optional[str]
-        Mthd_Rslt_Type: Optional[MethodResultType]
+        mthd_rslt_type: Optional[MethodResultType]
         
     Provides:
 
