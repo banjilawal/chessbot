@@ -14,19 +14,19 @@ from err import PawnOffsetPatternException
 from result import MethodResultType
 
 __all__ = [
-    # ======================# maneuver_OFFSET_PATTERN_ERROR #======================#
-    "maneuverOffsetPatternException",
+    # ======================# MANEUVER_OFFSET_PATTERN_ERROR #======================#
+    "ManeuverOffsetPatternException",
 ]
 
 
-# ======================# maneuver_OFFSET_PATTERN_ERROR #======================#
-class maneuverOffsetPatternException(PawnOffsetPatternException):
+# ======================# MANEUVER_OFFSET_PATTERN_ERROR #======================#
+class ManeuverOffsetPatternException(PawnOffsetPatternException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an error occurred in an maneuverOffsetPattern instance.
+        1.  Indicate that an error occurred in an ManeuverOffsetPattern instance.
 
     Attributes:
         msg: Optional[str]
@@ -43,8 +43,8 @@ class maneuverOffsetPatternException(PawnOffsetPatternException):
     Super Class:
         PawnOffsetPatternException
     """
-    MSG = "maneuverOffsetPattern error."
-    ERR_CODE = "maneuver_OFFSET_PATTERN_ERROR"
+    MSG = "ManeuverOffsetPattern error."
+    ERR_CODE = "MANEUVER_OFFSET_PATTERN_ERROR"
     
     def __init__(
             self,

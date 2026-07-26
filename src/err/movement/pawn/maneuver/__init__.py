@@ -7,7 +7,7 @@ Created: 2026-04-03
 version: 1.0.1
 """
 
-# =========== ERR.MOVEMENT.PAWN.maneuver PACKAGE ===========#
+# =========== ERR.MOVEMENT.PAWN.MANEUVER PACKAGE ===========#
 
 # Packages
 from .developed import *
@@ -15,4 +15,4 @@ from .opening import *
 
 
 # Modules
-from .exception import maneuverOffsetPatternException
+from .exception import ManeuverOffsetPatternException

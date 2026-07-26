@@ -1,7 +1,7 @@
-# src/err/err/movement/offset/pawn/attack/developed/exception.py
+# src/err/movement/err/movement/exception.py
 
 """
-Module: err.movement.offset.pawn.attack.developed.exception
+Module: err.null.movement.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,23 +10,23 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import AttackOffsetPatternException
+from err import ChessException
 from result import MethodResultType
 
 __all__ = [
-    # ======================# DEVELOPED_ATTACK_OFFSET_PATTERN_ERROR #======================#
-    "DevelopedAttackOffsetPatternException",
+    # ======================# MOVEMENT_PATTERN_NULL_ERROR #======================#
+    "MovementPatternNullException",
 ]
 
 
-# ======================# DEVELOPED_ATTACK_OFFSET_PATTERN_ERROR #======================#
-class DevelopedAttackOffsetPatternException(AttackOffsetPatternException):
+# ======================# MOVEMENT_PATTERN_NULL_ERROR #======================#
+class MovementPatternNullException(ChessException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an error occurred in an DevelopedAttackOffsetPattern instance.
+        1.  Indicate that a required MovementPattern is null.
 
     Attributes:
         msg: Optional[str]
@@ -41,10 +41,10 @@ class DevelopedAttackOffsetPatternException(AttackOffsetPatternException):
     Provides:
 
     Super Class:
-        AttackOffsetPatternException
+        ChessException
     """
-    MSG = "DevelopedAttackOffsetPattern error."
-    ERR_CODE = "DEVELOPED_ATTACK_OFFSET_PATTERN_ERROR"
+    MSG = "MovementPattern cannot be null."
+    ERR_CODE = "MOVEMENT_PATTERN_NULL_ERROR"
     
     def __init__(
             self,
@@ -80,6 +80,3 @@ class DevelopedAttackOffsetPatternException(AttackOffsetPatternException):
             cls_mthd=cls_mthd,
             mthd_rslt_type=mthd_rslt_type,
         )
-   
-    
-    

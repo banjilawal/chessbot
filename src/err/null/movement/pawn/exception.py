@@ -1,7 +1,7 @@
-# src/err/err/movement/offset/pawn/attack/developed/exception.py
+# src/err/movement/err/movement/offset/pawn/exception.py
 
 """
-Module: err.movement.offset.pawn.attack.developed.exception
+Module: err.null.movement.offset.pawn.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,23 +10,23 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import AttackOffsetPatternException
+from err import OffsetPatternNullException
 from result import MethodResultType
 
 __all__ = [
-    # ======================# DEVELOPED_ATTACK_OFFSET_PATTERN_ERROR #======================#
-    "DevelopedAttackOffsetPatternException",
+    # ======================# PAWN_OFFSET_PATTERN_NULL_ERROR #======================#
+    "PawnOffsetPatternNullException",
 ]
 
 
-# ======================# DEVELOPED_ATTACK_OFFSET_PATTERN_ERROR #======================#
-class DevelopedAttackOffsetPatternException(AttackOffsetPatternException):
+# ======================# PAWN_OFFSET_PATTERN_NULL_ERROR #======================#
+class PawnOffsetPatternNullException(OffsetPatternNullException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an error occurred in an DevelopedAttackOffsetPattern instance.
+        1.  Indicate that a required PawnOffsetPattern is null.
 
     Attributes:
         msg: Optional[str]
@@ -41,10 +41,10 @@ class DevelopedAttackOffsetPatternException(AttackOffsetPatternException):
     Provides:
 
     Super Class:
-        AttackOffsetPatternException
+        OffsetPatternNullException
     """
-    MSG = "DevelopedAttackOffsetPattern error."
-    ERR_CODE = "DEVELOPED_ATTACK_OFFSET_PATTERN_ERROR"
+    MSG = "PawnOffsetPattern cannot be null."
+    ERR_CODE = "PAWN_OFFSET_PATTERN_NULL_ERROR"
     
     def __init__(
             self,
@@ -80,6 +80,4 @@ class DevelopedAttackOffsetPatternException(AttackOffsetPatternException):
             cls_mthd=cls_mthd,
             mthd_rslt_type=mthd_rslt_type,
         )
-   
-    
     

@@ -1,7 +1,7 @@
-# src/err/err/movement/offset/pawn/maneuver/exception.py
+# src/err/err/movement/offset/pawn/maneuver/opening/exception.py
 
 """
-Module: err.movement.offset.pawn.maneuver.exception
+Module: err.movement.offset.pawn.maneuver.opening.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,23 +10,23 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import maneuverOffsetPatternException
+from err import ManeuverOffsetPatternException
 from result import MethodResultType
 
 __all__ = [
-    # ======================# maneuver_OFFSET_PATTERN_ERROR #======================#
-    "OpeningmaneuverOffsetPatternException",
+    # ======================# OPENING_MANEUVER_OFFSET_PATTERN_ERROR #======================#
+    "OpeningManeuverOffsetPatternException",
 ]
 
 
-# ======================# maneuver_OFFSET_PATTERN_ERROR #======================#
-class OpeningmaneuverOffsetPatternException(maneuverOffsetPatternException):
+# ======================# OPENING_MANEUVER_OFFSET_PATTERN_ERROR #======================#
+class OpeningManeuverOffsetPatternException(ManeuverOffsetPatternException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an error occurred in an OpeningmaneuverOffsetPattern instance.
+        1.  Indicate that an error occurred in an OpeningManeuverOffsetPattern instance.
 
     Attributes:
         msg: Optional[str]
@@ -41,10 +41,10 @@ class OpeningmaneuverOffsetPatternException(maneuverOffsetPatternException):
     Provides:
 
     Super Class:
-        maneuverOffsetPatternException
+        ManeuverOffsetPatternException
     """
-    MSG = "OpeningmaneuverOffsetPattern error."
-    ERR_CODE = "maneuver_OFFSET_PATTERN_ERROR"
+    MSG = "OpeningManeuverOffsetPattern error."
+    ERR_CODE = "OPENING_MANEUVER_OFFSET_PATTERN_ERROR"
     
     def __init__(
             self,

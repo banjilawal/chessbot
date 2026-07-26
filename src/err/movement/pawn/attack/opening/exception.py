@@ -1,7 +1,7 @@
-# src/err/err/movement/offset/pawn/attack/exception.py
+# src/err/err/movement/offset/pawn/attack/opening/exception.py
 
 """
-Module: err.movement.offset.pawn.attack.exception
+Module: err.movement.offset.pawn.attack.opening.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -14,12 +14,12 @@ from err import AttackOffsetPatternException
 from result import MethodResultType
 
 __all__ = [
-    # ======================# ATTACK_OFFSET_PATTERN_ERROR #======================#
+    # ======================# OPENING_ATTACK_OFFSET_PATTERN_ERROR #======================#
     "OpeningAttackOffsetPatternException",
 ]
 
 
-# ======================# ATTACK_OFFSET_PATTERN_ERROR #======================#
+# ======================# OPENING_ATTACK_OFFSET_PATTERN_ERROR #======================#
 class OpeningAttackOffsetPatternException(AttackOffsetPatternException):
     """
     Role:
@@ -44,7 +44,7 @@ class OpeningAttackOffsetPatternException(AttackOffsetPatternException):
         AttackOffsetPatternException
     """
     MSG = "OpeningAttackOffsetPattern error."
-    ERR_CODE = "ATTACK_OFFSET_PATTERN_ERROR"
+    ERR_CODE = "OPENING_ATTACK_OFFSET_PATTERN_ERROR"
     
     def __init__(
             self,

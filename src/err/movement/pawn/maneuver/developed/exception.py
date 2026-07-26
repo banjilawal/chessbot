@@ -1,7 +1,7 @@
-# src/err/err/movement/offset/pawn/maneuver/exception.py
+# src/err/err/movement/offset/pawn/maneuver/developed/exception.py
 
 """
-Module: err.movement.offset.pawn.maneuver.exception
+Module: err.movement.offset.pawn.maneuver.developed.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,23 +10,23 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import maneuverOffsetPatternException
+from err import ManeuverOffsetPatternException
 from result import MethodResultType
 
 __all__ = [
-    # ======================# maneuver_OFFSET_PATTERN_ERROR #======================#
-    "developedmaneuverOffsetPatternException",
+    # ======================# DEVELOPED_MANEUVER_OFFSET_PATTERN_ERROR #======================#
+    "DevelopedManeuverOffsetPatternException",
 ]
 
 
-# ======================# maneuver_OFFSET_PATTERN_ERROR #======================#
-class developedmaneuverOffsetPatternException(maneuverOffsetPatternException):
+# ======================# DEVELOPED_MANEUVER_OFFSET_PATTERN_ERROR #======================#
+class DevelopedManeuverOffsetPatternException(ManeuverOffsetPatternException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an error occurred in an developedmaneuverOffsetPattern instance.
+        1.  Indicate that an error occurred in an DevelopedManeuverOffsetPattern instance.
 
     Attributes:
         msg: Optional[str]
@@ -41,10 +41,10 @@ class developedmaneuverOffsetPatternException(maneuverOffsetPatternException):
     Provides:
 
     Super Class:
-        maneuverOffsetPatternException
+        ManeuverOffsetPatternException
     """
-    MSG = "developedmaneuverOffsetPattern error."
-    ERR_CODE = "maneuver_OFFSET_PATTERN_ERROR"
+    MSG = "DevelopedManeuverOffsetPattern error."
+    ERR_CODE = "DEVELOPED_MANEUVER_OFFSET_PATTERN_ERROR"
     
     def __init__(
             self,

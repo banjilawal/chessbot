@@ -1,7 +1,7 @@
-# src/err/err/movement/offset/pawn/attack/developed/exception.py
+# src/err/movement/err/movement/offset/pawn/maneuver/opening/exception.py
 
 """
-Module: err.movement.offset.pawn.attack.developed.exception
+Module: err.null.movement.offset.pawn.maneuver.opening.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,23 +10,23 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import AttackOffsetPatternException
+from err import ManeuverOffsetPatternNullException
 from result import MethodResultType
 
 __all__ = [
-    # ======================# DEVELOPED_ATTACK_OFFSET_PATTERN_ERROR #======================#
-    "DevelopedAttackOffsetPatternException",
+    # ======================# OPENING_MANEUVER_OFFSET_PATTERN_NULL_ERROR #======================#
+    "OpeningManeuverOffsetPatternNullException",
 ]
 
 
-# ======================# DEVELOPED_ATTACK_OFFSET_PATTERN_ERROR #======================#
-class DevelopedAttackOffsetPatternException(AttackOffsetPatternException):
+# ======================# OPENING_MANEUVER_OFFSET_PATTERN_NULL_ERROR #======================#
+class OpeningManeuverOffsetPatternNullException(ManeuverOffsetPatternNullException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an error occurred in an DevelopedAttackOffsetPattern instance.
+        1.  Indicate that an error occurred in an OpeningManeuverOffsetPattern is null.
 
     Attributes:
         msg: Optional[str]
@@ -41,10 +41,10 @@ class DevelopedAttackOffsetPatternException(AttackOffsetPatternException):
     Provides:
 
     Super Class:
-        AttackOffsetPatternException
+        ManeuverOffsetPatternNullException
     """
-    MSG = "DevelopedAttackOffsetPattern error."
-    ERR_CODE = "DEVELOPED_ATTACK_OFFSET_PATTERN_ERROR"
+    MSG = "OpeningManeuverOffsetPattern cannot be null."
+    ERR_CODE = "OPENING_MANEUVER_OFFSET_PATTERN_NULL_ERROR"
     
     def __init__(
             self,
