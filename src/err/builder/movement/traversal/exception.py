@@ -43,7 +43,7 @@ class TraversalPatternBuilderException(MovementPatternBuilderException):
     Super Class:
         MovementPatternBuilderException
     """
-    MSG = "TraversalPatternBuilder error."
+    MSG = "TraversalPatternBuilder failed."
     ERR_CODE = "TRAVERSAL_PATTERN_BUILDER_FAILURE"
     
     def __init__(

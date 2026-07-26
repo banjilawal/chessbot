@@ -43,7 +43,7 @@ class QueenTraversalPatternBuilderException(TraversalPatternBuilderException):
     Super Class:
         TraversalPatternBuilderException
     """
-    MSG = "QueenTraversalPattern.Builder error."
+    MSG = "QueenTraversalPattern.Builder failed."
     ERR_CODE = "QUEEN_TRAVERSAL_PATTERN_BUILDER_FAILURE"
     
     def __init__(

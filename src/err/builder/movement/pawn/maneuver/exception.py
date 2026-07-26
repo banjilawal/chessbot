@@ -43,7 +43,7 @@ class ManeuverOffsetPatternBuilderException(PawnOffsetPatternBuilderException):
     Super Class:
         PawnOffsetPatternBuilderException
     """
-    MSG = "ManeuverOffsetPatternBuilder error."
+    MSG = "ManeuverOffsetPatternBuilder failed."
     ERR_CODE = "MANEUVER_OFFSET_PATTERN_BUILDER_FAILURE"
     
     def __init__(

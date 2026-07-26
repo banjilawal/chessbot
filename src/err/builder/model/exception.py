@@ -15,12 +15,12 @@ from result import MethodResultType
 
 
 __all__ = [
-    # ======================# _MODEL_BUILDER_FAILURE #======================#
+    # ======================# MODEL_BUILDER_FAILURE #======================#
     "ModelBuilderException"
 ]
 
 
-# ======================# _MODEL_BUILDER_FAILURE #======================#
+# ======================# MODEL_BUILDER_FAILURE #======================#
 class ModelBuilderException(BuilderException):
     """
     Role:

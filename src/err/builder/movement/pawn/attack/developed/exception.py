@@ -43,7 +43,7 @@ class DevelopedAttackOffsetPatternBuilderException(AttackOffsetPatternBuilderExc
     Super Class:
         AttackOffsetPatternBuilderException
     """
-    MSG = "DevelopedAttackOffsetPatternBuilder error."
+    MSG = "DevelopedAttackOffsetPatternBuilder failed."
     ERR_CODE = "DEVELOPED_ATTACK_OFFSET_PATTERN_BUILDER_FAILURE"
     
     def __init__(

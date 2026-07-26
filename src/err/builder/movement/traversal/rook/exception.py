@@ -43,7 +43,7 @@ class RookTraversalPatternBuilderException(TraversalPatternBuilderException):
     Super Class:
         TraversalPatternBuilderException
     """
-    MSG = "RookTraversalPatternBuilder error."
+    MSG = "RookTraversalPatternBuilder failed."
     ERR_CODE = "ROOK_TRAVERSAL_PATTERN_BUILDER_FAILURE"
     
     def __init__(

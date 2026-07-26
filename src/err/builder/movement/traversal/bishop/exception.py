@@ -43,7 +43,7 @@ class BishopTraversalPatternBuilderException(TraversalPatternBuilderException):
     Super Class:
         TraversalPatternBuilderException
     """
-    MSG = "BishopTraversalPatternBuilder error."
+    MSG = "BishopTraversalPatternBuilder failed."
     ERR_CODE = "BISHOP_TRAVERSAL_PATTERN_BUILDER_FAILURE"
     
     def __init__(

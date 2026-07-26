@@ -43,7 +43,7 @@ class MovementPatternBuilderException(BuilderException):
     Super Class:
         BuilderException
     """
-    MSG = "MovementPatternBuilder error."
+    MSG = "MovementPatternBuilder failed."
     ERR_CODE = "MOVEMENT_PATTERN_BUILDER_FAILURE"
     
     def __init__(

@@ -43,7 +43,7 @@ class OffsetPatternBuilderException(MovementPatternBuilderException):
     Super Class:
         MovementPatternBuilderException
     """
-    MSG = "OffsetPatternBuilder error."
+    MSG = "OffsetPatternBuilder failed."
     ERR_CODE = "OFFSET_PATTERN_BUILDER_FAILURE"
     
     def __init__(

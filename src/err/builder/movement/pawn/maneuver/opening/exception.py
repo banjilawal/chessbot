@@ -43,7 +43,7 @@ class OpeningManeuverOffsetPatternBuilderException(ManeuverOffsetPatternBuilderE
     Super Class:
         ManeuverOffsetPatternBuilderException
     """
-    MSG = "OpeningManeuverOffsetPatternBuilder error."
+    MSG = "OpeningManeuverOffsetPatternBuilder failed."
     ERR_CODE = "OPENING_MANEUVER_OFFSET_PATTERN_BUILDER_FAILURE"
     
     def __init__(

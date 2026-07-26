@@ -43,7 +43,7 @@ class AttackOffsetPatternBuilderException(PawnOffsetPatternBuilderException):
     Super Class:
         PawnOffsetPatternBuilderException
     """
-    MSG = "AttackOffsetPatternBuilder error."
+    MSG = "AttackOffsetPatternBuilder failed."
     ERR_CODE = "ATTACK_OFFSET_PATTERN_BUILDER_FAILURE"
     
     def __init__(

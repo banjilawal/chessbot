@@ -18,6 +18,7 @@ from .model import *
 from .number import *
 from .operand import *
 from .query import *
+from .recurrence import *
 from .register import *
 from .space import *
 from .string import *

@@ -43,7 +43,7 @@ class KingOffsetPatternBuilderException(OffsetPatternBuilderException):
     Super Class:
         OffsetPatternBuilderException
     """
-    MSG = "KingOffsetPatternBuilder error."
+    MSG = "KingOffsetPatternBuilder failed."
     ERR_CODE = "KING_OFFSET_PATTERN_BUILDER_FAILURE"
     
     def __init__(
