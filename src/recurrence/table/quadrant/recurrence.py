@@ -14,12 +14,12 @@ from typing import Dict, List, Type, cast
 from mapper import QuadrantMappingFunctionStream
 from recurrence import (
     NorthwestQuadrantRecurrence, QuadrantRecurrence, NortheastQuadrantRecurrence,
-    SoutheastQuadrantRecurrence, SpaceRecurrenceTable, SouthwestQuadrantRecurrence
+    SoutheastQuadrantRecurrence, RecurrenceTable, SouthwestQuadrantRecurrence
 )
 from space import Quadrant
 
 
-class QuadrantRecurrenceTable(SpaceRecurrenceTable[Quadrant]):
+class QuadrantRecurrenceTable(RecurrenceTable[Quadrant]):
     """
     Role:
         -   Data Holder

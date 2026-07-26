@@ -55,7 +55,7 @@ class DisabledPawnPromotionConsistencyCheckerNullException(DisabledPawnException
             cls_name: Optional[str] | None = None,
             ex: Optional[Exception] | None = None,
             err_code: Optional[str] | None = None,
-            MTHD_RSLT_TYPE: Optional[MethodResultType] | None = None,
+            mthd_rslt_type: Optional[MethodResultType] | None = None,
     ):
         """
         args:

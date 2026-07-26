@@ -1,7 +1,7 @@
-# src/space/ruleset/bishop/space.py
+# src/movement/ruleset/bishop/pattern.py
 
 """
-Module: space.ruleset.bishop.space
+Module: movement.ruleset.bishop.pattern
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Dict
 
 from schema import Ruleset
-from space import TraversalPattern, TraversalRuleset
+from movement import TraversalPattern, TraversalRuleset
 
 
 class BishopTraversalRuleset(TraversalRuleset):

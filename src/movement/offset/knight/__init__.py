@@ -1,16 +1,16 @@
-# src/space/offset/knight/__init__.py
+# src/movement/offset/knight/__init__.py
 
 """
-Module: space.offset.knight.__init__
+Module: movement.offset.knight.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
 """
 
-# =========== SPACE.OFFSET.KNIGHT PACKAGE ===========#
+# =========== MOVEMENT.OFFSET.KNIGHT PACKAGE ===========#
 
 # Packages
 
 
 # Modules
-from .space import KnightOffsetPattern
+from .movement import KnightOffsetPattern

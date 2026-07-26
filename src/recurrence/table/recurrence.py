@@ -18,7 +18,7 @@ from mapper import SpaceMapFunctionStream
 T = TypeVar("T", bound="Space")
 
 
-class SpaceRecurrenceTable(ABC, Generic[T]):
+class RecurrenceTable(ABC, Generic[T]):
     """
     Role:
         -   Data Holder

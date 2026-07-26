@@ -1,13 +1,13 @@
-# src/space/pawn/attack/__init__.py
+# src/movement/pawn/attack/__init__.py
 
 """
-Module: space.pawn.attack.__init__
+Module: movement.pawn.attack.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
 """
 
-# =========== SPACE.PAWN.ATTACK PACKAGE ===========#
+# =========== MOVEMENT.PAWN.ATTACK PACKAGE ===========#
 
 # Packages
 from .developed import *
@@ -15,4 +15,4 @@ from .opening import *
 
 
 # Modules
-from .space import AttackOffsetPattern
+from .pattern import AttackOffsetPattern

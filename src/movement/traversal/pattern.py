@@ -1,7 +1,7 @@
-# src/space/offset/offset.py
+# src/movement/traversal/traversal.py
 
 """
-Module: space.offset.category.linear
+Module: movement.traversal.category.linear
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -9,15 +9,7 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from abc import abstractmethod
-from typing import Dict, Optional
-
-from math import Stepper
-from model import Vector
-from result import ComputationResult
-from space import MovementPattern
-from toolkit import MathToolkit
-from util import LoggingLevelRouter
+from movement import MovementPattern
 
 
 class TraversalPattern(MovementPattern):
@@ -60,7 +52,7 @@ class TraversalPattern(MovementPattern):
         -   def target_vectors() -> ComputationResult[LinearTargetSet]:
 
     Super Class:
-        Space
+       .Pattern
     """
     
     _stepper: Stepper
@@ -106,7 +98,7 @@ class TraversalPattern(MovementPattern):
         Returns:
             ComputationResult[LinearVectorSet]
         Raises:
-             LinearSpaceException
+             LinearMovementException
         """
         method = f"{self.__class__.__name__}.next"
         

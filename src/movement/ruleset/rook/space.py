@@ -1,7 +1,7 @@
-# src/space/ruleset/rook/space.py
+# src/movement/ruleset/rook/pattern.py
 
 """
-Module: space.ruleset.rook.space
+Module: movement.ruleset.rook.pattern
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -14,7 +14,7 @@ from typing import Dict
 
 from model import Rook
 from schema import Ruleset
-from space import TraversalPattern, TraversalRuleset
+from movement import TraversalPattern, TraversalRuleset
 
 
 class RookTraversalRuleset(TraversalRuleset[Rook]):

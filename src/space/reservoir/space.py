@@ -50,7 +50,7 @@ class SpaceReservoir(ABC, Generic[T]):
     def origin(self) -> Vector:
         return  self._origin
     
-    
+
     @property
     @abstractmethod
     def size(self) -> int:

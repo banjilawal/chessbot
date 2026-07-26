@@ -1,7 +1,7 @@
-# src/space/space.py
+# src/movement/pattern.py
 
 """
-Module: space.space
+Module: movement.pattern
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

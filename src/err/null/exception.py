@@ -55,7 +55,7 @@ class NullException(ChessException):
             cls_name: Optional[str] | None = None,
             ex: Optional[Exception] | None = None,
             err_code: Optional[str] | None = None,
-            MTHD_RSLT_TYPE: Optional[MethodResultType] | None = None,
+            mthd_rslt_type: Optional[MethodResultType] | None = None,
     ):
         """
         args:
@@ -78,5 +78,5 @@ class NullException(ChessException):
             err_code=err_code,
             cls_name=cls_name,
             cls_mthd=cls_mthd,
-            MTHD_RSLT_TYPE=MTHD_RSLT_TYPE,
+            mthd_rslt_type=mthd_rslt_type,
         )

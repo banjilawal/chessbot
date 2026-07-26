@@ -13,7 +13,6 @@ version: 1.0.1
 from .axis import *
 from .table import *
 from .quadrant import *
-from .group import *
 
 # Modules
 from .recurrence import Recurrence

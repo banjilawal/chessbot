@@ -1,7 +1,7 @@
-# src/space/ruleset/space.py
+# src/movement/ruleset/pattern.py
 
 """
-Module: space.ruleset.space
+Module: movement.ruleset.pattern
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -12,7 +12,7 @@ from __future__ import annotations
 from abc import ABC
 from typing import Dict, Generic, List, TypeVar
 
-from space import TraversalPattern
+from movement import TraversalPattern
 
 T = TypeVar("T", bound="Rank")
 

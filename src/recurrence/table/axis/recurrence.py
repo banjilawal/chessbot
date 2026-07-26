@@ -14,12 +14,12 @@ from typing import Dict, List, Type, cast
 from mapper import AxisMappingFunctionStream
 from recurrence import (
     AxisRecurrence, EastAxisRecurrence, NorthAxisRecurrence, SouthAxisRecurrence,
-    SpaceRecurrenceTable, WestAxisRecurrence
+    RecurrenceTable, WestAxisRecurrence
 )
 from space import Axis
 
 
-class AxisRecurrenceTable(SpaceRecurrenceTable[Axis]):
+class AxisRecurrenceTable(RecurrenceTable[Axis]):
     """
     Role:
         -   Data Holder

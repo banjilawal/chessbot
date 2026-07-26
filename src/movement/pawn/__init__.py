@@ -1,17 +1,17 @@
-# src/space/pawn/__init__.py
+# src/movement/pawn/__init__.py
 
 """
-Module: space.pawn.__init__
+Module: movement.pawn.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
 """
 
-# =========== SPACE.PAWN PACKAGE ===========#
+# =========== MOVEMENT.PAWN PACKAGE ===========#
 
 # Packages
 from .attack import *
 from .maneuver import *
 
 # Modules
-from .space import PawnOffsetPattern
+from .pattern import PawnOffsetPattern

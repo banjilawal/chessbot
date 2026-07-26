@@ -1,7 +1,7 @@
-# src/space/offset/knight/space.py
+# src/movement/offset/knight/pattern.py
 
 """
-Module: space.offset.knight.space
+Module: movement.offset.knight.pattern
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -12,7 +12,7 @@ from __future__ import annotations
 from container import VectorSet
 from model import Knight
 from schema import Offset
-from space import OffsetPattern
+from movement import OffsetPattern
 
 
 class KnightOffsetPattern(OffsetPattern[Knight]):

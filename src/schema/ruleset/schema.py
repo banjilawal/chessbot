@@ -12,12 +12,7 @@ from __future__ import annotations
 from enum import Enum
 from typing import Dict
 
-
-from space import (
-    EastTraversalPattern, NorthTraversalPattern, NortheastTraversalPattern, NorthwestTraversalPattern,
-    SouthTraversalPattern, SoutheastTraversalPattern,
-    SouthwestTraversalPattern, TraversalPattern, WestTraversalPattern
-)
+from movement import TraversalPattern
 
 
 class Ruleset(Enum):

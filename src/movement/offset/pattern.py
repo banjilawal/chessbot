@@ -1,7 +1,7 @@
-# src/space/offset/space.py
+# src/movement/offset/pattern.py
 
 """
-Module: space.space
+Module: movement.pattern
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -13,7 +13,7 @@ from abc import ABC
 from typing import Generic, Iterator, TypeVar
 
 from container import VectorSet
-from space import MovementPattern
+from movement import MovementPattern
 
 T = TypeVar("T", bound="Rank")
 

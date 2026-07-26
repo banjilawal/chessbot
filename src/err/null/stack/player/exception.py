@@ -53,7 +53,7 @@ class PlayerStackNullException(StackNullException):
             cls_name: Optional[str] | None = None,
             cls_mthd: Optional[str] | None = None,
             err_code: Optional[str] | None = None,
-            MTHD_RSLT_TYPE: Optional[MethodResultType] | None = None,
+            mthd_rslt_type: Optional[MethodResultType] | None = None,
     ):
         """
         args:

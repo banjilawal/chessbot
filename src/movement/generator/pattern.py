@@ -1,7 +1,7 @@
-# src/space/generator/bishop/pattern.py
+# src/movement/generator/pattern.py
 
 """
-Module: space.generator.bishop.pattern
+Module: movement.generator.pattern
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -10,12 +10,21 @@ version: 1.0.1
 from __future__ import  annotations
 
 from abc import ABC
-from typing import Generic, TypeVar
+from typing import Generic, List, TypeVar
 
-from sequence import VectorSequenceGenerator
+from container import VectorSet
+from math import VectorSequenceGenerator
+from recurrence import RecurrenceTable
+from result import ComputationResult
+from util import LoggingLevelRouter
 
 T = TypeVar("T", bound="Rank")
 
 class PatternGenerator(ABC, Generic[T]):
     _sequence_generator: VectorSequenceGenerator
-    _ruleset:
+    _recurrence_table: RecurrenceTable
+    
+    
+    @LoggingLevelRouter.monitor
+    def execute(self,) -> ComputationResult[List[VectorSet]]:
+        pass

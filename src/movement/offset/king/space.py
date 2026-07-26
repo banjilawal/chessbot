@@ -1,7 +1,7 @@
-# src/space/offset/king/space.py
+# src/movement/offset/king/pattern.py
 
 """
-Module: space.offset.king.space
+Module: movement.offset.king.pattern
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -12,7 +12,7 @@ from __future__ import annotations
 from container import VectorSet
 from model import King
 from schema import Offset
-from space import OffsetPattern
+from movement import OffsetPattern
 
 
 class KingOffsetPattern(OffsetPattern[King]):

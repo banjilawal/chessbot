@@ -1,7 +1,7 @@
-# src/space/ruleset/queen/space.py
+# src/movement/ruleset/queen/pattern.py
 
 """
-Module: space.ruleset.queen.space
+Module: movement.ruleset.queen.pattern
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -13,7 +13,7 @@ from typing import Dict
 
 from model import Queen
 from schema import Ruleset
-from space import TraversalPattern, TraversalRuleset
+from movement import TraversalPattern, TraversalRuleset
 
 
 class QueenTraversalRuleset(TraversalRuleset[Queen]):

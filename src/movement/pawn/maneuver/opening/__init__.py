@@ -1,16 +1,16 @@
-# src/space/pawn/opening/__init__.py
+# src/movement/pawn/opening/__init__.py
 
 """
-Module: space.pawn.maneuver.opening.__init__
+Module: movement.pawn.maneuver.opening.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
 """
 
-# =========== SPACE.PAWN.MANEUVER.OPENING PACKAGE ===========#
+# =========== MOVEMENT.PAWN.MANEUVER.OPENING PACKAGE ===========#
 
 # Packages
 
 
 # Modules
-from .space import OpeningManeuverOffsetPattern
+from .pattern import OpeningManeuverOffsetPattern
