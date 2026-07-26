@@ -1,4 +1,4 @@
-# src/err/movement/err/movement/traversal/bishop/exception.py
+# src/err/null/movement/traversal/bishop/exception.py
 
 """
 Module: err.null.movement.traversal.bishop.exception

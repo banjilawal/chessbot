@@ -1,4 +1,4 @@
-# src/err/movement/movement/traversal/rook/__init__.py
+# src/err/null/movement/traversal/rook/__init__.py
 
 """
 Module: err.null.movement.traversal.rook.__init__

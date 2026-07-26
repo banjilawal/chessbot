@@ -1,4 +1,4 @@
-# src/err/movement/movement/traversal/queen/__init__.py
+# src/err/null/movement/traversal/queen/__init__.py
 
 """
 Module: err.null.movement.traversal.queen.__init__

@@ -1,4 +1,4 @@
-# src/err/movement/err/movement/offset/pawn/exception.py
+# src/err/null/movement/offset/pawn/exception.py
 
 """
 Module: err.null.movement.offset.pawn.exception

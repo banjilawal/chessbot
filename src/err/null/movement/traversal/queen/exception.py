@@ -1,4 +1,4 @@
-# src/err/movement/err/movement/traversal/queen/exception.py
+# src/err/null/movement/traversal/queen/exception.py
 
 """
 Module: err.null.movement.traversal.queen.exception

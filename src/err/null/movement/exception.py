@@ -1,4 +1,4 @@
-# src/err/movement/err/movement/exception.py
+# src/err/null/movement/exception.py
 
 """
 Module: err.null.movement.exception
@@ -10,7 +10,7 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import ChessException
+from err import NullException
 from result import MethodResultType
 
 __all__ = [
@@ -20,7 +20,7 @@ __all__ = [
 
 
 # ======================# MOVEMENT_PATTERN_NULL_ERROR #======================#
-class MovementPatternNullException(ChessException):
+class MovementPatternNullException(NullException):
     """
     Role:
         -   Error Tracing
@@ -41,7 +41,7 @@ class MovementPatternNullException(ChessException):
     Provides:
 
     Super Class:
-        ChessException
+        NullException
     """
     MSG = "MovementPattern cannot be null."
     ERR_CODE = "MOVEMENT_PATTERN_NULL_ERROR"

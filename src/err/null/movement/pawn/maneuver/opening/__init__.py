@@ -1,4 +1,4 @@
-# src/err/movement/movement/pawn/maneuver/opening/__init__.py
+# src/err/null/movement/pawn/maneuver/opening/__init__.py
 
 """
 Module: err.null.movement.pawn.maneuver.opening.__init__

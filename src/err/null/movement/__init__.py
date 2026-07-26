@@ -1,4 +1,4 @@
-# src/err/movement/movement/__init__.py
+# src/err/null/movement/__init__.py
 
 """
 Module: err.null.movement.__init__

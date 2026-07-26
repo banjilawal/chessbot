@@ -15,6 +15,7 @@ from .container import *
 from .context import *
 from .dto import *
 from .model import *
+from .movement import *
 from .register import *
 from .space import *
 from .toggle import *

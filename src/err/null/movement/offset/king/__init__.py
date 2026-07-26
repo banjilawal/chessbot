@@ -1,4 +1,4 @@
-# src/err/movement/movement/offset/king/__init__.py
+# src/err/null/movement/offset/king/__init__.py
 
 """
 Module: err.null.movement.offset.king.__init__

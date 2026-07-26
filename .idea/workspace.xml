@@ -5,55 +5,67 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/err/null/movement/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/movement/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/movement/generator/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/movement/generator/bishop/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/movement/generator/bishop/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/movement/generator/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/movement/generator/queen/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/movement/generator/queen/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/movement/generator/rook/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/movement/generator/rook/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/movement/offset/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/movement/offset/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/movement/offset/king/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/movement/offset/king/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/movement/offset/knight/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/movement/offset/knight/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/movement/pawn/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/movement/pawn/attack/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/movement/pawn/attack/developed/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/movement/pawn/attack/developed/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/movement/pawn/attack/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/movement/pawn/attack/opening/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/movement/pawn/attack/opening/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/movement/pawn/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/movement/pawn/maneuver/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/movement/pawn/maneuver/developed/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/movement/pawn/maneuver/developed/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/movement/pawn/maneuver/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/movement/pawn/maneuver/opening/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/movement/pawn/maneuver/opening/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/movement/traversal/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/movement/traversal/bishop/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/movement/traversal/bishop/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/movement/traversal/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/movement/traversal/queen/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/movement/traversal/queen/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/movement/traversal/rook/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/movement/traversal/rook/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/builder/movement/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/builder/movement/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/builder/movement/offset/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/builder/movement/offset/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/builder/movement/offset/king/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/builder/movement/offset/king/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/builder/movement/offset/knight/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/builder/movement/offset/knight/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/builder/movement/pawn/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/builder/movement/pawn/attack/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/builder/movement/pawn/attack/developed/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/builder/movement/pawn/attack/developed/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/builder/movement/pawn/attack/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/builder/movement/pawn/attack/opening/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/builder/movement/pawn/attack/opening/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/builder/movement/pawn/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/builder/movement/pawn/maneuver/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/builder/movement/pawn/maneuver/developed/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/builder/movement/pawn/maneuver/developed/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/builder/movement/pawn/maneuver/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/builder/movement/pawn/maneuver/opening/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/builder/movement/pawn/maneuver/opening/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/builder/movement/traversal/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/builder/movement/traversal/bishop/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/builder/movement/traversal/bishop/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/builder/movement/traversal/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/builder/movement/traversal/queen/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/builder/movement/traversal/queen/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/builder/movement/traversal/rook/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/builder/movement/traversal/rook/exception.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/movement/pawn/attack/developed/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/movement/pawn/attack/developed/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/movement/pawn/attack/developed/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/movement/pawn/attack/developed/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/movement/pawn/attack/opening/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/movement/pawn/attack/opening/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/movement/pawn/maneuver/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/movement/pawn/maneuver/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/movement/pawn/maneuver/developed/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/movement/pawn/maneuver/developed/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/movement/pawn/maneuver/developed/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/movement/pawn/maneuver/developed/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/movement/pawn/maneuver/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/movement/pawn/maneuver/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/movement/pawn/maneuver/opening/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/movement/pawn/maneuver/opening/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/movement/pawn/maneuver/opening/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/movement/pawn/maneuver/opening/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/null/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/null/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/movement/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/null/movement/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/movement/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/null/movement/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/movement/offset/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/null/movement/offset/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/movement/offset/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/null/movement/offset/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/movement/offset/king/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/null/movement/offset/king/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/movement/offset/king/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/null/movement/offset/king/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/movement/offset/knight/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/null/movement/offset/knight/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/movement/offset/knight/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/null/movement/offset/knight/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/movement/pawn/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/null/movement/pawn/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/movement/pawn/attack/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/null/movement/pawn/attack/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/movement/pawn/attack/developed/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/null/movement/pawn/attack/developed/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/movement/pawn/attack/developed/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/null/movement/pawn/attack/developed/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/movement/pawn/attack/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/null/movement/pawn/attack/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/movement/pawn/attack/opening/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/null/movement/pawn/attack/opening/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/movement/pawn/attack/opening/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/null/movement/pawn/attack/opening/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/movement/pawn/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/null/movement/pawn/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/movement/pawn/maneuver/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/null/movement/pawn/maneuver/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/movement/pawn/maneuver/developed/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/null/movement/pawn/maneuver/developed/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/movement/pawn/maneuver/developed/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/null/movement/pawn/maneuver/developed/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/movement/pawn/maneuver/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/null/movement/pawn/maneuver/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/movement/pawn/maneuver/opening/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/null/movement/pawn/maneuver/opening/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/movement/pawn/maneuver/opening/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/null/movement/pawn/maneuver/opening/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/movement/traversal/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/null/movement/traversal/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/movement/traversal/bishop/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/null/movement/traversal/bishop/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/movement/traversal/bishop/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/null/movement/traversal/bishop/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/movement/traversal/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/null/movement/traversal/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/movement/traversal/queen/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/null/movement/traversal/queen/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/movement/traversal/queen/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/null/movement/traversal/queen/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/movement/traversal/rook/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/null/movement/traversal/rook/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/movement/traversal/rook/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/null/movement/traversal/rook/exception.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -109,7 +121,7 @@
     "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/err/null",
+    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/err/builder",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
@@ -121,11 +133,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/err/builder" />
       <recent name="$PROJECT_DIR$/src/err/null" />
       <recent name="$PROJECT_DIR$/src/err/movement/pawn" />
       <recent name="$PROJECT_DIR$/src/err/movement/pawn/attack" />
       <recent name="$PROJECT_DIR$/src/err/movement/offset" />
-      <recent name="$PROJECT_DIR$/src/err/movement/generator" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/math" />
@@ -821,7 +833,7 @@
       <workItem from="1784055454795" duration="186991000" />
       <workItem from="1784319839949" duration="197060000" />
       <workItem from="1784614812729" duration="11899000" />
-      <workItem from="1784633157389" duration="297999000" />
+      <workItem from="1784633157389" duration="299126000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />
