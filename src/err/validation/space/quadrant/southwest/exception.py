@@ -25,7 +25,7 @@ class SouthwestQuadrantValidatorException(QuadrantValidatorException):
         -   Failure Tracing
 
     Responsibilities:
-        1.  Indicate that a SouthwestQuadrantValidator failed. 
+        1.  Indicating a SouthwestQuadrantValidator failed.
 
     Attributes:
         msg: str

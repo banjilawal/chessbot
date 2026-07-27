@@ -27,7 +27,7 @@ class GameQueryNullException(QueryNullException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required GameQuery is null.
+        1.  Indicating a required GameQuery is null.
 
     Attributes:
             msg: Optional[str]

@@ -25,7 +25,7 @@ class AxisBlueprintNullException(SpaceBlueprintNullException):
         -   Failure Tracing
 
     Responsibilities:
-        1.  Indicate that a required AxisSpace.
+        1.  Indicating a required AxisSpace.
 
     Attributes:
         msg: str

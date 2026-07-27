@@ -26,7 +26,7 @@ class PromoteToPawnException(PromotionLevelAnalyzerException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate an attempt to promote a pawn to Pawn rank occurred.
+        1.  Indicating an attempt to promote a pawn to Pawn rank occurred.
 
     Attributes:
         msg: Optional[str]

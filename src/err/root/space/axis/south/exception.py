@@ -26,7 +26,7 @@ class SouthAxisRootCertifierException(AxisRootCertifierException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a candidate failed an SouthAxisSRootCertifier test.
+        1.  Indicating a candidate failed an SouthAxisSRootCertifier test.
 
     Attributes:
             msg: Optional[str]

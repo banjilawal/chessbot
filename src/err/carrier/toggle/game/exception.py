@@ -26,7 +26,7 @@ class GametoggleCarrierException(toggleCarrierException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a GametoggleCarrier encountered an error.
+        1.  Indicating a GametoggleCarrier encountered an error.
 
     Attributes:
             msg: Optional[str]

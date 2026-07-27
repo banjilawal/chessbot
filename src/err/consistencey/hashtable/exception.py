@@ -26,7 +26,7 @@ class HashtableConsistencyCheckerException(ConsistencyCheckerException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a HashtableConsistencyChecker raised an error.
+        1.  Indicating a HashtableConsistencyChecker raised an error.
 
     Attributes:
         msg: Optional[str]

@@ -26,7 +26,7 @@ class MovementPatternBuilderException(BuilderException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required MovementPatternBuilder failed.
+        1.  Indicating a required MovementPatternBuilder failed.
 
     Attributes:
         msg: Optional[str]

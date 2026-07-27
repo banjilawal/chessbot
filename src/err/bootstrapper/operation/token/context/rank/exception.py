@@ -28,7 +28,7 @@ class RankContextTokenOperationBootstrapperException(ContextTokenOperationBootst
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a RankContext tokenfailed.
+        1.  Indicating a RankContext tokenfailed.
 
     TokenFailed.s:
             msg: Optional[str]

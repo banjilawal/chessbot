@@ -25,7 +25,7 @@ class EdgeAssemblyException(AssemblyException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an Edge assembly failed.
+        1.  Indicating an Edge assembly failed.
 
     Attributes:
         msg: Optional[str]

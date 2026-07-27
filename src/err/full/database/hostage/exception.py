@@ -24,7 +24,7 @@ class HostageDatabaseFullException(DatabaseFullException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required HostageDatabase is full.
+        1.  Indicating a required HostageDatabase is full.
 
     Attributes:
         msg: Optional[str]

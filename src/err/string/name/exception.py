@@ -25,7 +25,7 @@ class NameException(StringException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a name is violating name restrictions.
+        1.  Indicating a name is violating name restrictions.
 
     Attributes:
         msg: Optional[str]

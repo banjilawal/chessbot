@@ -26,7 +26,7 @@ class ArenaPushPermitterException(PusherPermitterException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a ArenaPushPermitter did not approve the request.
+        1.  Indicating a ArenaPushPermitter did not approve the request.
 
     Attributes:
         msg: Optional[str]

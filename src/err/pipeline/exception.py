@@ -24,7 +24,7 @@ class PipelineException(ChessException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an error occurred in a pipeline.
+        1.  Indicating an error occurred in a pipeline.
 
     Attributes:
         msg: Optional[str]

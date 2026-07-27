@@ -26,7 +26,7 @@ class BoardIdCollisionException(IdCollisionException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that two boards share an id that should be unique.
+        1.  Indicating that two boards share an id that should be unique.
         
     Attributes:
         msg: Optional[str]

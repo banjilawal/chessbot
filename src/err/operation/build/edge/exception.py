@@ -25,7 +25,7 @@ class EdgeBuilderException(BuilderException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an Edge build failed.
+        1.  Indicating an Edge build failed.
 
     Attributes:
         msg: Optional[str]

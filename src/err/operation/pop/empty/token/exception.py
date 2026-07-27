@@ -26,7 +26,7 @@ class PoppingEmptyTokenStackException(PoppingEmptyStackException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that popping a TokenStack failed because it was empty.
+        1.  Indicating that popping a TokenStack failed because it was empty.
 
     Attributes:
         msg: Optional[str]

@@ -26,7 +26,7 @@ class TokenPopPermitterException(PopperPermitterException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a TokenPopperPermitter did not approve the request.
+        1.  Indicating a TokenPopperPermitter did not approve the request.
 
     Attributes:
         msg: Optional[str]

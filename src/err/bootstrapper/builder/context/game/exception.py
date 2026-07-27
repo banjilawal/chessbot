@@ -26,7 +26,7 @@ class GameContextBuilderBootstrapperException(ContextBuilderBootstrapperExceptio
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a GameContextBuilderBootstrapper was aborted by an exception.
+        1.  Indicating a GameContextBuilderBootstrapper was aborted by an exception.
 
    BuilderBootstrapper was aborted by an exception.s:
             msg: Optional[str]

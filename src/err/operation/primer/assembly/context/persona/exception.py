@@ -24,7 +24,7 @@ class PrimersonaContextAssemblyException(PrimingContextAssemblyException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a PersonaContextAssembly priming step failed.
+        1.  Indicating a PersonaContextAssembly priming step failed.
 
     Attributes:
             msg: Optional[str]

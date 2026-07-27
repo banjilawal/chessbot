@@ -29,7 +29,7 @@ class BoardBinderBuilderBootstrapperException(BinderBuilderBootstrapperException
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a BoardBinderBuilderBootstrapper was aborted by an exception.
+        1.  Indicating a BoardBinderBuilderBootstrapper was aborted by an exception.
 
    BuilderBootstrapper was aborted by an exception.s:
             msg: Optional[str]

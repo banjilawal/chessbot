@@ -26,7 +26,7 @@ class KnightOffsetPatternBlueprintNullException(OffsetPatternBlueprintNullExcept
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required KnightOffsetPatternBlueprint is null.
+        1.  Indicating a required KnightOffsetPatternBlueprint is null.
 
     Attributes:
         msg: Optional[str]

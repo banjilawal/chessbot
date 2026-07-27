@@ -27,7 +27,7 @@ class PlayerToggleRootCertifierException(ToggleRootCertifierException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a candidate failed a PlayerToggleRootCertifier test.
+        1.  Indicating a candidate failed a PlayerToggleRootCertifier test.
 
     Attributes:
             msg: Optional[str]

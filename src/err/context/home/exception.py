@@ -26,7 +26,7 @@ class TokenHomeSquareContextException(ContextException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a TokenHomeSquareContext encountered an error.
+        1.  Indicating a TokenHomeSquareContext encountered an error.
 
     Attributes:
             msg: Optional[str]

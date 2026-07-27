@@ -24,7 +24,7 @@ class VisitpingCoordStackException(VisitpingStackException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that visitping a CoordStack failed.
+        1.  Indicating that visitping a CoordStack failed.
 
     Attributes:
         msg: Optional[str]

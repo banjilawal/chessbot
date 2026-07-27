@@ -25,7 +25,7 @@ class RegistryKeyConsistencyCheckerException(RegistryException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an error occurred with a RegistryKey.
+        1.  Indicating an error occurred with a RegistryKey.
 
     Attributes:
         msg: Optional[str]

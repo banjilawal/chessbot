@@ -26,7 +26,7 @@ class ContextException(ChessException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a Context encountered an error.
+        1.  Indicating a Context encountered an error.
 
     Attributes:
             msg: Optional[str]

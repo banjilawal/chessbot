@@ -26,7 +26,7 @@ class ModelRegisterSizeException(RegisterSizeException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required ModelRegister Is the wrong size.
+        1.  Indicating a required ModelRegister Is the wrong size.
 
     Attributes:
         msg: Optional[str]

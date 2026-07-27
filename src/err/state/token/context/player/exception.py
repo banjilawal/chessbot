@@ -28,7 +28,7 @@ class PlayerContextTokenStateException(ContextTokenStateException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a PlayerContext tokenfailed.
+        1.  Indicating a PlayerContext tokenfailed.
 
     TokenFailed.s:
             msg: Optional[str]

@@ -26,7 +26,7 @@ class VectorIdentityRegisterConsistencyCheckerNullException(RegisterException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required VectorIdentityRegisterConsistencyChecker is null.
+        1.  Indicating a required VectorIdentityRegisterConsistencyChecker is null.
 
     Attributes:
         msg: Optional[str]

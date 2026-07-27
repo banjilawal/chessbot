@@ -26,7 +26,7 @@ class RequestNullException(NullException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that n Request is null.
+        1.  Indicating that n Request is null.
 
     Attributes:
             msg: Optional[str]

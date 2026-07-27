@@ -26,7 +26,7 @@ class DevelopedManeuverOffsetPatternException(ManeuverOffsetPatternException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an error occurred in an DevelopedManeuverOffsetPattern instance.
+        1.  Indicating an error occurred in an DevelopedManeuverOffsetPattern instance.
 
     Attributes:
         msg: Optional[str]

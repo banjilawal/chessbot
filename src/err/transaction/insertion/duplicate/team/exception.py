@@ -25,7 +25,7 @@ class DuplicateTeamPushException(DuplicateItemException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that pushing a duplicate item onto the TeamStack failed.
+        1.  Indicating that pushing a duplicate item onto the TeamStack failed.
 
     Attributes:
         msg: Optional[str]

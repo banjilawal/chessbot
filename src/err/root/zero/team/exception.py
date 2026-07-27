@@ -24,7 +24,7 @@ class ZeroTeamBlueprintFlagsException(ZeroBlueprintFlagsException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicates that no TeamRootCertifier test. enabled.
+        1.  Indicatings that no TeamRootCertifier test. enabled.
 
     Attributes:
         msg: Optional[str]

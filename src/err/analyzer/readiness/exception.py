@@ -26,7 +26,7 @@ class TokenReadinessAnalyzerException(AnalyzerException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a TokenReadinessAnalyzer from completing
+        1.  Indicating a TokenReadinessAnalyzer from completing
             its task.
         
     Attributes:

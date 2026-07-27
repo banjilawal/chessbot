@@ -21,7 +21,7 @@ class StaleLinkDiscoveredInAttackingSquareSearchException(AttackDebugException):
     Role:Debug, Error Tracing
 
     Responsibilities:
-    1.  Indicate that an attack failed because one of the hits for the source
+    1.  Indicate an attack failed because one of the hits for the source
 
     Super Class:
         *   AttackDebugException

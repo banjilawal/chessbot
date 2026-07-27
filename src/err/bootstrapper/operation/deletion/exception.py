@@ -26,7 +26,7 @@ class DeleterException(OperationBootstrapperException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a StackDeleter failed.
+        1.  Indicating a StackDeleter failed.
 
     Attributes:
         msg: Optional[str]

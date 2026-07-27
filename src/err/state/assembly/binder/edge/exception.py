@@ -28,7 +28,7 @@ class EdgeBinderAssemblyException(BinderAssemblyException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a EdgeBinder assembly failed.
+        1.  Indicating a EdgeBinder assembly failed.
 
     Assembly Failed.s:
             msg: Optional[str]

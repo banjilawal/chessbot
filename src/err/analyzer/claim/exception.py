@@ -26,7 +26,7 @@ class HomeSquareClaimAnalyzerException(AnalyzerException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an error occurred during a home square claim analysis.
+        1.  Indicating an error occurred during a home square claim analysis.
 
     Attributes:
         var: Optional[str]

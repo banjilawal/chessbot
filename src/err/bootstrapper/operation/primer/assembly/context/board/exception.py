@@ -24,7 +24,7 @@ class PrimingBoardContextAssemblyException(PrimingContextAssemblyException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a BoardContextAssembly priming step failed.
+        1.  Indicating a BoardContextAssembly priming step failed.
 
     Attributes:
             msg: Optional[str]

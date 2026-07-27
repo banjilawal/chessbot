@@ -26,7 +26,7 @@ class TupleException(ContainerException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a TupleSet encountered an error.
+        1.  Indicating a TupleSet encountered an error.
 
     Attributes:
             msg: Optional[str]

@@ -27,7 +27,7 @@ class ArenaBlueprintNullException(ModelBlueprintNullException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required ArenaBlueprint is null.
+        1.  Indicating a required ArenaBlueprint is null.
 
     Cannot Be Null.s:
             msg: Optional[str]

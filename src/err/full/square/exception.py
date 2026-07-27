@@ -24,7 +24,7 @@ class SquareFullException(FullException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required Square is full.
+        1.  Indicating a required Square is full.
 
     Attributes:
         msg: Optional[str]

@@ -29,7 +29,7 @@ class GameBinderBuilderException(BinderBuilderException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a GameBinderBuilder failed.
+        1.  Indicating a GameBinderBuilder failed.
 
    Builder failed.s:
             msg: Optional[str]

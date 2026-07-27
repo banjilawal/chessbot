@@ -27,7 +27,7 @@ class VectorToggleRegisterMismatchException(VectorToggleRegisterMicroserviceExce
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a VectorToggleRegister's a-b slots contain different types.
+        1.  Indicating a VectorToggleRegister's a-b slots contain different types.
 
     Attributes:
             msg: Optional[str]

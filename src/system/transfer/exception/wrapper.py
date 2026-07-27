@@ -21,7 +21,7 @@ class TransferException(OperationException):
     Role:Exception Work
 
     Responsibilities:
-    1.  Indicate that an exception prevented a transfer operation from completing successfully.
+    1.  Indicate an exception prevented a transfer operation from completing successfully.
     2.  Wrap an exception that hits the try-finally block of a Transfer method.
 
     Super Class:

@@ -25,7 +25,7 @@ class SquareTokenOperationException(TokenOperationException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a Square tokenfailed.
+        1.  Indicating a Square tokenfailed.
 
     Attributes:
         msg: Optional[str]

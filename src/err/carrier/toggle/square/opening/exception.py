@@ -25,7 +25,7 @@ class OpeningSquaretoggleCarrierException(SquareException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an OpeningSquaretoggleCarrier encountered an error.
+        1.  Indicating an OpeningSquaretoggleCarrier encountered an error.
 
     Attributes:
         msg: Optional[str]

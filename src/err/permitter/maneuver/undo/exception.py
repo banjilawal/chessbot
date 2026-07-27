@@ -26,7 +26,7 @@ class TokenUndoMovePermitterException(ManeuverPermitterException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a TokenUndoMovePermitter from 
+        1.  Indicating a TokenUndoMovePermitter from
             completing its task.
 
     Attributes:

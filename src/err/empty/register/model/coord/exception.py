@@ -26,7 +26,7 @@ class CoordRegisterEmptyException(ModelRegisterEmptyException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required CoordRegister is empty.
+        1.  Indicating a required CoordRegister is empty.
 
     Attributes:
         msg: Optional[str]

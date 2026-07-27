@@ -26,7 +26,7 @@ class RecurrenceNullException(ChessException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required Recurrence is null.
+        1.  Indicating a required Recurrence is null.
 
     Attributes:
         msg: Optional[str]

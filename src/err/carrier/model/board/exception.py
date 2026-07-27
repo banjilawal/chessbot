@@ -26,7 +26,7 @@ class BoardCarrierException(ModelCarrierException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a BoardCarrier encountered an error.
+        1.  Indicating a BoardCarrier encountered an error.
 
     Attributes:
         msg: Optional[str]

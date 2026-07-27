@@ -26,7 +26,7 @@ class PrimingEdgeAssemblyException(AssemblyPrimerException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an EdgeAssembly priming step failed.
+        1.  Indicating an EdgeAssembly priming step failed.
 
     Attributes:
         msg: Optional[str]

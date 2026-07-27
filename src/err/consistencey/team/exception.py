@@ -26,7 +26,7 @@ class TeamConsistencyCheckerException(ConsistencyCheckerException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a TeamConsistencyChecker raised an error.
+        1.  Indicating a TeamConsistencyChecker raised an error.
 
     Attributes:
             msg: Optional[str]

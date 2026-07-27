@@ -27,7 +27,7 @@ class EdgeContextNullException(ContextNullException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required EdgeContext is null.
+        1.  Indicating a required EdgeContext is null.
 
     Cannot Be Null.s:
             msg: Optional[str]

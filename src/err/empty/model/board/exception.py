@@ -26,7 +26,7 @@ class BoardEmptyException(ModelEmptyException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required Board is empty.
+        1.  Indicating a required Board is empty.
 
     Attributes:
         msg: Optional[str]

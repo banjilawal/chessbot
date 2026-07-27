@@ -26,7 +26,7 @@ class BoardSearcherException(SearcherException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a BoardSearcher from
+        1.  Indicating a BoardSearcher from
             completing its task.
 
     Attributes:

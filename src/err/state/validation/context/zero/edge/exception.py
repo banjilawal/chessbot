@@ -24,7 +24,7 @@ class NoActiveTogglesException(NoActiveTogglesException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicates that no EdgeContext attribute enabled.
+        1.  Indicatings that no EdgeContext attribute enabled.
 
     Attributes:
         msg: Optional[str]

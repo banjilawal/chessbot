@@ -26,7 +26,7 @@ class VectorToggleRegisterSizeException(ModelRegisterSizeException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required VectorToggleRegister Is the wrong size.
+        1.  Indicating a required VectorToggleRegister Is the wrong size.
 
     Attributes:
         msg: Optional[str]

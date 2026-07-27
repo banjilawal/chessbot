@@ -26,7 +26,7 @@ class NameMicroserviceException(MicroserviceException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a candidate did not pass a NameMicroservice failed.
+        1.  Indicating a candidate did not pass a NameMicroservice failed.
 
     Attributes:
         msg: Optional[str]

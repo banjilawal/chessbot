@@ -24,7 +24,7 @@ class FinalizeArenaContextBuilderException(FinalizeContextBuilderException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that finalizing a ArenaContextBuild failed.
+        1.  Indicating that finalizing a ArenaContextBuild failed.
 
     Attributes:
             msg: Optional[str]

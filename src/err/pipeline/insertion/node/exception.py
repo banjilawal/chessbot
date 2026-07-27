@@ -24,7 +24,7 @@ class NodeInsertionPipelineException(InsertionPipelineException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an error occurred in a NodeInsertionPipeline.
+        1.  Indicating an error occurred in a NodeInsertionPipeline.
 
     Attributes:
         msg: Optional[str]

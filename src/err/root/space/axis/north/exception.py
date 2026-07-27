@@ -26,7 +26,7 @@ class NorthAxisRootCertifierException(AxisRootCertifierException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a candidate failed an NorthAxisSRootCertifier test.
+        1.  Indicating a candidate failed an NorthAxisSRootCertifier test.
 
     Attributes:
             msg: Optional[str]

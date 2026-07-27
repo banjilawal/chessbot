@@ -25,7 +25,7 @@ class SpaceCarrierNullException(CarrierNullException):
         -   Failure Tracing
 
     Responsibilities:
-        1.  Indicate that a required Space.
+        1.  Indicating a required Space.
 
     Attributes:
         msg: str

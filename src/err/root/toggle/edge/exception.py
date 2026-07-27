@@ -27,7 +27,7 @@ class EdgeToggleRootCertifierException(ToggleRootCertifierException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a candidate failed a EdgeToggleRootCertifier test.
+        1.  Indicating a candidate failed a EdgeToggleRootCertifier test.
 
     Attributes:
             msg: Optional[str]

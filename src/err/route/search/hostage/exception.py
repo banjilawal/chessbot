@@ -25,7 +25,7 @@ class HostageSearchRouteException(SearchRouteException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that one of Hostage search routes is missing.
+        1.  Indicating that one of Hostage search routes is missing.
 
     Attributes:
         msg: Optional[str]

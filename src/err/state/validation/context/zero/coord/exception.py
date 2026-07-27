@@ -24,7 +24,7 @@ class NoActiveTogglesException(NoActiveTogglesException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicates that no CoordContext attribute enabled.
+        1.  Indicatings that no CoordContext attribute enabled.
 
     Attributes:
         msg: Optional[str]

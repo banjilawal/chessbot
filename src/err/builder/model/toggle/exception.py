@@ -29,7 +29,7 @@ class RegisterBuilderException(BuilderException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a RegisterBuilder failure.
+        1.  Indicating a RegisterBuilder failure.
 
     Attributes:
             msg: Optional[str]

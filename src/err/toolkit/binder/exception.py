@@ -25,7 +25,7 @@ class BinderException(ToolkitException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a Binder encountered an error.
+        1.  Indicating a Binder encountered an error.
 
     Attributes:
         msg: Optional[str]

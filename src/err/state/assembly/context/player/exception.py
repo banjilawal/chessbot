@@ -28,7 +28,7 @@ class PlayerContextAssemblyException(ContextAssemblyException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a PlayerContext assembly failed.
+        1.  Indicating a PlayerContext assembly failed.
 
     Assembly Failed.s:
             msg: Optional[str]

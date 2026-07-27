@@ -26,7 +26,7 @@ class TokenAlreadyAtDestinationException(MicroserviceException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate a Token is already at its destination.
+        1.  Indicating a Token is already at its destination.
 
     Attributes:
         msg: Optional[str]

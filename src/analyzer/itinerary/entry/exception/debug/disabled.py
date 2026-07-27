@@ -27,7 +27,7 @@ class SquareVisitorDisabledException(SquareDebugException):
         -   Exception Messaging
 
     Responsibilities:
-        1.  Indicate that a square entry failed because the visitor had been disabled.
+        1.  Indicate a square entry failed because the visitor had been disabled.
 
     Attributes:
         var: Optional[str]

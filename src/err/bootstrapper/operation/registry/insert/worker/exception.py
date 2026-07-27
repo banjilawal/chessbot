@@ -24,7 +24,7 @@ class NewWorkerRegistrationException(NewRegistrationException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that adding a new operation to the WorkerRegistry failed.
+        1.  Indicating adding a new operation to the WorkerRegistry failed.
 
     Attributes:
         msg: Optional[str]

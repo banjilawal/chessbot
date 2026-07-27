@@ -26,7 +26,7 @@ class DuplicateArenaException(DuplicateItemException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a Arena already exists in the operating context so, trying
+        1.  Indicating a Arena already exists in the operating context so, trying
             to add it again will fail.
 
     Attributes:

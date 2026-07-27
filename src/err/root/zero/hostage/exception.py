@@ -24,7 +24,7 @@ class ZeroHostageBlueprintFlagsException(ZeroBlueprintFlagsException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicates that no HostageRootCertifier test. enabled.
+        1.  Indicatings that no HostageRootCertifier test. enabled.
 
     Attributes:
         msg: Optional[str]

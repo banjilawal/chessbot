@@ -24,7 +24,7 @@ class TokenDeletionPipelineException(DeletionPipelineException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an error occurred in a TokenDeletionPipeline.
+        1.  Indicating an error occurred in a TokenDeletionPipeline.
 
     Attributes:
         msg: Optional[str]

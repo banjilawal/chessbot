@@ -26,7 +26,7 @@ class BlockedPathNullException(PathNullException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required BlockedPath is null.
+        1.  Indicating a required BlockedPath is null.
 
     Cannot Be Null.s:
             msg: Optional[str]

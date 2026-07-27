@@ -28,7 +28,7 @@ class SquareContextBuildRouteException(ContextBuildRouteException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that one of SquareContext build routes is missing.
+        1.  Indicating that one of SquareContext build routes is missing.
 
     Attributes:
             msg: Optional[str]

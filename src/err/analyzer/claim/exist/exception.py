@@ -26,7 +26,7 @@ class HomeSquareAlreadyClaimedException(HomeSquareClaimAnalyzerException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an opening square has already been claimed.
+        1.  Indicating an opening square has already been claimed.
 
     Attributes:
         msg: Optional[str]

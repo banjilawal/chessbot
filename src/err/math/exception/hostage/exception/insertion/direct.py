@@ -21,7 +21,7 @@ class AppendingHostageDirectlyIntoItemsFailedException(HostageDataListException)
     Role:Debug, Error Tracing
 
     Responsibilities:
-    1.  Indicate that appending the hostage directly into self.bag was not in the list after running bag.append.
+    1.  Indicating appending the hostage directly into self.bag was not in the list after running bag.append.
 
     Super Class:
         *   HostageDataListException

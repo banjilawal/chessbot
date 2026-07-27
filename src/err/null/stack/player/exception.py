@@ -24,7 +24,7 @@ class PlayerStackNullException(StackNullException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required PlayerStack is null.
+        1.  Indicating a required PlayerStack is null.
 
     Attributes:
         msg: Optional[str]

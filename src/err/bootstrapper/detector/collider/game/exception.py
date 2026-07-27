@@ -25,7 +25,7 @@ class GameColliderBootstrapperException(ColliderBootstrapperException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a GameCollision step failed.
+        1.  Indicating a GameCollision step failed.
 
     Attributes:
             msg: Optional[str]

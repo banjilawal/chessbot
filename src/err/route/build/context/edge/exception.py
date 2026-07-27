@@ -28,7 +28,7 @@ class EdgeContextBuildRouteException(ContextBuildRouteException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that one of EdgeContext build routes is missing.
+        1.  Indicating that one of EdgeContext build routes is missing.
 
     Attributes:
             msg: Optional[str]

@@ -24,7 +24,7 @@ class NodeDatabaseEmptyException(DatabaseEmptyException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required NodeDatabase is empty.
+        1.  Indicating a required NodeDatabase is empty.
 
     Attributes:
         msg: Optional[str]

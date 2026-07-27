@@ -26,7 +26,7 @@ class SouthwestQuadrantRecurrenceValidatorException(QuadrantRecurrenceValidatorE
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a SouthwestQuadrantRecurrenceValidator failed.
+        1.  Indicating a SouthwestQuadrantRecurrenceValidator failed.
 
     Attributes:
         msg: Optional[str]

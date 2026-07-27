@@ -24,7 +24,7 @@ class InsertionException(TransactionException):
         -   Error Tracing
 
     Responsibilities:
-        Indicates that an error prevented a insertion from completing.
+        Indicatings that an error prevented a insertion from completing.
 
     Attributes:
         msg: Optional[str]

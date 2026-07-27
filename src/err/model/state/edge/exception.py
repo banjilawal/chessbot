@@ -26,7 +26,7 @@ class EdgeException(ModelException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a Edge encountered an error.
+        1.  Indicating a Edge encountered an error.
 
     Attributes:
         msg: Optional[str]

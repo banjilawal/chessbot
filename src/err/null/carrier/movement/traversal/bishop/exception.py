@@ -26,7 +26,7 @@ class BishopTraversalPatternCarrierNullException(TraversalPatternCarrierNullExce
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required BishopTraversalPatternCarrier is null.
+        1.  Indicating a required BishopTraversalPatternCarrier is null.
 
     Attributes:
         msg: Optional[str]

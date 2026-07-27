@@ -24,7 +24,7 @@ class SquareStackEmptyException(StackEmptyException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required SquareStack is empty.
+        1.  Indicating a required SquareStack is empty.
 
     Attributes:
         msg: Optional[str]

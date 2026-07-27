@@ -26,7 +26,7 @@ class SchemaHashtableMicroserviceException(MicroserviceException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a candidate did not pass a SchemaDictMicroservice failed.
+        1.  Indicating a candidate did not pass a SchemaDictMicroservice failed.
 
     Attributes:
         msg: Optional[str]

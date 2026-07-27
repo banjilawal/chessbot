@@ -24,7 +24,7 @@ class GraphDeletionPipelineException(DeletionPipelineException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an error occurred in a GraphDeletionPipeline.
+        1.  Indicating an error occurred in a GraphDeletionPipeline.
 
     Attributes:
         msg: Optional[str]

@@ -26,7 +26,7 @@ class MethodImplementationException(ChessException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a call was made to an abstract method that the subclass does not implement.
+        1.  Indicating a call was made to an abstract method that the subclass does not implement.
 
     Attributes:
         msg: Optional[str]

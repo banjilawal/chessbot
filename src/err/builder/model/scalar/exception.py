@@ -26,7 +26,7 @@ class ScalarBuilderException(ModelBuilderException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a ScalarBuilder failed.
+        1.  Indicating a ScalarBuilder failed.
 
     Attributes:
         msg: Optional[str]

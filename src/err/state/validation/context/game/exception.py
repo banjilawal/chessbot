@@ -27,7 +27,7 @@ class GameContextValidatorException(ContextValidatorException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a GameContextValidation check failed.
+        1.  Indicating a GameContextValidation check failed.
 
     Attributes:
             msg: Optional[str]

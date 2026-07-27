@@ -26,7 +26,7 @@ class CombatantTokenException(TokenException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a CombatantToken encountered an error.
+        1.  Indicating a CombatantToken encountered an error.
 
     Attributes:
         msg: Optional[str]

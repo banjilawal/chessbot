@@ -24,7 +24,7 @@ class DuplicateSquarePushException(DuplicateItemException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that pushing a duplicate Square failed.
+        1.  Indicating that pushing a duplicate Square failed.
 
     Attributes:
         msg: Optional[str]

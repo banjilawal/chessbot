@@ -27,7 +27,7 @@ class VectorToggleRegisterBlueprintNullException(RegisterBlueprintNullException)
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required VectorToggleRegister is null.
+        1.  Indicating a required VectorToggleRegister is null.
 
     Cannot Be Null.s:
             msg: Optional[str]

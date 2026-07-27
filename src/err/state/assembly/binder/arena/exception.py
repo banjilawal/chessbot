@@ -28,7 +28,7 @@ class ArenaBinderAssemblyException(BinderAssemblyException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a ArenaBinder assembly failed.
+        1.  Indicating a ArenaBinder assembly failed.
 
     Assembly Failed.s:
             msg: Optional[str]

@@ -26,7 +26,7 @@ class CartesianOperandException(ToggleNullException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a CartesianOperand encountered an error.
+        1.  Indicating a CartesianOperand encountered an error.
 
     Attributes:
             msg: Optional[str]

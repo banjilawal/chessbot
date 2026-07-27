@@ -25,7 +25,7 @@ class OperationListNullException(DependencyListNullException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate an OperationListNullException is null.
+        1.  Indicating an OperationListNullException is null.
 
     Attributes:
         msg: Optional[str]

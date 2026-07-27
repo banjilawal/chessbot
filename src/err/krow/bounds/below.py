@@ -22,7 +22,7 @@ class BelowBoundsException(BoundsException):
     Role:Error Tracing, Debugging
 
     Responsibilities:
-    1.  Indicate that a value is below bounds.
+    1.  Indicating a value is below bounds.
 
     Super Class:
         *   BoundsException

@@ -26,7 +26,7 @@ class ItineraryConsistencyException(ItineraryValidatorException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate an Itinerary's token has an inconsistency with either the source or destination.
+        1.  Indicating an Itinerary's token has an inconsistency with either the source or destination.
 
     Attributes:
         msg: Optional[str]

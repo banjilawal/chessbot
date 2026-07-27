@@ -26,7 +26,7 @@ class TokenCollisionException(AttributeCollisionException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that two instances of a class do not have unique tokens.
+        1.  Indicating that two instances of a class do not have unique tokens.
         
     Attributes:
         msg: Optional[str]

@@ -23,7 +23,7 @@ class FinalizeTokenBuilderException(FinalizeBuilderException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that finalizing a TokenBuildFinalize step failed.
+        1.  Indicating that finalizing a TokenBuildFinalize step failed.
 
     Attributes:
         msg: Optional[str]

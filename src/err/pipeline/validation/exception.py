@@ -24,7 +24,7 @@ class ValidationPipelineException(PipelineException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an error occurred in a ValidationPipeline.
+        1.  Indicating an error occurred in a ValidationPipeline.
 
     Attributes:
         msg: Optional[str]

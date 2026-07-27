@@ -24,7 +24,7 @@ class VectorContextCollisionException(ContextColliderException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a VectorContextCollision step failed.
+        1.  Indicating a VectorContextCollision step failed.
 
     Attributes:
             msg: Optional[str]

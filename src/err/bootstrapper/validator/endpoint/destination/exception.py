@@ -26,7 +26,7 @@ class DestinationCertifierBootstrapperException(ValidatorBootstrapperException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a DestinationCertifierBootstrapper 
+        1.  Indicating a DestinationCertifierBootstrapper
             was aborted by an exception.
         
     Attributes:

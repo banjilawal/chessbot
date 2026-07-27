@@ -24,7 +24,7 @@ class ArenaStackRegistrationException(StackRegistrationException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that registrationing onto a ArenaStack failed.
+        1.  Indicating that registrationing onto a ArenaStack failed.
 
     Attributes:
         msg: Optional[str]

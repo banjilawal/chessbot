@@ -26,7 +26,7 @@ class AttackPathSearcherException(PathSearcherException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an AttackPathSearcher from
+        1.  Indicating an AttackPathSearcher from
             completing its task.
 
     Attributes:

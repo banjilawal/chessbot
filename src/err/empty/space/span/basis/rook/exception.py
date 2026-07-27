@@ -26,7 +26,7 @@ class RookBasisEmptyException(BasisEmptyException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required RookBasis is empty.
+        1.  Indicating a required RookBasis is empty.
 
     Attributes:
         msg: Optional[str]

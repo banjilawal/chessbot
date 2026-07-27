@@ -26,7 +26,7 @@ class RankContextBuilderBootstrapperException(ContextBuilderBootstrapperExceptio
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a RankContextBuilderBootstrapper was aborted by an exception.
+        1.  Indicating a RankContextBuilderBootstrapper was aborted by an exception.
 
    BuilderBootstrapper was aborted by an exception.s:
             msg: Optional[str]

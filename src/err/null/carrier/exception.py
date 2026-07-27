@@ -26,7 +26,7 @@ class EntityCarrierNullException(NullException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an CarrierToggle is null.
+        1.  Indicating an CarrierToggle is null.
 
     Attributes:
             msg: Optional[str]

@@ -26,7 +26,7 @@ class RookTraversalPatternException(TraversalPatternException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an error occurred in a RookTraversalPattern instance.
+        1.  Indicating an error occurred in a RookTraversalPattern instance.
 
     Attributes:
         msg: Optional[str]

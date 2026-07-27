@@ -24,7 +24,7 @@ class NumberException(ChessException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a number does not meet requirements..
+        1.  Indicating a number does not meet requirements..
 
     Attributes:
         msg: Optional[str]

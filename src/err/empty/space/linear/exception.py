@@ -26,7 +26,7 @@ class LinearSpaceEmptyException(SpaceEmptyException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required LinearSpace is empty.
+        1.  Indicating a required LinearSpace is empty.
 
     Attributes:
         msg: Optional[str]

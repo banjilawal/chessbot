@@ -26,7 +26,7 @@ class GraphSizeException(SizeException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required Graphis the wrong size.
+        1.  Indicating a required Graphis the wrong size.
 
     Attributes:
         msg: Optional[str]

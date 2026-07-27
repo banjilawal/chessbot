@@ -24,7 +24,7 @@ class EdgeStackSizeException(StackSizeException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required EdgeStackis the wrong size.
+        1.  Indicating a required EdgeStackis the wrong size.
 
     Attributes:
         msg: Optional[str]

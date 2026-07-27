@@ -24,7 +24,7 @@ class SnapshotStackEmptyException(StackEmptyException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required SnapshotStack is empty.
+        1.  Indicating a required SnapshotStack is empty.
 
     Attributes:
         msg: Optional[str]

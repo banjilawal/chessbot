@@ -24,7 +24,7 @@ class HostageStackPushException(StackPushException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that pushing onto a HostageStack failed.
+        1.  Indicating that pushing onto a HostageStack failed.
 
     Attributes:
         msg: Optional[str]

@@ -28,7 +28,7 @@ class BootstrapSquareContextAssemblyException(BootstrapContextAssemblyException)
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a SquareContextAssembly bootstrap step failed.
+        1.  Indicating a SquareContextAssembly bootstrap step failed.
 
     Attributes:
             msg: Optional[str]

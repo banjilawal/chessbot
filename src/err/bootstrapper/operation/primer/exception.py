@@ -26,7 +26,7 @@ class PrimingException(OperationBootstrapperException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a priming step failed.
+        1.  Indicating a priming step failed.
 
     Attributes:
         msg: Optional[str]

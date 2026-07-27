@@ -26,7 +26,7 @@ class EnemyCombatantAnalyzerException(AnalyzerException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an EnemyCombatantAnalyzer was aborted by an exception.
+        1.  Indicating an EnemyCombatantAnalyzer was aborted by an exception.
 
     Attributes:
         var: Optional[str]

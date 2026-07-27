@@ -24,7 +24,7 @@ class NodeValidatorException(ValidatorException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a NodeValidation check failed.
+        1.  Indicating a NodeValidation check failed.
 
     Attributes:
         msg: Optional[str]

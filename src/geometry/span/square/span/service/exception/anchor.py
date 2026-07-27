@@ -23,7 +23,7 @@ class SquareSpanServiceException(AnchorException):
     Role:Debug Coverage Target, Exception Chain Layer 0
 
     Responsibilities:
-    1.  Indicate that an error occurred in a SquareSpanService.
+    1.  Indicate an error occurred in a SquareSpanService.
 
     Super Class:
     *   AnchorException

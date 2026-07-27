@@ -26,7 +26,7 @@ class DevelopedAttackMovementSetEmptyException(AttackMovementSetEmptyException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required DevelopedAttackMovementSet is empty.
+        1.  Indicating a required DevelopedAttackMovementSet is empty.
 
     Attributes:
         msg: Optional[str]

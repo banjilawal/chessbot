@@ -26,7 +26,7 @@ class RegisterSizeException(SizeException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required Register Is the wrong size.
+        1.  Indicating a required Register Is the wrong size.
 
     Attributes:
         msg: Optional[str]

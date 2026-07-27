@@ -26,7 +26,7 @@ class AttributeCollisionException(ColliderException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that two entities share an attribute that should be unique.
+        1.  Indicating that two entities share an attribute that should be unique.
         
     Attributes:
         msg: Optional[str]

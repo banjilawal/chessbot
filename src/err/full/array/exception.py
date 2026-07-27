@@ -24,7 +24,7 @@ class ListFullException(FullException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required List is full.
+        1.  Indicating a required List is full.
 
     Attributes:
         msg: Optional[str]

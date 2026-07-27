@@ -27,7 +27,7 @@ class VectorToggleBuilderException(ToggleBuilderException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a VectorToggleBuilder failure.
+        1.  Indicating a VectorToggleBuilder failure.
 
     Attributes:
             msg: Optional[str]

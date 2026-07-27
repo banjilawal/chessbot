@@ -28,7 +28,7 @@ class RankContextCollisionException(ContextCollisionDetectorException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a RankContextCollision step failed.
+        1.  Indicating a RankContextCollision step failed.
 
     Attributes:
             msg: Optional[str]

@@ -26,7 +26,7 @@ class VectorTransformException(VectorOperationException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an error occurred during VectorTransform operation.
+        1.  Indicating an error occurred during VectorTransform operation.
 
     Attributes:
         msg: Optional[str]

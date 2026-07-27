@@ -25,7 +25,7 @@ class NortheastQuadrantBuilderException(QuadrantSpaceBuilderException):
         -   Failure Tracing
 
     Responsibilities:
-        1.  Indicate that a NortheastQuadrantBuilder failed. 
+        1.  Indicating a NortheastQuadrantBuilder failed.
 
     Attributes:
         msg: str

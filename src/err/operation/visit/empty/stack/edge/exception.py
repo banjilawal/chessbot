@@ -24,7 +24,7 @@ class VisitpingEmptyEdgeStackException(VisitpingEmptyStackException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that visitpingEmpty a EdgeStack failed.
+        1.  Indicating that visitpingEmpty a EdgeStack failed.
 
     Attributes:
         msg: Optional[str]

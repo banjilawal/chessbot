@@ -26,7 +26,7 @@ class SearcherPermitterException(PermitterException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a SearchPermitter did not approve the request.
+        1.  Indicating a SearchPermitter did not approve the request.
 
     Attributes:
         msg: Optional[str]

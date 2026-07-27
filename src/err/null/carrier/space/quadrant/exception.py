@@ -25,7 +25,7 @@ class QuadrantCarrierNullException(SpaceCarrierNullException):
         -   Failure Tracing
 
     Responsibilities:
-        1.  Indicate that a required QuadrantSpace.
+        1.  Indicating a required QuadrantSpace.
 
     Attributes:
         msg: str

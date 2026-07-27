@@ -25,7 +25,7 @@ class PersonaAssemblyException(AssemblyException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that n Persona assembly failed.
+        1.  Indicating that n Persona assembly failed.
 
     Attributes:
             msg: Optional[str]

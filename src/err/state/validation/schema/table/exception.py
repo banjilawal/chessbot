@@ -24,7 +24,7 @@ class SchemaHashtableValidatorException(ValidatorException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a SchemaDictValidation check failed.
+        1.  Indicating a SchemaDictValidation check failed.
 
     Attributes:
         msg: Optional[str]

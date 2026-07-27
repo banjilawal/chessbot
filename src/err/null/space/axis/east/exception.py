@@ -25,7 +25,7 @@ class EastAxisNullException(AxisNullException):
         -   Failure Tracing
 
     Responsibilities:
-        1.  Indicate that a required EastAxis Is Null.
+        1.  Indicating a required EastAxis Is Null.
 
     Attributes:
         msg: str

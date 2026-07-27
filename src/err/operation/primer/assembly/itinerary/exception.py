@@ -26,7 +26,7 @@ class ItineraryAssemblyPrimerException(AssemblyPrimerException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an ItineraryAssembly priming step failed.
+        1.  Indicating an ItineraryAssembly priming step failed.
 
     Attributes:
         msg: Optional[str]

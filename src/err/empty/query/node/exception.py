@@ -27,7 +27,7 @@ class NodeQueryStackEmptyException(QueryStackEmptyException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required NodeQuery's target stack is empty.
+        1.  Indicating a required NodeQuery's target stack is empty.
 
     Attributes:
             msg: Optional[str]

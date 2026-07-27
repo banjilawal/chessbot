@@ -25,7 +25,7 @@ class FormationAssemblyException(AssemblyException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a Formation assembly failed.
+        1.  Indicating a Formation assembly failed.
 
     Attributes:
             msg: Optional[str]

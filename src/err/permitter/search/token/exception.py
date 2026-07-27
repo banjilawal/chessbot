@@ -26,7 +26,7 @@ class TokenSearchPermitterException(SearcherPermitterException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a TokenSearchPermitter did not approve the request.
+        1.  Indicating a TokenSearchPermitter did not approve the request.
 
     Attributes:
         msg: Optional[str]

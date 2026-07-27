@@ -24,7 +24,7 @@ class RankContextBuildPipelineException(ContextBuildPipelineException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an error occurred in an RankContextBuildPipeline.
+        1.  Indicating an error occurred in an RankContextBuildPipeline.
 
     Attributes:
         msg: Optional[str]

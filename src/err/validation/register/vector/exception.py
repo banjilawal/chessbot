@@ -27,7 +27,7 @@ class VectorRegisterValidatorException(RegisterValidatorException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a candidate failed a VectorRegisterValidator test.
+        1.  Indicating a candidate failed a VectorRegisterValidator test.
 
     Attributes:
             msg: Optional[str]

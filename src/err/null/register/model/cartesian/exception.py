@@ -26,7 +26,7 @@ class VectorToggleRegisterNullException(ModelRegisterNullException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required VectorToggleRegister is null.
+        1.  Indicating a required VectorToggleRegister is null.
 
     Attributes:
         msg: Optional[str]

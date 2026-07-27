@@ -22,7 +22,7 @@ class CaptivityContextServiceException(CaptivityContextException, ServiceExcepti
     Role:Exception Work
 
     Responsibilities:
-    1.  Indicate that an HostageQueryService encountered an error which prevented the service from completing a task.
+    1.  Indicate an HostageQueryService encountered an error which prevented the service from completing a task.
     2.  Wrap an exception that hits the try-finally block of an HostageQueryService method.
 
     Super Class:

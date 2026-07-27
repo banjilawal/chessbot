@@ -24,7 +24,7 @@ class CoordValidatorException(ValidatorException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a CoordValidation check failed.
+        1.  Indicating a CoordValidation check failed.
 
     Attributes:
         msg: Optional[str]

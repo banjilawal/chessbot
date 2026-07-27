@@ -26,7 +26,7 @@ class PrimingTeamAssemblyException(AssemblyPrimerException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a TeamAssembly priming step failed.
+        1.  Indicating a TeamAssembly priming step failed.
 
     Attributes:
             msg: Optional[str]

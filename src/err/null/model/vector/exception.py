@@ -26,7 +26,7 @@ class VectorModelNullException(ModelNullException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required Vector is null.
+        1.  Indicating a required Vector is null.
 
     Attributes:
         msg: Optional[str]

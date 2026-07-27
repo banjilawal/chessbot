@@ -25,7 +25,7 @@ class PersonaFinalizeBuilderException(FinalizeBuilderException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that n PersonaBuild failed.
+        1.  Indicating that n PersonaBuild failed.
 
     Attributes:
             msg: Optional[str]

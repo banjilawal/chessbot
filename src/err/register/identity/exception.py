@@ -26,7 +26,7 @@ class IdentityRegisterException(RegisterException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an IdentityRegister encountered an error.
+        1.  Indicating an IdentityRegister encountered an error.
 
     Attributes:
         msg: Optional[str]

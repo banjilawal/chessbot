@@ -24,7 +24,7 @@ class MinNameLengthException(NameException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a name is too short.
+        1.  Indicating a name is too short.
 
     Attributes:
         msg: Optional[str]

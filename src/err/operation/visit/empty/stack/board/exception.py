@@ -24,7 +24,7 @@ class VisitpingEmptyBoardStackException(VisitpingEmptyStackException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that visitpingEmpty a BoardStack failed.
+        1.  Indicating that visitpingEmpty a BoardStack failed.
 
     Attributes:
         msg: Optional[str]

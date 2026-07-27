@@ -24,7 +24,7 @@ class SizeException(ChessException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required objectis the wrong size.
+        1.  Indicating a required objectis the wrong size.
 
     Attributes:
         msg: Optional[str]

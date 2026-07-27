@@ -26,7 +26,7 @@ class TokenCoordCollisionException(CoordCollisionException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that two tokens share a coord that should be unique.
+        1.  Indicating that two tokens share a coord that should be unique.
         
     Attributes:
         msg: Optional[str]

@@ -28,7 +28,7 @@ class PlayerBinderTokenOperationException(BinderTokenOperationException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a PlayerBinder tokenfailed.
+        1.  Indicating a PlayerBinder tokenfailed.
 
     TokenFailed.s:
             msg: Optional[str]

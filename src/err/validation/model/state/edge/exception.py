@@ -26,7 +26,7 @@ class EdgeValidatorException(StateModelValidatorException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an EdgeValidator test.
+        1.  Indicating an EdgeValidator test.
 
     Attributes:
         msg: Optional[str]

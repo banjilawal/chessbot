@@ -25,7 +25,7 @@ class BootstrapEdgeAssemblyException(AssemblyBootstrapperException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an EdgeAssembly bootstrap step failed.
+        1.  Indicating an EdgeAssembly bootstrap step failed.
 
     Attributes:
         msg: Optional[str]

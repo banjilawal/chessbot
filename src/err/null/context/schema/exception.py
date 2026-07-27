@@ -27,7 +27,7 @@ class SchemaContextNullException(ContextNullException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required SchemaContext is null.
+        1.  Indicating a required SchemaContext is null.
 
     Cannot Be Null.s:
             msg: Optional[str]

@@ -26,7 +26,7 @@ class QueenTraversalPatternValidatorException(TraversalPatternValidatorException
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required QueenTraversalPatternValidator failed.
+        1.  Indicate a required QueenTraversalPatternValidator failed.
 
     Attributes:
         msg: Optional[str]

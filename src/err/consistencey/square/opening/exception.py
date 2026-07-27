@@ -25,7 +25,7 @@ class OpeningSquareConsistencyCheckerException(SquareException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an OpeningSquareConsistencyChecker raised an error.
+        1.  Indicating an OpeningSquareConsistencyChecker raised an error.
 
     Attributes:
         msg: Optional[str]

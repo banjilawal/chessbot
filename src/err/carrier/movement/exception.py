@@ -26,7 +26,7 @@ class MovementPatternCarrierException(EntityCarrierException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a MovementPatternCarrier experienced an error.
+        1.  Indicating a MovementPatternCarrier experienced an error.
 
     Attributes:
         msg: Optional[str]

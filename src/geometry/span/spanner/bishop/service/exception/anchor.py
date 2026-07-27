@@ -23,7 +23,7 @@ class BishopSpanServiceException(SpanServiceException):
     Role:Debug Coverage Target, Exception Chain Layer 0
 
     Responsibilities:
-    1.  Indicate that an error occurred in a BishopSpanService.
+    1.  Indicate an error occurred in a BishopSpanService.
 
     Super Class:
     *   SpanServiceException

@@ -26,7 +26,7 @@ class TokenDeploymentException(TokenOperationException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a Token getting deployed to its opening square.
+        1.  Indicating a Token getting deployed to its opening square.
 
     Attributes:
         msg: Optional[str]

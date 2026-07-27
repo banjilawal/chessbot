@@ -22,7 +22,7 @@ class DeletingActiveTokenExceptionTeam(TeamRosterException):
     Role:Error Tracing, Debugging
 
     Responsibilities:
-    1.  Indicate that a occupant cannot be removed from the roster because it has not been captured.
+    1.  Indicate a occupant cannot be removed from the roster because it has not been captured.
 
     Super Class:
         *   TeamRosterException

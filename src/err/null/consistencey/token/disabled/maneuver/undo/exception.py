@@ -26,7 +26,7 @@ class DisabledTokenUndoMoveConsistencyCheckerNullException(DisabledTokenManeuver
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required disabled token attempted to undo a move.
+        1.  Indicating a required disabled token attempted to undo a move.
             
     Attributes:
         msg: Optional[str]

@@ -25,7 +25,7 @@ class QuadrantSpaceBuilderException(SpaceBuilderException):
         -   Failure Tracing
 
     Responsibilities:
-        1.  Indicate that a QuadrantSpaceBuilder failed. 
+        1.  Indicating a QuadrantSpaceBuilder failed.
 
     Attributes:
         msg: str

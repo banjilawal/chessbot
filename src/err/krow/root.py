@@ -26,7 +26,7 @@ class WorkException(ChessException):
         -   Exception Messaging
 
     Responsibilities:
-        1.  Abstract exception for Work subclasses which indicate
+        1.  Abstract exception for Work subclasses which indicating
                 -   The work
                 -   It's method
             that produced an exception instead of a payload in it's result.

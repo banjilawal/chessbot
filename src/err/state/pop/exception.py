@@ -26,7 +26,7 @@ class Push Exception(StateException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a push  statefailed.
+        1.  Indicating a push  statefailed.
 
     Attributes:
         msg: Optional[str]

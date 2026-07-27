@@ -24,7 +24,7 @@ class NodeContextBuildPipelineException(ContextBuildPipelineException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an error occurred in an NodeContextBuildPipeline.
+        1.  Indicating an error occurred in an NodeContextBuildPipeline.
 
     Attributes:
         msg: Optional[str]

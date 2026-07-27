@@ -27,7 +27,7 @@ class TeamQueryNullException(QueryNullException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required TeamQuery is null.
+        1.  Indicating a required TeamQuery is null.
 
     Attributes:
             msg: Optional[str]

@@ -26,7 +26,7 @@ class AxisLineSegmentSizeException(LineSegmentSizeException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an Axis has an size segment field.
+        1.  Indicating an Axis has an size segment field.
 
     Attributes:
         msg: Optional[str]

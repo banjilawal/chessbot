@@ -24,7 +24,7 @@ class NodeBuilderException(BuilderException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a Node build failed.
+        1.  Indicating a Node build failed.
 
     Attributes:
         msg: Optional[str]

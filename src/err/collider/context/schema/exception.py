@@ -28,7 +28,7 @@ class SchemaContextCollisionException(ContextColliderException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a SchemaContextCollision step failed.
+        1.  Indicating a SchemaContextCollision step failed.
 
     Attributes:
             msg: Optional[str]

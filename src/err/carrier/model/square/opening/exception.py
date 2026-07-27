@@ -25,7 +25,7 @@ class OpeningSquareCarrierException(SquareException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an OpeningSquareCarrier encountered an error.
+        1.  Indicating an OpeningSquareCarrier encountered an error.
 
     Attributes:
         msg: Optional[str]

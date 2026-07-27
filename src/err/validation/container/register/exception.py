@@ -26,7 +26,7 @@ class RegisterSetValidatorException(ContainerValidatorException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a candidate failed a RegisterSetValidator test.
+        1.  Indicating a candidate failed a RegisterSetValidator test.
 
     Attributes:
         msg: Optional[str]

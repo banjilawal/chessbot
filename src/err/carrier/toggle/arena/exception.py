@@ -24,7 +24,7 @@ class ArenatoggleCarrierException(toggleCarrierException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an ArenatoggleCarrier encountered an error.
+        1.  Indicating an ArenatoggleCarrier encountered an error.
 
     Attributes:
         msg: Optional[str]

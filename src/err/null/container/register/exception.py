@@ -26,7 +26,7 @@ class RegisterSetNullException(ContainerNullException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required RegisterSet is null.
+        1.  Indicating a required RegisterSet is null.
 
     Attributes:
         msg: Optional[str]

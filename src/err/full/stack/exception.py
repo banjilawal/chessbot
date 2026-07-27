@@ -26,7 +26,7 @@ class StackFullException(CapacityFullException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a Stack is full.
+        1.  Indicating a Stack is full.
 
     Attributes:
         msg: Optional[str]

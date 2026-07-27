@@ -26,7 +26,7 @@ class QueenPatternGeneratorException(PatternGeneratorException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a QueenPatternGenerator did not complete its task.
+        1.  Indicating a QueenPatternGenerator did not complete its task.
 
     Attributes:
         msg: Optional[str]

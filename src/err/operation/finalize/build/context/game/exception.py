@@ -24,7 +24,7 @@ class FinalizeGameContextBuilderException(FinalizeContextBuilderException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that finalizing a GameContextBuild failed.
+        1.  Indicating that finalizing a GameContextBuild failed.
 
     Attributes:
             msg: Optional[str]

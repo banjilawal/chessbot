@@ -26,7 +26,7 @@ class DevelopedManeuverOffsetPatternCarrierNullException(ManeuverOffsetPatternCa
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an error occurred in an DevelopedManeuverOffsetPatternCarrier is null.
+        1.  Indicating an error occurred in an DevelopedManeuverOffsetPatternCarrier is null.
 
     Attributes:
         msg: Optional[str]

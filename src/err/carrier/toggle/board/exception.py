@@ -26,7 +26,7 @@ class BoardtoggleCarrierException(toggleCarrierException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a BoardtoggleCarrier encountered an error.
+        1.  Indicating a BoardtoggleCarrier encountered an error.
 
     Attributes:
         msg: Optional[str]

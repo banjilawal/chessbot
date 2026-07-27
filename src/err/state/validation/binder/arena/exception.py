@@ -24,7 +24,7 @@ class ArenaPlayerBinderValidatorException(BinderValidatorException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a ArenaPlayerBinder validation check failed.
+        1.  Indicating a ArenaPlayerBinder validation check failed.
 
     Attributes:
         msg: Optional[str]

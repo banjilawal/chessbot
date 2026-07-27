@@ -24,7 +24,7 @@ class ArenaPlayerBinderMicroserviceException(BinderMicroserviceException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a candidate did not pass a ArenaPlayerBinder microservice failed.
+        1.  Indicating a candidate did not pass a ArenaPlayerBinder microservice failed.
 
     Attributes:
         msg: Optional[str]

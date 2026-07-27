@@ -26,7 +26,7 @@ class DevelopedAttackOffsetPatternNullException(AttackOffsetPatternNullException
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an error occurred in an DevelopedAttackOffsetPattern is null.
+        1.  Indicating an error occurred in an DevelopedAttackOffsetPattern is null.
 
     Attributes:
         msg: Optional[str]

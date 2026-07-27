@@ -26,7 +26,7 @@ class RegisterConsistencyCheckerNullException(ConsistencyCheckerNullException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required RegisterConsistencyChecker is null.
+        1.  Indicating a required RegisterConsistencyChecker is null.
 
     Attributes:
         msg: Optional[str]

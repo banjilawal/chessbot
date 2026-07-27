@@ -24,7 +24,7 @@ class TeamDeletionPipelineException(DeletionPipelineException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an error occurred in a TeamDeletionPipeline.
+        1.  Indicating an error occurred in a TeamDeletionPipeline.
 
     Attributes:
         msg: Optional[str]

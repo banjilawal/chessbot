@@ -26,7 +26,7 @@ class PushRequestTesterException(RequestTesterException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a PushRequestTester failed.
+        1.  Indicating a PushRequestTester failed.
 
     Cannot Be Tester.s:
             msg: Optional[str]

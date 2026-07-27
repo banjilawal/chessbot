@@ -21,7 +21,7 @@ class RollbackException(ChessException):
   Role:Error Rollback, Integrity Debugging, State Restoration,
 
   Responsibilities:
-  1.  Indicate that an operation that failed was is rolled back before the exception chain was sent.
+  1.  Indicating an operation that failed was is rolled back before the exception chain was sent.
 
   Super Class:
       *   ChessException

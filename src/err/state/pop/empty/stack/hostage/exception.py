@@ -24,7 +24,7 @@ class PoppingEmptyHostageStackException(PoppingEmptyStackException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that poppingEmpty a HostageStack failed.
+        1.  Indicating that poppingEmpty a HostageStack failed.
 
     Attributes:
         msg: Optional[str]

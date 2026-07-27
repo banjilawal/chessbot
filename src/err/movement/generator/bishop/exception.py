@@ -26,7 +26,7 @@ class BishopPatternGeneratorException(PatternGeneratorException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a BishopPatternGenerator did not complete its task.
+        1.  Indicating a BishopPatternGenerator did not complete its task.
 
     Attributes:
         msg: Optional[str]

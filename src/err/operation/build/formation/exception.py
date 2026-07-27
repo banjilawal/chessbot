@@ -25,7 +25,7 @@ class FormationBuilderException(BuilderException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a Formation build failed.
+        1.  Indicating a Formation build failed.
 
     Attributes:
             msg: Optional[str]

@@ -28,7 +28,7 @@ class CoordStackServiceException(StackServiceException):
         reports on
             *   the triggering variable
             *   The trigger's value.
-    2.  Indicate which CoordStackService method received a worker's (layer-1) failure result.
+    2.  Indicating which CoordStackService method received a worker's (layer-1) failure result.
 
     Super Class:
         *   StackServiceException

@@ -26,7 +26,7 @@ class KnightMovementSetSizeException(MovementVectorSetSizeException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required KnightMovementSetis the wrong size.
+        1.  Indicating a required KnightMovementSetis the wrong size.
 
     Attributes:
         msg: Optional[str]

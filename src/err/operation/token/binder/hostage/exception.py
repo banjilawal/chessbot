@@ -28,7 +28,7 @@ class HostageBinderTokenOperationException(BinderTokenOperationException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a HostageBinder tokenfailed.
+        1.  Indicating a HostageBinder tokenfailed.
 
     TokenFailed.s:
             msg: Optional[str]

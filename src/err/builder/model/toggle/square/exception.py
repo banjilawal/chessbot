@@ -27,7 +27,7 @@ class SquareRegisterBuilderException(RegisterBuilderException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a SquareRegisterBuilder failure.
+        1.  Indicating a SquareRegisterBuilder failure.
 
     Attributes:
             msg: Optional[str]

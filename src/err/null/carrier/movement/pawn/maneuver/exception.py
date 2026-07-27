@@ -26,7 +26,7 @@ class ManeuverOffsetPatternCarrierNullException(PawnOffsetPatternCarrierNullExce
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an error occurred in an ManeuverOffsetPatternCarrier is null.
+        1.  Indicating an error occurred in an ManeuverOffsetPatternCarrier is null.
 
     Attributes:
         msg: Optional[str]

@@ -26,7 +26,7 @@ class FormationNullException(SchemaNullException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required Formation is null.
+        1.  Indicating a required Formation is null.
 
     Attributes:
             msg: Optional[str]

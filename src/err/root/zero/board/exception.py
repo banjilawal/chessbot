@@ -24,7 +24,7 @@ class ZeroBoardBlueprintFlagsException(ZeroBlueprintFlagsException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicates that no BoardRootCertifier test. enabled.
+        1.  Indicatings that no BoardRootCertifier test. enabled.
 
     Attributes:
         msg: Optional[str]

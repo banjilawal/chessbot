@@ -25,7 +25,7 @@ class VectorBuilderException(BuilderException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate a Vector build failed.
+        1.  Indicating a Vector build failed.
 
     Attributes:
         msg: Optional[str]

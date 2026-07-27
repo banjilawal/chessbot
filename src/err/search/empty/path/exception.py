@@ -26,7 +26,7 @@ class PathSearchResultEmptyException(SearchResultEmptyException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a PathSearcher did not find the required item.
+        1.  Indicating a PathSearcher did not find the required item.
 
     Attributes:
             msg: Optional[str]

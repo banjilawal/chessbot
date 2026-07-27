@@ -24,7 +24,7 @@ class BootstrapVectorContextAssemblyException(BootstrapContextAssemblyException)
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a VectorContextAssembly bootstrap step failed.
+        1.  Indicating a VectorContextAssembly bootstrap step failed.
 
     Attributes:
             msg: Optional[str]

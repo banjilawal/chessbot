@@ -26,7 +26,7 @@ class ContainerException(ChessException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a Container encountered an error.
+        1.  Indicating a Container encountered an error.
 
     Attributes:
             msg: Optional[str]

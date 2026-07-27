@@ -26,7 +26,7 @@ class NodeConsistencyCheckerException(ConsistencyCheckerException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a NodeConsistencyChecker raised an error.
+        1.  Indicating a NodeConsistencyChecker raised an error.
 
     Attributes:
         msg: Optional[str]

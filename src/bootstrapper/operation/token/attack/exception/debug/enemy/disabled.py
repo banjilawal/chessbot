@@ -12,7 +12,7 @@ class AttackingDisabledEnemyException(AttackDebugException):
     Role:Debug, Error Tracing
 
     Responsibilities:
-    1.  Indicate that an attack failed because the was already disabled.
+    1.  Indicate an attack failed because the was already disabled.
 
     Super Class:
         *   AttackDebugException

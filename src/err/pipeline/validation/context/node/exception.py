@@ -24,7 +24,7 @@ class NodeContextValidationPipelineException(ContextValidationPipelineException)
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an error occurred in an NodeContextValidationPipeline.
+        1.  Indicating an error occurred in an NodeContextValidationPipeline.
 
     Attributes:
         msg: Optional[str]

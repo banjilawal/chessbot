@@ -24,7 +24,7 @@ class SnapshotDatabaseNullException(DatabaseNullException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required SnapshotDatabase is null.
+        1.  Indicating a required SnapshotDatabase is null.
 
     Attributes:
         msg: Optional[str]

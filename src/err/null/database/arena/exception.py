@@ -24,7 +24,7 @@ class ArenaDatabaseNullException(DatabaseNullException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required ArenaDatabase is null.
+        1.  Indicating a required ArenaDatabase is null.
 
     Attributes:
         msg: Optional[str]

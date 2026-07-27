@@ -25,7 +25,7 @@ class EastAxisValidatorException(AxisValidatorException):
         -   Failure Tracing
 
     Responsibilities:
-        1.  Indicate that a EastAxisValidator failed. 
+        1.  Indicating a EastAxisValidator failed.
 
     Attributes:
         msg: str

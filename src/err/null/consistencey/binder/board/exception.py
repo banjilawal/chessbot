@@ -25,7 +25,7 @@ class BoardTeamBinderConsistencyCheckerNullException(BinderException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required BoardTeamBinderConsistencyChecker is null.
+        1.  Indicating a required BoardTeamBinderConsistencyChecker is null.
 
     Attributes:
         msg: Optional[str]

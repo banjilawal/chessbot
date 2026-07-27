@@ -28,7 +28,7 @@ class RankBinderBuilderException(BinderBuilderException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a RankBinder build failed.
+        1.  Indicating a RankBinder build failed.
 
     Build Failed.s:
             msg: Optional[str]

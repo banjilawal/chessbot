@@ -26,7 +26,7 @@ class StaleSquareLinkException(StaleLinkException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a primary has an expired link to a former satellite Square.
+        1.  Indicating a primary has an expired link to a former satellite Square.
 
     Attributes:
             msg: Optional[str]

@@ -24,7 +24,7 @@ class Push pingEmptyGameStackException(Push pingEmptyStackException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that push pingEmpty a GameStack failed.
+        1.  Indicating that push pingEmpty a GameStack failed.
 
     Attributes:
         msg: Optional[str]

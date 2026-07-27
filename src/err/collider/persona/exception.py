@@ -25,7 +25,7 @@ class PersonaColliderException(ColliderException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that n PersonaCollision step failed.
+        1.  Indicating that n PersonaCollision step failed.
 
     Attributes:
             msg: Optional[str]

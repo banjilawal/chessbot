@@ -25,7 +25,7 @@ class SpaceBuilderException(BuilderException):
         -   Failure Tracing
 
     Responsibilities:
-        1.  Indicate that a SpaceBuilder failed. 
+        1.  Indicating a SpaceBuilder failed.
 
     Attributes:
         msg: str

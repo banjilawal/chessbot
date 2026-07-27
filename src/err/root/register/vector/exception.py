@@ -28,7 +28,7 @@ class VectorRegisterRootCertifierException(RegisterRootCertifierException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a candidate failed a VectorVectorRegisterCertifier failed.
+        1.  Indicating a candidate failed a VectorVectorRegisterCertifier failed.
 
     Attributes:
             msg: Optional[str]

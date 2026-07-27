@@ -28,7 +28,7 @@ class SchemaBinderAssemblyException(BinderAssemblyException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a SchemaBinder assembly failed.
+        1.  Indicating a SchemaBinder assembly failed.
 
     Assembly Failed.s:
             msg: Optional[str]

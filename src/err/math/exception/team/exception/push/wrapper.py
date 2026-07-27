@@ -22,7 +22,7 @@ class PushingTeamFailedException(TeamStackException, InsertionException):
     Role:Exception Work
 
     Responsibilities:
-    1.  Indicate that pushing a Team on the Stack failed.
+    1.  Indicating that pushing a Team on the Stack failed.
 
     Super Class:
         *   TeamStackException

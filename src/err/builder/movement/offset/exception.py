@@ -26,7 +26,7 @@ class OffsetPatternBuilderException(MovementPatternBuilderException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required OffsetPatternBuilder failed.
+        1.  Indicating a required OffsetPatternBuilder failed.
 
     Attributes:
         msg: Optional[str]

@@ -26,7 +26,7 @@ class StringNullException(NullException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required String is null.
+        1.  Indicating a required String is null.
 
     Attributes:
         msg: Optional[str]

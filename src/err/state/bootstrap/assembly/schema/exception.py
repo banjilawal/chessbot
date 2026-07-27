@@ -25,7 +25,7 @@ class SchemaAssemblyBootstrapperException(AssemblyBootstrapperException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a SchemaAssembly bootstrap step failed.
+        1.  Indicating a SchemaAssembly bootstrap step failed.
 
     Attributes:
         msg: Optional[str]

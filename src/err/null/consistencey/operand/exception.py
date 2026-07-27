@@ -27,7 +27,7 @@ class VectorToggleConsistencyCheckerNullException(ConsistencyCheckerNullExceptio
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required VectorToggleConsistencyChecker is null.
+        1.  Indicating a required VectorToggleConsistencyChecker is null.
 
     Attributes:
             msg: Optional[str]

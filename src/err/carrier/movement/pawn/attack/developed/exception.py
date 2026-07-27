@@ -26,7 +26,7 @@ class DevelopedAttackOffsetPatternCarrierException(AttackOffsetPatternCarrierExc
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an error occurred in an DevelopedAttackOffsetPatternCarrier experienced an error.
+        1.  Indicating an error occurred in an DevelopedAttackOffsetPatternCarrier experienced an error.
 
     Attributes:
         msg: Optional[str]

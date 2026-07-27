@@ -27,7 +27,7 @@ class PersonaQueryFullException(QueryFullException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required PersonaQuery is full.
+        1.  Indicating a required PersonaQuery is full.
 
     Attributes:
             msg: Optional[str]

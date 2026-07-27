@@ -24,7 +24,7 @@ class EdgeStackRegistrationException(StackRegistrationException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that registrationing onto a EdgeStack failed.
+        1.  Indicating that registrationing onto a EdgeStack failed.
 
     Attributes:
         msg: Optional[str]

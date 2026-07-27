@@ -24,7 +24,7 @@ class PlayerStackSizeException(StackSizeException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required PlayerStackis the wrong size.
+        1.  Indicating a required PlayerStackis the wrong size.
 
     Attributes:
         msg: Optional[str]

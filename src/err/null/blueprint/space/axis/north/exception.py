@@ -25,7 +25,7 @@ class NorthAxisBlueprintNullException(AxisBlueprintNullException):
         -   Failure Tracing
 
     Responsibilities:
-        1.  Indicate that a required NorthAxis is null.
+        1.  Indicating a required NorthAxis is null.
 
     Attributes:
         msg: str

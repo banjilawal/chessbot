@@ -26,7 +26,7 @@ class KingPathtoggleCarrierException(PathException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a KingPathtoggleCarrier encountered an error.
+        1.  Indicating a KingPathtoggleCarrier encountered an error.
 
     Attributes:
         msg: Optional[str]

@@ -26,7 +26,7 @@ class EastQuadrantRecurrenceValidatorException(QuadrantRecurrenceValidatorExcept
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a EastQuadrantRecurrenceValidator failed.
+        1.  Indicating a EastQuadrantRecurrenceValidator failed.
 
     Attributes:
         msg: Optional[str]

@@ -24,7 +24,7 @@ class NodeUpdatePipelineException(UpdatePipelineException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an error occurred in a NodeUpdatePipeline.
+        1.  Indicating an error occurred in a NodeUpdatePipeline.
 
     Attributes:
         msg: Optional[str]

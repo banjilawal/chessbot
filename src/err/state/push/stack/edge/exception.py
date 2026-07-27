@@ -24,7 +24,7 @@ class EdgeStackPushException(StackPushException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that pushing onto a EdgeStack failed.
+        1.  Indicating that pushing onto a EdgeStack failed.
 
     Attributes:
         msg: Optional[str]

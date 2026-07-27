@@ -24,7 +24,7 @@ class PlayerContextValidationPipelineException(ContextValidationPipelineExceptio
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an error occurred in an PlayerContextValidationPipeline.
+        1.  Indicating an error occurred in an PlayerContextValidationPipeline.
 
     Attributes:
         msg: Optional[str]

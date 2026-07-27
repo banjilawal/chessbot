@@ -26,7 +26,7 @@ class ManeuverDestinationAnalyzerException(AnalyzerBootstrapperException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a ReadinessAnalyzerBootstrapper from
+        1.  Indicating a ReadinessAnalyzerBootstrapper from
             completing its task.
         
     Attributes:

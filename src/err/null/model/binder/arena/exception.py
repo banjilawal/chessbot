@@ -22,7 +22,7 @@ class ArenaPlayerBinderModelNullException(BinderModelNullException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required ArenaPlayerBinder is null.
+        1.  Indicating a required ArenaPlayerBinder is null.
 
     Attributes:
             msg: Optional[str]

@@ -24,7 +24,7 @@ class Push pingSnapshotStackException(Push pingStackException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that push ping a SnapshotStack failed.
+        1.  Indicating that push ping a SnapshotStack failed.
 
     Attributes:
         msg: Optional[str]

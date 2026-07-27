@@ -26,7 +26,7 @@ class RecurrenceBlueprintNullException(ChessException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required RecurrenceBlueprint is null.
+        1.  Indicating a required RecurrenceBlueprint is null.
 
     Attributes:
         msg: Optional[str]

@@ -26,7 +26,7 @@ class VectorBuilderBootstrapperException(BuilderBootstrapperException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate a VectorBuilderBootstrapper was aborted by an exception.
+        1.  Indicating a VectorBuilderBootstrapper was aborted by an exception.
 
     Attributes:
         msg: Optional[str]

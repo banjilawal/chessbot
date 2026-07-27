@@ -28,7 +28,7 @@ class CoordBinderTokenStateException(BinderTokenStateException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a CoordBinder tokenfailed.
+        1.  Indicating a CoordBinder tokenfailed.
 
     TokenFailed.s:
             msg: Optional[str]

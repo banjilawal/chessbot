@@ -24,7 +24,7 @@ class ExcessHostageBlueprintFlagsException(ExcessBlueprintFlagsException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicates that more than one HostageBlueprint option was enabled.
+        1.  Indicatings that more than one HostageBlueprint option was enabled.
 
     Attributes:
         msg: Optional[str]

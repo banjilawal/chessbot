@@ -27,7 +27,7 @@ class FormationQueryFullException(QueryFullException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required FormationQuery is full.
+        1.  Indicating a required FormationQuery is full.
 
     Attributes:
             msg: Optional[str]

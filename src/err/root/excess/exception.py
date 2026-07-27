@@ -24,7 +24,7 @@ class ExcessBlueprintFlagsException(BlueprintException):
         -   Error Tracing
         
     Responsibilities:
-        1.  Indicate that no RootCertifier test.s were enabled.
+        1.  Indicating that no RootCertifier test.s were enabled.
 
     Attributes:
         msg: Optional[str]

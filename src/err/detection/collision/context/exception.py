@@ -25,7 +25,7 @@ class ContextCollisionDetectorException(CollisionDetectorException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a ContextCollision failed.
+        1.  Indicating a ContextCollision failed.
 
     Attributes:
             msg: Optional[str]

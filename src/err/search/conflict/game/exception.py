@@ -26,7 +26,7 @@ class GameSearchHitConflictException(SearchHitConflictException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a GameSearcher returned multiple hits for an item which should be unique.
+        1.  Indicating a GameSearcher returned multiple hits for an item which should be unique.
 
     Attributes:
             msg: Optional[str]

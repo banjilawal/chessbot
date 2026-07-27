@@ -26,7 +26,7 @@ class PawnBasisEmptyException(BasisEmptyException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required PawnBasisSet is empty.
+        1.  Indicating a required PawnBasisSet is empty.
 
     Attributes:
         msg: Optional[str]

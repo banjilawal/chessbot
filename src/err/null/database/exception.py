@@ -26,7 +26,7 @@ class DatabaseNullException(NullException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required Database is null.
+        1.  Indicating a required Database is null.
 
     Attributes:
         msg: Optional[str]

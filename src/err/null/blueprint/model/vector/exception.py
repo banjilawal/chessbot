@@ -27,7 +27,7 @@ class VectorBlueprintNullException(ModelBlueprintNullException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required vectorBlueprint is null.
+        1.  Indicating a required vectorBlueprint is null.
 
     Cannot Be Null.s:
             msg: Optional[str]

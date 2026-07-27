@@ -24,7 +24,7 @@ class BoardContextValidationPipelineException(ContextValidationPipelineException
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an error occurred in an BoardContextValidationPipeline.
+        1.  Indicating an error occurred in an BoardContextValidationPipeline.
 
     Attributes:
         msg: Optional[str]

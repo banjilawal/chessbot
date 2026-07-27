@@ -26,7 +26,7 @@ class ArenaPlayerBinderEmptyException(BinderEmptyException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required ArenaPlayerBinder is empty.
+        1.  Indicating a required ArenaPlayerBinder is empty.
 
     Attributes:
         msg: Optional[str]

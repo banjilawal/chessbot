@@ -27,7 +27,7 @@ class SchemaQueryNullException(QueryNullException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required SchemaQuery is null.
+        1.  Indicating a required SchemaQuery is null.
 
     Attributes:
             msg: Optional[str]

@@ -24,7 +24,7 @@ class InconsistentTokenCoordException(InconsistentStateException):
     Role:Error Variable Identifier, Exception Chain Layer 2, Exception Messaging
 
     Responsibilities:
-    1.  Indicate that when a Token's current_position differs from its current square's coord.
+    1.  Indicating that when a Token's current_position differs from its current square's coord.
 
     Super Class:
         *   InconsistentStateException

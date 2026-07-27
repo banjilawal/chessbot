@@ -26,7 +26,7 @@ class RecurrenceTableException(RecurrenceException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a RecurrenceTable encountered an error.
+        1.  Indicating a RecurrenceTable encountered an error.
 
     Attributes:
         msg: Optional[str]

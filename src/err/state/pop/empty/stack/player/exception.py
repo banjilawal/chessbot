@@ -24,7 +24,7 @@ class Push pingEmptyPlayerStackException(Push pingEmptyStackException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that poppingEmpty a PlayerStack failed.
+        1.  Indicating that poppingEmpty a PlayerStack failed.
 
     Attributes:
         msg: Optional[str]

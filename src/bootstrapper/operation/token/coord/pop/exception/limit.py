@@ -28,7 +28,7 @@ class MoveUndoLimitException(TokenDebugException):
         -   Exception Messaging
 
     Responsibilities:
-        1.  Indicate that a token tried to undo mre than one move.
+        1.  Indicate a token tried to undo mre than one move.
 
     Attributes:
         var: Optional[str]

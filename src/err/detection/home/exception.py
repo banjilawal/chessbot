@@ -26,7 +26,7 @@ class HomeSquareDetectorException(DetectorException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a HomeSquareDetector encountered an error.
+        1.  Indicating a HomeSquareDetector encountered an error.
 
     Attributes:
         msg: Optional[str]

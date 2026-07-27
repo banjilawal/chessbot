@@ -26,7 +26,7 @@ class BoardBuilderException(BuilderException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a Board build failed.
+        1.  Indicating a Board build failed.
 
     Attributes:
         msg: Optional[str]

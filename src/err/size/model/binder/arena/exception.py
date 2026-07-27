@@ -26,7 +26,7 @@ class ArenaPlayerBinderSizeException(BinderSizeException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required ArenaPlayerBinderis the wrong size.
+        1.  Indicating a required ArenaPlayerBinderis the wrong size.
 
     Attributes:
         msg: Optional[str]

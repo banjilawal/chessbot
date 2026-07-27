@@ -24,7 +24,7 @@ class NodeDatabaseNullException(DatabaseNullException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required NodeDatabase is null.
+        1.  Indicating a required NodeDatabase is null.
 
     Attributes:
         msg: Optional[str]

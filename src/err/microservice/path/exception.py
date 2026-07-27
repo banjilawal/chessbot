@@ -26,7 +26,7 @@ class PathMicroserviceException(MicroserviceException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a candidate did not pass a PathMicroservice check.
+        1.  Indicating a candidate did not pass a PathMicroservice check.
 
     Attributes:
             msg: Optional[str]

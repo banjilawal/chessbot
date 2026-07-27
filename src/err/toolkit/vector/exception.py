@@ -25,7 +25,7 @@ class VectorException(ToolkitException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate a Vector encountered an error.
+        1.  Indicating a Vector encountered an error.
 
     Attributes:
         msg: Optional[str]

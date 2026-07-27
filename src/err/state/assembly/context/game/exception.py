@@ -28,7 +28,7 @@ class GameContextAssemblyException(ContextAssemblyException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a GameContext assembly failed.
+        1.  Indicating a GameContext assembly failed.
 
     Assembly Failed.s:
             msg: Optional[str]

@@ -28,7 +28,7 @@ class TokenContextTokenOperationException(ContextTokenOperationException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a TokenContext tokenfailed.
+        1.  Indicating a TokenContext tokenfailed.
 
     TokenFailed.s:
             msg: Optional[str]

@@ -26,7 +26,7 @@ class TeamSearchHitConflictException(SearchHitConflictException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a TeamSearcher returned multiple hits for an item which should be unique.
+        1.  Indicating a TeamSearcher returned multiple hits for an item which should be unique.
 
     Attributes:
             msg: Optional[str]

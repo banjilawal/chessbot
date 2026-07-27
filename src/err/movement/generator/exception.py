@@ -26,7 +26,7 @@ class PatternGeneratorException(MovementPatternException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a PatternGenerator did not complete its task.
+        1.  Indicating a PatternGenerator did not complete its task.
 
     Attributes:
         msg: Optional[str]

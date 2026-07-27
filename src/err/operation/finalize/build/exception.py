@@ -23,7 +23,7 @@ class FinalizeBuilderException(FinalizationException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that finalizing a Finalize step failed.
+        1.  Indicating that finalizing a Finalize step failed.
 
     Attributes:
         var: Optional[str]

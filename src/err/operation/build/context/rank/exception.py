@@ -28,7 +28,7 @@ class RankContextBuilderException(ContextBuilderException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a RankContext build failed.
+        1.  Indicating a RankContext build failed.
 
     Build Failed.s:
             msg: Optional[str]

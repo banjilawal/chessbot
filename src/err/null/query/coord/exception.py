@@ -27,7 +27,7 @@ class CoordQueryNullException(QueryNullException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required CoordQuery is null.
+        1.  Indicating a required CoordQuery is null.
 
     Attributes:
             msg: Optional[str]

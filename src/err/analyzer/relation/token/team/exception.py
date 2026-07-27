@@ -26,7 +26,7 @@ class TeamTokenRelationAnalyzerException(RelationAnalyzerException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a token-team relation analyzer from completing.
+        1.  Indicating a token-team relation analyzer from completing.
 
     Attributes:
         msg: Optional[str]

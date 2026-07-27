@@ -27,7 +27,7 @@ class TokenDeletionRequestTesterException(DeletionRequestTesterException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a TokenStackDeletionTester encountered an error.
+        1.  Indicating a TokenStackDeletionTester encountered an error.
 
     Cannot Be Tester.s:
             msg: Optional[str]

@@ -24,7 +24,7 @@ class VisitpingSnapshotStackException(VisitpingStackException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that visitping a SnapshotStack failed.
+        1.  Indicating that visitping a SnapshotStack failed.
 
     Attributes:
         msg: Optional[str]

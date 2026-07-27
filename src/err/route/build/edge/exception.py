@@ -25,7 +25,7 @@ class EdgeBuildRouteException(BuildRouteException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that one of Edge build routes is missing.
+        1.  Indicating that one of Edge build routes is missing.
 
     Attributes:
         msg: Optional[str]

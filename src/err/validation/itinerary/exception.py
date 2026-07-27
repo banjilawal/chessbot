@@ -26,7 +26,7 @@ class ItineraryValidatorException(ValidatorException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate a ItineraryValidator test.
+        1.  Indicating a ItineraryValidator test.
 
     Attributes:
         msg: Optional[str]

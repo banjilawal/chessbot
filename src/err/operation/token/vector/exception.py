@@ -25,7 +25,7 @@ class VectorTokenOperationException(TokenOperationException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate a Vector tokenfailed.
+        1.  Indicating a Vector tokenfailed.
 
     Attributes:
         msg: Optional[str]

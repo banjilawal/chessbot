@@ -25,7 +25,7 @@ class CoordBuilderException(BuilderException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a Coord build failed.
+        1.  Indicating a Coord build failed.
 
     Attributes:
         msg: Optional[str]

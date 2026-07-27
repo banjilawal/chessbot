@@ -24,7 +24,7 @@ class TokenBuildPipelineException(BuildPipelineException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an error occurred in a TokenBuildPipeline.
+        1.  Indicating an error occurred in a TokenBuildPipeline.
 
     Attributes:
         msg: Optional[str]

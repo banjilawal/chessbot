@@ -26,7 +26,7 @@ class KingOffsetPatternCarrierNullException(OffsetPatternCarrierNullException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required KingOffsetPatternCarrier is null.
+        1.  Indicating a required KingOffsetPatternCarrier is null.
 
     Attributes:
         msg: Optional[str]

@@ -24,7 +24,7 @@ class NodeStackNullException(StackNullException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required NodeStack is null.
+        1.  Indicating a required NodeStack is null.
 
     Attributes:
         msg: Optional[str]

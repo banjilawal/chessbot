@@ -24,7 +24,7 @@ class TeamDatabaseFullException(DatabaseFullException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required TeamDatabase is full.
+        1.  Indicating a required TeamDatabase is full.
 
     Attributes:
         msg: Optional[str]

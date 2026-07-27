@@ -26,7 +26,7 @@ class BoardBuildRouteException(BuildRouteException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that one of Board build routes is missing.
+        1.  Indicating that one of Board build routes is missing.
 
     Attributes:
         msg: Optional[str]

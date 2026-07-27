@@ -24,7 +24,7 @@ class UtilException(ChessException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate there is a Util error.
+        1.  Indicating there is a Util error.
     Attributes:
         msg: Optional[str]
         var: Optional[str]

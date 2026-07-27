@@ -24,7 +24,7 @@ class NodeDeletionPipelineException(DeletionPipelineException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an error occurred in a NodeDeletionPipeline.
+        1.  Indicating an error occurred in a NodeDeletionPipeline.
 
     Attributes:
         msg: Optional[str]

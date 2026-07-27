@@ -25,7 +25,7 @@ class StringException(xception):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a String is violating restrictions.
+        1.  Indicating a String is violating restrictions.
 
     Attributes:
         msg: Optional[str]

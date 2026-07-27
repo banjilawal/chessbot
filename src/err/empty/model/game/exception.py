@@ -26,7 +26,7 @@ class GameEmptyException(ModelEmptyException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required Game is empty.
+        1.  Indicating a required Game is empty.
 
     Attributes:
         msg: Optional[str]

@@ -24,7 +24,7 @@ class HostageUpdatePipelineException(UpdatePipelineException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an error occurred in a HostageUpdatePipeline.
+        1.  Indicating an error occurred in a HostageUpdatePipeline.
 
     Attributes:
         msg: Optional[str]

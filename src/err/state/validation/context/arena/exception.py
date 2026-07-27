@@ -27,7 +27,7 @@ class ArenaContextValidatorException(ContextValidatorException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a ArenaContextValidation check failed.
+        1.  Indicating a ArenaContextValidation check failed.
 
     Attributes:
             msg: Optional[str]

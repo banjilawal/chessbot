@@ -27,7 +27,7 @@ class PlayerQueryNullException(QueryNullException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required PlayerQuery is null.
+        1.  Indicating a required PlayerQuery is null.
 
     Attributes:
             msg: Optional[str]

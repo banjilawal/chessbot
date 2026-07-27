@@ -24,7 +24,7 @@ class FinalizeBoardContextBuilderException(FinalizeContextBuilderException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that finalizing a BoardContextBuild failed.
+        1.  Indicating that finalizing a BoardContextBuild failed.
 
     Attributes:
             msg: Optional[str]

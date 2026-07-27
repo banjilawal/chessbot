@@ -24,7 +24,7 @@ class InconsistentTokenSquareException(InconsistentStateException):
     Role:Error Variable Identifier, Exception Chain Layer 2, Exception Messaging
 
     Responsibilities:
-    1.  Indicate that when a square has occupied the square, the token is still  not registered
+    1.  Indicating that when a square has occupied the square, the token is still  not registered
         with the square.
 
     Super Class:

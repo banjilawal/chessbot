@@ -25,7 +25,7 @@ class NorthAxisCarrierException(AxisSpaceCarrierException):
         -   Failure Tracing
 
     Responsibilities:
-        1.  Indicate that a NorthAxisCarrier experienced an error.
+        1.  Indicating a NorthAxisCarrier experienced an error.
 
     Attributes:
         msg: str

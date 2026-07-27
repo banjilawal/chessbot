@@ -27,7 +27,7 @@ class VectorRegisterBuilderException(RegisterBuilderException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a VectorRegisterBuilder failure.
+        1.  Indicating a VectorRegisterBuilder failure.
 
     Attributes:
             msg: Optional[str]

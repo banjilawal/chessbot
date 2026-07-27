@@ -26,7 +26,7 @@ class ModelEmptyException(EmptyException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required Model is empty.
+        1.  Indicating a required Model is empty.
 
     Attributes:
         msg: Optional[str]

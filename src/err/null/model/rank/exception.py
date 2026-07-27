@@ -26,7 +26,7 @@ class RankModelNullException(ModelNullException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required Rank is null.
+        1.  Indicating a required Rank is null.
 
     Attributes:
         msg: Optional[str]

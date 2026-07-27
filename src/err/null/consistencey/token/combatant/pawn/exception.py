@@ -25,7 +25,7 @@ class PawnTokenConsistencyCheckerNullException(TokenException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required PawnTokenConsistencyChecker is null.
+        1.  Indicating a required PawnTokenConsistencyChecker is null.
 
     Attributes:
         msg: Optional[str]

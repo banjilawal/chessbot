@@ -26,7 +26,7 @@ class KnightOffsetPatternValidatorException(OffsetPatternValidatorException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required KnightOffsetPatternValidator failed.
+        1.  Indicate a required KnightOffsetPatternValidator failed.
 
     Attributes:
         msg: Optional[str]

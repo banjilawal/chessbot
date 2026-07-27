@@ -26,7 +26,7 @@ class QuadrantRecurrenceException(RecurrenceException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a QuadrantRecurrence encountered an error.
+        1.  Indicating a QuadrantRecurrence encountered an error.
 
     Attributes:
         msg: Optional[str]

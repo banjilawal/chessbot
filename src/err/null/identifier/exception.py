@@ -26,7 +26,7 @@ class IdentifierNullException(NullException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required Identifier is null.
+        1.  Indicating a required Identifier is null.
 
     Attributes:
         msg: Optional[str]

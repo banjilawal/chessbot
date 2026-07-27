@@ -27,7 +27,7 @@ class NodeContextValidatorException(ContextValidatorException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a NodeContextValidation check failed.
+        1.  Indicating a NodeContextValidation check failed.
 
     Attributes:
             msg: Optional[str]

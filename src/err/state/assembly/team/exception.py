@@ -25,7 +25,7 @@ class TeamAssemblyException(AssemblyException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a Team assembly failed.
+        1.  Indicating a Team assembly failed.
 
     Attributes:
             msg: Optional[str]

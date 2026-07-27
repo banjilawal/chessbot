@@ -26,7 +26,7 @@ class SoutheastQuadrantRecurrenceBuilderException(QuadrantRecurrenceBuilderExcep
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a SoutheastQuadrantRecurrenceBuilder failed.
+        1.  Indicating a SoutheastQuadrantRecurrenceBuilder failed.
 
     Attributes:
         msg: Optional[str]

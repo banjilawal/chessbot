@@ -21,7 +21,7 @@ class BoundsException(DebugException):
     Role:Error Tracing, Debugging, Super Exception
     
     Responsibilities:
-    1.  Indicate that a value is out of bounds.
+    1.  Indicating a value is out of bounds.
     2.  Super for conditions which are not covered by BoundsException subclasses.
 
     Super Class:

@@ -26,7 +26,7 @@ class toggleCarrierException(ChessException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a toggleCarrier encountered an error.
+        1.  Indicating a toggleCarrier encountered an error.
 
     Attributes:
         msg: Optional[str]

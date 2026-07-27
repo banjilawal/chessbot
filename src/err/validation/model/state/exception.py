@@ -26,7 +26,7 @@ class StateModelValidatorException(ModelValidatorException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a candidate failed a ModelValidator test.
+        1.  Indicating a candidate failed a ModelValidator test.
 
     Attributes:
         msg: Optional[str]

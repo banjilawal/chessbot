@@ -28,7 +28,7 @@ class FinalizeTokenContextBuilderException(FinalizeContextBuilderException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that finalizing a TokenContextBuild failed.
+        1.  Indicating that finalizing a TokenContextBuild failed.
 
     Attributes:
             msg: Optional[str]

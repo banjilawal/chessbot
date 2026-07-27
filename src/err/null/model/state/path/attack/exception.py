@@ -26,7 +26,7 @@ class AttackPathNullException(PathNullException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required AttackPath is null.
+        1.  Indicating a required AttackPath is null.
 
     Cannot Be Null.s:
             msg: Optional[str]

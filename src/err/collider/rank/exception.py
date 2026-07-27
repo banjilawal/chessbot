@@ -25,7 +25,7 @@ class RankColliderException(ColliderException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a RankCollision step failed.
+        1.  Indicating a RankCollision step failed.
 
     Attributes:
         msg: Optional[str]

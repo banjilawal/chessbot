@@ -26,7 +26,7 @@ class TokenMicroserviceException(MicroserviceException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate a TokenMicroservice failed.
+        1.  Indicating a TokenMicroservice failed.
 
     Attributes:
         msg: Optional[str]

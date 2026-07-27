@@ -24,7 +24,7 @@ class QueenValidatorException(RankValidatorException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a Queen validation check failed.
+        1.  Indicating a Queen validation check failed.
 
     Attributes:
         msg: Optional[str]

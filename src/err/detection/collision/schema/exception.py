@@ -25,7 +25,7 @@ class SchemaCollisionDetectorException(CollisionDetectorException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a SchemaCollision step failed.
+        1.  Indicating a SchemaCollision step failed.
 
     Attributes:
         msg: Optional[str]

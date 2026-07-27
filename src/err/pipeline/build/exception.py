@@ -24,7 +24,7 @@ class BuildPipelineException(PipelineException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an error occurred in a BuildPipeline.
+        1.  Indicating an error occurred in a BuildPipeline.
 
     Attributes:
         msg: Optional[str]

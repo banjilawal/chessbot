@@ -27,7 +27,7 @@ class ArenaQueryNullException(QueryNullException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required ArenaQuery is null.
+        1.  Indicating a required ArenaQuery is null.
 
     Attributes:
             msg: Optional[str]

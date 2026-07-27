@@ -24,7 +24,7 @@ class DuplicateNodePushException(DuplicateItemException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that pushing a duplicate Node failed.
+        1.  Indicating that pushing a duplicate Node failed.
 
     Attributes:
         msg: Optional[str]

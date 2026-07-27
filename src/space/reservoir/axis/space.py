@@ -43,7 +43,7 @@ class AxisReservoir(SpaceReservoir[Axis]):
         SpaceReservoir
         
     Note:
-        -   When the iterator is used each item it produces must be cast to the correct type.
+        -   When the iterator is used, each item it produces must be cast to the correct type.
     """
     
     _reservoir: Dict[str, Axis]

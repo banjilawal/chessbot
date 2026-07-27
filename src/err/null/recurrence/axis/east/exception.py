@@ -26,7 +26,7 @@ class EastQuadrantRecurrenceNullException(QuadrantRecurrenceNullException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required EastQuadrantRecurrence is null.
+        1.  Indicating a required EastQuadrantRecurrence is null.
 
     Attributes:
         msg: Optional[str]

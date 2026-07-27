@@ -26,7 +26,7 @@ class AttackSearchResultEmptyException(SearchResultEmptyException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a AttackSearcher did not find the required item.
+        1.  Indicating a AttackSearcher did not find the required item.
 
     Attributes:
             msg: Optional[str]

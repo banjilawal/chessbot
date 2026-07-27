@@ -28,7 +28,7 @@ class EdgeBinderTokenOperationBootstrapperException(BinderTokenOperationBootstra
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a EdgeBinder tokenfailed.
+        1.  Indicating a EdgeBinder tokenfailed.
 
     TokenFailed.s:
             msg: Optional[str]

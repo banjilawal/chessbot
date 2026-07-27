@@ -25,7 +25,7 @@ class ArenaNullException(StateModelNullException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required Arena is null.
+        1.  Indicating a required Arena is null.
 
     Attributes:
         msg: Optional[str]

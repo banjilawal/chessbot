@@ -26,7 +26,7 @@ class VectorCarrierNullException(ModelCarrierNullException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required VectorCarrierToggle is null.
+        1.  Indicating a required VectorCarrierToggle is null.
 
     Attributes:
         msg: Optional[str]

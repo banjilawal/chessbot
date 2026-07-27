@@ -24,7 +24,7 @@ class FinalizeFormationContextBuilderException(FinalizeContextBuilderException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that finalizing a FormationContextBuild failed.
+        1.  Indicating that finalizing a FormationContextBuild failed.
 
     Attributes:
             msg: Optional[str]

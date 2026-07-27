@@ -27,7 +27,7 @@ class SchemaContextValidatorException(ContextValidatorException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a SchemaContextValidation check failed.
+        1.  Indicating a SchemaContextValidation check failed.
 
     Attributes:
             msg: Optional[str]

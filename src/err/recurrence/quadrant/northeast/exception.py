@@ -26,7 +26,7 @@ class NortheastQuadrantRecurrenceException(QuadrantRecurrenceException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a NortheastQuadrantRecurrence encountered an error.
+        1.  Indicating a NortheastQuadrantRecurrence encountered an error.
 
     Attributes:
         msg: Optional[str]

@@ -26,7 +26,7 @@ class KingPathConsistencyCheckerNullException(PathException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required KingPathConsistencyChecker is null.
+        1.  Indicating a required KingPathConsistencyChecker is null.
 
     Attributes:
         msg: Optional[str]

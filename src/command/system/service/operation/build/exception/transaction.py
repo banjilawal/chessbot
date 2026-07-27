@@ -23,7 +23,7 @@ class CommandBuilderException(BuilderException):
     Role:Worker Method Identifier, Exception Chain Layer 1, Exception Messaging
 
     Responsibilities:
-    1.  Indicate that an error prevented CommandBuilder from returning a product.
+    1.  Indicate an error prevented CommandBuilder from returning a product.
 
         Super Class:
             *   BuilderException

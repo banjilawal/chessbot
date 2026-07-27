@@ -25,7 +25,7 @@ class WestAxisException(AxisException):
         -   Failure Tracing
 
     Responsibilities:
-        1.  Indicate that an error occurred in a WestAxis.
+        1.  Indicating an error occurred in a WestAxis.
 
     Attributes:
         msg: str

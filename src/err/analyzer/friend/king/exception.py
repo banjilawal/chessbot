@@ -26,7 +26,7 @@ class EnemyKingAnalyzerException(AnalyzerException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an EnemyKingAnalyzer was aborted by an exception.
+        1.  Indicating an EnemyKingAnalyzer was aborted by an exception.
 
     Attributes:
         var: Optional[str]

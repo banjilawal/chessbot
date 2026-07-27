@@ -24,7 +24,7 @@ class DuplicateGraphPushException(DuplicateItemException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that pushing a duplicate Graph failed.
+        1.  Indicating that pushing a duplicate Graph failed.
 
     Attributes:
         msg: Optional[str]

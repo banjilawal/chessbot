@@ -26,7 +26,7 @@ class QueryNullException(NullException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required QueryNull failed.
+        1.  Indicating a required QueryNull failed.
 
     Attributes:
             msg: Optional[str]

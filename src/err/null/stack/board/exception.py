@@ -24,7 +24,7 @@ class BoardStackNullException(StackNullException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required BoardStack is null.
+        1.  Indicating a required BoardStack is null.
 
     Attributes:
         msg: Optional[str]

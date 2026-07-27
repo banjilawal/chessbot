@@ -25,7 +25,7 @@ class SoutheastQuadrantValidatorException(QuadrantValidatorException):
         -   Failure Tracing
 
     Responsibilities:
-        1.  Indicate that a SoutheastQuadrantValidator failed. 
+        1.  Indicating a SoutheastQuadrantValidator failed.
 
     Attributes:
         msg: str

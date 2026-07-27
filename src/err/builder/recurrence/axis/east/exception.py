@@ -26,7 +26,7 @@ class EastQuadrantRecurrenceBuilderException(QuadrantRecurrenceBuilderException)
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a EastQuadrantRecurrenceBuilder failed.
+        1.  Indicating a EastQuadrantRecurrenceBuilder failed.
 
     Attributes:
         msg: Optional[str]

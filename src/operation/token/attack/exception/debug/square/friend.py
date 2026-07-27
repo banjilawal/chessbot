@@ -21,7 +21,7 @@ class AttackingFriendlySquareException(AttackDebugException):
     Role:Debug, Error Tracing
 
     Responsibilities:
-    1.  Indicate that an attack failed because the item was occupied by a friend.
+    1.  Indicate an attack failed because the item was occupied by a friend.
     
     Super Class:
         *   AttackDebugException

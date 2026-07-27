@@ -26,7 +26,7 @@ class RookTraversalPatternCarrierException(TraversalPatternCarrierException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a RookTraversalPatternCarrier experienced an error.
+        1.  Indicating a RookTraversalPatternCarrier experienced an error.
 
     Attributes:
         msg: Optional[str]

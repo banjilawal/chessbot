@@ -25,7 +25,7 @@ class NodeBuilderException(ModelBuilderException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a NodeBuilder failed.
+        1.  Indicating a NodeBuilder failed.
 
     Attributes:
         msg: Optional[str]

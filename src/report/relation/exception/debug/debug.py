@@ -31,7 +31,7 @@ class RelationDebugException(DebugException):
         which occurred in the Anchor method identified in layer-0 of the exception chain.
     
     Responsibilities:
-    1.  Indicate that an error condition prevented the RelationAnalyst from completing.
+    1.  Indicate an error condition prevented the RelationAnalyst from completing.
     
     Super Class:
         *   DebugException

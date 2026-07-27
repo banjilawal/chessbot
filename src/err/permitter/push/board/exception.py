@@ -26,7 +26,7 @@ class BoardPushPermitterException(PusherPermitterException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a BoardPushPermitter did not approve the request.
+        1.  Indicating a BoardPushPermitter did not approve the request.
 
     Attributes:
         msg: Optional[str]

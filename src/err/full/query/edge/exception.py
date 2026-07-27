@@ -27,7 +27,7 @@ class EdgeQueryFullException(QueryFullException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required EdgeQuery is full.
+        1.  Indicating a required EdgeQuery is full.
 
     Attributes:
             msg: Optional[str]

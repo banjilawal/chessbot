@@ -29,7 +29,7 @@ class HostageBinderBuilderException(BinderBuilderException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a HostageBinderBuilder failed.
+        1.  Indicating a HostageBinderBuilder failed.
 
    Builder failed.s:
             msg: Optional[str]

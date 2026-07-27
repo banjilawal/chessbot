@@ -26,7 +26,7 @@ class NullException(ChessException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required object is null.
+        1.  Indicating a required object is null.
 
     Attributes:
         msg: Optional[str]

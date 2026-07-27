@@ -24,7 +24,7 @@ class ToolkitException(ChessException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a  encountered an error.
+        1.  Indicating a  encountered an error.
 
     Attributes:
         msg: Optional[str]

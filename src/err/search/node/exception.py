@@ -26,7 +26,7 @@ class NodeSearcherException(SearcherException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a NodeSearcher from
+        1.  Indicating a NodeSearcher from
             completing its task.
 
     Attributes:

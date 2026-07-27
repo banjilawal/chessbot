@@ -25,7 +25,7 @@ class RegistryDomainKeyCollisionDtoOperandException(RegistryKeyCollisionExceptio
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a name has already been used as a RegistryDomainKey.
+        1.  Indicating a name has already been used as a RegistryDomainKey.
 
     Attributes:
         msg: Optional[str]

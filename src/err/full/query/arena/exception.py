@@ -27,7 +27,7 @@ class ArenaQueryFullException(QueryFullException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required ArenaQuery is full.
+        1.  Indicating a required ArenaQuery is full.
 
     Attributes:
             msg: Optional[str]

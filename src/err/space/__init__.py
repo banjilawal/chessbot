@@ -1,4 +1,4 @@
-# src/err/space/quadrant/__init__.py
+# src/err/space/__init__.py
 
 """
 Module: err.space.__init__
@@ -12,6 +12,7 @@ version: 1.0.1
 # Packages
 from .axis import *
 from .quadrant import *
+from .reservoir import *
 
 # Modules
 from .exception import SpaceException

@@ -28,7 +28,7 @@ class RankContextBuildRouteException(ContextBuildRouteException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that one of RankContext build routes is missing.
+        1.  Indicating that one of RankContext build routes is missing.
 
     Attributes:
             msg: Optional[str]

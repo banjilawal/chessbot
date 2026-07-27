@@ -24,7 +24,7 @@ class PersonaContextValidationPipelineException(ContextValidationPipelineExcepti
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an error occurred in an PersonaContextValidationPipeline.
+        1.  Indicating an error occurred in an PersonaContextValidationPipeline.
 
     Attributes:
         msg: Optional[str]

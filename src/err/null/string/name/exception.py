@@ -26,7 +26,7 @@ class NameNullException(NullException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required Name is null.
+        1.  Indicating a required Name is null.
 
     Attributes:
             msg: Optional[str]

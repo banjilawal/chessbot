@@ -28,7 +28,7 @@ class NodeContextTokenOperationException(ContextTokenOperationException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a NodeContext tokenfailed.
+        1.  Indicating a NodeContext tokenfailed.
 
     TokenFailed.s:
             msg: Optional[str]

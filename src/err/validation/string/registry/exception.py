@@ -26,7 +26,7 @@ class RegistryEntryKeyStringValidatorException(ValidatorException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a candidate failed a RegistryEntry key failed a String validation check.
+        1.  Indicating a candidate failed a RegistryEntry key failed a String validation check.
 
     Attributes:
         msg: Optional[str]

@@ -24,7 +24,7 @@ class VectorBuildPipelineException(BuildPipelineException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an error occurred in a VectorBuildPipeline.
+        1.  Indicating an error occurred in a VectorBuildPipeline.
 
     Attributes:
         msg: Optional[str]

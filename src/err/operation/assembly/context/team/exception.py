@@ -28,7 +28,7 @@ class TeamContextAssemblyException(ContextAssemblyException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a TeamContext assembly failed.
+        1.  Indicating a TeamContext assembly failed.
 
     Assembly Failed.s:
             msg: Optional[str]

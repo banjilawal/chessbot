@@ -25,7 +25,7 @@ class NumberBelowBoundsException(NumberException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a number is below the floor.
+        1.  Indicating a number is below the floor.
 
     Attributes:
         msg: Optional[str]

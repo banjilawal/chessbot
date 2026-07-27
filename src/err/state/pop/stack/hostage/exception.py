@@ -24,7 +24,7 @@ class Push pingHostageStackException(Push pingStackException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that push ping a HostageStack failed.
+        1.  Indicating that push ping a HostageStack failed.
 
     Attributes:
         msg: Optional[str]

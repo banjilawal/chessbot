@@ -26,7 +26,7 @@ class OpeningManeuverOffsetPatternBlueprintNullException(ManeuverOffsetPatternBl
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an error occurred in an OpeningManeuverOffsetPatternBlueprint is null.
+        1.  Indicating an error occurred in an OpeningManeuverOffsetPatternBlueprint is null.
 
     Attributes:
         msg: Optional[str]

@@ -24,7 +24,7 @@ class TokenValidationPipelineException(ValidationPipelineException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an error occurred in a TokenValidationPipeline.
+        1.  Indicating an error occurred in a TokenValidationPipeline.
 
     Attributes:
         msg: Optional[str]

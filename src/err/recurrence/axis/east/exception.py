@@ -26,7 +26,7 @@ class EastQuadrantRecurrenceException(QuadrantRecurrenceException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a EastQuadrantRecurrence encountered an error.
+        1.  Indicating a EastQuadrantRecurrence encountered an error.
 
     Attributes:
         msg: Optional[str]

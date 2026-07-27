@@ -24,7 +24,7 @@ class BoardDatabaseFullException(DatabaseFullException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required BoardDatabase is full.
+        1.  Indicating a required BoardDatabase is full.
 
     Attributes:
         msg: Optional[str]

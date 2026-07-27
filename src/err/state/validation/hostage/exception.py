@@ -24,7 +24,7 @@ class HostageValidatorException(ValidatorException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a HostageValidation check failed.
+        1.  Indicating a HostageValidation check failed.
 
     Attributes:
         msg: Optional[str]

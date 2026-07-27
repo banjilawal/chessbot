@@ -24,7 +24,7 @@ class SquareOccupiedException(SquareVisitException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a Square visitation failed because the destination was already occupied.
+        1.  Indicating a Square visitation failed because the destination was already occupied.
 
     Attributes:
         msg: Optional[str]

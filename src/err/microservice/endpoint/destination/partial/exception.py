@@ -26,7 +26,7 @@ class PartialTokenDestinationRelationException(MicroserviceException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate a Token and its destination have a either a missing registration 
+        1.  Indicating a Token and its destination have a either a missing registration
             or a stale between them instead of no relation at all.
 
     Attributes:

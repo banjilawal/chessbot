@@ -26,7 +26,7 @@ class CombatantTokenConsistencyCheckerException(TokenException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a CombatantTokenConsistencyChecker raised an error.
+        1.  Indicating a CombatantTokenConsistencyChecker raised an error.
 
     Attributes:
         msg: Optional[str]

@@ -26,7 +26,7 @@ class TraversalPatternCarrierException(MovementPatternCarrierException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a TraversalPatternCarrier experienced an error.
+        1.  Indicating a TraversalPatternCarrier experienced an error.
 
     Attributes:
         msg: Optional[str]

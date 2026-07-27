@@ -26,7 +26,7 @@ class TraversalPatternCarrierNullException(MovementPatternCarrierNullException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required TraversalPatternCarrier is null.
+        1.  Indicating a required TraversalPatternCarrier is null.
 
     Attributes:
         msg: Optional[str]

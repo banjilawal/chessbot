@@ -24,7 +24,7 @@ class VisitpingHostageStackException(VisitpingStackException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that visitping a HostageStack failed.
+        1.  Indicating that visitping a HostageStack failed.
 
     Attributes:
         msg: Optional[str]

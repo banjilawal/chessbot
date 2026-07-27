@@ -26,7 +26,7 @@ class EdgeStackFullException(StackFullException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a EdgeStack is full.
+        1.  Indicating a EdgeStack is full.
 
     Attributes:
         msg: Optional[str]

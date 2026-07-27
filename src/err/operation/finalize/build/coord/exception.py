@@ -25,7 +25,7 @@ class FinalizeCoordBuilderException(FinalizeBuilderException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that finalizing a CoordBuild failed.
+        1.  Indicating that finalizing a CoordBuild failed.
 
     Attributes:
         msg: Optional[str]

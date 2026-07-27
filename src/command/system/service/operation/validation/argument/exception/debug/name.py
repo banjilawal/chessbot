@@ -22,7 +22,7 @@ class ArgumentNameException(ServiceRequestDebugException):
     Role:Information, Reporting, Debug
 
     Responsibilities:
-    1.  Indicate that a service_request has a wrong argument for the command.
+    1.  Indicate a service_request has a wrong argument for the command.
     
     Super Class:
         *  ServiceRequestDebugException

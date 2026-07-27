@@ -25,7 +25,7 @@ class AgentDataServiceException(AgentException, ServiceException):
     Role:Exception Work
 
     Responsibilities:
-    1.  Indicate that an AgentStackService encountered an error which prevented the service from completing a task.
+    1.  Indicating an AgentStackService encountered an error which prevented the service from completing a task.
     2.  Wrap an exception that hits the try-finally block of a AgentStackService method.
 
     Super Class:

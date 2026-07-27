@@ -26,7 +26,7 @@ class DtoBuilderException(BuilderException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a DtoBuilder failed.
+        1.  Indicating a DtoBuilder failed.
 
    Builder failed.s:
             msg: Optional[str]

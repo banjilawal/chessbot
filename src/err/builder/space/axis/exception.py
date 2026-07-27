@@ -25,7 +25,7 @@ class AxisSpaceBuilderException(SpaceBuilderException):
         -   Failure Tracing
 
     Responsibilities:
-        1.  Indicate that a AxisSpaceBuilder failed. 
+        1.  Indicating a AxisSpaceBuilder failed.
 
     Attributes:
         msg: str

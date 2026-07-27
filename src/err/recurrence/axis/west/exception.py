@@ -26,7 +26,7 @@ class WestQuadrantRecurrenceException(QuadrantRecurrenceException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a WestQuadrantRecurrence encountered an error.
+        1.  Indicating a WestQuadrantRecurrence encountered an error.
 
     Attributes:
         msg: Optional[str]

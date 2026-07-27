@@ -26,7 +26,7 @@ class NortheastQuadrantRecurrenceValidatorException(QuadrantRecurrenceValidatorE
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a NortheastQuadrantRecurrenceValidator failed.
+        1.  Indicating a NortheastQuadrantRecurrenceValidator failed.
 
     Attributes:
         msg: Optional[str]

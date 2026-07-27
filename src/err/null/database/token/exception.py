@@ -24,7 +24,7 @@ class TokenDatabaseNullException(DatabaseNullException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required TokenDatabase is null.
+        1.  Indicating a required TokenDatabase is null.
 
     Attributes:
         msg: Optional[str]

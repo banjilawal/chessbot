@@ -26,7 +26,7 @@ class TimeoutException(ChessException):
         -   Error Tracing
     
     Responsibilities:
-        1.  Indicate that a task failed because one of its calls timed out.
+        1.  Indicating a task failed because one of its calls timed out.
         
     Attributes:
         msg: Optional[str]

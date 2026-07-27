@@ -22,7 +22,7 @@ class BoardTeamBinderModelNullException(BinderModelNullException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required BoardTeamBinder is null.
+        1.  Indicating a required BoardTeamBinder is null.
 
     Attributes:
             msg: Optional[str]

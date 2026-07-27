@@ -27,7 +27,7 @@ class SquareToggleBlueprintNullException(ToggleBlueprintNullException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required SquareBlueprint is null.
+        1.  Indicating a required SquareBlueprint is null.
 
     Cannot Be Null.s:
             msg: Optional[str]

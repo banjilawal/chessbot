@@ -24,7 +24,7 @@ class NodeDatabaseFullException(DatabaseFullException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required NodeDatabase is full.
+        1.  Indicating a required NodeDatabase is full.
 
     Attributes:
         msg: Optional[str]

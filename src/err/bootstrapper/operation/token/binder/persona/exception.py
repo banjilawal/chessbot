@@ -28,7 +28,7 @@ class PersonaBinderTokenOperationBootstrapperException(BinderTokenOperationBoots
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a PersonaBinder tokenfailed.
+        1.  Indicating a PersonaBinder tokenfailed.
 
     TokenFailed.s:
             msg: Optional[str]

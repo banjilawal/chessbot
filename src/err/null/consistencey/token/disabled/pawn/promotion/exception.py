@@ -26,7 +26,7 @@ class DisabledPawnPromotionConsistencyCheckerNullException(DisabledPawnException
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate an attempt to promote a disabled pawn occurred.
+        1.  Indicating an attempt to promote a disabled pawn occurred.
             
     Attributes:
         msg: Optional[str]

@@ -25,7 +25,7 @@ class TokenNoValidationRouteException(NoValidationRouteException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate a Token validation routes is missing.
+        1.  Indicating a Token validation routes is missing.
 
     Attributes:
         msg: Optional[str]

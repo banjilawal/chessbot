@@ -25,7 +25,7 @@ class EmptyStackDeletionException(DeletionException):
         -   Error Tracing
 
     Responsibilities:
-        Indicates that a deletion failed because the stack is empty.
+        Indicatings that a deletion failed because the stack is empty.
 
     Attributes:
         msg: Optional[str]

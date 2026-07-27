@@ -27,7 +27,7 @@ class PlayerContextNullException(ContextNullException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required PlayerContext is null.
+        1.  Indicating a required PlayerContext is null.
 
     Cannot Be Null.s:
             msg: Optional[str]

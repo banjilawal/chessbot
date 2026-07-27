@@ -25,7 +25,7 @@ class NorthwestQuadrantValidatorException(QuadrantValidatorException):
         -   Failure Tracing
 
     Responsibilities:
-        1.  Indicate that a NorthwestQuadrantValidator failed. 
+        1.  Indicating a NorthwestQuadrantValidator failed.
 
     Attributes:
         msg: str

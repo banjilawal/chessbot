@@ -28,7 +28,7 @@ class EdgeContextBuilderException(ContextBuilderException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a EdgeContext build failed.
+        1.  Indicating a EdgeContext build failed.
 
     Build Failed.s:
             msg: Optional[str]

@@ -26,7 +26,7 @@ class IdentityRegisterCarrierNullException(RegisterCarrierNullException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required IdentityRegisterCarrierToggle is null.
+        1.  Indicating a required IdentityRegisterCarrierToggle is null.
 
     Attributes:
         msg: Optional[str]

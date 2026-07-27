@@ -26,7 +26,7 @@ class KnightBasisEmptyException(BasisEmptyException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required KnightBasis is empty.
+        1.  Indicating a required KnightBasis is empty.
 
     Attributes:
         msg: Optional[str]

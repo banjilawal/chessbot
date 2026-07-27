@@ -24,7 +24,7 @@ class FinalizeNodeBuilderException(FinalizeBuilderException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that finalizing a NodeBuild failed.
+        1.  Indicating that finalizing a NodeBuild failed.
 
     Attributes:
         msg: Optional[str]

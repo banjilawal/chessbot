@@ -27,7 +27,7 @@ class BoardQueryFullException(QueryFullException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required BoardQuery is full.
+        1.  Indicating a required BoardQuery is full.
 
     Attributes:
             msg: Optional[str]

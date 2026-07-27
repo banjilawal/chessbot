@@ -27,7 +27,7 @@ class SquareRegisterBlueprintNullException(RegisterBlueprintNullException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required SquareRegister is null.
+        1.  Indicating a required SquareRegister is null.
 
     Cannot Be Null.s:
             msg: Optional[str]

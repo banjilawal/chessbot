@@ -26,7 +26,7 @@ class GraphSearcherException(SearcherException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a GraphSearcher from
+        1.  Indicating a GraphSearcher from
             completing its task.
 
     Attributes:

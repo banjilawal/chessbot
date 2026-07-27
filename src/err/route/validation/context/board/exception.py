@@ -28,7 +28,7 @@ class BoardContextValidationRouteException(ContextNoValidationRouteException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that one of BoardContext validation routes is missing.
+        1.  Indicating that one of BoardContext validation routes is missing.
 
     Attributes:
             msg: Optional[str]

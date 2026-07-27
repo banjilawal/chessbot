@@ -26,7 +26,7 @@ class TokenVisitHandlerException(AnchorException):
     Role:Debug Coverage Target, Exception Chain Layer 0
 
     Responsibilities:
-    1.  Indicate that an error occurred in a VisitationController.
+    1.  Indicate an error occurred in a VisitationController.
 
     Super Class:
     *   AnchorException

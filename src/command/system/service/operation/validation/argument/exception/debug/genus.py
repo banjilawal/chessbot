@@ -23,7 +23,7 @@ class ArgumentTypeException(ServiceRequestDebugException):
     Role:Information, Reporting, Debug
 
     Responsibilities:
-    1.  Indicate that a service_request argument has the wrong type.
+    1.  Indicate a service_request argument has the wrong type.
 
     Super Class:
         *  ServiceRequestDebugException

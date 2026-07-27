@@ -25,7 +25,7 @@ class WestAxisValidatorException(AxisValidatorException):
         -   Failure Tracing
 
     Responsibilities:
-        1.  Indicate that a WestAxisValidator failed. 
+        1.  Indicating a WestAxisValidator failed.
 
     Attributes:
         msg: str

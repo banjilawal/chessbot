@@ -26,7 +26,7 @@ class SpanSizeException(SpaceSizeException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required Spanis the wrong size.
+        1.  Indicating a required Spanis the wrong size.
 
     Attributes:
         msg: Optional[str]

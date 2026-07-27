@@ -26,7 +26,7 @@ class PawnPromoterException(TokenOperationException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a pawn from being promoted.
+        1.  Indicating a pawn from being promoted.
 
     Attributes:
         msg: Optional[str]

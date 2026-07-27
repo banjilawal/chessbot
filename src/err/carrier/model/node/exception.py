@@ -26,7 +26,7 @@ class NodeCarrierException(ModelCarrierException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a NodeCarrier encountered an error.
+        1.  Indicating a NodeCarrier encountered an error.
 
     Attributes:
         msg: Optional[str]

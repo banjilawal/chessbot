@@ -24,7 +24,7 @@ class TokenDatabaseFullException(DatabaseFullException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required TokenDatabase is full.
+        1.  Indicating a required TokenDatabase is full.
 
     Attributes:
         msg: Optional[str]

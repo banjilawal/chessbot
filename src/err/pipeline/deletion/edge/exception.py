@@ -24,7 +24,7 @@ class EdgeDeletionPipelineException(DeletionPipelineException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an error occurred in a EdgeDeletionPipeline.
+        1.  Indicating an error occurred in a EdgeDeletionPipeline.
 
     Attributes:
         msg: Optional[str]

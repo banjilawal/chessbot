@@ -24,7 +24,7 @@ class GameStackEmptyException(StackEmptyException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required GameStack is empty.
+        1.  Indicating a required GameStack is empty.
 
     Attributes:
         msg: Optional[str]

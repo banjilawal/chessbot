@@ -26,7 +26,7 @@ class HostageContextException(ContextException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a HostageContext encountered an error.
+        1.  Indicating a HostageContext encountered an error.
 
     Attributes:
             msg: Optional[str]

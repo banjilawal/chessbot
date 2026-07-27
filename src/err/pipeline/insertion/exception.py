@@ -24,7 +24,7 @@ class InsertionPipelineException(PipelineException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an error occurred in a InsertionPipeline.
+        1.  Indicating an error occurred in a InsertionPipeline.
 
     Attributes:
         msg: Optional[str]

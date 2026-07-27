@@ -26,7 +26,7 @@ class TeamMicroserviceException(MicroserviceException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a candidate did not pass a TeamMicroservice failed.
+        1.  Indicating a candidate did not pass a TeamMicroservice failed.
 
     Attributes:
             msg: Optional[str]

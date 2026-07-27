@@ -25,7 +25,7 @@ class RegistryDomainKeyCollisionConsistencyCheckerNullException(RegistryKeyColli
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required name has already been used as a RegistryDomainKey.
+        1.  Indicating a required name has already been used as a RegistryDomainKey.
 
     Attributes:
         msg: Optional[str]

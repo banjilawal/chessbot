@@ -26,7 +26,7 @@ class PrimingSquareAssemblyException(AssemblyPrimerException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a SquareAssembly priming step failed.
+        1.  Indicating a SquareAssembly priming step failed.
 
     Attributes:
         msg: Optional[str]

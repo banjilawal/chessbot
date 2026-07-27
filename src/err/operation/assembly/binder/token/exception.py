@@ -28,7 +28,7 @@ class TokenBinderAssemblyException(BinderAssemblyException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a TokenBinder assembly failed.
+        1.  Indicating a TokenBinder assembly failed.
 
     Assembly Failed.s:
             msg: Optional[str]

@@ -20,7 +20,7 @@ class InvalidGameColorException(GameColorException, ValidatorException):
     Role:Exception Work
 
     Responsibilities:
-    1.  Indicate a rank failed a GameColor validation test.
+    1.  Indicating a rank failed a GameColor validation test.
     2.  Wrap an exception that hits the try-finally block of a SchemKeyValidator method.
 
     Super Class:

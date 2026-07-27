@@ -25,7 +25,7 @@ class TokenBuilderException(BuilderException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate a Token build failed.
+        1.  Indicating a Token build failed.
 
     Attributes:
         msg: Optional[str]

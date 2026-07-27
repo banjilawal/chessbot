@@ -24,7 +24,7 @@ class EdgeBuildPipelineException(BuildPipelineException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an error occurred in a EdgeBuildPipeline.
+        1.  Indicating an error occurred in a EdgeBuildPipeline.
 
     Attributes:
         msg: Optional[str]

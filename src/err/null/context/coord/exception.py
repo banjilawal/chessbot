@@ -27,7 +27,7 @@ class CoordContextNullException(ContextNullException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required CoordContext is null.
+        1.  Indicating a required CoordContext is null.
 
     Cannot Be Null.s:
             msg: Optional[str]

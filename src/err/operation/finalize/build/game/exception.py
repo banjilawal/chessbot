@@ -25,7 +25,7 @@ class FinalizeGameBuilderException(FinalizeBuilderException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that finalizing a GameBuild failed.
+        1.  Indicating that finalizing a GameBuild failed.
 
     Attributes:
             msg: Optional[str]

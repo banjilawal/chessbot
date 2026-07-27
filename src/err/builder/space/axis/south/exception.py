@@ -25,7 +25,7 @@ class SouthAxisBuilderException(AxisSpaceBuilderException):
         -   Failure Tracing
 
     Responsibilities:
-        1.  Indicate that a SouthAxisBuilder failed. 
+        1.  Indicating a SouthAxisBuilder failed.
 
     Attributes:
         msg: str

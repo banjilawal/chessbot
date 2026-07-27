@@ -25,7 +25,7 @@ class SchemaFinalizeBuilderException(FinalizeBuilderException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that finalizing a SchemaBuild failed.
+        1.  Indicating that finalizing a SchemaBuild failed.
 
     Attributes:
         msg: Optional[str]

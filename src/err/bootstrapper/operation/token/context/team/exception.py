@@ -28,7 +28,7 @@ class TeamContextTokenOperationBootstrapperException(ContextTokenOperationBootst
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a TeamContext tokenfailed.
+        1.  Indicating a TeamContext tokenfailed.
 
     TokenFailed.s:
             msg: Optional[str]

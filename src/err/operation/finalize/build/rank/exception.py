@@ -25,7 +25,7 @@ class FinalizeRankBuilderException(FinalizeBuilderException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that finalizing a RankBuild failed.
+        1.  Indicating that finalizing a RankBuild failed.
 
     Attributes:
         msg: Optional[str]

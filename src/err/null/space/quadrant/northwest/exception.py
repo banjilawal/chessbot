@@ -25,7 +25,7 @@ class NorthwestQuadrantNullException(QuadrantNullException):
         -   Failure Tracing
 
     Responsibilities:
-        1.  Indicate that a required NorthwestQuadrant Is Null.
+        1.  Indicating a required NorthwestQuadrant Is Null.
 
     Attributes:
         msg: str

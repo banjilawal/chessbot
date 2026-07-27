@@ -26,7 +26,7 @@ class PersonaMicroserviceException(MicroserviceException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that n PersonaMicroservice failed.
+        1.  Indicating that n PersonaMicroservice failed.
 
     Attributes:
             msg: Optional[str]

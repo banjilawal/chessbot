@@ -21,7 +21,7 @@ class AppendingBoardDirectlyIntoItemsFailedException(BoardDataServiceException):
     Role:Debug, Error Tracing
 
     Responsibilities:
-    1.  Indicate that appending the board directly into self.bag was not in the list after running bag.append.
+    1.  Indicating appending the board directly into self.bag was not in the list after running bag.append.
 
     Super Class:
         *   BoardDataServiceException

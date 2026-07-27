@@ -26,7 +26,7 @@ class KnightBasisSizeException(BasisSizeException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required KnightBasisis the wrong size.
+        1.  Indicating a required KnightBasisis the wrong size.
 
     Attributes:
         msg: Optional[str]

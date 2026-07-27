@@ -25,7 +25,7 @@ class ArenaFullException(FullException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required Arena is full.
+        1.  Indicating a required Arena is full.
 
     Attributes:
         msg: Optional[str]

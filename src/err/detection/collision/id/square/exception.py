@@ -24,7 +24,7 @@ class SquareIdCollisionException(IdCollisionDetectorException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a square is already using the id.
+        1.  Indicating a square is already using the id.
 
     Attributes:
         msg: Optional[str]

@@ -25,7 +25,7 @@ class ServiceListNullException(DependencyListNullException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate an ServiceListNullException is null.
+        1.  Indicating an ServiceListNullException is null.
 
     Attributes:
         msg: Optional[str]

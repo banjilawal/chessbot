@@ -25,7 +25,7 @@ class NortheastQuadrantCarrierException(QuadrantSpaceCarrierException):
         -   Failure Tracing
 
     Responsibilities:
-        1.  Indicate that a NortheastQuadrantCarrier experienced an error.
+        1.  Indicating a NortheastQuadrantCarrier experienced an error.
 
     Attributes:
         msg: str

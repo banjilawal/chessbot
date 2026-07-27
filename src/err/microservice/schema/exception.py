@@ -26,7 +26,7 @@ class SchemaMicroserviceException(MicroserviceException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a candidate did not pass a SchemaMicroservice failed.
+        1.  Indicating a candidate did not pass a SchemaMicroservice failed.
 
     Attributes:
         msg: Optional[str]

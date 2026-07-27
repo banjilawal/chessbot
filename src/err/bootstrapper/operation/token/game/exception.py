@@ -25,7 +25,7 @@ class GameTokenOperationBootstrapperException(TokenOperationBootstrapperExceptio
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a Game tokenfailed.
+        1.  Indicating a Game tokenfailed.
 
     Attributes:
             msg: Optional[str]

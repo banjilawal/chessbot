@@ -24,7 +24,7 @@ class VisitpingBoardStackException(VisitpingStackException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that visitping a BoardStack failed.
+        1.  Indicating that visitping a BoardStack failed.
 
     Attributes:
         msg: Optional[str]

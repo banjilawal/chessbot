@@ -26,7 +26,7 @@ class HostageContextBuilderException(ContextBuilderException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a HostageContextBuilder failed.
+        1.  Indicating a HostageContextBuilder failed.
 
    Builder failed.s:
             msg: Optional[str]

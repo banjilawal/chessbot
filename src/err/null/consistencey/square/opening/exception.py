@@ -25,7 +25,7 @@ class OpeningSquareConsistencyCheckerNullException(SquareException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an OpeningSquareConsistencyChecker is null.
+        1.  Indicating an OpeningSquareConsistencyChecker is null.
 
     Attributes:
         msg: Optional[str]

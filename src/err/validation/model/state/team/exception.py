@@ -26,7 +26,7 @@ class TeamValidatorException(StateModelValidatorException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a candidate failed a TeamValidator test.
+        1.  Indicating a candidate failed a TeamValidator test.
 
     Attributes:
             msg: Optional[str]

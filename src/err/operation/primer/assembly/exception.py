@@ -26,7 +26,7 @@ class AssemblyPrimerException(PrimingException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an AssemblyPrimer failed.
+        1.  Indicating an AssemblyPrimer failed.
 
     Attributes:
         var: Optional[str]

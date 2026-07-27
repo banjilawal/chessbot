@@ -26,7 +26,7 @@ class RankSearchResultEmptyException(SearchResultEmptyException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a RankSearcher did not find the required item.
+        1.  Indicating a RankSearcher did not find the required item.
 
     Attributes:
             msg: Optional[str]

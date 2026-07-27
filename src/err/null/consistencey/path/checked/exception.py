@@ -26,7 +26,7 @@ class CheckedPathConsistencyCheckerNullException(PathException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required CheckedPathConsistencyChecker is null.
+        1.  Indicating a required CheckedPathConsistencyChecker is null.
 
     Attributes:
         msg: Optional[str]

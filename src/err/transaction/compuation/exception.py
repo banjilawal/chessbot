@@ -24,7 +24,7 @@ class ComputationTransactionException(TransactionException):
         -   Error Tracing
 
     Responsibilities:
-        Indicates that an error prevented a computation from completing.
+        Indicatings that an error prevented a computation from completing.
 
     Attributes:
         msg: Optional[str]

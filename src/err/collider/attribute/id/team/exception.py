@@ -26,7 +26,7 @@ class TeamIdCollisionException(IdCollisionException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that two teams share an id that should be unique.
+        1.  Indicating that two teams share an id that should be unique.
         
     Attributes:
         msg: Optional[str]

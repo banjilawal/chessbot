@@ -24,7 +24,7 @@ class ExcessRankToggleActivationException(ExcessToggleActivationException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicates that more than one RankContext option was enabled.
+        1.  Indicatings that more than one RankContext option was enabled.
 
     Attributes:
         msg: Optional[str]

@@ -24,7 +24,7 @@ class RankDeletionPipelineException(DeletionPipelineException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an error occurred in a RankDeletionPipeline.
+        1.  Indicating an error occurred in a RankDeletionPipeline.
 
     Attributes:
         msg: Optional[str]

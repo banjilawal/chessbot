@@ -26,7 +26,7 @@ class TupleEmptyException(ContainerEmptyException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required Tuple is empty.
+        1.  Indicating a required Tuple is empty.
 
     Attributes:
         msg: Optional[str]

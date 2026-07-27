@@ -28,7 +28,7 @@ class GameBinderTokenOperationBootstrapperException(BinderTokenOperationBootstra
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a GameBinder tokenfailed.
+        1.  Indicating a GameBinder tokenfailed.
 
     TokenFailed.s:
             msg: Optional[str]

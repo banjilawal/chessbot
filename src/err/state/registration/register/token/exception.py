@@ -24,7 +24,7 @@ class TokenWorkerRegistrationException(WorkerRegistrationException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that registering a Token worker failed.
+        1.  Indicating that registering a Token worker failed.
 
     Attributes:
         msg: Optional[str]

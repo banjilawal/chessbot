@@ -26,7 +26,7 @@ class LineSegmentOriginEmptyException(LineSegmentEmptyException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a LineSegment has an empty origin.
+        1.  Indicating a LineSegment has an empty origin.
 
     Attributes:
         msg: Optional[str]

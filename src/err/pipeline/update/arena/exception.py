@@ -24,7 +24,7 @@ class ArenaUpdatePipelineException(UpdatePipelineException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an error occurred in a ArenaUpdatePipeline.
+        1.  Indicating an error occurred in a ArenaUpdatePipeline.
 
     Attributes:
         msg: Optional[str]

@@ -26,7 +26,7 @@ class KingOffsetPatternValidatorException(OffsetPatternValidatorException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required KingOffsetPatternValidator failed.
+        1.  Indicate a required KingOffsetPatternValidator failed.
 
     Attributes:
         msg: Optional[str]

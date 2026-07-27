@@ -26,7 +26,7 @@ class RegisterCarrierNullException(EntityCarrierNullException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required RegisterCarrierToggle is null.
+        1.  Indicating a required RegisterCarrierToggle is null.
 
     Attributes:
         msg: Optional[str]

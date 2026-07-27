@@ -26,7 +26,7 @@ class orientationtoggleCarrierException(toggleCarrierException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a orientationtoggleCarrier encountered an error.
+        1.  Indicating a orientationtoggleCarrier encountered an error.
 
     Attributes:
         msg: Optional[str]

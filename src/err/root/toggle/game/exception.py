@@ -27,7 +27,7 @@ class GameToggleRootCertifierException(ToggleRootCertifierException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a candidate failed a GameToggleRootCertifier test.
+        1.  Indicating a candidate failed a GameToggleRootCertifier test.
 
     Attributes:
             msg: Optional[str]

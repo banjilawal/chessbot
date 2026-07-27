@@ -28,7 +28,7 @@ class BoardBinderAssemblyException(BinderAssemblyException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a BoardBinder assembly failed.
+        1.  Indicating a BoardBinder assembly failed.
 
     Assembly Failed.s:
             msg: Optional[str]

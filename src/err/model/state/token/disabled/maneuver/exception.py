@@ -26,7 +26,7 @@ class DisabledTokenManeuverException(DisabledTokenException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that moving a disabled token was attempted.
+        1.  Indicating that moving a disabled token was attempted.
             
     Attributes:
         msg: Optional[str]

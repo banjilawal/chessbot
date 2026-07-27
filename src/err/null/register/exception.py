@@ -26,7 +26,7 @@ class RegisterNullException(NullException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required Register is null.
+        1.  Indicating a required Register is null.
 
     Attributes:
         msg: Optional[str]

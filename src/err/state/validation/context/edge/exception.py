@@ -27,7 +27,7 @@ class EdgeContextValidatorException(ContextValidatorException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a EdgeContextValidation check failed.
+        1.  Indicating a EdgeContextValidation check failed.
 
     Attributes:
             msg: Optional[str]

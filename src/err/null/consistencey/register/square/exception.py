@@ -26,7 +26,7 @@ class SquareRegisterConsistencyCheckerNullException(RegisterException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required SquareRegisterConsistencyChecker is null.
+        1.  Indicating a required SquareRegisterConsistencyChecker is null.
 
     Attributes:
         msg: Optional[str]

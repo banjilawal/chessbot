@@ -26,7 +26,7 @@ class TokenRegisterCarrierException(RegisterCarrierException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a TokenRegisterCarrier encountered an error.
+        1.  Indicating a TokenRegisterCarrier encountered an error.
 
     Attributes:
         msg: Optional[str]

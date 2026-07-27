@@ -26,7 +26,7 @@ class NodeSearchHitConflictException(SearchHitConflictException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a NodeSearcher returned multiple hits for an item which should be unique.
+        1.  Indicating a NodeSearcher returned multiple hits for an item which should be unique.
 
     Attributes:
             msg: Optional[str]

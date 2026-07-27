@@ -26,7 +26,7 @@ class KnightOffsetPatternCarrierNullException(OffsetPatternCarrierNullException)
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required KnightOffsetPatternCarrier is null.
+        1.  Indicating a required KnightOffsetPatternCarrier is null.
 
     Attributes:
         msg: Optional[str]

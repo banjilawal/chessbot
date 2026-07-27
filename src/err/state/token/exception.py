@@ -25,7 +25,7 @@ class TokenStateException(StateException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate an operation failed because a Token was not in the correct state.
+        1.  Indicating an operation failed because a Token was not in the correct state.
 
     Attributes:
         msg: Optional[str]

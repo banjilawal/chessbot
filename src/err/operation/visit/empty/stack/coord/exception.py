@@ -24,7 +24,7 @@ class VisitpingEmptyCoordStackException(VisitpingEmptyStackException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that visitpingEmpty a CoordStack failed.
+        1.  Indicating that visitpingEmpty a CoordStack failed.
 
     Attributes:
         msg: Optional[str]

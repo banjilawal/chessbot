@@ -24,7 +24,7 @@ class SnapshotStackRegistrationException(StackRegistrationException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that registrationing onto a SnapshotStack failed.
+        1.  Indicating that registrationing onto a SnapshotStack failed.
 
     Attributes:
         msg: Optional[str]

@@ -26,7 +26,7 @@ class RookTraversalPatternBlueprintNullException(TraversalPatternBlueprintNullEx
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required RookTraversalPatternBlueprint is null.
+        1.  Indicating a required RookTraversalPatternBlueprint is null.
 
     Attributes:
         msg: Optional[str]

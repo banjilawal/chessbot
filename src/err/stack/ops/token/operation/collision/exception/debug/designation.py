@@ -24,7 +24,7 @@ class TokenDesignationCollisionException(TokenDebugException):
     Role:Error Variable Identifier, Exception Chain Layer 2, Exception Messaging
 
     Responsibilities:
-    1.  Indicate that two tokens share a designation instead of having one of their own.
+    1.  Indicating that two tokens share a designation instead of having one of their own.
 
     Super Class:
         *   TokenDebugException

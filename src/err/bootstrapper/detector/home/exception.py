@@ -26,7 +26,7 @@ class HomeDetectorBootstrapperException(DetectorBootstrapperException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a HomeDetectorBootstrapper encountered an error.
+        1.  Indicating a HomeDetectorBootstrapper encountered an error.
 
     Attributes:
         msg: Optional[str]

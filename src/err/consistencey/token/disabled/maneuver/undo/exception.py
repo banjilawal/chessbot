@@ -26,7 +26,7 @@ class DisabledTokenUndoMoveConsistencyCheckerException(DisabledTokenManeuverExce
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate a disabled token attempted to undo a move.
+        1.  Indicating a disabled token attempted to undo a move.
             
     Attributes:
         msg: Optional[str]

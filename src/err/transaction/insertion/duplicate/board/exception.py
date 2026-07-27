@@ -25,7 +25,7 @@ class DuplicateBoardPushException(DuplicateItemException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that pushing a duplicate item onto the BoardStack failed.
+        1.  Indicating that pushing a duplicate item onto the BoardStack failed.
 
     Attributes:
         msg: Optional[str]

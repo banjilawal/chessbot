@@ -24,7 +24,7 @@ class VectorContextAssemblyException(ContextAssemblyException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a VectorContext assembly failed.
+        1.  Indicating a VectorContext assembly failed.
 
     Assembly Failed.s:
             msg: Optional[str]

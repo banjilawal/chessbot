@@ -26,7 +26,7 @@ class RankAlreadyQuotaedException(RankQuotaAnalyzerException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an opening square has already been quotaed.
+        1.  Indicating an opening square has already been quotaed.
 
     Attributes:
         msg: Optional[str]

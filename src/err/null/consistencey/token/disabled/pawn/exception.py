@@ -26,7 +26,7 @@ class DisabledPawnConsistencyCheckerNullException(DisabledTokenException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an attempt was made to use a disabled pawn.
+        1.  Indicating an attempt was made to use a disabled pawn.
             
     Attributes:
         msg: Optional[str]

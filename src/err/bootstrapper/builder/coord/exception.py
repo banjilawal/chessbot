@@ -26,7 +26,7 @@ class CoordBuilderBootstrapperException(BuilderBootstrapperException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a CoordBuilderBootstrapper was aborted by an exception.
+        1.  Indicating a CoordBuilderBootstrapper was aborted by an exception.
 
     Attributes:
         msg: Optional[str]

@@ -27,7 +27,7 @@ class VectorToggleRegisterBuilderException(RegisterBuilderException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a VectorToggleRegisterBuilder failure.
+        1.  Indicating a VectorToggleRegisterBuilder failure.
 
     Attributes:
             msg: Optional[str]

@@ -28,7 +28,7 @@ class BoardContextTokenStateException(ContextTokenStateException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a BoardContext tokenfailed.
+        1.  Indicating a BoardContext tokenfailed.
 
     TokenFailed.s:
             msg: Optional[str]

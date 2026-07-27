@@ -24,7 +24,7 @@ class ZeroPlayerBlueprintFlagsException(ZeroBlueprintFlagsException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicates that no PlayerRootCertifier test. enabled.
+        1.  Indicatings that no PlayerRootCertifier test. enabled.
 
     Attributes:
         msg: Optional[str]

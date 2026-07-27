@@ -26,7 +26,7 @@ class IdentityRegisterSizeException(RegisterSizeException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required IdentityRegister Is the wrong size.
+        1.  Indicating a required IdentityRegister Is the wrong size.
 
     Attributes:
         msg: Optional[str]

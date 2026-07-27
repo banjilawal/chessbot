@@ -28,7 +28,7 @@ class HostageContextAssemblyException(ContextAssemblyException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a HostageContext assembly failed.
+        1.  Indicating a HostageContext assembly failed.
 
     Assembly Failed.s:
             msg: Optional[str]

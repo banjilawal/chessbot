@@ -28,7 +28,7 @@ class FinalizePlayerContextBuilderException(FinalizeContextBuilderException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that finalizing a PlayerContextBuild failed.
+        1.  Indicating that finalizing a PlayerContextBuild failed.
 
     Attributes:
             msg: Optional[str]

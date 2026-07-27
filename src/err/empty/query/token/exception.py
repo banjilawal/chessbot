@@ -29,7 +29,7 @@ class TokenQueryStackEmptyException(QueryStackEmptyException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required TokenQuery's target stack is empty.
+        1.  Indicating a required TokenQuery's target stack is empty.
 
     Attributes:
             msg: Optional[str]

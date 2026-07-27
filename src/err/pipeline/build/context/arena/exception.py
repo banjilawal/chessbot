@@ -24,7 +24,7 @@ class ArenaContextBuildPipelineException(ContextBuildPipelineException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an error occurred in an ArenaContextBuildPipeline.
+        1.  Indicating an error occurred in an ArenaContextBuildPipeline.
 
     Attributes:
         msg: Optional[str]

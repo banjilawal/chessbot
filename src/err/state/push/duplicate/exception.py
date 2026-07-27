@@ -24,7 +24,7 @@ class DuplicatePushException(PusherException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that pushpingDuplicate a failed.
+        1.  Indicating that pushpingDuplicate a failed.
 
     Attributes:
         msg: Optional[str]

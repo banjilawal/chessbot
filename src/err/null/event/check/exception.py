@@ -26,7 +26,7 @@ class CheckEventNullException(EventNullException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required CheckEvent is null.
+        1.  Indicating a required CheckEvent is null.
 
     Cannot Be Null.s:
             msg: Optional[str]

@@ -25,7 +25,7 @@ class FormationTokenStateException(TokenStateException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a Formation tokenfailed.
+        1.  Indicating a Formation tokenfailed.
 
     Attributes:
             msg: Optional[str]

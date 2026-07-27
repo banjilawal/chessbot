@@ -23,7 +23,7 @@ class BootstrapTokenAssemblyException(AssemblyBootstrapperException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a TokenAssemblyBootstrap step failed.
+        1.  Indicating a TokenAssemblyBootstrap step failed.
 
     Attributes:
         msg: Optional[str]

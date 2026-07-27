@@ -24,7 +24,7 @@ class QueenMicroserviceException(RankMicroserviceException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a candidate did not pass a Queen microservice failed.
+        1.  Indicating a candidate did not pass a Queen microservice failed.
 
     Attributes:
         msg: Optional[str]

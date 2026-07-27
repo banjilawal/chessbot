@@ -24,7 +24,7 @@ class RankValidationPipelineException(ValidationPipelineException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an error occurred in a RankValidationPipeline.
+        1.  Indicating an error occurred in a RankValidationPipeline.
 
     Attributes:
         msg: Optional[str]

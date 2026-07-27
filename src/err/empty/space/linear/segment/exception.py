@@ -26,7 +26,7 @@ class LineSegmentEmptyException(LinearSpaceEmptyException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required LineSegment's endpoints are empty.
+        1.  Indicating a required LineSegment's endpoints are empty.
 
     Attributes:
         msg: Optional[str]

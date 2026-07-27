@@ -25,7 +25,7 @@ class NorthAxisBuilderException(AxisSpaceBuilderException):
         -   Failure Tracing
 
     Responsibilities:
-        1.  Indicate that a NorthAxisBuilder failed. 
+        1.  Indicating a NorthAxisBuilder failed.
 
     Attributes:
         msg: str

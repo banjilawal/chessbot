@@ -27,7 +27,7 @@ class SchemaQueryFullException(QueryFullException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required SchemaQuery is full.
+        1.  Indicating a required SchemaQuery is full.
 
     Attributes:
             msg: Optional[str]

@@ -27,7 +27,7 @@ class PlayerRootCertifierException(ModelRootCertifierException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a candidate failed a PlayerRootCertifier test.
+        1.  Indicating a candidate failed a PlayerRootCertifier test.
 
     Attributes:
             msg: Optional[str]

@@ -26,7 +26,7 @@ class DependencyListNullException(NullException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required DependencyList is null.
+        1.  Indicating a required DependencyList is null.
 
     Attributes:
         msg: Optional[str]

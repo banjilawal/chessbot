@@ -26,7 +26,7 @@ class GameMicroserviceException(MicroserviceException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a candidate did not pass a GameMicroservice failed.
+        1.  Indicating a candidate did not pass a GameMicroservice failed.
 
     Attributes:
             msg: Optional[str]

@@ -26,7 +26,7 @@ class PromoteToKingException(PromotionLevelAnalyzerException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate an attempt to promote a pawn to King rank occurred.
+        1.  Indicating an attempt to promote a pawn to King rank occurred.
 
     Attributes:
         msg: Optional[str]

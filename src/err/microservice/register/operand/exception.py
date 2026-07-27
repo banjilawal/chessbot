@@ -27,7 +27,7 @@ class VectorToggleRegisterMicroserviceException(RegisterMicroserviceException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a candidate did not pass a VectorToggleRegisterMicroservice failed.
+        1.  Indicating a candidate did not pass a VectorToggleRegisterMicroservice failed.
 
     Attributes:
             msg: Optional[str]

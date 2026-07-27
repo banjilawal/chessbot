@@ -26,7 +26,7 @@ class QueenTraversalPatternCarrierException(TraversalPatternCarrierException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a QueenTraversalPatternCarrier experienced an error.
+        1.  Indicating a QueenTraversalPatternCarrier experienced an error.
 
     Attributes:
         msg: Optional[str]

@@ -27,7 +27,7 @@ class BuilderBootstrapperException(BootstrapperException):
         -   Failure Tracing
 
     Responsibilities:
-        1.  Indicate that a BuilderBootstrapper was aborted by an exception.
+        1.  Indicating a BuilderBootstrapper was aborted by an exception.
 
     Attributes:
         msg: str

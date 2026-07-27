@@ -29,7 +29,7 @@ class PlayerBinderBuilderException(BinderBuilderException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a PlayerBinderBuilder failed.
+        1.  Indicating a PlayerBinderBuilder failed.
 
    Builder failed.s:
             msg: Optional[str]

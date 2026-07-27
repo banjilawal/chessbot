@@ -27,7 +27,7 @@ class PlayerContextValidatorException(ContextValidatorException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a PlayerContextValidation check failed.
+        1.  Indicating a PlayerContextValidation check failed.
 
     Attributes:
             msg: Optional[str]

@@ -26,7 +26,7 @@ class SquareVisitException(OperationException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a square visit failed.
+        1.  Indicating a square visit failed.
 
     Attributes:
         msg: Optional[str]

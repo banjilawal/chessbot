@@ -26,7 +26,7 @@ class SquareColliderBootstrapperException(DetectorBootstrapperException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a SquareCollisionDetector experienced an error that prevented
+        1.  Indicating a SquareCollisionDetector experienced an error that prevented
             it was aborted by an exception.
 
     Attributes:

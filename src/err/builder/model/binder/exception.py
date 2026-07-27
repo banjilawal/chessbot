@@ -26,7 +26,7 @@ class BinderBuilderException(ModelBuilderException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a BinderBuilder failed.
+        1.  Indicating a BinderBuilder failed.
 
    Builder failed.s:
             msg: Optional[str]

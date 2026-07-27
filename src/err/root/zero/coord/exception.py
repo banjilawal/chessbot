@@ -24,7 +24,7 @@ class ZeroCoordBlueprintFlagsException(ZeroBlueprintFlagsException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicates that no CoordRootCertifier test. enabled.
+        1.  Indicatings that no CoordRootCertifier test. enabled.
 
     Attributes:
         msg: Optional[str]

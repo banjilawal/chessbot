@@ -26,7 +26,7 @@ class CheckedPathRegisterCarrierException(PathException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a CheckedPathRegisterCarrier encountered an error.
+        1.  Indicating a CheckedPathRegisterCarrier encountered an error.
 
     Attributes:
         msg: Optional[str]

@@ -26,7 +26,7 @@ class OpeningAttackOffsetPatternValidatorException(AttackOffsetPatternValidatorE
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an error occurred in an OpeningAttackOffsetPatternValidator failed.
+        1.  Indicate an error occurred in an OpeningAttackOffsetPatternValidator failed.
 
     Attributes:
         msg: Optional[str]

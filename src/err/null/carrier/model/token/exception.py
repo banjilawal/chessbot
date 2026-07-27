@@ -26,7 +26,7 @@ class TokenCarrierNullException(ModelCarrierNullException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required TokenCarrierToggle is null.
+        1.  Indicating a required TokenCarrierToggle is null.
 
     Attributes:
         msg: Optional[str]

@@ -27,7 +27,7 @@ class GameContextNullException(ContextNullException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required GameContext is null.
+        1.  Indicating a required GameContext is null.
 
     Cannot Be Null.s:
             msg: Optional[str]

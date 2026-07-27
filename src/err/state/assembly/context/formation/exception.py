@@ -28,7 +28,7 @@ class FormationContextAssemblyException(ContextAssemblyException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a FormationContext assembly failed.
+        1.  Indicating a FormationContext assembly failed.
 
     Assembly Failed.s:
             msg: Optional[str]

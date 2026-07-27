@@ -27,7 +27,7 @@ class CoordQueryStackEmptyException(QueryStackEmptyException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required CoordQuery's target stack is empty.
+        1.  Indicating a required CoordQuery's target stack is empty.
 
     Attributes:
             msg: Optional[str]

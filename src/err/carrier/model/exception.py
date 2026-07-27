@@ -26,7 +26,7 @@ class ModelCarrierException(ChessException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a ModelCarrier encountered an error.
+        1.  Indicating a ModelCarrier encountered an error.
 
     Attributes:
         msg: Optional[str]

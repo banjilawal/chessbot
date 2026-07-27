@@ -28,7 +28,7 @@ class PersonaBinderAssemblyException(BinderAssemblyException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a PersonaBinder assembly failed.
+        1.  Indicating a PersonaBinder assembly failed.
 
     Assembly Failed.s:
             msg: Optional[str]

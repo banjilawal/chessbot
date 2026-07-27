@@ -27,7 +27,7 @@ class BoardContextValidatorException(ContextValidatorException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a BoardContextValidation check failed.
+        1.  Indicating a BoardContextValidation check failed.
 
     Attributes:
             msg: Optional[str]

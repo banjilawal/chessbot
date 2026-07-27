@@ -24,7 +24,7 @@ class SnapshotDatabaseEmptyException(DatabaseEmptyException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required SnapshotDatabase is empty.
+        1.  Indicating a required SnapshotDatabase is empty.
 
     Attributes:
         msg: Optional[str]

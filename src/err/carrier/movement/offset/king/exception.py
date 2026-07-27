@@ -26,7 +26,7 @@ class KingOffsetPatternCarrierException(OffsetPatternCarrierException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a KingOffsetPatternCarrier experienced an error.
+        1.  Indicating a KingOffsetPatternCarrier experienced an error.
 
     Attributes:
         msg: Optional[str]

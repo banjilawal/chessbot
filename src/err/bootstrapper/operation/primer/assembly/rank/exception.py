@@ -26,7 +26,7 @@ class PrimingRankAssemblyException(AssemblyPrimerException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a RankAssembly priming step failed.
+        1.  Indicating a RankAssembly priming step failed.
 
     Attributes:
         msg: Optional[str]

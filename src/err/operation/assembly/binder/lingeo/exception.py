@@ -24,7 +24,7 @@ class VectorBinderAssemblyException(BinderAssemblyException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a VectorBinder assembly failed.
+        1.  Indicating a VectorBinder assembly failed.
 
     Assembly Failed.s:
             msg: Optional[str]

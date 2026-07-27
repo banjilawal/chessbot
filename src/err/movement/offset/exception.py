@@ -26,7 +26,7 @@ class OffsetPatternException(MovementPatternException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an error occurred in a OffsetPattern instance.
+        1.  Indicating an error occurred in a OffsetPattern instance.
 
     Attributes:
         msg: Optional[str]

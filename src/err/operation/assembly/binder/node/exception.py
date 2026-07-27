@@ -28,7 +28,7 @@ class NodeBinderAssemblyException(BinderAssemblyException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a NodeBinder assembly failed.
+        1.  Indicating a NodeBinder assembly failed.
 
     Assembly Failed.s:
             msg: Optional[str]

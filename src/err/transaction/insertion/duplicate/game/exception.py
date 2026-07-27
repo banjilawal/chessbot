@@ -25,7 +25,7 @@ class DuplicateGamePushException(DuplicateItemException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that pushing a duplicate item onto the GameStack failed.
+        1.  Indicating that pushing a duplicate item onto the GameStack failed.
 
     Attributes:
         msg: Optional[str]

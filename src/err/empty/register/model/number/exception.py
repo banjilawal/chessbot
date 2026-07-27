@@ -26,7 +26,7 @@ class NumberRegisterEmptyException(ModelRegisterEmptyException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required NumberRegister is empty.
+        1.  Indicating a required NumberRegister is empty.
 
     Attributes:
         msg: Optional[str]

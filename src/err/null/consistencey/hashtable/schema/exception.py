@@ -25,7 +25,7 @@ class SchemaHashtableConsistencyCheckerNullException(HashtableException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required SchemaHashtableConsistencyChecker is null.
+        1.  Indicating a required SchemaHashtableConsistencyChecker is null.
 
     Attributes:
         msg: Optional[str]

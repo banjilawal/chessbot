@@ -27,7 +27,7 @@ class VectorToggleException(ModelException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a VectorToggle encountered an error.
+        1.  Indicating a VectorToggle encountered an error.
 
     Attributes:
             msg: Optional[str]

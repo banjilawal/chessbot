@@ -24,7 +24,7 @@ class ZeroFormationBlueprintFlagsException(ZeroBlueprintFlagsException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicates that no FormationRootCertifier test. enabled.
+        1.  Indicatings that no FormationRootCertifier test. enabled.
 
     Attributes:
         msg: Optional[str]

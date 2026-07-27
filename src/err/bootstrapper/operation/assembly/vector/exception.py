@@ -25,7 +25,7 @@ class VectorAssemblyException(AssemblyException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate a Vector assembly failed.
+        1.  Indicating a Vector assembly failed.
 
     Attributes:
         msg: Optional[str]

@@ -26,7 +26,7 @@ class CombatantPathConsistencyCheckerNullException(PathException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required CombatantPathConsistencyChecker is null.
+        1.  Indicating a required CombatantPathConsistencyChecker is null.
 
     Attributes:
         msg: Optional[str]

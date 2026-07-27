@@ -26,7 +26,7 @@ class BishopTraversalPatternBlueprintNullException(TraversalPatternBlueprintNull
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required BishopTraversalPatternBlueprint is null.
+        1.  Indicating a required BishopTraversalPatternBlueprint is null.
 
     Attributes:
         msg: Optional[str]

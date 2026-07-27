@@ -24,7 +24,7 @@ class TeamStackEmptyException(StackEmptyException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required TeamStack is empty.
+        1.  Indicating a required TeamStack is empty.
 
     Attributes:
         msg: Optional[str]

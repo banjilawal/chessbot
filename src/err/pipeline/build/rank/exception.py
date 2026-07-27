@@ -24,7 +24,7 @@ class RankBuildPipelineException(BuildPipelineException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an error occurred in a RankBuildPipeline.
+        1.  Indicating an error occurred in a RankBuildPipeline.
 
     Attributes:
         msg: Optional[str]

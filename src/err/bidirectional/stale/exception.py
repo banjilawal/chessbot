@@ -28,7 +28,7 @@ class StaleLinkException(BidirectionalRelationException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that the primary (one side) has a stale link to a satellite (many side).
+        1.  Indicating that the primary (one side) has a stale link to a satellite (many side).
 
     Attributes:
             msg: Optional[str]

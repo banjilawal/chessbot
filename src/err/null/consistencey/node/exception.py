@@ -26,7 +26,7 @@ class NodeConsistencyCheckerNullException(ConsistencyCheckerNullException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required NodeConsistencyChecker is null.
+        1.  Indicating a required NodeConsistencyChecker is null.
 
     Attributes:
         msg: Optional[str]

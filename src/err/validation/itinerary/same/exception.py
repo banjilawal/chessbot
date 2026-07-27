@@ -26,7 +26,7 @@ class ItinerarySourceEqualsDestinationException(ItineraryValidatorException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate an Itinerary's source and destination are the same.
+        1.  Indicating an Itinerary's source and destination are the same.
 
     Attributes:
         msg: Optional[str]

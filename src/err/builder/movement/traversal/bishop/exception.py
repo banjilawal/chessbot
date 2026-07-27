@@ -26,7 +26,7 @@ class BishopTraversalPatternBuilderException(TraversalPatternBuilderException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required BishopTraversalPatternBuilder failed.
+        1.  Indicating a required BishopTraversalPatternBuilder failed.
 
     Attributes:
         msg: Optional[str]

@@ -26,7 +26,7 @@ class TeamException(ModelException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a Team encountered an error.
+        1.  Indicating a Team encountered an error.
 
     Attributes:
             msg: Optional[str]

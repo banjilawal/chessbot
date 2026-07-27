@@ -27,7 +27,7 @@ class SquareQueryFullException(QueryFullException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required SquareQuery is full.
+        1.  Indicating a required SquareQuery is full.
 
     Attributes:
             msg: Optional[str]

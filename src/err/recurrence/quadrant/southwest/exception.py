@@ -26,7 +26,7 @@ class SouthwestQuadrantRecurrenceException(QuadrantRecurrenceException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a SouthwestQuadrantRecurrence encountered an error.
+        1.  Indicating a SouthwestQuadrantRecurrence encountered an error.
 
     Attributes:
         msg: Optional[str]

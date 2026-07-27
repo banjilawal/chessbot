@@ -26,7 +26,7 @@ class LinearTargetSetEmptyException(TargetVectorSetEmptyException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required LinearTargetSet is empty.
+        1.  Indicating a required LinearTargetSet is empty.
 
     Attributes:
         msg: Optional[str]

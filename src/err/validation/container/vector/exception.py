@@ -26,7 +26,7 @@ class VectorSetValidatorException(ContainerValidatorException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a candidate failed a VectorSetValidator test.
+        1.  Indicating a candidate failed a VectorSetValidator test.
 
     Attributes:
         msg: Optional[str]

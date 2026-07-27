@@ -26,7 +26,7 @@ class AxisRecurrenceTableException(RecurrenceTableException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a AxisRecurrenceTable encountered an error.
+        1.  Indicating a AxisRecurrenceTable encountered an error.
 
     Attributes:
         msg: Optional[str]

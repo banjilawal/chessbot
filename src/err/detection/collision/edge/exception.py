@@ -25,7 +25,7 @@ class EdgeCollisionDetectorException(CollisionDetectorException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an EdgeCollision step failed.
+        1.  Indicating an EdgeCollision step failed.
 
     Attributes:
         msg: Optional[str]

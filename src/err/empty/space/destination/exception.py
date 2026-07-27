@@ -26,7 +26,7 @@ class TargetVectorSetEmptyException(SpaceEmptyException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required TargetVectorSet is empty.
+        1.  Indicating a required TargetVectorSet is empty.
 
     Attributes:
         msg: Optional[str]

@@ -26,7 +26,7 @@ class GameStackFullException(StackFullException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a GameStack is full.
+        1.  Indicating a GameStack is full.
 
     Attributes:
         msg: Optional[str]

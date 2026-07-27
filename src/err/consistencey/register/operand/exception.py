@@ -26,7 +26,7 @@ class VectorToggleRegisterConsistencyCheckerException(RegisterException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a VectorToggleRegisterConsistencyChecker raised an error.
+        1.  Indicating a VectorToggleRegisterConsistencyChecker raised an error.
 
     Attributes:
         msg: Optional[str]

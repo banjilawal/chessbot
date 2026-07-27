@@ -23,7 +23,7 @@ class TeamBelongsToDifferentOwnerException(PlayerException, TeamException):
     Role:Exception Work
 
     Responsibilities:
-    1.  Indicate that a team belongs to a different owner.
+    1.  Indicate a team belongs to a different owner.
 
     Super Class:
         *   AgentException

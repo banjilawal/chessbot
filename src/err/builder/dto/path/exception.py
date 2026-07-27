@@ -26,7 +26,7 @@ class TokenPathDtoBuilderException(DtoBuilderException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a PathDtoBuilder failed.
+        1.  Indicating a PathDtoBuilder failed.
 
    Builder failed.s:
             msg: Optional[str]

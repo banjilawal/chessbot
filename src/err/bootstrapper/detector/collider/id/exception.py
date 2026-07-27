@@ -24,7 +24,7 @@ class IdColliderBootstrapperException(ColliderBootstrapperException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an id collision occured
+        1.  Indicating an id collision occured
 
     Attributes:
         msg: Optional[str]

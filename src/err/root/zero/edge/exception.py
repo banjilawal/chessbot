@@ -24,7 +24,7 @@ class ZeroEdgeBlueprintFlagsException(ZeroBlueprintFlagsException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicates that no EdgeRootCertifier test. enabled.
+        1.  Indicatings that no EdgeRootCertifier test. enabled.
 
     Attributes:
         msg: Optional[str]

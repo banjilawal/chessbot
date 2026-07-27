@@ -25,7 +25,7 @@ class QuadrantNullException(SpaceNullException):
         -   Failure Tracing
 
     Responsibilities:
-        1.  Indicate that a required QuadrantSpace is null.
+        1.  Indicating a required QuadrantSpace is null.
 
     Attributes:
         msg: str

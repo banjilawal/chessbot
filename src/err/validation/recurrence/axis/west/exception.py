@@ -26,7 +26,7 @@ class WestQuadrantRecurrenceValidatorException(QuadrantRecurrenceValidatorExcept
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a WestQuadrantRecurrenceValidator failed.
+        1.  Indicating a WestQuadrantRecurrenceValidator failed.
 
     Attributes:
         msg: Optional[str]

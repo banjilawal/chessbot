@@ -25,7 +25,7 @@ class MaxNameLengthException(NameException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a name is too long.
+        1.  Indicating a name is too long.
 
     Attributes:
         msg: Optional[str]

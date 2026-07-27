@@ -26,7 +26,7 @@ class GameRegisterCarrierException(RegisterCarrierException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a GameRegisterCarrier encountered an error.
+        1.  Indicating a GameRegisterCarrier encountered an error.
 
     Attributes:
             msg: Optional[str]

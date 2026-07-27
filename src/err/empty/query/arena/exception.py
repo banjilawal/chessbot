@@ -27,7 +27,7 @@ class ArenaQueryStackEmptyException(QueryStackEmptyException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required ArenaQuery's target stack is empty.
+        1.  Indicating a required ArenaQuery's target stack is empty.
 
     Attributes:
             msg: Optional[str]

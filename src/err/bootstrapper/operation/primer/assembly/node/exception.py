@@ -25,7 +25,7 @@ class PrimingNodeAssemblyException(AssemblyPrimerException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a NodeAssembly priming step failed.
+        1.  Indicating a NodeAssembly priming step failed.
 
     Attributes:
         msg: Optional[str]

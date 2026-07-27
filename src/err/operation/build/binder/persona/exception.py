@@ -28,7 +28,7 @@ class PersonaBinderBuilderException(BinderBuilderException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a PersonaBinder build failed.
+        1.  Indicating a PersonaBinder build failed.
 
     Build Failed.s:
             msg: Optional[str]

@@ -24,7 +24,7 @@ class ZeroRankBlueprintFlagsException(ZeroBlueprintFlagsException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicates that no RankRootCertifier test. enabled.
+        1.  Indicatings that no RankRootCertifier test. enabled.
 
     Attributes:
         msg: Optional[str]

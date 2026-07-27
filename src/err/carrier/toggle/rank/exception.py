@@ -26,7 +26,7 @@ class RanktoggleCarrierException(toggleCarrierException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a RanktoggleCarrier encountered an error.
+        1.  Indicating a RanktoggleCarrier encountered an error.
 
     Attributes:
         msg: Optional[str]

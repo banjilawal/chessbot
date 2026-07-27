@@ -26,7 +26,7 @@ class PathCarrierException(ModelCarrierException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a PathCarrier encountered an error.
+        1.  Indicating a PathCarrier encountered an error.
 
     Attributes:
         msg: Optional[str]

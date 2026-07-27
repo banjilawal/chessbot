@@ -26,7 +26,7 @@ class GameContextException(ContextException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a GameContext encountered an error.
+        1.  Indicating a GameContext encountered an error.
 
     Attributes:
             msg: Optional[str]

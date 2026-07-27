@@ -26,7 +26,7 @@ class TeamSearcherException(SearcherException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a TeamSearcher from
+        1.  Indicating a TeamSearcher from
             completing its task.
 
     Attributes:

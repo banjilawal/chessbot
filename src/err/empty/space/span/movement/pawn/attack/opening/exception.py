@@ -26,7 +26,7 @@ class OpeningAttackMovementSetEmptyException(AttackMovementSetEmptyException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required OpeningAttackMovementSet is empty.
+        1.  Indicating a required OpeningAttackMovementSet is empty.
 
     Attributes:
         msg: Optional[str]

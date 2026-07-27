@@ -26,7 +26,7 @@ class BishopMovementSetEmptyException(MovementVectorSetEmptyException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required BishopMovementSet is empty.
+        1.  Indicating a required BishopMovementSet is empty.
 
     Attributes:
         msg: Optional[str]

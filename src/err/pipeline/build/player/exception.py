@@ -24,7 +24,7 @@ class PlayerBuildPipelineException(BuildPipelineException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an error occurred in a PlayerBuildPipeline.
+        1.  Indicating an error occurred in a PlayerBuildPipeline.
 
     Attributes:
         msg: Optional[str]

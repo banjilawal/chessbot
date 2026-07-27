@@ -25,7 +25,7 @@ class FinalizeContextBuilderException(FinalizeBuilderException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that finalizing a ContextBuild failed.
+        1.  Indicating that finalizing a ContextBuild failed.
 
     Attributes:
             msg: Optional[str]

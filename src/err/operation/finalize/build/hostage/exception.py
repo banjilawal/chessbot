@@ -25,7 +25,7 @@ class FinalizeHostageBuilderException(FinalizeBuilderException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that finalizing a HostageBuild failed.
+        1.  Indicating that finalizing a HostageBuild failed.
 
     Attributes:
         msg: Optional[str]

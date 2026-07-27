@@ -24,7 +24,7 @@ class PoppingEmptyTeamStackException(TeamStackException, NullException):
     Role:Debug, Error Tracing
 
     Responsibilities:
-    1.  Indicate that an attempt to remove a team failed because the TeamStack was not managing any teams.
+    1.  Indicating an attempt to remove a team failed because the TeamStack was not managing any teams.
 
     Super Class:
         *   TeamDaaServiceException

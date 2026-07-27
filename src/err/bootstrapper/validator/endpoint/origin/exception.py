@@ -26,7 +26,7 @@ class OriginCertifierBootstrapperException(ValidatorBootstrapperException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an OriginCertifierBootstrapper
+        1.  Indicating an OriginCertifierBootstrapper
             was aborted by an exception.
         
     Attributes:

@@ -26,7 +26,7 @@ class TokenStackFullException(StackFullException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a TokenStack is full.
+        1.  Indicating a TokenStack is full.
 
     Attributes:
         msg: Optional[str]

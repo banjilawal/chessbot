@@ -24,7 +24,7 @@ class ArenaRegisterCarrierException(RegisterCarrierException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an ArenaRegisterCarrier encountered an error.
+        1.  Indicating an ArenaRegisterCarrier encountered an error.
 
     Attributes:
         msg: Optional[str]

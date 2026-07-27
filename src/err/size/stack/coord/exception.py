@@ -24,7 +24,7 @@ class CoordStackSizeException(StackSizeException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required CoordStackis the wrong size.
+        1.  Indicating a required CoordStackis the wrong size.
 
     Attributes:
         msg: Optional[str]

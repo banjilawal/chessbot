@@ -26,7 +26,7 @@ class EastQuadrantRecurrenceBlueprintNullException(QuadrantRecurrenceBlueprintNu
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required EastQuadrantRecurrenceBlueprint is null.
+        1.  Indicating a required EastQuadrantRecurrenceBlueprint is null.
 
     Attributes:
         msg: Optional[str]

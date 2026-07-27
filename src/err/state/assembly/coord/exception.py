@@ -25,7 +25,7 @@ class CoordAssemblyException(AssemblyException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a Coord assembly failed.
+        1.  Indicating a Coord assembly failed.
 
     Attributes:
         msg: Optional[str]

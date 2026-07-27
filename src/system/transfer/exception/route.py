@@ -21,7 +21,7 @@ class TransferRouteException(ExecutionRouteException):
     Role:Error Tracing, Debugging, Super Exception
 
     Responsibilities:
-    1.  Indicate that a transfer failed because there was no execution logic for one the different 
+    1.  Indicate a transfer failed because there was no execution logic for one the different
         transfer behaviors.
 
     Super Class:

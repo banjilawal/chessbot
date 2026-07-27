@@ -25,7 +25,7 @@ class WorkerOpNameCollisionDetectorException(CollisionDetectorException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate two different workers have the same WorkerRegistry key.
+        1.  Indicating two different workers have the same WorkerRegistry key.
 
     Attributes:
         msg: Optional[str]

@@ -26,7 +26,7 @@ class StackNullException(NullException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required Stack is null.
+        1.  Indicating a required Stack is null.
 
     Attributes:
         msg: Optional[str]

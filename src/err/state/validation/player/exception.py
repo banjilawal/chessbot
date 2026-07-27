@@ -24,7 +24,7 @@ class PlayerValidatorException(ValidatorException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a PlayerValidation check failed.
+        1.  Indicating a PlayerValidation check failed.
 
     Attributes:
         msg: Optional[str]

@@ -25,7 +25,7 @@ class EdgeTokenOperationBootstrapperException(TokenOperationBootstrapperExceptio
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an Edge tokenfailed.
+        1.  Indicating an Edge tokenfailed.
 
     Attributes:
         msg: Optional[str]

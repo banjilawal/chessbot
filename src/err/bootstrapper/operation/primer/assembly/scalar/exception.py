@@ -26,7 +26,7 @@ class PrimingScalarAssemblyException(AssemblyPrimerException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a ScalarAssembly priming step failed.
+        1.  Indicating a ScalarAssembly priming step failed.
 
     Attributes:
         msg: Optional[str]

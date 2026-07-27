@@ -25,7 +25,7 @@ class FinalizeVectorBuilderException(FinalizeBuilderException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate a VectorBuild failed.
+        1.  Indicating a VectorBuild failed.
 
     Attributes:
         msg: Optional[str]

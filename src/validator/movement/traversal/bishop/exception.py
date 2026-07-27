@@ -26,7 +26,7 @@ class BishopTraversalPatternValidatorException(TraversalPatternValidatorExceptio
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required BishopTraversalPatternValidator failed.
+        1.  Indicate a required BishopTraversalPatternValidator failed.
 
     Attributes:
         msg: Optional[str]

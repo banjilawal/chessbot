@@ -26,7 +26,7 @@ class FinalizeBoardBuilderException(FinalizeBuilderException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that finalizing a BoardBuild failed.
+        1.  Indicating that finalizing a BoardBuild failed.
 
     Attributes:
         msg: Optional[str]

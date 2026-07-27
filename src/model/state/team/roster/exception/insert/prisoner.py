@@ -21,7 +21,7 @@ class AddingPrisonerToTeamRosterException (TeamRosterException):
     Role:Error Tracing, Debugging
 
     Responsibilities:
-    1.  Indicate that a occupant cannot be added to the roster because it was not free.
+    1.  Indicate a occupant cannot be added to the roster because it was not free.
 
     Super Class:
         *   TeamRosterException

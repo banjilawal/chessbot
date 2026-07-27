@@ -26,7 +26,7 @@ class VectorSetBuilderException(ContainerBuilderException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a VectorSetBuilderExceptio failed.
+        1.  Indicating a VectorSetBuilderExceptio failed.
 
    Builder failed.s:
             msg: Optional[str]

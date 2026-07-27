@@ -26,7 +26,7 @@ class NumberNullException(NullException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required number is null.
+        1.  Indicating a required number is null.
 
     Attributes:
         msg: Optional[str]

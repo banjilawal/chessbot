@@ -26,7 +26,7 @@ class CombatantPathtoggleCarrierException(PathException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a CombatantPathtoggleCarrier encountered an error.
+        1.  Indicating a CombatantPathtoggleCarrier encountered an error.
 
     Attributes:
         msg: Optional[str]

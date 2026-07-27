@@ -25,7 +25,7 @@ class SouthwestQuadrantBuilderException(QuadrantSpaceBuilderException):
         -   Failure Tracing
 
     Responsibilities:
-        1.  Indicate that a SouthwestQuadrantBuilder failed. 
+        1.  Indicating a SouthwestQuadrantBuilder failed.
 
     Attributes:
         msg: str

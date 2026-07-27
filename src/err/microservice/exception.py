@@ -27,7 +27,7 @@ class MicroserviceException(OperationException):
         -   Failure Tracing
 
     Responsibilities:
-        1.  Indicate that a candidate did not pass a Microservice failed.
+        1.  Indicating a candidate did not pass a Microservice failed.
 
     Attributes:
         msg: str

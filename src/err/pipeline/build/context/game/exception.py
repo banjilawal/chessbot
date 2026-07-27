@@ -24,7 +24,7 @@ class GameContextBuildPipelineException(ContextBuildPipelineException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an error occurred in an GameContextBuildPipeline.
+        1.  Indicating an error occurred in an GameContextBuildPipeline.
 
     Attributes:
         msg: Optional[str]

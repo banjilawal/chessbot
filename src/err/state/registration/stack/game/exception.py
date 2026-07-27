@@ -24,7 +24,7 @@ class GameStackRegistrationException(StackRegistrationException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that registrationing onto a GameStack failed.
+        1.  Indicating that registrationing onto a GameStack failed.
 
     Attributes:
         msg: Optional[str]

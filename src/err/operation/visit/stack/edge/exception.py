@@ -24,7 +24,7 @@ class VisitpingEdgeStackException(VisitpingStackException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that visitping a EdgeStack failed.
+        1.  Indicating that visitping a EdgeStack failed.
 
     Attributes:
         msg: Optional[str]

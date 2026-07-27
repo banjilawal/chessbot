@@ -26,7 +26,7 @@ class VectorSetEmptyException(ContainerEmptyException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required VectorSet is empty.
+        1.  Indicating a required VectorSet is empty.
 
     Attributes:
         msg: Optional[str]

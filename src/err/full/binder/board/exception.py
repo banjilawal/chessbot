@@ -22,7 +22,7 @@ class BoardTeamBinderFullException(BinderFullException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required BoardTeamBinder is full.
+        1.  Indicating a required BoardTeamBinder is full.
 
     Attributes:
             msg: Optional[str]

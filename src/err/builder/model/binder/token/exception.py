@@ -29,7 +29,7 @@ class TokenBinderBuilderException(BinderBuilderException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a TokenBinderBuilder failed.
+        1.  Indicating a TokenBinderBuilder failed.
 
    Builder failed.s:
             msg: Optional[str]

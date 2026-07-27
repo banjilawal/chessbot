@@ -27,7 +27,7 @@ class HostageQueryStackEmptyException(QueryStackEmptyException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required HostageQuery's target stack is empty.
+        1.  Indicating a required HostageQuery's target stack is empty.
 
     Attributes:
             msg: Optional[str]

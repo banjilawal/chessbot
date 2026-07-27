@@ -26,7 +26,7 @@ class OpeningManeuverOffsetPatternValidatorException(ManeuverOffsetPatternValida
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an error occurred in an OpeningManeuverOffsetPatternValidator failed.
+        1.  Indicate an error occurred in an OpeningManeuverOffsetPatternValidator failed.
 
     Attributes:
         msg: Optional[str]

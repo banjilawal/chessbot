@@ -25,7 +25,7 @@ class GameColorNullException(NullException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required GameColor is null.
+        1.  Indicating a required GameColor is null.
 
     Attributes:
         msg: Optional[str]

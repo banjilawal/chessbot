@@ -26,7 +26,7 @@ class ManeuverOffsetPatternException(PawnOffsetPatternException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an error occurred in an ManeuverOffsetPattern instance.
+        1.  Indicating an error occurred in an ManeuverOffsetPattern instance.
 
     Attributes:
         msg: Optional[str]

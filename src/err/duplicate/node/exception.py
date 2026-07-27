@@ -26,7 +26,7 @@ class DuplicateNodeException(DuplicateItemException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a Node already exists in the operating context so, trying
+        1.  Indicating a Node already exists in the operating context so, trying
             to add it again will fail.
 
     Attributes:

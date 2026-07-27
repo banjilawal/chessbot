@@ -26,7 +26,7 @@ class DisabledTokenConsistencyCheckerException(TokenException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an attempt was made to use a disabled Token.
+        1.  Indicating an attempt was made to use a disabled Token.
 
     Attributes:
         msg: Optional[str]

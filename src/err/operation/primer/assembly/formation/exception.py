@@ -26,7 +26,7 @@ class FormationAssemblyPrimerException(AssemblyPrimerException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a FormationAssembly priming step failed.
+        1.  Indicating a FormationAssembly priming step failed.
 
     Attributes:
             msg: Optional[str]

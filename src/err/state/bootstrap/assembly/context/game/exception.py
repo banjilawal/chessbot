@@ -24,7 +24,7 @@ class BootstrapGameContextAssemblyException(BootstrapContextAssemblyException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a GameContextAssembly bootstrap step failed.
+        1.  Indicating a GameContextAssembly bootstrap step failed.
 
     Attributes:
             msg: Optional[str]

@@ -26,7 +26,7 @@ class PawnOffsetPatternValidatorException(OffsetPatternValidatorException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required PawnOffsetPatternValidator failed.
+        1.  Indicate a required PawnOffsetPatternValidator failed.
 
     Attributes:
         msg: Optional[str]

@@ -26,7 +26,7 @@ class NorthQuadrantRecurrenceBuilderException(QuadrantRecurrenceBuilderException
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a NorthQuadrantRecurrenceBuilder failed.
+        1.  Indicating a NorthQuadrantRecurrenceBuilder failed.
 
     Attributes:
         msg: Optional[str]

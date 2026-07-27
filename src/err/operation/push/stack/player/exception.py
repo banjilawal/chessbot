@@ -24,7 +24,7 @@ class PlayerStackPushException(StackPushException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that pushing onto a PlayerStack failed.
+        1.  Indicating that pushing onto a PlayerStack failed.
 
     Attributes:
         msg: Optional[str]

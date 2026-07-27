@@ -26,7 +26,7 @@ class RecurrenceCarrierNullException(ChessException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required RecurrenceCarrier is null.
+        1.  Indicating a required RecurrenceCarrier is null.
 
     Attributes:
         msg: Optional[str]

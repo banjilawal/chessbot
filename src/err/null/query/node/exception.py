@@ -27,7 +27,7 @@ class NodeQueryNullException(QueryNullException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required NodeQuery is null.
+        1.  Indicating a required NodeQuery is null.
 
     Attributes:
             msg: Optional[str]

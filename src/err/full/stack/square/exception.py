@@ -26,7 +26,7 @@ class SquareStackFullException(StackFullException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a SquareStack is full.
+        1.  Indicating a SquareStack is full.
 
     Attributes:
         msg: Optional[str]

@@ -29,7 +29,7 @@ class SquareBinderBuilderException(BinderBuilderException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a SquareBinderBuilder failed.
+        1.  Indicating a SquareBinderBuilder failed.
 
    Builder failed.s:
             msg: Optional[str]

@@ -26,7 +26,7 @@ class DevelopedManeuverBasisSizeException(ManeuverBasisSizeException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required DevelopedManeuverBasisis the wrong size.
+        1.  Indicating a required DevelopedManeuverBasisis the wrong size.
 
     Attributes:
         msg: Optional[str]

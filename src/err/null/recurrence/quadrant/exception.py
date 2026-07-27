@@ -26,7 +26,7 @@ class QuadrantRecurrenceNullException(RecurrenceNullException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required QuadrantRecurrence is null.
+        1.  Indicating a required QuadrantRecurrence is null.
 
     Attributes:
         msg: Optional[str]

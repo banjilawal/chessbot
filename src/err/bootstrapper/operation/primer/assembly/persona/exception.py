@@ -26,7 +26,7 @@ class PersonaAssemblyPrimerException(AssemblyPrimerException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that n PersonaAssembly priming step failed.
+        1.  Indicating that n PersonaAssembly priming step failed.
 
     Attributes:
             msg: Optional[str]

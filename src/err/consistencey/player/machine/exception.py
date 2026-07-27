@@ -25,7 +25,7 @@ class MachinePlayerConsistencyCheckerException(PlayerException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a MachinePlayerConsistencyChecker raised an error.
+        1.  Indicating a MachinePlayerConsistencyChecker raised an error.
 
     Attributes:
         msg: Optional[str]

@@ -24,7 +24,7 @@ class CoordStackNullException(StackNullException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required CoordStack is null.
+        1.  Indicating a required CoordStack is null.
 
     Attributes:
         msg: Optional[str]

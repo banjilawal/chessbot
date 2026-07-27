@@ -26,7 +26,7 @@ class MoveUndeployedTokenException(TokenUndoMovePermitterException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an attempt was made to move a token which has not
+        1.  Indicating an attempt was made to move a token which has not
             been deployed to its home square.
             
     Attributes:

@@ -26,7 +26,7 @@ class KingOffsetPatternException(OffsetPatternException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an error occurred in a KingOffsetPattern instance.
+        1.  Indicating an error occurred in a KingOffsetPattern instance.
 
     Attributes:
         msg: Optional[str]

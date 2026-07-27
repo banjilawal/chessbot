@@ -26,7 +26,7 @@ class DeletionRequestTesterException(RequestTesterException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a DeletionRequestTester failed.
+        1.  Indicating a DeletionRequestTester failed.
 
     Cannot Be Tester.s:
             msg: Optional[str]

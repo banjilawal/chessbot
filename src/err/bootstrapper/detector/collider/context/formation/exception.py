@@ -28,7 +28,7 @@ class FormationContextCollisionException(ContextColliderBootstrapperException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a FormationContextCollision step failed.
+        1.  Indicating a FormationContextCollision step failed.
 
     Attributes:
             msg: Optional[str]

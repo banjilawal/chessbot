@@ -26,7 +26,7 @@ class PopperException(OperationException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a StackPopper failed.
+        1.  Indicating a StackPopper failed.
 
     Attributes:
         msg: Optional[str]

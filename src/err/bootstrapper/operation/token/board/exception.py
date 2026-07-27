@@ -26,7 +26,7 @@ class BoardTokenOperationBootstrapperException(TokenOperationBootstrapperExcepti
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a Board tokenfailed.
+        1.  Indicating a Board tokenfailed.
 
     Attributes:
         msg: Optional[str]

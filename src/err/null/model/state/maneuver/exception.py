@@ -26,7 +26,7 @@ class ManeuverNullException(StateModelNullException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required Maneuver is null.
+        1.  Indicating a required Maneuver is null.
 
     Attributes:
             msg: Optional[str]

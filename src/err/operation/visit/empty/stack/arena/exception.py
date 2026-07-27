@@ -24,7 +24,7 @@ class VisitpingEmptyArenaStackException(VisitpingEmptyStackException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that visitpingEmpty an ArenaStack failed.
+        1.  Indicating that visitpingEmpty an ArenaStack failed.
 
     Attributes:
         msg: Optional[str]

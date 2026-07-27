@@ -26,7 +26,7 @@ class ManeuverOffsetPatternBlueprintNullException(PawnOffsetPatternBlueprintNull
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an error occurred in an ManeuverOffsetPatternBlueprint is null.
+        1.  Indicating an error occurred in an ManeuverOffsetPatternBlueprint is null.
 
     Attributes:
         msg: Optional[str]

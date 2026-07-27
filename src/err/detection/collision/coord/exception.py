@@ -24,7 +24,7 @@ class CoordCollisionDetectorException(CollisionDetectorException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a coord collision occurred
+        1.  Indicating a coord collision occurred
 
     Attributes:
         msg: Optional[str]

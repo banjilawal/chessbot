@@ -28,7 +28,7 @@ class BoardBinderTokenOperationBootstrapperException(BinderTokenOperationBootstr
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a BoardBinder tokenfailed.
+        1.  Indicating a BoardBinder tokenfailed.
 
     TokenFailed.s:
             msg: Optional[str]

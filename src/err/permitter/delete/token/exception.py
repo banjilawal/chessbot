@@ -26,7 +26,7 @@ class TokenDeletePermitterException(DeletePermitterException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a TokenDeletePermitter did not approve the request.
+        1.  Indicating a TokenDeletePermitter did not approve the request.
 
     Attributes:
         msg: Optional[str]

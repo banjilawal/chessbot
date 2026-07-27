@@ -26,7 +26,7 @@ class ArenaEmptyException(ModelEmptyException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required Arena is empty.
+        1.  Indicating a required Arena is empty.
 
     Attributes:
         msg: Optional[str]

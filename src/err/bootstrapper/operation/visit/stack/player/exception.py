@@ -24,7 +24,7 @@ class VisitpingPlayerStackException(VisitpingStackException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that visitping a PlayerStack failed.
+        1.  Indicating that visitping a PlayerStack failed.
 
     Attributes:
         msg: Optional[str]

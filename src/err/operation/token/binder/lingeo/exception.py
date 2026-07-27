@@ -24,7 +24,7 @@ class VectorBinderTokenOperationException(BinderTokenOperationException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a VectorBinder tokenfailed.
+        1.  Indicating a VectorBinder tokenfailed.
 
     TokenFailed.s:
             msg: Optional[str]

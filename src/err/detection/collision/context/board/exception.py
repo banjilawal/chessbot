@@ -28,7 +28,7 @@ class BoardContextCollisionException(ContextCollisionDetectorException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a BoardContextCollision step failed.
+        1.  Indicating a BoardContextCollision step failed.
 
     Attributes:
             msg: Optional[str]

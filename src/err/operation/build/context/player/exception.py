@@ -28,7 +28,7 @@ class PlayerContextBuilderException(ContextBuilderException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a PlayerContext build failed.
+        1.  Indicating a PlayerContext build failed.
 
     Build Failed.s:
             msg: Optional[str]

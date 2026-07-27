@@ -26,7 +26,7 @@ class CheckedPathCarrierException(PathException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a CheckedPathCarrier encountered an error.
+        1.  Indicating a CheckedPathCarrier encountered an error.
 
     Attributes:
         msg: Optional[str]

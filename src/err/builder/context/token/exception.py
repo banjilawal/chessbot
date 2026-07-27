@@ -26,7 +26,7 @@ class TokenContextBuilderException(ContextBuilderException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a TokenContextBuilder failed.
+        1.  Indicating a TokenContextBuilder failed.
 
    Builder failed.s:
             msg: Optional[str]

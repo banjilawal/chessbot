@@ -28,7 +28,7 @@ class NodeContextAssemblyException(ContextAssemblyException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a NodeContext assembly failed.
+        1.  Indicating a NodeContext assembly failed.
 
     Assembly Failed.s:
             msg: Optional[str]

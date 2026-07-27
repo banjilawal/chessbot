@@ -26,7 +26,7 @@ class QuadrantLineSegmentSizeException(LineSegmentSizeException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an Quadrant has an size segment field.
+        1.  Indicating an Quadrant has an size segment field.
 
     Attributes:
         msg: Optional[str]

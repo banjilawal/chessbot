@@ -26,7 +26,7 @@ class HomeSquareSearchResultEmptyException(SearchResultEmptyException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a HomeSquareDetector did not find the required item.
+        1.  Indicating a HomeSquareDetector did not find the required item.
 
     Attributes:
             msg: Optional[str]

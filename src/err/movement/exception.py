@@ -26,7 +26,7 @@ class MovementPatternException(ChessException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an error occurred in a MovementPattern instance.
+        1.  Indicating an error occurred in a MovementPattern instance.
 
     Attributes:
         msg: Optional[str]

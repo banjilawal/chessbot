@@ -28,7 +28,7 @@ class RankBinderAssemblyException(BinderAssemblyException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a RankBinder assembly failed.
+        1.  Indicating a RankBinder assembly failed.
 
     Assembly Failed.s:
             msg: Optional[str]

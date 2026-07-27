@@ -24,7 +24,7 @@ class NewServiceRegistrationException(NewRegistrationException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that adding a new operation to the ServiceRegistry failed.
+        1.  Indicating adding a new operation to the ServiceRegistry failed.
 
     Attributes:
         msg: Optional[str]

@@ -28,7 +28,7 @@ class NodeContextBuilderException(ContextBuilderException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a NodeContext build failed.
+        1.  Indicating a NodeContext build failed.
 
     Build Failed.s:
             msg: Optional[str]

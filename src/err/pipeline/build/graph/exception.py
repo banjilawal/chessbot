@@ -24,7 +24,7 @@ class GraphBuildPipelineException(BuildPipelineException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an error occurred in a GraphBuildPipeline.
+        1.  Indicating an error occurred in a GraphBuildPipeline.
 
     Attributes:
         msg: Optional[str]

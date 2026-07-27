@@ -28,7 +28,7 @@ class FinalizeSquareContextBuilderException(FinalizeContextBuilderException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that finalizing a SquareContextBuild failed.
+        1.  Indicating that finalizing a SquareContextBuild failed.
 
     Attributes:
             msg: Optional[str]

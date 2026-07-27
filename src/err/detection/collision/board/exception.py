@@ -26,7 +26,7 @@ class BoardCollisionDetectorException(CollisionDetectorException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a BoardCollision step failed.
+        1.  Indicating a BoardCollision step failed.
 
     Attributes:
         msg: Optional[str]

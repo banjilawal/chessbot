@@ -26,7 +26,7 @@ class TupleSizeException(ContainerSizeException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required Tupleis the wrong size.
+        1.  Indicating a required Tupleis the wrong size.
 
     Attributes:
         msg: Optional[str]

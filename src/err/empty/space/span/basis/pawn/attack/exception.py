@@ -26,7 +26,7 @@ class AttackBasisEmptyException(PawnBasisEmptyException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required AttackBasisSet is empty.
+        1.  Indicating a required AttackBasisSet is empty.
 
     Attributes:
         msg: Optional[str]

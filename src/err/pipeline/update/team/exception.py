@@ -24,7 +24,7 @@ class TeamUpdatePipelineException(UpdatePipelineException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an error occurred in a TeamUpdatePipeline.
+        1.  Indicating an error occurred in a TeamUpdatePipeline.
 
     Attributes:
         msg: Optional[str]

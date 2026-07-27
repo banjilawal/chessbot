@@ -26,7 +26,7 @@ class DeletePermitterException(PermitterException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a DeletePermitter did not approve the request.
+        1.  Indicating a DeletePermitter did not approve the request.
 
     Attributes:
         msg: Optional[str]

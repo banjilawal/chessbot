@@ -26,7 +26,7 @@ class SquareConsistencyCheckerNullException(ConsistencyCheckerNullException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required SquareConsistencyChecker is null.
+        1.  Indicating a required SquareConsistencyChecker is null.
 
     Attributes:
         msg: Optional[str]

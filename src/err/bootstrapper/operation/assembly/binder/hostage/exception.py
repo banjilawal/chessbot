@@ -28,7 +28,7 @@ class HostageBinderAssemblyException(BinderAssemblyException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a HostageBinder assembly failed.
+        1.  Indicating a HostageBinder assembly failed.
 
     Assembly Failed.s:
             msg: Optional[str]

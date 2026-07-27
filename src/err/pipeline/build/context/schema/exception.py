@@ -24,7 +24,7 @@ class SchemaContextBuildPipelineException(ContextBuildPipelineException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an error occurred in an SchemaContextBuildPipeline.
+        1.  Indicating an error occurred in an SchemaContextBuildPipeline.
 
     Attributes:
         msg: Optional[str]

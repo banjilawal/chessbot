@@ -26,7 +26,7 @@ class CombatantPathSearcherException(PathSearcherException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an CombatantPathSearcher from
+        1.  Indicating an CombatantPathSearcher from
             completing its task.
 
     Attributes:

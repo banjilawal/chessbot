@@ -24,7 +24,7 @@ class VisitpingEmptyGraphStackException(VisitpingEmptyStackException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that visitpingEmpty a GraphStack failed.
+        1.  Indicating that visitpingEmpty a GraphStack failed.
 
     Attributes:
         msg: Optional[str]

@@ -24,7 +24,7 @@ class VisitpingStackException(SquareVisitException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that visitping a Stack failed.
+        1.  Indicating that visitping a Stack failed.
 
     Attributes:
         msg: Optional[str]

@@ -24,7 +24,7 @@ class EmptySnapshotStackDeletionException(EmptyStackDeletionException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that poppingEmpty a SnapshotStack failed.
+        1.  Indicating that poppingEmpty a SnapshotStack failed.
 
     Attributes:
         msg: Optional[str]

@@ -26,7 +26,7 @@ class SouthwestQuadrantRecurrenceBlueprintNullException(QuadrantRecurrenceBluepr
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required SouthwestQuadrantRecurrenceBlueprint is null.
+        1.  Indicating a required SouthwestQuadrantRecurrenceBlueprint is null.
 
     Attributes:
         msg: Optional[str]

@@ -26,7 +26,7 @@ class TokenColliderException(ColliderException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate a token hit the collision attractor.
+        1.  Indicating a token hit the collision attractor.
 
     Attributes:
         msg: Optional[str]

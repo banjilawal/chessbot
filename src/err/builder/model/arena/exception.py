@@ -26,7 +26,7 @@ class ArenaBuilderException(ModelBuilderException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an ArenaBuilder failed.
+        1.  Indicating an ArenaBuilder failed.
 
     Attributes:
         msg: Optional[str]

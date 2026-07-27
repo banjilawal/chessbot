@@ -26,7 +26,7 @@ class GameSearcherException(SearcherException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a GameSearcher from
+        1.  Indicating a GameSearcher from
             completing its task.
 
     Attributes:

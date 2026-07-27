@@ -26,7 +26,7 @@ class SquareNullException(StateModelNullException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required Square is null.
+        1.  Indicating a required Square is null.
 
     Attributes:
         msg: Optional[str]

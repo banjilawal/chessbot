@@ -26,7 +26,7 @@ class WestAxisRootCertifierException(AxisRootCertifierException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a candidate failed an WestAxisSRootCertifier test.
+        1.  Indicating a candidate failed an WestAxisSRootCertifier test.
 
     Attributes:
             msg: Optional[str]

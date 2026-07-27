@@ -24,7 +24,7 @@ class HostageStackRegistrationException(StackRegistrationException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that registrationing onto a HostageStack failed.
+        1.  Indicating that registrationing onto a HostageStack failed.
 
     Attributes:
         msg: Optional[str]

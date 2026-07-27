@@ -26,7 +26,7 @@ class OpeningManeuverOffsetPatternException(ManeuverOffsetPatternException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an error occurred in an OpeningManeuverOffsetPattern instance.
+        1.  Indicating an error occurred in an OpeningManeuverOffsetPattern instance.
 
     Attributes:
         msg: Optional[str]

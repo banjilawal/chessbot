@@ -26,7 +26,7 @@ class SquarePushPermitterException(PusherPermitterException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a SquarePushPermitter did not approve the request.
+        1.  Indicating a SquarePushPermitter did not approve the request.
 
     Attributes:
         msg: Optional[str]

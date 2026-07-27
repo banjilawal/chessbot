@@ -26,7 +26,7 @@ class PrimingPlayerAssemblyException(AssemblyPrimerException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a PlayerAssembly priming step failed.
+        1.  Indicating a PlayerAssembly priming step failed.
 
     Attributes:
         msg: Optional[str]

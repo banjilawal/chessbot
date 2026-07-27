@@ -23,7 +23,7 @@ class PoppingEmptyEdgeStackException(EdgeDebugException):
     Role:Debug, Error Tracing
 
     Responsibilities:
-    1.  Indicate that an attempt to remove a item failed because the schema was empty
+    1.  Indicating an attempt to remove a item failed because the schema was empty
 
     Super Class:
         *   EdgeException

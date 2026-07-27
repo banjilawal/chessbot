@@ -26,7 +26,7 @@ class KingPathMicroserviceException(PathMicroserviceException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a candidate did not pass a KingPathMicroservice failed.
+        1.  Indicating a candidate did not pass a KingPathMicroservice failed.
 
     Attributes:
             msg: Optional[str]

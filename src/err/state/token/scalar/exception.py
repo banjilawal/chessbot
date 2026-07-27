@@ -25,7 +25,7 @@ class ScalarTokenStateException(TokenStateException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a Scalar tokenfailed.
+        1.  Indicating a Scalar tokenfailed.
 
     Attributes:
         msg: Optional[str]

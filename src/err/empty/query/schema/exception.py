@@ -27,7 +27,7 @@ class SchemaQueryStackEmptyException(QueryStackEmptyException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required SchemaQuery's target stack is empty.
+        1.  Indicating a required SchemaQuery's target stack is empty.
 
     Attributes:
             msg: Optional[str]

@@ -26,7 +26,7 @@ class ManeuverRequestTesterException(RequestTesterException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a ManeuverRequestTester failed.
+        1.  Indicating a ManeuverRequestTester failed.
 
     Cannot Be Tester.s:
             msg: Optional[str]

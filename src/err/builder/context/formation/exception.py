@@ -26,7 +26,7 @@ class FormationContextBuilderException(ContextBuilderException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a FormationContextBuilder failed.
+        1.  Indicating a FormationContextBuilder failed.
 
    Builder failed.s:
             msg: Optional[str]

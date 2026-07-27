@@ -26,7 +26,7 @@ class RegistryEntryKeyStringMicroserviceException(MicroserviceException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a candidate did not pass a RegistryEntry key failed a String microservice check.
+        1.  Indicating a candidate did not pass a RegistryEntry key failed a String microservice check.
 
     Attributes:
         msg: Optional[str]

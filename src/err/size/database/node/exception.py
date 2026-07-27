@@ -24,7 +24,7 @@ class NodeDatabaseSizeException(DatabaseSizeException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required NodeDatabaseis the wrong size.
+        1.  Indicating a required NodeDatabaseis the wrong size.
 
     Attributes:
         msg: Optional[str]

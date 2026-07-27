@@ -24,7 +24,7 @@ class GraphUpdatePipelineException(UpdatePipelineException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an error occurred in a GraphUpdatePipeline.
+        1.  Indicating an error occurred in a GraphUpdatePipeline.
 
     Attributes:
         msg: Optional[str]

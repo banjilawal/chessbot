@@ -26,7 +26,7 @@ class DevelopedAttackOffsetPatternValidatorException(AttackOffsetPatternValidato
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an error occurred in an DevelopedAttackOffsetPatternValidator failed.
+        1.  Indicate an error occurred in an DevelopedAttackOffsetPatternValidator failed.
 
     Attributes:
         msg: Optional[str]

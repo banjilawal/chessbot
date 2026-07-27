@@ -27,7 +27,7 @@ class BidirectionalRelationException(ChessException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an error related to bidirectional relation  occurred.
+        1.  Indicating an error related to bidirectional relation  occurred.
 
     Attributes:
         msg: Optional[str]

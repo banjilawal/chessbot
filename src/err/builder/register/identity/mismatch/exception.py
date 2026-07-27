@@ -27,7 +27,7 @@ class VectorIdentityRegisterMismatchException(VectorIdentityRegisterBuilderExcep
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a VectorIdentityRegister's a-b slots contain different types.
+        1.  Indicating a VectorIdentityRegister's a-b slots contain different types.
 
     Attributes:
             msg: Optional[str]

@@ -26,7 +26,7 @@ class SouthQuadrantRecurrenceCarrierNullException(QuadrantRecurrenceCarrierNullE
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required SouthQuadrantRecurrenceCarrier is null.
+        1.  Indicating a required SouthQuadrantRecurrenceCarrier is null.
 
     Attributes:
         msg: Optional[str]

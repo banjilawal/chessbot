@@ -26,7 +26,7 @@ class SquareRegisterConsistencyCheckerException(RegisterException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a SquareRegisterConsistencyChecker raised an error.
+        1.  Indicating a SquareRegisterConsistencyChecker raised an error.
 
     Attributes:
         msg: Optional[str]

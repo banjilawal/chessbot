@@ -24,7 +24,7 @@ class FinalizePersonaContextBuilderException(FinalizeContextBuilderException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that finalizing a PersonaContextBuild failed.
+        1.  Indicating that finalizing a PersonaContextBuild failed.
 
     Attributes:
             msg: Optional[str]

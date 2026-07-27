@@ -26,7 +26,7 @@ class RegisterConsistencyCheckerException(ConsistencyCheckerException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a RegisterConsistencyChecker raised an error.
+        1.  Indicating a RegisterConsistencyChecker raised an error.
 
     Attributes:
         msg: Optional[str]

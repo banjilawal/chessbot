@@ -28,7 +28,7 @@ class BootstrapRankContextAssemblyException(BootstrapContextAssemblyException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a RankContextAssembly bootstrap step failed.
+        1.  Indicating a RankContextAssembly bootstrap step failed.
 
     Attributes:
             msg: Optional[str]

@@ -24,7 +24,7 @@ class PlayerStackRegistrationException(StackRegistrationException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that registrationing onto a PlayerStack failed.
+        1.  Indicating that registrationing onto a PlayerStack failed.
 
     Attributes:
         msg: Optional[str]

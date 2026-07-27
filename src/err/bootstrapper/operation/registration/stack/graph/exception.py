@@ -24,7 +24,7 @@ class GraphStackRegistrationException(StackRegistrationException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that registrationing onto a GraphStack failed.
+        1.  Indicating that registrationing onto a GraphStack failed.
 
     Attributes:
         msg: Optional[str]

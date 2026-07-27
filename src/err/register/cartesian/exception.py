@@ -26,7 +26,7 @@ class VectorToggleRegisterException(RegisterException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a VectorToggleRegister encountered an error.
+        1.  Indicating a VectorToggleRegister encountered an error.
 
     Attributes:
         msg: Optional[str]

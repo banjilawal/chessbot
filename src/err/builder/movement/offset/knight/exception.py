@@ -26,7 +26,7 @@ class KnightOffsetPatternBuilderException(OffsetPatternBuilderException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required KnightOffsetPatternBuilder failed.
+        1.  Indicating a required KnightOffsetPatternBuilder failed.
 
     Attributes:
         msg: Optional[str]

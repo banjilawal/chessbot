@@ -26,7 +26,7 @@ class DuplicateTokenDeploymentException(TokenDeploymentException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a token that a token is trying to deploy to its opening square again.
+        1.  Indicating a token that a token is trying to deploy to its opening square again.
 
     Attributes:
         msg: Optional[str]

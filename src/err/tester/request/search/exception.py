@@ -26,7 +26,7 @@ class SearchRequestTesterException(RequestTesterException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a SearchRequestTester failed.
+        1.  Indicating a SearchRequestTester failed.
 
     Cannot Be Tester.s:
             msg: Optional[str]

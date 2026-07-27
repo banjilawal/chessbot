@@ -26,7 +26,7 @@ class SquareConsistencyCheckerException(ConsistencyCheckerException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a SquareConsistencyChecker raised an error.
+        1.  Indicating a SquareConsistencyChecker raised an error.
 
     Attributes:
         msg: Optional[str]

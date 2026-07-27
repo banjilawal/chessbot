@@ -24,7 +24,7 @@ class GameDatabaseEmptyException(DatabaseEmptyException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required GameDatabase is empty.
+        1.  Indicating a required GameDatabase is empty.
 
     Attributes:
         msg: Optional[str]

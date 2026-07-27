@@ -24,7 +24,7 @@ class Push pingPlayerStackException(Push pingStackException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that push ping a PlayerStack failed.
+        1.  Indicating that push ping a PlayerStack failed.
 
     Attributes:
         msg: Optional[str]

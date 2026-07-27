@@ -25,7 +25,7 @@ class HumanPlayerRegisterCarrierException(PlayerException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a HumanPlayerRegisterCarrier encountered an error.
+        1.  Indicating a HumanPlayerRegisterCarrier encountered an error.
 
     Attributes:
         msg: Optional[str]

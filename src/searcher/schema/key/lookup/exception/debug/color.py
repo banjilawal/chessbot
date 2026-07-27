@@ -23,7 +23,7 @@ class SchemaColorBoundsException(SchemaException, BoundsException):
     Role:Error Tracing, Debugging
 
     Responsibilities:
-    1.  Indicate that a Schema lookup failed because the color value was not permitted for the Schema attribute.
+    1.  Indicate a Schema lookup failed because the color value was not permitted for the Schema attribute.
     
     Super Class:
         *   BoundsException

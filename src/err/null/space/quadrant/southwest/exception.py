@@ -25,7 +25,7 @@ class SouthwestQuadrantNullException(QuadrantNullException):
         -   Failure Tracing
 
     Responsibilities:
-        1.  Indicate that a required SouthwestQuadrant Is Null.
+        1.  Indicating a required SouthwestQuadrant Is Null.
 
     Attributes:
         msg: str

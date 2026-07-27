@@ -26,7 +26,7 @@ class WestQuadrantRecurrenceBlueprintNullException(QuadrantRecurrenceBlueprintNu
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required WestQuadrantRecurrenceBlueprint is null.
+        1.  Indicating a required WestQuadrantRecurrenceBlueprint is null.
 
     Attributes:
         msg: Optional[str]

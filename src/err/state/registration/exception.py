@@ -26,7 +26,7 @@ class RegistrationException(StateException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a registration statefailed.
+        1.  Indicating a registration statefailed.
 
     Attributes:
         msg: Optional[str]

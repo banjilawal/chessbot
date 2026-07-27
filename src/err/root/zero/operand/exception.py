@@ -24,7 +24,7 @@ class ZeroVectorToggleFlagsException(ZeroBlueprintFlagsException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicates that no VectorToggle option was enabled.
+        1.  Indicatings that no VectorToggle option was enabled.
 
     Attributes:
         msg: Optional[str]

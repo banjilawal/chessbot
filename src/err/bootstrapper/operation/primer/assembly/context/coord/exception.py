@@ -24,7 +24,7 @@ class PrimingCoordContextAssemblyException(PrimingContextAssemblyException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a CoordContextAssembly priming step failed.
+        1.  Indicating a CoordContextAssembly priming step failed.
 
     Attributes:
             msg: Optional[str]

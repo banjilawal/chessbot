@@ -26,7 +26,7 @@ class OpeningManeuverOffsetPatternBuilderException(ManeuverOffsetPatternBuilderE
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an error occurred in an OpeningManeuverOffsetPatternBuilder failed.
+        1.  Indicating an error occurred in an OpeningManeuverOffsetPatternBuilder failed.
 
     Attributes:
         msg: Optional[str]

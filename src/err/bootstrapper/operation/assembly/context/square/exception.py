@@ -28,7 +28,7 @@ class SquareContextAssemblyException(ContextAssemblyException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a SquareContext assembly failed.
+        1.  Indicating a SquareContext assembly failed.
 
     Assembly Failed.s:
             msg: Optional[str]

@@ -26,7 +26,7 @@ class MovementPatternBlueprintNullException(BlueprintNullException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required MovementPatternBlueprint is null.
+        1.  Indicating a required MovementPatternBlueprint is null.
 
     Attributes:
         msg: Optional[str]

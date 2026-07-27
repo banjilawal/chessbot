@@ -21,7 +21,7 @@ class AboveBoundsException(BoundsException):
     Role:Error Tracing, Debugging
 
     Responsibilities:
-    1.  Indicate that a value is above bounds.
+    1.  Indicating a value is above bounds.
 
     Super Class:
         *   BoundsException

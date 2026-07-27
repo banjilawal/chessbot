@@ -24,7 +24,7 @@ class TokenInsertionPipelineException(InsertionPipelineException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an error occurred in a TokenInsertionPipeline.
+        1.  Indicating an error occurred in a TokenInsertionPipeline.
 
     Attributes:
         msg: Optional[str]

@@ -26,7 +26,7 @@ class KingPathSearchResultEmptyException(PathSearchResultEmptyException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an KingPathSearcher did not find the required item.
+        1.  Indicating an KingPathSearcher did not find the required item.
 
     Attributes:
             msg: Optional[str]

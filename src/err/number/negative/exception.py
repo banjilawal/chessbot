@@ -25,7 +25,7 @@ class NegativeNumberException(NumberException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a number is negative.
+        1.  Indicating a number is negative.
 
     Attributes:
         msg: Optional[str]

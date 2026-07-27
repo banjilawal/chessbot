@@ -26,7 +26,7 @@ class BinderEmptyException(ModelEmptyException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required Binder is empty.
+        1.  Indicating a required Binder is empty.
 
     Attributes:
         msg: Optional[str]

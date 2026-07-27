@@ -26,7 +26,7 @@ class ScalarConsistencyCheckerNullException(ConsistencyCheckerNullException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required ScalarConsistencyChecker is null.
+        1.  Indicating a required ScalarConsistencyChecker is null.
 
     Attributes:
         msg: Optional[str]

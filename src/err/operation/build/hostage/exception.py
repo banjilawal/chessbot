@@ -25,7 +25,7 @@ class HostageBuilderException(BuilderException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a Hostage build failed.
+        1.  Indicating a Hostage build failed.
 
     Attributes:
         msg: Optional[str]

@@ -24,7 +24,7 @@ class BoardUpdatePipelineException(UpdatePipelineException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an error occurred in a BoardUpdatePipeline.
+        1.  Indicating an error occurred in a BoardUpdatePipeline.
 
     Attributes:
         msg: Optional[str]

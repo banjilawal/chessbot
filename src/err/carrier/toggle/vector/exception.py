@@ -26,7 +26,7 @@ class VectortoggleCarrierException(toggleCarrierException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate a VectortoggleCarrier encountered an error.
+        1.  Indicating a VectortoggleCarrier encountered an error.
 
     Attributes:
         msg: Optional[str]

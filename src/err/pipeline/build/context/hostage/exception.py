@@ -24,7 +24,7 @@ class HostageContextBuildPipelineException(ContextBuildPipelineException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an error occurred in an HostageContextBuildPipeline.
+        1.  Indicating an error occurred in an HostageContextBuildPipeline.
 
     Attributes:
         msg: Optional[str]

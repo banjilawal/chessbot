@@ -28,7 +28,7 @@ class SchemaBinderTokenOperationBootstrapperException(BinderTokenOperationBootst
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a SchemaBinder tokenfailed.
+        1.  Indicating a SchemaBinder tokenfailed.
 
     TokenFailed.s:
             msg: Optional[str]

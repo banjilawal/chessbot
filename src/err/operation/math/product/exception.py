@@ -26,7 +26,7 @@ class ScalarProductException(VectorOperationException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an error occurred during scalar multiplication.
+        1.  Indicating an error occurred during scalar multiplication.
 
     Attributes:
         msg: Optional[str]

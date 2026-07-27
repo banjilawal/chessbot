@@ -26,7 +26,7 @@ class RegistrationException(OperationBootstrapperException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a registration operation failed.
+        1.  Indicating a registration operation failed.
 
     Attributes:
         msg: Optional[str]

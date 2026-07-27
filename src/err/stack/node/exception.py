@@ -27,7 +27,7 @@ class NodeStackServiceException(StackServiceException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a NodeStackService encountered an error.
+        1.  Indicating a NodeStackService encountered an error.
 
     Attributes:
         msg: Optional[str]

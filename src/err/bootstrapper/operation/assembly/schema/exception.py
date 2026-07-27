@@ -25,7 +25,7 @@ class SchemaAssemblyException(AssemblyException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a Schema assembly failed.
+        1.  Indicating a Schema assembly failed.
 
     Attributes:
         msg: Optional[str]

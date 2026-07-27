@@ -26,7 +26,7 @@ class ScalarCarrierException(ModelCarrierException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a ScalarCarrier encountered an error.
+        1.  Indicating a ScalarCarrier encountered an error.
 
     Attributes:
         msg: Optional[str]

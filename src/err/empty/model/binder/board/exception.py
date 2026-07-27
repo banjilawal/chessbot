@@ -22,7 +22,7 @@ class BoardTeamBinderEmptyException(BinderEmptyException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required BoardTeamBinder is empty.
+        1.  Indicating a required BoardTeamBinder is empty.
 
     Attributes:
             msg: Optional[str]

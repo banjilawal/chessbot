@@ -26,7 +26,7 @@ class NodeStackFullException(StackFullException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a NodeStack is full.
+        1.  Indicating a NodeStack is full.
 
     Attributes:
         msg: Optional[str]

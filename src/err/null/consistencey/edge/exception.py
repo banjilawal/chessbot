@@ -26,7 +26,7 @@ class EdgeConsistencyCheckerNullException(ConsistencyCheckerNullException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required EdgeConsistencyChecker is null.
+        1.  Indicating a required EdgeConsistencyChecker is null.
 
     Attributes:
         msg: Optional[str]

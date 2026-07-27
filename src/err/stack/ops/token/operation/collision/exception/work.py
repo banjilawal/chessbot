@@ -26,7 +26,7 @@ class TokenCollisionDetectionException(RelationAnalysisException):
         -   Exception Messaging
 
     Responsibilities:
-        1.  Indicate that the TokenCollisionAnalyst encountered an error. It did not run the collision tests.
+        1.  Indicating that the TokenCollisionAnalyst encountered an error. It did not run the collision tests.
 
     Super:
         TokenDebugException

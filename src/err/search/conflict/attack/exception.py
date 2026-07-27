@@ -26,7 +26,7 @@ class AttackSearchHitConflictException(SearchHitConflictException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a AttackSearcher returned multiple hits for an item which should be unique.
+        1.  Indicating a AttackSearcher returned multiple hits for an item which should be unique.
 
     Attributes:
             msg: Optional[str]

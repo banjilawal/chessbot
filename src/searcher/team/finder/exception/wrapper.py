@@ -24,7 +24,7 @@ class TeamSearchException(SearchException):
     Role:Worker Method Identification, Exception Chain Layer 1, Exception Messaging
 
     Responsibilities:
-    1.  Indicate that a team search was not completed, it returned an error instead of a
+    1.  Indicate a team search was not completed, it returned an error instead of a
         work product. 
     2.  Trace the method calls.
 

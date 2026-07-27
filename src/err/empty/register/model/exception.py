@@ -26,7 +26,7 @@ class ModelRegisterEmptyException(RegisterEmptyException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required ModelRegister is empty.
+        1.  Indicating a required ModelRegister is empty.
 
     Attributes:
         msg: Optional[str]

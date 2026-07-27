@@ -24,7 +24,7 @@ class ArenaInsertionPipelineException(InsertionPipelineException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an error occurred in a ArenaInsertionPipeline.
+        1.  Indicating an error occurred in a ArenaInsertionPipeline.
 
     Attributes:
         msg: Optional[str]

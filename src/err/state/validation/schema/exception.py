@@ -24,7 +24,7 @@ class SchemaValidatorException(ValidatorException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a SchemaValidation check failed.
+        1.  Indicating a SchemaValidation check failed.
 
     Attributes:
         msg: Optional[str]

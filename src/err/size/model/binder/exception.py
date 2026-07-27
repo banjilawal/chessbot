@@ -26,7 +26,7 @@ class BinderSizeException(ModelSizeException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required Binderis the wrong size.
+        1.  Indicating a required Binderis the wrong size.
 
     Attributes:
         msg: Optional[str]

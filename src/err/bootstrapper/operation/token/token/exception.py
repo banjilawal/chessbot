@@ -25,7 +25,7 @@ class TokenTokenOperationBootstrapperException(TokenOperationBootstrapperExcepti
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate a Token tokenfailed.
+        1.  Indicating a Token tokenfailed.
 
     Attributes:
         msg: Optional[str]

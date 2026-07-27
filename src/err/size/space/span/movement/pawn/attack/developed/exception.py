@@ -26,7 +26,7 @@ class DevelopedAttackMovementSetSizeException(AttackMovementSetSizeException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required DevelopedAttackMovementSetis the wrong size.
+        1.  Indicating a required DevelopedAttackMovementSetis the wrong size.
 
     Attributes:
         msg: Optional[str]

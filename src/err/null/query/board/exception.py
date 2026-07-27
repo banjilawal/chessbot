@@ -27,7 +27,7 @@ class BoardQueryNullException(QueryNullException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required BoardQuery is null.
+        1.  Indicating a required BoardQuery is null.
 
     Attributes:
             msg: Optional[str]

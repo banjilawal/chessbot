@@ -24,7 +24,7 @@ class BoardDeletionPipelineException(DeletionPipelineException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an error occurred in a BoardDeletionPipeline.
+        1.  Indicating an error occurred in a BoardDeletionPipeline.
 
     Attributes:
         msg: Optional[str]

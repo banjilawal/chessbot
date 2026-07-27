@@ -25,7 +25,7 @@ class DuplicateHostagePushException(DuplicateItemException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that pushing a duplicate item onto the HostageStack failed.
+        1.  Indicating that pushing a duplicate item onto the HostageStack failed.
 
     Attributes:
         msg: Optional[str]

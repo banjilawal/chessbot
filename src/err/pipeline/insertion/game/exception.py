@@ -24,7 +24,7 @@ class GameInsertionPipelineException(InsertionPipelineException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an error occurred in a GameInsertionPipeline.
+        1.  Indicating an error occurred in a GameInsertionPipeline.
 
     Attributes:
         msg: Optional[str]

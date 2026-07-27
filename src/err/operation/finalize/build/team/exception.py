@@ -25,7 +25,7 @@ class FinalizeTeamBuilderException(FinalizeBuilderException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that finalizing a TeamBuild failed.
+        1.  Indicating that finalizing a TeamBuild failed.
 
     Attributes:
             msg: Optional[str]

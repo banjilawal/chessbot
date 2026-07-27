@@ -27,7 +27,7 @@ class EdgeQueryNullException(QueryNullException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required EdgeQuery is null.
+        1.  Indicating a required EdgeQuery is null.
 
     Attributes:
             msg: Optional[str]

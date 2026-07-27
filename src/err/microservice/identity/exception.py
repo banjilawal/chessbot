@@ -26,7 +26,7 @@ class IdentityServiceException(MicroserviceException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an IdentityMicroservice failed.
+        1.  Indicating an IdentityMicroservice failed.
 
     Attributes:
         msg: Optional[str]

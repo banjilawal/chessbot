@@ -26,7 +26,7 @@ class RankSearcherException(SearcherException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a RankSearcher from
+        1.  Indicating a RankSearcher from
             completing its task.
 
     Attributes:

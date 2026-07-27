@@ -26,7 +26,7 @@ class LinearTargetSetSizeException(TargetVectorSetSizeException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required LinearTargetSetis the wrong size.
+        1.  Indicating a required LinearTargetSetis the wrong size.
 
     Attributes:
         msg: Optional[str]

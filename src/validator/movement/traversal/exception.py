@@ -26,7 +26,7 @@ class TraversalPatternValidatorException(MovementPatternValidatorException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required TraversalPatternValidator failed.
+        1.  Indicate a required TraversalPatternValidator failed.
 
     Attributes:
         msg: Optional[str]

@@ -26,7 +26,7 @@ class BinderModelNullException(ModelNullException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required Binder wass.
+        1.  Indicating a required Binder wass.
 
     Attributes:
             msg: Optional[str]

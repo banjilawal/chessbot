@@ -25,7 +25,7 @@ class PlayerTokenOperationBootstrapperException(TokenOperationBootstrapperExcept
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a Player tokenfailed.
+        1.  Indicating a Player tokenfailed.
 
     Attributes:
         msg: Optional[str]

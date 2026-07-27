@@ -24,7 +24,7 @@ class FinalizationException(OperationException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that finalizing a finalization step failed.
+        1.  Indicating that finalizing a finalization step failed.
 
     Attributes:
         msg: Optional[str]

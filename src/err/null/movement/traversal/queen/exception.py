@@ -26,7 +26,7 @@ class QueenTraversalPatternNullException(TraversalPatternNullException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required QueenTraversalPattern is null.
+        1.  Indicating a required QueenTraversalPattern is null.
 
     Attributes:
         msg: Optional[str]

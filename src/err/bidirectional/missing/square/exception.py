@@ -26,7 +26,7 @@ class MissingRegistrationWithSquareException(MissingRegistrationException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a satellite has not registered its association with its Square.
+        1.  Indicating a satellite has not registered its association with its Square.
 
     Attributes:
             msg: Optional[str]

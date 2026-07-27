@@ -26,7 +26,7 @@ class RookTraversalPatternValidatorException(TraversalPatternValidatorException)
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required RookTraversalPatternValidator failed.
+        1.  Indicate a required RookTraversalPatternValidator failed.
 
     Attributes:
         msg: Optional[str]

@@ -26,7 +26,7 @@ class ManeuverException(OperationBootstrapperException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a maneuver failed.
+        1.  Indicating a maneuver failed.
 
     Attributes:
         msg: Optional[str]

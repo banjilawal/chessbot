@@ -24,7 +24,7 @@ class EdgeStackNullException(StackNullException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required EdgeStack is null.
+        1.  Indicating a required EdgeStack is null.
 
     Attributes:
         msg: Optional[str]

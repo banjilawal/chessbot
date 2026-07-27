@@ -24,7 +24,7 @@ class ArenaContextValidationPipelineException(ContextValidationPipelineException
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an error occurred in an ArenaContextValidationPipeline.
+        1.  Indicating an error occurred in an ArenaContextValidationPipeline.
 
     Attributes:
         msg: Optional[str]

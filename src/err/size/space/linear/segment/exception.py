@@ -26,7 +26,7 @@ class LineSegmentSizeException(LinearSpaceSizeException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required LineSegment's endpoints are size.
+        1.  Indicating a required LineSegment's endpoints are size.
 
     Attributes:
         msg: Optional[str]

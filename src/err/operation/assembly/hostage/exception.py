@@ -25,7 +25,7 @@ class HostageAssemblyException(AssemblyException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a Hostage assembly failed.
+        1.  Indicating a Hostage assembly failed.
 
     Attributes:
         msg: Optional[str]

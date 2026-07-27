@@ -28,7 +28,7 @@ class CoordContextCollisionException(ContextColliderException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a CoordContextCollision step failed.
+        1.  Indicating a CoordContextCollision step failed.
 
     Attributes:
             msg: Optional[str]

@@ -26,7 +26,7 @@ class TeamCarrierException(ModelCarrierException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a TeamCarrier encountered an error.
+        1.  Indicating a TeamCarrier encountered an error.
 
     Attributes:
             msg: Optional[str]

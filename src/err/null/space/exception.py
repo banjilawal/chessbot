@@ -25,7 +25,7 @@ class SpaceNullException(NullException):
         -   Failure Tracing
 
     Responsibilities:
-        1.  Indicate that a required Space is null.
+        1.  Indicating a required Space is null.
 
     Attributes:
         msg: str

@@ -26,7 +26,7 @@ class ManeuverBasisEmptyException(PawnBasisEmptyException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required ManeuverBasisSet is empty.
+        1.  Indicating a required ManeuverBasisSet is empty.
 
     Attributes:
         msg: Optional[str]

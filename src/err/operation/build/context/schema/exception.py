@@ -28,7 +28,7 @@ class SchemaContextBuilderException(ContextBuilderException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a SchemaContext build failed.
+        1.  Indicating a SchemaContext build failed.
 
     Build Failed.s:
             msg: Optional[str]

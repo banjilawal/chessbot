@@ -26,7 +26,7 @@ class QueryException(ChessException):
         -   Error Tracing
     
     Responsibilities:
-        1.  Indicate that a query encountered an error.
+        1.  Indicating a query encountered an error.
         
     Attributes:
         msg: Optional[str]

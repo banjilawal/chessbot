@@ -26,7 +26,7 @@ class RankSlotRequestNullException(RequestNullException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required RankSlotRequest was null.
+        1.  Indicating a required RankSlotRequest was null.
 
     Attributes:
         msg: Optional[str]

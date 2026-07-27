@@ -24,7 +24,7 @@ class FinalizeEdgeContextBuilderException(FinalizeContextBuilderException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that finalizing a EdgeContextBuild failed.
+        1.  Indicating that finalizing a EdgeContextBuild failed.
 
     Attributes:
         msg: Optional[str]

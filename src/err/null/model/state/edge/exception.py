@@ -26,7 +26,7 @@ class EdgeNullException(StateModelNullException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required Edge is null.
+        1.  Indicating a required Edge is null.
 
     Attributes:
         msg: Optional[str]

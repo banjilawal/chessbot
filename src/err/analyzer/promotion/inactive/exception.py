@@ -26,7 +26,7 @@ class PromoteInactivePawnException(AnalyzerException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an attempt was made to promote an inactive pawn.
+        1.  Indicating an attempt was made to promote an inactive pawn.
 
     Attributes:
         var: Optional[str]

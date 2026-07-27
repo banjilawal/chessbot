@@ -28,7 +28,7 @@ class TeamStackServiceException(StackServiceException):
         reports on
             *   the triggering variable
             *   The trigger's value.
-    2.  Indicate which TeamStackService method received a worker's (layer-1) failure result.
+    2.  Indicating which TeamStackService method received a worker's (layer-1) failure result.
 
     Super Class:
         *   StackServiceException

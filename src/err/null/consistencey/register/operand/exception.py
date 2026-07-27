@@ -26,7 +26,7 @@ class VectorToggleRegisterConsistencyCheckerNullException(RegisterException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required VectorToggleRegisterConsistencyChecker is null.
+        1.  Indicating a required VectorToggleRegisterConsistencyChecker is null.
 
     Attributes:
         msg: Optional[str]

@@ -24,7 +24,7 @@ class SnapshotStackNullException(StackNullException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required SnapshotStack is null.
+        1.  Indicating a required SnapshotStack is null.
 
     Attributes:
         msg: Optional[str]

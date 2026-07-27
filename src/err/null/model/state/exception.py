@@ -26,7 +26,7 @@ class StateModelNullException(ModelNullException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required StateModel is null.
+        1.  Indicating a required StateModel is null.
 
     Attributes:
             msg: Optional[str]

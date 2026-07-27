@@ -26,7 +26,7 @@ class MovementPatternValidatorException(ValidatorException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required MovementPatternValidator failed.
+        1.  Indicate a required MovementPatternValidator failed.
 
     Attributes:
         msg: Optional[str]

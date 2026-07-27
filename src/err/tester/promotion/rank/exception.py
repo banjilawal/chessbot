@@ -27,7 +27,7 @@ class PromotionLevelTesterException(TesterException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a PromotionLevelTester encountered an error.
+        1.  Indicating a PromotionLevelTester encountered an error.
 
     Cannot Be Tester.s:
             msg: Optional[str]

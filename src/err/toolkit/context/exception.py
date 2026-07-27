@@ -25,7 +25,7 @@ class ContextException(ToolkitException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a ContextNull failed.
+        1.  Indicating a ContextNull failed.
 
     Attributes:
             msg: Optional[str]

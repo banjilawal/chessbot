@@ -26,7 +26,7 @@ class RegisterSetBuilderException(ContainerBuilderException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a RegisterSetBuilderExceptio failed.
+        1.  Indicating a RegisterSetBuilderExceptio failed.
 
    Builder failed.s:
             msg: Optional[str]

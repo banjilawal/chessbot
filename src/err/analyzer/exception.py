@@ -25,7 +25,7 @@ class AnalyzerException(ChessException):
         -   Failure Tracing
 
     Responsibilities:
-        1.  Indicate that a analyzer from completing the task.
+        1.  Indicating a analyzer from completing the task.
 
     Attributes:
         msg: str

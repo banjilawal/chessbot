@@ -26,7 +26,7 @@ class ManeuverRequestNullException(RequestNullException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required ManeuverRequest was null.
+        1.  Indicating a required ManeuverRequest was null.
 
     Attributes:
         msg: Optional[str]

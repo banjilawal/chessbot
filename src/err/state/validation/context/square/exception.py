@@ -27,7 +27,7 @@ class SquareContextValidatorException(ContextValidatorException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a SquareContextValidation check failed.
+        1.  Indicating a SquareContextValidation check failed.
 
     Attributes:
             msg: Optional[str]

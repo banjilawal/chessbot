@@ -28,7 +28,7 @@ class EdgeContextAssemblyException(ContextAssemblyException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a EdgeContext assembly failed.
+        1.  Indicating a EdgeContext assembly failed.
 
     Assembly Failed.s:
             msg: Optional[str]

@@ -24,7 +24,7 @@ class TokenIdCollisionException(IdCollisionDetectorException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a token is already using the id.
+        1.  Indicating a token is already using the id.
 
     Attributes:
         msg: Optional[str]

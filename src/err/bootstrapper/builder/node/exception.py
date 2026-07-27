@@ -25,7 +25,7 @@ class NodeBuilderBootstrapperException(BuilderBootstrapperException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a NodeBuilderBootstrapper was aborted by an exception.
+        1.  Indicating a NodeBuilderBootstrapper was aborted by an exception.
 
     Attributes:
         msg: Optional[str]

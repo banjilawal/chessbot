@@ -26,7 +26,7 @@ class KnightOffsetPatternCarrierException(OffsetPatternCarrierException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a KnightOffsetPatternCarrier experienced an error.
+        1.  Indicating a KnightOffsetPatternCarrier experienced an error.
 
     Attributes:
         msg: Optional[str]

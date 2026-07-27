@@ -28,7 +28,7 @@ class ArenaContextBuilderException(ContextBuilderException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a ArenaContext build failed.
+        1.  Indicating a ArenaContext build failed.
 
     Build Failed.s:
             msg: Optional[str]

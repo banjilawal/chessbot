@@ -26,7 +26,7 @@ class DisabledTokenLaunchAttackConsistencyCheckerNullException(DisabledTokenExce
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required disabled token tried making an attack.
+        1.  Indicating a required disabled token tried making an attack.
             
     Attributes:
         msg: Optional[str]

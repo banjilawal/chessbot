@@ -26,7 +26,7 @@ class DevelopedManeuverOffsetPatternValidatorException(ManeuverOffsetPatternVali
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an error occurred in an DevelopedManeuverOffsetPatternValidator failed.
+        1.  Indicate an error occurred in an DevelopedManeuverOffsetPatternValidator failed.
 
     Attributes:
         msg: Optional[str]

@@ -25,7 +25,7 @@ class NorthwestQuadrantCarrierNullException(QuadrantCarrierNullException):
         -   Failure Tracing
 
     Responsibilities:
-        1.  Indicate that a required NorthwestQuadrant is null.
+        1.  Indicating a required NorthwestQuadrant is null.
 
     Attributes:
         msg: str

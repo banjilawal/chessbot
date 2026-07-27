@@ -26,7 +26,7 @@ class ContainerEmptyException(EmptyException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required Container is empty.
+        1.  Indicating a required Container is empty.
 
     Attributes:
         msg: Optional[str]

@@ -25,7 +25,7 @@ class FinalizeEdgeBuilderException(FinalizeBuilderException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an EdgeBuild failed.
+        1.  Indicating an EdgeBuild failed.
 
     Attributes:
         msg: Optional[str]

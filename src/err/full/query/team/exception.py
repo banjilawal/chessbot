@@ -27,7 +27,7 @@ class TeamQueryFullException(QueryFullException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required TeamQuery is full.
+        1.  Indicating a required TeamQuery is full.
 
     Attributes:
             msg: Optional[str]

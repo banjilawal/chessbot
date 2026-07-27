@@ -27,7 +27,7 @@ class RankRootCertifierException(ModelRootCertifierException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a candidate failed a RankRootCertifier test.
+        1.  Indicating a candidate failed a RankRootCertifier test.
 
     Attributes:
             msg: Optional[str]

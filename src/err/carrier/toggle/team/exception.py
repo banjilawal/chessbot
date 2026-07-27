@@ -26,7 +26,7 @@ class TeamtoggleCarrierException(toggleCarrierException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a TeamtoggleCarrier encountered an error.
+        1.  Indicating a TeamtoggleCarrier encountered an error.
 
     Attributes:
             msg: Optional[str]

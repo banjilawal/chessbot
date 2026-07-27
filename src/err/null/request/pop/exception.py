@@ -26,7 +26,7 @@ class PopRequestNullException(RequestNullException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required PopRequest was null.
+        1.  Indicating a required PopRequest was null.
 
     Attributes:
         msg: Optional[str]

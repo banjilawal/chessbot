@@ -28,7 +28,7 @@ class BootstrapSchemaContextAssemblyException(BootstrapContextAssemblyException)
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a SchemaContextAssembly bootstrap step failed.
+        1.  Indicating a SchemaContextAssembly bootstrap step failed.
 
     Attributes:
             msg: Optional[str]

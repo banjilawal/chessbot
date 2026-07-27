@@ -25,7 +25,7 @@ class ScalarAssemblyException(AssemblyException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a Scalar assembly failed.
+        1.  Indicating a Scalar assembly failed.
 
     Attributes:
         msg: Optional[str]

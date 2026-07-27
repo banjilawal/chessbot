@@ -24,7 +24,7 @@ class ScalarBuildPipelineException(BuildPipelineException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an error occurred in a ScalarBuildPipeline.
+        1.  Indicating an error occurred in a ScalarBuildPipeline.
 
     Attributes:
         msg: Optional[str]

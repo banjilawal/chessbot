@@ -26,7 +26,7 @@ class CoordCarrierException(ModelCarrierException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a CoordCarrier encountered an error.
+        1.  Indicating a CoordCarrier encountered an error.
 
     Attributes:
         msg: Optional[str]

@@ -21,7 +21,7 @@ class TokenAlreadyOnTeamRosterException(TeamRosterException):
     Role:Debug, Error Tracing
 
     Responsibilities:
-    1.  Indicate that adding a roster member failed because the occupant was already present.
+    1.  Indicate adding a roster member failed because the occupant was already present.
 
     Super Class:
         *   TeamRosterException

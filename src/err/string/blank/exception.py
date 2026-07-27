@@ -25,7 +25,7 @@ class StringBlankException(StringException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a String is only whitespace.
+        1.  Indicating a String is only whitespace.
 
     Attributes:
         msg: Optional[str]

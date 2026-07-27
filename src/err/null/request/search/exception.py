@@ -26,7 +26,7 @@ class SearchRequestNullException(RequestNullException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required SearchRequest was null.
+        1.  Indicating a required SearchRequest was null.
 
     Attributes:
         msg: Optional[str]

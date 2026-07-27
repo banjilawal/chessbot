@@ -26,7 +26,7 @@ class RecurrenceException(ChessException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a Recurrence encountered an error.
+        1.  Indicating a Recurrence encountered an error.
 
     Attributes:
         msg: Optional[str]

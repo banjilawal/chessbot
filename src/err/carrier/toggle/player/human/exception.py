@@ -25,7 +25,7 @@ class HumanPlayertoggleCarrierException(PlayerException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a HumanPlayertoggleCarrier encountered an error.
+        1.  Indicating a HumanPlayertoggleCarrier encountered an error.
 
     Attributes:
         msg: Optional[str]

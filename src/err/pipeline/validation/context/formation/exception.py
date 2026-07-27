@@ -24,7 +24,7 @@ class FormationContextValidationPipelineException(ContextValidationPipelineExcep
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an error occurred in an FormationContextValidationPipeline.
+        1.  Indicating an error occurred in an FormationContextValidationPipeline.
 
     Attributes:
         msg: Optional[str]

@@ -24,7 +24,7 @@ class SquareValidatorException(ValidatorException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a SquareValidation check failed.
+        1.  Indicating a SquareValidation check failed.
 
     Attributes:
         msg: Optional[str]

@@ -24,7 +24,7 @@ class FormationValidatorException(ValidatorException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a FormationValidation check failed.
+        1.  Indicating a FormationValidation check failed.
 
     Attributes:
             msg: Optional[str]

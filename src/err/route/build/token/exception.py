@@ -25,7 +25,7 @@ class TokenBuildRouteException(BuildRouteException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate a Token build routes is missing.
+        1.  Indicating a Token build routes is missing.
 
     Attributes:
         msg: Optional[str]

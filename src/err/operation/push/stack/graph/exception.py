@@ -24,7 +24,7 @@ class GraphStackPushException(StackPushException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that pushing onto a GraphStack failed.
+        1.  Indicating that pushing onto a GraphStack failed.
 
     Attributes:
         msg: Optional[str]

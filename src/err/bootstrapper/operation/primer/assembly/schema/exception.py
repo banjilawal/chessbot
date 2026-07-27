@@ -26,7 +26,7 @@ class SchemaAssemblyPrimerException(AssemblyPrimerException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a SchemaAssembly priming step failed.
+        1.  Indicating a SchemaAssembly priming step failed.
 
     Attributes:
         msg: Optional[str]

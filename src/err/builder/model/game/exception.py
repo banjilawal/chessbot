@@ -26,7 +26,7 @@ class GameBuilderException(ModelBuilderException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a GameBuilder failed.
+        1.  Indicating a GameBuilder failed.
 
     Attributes:
             msg: Optional[str]

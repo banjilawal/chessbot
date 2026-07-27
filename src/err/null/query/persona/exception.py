@@ -27,7 +27,7 @@ class PersonaQueryNullException(QueryNullException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required PersonaQuery is null.
+        1.  Indicating a required PersonaQuery is null.
 
     Attributes:
             msg: Optional[str]

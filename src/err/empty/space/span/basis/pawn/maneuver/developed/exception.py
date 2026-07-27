@@ -26,7 +26,7 @@ class DevelopedManeuverBasisEmptyException(ManeuverBasisEmptyException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required DevelopedManeuverBasis is empty.
+        1.  Indicating a required DevelopedManeuverBasis is empty.
 
     Attributes:
         msg: Optional[str]

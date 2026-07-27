@@ -24,7 +24,7 @@ class EdgeValidatorException(ValidatorException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an EdgeValidation check failed.
+        1.  Indicating an EdgeValidation check failed.
 
     Attributes:
         msg: Optional[str]

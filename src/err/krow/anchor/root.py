@@ -26,7 +26,7 @@ class AnchorException(ChessException):
     1.  Anchors debug (layer-2) error state firing incident reports on
             *   the triggering variable
             *   The trigger's value.
-    2.  Indicate which Anchor method received a worker's (layer-1) failure result.
+    2.  Indicating which Anchor method received a worker's (layer-1) failure result.
 
     # NAMING CONVENTION:
     1.  Class schema followed by the Exception suffix

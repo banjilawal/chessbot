@@ -27,7 +27,7 @@ class TokenQueryFullException(QueryFullException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required TokenQuery is full.
+        1.  Indicating a required TokenQuery is full.
 
     Attributes:
             msg: Optional[str]

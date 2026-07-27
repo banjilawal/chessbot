@@ -24,7 +24,7 @@ class HostageContextValidationPipelineException(ContextValidationPipelineExcepti
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an error occurred in an HostageContextValidationPipeline.
+        1.  Indicating an error occurred in an HostageContextValidationPipeline.
 
     Attributes:
         msg: Optional[str]

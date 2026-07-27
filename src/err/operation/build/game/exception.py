@@ -25,7 +25,7 @@ class GameBuilderException(BuilderException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a Game build failed.
+        1.  Indicating a Game build failed.
 
     Attributes:
             msg: Optional[str]

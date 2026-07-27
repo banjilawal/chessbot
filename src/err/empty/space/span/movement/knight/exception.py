@@ -26,7 +26,7 @@ class KnightMovementSetEmptyException(MovementVectorSetEmptyException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required KnightMovementSet is empty.
+        1.  Indicating a required KnightMovementSet is empty.
 
     Attributes:
         msg: Optional[str]

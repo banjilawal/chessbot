@@ -21,7 +21,7 @@ class AddingDuplicateEdgeException(EdgeDebugException):
     Role:Debug, Error Tracing
 
     Responsibilities:
-    1.  Indicate that an attempt to add a edge to teh schema failed because it was already present.
+    1.  Indicating an attempt to add a edge to teh schema failed because it was already present.
 
     Super Class:
         *   EdgeStackException

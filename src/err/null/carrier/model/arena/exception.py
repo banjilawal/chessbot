@@ -24,7 +24,7 @@ class ArenaCarrierNullException(ModelCarrierNullException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an ArenaCarrierToggle is null.
+        1.  Indicating an ArenaCarrierToggle is null.
 
     Attributes:
         msg: Optional[str]

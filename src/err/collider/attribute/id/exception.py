@@ -26,7 +26,7 @@ class IdCollisionException(AttributeCollisionException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that two instances of a class do not have unique ids.
+        1.  Indicating that two instances of a class do not have unique ids.
         
     Attributes:
         msg: Optional[str]

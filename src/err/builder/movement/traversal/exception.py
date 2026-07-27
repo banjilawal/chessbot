@@ -26,7 +26,7 @@ class TraversalPatternBuilderException(MovementPatternBuilderException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required TraversalPatternBuilder failed.
+        1.  Indicating a required TraversalPatternBuilder failed.
 
     Attributes:
         msg: Optional[str]

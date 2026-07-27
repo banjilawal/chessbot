@@ -27,7 +27,7 @@ class UnopenedTokenPoppingCoordException(TokenDebugException):
         -   Exception Messaging
 
     Responsibilities:
-        1.  Indicate that a deployed token which has not opened cannot pop its CoordStackService
+        1.  Indicate a deployed token which has not opened cannot pop its CoordStackService
 
     Attributes:
         var: Optional[str]

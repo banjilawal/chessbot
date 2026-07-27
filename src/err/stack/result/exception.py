@@ -27,7 +27,7 @@ class ResultStackServiceException(StackServiceException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a ResultStackService encountered an error.
+        1.  Indicating a ResultStackService encountered an error.
 
     Attributes:
         msg: Optional[str]

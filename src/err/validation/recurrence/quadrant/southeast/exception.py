@@ -26,7 +26,7 @@ class SoutheastQuadrantRecurrenceValidatorException(QuadrantRecurrenceValidatorE
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a SoutheastQuadrantRecurrenceValidator failed.
+        1.  Indicating a SoutheastQuadrantRecurrenceValidator failed.
 
     Attributes:
         msg: Optional[str]

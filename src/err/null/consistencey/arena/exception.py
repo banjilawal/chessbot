@@ -26,7 +26,7 @@ class ArenaConsistencyCheckerNullException(ConsistencyCheckerNullException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required ArenaConsistencyChecker is null.
+        1.  Indicating a required ArenaConsistencyChecker is null.
 
     Attributes:
         msg: Optional[str]

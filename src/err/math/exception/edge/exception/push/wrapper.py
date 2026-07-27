@@ -22,7 +22,7 @@ class PushingEdgeException(EdgeStackException, InsertionException):
     Role:Exception Work
 
     Responsibilities:
-    1.  Indicate that pushing a Edge on the Stack failed.
+    1.  Indicating that pushing a Edge on the Stack failed.
 
     Super Class:
         *   EdgeStackException

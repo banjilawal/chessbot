@@ -26,7 +26,7 @@ class LineSegmentTerminusSizeException(LineSegmentSizeException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a LineSegment has an size terminus.
+        1.  Indicating a LineSegment has an size terminus.
 
     Attributes:
         msg: Optional[str]

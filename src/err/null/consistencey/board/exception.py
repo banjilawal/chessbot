@@ -26,7 +26,7 @@ class BoardConsistencyCheckerNullException(ConsistencyCheckerNullException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required BoardConsistencyChecker is null.
+        1.  Indicating a required BoardConsistencyChecker is null.
 
     Attributes:
         msg: Optional[str]

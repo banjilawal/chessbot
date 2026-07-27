@@ -26,7 +26,7 @@ class BlockedPathException(PathException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a path's destination is occupied by a friendly Token.
+        1.  Indicating a path's destination is occupied by a friendly Token.
 
     Attributes:
         msg: Optional[str]

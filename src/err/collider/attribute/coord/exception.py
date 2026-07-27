@@ -26,7 +26,7 @@ class CoordCollisionException(AttributeCollisionException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that two instances of a class do not have unique coords.
+        1.  Indicating that two instances of a class do not have unique coords.
         
     Attributes:
         msg: Optional[str]

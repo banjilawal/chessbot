@@ -26,7 +26,7 @@ class SquareSearcherException(SearcherException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a SquareSearcher from
+        1.  Indicating a SquareSearcher from
             completing its task.
 
     Attributes:

@@ -25,7 +25,7 @@ class EastAxisBuilderException(AxisSpaceBuilderException):
         -   Failure Tracing
 
     Responsibilities:
-        1.  Indicate that a EastAxisBuilder failed. 
+        1.  Indicating a EastAxisBuilder failed.
 
     Attributes:
         msg: str

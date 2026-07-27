@@ -25,7 +25,7 @@ class PersonaAssemblyBootstrapperException(AssemblyBootstrapperException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that n PersonaAssembly bootstrap step failed.
+        1.  Indicating that n PersonaAssembly bootstrap step failed.
 
     Attributes:
             msg: Optional[str]

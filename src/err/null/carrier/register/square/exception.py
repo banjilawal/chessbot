@@ -26,7 +26,7 @@ class SquareRegisterCarrierNullException(RegisterCarrierNullException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required SquareRegisterCarrierToggle is null.
+        1.  Indicating a required SquareRegisterCarrierToggle is null.
 
     Attributes:
         msg: Optional[str]

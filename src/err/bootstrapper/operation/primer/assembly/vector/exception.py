@@ -26,7 +26,7 @@ class VectorAssemblyPrimerException(AssemblyPrimerException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate a VectorAssembly priming step failed.
+        1.  Indicating a VectorAssembly priming step failed.
 
     Attributes:
         msg: Optional[str]

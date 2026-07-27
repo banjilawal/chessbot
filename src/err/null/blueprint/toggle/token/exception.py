@@ -27,7 +27,7 @@ class TokenToggleBlueprintNullException(ToggleBlueprintNullException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required TokenBlueprint is null.
+        1.  Indicating a required TokenBlueprint is null.
 
     Cannot Be Null.s:
             msg: Optional[str]

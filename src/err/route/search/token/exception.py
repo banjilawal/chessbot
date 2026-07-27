@@ -25,7 +25,7 @@ class TokenSearchRouteException(SearchRouteException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate a Token search routes is missing.
+        1.  Indicating a Token search routes is missing.
 
     Attributes:
         msg: Optional[str]

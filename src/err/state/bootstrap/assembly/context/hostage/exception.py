@@ -24,7 +24,7 @@ class BootstrapHostageContextAssemblyException(BootstrapContextAssemblyException
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a HostageContextAssembly bootstrap step failed.
+        1.  Indicating a HostageContextAssembly bootstrap step failed.
 
     Attributes:
             msg: Optional[str]

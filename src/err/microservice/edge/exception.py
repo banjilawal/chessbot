@@ -26,7 +26,7 @@ class EdgeMicroserviceException(MicroserviceException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an EdgeMicroservice failed.
+        1.  Indicating an EdgeMicroservice failed.
 
     Attributes:
         msg: Optional[str]

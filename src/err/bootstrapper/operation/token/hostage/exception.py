@@ -25,7 +25,7 @@ class HostageTokenOperationBootstrapperException(TokenOperationBootstrapperExcep
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a Hostage tokenfailed.
+        1.  Indicating a Hostage tokenfailed.
 
     Attributes:
         msg: Optional[str]

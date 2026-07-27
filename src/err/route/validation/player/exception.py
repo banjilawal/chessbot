@@ -25,7 +25,7 @@ class PlayerNoValidationRouteException(NoValidationRouteException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that one of Player validation routes is missing.
+        1.  Indicating that one of Player validation routes is missing.
 
     Attributes:
         msg: Optional[str]

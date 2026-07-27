@@ -24,7 +24,7 @@ class HostageInsertionPipelineException(InsertionPipelineException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an error occurred in a HostageInsertionPipeline.
+        1.  Indicating an error occurred in a HostageInsertionPipeline.
 
     Attributes:
         msg: Optional[str]

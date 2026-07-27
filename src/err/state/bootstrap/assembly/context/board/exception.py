@@ -24,7 +24,7 @@ class BootstrapBoardContextAssemblyException(BootstrapContextAssemblyException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a BoardContextAssembly bootstrap step failed.
+        1.  Indicating a BoardContextAssembly bootstrap step failed.
 
     Attributes:
             msg: Optional[str]

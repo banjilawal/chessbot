@@ -25,7 +25,7 @@ class BootstrapCoordAssemblyException(AssemblyBootstrapperException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a CoordAssembly bootstrap step failed.
+        1.  Indicating a CoordAssembly bootstrap step failed.
 
     Attributes:
         msg: Optional[str]

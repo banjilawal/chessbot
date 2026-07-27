@@ -25,7 +25,7 @@ class ContextNoValidationRouteException(NoValidationRouteException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that one of ContextValidation failed.
+        1.  Indicating that one of ContextValidation failed.
 
     Attributes:
             msg: Optional[str]

@@ -22,7 +22,7 @@ class PersonaNameBoundsException(PersonaException, BoundsException):
     Role:Error Tracing, Debugging
 
     Responsibilities:
-    1.  Indicate that a Persona lookup failed because the schema was not a key to any Persona variant.
+    1.  Indicate a Persona lookup failed because the schema was not a key to any Persona variant.
 
     Super Class:
         *   PersonaException

@@ -25,7 +25,7 @@ class EmptyArenaStackDeletionException(EmptyStackDeletionException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicates that popping An ArenaStack failed because it was empty.
+        1.  Indicatings that popping An ArenaStack failed because it was empty.
 
     Attributes:
         msg: Optional[str]

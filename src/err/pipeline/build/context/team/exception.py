@@ -24,7 +24,7 @@ class TeamContextBuildPipelineException(ContextBuildPipelineException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an error occurred in an TeamContextBuildPipeline.
+        1.  Indicating an error occurred in an TeamContextBuildPipeline.
 
     Attributes:
         msg: Optional[str]

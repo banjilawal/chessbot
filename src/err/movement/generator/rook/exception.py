@@ -26,7 +26,7 @@ class RookPatternGeneratorException(PatternGeneratorException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a RookPatternGenerator did not complete its task.
+        1.  Indicating a RookPatternGenerator did not complete its task.
 
     Attributes:
         msg: Optional[str]

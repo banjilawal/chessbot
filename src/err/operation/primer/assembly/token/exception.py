@@ -23,7 +23,7 @@ class TokenAssemblyPrimerException(AssemblyPrimerException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a TokenAssemblyPriming step failed.
+        1.  Indicating a TokenAssemblyPriming step failed.
 
     Attributes:
         msg: Optional[str]

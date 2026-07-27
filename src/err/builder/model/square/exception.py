@@ -26,7 +26,7 @@ class SquareBuilderException(ModelBuilderException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a SquareBuilder failed.
+        1.  Indicating a SquareBuilder failed.
 
     Attributes:
         msg: Optional[str]

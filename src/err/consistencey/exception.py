@@ -24,7 +24,7 @@ class ConsistencyCheckerException(ChessException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a ConsistencyChecker raised an error.
+        1.  Indicating a ConsistencyChecker raised an error.
 
     Attributes:
         msg: Optional[str]

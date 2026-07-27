@@ -26,7 +26,7 @@ class TokenPushPermitterException(PusherPermitterException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a TokenPushPermitter did not approve the request.
+        1.  Indicating a TokenPushPermitter did not approve the request.
 
     Attributes:
         msg: Optional[str]

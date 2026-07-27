@@ -25,7 +25,7 @@ class SquareBuildRouteException(BuildRouteException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that one of Square build routes is missing.
+        1.  Indicating that one of Square build routes is missing.
 
     Attributes:
         msg: Optional[str]

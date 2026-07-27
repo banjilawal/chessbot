@@ -23,7 +23,7 @@ class PersonaQuotaBoundsException(PersonaException, BoundsException):
     Role:Error Tracing, Debugging
 
     Responsibilities:
-    1.  Indicate that a Persona lookup failed because the quota value was not permitted for the Persona
+    1.  Indicate a Persona lookup failed because the quota value was not permitted for the Persona
         attribute.
 
     Super Class:

@@ -24,7 +24,7 @@ class Push pingArenaStackException(Push pingStackException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that push ping a ArenaStack failed.
+        1.  Indicating that push ping a ArenaStack failed.
 
     Attributes:
         msg: Optional[str]

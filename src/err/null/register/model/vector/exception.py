@@ -26,7 +26,7 @@ class VectorRegisterNullException(ModelRegisterNullException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required VectorRegister is null.
+        1.  Indicating a required VectorRegister is null.
 
     Attributes:
         msg: Optional[str]

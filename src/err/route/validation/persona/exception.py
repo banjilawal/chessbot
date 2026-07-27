@@ -25,7 +25,7 @@ class PersonaNoValidationRouteException(NoValidationRouteException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that n Persona validation routes is missing.
+        1.  Indicating that n Persona validation routes is missing.
 
     Attributes:
             msg: Optional[str]

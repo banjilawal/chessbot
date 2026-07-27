@@ -24,7 +24,7 @@ class ExcessContextFlagsException(ContextException):
         -   Error Tracing
         
     Responsibilities:
-        1.  Indicate that no Context attributes were enabled.
+        1.  Indicating that no Context attributes were enabled.
 
     Attributes:
         msg: Optional[str]

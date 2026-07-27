@@ -26,7 +26,7 @@ class KingTokenConsistencyCheckerNullException(TokenException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required KingTokenConsistencyChecker is null.
+        1.  Indicating a required KingTokenConsistencyChecker is null.
 
     Attributes:
         msg: Optional[str]

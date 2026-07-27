@@ -25,7 +25,7 @@ class NorthAxisNullException(AxisNullException):
         -   Failure Tracing
 
     Responsibilities:
-        1.  Indicate that a required NorthAxis Is Null.
+        1.  Indicating a required NorthAxis Is Null.
 
     Attributes:
         msg: str

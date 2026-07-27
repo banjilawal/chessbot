@@ -26,7 +26,7 @@ class PromotionApprovalManagerException(AnalyzerException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an error occurred during a pawn promotion analysis.
+        1.  Indicating an error occurred during a pawn promotion analysis.
 
     Attributes:
         var: Optional[str]

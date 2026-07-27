@@ -25,7 +25,7 @@ class EastAxisCarrierException(AxisSpaceCarrierException):
         -   Failure Tracing
 
     Responsibilities:
-        1.  Indicate that a EastAxisCarrier experienced an error.
+        1.  Indicating a EastAxisCarrier experienced an error.
 
     Attributes:
         msg: str

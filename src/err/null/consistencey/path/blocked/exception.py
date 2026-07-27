@@ -26,7 +26,7 @@ class BlockedPathConsistencyCheckerNullException(PathException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required path's destination is occupied by a friendly Token.
+        1.  Indicating a required path's destination is occupied by a friendly Token.
 
     Attributes:
         msg: Optional[str]

@@ -26,7 +26,7 @@ class CheckedPathtoggleCarrierException(PathException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a CheckedPathtoggleCarrier encountered an error.
+        1.  Indicating a CheckedPathtoggleCarrier encountered an error.
 
     Attributes:
         msg: Optional[str]

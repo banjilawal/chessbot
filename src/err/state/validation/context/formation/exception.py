@@ -27,7 +27,7 @@ class FormationContextValidatorException(ContextValidatorException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a FormationContextValidation check failed.
+        1.  Indicating a FormationContextValidation check failed.
 
     Attributes:
             msg: Optional[str]

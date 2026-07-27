@@ -28,7 +28,7 @@ class EdgeBinderBuilderException(BinderBuilderException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a EdgeBinder build failed.
+        1.  Indicating a EdgeBinder build failed.
 
     Build Failed.s:
             msg: Optional[str]

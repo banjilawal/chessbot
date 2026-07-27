@@ -24,7 +24,7 @@ class FinalizeVectorContextBuilderException(FinalizeContextBuilderException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that finalizing a VectorContextBuild failed.
+        1.  Indicating that finalizing a VectorContextBuild failed.
 
     Attributes:
             msg: Optional[str]

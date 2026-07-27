@@ -12,7 +12,7 @@ class PoppingEmptyTeamRosterException(TeamRosterException):
     Role:Debug, Error Tracing
 
     Responsibilities:
-    1.  Indicate that an attempt to remove a roster member failed because the roster was empty.
+    1.  Indicate an attempt to remove a roster member failed because the roster was empty.
 
     Super Class:
         *   TeamDaaServiceException

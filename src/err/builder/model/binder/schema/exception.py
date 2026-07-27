@@ -29,7 +29,7 @@ class SchemaBinderBuilderException(BinderBuilderException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a SchemaBinderBuilder failed.
+        1.  Indicating a SchemaBinderBuilder failed.
 
    Builder failed.s:
             msg: Optional[str]

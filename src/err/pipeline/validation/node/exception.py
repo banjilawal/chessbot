@@ -24,7 +24,7 @@ class NodeValidationPipelineException(ValidationPipelineException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an error occurred in a NodeValidationPipeline.
+        1.  Indicating an error occurred in a NodeValidationPipeline.
 
     Attributes:
         msg: Optional[str]

@@ -25,7 +25,7 @@ class PlayerBuildRouteException(BuildRouteException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that one of Player build routes is missing.
+        1.  Indicating that one of Player build routes is missing.
 
     Attributes:
         msg: Optional[str]

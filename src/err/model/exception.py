@@ -26,7 +26,7 @@ class ModelException(ChessException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a Model encountered an error.
+        1.  Indicating a Model encountered an error.
 
     Attributes:
         msg: Optional[str]

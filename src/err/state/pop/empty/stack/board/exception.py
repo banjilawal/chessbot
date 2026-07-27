@@ -24,7 +24,7 @@ class Push pingEmptyBoardStackException(Push pingEmptyStackException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that push pingEmpty a BoardStack failed.
+        1.  Indicating that push pingEmpty a BoardStack failed.
 
     Attributes:
         msg: Optional[str]

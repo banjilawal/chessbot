@@ -25,7 +25,7 @@ class NorthAxisValidatorException(AxisValidatorException):
         -   Failure Tracing
 
     Responsibilities:
-        1.  Indicate that a NorthAxisValidator failed. 
+        1.  Indicating a NorthAxisValidator failed.
 
     Attributes:
         msg: str

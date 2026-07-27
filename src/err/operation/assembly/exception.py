@@ -27,7 +27,7 @@ class AssemblyException(OperationException):
         -   Failure Tracing
 
     Responsibilities:
-        1.  Indicate that a assembly from completing.
+        1.  Indicating a assembly from completing.
 
     Attributes:
         msg: str

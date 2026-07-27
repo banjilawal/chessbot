@@ -26,7 +26,7 @@ class GraphEmptyException(EmptyException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required Graph is empty.
+        1.  Indicating a required Graph is empty.
 
     Attributes:
         msg: Optional[str]

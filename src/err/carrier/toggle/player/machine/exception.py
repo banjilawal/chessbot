@@ -25,7 +25,7 @@ class MachinePlayertoggleCarrierException(PlayerException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a MachinePlayertoggleCarrier encountered an error.
+        1.  Indicating a MachinePlayertoggleCarrier encountered an error.
 
     Attributes:
         msg: Optional[str]

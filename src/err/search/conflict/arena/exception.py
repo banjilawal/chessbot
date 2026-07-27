@@ -26,7 +26,7 @@ class ArenaSearchHitConflictException(SearchHitConflictException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an ArenaSearcher returned multiple hits for an item which should be unique.
+        1.  Indicating an ArenaSearcher returned multiple hits for an item which should be unique.
 
     Attributes:
             msg: Optional[str]

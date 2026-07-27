@@ -26,7 +26,7 @@ class TeamConsistencyCheckerNullException(ConsistencyCheckerNullException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required TeamConsistencyChecker is null.
+        1.  Indicating a required TeamConsistencyChecker is null.
 
     Attributes:
             msg: Optional[str]

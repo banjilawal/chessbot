@@ -27,7 +27,7 @@ class NodeQueryFullException(QueryFullException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required NodeQuery is full.
+        1.  Indicating a required NodeQuery is full.
 
     Attributes:
             msg: Optional[str]

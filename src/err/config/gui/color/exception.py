@@ -25,7 +25,7 @@ class GameColorException(ConfigException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate there is a GameColor error.
+        1.  Indicating there is a GameColor error.
     Attributes:
         msg: Optional[str]
         var: Optional[str]

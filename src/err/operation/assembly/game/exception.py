@@ -25,7 +25,7 @@ class GameAssemblyException(AssemblyException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a Game assembly failed.
+        1.  Indicating a Game assembly failed.
 
     Attributes:
             msg: Optional[str]

@@ -26,7 +26,7 @@ class QuadrantRecurrenceValidatorException(RecurrenceValidatorException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a QuadrantRecurrenceValidator failed.
+        1.  Indicating a QuadrantRecurrenceValidator failed.
 
     Attributes:
         msg: Optional[str]

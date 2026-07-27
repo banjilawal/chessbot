@@ -29,7 +29,7 @@ class SquareBinderBuilderBootstrapperException(BinderBuilderBootstrapperExceptio
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a SquareBinderBuilderBootstrapper was aborted by an exception.
+        1.  Indicating a SquareBinderBuilderBootstrapper was aborted by an exception.
 
    BuilderBootstrapper was aborted by an exception.s:
             msg: Optional[str]

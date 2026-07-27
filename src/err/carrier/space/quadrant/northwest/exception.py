@@ -25,7 +25,7 @@ class NorthwestQuadrantCarrierException(QuadrantSpaceCarrierException):
         -   Failure Tracing
 
     Responsibilities:
-        1.  Indicate that a NorthwestQuadrantCarrier experienced an error.
+        1.  Indicating a NorthwestQuadrantCarrier experienced an error.
 
     Attributes:
         msg: str

@@ -25,7 +25,7 @@ class SoutheastQuadrantBuilderException(QuadrantSpaceBuilderException):
         -   Failure Tracing
 
     Responsibilities:
-        1.  Indicate that a SoutheastQuadrantBuilder failed. 
+        1.  Indicating a SoutheastQuadrantBuilder failed.
 
     Attributes:
         msg: str

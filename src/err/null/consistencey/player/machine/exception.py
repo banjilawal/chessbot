@@ -25,7 +25,7 @@ class MachinePlayerConsistencyCheckerNullException(PlayerException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required MachinePlayerConsistencyChecker is null.
+        1.  Indicating a required MachinePlayerConsistencyChecker is null.
 
     Attributes:
         msg: Optional[str]

@@ -28,7 +28,7 @@ class SchemaContextTokenOperationBootstrapperException(ContextTokenOperationBoot
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a SchemaContext tokenfailed.
+        1.  Indicating a SchemaContext tokenfailed.
 
     TokenFailed.s:
             msg: Optional[str]

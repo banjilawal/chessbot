@@ -27,7 +27,7 @@ class RankQueryFullException(QueryFullException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required RankQuery is full.
+        1.  Indicating a required RankQuery is full.
 
     Attributes:
             msg: Optional[str]

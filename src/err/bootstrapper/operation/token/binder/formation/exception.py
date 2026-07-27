@@ -28,7 +28,7 @@ class FormationBinderTokenOperationBootstrapperException(BinderTokenOperationBoo
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a FormationBinder tokenfailed.
+        1.  Indicating a FormationBinder tokenfailed.
 
     TokenFailed.s:
             msg: Optional[str]

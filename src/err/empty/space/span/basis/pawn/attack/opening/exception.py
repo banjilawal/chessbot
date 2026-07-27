@@ -26,7 +26,7 @@ class OpeningAttackBasisEmptyException(AttackBasisEmptyException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required OpeningAttackBasis is empty.
+        1.  Indicating a required OpeningAttackBasis is empty.
 
     Attributes:
         msg: Optional[str]

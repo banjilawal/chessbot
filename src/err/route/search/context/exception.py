@@ -25,7 +25,7 @@ class ContextSearchRouteException(SearchRouteException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that one of ContextSearch failed.
+        1.  Indicating that one of ContextSearch failed.
 
     Attributes:
             msg: Optional[str]

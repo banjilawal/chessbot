@@ -26,7 +26,7 @@ class CoordStackFullException(StackFullException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a CoordStack is full.
+        1.  Indicating a CoordStack is full.
 
     Attributes:
         msg: Optional[str]

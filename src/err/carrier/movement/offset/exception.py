@@ -26,7 +26,7 @@ class OffsetPatternCarrierException(MovementPatternCarrierException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a OffsetPatternCarrier experienced an error.
+        1.  Indicating a OffsetPatternCarrier experienced an error.
 
     Attributes:
         msg: Optional[str]

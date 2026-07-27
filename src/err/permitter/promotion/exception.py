@@ -26,7 +26,7 @@ class PromotionPermitterException(PermitterException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a PromotionPermitter did not approve a request.
+        1.  Indicating a PromotionPermitter did not approve a request.
 
     Attributes:
         msg: Optional[str]

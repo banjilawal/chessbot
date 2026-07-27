@@ -26,7 +26,7 @@ class RegisterSetException(ContainerException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a RegisterSet encountered an error.
+        1.  Indicating a RegisterSet encountered an error.
 
     Attributes:
             msg: Optional[str]

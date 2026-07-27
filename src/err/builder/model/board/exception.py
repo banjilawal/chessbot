@@ -27,7 +27,7 @@ class BoardBuilderException(ModelBuilderException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a BoardBuilder failed.
+        1.  Indicating a BoardBuilder failed.
 
     Attributes:
         msg: Optional[str]

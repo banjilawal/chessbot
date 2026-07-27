@@ -27,6 +27,7 @@ from .duplicate import *
 from .empty import *
 from .factory import *
 from .full import *
+from .mapper import *
 from .math import *
 from .method import *
 from .microservice import *

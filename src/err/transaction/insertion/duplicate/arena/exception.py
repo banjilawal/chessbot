@@ -25,7 +25,7 @@ class DuplicateArenaPushException(DuplicateItemException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that pushing a duplicate item onto the ArenaStack failed.
+        1.  Indicating that pushing a duplicate item onto the ArenaStack failed.
 
     Attributes:
         msg: Optional[str]

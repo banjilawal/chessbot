@@ -26,7 +26,7 @@ class HashtableConsistencyCheckerNullException(ConsistencyCheckerNullException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required HashtableConsistencyChecker is null.
+        1.  Indicating a required HashtableConsistencyChecker is null.
 
     Attributes:
         msg: Optional[str]

@@ -26,7 +26,7 @@ class OperationNullException(NullException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required operation is null.
+        1.  Indicating a required operation is null.
 
     Attributes:
         msg: Optional[str]

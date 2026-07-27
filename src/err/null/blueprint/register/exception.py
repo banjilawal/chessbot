@@ -27,7 +27,7 @@ class RegisterBlueprintNullException(BlueprintNullException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required RegisterBlueprint is null.
+        1.  Indicating a required RegisterBlueprint is null.
 
     Cannot Be Null.s:
             msg: Optional[str]

@@ -26,7 +26,7 @@ class VectorMicroserviceException(MicroserviceException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate a candidate did not pass a VectorMicroservice failed.
+        1.  Indicating a candidate did not pass a VectorMicroservice failed.
 
     Attributes:
         msg: Optional[str]

@@ -26,7 +26,7 @@ class VectorRegisterCarrierNullException(RegisterCarrierNullException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required VectorRegisterCarrierToggle is null.
+        1.  Indicating a required VectorRegisterCarrierToggle is null.
 
     Attributes:
         msg: Optional[str]

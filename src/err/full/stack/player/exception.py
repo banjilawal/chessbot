@@ -26,7 +26,7 @@ class PlayerStackFullException(StackFullException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a PlayerStack is full.
+        1.  Indicating a PlayerStack is full.
 
     Attributes:
         msg: Optional[str]

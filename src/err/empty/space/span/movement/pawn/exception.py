@@ -26,7 +26,7 @@ class PawnMovementSetEmptyException(MovementVectorSetEmptyException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required PawnMovementSet is empty.
+        1.  Indicating a required PawnMovementSet is empty.
 
     Attributes:
         msg: Optional[str]

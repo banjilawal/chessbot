@@ -29,7 +29,7 @@ class PrimingRankContextAssemblyException(PrimingContextAssemblyException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a RankContextAssembly priming step failed.
+        1.  Indicating a RankContextAssembly priming step failed.
 
     Attributes:
             msg: Optional[str]

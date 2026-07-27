@@ -26,7 +26,7 @@ class VectorRegisterMismatchException(VectorOperationException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an binary operation failed because the operands do
+        1.  Indicating an binary operation failed because the operands do
             not have the same context.
 
     Attributes:

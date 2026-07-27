@@ -26,7 +26,7 @@ class ArenaSearchResultEmptyException(SearchResultEmptyException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an ArenaSearcher did not find the required item.
+        1.  Indicating an ArenaSearcher did not find the required item.
 
     Attributes:
             msg: Optional[str]

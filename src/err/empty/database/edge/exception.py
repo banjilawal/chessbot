@@ -24,7 +24,7 @@ class EdgeDatabaseEmptyException(DatabaseEmptyException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required EdgeDatabase is empty.
+        1.  Indicating a required EdgeDatabase is empty.
 
     Attributes:
         msg: Optional[str]

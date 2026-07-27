@@ -25,7 +25,7 @@ class NorthAxisException(AxisException):
         -   Failure Tracing
 
     Responsibilities:
-        1.  Indicate that an error occurred in a NorthAxis.
+        1.  Indicating an error occurred in a NorthAxis.
 
     Attributes:
         msg: str

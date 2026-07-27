@@ -26,7 +26,7 @@ class VectorTransformException(VectorStateException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an error occurred during VectorTransform state.
+        1.  Indicating an error occurred during VectorTransform state.
 
     Attributes:
         msg: Optional[str]

@@ -22,7 +22,7 @@ class ArenaPlayerBinderFullException(BinderFullException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required ArenaPlayerBinder is full.
+        1.  Indicating a required ArenaPlayerBinder is full.
 
     Attributes:
             msg: Optional[str]

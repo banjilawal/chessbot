@@ -26,7 +26,7 @@ class NodeCarrierNullException(ModelCarrierNullException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required NodeCarrierToggle is null.
+        1.  Indicating a required NodeCarrierToggle is null.
 
     Attributes:
         msg: Optional[str]

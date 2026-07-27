@@ -25,7 +25,7 @@ class VectorSearchRouteException(SearchRouteException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate a Vector search routes is missing.
+        1.  Indicating a Vector search routes is missing.
 
     Attributes:
         msg: Optional[str]

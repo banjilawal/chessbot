@@ -26,7 +26,7 @@ class CircularPathConsistencyCheckerNullException(PathException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required path's origin and destination are the same.
+        1.  Indicating a required path's origin and destination are the same.
 
     Attributes:
         msg: Optional[str]

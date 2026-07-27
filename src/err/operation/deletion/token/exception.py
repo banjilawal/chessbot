@@ -26,7 +26,7 @@ class TokenDeleterException(DeleterException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a TokenDeleter did not complete its task.
+        1.  Indicating a TokenDeleter did not complete its task.
 
     Attributes:
         msg: Optional[str]

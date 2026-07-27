@@ -25,7 +25,7 @@ class EastAxisBlueprintNullException(AxisBlueprintNullException):
         -   Failure Tracing
 
     Responsibilities:
-        1.  Indicate that a required EastAxis is null.
+        1.  Indicating a required EastAxis is null.
 
     Attributes:
         msg: str

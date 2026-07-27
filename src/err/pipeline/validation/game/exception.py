@@ -24,7 +24,7 @@ class GameValidationPipelineException(ValidationPipelineException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an error occurred in a GameValidationPipeline.
+        1.  Indicating an error occurred in a GameValidationPipeline.
 
     Attributes:
         msg: Optional[str]

@@ -26,7 +26,7 @@ class CoordRegisterNullException(ModelRegisterNullException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required CoordRegister is null.
+        1.  Indicating a required CoordRegister is null.
 
     Attributes:
         msg: Optional[str]

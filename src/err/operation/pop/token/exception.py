@@ -26,7 +26,7 @@ class TokenPopperException(PopperException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a TokenPopper did not complete its task.
+        1.  Indicating a TokenPopper did not complete its task.
 
     Attributes:
         msg: Optional[str]

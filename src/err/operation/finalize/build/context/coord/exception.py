@@ -24,7 +24,7 @@ class FinalizeCoordContextBuilderException(FinalizeContextBuilderException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that finalizing a CoordContextBuild failed.
+        1.  Indicating that finalizing a CoordContextBuild failed.
 
     Attributes:
             msg: Optional[str]

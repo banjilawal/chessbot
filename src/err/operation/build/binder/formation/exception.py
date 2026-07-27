@@ -28,7 +28,7 @@ class FormationBinderBuilderException(BinderBuilderException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a FormationBinder build failed.
+        1.  Indicating a FormationBinder build failed.
 
     Build Failed.s:
             msg: Optional[str]

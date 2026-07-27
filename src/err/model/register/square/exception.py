@@ -26,7 +26,7 @@ class SquareRegisterException(RegisterException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a SquareRegister encountered an error.
+        1.  Indicating a SquareRegister encountered an error.
 
     Attributes:
         msg: Optional[str]

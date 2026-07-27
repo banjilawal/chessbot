@@ -26,7 +26,7 @@ class ContextBuilderBootstrapperException(BuilderBootstrapperException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a ContextBuilderBootstrapper was aborted by an exception.
+        1.  Indicating a ContextBuilderBootstrapper was aborted by an exception.
 
    BuilderBootstrapper was aborted by an exception.s:
             msg: Optional[str]

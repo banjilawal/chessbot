@@ -27,7 +27,7 @@ class BoardStackServiceException(StackServiceException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a BoardStackService encountered an error.
+        1.  Indicating a BoardStackService encountered an error.
 
     Attributes:
         msg: Optional[str]

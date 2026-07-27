@@ -26,7 +26,7 @@ class AxisSizeException(LinearSpaceSizeException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required Axisis the wrong size.
+        1.  Indicating a required Axisis the wrong size.
 
     Attributes:
         msg: Optional[str]

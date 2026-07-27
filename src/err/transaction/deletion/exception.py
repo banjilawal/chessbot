@@ -24,7 +24,7 @@ class DeletionException(TransactionException):
         -   Error Tracing
 
     Responsibilities:
-        Indicates that an error prevented a deletion from completing.
+        Indicatings that an error prevented a deletion from completing.
 
     Attributes:
         msg: Optional[str]

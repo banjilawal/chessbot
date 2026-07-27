@@ -26,7 +26,7 @@ class DevelopedManeuverMovementSetSizeException(ManeuverMovementSetSizeException
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required DevelopedManeuverMovementSetis the wrong size.
+        1.  Indicating a required DevelopedManeuverMovementSetis the wrong size.
 
     Attributes:
         msg: Optional[str]

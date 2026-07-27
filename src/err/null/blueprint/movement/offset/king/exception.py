@@ -26,7 +26,7 @@ class KingOffsetPatternBlueprintNullException(OffsetPatternBlueprintNullExceptio
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required KingOffsetPatternBlueprint is null.
+        1.  Indicating a required KingOffsetPatternBlueprint is null.
 
     Attributes:
         msg: Optional[str]

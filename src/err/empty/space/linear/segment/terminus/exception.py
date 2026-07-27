@@ -26,7 +26,7 @@ class LineSegmentTerminusEmptyException(LineSegmentEmptyException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a LineSegment has an empty terminus.
+        1.  Indicating a LineSegment has an empty terminus.
 
     Attributes:
         msg: Optional[str]

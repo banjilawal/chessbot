@@ -26,7 +26,7 @@ class AttackException(OperationBootstrapperException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an attack failed.
+        1.  Indicating an attack failed.
 
     Attributes:
         msg: Optional[str]

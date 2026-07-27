@@ -26,7 +26,7 @@ class RankSlotPermitterException(PermitterException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicates the RankSlotPermitter did not grant a Token a slot
+        1.  Indicatings the RankSlotPermitter did not grant a Token a slot
             for its rank.
 
     Attributes:

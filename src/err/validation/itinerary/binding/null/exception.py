@@ -26,7 +26,7 @@ class BidirectionalSourceTokenRelationException(ItineraryConsistencyException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate an Itinerary's token does not have a fully bidirectional relation with its source.
+        1.  Indicating an Itinerary's token does not have a fully bidirectional relation with its source.
 
     Attributes:
         msg: Optional[str]

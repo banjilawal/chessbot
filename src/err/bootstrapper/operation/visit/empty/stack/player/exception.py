@@ -24,7 +24,7 @@ class VisitpingEmptyPlayerStackException(VisitpingEmptyStackException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that visitpingEmpty a PlayerStack failed.
+        1.  Indicating that visitpingEmpty a PlayerStack failed.
 
     Attributes:
         msg: Optional[str]

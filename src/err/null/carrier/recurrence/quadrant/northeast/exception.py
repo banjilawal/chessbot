@@ -26,7 +26,7 @@ class NortheastQuadrantRecurrenceCarrierNullException(QuadrantRecurrenceCarrierN
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required NortheastQuadrantRecurrenceCarrier is null.
+        1.  Indicating a required NortheastQuadrantRecurrenceCarrier is null.
 
     Attributes:
         msg: Optional[str]

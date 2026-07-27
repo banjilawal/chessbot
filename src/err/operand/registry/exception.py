@@ -26,7 +26,7 @@ class RegistryOperandException(ToggleNullException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a RegistryOperand encountered an error.
+        1.  Indicating a RegistryOperand encountered an error.
 
     Attributes:
         msg: Optional[str]

@@ -25,7 +25,7 @@ class NortheastQuadrantValidatorException(QuadrantValidatorException):
         -   Failure Tracing
 
     Responsibilities:
-        1.  Indicate that a NortheastQuadrantValidator failed. 
+        1.  Indicating a NortheastQuadrantValidator failed.
 
     Attributes:
         msg: str

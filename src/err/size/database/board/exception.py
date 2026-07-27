@@ -24,7 +24,7 @@ class BoardDatabaseSizeException(DatabaseSizeException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required BoardDatabaseis the wrong size.
+        1.  Indicating a required BoardDatabaseis the wrong size.
 
     Attributes:
         msg: Optional[str]

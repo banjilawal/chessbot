@@ -28,7 +28,7 @@ class CoordContextAssemblyException(ContextAssemblyException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a CoordContext assembly failed.
+        1.  Indicating a CoordContext assembly failed.
 
     Assembly Failed.s:
             msg: Optional[str]

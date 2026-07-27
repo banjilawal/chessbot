@@ -26,7 +26,7 @@ class CheckedPathMicroserviceException(PathMicroserviceException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a candidate did not pass a CheckedPathMicroservice failed.
+        1.  Indicating a candidate did not pass a CheckedPathMicroservice failed.
 
     Attributes:
             msg: Optional[str]

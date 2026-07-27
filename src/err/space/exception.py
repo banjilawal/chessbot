@@ -1,4 +1,4 @@
-# src/err/space/quadrant/exception.py
+# src/err/space/exception.py
 
 """
 Module: err.space.exception
@@ -25,7 +25,7 @@ class SpaceException(ChessException):
         -   Failure Tracing
 
     Responsibilities:
-        1.  Indicate that an error occurred in a Space instance.
+        1.  Indicating an error occurred in a Space instance.
 
     Attributes:
         msg: str

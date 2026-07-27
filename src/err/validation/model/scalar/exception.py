@@ -26,7 +26,7 @@ class ScalarValidatorException(ModelValidatorException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a candidate failed a ScalarValidator test.
+        1.  Indicating a candidate failed a ScalarValidator test.
 
     Attributes:
         msg: Optional[str]

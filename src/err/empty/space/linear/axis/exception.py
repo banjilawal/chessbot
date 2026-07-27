@@ -26,7 +26,7 @@ class AxisEmptyException(LinearSpaceEmptyException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required Axis is empty.
+        1.  Indicating a required Axis is empty.
 
     Attributes:
         msg: Optional[str]

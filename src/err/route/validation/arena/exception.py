@@ -24,7 +24,7 @@ class ArenaNoValidationRouteException(NoValidationRouteException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that one of Arena validation routes is missing.
+        1.  Indicating that one of Arena validation routes is missing.
 
     Attributes:
         msg: Optional[str]

@@ -26,7 +26,7 @@ class DevelopedAttackOffsetPatternException(AttackOffsetPatternException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an error occurred in an DevelopedAttackOffsetPattern instance.
+        1.  Indicating an error occurred in an DevelopedAttackOffsetPattern instance.
 
     Attributes:
         msg: Optional[str]

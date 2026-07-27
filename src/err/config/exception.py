@@ -24,7 +24,7 @@ class ConfigException(ChessException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate there is a Config error.
+        1.  Indicating there is a Config error.
     Attributes:
         msg: Optional[str]
         var: Optional[str]

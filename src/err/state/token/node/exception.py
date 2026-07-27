@@ -24,7 +24,7 @@ class NodeTokenStateException(TokenStateException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a Node tokenfailed.
+        1.  Indicating a Node tokenfailed.
 
     Attributes:
         msg: Optional[str]

@@ -24,7 +24,7 @@ class SnapshotStackPushException(StackPushException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that pushing onto a SnapshotStack failed.
+        1.  Indicating that pushing onto a SnapshotStack failed.
 
     Attributes:
         msg: Optional[str]

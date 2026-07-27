@@ -27,7 +27,7 @@ class SquareVisitorBoardException(SquareDebugException):
         -   Exception Messaging
 
     Responsibilities:
-        1.  Indicate that a square entry failed because the visitor belonged to a different board.
+        1.  Indicate a square entry failed because the visitor belonged to a different board.
 
     Attributes:
         var: Optional[str]

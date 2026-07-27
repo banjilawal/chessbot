@@ -25,7 +25,7 @@ class HumanPlayerConsistencyCheckerException(PlayerException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a HumanPlayerConsistencyChecker raised an error.
+        1.  Indicating a HumanPlayerConsistencyChecker raised an error.
 
     Attributes:
         msg: Optional[str]

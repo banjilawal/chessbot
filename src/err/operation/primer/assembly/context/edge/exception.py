@@ -24,7 +24,7 @@ class PrimingEdgeContextAssemblyException(PrimingContextAssemblyException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a EdgeContextAssembly priming step failed.
+        1.  Indicating a EdgeContextAssembly priming step failed.
 
     Attributes:
         msg: Optional[str]

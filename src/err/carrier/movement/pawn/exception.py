@@ -26,7 +26,7 @@ class PawnOffsetPatternCarrierException(OffsetPatternCarrierException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a PawnOffsetPatternCarrier experienced an error.
+        1.  Indicating a PawnOffsetPatternCarrier experienced an error.
 
     Attributes:
         msg: Optional[str]

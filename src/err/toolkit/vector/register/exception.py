@@ -23,7 +23,7 @@ class VectorRegisterException(ToolkitException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required VectorRegister is .
+        1.  Indicating a required VectorRegister is .
 
     Attributes:
             msg: Optional[str]

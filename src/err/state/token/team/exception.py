@@ -25,7 +25,7 @@ class TeamTokenStateException(TokenStateException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a Team tokenfailed.
+        1.  Indicating a Team tokenfailed.
 
     Attributes:
             msg: Optional[str]

@@ -25,7 +25,7 @@ class SchemaTokenStateException(TokenStateException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a Schema tokenfailed.
+        1.  Indicating a Schema tokenfailed.
 
     Attributes:
         msg: Optional[str]

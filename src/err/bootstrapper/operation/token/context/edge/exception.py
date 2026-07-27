@@ -28,7 +28,7 @@ class EdgeContextTokenOperationBootstrapperException(ContextTokenOperationBootst
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a EdgeContext tokenfailed.
+        1.  Indicating a EdgeContext tokenfailed.
 
     TokenFailed.s:
             msg: Optional[str]

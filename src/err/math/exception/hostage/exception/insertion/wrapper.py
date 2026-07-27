@@ -22,7 +22,7 @@ class HostageInsertionException(HostageException, InsertionException):
     Role:Exception Work
 
     Responsibilities:
-    1.  Indicate that add a hostage to the collider_candidates failed.
+    1.  Indicating add a hostage to the collider_candidates failed.
 
     Super Class:
         *   HostageException

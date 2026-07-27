@@ -25,7 +25,7 @@ class WestAxisBuilderException(AxisSpaceBuilderException):
         -   Failure Tracing
 
     Responsibilities:
-        1.  Indicate that a WestAxisBuilder failed. 
+        1.  Indicating a WestAxisBuilder failed.
 
     Attributes:
         msg: str

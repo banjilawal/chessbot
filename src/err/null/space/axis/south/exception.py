@@ -25,7 +25,7 @@ class SouthAxisNullException(AxisNullException):
         -   Failure Tracing
 
     Responsibilities:
-        1.  Indicate that a required SouthAxis Is Null.
+        1.  Indicating a required SouthAxis Is Null.
 
     Attributes:
         msg: str

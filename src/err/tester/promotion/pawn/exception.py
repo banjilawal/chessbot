@@ -27,7 +27,7 @@ class PromotionPawnTesterException(TesterException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a PawnPromotionTester encountered an error..
+        1.  Indicating a PawnPromotionTester encountered an error..
 
     Cannot Be Tester.s:
             msg: Optional[str]

@@ -28,7 +28,7 @@ class HostageContextCollisionException(ContextCollisionDetectorException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a HostageContextCollision step failed.
+        1.  Indicating a HostageContextCollision step failed.
 
     Attributes:
             msg: Optional[str]

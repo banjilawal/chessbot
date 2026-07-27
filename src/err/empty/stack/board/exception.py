@@ -24,7 +24,7 @@ class BoardStackEmptyException(StackEmptyException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required BoardStack is empty.
+        1.  Indicating a required BoardStack is empty.
 
     Attributes:
         msg: Optional[str]

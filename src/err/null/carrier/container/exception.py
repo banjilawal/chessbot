@@ -26,7 +26,7 @@ class ContainerCarrierNullException(EntityCarrierNullException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required ContainerCarrierToggle is null.
+        1.  Indicating a required ContainerCarrierToggle is null.
 
     Attributes:
             msg: Optional[str]

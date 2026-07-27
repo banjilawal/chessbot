@@ -25,7 +25,7 @@ class HashtableException(ToolkitException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a Hashtable encountered an error.
+        1.  Indicating a Hashtable encountered an error.
 
     Attributes:
         msg: Optional[str]

@@ -26,7 +26,7 @@ class TupleNullException(ContainerNullException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required Tuple is null.
+        1.  Indicating a required Tuple is null.
 
     Attributes:
         msg: Optional[str]

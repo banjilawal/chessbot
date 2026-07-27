@@ -26,7 +26,7 @@ class VectorToggleRegisterCarrierException(RegisterCarrierException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate a VectorToggleRegisterCarrier encountered an error.
+        1.  Indicating a VectorToggleRegisterCarrier encountered an error.
 
     Attributes:
         msg: Optional[str]

@@ -24,7 +24,7 @@ class DatabaseFullException(FullException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required Database is full.
+        1.  Indicating a required Database is full.
 
     Attributes:
         msg: Optional[str]

@@ -28,7 +28,7 @@ class RankBinderTokenOperationBootstrapperException(BinderTokenOperationBootstra
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a RankBinder tokenfailed.
+        1.  Indicating a RankBinder tokenfailed.
 
     TokenFailed.s:
             msg: Optional[str]

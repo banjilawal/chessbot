@@ -25,7 +25,7 @@ class KingTokenException(TokenException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a KingToken encountered an error.
+        1.  Indicating a KingToken encountered an error.
 
     Attributes:
         msg: Optional[str]

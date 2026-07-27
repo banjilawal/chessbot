@@ -24,7 +24,7 @@ class TokenStackNullException(StackNullException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required TokenStack is null.
+        1.  Indicating a required TokenStack is null.
 
     Attributes:
         msg: Optional[str]

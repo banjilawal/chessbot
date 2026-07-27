@@ -28,7 +28,7 @@ class FormationBinderAssemblyException(BinderAssemblyException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a FormationBinder assembly failed.
+        1.  Indicating a FormationBinder assembly failed.
 
     Assembly Failed.s:
             msg: Optional[str]

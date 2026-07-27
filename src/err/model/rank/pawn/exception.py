@@ -25,7 +25,7 @@ class PawnException(RankException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a Pawn encountered an error.
+        1.  Indicating a Pawn encountered an error.
 
     Attributes:
         msg: Optional[str]

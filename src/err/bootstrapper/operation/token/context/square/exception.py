@@ -28,7 +28,7 @@ class SquareContextTokenOperationBootstrapperException(ContextTokenOperationBoot
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a SquareContext tokenfailed.
+        1.  Indicating a SquareContext tokenfailed.
 
     TokenFailed.s:
             msg: Optional[str]

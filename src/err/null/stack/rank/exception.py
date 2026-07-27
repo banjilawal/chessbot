@@ -27,7 +27,7 @@ class RankBlueprintNullException(BlueprintNullException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required RankBlueprint is null.
+        1.  Indicating a required RankBlueprint is null.
 
     Cannot Be Null.s:
             msg: Optional[str]

@@ -25,7 +25,7 @@ class AxisSpaceCarrierException(SpaceCarrierException):
         -   Failure Tracing
 
     Responsibilities:
-        1.  Indicate that a AxisSpaceCarrier experienced an error.
+        1.  Indicating a AxisSpaceCarrier experienced an error.
 
     Attributes:
         msg: str

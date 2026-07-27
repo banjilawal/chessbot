@@ -28,7 +28,7 @@ class ArenaBinderTokenOperationException(BinderTokenOperationException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a ArenaBinder tokenfailed.
+        1.  Indicating a ArenaBinder tokenfailed.
 
     TokenFailed.s:
             msg: Optional[str]

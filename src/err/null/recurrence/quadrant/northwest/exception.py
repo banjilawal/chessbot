@@ -26,7 +26,7 @@ class NorthwestQuadrantRecurrenceNullException(QuadrantRecurrenceNullException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required NorthwestQuadrantRecurrence is null.
+        1.  Indicating a required NorthwestQuadrantRecurrence is null.
 
     Attributes:
         msg: Optional[str]

@@ -27,7 +27,7 @@ class SquareQueryNullException(QueryNullException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required SquareQuery is null.
+        1.  Indicating a required SquareQuery is null.
 
     Attributes:
             msg: Optional[str]

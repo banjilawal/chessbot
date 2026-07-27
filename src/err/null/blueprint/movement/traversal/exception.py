@@ -26,7 +26,7 @@ class TraversalPatternBlueprintNullException(MovementPatternBlueprintNullExcepti
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required TraversalPatternBlueprint is null.
+        1.  Indicating a required TraversalPatternBlueprint is null.
 
     Attributes:
         msg: Optional[str]

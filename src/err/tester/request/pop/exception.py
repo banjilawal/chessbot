@@ -26,7 +26,7 @@ class PopRequestTesterException(RequestTesterException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a PopRequestTester failed.
+        1.  Indicating a PopRequestTester failed.
 
     Cannot Be Tester.s:
             msg: Optional[str]

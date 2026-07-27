@@ -22,7 +22,7 @@ class BoardInsertionException(BoardException, InsertionException):
     Role:Exception Work
 
     Responsibilities:
-    1.  Indicate that add a occupant to the roster failed.
+    1.  Indicating add a occupant to the roster failed.
 
     Super Class:
         *   BoardException

@@ -28,7 +28,7 @@ class NodeBinderBuilderException(BinderBuilderException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a NodeBinder build failed.
+        1.  Indicating a NodeBinder build failed.
 
     Build Failed.s:
             msg: Optional[str]

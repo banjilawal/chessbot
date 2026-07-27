@@ -25,7 +25,7 @@ class PersonaTokenStateException(TokenStateException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that n Persona tokenfailed.
+        1.  Indicating that n Persona tokenfailed.
 
     Attributes:
             msg: Optional[str]

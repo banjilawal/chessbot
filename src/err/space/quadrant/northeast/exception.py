@@ -25,7 +25,7 @@ class NortheastQuadrantException(QuadrantException):
         -   Failure Tracing
 
     Responsibilities:
-        1.  Indicate that an error occurred in a NortheastQuadrant.
+        1.  Indicating an error occurred in a NortheastQuadrant.
 
     Attributes:
         msg: str

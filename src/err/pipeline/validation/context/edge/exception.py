@@ -24,7 +24,7 @@ class EdgeContextValidationPipelineException(ContextValidationPipelineException)
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an error occurred in an EdgeContextValidationPipeline.
+        1.  Indicating an error occurred in an EdgeContextValidationPipeline.
 
     Attributes:
         msg: Optional[str]

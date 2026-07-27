@@ -25,7 +25,7 @@ class BootstrapGameAssemblyException(AssemblyBootstrapperException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a GameAssembly bootstrap step failed.
+        1.  Indicating a GameAssembly bootstrap step failed.
 
     Attributes:
             msg: Optional[str]

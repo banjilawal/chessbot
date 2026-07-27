@@ -26,7 +26,7 @@ class VectorEuclideanException(VectorStateException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an error aborted the Euclidean distance calculation.
+        1.  Indicating an error aborted the Euclidean distance calculation.
 
     Attributes:
         msg: Optional[str]

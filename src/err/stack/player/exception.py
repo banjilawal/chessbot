@@ -27,7 +27,7 @@ class PalyerStackServiceException(StackServiceException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a PalyerStackService encountered an error.
+        1.  Indicating a PalyerStackService encountered an error.
 
     Attributes:
         msg: Optional[str]

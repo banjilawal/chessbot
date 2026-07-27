@@ -27,7 +27,7 @@ class TokenQueryNullException(QueryNullException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required TokenQuery is null.
+        1.  Indicating a required TokenQuery is null.
 
     Attributes:
             msg: Optional[str]

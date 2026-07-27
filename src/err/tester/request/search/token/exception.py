@@ -27,7 +27,7 @@ class TokenSearchRequestTesterException(TesterException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a TokenStackSearchTester encountered an error.
+        1.  Indicating a TokenStackSearchTester encountered an error.
 
     Cannot Be Tester.s:
             msg: Optional[str]

@@ -24,7 +24,7 @@ class SquareDatabaseFullException(DatabaseFullException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required SquareDatabase is full.
+        1.  Indicating a required SquareDatabase is full.
 
     Attributes:
         msg: Optional[str]

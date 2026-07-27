@@ -26,7 +26,7 @@ class PopperPermitterException(PermitterException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a PopperPermitter did not approve the request.
+        1.  Indicating a PopperPermitter did not approve the request.
 
     Attributes:
         msg: Optional[str]

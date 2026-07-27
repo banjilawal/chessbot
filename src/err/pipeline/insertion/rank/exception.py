@@ -24,7 +24,7 @@ class RankInsertionPipelineException(InsertionPipelineException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an error occurred in a RankInsertionPipeline.
+        1.  Indicating an error occurred in a RankInsertionPipeline.
 
     Attributes:
         msg: Optional[str]

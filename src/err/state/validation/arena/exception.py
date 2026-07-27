@@ -24,7 +24,7 @@ class ArenaValidatorException(ValidatorException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an ArenaValidation check failed.
+        1.  Indicating an ArenaValidation check failed.
 
     Attributes:
         msg: Optional[str]

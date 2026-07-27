@@ -26,7 +26,7 @@ class PersonaContextBuilderBootstrapperException(ContextBuilderBootstrapperExcep
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a PersonaContextBuilderBootstrapper was aborted by an exception.
+        1.  Indicating a PersonaContextBuilderBootstrapper was aborted by an exception.
 
    BuilderBootstrapper was aborted by an exception.s:
             msg: Optional[str]

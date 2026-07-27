@@ -24,7 +24,7 @@ class TeamDatabaseNullException(DatabaseNullException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required TeamDatabase is null.
+        1.  Indicating a required TeamDatabase is null.
 
     Attributes:
         msg: Optional[str]

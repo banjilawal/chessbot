@@ -26,7 +26,7 @@ class DevelopedManeuverOffsetPatternCarrierException(ManeuverOffsetPatternCarrie
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an error occurred in an DevelopedManeuverOffsetPatternCarrier experienced an error.
+        1.  Indicating an error occurred in an DevelopedManeuverOffsetPatternCarrier experienced an error.
 
     Attributes:
         msg: Optional[str]

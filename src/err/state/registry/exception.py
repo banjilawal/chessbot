@@ -27,7 +27,7 @@ class RegistryStateException(StateException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a Registry statefailed.
+        1.  Indicating a Registry statefailed.
 
     Attributes:
         msg: Optional[str]

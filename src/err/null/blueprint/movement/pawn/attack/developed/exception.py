@@ -26,7 +26,7 @@ class DevelopedAttackOffsetPatternBlueprintNullException(AttackOffsetPatternBlue
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an error occurred in an DevelopedAttackOffsetPatternBlueprint is null.
+        1.  Indicating an error occurred in an DevelopedAttackOffsetPatternBlueprint is null.
 
     Attributes:
         msg: Optional[str]

@@ -24,7 +24,7 @@ class DuplicateTokenPushException(DuplicateItemException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that pushing a duplicate Token failed.
+        1.  Indicating that pushing a duplicate Token failed.
 
     Attributes:
         msg: Optional[str]

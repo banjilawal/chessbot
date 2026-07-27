@@ -24,7 +24,7 @@ class CoordStackRegistrationException(StackRegistrationException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that registrationing onto a CoordStack failed.
+        1.  Indicating that registrationing onto a CoordStack failed.
 
     Attributes:
         msg: Optional[str]

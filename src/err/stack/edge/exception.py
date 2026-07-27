@@ -27,7 +27,7 @@ class EdgeStackServiceException(StackServiceException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a EdgeStackService encountered an error.
+        1.  Indicating a EdgeStackService encountered an error.
 
     Attributes:
         msg: Optional[str]

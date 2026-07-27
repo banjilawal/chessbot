@@ -25,7 +25,7 @@ class PlayerBuilderException(BuilderException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a Player build failed.
+        1.  Indicating a Player build failed.
 
     Attributes:
         msg: Optional[str]

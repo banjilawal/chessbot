@@ -26,7 +26,7 @@ class PlayerConsistencyCheckerException(ConsistencyCheckerException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a PlayerConsistencyChecker raised an error.
+        1.  Indicating a PlayerConsistencyChecker raised an error.
 
     Attributes:
         msg: Optional[str]

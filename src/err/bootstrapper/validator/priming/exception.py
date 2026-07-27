@@ -26,7 +26,7 @@ class PrimingValidatorException(ValidatorBootstrapperException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate a PrimingValidator encountered an error.
+        1.  Indicating a PrimingValidator encountered an error.
 
     Attributes:
         msg: Optional[str]

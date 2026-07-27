@@ -26,7 +26,7 @@ class AttackPathtoggleCarrierException(PathException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a AttackPathtoggleCarrier encountered an error.
+        1.  Indicating a AttackPathtoggleCarrier encountered an error.
 
     Attributes:
         msg: Optional[str]

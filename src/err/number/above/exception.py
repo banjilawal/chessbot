@@ -25,7 +25,7 @@ class NumberAboveBoundsException(NumberException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a number is above the ceiling.
+        1.  Indicating a number is above the ceiling.
 
     Attributes:
         msg: Optional[str]

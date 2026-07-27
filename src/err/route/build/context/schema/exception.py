@@ -28,7 +28,7 @@ class SchemaContextBuildRouteException(ContextBuildRouteException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that one of SchemaContext build routes is missing.
+        1.  Indicating that one of SchemaContext build routes is missing.
 
     Attributes:
             msg: Optional[str]

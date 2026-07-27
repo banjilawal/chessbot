@@ -24,7 +24,7 @@ class DeletionPipelineException(PipelineException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an error occurred in a DeletionPipeline.
+        1.  Indicating an error occurred in a DeletionPipeline.
 
     Attributes:
         msg: Optional[str]

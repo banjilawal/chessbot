@@ -26,7 +26,7 @@ class RankQuotaFullException(TokenPusherException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that pushing onto a TokenStack failed because theere were no openings for the token's rank.
+        1.  Indicating that pushing onto a TokenStack failed because theere were no openings for the token's rank.
 
     Attributes:
         msg: Optional[str]
@@ -86,7 +86,7 @@ class RankQuotaFullException(TokenPusherException):
         - Exception Messaging
 
     Responsibilities:
-        1.  Indicate that pushing a token to the stack failed because there were no
+        1.  Indicating that pushing a token to the stack failed because there were no
             openings for the token's rank.
         
     Attributes:

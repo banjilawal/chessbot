@@ -24,7 +24,7 @@ class CoordDatabaseSizeException(DatabaseSizeException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required CoordDatabaseis the wrong size.
+        1.  Indicating a required CoordDatabaseis the wrong size.
 
     Attributes:
         msg: Optional[str]

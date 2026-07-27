@@ -26,7 +26,7 @@ class ModelNullException(NullException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required Model is null.
+        1.  Indicating a required Model is null.
 
     Attributes:
             msg: Optional[str]

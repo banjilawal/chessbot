@@ -28,7 +28,7 @@ class HostageContextTokenOperationException(ContextTokenOperationException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a HostageContext tokenfailed.
+        1.  Indicating a HostageContext tokenfailed.
 
     TokenFailed.s:
             msg: Optional[str]

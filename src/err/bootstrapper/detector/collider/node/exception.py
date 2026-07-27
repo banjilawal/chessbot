@@ -24,7 +24,7 @@ class NodeColliderBootstrapperException(ColliderBootstrapperException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a NodeCollision step failed.
+        1.  Indicating a NodeCollision step failed.
 
     Attributes:
         msg: Optional[str]

@@ -26,7 +26,7 @@ class IdentityRegisterEmptyException(RegisterEmptyException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required IdentityRegister is empty.
+        1.  Indicating a required IdentityRegister is empty.
 
     Attributes:
         msg: Optional[str]

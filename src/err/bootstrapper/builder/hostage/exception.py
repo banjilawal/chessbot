@@ -26,7 +26,7 @@ class HostageBuilderBootstrapperException(BuilderBootstrapperException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a HostageBuilderBootstrapper was aborted by an exception.
+        1.  Indicating a HostageBuilderBootstrapper was aborted by an exception.
 
     Attributes:
         msg: Optional[str]

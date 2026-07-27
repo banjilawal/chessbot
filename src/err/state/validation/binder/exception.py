@@ -24,7 +24,7 @@ class BinderValidatorException(ValidatorException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a BinderValidation check failed.
+        1.  Indicating a BinderValidation check failed.
 
     Attributes:
         msg: Optional[str]

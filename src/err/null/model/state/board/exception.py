@@ -26,7 +26,7 @@ class BoardNullException(StateModelNullException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required Board is null.
+        1.  Indicating a required Board is null.
 
     Attributes:
         msg: Optional[str]

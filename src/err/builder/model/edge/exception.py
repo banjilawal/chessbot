@@ -26,7 +26,7 @@ class EdgeBuilderException(ModelBuilderException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an EdgeBuilder failed.
+        1.  Indicating an EdgeBuilder failed.
 
     Attributes:
         msg: Optional[str]

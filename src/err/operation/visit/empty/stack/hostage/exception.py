@@ -24,7 +24,7 @@ class VisitpingEmptyHostageStackException(VisitpingEmptyStackException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that visitpingEmpty a HostageStack failed.
+        1.  Indicating that visitpingEmpty a HostageStack failed.
 
     Attributes:
         msg: Optional[str]

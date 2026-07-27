@@ -24,7 +24,7 @@ class ExcessVectorToggleActivationException(ExcessToggleActivationException):
         -   Error Tracing
         
     Responsibilities:
-        1.  Indicate that too many switches in a VectorToggle are on. 
+        1.  Indicating that too many switches in a VectorToggle are on.
 
     Attributes:
         msg: Optional[str]

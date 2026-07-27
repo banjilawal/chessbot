@@ -29,7 +29,7 @@ class PrimingSquareContextAssemblyException(PrimingContextAssemblyException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a SquareContextAssembly priming step failed.
+        1.  Indicating a SquareContextAssembly priming step failed.
 
     Attributes:
             msg: Optional[str]

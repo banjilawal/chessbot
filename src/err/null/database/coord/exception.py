@@ -24,7 +24,7 @@ class CoordDatabaseNullException(DatabaseNullException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required CoordDatabase is null.
+        1.  Indicating a required CoordDatabase is null.
 
     Attributes:
         msg: Optional[str]

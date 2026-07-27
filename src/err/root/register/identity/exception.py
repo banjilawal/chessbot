@@ -28,7 +28,7 @@ class IdentityRegisterRootCertifierException(RegisterRootCertifierException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a candidate failed a VectorIdentityRegisterCertifier failed.
+        1.  Indicating a candidate failed a VectorIdentityRegisterCertifier failed.
 
     Attributes:
             msg: Optional[str]

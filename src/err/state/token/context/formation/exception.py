@@ -28,7 +28,7 @@ class FormationContextTokenStateException(ContextTokenStateException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a FormationContext tokenfailed.
+        1.  Indicating a FormationContext tokenfailed.
 
     TokenFailed.s:
             msg: Optional[str]

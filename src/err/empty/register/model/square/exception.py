@@ -26,7 +26,7 @@ class SquareRegisterEmptyException(ModelRegisterEmptyException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required SquareRegister is empty.
+        1.  Indicating a required SquareRegister is empty.
 
     Attributes:
         msg: Optional[str]

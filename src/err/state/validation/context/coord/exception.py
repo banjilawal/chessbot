@@ -27,7 +27,7 @@ class CoordContextValidatorException(ContextValidatorException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a CoordContextValidation check failed.
+        1.  Indicating a CoordContextValidation check failed.
 
     Attributes:
             msg: Optional[str]

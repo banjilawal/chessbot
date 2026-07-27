@@ -26,7 +26,7 @@ class CoordSearchResultEmptyException(SearchResultEmptyException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a CoordSearcher did not find the required item.
+        1.  Indicating a CoordSearcher did not find the required item.
 
     Attributes:
             msg: Optional[str]

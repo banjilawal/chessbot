@@ -26,7 +26,7 @@ class RootCertifierException(ChessException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a candidate failed a RootCertifier test.
+        1.  Indicating a candidate failed a RootCertifier test.
 
     Attributes:
             msg: Optional[str]

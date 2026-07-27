@@ -26,7 +26,7 @@ class CoordRegisterCarrierException(RegisterCarrierException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a CoordRegisterCarrier encountered an error.
+        1.  Indicating a CoordRegisterCarrier encountered an error.
 
     Attributes:
         msg: Optional[str]

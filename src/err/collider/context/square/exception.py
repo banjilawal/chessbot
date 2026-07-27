@@ -28,7 +28,7 @@ class SquareContextCollisionException(ContextColliderException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a SquareContextCollision step failed.
+        1.  Indicating a SquareContextCollision step failed.
 
     Attributes:
             msg: Optional[str]

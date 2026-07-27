@@ -25,7 +25,7 @@ class FinalizeScalarBuilderException(FinalizeBuilderException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that finalizing a ScalarBuild failed.
+        1.  Indicating that finalizing a ScalarBuild failed.
 
     Attributes:
         msg: Optional[str]

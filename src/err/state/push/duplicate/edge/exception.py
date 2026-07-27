@@ -24,7 +24,7 @@ class DuplicateEdgePushException(DuplicateItemException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that pushing a duplicate Edge failed.
+        1.  Indicating that pushing a duplicate Edge failed.
 
     Attributes:
         msg: Optional[str]

@@ -26,7 +26,7 @@ class CoordContextBuilderException(ContextBuilderException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a CoordContextBuilder failed.
+        1.  Indicating a CoordContextBuilder failed.
 
    Builder failed.s:
             msg: Optional[str]

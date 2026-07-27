@@ -28,7 +28,7 @@ class TeamContextCollisionException(ContextCollisionDetectorException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a TeamContextCollision step failed.
+        1.  Indicating a TeamContextCollision step failed.
 
     Attributes:
             msg: Optional[str]

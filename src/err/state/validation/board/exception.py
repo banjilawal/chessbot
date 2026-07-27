@@ -24,7 +24,7 @@ class BoardValidatorException(ValidatorException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a BoardValidation check failed.
+        1.  Indicating a BoardValidation check failed.
 
     Attributes:
         msg: Optional[str]

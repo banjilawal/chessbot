@@ -24,7 +24,7 @@ class ArenaDeletionPipelineException(DeletionPipelineException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an error occurred in a ArenaDeletionPipeline.
+        1.  Indicating an error occurred in a ArenaDeletionPipeline.
 
     Attributes:
         msg: Optional[str]

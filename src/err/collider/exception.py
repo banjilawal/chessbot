@@ -27,7 +27,7 @@ class ColliderException(OperationException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an item collided with the attractor.
+        1.  Indicating an item collided with the attractor.
         
     Attributes:
         msg: Optional[str]

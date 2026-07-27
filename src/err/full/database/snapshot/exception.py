@@ -24,7 +24,7 @@ class SnapshotDatabaseFullException(DatabaseFullException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required SnapshotDatabase is full.
+        1.  Indicating a required SnapshotDatabase is full.
 
     Attributes:
         msg: Optional[str]

@@ -21,7 +21,7 @@ class AttackingTokenOnWrongBoardException(AttackDebugException):
     Role:Debug, Error Tracing
 
     Responsibilities:
-    1.  Indicate that an attack failed because the attacker was targeting the wrong board,
+    1.  Indicate an attack failed because the attacker was targeting the wrong board,
 
     Super Class:
         *   AttackDebugException

@@ -28,7 +28,7 @@ class BoardContextBuilderException(ContextBuilderException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a BoardContext build failed.
+        1.  Indicating a BoardContext build failed.
 
     Build Failed.s:
             msg: Optional[str]

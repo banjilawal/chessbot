@@ -26,7 +26,7 @@ class LineSegmentOriginSizeException(LineSegmentSizeException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a LineSegment has an size origin.
+        1.  Indicating a LineSegment has an size origin.
 
     Attributes:
         msg: Optional[str]

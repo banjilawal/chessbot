@@ -25,7 +25,7 @@ class ContextAssemblyException(AssemblyException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a ContextAssembly failed.
+        1.  Indicating a ContextAssembly failed.
 
     Assembly Failed.s:
             msg: Optional[str]

@@ -26,7 +26,7 @@ class ArenaMicroserviceException(MicroserviceException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an ArenaMicroservice failed.
+        1.  Indicating an ArenaMicroservice failed.
 
     Attributes:
         msg: Optional[str]

@@ -25,7 +25,7 @@ class BoardTeamBinderConsistencyCheckerException(BinderException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a BoardTeamBinderConsistencyChecker raised an error.
+        1.  Indicating a BoardTeamBinderConsistencyChecker raised an error.
 
     Attributes:
         msg: Optional[str]

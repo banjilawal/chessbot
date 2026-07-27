@@ -25,7 +25,7 @@ class WestAxisCarrierNullException(AxisCarrierNullException):
         -   Failure Tracing
 
     Responsibilities:
-        1.  Indicate that a required WestAxis is null.
+        1.  Indicating a required WestAxis is null.
 
     Attributes:
         msg: str

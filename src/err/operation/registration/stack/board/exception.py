@@ -24,7 +24,7 @@ class BoardStackRegistrationException(StackRegistrationException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that registrationing onto a BoardStack failed.
+        1.  Indicating that registrationing onto a BoardStack failed.
 
     Attributes:
         msg: Optional[str]

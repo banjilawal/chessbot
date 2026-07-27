@@ -26,7 +26,7 @@ class RecurrenceBuilderException(BuilderException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a RecurrenceBuilder failed.
+        1.  Indicating a RecurrenceBuilder failed.
 
     Attributes:
         msg: Optional[str]

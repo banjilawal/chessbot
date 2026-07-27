@@ -23,7 +23,7 @@ class MethodImplementationException(DebugException):
     Role:Error Variable Identifier, Exception Chain Layer 2, Exception Messaging
 
     Responsibilities:
-    1.  Indicate that a call was made to an abstract method that the subclass does not implement.
+    1.  Indicating a call was made to an abstract method that the subclass does not implement.
 
     Super Class:
         *   DebugException

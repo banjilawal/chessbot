@@ -21,7 +21,7 @@ class AttackerSquareInconsistencyException(AttackDebugException):
     Role:Debug, Error Tracing
 
     Responsibilities:
-    1.  Indicate that an attack failed because the attacker's item does not have them as an occupant.
+    1.  Indicate an attack failed because the attacker's item does not have them as an occupant.
 
     Super Class:
         *   AttackDebugException

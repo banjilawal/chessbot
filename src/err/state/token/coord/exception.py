@@ -25,7 +25,7 @@ class CoordTokenStateException(TokenStateException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a Coord tokenfailed.
+        1.  Indicating a Coord tokenfailed.
 
     Attributes:
         msg: Optional[str]

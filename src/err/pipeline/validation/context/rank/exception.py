@@ -24,7 +24,7 @@ class RankContextValidationPipelineException(ContextValidationPipelineException)
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an error occurred in an RankContextValidationPipeline.
+        1.  Indicating an error occurred in an RankContextValidationPipeline.
 
     Attributes:
         msg: Optional[str]

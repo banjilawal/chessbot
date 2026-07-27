@@ -27,7 +27,7 @@ class RegistryOperationBootstrapperException(OperationBootstrapperException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a Registry operation failed.
+        1.  Indicating a Registry operation failed.
 
     Attributes:
         msg: Optional[str]

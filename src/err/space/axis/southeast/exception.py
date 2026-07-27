@@ -25,7 +25,7 @@ class EastAxisException(AxisException):
         -   Failure Tracing
 
     Responsibilities:
-        1.  Indicate that an error occurred in a EastAxis.
+        1.  Indicating an error occurred in a EastAxis.
 
     Attributes:
         msg: str

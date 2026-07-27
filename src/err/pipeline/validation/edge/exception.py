@@ -24,7 +24,7 @@ class EdgeValidationPipelineException(ValidationPipelineException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an error occurred in a EdgeValidationPipeline.
+        1.  Indicating an error occurred in a EdgeValidationPipeline.
 
     Attributes:
         msg: Optional[str]

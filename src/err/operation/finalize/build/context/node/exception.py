@@ -24,7 +24,7 @@ class FinalizeNodeContextBuilderException(FinalizeContextBuilderException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that finalizing a NodeContextBuild failed.
+        1.  Indicating that finalizing a NodeContextBuild failed.
 
     Attributes:
             msg: Optional[str]

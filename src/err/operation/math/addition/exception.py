@@ -26,7 +26,7 @@ class VectorAdditionException(VectorOperationException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an error occurred using vector addition
+        1.  Indicating an error occurred using vector addition
 
     Attributes:
         msg: Optional[str]

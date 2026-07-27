@@ -27,7 +27,7 @@ class StateException(ChessException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an operation cannot be executed because an entity is not in the correct state.
+        1.  Indicating an operation cannot be executed because an entity is not in the correct state.
 
     Attributes:
         msg: str

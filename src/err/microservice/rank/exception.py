@@ -26,7 +26,7 @@ class RankMicroserviceException(MicroserviceException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a candidate did not pass a RankMicroservice failed.
+        1.  Indicating a candidate did not pass a RankMicroservice failed.
 
     Attributes:
         msg: Optional[str]

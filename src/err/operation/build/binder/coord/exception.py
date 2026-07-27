@@ -28,7 +28,7 @@ class CoordBinderBuilderException(BinderBuilderException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a CoordBinder build failed.
+        1.  Indicating a CoordBinder build failed.
 
     Build Failed.s:
             msg: Optional[str]

@@ -26,7 +26,7 @@ class QuadrantEmptyException(LinearSpaceEmptyException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required Quadrant is empty.
+        1.  Indicating a required Quadrant is empty.
 
     Attributes:
         msg: Optional[str]

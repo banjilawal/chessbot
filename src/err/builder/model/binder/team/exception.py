@@ -29,7 +29,7 @@ class TeamBinderBuilderException(BinderBuilderException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a TeamBinderBuilder failed.
+        1.  Indicating a TeamBinderBuilder failed.
 
    Builder failed.s:
             msg: Optional[str]

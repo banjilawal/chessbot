@@ -26,7 +26,7 @@ class SquareRegisterNullException(ModelRegisterNullException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required SquareRegister is null.
+        1.  Indicating a required SquareRegister is null.
 
     Attributes:
         msg: Optional[str]

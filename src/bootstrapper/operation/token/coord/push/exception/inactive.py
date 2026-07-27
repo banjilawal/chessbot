@@ -27,7 +27,7 @@ class InactiveTokenPushingCoordException(TokenDebugException):
         -   Exception Messaging
 
     Responsibilities:
-        1.  Indicate that an inactive Token tried to add a new position.
+        1.  Indicate an inactive Token tried to add a new position.
 
     Attributes:
         var: Optional[str]

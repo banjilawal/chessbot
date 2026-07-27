@@ -25,7 +25,7 @@ class SouthAxisValidatorException(AxisValidatorException):
         -   Failure Tracing
 
     Responsibilities:
-        1.  Indicate that a SouthAxisValidator failed. 
+        1.  Indicating a SouthAxisValidator failed.
 
     Attributes:
         msg: str

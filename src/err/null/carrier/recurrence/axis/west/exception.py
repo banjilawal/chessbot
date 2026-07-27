@@ -26,7 +26,7 @@ class WestQuadrantRecurrenceCarrierNullException(QuadrantRecurrenceCarrierNullEx
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required WestQuadrantRecurrenceCarrier is null.
+        1.  Indicating a required WestQuadrantRecurrenceCarrier is null.
 
     Attributes:
         msg: Optional[str]

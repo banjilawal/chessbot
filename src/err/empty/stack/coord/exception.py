@@ -24,7 +24,7 @@ class CoordStackEmptyException(StackEmptyException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required CoordStack is empty.
+        1.  Indicating a required CoordStack is empty.
 
     Attributes:
         msg: Optional[str]

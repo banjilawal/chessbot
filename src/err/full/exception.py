@@ -26,7 +26,7 @@ class CapacityFullException(ChessException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a container or resource is full.
+        1.  Indicating a container or resource is full.
 
     Attributes:
         msg: Optional[str]

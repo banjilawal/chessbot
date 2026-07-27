@@ -24,7 +24,7 @@ class VectorContextBuilderException(ContextBuilderException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a VectorContextBuilder failed.
+        1.  Indicating a VectorContextBuilder failed.
 
    Builder failed.s:
             msg: Optional[str]

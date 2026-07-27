@@ -26,7 +26,7 @@ class CoordBuilderException(ModelBuilderException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a CoordBuilder failed.
+        1.  Indicating a CoordBuilder failed.
 
     Attributes:
         msg: Optional[str]

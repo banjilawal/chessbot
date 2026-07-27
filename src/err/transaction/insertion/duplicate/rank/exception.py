@@ -25,7 +25,7 @@ class DuplicateRankPushException(DuplicateItemException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that pushing a duplicate item onto the RankStack failed.
+        1.  Indicating that pushing a duplicate item onto the RankStack failed.
 
     Attributes:
         msg: Optional[str]

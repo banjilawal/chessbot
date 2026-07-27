@@ -26,7 +26,7 @@ class PawnOffsetPatternNullException(OffsetPatternNullException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required PawnOffsetPattern is null.
+        1.  Indicating a required PawnOffsetPattern is null.
 
     Attributes:
         msg: Optional[str]

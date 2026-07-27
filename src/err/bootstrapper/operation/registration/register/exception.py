@@ -27,7 +27,7 @@ class WorkerRegistrationException(RegistrationException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that registering a worker failed.
+        1.  Indicating that registering a worker failed.
 
     Attributes:
         msg: Optional[str]

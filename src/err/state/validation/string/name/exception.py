@@ -24,7 +24,7 @@ class NameValidatorException(ValidatorException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a NameValidation check failed.
+        1.  Indicating a NameValidation check failed.
 
     Attributes:
         msg: Optional[str]

@@ -26,7 +26,7 @@ class BlockedPathSearchResultEmptyException(PathSearchResultEmptyException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an BlockedPathSearcher did not find the required item.
+        1.  Indicating an BlockedPathSearcher did not find the required item.
 
     Attributes:
             msg: Optional[str]

@@ -26,7 +26,7 @@ class KingPathConsistencyCheckerException(PathException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a KingPathConsistencyChecker raised an error.
+        1.  Indicating a KingPathConsistencyChecker raised an error.
 
     Attributes:
         msg: Optional[str]

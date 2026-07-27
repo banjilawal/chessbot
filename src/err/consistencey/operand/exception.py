@@ -27,7 +27,7 @@ class VectorToggleConsistencyCheckerException(ConsistencyCheckerException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a VectorToggleConsistencyChecker raised an error.
+        1.  Indicating a VectorToggleConsistencyChecker raised an error.
 
     Attributes:
             msg: Optional[str]

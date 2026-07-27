@@ -24,7 +24,7 @@ class CoordDatabaseEmptyException(DatabaseEmptyException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required CoordDatabase is empty.
+        1.  Indicating a required CoordDatabase is empty.
 
     Attributes:
         msg: Optional[str]

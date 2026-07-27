@@ -26,7 +26,7 @@ class VectorRegisterCarrierException(RegisterCarrierException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate a VectorRegisterCarrier encountered an error.
+        1.  Indicating a VectorRegisterCarrier encountered an error.
 
     Attributes:
         msg: Optional[str]

@@ -28,7 +28,7 @@ class PlayerContextCollisionException(ContextColliderException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a PlayerContextCollision step failed.
+        1.  Indicating a PlayerContextCollision step failed.
 
     Attributes:
             msg: Optional[str]

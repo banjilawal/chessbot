@@ -24,7 +24,7 @@ class PawnValidatorException(RankValidatorException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a Pawn validation check failed.
+        1.  Indicating a Pawn validation check failed.
 
     Attributes:
         msg: Optional[str]

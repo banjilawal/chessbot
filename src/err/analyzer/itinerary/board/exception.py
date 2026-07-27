@@ -26,7 +26,7 @@ class SquareVisitorBoardException(ItineraryAnalyzerException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a square entry failed because the visitor belonged to a different board.
+        1.  Indicating a square entry failed because the visitor belonged to a different board.
 
     Attributes:
         msg: Optional[str]

@@ -26,7 +26,7 @@ class OffsetPatternValidatorException(MovementPatternValidatorException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required OffsetPatternValidator failed.
+        1.  Indicate a required OffsetPatternValidator failed.
 
     Attributes:
         msg: Optional[str]

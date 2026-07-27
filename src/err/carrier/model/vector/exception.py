@@ -26,7 +26,7 @@ class VectorCarrierException(ModelCarrierException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate a VectorCarrier encountered an error.
+        1.  Indicating a VectorCarrier encountered an error.
 
     Attributes:
         msg: Optional[str]

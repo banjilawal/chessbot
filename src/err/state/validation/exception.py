@@ -27,7 +27,7 @@ class ValidatorException(StateException):
         -   Failure Tracing
 
     Responsibilities:
-        1.  Indicate that validation check failed.
+        1.  Indicating that validation check failed.
 
     Attributes:
         msg: str

@@ -26,7 +26,7 @@ class StaleTokenLinkException(StaleLinkException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a primary has an expired link to a former satellite Token.
+        1.  Indicating a primary has an expired link to a former satellite Token.
 
     Attributes:
             msg: Optional[str]

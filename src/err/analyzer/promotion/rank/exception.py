@@ -26,7 +26,7 @@ class PromotionLevelAnalyzerException(AnalyzerException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate a rank elevation check was not passed.
+        1.  Indicating a rank elevation check was not passed.
 
     Attributes:
         msg: Optional[str]

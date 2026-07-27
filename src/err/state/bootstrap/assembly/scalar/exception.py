@@ -25,7 +25,7 @@ class BootstrapScalarAssemblyException(AssemblyBootstrapperException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a ScalarAssembly bootstrap step failed.
+        1.  Indicating a ScalarAssembly bootstrap step failed.
 
     Attributes:
         msg: Optional[str]

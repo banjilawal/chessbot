@@ -28,7 +28,7 @@ class FinalizeRankContextBuilderException(FinalizeContextBuilderException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that finalizing a RankContextBuild failed.
+        1.  Indicating that finalizing a RankContextBuild failed.
 
     Attributes:
             msg: Optional[str]

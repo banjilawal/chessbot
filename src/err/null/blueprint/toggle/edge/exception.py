@@ -27,7 +27,7 @@ class EdgeToggleBlueprintNullException(ToggleBlueprintNullException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required EdgeBlueprint is null.
+        1.  Indicating a required EdgeBlueprint is null.
 
     Cannot Be Null.s:
             msg: Optional[str]

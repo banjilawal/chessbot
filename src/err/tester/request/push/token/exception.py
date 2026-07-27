@@ -27,7 +27,7 @@ class TokenPushRequestTesterException(TesterException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a TokenStackPushTester encountered an error.
+        1.  Indicating a TokenStackPushTester encountered an error.
 
     Cannot Be Tester.s:
             msg: Optional[str]

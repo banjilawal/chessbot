@@ -26,7 +26,7 @@ class TeamCarrierNullException(ModelCarrierNullException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required TeamCarrierToggle is null.
+        1.  Indicating a required TeamCarrierToggle is null.
 
     Attributes:
             msg: Optional[str]

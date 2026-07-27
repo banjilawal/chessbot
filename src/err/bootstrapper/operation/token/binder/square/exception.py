@@ -28,7 +28,7 @@ class SquareBinderTokenOperationBootstrapperException(BinderTokenOperationBootst
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a SquareBinder tokenfailed.
+        1.  Indicating a SquareBinder tokenfailed.
 
     TokenFailed.s:
             msg: Optional[str]

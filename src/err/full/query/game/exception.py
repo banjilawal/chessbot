@@ -27,7 +27,7 @@ class GameQueryFullException(QueryFullException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required GameQuery is full.
+        1.  Indicating a required GameQuery is full.
 
     Attributes:
             msg: Optional[str]

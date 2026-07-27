@@ -24,7 +24,7 @@ class InconsistentStateException(DebugException):
     Role:Error Variable Identifier, Exception Chain Layer 2, Exception Messaging
 
     Responsibilities:
-    1.  Indicate that an object's data does not reflect the changes made during
+    1.  Indicating an object's data does not reflect the changes made during
         the successful update.
 
     Super Class:

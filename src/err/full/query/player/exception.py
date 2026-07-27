@@ -27,7 +27,7 @@ class PlayerQueryFullException(QueryFullException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required PlayerQuery is full.
+        1.  Indicating a required PlayerQuery is full.
 
     Attributes:
             msg: Optional[str]

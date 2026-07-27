@@ -29,7 +29,7 @@ class TokenBinderBuilderBootstrapperException(BinderBuilderBootstrapperException
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a TokenBinderBuilderBootstrapper was aborted by an exception.
+        1.  Indicating a TokenBinderBuilderBootstrapper was aborted by an exception.
 
    BuilderBootstrapper was aborted by an exception.s:
             msg: Optional[str]

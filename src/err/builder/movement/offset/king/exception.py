@@ -26,7 +26,7 @@ class KingOffsetPatternBuilderException(OffsetPatternBuilderException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required KingOffsetPatternBuilder failed.
+        1.  Indicating a required KingOffsetPatternBuilder failed.
 
     Attributes:
         msg: Optional[str]

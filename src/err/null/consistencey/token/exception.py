@@ -26,7 +26,7 @@ class TokenConsistencyCheckerNullException(ConsistencyCheckerNullException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required TokenConsistencyChecker is null.
+        1.  Indicating a required TokenConsistencyChecker is null.
 
     Attributes:
         msg: Optional[str]

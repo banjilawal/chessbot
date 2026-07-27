@@ -26,7 +26,7 @@ class GameCarrierException(ModelCarrierException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a GameCarrier encountered an error.
+        1.  Indicating a GameCarrier encountered an error.
 
     Attributes:
             msg: Optional[str]

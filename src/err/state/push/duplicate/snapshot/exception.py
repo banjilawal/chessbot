@@ -24,7 +24,7 @@ class DuplicateSnapshotPushException(DuplicateItemException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that pushing a duplicate Snapshot failed.
+        1.  Indicating that pushing a duplicate Snapshot failed.
 
     Attributes:
         msg: Optional[str]

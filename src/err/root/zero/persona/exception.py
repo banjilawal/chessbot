@@ -24,7 +24,7 @@ class ZeroPersonaBlueprintFlagsException(ZeroBlueprintFlagsException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicates that no PersonaRootCertifier test. enabled.
+        1.  Indicatings that no PersonaRootCertifier test. enabled.
 
     Attributes:
         msg: Optional[str]

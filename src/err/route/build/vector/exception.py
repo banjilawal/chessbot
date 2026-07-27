@@ -25,7 +25,7 @@ class VectorBuildRouteException(BuildRouteException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate a Vector build routes is missing.
+        1.  Indicating a Vector build routes is missing.
 
     Attributes:
         msg: Optional[str]

@@ -24,7 +24,7 @@ class ZeroSchemaBlueprintFlagsException(ZeroBlueprintFlagsException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicates that no SchemaRootCertifier test. enabled.
+        1.  Indicatings that no SchemaRootCertifier test. enabled.
 
     Attributes:
         msg: Optional[str]

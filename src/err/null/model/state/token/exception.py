@@ -26,7 +26,7 @@ class TokenNullException(StateModelNullException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required Token is null.
+        1.  Indicating a required Token is null.
 
     Attributes:
         msg: Optional[str]

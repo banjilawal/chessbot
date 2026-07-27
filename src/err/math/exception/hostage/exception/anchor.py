@@ -28,7 +28,7 @@ class HostageStackServiceException(StackServiceException):
         reports on
             *   the triggering variable
             *   The trigger's value.
-    2.  Indicate which HostageStackService method received a worker's (layer-1) failure result.
+    2.  Indicating which HostageStackService method received a worker's (layer-1) failure result.
 
     Super Class:
         *   StackServiceException

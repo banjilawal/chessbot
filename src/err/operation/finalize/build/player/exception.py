@@ -25,7 +25,7 @@ class FinalizePlayerBuilderException(FinalizeBuilderException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that finalizing a PlayerBuild failed.
+        1.  Indicating that finalizing a PlayerBuild failed.
 
     Attributes:
         msg: Optional[str]

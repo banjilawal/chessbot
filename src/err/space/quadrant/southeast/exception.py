@@ -25,7 +25,7 @@ class SoutheastQuadrantException(QuadrantException):
         -   Failure Tracing
 
     Responsibilities:
-        1.  Indicate that an error occurred in a SoutheastQuadrant.
+        1.  Indicating an error occurred in a SoutheastQuadrant.
 
     Attributes:
         msg: str

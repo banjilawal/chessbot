@@ -27,7 +27,7 @@ class TokenHomeContextNullException(ContextNullException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required TokenHomeContext is null.
+        1.  Indicating a required TokenHomeContext is null.
 
     Cannot Be Null.s:
             msg: Optional[str]

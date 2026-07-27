@@ -27,7 +27,7 @@ class PoppingEmptySquareStackException(DebugException):
         -   Exception Messaging
 
     Responsibilities:
-        1.  Indicate that a pop failed because the schema was empty.
+        1.  Indicate a pop failed because the schema was empty.
         
     Attributes:
         var: Optional[str]

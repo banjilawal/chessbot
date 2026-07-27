@@ -26,7 +26,7 @@ class PawnPromotionRowException(AnalyzerException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a pawn was not promoted because it was not on its enemy's 
+        1.  Indicating a pawn was not promoted because it was not on its enemy's
             row row.
 
     Attributes:

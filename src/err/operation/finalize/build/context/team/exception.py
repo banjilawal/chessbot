@@ -28,7 +28,7 @@ class FinalizeTeamContextBuilderException(FinalizeContextBuilderException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that finalizing a TeamContextBuild failed.
+        1.  Indicating that finalizing a TeamContextBuild failed.
 
     Attributes:
             msg: Optional[str]

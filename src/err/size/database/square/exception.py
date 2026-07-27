@@ -24,7 +24,7 @@ class SquareDatabaseSizeException(DatabaseSizeException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required SquareDatabaseis the wrong size.
+        1.  Indicating a required SquareDatabaseis the wrong size.
 
     Attributes:
         msg: Optional[str]

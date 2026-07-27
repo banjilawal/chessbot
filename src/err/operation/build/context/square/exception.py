@@ -28,7 +28,7 @@ class SquareContextBuilderException(ContextBuilderException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a SquareContext build failed.
+        1.  Indicating a SquareContext build failed.
 
     Build Failed.s:
             msg: Optional[str]

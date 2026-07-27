@@ -23,7 +23,7 @@ class InvariantBreachException(DebugException):
     Role:Error Variable Identifier, Exception Chain Layer 2, Exception Messaging
 
     Responsibilities:
-    1.  Indicate that a fundamental invariant of the system or environment is violated. The system’s
+    1.  Indicating a fundamental invariant of the system or environment is violated. The system’s
         assumptions about its internal state are no longer valid.
 
     Super Class:
@@ -49,7 +49,7 @@ class InvariantBreachException(DebugException):
         *   See DebugException class for inherited methods.
     """
     ERR_CODE = "INVARIANT_BREACH_EXCEPTION"
-    MSG = "System invariant violated. Indicates critical data loss."
+    MSG = "System invariant violated. Indicatings critical data loss."
     
     def __init__(
             self,

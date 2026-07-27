@@ -23,7 +23,7 @@ class NodeEdgeHandlerException(AnchorException):
     Role:Debug Coverage Target, Exception Chain Layer 0
 
     Responsibilities:
-    1.  Indicate that an error occurred in a NodeEdgeHandler.
+    1.  Indicate an error occurred in a NodeEdgeHandler.
 
     Super Class:
     *   AnchorException

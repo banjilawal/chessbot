@@ -24,7 +24,7 @@ class SquareInsertionPipelineException(InsertionPipelineException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an error occurred in a SquareInsertionPipeline.
+        1.  Indicating an error occurred in a SquareInsertionPipeline.
 
     Attributes:
         msg: Optional[str]

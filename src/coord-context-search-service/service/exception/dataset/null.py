@@ -23,7 +23,7 @@ class CoordDatasetNullException(NullException):
     Role:Error Tracing, Debugging
 
     Responsibilities:
-    1.  Indicate that a square is null where it should not be.
+    1.  Indicate a square is null where it should not be.
     
     Super Class:
         *   NullException

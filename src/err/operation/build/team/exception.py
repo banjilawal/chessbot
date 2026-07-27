@@ -25,7 +25,7 @@ class TeamBuilderException(BuilderException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a Team build failed.
+        1.  Indicating a Team build failed.
 
     Attributes:
             msg: Optional[str]

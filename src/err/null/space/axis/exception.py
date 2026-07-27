@@ -25,7 +25,7 @@ class AxisNullException(SpaceNullException):
         -   Failure Tracing
 
     Responsibilities:
-        1.  Indicate that a required AxisSpace is null.
+        1.  Indicating a required AxisSpace is null.
 
     Attributes:
         msg: str

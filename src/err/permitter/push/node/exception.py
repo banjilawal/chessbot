@@ -26,7 +26,7 @@ class NodePushPermitterException(PusherPermitterException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a NodePushPermitter did not approve the request.
+        1.  Indicating a NodePushPermitter did not approve the request.
 
     Attributes:
         msg: Optional[str]

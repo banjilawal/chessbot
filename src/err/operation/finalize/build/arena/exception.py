@@ -24,7 +24,7 @@ class FinalizeArenaBuilderException(FinalizeBuilderException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an ArenaBuild failed.
+        1.  Indicating an ArenaBuild failed.
 
     Attributes:
         msg: Optional[str]

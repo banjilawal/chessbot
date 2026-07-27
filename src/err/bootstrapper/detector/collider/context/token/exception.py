@@ -28,7 +28,7 @@ class TokenContextCollisionException(ContextColliderBootstrapperException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a TokenContextCollision step failed.
+        1.  Indicating a TokenContextCollision step failed.
 
     Attributes:
             msg: Optional[str]

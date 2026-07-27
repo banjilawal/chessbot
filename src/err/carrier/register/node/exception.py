@@ -26,7 +26,7 @@ class NodeRegisterCarrierException(RegisterCarrierException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a NodeRegisterCarrier encountered an error.
+        1.  Indicating a NodeRegisterCarrier encountered an error.
 
     Attributes:
         msg: Optional[str]

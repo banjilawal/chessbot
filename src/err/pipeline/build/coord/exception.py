@@ -24,7 +24,7 @@ class CoordBuildPipelineException(BuildPipelineException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an error occurred in a CoordBuildPipeline.
+        1.  Indicating an error occurred in a CoordBuildPipeline.
 
     Attributes:
         msg: Optional[str]

@@ -25,7 +25,7 @@ class SouthwestQuadrantCarrierException(QuadrantSpaceCarrierException):
         -   Failure Tracing
 
     Responsibilities:
-        1.  Indicate that a SouthwestQuadrantCarrier experienced an error.
+        1.  Indicating a SouthwestQuadrantCarrier experienced an error.
 
     Attributes:
         msg: str

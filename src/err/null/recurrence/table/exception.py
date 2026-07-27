@@ -26,7 +26,7 @@ class RecurrenceTableException(RecurrenceNullException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required RecurrenceTable is null.
+        1.  Indicating a required RecurrenceTable is null.
 
     Attributes:
         msg: Optional[str]

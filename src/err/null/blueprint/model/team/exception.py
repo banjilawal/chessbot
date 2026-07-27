@@ -27,7 +27,7 @@ class TeamBlueprintNullException(ModelBlueprintNullException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required TeamBlueprint is null.
+        1.  Indicating a required TeamBlueprint is null.
 
     Cannot Be Null.s:
             msg: Optional[str]

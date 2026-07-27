@@ -25,7 +25,7 @@ class GameSearchRouteException(SearchRouteException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that one of Game search routes is missing.
+        1.  Indicating that one of Game search routes is missing.
 
     Attributes:
             msg: Optional[str]

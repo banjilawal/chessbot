@@ -24,7 +24,7 @@ class DuplicatePlayerPushException(DuplicateItemException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that pushing a duplicate Player failed.
+        1.  Indicating that pushing a duplicate Player failed.
 
     Attributes:
         msg: Optional[str]

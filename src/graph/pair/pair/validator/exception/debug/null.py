@@ -23,7 +23,7 @@ class NullPairException(NullException):
     Role:Error Tracing, Debugging
 
     Responsibilities:
-    1.  Indicate that a pair is null where it should not be.
+    1.  Indicate a pair is null where it should not be.
     
     Super Class:
         *   NullException

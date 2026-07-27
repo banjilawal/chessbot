@@ -25,7 +25,7 @@ class SoutheastQuadrantCarrierException(QuadrantSpaceCarrierException):
         -   Failure Tracing
 
     Responsibilities:
-        1.  Indicate that a SoutheastQuadrantCarrier experienced an error.
+        1.  Indicating a SoutheastQuadrantCarrier experienced an error.
 
     Attributes:
         msg: str

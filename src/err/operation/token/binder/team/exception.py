@@ -28,7 +28,7 @@ class TeamBinderTokenOperationException(BinderTokenOperationException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a TeamBinder tokenfailed.
+        1.  Indicating a TeamBinder tokenfailed.
 
     TokenFailed.s:
             msg: Optional[str]

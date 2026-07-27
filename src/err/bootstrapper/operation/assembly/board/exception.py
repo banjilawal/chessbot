@@ -26,7 +26,7 @@ class BoardAssemblyException(AssemblyException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a Board assembly failed.
+        1.  Indicating a Board assembly failed.
 
     Attributes:
         msg: Optional[str]

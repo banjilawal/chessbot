@@ -26,7 +26,7 @@ class SpaceEmptyException(EmptyException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required Space is empty.
+        1.  Indicating a required Space is empty.
 
     Attributes:
         msg: Optional[str]

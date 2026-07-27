@@ -26,7 +26,7 @@ class TokenSearcherException(SearcherException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a TokenSearcher from
+        1.  Indicating a TokenSearcher from
             completing its task.
 
     Attributes:

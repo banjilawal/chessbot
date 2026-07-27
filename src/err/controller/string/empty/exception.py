@@ -25,7 +25,7 @@ class StringEmptyException(StringException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a String is empty (zero length).
+        1.  Indicating a String is empty (zero length).
 
     Attributes:
         msg: Optional[str]

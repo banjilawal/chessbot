@@ -26,7 +26,7 @@ class SoutheastQuadrantRecurrenceNullException(QuadrantRecurrenceNullException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required SoutheastQuadrantRecurrence is null.
+        1.  Indicating a required SoutheastQuadrantRecurrence is null.
 
     Attributes:
         msg: Optional[str]

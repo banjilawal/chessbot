@@ -26,7 +26,7 @@ class VectorToggleNullException(ToggleNullException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an VectorToggle is null.
+        1.  Indicating an VectorToggle is null.
 
     Attributes:
             msg: Optional[str]

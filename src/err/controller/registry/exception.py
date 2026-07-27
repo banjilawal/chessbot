@@ -25,7 +25,7 @@ class RegistryControllerException(ControllerException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate a Registry encountered an error.
+        1.  Indicating a Registry encountered an error.
 
     Attributes:
         msg: Optional[str]

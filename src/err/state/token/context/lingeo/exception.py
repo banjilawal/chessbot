@@ -24,7 +24,7 @@ class VectorContextTokenStateException(ContextTokenStateException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a VectorContext tokenfailed.
+        1.  Indicating a VectorContext tokenfailed.
 
     TokenFailed.s:
             msg: Optional[str]

@@ -24,7 +24,7 @@ class TeamDatabaseSizeException(DatabaseSizeException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required TeamDatabaseis the wrong size.
+        1.  Indicating a required TeamDatabaseis the wrong size.
 
     Attributes:
         msg: Optional[str]

@@ -24,7 +24,7 @@ class UpdatePipelineException(PipelineException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an error occurred in a UpdatePipeline.
+        1.  Indicating an error occurred in a UpdatePipeline.
 
     Attributes:
         msg: Optional[str]

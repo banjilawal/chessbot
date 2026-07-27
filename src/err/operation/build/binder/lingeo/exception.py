@@ -24,7 +24,7 @@ class VectorBinderBuilderException(BinderBuilderException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a VectorBinder build failed.
+        1.  Indicating a VectorBinder build failed.
 
     Build Failed.s:
             msg: Optional[str]

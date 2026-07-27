@@ -26,7 +26,7 @@ class ArenaSearcherException(SearcherException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an ArenaSearcher from
+        1.  Indicating an ArenaSearcher from
             completing its task.
 
     Attributes:

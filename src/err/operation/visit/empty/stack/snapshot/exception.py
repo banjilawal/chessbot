@@ -24,7 +24,7 @@ class VisitpingEmptySnapshotStackException(VisitpingEmptyStackException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that visitpingEmpty a SnapshotStack failed.
+        1.  Indicating that visitpingEmpty a SnapshotStack failed.
 
     Attributes:
         msg: Optional[str]

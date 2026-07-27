@@ -25,7 +25,7 @@ class VectorNoValidationRouteException(NoValidationRouteException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate a Vector validation routes is missing.
+        1.  Indicating a Vector validation routes is missing.
 
     Attributes:
         msg: Optional[str]

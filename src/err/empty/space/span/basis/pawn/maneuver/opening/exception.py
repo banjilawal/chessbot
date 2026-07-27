@@ -26,7 +26,7 @@ class OpeningManeuverBasisEmptyException(ManeuverBasisEmptyException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required OpeningManeuverBasis is empty.
+        1.  Indicating a required OpeningManeuverBasis is empty.
 
     Attributes:
         msg: Optional[str]

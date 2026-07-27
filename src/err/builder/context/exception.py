@@ -26,7 +26,7 @@ class ContextBuilderException(BuilderException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a ContextBuilder failed.
+        1.  Indicating a ContextBuilder failed.
 
    Builder failed.s:
             msg: Optional[str]

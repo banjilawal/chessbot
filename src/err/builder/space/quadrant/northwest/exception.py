@@ -25,7 +25,7 @@ class NorthwestQuadrantBuilderException(QuadrantSpaceBuilderException):
         -   Failure Tracing
 
     Responsibilities:
-        1.  Indicate that a NorthwestQuadrantBuilder failed. 
+        1.  Indicating a NorthwestQuadrantBuilder failed.
 
     Attributes:
         msg: str

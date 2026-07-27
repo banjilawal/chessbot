@@ -26,7 +26,7 @@ class PathRegisterCarrierException(RegisterCarrierException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a PathRegisterCarrier encountered an error.
+        1.  Indicating a PathRegisterCarrier encountered an error.
 
     Attributes:
         msg: Optional[str]

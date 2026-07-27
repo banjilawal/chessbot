@@ -24,7 +24,7 @@ class ZeroSquareBlueprintFlagsException(ZeroBlueprintFlagsException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicates that no SquareRootCertifier test. enabled.
+        1.  Indicatings that no SquareRootCertifier test. enabled.
 
     Attributes:
         msg: Optional[str]

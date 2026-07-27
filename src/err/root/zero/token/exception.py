@@ -24,7 +24,7 @@ class ZeroTokenBlueprintFlagsException(ZeroBlueprintFlagsException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicates that no TokenRootCertifier test. enabled.
+        1.  Indicatings that no TokenRootCertifier test. enabled.
 
     Attributes:
         msg: Optional[str]

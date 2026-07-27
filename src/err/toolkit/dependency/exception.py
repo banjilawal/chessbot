@@ -24,7 +24,7 @@ class EmptyDependencyListException(ToolkitException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a Toolkit's operation list is empty.
+        1.  Indicating a Toolkit's operation list is empty.
 
     Attributes:
         msg: Optional[str]

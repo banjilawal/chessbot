@@ -26,7 +26,7 @@ class SpaceRootCertifierException(RootCertifierException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a candidate failed a SpaceRootCertifier test.
+        1.  Indicating a candidate failed a SpaceRootCertifier test.
 
     Attributes:
             msg: Optional[str]

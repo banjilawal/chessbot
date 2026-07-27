@@ -26,7 +26,7 @@ class ModelSizeException(SizeException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required Modelis the wrong size.
+        1.  Indicating a required Modelis the wrong size.
 
     Attributes:
         msg: Optional[str]

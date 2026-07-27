@@ -25,7 +25,7 @@ class EdgeSearchRouteException(SearchRouteException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that one of Edge search routes is missing.
+        1.  Indicating that one of Edge search routes is missing.
 
     Attributes:
         msg: Optional[str]

@@ -25,7 +25,7 @@ class BinderTokenOperationException(TokenOperationException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a BinderTokenfailed.
+        1.  Indicating a BinderTokenfailed.
 
     TokenFailed.s:
             msg: Optional[str]

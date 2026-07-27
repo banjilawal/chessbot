@@ -26,7 +26,7 @@ class ManeuverSearcherException(SearcherException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a ManeuverSearcher from
+        1.  Indicating a ManeuverSearcher from
             completing its task.
 
     Attributes:

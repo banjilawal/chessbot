@@ -27,7 +27,7 @@ class TeamStackServiceException(StackServiceException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a TeamStackService encountered an error.
+        1.  Indicating a TeamStackService encountered an error.
 
     Attributes:
         msg: Optional[str]

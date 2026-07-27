@@ -24,7 +24,7 @@ class PrimingArenaAssemblyException(AssemblyPrimerException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an ArenaAssembly priming step failed.
+        1.  Indicating an ArenaAssembly priming step failed.
 
     Attributes:
         msg: Optional[str]

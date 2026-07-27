@@ -28,7 +28,7 @@ class NodeBinderTokenOperationException(BinderTokenOperationException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a NodeBinder tokenfailed.
+        1.  Indicating a NodeBinder tokenfailed.
 
     TokenFailed.s:
             msg: Optional[str]

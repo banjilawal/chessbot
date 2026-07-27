@@ -26,7 +26,7 @@ class EdgeCarrierNullException(ModelCarrierNullException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required EdgeCarrierToggle is null.
+        1.  Indicating a required EdgeCarrierToggle is null.
 
     Attributes:
         msg: Optional[str]

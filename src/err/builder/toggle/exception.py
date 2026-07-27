@@ -29,7 +29,7 @@ class ToggleBuilderException(BuilderException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a ToggleBuilder failure.
+        1.  Indicating a ToggleBuilder failure.
 
     Attributes:
             msg: Optional[str]

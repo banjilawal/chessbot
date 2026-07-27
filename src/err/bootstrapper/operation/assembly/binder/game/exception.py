@@ -28,7 +28,7 @@ class GameBinderAssemblyException(BinderAssemblyException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a GameBinder assembly failed.
+        1.  Indicating a GameBinder assembly failed.
 
     Assembly Failed.s:
             msg: Optional[str]

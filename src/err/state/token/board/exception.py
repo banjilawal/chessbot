@@ -26,7 +26,7 @@ class TokenBoardConsistencyStateException(TokenStateException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a TokenBoardState value did not match a Token's existence on the Board.
+        1.  Indicating a TokenBoardState value did not match a Token's existence on the Board.
 
     Attributes:
         msg: Optional[str]

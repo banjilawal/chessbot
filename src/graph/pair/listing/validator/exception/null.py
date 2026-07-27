@@ -23,7 +23,7 @@ class PairListNullException(NullException):
     Role:Error Tracing, Debugging
 
     Responsibilities:
-    1.  Indicate that a pairList is null where it should not be.
+    1.  Indicate a pairList is null where it should not be.
     
     Super Class:
         *   NullException

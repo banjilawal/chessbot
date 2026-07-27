@@ -26,7 +26,7 @@ class TokenCollisionDetectorException(DetectorException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate a TokenCollision step failed.
+        1.  Indicating a TokenCollision step failed.
 
     Attributes:
         msg: Optional[str]

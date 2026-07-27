@@ -28,7 +28,7 @@ class FormationContextValidationRouteException(ContextNoValidationRouteException
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that one of FormationContext validation routes is missing.
+        1.  Indicating that one of FormationContext validation routes is missing.
 
     Attributes:
             msg: Optional[str]

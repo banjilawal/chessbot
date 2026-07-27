@@ -26,7 +26,7 @@ class DeletionRequestNullException(RequestNullException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required DeleteRequest was null.
+        1.  Indicating a required DeleteRequest was null.
 
     Attributes:
         msg: Optional[str]

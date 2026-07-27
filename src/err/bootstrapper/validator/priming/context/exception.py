@@ -26,7 +26,7 @@ class ToggleValidatorException(ValidatorBootstrapperException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate a PrimingContextValidator encountered an error.
+        1.  Indicating a PrimingContextValidator encountered an error.
 
     Attributes:
         msg: Optional[str]

@@ -28,7 +28,7 @@ class BoardBinderBuilderException(BinderBuilderException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a BoardBinder build failed.
+        1.  Indicating a BoardBinder build failed.
 
     Build Failed.s:
             msg: Optional[str]

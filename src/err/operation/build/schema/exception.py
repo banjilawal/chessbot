@@ -25,7 +25,7 @@ class SchemaBuilderException(BuilderException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a Schema build failed.
+        1.  Indicating a Schema build failed.
 
     Attributes:
         msg: Optional[str]

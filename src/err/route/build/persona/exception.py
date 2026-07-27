@@ -25,7 +25,7 @@ class PersonaBuildRouteException(BuildRouteException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that n Persona build routes is missing.
+        1.  Indicating that n Persona build routes is missing.
 
     Attributes:
             msg: Optional[str]

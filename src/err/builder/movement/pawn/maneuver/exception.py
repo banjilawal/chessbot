@@ -26,7 +26,7 @@ class ManeuverOffsetPatternBuilderException(PawnOffsetPatternBuilderException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an error occurred in an ManeuverOffsetPatternBuilder failed.
+        1.  Indicating an error occurred in an ManeuverOffsetPatternBuilder failed.
 
     Attributes:
         msg: Optional[str]

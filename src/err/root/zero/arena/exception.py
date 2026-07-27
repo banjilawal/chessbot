@@ -24,7 +24,7 @@ class ZeroArenaBlueprintFlagsException(ZeroBlueprintFlagsException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicates that no ArenaRootCertifier test. enabled.
+        1.  Indicatings that no ArenaRootCertifier test. enabled.
 
     Attributes:
         msg: Optional[str]

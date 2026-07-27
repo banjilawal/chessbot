@@ -24,7 +24,7 @@ class BootstrapArenaContextAssemblyException(BootstrapContextAssemblyException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a ArenaContextAssembly bootstrap step failed.
+        1.  Indicating a ArenaContextAssembly bootstrap step failed.
 
     Attributes:
             msg: Optional[str]

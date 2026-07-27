@@ -26,7 +26,7 @@ class BinderConsistencyCheckerException(ConsistencyCheckerException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a BinderConsistencyChecker raised an error.
+        1.  Indicating a BinderConsistencyChecker raised an error.
 
     Attributes:
         msg: Optional[str]

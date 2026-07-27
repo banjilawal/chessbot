@@ -26,7 +26,7 @@ class TokenPusherException(PusherException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that pushing onto a TokenStack failed.
+        1.  Indicating that pushing onto a TokenStack failed.
 
     Attributes:
         msg: Optional[str]

@@ -24,7 +24,7 @@ class ArenaDatabaseEmptyException(DatabaseEmptyException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required ArenaDatabase is empty.
+        1.  Indicating a required ArenaDatabase is empty.
 
     Attributes:
         msg: Optional[str]

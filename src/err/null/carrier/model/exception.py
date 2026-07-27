@@ -26,7 +26,7 @@ class ModelCarrierNullException(EntityCarrierNullException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required ModelCarrierToggle is null.
+        1.  Indicating a required ModelCarrierToggle is null.
 
     Attributes:
             msg: Optional[str]

@@ -25,7 +25,7 @@ class DuplicateGraphPushException(DuplicateItemException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that pushing a duplicate item onto the GraphStack failed.
+        1.  Indicating that pushing a duplicate item onto the GraphStack failed.
 
     Attributes:
         msg: Optional[str]

@@ -28,7 +28,7 @@ class PersonaContextTokenOperationBootstrapperException(ContextTokenOperationBoo
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a PersonaContext tokenfailed.
+        1.  Indicating a PersonaContext tokenfailed.
 
     TokenFailed.s:
             msg: Optional[str]

@@ -26,7 +26,7 @@ class DevelopedAttackBasisEmptyException(AttackBasisEmptyException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required DevelopedAttackBasis is empty.
+        1.  Indicating a required DevelopedAttackBasis is empty.
 
     Attributes:
         msg: Optional[str]

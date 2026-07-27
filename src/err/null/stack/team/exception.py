@@ -24,7 +24,7 @@ class TeamStackNullException(StackNullException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required TeamStack is null.
+        1.  Indicating a required TeamStack is null.
 
     Attributes:
         msg: Optional[str]

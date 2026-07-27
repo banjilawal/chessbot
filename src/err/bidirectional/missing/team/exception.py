@@ -26,7 +26,7 @@ class MissingRegistrationWithTeamException(MissingRegistrationException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a satellite has not registered its association with its Team.
+        1.  Indicating a satellite has not registered its association with its Team.
 
     Attributes:
             msg: Optional[str]

@@ -26,7 +26,7 @@ class ManeuverOffsetPatternValidatorException(PawnOffsetPatternValidatorExceptio
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an error occurred in an ManeuverOffsetPatternValidator failed.
+        1.  Indicate an error occurred in an ManeuverOffsetPatternValidator failed.
 
     Attributes:
         msg: Optional[str]

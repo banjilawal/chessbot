@@ -25,7 +25,7 @@ class FormationException(ToolkitException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a Formation encountered an error.
+        1.  Indicating a Formation encountered an error.
 
     Attributes:
             msg: Optional[str]

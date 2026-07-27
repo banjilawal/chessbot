@@ -25,7 +25,7 @@ class SquareAssemblyException(AssemblyException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a Square assembly failed.
+        1.  Indicating a Square assembly failed.
 
     Attributes:
         msg: Optional[str]

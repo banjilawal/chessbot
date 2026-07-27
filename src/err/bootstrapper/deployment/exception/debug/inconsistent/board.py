@@ -24,7 +24,7 @@ class InconsistentTokenBoardStateException(InconsistentStateException):
     Role:Error Variable Identifier, Exception Chain Layer 2, Exception Messaging
 
     Responsibilities:
-    1.  Indicate that when a Token.board_state == TokenBoardState.NEVER_DEPLOYED after
+    1.  Indicating that when a Token.board_state == TokenBoardState.NEVER_DEPLOYED after
         its been placed on the board.
 
     Super Class:

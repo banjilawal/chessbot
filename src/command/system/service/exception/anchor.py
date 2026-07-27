@@ -23,7 +23,7 @@ class CommandServiceException(IntegrityServiceException):
     Role:Debug Coverage Target, Exception Chain Layer 0
 
     Responsibilities:
-    1.  Indicate that an error occurred in CommandService instance.
+    1.  Indicate an error occurred in CommandService instance.
 
     Super Class:
     *   ServiceException

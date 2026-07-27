@@ -27,7 +27,7 @@ class NewRegistrationException(RegistryStateException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that adding a new entry into a registry failed.
+        1.  Indicating adding a new entry into a registry failed.
 
     Attributes:
         var: Optional[str]

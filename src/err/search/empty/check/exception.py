@@ -26,7 +26,7 @@ class CheckSearchResultEmptyException(SearchResultEmptyException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a CheckSearcher did not find the required item.
+        1.  Indicating a CheckSearcher did not find the required item.
 
     Attributes:
             msg: Optional[str]

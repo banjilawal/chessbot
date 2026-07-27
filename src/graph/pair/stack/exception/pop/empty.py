@@ -21,7 +21,7 @@ class PoppingEmptyPairStackException(PairStackException):
     Role:Debug, Error Tracing
 
     Responsibilities:
-    1.  Indicate that an attempt to remove a occupant failed because the PairStack was not managing any pairs.
+    1.  Indicate an attempt to remove a occupant failed because the PairStack was not managing any pairs.
 
     Super Class:
         *   TeamDaaServiceException

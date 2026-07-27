@@ -26,7 +26,7 @@ class TokenOriginCertifierException(MicroserviceException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a candidate did not pass a TokenOriginCertifier test.
+        1.  Indicating a candidate did not pass a TokenOriginCertifier test.
 
     Attributes:
         msg: Optional[str]

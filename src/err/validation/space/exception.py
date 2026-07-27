@@ -25,7 +25,7 @@ class SpaceValidatorException(ValidatorException):
         -   Failure Tracing
 
     Responsibilities:
-        1.  Indicate that a SpaceValidator failed. 
+        1.  Indicating a SpaceValidator failed.
 
     Attributes:
         msg: str

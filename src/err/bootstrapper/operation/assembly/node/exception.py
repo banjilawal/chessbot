@@ -24,7 +24,7 @@ class NodeAssemblyException(AssemblyException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a Node assembly failed.
+        1.  Indicating a Node assembly failed.
 
     Attributes:
         msg: Optional[str]

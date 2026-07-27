@@ -26,7 +26,7 @@ class GameException(ModelException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a Game encountered an error.
+        1.  Indicating a Game encountered an error.
 
     Attributes:
             msg: Optional[str]

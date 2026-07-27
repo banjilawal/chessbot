@@ -26,7 +26,7 @@ class DuplicateItemException(ChessException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an item already exists in the context which, is usually a collection.
+        1.  Indicating an item already exists in the context which, is usually a collection.
 
     Attributes:
         msg: Optional[str]

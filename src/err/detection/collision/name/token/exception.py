@@ -24,7 +24,7 @@ class TokenDesignationCollisionException(NameCollisionDetectorException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a token is already using the designation.
+        1.  Indicating a token is already using the designation.
 
     Attributes:
         msg: Optional[str]

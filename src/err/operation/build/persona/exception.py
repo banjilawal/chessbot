@@ -25,7 +25,7 @@ class PersonaBuilderException(BuilderException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that n Persona build failed.
+        1.  Indicating that n Persona build failed.
 
     Attributes:
             msg: Optional[str]

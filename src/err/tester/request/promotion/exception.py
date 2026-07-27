@@ -26,7 +26,7 @@ class PromotionRequestTesterException(RequestTesterException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a PromotionRequestTester failed.
+        1.  Indicating a PromotionRequestTester failed.
 
     Cannot Be Tester.s:
             msg: Optional[str]

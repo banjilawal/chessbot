@@ -26,7 +26,7 @@ class QueryStackEmptyException(EmptyException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required Query's target Stack is empty.
+        1.  Indicating a required Query's target Stack is empty.
 
     Attributes:
             msg: Optional[str]

@@ -24,7 +24,7 @@ class VisitpingGraphStackException(VisitpingStackException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that visitping a GraphStack failed.
+        1.  Indicating that visitping a GraphStack failed.
 
     Attributes:
         msg: Optional[str]

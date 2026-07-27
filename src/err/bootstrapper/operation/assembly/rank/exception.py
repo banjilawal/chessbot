@@ -25,7 +25,7 @@ class RankAssemblyException(AssemblyException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a Rank assembly failed.
+        1.  Indicating a Rank assembly failed.
 
     Attributes:
         msg: Optional[str]

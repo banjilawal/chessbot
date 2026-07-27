@@ -26,7 +26,7 @@ class ArenaConsistencyCheckerException(ConsistencyCheckerException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a ArenaConsistencyChecker raised an error.
+        1.  Indicating a ArenaConsistencyChecker raised an error.
 
     Attributes:
         msg: Optional[str]

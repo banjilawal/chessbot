@@ -28,7 +28,7 @@ class PersonaContextAssemblyException(ContextAssemblyException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a PersonaContext assembly failed.
+        1.  Indicating a PersonaContext assembly failed.
 
     Assembly Failed.s:
             msg: Optional[str]

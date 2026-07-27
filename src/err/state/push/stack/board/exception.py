@@ -24,7 +24,7 @@ class BoardStackPushException(StackPushException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that pushing onto a BoardStack failed.
+        1.  Indicating that pushing onto a BoardStack failed.
 
     Attributes:
         msg: Optional[str]

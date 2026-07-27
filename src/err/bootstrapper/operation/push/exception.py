@@ -26,7 +26,7 @@ class PusherException(OperationBootstrapperException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a push operation failed.
+        1.  Indicating a push operation failed.
 
     Attributes:
         msg: Optional[str]

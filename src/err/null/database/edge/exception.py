@@ -24,7 +24,7 @@ class EdgeDatabaseNullException(DatabaseNullException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required EdgeDatabase is null.
+        1.  Indicating a required EdgeDatabase is null.
 
     Attributes:
         msg: Optional[str]

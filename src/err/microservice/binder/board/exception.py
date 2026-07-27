@@ -24,7 +24,7 @@ class BoardTeamBinderMicroserviceException(BinderMicroserviceException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a candidate did not pass a BoardTeamBinder microservice failed.
+        1.  Indicating a candidate did not pass a BoardTeamBinder microservice failed.
 
     Attributes:
         msg: Optional[str]

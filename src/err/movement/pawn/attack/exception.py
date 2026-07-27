@@ -26,7 +26,7 @@ class AttackOffsetPatternException(PawnOffsetPatternException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an error occurred in an AttackOffsetPattern instance.
+        1.  Indicating an error occurred in an AttackOffsetPattern instance.
 
     Attributes:
         msg: Optional[str]

@@ -26,7 +26,7 @@ class BoardCarrierNullException(ModelCarrierNullException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required BoardCarrierToggle is null.
+        1.  Indicating a required BoardCarrierToggle is null.
 
     Attributes:
         msg: Optional[str]

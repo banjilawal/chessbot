@@ -25,7 +25,7 @@ class WestAxisCarrierException(AxisSpaceCarrierException):
         -   Failure Tracing
 
     Responsibilities:
-        1.  Indicate that a WestAxisCarrier experienced an error.
+        1.  Indicating a WestAxisCarrier experienced an error.
 
     Attributes:
         msg: str

@@ -25,7 +25,7 @@ class SchemaHashtableConsistencyCheckerException(HashtableException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a SchemaHashtableConsistencyChecker raised an error.
+        1.  Indicating a SchemaHashtableConsistencyChecker raised an error.
 
     Attributes:
         msg: Optional[str]

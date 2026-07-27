@@ -26,7 +26,7 @@ class BasisSizeException(SpanSizeException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required BasisSetis the wrong size.
+        1.  Indicating a required BasisSetis the wrong size.
 
     Attributes:
         msg: Optional[str]

@@ -27,7 +27,7 @@ class HostageQueryFullException(QueryFullException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required HostageQuery is full.
+        1.  Indicating a required HostageQuery is full.
 
     Attributes:
             msg: Optional[str]

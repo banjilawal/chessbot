@@ -26,7 +26,7 @@ class RegisterSetSizeException(ContainerSizeException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required RegisterSetis the wrong size.
+        1.  Indicating a required RegisterSetis the wrong size.
 
     Attributes:
         msg: Optional[str]

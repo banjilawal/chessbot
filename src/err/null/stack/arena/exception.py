@@ -24,7 +24,7 @@ class ArenaStackNullException(StackNullException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required ArenaStack is null.
+        1.  Indicating a required ArenaStack is null.
 
     Attributes:
         msg: Optional[str]

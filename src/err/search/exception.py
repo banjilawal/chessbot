@@ -26,7 +26,7 @@ class SearcherException(ChessException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a Searcher was aborted by an exception.
+        1.  Indicating a Searcher was aborted by an exception.
 
     Attributes:
         msg: Optional[str]

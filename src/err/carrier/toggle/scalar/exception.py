@@ -26,7 +26,7 @@ class ScalartoggleCarrierException(toggleCarrierException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a ScalartoggleCarrier encountered an error.
+        1.  Indicating a ScalartoggleCarrier encountered an error.
 
     Attributes:
         msg: Optional[str]

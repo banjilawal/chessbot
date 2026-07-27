@@ -27,7 +27,7 @@ class ExecutionRouteException(ChessException):
         -   Error Tracing
     
     Responsibilities:
-        1.  Indicate that an execution route was missing from the logic.
+        1.  Indicating an execution route was missing from the logic.
    
     Attributes:
         msg: Optional[str]

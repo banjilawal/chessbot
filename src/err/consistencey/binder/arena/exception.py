@@ -25,7 +25,7 @@ class ArenaPlayerBinderConsistencyCheckerException(BinderException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a ArenaPlayerBinderConsistencyChecker raised an error.
+        1.  Indicating a ArenaPlayerBinderConsistencyChecker raised an error.
 
     Attributes:
         msg: Optional[str]

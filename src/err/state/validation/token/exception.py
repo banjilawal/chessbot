@@ -24,7 +24,7 @@ class TokenValidatorException(ValidatorException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate a TokenValidation check failed.
+        1.  Indicating a TokenValidation check failed.
 
     Attributes:
         msg: Optional[str]

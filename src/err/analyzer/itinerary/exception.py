@@ -26,7 +26,7 @@ class ItineraryAnalyzerException(AnalyzerException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an error occurred during an itinerary analysis.
+        1.  Indicating an error occurred during an itinerary analysis.
 
     Attributes:
         var: Optional[str]

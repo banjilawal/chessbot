@@ -24,7 +24,7 @@ class PoppingEmptyArenaStackException(PoppingEmptyStackException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that poppingEmpty a ArenaStack failed.
+        1.  Indicating that poppingEmpty a ArenaStack failed.
 
     Attributes:
         msg: Optional[str]

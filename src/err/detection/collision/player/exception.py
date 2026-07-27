@@ -25,7 +25,7 @@ class PlayerCollisionDetectorException(CollisionDetectorException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a PlayerCollision step failed.
+        1.  Indicating a PlayerCollision step failed.
 
     Attributes:
         msg: Optional[str]

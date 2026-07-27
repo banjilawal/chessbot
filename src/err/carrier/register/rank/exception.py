@@ -26,7 +26,7 @@ class RankRegisterCarrierException(RegisterCarrierException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a RankRegisterCarrier encountered an error.
+        1.  Indicating a RankRegisterCarrier encountered an error.
 
     Attributes:
         msg: Optional[str]

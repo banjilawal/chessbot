@@ -26,7 +26,7 @@ class RecurrenceValidatorException(ValidatorException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a RecurrenceValidator failed.
+        1.  Indicating a RecurrenceValidator failed.
 
     Attributes:
         msg: Optional[str]

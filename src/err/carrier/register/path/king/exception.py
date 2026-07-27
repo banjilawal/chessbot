@@ -26,7 +26,7 @@ class KingPathRegisterCarrierException(PathException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a KingPathRegisterCarrier encountered an error.
+        1.  Indicating a KingPathRegisterCarrier encountered an error.
 
     Attributes:
         msg: Optional[str]

@@ -26,7 +26,7 @@ class OpeningAttackOffsetPatternBuilderException(AttackOffsetPatternBuilderExcep
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an error occurred in an OpeningAttackOffsetPatternBuilder failed.
+        1.  Indicating an error occurred in an OpeningAttackOffsetPatternBuilder failed.
 
     Attributes:
         msg: Optional[str]

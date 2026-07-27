@@ -25,7 +25,7 @@ class ScalarException(ToolkitException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a Scalar encountered an error.
+        1.  Indicating a Scalar encountered an error.
 
     Attributes:
         msg: Optional[str]

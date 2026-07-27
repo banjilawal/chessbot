@@ -26,7 +26,7 @@ class BootstrapBoardAssemblyException(AssemblyBootstrapperException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a BoardAssembly bootstrap step failed.
+        1.  Indicating a BoardAssembly bootstrap step failed.
 
     Attributes:
         msg: Optional[str]

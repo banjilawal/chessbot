@@ -25,7 +25,7 @@ class SouthAxisException(AxisException):
         -   Failure Tracing
 
     Responsibilities:
-        1.  Indicate that an error occurred in a SouthAxis.
+        1.  Indicating an error occurred in a SouthAxis.
 
     Attributes:
         msg: str

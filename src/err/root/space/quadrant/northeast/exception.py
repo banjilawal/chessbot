@@ -26,7 +26,7 @@ class NortheastQuadrantRootCertifierException(QuadrantRootCertifierException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a candidate failed an NortheastQuadrantSRootCertifier test.
+        1.  Indicating a candidate failed an NortheastQuadrantSRootCertifier test.
 
     Attributes:
             msg: Optional[str]

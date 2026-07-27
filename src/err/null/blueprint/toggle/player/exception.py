@@ -27,7 +27,7 @@ class PlayerToggleBlueprintNullException(ToggleBlueprintNullException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required PlayerBlueprint is null.
+        1.  Indicating a required PlayerBlueprint is null.
 
     Cannot Be Null.s:
             msg: Optional[str]

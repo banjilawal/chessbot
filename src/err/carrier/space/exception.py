@@ -25,7 +25,7 @@ class SpaceCarrierException(EntityCarrierException):
         -   Failure Tracing
 
     Responsibilities:
-        1.  Indicate that a SpaceCarrier experienced an error.
+        1.  Indicating a SpaceCarrier experienced an error.
 
     Attributes:
         msg: str

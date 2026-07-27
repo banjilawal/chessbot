@@ -25,7 +25,7 @@ class NorthwestQuadrantException(QuadrantException):
         -   Failure Tracing
 
     Responsibilities:
-        1.  Indicate that an error occurred in a NorthwestQuadrant.
+        1.  Indicating an error occurred in a NorthwestQuadrant.
 
     Attributes:
         msg: str

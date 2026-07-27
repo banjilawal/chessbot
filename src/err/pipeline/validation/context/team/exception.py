@@ -24,7 +24,7 @@ class TeamContextValidationPipelineException(ContextValidationPipelineException)
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an error occurred in an TeamContextValidationPipeline.
+        1.  Indicating an error occurred in an TeamContextValidationPipeline.
 
     Attributes:
         msg: Optional[str]

@@ -24,7 +24,7 @@ class ResourceAvailabilityException(ChessException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an unavailable resource kept a task from completing. .
+        1.  Indicating an unavailable resource kept a task from completing. .
 
     Attributes:
         msg: Optional[str]

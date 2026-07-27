@@ -26,7 +26,7 @@ class SoutwestQuadrantRootCertifierException(QuadrantRootCertifierException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a candidate failed an SoutwestQuadrantSRootCertifier test.
+        1.  Indicating a candidate failed an SoutwestQuadrantSRootCertifier test.
 
     Attributes:
             msg: Optional[str]

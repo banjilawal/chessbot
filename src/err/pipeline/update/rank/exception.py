@@ -24,7 +24,7 @@ class RankUpdatePipelineException(UpdatePipelineException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an error occurred in a RankUpdatePipeline.
+        1.  Indicating an error occurred in a RankUpdatePipeline.
 
     Attributes:
         msg: Optional[str]

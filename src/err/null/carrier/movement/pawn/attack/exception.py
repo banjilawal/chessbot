@@ -26,7 +26,7 @@ class AttackOffsetPatternCarrierNullException(PawnOffsetPatternCarrierNullExcept
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an error occurred in an AttackOffsetPatternCarrier is null.
+        1.  Indicating an error occurred in an AttackOffsetPatternCarrier is null.
 
     Attributes:
         msg: Optional[str]

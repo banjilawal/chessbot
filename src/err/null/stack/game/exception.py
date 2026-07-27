@@ -24,7 +24,7 @@ class GameStackNullException(StackNullException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required GameStack is null.
+        1.  Indicating a required GameStack is null.
 
     Attributes:
         msg: Optional[str]

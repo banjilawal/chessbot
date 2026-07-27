@@ -26,7 +26,7 @@ class VectorValidatorException(ModelValidatorException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate a VectorValidator test.
+        1.  Indicating a VectorValidator test.
 
     Attributes:
         msg: Optional[str]

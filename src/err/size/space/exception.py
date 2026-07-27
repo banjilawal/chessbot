@@ -26,7 +26,7 @@ class SpaceSizeException(SizeException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required Spaceis the wrong size.
+        1.  Indicating a required Spaceis the wrong size.
 
     Attributes:
         msg: Optional[str]

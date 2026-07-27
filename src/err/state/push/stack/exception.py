@@ -24,7 +24,7 @@ class StackPushException(PusherException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that pushing onto a Stack failed.
+        1.  Indicating that pushing onto a Stack failed.
 
     Attributes:
         msg: Optional[str]

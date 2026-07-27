@@ -25,7 +25,7 @@ class FormationFinalizeBuilderException(FinalizeBuilderException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that finalizing a FormationBuild failed.
+        1.  Indicating that finalizing a FormationBuild failed.
 
     Attributes:
             msg: Optional[str]

@@ -27,7 +27,7 @@ class BoardCarrierValidatorException(EntityCarrierValidatorException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a candidate failed a BoardCarrierValidator test.
+        1.  Indicating a candidate failed a BoardCarrierValidator test.
 
     Attributes:
             msg: Optional[str]

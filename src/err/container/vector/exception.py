@@ -26,7 +26,7 @@ class VectorSetException(ContainerException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a VectorSet encountered an error.
+        1.  Indicating a VectorSet encountered an error.
 
     Attributes:
             msg: Optional[str]

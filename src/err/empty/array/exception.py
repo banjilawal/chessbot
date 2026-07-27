@@ -26,7 +26,7 @@ class ListEmptyException(EmptyException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required List is empty.
+        1.  Indicating a required List is empty.
 
     Attributes:
         msg: Optional[str]

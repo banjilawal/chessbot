@@ -26,7 +26,7 @@ class TokenPathDtoBuilderBootstrapperException(DtoBuilderBootstrapperException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a PathDtoBuilderBootstrapper was aborted by an exception.
+        1.  Indicating a PathDtoBuilderBootstrapper was aborted by an exception.
 
    BuilderBootstrapper was aborted by an exception.s:
             msg: Optional[str]

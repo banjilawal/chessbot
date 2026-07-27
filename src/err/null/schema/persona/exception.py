@@ -26,7 +26,7 @@ class PersonaNullException(SchemaNullException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that n Persona is null.
+        1.  Indicating that n Persona is null.
 
     Attributes:
             msg: Optional[str]

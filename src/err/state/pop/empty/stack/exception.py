@@ -24,7 +24,7 @@ class PoppingEmptyStackException(PopperException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that poppingEmpty a Stack failed.
+        1.  Indicating that poppingEmpty a Stack failed.
 
     Attributes:
         msg: Optional[str]

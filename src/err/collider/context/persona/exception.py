@@ -28,7 +28,7 @@ class PersonaContextCollisionException(ContextColliderException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a PersonaContextCollision step failed.
+        1.  Indicating a PersonaContextCollision step failed.
 
     Attributes:
             msg: Optional[str]

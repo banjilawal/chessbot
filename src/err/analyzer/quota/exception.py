@@ -26,7 +26,7 @@ class RankQuotaAnalyzerException(AnalyzerException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an error occurred during a TokenStack's rank quota analysis.
+        1.  Indicating an error occurred during a TokenStack's rank quota analysis.
 
     Attributes:
         var: Optional[str]

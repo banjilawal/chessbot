@@ -23,7 +23,7 @@ class ArgumentCountException(ServiceRequestDebugException):
     Role:Information, Reporting, Debug
 
     Responsibilities:
-    1.  Indicate that a service_request has the wrong number of arguments for the command
+    1.  Indicate a service_request has the wrong number of arguments for the command
 
     Super Class:
         *  ServiceRequestDebugException

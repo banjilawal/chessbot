@@ -26,7 +26,7 @@ class BishopBasisEmptyException(BasisEmptyException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required BishopBasis is empty.
+        1.  Indicating a required BishopBasis is empty.
 
     Attributes:
         msg: Optional[str]

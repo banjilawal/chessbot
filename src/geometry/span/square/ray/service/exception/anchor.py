@@ -23,7 +23,7 @@ class SquareRayServiceException(AnchorException):
     Role:Debug Coverage Target, Exception Chain Layer 0
 
     Responsibilities:
-    1.  Indicate that an error occurred in a SquareRayService.
+    1.  Indicate an error occurred in a SquareRayService.
 
     Super Class:
     *   AnchorException

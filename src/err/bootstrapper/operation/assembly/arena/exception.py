@@ -24,7 +24,7 @@ class ArenaAssemblyException(AssemblyException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an Arena assembly failed.
+        1.  Indicating an Arena assembly failed.
 
     Attributes:
         msg: Optional[str]

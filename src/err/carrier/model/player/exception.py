@@ -26,7 +26,7 @@ class PlayerCarrierException(ModelCarrierException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a PlayerCarrier encountered an error.
+        1.  Indicating a PlayerCarrier encountered an error.
 
     Attributes:
         msg: Optional[str]

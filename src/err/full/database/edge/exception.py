@@ -24,7 +24,7 @@ class EdgeDatabaseFullException(DatabaseFullException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required EdgeDatabase is full.
+        1.  Indicating a required EdgeDatabase is full.
 
     Attributes:
         msg: Optional[str]

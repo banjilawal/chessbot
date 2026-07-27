@@ -25,7 +25,7 @@ class PersonaSearchRouteException(SearchRouteException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that n Persona search routes is missing.
+        1.  Indicating that n Persona search routes is missing.
 
     Attributes:
             msg: Optional[str]

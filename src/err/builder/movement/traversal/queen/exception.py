@@ -26,7 +26,7 @@ class QueenTraversalPatternBuilderException(TraversalPatternBuilderException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required QueenTraversalPatternBuilder failed.
+        1.  Indicating a required QueenTraversalPatternBuilder failed.
 
     Attributes:
         msg: Optional[str]

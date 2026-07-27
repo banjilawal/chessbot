@@ -26,7 +26,7 @@ class NumberRegisterNullException(ModelRegisterNullException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required NumberRegister is null.
+        1.  Indicating a required NumberRegister is null.
 
     Attributes:
         msg: Optional[str]

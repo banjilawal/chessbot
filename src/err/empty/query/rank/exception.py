@@ -27,7 +27,7 @@ class RankQueryStackEmptyException(QueryStackEmptyException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required RankQuery's target stack is empty.
+        1.  Indicating a required RankQuery's target stack is empty.
 
     Attributes:
             msg: Optional[str]

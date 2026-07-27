@@ -24,7 +24,7 @@ class ZeroNodeBlueprintFlagsException(ZeroBlueprintFlagsException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicates that no NodeRootCertifier test. enabled.
+        1.  Indicatings that no NodeRootCertifier test. enabled.
 
     Attributes:
         msg: Optional[str]

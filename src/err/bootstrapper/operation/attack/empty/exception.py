@@ -26,7 +26,7 @@ class AttackDestinationEmptyException(AttackException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a token cannot attack because its destination is empty.
+        1.  Indicating a token cannot attack because its destination is empty.
 
     Attributes:
         msg: Optional[str]

@@ -26,7 +26,7 @@ class DisabledTokenManeuverException(ManeuverException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a token cannot maneuver because its either not on the board or checkmated..
+        1.  Indicating a token cannot maneuver because its either not on the board or checkmated..
 
     Attributes:
         msg: Optional[str]

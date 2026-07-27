@@ -26,7 +26,7 @@ class PawnDoublePromotionException(AnalyzerException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an attempt was made to promote a pawn twice.
+        1.  Indicating an attempt was made to promote a pawn twice.
 
     Attributes:
         var: Optional[str]

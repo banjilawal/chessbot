@@ -24,7 +24,7 @@ class HostageDatabaseNullException(DatabaseNullException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required HostageDatabase is null.
+        1.  Indicating a required HostageDatabase is null.
 
     Attributes:
         msg: Optional[str]

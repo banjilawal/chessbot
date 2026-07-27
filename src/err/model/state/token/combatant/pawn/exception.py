@@ -25,7 +25,7 @@ class PawnTokenException(TokenException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a PawnToken encountered an error.
+        1.  Indicating a PawnToken encountered an error.
 
     Attributes:
         msg: Optional[str]

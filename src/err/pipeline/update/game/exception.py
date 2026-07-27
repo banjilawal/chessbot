@@ -24,7 +24,7 @@ class GameUpdatePipelineException(UpdatePipelineException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an error occurred in a GameUpdatePipeline.
+        1.  Indicating an error occurred in a GameUpdatePipeline.
 
     Attributes:
         msg: Optional[str]

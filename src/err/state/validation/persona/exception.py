@@ -24,7 +24,7 @@ class PersonaValidatorException(ValidatorException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that n PersonaValidation check failed.
+        1.  Indicating that n PersonaValidation check failed.
 
     Attributes:
             msg: Optional[str]

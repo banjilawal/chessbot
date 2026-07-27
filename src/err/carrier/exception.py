@@ -26,7 +26,7 @@ class EntityCarrierException(ChessException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an EntityCarrier encountered an error.
+        1.  Indicating an EntityCarrier encountered an error.
 
     Attributes:
         msg: Optional[str]

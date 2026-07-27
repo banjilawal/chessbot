@@ -28,7 +28,7 @@ class BootstrapPlayerContextAssemblyException(BootstrapContextAssemblyException)
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a PlayerContextAssembly bootstrap step failed.
+        1.  Indicating a PlayerContextAssembly bootstrap step failed.
 
     Attributes:
             msg: Optional[str]

@@ -28,7 +28,7 @@ class ArenaContextTokenOperationBootstrapperException(ContextTokenOperationBoots
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a ArenaContext tokenfailed.
+        1.  Indicating a ArenaContext tokenfailed.
 
     TokenFailed.s:
             msg: Optional[str]

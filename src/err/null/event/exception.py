@@ -26,7 +26,7 @@ class EventNullException(NullException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required EventNull failed.
+        1.  Indicating a required EventNull failed.
 
     Cannot Be Null.s:
             msg: Optional[str]

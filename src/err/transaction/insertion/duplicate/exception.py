@@ -25,7 +25,7 @@ class DuplicateStackPushException(InsertionException):
         -   Error Tracing
 
     Responsibilities:
-        Indicate that pushing a duplicate item onto the stack failed.
+        Indicating that pushing a duplicate item onto the stack failed.
 
     Attributes:
         msg: Optional[str]

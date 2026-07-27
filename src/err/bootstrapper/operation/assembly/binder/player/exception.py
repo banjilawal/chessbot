@@ -28,7 +28,7 @@ class PlayerBinderAssemblyException(BinderAssemblyException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a PlayerBinder assembly failed.
+        1.  Indicating a PlayerBinder assembly failed.
 
     Assembly Failed.s:
             msg: Optional[str]

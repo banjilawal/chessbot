@@ -24,7 +24,7 @@ class PlayerInsertionPipelineException(InsertionPipelineException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an error occurred in a PlayerInsertionPipeline.
+        1.  Indicating an error occurred in a PlayerInsertionPipeline.
 
     Attributes:
         msg: Optional[str]

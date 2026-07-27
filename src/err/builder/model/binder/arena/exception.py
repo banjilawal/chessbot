@@ -29,7 +29,7 @@ class ArenaBinderBuilderException(BinderBuilderException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a ArenaBinderBuilder failed.
+        1.  Indicating a ArenaBinderBuilder failed.
 
    Builder failed.s:
             msg: Optional[str]

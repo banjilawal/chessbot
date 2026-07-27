@@ -26,7 +26,7 @@ class BishopTraversalPatternCarrierException(TraversalPatternCarrierException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a BishopTraversalPatternCarrier experienced an error.
+        1.  Indicating a BishopTraversalPatternCarrier experienced an error.
 
     Attributes:
         msg: Optional[str]

@@ -25,7 +25,7 @@ class PlayerAssemblyException(AssemblyException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a Player assembly failed.
+        1.  Indicating a Player assembly failed.
 
     Attributes:
         msg: Optional[str]

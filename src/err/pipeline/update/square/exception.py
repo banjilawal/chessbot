@@ -24,7 +24,7 @@ class SquareUpdatePipelineException(UpdatePipelineException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an error occurred in a SquareUpdatePipeline.
+        1.  Indicating an error occurred in a SquareUpdatePipeline.
 
     Attributes:
         msg: Optional[str]

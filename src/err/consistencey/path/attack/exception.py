@@ -26,7 +26,7 @@ class AttackPathConsistencyCheckerException(PathException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a AttackPathConsistencyChecker raised an error.
+        1.  Indicating a AttackPathConsistencyChecker raised an error.
 
     Attributes:
         msg: Optional[str]

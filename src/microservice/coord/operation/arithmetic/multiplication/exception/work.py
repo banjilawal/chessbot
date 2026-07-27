@@ -26,7 +26,7 @@ class CoordMultiplicationException(ComputationException):
         -   Exception Messaging
 
     Responsibilities:
-        1.  Indicate that a CoordMultiplicationProcess was not completed.
+        1.  Indicate a CoordMultiplicationProcess was not completed.
         2.  Trace the method calls.
 
     Attributes:

@@ -24,7 +24,7 @@ class StackRegistrationException(RegistrationException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that registrationing onto a Stack failed.
+        1.  Indicating that registrationing onto a Stack failed.
 
     Attributes:
         msg: Optional[str]

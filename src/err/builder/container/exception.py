@@ -26,7 +26,7 @@ class ContainerBuilderException(BuilderException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a ContainerBuilder failed.
+        1.  Indicating a ContainerBuilder failed.
 
    Builder failed.s:
             msg: Optional[str]

@@ -26,7 +26,7 @@ class MovementVectorSetEmptyException(SpanEmptyException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required MovementSet is empty.
+        1.  Indicating a required MovementSet is empty.
 
     Attributes:
         msg: Optional[str]

@@ -26,7 +26,7 @@ class PathConsistencyCheckerException(ConsistencyCheckerException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a PathConsistencyChecker raised an error.
+        1.  Indicating a PathConsistencyChecker raised an error.
 
     Attributes:
         msg: Optional[str]

@@ -27,7 +27,7 @@ class SquareToggleRootCertifierException(ToggleRootCertifierException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a candidate failed a SquareToggleRootCertifier test.
+        1.  Indicating a candidate failed a SquareToggleRootCertifier test.
 
     Attributes:
             msg: Optional[str]

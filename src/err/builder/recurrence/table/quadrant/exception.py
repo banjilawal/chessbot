@@ -26,7 +26,7 @@ class QuadrantRecurrenceTableException(RecurrenceTableException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a QuadrantRecurrenceTable is null.
+        1.  Indicating a QuadrantRecurrenceTable is null.
 
     Attributes:
         msg: Optional[str]

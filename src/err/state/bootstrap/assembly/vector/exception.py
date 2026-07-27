@@ -25,7 +25,7 @@ class VectorAssemblyBootstrapperException(AssemblyBootstrapperException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate a VectorAssembly bootstrap step failed.
+        1.  Indicating a VectorAssembly bootstrap step failed.
 
     Attributes:
         msg: Optional[str]

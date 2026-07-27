@@ -25,7 +25,7 @@ class QueenException(RankException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a Queen encountered an error.
+        1.  Indicating a Queen encountered an error.
 
     Attributes:
         msg: Optional[str]

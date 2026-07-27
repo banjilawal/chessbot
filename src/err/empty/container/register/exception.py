@@ -26,7 +26,7 @@ class RegisterSetEmptyException(ContainerEmptyException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required RegisterSet is empty.
+        1.  Indicating a required RegisterSet is empty.
 
     Attributes:
         msg: Optional[str]

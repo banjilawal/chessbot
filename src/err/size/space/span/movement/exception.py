@@ -26,7 +26,7 @@ class MovementVectorSetSizeException(SpanSizeException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required MovementSetis the wrong size.
+        1.  Indicating a required MovementSetis the wrong size.
 
     Attributes:
         msg: Optional[str]

@@ -28,7 +28,7 @@ class PersonaContextBuilderException(ContextBuilderException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a PersonaContext build failed.
+        1.  Indicating a PersonaContext build failed.
 
     Build Failed.s:
             msg: Optional[str]

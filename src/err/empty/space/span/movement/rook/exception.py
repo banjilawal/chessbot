@@ -26,7 +26,7 @@ class RookMovementSetEmptyException(MovementVectorSetEmptyException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required RookMovementSet is empty.
+        1.  Indicating a required RookMovementSet is empty.
 
     Attributes:
         msg: Optional[str]

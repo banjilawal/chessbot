@@ -27,7 +27,7 @@ class SquareRootCertifierException(ModelRootCertifierException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a candidate failed a SquareRootCertifier test.
+        1.  Indicating a candidate failed a SquareRootCertifier test.
 
     Attributes:
             msg: Optional[str]

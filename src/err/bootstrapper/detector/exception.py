@@ -25,7 +25,7 @@ class DetectorBootstrapperException(ChessException):
         -   Failure Tracing
 
     Responsibilities:
-        1.  Indicate that a detector from completing the task.
+        1.  Indicating a detector from completing the task.
 
     Attributes:
         msg: str

@@ -25,7 +25,7 @@ class AxisException(SpaceException):
         -   Failure Tracing
 
     Responsibilities:
-        1.  Indicate that an error occurred in a AxisSpace instance.
+        1.  Indicating an error occurred in a AxisSpace instance.
 
     Attributes:
         msg: str

@@ -26,7 +26,7 @@ class PawnOffsetPatternBlueprintNullException(OffsetPatternBlueprintNullExceptio
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required PawnOffsetPatternBlueprint is null.
+        1.  Indicating a required PawnOffsetPatternBlueprint is null.
 
     Attributes:
         msg: Optional[str]

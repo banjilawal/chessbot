@@ -26,7 +26,7 @@ class QueenTraversalPatternBlueprintNullException(TraversalPatternBlueprintNullE
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required QueenTraversalPatternBlueprint is null.
+        1.  Indicating a required QueenTraversalPatternBlueprint is null.
 
     Attributes:
         msg: Optional[str]

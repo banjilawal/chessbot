@@ -26,7 +26,7 @@ class ManeuverDestinationOccupiedException(ManeuverException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a token cannot maneuver because its destination is occupied.
+        1.  Indicating a token cannot maneuver because its destination is occupied.
 
     Attributes:
         msg: Optional[str]

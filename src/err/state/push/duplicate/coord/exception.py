@@ -24,7 +24,7 @@ class DuplicateCoordPushException(DuplicateItemException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that pushing a duplicate Coord failed.
+        1.  Indicating that pushing a duplicate Coord failed.
 
     Attributes:
         msg: Optional[str]

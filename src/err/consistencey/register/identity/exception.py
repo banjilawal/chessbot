@@ -26,7 +26,7 @@ class VectorIdentityRegisterConsistencyCheckerException(RegisterException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a VectorIdentityRegisterConsistencyChecker raised an error.
+        1.  Indicating a VectorIdentityRegisterConsistencyChecker raised an error.
 
     Attributes:
         msg: Optional[str]

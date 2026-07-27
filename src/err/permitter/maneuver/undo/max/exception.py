@@ -26,7 +26,7 @@ class MaxMoveUndoException(TokenUndoMovePermitterException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a Token move tried to undo more than one move during a
+        1.  Indicating a Token move tried to undo more than one move during a
             turn.
             
     Attributes:

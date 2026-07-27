@@ -26,7 +26,7 @@ class SearchResultEmptyException(SearcherException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a Searcher did not find a required item.
+        1.  Indicating a Searcher did not find a required item.
 
     Attributes:
         msg: Optional[str]

@@ -26,7 +26,7 @@ class BoardStackFullException(StackFullException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a BoardStack is full.
+        1.  Indicating a BoardStack is full.
 
     Attributes:
         msg: Optional[str]

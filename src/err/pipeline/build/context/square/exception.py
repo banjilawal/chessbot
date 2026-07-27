@@ -24,7 +24,7 @@ class SquareContextBuildPipelineException(ContextBuildPipelineException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an error occurred in an SquareContextBuildPipeline.
+        1.  Indicating an error occurred in an SquareContextBuildPipeline.
 
     Attributes:
         msg: Optional[str]

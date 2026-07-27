@@ -26,7 +26,7 @@ class QuadrantRecurrenceBuilderException(RecurrenceBuilderException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a QuadrantRecurrenceBuilder failed.
+        1.  Indicating a QuadrantRecurrenceBuilder failed.
 
     Attributes:
         msg: Optional[str]

@@ -24,7 +24,7 @@ class EdgeStackEmptyException(StackEmptyException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required EdgeStack is empty.
+        1.  Indicating a required EdgeStack is empty.
 
     Attributes:
         msg: Optional[str]

@@ -24,7 +24,7 @@ class CoordStackPushException(StackPushException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that pushing onto a CoordStack failed.
+        1.  Indicating that pushing onto a CoordStack failed.
 
     Attributes:
         msg: Optional[str]

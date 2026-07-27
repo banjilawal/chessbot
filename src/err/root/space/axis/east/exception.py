@@ -26,7 +26,7 @@ class EastAxisRootCertifierException(AxisRootCertifierException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a candidate failed an EastAxisSRootCertifier test.
+        1.  Indicating a candidate failed an EastAxisSRootCertifier test.
 
     Attributes:
             msg: Optional[str]

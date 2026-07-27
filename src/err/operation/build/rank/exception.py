@@ -25,7 +25,7 @@ class RankBuilderException(BuilderException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a Rank build failed.
+        1.  Indicating a Rank build failed.
 
     Attributes:
         msg: Optional[str]

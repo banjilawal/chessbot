@@ -24,7 +24,7 @@ class ValidationBootstrapException(ValidatorException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate a validation failed during the bootstrap phase.
+        1.  Indicating a validation failed during the bootstrap phase.
 
     Attributes:
         msg: Optional[str]

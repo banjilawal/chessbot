@@ -26,7 +26,7 @@ class EdgetoggleCarrierException(toggleCarrierException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a EdgetoggleCarrier encountered an error.
+        1.  Indicating a EdgetoggleCarrier encountered an error.
 
     Attributes:
         msg: Optional[str]

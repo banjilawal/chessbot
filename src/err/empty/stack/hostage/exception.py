@@ -24,7 +24,7 @@ class HostageStackEmptyException(StackEmptyException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required HostageStack is empty.
+        1.  Indicating a required HostageStack is empty.
 
     Attributes:
         msg: Optional[str]

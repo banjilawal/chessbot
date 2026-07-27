@@ -26,7 +26,7 @@ class EdgeConsistencyCheckerException(ConsistencyCheckerException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a EdgeConsistencyChecker raised an error.
+        1.  Indicating a EdgeConsistencyChecker raised an error.
 
     Attributes:
         msg: Optional[str]

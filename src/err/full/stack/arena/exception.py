@@ -26,7 +26,7 @@ class ArenaStackFullException(StackFullException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a ArenaStack is full.
+        1.  Indicating a ArenaStack is full.
 
     Attributes:
         msg: Optional[str]

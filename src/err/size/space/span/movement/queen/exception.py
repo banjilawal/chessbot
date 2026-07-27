@@ -26,7 +26,7 @@ class QueenMovementSetSizeException(MovementVectorSetSizeException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required QueenMovementSetis the wrong size.
+        1.  Indicating a required QueenMovementSetis the wrong size.
 
     Attributes:
         msg: Optional[str]

@@ -26,7 +26,7 @@ class HostageConsistencyCheckerNullException(ConsistencyCheckerNullException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required HostageConsistencyChecker is null.
+        1.  Indicating a required HostageConsistencyChecker is null.
 
     Attributes:
         msg: Optional[str]

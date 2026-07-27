@@ -26,7 +26,7 @@ class MovementPatternNullException(NullException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required MovementPattern is null.
+        1.  Indicating a required MovementPattern is null.
 
     Attributes:
         msg: Optional[str]

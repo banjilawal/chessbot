@@ -27,7 +27,7 @@ class FormationQueryNullException(QueryNullException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required FormationQuery is null.
+        1.  Indicating a required FormationQuery is null.
 
     Attributes:
             msg: Optional[str]

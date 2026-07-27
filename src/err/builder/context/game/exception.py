@@ -26,7 +26,7 @@ class GameContextBuilderException(ContextBuilderException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a GameContextBuilder failed.
+        1.  Indicating a GameContextBuilder failed.
 
    Builder failed.s:
             msg: Optional[str]

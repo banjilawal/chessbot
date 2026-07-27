@@ -28,7 +28,7 @@ class GameContextTokenOperationBootstrapperException(ContextTokenOperationBootst
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a GameContext tokenfailed.
+        1.  Indicating a GameContext tokenfailed.
 
     TokenFailed.s:
             msg: Optional[str]

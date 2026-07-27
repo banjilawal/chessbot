@@ -26,7 +26,7 @@ class BoardConsistencyCheckerException(ConsistencyCheckerException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a BoardConsistencyChecker raised an error.
+        1.  Indicating a BoardConsistencyChecker raised an error.
 
     Attributes:
         msg: Optional[str]

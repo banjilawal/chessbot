@@ -26,7 +26,7 @@ class TeamRegisterCarrierException(RegisterCarrierException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a TeamRegisterCarrier encountered an error.
+        1.  Indicating a TeamRegisterCarrier encountered an error.
 
     Attributes:
             msg: Optional[str]

@@ -25,7 +25,7 @@ class QuadrantException(SpaceException):
         -   Failure Tracing
 
     Responsibilities:
-        1.  Indicate that an error occurred in a QuadrantSpace instance.
+        1.  Indicating an error occurred in a QuadrantSpace instance.
 
     Attributes:
         msg: str

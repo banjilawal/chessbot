@@ -24,7 +24,7 @@ class ArenaStackPushException(StackPushException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that pushing onto a ArenaStack failed.
+        1.  Indicating that pushing onto a ArenaStack failed.
 
     Attributes:
         msg: Optional[str]

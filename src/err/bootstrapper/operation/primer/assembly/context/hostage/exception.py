@@ -24,7 +24,7 @@ class PrimingHostageContextAssemblyException(PrimingContextAssemblyException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a HostageContextAssembly priming step failed.
+        1.  Indicating a HostageContextAssembly priming step failed.
 
     Attributes:
             msg: Optional[str]

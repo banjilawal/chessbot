@@ -24,7 +24,7 @@ class Push pingEmptyGraphStackException(Push pingEmptyStackException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that push pingEmpty a GraphStack failed.
+        1.  Indicating that push pingEmpty a GraphStack failed.
 
     Attributes:
         msg: Optional[str]

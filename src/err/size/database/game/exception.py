@@ -24,7 +24,7 @@ class GameDatabaseSizeException(DatabaseSizeException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required GameDatabaseis the wrong size.
+        1.  Indicating a required GameDatabaseis the wrong size.
 
     Attributes:
         msg: Optional[str]

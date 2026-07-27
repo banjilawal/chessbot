@@ -25,7 +25,7 @@ class SouthAxisCarrierException(AxisSpaceCarrierException):
         -   Failure Tracing
 
     Responsibilities:
-        1.  Indicate that a SouthAxisCarrier experienced an error.
+        1.  Indicating a SouthAxisCarrier experienced an error.
 
     Attributes:
         msg: str

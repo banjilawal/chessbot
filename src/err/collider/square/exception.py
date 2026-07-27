@@ -26,7 +26,7 @@ class SquareColliderException(ColliderException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a SquareCollisionCollider experienced an error that prevented
+        1.  Indicating a SquareCollisionCollider experienced an error that prevented
             it was aborted by an exception.
 
     Attributes:

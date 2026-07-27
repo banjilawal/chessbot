@@ -21,7 +21,7 @@ class AttackingVacantSquareException(AttackDebugException):
     Role:Debug, Error Tracing
 
     Responsibilities:
-    1.  Indicate that an attack failed because there was nothing in the item.
+    1.  Indicate an attack failed because there was nothing in the item.
 
     Super Class:
         *   AttackDebugException

@@ -26,7 +26,7 @@ class CoordPushPermitterException(PusherPermitterException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a CoordPushPermitter did not approve the request.
+        1.  Indicating a CoordPushPermitter did not approve the request.
 
     Attributes:
         msg: Optional[str]

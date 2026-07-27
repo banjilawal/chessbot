@@ -26,7 +26,7 @@ class NameCollisionException(AttributeCollisionException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that two instances of a class do not have unique names.
+        1.  Indicating that two instances of a class do not have unique names.
         
     Attributes:
         msg: Optional[str]

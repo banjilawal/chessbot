@@ -24,7 +24,7 @@ class FormationContextBuildPipelineException(ContextBuildPipelineException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an error occurred in an FormationContextBuildPipeline.
+        1.  Indicating an error occurred in an FormationContextBuildPipeline.
 
     Attributes:
         msg: Optional[str]

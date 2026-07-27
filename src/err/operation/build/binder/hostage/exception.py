@@ -28,7 +28,7 @@ class HostageBinderBuilderException(BinderBuilderException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a HostageBinder build failed.
+        1.  Indicating a HostageBinder build failed.
 
     Build Failed.s:
             msg: Optional[str]

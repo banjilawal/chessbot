@@ -25,7 +25,7 @@ class AxisValidatorException(SpaceValidatorException):
         -   Failure Tracing
 
     Responsibilities:
-        1.  Indicate that a AxisSpaceValidator failed. 
+        1.  Indicating a AxisSpaceValidator failed.
 
     Attributes:
         msg: str

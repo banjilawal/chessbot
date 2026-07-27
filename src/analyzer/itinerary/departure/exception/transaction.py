@@ -26,7 +26,7 @@ class SquareDepartureException(DeletionException):
         -   Exception Messaging
 
     Responsibilities:
-        1.  Indicate that a SquareDepartureProcess was not completed.
+        1.  Indicate a SquareDepartureProcess was not completed.
         2.  Trace the method calls.
 
     Attributes:

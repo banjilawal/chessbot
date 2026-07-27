@@ -26,7 +26,7 @@ class GameCarrierNullException(ModelCarrierNullException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required GameCarrierToggle is null.
+        1.  Indicating a required GameCarrierToggle is null.
 
     Attributes:
             msg: Optional[str]

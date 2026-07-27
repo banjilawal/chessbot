@@ -24,7 +24,7 @@ class Push pingCoordStackException(Push pingStackException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that push ping a CoordStack failed.
+        1.  Indicating that push ping a CoordStack failed.
 
     Attributes:
         msg: Optional[str]

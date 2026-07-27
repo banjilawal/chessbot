@@ -26,7 +26,7 @@ class ItineraryMicroserviceException(MicroserviceException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate a ItineraryMicroservice failed.
+        1.  Indicating a ItineraryMicroservice failed.
 
     Attributes:
         msg: Optional[str]

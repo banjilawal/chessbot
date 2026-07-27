@@ -22,7 +22,7 @@ class TransactionTimeoutException(TransactionException, ResourceUnavailableExcep
     Role:Error Tracing, Debugging, Super Exception
 
     Responsibilities:
-    1.  Indicate that a transaction was not completed because it timed out waiting for a resource.
+    1.  Indicate a transaction was not completed because it timed out waiting for a resource.
 
     Super Class:
         *   ChessException

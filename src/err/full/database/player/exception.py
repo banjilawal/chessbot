@@ -24,7 +24,7 @@ class PlayerDatabaseFullException(DatabaseFullException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required PlayerDatabase is full.
+        1.  Indicating a required PlayerDatabase is full.
 
     Attributes:
         msg: Optional[str]

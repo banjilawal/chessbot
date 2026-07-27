@@ -26,7 +26,7 @@ class ManeuverMovementSetEmptyException(PawnMovementSetEmptyException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required ManeuverMovementSet is empty.
+        1.  Indicating a required ManeuverMovementSet is empty.
 
     Attributes:
         msg: Optional[str]

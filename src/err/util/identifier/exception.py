@@ -25,7 +25,7 @@ class IdentifierException(UtilException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate there is an Identifier error.
+        1.  Indicating there is an Identifier error.
     Attributes:
         msg: Optional[str]
         var: Optional[str]

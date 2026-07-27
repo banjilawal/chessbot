@@ -24,7 +24,7 @@ class NoActiveTogglesException(NoActiveTogglesException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicates that no NodeContext attribute enabled.
+        1.  Indicatings that no NodeContext attribute enabled.
 
     Attributes:
         msg: Optional[str]

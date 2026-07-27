@@ -25,7 +25,7 @@ class TokenAssemblyException(AssemblyException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate a Token assembly failed.
+        1.  Indicating a Token assembly failed.
 
     Attributes:
         msg: Optional[str]

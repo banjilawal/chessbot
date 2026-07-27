@@ -26,7 +26,7 @@ class TokenOriginRelationNullException(RelationNullException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required TokenOriginRelation is null. This means the square
+        1.  Indicating a required TokenOriginRelation is null. This means the square
             is not the token's source.
 
     Attributes:

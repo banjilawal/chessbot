@@ -26,7 +26,7 @@ class TokenQueryNullException(NullException):
         -   Debugging Metadata provider
 
     Responsibilities:
-        1.  Indicate that a client got null instead of a List[Token].
+        1.  Indicate a client got null instead of a List[Token].
 
     Attributes:
         var: Optional[str]

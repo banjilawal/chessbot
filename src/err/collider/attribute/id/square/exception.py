@@ -26,7 +26,7 @@ class SquareIdCollisionException(IdCollisionException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that two squares share an id that should be unique.
+        1.  Indicating that two squares share an id that should be unique.
         
     Attributes:
         msg: Optional[str]

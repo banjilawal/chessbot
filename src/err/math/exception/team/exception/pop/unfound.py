@@ -23,7 +23,7 @@ class TeamDoesNotExistForRemovalException(TeamStackException, NullException):
     Role:Debug, Error Tracing
 
     Responsibilities:
-    1.  Indicate that an attempt to remove instances of a team by a unique attribute failed because no bag
+    1.  Indicating an attempt to remove instances of a team by a unique attribute failed because no bag
         matching the property were found in the collider_candidates.
 
     Super Class:

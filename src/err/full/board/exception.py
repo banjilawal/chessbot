@@ -24,7 +24,7 @@ class BoardFullException(FullException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required Board is full.
+        1.  Indicating a required Board is full.
 
     Attributes:
         msg: Optional[str]

@@ -24,7 +24,7 @@ class PlayerDatabaseNullException(DatabaseNullException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required PlayerDatabase is null.
+        1.  Indicating a required PlayerDatabase is null.
 
     Attributes:
         msg: Optional[str]

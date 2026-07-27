@@ -26,7 +26,7 @@ class CircularPathtoggleCarrierException(PathException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a path's origin and destination are the same.
+        1.  Indicating a path's origin and destination are the same.
 
     Attributes:
         msg: Optional[str]

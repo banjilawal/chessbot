@@ -26,7 +26,7 @@ class OrientationToggleNullException(ToggleNullException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an OrientationToggle is null.
+        1.  Indicating an OrientationToggle is null.
 
     Attributes:
             msg: Optional[str]

@@ -24,7 +24,7 @@ class BootstrapNodeContextAssemblyException(BootstrapContextAssemblyException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a NodeContextAssembly bootstrap step failed.
+        1.  Indicating a NodeContextAssembly bootstrap step failed.
 
     Attributes:
             msg: Optional[str]

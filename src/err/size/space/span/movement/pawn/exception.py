@@ -26,7 +26,7 @@ class PawnMovementSetSizeException(MovementVectorSetSizeException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required PawnMovementSetis the wrong size.
+        1.  Indicating a required PawnMovementSetis the wrong size.
 
     Attributes:
         msg: Optional[str]

@@ -26,7 +26,7 @@ class TokenContextException(ContextException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a TokenContext encountered an error.
+        1.  Indicating a TokenContext encountered an error.
 
     Attributes:
             msg: Optional[str]

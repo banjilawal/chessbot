@@ -27,7 +27,7 @@ class FactoryException(ChessException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an error occurred in factory.
+        1.  Indicating an error occurred in factory.
         
     Attributes:
         msg: Optional[str]

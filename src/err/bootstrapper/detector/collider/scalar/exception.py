@@ -25,7 +25,7 @@ class ScalarColliderBootstrapperException(ColliderBootstrapperException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a ScalarCollision step failed.
+        1.  Indicating a ScalarCollision step failed.
 
     Attributes:
         msg: Optional[str]

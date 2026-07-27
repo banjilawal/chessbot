@@ -26,7 +26,7 @@ class ArchetypeNullException(SchemaNullException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required Archetype is null.
+        1.  Indicating a required Archetype is null.
 
     Attributes:
         msg: Optional[str]

@@ -24,7 +24,7 @@ class QueryFullException(FullException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required QueryFull failed.
+        1.  Indicating a required QueryFull failed.
 
     Attributes:
             msg: Optional[str]

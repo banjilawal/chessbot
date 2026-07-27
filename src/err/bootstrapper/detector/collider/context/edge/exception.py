@@ -28,7 +28,7 @@ class EdgeContextCollisionException(ContextColliderBootstrapperException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a EdgeContextCollision step failed.
+        1.  Indicating a EdgeContextCollision step failed.
 
     Attributes:
             msg: Optional[str]

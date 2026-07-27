@@ -26,7 +26,7 @@ class IdentityRegisterNullException(RegisterNullException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required IdentityRegister is null.
+        1.  Indicating a required IdentityRegister is null.
 
     Attributes:
         msg: Optional[str]

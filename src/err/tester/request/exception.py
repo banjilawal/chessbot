@@ -26,7 +26,7 @@ class RequestTesterException(TesterException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a RequestTester failed.
+        1.  Indicating a RequestTester failed.
 
     Cannot Be Tester.s:
             msg: Optional[str]

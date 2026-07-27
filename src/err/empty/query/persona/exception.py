@@ -27,7 +27,7 @@ class PersonaQueryStackEmptyException(QueryStackEmptyException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required PersonaQuery's target stack is empty.
+        1.  Indicating a required PersonaQuery's target stack is empty.
 
     Attributes:
             msg: Optional[str]

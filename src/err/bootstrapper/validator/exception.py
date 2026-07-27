@@ -26,7 +26,7 @@ class ValidatorBootstrapperException(BootstrapperException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an ValidatorBootstrapper from
+        1.  Indicating an ValidatorBootstrapper from
             completing its task.
         
     Attributes:

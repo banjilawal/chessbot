@@ -28,7 +28,7 @@ class MissingRegistrationException(BidirectionalRelationException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that the satellite (many-side) has not registered with its primary (one-side).
+        1.  Indicating that the satellite (many-side) has not registered with its primary (one-side).
 
     Attributes:
             msg: Optional[str]

@@ -25,7 +25,7 @@ class KingException(RankException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a King encountered an error.
+        1.  Indicating a King encountered an error.
 
     Attributes:
         msg: Optional[str]

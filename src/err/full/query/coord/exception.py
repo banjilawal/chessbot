@@ -27,7 +27,7 @@ class CoordQueryFullException(QueryFullException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required CoordQuery is full.
+        1.  Indicating a required CoordQuery is full.
 
     Attributes:
             msg: Optional[str]

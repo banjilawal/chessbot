@@ -23,7 +23,7 @@ class NullArgumentsException(NullException):
     Role:Information, Reporting, Debug
 
     Responsibilities:
-    1.  Indicate that a request.arguments dictionary does not exist.
+    1.  Indicate a request.arguments dictionary does not exist.
 
     Super Class:
         *  NullException

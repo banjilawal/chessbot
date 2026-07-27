@@ -24,7 +24,7 @@ class TokenContextValidationPipelineException(ContextValidationPipelineException
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an error occurred in an TokenContextValidationPipeline.
+        1.  Indicating an error occurred in an TokenContextValidationPipeline.
 
     Attributes:
         msg: Optional[str]

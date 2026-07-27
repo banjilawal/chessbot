@@ -24,7 +24,7 @@ class SquareNameCollisionException(NameColliderException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a square is already using the name.
+        1.  Indicating a square is already using the name.
 
     Attributes:
         msg: Optional[str]

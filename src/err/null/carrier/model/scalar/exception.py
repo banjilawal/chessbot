@@ -26,7 +26,7 @@ class ScalarCarrierNullException(ModelCarrierNullException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required ScalarCarrierToggle is null.
+        1.  Indicating a required ScalarCarrierToggle is null.
 
     Attributes:
         msg: Optional[str]

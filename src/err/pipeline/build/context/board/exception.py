@@ -24,7 +24,7 @@ class BoardContextBuildPipelineException(ContextBuildPipelineException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an error occurred in an BoardContextBuildPipeline.
+        1.  Indicating an error occurred in an BoardContextBuildPipeline.
 
     Attributes:
         msg: Optional[str]

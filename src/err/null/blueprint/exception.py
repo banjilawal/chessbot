@@ -29,7 +29,7 @@ class BlueprintNullException(NullException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required Blueprint is null.
+        1.  Indicating a required Blueprint is null.
 
     Cannot Be Null.s:
             msg: Optional[str]

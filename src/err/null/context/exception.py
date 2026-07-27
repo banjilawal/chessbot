@@ -26,7 +26,7 @@ class ContextNullException(NullException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required ContextNull failed.
+        1.  Indicating a required ContextNull failed.
 
     Cannot Be Null.s:
             msg: Optional[str]

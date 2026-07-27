@@ -24,7 +24,7 @@ class SquareDatabaseEmptyException(DatabaseEmptyException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required SquareDatabase is empty.
+        1.  Indicating a required SquareDatabase is empty.
 
     Attributes:
         msg: Optional[str]

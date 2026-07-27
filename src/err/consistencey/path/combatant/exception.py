@@ -26,7 +26,7 @@ class CombatantPathConsistencyCheckerException(PathException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a CombatantPathConsistencyChecker raised an error.
+        1.  Indicating a CombatantPathConsistencyChecker raised an error.
 
     Attributes:
         msg: Optional[str]

@@ -26,7 +26,7 @@ class DevelopedAttackOffsetPatternBuilderException(AttackOffsetPatternBuilderExc
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an error occurred in an DevelopedAttackOffsetPatternBuilder failed.
+        1.  Indicating an error occurred in an DevelopedAttackOffsetPatternBuilder failed.
 
     Attributes:
         msg: Optional[str]

@@ -22,7 +22,7 @@ class FormationDesignationBoundsException(FormationException, BoundsException):
     Role:Error Tracing, Debugging
 
     Responsibilities:
-    1.  Indicate that a Formation lookup failed because the designation value was not permitted for the Formation
+    1.  Indicate a Formation lookup failed because the designation value was not permitted for the Formation
         attribute.
 
     Super Class:

@@ -27,7 +27,7 @@ class PrimingBoardAssemblyException(AssemblyPrimerException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a BoardAssembly priming step failed.
+        1.  Indicating a BoardAssembly priming step failed.
 
     Attributes:
         msg: Optional[str]

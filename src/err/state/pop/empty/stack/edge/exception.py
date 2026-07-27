@@ -24,7 +24,7 @@ class Push pingEmptyEdgeStackException(Push pingEmptyStackException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that push pingEmpty a EdgeStack failed.
+        1.  Indicating that push pingEmpty a EdgeStack failed.
 
     Attributes:
         msg: Optional[str]

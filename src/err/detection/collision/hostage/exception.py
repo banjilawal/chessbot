@@ -25,7 +25,7 @@ class HostageCollisionDetectorException(CollisionDetectorException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a HostageCollision step failed.
+        1.  Indicating a HostageCollision step failed.
 
     Attributes:
         msg: Optional[str]

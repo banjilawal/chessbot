@@ -26,7 +26,7 @@ class StackSizeException(SizeException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required Stackis the wrong size.
+        1.  Indicating a required Stackis the wrong size.
 
     Attributes:
         msg: Optional[str]

@@ -23,7 +23,7 @@ class AssemblyBootstrapperException(BootstrapException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a AssemblyBootstrapper failed.
+        1.  Indicating a AssemblyBootstrapper failed.
 
     Attributes:
         var: Optional[str]

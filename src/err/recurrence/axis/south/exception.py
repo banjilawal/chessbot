@@ -26,7 +26,7 @@ class SouthQuadrantRecurrenceException(QuadrantRecurrenceException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a SouthQuadrantRecurrence encountered an error.
+        1.  Indicating a SouthQuadrantRecurrence encountered an error.
 
     Attributes:
         msg: Optional[str]

@@ -26,7 +26,7 @@ class RankCarrierException(ModelCarrierException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a RankCarrier encountered an error.
+        1.  Indicating a RankCarrier encountered an error.
 
     Attributes:
         msg: Optional[str]

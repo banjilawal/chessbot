@@ -26,7 +26,7 @@ class VectorIdentityRegisterException(RegisterException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a VectorIdentityRegister encountered an error.
+        1.  Indicating a VectorIdentityRegister encountered an error.
 
     Attributes:
         msg: Optional[str]

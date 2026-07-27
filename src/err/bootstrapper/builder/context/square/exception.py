@@ -26,7 +26,7 @@ class SquareContextBuilderBootstrapperException(ContextBuilderBootstrapperExcept
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a SquareContextBuilderBootstrapper was aborted by an exception.
+        1.  Indicating a SquareContextBuilderBootstrapper was aborted by an exception.
 
    BuilderBootstrapper was aborted by an exception.s:
             msg: Optional[str]

@@ -28,7 +28,7 @@ class TokenContextAssemblyException(ContextAssemblyException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a TokenContext assembly failed.
+        1.  Indicating a TokenContext assembly failed.
 
     Assembly Failed.s:
             msg: Optional[str]

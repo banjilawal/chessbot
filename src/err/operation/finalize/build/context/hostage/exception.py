@@ -24,7 +24,7 @@ class FinalizeHostageContextBuilderException(FinalizeContextBuilderException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that finalizing a HostageContextBuild failed.
+        1.  Indicating that finalizing a HostageContextBuild failed.
 
     Attributes:
             msg: Optional[str]

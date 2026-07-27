@@ -26,7 +26,7 @@ class TokenCollisionBootstrapperException(CollisionBootstrapperException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate a TokenCollisionBootstrapper step failed.
+        1.  Indicating a TokenCollisionBootstrapper step failed.
 
     Attributes:
         msg: Optional[str]

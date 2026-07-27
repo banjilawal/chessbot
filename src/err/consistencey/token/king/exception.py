@@ -26,7 +26,7 @@ class KingTokenConsistencyCheckerException(TokenException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a KingTokenConsistencyChecker raised an error.
+        1.  Indicating a KingTokenConsistencyChecker raised an error.
 
     Attributes:
         msg: Optional[str]

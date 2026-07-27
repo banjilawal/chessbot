@@ -26,7 +26,7 @@ class OffsetPatternCarrierNullException(MovementPatternCarrierNullException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required OffsetPatternCarrier is null.
+        1.  Indicating a required OffsetPatternCarrier is null.
 
     Attributes:
         msg: Optional[str]

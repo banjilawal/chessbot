@@ -26,7 +26,7 @@ class LinearSpaceSizeException(SpaceSizeException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required LinearSpaceis the wrong size.
+        1.  Indicating a required LinearSpaceis the wrong size.
 
     Attributes:
         msg: Optional[str]

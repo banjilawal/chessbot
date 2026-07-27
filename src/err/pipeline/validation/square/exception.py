@@ -24,7 +24,7 @@ class SquareValidationPipelineException(ValidationPipelineException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an error occurred in a SquareValidationPipeline.
+        1.  Indicating an error occurred in a SquareValidationPipeline.
 
     Attributes:
         msg: Optional[str]

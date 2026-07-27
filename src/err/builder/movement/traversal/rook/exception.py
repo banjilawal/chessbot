@@ -26,7 +26,7 @@ class RookTraversalPatternBuilderException(TraversalPatternBuilderException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required RookTraversalPatternBuilder failed.
+        1.  Indicating a required RookTraversalPatternBuilder failed.
 
     Attributes:
         msg: Optional[str]

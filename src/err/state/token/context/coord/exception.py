@@ -28,7 +28,7 @@ class CoordContextTokenStateException(ContextTokenStateException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a CoordContext tokenfailed.
+        1.  Indicating a CoordContext tokenfailed.
 
     TokenFailed.s:
             msg: Optional[str]

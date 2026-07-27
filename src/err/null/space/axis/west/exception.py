@@ -25,7 +25,7 @@ class WestAxisNullException(AxisNullException):
         -   Failure Tracing
 
     Responsibilities:
-        1.  Indicate that a required WestAxis Is Null.
+        1.  Indicating a required WestAxis Is Null.
 
     Attributes:
         msg: str

@@ -26,7 +26,7 @@ class RookMovementSetSizeException(MovementVectorSetSizeException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required RookMovementSetis the wrong size.
+        1.  Indicating a required RookMovementSetis the wrong size.
 
     Attributes:
         msg: Optional[str]

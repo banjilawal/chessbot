@@ -26,7 +26,7 @@ class TeamContextBuilderException(ContextBuilderException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a TeamContextBuilder failed.
+        1.  Indicating a TeamContextBuilder failed.
 
    Builder failed.s:
             msg: Optional[str]

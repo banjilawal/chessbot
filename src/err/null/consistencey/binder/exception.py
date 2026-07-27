@@ -26,7 +26,7 @@ class BinderConsistencyCheckerNullException(ConsistencyCheckerNullException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required BinderConsistencyChecker is null.
+        1.  Indicating a required BinderConsistencyChecker is null.
 
     Attributes:
         msg: Optional[str]

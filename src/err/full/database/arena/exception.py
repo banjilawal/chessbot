@@ -24,7 +24,7 @@ class ArenaDatabaseFullException(DatabaseFullException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required ArenaDatabase is full.
+        1.  Indicating a required ArenaDatabase is full.
 
     Attributes:
         msg: Optional[str]

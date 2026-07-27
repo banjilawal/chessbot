@@ -26,7 +26,7 @@ class NodetoggleCarrierException(toggleCarrierException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a NodetoggleCarrier encountered an error.
+        1.  Indicating a NodetoggleCarrier encountered an error.
 
     Attributes:
         msg: Optional[str]

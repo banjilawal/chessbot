@@ -26,7 +26,7 @@ class VectorSetCarrierNullException(ContainerCarrierNullException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required VectorSetCarrierToggle is null.
+        1.  Indicating a required VectorSetCarrierToggle is null.
 
     Attributes:
         msg: Optional[str]

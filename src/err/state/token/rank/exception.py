@@ -25,7 +25,7 @@ class RankTokenStateException(TokenStateException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a Rank tokenfailed.
+        1.  Indicating a Rank tokenfailed.
 
     Attributes:
         msg: Optional[str]

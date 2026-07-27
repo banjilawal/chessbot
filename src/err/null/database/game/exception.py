@@ -24,7 +24,7 @@ class GameDatabaseNullException(DatabaseNullException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required GameDatabase is null.
+        1.  Indicating a required GameDatabase is null.
 
     Attributes:
         msg: Optional[str]

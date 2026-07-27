@@ -23,7 +23,7 @@ class EdgeNotFoundException(EdgeDebugException):
     Role:Debug, Error Tracing
 
     Responsibilities:
-    1.  Indicate that an attempt to remove instances of a item by a unique attribute failed because no bag
+    1.  Indicating an attempt to remove instances of a item by a unique attribute failed because no bag
         matching the property were found in the collider_candidates.
 
     Super Class:

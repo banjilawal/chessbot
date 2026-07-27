@@ -26,7 +26,7 @@ class RankCarrierNullException(ModelCarrierNullException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required RankCarrierToggle is null.
+        1.  Indicating a required RankCarrierToggle is null.
 
     Attributes:
         msg: Optional[str]

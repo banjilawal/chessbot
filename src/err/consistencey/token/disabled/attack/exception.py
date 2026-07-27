@@ -26,7 +26,7 @@ class DisabledTokenLaunchAttackConsistencyCheckerException(DisabledTokenExceptio
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a disabled token tried making an attack.
+        1.  Indicating a disabled token tried making an attack.
             
     Attributes:
         msg: Optional[str]

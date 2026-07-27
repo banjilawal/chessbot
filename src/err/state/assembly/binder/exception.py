@@ -25,7 +25,7 @@ class BinderAssemblyException(AssemblyException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a BinderAssembly failed.
+        1.  Indicating a BinderAssembly failed.
 
     Assembly Failed.s:
             msg: Optional[str]

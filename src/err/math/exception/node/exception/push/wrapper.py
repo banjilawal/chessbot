@@ -22,7 +22,7 @@ class NodePushException(NodeStackException, InsertionException):
     Role:Exception Work
 
     Responsibilities:
-    1.  Indicate that pushing a Node on the Stack failed.
+    1.  Indicating that pushing a Node on the Stack failed.
 
     Super Class:
         *   NodeStackException

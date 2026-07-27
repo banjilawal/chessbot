@@ -26,7 +26,7 @@ class BlockedPathSearchHitConflictException(PathSearchHitConflictException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an BlockedPathSearcher returned multiple hits for an item which should be unique.
+        1.  Indicating an BlockedPathSearcher returned multiple hits for an item which should be unique.
 
     Attributes:
             msg: Optional[str]

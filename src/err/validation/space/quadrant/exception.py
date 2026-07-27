@@ -25,7 +25,7 @@ class QuadrantValidatorException(SpaceValidatorException):
         -   Failure Tracing
 
     Responsibilities:
-        1.  Indicate that a QuadrantSpaceValidator failed. 
+        1.  Indicating a QuadrantSpaceValidator failed.
 
     Attributes:
         msg: str

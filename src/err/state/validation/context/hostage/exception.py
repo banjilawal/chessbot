@@ -27,7 +27,7 @@ class HostageContextValidatorException(ContextValidatorException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a HostageContextValidation check failed.
+        1.  Indicating a HostageContextValidation check failed.
 
     Attributes:
             msg: Optional[str]

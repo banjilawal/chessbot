@@ -24,7 +24,7 @@ class DuplicateArenaPushException(DuplicateItemException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that pushing a duplicate Arena failed.
+        1.  Indicating that pushing a duplicate Arena failed.
 
     Attributes:
         msg: Optional[str]

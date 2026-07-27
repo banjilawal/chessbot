@@ -26,7 +26,7 @@ class PrisonSearcherException(SearcherException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a PrisonSearcher from
+        1.  Indicating a PrisonSearcher from
             completing its task.
 
     Attributes:

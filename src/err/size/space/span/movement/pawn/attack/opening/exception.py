@@ -26,7 +26,7 @@ class OpeningAttackMovementSetSizeException(AttackMovementSetSizeException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required OpeningAttackMovementSetis the wrong size.
+        1.  Indicating a required OpeningAttackMovementSetis the wrong size.
 
     Attributes:
         msg: Optional[str]

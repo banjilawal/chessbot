@@ -24,7 +24,7 @@ class EdgeContextBuildPipelineException(ContextBuildPipelineException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an error occurred in an EdgeContextBuildPipeline.
+        1.  Indicating an error occurred in an EdgeContextBuildPipeline.
 
     Attributes:
         msg: Optional[str]

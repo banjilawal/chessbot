@@ -26,7 +26,7 @@ class PusherPermitterException(PermitterException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a PushPermitter did not approve the request.
+        1.  Indicating a PushPermitter did not approve the request.
 
     Attributes:
         msg: Optional[str]

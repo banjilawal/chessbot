@@ -26,7 +26,7 @@ class SquareRegisterSizeException(ModelRegisterSizeException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required SquareRegister Is the wrong size.
+        1.  Indicating a required SquareRegister Is the wrong size.
 
     Attributes:
         msg: Optional[str]
