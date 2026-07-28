@@ -15,7 +15,7 @@ from space import NortheastQuadrant
 
 
 
-class NortheastMapFunction(QuadrantMapFunction[NortheastQuadrant]):
+class NortheastQuadrantMapFunction(QuadrantMapFunction[NortheastQuadrant]):
     """
     Role:
         -   Computation

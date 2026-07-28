@@ -11,10 +11,11 @@ from __future__ import annotations
 
 from typing import Generic, TypeVar, cast
 
-from err import QuadrantMappingException
+from err import QuadrantMappingFunctionException
+from mapper import SpaceMappingFunction
 from model import Vector
 from result import ComputationResult, MethodResultType
-from mapping import SpaceMappingFunction
+
 from util import LoggingLevelRouter
 
 T = TypeVar("T", bound="QuadrantSpace")
@@ -77,7 +78,7 @@ class QuadrantMappingFunction(SpaceMappingFunction, Generic[T]):
         Returns:
             ComputationResult[Vector]
         Raises:
-             QuadrantMappingException
+             QuadrantMappingFunctionException
         """
         method = f"{self.__class__.__name__}.next"
         
@@ -86,11 +87,11 @@ class QuadrantMappingFunction(SpaceMappingFunction, Generic[T]):
         if validation.is_failure:
             # Send an exception chain in the result.
             return ComputationResult.failure(
-                QuadrantMappingException(
+                QuadrantMappingFunctionException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=QuadrantMappingException.MSG,
-                    err_code=QuadrantMappingException.ERR_CODE,
+                    msg=QuadrantMappingFunctionException.MSG,
+                    err_code=QuadrantMappingFunctionException.ERR_CODE,
                     mthd_rslt_type=MethodResultType.COMPUTATION_RESULT,
                     ex=validation.exception,
                 ),
@@ -106,11 +107,11 @@ class QuadrantMappingFunction(SpaceMappingFunction, Generic[T]):
         if build.is_failure:
             # Send an exception chain in the result.
             return ComputationResult.failure(
-                QuadrantMappingException(
+                QuadrantMappingFunctionException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=QuadrantMappingException.MSG,
-                    err_code=QuadrantMappingException.ERR_CODE,
+                    msg=QuadrantMappingFunctionException.MSG,
+                    err_code=QuadrantMappingFunctionException.ERR_CODE,
                     mthd_rslt_type=MethodResultType.COMPUTATION_RESULT,
                     ex=build.exception,
                 ),

@@ -11,7 +11,6 @@ version: 1.0.1
 
 # Packages
 from .model import *
-from .movement import *
 from .register import *
 from .space import *
 from .toggle import *

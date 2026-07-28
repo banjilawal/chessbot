@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from mapper import NorthwestMapFunction
+from mapper import NorthwestQuadrantMapFunction
 from recurrence import QuadrantRecurrence
 from space import NorthwestQuadrant
 
@@ -39,7 +39,7 @@ class NorthwestQuadrantRecurrence(QuadrantRecurrence[NorthwestQuadrant]):
     def __init__(
             self,
             space: NorthwestQuadrant,
-            space_mapping_function: Optional[NorthwestMapFunction] | None = NorthwestMapFunction()
+            space_mapping_function: Optional[NorthwestQuadrantMapFunction] | None = NorthwestQuadrantMapFunction()
     ):
         """
         Args:
@@ -53,9 +53,9 @@ class NorthwestQuadrantRecurrence(QuadrantRecurrence[NorthwestQuadrant]):
         return cast(NorthwestQuadrant, super().space)
     
     @property
-    def space_mapping_function(self) -> NorthwestMapFunction:
+    def space_mapping_function(self) -> NorthwestQuadrantMapFunction:
         return cast(
-            NorthwestMapFunction,
+            NorthwestQuadrantMapFunction,
             super().space_mapping_function
         )
 

@@ -10,14 +10,19 @@ from __future__ import annotations
 from enum import Enum
 from typing import Any, Union
 
-
-from system import BuildResult, Result, SearchResult
+from result import AnalysisResult, BuildResult, ComputationResult, DeletionResult, InsertionResult, Result, SearchResult
 from util import logging
 
 
 class OperationResolver(Enum):
   @staticmethod
-  def resolve(outcome: Union[Result, BuildResult, SearchResult], logger: logging.Logger) -> Union[Any, Exception]:
+  def resolve(
+          outcome: Union[
+            Result, BuildResult, SearchResult, ComputationResult,
+            InsertionResult, DeletionResult, AnalysisResult,
+          ],
+          logger: logging.Logger
+  ) -> Union[Any, Exception]:
     """
     Logs the outcome and returns the payload or err.
     """

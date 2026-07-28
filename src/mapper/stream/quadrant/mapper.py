@@ -11,12 +11,37 @@ from __future__ import annotations
 
 from typing import Dict, List, Optional, Tuple, cast
 
-from mapper import QuadrantMappingFunction, SpaceMapFunctionStream
+from mapper import (
+    NortheastQuadrantMapFunction, NorthwestQuadrantMapFunction, QuadrantMappingFunction,
+    SoutheastQuadrantMapFunction, SouthwestQuadrantMapFunction, SpaceMapFunctionStream
+)
 from space import Quadrant, QuadrantReservoir, NortheastQuadrant, NorthwestQuadrant, SoutheastQuadrant, SouthwestQuadrant
 
 
 class QuadrantMappingFunctionStream(SpaceMapFunctionStream[Quadrant]):
+    """
+    Role:
+        -   Computation
+        -   Factory
+        -   Switcher
 
+    Responsibilities:
+        1.  QuadrantMappingFunction factory whose products don't need downcasting before use.
+        Provides all the Quadrant mapping functions  mapping functions for with the correct downcast.
+        2.  Immutable list of
+
+
+    Attributes:
+        space_reservoir: T
+
+    Provides:
+        -   @abstractmethod def stream_size() -> in
+        -   @abstractmethod def streams_are_empty() -> bool
+        -   @abstractmethod def streams_are_not_empty() -> bool
+        -   @abstractmethod def stream_iterator(self) -> iter
+
+    Super Class:
+    """
     
     _function_stream: Dict[Quadrant, QuadrantMappingFunction]
  
@@ -51,7 +76,7 @@ class QuadrantMappingFunctionStream(SpaceMapFunctionStream[Quadrant]):
     def northeast_mapping_function(self) -> NortheastQuadrantMapFunction:
         return cast(
             NortheastQuadrantMapFunction,
-            self._function_stream[self.space_reservoir]
+            self._function_stream[self.space_reservoir.northeast]
         )
     
     @property

@@ -15,7 +15,7 @@ from space import SouthwestQuadrant
 
 
 
-class SouthwestMapFunction(QuadrantMapFunction[SouthwestQuadrant]):
+class SouthwestQuadrantMapFunction(QuadrantMapFunction[SouthwestQuadrant]):
     """
     Role:
         -   Computation
