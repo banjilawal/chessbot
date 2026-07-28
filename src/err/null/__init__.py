@@ -28,6 +28,7 @@ from .toggle import *
 from .number import *
 from .operation import *
 from .query import *
+from .recurrence import *
 from .register import *
 from .relation import *
 from .request import *

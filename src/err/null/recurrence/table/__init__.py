@@ -14,4 +14,4 @@ from .axis import *
 from .quadrant import *
 
 # Modules
-from .exception  import RecurrenceTableException
+from .exception  import RecurrenceTableNullException

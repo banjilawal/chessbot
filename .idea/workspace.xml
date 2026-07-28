@@ -5,6 +5,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/err/null/pattern/offset/king/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/pattern/offset/knight/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/pattern/pawn/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/pattern/pawn/attack/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/pattern/pawn/attack/developed/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/pattern/pawn/attack/opening/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/pattern/pawn/maneuver/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/pattern/pawn/maneuver/developed/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/pattern/pawn/maneuver/opening/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/pattern/traversal/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/pattern/traversal/bishop/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/pattern/traversal/queen/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/pattern/traversal/rook/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/err/movement/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/movement/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/err/movement/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/movement/exception.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/err/movement/generator/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/movement/generator/__init__.py" afterDir="false" />
@@ -48,31 +62,31 @@
       <change beforePath="$PROJECT_DIR$/src/err/null/movement/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/null/pattern/exception.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/err/null/movement/offset/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/null/pattern/offset/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/err/null/movement/offset/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/null/pattern/offset/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/null/movement/offset/king/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/null/pattern/offset/king/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/movement/offset/king/__init__.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/err/null/movement/offset/king/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/null/pattern/offset/king/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/null/movement/offset/knight/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/null/pattern/offset/knight/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/movement/offset/knight/__init__.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/err/null/movement/offset/knight/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/null/pattern/offset/knight/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/null/movement/pawn/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/null/pattern/pawn/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/null/movement/pawn/attack/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/null/pattern/pawn/attack/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/null/movement/pawn/attack/developed/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/null/pattern/pawn/attack/developed/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/movement/pawn/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/movement/pawn/attack/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/movement/pawn/attack/developed/__init__.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/err/null/movement/pawn/attack/developed/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/null/pattern/pawn/attack/developed/exception.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/err/null/movement/pawn/attack/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/null/pattern/pawn/attack/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/null/movement/pawn/attack/opening/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/null/pattern/pawn/attack/opening/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/movement/pawn/attack/opening/__init__.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/err/null/movement/pawn/attack/opening/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/null/pattern/pawn/attack/opening/exception.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/err/null/movement/pawn/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/null/pattern/pawn/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/null/movement/pawn/maneuver/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/null/pattern/pawn/maneuver/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/null/movement/pawn/maneuver/developed/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/null/pattern/pawn/maneuver/developed/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/movement/pawn/maneuver/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/movement/pawn/maneuver/developed/__init__.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/err/null/movement/pawn/maneuver/developed/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/null/pattern/pawn/maneuver/developed/exception.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/err/null/movement/pawn/maneuver/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/null/pattern/pawn/maneuver/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/null/movement/pawn/maneuver/opening/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/null/pattern/pawn/maneuver/opening/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/movement/pawn/maneuver/opening/__init__.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/err/null/movement/pawn/maneuver/opening/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/null/pattern/pawn/maneuver/opening/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/null/movement/traversal/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/null/pattern/traversal/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/null/movement/traversal/bishop/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/null/pattern/traversal/bishop/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/movement/traversal/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/movement/traversal/bishop/__init__.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/err/null/movement/traversal/bishop/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/null/pattern/traversal/bishop/exception.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/err/null/movement/traversal/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/null/pattern/traversal/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/null/movement/traversal/queen/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/null/pattern/traversal/queen/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/movement/traversal/queen/__init__.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/err/null/movement/traversal/queen/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/null/pattern/traversal/queen/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/null/movement/traversal/rook/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/null/pattern/traversal/rook/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/movement/traversal/rook/__init__.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/err/null/movement/traversal/rook/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/null/pattern/traversal/rook/exception.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pattern/generator/bishop/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/pattern/generator/bishop/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pattern/generator/bishop/pattern.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/pattern/generator/bishop/pattern.py" afterDir="false" />
@@ -846,7 +860,7 @@
       <workItem from="1784633157389" duration="311246000" />
       <workItem from="1785108137089" duration="4055000" />
       <workItem from="1785140042961" duration="7811000" />
-      <workItem from="1785243755219" duration="12085000" />
+      <workItem from="1785243755219" duration="12662000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />

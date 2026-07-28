@@ -10,17 +10,17 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import RecurrenceTableException
+from err import RecurrenceTableNullException
 from result import MethodResultType
 
 
 __all__ = [
     # ======================# AXIS_RECURRENCE_TABLE_ERROR #======================#
-    "AxisRecurrenceTableException",
+    "AxisRecurrenceTableNullException",
 ]
 
 # ======================# AXIS_RECURRENCE_TABLE_ERROR #======================#
-class AxisRecurrenceTableException(RecurrenceTableException):
+class AxisRecurrenceTableNullException(RecurrenceTableNullException):
     """
     Role:
         -   Error Tracing
@@ -41,7 +41,7 @@ class AxisRecurrenceTableException(RecurrenceTableException):
     Provides:
 
     Super Class:
-        RecurrenceTableException
+        RecurrenceTableNullException
     """
     MSG = "AxisRecurrenceTable cannot be null."
     ERR_CODE = "AXIS_RECURRENCE_TABLE_ERROR"

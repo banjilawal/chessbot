@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import List, Optional, Type, cast
 
 from container import VectorSet
-from err import BishopPatternGeneratorException
+from err import BishopPatternGeneratorException, QuadrantRecurrenceTableNullException
 from math import VectorSequenceGenerator
 from recurrence import QuadrantRecurrenceTable
 from result import ComputationResult, MethodResultType
@@ -23,6 +23,23 @@ from validator import PrimingValidator
 
 
 class BishopPatternGenerator:
+    """
+    Role:
+        -   Computation
+
+    Responsibilities:
+        1.  Generate a Bishop's diagonal traversal patterns.
+
+    Attributes:
+        math_toolkit: Optional[MathToolkit]
+        vector_sequence_generator: Optional[BishopPatternGenerator]
+
+    Provides:
+        def execute(recurrence_table: QuadrantRecurrenceTable) -> ComputationResult[List[VectorSet]]
+
+    Super Class:
+        SpaceMappingFunction
+    """
     _math: MathToolkit
     _sequence_generator: VectorSequenceGenerator
     _priming_validator: PrimingValidator
@@ -62,6 +79,7 @@ class BishopPatternGenerator:
         """
         method = f"{self.__class__.__name__}.execute"
         
+        # Handle the case that, the request cannot get bootstrapped.
         validation = self._priming_validator.execute(
             candidate=recurrence_table,
             target=Type[QuadrantRecurrenceTable],
@@ -81,12 +99,15 @@ class BishopPatternGenerator:
             )
         # --- Cast the validation product and setup for the iteration. ---#
         recurrences  = cast(QuadrantRecurrenceTable, validation.payload)
-        vector_sets: List[VectorSet] = []
+        solution_sets: List[VectorSet] = []
         
+        # --- Process each recurrence ---#
         for key in recurrences.type_recurrence_dict:
+            # Compute the set of destinations in the
             recurrence = cast(key, recurrences[key])
             computation = self._sequence_generator.execute(recurrence)
             
+            # Handle the case that, a solution is not computed.
             if computation.is_failure:
                 # Send an exception chain in the result.
                 return ComputationResult.failure(
@@ -99,8 +120,10 @@ class BishopPatternGenerator:
                         ex=validation.exception,
                     ),
                 )
-            vector_sets.append(cast(VectorSet, computation.payload))
-        return ComputationResult.success(vector_sets)
+            # Otherwise, add to solution set
+            solution_sets.append(cast(VectorSet, computation.payload))
+        # --- Send the work product. ---#
+        return ComputationResult.success(solution_sets)
 
         
         

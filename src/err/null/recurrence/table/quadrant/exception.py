@@ -10,17 +10,17 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import RecurrenceTableException
+from err import RecurrenceTableNullException
 from result import MethodResultType
 
 
 __all__ = [
     # ======================# QUADRANT_RECURRENCE_TABLE_ERROR #======================#
-    "QuadrantRecurrenceTableException",
+    "QuadrantRecurrenceTableNullException",
 ]
 
 # ======================# QUADRANT_RECURRENCE_TABLE_ERROR #======================#
-class QuadrantRecurrenceTableException(RecurrenceTableException):
+class QuadrantRecurrenceTableNullException(RecurrenceTableNullException):
     """
     Role:
         -   Error Tracing
@@ -41,7 +41,7 @@ class QuadrantRecurrenceTableException(RecurrenceTableException):
     Provides:
 
     Super Class:
-        RecurrenceTableException
+        RecurrenceTableNullException
     """
     MSG = "QuadrantRecurrenceTable cannot be null."
     ERR_CODE = "QUADRANT_RECURRENCE_TABLE_ERROR"
