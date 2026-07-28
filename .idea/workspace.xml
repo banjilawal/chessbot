@@ -5,7 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/recurrence/group/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/recurrence/group/recurrence.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pattern/generator/bishop/pattern.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/pattern/generator/bishop/pattern.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,7 +64,7 @@
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/griot/PycharmProjects/chessbot/src/err/null/carrier/space&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/griot/PycharmProjects/chessbot/src/recurrence/group&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
@@ -73,11 +76,11 @@
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/recurrence/group" />
       <recent name="$PROJECT_DIR$/src/err/null/carrier/space" />
       <recent name="$PROJECT_DIR$/src/err/null/blueprint/space" />
       <recent name="$PROJECT_DIR$/src/err/null/space" />
       <recent name="$PROJECT_DIR$/src/err/space/reservoir" />
-      <recent name="$PROJECT_DIR$/src/err/space/reservoir/axis" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/carrier" />
@@ -776,7 +779,8 @@
       <workItem from="1784633157389" duration="311246000" />
       <workItem from="1785108137089" duration="4055000" />
       <workItem from="1785140042961" duration="7811000" />
-      <workItem from="1785243755219" duration="15174000" />
+      <workItem from="1785243755219" duration="19169000" />
+      <workItem from="1785271456267" duration="776000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />

@@ -14,15 +14,16 @@ from typing import List, Optional, Type, cast
 from container import VectorSet
 from err import BishopPatternGeneratorException, QuadrantRecurrenceTableNullException
 from math import VectorSequenceGenerator
+from model import Bishop
+from pattern import PatternGenerator
 from recurrence import QuadrantRecurrenceTable
 from result import ComputationResult, MethodResultType
-from toolkit import MathToolkit
 
 from util import LoggingLevelRouter
 from validator import PrimingValidator
 
 
-class BishopPatternGenerator:
+class BishopPatternGenerator(PatternGenerator[Bishop]):
     """
     Role:
         -   Computation
@@ -50,7 +51,7 @@ class BishopPatternGenerator:
     ):
         """
         Args:
-            math_toolkit: Optional[MathToolkit]
+            priming_validator: Optional[PrimingValidator]
             vector_sequence_generator: Optional[BishopPatternGenerator]
         """
         super().__init__(
@@ -79,7 +80,7 @@ class BishopPatternGenerator:
         method = f"{self.__class__.__name__}.execute"
         
         # Handle the case that, the request cannot get bootstrapped.
-        validation = self._priming_validator.execute(
+        validation = self.priming_validator.execute(
             candidate=recurrence_table,
             target=Type[QuadrantRecurrenceTable],
             null_exception=QuadrantRecurrenceTableNullException(),
