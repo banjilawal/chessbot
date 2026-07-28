@@ -40,24 +40,23 @@ class BishopPatternGenerator:
     Super Class:
         SpaceMappingFunction
     """
-    _math: MathToolkit
-    _sequence_generator: VectorSequenceGenerator
-    _priming_validator: PrimingValidator
     
     def __init__(
             self,
-            math_toolkit: Optional[MathToolkit] | None = MathToolkit(),
-            priming_validator: Optional[PrimingValidator] | None = PrimingValidator(),
-            vector_sequence_generator:  Optional[VectorSequenceGenerator] | None = VectorSequenceGenerator(),
+            priming_validator: Optional[PrimingValidator] |
+                               None = PrimingValidator(),
+            vector_sequence_generator:  Optional[VectorSequenceGenerator] |
+                                        None = VectorSequenceGenerator(),
     ):
         """
         Args:
             math_toolkit: Optional[MathToolkit]
             vector_sequence_generator: Optional[BishopPatternGenerator]
         """
-        self._math = math_toolkit
-        self._priming_validator = priming_validator
-        self.sequence_generator = vector_sequence_generator
+        super().__init__(
+            priming_validator=priming_validator,
+            vector_sequence_generator=vector_sequence_generator
+        )
         
     
     @LoggingLevelRouter.monitor
