@@ -1,7 +1,7 @@
-# src/err/err/movement/traversal/queen/exception.py
+# src/err/err/pattern/traversal/queen/exception.py
 
 """
-Module: err.movement.traversal.queen.exception
+Module: err.pattern.traversal.queen.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1

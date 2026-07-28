@@ -1,7 +1,7 @@
-# src/err/err/movement/offset/exception.py
+# src/err/err/pattern/offset/exception.py
 
 """
-Module: err.movement.offset.exception
+Module: err.pattern.offset.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1

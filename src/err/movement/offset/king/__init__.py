@@ -1,13 +1,13 @@
-# src/err/movement/offset/king/__init__.py
+# src/err/pattern/offset/king/__init__.py
 
 """
-Module: err.movement.offset.king.__init__
+Module: err.pattern.offset.king.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
 """
 
-# =========== ERR.MOVEMENT.OFFSET.KING PACKAGE ===========#
+# =========== ERR.PATTERN.OFFSET.KING PACKAGE ===========#
 
 # Packages
 

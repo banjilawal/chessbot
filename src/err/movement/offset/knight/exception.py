@@ -1,7 +1,7 @@
-# src/err/err/movement/offset/knight/exception.py
+# src/err/err/pattern/offset/knight/exception.py
 
 """
-Module: err.movement.offset.knight.exception
+Module: err.pattern.offset.knight.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1

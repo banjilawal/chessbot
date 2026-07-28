@@ -1,7 +1,7 @@
-# src/err/err/movement/generator/rook/exception.py
+# src/err/err/pattern/generator/rook/exception.py
 
 """
-Module: err.movement.generator.rook.exception
+Module: err.pattern.generator.rook.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1

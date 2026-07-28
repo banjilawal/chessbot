@@ -10,6 +10,7 @@ version: 1.0.1
 # =========== PATTERN.GENERATOR PACKAGE ===========#
 
 # Packages
-from .bishop import *
+
 
 # Modules
+from .pattern import BishopPatternGenerator

@@ -1,13 +1,13 @@
-# src/err/movement/pawn/__init__.py
+# src/err/pattern/pawn/__init__.py
 
 """
-Module: err.movement.pawn.__init__
+Module: err.pattern.pawn.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
 """
 
-# =========== ERR.MOVEMENT.PAWN PACKAGE ===========#
+# =========== ERR.PATTERN.PAWN PACKAGE ===========#
 
 # Packages
 from .attack import *

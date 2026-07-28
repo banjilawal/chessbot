@@ -1,7 +1,7 @@
-# src/err/err/movement/generator/exception.py
+# src/err/err/pattern/generator/exception.py
 
 """
-Module: err.movement.generator.exception
+Module: err.pattern.generator.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1

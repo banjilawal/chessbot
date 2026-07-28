@@ -45,12 +45,27 @@ class BishopPatternGenerator:
     
     @LoggingLevelRouter.monitor
     def execute(self, recurrence_table: QuadrantRecurrenceTable) -> ComputationResult[List[VectorSet]]:
+        """
+        Generate the set of vectors in a Bishop's traversal pattern.
+
+        Action:
+            1.  Send an exception chain in the ComputationResult if either.
+                    -   The recurrence_table fails a validation check,
+                    -   A computation fails.
+            2.  Otherwise, send the solutions in the success result.
+        Args:
+            recurrence_table: QuadrantRecurrenceTable
+        Returns:
+            ComputationResult[List[VectorSet]]
+        Raises:
+            BishopPatternGeneratorException
+        """
         method = f"{self.__class__.__name__}.execute"
         
         validation = self._priming_validator.execute(
             candidate=recurrence_table,
             target=Type[QuadrantRecurrenceTable],
-            null_exception=BishopPatternNullException(),
+            null_exception=QuadrantRecurrenceTableNullException(),
         )
         if validation.is_failure:
             # Send an exception chain in the result.

@@ -1,7 +1,7 @@
-# src/err/err/movement/traversal/bishop/exception.py
+# src/err/err/pattern/traversal/bishop/exception.py
 
 """
-Module: err.movement.traversal.bishop.exception
+Module: err.pattern.traversal.bishop.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1

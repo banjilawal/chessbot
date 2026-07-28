@@ -1,7 +1,7 @@
-# src/err/err/movement/traversal/exception.py
+# src/err/err/pattern/traversal/exception.py
 
 """
-Module: err.movement.traversal.exception
+Module: err.pattern.traversal.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1

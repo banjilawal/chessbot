@@ -1,7 +1,7 @@
-# src/err/err/movement/generator/queen/exception.py
+# src/err/err/pattern/generator/queen/exception.py
 
 """
-Module: err.movement.generator.queen.exception
+Module: err.pattern.generator.queen.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1

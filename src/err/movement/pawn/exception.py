@@ -1,7 +1,7 @@
-# src/err/err/movement/offset/pawn/exception.py
+# src/err/err/pattern/offset/pawn/exception.py
 
 """
-Module: err.movement.offset.pawn.exception
+Module: err.pattern.offset.pawn.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1

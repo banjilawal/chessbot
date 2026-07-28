@@ -23,7 +23,7 @@ from .toggle import *
 from .identifier import *
 from .microservice import *
 from .model import *
-from .movement import *
+from .pattern import *
 from .toggle import *
 from .number import *
 from .operation import *

@@ -1,7 +1,7 @@
-# src/err/err/movement/offset/pawn/maneuver/opening/exception.py
+# src/err/err/pattern/offset/pawn/maneuver/opening/exception.py
 
 """
-Module: err.movement.offset.pawn.maneuver.opening.exception
+Module: err.pattern.offset.pawn.maneuver.opening.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1

@@ -1,7 +1,7 @@
-# src/err/err/movement/traversal/rook/exception.py
+# src/err/err/pattern/traversal/rook/exception.py
 
 """
-Module: err.movement.traversal.rook.exception
+Module: err.pattern.traversal.rook.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1

@@ -1,7 +1,7 @@
-# src/err/err/movement/generator/bishop/exception.py
+# src/err/err/pattern/generator/bishop/exception.py
 
 """
-Module: err.movement.generator.bishop.exception
+Module: err.pattern.generator.bishop.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
