@@ -9,7 +9,7 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from typing import Dict, List, Type, cast
+from typing import Dict, Type, cast
 
 from mapper import QuadrantMappingFunctionStream
 from recurrence import (
