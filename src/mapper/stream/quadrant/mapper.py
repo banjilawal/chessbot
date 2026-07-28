@@ -23,7 +23,7 @@ from space import (
 class QuadrantMappingFunctionStream(SpaceMapFunctionStream[Quadrant]):
     """
     Role:
-        -   Computation
+        -   Data Holder
         -   Factory
         -   Switcher
 

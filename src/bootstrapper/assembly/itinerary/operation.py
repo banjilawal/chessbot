@@ -152,7 +152,7 @@ class ItineraryAssemblyPrimer(AssemblyPrimer[Itinerary]):
                 )
             )
         # Handle the case that, the token was not found on the board.
-        if source_square_search_result.are_no_recurrences:
+        if source_square_search_result.no_recurrences_exist:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 ItineraryAssemblyPrimerException(

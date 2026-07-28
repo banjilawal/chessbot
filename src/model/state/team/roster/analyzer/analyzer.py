@@ -103,7 +103,7 @@ class RosterRelationAnalysis(RelationAnalysis[Team, Token]):
                 )
             )
         # On the empty search the occupant has not been added to the roster list.
-        if member_search.are_no_recurrences:
+        if member_search.no_recurrences_exist:
             return RelationReport.partial(satellite=piece)
         # All other paths in the test chain have been exhausted. The roster-occupant tuple is fully bidirectional.
         return RelationReport.bidirectional(primary=team, satellite=piece)

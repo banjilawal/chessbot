@@ -9,7 +9,7 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from abc import ABC, abstractmethod, abstractproperty
+from abc import ABC, abstractmethod
 from typing import Dict, Generic, Type, TypeVar
 
 from mapper import SpaceMapFunctionStream
@@ -22,13 +22,18 @@ class RecurrenceTable(ABC, Generic[T]):
     """
     Role:
         -   Data Holder
+        -   Factory
+        -   Switcher
 
     Responsibilities:
-        1.  Store a set of space relations to run as a job.
-        2.  Iteration that don
+        1.  Create an immutable set of recurrence relations for batch vector transformations in a space.
 
     Attributes:
-        space_set: Tuple[Space, ...]
+        space_mapping_function_stream: SpaceMapFunctionStream[T]
+        number_of_recurrences: int
+        recurrences_exist: bool
+        no_recurrences_exist: bool
+        type_recurrence_dict:  Dict[Type[T], Recurrence[T]]
         
     Provides:
 
@@ -59,12 +64,12 @@ class RecurrenceTable(ABC, Generic[T]):
     
     @property
     @abstractmethod
-    def are_no_recurrences(self) -> bool:
+    def recurrences_exist(self) -> bool:
         pass
     
     @property
     @abstractmethod
-    def recurrences_exist(self) -> bool:
+    def no_recurrences_exist(self) -> bool:
         pass
 
     @property

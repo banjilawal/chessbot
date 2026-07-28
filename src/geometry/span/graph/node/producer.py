@@ -148,7 +148,7 @@ class NodeTreeProducer:
         # return BuildResult.success(pair)
         
         # Handle the case that, a square is not found.
-        if search_result.are_no_recurrences:
+        if search_result.no_recurrences_exist:
             # Send the exception chain on failure.
             SearchResult.failure(
                 NodeStackServiceProductionException(

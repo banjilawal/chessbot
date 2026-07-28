@@ -55,7 +55,7 @@ class SquareStackPopper:
         method = f"{cls.__class__.__name__}.pop"
         
         # Handle the case that the schema is empty.
-        if square_stack.are_no_recurrences:
+        if square_stack.no_recurrences_exist:
             # Send the exception chain on failure.
             return DeletionResult.failure(
                 SquareStackPopException(
@@ -106,7 +106,7 @@ class SquareStackPopper:
         method = f"{cls.__name__}.delete_by_id"
         
         # Handle the case that the schema is empty.
-        if square_stack.are_no_recurrences:
+        if square_stack.no_recurrences_exist:
             # Send the exception chain on failure.
             return DeletionResult.failure(
                 SquareStackPopException(

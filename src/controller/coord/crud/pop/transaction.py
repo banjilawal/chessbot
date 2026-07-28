@@ -54,7 +54,7 @@ class CoordStackPop:
         method = f"{cls.__class__.__name__}.pop"
         
         # Handle the case that the schema is empty.
-        if coord_stack.are_no_recurrences:
+        if coord_stack.no_recurrences_exist:
             # Send the exception chain on failure.
             return DeletionResult.failure(
                 CoordStackPopException(

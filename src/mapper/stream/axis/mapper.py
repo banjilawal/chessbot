@@ -9,7 +9,7 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from typing import Dict, List, Optional, Tuple, Type, cast
+from typing import Dict, Optional, Tuple, Type, cast
 
 from mapper import (
     AxisMappingFunction, EastAxisMapFunction, SpaceMapFunctionStream, NorthAxisMapFunction,
@@ -21,7 +21,7 @@ from space import Axis, AxisReservoir, EastAxis, NorthAxis, SouthAxis, WestAxis
 class AxisMappingFunctionStream(SpaceMapFunctionStream[Axis]):
     """
     Role:
-        -   Computation
+        -   Data Holder
         -   Factory
         -   Switcher
 

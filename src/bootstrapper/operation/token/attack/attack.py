@@ -56,7 +56,7 @@ class Attack:
                 )
             )
         # Handle the case that, the item is empty
-        if square.are_no_recurrences:
+        if square.no_recurrences_exist:
             # Send the exception chain on failure.
             return AttackResult.failure(
                 AttackException(

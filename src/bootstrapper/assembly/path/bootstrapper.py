@@ -343,7 +343,7 @@ class PathAssemblyPrimer(AssemblyPrimer[Path]):
                 )
             )
         # Handle the case that, the opening square is not found.
-        if square_search_result.are_no_recurrences:
+        if square_search_result.no_recurrences_exist:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 PathAssemblyPrimerException(

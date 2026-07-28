@@ -133,7 +133,7 @@ class TokenBuilderBootstrapper(BuilderBootstrapper[TokenTokenBuilder]):
                 )
             )
         # Handle the case that, the token is not on the board.
-        if token_search_result.are_no_recurrences:
+        if token_search_result.no_recurrences_exist:
             # Return the exception chain on failure
             return SearchResult.failure(
                 exception=TokenBuilderBootstrapperException(

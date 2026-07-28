@@ -110,7 +110,7 @@ class BoardSquareRelationAnalysis(RelationAnalysis[Board, Square]):
             )
         # --- Route between the possible outcomes. ---#
         # Handle the case that, the square belongs to a different board.
-        if board != square.board and square_search.are_no_recurrences:
+        if board != square.board and square_search.no_recurrences_exist:
             return RelationReport.no_relation()
         
         if len(square_search.payload) > 0 and square.board != board:

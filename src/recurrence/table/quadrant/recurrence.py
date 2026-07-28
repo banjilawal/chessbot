@@ -23,16 +23,29 @@ class QuadrantRecurrenceTable(RecurrenceTable[Quadrant]):
     """
     Role:
         -   Data Holder
+        -   Factory
+        -   Switcher
 
     Responsibilities:
-        1.  Store a set of space relations to run as a job.
+        1.  Create an immutable set of recurrence relations for batch vector transformations across all axes.
 
     Attributes:
-        space_set: Tuple[Space, ...]
+        recurrences_exist: bool
+        no_recurrences_exist: bool
+        number_of_recurrences: int
+
+        northeast_quadrant_recurrence: NorthEastQuadrantRecurrence
+        northwest_quadrant_recurrence: NorthwestQuadrantRecurrence
+        southeast_quadrant_recurrence: SoutheastQuadrantRecurrence
+        southwest_quadrant_recurrence: SouthwestQuadrantRecurrence
+
+        type_recurrence_dict: Dict[Type[Quadrant], QuadrantRecurrence]
+        space_mapping_function_stream: QuadrantMappingFunctionStream
 
     Provides:
 
     Super Class:
+        RecurrenceTable
     """
     _space_mapping_function_stream: QuadrantMappingFunctionStream
     _recurrence_table: Dict[str, QuadrantRecurrence]
@@ -57,13 +70,13 @@ class QuadrantRecurrenceTable(RecurrenceTable[Quadrant]):
                 space=space,
                 space_mapping_function=space_mapping_function
         )
-        # Add the northern recurrence entry.
+        # Add the northwestern recurrence entry.
         space, space_mapping_function = map_stream.northwest_quadrant_map_tuple
         self._recurrence_table["northwest"] = NorthwestQuadrantRecurrence(
                 space=space,
                 space_mapping_function=space_mapping_function
         )
-        # Add the southern recurrence entry.
+        # Add the southeastern recurrence entry.
         space, space_mapping_function = map_stream.southeast_quadrant_map_tuple
         self._recurrence_table["southeast"] = SoutheastQuadrantRecurrence(
             space=space,
@@ -88,20 +101,12 @@ class QuadrantRecurrenceTable(RecurrenceTable[Quadrant]):
         return len(self._recurrence_table)
     
     @property
-    def are_no_recurrences(self) -> bool:
+    def no_recurrences_exist(self) -> bool:
         return self.number_of_recurrences == 0
     
     @property
     def recurrences_exist(self) -> bool:
-        return not self.are_no_recurrences
-    
-    @property
-    def iterator(self) -> iter:
-        recurrences: List[QuadrantRecurrence] = []
-        
-        for key in self._recurrence_table.keys():
-            recurrences.append(self._recurrence_table[key])
-        return recurrences.__iter__()
+        return not self.no_recurrences_exist
     
     @property
     def northeast_quadrant_recurrence(self) -> NortheastQuadrantRecurrence:
@@ -133,10 +138,13 @@ class QuadrantRecurrenceTable(RecurrenceTable[Quadrant]):
     
     @property
     def type_recurrence_dict(self) -> Dict[Type[QuadrantRecurrence], QuadrantRecurrence]:
+        """
+        Simple iteration through the quadrant mapping functions is not useful because the need down-casting
+        Using type as the iterator key surmount can automate casting without requiring isinstance calls.
+        """
         return {
             Type[NortheastQuadrantRecurrence]: self.northeast_quadrant_recurrence,
             Type[NorthwestQuadrantRecurrence]: self.northwest_quadrant_recurrence,
             Type[SouthwestQuadrantRecurrence]: self.southwest_quadrant_recurrence,
             Type[SoutheastQuadrantRecurrence]: self.southeast_quadrant_recurrence,
-            
         }

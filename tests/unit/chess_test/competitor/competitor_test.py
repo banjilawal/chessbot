@@ -14,7 +14,7 @@ class CompetitorTest(unittest.TestCase):
     competitor = create_autospec(Commander, instance=True)
     sides_played = create_autospec(SideRecord, instance=True)
 
-    sides_played.are_no_recurrences.return_value = True
+    sides_played.no_recurrences_exist.return_value = True
     sides_played.rule_count.return_value = 0
     sides_played.items = []
     sides_played.current_team = None

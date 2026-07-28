@@ -19,7 +19,7 @@ T = TypeVar("T", bound="SpaceReservoir")
 class SpaceMapFunctionStream(ABC, Generic[T]):
     """
     Role:
-        -   Computation
+        -   Data Holder
         -   Factory
         -   Switcher
 

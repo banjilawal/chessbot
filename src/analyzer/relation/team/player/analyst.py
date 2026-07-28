@@ -101,7 +101,7 @@ class PlayerTeamRelationAnalyst(RelationAnalyst[Player, Team]):
                 )
             )
         # If the team was not found the bidirectional relationship has not been fully completed.
-        if search_result.are_no_recurrences:
+        if search_result.no_recurrences_exist:
             return RelationReport.partial(satellite=team)
         # All other paths in the test chain have been exhausted. The owner-team tuple is fully bidirectional.
         return RelationReport.bidirectional(primary=player, satellite=team)

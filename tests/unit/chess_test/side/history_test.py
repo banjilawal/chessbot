@@ -66,7 +66,7 @@ class TeamStackTest(unittest.TestCase):
 
   def test_is_empty_corresponds_to_zero_stack_size(self):
     team_stack = SideRecord()
-    self.assertTrue(team_stack.are_no_recurrences() and team_stack.rule_count() == 0)
+    self.assertTrue(team_stack.no_recurrences_exist() and team_stack.rule_count() == 0)
 
 
   def test_is_empty_false_when_stack_has_items(self):
@@ -74,12 +74,12 @@ class TeamStackTest(unittest.TestCase):
     team_stack = SideRecord()
     team_stack.push_team_to_player(mock_team)
 
-    self.assertTrue(not team_stack.are_no_recurrences() and team_stack.rule_count() > 0)
+    self.assertTrue(not team_stack.no_recurrences_exist() and team_stack.rule_count() > 0)
 
 
   def test_if_stack_Is_empty_then_current_team_is_null(self):
     team_stack = SideRecord()
-    self.assertTrue(team_stack.are_no_recurrences() and team_stack.current_team is None)
+    self.assertTrue(team_stack.no_recurrences_exist() and team_stack.current_team is None)
 
 
 if __name__ == '__main__':

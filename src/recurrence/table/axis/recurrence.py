@@ -9,7 +9,7 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from typing import Dict, List, Type, cast
+from typing import Dict, Type, cast
 
 from mapper import AxisMappingFunctionStream
 from recurrence import (
@@ -23,16 +23,29 @@ class AxisRecurrenceTable(RecurrenceTable[Axis]):
     """
     Role:
         -   Data Holder
+        -   Factory
+        -   Switcher
 
     Responsibilities:
-        1.  Store a set of space relations to run as a job.
+        1.  Create an immutable set of recurrence relations for batch vector transformations across all axes.
 
     Attributes:
-        space_set: Tuple[Space, ...]
+        recurrences_exist: bool
+        no_recurrences_exist: bool
+        number_of_recurrences: int
+        
+        east_axis_recurrence: EastAxisRecurrence
+        north_axis_recurrence: NorthAxisRecurrence
+        south_axis_recurrence: SouthAxisRecurrence
+        west_axis_recurrence: WestAxisRecurrence
+        
+        type_recurrence_dict: Dict[Type[Axis], AxisRecurrence]
+        space_mapping_function_stream: AxisMappingFunctionStream
 
     Provides:
 
     Super Class:
+        RecurrenceTable
     """
     _space_mapping_function_stream: AxisMappingFunctionStream
     _recurrence_table: Dict[str, AxisRecurrence]
@@ -77,9 +90,9 @@ class AxisRecurrenceTable(RecurrenceTable[Axis]):
         )
     
     @property
-    def space_mapping_function_stream(self) -> AxisMappingFunctionStream[T]:
+    def space_mapping_function_stream(self) -> AxisMappingFunctionStream:
         return cast(
-            AxisMappingFunctionStream[T],
+            AxisMappingFunctionStream,
             self._space_mapping_function_stream
         )
     
@@ -88,20 +101,12 @@ class AxisRecurrenceTable(RecurrenceTable[Axis]):
         return len(self._recurrence_table)
     
     @property
-    def are_no_recurrences(self) -> bool:
+    def no_recurrences_exist(self) -> bool:
         return self.number_of_recurrences == 0
     
     @property
     def recurrences_exist(self) -> bool:
-        return not self.are_no_recurrences
-    
-    @property
-    def iterator(self) -> iter:
-        recurrences: List[AxisRecurrence] = []
-        
-        for key in self._recurrence_table.keys():
-            recurrences.append(self._recurrence_table[key])
-        return recurrences.__iter__()
+        return not self.no_recurrences_exist
     
     @property
     def east_axis_recurrence(self) -> EastAxisRecurrence:
@@ -133,6 +138,10 @@ class AxisRecurrenceTable(RecurrenceTable[Axis]):
     
     @property
     def type_recurrence_dict(self) -> Dict[Type[Axis], AxisRecurrence]:
+        """
+        Simple iteration through the quadrant mapping functions is not useful because the need down-casting
+        Using type as the iterator key surmount can automate casting without requiring isinstance calls.
+        """
         return {
             Type[EastAxisRecurrence]: self.east_axis_recurrence,
             Type[NorthAxisRecurrence]: self.north_axis_recurrence,

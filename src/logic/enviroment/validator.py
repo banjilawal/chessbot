@@ -101,7 +101,7 @@ class TurnSceneValidator(Validator[TurnScene]):
             if search_result.is_failure():
                 return ValidationResult.failure(search_result.exception)
             
-            if search_result.are_no_recurrences():
+            if search_result.no_recurrences_exist():
                 return ValidationResult.failure(
                     SquareInvariantBreachException(f"{method}: {SquareInvariantBreachException.MSG}")
                 )
@@ -166,7 +166,7 @@ class TurnSceneValidator(Validator[TurnScene]):
                         )
                     )
             
-            if piece.current_position is None or piece.positions.are_no_recurrences():
+            if piece.current_position is None or piece.positions.no_recurrences_exist():
                 return ValidationResult.failure(
                     PieceWithNoStartingPlacementException(
                         f"{method}: {PieceWithNoStartingPlacementException.MSG}"

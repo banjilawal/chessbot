@@ -96,7 +96,7 @@ class HostageDatabase(Database[Hostage]):
     
     @property
     def is_empty(self) -> bool:
-        return self._database_core.are_no_recurrences
+        return self._database_core.no_recurrences_exist
     
     @LoggingLevelRouter.monitor
     def add_unique(self, manifest: Hostage) -> InsertionResult[Hostage]:

@@ -188,7 +188,7 @@ class SquareStackRosterHandler:
             deployment_count += 1
             
         # Handle the case that some roster members were not deployed.
-        if deployment_count != Team.MAX_ROSTER_SIZE or not team.roster.are_no_recurrences:
+        if deployment_count != Team.MAX_ROSTER_SIZE or not team.roster.no_recurrences_exist:
             # Avoid an expensive rollback by sending the pre-deployment team and the exception chain on failure.
             return UpdateResult.update_failure(
                 original=team,
