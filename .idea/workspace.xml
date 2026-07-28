@@ -6,20 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/carrier/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/carrier/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/mapper/quadrant/mapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/mapper/quadrant/mapper.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/mapper/quadrant/northeast/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/mapper/quadrant/northeast/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/mapper/quadrant/northeast/mapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/mapper/quadrant/northeast/mapper.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/mapper/quadrant/northwest/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/mapper/quadrant/northwest/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/mapper/quadrant/northwest/mapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/mapper/quadrant/northwest/mapper.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/mapper/quadrant/southeast/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/mapper/quadrant/southeast/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/mapper/quadrant/southeast/mapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/mapper/quadrant/southeast/mapper.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/mapper/quadrant/southwest/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/mapper/quadrant/southwest/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/mapper/quadrant/southwest/mapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/mapper/quadrant/southwest/mapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mapper/stream/axis/mapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/mapper/stream/axis/mapper.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/mapper/stream/mapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/mapper/stream/mapper.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/op_resplver.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/op_resplver.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/recurrence/quadrant/northeast/recurrence.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/recurrence/quadrant/northeast/recurrence.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/recurrence/quadrant/northwest/recurrence.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/recurrence/quadrant/northwest/recurrence.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mapper/stream/quadrant/mapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/mapper/stream/quadrant/mapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/recurrence/table/axis/recurrence.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/recurrence/table/axis/recurrence.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/recurrence/table/recurrence.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/recurrence/table/recurrence.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -790,7 +781,7 @@
       <workItem from="1784633157389" duration="311246000" />
       <workItem from="1785108137089" duration="4055000" />
       <workItem from="1785140042961" duration="7811000" />
-      <workItem from="1785243755219" duration="1243000" />
+      <workItem from="1785243755219" duration="7005000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />
@@ -1531,11 +1522,6 @@
           <url>file://$PROJECT_DIR$/src/recurrence/quadrant/northeast/recurrence.py</url>
           <line>9</line>
           <option name="timeStamp" value="311" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/src/mapper/stream/quadrant/mapper.py</url>
-          <line>9</line>
-          <option name="timeStamp" value="312" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/src/movement/pawn/maneuver/pattern.py</url>

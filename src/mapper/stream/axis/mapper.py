@@ -9,7 +9,7 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from typing import Dict, List, Optional, Tuple, cast
+from typing import Dict, List, Optional, Tuple, Type, cast
 
 from mapper import (
     AxisMappingFunction, EastAxisMapFunction, SpaceMapFunctionStream, NorthAxisMapFunction,
@@ -19,12 +19,49 @@ from space import Axis, AxisReservoir, EastAxis, NorthAxis, SouthAxis, WestAxis
 
 
 class AxisMappingFunctionStream(SpaceMapFunctionStream[Axis]):
+    """
+    Role:
+        -   Computation
+        -   Factory
+        -   Switcher
 
+    Responsibilities:
+        1.  AxisMappingFunction factory whose products don't need down-casting before use.
+        2.  Binding a Axis to the appropriate mapping function.
+
+
+    Attributes:
+        space_reservoir: Axis
+
+        stream_size: int
+        streams_are_empty: bool
+        streams_are_not_empty: bool
+
+        east_mapping_function: Optional[EastAxisMapFunction]:
+        north_mapping_function: Optional[NorthAxisMapFunction]:
+        east_mapping_function: Optional[EastAxisMapFunction]:
+        west_mapping_function:  Optional[WestAxisMapFunction]:
+
+        east_axis_map_tuple: Tuple[EastAxis, EastAxisMapFunction]:
+        north_axis_map_tuple: Tuple[NorthAxis, NorthAxisMapFunction]:
+        west_axis_map_tuple: Tuple[WestAxis, WestAxisMapFunction]:
+        east_axis_map_tuple: Tuple[EastAxis, EastAxisMapFunction]:
+        type_mapper_dict: Dict[Type[AxisMappingFunction], AxisMappingFunctionStream]:
+
+    Provides:
+
+    Super Class:
+        SpaceMapFunctionStream
+    """
     
     _function_stream: Dict[Axis, AxisMappingFunction]
  
     
     def __init__(self, space_reservoir: AxisReservoir):
+        """
+        Args:
+            space_reservoir: AxisReservoir
+        """
         super().__init__(space_reservoir=space_reservoir)
         
         self._function_stream = {
@@ -107,14 +144,15 @@ class AxisMappingFunctionStream(SpaceMapFunctionStream[Axis]):
         )
     
     @property
-    def stream_iterator(self) -> iter:
+    def type_mapper_dict(self) -> Dict[Type[AxisMappingFunction], AxisMappingFunctionStream]:
         """
-        Using thr iterator means you have to check types and cast.
+        Simple iteration through the axis mapping functions is not useful because the need down-casting
+        Using type as the iterator key surmount can automate casting without requiring isinstance calls.
         """
-        map_functions: List[AxisMappingFunction] = []
-        
-        for key in self._function_stream:
-            map_functions.append(self._function_stream[key])
-        return map_functions
-
+        return {
+            Type[EastAxisMapFunction]: self.east_mapping_function,
+            Type[NorthAxisMapFunction]: self.north_mapping_function,
+            Type[SouthAxisMapFunction]: self.south_mapping_function,
+            Type[WestAxisMapFunction]: self.west_mapping_function,
+        }
         

@@ -10,8 +10,9 @@ version: 1.0.1
 from __future__ import annotations
 
 from abc import ABC, abstractmethod
-from typing import Generic, TypeVar
+from typing import Dict, Generic, Type, TypeVar
 
+from mapper import SpaceMappingFunction
 
 T = TypeVar("T", bound="SpaceReservoir")
 
@@ -24,7 +25,7 @@ class SpaceMapFunctionStream(ABC, Generic[T]):
 
     Responsibilities:
         1.  Produce the set of all mapping functions for with the correct downcast.
-        2.  Immutable list of
+        2.  Dictionary for iterating through mapping functions by type.
         
 
     Attributes:
@@ -34,7 +35,7 @@ class SpaceMapFunctionStream(ABC, Generic[T]):
         -   @abstractmethod def stream_size() -> in
         -   @abstractmethod def streams_are_empty() -> bool
         -   @abstractmethod def streams_are_not_empty() -> bool
-        -   @abstractmethod def stream_iterator(self) -> iter
+        -   @abstractmethod def type_mapper_dict() -> Dict[Type[T], SpaceMappingFunction[T]]
 
     Super Class:
     """
@@ -65,8 +66,8 @@ class SpaceMapFunctionStream(ABC, Generic[T]):
     @abstractmethod
     def streams_are_not_empty(self) -> bool:
         pass
-    
+
     @property
     @abstractmethod
-    def stream_iterator(self) -> iter:
+    def type_mapper_dict(self) -> Dict[Type[T], SpaceMappingFunction[T]]:
         pass

@@ -9,11 +9,11 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from abc import ABC, abstractmethod
-from typing import Generic, TypeVar
+from abc import ABC, abstractmethod, abstractproperty
+from typing import Dict, Generic, Type, TypeVar
 
 from mapper import SpaceMapFunctionStream
-
+from recurrence import Recurrence
 
 T = TypeVar("T", bound="Space")
 
@@ -25,6 +25,7 @@ class RecurrenceTable(ABC, Generic[T]):
 
     Responsibilities:
         1.  Store a set of space relations to run as a job.
+        2.  Iteration that don
 
     Attributes:
         space_set: Tuple[Space, ...]
@@ -65,8 +66,8 @@ class RecurrenceTable(ABC, Generic[T]):
     @abstractmethod
     def recurrences_exist(self) -> bool:
         pass
-    
+
     @property
     @abstractmethod
-    def iterator(self) -> iter:
+    def type_recurrence_dict(self) -> Dict[Type[T], Recurrence[T]]:
         pass

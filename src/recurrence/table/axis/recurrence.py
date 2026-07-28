@@ -133,12 +133,10 @@ class AxisRecurrenceTable(RecurrenceTable[Axis]):
     
     @property
     def type_recurrence_dict(self) -> Dict[Type[Axis], AxisRecurrence]:
-
         return {
             Type[EastAxisRecurrence]: self.east_axis_recurrence,
             Type[NorthAxisRecurrence]: self.north_axis_recurrence,
             Type[WestAxisRecurrence]: self.west_axis_recurrence,
             Type[SouthAxisRecurrence]: self.south_axis_recurrence,
-            
         }
 

@@ -9,13 +9,15 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from typing import Dict, List, Optional, Tuple, cast
+from typing import Dict, List, Optional, Tuple, Type, cast
 
 from mapper import (
     NortheastQuadrantMapFunction, NorthwestQuadrantMapFunction, QuadrantMappingFunction,
     SoutheastQuadrantMapFunction, SouthwestQuadrantMapFunction, SpaceMapFunctionStream
 )
-from space import Quadrant, QuadrantReservoir, NortheastQuadrant, NorthwestQuadrant, SoutheastQuadrant, SouthwestQuadrant
+from space import (
+    Quadrant, QuadrantReservoir, NortheastQuadrant, NorthwestQuadrant, SoutheastQuadrant, SouthwestQuadrant
+)
 
 
 class QuadrantMappingFunctionStream(SpaceMapFunctionStream[Quadrant]):
@@ -26,27 +28,41 @@ class QuadrantMappingFunctionStream(SpaceMapFunctionStream[Quadrant]):
         -   Switcher
 
     Responsibilities:
-        1.  QuadrantMappingFunction factory whose products don't need downcasting before use.
-        Provides all the Quadrant mapping functions  mapping functions for with the correct downcast.
-        2.  Immutable list of
+        1.  QuadrantMappingFunction factory whose products don't need down-casting before use.
+        2.  Binding a Quadrant to the appropriate mapping function.
 
 
     Attributes:
-        space_reservoir: T
+        space_reservoir: Quadrant
+    
+        stream_size: int
+        streams_are_empty: bool
+        streams_are_not_empty: bool
+        
+        northeast_mapping_function: Optional[NortheastQuadrantMapFunction]:
+        northwest_mapping_function: Optional[NorthwestQuadrantMapFunction]:
+        southwest_mapping_function: Optional[SouthwestQuadrantMapFunction]:
+        southeast_mapping_function:  Optional[SoutheastQuadrantMapFunction]:
+        
+        northeast_quadrant_map_tuple: Tuple[NortheastQuadrant, NortheastQuadrantMapFunction]:
+        northwest_quadrant_map_tuple: Tuple[NorthwestQuadrant, NorthwestQuadrantMapFunction]:
+        southeast_quadrant_map_tuple: Tuple[SoutheastQuadrant, SoutheastQuadrantMapFunction]:
+        southwest_quadrant_map_tuple: Tuple[SouthwestQuadrant, SouthwestQuadrantMapFunction]:
+        type_mapper_dict: Dict[Type[QuadrantMappingFunction], QuadrantMappingFunctionStream]:
 
     Provides:
-        -   @abstractmethod def stream_size() -> in
-        -   @abstractmethod def streams_are_empty() -> bool
-        -   @abstractmethod def streams_are_not_empty() -> bool
-        -   @abstractmethod def stream_iterator(self) -> iter
 
     Super Class:
+        SpaceMapFunctionStream
     """
-    
     _function_stream: Dict[Quadrant, QuadrantMappingFunction]
  
     
     def __init__(self, space_reservoir: QuadrantReservoir):
+        """
+        Args:
+            space_reservoir: QuadrantReservoir
+        """
         super().__init__(space_reservoir=space_reservoir)
         
         self._function_stream = {
@@ -115,13 +131,6 @@ class QuadrantMappingFunctionStream(SpaceMapFunctionStream[Quadrant]):
         )
     
     @property
-    def southwest_quadrant_map_tuple(self) -> Tuple[SouthwestQuadrant, SouthwestQuadrantMapFunction]:
-        return (
-            self.space_reservoir.southwest,
-            self.southwest_mapping_function,
-        )
-    
-    @property
     def southeast_quadrant_map_tuple(self) -> Tuple[SoutheastQuadrant, SoutheastQuadrantMapFunction]:
         return (
             self.space_reservoir.southeast,
@@ -129,14 +138,24 @@ class QuadrantMappingFunctionStream(SpaceMapFunctionStream[Quadrant]):
         )
     
     @property
-    def stream_iterator(self) -> iter:
+    def southwest_quadrant_map_tuple(self) -> Tuple[SouthwestQuadrant, SouthwestQuadrantMapFunction]:
+        return (
+            self.space_reservoir.southwest,
+            self.southwest_mapping_function,
+        )
+
+    
+    @property
+    def type_mapper_dict(self) -> Dict[Type[QuadrantMappingFunction], QuadrantMappingFunctionStream]:
         """
-        Using thr iterator means you have to check types and cast.
+        Simple iteration through the quadrant mapping functions is not useful because the need down-casting
+        Using type as the iterator key surmount can automate casting without requiring isinstance calls.
         """
-        map_functions: List[QuadrantMappingFunction] = []
-        
-        for key in self._function_stream:
-            map_functions.append(self._function_stream[key])
-        return map_functions
+        return {
+            Type[NortheastQuadrantMapFunction]: self.northeast_mapping_function,
+            Type[NorthwestQuadrantMapFunction]: self.northwest_mapping_function,
+            Type[SoutheastQuadrantMapFunction]: self.southeast_mapping_function,
+            Type[SouthwestQuadrant]: self.southwest_mapping_function,
+        }
 
         
