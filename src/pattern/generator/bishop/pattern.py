@@ -58,55 +58,6 @@ class BishopPatternGenerator:
             priming_validator=priming_validator,
             vector_sequence_generator=vector_sequence_generator
         )
-        
-    
-    @LoggingLevelRouter.monitor
-    def execute(self, recurrence_table: QuadrantRecurrenceTable) -> ComputationResult[List[VectorSet]]:
-        """
-        Generate the set of vectors in a Bishop's traversal pattern.
-
-        Action:
-            1.  Send an exception chain in the ComputationResult if either.
-                    -   The recurrence_table fails a validation check,
-                    -   A computation fails.
-            2.  Otherwise, send the solutions in the success result.
-        Args:
-            recurrence_table: QuadrantRecurrenceTable
-        Returns:
-            ComputationResult[List[VectorSet]]
-        Raises:
-            BishopPatternGeneratorException
-        """
-        method = f"{self.__class__.__name__}.execute"
-        
-
-        # --- Cast the validation product and setup for the iteration. ---#
-        recurrences  = cast(QuadrantRecurrenceTable, validation.payload)
-        solution_sets: List[VectorSet] = []
-        
-        # --- Process each recurrence ---#
-        for key in recurrences.type_recurrence_dict:
-            # Compute the set of destinations in the
-            recurrence = cast(key, recurrences[key])
-            computation = self._sequence_generator.execute(recurrence)
-            
-            # Handle the case that, a solution is not computed.
-            if computation.is_failure:
-                # Send an exception chain in the result.
-                return ComputationResult.failure(
-                    BishopPatternGeneratorException(
-                        cls_mthd=method,
-                        cls_name=self.__class__.__name__,
-                        msg=BishopPatternGeneratorException.MSG,
-                        err_code=BishopPatternGeneratorException.ERR_CODE,
-                        mthd_rslt_type=MethodResultType.COMPUTATION_RESULT,
-                        ex=validation.exception,
-                    ),
-                )
-            # Otherwise, add to solution set
-            solution_sets.append(cast(VectorSet, computation.payload))
-        # --- Send the work product. ---#
-        return ComputationResult.success(solution_sets)
 
         
         

@@ -16,6 +16,7 @@ from .context import *
 from .dto import *
 from .model import *
 from .movement import *
+from .recurrence import *
 from .register import *
 from .space import *
 from .toggle import *

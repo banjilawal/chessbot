@@ -11,8 +11,9 @@ version: 1.0.1
 
 # Packages
 from .axis import *
-from .table import *
+from .group import *
 from .quadrant import *
+from .table import *
 
 # Modules
 from .exception import RecurrenceValidatorException
