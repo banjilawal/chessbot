@@ -9,7 +9,7 @@ version: 1.0.1
 
 from __future__ import  annotations
 
-from typing import List, Optional, Type,  cast
+from typing import List, Optional, Tuple, Type, cast
 
 from container import VectorSet
 from err import PatternGeneratorException
@@ -63,13 +63,13 @@ class TransformerRunner:
     def vector_sequence_generator(self) -> VectorSequenceGenerator:
         return self._vector_sequence_generator
     
-    @abstractmethod
+
     @LoggingLevelRouter.monitor
     def execute(
             self,
             recurrence_table_model: Type[RecurrenceTable],
             recurrence_table: RecurrenceTable,
-    ) -> ComputationResult[List[VectorSet]]:
+    ) -> ComputationResult[Tuple[VectorSet]]:
         method = f"{self.__class__.__name__}.execute"
         
         table = cast(recurrence_table_model, recurrence_table)
@@ -93,6 +93,6 @@ class TransformerRunner:
                     ),
                 )
             solution_sets.append(cast(VectorSet, computation.payload))
-        return ComputationResult.success(solution_sets)
+        return ComputationResult.success(tuple(solution_sets))
         
             

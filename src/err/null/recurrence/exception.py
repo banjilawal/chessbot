@@ -10,7 +10,7 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import ChessException
+from err import NullException
 from result import MethodResultType
 
 
@@ -20,7 +20,7 @@ __all__ = [
 ]
 
 # ======================# RECURRENCE_NULL_ERROR #======================#
-class RecurrenceNullException(ChessException):
+class RecurrenceNullException(NullException):
     """
     Role:
         -   Error Tracing
@@ -41,7 +41,7 @@ class RecurrenceNullException(ChessException):
     Provides:
 
     Super Class:
-        ChessException
+        NullException
     """
     MSG = "Recurrence cannot be null."
     ERR_CODE = "RECURRENCE_NULL_ERROR"

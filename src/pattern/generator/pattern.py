@@ -10,10 +10,11 @@ version: 1.0.1
 from __future__ import  annotations
 
 from abc import ABC, abstractmethod
-from typing import Generic, List, Optional, Type, TypeVar, cast
+from typing import Generic, List, Optional, Tuple, Type, TypeVar, cast
 
 from container import VectorSet
 from err import PatternGeneratorException
+from err.null.recurrence.group import RecurrenceTableGroupNullException
 from pattern import TransformerRunner
 from recurrence import RecurrenceTableGroup
 from result import ComputationResult, MethodResultType
@@ -22,7 +23,7 @@ from validator import PrimingValidator
 
 T = TypeVar("T", bound="Rank")
 
-class PatternGenerator(ABC, Generic[T]):
+class PatternGenerator:
     """
     Role:
         -   Computation
@@ -69,7 +70,7 @@ class PatternGenerator(ABC, Generic[T]):
     def execute(
             self,
             recurrence_table_group: RecurrenceTableGroup
-    ) -> ComputationResult[List[VectorSet]]:
+    ) -> ComputationResult[Tuple[VectorSet]]:
         """
         Generate the set of vectors in a Bishop's traversal pattern.
 
@@ -129,7 +130,7 @@ class PatternGenerator(ABC, Generic[T]):
                     ),
                 )
             # Otherwise, add to solution set
-            solution_sets.append(cast(List[VectorSet], computation.payload))
+            solution_sets.append(cast(Tuple[VectorSet], computation.payload))
         # --- Send the work product. ---#
         return ComputationResult.success(solution_sets)
         
