@@ -11,6 +11,7 @@ version: 1.0.1
 
 # Packages
 from .bishop import *
+from .runner import *
 
 # Modules
 from .pattern import PatternGenerator

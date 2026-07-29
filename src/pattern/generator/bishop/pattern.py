@@ -23,7 +23,7 @@ from util import LoggingLevelRouter
 from validator import PrimingValidator
 
 
-class BishopPatternGenerator(PatternGenerator[Bishop]):
+class BishopPatternGenerator:
     """
     Role:
         -   Computation
@@ -79,24 +79,7 @@ class BishopPatternGenerator(PatternGenerator[Bishop]):
         """
         method = f"{self.__class__.__name__}.execute"
         
-        # Handle the case that, the request cannot get bootstrapped.
-        validation = self.priming_validator.execute(
-            candidate=recurrence_table,
-            target=Type[QuadrantRecurrenceTable],
-            null_exception=QuadrantRecurrenceTableNullException(),
-        )
-        if validation.is_failure:
-            # Send an exception chain in the result.
-            return ComputationResult.failure(
-                BishopPatternGeneratorException(
-                    cls_mthd=method,
-                    cls_name=self.__class__.__name__,
-                    msg=BishopPatternGeneratorException.MSG,
-                    err_code=BishopPatternGeneratorException.ERR_CODE,
-                    mthd_rslt_type=MethodResultType.COMPUTATION_RESULT,
-                    ex=validation.exception,
-                ),
-            )
+
         # --- Cast the validation product and setup for the iteration. ---#
         recurrences  = cast(QuadrantRecurrenceTable, validation.payload)
         solution_sets: List[VectorSet] = []
