@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Dict
 
 from schema import Ruleset
-from pattern import TraversalPattern, TraversalRuleset
+from pattern import TraversalSignature, TraversalRuleset
 
 
 class BishopTraversalRuleset(TraversalRuleset):
@@ -33,7 +33,7 @@ class BishopTraversalRuleset(TraversalRuleset):
         TraversalRuleset
     """
     
-    def __init__(self, ruleset: Dict[str: TraversalPattern] = Ruleset.BISHOP.entries):
+    def __init__(self, ruleset: Dict[str: TraversalSignature] = Ruleset.BISHOP.entries):
         """
         Args:
             ruleset: Dict[str: TraversalPattern] = Ruleset.ROOK.items

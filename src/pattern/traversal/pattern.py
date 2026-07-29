@@ -9,19 +9,21 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from typing import List, Optional, Tuple, Type, cast
+from _testcapi import Generic
+from abc import abstractmethod
+from typing import Optional, Tuple, TypeVar
 
 from container import VectorSet
-from err import TraversalPatternException
-from err.null.recurrence.group import RecurrenceTableGroupNullException
-from pattern import MovementPattern, PatternGenerator
+
+from pattern import Signature, PatternGenerator
 from recurrence import RecurrenceTableGroup
 from result import ComputationResult
 from util import LoggingLevelRouter
 from validator import PrimingValidator
 
+T = TypeVar("T", bound="Rank")
 
-class TraversalPattern(MovementPattern):
+class TraversalSignature(Signature, Generic[T]):
     """
     Role:
         -   Iteration
@@ -44,7 +46,6 @@ class TraversalPattern(MovementPattern):
     
     def __init__(
             self,
-            recurrence_table_group: RecurrenceTableGroup,
             priming_validator: Optional[PrimingValidator] | None = PrimingValidator(),
             pattern_generator: Optional[PatternGenerator] | None = PatternGenerator(),
     ):
@@ -53,69 +54,21 @@ class TraversalPattern(MovementPattern):
             recurrence_table_group: RecurrenceTableGroup[T]
             pattern_generator: Optional[PatternGenerator]
         """
-        self._recurrence_table_group = recurrence_table_group
         self._pattern_generator = pattern_generator
         self._priming_validator = priming_validator
         
     @property
     def priming_validator(self) -> PrimingValidator:
         return self._priming_validator
-    
-    @property
-    def pattern_generator(self) -> PatternGenerator:
-        return self._pattern_generator
         
     @property
     def recurrence_table_group(self) -> RecurrenceTableGroup[T]:
         return self._recurrence_table_group
     
+    @abstractmethod
     @LoggingLevelRouter.monitor
-    def execute(
-            self,
-            recurrence_table_group: RecurrenceTableGroup[T]
-    ) -> ComputationResult[Tuple[VectorSet]]:
-        method = f"{self.__class__.__name__}.execute"
-        
-        # Handle the case that, the recurrence_table_group is not safe to use.
-        validation = self.priming_validator.execute(
-            candidate=recurrence_table_group,
-            target_model=Type[RecurrenceTableGroup],
-            null_exception=RecurrenceTableGroupNullException(),
-        )
-        if validation.is_failure:
-            # Send the exception chain in the result.
-            return ComputationResult.failure(
-                TraversalPatternException(
-                    cls_mthd=method,
-                    cls_name=self.__class__.__name__,
-                    msg=TraversalPatternException.MSG,
-                    err_code=TraversalPatternException.ERR_CODE,
-                    ex=validation.exception
-                )
-            )
-        # Cast the validation product for additional processing.
-        recurrence_tables = cast(RecurrenceTableGroup, validation.payload)
-        
-        computation = self.pattern_generator.execute(
-            recurrence_table_group=recurrence_tables
-        )
-        # Handle the case that the computation does not produce a result.
-        if computation.is_failure:
-            # Send the exception chain in the result.
-            return ComputationResult.failure(
-                TraversalPatternException(
-                    cls_mthd=method,
-                    cls_name=self.__class__.__name__,
-                    msg=TraversalPatternException.MSG,
-                    err_code=TraversalPatternException.ERR_CODE,
-                    ex=validation.exception
-                )
-            )
-        pattern = cast(Tuple[VectorSet], computation.payload)
-        # --- Forward the work product to the caller. ---#
-        return ComputationResult.success(pattern)
-        
-        # return self._pattern_generator.execute(recurrence_table_group=recurrence_sets)
+    def execute(self, recurrence_table_group: RecurrenceTableGroup[T]) -> ComputationResult[Tuple[VectorSet]]:
+        pass
     """
     Role:
         -   Dataset

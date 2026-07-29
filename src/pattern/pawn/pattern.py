@@ -13,10 +13,10 @@ from abc import ABC
 
 from container import VectorSet
 from model import Pawn
-from pattern import OffsetPattern
+from pattern import OffsetSignature
 
 
-class PawnOffsetPattern(ABC, OffsetPattern[Pawn]):
+class PawnOffsetPattern(ABC, OffsetSignature[Pawn]):
     """
     Role:
         -   Data Holder

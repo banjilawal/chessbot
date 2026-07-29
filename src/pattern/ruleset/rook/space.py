@@ -14,7 +14,7 @@ from typing import Dict
 
 from model import Rook
 from schema import Ruleset
-from pattern import TraversalPattern, TraversalRuleset
+from pattern import TraversalSignature, TraversalRuleset
 
 
 class RookTraversalRuleset(TraversalRuleset[Rook]):
@@ -35,7 +35,7 @@ class RookTraversalRuleset(TraversalRuleset[Rook]):
         TraversalRuleset
     """
     
-    def __init__(self, ruleset: Dict[str: TraversalPattern] = Ruleset.ROOK.entries):
+    def __init__(self, ruleset: Dict[str: TraversalSignature] = Ruleset.ROOK.entries):
         """
         Args:
             ruleset: Dict[str: TraversalPattern] = Ruleset.ROOK.items

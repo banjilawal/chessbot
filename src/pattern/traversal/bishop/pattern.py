@@ -12,14 +12,14 @@ from container import VectorSet
 from err import BishopTraversalPatternException
 from err.null.recurrence.group import BishopRecurrenceSeriesNullException
 from model import Bishop
-from pattern import PatternGenerator, TraversalPattern
+from pattern import PatternGenerator, TraversalSignature
 from recurrence import BishopRecurrenceSets
 from result import ComputationResult
 from util import LoggingLevelRouter
 from validator import PrimingValidator
 
 
-class BishopPattern(TraversalPattern[Bishop]):
+class BishopPattern(TraversalSignature[Bishop]):
     
     def __init__(
             self,

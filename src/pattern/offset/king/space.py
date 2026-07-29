@@ -12,10 +12,10 @@ from __future__ import annotations
 from container import VectorSet
 from model import King
 from schema import Offset
-from pattern import OffsetPattern
+from pattern import OffsetSignature
 
 
-class KingOffsetPattern(OffsetPattern[King]):
+class KingOffsetPattern(OffsetSignature[King]):
     """
     Role:
         -   Data Holder

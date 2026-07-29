@@ -12,20 +12,20 @@ from __future__ import annotations
 from enum import Enum
 from typing import Dict
 
-from pattern import TraversalPattern
+from pattern import TraversalSignature
 
 
 class Ruleset(Enum):
     def __new__(
             cls,
-            entries: Dict[str: TraversalPattern],
+            entries: Dict[str: TraversalSignature],
     ):
         """
         Args:
             entries: Dict[str: TraversalPattern]
         """
         obj = object.__new__(cls)
-        obj._entry = Dict[str: TraversalPattern]
+        obj._entry = Dict[str: TraversalSignature]
         return obj
     
     BISHOP = (
@@ -60,7 +60,7 @@ class Ruleset(Enum):
     ),
     
     @property
-    def entries(self) -> Dict[str: TraversalPattern]:
+    def entries(self) -> Dict[str: TraversalSignature]:
         return self._entry
     
 

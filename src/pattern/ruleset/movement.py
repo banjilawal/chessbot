@@ -12,7 +12,7 @@ from __future__ import annotations
 from abc import ABC
 from typing import Dict, Generic, List, TypeVar
 
-from pattern import TraversalPattern
+from pattern import TraversalSignature
 
 T = TypeVar("T", bound="Rank")
 
@@ -38,9 +38,9 @@ class TraversalRuleset(ABC, Generic[T]):
 
     Super Class:
     """
-    _ruleset: Dict[str: TraversalPattern]
+    _ruleset: Dict[str: TraversalSignature]
     
-    def __init__(self, ruleset: Dict[str: TraversalPattern]):
+    def __init__(self, ruleset: Dict[str: TraversalSignature]):
         """
         Args:
             rulesets: Dict[str: TraversalPattern]
@@ -48,7 +48,7 @@ class TraversalRuleset(ABC, Generic[T]):
         self._ruleset = ruleset
         
     @property
-    def ruleset(self) -> Dict[str: TraversalPattern]:
+    def ruleset(self) -> Dict[str: TraversalSignature]:
         return self._ruleset
     
     @property
@@ -64,6 +64,6 @@ class TraversalRuleset(ABC, Generic[T]):
         return not self.is_empty
     
     @property
-    def to_list(self) -> List[TraversalPattern]:
+    def to_list(self) -> List[TraversalSignature]:
         return list(self._ruleset)
         

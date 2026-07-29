@@ -13,11 +13,11 @@ from abc import ABC
 from typing import Generic, Iterator, TypeVar
 
 from container import VectorSet
-from pattern import MovementPattern
+from pattern import Signature
 
 T = TypeVar("T", bound="Rank")
 
-class OffsetPattern(MovementPattern, Generic[T]):
+class OffsetSignature(Signature, Generic[T]):
     """
     Role:
         -   Data Holder
