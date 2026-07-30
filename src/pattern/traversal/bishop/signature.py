@@ -1,7 +1,7 @@
-# src/pattern/traversal/bishop/pattern.py
+# src/pattern/traversal/bishop/signature.py
 
 """
-Module: pattern.traversal.bishop.pattern
+Module: pattern.traversal.bishop.signature
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -22,9 +22,8 @@ class BishopSignature(TraversalSignature[Bishop]):
     Role:
         -  Data Holder
 
-
     Responsibilities:
-        1.  Constraints or that are used to generate a RankTree for Traversable Ranks, Quuen,
+        1.  Constraints that generate a BishopVectorSpan.
 
     Attributes:
         recurrence_registries: RecurrenceRegistryCollection[T]
