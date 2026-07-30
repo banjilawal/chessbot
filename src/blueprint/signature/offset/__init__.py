@@ -14,4 +14,4 @@ from .king import *
 from .knight import *
 
 # Modules
-from .builder import OffsetBuilder
+from .blueprint import OffsetBuilder

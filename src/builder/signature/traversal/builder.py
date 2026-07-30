@@ -1,7 +1,7 @@
-# src/blueprint/pattern/traversal/blueprint.py
+# src/builder/pattern/traversal/builder.py
 
 """
-Module: blueprint.pattern.traversal.blueprint
+Module: builder.pattern.traversal.builder
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -12,12 +12,12 @@ from __future__ import annotations
 from abc import ABC, abstractmethod
 from typing import Generic, TypeVar, cast
 
-from blueprint import SignatureBlueprint
+from builder import SignatureBuilder
 from util import LoggingLevelRouter
 
 T = TypeVar("T", bound="TraversalSignature")
 
-class TraversalBlueprint(SignatureBlueprint, ABC, Generic[T]):
+class TraversalBuilder(SignatureBuilder, ABC, Generic[T]):
     """
     Role:
         -   Iteration
@@ -35,15 +35,15 @@ class TraversalBlueprint(SignatureBlueprint, ABC, Generic[T]):
     Super Class:
     """
     
-    def __init__(self, blueprint_toolkit: TraversalBlueprintToolkit[T]):
-        super().__init__(blueprint_toolkit=blueprint_toolkit)
+    def __init__(self, builder_toolkit: TraversalBuilderToolkit[T]):
+        super().__init__(builder_toolkit=builder_toolkit)
         
     @property
-    def blueprint_toolkit(self) -> TraversalBlueprintToolkit[T]:
-        return cast(TraversalBlueprintToolkit[T], super().blueprint_toolkit)
+    def builder_toolkit(self) -> TraversalBuilderToolkit[T]:
+        return cast(TraversalBuilderToolkit[T], super().builder_toolkit)
     
     
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def execute(self, blueprint: TraversalBlueprint[T]) -> BuildResult[T]:
+    def execute(self, builder: TraversalBuilder[T]) -> BuildResult[T]:
         pass

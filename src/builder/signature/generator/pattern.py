@@ -1,7 +1,7 @@
-# src/blueprint/pattern/generator/blueprint/pattern.py
+# src/builder/pattern/generator/builder/pattern.py
 
 """
-Module: blueprint.pattern.generator.pattern
+Module: builder.pattern.generator.pattern
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -16,7 +16,7 @@ from container import VectorSet
 from err import PatternGeneratorException
 from err.null.recurrence.group import RecurrenceTableGroupNullException
 from pattern import TransformerRunner
-from recurrence import RecurrenceTableGroup
+from recurrence import RecurrenceSet
 from result import ComputationResult, MethodResultType
 from util import LoggingLevelRouter
 from validator import PrimingValidator
@@ -69,7 +69,7 @@ class PatternGenerator:
     @LoggingLevelRouter.monitor
     def execute(
             self,
-            recurrence_table_group: RecurrenceTableGroup
+            recurrence_table_group: RecurrenceSet
     ) -> ComputationResult[Tuple[VectorSet]]:
         """
         Generate the set of vectors in a Bishop's traversal pattern.
@@ -91,7 +91,7 @@ class PatternGenerator:
         # --- Cast the validation product and setup for the iteration. ---#
         validation = self._priming_validator.execute(
             candidate=recurrence_table_group,
-            target=Type[RecurrenceTableGroup],
+            target=Type[RecurrenceSet],
             null_exception=RecurrenceTableGroupNullException(),
         )
         if validation.is_failure:
@@ -106,7 +106,7 @@ class PatternGenerator:
                     ex=validation.exception,
                 ),
             )
-        group = cast(RecurrenceTableGroup, validation.payload)
+        group = cast(RecurrenceSet, validation.payload)
         table_dict = group.recurrence_table_type_dict
         
         solution_sets = []

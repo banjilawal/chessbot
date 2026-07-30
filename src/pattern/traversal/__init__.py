@@ -10,8 +10,7 @@ version: 1.0.1
 # =========== PATTERN.TRAVERSAL PACKAGE ===========#
 
 # Packages
-
-
+from .bishop import *
 
 # Modules
-from .pattern import TraversalSignature
+from .signature import TraversalSignature

@@ -1,7 +1,7 @@
-# src/blueprint/pattern/offset/knight/__init__.py
+# src/builder/pattern/offset/knight/__init__.py
 
 """
-Module: blueprint.pattern.offset.knight.__init__
+Module: builder.pattern.offset.knight.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

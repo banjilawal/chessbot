@@ -1,7 +1,7 @@
-# src/blueprint/pattern/offset/knight/blueprint.py
+# src/builder/pattern/offset/knight/builder.py
 
 """
-Module: blueprint.pattern.offset.knight.blueprint
+Module: builder.pattern.offset.knight.builder
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -11,28 +11,28 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from blueprint import OffsetBlueprint
+from builder import OffsetBuilder
 from pattern import KnightSignature
 from result import BuildResult
 from util import LoggingLevelRouter
 
 
-class KnightOffsetBlueprint(OffsetBlueprint[KnightSignature]):
+class KnightOffsetBuilder(OffsetBuilder[KnightSignature]):
     
-    def __init__(self, blueprint_toolkit: Optional[KnightSignatureBlueprintToolkit]):
+    def __init__(self, builder_toolkit: Optional[KnightSignatureBuilderToolkit]):
         """
         Args:
-            blueprint_toolkit: Optional[KnightSignatureBlueprintToolkit]
+            builder_toolkit: Optional[KnightSignatureBuilderToolkit]
         """
-        super().__init__(blueprint_tookit=blueprint_toolkit or KnightSignatureBlueprintToolkit())
+        super().__init__(builder_tookit=builder_toolkit or KnightSignatureBuilderToolkit())
         
         
     @property
-    def blueprint_toolkit(self) -> KnightSignatureBlueprintToolkit:
-        return cast(KnightSignatureBlueprintToolkit, super().blueprint_toolkit)
+    def builder_toolkit(self) -> KnightSignatureBuilderToolkit:
+        return cast(KnightSignatureBuilderToolkit, super().builder_toolkit)
     
     
     @LoggingLevelRouter.monitor
-    def execute(self, blueprint:KnightSignatureBlueprint) -> BuildResult[KnightSignature]:
+    def execute(self, builder:KnightSignatureBuilder) -> BuildResult[KnightSignature]:
         method = f"{self.__class__.__name__}"
     

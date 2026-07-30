@@ -15,12 +15,12 @@ from result import MethodResultType
 
 __all__ = [
     # ======================# TRAVERSAL_PATTERN_NULL_ERROR #======================#
-    "TraversalPatternNullException",
+    "TraversalSignatureNullException",
 ]
 
 
 # ======================# TRAVERSAL_PATTERN_NULL_ERROR #======================#
-class TraversalPatternNullException(SignatureNullException):
+class TraversalSignatureNullException(SignatureNullException):
     """
     Role:
         -   Error Tracing

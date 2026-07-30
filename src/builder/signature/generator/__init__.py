@@ -1,7 +1,7 @@
-# src/blueprint/pattern/generator/__init__.py
+# src/builder/pattern/generator/__init__.py
 
 """
-Module: blueprint.pattern.generator.__init__
+Module: builder.pattern.generator.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

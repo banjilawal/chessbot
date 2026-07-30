@@ -16,7 +16,7 @@ from err import BishopPatternGeneratorException, QuadrantRecurrenceTableNullExce
 from math import VectorSequenceGenerator
 from model import Bishop
 from pattern import PatternGenerator
-from recurrence import QuadrantRecurrenceTable
+from recurrence import QuadrantRecurrenceRegistry
 from result import ComputationResult, MethodResultType
 
 from util import LoggingLevelRouter

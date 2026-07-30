@@ -1,7 +1,7 @@
-# src/blueprint/pattern/offset/__init__.py
+# src/builder/pattern/offset/__init__.py
 
 """
-Module: blueprint.pattern.offset.__init__
+Module: builder.pattern.offset.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -14,4 +14,4 @@ from .king import *
 from .knight import *
 
 # Modules
-from .blueprint import OffsetBlueprint
+from .builder import OffsetBuilder

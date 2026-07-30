@@ -11,8 +11,8 @@ version: 1.0.1
 
 # Packages
 from .axis import *
-from .group import *
-from .table import *
+from .set import *
+from .registry import *
 from .quadrant import *
 
 # Modules

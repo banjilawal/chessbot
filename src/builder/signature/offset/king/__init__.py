@@ -1,7 +1,7 @@
-# src/blueprint/pattern/offset/king/__init__.py
+# src/builder/pattern/offset/king/__init__.py
 
 """
-Module: blueprint.pattern.offset.king.__init__
+Module: builder.pattern.offset.king.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -13,4 +13,4 @@ version: 1.0.1
 
 
 # Modules
-from .movement import KingOffsetPattern
+from .signature import KingOffsetPattern

@@ -18,4 +18,4 @@ from .ruleset import *
 
 
 # Modules
-from .builder import SignatureBuilder
+from .blueprint import SignatureBlueprint

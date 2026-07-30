@@ -14,4 +14,4 @@ version: 1.0.1
 
 
 # Modules
-from .builder import TraversalBuilder
+from .blueprint import TraversalSignatureBlueprint

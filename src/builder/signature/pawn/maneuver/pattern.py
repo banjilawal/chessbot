@@ -1,7 +1,7 @@
-# src/blueprint/pattern/pawn/blueprint/pattern.py
+# src/builder/pattern/pawn/builder/pattern.py
 
 """
-Module: blueprint.pattern.pawn.pattern
+Module: builder.pattern.pawn.pattern
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

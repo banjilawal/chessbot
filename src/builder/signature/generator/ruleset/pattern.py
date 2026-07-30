@@ -1,7 +1,7 @@
-# src/blueprint/pattern/generator/ruleset/blueprint/pattern.py
+# src/builder/pattern/generator/ruleset/builder/pattern.py
 
 """
-Module: blueprint.pattern.generator.ruleset.pattern
+Module: builder.pattern.generator.ruleset.pattern
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -13,15 +13,15 @@ from abc import ABC
 from typing import Generic, List, TypeVar
 
 from model import Rank
-from recurrence import RecurrenceTable
+from recurrence import RecurrenceRegistry
 
 T = TypeVar("T", bound="Rank")
 
 class PatternGenerationRuleset(ABC, Generic[T]):
     _rank: T
-    _recurrence_tables: List[RecurrenceTable]
+    _recurrence_tables: List[RecurrenceRegistry]
     
-    def __init__(self, rank: Rank, recurrence_tables: List[RecurrenceTable]):
+    def __init__(self, rank: Rank, recurrence_tables: List[RecurrenceRegistry]):
         """
         Args:
             rank: Rank
@@ -35,5 +35,5 @@ class PatternGenerationRuleset(ABC, Generic[T]):
         return self._rank
     
     @property
-    def recurrence_tables(self) -> List[RecurrenceTable]:
+    def recurrence_tables(self) -> List[RecurrenceRegistry]:
         return self._recurrence_tables

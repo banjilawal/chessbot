@@ -1,0 +1,28 @@
+# src/tree/rank/tree.py
+
+"""
+Module: tree.rank.tree
+Author: Banji Lawal
+Created: 2026-04-03
+version: 1.0.1
+"""
+
+from __future__ import  annotations
+
+from abc import ABC
+from typing import Generic, TypeVar
+
+from tree import Tree, VectorTree
+
+T = TypeVar("T")
+
+class RankVectorSpan(ABC, Generic[T]):
+    
+    _tree: VectorTree
+    
+    def __init__(self, tree: VectorTree):
+        self._tree = tree
+        
+    @property
+    def tree(self) -> Tree:
+        return  self._tree

@@ -1,7 +1,7 @@
-# src/blueprint/pattern/generator/runner/blueprint/pattern.py
+# src/builder/pattern/generator/runner/builder/pattern.py
 
 """
-Module: blueprint.pattern.generator.runner.pattern
+Module: builder.pattern.generator.runner.pattern
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -14,7 +14,7 @@ from typing import List, Optional, Tuple, Type, cast
 from container import VectorSet
 from err import PatternGeneratorException
 from math import VectorSequenceGenerator
-from recurrence import RecurrenceTable
+from recurrence import RecurrenceRegistry
 from result import ComputationResult, MethodResultType
 from util import LoggingLevelRouter
 from validator import PrimingValidator
@@ -67,8 +67,8 @@ class TransformerRunner:
     @LoggingLevelRouter.monitor
     def execute(
             self,
-            recurrence_table_model: Type[RecurrenceTable],
-            recurrence_table: RecurrenceTable,
+            recurrence_table_model: Type[RecurrenceRegistry],
+            recurrence_table: RecurrenceRegistry,
     ) -> ComputationResult[Tuple[VectorSet]]:
         method = f"{self.__class__.__name__}.execute"
         

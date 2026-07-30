@@ -1,7 +1,7 @@
-# src/blueprint/pattern/pawn/developed/__init__.py
+# src/builder/pattern/pawn/developed/__init__.py
 
 """
-Module: blueprint.pattern.pawn.maneuver.developed.__init__
+Module: builder.pattern.pawn.maneuver.developed.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
