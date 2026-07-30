@@ -1,7 +1,7 @@
-# src/builder/pattern/offset/knight/builder/pattern.py
+# src/signature/offset/knight/signature.py
 
 """
-Module: builder.pattern.offset.knight.pattern
+Module: signature.offset.knight.signature
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -12,10 +12,10 @@ from __future__ import annotations
 from container import VectorSet
 from model import Knight
 from schema import Offset
-from pattern import OffsetSignature
+from signature import OffsetSignature
 
 
-class KnightOffsetPattern(OffsetSignature[Knight]):
+class KnightSignature(OffsetSignature[Knight]):
     """
     Role:
         -   Data Holder
@@ -30,7 +30,7 @@ class KnightOffsetPattern(OffsetSignature[Knight]):
     Provides:
 
     Super Class:
-        OffsetPattern
+        OffsetSignature
     """
     
     def __init__(self,  offsets: VectorSet = Offset.KNIGHT.entries):

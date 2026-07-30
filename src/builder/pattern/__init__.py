@@ -18,4 +18,4 @@ from .ruleset import *
 
 
 # Modules
-from .builder import MovementPattern
+from .builder import SignatureBuilder

@@ -1,7 +1,7 @@
-# src/pattern/offset/king/pattern.py
+# src/signature/offset/king/signature.py
 
 """
-Module: pattern.offset.king.pattern
+Module: signature.offset.king.signature
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -12,10 +12,10 @@ from __future__ import annotations
 from container import VectorSet
 from model import King
 from schema import Offset
-from pattern import OffsetSignature
+from signature import OffsetSignature
 
 
-class KingOffsetPattern(OffsetSignature[King]):
+class KingSignature(OffsetSignature[King]):
     """
     Role:
         -   Data Holder
@@ -30,7 +30,7 @@ class KingOffsetPattern(OffsetSignature[King]):
     Provides:
 
     Super Class:
-        OffsetPattern
+        OffsetSignature
     """
     
     def __init__(self, offsets: VectorSet = Offset.entries):

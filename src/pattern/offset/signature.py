@@ -1,7 +1,7 @@
-# src/builder/pattern/offset/builder/pattern.py
+# src/signature/offset/signature.py
 
 """
-Module: builder.pattern.pattern
+Module: signature.signature
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -13,7 +13,7 @@ from abc import ABC
 from typing import Generic, Iterator, TypeVar
 
 from container import VectorSet
-from pattern import Signature
+from signature import Signature
 
 T = TypeVar("T", bound="Rank")
 
@@ -32,7 +32,7 @@ class OffsetSignature(Signature, Generic[T]):
     Provides:
 
     Super Class:
-        MovementPattern
+        MovementSignature
     """
     
     _offsets: VectorSet

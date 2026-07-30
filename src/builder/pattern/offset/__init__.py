@@ -14,4 +14,4 @@ from .king import *
 from .knight import *
 
 # Modules
-from .pattern import OffsetSignature
+from .builder import OffsetBuilder

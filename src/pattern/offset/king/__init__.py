@@ -1,16 +1,16 @@
-# src/pattern/offset/king/__init__.py
+# src/signature/offset/king/__init__.py
 
 """
-Module: pattern.offset.king.__init__
+Module: signature.offset.king.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
 """
 
-# =========== PATTERN.OFFSET.KING PACKAGE ===========#
+# =========== SIGNATURE.OFFSET.KING PACKAGE ===========#
 
 # Packages
 
 
 # Modules
-from .movement import KingOffsetPattern
+from .signature import KingSignature
