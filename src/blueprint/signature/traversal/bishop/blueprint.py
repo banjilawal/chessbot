@@ -14,14 +14,14 @@ from typing import Optional, Type, cast
 from blueprint import TraversalSignatureBlueprint
 from err import BishopSignatureNullException
 from pattern import BishopSignature
-from recurrence import BishopRecurrenceSets
+from recurrence import BishopRecurrenceRegistries
 
 
 class BishopSignatureBlueprint(TraversalSignatureBlueprint[BishopSignature]):
     
     def __init__(
             self,
-            recurrence_sets: BishopRecurrenceSets,
+            recurrence_sets: BishopRecurrenceRegistries,
             null_exception: Optional[BishopSignatureNullException],
             model_class: Type[BishopSignature] = BishopSignature,
     ):
@@ -46,5 +46,5 @@ class BishopSignatureBlueprint(TraversalSignatureBlueprint[BishopSignature]):
         return cast(BishopSignatureNullException, super()._null_exception)
     
     @property
-    def recurrence_sets(self) -> BishopRecurrenceSets:
-        return cast(BishopRecurrenceSets, super().recurrence_sets)
+    def recurrence_sets(self) -> BishopRecurrenceRegistries:
+        return cast(BishopRecurrenceRegistries, super().recurrence_sets)

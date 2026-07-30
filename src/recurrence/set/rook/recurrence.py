@@ -13,11 +13,11 @@ from typing import Dict, Tuple, Type, cast
 
 from model import Rook
 from recurrence import AxisRecurrenceRegistry, RecurrenceRegistry
-from recurrence.set import RecurrenceSet
+from recurrence.set import RecurrenceRegistryCollection
 
 
 
-class RookRecurrenceSets(RecurrenceSet[Rook]):
+class RookRecurrenceSets(RecurrenceRegistryCollection[Rook]):
     """
     Role:
         -   Data Holder

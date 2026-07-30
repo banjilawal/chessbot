@@ -13,7 +13,7 @@ from err import BishopTraversalPatternException
 from err.null.recurrence.group import BishopRecurrenceSeriesNullException
 from model import Bishop
 from pattern import SignatureGenerator, TraversalSignature
-from recurrence import BishopRecurrenceSets
+from recurrence import BishopRecurrenceRegistries
 from result import ComputationResult
 from util import LoggingLevelRouter
 from validator import PrimingValidator
@@ -35,14 +35,14 @@ class BishopPattern(TraversalSignature[Bishop]):
     @LoggingLevelRouter.monitor
     def execute(
             self,
-            recurrence_set: BishopRecurrenceSets
+            recurrence_set: BishopRecurrenceRegistries
     ) -> ComputationResult[Tuple[VectorSet]]:
         method = f"{self.__class__.__name__}.execute"
         
         # Handle the case that, the recurrence_set is not safe to use.
         validation = self.priming_validator.execute(
             candidate=recurrence_set,
-            target_model=Type[BishopRecurrenceSets],
+            target_model=Type[BishopRecurrenceRegistries],
             null_exception=BishopRecurrenceSeriesNullException(),
         )
         if validation.is_failure:
@@ -57,7 +57,7 @@ class BishopPattern(TraversalSignature[Bishop]):
                 )
             )
         # Cast the validation product for additional processing.
-        recurrence_tables = cast(BishopRecurrenceSets, validation.payload)
+        recurrence_tables = cast(BishopRecurrenceRegistries, validation.payload)
         
         computation = self.signature_generator.execute(
             recurrence_set=recurrence_tables

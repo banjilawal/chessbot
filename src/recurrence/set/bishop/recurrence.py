@@ -13,11 +13,11 @@ from typing import Dict, Tuple, Type, cast
 
 from model import Bishop
 from recurrence import QuadrantRecurrenceRegistry, RecurrenceRegistry
-from recurrence.set import RecurrenceSet
+from recurrence.set import RecurrenceRegistryCollection
 
 
 
-class BishopRecurrenceSets(RecurrenceSet[Bishop]):
+class BishopRecurrenceRegistries(RecurrenceRegistryCollection[Bishop]):
     """
     Role:
         -   Data Holder

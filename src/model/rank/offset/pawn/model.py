@@ -13,12 +13,12 @@ from typing import Dict
 from schema import Persona
 from err import PawnException
 from geometry import CoordSpan, PawnSpanner
-from model import PawnToken, Rank
+from model import OffsetRank, PawnToken
 from result import ComputationResult
 from util import LoggingLevelRouter
 
 
-class Pawn(Rank):
+class Pawn(OffsetRank):
     """
     Role:Computation, Metadata
 

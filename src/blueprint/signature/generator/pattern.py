@@ -16,7 +16,7 @@ from container import VectorSet
 from err import PatternGeneratorException
 from err.null.recurrence.group import RecurrenceTableGroupNullException
 from pattern import TransformerRunner
-from recurrence import RecurrenceSet
+from recurrence import RecurrenceRegistryCollection
 from result import ComputationResult, MethodResultType
 from util import LoggingLevelRouter
 from validator import PrimingValidator
@@ -69,7 +69,7 @@ class PatternGenerator:
     @LoggingLevelRouter.monitor
     def execute(
             self,
-            recurrence_set: RecurrenceSet
+            recurrence_set: RecurrenceRegistryCollection
     ) -> ComputationResult[Tuple[VectorSet]]:
         """
         Generate the set of vectors in a Bishop's traversal pattern.
@@ -91,7 +91,7 @@ class PatternGenerator:
         # --- Cast the validation product and setup for the iteration. ---#
         validation = self._priming_validator.execute(
             candidate=recurrence_set,
-            target=Type[RecurrenceSet],
+            target=Type[RecurrenceRegistryCollection],
             null_exception=RecurrenceTableGroupNullException(),
         )
         if validation.is_failure:
@@ -106,7 +106,7 @@ class PatternGenerator:
                     ex=validation.exception,
                 ),
             )
-        group = cast(RecurrenceSet, validation.payload)
+        group = cast(RecurrenceRegistryCollection, validation.payload)
         table_dict = group.recurrence_registry_type_dict
         
         solution_sets = []

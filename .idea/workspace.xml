@@ -5,72 +5,71 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/tree/rank/pawn/attack/developed/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/tree/rank/pawn/attack/opening/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/tree/rank/pawn/maneuver/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/tree/rank/pawn/maneuver/developed/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/tree/rank/pawn/maneuver/developed/tree.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/tree/rank/pawn/maneuver/opening/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/tree/rank/pawn/maneuver/opening/tree.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/tree/rank/pawn/maneuver/tree.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/model/rank/offset/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/model/rank/offset/model.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/toolkit/builder/signature/NOTES.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/toolkit/builder/signature/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/toolkit/builder/signature/generator/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/toolkit/builder/signature/generator/bishop/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/toolkit/builder/signature/generator/bishop/pattern.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/toolkit/builder/signature/generator/ruleset/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/toolkit/builder/signature/generator/ruleset/pattern.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/toolkit/builder/signature/generator/runner/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/toolkit/builder/signature/generator/runner/signature.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/toolkit/builder/signature/generator/signature.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/toolkit/builder/signature/offset/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/toolkit/builder/signature/offset/king/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/toolkit/builder/signature/offset/king/signature.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/toolkit/builder/signature/offset/knight/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/toolkit/builder/signature/offset/knight/signature.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/toolkit/builder/signature/offset/signature.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/toolkit/builder/signature/pawn/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/toolkit/builder/signature/pawn/attack/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/toolkit/builder/signature/pawn/attack/developed/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/toolkit/builder/signature/pawn/attack/developed/pattern.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/toolkit/builder/signature/pawn/attack/opening/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/toolkit/builder/signature/pawn/attack/opening/pattern.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/toolkit/builder/signature/pawn/attack/pattern.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/toolkit/builder/signature/pawn/maneuver/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/toolkit/builder/signature/pawn/maneuver/developed/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/toolkit/builder/signature/pawn/maneuver/developed/pattern.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/toolkit/builder/signature/pawn/maneuver/opening/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/toolkit/builder/signature/pawn/maneuver/opening/pattern.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/toolkit/builder/signature/pawn/maneuver/pattern.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/toolkit/builder/signature/pawn/pattern.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/toolkit/builder/signature/ruleset/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/toolkit/builder/signature/ruleset/bishop/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/toolkit/builder/signature/ruleset/bishop/space.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/toolkit/builder/signature/ruleset/movement.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/toolkit/builder/signature/ruleset/queen/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/toolkit/builder/signature/ruleset/queen/space.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/toolkit/builder/signature/ruleset/rook/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/toolkit/builder/signature/ruleset/rook/space.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/toolkit/builder/signature/signature.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/toolkit/builder/signature/toolkit.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/toolkit/builder/signature/traversal/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/toolkit/builder/signature/traversal/bishop/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/toolkit/builder/signature/traversal/bishop/signature.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/toolkit/builder/signature/traversal/signature.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blueprint/signature/generator/bishop/pattern.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/blueprint/signature/generator/bishop/pattern.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/blueprint/signature/generator/pattern.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/blueprint/signature/generator/pattern.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blueprint/signature/offset/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blueprint/signature/offset/blueprint.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blueprint/signature/offset/king/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blueprint/signature/offset/king/space.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blueprint/signature/offset/knight/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blueprint/signature/offset/knight/builder.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blueprint/signature/pawn/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blueprint/signature/pawn/attack/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/tree/rank/pawn/attack/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blueprint/signature/pawn/attack/developed/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blueprint/signature/pawn/attack/developed/pattern.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/tree/rank/pawn/attack/developed/tree.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blueprint/signature/pawn/attack/opening/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blueprint/signature/pawn/attack/opening/pattern.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/tree/rank/pawn/attack/opening/tree.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blueprint/signature/pawn/attack/pattern.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/tree/rank/pawn/attack/tree.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blueprint/signature/pawn/maneuver/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blueprint/signature/pawn/maneuver/developed/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blueprint/signature/pawn/maneuver/developed/pattern.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blueprint/signature/pawn/maneuver/opening/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blueprint/signature/pawn/maneuver/opening/pattern.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blueprint/signature/pawn/maneuver/pattern.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blueprint/signature/pawn/pattern.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blueprint/signature/traversal/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/blueprint/signature/traversal/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/blueprint/signature/traversal/bishop/blueprint.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/blueprint/signature/traversal/bishop/blueprint.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/blueprint/signature/traversal/blueprint.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/blueprint/signature/traversal/blueprint.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/builder/signature/generator/bishop/pattern.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/builder/signature/generator/bishop/pattern.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/builder/signature/generator/pattern.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/builder/signature/generator/pattern.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/builder/signature/traversal/bishop/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/builder/signature/traversal/bishop/builder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/container/tree/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/builder/recurrence/group/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/builder/recurrence/group/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/movement/generator/bishop/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/movement/generator/bishop/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/movement/generator/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/movement/generator/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/movement/generator/queen/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/movement/generator/queen/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/movement/generator/rook/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/movement/generator/rook/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/null/recurrence/group/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/null/recurrence/group/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/recurrence/group/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/recurrence/group/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/validation/recurrence/group/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/validation/recurrence/group/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pattern/generator/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/pattern/generator/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pattern/generator/bishop/pattern.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/pattern/generator/bishop/pattern.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pattern/generator/pattern.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/pattern/generator/signature.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pattern/generator/runner/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/pattern/generator/runner/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pattern/generator/runner/pattern.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/pattern/generator/runner/signature.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/rank/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/rank/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/rank/king/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/rank/king/model.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/rank/knight/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/rank/knight/model.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/rank/pawn/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/rank/pawn/model.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pattern/generator/signature.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/pattern/generator/signature.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pattern/traversal/bishop/signature.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/pattern/traversal/bishop/signature.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pattern/traversal/signature.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/pattern/traversal/signature.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/recurrence/set/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/recurrence/set/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/recurrence/set/bishop/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/recurrence/set/bishop/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/recurrence/set/bishop/recurrence.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/recurrence/set/bishop/recurrence.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/recurrence/set/queen/recurrence.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/recurrence/set/queen/recurrence.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/recurrence/set/recurrence.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/recurrence/set/recurrence.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/recurrence/set/rook/recurrence.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/recurrence/set/rook/recurrence.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tree/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/tree/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tree/rank/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/tree/rank/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tree/rank/bishop/tree.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/tree/rank/bishop/tree.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tree/rank/king/tree.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/tree/rank/king/tree.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tree/rank/knight/tree.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/tree/rank/knight/tree.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tree/rank/pawn/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/tree/rank/pawn/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tree/rank/pawn/tree.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/tree/rank/pawn/tree.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tree/rank/queen/tree.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/tree/rank/queen/tree.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tree/rank/rook/tree.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/tree/rank/rook/tree.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tree/rank/tree.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/tree/rank/tree.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -126,7 +125,7 @@
     "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/tree/rank/pawn",
+    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/model/rank",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
@@ -138,11 +137,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/model/rank" />
+      <recent name="$PROJECT_DIR$/src/model/rank/offset" />
+      <recent name="$PROJECT_DIR$/src/toolkit/builder/signature" />
+      <recent name="$PROJECT_DIR$/src/toolkit/builder" />
       <recent name="$PROJECT_DIR$/src/tree/rank/pawn" />
-      <recent name="$PROJECT_DIR$/src/tree/rank" />
-      <recent name="$PROJECT_DIR$/src/tree/rank/king" />
-      <recent name="$PROJECT_DIR$/src" />
-      <recent name="$PROJECT_DIR$/src/blueprint" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/carrier" />
@@ -845,7 +844,7 @@
       <workItem from="1785271456267" duration="5305000" />
       <workItem from="1785280992548" duration="25503000" />
       <workItem from="1785354695376" duration="4352000" />
-      <workItem from="1785366790867" duration="23434000" />
+      <workItem from="1785366790867" duration="27378000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />
@@ -1606,6 +1605,11 @@
           <url>file://$PROJECT_DIR$/src/tree/rank/pawn/attack/opening/tree.py</url>
           <line>8</line>
           <option name="timeStamp" value="317" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/model/rank/offset/model.py</url>
+          <line>9</line>
+          <option name="timeStamp" value="318" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

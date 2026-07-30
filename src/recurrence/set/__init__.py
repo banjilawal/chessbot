@@ -14,4 +14,4 @@ from .bishop import *
 
 
 # Modules
-from .recurrence import RecurrenceSet
+from .recurrence import RecurrenceRegistryCollection

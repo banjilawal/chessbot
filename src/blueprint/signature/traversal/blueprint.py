@@ -14,18 +14,18 @@ from typing import Generic, Type, TypeVar, cast
 
 from blueprint import SignatureBlueprint
 from err import TraversalSignatureNullException
-from recurrence import RecurrenceSet
+from recurrence import RecurrenceRegistryCollection
 
 T = TypeVar("T", bound="TraversalSignature")
 
 class TraversalSignatureBlueprint(SignatureBlueprint, ABC, Generic[T]):
-    _recurrence_set: RecurrenceSet[T]
+    _recurrence_set: RecurrenceRegistryCollection[T]
     
     def __init__(
             self,
             model_class: Type[T],
             null_exception: TraversalSignatureNullException,
-            recurrence_sets: RecurrenceSet[T],
+            recurrence_sets: RecurrenceRegistryCollection[T],
     ):
         super().__init__(model_class=model_class, null_exception=null_exception)
         self._recurrence_set = recurrence_sets
@@ -39,5 +39,5 @@ class TraversalSignatureBlueprint(SignatureBlueprint, ABC, Generic[T]):
         return cast(TraversalSignatureNullException, super().null_exception)
         
     @property
-    def recurrence_sets(self) -> RecurrenceSet[T]:
+    def recurrence_sets(self) -> RecurrenceRegistryCollection[T]:
         return self._recurrence_set

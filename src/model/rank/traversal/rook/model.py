@@ -8,16 +8,16 @@ version: 1.0.1
 """
 
 from __future__ import annotations
-from typing import Dict
+
 
 from schema import Persona
 from err import RookException
-from geometry import CoordSpan, RookSpanner
-from model import Coord, Rank
+from geometry import RookSpanner
+from model import Coord, Rank, TraversalRank
 from result import ComputationResult
 
 
-class Rook(Rank):
+class Rook(TraversalRank):
     """
     Role:Computation, Metadata
 

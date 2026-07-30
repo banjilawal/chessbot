@@ -6,74 +6,26 @@ Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
 """
-from typing import List, Optional, Tuple, Type, cast
 
-from container import VectorSet
-from err import BishopTraversalPatternException
-from err.null.recurrence.group import BishopRecurrenceSeriesNullException
+
+from __future__ import annotations
+
+from typing import cast
+
 from model import Bishop
-from pattern import SignatureGenerator, TraversalSignature
-from recurrence import BishopRecurrenceSets
-from result import ComputationResult
-from util import LoggingLevelRouter
-from validator import PrimingValidator
+from pattern import TraversalSignature
+from recurrence import BishopRecurrenceRegistries
 
 
 class BishopSignature(TraversalSignature[Bishop]):
     
-    def __init__(
-            self,
-            priming_validator: Optional[PrimingValidator],
-            signature_generator: Optional[SignatureGenerator],
-    ):
+    def __init__(self, recurrence_registries: BishopRecurrenceRegistries):
         """
         Args:
-            signature_generator: Optional[PatternGenerator]
+            recurrence_registries: BishopRecurrenceRegistries
         """
-        super().__init__(signature_generator=signature_generator, priming_validator=priming_validator)
-    
-    @LoggingLevelRouter.monitor
-    def execute(
-            self,
-            recurrence_set: BishopRecurrenceSets
-    ) -> ComputationResult[Tuple[VectorSet]]:
-        method = f"{self.__class__.__name__}.execute"
+        super().__init__(recurrence_registries=recurrence_registries)
         
-        # Handle the case that, the recurrence_set is not safe to use.
-        validation = self.priming_validator.execute(
-            candidate=recurrence_set,
-            target_model=Type[BishopRecurrenceSets],
-            null_exception=BishopRecurrenceSeriesNullException(),
-        )
-        if validation.is_failure:
-            # Send the exception chain in the result.
-            return ComputationResult.failure(
-                BishopTraversalPatternException(
-                    cls_mthd=method,
-                    cls_name=self.__class__.__name__,
-                    msg=BishopTraversalPatternException.MSG,
-                    err_code=BishopTraversalPatternException.ERR_CODE,
-                    ex=validation.exception
-                )
-            )
-        # Cast the validation product for additional processing.
-        recurrence_tables = cast(BishopRecurrenceSets, validation.payload)
-        
-        computation = self.signature_generator.execute(
-            recurrence_set=recurrence_tables
-        )
-        # Handle the case that the computation does not produce a result.
-        if computation.is_failure:
-            # Send the exception chain in the result.
-            return ComputationResult.failure(
-                BishopTraversalPatternException(
-                    cls_mthd=method,
-                    cls_name=self.__class__.__name__,
-                    msg=BishopTraversalPatternException.MSG,
-                    err_code=BishopTraversalPatternException.ERR_CODE,
-                    ex=validation.exception
-                )
-            )
-        pattern = cast(Tuple[VectorSet], computation.payload)
-        # --- Forward the work product to the caller. ---#
-        return ComputationResult.success(pattern)
+    @property
+    def recurrence_registries(self) -> BishopRecurrenceRegistries:
+        return cast(BishopRecurrenceRegistries, super().recurrence_registries)

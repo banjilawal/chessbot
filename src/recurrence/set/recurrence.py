@@ -17,7 +17,7 @@ from recurrence import RecurrenceRegistry
 T = TypeVar("T", bound="Rank")
 
 
-class RecurrenceSet(ABC, Generic[T]):
+class RecurrenceRegistryCollection(ABC, Generic[T]):
     """
     Role:
         -   Data Holder
