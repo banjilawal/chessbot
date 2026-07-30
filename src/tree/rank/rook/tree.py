@@ -14,6 +14,21 @@ from model import Rook
 from tree import RankVectorSpan, VectorTree
 
 class RookVectorSpan(RankVectorSpan[Rook]):
+    """
+    Role:
+        -   Data Holder
+
+    Responsibilities:
+        1.  Positions projected from a Rook's signature.
+
+    Attributes:
+         tree: VectorTree
+
+    Provides:
+
+    Super Class:
+        RankVectorSpan
+    """
     
     def __init__(self, tree: VectorTree):
         super().__init__(tree=tree)

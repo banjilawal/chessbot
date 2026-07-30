@@ -15,7 +15,7 @@ from typing import Optional, Tuple, TypeVar
 
 from container import VectorSet
 
-from pattern import Signature, PatternGenerator
+from pattern import Signature, SignatureGenerator
 from recurrence import RecurrenceSet
 from result import ComputationResult
 from util import LoggingLevelRouter
@@ -41,20 +41,20 @@ class TraversalSignature(Signature, Generic[T]):
     Super Class:
     """
     _priming_validator: PrimingValidator
-    _recurrence_table_group: RecurrenceSet[T]
-    _pattern_generator: Optional[PatternGenerator]
+    _recurrence_set: RecurrenceSet[T]
+    _signature_generator: Optional[SignatureGenerator]
     
     def __init__(
             self,
             priming_validator: Optional[PrimingValidator] | None = PrimingValidator(),
-            pattern_generator: Optional[PatternGenerator] | None = PatternGenerator(),
+            signature_generator: Optional[SignatureGenerator] | None = SignatureGenerator(),
     ):
         """
         Args:
-            recurrence_table_group: RecurrenceTableGroup[T]
-            pattern_generator: Optional[PatternGenerator]
+            recurrence_set: RecurrenceTableGroup[T]
+            signature_generator: Optional[PatternGenerator]
         """
-        self._pattern_generator = pattern_generator
+        self._signature_generator = signature_generator
         self._priming_validator = priming_validator
         
     @property
@@ -62,12 +62,12 @@ class TraversalSignature(Signature, Generic[T]):
         return self._priming_validator
         
     @property
-    def recurrence_table_group(self) -> RecurrenceSet[T]:
-        return self._recurrence_table_group
+    def recurrence_set(self) -> RecurrenceSet[T]:
+        return self._recurrence_set
     
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def execute(self, recurrence_table_group: RecurrenceSet[T]) -> ComputationResult[Tuple[VectorSet]]:
+    def execute(self, recurrence_set: RecurrenceSet[T]) -> ComputationResult[Tuple[VectorSet]]:
         pass
     """
     Role:

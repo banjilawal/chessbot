@@ -17,6 +17,20 @@ from tree import Tree, VectorTree
 T = TypeVar("T")
 
 class RankVectorSpan(ABC, Generic[T]):
+    """
+    Role:
+        -   Data Holder
+
+    Responsibilities:
+        1.  Positions a projected from a Rank's signature.
+
+    Attributes:
+         tree: VectorTree
+
+    Provides:
+
+    Super Class:
+    """
     
     _tree: VectorTree
     

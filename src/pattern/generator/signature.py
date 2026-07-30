@@ -23,7 +23,7 @@ from validator import PrimingValidator
 
 T = TypeVar("T", bound="Rank")
 
-class PatternGenerator:
+class SignatureGenerator:
     """
     Role:
         -   Computation
@@ -69,7 +69,7 @@ class PatternGenerator:
     @LoggingLevelRouter.monitor
     def execute(
             self,
-            recurrence_table_group: RecurrenceSet
+            recurrence_set: RecurrenceSet
     ) -> ComputationResult[Tuple[VectorSet]]:
         """
         Generate the set of vectors in a Bishop's traversal pattern.
@@ -80,7 +80,7 @@ class PatternGenerator:
                     -   A computation fails.
             2.  Otherwise, send the solutions in the success result.
         Args:
-             recurrence_table_group: RecurrenceTableGroup
+             recurrence_set: RecurrenceTableGroup
         Returns:
             ComputationResult[List[VectorSet]]
         Raises:
@@ -90,7 +90,7 @@ class PatternGenerator:
         
         # --- Cast the validation product and setup for the iteration. ---#
         validation = self._priming_validator.execute(
-            candidate=recurrence_table_group,
+            candidate=recurrence_set,
             target=Type[RecurrenceSet],
             null_exception=RecurrenceTableGroupNullException(),
         )
@@ -106,15 +106,15 @@ class PatternGenerator:
                     ex=validation.exception,
                 ),
             )
-        group = cast(RecurrenceSet, validation.payload)
-        table_dict = group.recurrence_table_type_dict
+        recurrence_set = cast(RecurrenceSet, validation.payload)
+        registry_dict = recurrence_set.recurrence_registry_type_dict
         
         solution_sets = []
         # --- Process each recurrence_table ---#
-        for table_type in table_dict.keys():
+        for registry_class in registry_dict.keys():
             computation = self._transformer_runner.execute(
-                table_type=table_type,
-                recurrence_table=table_dict[table_type],
+                registry_class=registry_class,
+                recurrence_registry=registry_dict[registry_class],
             )
             # Handle the case that, a solution is not computed.
             if computation.is_failure:

@@ -14,12 +14,12 @@ from err import MovementPatternException
 from result import MethodResultType
 
 __all__ = [
-    # ======================# PATTERN_GENERATOR_FAILURE #======================#
+    # ======================# SIGNATURE_GENERATOR_FAILURE #======================#
     "PatternGeneratorException",
 ]
 
 
-# ======================# PATTERN_GENERATOR_FAILURE #======================#
+# ======================# SIGNATURE_GENERATOR_FAILURE #======================#
 class PatternGeneratorException(MovementPatternException):
     """
     Role:
@@ -44,7 +44,7 @@ class PatternGeneratorException(MovementPatternException):
         MovementPatternException
     """
     MSG = "PatternGenerator failure."
-    ERR_CODE = "PATTERN_GENERATOR_FAILURE"
+    ERR_CODE = "SIGNATURE_GENERATOR_FAILURE"
     
     def __init__(
             self,

@@ -9,19 +9,16 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from abc import ABC
-
-from model import Pawn
-from tree import RankVectorSpan, VectorTree
+from tree import PawnVectorSpan, VectorTree
 
 
-class PawnVectorSpan(RankVectorSpan[Pawn], ABC):
+class ManeuverVectorSpan(PawnVectorSpan):
     """
     Role:
         -   Data Holder
 
     Responsibilities:
-        1.  Positions a projected from a Pawn's signature.
+        1.  Positions a projected from a Pawn's ManeuverSignature.
 
     Attributes:
          tree: VectorTree
@@ -29,7 +26,10 @@ class PawnVectorSpan(RankVectorSpan[Pawn], ABC):
     Provides:
 
     Super Class:
-        RankVectorSpan
+        PawnVectorSpan
     """
+        
     def __init__(self, tree: VectorTree):
         super().__init__(tree=tree)
+
+    

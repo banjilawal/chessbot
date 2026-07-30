@@ -14,12 +14,12 @@ from err import PatternGeneratorException
 from result import MethodResultType
 
 __all__ = [
-    # ======================# ROOK_PATTERN_GENERATOR_FAILURE #======================#
+    # ======================# ROOK_SIGNATURE_GENERATOR_FAILURE #======================#
     "RookPatternGeneratorException",
 ]
 
 
-# ======================# ROOK_PATTERN_GENERATOR_FAILURE #======================#
+# ======================# ROOK_SIGNATURE_GENERATOR_FAILURE #======================#
 class RookPatternGeneratorException(PatternGeneratorException):
     """
     Role:
@@ -44,7 +44,7 @@ class RookPatternGeneratorException(PatternGeneratorException):
         PatternGeneratorException
     """
     MSG = "RookPatternGenerator failure."
-    ERR_CODE = "ROOK_PATTERN_GENERATOR_FAILURE"
+    ERR_CODE = "ROOK_SIGNATURE_GENERATOR_FAILURE"
     
     def __init__(
             self,

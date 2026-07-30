@@ -33,26 +33,26 @@ class RecurrenceSet(ABC, Generic[T]):
 
     Super Class:
     """
-    _members: Tuple[RecurrenceRegistry, ...]
+    _registries: Tuple[RecurrenceRegistry, ...]
     
     def __init__(
-            self, members: Tuple[RecurrenceRegistry, ...],
+            self, registries: Tuple[RecurrenceRegistry, ...],
     ):
         """
         Args:
             space: T
             space_mapping_function: SetMappingFunction[T]
         """
-        self._members = members
+        self._registries = registries
         
     @property
-    def members(self) -> Tuple[RecurrenceRegistry, ...]:
-        return self._members
+    def registries(self) -> Tuple[RecurrenceRegistry, ...]:
+        return self._registries
     
     @property
-    def recurrence_table_type_dict(self) -> Dict[Type[RecurrenceRegistry], RecurrenceRegistry]:
+    def recurrence_registry_type_dict(self) -> Dict[Type[RecurrenceRegistry], RecurrenceRegistry]:
         set_dict: Dict[Type[RecurrenceRegistry], RecurrenceRegistry] = {}
-        for member in self._members:
+        for member in self._registries:
             member_type = Type[member.__class__]
             set_dict[member_type] = member
         return set_dict

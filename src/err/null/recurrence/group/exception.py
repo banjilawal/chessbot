@@ -15,11 +15,11 @@ from result import MethodResultType
 
 
 __all__ = [
-    # ======================# RECURRENCE_TABLE_GROUP_NULL_ERROR #======================#
+    # ======================# RECURRENCE_SET_NULL_ERROR #======================#
     "RecurrenceTableGroupNullException",
 ]
 
-# ======================# RECURRENCE_TABLE_GROUP_NULL_ERROR #======================#
+# ======================# RECURRENCE_SET_NULL_ERROR #======================#
 class RecurrenceTableGroupNullException(RecurrenceNullException):
     """
     Role:
@@ -44,7 +44,7 @@ class RecurrenceTableGroupNullException(RecurrenceNullException):
         RecurrenceNullException
     """
     MSG = "RecurrenceTableGroup cannot be null."
-    ERR_CODE = "RECURRENCE_TABLE_GROUP_NULL_ERROR"
+    ERR_CODE = "RECURRENCE_SET_NULL_ERROR"
     
     def __init__(
             self,

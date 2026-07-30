@@ -36,14 +36,14 @@ class RookRecurrenceSets(RecurrenceSet[Rook]):
     _table: AxisRecurrenceRegistry
     
     def __init__(self, recurrence_table: AxisRecurrenceRegistry):
-        super().__init__(members=tuple([recurrence_table]))
+        super().__init__(registries=tuple([recurrence_table]))
         self._table = recurrence_table
 
     @property
-    def members(self) -> Tuple[AxisRecurrenceRegistry, ...]:
-        return cast(Tuple[AxisRecurrenceRegistry], super().members)
+    def registries(self) -> Tuple[AxisRecurrenceRegistry, ...]:
+        return cast(Tuple[AxisRecurrenceRegistry], super().registries)
     
     @property
-    def recurrence_table_type_dict(self) -> Dict[Type[AxisRecurrenceRegistry], RecurrenceRegistry]:
+    def recurrence_registry_type_dict(self) -> Dict[Type[AxisRecurrenceRegistry], RecurrenceRegistry]:
         table_type = Type[self._table]
         return {table_type: self._table}

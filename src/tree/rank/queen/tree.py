@@ -14,6 +14,20 @@ from model import Queen
 from tree import RankVectorSpan, VectorTree
 
 class QueenVectorSpan(RankVectorSpan[Queen]):
-    
+    """
+    Role:
+        -   Data Holder
+
+    Responsibilities:
+        1.  Positions projected from a Queen's signature.
+
+    Attributes:
+         tree: VectorTree
+
+    Provides:
+
+    Super Class:
+        RankVectorSpan
+    """
     def __init__(self, tree: VectorTree):
         super().__init__(tree=tree)

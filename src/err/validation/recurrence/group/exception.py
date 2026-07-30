@@ -15,11 +15,11 @@ from result import MethodResultType
 
 
 __all__ = [
-    # ======================# RECURRENCE_TABLE_GROUP_VALIDATOR_FAILURE #======================#
+    # ======================# RECURRENCE_SET_VALIDATOR_FAILURE #======================#
     "RecurrenceTableGroupValidatorException",
 ]
 
-# ======================# RECURRENCE_TABLE_GROUP_VALIDATOR_FAILURE #======================#
+# ======================# RECURRENCE_SET_VALIDATOR_FAILURE #======================#
 class RecurrenceTableGroupValidatorException(RecurrenceValidatorException):
     """
     Role:
@@ -44,7 +44,7 @@ class RecurrenceTableGroupValidatorException(RecurrenceValidatorException):
         RecurrenceValidatorException
     """
     MSG = "RecurrenceTableGroupValidator failure."
-    ERR_CODE = "RECURRENCE_TABLE_GROUP_VALIDATOR_FAILURE"
+    ERR_CODE = "RECURRENCE_SET_VALIDATOR_FAILURE"
     
     def __init__(
             self,

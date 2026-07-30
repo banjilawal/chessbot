@@ -69,7 +69,7 @@ class PatternGenerator:
     @LoggingLevelRouter.monitor
     def execute(
             self,
-            recurrence_table_group: RecurrenceSet
+            recurrence_set: RecurrenceSet
     ) -> ComputationResult[Tuple[VectorSet]]:
         """
         Generate the set of vectors in a Bishop's traversal pattern.
@@ -80,7 +80,7 @@ class PatternGenerator:
                     -   A computation fails.
             2.  Otherwise, send the solutions in the success result.
         Args:
-             recurrence_table_group: RecurrenceTableGroup
+             recurrence_set: RecurrenceTableGroup
         Returns:
             ComputationResult[List[VectorSet]]
         Raises:
@@ -90,7 +90,7 @@ class PatternGenerator:
         
         # --- Cast the validation product and setup for the iteration. ---#
         validation = self._priming_validator.execute(
-            candidate=recurrence_table_group,
+            candidate=recurrence_set,
             target=Type[RecurrenceSet],
             null_exception=RecurrenceTableGroupNullException(),
         )
@@ -107,14 +107,14 @@ class PatternGenerator:
                 ),
             )
         group = cast(RecurrenceSet, validation.payload)
-        table_dict = group.recurrence_table_type_dict
+        table_dict = group.recurrence_registry_type_dict
         
         solution_sets = []
         # --- Process each recurrence_table ---#
         for table_type in table_dict.keys():
             computation = self._transformer_runner.execute(
                 table_type=table_type,
-                recurrence_table=table_dict[table_type],
+                recurrence_registry=table_dict[table_type],
             )
             # Handle the case that, a solution is not computed.
             if computation.is_failure:

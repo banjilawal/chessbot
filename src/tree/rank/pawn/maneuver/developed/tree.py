@@ -1,27 +1,23 @@
-# src/tree/pawn/tree.py
+# src/tree/pawn/maneuver/developed/tree.py
 
 """
-Module: tree.pawn.tree
-Author: Banji Lawal
+Module: tree.pawn.maneuver.developed.tree
 Created: 2026-04-03
 version: 1.0.1
 """
 
 from __future__ import annotations
 
-from abc import ABC
-
-from model import Pawn
-from tree import RankVectorSpan, VectorTree
+from tree import ManeuverVectorSpan, VectorTree
 
 
-class PawnVectorSpan(RankVectorSpan[Pawn], ABC):
+class DevelopedManeuverVectorSpan(ManeuverVectorSpan):
     """
     Role:
         -   Data Holder
 
     Responsibilities:
-        1.  Positions a projected from a Pawn's signature.
+        1.  Positions projected from a DevelopedPawn's ManeuverSignature.
 
     Attributes:
          tree: VectorTree
@@ -29,7 +25,10 @@ class PawnVectorSpan(RankVectorSpan[Pawn], ABC):
     Provides:
 
     Super Class:
-        RankVectorSpan
+        PawnVectorSpan
     """
+    
     def __init__(self, tree: VectorTree):
         super().__init__(tree=tree)
+    
+    

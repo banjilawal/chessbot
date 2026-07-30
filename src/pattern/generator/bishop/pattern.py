@@ -15,7 +15,7 @@ from container import VectorSet
 from err import BishopPatternGeneratorException, QuadrantRecurrenceTableNullException
 from math import VectorSequenceGenerator
 from model import Bishop
-from pattern import PatternGenerator
+from pattern import SignatureGenerator
 from recurrence import QuadrantRecurrenceRegistry
 from result import ComputationResult, MethodResultType
 

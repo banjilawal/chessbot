@@ -14,4 +14,4 @@ from .bishop import *
 from .runner import *
 
 # Modules
-from .pattern import PatternGenerator
+from .signature import SignatureGenerator

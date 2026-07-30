@@ -19,7 +19,7 @@ from recurrence import RecurrenceSet
 T = TypeVar("T", bound="TraversalSignature")
 
 class TraversalSignatureBlueprint(SignatureBlueprint, ABC, Generic[T]):
-    _recurrence_table_group: RecurrenceSet[T]
+    _recurrence_set: RecurrenceSet[T]
     
     def __init__(
             self,
@@ -28,7 +28,7 @@ class TraversalSignatureBlueprint(SignatureBlueprint, ABC, Generic[T]):
             recurrence_sets: RecurrenceSet[T],
     ):
         super().__init__(model_class=model_class, null_exception=null_exception)
-        self._recurrence_table_group = recurrence_sets
+        self._recurrence_set = recurrence_sets
         
     @property
     def model_class(self) -> Type[T]:
@@ -40,4 +40,4 @@ class TraversalSignatureBlueprint(SignatureBlueprint, ABC, Generic[T]):
         
     @property
     def recurrence_sets(self) -> RecurrenceSet[T]:
-        return self._recurrence_table_group
+        return self._recurrence_set

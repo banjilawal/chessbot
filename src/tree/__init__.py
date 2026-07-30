@@ -10,7 +10,6 @@ version: 1.0.1
 # =========== TREE PACKAGE ===========#
 
 # Packages
-from .quadrant import *
 from .rank import *
 from .register import *
 from .vector import *

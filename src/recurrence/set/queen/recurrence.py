@@ -39,5 +39,5 @@ class QueenRecurrenceSets(RecurrenceSet[Queen]):
             axis_recurrence_table: AxisRecurrenceRegistry,
             quadrant_recurrence_table: QuadrantRecurrenceRegistry,
     ):
-        super().__init__(members=tuple([axis_recurrence_table, quadrant_recurrence_table]))
+        super().__init__(registries=tuple([axis_recurrence_table, quadrant_recurrence_table]))
 

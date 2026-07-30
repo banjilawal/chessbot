@@ -12,7 +12,7 @@ from container import VectorSet
 from err import BishopTraversalPatternException
 from err.null.recurrence.group import BishopRecurrenceSeriesNullException
 from model import Bishop
-from pattern import PatternGenerator, TraversalSignature
+from pattern import SignatureGenerator, TraversalSignature
 from recurrence import BishopRecurrenceSets
 from result import ComputationResult
 from util import LoggingLevelRouter
@@ -24,24 +24,24 @@ class BishopSignature(TraversalSignature[Bishop]):
     def __init__(
             self,
             priming_validator: Optional[PrimingValidator],
-            pattern_generator: Optional[PatternGenerator],
+            signature_generator: Optional[SignatureGenerator],
     ):
         """
         Args:
-            pattern_generator: Optional[PatternGenerator]
+            signature_generator: Optional[PatternGenerator]
         """
-        super().__init__(pattern_generator=pattern_generator, priming_validator=priming_validator)
+        super().__init__(signature_generator=signature_generator, priming_validator=priming_validator)
     
     @LoggingLevelRouter.monitor
     def execute(
             self,
-            recurrence_table_group: BishopRecurrenceSets
+            recurrence_set: BishopRecurrenceSets
     ) -> ComputationResult[Tuple[VectorSet]]:
         method = f"{self.__class__.__name__}.execute"
         
-        # Handle the case that, the recurrence_table_group is not safe to use.
+        # Handle the case that, the recurrence_set is not safe to use.
         validation = self.priming_validator.execute(
-            candidate=recurrence_table_group,
+            candidate=recurrence_set,
             target_model=Type[BishopRecurrenceSets],
             null_exception=BishopRecurrenceSeriesNullException(),
         )
@@ -59,8 +59,8 @@ class BishopSignature(TraversalSignature[Bishop]):
         # Cast the validation product for additional processing.
         recurrence_tables = cast(BishopRecurrenceSets, validation.payload)
         
-        computation = self.pattern_generator.execute(
-            recurrence_table_group=recurrence_tables
+        computation = self.signature_generator.execute(
+            recurrence_set=recurrence_tables
         )
         # Handle the case that the computation does not produce a result.
         if computation.is_failure:

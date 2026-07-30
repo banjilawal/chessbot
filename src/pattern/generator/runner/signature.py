@@ -67,13 +67,13 @@ class TransformerRunner:
     @LoggingLevelRouter.monitor
     def execute(
             self,
-            recurrence_table_model: Type[RecurrenceRegistry],
-            recurrence_table: RecurrenceRegistry,
+            recurrence_registry_model: Type[RecurrenceRegistry],
+            recurrence_registry: RecurrenceRegistry,
     ) -> ComputationResult[Tuple[VectorSet]]:
         method = f"{self.__class__.__name__}.execute"
         
-        table = cast(recurrence_table_model, recurrence_table)
-        recurrences = table.type_recurrence_dict
+        registry = cast(recurrence_registry_model, recurrence_registry)
+        recurrences = registry.type_recurrence_dict
         
         solution_sets: [VectorSet] = []
         for model in recurrences.keys():

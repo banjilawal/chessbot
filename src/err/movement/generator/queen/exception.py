@@ -14,12 +14,12 @@ from err import PatternGeneratorException
 from result import MethodResultType
 
 __all__ = [
-    # ======================# QUEEN_PATTERN_GENERATOR_FAILURE #======================#
+    # ======================# QUEEN_SIGNATURE_GENERATOR_FAILURE #======================#
     "QueenPatternGeneratorException",
 ]
 
 
-# ======================# QUEEN_PATTERN_GENERATOR_FAILURE #======================#
+# ======================# QUEEN_SIGNATURE_GENERATOR_FAILURE #======================#
 class QueenPatternGeneratorException(PatternGeneratorException):
     """
     Role:
@@ -44,7 +44,7 @@ class QueenPatternGeneratorException(PatternGeneratorException):
         PatternGeneratorException
     """
     MSG = "QueenPatternGenerator failure."
-    ERR_CODE = "QUEEN_PATTERN_GENERATOR_FAILURE"
+    ERR_CODE = "QUEEN_SIGNATURE_GENERATOR_FAILURE"
     
     def __init__(
             self,

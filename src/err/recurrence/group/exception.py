@@ -15,11 +15,11 @@ from result import MethodResultType
 
 
 __all__ = [
-    # ======================# RECURRENCE_TABLE_GROUP_ERROR #======================#
+    # ======================# RECURRENCE_SET_ERROR #======================#
     "RecurrenceTableGroupException",
 ]
 
-# ======================# RECURRENCE_TABLE_GROUP_ERROR #======================#
+# ======================# RECURRENCE_SET_ERROR #======================#
 class RecurrenceTableGroupException(RecurrenceException):
     """
     Role:
@@ -44,7 +44,7 @@ class RecurrenceTableGroupException(RecurrenceException):
         RecurrenceException
     """
     MSG = "RecurrenceTableGroup error."
-    ERR_CODE = "RECURRENCE_TABLE_GROUP_ERROR"
+    ERR_CODE = "RECURRENCE_SET_ERROR"
     
     def __init__(
             self,

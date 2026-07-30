@@ -14,12 +14,12 @@ from err import PatternGeneratorException
 from result import MethodResultType
 
 __all__ = [
-    # ======================# BISHOP_PATTERN_GENERATOR_FAILURE #======================#
+    # ======================# BISHOP_SIGNATURE_GENERATOR_FAILURE #======================#
     "BishopPatternGeneratorException",
 ]
 
 
-# ======================# BISHOP_PATTERN_GENERATOR_FAILURE #======================#
+# ======================# BISHOP_SIGNATURE_GENERATOR_FAILURE #======================#
 class BishopPatternGeneratorException(PatternGeneratorException):
     """
     Role:
@@ -44,7 +44,7 @@ class BishopPatternGeneratorException(PatternGeneratorException):
         PatternGeneratorException
     """
     MSG = "BishopPatternGenerator failure."
-    ERR_CODE = "BISHOP_PATTERN_GENERATOR_FAILURE"
+    ERR_CODE = "BISHOP_SIGNATURE_GENERATOR_FAILURE"
     
     def __init__(
             self,
