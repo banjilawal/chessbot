@@ -1,7 +1,7 @@
-# src/pattern/pawn/pattern.py
+# src/signature/pawn/signature.py
 
 """
-Module: pattern.pawn.pattern
+Module: signature.pawn.signature
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -12,27 +12,25 @@ from __future__ import annotations
 from abc import ABC
 
 from container import VectorSet
-from pattern import PawnOffsetPattern
+from model import Pawn
+from signature import OffsetSignature
 
 
-class ManeuverOffsetPattern(ABC, PawnOffsetPattern):
+class PawnSignature(ABC, OffsetSignature[Pawn]):
     """
     Role:
-        -   Computation Worker
-        -   Integrity Management
+        -  Data Holder
 
     Responsibilities:
-        1.  Prevent ArrayIndexOutOfManeuver errors by calculating the last point in the direction
-            of travel
-
+        1.  Constraints or that are used to generate a RankTree for King
 
     Attributes:
         offsets: VectorSet
-        
+
     Provides:
 
     Super Class:
-        PawnVectorSet
+        OffsetSignature
     """
     
     def __init__(self, offsets: VectorSet):
@@ -41,5 +39,4 @@ class ManeuverOffsetPattern(ABC, PawnOffsetPattern):
             offsets: VectorSet
         """
         super().__init__(offsets=offsets)
-    
     

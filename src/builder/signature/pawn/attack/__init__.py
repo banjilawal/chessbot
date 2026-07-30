@@ -15,4 +15,4 @@ from .opening import *
 
 
 # Modules
-from .pattern import AttackOffsetPattern
+from .pattern import AttackSignature

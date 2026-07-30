@@ -15,4 +15,4 @@ from .opening import *
 
 
 # Modules
-from .pattern import PawnOffsetPattern
+from .pattern import PawnSignature

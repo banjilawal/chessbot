@@ -17,20 +17,20 @@ from pattern import Signature
 from recurrence import RecurrenceRegistryCollection
 
 
-T = TypeVar("T", bound="Rank")
+T = TypeVar("T", bound="TraversalRank")
 
 
 class TraversalSignature(Signature, Generic[T]):
     """
     Role:
-        -  Iteration
+        -  Data Holder
 
 
     Responsibilities:
         1.  Constraints or that are used to generate a RankTree for Traversable Ranks, Quuen,
 
     Attributes:
-        recurrence_registry_collection: RecurrenceRegistryCollection[T]
+        recurrence_registries: RecurrenceRegistryCollection[T]
 
     Provides:
 

@@ -13,4 +13,4 @@ version: 1.0.1
 
 
 # Modules
-from .pattern import OpeningAttackOffsetPattern
+from .pattern import OpeningPawnAttackPattern

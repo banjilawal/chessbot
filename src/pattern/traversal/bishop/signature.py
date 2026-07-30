@@ -18,7 +18,22 @@ from recurrence import BishopRecurrenceRegistries
 
 
 class BishopSignature(TraversalSignature[Bishop]):
-    
+    """
+    Role:
+        -  Data Holder
+
+
+    Responsibilities:
+        1.  Constraints or that are used to generate a RankTree for Traversable Ranks, Quuen,
+
+    Attributes:
+        recurrence_registries: RecurrenceRegistryCollection[T]
+
+    Provides:
+
+    Super Class:
+        TraversalSignature
+    """
     def __init__(self, recurrence_registries: BishopRecurrenceRegistries):
         """
         Args:

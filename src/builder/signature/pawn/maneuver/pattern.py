@@ -12,10 +12,10 @@ from __future__ import annotations
 from abc import ABC
 
 from container import VectorSet
-from pattern import PawnOffsetPattern
+from pattern import PawnSignature
 
 
-class ManeuverOffsetPattern(ABC, PawnOffsetPattern):
+class ManeuverSignature(ABC, PawnSignature):
     """
     Role:
         -   Computation Worker

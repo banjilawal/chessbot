@@ -1,16 +1,16 @@
-# src/pattern/pawn/developed/__init__.py
+# src/signature/pawn/maneuver/developed/__init__.py
 
 """
-Module: pattern.pawn.maneuver.developed.__init__
+Module: signature.pawn.maneuver.developed.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
 """
 
-# =========== PATTERN.PAWN.MANEUVER.DEVELOPED PACKAGE ===========#
+# =========== SIGNATURE.PAWN.MANEUVER.DEVELOPED PACKAGE ===========#
 
 # Packages
 
 
 # Modules
-from .pattern import DevelopedManeuverOffsetPattern
+from .signature import DevelopedPawnManeuverSignature

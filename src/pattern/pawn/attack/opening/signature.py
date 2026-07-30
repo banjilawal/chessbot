@@ -1,7 +1,7 @@
-# src/pattern/pawn/pattern.py
+# src/signature/pawn/attack/opening/signature.py
 
 """
-Module: pattern.pawn.pattern
+Module: signature.pawn.attack.opening.signature
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -11,17 +11,16 @@ from __future__ import annotations
 
 from container import VectorSet
 from schema import Offset
-from pattern import AttackOffsetPattern
+from signature import PawnAttackSignature
 
 
-class OpeningAttackOffsetPattern(AttackOffsetPattern):
+class OpeningPawnAttackSignature(PawnAttackSignature):
     """
     Role:
-        -   Data Holder
-        -   Immutability
+        -  Data Holder
 
     Responsibilities:
-        1.  Determine potential attack destinations from an opening Pawn's current position.
+        1.  Constraints or that are used to generate a RankTree for Opening attacking Pawns.
 
     Attributes:
         offsets: VectorSet
@@ -29,7 +28,7 @@ class OpeningAttackOffsetPattern(AttackOffsetPattern):
     Provides:
 
     Super Class:
-        AttackOffsetPattern
+        PawnAttackSignature
     """
     
     def __init__(self, offsets: VectorSet = Offset.OPENING_PAWN_ATTACK.entries ):

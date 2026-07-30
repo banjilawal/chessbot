@@ -11,8 +11,8 @@ from __future__ import annotations
 
 from container import VectorSet
 from model import Knight
+from pattern import OffsetSignature
 from schema import Offset
-from signature import OffsetSignature
 
 
 class KnightSignature(OffsetSignature[Knight]):
@@ -35,6 +35,8 @@ class KnightSignature(OffsetSignature[Knight]):
     
     def __init__(self,  offsets: VectorSet = Offset.KNIGHT.entries):
         """
+        Args:
+            offsets: VectorSet
         """
         super().__init__(offsets=offsets)
     

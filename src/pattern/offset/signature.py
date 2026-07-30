@@ -9,22 +9,20 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from abc import ABC
-from typing import Generic, Iterator, TypeVar
+from typing import Generic, TypeVar
 
 from container import VectorSet
-from signature import Signature
+from pattern import Signature
 
-T = TypeVar("T", bound="Rank")
+T = TypeVar("T", bound="OffsetRank")
 
 class OffsetSignature(Signature, Generic[T]):
     """
     Role:
-        -   Data Holder
-        -   Immutability
+        -  Data Holder
 
     Responsibilities:
-        1.  Determine potential destinations from a Token's current position.
+        1.  Constraints or that are used to generate a RankTree for Offsetable Ranks; King, knight, Pawn
 
     Attributes:
         offsets: VectorSet
@@ -32,9 +30,8 @@ class OffsetSignature(Signature, Generic[T]):
     Provides:
 
     Super Class:
-        MovementSignature
+        OffsetSignature
     """
-    
     _offsets: VectorSet
     
     def __init__(self, offsets: VectorSet,):
@@ -42,6 +39,7 @@ class OffsetSignature(Signature, Generic[T]):
         Args:
             offsets: VectorSet
         """
+        super().__init__()
         self._offsets = offsets
         
     @property

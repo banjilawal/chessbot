@@ -1,7 +1,7 @@
-# src/signature/offset/king/signature.py
+# src/signature/pawn/maneuver/opening/signature.py
 
 """
-Module: signature.offset.king.signature
+Module: signature.pawn.maneuver.opening.signature
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -10,18 +10,17 @@ version: 1.0.1
 from __future__ import annotations
 
 from container import VectorSet
-from model import King
-from pattern import OffsetSignature
 from schema import Offset
+from signature import PawnManeuverSignature
 
 
-class KingSignature(OffsetSignature[King]):
+class OpeningPawnManeuverSignature(PawnManeuverSignature):
     """
     Role:
         -  Data Holder
 
     Responsibilities:
-        1.  Constraints or that are used to generate a RankTree for King
+        1.  Constraints or that are used to generate a RankTree for Opening maneuvering Pawns.
 
     Attributes:
         offsets: VectorSet
@@ -29,13 +28,15 @@ class KingSignature(OffsetSignature[King]):
     Provides:
 
     Super Class:
-        OffsetSignature
+        PawnManeuverSignature
     """
     
-    def __init__(self, offsets: VectorSet = Offset.KING.entries):
+    def __init__(self, offsets: VectorSet = Offset.OPENING_PAWN_MANEUVER.entries ):
         """
         Args:
             offsets: VectorSet
         """
         super().__init__(offsets=offsets)
+   
+    
     

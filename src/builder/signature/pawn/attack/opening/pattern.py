@@ -11,10 +11,10 @@ from __future__ import annotations
 
 from container import VectorSet
 from schema import Offset
-from pattern import AttackOffsetPattern
+from pattern import PawnAttackSignature
 
 
-class OpeningAttackOffsetPattern(AttackOffsetPattern):
+class OpeningPawnAttackPattern(PawnAttackSignature):
     """
     Role:
         -   Data Holder
