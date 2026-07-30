@@ -15,12 +15,12 @@ from result import MethodResultType
 
 __all__ = [
     # ======================# MOVEMENT_PATTERN_NULL_ERROR #======================#
-    "MovementPatternNullException",
+    "SignatureNullException",
 ]
 
 
 # ======================# MOVEMENT_PATTERN_NULL_ERROR #======================#
-class MovementPatternNullException(NullException):
+class SignatureNullException(NullException):
     """
     Role:
         -   Error Tracing

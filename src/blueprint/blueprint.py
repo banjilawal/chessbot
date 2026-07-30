@@ -41,7 +41,7 @@ class Blueprint(ABC, Generic[T]):
     def __init__(
             self,
             model_class: Type[T],
-            null_exception: Optional[NullException] | None = NullException(),
+            null_exception: NullException
     ):
         """
         Args:
@@ -49,7 +49,7 @@ class Blueprint(ABC, Generic[T]):
             null_exception: Optional[NullException]
         """
         self._model_class = model_class
-        super().null_exception = null_exception
+        self._null_exception = null_exception
     
     @property
     def model_class(self) -> Type[T]:
@@ -61,4 +61,4 @@ class Blueprint(ABC, Generic[T]):
     
     @property
     def null_exception(self) -> NullException:
-        return super().null_exception
+        return self._null_exception

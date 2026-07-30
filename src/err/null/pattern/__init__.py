@@ -17,4 +17,4 @@ from .traversal import *
 
 
 # Modules
-from .exception import MovementPatternNullException
+from .exception import SignatureNullException

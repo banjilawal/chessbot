@@ -10,7 +10,7 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import MovementPatternNullException
+from err import SignatureNullException
 from result import MethodResultType
 
 __all__ = [
@@ -20,7 +20,7 @@ __all__ = [
 
 
 # ======================# OFFSET_PATTERN_NULL_ERROR #======================#
-class OffsetPatternNullException(MovementPatternNullException):
+class OffsetPatternNullException(SignatureNullException):
     """
     Role:
         -   Error Tracing
