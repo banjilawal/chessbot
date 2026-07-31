@@ -10,7 +10,7 @@ version: 1.0.1
 from __future__ import annotations
 
 from abc import ABC, abstractmethod
-from typing import Generic, TypeVar
+from typing import Dict, Generic, Type, TypeVar
 
 from model import Vector
 
@@ -21,10 +21,12 @@ class SpaceReservoir(ABC, Generic[T]):
     """
     Role:
         -   Selection
-        -   Routing mask
+        -   Iterator
+        -   Routing Mask
 
     Responsibilities:
-        1.  Interface for creating Space selecting objects.
+        1.  Interface for implementing an iterator that preserves type when looping through
+            an origin's spaces.
 
     Attributes:
         size: int
@@ -68,5 +70,6 @@ class SpaceReservoir(ABC, Generic[T]):
     
     @property
     @abstractmethod
-    def iterator(self) -> iter:
+    def space_type_dict(self) -> Dict[Type[T], T]:
         pass
+

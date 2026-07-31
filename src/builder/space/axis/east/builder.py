@@ -13,7 +13,7 @@ from typing import Optional, cast
 
 from blueprint import EastAxisBlueprint
 from builder import AxisBuilder
-from err import EastAxisBuilderException
+from err import EastAxisBuilderException, EastAxisNullException
 from result import BuildResult, MethodResultType
 from space import EastAxis
 from toolkit import EastAxisBuilderToolkit
@@ -40,14 +40,13 @@ class EastAxisBuilder(AxisBuilder[EastAxis]):
     """
     def __init__(
             self, 
-            builder_toolkit: Optional[EastAxisBuilderToolkit] | 
-                             None = EastAxisBuilderToolkit()
+            builder_toolkit: Optional[EastAxisBuilderToolkit] |  None = None
     ):
         """
         Args:
             builder_toolkit: Optional[EastAxisBuilderToolkit]
         """
-        super().__init__(builder_toolkit=builder_toolkit)
+        super().__init__(builder_toolkit=builder_toolkit or EastAxisBuilderToolkit())
     
     @LoggingLevelRouter.monitor
     def execute(

@@ -20,12 +20,11 @@ from space import EastAxis
 class EastAxisBlueprint(AxisBlueprint[EastAxis]):
     """
      Role:
-         -   Container
          -   DTO
 
      Responsibilities:
-         1.  Provides values for instantiating a AxisSpace object.
-         2.  DTO
+         1.  Provides values for instantiating a EastAxis.
+
 
      Attributes:
         origin: Vector
@@ -35,28 +34,28 @@ class EastAxisBlueprint(AxisBlueprint[EastAxis]):
      Provides:
 
      Super Class:
-        AxisSpaceBlueprint
+        AxisBlueprint
      """
     
     def __init__(
             self,
             origin: Vector,
-            model_class: Type[EastAxis],
-            null_exception: Optional[EastAxisNullException] |
-                            None = EastAxisNullException(),
+            terminus: Optional[Vector] | None = None,
+            model_class: Type[EastAxis] = EastAxis,
+            null_exception: Optional[EastAxisNullException] | None = None,
     ):
         """
         Args:
             origin: Vector
+            terminus: Optional[Vector]
             model_class: Type[EastAxis]
             null_exception: Optional[EastAxisNullException]
         """
         super().__init__(
             origin=origin,
             model_class=model_class,
-            null_exception=null_exception
+            null_exception=null_exception or EastAxisNullException(),
         )
-        
     
     @property
     def model_class(self) -> Type[EastAxis]:

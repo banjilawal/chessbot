@@ -8,25 +8,25 @@ version: 1.0.1
 """
 
 from __future__ import annotations
-from typing import Generic, List, Optional, Type, TypeVar, cast
+
+from abc import ABC
+from typing import Generic, Optional, Type, TypeVar, cast
 
 from blueprint import SpaceBlueprint
 from err import QuadrantNullException
 from model import Vector
-from space import Quadrant
-
-T = TypeVar("T", bound="QuadrantSpace")
 
 
-class QuadrantBlueprint(SpaceBlueprint, Generic[T]):
+T = TypeVar("T", bound="Quadrant")
+
+
+class QuadrantBlueprint(SpaceBlueprint, ABC, Generic[T]):
     """
      Role:
-         -   Container
          -   DTO
 
      Responsibilities:
-         1.  Provides values for instantiating a QuadrantSpace object.
-         2.  DTO
+         1.  Provides values for instantiating an Quadrant.
 
      Attributes:
         origin: Vector
@@ -39,50 +39,29 @@ class QuadrantBlueprint(SpaceBlueprint, Generic[T]):
         SpaceBlueprint
      """
     _origin: Vector
-    _terminus: Optional[Vector]
     
     def __init__(
             self,
             origin: Vector,
-            model_class: Type[T],
+            null_exception: QuadrantNullException,
+            model_class: Type[T] = T,
             terminus: Optional[Vector] | None = None,
-            null_exception: Optional[QuadrantNullException] | None = QuadrantNullException(),
     ):
         """
         Args:
             origin: Vector
-            terminus: Optional[Vector]
             model_class: Type[QuadrantSpace]
             null_exception: Optional[QuadrantNullException]
         """
-        super().__init__(model_class=model_class, null_exception=null_exception)
-        self._origin = origin
-        self._terminus = terminus
+        super().__init__(origin=origin, terminus=terminus, model_class=model_class, null_exception=null_exception)
 
     @property
-    def model_class(self) -> Type[Quadrant]:
-        return cast(Type[Quadrant], super().model_class)
+    def model_class(self) -> Type[T]:
+        return cast(Type[T], super().model_class)
     
     @property
     def null_exception(self) -> QuadrantNullException:
         return cast(QuadrantNullException, super().null_exception)
+
     
-    @property
-    def origin(self) -> Vector:
-        return self._origin
-    
-    @property
-    def terminus(self) -> Optional[Vector]:
-        return self._terminus
-    
-    @property
-    def endpoints_to_list(self) -> List[Vector]:
-        return [self._origin, self._terminus]
-    
-    @property
-    def terminus_exists(self) -> bool:
-        return self._terminus is not None
-    
-    @property
-    def terminus_does_not_exist(self) -> bool:
-        return not self.terminus_exists
+

@@ -22,23 +22,23 @@ class SpaceCarrier(EntityCarrier, Generic[T], ABC):
         -   Data Transport
 
     Responsibilities:
-        1.  Transports either a Space or its Blueprint.
+        1.  Transport either:
+            -   a Space[T]
+            -   a SpaceBlueprint[T]
 
     Attributes:
-        is_space_carrier: bool
-        is_blueprint_carrier: bool
-        
-        entity: [T | Blueprint[T]]
-        is_empty: bool
-        has_overflow: bool
-        to_dict: Dict[str, Any]
-        size: int
+        is_carrying_model: bool
+        is_carrying_blueprint: bool
+        is_not_carrying_anything: bool
+        is_carrying_too_much: bool
+
+        entity: [Space[T]| SpaceBlueprint[T] | None]
 
     Provides:
-        -   extract_blueprint() -> Optional[Blueprint[T]]
+        -   def extract_blueprint() -> Optional[SpaceBlueprint[T]]
 
     Super Class:
-       EntityCarrier
+        EntityCarrier
     """
     def __init__(self):
         super().__init__()

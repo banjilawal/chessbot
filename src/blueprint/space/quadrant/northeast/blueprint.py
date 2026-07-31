@@ -8,23 +8,23 @@ version: 1.0.1
 """
 
 from __future__ import annotations
-from typing import Generic, Optional, Type, TypeVar, cast
 
-from blueprint import QuadrantBlueprint, SpaceBlueprint
-from err import NortheastQuadrantNullException, QuadrantNullException
+from typing import Optional, Type, cast
+
+from blueprint import QuadrantBlueprint
+from err import NortheastQuadrantNullException
 from model import Vector
-from space import NortheastQuadrant, Space, Quadrant
+from space import NortheastQuadrant
 
 
 class NortheastQuadrantBlueprint(QuadrantBlueprint[NortheastQuadrant]):
     """
      Role:
-         -   Container
          -   DTO
 
      Responsibilities:
-         1.  Provides values for instantiating a QuadrantSpace object.
-         2.  DTO
+         1.  Provides values for instantiating a NortheastQuadrant.
+
 
      Attributes:
         origin: Vector
@@ -40,9 +40,8 @@ class NortheastQuadrantBlueprint(QuadrantBlueprint[NortheastQuadrant]):
     def __init__(
             self,
             origin: Vector,
-            model_class: Type[NortheastQuadrant],
-            null_exception: Optional[NortheastQuadrantNullException] |
-                            None = NortheastQuadrantNullException(),
+            model_class: Type[NortheastQuadrant] = NortheastQuadrant,
+            null_exception: Optional[NortheastQuadrantNullException] | None = None,
     ):
         """
         Args:
@@ -53,9 +52,8 @@ class NortheastQuadrantBlueprint(QuadrantBlueprint[NortheastQuadrant]):
         super().__init__(
             origin=origin,
             model_class=model_class,
-            null_exception=null_exception
+            null_exception=null_exception or NortheastQuadrantNullException(),
         )
-        
     
     @property
     def model_class(self) -> Type[NortheastQuadrant]:

@@ -14,11 +14,11 @@ from typing import Generic, Optional, Type, TypeVar, cast
 from blueprint import Blueprint
 from carrier import EntityCarrier
 from err import (
-    AxisBlueprintNullException, AxisCarrierNullException, AxisNullException, AxisSpaceCarrierException
+    AxisBlueprintNullException, AxisCarrierNullException, AxisNullException, AxisCarrierException
 )
 from toolkit import SpaceToolkit
 
-T = TypeVar("T", bound="AxisSpace")
+T = TypeVar("T", bound="Axis")
 
 
 class AxisToolkit(SpaceToolkit, Generic[T]):

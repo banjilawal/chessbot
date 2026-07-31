@@ -29,7 +29,7 @@ class WestAxisEndpointBuilder(AxisEndpointBuilder[WestTraversalPattern]):
         -   Integrity Management
 
     Responsibilities:
-        1.  Create a VectoRegister for an AxisSpace endpoints.
+        1.  Create a VectoRegister for an Axis endpoints.
 
     Attributes:
         math_toolkit: Optional[MathToolkit]

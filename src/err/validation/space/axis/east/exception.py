@@ -40,7 +40,7 @@ class EastAxisValidatorException(AxisValidatorException):
     Provides:
 
     Super Class:
-        AxisSpaceValidatorException
+        AxisValidatorException
     """
     MSG = "EastAxisValidator failure. "
     ERR_CODE = "EAST_AXIS_VALIDATOR_FAILURE"

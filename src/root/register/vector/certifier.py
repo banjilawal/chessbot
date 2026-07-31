@@ -53,9 +53,9 @@ class VectorRegisterRootCertifier(RootCertifier[VectorRegister]):
         return cast(VectorRegisterToolkit, super().toolkit)
     
     @LoggingLevelRouter.monitor
-    def execute(self, candidate, Any) -> ValidationResult:
+    def execute(self, candidate, Any) -> ValidationResult[VectorRegister|VectorRegisterBlueprint]:
         """
-        Certify a candidate is a VectorRegisterBlueprint that is safe to use.
+        Certify a candidate is a VectorRegister or its Blueprint that is safe to use.
 
         Action:
             1.  Send an exception chain in the ValidationResult if any of the following
@@ -63,14 +63,14 @@ class VectorRegisterRootCertifier(RootCertifier[VectorRegister]):
                     -   The candidate is not a VectorRegisterDtoCarrier.
                     -   The candidate is an empty VectorRegisterDtoCarrier.
                     -   Either the board, team, formation, rank or id get flagged unsafe.
-            2.  For a model_carrier send a VectorRegister in the success result. Otherwise, send a TokeBlueprint.
+            2.  For a model_carrier send a VectorRegister in the success result. Otherwise, send
+                the VectorRegisterBlueprint.
         Args:
             candidate, Any
         Returns:
             ValidationResult
         Raises:
             VectorRegisterCertifierException
-            VectorRegisterDtoCarrierNullException
         """
         method = f"{self.__class__.__name__}.execute"
         

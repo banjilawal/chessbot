@@ -40,7 +40,7 @@ class WestAxisNullException(AxisNullException):
     Provides:
 
     Super Class:
-        AxisSpaceNullException
+        AxisNullException
     """
     MSG = "WestAxis cannot be null."
     ERR_CODE = "WEST_AXIS_NULL_ERROR"

@@ -16,4 +16,4 @@ from .east import *
 from .south import *
 
 # Modules
-from .exception import AxisSpaceCarrierException
+from .exception import AxisCarrierException

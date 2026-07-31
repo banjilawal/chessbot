@@ -9,21 +9,20 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from typing import Dict, List, Optional, cast
+from typing import Dict, Optional, Type, cast
 
 from model import Vector
-from space import (
-    Axis, EastAxis, NorthAxis, SouthAxis, SpaceReservoir, WestAxis
-)
+from space import Axis, EastAxis, NorthAxis, SouthAxis, SpaceReservoir, WestAxis
 
 class AxisReservoir(SpaceReservoir[Axis]):
     """
     Role:
         -   Selection
-        -   Routing mask
+        -   Iterator
+        -   Routing Mask
 
     Responsibilities:
-        1.  Implements SpaceReservoir for selecting from the origin's different axes.
+        1.  Implement SpaceReservoir for type-preserving iteration through an origin's axes.
 
     Attributes:
         size: int
@@ -71,13 +70,6 @@ class AxisReservoir(SpaceReservoir[Axis]):
         return not self.is_empty
     
     @property
-    def iterator(self) -> iter:
-        axes: List[Axis] = []
-        for key in self._reservoir:
-            axes.append(self._reservoir[key])
-        return axes.__iter__()
-    
-    @property
     def east(self) -> Optional[EastAxis]:
         return cast(EastAxis, self._reservoir["east_axis"])
     
@@ -92,5 +84,14 @@ class AxisReservoir(SpaceReservoir[Axis]):
     @property
     def west(self) -> Optional[WestAxis]:
         return cast(WestAxis, self._reservoir["west_axis"])
+    
+    @property
+    def space_type_dict(self) -> Dict[Type[Axis], Axis]:
+        return {
+            Type[EastAxis]: self.east,
+            Type[NorthAxis]: self.north,
+            Type[SouthAxis]: self.south,
+            Type[WestAxis]: self.west,
+        }
     
 

@@ -25,7 +25,7 @@ class AxisCarrierNullException(SpaceCarrierNullException):
         -   Failure Tracing
 
     Responsibilities:
-        1.  Indicating a required AxisSpace.
+        1.  Indicating a required Axis.
 
     Attributes:
         msg: str
@@ -42,7 +42,7 @@ class AxisCarrierNullException(SpaceCarrierNullException):
     Super Class:
         SpaceCarrierNullException
     """
-    MSG = "AxisSpaceCarrier cannot be null."
+    MSG = "AxisCarrier cannot be null."
     ERR_CODE = "AXIS_SPACE_CARRIER_NULL_ERROR"
     
     def __init__(

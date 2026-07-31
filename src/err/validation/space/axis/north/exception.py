@@ -40,7 +40,7 @@ class NorthAxisValidatorException(AxisValidatorException):
     Provides:
 
     Super Class:
-        AxisSpaceValidatorException
+        AxisValidatorException
     """
     MSG = "NorthAxisValidator failure. "
     ERR_CODE = "NORTH_AXIS_VALIDATOR_FAILURE"

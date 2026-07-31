@@ -1,7 +1,7 @@
-# src/space/quadrant/space.py
+# src/root/space/quadrant/root/space.py
 
 """
-Module: space.quadrant.space
+Module: root.space.quadrant.space
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -12,14 +12,14 @@ from __future__ import annotations
 from abc import abstractmethod
 from typing import Any, Generic, TypeVar, cast
 
-
+from blueprint import Blueprint
 from result import ValidationResult
 from root import SpaceRootCertifier
 from toolkit import QuadrantToolkit
 
 from util import LoggingLevelRouter
 
-T = TypeVar("T", bound="QuadrantSpace")
+T = TypeVar("T", bound="Quadrant")
 
 class QuadrantRootCertifier(SpaceRootCertifier, Generic[T]):
     """
@@ -52,7 +52,7 @@ class QuadrantRootCertifier(SpaceRootCertifier, Generic[T]):
     
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def execute(self, candidate: Any) -> ValidationResult[T]:
+    def execute(self, candidate: Any) -> ValidationResult[T|Blueprint[T]]:
         pass
         
 

@@ -40,7 +40,7 @@ class NorthAxisException(AxisException):
     Provides:
 
     Super Class:
-        AxisSpaceException
+        AxisException
     """
     MSG = "NorthAxis error."
     ERR_CODE = "NORTH_AXIS_ERROR"

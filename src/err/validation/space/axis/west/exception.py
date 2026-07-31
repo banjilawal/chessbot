@@ -40,7 +40,7 @@ class WestAxisValidatorException(AxisValidatorException):
     Provides:
 
     Super Class:
-        AxisSpaceValidatorException
+        AxisValidatorException
     """
     MSG = "WestAxisValidator failure. "
     ERR_CODE = "WEST_AXIS_VALIDATOR_FAILURE"

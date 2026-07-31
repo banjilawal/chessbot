@@ -29,7 +29,7 @@ class SouthAxis(Axis):
     Provides:
 
     Super Class:
-        AxisSpace
+        Axis
     """
     
     def __init__(self, origin: Vector,):

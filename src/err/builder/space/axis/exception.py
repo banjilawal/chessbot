@@ -16,16 +16,16 @@ from result import MethodResultType
 
 __all__ = [
     # ======================# AXIS_SPACE_BUILDER_FAILURE #======================#
-    "AxisSpaceBuilderException",
+    "AxisBuilderException",
 ]
 # ======================# AXIS_SPACE_BUILDER_FAILURE #======================#
-class AxisSpaceBuilderException(SpaceBuilderException):
+class AxisBuilderException(SpaceBuilderException):
     """
     Role:
         -   Failure Tracing
 
     Responsibilities:
-        1.  Indicating a AxisSpaceBuilder failed.
+        1.  Indicating a AxisBuilder failed.
 
     Attributes:
         msg: str
@@ -42,7 +42,7 @@ class AxisSpaceBuilderException(SpaceBuilderException):
     Super Class:
         SpaceBuilderException
     """
-    MSG = "AxisSpaceBuilder failure. "
+    MSG = "AxisBuilder failure. "
     ERR_CODE = "AXIS_SPACE_BUILDER_FAILURE"
     
     def __init__(

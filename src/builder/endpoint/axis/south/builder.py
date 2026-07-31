@@ -27,7 +27,7 @@ class SouthAxisEndpointBuilder:
         -   Integrity Management
 
     Responsibilities:
-        1.  Create a VectoRegister for an AxisSpace endpoints.
+        1.  Create a VectoRegister for an Axis endpoints.
 
     Attributes:
         delta: Vector

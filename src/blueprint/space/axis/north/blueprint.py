@@ -8,7 +8,8 @@ version: 1.0.1
 """
 
 from __future__ import annotations
-from typing import Optional, Type,  cast
+
+from typing import Optional, Type, cast
 
 from blueprint import AxisBlueprint
 from err import NorthAxisNullException
@@ -19,43 +20,44 @@ from space import NorthAxis
 class NorthAxisBlueprint(AxisBlueprint[NorthAxis]):
     """
      Role:
-         -   Container
          -   DTO
 
      Responsibilities:
-         1.  Provides values for instantiating a AxisSpace object.
-         2.  DTO
+         1.  Provides values for instantiating a NorthAxis.
+
 
      Attributes:
         origin: Vector
-        model_class: Optional[Type[NorthAxis]]
+        model_class: Type[NorthAxis]
         null_exception: Optional[NorthAxisNullException]
 
      Provides:
 
      Super Class:
-        AxisSpaceBlueprint
+        AxisBlueprint
      """
     
     def __init__(
             self,
             origin: Vector,
+            terminus: Optional[Vector] | None = None,
             model_class: Type[NorthAxis] = NorthAxis,
-            null_exception: Optional[NorthAxisNullException] |
-                            None = NorthAxisNullException(),
+            null_exception: Optional[NorthAxisNullException] | None = None,
     ):
         """
         Args:
             origin: Vector
-            model_class: Type[NorthAxis] = NorthAxis
+            terminus: Optional[Vector]
+            model_class: Type[NorthAxis]
             null_exception: Optional[NorthAxisNullException]
         """
         super().__init__(
             origin=origin,
+            terminus=terminus,
             model_class=model_class,
-            null_exception=null_exception
+            null_exception=null_exception or NorthAxisNullException(),
         )
-        
+    
     @property
     def model_class(self) -> Type[NorthAxis]:
         return cast(Type[NorthAxis], super().model_class)

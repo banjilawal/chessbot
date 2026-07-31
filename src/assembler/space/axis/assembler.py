@@ -19,7 +19,7 @@ from result import BuildResult
 from util import LoggingLevelRouter
 
 
-T = TypeVar("T", bound="AxisSpace")
+T = TypeVar("T", bound="Axis")
 
 class AxisAssembler(SpaceAssembler, Generic[T]):
     """

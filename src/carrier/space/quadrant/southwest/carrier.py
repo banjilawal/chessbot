@@ -51,13 +51,13 @@ class SouthwestQuadrantCarrier(SpaceCarrier[SouthwestQuadrant]):
     
     @property
     def entity(self) -> [SouthwestQuadrant | SouthwestQuadrantBlueprint]:
-        return self._model or self._blueprint
+        return self.model or self.blueprint
     
     @property
     def is_carrying_model(self) -> bool:
         return (
-                self._model is not None and
-                self._blueprint is None and
+                self.model is not None and
+                self.blueprint is None and
                 isinstance(self._model, SouthwestQuadrant)
         )
     
@@ -73,8 +73,8 @@ class SouthwestQuadrantCarrier(SpaceCarrier[SouthwestQuadrant]):
         if self.is_not_carrying_anything: return None
         if self.is_carrying_blueprint: return self._blueprint
         return SouthwestQuadrantBlueprint(
-            origin=self._model.origin,
-            terminus=self._model.terminus,
+            origin=self.model.origin,
+            terminus=self.model.terminus,
         )
         
     @property

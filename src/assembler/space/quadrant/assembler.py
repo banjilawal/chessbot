@@ -12,14 +12,13 @@ from __future__ import annotations
 
 from typing import Generic, TypeVar
 
-from assembler import Assembler, SpaceAssembler
+from assembler import SpaceAssembler
 from blueprint import QuadrantBlueprint
 from result import BuildResult
-from space import Axis
 from util import LoggingLevelRouter
 
 
-T = TypeVar("T", bound="AxisSpace")
+T = TypeVar("T", bound="Axis")
 
 class QuadrantAssembler(SpaceAssembler, Generic[T]):
     """

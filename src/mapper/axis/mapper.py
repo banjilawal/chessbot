@@ -17,7 +17,7 @@ from result import ComputationResult, MethodResultType
 from mapping import SpaceMappingFunction
 from util import LoggingLevelRouter
 
-T = TypeVar("T", bound="AxisSpace")
+T = TypeVar("T", bound="Axis")
 
 class AxisMappingFunction(SpaceMappingFunction, Generic[T]):
     """

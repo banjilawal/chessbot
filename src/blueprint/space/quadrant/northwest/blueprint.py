@@ -8,28 +8,28 @@ version: 1.0.1
 """
 
 from __future__ import annotations
-from typing import Generic, Optional, Type, TypeVar, cast
 
-from blueprint import QuadrantBlueprint, SpaceBlueprint
-from err import northwestQuadrantNullException, QuadrantNullException
+from typing import Optional, Type, cast
+
+from blueprint import QuadrantBlueprint
+from err import NorthwestQuadrantNullException
 from model import Vector
-from space import northwestQuadrant, Space, Quadrant
+from space import NorthwestQuadrant
 
 
-class northwestQuadrantBlueprint(QuadrantBlueprint[northwestQuadrant]):
+class NorthwestQuadrantBlueprint(QuadrantBlueprint[NorthwestQuadrant]):
     """
      Role:
-         -   Container
          -   DTO
 
      Responsibilities:
-         1.  Provides values for instantiating a QuadrantSpace object.
-         2.  DTO
+         1.  Provides values for instantiating a NorthwestQuadrant.
+
 
      Attributes:
         origin: Vector
-        model_class: Type[northwestQuadrant]
-        null_exception: Optional[northwestQuadrantNullException]
+        model_class: Type[NorthwestQuadrant]
+        null_exception: Optional[NorthwestQuadrantNullException]
 
      Provides:
 
@@ -40,27 +40,25 @@ class northwestQuadrantBlueprint(QuadrantBlueprint[northwestQuadrant]):
     def __init__(
             self,
             origin: Vector,
-            model_class: Type[northwestQuadrant],
-            null_exception: Optional[northwestQuadrantNullException] |
-                            None = northwestQuadrantNullException(),
+            model_class: Type[NorthwestQuadrant] = NorthwestQuadrant,
+            null_exception: Optional[NorthwestQuadrantNullException] | None = None,
     ):
         """
         Args:
             origin: Vector
-            model_class: Type[northwestQuadrant]
-            null_exception: Optional[northwestQuadrantNullException]
+            model_class: Type[NorthwestQuadrant]
+            null_exception: Optional[NorthwestQuadrantNullException]
         """
         super().__init__(
             origin=origin,
             model_class=model_class,
-            null_exception=null_exception
+            null_exception=null_exception or NorthwestQuadrantNullException(),
         )
-        
     
     @property
-    def model_class(self) -> Type[northwestQuadrant]:
-        return cast(Type[northwestQuadrant], super().model_class)
+    def model_class(self) -> Type[NorthwestQuadrant]:
+        return cast(Type[NorthwestQuadrant], super().model_class)
     
     @property
-    def null_exception(self) -> northwestQuadrantNullException:
-        return cast(northwestQuadrantNullException, super().null_exception)
+    def null_exception(self) -> NorthwestQuadrantNullException:
+        return cast(NorthwestQuadrantNullException, super().null_exception)

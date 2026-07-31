@@ -1,7 +1,7 @@
-# src/space/axis/space.py
+# src/root/space/axis/root/space.py
 
 """
-Module: space.axis.space
+Module: root.space.axis.space
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -18,7 +18,7 @@ from root import SpaceRootCertifier
 from toolkit import AxisToolkit
 from util import LoggingLevelRouter
 
-T = TypeVar("T", bound="AxisSpace")
+T = TypeVar("T", bound="Axis")
 
 class AxisRootCertifier(SpaceRootCertifier, Generic[T]):
     """

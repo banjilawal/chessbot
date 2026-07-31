@@ -10,7 +10,7 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import AxisSpaceBuilderException
+from err import AxisBuilderException
 from result import MethodResultType
 
 
@@ -19,7 +19,7 @@ __all__ = [
     "EastAxisBuilderException",
 ]
 # ======================# EAST_AXIS_BUILDER_FAILURE #======================#
-class EastAxisBuilderException(AxisSpaceBuilderException):
+class EastAxisBuilderException(AxisBuilderException):
     """
     Role:
         -   Failure Tracing
@@ -40,7 +40,7 @@ class EastAxisBuilderException(AxisSpaceBuilderException):
     Provides:
 
     Super Class:
-        AxisSpaceBuilderException
+        AxisBuilderException
     """
     MSG = "EastAxisBuilder failure. "
     ERR_CODE = "EAST_AXIS_BUILDER_FAILURE"

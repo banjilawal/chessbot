@@ -16,16 +16,16 @@ from result import MethodResultType
 
 __all__ = [
     # ======================# AXIS_SPACE_CARRIER_ERROR #======================#
-    "AxisSpaceCarrierException",
+    "AxisCarrierException",
 ]
 # ======================# AXIS_SPACE_CARRIER_ERROR #======================#
-class AxisSpaceCarrierException(SpaceCarrierException):
+class AxisCarrierException(SpaceCarrierException):
     """
     Role:
         -   Failure Tracing
 
     Responsibilities:
-        1.  Indicating a AxisSpaceCarrier experienced an error.
+        1.  Indicating a AxisCarrier experienced an error.
 
     Attributes:
         msg: str
@@ -42,7 +42,7 @@ class AxisSpaceCarrierException(SpaceCarrierException):
     Super Class:
         SpaceCarrierException
     """
-    MSG = "AxisSpaceCarrier error."
+    MSG = "AxisCarrier error."
     ERR_CODE = "AXIS_SPACE_CARRIER_ERROR"
     
     def __init__(

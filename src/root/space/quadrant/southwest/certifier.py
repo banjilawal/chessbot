@@ -1,4 +1,4 @@
-# src/certifier/space/quadrant/southwest/certifier.py
+# src/certifier/root/space/quadrant/southwest/certifier.py
 
 """
 Module: certifier.space.quadrant.southwest.certifier
@@ -9,7 +9,7 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from typing import Any, List, cast
+from typing import Any, List, Optional, cast
 
 from blueprint import SouthwestQuadrantBlueprint
 from carrier import SouthwestQuadrantCarrier
@@ -17,7 +17,8 @@ from model import Vector
 from result import ValidationResult
 from root import QuadrantRootCertifier
 from space import SouthwestQuadrant
-from toolkit.space.quadrant.southwest import SouthwestQuadrantToolkit
+from toolkit import SouthwestQuadrantToolkit
+
 from util import LoggingLevelRouter
 
 
@@ -30,31 +31,32 @@ class SouthwestQuadrantRootCertifier(QuadrantRootCertifier[SouthwestQuadrantBlue
         -   Process Runner
 
     Responsibilities:
-        1.  Ensure a SouthwestQuadrantBlueprint instance is certified safe, reliable and consistent before use.
+        1.  Ensure a SouthwestQuadrants or their blueprints are certified safe, reliable and consistent
+            before use.
 
     Attributes:
         toolkit: SouthwestQuadrantToolkit
 
     Provides:
-        -   execute(self, candidate: Any) -> ValidationResult:
+        -   def execute(self, candidate: Any) -> ValidationResult[SouthwestQuadrant|SouthwestQuadrantBlueprint]:
 
     Super Class:
-        Certifier
+        RootCertifier
     """
     
-    def __init__(self, toolkit: SouthwestQuadrantToolkit | None = SouthwestQuadrantToolkit()):
+    def __init__(self, toolkit: Optional[SouthwestQuadrantToolkit]| None = None):
         """
         Args:
             toolkit: SouthwestQuadrantToolkit
         """
-        super().__init__(toolkit=toolkit)
+        super().__init__(toolkit=toolkit or SouthwestQuadrantToolkit())
     
     @property
     def toolkit(self) -> SouthwestQuadrantToolkit:
         return cast(SouthwestQuadrantToolkit, super().toolkit)
     
     @LoggingLevelRouter.monitor
-    def execute(self, candidate: Any) -> ValidationResult[SouthwestQuadrant| SouthwestQuadrantBlueprint]:
+    def execute(self, candidate: Any) -> ValidationResult[SouthwestQuadrant|SouthwestQuadrantBlueprint]:
         """
         Certify a candidate is a SouthwestQuadrantBlueprint that is safe to use.
 

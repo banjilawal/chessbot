@@ -8,6 +8,7 @@ version: 1.0.1
 """
 
 from __future__ import annotations
+
 from typing import Optional, Type, cast
 
 from blueprint import AxisBlueprint
@@ -19,12 +20,11 @@ from space import SouthAxis
 class SouthAxisBlueprint(AxisBlueprint[SouthAxis]):
     """
      Role:
-         -   Container
          -   DTO
 
      Responsibilities:
-         1.  Provides values for instantiating a AxisSpace object.
-         2.  DTO
+         1.  Provides values for instantiating a SouthAxis.
+
 
      Attributes:
         origin: Vector
@@ -34,26 +34,28 @@ class SouthAxisBlueprint(AxisBlueprint[SouthAxis]):
      Provides:
 
      Super Class:
-        AxisSpaceBlueprint
+        AxisBlueprint
      """
     
     def __init__(
             self,
             origin: Vector,
-            model_class: Type[SouthAxis],
-            null_exception: Optional[SouthAxisNullException] |
-                            None = SouthAxisNullException(),
+            terminus: Optional[Vector] | None = None,
+            model_class: Type[SouthAxis] = SouthAxis,
+            null_exception: Optional[SouthAxisNullException] | None = None,
     ):
         """
         Args:
             origin: Vector
-            model_class: Type[SouthAxis]
-            null_exception: Optional[SouthAxisNullException]
+            terminus: Optional[Vector]
+            model_class: Type[WestAxis]
+            null_exception: Optional[WestAxisNullException]
         """
         super().__init__(
             origin=origin,
+            terminus=terminus,
             model_class=model_class,
-            null_exception=null_exception
+            null_exception=null_exception or SouthAxisNullException(),
         )
     
     @property

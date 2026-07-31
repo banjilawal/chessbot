@@ -8,59 +8,60 @@ version: 1.0.1
 """
 
 from __future__ import annotations
-from typing import Generic, Optional, Type, TypeVar, cast
 
-from blueprint import AxisBlueprint, SpaceBlueprint
-from err import westAxisNullException, AxisNullException
+from typing import Optional, Type, cast
+
+from blueprint import AxisBlueprint
+from err import WestAxisNullException
 from model import Vector
-from space import westAxis, Space, Axis
+from space import WestAxis
 
 
-class WestAxisBlueprint(AxisBlueprint[westAxis]):
+class WestAxisBlueprint(AxisBlueprint[WestAxis]):
     """
      Role:
-         -   Container
          -   DTO
 
      Responsibilities:
-         1.  Provides values for instantiating a AxisSpace object.
-         2.  DTO
+         1.  Provides values for instantiating a WestAxis.
+
 
      Attributes:
         origin: Vector
-        model_class: Type[westAxis]
-        null_exception: Optional[westAxisNullException]
+        model_class: Type[WestAxis]
+        null_exception: Optional[WestAxisNullException]
 
      Provides:
 
      Super Class:
-        AxisSpaceBlueprint
+        AxisSBlueprint
      """
     
     def __init__(
             self,
             origin: Vector,
-            model_class: Type[westAxis],
-            null_exception: Optional[westAxisNullException] |
-                            None = westAxisNullException(),
+            terminus: Optional[Vector] | None = None,
+            model_class: Type[WestAxis] = WestAxis,
+            null_exception: Optional[WestAxisNullException] | None = None,
     ):
         """
         Args:
             origin: Vector
-            model_class: Type[westAxis]
-            null_exception: Optional[westAxisNullException]
+            terminus: Optional[Vector]
+            model_class: Type[WestAxis]
+            null_exception: Optional[WestAxisNullException]
         """
         super().__init__(
             origin=origin,
+            terminus=terminus,
             model_class=model_class,
-            null_exception=null_exception
+            null_exception=null_exception or WestAxisNullException(),
         )
-        
     
     @property
-    def model_class(self) -> Type[westAxis]:
-        return cast(Type[westAxis], super().model_class)
+    def model_class(self) -> Type[WestAxis]:
+        return cast(Type[WestAxis], super().model_class)
     
     @property
-    def null_exception(self) -> westAxisNullException:
-        return cast(westAxisNullException, super().null_exception)
+    def null_exception(self) -> WestAxisNullException:
+        return cast(WestAxisNullException, super().null_exception)

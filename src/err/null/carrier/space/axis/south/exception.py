@@ -40,7 +40,7 @@ class SouthAxisCarrierNullException(AxisCarrierNullException):
     Provides:
 
     Super Class:
-        AxisSpaceCarrierNullException
+        AxisCarrierNullException
     """
     MSG = "SouthAxisCarrier cannot be null."
     ERR_CODE = "SOUTH_AXIS_CARRIER_NULL_ERROR"

@@ -25,7 +25,7 @@ class AxisRecurrence(Recurrence, Generic[T]):
         -   Iterator
 
     Responsibilities:
-        1.  Provide a recurrence relation for iterating to the next AxisSpace vector
+        1.  Provide a recurrence relation for iterating to the next Axis vector
 
     Attributes:
         space: T

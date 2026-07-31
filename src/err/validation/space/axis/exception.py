@@ -25,7 +25,7 @@ class AxisValidatorException(SpaceValidatorException):
         -   Failure Tracing
 
     Responsibilities:
-        1.  Indicating a AxisSpaceValidator failed.
+        1.  Indicating a AxisValidator failed.
 
     Attributes:
         msg: str
@@ -42,7 +42,7 @@ class AxisValidatorException(SpaceValidatorException):
     Super Class:
         SpaceValidatorException
     """
-    MSG = "AxisSpaceValidator failure. "
+    MSG = "AxisValidator failure. "
     ERR_CODE = "AXIS_SPACE_VALIDATOR_FAILURE"
     
     def __init__(

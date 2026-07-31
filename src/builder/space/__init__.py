@@ -10,7 +10,7 @@ version: 1.0.1
 # =========== BUILDER.SPACE PACKAGE ===========#
 
 # Packages
-from .linear import *
+from .axis import *
 from .quadrant import *
 
 

@@ -25,7 +25,7 @@ class AxisBlueprintNullException(SpaceBlueprintNullException):
         -   Failure Tracing
 
     Responsibilities:
-        1.  Indicating a required AxisSpace.
+        1.  Indicating a required Axis.
 
     Attributes:
         msg: str
@@ -42,7 +42,7 @@ class AxisBlueprintNullException(SpaceBlueprintNullException):
     Super Class:
         SpaceBlueprintNullException
     """
-    MSG = "AxisSpaceBlueprint cannot be null."
+    MSG = "AxisBlueprint cannot be null."
     ERR_CODE = "AXIS_SPACE_BLUEPRINT_NULL_ERROR"
     
     def __init__(

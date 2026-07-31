@@ -25,7 +25,7 @@ class AxisException(SpaceException):
         -   Failure Tracing
 
     Responsibilities:
-        1.  Indicating an error occurred in a AxisSpace instance.
+        1.  Indicating an error occurred in a Axis instance.
 
     Attributes:
         msg: str
@@ -42,7 +42,7 @@ class AxisException(SpaceException):
     Super Class:
         SpaceException
     """
-    MSG = "AxisSpace error."
+    MSG = "Axis error."
     ERR_CODE = "AXIS_SPACE_ERROR"
     
     def __init__(

@@ -1,17 +1,18 @@
-# src/space/__init__.py
+# src/root/space/__init__.py
 
 """
-Module: space.__init__
+Module: root.space.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
 """
 
-# =========== SPACE PACKAGE ===========#
+# =========== ROOT.SPACE PACKAGE ===========#
 
 # Packages
 from .axis import *
 from .quadrant import *
+from .reservoir import *
 
 
 # Modules

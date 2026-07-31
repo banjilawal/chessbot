@@ -1,4 +1,4 @@
-# src/certifier/space/axis/east/__init__.py
+# src/certifier/root/space/axis/east/__init__.py
 
 """
 Module: certifier.space.axis.east.__init__

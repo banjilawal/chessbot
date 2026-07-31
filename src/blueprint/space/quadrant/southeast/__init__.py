@@ -7,10 +7,10 @@ Created: 2026-04-03
 version: 1.0.1
 """
 
-# =========== BLUEPRINT.SPACE.QUADRANT.southeast PACKAGE ===========#
+# =========== BLUEPRINT.SPACE.QUADRANT.SOUTHEAST PACKAGE ===========#
 
 # Packages
 
 
 # Modules
-from .blueprint import southeastQuadrantBlueprint
+from .blueprint import SoutheastQuadrantBlueprint

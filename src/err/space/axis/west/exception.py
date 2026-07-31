@@ -40,7 +40,7 @@ class WestAxisException(AxisException):
     Provides:
 
     Super Class:
-        AxisSpaceException
+        AxisException
     """
     MSG = "WestAxis error."
     ERR_CODE = "WEST_AXIS_ERROR"

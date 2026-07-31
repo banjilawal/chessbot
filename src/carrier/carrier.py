@@ -12,7 +12,7 @@ from __future__ import annotations
 
 from abc import ABC, abstractmethod
 
-from typing import Any, Dict, Generic, Optional, TypeVar
+from typing import Generic, Optional, TypeVar
 
 from blueprint import Blueprint
 
@@ -43,7 +43,6 @@ class EntityCarrier(ABC, Generic[T]):
         -   extract_blueprint() -> Optional[Blueprint[T]]
 
     Super Class:
-        Toggle
     """
     
     def __init__(self):

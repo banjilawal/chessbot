@@ -40,7 +40,7 @@ class NorthAxisBlueprintNullException(AxisBlueprintNullException):
     Provides:
 
     Super Class:
-        AxisSpaceBlueprintNullException
+        AxisBlueprintNullException
     """
     MSG = "NorthAxisBlueprint cannot be null."
     ERR_CODE = "NORTH_AXIS_BLUEPRINT_NULL_ERROR"

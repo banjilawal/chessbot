@@ -1,4 +1,4 @@
-# src/certifier/space/quadrant/northwest/certifier.py
+# src/certifier/root/space/quadrant/northwest/certifier.py
 
 """
 Module: certifier.space.quadrant.northwest.certifier

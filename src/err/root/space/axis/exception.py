@@ -41,7 +41,7 @@ class AxisRootCertifierException(SpaceRootCertifierException):
     Provides:
 
     Super Class:
-        AxisSpaceRootCertifierException
+        AxisRootCertifierException
     """
     MSG = "AxisRootCerfier failure."
     ERR_CODE = "AXIS_ROOT_CERTIFIER_FAILURE"

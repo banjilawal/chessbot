@@ -40,20 +40,16 @@ class NorthAxisBuilder(AxisBuilder[NorthAxis]):
     """
     def __init__(
             self, 
-            builder_toolkit: Optional[NorthAxisBuilderToolkit] | 
-                             None = NorthAxisBuilderToolkit()
+            builder_toolkit: Optional[NorthAxisBuilderToolkit] | None = None,
     ):
         """
         Args:
             builder_toolkit: Optional[NorthAxisBuilderToolkit]
         """
-        super().__init__(builder_toolkit=builder_toolkit)
+        super().__init__(builder_toolkit=builder_toolkit or NorthAxisBuilderToolkit())
     
     @LoggingLevelRouter.monitor
-    def execute(
-            self,
-            blueprint: NorthAxisBlueprint
-    ) -> BuildResult[NorthAxis]:
+    def execute( self, blueprint: NorthAxisBlueprint) -> BuildResult[NorthAxis]:
         """
         Build a safe NorthAxis.
 

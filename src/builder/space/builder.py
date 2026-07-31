@@ -27,17 +27,16 @@ class SpaceBuilder(Builder, Generic[T]):
     
     def __init__(
             self,
-            builder_toolkit: Optional[SpaceBuilderToolkit] |
-                             None = SpaceBuilderToolkit(),
-            math_toolkit: Optional[MathToolkit] | None = MathToolkit(),
+            builder_toolkit: Optional[SpaceBuilderToolkit] | None = None,
+            math_toolkit: Optional[MathToolkit] | None = None,
     ):
         """
         Args:
             builder_toolkit: Optional[SpaceBuilderToolkit]
             math_toolkit: Optional[MathToolkit]
         """
-        super().__init__(builder_toolkit=builder_toolkit)
-        self._math_toolkit = math_toolkit
+        super().__init__(builder_toolkit=builder_toolkit or SpaceBuilderToolkit())
+        self._math_toolkit = math_toolkit or MathToolkit()
         
     @property
     def builder_toolkit(self) -> SpaceBuilderToolkit:

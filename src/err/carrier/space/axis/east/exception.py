@@ -10,7 +10,7 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import AxisSpaceCarrierException
+from err import AxisCarrierException
 from result import MethodResultType
 
 
@@ -19,7 +19,7 @@ __all__ = [
     "EastAxisCarrierException",
 ]
 # ======================# EAST_AXIS_CARRIER_ERROR #======================#
-class EastAxisCarrierException(AxisSpaceCarrierException):
+class EastAxisCarrierException(AxisCarrierException):
     """
     Role:
         -   Failure Tracing
@@ -40,7 +40,7 @@ class EastAxisCarrierException(AxisSpaceCarrierException):
     Provides:
 
     Super Class:
-        AxisSpaceCarrierException
+        AxisCarrierException
     """
     MSG = "EastAxisCarrier error."
     ERR_CODE = "EAST_AXIS_CARRIER_ERROR"

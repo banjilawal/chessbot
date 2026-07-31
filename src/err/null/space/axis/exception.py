@@ -25,7 +25,7 @@ class AxisNullException(SpaceNullException):
         -   Failure Tracing
 
     Responsibilities:
-        1.  Indicating a required AxisSpace is null.
+        1.  Indicating a required Axis is null.
 
     Attributes:
         msg: str
@@ -42,7 +42,7 @@ class AxisNullException(SpaceNullException):
     Super Class:
         SpaceNullException
     """
-    MSG = "AxisSpace cannot be null."
+    MSG = "Axis cannot be null."
     ERR_CODE = "AXIS_SPACE_NULL_ERROR"
     
     def __init__(

@@ -40,7 +40,7 @@ class SouthAxisNullException(AxisNullException):
     Provides:
 
     Super Class:
-        AxisSpaceNullException
+        AxisNullException
     """
     MSG = "SouthAxis cannot be null."
     ERR_CODE = "SOUTH_AXIS_NULL_ERROR"

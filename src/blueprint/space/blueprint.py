@@ -8,17 +8,20 @@ version: 1.0.1
 """
 
 from __future__ import annotations
-from typing import Optional, Type, cast
+
+from abc import ABC
+from typing import Generic, List, Type, TypeVar, cast
 
 from blueprint import Blueprint
 from err import SpaceNullException
-from space import Space
+from model import Vector
 
 
-class SpaceBlueprint(Blueprint[Space]):
+T = TypeVar("T", bound="Space")
+
+class SpaceBlueprint(Blueprint, ABC, Generic[T]):
     """
      Role:
-         -   Container
          -   DTO
 
      Responsibilities:
@@ -34,27 +37,51 @@ class SpaceBlueprint(Blueprint[Space]):
      Super Class:
         Blueprint
      """
+    _origin: Vector
+    _terminus: Vector
     
     def __init__(
             self,
-            model_class: Type[Space],
-            null_exception: Optional[SpaceNullException] | None = SpaceNullException(),
+            origin: Vector,
+            terminus: Vector,
+            model_class: Type[T],
+            null_exception: SpaceNullException,
     ):
         """
         Args:
+            origin: Vector
             model_class: Type[Space[T]]
             terminus: Optional[Vector]
-            null_exception: Optional[SpaceNullException]
+            null_exception: SpaceNullException
         """
-        super().__init__(
-            model_class=model_class,
-            null_exception=null_exception
-        )
+        super().__init__(model_class=model_class, null_exception=null_exception)
+        self._origin = origin
+        self._terminus = terminus
+        
+    @property
+    def origin(self) -> Vector:
+        return self._origin
+    
+    @property
+    def terminus(self) -> Vector:
+        return self._terminus
 
     @property
-    def space_class(self) -> Type[Space]:
-        return cast(Type[Space], super().model_class)
+    def space_class(self) -> Type[T]:
+        return cast(Type[T], super().model_class)
     
     @property
     def null_exception(self) -> SpaceNullException:
         return cast(SpaceNullException, super().null_exception)
+    
+    @property
+    def endpoints_to_list(self) -> List[Vector]:
+        return [self._origin, self._terminus]
+    
+    @property
+    def terminus_exists(self) -> bool:
+        return self._terminus is not None
+    
+    @property
+    def terminus_does_not_exist(self) -> bool:
+        return not self.terminus_exists

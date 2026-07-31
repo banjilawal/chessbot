@@ -12,13 +12,13 @@ from __future__ import annotations
 from abc import abstractmethod
 from typing import Generic, TypeVar, cast
 
-from blueprint import Blueprint, AxisBlueprint
+from blueprint import AxisBlueprint
 from builder import SpaceBuilder
 from result import BuildResult
 from toolkit import AxisBuilderToolkit
 from util import LoggingLevelRouter
 
-T = TypeVar("T", bound="AxisSpace")
+T = TypeVar("T", bound="Axis")
 
 
 class AxisBuilder(SpaceBuilder, Generic[T]):
@@ -33,5 +33,5 @@ class AxisBuilder(SpaceBuilder, Generic[T]):
         
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def execute(self, blueprint: Blueprint[T]) -> BuildResult[T]:
+    def execute(self, blueprint: AxisBlueprint[T]) -> BuildResult[T]:
         pass

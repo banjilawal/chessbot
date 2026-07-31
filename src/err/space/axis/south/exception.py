@@ -40,7 +40,7 @@ class SouthAxisException(AxisException):
     Provides:
 
     Super Class:
-        AxisSpaceException
+        AxisException
     """
     MSG = "SouthAxis error."
     ERR_CODE = "SOUTH_AXIS_ERROR"

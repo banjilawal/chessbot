@@ -55,9 +55,9 @@ class VectorRootCertifier(ModelRootCertifier[Vector]):
     
     
     @LoggingLevelRouter.monitor
-    def execute(self, candidate, Any) -> ValidationResult:
+    def execute(self, candidate, Any) -> ValidationResult[Vector|VectorBlueprint]:
         """
-        Certify a candidate is a VectorBlueprint that is safe to use.
+        Certify a candidate is either a Vector or its Blueprint that is safe to use.
 
         Action:
             1.  Send an exception chain in the ValidationResult if any of the following
@@ -69,10 +69,9 @@ class VectorRootCertifier(ModelRootCertifier[Vector]):
         Args:
             candidate, Any
         Returns:
-            ValidationResult
+            ValidationResult[Vector|VectorBlueprint]
         Raises:
             VectorRootCertifierException
-            VectorDtoCarrierNullException
         """
         method = f"{self.__class__.__name__}.execute"
         

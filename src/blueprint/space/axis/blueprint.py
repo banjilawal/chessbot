@@ -13,24 +13,21 @@ from typing import Generic, List, Optional, Type, TypeVar, cast
 from blueprint import SpaceBlueprint
 from err import AxisNullException
 from model import Vector
-from space import Axis
 
-T = TypeVar("T", bound="AxisSpace")
+T = TypeVar("T", bound="Axis")
 
 
 class AxisBlueprint(SpaceBlueprint, Generic[T]):
     """
      Role:
-         -   Container
          -   DTO
 
      Responsibilities:
-         1.  Provides values for instantiating a AxisSpace object.
-         2.  DTO
+         1.  Provides values for instantiating an Axis.
 
      Attributes:
         origin: Vector
-        model_class: Type[AxisSpace]
+        model_class: Type[Axis]
         null_exception: Optional[AxisNullException]
          
      Provides:
@@ -38,37 +35,31 @@ class AxisBlueprint(SpaceBlueprint, Generic[T]):
      Super Class:
         SpaceBlueprint
      """
-    _origin: Vector
-    _terminus: Optional[Vector]
     
     def __init__(
             self,
             origin: Vector,
-            model_class: Type[Axis] = Axis,
+            model_class: Type[T],
             terminus: Optional[Vector] | None = None,
             null_exception: Optional[AxisNullException] | None = AxisNullException(),
     ):
         """
         Args:
             origin: Vector
-            model_class: Type[AxisSpace]
+            terminus: Optional[Vector]
+            model_class: Type[Axis]
             null_exception: Optional[AxisNullException]
         """
-        super().__init__(model_class=model_class, null_exception=null_exception)
-        self._origin = origin
-        self._terminus = terminus
-        
-    @property
-    def origin(self) -> Vector:
-        return self._origin
-    
-    @property
-    def terminus(self) -> Optional[Vector]:
-        return self._terminus
+        super().__init__(
+            origin=origin,
+            terminus=terminus,
+            model_class=model_class,
+            null_exception=null_exception
+        )
 
     @property
-    def model_class(self) -> Type[Axis]:
-        return cast(Type[Axis], super().model_class)
+    def model_class(self) -> Type[T]:
+        return cast(Type[T], super().model_class)
     
     @property
     def null_exception(self) -> AxisNullException:
