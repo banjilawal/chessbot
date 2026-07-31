@@ -1,0 +1,16 @@
+# src/err/builder/registry/space/quadrant/__init__.py
+
+"""
+Module: err.builder.registry.space.quadrant.__init__
+Author: Banji Lawal
+Created: 2026-04-04
+version: 1.0.1
+"""
+
+# ============ ERR.BUILDER.REGISTRY.SPACE.QUADRANT PACKAGE ===========#
+
+# Packages
+
+
+# Modules
+from .exception import QuadrantReservoirBuilderException

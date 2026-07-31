@@ -13,8 +13,9 @@ from typing import Optional, cast
 
 from blueprint import QuadrantReservoirBlueprint
 from builder import SpaceReservoirBuilder
+from err import QuadrantReservoirBuilderException
 from registry import QuadrantReservoir
-from result import BuildResult
+from result import BuildResult, MethodResultType
 from toolkit import QuadrantReservoirBuilderToolkit
 from util import LoggingLevelRouter
 

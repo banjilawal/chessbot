@@ -13,8 +13,9 @@ from typing import Optional, cast
 
 from blueprint import AxisReservoirBlueprint
 from builder import SpaceReservoirBuilder
+from err import AxisReservoirBuilderException
 from registry import AxisReservoir
-from result import BuildResult
+from result import BuildResult, MethodResultType
 from toolkit import AxisReservoirBuilderToolkit
 from util import LoggingLevelRouter
 

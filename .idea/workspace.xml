@@ -5,37 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/builder/registry/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/builder/registry/space/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/builder/registry/space/axis/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/builder/registry/space/axis/builder.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/builder/registry/space/builder.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/builder/registry/space/quadrant/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/builder/registry/space/quadrant/builder.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/toolkit/builder/registry/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/toolkit/builder/registry/space/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/toolkit/builder/registry/space/axis/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/toolkit/builder/registry/space/axis/toolkit.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/toolkit/builder/registry/space/quadrant/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/toolkit/builder/registry/space/quadrant/toolkit.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/toolkit/builder/registry/space/toolkit.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/builder/registry/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/builder/registry/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/builder/registry/space/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/builder/registry/space/axis/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/builder/registry/space/axis/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/builder/registry/space/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/builder/registry/space/quadrant/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/builder/registry/space/quadrant/exception.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assembler/registry/space/axis/assembler.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assembler/registry/space/axis/assembler.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assembler/registry/space/quadrant/assembler.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assembler/registry/space/quadrant/assembler.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/builder/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/builder/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/builder/space/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/builder/space/builder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/root/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/suite/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/suite/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/suite/coord/suite.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/suite/coord/suite.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/suite/register/operand/suite.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/suite/register/operand/suite.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/suite/register/square/suite.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/suite/register/square/suite.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/suite/register/suite.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/suite/register/suite.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/suite/scalar/suite.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/suite/scalar/suite.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/suite/suite.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/suite/suite.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/suite/token/suite.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/suite/token/suite.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/suite/vector/suite.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/suite/vector/suite.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/toolkit/builder/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/toolkit/builder/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/toolkit/registry/space/axis/toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/toolkit/registry/space/axis/toolkit.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/builder/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/builder/__init__.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -91,7 +70,7 @@
     "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/builder/registry/space",
+    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/err/builder/registry/space",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
@@ -103,18 +82,18 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/err/builder/registry/space" />
+      <recent name="$PROJECT_DIR$/src/err/builder/registry" />
+      <recent name="$PROJECT_DIR$/src/err/builder" />
       <recent name="$PROJECT_DIR$/src/builder/registry/space" />
       <recent name="$PROJECT_DIR$/src/suite/space/axis" />
-      <recent name="$PROJECT_DIR$/src/suite/space" />
-      <recent name="$PROJECT_DIR$/src/toolkit/builder/registry/space" />
-      <recent name="$PROJECT_DIR$/src/toolkit/builder/registry" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/suite" />
       <recent name="$PROJECT_DIR$/src/root/registry" />
       <recent name="$PROJECT_DIR$/src/toolkit/registry" />
       <recent name="$PROJECT_DIR$/src/blueprint/registry" />
       <recent name="$PROJECT_DIR$/src/blueprint" />
-      <recent name="$PROJECT_DIR$/src/assembler/registry" />
     </key>
   </component>
   <component name="RunManager" selected="Python.stack">
@@ -810,7 +789,7 @@
       <workItem from="1785271456267" duration="5305000" />
       <workItem from="1785280992548" duration="25503000" />
       <workItem from="1785354695376" duration="4352000" />
-      <workItem from="1785366790867" duration="65266000" />
+      <workItem from="1785366790867" duration="67867000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />

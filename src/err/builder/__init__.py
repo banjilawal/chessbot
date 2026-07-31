@@ -18,6 +18,7 @@ from .model import *
 from .movement import *
 from .recurrence import *
 from .register import *
+from .registry import *
 from .space import *
 from .toggle import *
 
