@@ -13,4 +13,4 @@ version: 1.0.1
 
 
 # Modules
-from .model import CheckedPath
+from .model import CheckedManeuver

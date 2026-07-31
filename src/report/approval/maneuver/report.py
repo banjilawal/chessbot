@@ -10,8 +10,8 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Optional
 
-from model import CombatantManeuver, KingManeuver, Maneuver
-from model.state.maneuver.checked.model import CheckedManeuver
+from model import CheckedManeuver, CombatantManeuver, KingManeuver, Maneuver
+
 from report import OperationApprovalReport, Permission
 
 

@@ -9,19 +9,19 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from typing import Optional
+from typing import Optional, cast
 
-from err import ManeuverPermitterException
+from err import ManeuverPermitterException, SquareOccupiedException
 from model import Maneuver, Path, Square, Token
-
 from register import SquareRegister
 from report import ManeuverApprovalReport
-from result import AnalysisResult, MethodResultType
+from result import MethodResultType, ValidationResult
+from tester import Tester
 from toolkit import TokenManeuverToolkit
 from util import IdFactory, LoggingLevelRouter
 
 
-class TokenManeuverPermitter:
+class TokenManeuverTester(Tester):
     """
     Role:
         - Transaction Worker
@@ -38,19 +38,20 @@ class TokenManeuverPermitter:
                     requestor: Token,
                     destination: Square,
                     toolkit: TokenManeuverToolkit,
-            ) -> AnalysisResult
+            ) -> ValidationResult
 
     Super Class:
+        Tester
     """
     
-    @classmethod
+
     @LoggingLevelRouter.monitor
     def run(
-            cls,
+            self,
             requestor: Token,
             destination: Square,
             toolkit: Optional[TokenManeuverToolkit] | None = None,
-    ) -> AnalysisResult[ManeuverApprovalReport]:
+    ) -> ManeuverApprovalReport:
         """
         Action:
             1.  Return a failure result containing an exception chain if either:
@@ -67,12 +68,12 @@ class TokenManeuverPermitter:
             destination: Square
             toolkit: TokenManeuverToolkit
         Returns:
-            AnalysisResult
+            ValidationResult
         Raises:
             TokenDeletePermitterException
             TokenStackFullException
         """
-        method =  f"{cls.__name__}.execute"
+        method =  f"{self.__class__.__name__}.execute"
         
         # --- Supply any missing dependencies. ---#
         if toolkit is None:
@@ -82,10 +83,10 @@ class TokenManeuverPermitter:
         readiness_analysis_result = toolkit.readiness_analyzer.execute(subject=requestor)
         if readiness_analysis_result.is_failure:
             # Return the exception chain on failure
-            return AnalysisResult.failure(
+            return ManeuverApprovalReport.deny(
                 ManeuverPermitterException(
                     cls_mthd=method,
-                    cls_name=cls.__name__,
+                    cls_name=self.__class__.__name__,
                     msg=ManeuverPermitterException.MSG,
                     err_code=ManeuverPermitterException.ERR_CODE,
                     mthd_rslt_type=MethodResultType.ANALYSIS_RESULT,
@@ -96,17 +97,17 @@ class TokenManeuverPermitter:
         # Handle the case that, the origin_searcher is not successful.
         if token_origin_search_result.is_failure:
             # Return the exception chain on failure
-            return AnalysisResult.failure(
+            return ManeuverApprovalReport.deny(
                 ManeuverPermitterException(
                     cls_mthd=method,
-                    cls_name=cls.__name__,
+                    cls_name=self.__class__.__name__,
                     msg=ManeuverPermitterException.MSG,
                     err_code=ManeuverPermitterException.ERR_CODE,
                     mthd_rslt_type=MethodResultType.ANALYSIS_RESULT,
                     ex=token_origin_search_result.exception,
                 )
             )
-        origin = token_origin_search_result.payload[0]
+        origin = cast(Square, token_origin_search_result.payload[0])
         
         destination_certification = toolkit.destination_certifier.execute(
             candidate_primary=destination,
@@ -118,10 +119,10 @@ class TokenManeuverPermitter:
         # Handle the case that, the destination_certifier aborts.
         if destination_certification.is_failure:
             # Return the exception chain on failure
-            return AnalysisResult.failure(
+            return ManeuverApprovalReport.deny(
                 ManeuverPermitterException(
                     cls_mthd=method,
-                    cls_name=cls.__name__,
+                    cls_name=self.__class__.__name__,
                     msg=ManeuverPermitterException.MSG,
                     err_code=ManeuverPermitterException.ERR_CODE,
                     mthd_rslt_type=MethodResultType.ANALYSIS_RESULT,
@@ -131,10 +132,10 @@ class TokenManeuverPermitter:
         # Handle the case that, the token and destination are related in some fashion.
         if destination_certification.is_failure:
             # Return the exception chain on failure
-            return AnalysisResult.failure(
+            return ManeuverApprovalReport.deny(
                 ManeuverPermitterException(
                     cls_mthd=method,
-                    cls_name=cls.__name__,
+                    cls_name=self.__class__.__name__,
                     msg=ManeuverPermitterException.MSG,
                     err_code=ManeuverPermitterException.ERR_CODE,
                     mthd_rslt_type=MethodResultType.ANALYSIS_RESULT,
@@ -145,27 +146,43 @@ class TokenManeuverPermitter:
             square_validation_result = toolkit.square_validator.execute(square)
             if square_validation_result.is_failure:
                 # Return the exception chain on failure
-                return AnalysisResult.failure(
+                return ManeuverApprovalReport.deny(
                     ManeuverPermitterException(
                         cls_mthd=method,
-                        cls_name=cls.__name__,
+                        cls_name=self.__class__.__name__,
                         msg=ManeuverPermitterException.MSG,
                         err_code=ManeuverPermitterException.ERR_CODE,
                         mthd_rslt_type=MethodResultType.ANALYSIS_RESULT,
                         ex=square_validation_result.exception,
                     )
                 )
-        
-        return AnalysisResult.completed(
-            ManeuverApprovalReport.approve(
-                Maneuver(
-                    token=requestor,
-                    path=Path(
-                        endpoints=SquareRegister(origin=origin, destination=destination),
-                        id=IdFactory.next_id(class_name="Path")
-                    ),
-                    id=IdFactory.next_id(class_name="Maneuver")
+        # Handle the case that, the destination is occupied by a friend.
+        if requestor.is_enemy(destination.occupant):
+            # Return the exception chain on failure
+            return ManeuverApprovalReport.deny(
+                ManeuverPermitterException(
+                    cls_mthd=method,
+                    cls_name=self.__class__.__name__,
+                    msg=ManeuverPermitterException.MSG,
+                    err_code=ManeuverPermitterException.ERR_CODE,
+                    mthd_rslt_type=MethodResultType.ANALYSIS_RESULT,
+                    ex=SquareOccupiedException(
+                        cls_mthd=method,
+                        cls_name=self.__class__.__name__,
+                        msg=SquareOccupiedException.MSG,
+                        err_code=SquareOccupiedException.ERR_CODE
+                    )
                 )
+            )
+        path = Path(
+            id=IdFactory.next_id(class_name="Path"),
+            endpoints=SquareRegister(origin=origin, destination=destination,)
+        )
+        return ManeuverApprovalReport.approve(
+            Maneuver(
+                token=requestor,
+                path=path,
+                id=IdFactory.next_id(class_name="Maneuver")
             )
         )
 

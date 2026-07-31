@@ -10,7 +10,7 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Optional
 
-from model import KingToken, Path, Square, Token
+from model import KingToken, Maneuver, Square, Token
 
 
 class CheckedManeuver(Maneuver):

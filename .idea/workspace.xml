@@ -5,57 +5,31 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/container/sets/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/topology/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/topology/topology.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/node/element/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/tester/maneuver/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/tester/maneuver/permitter.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/tester/maneuver/undo/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/tester/maneuver/undo/permitter.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/tester/maneuver/undo/pop/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/tester/maneuver/undo/pop/exception/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/tester/maneuver/undo/pop/exception/inactive.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/tester/maneuver/undo/pop/exception/limit.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/tester/maneuver/undo/pop/exception/opening.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/tester/maneuver/undo/pop/exception/wrapper.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/builder/signature/traversal/bishop/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/builder/signature/traversal/bishop/builder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/container/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/container/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/container/container.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/container/sets/container.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/container/coord/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/container/sets/coord/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/container/coord/container.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/container/sets/coord/container.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/container/quadrant/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/container/quadrant/container.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/container/register/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/container/sets/register/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/container/register/container.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/container/sets/register/container.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/container/vector/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/container/sets/vector/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/container/vector/container.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/container/sets/vector/container.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pattern/generator/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/pattern/generator/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pattern/generator/signature.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/pattern/generator/signature.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tree/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/container/tree/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tree/coord/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/container/tree/coord/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tree/coord/tree.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/container/tree/coord/tree.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tree/rank/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/topology/rank/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tree/rank/bishop/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/topology/rank/bishop/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tree/rank/bishop/tree.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/topology/rank/bishop/tree.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tree/rank/king/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/topology/rank/king/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tree/rank/king/tree.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/topology/rank/king/tree.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tree/rank/knight/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/topology/rank/knight/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tree/rank/knight/tree.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/topology/rank/knight/tree.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tree/rank/pawn/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/topology/rank/pawn/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tree/rank/pawn/attack/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/topology/rank/pawn/attack/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tree/rank/pawn/attack/developed/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/topology/rank/pawn/attack/developed/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tree/rank/pawn/attack/developed/tree.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/topology/rank/pawn/attack/developed/tree.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tree/rank/pawn/attack/opening/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/topology/rank/pawn/attack/opening/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tree/rank/pawn/attack/opening/tree.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/topology/rank/pawn/attack/opening/tree.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tree/rank/pawn/attack/tree.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/topology/rank/pawn/attack/tree.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tree/rank/pawn/maneuver/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/topology/rank/pawn/maneuver/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tree/rank/pawn/maneuver/developed/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/topology/rank/pawn/maneuver/developed/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tree/rank/pawn/maneuver/developed/tree.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/topology/rank/pawn/maneuver/developed/tree.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tree/rank/pawn/maneuver/opening/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/topology/rank/pawn/maneuver/opening/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tree/rank/pawn/maneuver/opening/tree.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/topology/rank/pawn/maneuver/opening/tree.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tree/rank/pawn/maneuver/tree.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/topology/rank/pawn/maneuver/tree.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tree/rank/pawn/tree.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/topology/rank/pawn/tree.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tree/rank/queen/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/topology/rank/queen/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tree/rank/queen/tree.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/topology/rank/queen/tree.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tree/rank/rook/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/topology/rank/rook/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tree/rank/rook/tree.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/topology/rank/rook/topology.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tree/rank/tree.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/topology/rank/tree.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tree/register/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tree/register/container.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tree/tree.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/container/tree/tree.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tree/vector/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/container/tree/vector/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tree/vector/tree.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/container/tree/vector/tree.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/state/maneuver/checked/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/state/maneuver/checked/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/state/maneuver/checked/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/state/maneuver/checked/model.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/target/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/element/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/target/linear/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/target/linear/model.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/target/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/element/model.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/target/span/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/target/span/model.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pattern/adder/signature.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/pattern/adder/signature.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/permitter/maneuver/destination/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/permitter/maneuver/permitter.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/permitter/maneuver/permitter.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/report/approval/maneuver/report.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/report/approval/maneuver/report.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -111,7 +85,7 @@
     "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/container",
+    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/tester",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
@@ -123,11 +97,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/tester" />
       <recent name="$PROJECT_DIR$/src/container" />
       <recent name="$PROJECT_DIR$/src/container/sets" />
       <recent name="$PROJECT_DIR$/src/tree" />
       <recent name="$PROJECT_DIR$/src/err/builder/registry/space" />
-      <recent name="$PROJECT_DIR$/src/err/builder/registry" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/container/sets" />
@@ -830,7 +804,7 @@
       <workItem from="1785271456267" duration="5305000" />
       <workItem from="1785280992548" duration="25503000" />
       <workItem from="1785354695376" duration="4352000" />
-      <workItem from="1785366790867" duration="82303000" />
+      <workItem from="1785366790867" duration="90966000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />
@@ -1398,7 +1372,7 @@
           <option name="timeStamp" value="269" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/src/model/target/linear/model.py</url>
+          <url>file://$PROJECT_DIR$/src/model/element/linear/model.py</url>
           <line>48</line>
           <option name="timeStamp" value="270" />
         </line-breakpoint>
@@ -1651,6 +1625,11 @@
           <url>file://$PROJECT_DIR$/src/geometry/recurrence/quadrant/__init__.py</url>
           <line>12</line>
           <option name="timeStamp" value="333" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/model/__init__.py</url>
+          <line>12</line>
+          <option name="timeStamp" value="334" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

@@ -12,9 +12,8 @@ from __future__ import annotations
 from typing import Optional, Type, TypeVar, cast
 
 from container import VectorSet, VectorTree
-from err import OffsetSignatureNullException, TopologyGeneratorException, VectorSetNullException
+from err import TopologyGeneratorException, VectorSetNullException
 from model import Vector
-from pattern import OffsetSignature
 from result import ComputationResult, MethodResultType
 from toolkit import MathToolkit
 from topology import Topology
