@@ -12,7 +12,7 @@ from __future__ import annotations
 
 from typing import Any, Type, cast
 
-from bootstrapper import PrimingValidator, PopPermitterBootstrapper
+from bootstrapper import PrimingValidator, PopRequestBootstrapper
 from err import TokenStackNullException, TokenPopRequestTesterException
 from request import PopRequest
 from result import MethodResultType, ValidationResult
@@ -40,12 +40,12 @@ class TokenPopRequestTester(PopRequestTester):
     Super Class:
     """
     _priming_validator: PrimingValidator
-    _bootstrapper: PopPermitterBootstrapper
+    _bootstrapper: PopRequestBootstrapper
     
     def __init__(
             self,
             priming_validator: PrimingValidator | None = PrimingValidator(),
-            bootstrapper: PopPermitterBootstrapper | None = PopPermitterBootstrapper(),
+            bootstrapper: PopRequestBootstrapper | None = PopRequestBootstrapper(),
     ):
         """
         Args:

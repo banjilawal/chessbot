@@ -5,31 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/node/element/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/tester/maneuver/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/tester/maneuver/permitter.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/tester/maneuver/undo/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/tester/maneuver/undo/permitter.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/tester/maneuver/undo/pop/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/tester/maneuver/undo/pop/exception/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/tester/maneuver/undo/pop/exception/inactive.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/tester/maneuver/undo/pop/exception/limit.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/tester/maneuver/undo/pop/exception/opening.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/tester/maneuver/undo/pop/exception/wrapper.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/state/maneuver/checked/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/state/maneuver/checked/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/state/maneuver/checked/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/state/maneuver/checked/model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/target/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/element/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/target/linear/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/target/linear/model.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/target/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/element/model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/target/span/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/target/span/model.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pattern/adder/signature.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/pattern/adder/signature.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/permitter/maneuver/destination/__init__.py" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/tester/request/maneuver/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/tester/request/maneuver/tester.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/permitter/maneuver/permitter.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/permitter/maneuver/permitter.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/report/approval/maneuver/report.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/report/approval/maneuver/report.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -85,7 +63,7 @@
     "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/tester",
+    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/tester/request",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
@@ -97,11 +75,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/tester/request" />
       <recent name="$PROJECT_DIR$/src/tester" />
       <recent name="$PROJECT_DIR$/src/container" />
       <recent name="$PROJECT_DIR$/src/container/sets" />
       <recent name="$PROJECT_DIR$/src/tree" />
-      <recent name="$PROJECT_DIR$/src/err/builder/registry/space" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/container/sets" />
@@ -804,7 +782,7 @@
       <workItem from="1785271456267" duration="5305000" />
       <workItem from="1785280992548" duration="25503000" />
       <workItem from="1785354695376" duration="4352000" />
-      <workItem from="1785366790867" duration="90966000" />
+      <workItem from="1785366790867" duration="93886000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />

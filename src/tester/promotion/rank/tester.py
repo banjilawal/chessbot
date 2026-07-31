@@ -15,12 +15,12 @@ from analyzer import RankReadinessAnalyzer
 from err import PromoteToKingException, PromoteToPawnException, PromotionLevelTesterException
 from model import King, Pawn, Rank
 from result import MethodResultType, ValidationResult
-from tester import Tester
+from tester import RequestTester
 from util import LoggingLevelRouter
 from validator import RankValidator
 
 
-class PromotionLevelTester(Tester):
+class PromotionLevelRequestTester(RequestTester):
     """
     Role:
         -   Helper

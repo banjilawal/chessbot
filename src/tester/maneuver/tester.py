@@ -16,12 +16,12 @@ from model import Maneuver, Path, Square, Token
 from register import SquareRegister
 from report import ManeuverApprovalReport
 from result import MethodResultType, ValidationResult
-from tester import Tester
+from tester import RequestTester
 from toolkit import TokenManeuverToolkit
 from util import IdFactory, LoggingLevelRouter
 
 
-class TokenManeuverTester(Tester):
+class TokenManeuverRequestTester(RequestTester):
     """
     Role:
         - Transaction Worker

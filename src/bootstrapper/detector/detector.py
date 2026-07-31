@@ -1,7 +1,7 @@
 # src/detector.py
 
 """
-Module: carrier_validator.detector.detector
+Module: bootstrapper.detector.detector
 Author: Banji Lawal
 Created: 2026-03-30
 version: 1.0.1

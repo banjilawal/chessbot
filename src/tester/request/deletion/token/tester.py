@@ -12,7 +12,7 @@ from __future__ import annotations
 
 from typing import Any, Type, cast
 
-from bootstrapper import DeletionPermitterBootstrapper, PrimingValidator
+from bootstrapper import DeletionRequestBootstrapper, PrimingValidator
 from err import TokenStackNullException
 from microservice import IdentityService
 from request import DeletionRequest
@@ -43,13 +43,13 @@ class TokenDeletionRequestTester(DeletionRequestTester):
     """
     _identity_service: IdentityService
     _priming_validator: PrimingValidator
-    _bootstrapper: DeletionPermitterBootstrapper
+    _bootstrapper: DeletionRequestBootstrapper
     
     def __init__(
             self,
             identity_service: IdentityService | None = IdentityService(),
             priming_validator: PrimingValidator | None = PrimingValidator(),
-            bootstrapper: DeletionPermitterBootstrapper | None = DeletionPermitterBootstrapper(),
+            bootstrapper: DeletionRequestBootstrapper | None = DeletionRequestBootstrapper(),
     ):
         """
         Args:

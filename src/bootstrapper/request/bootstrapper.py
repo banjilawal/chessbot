@@ -8,18 +8,15 @@ version: 1.0.1
 """
 
 from abc import abstractmethod
-from typing import Type
+from typing import Any, Type
 
-from bootstrapper import PrimingValidator
-from err import PusherPermitterException, PushRequestNullException
-from permitter import Permitter
-from report import PushApprovalReport
-from request import PushRequest
+from err import NullException
 from result import ValidationResult
 from util import LoggingLevelRouter
+from validator import PrimingValidator
 
 
-class PermitterBootstrapper:
+class RequestBootstrapper:
     """
     Role:
         - Analysis Worker
@@ -38,21 +35,23 @@ class PermitterBootstrapper:
     """
     _priming_validator: PrimingValidator
     
-    def __init__(
-            self,
-            priming_validator: PrimingValidator | None = PrimingValidator(),
-    ):
+    def __init__(self, priming_validator: PrimingValidator | None = None,):
         """
         Args:
             priming_validator: PrimingValidator
         """
-        self._priming_validator = priming_validator
+        self._priming_validator = priming_validator or PrimingValidator()
     
     @property
     def priming_validator(self) -> PrimingValidator:
         return self._priming_validator
     
-    @abstractmethod
+
     @LoggingLevelRouter.monitor
-    def bootstrap_request(self, request) -> ValidationResult:
+    def execute(
+            self,
+            candidate: Any,
+            request_model: Type[T],
+            null_exception: NullException,
+    ) -> ValidationResult:
         pass

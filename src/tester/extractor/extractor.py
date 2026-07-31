@@ -9,8 +9,8 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from tester import Tester
+from tester import RequestTester
 
 
-class Extractor(Tester):
+class Extractor(RequestTester):
     pass

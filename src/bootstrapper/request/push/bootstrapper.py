@@ -1,7 +1,7 @@
-# src/carrier_validator/permitter/deletion/carrier_validator.py
+# src/bootstrapper/permitter/push/bootstrapper.py
 
 """
-Module: carrier_validator.permitter.deletion.carrier_validator
+Module: bootstrapper.permitter.push.bootstrapper
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -11,20 +11,20 @@ from __future__ import annotations
 
 from typing import Type
 
-from bootstrapper import PermitterBootstrapper
-from err import DeletionRequestNullException, DeletionPermitterBootstrapperException
-from request import DeletionRequest
+from bootstrapper import RequestBootstrapper
+from err import PushRequestNullException, PushPermitterBootstrapperException
+from request import PushRequest
 from result import ValidationResult
 from util import LoggingLevelRouter
 
 
-class DeletionPermitterBootstrapper(PermitterBootstrapper):
+class PushRequestBootstrapper(RequestBootstrapper):
     """
     Role:
         - Bootstrapper
 
     Responsibilities:
-        1.  Verfiy a DeletionPermitter receives a well formed DeletionRequest.
+        1.  Verfiy a PushPermitter receives a well formed PushRequest.
 
     Attributes:
 
@@ -39,38 +39,38 @@ class DeletionPermitterBootstrapper(PermitterBootstrapper):
         
     
     @LoggingLevelRouter.monitor
-    def bootstrap_request(self, request) -> ValidationResult:
+    def execute(self, request) -> ValidationResult:
         """
         Evaluate a pawn promotion request.
 
         Action:
             1.  Send an exception chain in the ValidationResult if the request is either
                     -   Null
-                    -   Not a DeletionRequest.
+                    -   Not a PushRequest.
             2.  Otherwise, send the success
         Args:
             request
         Returns:
             ValidationResult
         Raises:
-            DeletionPermitterBootstrapperException
+            PushPermitterBootstrapperException
         """
         method = f"{self.__class__.__name__}.bootstrap_request"
         
         # Handle the case that, the request is malformed
         validation_result = self.priming_validator.execute(
             candidate=request,
-            target_model=Type[DeletionRequest],
-            null_exception=DeletionRequestNullException()
+            target_model=Type[PushRequest],
+            null_exception=PushRequestNullException()
         )
         if validation_result.is_failure:
             # Send the exception chain in the ValidationResult.
             return ValidationResult.failure(
-                DeletionPermitterBootstrapperException(
+                PushPermitterBootstrapperException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=DeletionPermitterBootstrapperException.MSG,
-                    err_code=DeletionPermitterBootstrapperException.ERR_CODE,
+                    msg=PushPermitterBootstrapperException.MSG,
+                    err_code=PushPermitterBootstrapperException.ERR_CODE,
                     ex=validation_result.exception,
                 )
             )

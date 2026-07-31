@@ -1,7 +1,7 @@
-# src/carrier_validator/validator/endpoint/destination/__init__.py
+# src/bootstrapper/validator/endpoint/destination/__init__.py
 
 """
-Module: carrier_validator.validator.endpoint.destination.__init__
+Module: bootstrapper.validator.endpoint.destination.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

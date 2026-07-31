@@ -12,12 +12,12 @@ from __future__ import annotations
 
 from typing import Any, Type, cast
 
-from bootstrapper import PromotionPermitterBootstrapper
+from bootstrapper import PromotionRequestBootstrapper
 from err import PromotionRequestTesterException
 from microservice import IdentityService
 from request.promotion import PromotionRequest
 from result import MethodResultType, ValidationResult
-from tester import PromotionLevelTester, PromotionPawnTester, RequestTester
+from tester import PromotionLevelRequestTester, PromotionPawnRequestTester, RequestTester
 from util import LoggingLevelRouter
 
 
@@ -41,17 +41,17 @@ class PromotionRequestTester(RequestTester):
             
     Super Class:
     """
-    _pawn_tester: PromotionPawnTester
+    _pawn_tester: PromotionPawnRequestTester
     _identity_service: IdentityService
-    _bootstrapper: PromotionPermitterBootstrapper
-    _promotion_level_tester: PromotionLevelTester
+    _bootstrapper: PromotionRequestBootstrapper
+    _promotion_level_tester: PromotionLevelRequestTester
     
     def __init__(
             self,
-            pawn_tester: PromotionPawnTester | None = PromotionPawnTester(),
+            pawn_tester: PromotionPawnRequestTester | None = PromotionPawnRequestTester(),
             identity_service: IdentityService | None = IdentityService(),
-            promotion_level_tester: PromotionLevelTester | None = PromotionLevelTester(),
-            bootstrapper: PromotionPermitterBootstrapper | None = PromotionPermitterBootstrapper(),
+            promotion_level_tester: PromotionLevelRequestTester | None = PromotionLevelRequestTester(),
+            bootstrapper: PromotionRequestBootstrapper | None = PromotionRequestBootstrapper(),
     ):
         """
         Args:
@@ -88,7 +88,7 @@ class PromotionRequestTester(RequestTester):
         method = f"{self.__class__.__name__}.execute"
         
         # Handle the case that, the PromotionRequest is not bootstrapped successfully.
-        bootstrap = self._bootstrapper.bootstrap_request(candidate)
+        bootstrap = self._bootstrapper.execute(candidate)
         if bootstrap.is_failure:
             # Send the exception chain in the result.
             return ValidationResult.failure(

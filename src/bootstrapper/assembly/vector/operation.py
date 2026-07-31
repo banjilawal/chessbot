@@ -1,7 +1,7 @@
-# src/carrier_validator/assembly/vector/operation.py
+# src/bootstrapper/assembly/vector/operation.py
 
 """
-Module: carrier_validator.assembly.vector.operation
+Module: bootstrapper.assembly.vector.operation
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

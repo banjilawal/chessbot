@@ -1,7 +1,7 @@
-# src/carrier_validator/detector/token/carrier_validator.py
+# src/bootstrapper/detector/token/bootstrapper.py
 
 """
-Module: carrier_validator.detector.token.carrier_validator
+Module: bootstrapper.detector.token.bootstrapper
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

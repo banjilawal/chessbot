@@ -43,10 +43,9 @@ class TokenManeuverPermitter:
     Super Class:
     """
     
-    @classmethod
     @LoggingLevelRouter.monitor
     def run(
-            cls,
+            self,
             requestor: Token,
             destination: Square,
             toolkit: Optional[TokenManeuverToolkit] | None = None,

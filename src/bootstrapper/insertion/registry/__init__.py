@@ -1,7 +1,7 @@
-# src/carrier_validator/insertion/registry/__init__.py
+# src/bootstrapper/insertion/registry/__init__.py
 
 """
-Module: carrier_validator.insertion.registry.__init__
+Module: bootstrapper.insertion.registry.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

@@ -20,13 +20,13 @@ from err import (
 from model import PawnToken
 from report import TokenReadinessReport
 from result import MethodResultType, ValidationResult
-from tester import Tester
+from tester import RequestTester
 from util import LoggingLevelRouter
 
 f
 
 
-class PromotionPawnTester(Tester):
+class PromotionPawnRequestTester(RequestTester):
     """
     Role:
         -   Helper

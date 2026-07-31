@@ -12,7 +12,7 @@ from __future__ import annotations
 
 from typing import Any, Type, cast
 
-from bootstrapper import PrimingValidator, SearchPermitterBootstrapper
+from bootstrapper import PrimingValidator, SearchRequestBootstrapper
 from err import TokenSearchRequestTesterException, TokenStackNullException
 from request import SearchRequest
 from result import MethodResultType, ValidationResult
@@ -43,13 +43,13 @@ class TokenSearchRequestTester(SearchRequestTester):
     """
     _item_validator: TokenContextValidator
     _priming_validator: PrimingValidator
-    _bootstrapper: SearchPermitterBootstrapper
+    _bootstrapper: SearchRequestBootstrapper
     
     def __init__(
             self,
             item_validator: TokenContextValidator | None = TokenContextValidator(),
             priming_validator: PrimingValidator | None = PrimingValidator(),
-            bootstrapper: SearchPermitterBootstrapper | None = SearchPermitterBootstrapper(),
+            bootstrapper: SearchRequestBootstrapper | None = SearchRequestBootstrapper(),
     ):
         """
         Args:
@@ -84,7 +84,7 @@ class TokenSearchRequestTester(SearchRequestTester):
         method = f"{self.__class__.__name__}.execute"
         
         # Handle the case that, the SearchRequest is not bootstrapped successfully.
-        bootstrap = self._bootstrapper.bootstrap_request(candidate)
+        bootstrap = self._bootstrapper.execute(candidate)
         if bootstrap.is_failure:
             # Send the exception chain in the result.
             return ValidationResult.failure(

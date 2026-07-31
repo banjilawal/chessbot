@@ -1,7 +1,7 @@
-# src/carrier_validator/insertion/registry/worker/operation.py
+# src/bootstrapper/insertion/registry/worker/operation.py
 
 """
-Module: carrier_validator.insertion.registry.worker.operation
+Module: bootstrapper.insertion.registry.worker.operation
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

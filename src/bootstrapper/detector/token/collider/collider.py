@@ -1,7 +1,7 @@
-# src/carrier_validator/detector/token/collider.py
+# src/bootstrapper/detector/token/collider.py
 
 """
-Module: carrier_validator.detector.token.collider
+Module: bootstrapper.detector.token.collider
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

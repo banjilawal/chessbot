@@ -1,7 +1,7 @@
-# src/carrier_validator/assembly/square/operation.py
+# src/bootstrapper/assembly/square/operation.py
 
 """
-Module: carrier_validator.assembly.square.operation
+Module: bootstrapper.assembly.square.operation
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

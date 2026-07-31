@@ -1,7 +1,7 @@
-# src/carrier_validator/permitter/search/carrier_validator.py
+# src/bootstrapper/permitter/pop/bootstrapper.py
 
 """
-Module: carrier_validator.permitter.search.carrier_validator
+Module: bootstrapper.permitter.pop.bootstrapper
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -11,20 +11,20 @@ from __future__ import annotations
 
 from typing import Type
 
-from bootstrapper import PermitterBootstrapper
-from err import SearchPermitterBootstrapperException, SearchRequestNullException
-from request import SearchRequest
+from bootstrapper import RequestBootstrapper
+from err import PopRequestNullException, PopPermitterBootstrapperException
+from request import PopRequest
 from result import ValidationResult
 from util import LoggingLevelRouter
 
 
-class SearchPermitterBootstrapper(PermitterBootstrapper):
+class PopRequestBootstrapper(RequestBootstrapper):
     """
     Role:
         - Bootstrapper
 
     Responsibilities:
-        1.  Verfiy a SearchPermitter receives a well formed SearchRequest.
+        1.  Verfiy a PopPermitter receives a well formed PopRequest.
 
     Attributes:
 
@@ -39,38 +39,38 @@ class SearchPermitterBootstrapper(PermitterBootstrapper):
         
     
     @LoggingLevelRouter.monitor
-    def bootstrap_request(self, request) -> ValidationResult:
+    def execute(self, request) -> ValidationResult:
         """
         Evaluate a pawn promotion request.
 
         Action:
             1.  Send an exception chain in the ValidationResult if the request is either
                     -   Null
-                    -   Not a SearchRequest.
+                    -   Not a PopRequest.
             2.  Otherwise, send the success
         Args:
             request
         Returns:
             ValidationResult
         Raises:
-            SearchPermitterBootstrapperException
+            PopPermitterBootstrapperException
         """
         method = f"{self.__class__.__name__}.bootstrap_request"
         
         # Handle the case that, the request is malformed
         validation_result = self.priming_validator.execute(
             candidate=request,
-            target_model=Type[SearchRequest],
-            null_exception=SearchRequestNullException()
+            target_model=Type[PopRequest],
+            null_exception=PopRequestNullException()
         )
         if validation_result.is_failure:
             # Send the exception chain in the ValidationResult.
             return ValidationResult.failure(
-                SearchPermitterBootstrapperException(
+                PopPermitterBootstrapperException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=SearchPermitterBootstrapperException.MSG,
-                    err_code=SearchPermitterBootstrapperException.ERR_CODE,
+                    msg=PopPermitterBootstrapperException.MSG,
+                    err_code=PopPermitterBootstrapperException.ERR_CODE,
                     ex=validation_result.exception,
                 )
             )

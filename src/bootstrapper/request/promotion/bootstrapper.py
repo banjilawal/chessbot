@@ -1,7 +1,7 @@
-# src/carrier_validator/permitter/promotion/carrier_validator.py
+# src/bootstrapper/permitter/promotion/bootstrapper.py
 
 """
-Module: carrier_validator.permitter.promotion.carrier_validator
+Module: bootstrapper.permitter.promotion.bootstrapper
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -11,14 +11,14 @@ from __future__ import annotations
 
 from typing import Type
 
-from bootstrapper import PermitterBootstrapper
+from bootstrapper import RequestBootstrapper
 from err import PromotionRequestNullException, PromotionPermitterBootstrapperException
 from request.promotion import PromotionRequest
 from result import ValidationResult
 from util import LoggingLevelRouter
 
 
-class PromotionPermitterBootstrapper(PermitterBootstrapper):
+class PromotionRequestBootstrapper(RequestBootstrapper):
     """
     Role:
         - Bootstrapper
@@ -39,7 +39,7 @@ class PromotionPermitterBootstrapper(PermitterBootstrapper):
         
     
     @LoggingLevelRouter.monitor
-    def bootstrap_request(self, request) -> ValidationResult:
+    def execute(self, request) -> ValidationResult:
         """
         Evaluate a pawn promotion request.
 

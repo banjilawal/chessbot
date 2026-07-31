@@ -1,7 +1,7 @@
-# src/carrier_validator/detector/home/__init__.py
+# src/bootstrapper/detector/home/__init__.py
 
 """
-Module: carrier_validator.detector.home.__init__
+Module: bootstrapper.detector.home.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

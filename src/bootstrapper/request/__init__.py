@@ -1,7 +1,7 @@
-# src/carrier_validator/permitter/__init__.py
+# src/bootstrapper/permitter/__init__.py
 
 """
-Module: carrier_validator.permitter.__init__
+Module: bootstrapper.permitter.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -18,4 +18,4 @@ from .push import *
 from .search import *
 
 # Modules
-from .bootstrapper import PermitterBootstrapper
+from .bootstrapper import RequestBootstrapper

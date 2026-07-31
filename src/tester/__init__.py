@@ -15,4 +15,4 @@ from .promotion import *
 from .request import *
 
 # Modules
-from .tester import Tester
+from .tester import RequestTester

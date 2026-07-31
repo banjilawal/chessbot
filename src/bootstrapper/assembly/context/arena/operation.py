@@ -1,7 +1,7 @@
-# src/carrier_validator/assembly/context/arena/operation.py
+# src/bootstrapper/assembly/context/arena/operation.py
 
 """
-Module: carrier_validator.assembly.context.arena.operation
+Module: bootstrapper.assembly.context.arena.operation
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

@@ -12,7 +12,7 @@ from __future__ import annotations
 
 from typing import Any, Type, cast
 
-from bootstrapper import PrimingValidator, PushPermitterBootstrapper
+from bootstrapper import PrimingValidator, PushRequestBootstrapper
 from err import TokenStackNullException, TokenPushRequestTesterException
 from request import PushRequest
 from result import MethodResultType, ValidationResult
@@ -43,13 +43,13 @@ class TokenPushRequestTester(PushRequestTester):
     """
     _item_validator: TokenValidator
     _priming_validator: PrimingValidator
-    _bootstrapper: PushPermitterBootstrapper
+    _bootstrapper: PushRequestBootstrapper
     
     def __init__(
             self,
             item_validator: TokenValidator | None = TokenValidator(),
             priming_validator: PrimingValidator | None = PrimingValidator(),
-            bootstrapper: PushPermitterBootstrapper | None = PushPermitterBootstrapper(),
+            bootstrapper: PushRequestBootstrapper | None = PushRequestBootstrapper(),
     ):
         """
         Args:
@@ -88,7 +88,7 @@ class TokenPushRequestTester(PushRequestTester):
         method = f"{self.__class__.__name__}.execute"
         
         # Handle the case that, the PushRequest is not bootstrapped successfully.
-        bootstrap = self._bootstrapper.bootstrap_request(candidate)
+        bootstrap = self._bootstrapper.execute(candidate)
         if bootstrap.is_failure:
             # Send the exception chain in the result.
             return ValidationResult.failure(
