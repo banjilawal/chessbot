@@ -12,7 +12,7 @@ from container import VectorSet
 from err import BishopTraversalPatternException
 from err.null.recurrence.group import BishopRecurrenceSeriesNullException
 from model import Bishop
-from pattern import TraversalTreeGenerator, TraversalSignature
+from pattern import TraversalTopologyGenerator, TraversalSignature
 from geometry.recurrence import BishopRecurrenceRegistries
 from result import ComputationResult
 from util import LoggingLevelRouter
@@ -24,7 +24,7 @@ class BishopPattern(TraversalSignature[Bishop]):
     def __init__(
             self,
             priming_validator: Optional[PrimingValidator],
-            signature_generator: Optional[TraversalTreeGenerator],
+            signature_generator: Optional[TraversalTopologyGenerator],
     ):
         """
         Args:

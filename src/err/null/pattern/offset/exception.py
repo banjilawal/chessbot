@@ -15,12 +15,12 @@ from result import MethodResultType
 
 __all__ = [
     # ======================# OFFSET_PATTERN_NULL_ERROR #======================#
-    "OffsetPatternNullException",
+    "OffsetSignatureNullException",
 ]
 
 
 # ======================# OFFSET_PATTERN_NULL_ERROR #======================#
-class OffsetPatternNullException(SignatureNullException):
+class OffsetSignatureNullException(SignatureNullException):
     """
     Role:
         -   Error Tracing

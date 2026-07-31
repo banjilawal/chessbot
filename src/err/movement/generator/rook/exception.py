@@ -10,17 +10,17 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import SignatureGeneratorException
+from err import TopologyGeneratorException
 from result import MethodResultType
 
 __all__ = [
     # ======================# ROOK_SIGNATURE_GENERATOR_FAILURE #======================#
-    "RookSignatureGeneratorException",
+    "RookTopologyGeneratorException",
 ]
 
 
 # ======================# ROOK_SIGNATURE_GENERATOR_FAILURE #======================#
-class RookSignatureGeneratorException(SignatureGeneratorException):
+class RookTopologyGeneratorException(TopologyGeneratorException):
     """
     Role:
         -   Error Tracing

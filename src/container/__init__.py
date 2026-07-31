@@ -10,10 +10,8 @@ version: 1.0.1
 # =========== CONTAINER PACKAGE ===========#
 
 # Packages
-from .coord import *
-from .quadrant import *
-from .register import *
-from .vector import *
+from .sets import *
+from .tree import *
 
 # Modules
-from .container import Container
+from container.sets.container import Container

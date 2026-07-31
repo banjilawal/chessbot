@@ -9,22 +9,22 @@ version: 1.0.1
 
 from __future__ import  annotations
 
-from abc import abstractmethod
 from typing import Optional, Type, TypeVar, cast
 
-from container import VectorSet
-from err import SignatureGeneratorException, RecurrenceRegistryCollectionNullException
+from container import VectorSet, VectorTree
+from err import TopologyGeneratorException, RecurrenceRegistryCollectionNullException
 from geometry import RecurrenceRegistryCollection
 from pattern import TransformerRunner
 
 from result import ComputationResult, MethodResultType
-from tree import VectorTree
+
+from topology import Topology
 from util import LoggingLevelRouter
 from validator import PrimingValidator
 
 T = TypeVar("T", bound="TraversalRank")
 
-class TraversalTreeGenerator:
+class TraversalTopologyGenerator:
     """
     Role:
         -   Computation
@@ -70,7 +70,7 @@ class TraversalTreeGenerator:
     def execute(
             self,
             collection: RecurrenceRegistryCollection
-    ) -> ComputationResult[VectorTree]:
+    ) -> ComputationResult[Topology]:
         """
         Generate the set of vectors in a Bishop's traversal pattern.
 
@@ -97,11 +97,11 @@ class TraversalTreeGenerator:
         if validation.is_failure:
             # Send an exception chain in the result.
             return ComputationResult.failure(
-                SignatureGeneratorException(
+                TopologyGeneratorException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=SignatureGeneratorException.MSG,
-                    err_code=SignatureGeneratorException.ERR_CODE,
+                    msg=TopologyGeneratorException.MSG,
+                    err_code=TopologyGeneratorException.ERR_CODE,
                     mthd_rslt_type=MethodResultType.COMPUTATION_RESULT,
                     ex=validation.exception,
                 ),
@@ -120,11 +120,11 @@ class TraversalTreeGenerator:
             if computation.is_failure:
                 # Send an exception chain in the result.
                 return ComputationResult.failure(
-                    SignatureGeneratorException(
+                    TopologyGeneratorException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        msg=SignatureGeneratorException.MSG,
-                        err_code=SignatureGeneratorException.ERR_CODE,
+                        msg=TopologyGeneratorException.MSG,
+                        err_code=TopologyGeneratorException.ERR_CODE,
                         mthd_rslt_type=MethodResultType.COMPUTATION_RESULT,
                         ex=computation.exception,
                     ),
@@ -134,6 +134,6 @@ class TraversalTreeGenerator:
         origin = collection.origin
         tree = VectorTree(root=origin, branches=solution_sets)
         # --- Send the work product. ---#
-        return ComputationResult.success(tree)
+        return ComputationResult.success(Topology(tree=tree))
         
             

@@ -12,7 +12,7 @@ from __future__ import  annotations
 from typing import List, Optional, Type, cast
 
 from container import VectorSet
-from err import SignatureGeneratorException
+from err import TopologyGeneratorException
 from geometry import RecurrenceRegistry
 from math import VectorSequenceGenerator
 
@@ -84,11 +84,11 @@ class TransformerRunner:
             )
             if computation.is_failure:
                 return ComputationResult.failure(
-                    SignatureGeneratorException(
+                    TopologyGeneratorException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        msg=SignatureGeneratorException.MSG,
-                        err_code=SignatureGeneratorException.ERR_CODE,
+                        msg=TopologyGeneratorException.MSG,
+                        err_code=TopologyGeneratorException.ERR_CODE,
                         mthd_rslt_type=MethodResultType.COMPUTATION_RESULT,
                         ex=computation.exception,
                     ),

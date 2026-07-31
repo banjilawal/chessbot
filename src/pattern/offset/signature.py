@@ -47,3 +47,6 @@ class OffsetSignature(Signature, Generic[T]):
         return self._offsets
     
     
+
+    
+    

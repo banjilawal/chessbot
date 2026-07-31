@@ -10,7 +10,7 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import PawnOffsetPatternNullException
+from err import PawnOffsetSignatureNullException
 from result import MethodResultType
 
 __all__ = [
@@ -20,7 +20,7 @@ __all__ = [
 
 
 # ======================# MANEUVER_OFFSET_PATTERN_NULL_ERROR #======================#
-class ManeuverOffsetPatternNullException(PawnOffsetPatternNullException):
+class ManeuverOffsetPatternNullException(PawnOffsetSignatureNullException):
     """
     Role:
         -   Error Tracing

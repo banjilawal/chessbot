@@ -10,17 +10,17 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import OffsetPatternNullException
+from err import OffsetSignatureNullException
 from result import MethodResultType
 
 __all__ = [
     # ======================# PAWN_OFFSET_PATTERN_NULL_ERROR #======================#
-    "PawnOffsetPatternNullException",
+    "PawnOffsetSignatureNullException",
 ]
 
 
 # ======================# PAWN_OFFSET_PATTERN_NULL_ERROR #======================#
-class PawnOffsetPatternNullException(OffsetPatternNullException):
+class PawnOffsetSignatureNullException(OffsetSignatureNullException):
     """
     Role:
         -   Error Tracing

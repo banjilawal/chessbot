@@ -10,17 +10,17 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import OffsetPatternNullException
+from err import OffsetSignatureNullException
 from result import MethodResultType
 
 __all__ = [
     # ======================# KING_OFFSET_PATTERN_NULL_ERROR #======================#
-    "KingOffsetPatternNullException",
+    "KingOffsetSignatureNullException",
 ]
 
 
 # ======================# KING_OFFSET_PATTERN_NULL_ERROR #======================#
-class KingOffsetPatternNullException(OffsetPatternNullException):
+class KingOffsetSignatureNullException(OffsetSignatureNullException):
     """
     Role:
         -   Error Tracing

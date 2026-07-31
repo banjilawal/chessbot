@@ -13,4 +13,4 @@ version: 1.0.1
 from .bishop import *
 
 # Modules
-from .exception import SignatureGeneratorException
+from .exception import TopologyGeneratorException

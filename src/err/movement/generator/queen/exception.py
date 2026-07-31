@@ -10,17 +10,17 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import SignatureGeneratorException
+from err import TopologyGeneratorException
 from result import MethodResultType
 
 __all__ = [
     # ======================# QUEEN_SIGNATURE_GENERATOR_FAILURE #======================#
-    "QueenSignatureGeneratorException",
+    "QueenTopologyGeneratorException",
 ]
 
 
 # ======================# QUEEN_SIGNATURE_GENERATOR_FAILURE #======================#
-class QueenSignatureGeneratorException(SignatureGeneratorException):
+class QueenTopologyGeneratorException(TopologyGeneratorException):
     """
     Role:
         -   Error Tracing

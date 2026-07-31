@@ -14,4 +14,4 @@ from .attack import *
 from .maneuver import *
 
 # Modules
-from .exception import PawnOffsetPatternNullException
+from .exception import PawnOffsetSignatureNullException

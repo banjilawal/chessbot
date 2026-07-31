@@ -14,4 +14,4 @@ from .king import *
 from .knight import *
 
 # Modules
-from .exception import OffsetPatternNullException
+from .exception import OffsetSignatureNullException

@@ -43,3 +43,5 @@ class BishopSignature(TraversalSignature[Bishop]):
     @property
     def recurrence_registries(self) -> BishopRecurrenceRegistries:
         return cast(BishopRecurrenceRegistries, super().recurrence_registries)
+    
+    

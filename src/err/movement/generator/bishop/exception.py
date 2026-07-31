@@ -10,17 +10,17 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import SignatureGeneratorException
+from err import TopologyGeneratorException
 from result import MethodResultType
 
 __all__ = [
     # ======================# BISHOP_SIGNATURE_GENERATOR_FAILURE #======================#
-    "BishopSignatureGeneratorException",
+    "BishopTopologyGeneratorException",
 ]
 
 
 # ======================# BISHOP_SIGNATURE_GENERATOR_FAILURE #======================#
-class BishopSignatureGeneratorException(SignatureGeneratorException):
+class BishopTopologyGeneratorException(TopologyGeneratorException):
     """
     Role:
         -   Error Tracing
