@@ -10,9 +10,13 @@ version: 1.0.1
 # =========== TESTER PACKAGE ===========#
 
 # Packages
+from .deletion import *
 from .extractor import *
+from .maneuver import *
+from .pop import *
 from .promotion import *
-from .request import *
+from .push import *
+from .search import *
 
 # Modules
 from .tester import RequestTester

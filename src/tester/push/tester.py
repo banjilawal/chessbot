@@ -9,8 +9,11 @@ version: 1.0.1
 
 from __future__ import annotations
 
+from typing import TypeVar
+
 from tester import RequestTester
 
+T = TypeVar("T", bound="Model")
 
 class PushRequestTester(RequestTester):
     pass
