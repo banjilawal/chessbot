@@ -18,4 +18,4 @@ from .token import *
 from .vector import *
 
 # Modules
-from .suite import ModelOperationSuite
+from .suite import Suite

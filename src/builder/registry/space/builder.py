@@ -1,7 +1,7 @@
-# src/builder/space/builder.py
+# src/builder/registry/space/builder.py
 
 """
-Module: builder.space.builder
+Module: builder.registry.space.builder
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -16,31 +16,31 @@ from builder import Builder
 from model import Vector
 
 from result import BuildResult
-from toolkit import MathToolkit, SpaceBuilderToolkit
+from toolkit import MathToolkit, SpaceReservoirBuilderToolkit
 from util import LoggingLevelRouter
 
 
-T = TypeVar("T", bound="Space")
+T = TypeVar("T", bound="SpaceReservoir")
 
-class SpaceBuilder(Builder, Generic[T]):
+class SpaceReservoirBuilder(Builder, Generic[T]):
     _math_toolkit: MathToolkit
     
     def __init__(
             self,
-            builder_toolkit: Optional[SpaceBuilderToolkit] | None = None,
+            builder_toolkit: Optional[SpaceReservoirBuilderToolkit] | None = None,
             math_toolkit: Optional[MathToolkit] | None = None,
     ):
         """
         Args:
-            builder_toolkit: Optional[SpaceBuilderToolkit]
+            builder_toolkit: Optional[SpaceReservoirBuilderToolkit]
             math_toolkit: Optional[MathToolkit]
         """
-        super().__init__(builder_toolkit=builder_toolkit or SpaceBuilderToolkit())
+        super().__init__(builder_toolkit=builder_toolkit or SpaceReservoirBuilderToolkit())
         self._math_toolkit = math_toolkit or MathToolkit()
         
     @property
-    def builder_toolkit(self) -> SpaceBuilderToolkit:
-        return cast(SpaceBuilderToolkit, super().builder_toolkit)
+    def builder_toolkit(self) -> SpaceReservoirBuilderToolkit:
+        return cast(SpaceReservoirBuilderToolkit, super().builder_toolkit)
         
     @property
     def math(self) -> MathToolkit:

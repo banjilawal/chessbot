@@ -13,6 +13,7 @@ version: 1.0.1
 from .bootstrapper import *
 from .model import *
 from .register import *
+from .registry import *
 from .space import *
 from .toggle import *
 

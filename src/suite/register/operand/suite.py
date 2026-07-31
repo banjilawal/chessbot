@@ -10,12 +10,12 @@ version: 1.0.1
 from __future__ import annotations
 
 from model import PointRegister
-from suite import ModelOperationSuite
+from suite import Suite
 from toolkit import VectorToggleRegisterToolkit
 from validator import VectorToggleRegisterValidator
 
 
-class VectorToggleRegisterSuite(ModelOperationSuite[PointRegister]):
+class VectorToggleRegisterSuite(Suite[PointRegister]):
     """
     Role:
         -   Dependency Container

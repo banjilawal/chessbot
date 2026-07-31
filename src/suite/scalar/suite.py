@@ -11,11 +11,11 @@ from __future__ import annotations
 
 from builder import ScalarBuilder
 from model import Scalar
-from toolkit import ModelOperationSuite, ScalarToolkit
+from toolkit import Suite, ScalarToolkit
 from validator import ScalarValidator
 
 
-class ScalarOperationSuite(ModelOperationSuite[Scalar]):
+class ScalarOperationSuite(Suite[Scalar]):
     """
     Role:
         -   Dependency Container

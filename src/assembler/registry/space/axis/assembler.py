@@ -9,15 +9,15 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from assembler import Assembler
+from assembler import SpaceReservoirAssembler
 from blueprint import AxisReservoirBlueprint
+from registry import AxisReservoir
 from result import BuildResult
-from space import AxisReservoir
 from util import LoggingLevelRouter
 
 
 
-class AxisReservoirAssembler(Assembler[AxisReservoir]):
+class AxisReservoirAssembler(SpaceReservoirAssembler[AxisReservoir]):
     """
     Role
         -   Builder

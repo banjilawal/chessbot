@@ -1,7 +1,7 @@
-# src/suite/carrier_validator/toolkit.py
+# src/suite/coord/suite.py
 
 """
-Module: suite.carrier_validator.toolkit
+Module: suite.coord.suite
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -11,11 +11,12 @@ from __future__ import annotations
 
 from builder import CoordBuilder
 from model import Coord
-from toolkit import ModelOperationSuite, CoordToolkit
+from suite import Suite
+from toolkit import CoordToolkit
 from validator import CoordValidator
 
 
-class CoordOperationSuite(ModelOperationSuite[Coord]):
+class CoordOperationSuite(Suite[Coord]):
     """
     Role:
         -   Dependency Container

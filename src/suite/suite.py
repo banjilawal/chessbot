@@ -13,14 +13,14 @@ from abc import ABC
 from typing import Generic, TypeVar
 
 from builder import Builder
-from toolkit import ModelToolkit
+from toolkit import Toolkit
 from validator import Validator
 
-T = TypeVar("T", bound="Model")
+T = TypeVar("T")
 
 
 
-class ModelOperationSuite(ABC, Generic[T]):
+class Suite(ABC, Generic[T]):
     """
     Role:
         -   Dependency Container
@@ -41,6 +41,6 @@ class ModelOperationSuite(ABC, Generic[T]):
         -   Suite for an empty class which makes managing toolkits easier.
         -   Any toolkits for a suite should be a Suite subclass.
     """
-    toolkit: ModelToolkit[T]
+    toolkit: Toolkit[T]
     validator: Validator[T]
     builder: Builder[T]

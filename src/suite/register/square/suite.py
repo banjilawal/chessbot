@@ -11,12 +11,12 @@ from __future__ import annotations
 
 from builder import SquareBuilder
 from model import SquareRegister
-from suite import ModelOperationSuite
+from suite import Suite
 from toolkit import SquareToolkit
 from validator import SquareValidator
 
 
-class SquareRegisterSuite(ModelOperationSuite[SquareRegister]):
+class SquareRegisterSuite(Suite[SquareRegister]):
     """
     Role:
         -   Dependency Container

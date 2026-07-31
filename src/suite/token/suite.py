@@ -15,12 +15,12 @@ from detection import TokenCollisionDetector, TokenHomeDetector
 from model import Token
 from operation import TokenHomePlacer, TokenPositionController
 from operation.promotion import PawnPromoter
-from suite import ModelOperationSuite
+from suite import Suite
 from toolkit import TokenToolkit
 from validator import TokenValidator
 
 
-class TokenOperationSuite(ModelOperationSuite[Token]):
+class TokenOperationSuite(Suite[Token]):
     """
     Role:
         -   Dependency Container

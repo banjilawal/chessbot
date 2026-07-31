@@ -13,12 +13,12 @@ from dataclasses import dataclass
 
 from builder import Builder
 from model import Register
-from toolkit import ModelOperationSuite, Toolkit
+from toolkit import Suite, Toolkit
 from validator import Validator
 
 
 @dataclass
-class RegisterSuite(ModelOperationSuite[Register]):
+class RegisterSuite(Suite[Register]):
     """
     Role:
         -   Dependency Container

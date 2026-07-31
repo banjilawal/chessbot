@@ -14,7 +14,8 @@ from typing import Optional, Type, cast
 from blueprint import AxisReservoirBlueprint
 from carrier import AxisReservoirCarrier
 from err import AxisReservoirNullException, SpaceReservoirNullException
-from space import Axis, AxisReservoir
+from registry import AxisReservoir
+from space import Axis
 from toolkit import MathToolkit, SpaceReservoirToolkit
 
 

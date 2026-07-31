@@ -17,6 +17,7 @@ from .context import *
 from .endpoint import *
 from .model import *
 from .register import *
+from .registry import *
 from .signature import *
 from .space import *
 from .toggle import *

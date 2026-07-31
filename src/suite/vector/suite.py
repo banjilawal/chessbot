@@ -11,11 +11,12 @@ from __future__ import annotations
 
 from builder import VectorBuilder
 from model import Vector
-from suite import ModelOperationSuite
+from suite import Suite
 from toolkit import VectorToolkit
+from validator import VectorValidator
 
 
-class VectorOperationSuite(ModelOperationSuite[Vector]):
+class VectorOperationSuite(Suite[Vector]):
     """
     Role:
         -   Dependency Container
@@ -41,4 +42,5 @@ class VectorOperationSuite(ModelOperationSuite[Vector]):
     toolkit: VectorToolkit = VectorToolkit()
     builder: VectorBuilder = VectorBuilder()
     validator: VectorValidator = VectorValidator()
+   
 

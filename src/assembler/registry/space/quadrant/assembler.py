@@ -9,7 +9,7 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from assembler import Assembler
+from assembler import SpaceReservoirAssembler
 from blueprint import QuadrantReservoirBlueprint
 from registry import QuadrantReservoir
 from result import BuildResult
@@ -18,7 +18,7 @@ from util import LoggingLevelRouter
 
 
 
-class QuadrantReservoirAssembler(Assembler[QuadrantReservoir]):
+class QuadrantReservoirAssembler(SpaceReservoirAssembler[QuadrantReservoir]):
     """
     Role
         -   Builder
