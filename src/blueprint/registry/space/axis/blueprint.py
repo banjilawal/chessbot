@@ -15,10 +15,11 @@ from blueprint import SpaceReservoirBlueprint
 from err import AxisReservoirNullException
 
 from model import Vector
-from space import Axis, AxisReservoir
+from registry import AxisReservoir
 
 
-class AxisReservoirBlueprint(SpaceReservoirBlueprint[Axis]):
+
+class AxisReservoirBlueprint(SpaceReservoirBlueprint[AxisReservoir]):
     """
      Role:
          -   DTO

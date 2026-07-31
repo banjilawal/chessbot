@@ -13,8 +13,8 @@ version: 1.0.1
 from .container import *
 from .context import *
 from .model import *
-from .quadrant import *
 from .register import *
+from .registry import *
 from .signature import *
 from .space import *
 from .toggle import *

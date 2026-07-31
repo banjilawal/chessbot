@@ -10,7 +10,6 @@ version: 1.0.1
 # =========== TOOLKIT.REGISTRY PACKAGE ===========#
 
 # Packages
-from .service import *
-from .worker import *
+from .space import *
 
 # Modules

@@ -11,8 +11,9 @@ from __future__ import annotations
 
 from assembler import Assembler
 from blueprint import QuadrantReservoirBlueprint
+from registry import QuadrantReservoir
 from result import BuildResult
-from space import QuadrantReservoir
+
 from util import LoggingLevelRouter
 
 

@@ -12,7 +12,6 @@ version: 1.0.1
 # Packages
 from .axis import *
 from .quadrant import *
-from .reservoir import *
 
 # Modules
 from .blueprint import SpaceBlueprint
