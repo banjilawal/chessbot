@@ -14,4 +14,4 @@ from .axis import *
 from .quadrant import *
 
 # Modules
-from .recurrence import RecurrenceRegistry
+from .registry import RecurrenceRegistry

@@ -12,7 +12,6 @@ version: 1.0.1
 # Packages
 from .axis import *
 from .collection import *
-from .registry import *
 from .quadrant import *
 
 # Modules

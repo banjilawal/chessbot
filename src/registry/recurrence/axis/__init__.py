@@ -13,4 +13,4 @@ version: 1.0.1
 
 
 # Modules
-from .recurrence import AxisRecurrenceRegistry
+from .registry import AxisRecurrenceRegistry

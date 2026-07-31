@@ -12,9 +12,6 @@ version: 1.0.1
 # Packages
 from .axis import *
 from .quadrant import *
-from .stream import *
-
-
 
 # Modules
 from .mapping import SpaceMappingFunction

@@ -9,14 +9,15 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from typing import Dict, List, Optional, Tuple, Type, cast
+from typing import Dict, Optional, Tuple, Type, cast
 
 from mapper import (
     NortheastQuadrantMapFunction, NorthwestQuadrantMapFunction, QuadrantMappingFunction,
-    SoutheastQuadrantMapFunction, SouthwestQuadrantMapFunction, SpaceMapFunctionStream
+    SoutheastQuadrantMapFunction, SouthwestQuadrantMapFunction,
 )
+from registry import QuadrantReservoir, SpaceMapFunctionStream
 from space import (
-    Quadrant, QuadrantReservoir, NortheastQuadrant, NorthwestQuadrant, SoutheastQuadrant, SouthwestQuadrant
+    Quadrant, NortheastQuadrant, NorthwestQuadrant, SoutheastQuadrant, SouthwestQuadrant
 )
 
 

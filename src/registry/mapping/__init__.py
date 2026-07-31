@@ -14,4 +14,4 @@ from .axis import *
 from .quadrant import *
 
 # Modules
-from .mapper import SpaceMapFunctionStream
+from .registry import SpaceMapFunctionStream
