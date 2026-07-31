@@ -13,7 +13,7 @@ from typing import Optional, cast
 
 from assembler import SoutheastQuadrantAssembler
 from root import SoutheastQuadrantRootCertifier
-from space import SoutheastQuadrant
+from geometry.space import SoutheastQuadrant
 from toolkit import QuadrantBuilderToolkit
 
 

@@ -13,7 +13,7 @@ from typing import Optional
 
 from blueprint import SouthwestQuadrantBlueprint
 from carrier import SpaceCarrier
-from space import SouthwestQuadrant
+from geometry.space import SouthwestQuadrant
 
 
 class SouthwestQuadrantCarrier(SpaceCarrier[SouthwestQuadrant]):

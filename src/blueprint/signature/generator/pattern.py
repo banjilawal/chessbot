@@ -9,14 +9,14 @@ version: 1.0.1
 
 from __future__ import  annotations
 
-from abc import ABC, abstractmethod
-from typing import Generic, List, Optional, Tuple, Type, TypeVar, cast
+from abc import abstractmethod
+from typing import Optional, Tuple, Type, TypeVar, cast
 
 from container import VectorSet
 from err import PatternGeneratorException
 from err.null.recurrence.group import RecurrenceTableGroupNullException
 from pattern import TransformerRunner
-from recurrence import RecurrenceRegistryCollection
+from geometry.recurrence import RecurrenceRegistryCollection
 from result import ComputationResult, MethodResultType
 from util import LoggingLevelRouter
 from validator import PrimingValidator

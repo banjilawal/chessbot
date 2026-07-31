@@ -15,7 +15,7 @@ from blueprint import NorthAxisBlueprint
 from builder import AxisBuilder
 from err import NorthAxisBuilderException
 from result import BuildResult, MethodResultType
-from space import NorthAxis
+from geometry.space import NorthAxis
 from toolkit import NorthAxisBuilderToolkit
 from util import LoggingLevelRouter
 

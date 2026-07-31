@@ -16,7 +16,7 @@ from typing import Type
 from blueprint.space.quadrant.southwest import SouthwestQuadrantBlueprint
 from carrier import SouthwestQuadrantCarrier
 from err import SouthwestQuadrantBlueprintNullException, SouthwestQuadrantCarrierNullException, SouthwestQuadrantNullException
-from space import SouthwestQuadrant
+from geometry.space import SouthwestQuadrant
 from toolkit import QuadrantToolkit
 
 

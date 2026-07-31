@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Dict, Optional, Type, cast
 
 from model import Vector
-from space import Axis, EastAxis, NorthAxis, SouthAxis, SpaceReservoir, WestAxis
+from geometry.space import Axis, EastAxis, NorthAxis, SouthAxis, SpaceReservoir, WestAxis
 
 class AxisReservoir(SpaceReservoir[Axis]):
     """

@@ -15,7 +15,7 @@ from blueprint import AxisReservoirBlueprint
 from carrier import AxisReservoirCarrier
 from err import AxisReservoirNullException, SpaceReservoirNullException
 from registry import AxisReservoir
-from space import Axis
+from geometry.space import Axis
 from toolkit import MathToolkit, SpaceReservoirToolkit
 
 

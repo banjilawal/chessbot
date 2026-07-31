@@ -14,7 +14,7 @@ from typing import Generic, Type, TypeVar, cast
 
 from blueprint import SignatureBlueprint
 from err import TraversalSignatureNullException
-from recurrence import RecurrenceRegistryCollection
+from geometry.recurrence import RecurrenceRegistryCollection
 
 T = TypeVar("T", bound="TraversalSignature")
 

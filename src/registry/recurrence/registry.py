@@ -12,8 +12,8 @@ from __future__ import annotations
 from abc import ABC, abstractmethod
 from typing import Dict, Generic, Type, TypeVar
 
-from mapper import SpaceMapFunctionStream
-from recurrence import Recurrence
+from geometry.mapper import SpaceMapFunctionStream
+from geometry.recurrence import Recurrence
 
 T = TypeVar("T", bound="Space")
 

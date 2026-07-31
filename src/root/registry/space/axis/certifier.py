@@ -9,14 +9,14 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from typing import Any, Optional, cast
+from typing import Optional, cast
 
-from blueprint import AxisReservoirBlueprint, SpaceReservoirBlueprint
+from blueprint import AxisReservoirBlueprint
 from carrier import AxisReservoirCarrier
 from model import Vector
 from root import SpaceReservoirRootCertifier
 from result import ValidationResult
-from space import AxisReservoir
+from geometry.space import AxisReservoir
 from toolkit import AxisReservoirToolkit
 from util import LoggingLevelRouter
 

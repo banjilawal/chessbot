@@ -11,7 +11,10 @@ version: 1.0.1
 # =========== GEOMETRY PACKAGE ===========#
 
 # Packages
+from .mapper import *
 from .point import *
+from .recurrence import *
+from .space import *
 from .span import *
 
 # Modules

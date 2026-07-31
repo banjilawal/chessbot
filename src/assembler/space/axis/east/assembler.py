@@ -13,7 +13,7 @@ from blueprint import EastAxisBlueprint
 
 from result import BuildResult
 from assembler import AxisAssembler
-from space import EastAxis
+from geometry.space import EastAxis
 from util import  LoggingLevelRouter
   
   

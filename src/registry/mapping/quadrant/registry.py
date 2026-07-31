@@ -11,12 +11,12 @@ from __future__ import annotations
 
 from typing import Dict, Optional, Tuple, Type, cast
 
-from mapper import (
+from geometry.mapper import (
     NortheastQuadrantMapFunction, NorthwestQuadrantMapFunction, QuadrantMappingFunction,
     SoutheastQuadrantMapFunction, SouthwestQuadrantMapFunction,
 )
 from registry import QuadrantReservoir, SpaceMapFunctionStream
-from space import (
+from geometry.space import (
     Quadrant, NortheastQuadrant, NorthwestQuadrant, SoutheastQuadrant, SouthwestQuadrant
 )
 

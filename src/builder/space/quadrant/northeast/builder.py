@@ -15,7 +15,7 @@ from blueprint import NortheastQuadrantBlueprint
 from builder import QuadrantBuilder
 from err import NortheastQuadrantBuilderException
 from result import BuildResult, MethodResultType
-from space import NortheastQuadrant
+from geometry.space import NortheastQuadrant
 from toolkit import NortheastQuadrantBuilderToolkit
 from util import LoggingLevelRouter
 

@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Dict, List, Type, cast
 
 from model import Vector
-from space import (
+from geometry.space import (
     Quadrant, NortheastQuadrant, NorthwestQuadrant, SoutheastQuadrant, SpaceReservoir, SouthwestQuadrant
 )
 

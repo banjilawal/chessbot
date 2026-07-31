@@ -13,9 +13,9 @@ from typing import Optional, cast
 
 from blueprint import EastAxisBlueprint
 from builder import AxisBuilder
-from err import EastAxisBuilderException, EastAxisNullException
+from err import EastAxisBuilderException
 from result import BuildResult, MethodResultType
-from space import EastAxis
+from geometry.space import EastAxis
 from toolkit import EastAxisBuilderToolkit
 from util import LoggingLevelRouter
 

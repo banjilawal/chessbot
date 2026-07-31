@@ -16,7 +16,7 @@ from typing import Type
 from blueprint.space.quadrant.northwest import NorthwestQuadrantBlueprint
 from carrier import NorthwestQuadrantCarrier
 from err import NorthwestQuadrantBlueprintNullException, NorthwestQuadrantCarrierNullException, NorthwestQuadrantNullException
-from space import NorthwestQuadrant
+from geometry.space import NorthwestQuadrant
 from toolkit import QuadrantToolkit
 
 

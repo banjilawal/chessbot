@@ -14,7 +14,7 @@ from typing import Generic, TypeVar
 
 
 from pattern import Signature
-from recurrence import RecurrenceRegistryCollection
+from geometry.recurrence import RecurrenceRegistryCollection
 
 
 T = TypeVar("T", bound="TraversalRank")

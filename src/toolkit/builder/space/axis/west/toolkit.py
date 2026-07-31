@@ -13,7 +13,7 @@ from typing import Optional, cast
 
 from assembler import WestAxisAssembler
 from root import WestAxisRootCertifier
-from space import WestAxis
+from geometry.space import WestAxis
 from toolkit import AxisBuilderToolkit
 
 

@@ -13,7 +13,7 @@ from typing import Optional
 
 from blueprint import EastAxisBlueprint
 from carrier import SpaceCarrier
-from space import EastAxis
+from geometry.space import EastAxis
 
 
 class EastAxisCarrier(SpaceCarrier[EastAxis]):

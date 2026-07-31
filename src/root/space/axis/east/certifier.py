@@ -17,7 +17,7 @@ from carrier import EastAxisCarrier
 from model import Vector
 from result import ValidationResult
 from root import AxisRootCertifier
-from space import EastAxis
+from geometry.space import EastAxis
 from toolkit.space.axis.east import EastAxisToolkit
 from util import LoggingLevelRouter
 

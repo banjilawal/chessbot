@@ -13,7 +13,7 @@ from abc import ABC
 from typing import Generic, List, TypeVar
 
 from model import Rank
-from recurrence import RecurrenceRegistry
+from geometry.recurrence import RecurrenceRegistry
 
 T = TypeVar("T", bound="Rank")
 

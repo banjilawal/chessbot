@@ -11,11 +11,11 @@ from __future__ import annotations
 
 from typing import Dict, Optional, Tuple, Type, cast
 
-from mapper import (
+from geometry.mapper import (
     AxisMappingFunction, EastAxisMapFunction, SpaceMapFunctionStream, NorthAxisMapFunction,
     SouthAxisMapFunction, WestAxisMapFunction
 )
-from space import Axis, AxisReservoir, EastAxis, NorthAxis, SouthAxis, WestAxis
+from geometry.space import Axis, AxisReservoir, EastAxis, NorthAxis, SouthAxis, WestAxis
 
 
 class AxisMappingFunctionStream(SpaceMapFunctionStream[Axis]):

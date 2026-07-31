@@ -9,14 +9,14 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from typing import Any, Optional, cast
+from typing import Optional, cast
 
-from blueprint import QuadrantReservoirBlueprint, SpaceReservoirBlueprint
+from blueprint import QuadrantReservoirBlueprint
 from carrier import QuadrantReservoirCarrier
 from model import Vector
 from root import SpaceReservoirRootCertifier
 from result import ValidationResult
-from space import QuadrantReservoir
+from geometry.space import QuadrantReservoir
 from toolkit import QuadrantReservoirToolkit
 from util import LoggingLevelRouter
 

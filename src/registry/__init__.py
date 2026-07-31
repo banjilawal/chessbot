@@ -10,8 +10,9 @@ version: 1.0.1
 # =========== REGISTRY PACKAGE ===========#
 
 # Packages
+from .collection import *
+from .mapping import *
 from .recurrence import *
 from .space import *
-from .mapping import *
 
 # Modules

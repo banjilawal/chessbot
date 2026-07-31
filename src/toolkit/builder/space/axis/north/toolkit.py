@@ -13,9 +13,8 @@ from typing import Optional, cast
 
 from assembler import NorthAxisAssembler
 from root import NorthAxisRootCertifier
-from space import NorthAxis
+from geometry.space import NorthAxis
 from toolkit import AxisBuilderToolkit
-from util import LoggingLevelRouter
 
 
 class NorthAxisBuilderToolkit(AxisBuilderToolkit[NorthAxis]):

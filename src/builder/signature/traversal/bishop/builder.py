@@ -6,14 +6,14 @@ Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
 """
-from typing import List, Optional, Tuple, Type, cast
+from typing import Optional, Tuple, Type, cast
 
 from container import VectorSet
 from err import BishopTraversalPatternException
 from err.null.recurrence.group import BishopRecurrenceSeriesNullException
 from model import Bishop
 from pattern import SignatureGenerator, TraversalSignature
-from recurrence import BishopRecurrenceRegistries
+from geometry.recurrence import BishopRecurrenceRegistries
 from result import ComputationResult
 from util import LoggingLevelRouter
 from validator import PrimingValidator

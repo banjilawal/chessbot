@@ -9,12 +9,12 @@ version: 1.0.1
 
 from __future__ import  annotations
 
-from typing import List, Optional, Tuple, Type, cast
+from typing import Optional, Tuple, Type, cast
 
 from container import VectorSet
 from err import PatternGeneratorException
 from math import VectorSequenceGenerator
-from recurrence import RecurrenceRegistry
+from geometry.recurrence import RecurrenceRegistry
 from result import ComputationResult, MethodResultType
 from util import LoggingLevelRouter
 from validator import PrimingValidator

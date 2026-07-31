@@ -9,17 +9,10 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from typing import List, Optional, Type, cast
+from typing import Optional
 
-from container import VectorSet
-from err import BishopPatternGeneratorException, QuadrantRecurrenceTableNullException
 from math import VectorSequenceGenerator
-from model import Bishop
-from pattern import SignatureGenerator
-from recurrence import QuadrantRecurrenceRegistry
-from result import ComputationResult, MethodResultType
 
-from util import LoggingLevelRouter
 from validator import PrimingValidator
 
 

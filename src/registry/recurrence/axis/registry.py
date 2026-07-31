@@ -11,12 +11,12 @@ from __future__ import annotations
 
 from typing import Dict, Type, cast
 
-from mapper import AxisMappingFunctionStream
-from recurrence import (
+from geometry.mapper import AxisMappingFunctionStream
+from geometry.recurrence import (
     AxisRecurrence, EastAxisRecurrence, NorthAxisRecurrence, SouthAxisRecurrence,
     RecurrenceRegistry, WestAxisRecurrence
 )
-from space import Axis
+from geometry.space import Axis
 
 
 class AxisRecurrenceRegistry(RecurrenceRegistry[Axis]):

@@ -17,7 +17,7 @@ from err import NorthAxisCarrierNullException, NorthAxisRootCertifierException
 from model import Vector
 from result import ValidationResult
 from root import AxisRootCertifier
-from space import NorthAxis
+from geometry.space import NorthAxis
 from toolkit.space.axis.north import NorthAxisToolkit
 from util import LoggingLevelRouter
 

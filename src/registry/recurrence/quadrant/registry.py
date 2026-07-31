@@ -11,12 +11,12 @@ from __future__ import annotations
 
 from typing import Dict, Type, cast
 
-from mapper import QuadrantMappingFunctionStream
-from recurrence import (
+from geometry.mapper import QuadrantMappingFunctionStream
+from geometry.recurrence import (
     NorthwestQuadrantRecurrence, QuadrantRecurrence, NortheastQuadrantRecurrence,
     SoutheastQuadrantRecurrence, RecurrenceRegistry, SouthwestQuadrantRecurrence
 )
-from space import Quadrant
+from geometry.space import Quadrant
 
 
 class QuadrantRecurrenceRegistry(RecurrenceRegistry[Quadrant]):

@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Iterator, List, Optional, Tuple, cast
 
 from container import Container
-from space import Quadrant
+from geometry.space import Quadrant
 
 
 class QuadrantSet(Container[Quadrant]):

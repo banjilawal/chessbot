@@ -14,7 +14,7 @@ from typing import Optional, Type, cast
 from blueprint import QuadrantBlueprint
 from err import SouthwestQuadrantNullException
 from model import Vector
-from space import SouthwestQuadrant
+from geometry.space import SouthwestQuadrant
 
 
 class SouthwestQuadrantBlueprint(QuadrantBlueprint[SouthwestQuadrant]):

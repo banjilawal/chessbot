@@ -13,7 +13,7 @@ from typing import List, Optional, cast
 
 from container import VectorSet
 from model import Vector
-from recurrence import Recurrence
+from geometry.recurrence import Recurrence
 from result import ComputationResult
 
 from toolkit import MathToolkit

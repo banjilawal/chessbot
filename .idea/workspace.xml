@@ -5,16 +5,171 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/err/builder/registry/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/builder/registry/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/builder/registry/space/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/builder/registry/space/axis/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/builder/registry/space/axis/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/builder/registry/space/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/builder/registry/space/quadrant/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/builder/registry/space/quadrant/exception.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/builder/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/builder/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assembler/space/axis/east/assembler.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assembler/space/axis/east/assembler.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assembler/space/axis/north/assembler.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assembler/space/axis/north/assembler.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/blueprint/registry/space/blueprint.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/blueprint/registry/space/blueprint.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/blueprint/registry/space/quadrant/blueprint.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/blueprint/registry/space/quadrant/blueprint.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/blueprint/signature/generator/bishop/pattern.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/blueprint/signature/generator/bishop/pattern.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/blueprint/signature/generator/pattern.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/blueprint/signature/generator/pattern.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/blueprint/signature/generator/ruleset/pattern.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/blueprint/signature/generator/ruleset/pattern.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/blueprint/signature/generator/runner/pattern.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/blueprint/signature/generator/runner/pattern.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/blueprint/signature/traversal/bishop/blueprint.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/blueprint/signature/traversal/bishop/blueprint.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/blueprint/signature/traversal/blueprint.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/blueprint/signature/traversal/blueprint.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/blueprint/space/axis/east/blueprint.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/blueprint/space/axis/east/blueprint.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/blueprint/space/axis/north/blueprint.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/blueprint/space/axis/north/blueprint.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/blueprint/space/axis/south/blueprint.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/blueprint/space/axis/south/blueprint.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/blueprint/space/axis/west/blueprint.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/blueprint/space/axis/west/blueprint.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/blueprint/space/quadrant/northeast/blueprint.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/blueprint/space/quadrant/northeast/blueprint.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/blueprint/space/quadrant/northwest/blueprint.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/blueprint/space/quadrant/northwest/blueprint.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/blueprint/space/quadrant/southeast/blueprint.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/blueprint/space/quadrant/southeast/blueprint.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/blueprint/space/quadrant/southwest/blueprint.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/blueprint/space/quadrant/southwest/blueprint.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/builder/endpoint/axis/west/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/builder/endpoint/axis/west/builder.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/builder/signature/generator/bishop/pattern.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/builder/signature/generator/bishop/pattern.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/builder/signature/generator/pattern.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/builder/signature/generator/pattern.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/builder/signature/generator/ruleset/pattern.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/builder/signature/generator/ruleset/pattern.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/builder/signature/generator/runner/pattern.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/builder/signature/generator/runner/pattern.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/builder/signature/traversal/bishop/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/builder/signature/traversal/bishop/builder.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/builder/space/axis/east/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/builder/space/axis/east/builder.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/builder/space/axis/north/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/builder/space/axis/north/builder.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/builder/space/axis/south/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/builder/space/axis/south/builder.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/builder/space/axis/west/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/builder/space/axis/west/builder.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/builder/space/quadrant/northeast/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/builder/space/quadrant/northeast/builder.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/builder/space/quadrant/northwest/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/builder/space/quadrant/northwest/builder.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/builder/space/quadrant/southeast/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/builder/space/quadrant/southeast/builder.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/builder/space/quadrant/southwest/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/builder/space/quadrant/southwest/builder.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/carrier/space/axis/east/carrier.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/carrier/space/axis/east/carrier.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/carrier/space/axis/north/carrier.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/carrier/space/axis/north/carrier.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/carrier/space/axis/south/carrier.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/carrier/space/axis/south/carrier.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/carrier/space/axis/west/carrier.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/carrier/space/axis/west/carrier.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/carrier/space/quadrant/northeast/carrier.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/carrier/space/quadrant/northeast/carrier.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/carrier/space/quadrant/northwest/carrier.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/carrier/space/quadrant/northwest/carrier.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/carrier/space/quadrant/southeast/carrier.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/carrier/space/quadrant/southeast/carrier.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/carrier/space/quadrant/southwest/carrier.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/carrier/space/quadrant/southwest/carrier.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/carrier/space/reservoir/axis/carrier.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/carrier/space/reservoir/axis/carrier.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/carrier/space/reservoir/quadrant/carrier.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/carrier/space/reservoir/quadrant/carrier.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/container/quadrant/container.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/container/quadrant/container.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/geometry/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometry/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mapper/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometry/mapper/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mapper/axis/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometry/mapper/axis/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mapper/axis/east/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometry/mapper/axis/east/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mapper/axis/east/mapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometry/mapper/axis/east/mapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mapper/axis/mapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometry/mapper/axis/mapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mapper/axis/north/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometry/mapper/axis/north/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mapper/axis/north/mapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometry/mapper/axis/north/mapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mapper/axis/south/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometry/mapper/axis/south/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mapper/axis/south/mapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometry/mapper/axis/south/mapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mapper/axis/west/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometry/mapper/axis/west/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mapper/axis/west/mapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometry/mapper/axis/west/mapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mapper/mapping.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometry/mapper/mapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mapper/quadrant/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometry/mapper/quadrant/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mapper/quadrant/mapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometry/mapper/quadrant/mapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mapper/quadrant/northeast/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometry/mapper/quadrant/northeast/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mapper/quadrant/northeast/mapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometry/mapper/quadrant/northeast/mapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mapper/quadrant/northwest/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometry/mapper/quadrant/northwest/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mapper/quadrant/northwest/mapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometry/mapper/quadrant/northwest/mapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mapper/quadrant/southeast/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometry/mapper/quadrant/southeast/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mapper/quadrant/southeast/mapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometry/mapper/quadrant/southeast/mapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mapper/quadrant/southwest/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometry/mapper/quadrant/southwest/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mapper/quadrant/southwest/mapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometry/mapper/quadrant/southwest/mapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/math/sequence/generator/math.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/math/sequence/generator/math.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pattern/generator/bishop/pattern.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/pattern/generator/bishop/pattern.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pattern/generator/ruleset/pattern.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/pattern/generator/ruleset/pattern.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pattern/generator/runner/signature.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/pattern/generator/runner/signature.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pattern/generator/signature.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/pattern/generator/signature.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pattern/traversal/bishop/signature.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/pattern/traversal/bishop/signature.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pattern/traversal/signature.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/pattern/traversal/signature.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/recurrence/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometry/recurrence/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/recurrence/axis/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometry/recurrence/axis/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/recurrence/axis/east/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometry/recurrence/axis/east/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/recurrence/axis/east/recurrence.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometry/recurrence/axis/east/recurrence.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/recurrence/axis/north/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometry/recurrence/axis/north/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/recurrence/axis/north/recurrence.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometry/recurrence/axis/north/recurrence.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/recurrence/axis/recurrence.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometry/recurrence/axis/recurrence.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/recurrence/axis/south/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometry/recurrence/axis/south/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/recurrence/axis/south/recurrence.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometry/recurrence/axis/south/recurrence.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/recurrence/axis/west/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometry/recurrence/axis/west/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/recurrence/axis/west/recurrence.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometry/recurrence/axis/west/recurrence.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/recurrence/collection/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/registry/collection/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/recurrence/collection/bishop/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/registry/collection/bishop/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/recurrence/collection/bishop/recurrence.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/registry/collection/bishop/recurrence.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/recurrence/collection/queen/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/registry/collection/queen/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/recurrence/collection/queen/recurrence.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/registry/collection/queen/recurrence.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/recurrence/collection/recurrence.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/registry/collection/recurrence.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/recurrence/collection/rook/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/registry/collection/rook/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/recurrence/collection/rook/recurrence.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/registry/collection/rook/recurrence.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/recurrence/quadrant/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometry/recurrence/quadrant/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/recurrence/quadrant/northeast/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometry/recurrence/quadrant/northeast/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/recurrence/quadrant/northeast/recurrence.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometry/recurrence/quadrant/northeast/recurrence.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/recurrence/quadrant/northwest/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometry/recurrence/quadrant/northwest/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/recurrence/quadrant/northwest/recurrence.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometry/recurrence/quadrant/northwest/recurrence.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/recurrence/quadrant/recurrence.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometry/recurrence/quadrant/recurrence.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/recurrence/quadrant/southeast/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometry/recurrence/quadrant/southeast/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/recurrence/quadrant/southeast/recurrence.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometry/recurrence/quadrant/southeast/recurrence.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/recurrence/quadrant/southwest/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometry/recurrence/quadrant/southwest/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/recurrence/quadrant/southwest/recurrence.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometry/recurrence/quadrant/southwest/recurrence.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/recurrence/recurrence.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometry/recurrence/recurrence.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/registry/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/registry/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/registry/mapping/axis/registry.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/registry/mapping/axis/registry.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/registry/mapping/quadrant/registry.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/registry/mapping/quadrant/registry.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/registry/mapping/registry.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/registry/mapping/registry.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/registry/recurrence/axis/registry.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/registry/recurrence/axis/registry.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/registry/recurrence/quadrant/registry.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/registry/recurrence/quadrant/registry.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/registry/recurrence/registry.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/registry/recurrence/registry.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/registry/space/axis/registry.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/registry/space/axis/registry.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/registry/space/quadrant/registry.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/registry/space/quadrant/registry.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/root/registry/space/axis/certifier.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/registry/space/axis/certifier.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/root/registry/space/quadrant/certifier.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/registry/space/quadrant/certifier.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/root/space/axis/east/certifier.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/space/axis/east/certifier.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/root/space/axis/north/certifier.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/space/axis/north/certifier.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/root/space/axis/south/certifier.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/space/axis/south/certifier.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/root/space/axis/west/certifier.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/space/axis/west/certifier.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/root/space/quadrant/northeast/certifier.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/space/quadrant/northeast/certifier.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/root/space/quadrant/northwest/certifier.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/space/quadrant/northwest/certifier.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/root/space/quadrant/southeast/certifier.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/space/quadrant/southeast/certifier.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/root/space/quadrant/southwest/certifier.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/root/space/quadrant/southwest/certifier.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/space/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometry/space/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/space/axis/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometry/space/axis/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/space/axis/east/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometry/space/axis/east/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/space/axis/east/space.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometry/space/axis/east/space.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/space/axis/north/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometry/space/axis/north/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/space/axis/north/space.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometry/space/axis/north/space.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/space/axis/south/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometry/space/axis/south/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/space/axis/south/space.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometry/space/axis/south/space.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/space/axis/space.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometry/space/axis/space.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/space/axis/west/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometry/space/axis/west/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/space/axis/west/space.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometry/space/axis/west/space.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/space/quadrant/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometry/space/quadrant/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/space/quadrant/northeast/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometry/space/quadrant/northeast/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/space/quadrant/northeast/space.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometry/space/quadrant/northeast/space.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/space/quadrant/northwest/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometry/space/quadrant/northwest/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/space/quadrant/northwest/space.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometry/space/quadrant/northwest/space.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/space/quadrant/southeast/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometry/space/quadrant/southeast/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/space/quadrant/southeast/space.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometry/space/quadrant/southeast/space.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/space/quadrant/southwest/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometry/space/quadrant/southwest/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/space/quadrant/southwest/space.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometry/space/quadrant/southwest/space.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/space/quadrant/space.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometry/space/quadrant/space.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/space/space.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometry/space/space.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/toolkit/builder/space/axis/east/toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/toolkit/builder/space/axis/east/toolkit.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/toolkit/builder/space/axis/north/toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/toolkit/builder/space/axis/north/toolkit.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/toolkit/builder/space/axis/south/toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/toolkit/builder/space/axis/south/toolkit.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/toolkit/builder/space/axis/west/toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/toolkit/builder/space/axis/west/toolkit.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/toolkit/builder/space/quadrant/northeast/toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/toolkit/builder/space/quadrant/northeast/toolkit.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/toolkit/builder/space/quadrant/northwest/toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/toolkit/builder/space/quadrant/northwest/toolkit.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/toolkit/builder/space/quadrant/southeast/toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/toolkit/builder/space/quadrant/southeast/toolkit.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/toolkit/builder/space/quadrant/southwest/toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/toolkit/builder/space/quadrant/southwest/toolkit.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/toolkit/registry/space/axis/toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/toolkit/registry/space/axis/toolkit.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/toolkit/registry/space/quadrant/toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/toolkit/registry/space/quadrant/toolkit.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/toolkit/space/axis/east/toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/toolkit/space/axis/east/toolkit.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/toolkit/space/axis/north/toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/toolkit/space/axis/north/toolkit.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/toolkit/space/axis/south/toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/toolkit/space/axis/south/toolkit.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/toolkit/space/axis/west/toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/toolkit/space/axis/west/toolkit.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/toolkit/space/quadrant/northeast/toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/toolkit/space/quadrant/northeast/toolkit.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/toolkit/space/quadrant/northwest/toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/toolkit/space/quadrant/northwest/toolkit.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/toolkit/space/quadrant/southeast/toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/toolkit/space/quadrant/southeast/toolkit.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/toolkit/space/quadrant/southwest/toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/toolkit/space/quadrant/southwest/toolkit.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validator/space/linear/axis/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/validator/space/linear/axis/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validator/space/linear/quadrant/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/validator/space/linear/quadrant/validator.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -89,11 +244,11 @@
       <recent name="$PROJECT_DIR$/src/suite/space/axis" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/geometry" />
+      <recent name="$PROJECT_DIR$/src/registry" />
       <recent name="$PROJECT_DIR$/src/suite" />
       <recent name="$PROJECT_DIR$/src/root/registry" />
       <recent name="$PROJECT_DIR$/src/toolkit/registry" />
-      <recent name="$PROJECT_DIR$/src/blueprint/registry" />
-      <recent name="$PROJECT_DIR$/src/blueprint" />
     </key>
   </component>
   <component name="RunManager" selected="Python.stack">
@@ -789,7 +944,7 @@
       <workItem from="1785271456267" duration="5305000" />
       <workItem from="1785280992548" duration="25503000" />
       <workItem from="1785354695376" duration="4352000" />
-      <workItem from="1785366790867" duration="67867000" />
+      <workItem from="1785366790867" duration="70097000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />
@@ -1297,7 +1452,7 @@
           <option name="timeStamp" value="247" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/src/space/traversal/endpoint/quadrant/ray.py</url>
+          <url>file://$PROJECT_DIR$/src/geometry/space/traversal/endpoint/quadrant/ray.py</url>
           <line>9</line>
           <option name="timeStamp" value="250" />
         </line-breakpoint>
@@ -1327,12 +1482,12 @@
           <option name="timeStamp" value="256" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/src/space/traversal/endpoint/linear/__init__.py</url>
+          <url>file://$PROJECT_DIR$/src/geometry/space/traversal/endpoint/linear/__init__.py</url>
           <line>12</line>
           <option name="timeStamp" value="257" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/src/space/pawn/attack/__init__.py</url>
+          <url>file://$PROJECT_DIR$/src/geometry/space/pawn/attack/__init__.py</url>
           <line>12</line>
           <option name="timeStamp" value="260" />
         </line-breakpoint>
@@ -1342,7 +1497,7 @@
           <option name="timeStamp" value="262" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/src/space/transformer/axis/transformer.py</url>
+          <url>file://$PROJECT_DIR$/src/geometry/space/transformer/axis/transformer.py</url>
           <line>9</line>
           <option name="timeStamp" value="266" />
         </line-breakpoint>
@@ -1377,12 +1532,12 @@
           <option name="timeStamp" value="273" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/src/space/offset/__init__.py</url>
+          <url>file://$PROJECT_DIR$/src/geometry/space/offset/__init__.py</url>
           <line>12</line>
           <option name="timeStamp" value="274" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/src/space/stepper/axis/north/linear.py</url>
+          <url>file://$PROJECT_DIR$/src/geometry/space/stepper/axis/north/linear.py</url>
           <line>9</line>
           <option name="timeStamp" value="275" />
         </line-breakpoint>
@@ -1482,27 +1637,27 @@
           <option name="timeStamp" value="297" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/src/space/pawn/maneuver/developed/space.py</url>
+          <url>file://$PROJECT_DIR$/src/geometry/space/pawn/maneuver/developed/space.py</url>
           <line>9</line>
           <option name="timeStamp" value="298" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/src/space/pawn/maneuver/opening/space.py</url>
+          <url>file://$PROJECT_DIR$/src/geometry/space/pawn/maneuver/opening/space.py</url>
           <line>17</line>
           <option name="timeStamp" value="299" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/src/space/axis/__init__.py</url>
+          <url>file://$PROJECT_DIR$/src/geometry/space/axis/__init__.py</url>
           <line>12</line>
           <option name="timeStamp" value="300" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/src/mapper/quadrant/northeast/mapper.py</url>
+          <url>file://$PROJECT_DIR$/src/geometry/mapper/quadrant/northeast/mapper.py</url>
           <line>9</line>
           <option name="timeStamp" value="301" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/src/recurrence/axis/west/recurrence.py</url>
+          <url>file://$PROJECT_DIR$/src/geometry/recurrence/axis/west/recurrence.py</url>
           <line>9</line>
           <option name="timeStamp" value="302" />
         </line-breakpoint>
@@ -1527,7 +1682,7 @@
           <option name="timeStamp" value="310" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/src/recurrence/quadrant/northeast/recurrence.py</url>
+          <url>file://$PROJECT_DIR$/src/geometry/recurrence/quadrant/northeast/recurrence.py</url>
           <line>9</line>
           <option name="timeStamp" value="311" />
         </line-breakpoint>
@@ -1572,7 +1727,7 @@
           <option name="timeStamp" value="321" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/src/space/quadrant/northwest/space.py</url>
+          <url>file://$PROJECT_DIR$/src/geometry/space/quadrant/northwest/space.py</url>
           <line>9</line>
           <option name="timeStamp" value="322" />
         </line-breakpoint>
@@ -1595,6 +1750,16 @@
           <url>file://$PROJECT_DIR$/src/builder/registry/space/axis/builder.py</url>
           <line>9</line>
           <option name="timeStamp" value="329" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/geometry/mapper/axis/mapper.py</url>
+          <line>9</line>
+          <option name="timeStamp" value="331" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/geometry/mapper/axis/north/mapper.py</url>
+          <line>9</line>
+          <option name="timeStamp" value="332" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

@@ -14,7 +14,7 @@ from typing import cast
 
 from model import Bishop
 from pattern import TraversalSignature
-from recurrence import BishopRecurrenceRegistries
+from geometry.recurrence import BishopRecurrenceRegistries
 
 
 class BishopSignature(TraversalSignature[Bishop]):

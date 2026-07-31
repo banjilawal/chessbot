@@ -13,7 +13,7 @@ from typing import Optional
 
 from blueprint import QuadrantReservoirBlueprint
 from carrier import SpaceReservoirCarrier
-from space import QuadrantReservoir
+from geometry.space import QuadrantReservoir
 
 
 class QuadrantReservoirCarrier(SpaceReservoirCarrier[QuadrantReservoir]):
