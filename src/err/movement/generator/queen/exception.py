@@ -10,17 +10,17 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import PatternGeneratorException
+from err import SignatureGeneratorException
 from result import MethodResultType
 
 __all__ = [
     # ======================# QUEEN_SIGNATURE_GENERATOR_FAILURE #======================#
-    "QueenPatternGeneratorException",
+    "QueenSignatureGeneratorException",
 ]
 
 
 # ======================# QUEEN_SIGNATURE_GENERATOR_FAILURE #======================#
-class QueenPatternGeneratorException(PatternGeneratorException):
+class QueenSignatureGeneratorException(SignatureGeneratorException):
     """
     Role:
         -   Error Tracing

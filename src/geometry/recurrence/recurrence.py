@@ -12,7 +12,7 @@ from __future__ import annotations
 from abc import ABC
 from typing import Generic, TypeVar
 
-from geometry.mapper import SpaceMappingFunction
+from geometry import SpaceMappingFunction
 
 T = TypeVar("T", bound="Space")
 

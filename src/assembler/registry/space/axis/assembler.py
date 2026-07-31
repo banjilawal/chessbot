@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from assembler import SpaceReservoirAssembler
 from blueprint import AxisReservoirBlueprint
-from registry import AxisReservoir
+from geometry.registry import AxisReservoir
 from result import BuildResult
 from util import LoggingLevelRouter
 

@@ -17,7 +17,7 @@ from model import Vector
 from result import ValidationResult
 from root import AxisRootCertifier
 from geometry.space import WestAxis
-from toolkit.space.axis.west import WestAxisToolkit
+from toolkit.geometry.space.axis.west import WestAxisToolkit
 from util import LoggingLevelRouter
 
 

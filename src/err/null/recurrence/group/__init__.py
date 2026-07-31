@@ -15,4 +15,4 @@ from .queen import *
 from .rook import *
 
 # Modules
-from .exception import RecurrenceTableGroupNullException
+from .exception import RecurrenceRegistryCollectionNullException

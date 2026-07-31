@@ -16,11 +16,11 @@ from result import MethodResultType
 
 __all__ = [
     # ======================# RECURRENCE_SET_NULL_ERROR #======================#
-    "RecurrenceTableGroupNullException",
+    "RecurrenceRegistryCollectionNullException",
 ]
 
 # ======================# RECURRENCE_SET_NULL_ERROR #======================#
-class RecurrenceTableGroupNullException(RecurrenceNullException):
+class RecurrenceRegistryCollectionNullException(RecurrenceNullException):
     """
     Role:
         -   Error Tracing

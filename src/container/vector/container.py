@@ -54,4 +54,8 @@ class VectorSet(Container[Vector]):
     
     def to_coord_tuple(self) -> Tuple[Coord, ...]:
         return tuple(Coord(column=item.x, row=item.y) for item in self._items)
+    
+    @property
+    def to_coord_list(self) -> List[Coord]:
+        return [Coord(column=item.x, row=item.y) for item in self.to_list]
         

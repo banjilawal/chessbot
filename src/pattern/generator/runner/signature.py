@@ -9,12 +9,13 @@ version: 1.0.1
 
 from __future__ import  annotations
 
-from typing import Optional, Tuple, Type, cast
+from typing import List, Optional, Type, cast
 
 from container import VectorSet
-from err import PatternGeneratorException
+from err import SignatureGeneratorException
+from geometry import RecurrenceRegistry
 from math import VectorSequenceGenerator
-from geometry.recurrence import RecurrenceRegistry
+
 from result import ComputationResult, MethodResultType
 from util import LoggingLevelRouter
 from validator import PrimingValidator
@@ -69,7 +70,7 @@ class TransformerRunner:
             self,
             recurrence_registry_model: Type[RecurrenceRegistry],
             recurrence_registry: RecurrenceRegistry,
-    ) -> ComputationResult[Tuple[VectorSet]]:
+    ) -> ComputationResult[List[VectorSet]]:
         method = f"{self.__class__.__name__}.execute"
         
         registry = cast(recurrence_registry_model, recurrence_registry)
@@ -83,16 +84,16 @@ class TransformerRunner:
             )
             if computation.is_failure:
                 return ComputationResult.failure(
-                    PatternGeneratorException(
+                    SignatureGeneratorException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        msg=PatternGeneratorException.MSG,
-                        err_code=PatternGeneratorException.ERR_CODE,
+                        msg=SignatureGeneratorException.MSG,
+                        err_code=SignatureGeneratorException.ERR_CODE,
                         mthd_rslt_type=MethodResultType.COMPUTATION_RESULT,
                         ex=computation.exception,
                     ),
                 )
             solution_sets.append(cast(VectorSet, computation.payload))
-        return ComputationResult.success(tuple(solution_sets))
+        return ComputationResult.success(solution_sets)
         
             

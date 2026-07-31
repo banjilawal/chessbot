@@ -15,7 +15,7 @@ from blueprint import SpaceReservoirBlueprint
 from err import AxisReservoirNullException
 
 from model import Vector
-from registry import AxisReservoir
+from geometry.registry import AxisReservoir
 
 
 

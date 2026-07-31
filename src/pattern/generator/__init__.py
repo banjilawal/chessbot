@@ -14,4 +14,4 @@ from .bishop import *
 from .runner import *
 
 # Modules
-from .signature import SignatureGenerator
+from .signature import TraversalTreeGenerator

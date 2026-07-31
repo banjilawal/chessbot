@@ -14,6 +14,7 @@ from .analyzer import *
 from .bootstrapper import *
 from .builder import *
 from .context import *
+from .geometry import *
 from .graph import *
 from .math import *
 from .model import *
@@ -22,7 +23,7 @@ from .permitter import *
 from .pipeline import *
 from .register import *
 from .registry import *
-from .space import *
+from toolkit.geometry.space import *
 from .toggle import *
 
 # Modules

@@ -10,7 +10,7 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import RecurrenceTableGroupNullException
+from err import RecurrenceRegistryCollectionNullException
 from result import MethodResultType
 
 
@@ -20,7 +20,7 @@ __all__ = [
 ]
 
 # ======================# BISHOP_RECURRENCE_SERIES_NULL_ERROR #======================#
-class BishopRecurrenceSeriesNullException(RecurrenceTableGroupNullException):
+class BishopRecurrenceSeriesNullException(RecurrenceRegistryCollectionNullException):
     """
     Role:
         -   Error Tracing

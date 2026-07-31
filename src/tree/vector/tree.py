@@ -11,9 +11,9 @@ from __future__ import annotations
 
 from typing import List, cast
 
-from container import VectorSet
-from model import Vector
-from tree import Tree
+from container import CoordSet, VectorSet
+from model import Coord, Vector
+from tree import CoordTree, Tree
 
 
 class VectorTree(Tree[Vector]):
@@ -48,4 +48,15 @@ class VectorTree(Tree[Vector]):
     @property
     def branches(self) -> List[VectorSet]:
         return cast(List[VectorSet], super().branches)
+    
+    @property
+    def to_coord_tree(self) -> CoordTree:
+        coord_branches = []
+        for branch in self.branches:
+            coord_branches.append(CoordSet(branch.to_coord_tuple()))
+        origin = Coord(column=self._root.x, row=self._root.y)
+        return CoordTree(root=origin, branches=coord_branches)
+        
+        
+    
         

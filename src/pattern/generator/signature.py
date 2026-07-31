@@ -10,20 +10,21 @@ version: 1.0.1
 from __future__ import  annotations
 
 from abc import abstractmethod
-from typing import Optional, Tuple, Type, TypeVar, cast
+from typing import Optional, Type, TypeVar, cast
 
 from container import VectorSet
-from err import PatternGeneratorException
-from err.null.recurrence.group import RecurrenceTableGroupNullException
+from err import SignatureGeneratorException, RecurrenceRegistryCollectionNullException
+from geometry import RecurrenceRegistryCollection
 from pattern import TransformerRunner
-from geometry.recurrence import RecurrenceRegistryCollection
+
 from result import ComputationResult, MethodResultType
+from tree import VectorTree
 from util import LoggingLevelRouter
 from validator import PrimingValidator
 
-T = TypeVar("T", bound="Rank")
+T = TypeVar("T", bound="TraversalRank")
 
-class SignatureGenerator:
+class TraversalTreeGenerator:
     """
     Role:
         -   Computation
@@ -65,12 +66,11 @@ class SignatureGenerator:
     def transformer_runner(self) -> TransformerRunner:
         return self._transformer_runner
     
-    @abstractmethod
     @LoggingLevelRouter.monitor
     def execute(
             self,
-            recurrence_set: RecurrenceRegistryCollection
-    ) -> ComputationResult[Tuple[VectorSet]]:
+            collection: RecurrenceRegistryCollection
+    ) -> ComputationResult[VectorTree]:
         """
         Generate the set of vectors in a Bishop's traversal pattern.
 
@@ -80,7 +80,7 @@ class SignatureGenerator:
                     -   A computation fails.
             2.  Otherwise, send the solutions in the success result.
         Args:
-             recurrence_set: RecurrenceTableGroup
+             collection: RecurrenceTableGroup
         Returns:
             ComputationResult[List[VectorSet]]
         Raises:
@@ -90,24 +90,24 @@ class SignatureGenerator:
         
         # --- Cast the validation product and setup for the iteration. ---#
         validation = self._priming_validator.execute(
-            candidate=recurrence_set,
+            candidate=collection,
             target=Type[RecurrenceRegistryCollection],
-            null_exception=RecurrenceTableGroupNullException(),
+            null_exception=RecurrenceRegistryCollectionNullException(),
         )
         if validation.is_failure:
             # Send an exception chain in the result.
             return ComputationResult.failure(
-                PatternGeneratorException(
+                SignatureGeneratorException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=PatternGeneratorException.MSG,
-                    err_code=PatternGeneratorException.ERR_CODE,
+                    msg=SignatureGeneratorException.MSG,
+                    err_code=SignatureGeneratorException.ERR_CODE,
                     mthd_rslt_type=MethodResultType.COMPUTATION_RESULT,
                     ex=validation.exception,
                 ),
             )
-        recurrence_set = cast(RecurrenceRegistryCollection, validation.payload)
-        registry_dict = recurrence_set.recurrence_registry_type_dict
+        collection = cast(RecurrenceRegistryCollection, validation.payload)
+        registry_dict = collection.recurrence_registry_type_dict
         
         solution_sets = []
         # --- Process each recurrence_table ---#
@@ -120,18 +120,20 @@ class SignatureGenerator:
             if computation.is_failure:
                 # Send an exception chain in the result.
                 return ComputationResult.failure(
-                    PatternGeneratorException(
+                    SignatureGeneratorException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        msg=PatternGeneratorException.MSG,
-                        err_code=PatternGeneratorException.ERR_CODE,
+                        msg=SignatureGeneratorException.MSG,
+                        err_code=SignatureGeneratorException.ERR_CODE,
                         mthd_rslt_type=MethodResultType.COMPUTATION_RESULT,
                         ex=computation.exception,
                     ),
                 )
             # Otherwise, add to solution set
-            solution_sets.append(cast(Tuple[VectorSet], computation.payload))
+            solution_sets.append(cast([VectorSet], computation.payload))
+        origin = collection.origin
+        tree = VectorTree(root=origin, branches=solution_sets)
         # --- Send the work product. ---#
-        return ComputationResult.success(solution_sets)
+        return ComputationResult.success(tree)
         
             

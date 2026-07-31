@@ -14,6 +14,7 @@ version: 1.0.1
 from .mapper import *
 from .point import *
 from .recurrence import *
+from .registry import *
 from .space import *
 from .span import *
 

@@ -12,9 +12,9 @@ from __future__ import annotations
 
 from typing import Generic, TypeVar
 
-
+from geometry import RecurrenceRegistryCollection
 from pattern import Signature
-from geometry.recurrence import RecurrenceRegistryCollection
+
 
 
 T = TypeVar("T", bound="TraversalRank")
@@ -37,7 +37,7 @@ class TraversalSignature(Signature, Generic[T]):
     Super Class:
         Signature
     """
-    _recurrence_registries: RecurrenceRegistryCollection
+    _recurrence_registries: RecurrenceRegistryCollection[T]
     
     def __init__(self, recurrence_registries: RecurrenceRegistryCollection[T], ):
         """

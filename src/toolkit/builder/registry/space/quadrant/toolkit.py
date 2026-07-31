@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import cast
 
 from assembler import QuadrantReservoirAssembler
-from registry import QuadrantReservoir
+from geometry.registry import QuadrantReservoir
 from root import QuadrantReservoirRootCertifier
 from toolkit import SpaceReservoirBuilderToolkit
 

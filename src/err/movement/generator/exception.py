@@ -15,12 +15,12 @@ from result import MethodResultType
 
 __all__ = [
     # ======================# SIGNATURE_GENERATOR_FAILURE #======================#
-    "PatternGeneratorException",
+    "SignatureGeneratorException",
 ]
 
 
 # ======================# SIGNATURE_GENERATOR_FAILURE #======================#
-class PatternGeneratorException(MovementPatternException):
+class SignatureGeneratorException(MovementPatternException):
     """
     Role:
         -   Error Tracing
