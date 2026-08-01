@@ -12,7 +12,7 @@ from typing import Optional
 
 from model import CheckedManeuver, CombatantManeuver, KingManeuver, Maneuver
 
-from report import OperationApprovalReport, Permission
+from report import AttackApprovalReport, OperationApprovalReport, Permission
 
 
 class ManeuverApprovalReport(OperationApprovalReport):
@@ -37,6 +37,7 @@ class ManeuverApprovalReport(OperationApprovalReport):
         OperationApprovalReport
     """
     _maneuver: Optional[Maneuver]
+    _attack_approval: Optional[AttackApprovalReport]
     
     def __init__(
             self,
@@ -44,14 +45,20 @@ class ManeuverApprovalReport(OperationApprovalReport):
             maneuver: Optional[Maneuver] | None = None,
             exception: Optional[Exception] | None = None,
             cost: Optional[int] | None = None,
+            attack_approval: Optional[AttackApprovalReport] | None = None,
     ):
         super().__init__(exception=exception, permission=permission)
+        self._attack_approval = attack_approval
         self._maneuver = maneuver
         self._cost = cost
     
     @property
     def maneuver(self) -> Optional[Maneuver]:
         return self._maneuver
+    
+    @property
+    def attack_approval(self) -> Optional[AttackApprovalReport]:
+        return self._attack_approval
     
     @property
     def cost(self) -> Optional[int]:
@@ -72,6 +79,32 @@ class ManeuverApprovalReport(OperationApprovalReport):
     @property
     def is_combatant_maneuver(self) -> bool:
         return self._maneuver is not None and isinstance(self._maneuver, CombatantManeuver)
+    
+    @property
+    def attack_is_approved(self) -> bool:
+        return (
+                self.is_granted and
+                self.attack_approval is not None and
+                self.attack_approval.is_granted
+        )
+    
+    @property
+    def no_attack_is_approved(self) -> bool:
+        return not self.attack_is_approved
+    
+    @property
+    def king_attack_is_granted(self) -> bool:
+        return (
+                self.attack_is_approved and
+                self.attack_approval.king_attack_is_granted
+        )
+    
+    @property
+    def combatant_attack_is_granted(self) -> bool:
+        return (
+                self.attack_is_approved and
+                self.attack_approval.combatant_attack_is_granted
+        )
 
     
     @classmethod
@@ -79,10 +112,12 @@ class ManeuverApprovalReport(OperationApprovalReport):
             cls, 
             maneuver: Maneuver,
             cost: Optional[int] | None = None,
+            attack_approval: Optional[AttackApprovalReport] | None = None,
     ) -> ManeuverApprovalReport:
         return cls(
             cost=cost,
             maneuver=maneuver,
+            attack_approval=attack_approval,
             permission=Permission.GRANTED,
         )
     
