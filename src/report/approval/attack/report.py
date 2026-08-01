@@ -11,10 +11,10 @@ from __future__ import annotations
 from typing import Optional
 
 from model import CombatantToken, KingToken, Square, Token
-from report import OperationApprovalReport, Permission
+from report import AttackPermission
 
 
-class AttackApprovalReport(OperationApprovalReport):
+class AttackApprovalReport:
     """
     Role:
         -   Test results
@@ -40,10 +40,12 @@ class AttackApprovalReport(OperationApprovalReport):
     _enemy_combatant: Optional[CombatantToken]
     _enemy_square: Optional[Square]
     _benefit: Optional[int]
+    _exception: Optional[Exception]
+    _permission: AttackPermission
     
     def __init__(
             self,
-            permission: Permission,
+            permission: AttackPermission,
             attacker: Optional[Token] | None = None,
             enemy_king: Optional[KingToken] | None = None,
             enemy_combatant: Optional[CombatantToken] | None = None,
@@ -51,12 +53,21 @@ class AttackApprovalReport(OperationApprovalReport):
             exception: Optional[Exception] | None = None,
             benefit: Optional[int] | None = None,
     ):
-        super().__init__(exception=exception, permission=permission)
+        self._permission = permission
         self._attacker = attacker
         self._enemy_king = enemy_king
         self._enemy_combatant = enemy_combatant
         self._enemy_square = enemy_square
+        self._exception = exception
         self._benefit = benefit
+        
+    @property
+    def permission(self) -> AttackPermission:
+        return self._permission
+    
+    @property
+    def exception(self) -> Optional[Exception]:
+        return self._exception
     
     @property
     def attacker(self) -> Optional[Token]:
@@ -84,10 +95,10 @@ class AttackApprovalReport(OperationApprovalReport):
                 self._attacker is not None and
                 self._enemy_king is not None and
                 self._enemy_square is not None and
-                self.enemy_king.current_position == self._enemy_square.coord and
                 self._enemy_combatant is None and
-                self.exception is None and
-                super().is_granted
+                self._exception is None and
+                self.enemy_king.current_position == self._enemy_square.coord and
+                self._permission == AttackPermission.KING_ATTACK_GRANTED
         )
     
     @property
@@ -96,10 +107,10 @@ class AttackApprovalReport(OperationApprovalReport):
                 self._attacker is not None and
                 self._enemy_combatant is not None and
                 self._enemy_square is not None and
-                self.enemy_combatant.current_position == self._enemy_square.coord and
                 self._enemy_king is None and
                 self.exception is None and
-                super().is_granted
+                self.enemy_combatant.current_position == self._enemy_square.coord and
+                self._permission == AttackPermission.COMBATANT_ATTACK_GRANTED
         )
     
     @property
@@ -122,8 +133,8 @@ class AttackApprovalReport(OperationApprovalReport):
             attacker=attacker,
             enemy_king=enemy_king,
             enemy_square=enemy_square,
-            permission=Permission.GRANTED,
             benefit=benefit,
+            permission=AttackPermission.KING_ATTACK_GRANTED
         )
     
     @classmethod
@@ -138,15 +149,15 @@ class AttackApprovalReport(OperationApprovalReport):
             attacker=attacker,
             enemy_combatant=enemy_combatant,
             enemy_square=enemy_square,
-            permission=Permission.GRANTED,
             benefit=benefit,
+            permission=AttackPermission.COMBATANT_ATTACK_GRANTED
         )
     
     @classmethod
     def deny(cls, exception: Exception) -> AttackApprovalReport:
         return cls(
             exception=exception,
-            permission=Permission.DENIED,
+            permission=AttackPermission.DENIED,
         )
 
     

@@ -14,3 +14,4 @@ version: 1.0.1
 
 # Modules
 from .report import AttackApprovalReport
+from .state import AttackPermission
