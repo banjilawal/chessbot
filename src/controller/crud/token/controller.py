@@ -11,10 +11,10 @@ from __future__ import annotations
 
 from controller import CrudController
 from deleter import TokenDeleter
-from model import Query, Token, TokenQuery
+from model import Token
 from popper import TokenPopper
 from pusher import TokenPusher
-from request import DeletionRequest, PopRequest, PushRequest, SearchRequest
+from authorization.request import DeletionRequest, PopRequest, PushRequest, SearchRequest
 from result import DeletionResult, InsertionResult, SearchResult
 from searcher import TokenSearcher
 from util import LoggingLevelRouter

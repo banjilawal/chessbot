@@ -13,8 +13,7 @@ from abc import abstractmethod
 from typing import Generic, TypeVar
 
 from controller import Controller
-from model import Query
-from request import DeletionRequest, PopRequest, PushRequest
+from authorization.request import DeletionRequest, PopRequest, PushRequest
 from result import DeletionResult, InsertionResult, SearchResult
 from util import LoggingLevelRouter
 

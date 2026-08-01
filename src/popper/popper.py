@@ -12,7 +12,7 @@ from __future__ import annotations
 from abc import ABC, abstractmethod
 from typing import Generic, TypeVar
 
-from request import PopRequest
+from authorization.request import PopRequest
 from result import DeletionResult
 from util import LoggingLevelRouter
 

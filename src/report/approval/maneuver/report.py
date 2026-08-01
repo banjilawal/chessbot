@@ -1,7 +1,7 @@
-# src/report/approval/promote/report.py
+# src/report/approval/maneuver/report.py
 
 """
-Module: report.approval.promote.report
+Module: report.approval.maneuver.report
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

@@ -13,7 +13,7 @@ from typing import Type
 
 from bootstrapper import RequestBootstrapper
 from err import PushRequestNullException, PushPermitterBootstrapperException
-from request import PushRequest
+from authorization.request import PushRequest
 from result import ValidationResult
 from util import LoggingLevelRouter
 

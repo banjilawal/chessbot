@@ -11,14 +11,14 @@ from __future__ import annotations
 
 from typing import Generic, Optional, TypeVar
 
-from model import StateModel
+from model import Element, StateModel
 from node import DiscoveryStatus
 from stack import EdgeStackService
 
 T = TypeVar("T")
 
 class Node(StateModel, Generic[T]):
-    _element: T
+    _element: Element
     _priority: Optional[int]
     _predecessor:Optional[Node[T]]
     _incoming_edges: EdgeStackService
@@ -28,20 +28,20 @@ class Node(StateModel, Generic[T]):
     
     def __init__(
             self,
-            element: T,
-            incoming_edges: EdgeStackService | None = EdgeStackService(),
-            outgoing_edges: EdgeStackService | None = EdgeStackService(),
+            element: element,
+            incoming_edges: Optional[EdgeStackService]| None = None,
+            outgoing_edges: Optional[EdgeStackService] | None = None,
     ):
         self._element = element
-        self._incoming_edges = incoming_edges
-        self._outgoing_edges = outgoing_edges
+        self._incoming_edges = incoming_edges or EdgeStackService()
+        self._outgoing_edges = outgoing_edges or EdgeStackService()
         
         self._priority = None
         self._predecessor = None
         self._discovery_status = DiscoveryStatus.UNKNOWN
         
     @property
-    def element(self) -> T:
+    def element(self) -> Element:
         return self._element
     
     @property

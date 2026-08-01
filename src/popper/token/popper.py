@@ -11,9 +11,9 @@ from __future__ import annotations
 
 from err import TokenPopperException
 from model import Token
-from permitter import TokenPopPermitter
+from authorization.permitter import TokenPopPermitter
 from popper import Popper
-from request import PopRequest
+from authorization.request import PopRequest
 from result import DeletionResult, MethodResultType
 from stack import TokenStackState
 from util import LoggingLevelRouter

@@ -12,8 +12,8 @@ from __future__ import annotations
 from deleter import Deleter
 from err import TokenDeleterException
 from model import Token
-from permitter import TokenDeletionPermitter
-from request import DeletionRequest
+from authorization.permitter import TokenDeletionPermitter
+from authorization.request import DeletionRequest
 from result import DeletionResult, MethodResultType
 from stack import TokenStackState
 from util import LoggingLevelRouter

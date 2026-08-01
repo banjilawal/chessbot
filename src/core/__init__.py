@@ -10,7 +10,6 @@ version: 1.0.1
 # =========== CORE PACKAGE ===========#
 
 # Packages
-from .adjudcator import *
 from .certifier import *
 
 # Modules

@@ -10,8 +10,8 @@ version: 1.0.1
 from __future__ import annotations
 
 from err import TokenSearcherException
-from permitter import TokenSearchPermitter
-from request import SearchRequest
+from authorization.permitter import TokenSearchPermitter
+from authorization.request import SearchRequest
 from result import SearchResult
 from route import TokenSearchRouter
 from util import LoggingLevelRouter

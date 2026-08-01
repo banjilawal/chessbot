@@ -14,7 +14,7 @@ from blueprint import Blueprint
 from err import IdentityServiceException
 from model import IdentityRegister
 from result import ValidationResult
-from core.adjudcator import BlueprintIdExtractor
+from authorization.adjudcator import BlueprintIdExtractor
 from util import IdFactory, LoggingLevelRouter
 from validator import IdentityRegisterCertifier, NameValidator, NumberValidator
 

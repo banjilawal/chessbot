@@ -14,7 +14,7 @@ from typing import cast
 
 from err import PawnPromoterException
 from model import PawnToken, PromotionState, Rank
-from permitter import PromotionPermitter
+from authorization.permitter import PromotionPermitter
 from report import PromotionApprovalReport
 from result import MethodResultType, UpdateResult
 from util import LoggingLevelRouter

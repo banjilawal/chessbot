@@ -13,7 +13,7 @@ from typing import Type
 
 from bootstrapper import RequestBootstrapper
 from err import DeletionRequestNullException, DeletionPermitterBootstrapperException
-from request import DeletionRequest
+from authorization.request import DeletionRequest
 from result import ValidationResult
 from util import LoggingLevelRouter
 

@@ -11,9 +11,9 @@ from __future__ import annotations
 
 from err import TokenPusherException
 from model import Token
-from permitter import TokenPushPermitter
+from authorization.permitter import TokenPushPermitter
 from pusher import Pusher
-from request import PushRequest
+from authorization.request import PushRequest
 from result import InsertionResult, MethodResultType
 from stack import TokenStackService, TokenStackState
 from util import IdFactory, LoggingLevelRouter

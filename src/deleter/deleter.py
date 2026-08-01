@@ -10,7 +10,7 @@ version: 1.0.1
 from abc import ABC, abstractmethod
 from typing import Generic, TypeVar
 
-from request import DeletionRequest
+from authorization.request import DeletionRequest
 from result import DeletionResult
 from util import LoggingLevelRouter
 

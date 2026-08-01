@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Generic, TypeVar
 
-from permitter import Permitter
+from authorization.permitter import Permitter
 from toolkit import Toolkit
 
 P = TypeVar("P", bound=Permitter)

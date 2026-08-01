@@ -19,7 +19,7 @@ from err import (
     TokenNullException
 )
 from model import Team, Token
-from core.adjudcator import BlueprintHomeSquareExtractor, BlueprintRankExtractor
+from authorization.adjudcator import BlueprintHomeSquareExtractor, BlueprintRankExtractor
 from toolkit import StateModelToolkit
 from validator import BoardValidator, TeamValidator
 

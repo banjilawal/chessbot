@@ -10,6 +10,7 @@ version: 1.0.1
 # =========== REPORT.APPROVAL PACKAGE ===========#
 
 # Packages
+from .attack import *
 from .deletion import *
 from .destination import *
 from .maneuver import *

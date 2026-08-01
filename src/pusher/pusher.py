@@ -10,7 +10,7 @@ version: 1.0.1
 from abc import ABC, abstractmethod
 from typing import Generic, TypeVar
 
-from request import PushRequest
+from authorization.request import PushRequest
 from result import InsertionResult
 from util import LoggingLevelRouter
 
