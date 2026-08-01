@@ -1,7 +1,7 @@
-# src/validator/model/state/token/validator.py
+# src/assurance/validator/model/state/token/validator.py
 
 """
-Module: validator.model.state.token.operation
+Module: assurance.validator.model.state.token.operation
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

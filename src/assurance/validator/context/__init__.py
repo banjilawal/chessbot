@@ -1,13 +1,13 @@
-# src/validator/context/__init__.py
+# src/assurance/validator/context/__init__.py
 
 """
-Module: validator.context.__init__
+Module: assurance.validator.context.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
 """
 
-# =========== VALIDATOR.CONTEXT PACKAGE ===========#
+# =========== ASSURANCE.VALIDATOR.CONTEXT PACKAGE ===========#
 
 # Packages
 from .arena import *

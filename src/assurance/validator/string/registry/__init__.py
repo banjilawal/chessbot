@@ -1,13 +1,13 @@
-# src/validator/string/registry/__init__.py
+# src/assurance/validator/string/registry/__init__.py
 
 """
-Module: validator.string.registry.__init__
+Module: assurance.validator.string.registry.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
 """
 
-# =========== VALIDATOR.STRING.REGISTRY PACKAGE ===========#
+# =========== ASSURANCE.VALIDATOR.STRING.REGISTRY PACKAGE ===========#
 
 # Packages
 

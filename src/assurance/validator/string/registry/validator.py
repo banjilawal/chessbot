@@ -1,7 +1,7 @@
-# src/validator/string/registry/validator.py
+# src/assurance/validator/string/registry/validator.py
 
 """
-Module: validator.string.registry.validator
+Module: assurance.validator.string.registry.validator
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

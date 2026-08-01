@@ -1,7 +1,7 @@
-# src/validator/register/vector/validator.py
+# src/assurance/validator/register/vector/validator.py
 
 """
-Module: validator.register.vector.operation
+Module: assurance.validator.register.vector.operation
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

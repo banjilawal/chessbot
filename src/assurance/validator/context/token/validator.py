@@ -1,7 +1,7 @@
-# src/validator/context/token/validator.py
+# src/assurance/validator/context/token/validator.py
 
 """
-Module: validator.context.token.validator
+Module: assurance.validator.context.token.validator
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

@@ -1,14 +1,14 @@
-# src/validator/__init__.py
+# src/assurance/validator/__init__.py
 
 """
-Module: validator.__init__
+Module: assurance.validator.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
 """
 
 
-# =========== VALIDATOR PACKAGE ===========#
+# =========== ASSURANCE.VALIDATOR PACKAGE ===========#
 
 # Packages
 from .context import *

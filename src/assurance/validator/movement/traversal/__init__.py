@@ -1,4 +1,4 @@
-# src/err/validator/movement/traversal/__init__.py
+# src/err/assurance/validator/movement/traversal/__init__.py
 
 """
 Module: err.validator.movement.traversal.__init__

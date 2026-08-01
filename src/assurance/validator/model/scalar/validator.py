@@ -1,7 +1,7 @@
-# src/validator/model/scalar/validator.py
+# src/assurance/validator/model/scalar/validator.py
 
 """
-Module: validator.model.scalar.operation
+Module: assurance.validator.model.scalar.operation
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

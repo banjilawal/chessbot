@@ -1,4 +1,4 @@
-# src/err/validator/movement/offset/pawn/maneuver/developed/exception.py
+# src/err/assurance/validator/movement/offset/pawn/maneuver/developed/exception.py
 
 """
 Module: err.validator.movement.offset.pawn.maneuver.developed.exception

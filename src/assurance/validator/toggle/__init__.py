@@ -1,13 +1,13 @@
-# src/validator/selector/__init__.py
+# src/assurance/validator/selector/__init__.py
 
 """
-Module: validator.selector.__init__
+Module: assurance.validator.selector.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
 """
 
-# =========== VALIDATOR.SELECTOR PACKAGE ===========#
+# =========== ASSURANCE.VALIDATOR.SELECTOR PACKAGE ===========#
 
 # Packages
 from .orientation import *

@@ -1,13 +1,13 @@
-# src/validator/model/coord/__init__.py
+# src/assurance/validator/model/coord/__init__.py
 
 """
-Module: validator.model.coord.__init__
+Module: assurance.validator.model.coord.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
 """
 
-# =========== VALIDATOR.MODEL.COORD PACKAGE ===========#
+# =========== ASSURANCE.VALIDATOR.MODEL.COORD PACKAGE ===========#
 
 # Packages
 

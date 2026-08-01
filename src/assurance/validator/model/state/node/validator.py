@@ -1,7 +1,7 @@
-# src/validator/model/state/node/validator.py
+# src/assurance/validator/model/state/node/validator.py
 
 """
-Module: validator.model.state.node.operation
+Module: assurance.validator.model.state.node.operation
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

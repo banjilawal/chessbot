@@ -1,7 +1,7 @@
-# src/validator/validator.py
+# src/assurance/validator/validator.py
 
 """
-Module: validator.validator
+Module: assurance.validator.validator
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

@@ -1,4 +1,4 @@
-# src/err/validator/movement/offset/__init__.py
+# src/err/assurance/validator/movement/offset/__init__.py
 
 """
 Module: err.validator.movement.offset.__init__

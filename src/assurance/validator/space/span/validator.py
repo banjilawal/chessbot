@@ -1,7 +1,7 @@
-# src/validator/space/span/validator.py
+# src/assurance/validator/space/span/validator.py
 
 """
-Module: validator.space.span.validator
+Module: assurance.validator.space.span.validator
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

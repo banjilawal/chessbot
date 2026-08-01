@@ -1,4 +1,4 @@
-# src/err/validator/movement/traversal/bishop/exception.py
+# src/err/assurance/validator/movement/traversal/bishop/exception.py
 
 """
 Module: err.validator.movement.traversal.bishop.exception

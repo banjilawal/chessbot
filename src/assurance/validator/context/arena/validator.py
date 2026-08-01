@@ -1,7 +1,7 @@
-# src/validator/context/arena/validator.py
+# src/assurance/validator/context/arena/validator.py
 
 """
-Module: validator.context.arena.validator
+Module: assurance.validator.context.arena.validator
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

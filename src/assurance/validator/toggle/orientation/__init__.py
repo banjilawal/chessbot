@@ -1,13 +1,13 @@
-# src/validator/model/register/__init__.py
+# src/assurance/validator/model/register/__init__.py
 
 """
-Module: validator.model.register.__init__
+Module: assurance.validator.model.register.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
 """
 
-# =========== VALIDATOR.MODEL.REGISTER PACKAGE ===========#
+# =========== ASSURANCE.VALIDATOR.MODEL.REGISTER PACKAGE ===========#
 
 # Packages
 

@@ -1,13 +1,13 @@
-# src/validator/model/path/__init__.py
+# src/assurance/validator/model/path/__init__.py
 
 """
-Module: validator.model.path.__init__
+Module: assurance.validator.model.path.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
 """
 
-# =========== VALIDATOR.MODEL.PATH PACKAGE ===========#
+# =========== ASSURANCE.VALIDATOR.MODEL.PATH PACKAGE ===========#
 
 # Packages
 

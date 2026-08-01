@@ -1,7 +1,7 @@
-# src/validator/model/rank/validator.py
+# src/assurance/validator/model/rank/validator.py
 
 """
-Module: validator.model.rank.operation
+Module: assurance.validator.model.rank.operation
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

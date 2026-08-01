@@ -1,4 +1,4 @@
-# src/err/validator/movement/__init__.py
+# src/err/assurance/validator/movement/__init__.py
 
 """
 Module: err.validator.movement.__init__

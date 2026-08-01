@@ -1,7 +1,7 @@
-# src/validator/model/path/validator.py
+# src/assurance/validator/model/path/validator.py
 
 """
-Module: validator.model.path.operation
+Module: assurance.validator.model.path.operation
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

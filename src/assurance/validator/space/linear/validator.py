@@ -1,7 +1,7 @@
-# src/validator/space/linear/validator.py
+# src/assurance/validator/space/linear/validator.py
 
 """
-Module: validator.space.linear.validator
+Module: assurance.validator.space.linear.validator
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

@@ -1,4 +1,4 @@
-# src/err/validator/movement/offset/king/exception.py
+# src/err/assurance/validator/movement/offset/king/exception.py
 
 """
 Module: err.validator.movement.offset.king.exception

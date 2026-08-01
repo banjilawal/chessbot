@@ -1,7 +1,7 @@
-# src/validator/model/state/edge/validator.py
+# src/assurance/validator/model/state/edge/validator.py
 
 """
-Module: validator.model.state.edge.operation
+Module: assurance.validator.model.state.edge.operation
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

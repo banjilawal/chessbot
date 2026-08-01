@@ -1,7 +1,7 @@
-# src/validator/query/token/validator.py
+# src/assurance/validator/query/token/validator.py
 
 """
-Module: validator.query.token.validator
+Module: assurance.validator.query.token.validator
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

@@ -1,7 +1,7 @@
-# src/validator/context/home/validator.py
+# src/assurance/validator/context/home/validator.py
 
 """
-Module: validator.context.home.validator
+Module: assurance.validator.context.home.validator
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

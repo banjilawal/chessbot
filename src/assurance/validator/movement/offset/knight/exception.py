@@ -1,4 +1,4 @@
-# src/err/validator/movement/offset/knight/exception.py
+# src/err/assurance/validator/movement/offset/knight/exception.py
 
 """
 Module: err.validator.movement.offset.knight.exception

@@ -1,7 +1,7 @@
-# src/validator/context/rank/validator.py
+# src/assurance/validator/context/rank/validator.py
 
 """
-Module: validator.context.rank.validator
+Module: assurance.validator.context.rank.validator
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

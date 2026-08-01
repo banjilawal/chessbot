@@ -1,7 +1,7 @@
-# src/validator/context/team/validator.py
+# src/assurance/validator/context/team/validator.py
 
 """
-Module: validator.context.team.validator
+Module: assurance.validator.context.team.validator
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

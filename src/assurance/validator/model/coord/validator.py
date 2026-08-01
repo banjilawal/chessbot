@@ -1,7 +1,7 @@
-# src/validator/model/coord/validator.py
+# src/assurance/validator/model/coord/validator.py
 
 """
-Module: validator.model.coord.operation
+Module: assurance.validator.model.coord.operation
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

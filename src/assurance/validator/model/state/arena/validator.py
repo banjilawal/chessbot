@@ -1,7 +1,7 @@
-# src/validator/model/state/arena/validator.py
+# src/assurance/validator/model/state/arena/validator.py
 
 """
-Module: validator.model.state.arena.operation
+Module: assurance.validator.model.state.arena.operation
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

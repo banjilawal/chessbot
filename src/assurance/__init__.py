@@ -10,6 +10,8 @@ version: 1.0.1
 # =========== ASSURANCE PACKAGE ===========#
 
 # Packages
+from .auditor import *
 from .certifier import *
+from .validator import *
 
 # Modules

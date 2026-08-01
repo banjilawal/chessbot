@@ -1,4 +1,4 @@
-# src/err/validator/movement/traversal/queen/exception.py
+# src/err/assurance/validator/movement/traversal/queen/exception.py
 
 """
 Module: err.validator.movement.traversal.queen.exception

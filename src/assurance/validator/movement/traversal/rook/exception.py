@@ -1,4 +1,4 @@
-# src/err/validator/movement/traversal/rook/exception.py
+# src/err/assurance/validator/movement/traversal/rook/exception.py
 
 """
 Module: err.validator.movement.traversal.rook.exception

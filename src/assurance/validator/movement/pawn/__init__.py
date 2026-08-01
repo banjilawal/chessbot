@@ -1,4 +1,4 @@
-# src/err/validator/movement/pawn/__init__.py
+# src/err/assurance/validator/movement/pawn/__init__.py
 
 """
 Module: err.validator.movement.pawn.__init__

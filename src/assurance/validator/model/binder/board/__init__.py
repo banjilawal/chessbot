@@ -1,13 +1,13 @@
-# src/validator/model/binder/board/__init__.py
+# src/assurance/validator/model/binder/board/__init__.py
 
 """
-Module: validator.model.binder.board.__init__
+Module: assurance.validator.model.binder.board.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
 """
 
-# =========== VALIDATOR.MODEL.BINDER.BOARD PACKAGE ===========#
+# =========== ASSURANCE.VALIDATOR.MODEL.BINDER.BOARD PACKAGE ===========#
 
 # Packages
 

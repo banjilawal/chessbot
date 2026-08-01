@@ -1,13 +1,13 @@
-# src/validator/context/rank/__init__.py
+# src/assurance/validator/context/rank/__init__.py
 
 """
-Module: validator.context.rank.__init__
+Module: assurance.validator.context.rank.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
 """
 
-# =========== VALIDATOR.CONTEXT.RANK PACKAGE ===========#
+# =========== ASSURANCE.VALIDATOR.CONTEXT.RANK PACKAGE ===========#
 
 # Packages
 

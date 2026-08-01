@@ -1,4 +1,4 @@
-# src/err/validator/movement/exception.py
+# src/err/assurance/validator/movement/exception.py
 
 """
 Module: err.validator.movement.exception
