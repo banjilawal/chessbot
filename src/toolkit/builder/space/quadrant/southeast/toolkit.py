@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from assembler import SoutheastQuadrantAssembler
+from fabrication.assembler import SoutheastQuadrantAssembler
 from assurance.certifier import SoutheastQuadrantRootCertifier
 from geometry.space import SoutheastQuadrant
 from toolkit import QuadrantBuilderToolkit

@@ -1,6 +1,6 @@
 from typing import List
 
-from builder import Board
+from fabrication.builder import Board
 from logic.competitor.commander import CyberneticCommander
 from logic.engine.scout.scout import Scout
 from logic.engine.scout.report import ScoutReport

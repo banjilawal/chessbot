@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from assembler import ArenaAssembler
+from fabrication.assembler import ArenaAssembler
 from model import Arena
 from assurance.certifier import ArenaRootCertifier
 from toolkit import ModelBuilderToolkit

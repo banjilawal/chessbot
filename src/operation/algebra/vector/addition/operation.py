@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Optional
 
-from builder import RegisterBuilder, VectorToggleRegisterBuilder
+from fabrication.builder import RegisterBuilder, VectorToggleRegisterBuilder
 from operation import Operation
 from selector import VectorToggle
 

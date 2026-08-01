@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from assembler import RankAssembler
+from fabrication.assembler import RankAssembler
 from model import Rank
 from assurance.certifier import RankRootCertifier
 from toolkit import ModelBuilderToolkit

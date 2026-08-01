@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Generic, TypeVar, cast
 
-from assembler import QuadrantAssembler
+from fabrication.assembler import QuadrantAssembler
 from assurance.certifier import QuadrantRootCertifier
 from toolkit import SpaceBuilderToolkit
 

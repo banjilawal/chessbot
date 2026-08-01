@@ -9,7 +9,7 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from builder import CoordBuilder
+from fabrication.builder import CoordBuilder
 from model import Coord
 from suite import Suite
 from toolkit import CoordToolkit

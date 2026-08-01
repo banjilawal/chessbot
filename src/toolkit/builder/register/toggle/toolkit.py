@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from assembler import VectorToggleRegisterAssembler
+from fabrication.assembler import VectorToggleRegisterAssembler
 from register import VectorToggleRegister
 from assurance.certifier import VectorToggleRegisterCertifier
 from toolkit import RegisterBuilderToolkit

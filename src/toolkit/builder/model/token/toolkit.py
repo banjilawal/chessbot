@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from assembler import TokenAssembler
+from fabrication.assembler import TokenAssembler
 from model import Token
 from assurance.certifier import TokenRootCertifier
 from toolkit import ModelBuilderToolkit

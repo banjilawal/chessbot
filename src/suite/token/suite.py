@@ -10,7 +10,7 @@ version: 1.0.1
 from __future__ import annotations
 
 from analyzer import FriendshipAnalyzer, TokenReadinessAnalyzer
-from builder import TokenBuilder
+from fabrication.builder import TokenBuilder
 from detection import TokenCollisionDetector, TokenHomeDetector
 from model import Token
 from operation import TokenHomePlacer, TokenPositionController

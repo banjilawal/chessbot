@@ -38,7 +38,8 @@ class Auditor(ABC, Generic[T]):
     super Class:
     """
     
-    def __init__(self,):
+    def __init__(self):
+        pass
 
 
     @abstractmethod

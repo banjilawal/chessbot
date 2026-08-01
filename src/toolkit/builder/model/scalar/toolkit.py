@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from assembler import ScalarAssembler
+from fabrication.assembler import ScalarAssembler
 from model import Scalar
 from assurance.certifier import ScalarRootCertifier
 from toolkit import ModelBuilderToolkit

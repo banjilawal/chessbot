@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Generic, TypeVar, cast
 
-from assembler import RegisterAssembler
+from fabrication.assembler import RegisterAssembler
 from assurance.certifier import RegisterCertifier
 from toolkit import BuilderToolkit
 

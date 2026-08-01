@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from assembler import SquareAssembler
+from fabrication.assembler import SquareAssembler
 from model import Square
 from assurance.certifier import SquareRootCertifier
 from toolkit import ModelBuilderToolkit

@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Generic, TypeVar, cast
 
-from assembler import SpaceAssembler
+from fabrication.assembler import SpaceAssembler
 from assurance.certifier import SpaceCertifier
 from toolkit import BuilderToolkit
 

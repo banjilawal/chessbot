@@ -9,7 +9,7 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from builder import ScalarBuilder
+from fabrication.builder import ScalarBuilder
 from model import Scalar
 from toolkit import Suite, ScalarToolkit
 from assurance.validator import ScalarValidator

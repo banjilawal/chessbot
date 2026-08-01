@@ -9,7 +9,7 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from builder import SquareBuilder
+from fabrication.builder import SquareBuilder
 from model import SquareRegister
 from suite import Suite
 from toolkit import SquareToolkit

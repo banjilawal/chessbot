@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from assembler import BoardAssembler
+from fabrication.assembler import BoardAssembler
 from model import Board
 from assurance.certifier import BoardRootCertifier
 from toolkit import ModelBuilderToolkit

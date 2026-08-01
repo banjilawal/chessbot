@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from assembler import CoordAssembler
+from fabrication.assembler import CoordAssembler
 from model import Coord
 from assurance.certifier import CoordRootCertifier
 from toolkit import ModelBuilderToolkit

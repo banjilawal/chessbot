@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 
-from builder import Builder
+from fabrication.builder import Builder
 from model import Register
 from toolkit import Suite, Toolkit
 from assurance.validator import Validator

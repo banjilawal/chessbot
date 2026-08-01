@@ -12,7 +12,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 
 from analyzer import FriendshipAnalyzer, TokenReadinessAnalyzer
-from builder import TokenBuilder
+from fabrication.builder import TokenBuilder
 from detection import TokenHomeDetector, TokenCollisionDetector
 from operation import TokenHomePlacer, TokenPositionController
 from operation.promotion import PawnPromoter

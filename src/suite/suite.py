@@ -12,7 +12,7 @@ from __future__ import annotations
 from abc import ABC
 from typing import Generic, TypeVar
 
-from builder import Builder
+from fabrication.builder import Builder
 from toolkit import Toolkit
 from assurance.validator import Validator
 

@@ -9,7 +9,7 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from builder import VectorBuilder
+from fabrication.builder import VectorBuilder
 from model import Vector
 from suite import Suite
 from toolkit import VectorToolkit

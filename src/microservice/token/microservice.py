@@ -9,7 +9,7 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from builder import TokenBuilder
+from fabrication.builder import TokenBuilder
 from controller import TokenController
 from microservice import CoordService
 from model import Coord, Token

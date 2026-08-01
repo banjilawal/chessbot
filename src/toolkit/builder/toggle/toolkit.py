@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Generic, TypeVar, cast
 
-from assembler import ToggleAssembler
+from fabrication.assembler import ToggleAssembler
 from assurance.certifier import ToggleCertifier
 from toolkit import BuilderToolkit
 

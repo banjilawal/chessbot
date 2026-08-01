@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Any, cast
 
-from factory import ToolkitFactory
+from fabrication.factory import ToolkitFactory
 from model import Token
 from toolkit import TokenToolkit
 from database import CoordDatabase

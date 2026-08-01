@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import cast
 
-from assembler import QuadrantReservoirAssembler
+from fabrication.assembler import QuadrantReservoirAssembler
 from geometry.registry import QuadrantReservoir
 from assurance.certifier import QuadrantReservoirRootCertifier
 from toolkit import SpaceReservoirBuilderToolkit

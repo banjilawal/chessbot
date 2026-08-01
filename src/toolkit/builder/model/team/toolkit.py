@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from assembler import TeamAssembler
+from fabrication.assembler import TeamAssembler
 from model import Team
 from assurance.certifier import TeamRootCertifier
 from toolkit import ModelBuilderToolkit

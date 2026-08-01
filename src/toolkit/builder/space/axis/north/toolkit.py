@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from assembler import NorthAxisAssembler
+from fabrication.assembler import NorthAxisAssembler
 from assurance.certifier import NorthAxisRootCertifier
 from geometry.space import NorthAxis
 from toolkit import AxisBuilderToolkit

@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from assembler import NumberRegisterAssembler
+from fabrication.assembler import NumberRegisterAssembler
 from register import NumberRegister
 from assurance.certifier import NumberRegisterRootCertifier
 from toolkit import RegisterBuilderToolkit
