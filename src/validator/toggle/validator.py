@@ -13,7 +13,7 @@ from abc import abstractmethod
 from typing import Any, Generic, TypeVar, cast
 
 
-from root import ToggleRootCertifier
+from core.certifier import ToggleCertifier
 from result import ValidationResult
 from toolkit import ToggleToolkit
 
@@ -47,7 +47,7 @@ class ToggleValidator(Validator, Generic[T]):
     def __init__(
             self,
             toolkit: ToggleToolkit[T],
-            root_certifier: ToggleRootCertifier[T],
+            root_certifier: ToggleCertifier[T],
     ):
         super().__init__(toolk=toolkit, root_certifier=root_certifier)
         
@@ -57,8 +57,8 @@ class ToggleValidator(Validator, Generic[T]):
         return cast(ToggleToolkit[T], self.toolkit)
     
     @property
-    def root_certifier(self) -> ToggleRootCertifier[T]:
-        return cast(ToggleRootCertifier[T], self.root_certifier)
+    def root_certifier(self) -> ToggleCertifier[T]:
+        return cast(ToggleCertifier[T], self.root_certifier)
     
     @abstractmethod
     def execute(self, candidate: Any) -> ValidationResult[T]:

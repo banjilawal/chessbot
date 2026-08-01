@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Generic, TypeVar, cast
 
 from assembler import SpaceReservoirAssembler
-from root import SpaceReservoirRootCertifier
+from core.certifier import SpaceReservoirCertifier
 
 from toolkit import BuilderToolkit
 
@@ -40,7 +40,7 @@ class SpaceReservoirBuilderToolkit(BuilderToolkit, Generic[T]):
     def __init__(
             self,
             assembler: SpaceReservoirAssembler[T],
-            root_certifier: SpaceReservoirRootCertifier[T],
+            root_certifier: SpaceReservoirCertifier[T],
     ):
         """
         Args:
@@ -55,5 +55,5 @@ class SpaceReservoirBuilderToolkit(BuilderToolkit, Generic[T]):
         return cast(SpaceReservoirAssembler[T], super()._assembler)
         
     @property
-    def root_certifier(self) -> SpaceReservoirRootCertifier[T]:
-        return cast(SpaceReservoirRootCertifier[T], super()._root_certifier)
+    def root_certifier(self) -> SpaceReservoirCertifier[T]:
+        return cast(SpaceReservoirCertifier[T], super()._root_certifier)

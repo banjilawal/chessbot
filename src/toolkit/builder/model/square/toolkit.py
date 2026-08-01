@@ -13,7 +13,7 @@ from typing import Optional, cast
 
 from assembler import SquareAssembler
 from model import Square
-from root import SquareRootCertifier
+from core.certifier import SquareRootCertifier
 from toolkit import ModelBuilderToolkit
 
 

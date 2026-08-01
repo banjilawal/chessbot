@@ -12,15 +12,14 @@ from __future__ import annotations
 from typing import cast
 
 from context import TokenContext
-from detector.token import TokenCollisionDetector
 from err import TokenSearchPermitterException
 from model import Token
-from permitter import SearchPermitter, RankSlotPermitter
+from permitter import SearchPermitter
 from report import SearchApprovalReport
-from request import SearchRequest, RankSlotRequest
+from request import SearchRequest
 from stack import TokenStackService
-from tester import TokenSearchRequestTester
-from util import IdFactory, LoggingLevelRouter
+from core.adjudcator import TokenSearchRequestTester
+from util import LoggingLevelRouter
 
 
 class TokenSearchPermitter(SearchPermitter[Token]):

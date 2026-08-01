@@ -14,7 +14,7 @@ from typing import Any, cast
 from err import VectorRegisterValidatorException
 from register import VectorRegister
 from result import ValidationResult
-from root import VectorRegisterRootCertifier
+from core.certifier import VectorRegisterCertifier
 from util import LoggingLevelRouter
 from validator import RegisterValidator
 
@@ -42,13 +42,13 @@ class VectorRegisterValidator(RegisterValidator[VectorRegister]):
     
     def __init__(
             self,
-            root_certifier: VectorRegisterRootCertifier | None = VectorRegisterRootCertifier(),
+            root_certifier: VectorRegisterCertifier | None = VectorRegisterCertifier(),
     ):
         super().__init__(root_certifier=root_certifier)
         
     @property
-    def root_certifier(self) -> VectorRegisterRootCertifier:
-        return cast(VectorRegisterRootCertifier, self.root_certifier)
+    def root_certifier(self) -> VectorRegisterCertifier:
+        return cast(VectorRegisterCertifier, self.root_certifier)
     
 
     @LoggingLevelRouter.monitor

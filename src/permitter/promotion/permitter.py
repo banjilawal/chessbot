@@ -14,7 +14,7 @@ from err import PromotionPermitterException
 from permitter import Permitter
 from report import PromotionApprovalReport
 from request.promotion import PromotionRequest
-from tester import PromotionRequestTester
+from core.adjudcator import PromotionRequestTester
 from util import LoggingLevelRouter
 
 

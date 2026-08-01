@@ -15,7 +15,7 @@ from err import PoppingEmptyTokenStackException, TokenDeletePermitterException
 from report import DeletionApprovalReport
 from request import DeletionRequest
 from stack import TokenStackService
-from tester import TokenDeletionRequestTester
+from core.adjudcator import TokenDeletionRequestTester
 from util import LoggingLevelRouter
 
 

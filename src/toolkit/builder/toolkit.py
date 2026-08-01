@@ -13,7 +13,7 @@ from typing import Generic, TypeVar
 
 from assembler import Assembler
 
-from root import RootCertifier
+from core.certifier import Certifier
 from toolkit import Toolkit
 
 T = TypeVar("T")
@@ -36,9 +36,9 @@ class BuilderToolkit(Toolkit, Generic[T]):
         Toolkit
     """
     _assembler: Assembler[T]
-    _root_certifier: RootCertifier[T]
+    _root_certifier: Certifier[T]
     
-    def __init__(self, assembler: Assembler[T], root_certifier: RootCertifier[T],):
+    def __init__(self, assembler: Assembler[T], root_certifier: Certifier[T], ):
         """
         Args:
             assembler: Assembler[T],
@@ -53,5 +53,5 @@ class BuilderToolkit(Toolkit, Generic[T]):
         return self._assembler
     
     @property
-    def root_certifier(self) -> RootCertifier[T]:
+    def root_certifier(self) -> Certifier[T]:
         return self._root_certifier

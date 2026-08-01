@@ -13,7 +13,7 @@ from typing import Optional, cast
 
 from assembler import TokenAssembler
 from model import Token
-from root import TokenRootCertifier
+from core.certifier import TokenRootCertifier
 from toolkit import ModelBuilderToolkit
 
 

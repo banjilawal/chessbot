@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Generic, TypeVar, cast
 
 from assembler import ToggleAssembler
-from root import ToggleRootCertifier
+from core.certifier import ToggleCertifier
 from toolkit import BuilderToolkit
 
 T = TypeVar("T", bound="Toggle")
@@ -38,7 +38,7 @@ class ToggleBuilderToolkit(BuilderToolkit, Generic[T]):
     def __init__(
             self,
             assembler: [ToggleAssembler[T]],
-            root_certifier: [ToggleRootCertifier[T]],
+            root_certifier: [ToggleCertifier[T]],
     ):
         """
         Args:
@@ -53,5 +53,5 @@ class ToggleBuilderToolkit(BuilderToolkit, Generic[T]):
         return cast([ToggleAssembler[T]], super()._assembler)
         
     @property
-    def root_certifier(self) -> [ToggleRootCertifier[T]]:
-        return cast([ToggleRootCertifier[T]], super()._root_certifier)
+    def root_certifier(self) -> [ToggleCertifier[T]]:
+        return cast([ToggleCertifier[T]], super()._root_certifier)

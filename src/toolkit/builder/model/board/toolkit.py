@@ -13,7 +13,7 @@ from typing import Optional, cast
 
 from assembler import BoardAssembler
 from model import Board
-from root import BoardRootCertifier
+from core.certifier import BoardRootCertifier
 from toolkit import ModelBuilderToolkit
 
 

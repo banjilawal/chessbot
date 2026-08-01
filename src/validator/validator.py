@@ -12,7 +12,7 @@ from __future__ import annotations
 from abc import ABC, abstractmethod
 from typing import Any, Generic, TypeVar
 
-from root import RootCertifier
+from core.certifier import Certifier
 from result import ValidationResult
 from util import LoggingLevelRouter
 
@@ -39,11 +39,11 @@ class Validator(ABC, Generic[T]):
         
     super Class:
     """
-    _root_certifier: RootCertifier[T]
+    _root_certifier: Certifier[T]
     
     def __init__(
             self,
-            root_certifier: RootCertifier[[T]],
+            root_certifier: Certifier[[T]],
     ):
         """
         Args:
@@ -52,7 +52,7 @@ class Validator(ABC, Generic[T]):
         self._root_certifier = root_certifier
         
     @property
-    def root_certifier(self) -> RootCertifier[T]:
+    def root_certifier(self) -> Certifier[T]:
         return self._root_certifier
 
     @abstractmethod

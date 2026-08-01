@@ -13,7 +13,7 @@ from typing import Optional, cast
 
 from assembler import CoordAssembler
 from model import Coord
-from root import CoordRootCertifier
+from core.certifier import CoordRootCertifier
 from toolkit import ModelBuilderToolkit
 
 

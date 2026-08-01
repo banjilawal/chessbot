@@ -14,12 +14,12 @@ from typing import cast
 from detector import SquareCollisionDetector
 from err import SquarePushPermitterException
 from model import Square
-from permitter import PushPermitter, RankSlotPermitter
+from permitter import PushPermitter
 from report import PushApprovalReport
-from request import PushRequest, RankSlotRequest
+from request import PushRequest
 from stack import SquareStackService
-from tester import SquarePushRequestTester
-from util import IdFactory, LoggingLevelRouter
+from core.adjudcator import SquarePushRequestTester
+from util import LoggingLevelRouter
 
 
 class SquarePushPermitter(PushPermitter[Square]):

@@ -13,7 +13,7 @@ from blueprint import WestAxisBlueprint
 
 from result import BuildResult
 from assembler import AxisAssembler
-from root import WestAxis
+from core.certifier import WestAxis
 from util import  LoggingLevelRouter
   
   

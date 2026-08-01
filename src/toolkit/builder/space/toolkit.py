@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Generic, TypeVar, cast
 
 from assembler import SpaceAssembler
-from root import SpaceRootCertifier
+from core.certifier import SpaceCertifier
 from toolkit import BuilderToolkit
 
 
@@ -39,7 +39,7 @@ class SpaceBuilderToolkit(BuilderToolkit, Generic[T]):
     def __init__(
             self,
             assembler: SpaceAssembler[T],
-            root_certifier: SpaceRootCertifier[T],
+            root_certifier: SpaceCertifier[T],
     ):
         """
         Args:
@@ -54,5 +54,5 @@ class SpaceBuilderToolkit(BuilderToolkit, Generic[T]):
         return cast(SpaceAssembler[T], super()._assembler)
         
     @property
-    def root_certifier(self) -> SpaceRootCertifier[T]:
-        return cast(SpaceRootCertifier[T], super()._root_certifier)
+    def root_certifier(self) -> SpaceCertifier[T]:
+        return cast(SpaceCertifier[T], super()._root_certifier)

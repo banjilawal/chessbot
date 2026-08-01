@@ -13,7 +13,7 @@ from typing import cast
 
 from assembler import AxisReservoirAssembler
 from geometry.registry import AxisReservoir
-from root import AxisReservoirRootCertifier
+from core.certifier import AxisReservoirRootCertifier
 from toolkit import SpaceReservoirBuilderToolkit
 
 

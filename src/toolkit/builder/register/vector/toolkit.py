@@ -13,7 +13,7 @@ from typing import Optional, cast
 
 from assembler import VectorRegisterAssembler
 from register import VectorRegister
-from root import VectorRegisterRootCertifier
+from core.certifier import VectorRegisterCertifier
 from toolkit import RegisterBuilderToolkit
 
 
@@ -39,8 +39,8 @@ class VectorRegisterBuilderToolkit(RegisterBuilderToolkit[VectorRegister]):
             self,
             assembler: Optional[VectorRegisterAssembler] |
                        None = VectorRegisterAssembler(),
-            root_certifier: Optional[VectorRegisterRootCertifier] |
-                            None = VectorRegisterRootCertifier(),
+            root_certifier: Optional[VectorRegisterCertifier] |
+                            None = VectorRegisterCertifier(),
     ):
         """
         Args:
@@ -54,6 +54,6 @@ class VectorRegisterBuilderToolkit(RegisterBuilderToolkit[VectorRegister]):
         return cast(VectorRegisterAssembler, super().assembler)
     
     @property
-    def root_certifier(self) -> VectorRegisterRootCertifier:
-        return cast(VectorRegisterRootCertifier, super().root_certifier)
+    def root_certifier(self) -> VectorRegisterCertifier:
+        return cast(VectorRegisterCertifier, super().root_certifier)
     

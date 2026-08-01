@@ -13,7 +13,7 @@ from typing import Optional, cast
 
 from assembler import NumberRegisterAssembler
 from register import NumberRegister
-from root import NumberRegisterRootCertifier
+from core.certifier import NumberRegisterRootCertifier
 from toolkit import RegisterBuilderToolkit
 
 

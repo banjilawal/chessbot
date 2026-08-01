@@ -8,14 +8,13 @@ version: 1.0.1
 """
 
 from __future__ import annotations
-import sys
-from typing import Any, Dict, cast
+from typing import Any, cast
 
 from blueprint import Blueprint
 from err import IdentityServiceException
 from model import IdentityRegister
 from result import ValidationResult
-from tester import BlueprintIdExtractor
+from core.adjudcator import BlueprintIdExtractor
 from util import IdFactory, LoggingLevelRouter
 from validator import IdentityRegisterCertifier, NameValidator, NumberValidator
 

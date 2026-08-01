@@ -13,7 +13,7 @@ from typing import Optional, cast
 
 from assembler import PlayerAssembler
 from model import Player
-from root import PlayerRootCertifier
+from core.certifier import PlayerRootCertifier
 from toolkit import ModelBuilderToolkit
 
 

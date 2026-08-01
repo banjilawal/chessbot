@@ -17,7 +17,7 @@ from err import (
     TokenAlreadyAtDestinationException
 )
 from model import Square, Token
-from report import RelationReport
+from report import DestinationApprovalReport, RelationReport
 from result import ValidationResult
 from util import LoggingLevelRouter
 
@@ -35,41 +35,25 @@ class DestinationCertifierBootstrapper:
         2.  Prevents visiting friendly squares.
 
     Attributes:
-        token: Token
-        destination: Square
         relation_analyzer: Optional[SquareTokenRelationAnalyzer]
         
     Provides:
         -   ddef execute(self,) -> ValidationResult[Square]:
 
     Super Class:
-        Validator
     """
-    
-    _token: Token
-    _destination: Square
     _relation_analyzer: Optional[SquareTokenRelationAnalyzer]
     
-    def __init__(
-            self,
-            token: Token,
-            destination: Square,
-            relation_analyzer: Optional[SquareTokenRelationAnalyzer] |
-                               None = SquareTokenRelationAnalyzer()
-    ):
+    def __init__(self, relation_analyzer: Optional[SquareTokenRelationAnalyzer] | None = None):
         """
         Args:
-            token: Token
-            destination: Square
             relation_analyzer: Optional[SquareTokenRelationAnalyzer]
         """
-        self._token = token
-        self._destination = destination
-        self._relation_analyzer = relation_analyzer
+        self._relation_analyzer = relation_analyzer or SquareTokenRelationAnalyzer()
         
 
     @LoggingLevelRouter.monitor
-    def execute(self,) -> ValidationResult[Square]:
+    def execute(self, token: Token, destination: Square) -> DestinationApprovalReport:
         """
         Makes sure a Token can travel to a destination.
 
@@ -95,13 +79,13 @@ class DestinationCertifierBootstrapper:
         
         # --- Run the relation analyzer. ---#
         relation_analysis_result = self._relation_analyzer.execute(
-            candidate_primary=self._destination,
-            candidate_satellite=self._token,
+            candidate_primary=destination,
+            candidate_satellite=token,
         )
         # Handle the case that, the relation_analysis is not completed.
         if relation_analysis_result.is_failure:
             # Send the exception chain on failure.
-            return ValidationResult.failure(
+            return DestinationApprovalReport.deny(
                 DestinationCertifierBootstrapperException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
@@ -119,7 +103,7 @@ class DestinationCertifierBootstrapper:
                 relation.registration_missing
         ):
             # Send the exception chain on failure.
-            return ValidationResult.failure(
+            return DestinationApprovalReport.deny(
                 DestinationCertifierBootstrapperException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
@@ -134,7 +118,7 @@ class DestinationCertifierBootstrapper:
         # Handle the case that, the token is already at the destination.
         if relation.fully_exists:
             # Send the exception chain on failure.
-            return ValidationResult.failure(
+            return DestinationApprovalReport.deny(
                 DestinationCertifierBootstrapperException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
@@ -147,10 +131,9 @@ class DestinationCertifierBootstrapper:
                 )
             )
         # Handle the case that, the destination is occupied by a friend.
-        occupant = self._destination.occupant
-        if self._token.is_enemy(occupant):
+        if token.is_friend(destination.occupant):
             # Send the exception chain on failure.
-            return ValidationResult.failure(
+            return DestinationApprovalReport.deny(
                 DestinationCertifierBootstrapperException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
@@ -165,4 +148,4 @@ class DestinationCertifierBootstrapper:
                 )
             )
         # --- Forward the work product to the caller. ---#
-        return ValidationResult.success(self._destination)
+        return DestinationApprovalReport.approve(visitor=token, destination=destination)

@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Optional, cast
 
 from assembler import NortheastQuadrantAssembler
-from root import NortheastQuadrantRootCertifier
+from core.certifier import NortheastQuadrantRootCertifier
 from geometry.space import NortheastQuadrant
 from toolkit import QuadrantBuilderToolkit
 

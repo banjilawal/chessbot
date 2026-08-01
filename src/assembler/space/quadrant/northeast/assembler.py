@@ -13,7 +13,7 @@ from blueprint import NortheastQuadrantBlueprint
 
 from result import BuildResult
 from assembler import QuadrantAssembler
-from root import NortheastQuadrant
+from core.certifier import NortheastQuadrant
 from util import  LoggingLevelRouter
   
   

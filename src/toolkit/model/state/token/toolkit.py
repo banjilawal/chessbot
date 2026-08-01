@@ -17,7 +17,7 @@ from carrier import TokenCarrier
 from detector import TokenHomeDetector
 from err import TokenBlueprintNullException, TokenCarrierNullException, TokenNullException
 from model import Token
-from tester import BlueprintHomeSquareExtractor, BlueprintRankExtractor
+from core.adjudcator import BlueprintHomeSquareExtractor, BlueprintRankExtractor
 from toolkit import StateModelToolkit
 from validator import TeamValidator
 
