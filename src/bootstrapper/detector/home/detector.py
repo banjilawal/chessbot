@@ -9,7 +9,7 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from typing import Optional, cast
+from typing import cast
 
 from bootstrapper import DetectorBootstrapper
 from context import TokenHomeContext
@@ -18,10 +18,10 @@ from err import (
     NoActiveTogglesException
 )
 from microservice import IdentityService
-from model import Board, HomeSquare, SquareContext, Token
+from model import HomeSquare, SquareContext
 from result import Result
 from util import LoggingLevelRouter
-from validator import BoardValidator, TokenValidator
+from assurance.validator import BoardValidator, TokenValidator
 
 
 class HomeDetectorBootstrapper(DetectorBootstrapper):

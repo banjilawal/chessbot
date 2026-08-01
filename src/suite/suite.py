@@ -14,7 +14,7 @@ from typing import Generic, TypeVar
 
 from builder import Builder
 from toolkit import Toolkit
-from validator import Validator
+from assurance.validator import Validator
 
 T = TypeVar("T")
 

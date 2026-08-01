@@ -19,7 +19,7 @@ from result import MethodResultType, ValidationResult
 from stack import TokenStackService
 from core.adjudicator import PushRequestAdjudicator
 from util import LoggingLevelRouter
-from validator import TokenValidator
+from assurance.validator import TokenValidator
 
 
 class TokenPushRequestAdjudicator(PushRequestAdjudicator):

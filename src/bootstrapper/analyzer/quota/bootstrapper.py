@@ -18,7 +18,7 @@ from report import RankQuotaReport
 from result import AnalysisResult, MethodResultType
 from stack import TokenStackService
 from util import LoggingLevelRouter
-from validator import RankValidator
+from assurance.validator import RankValidator
 
 
 class QuotaAnalyzerBootstrapper(AnalyzerBootstrapper):

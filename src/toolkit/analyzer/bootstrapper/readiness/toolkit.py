@@ -12,7 +12,7 @@ from __future__ import annotations
 from bootstrapper import CombatantReadinessAnalyzer, KingReadinessAnalyzer, ReadinessAnalyzerBootstrapper
 from err import TokenValidatorException
 from toolkit import AnalyzerBootstrapperToolkit
-from validator import TokenValidator
+from assurance.validator import TokenValidator
 
 
 class ReadinessAnalyzerBootstrapperToolkit(

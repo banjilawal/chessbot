@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Generic, TypeVar, cast
 
 from assembler import QuadrantAssembler
-from core.certifier import QuadrantRootCertifier
+from assurance.certifier import QuadrantRootCertifier
 from toolkit import SpaceBuilderToolkit
 
 T = TypeVar("T", bound="Quadrant")

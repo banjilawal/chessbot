@@ -15,7 +15,7 @@ from blueprint import IdentityRegisterBlueprint
 from err import IdentityRegisterBlueprintNullException, IdentityRegisterNullException
 from  import IdentityRegister
 from toolkit import RegisterToolkit
-from validator import NameValidator, NumberValidator
+from assurance.validator import NameValidator, NumberValidator
 
 
 class IdentityRegisterToolkit(RegisterToolkit[IdentityRegister]):

@@ -19,7 +19,7 @@ from result import MethodResultType, ValidationResult
 from stack import TokenStackService
 from core.adjudicator import SearchRequestAdjudicator
 from util import LoggingLevelRouter
-from validator import TokenContextValidator
+from assurance.validator import TokenContextValidator
 
 
 class TokenSearchRequestAdjudicator(SearchRequestAdjudicator):

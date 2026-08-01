@@ -17,7 +17,7 @@ from model import Square, Token
 from report import RelationReport
 from result import AnalysisResult, MethodResultType
 from util import LoggingLevelRouter
-from validator import SquareValidator, TokenValidator
+from assurance.validator import SquareValidator, TokenValidator
 
 
 class SquareTokenRelationAnalyzer(RelationAnalyzer[Square, Token]):

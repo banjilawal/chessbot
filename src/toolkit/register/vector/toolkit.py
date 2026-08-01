@@ -16,7 +16,7 @@ from carrier import VectorRegisterCarrier
 from err import VectorRegisterBlueprintNullException, VectorRegisterCarrierNullException, VectorRegisterNullException
 from register import VectorRegister
 from toolkit import RegisterToolkit
-from validator import VectorValidator
+from assurance.validator import VectorValidator
 
 
 class VectorRegisterToolkit(RegisterToolkit[VectorRegister]):

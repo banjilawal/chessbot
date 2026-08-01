@@ -13,7 +13,7 @@ from typing import Optional, cast
 
 from assembler import TeamAssembler
 from model import Team
-from core.certifier import TeamRootCertifier
+from assurance.certifier import TeamRootCertifier
 from toolkit import ModelBuilderToolkit
 
 

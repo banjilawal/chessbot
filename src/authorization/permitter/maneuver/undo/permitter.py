@@ -20,7 +20,7 @@ from authorization.permitter import TokenManeuverPermitter
 from report import PopApprovalReport, TokenReadinessReport
 from result import AnalysisResult
 from util import LoggingLevelRouter
-from validator import TokenValidator
+from assurance.validator import TokenValidator
 
 
 class TokenUndoMovePermitter(TokenManeuverPermitter):

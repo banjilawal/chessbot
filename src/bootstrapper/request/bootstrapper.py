@@ -7,13 +7,12 @@ Created: 2026-04-03
 version: 1.0.1
 """
 
-from abc import abstractmethod
 from typing import Any, Type
 
 from err import NullException
 from result import ValidationResult
 from util import LoggingLevelRouter
-from validator import PrimingValidator
+from assurance.validator import PrimingValidator
 
 
 class RequestBootstrapper:

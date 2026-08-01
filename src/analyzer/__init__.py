@@ -1,4 +1,4 @@
-# src/__init__.py
+# src/analyzer/__init__.py
 
 """
 Module: analyzer.__init__

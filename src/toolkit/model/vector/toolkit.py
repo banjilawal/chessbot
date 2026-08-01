@@ -17,7 +17,7 @@ from carrier import VectorCarrier
 from err import VectorBlueprintNullException, VectorCarrierNullException, VectorNullException
 from model import Vector
 from toolkit import ModelToolkit
-from validator import NumberValidator
+from assurance.validator import NumberValidator
 
 
 @dataclass

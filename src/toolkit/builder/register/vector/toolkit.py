@@ -13,7 +13,7 @@ from typing import Optional, cast
 
 from assembler import VectorRegisterAssembler
 from register import VectorRegister
-from core.certifier import VectorRegisterCertifier
+from assurance.certifier import VectorRegisterCertifier
 from toolkit import RegisterBuilderToolkit
 
 

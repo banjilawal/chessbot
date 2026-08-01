@@ -17,7 +17,7 @@ from register import VectorRegister
 from result import BuildResult
 from schema.terminus.quadrant import QuadrantTerminus
 from util import LoggingLevelRouter
-from validator import VectorValidator
+from assurance.validator import VectorValidator
 
 
 class NorthwestQuadrantEndpointBuilder:

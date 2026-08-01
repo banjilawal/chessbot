@@ -15,7 +15,7 @@ from detection import SquareCollisionDetector
 from microservice import FormationService, IdentityService
 from analyzer import Square
 from toolkit import AnalyzerBootstrapperToolkit
-from validator import BoardValidator, CoordValidator, TokenValidator, PrimingValidator
+from assurance.validator import BoardValidator, CoordValidator, TokenValidator, PrimingValidator
 
 
 @dataclass

@@ -18,11 +18,11 @@ from analyzer import Maneuver
 from operation import Operation
 from searcher import TokenOriginSearcher
 from toolkit import AnalyzerBootstrapperToolkit
-from validator import (
+from assurance.validator import (
     ManeuverEndpointValidator, PathValidator, SquareValidator, TokenDestinationCertifier,
     TokenValidator
 )
-from validator.endpoint.maneuver import TokenOriginCertifier
+from assurance.validator import TokenOriginCertifier
 
 
 class ManeuverToolkit(AnalyzerBootstrapperToolkit[Maneuver]):

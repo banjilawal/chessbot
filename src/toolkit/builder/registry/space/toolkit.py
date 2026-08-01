@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Generic, TypeVar, cast
 
 from assembler import SpaceReservoirAssembler
-from core.certifier import SpaceReservoirCertifier
+from assurance.certifier import SpaceReservoirCertifier
 
 from toolkit import BuilderToolkit
 

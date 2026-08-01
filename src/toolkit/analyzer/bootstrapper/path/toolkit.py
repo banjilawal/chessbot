@@ -13,8 +13,7 @@ from dataclasses import dataclass
 
 from err import PathNullException
 from analyzer import Path
-from toolkit import AnalyzerBootstrapperToolkit
-from validator import SquareValidator
+from assurance.validator import SquareValidator
 
 @dataclass
 class PathToolkit(AnalyzerToolkit):

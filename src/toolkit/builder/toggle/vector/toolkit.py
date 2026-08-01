@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Optional, cast
 
 from assembler import  VectorToggleAssembler
-from core.certifier import VectorToggleRootCertifier
+from assurance.certifier import VectorToggleRootCertifier
 from toggle import VectorToggle
 from toolkit import ToggleBuilderToolkit
 

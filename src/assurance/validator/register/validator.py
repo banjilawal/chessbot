@@ -1,0 +1,54 @@
+# src/validator/register/validator.py
+
+"""
+Module: validator.register.validator
+Author: Banji Lawal
+Created: 2026-04-03
+version: 1.0.1
+"""
+
+from __future__ import annotations
+
+from abc import abstractmethod
+from typing import Any, Generic, TypeVar, cast
+
+from assurance.certifier import RegisterCertifier
+from result import ValidationResult
+from assurance.validator import Validator
+
+T = TypeVar("T", bound="Register")
+
+class RegisterValidator(Validator, Generic[T]):
+    """
+    Role
+        -   Transaction Worker
+        -   Integrity Maintenance
+        -   Consistency Assurance
+        -   Validation Process Owner
+
+    Responsibilities:
+        1.  Ensure a Model instance is certified safe, reliable and consistent before use.
+
+    Attributes:
+        root_certifier: RegisterRootCertifier[T]
+        
+    Provides:
+        -   execute(self, candidate: Any) -> ValidationResult
+
+    Super Class:
+        Validator
+    """
+    
+    def __init__(self, root_certifier: [RegisterCertifier[T]]):
+        super().__init__(root_certifier=root_certifier)
+    
+    @property
+    def root_certifier(self) -> RegisterCertifier:
+        return cast(RegisterCertifier[T], super().root_certifier)
+    
+    @abstractmethod
+    def execute(self, candidate: Any) -> ValidationResult[T]:
+        pass
+    
+        
+        

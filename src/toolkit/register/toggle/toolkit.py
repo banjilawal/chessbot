@@ -20,7 +20,7 @@ from err import (
 from register import VectorToggleRegister
 from toggle import VectorToggle
 from toolkit import RegisterToolkit
-from validator import VectorToggleValidator
+from assurance.validator import VectorToggleValidator
 
 
 class VectorToggleRegisterToolkit(RegisterToolkit[VectorToggle]):

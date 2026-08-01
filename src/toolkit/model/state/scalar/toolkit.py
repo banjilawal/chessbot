@@ -13,7 +13,7 @@ from dataclasses import dataclass
 
 from model import Scalar
 from toolkit import StateModelToolkit
-from validator import NumberValidator
+from assurance.validator import NumberValidator
 
 
 @dataclass

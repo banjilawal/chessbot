@@ -17,7 +17,7 @@ from operation import ManeuverLauncher
 from report import AttackApproval, ManeuverApproval
 from result import EventResult, MethodResultType
 from util import IdFactory, LoggingLevelRouter
-from validator import PrimingValidator
+from assurance.validator import PrimingValidator
 
 
 class LaunchAttack:

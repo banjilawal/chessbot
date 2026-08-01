@@ -13,7 +13,7 @@ from typing import cast
 
 from assembler import QuadrantReservoirAssembler
 from geometry.registry import QuadrantReservoir
-from core.certifier import QuadrantReservoirRootCertifier
+from assurance.certifier import QuadrantReservoirRootCertifier
 from toolkit import SpaceReservoirBuilderToolkit
 
 

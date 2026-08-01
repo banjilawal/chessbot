@@ -11,11 +11,11 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 
-from analyzer import SquareTokenRelationAnalyzer, TokenReadinessAnalyzer
+from analyzer import TokenReadinessAnalyzer
 from bootstrapper import DestinationCertifierBootstrapper
 from searcher import TokenOriginSearcher
 from toolkit import PermitterToolkit
-from validator import SquareValidator, TokenValidator
+from assurance.validator import SquareValidator, TokenValidator
 
 @dataclass
 class TokenManeuverToolkit(PermitterToolkit):

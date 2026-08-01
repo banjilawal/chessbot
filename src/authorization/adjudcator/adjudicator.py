@@ -14,7 +14,7 @@ from typing import Any, Generic, Optional, TypeVar
 
 from report import OperationApprovalReport
 from util import LoggingLevelRouter
-from validator import PrimingValidator
+from assurance.validator import PrimingValidator
 
 
 T = TypeVar("T", bound="Request")

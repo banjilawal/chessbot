@@ -13,7 +13,7 @@ from typing import Optional, cast
 
 from assembler import RankAssembler
 from model import Rank
-from core.certifier import RankRootCertifier
+from assurance.certifier import RankRootCertifier
 from toolkit import ModelBuilderToolkit
 
 

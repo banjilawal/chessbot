@@ -10,6 +10,5 @@ version: 1.0.1
 # =========== CORE PACKAGE ===========#
 
 # Packages
-from .certifier import *
 
 # Modules

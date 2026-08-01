@@ -16,11 +16,11 @@ from err import ManeuverNullException
 from model import Maneuver
 from searcher import TokenOriginSearcher
 from toolkit import StateModelToolkit
-from validator import (
+from assurance.validator import (
     ManeuverEndpointValidator, PathValidator, SquareValidator, TokenDestinationCertifier,
     TokenValidator
 )
-from validator.endpoint.maneuver import TokenOriginCertifier
+from assurance.validator import TokenOriginCertifier
 
 
 class ManeuverToolkit(StateModelToolkit[Maneuver]):

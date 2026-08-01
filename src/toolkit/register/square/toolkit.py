@@ -9,7 +9,7 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from typing import Type, cast
+from typing import Type
 
 from blueprint import SquareRegisterBlueprint
 from carrier import SquareRegisterCarrier
@@ -18,7 +18,7 @@ from err import (
 )
 from register import SquareRegister
 from toolkit import RegisterToolkit
-from validator import SquareValidator
+from assurance.validator import SquareValidator
 
 
 class SquareRegisterToolkit(RegisterToolkit[SquareRegister]):

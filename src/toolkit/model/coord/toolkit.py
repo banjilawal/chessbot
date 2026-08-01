@@ -17,7 +17,7 @@ from carrier import CoordCarrier
 from err import CoordBlueprintNullException, CoordCarrierNullException, CoordNullException
 from model import Coord
 from toolkit import ModelToolkit
-from validator import NumberValidator
+from assurance.validator import NumberValidator
 
 
 @dataclass

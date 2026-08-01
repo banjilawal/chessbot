@@ -13,7 +13,7 @@ from builder import ContainerBuilder
 from container import VectorSet
 from result import BuildResult
 from util import LoggingLevelRouter
-from validator import VectorValidator
+from assurance.validator import VectorValidator
 
 
 class VectorSetBuilder(ContainerBuilder[VectorSet]):

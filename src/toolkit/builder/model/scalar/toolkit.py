@@ -13,7 +13,7 @@ from typing import Optional, cast
 
 from assembler import ScalarAssembler
 from model import Scalar
-from core.certifier import ScalarRootCertifier
+from assurance.certifier import ScalarRootCertifier
 from toolkit import ModelBuilderToolkit
 
 

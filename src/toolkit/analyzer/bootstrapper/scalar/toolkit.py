@@ -13,7 +13,7 @@ from dataclasses import dataclass
 
 from analyzer import Scalar
 from toolkit import AnalyzerBootstrapperToolkit
-from validator import NumberValidator
+from assurance.validator import NumberValidator
 
 
 @dataclass

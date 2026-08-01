@@ -12,7 +12,7 @@ from __future__ import annotations
 from err import TeamContextNullException
 from model import Team, TeamContext
 from toolkit import ContextToolkit, TeamToolkit
-from validator import NumberValidator
+from assurance.validator import NumberValidator
 
 
 class TeamContextToolkit(ContextToolkit[Team]):

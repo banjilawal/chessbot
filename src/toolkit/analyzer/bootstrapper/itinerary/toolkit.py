@@ -9,11 +9,11 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from err import ItineraryException, ItineraryNullException
+from err import ItineraryNullException
 from analyzer import Itinerary
 from toolkit import AnalyzerBootstrapperToolkit
 from analyzer import SquareTokenRelationAnalyzer, TokenReadinessAnalyzer
-from validator import SquareValidator, TokenValidator, PrimingValidator
+from assurance.validator import SquareValidator, TokenValidator, PrimingValidator
 
 
 class ItineraryToolkit(AnalyzerBootstrapperToolkit[Itinerary]):

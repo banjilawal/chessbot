@@ -15,8 +15,7 @@ from detection import TokenHomeDetector
 from err import TokenNullException
 from microservice import RankService
 from analyzer import Token
-from toolkit import AnalyzerBootstrapperToolkit
-from validator import (
+from assurance.validator import (
     BlueprintHomeSquareExtractor, BlueprintRankExtractor, CoordValidator, NumberValidator,
     SquareValidator, TeamValidator
 )

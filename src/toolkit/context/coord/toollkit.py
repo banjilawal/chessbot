@@ -12,7 +12,6 @@ from __future__ import annotations
 from err import CoordContextNullException
 from model import Coord, CoordContext
 from toolkit import ContextToolkit, CoordToolkit
-from validator import NumberValidator
 
 
 class CoordContextToolkit(ContextToolkit[Coord]):

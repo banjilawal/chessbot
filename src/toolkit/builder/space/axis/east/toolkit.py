@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Optional, cast
 
 from assembler import EastAxisAssembler
-from core.certifier import EastAxisRootCertifier
+from assurance.certifier import EastAxisRootCertifier
 from geometry.space import EastAxis
 from toolkit import AxisBuilderToolkit
 

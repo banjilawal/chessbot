@@ -12,7 +12,7 @@ from __future__ import annotations
 from model import PointRegister
 from suite import Suite
 from toolkit import VectorToggleRegisterToolkit
-from validator import VectorToggleRegisterValidator
+from assurance.validator import VectorToggleRegisterValidator
 
 
 class VectorToggleRegisterSuite(Suite[PointRegister]):

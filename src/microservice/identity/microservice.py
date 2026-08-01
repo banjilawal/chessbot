@@ -16,7 +16,7 @@ from model import IdentityRegister
 from result import ValidationResult
 from authorization.adjudcator import BlueprintIdExtractor
 from util import IdFactory, LoggingLevelRouter
-from validator import IdentityRegisterCertifier, NameValidator, NumberValidator
+from assurance.validator import IdentityRegisterCertifier, NameValidator, NumberValidator
 
 
 class IdentityService:

@@ -15,7 +15,7 @@ from typing import Type
 from err import PathNullException
 from model import Path
 from toolkit import StateModelToolkit
-from validator import SquareValidator
+from assurance.validator import SquareValidator
 
 @dataclass
 class PathToolkit(StateModelToolkit):

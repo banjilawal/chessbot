@@ -18,7 +18,7 @@ from math import VectorSequenceGenerator
 
 from result import ComputationResult, MethodResultType
 from util import LoggingLevelRouter
-from validator import PrimingValidator
+from assurance.validator import PrimingValidator
 
 
 

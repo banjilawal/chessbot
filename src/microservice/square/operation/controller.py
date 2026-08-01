@@ -13,7 +13,7 @@ from dataclasses import dataclass
 
 from detection import SquareCollisionDetector
 from builder import SquareBuilder
-from validator import SquareValidator
+from assurance.validator import SquareValidator
 
 
 @dataclass

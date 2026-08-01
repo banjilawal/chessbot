@@ -17,7 +17,7 @@ from authorization.permitter import Permitter
 from report import RankQuotaReport, RankSlotApprovalReport
 from authorization.request import RankSlotRequest
 from util import LoggingLevelRouter
-from validator import RankValidator
+from assurance.validator import RankValidator
 
 
 class RankSlotPermitter(Permitter):

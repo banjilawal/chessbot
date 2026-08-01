@@ -13,7 +13,7 @@ from typing import Optional, cast
 
 from assembler import VectorAssembler
 from model import Vector
-from core.certifier import VectorRootCertifier
+from assurance.certifier import VectorRootCertifier
 from toolkit import ModelBuilderToolkit
 
 

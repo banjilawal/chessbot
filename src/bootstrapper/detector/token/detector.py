@@ -19,7 +19,7 @@ from report import CollisionReport
 from result import AnalysisResult
 from stack import TokenStackService
 from util import LoggingLevelRouter
-from validator import PrimingValidator
+from assurance.validator import PrimingValidator
 
 
 class TokenCollisionDetectorBootstrapper(Detector[Token]):

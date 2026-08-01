@@ -15,7 +15,7 @@ from bootstrapper import HomeDetectorBootstrapper
 from err import BoardValidatorException
 from microservice import IdentityService
 from toolkit import BootstrapperToolkit
-from validator import BoardValidator, TokenHomeContextValidator, TokenValidator
+from assurance.validator import BoardValidator, TokenHomeContextValidator, TokenValidator
 
 
 @dataclass

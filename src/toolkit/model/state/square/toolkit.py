@@ -19,7 +19,7 @@ from detector import SquareCollisionDetector
 from err import SquareBlueprintNullException, SquareNullException
 from model import Square
 from toolkit import StateModelToolkit
-from validator import BoardValidator, CoordValidator, TokenValidator
+from assurance.validator import BoardValidator, CoordValidator, TokenValidator
 
 
 @dataclass

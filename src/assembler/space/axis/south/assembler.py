@@ -13,7 +13,7 @@ from blueprint import SouthAxisBlueprint
 
 from result import BuildResult
 from assembler import AxisAssembler
-from core.certifier import SouthAxis
+from assurance.certifier import SouthAxis
 from util import  LoggingLevelRouter
   
   

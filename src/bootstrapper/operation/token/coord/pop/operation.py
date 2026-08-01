@@ -21,7 +21,7 @@ from model.state.token import (
     InactiveTokenPoppingCoordException, MoveUndoLimitException, Token, TokenPopCoordException, TokenValidation,
     UnopenedTokenPoppingCoordException
 )
-from validator import TokenValidator
+from assurance.validator import TokenValidator
 
 
 class TokenPositionPopper:

@@ -13,7 +13,7 @@ from blueprint import SouthwestQuadrantBlueprint
 
 from result import BuildResult
 from assembler import QuadrantAssembler
-from core.certifier import SouthwestQuadrant
+from assurance.certifier import SouthwestQuadrant
 from util import  LoggingLevelRouter
   
   

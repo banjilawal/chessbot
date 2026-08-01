@@ -10,7 +10,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 
 from toolkit import AnalyzerBootstrapperToolkit
-from validator import NumberValidator
+from assurance.validator import NumberValidator
 
 @dataclass
 class NumberToolkit(AnalyzerBootstrapperToolkit[int]):

@@ -14,9 +14,8 @@ from typing import Type
 
 from context import TokenHomeContext
 from err import BoardValidatorException, ContextNullException, TokenHomeContextNullException
-from microservice import IdentityService
 from toolkit import TokenToolkit, Toolkit
-from validator import BoardValidator, TokenValidator
+from assurance.validator import BoardValidator, TokenValidator
 
 
 @dataclass

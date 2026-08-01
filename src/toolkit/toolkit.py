@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Optional
 
 from microservice import IdentityService
-from validator import PrimingValidator
+from assurance.validator import PrimingValidator
 
 
 class Toolkit:

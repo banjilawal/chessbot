@@ -13,7 +13,7 @@ from builder import CoordBuilder
 from model import Coord
 from suite import Suite
 from toolkit import CoordToolkit
-from validator import CoordValidator
+from assurance.validator import CoordValidator
 
 
 class CoordOperationSuite(Suite[Coord]):

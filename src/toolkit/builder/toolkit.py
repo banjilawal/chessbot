@@ -13,7 +13,7 @@ from typing import Generic, TypeVar
 
 from assembler import Assembler
 
-from core.certifier import Certifier
+from assurance.certifier import Certifier
 from toolkit import Toolkit
 
 T = TypeVar("T")

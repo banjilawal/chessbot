@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Optional, cast
 
 from assembler import SouthwestQuadrantAssembler
-from core.certifier import SouthwestQuadrantRootCertifier
+from assurance.certifier import SouthwestQuadrantRootCertifier
 from geometry.space import SouthwestQuadrant
 from toolkit import QuadrantBuilderToolkit
 

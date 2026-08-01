@@ -17,7 +17,7 @@ from carrier import ScalarCarrier
 from err import ScalarBlueprintNullException, ScalarCarrierNullException, ScalarNullException
 from model import Scalar
 from toolkit import ModelToolkit
-from validator import NumberValidator
+from assurance.validator import NumberValidator
 
 
 @dataclass

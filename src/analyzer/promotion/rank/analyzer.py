@@ -15,7 +15,7 @@ from model import King, Pawn, Rank
 from report import RankLevelApproval
 from result import AnalysisResult
 from util import LoggingLevelRouter
-from validator import RankValidator
+from assurance.validator import RankValidator
 
 
 class PromotionRankAnalyzer(Analyzer):

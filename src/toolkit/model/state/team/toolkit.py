@@ -21,7 +21,7 @@ from err import (
 from model import Team, Token
 from authorization.adjudcator import BlueprintHomeSquareExtractor, BlueprintRankExtractor
 from toolkit import StateModelToolkit
-from validator import BoardValidator, TeamValidator
+from assurance.validator import BoardValidator, TeamValidator
 
 
 @dataclass

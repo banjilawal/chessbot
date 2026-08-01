@@ -14,7 +14,7 @@ from dataclasses import dataclass
 from operation import AddVector, EuclideanDistance, ScalarProduct, VectorTransform
 from suite import CoordOperationSuite, ScalarOperationSuite, VectorOperationSuite
 from toolkit import Toolkit
-from validator import NumberValidator
+from assurance.validator import NumberValidator
 
 
 @dataclass

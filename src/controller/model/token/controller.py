@@ -16,7 +16,7 @@ from builder import TokenBuilder
 from detection import TokenHomeDetector, TokenCollisionDetector
 from operation import TokenHomePlacer, TokenPositionController
 from operation.promotion import PawnPromoter
-from validator import TokenValidator
+from assurance.validator import TokenValidator
 
 
 @dataclass

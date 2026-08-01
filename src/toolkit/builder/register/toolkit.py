@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Generic, TypeVar, cast
 
 from assembler import RegisterAssembler
-from core.certifier import RegisterCertifier
+from assurance.certifier import RegisterCertifier
 from toolkit import BuilderToolkit
 
 T = TypeVar("T", bound="Register")

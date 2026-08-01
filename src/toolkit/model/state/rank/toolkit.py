@@ -14,8 +14,8 @@ from typing import List
 from microservice import IdentityService, Microservice
 from model import Rank
 from toolkit import StateModelToolkit
-from operation import Operation, PersonaValidator
-from validator import PrimingValidator
+from operation import Operation
+from assurance.validator import PrimingValidator
 
 
 class RankToolkit(StateModelToolkit[Rank]):

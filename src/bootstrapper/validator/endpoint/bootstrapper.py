@@ -13,7 +13,7 @@ from bootstrapper import ValidatorBootstrapper
 from model import Path, Square, Token
 from result import ValidationResult
 from util import LoggingLevelRouter
-from validator import TokenDestinationCertifier, TokenOriginCertifier
+from assurance.validator import TokenDestinationCertifier, TokenOriginCertifier
 
 
 class EndpointCertifierBootstrapper(ValidatorBootstrapper):

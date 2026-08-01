@@ -13,7 +13,7 @@ from builder import VectorBuilder
 from model import Vector
 from suite import Suite
 from toolkit import VectorToolkit
-from validator import VectorValidator
+from assurance.validator import VectorValidator
 
 
 class VectorOperationSuite(Suite[Vector]):

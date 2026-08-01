@@ -12,7 +12,7 @@ from dataclasses import dataclass
 
 from model import Token, TokenQuery
 from stack import TokenStackService
-from validator import TokenContextValidator
+from assurance.validator import TokenContextValidator
 from blueprint import QueryValidationBlueprint
 from err import (
     TokenContextNullException, TokenQueryNullException, TokenStackEmptyException, TokenStackNullException

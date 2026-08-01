@@ -16,7 +16,7 @@ from model import King, Pawn, Rank
 from result import MethodResultType, ValidationResult
 from core.adjudicator import RequestAdjudicator
 from util import LoggingLevelRouter
-from validator import RankValidator
+from assurance.validator import RankValidator
 
 
 class PromotionLevelRequestAdjudicator(RequestAdjudicator):

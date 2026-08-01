@@ -20,7 +20,7 @@ from result import ComputationResult, MethodResultType
 
 from topology import Topology
 from util import LoggingLevelRouter
-from validator import PrimingValidator
+from assurance.validator import PrimingValidator
 
 T = TypeVar("T", bound="TraversalRank")
 

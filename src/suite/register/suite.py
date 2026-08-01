@@ -14,7 +14,7 @@ from dataclasses import dataclass
 from builder import Builder
 from model import Register
 from toolkit import Suite, Toolkit
-from validator import Validator
+from assurance.validator import Validator
 
 
 @dataclass

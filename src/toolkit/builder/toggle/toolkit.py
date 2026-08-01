@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Generic, TypeVar, cast
 
 from assembler import ToggleAssembler
-from core.certifier import ToggleCertifier
+from assurance.certifier import ToggleCertifier
 from toolkit import BuilderToolkit
 
 T = TypeVar("T", bound="Toggle")

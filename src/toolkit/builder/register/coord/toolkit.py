@@ -13,7 +13,7 @@ from typing import Optional, cast
 
 from assembler import CoordRegisterAssembler
 from register import CoordRegister
-from core.certifier import CoordRegisterRootCertifier
+from assurance.certifier import CoordRegisterRootCertifier
 from toolkit import RegisterBuilderToolkit
 
 

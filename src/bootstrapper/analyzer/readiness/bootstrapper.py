@@ -18,7 +18,6 @@ from report import TokenReadinessReport
 from result import AnalysisResult
 from toolkit import ReadinessAnalyzerBootstrapperToolkit
 from util import LoggingLevelRouter
-from validator import TokenValidator
 
 
 class ReadinessAnalyzerBootstrapper(AnalyzerBootstrapper):
