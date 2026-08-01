@@ -10,7 +10,7 @@ version: 1.0.1
 from __future__ import annotations
 from typing import cast
 
-from blueprint import VectorToggleBlueprint
+from fabrication.blueprint import VectorToggleBlueprint
 from carrier import VectorToggleCarrier
 from err import (
     ExcessToggleActivationException, NoActiveTogglesException, NoValidationRouteException,

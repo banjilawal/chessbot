@@ -1,7 +1,7 @@
-# src/builder/context/formation/builder.py
+# src/fabrication/builder/context/formation/fabrication/builder.py
 
 """
-Module: builder.context.formation.builder
+Module: fabrication.builder.context.formation.builder
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

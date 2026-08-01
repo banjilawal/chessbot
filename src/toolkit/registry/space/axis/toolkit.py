@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Optional, Type, cast
 
-from blueprint import AxisReservoirBlueprint
+from fabrication.blueprint import AxisReservoirBlueprint
 from carrier import AxisReservoirCarrier
 from err import AxisReservoirNullException, SpaceReservoirNullException
 from geometry.registry import AxisReservoir

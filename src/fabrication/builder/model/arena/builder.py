@@ -1,7 +1,7 @@
-# src/builder/model/arena/builder.py
+# src/fabrication/builder/model/arena/fabrication/builder.py
 
 """
-Module: builder.model.arena.builder
+Module: fabrication.builder.model.arena.builder
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from blueprint import ArenaBlueprint
+from fabrication.blueprint import ArenaBlueprint
 from fabrication.builder import ModelBuilder
 from err import ArenaBuilderException
 from model import Arena

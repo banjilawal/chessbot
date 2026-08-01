@@ -13,7 +13,7 @@ from abc import ABC, abstractmethod
 from typing import Generic, TypeVar
 
 
-from blueprint import Blueprint
+from fabrication.blueprint import Blueprint
 from result import BuildResult
 from toolkit import BuilderToolkit
 from util import LoggingLevelRouter
@@ -47,7 +47,7 @@ class Builder(ABC, Generic[T]):
         Args:
            builder_toolkit: BuilderToolkit[T]
         """
-        self._builder_toolkit = builder_toolkit
+        self._builder_toolkit = fabrication.builder_toolkit
     
     @property
     def builder_toolkit(self) -> BuilderToolkit[T]:

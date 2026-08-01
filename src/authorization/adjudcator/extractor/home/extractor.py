@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import cast
 
-from blueprint import TokenBlueprint
+from fabrication.blueprint import TokenBlueprint
 from err import BlueprintHomeSquareExtractorException
 from model import Board, HomeSquare, Square
 from result import ValidationResult

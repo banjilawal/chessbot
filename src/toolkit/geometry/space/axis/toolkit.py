@@ -11,10 +11,10 @@ from __future__ import annotations
 
 from typing import Generic, Optional, Type, TypeVar, cast
 
-from blueprint import Blueprint
+from fabrication.blueprint import Blueprint
 from carrier import EntityCarrier
 from err import (
-    AxisBlueprintNullException, AxisCarrierNullException, AxisNullException, AxisCarrierException
+    AxisBlueprintNullException, AxisCarrierNullException, AxisNullException
 )
 from toolkit import SpaceToolkit
 

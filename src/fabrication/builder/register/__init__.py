@@ -1,13 +1,13 @@
-# src/builder/register/__init__.py
+# src/fabrication/builder/register/__init__.py
 
 """
-Module: builder.register.__init__
+Module: fabrication.builder.register.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
 """
 
-# =========== BUILDER.REGISTER PACKAGE ===========#
+# =========== FABRICATION.BUILDER.REGISTER PACKAGE ===========#
 
 # Packages
 from .square import *

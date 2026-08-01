@@ -13,7 +13,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Type
 
-from blueprint.space.quadrant.northeast import NortheastQuadrantBlueprint
+from fabrication.blueprint.space.quadrant.northeast import NortheastQuadrantBlueprint
 from carrier import NortheastQuadrantCarrier
 from err import NortheastQuadrantBlueprintNullException, NortheastQuadrantCarrierNullException, NortheastQuadrantNullException
 from geometry.space import NortheastQuadrant

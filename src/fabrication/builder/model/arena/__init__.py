@@ -1,13 +1,13 @@
-# src/builder/model/arena/__init__.py
+# src/fabrication/builder/model/arena/__init__.py
 
 """
-Module: builder.model.arena.__init__
+Module: fabrication.builder.model.arena.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
 """
 
-# =========== BUILDER.ARENA PACKAGE ===========#
+# =========== FABRICATION.BUILDER.ARENA PACKAGE ===========#
 
 # Packages
 

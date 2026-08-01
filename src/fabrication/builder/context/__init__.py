@@ -1,13 +1,13 @@
-# src/builder/context/__init__.py
+# src/fabrication/builder/context/__init__.py
 
 """
-Module: builder.context.__init__
+Module: fabrication.builder.context.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
 """
 
-# =========== BUILDER.CONTEXT PACKAGE ===========#
+# =========== FABRICATION.BUILDER.CONTEXT PACKAGE ===========#
 
 # Packages
 from .board import *

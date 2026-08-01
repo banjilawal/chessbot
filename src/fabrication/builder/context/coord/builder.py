@@ -1,7 +1,7 @@
-# src/builder/context/coord/builder.py
+# src/fabrication/builder/context/coord/fabrication/builder.py
 
 """
-Module: builder.context.coord.builder
+Module: fabrication.builder.context.coord.builder
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

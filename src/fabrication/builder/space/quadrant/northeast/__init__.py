@@ -1,13 +1,13 @@
-# src/builder/space/quadrant/northeast/__init__.py
+# src/fabrication/builder/space/quadrant/northeast/__init__.py
 
 """
-Module: builder.space.quadrant.northeast.__init__
+Module: fabrication.builder.space.quadrant.northeast.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
 """
 
-# =========== BUILDER.SPACE.QUADRANT.NORTHEAST PACKAGE ===========#
+# =========== FABRICATION.BUILDER.SPACE.QUADRANT.NORTHEAST PACKAGE ===========#
 
 # Packages
 

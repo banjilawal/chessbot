@@ -1,13 +1,13 @@
-# src/builder/model/edge/__init__.py
+# src/fabrication/builder/model/edge/__init__.py
 
 """
-Module: builder.model.edge.__init__
+Module: fabrication.builder.model.edge.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
 """
 
-# =========== BUILDER.EDGE PACKAGE ===========#
+# =========== FABRICATION.BUILDER.EDGE PACKAGE ===========#
 
 # Packages
 

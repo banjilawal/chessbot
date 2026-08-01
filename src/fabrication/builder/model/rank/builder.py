@@ -1,7 +1,7 @@
-# src/builder/model/rank/builder.py
+# src/fabrication/builder/model/rank/fabrication/builder.py
 
 """
-Module: builder.model.rank.builder
+Module: fabrication.builder.model.rank.builder
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from blueprint import RankBlueprint
+from fabrication.blueprint import RankBlueprint
 from fabrication.builder import ModelBuilder
 from err import RankBuilderException
 from model import Rank

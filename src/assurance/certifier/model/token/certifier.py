@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Type, cast
 
-from blueprint import TokenBlueprint
+from fabrication.blueprint import TokenBlueprint
 from carrier import TokenCarrier
 from context import TokenHomeContext
 from err import FormationNullException, TokenRootCertifierException

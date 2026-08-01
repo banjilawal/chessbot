@@ -13,7 +13,7 @@ from abc import abstractmethod
 from typing import Generic, TypeVar
 
 from fabrication.assembler import Assembler
-from blueprint import ToggleBlueprint
+from fabrication.blueprint import ToggleBlueprint
 from result import BuildResult
 from util import LoggingLevelRouter
 

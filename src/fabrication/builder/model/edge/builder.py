@@ -1,7 +1,7 @@
-# src/builder/model/edge/builder.py
+# src/fabrication/builder/model/edge/fabrication/builder.py
 
 """
-Module: builder.model.edge.builder
+Module: fabrication.builder.model.edge.builder
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from blueprint import EdgeBlueprint
+from fabrication.blueprint import EdgeBlueprint
 from fabrication.builder import ModelBuilder
 from err import EdgeBuilderException
 from model import Edge

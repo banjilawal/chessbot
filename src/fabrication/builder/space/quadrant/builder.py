@@ -1,7 +1,7 @@
-# src/builder/space/quadrant/builder.py
+# src/fabrication/builder/space/quadrant/fabrication/builder.py
 
 """
-Module: builder.space.quadrant.builder
+Module: fabrication.builder.space.quadrant.builder
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -12,7 +12,7 @@ from __future__ import annotations
 from abc import abstractmethod
 from typing import Generic, TypeVar, cast
 
-from blueprint import Blueprint
+from fabrication.blueprint import Blueprint
 from fabrication.builder import SpaceBuilder
 from result import BuildResult
 from toolkit import QuadrantBuilderToolkit

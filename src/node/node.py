@@ -1,7 +1,7 @@
-# src/node/model/state.py
+# src/node/node.py
 
 """
-Module: node.model
+Module: node.node
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -9,18 +9,17 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from typing import Generic, Optional, TypeVar
+from typing import Optional
 
-from model import Element, StateModel
+from model import SquareDossier
 from node import DiscoveryStatus
 from stack import EdgeStackService
 
-T = TypeVar("T")
 
-class Node(StateModel, Generic[T]):
-    _element: Element
+class Node:
+    _square_dossier: SquareDossier
     _priority: Optional[int]
-    _predecessor:Optional[Node[T]]
+    _predecessor:Optional[Node]
     _incoming_edges: EdgeStackService
     _outgoing_edges: EdgeStackService
     _discovery_status: DiscoveryStatus
@@ -28,21 +27,21 @@ class Node(StateModel, Generic[T]):
     
     def __init__(
             self,
-            element: element,
+            square_dossier: square_dossier,
             incoming_edges: Optional[EdgeStackService]| None = None,
             outgoing_edges: Optional[EdgeStackService] | None = None,
     ):
-        self._element = element
+        self._square_dossier = square_dossier
         self._incoming_edges = incoming_edges or EdgeStackService()
         self._outgoing_edges = outgoing_edges or EdgeStackService()
         
         self._priority = None
         self._predecessor = None
         self._discovery_status = DiscoveryStatus.UNKNOWN
-        
+    
     @property
-    def element(self) -> Element:
-        return self._element
+    def square_dossier(self) -> SquareDossier:
+        return self._square_dossier
     
     @property
     def incoming_edges(self) -> EdgeStackService:

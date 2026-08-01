@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Type
 
-from blueprint import IdentityRegisterBlueprint
+from fabrication.blueprint import IdentityRegisterBlueprint
 from err import IdentityRegisterBlueprintNullException, IdentityRegisterNullException
 from  import IdentityRegister
 from toolkit import RegisterToolkit

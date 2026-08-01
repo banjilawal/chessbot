@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Type
 
-from blueprint import SquareRegisterBlueprint
+from fabrication.blueprint import SquareRegisterBlueprint
 from carrier import SquareRegisterCarrier
 from err import (
     SquareRegisterBlueprintNullException, SquareRegisterCarrierNullException, SquareRegisterNullException

@@ -1,13 +1,13 @@
-# src/builder/model/__init__.py
+# src/fabrication/builder/model/__init__.py
 
 """
-Module: builder.model.__init__
+Module: fabrication.builder.model.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
 """
 
-# =========== BUILDER.MODEL PACKAGE ===========#
+# =========== FABRICATION.BUILDER.MODEL PACKAGE ===========#
 
 # Packages
 from .arena import *

@@ -1,7 +1,7 @@
-# src/builder/context/snapshot/builder.py
+# src/fabrication/builder/context/snapshot/fabrication/builder.py
 
 """
-Module: builder.context.snapshot.builder
+Module: fabrication.builder.context.snapshot.builder
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

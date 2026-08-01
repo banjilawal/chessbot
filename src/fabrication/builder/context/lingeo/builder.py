@@ -1,7 +1,7 @@
-# src/builder/context/linegeo/builder.py
+# src/fabrication/builder/context/linegeo/fabrication/builder.py
 
 """
-Module: builder.context.linegeo.builder
+Module: fabrication.builder.context.linegeo.builder
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

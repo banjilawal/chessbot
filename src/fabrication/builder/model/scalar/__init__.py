@@ -1,13 +1,13 @@
-# src/builder/model/scalar/__init__.py
+# src/fabrication/builder/model/scalar/__init__.py
 
 """
-Module: builder.model.scalar.__init__
+Module: fabrication.builder.model.scalar.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
 """
 
-# =========== BUILDER.SCALAR PACKAGE ===========#
+# =========== FABRICATION.BUILDER.SCALAR PACKAGE ===========#
 
 # Packages
 

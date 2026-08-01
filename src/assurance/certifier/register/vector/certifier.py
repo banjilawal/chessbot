@@ -10,7 +10,7 @@ version: 1.0.1
 from __future__ import annotations
 from typing import List, cast
 
-from blueprint import VectorRegisterBlueprint
+from fabrication.blueprint import VectorRegisterBlueprint
 from carrier import VectorRegisterCarrier
 from err import RegisterEmptyException, RegisterSetSizeException, VectorRegisterRootCertifierException
 from model import Vector

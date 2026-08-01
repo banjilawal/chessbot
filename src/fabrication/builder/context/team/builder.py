@@ -1,7 +1,7 @@
-# src/builder/context/team/builder.py
+# src/fabrication/builder/context/team/fabrication/builder.py
 
 """
-Module: builder.context.team.builder
+Module: fabrication.builder.context.team.builder
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

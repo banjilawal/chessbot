@@ -1,7 +1,7 @@
-# src/builder/context/player/builder.py
+# src/fabrication/builder/context/player/fabrication/builder.py
 
 """
-Module: builder.context.player.builder
+Module: fabrication.builder.context.player.builder
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

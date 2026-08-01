@@ -9,7 +9,7 @@ version: 1.0.0
 
 from __future__ import annotations
 
-from blueprint.model.binder import BoardBinderBlueprint
+from fabrication.blueprint.model.binder import BoardBinderBlueprint
 from system import BuildResult, Builder, LoggingLevelRouter
 from model.state.team import (
     BlackTeamHasWrongSchemaException, TeamBinder, TeamBinderBuilderException,

@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Type
 
-from blueprint import VectorToggleRegisterBlueprint
+from fabrication.blueprint import VectorToggleRegisterBlueprint
 from carrier import VectorToggleRegisterCarrier
 from err import (
     VectorToggleRegisterBlueprintNullException, VectorToggleRegisterCarrierNullException,

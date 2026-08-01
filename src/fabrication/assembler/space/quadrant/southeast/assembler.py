@@ -9,7 +9,7 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from blueprint import SoutheastQuadrantBlueprint
+from fabrication.blueprint import SoutheastQuadrantBlueprint
 
 from result import BuildResult
 from fabrication.assembler import QuadrantAssembler

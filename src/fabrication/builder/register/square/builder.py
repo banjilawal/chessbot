@@ -1,7 +1,7 @@
-# src/builder/register/square/builder.py
+# src/fabrication/builder/register/square/fabrication/builder.py
 
 """
-Module: builder.register.square.builder
+Module: fabrication.builder.register.square.builder
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

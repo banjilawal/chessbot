@@ -1,7 +1,7 @@
-# src/builder/model/player/builder.py
+# src/fabrication/builder/model/player/fabrication/builder.py
 
 """
-Module: builder.model.player.builder
+Module: fabrication.builder.model.player.builder
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from blueprint import PlayerBlueprint
+from fabrication.blueprint import PlayerBlueprint
 from fabrication.builder import ModelBuilder
 from err import PlayerBuilderException
 from model import Player

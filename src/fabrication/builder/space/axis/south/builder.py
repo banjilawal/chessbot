@@ -1,7 +1,7 @@
-# src/builder/space/axis/south/builder.py
+# src/fabrication/builder/space/axis/south/fabrication/builder.py
 
 """
-Module: builder.space.axis.south.builder
+Module: fabrication.builder.space.axis.south.builder
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from blueprint import SouthAxisBlueprint
+from fabrication.blueprint import SouthAxisBlueprint
 from fabrication.builder import AxisBuilder
 from err import SouthAxisBuilderException
 from result import BuildResult, MethodResultType

@@ -10,7 +10,7 @@ version: 1.0.1
 from __future__ import annotations
 
 from fabrication.assembler import RegisterAssembler
-from blueprint import VectorToggleRegisterBlueprint
+from fabrication.blueprint import VectorToggleRegisterBlueprint
 from register import VectorToggleRegister
 from result import BuildResult
 from util import LoggingLevelRouter

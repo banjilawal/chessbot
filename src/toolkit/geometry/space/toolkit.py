@@ -13,7 +13,7 @@ from __future__ import annotations
 
 from typing import Generic, Optional, Type, TypeVar
 
-from blueprint import Blueprint
+from fabrication.blueprint import Blueprint
 from carrier import EntityCarrier
 from err import SpaceBlueprintNullException, SpaceCarrierNullException, SpaceNullException
 from toolkit import MathToolkit, Toolkit

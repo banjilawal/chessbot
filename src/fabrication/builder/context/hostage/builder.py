@@ -1,7 +1,7 @@
-# src/builder/context/hostage/builder.py
+# src/fabrication/builder/context/hostage/fabrication/builder.py
 
 """
-Module: builder.context.hostage.builder
+Module: fabrication.builder.context.hostage.builder
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

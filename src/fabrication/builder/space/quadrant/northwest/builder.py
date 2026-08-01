@@ -1,7 +1,7 @@
-# src/builder/space/quadrant/northwest/builder.py
+# src/fabrication/builder/space/quadrant/northwest/fabrication/builder.py
 
 """
-Module: builder.space.quadrant.northwest.builder
+Module: fabrication.builder.space.quadrant.northwest.builder
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from blueprint import NorthwestQuadrantBlueprint
+from fabrication.blueprint import NorthwestQuadrantBlueprint
 from fabrication.builder import QuadrantBuilder
 from err import NorthwestQuadrantBuilderException
 from result import BuildResult, MethodResultType

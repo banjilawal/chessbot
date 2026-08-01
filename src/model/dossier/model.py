@@ -13,11 +13,11 @@ from typing import Optional
 
 
 from model import Square
-from report import Report
+from report import ManeuverApprovalReport, Report
 
 
 class SquareDossier:
-    """
+    """]
     Role:
         -   Data Holder
         
@@ -33,15 +33,15 @@ class SquareDossier:
     Super Class:
     """
     _square: Square
-    _report: Optional[Report]
+    _report: Optional[ManeuverApprovalReport]
     
-    def __init__(self, square: Square, report: Optional[Report] | None = None):
+    def __init__(self, square: Square, report: Optional[ManeuverApprovalReport] | None = None):
         """
         Args:
             square: Square
             report: Optional[Report]
         """
-        self._hunter = square
+        self._square = square
         self._report = report
         
     @property
@@ -49,11 +49,19 @@ class SquareDossier:
         return self._square
     
     @property
-    def report(self) -> Optional[Report]:
+    def report(self) -> Optional[ManeuverApprovalReport]:
         return self._report
     
+    @property
+    def has_king_attack_approval(self) -> bool:
+        return self._report is not None and self._report.king_attack_is_approved
+    
+    @property
+    def has_combatant_approval(self) -> bool:
+        return self._report is not None and self._report.combatant_attack_is_approved
+    
     @report.setter
-    def report(self, other: Report):
+    def report(self, other: ManeuverApprovalReport):
         self._report = other
 
         

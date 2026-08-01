@@ -1,7 +1,7 @@
-# src/builder/registry/space/builder.py
+# src/fabrication/builder/registry/space/fabrication/builder.py
 
 """
-Module: builder.registry.space.builder
+Module: fabrication.builder.registry.space.builder
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

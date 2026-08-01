@@ -1,13 +1,13 @@
-# src/builder/context/player/__init__.py
+# src/fabrication/builder/context/player/__init__.py
 
 """
-Module: builder.context.player.__init__
+Module: fabrication.builder.context.player.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
 """
 
-# =========== BUILDER.PLAYER PACKAGE ===========#
+# =========== FABRICATION.BUILDER.PLAYER PACKAGE ===========#
 
 # Packages
 

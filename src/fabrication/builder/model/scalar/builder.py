@@ -1,7 +1,7 @@
-# src/builder/model/scalar/builder.py
+# src/fabrication/builder/model/scalar/fabrication/builder.py
 
 """
-Module: builder.model.scalar.builder
+Module: fabrication.builder.model.scalar.builder
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from blueprint import ScalarBlueprint
+from fabrication.blueprint import ScalarBlueprint
 from fabrication.builder import ModelBuilder
 from err import ScalarBuilderException
 from model import Scalar

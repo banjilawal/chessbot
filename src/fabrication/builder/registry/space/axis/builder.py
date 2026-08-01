@@ -1,7 +1,7 @@
-# src/builder/registry/space/axis/builder.py
+# src/fabrication/builder/registry/space/axis/fabrication/builder.py
 
 """
-Module: builder.registry.space.axis.builder
+Module: fabrication.builder.registry.space.axis.builder
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from blueprint import AxisReservoirBlueprint
+from fabrication.blueprint import AxisReservoirBlueprint
 from fabrication.builder import SpaceReservoirBuilder
 from err import AxisReservoirBuilderException
 from geometry.registry import AxisReservoir

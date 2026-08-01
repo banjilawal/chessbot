@@ -1,7 +1,7 @@
-# src/builder/container/vector/builder.py
+# src/fabrication/builder/container/vector/fabrication/builder.py
 
 """
-Module: builder.container.vector.builder
+Module: fabrication.builder.container.vector.builder
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

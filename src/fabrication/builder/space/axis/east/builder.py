@@ -1,7 +1,7 @@
-# src/builder/space/axis/east/builder.py
+# src/fabrication/builder/space/axis/east/fabrication/builder.py
 
 """
-Module: builder.space.axis.east.builder
+Module: fabrication.builder.space.axis.east.builder
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from blueprint import EastAxisBlueprint
+from fabrication.blueprint import EastAxisBlueprint
 from fabrication.builder import AxisBuilder
 from err import EastAxisBuilderException
 from result import BuildResult, MethodResultType

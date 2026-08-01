@@ -1,7 +1,7 @@
-# src/builder/pattern/offset/king/builder/pattern.py
+# src/fabrication/builder/pattern/offset/king/fabrication/builder/pattern.py
 
 """
-Module: builder.pattern.offset.king.pattern
+Module: fabrication.builder.pattern.offset.king.pattern
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

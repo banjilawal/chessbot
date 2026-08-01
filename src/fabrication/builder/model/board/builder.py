@@ -1,7 +1,7 @@
-# src/builder/model/board/builder.py
+# src/fabrication/builder/model/board/fabrication/builder.py
 
 """
-Module: builder.model.board.builder
+Module: fabrication.builder.model.board.builder
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from blueprint import BoardBlueprint
+from fabrication.blueprint import BoardBlueprint
 from fabrication.builder import ModelBuilder
 from err import BoardBuilderException
 from model import Board

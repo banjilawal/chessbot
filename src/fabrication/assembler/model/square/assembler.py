@@ -9,7 +9,7 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from blueprint import SquareBlueprint
+from fabrication.blueprint import SquareBlueprint
 from model import HomeSquare, Square
 from result import BuildResult
 from fabrication.assembler import ModelAssembler

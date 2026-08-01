@@ -9,7 +9,7 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from blueprint import ScalarBlueprint
+from fabrication.blueprint import ScalarBlueprint
 from model import Scalar
 from result import BuildResult
 from fabrication.assembler import ModelAssembler

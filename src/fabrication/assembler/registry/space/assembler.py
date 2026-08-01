@@ -13,7 +13,7 @@ from abc import ABC, abstractmethod
 from typing import Generic, TypeVar
 
 from fabrication.assembler import Assembler
-from blueprint import SpaceReservoirBlueprint
+from fabrication.blueprint import SpaceReservoirBlueprint
 from result import BuildResult
 from util import LoggingLevelRouter
 

@@ -12,7 +12,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Type
 
-from blueprint import SquareBlueprint
+from fabrication.blueprint import SquareBlueprint
 from bootstrapper import PrimingValidator
 from carrier import SquareCarrier
 from detector import SquareCollisionDetector

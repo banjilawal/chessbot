@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Any, cast
 
-from blueprint import QueryValidationBlueprint
+from fabrication.blueprint import QueryValidationBlueprint
 from err import QueryValidatorException
 from model import CatalogQuery, Query, StackQuery
 from result import ValidationResult

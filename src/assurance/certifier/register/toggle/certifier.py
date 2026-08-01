@@ -10,7 +10,7 @@ version: 1.0.1
 from __future__ import annotations
 from typing import List, Optional, cast
 
-from blueprint import VectorToggleRegisterBlueprint
+from fabrication.blueprint import VectorToggleRegisterBlueprint
 from carrier import VectorToggleRegisterCarrier
 from err import (
     RegisterEmptyException, RegisterSizeException, VectorToggleRegisterCertifierException,

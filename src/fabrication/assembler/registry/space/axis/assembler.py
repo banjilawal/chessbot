@@ -10,7 +10,7 @@ version: 1.0.1
 from __future__ import annotations
 
 from fabrication.assembler import SpaceReservoirAssembler
-from blueprint import AxisReservoirBlueprint
+from fabrication.blueprint import AxisReservoirBlueprint
 from geometry.registry import AxisReservoir
 from result import BuildResult
 from util import LoggingLevelRouter

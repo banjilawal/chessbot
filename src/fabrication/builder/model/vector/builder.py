@@ -1,7 +1,7 @@
-# src/builder/model/vector/builder.py
+# src/fabrication/builder/model/vector/fabrication/builder.py
 
 """
-Module: builder.model.vector.builder
+Module: fabrication.builder.model.vector.builder
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from blueprint import VectorBlueprint
+from fabrication.blueprint import VectorBlueprint
 from fabrication.builder import ModelBuilder
 from err import VectorBuilderException
 from model import Vector

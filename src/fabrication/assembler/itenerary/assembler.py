@@ -9,7 +9,7 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from blueprint import ItineraryBlueprint
+from fabrication.blueprint import ItineraryBlueprint
 from result import BuildResult
 from fabrication.assembler import Assembler
 from util import  LoggingLevelRouter

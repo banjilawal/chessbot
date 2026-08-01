@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Any, List, cast
 
-from blueprint import SoutheastQuadrantBlueprint
+from fabrication.blueprint import SoutheastQuadrantBlueprint
 from carrier import SoutheastQuadrantCarrier
 from model import Vector
 from result import ValidationResult

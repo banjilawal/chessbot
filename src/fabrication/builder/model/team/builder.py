@@ -1,7 +1,7 @@
-# src/builder/model/team/builder.py
+# src/fabrication/builder/model/team/fabrication/builder.py
 
 """
-Module: builder.model.team.builder
+Module: fabrication.builder.model.team.builder
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from blueprint import TeamBlueprint
+from fabrication.blueprint import TeamBlueprint
 from fabrication.builder import ModelBuilder
 from err import TeamBuilderException
 from model import Team

@@ -9,7 +9,7 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from blueprint import VectorBlueprint
+from fabrication.blueprint import VectorBlueprint
 from model import Vector
 from result import BuildResult
 from fabrication.assembler import ModelAssembler

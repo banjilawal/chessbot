@@ -1,13 +1,13 @@
-# src/builder/context/rank/__init__.py
+# src/fabrication/builder/context/rank/__init__.py
 
 """
-Module: builder.context.rank.__init__
+Module: fabrication.builder.context.rank.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
 """
 
-# =========== BUILDER.RANK PACKAGE ===========#
+# =========== FABRICATION.BUILDER.RANK PACKAGE ===========#
 
 # Packages
 

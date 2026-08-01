@@ -12,7 +12,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Type
 
-from blueprint import RankBlueprint
+from fabrication.blueprint import RankBlueprint
 from carrier import RankCarrier
 from err import RankBlueprintNullException, RankCarrierNullException, RankNullException
 from model import Rank

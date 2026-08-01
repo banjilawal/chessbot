@@ -1,7 +1,7 @@
-# src/builder/model/coord/builder.py
+# src/fabrication/builder/model/coord/fabrication/builder.py
 
 """
-Module: builder.model.coord.builder
+Module: fabrication.builder.model.coord.builder
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from blueprint import CoordBlueprint
+from fabrication.blueprint import CoordBlueprint
 from fabrication.builder import ModelBuilder
 from err import CoordBuilderException
 from model import Coord

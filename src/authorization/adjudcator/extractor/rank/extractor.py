@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Type
 
-from blueprint import TokenBlueprint
+from fabrication.blueprint import TokenBlueprint
 from bootstrapper import PrimingValidator
 from err import BlueprintRankExtractorException, TokenBlueprintNullException
 from microservice import RankService

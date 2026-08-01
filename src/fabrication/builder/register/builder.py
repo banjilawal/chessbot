@@ -1,4 +1,4 @@
-# src/space/builder/register/__init__.py
+# src/space/fabrication/builder/register/__init__.py
 
 """
 Module: space.builder.register.__init__
@@ -12,7 +12,7 @@ from __future__ import annotations
 from abc import abstractmethod
 from typing import Generic, TypeVar, cast
 
-from blueprint import RegisterBlueprint
+from fabrication.blueprint import RegisterBlueprint
 from fabrication.builder import Builder
 from result import BuildResult
 from toolkit import RegisterBuilderToolkit

@@ -1,7 +1,7 @@
-# src/builder/toggle/vector/builder.py
+# src/fabrication/builder/toggle/vector/fabrication/builder.py
 
 """
-Module: builder.toggle.vector.builder
+Module: fabrication.builder.toggle.vector.builder
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from blueprint import VectorToggleBlueprint
+from fabrication.blueprint import VectorToggleBlueprint
 from fabrication.builder import ToggleBuilder
 from err import VectorToggleBuilderException
 from result import BuildResult, MethodResultType

@@ -1,7 +1,7 @@
-# src/builder/context/persona/builder.py
+# src/fabrication/builder/context/persona/fabrication/builder.py
 
 """
-Module: builder.context.persona.builder
+Module: fabrication.builder.context.persona.builder
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

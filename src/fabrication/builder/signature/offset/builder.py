@@ -1,7 +1,7 @@
-# src/builder/pattern/offset/builder.py
+# src/fabrication/builder/pattern/offset/fabrication/builder.py
 
 """
-Module: builder.pattern.offset.builder
+Module: fabrication.builder.pattern.offset.builder
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

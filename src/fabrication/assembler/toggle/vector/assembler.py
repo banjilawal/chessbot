@@ -10,7 +10,7 @@ version: 1.0.1
 from __future__ import annotations
 
 from fabrication.assembler import ToggleAssembler
-from blueprint.toggle import VectorToggleBlueprint
+from fabrication.blueprint.toggle import VectorToggleBlueprint
 
 from result import BuildResult
 from toggle import VectorToggle

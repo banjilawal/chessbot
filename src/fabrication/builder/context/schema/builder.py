@@ -1,7 +1,7 @@
-## src/builder/context/schema/builder.py
+## src/fabrication/builder/context/schema/fabrication/builder.py
 
 """
-Module: builder.context.schema.builder
+Module: fabrication.builder.context.schema.builder
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

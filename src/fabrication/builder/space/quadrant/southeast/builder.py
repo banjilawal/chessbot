@@ -1,7 +1,7 @@
-# src/builder/space/quadrant/southeast/builder.py
+# src/fabrication/builder/space/quadrant/southeast/fabrication/builder.py
 
 """
-Module: builder.space.quadrant.southeast.builder
+Module: fabrication.builder.space.quadrant.southeast.builder
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from blueprint import SoutheastQuadrantBlueprint
+from fabrication.blueprint import SoutheastQuadrantBlueprint
 from fabrication.builder import QuadrantBuilder
 from err import SoutheastQuadrantBuilderException
 from result import BuildResult, MethodResultType

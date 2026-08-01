@@ -10,7 +10,7 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Optional, cast
 
-from blueprint import TokenBlueprint
+from fabrication.blueprint import TokenBlueprint
 from bootstrapper import PrimingValidator, TokenCollider, TokenCollisionBootstrapper
 from detector import Detector
 from microservice import IdentityService

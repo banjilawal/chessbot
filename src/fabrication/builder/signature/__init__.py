@@ -1,13 +1,13 @@
-# src/builder/pattern/__init__.py
+# src/fabrication/builder/pattern/__init__.py
 
 """
-Module: builder.pattern.__init__
+Module: fabrication.builder.pattern.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
 """
 
-# =========== BUILDER.PATTERN PACKAGE ===========#
+# =========== FABRICATION.BUILDER.PATTERN PACKAGE ===========#
 
 # Packages
 from .generator import *

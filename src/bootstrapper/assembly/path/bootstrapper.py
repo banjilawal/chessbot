@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import List
 
-from blueprint import PathBlueprint
+from fabrication.blueprint import PathBlueprint
 from controller import WorkerRegistryController
 from report import CollisionReport
 from toolkit import PathToolkit

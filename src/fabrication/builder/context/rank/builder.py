@@ -1,7 +1,7 @@
-# src/builder/context/rank/builder.py
+# src/fabrication/builder/context/rank/fabrication/builder.py
 
 """
-Module: builder.context.rank.builder
+Module: fabrication.builder.context.rank.builder
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

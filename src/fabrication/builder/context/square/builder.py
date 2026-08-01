@@ -1,7 +1,7 @@
-# src/builder/context/square/builder.py
+# src/fabrication/builder/context/square/fabrication/builder.py
 
 """
-Module: builder.context.square.builder
+Module: fabrication.builder.context.square.builder
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

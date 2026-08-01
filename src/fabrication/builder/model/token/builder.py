@@ -1,7 +1,7 @@
-# src/builder/model/token/builder.py
+# src/fabrication/builder/model/token/fabrication/builder.py
 
 """
-Module: builder.model.token.builder
+Module: fabrication.builder.model.token.builder
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from blueprint import TokenBlueprint
+from fabrication.blueprint import TokenBlueprint
 from fabrication.builder import ModelBuilder
 from err import TokenBuilderException
 from model import Token

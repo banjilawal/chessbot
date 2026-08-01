@@ -9,7 +9,7 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from blueprint import CoordBlueprint
+from fabrication.blueprint import CoordBlueprint
 from result import BuildResult
 from fabrication.assembler import ModelAssembler
 from util import LoggingLevelRouter

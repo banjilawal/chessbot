@@ -1,7 +1,7 @@
-# src/builder/endpoint/quadrant/southeast/builder.py
+# src/fabrication/builder/endpoint/quadrant/southeast/fabrication/builder.py
 
 """
-Module: builder.endpoint.quadrant.southeast.builder
+Module: fabrication.builder.endpoint.quadrant.southeast.builder
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

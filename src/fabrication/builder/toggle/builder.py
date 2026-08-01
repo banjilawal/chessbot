@@ -1,7 +1,7 @@
-# src/builder/builder/toggle/builder.py
+# src/fabrication/builder/fabrication/builder/toggle/fabrication/builder.py
 
 """
-Module: builder.toggle.builder
+Module: fabrication.builder.toggle.builder
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -13,7 +13,7 @@ from abc import abstractmethod
 from typing import Generic, TypeVar, cast
 
 
-from blueprint.toggle import ToggleBlueprint
+from fabrication.blueprint.toggle import ToggleBlueprint
 from fabrication.builder import Builder
 from result import BuildResult
 from toolkit import BuilderToolkit, ToggleBuilderToolkit

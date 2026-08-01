@@ -12,7 +12,7 @@ from __future__ import annotations
 from abc import ABC, abstractmethod
 from typing import Any, Generic, Optional, TypeVar
 
-from blueprint import Blueprint
+from fabrication.blueprint import Blueprint
 from result import ValidationResult
 from assurance.certifier import EntityCarrierValidator
 from toolkit import Toolkit

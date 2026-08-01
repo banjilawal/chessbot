@@ -1,7 +1,7 @@
-# src/builder/container/register/builder.py
+# src/fabrication/builder/container/register/fabrication/builder.py
 
 """
-Module: builder.container.register.builder
+Module: fabrication.builder.container.register.builder
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

@@ -1,7 +1,7 @@
-# src/builder/toggle/vector/__init__.py
+# src/fabrication/builder/toggle/vector/__init__.py
 
 """
-Module: builder.toggle.vector.__init__
+Module: fabrication.builder.toggle.vector.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

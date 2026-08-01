@@ -1,7 +1,7 @@
-# src/builder/model/snapshot/builder.py
+# src/fabrication/builder/model/snapshot/fabrication/builder.py
 
 """
-Module: builder.model.snapshot.builder
+Module: fabrication.builder.model.snapshot.builder
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from blueprint import SnapshotBlueprint
+from fabrication.blueprint import SnapshotBlueprint
 from fabrication.builder import ModelBuilder
 from err import SnapshotBuilderException
 from model import Snapshot

@@ -1,13 +1,13 @@
-# src/builder/model/vector/__init__.py
+# src/fabrication/builder/model/vector/__init__.py
 
 """
-Module: builder.model.vector.__init__
+Module: fabrication.builder.model.vector.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
 """
 
-# =========== BUILDER.VECTOR PACKAGE ===========#
+# =========== FABRICATION.BUILDER.VECTOR PACKAGE ===========#
 
 # Packages
 

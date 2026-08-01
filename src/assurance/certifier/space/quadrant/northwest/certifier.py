@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Any, List, cast
 
-from blueprint import NorthwestQuadrantBlueprint
+from fabrication.blueprint import NorthwestQuadrantBlueprint
 from carrier import NorthwestQuadrantCarrier
 from err import NorthwestQuadrantCarrierNullException, NorthwestQuadrantRootCertifierException
 from model import Vector

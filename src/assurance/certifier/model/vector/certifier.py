@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import cast
 
-from blueprint import VectorBlueprint
+from fabrication.blueprint import VectorBlueprint
 from carrier import VectorCarrier
 from err import VectorRootCertifierException
 from model import Vector

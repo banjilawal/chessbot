@@ -1,13 +1,13 @@
-# src/builder/space/__init__.py
+# src/fabrication/builder/space/__init__.py
 
 """
-Module: builder.space.__init__
+Module: fabrication.builder.space.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
 """
 
-# =========== BUILDER.SPACE PACKAGE ===========#
+# =========== FABRICATION.BUILDER.SPACE PACKAGE ===========#
 
 # Packages
 from .axis import *

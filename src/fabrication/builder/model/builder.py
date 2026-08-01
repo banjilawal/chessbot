@@ -1,7 +1,7 @@
-# src/builder/model/builder/model/builder.py
+# src/fabrication/builder/model/fabrication/builder/model/fabrication/builder.py
 
 """
-Module: builder.model.builder
+Module: fabrication.builder.model.builder
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -12,7 +12,7 @@ from __future__ import annotations
 from abc import abstractmethod
 from typing import Generic, TypeVar, cast
 
-from blueprint import ModelBlueprint
+from fabrication.blueprint import ModelBlueprint
 from result import BuildResult
 from util import LoggingLevelRouter
 from fabrication.builder import Builder

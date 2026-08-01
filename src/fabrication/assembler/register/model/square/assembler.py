@@ -10,7 +10,7 @@ version: 1.0.1
 from __future__ import annotations
 
 from fabrication.assembler import RegisterAssembler
-from blueprint import SquareRegisterBlueprint
+from fabrication.blueprint import SquareRegisterBlueprint
 from register import SquareRegister
 from result import BuildResult
 from util import LoggingLevelRouter

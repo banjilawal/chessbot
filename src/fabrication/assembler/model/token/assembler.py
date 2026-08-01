@@ -10,7 +10,7 @@ version: 1.0.1
 from __future__ import annotations
 
 from fabrication.assembler import ModelAssembler
-from blueprint import TokenBlueprint
+from fabrication.blueprint import TokenBlueprint
 from result import BuildResult
 
 from util import LoggingLevelRouter

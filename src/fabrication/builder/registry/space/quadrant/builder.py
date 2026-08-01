@@ -1,7 +1,7 @@
-# src/builder/registry/space/quadrant/builder.py
+# src/fabrication/builder/registry/space/quadrant/fabrication/builder.py
 
 """
-Module: builder.registry.space.quadrant.builder
+Module: fabrication.builder.registry.space.quadrant.builder
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from blueprint import QuadrantReservoirBlueprint
+from fabrication.blueprint import QuadrantReservoirBlueprint
 from fabrication.builder import SpaceReservoirBuilder
 from err import QuadrantReservoirBuilderException
 from geometry.registry import QuadrantReservoir

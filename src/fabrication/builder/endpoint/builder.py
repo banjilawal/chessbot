@@ -1,7 +1,7 @@
-# src/builder/endpoint/builder.py
+# src/fabrication/builder/endpoint/fabrication/builder.py
 
 """
-Module: builder.endpoint.builder
+Module: fabrication.builder.endpoint.builder
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

@@ -1,7 +1,7 @@
-# src/builder/pattern/traversal/builder.py
+# src/fabrication/builder/pattern/traversal/fabrication/builder.py
 
 """
-Module: builder.pattern.traversal.builder
+Module: fabrication.builder.pattern.traversal.builder
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

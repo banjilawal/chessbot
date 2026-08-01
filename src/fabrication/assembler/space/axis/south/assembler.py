@@ -9,7 +9,7 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from blueprint import SouthAxisBlueprint
+from fabrication.blueprint import SouthAxisBlueprint
 
 from result import BuildResult
 from fabrication.assembler import AxisAssembler

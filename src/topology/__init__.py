@@ -14,4 +14,4 @@ from .rank import *
 
 
 # Modules
-from .topology import Tree
+from .topology import Topology

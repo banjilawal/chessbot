@@ -13,7 +13,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Generic, Type, TypeVar
 
-from blueprint import Blueprint
+from fabrication.blueprint import Blueprint
 from carrier import EntityCarrier
 from err import QuadrantBlueprintNullException, QuadrantCarrierNullException, QuadrantNullException
 from toolkit import SpaceToolkit

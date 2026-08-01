@@ -1,7 +1,7 @@
-# src/builder/register/vector/builder.py
+# src/fabrication/builder/register/vector/fabrication/builder.py
 
 """
-Module: builder.register.vector.builder
+Module: fabrication.builder.register.vector.builder
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import cast
 
-from blueprint import VectorRegisterBlueprint
+from fabrication.blueprint import VectorRegisterBlueprint
 from fabrication.builder import RegisterBuilder
 from err import VectorRegisterBuilderException
 from register import VectorRegister

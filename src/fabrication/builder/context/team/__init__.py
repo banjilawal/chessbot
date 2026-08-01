@@ -1,13 +1,13 @@
-# src/builder/context/team/__init__.py
+# src/fabrication/builder/context/team/__init__.py
 
 """
-Module: builder.context.team.__init__
+Module: fabrication.builder.context.team.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
 """
 
-# =========== BUILDER.TEAM PACKAGE ===========#
+# =========== FABRICATION.BUILDER.TEAM PACKAGE ===========#
 
 # Packages
 

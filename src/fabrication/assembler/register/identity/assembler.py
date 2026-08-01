@@ -11,7 +11,7 @@ from __future__ import annotations
 
 
 from fabrication.assembler import RegisterAssembler
-from blueprint import IdentityRegisterBlueprint
+from fabrication.blueprint import IdentityRegisterBlueprint
 from register import IdentityRegister
 from result import BuildResult
 from util import LoggingLevelRouter

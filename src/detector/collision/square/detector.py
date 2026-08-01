@@ -9,7 +9,7 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from blueprint import SquareBlueprint
+from fabrication.blueprint import SquareBlueprint
 from detection import Detector
 from err import (
     SquareCollisionDetectorException, SquareCoordCollisionException, SquareIdCollisionException,

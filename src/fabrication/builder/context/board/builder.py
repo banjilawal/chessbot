@@ -1,7 +1,7 @@
-# src/builder/context/board/builder.py
+# src/fabrication/builder/context/board/fabrication/builder.py
 
 """
-Module: builder.context.board.builder
+Module: fabrication.builder.context.board.builder
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Optional, Type, cast
 
-from blueprint import QuadrantReservoirBlueprint
+from fabrication.blueprint import QuadrantReservoirBlueprint
 from carrier import QuadrantReservoirCarrier
 from err import QuadrantReservoirNullException, SpaceReservoirNullException
 from geometry.space import Quadrant, QuadrantReservoir

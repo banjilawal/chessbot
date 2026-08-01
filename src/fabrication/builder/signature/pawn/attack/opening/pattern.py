@@ -1,7 +1,7 @@
-# src/builder/pattern/pawn/builder/pattern.py
+# src/fabrication/builder/pattern/pawn/fabrication/builder/pattern.py
 
 """
-Module: builder.pattern.pawn.pattern
+Module: fabrication.builder.pattern.pawn.pattern
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

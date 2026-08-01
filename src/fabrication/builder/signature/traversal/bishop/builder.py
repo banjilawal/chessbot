@@ -1,7 +1,7 @@
-# src/builder/pattern/traversal/bishop/builder/pattern.py
+# src/fabrication/builder/pattern/traversal/bishop/fabrication/builder/pattern.py
 
 """
-Module: builder.pattern.traversal.bishop.pattern
+Module: fabrication.builder.pattern.traversal.bishop.pattern
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

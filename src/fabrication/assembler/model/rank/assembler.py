@@ -10,7 +10,7 @@ version: 1.0.1
 from __future__ import annotations
 
 
-from blueprint import RankBlueprint
+from fabrication.blueprint import RankBlueprint
 from model import Bishop, King, Knight, Pawn, Queen, Rank, Rook
 from result import BuildResult
 from fabrication.assembler import ModelAssembler

@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Type
 
-from blueprint import VectorRegisterBlueprint
+from fabrication.blueprint import VectorRegisterBlueprint
 from carrier import VectorRegisterCarrier
 from err import VectorRegisterBlueprintNullException, VectorRegisterCarrierNullException, VectorRegisterNullException
 from register import VectorRegister

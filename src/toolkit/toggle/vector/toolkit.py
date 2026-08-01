@@ -12,7 +12,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Type
 
-from blueprint import VectorToggleBlueprint
+from fabrication.blueprint import VectorToggleBlueprint
 from carrier.toggle.vector.carrier import VectorToggleCarrier
 from err import VectorToggleBlueprintNullException, VectorToggleCarrierNullException, VectorToggleNullException
 from suite import  CoordOperationSuite, VectorOperationSuite

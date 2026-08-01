@@ -10,7 +10,7 @@ version: 1.0.1
 from __future__ import annotations
 
 from fabrication.assembler import ModelAssembler
-from blueprint import TeamBlueprint
+from fabrication.blueprint import TeamBlueprint
 from model import Team
 from result import BuildResult
 from util import LoggingLevelRouter
