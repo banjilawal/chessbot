@@ -17,11 +17,11 @@ from result import MethodResultType
 
 __all__ = [
     # ======================# PAWN_PROMOTION_TESTER_FAILURE #======================#
-    "PromotionPawnTesterException",
+    "PromotionPawnAdjudicatorException",
 ]
 
 # ======================# PAWN_PROMOTION_TESTER_FAILURE #======================#
-class PromotionPawnTesterException(TesterException):
+class PromotionPawnAdjudicatorException(TesterException):
     """
     Role:
         -   Error Tracing

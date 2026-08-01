@@ -1,4 +1,4 @@
-# src/core/adjudicator/request/promotion/token/core/adjudicator.py
+# src/core/adjudicator/request/promotion/token/adjudicator.py
 
 """
 Module: core.adjudicator.request.promotion.token.adjudicator
@@ -118,7 +118,7 @@ class PromotionRequestAdjudicator(RequestAdjudicator):
                 )
             )
         # Handle the case that, the subject is not a pawn.
-        pawn_test = self._pawn_adjudicator.execute(subject=request.candidate)
+        pawn_test = self._pawn_adjudicator.execute(candidate=request.candidate)
         if pawn_test.is_failure:
             # Send the exception chain in the result.
             return ValidationResult.failure(

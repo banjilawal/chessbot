@@ -1,4 +1,4 @@
-# src/core/adjudicator/core/adjudicator.py
+# src/core/adjudicator/adjudicator.py
 
 """
 Module: core.adjudicator.adjudicator

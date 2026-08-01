@@ -85,8 +85,8 @@ class ManeuverValidatorBootstrapper(ValidatorBootstrapper):
 
         if isinstance(subject, CombatantToken):
             return toolkit.combatant_maneuver_validator.execute(
-                subject=cast(CombatantToken, subject)
+                candidate=cast(CombatantToken, subject)
             )
         return toolkit.king_maneuver_validator.execute(
-            subject=cast(KingToken, subject)
+            candidate=cast(KingToken, subject)
         )

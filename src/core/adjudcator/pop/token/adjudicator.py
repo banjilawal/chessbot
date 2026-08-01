@@ -1,4 +1,4 @@
-# src/core/adjudicator/request/pop/token/core/adjudicator.py
+# src/core/adjudicator/request/pop/token/adjudicator.py
 
 """
 Module: core.adjudicator.request.pop.token.adjudicator

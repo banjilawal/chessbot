@@ -1,4 +1,4 @@
-# src/core/adjudicator/maneuver/core/adjudicator.py
+# src/core/adjudicator/maneuver/adjudicator.py
 
 """
 Module: core.adjudicator.maneuver.adjudicator
@@ -11,13 +11,13 @@ from __future__ import annotations
 
 from typing import Any, Optional, cast
 
+from core import RequestAdjudicator
 from err import CircularPathException, ManeuverRequestAdjudicatorException, ManeuverRequestNullException
 from model import Maneuver, Path, Square
 from register import SquareRegister
 from report import ManeuverApprovalReport
 from request import ManeuverRequest
 from result import MethodResultType
-from core.adjudicator import RequestAdjudicator
 from toolkit import TokenManeuverToolkit
 from util import IdFactory, LoggingLevelRouter
 
@@ -55,26 +55,24 @@ class ManeuverRequestAdjudicator(RequestAdjudicator[ManeuverRequest]):
     def execute(self, candidate: Any) -> ManeuverApprovalReport:
         """
         Action:
-            1.  Return a failure result containing an exception chain if either:
-                    -   The collision_detector
-                    -   The rank_quota_analyzer
-                do not complete their work.
-            2.  Otherwise, send a deletion denial if
-                    -   The TokenStack is full.
-                    -   The item collides with an existing stack member.
-                    -   The quota for the token's rank is full.
-            3.  Send an approval if all the tests are passed.
+            1.  Return a denial report containing an exception chain if any of the following occur:
+                    -   The candidate is null
+                    -   The candidate is not a ManeuverRequest
+                    -   The token in the request is not actionable.
+                    -   Searching the token's square fails.
+                    -   The destination is not approved.
+                    -   The destination and the origin are the same.
+            2.  Otherwise, send an approval report.
         Args:
             candidate: Any
         Returns:
             ManeuverApprovalReport
         Raises:
-            TokenDeleteAdjudicatorException
-            TokenStackFullException
+            ManeuverRequestAdjudicatorException
         """
         method =  f"{self.__class__.__name__}.execute"
         
-            
+        # Handle the case that the, the candidate is either null or the wrong type.
         bootstrap = self.bootstrapper.execute(
             candidate=candidate,
             target_mode=[ManeuverRequest],

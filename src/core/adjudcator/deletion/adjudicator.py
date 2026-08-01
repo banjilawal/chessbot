@@ -1,4 +1,4 @@
-# src/core/adjudicator/request/deletion/core/adjudicator.py
+# src/core/adjudicator/request/deletion/adjudicator.py
 
 """
 Module: core.adjudicator.request.deletion.adjudicator

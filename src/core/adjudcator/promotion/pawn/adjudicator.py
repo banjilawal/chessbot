@@ -1,4 +1,4 @@
-# src/core/adjudicator/promotion/pawn/core/adjudicator.py
+# src/core/adjudicator/promotion/pawn/adjudicator.py
 
 """
 Module: core.adjudicator.promotion.pawn.adjudicator
@@ -20,13 +20,10 @@ from err import (
 from model import PawnToken
 from report import TokenReadinessReport
 from result import MethodResultType, ValidationResult
-from core.adjudicator import RequestAdjudicator
 from util import LoggingLevelRouter
 
-f
 
-
-class PromotionPawnRequestAdjudicator(RequestAdjudicator):
+class PromotionPawnRequestAdjudicator:
     """
     Role:
         -   Helper
@@ -58,7 +55,7 @@ class PromotionPawnRequestAdjudicator(RequestAdjudicator):
     
     
     @LoggingLevelRouter.monitor
-    def execute(self, subject: Any) -> ValidationResult:
+    def execute(self, candidate: Any) -> ValidationResult[PawnToken]:
         """
         Verifies the subject is a promotable pawn.
         
@@ -70,7 +67,7 @@ class PromotionPawnRequestAdjudicator(RequestAdjudicator):
                     -   Is not on its enemy's rank_row.
             2.  Otherwise, Send the success result.
         Args:
-            subject: Any
+            candidate: Any
         Returns:
             ValidationResult[PawnToken]
         Raises:
@@ -83,7 +80,7 @@ class PromotionPawnRequestAdjudicator(RequestAdjudicator):
         method = f"{self.__class__.__name__}.execute"
         
         # Handle the case that, the request is malformed
-        readiness_analysis_result = self._readiness_analyzer.execute(token=subject)
+        readiness_analysis_result = self._readiness_analyzer.execute(token=candidate)
         # Handle the case that, the readiness analysis is not completed.
         if readiness_analysis_result.is_failure:
             # Send the exception chain in the result.
@@ -117,7 +114,7 @@ class PromotionPawnRequestAdjudicator(RequestAdjudicator):
                 )
             )
         # Handle the case that, the subject is not a pawn.
-        if not isinstance(subject, PawnToken):
+        if not isinstance(candidate, PawnToken):
             # Send the exception chain in the result.
             return ValidationResult.failure(
                 PromotionPawnAdjudicatorException(
@@ -128,7 +125,7 @@ class PromotionPawnRequestAdjudicator(RequestAdjudicator):
                     mthd_rslt_type=MethodResultType.VALIDATION_RESULT,
                     ex=TypeError(
                         f"Expected type PawnToken for promotion. "
-                        f"Got {type(subject).__name__} instead."
+                        f"Got {type(candidate).__name__} instead."
                     )
                 )
             )

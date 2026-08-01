@@ -1,4 +1,4 @@
-# src/core/adjudicator/promotion/rank/core/adjudicator.py
+# src/core/adjudicator/promotion/rank/adjudicator.py
 
 """
 Module: core.adjudicator.promotion.rank.adjudicator
