@@ -18,7 +18,7 @@ from authorization.permitter import SearchPermitter
 from report import SearchApprovalReport
 from authorization.request import SearchRequest
 from stack import TokenStackService
-from authorization.adjudcator import TokenSearchRequestTester
+from authorization.adjudcator import TokenSearchRequestAdjudicator
 from util import LoggingLevelRouter
 
 
@@ -33,7 +33,7 @@ class TokenSearchPermitter(SearchPermitter[Token]):
         1.  Run tests to see if permission can be granted to a TokenStackService to execute a search.
 
     Attributes:
-        request_tester: TokenSearchRequestTester
+        request_adjudicator: TokenSearchRequestAdjudicator
 
     Provides:
         -   execute(request: SearchRequest) -> SearchApprovalReport
@@ -41,18 +41,18 @@ class TokenSearchPermitter(SearchPermitter[Token]):
     Super Class:
         SearchPermitter
     """
-    _request_tester: TokenSearchRequestTester
+    _request_adjudicator: TokenSearchRequestAdjudicator
     
     def __init__(
             self,
-            request_tester: TokenSearchRequestTester | None = TokenSearchRequestTester()
+            request_adjudicator: TokenSearchRequestAdjudicator | None = TokenSearchRequestAdjudicator()
     ):
         """
         Args:
-            request_tester: TokenSearchRequestTester
+            request_adjudicator: TokenSearchRequestAdjudicator
         """
         super().__init__()
-        self._request_tester = request_tester
+        self._request_adjudicator = request_adjudicator
         
         
     @LoggingLevelRouter.monitor
@@ -79,7 +79,7 @@ class TokenSearchPermitter(SearchPermitter[Token]):
         method =  f"{self.__class__.__name__}.execute"
         
         # Handle the case that, the request is not bootstrapped successfully.
-        bootstrap = self._request_tester.execute(candidate=request)
+        bootstrap = self._request_adjudicator.execute(candidate=request)
         if bootstrap.is_failure:
             # Send an exception chain in the permission denial.
             return SearchApprovalReport.deny(

@@ -9,70 +9,45 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from typing import Optional
+from abc import ABC
+from typing import Generic, Optional, TypeVar
 
-from model import SquareDossier
-from node import DiscoveryStatus
-from stack import EdgeStackService
+T = TypeVar("T")
 
 
-class Node:
-    _square_dossier: SquareDossier
-    _priority: Optional[int]
-    _predecessor:Optional[Node]
-    _incoming_edges: EdgeStackService
-    _outgoing_edges: EdgeStackService
-    _discovery_status: DiscoveryStatus
+class Node(ABC, Generic[T]):
+    _payload: T
+    _next: Optional[Node[T]]
+    _previous: Optional[T]
     
     
     def __init__(
             self,
-            square_dossier: square_dossier,
-            incoming_edges: Optional[EdgeStackService]| None = None,
-            outgoing_edges: Optional[EdgeStackService] | None = None,
+            payload: T,
+            next: Optional[Node[T] ]| None = None,
+            previous: Optional[Node[T]] | None = None,
     ):
-        self._square_dossier = square_dossier
-        self._incoming_edges = incoming_edges or EdgeStackService()
-        self._outgoing_edges = outgoing_edges or EdgeStackService()
-        
-        self._priority = None
-        self._predecessor = None
-        self._discovery_status = DiscoveryStatus.UNKNOWN
+        self.payload = payload
+        self._next = next
+        self._previous = previous
+
     
     @property
-    def square_dossier(self) -> SquareDossier:
-        return self._square_dossier
+    def payload(self) -> T:
+        return self.payload
     
     @property
-    def incoming_edges(self) -> EdgeStackService:
-        return self._incoming_edges
+    def next(self) -> Optional[Node[T]]:
+        return self._next
+    
+    @next.setter
+    def next(self, other: Node[T]):
+        self._next = other
     
     @property
-    def outgoing_edges(self) -> EdgeStackService:
-        return self._outgoing_edges
+    def previous(self) -> Optional[Node[T]]:
+        return self._previous
     
-    @property
-    def discovery_status(self) -> DiscoveryStatus:
-        return self._discovery_status
-    
-    @discovery_status.setter
-    def discovery_status(self, status: DiscoveryStatus):
-        self._discovery_status = status
-        
-    @property
-    def priority(self) -> Optional[int]:
-        return self._priority
-    
-    @priority.setter
-    def priority(self, priority: int):
-        self._priority = priority
-        
-    @property
-    def predecessor(self) -> Optional[Node[T]]:
-        return self._predecessor
-    
-    @predecessor.setter
-    def predecessor(self, predecessor: Node[T]):
-        self._predecessor = predecessor
-        
-    
+    @previous.setter
+    def previous(self, other: Node[T]):
+        self._previous = other

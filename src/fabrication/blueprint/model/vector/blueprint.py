@@ -9,15 +9,16 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from dataclasses import dataclass
-from typing import Type
 
-from fabrication.blueprint import ModelBlueprint
+from typing import Optional, Type, cast
+
+from err import ModelNullException, VectorNullException
+from fabrication import ModelBlueprint
 
 from model import Vector
 
 
-@dataclass
+
 class VectorBlueprint(ModelBlueprint[Vector]):
     """
     Role:
@@ -31,22 +32,47 @@ class VectorBlueprint(ModelBlueprint[Vector]):
     Attributes:
         x: int
         y: int
+        model_class: Type[Vector]
+        null_exception: Optional[VectorModelNullException]
             
     Provides:
 
      Super Class:
         ModelBlueprint
      """
-    """
-    Args:
-        x: int
-        y: int
-        null_exception: VectorNullException
-        owner: Vector
-        owner_name: str
-    """
-    x: int
-    y: int
-    null_exception: VectorNullException = VectorNullException()
-    model_class: Vector = Type[Vector]
-    owner_name: str = type(owner).__name__
+    _x: int
+    _y: int
+    
+    def __init__(
+            self,
+            x: int,
+            y: int,
+            model_class: Type[Vector] = Vector,
+            null_exception: Optional[VectorNullException] | None = None,
+    ):
+        """
+        Args:
+            x: int
+            y: int
+            model_class: Type[Vector]
+            null_exception: Optional[VectorModelNullException]
+        """
+        super().__init__(model_class=model_class, null_exception=null_exception or VectorNullException())
+        self._x = x
+        self._y = y
+        
+    @property
+    def model_class(self) -> Type[Vector]:
+        return cast(type[Vector], super()._model_class)
+    
+    @property
+    def null_exception(self) -> VectorNullException:
+        return cast(VectorNullException, super().null_exception)
+    
+    @property
+    def x(self) -> int:
+        return self._x
+    
+    @property
+    def y(self) -> int:
+        return self._y

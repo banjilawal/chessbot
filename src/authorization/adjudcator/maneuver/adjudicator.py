@@ -1,7 +1,7 @@
-# src/core/adjudicator/maneuver/adjudicator.py
+# src/authorization/adjudicator/maneuver/adjudicator.py
 
 """
-Module: core.adjudicator.maneuver.adjudicator
+Module: authorization.adjudicator.maneuver.adjudicator
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -11,8 +11,11 @@ from __future__ import annotations
 
 from typing import Any, Optional, cast
 
-from core import RequestAdjudicator
-from err import CircularPathException, ManeuverRequestAdjudicatorException, ManeuverRequestNullException
+from authorization import RequestAdjudicator
+from err import (
+    CircularPathException, ManeuverRequestAdjudicatorException, ManeuverRequestNullException,
+    ManeuverRequestAdjudicatorException
+)
 from model import Maneuver, Path, Square
 from register import SquareRegister
 from report import ManeuverApprovalReport
@@ -108,11 +111,11 @@ class ManeuverRequestAdjudicator(RequestAdjudicator[ManeuverRequest]):
                     ex=readiness_analysis.exception,
                 )
             )
-        token_origin_search_result = self._toolkit.origin_searcher.execute(
+        token_origin_search = self._toolkit.origin_searcher.execute(
             target=request.token
         )
         # Handle the case that, the origin_searcher is not successful.
-        if token_origin_search_result.is_failure:
+        if token_origin_search.is_failure:
             # Return the exception chain on failure
             return ManeuverApprovalReport.deny(
                 ManeuverRequestAdjudicatorException(
@@ -121,10 +124,10 @@ class ManeuverRequestAdjudicator(RequestAdjudicator[ManeuverRequest]):
                     msg=ManeuverRequestAdjudicatorException.MSG,
                     err_code=ManeuverRequestAdjudicatorException.ERR_CODE,
                     mthd_rslt_type=MethodResultType.ANALYSIS_RESULT,
-                    ex=token_origin_search_result.exception,
+                    ex=token_origin_search.exception,
                 )
             )
-        origin = cast(Square, token_origin_search_result.payload[0])
+        origin = cast(Square, token_origin_search.payload[0])
         
         destination_certification = self._toolkit.destination_certifier.execute(
             candidate_primary=request.destination,
@@ -167,6 +170,7 @@ class ManeuverRequestAdjudicator(RequestAdjudicator[ManeuverRequest]):
             id=IdFactory.next_id(class_name="Path"),
             endpoints=SquareRegister(origin=origin, destination=request.destination,)
         )
+        # --- Forward the work product to the caller. ---#
         return ManeuverApprovalReport.approve(
             Maneuver(
                 path=path,

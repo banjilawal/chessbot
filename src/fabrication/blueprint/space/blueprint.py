@@ -29,7 +29,7 @@ class SpaceBlueprint(Blueprint, ABC, Generic[T]):
          2.  DTO
 
      Attributes:
-         space_class: Type[Space]
+         model_class: Type[T]
          null_exception: Optional[SpaceNullException]
          
      Provides:

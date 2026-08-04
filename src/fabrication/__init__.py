@@ -11,6 +11,7 @@ version: 1.0.1
 
 # Packages
 from .assembler import *
+from .blueprint import *
 from .builder import *
 from .factory import *
 from .finalizer import *

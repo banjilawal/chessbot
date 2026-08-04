@@ -1,7 +1,7 @@
-# src/core/adjudicator/request/pop/token/adjudicator.py
+# src/authorization/adjudicator/request/pop/token/adjudicator.py
 
 """
-Module: core.adjudicator.request.pop.token.adjudicator
+Module: authorization.adjudicator.request.pop.token.adjudicator
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -17,7 +17,7 @@ from err import TokenStackNullException, TokenPopRequestAdjudicatorException
 from authorization.request import PopRequest
 from result import MethodResultType, ValidationResult
 from stack import TokenStackService
-from core.adjudicator import PopRequestAdjudicator
+from authorization.adjudicator import PopRequestAdjudicator
 from util import LoggingLevelRouter
 
 

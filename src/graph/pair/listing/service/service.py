@@ -10,7 +10,7 @@ version: 1.0.0
 from __future__ import annotations
 from typing import List, cast
 
-from node import Node
+from node import SquareNode
 from graph.pair import PairList, PairListBuilder, PairListValidator, PairService
 from graph.pair.listing.service import PairListServiceException
 from system import IdFactory, IntegrityMicroservice, LoggingLevelRouter, SearchResult
@@ -72,7 +72,7 @@ class PairListService(IntegrityMicroservice[PairList]):
         return self._pair_service
 
     @LoggingLevelRouter.monitor
-    def unique_nodes(self, pair_list: PairList) -> SearchResult[List[Node]]:
+    def unique_nodes(self, pair_list: PairList) -> SearchResult[List[SquareNode]]:
         """
         Action:
             1.  Put topmost head into the list
@@ -107,7 +107,7 @@ class PairListService(IntegrityMicroservice[PairList]):
             return SearchResult.empty()
         
         # --- Create the return target then, prime it with the first node's head.---#
-        unique_nodes: List[Node] = [pair_list.couples[0].head]
+        unique_nodes: List[SquareNode] = [pair_list.couples[0].head]
         
         # --- Process each couple's unique tail. ---#
         for couple in pair_list.couples:
@@ -118,7 +118,7 @@ class PairListService(IntegrityMicroservice[PairList]):
         return SearchResult.success(unique_nodes)
     
     @LoggingLevelRouter.monitor
-    def find_couples_by_node(self, node: Node, pair_list: PairList) -> SearchResult[List[Node]]:
+    def find_couples_by_node(self, node: SquareNode, pair_list: PairList) -> SearchResult[List[SquareNode]]:
         method = f"{self.__class__.__name__}.find_couples_by_node"
         
         matches = [

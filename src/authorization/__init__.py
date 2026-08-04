@@ -10,6 +10,8 @@ version: 1.0.1
 # =========== AUTHORIZATION PACKAGE ===========#
 
 # Packages
-
+from .adjudcator import *
+from .permitter import *
+from .request import *
 
 # Modules

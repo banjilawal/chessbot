@@ -16,7 +16,7 @@ from err import ManeuverPermitterException
 from report import ManeuverApprovalReport
 from authorization.request import ManeuverRequest
 from result import MethodResultType
-from authorization.adjudcator import ManeuverRequestTester
+from authorization.adjudcator import ManeuverRequestAdjudicator
 from util import LoggingLevelRouter
 
 
@@ -28,32 +28,33 @@ class TokenManeuverPermitter:
         - Process Runner
 
     Responsibilities:
-        1.  Run tests to see if permission can be granted to a TokenStackService to execute a deletion.
+        1.  Run tests before a token can be authorized to move.
 
     Attributes:
-         tester: Optional[ManeuverRequestTester]
+         adjudicator: Optional[ManeuverRequestAdjudicator]
 
     Provides:
         -   def execute(request: ManeuverRequest) -> ManeuverApprovalReport
 
     Super Class:
+        Permitter
     """
-    _tester: Optional[ManeuverRequestTester]
+    _adjudicator: Optional[ManeuverRequestAdjudicator]
     
-    def __init__(self, tester: Optional[ManeuverRequestTester] |  None = None):
+    def __init__(self, adjudicator: Optional[ManeuverRequestAdjudicator] |  None = None):
         """
         Args:
-             tester: Optional[ManeuverRequestTester]
+             adjudicator: Optional[ManeuverRequestAdjudicator]
         """
-        self._tester = tester or ManeuverRequestTester()
+        self._adjudicator = adjudicator or ManeuverRequestAdjudicator()
     
     @LoggingLevelRouter.monitor
     def execute(self, request: ManeuverRequest) -> ManeuverApprovalReport:
         """
         Action:
-            1.  Send an exception chain in the ApprovalReport if the tester denies the
+            1.  Send an exception chain in the ApprovalReport if the adjudicator denies the
                 request.
-            2.  Otherwise, forward the tester's approval.
+            2.  Otherwise, forward the adjudicator's approval.
         Args:
             request: ManeuverRequest
         Returns:
@@ -63,8 +64,8 @@ class TokenManeuverPermitter:
         """
         method =  f"{self.__class__.__name__}.execute"
         
-        # Handoff the request to the tester for processing.
-        approval = self._tester.execute(cadidate=request)
+        # Handoff the request to the adjudicator for processing.
+        approval = self._adjudicator.execute(cadidate=request)
         
         # Handle the case that the request is denied.
         if approval.is_denied:

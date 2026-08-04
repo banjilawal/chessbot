@@ -10,7 +10,8 @@ version: 1.0.1
 # =========== NODE PACKAGE ===========#
 
 # Packages
-from .square import *
+from .dossier import *
+from .vertex import *
 
 
 # Modules

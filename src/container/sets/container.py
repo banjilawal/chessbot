@@ -9,7 +9,7 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from abc import ABC
+from abc import ABC, abstractmethod
 from typing import Generic, Iterator, Optional, Tuple, TypeVar
 
 
@@ -55,4 +55,3 @@ class Container(ABC, Generic[T]):
     @property
     def is_not_empty(self) -> bool:
         return not self.is_empty
-        

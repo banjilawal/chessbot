@@ -14,10 +14,10 @@ from typing import Optional
 from fabrication.blueprint import NodeBlueprint
 
 from carrier import ModelCarrier
-from node import Node
+from node import SquareNode
 
 
-class NodeCarrier(ModelCarrier[Node]):
+class NodeCarrier(ModelCarrier[SquareNode]):
     """
     Role:
         -   Addressing
@@ -39,12 +39,12 @@ class NodeCarrier(ModelCarrier[Node]):
     Super Class:
         ModelCarrier
     """
-    _model: Optional[Node]
+    _model: Optional[SquareNode]
     _blueprint: Optional[NodeBlueprint]
     
     def __init__(
             self,
-            model: Optional[Node] | None = None,
+            model: Optional[SquareNode] | None = None,
             blueprint: Optional[NodeBlueprint] | None = None,
     ):
         """
@@ -57,7 +57,7 @@ class NodeCarrier(ModelCarrier[Node]):
         self._blueprint = blueprint
     
     @property
-    def entity(self) -> [Node | NodeBlueprint]:
+    def entity(self) -> [SquareNode | NodeBlueprint]:
         return self._model or self._blueprint
     
     @property
@@ -65,7 +65,7 @@ class NodeCarrier(ModelCarrier[Node]):
         return (
                 self._model is not None and
                 self._blueprint is None and
-                isinstance(self._model, Node)
+                isinstance(self._model, SquareNode)
         )
     
     @property

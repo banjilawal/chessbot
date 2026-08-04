@@ -16,11 +16,11 @@ from result import MethodResultType
 
 __all__ = [
     # ======================# MANEUVER_REQUEST_TESTER_FAILURE #======================#
-    "ManeuverRequestTesterException",
+    "ManeuverRequestAdjudicatorException",
 ]
 
 # ======================# MANEUVER_REQUEST_TESTER_FAILURE #======================#
-class ManeuverRequestTesterException(RequestTesterException):
+class ManeuverRequestAdjudicatorException(RequestTesterException):
     """
     Role:
         -   Error Tracing

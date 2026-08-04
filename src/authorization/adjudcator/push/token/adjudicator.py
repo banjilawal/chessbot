@@ -1,7 +1,7 @@
-# src/core/adjudicator/request/push/token/adjudicator.py
+# src/authorization/adjudicator/request/push/token/adjudicator.py
 
 """
-Module: core.adjudicator.request.push.token.adjudicator
+Module: authorization.adjudicator.request.push.token.adjudicator
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -17,7 +17,7 @@ from err import TokenStackNullException, TokenPushRequestAdjudicatorException
 from authorization.request import PushRequest
 from result import MethodResultType, ValidationResult
 from stack import TokenStackService
-from core.adjudicator import PushRequestAdjudicator
+from authorization.adjudicator import PushRequestAdjudicator
 from util import LoggingLevelRouter
 from assurance.validator import TokenValidator
 

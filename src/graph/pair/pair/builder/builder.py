@@ -9,7 +9,7 @@ version: 1.0.0
 
 from __future__ import annotations
 
-from node import Node, NodeService
+from node import SquareNode, NodeService
 from logic.square import Square, SquareValidator
 from system import BuildResult, Builder, LoggingLevelRouter
 from graph.pair import HeadTailSquareException, Pair, PairBuilderException
@@ -45,7 +45,7 @@ class PairBuilder(Builder[Pair]):
     @LoggingLevelRouter.monitor
     def build(
             cls,
-            head: Node,
+            head: SquareNode,
             tail_square: Square,
             node_service: NodeService = NodeService(),
             square_validator: SquareValidator = SquareValidator(),

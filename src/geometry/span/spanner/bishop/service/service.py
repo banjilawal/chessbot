@@ -14,7 +14,7 @@ from typing import Dict
 from model.math.coord import Coord, CoordService
 from microservice.edge import Edge, EdgeBuilder
 from graph.domain.graph import Graph
-from node import Node, NodeBuilder
+from node import SquareNode, NodeBuilder
 from math.span import BishopSpanServiceException, BishopSpanner, CoordSpan, SpanMicroservice
 from geometry.square import Square, SquareContext, SquareDatabase
 from system import BuildResult, ComputationResult, IdFactory, LoggingLevelRouter
@@ -291,7 +291,7 @@ class BishopSpanService(SpanMicroservice):
                 head_square: Square,
                 tail_square: Square,
                 node_builder: NodeBuilder,
-        ) -> BuildResult[Dict[str, Node]]:
+        ) -> BuildResult[Dict[str, SquareNode]]:
             """
             Args:
                 head_square: Square
@@ -343,8 +343,8 @@ class BishopSpanService(SpanMicroservice):
         @LoggingLevelRouter.monitor
         def _build_edge_pair(
                 self,
-                head: Node,
-                tail: Node,
+                head: SquareNode,
+                tail: SquareNode,
                 edge_builder: EdgeBuilder,
         ) -> BuildResult[Dict[str, Edge]]:
             """

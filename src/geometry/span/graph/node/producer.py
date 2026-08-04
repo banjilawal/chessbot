@@ -17,7 +17,7 @@ from math.span import (
     PairInsertionException, NodeStackServiceProductionException, SquareGraphHandlerException,
     SquareRay, SquareSpan
 )
-from node import Node, NodeService,
+from node import SquareNode, NodeService,
 from math.span.service.handler import PairBuilderException
 from system import BuildResult, InsertionResult, LoggingLevelRouter
 
@@ -94,7 +94,7 @@ class NodeTreeProducer:
     @LoggingLevelRouter.monitor
     def _production_helper(
             cls,
-            tree_origin: Node,
+            tree_origin: SquareNode,
             square_span: SquareSpan,
             node_service: NodeService,
     ) -> BuildResult[NodeTree]:
@@ -173,7 +173,7 @@ class NodeTreeProducer:
     def insert_adjacent_nodes(
             cls,
             graph: Graph,
-            node_dict:  Dict[str, Node],
+            node_dict:  Dict[str, SquareNode],
     ) -> InsertionResult:
         """
         Args:

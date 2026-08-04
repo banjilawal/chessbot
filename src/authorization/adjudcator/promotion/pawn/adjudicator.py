@@ -1,7 +1,7 @@
-# src/core/adjudicator/promotion/pawn/adjudicator.py
+# src/authorization/adjudicator/promotion/pawn/adjudicator.py
 
 """
-Module: core.adjudicator.promotion.pawn.adjudicator
+Module: authorization.adjudicator.promotion.pawn.adjudicator
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

@@ -11,7 +11,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import List
 
-from node import Node
+from node import SquareNode
 from graph.pair import PairList
 from graph.pair.listing.service import PairListService
 
@@ -24,7 +24,7 @@ class NodeTree:
         root or subtrees.
     2.  It does not contain any link information
     """
-    root: Node
+    root: SquareNode
     branches: List[PairList]
     branch_service: PairListService
     

@@ -18,7 +18,7 @@ from authorization.permitter import PushPermitter
 from report import PushApprovalReport
 from authorization.request import PushRequest
 from stack import SquareStackService
-from authorization.adjudcator import SquarePushRequestTester
+from authorization.adjudcator import SquarePushRequestAdjudicator
 from util import LoggingLevelRouter
 
 
@@ -35,7 +35,7 @@ class SquarePushPermitter(PushPermitter[Square]):
     Attributes:
         collision_detector: SquareCollisionDetector
         rank_slot_permitter: RankSlotPermitter
-        request_tester: SquarePushRequestTester
+        request_adjudicator: SquarePushRequestAdjudicator
 
     Provides:
         -   execute(request: PushRequest) -> PushApprovalReport
@@ -44,21 +44,21 @@ class SquarePushPermitter(PushPermitter[Square]):
         PushPermitter
     """
     _collision_detector: SquareCollisionDetector
-    _request_tester: SquarePushRequestTester
+    _request_adjudicator: SquarePushRequestAdjudicator
     
     def __init__(
             self,
             collision_detector: SquareCollisionDetector | None = SquareCollisionDetector(),
-            request_tester: SquarePushRequestTester | None = SquarePushRequestTester()
+            request_adjudicator: SquarePushRequestAdjudicator | None = SquarePushRequestAdjudicator()
     ):
         """
         Args:
             collision_detector: SquareCollisionDetector
-            request_tester: SquarePushRequestTester
+            request_adjudicator: SquarePushRequestAdjudicator
         """
         super().__init__()
         self._collision_detector = collision_detector
-        self._request_tester = request_tester
+        self._request_adjudicator = request_adjudicator
         
         
     @LoggingLevelRouter.monitor
@@ -85,7 +85,7 @@ class SquarePushPermitter(PushPermitter[Square]):
         method =  f"{self.__class__.__name__}.execute"
         
         # Handle the case that, the request is not bootstrapped successfully.
-        bootstrap = self._request_tester.execute(candidate=request)
+        bootstrap = self._request_adjudicator.execute(candidate=request)
         if bootstrap.is_failure:
             # Send an exception chain in the permission denial.
             return PushApprovalReport.deny(

@@ -1,7 +1,7 @@
-# src/core/adjudicator/request/search/token/adjudicator.py
+# src/authorization/adjudicator/request/search/token/adjudicator.py
 
 """
-Module: core.adjudicator.request.search.token.adjudicator
+Module: authorization.adjudicator.request.search.token.adjudicator
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -17,7 +17,7 @@ from err import TokenSearchRequestAdjudicatorException, TokenStackNullException
 from authorization.request import SearchRequest
 from result import MethodResultType, ValidationResult
 from stack import TokenStackService
-from core.adjudicator import SearchRequestAdjudicator
+from authorization.adjudicator import SearchRequestAdjudicator
 from util import LoggingLevelRouter
 from assurance.validator import TokenContextValidator
 

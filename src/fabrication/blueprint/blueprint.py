@@ -19,21 +19,20 @@ T = TypeVar("T")
 class Blueprint(ABC, Generic[T]):
     """
      Role:
-         -   Container
          -   DTO
 
      Responsibilities:
-         1.  Provides values for instantiating an object.
-         2.  DTO
+         1.  Provides values for instantiating an object
+
 
      Attributes:
          model_class: Type[T]
-         model_class_name: str
          null_exception: NullException
-         
+
      Provides:
 
      Super Class:
+        Blueprint
      """
     _model_class: Type[T]
     _null_exception: NullException
@@ -46,7 +45,7 @@ class Blueprint(ABC, Generic[T]):
         """
         Args:
             model_class: Type[T]
-            null_exception: Optional[NullException]
+            null_exception: NullException
         """
         self._model_class = model_class
         self._null_exception = null_exception

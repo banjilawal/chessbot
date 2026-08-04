@@ -18,7 +18,7 @@ from authorization.permitter import PushPermitter, RankSlotPermitter
 from report import PushApprovalReport
 from authorization.request import PushRequest, RankSlotRequest
 from stack import TokenStackService
-from authorization.adjudcator import TokenPushRequestTester
+from authorization.adjudcator import TokenPushRequestAdjudicator
 from util import IdFactory, LoggingLevelRouter
 
 
@@ -35,7 +35,7 @@ class TokenPushPermitter(PushPermitter[Token]):
     Attributes:
         collision_detector: TokenCollisionDetector
         rank_slot_permitter: RankSlotPermitter
-        request_tester: TokenPushRequestTester
+        request_adjudicator: TokenPushRequestAdjudicator
 
     Provides:
         -   execute(request: PushRequest) -> PushApprovalReport
@@ -45,24 +45,24 @@ class TokenPushPermitter(PushPermitter[Token]):
     """
     _rank_slot_permitter: RankSlotPermitter
     _collision_detector: TokenCollisionDetector
-    _request_tester: TokenPushRequestTester
+    _request_adjudicator: TokenPushRequestAdjudicator
     
     def __init__(
             self,
             rank_slot_permitter: RankSlotPermitter = RankSlotPermitter(),
             collision_detector: TokenCollisionDetector | None = TokenCollisionDetector(),
-            request_tester: TokenPushRequestTester | None = TokenPushRequestTester()
+            request_adjudicator: TokenPushRequestAdjudicator | None = TokenPushRequestAdjudicator()
     ):
         """
         Args:
             collision_detector: TokenCollisionDetector
             rank_slot_permitter: RankSlotPermitter
-            request_tester: TokenPushRequestTester
+            request_adjudicator: TokenPushRequestAdjudicator
         """
         super().__init__()
         self._collision_detector = collision_detector
         self._rank_slot_permitter = rank_slot_permitter
-        self._request_tester = request_tester
+        self._request_adjudicator = request_adjudicator
         
         
     @LoggingLevelRouter.monitor
@@ -89,7 +89,7 @@ class TokenPushPermitter(PushPermitter[Token]):
         method =  f"{self.__class__.__name__}.execute"
         
         # Handle the case that, the request is not bootstrapped successfully.
-        bootstrap = self._request_tester.execute(candidate=request)
+        bootstrap = self._request_adjudicator.execute(candidate=request)
         if bootstrap.is_failure:
             # Send an exception chain in the permission denial.
             return PushApprovalReport.deny(

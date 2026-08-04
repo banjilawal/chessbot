@@ -1,13 +1,13 @@
-# src/core/adjudicator/maneuver/__init__.py
+# src/authorization/adjudicator/maneuver/__init__.py
 
 """
-Module: core.adjudicator.maneuver.__init__
+Module: authorization.adjudicator.maneuver.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
 """
 
-# =========== CORE.ADJUDICATOR.MANEUVER PACKAGE ===========#
+# =========== AUTHORIZATION.ADJUDICATOR.MANEUVER PACKAGE ===========#
 
 # Packages
 

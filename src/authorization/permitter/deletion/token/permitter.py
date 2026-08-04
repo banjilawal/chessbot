@@ -15,7 +15,7 @@ from err import PoppingEmptyTokenStackException, TokenDeletePermitterException
 from report import DeletionApprovalReport
 from authorization.request import DeletionRequest
 from stack import TokenStackService
-from authorization.adjudcator import TokenDeletionRequestTester
+from authorization.adjudcator import TokenDeletionRequestAdjudicator
 from util import LoggingLevelRouter
 
 
@@ -30,7 +30,7 @@ class TokenDeletionPermitter:
         1.  Run tests to see if permission can be granted to a TokenStackService to execute a deletion.
 
     Attributes:
-        request_tester: TokenDeletionRequestTester
+        request_adjudicator: TokenDeletionRequestAdjudicator
 
     Provides:
         -   run(item_id: int, stack: TokenStackService) -> DeletionApprovalReport:
@@ -38,10 +38,10 @@ class TokenDeletionPermitter:
     Super Class:
         DeletionPermitter
     """
-    _request_tester: TokenDeletionRequestTester
+    _request_adjudicator: TokenDeletionRequestAdjudicator
     
-    def __init__(self, request_tester: TokenDeletionRequestTester | None = TokenDeletionRequestTester()):
-        self._request_tester = request_tester
+    def __init__(self, request_adjudicator: TokenDeletionRequestAdjudicator | None = TokenDeletionRequestAdjudicator()):
+        self._request_adjudicator = request_adjudicator
     
     @classmethod
     @LoggingLevelRouter.monitor
@@ -68,7 +68,7 @@ class TokenDeletionPermitter:
         method = f"{self.__class__.__name__}.run"
         
         # Handle the case that, the request is not bootstrapped successfully.
-        bootstrap = self._request_tester.execute(candidate=request)
+        bootstrap = self._request_adjudicator.execute(candidate=request)
         if bootstrap.is_failure:
             # Send an exception chain in the permission denial.
             return DeletionApprovalReport.deny(

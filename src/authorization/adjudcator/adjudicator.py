@@ -1,7 +1,7 @@
-# src/core/adjudicator/adjudicator.py
+# src/authorization/adjudicator/adjudicator.py
 
 """
-Module: core.adjudicator.adjudicator
+Module: authorization.adjudicator.adjudicator
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

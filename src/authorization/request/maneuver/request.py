@@ -50,7 +50,7 @@ class ManeuverRequest(Request):
         
     
     @property
-    def token(self) -> T:
+    def token(self) -> Token:
         return self._token
     
     @property
@@ -58,5 +58,5 @@ class ManeuverRequest(Request):
         return self._destination
     
     @classmethod
-    def request(cls, id: int, token: T, destination: Square) -> ManeuverRequest:
+    def request(cls, id: int, token: Token, destination: Square) -> ManeuverRequest:
         return cls(id=id, token=token, destination=destination)

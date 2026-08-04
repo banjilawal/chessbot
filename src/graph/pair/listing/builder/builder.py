@@ -9,7 +9,7 @@ version: 1.0.0
 
 from __future__ import annotations
 
-from node import Node, NodeService
+from node import SquareNode, NodeService
 from graph.pair import PairBuilder, PairList, PairListBuilderException, TreeDoesNotOwnRayException
 from math.span import SquareRay, SquareRayService
 from system import BuildResult, Builder, LoggingLevelRouter
@@ -47,7 +47,7 @@ class PairListBuilder(Builder[PairList]):
     @LoggingLevelRouter.monitor
     def build(
             cls,
-            parent_node: Node,
+            parent_node: SquareNode,
             square_ray: SquareRay,
             node_service: NodeService = NodeService(),
             pair_builder: PairBuilder = PairBuilder(),

@@ -1,13 +1,13 @@
-# src/core/adjudicator/promotion/rank/__init__.py
+# src/authorization/adjudicator/promotion/rank/__init__.py
 
 """
-Module: core.adjudicator.promotion.rank.__init__
+Module: authorization.adjudicator.promotion.rank.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
 """
 
-# =========== CORE.ADJUDICATOR.PROMOTION.RANK PACKAGE ===========#
+# =========== AUTHORIZATION.ADJUDICATOR.PROMOTION.RANK PACKAGE ===========#
 
 # Packages
 

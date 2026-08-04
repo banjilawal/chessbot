@@ -10,6 +10,7 @@ version: 1.0.1
 # =========== CONTAINER PACKAGE ===========#
 
 # Packages
+from .chain import *
 from .sets import *
 from .tree import *
 

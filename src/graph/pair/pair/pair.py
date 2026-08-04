@@ -11,7 +11,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import List
 
-from node import Node
+from node import SquareNode
 
 
 @dataclass
@@ -22,11 +22,11 @@ class Pair:
         not guarantee the order of spanned squares matches order in the graph.
     2.  Indicates the natural direction of an asymmetric edge between the nodes.
     """
-    head: Node
-    tail: Node
+    head: SquareNode
+    tail: SquareNode
     
     @property
-    def members(self) -> List[Node]:
+    def members(self) -> List[SquareNode]:
         """Puts the head and tail nodes into a list."""
         return [self.head, self.tail]
     

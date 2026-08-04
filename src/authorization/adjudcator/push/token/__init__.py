@@ -1,13 +1,13 @@
-# src/core/adjudicator/request/push/token/__init__.py
+# src/authorization/adjudicator/request/push/token/__init__.py
 
 """
-Module: core.adjudicator.request.push.token.__init__
+Module: authorization.adjudicator.request.push.token.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
 """
 
-# =========== CORE.ADJUDICATOR.REQUEST.PUSH.TOKEN PACKAGE ===========#
+# =========== AUTHORIZATION.ADJUDICATOR.REQUEST.PUSH.TOKEN PACKAGE ===========#
 
 # Packages
 

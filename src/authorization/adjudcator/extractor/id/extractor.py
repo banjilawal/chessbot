@@ -1,7 +1,7 @@
-# src/core/adjudicator/extractor/id/extractor.py
+# src/authorization/adjudicator/extractor/id/extractor.py
 
 """
-Module: core.adjudicator.extractor.id.extractor
+Module: authorization.adjudicator.extractor.id.extractor
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

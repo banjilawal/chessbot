@@ -1,7 +1,7 @@
-# src/core/adjudicator/extractor/rank/extractor.py
+# src/authorization/adjudicator/extractor/rank/extractor.py
 
 """
-Module: core.adjudicator.extractor.rank.extractor
+Module: authorization.adjudicator.extractor.rank.extractor
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -16,7 +16,7 @@ from bootstrapper import PrimingValidator
 from err import BlueprintRankExtractorException, TokenBlueprintNullException
 from microservice import RankService
 from result import ValidationResult
-from core.adjudicator import Extractor
+from authorization.adjudicator import Extractor
 from util import LoggingLevelRouter
 
 

@@ -14,7 +14,7 @@ from err import PromotionPermitterException
 from authorization.permitter import Permitter
 from report import PromotionApprovalReport
 from authorization.request.promotion import PromotionRequest
-from authorization.adjudcator import PromotionRequestTester
+from authorization.adjudcator import PromotionRequestAdjudicator
 from util import LoggingLevelRouter
 
 
@@ -29,7 +29,7 @@ class PromotionPermitter(Permitter):
         1.  Evaluate if promotion request can be granted.
         
     Attributes:
-        carrier_validator: PromotionRequestTester
+        carrier_validator: PromotionRequestAdjudicator
         
     Provides:
         -   run(self, request: PromotionRequest) -> PromotionApprovalReport
@@ -37,14 +37,14 @@ class PromotionPermitter(Permitter):
     Super Class:
         Permitter
     """
-    _bootstrapper: PromotionRequestTester
+    _bootstrapper: PromotionRequestAdjudicator
     
     def __init__(
-            self, bootstrapper: PromotionRequestTester | None = PromotionRequest(),
+            self, bootstrapper: PromotionRequestAdjudicator | None = PromotionRequest(),
     ):
         """
         Args:
-            bootstrapper: PromotionRequestTester
+            bootstrapper: PromotionRequestAdjudicator
         """
         self._bootstrapper = bootstrapper
     

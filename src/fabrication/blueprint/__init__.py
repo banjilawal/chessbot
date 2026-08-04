@@ -13,6 +13,7 @@ version: 1.0.1
 from .container import *
 from .context import *
 from .model import *
+from .node import *
 from .register import *
 from .registry import *
 from .signature import *

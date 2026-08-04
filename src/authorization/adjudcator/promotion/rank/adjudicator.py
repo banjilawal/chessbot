@@ -1,7 +1,7 @@
-# src/core/adjudicator/promotion/rank/adjudicator.py
+# src/authorization/adjudicator/promotion/rank/adjudicator.py
 
 """
-Module: core.adjudicator.promotion.rank.adjudicator
+Module: authorization.adjudicator.promotion.rank.adjudicator
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -14,7 +14,7 @@ from typing import Any, cast
 from err import PromoteToKingException, PromoteToPawnException, PromotionLevelAdjudicatorException
 from model import King, Pawn, Rank
 from result import MethodResultType, ValidationResult
-from core.adjudicator import RequestAdjudicator
+from authorization.adjudicator import RequestAdjudicator
 from util import LoggingLevelRouter
 from assurance.validator import RankValidator
 

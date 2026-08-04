@@ -10,7 +10,7 @@ version: 1.0.0
 from __future__ import annotations
 from typing import Dict, List
 
-from node import Node
+from node import SquareNode
 from graph.domain.graph import Graph
 from microservice.edge import Edge, EdgeBuilder, PushingEdgeException
 from system import BuildResult, InsertionResult, LoggingLevelRouter
@@ -22,7 +22,7 @@ class NodeEdgeHandler:
     @LoggingLevelRouter.monitor
     def build_symmetric_edges(
             cls,
-            node_dict: Dict[str, Node],
+            node_dict: Dict[str, SquareNode],
             edge_builder: EdgeBuilder = EdgeBuilder(),
     ) -> BuildResult[List[Edge]]:
         """
@@ -44,8 +44,8 @@ class NodeEdgeHandler:
         edges: List[Edge] = []
         for key in node_dict:
             
-            tail_node: Node = None
-            head_node: Node = node_dict[key]
+            tail_node: SquareNode = None
+            head_node: SquareNode = node_dict[key]
 
             if key.upper() == "head".upper:
                 tail_node = node_dict["tail"]
@@ -81,7 +81,7 @@ class NodeEdgeHandler:
     @LoggingLevelRouter.monitor
     def build__edge(
             cls,
-            node_dict: Dict[str, Node],
+            node_dict: Dict[str, SquareNode],
             edge_builder: EdgeBuilder = EdgeBuilder(),
     ) -> BuildResult[List[Edge]]:
         """

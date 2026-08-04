@@ -1,7 +1,7 @@
-# src/core/adjudicator/request/deletion/token/adjudicator.py
+# src/authorization/adjudicator/request/deletion/token/adjudicator.py
 
 """
-Module: core.adjudicator.request.deletion.token.adjudicator
+Module: authorization.adjudicator.request.deletion.token.adjudicator
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -18,7 +18,7 @@ from microservice import IdentityService
 from authorization.request import DeletionRequest
 from result import MethodResultType, ValidationResult
 from stack import TokenStackService
-from core.adjudicator import DeletionRequestAdjudicator
+from authorization.adjudicator import DeletionRequestAdjudicator
 from util import LoggingLevelRouter
 
 

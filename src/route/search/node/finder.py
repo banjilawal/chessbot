@@ -13,12 +13,12 @@ from typing import List
 from logic.square import Square
 from system import LoggingLevelRouter, SearchResult, StackSearchRouter
 from node import (
-    DiscoveryStatus, Node, NodeContext, NodeContextValidator, NodeSearchException, NodeSearchRouteException,
+    DiscoveryStatus, SquareNode, NodeContext, NodeContextValidator, NodeSearchException, NodeSearchRouteException,
     NodeSearchNullDatasetException, NodeSearchPayloadTypeException
 )
 
 
-class NodeFinder(StackSearchRouter[Node]):
+class NodeFinder(StackSearchRouter[SquareNode]):
     """
     Role:SearchRouter
 
@@ -43,10 +43,10 @@ class NodeFinder(StackSearchRouter[Node]):
     @LoggingLevelRouter.monitor
     def route(
             cls,
-            dataset: List[Node],
+            dataset: List[SquareNode],
             context: NodeContext,
             context_validator: NodeContextValidator = NodeContextValidator()
-    ) -> SearchResult[List[Node]]:
+    ) -> SearchResult[List[SquareNode]]:
         """
         # ACTION:
         1.  If the collider_candidates is null or the wrong type send the exception in the SearchResult.
@@ -127,7 +127,7 @@ class NodeFinder(StackSearchRouter[Node]):
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def _find_by_priority(cls, dataset: List[Node], priority: int) -> SearchResult[List[Node]]:
+    def _find_by_priority(cls, dataset: List[SquareNode], priority: int) -> SearchResult[List[SquareNode]]:
         """
         # ACTION:
             1.  Get the Nodes with the desired id.
@@ -152,7 +152,7 @@ class NodeFinder(StackSearchRouter[Node]):
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def _find_by_square(cls, dataset: List[Node], square: Square) -> SearchResult[List[Node]]:
+    def _find_by_square(cls, dataset: List[SquareNode], square: Square) -> SearchResult[List[SquareNode]]:
         """
         # ACTION:
             1.  Get the Nodes which match the square.
@@ -176,7 +176,7 @@ class NodeFinder(StackSearchRouter[Node]):
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def _find_by_predecessor(cls, dataset: List[Node], predecessor: Node) -> SearchResult[List[Node]]:
+    def _find_by_predecessor(cls, dataset: List[SquareNode], predecessor: SquareNode) -> SearchResult[List[SquareNode]]:
         """
         # ACTION:
             1.  Get the Nodes which match the predecessor.
@@ -202,9 +202,9 @@ class NodeFinder(StackSearchRouter[Node]):
     @LoggingLevelRouter.monitor
     def _find_by_discovery_status(
             cls,
-            dataset: List[Node],
+            dataset: List[SquareNode],
             discovery_status: DiscoveryStatus
-    ) -> SearchResult[List[Node]]:
+    ) -> SearchResult[List[SquareNode]]:
         """
         # ACTION:
             1.  Get the Nodes which are empty.

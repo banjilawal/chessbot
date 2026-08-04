@@ -13,7 +13,7 @@ import sys
 from typing import Optional
 
 from node import (
-    DiscoveryStatus, ArenaNodeContextFlagsException, Node, NodeContext, NodeContextToolkitException,
+    DiscoveryStatus, ArenaNodeContextFlagsException, SquareNode, NodeContext, NodeContextToolkitException,
     NodeContextToolkitRouteException, NodeValidator, ZeroNodeContextFlagsException
 )
 from logic.square import Square, SquareService
@@ -53,7 +53,7 @@ class NodeContextToolkit(Toolkit[NodeContext]):
             self,
             priority: Optional[int] = None,
             square: Optional[Square] = None,
-            predecessor: Optional[Node] = None,
+            predecessor: Optional[SquareNode] = None,
             discovery_status: Optional[DiscoveryStatus] = None,
             square_service: SquareService = SquareService(),
             node_validator: NodeValidator = NodeValidator(),

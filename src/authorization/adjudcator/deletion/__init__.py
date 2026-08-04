@@ -1,13 +1,13 @@
-# src/core/adjudicator/request/deletion/__init__.py
+# src/authorization/adjudicator/request/deletion/__init__.py
 
 """
-Module: core.adjudicator.request.deletion.__init__
+Module: authorization.adjudicator.request.deletion.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
 """
 
-# =========== CORE.ADJUDICATOR.REQUEST.DELETION PACKAGE ===========#
+# =========== AUTHORIZATION.ADJUDICATOR.REQUEST.DELETION PACKAGE ===========#
 
 # Packages
 from .token import *
