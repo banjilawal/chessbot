@@ -8,19 +8,19 @@ version: 1.0.1
 """
 
 from __future__ import annotations
-from typing import Any, cast
+from typing import Any, Optional, cast
 
 import setting
+from assurance import PrimingValidator
 from err import (
     NegativeNumberException, NumberAboveBoundsException, NumberBelowBoundsException, NumberNullException,
     NumberValidatorException
 )
 from result import ValidationResult
 from util import LoggingLevelRouter
-from assurance.validator import PrimingValidator, Validator
 
 
-class NumberValidator(Validator[int]):
+class NumberValidator:
     """
     Role
         -   Transaction Worker
@@ -38,22 +38,27 @@ class NumberValidator(Validator[int]):
                     candidate: Any,
                     floor: int = 0,
                     ceiling: int = BOARD_DIMENSION,
-                    priming_validator: PrimingValidator,
             ) -> ValidationResult[int]:
     
     Super Class:
         Validator
     """
-    OPERATION_NAME = "number_validator"
+    _priming_validator: Optional[PrimingValidator]
     
-    @classmethod
+    def __init__(self, priming_validator: Optional[PrimingValidator] | None = None):
+        """
+        Args:
+            priming_validator: Optional[PrimingValidator]
+        """
+        self._priming_validator = priming_validator or PrimingValidator()
+        
+    
     @LoggingLevelRouter.monitor
     def execute(
-            cls,
+            self,
             candidate: Any,
             floor: int | None = 0,
             ceiling: int | None = setting.board.dimension.config.board_size - 1,
-            priming_validator: PrimingValidator | None = None,
     ) -> ValidationResult[int]:
         """
         Make sure an object is a number within bounds before use.
@@ -66,7 +71,6 @@ class NumberValidator(Validator[int]):
             candidate: Any
             floor: int
             ceiling: int
-            priming_validator: PrimingValidator
         Returns:
             ValidationResult[int]
         Raises:
@@ -77,12 +81,9 @@ class NumberValidator(Validator[int]):
         """
         method = f"{self.__class__.__name__}.execute"
         
-        # --- Supply missing dependencies. ---#
-        if priming_validator is None:
-            priming_validator = PrimingValidator()
         
         # Handle the case that, the validator is not primed.
-        validator_priming_result = priming_validator.execute(
+        validator_priming_result = self._priming_validator.execute(
             candidate=candidate,
             target_model=int,
             null_exception=NumberNullException(),

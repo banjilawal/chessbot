@@ -16,14 +16,14 @@ T = TypeVar("T")
 
 
 class Node(ABC, Generic[T]):
-    _payload: T
+    _payload: Optional[T]
     _next: Optional[Node[T]]
     _previous: Optional[T]
     
     
     def __init__(
             self,
-            payload: T,
+            payload: Optional[T] | None = None,
             next: Optional[Node[T] ]| None = None,
             previous: Optional[Node[T]] | None = None,
     ):
@@ -33,7 +33,7 @@ class Node(ABC, Generic[T]):
 
     
     @property
-    def payload(self) -> T:
+    def payload(self) -> Optional[T]:
         return self.payload
     
     @property

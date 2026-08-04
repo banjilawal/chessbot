@@ -1,7 +1,7 @@
-# src/node/node.py
+# src/node/dossier/node.py
 
 """
-Module: node.node
+Module: node.dossier.node
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -17,7 +17,7 @@ from node import Node
 
 class SquareDossierNode(Node[SquareDossier]):
     
-    def __init__(self, payload: SquareDossier):
+    def __init__(self, payload: Optional[SquareDossier] | None = None):
         super().__init__(payload=payload)
         
     @property

@@ -13,7 +13,6 @@ from abc import ABC
 from typing import Generic, List, Optional, TypeVar, cast
 
 from assurance import NumberValidator
-from authorization import DeletionRequest
 from node import Node
 from result import DeletionResult, SearchResult
 from util import LoggingLevelRouter
@@ -28,10 +27,15 @@ class LinkedList(ABC, Generic[T]):
     _tail: Node[T]
     _size: int
     
-    def __init__(self, number_validator: Optional[NumberValidator] | None = None):
+    def __init__(
+            self,
+            head: Optional[Node[T]] | None = None,
+            tail: Optional[Node[T]] | None = None,
+            number_validator: Optional[NumberValidator] | None = None
+    ):
         self._number_validator = number_validator or NumberValidator()
-        self._head = Node[T]()
-        self._tail = Node[T]()
+        self._head = head or Node[T]()
+        self._tail = tail or Node[T]()
         
         self._head.previous = None
         self._tail.next = None
@@ -68,21 +72,21 @@ class LinkedList(ABC, Generic[T]):
     def find_by_index(self, index: int) -> SearchResult[List[Node[T]]]:
         method = f"{self.__class__.__name__}.get_by_index"
         
-        # Handle the case that, the index is not a safe number.
-        validation = self._number_validator.execute(index)
-        # Send the exception in the result.
-        if validation.is_failure:
-            return SearchResult.failure(
-                LinkedListException(
-                    cls_mthd=method,
-                    cls_name=self.__class__.__name__,
-                    msg=LinkedListException.MSG,
-                    err_code=LinkedListException.ERR_CODE,
-                    ex=validation.exception
-                )
-            )
+        counter: int = 0
+        cursor = self._head
+        node: Node[T] = Node[T]()
+        
+        if self.is_empty:
+            return SearchResult.empty()
+        
+        if index is None or index == 0:
+            return SearchResult[[self._head.next]]
+
+        if index == -1 or index == self._size - 1:
+            return SearchResult[[self._tail.previous]]
+            
         # Handle the case that, the index is out of bounds.
-        if index > self.size:
+        if index >= self.size:
             # Send the exception in the result.
             return SearchResult.failure(
                 LinkedListException(
@@ -98,20 +102,6 @@ class LinkedList(ABC, Generic[T]):
                     )
                 )
             )
-        counter: int = 0
-        cursor = self._head
-        
-        if self.is_empty:
-            return SearchResult.empty()
-        
-        if index == 0 or index == -1:
-            node = self._head.next
-            return SearchResult[[node]]
-        
-        if index == self._size - 1:
-            node = self._tail.previous
-            return SearchResult[[node]]
-        
         while counter < index and cursor.next is not None:
             cursor = cursor.next
             counter = counter + 1

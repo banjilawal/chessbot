@@ -10,6 +10,7 @@ version: 1.0.1
 # =========== CONTAINER.CHAIN PACKAGE ===========#
 
 # Packages
+from .vector import *
 
 
 # Modules
