@@ -95,11 +95,10 @@ class VectorLinkedList(LinkedList[Vector]):
     def find_node(self, node: VectorNode) -> SearchResult[List[VectorNode]]:
         method = f"{self.__class__.__name__}.find_node"
         
-        cursor = self.head
-        while cursor.next is not None:
+        while self.iterator.has_next:
+            cursor = cast(VectorNode, self.iterator.next())
             if cursor == node:
                 return SearchResult.success([node])
-            cursor = cursor.next
         return SearchResult.empty()
         
     
@@ -108,28 +107,20 @@ class VectorLinkedList(LinkedList[Vector]):
             node: VectorNode,
             index: Optional[int] | None = None,
     ) -> InsertionResult:
-        method = f"{self.__class__.__name__}.add_node"
+        method = f"{self.__class__.__name__}.execute"
         
-        if index is None:
-            index = 0
-        if abs(index) > self.size:
+        index_validation = self.index_validator(index)
+        if index_validation.is_failure:
+            # Send the exception in the result.
             return InsertionResult.failure(
                 VectorLinkedListException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
                     msg=VectorLinkedListException.MSG,
                     err_code=VectorLinkedListException.ERR_CODE,
-                    ex=ListIndexOutOfBoundsException(
-                        cls_mthd=method,
-                        cls_name=self.__class__.__name__,
-                        msg=ListIndexOutOfBoundsException.MSG,
-                        err_code=ListIndexOutOfBoundsException.ERR_CODE,
-                    )
+                    ex=index_validation.exception
                 )
             )
-        if index < 1:
-            index = self.size - (1 + index)
-        
         search = self.find_node(node)
         if search.is_failure:
             # Send the exception in the result.
@@ -176,11 +167,13 @@ class VectorLinkedList(LinkedList[Vector]):
                     ex=SearchResultEmptyException()
                 )
             )
-        node.next = previous.next
+        next = previous.next
         node.previous = previous
+        node.next = next
         
-        previous.next.previous = node
         previous.next = node
+        next.previous = node
+        
         self.size = self.size + 1
         return InsertionResult.success()
     
@@ -215,7 +208,28 @@ class VectorLinkedList(LinkedList[Vector]):
         node.previous = None
         
         self.size = self.size - 1
-        return DeletionResult.success(Node)
+        return DeletionResult.success(node)
+    
+    
+    @LoggingLevelRouter.monitor
+    def trim_to_node(self, node: VectorNode):
+        method = f"{self.__class__.__name__}.execute"
+        
+        counter = 0
+        cursor = cast(VectorNode, self.iterator.next())
+        while self.iterator.has_next or cursor != node:
+            counter = counter + 1
+            if cursor != node:
+                cursor = cast(VectorNode, self.iterator.next())
+        if cursor != node:
+            return DeletionResult.nothing_to_delete()
+        self.tail.previous = cursor
+        cursor.next = self.tail
+        self.size = self.size - counter
+        return DeletionResult.success(self)
+        
+        
+        
     
     
         

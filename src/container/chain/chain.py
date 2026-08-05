@@ -136,10 +136,12 @@ class LinkedList(ABC, Generic[T]):
         return DeletionResult.success(node)
     
     @LoggingLevelRouter.monitor
-    def trim(self, offset: int) -> BuildResult[LinkedList[T]]:
-        search = self.find_by_index(offset)
+    def trim_head(self, offset: int) -> BuildResult[LinkedList[T]]:
+        method = f"{self.__class__.__name__}.execute"
+        
+        validation = self.index_validator(offset)
         # Handle the case that, the search fails.
-        if search.is_failure:
+        if valdation.is_failure:
             # Send the exception in the result.
             return BuildResult.failure(
                 LinkedListException(
@@ -147,13 +149,47 @@ class LinkedList(ABC, Generic[T]):
                     cls_name=self.__class__.__name__,
                     msg=LinkedListException.MSG,
                     err_code=LinkedListException.ERR_CODE,
-                    ex=search.exception
+                    ex=validation.exception
                 )
             )
-        node = cast(Node[T], search.payload[0])
-        self._head.next = node
-        node.previous = self.head
+        counter = 0
+        cursor = self.iterator.next()
+        while self.iterator.has_next and counter < offset:
+            counter = counter + 1
+            cursor = self.iterator.next()
+        self._head.next = cursor
+        cursor.previous = self._head
+        self._size = self._size - offset
         return BuildResult.success(self)
+    
+    @LoggingLevelRouter.monitor
+    def trim_tail(self, offset: int) -> BuildResult[LinkedList[T]]:
+        method = f"{self.__class__.__name__}.execute"
+        
+        validation = self.index_validator(offset)
+        # Handle the case that, the search fails.
+        if validation.is_failure:
+            # Send the exception in the result.
+            return BuildResult.failure(
+                LinkedListException(
+                    cls_mthd=method,
+                    cls_name=self.__class__.__name__,
+                    msg=LinkedListException.MSG,
+                    err_code=LinkedListException.ERR_CODE,
+                    ex=validation.exception
+                )
+            )
+        counter = 0
+        cursor = self.iterator.next()
+        while self.iterator.has_next and counter < offset:
+            counter = counter + 1
+            cursor = self.iterator.next()
+        self._tail.previous = cursor
+        cursor.next = self._tail
+        self._size = self._size - offset
+        return BuildResult.success(self)
+    
+
         
     
     def index_validator(self, candidate: Any) -> ValidationResult[int]:
@@ -201,7 +237,8 @@ class LinkedListIterator:
     def __init__(self, linked_list: LinkedList):
         self._linked_list = linked_list
         self._cursor = self._linked_list.head
-        
+    
+    @property
     def has_next(self,) -> bool:
         return self._cursor.next is None
     
