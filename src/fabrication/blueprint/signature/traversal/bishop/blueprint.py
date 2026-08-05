@@ -13,7 +13,7 @@ from typing import Optional, Type, cast
 
 from fabrication.blueprint import TraversalSignatureBlueprint
 from err import BishopSignatureNullException
-from pattern import BishopSignature
+from topology.pattern import BishopSignature
 from geometry.recurrence import BishopRecurrenceRegistries
 
 

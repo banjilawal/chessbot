@@ -1,7 +1,7 @@
-# src/fabrication/builder/pattern/pawn/fabrication/builder/pattern.py
+# src/topology/basis/pawn/attack/developed/basis.py
 
 """
-Module: fabrication.builder.pattern.pawn.pattern
+Module: topology.basis.pawn.attack.developed.basis
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -12,17 +12,16 @@ from __future__ import annotations
 
 from container import VectorSet
 from schema import Offset
-from topology.pattern import PawnAttackSignature
+from basis import PawnAttackBasis
 
 
-class DevelopedPawnAttackPattern(PawnAttackSignature):
+class DevelopedPawnAttackBasis(PawnAttackBasis):
     """
     Role:
-        -   Data Holder
-        -   Immutability
+        -  Data Holder
 
     Responsibilities:
-        1.  Determine potential attack destinations from a developed Pawn's current position.
+        1.  Constraints or that are used to generate a RankTree for Developed attacking Pawns.
 
     Attributes:
         offsets: VectorSet
@@ -30,8 +29,7 @@ class DevelopedPawnAttackPattern(PawnAttackSignature):
     Provides:
 
     Super Class:
-        AttackOffsetPattern
-
+        PawnAttackBasis
     """
     def __init__(self, offsets: VectorSet = Offset.DEVELOPED_PAWN_ATTACK.entries,):
         """

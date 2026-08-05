@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Optional, cast
 
 from fabrication.builder import OffsetBuilder
-from pattern import KnightSignature
+from topology.pattern import KnightSignature
 from result import BuildResult
 from util import LoggingLevelRouter
 

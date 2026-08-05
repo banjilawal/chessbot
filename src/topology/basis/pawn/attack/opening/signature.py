@@ -1,7 +1,7 @@
-# src/fabrication/builder/pattern/pawn/fabrication/builder/pattern.py
+# src/topology/basis/pawn/attack/opening/basis.py
 
 """
-Module: fabrication.builder.pattern.pawn.pattern
+Module: topology.basis.pawn.attack.opening.basis
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -11,17 +11,16 @@ from __future__ import annotations
 
 from container import VectorSet
 from schema import Offset
-from topology.pattern import PawnAttackSignature
+from basis import PawnAttackBasis
 
 
-class OpeningPawnAttackPattern(PawnAttackSignature):
+class OpeningPawnAttackBasis(PawnAttackBasis):
     """
     Role:
-        -   Data Holder
-        -   Immutability
+        -  Data Holder
 
     Responsibilities:
-        1.  Determine potential attack destinations from an opening Pawn's current position.
+        1.  Constraints or that are used to generate a RankTree for Opening attacking Pawns.
 
     Attributes:
         offsets: VectorSet
@@ -29,7 +28,7 @@ class OpeningPawnAttackPattern(PawnAttackSignature):
     Provides:
 
     Super Class:
-        AttackOffsetPattern
+        PawnAttackBasis
     """
     
     def __init__(self, offsets: VectorSet = Offset.OPENING_PAWN_ATTACK.entries ):

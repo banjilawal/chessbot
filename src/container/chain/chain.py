@@ -203,10 +203,7 @@ class LinkedList(ABC, Generic[T]):
         cursor.next = self._tail
         self._size = self._size - offset
         return BuildResult.success(self)
-    
 
-        
-    
     def index_validator(self, candidate: Any) -> ValidationResult[int]:
         method = f"{self.__class__.__name__}.execute"
         

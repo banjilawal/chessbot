@@ -12,7 +12,7 @@ from __future__ import annotations
 
 from container import VectorSet
 from schema import Offset
-from pattern import ManeuverOffsetPattern
+from topology.pattern import ManeuverOffsetPattern
 
 
 class DevelopedManeuverOffsetPattern(ManeuverOffsetPattern):

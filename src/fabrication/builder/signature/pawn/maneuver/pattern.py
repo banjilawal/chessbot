@@ -12,7 +12,7 @@ from __future__ import annotations
 from abc import ABC
 
 from container import VectorSet
-from pattern import PawnSignature
+from topology.pattern import PawnSignature
 
 
 class ManeuverSignature(ABC, PawnSignature):

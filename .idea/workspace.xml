@@ -4,7 +4,43 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="" />
+    <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/container/chain/chain.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/container/chain/chain.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/container/chain/vector/chain.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/container/chain/vector/chain.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pattern/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/pattern/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pattern/adder/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/pattern/adder/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pattern/adder/signature.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/pattern/adder/basis.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pattern/generator/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/pattern/generator/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pattern/generator/runner/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/pattern/generator/runner/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pattern/generator/runner/signature.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/pattern/generator/runner/basis.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pattern/generator/signature.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/pattern/generator/basis.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pattern/offset/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/pattern/offset/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pattern/offset/king/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/pattern/offset/king/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pattern/offset/king/signature.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/pattern/offset/king/basis.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pattern/offset/knight/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/pattern/offset/knight/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pattern/offset/knight/signature.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/pattern/offset/knight/basis.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pattern/offset/signature.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/pattern/offset/basis.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pattern/pawn/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/pattern/pawn/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pattern/pawn/attack/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/pattern/pawn/attack/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pattern/pawn/attack/developed/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/pattern/pawn/attack/developed/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pattern/pawn/attack/developed/signature.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/pattern/pawn/attack/developed/signature.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pattern/pawn/attack/opening/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/pattern/pawn/attack/opening/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pattern/pawn/attack/opening/signature.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/pattern/pawn/attack/opening/signature.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pattern/pawn/attack/signature.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/pattern/pawn/attack/signature.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pattern/pawn/maneuver/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/pattern/pawn/maneuver/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pattern/pawn/maneuver/developed/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/pattern/pawn/maneuver/developed/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pattern/pawn/maneuver/developed/signature.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/pattern/pawn/maneuver/developed/signature.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pattern/pawn/maneuver/opening/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/pattern/pawn/maneuver/opening/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pattern/pawn/maneuver/opening/signature.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/pattern/pawn/maneuver/opening/signature.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pattern/pawn/maneuver/signature.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/pattern/pawn/maneuver/signature.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pattern/pawn/signature.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/pattern/pawn/signature.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pattern/signature.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/pattern/basis.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pattern/traversal/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/pattern/traversal/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pattern/traversal/bishop/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/pattern/traversal/bishop/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pattern/traversal/bishop/signature.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/pattern/traversal/bishop/basis.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pattern/traversal/signature.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/pattern/traversal/basis.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -50,34 +86,34 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Python.__init__.executor": "Debug",
-    "Python.node.executor": "Run",
-    "Python.notifier.executor": "Debug",
-    "Python.ray.executor": "Coverage",
-    "Python.stack.executor": "Debug",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "main",
-    "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/node",
-    "node.js.detected.package.eslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "run.code.analysis.last.selected.profile": "pProject Default",
-    "settings.editor.selected.configurable": "preferences.keymap",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Python.__init__.executor&quot;: &quot;Debug&quot;,
+    &quot;Python.node.executor&quot;: &quot;Run&quot;,
+    &quot;Python.notifier.executor&quot;: &quot;Debug&quot;,
+    &quot;Python.ray.executor&quot;: &quot;Coverage&quot;,
+    &quot;Python.stack.executor&quot;: &quot;Debug&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/griot/PycharmProjects/chessbot/src/operation/chain&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.keymap&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/operation/chain" />
       <recent name="$PROJECT_DIR$/src/node" />
       <recent name="$PROJECT_DIR$/src/container/chain/vector" />
       <recent name="$PROJECT_DIR$/src/fabrication/assembler/node" />
       <recent name="$PROJECT_DIR$/src/fabrication/blueprint/node" />
-      <recent name="$PROJECT_DIR$/src/assurance/auditor" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/node/square" />
@@ -231,6 +267,9 @@
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
       <option name="SDK_HOME" value="" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src/node" />
       <option name="IS_MODULE_SDK" value="true" />
@@ -754,7 +793,8 @@
       <workItem from="1785271456267" duration="5305000" />
       <workItem from="1785280992548" duration="25503000" />
       <workItem from="1785354695376" duration="4352000" />
-      <workItem from="1785366790867" duration="179769000" />
+      <workItem from="1785366790867" duration="182641000" />
+      <workItem from="1785958183827" duration="4311000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />
@@ -1525,11 +1565,6 @@
           <url>file://$PROJECT_DIR$/src/pattern/pawn/signature.py</url>
           <line>9</line>
           <option name="timeStamp" value="319" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/src/pattern/pawn/__init__.py</url>
-          <line>12</line>
-          <option name="timeStamp" value="320" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/src/fabrication/blueprint/space/quadrant/__init__.py</url>

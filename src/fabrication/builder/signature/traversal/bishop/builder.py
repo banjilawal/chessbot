@@ -12,7 +12,7 @@ from container import VectorSet
 from err import BishopTraversalPatternException
 from err.null.recurrence.group import BishopRecurrenceSeriesNullException
 from model import Bishop
-from pattern import TraversalTopologyGenerator, TraversalSignature
+from topology.pattern import TraversalTopologyGenerator, TraversalSignature
 from geometry.recurrence import BishopRecurrenceRegistries
 from result import ComputationResult
 from util import LoggingLevelRouter

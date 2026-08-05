@@ -10,6 +10,7 @@ version: 1.0.1
 # =========== TOPOLOGY PACKAGE ===========#
 
 # Packages
+from .basis import *
 from .rank import *
 
 

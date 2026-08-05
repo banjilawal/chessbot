@@ -1,7 +1,7 @@
-# src/fabrication/builder/pattern/pawn/fabrication/builder/pattern.py
+# src/topology/basis/offset/knight/basis.py
 
 """
-Module: fabrication.builder.pattern.pawn.pattern
+Module: topology.basis.offset.knight.basis
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -9,20 +9,20 @@ version: 1.0.1
 
 from __future__ import annotations
 
-
 from container import VectorSet
+from model import Knight
+
 from schema import Offset
-from topology.pattern import PawnAttackSignature
 
 
-class DevelopedPawnAttackPattern(PawnAttackSignature):
+class KnightTopologyBasis(OffsetTopologyBasis[Knight]):
     """
     Role:
         -   Data Holder
         -   Immutability
 
     Responsibilities:
-        1.  Determine potential attack destinations from a developed Pawn's current position.
+        1.  Determine potential destinations from a Knight's current position.
 
     Attributes:
         offsets: VectorSet
@@ -30,14 +30,13 @@ class DevelopedPawnAttackPattern(PawnAttackSignature):
     Provides:
 
     Super Class:
-        AttackOffsetPattern
-
+        OffsetTopologyBasis
     """
-    def __init__(self, offsets: VectorSet = Offset.DEVELOPED_PAWN_ATTACK.entries,):
+    
+    def __init__(self,  offsets: VectorSet = Offset.KNIGHT.entries):
         """
         Args:
             offsets: VectorSet
         """
         super().__init__(offsets=offsets)
-    
     

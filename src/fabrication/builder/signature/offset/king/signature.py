@@ -12,7 +12,7 @@ from __future__ import annotations
 from container import VectorSet
 from model import King
 from schema import Offset
-from pattern import OffsetSignature
+from topology.pattern import OffsetSignature
 
 
 class KingOffsetPattern(OffsetSignature[King]):

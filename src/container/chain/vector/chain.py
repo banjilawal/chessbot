@@ -228,17 +228,6 @@ class VectorLinkedList(LinkedList[Vector]):
         self.size = self.size - counter
         return DeletionResult.success(self)
         
-        
-        
-    
-    
-        
-        
-        
-
-        
-        
-        
     
     def add_node(self, node: Node[T], index: Optional[int] | None = None):
         antecedent: Node[T] = Node[T]()

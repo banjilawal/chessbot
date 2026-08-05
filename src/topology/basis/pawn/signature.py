@@ -1,7 +1,7 @@
-# src/fabrication/builder/pattern/pawn/fabrication/builder/pattern.py
+# src/topology/basis/pawn/basis.py
 
 """
-Module: fabrication.builder.pattern.pawn.pattern
+Module: topology.basis.pawn.basis
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -13,17 +13,16 @@ from abc import ABC
 
 from container import VectorSet
 from model import Pawn
-from topology.pattern import OffsetSignature
+from basis import OffsetTopologyBasis
 
 
-class PawnOffsetPattern(ABC, OffsetSignature[Pawn]):
+class PawnBasis(ABC, OffsetTopologyBasis[Pawn]):
     """
     Role:
-        -   Data Holder
-        -   Immutability
+        -  Data Holder
 
     Responsibilities:
-        1.  Determine potential destinations from PawnToken's current position.
+        1.  Constraints or that are used to generate a RankTree for King
 
     Attributes:
         offsets: VectorSet
@@ -31,7 +30,7 @@ class PawnOffsetPattern(ABC, OffsetSignature[Pawn]):
     Provides:
 
     Super Class:
-        OffsetPattern
+        OffsetTopologyBasis
     """
     
     def __init__(self, offsets: VectorSet):
