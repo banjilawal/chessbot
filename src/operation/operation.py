@@ -1,7 +1,7 @@
-# src/operation/__init__.py
+# src/operation/operation.py
 
 """
-Module: operation.__init__
+Module: operation.operation
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

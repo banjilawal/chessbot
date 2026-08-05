@@ -10,9 +10,13 @@ version: 1.0.1
 # =========== OPERATION PACKAGE ===========#
 
 # Packages
-from .insertion import *
 from .algebra import *
+from .chain import *
+from .insertion import *
 from .maneuver import *
+from .occupation import *
+from .promotion import *
+from .square import *
 from .stack import *
 from .token import *
 
