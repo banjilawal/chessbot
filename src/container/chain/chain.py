@@ -9,13 +9,14 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from abc import ABC
+from abc import ABC, abstractmethod
 from typing import Any, Generic, List, Optional, Type, TypeVar, cast
 
 from assurance import NumberValidator
 from node import Node
 from result import BuildResult, DeletionResult, InsertionResult, SearchResult, ValidationResult
 from util import LoggingLevelRouter
+from util.decorator.logging import logging_monitor
 
 T = TypeVar("T")
 
@@ -77,12 +78,25 @@ class LinkedList(ABC, Generic[T]):
     @property
     def iterator(self) -> LinkedListIterator:
         return self._iterator
+    
+    @abstractmethod
+    @LoggingLevelRouter.monitor
+    def add_node(self, node: Node[T]) -> InsertionResult:
+        pass
+    
+    @abstractmethod
+    @LoggingLevelRouter.monitor
+    def remove_node(self, node: Node[T]) -> InsertionResult:
+        pass
+    
+    @abstractmethod
+    @LoggingLevelRouter.monitor
+    def find_node(self, node: Node[T]) -> InsertionResult:
+        pass
         
     @LoggingLevelRouter.monitor
     def find_by_index(self, index: int) -> SearchResult[List[Node[T]]]:
         method = f"{self.__class__.__name__}.get_by_index"
-        
-
         
         counter: int = 0
         cursor = self._head
@@ -102,8 +116,9 @@ class LinkedList(ABC, Generic[T]):
             counter = counter + 1
         return SearchResult.success([cursor])
     
+    
     @LoggingLevelRouter.monitor
-    def remove_by_index(self, index: int) -> DeletionResult[Node[T]]:
+    def delete_at_index(self, index: int) -> DeletionResult[Node[T]]:
         method = f"{self.__class__.__name__}.execute"
         
         # Hand off get the node to the finder

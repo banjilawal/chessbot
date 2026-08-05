@@ -9,8 +9,9 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from typing import Optional
-
+from os import times
+from sndhdr import tests
+from typing import Optional, cast
 
 from model import Square
 from report import ManeuverApprovalReport, Report
@@ -33,20 +34,32 @@ class SquareDossier:
     Super Class:
     """
     _square: Square
+    _timestamp: int
     _report: Optional[ManeuverApprovalReport]
     
-    def __init__(self, square: Square, report: Optional[ManeuverApprovalReport] | None = None):
+    def __init__(
+            self,
+            square: Square,
+            timestamp: int,
+            report: Optional[ManeuverApprovalReport] | None = None
+    ):
         """
         Args:
             square: Square
+            timestamp: int
             report: Optional[Report]
         """
         self._square = square
         self._report = report
+        self._timestamp = timestamp
         
     @property
     def square(self) -> Square:
         return self._square
+    
+    @property
+    def timestamp(self) -> int:
+        return self._timestamp
     
     @property
     def report(self) -> Optional[ManeuverApprovalReport]:
@@ -63,5 +76,25 @@ class SquareDossier:
     @report.setter
     def report(self, other: ManeuverApprovalReport):
         self._report = other
+        
+    def is_fresher_than_other(self, other: SquareDossier) -> bool:
+        return self.timestamp > other.timestamp
+    
+    def is_not_fresher_than_other(self, other: SquareDossier) -> bool:
+        return self.timestamp <= other.timestamp
+        
+    def __eq__(self, other):
+        if other is self:
+            return True
+        if other is None:
+            return False
+        if isinstance(other, SquareDossier):
+            dossier = cast(SquareDossier, other)
+            return  (
+                    self.square == dossier.square and
+                    self._timestamp == dossier.timestamp
+            )
+        return False
+        
 
         

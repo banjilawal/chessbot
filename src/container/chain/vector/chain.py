@@ -59,7 +59,7 @@ class VectorLinkedList(LinkedList[Vector]):
         return SearchResult.success([node])
     
     @LoggingLevelRouter.monitor
-    def remove_by_index(self, index: int) -> DeletionResult[VectorNode]:
+    def delete_at_index(self, index: int) -> DeletionResult[VectorNode]:
         method = f"{self.__class__.__name__}.remove_by_index"
         
         # Hand off get the node to the finder
