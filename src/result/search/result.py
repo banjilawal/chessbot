@@ -90,6 +90,14 @@ class SearchResult(Result[T], Generic[T]):
         )
     
     @property
+    def is_not_empty(self) -> bool:
+        return (
+                self.payload is not None and
+                self.exception is None and
+                self._state == SearchState.SOMETHING_FOUND
+        )
+    
+    @property
     def is_timed_out(self) -> bool:
         return (
                 self.payload is None and

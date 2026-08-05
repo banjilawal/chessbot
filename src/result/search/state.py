@@ -14,3 +14,4 @@ class SearchState(Enum):
     FAILURE = auto(),
     TIMED_OUT = auto(),
     NOTHING_FOUND = auto(),
+    SOMETHING_FOUND = auto(),

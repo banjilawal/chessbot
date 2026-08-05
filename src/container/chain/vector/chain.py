@@ -12,6 +12,7 @@ from __future__ import annotations
 from typing import List, Optional, cast
 
 from container import LinkedList
+from err import SearchResultEmptyException
 from model import Vector
 from node import VectorNode
 from result import DeletionResult, InsertionResult, SearchResult
@@ -90,6 +91,18 @@ class VectorLinkedList(LinkedList[Vector]):
         
         return DeletionResult.success(node)
     
+    @LoggingLevelRouter.monitor
+    def find_node(self, node: VectorNode) -> SearchResult[List[VectorNode]]:
+        method = f"{self.__class__.__name__}.find_node"
+        
+        cursor = self.head
+        while cursor.next is not None:
+            if cursor == node:
+                return SearchResult.success([node])
+            cursor = cursor.next
+        return SearchResult.empty()
+        
+    
     def add_node(
             self,
             node: VectorNode,
@@ -97,17 +110,115 @@ class VectorLinkedList(LinkedList[Vector]):
     ) -> InsertionResult:
         method = f"{self.__class__.__name__}.add_node"
         
-        next: VectorNode = VectorNode()
-        previous: VectorNode = VectorNode()
+        if index is None:
+            index = 0
+        if abs(index) > self.size:
+            return InsertionResult.failure(
+                VectorLinkedListException(
+                    cls_mthd=method,
+                    cls_name=self.__class__.__name__,
+                    msg=VectorLinkedListException.MSG,
+                    err_code=VectorLinkedListException.ERR_CODE,
+                    ex=ListIndexOutOfBoundsException(
+                        cls_mthd=method,
+                        cls_name=self.__class__.__name__,
+                        msg=ListIndexOutOfBoundsException.MSG,
+                        err_code=ListIndexOutOfBoundsException.ERR_CODE,
+                    )
+                )
+            )
+        if index < 1:
+            index = self.size - (1 + index)
         
-        if index == None or index == 0:
-            next = self.head.next
-            previous = self.head
-            
-        if index == self.size - 1 or index == -1:
-            previous = self.tail.previous
-            next = self.tail
-        else
+        search = self.find_node(node)
+        if search.is_failure:
+            # Send the exception in the result.
+            return InsertionResult.failure(
+                VectorLinkedListException(
+                    cls_mthd=method,
+                    cls_name=self.__class__.__name__,
+                    msg=VectorLinkedListException.MSG,
+                    err_code=VectorLinkedListException.ERR_CODE,
+                    ex=search.exception
+                )
+            )
+        if search.is_not_empty:
+            # Send the exception in the result.
+            return InsertionResult.failure(
+                VectorLinkedListException(
+                    cls_mthd=method,
+                    cls_name=self.__class__.__name__,
+                    msg=VectorLinkedListException.MSG,
+                    err_code=VectorLinkedListException.ERR_CODE,
+                    ex=search.exception
+                )
+            )
+        previous = self.find_by_index(index)
+        if previous.is_failure:
+            # Send the exception in the result.
+            return InsertionResult.failure(
+                VectorLinkedListException(
+                    cls_mthd=method,
+                    cls_name=self.__class__.__name__,
+                    msg=VectorLinkedListException.MSG,
+                    err_code=VectorLinkedListException.ERR_CODE,
+                    ex=previous.exception
+                )
+            )
+        if previous.is_empty:
+            # Send the exception in the result.
+            return InsertionResult.failure(
+                VectorLinkedListException(
+                    cls_mthd=method,
+                    cls_name=self.__class__.__name__,
+                    msg=VectorLinkedListException.MSG,
+                    err_code=VectorLinkedListException.ERR_CODE,
+                    ex=SearchResultEmptyException()
+                )
+            )
+        node.next = previous.next
+        node.previous = previous
+        
+        previous.next.previous = node
+        previous.next = node
+        self.size = self.size + 1
+        return InsertionResult.success()
+    
+    def remove_node(
+            self,
+            node: VectorNode,
+    ) -> DeletionResult[VectorNode]:
+        method = f"{self.__class__.__name__}.add_node"
+        
+        search = self.find_node(node)
+        if search.is_failure:
+            # Send the exception in the result.
+            return DeletionResult.failure(
+                VectorLinkedListException(
+                    cls_mthd=method,
+                    cls_name=self.__class__.__name__,
+                    msg=VectorLinkedListException.MSG,
+                    err_code=VectorLinkedListException.ERR_CODE,
+                    ex=search.exception
+                )
+            )
+        if search.is_empty:
+            return DeletionResult.nothing_to_delete()
+        node = cast(VectorNode, search.payload[0])
+        previous = node.previous
+        next = node.next
+        
+        previous.next = next
+        next.previous = previous
+        
+        node.next = None
+        node.previous = None
+        
+        self.size = self.size - 1
+        return DeletionResult.success(Node)
+    
+    
+        
         
         
 

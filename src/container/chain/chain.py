@@ -10,11 +10,11 @@ version: 1.0.1
 from __future__ import annotations
 
 from abc import ABC
-from typing import Generic, List, Optional, TypeVar, cast
+from typing import Any, Generic, List, Optional, Type, TypeVar, cast
 
 from assurance import NumberValidator
 from node import Node
-from result import DeletionResult, SearchResult
+from result import BuildResult, DeletionResult, InsertionResult, SearchResult, ValidationResult
 from util import LoggingLevelRouter
 
 T = TypeVar("T")
@@ -22,6 +22,7 @@ T = TypeVar("T")
 
 class LinkedList(ABC, Generic[T]):
     _number_validator: NumberValidator
+    _iterator: LinkedListIterator
     
     _head: Node[T]
     _tail: Node[T]
@@ -43,6 +44,7 @@ class LinkedList(ABC, Generic[T]):
         self._head.next = self._tail
         self._tail.previous = self._head
         self._size = 0
+        self._iterator = LinkedListIterator(self)
         
     @property
     def head(self) -> Node:
@@ -56,6 +58,10 @@ class LinkedList(ABC, Generic[T]):
     def size(self) -> int:
         return self._size
     
+    @size.setter
+    def size(self, other: int):
+        self._size = self._size + other
+    
     @property
     def is_empty(self) -> bool:
         return (
@@ -67,10 +73,16 @@ class LinkedList(ABC, Generic[T]):
     @property
     def is_not_empty(self) -> bool:
         return not self.is_empty
+    
+    @property
+    def iterator(self) -> LinkedListIterator:
+        return self._iterator
         
     @LoggingLevelRouter.monitor
     def find_by_index(self, index: int) -> SearchResult[List[Node[T]]]:
         method = f"{self.__class__.__name__}.get_by_index"
+        
+
         
         counter: int = 0
         cursor = self._head
@@ -85,23 +97,6 @@ class LinkedList(ABC, Generic[T]):
         if index == -1 or index == self._size - 1:
             return SearchResult[[self._tail.previous]]
             
-        # Handle the case that, the index is out of bounds.
-        if index >= self.size:
-            # Send the exception in the result.
-            return SearchResult.failure(
-                LinkedListException(
-                    cls_mthd=method,
-                    cls_name=self.__class__.__name__,
-                    msg=LinkedListException.MSG,
-                    err_code=LinkedListException.ERR_CODE,
-                    ex=IndexOutOfBoundsException(
-                        cls_mthd=method,
-                        cls_name=self.__class__.__name__,
-                        msg=IndexOutOfBoundsException.MSG,
-                        err_code=IndexOutOfBoundsException.ERR_CODE,
-                    )
-                )
-            )
         while counter < index and cursor.next is not None:
             cursor = cursor.next
             counter = counter + 1
@@ -109,7 +104,7 @@ class LinkedList(ABC, Generic[T]):
     
     @LoggingLevelRouter.monitor
     def remove_by_index(self, index: int) -> DeletionResult[Node[T]]:
-        method = f"{self.__class__.__name__}.remove_by_index"
+        method = f"{self.__class__.__name__}.execute"
         
         # Hand off get the node to the finder
         search = self.find_by_index(index)
@@ -139,36 +134,85 @@ class LinkedList(ABC, Generic[T]):
         node.next = None
         
         return DeletionResult.success(node)
-        
-        
-
-        
-        
+    
+    @LoggingLevelRouter.monitor
+    def trim(self, offset: int) -> BuildResult[LinkedList[T]]:
+        search = self.find_by_index(offset)
+        # Handle the case that, the search fails.
+        if search.is_failure:
+            # Send the exception in the result.
+            return BuildResult.failure(
+                LinkedListException(
+                    cls_mthd=method,
+                    cls_name=self.__class__.__name__,
+                    msg=LinkedListException.MSG,
+                    err_code=LinkedListException.ERR_CODE,
+                    ex=search.exception
+                )
+            )
+        node = cast(Node[T], search.payload[0])
+        self._head.next = node
+        node.previous = self.head
+        return BuildResult.success(self)
         
     
-    def add_node(self, node: Node[T], index: Optional[int] | None = None):
-        antecedent: Node[T] = Node[T]()
-        precedent: Node[T] = Node[T]()
-        cursor: Node[T] = self._head
-        counter: int = 0
+    def index_validator(self, candidate: Any) -> ValidationResult[int]:
+        method = f"{self.__class__.__name__}.execute"
         
-        if index is None or index == -1:
-            index = 0
-            
-        while counter < index:
-            
+        if candidate is None:
+            return ValidationResult.success(0)
         
+        if not isinstance(candidate, int):
+            return DeletionResult.failure(
+                LinkedListException(
+                    cls_mthd=method,
+                    cls_name=self.__class__.__name__,
+                    msg=LinkedListException.MSG,
+                    err_code=LinkedListException.ERR_CODE,
+                    ex=search.exception
+                )
+            )
+        index = cast(int, candidate)
         
+        # Handle the case that, the index is out of bounds.
+        if abs(index) >= self.size:
+            # Send the exception in the result.
+            return ValidationResult.failure(
+                LinkedListException(
+                    cls_mthd=method,
+                    cls_name=self.__class__.__name__,
+                    msg=LinkedListException.MSG,
+                    err_code=LinkedListException.ERR_CODE,
+                    ex=ListIndexOutOfBoundsException(
+                        cls_mthd=method,
+                        cls_name=self.__class__.__name__,
+                        msg=ListIndexOutOfBoundsException.MSG,
+                        err_code=ListIndexOutOfBoundsException.ERR_CODE,
+                    )
+                )
+            )
+        if index < 0:
+            return ValidationResult.success(self.size - (1 + index))
         
-
-            precedent = self._head
-            antecedent = self._head.next
+class LinkedListIterator:
+    _cursor: Node
+    _linked_list: LinkedList
+    
+    def __init__(self, linked_list: LinkedList):
+        self._linked_list = linked_list
+        self._cursor = self._linked_list.head
+        
+    def has_next(self,) -> bool:
+        return self._cursor.next is None
+    
+    def next(self) -> Node:
+        if self.has_next():
+            next_node = self._cursor.next
+            self._cursor = self._cursor.next
+            return self._cursor.next
         else:
+            return self._cursor
             
             
-            self._head.next.previous = node
-            self._head.next = node
-        self._size = self._size + 1
-        
-    def
+            
     

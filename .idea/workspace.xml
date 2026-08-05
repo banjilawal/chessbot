@@ -5,12 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/container/chain/vector/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/container/chain/vector/chain.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/validator/number/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validator/number/validator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/container/chain/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/container/chain/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/container/chain/chain.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/container/chain/chain.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/container/chain/vector/chain.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/container/chain/vector/chain.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/node/dossier/node.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/node/dossier/node.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/node/node.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/node/node.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/node/vector/node.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/node/vector/node.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/result/search/result.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/result/search/result.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/result/search/state.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/result/search/state.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,7 +70,7 @@
     "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/container/chain/vector",
+    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/node",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
@@ -80,8 +82,8 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/container/chain/vector" />
       <recent name="$PROJECT_DIR$/src/node" />
+      <recent name="$PROJECT_DIR$/src/container/chain/vector" />
       <recent name="$PROJECT_DIR$/src/fabrication/assembler/node" />
       <recent name="$PROJECT_DIR$/src/fabrication/blueprint/node" />
       <recent name="$PROJECT_DIR$/src/assurance/auditor" />
@@ -761,7 +763,7 @@
       <workItem from="1785271456267" duration="5305000" />
       <workItem from="1785280992548" duration="25503000" />
       <workItem from="1785354695376" duration="4352000" />
-      <workItem from="1785366790867" duration="154665000" />
+      <workItem from="1785366790867" duration="165360000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />
