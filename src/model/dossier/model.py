@@ -95,6 +95,9 @@ class SquareDossier:
                     self._timestamp == dossier.timestamp
             )
         return False
+    
+    def __hash__(self) -> int:
+        return hash(self.timestamp)
         
 
         

@@ -39,5 +39,15 @@ class VectorNode(Node[Vector]):
     @previous.setter
     def previous(self, other: VectorNode):
         super().previous = other
+        
+    def __eq__(self, other):
+        if other is self:
+            return True
+        if other is None:
+            return False
+        if isinstance(other, VectorNode):
+            node = cast(VectorNode, other)
+            return self.payload == node.payload
+        return False
     
     
