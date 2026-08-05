@@ -11,7 +11,11 @@ version: 1.0.1
 
 # Packages
 from .basis import *
+from .generator import *
+from .mapper import *
 from .rank import *
+from .recurrence import *
+from .registry import *
 
 
 # Modules

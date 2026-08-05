@@ -15,7 +15,7 @@ from fabrication.blueprint import SpaceReservoirBlueprint
 from err import QuadrantReservoirNullException
 
 from model import Vector
-from geometry.space import Quadrant, QuadrantReservoir
+from space import Quadrant, QuadrantReservoir
 
 
 class QuadrantReservoirBlueprint(SpaceReservoirBlueprint[Quadrant]):

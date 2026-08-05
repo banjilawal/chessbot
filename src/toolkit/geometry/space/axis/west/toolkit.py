@@ -16,7 +16,7 @@ from typing import Type
 from fabrication.blueprint.space.axis.west import WestAxisBlueprint
 from carrier import WestAxisCarrier
 from err import WestAxisBlueprintNullException, WestAxisCarrierNullException, WestAxisNullException
-from geometry.space import WestAxis
+from space import WestAxis
 from toolkit import AxisToolkit
 
 

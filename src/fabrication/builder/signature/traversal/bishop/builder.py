@@ -13,7 +13,7 @@ from err import BishopTraversalPatternException
 from err.null.recurrence.group import BishopRecurrenceSeriesNullException
 from model import Bishop
 from topology.pattern import TraversalTopologyGenerator, TraversalSignature
-from geometry.recurrence import BishopRecurrenceRegistries
+from topology.recurrence import BishopRecurrenceRegistries
 from result import ComputationResult
 from util import LoggingLevelRouter
 from assurance.validator import PrimingValidator

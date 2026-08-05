@@ -19,7 +19,7 @@ from err import (
     NorthAxisCarrierNullException,
     NorthAxisNullException
 )
-from geometry.space import NorthAxis
+from space import NorthAxis
 from toolkit import AxisToolkit
 
 

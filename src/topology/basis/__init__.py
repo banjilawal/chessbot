@@ -10,7 +10,6 @@ version: 1.0.1
 # =========== TOPOLOGY.BASIS PACKAGE ===========#
 
 # Packages
-from .generator import *
 from .offset import *
 from .pawn import *
 from .traversal import *

@@ -15,7 +15,7 @@ from fabrication.blueprint import SouthAxisBlueprint
 from fabrication.builder import AxisBuilder
 from err import SouthAxisBuilderException
 from result import BuildResult, MethodResultType
-from geometry.space import SouthAxis
+from space import SouthAxis
 from toolkit import SouthAxisBuilderToolkit
 from util import LoggingLevelRouter
 

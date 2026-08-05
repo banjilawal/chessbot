@@ -13,7 +13,7 @@ from typing import Optional
 
 from fabrication.blueprint import AxisReservoirBlueprint
 from carrier import SpaceReservoirCarrier
-from geometry.space import AxisReservoir
+from space import AxisReservoir
 
 
 class AxisReservoirCarrier(SpaceReservoirCarrier[AxisReservoir]):

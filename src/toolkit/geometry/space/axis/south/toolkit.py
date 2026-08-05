@@ -16,7 +16,7 @@ from typing import Type
 from fabrication.blueprint.space.axis.south import SouthAxisBlueprint
 from carrier import SouthAxisCarrier
 from err import SouthAxisBlueprintNullException, SouthAxisCarrierNullException, SouthAxisNullException
-from geometry.space import SouthAxis
+from space import SouthAxis
 from toolkit import AxisToolkit
 
 

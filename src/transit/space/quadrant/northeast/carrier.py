@@ -13,7 +13,7 @@ from typing import Optional
 
 from fabrication.blueprint import NortheastQuadrantBlueprint
 from carrier import SpaceCarrier
-from geometry.space import NortheastQuadrant
+from space import NortheastQuadrant
 
 
 class NortheastQuadrantCarrier(SpaceCarrier[NortheastQuadrant]):

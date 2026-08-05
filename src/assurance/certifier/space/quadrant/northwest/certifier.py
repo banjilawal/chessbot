@@ -17,7 +17,7 @@ from err import NorthwestQuadrantCarrierNullException, NorthwestQuadrantRootCert
 from model import Vector
 from result import ValidationResult
 from assurance.certifier import QuadrantRootCertifier
-from geometry.space import NorthwestQuadrant
+from space import NorthwestQuadrant
 from toolkit.geometry.space.quadrant.northwest import NorthwestQuadrantToolkit
 from util import LoggingLevelRouter
 

@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from fabrication.assembler import SpaceReservoirAssembler
 from fabrication.blueprint import QuadrantReservoirBlueprint
-from geometry.registry import QuadrantReservoir
+from topology.registry import QuadrantReservoir
 from result import BuildResult
 
 from util import LoggingLevelRouter

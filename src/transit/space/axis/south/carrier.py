@@ -13,7 +13,7 @@ from typing import Optional
 
 from fabrication.blueprint import SoouthAxisBlueprint
 from carrier import SpaceCarrier
-from geometry.space import SoouthAxis
+from space import SoouthAxis
 
 
 class SoouthAxisCarrier(SpaceCarrier[SoouthAxis]):

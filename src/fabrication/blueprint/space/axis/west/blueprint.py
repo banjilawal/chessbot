@@ -14,7 +14,7 @@ from typing import Optional, Type, cast
 from fabrication.blueprint import AxisBlueprint
 from err import WestAxisNullException
 from model import Vector
-from geometry.space import WestAxis
+from space import WestAxis
 
 
 class WestAxisBlueprint(AxisBlueprint[WestAxis]):

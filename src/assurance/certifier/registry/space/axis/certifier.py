@@ -16,7 +16,7 @@ from carrier import AxisReservoirCarrier
 from model import Vector
 from assurance.certifier import SpaceReservoirCertifier
 from result import ValidationResult
-from geometry.space import AxisReservoir
+from space import AxisReservoir
 from toolkit import AxisReservoirToolkit
 from util import LoggingLevelRouter
 

@@ -16,7 +16,7 @@ from fabrication.blueprint import Blueprint
 from err import SpaceReservoirNullException
 from model import Vector
 
-from geometry.space import SpaceReservoir
+from space import SpaceReservoir
 
 T = TypeVar("T", bound="SpaceReservoir")
 

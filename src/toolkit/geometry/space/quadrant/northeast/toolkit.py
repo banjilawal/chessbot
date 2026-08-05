@@ -16,7 +16,7 @@ from typing import Type
 from fabrication.blueprint.space.quadrant.northeast import NortheastQuadrantBlueprint
 from carrier import NortheastQuadrantCarrier
 from err import NortheastQuadrantBlueprintNullException, NortheastQuadrantCarrierNullException, NortheastQuadrantNullException
-from geometry.space import NortheastQuadrant
+from space import NortheastQuadrant
 from toolkit import QuadrantToolkit
 
 

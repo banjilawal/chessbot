@@ -14,7 +14,7 @@ from typing import Optional, Type, cast
 from fabrication.blueprint import QuadrantReservoirBlueprint
 from carrier import QuadrantReservoirCarrier
 from err import QuadrantReservoirNullException, SpaceReservoirNullException
-from geometry.space import Quadrant, QuadrantReservoir
+from space import Quadrant, QuadrantReservoir
 from toolkit import MathToolkit, SpaceReservoirToolkit
 
 

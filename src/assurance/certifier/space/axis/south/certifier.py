@@ -16,7 +16,7 @@ from carrier import SouthAxisCarrier
 from model import Vector
 from result import ValidationResult
 from assurance.certifier import AxisRootCertifier
-from geometry.space import SouthAxis
+from space import SouthAxis
 from toolkit.geometry.space.axis.south import SouthAxisToolkit
 from util import LoggingLevelRouter
 

@@ -14,7 +14,7 @@ from typing import Optional, cast
 from fabrication.blueprint import AxisReservoirBlueprint
 from fabrication.builder import SpaceReservoirBuilder
 from err import AxisReservoirBuilderException
-from geometry.registry import AxisReservoir
+from topology.registry import AxisReservoir
 from result import BuildResult, MethodResultType
 from toolkit import AxisReservoirBuilderToolkit
 from util import LoggingLevelRouter

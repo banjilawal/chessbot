@@ -15,7 +15,7 @@ from fabrication.blueprint import EastAxisBlueprint
 from fabrication.builder import AxisBuilder
 from err import EastAxisBuilderException
 from result import BuildResult, MethodResultType
-from geometry.space import EastAxis
+from space import EastAxis
 from toolkit import EastAxisBuilderToolkit
 from util import LoggingLevelRouter
 

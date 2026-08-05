@@ -14,7 +14,7 @@ from typing import Optional, cast
 from fabrication.blueprint import QuadrantReservoirBlueprint
 from fabrication.builder import SpaceReservoirBuilder
 from err import QuadrantReservoirBuilderException
-from geometry.registry import QuadrantReservoir
+from topology.registry import QuadrantReservoir
 from result import BuildResult, MethodResultType
 from toolkit import QuadrantReservoirBuilderToolkit
 from util import LoggingLevelRouter

@@ -16,7 +16,7 @@ from carrier import SouthwestQuadrantCarrier
 from model import Vector
 from result import ValidationResult
 from assurance.certifier import QuadrantRootCertifier
-from geometry.space import SouthwestQuadrant
+from space import SouthwestQuadrant
 from toolkit import SouthwestQuadrantToolkit
 
 from util import LoggingLevelRouter

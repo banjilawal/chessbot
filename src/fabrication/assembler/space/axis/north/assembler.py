@@ -13,7 +13,7 @@ from fabrication.blueprint import NorthAxisBlueprint
 
 from result import BuildResult
 from fabrication.assembler import AxisAssembler
-from geometry.space import NorthAxis
+from space import NorthAxis
 from util import  LoggingLevelRouter
   
   

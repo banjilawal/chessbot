@@ -16,7 +16,7 @@ from carrier import QuadrantReservoirCarrier
 from model import Vector
 from assurance.certifier import SpaceReservoirCertifier
 from result import ValidationResult
-from geometry.space import QuadrantReservoir
+from space import QuadrantReservoir
 from toolkit import QuadrantReservoirToolkit
 from util import LoggingLevelRouter
 

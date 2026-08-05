@@ -13,7 +13,7 @@ from __future__ import annotations
 from typing import Any
 
 from result import ValidationResult
-from geometry.space import AxisTraversalPattern
+from space import AxisTraversalPattern
 from util import LoggingLevelRouter
 from assurance.validator import LinearSpaceValidator
 

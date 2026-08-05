@@ -15,7 +15,7 @@ from fabrication.blueprint import SoutheastQuadrantBlueprint
 from fabrication.builder import QuadrantBuilder
 from err import SoutheastQuadrantBuilderException
 from result import BuildResult, MethodResultType
-from geometry.space import SoutheastQuadrant
+from space import SoutheastQuadrant
 from toolkit import SoutheastQuadrantBuilderToolkit
 from util import LoggingLevelRouter
 

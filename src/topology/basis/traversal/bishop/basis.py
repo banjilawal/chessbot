@@ -13,8 +13,7 @@ from __future__ import annotations
 from typing import cast
 
 from model import Bishop
-from basis import TraversalTopologyBasis
-from geometry.recurrence import BishopRecurrenceRegistries
+from topology import TraversalTopologyBasis
 
 
 class BishopTopologyBasis(TraversalTopologyBasis[Bishop]):

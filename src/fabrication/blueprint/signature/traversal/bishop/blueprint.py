@@ -14,7 +14,7 @@ from typing import Optional, Type, cast
 from fabrication.blueprint import TraversalSignatureBlueprint
 from err import BishopSignatureNullException
 from topology.pattern import BishopSignature
-from geometry.recurrence import BishopRecurrenceRegistries
+from topology.recurrence import BishopRecurrenceRegistries
 
 
 class BishopSignatureBlueprint(TraversalSignatureBlueprint[BishopSignature]):

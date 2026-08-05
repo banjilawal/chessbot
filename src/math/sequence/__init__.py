@@ -10,6 +10,5 @@ version: 1.0.1
 # =========== MATH.SEQUENCE PACKAGE ===========#
 
 # Packages
-from .generator import *
 
 # Modules

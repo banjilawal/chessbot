@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import cast
 
 from fabrication.assembler import AxisReservoirAssembler
-from geometry.registry import AxisReservoir
+from topology.registry import AxisReservoir
 from assurance.certifier import AxisReservoirRootCertifier
 from toolkit import SpaceReservoirBuilderToolkit
 

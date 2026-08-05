@@ -15,7 +15,7 @@ from fabrication.blueprint import SpaceReservoirBlueprint
 from err import AxisReservoirNullException
 
 from model import Vector
-from geometry.registry import AxisReservoir
+from topology.registry import AxisReservoir
 
 
 

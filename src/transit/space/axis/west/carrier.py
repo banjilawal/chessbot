@@ -13,7 +13,7 @@ from typing import Optional
 
 from fabrication.blueprint import WestAxisBlueprint
 from carrier import SpaceCarrier
-from geometry.space import WestAxis
+from space import WestAxis
 
 
 class WestAxisCarrier(SpaceCarrier[WestAxis]):
