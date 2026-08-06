@@ -5,41 +5,34 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/authorization/adjudcator/chain/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/authorization/adjudcator/chain/adjudicator.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/authorization/adjudcator/stack/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/authorization/adjudcator/stack/adjudicator.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/report/approval/chain/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/report/approval/chain/report.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/report/approval/stack/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/report/approval/stack/report.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/authorization/adjudcator/token/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/authorization/adjudcator/token/adjudicator.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/authorization/adjudcator/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/authorization/adjudcator/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/authorization/request/chain/add/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/authorization/request/chain/add/request.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/authorization/request/search/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/authorization/request/stack/search/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/authorization/request/search/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/authorization/request/stack/search/request.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/authorization/request/stack/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/authorization/request/stack/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/collection/chain/chain.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/collection/chain/chain.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/collection/chain/vector/chain.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/collection/chain/vector/chain.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/report/approval/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/report/approval/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/report/approval/attack/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/report/approval/maneuver/attack/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/report/approval/attack/report.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/report/approval/maneuver/attack/report.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/report/approval/attack/state.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/report/approval/maneuver/attack/state.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/report/approval/deletion/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/report/approval/stack/deletion/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/report/approval/deletion/report.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/report/approval/stack/deletion/report.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/report/approval/destination/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/report/approval/maneuver/destination/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/report/approval/destination/report.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/report/approval/maneuver/destination/report.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/report/approval/maneuver/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/report/approval/maneuver/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/report/approval/maneuver/report.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/report/approval/maneuver/report.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/report/approval/pop/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/report/approval/stack/pop/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/report/approval/pop/report.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/report/approval/stack/pop/report.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/report/approval/promotion/report.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/report/approval/promotion/report.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/report/approval/push/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/report/approval/stack/push/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/report/approval/push/report.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/report/approval/stack/push/report.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/report/approval/report.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/report/approval/report.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/report/approval/search/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/report/approval/stack/search/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/report/approval/search/report.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/report/approval/stack/search/report.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/report/approval/slot/report.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/report/approval/slot/report.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/authorization/adjudcator/chain/adjudicator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/authorization/adjudcator/chain/adjudicator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/authorization/adjudcator/deletion/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/authorization/adjudcator/stack/deletion/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/authorization/adjudcator/deletion/adjudicator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/authorization/adjudcator/stack/deletion/adjudicator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/authorization/adjudcator/deletion/token/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/authorization/adjudcator/stack/deletion/token/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/authorization/adjudcator/deletion/token/adjudicator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/authorization/adjudcator/stack/deletion/token/adjudicator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/authorization/adjudcator/pop/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/authorization/adjudcator/stack/pop/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/authorization/adjudcator/pop/adjudicator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/authorization/adjudcator/stack/pop/adjudicator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/authorization/adjudcator/pop/token/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/authorization/adjudcator/stack/pop/token/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/authorization/adjudcator/pop/token/adjudicator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/authorization/adjudcator/stack/pop/token/adjudicator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/authorization/adjudcator/promotion/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/authorization/adjudcator/token/promotion/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/authorization/adjudcator/promotion/adjudicator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/authorization/adjudcator/token/promotion/adjudicator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/authorization/adjudcator/promotion/pawn/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/authorization/adjudcator/token/promotion/pawn/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/authorization/adjudcator/promotion/pawn/adjudicator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/authorization/adjudcator/token/promotion/pawn/adjudicator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/authorization/adjudcator/promotion/rank/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/authorization/adjudcator/token/promotion/rank/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/authorization/adjudcator/promotion/rank/adjudicator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/authorization/adjudcator/token/promotion/rank/adjudicator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/authorization/adjudcator/push/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/authorization/adjudcator/stack/push/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/authorization/adjudcator/push/adjudicator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/authorization/adjudcator/stack/push/adjudicator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/authorization/adjudcator/push/token/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/authorization/adjudcator/stack/push/token/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/authorization/adjudcator/push/token/adjudicator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/authorization/adjudcator/stack/push/token/adjudicator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/authorization/adjudcator/search/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/authorization/adjudcator/stack/search/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/authorization/adjudcator/search/adjudicator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/authorization/adjudcator/stack/search/adjudicator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/authorization/adjudcator/search/token/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/authorization/adjudcator/stack/search/token/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/authorization/adjudcator/search/token/adjudicator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/authorization/adjudcator/stack/search/token/adjudicator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/authorization/adjudcator/stack/adjudicator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/authorization/adjudcator/stack/adjudicator.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -97,7 +90,7 @@
     "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/report/approval",
+    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/authorization/adjudcator",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
@@ -109,18 +102,18 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/authorization/adjudcator" />
       <recent name="$PROJECT_DIR$/src/report/approval" />
       <recent name="$PROJECT_DIR$/src/report/approval/stack" />
-      <recent name="$PROJECT_DIR$/src/authorization/adjudcator" />
       <recent name="$PROJECT_DIR$/src/authorization/adjudcator/stack" />
       <recent name="$PROJECT_DIR$/src/authorization/request/chain/remove/offset" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/authorization/adjudcator/token" />
+      <recent name="$PROJECT_DIR$/src/authorization/adjudcator/stack" />
+      <recent name="$PROJECT_DIR$/src/report/approval/token" />
       <recent name="$PROJECT_DIR$/src/report/approval/maneuver" />
       <recent name="$PROJECT_DIR$/src/report/approval/stack" />
-      <recent name="$PROJECT_DIR$/src/authorization/request/stack" />
-      <recent name="$PROJECT_DIR$/src/topology/generator" />
-      <recent name="$PROJECT_DIR$/src/topology" />
     </key>
   </component>
   <component name="RunManager" selected="Python.node">
@@ -794,7 +787,7 @@
       <workItem from="1785280992548" duration="25503000" />
       <workItem from="1785354695376" duration="4352000" />
       <workItem from="1785366790867" duration="182641000" />
-      <workItem from="1785958183827" duration="21296000" />
+      <workItem from="1785958183827" duration="23401000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />
@@ -1132,7 +1125,7 @@
           <option name="timeStamp" value="199" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/src/report/approval/promotion/report.py</url>
+          <url>file://$PROJECT_DIR$/src/report/approval/token/promotion/report.py</url>
           <line>9</line>
           <option name="timeStamp" value="203" />
         </line-breakpoint>
@@ -1222,7 +1215,7 @@
           <option name="timeStamp" value="227" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/src/authorization/adjudcator/search/token/adjudicator.py</url>
+          <url>file://$PROJECT_DIR$/src/authorization/adjudcator/stack/search/token/adjudicator.py</url>
           <line>10</line>
           <option name="timeStamp" value="228" />
         </line-breakpoint>
@@ -1242,7 +1235,7 @@
           <option name="timeStamp" value="231" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/src/authorization/adjudcator/promotion/adjudicator.py</url>
+          <url>file://$PROJECT_DIR$/src/authorization/adjudcator/token/promotion/adjudicator.py</url>
           <line>10</line>
           <option name="timeStamp" value="233" />
         </line-breakpoint>

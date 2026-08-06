@@ -14,6 +14,7 @@ from typing import Any, Generic, Optional, TypeVar
 
 from assurance import PrimingValidator
 from authorization import RequestAdjudicator
+from report import ChainOperationApprovalReport
 from util import LoggingLevelRouter
 
 
@@ -28,5 +29,5 @@ class LinkedListRequestAdjudicator(RequestAdjudicator, ABC, Generic[T]):
     
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def execute(self, candidate: Any) -> LinkedListOperationApprovalReport:
+    def execute(self, candidate: Any) -> ChainOperationApprovalReport:
         pass

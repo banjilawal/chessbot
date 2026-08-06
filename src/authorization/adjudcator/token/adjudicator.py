@@ -1,7 +1,7 @@
-# src/authorization/adjudicator/stack/adjudicator.py
+# src/authorization/adjudicator/token/adjudicator.py
 
 """
-Module: authorization.adjudicator.stack.adjudicator
+Module: authorization.adjudicator.adjudicator
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -14,15 +14,14 @@ from typing import Any, Generic, Optional, TypeVar
 
 from assurance import PrimingValidator
 from authorization import RequestAdjudicator
-from report import StackOperationApprovalReport
-
+from report import TokenOperationApprovalReport
 from util import LoggingLevelRouter
 
 
 
-T = TypeVar("T", bound="StackRequest")
+T = TypeVar("T", bound="TokenRequest")
 
-class StackRequestAdjudicator(RequestAdjudicator, ABC, Generic[T]):
+class TokenRequestAdjudicator(RequestAdjudicator, ABC, Generic[T]):
     
     def __init__(self, bootstrapper: Optional[PrimingValidator] | None = None):
         super().__init__(bootstrapper=bootstrapper)
@@ -30,5 +29,5 @@ class StackRequestAdjudicator(RequestAdjudicator, ABC, Generic[T]):
     
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def execute(self, candidate: Any) -> StackOperationApprovalReport:
+    def execute(self, candidate: Any) -> TokenOperationApprovalReport:
         pass
