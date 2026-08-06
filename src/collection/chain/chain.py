@@ -86,7 +86,7 @@ class LinkedList(ABC, Generic[T]):
     
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def remove_node(self, node: Node[T]) -> InsertionResult:
+    def remove_node(self, node: Node[T]) -> DeletionResult[Node[T]]:
         pass
     
     @abstractmethod

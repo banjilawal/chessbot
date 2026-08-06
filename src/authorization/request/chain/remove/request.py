@@ -1,7 +1,7 @@
-# src/authorization/request/chain/add/request.py
+# src/authorization/request/chain/remove/request.py
 
 """
-Module: authorization.request.chain.add.request
+Module: authorization.request.chain.remove.request
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -19,7 +19,7 @@ from node import Node
 T = TypeVar("T")
 
 
-class NodeAdditionRequest(LinkedListRequest, ABC, Generic[T]):
+class NodeRemovalRequest(LinkedListRequest, ABC, Generic[T]):
     """
     Role:
         -  Request
@@ -36,15 +36,15 @@ class NodeAdditionRequest(LinkedListRequest, ABC, Generic[T]):
     Super Class:
         Request
     """
-    _node: Node[T]
+    _node: Optional[Node[T]]
     _index: Optional[int]
     
     def __init__(
             self,
             id: int,
-            node: Node[T],
             chain: LinkedList[T],
-            index: Optional[int] | None = None
+            node: Optional[Node[T]] | None = None,
+            index: Optional[int] | None = None,
     ):
         """
         Args:

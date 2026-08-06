@@ -11,6 +11,7 @@ version: 1.0.1
 
 # Packages
 from .add import *
+from .remove import *
 
 
 # Modules

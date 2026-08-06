@@ -5,13 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/authorization/request/chain/add/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/operation/tree/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/operation/tree/operation.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/authorization/request/chain/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/authorization/request/chain/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/operation.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/topology/basis/traversal/basis.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/topology/basis/traversal/basis.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/collection/chain/chain.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/collection/chain/chain.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,7 +63,7 @@
     "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/authorization/request/chain/add",
+    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/authorization/request/chain",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
@@ -81,9 +75,9 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/authorization/request/chain" />
       <recent name="$PROJECT_DIR$/src/authorization/request/chain/add" />
       <recent name="$PROJECT_DIR$/src/operation" />
-      <recent name="$PROJECT_DIR$/src/authorization/request/chain" />
       <recent name="$PROJECT_DIR$/src/container" />
       <recent name="$PROJECT_DIR$/src/operation/chain" />
     </key>
@@ -766,7 +760,7 @@
       <workItem from="1785280992548" duration="25503000" />
       <workItem from="1785354695376" duration="4352000" />
       <workItem from="1785366790867" duration="182641000" />
-      <workItem from="1785958183827" duration="10854000" />
+      <workItem from="1785958183827" duration="12334000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />
