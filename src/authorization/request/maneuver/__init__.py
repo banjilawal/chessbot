@@ -1,13 +1,13 @@
-# src/request/maneuver/__init__.py
+# src/authorization/request/maneuver/__init__.py
 
 """
-Module: request.maneuver.__init__
+Module: authorization.request.maneuver.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
 """
 
-# =========== REQUEST.MANEUVER PACKAGE ===========#
+# =========== AUTHORIZATION.REQUEST.MANEUVER PACKAGE ===========#
 
 # Packages
 

@@ -1,7 +1,7 @@
-# src/request/request.py
+# src/authorization/request/request.py
 
 """
-Module: request.request
+Module: authorization.request.request
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

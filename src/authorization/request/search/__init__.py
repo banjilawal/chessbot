@@ -1,13 +1,13 @@
-# src/request/search/__init__.py
+# src/authorization/request/search/__init__.py
 
 """
-Module: request.search.__init__
+Module: authorization.request.search.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
 """
 
-# =========== REQUEST.SEARCH PACKAGE ===========#
+# =========== AUTHORIZATION.REQUEST.SEARCH PACKAGE ===========#
 
 # Packages
 

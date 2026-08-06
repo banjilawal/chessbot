@@ -1,7 +1,7 @@
-# src/request/slot/request.py
+# src/authorization/request/slot/request.py
 
 """
-Module: request.slot.request
+Module: authorization.request.slot.request
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

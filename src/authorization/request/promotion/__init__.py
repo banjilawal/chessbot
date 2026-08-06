@@ -1,13 +1,13 @@
-# src/request/promotion/__init__.py
+# src/authorization/request/promotion/__init__.py
 
 """
-Module: request.promotion.__init__
+Module: authorization.request.promotion.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
 """
 
-# =========== REQUEST.PROMOTION PACKAGE ===========#
+# =========== AUTHORIZATION.REQUEST.PROMOTION PACKAGE ===========#
 
 # Packages
 

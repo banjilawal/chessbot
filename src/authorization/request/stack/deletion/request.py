@@ -1,7 +1,7 @@
-# src/request/deletion/request.py
+# src/authorization/request/deletion/request.py
 
 """
-Module: request.deletion.request
+Module: authorization.request.deletion.request
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

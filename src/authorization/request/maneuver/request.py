@@ -1,7 +1,7 @@
-# src/request/maneuver/request.py
+# src/authorization/request/maneuver/request.py
 
 """
-Module: request.maneuver.request
+Module: authorization.request.maneuver.request
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

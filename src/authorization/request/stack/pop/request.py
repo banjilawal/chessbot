@@ -1,7 +1,7 @@
-# src/request/pop/request.py
+# src/authorization/request/pop/request.py
 
 """
-Module: request.pop.request
+Module: authorization.request.pop.request
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

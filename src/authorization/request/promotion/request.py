@@ -1,7 +1,7 @@
-# src/request/promotion/request.py
+# src/authorization/request/promotion/request.py
 
 """
-Module: request.promotion.request
+Module: authorization.request.promotion.request
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

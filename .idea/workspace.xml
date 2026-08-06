@@ -5,26 +5,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/container/container.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/container/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/container/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/container/chain/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/container/chain/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/container/chain/chain.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/container/chain/chain.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/container/chain/vector/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/container/chain/vector/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/container/chain/vector/chain.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/container/chain/vector/chain.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/container/sets/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/container/sets/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/container/sets/container.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/container/sets/container.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/container/sets/coord/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/container/sets/coord/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/container/sets/coord/container.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/container/sets/coord/container.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/container/sets/register/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/container/sets/register/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/container/sets/register/container.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/container/sets/register/container.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/container/sets/vector/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/container/sets/vector/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/container/sets/vector/container.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/container/sets/vector/container.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/container/tree/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/container/tree/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/container/tree/coord/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/container/tree/coord/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/container/tree/coord/tree.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/container/tree/coord/tree.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/container/tree/tree.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/container/tree/tree.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/container/tree/vector/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/container/tree/vector/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/container/tree/vector/tree.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/container/tree/vector/tree.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/authorization/request/chain/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/authorization/request/chain/request.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/authorization/request/stack/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/authorization/request/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/authorization/request/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/authorization/request/deletion/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/authorization/request/stack/deletion/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/authorization/request/deletion/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/authorization/request/stack/deletion/request.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/authorization/request/maneuver/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/authorization/request/maneuver/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/authorization/request/maneuver/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/authorization/request/maneuver/request.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/authorization/request/pop/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/authorization/request/stack/pop/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/authorization/request/pop/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/authorization/request/stack/pop/request.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/authorization/request/promotion/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/authorization/request/promotion/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/authorization/request/promotion/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/authorization/request/promotion/request.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/authorization/request/push/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/authorization/request/stack/push/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/authorization/request/push/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/authorization/request/stack/push/request.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/authorization/request/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/authorization/request/request.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/authorization/request/search/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/authorization/request/search/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/authorization/request/search/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/authorization/request/search/request.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/authorization/request/slot/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/authorization/request/slot/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/authorization/request/slot/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/authorization/request/slot/request.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -82,7 +82,7 @@
     "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/container",
+    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/authorization/request/chain",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
@@ -94,18 +94,18 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/authorization/request/chain" />
       <recent name="$PROJECT_DIR$/src/container" />
       <recent name="$PROJECT_DIR$/src/operation/chain" />
       <recent name="$PROJECT_DIR$/src/node" />
       <recent name="$PROJECT_DIR$/src/container/chain/vector" />
-      <recent name="$PROJECT_DIR$/src/fabrication/assembler/node" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/authorization/request/stack" />
       <recent name="$PROJECT_DIR$/src/topology/generator" />
       <recent name="$PROJECT_DIR$/src/topology" />
       <recent name="$PROJECT_DIR$/src" />
       <recent name="$PROJECT_DIR$/src/node/square" />
-      <recent name="$PROJECT_DIR$/src/container/chain" />
     </key>
   </component>
   <component name="RunManager" selected="Python.node">
@@ -779,7 +779,7 @@
       <workItem from="1785280992548" duration="25503000" />
       <workItem from="1785354695376" duration="4352000" />
       <workItem from="1785366790867" duration="182641000" />
-      <workItem from="1785958183827" duration="6468000" />
+      <workItem from="1785958183827" duration="9561000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />
@@ -1597,9 +1597,14 @@
           <option name="timeStamp" value="334" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/src/container/chain/vector/chain.py</url>
+          <url>file://$PROJECT_DIR$/src/collection/chain/vector/chain.py</url>
           <line>9</line>
           <option name="timeStamp" value="335" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/authorization/request/chain/request.py</url>
+          <line>9</line>
+          <option name="timeStamp" value="336" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
