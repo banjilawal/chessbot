@@ -12,8 +12,8 @@ from __future__ import annotations
 
 from typing import Generic, TypeVar
 
-from geometry import RecurrenceRegistryCollection
-from topology import TopologyBasis
+
+from topology import RecurrenceRegistryCollection, TopologyBasis
 
 T = TypeVar("T", bound="TraversalRank")
 

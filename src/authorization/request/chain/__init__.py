@@ -10,6 +10,8 @@ version: 1.0.1
 # =========== AUTHORIZATION.REQUEST.CHAIN PACKAGE ===========#
 
 # Packages
+from .add import *
 
 
 # Modules
+from .request import LinkedListRequest

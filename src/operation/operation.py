@@ -22,7 +22,7 @@ class Operation(ABC, Generic[T]):
         -   Worker
 
     Responsibilities:
-        1.  Executes a task on a data-holding object or collection of data-holders.
+        1.  Execute a task on a data-holding object or collection of data-holders.
         2.  The task produces a work product encapsulated in a Result object.
 
     Attributes:
