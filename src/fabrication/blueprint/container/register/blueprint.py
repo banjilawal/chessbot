@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Tuple, Type, cast
 
 from fabrication.blueprint import ContainerBlueprint
-from container import RegisterSet
+from collection import RegisterSet
 from err import RegisterSetNullException
 from register import Register
 

@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import List, Optional, cast
 
-from container import VectorSet
+from collection import VectorSet
 from model import Vector
 from topology.recurrence import Recurrence
 from result import ComputationResult

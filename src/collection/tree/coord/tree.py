@@ -1,7 +1,7 @@
-# src/container/tree/coord/tree.py
+# src/collection/tree/coord/tree.py
 
 """
-Module: container.tree.coord.tree
+Module: collection.tree.coord.tree
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import List, cast
 
-from container import CoordSet
+from collection import CoordSet
 from model import Coord
 from tree import Tree
 

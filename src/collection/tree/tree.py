@@ -1,7 +1,7 @@
-# src/container/tree/tree.py
+# src/collection/tree/tree.py
 
 """
-Module: container.tree.tree
+Module: collection.tree.tree
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -10,12 +10,12 @@ version: 1.0.1
 from __future__ import annotations
 
 from abc import ABC
-from typing import Container, Generic, List, TypeVar
+from typing import Collection, Generic, List, TypeVar
 
 
 T = TypeVar("T")
 
-class Tree(ABC, Generic[T]):
+class Tree(Collection, ABC, Generic[T]):
     """
     Role:
         -   Data Holder
@@ -32,9 +32,9 @@ class Tree(ABC, Generic[T]):
     Super Class:
     """
     _root: T
-    _branches: List[Container[T]]
+    _branches: List[Collection[T]]
     
-    def __init__(self, root: T, branches: [Container[T]]):
+    def __init__(self, root: T, branches: [Collection[T]]):
         self._root = root
         self._branches = branches
         
@@ -43,7 +43,7 @@ class Tree(ABC, Generic[T]):
         return self._root
     
     @property
-    def branches(self) -> List[Container[T]]:
+    def branches(self) -> List[Collection[T]]:
         return self._branches
     
 

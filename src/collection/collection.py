@@ -1,7 +1,7 @@
-# src/container/container.py
+# src/collection/collection.py
 
 """
-Module: container.container
+Module: collection.collection
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -10,12 +10,12 @@ version: 1.0.1
 from __future__ import annotations
 
 from abc import ABC, abstractmethod
-from typing import Generic, Iterator, Optional, Tuple, TypeVar
+from typing import Generic, TypeVar
 
 
 T = TypeVar("T")
 
-class Container(ABC, Generic[T]):
+class Collection(ABC, Generic[T]):
     """
     Role:
         -   Data Holder
@@ -31,27 +31,22 @@ class Container(ABC, Generic[T]):
 
     Super Class:
     """
-    _items: Tuple[T, ...]
+    def __init__(self):
+        pass
     
-    def __init__(self, items: Optional[Tuple[T, ...]] | None = None):
-        self._items = items or ()
-        
-    @property
-    def items(self) -> Tuple[T, ...]:
-        return self._items
     
     @property
+    @abstractmethod
     def size(self) -> int:
-        return len(self._items)
+        pass
+    
     
     @property
-    def iterator(self) -> Iterator[T]:
-        return iter(self._items)
-    
-    @property
+    @abstractmethod
     def is_empty(self) -> bool:
-        return self.size == 0
+        pass
     
     @property
+    @abstractmethod
     def is_not_empty(self) -> bool:
-        return not self.is_empty
+        pass

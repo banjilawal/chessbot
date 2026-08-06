@@ -9,7 +9,7 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from container import VectorSet
+from collection import VectorSet
 from model import King
 
 from schema import Offset

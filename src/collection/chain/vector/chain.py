@@ -1,7 +1,7 @@
-# src/container/chain/vector/chain.py
+# src/collection/chain/vector/chain.py
 
 """
-Module: container.chain.vector.chain
+Module: collection.chain.vector.chain
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import List, Optional, cast
 
-from container import LinkedList
+from collection import LinkedList
 from err import SearchResultEmptyException
 from model import Vector
 from node import VectorNode

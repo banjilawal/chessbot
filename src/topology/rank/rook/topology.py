@@ -9,7 +9,7 @@ version: 1.0.1
 
 from __future__ import  annotations
 
-from container import VectorTree
+from collection import VectorTree
 from model import Rook
 from topology import Topology
 

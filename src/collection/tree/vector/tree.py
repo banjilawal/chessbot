@@ -1,7 +1,7 @@
-# src/container/tree/vector/tree.py
+# src/collection/tree/vector/tree.py
 
 """
-Module: container.tree.vector.tree
+Module: collection.tree.vector.tree
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import List, cast
 
-from container import CoordSet, VectorSet
+from collection import CoordSet, VectorSet
 from model import Coord, Vector
 from tree import CoordTree, Tree
 

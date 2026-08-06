@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Optional, Tuple, Type, TypeVar, cast
 
 from fabrication.blueprint import Blueprint
-from container import Container
+from collection import Container
 from err import ContainerNullException, TupleNullException
 
 

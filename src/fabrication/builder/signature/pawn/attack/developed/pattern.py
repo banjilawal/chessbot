@@ -10,7 +10,7 @@ version: 1.0.1
 from __future__ import annotations
 
 
-from container import VectorSet
+from collection import VectorSet
 from schema import Offset
 from topology.pattern import PawnAttackSignature
 

@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Optional, Type, TypeVar, cast
 
-from container import VectorSet, VectorTree
+from collection import VectorSet, VectorTree
 from err import TopologyGeneratorException, VectorSetNullException
 from model import Vector
 from result import ComputationResult, MethodResultType

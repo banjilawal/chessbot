@@ -1,7 +1,7 @@
-# src/container/sets/register/container.py
+# src/collection/sets/register/set.py
 
 """
-Module: container.sets.register.container
+Module: collection.sets.register.set
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -11,11 +11,11 @@ from __future__ import annotations
 
 from typing import Iterator, Optional, Tuple, cast
 
-from container import Container
+from collection import SetCollection
 from register import Register
 
 
-class RegisterSet(Container[Register]):
+class RegisterSet(SetCollection[Register]):
     """
     Role:
         -   Data Holder
@@ -29,7 +29,7 @@ class RegisterSet(Container[Register]):
     Provides:
 
     Super Class:
-        Container
+        Collection
     """
     
     def __init__(self, items: Optional[Tuple[Register, ...]] | None = None):

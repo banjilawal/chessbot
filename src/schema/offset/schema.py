@@ -12,7 +12,7 @@ from __future__ import annotations
 from enum import Enum
 from typing import Dict
 
-from container import VectorSet
+from collection import VectorSet
 from model import Vector
 
 

@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Tuple, Type, cast
 
 from fabrication.blueprint import ContainerBlueprint
-from container import VectorSet
+from collection import VectorSet
 from err import VectorSetNullException
 from model import Vector
 

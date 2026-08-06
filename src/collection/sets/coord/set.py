@@ -1,7 +1,7 @@
-# src/container/sets/coord/container.py
+# src/collection/sets/coord/set.py
 
 """
-Module: container.sets.coord.container
+Module: collection.sets.coord.set
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -11,11 +11,11 @@ from __future__ import annotations
 
 from typing import Iterator, List, Optional, Tuple, cast
 
-from container import Container
-from model import Coord, Coord, Vector
+from collection import SetCollection
+from model import Coord, Vector
 
 
-class CoordSet(Container[Coord]):
+class CoordSet(SetCollection[Coord]):
     """
     Role:
         -   Data Holder
@@ -30,7 +30,7 @@ class CoordSet(Container[Coord]):
     Provides:
 
     Super Class:
-        Container
+        Collection
     """
     
     def __init__(self, items: Optional[Tuple[Coord, ...]] | None = None):

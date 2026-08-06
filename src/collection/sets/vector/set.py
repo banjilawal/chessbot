@@ -1,7 +1,7 @@
-# src/container/sets/vector/container.py
+# src/collection/sets/vector/set.py
 
 """
-Module: container.sets.vector.container
+Module: collection.sets.vector.set
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -11,11 +11,11 @@ from __future__ import annotations
 
 from typing import Iterator, List, Optional, Tuple, cast
 
-from container import Container
+from collection import SetCollection
 from model import Coord, Vector
 
 
-class VectorSet(Container[Vector]):
+class VectorSet(SetCollection[Vector]):
     """
     Role:
         -   Data Holder
@@ -30,7 +30,7 @@ class VectorSet(Container[Vector]):
     Provides:
 
     Super Class:
-        Container
+        Collection
     """
     
     def __init__(self, items: Optional[Tuple[Vector, ...]] | None = None):

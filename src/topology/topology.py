@@ -12,7 +12,7 @@ from __future__ import annotations
 from abc import ABC
 from typing import Container, Generic, TypeVar
 
-from container import VectorTree
+from collection import VectorTree
 
 T = TypeVar("T", bound="Rank")
 

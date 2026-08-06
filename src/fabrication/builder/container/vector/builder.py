@@ -10,7 +10,7 @@ version: 1.0.1
 from __future__ import annotations
 
 from fabrication.builder import ContainerBuilder
-from container import VectorSet
+from collection import VectorSet
 from result import BuildResult
 from util import LoggingLevelRouter
 from assurance.validator import VectorValidator

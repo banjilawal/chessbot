@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import List, TypeVar
 
 from fabrication.builder import ContainerBuilder
-from container import RegisterSet
+from collection import RegisterSet
 from model import TargetVectorSet
 from register import VectorRegister
 from result import BuildResult

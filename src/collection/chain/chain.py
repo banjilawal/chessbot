@@ -1,7 +1,7 @@
-# src/container/chain/chain.py
+# src/collection/chain/chain.py
 
 """
-Module: container.chain.chain
+Module: collection.chain.chain
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

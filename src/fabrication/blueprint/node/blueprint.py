@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Optional, Type, cast
 
-from container import VectorTree
+from collection import VectorTree
 from err import NodeNullException
 from fabrication import Blueprint
 from model import Board

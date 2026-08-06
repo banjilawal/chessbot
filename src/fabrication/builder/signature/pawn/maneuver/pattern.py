@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from abc import ABC
 
-from container import VectorSet
+from collection import VectorSet
 from topology.pattern import PawnSignature
 
 
