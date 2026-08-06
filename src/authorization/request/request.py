@@ -48,8 +48,3 @@ class Request(ABC):
         if isinstance(other, Request):
             return self._id == other.id
         return False
-    
-    @classmethod
-    @abstractmethod
-    def request(cls, *args, **kwargs) -> Request:
-        pass

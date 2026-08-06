@@ -1,4 +1,4 @@
-# src/authorization/request/chain/remove__init__.py
+# src/authorization/request/chain/remove/__init__.py
 
 """
 Module: authorization.request.chain.remove.__init__
@@ -10,7 +10,8 @@ version: 1.0.1
 # =========== AUTHORIZATION.REQUEST.CHAIN.REMOVE PACKAGE ===========#
 
 # Packages
-
+from .node import *
+from .offset import *
 
 # Modules
-from .request import NodeRemovalRequest
+from .request import LinkedListItemDeletionRequest

@@ -118,7 +118,7 @@ class LinkedList(ABC, Generic[T]):
     
     
     @LoggingLevelRouter.monitor
-    def delete_at_index(self, index: int) -> DeletionResult[Node[T]]:
+    def remove_at_index(self, index: int) -> DeletionResult[Node[T]]:
         method = f"{self.__class__.__name__}.execute"
         
         # Hand off get the node to the finder

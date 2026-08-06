@@ -9,7 +9,7 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from abc import ABC, abstractmethod
+from abc import ABC
 from typing import Generic, TypeVar, cast
 
 from authorization import Request
@@ -54,6 +54,5 @@ class LinkedListRequest(Request, ABC, Generic[T]):
         if other is self: return True
         if other is None: return False
         if isinstance(other, LinkedListRequest):
-            request = cast(LinkedListRequest, other)
-            return self.id == request.id
+            return super().__eq__(other)
         return False

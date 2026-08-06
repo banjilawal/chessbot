@@ -10,7 +10,7 @@ version: 1.0.1
 from __future__ import annotations
 
 from abc import ABC
-from typing import Generic, Optional, TypeVar, cast
+from typing import Any, Dict, Generic, Optional, TypeVar, cast
 
 from authorization import LinkedListRequest
 from collection import LinkedList
@@ -19,7 +19,7 @@ from node import Node
 T = TypeVar("T")
 
 
-class NodeRemovalRequest(LinkedListRequest, ABC, Generic[T]):
+class LinkedListItemDeletionRequest(LinkedListRequest, ABC, Generic[T]):
     """
     Role:
         -  Request
@@ -37,7 +37,7 @@ class NodeRemovalRequest(LinkedListRequest, ABC, Generic[T]):
         Request
     """
     _node: Optional[Node[T]]
-    _index: Optional[int]
+    _offset: Optional[int]
     
     def __init__(
             self,
@@ -55,17 +55,40 @@ class NodeRemovalRequest(LinkedListRequest, ABC, Generic[T]):
         """
         super().__init__(id=id, chain=chain)
         self._node = node
-        self._index = index
+        self._offset = index
         
     @property
     def chain(self) -> LinkedList[T]:
         return cast(LinkedList[T], super().chain)
     
     @property
-    def node(self) -> Node[T]:
+    def node(self) -> Optional[Node[T]]:
         return self._node
     
     @property
-    def index(self) -> Optional[int]:
-        return self._index
+    def offset(self) -> Optional[int]:
+        return self._offset
+    
+    @property
+    def is_remove_at_offset(self) -> bool:
+        return (
+                self._node is None and
+                self._offset is not None and
+                isinstance(self._offset, int)
+        )
+    
+    @property
+    def is_remove_by_node(self) -> bool:
+        return (
+                self._node is not None and
+                self._offset is None and
+                isinstance(self._node, Node)
+        )
+    
+    @property
+    def to_dict(self) -> Dict[str, Any]:
+        return {
+            "removal_offset": self._offset,
+            "removal_node": self._node,
+        }
     
