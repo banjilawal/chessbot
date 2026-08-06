@@ -9,21 +9,23 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from abc import abstractmethod
-from typing import Optional, TypeVar
+from abc import ABC, abstractmethod
+from typing import Any, Generic, Optional, TypeVar
 
-from report import Permission, Report
+from collection import LinkedList
+from report import OperationApprovalReport, Permission
 
-T = TypeVar("T")
+
+T = TypeVar("T", bound="ChainOperation")
 
 
-class OperationApprovalReport(Report):
+class ChainOperationApprovalReport(OperationApprovalReport, ABC, Generic[T]):
     """
     Role:
         -   Test results
 
     Responsibilities:
-        1.  Give details about an operationOperation approval.
+        1.  Give details about a LinkedListOperationOperation approval.
         
     Attributes:
         exception: Optional[Exception]
@@ -36,30 +38,27 @@ class OperationApprovalReport(Report):
         -   def deny(exception: Exception) -> OperationApprovalReport:
 
     Super Class:
-        Report
+        OperationApprovalReport
     """
-    _exception: Optional[Exception]
-    _permission: Permission
+    _chain: Optional[LinkedList]
     
     def __init__(
             self,
             permission: Permission,
             exception: Optional[Exception] | None = None,
+            chain: Optional[LinkedList] | None = None,
     ):
-        self._exception = exception
-        self._permission = permission
-    
+        super().__init__(permission=permission, exception=exception)
+        self._chain = chain
+
     @property
-    def exception(self) -> Optional[Exception]:
-        return self._exception
-    
-    @property
-    def permission(self) -> Permission:
-        return self._permission
+    def chain(self) -> Optional[LinkedList]:
+        return self._chain
     
     @property
     def is_denied(self) -> bool:
         return (
+                self._chain is None and
                 self._exception is not None and
                 self._permission == Permission.DENIED
         )
@@ -67,13 +66,19 @@ class OperationApprovalReport(Report):
     @property
     def is_granted(self) -> bool:
         return (
+            self._chain is not None and
             self._exception is None and
             self._permission == Permission.GRANTED
         )
     
     @classmethod
     @abstractmethod
-    def approve(cls, *args, **kwargs) -> OperationApprovalReport:
+    def approve(
+            cls,
+            chain: LinkedList,
+            *args: Optional[tuple[Any, ...]],
+            **kwargs: Optional[dict[str, Any]],
+    ) -> OperationApprovalReport:
         pass
     
     @classmethod

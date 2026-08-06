@@ -1,7 +1,7 @@
-# src/report/approval/promote/report.py
+# src/report/approval/token/promote/report.py
 
 """
-Module: report.approval.promote.report
+Module: report.approval.token.promote.report
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -11,17 +11,17 @@ from __future__ import annotations
 from typing import Optional
 
 from model import PawnToken, Rank
-from report import OperationApprovalReport, Permission
+from report import TokenOperationApprovalReport, Permission
 
 
 
-class PromotionApprovalReport(OperationApprovalReport):
+class PromotionApprovalReport(TokenOperationApprovalReport):
     """
     Role:
         -   Test results
 
     Responsibilities:
-        1.  Provides details about the outcome of a promote approval request.
+        1.  Give details about a promoteOperation approval.
         
     Attributes:
         pawn: T

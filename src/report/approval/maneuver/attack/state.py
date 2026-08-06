@@ -1,7 +1,7 @@
-# src/report/approval/attack/state.py
+# src/report/approval/maneuver/attack/state.py
 
 """
-Module: report.approval.attack.state
+Module: report.approval.maneuver.attack.state
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

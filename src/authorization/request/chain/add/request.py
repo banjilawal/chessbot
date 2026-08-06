@@ -37,25 +37,25 @@ class NodeAdditionRequest(LinkedListRequest, ABC, Generic[T]):
         Request
     """
     _node: Node[T]
-    _index: Optional[int]
+    _offset: Optional[int]
     
     def __init__(
             self,
             id: int,
             node: Node[T],
             chain: LinkedList[T],
-            index: Optional[int] | None = None
+            offset: Optional[int] | None = None,
     ):
         """
         Args:
             id: int
             node: Node[T]
             chain: LinkedList[T]
-            index: Optional[int]
+            offset: Optional[int]
         """
         super().__init__(id=id, chain=chain)
         self._node = node
-        self._index = index
+        self._offset = offset
         
     @property
     def chain(self) -> LinkedList[T]:
@@ -66,6 +66,6 @@ class NodeAdditionRequest(LinkedListRequest, ABC, Generic[T]):
         return self._node
     
     @property
-    def index(self) -> Optional[int]:
-        return self._index
+    def offset(self) -> Optional[int]:
+        return self._offset
     

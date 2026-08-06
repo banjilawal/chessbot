@@ -10,13 +10,14 @@ version: 1.0.1
 # =========== AUTHORIZATION.ADJUDICATOR PACKAGE ===========#
 
 # Packages
+from .chain import *
 from .deletion import *
 from .extractor import *
 from .maneuver import *
 from .pop import *
 from .promotion import *
 from .push import *
-from .search import *
+from .stack import *
 
 # Modules
 from .adjudicator import RequestAdjudicator

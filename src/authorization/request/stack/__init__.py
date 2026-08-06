@@ -13,5 +13,6 @@ version: 1.0.1
 from .deletion import *
 from .pop import *
 from .push import *
+from .search import *
 
 # Modules

@@ -1,7 +1,7 @@
-# src/report/approval/pop/report.py
+# src/report/approval/stack/pop/report.py
 
 """
-Module: report.approval.pop.report
+Module: report.approval.stack.pop.report
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -22,7 +22,7 @@ class PopApprovalReport(OperationApprovalReport):
         -   Test results
 
     Responsibilities:
-        1.  Provides details about the outcome of a pop approval request.
+        1.  Give details about a popOperation approval.
         
     Attributes:
         id: T

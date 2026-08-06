@@ -1,7 +1,7 @@
-# src/report/approval/attack/report.py
+# src/report/approval/maneuver/attack/report.py
 
 """
-Module: report.approval.attack.report
+Module: report.approval.maneuver.attack.report
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -20,7 +20,7 @@ class AttackApprovalReport:
         -   Test results
 
     Responsibilities:
-        1.  Provides details about the outcome of a promote approval request.
+        1.  Give details about a promoteOperation approval.
         
     Attributes:
         token: T

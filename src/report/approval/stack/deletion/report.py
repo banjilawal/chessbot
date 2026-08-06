@@ -1,14 +1,14 @@
-# src/report/approval/push/report.py
+# src/report/approval/stack/deletion/report.py
 
 """
-Module: report.approval.push.report
+Module: report.approval.stack.deletion.report
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
 """
 
 from __future__ import annotations
-from typing import Optional, TypeVar
+from typing import Any, Optional, TypeVar
 
 from report import OperationApprovalReport, Permission
 from stack import StackService
@@ -16,54 +16,49 @@ from stack import StackService
 T = TypeVar("T")
 
 
-class PushApprovalReport(OperationApprovalReport):
+class DeletionApprovalReport(OperationApprovalReport):
     """
     Role:
         -   Test results
 
     Responsibilities:
-        1.  Provides details about the outcome of a push approval request.
+        1.  Give details about a deleteOperation approval.
         
     Attributes:
-        item: T
+        id: T
         stack: StackService[T]
         exception: Optional[Exception]
         permission: Permission
         
     Provides:
-        -   def approve(item: T, stack: StackService[T]) -> OperationApprovalReport
+        -   def approve(id: T, stack: StackService[T]) -> OperationApprovalReport
         -   def deny(exception: Exception) -> OperationApprovalReport:
         
     Super Class:
         OperationApprovalReport
     """
-    _item: Optional[T] = None
-    _stack: Optional[StackService[T]] = None
+    _id: Optional[Any]
+    _stack: Optional[StackService[T]]
     
     def __init__(
             self,
             permission: Permission,
-            item: Optional[T] | None = None,
-            stack: Optional[StackService[T]] | None = None,
+            id: Optional[int] | None = None,
+            stack: Optional[StackService] | None = None,
             exception: Optional[Exception] | None = None,
     ):
-        super().__init__(exception=exception, permission=permission)
-        self._item = item
+        super().__init__(exception=exception, permission=permission,)
+        self._id = id
         self._stack = stack
     
-    
     @property
-    def item(self) -> Optional[T]:
-        return self._item
-    
-    @property
-    def stack(self) -> Optional[StackService[T]]:
-        return self._stack
+    def id(self) -> Optional[int]:
+        return self._id
     
     @property
     def is_denied(self) -> bool:
         return (
-                self._item is None and
+                self._id is None and
                 self._stack is None and
                 super().is_denied
         )
@@ -71,21 +66,21 @@ class PushApprovalReport(OperationApprovalReport):
     @property
     def is_granted(self) -> bool:
         return (
-            self._item is not None and
-            self._stack is not None and
-            super().is_granted
+                self._id is not None and
+                self._stack is not None and
+                super().is_granted
         )
     
     @classmethod
-    def approve(cls, item: T, stack: StackService[T]) -> PushApprovalReport:
+    def approve(cls, item_id: int, stack: StackService[T], ) -> DeletionApprovalReport:
         return cls(
-            item=item,
+            id=item_id,
             stack=stack,
             permission=Permission.GRANTED
         )
     
     @classmethod
-    def deny(cls, exception: Exception) -> PushApprovalReport:
+    def deny(cls, exception: Exception) -> DeletionApprovalReport:
         return cls(
             exception=exception,
             permission=Permission.DENIED

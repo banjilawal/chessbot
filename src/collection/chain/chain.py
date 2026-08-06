@@ -95,7 +95,7 @@ class LinkedList(ABC, Generic[T]):
         pass
         
     @LoggingLevelRouter.monitor
-    def find_by_index(self, index: int) -> SearchResult[List[Node[T]]]:
+    def get_at_offset(self, index: int) -> SearchResult[List[Node[T]]]:
         method = f"{self.__class__.__name__}.get_by_index"
         
         counter: int = 0
@@ -118,11 +118,11 @@ class LinkedList(ABC, Generic[T]):
     
     
     @LoggingLevelRouter.monitor
-    def remove_at_index(self, index: int) -> DeletionResult[Node[T]]:
+    def remove_at_offset(self, offset: int) -> DeletionResult[Node[T]]:
         method = f"{self.__class__.__name__}.execute"
         
         # Hand off get the node to the finder
-        search = self.find_by_index(index)
+        search = self.get_at_offset(offset)
         
         # Handle the case that, the search fails.
         if search.is_failure:
@@ -154,7 +154,7 @@ class LinkedList(ABC, Generic[T]):
     def trim_head(self, offset: int) -> BuildResult[LinkedList[T]]:
         method = f"{self.__class__.__name__}.execute"
         
-        validation = self.index_validator(offset)
+        validation = self.offset_validator(offset)
         # Handle the case that, the search fails.
         if valdation.is_failure:
             # Send the exception in the result.
@@ -181,7 +181,7 @@ class LinkedList(ABC, Generic[T]):
     def trim_tail(self, offset: int) -> BuildResult[LinkedList[T]]:
         method = f"{self.__class__.__name__}.execute"
         
-        validation = self.index_validator(offset)
+        validation = self.offset_validator(offset)
         # Handle the case that, the search fails.
         if validation.is_failure:
             # Send the exception in the result.
@@ -204,7 +204,7 @@ class LinkedList(ABC, Generic[T]):
         self._size = self._size - offset
         return BuildResult.success(self)
 
-    def index_validator(self, candidate: Any) -> ValidationResult[int]:
+    def offset_validator(self, candidate: Any) -> ValidationResult[int]:
         method = f"{self.__class__.__name__}.execute"
         
         if candidate is None:
@@ -220,10 +220,10 @@ class LinkedList(ABC, Generic[T]):
                     ex=search.exception
                 )
             )
-        index = cast(int, candidate)
+        offset = cast(int, candidate)
         
         # Handle the case that, the index is out of bounds.
-        if abs(index) >= self.size:
+        if abs(offset) >= self.size:
             # Send the exception in the result.
             return ValidationResult.failure(
                 LinkedListException(
@@ -239,8 +239,8 @@ class LinkedList(ABC, Generic[T]):
                     )
                 )
             )
-        if index < 0:
-            return ValidationResult.success(self.size - (1 + index))
+        if offset < 0:
+            return ValidationResult.success(self.size - (1 + offset))
         
 class LinkedListIterator:
     _cursor: Node

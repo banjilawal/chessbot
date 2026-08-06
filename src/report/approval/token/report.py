@@ -1,7 +1,7 @@
-# src/report/approval/report.py
+# src/report/approval/token/report.py
 
 """
-Module: report.approval.report
+Module: report.approval.token.report
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -9,15 +9,16 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from abc import abstractmethod
-from typing import Optional, TypeVar
+from abc import ABC, abstractmethod
+from typing import Any, Generic, Optional, TypeVar
 
-from report import Permission, Report
+from report import OperationApprovalReport, Permission
+from token import TokenService
 
-T = TypeVar("T")
+T = TypeVar("T", bound="TokenOperation")
 
 
-class OperationApprovalReport(Report):
+class TokenOperationApprovalReport(OperationApprovalReport, ABC, Generic[T]):
     """
     Role:
         -   Test results
@@ -36,30 +37,27 @@ class OperationApprovalReport(Report):
         -   def deny(exception: Exception) -> OperationApprovalReport:
 
     Super Class:
-        Report
+        OperationApprovalReport
     """
-    _exception: Optional[Exception]
-    _permission: Permission
+    _token: Optional[TokenService]
     
     def __init__(
             self,
             permission: Permission,
             exception: Optional[Exception] | None = None,
+            token: Optional[TokenService] | None = None,
     ):
-        self._exception = exception
-        self._permission = permission
-    
+        super().__init__(permission=permission, exception=exception)
+        self._token = token
+
     @property
-    def exception(self) -> Optional[Exception]:
-        return self._exception
-    
-    @property
-    def permission(self) -> Permission:
-        return self._permission
+    def token(self) -> Optional[TokenService]:
+        return self._token
     
     @property
     def is_denied(self) -> bool:
         return (
+                self._token is None and
                 self._exception is not None and
                 self._permission == Permission.DENIED
         )
@@ -67,13 +65,19 @@ class OperationApprovalReport(Report):
     @property
     def is_granted(self) -> bool:
         return (
+            self._token is not None and
             self._exception is None and
             self._permission == Permission.GRANTED
         )
     
     @classmethod
     @abstractmethod
-    def approve(cls, *args, **kwargs) -> OperationApprovalReport:
+    def approve(
+            cls,
+            token: TokenService,
+            *args: Optional[tuple[Any, ...]],
+            **kwargs: Optional[dict[str, Any]],
+    ) -> OperationApprovalReport:
         pass
     
     @classmethod

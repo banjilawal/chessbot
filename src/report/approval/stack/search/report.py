@@ -1,7 +1,7 @@
-# src/report/approval/search/report.py
+# src/report/approval/stack/search/report.py
 
 """
-Module: report.approval.search.report
+Module: report.approval.stack.search.report
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -23,7 +23,7 @@ class SearchApprovalReport(OperationApprovalReport):
         -   Test results
 
     Responsibilities:
-        1.  Provides details about the outcome of a search approval request.
+        1.  Give details about a searchOperation approval.
         
     Attributes:
         context: T

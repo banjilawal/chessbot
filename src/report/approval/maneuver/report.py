@@ -21,7 +21,7 @@ class ManeuverApprovalReport(OperationApprovalReport):
         -   Test results
 
     Responsibilities:
-        1.  Provides details about the outcome of a promote approval request.
+        1.  Give details about a promoteOperation approval.
         
     Attributes:
         token: T

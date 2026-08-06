@@ -22,7 +22,7 @@ class RankSlotApprovalReport(OperationApprovalReport):
         -   Test results
 
     Responsibilities:
-        1.  Provides details about the outcome of a slot approval request.
+        1.  Give details about a slotOperation approval.
         
     Attributes:
         rank: Optional[Rank]

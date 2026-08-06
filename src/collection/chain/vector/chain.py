@@ -37,11 +37,11 @@ class VectorLinkedList(LinkedList[Vector]):
         return cast(VectorNode, super().tail)
         
     @LoggingLevelRouter.monitor
-    def find_by_index(self, index: int) -> SearchResult[List[VectorNode]]:
+    def get_at_offset(self, index: int) -> SearchResult[List[VectorNode]]:
         method = f"{self.__class__.__name__}.get_by_index"
         
         # Handle the case that, the index is not a safe number.
-        search = super().find_by_index(index)
+        search = super().get_at_offset(index)
         # Send the exception in the result.
         if search.is_failure:
             return SearchResult.failure(
@@ -59,11 +59,11 @@ class VectorLinkedList(LinkedList[Vector]):
         return SearchResult.success([node])
     
     @LoggingLevelRouter.monitor
-    def remove_at_index(self, index: int) -> DeletionResult[VectorNode]:
+    def remove_at_offset(self, offset: int) -> DeletionResult[VectorNode]:
         method = f"{self.__class__.__name__}.remove_by_index"
         
         # Hand off get the node to the finder
-        search = self.find_by_index(index)
+        search = self.get_at_offset(offset)
         
         # Handle the case that, the search fails.
         if search.is_failure:
@@ -105,11 +105,11 @@ class VectorLinkedList(LinkedList[Vector]):
     def add_node(
             self,
             node: VectorNode,
-            index: Optional[int] | None = None,
+            offset: Optional[int] | None = None,
     ) -> InsertionResult:
         method = f"{self.__class__.__name__}.execute"
         
-        index_validation = self.index_validator(index)
+        index_validation = self.offset_validator(offset)
         if index_validation.is_failure:
             # Send the exception in the result.
             return InsertionResult.failure(
@@ -144,7 +144,7 @@ class VectorLinkedList(LinkedList[Vector]):
                     ex=search.exception
                 )
             )
-        previous = self.find_by_index(index)
+        previous = self.get_at_offset(offset)
         if previous.is_failure:
             # Send the exception in the result.
             return InsertionResult.failure(
