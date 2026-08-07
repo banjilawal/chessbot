@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from model import Graph, Player
 from operation import ManeuverLauncher
-from report import ManeuverApprovalReport
+from report import ManeuverRequestDecision
 from result import TurnResult
 from turn import TurnAdviser
 from util import LoggingLevelRouter

@@ -11,15 +11,14 @@ from __future__ import annotations
 
 from typing import List, Optional, cast
 
-from collection import LinkedList
+from collection import Chain
 from err import SearchResultEmptyException
-from model import Vector
 from node import VectorNode
 from result import DeletionResult, InsertionResult, SearchResult
 from util import LoggingLevelRouter
 
 
-class VectorLinkedList(LinkedList[Vector]):
+class VectorChain(Chain[VectorNode]):
     
     def __init__(
             self,
@@ -45,11 +44,11 @@ class VectorLinkedList(LinkedList[Vector]):
         # Send the exception in the result.
         if search.is_failure:
             return SearchResult.failure(
-                VectorLinkedListException(
+                VectorChainException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=VectorLinkedListException.MSG,
-                    err_code=VectorLinkedListException.ERR_CODE,
+                    msg=VectorChainException.MSG,
+                    err_code=VectorChainException.ERR_CODE,
                     ex=search.exception
                 )
             )
@@ -69,11 +68,11 @@ class VectorLinkedList(LinkedList[Vector]):
         if search.is_failure:
             # Send the exception in the result.
             return DeletionResult.failure(
-                VectorLinkedListException(
+                VectorChainException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=VectorLinkedListException.MSG,
-                    err_code=VectorLinkedListException.ERR_CODE,
+                    msg=VectorChainException.MSG,
+                    err_code=VectorChainException.ERR_CODE,
                     ex=search.exception
                 )
             )
@@ -113,11 +112,11 @@ class VectorLinkedList(LinkedList[Vector]):
         if index_validation.is_failure:
             # Send the exception in the result.
             return InsertionResult.failure(
-                VectorLinkedListException(
+                VectorChainException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=VectorLinkedListException.MSG,
-                    err_code=VectorLinkedListException.ERR_CODE,
+                    msg=VectorChainException.MSG,
+                    err_code=VectorChainException.ERR_CODE,
                     ex=index_validation.exception
                 )
             )
@@ -125,22 +124,22 @@ class VectorLinkedList(LinkedList[Vector]):
         if search.is_failure:
             # Send the exception in the result.
             return InsertionResult.failure(
-                VectorLinkedListException(
+                VectorChainException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=VectorLinkedListException.MSG,
-                    err_code=VectorLinkedListException.ERR_CODE,
+                    msg=VectorChainException.MSG,
+                    err_code=VectorChainException.ERR_CODE,
                     ex=search.exception
                 )
             )
         if search.is_not_empty:
             # Send the exception in the result.
             return InsertionResult.failure(
-                VectorLinkedListException(
+                VectorChainException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=VectorLinkedListException.MSG,
-                    err_code=VectorLinkedListException.ERR_CODE,
+                    msg=VectorChainException.MSG,
+                    err_code=VectorChainException.ERR_CODE,
                     ex=search.exception
                 )
             )
@@ -148,22 +147,22 @@ class VectorLinkedList(LinkedList[Vector]):
         if previous.is_failure:
             # Send the exception in the result.
             return InsertionResult.failure(
-                VectorLinkedListException(
+                VectorChainException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=VectorLinkedListException.MSG,
-                    err_code=VectorLinkedListException.ERR_CODE,
+                    msg=VectorChainException.MSG,
+                    err_code=VectorChainException.ERR_CODE,
                     ex=previous.exception
                 )
             )
         if previous.is_empty:
             # Send the exception in the result.
             return InsertionResult.failure(
-                VectorLinkedListException(
+                VectorChainException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=VectorLinkedListException.MSG,
-                    err_code=VectorLinkedListException.ERR_CODE,
+                    msg=VectorChainException.MSG,
+                    err_code=VectorChainException.ERR_CODE,
                     ex=SearchResultEmptyException()
                 )
             )
@@ -187,11 +186,11 @@ class VectorLinkedList(LinkedList[Vector]):
         if search.is_failure:
             # Send the exception in the result.
             return DeletionResult.failure(
-                VectorLinkedListException(
+                VectorChainException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=VectorLinkedListException.MSG,
-                    err_code=VectorLinkedListException.ERR_CODE,
+                    msg=VectorChainException.MSG,
+                    err_code=VectorChainException.ERR_CODE,
                     ex=search.exception
                 )
             )

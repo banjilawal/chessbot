@@ -1,7 +1,7 @@
-# src/permitter/slot/permitter.py
+# src/authorization/permitter/slot/permitter.py
 
 """
-Module: permitter.slot.permitter
+Module: authorization.permitter.slot.permitter
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -13,14 +13,14 @@ from typing import Type, cast
 from analyzer import RankQuotaAnalyzer
 from bootstrapper import PrimingValidator
 from err import RankQuotaFullException, RankSlotPermitterException, RankSlotRequestNullException
-from authorization.permitter import Permitter
+from authorization.permitter import OperationPermitter
 from report import RankQuotaReport, RankSlotApprovalReport
 from authorization.request import RankSlotRequest
 from util import LoggingLevelRouter
 from assurance.validator import RankValidator
 
 
-class RankSlotPermitter(Permitter):
+class RankSlotPermitter(OperationPermitter):
     """
     Role:
         - Transaction Worker
@@ -62,7 +62,7 @@ class RankSlotPermitter(Permitter):
         
         
     @LoggingLevelRouter.monitor
-    def run(self, request: RankSlotRequest) -> RankSlotApprovalReport:
+    def execute(self, request: RankSlotRequest) -> RankSlotApprovalReport:
         """
         Action:
             1.  Return a failure result containing an exception chain if either:

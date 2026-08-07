@@ -66,7 +66,7 @@ class TokenDeleter(Deleter[Token]):
         
         # Handle the case that, push rights are not granted.
         permission = self._permitter.run(request=request)
-        if permission.is_denied:
+        if permission.request_is_denied:
             # Return the exception chain on failure
             return DeletionResult.failure(
                 TokenDeleterException(

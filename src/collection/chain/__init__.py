@@ -14,4 +14,4 @@ from .vector import *
 
 
 # Modules
-from .chain import LinkedList
+from .chain import Chain

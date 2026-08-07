@@ -1,7 +1,7 @@
-# src/permitter/maneuver/destination/__init__.py
+# src/authorization/permitter/maneuver/destination/__init__.py
 
 """
-Module: permitter.maneuver.destination.__init__
+Module: authorization.permitter.maneuver.destination.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -13,10 +13,10 @@ from typing import Optional
 
 from err import ManeuverPermitterException
 
-from report import ManeuverApprovalReport
+from report import ManeuverRequestDecision
 from authorization.request import ManeuverRequest
 from result import MethodResultType
-from authorization.adjudcator import ManeuverRequestAdjudicator
+from authorization.adjudicator import ManeuverRequestAdjudicator
 from util import LoggingLevelRouter
 
 
@@ -49,7 +49,7 @@ class TokenManeuverPermitter:
         self._adjudicator = adjudicator or ManeuverRequestAdjudicator()
     
     @LoggingLevelRouter.monitor
-    def execute(self, request: ManeuverRequest) -> ManeuverApprovalReport:
+    def execute(self, request: ManeuverRequest) -> ManeuverRequestDecision:
         """
         Action:
             1.  Send an exception chain in the ApprovalReport if the adjudicator denies the
@@ -68,9 +68,9 @@ class TokenManeuverPermitter:
         approval = self._adjudicator.execute(cadidate=request)
         
         # Handle the case that the request is denied.
-        if approval.is_denied:
+        if approval.request_is_denied:
             # Return the exception chain on failure
-            return ManeuverApprovalReport.deny(
+            return ManeuverRequestDecision.deny(
                 ManeuverPermitterException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,

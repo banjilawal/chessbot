@@ -82,7 +82,7 @@ class BoardSquareRelationAnalysis(RelationAnalysis[Board, Square]):
         board = cast(Board, board_validator.payload)
         
         # Handle the case that, the square is unsecure.
-        square_validation = square_service.run.execute(candidate_satellite)
+        square_validation = square_service.execute.execute(candidate_satellite)
         if square_validation.is_failure:
             # Send the exception chain on failure.
             return RelationReport.failure(

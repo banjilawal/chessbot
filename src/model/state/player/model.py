@@ -10,7 +10,7 @@ version: 1.0.0
 from __future__ import annotations
 
 from model import Graph, StateModel
-from report import ManeuverApprovalReport
+from report import ManeuverRequestDecision
 from result import TurnResult
 from turn import TurnAdviser
 

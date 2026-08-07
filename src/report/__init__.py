@@ -11,9 +11,9 @@ version: 1.0.1
 # =========== REPORT PACKAGE ===========#
 
 # Packages
-from .approval import *
 from .claim import *
 from .collision import *
+from .decision import *
 from .event import *
 from .friend import *
 from .itinerary import *

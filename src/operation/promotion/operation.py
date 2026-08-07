@@ -15,7 +15,7 @@ from typing import cast
 from err import PawnPromoterException
 from model import PawnToken, PromotionState, Rank
 from authorization.permitter import PromotionPermitter
-from report import PromotionApprovalReport
+from report import PromotionRequestDecision
 from result import MethodResultType, UpdateResult
 from util import LoggingLevelRouter
 
@@ -80,7 +80,7 @@ class PawnPromoter:
         if permitter is None:
             permitter = PromotionPermitter()
             
-        permission_analysis_result = permitter.run(
+        permission_analysis_result = permitter.execute(
             pawn=pawn,
             rank=rank,
         )
@@ -98,9 +98,9 @@ class PawnPromoter:
                     ex=permission_analysis_result.exception
                 )
             )
-        promotion_permission = cast(PromotionApprovalReport, permission_analysis_result.payload)
+        promotion_permission = cast(PromotionRequestDecision, permission_analysis_result.payload)
         # Handle the case that, the pawn is not granted promotion permission.
-        if promotion_permission.is_denied:
+        if promotion_permission.request_is_denied:
             # Send the exception chain on failure.
             return UpdateResult.update_failure(
                 original=pawn,

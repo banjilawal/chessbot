@@ -1,13 +1,13 @@
-# src/permitter/service/token/position/pop/__init__.py
+# src/authorization/permitter/service/token/position/pop/__init__.py
 
 """
-Module: permitter.service.token.position.pop.__init__
+Module: authorization.permitter.service.token.position.pop.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
 """
 
-# =========== PERMITTER.SERVICE.TOKEN.POP PACKAGE ===========#
+# =========== AUTHORIZATION.PERMITTER.SERVICE.TOKEN.POP PACKAGE ===========#
 
 # Packages
 

@@ -1,41 +1,66 @@
-# src/permitter/permitter.py
+# src/authorization/permitter/permitter.py
 
 """
-Module: permitter.permitter
+Module: authorization.permitter.permitter
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
 """
 
 from __future__ import annotations
-from abc import ABC, abstractmethod
 
-from bootstrapper import PrimingValidator
-from report import OperationApprovalReport
-from authorization.request import Request
+from abc import ABC, abstractmethod
+from typing import Generic, Optional, TypeVar
+
+from assurance import PrimingValidator
+from authorization import Request, RequestAdjudicator
+from report import RequestDecision
 from util import LoggingLevelRouter
 
 
+T = TypeVar("T")
 
-class Permitter(ABC):
+
+class OperationPermitter(ABC, Generic[T]):
     """
     Role:
-        -   Request Analyzer
-        -   Rights Granter
-        -   Consistency, Integrity Maintenance
+        -   Permission Authorization
+        -   Integrity Maintenance
+        _   Consistency Assurance
 
     Responsibilities:
-        1.  Evaluate if a candidate can be granted permission to run an operation.
+        1.  Handoff service requests to the adjudicator to run through its authorization checklist.
+        2.  Supply adjudicator dependencies.
+        3.  Wrap any exceptions adjudicator exceptions for debuggung the exception chain.
+        4.  Cast to the approrpate Request type before forwarding Adjudicator approvals to the client
 
     Attributes:
         priming_validator: PrimingValidator
         
     Provides:
-        -   run(self, request: Request, *args, **kwargs) -> OperationApprovalReport
+        -    def execute(self, request: Request) -> RequestDecision
 
     Super Class:
-        Permitter
     """
+    _adjudicator: RequestAdjudicator
+    _priming_validator: PrimingValidator
+    
+    def __init__(
+            self,
+            adjudicator: RequestAdjudicator,
+            priming_validator: Optional[PrimingValidator] |  None = None,
+    ):
+        """
+        Args:
+            adjudicator: Adjudicator,
+            priming_validator: Optional[PrimingValidator]
+        """
+        self._adjudicator = adjudicator
+        self._priming_validator = priming_validator or PrimingValidator()
+
+    @property
+    def adjudicator(self) -> RequestAdjudicator:
+        return self._adjudicator
         
     @property
     def priming_validator(self) -> PrimingValidator:
@@ -43,16 +68,5 @@ class Permitter(ABC):
     
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def run(self, request: Request, *args, **kwargs) -> OperationApprovalReport:
-        """
-        Implement in TokenPermitter subclasses.
-        Args:
-            request: Request
-            *args:
-            *kwargs:
-        Returns:
-            AnalysisResult
-        Raises:
-            PermitterException
-        """
+    def execute(self, request: Request) -> RequestDecision:
         pass

@@ -117,7 +117,7 @@ class AddVector(Operation[VectorToggle]):
                 x=register.a.entity.x + register.b.entity.x,
                 y=register.a.entity.y + register.b.entity.y,
             )
-            build_result = operand_toolkit.vector_builder.run(
+            build_result = operand_toolkit.vector_builder.execute(
                 blueprint=blueprint,
             )
         if register.category == RegisterContentType.COORD_REGISTER:
@@ -125,7 +125,7 @@ class AddVector(Operation[VectorToggle]):
                 row=register.a.entity.row + register.b.entity.row,
                 column=register.a.entity.column + register.b.entity.column,
             )
-            build_result = operand_toolkit.coord_builder.run(
+            build_result = operand_toolkit.coord_builder.execute(
                 blueprint=blueprint,
             )
         # Handle the case that, the build did not produce a result.

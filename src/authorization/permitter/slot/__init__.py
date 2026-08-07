@@ -1,13 +1,13 @@
-# src/permitter/slot/__init__.py
+# src/authorization/permitter/slot/__init__.py
 
 """
-Module: permitter.slot.__init__
+Module: authorization.permitter.slot.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
 """
 
-# =========== PERMITTER.SLOT PACKAGE ===========#
+# =========== AUTHORIZATION.PERMITTER.SLOT PACKAGE ===========#
 
 # Packages
 

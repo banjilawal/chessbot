@@ -1,23 +1,19 @@
-# src/permitter/__init__.py
+# src/authorization/permitter/__init__.py
 
 """
-Module: permitter.__init__
+Module: authorization.permitter.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
 """
 
-# =========== PERMITTER PACKAGE ===========#
+# =========== AUTHORIZATION.PERMITTER PACKAGE ===========#
 
 # Packages
-from .deletion import *
 from .maneuver import *
-from .pop import *
-from .promotion import *
-from .push import *
-from .search import *
 from .slot import *
-from .service import *
+from .stack import *
+from .token import *
 
 # Modules
-from .permitter import Permitter
+from .permitter import OperationPermitter

@@ -91,7 +91,7 @@ class BoardBinderAuditor(Auditor[BoardBinder]):
                 )
             )
         binder = assurance.auditor_priming_result.payload
-        board_consistency_result =toolkit.board_service.run.execute(binder.primary)
+        board_consistency_result =toolkit.board_service.execute.execute(binder.primary)
         
         if board_consistency_result.is_failure:
             # Send the exception chain on failure.

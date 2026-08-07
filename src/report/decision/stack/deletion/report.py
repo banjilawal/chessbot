@@ -1,0 +1,90 @@
+# src/report/approval/stack/deletion/report.py
+
+"""
+Module: report.approval.stack.deletion.report
+Author: Banji Lawal
+Created: 2026-04-03
+version: 1.0.1
+"""
+
+from __future__ import annotations
+from typing import Any, Optional, TypeVar
+
+from report import RequestDecision, Permission
+from stack import StackService
+
+T = TypeVar("T")
+
+
+class DeletionApprovalReport(RequestDecision):
+    """
+    Role:
+        -   Test results
+
+    Responsibilities:
+        1.  Give details about a deleteOperation approval.
+        
+    Attributes:
+        id: T
+        stack: StackService[T]
+        exception: Optional[Exception]
+        permission: Permission
+        
+    Provides:
+        -   def approve(id: T, stack: StackService[T]) -> OperationApprovalReport
+        -   def deny(exception: Exception) -> OperationApprovalReport:
+        
+    Super Class:
+        OperationApprovalReport
+    """
+    _id: Optional[Any]
+    _stack: Optional[StackService[T]]
+    
+    def __init__(
+            self,
+            permission: Permission,
+            id: Optional[int] | None = None,
+            stack: Optional[StackService] | None = None,
+            exception: Optional[Exception] | None = None,
+    ):
+        super().__init__(exception=exception, permission=permission,)
+        self._id = id
+        self._stack = stack
+    
+    @property
+    def id(self) -> Optional[int]:
+        return self._id
+    
+    @property
+    def request_is_denied(self) -> bool:
+        return (
+                self._id is None and
+                self._stack is None and
+                super().request_is_denied
+        )
+    
+    @property
+    def request_is_granted(self) -> bool:
+        return (
+                self._id is not None and
+                self._stack is not None and
+                super().request_is_granted
+        )
+    
+    @classmethod
+    def approve(cls, item_id: int, stack: StackService[T], ) -> DeletionApprovalReport:
+        return cls(
+            id=item_id,
+            stack=stack,
+            permission=Permission.GRANTED
+        )
+    
+    @classmethod
+    def deny(cls, exception: Exception) -> DeletionApprovalReport:
+        return cls(
+            exception=exception,
+            permission=Permission.DENIED
+        )
+
+    
+    

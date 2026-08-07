@@ -14,7 +14,7 @@ from sndhdr import tests
 from typing import Optional, cast
 
 from model import Square
-from report import ManeuverApprovalReport, Report
+from report import ManeuverRequestDecision, Report
 
 
 class SquareDossier:
@@ -35,13 +35,13 @@ class SquareDossier:
     """
     _square: Square
     _timestamp: int
-    _report: Optional[ManeuverApprovalReport]
+    _report: Optional[ManeuverRequestDecision]
     
     def __init__(
             self,
             square: Square,
             timestamp: int,
-            report: Optional[ManeuverApprovalReport] | None = None
+            report: Optional[ManeuverRequestDecision] | None = None
     ):
         """
         Args:
@@ -62,7 +62,7 @@ class SquareDossier:
         return self._timestamp
     
     @property
-    def report(self) -> Optional[ManeuverApprovalReport]:
+    def report(self) -> Optional[ManeuverRequestDecision]:
         return self._report
     
     @property
@@ -74,7 +74,7 @@ class SquareDossier:
         return self._report is not None and self._report.combatant_attack_is_approved
     
     @report.setter
-    def report(self, other: ManeuverApprovalReport):
+    def report(self, other: ManeuverRequestDecision):
         self._report = other
         
     def is_fresher_than_other(self, other: SquareDossier) -> bool:

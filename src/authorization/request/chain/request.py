@@ -13,12 +13,12 @@ from abc import ABC
 from typing import Generic, TypeVar, cast
 
 from authorization import Request
+from collection import Chain
 
 
-T = TypeVar("T", bound="LikedList")
 
 
-class LinkedListRequest(Request, ABC, Generic[T]):
+class ChainRequest(Request):
     """
     Role:
         -  Request
@@ -35,13 +35,13 @@ class LinkedListRequest(Request, ABC, Generic[T]):
     Super Class:
         Request
     """
-    chain: T
+    _chain: Chain
     
-    def __init__(self, id: int, chain: T, ):
+    def __init__(self, id: int, chain: Chain, ):
         """
         Args:
             id: int
-            chain: T
+            chain: Chain
         """
         super().__init__(id=id)
         self._chain = chain
@@ -50,9 +50,13 @@ class LinkedListRequest(Request, ABC, Generic[T]):
     def id(self) -> int:
         return super().id
     
+    @property
+    def chain(self) -> chain:
+        return self._chain
+    
     def __eq__(self, other):
         if other is self: return True
         if other is None: return False
-        if isinstance(other, LinkedListRequest):
+        if isinstance(other, ChainRequest):
             return super().__eq__(other)
         return False

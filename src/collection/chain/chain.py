@@ -21,9 +21,9 @@ from util.decorator.logging import logging_monitor
 T = TypeVar("T")
 
 
-class LinkedList(ABC, Generic[T]):
+class Chain(ABC, Generic[T]):
     _number_validator: NumberValidator
-    _iterator: LinkedListIterator
+    _iterator: ChainIterator
     
     _head: Node[T]
     _tail: Node[T]
@@ -45,7 +45,7 @@ class LinkedList(ABC, Generic[T]):
         self._head.next = self._tail
         self._tail.previous = self._head
         self._size = 0
-        self._iterator = LinkedListIterator(self)
+        self._iterator = ChainIterator(self)
         
     @property
     def head(self) -> Node:
@@ -76,7 +76,7 @@ class LinkedList(ABC, Generic[T]):
         return not self.is_empty
     
     @property
-    def iterator(self) -> LinkedListIterator:
+    def iterator(self) -> ChainIterator:
         return self._iterator
     
     @abstractmethod
@@ -128,11 +128,11 @@ class LinkedList(ABC, Generic[T]):
         if search.is_failure:
             # Send the exception in the result.
             return DeletionResult.failure(
-                LinkedListException(
+                ChainException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=LinkedListException.MSG,
-                    err_code=LinkedListException.ERR_CODE,
+                    msg=ChainException.MSG,
+                    err_code=ChainException.ERR_CODE,
                     ex=search.exception
                 )
             )
@@ -151,7 +151,7 @@ class LinkedList(ABC, Generic[T]):
         return DeletionResult.success(node)
     
     @LoggingLevelRouter.monitor
-    def trim_head(self, offset: int) -> BuildResult[LinkedList[T]]:
+    def trim_head(self, offset: int) -> BuildResult[Chain[T]]:
         method = f"{self.__class__.__name__}.execute"
         
         validation = self.offset_validator(offset)
@@ -159,11 +159,11 @@ class LinkedList(ABC, Generic[T]):
         if valdation.is_failure:
             # Send the exception in the result.
             return BuildResult.failure(
-                LinkedListException(
+                ChainException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=LinkedListException.MSG,
-                    err_code=LinkedListException.ERR_CODE,
+                    msg=ChainException.MSG,
+                    err_code=ChainException.ERR_CODE,
                     ex=validation.exception
                 )
             )
@@ -178,7 +178,7 @@ class LinkedList(ABC, Generic[T]):
         return BuildResult.success(self)
     
     @LoggingLevelRouter.monitor
-    def trim_tail(self, offset: int) -> BuildResult[LinkedList[T]]:
+    def trim_tail(self, offset: int) -> BuildResult[Chain[T]]:
         method = f"{self.__class__.__name__}.execute"
         
         validation = self.offset_validator(offset)
@@ -186,11 +186,11 @@ class LinkedList(ABC, Generic[T]):
         if validation.is_failure:
             # Send the exception in the result.
             return BuildResult.failure(
-                LinkedListException(
+                ChainException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=LinkedListException.MSG,
-                    err_code=LinkedListException.ERR_CODE,
+                    msg=ChainException.MSG,
+                    err_code=ChainException.ERR_CODE,
                     ex=validation.exception
                 )
             )
@@ -212,11 +212,11 @@ class LinkedList(ABC, Generic[T]):
         
         if not isinstance(candidate, int):
             return DeletionResult.failure(
-                LinkedListException(
+                ChainException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=LinkedListException.MSG,
-                    err_code=LinkedListException.ERR_CODE,
+                    msg=ChainException.MSG,
+                    err_code=ChainException.ERR_CODE,
                     ex=search.exception
                 )
             )
@@ -226,11 +226,11 @@ class LinkedList(ABC, Generic[T]):
         if abs(offset) >= self.size:
             # Send the exception in the result.
             return ValidationResult.failure(
-                LinkedListException(
+                ChainException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=LinkedListException.MSG,
-                    err_code=LinkedListException.ERR_CODE,
+                    msg=ChainException.MSG,
+                    err_code=ChainException.ERR_CODE,
                     ex=ListIndexOutOfBoundsException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
@@ -242,11 +242,11 @@ class LinkedList(ABC, Generic[T]):
         if offset < 0:
             return ValidationResult.success(self.size - (1 + offset))
         
-class LinkedListIterator:
+class ChainIterator:
     _cursor: Node
-    _linked_list: LinkedList
+    _linked_list: Chain
     
-    def __init__(self, linked_list: LinkedList):
+    def __init__(self, linked_list: Chain):
         self._linked_list = linked_list
         self._cursor = self._linked_list.head
     

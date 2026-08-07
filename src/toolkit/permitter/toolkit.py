@@ -11,13 +11,13 @@ from __future__ import annotations
 
 from typing import Generic, TypeVar
 
-from authorization.permitter import Permitter
+from authorization.permitter import OperationPermitter
 from toolkit import Toolkit
 
-P = TypeVar("P", bound=Permitter)
+P = TypeVar("P", bound=OperationPermitter)
 
 
-class PermitterToolkit(Toolkit[Permitter, Generic[P]]):
+class PermitterToolkit(Toolkit[OperationPermitter, Generic[P]]):
     """
     Role:
         -   Dependency Management

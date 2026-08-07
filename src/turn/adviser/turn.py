@@ -10,7 +10,7 @@ version: 1.0.1
 from __future__ import annotations
 
 from model import Graph
-from report import ManeuverApprovalReport
+from report import ManeuverRequestDecision
 from util import LoggingLevelRouter
 
 
@@ -18,5 +18,5 @@ class TurnAdviser:
     
     
     @LoggingLevelRouter.monitor
-    def advice(self, graph: Graph) -> ManeuverApprovalReport:
+    def advice(self, graph: Graph) -> ManeuverRequestDecision:
         pass

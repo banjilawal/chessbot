@@ -10,9 +10,9 @@ version: 1.0.1
 # =========== AUTHORIZATION.REQUEST.CHAIN PACKAGE ===========#
 
 # Packages
-from .add import *
-from .remove import *
+from .node import *
+from .offset import *
 
 
 # Modules
-from .request import LinkedListRequest
+from .request import ChainRequest

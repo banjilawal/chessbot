@@ -137,7 +137,7 @@ class SquareAuditor(Auditor[Square]):
         method = f"{self.__class__.__name__}._run_board_tests"
         
         # Handle the case that, the square's board is nnt certified as safe.
-        board_consistency_result = board_service.microservice.run.validat(
+        board_consistency_result = board_service.microservice.execute.validat(
             candidate=square.board
         )
         if board_consistency_result.is_faiure:

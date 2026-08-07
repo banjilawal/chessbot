@@ -16,9 +16,9 @@ from operation import Operation
 from result import Result
 from util import LoggingLevelRouter
 
-T = TypeVar("T", bound="LinkedList")
+T = TypeVar("T", bound="Chain")
 
-class LinkedListOperation(Operation, ABC, Generic[T]):
+class ChainOperation(Operation, ABC, Generic[T]):
     """
     Role
         -   Worker

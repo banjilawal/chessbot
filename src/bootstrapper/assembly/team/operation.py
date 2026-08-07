@@ -114,7 +114,7 @@ class TeamAssemblyPrimer(AssemblyPrimer[Team]):
                 )
             )
         # Handle the case that, the schema does not pass a validation check.
-        schema_validation_result = toolkit.schema_service.run.execute(
+        schema_validation_result = toolkit.schema_service.execute.execute(
             candidate=blueprint.schema
         )
         if schema_validation_result.is_failure:
@@ -129,7 +129,7 @@ class TeamAssemblyPrimer(AssemblyPrimer[Team]):
                 )
             )
         # Handle the case that, the owner does not pass a validation check.
-        owner_validation_result = toolkit.player_service.run.execute(
+        owner_validation_result = toolkit.player_service.execute.execute(
             candidate=blueprint.model_class
         )
         if owner_validation_result.is_failure:
@@ -193,7 +193,7 @@ class TeamAssemblyPrimer(AssemblyPrimer[Team]):
         method = f"{cls.__name__}._verify_board"
         
         # Handle the case that, the board is flagged unsafe.
-        board_validator_result = toolkit.board_service.run.execute(
+        board_validator_result = toolkit.board_service.execute.execute(
             candidate=blueprint.board
         )
         if board_validator_result.is_failure:

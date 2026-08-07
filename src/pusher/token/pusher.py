@@ -66,14 +66,14 @@ class TokenPusher(Pusher[Token]):
         method =  f"{self.__class__.__name__}.execute"
         
         # Handle the case that, push rights are not granted.
-        permission = self._permitter.run(
+        permission = self._permitter.execute(
             request=PushRequest(
                 item=item,
                 stack=stack,
                 id=IdFactory.next_id(class_name="PushRequest"),
             )
         )
-        if permission.is_denied:
+        if permission.request_is_denied:
             # Return the exception chain on failure
             return InsertionResult.failure(
                 TokenPusherException(

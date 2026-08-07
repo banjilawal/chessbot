@@ -17,7 +17,7 @@ from carrier import TokenCarrier
 from detector import TokenHomeDetector
 from err import TokenBlueprintNullException, TokenCarrierNullException, TokenNullException
 from model import Token
-from authorization.adjudcator import BlueprintHomeSquareExtractor, BlueprintRankExtractor
+from authorization.adjudicator import BlueprintHomeSquareExtractor, BlueprintRankExtractor
 from toolkit import StateModelToolkit
 from assurance.validator import TeamValidator
 

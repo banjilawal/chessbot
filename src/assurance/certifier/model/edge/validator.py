@@ -141,7 +141,7 @@ class EdgeRootCertifier(ModelRootCertifier[Edge]):
         
         # Certification for the search-by-coord target.
         if blueprint.coord is not None:
-            validation = coord_service.run.execute(blueprint.coord)
+            validation = coord_service.execute.execute(blueprint.coord)
             if validation.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
@@ -155,7 +155,7 @@ class EdgeRootCertifier(ModelRootCertifier[Edge]):
         
         # Certification for the search-by-board target.
         if blueprint.board is not None:
-            validation = board_service.run.execute(blueprint.board)
+            validation = board_service.execute.execute(blueprint.board)
             if validation.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
@@ -169,7 +169,7 @@ class EdgeRootCertifier(ModelRootCertifier[Edge]):
         
         # Certification for the search-by-occupant target.
         if blueprint.occupant is not None:
-            validation = edge_service.run.execute(blueprint.occupant)
+            validation = edge_service.execute.execute(blueprint.occupant)
             if validation.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(

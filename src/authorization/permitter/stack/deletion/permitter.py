@@ -1,0 +1,81 @@
+# src/authorization/permitter/stack/deletion/permitter.py
+
+"""
+Module: authorization.permitter.stack.deletion.permitter
+Author: Banji Lawal
+Created: 2026-04-03
+version: 1.0.1
+"""
+
+from abc import abstractmethod
+from typing import Type
+
+from err import DeletionRequestNullException, DeletePermitterException
+from authorization.permitter.stack import OperationPermitter
+from report import DeletionApprovalReport
+from authorization.request import DeletionRequest
+from result import ValidationResult
+from util import LoggingLevelRouter
+
+
+class DeleterPermitter(OperationPermitter):
+    """
+    Role:
+        -   Request Analyzer
+        -   Rights Granter
+        -   Consistency, Integrity Maintenance
+
+    Responsibilities:
+        1.  Evaluate if permission to remove a stack member can be granted.
+
+    Attributes:
+
+    Provides:
+        -   run(self, request: DeletionRequest,) -> DeletionApprovalReport:
+
+    Super Class:
+        Permitter
+    """
+    
+    @abstractmethod
+    @LoggingLevelRouter.monitor
+    def execute(self, request: DeletionRequest, ) -> DeletionApprovalReport:
+        pass
+    
+    @LoggingLevelRouter.monitor
+    def bootstrap_request(self, request) -> ValidationResult:
+        """
+        Evaluate a pawn promotion request.
+
+        Action:
+            1.  Send an exception chain in the ValidationResult if the request is either
+                    -   Null
+                    -   Not a PopRequest.
+            2.  Otherwise, send the success
+        Args:
+            request
+        Returns:
+            ValidationResult
+        Raises:
+            DeleterPermitterException
+        """
+        method = f"{self.__class__.__name__}.bootstrap_request"
+        
+        # Handle the case that, the request is malformed
+        validation_result = self.priming_validator.execute(
+            candidate=request,
+            target_model=Type[DeletionRequest],
+            null_exception=DeletionRequestNullException()
+        )
+        if validation_result.is_failure:
+            # Send the exception chain in the ValidationResult.
+            return ValidationResult.failure(
+                DeletePermitterException(
+                    cls_mthd=method,
+                    cls_name=self.__class__.__name__,
+                    msg=DeletePermitterException.MSG,
+                    err_code=DeletePermitterException.ERR_CODE,
+                    ex=validation_result.exception,
+                )
+            )
+        return ValidationResult.success(request)

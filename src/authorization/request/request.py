@@ -9,7 +9,7 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from abc import ABC, abstractmethod
+from abc import ABC
 
 
 class Request(ABC):
@@ -25,7 +25,6 @@ class Request(ABC):
          id: int
 
      Provides:
-        -   def request(cls, *args, **kwargs) -> Request:
      
      Super Class:
      """

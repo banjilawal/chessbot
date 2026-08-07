@@ -126,7 +126,7 @@ class PlayerContextToolkit(Toolkit[PlayerContextToolkit]):
             
             # Toolkit the team PlayerContextToolkit if its flag is enabled.
             if team is not None:
-                validation = team_service.run.execute(candidate=team)
+                validation = team_service.execute.execute(candidate=team)
                 if validation.is_failure:
                     return ToolkitResult.failure(validation.exception)
                 # On validation success return a team_PlayerContextToolkit in the ToolkitResult.
@@ -134,7 +134,7 @@ class PlayerContextToolkit(Toolkit[PlayerContextToolkit]):
             
             # Toolkit the game PlayerContextToolkit if its flag is enabled.
             if game is not None:
-                validation = game_service.run.execute(candidate=game)
+                validation = game_service.execute.execute(candidate=game)
                 if validation.is_failure:
                     return ToolkitResult.failure(validation.exception)
                 # On validation success return a game_PlayerContextToolkit in the ToolkitResult.

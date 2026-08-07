@@ -86,12 +86,12 @@ class GameConsistencyChecker(ConsistencyChecker[Game]):
             if id_validation.is_failure:
                 return ValidationResult.failure(id_consistency.exception)
             
-            board_consistency = board_service.run.execute(game.board)
+            board_consistency = board_service.execute.execute(game.board)
             if board_validation.is_failure:
                 return ValidationResult.failure(board_consistency.exception)
             
             for player in game.players:
-                validation = agent_service.run.search_service(player)
+                validation = agent_service.execute.search_service(player)
                 if validation.is_failure:
                     return ValidationResult.failure(consistencyChecker.exception)
             return ValidationResult.success(game)

@@ -1,7 +1,7 @@
-# src/permitter/token/maneuver/undo/permitter.py
+# src/authorization/permitter/token/maneuver/undo/permitter.py
 
 """
-Module: permitter.token.maneuver.undo.permitter
+Module: authorization.permitter.token.maneuver.undo.permitter
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
