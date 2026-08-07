@@ -8,12 +8,11 @@ version: 1.0.1
 """
 
 from abc import ABC, abstractmethod
-from typing import Generic, TypeVar
+from typing import Generic, Optional, TypeVar
 
-from operation import Validator
-from pipeline import BuildPipeline
+from controller import Controller
 
-T = TypeVar("T")
+T = TypeVar("T", bound="StateModel")
 
 
 class Microservice(ABC, Generic[T]):
@@ -34,38 +33,46 @@ class Microservice(ABC, Generic[T]):
 
     Attributes:
         id: int
-        name: str
+        controller: Controller[T]
+        name: Optional[str]
 
     Provides:
-        -   builder() -> Builder[T]
-        -   validator() -> Validator[T]
 
     Super Class:
-        Microservice
     """
     NAME = "microservice"
     _id: int
     _name: str
+    _controller: Controller[T]
     
-    def __init__(self, id: int, name: str,):
+    def __init__(
+            self,
+            id: int,
+            controller: Controller[T],
+            name: Optional[str] | None = None,
+    ):
         """
         Args:
             id: int
-            name: str[T]
+            controller: Controller[T]
+            name: Optional[str]
         """
         self._id = id
-        self._name = self.NAME
+        self._name = name or self.NAME
+        self._controller = controller
         
+    @property
+    def id(self) -> int:
+        return self._id
     
     @property
-    @abstractmethod
-    def builder(self) -> BuildPipeline[T]:
-        pass
+    def name(self) -> str:
+        return self._name
     
     @property
-    @abstractmethod
-    def validator(self) -> Validator[T]:
-        pass
+    def controller(self) -> Controller[T]:
+        return self._controller
+
     
     def __eq__(self, other):
         if super().__eq__(other):

@@ -25,10 +25,11 @@ class ChainSearchRequest(ChainRequest, ABC, Generic[T]):
         -  Request
 
     Responsibilities:
-        1. Carry Search information for a Chain's CRUD operation.
+        1. Carry information for firing a Node search in a Chain.
 
     Attributes:
         id: int
+        target: T
         chain: Chain[T]
 
     Provides:
@@ -38,12 +39,7 @@ class ChainSearchRequest(ChainRequest, ABC, Generic[T]):
     """
     _target: T
     
-    def __init__(
-            self,
-            id: int,
-            target: T,
-            chain: Chain[T],
-    ):
+    def __init__(self, id: int, target: T, chain: Chain[T],):
         """
         Args:
             id: int

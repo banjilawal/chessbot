@@ -9,9 +9,6 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from abc import ABC
-from typing import Generic, TypeVar, cast
-
 from authorization import Request
 from collection import Chain
 

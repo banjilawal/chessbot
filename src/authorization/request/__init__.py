@@ -13,8 +13,7 @@ version: 1.0.1
 # Packages
 from .chain import *
 from .maneuver import *
-from .promotion import *
-from .slot import *
+from .microservice import *
 from .stack import *
 
 # Modules

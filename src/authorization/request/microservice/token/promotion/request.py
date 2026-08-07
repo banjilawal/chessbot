@@ -1,7 +1,7 @@
-# src/authorization/request/promotion/request.py
+# src/authorization/request/microservice/token/promotion/request.py
 
 """
-Module: authorization.request.promotion.request
+Module: authorization.request.microservice.token.promotion.request
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -9,11 +9,12 @@ version: 1.0.1
 
 from __future__ import annotations
 
+from authorization import TokenServiceRequest
 from model import PawnToken, Rank
-from authorization.request import Request
 
 
-class PromotionRequest(Request):
+
+class PromotionRequest(TokenServiceRequest):
     """
      Role:
          -  Request
@@ -36,14 +37,15 @@ class PromotionRequest(Request):
     _candidate: PawnToken
     _promotion_level: Rank
     
-    def __init__(self, id: int, candidate: PawnToken, promotion_level: Rank):
+    
+    def __init__(self, id: int, candidate: PawnToken, promotion_level: Rank, microservice: TokenService):
         """
          Args:
             id: int
             candidate: PawnToken,
             promotion_level: Rank
         """
-        super().__init__(id=id)
+        super().__init__(id=id, microservice=microservice)
         self._candidate = candidate
         self._promotion_level = promotion_level
         
@@ -55,8 +57,3 @@ class PromotionRequest(Request):
     @property
     def rank_level(self) -> Rank:
         return self._promotion_level
-
-    
-    @classmethod
-    def request(cls, id: int, candidate: PawnToken, promotion_level: Rank) -> PromotionRequest:
-        return cls(id=id, candidate=candidate, promotion_level=promotion_level)

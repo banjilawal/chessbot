@@ -38,6 +38,7 @@ class ChainNodeRequest(ChainRequest, ABC, Generic[T]):
     Super Class:
         ChainNodeRequest
     """
+    _node: T
     
     def __init__(
             self,
@@ -53,4 +54,9 @@ class ChainNodeRequest(ChainRequest, ABC, Generic[T]):
             chain: Chain[T]
             offset_request: Optional[ChainOffsetRequest]
         """
-        super().__init__(id=id, node=node, chain=chain, offset_request=offset_request)
+        super().__init__(id=id, chain=chain, offset_request=offset_request)
+        self._node = node
+        
+    @property
+    def node(self) -> T:
+        return self._node

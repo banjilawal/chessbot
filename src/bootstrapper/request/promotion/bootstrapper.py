@@ -13,7 +13,7 @@ from typing import Type
 
 from bootstrapper import RequestBootstrapper
 from err import PromotionRequestNullException, PromotionPermitterBootstrapperException
-from authorization.request.promotion import PromotionRequest
+from authorization.request.microservice.token.promotion import PromotionRequest
 from result import ValidationResult
 from util import LoggingLevelRouter
 
