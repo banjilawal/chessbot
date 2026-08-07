@@ -16,3 +16,4 @@ from .push import *
 from .search import *
 
 # Modules
+from .request import StackServiceRequest

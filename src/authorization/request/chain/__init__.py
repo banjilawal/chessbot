@@ -12,6 +12,7 @@ version: 1.0.1
 # Packages
 from .node import *
 from .offset import *
+from .search import *
 
 
 # Modules

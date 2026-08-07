@@ -16,7 +16,6 @@ class Request(ABC):
     """
      Role:
          -  Request
-         -  Data Transport
 
      Responsibilities:
          1. Provide information to get permission to run an operation.
