@@ -86,7 +86,7 @@ class PromotionRequestAdjudicator(RequestAdjudicator[PromotionRequest]):
         method = f"{self.__class__.__name__}.execute"
         
         # Handle the case that the, the candidate is either null or the wrong type.
-        bootstrap = self.bootstrapper.execute(
+        bootstrap = self.priming_validator.execute(
             candidate=candidate,
             target_mode=[PromotionRequest],
             null_exception=PromotionRequestNullException(),

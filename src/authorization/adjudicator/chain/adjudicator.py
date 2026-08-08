@@ -12,22 +12,56 @@ from __future__ import annotations
 from abc import ABC, abstractmethod
 from typing import Any, Generic, Optional, TypeVar
 
-from assurance import PrimingValidator
+from assurance import NodeValidator, PrimingValidator
 from authorization import RequestAdjudicator
-from report import ChainCrudApprovalReport
+from report import RequestDecision
 from util import LoggingLevelRouter
 
+N = TypeVar("N", bound="Node")
+R = TypeVar("R", bound="ChainRequest")
 
 
-T = TypeVar("T", bound="ChainRequest")
+class ChainRequestAdjudicator(RequestAdjudicator, ABC, Generic[N, R]):
+    """
+    Role:
+        -   Permission Authorization
+        -   Checklist Runner
+        -   Integrity Maintenance
+        _   Consistency Assurance
 
-class ChainRequestAdjudicator(RequestAdjudicator, ABC, Generic[T]):
+    Responsibilities:
+        1.  Run safety checks on a ChainRequest.
+
+    Attributes:
+        node_validator: NodeValidator[T]
+        priming_validator: Optional[PrimingValidator]
+
+    Provides:
+        -    def execute(self, candidate: Any) -> RequestDecision
+
+    Super Class:
+        RequestAdjudicator
+    """
+    _node_validator: NodeValidator[N]
     
-    def __init__(self, bootstrapper: Optional[PrimingValidator] | None = None):
-        super().__init__(bootstrapper=bootstrapper)
-
+    def __init__(
+            self,
+            node_validator: NodeValidator[N],
+            priming_validator: Optional[PrimingValidator] | None = None
+    ):
+        """
+        Args:
+            node_validator: NodeValidator[N]
+            priming_validator: Optional[PrimingValidator]
+        """
+        super().__init__(priming_validator=priming_validator)
+        self._node_validator = node_validator
+        
+    @property
+    def node_validator(self) -> NodeValidator[N]:
+        return self._node_validator
     
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def execute(self, candidate: Any) -> ChainCrudApprovalReport:
+    def execute(self, candidate: Any) -> RequestDecision:
         pass

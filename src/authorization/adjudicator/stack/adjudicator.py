@@ -24,8 +24,8 @@ T = TypeVar("T", bound="StackRequest")
 
 class StackRequestAdjudicator(RequestAdjudicator, ABC, Generic[T]):
     
-    def __init__(self, bootstrapper: Optional[PrimingValidator] | None = None):
-        super().__init__(bootstrapper=bootstrapper)
+    def __init__(self, priming_validator: Optional[PrimingValidator] | None = None):
+        super().__init__(priming_validator=priming_validator)
 
     
     @abstractmethod

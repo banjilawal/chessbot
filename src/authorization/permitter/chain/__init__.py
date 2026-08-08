@@ -10,10 +10,9 @@ version: 1.0.1
 # =========== AUTHORIZATION.PERMITTER.CHAIN PACKAGE ===========#
 
 # Packages
-from .deletion import *
 from .remove import *
 from .append import *
 from .search import *
 
 # Modules
-from .permitter import ChainChainOperationPermitter
+from .permitter import ChainOperationPermitter

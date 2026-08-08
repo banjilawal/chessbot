@@ -12,7 +12,7 @@ from __future__ import annotations
 
 from typing import Any, Type, cast
 
-from bootstrapper import PrimingValidator, SearchRequestBootstrapper
+from priming_validator import PrimingValidator, SearchRequestPriming_Validator
 from err import TokenSearchRequestAdjudicatorException, TokenStackNullException
 from authorization.request import SearchRequest
 from result import MethodResultType, ValidationResult
@@ -34,7 +34,7 @@ class TokenSearchRequestAdjudicator(SearchRequestAdjudicator):
     Attributes:
         item_validator: TokenContextValidator
         priming_validator: PrimingValidator
-        carrier_validator: SearchPermitterBootstrapper
+        carrier_validator: SearchPermitterPriming_Validator
           
     Provides:
         -   def execute(self, subject: Any) -> ValidationResult:
@@ -43,21 +43,21 @@ class TokenSearchRequestAdjudicator(SearchRequestAdjudicator):
     """
     _item_validator: TokenContextValidator
     _priming_validator: PrimingValidator
-    _bootstrapper: SearchRequestBootstrapper
+    _priming_validator: SearchRequestPriming_Validator
     
     def __init__(
             self,
             item_validator: TokenContextValidator | None = TokenContextValidator(),
             priming_validator: PrimingValidator | None = PrimingValidator(),
-            bootstrapper: SearchRequestBootstrapper | None = SearchRequestBootstrapper(),
+            priming_validator: SearchRequestPriming_Validator | None = SearchRequestPriming_Validator(),
     ):
         """
         Args:
             item_validator: TokenContextValidator
             priming_validator: PrimingValidator
-            bootstrapper: SearchPermitterBootstrapper
+            priming_validator: SearchPermitterPriming_Validator
         """
-        self._bootstrapper = bootstrapper
+        self._priming_validator = priming_validator
         self._item_validator = item_validator
         self._priming_validator = priming_validator
     
@@ -84,7 +84,7 @@ class TokenSearchRequestAdjudicator(SearchRequestAdjudicator):
         method = f"{self.__class__.__name__}.execute"
         
         # Handle the case that, the SearchRequest is not bootstrapped successfully.
-        bootstrap = self._bootstrapper.execute(candidate)
+        bootstrap = self._priming_validator.execute(candidate)
         if bootstrap.is_failure:
             # Send the exception chain in the result.
             return ValidationResult.failure(

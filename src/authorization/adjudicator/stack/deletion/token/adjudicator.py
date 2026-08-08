@@ -12,7 +12,7 @@ from __future__ import annotations
 
 from typing import Any, Type, cast
 
-from bootstrapper import DeletionRequestBootstrapper, PrimingValidator
+from priming_validator import DeletionRequestPriming_Validator, PrimingValidator
 from err import TokenStackNullException
 from microservice import IdentityService
 from authorization.request import DeletionRequest
@@ -34,7 +34,7 @@ class TokenDeletionRequestAdjudicator(DeletionRequestAdjudicator):
     Attributes:
         identity_service: IdentityService
         priming_validator: PrimingValidator
-        carrier_validator: DeletionPermitterBootstrapper
+        carrier_validator: DeletionPermitterPriming_Validator
           
     Provides:
         -   def execute(self, subject: Any) -> ValidationResult:
@@ -43,21 +43,21 @@ class TokenDeletionRequestAdjudicator(DeletionRequestAdjudicator):
     """
     _identity_service: IdentityService
     _priming_validator: PrimingValidator
-    _bootstrapper: DeletionRequestBootstrapper
+    _priming_validator: DeletionRequestPriming_Validator
     
     def __init__(
             self,
             identity_service: IdentityService | None = IdentityService(),
             priming_validator: PrimingValidator | None = PrimingValidator(),
-            bootstrapper: DeletionRequestBootstrapper | None = DeletionRequestBootstrapper(),
+            priming_validator: DeletionRequestPriming_Validator | None = DeletionRequestPriming_Validator(),
     ):
         """
         Args:
             identity_service: IdentityService
             priming_validator: PrimingValidator
-            bootstrapper: DeletionPermitterBootstrapper
+            priming_validator: DeletionPermitterPriming_Validator
         """
-        self._bootstrapper = bootstrapper
+        self._priming_validator = priming_validator
         self._identity_service = identity_service
         self._priming_validator = priming_validator
     
@@ -88,7 +88,7 @@ class TokenDeletionRequestAdjudicator(DeletionRequestAdjudicator):
         method = f"{self.__class__.__name__}.execute"
         
         # Handle the case that, the DeletionRequest is not bootstrapped successfully.
-        bootstrap = self._bootstrapper.execute(candidate)
+        bootstrap = self._priming_validator.execute(candidate)
         if bootstrap.is_failure:
             # Send the exception chain in the result.
             return ValidationResult.failure(

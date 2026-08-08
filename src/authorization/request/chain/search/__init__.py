@@ -10,6 +10,8 @@ version: 1.0.1
 # =========== AUTHORIZATION.REQUEST.CHAIN.SEARCH PACKAGE ===========#
 
 # Packages
+from .vector import *
+
 
 # Modules
 from .request import ChainSearchRequest

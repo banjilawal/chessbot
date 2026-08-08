@@ -1,27 +1,26 @@
-# src/report/approval/report.py
+# src/report/decision/report.py
 
 """
-Module: report.approval.report
+Module: report.decision.report
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
 """
 
 from __future__ import annotations
-from typing import Generic, Optional, TypeVar
+from typing import Optional
 
+from authorization import Request
 from report import Permission, Report
 
-T = TypeVar("T", bound="Request")
 
-
-class RequestDecision(Report, Generic[T]):
+class RequestDecision(Report):
     """
     Role:
         -   Test results
 
     Responsibilities:
-        1.  Give details about an operationOperation approval.
+        1.  Give details about an operationOperation decision.
         
     Attributes:
         permission: Permission
@@ -29,27 +28,27 @@ class RequestDecision(Report, Generic[T]):
         exception: Optional[Exception]
         
     Provides:
-        -   def approve(request: T) -> OperationApprovalReport
-        -   def deny(exception: Exception) -> OperationApprovalReport:
+        -   def approve(request: Request) -> RequestDecision
+        -   def deny(exception: Exception) -> RequestDecision
 
     Super Class:
         Report
     """
     _permission: Permission
-    _request: Optional[T]
+    _request: Optional[Request]
     _exception: Optional[Exception]
 
     
     def __init__(
             self,
             permission: Permission,
-            request: Optional[T] | None = None,
+            request: Optional[Request] | None = None,
             exception: Optional[Exception] | None = None,
     ):
         """
         Args:
             permission: Permission
-            request: Optional[T]
+            request: Optional[Request]
             exception: Optional[Exception]
         """
         self._request = request
@@ -61,7 +60,7 @@ class RequestDecision(Report, Generic[T]):
         return self._exception
     
     @property
-    def request(self) -> Optional[T]:
+    def request(self) -> Optional[Request]:
         return self._request
     
     @property
@@ -85,7 +84,7 @@ class RequestDecision(Report, Generic[T]):
         )
     
     @classmethod
-    def approve(cls, request: T) -> RequestDecision:
+    def approve(cls, request: Request) -> RequestDecision:
         return cls(request=request, permission =Permission.GRANTED)
     
     @classmethod

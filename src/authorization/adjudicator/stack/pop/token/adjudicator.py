@@ -12,7 +12,7 @@ from __future__ import annotations
 
 from typing import Any, Type, cast
 
-from bootstrapper import PrimingValidator, PopRequestBootstrapper
+from priming_validator import PrimingValidator, PopRequestPriming_Validator
 from err import TokenStackNullException, TokenPopRequestAdjudicatorException
 from authorization.request import PopRequest
 from result import MethodResultType, ValidationResult
@@ -32,7 +32,7 @@ class TokenPopRequestAdjudicator(PopRequestAdjudicator):
         
     Attributes:
         priming_validator: PrimingValidator
-        carrier_validator: PopPermitterBootstrapper
+        carrier_validator: PopPermitterPriming_Validator
           
     Provides:
         -   def execute(self, subject: Any) -> ValidationResult:
@@ -40,19 +40,19 @@ class TokenPopRequestAdjudicator(PopRequestAdjudicator):
     Super Class:
     """
     _priming_validator: PrimingValidator
-    _bootstrapper: PopRequestBootstrapper
+    _priming_validator: PopRequestPriming_Validator
     
     def __init__(
             self,
             priming_validator: PrimingValidator | None = PrimingValidator(),
-            bootstrapper: PopRequestBootstrapper | None = PopRequestBootstrapper(),
+            priming_validator: PopRequestPriming_Validator | None = PopRequestPriming_Validator(),
     ):
         """
         Args:
             priming_validator: PrimingValidator
-            bootstrapper: PopPermitterBootstrapper
+            priming_validator: PopPermitterPriming_Validator
         """
-        self._bootstrapper = bootstrapper
+        self._priming_validator = priming_validator
         self._priming_validator = priming_validator
     
     
@@ -78,7 +78,7 @@ class TokenPopRequestAdjudicator(PopRequestAdjudicator):
         method = f"{self.__class__.__name__}.execute"
         
         # Handle the case that, the PopRequest is not bootstrapped successfully.
-        bootstrap = self._bootstrapper.execute(candidate)
+        bootstrap = self._priming_validator.execute(candidate)
         if bootstrap.is_failure:
             # Send the exception chain in the result.
             return ValidationResult.failure(

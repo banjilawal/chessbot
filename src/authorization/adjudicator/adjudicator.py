@@ -28,25 +28,25 @@ class RequestAdjudicator(ABC, Generic[T]):
         _   Consistency Assurance
 
     Responsibilities:
-        1.  Run checks making sure granting a Request does not introduce inconsistencies or failures.
+        1.  Run safety checks on a Request.
 
     Attributes:
         priming_validator: PrimingValidator
 
     Provides:
-        -    def execute(self, request: Request) -> RequestDecision
+        -    def execute(self, candidate: Any) -> RequestDecision
 
     Super Class:
     """
     
-    _bootstrapper: Optional[PrimingValidator]
+    _priming_validator: Optional[PrimingValidator]
     
-    def __init__(self, bootstrapper: Optional[PrimingValidator] | None = None):
-        self._bootstrapper = bootstrapper or PrimingValidator()
+    def __init__(self, priming_validator: Optional[PrimingValidator] | None = None):
+        self._priming_validator = priming_validator or PrimingValidator()
         
     @property
-    def bootstrapper(self) -> PrimingValidator:
-        return self._bootstrapper
+    def priming_validator(self) -> PrimingValidator:
+        return self._priming_validator
     
     @abstractmethod
     @LoggingLevelRouter.monitor

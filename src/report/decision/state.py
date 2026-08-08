@@ -1,7 +1,7 @@
-# src/report/approval/state/_state.py
+# src/report/decision/state/_state.py
 
 """
-Module: report.approval.state._state
+Module: report.decision.state._state
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

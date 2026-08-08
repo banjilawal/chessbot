@@ -12,7 +12,7 @@ from __future__ import annotations
 
 from typing import Any, Type, cast
 
-from bootstrapper import PrimingValidator, PushRequestBootstrapper
+from priming_validator import PrimingValidator, PushRequestPriming_Validator
 from err import TokenStackNullException, TokenPushRequestAdjudicatorException
 from authorization.request import PushRequest
 from result import MethodResultType, ValidationResult
@@ -34,7 +34,7 @@ class TokenPushRequestAdjudicator(PushRequestAdjudicator):
     Attributes:
         item_validator: TokenValidator
         priming_validator: PrimingValidator
-        carrier_validator: PushPermitterBootstrapper
+        carrier_validator: PushPermitterPriming_Validator
           
     Provides:
         -   def execute(self, subject: Any) -> ValidationResult:
@@ -43,21 +43,21 @@ class TokenPushRequestAdjudicator(PushRequestAdjudicator):
     """
     _item_validator: TokenValidator
     _priming_validator: PrimingValidator
-    _bootstrapper: PushRequestBootstrapper
+    _priming_validator: PushRequestPriming_Validator
     
     def __init__(
             self,
             item_validator: TokenValidator | None = TokenValidator(),
             priming_validator: PrimingValidator | None = PrimingValidator(),
-            bootstrapper: PushRequestBootstrapper | None = PushRequestBootstrapper(),
+            priming_validator: PushRequestPriming_Validator | None = PushRequestPriming_Validator(),
     ):
         """
         Args:
             item_validator: TokenValidator
             priming_validator: PrimingValidator
-            bootstrapper: PushPermitterBootstrapper
+            priming_validator: PushPermitterPriming_Validator
         """
-        self._bootstrapper = bootstrapper
+        self._priming_validator = priming_validator
         self._item_validator = item_validator
         self._priming_validator = priming_validator
     
@@ -88,7 +88,7 @@ class TokenPushRequestAdjudicator(PushRequestAdjudicator):
         method = f"{self.__class__.__name__}.execute"
         
         # Handle the case that, the PushRequest is not bootstrapped successfully.
-        bootstrap = self._bootstrapper.execute(candidate)
+        bootstrap = self._priming_validator.execute(candidate)
         if bootstrap.is_failure:
             # Send the exception chain in the result.
             return ValidationResult.failure(
