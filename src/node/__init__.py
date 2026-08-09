@@ -12,8 +12,6 @@ version: 1.0.1
 # Packages
 from .dossier import *
 from .vector import *
-from .vertex import *
-
 
 # Modules
 from .node import Node

@@ -15,7 +15,7 @@ from err import (
     ContextNullException, QueryNullException, StackEmptyException, StackNullException
 )
 from model import Query
-from stack import StackService
+from collection.stack import StackService
 from assurance.validator import ContextValidator, PrimingValidator
 
 T = TypeVar("T")

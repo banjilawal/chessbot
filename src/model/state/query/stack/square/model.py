@@ -11,7 +11,7 @@ from dataclasses import dataclass
 
 from model import Square, SquareContext
 from model.query import StackQuery
-from stack import SquareStackService
+from collection.stack import SquareStackService
 
 
 @dataclass

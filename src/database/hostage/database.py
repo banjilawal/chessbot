@@ -12,7 +12,7 @@ from __future__ import annotations
 from microservice import HostageService
 from model import Hostage
 from result import InsertionResult
-from searcher import HostageQueryService
+from operation.collection.searcher import HostageQueryService
 from util import LoggingLevelRouter
 
 

@@ -13,7 +13,7 @@ from typing import Optional
 
 from fabrication.blueprint import EdgeBlueprint
 from carrier import ModelCarrier
-from edge import Edge
+from graph.component.edge import Edge
 
 
 class EdgeCarrier(ModelCarrier[Edge]):

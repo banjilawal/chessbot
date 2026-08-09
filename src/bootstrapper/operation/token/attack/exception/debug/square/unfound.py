@@ -12,7 +12,7 @@ __all__ = [
     "AttackerSquareNotFoundException",
 ]
 
-from operation.token.attack import AttackDebugException
+from operation.microservice.token import AttackDebugException
 
 
 # ======================# ROSTER_MEMBER_TO_REMOVE_DOES_NOT_EXIST EXCEPTION #======================#

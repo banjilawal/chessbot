@@ -16,7 +16,7 @@ from err import (
 )
 from report import CollisionReport
 from result import AnalysisResult
-from stack import TokenStackService
+from collection.stack import TokenStackService
 from util import LoggingLevelRouter
 
 

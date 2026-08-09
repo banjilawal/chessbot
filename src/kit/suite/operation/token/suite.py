@@ -1,7 +1,7 @@
-# src/kit/suite/operation/carrier_validator/toolkit.py
+# src/kit/suite/operation/token/suite.py
 
 """
-Module: kit.operation.suite.carrier_validator.toolkit
+Module: kit.suite.operation.token.suite
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

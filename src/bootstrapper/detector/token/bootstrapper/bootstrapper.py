@@ -19,7 +19,7 @@ from err import (
 from microservice import IdentityService
 from model import Token
 from result import ValidationResult
-from stack import TokenStackService
+from collection.stack import TokenStackService
 from util import LoggingLevelRouter
 from assurance.validator import TokenValidator, PrimingValidator
 

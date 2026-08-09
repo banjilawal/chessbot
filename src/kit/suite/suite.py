@@ -20,7 +20,7 @@ T = TypeVar("T", bound="Model")
 
 
 
-class Suite(ABC, Generic[T]):
+class Suite(ABC):
     """
     Role:
         -   Dependency Container

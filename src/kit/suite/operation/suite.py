@@ -1,7 +1,7 @@
 # src/kit/suite/operation/suite.py
 
 """
-Module: kit.operation.suite.suite
+Module: kit.suite.operation.suite
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -14,7 +14,7 @@ from typing import Generic, TypeVar
 
 from assurance import Validator
 from fabrication import Builder
-from kit import ModelToolkit, Suite
+from kit import ModelToolkit, Suite, Toolkit
 
 T = TypeVar("T", bound="Model")
 
@@ -45,7 +45,7 @@ class OperationSuite(Suite, Generic[T]):
     _validator: Validator[T]
     _toolkit: ModelToolkit[T]
     
-    def __init__(self, toolkit: Toolkit, validator: Validator[T], builder: Builder[T]):
+    def __init__(self, toolkit: ModelToolkit[T], validator: Validator[T], builder: Builder[T]):
         """
         Args:
             builder: Builder[T]

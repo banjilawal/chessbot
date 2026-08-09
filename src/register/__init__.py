@@ -10,8 +10,11 @@ version: 1.0.1
 # =========== REGISTER PACKAGE ===========#
 
 # Packages
-from .identity import *
-from .model import *
+from .coord import *
+from .number import *
+from .square import *
+from .vector import *
+from .vectortoggle import *
 
 # Modules
 from .register import Register

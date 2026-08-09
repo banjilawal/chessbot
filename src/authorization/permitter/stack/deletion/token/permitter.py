@@ -14,7 +14,7 @@ from typing import cast
 from err import PoppingEmptyTokenStackException, TokenDeletePermitterException
 from report import DeletionApprovalReport
 from authorization.request import DeletionRequest
-from stack import TokenStackService
+from collection.stack import TokenStackService
 from authorization.adjudicator import TokenDeletionRequestAdjudicator
 from util import LoggingLevelRouter
 

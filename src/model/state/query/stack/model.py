@@ -10,11 +10,11 @@ version: 1.0.1
 from __future__ import annotations
 
 from dataclasses import dataclass
-from typing import Generic, List, TypeVar
+from typing import TypeVar
 
 from model import Context
 from model.query import Query
-from stack import StackService
+from collection.stack import StackService
 
 T = TypeVar("T")
 

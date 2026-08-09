@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import TypeVar
 
 from authorization import Request
-from stack import StackService
+from collection.stack import StackService
 
 T = TypeVar("T",)
 

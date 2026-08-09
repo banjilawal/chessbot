@@ -15,7 +15,7 @@ from err import RankQuotaAnalyzerException
 from model import Rank
 from report import RankQuotaReport
 from result import AnalysisResult, MethodResultType
-from stack import TokenStackService
+from collection.stack import TokenStackService
 from util import LoggingLevelRouter
 
 

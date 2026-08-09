@@ -16,7 +16,7 @@ from model import Token
 from authorization.permitter.stack import PopPermitter
 from report import PopApprovalReport
 from authorization.request import PopRequest
-from stack import TokenStackService
+from collection.stack import TokenStackService
 from util import LoggingLevelRouter
 
 

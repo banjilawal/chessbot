@@ -12,7 +12,7 @@ __all__ = [
     "StaleLinkDiscoveredInAttackingSquareSearchException",
 ]
 
-from operation.token.attack import AttackDebugException
+from operation.microservice.token import AttackDebugException
 
 
 # ======================# ATTACKER_SOURCE_SQUARE_HAS_STALE_LINK EXCEPTION #======================#

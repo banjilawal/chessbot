@@ -9,6 +9,7 @@ version: 1.0.1
 
 from __future__ import annotations
 
+from typing import Optional
 
 from kit import SensorSuite
 from model import Token
@@ -25,21 +26,53 @@ class TokenSensorSuite(SensorSuite[Token]):
         1.  Contains the operations that can be performed on a Token.
 
     Attributes:
-        toolkit: TokenToolkit
-        builder: TokenBuilder
-        validator: TokenValidator
+        collider: Optional[TokenCollider]
+        home: Optional[TokenHomeReporter]
+        friendship: Optional[FriendshipAnalyzer]
+        readiness: Optional[TokenReadinessAnalyzer]
 
     Provides:
 
     Super Class:
-        Suite
-
-    Notes:
-        -   Suite for an empty class which makes managing toolkits easier.
-        -   Any toolkits for a suite should be a Suite subclass.
+        SensorSuite
     """
-    friendship: FriendshipAnalyzer = FriendshipAnalyzer()
-    collider: TokenCollider = TokenCollider()
-    readiness: TokenReadinessAnalyzer = TokenReadinessAnalyzer()
-    home: TokenHomeReporter = TokenHomeReporter()
+    _collider: TokenCollider
+    _home: TokenHomeReporter
+    _friendship: FriendshipAnalyzer
+    _readiness: TokenReadinessAnalyzer
+    
+    def __init__(
+            self,
+            collider: Optional[TokenCollider] | None = None,
+            home: Optional[TokenHomeReporter] | None = None,
+            friendship: Optional[FriendshipAnalyzer] | None = None,
+            readiness: Optional[TokenReadinessAnalyzer] | None = None,
+    ):
+        """
+        Args:
+            collider: Optional[TokenCollider]
+            home: Optional[TokenHomeReporter]
+            friendship: Optional[FriendshipAnalyzer]
+            readiness: Optional[TokenReadinessAnalyzer]
+        """
+        self._collider = collider or TokenCollider()
+        self._home = home or TokenHomeReporter()
+        self._friendship = friendship or FriendshipAnalyzer()
+        self._readiness = readiness or TokenReadinessAnalyzer()
+        
+    @property
+    def home(self) -> TokenHomeReporter:
+        return self._home
+    
+    @property
+    def collider(self) -> TokenCollider:
+        return self._collider
+    
+    @property
+    def friendship(self) -> FriendshipAnalyzer:
+        return self._friendship
+    
+    @property
+    def readiness(self) -> TokenReadinessAnalyzer:
+        return self._readiness
 

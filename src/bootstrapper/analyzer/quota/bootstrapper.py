@@ -16,7 +16,7 @@ from context import TokenContext
 from model import Rank
 from report import RankQuotaReport
 from result import AnalysisResult, MethodResultType
-from stack import TokenStackService
+from collection.stack import TokenStackService
 from util import LoggingLevelRouter
 from assurance.validator import RankValidator
 

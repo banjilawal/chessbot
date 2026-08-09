@@ -9,7 +9,7 @@ version: 1.0.0
 
 from __future__ import annotations
 
-from operation.token.attack import (
+from operation.microservice.token import (
     AttackException, AttackResult, AttackingDisabledEnemyException, AttackingEnemyKingException,
     AttackingFriendlySquareException, AttackingTokenOnWrongBoardException, AttackingVacantSquareException
 )

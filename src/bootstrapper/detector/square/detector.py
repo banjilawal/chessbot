@@ -18,7 +18,7 @@ from err import (
 from model import Square
 from report import CollisionReport
 from result import AnalysisResult
-from stack import SquareStackService
+from collection.stack import SquareStackService
 from util import LoggingLevelRouter
 
 

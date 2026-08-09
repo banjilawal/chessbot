@@ -12,7 +12,7 @@ __all__ = [
     "AttackerSquareInconsistencyException",
 ]
 
-from operation.token.attack import AttackDebugException
+from operation.microservice.token import AttackDebugException
 
 
 # ======================# ATTACKER_INCONSISTENT_WITH_THEIR_SQUARE EXCEPTION #======================#

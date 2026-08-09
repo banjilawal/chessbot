@@ -7,12 +7,10 @@ Created: 2026-04-03
 version: 1.0.1
 """
 
-# =========== PACKAGE ===========#
+# =========== GRAPH PACKAGE ===========#
 
 # Packages
-from .domain import *
-from graph.domain.graph import *
-from .pair import *
-from .tree import *
+from component import *
 
 # Modules
+from .graph import Graph

@@ -17,7 +17,7 @@ from model import Square
 from authorization.permitter.stack import PushPermitter
 from report import PushApprovalReport
 from authorization.request import PushRequest
-from stack import SquareStackService
+from collection.stack import SquareStackService
 from authorization.adjudicator import SquarePushRequestAdjudicator
 from util import LoggingLevelRouter
 

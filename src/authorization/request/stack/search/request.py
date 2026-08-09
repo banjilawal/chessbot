@@ -13,7 +13,7 @@ from typing import Generic, TypeVar
 
 from context import Context
 from authorization.request import Request
-from stack import StackService
+from collection.stack import StackService
 
 T = TypeVar("T")
 

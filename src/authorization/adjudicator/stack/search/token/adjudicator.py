@@ -16,7 +16,7 @@ from priming_validator import PrimingValidator, SearchRequestPriming_Validator
 from err import TokenSearchRequestAdjudicatorException, TokenStackNullException
 from authorization.request import SearchRequest
 from result import MethodResultType, ValidationResult
-from stack import TokenStackService
+from collection.stack import TokenStackService
 from authorization.adjudicator import SearchRequestAdjudicator
 from util import LoggingLevelRouter
 from assurance.validator import TokenContextValidator

@@ -12,7 +12,7 @@ from __future__ import annotations
 import dataclasses
 
 from model import Edge, Node
-from stack import StackService
+from collection.stack import StackService
 
 
 @dataclasses

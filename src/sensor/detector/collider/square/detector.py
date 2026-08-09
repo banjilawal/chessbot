@@ -13,7 +13,7 @@ from __future__ import annotations
 from report import CollisionReport
 from result import AnalysisResult
 from sensor import Collider
-from stack import SquareStackService
+from collection.stack import SquareStackService
 from transit import SquareCarrier
 from util import LoggingLevelRouter
 

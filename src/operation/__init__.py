@@ -13,12 +13,12 @@ version: 1.0.1
 from .algebra import *
 from .chain import *
 from .insertion import *
-from .maneuver import *
+from operation.microservice.maneuver import *
 from .occupation import *
-from .promotion import *
-from .square import *
+from operation.microservice.token import *
+from operation.microservice.square import *
 from .stack import *
-from .token import *
+from operation.microservice.token import *
 
 # Modules
 from .operation import Operation

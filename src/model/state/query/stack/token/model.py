@@ -11,7 +11,7 @@ from dataclasses import dataclass
 
 from model import Token, TokenContext
 from model.query import StackQuery
-from stack import TokenStackService
+from collection.stack import TokenStackService
 
 
 @dataclass

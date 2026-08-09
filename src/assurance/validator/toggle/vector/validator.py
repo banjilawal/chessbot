@@ -10,15 +10,16 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, cast
 
+from assurance import ToggleValidator
 from err import VectorToggleValidatorException
 from assurance.certifier import VectorToggleRootCertifier
 from result import ValidationResult
 from toggle import VectorToggle
 from util import LoggingLevelRouter
-from assurance.validator import Validator
 
 
-class VectorToggleValidator(Validator[VectorToggle]):
+
+class VectorToggleValidator(ToggleValidator[VectorToggle]):
     """
     Role
         -   Transaction Worker

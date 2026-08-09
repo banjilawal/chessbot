@@ -9,11 +9,10 @@ version: 1.0.1
 from __future__ import annotations
 
 from dataclasses import dataclass
-from typing import List
 
 from model import Edge, EdgeContext
 from model.query import StackQuery
-from stack import EdgeStackService
+from collection.stack import EdgeStackService
 
 
 @dataclass

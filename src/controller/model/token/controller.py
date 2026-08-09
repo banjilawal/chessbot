@@ -15,7 +15,7 @@ from sensor.analyzer import FriendshipAnalyzer, TokenReadinessAnalyzer
 from fabrication.builder import TokenBuilder
 from detection import TokenHomeDetector, TokenCollisionDetector
 from operation import TokenHomePlacer, TokenPositionController
-from operation.promotion import PawnPromoter
+from operation.microservice.token import PawnPromoter
 from assurance.validator import TokenValidator
 
 

@@ -18,9 +18,9 @@ from .number import *
 from .priming import *
 from .query import *
 from .register import *
-from .toggle import *
 from .space import *
 from .string import *
+from .toggle import *
 
 # Module
 from .validator import Validator

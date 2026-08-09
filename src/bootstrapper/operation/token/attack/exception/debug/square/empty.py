@@ -12,7 +12,7 @@ __all__ = [
     "AttackingVacantSquareException",
 ]
 
-from operation.token.attack import AttackDebugException
+from operation.microservice.token import AttackDebugException
 
 
 # ======================# ATTACKING_EMPTY_SQUARE EXCEPTION #======================#

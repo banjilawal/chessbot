@@ -17,7 +17,7 @@ from model import Token
 from authorization.permitter.stack import SearchPermitter
 from report import SearchApprovalReport
 from authorization.request import SearchRequest
-from stack import TokenStackService
+from collection.stack import TokenStackService
 from authorization.adjudicator import TokenSearchRequestAdjudicator
 from util import LoggingLevelRouter
 

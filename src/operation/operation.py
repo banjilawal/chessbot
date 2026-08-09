@@ -10,11 +10,12 @@ version: 1.0.1
 from __future__ import annotations
 
 from abc import ABC
-from typing import Any, Generic, TypeVar
+from typing import Generic, TypeVar
 
-from result import Result
+from authorization import Request
 
-T = TypeVar("T")
+
+T = TypeVar("T", bound="Result")
 
 class Operation(ABC, Generic[T]):
     """
@@ -26,17 +27,13 @@ class Operation(ABC, Generic[T]):
         2.  The task produces a work product encapsulated in a Result object.
 
     Attributes:
-        DOMAIN = "operation"
-        OPERATION_NAME = "operation"
 
     Provides:
-        -   def domains(self) -> List[str]:
+        -   execute(request: Request[T]) -> T
 
     Super Class:
     """
-    DOMAIN = "operation"
-    NAME = "operation"
     
     @classmethod
-    def execute(cls, *args, **kwargs) -> Result[Any]:
+    def execute(cls, request: Request[T]) -> T:
         pass

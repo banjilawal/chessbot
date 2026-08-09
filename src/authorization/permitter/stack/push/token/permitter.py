@@ -17,7 +17,7 @@ from model import Token
 from authorization.permitter.stack import PushPermitter, RankSlotPermitter
 from report import PushApprovalReport
 from authorization.request import PushRequest, RankSlotRequest
-from stack import TokenStackService
+from collection.stack import TokenStackService
 from authorization.adjudicator import TokenPushRequestAdjudicator
 from util import IdFactory, LoggingLevelRouter
 

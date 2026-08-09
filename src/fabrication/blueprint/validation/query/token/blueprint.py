@@ -11,7 +11,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 
 from model import Token, TokenQuery
-from stack import TokenStackService
+from collection.stack import TokenStackService
 from assurance.validator import TokenContextValidator
 from fabrication.blueprint import QueryValidationBlueprint
 from err import (

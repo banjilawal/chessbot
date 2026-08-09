@@ -9,11 +9,10 @@ version: 1.0.1
 from __future__ import annotations
 
 from dataclasses import dataclass
-from typing import List
 
 from model import Node, NodeContext
 from model.query import StackQuery
-from stack import NodeStackService
+from collection.stack import VertexStackService
 
 
 @dataclass
@@ -37,6 +36,6 @@ class NodeQuery(StackQuery[Node]):
     Super Class:
         StackQuery
     """
-    stack: NodeStackService
+    stack: VertexStackService
     context: NodeContext
 

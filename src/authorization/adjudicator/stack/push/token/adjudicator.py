@@ -16,7 +16,7 @@ from priming_validator import PrimingValidator, PushRequestPriming_Validator
 from err import TokenStackNullException, TokenPushRequestAdjudicatorException
 from authorization.request import PushRequest
 from result import MethodResultType, ValidationResult
-from stack import TokenStackService
+from collection.stack import TokenStackService
 from authorization.adjudicator import PushRequestAdjudicator
 from util import LoggingLevelRouter
 from assurance.validator import TokenValidator

@@ -1,15 +1,21 @@
 # src/kit/suite/operation/operation/__init__.py
 
 """
-Module: kit.operation.suite.operation.__init__
+Module: kit.suite.operation.operation.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
 """
 
-# =========== KIT.OPERATION.SUITE.OPERATION PACKAGE ===========#
+# =========== KIT.SUITE.OPERATION.OPERATION PACKAGE ===========#
 
 # Packages
+from .coord import *
+from .register import *
+from .scalar import *
+from .toggle import *
+from .token import *
+from .vector import *
 
 
 # Modules

@@ -12,7 +12,7 @@ __all__ = [
     "AttackingFriendlySquareException",
 ]
 
-from operation.token.attack import AttackDebugException
+from operation.microservice.token import AttackDebugException
 
 
 # ======================# ATTACKING_FRIENDLY_SQUARE EXCEPTION #======================#

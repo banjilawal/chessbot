@@ -11,7 +11,7 @@ from dataclasses import dataclass
 
 from model.query import StackQuery
 from model import Team, TeamContext
-from stack import TeamStackService
+from collection.stack import TeamStackService
 
 
 @dataclass

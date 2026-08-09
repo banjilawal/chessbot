@@ -1,7 +1,7 @@
 # src/register/state.py
 
 """
-Module: register.model
+Module: register
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

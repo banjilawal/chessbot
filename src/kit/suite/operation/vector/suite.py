@@ -1,13 +1,15 @@
-# src/kit/suite/operation/carrier_validator/toolkit.py
+# src/kit/suite/operation/vector/suite.py
 
 """
-Module: kit.operation.suite.carrier_validator.toolkit
+Module: kit.suite.operation.vector.suite
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
 """
 
 from __future__ import annotations
+
+from typing import Optional, cast
 
 from assurance import VectorValidator
 from fabrication import VectorBuilder
@@ -25,21 +27,48 @@ class VectorOperationSuite(OperationSuite[Vector]):
         1.  Contains the operations that can be performed on a Vector.
 
     Attributes:
-        toolkit: VectorToolkit
-        builder: VectorBuilder
-        validator: VectorValidator
+        toolkit: Optional[VectorToolkit]
+        builder: Optional[VectorBuilder]
+        validator: Optional[VectorValidator]
 
     Provides:
 
     Super Class:
-        Suite
+        OperationSuite
 
     Notes:
         -   Suite for an empty class which makes managing toolkits easier.
         -   Any toolkits for a suite should be a Suite subclass.
     """
-    toolkit: VectorToolkit = VectorToolkit()
-    builder: VectorBuilder = VectorBuilder()
-    validator: VectorValidator = VectorValidator()
-   
+    
+    def __init__(
+            self,
+            toolkit: Optional[VectorToolkit] | None = None,
+            builder: Optional[VectorBuilder] | None = None,
+            validator: Optional[VectorValidator] | None = None,
+    ):
+        """
+        Args:
+            toolkit: Optional[VectorToolkit]
+            builder: Optional[VectorBuilder]
+            validator: Optional[VectorValidator]
+        """
+        super().__init__(
+            toolkit=toolkit or VectorToolkit(),
+            builder=builder or VectorBuilder(),
+            validator=validator or VectorValidator(),
+        )
+    
+    @property
+    def toolkit(self) -> VectorToolkit:
+        return cast(VectorToolkit, super().toolkit)
+    
+    @property
+    def builder(self) -> VectorBuilder:
+        return cast(VectorBuilder, super().builder)
+    
+    @property
+    def validator(self) -> VectorValidator:
+        return cast(VectorValidator, super().validator)
+
 

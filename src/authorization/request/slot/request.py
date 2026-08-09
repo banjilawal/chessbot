@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from model import Rank
 from authorization.request import Request
-from stack import TokenStackService
+from collection.stack import TokenStackService
 
 
 class RankSlotRequest(Request):

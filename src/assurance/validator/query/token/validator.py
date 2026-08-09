@@ -16,7 +16,7 @@ from err import (
 )
 from model import TokenQuery
 from result import MethodResultType, ValidationResult
-from stack import TokenStackService
+from collection.stack import TokenStackService
 from util import LoggingLevelRouter
 from assurance.validator import TokenContextValidator, PrimingValidator, Validator
 

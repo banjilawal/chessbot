@@ -13,7 +13,7 @@ __all__ = [
     "AttackDebugException",
 ]
 
-from operation.token.attack import AttackException
+from operation.microservice.token import AttackException
 from system import DebugException
 
 

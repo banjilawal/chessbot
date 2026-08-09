@@ -1,13 +1,15 @@
-# src/kit/suite/operation/carrier_validator/toolkit.py
+# src/kit/suite/operation/scalar/suite.py
 
 """
-Module: kit.operation.suite.carrier_validator.toolkit
+Module: kit.suite.operation.scalar.suite
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
 """
 
 from __future__ import annotations
+
+from typing import Optional, cast
 
 from assurance import ScalarValidator
 from fabrication import ScalarBuilder
@@ -25,20 +27,48 @@ class ScalarOperationSuite(OperationSuite[Scalar]):
         1.  Contains the operations that can be performed on a Scalar.
 
     Attributes:
-        toolkit: ScalarToolkit
-        builder: ScalarBuilder
-        validator: ScalarValidator
+        toolkit: Optional[ScalarToolkit]
+        builder: Optional[ScalarBuilder]
+        validator: Optional[ScalarValidator]
 
     Provides:
 
     Super Class:
-        Suite
+        OperationSuite
 
     Notes:
         -   Suite for an empty class which makes managing toolkits easier.
         -   Any toolkits for a suite should be a Suite subclass.
     """
-    toolkit: ScalarToolkit = ScalarToolkit()
-    builder: ScalarBuilder = ScalarBuilder()
-    validator: ScalarValidator = ScalarValidator()
+    
+    def __init__(
+            self,
+            toolkit: Optional[ScalarToolkit] | None = None,
+            builder: Optional[ScalarBuilder] | None = None,
+            validator: Optional[ScalarValidator] | None = None,
+    ):
+        """
+        Args:
+            toolkit: Optional[ScalarToolkit]
+            builder: Optional[ScalarBuilder]
+            validator: Optional[ScalarValidator]
+        """
+        super().__init__(
+            toolkit=toolkit or ScalarToolkit(),
+            builder=builder or ScalarBuilder(),
+            validator=validator or ScalarValidator(),
+        )
+    
+    @property
+    def toolkit(self) -> ScalarToolkit:
+        return cast(ScalarToolkit, super().toolkit)
+    
+    @property
+    def builder(self) -> ScalarBuilder:
+        return cast(ScalarBuilder, super().builder)
+    
+    @property
+    def validator(self) -> ScalarValidator:
+        return cast(ScalarValidator, super().validator)
+
 

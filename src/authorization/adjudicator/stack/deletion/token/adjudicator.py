@@ -17,7 +17,7 @@ from err import TokenStackNullException
 from microservice import IdentityService
 from authorization.request import DeletionRequest
 from result import MethodResultType, ValidationResult
-from stack import TokenStackService
+from collection.stack import TokenStackService
 from authorization.adjudicator import DeletionRequestAdjudicator
 from util import LoggingLevelRouter
 

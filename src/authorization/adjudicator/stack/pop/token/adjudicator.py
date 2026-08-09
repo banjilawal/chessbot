@@ -16,7 +16,7 @@ from priming_validator import PrimingValidator, PopRequestPriming_Validator
 from err import TokenStackNullException, TokenPopRequestAdjudicatorException
 from authorization.request import PopRequest
 from result import MethodResultType, ValidationResult
-from stack import TokenStackService
+from collection.stack import TokenStackService
 from authorization.adjudicator import PopRequestAdjudicator
 from util import LoggingLevelRouter
 

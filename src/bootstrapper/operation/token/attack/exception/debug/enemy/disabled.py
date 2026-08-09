@@ -3,7 +3,7 @@ __all__ = [
     "AttackingDisabledEnemyException",
 ]
 
-from operation.token.attack import AttackDebugException
+from operation.microservice.token import AttackDebugException
 
 
 # ======================# ATTACKING_DISABLED_ENEMY EXCEPTION #======================#

@@ -15,7 +15,7 @@ from typing import Generic, Optional, TypeVar
 from fabrication.blueprint import Blueprint
 from report import CollisionReport
 from result import AnalysisResult
-from stack import StackService
+from collection.stack import StackService
 from util import LoggingLevelRouter
 
 T = TypeVar("T")

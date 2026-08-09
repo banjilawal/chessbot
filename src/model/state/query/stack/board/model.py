@@ -9,11 +9,10 @@ version: 1.0.1
 from __future__ import annotations
 
 from dataclasses import dataclass
-from typing import List
 
 from model import Board, BoardContext
 from model.query import StackQuery
-from stack import BoardStackService
+from collection.stack import BoardStackService
 
 
 @dataclass

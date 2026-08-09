@@ -12,7 +12,7 @@ __all__ = [
     "AttackingTokenOnWrongBoardException",
 ]
 
-from operation.token.attack import AttackDebugException
+from operation.microservice.token import AttackDebugException
 
 
 # ======================# ATTACKING_TOKEN_ON_WRONG_BOARD EXCEPTION #======================#
