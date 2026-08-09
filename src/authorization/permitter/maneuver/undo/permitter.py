@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import cast
 
-from analyzer import TokenReadinessAnalyzer
+from sensor.analyzer import TokenReadinessAnalyzer
 from err import (
     DisabledTokenUndoMoveException, MaxMoveUndoException, TokenUndoMovePermitterException
 )

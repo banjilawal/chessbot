@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from setting import BoardDimensionSetting, BoardProperty
 from controller import WorkerRegistryController
-from toolkit import MathToolkit
+from kit.toolkit import MathToolkit
 from result import ValidationResult
 from model import Vector, VectorBlueprint
 from operation import AssemblyPrimer

@@ -14,7 +14,7 @@ from typing import Any, Generic, TypeVar, cast
 
 from result import ValidationResult
 from assurance.certifier import Certifier
-from toolkit import RegisterToolkit
+from kit.toolkit import RegisterToolkit
 from util import LoggingLevelRouter
 
 T = TypeVar("T", bound="Register")

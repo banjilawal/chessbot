@@ -13,7 +13,7 @@ from _ast import List
 from copy import deepcopy
 from typing import cast
 
-from analyzer import TokenReadinessAnalyzer
+from sensor.analyzer import TokenReadinessAnalyzer
 from err import TokenDeploymentException
 from err.analyzer.claim.exist.exception import HomeSquareAlreadyClaimedException
 from model import HomeSquare, Token

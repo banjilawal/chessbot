@@ -14,7 +14,7 @@ from err import PrimingTeamAssemblyException
 from model import Board, Team, TeamBlueprint
 from operation import AssemblyPrimer
 from result import ValidationResult
-from toolkit import TeamToolkit
+from kit.toolkit import TeamToolkit
 from util import LoggingLevelRouter
 
 

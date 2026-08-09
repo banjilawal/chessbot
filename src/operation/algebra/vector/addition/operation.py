@@ -15,7 +15,7 @@ from fabrication.builder import RegisterBuilder, VectorToggleRegisterBuilder
 from operation import Operation
 from selector import VectorToggle
 
-from toolkit import VectorToggleToolkit
+from kit.toolkit import VectorToggleToolkit
 from util import LoggingLevelRouter
 
 

@@ -13,7 +13,7 @@ from __future__ import annotations
 from copy import deepcopy
 from typing import cast
 
-from analyzer import HomeSquareValidator
+from sensor.analyzer import HomeSquareValidator
 from controller import WorkerRegistryController
 from err import TokenPlaceException
 from model import PlaceState, HomeSquare, Token, TokenHomeClaimState

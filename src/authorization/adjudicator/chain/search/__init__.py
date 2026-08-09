@@ -1,13 +1,13 @@
-# src/authorization/request/chain/search/__init__.py
+# src/authorization/adjudicator/chain/search/__init__.py
 
 """
-Module: authorization.request.chain.search.__init__
+Module: authorization.adjudicator.chain.search.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
 """
 
-# =========== AUTHORIZATION.REQUEST.CHAIN.SEARCH PACKAGE ===========#
+# =========== AUTHORIZATION.ADJUDICATOR.CHAIN.SEARCH PACKAGE ===========#
 
 # Packages
 from .vector import *

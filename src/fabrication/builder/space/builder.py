@@ -16,7 +16,7 @@ from fabrication.builder import Builder
 from model import Vector
 
 from result import BuildResult
-from toolkit import MathToolkit, SpaceBuilderToolkit
+from kit.toolkit import MathToolkit, SpaceBuilderToolkit
 from util import LoggingLevelRouter
 
 

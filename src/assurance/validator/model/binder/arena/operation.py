@@ -13,11 +13,10 @@ from typing import Any, Dict, cast
 
 from err import BoardTeamBinderNullException, BoardTeamBinderValidatorException
 from model import BoardBinder, Schema, Team
-from operation import Validator
 from bootstrapper.validator.binder.operation import SchemaHashtableValidator
 from result import ValidationResult
 from util import LoggingLevelRouter
-from toolkit import BoardTeamBinderToolkit
+from kit.toolkit import BoardTeamBinderToolkit
 
 
 class BoardTeamBinderValidator(ModelValidator[BoardBinder]):

@@ -1,7 +1,7 @@
-# src/authorization/request/chain/offset/request.py
+# src/authorization/adjudicator/chain/offset/request.py
 
 """
-Module: authorization.request.chain.offset.request
+Module: authorization.adjudicator.chain.offset.request
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

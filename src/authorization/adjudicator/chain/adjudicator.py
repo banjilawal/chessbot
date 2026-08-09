@@ -13,12 +13,12 @@ from abc import ABC, abstractmethod
 from typing import Any, Generic, Optional, TypeVar
 
 from assurance import NodeValidator, PrimingValidator
-from authorization import RequestAdjudicator
+from authorization import ChainAdjudicationBootstrapper, RequestAdjudicator
 from report import RequestDecision
 from util import LoggingLevelRouter
 
 N = TypeVar("N", bound="Node")
-R = TypeVar("R", bound="ChainRequest")
+T = TypeVar("R", bound="ChainRequest")
 
 
 class ChainRequestAdjudicator(RequestAdjudicator, ABC, Generic[N, R]):
@@ -33,8 +33,8 @@ class ChainRequestAdjudicator(RequestAdjudicator, ABC, Generic[N, R]):
         1.  Run safety checks on a ChainRequest.
 
     Attributes:
-        node_validator: NodeValidator[T]
-        priming_validator: Optional[PrimingValidator]
+        node_validator: NodeValidator[N]
+        bootstrapper: Optional[ChainAdjudicationBootstrapper]
 
     Provides:
         -    def execute(self, candidate: Any) -> RequestDecision
@@ -43,19 +43,25 @@ class ChainRequestAdjudicator(RequestAdjudicator, ABC, Generic[N, R]):
         RequestAdjudicator
     """
     _node_validator: NodeValidator[N]
+    _bootstrapper: Optional[ChainAdjudicationBootstrapper]
     
     def __init__(
             self,
             node_validator: NodeValidator[N],
-            priming_validator: Optional[PrimingValidator] | None = None
+            bootstrapper: Optional[ChainAdjudicationBootstrapper] | None = None
     ):
         """
         Args:
             node_validator: NodeValidator[N]
-            priming_validator: Optional[PrimingValidator]
+            bootstrapper: Optional[ChainAdjudicationBootstrapper]
         """
-        super().__init__(priming_validator=priming_validator)
+        super().__init__()
         self._node_validator = node_validator
+        self._bootstrapper = bootstrapper or ChainAdjudicationBootstrapper()
+        
+    @property
+    def bootstrapper(self) -> ChainAdjudicationBootstrapper:
+        return self._bootstrapper
         
     @property
     def node_validator(self) -> NodeValidator[N]:

@@ -12,7 +12,7 @@ from typing import Dict, List
 
 from controller import Controller
 from model import WorkerRegistry
-from toolkit import WorkerRegistryToolkit
+from kit.toolkit import WorkerRegistryToolkit
 from util import LoggingLevelRouter, singleton
 from result import InsertionResult, SearchResult
 from operation import Operation

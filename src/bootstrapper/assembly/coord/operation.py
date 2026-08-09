@@ -12,7 +12,7 @@ from __future__ import annotations
 from setting import BoardDimensionSetting, BoardProperty
 from controller import WorkerRegistryController
 from err import PrimingCoordAssemblyException
-from toolkit import CoordToolkit
+from kit.toolkit import CoordToolkit
 from result import ValidationResult
 from model import Coord, CoordBlueprint
 from operation import AssemblyPrimer

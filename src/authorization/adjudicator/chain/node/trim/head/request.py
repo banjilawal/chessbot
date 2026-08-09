@@ -1,7 +1,7 @@
-# src/authorization/request/chain/node/trim/head/request.py
+# src/authorization/adjudicator/chain/node/trim/head/request.py
 
 """
-Module: authorization.request.chain.node.trim.head.request
+Module: authorization.adjudicator.chain.node.trim.head.request
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

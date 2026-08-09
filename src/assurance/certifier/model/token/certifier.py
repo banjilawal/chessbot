@@ -19,7 +19,7 @@ from model import HomeSquare, Team, Token
 from assurance.certifier import ModelCertifier
 from result import ValidationResult
 from schema import Formation
-from toolkit import TokenToolkit
+from kit.toolkit import TokenToolkit
 from util import LoggingLevelRouter
 
 

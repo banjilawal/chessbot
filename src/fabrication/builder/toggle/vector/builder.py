@@ -16,7 +16,7 @@ from fabrication.builder import ToggleBuilder
 from err import VectorToggleBuilderException
 from result import BuildResult, MethodResultType
 from toggle import VectorToggle
-from toolkit import VectorToggleBuilderToolkit
+from kit.toolkit import VectorToggleBuilderToolkit
 from util import LoggingLevelRouter
 
 

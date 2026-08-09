@@ -12,7 +12,7 @@ from __future__ import annotations
 
 from typing import Any, cast
 
-from analyzer import TokenReadinessAnalyzer
+from sensor.analyzer import TokenReadinessAnalyzer
 from authorization import TokenRequestAdjudicator
 from err import (
     PawnDoublePromotionException, PawnPromotionRowException, PromoteInactivePawnException,

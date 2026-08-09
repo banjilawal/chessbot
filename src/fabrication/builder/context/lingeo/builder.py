@@ -14,7 +14,7 @@ from err import ExcessVectorToggleFlagsException, VectorContextBuilderException
 from integrity import Builder
 from model import Coord, VectorToggle, Vector
 from result import BuildResult
-from toolkit  import VectorContextToolkit
+from kit.toolkit import VectorContextToolkit
 
 class VectorContextBuilder(Builder[VectorToggle]):
     """

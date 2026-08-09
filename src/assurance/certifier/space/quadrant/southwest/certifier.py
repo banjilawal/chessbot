@@ -17,7 +17,7 @@ from model import Vector
 from result import ValidationResult
 from assurance.certifier import QuadrantRootCertifier
 from space import SouthwestQuadrant
-from toolkit import SouthwestQuadrantToolkit
+from kit.toolkit import SouthwestQuadrantToolkit
 
 from util import LoggingLevelRouter
 

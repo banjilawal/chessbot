@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import cast
 
-from detector.token import TokenCollisionDetector
+from sensor.detector.token import TokenCollisionDetector
 from err import TokenAppendPermitterException
 from model import Token
 from authorization.permitter.chain import AppendPermitter, RankSlotPermitter

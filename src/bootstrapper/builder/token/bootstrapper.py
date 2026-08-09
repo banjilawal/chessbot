@@ -9,7 +9,7 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from analyzer import TokenReadinessAnalyzer
+from sensor.analyzer import TokenReadinessAnalyzer
 from bootstrapper import BuilderBootstrapper
 from err import (
     DisabledTokenException, TokenBuilderBootstrapperException, TokenSearchHitConflictException,

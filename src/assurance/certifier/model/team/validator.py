@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, cast
 
 from model import Team
-from toolkit import TeamToolkit
+from kit.toolkit import TeamToolkit
 
 
 class TeamRootCertifier(ModelRootCertifier[Team]):

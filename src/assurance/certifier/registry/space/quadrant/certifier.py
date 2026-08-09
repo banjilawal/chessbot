@@ -17,7 +17,7 @@ from model import Vector
 from assurance.certifier import SpaceReservoirCertifier
 from result import ValidationResult
 from space import QuadrantReservoir
-from toolkit import QuadrantReservoirToolkit
+from kit.toolkit import QuadrantReservoirToolkit
 from util import LoggingLevelRouter
 
 

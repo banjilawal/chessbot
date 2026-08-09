@@ -20,7 +20,7 @@ from model import Coord, Vector
 from assurance.certifier import ToggleCertifier
 from result import ValidationResult
 from toggle import VectorToggle
-from toolkit import VectorToggleToolkit
+from kit.toolkit import VectorToggleToolkit
 from util import LoggingLevelRouter
 
 

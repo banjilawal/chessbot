@@ -13,7 +13,7 @@ from typing import cast
 
 from logic.coord import Coord
 
-from analyzer import TokenReadinessAnalyzer
+from sensor.analyzer import TokenReadinessAnalyzer
 from err import DisabledTokenManeuverException
 from report import TokenReadinessReport
 from system import DeletionResult, LoggingLevelRouter

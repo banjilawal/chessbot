@@ -12,7 +12,7 @@ from typing import Any, cast
 
 from model import Formation, SquareContext, SquareState
 from result import ValidationResult
-from toolkit import SquareContextToolkit
+from kit.toolkit import SquareContextToolkit
 from util import LoggingLevelRouter
 from assurance.validator import ContextValidator
 from err import (

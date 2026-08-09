@@ -9,17 +9,15 @@ version: 1.0.0
 
 from __future__ import annotations
 
-from microservice import IdentityService, BoardTeamBinderService
-from model import Board, TeamBinderBinderBlueprint, BoardBinderBlueprint
-from model.catalog import SchemaService
+from model import TeamBinderBinderBlueprint, BoardBinderBlueprint
 from operation import AssemblyPrimer
 from result import ValidationResult
-from system import AssemblyResult, Assembly, LoggingLevelRouter
+from system import AssemblyResult, LoggingLevelRouter
 from model.teamBinder import (
-    BlackTeamBinderHasWrongSchemaException, TeamBinder, TeamBinderBinder, TeamBinderBinderAssemblyException,
-    TeamBinderSchemaCollisionException, TeamBinderValidator, WhiteTeamBinderHasWrongSchemaException
+    TeamBinderBinder, TeamBinderBinderAssemblyException,
+    WhiteTeamBinderHasWrongSchemaException
 )
-from toolkit import TeamBinderBinderToolkit, TeamBinderToolkit
+from kit.toolkit import TeamBinderBinderToolkit, TeamBinderToolkit
 
 
 class TeamBinderBinderAssemblyPrimer(AssemblyPrimer[TeamBinderBinder]):

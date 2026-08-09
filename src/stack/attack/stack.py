@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Iterator, List, Optional
 
-from analyzer import CollisionAnalyzer
+from sensor.analyzer import CollisionAnalyzer
 from controller.stack.attack.controller import AttackStackOpsController
 
 from event import AttackEvent

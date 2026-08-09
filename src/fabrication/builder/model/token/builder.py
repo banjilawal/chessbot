@@ -16,7 +16,7 @@ from fabrication.builder import ModelBuilder
 from err import TokenBuilderException
 from model import Token
 from result import BuildResult, MethodResultType
-from toolkit import TokenBuilderToolkit
+from kit.toolkit import TokenBuilderToolkit
 from util import LoggingLevelRouter
 
 

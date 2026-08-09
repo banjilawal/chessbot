@@ -17,7 +17,7 @@ from model import Vector
 from result import ValidationResult
 from assurance.certifier import AxisRootCertifier
 from space import SouthAxis
-from toolkit.geometry.space.axis.south import SouthAxisToolkit
+from kit.toolkit.geometry.space.axis import SouthAxisToolkit
 from util import LoggingLevelRouter
 
 

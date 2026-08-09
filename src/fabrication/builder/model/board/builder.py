@@ -16,7 +16,7 @@ from fabrication.builder import ModelBuilder
 from err import BoardBuilderException
 from model import Board
 from result import BuildResult, MethodResultType
-from toolkit import BoardBuilderToolkit
+from kit.toolkit import BoardBuilderToolkit
 from util import LoggingLevelRouter
 
 

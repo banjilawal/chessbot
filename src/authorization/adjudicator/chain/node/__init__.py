@@ -1,13 +1,13 @@
-# src/authorization/request/chain/node/__init__.py
+# src/authorization/adjudicator/chain/node/__init__.py
 
 """
-Module: authorization.request.chain.node.__init__
+Module: authorization.adjudicator.chain.node.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
 """
 
-# =========== AUTHORIZATION.REQUEST.CHAIN.NODE PACKAGE ===========#
+# =========== AUTHORIZATION.ADJUDICATOR.CHAIN.NODE PACKAGE ===========#
 
 # Packages
 from .append import *

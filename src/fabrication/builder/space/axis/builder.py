@@ -15,7 +15,7 @@ from typing import Generic, TypeVar, cast
 from fabrication.blueprint import AxisBlueprint
 from fabrication.builder import SpaceBuilder
 from result import BuildResult
-from toolkit import AxisBuilderToolkit
+from kit.toolkit import AxisBuilderToolkit
 from util import LoggingLevelRouter
 
 T = TypeVar("T", bound="Axis")

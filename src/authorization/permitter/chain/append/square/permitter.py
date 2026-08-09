@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import cast
 
-from detector import SquareCollisionDetector
+from sensor.detector import SquareCollider
 from err import SquareAppendPermitterException
 from model import Square
 from authorization.permitter.chain import AppendPermitter
@@ -43,12 +43,12 @@ class SquareAppendPermitter(AppendPermitter[Square]):
     Super Class:
         AppendPermitter
     """
-    _collision_detector: SquareCollisionDetector
+    _collision_detector: SquareCollider
     _request_adjudicator: SquareAppendRequestAdjudicator
     
     def __init__(
             self,
-            collision_detector: SquareCollisionDetector | None = SquareCollisionDetector(),
+            collision_detector: SquareCollider | None = SquareCollider(),
             request_adjudicator: SquareAppendRequestAdjudicator | None = SquareAppendRequestAdjudicator()
     ):
         """

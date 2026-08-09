@@ -12,10 +12,9 @@ from typing import Any, Dict, cast
 
 from err import BoardTeamBinderNullException, BoardTeamBinderValidatorException
 from model import BoardBinder
-from operation import Validator
 from result import ValidationResult
 from util import LoggingLevelRouter
-from toolkit import BoardTeamBinderToolkit
+from kit.toolkit import BoardTeamBinderToolkit
 
 
 class BoardBinderValidator(ModelValidator[BoardBinder]):

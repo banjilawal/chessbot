@@ -17,7 +17,7 @@ from model import Vector
 from register import VectorRegister
 from result import ValidationResult
 from assurance.certifier import Certifier
-from toolkit import VectorRegisterToolkit
+from kit.toolkit import VectorRegisterToolkit
 from util import LoggingLevelRouter
 
 

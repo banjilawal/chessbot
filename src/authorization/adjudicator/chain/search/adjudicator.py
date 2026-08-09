@@ -1,7 +1,7 @@
-# src/authorization/request/chain/search/request.py
+# src/authorization/adjudicator/chain/search/request.py
 
 """
-Module: authorization.request.chain.search.request
+Module: authorization.adjudicator.chain.search.request
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -12,7 +12,7 @@ from __future__ import annotations
 from abc import ABC
 from typing import Generic, TypeVar
 
-from authorization import ChainRequest
+from authorization import ChainRequest, ChainRequestAdjudicator
 from collection import Chain
 
 # src/authorization/adjudicator/chain/search/adjudicator.py
@@ -59,17 +59,34 @@ class ChainSearchRequestAdjudicator(ChainRequestAdjudicator, Generic[N, R]):
     Super Class:
         ChainRequestAdjudicator
     """
+    _node_validator: NodeValidator[N]
     
     def __init__(
             self,
             node_validator: NodeValidator[N],
-            priming_validator: Optional[PrimingValidator] | None = None):
+            bootstrapper: Optional[ChainAdjudicationBootstrapper] | None = None
+    ):
         """
         Args:
             node_validator: NodeValidator[N]
-            priming_validator: Optional[PrimingValidator]
+            bootstrapper: Optional[ChainAdjudicationBootstrapper]
         """
-        super().__init__(node_validator=node_validator, priming_validator=priming_validator)
+        super().__init__(bootstrapper=bootstrapper)
+        self._node_validator = node_validator
+        self._bootstrapper = bootstrapper
+    
+    @property
+    def bootstrapper(self) -> ChainAdjudicationBootstrapper:
+        return self._bootstrapper
+    
+    @property
+    def node_validator(self) -> NodeValidator[N]:
+        return self._node_validator
+    
+    @abstractmethod
+    @LoggingLevelRouter.monitor
+    def execute(self, candidate: Any) -> RequestDecision:
+        pass
 
 
 T = TypeVar("T", bound="Node")

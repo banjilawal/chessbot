@@ -13,7 +13,7 @@ from typing import Any, Optional, cast
 
 from authorization import RequestAdjudicator
 from err import (
-    CircularPathException, ManeuverRequestAdjudicatorException, ManeuverRequestNullException,
+    CircularPathException, ManeuverRequestNullException,
     ManeuverRequestAdjudicatorException
 )
 from model import Maneuver, Path, Square
@@ -21,7 +21,7 @@ from register import SquareRegister
 from report import ManeuverRequestDecision
 from authorization.request import ManeuverRequest
 from result import MethodResultType
-from toolkit import TokenManeuverToolkit
+from kit.toolkit import TokenManeuverToolkit
 from util import IdFactory, LoggingLevelRouter
 
 

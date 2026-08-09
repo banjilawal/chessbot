@@ -14,7 +14,7 @@ from typing import Any, cast
 from register import IdentityRegister
 from assurance.certifier import Certifier
 from result import ValidationResult
-from toolkit import IdentityRegisterToolkit
+from kit.toolkit import IdentityRegisterToolkit
 from util import LoggingLevelRouter
 
 

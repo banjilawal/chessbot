@@ -16,7 +16,7 @@ from err import OriginCertifierBootstrapperException, TokenOriginRelationNullExc
 from model import Square, Token
 from report import RelationReport
 from result import ValidationResult
-from toolkit import TokenEndpointRelationToolkit
+from kit.toolkit import TokenEndpointRelationToolkit
 from util import LoggingLevelRouter
 
 

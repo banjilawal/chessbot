@@ -1,0 +1,17 @@
+# src/kit/suite/__init__.py
+
+"""
+Module: kit.suite.__init__
+Author: Banji Lawal
+Created: 2026-04-03
+version: 1.0.1
+"""
+
+# =========== KIT.SUITE PACKAGE ===========#
+
+# Packages
+from .operation import *
+from .sensor import *
+
+# Modules
+from .suite import Suite

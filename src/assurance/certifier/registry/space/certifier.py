@@ -15,7 +15,7 @@ from typing import Any, Generic, TypeVar, cast
 from fabrication.blueprint import SpaceReservoirBlueprint
 from assurance.certifier import Certifier
 from result import ValidationResult
-from toolkit import SpaceReservoirToolkit
+from kit.toolkit import SpaceReservoirToolkit
 from util import LoggingLevelRouter
 
 

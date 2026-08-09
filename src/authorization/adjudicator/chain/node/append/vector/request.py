@@ -1,7 +1,7 @@
-# src/authorization/request/chain/node/append/request.py
+# src/authorization/adjudicator/chain/node/append/request.py
 
 """
-Module: authorization.request.chain.node.append.request
+Module: authorization.adjudicator.chain.node.append.request
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

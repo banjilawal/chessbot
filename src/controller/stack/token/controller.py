@@ -9,7 +9,7 @@ version: 1.0.0
 
 from __future__ import annotations
 
-from analyzer import RankQuotaAnalyzer
+from sensor.analyzer import RankQuotaAnalyzer
 from controller.crud import TokenStackCrudController
 from detection import TokenCollisionDetector
 from microservice import TokenService

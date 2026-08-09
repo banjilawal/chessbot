@@ -13,7 +13,7 @@ from typing import Any, cast
 
 from fabrication.factory import ToolkitFactory
 from model import Token
-from toolkit import TokenToolkit
+from kit.toolkit import TokenToolkit
 from database import CoordDatabase
 from result import BuildResult, ValidationResult
 from util import LoggingLevelRouter

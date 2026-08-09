@@ -13,7 +13,7 @@ from typing import Any, cast
 from err import CircularPathException, PathConsistencyCheckerException
 from model import Path
 from result import ValidationResult
-from toolkit import PathToolkit
+from kit.toolkit import PathToolkit
 from util import LoggingLevelRouter
 
 

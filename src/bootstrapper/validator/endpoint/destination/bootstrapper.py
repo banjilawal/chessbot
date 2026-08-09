@@ -11,14 +11,13 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from analyzer import SquareTokenRelationAnalyzer
+from sensor.analyzer import SquareTokenRelationAnalyzer
 from err import (
     BlockedPathException, DestinationCertifierBootstrapperException, PartialTokenDestinationRelationException,
     TokenAlreadyAtDestinationException
 )
 from model import Square, Token
 from report import DestinationApprovalReport, RelationReport
-from result import ValidationResult
 from util import LoggingLevelRouter
 
 

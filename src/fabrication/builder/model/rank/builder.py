@@ -16,7 +16,7 @@ from fabrication.builder import ModelBuilder
 from err import RankBuilderException
 from model import Rank
 from result import BuildResult, MethodResultType
-from toolkit import RankBuilderToolkit
+from kit.toolkit import RankBuilderToolkit
 from util import LoggingLevelRouter
 
 

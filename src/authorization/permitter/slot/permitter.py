@@ -10,7 +10,7 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Type, cast
 
-from analyzer import RankQuotaAnalyzer
+from sensor.analyzer import RankQuotaAnalyzer
 from bootstrapper import PrimingValidator
 from err import RankQuotaFullException, RankSlotPermitterException, RankSlotRequestNullException
 from authorization.permitter import OperationPermitter

@@ -11,10 +11,10 @@ from __future__ import annotations
 
 from typing import Iterator, List, Optional
 
-from analyzer import CollisionAnalyzer
+from sensor.analyzer import CollisionAnalyzer
 from controller.stack.token.controller import TokenStackController
 from err import TokenStackServiceException
-from microservice import IdentityService, TokenService
+from microservice import TokenService
 from model import Token, TokenContext, TokenQuery
 from result import DeletionResult, InsertionResult, SearchResult
 from stack import StackService, TokenStackState

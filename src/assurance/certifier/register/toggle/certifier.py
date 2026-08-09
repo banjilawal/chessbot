@@ -20,7 +20,7 @@ from register import VectorToggleRegister
 from result import MethodResultType, ValidationResult
 from assurance.certifier import Certifier
 from toggle import VectorToggle
-from toolkit import VectorToggleRegisterToolkit
+from kit.toolkit import VectorToggleRegisterToolkit
 from util import LoggingLevelRouter
 
 

@@ -14,7 +14,7 @@ from typing import Generic, Optional, TypeVar
 
 from model import Vector
 from result import ComputationResult
-from toolkit import MathToolkit
+from kit.toolkit import MathToolkit
 from util import LoggingLevelRouter
 
 T = TypeVar("T", bound="Space")
