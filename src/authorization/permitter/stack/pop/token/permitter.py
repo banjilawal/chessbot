@@ -15,7 +15,7 @@ from err import PoppingEmptyTokenStackException, TokenPopPermitterException, Tok
 from model import Token
 from authorization.permitter.stack import PopPermitter
 from report import PopApprovalReport
-from authorization.request import PopRequest
+from request import PopRequest
 from collection.stack import TokenStackService
 from util import LoggingLevelRouter
 

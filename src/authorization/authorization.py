@@ -15,9 +15,9 @@ from typing import Generic, TypeVar
 from report import RequestDecision
 from util import LoggingLevelRouter
 
-T = TypeVar("T", bound="Result")
+T = TypeVar("T", bound="Request")
 
-class Authorizer(ABC, Generic[T]):
+class Authorization(ABC, Generic[T]):
     
     @abstractmethod
     @LoggingLevelRouter.monitor

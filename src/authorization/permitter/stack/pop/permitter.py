@@ -13,7 +13,7 @@ from typing import Type
 from err import PopRequestNullException, PopperPermitterException
 from authorization.permitter.stack import OperationPermitter
 from report import PopApprovalReport
-from authorization.request import PopRequest
+from request import PopRequest
 from result import ValidationResult
 from util import LoggingLevelRouter
 

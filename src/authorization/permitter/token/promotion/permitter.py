@@ -13,7 +13,7 @@ from __future__ import annotations
 from err import PromotionPermitterException
 from authorization.permitter.token import OperationPermitter
 from report import PromotionRequestDecision
-from authorization.request.microservice.token.promotion import PromotionRequest
+from request.microservice.token.promotion import PromotionRequest
 from authorization.adjudicator import PromotionRequestAdjudicator
 from util import LoggingLevelRouter
 

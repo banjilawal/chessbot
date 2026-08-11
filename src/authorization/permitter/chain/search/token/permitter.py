@@ -16,7 +16,7 @@ from err import TokenSearchPermitterException
 from model import Token
 from authorization.permitter.chain import SearchPermitter
 from report import SearchApprovalReport
-from authorization.request import SearchRequest
+from request import SearchRequest
 from chain import TokenChainService
 from authorization.adjudicator import TokenSearchRequestAdjudicator
 from util import LoggingLevelRouter

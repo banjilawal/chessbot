@@ -16,7 +16,7 @@ from err import SquarePushPermitterException
 from model import Square
 from authorization.permitter.stack import StackPushPermitter
 from report import PushApprovalReport
-from authorization.request import TokenStackPushRequest
+from request import TokenStackPushRequest
 from collection.stack import SquareStackService
 from authorization.adjudicator import SquarePushRequestAdjudicator
 from util import LoggingLevelRouter

@@ -1,0 +1,62 @@
+# src/request/chain/node/append/request.py
+
+"""
+Module: request.chain.node.append.request
+Author: Banji Lawal
+Created: 2026-04-03
+version: 1.0.1
+"""
+
+from __future__ import annotations
+
+from typing import Optional, cast
+
+from authorization import AppendNodeRequest, ChainOffsetRequest
+from collection import VectorChain
+from node import VectorNode
+
+
+class AppendVectorNodeRequest(AppendNodeRequest[VectorNode]):
+    """
+    Role:
+        -  Request
+
+    Responsibilities:
+        1. Carry Node information for appending a Node to a Chain.
+
+    Attributes:
+        id: int
+        node: VectorNode
+        chain: VectorChain
+        offset_request: Optional[ChainOffsetRequest]
+
+    Provides:
+
+    Super Class:
+        AppendNodeRequest
+    """
+
+    def __init__(self,
+            id: int,
+            node: VectorNode,
+            chain: VectorChain,
+            offset_request: Optional[ChainOffsetRequest] | None = None,
+    ):
+        """
+        Args:
+            id: int
+            node: VectorNode,
+            chain: VectorChain,
+            offset_request: Optional[ChainOffsetRequest]
+        """
+        super().__init__(id=id, node=node, chain=chain, offset_request=offset_request)
+        
+    @property
+    def node(self) -> VectorNode:
+        return cast(VectorNode, super().node)
+    
+    @property
+    def chain(self) -> VectorChain:
+        return cast(VectorChain, super().chain)
+
+    

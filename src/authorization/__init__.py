@@ -13,6 +13,6 @@ version: 1.0.1
 from .adjudicator import *
 from .insertion import *
 from .permitter import *
-from .request import *
 
 # Modules
+from .authorization import Authorization

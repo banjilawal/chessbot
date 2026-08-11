@@ -14,4 +14,4 @@ from .chain import *
 from .stack import *
 
 # Modules
-from .operation import CollectionOperation
+from .operation import InsertionOperation

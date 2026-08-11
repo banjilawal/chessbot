@@ -11,7 +11,7 @@ from abc import abstractmethod
 
 from authorization.permitter.stack import OperationPermitter
 from report import PushApprovalReport
-from authorization.request import TokenStackPushRequest
+from request import TokenStackPushRequest
 from util import LoggingLevelRouter
 
 

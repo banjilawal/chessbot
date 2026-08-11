@@ -11,7 +11,7 @@ from abc import abstractmethod
 
 from authorization.permitter.chain import ChainOperationPermitter
 from report import CrudApprovalReport
-from authorization.request import CrudRequest
+from request import CrudRequest
 from util import LoggingLevelRouter
 
 

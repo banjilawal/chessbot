@@ -16,7 +16,7 @@ from err import TokenAppendPermitterException
 from model import Token
 from authorization.permitter.chain import AppendPermitter, RankSlotPermitter
 from report import AppendApprovalReport
-from authorization.request import AppendRequest, RankSlotRequest
+from request import AppendRequest, RankSlotRequest
 from chain import TokenChainService
 from authorization.adjudicator import TokenAppendRequestAdjudicator
 from util import IdFactory, LoggingLevelRouter

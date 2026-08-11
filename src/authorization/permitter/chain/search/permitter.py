@@ -11,7 +11,7 @@ from abc import abstractmethod
 
 from authorization.permitter.chain import ChainOperationPermitter
 from report import SearchApprovalReport
-from authorization.request import SearchRequest
+from request import SearchRequest
 from util import LoggingLevelRouter
 
 

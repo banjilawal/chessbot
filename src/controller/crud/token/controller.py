@@ -15,7 +15,7 @@ from operation import TokenStackPush
 from model import Token
 from operation.collection.deletion.stack.popper import TokenPopper
 from operation.collection.insertion.stack.pusher import TokenPusher
-from authorization.request import CollectionDeletionRequest, PopRequest, TokenStackPushRequest, SearchRequest
+from request import CollectionDeletionRequest, PopRequest, TokenStackPushRequest, SearchRequest
 from result import DeletionResult, InsertionResult, SearchResult
 from operation.collection.search import TokenSearcher
 from util import LoggingLevelRouter

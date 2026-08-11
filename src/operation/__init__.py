@@ -12,6 +12,7 @@ version: 1.0.1
 # Packages
 from .collection import *
 from .computation import *
+from .insertion import *
 from .microservice import *
 
 # Modules

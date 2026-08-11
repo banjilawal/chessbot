@@ -19,7 +19,7 @@ from err import (
 from model import Maneuver, Path, Square
 from register import SquareRegister
 from report import ManeuverRequestDecision
-from authorization.request import ManeuverRequest
+from request import ManeuverRequest
 from result import MethodResultType
 from kit.toolkit import TokenManeuverToolkit
 from util import IdFactory, LoggingLevelRouter

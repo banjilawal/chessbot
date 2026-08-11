@@ -15,7 +15,7 @@ from err import RemovepingEmptyTokenChainException, TokenRemovePermitterExceptio
 from model import Token
 from authorization.permitter.chain import RemovePermitter
 from report import RemoveApprovalReport
-from authorization.request import RemoveRequest
+from request import RemoveRequest
 from chain import TokenChainService
 from util import LoggingLevelRouter
 

@@ -12,15 +12,16 @@ from __future__ import annotations
 from abc import ABC, abstractmethod
 from typing import Generic, TypeVar, cast
 
-from authorization import CollectionRequest, OperationPermitter
+
 from operation import Operation
+from result import InsertionResult
 from util import LoggingLevelRouter
 
 
 T = TypeVar("T", bound="Collection")
 
 
-class Insertion(Operation, ABC, Generic[T]):
+class InsertionOperation(Operation, ABC, Generic[T]):
     """
     Role
         -   Worker
