@@ -1,0 +1,39 @@
+# src/logic/formation/key/lookup/exception/debug/item.py
+
+"""
+Module: logic.formation.key.lookup.exception.debug.item
+Author: Banji Lawal
+Created: 2025-09-08
+version: 1.0.0
+"""
+
+from model.catalog.formation import FormationException
+from system import BoundsException
+
+__all__ = [
+    # ======================# FORMATION_SQUARE_NAME_BOUNDS EXCEPTION #======================#
+    "FormationSquareBoundsException",
+]
+
+
+# ======================# FORMATION_SQUARE_NAME_BOUNDS EXCEPTION #======================#
+class FormationSquareBoundsException(FormationException, BoundsException):
+    """
+    Role:Error Tracing, Debugging
+
+    Responsibilities:
+    1.  Indicate a Formation lookup failed because the item value was not permitted for the Formation
+        attribute.
+
+    Super Class:
+        *   FormationException
+        *   BoundsException
+
+    Provides:
+
+
+    INHERITED ATTRIBUTES:
+    None
+    """
+    ERR_CODE = "FORMATION_SQUARE_NAME_BOUNDS"
+    MSG = "FormationLookupProcess failed: Target was outside the set of possible Formation item names."

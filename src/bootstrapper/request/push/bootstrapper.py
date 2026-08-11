@@ -13,7 +13,7 @@ from typing import Type
 
 from bootstrapper import RequestBootstrapper
 from err import PushRequestNullException, PushPermitterBootstrapperException
-from authorization.request import PushRequest
+from authorization.request import TokenStackPushRequest
 from result import ValidationResult
 from util import LoggingLevelRouter
 
@@ -60,7 +60,7 @@ class PushRequestBootstrapper(RequestBootstrapper):
         # Handle the case that, the request is malformed
         validation_result = self.priming_validator.execute(
             candidate=request,
-            target_model=Type[PushRequest],
+            target_model=Type[TokenStackPushRequest],
             null_exception=PushRequestNullException()
         )
         if validation_result.is_failure:

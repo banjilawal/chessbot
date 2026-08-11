@@ -1,0 +1,20 @@
+# src/logic/persona/key/lookup/exception/debug/__init__.py
+
+"""
+Module: logic.persona.key.lookup.exception.debug.__init__
+Author: Banji Lawal
+Created: 2025-09-08
+version: 1.0.0
+"""
+
+# =========== OPERATION.COLLECTION.SEARCH.PERSONA.KEY.LOOKUP.EXCEPTION.DEBUG PACKAGE ===========#
+
+# Packages
+
+
+# Modules
+from .name import PersonaNameBoundsException
+from .route import PersonaLookupRouteException
+from .quota import PersonaQuotaBoundsException
+from .ransom import PersonaRansomBoundsException
+from .designation import PersonaDesignationBoundsException

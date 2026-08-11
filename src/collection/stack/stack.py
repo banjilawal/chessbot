@@ -10,16 +10,17 @@ version: 1.0.1
 from __future__ import annotations
 
 from abc import ABC, abstractmethod
-from contextvars import Context
+
 from typing import Generic, Iterator, List, Optional, TypeVar
 
+from collection import Collection
 from microservice import IdentityService, Microservice
 from result import DeletionResult, InsertionResult, SearchResult
-from system import LoggingLevelRouter
 
-T = TypeVar("T")
 
-class StackService(ABC, Generic[T]):
+T = TypeVar("T", bound="StateModel")
+
+class StackService(Collection, ABC, Generic[T]):
     """
     Role:
         -   Data layer

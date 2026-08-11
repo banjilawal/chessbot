@@ -14,6 +14,7 @@ from .maneuver import *
 from .slot import *
 from .stack import *
 from .token import *
+from .operation import *
 
 # Modules
 from .permitter import OperationPermitter

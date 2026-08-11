@@ -1,0 +1,17 @@
+# src/logic/persona/key/service/__init__.py
+
+"""
+Module: logic.persona.key.service.__init__
+Author: Banji Lawal
+Created: 2025-09-08
+version: 1.0.0
+"""
+
+# =========== OPERATION.COLLECTION.SEARCH.PERSONA.KEY.SERVICE PACKAGE ===========#
+
+
+# Packages
+from .exception import *
+
+# Modules
+from .service import PersonaKeyService

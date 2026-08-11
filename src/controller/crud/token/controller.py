@@ -10,13 +10,14 @@ version: 1.0.0
 from __future__ import annotations
 
 from controller import CrudController
-from operation.collection.deleter import TokenDeleter
+from operation import TokenStackPush
+
 from model import Token
-from operation.collection.deleter.stack.popper import TokenPopper
-from operation.collection.inserter.stack.pusher import TokenPusher
-from authorization.request import DeletionRequest, PopRequest, PushRequest, SearchRequest
+from operation.collection.deletion.stack.popper import TokenPopper
+from operation.collection.insertion.stack.pusher import TokenPusher
+from authorization.request import CollectionDeletionRequest, PopRequest, TokenStackPushRequest, SearchRequest
 from result import DeletionResult, InsertionResult, SearchResult
-from operation.collection.searcher import TokenSearcher
+from operation.collection.search import TokenSearcher
 from util import LoggingLevelRouter
 
 
@@ -42,7 +43,7 @@ class TokenCrudController(CrudController[Token]):
     Super Class:
         CrudController
     """
-    _pusher: TokenPusher
+    _push: TokenStackPush
     _popper: TokenPopper
     _deleter: TokenDeleter
     _searcher: TokenSearcher
@@ -61,13 +62,13 @@ class TokenCrudController(CrudController[Token]):
             deleter: TokenDeleter
             searcher: TokenSearcher
         """
-        self._pusher = pusher
+        self._push = pusher
         self._popper = popper
         self._deleter = deleter
         self._searcher = searcher
     
     @LoggingLevelRouter.monitor
-    def delete(self, request: DeletionRequest) -> DeletionResult[Token]:
+    def delete(self, request: CollectionDeletionRequest) -> DeletionResult[Token]:
         return self._deleter.execute(request)
     
     @LoggingLevelRouter.monitor
@@ -75,8 +76,8 @@ class TokenCrudController(CrudController[Token]):
         return self._popper.execute(request)
     
     @LoggingLevelRouter.monitor
-    def push(self, request: PushRequest) -> InsertionResult:
-        return self._pusher.execute(request)
+    def push(self, request: TokenStackPushRequest) -> InsertionResult:
+        return self._push.execute(request)
     
     @LoggingLevelRouter.monitor
     def search(self, request: SearchRequest) -> SearchResult:

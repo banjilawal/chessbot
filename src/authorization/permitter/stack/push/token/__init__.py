@@ -13,4 +13,4 @@ version: 1.0.1
 
 
 # Modules
-from .permitter import TokenPushPermitter
+from .permitter import TokenStackPushPermitter

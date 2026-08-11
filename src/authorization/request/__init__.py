@@ -15,6 +15,7 @@ from .chain import *
 from .maneuver import *
 from .microservice import *
 from .stack import *
+from .operation import *
 
 # Modules
 from .request import Request

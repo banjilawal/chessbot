@@ -1,0 +1,113 @@
+# src/logic/game/route/exception/validator.py
+
+"""
+Module: logic.game.route.exception.work
+Author: Banji Lawal
+Created: 2025-10-06
+version: 1.0.0
+"""
+
+from __future__ import annotations
+from typing import Optional
+
+__all__ = [
+    # ======================# GAME_SEARCH_FAILURE #======================#
+    "GameSearchException",
+]
+
+from system import SearchException
+
+
+# ======================# GAME_SEARCH_FAILURE #======================#
+class GameSearchException(SearchException):
+    """
+    Role:Worker Method Identification, Exception Chain Layer 1, Exception Messaging
+
+    Responsibilities:
+    1.  Indicate a game search was not completed, it returned an error instead of a
+        work product. 
+    2.  Trace the method calls.
+
+    Super Class:
+        *   SearchException
+
+    Provides:
+
+
+    # INHERITED ATTRIBUTES:
+        *   See SearchException class for inherited attributes.
+
+    Attributes:
+        ex: Optional[str]
+        msg: Optional[str]
+        mthd: Optional[str]
+        err_code: Optional[str]
+        mthd_rslt_type: Optional[MethodResultType]
+
+    # LOCAL METHODS:
+   None
+
+    # INHERITED METHODS:
+        *   See SearchException class for inherited methods.
+    """
+    OP = "Search"
+    MTHD_RSLT = "SearchResult"
+    ERR_CODE = "GAME_SEARCH_FAILURE"
+    MSG = "Game search method failed."
+ 
+    def __init__(
+            self,
+            msg: Optional[str] | None = None,
+            mthd: Optional[str] = None,
+            ex: Optional[Exception] | None = None,
+            err_code: Optional[str] | None = None,
+            mthd_rslt_Ttype: Optional[MethodResultType] | None = None,
+    ):
+        """
+        Args:
+            ex: Optional[str]
+            msg: Optional[str]
+            mthd: Optional[str]
+            err_code: Optional[str]
+            mthd_rslt_type: Optional[MethodResultType]
+        """
+        msg = msg or self.MSG
+        err_code = err_code or self.ERR_CODE
+        mthd_rslt = mthd_rslt or self.MTHD_RSLT
+        
+        super().__init__(
+            ex=ex,
+            op=op,
+            msg=msg,
+            mthd=mthd,
+            err_code=err_code,
+            mthd_rslt_type=mthd_rslt_type,
+        )
+
+__all__ = [
+    # ======================# GAME_SEARCH_FAILURE #======================#
+    "GameSearchException",
+]
+
+from system import SearchException
+from model.state.game import GameException
+
+
+# ======================# GAME_SEARCH_FAILURE #======================#
+class GameSearchException(GameException, SearchException):
+    """
+    Role:Exception Work
+
+    Responsibilities:
+    1.  Wrap debug exceptions indicating why a game search operation failed. The exception chain
+        traces the ultimate source of failure.
+
+    Super Class:
+        *   FinderException
+
+    Provides:
+
+
+    # INHERITED ATTRIBUTES:
+    None
+    """

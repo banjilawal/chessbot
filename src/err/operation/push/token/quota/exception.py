@@ -10,7 +10,7 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import TokenPusherException
+from err import TokenStackPushException
 from result import MethodResultType
 
 
@@ -20,7 +20,7 @@ __all__ = [
 ]
 
 # ======================# NO_OPENINGS_FOR_RANK_EXCEPTION #======================#
-class RankQuotaFullException(TokenPusherException):
+class RankQuotaFullException(TokenStackPushException):
     """
     Role:
         -   Error Tracing

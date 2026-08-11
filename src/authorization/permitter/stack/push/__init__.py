@@ -14,4 +14,4 @@ from .square import *
 from .token import *
 
 # Modules
-from .permitter import PushPermitter
+from .permitter import StackPushPermitter

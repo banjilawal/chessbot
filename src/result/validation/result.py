@@ -91,21 +91,21 @@ class ValidationResult(Result[T], Generic[T]):
         )
     
     @classmethod
-    def success(cls, payload: T) -> ValidationResult:
+    def success(cls, payload: T) -> ValidationResult[T]:
         return cls(
             payload=payload,
             state=ValidationState.SUCCESS,
         )
     
     @classmethod
-    def failure(cls, exception: Exception) -> ValidationResult:
+    def failure(cls, exception: Exception) -> ValidationResult[T]:
         return cls(
             exception=exception,
             state=ValidationState.FAILURE,
         )
     
     @classmethod
-    def timed_out(cls, exception: Exception) -> ValidationResult:
+    def timed_out(cls, exception: Exception) -> ValidationResult[T]:
         return cls(
             exception=exception,
             state=ValidationState.TIMED_OUT,

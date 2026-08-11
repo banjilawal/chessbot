@@ -10,9 +10,9 @@ version: 1.0.1
 # =========== OPERATION.COLLECTION PACKAGE ===========#
 
 # Packages
-from .deleter import *
-from .inserter import *
-from .searcher import *
+from .deletion import *
+from .insertion import *
+from .search import *
 
 # Modules
 from .operation import CollectionOperation

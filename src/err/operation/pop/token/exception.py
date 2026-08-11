@@ -16,11 +16,11 @@ from result import MethodResultType
 
 __all__ = [
     # ======================# TOKEN_POPPER_FAILURE #======================#
-    "TokenPopperException",
+    "TokenStackPopException",
 ]
 
 # ======================# TOKEN_POPPER_FAILURE #======================#
-class TokenPopperException(PopperException):
+class TokenStackPopException(PopperException):
     """
     Role:
         -   Error Tracing

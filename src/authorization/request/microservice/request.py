@@ -21,7 +21,7 @@ T = TypeVar("T", bound="StateModel")
 class MicroserviceRequest(Request, ABC, Generic[T]):
     """
      Role:
-         -  Request
+         -  Messaging
 
      Responsibilities:
          1. Provide information to get permission to run a Microservice operation.

@@ -17,7 +17,7 @@ from model import PawnToken, Rank
 class PromotionRequest(TokenServiceRequest):
     """
      Role:
-         -  Request
+         -  Messaging
          -  Data Transport
 
      Responsibilities:

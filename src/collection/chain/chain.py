@@ -10,34 +10,35 @@ version: 1.0.1
 from __future__ import annotations
 
 from abc import ABC, abstractmethod
-from typing import Any, Generic, List, Optional, Type, TypeVar, cast
+from typing import Any, Generic, List, Optional, TypeVar, cast
 
 from assurance import NumberValidator
+from collection import Collection
 from node import Node
 from result import BuildResult, DeletionResult, InsertionResult, SearchResult, ValidationResult
 from util import LoggingLevelRouter
-from util.decorator.logging import logging_monitor
-
-T = TypeVar("T")
 
 
-class Chain(ABC, Generic[T]):
+T = TypeVar("T", bound="Node")
+
+
+class Chain(Collection, ABC, Generic[T]):
     _number_validator: NumberValidator
     _iterator: ChainIterator
     
-    _head: Node[T]
-    _tail: Node[T]
+    _head: T
+    _tail: T
     _size: int
     
     def __init__(
             self,
-            head: Optional[Node[T]] | None = None,
-            tail: Optional[Node[T]] | None = None,
+            head: Optional[T] | None = None,
+            tail: Optional[T] | None = None,
             number_validator: Optional[NumberValidator] | None = None
     ):
         self._number_validator = number_validator or NumberValidator()
-        self._head = head or Node[T]()
-        self._tail = tail or Node[T]()
+        self._head = head
+        self._tail = tail
         
         self._head.previous = None
         self._tail.next = None
@@ -48,11 +49,11 @@ class Chain(ABC, Generic[T]):
         self._iterator = ChainIterator(self)
         
     @property
-    def head(self) -> Node:
+    def head(self) -> T:
         return self._head
     
     @property
-    def tail(self) -> Node:
+    def tail(self) -> T:
         return self._tail
     
     @property
@@ -81,21 +82,21 @@ class Chain(ABC, Generic[T]):
     
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def add_node(self, node: Node[T]) -> InsertionResult:
+    def add_node(self, node: T) -> InsertionResult:
         pass
     
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def remove_node(self, node: Node[T]) -> DeletionResult[Node[T]]:
+    def remove_node(self, node: T) -> DeletionResult[T]:
         pass
     
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def find_node(self, node: Node[T]) -> InsertionResult:
+    def find_node(self, node: Node[T]) -> SearchResult[List[T]]:
         pass
         
     @LoggingLevelRouter.monitor
-    def get_at_offset(self, index: int) -> SearchResult[List[Node[T]]]:
+    def get_at_offset(self, index: int) -> SearchResult[List[T]]:
         method = f"{self.__class__.__name__}.get_by_index"
         
         counter: int = 0
@@ -118,7 +119,7 @@ class Chain(ABC, Generic[T]):
     
     
     @LoggingLevelRouter.monitor
-    def remove_at_offset(self, offset: int) -> DeletionResult[Node[T]]:
+    def remove_at_offset(self, offset: int) -> DeletionResult[T]:
         method = f"{self.__class__.__name__}.execute"
         
         # Hand off get the node to the finder

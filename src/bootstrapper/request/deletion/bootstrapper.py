@@ -13,7 +13,7 @@ from typing import Type
 
 from bootstrapper import RequestBootstrapper
 from err import DeletionRequestNullException, DeletionPermitterBootstrapperException
-from authorization.request import DeletionRequest
+from authorization.request import CollectionDeletionRequest
 from result import ValidationResult
 from util import LoggingLevelRouter
 
@@ -60,7 +60,7 @@ class DeletionRequestBootstrapper(RequestBootstrapper):
         # Handle the case that, the request is malformed
         validation_result = self.priming_validator.execute(
             candidate=request,
-            target_model=Type[DeletionRequest],
+            target_model=Type[CollectionDeletionRequest],
             null_exception=DeletionRequestNullException()
         )
         if validation_result.is_failure:

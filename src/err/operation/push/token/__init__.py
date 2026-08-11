@@ -14,4 +14,4 @@ from .quota import *
 
 
 # Modules
-from .exception import TokenPusherException
+from .exception import TokenStackPushException

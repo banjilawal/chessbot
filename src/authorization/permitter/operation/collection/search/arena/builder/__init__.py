@@ -1,0 +1,17 @@
+# src/logic/arena/build/__init__.py
+
+"""
+Module: logic.arena.build.__init__
+Author: Banji Lawal
+Created: 2025-10-01
+version: 1.0.0
+"""
+
+# =========== OPERATION.COLLECTION.SEARCH.ARENA.CONTEXT.BUILDER PACKAGE ===========#
+
+# Packages
+
+
+# Modules
+from .builder import ArenaContextBuilder
+from .exception import ArenaContextBuilderException

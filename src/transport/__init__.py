@@ -16,6 +16,6 @@ log = logging.getLogger("chessbot")
 # Packages
 from .message import *
 from .request import *
-from response import *
+from messaging import *
 
 # Modules

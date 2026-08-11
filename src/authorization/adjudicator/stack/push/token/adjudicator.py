@@ -14,7 +14,7 @@ from typing import Any, Type, cast
 
 from priming_validator import PrimingValidator, PushRequestPriming_Validator
 from err import TokenStackNullException, TokenPushRequestAdjudicatorException
-from authorization.request import PushRequest
+from authorization.request import TokenStackPushRequest
 from result import MethodResultType, ValidationResult
 from collection.stack import TokenStackService
 from authorization.adjudicator import PushRequestAdjudicator
@@ -101,7 +101,7 @@ class TokenPushRequestAdjudicator(PushRequestAdjudicator):
                     ex=bootstrap.exception
                 )
             )
-        request = cast(PushRequest, bootstrap.payload)
+        request = cast(TokenStackPushRequest, bootstrap.payload)
         # handle the case that, the item is not a safe token.
         token_test = self._item_validator.execute(request.item)
         if token_test.is_failure:

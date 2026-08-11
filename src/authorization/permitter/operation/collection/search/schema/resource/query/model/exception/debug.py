@@ -1,0 +1,72 @@
+# src/logic/schema/database/operation/collection/search/schema/model/exception/debug/__init__.py
+
+"""
+Module: logic.schema.database.searcher.schema.model.exception.debug.__init__
+Author: Banji Lawal
+Created: 2025-10-03
+version: 1.0.0
+"""
+
+from __future__ import annotations
+from typing import Any, Optional
+
+__all__ = [
+    # ======================# SCHEMA_QUERY_DEBUG_EXCEPTION #======================#
+    "SchemaQueryDebugException",
+]
+
+from system import DebugException
+
+# ======================# SCHEMA_QUERY_DEBUG_EXCEPTION #======================#
+class SchemaQueryDebugException(DebugException):
+    """
+    Role:
+        -   Exception Chain Layer 2
+        -   Error Variable Identifier
+        -   Debugging Metadata provider
+
+    Responsibilities:
+        1.  Record the condition that fired a SchemaQuery variable's error state.
+
+    Attributes:
+        var: Optional[str]
+        val: Optional[Any]
+        msg: Optional[str]
+        ex: Optional[Exception]
+        err_code: Optional[str]
+
+    Provides:
+
+    Super Class:
+        DebugException
+    """
+    ERR_CODE = "SCHEMA_QUERY_EXCEPTION"
+    MSG = "SchemaQuery had an error."
+    
+    def __init__(
+            self,
+            var: Optional[str] | None = None,
+            val: Optional[Any] | None = None,
+            msg: Optional[str] | None = None,
+            err_code: Optional[str] | None = None,
+            ex: Optional[Exception] | None = None,
+    ):
+        """
+        Args:
+            var: Optional[str]
+            val: Optional[Any]
+            msg: Optional[str]
+            ex: Optional[Exception]
+            err_code: Optional[str]
+        """
+        msg = msg or self.MSG
+        err_code = err_code or self.ERR_CODE
+        super().__init__(
+            ex=ex,
+            msg=msg,
+            var=var,
+            val=val,
+            err_code=err_code,
+        )
+
+

@@ -11,11 +11,11 @@ from abc import abstractmethod
 
 from authorization.permitter.stack import OperationPermitter
 from report import PushApprovalReport
-from authorization.request import PushRequest
+from authorization.request import TokenStackPushRequest
 from util import LoggingLevelRouter
 
 
-class PushPermitter(OperationPermitter):
+class StackPushPermitter(OperationPermitter):
     """
     Role:
         - Analysis Worker
@@ -36,5 +36,5 @@ class PushPermitter(OperationPermitter):
         super().__init__()
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def execute(self, request: PushRequest, ) -> PushApprovalReport:
+    def execute(self, request: TokenStackPushRequest, ) -> PushApprovalReport:
         pass

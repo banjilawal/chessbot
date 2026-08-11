@@ -13,7 +13,7 @@ from dataclasses import dataclass
 
 from sensor.analyzer import TokenReadinessAnalyzer
 from bootstrapper import DestinationCertifierBootstrapper
-from operation.collection.searcher import TokenOriginSearcher
+from operation.collection.search import TokenOriginSearcher
 from kit.toolkit import PermitterToolkit
 from assurance.validator import SquareValidator, TokenValidator
 

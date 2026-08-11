@@ -14,15 +14,15 @@ from typing import cast
 from sensor.detector import SquareCollider
 from err import SquarePushPermitterException
 from model import Square
-from authorization.permitter.stack import PushPermitter
+from authorization.permitter.stack import StackPushPermitter
 from report import PushApprovalReport
-from authorization.request import PushRequest
+from authorization.request import TokenStackPushRequest
 from collection.stack import SquareStackService
 from authorization.adjudicator import SquarePushRequestAdjudicator
 from util import LoggingLevelRouter
 
 
-class SquarePushPermitter(PushPermitter[Square]):
+class SquareStackPushPermitter(StackPushPermitter[Square]):
     """
     Role:
         - Transaction Worker
@@ -62,7 +62,7 @@ class SquarePushPermitter(PushPermitter[Square]):
         
         
     @LoggingLevelRouter.monitor
-    def execute(self, request: PushRequest, ) -> PushApprovalReport:
+    def execute(self, request: TokenStackPushRequest, ) -> PushApprovalReport:
         """
         Action:
             1.  Return a failure result containing an exception chain if either:

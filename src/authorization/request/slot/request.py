@@ -17,7 +17,7 @@ from collection.stack import TokenStackService
 class RankSlotRequest(Request):
     """
      Role:
-         -  Request
+         -  Messaging
          -  Data Transport
 
      Responsibilities:

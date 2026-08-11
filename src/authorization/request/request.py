@@ -15,10 +15,10 @@ from abc import ABC
 class Request(ABC):
     """
      Role:
-         -  Request
+         -  Messaging
 
      Responsibilities:
-         1. Provide information to get permission to run an operation.
+         1. Transport job information to a worker.
 
      Attributes:
          id: int

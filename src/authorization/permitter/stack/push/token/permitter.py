@@ -14,15 +14,15 @@ from typing import cast
 from sensor.detector.token import TokenCollisionDetector
 from err import TokenPushPermitterException
 from model import Token
-from authorization.permitter.stack import PushPermitter, RankSlotPermitter
-from report import PushApprovalReport
-from authorization.request import PushRequest, RankSlotRequest
+from authorization.permitter.stack import StackPushPermitter, RankSlotPermitter
+from report import PushApprovalReport, RequestDecision
+from authorization.request import TokenStackPushRequest, RankSlotRequest
 from collection.stack import TokenStackService
 from authorization.adjudicator import TokenPushRequestAdjudicator
 from util import IdFactory, LoggingLevelRouter
 
 
-class TokenPushPermitter(PushPermitter[Token]):
+class TokenStackPushPermitter(StackPushPermitter[Token]):
     """
     Role:
         - Transaction Worker
@@ -66,7 +66,7 @@ class TokenPushPermitter(PushPermitter[Token]):
         
         
     @LoggingLevelRouter.monitor
-    def execute(self, request: PushRequest, ) -> PushApprovalReport:
+    def execute(self, request: TokenStackPushRequest, ) -> RequestDecision:
         """
         Action:
             1.  Return a failure result containing an exception chain if either:

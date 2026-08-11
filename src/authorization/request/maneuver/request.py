@@ -17,7 +17,7 @@ from authorization.request import Request
 class ManeuverRequest(Request):
     """
      Role:
-         -  Request
+         -  Messaging
          -  Data Transport
 
      Responsibilities:

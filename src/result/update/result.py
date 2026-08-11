@@ -8,15 +8,12 @@ version: 1.0.1
 """
 
 from __future__ import annotations
-from typing import Generic, Optional, TypeVar
+from typing import Optional
 
-from err import MethodImplementationException
 from result import Result, UpdateState
 
-T = TypeVar("T")
 
-
-class UpdateResult(Result, Generic[T]):
+class UpdateResult(Result[Response]):
     """
     Role:
         -   Data Transport
@@ -44,39 +41,31 @@ class UpdateResult(Result, Generic[T]):
         Result
     """
     _state: UpdateState
-    _original: Optional[T]
-    _updated: Optional[T]
+    _response: Optional[Response]
     _exception: Optional[Exception]
 
     def __init__(
             self,
             state: UpdateState,
-            original: Optional[T],
-            updated: Optional[T] = None,
+            response: Optional[Response] = None,
             exception: Optional[Exception] = None,
     ):
         """INTERNAL: Use build methods instead of direct constructor."""
-        super().__init__(payload=original, exception=exception)
+        super().__init__(payload=response, exception=exception)
         self._state = state
-        self._updated = updated
         
     @property
     def state(self) -> UpdateState:
         return self._state
-        
-    @property
-    def original(self) -> T:
-        return self.payload
     
     @property
-    def updated(self) -> Optional[T]:
-        return self._updated
+    def response(self) -> Optional[Response]:
+        return cast(Response, super().payload)
     
     @property
     def is_success(self) -> bool:
         return (
-            self.original is not None and
-            self._updated is not None and
+            self.response is not None and
             self.exception is None and
             self._state == UpdateState.SUCCESS
         )
@@ -84,8 +73,7 @@ class UpdateResult(Result, Generic[T]):
     @property
     def is_failure(self) -> bool:
         return (
-                self._updated is None and
-                self.original is not None and
+                self._response is None and
                 self.exception is not None and
                 self.state == UpdateState.FAILURE or
                 self.state == UpdateState.TIMED_OUT
@@ -94,82 +82,50 @@ class UpdateResult(Result, Generic[T]):
     @property
     def is_nothing_to_update(self) -> bool:
         return (
-                self._updated is None and
-                self.original is not None and
+                self.response is None and
                 self.exception is None and
-                self.state == UpdateState.ORIGINAL_AND_UPDATE_ARE_SAME
+                self.state == UpdateState.NOTHING_TO_UPDATE
         )
     
     @property
     def is_timed_out(self) -> bool:
         return (
-                self._updated is None and
-                self.original is not None and
+                self._response is None and
                 self.exception is not None and
                 self.state == UpdateState.TIMED_OUT
         )
     
     @classmethod
-    def update_success(cls, original: T, updated: T) -> UpdateResult:
+    def success(cls, payload: Response) -> UpdateResult[Response]:
         return cls(
-            updated=updated,
-            original=original,
+            response=response,
             exception=None,
             state=UpdateState.SUCCESS,
         )
     
     @classmethod
-    def update_failure(cls, original: T, exception: Exception) -> UpdateResult:
+    def failure(cls, exception: Exception) -> UpdateResult[Response]:
         return cls(
-            updated=None,
-            original=original,
+            response=None,
             exception=exception,
             state=UpdateState.FAILURE,
         )
     
     @classmethod
-    def update_timed_out(cls, original: T, exception: Exception) -> UpdateResult:
+    def timed_out(cls, exception: Exception) -> UpdateResult[Response]:
         return cls(
-            updated=None,
-            original=original,
+            response=None,
             exception=exception,
             state=UpdateState.TIMED_OUT,
         )
     
     @classmethod
-    def nothing_to_update(cls, ) -> UpdateResult:
+    def nothing_to_update(cls, ) -> UpdateResult[Response]:
         method = f"{cls.__name__}.nothing_to_update"
         return cls(
-            original=None,
-            updated=None,
+            response=None,
             exception=None,
-            state=UpdateState.ORIGINAL_AND_UPDATE_ARE_SAME,
-        )
-    
-    @classmethod
-    def success(cls, payload: T) -> UpdateResult:
-        return cls(
-            updated=None,
-            original=None,
-            exception=MethodImplementationException(
-                msg=f"{cls.__name__} does not implement the f{super.__name__}.success()"
-                    f" method. Use the update_success() instead.",
-                err_code=MethodImplementationException.ERR_CODE,
-            ),
-            state=UpdateState.CALLED_UNIMPLEMENTED_METHOD,
-        )
-
-    @classmethod
-    def failure(cls, exception: Exception) -> UpdateResult:
-        return cls(
-            updated=None,
-            original=None,
-            exception=MethodImplementationException(
-                msg=f"{cls.__name__} does not implement the f{super.__name__}.failure()"
-                    f"method. Use the update_failure() instead.",
-                err_code=MethodImplementationException.ERR_CODE,
-            ),
-            state=UpdateState.CALLED_UNIMPLEMENTED_METHOD,
+            state=UpdateState.NOTHING_TO_UPDATE,
         )
 
     

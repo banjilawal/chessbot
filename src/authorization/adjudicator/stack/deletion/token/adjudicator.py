@@ -15,7 +15,7 @@ from typing import Any, Type, cast
 from priming_validator import DeletionRequestPriming_Validator, PrimingValidator
 from err import TokenStackNullException
 from microservice import IdentityService
-from authorization.request import DeletionRequest
+from authorization.request import CollectionDeletionRequest
 from result import MethodResultType, ValidationResult
 from collection.stack import TokenStackService
 from authorization.adjudicator import DeletionRequestAdjudicator
@@ -101,7 +101,7 @@ class TokenDeletionRequestAdjudicator(DeletionRequestAdjudicator):
                     ex=bootstrap.exception
                 )
             )
-        request = cast(DeletionRequest, bootstrap.payload)
+        request = cast(CollectionDeletionRequest, bootstrap.payload)
         # handle the case that, the item is not a safe token.
         id_test = self._identity_service.validate_id(request.item_id)
         if id_test.is_failure:

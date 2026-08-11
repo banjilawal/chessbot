@@ -18,7 +18,7 @@ from report import RequestDecision
 from util import LoggingLevelRouter
 
 
-T = TypeVar("T")
+T = TypeVar("T", bound="Result")
 
 
 class OperationPermitter(ABC, Generic[T]):

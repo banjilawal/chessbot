@@ -13,7 +13,7 @@ from abc import abstractmethod
 from typing import Generic, TypeVar
 
 from controller import Controller
-from authorization.request import DeletionRequest, PopRequest, PushRequest
+from authorization.request import CollectionDeletionRequest, PopRequest, TokenStackPushRequest
 from result import DeletionResult, InsertionResult, SearchResult
 from util import LoggingLevelRouter
 
@@ -26,7 +26,7 @@ class CrudController(Controller, Generic[T]):
 
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def delete(self, request: DeletionRequest) -> DeletionResult[T]:
+    def delete(self, request: CollectionDeletionRequest) -> DeletionResult[T]:
         pass
     
     @abstractmethod
@@ -36,7 +36,7 @@ class CrudController(Controller, Generic[T]):
     
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def push(self, request: PushRequest) -> InsertionResult:
+    def push(self, request: TokenStackPushRequest) -> InsertionResult:
         pass
     
     @abstractmethod

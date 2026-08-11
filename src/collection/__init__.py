@@ -12,6 +12,7 @@ version: 1.0.1
 # Packages
 from .chain import *
 from .sets import *
+from .stack import *
 from .tree import *
 
 # Modules

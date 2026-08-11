@@ -16,11 +16,11 @@ from result import MethodResultType
 
 __all__ = [
     # ======================# TOKEN_STACK_PUSH_FAILURE #======================#
-    "TokenPusherException",
+    "TokenStackPushException",
 ]
 
 # ======================# TOKEN_STACK_PUSH_FAILURE #======================#
-class TokenPusherException(PusherException):
+class TokenStackPushException(PusherException):
     """
     Role:
         -   Error Tracing
