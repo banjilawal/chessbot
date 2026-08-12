@@ -16,7 +16,7 @@ from fabrication.builder import AxisBuilder
 from err import WestAxisBuilderException
 from result import BuildResult, MethodResultType
 from space import WestAxis
-from kit.toolkit import WestAxisBuilderToolkit
+from toolkit import WestAxisBuilderToolkit
 from util import LoggingLevelRouter
 
 

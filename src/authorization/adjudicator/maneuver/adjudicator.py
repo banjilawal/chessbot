@@ -21,7 +21,7 @@ from register import SquareRegister
 from report import ManeuverRequestDecision
 from request import ManeuverRequest
 from result import MethodResultType
-from kit.toolkit import TokenManeuverToolkit
+from toolkit import TokenManeuverToolkit
 from util import IdFactory, LoggingLevelRouter
 
 
@@ -136,7 +136,7 @@ class ManeuverRequestAdjudicator(RequestAdjudicator[ManeuverRequest]):
             square_validator=self._toolkit.square_validator,
         )
         # Handle the case that, the destination is not valid.
-        if destination_certification.request_is_denied:
+        if destination_certification.is_denied:
             # Return the exception chain on failure
             return ManeuverRequestDecision.deny(
                 ManeuverRequestAdjudicatorException(
@@ -171,7 +171,7 @@ class ManeuverRequestAdjudicator(RequestAdjudicator[ManeuverRequest]):
             endpoints=SquareRegister(origin=origin, destination=request.destination,)
         )
         # --- Forward the work product to the caller. ---#
-        return ManeuverRequestDecision.approve(
+        return ManeuverRequestDecision.grant(
             Maneuver(
                 path=path,
                 token=request.token,

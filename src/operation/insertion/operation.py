@@ -31,7 +31,7 @@ class InsertionOperation(Operation, ABC, Generic[T]):
             or Search Result.
 
     Attributes:
-        permitter: CollectionOperationPermitter[T]
+        authorizer: CollectionOperationAuthorizer[T]
         
     Provides:
         -   def execute(request: CollectionRequest[T]) -> T
@@ -40,16 +40,16 @@ class InsertionOperation(Operation, ABC, Generic[T]):
         Operation
     """
     
-    def __init__(self, id: int, permitter: InsertionPermitter[T]):
+    def __init__(self, id: int, authorizer: InsertionAuthorizer[T]):
         """
         Args:
-            permitter: InsertionPermitter[T]
+            authorizer: InsertionAuthorizer[T]
         """
-        super().__init__(id=id, permitter=permitter)
+        super().__init__(id=id, authorizer=authorizer)
         
     @property
-    def permitter(self) -> OperationPermitter[T]:
-        return cast(InsertionPermitter[T], super().permitter)
+    def authorizer(self) -> InsertionAuthorizer[T]:
+        return cast(InsertionAuthorizer[T], super().authorizer)
     
     @abstractmethod
     @LoggingLevelRouter.monitor

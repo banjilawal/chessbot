@@ -16,7 +16,7 @@ from fabrication.builder import ModelBuilder
 from err import TeamBuilderException
 from model import Team
 from result import BuildResult, MethodResultType
-from kit.toolkit import TeamBuilderToolkit
+from toolkit import TeamBuilderToolkit
 from util import LoggingLevelRouter
 
 

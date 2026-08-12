@@ -79,7 +79,7 @@ class PromotionPermitter(OperationPermitter):
                 )
             )
         # --- Send the work product. ---#
-        return PromotionRequestDecision.approve(
+        return PromotionRequestDecision.grant(
             pawn=request.candidate,
             rank_level=request.rank_level,
         )

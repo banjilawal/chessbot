@@ -14,7 +14,7 @@ from typing import Generic, Optional, TypeVar, cast
 
 from assurance import PrimingValidator
 from authorization import ComputationRequest, OperationPermitter
-from report import RequestDecision
+from report import AuthorizationDecision
 from util import LoggingLevelRouter
 
 
@@ -65,5 +65,5 @@ class EuclideanDistancePermitter(ComputationPermitter[VectorToggle]):
     
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def execute(self, request: EuclideanDistanceRequest) -> RequestDecision:
+    def execute(self, request: EuclideanDistanceRequest) -> AuthorizationDecision:
         pass

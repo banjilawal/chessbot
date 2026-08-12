@@ -15,7 +15,7 @@ from err import ManeuverValidatorException
 from model import Maneuver
 from assurance.certifier import ManeuverRootCertifier
 from result import ValidationResult
-from kit.toolkit import ManeuverToolkit
+from toolkit import ManeuverToolkit
 from util import LoggingLevelRouter
 
 

@@ -14,7 +14,7 @@ from typing import Any, cast
 from model import Persona, TokenContext
 from result import ValidationResult
 from setting import GameColor
-from kit.toolkit import TokenToolkit
+from toolkit import TokenToolkit
 from util import LoggingLevelRouter
 from assurance.validator import ContextValidator
 from err import (

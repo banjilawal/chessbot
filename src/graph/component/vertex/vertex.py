@@ -11,13 +11,13 @@ from __future__ import annotations
 
 from typing import Optional
 
-from model import SquareDossier
+from model import Dossier
 from node import DiscoveryStatus
 from collection.stack import EdgeStackService
 
 
 class Vertex:
-    _square_dossier: SquareDossier
+    _square_dossier: Dossier
     _priority: Optional[int]
     _predecessor:Optional[Vertex]
     _incoming_edges: EdgeStackService
@@ -40,7 +40,7 @@ class Vertex:
         self._discovery_status = DiscoveryStatus.UNKNOWN
     
     @property
-    def square_dossier(self) -> SquareDossier:
+    def square_dossier(self) -> Dossier:
         return self._square_dossier
     
     @property

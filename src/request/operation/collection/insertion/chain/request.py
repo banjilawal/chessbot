@@ -12,13 +12,14 @@ from __future__ import annotations
 from abc import ABC
 from typing import Generic, TypeVar, cast
 
-from authorization import CollectionInsertionRequest
+
 from collection import Chain
+from request import InsertionRequest
 
 T = TypeVar("T", bound="Node")
 
 
-class AddNodeRequest(CollectionInsertionRequest[Chain], ABC, Generic[T]):
+class AddNodeRequest(InsertionRequest[Chain], ABC, Generic[T]):
     """
      Role:
          -  Messaging

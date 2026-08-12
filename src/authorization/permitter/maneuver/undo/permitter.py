@@ -138,6 +138,6 @@ class TokenUndoMovePermitter(TokenManeuverPermitter):
                 )
             )
         # --- Forward the work product to the caller. ---#
-        return AnalysisResult.completed(PopApprovalReport.approve(requestor.positions))
+        return AnalysisResult.completed(PopApprovalReport.grant(requestor.positions))
         
 

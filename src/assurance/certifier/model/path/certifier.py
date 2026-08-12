@@ -14,7 +14,7 @@ from err import CircularPathException, PathValidatorException
 from model import Path
 from assurance.certifier import ModelCertifier
 from result import ValidationResult
-from kit.toolkit import PathToolkit
+from toolkit import PathToolkit
 from util import LoggingLevelRouter
 
 

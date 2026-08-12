@@ -11,7 +11,7 @@ from __future__ import annotations
 from typing import Any, Generic, TypeVar
 
 from result import ValidationResult
-from kit.toolkit import ContextToolkit
+from toolkit import ContextToolkit
 from util import LoggingLevelRouter
 from assurance.validator import Validator
 

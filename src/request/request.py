@@ -12,7 +12,9 @@ from __future__ import annotations
 from abc import ABC
 from typing import Generic, TypeVar
 
-T = TypeVar("T", bound="Operation")
+from result import Result
+
+T = TypeVar("T", bound="Result")
 
 
 class Request(ABC, Generic[T]):

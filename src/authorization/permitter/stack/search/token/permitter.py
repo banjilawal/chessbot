@@ -96,4 +96,4 @@ class TokenSearchPermitter(SearchPermitter[Token]):
         stack = cast(TokenStackService, request.stack)
 
         # Forward the permission approval.
-        return SearchApprovalReport.approve(context=context, stack=stack)
+        return SearchApprovalReport.grant(context=context, stack=stack)

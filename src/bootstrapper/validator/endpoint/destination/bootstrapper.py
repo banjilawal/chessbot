@@ -147,4 +147,4 @@ class DestinationCertifierBootstrapper:
                 )
             )
         # --- Forward the work product to the caller. ---#
-        return DestinationApprovalReport.approve(visitor=token, destination=destination)
+        return DestinationApprovalReport.grant(visitor=token, destination=destination)

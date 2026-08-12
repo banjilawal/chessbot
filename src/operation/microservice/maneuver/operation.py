@@ -88,7 +88,7 @@ class ManeuverLauncher:
             )
         report = cast(ManeuverRequestDecision, priming.payload)
         # Handle the case that, the destination is not empty.
-        if report.request_is_denied:
+        if report.is_denied:
             # Send the exception chain on failure.
             return TurnResult.failure(
                 ManeuverException(

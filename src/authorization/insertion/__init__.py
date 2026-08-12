@@ -10,10 +10,7 @@ version: 1.0.1
 # =========== AUTHORIZATION.INSERTION PACKAGE ===========#
 
 # Packages
-from .adjudicator import *
-from .inserion import *
-from .permitter import *
-from .request import *
+from .chain import *
 
 # Modules
-from .authorization import .permitter
+from .authorizer import InsertionRequestAuthorizer

@@ -10,11 +10,12 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Optional
 
-from authorization import Request
+
 from report import Permission, Report
+from request import Request
 
 
-class RequestDecision(Report):
+class AuthorizationDecision(Report):
     """
     Role:
         -   Test results
@@ -68,7 +69,7 @@ class RequestDecision(Report):
         return self._permission
     
     @property
-    def request_is_denied(self) -> bool:
+    def is_denied(self) -> bool:
         return (
                 self._request is None and
                 self._exception is not None and
@@ -76,7 +77,7 @@ class RequestDecision(Report):
         )
     
     @property
-    def request_is_granted(self) -> bool:
+    def is_granted(self) -> bool:
         return (
             self._request is not None and
             self._exception is None and
@@ -84,11 +85,11 @@ class RequestDecision(Report):
         )
     
     @classmethod
-    def approve(cls, request: Request) -> RequestDecision:
+    def grant(cls, request: Request) -> AuthorizationDecision:
         return cls(request=request, permission =Permission.GRANTED)
     
     @classmethod
-    def deny(cls, exception: Exception) -> RequestDecision:
+    def deny(cls, exception: Exception) -> AuthorizationDecision:
         return cls(
             exception=exception,
             permission=Permission.DENIED

@@ -12,7 +12,9 @@ from __future__ import annotations
 from abc import ABC
 from typing import Generic, Optional, TypeVar
 
-T = TypeVar("T")
+from model import Model
+
+T = TypeVar("T", bound="Model")
 
 
 class Node(ABC, Generic[T]):

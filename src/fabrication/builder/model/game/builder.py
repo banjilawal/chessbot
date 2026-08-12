@@ -16,7 +16,7 @@ from fabrication.builder import ModelBuilder
 from err import GameBuilderException
 from model import Game
 from result import BuildResult, MethodResultType
-from kit.toolkit import GameBuilderToolkit
+from toolkit import GameBuilderToolkit
 from util import LoggingLevelRouter
 
 

@@ -17,7 +17,7 @@ from model import Board, Coord, HomeSquare, Square
 from carrier import SquareCarrier
 from result import ValidationResult
 from schema import Formation
-from kit.toolkit import SquareToolkit
+from toolkit import SquareToolkit
 from util import LoggingLevelRouter
 
 

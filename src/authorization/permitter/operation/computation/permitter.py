@@ -14,7 +14,7 @@ from typing import Generic, Optional, TypeVar
 
 from assurance import PrimingValidator
 from authorization import ComputationRequest, OperationPermitter
-from report import RequestDecision
+from report import AuthorizationDecision
 from util import LoggingLevelRouter
 
 
@@ -64,5 +64,5 @@ class ComputationPermitter(OperationPermitter, ABC, Generic[T]):
     
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def execute(self, request: ComputationRequest[T]) -> RequestDecision:
+    def execute(self, request: ComputationRequest[T]) -> AuthorizationDecision:
         pass

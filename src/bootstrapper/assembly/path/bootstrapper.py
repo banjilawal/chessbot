@@ -14,7 +14,7 @@ from typing import List
 from fabrication.blueprint import PathBlueprint
 from controller import WorkerRegistryController
 from report import CollisionReport
-from kit.toolkit import PathToolkit
+from toolkit import PathToolkit
 from operation.collection.search import SquareNotFoundException
 from operation import AssemblyPrimer
 from err import PathAssemblyPrimerException

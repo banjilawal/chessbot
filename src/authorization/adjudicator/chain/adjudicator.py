@@ -14,7 +14,7 @@ from typing import Any, Generic, Optional, TypeVar
 
 from assurance import NodeValidator, PrimingValidator
 from authorization import ChainAdjudicationBootstrapper, RequestAdjudicator
-from report import RequestDecision
+from report import AuthorizationDecision
 from util import LoggingLevelRouter
 
 N = TypeVar("N", bound="Node")
@@ -69,5 +69,5 @@ class ChainRequestAdjudicator(RequestAdjudicator, ABC, Generic[N, R]):
     
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def execute(self, candidate: Any) -> RequestDecision:
+    def execute(self, candidate: Any) -> AuthorizationDecision:
         pass

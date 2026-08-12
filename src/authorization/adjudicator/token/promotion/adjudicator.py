@@ -151,4 +151,4 @@ class PromotionRequestAdjudicator(RequestAdjudicator[PromotionRequest]):
             )
         rank = cast(Type[request.rank_level], rank_test.payload)
         # --- Send the work product. ---#
-        return PromotionRequestDecision.approve(pawn=pawn, rank_level=rank)
+        return PromotionRequestDecision.grant(pawn=pawn, rank_level=rank)

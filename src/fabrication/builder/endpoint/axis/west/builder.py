@@ -17,7 +17,7 @@ from register import VectorRegister
 from result import BuildResult, ComputationResult
 from schema import AxisTerminus
 from space import WestTraversalPattern
-from kit.toolkit import MathToolkit
+from toolkit import MathToolkit
 from util import LoggingLevelRouter
 from assurance.validator import VectorValidator
 

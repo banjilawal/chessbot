@@ -17,7 +17,7 @@ from authorization import Request
 T = TypeVar("T", bound="Operation")
 
 
-class OperationRequest(Request, ABC, Generic[T]):
+class OldRequest(Request, ABC, Generic[T]):
     """
      Role:
          -  Messaging

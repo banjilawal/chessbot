@@ -13,7 +13,7 @@ from bootstrapper import OriginCertifierBootstrapper
 from err import TokenOriginCertifierException
 from model import Square, Token
 from result import ValidationResult
-from kit.toolkit import TokenEndpointRelationToolkit
+from toolkit import TokenEndpointRelationToolkit
 from util import LoggingLevelRouter
 
 

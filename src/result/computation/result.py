@@ -8,7 +8,7 @@ version: 1.0.1
 """
 
 from __future__ import annotations
-from typing import Generic, Optional, TypeVar
+from typing import Generic, Optional, TypeVar, cast
 
 from result import ComputationState, Result
 
@@ -59,6 +59,10 @@ class ComputationResult(Result[T], Generic[T]):
         )
         """INTERNAL: Use build methods instead of direct constructor."""
         self._state = state
+    
+    @property
+    def payload(self) -> Optional[T]:
+        return cast(T, super().payload)
         
     @property
     def state(self) -> ComputationState:
@@ -73,8 +77,8 @@ class ComputationResult(Result[T], Generic[T]):
         return (
                 self.payload is None and
                 self.exception is not None and
-                self._state == ComputationState.FAILURE or
-                self._state == ComputationState.TIMED_OUT
+                self._state ==  ComputationState.FAILURE or
+                self._state ==  ComputationState.TIMED_OUT
         )
     
     @property
@@ -82,7 +86,7 @@ class ComputationResult(Result[T], Generic[T]):
         return (
                 self.payload is None and
                 self.exception is not None and
-                self._state == ComputationState.TIMED_OUT
+                self._state ==  ComputationState.TIMED_OUT
         )
     
     @classmethod

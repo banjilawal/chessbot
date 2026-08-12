@@ -12,7 +12,7 @@ from typing import List
 
 from controller import Controller
 from model import ServiceRegistry
-from kit.toolkit import ServiceRegistryToolkit
+from toolkit import ServiceRegistryToolkit
 from util import LoggingLevelRouter, singleton
 from result import InsertionResult, SearchResult
 from microservice import Microservice

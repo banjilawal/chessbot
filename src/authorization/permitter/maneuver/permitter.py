@@ -68,7 +68,7 @@ class TokenManeuverPermitter:
         approval = self._adjudicator.execute(cadidate=request)
         
         # Handle the case that the request is denied.
-        if approval.request_is_denied:
+        if approval.is_denied:
             # Return the exception chain on failure
             return ManeuverRequestDecision.deny(
                 ManeuverPermitterException(

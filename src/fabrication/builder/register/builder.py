@@ -15,7 +15,7 @@ from typing import Generic, TypeVar, cast
 from fabrication.blueprint import RegisterBlueprint
 from fabrication.builder import Builder
 from result import BuildResult
-from kit.toolkit import RegisterBuilderToolkit
+from toolkit import RegisterBuilderToolkit
 from util import LoggingLevelRouter
 
 T = TypeVar("T", bound="Register")

@@ -14,7 +14,7 @@ from typing import Generic, Optional, TypeVar, cast
 
 from assurance import PrimingValidator
 from authorization import OperationPermitter, ChainRequestAdjudicator
-from report import RequestDecision
+from report import AuthorizationDecision
 from util import LoggingLevelRouter
 
 
@@ -65,5 +65,5 @@ class ChainOperationPermitter(OperationPermitter, ABC, Generic[T]):
     
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def execute(self, request: T) -> RequestDecision:
+    def execute(self, request: T) -> AuthorizationDecision:
         pass

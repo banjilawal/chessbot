@@ -14,7 +14,7 @@ from typing import Any, cast
 from err import ManeuverValidatorException
 from model import Maneuver
 from result import ValidationResult
-from kit.toolkit import ManeuverToolkit
+from toolkit import ManeuverToolkit
 from util import LoggingLevelRouter
 
 

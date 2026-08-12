@@ -13,13 +13,13 @@ from abc import ABC
 from typing import Generic, TypeVar, cast
 
 from collection import Collection
-from operation import InsertionOperation
 from request import Request
+from result import InsertionResult
 
 T = TypeVar("T", bound="Collection")
 
 
-class InsertionRequest(Request[InsertionOperation], ABC, Generic[T]):
+class InsertionRequest(Request[InsertionResult], ABC, Generic[T]):
     """
      Role:
          -  Messaging

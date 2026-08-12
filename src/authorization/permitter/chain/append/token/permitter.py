@@ -113,7 +113,7 @@ class TokenAppendPermitter(AppendPermitter[Token]):
                 rank=token.rank,
             )
         )
-        if rank_opening.request_is_denied:
+        if rank_opening.is_denied:
             # Send an exception chain in the permission denial.
             return AppendApprovalReport.deny(
                 TokenAppendPermitterException(
@@ -137,4 +137,4 @@ class TokenAppendPermitter(AppendPermitter[Token]):
                 )
             )
         # Forward the permission approval.
-        return AppendApprovalReport.approve(item=token, chain=chain)
+        return AppendApprovalReport.grant(item=token, chain=chain)

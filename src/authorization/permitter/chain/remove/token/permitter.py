@@ -109,6 +109,6 @@ class TokenRemovePermitter(RemovePermitter[Token]):
                 )
             )
         # --- Forward the request approval to the caller. ---#
-        return RemoveApprovalReport.approve(chain=request.chain)
+        return RemoveApprovalReport.grant(chain=request.chain)
 
     

@@ -75,5 +75,5 @@ class BootstrapTokenAssemblyException(AssemblyBootstrapperException):
             err_code=err_code,
             cls_name=cls_name,
             cls_mthd=cls_mthd,
-            mthd_rslt_type=mthd_rslt_type,
+           mthd_rslt_type=mthd_rslt_type,
         )

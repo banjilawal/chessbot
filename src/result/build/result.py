@@ -8,7 +8,7 @@ version: 1.0.1
 """
 
 from __future__ import annotations
-from typing import Generic, Optional, TypeVar
+from typing import Generic, Optional, TypeVar, cast
 
 from result import BuildState, Result
 
@@ -63,6 +63,10 @@ class BuildResult(Result[T], Generic[T]):
         self._state = state
     
     @property
+    def payload(self) -> Optional[T]:
+        return cast(T, super().payload)
+    
+    @property
     def state(self) -> BuildState:
         return self._state
         
@@ -75,8 +79,8 @@ class BuildResult(Result[T], Generic[T]):
         return (
                 self.payload is None and
                 self.exception is not None and
-                self._state == BuildState.FAILURE or
-                self._state == BuildState.TIMED_OUT
+                self._state ==  BuildState.FAILURE or
+                self._state ==  BuildState.TIMED_OUT
         )
     
     @property
@@ -84,7 +88,7 @@ class BuildResult(Result[T], Generic[T]):
         return (
                 self.payload is None and
                 self.exception is not None and
-                self._state == BuildState.TIMED_OUT
+                self._state ==  BuildState.TIMED_OUT
         )
     
     @classmethod

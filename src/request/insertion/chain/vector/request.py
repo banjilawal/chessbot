@@ -24,7 +24,7 @@ class AddVectorNodeRequest(AddNodeRequest[VectorNode]):
          -  Transport
 
      Responsibilities:
-         1. Transport information during the AddNode lifecycle.
+         1. Transport information during the AddVectorNode lifecycle.
 
      Attributes:
          id: int

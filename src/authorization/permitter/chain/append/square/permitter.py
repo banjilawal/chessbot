@@ -114,4 +114,4 @@ class SquareAppendPermitter(AppendPermitter[Square]):
                 )
             )
         # Forward the permission approval.
-        return AppendApprovalReport.approve(item=square, chain=chain)
+        return AppendApprovalReport.grant(item=square, chain=chain)

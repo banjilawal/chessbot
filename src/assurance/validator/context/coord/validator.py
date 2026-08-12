@@ -14,7 +14,7 @@ from err import CoordContextValidatorException
 from model import CoordContext
 from result import ValidationResult
 from setting import BoardProperty
-from kit.toolkit import CoordContextToolkit
+from toolkit import CoordContextToolkit
 from util import LoggingLevelRouter
 
 

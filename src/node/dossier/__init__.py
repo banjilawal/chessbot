@@ -13,4 +13,4 @@ version: 1.0.1
 
 
 # Modules
-from .node import SquareDossierNode
+from .node import DossierNode

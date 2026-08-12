@@ -15,7 +15,7 @@ from model import Square, SquareBlueprint
 from operation import AssemblyPrimer
 from report import CollisionReport
 from result import AnalysisResult, ValidationResult
-from kit.toolkit import SquareToolkit
+from toolkit import SquareToolkit
 from util import LoggingLevelRouter
 
 

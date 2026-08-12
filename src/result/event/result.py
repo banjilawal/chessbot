@@ -68,8 +68,8 @@ class EventResult(Result[Event]):
         return (
                 self.payload is None and
                 self.exception is not None and
-                self._state == EventState.FAILURE or
-                self._state == EventState.TIMED_OUT
+                self._state ==  EventState.FAILURE or
+                self._state ==  EventState.TIMED_OUT
         )
     
     @property
@@ -77,7 +77,7 @@ class EventResult(Result[Event]):
         return (
                 self.payload is None and
                 self.exception is not None and
-                self._state == EventState.TIMED_OUT
+                self._state ==  EventState.TIMED_OUT
         )
     
     @classmethod

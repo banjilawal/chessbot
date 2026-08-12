@@ -76,7 +76,7 @@ class OrientationSelectorValidator(ModelValidator[OrientationToggle]):
         validator_priming_result = self.root_certifier.toolkit.priming_validator.execute(
             candidate=candidate,
             target_model=self.root_certifier.toolkit.model,
-            context_null_exception=self.root_certifier.toolkit.null_exception,
+            context_null_exception=self.root_certifier.toolkit.request_null_exception,
         )
         if validator_priming_result.is_failure:
             # Send the exception chain on failure.

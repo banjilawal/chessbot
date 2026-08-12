@@ -15,7 +15,7 @@ from fabrication.blueprint import TokenBlueprint
 from err import BlueprintHomeSquareExtractorException
 from model import Board, HomeSquare, Square
 from result import ValidationResult
-from kit.toolkit import TokenToolkit
+from toolkit import TokenToolkit
 from util import LoggingLevelRouter
 
 

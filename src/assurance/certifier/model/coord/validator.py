@@ -14,7 +14,7 @@ from err import CoordCertifierException
 from model import CoordBlueprint
 from result import ValidationResult
 from setting import BoardProperty
-from kit.toolkit import CoordBlueprintToolkit
+from toolkit import CoordBlueprintToolkit
 from util import LoggingLevelRouter
 
 

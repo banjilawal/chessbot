@@ -16,7 +16,7 @@ from err import ReadinessAnalyzerBootstrapperException
 from model import CombatantToken, KingToken, Token
 from report import TokenReadinessReport
 from result import AnalysisResult
-from kit.toolkit import ReadinessAnalyzerBootstrapperToolkit
+from toolkit import ReadinessAnalyzerBootstrapperToolkit
 from util import LoggingLevelRouter
 
 

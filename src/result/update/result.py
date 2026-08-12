@@ -8,8 +8,10 @@ version: 1.0.1
 """
 
 from __future__ import annotations
-from typing import Optional
 
+from typing import Optional, cast
+
+from response import Response
 from result import Result, UpdateState
 
 
@@ -67,7 +69,7 @@ class UpdateResult(Result[Response]):
         return (
             self.response is not None and
             self.exception is None and
-            self._state == UpdateState.SUCCESS
+            self._state ==  UpdateState.SUCCESS
         )
     
     @property
@@ -75,8 +77,8 @@ class UpdateResult(Result[Response]):
         return (
                 self._response is None and
                 self.exception is not None and
-                self.state == UpdateState.FAILURE or
-                self.state == UpdateState.TIMED_OUT
+                self.state ==  UpdateState.FAILURE or
+                self.state ==  UpdateState.TIMED_OUT
         )
     
     @property
@@ -84,7 +86,7 @@ class UpdateResult(Result[Response]):
         return (
                 self.response is None and
                 self.exception is None and
-                self.state == UpdateState.NOTHING_TO_UPDATE
+                self.state ==  UpdateState.NOTHING_TO_UPDATE
         )
     
     @property
@@ -92,19 +94,19 @@ class UpdateResult(Result[Response]):
         return (
                 self._response is None and
                 self.exception is not None and
-                self.state == UpdateState.TIMED_OUT
+                self.state ==  UpdateState.TIMED_OUT
         )
     
     @classmethod
-    def success(cls, payload: Response) -> UpdateResult[Response]:
+    def success(cls, payload: Response) -> UpdateResult:
         return cls(
-            response=response,
+            response=payload,
             exception=None,
             state=UpdateState.SUCCESS,
         )
     
     @classmethod
-    def failure(cls, exception: Exception) -> UpdateResult[Response]:
+    def failure(cls, exception: Exception) -> UpdateResult:
         return cls(
             response=None,
             exception=exception,
@@ -112,7 +114,7 @@ class UpdateResult(Result[Response]):
         )
     
     @classmethod
-    def timed_out(cls, exception: Exception) -> UpdateResult[Response]:
+    def timed_out(cls, exception: Exception) -> UpdateResult:
         return cls(
             response=None,
             exception=exception,
@@ -120,7 +122,7 @@ class UpdateResult(Result[Response]):
         )
     
     @classmethod
-    def nothing_to_update(cls, ) -> UpdateResult[Response]:
+    def nothing_to_update(cls, ) -> UpdateResult:
         method = f"{cls.__name__}.nothing_to_update"
         return cls(
             response=None,

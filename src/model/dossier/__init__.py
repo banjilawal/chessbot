@@ -12,4 +12,4 @@ version: 1.0.1
 # Packages
 
 # Modules
-from .model import SquareDossier
+from .model import Dossier

@@ -7,7 +7,7 @@ version: 1.0.1
 """
 
 from __future__ import annotations
-from typing import Generic, List, Optional, TypeVar
+from typing import Generic, List, Optional, TypeVar, cast
 
 from result import Result, SearchState
 
@@ -62,6 +62,10 @@ class SearchResult(Result[T], Generic[T]):
         self._state = state
         
     @property
+    def payload(self) -> Optional[List[T]]:
+        return cast(List[T], super().payload)
+        
+    @property
     def state(self) -> SearchState:
         return self._state
     
@@ -70,7 +74,7 @@ class SearchResult(Result[T], Generic[T]):
         return (
                 self.payload is not None and
                 self.exception is None and
-                self._state == SearchState.SUCCESS
+                self._state ==  SearchState.SUCCESS
         )
     
     @property
@@ -78,7 +82,7 @@ class SearchResult(Result[T], Generic[T]):
         return (
                 self.payload is None and
                 self.exception is not None and
-                self._state == SearchState.FAILURE
+                self._state ==  SearchState.FAILURE
         )
     
     @property
@@ -86,7 +90,7 @@ class SearchResult(Result[T], Generic[T]):
         return (
                 self.payload is None and
                 self.exception is None and
-                self._state == SearchState.NOTHING_FOUND
+                self._state ==  SearchState.NOTHING_FOUND
         )
     
     @property
@@ -94,7 +98,7 @@ class SearchResult(Result[T], Generic[T]):
         return (
                 self.payload is not None and
                 self.exception is None and
-                self._state == SearchState.SOMETHING_FOUND
+                self._state ==  SearchState.SOMETHING_FOUND
         )
     
     @property
@@ -102,7 +106,7 @@ class SearchResult(Result[T], Generic[T]):
         return (
                 self.payload is None and
                 self.exception is not None and
-                self._state == SearchState.TIMED_OUT
+                self._state ==  SearchState.TIMED_OUT
         )
     
     @classmethod

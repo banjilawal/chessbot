@@ -18,7 +18,7 @@ from model import Vector
 from result import ValidationResult
 from assurance.certifier import QuadrantRootCertifier
 from space import NortheastQuadrant
-from kit.toolkit.geometry.space.quadrant.northeast import NortheastQuadrantToolkit
+from toolkit.geometry.space.quadrant.northeast import NortheastQuadrantToolkit
 from util import LoggingLevelRouter
 
 

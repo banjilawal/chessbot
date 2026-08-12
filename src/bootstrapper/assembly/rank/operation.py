@@ -15,7 +15,7 @@ from model import Rank, RankBlueprint
 
 from operation import AssemblyPrimer
 from result import ValidationResult
-from kit.toolkit import RankToolkit
+from toolkit import RankToolkit
 from util import LoggingLevelRouter
 
 

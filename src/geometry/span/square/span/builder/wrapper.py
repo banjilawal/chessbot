@@ -81,5 +81,5 @@ class SquareSpanBuilderException(BuilderException):
             msg=msg,
             mthd=mthd,
             err_code=err_code,
-            mthd_rslt_type=mthd_rslt_type,
+           mthd_rslt_type=mthd_rslt_type,
         )

@@ -16,7 +16,7 @@ from model import Vector
 from topology.recurrence import Recurrence
 from result import ComputationResult
 
-from kit.toolkit import MathToolkit
+from toolkit import MathToolkit
 from util import LoggingLevelRouter
 
 

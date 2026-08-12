@@ -15,6 +15,8 @@ class MethodResultType(Enum):
     COMPUTATION_RESULT = auto(),
     DELETION_RESULT = auto(),
     INSERTION_RESULT = auto(),
+    INTERPRETATION_RESULT = auto(),
+    PARSE_RESULT = auto(),
     SEARCH_RESULT = auto(),
     UPDATE_RESULT = auto(),
     VALIDATION_RESULT = auto(),

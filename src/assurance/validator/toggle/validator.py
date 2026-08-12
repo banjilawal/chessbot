@@ -15,7 +15,7 @@ from typing import Any, Generic, TypeVar, cast
 
 from assurance.certifier import ToggleCertifier
 from result import ValidationResult
-from kit.toolkit import ToggleToolkit
+from toolkit import ToggleToolkit
 
 from assurance.validator import Validator
 

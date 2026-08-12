@@ -98,21 +98,21 @@ class AnalysisResult(Result[Report]):
     def is_completed(self) -> bool:
         return (
             super().is_success and
-            self._state == AnalysisState.COMPLETED
+            self._state ==  AnalysisState.COMPLETED
         )
     
     @property
     def is_aborted(self) -> bool:
         return (
             super().is_failure and
-            self.state == AnalysisState.ABORTED
+            self.state ==  AnalysisState.ABORTED
         )
     
     @property
     def is_timed_out(self) -> bool:
         return (
                 super().is_failure and
-                self.state == AnalysisState.TIMED_OUT
+                self.state ==  AnalysisState.TIMED_OUT
         )
     
     @property

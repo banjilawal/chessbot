@@ -10,6 +10,7 @@ version: 1.0.1
 # =========== AUTHORIZATION.PERMITTER PACKAGE ===========#
 
 # Packages
+from .insertion import *
 from .maneuver import *
 from .slot import *
 from .stack import *

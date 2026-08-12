@@ -10,7 +10,7 @@ version: 1.0.1
 from __future__ import annotations
 
 from controller import WorkerRegistryController
-from kit.toolkit import BoardToolkit
+from toolkit import BoardToolkit
 from result import ValidationResult
 from model import Board, BoardBlueprint
 from operation import AssemblyPrimer

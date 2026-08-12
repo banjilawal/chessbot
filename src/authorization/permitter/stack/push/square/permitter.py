@@ -114,4 +114,4 @@ class SquareStackPushPermitter(StackPushPermitter[Square]):
                 )
             )
         # Forward the permission approval.
-        return PushApprovalReport.approve(item=square, stack=stack)
+        return PushApprovalReport.grant(item=square, stack=stack)

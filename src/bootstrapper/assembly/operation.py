@@ -13,7 +13,7 @@ from abc import abstractmethod
 from typing import TypeVar
 
 from fabrication.blueprint import Blueprint
-from kit.toolkit import Toolkit
+from toolkit import Toolkit
 from operation import Operation
 from result import ValidationResult
 from util import LoggingLevelRouter

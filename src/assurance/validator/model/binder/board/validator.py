@@ -14,7 +14,7 @@ from err import BoardTeamBinderNullException, BoardTeamBinderValidatorException
 from model import BoardBinder
 from result import ValidationResult
 from util import LoggingLevelRouter
-from kit.toolkit import BoardTeamBinderToolkit
+from toolkit import BoardTeamBinderToolkit
 
 
 class BoardBinderValidator(ModelValidator[BoardBinder]):

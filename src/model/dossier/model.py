@@ -17,7 +17,7 @@ from model import Square
 from report import ManeuverRequestDecision, Report
 
 
-class SquareDossier:
+class Dossier:
     """]
     Role:
         -   Data Holder
@@ -77,10 +77,10 @@ class SquareDossier:
     def report(self, other: ManeuverRequestDecision):
         self._report = other
         
-    def is_fresher_than_other(self, other: SquareDossier) -> bool:
+    def is_fresher_than_other(self, other: Dossier) -> bool:
         return self.timestamp > other.timestamp
     
-    def is_not_fresher_than_other(self, other: SquareDossier) -> bool:
+    def is_not_fresher_than_other(self, other: Dossier) -> bool:
         return self.timestamp <= other.timestamp
         
     def __eq__(self, other):
@@ -88,8 +88,8 @@ class SquareDossier:
             return True
         if other is None:
             return False
-        if isinstance(other, SquareDossier):
-            dossier = cast(SquareDossier, other)
+        if isinstance(other, Dossier):
+            dossier = cast(Dossier, other)
             return  (
                     self.square == dossier.square and
                     self._timestamp == dossier.timestamp

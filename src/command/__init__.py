@@ -7,16 +7,13 @@ Created: 2026-03-01
 version: 1.0.0
 """
 
-import logging
-
-log = logging.getLogger("chessbot")
-
-
-
-# =========== PACKAGE ===========#
+# =========== COMMAND PACKAGE ===========#
 
 # Packages
-from .token import *
-from .system import *
+from .command import *
+from .interpreter import *
+from .menu import *
+from .parser import *
+
 
 # Modules

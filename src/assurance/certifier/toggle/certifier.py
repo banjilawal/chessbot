@@ -14,7 +14,7 @@ from typing import Any, Generic, TypeVar, cast
 
 from assurance.certifier import Certifier
 from result import ValidationResult
-from kit.toolkit import ToggleToolkit
+from toolkit import ToggleToolkit
 from util import LoggingLevelRouter
 
 

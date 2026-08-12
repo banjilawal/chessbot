@@ -16,7 +16,7 @@ from fabrication.builder import ModelBuilder
 from err import SquareBuilderException
 from model import Square
 from result import BuildResult, MethodResultType
-from kit.toolkit import SquareBuilderToolkit
+from toolkit import SquareBuilderToolkit
 from util import LoggingLevelRouter
 
 

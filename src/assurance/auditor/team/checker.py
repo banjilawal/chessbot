@@ -12,7 +12,7 @@ from typing import Any, cast
 
 from controller import WorkerRegistryController
 from model import Team
-from kit.toolkit import TeamToolkit
+from toolkit import TeamToolkit
 from result import ValidationResult
 from util import LoggingLevelRouter
 from err import SchemaNullException, TeamNullException, TeamConsistencyCheckerException

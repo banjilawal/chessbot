@@ -99,6 +99,6 @@ class TokenDeletionPermitter:
                 )
             )
         # --- Integrity and performance tests are passed. ---#
-        return DeletionApprovalReport.approve(item_id=request.item_id, stack=stack)
+        return DeletionApprovalReport.grant(item_id=request.item_id, stack=stack)
 
     

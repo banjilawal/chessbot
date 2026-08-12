@@ -16,7 +16,7 @@ from fabrication.builder import ModelBuilder
 from err import NodeBuilderException
 from model import Node
 from result import BuildResult, MethodResultType
-from kit.toolkit import NodeBuilderToolkit
+from toolkit import NodeBuilderToolkit
 from util import LoggingLevelRouter
 
 

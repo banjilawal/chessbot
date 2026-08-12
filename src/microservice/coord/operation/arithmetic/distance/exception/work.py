@@ -73,5 +73,5 @@ class EuclideanDistanceException(ComputationException):
             mthd=mthd,
             title=title,
             err_code=err_code,
-            mthd_rslt_type=mthd_rslt_type,
+           mthd_rslt_type=mthd_rslt_type,
         )

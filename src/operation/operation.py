@@ -12,7 +12,9 @@ from __future__ import annotations
 from abc import ABC, abstractmethod
 from typing import Generic, TypeVar
 
-from authorization import OperationPermitter, OperationRequest
+from authorization import RequestAuthorizer
+from request import Request
+from result import Result
 from util import LoggingLevelRouter
 
 T = TypeVar("T", bound="Result")
@@ -21,39 +23,40 @@ class Operation(ABC, Generic[T]):
     """
     Role
         -   Worker
+        -   Result Producer
 
     Responsibilities:
         1.  Execute a task that produces a Result.
 
     Attributes:
-        permitter: OperationPermitter[T]
+        authorizer: RequestAuthorizer[T]
         
     Provides:
-        -   def execute(request: OperationRequest[T]) -> T
+        -   def execute(request: Request[T]) -> T
 
     Super Class:
     """
-    _permitter: OperationPermitter[T]
+    _authorizer: RequestAuthorizer[T]
     
-    def __init__(self, permitter: OperationPermitter[T]):
+    def __init__(self, authorizer: RequestAuthorizer[T]):
         """
         Args:
-            permitter: OperationPermitter[T]
+            authorizer: RequestAuthorizer[T]
         """
-        self._permitter = permitter
+        self._authorizer = authorizer
         
         
     @property
-    def permitter(self) -> OperationPermitter[T]:
-        return self._permitter
+    def authorizer(self) -> RequestAuthorizer[T]:
+        return self._authorizer
     
     
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def execute(self, request: OperationRequest[T]) -> T:
+    def execute(self, request: Request[T]) -> T:
         """
         Args:
-            request: OperationRequest[T]
+            request: Request[T]
         Result:
             T
         """

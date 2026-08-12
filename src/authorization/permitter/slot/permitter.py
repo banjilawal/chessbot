@@ -133,6 +133,6 @@ class RankSlotPermitter(OperationPermitter):
                     ),
                 )
             )
-        return RankSlotApprovalReport.approve(rank=request.rank, token_stack=request.token_stack)
+        return RankSlotApprovalReport.grant(rank=request.rank, token_stack=request.token_stack)
 
     

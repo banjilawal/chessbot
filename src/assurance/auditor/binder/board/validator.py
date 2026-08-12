@@ -15,7 +15,7 @@ from model import BoardBinder
 from assurance.auditor import  Auditor
 from result import ValidationResult
 from util import LoggingLevelRouter
-from kit.toolkit import BoardTeamBinderToolkit
+from toolkit import BoardTeamBinderToolkit
 
 
 class BoardBinderAuditor(Auditor[BoardBinder]):

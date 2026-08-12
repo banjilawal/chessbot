@@ -17,7 +17,7 @@ from err import VectorRootCertifierException
 from model import Vector
 from assurance.certifier import ModelCertifier
 from result import ValidationResult
-from kit.toolkit import VectorToolkit
+from toolkit import VectorToolkit
 from util import LoggingLevelRouter
 
 

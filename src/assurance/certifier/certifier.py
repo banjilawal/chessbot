@@ -15,7 +15,7 @@ from typing import Any, Generic, Optional, TypeVar
 from fabrication.blueprint import Blueprint
 from result import ValidationResult
 from assurance.certifier import EntityCarrierValidator
-from kit.toolkit import Toolkit
+from toolkit import Toolkit
 from util import LoggingLevelRouter
 
 T = TypeVar("T",)

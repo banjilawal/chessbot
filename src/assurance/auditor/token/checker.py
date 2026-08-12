@@ -16,7 +16,7 @@ from err import TokenConsistencyCheckerException
 from model import Token
 from chooser import TokenCarrier
 from result import ValidationResult
-from kit.toolkit import TokenToolkit
+from toolkit import TokenToolkit
 from util import LoggingLevelRouter
 
 

@@ -13,6 +13,6 @@ version: 1.0.1
 
 
 # Modules
-from .decision import RequestDecision
+from .decision import AuthorizationDecision
 from .state import Permission
 

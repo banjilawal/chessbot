@@ -7,7 +7,7 @@ version: 1.0.1
 """
 
 from __future__ import annotations
-from typing import Generic, Optional, TypeVar
+from typing import Generic, Optional, TypeVar, cast
 
 from result import Result
 from result.validation import ValidationState
@@ -62,6 +62,10 @@ class ValidationResult(Result[T], Generic[T]):
         self._state = state
     
     @property
+    def payload(self) -> Optional[T]:
+        return cast(T, super().payload)
+    
+    @property
     def state(self) -> ValidationState:
         return self._state
     
@@ -70,7 +74,7 @@ class ValidationResult(Result[T], Generic[T]):
         return (
             self.exception is None and
             self.payload is not None and
-            self._state == ValidationState.SUCCESS
+            self._state ==  ValidationState.SUCCESS
         )
     
     @property
@@ -78,8 +82,8 @@ class ValidationResult(Result[T], Generic[T]):
         return (
                 self.payload is None and
                 self.exception is not None and
-                self._state == ValidationState.FAILURE or
-                self._state == ValidationState.TIMED_OUT
+                self._state ==  ValidationState.FAILURE or
+                self._state ==  ValidationState.TIMED_OUT
         )
     
     @property
@@ -87,7 +91,7 @@ class ValidationResult(Result[T], Generic[T]):
         return (
                 self.payload is None and
                 self.exception is not None and
-                self._state == ValidationState.TIMED_OUT
+                self._state ==  ValidationState.TIMED_OUT
         )
     
     @classmethod

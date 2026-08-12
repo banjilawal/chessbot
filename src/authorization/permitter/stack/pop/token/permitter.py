@@ -109,6 +109,6 @@ class TokenPopPermitter(PopPermitter[Token]):
                 )
             )
         # --- Forward the request approval to the caller. ---#
-        return PopApprovalReport.approve(stack=request.stack)
+        return PopApprovalReport.grant(stack=request.stack)
 
     

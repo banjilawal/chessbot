@@ -15,7 +15,7 @@ from sensor.detector.token import TokenCollisionDetector
 from err import TokenPushPermitterException
 from model import Token
 from authorization.permitter.stack import StackPushPermitter, RankSlotPermitter
-from report import PushApprovalReport, RequestDecision
+from report import PushApprovalReport, AuthorizationDecision
 from request import TokenStackPushRequest, RankSlotRequest
 from collection.stack import TokenStackService
 from authorization.adjudicator import TokenPushRequestAdjudicator
@@ -66,7 +66,7 @@ class TokenStackPushPermitter(StackPushPermitter[Token]):
         
         
     @LoggingLevelRouter.monitor
-    def execute(self, request: TokenStackPushRequest, ) -> RequestDecision:
+    def execute(self, request: TokenStackPushRequest, ) -> AuthorizationDecision:
         """
         Action:
             1.  Return a failure result containing an exception chain if either:
@@ -113,7 +113,7 @@ class TokenStackPushPermitter(StackPushPermitter[Token]):
                 rank=token.rank,
             )
         )
-        if rank_opening.request_is_denied:
+        if rank_opening.is_denied:
             # Send an exception chain in the permission denial.
             return PushApprovalReport.deny(
                 TokenPushPermitterException(
@@ -137,4 +137,4 @@ class TokenStackPushPermitter(StackPushPermitter[Token]):
                 )
             )
         # Forward the permission approval.
-        return PushApprovalReport.approve(item=token, stack=stack)
+        return PushApprovalReport.grant(item=token, stack=stack)

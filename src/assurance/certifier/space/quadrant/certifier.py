@@ -15,7 +15,7 @@ from typing import Any, Generic, TypeVar, cast
 from fabrication.blueprint import Blueprint
 from result import ValidationResult
 from assurance.certifier import SpaceCertifier
-from kit.toolkit import QuadrantToolkit
+from toolkit import QuadrantToolkit
 
 from util import LoggingLevelRouter
 

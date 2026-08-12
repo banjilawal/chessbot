@@ -11,8 +11,10 @@ version: 1.0.1
 
 # Packages
 from .adjudicator import *
+from .authorizer import *
+from .dispatcher import *
 from .insertion import *
 from .permitter import *
 
 # Modules
-from .authorization import Authorization
+from authorization.authorizer import RequestAuthorizer

@@ -13,7 +13,7 @@ from typing import Any, cast
 
 from context import TokenHomeContext
 from result import ValidationResult
-from kit.toolkit.context import TokenHomeContextToolkit
+from toolkit import TokenHomeContextToolkit
 from util import LoggingLevelRouter
 from assurance.validator import ContextValidator
 

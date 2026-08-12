@@ -8,7 +8,7 @@ version: 1.0.1
 """
 
 from __future__ import annotations
-from typing import Generic, Optional, TypeVar
+from typing import Generic, Optional, TypeVar, cast
 
 from result import DeletionState, Result
 
@@ -62,6 +62,10 @@ class DeletionResult(Result, Generic[T]):
         )
         """INTERNAL: Use build methods instead of direct constructor."""
         self._state = state
+    
+    @property
+    def payload(self) -> Optional[T]:
+        return cast(T, super().payload)
         
     @property
     def state(self) -> DeletionState:
@@ -72,7 +76,7 @@ class DeletionResult(Result, Generic[T]):
         return (
             self.payload is not None and
             self.exception is None and
-            self._state == DeletionState.SUCCESS
+            self._state ==  DeletionState.SUCCESS
         )
     
     @property
@@ -80,8 +84,8 @@ class DeletionResult(Result, Generic[T]):
         return (
                 self.payload is None and
                 self.exception is not None and
-                self._state == DeletionState.FAILURE or
-                self._state == DeletionState.TIMED_OUT
+                self._state ==  DeletionState.FAILURE or
+                self._state ==  DeletionState.TIMED_OUT
         )
     
     @property
@@ -89,7 +93,7 @@ class DeletionResult(Result, Generic[T]):
         return (
                 self.payload is None and
                 self.exception is None and
-                self._state == DeletionState.NOTHING_TO_DELETE
+                self._state ==  DeletionState.NOTHING_TO_DELETE
         )
     
     @property
@@ -97,7 +101,7 @@ class DeletionResult(Result, Generic[T]):
         return (
                 self.payload is None and
                 self.exception is not None and
-                self._state == DeletionState.TIMED_OUT
+                self._state ==  DeletionState.TIMED_OUT
         )
     
     @classmethod

@@ -10,7 +10,8 @@ version: 1.0.1
 # ============ ERR.NULL.REQUEST PACKAGE ===========#
 
 # Packages
-from .delete import *
+from .deletion import *
+from .insertion import *
 from .maneuver import *
 from .promotion import *
 from .pop import *

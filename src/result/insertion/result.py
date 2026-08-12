@@ -8,7 +8,7 @@ version: 1.0.1
 """
 
 from __future__ import annotations
-from typing import Optional
+from typing import Optional, cast
 
 from result import InsertionState, Result
 
@@ -60,6 +60,10 @@ class InsertionResult(Result[bool]):
         self._state = state
         
     @property
+    def payload(self) -> Optional[bool]:
+        return cast(bool, super().payload)
+        
+    @property
     def state(self) -> InsertionState:
         return self._state
         
@@ -72,8 +76,8 @@ class InsertionResult(Result[bool]):
         return (
                 self.payload is None and
                 self.exception is not None and
-                self._state == InsertionState.FAILURE or
-                self._state == InsertionState.TIMED_OUT
+                self._state ==  InsertionState.FAILURE or
+                self._state ==  InsertionState.TIMED_OUT
         )
     
     @property
@@ -81,7 +85,7 @@ class InsertionResult(Result[bool]):
         return (
                 self.payload is None and
                 self.exception is not None and
-                self._state == InsertionState.TIMED_OUT
+                self._state ==  InsertionState.TIMED_OUT
         )
     
     @classmethod

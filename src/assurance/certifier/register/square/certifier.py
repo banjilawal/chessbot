@@ -15,7 +15,7 @@ from err import SquareRegisterRootCertifierException
 from register import SquareRegister
 from result import ValidationResult
 from assurance.certifier import Certifier
-from kit.toolkit import SquareRegisterToolkit
+from toolkit import SquareRegisterToolkit
 from util import LoggingLevelRouter
 
 

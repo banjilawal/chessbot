@@ -7,7 +7,7 @@ version: 1.0.1
 """
 
 from __future__ import annotations
-from typing import Generic, Optional, TypeVar
+from typing import Generic, Optional, TypeVar, cast
 
 from model import Attack, Maneuver
 from result import Result
@@ -63,6 +63,10 @@ class TurnResult(Result[T], Generic[T]):
         self._state = state
     
     @property
+    def payload(self) -> Optional[T]:
+        return cast(T, super().payload)
+    
+    @property
     def state(self) -> ManeuverState:
         return self._state
     
@@ -71,7 +75,7 @@ class TurnResult(Result[T], Generic[T]):
         return (
             self.exception is None and
             self.payload is not None and
-            self._state == ManeuverState.SUCCESS
+            self._state ==  ManeuverState.SUCCESS
         )
     
     @property
@@ -79,8 +83,8 @@ class TurnResult(Result[T], Generic[T]):
         return (
                 self.payload is None and
                 self.exception is not None and
-                self._state == ManeuverState.FAILURE or
-                self._state == ManeuverState.TIMED_OUT
+                self._state ==  ManeuverState.FAILURE or
+                self._state ==  ManeuverState.TIMED_OUT
         )
     
     @property
@@ -88,7 +92,7 @@ class TurnResult(Result[T], Generic[T]):
         return (
                 self.payload is None and
                 self.exception is not None and
-                self._state == ManeuverState.TIMED_OUT
+                self._state ==  ManeuverState.TIMED_OUT
         )
     
     @classmethod

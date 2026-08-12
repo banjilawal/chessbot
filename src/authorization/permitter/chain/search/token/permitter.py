@@ -96,4 +96,4 @@ class TokenSearchPermitter(SearchPermitter[Token]):
         chain = cast(TokenChainService, request.chain)
 
         # Forward the permission approval.
-        return SearchApprovalReport.approve(context=context, chain=chain)
+        return SearchApprovalReport.grant(context=context, chain=chain)

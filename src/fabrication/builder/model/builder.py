@@ -16,7 +16,7 @@ from fabrication.blueprint import ModelBlueprint
 from result import BuildResult
 from util import LoggingLevelRouter
 from fabrication.builder import Builder
-from kit.toolkit import ModelBuilderToolkit
+from toolkit import ModelBuilderToolkit
 
 T = TypeVar("T", bound="Model")
 

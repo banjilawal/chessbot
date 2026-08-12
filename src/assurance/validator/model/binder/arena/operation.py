@@ -16,7 +16,7 @@ from model import BoardBinder, Schema, Team
 from bootstrapper.validator.binder.operation import SchemaHashtableValidator
 from result import ValidationResult
 from util import LoggingLevelRouter
-from kit.toolkit import BoardTeamBinderToolkit
+from toolkit import BoardTeamBinderToolkit
 
 
 class BoardTeamBinderValidator(ModelValidator[BoardBinder]):
