@@ -9,9 +9,10 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from typing import cast
+from typing import Optional, cast
 
 from authorization import AddNodeRequestAuthorizer
+from collection import VectorChain
 from node import VectorNode
 from report import AuthorizationDecision
 from request import AddVectorNodeRequest
@@ -22,12 +23,15 @@ from util import LoggingLevelRouter
 
 class AddVectorNodeRequestAuthorizer(AddNodeRequestAuthorizer[VectorNode]):
     
-    def __init__(self, toolkit: AddVectorNodeRequestToolkit):
+    def __init__(
+            self,
+            toolkit: Optional[AddVectorNodeRequestToolkit] | None = None,
+    ):
         """
         Args:
-            toolkit: AddVectorNodeRequestToolkit
+            toolkit: Optional[AddVectorNodeRequestToolkit]
         """
-        super().__init__(toolkit=toolkit)
+        super().__init__(toolkit=toolkit or AddVectorNodeRequestToolkit())
         
     @property
     def toolkit(self) -> AddVectorNodeRequestToolkit:
@@ -36,8 +40,46 @@ class AddVectorNodeRequestAuthorizer(AddNodeRequestAuthorizer[VectorNode]):
 
     
     @LoggingLevelRouter.monitor
-    def execute(self, request: AddVectorNodeRequest) -> AuthorizationDecision:
+    def execute(self, candidate: AddVectorNodeRequest) -> AuthorizationDecision:
         method = f"{self.__class__.__name__}.execute"
+        
+        bootstrap = self.toolkit.priming_validator.execute(
+            candidate=candidate,
+            target_model=self.toolkit.request_type,
+            null_exception=self.toolkit.request_null_exception,
+        )
+        if bootstrap.is_failure:
+            return AuthorizationDecision.deny(bootstrap.exception)
+        request = cast(AddVectorNodeRequest, bootstrap.payload)
+        
+        chain_validation = self.toolkit.priming_validator.execute(
+            candidate=request.chain,
+            target_model=self.toolkit.collection_type,
+            null_exception=self.toolkit.collection_null_exception,
+        )
+        if chain_validation.is_failure:
+            return AuthorizationDecision.deny(chain_validation.exception)
+        
+        chain = cast(VectorChain, chain_validation.payload)
+        node_validation = self.toolkit.priming_validator.execute(
+            candidate=request.node,
+            target_model=self.toolkit.node_type,
+            null_exception=self.toolkit.node_null_exception,
+        )
+        if node_validation.is_failure:
+            return AuthorizationDecision.deny(node_validation.exception)
+        
+        node = cast(VectorNode, node_validation.payload)
+        vector_validation = self.toolkit.vector_validator.execute(node.payload)
+        if vector_validation.is_failure:
+            return AuthorizationDecision.deny(vector_validation.exception)
+        
+        return AuthorizationDecision.grant(request)
+        
+        
+        
+        
+        
         
         
         
