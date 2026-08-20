@@ -12,7 +12,7 @@ from typing import Any, cast
 
 from assurance import ToggleValidator
 from err import VectorToggleValidatorException
-from assurance.certifier import VectorToggleRootCertifier
+from assurance.checker import VectorToggleRootCertifier
 from result import ValidationResult
 from toggle import VectorToggle
 from util import LoggingLevelRouter
@@ -51,8 +51,8 @@ class VectorToggleValidator(ToggleValidator[VectorToggle]):
         super().__init__(root_certifier=root_certifier)
         
     @property
-    def root_certifier(self) -> VectorToggleRootCertifier:
-        return cast(VectorToggleRootCertifier, self.root_certifier)
+    def certifier(self) -> VectorToggleRootCertifier:
+        return cast(VectorToggleRootCertifier, self.certifier)
     
     @LoggingLevelRouter.monitor
     def execute(self, candidate: Any) -> ValidationResult[VectorToggle]:
@@ -77,10 +77,10 @@ class VectorToggleValidator(ToggleValidator[VectorToggle]):
         
         
         # Handle the case that, the validator is not primed.
-        certification = self.root_certifier.execute(
+        certification = self.certifier.execute(
             candidate=candidate,
-            target_model=self.root_certifier.toolkit.model,
-            context_null_exception=self.root_certifier.toolkit.null_exception,
+            target_model=self.certifier.toolkit.model,
+            context_null_exception=self.certifier.toolkit.null_exception,
         )
         if certification.is_failure:
             # Send the exception chain on failure.

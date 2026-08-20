@@ -13,7 +13,7 @@ from fabrication.blueprint import NorthwestQuadrantBlueprint
 
 from result import BuildResult
 from fabrication.assembler import QuadrantAssembler
-from assurance.certifier import NorthwestQuadrant
+from assurance.checker import NorthwestQuadrant
 from util import  LoggingLevelRouter
   
   

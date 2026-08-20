@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Optional, cast
 
 from fabrication.assembler import NorthAxisAssembler
-from assurance.certifier import NorthAxisRootCertifier
+from assurance.checker import NorthAxisRootCertifier
 from space import NorthAxis
 from toolkit.builder.space.axis.north.toolkit import AxisBuilderToolkit
 
@@ -53,5 +53,5 @@ class NorthAxisBuilderToolkit(AxisBuilderToolkit[NorthAxis]):
         
     @property
     def root_certifier(self) -> NorthAxisRootCertifier:
-        return cast(NorthAxisRootCertifier, super().root_certifier)
+        return cast(NorthAxisRootCertifier, super().certifier)
     

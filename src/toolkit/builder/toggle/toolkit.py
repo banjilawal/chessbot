@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Generic, TypeVar, cast
 
 from fabrication.assembler import ToggleAssembler
-from assurance.certifier import ToggleCertifier
+from assurance.checker import ToggleCertifier
 from toolkit.builder.toggle.toolkit import BuilderToolkit
 
 T = TypeVar("T", bound="Toggle")
@@ -54,4 +54,4 @@ class ToggleBuilderToolkit(BuilderToolkit, Generic[T]):
         
     @property
     def root_certifier(self) -> [ToggleCertifier[T]]:
-        return cast([ToggleCertifier[T]], super()._root_certifier)
+        return cast([ToggleCertifier[T]], super().certifier)

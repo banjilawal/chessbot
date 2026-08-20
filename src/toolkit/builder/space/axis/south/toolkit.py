@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Optional, cast
 
 from fabrication.assembler import SouthAxisAssembler
-from assurance.certifier import SouthAxisRootCertifier
+from assurance.checker import SouthAxisRootCertifier
 from space import SouthAxis
 from toolkit.builder.space.axis.south.toolkit import AxisBuilderToolkit
 
@@ -53,4 +53,4 @@ class SouthAxisBuilderToolkit(AxisBuilderToolkit[SouthAxis]):
         
     @property
     def root_certifier(self) -> SouthAxisRootCertifier:
-        return cast(SouthAxisRootCertifier, super().root_certifier)
+        return cast(SouthAxisRootCertifier, super().certifier)

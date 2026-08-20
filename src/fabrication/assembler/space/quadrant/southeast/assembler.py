@@ -13,7 +13,7 @@ from fabrication.blueprint import SoutheastQuadrantBlueprint
 
 from result import BuildResult
 from fabrication.assembler import QuadrantAssembler
-from assurance.certifier import SoutheastQuadrant
+from assurance.checker import SoutheastQuadrant
 from util import  LoggingLevelRouter
   
   

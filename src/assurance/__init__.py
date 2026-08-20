@@ -11,8 +11,8 @@ version: 1.0.1
 
 # Packages
 from .auditor import *
-from .certifier import *
-from .manifest import *
+from .checker import *
+from .bundle import *
 from .validator import *
 
 # Modules

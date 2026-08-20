@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Optional, cast
 
 from fabrication.assembler import  VectorToggleAssembler
-from assurance.certifier import VectorToggleRootCertifier
+from assurance.checker import VectorToggleRootCertifier
 from toggle import VectorToggle
 from toolkit.builder.toggle.vector.toolkit import ToggleBuilderToolkit
 
@@ -54,5 +54,5 @@ class VectorToggleBuilderToolkit(ToggleBuilderToolkit[VectorToggle]):
     
     @property
     def root_certifier(self) -> VectorToggleRootCertifier:
-        return cast(VectorToggleRootCertifier, super().root_certifier)
+        return cast(VectorToggleRootCertifier, super().certifier)
     

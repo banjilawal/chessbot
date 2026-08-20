@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Optional, cast
 
 from fabrication.assembler import NorthwestQuadrantAssembler
-from assurance.certifier import NorthwestQuadrantRootCertifier
+from assurance.checker import NorthwestQuadrantRootCertifier
 from space import NorthwestQuadrant
 from toolkit.builder.space.quadrant.northwest.toolkit import QuadrantBuilderToolkit
 
@@ -53,4 +53,4 @@ class NorthwestQuadrantBuilderToolkit(QuadrantBuilderToolkit[NorthwestQuadrant])
         
     @property
     def root_certifier(self) -> NorthwestQuadrantRootCertifier:
-        return cast(NorthwestQuadrantRootCertifier, super().root_certifier)
+        return cast(NorthwestQuadrantRootCertifier, super().certifier)

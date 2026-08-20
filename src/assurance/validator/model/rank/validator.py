@@ -13,7 +13,7 @@ from typing import Any, cast
 
 from err import RankValidatorException
 from model import Rank
-from assurance.certifier import RankRootCertifier
+from assurance.checker import RankRootCertifier
 from result import ValidationResult
 from util import LoggingLevelRouter
 from assurance.validator import ModelValidator
@@ -47,8 +47,8 @@ class RankValidator(ModelValidator[Rank]):
         super().__init__(root_certifier=root_certifier)
         
     @property
-    def root_certifier(self) -> RankRootCertifier:
-        return cast(RankRootCertifier, self.root_certifier)
+    def certifier(self) -> RankRootCertifier:
+        return cast(RankRootCertifier, self.certifier)
     
 
     @LoggingLevelRouter.monitor
@@ -71,7 +71,7 @@ class RankValidator(ModelValidator[Rank]):
         method = f"{self.__class__.__name__}.execute"
         
         # Handle the case that, the candidate is not safe.
-        certification = self.root_certifier.execute(candidate)
+        certification = self.certifier.execute(candidate)
         if certification.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
@@ -86,7 +86,7 @@ class RankValidator(ModelValidator[Rank]):
         # --- Forward the work product to the caller. ---#
         return ValidationResult.success(
             cast(
-                self.root_certifier.toolkit.model,
+                self.certifier.toolkit.model,
                 certification.payload
             )
         )

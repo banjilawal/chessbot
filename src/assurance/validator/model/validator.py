@@ -12,9 +12,9 @@ from __future__ import annotations
 from abc import abstractmethod
 from typing import Any
 
+from assurance import Certifier, Validator
 from model import Model
 from result import ValidationResult
-from assurance.validator import Certifier, Validator
 
 
 class ModelValidator(Validator[Model]):
@@ -44,7 +44,7 @@ class ModelValidator(Validator[Model]):
 
     @property
     @abstractmethod
-    def root_certifier(self) -> Certifier:
+    def certifier(self) -> Certifier:
         pass
     
     @abstractmethod

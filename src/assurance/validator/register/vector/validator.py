@@ -14,7 +14,7 @@ from typing import Any, cast
 from err import VectorRegisterValidatorException
 from register import VectorRegister
 from result import ValidationResult
-from assurance.certifier import VectorRegisterCertifier
+from assurance.checker import VectorRegisterCertifier
 from util import LoggingLevelRouter
 from assurance.validator import RegisterValidator
 
@@ -47,8 +47,8 @@ class VectorRegisterValidator(RegisterValidator[VectorRegister]):
         super().__init__(root_certifier=root_certifier)
         
     @property
-    def root_certifier(self) -> VectorRegisterCertifier:
-        return cast(VectorRegisterCertifier, self.root_certifier)
+    def certifier(self) -> VectorRegisterCertifier:
+        return cast(VectorRegisterCertifier, self.certifier)
     
 
     @LoggingLevelRouter.monitor
@@ -71,7 +71,7 @@ class VectorRegisterValidator(RegisterValidator[VectorRegister]):
         method = f"{self.__class__.__name__}.execute"
         
         # Handle the case that, the candidate is not safe.
-        certification = self.root_certifier.execute(candidate)
+        certification = self.certifier.execute(candidate)
         if certification.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
@@ -85,5 +85,5 @@ class VectorRegisterValidator(RegisterValidator[VectorRegister]):
             )
         # --- Forward the work product to the caller. ---#
         return ValidationResult.success(
-            cast(self.root_certifier.toolkit.model, certification.payload)
+            cast(self.certifier.toolkit.model, certification.payload)
         )

@@ -13,11 +13,12 @@ from dataclasses import dataclass
 from typing import Type
 
 from fabrication.blueprint import VectorBlueprint
-from carrier import VectorCarrier
+
 from err import VectorBlueprintNullException, VectorCarrierNullException, VectorNullException
 from model import Vector
-from toolkit.model.vector.toolkit import ModelToolkit
 from assurance.validator import NumberValidator
+from toolkit import ModelToolkit
+from transit import VectorCarrier
 
 
 @dataclass

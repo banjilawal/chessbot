@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Generic, TypeVar, cast
 
 from fabrication.assembler import QuadrantAssembler
-from assurance.certifier import QuadrantRootCertifier
+from assurance.checker import QuadrantRootCertifier
 from toolkit.builder.space.quadrant.toolkit import SpaceBuilderToolkit
 
 T = TypeVar("T", bound="Quadrant")
@@ -53,4 +53,4 @@ class QuadrantBuilderToolkit(SpaceBuilderToolkit, Generic[T]):
         
     @property
     def root_certifier(self) -> QuadrantRootCertifier[T]:
-        return cast(QuadrantRootCertifier[T], super()._root_certifier)
+        return cast(QuadrantRootCertifier[T], super().certifier)

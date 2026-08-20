@@ -13,7 +13,7 @@ from typing import Optional, cast
 
 from fabrication.assembler import BoardAssembler
 from model import Board
-from assurance.certifier import BoardRootCertifier
+from assurance.checker import BoardRootCertifier
 from toolkit.builder.model.board.toolkit import ModelBuilderToolkit
 
 
@@ -54,5 +54,5 @@ class BoardBuilderToolkit(ModelBuilderToolkit[Board]):
     
     @property
     def root_certifier(self) -> BoardRootCertifier:
-        return cast(BoardRootCertifier, super().root_certifier)
+        return cast(BoardRootCertifier, super().certifier)
     

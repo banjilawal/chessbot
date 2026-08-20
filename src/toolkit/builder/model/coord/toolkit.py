@@ -13,7 +13,7 @@ from typing import Optional, cast
 
 from fabrication.assembler import CoordAssembler
 from model import Coord
-from assurance.certifier import CoordRootCertifier
+from assurance.checker import CoordRootCertifier
 from toolkit.builder.model.coord.toolkit import ModelBuilderToolkit
 
 
@@ -54,5 +54,5 @@ class CoordBuilderToolkit(ModelBuilderToolkit[Coord]):
     
     @property
     def root_certifier(self) -> CoordRootCertifier:
-        return cast(CoordRootCertifier, super().root_certifier)
+        return cast(CoordRootCertifier, super().certifier)
     

@@ -12,7 +12,7 @@ from __future__ import annotations
 from abc import abstractmethod
 from typing import Any, Generic, TypeVar, cast
 
-from assurance.certifier import RegisterCertifier
+from assurance.checker import RegisterCertifier
 from result import ValidationResult
 from assurance.validator import Validator
 
@@ -43,8 +43,8 @@ class RegisterValidator(Validator, Generic[T]):
         super().__init__(root_certifier=root_certifier)
     
     @property
-    def root_certifier(self) -> RegisterCertifier:
-        return cast(RegisterCertifier[T], super().root_certifier)
+    def certifier(self) -> RegisterCertifier:
+        return cast(RegisterCertifier[T], super().certifier)
     
     @abstractmethod
     def execute(self, candidate: Any) -> ValidationResult[T]:

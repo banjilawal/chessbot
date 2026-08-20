@@ -13,7 +13,7 @@ from typing import Optional, cast
 
 from fabrication.assembler import ScalarAssembler
 from model import Scalar
-from assurance.certifier import ScalarRootCertifier
+from assurance.checker import ScalarRootCertifier
 from toolkit.builder.model.scalar.toolkit import ModelBuilderToolkit
 
 
@@ -54,5 +54,5 @@ class ScalarBuilderToolkit(ModelBuilderToolkit[Scalar]):
     
     @property
     def root_certifier(self) -> ScalarRootCertifier:
-        return cast(ScalarRootCertifier, super().root_certifier)
+        return cast(ScalarRootCertifier, super().certifier)
     

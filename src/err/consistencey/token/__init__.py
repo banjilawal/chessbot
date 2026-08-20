@@ -15,4 +15,4 @@ from .disabled import *
 from .king import *
 
 # Modules
-from .exception import TokenConsistencyCheckerException
+from .exception import TokenAuditorException

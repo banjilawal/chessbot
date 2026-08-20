@@ -13,7 +13,7 @@ from typing import Optional, cast
 
 from fabrication.assembler import RankAssembler
 from model import Rank
-from assurance.certifier import RankRootCertifier
+from assurance.checker import RankRootCertifier
 from toolkit.builder.model.rank.toolkit import ModelBuilderToolkit
 
 
@@ -54,5 +54,5 @@ class RankBuilderToolkit(ModelBuilderToolkit[Rank]):
     
     @property
     def root_certifier(self) -> RankRootCertifier:
-        return cast(RankRootCertifier, super().root_certifier)
+        return cast(RankRootCertifier, super().certifier)
     

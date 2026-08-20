@@ -13,7 +13,7 @@ from typing import Optional, cast
 
 from fabrication.assembler import CoordRegisterAssembler
 from register import CoordRegister
-from assurance.certifier import CoordRegisterRootCertifier
+from assurance.checker import CoordRegisterRootCertifier
 from toolkit.builder.register.coord.toolkit import RegisterBuilderToolkit
 
 
@@ -55,5 +55,5 @@ class CoordRegisterBuilderToolkit(RegisterBuilderToolkit[CoordRegister]):
     
     @property
     def root_certifier(self) -> CoordRegisterRootCertifier:
-        return cast(CoordRegisterRootCertifier, super().root_certifier)
+        return cast(CoordRegisterRootCertifier, super().certifier)
     

@@ -13,7 +13,7 @@ from typing import Optional, cast
 
 from fabrication.assembler import PlayerAssembler
 from model import Player
-from assurance.certifier import PlayerRootCertifier
+from assurance.checker import PlayerRootCertifier
 from toolkit.builder.model.player.toolkit import ModelBuilderToolkit
 
 
@@ -54,5 +54,5 @@ class PlayerBuilderToolkit(ModelBuilderToolkit[Player]):
     
     @property
     def root_certifier(self) -> PlayerRootCertifier:
-        return cast(PlayerRootCertifier, super().root_certifier)
+        return cast(PlayerRootCertifier, super().certifier)
     

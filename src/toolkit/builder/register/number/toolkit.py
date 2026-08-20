@@ -13,7 +13,7 @@ from typing import Optional, cast
 
 from fabrication.assembler import NumberRegisterAssembler
 from register import NumberRegister
-from assurance.certifier import NumberRegisterRootCertifier
+from assurance.checker import NumberRegisterRootCertifier
 from toolkit.builder.register.number.toolkit import RegisterBuilderToolkit
 
 
@@ -55,5 +55,5 @@ class NumberRegisterBuilderToolkit(RegisterBuilderToolkit[NumberRegister]):
     
     @property
     def root_certifier(self) -> NumberRegisterRootCertifier:
-        return cast(NumberRegisterRootCertifier, super().root_certifier)
+        return cast(NumberRegisterRootCertifier, super().certifier)
     

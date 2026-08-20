@@ -13,7 +13,7 @@ from typing import Optional, cast
 
 from fabrication.assembler import VectorRegisterAssembler
 from register import VectorRegister
-from assurance.certifier import VectorRegisterCertifier
+from assurance.checker import VectorRegisterCertifier
 from toolkit.builder.register.vector.toolkit import RegisterBuilderToolkit
 
 
@@ -55,5 +55,5 @@ class VectorRegisterBuilderToolkit(RegisterBuilderToolkit[VectorRegister]):
     
     @property
     def root_certifier(self) -> VectorRegisterCertifier:
-        return cast(VectorRegisterCertifier, super().root_certifier)
+        return cast(VectorRegisterCertifier, super().certifier)
     

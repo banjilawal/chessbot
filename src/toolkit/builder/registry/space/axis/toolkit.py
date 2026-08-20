@@ -13,7 +13,7 @@ from typing import cast
 
 from fabrication.assembler import AxisReservoirAssembler
 from topology.registry import AxisReservoir
-from assurance.certifier import AxisReservoirRootCertifier
+from assurance.checker import AxisReservoirRootCertifier
 from toolkit.builder.registry.space.axis.toolkit import SpaceReservoirBuilderToolkit
 
 
@@ -53,4 +53,4 @@ class AxisReservoirBuilderToolkit(SpaceReservoirBuilderToolkit[AxisReservoir]):
         
     @property
     def root_certifier(self) -> AxisReservoirRootCertifier:
-        return cast(AxisReservoirRootCertifier, super().root_certifier)
+        return cast(AxisReservoirRootCertifier, super().certifier)

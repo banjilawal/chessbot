@@ -13,7 +13,7 @@ from typing import Optional, cast
 
 from fabrication.assembler import VectorToggleRegisterAssembler
 from register import VectorToggleRegister
-from assurance.certifier import VectorToggleRegisterCertifier
+from assurance.checker import VectorToggleRegisterCertifier
 from toolkit.builder.register.toggle.toolkit import RegisterBuilderToolkit
 
 
@@ -55,5 +55,5 @@ class VectorToggleRegisterBuilderToolkit(RegisterBuilderToolkit[VectorToggleRegi
     
     @property
     def root_certifier(self) -> VectorToggleRegisterCertifier:
-        return cast(VectorToggleRegisterCertifier, super().root_certifier)
+        return cast(VectorToggleRegisterCertifier, super().certifier)
     

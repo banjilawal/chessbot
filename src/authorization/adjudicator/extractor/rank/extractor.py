@@ -9,10 +9,10 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from typing import Type
+from typing import Optional, Type
 
+from assurance import PrimingValidator
 from fabrication.blueprint import TokenBlueprint
-from priming_validator import PrimingValidator
 from err import BlueprintRankExtractorException, TokenBlueprintNullException
 from microservice import RankService
 from result import ValidationResult
@@ -46,11 +46,11 @@ class BlueprintRankExtractor(Extractor):
     
     def __init__(
             self, 
-            priming_validator: PrimingValidator | None = PrimingValidator(),
-            rank_service: RankService | None = RankService(),
+            priming_validator: Optional[PrimingValidator] | None = None,
+            rank_service: Optional[RankService] | None = None,
     ):
-        self._priming_validator = priming_validator
-        self._rank_service = rank_service
+        super().__init__(priming_validator=priming_validator)
+        self._rank_service = rank_service or RankService()
     
     @LoggingLevelRouter.monitor
     def execute(self, blueprint: TokenBlueprint) -> ValidationResult:
@@ -71,7 +71,7 @@ class BlueprintRankExtractor(Extractor):
         """
         method = f"{self.__class__.__name__}.execute"
         
-        priming_result = self._priming_validator.execute(
+        priming_result = self.priming_validator.execute(
             candidate=blueprint,
             target_model=Type[TokenBlueprint],
             null_exception=TokenBlueprintNullException(),

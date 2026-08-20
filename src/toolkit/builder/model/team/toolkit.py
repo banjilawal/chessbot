@@ -13,7 +13,7 @@ from typing import Optional, cast
 
 from fabrication.assembler import TeamAssembler
 from model import Team
-from assurance.certifier import TeamRootCertifier
+from assurance.checker import TeamRootCertifier
 from toolkit.builder.model.team.toolkit import ModelBuilderToolkit
 
 
@@ -54,5 +54,5 @@ class TeamBuilderToolkit(ModelBuilderToolkit[Team]):
     
     @property
     def root_certifier(self) -> TeamRootCertifier:
-        return cast(TeamRootCertifier, super().root_certifier)
+        return cast(TeamRootCertifier, super().certifier)
     

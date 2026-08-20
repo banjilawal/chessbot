@@ -13,7 +13,7 @@ from typing import Optional, cast
 
 from fabrication.assembler import SquareAssembler
 from model import Square
-from assurance.certifier import SquareRootCertifier
+from assurance.checker import SquareRootCertifier
 from toolkit.builder.model.square.toolkit import ModelBuilderToolkit
 
 
@@ -54,5 +54,5 @@ class SquareBuilderToolkit(ModelBuilderToolkit[Square]):
     
     @property
     def root_certifier(self) -> SquareRootCertifier:
-        return cast(SquareRootCertifier, super().root_certifier)
+        return cast(SquareRootCertifier, super().certifier)
     

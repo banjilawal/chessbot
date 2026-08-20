@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Generic, TypeVar, cast
 
 from fabrication.assembler import RegisterAssembler
-from assurance.certifier import RegisterCertifier
+from assurance.checker import RegisterCertifier
 from toolkit.builder.register.toolkit import BuilderToolkit
 
 T = TypeVar("T", bound="Register")
@@ -54,4 +54,4 @@ class RegisterBuilderToolkit(BuilderToolkit, Generic[T]):
         
     @property
     def root_certifier(self) -> [RegisterCertifier[T]]:
-        return cast([RegisterCertifier[T]], super()._root_certifier)
+        return cast([RegisterCertifier[T]], super().certifier)

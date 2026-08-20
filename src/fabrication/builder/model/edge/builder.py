@@ -76,7 +76,7 @@ class EdgeBuilder(ModelBuilder[Edge]):
         method = f"{self.__class__.__name__}.build"
         
         # Handle the case that, the blueprint is not certified safe.
-        blueprint_validation = self.builder_toolkit.root_certifier.execute(
+        blueprint_validation = self.builder_toolkit.certifier.execute(
             candidate=blueprint
         )
         if blueprint_validation.is_failure:

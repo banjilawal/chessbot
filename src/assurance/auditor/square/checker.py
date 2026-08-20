@@ -15,7 +15,7 @@ from controller import WorkerRegistryController
 from err import SquareConsistencyCheckerException
 from model import Square
 from chooser import SquareCarrier
-from assurance.certifier import SquareRootCertifier
+from assurance.checker import SquareRootCertifier
 from result import ValidationResult
 from util import LoggingLevelRouter
 from assurance.auditor import  Auditor

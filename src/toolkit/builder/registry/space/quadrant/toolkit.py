@@ -13,7 +13,7 @@ from typing import cast
 
 from fabrication.assembler import QuadrantReservoirAssembler
 from topology.registry import QuadrantReservoir
-from assurance.certifier import QuadrantReservoirRootCertifier
+from assurance.checker import QuadrantReservoirRootCertifier
 from toolkit.builder.registry.space.quadrant.toolkit import SpaceReservoirBuilderToolkit
 
 
@@ -53,4 +53,4 @@ class QuadrantReservoirBuilderToolkit(SpaceReservoirBuilderToolkit[QuadrantReser
         
     @property
     def root_certifier(self) -> QuadrantReservoirRootCertifier:
-        return cast(QuadrantReservoirRootCertifier, super().root_certifier)
+        return cast(QuadrantReservoirRootCertifier, super().certifier)

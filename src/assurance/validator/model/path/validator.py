@@ -13,7 +13,7 @@ from typing import Any, cast
 
 from err import PathValidatorException
 from model import Path
-from assurance.certifier import PathRootCertifier
+from assurance.checker import PathRootCertifier
 from result import ValidationResult
 from util import LoggingLevelRouter
 from assurance.validator import ModelValidator
@@ -47,8 +47,8 @@ class PathValidator(ModelValidator[Path]):
         super().__init__(root_certifier=root_certifier)
         
     @property
-    def root_certifier(self) -> PathRootCertifier:
-        return cast(PathRootCertifier, self.root_certifier)
+    def certifier(self) -> PathRootCertifier:
+        return cast(PathRootCertifier, self.certifier)
     
 
     @LoggingLevelRouter.monitor
@@ -71,7 +71,7 @@ class PathValidator(ModelValidator[Path]):
         method = f"{self.__class__.__name__}.execute"
         
         # Handle the case that, the candidate is not safe.
-        certification = self.root_certifier.execute(candidate)
+        certification = self.certifier.execute(candidate)
         if certification.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
@@ -86,7 +86,7 @@ class PathValidator(ModelValidator[Path]):
         # --- Forward the work product to the caller. ---#
         return ValidationResult.success(
             cast(
-                self.root_certifier.toolkit.model,
+                self.certifier.toolkit.model,
                 certification.payload
             )
         )

@@ -16,11 +16,11 @@ from result import MethodResultType
 
 __all__ = [
     # ======================# TOKEN_CONSISTENCY_CHECKER_FAILURE #======================#
-    "TokenConsistencyCheckerException",
+    "TokenAuditorException",
 ]
 
 # ======================# TOKEN_CONSISTENCY_CHECKER_FAILURE #======================#
-class TokenConsistencyCheckerException(ConsistencyCheckerException):
+class TokenAuditorException(ConsistencyCheckerException):
     """
     Role:
         -   Error Tracing

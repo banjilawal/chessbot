@@ -13,7 +13,7 @@ from fabrication.blueprint import WestAxisBlueprint
 
 from result import BuildResult
 from fabrication.assembler import AxisAssembler
-from assurance.certifier import WestAxis
+from assurance.checker import WestAxis
 from util import  LoggingLevelRouter
   
   

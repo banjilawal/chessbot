@@ -11,12 +11,13 @@ from __future__ import annotations
 
 from typing import Any, cast
 
+from assurance import ModelValidator
 from err import VectorValidatorException
 from model import Vector
-from assurance.certifier import VectorRootCertifier
+from assurance.checker import VectorChecker
 from result import ValidationResult
 from util import LoggingLevelRouter
-from assurance.validator import ModelValidator
+
 
 
 class VectorValidator(ModelValidator[Vector]):
@@ -42,13 +43,13 @@ class VectorValidator(ModelValidator[Vector]):
     
     def __init__(
             self,
-            root_certifier: VectorRootCertifier | None = VectorRootCertifier(),
+            root_certifier: VectorChecker | None = None,
     ):
-        super().__init__(root_certifier=root_certifier)
+        super().__init__(root_certifier=root_certifier or VectorChecker())
         
     @property
-    def root_certifier(self) -> VectorRootCertifier:
-        return cast(VectorRootCertifier, self.root_certifier)
+    def certifier(self) -> VectorChecker:
+        return cast(VectorChecker, super().certifier)
     
 
     @LoggingLevelRouter.monitor
@@ -71,7 +72,7 @@ class VectorValidator(ModelValidator[Vector]):
         method = f"{self.__class__.__name__}.execute"
         
         # Handle the case that, the candidate is not safe.
-        certification = self.root_certifier.execute(candidate)
+        certification = self.certifier.execute(candidate)
         if certification.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
@@ -86,7 +87,7 @@ class VectorValidator(ModelValidator[Vector]):
         # --- Forward the work product to the caller. ---#
         return ValidationResult.success(
             cast(
-                self.root_certifier.toolkit.model,
+                self.certifier.toolkit.model,
                 certification.payload
             )
         )

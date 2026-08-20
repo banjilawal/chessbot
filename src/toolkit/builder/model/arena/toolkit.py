@@ -13,7 +13,7 @@ from typing import Optional, cast
 
 from fabrication.assembler import ArenaAssembler
 from model import Arena
-from assurance.certifier import ArenaRootCertifier
+from assurance.checker import ArenaRootCertifier
 from toolkit.builder.model.arena.toolkit import ModelBuilderToolkit
 
 
@@ -54,5 +54,5 @@ class ArenaBuilderToolkit(ModelBuilderToolkit[Arena]):
     
     @property
     def root_certifier(self) -> ArenaRootCertifier:
-        return cast(ArenaRootCertifier, super().root_certifier)
+        return cast(ArenaRootCertifier, super().certifier)
     

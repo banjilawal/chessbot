@@ -13,7 +13,7 @@ from abc import abstractmethod
 from typing import Any, Generic, TypeVar, cast
 
 
-from assurance.certifier import ToggleCertifier
+from assurance.checker import ToggleCertifier
 from result import ValidationResult
 from toolkit import ToggleToolkit
 
@@ -57,8 +57,8 @@ class ToggleValidator(Validator, Generic[T]):
         return cast(ToggleToolkit[T], self.toolkit)
     
     @property
-    def root_certifier(self) -> ToggleCertifier[T]:
-        return cast(ToggleCertifier[T], self.root_certifier)
+    def certifier(self) -> ToggleCertifier[T]:
+        return cast(ToggleCertifier[T], self.certifier)
     
     @abstractmethod
     def execute(self, candidate: Any) -> ValidationResult[T]:
