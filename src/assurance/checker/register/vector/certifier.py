@@ -4,7 +4,7 @@
 Module: assurance.certifier.register.carrier.validator
 Author: Banji Lawal
 Created: 2026-04-03
-version: 1.0.1
+version: 0.0.2
 """
 
 from __future__ import annotations
@@ -50,7 +50,7 @@ class VectorRegisterCertifier(Certifier[VectorRegister]):
     
     @property
     def toolkit(self) -> VectorRegisterToolkit:
-        return cast(VectorRegisterToolkit, super().toolkit)
+        return cast(VectorRegisterToolkit, super().bundle)
     
     @LoggingLevelRouter.monitor
     def execute(self, candidate, Any) -> ValidationResult[VectorRegister|VectorRegisterBlueprint]:

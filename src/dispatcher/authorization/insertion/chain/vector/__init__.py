@@ -4,7 +4,7 @@
 Module: dispatcher.authorization.insertion.chain.vector.__init__
 Author: Banji Lawal
 Created: 2026-03-30
-version: 1.0.1
+version: 0.0.2
 """
 
 # =========== DISPATCHER.AUTHORIZATION.INSERTION.CHAIN.VECTOR PACKAGE ===========#

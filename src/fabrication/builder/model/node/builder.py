@@ -4,7 +4,7 @@
 Module: fabrication.builder.model.node.builder
 Author: Banji Lawal
 Created: 2026-04-03
-version: 1.0.1
+version: 0.0.2
 """
 
 from __future__ import annotations
@@ -76,7 +76,7 @@ class NodeBuilder(ModelBuilder[Node]):
         method = f"{self.__class__.__name__}.build"
         
         # Handle the case that, the blueprint is not certified safe.
-        blueprint_validation = self.builder_toolkit.certifier.execute(
+        blueprint_validation = self.builder_toolkit.integrity_checker.execute(
             candidate=blueprint
         )
         if blueprint_validation.is_failure:

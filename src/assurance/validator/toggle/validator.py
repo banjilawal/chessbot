@@ -4,7 +4,7 @@
 Module: assurance.validator.operand.validator
 Author: Banji Lawal
 Created: 2026-04-03
-version: 1.0.1
+version: 0.0.2
 """
 
 from __future__ import annotations
@@ -57,8 +57,8 @@ class ToggleValidator(Validator, Generic[T]):
         return cast(ToggleToolkit[T], self.toolkit)
     
     @property
-    def certifier(self) -> ToggleCertifier[T]:
-        return cast(ToggleCertifier[T], self.certifier)
+    def integrity_checker(self) -> ToggleCertifier[T]:
+        return cast(ToggleCertifier[T], self.integrity_checker)
     
     @abstractmethod
     def execute(self, candidate: Any) -> ValidationResult[T]:

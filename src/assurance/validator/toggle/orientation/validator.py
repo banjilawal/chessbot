@@ -4,7 +4,7 @@
 Module: assurance.validator.model.register.operand.validator
 Author: Banji Lawal
 Created: 2026-04-03
-version: 1.0.1
+version: 0.0.2
 """
 
 from __future__ import annotations
@@ -47,8 +47,8 @@ class OrientationSelectorValidator(ModelValidator[OrientationToggle]):
         super().__init__(root_certifier=root_certifier)
         
     @property
-    def certifier(self) -> VectorToggleRegisterRootCertifier:
-        return cast(VectorToggleRegisterRootCertifier, self.certifier)
+    def integrity_checker(self) -> VectorToggleRegisterRootCertifier:
+        return cast(VectorToggleRegisterRootCertifier, self.integrity_checker)
     
     @LoggingLevelRouter.monitor
     def execute(self, candidate: Any) -> ValidationResult:
@@ -73,10 +73,10 @@ class OrientationSelectorValidator(ModelValidator[OrientationToggle]):
         
         
         # Handle the case that, the validator is not primed.
-        validator_priming_result = self.certifier.toolkit.priming_validator.execute(
+        validator_priming_result = self.integrity_checker.bundle.priming_validator.execute(
             candidate=candidate,
-            target_model=self.certifier.toolkit.model,
-            context_null_exception=self.certifier.toolkit.request_null_exception,
+            target_model=self.integrity_checker.bundle.model,
+            context_null_exception=self.integrity_checker.bundle.request_null_exception,
         )
         if validator_priming_result.is_failure:
             # Send the exception chain on failure.
@@ -92,7 +92,7 @@ class OrientationSelectorValidator(ModelValidator[OrientationToggle]):
         # --- Cast candidate to a OrientationOperand for additional tests. ---#
         register = cast(OrientationOperandEntityRegister, candidate)
         
-        root_certification = self.certifier.execute(register)
+        root_certification = self.integrity_checker.execute(register)
         if root_certification.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(

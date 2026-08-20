@@ -4,7 +4,7 @@
 Module: assurance.validator.register.validator
 Author: Banji Lawal
 Created: 2026-04-03
-version: 1.0.1
+version: 0.0.2
 """
 
 from __future__ import annotations
@@ -43,8 +43,8 @@ class RegisterValidator(Validator, Generic[T]):
         super().__init__(root_certifier=root_certifier)
     
     @property
-    def certifier(self) -> RegisterCertifier:
-        return cast(RegisterCertifier[T], super().certifier)
+    def integrity_checker(self) -> RegisterCertifier:
+        return cast(RegisterCertifier[T], super().integrity_checker)
     
     @abstractmethod
     def execute(self, candidate: Any) -> ValidationResult[T]:

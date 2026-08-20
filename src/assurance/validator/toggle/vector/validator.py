@@ -4,7 +4,7 @@
 Module: assurance.validator.model.register.operand.validator
 Author: Banji Lawal
 Created: 2026-04-03
-version: 1.0.1
+version: 0.0.2
 """
 
 from __future__ import annotations
@@ -51,8 +51,8 @@ class VectorToggleValidator(ToggleValidator[VectorToggle]):
         super().__init__(root_certifier=root_certifier)
         
     @property
-    def certifier(self) -> VectorToggleRootCertifier:
-        return cast(VectorToggleRootCertifier, self.certifier)
+    def integrity_checker(self) -> VectorToggleRootCertifier:
+        return cast(VectorToggleRootCertifier, self.integrity_checker)
     
     @LoggingLevelRouter.monitor
     def execute(self, candidate: Any) -> ValidationResult[VectorToggle]:
@@ -77,10 +77,10 @@ class VectorToggleValidator(ToggleValidator[VectorToggle]):
         
         
         # Handle the case that, the validator is not primed.
-        certification = self.certifier.execute(
+        certification = self.integrity_checker.execute(
             candidate=candidate,
-            target_model=self.certifier.toolkit.model,
-            context_null_exception=self.certifier.toolkit.null_exception,
+            target_model=self.integrity_checker.toolkit.model,
+            context_null_exception=self.integrity_checker.toolkit.null_exception,
         )
         if certification.is_failure:
             # Send the exception chain on failure.

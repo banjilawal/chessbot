@@ -4,7 +4,7 @@
 Module: toolkit.builder.space.axis.toolkit
 Author: Banji Lawal
 Created: 2026-04-03
-version: 1.0.1
+version: 0.0.2
 """
 
 from __future__ import annotations
@@ -53,4 +53,4 @@ class AxisBuilderToolkit(SpaceBuilderToolkit, Generic[T]):
         
     @property
     def root_certifier(self) -> [AxisRootCertifier[T]]:
-        return cast([AxisRootCertifier[T]], super().certifier)
+        return cast([AxisRootCertifier[T]], super().integrity_checker)

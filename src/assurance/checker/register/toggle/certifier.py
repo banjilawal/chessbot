@@ -4,7 +4,7 @@
 Module: assurance.certifier.register.toggle.validator
 Author: Banji Lawal
 Created: 2026-04-03
-version: 1.0.1
+version: 0.0.2
 """
 
 from __future__ import annotations
@@ -59,7 +59,7 @@ class VectorToggleRegisterCertifier(
     
     @property
     def toolkit(self) -> VectorToggleRegisterToolkit:
-        return cast(VectorToggleRegisterToolkit, super().toolkit)
+        return cast(VectorToggleRegisterToolkit, super().bundle)
     
     @LoggingLevelRouter.monitor
     def execute(self, candidate, Any) -> ValidationResult[VectorToggleRegister]:

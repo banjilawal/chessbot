@@ -4,7 +4,7 @@
 Module: toolkit.builder.space.axis.north.toolkit
 Author: Banji Lawal
 Created: 2026-04-03
-version: 1.0.1
+version: 0.0.2
 """
 
 from __future__ import annotations
@@ -53,5 +53,5 @@ class NorthAxisBuilderToolkit(AxisBuilderToolkit[NorthAxis]):
         
     @property
     def root_certifier(self) -> NorthAxisRootCertifier:
-        return cast(NorthAxisRootCertifier, super().certifier)
+        return cast(NorthAxisRootCertifier, super().integrity_checker)
     

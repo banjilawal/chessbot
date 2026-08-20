@@ -4,7 +4,7 @@
 Module: toolkit.builder.register.vector.toolkit
 Author: Banji Lawal
 Created: 2026-04-03
-version: 1.0.1
+version: 0.0.2
 """
 
 from __future__ import annotations
@@ -55,5 +55,5 @@ class VectorRegisterBuilderToolkit(RegisterBuilderToolkit[VectorRegister]):
     
     @property
     def root_certifier(self) -> VectorRegisterCertifier:
-        return cast(VectorRegisterCertifier, super().certifier)
+        return cast(VectorRegisterCertifier, super().integrity_checker)
     

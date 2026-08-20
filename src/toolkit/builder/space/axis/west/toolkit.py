@@ -4,7 +4,7 @@
 Module: toolkit.builder.space.axis.west.toolkit
 Author: Banji Lawal
 Created: 2026-04-03
-version: 1.0.1
+version: 0.0.2
 """
 
 from __future__ import annotations
@@ -53,4 +53,4 @@ class WestAxisBuilderToolkit(AxisBuilderToolkit[WestAxis]):
         
     @property
     def root_certifier(self) -> WestAxisRootCertifier:
-        return cast(WestAxisRootCertifier, super().certifier)
+        return cast(WestAxisRootCertifier, super().integrity_checker)

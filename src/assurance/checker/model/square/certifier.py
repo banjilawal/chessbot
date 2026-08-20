@@ -4,7 +4,7 @@
 Module: assurance.certifier.square.certifier
 Author: Banji Lawal
 Created: 2026-04-03
-version: 1.0.1
+version: 0.0.2
 """
 
 from __future__ import annotations
@@ -54,7 +54,7 @@ class SquareIntegrityChecker(ModelIntegrityChecker[SquareBlueprint]):
     
     @property
     def toolkit(self) -> SquareToolkit:
-        return cast(SquareToolkit, super().toolkit)
+        return cast(SquareToolkit, super().bundle)
     
     @LoggingLevelRouter.monitor
     def execute(self, candidate: Any) -> ValidationResult:

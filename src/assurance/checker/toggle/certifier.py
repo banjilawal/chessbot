@@ -4,7 +4,7 @@
 Module: assurance.certifier.validator
 Author: Banji Lawal
 Created: 2026-04-03
-version: 1.0.1
+version: 0.0.2
 """
 
 from __future__ import annotations
@@ -46,7 +46,7 @@ class ToggleCertifier(Certifier, Generic[T]):
         
     @property
     def toolkit(self) -> ToggleToolkit[T]:
-        return cast(ToggleToolkit[T], super().toolkit)
+        return cast(ToggleToolkit[T], super().bundle)
     
     @abstractmethod
     @LoggingLevelRouter.monitor

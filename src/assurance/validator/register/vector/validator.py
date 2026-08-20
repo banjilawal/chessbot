@@ -4,7 +4,7 @@
 Module: assurance.validator.register.vector.operation
 Author: Banji Lawal
 Created: 2026-04-03
-version: 1.0.1
+version: 0.0.2
 """
 
 from __future__ import annotations
@@ -47,8 +47,8 @@ class VectorRegisterValidator(RegisterValidator[VectorRegister]):
         super().__init__(root_certifier=root_certifier)
         
     @property
-    def certifier(self) -> VectorRegisterCertifier:
-        return cast(VectorRegisterCertifier, self.certifier)
+    def integrity_checker(self) -> VectorRegisterCertifier:
+        return cast(VectorRegisterCertifier, self.integrity_checker)
     
 
     @LoggingLevelRouter.monitor
@@ -71,7 +71,7 @@ class VectorRegisterValidator(RegisterValidator[VectorRegister]):
         method = f"{self.__class__.__name__}.execute"
         
         # Handle the case that, the candidate is not safe.
-        certification = self.certifier.execute(candidate)
+        certification = self.integrity_checker.execute(candidate)
         if certification.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
@@ -85,5 +85,5 @@ class VectorRegisterValidator(RegisterValidator[VectorRegister]):
             )
         # --- Forward the work product to the caller. ---#
         return ValidationResult.success(
-            cast(self.certifier.toolkit.model, certification.payload)
+            cast(self.integrity_checker.toolkit.model, certification.payload)
         )

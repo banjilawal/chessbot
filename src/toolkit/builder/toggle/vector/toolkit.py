@@ -4,7 +4,7 @@
 Module: toolkit.builder.toggle.vector.toolkit
 Author: Banji Lawal
 Created: 2026-04-03
-version: 1.0.1
+version: 0.0.2
 """
 
 from __future__ import annotations
@@ -54,5 +54,5 @@ class VectorToggleBuilderToolkit(ToggleBuilderToolkit[VectorToggle]):
     
     @property
     def root_certifier(self) -> VectorToggleRootCertifier:
-        return cast(VectorToggleRootCertifier, super().certifier)
+        return cast(VectorToggleRootCertifier, super().integrity_checker)
     

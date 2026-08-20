@@ -4,7 +4,7 @@
 Module: suite.operation.register.vector.suite
 Author: Banji Lawal
 Created: 2026-04-03
-version: 1.0.1
+version: 0.0.2
 """
 
 from __future__ import annotations
@@ -56,7 +56,7 @@ class SquareRegisterSuite(RegisterOperationSuite[SquareRegister]):
     
     @property
     def toolkit(self) -> SquareRegisterToolkit:
-        return cast(SquareRegisterToolkit, super().toolkit)
+        return cast(SquareRegisterToolkit, super().bundle)
     
     @property
     def builder(self) -> SquareRegisterBuilder:

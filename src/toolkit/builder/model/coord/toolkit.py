@@ -4,7 +4,7 @@
 Module: toolkit.builder.model.coord.toolkit
 Author: Banji Lawal
 Created: 2026-04-03
-version: 1.0.1
+version: 0.0.2
 """
 
 from __future__ import annotations
@@ -54,5 +54,5 @@ class CoordBuilderToolkit(ModelBuilderToolkit[Coord]):
     
     @property
     def root_certifier(self) -> CoordRootCertifier:
-        return cast(CoordRootCertifier, super().certifier)
+        return cast(CoordRootCertifier, super().integrity_checker)
     

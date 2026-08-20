@@ -4,7 +4,7 @@
 Module: authorization.insertion.authorization
 Author: Banji Lawal
 Created: 2026-03-30
-version: 1.0.1
+version: 0.0.2
 """
 
 from __future__ import annotations

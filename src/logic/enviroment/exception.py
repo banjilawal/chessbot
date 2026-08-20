@@ -4,7 +4,7 @@
 Module: logic.environment.exception
 Author: Banji Lawal
 Created: 2025-10-18
-Version: 1.0.1
+Version: 0.0.2
 """
 
 from system import (

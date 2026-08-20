@@ -4,7 +4,7 @@
 Module: assurance.validator.model.state.token.operation
 Author: Banji Lawal
 Created: 2026-04-03
-version: 1.0.1
+version: 0.0.2
 """
 
 from __future__ import annotations
@@ -47,8 +47,8 @@ class TokenValidator(ModelValidator[Token]):
         super().__init__(root_certifier=root_certifier)
         
     @property
-    def certifier(self) -> TokenIntegrityChecker:
-        return cast(TokenIntegrityChecker, self.certifier)
+    def integrity_checker(self) -> TokenIntegrityChecker:
+        return cast(TokenIntegrityChecker, self.integrity_checker)
     
 
     @LoggingLevelRouter.monitor
@@ -71,7 +71,7 @@ class TokenValidator(ModelValidator[Token]):
         method = f"{self.__class__.__name__}.execute"
         
         # Handle the case that, the candidate is not safe.
-        certification = self.certifier.execute(candidate)
+        certification = self.integrity_checker.execute(candidate)
         if certification.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
@@ -86,7 +86,7 @@ class TokenValidator(ModelValidator[Token]):
         # --- Forward the work product to the caller. ---#
         return ValidationResult.success(
             cast(
-                self.certifier.toolkit.model,
+                self.integrity_checker.bundle.model,
                 certification.payload
             )
         )

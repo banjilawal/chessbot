@@ -4,7 +4,7 @@
 Module: toolkit.builder.register.toggle.toolkit
 Author: Banji Lawal
 Created: 2026-04-03
-version: 1.0.1
+version: 0.0.2
 """
 
 from __future__ import annotations
@@ -55,5 +55,5 @@ class VectorToggleRegisterBuilderToolkit(RegisterBuilderToolkit[VectorToggleRegi
     
     @property
     def root_certifier(self) -> VectorToggleRegisterCertifier:
-        return cast(VectorToggleRegisterCertifier, super().certifier)
+        return cast(VectorToggleRegisterCertifier, super().integrity_checker)
     

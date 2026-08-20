@@ -4,7 +4,7 @@
 Module: assurance.certifier.vector.validator
 Author: Banji Lawal
 Created: 2026-04-03
-version: 1.0.1
+version: 0.0.2
 """
 
 from __future__ import annotations
@@ -49,8 +49,8 @@ class VectorIntegrityChecker(ModelIntegrityChecker[Vector]):
         super().__init__(toolkit=toolkit or VectorValidationBundle())
         
     @property
-    def toolkit(self) -> VectorValidationBundle:
-        return cast(VectorValidationBundle, super().toolkit)
+    def bundle(self) -> VectorValidationBundle:
+        return cast(VectorValidationBundle, super().bundle)
     
     
     @LoggingLevelRouter.monitor
@@ -74,10 +74,10 @@ class VectorIntegrityChecker(ModelIntegrityChecker[Vector]):
         """
         method = f"{self.__class__.__name__}.execute"
         
-        carrier_validation = self.toolkit.priming_validator.execute(
+        carrier_validation = self.bundle.priming_validator.execute(
             candidate=candidate,
-            target_model=self.toolkit.types.carrier,
-            model_null_exception=self.toolkit.null_exceptions.carrier,
+            target_model=self.bundle.types.carrier,
+            model_null_exception=self.bundle.null_exceptions.carrier,
         )
         if carrier_validation.is_failure:
             # Send the exception chain on failure.
@@ -90,7 +90,7 @@ class VectorIntegrityChecker(ModelIntegrityChecker[Vector]):
                     ex=carrier_validation.exception,
                 )
             )
-        carrier = cast(self.toolkit.types.carrier, carrier_validation.payload)
+        carrier = cast(self.bundle.types.carrier, carrier_validation.payload)
 
         # --- Cast the candidate into a VectorBlueprint for additional tests. ---#
         blueprint = carrier.extract_blueprint()
@@ -98,7 +98,7 @@ class VectorIntegrityChecker(ModelIntegrityChecker[Vector]):
         # Handle the case that, any id in the blueprint is flagged.
         numbers = []
         for number in [blueprint.x, blueprint.y]:
-            validation = self.toolkit.number_validator.execute(number)
+            validation = self.bundle.number_validator.execute(number)
             if validation.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(

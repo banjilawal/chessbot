@@ -4,7 +4,7 @@
 Module: assurance.manifest.nulls.roster
 Author: Banji Lawal
 Created: 2026-03-30
-version: 1.0.1
+version: 0.0.2
 """
 
 from __future__ import annotations
@@ -15,10 +15,10 @@ from typing import Generic, TypeVar
 
 from err import BlueprintNullException, EntityCarrierNullException, ModelNullException
 
-T = TypeVar("T")
+T = TypeVar("T", bound="Model")
 
 @dataclass
 class NullRoster(ABC, Generic[T]):
-    model: ModelNullException = ModelNullException()
-    carrier: EntityCarrierNullException = EntityCarrierNullException()
-    blueprint: BlueprintNullException = BlueprintNullException()
+    model: ModelNullException[T] = ModelNullException()
+    carrier: EntityCarrierNullException[T] = EntityCarrierNullException()
+    blueprint: BlueprintNullException[T] = BlueprintNullException()

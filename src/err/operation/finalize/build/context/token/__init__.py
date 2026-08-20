@@ -4,7 +4,7 @@
 Module: err.operation.finalize.build.context.token.__init__
 Author: Banji Lawal
 Created: 2026-04-04
-version: 1.0.1
+version: 0.0.2
 """
 
 # =========== ERR.OPERATION.FINALIZE.BUILD.CONTEXT.TOKEN PACKAGE ===========#

@@ -4,7 +4,7 @@
 Module: toolkit.collection.tree.tree
 Author: Banji Lawal
 Created: 2026-04-03
-version: 1.0.1
+version: 0.0.2
 """
 
 from __future__ import annotations
@@ -17,7 +17,7 @@ from typing import Collection, List
 Module: toolkit.collection.toolkit
 Author: Banji Lawal
 Created: 2026-04-03
-version: 1.0.1
+version: 0.0.2
 """
 
 from __future__ import annotations

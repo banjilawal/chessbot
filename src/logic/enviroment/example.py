@@ -87,7 +87,7 @@
 Module: `logic.owner.travel.base.coord_stack_validator.traveler.exception`
 Author: Banji Lawal
 Created: 2025-10-06
-Version: 1.0.1
+Version: 0.0.2
 
 SCOPE:
 -----

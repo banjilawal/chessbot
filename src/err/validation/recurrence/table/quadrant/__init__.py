@@ -4,7 +4,7 @@
 Module: err.validator.recurrence.table.quadrant.__init__
 Author: Banji Lawal
 Created: 2026-04-03
-version: 1.0.1
+version: 0.0.2
 """
 
 # =========== ERR.VALIDATOR.RECURRENCE.TABLE.QUADRANT PACKAGE ===========#

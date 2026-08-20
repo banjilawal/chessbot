@@ -4,7 +4,7 @@
 Module: authorization.adjudicator.chain.search.request
 Author: Banji Lawal
 Created: 2026-04-03
-version: 1.0.1
+version: 0.0.2
 """
 
 from __future__ import annotations
@@ -21,7 +21,7 @@ from collection import Chain
 Module: authorization.adjudicator.chain.search.adjudicator
 Author: Banji Lawal
 Created: 2026-04-03
-version: 1.0.1
+version: 0.0.2
 """
 
 from __future__ import annotations

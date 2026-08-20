@@ -4,7 +4,7 @@
 Module: suite.operation.toggle.vector.suite
 Author: Banji Lawal
 Created: 2026-04-03
-version: 1.0.1
+version: 0.0.2
 """
 
 from __future__ import annotations
@@ -57,7 +57,7 @@ class VectorToggleSuite(ToggleOperationSuite[VectorToggle]):
     
     @property
     def toolkit(self) -> VectorToggleToolkit:
-        return cast(VectorToggleToolkit, super().toolkit)
+        return cast(VectorToggleToolkit, super().bundle)
     
     @property
     def builder(self) -> VectorToggleBuilder:

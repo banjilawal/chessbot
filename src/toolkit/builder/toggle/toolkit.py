@@ -4,7 +4,7 @@
 Module: toolkit.builder.toggle.toolkit
 Author: Banji Lawal
 Created: 2026-04-03
-version: 1.0.1
+version: 0.0.2
 """
 
 from __future__ import annotations
@@ -54,4 +54,4 @@ class ToggleBuilderToolkit(BuilderToolkit, Generic[T]):
         
     @property
     def root_certifier(self) -> [ToggleCertifier[T]]:
-        return cast([ToggleCertifier[T]], super().certifier)
+        return cast([ToggleCertifier[T]], super().integrity_checker)

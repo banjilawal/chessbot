@@ -4,7 +4,7 @@
 Module: toolkit.builder.model.vector.toolkit
 Author: Banji Lawal
 Created: 2026-04-03
-version: 1.0.1
+version: 0.0.2
 """
 
 from __future__ import annotations
@@ -54,5 +54,5 @@ class VectorBuilderToolkit(ModelBuilderToolkit[Vector]):
     
     @property
     def root_certifier(self) -> VectorIntegrityChecker:
-        return cast(VectorIntegrityChecker, super().certifier)
+        return cast(VectorIntegrityChecker, super().integrity_checker)
     

@@ -4,7 +4,7 @@
 Module: assurance.validator.model.validator
 Author: Banji Lawal
 Created: 2026-04-03
-version: 1.0.1
+version: 0.0.2
 """
 
 from __future__ import annotations
@@ -44,7 +44,7 @@ class ModelValidator(Validator[Model]):
 
     @property
     @abstractmethod
-    def certifier(self) -> Certifier:
+    def integrity_checker(self) -> Certifier:
         pass
     
     @abstractmethod

@@ -4,7 +4,7 @@
 Module: toolkit.builder.model.team.toolkit
 Author: Banji Lawal
 Created: 2026-04-03
-version: 1.0.1
+version: 0.0.2
 """
 
 from __future__ import annotations
@@ -54,5 +54,5 @@ class TeamBuilderToolkit(ModelBuilderToolkit[Team]):
     
     @property
     def root_certifier(self) -> TeamRootCertifier:
-        return cast(TeamRootCertifier, super().certifier)
+        return cast(TeamRootCertifier, super().integrity_checker)
     

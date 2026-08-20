@@ -4,7 +4,7 @@
 Module: blueprint.space.quadrant.southwest.__init__
 Author: Banji Lawal
 Created: 2026-04-03
-version: 1.0.1
+version: 0.0.2
 """
 
 # =========== BLUEPRINT.SPACE.QUADRANT.SOUTHWEST PACKAGE ===========#

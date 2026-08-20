@@ -4,7 +4,7 @@
 Module: toolkit.builder.space.quadrant.southwest.toolkit
 Author: Banji Lawal
 Created: 2026-04-03
-version: 1.0.1
+version: 0.0.2
 """
 
 from __future__ import annotations
@@ -57,4 +57,4 @@ class SouthwestQuadrantBuilderToolkit(
         
     @property
     def root_certifier(self) -> SouthwestQuadrantRootCertifier:
-        return cast(SouthwestQuadrantRootCertifier, super().certifier)
+        return cast(SouthwestQuadrantRootCertifier, super().integrity_checker)

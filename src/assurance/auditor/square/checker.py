@@ -4,7 +4,7 @@
 Module: assurance.auditor.square.checker
 Author: Banji Lawal
 Created: 2026-04-03
-version: 1.0.1
+version: 0.0.2
 """
 
 from __future__ import annotations
@@ -77,9 +77,9 @@ class SquareConsistencyAuditor(ConsistencyAuditor[Square]):
         """
         method = f"{self.__class__.__name__}.execute"
         
-        bootstrap = self.root_certifier.toolkit.priming_consistency.execute(
-            target_model=self.root_certifier.toolkit.model,
-            model_null_exception=self.root_certifier.toolkit.null_exception,
+        bootstrap = self.root_certifier.bundle.priming_consistency.execute(
+            target_model=self.root_certifier.bundle.model,
+            model_null_exception=self.root_certifier.bundle.null_exception,
         )
         if bootstrap.is_failure:
             # Send the exception chain on failure.

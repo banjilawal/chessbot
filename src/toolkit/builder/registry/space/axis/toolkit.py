@@ -4,7 +4,7 @@
 Module: toolkit.builder.registry.space.axisReservoir.toolkit
 Author: Banji Lawal
 Created: 2026-04-03
-version: 1.0.1
+version: 0.0.2
 """
 
 from __future__ import annotations
@@ -53,4 +53,4 @@ class AxisReservoirBuilderToolkit(SpaceReservoirBuilderToolkit[AxisReservoir]):
         
     @property
     def root_certifier(self) -> AxisReservoirRootCertifier:
-        return cast(AxisReservoirRootCertifier, super().certifier)
+        return cast(AxisReservoirRootCertifier, super().integrity_checker)

@@ -4,7 +4,7 @@
 Module: logic.environment.build
 Author: Banji Lawal
 Created: 2025-11-10
-Version: 1.0.1
+Version: 0.0.2
 """
 
 from typing import cast

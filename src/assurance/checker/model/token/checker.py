@@ -50,8 +50,8 @@ class TokenIntegrityChecker(ModelIntegrityChecker[Token]):
         super().__init__(toolkit=toolkit or TokenValidationBundle())
         
     @property
-    def toolkit(self) -> TokenValidationBundle:
-        return cast(TokenValidationBundle, super().toolkit)
+    def bundle(self) -> TokenValidationBundle:
+        return cast(TokenValidationBundle, super().bundle)
     
     
     @LoggingLevelRouter.monitor
@@ -76,10 +76,10 @@ class TokenIntegrityChecker(ModelIntegrityChecker[Token]):
         """
         method = f"{self.__class__.__name__}.execute"
         
-        carrier_validation = self.toolkit.priming_validator.execute(
+        carrier_validation = self.bundle.priming_validator.execute(
             candidate=candidate,
-            target_model=self.toolkit.types.model,
-            model_null_exception=self.toolkit.null_exceptions.carrier,
+            target_model=self.bundle.types.model,
+            model_null_exception=self.bundle.null_exceptions.carrier,
         )
         if carrier_validation.is_failure:
             # Send the exception chain on failure.
@@ -92,13 +92,13 @@ class TokenIntegrityChecker(ModelIntegrityChecker[Token]):
                     ex=carrier_validation.exception,
                 )
             )
-        carrier = cast(self.toolkit.types.carrier, carrier_validation.payload)
+        carrier = cast(self.bundle.types.carrier, carrier_validation.payload)
 
         # --- Cast the candidate into a TokenBlueprint for additional tests. ---#
         blueprint = carrier.extract_blueprint()
         
         # Handle the case that, any id in the blueprint is flagged.
-        id_test = self.toolkit.identity_service.validate_blueprint_id(
+        id_test = self.bundle.identity_service.validate_blueprint_id(
             owner_blueprint=blueprint,
             owner_name=blueprint.model_class_name,
         )
@@ -114,7 +114,7 @@ class TokenIntegrityChecker(ModelIntegrityChecker[Token]):
                 )
             )
         # Handle the case that, the team does not pass a validation check.
-        team_test = self.toolkit.team_validator.execute(
+        team_test = self.bundle.team_validator.execute(
             candidate=blueprint.team
         )
         if team_test.is_failure:
@@ -129,7 +129,7 @@ class TokenIntegrityChecker(ModelIntegrityChecker[Token]):
                 )
             )
         # Handle the case that, the formation does not pass a validation check.
-        formation_test = self.toolkit.priming_validator.execute(
+        formation_test = self.bundle.priming_validator.execute(
             candidate=blueprint.formation,
             target_model=Type[Formation],
             null_exception=FormationNullException(),
@@ -146,7 +146,7 @@ class TokenIntegrityChecker(ModelIntegrityChecker[Token]):
                 )
             )
         # Handle the case that, the home_square gets flagged.
-        home_detection = self.toolkit.home_detector.execute(
+        home_detection = self.bundle.home_detector.execute(
             context=TokenHomeContext(
                 board=blueprint.team.board,
                 square_name=blueprint.formation.home_square_name,
@@ -164,9 +164,9 @@ class TokenIntegrityChecker(ModelIntegrityChecker[Token]):
                 )
             )
         # Handle the case that, the rank is not safe to use.
-        rank_derivation = self.toolkit.rank_extractor.execute(
+        rank_derivation = self.bundle.rank_extractor.execute(
             blueprint=blueprint,
-            toolkit=self.toolkit,
+            toolkit=self.bundle,
         )
         if rank_derivation.is_failure:
             # Send the exception chain on failure.

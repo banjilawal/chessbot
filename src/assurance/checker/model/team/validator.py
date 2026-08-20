@@ -4,7 +4,7 @@
 Module: assurance.certifier.team.validator
 Author: Banji Lawal
 Created: 2026-04-03
-version: 1.0.1
+version: 0.0.2
 """
 
 from __future__ import annotations
@@ -39,7 +39,7 @@ class TeamIntegrityChecker(ModelIntegrityChecker[Team]):
         
     @property
     def toolkit(self) -> TeamToolkit:
-        return cast(TeamToolkit, super().toolkit)
+        return cast(TeamToolkit, super().bundle)
     
     @LoggingLevelRouter.monitor
     def execute(self, candidate: Any) -> ValidationResult:

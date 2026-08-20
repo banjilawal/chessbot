@@ -4,7 +4,7 @@
 Module: assurance.certifier.toggle.certifier
 Author: Banji Lawal
 Created: 2026-04-03
-version: 1.0.1
+version: 0.0.2
 """
 
 from __future__ import annotations
@@ -13,7 +13,6 @@ from abc import ABC, abstractmethod
 from typing import Any, Generic, TypeVar
 
 from assurance import ValidationBundle
-from fabrication.blueprint import Blueprint
 from result import ValidationResult
 from util import LoggingLevelRouter
 
@@ -51,12 +50,12 @@ class IntegrityChecker(ABC, Generic[T]):
         self._bundle = bundle
         
     @property
-    def toolkit(self) -> ValidationBundle[T]:
+    def bundle(self) -> ValidationBundle[T]:
         return self._bundle
     
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def execute(self, candidate: Any) -> ValidationResult[Blueprint[T]|T]:
+    def execute(self, candidate: Any) -> ValidationResult:
         pass
     
     

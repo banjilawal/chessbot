@@ -4,7 +4,7 @@
 Module: validator.model.path.validator
 Author: Banji Lawal
 Created: 2026-04-03
-version: 1.0.1
+version: 0.0.2
 """
 
 from __future__ import annotations
@@ -47,8 +47,8 @@ class PathRootChecker(ModelIntegrityChecker[Path]):
         super().__init__(toolkit=toolkit)
         
     @property
-    def toolkit(self) -> PathToolkit:
-        return cast(PathToolkit, super().toolkit)
+    def bundle(self) -> PathToolkit:
+        return cast(PathToolkit, super().bundle)
     
     @LoggingLevelRouter.monitor
     def execute(self, candidate: Any,) -> ValidationResult[Path]:
@@ -76,10 +76,10 @@ class PathRootChecker(ModelIntegrityChecker[Path]):
 
         
         # Handle the case that, the validator is not primed.
-        validator_priming_result = self.toolkit.priming_validator.execute(
+        validator_priming_result = self.bundle.priming_validator.execute(
             candidate=candidate,
-            target_model=self.toolkit.model,
-            null_exception=self.toolkit.null_exception,
+            target_model=self.bundle.model,
+            null_exception=self.bundle.null_exception,
         )
         if validator_priming_result.is_failure:
             # Send the exception chain on failure.
@@ -96,7 +96,7 @@ class PathRootChecker(ModelIntegrityChecker[Path]):
         path = cast(Path, candidate)
         
         # Handle the case that, the path's id gets flagged.
-        id_validation = self.toolkit.identity_service.validate_id(path.id)
+        id_validation = self.bundle.identity_service.validate_id(path.id)
         if id_validation.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
@@ -110,7 +110,7 @@ class PathRootChecker(ModelIntegrityChecker[Path]):
             )
         # Handle the case that either the source or destination are not safe.
         for square in [path.endpoints.to_list]:
-            square_validation_result = self.toolkit.square_validator.execute(square)
+            square_validation_result = self.bundle.square_validator.execute(square)
             if square_validation_result.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(

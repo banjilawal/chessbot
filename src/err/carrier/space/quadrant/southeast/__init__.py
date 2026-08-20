@@ -4,7 +4,7 @@
 Module: err.carrier.space.quadrantCarrier experienced an error.southeast.__init__
 Author: Banji Lawal
 Created: 2026-04-04
-version: 1.0.1
+version: 0.0.2
 """
 
 # ============ ERR.CARRIER.SPACE.QUADRANTCarrier experienced an error.SOUTHEAST PACKAGE ===========#

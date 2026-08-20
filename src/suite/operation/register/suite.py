@@ -4,7 +4,7 @@
 Module: suite.operation.register.suite
 Author: Banji Lawal
 Created: 2026-04-03
-version: 1.0.1
+version: 0.0.2
 """
 
 from __future__ import annotations
@@ -54,7 +54,7 @@ class RegisterOperationSuite(OperationSuite, Generic[T]):
     
     @property
     def toolkit(self) -> RegisterToolkit[T]:
-        return cast(RegisterToolkit[T], super().toolkit)
+        return cast(RegisterToolkit[T], super().bundle)
     
     @property
     def builder(self) -> RegisterBuilder[T]:

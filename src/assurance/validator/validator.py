@@ -4,7 +4,7 @@
 Module: assurance.validator.validator
 Author: Banji Lawal
 Created: 2026-04-03
-version: 1.0.1
+version: 0.0.2
 """
 
 from __future__ import annotations
@@ -12,7 +12,7 @@ from __future__ import annotations
 from abc import ABC, abstractmethod
 from typing import Any, Generic, TypeVar
 
-from assurance.checker import Certifier
+from assurance import IntegrityChecker
 from result import ValidationResult
 from util import LoggingLevelRouter
 
@@ -32,25 +32,25 @@ class Validator(ABC, Generic[T]):
         1.  Ensure data-holders are safe before they are used or saved.
         
     Attributes:
-        certifier: RootCertifier[T]
+        integrity_checker: IntegrityChecker[T]
     
     Provides:
         -   def execute(candidate: Any) -> ValidationResult[T]
         
     super Class:
     """
-    _certifier: Certifier[T]
+    _integrity_checker: IntegrityChecker[T]
     
-    def __init__(self, certifier: Certifier[T],):
+    def __init__(self, integrity_checker: IntegrityChecker[T], ):
         """
         Args:
-            certifier: RootCertifier[T]
+            integrity_checker: IntegrityChecker[T]
         """
-        self.certifier = certifier
+        self._integrity_checker = integrity_checker
         
     @property
-    def certifier(self) -> Certifier[T]:
-        return self.certifier
+    def integrity_checker(self) -> IntegrityChecker[T]:
+        return self.integrity_checker
 
     @abstractmethod
     @LoggingLevelRouter.monitor

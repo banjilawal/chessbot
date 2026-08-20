@@ -4,7 +4,7 @@
 Module: toolkit.builder.model.arena.toolkit
 Author: Banji Lawal
 Created: 2026-04-03
-version: 1.0.1
+version: 0.0.2
 """
 
 from __future__ import annotations
@@ -54,5 +54,5 @@ class ArenaBuilderToolkit(ModelBuilderToolkit[Arena]):
     
     @property
     def root_certifier(self) -> ArenaRootCertifier:
-        return cast(ArenaRootCertifier, super().certifier)
+        return cast(ArenaRootCertifier, super().integrity_checker)
     
