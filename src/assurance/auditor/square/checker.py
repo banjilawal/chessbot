@@ -18,10 +18,10 @@ from chooser import SquareCarrier
 from assurance.checker import SquareRootCertifier
 from result import ValidationResult
 from util import LoggingLevelRouter
-from assurance.auditor import  Auditor
+from assurance.auditor import  ConsistencyAuditor
 
 
-class SquareAuditor(Auditor[Square]):
+class SquareConsistencyAuditor(ConsistencyAuditor[Square]):
     """
     Role
         -   Transaction Worker

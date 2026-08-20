@@ -12,7 +12,7 @@ from __future__ import annotations
 from abc import abstractmethod
 from typing import Any, Generic, TypeVar
 
-from assurance import Checker, ValidationBundle
+from assurance import IntegrityChecker, ValidationBundle
 from model import Model
 from result import ValidationResult
 from util import LoggingLevelRouter
@@ -20,7 +20,7 @@ from util import LoggingLevelRouter
 T = TypeVar("T", bound="Model")
 
 
-class ModelChecker(Checker, Generic[T]):
+class ModelIntegrityChecker(IntegrityChecker, Generic[T]):
     """
     Role
         -   Validation Worker

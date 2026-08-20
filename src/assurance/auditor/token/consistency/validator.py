@@ -17,12 +17,12 @@ from toolkit import TokenToolkit
 from database import CoordDatabase
 from result import BuildResult, ValidationResult
 from util import LoggingLevelRouter
-from assurance.auditor import  Auditor
+from assurance.auditor import  ConsistencyAuditor
 from controller import WorkerRegistryController
 from err import CoordDatabaseNullException, TokenNullException, TokenAuditorException
 
 
-class TokenConsistencyAuditor(Auditor[Token]):
+class TokenConsistencyConsistencyAuditor(ConsistencyAuditor[Token]):
     """
     Role
         -   Transaction Worker

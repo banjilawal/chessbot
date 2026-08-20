@@ -10,14 +10,14 @@ version: 1.0.1
 from __future__ import annotations
 
 
-from assurance.auditor import Auditor
+from assurance.auditor import ConsistencyAuditor
 from err import TokenAuditorException
 from model import Token
 from result import ValidationResult
 from util import LoggingLevelRouter
 
 
-class TokenAuditor(Auditor[Token]):
+class TokenConsistencyAuditor(ConsistencyAuditor[Token]):
     """
     Role
         -   Transaction Worker

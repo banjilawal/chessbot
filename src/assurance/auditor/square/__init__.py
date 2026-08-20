@@ -13,4 +13,4 @@ version: 1.0.1
 
 
 # Modules
-from .checker import SquareAuditor
+from .checker import SquareConsistencyAuditor

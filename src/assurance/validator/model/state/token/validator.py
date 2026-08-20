@@ -13,7 +13,7 @@ from typing import Any, cast
 
 from err import TokenValidatorException
 from model import Token
-from assurance.checker import TokenRootChecker
+from assurance.checker import TokenIntegrityChecker
 from result import ValidationResult
 from util import LoggingLevelRouter
 from assurance.validator import ModelValidator
@@ -42,13 +42,13 @@ class TokenValidator(ModelValidator[Token]):
     
     def __init__(
             self,
-            root_certifier: TokenRootChecker | None = TokenRootChecker(),
+            root_certifier: TokenIntegrityChecker | None = TokenIntegrityChecker(),
     ):
         super().__init__(root_certifier=root_certifier)
         
     @property
-    def certifier(self) -> TokenRootChecker:
-        return cast(TokenRootChecker, self.certifier)
+    def certifier(self) -> TokenIntegrityChecker:
+        return cast(TokenIntegrityChecker, self.certifier)
     
 
     @LoggingLevelRouter.monitor

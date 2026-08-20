@@ -10,7 +10,7 @@ version: 1.0.1
 from __future__ import annotations
 
 
-class BoardRootCertifier(ModelRootCertifier[Board]):
+class BoardIntegrityChecker(ModelIntegrityChecker[Board]):
     """
      Role:Validation, Data Integrity Guarantor, Security.
 

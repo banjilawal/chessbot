@@ -13,7 +13,7 @@ from typing import Optional, cast
 
 from fabrication.assembler import TokenAssembler
 from model import Token
-from assurance.checker import TokenRootChecker
+from assurance.checker import TokenIntegrityChecker
 from toolkit.builder.model.token.toolkit import ModelBuilderToolkit
 
 
@@ -38,8 +38,8 @@ class TokenBuilderToolkit(ModelBuilderToolkit[Token]):
     def __init__(
             self,
             assembler: Optional[TokenAssembler] | None = TokenAssembler(),
-            root_certifier: Optional[TokenRootChecker] |
-                            None = TokenRootChecker(),
+            root_certifier: Optional[TokenIntegrityChecker] |
+                            None = TokenIntegrityChecker(),
     ):
         """
         Args:
@@ -53,6 +53,6 @@ class TokenBuilderToolkit(ModelBuilderToolkit[Token]):
         return cast(TokenAssembler, super().assembler)
     
     @property
-    def root_certifier(self) -> TokenRootChecker:
-        return cast(TokenRootChecker, super().certifier)
+    def root_certifier(self) -> TokenIntegrityChecker:
+        return cast(TokenIntegrityChecker, super().certifier)
     

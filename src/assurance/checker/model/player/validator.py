@@ -10,7 +10,7 @@ version: 1.0.1
 from __future__ import annotations
 
 
-class PlayerRootCertifier(ModelRootCertifier[Player]):
+class PlayerIntegrityChecker(ModelIntegrityChecker[Player]):
     """
      Role:Validation, Data Integrity Guarantor, Security.
 
@@ -100,25 +100,25 @@ class PlayerRootCertifier(ModelRootCertifier[Player]):
             if blueprint.id is not None:
                 validation = identity_service.validate_id(candidate=blueprint.id)
                 if validation.is_failure:
-                    return ValidationResult.failure(modelRootCertifier.exception)
+                    return ValidationResult.failure(modelIntegrityChecker.exception)
                 return ValidationResult.success(blueprint)
             
             if blueprint.name is not None:
                 validation = identity_service.validate_name(candidate=blueprint.name)
                 if validation.is_failure:
-                    return ValidationResult.failure(modelRootCertifier.exception)
+                    return ValidationResult.failure(modelIntegrityChecker.exception)
                 return ValidationResult.success(blueprint)
             
             if blueprint.team is not None:
                 validation = team_service.execute.execute(candidate=blueprint.team)
                 if validation.is_failure:
-                    return ValidationResult.failure(modelRootCertifier.exception)
+                    return ValidationResult.failure(modelIntegrityChecker.exception)
                 return ValidationResult.success(blueprint)
             
             if blueprint.game is not None:
                 validation = game_service.execute.execute(candidate=blueprint.game)
                 if validation.is_failure:
-                    return ValidationResult.failure(modelRootCertifier.exception)
+                    return ValidationResult.failure(modelIntegrityChecker.exception)
                 return ValidationResult.success(blueprint)
             
             if blueprint.variety is not None:

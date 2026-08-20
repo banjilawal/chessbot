@@ -13,4 +13,4 @@ version: 1.0.1
 
 
 # Modules
-from .certifier import ManeuverRootCertifier
+from .certifier import ManeuverIntegrityChecker

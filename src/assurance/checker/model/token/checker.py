@@ -11,9 +11,9 @@ from __future__ import annotations
 
 from typing import Optional, Type, cast
 
-from assurance import ModelChecker, TokenValidationBundle
+from assurance import ModelIntegrityChecker, TokenValidationBundle
 from context import TokenHomeContext
-from err import FormationNullException, TokenRootCertifierException
+from err import FormationNullException, TokenIntegrityCheckerException
 from fabrication import TokenBlueprint
 from model import HomeSquare, Team, Token
 from result import ValidationResult
@@ -22,7 +22,7 @@ from transit import TokenCarrier
 from util import LoggingLevelRouter
 
 
-class TokenRootChecker(ModelChecker[Token]):
+class TokenIntegrityChecker(ModelIntegrityChecker[Token]):
     """
     Role
         -   Integrity Maintenance
@@ -84,11 +84,11 @@ class TokenRootChecker(ModelChecker[Token]):
         if carrier_validation.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                TokenRootCertifierException(
+                TokenIntegrityCheckerException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=TokenRootCertifierException.MSG,
-                    err_code=TokenRootCertifierException.ERR_CODE,
+                    msg=TokenIntegrityCheckerException.MSG,
+                    err_code=TokenIntegrityCheckerException.ERR_CODE,
                     ex=carrier_validation.exception,
                 )
             )
@@ -105,11 +105,11 @@ class TokenRootChecker(ModelChecker[Token]):
         if id_test.is_failure:
         # Send the exception chain on failure.
             return ValidationResult.failure(
-                TokenRootCertifierException(
+                TokenIntegrityCheckerException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=TokenRootCertifierException.MSG,
-                    err_code=TokenRootCertifierException.ERR_CODE,
+                    msg=TokenIntegrityCheckerException.MSG,
+                    err_code=TokenIntegrityCheckerException.ERR_CODE,
                     ex=id_test.exception,
                 )
             )
@@ -120,11 +120,11 @@ class TokenRootChecker(ModelChecker[Token]):
         if team_test.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                TokenRootCertifierException(
+                TokenIntegrityCheckerException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=TokenRootCertifierException.MSG,
-                    err_code=TokenRootCertifierException.ERR_CODE,
+                    msg=TokenIntegrityCheckerException.MSG,
+                    err_code=TokenIntegrityCheckerException.ERR_CODE,
                     ex=team_test.exception,
                 )
             )
@@ -137,11 +137,11 @@ class TokenRootChecker(ModelChecker[Token]):
         if formation_test.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                TokenRootCertifierException(
+                TokenIntegrityCheckerException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=TokenRootCertifierException.MSG,
-                    err_code=TokenRootCertifierException.ERR_CODE,
+                    msg=TokenIntegrityCheckerException.MSG,
+                    err_code=TokenIntegrityCheckerException.ERR_CODE,
                     ex=formation_test.exception,
                 )
             )
@@ -155,11 +155,11 @@ class TokenRootChecker(ModelChecker[Token]):
         if home_detection.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                TokenRootCertifierException(
+                TokenIntegrityCheckerException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=TokenRootCertifierException.MSG,
-                    err_code=TokenRootCertifierException.ERR_CODE,
+                    msg=TokenIntegrityCheckerException.MSG,
+                    err_code=TokenIntegrityCheckerException.ERR_CODE,
                     ex=home_detection.exception,
                 )
             )
@@ -171,11 +171,11 @@ class TokenRootChecker(ModelChecker[Token]):
         if rank_derivation.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                TokenRootCertifierException(
+                TokenIntegrityCheckerException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=TokenRootCertifierException.MSG,
-                    err_code=TokenRootCertifierException.ERR_CODE,
+                    msg=TokenIntegrityCheckerException.MSG,
+                    err_code=TokenIntegrityCheckerException.ERR_CODE,
                     ex=rank_derivation.exception,
                 )
             )

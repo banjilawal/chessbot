@@ -18,7 +18,7 @@ from toolkit import CoordBlueprintToolkit
 from util import LoggingLevelRouter
 
 
-class CoordRootCertifier(ModelRootCertifier[Coord]):
+class CoordIntegrityChecker(ModelIntegrityChecker[Coord]):
     """
     Role
         -   Transaction Worker

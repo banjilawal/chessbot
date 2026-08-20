@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Generic, TypeVar, cast
 
 from fabrication.assembler import ModelAssembler
-from assurance.checker import ModelChecker
+from assurance.checker import ModelIntegrityChecker
 from toolkit.builder.model.toolkit import BuilderToolkit
 
 T = TypeVar("T", bound="Model")
@@ -38,7 +38,7 @@ class ModelBuilderToolkit(BuilderToolkit, Generic[T]):
     def __init__(
             self,
             assembler: [ModelAssembler[T]],
-            root_certifier: [ModelChecker[T]],
+            root_certifier: [ModelIntegrityChecker[T]],
     ):
         """
         Args:
@@ -53,5 +53,5 @@ class ModelBuilderToolkit(BuilderToolkit, Generic[T]):
         return cast([ModelAssembler[T]], super()._assembler)
         
     @property
-    def root_certifier(self) -> [ModelChecker[T]]:
-        return cast([ModelChecker[T]], super().certifier)
+    def root_certifier(self) -> [ModelIntegrityChecker[T]]:
+        return cast([ModelIntegrityChecker[T]], super().certifier)

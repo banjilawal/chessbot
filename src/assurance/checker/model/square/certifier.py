@@ -21,7 +21,7 @@ from toolkit import SquareToolkit
 from util import LoggingLevelRouter
 
 
-class SquareRootCertifier(ModelRootCertifier[SquareBlueprint]):
+class SquareIntegrityChecker(ModelIntegrityChecker[SquareBlueprint]):
     """
     Role
         -   Transaction Worker

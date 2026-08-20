@@ -15,7 +15,7 @@ from model import Team
 from toolkit import TeamToolkit
 
 
-class TeamRootCertifier(ModelRootCertifier[Team]):
+class TeamIntegrityChecker(ModelIntegrityChecker[Team]):
     """
     Role
         -   Transaction Worker

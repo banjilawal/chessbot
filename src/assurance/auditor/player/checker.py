@@ -10,10 +10,10 @@ version: 1.0.1
 from __future__ import annotations
 
 from model import Player
-from assurance.auditor import  Auditor
+from assurance.auditor import  ConsistencyAuditor
 
 
-class PlayerAuditor(Auditor[Player]):
+class PlayerConsistencyAuditor(ConsistencyAuditor[Player]):
     """
      Role:Validation, Data Integrity Guarantor, Security.
 

@@ -12,13 +12,13 @@ from typing import Any, Optional, cast
 
 from err import CircularPathException, PathValidatorException
 from model import Path
-from assurance.checker import ModelChecker
+from assurance.checker import ModelIntegrityChecker
 from result import ValidationResult
 from toolkit import PathToolkit
 from util import LoggingLevelRouter
 
 
-class PathRootChecker(ModelChecker[Path]):
+class PathRootChecker(ModelIntegrityChecker[Path]):
     """
     Role
         -   Transaction Worker

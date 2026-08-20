@@ -20,7 +20,7 @@ from util import LoggingLevelRouter
 T = TypeVar("T",)
 
 
-class Checker(ABC, Generic[T]):
+class IntegrityChecker(ABC, Generic[T]):
     """
     Role
         -   Validator

@@ -18,4 +18,4 @@ from .space import *
 from .toggle import *
 
 # Module
-from .checker import Checker
+from .checker import IntegrityChecker

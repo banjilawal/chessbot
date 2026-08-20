@@ -13,7 +13,7 @@ from typing import Optional, cast
 
 from fabrication.assembler import VectorAssembler
 from model import Vector
-from assurance.checker import VectorChecker
+from assurance.checker import VectorIntegrityChecker
 from toolkit.builder.model.vector.toolkit import ModelBuilderToolkit
 
 
@@ -38,8 +38,8 @@ class VectorBuilderToolkit(ModelBuilderToolkit[Vector]):
     def __init__(
             self,
             assembler: Optional[VectorAssembler] | None = VectorAssembler(),
-            root_certifier: Optional[VectorChecker] |
-                            None = VectorChecker(),
+            root_certifier: Optional[VectorIntegrityChecker] |
+                            None = VectorIntegrityChecker(),
     ):
         """
         Args:
@@ -53,6 +53,6 @@ class VectorBuilderToolkit(ModelBuilderToolkit[Vector]):
         return cast(VectorAssembler, super().assembler)
     
     @property
-    def root_certifier(self) -> VectorChecker:
-        return cast(VectorChecker, super().certifier)
+    def root_certifier(self) -> VectorIntegrityChecker:
+        return cast(VectorIntegrityChecker, super().certifier)
     

@@ -25,4 +25,4 @@ from .token import *
 from .vector import *
 
 # Module
-from .checker import ModelChecker
+from .checker import ModelIntegrityChecker

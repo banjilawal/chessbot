@@ -15,7 +15,7 @@ from .arena import *
 from .board import *
 from .endpoint import *
 from .game import *
-from .maneuver import *
+
 from .path import *
 from .player import *
 from .snapshot import *
@@ -24,4 +24,4 @@ from .team import *
 from .token import *
 
 # Module
-from .checker import Auditor
+from .auditor import ConsistencyAuditor

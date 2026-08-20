@@ -14,7 +14,7 @@ from typing import Any, cast
 from assurance import ModelValidator
 from err import VectorValidatorException
 from model import Vector
-from assurance.checker import VectorChecker
+from assurance.checker import VectorIntegrityChecker
 from result import ValidationResult
 from util import LoggingLevelRouter
 
@@ -43,13 +43,13 @@ class VectorValidator(ModelValidator[Vector]):
     
     def __init__(
             self,
-            root_certifier: VectorChecker | None = None,
+            root_certifier: VectorIntegrityChecker | None = None,
     ):
-        super().__init__(root_certifier=root_certifier or VectorChecker())
+        super().__init__(root_certifier=root_certifier or VectorIntegrityChecker())
         
     @property
-    def certifier(self) -> VectorChecker:
-        return cast(VectorChecker, super().certifier)
+    def certifier(self) -> VectorIntegrityChecker:
+        return cast(VectorIntegrityChecker, super().certifier)
     
 
     @LoggingLevelRouter.monitor

@@ -18,7 +18,7 @@ from toolkit import ManeuverToolkit
 from util import LoggingLevelRouter
 
 
-class ManeuverRootCertifier(ModelRootCertifier[Maneuver]):
+class ManeuverIntegrityChecker(ModelIntegrityChecker[Maneuver]):
     """
     Role
         -   Transaction Worker

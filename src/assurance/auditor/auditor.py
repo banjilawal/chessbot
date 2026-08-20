@@ -19,7 +19,7 @@ from util import LoggingLevelRouter
 T = TypeVar("T")
 
 
-class Auditor(ABC, Generic[T]):
+class ConsistencyAuditor(ABC, Generic[T]):
     """
     Role
         -   Transaction Worker

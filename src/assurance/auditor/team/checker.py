@@ -16,10 +16,10 @@ from toolkit import TeamToolkit
 from result import ValidationResult
 from util import LoggingLevelRouter
 from err import SchemaNullException, TeamNullException, TeamConsistencyCheckerException
-from assurance.auditor import  Auditor
+from assurance.auditor import  ConsistencyAuditor
 
 
-class TeamAuditor(Auditor[Team]):
+class TeamConsistencyAuditor(ConsistencyAuditor[Team]):
     """
     Role
         -   Transaction Worker

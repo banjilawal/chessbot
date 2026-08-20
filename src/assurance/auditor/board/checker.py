@@ -13,12 +13,12 @@ from typing import Any
 
 from microservice import ArenaService, IdentityService
 from model import Board
-from assurance.auditor import  Auditor
+from assurance.auditor import  ConsistencyAuditor
 from result import ValidationResult
 from util import LoggingLevelRouter
 
 
-class BoardAuditor(Auditor[Board]):
+class BoardConsistencyAuditor(ConsistencyAuditor[Board]):
     """
      Role:Validation, Data Integrity Guarantor, Security.
 

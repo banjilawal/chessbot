@@ -10,7 +10,7 @@ version: 1.0.1
 from __future__ import annotations
 
 
-class ArenaRootCertifier(ModelRootCertifier[Arena]):
+class ArenaIntegrityChecker(ModelIntegrityChecker[Arena]):
     
     @classmethod
     def validate(cls, candidate: Any, *args, **kwargs) -> ValidationResult[Arena]:

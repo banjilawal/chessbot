@@ -11,16 +11,16 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from assurance import ModelChecker, VectorValidationBundle
+from assurance import ModelIntegrityChecker, VectorValidationBundle
 from fabrication.blueprint import VectorBlueprint
-from err import VectorRootCertifierException
+from err import VectorIntegrityCheckerException
 from model import Vector
 from result import ValidationResult
 from transit import VectorCarrier
 from util import LoggingLevelRouter
 
 
-class VectorChecker(ModelChecker[Vector]):
+class VectorIntegrityChecker(ModelIntegrityChecker[Vector]):
     """
     Role
         -   Transaction Worker
@@ -70,7 +70,7 @@ class VectorChecker(ModelChecker[Vector]):
         Returns:
             ValidationResult[Vector|VectorBlueprint]
         Raises:
-            VectorRootCertifierException
+            VectorIntegrityCheckerException
         """
         method = f"{self.__class__.__name__}.execute"
         
@@ -82,11 +82,11 @@ class VectorChecker(ModelChecker[Vector]):
         if carrier_validation.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                VectorRootCertifierException(
+                VectorIntegrityCheckerException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=VectorRootCertifierException.MSG,
-                    err_code=VectorRootCertifierException.ERR_CODE,
+                    msg=VectorIntegrityCheckerException.MSG,
+                    err_code=VectorIntegrityCheckerException.ERR_CODE,
                     ex=carrier_validation.exception,
                 )
             )
@@ -102,11 +102,11 @@ class VectorChecker(ModelChecker[Vector]):
             if validation.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
-                    VectorRootCertifierException(
+                    VectorIntegrityCheckerException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        msg=VectorRootCertifierException.MSG,
-                        err_code=VectorRootCertifierException.ERR_CODE,
+                        msg=VectorIntegrityCheckerException.MSG,
+                        err_code=VectorIntegrityCheckerException.ERR_CODE,
                         ex=validation.exception,
                     )
                 )

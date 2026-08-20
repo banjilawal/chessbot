@@ -10,7 +10,7 @@ version: 1.0.1
 from __future__ import annotations
 
 
-class NodeRootCertifier(ModelRootCertifier[Node]):
+class NodeIntegrityChecker(ModelIntegrityChecker[Node]):
     """
      Role:Validation, Data Integrity Guarantor, Security.
 

@@ -12,13 +12,13 @@ from typing import Any, Dict, cast
 
 from err import BoardTeamBinderNullException, BoardTeamBinderConsistencyCheckerException
 from model import BoardBinder
-from assurance.auditor import  Auditor
+from assurance.auditor import  ConsistencyAuditor
 from result import ValidationResult
 from util import LoggingLevelRouter
 from toolkit import BoardTeamBinderToolkit
 
 
-class BoardBinderAuditor(Auditor[BoardBinder]):
+class BoardBinderConsistencyAuditor(ConsistencyAuditor[BoardBinder]):
     """
     Role
         -   Transaction Worker
