@@ -9,7 +9,7 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from typing import Generic, TypeVar
+from typing import Dict, Generic, TypeVar
 
 from fabrication.assembler import Assembler
 
@@ -35,6 +35,7 @@ class BuilderToolkit(Toolkit, Generic[T]):
     Super Class:
         Toolkit
     """
+    _entry: Dict[str, Any] = {}
     _assembler: Assembler[T]
     _root_certifier: Certifier[T]
     
@@ -45,6 +46,10 @@ class BuilderToolkit(Toolkit, Generic[T]):
             root_certifier: RootCertifier[T]
         """
         super().__init__()
+        self._entry = {
+            "assembler": assembler,
+            "root_certifier": root_certifier,
+        }
         self._assembler = assembler
         self._root_certifier = root_certifier
         
@@ -55,3 +60,4 @@ class BuilderToolkit(Toolkit, Generic[T]):
     @property
     def root_certifier(self) -> Certifier[T]:
         return self._root_certifier
+    

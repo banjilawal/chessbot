@@ -10,11 +10,11 @@ version: 1.0.1
 from __future__ import annotations
 
 
-from typing import Generic, TypeVar
+from typing import Any, Generic, TypeVar
 
 from assurance import Validator
 from fabrication import Builder
-from kit import ModelToolkit, Suite, Toolkit
+from suite import Suite
 
 T = TypeVar("T", bound="Model")
 
@@ -44,6 +44,7 @@ class OperationSuite(Suite, Generic[T]):
     _builder: Builder[T]
     _validator: Validator[T]
     _toolkit: ModelToolkit[T]
+    _entries: dict[str, Any] = {}
     
     def __init__(self, toolkit: ModelToolkit[T], validator: Validator[T], builder: Builder[T]):
         """
@@ -52,6 +53,11 @@ class OperationSuite(Suite, Generic[T]):
             validator: Validator[T]
             toolkit: ModelToolkit[T]
         """
+        self._entries = {
+            "builder": builder,
+            "validator": validator,
+            "toolkit": toolkit,
+        }
         self._toolkit = toolkit
         self._builder = builder
         self._validator = validator

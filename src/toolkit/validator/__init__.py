@@ -1,13 +1,13 @@
-# src/toolkit/__init__.py
+# src/toolkit/validator/__init__.py
 
 """
-Module: toolkit.__init__
+Module: toolkit.validator.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
 """
 
-# =========== TOOLKIT PACKAGE ===========#
+# =========== TOOLKIT.VALIDATOR PACKAGE ===========#
 
 # Packages
 from .analyzer import *
@@ -27,7 +27,6 @@ from .registry import *
 from .request import *
 from toolkit.toolkit import *
 from .toggle import *
-from .validator import *
 
 # Modules
-from .toolkit import Toolkit
+from .manifest import ModelManifest
