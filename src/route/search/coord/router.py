@@ -10,7 +10,7 @@ version: 1.0.0
 from __future__ import annotations
 from typing import List
 
-from model import Coord
+from domain.model import Coord
 from result import SearchResult
 from system import LoggingLevelRouter
 

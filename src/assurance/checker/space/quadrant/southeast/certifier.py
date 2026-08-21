@@ -13,7 +13,7 @@ from typing import Any, List, cast
 
 from fabrication.blueprint import SoutheastQuadrantBlueprint
 from carrier import SoutheastQuadrantCarrier
-from model import Vector
+from domain.model import Vector
 from result import ValidationResult
 from assurance.checker import QuadrantRootChecker
 from space import SoutheastQuadrant

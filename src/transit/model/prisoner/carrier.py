@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Optional
 
 from fabrication.blueprint import PrisonerBlueprint
-from model import Prisoner
+from domain.model import Prisoner
 from carrier import ModelCarrier
 
 

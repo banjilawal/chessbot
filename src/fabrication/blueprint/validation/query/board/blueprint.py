@@ -13,7 +13,7 @@ from dataclasses import dataclass
 from typing import Optional
 
 from err import BoardNullException
-from model import Arena, Board, Blueprint, Team
+from domain.model import Arena, Board, Blueprint, Team
 
 
 @dataclass

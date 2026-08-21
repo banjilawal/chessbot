@@ -14,7 +14,7 @@ from typing import Optional, cast
 from fabrication.blueprint import SquareBlueprint
 from fabrication.builder import ModelBuilder
 from err import SquareBuilderException
-from model import Square
+from domain.model import Square
 from result import BuildResult, MethodResultType
 from toolkit import SquareBuilderToolkit
 from util import LoggingLevelRouter

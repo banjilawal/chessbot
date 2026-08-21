@@ -12,7 +12,7 @@ from typing import List
 
 from err import ServiceRegistrySearchException
 from result import SearchResult
-from model import ServiceRegistry
+from domain.model import ServiceRegistry
 from util import LoggingLevelRouter
 from controller import ServiceRegistryController
 from operation import Operation, RegistryEntryNameValidator

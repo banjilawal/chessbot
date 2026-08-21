@@ -17,7 +17,7 @@ from typing import List
 from fabrication.builder import Board
 from logic.square import Square
 from system import id_emitter
-from model.state.token import Piece
+from domain.model.state.token import Piece
 from logic.engine.scout.report import ScoutReport
 
 

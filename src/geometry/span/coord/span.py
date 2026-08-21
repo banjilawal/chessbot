@@ -10,7 +10,7 @@ version: 1.0.0
 from __future__ import annotations
 from typing import List, cast
 
-from model.math.coord import Coord
+from domain.model import Coord
 from math.span import Span
 from math.span.coord import CoordRay
 

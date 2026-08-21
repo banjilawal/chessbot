@@ -15,7 +15,7 @@ from typing import Type
 
 from assurance import RegisterTypes
 from fabrication import VectorRegisterBlueprint
-from register import VectorRegister
+from domain.register import VectorRegister
 from transit import VectorRegisterCarrier
 
 

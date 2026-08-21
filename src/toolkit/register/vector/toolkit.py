@@ -14,7 +14,7 @@ from typing import Type
 from fabrication.blueprint import VectorRegisterBlueprint
 from carrier import VectorRegisterCarrier
 from err import VectorRegisterBlueprintNullException, VectorRegisterCarrierNullException, VectorRegisterNullException
-from register import VectorRegister
+from domain.register import VectorRegister
 from toolkit.register.vector.toolkit import RegisterToolkit
 from assurance.validator import VectorValidator
 

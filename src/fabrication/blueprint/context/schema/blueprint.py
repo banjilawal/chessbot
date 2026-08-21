@@ -13,7 +13,7 @@ from dataclasses import dataclass
 from typing import Optional
 
 from err import SchemaContextNullException
-from model import SchemaContext, Blueprint
+from domain.model import SchemaContext, Blueprint
 from setting import GameColor
 
 

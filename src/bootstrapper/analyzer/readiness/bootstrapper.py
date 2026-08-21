@@ -13,7 +13,7 @@ from typing import cast
 
 from bootstrapper import AnalyzerBootstrapper
 from err import ReadinessAnalyzerBootstrapperException
-from model import CombatantToken, KingToken, Token
+from domain.model import CombatantToken, KingToken, Token
 from report import TokenReadinessReport
 from result import AnalysisResult
 from toolkit import ReadinessAnalyzerBootstrapperToolkit

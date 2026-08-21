@@ -10,7 +10,7 @@ version: 0.0.2
 from __future__ import annotations
 from typing import List
 
-from model import Notification
+from domain.model import Notification
 from result import DeletionResult, InsertionResult
 
 

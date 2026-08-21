@@ -10,7 +10,7 @@ version: 0.0.2
 from __future__ import annotations
 
 from microservice import Microservice
-from model import Coord
+from domain.model import Coord
 
 
 class CoordService(Microservice[Coord]):

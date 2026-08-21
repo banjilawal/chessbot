@@ -10,7 +10,7 @@ version: 0.0.2
 from __future__ import annotations
 
 from err import TeamContextNullException
-from model import Team, TeamContext
+from domain.model import Team, TeamContext
 from toolkit import ContextToolkit, TeamToolkit
 from assurance.validator import NumberValidator
 

@@ -12,8 +12,8 @@ from abc import ABC, abstractmethod
 
 
 from broadcast import Notifier
-from model import Notification
-from result import DeletionResult, InsertionResult, Result
+from domain.model import Notification
+from result import DeletionResult, InsertionResult
 
 
 class Observer(ABC):

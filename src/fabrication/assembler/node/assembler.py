@@ -12,7 +12,7 @@ from __future__ import annotations
 from pip._internal.wheel_builder import BuildResult
 
 from fabrication import Assembler, NodeBlueprint
-from node import SquareNode
+from domain.node import SquareNode
 from util import LoggingLevelRouter
 
 

@@ -11,7 +11,7 @@ from __future__ import annotations
 from typing import Any, cast
 
 
-from register import IdentityRegister
+from domain.register import IdentityRegister
 from assurance.checker import Checker
 from result import ValidationResult
 from toolkit import IdentityRegisterToolkit

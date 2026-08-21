@@ -7,7 +7,7 @@ Created: 2026-04-03
 version: 0.0.2
 """
 
-from model import ArenaContextBlueprint
+from domain.model import ArenaContextBlueprint
 
 from operation import AssemblyPriming
 from system import AssemblyResult, ExecutionRouteException, LoggingLevelRouter

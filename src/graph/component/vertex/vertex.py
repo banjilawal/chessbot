@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Optional
 
 from collection import EdgeStackService
-from node import Node
+from domain.node import Node
 
 
 class Vertex:

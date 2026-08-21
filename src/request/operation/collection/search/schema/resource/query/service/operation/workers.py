@@ -9,7 +9,7 @@ version: 1.0.0
 
 from __future__ import annotations
 
-from model.catalog import SchemaContextValidator, SchemaValidator
+from domain.model import SchemaContextValidator, SchemaValidator
 
 
 class SchemaQueryIntegrityWorkers:

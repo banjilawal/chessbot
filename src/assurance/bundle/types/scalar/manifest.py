@@ -15,7 +15,7 @@ from typing import Type
 
 from assurance import TypesManifest
 from fabrication import ScalarBlueprint
-from model import Scalar
+from domain.model import Scalar
 from transit import ScalarCarrier
 
 

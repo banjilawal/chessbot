@@ -13,8 +13,8 @@ from __future__ import annotations
 from typing import Optional, Type, cast
 
 from fabrication.blueprint import ToggleBlueprint
-from model import Coord, Vector
-from toggle import VectorToggle
+from domain.model import Coord, Vector
+from domain.toggle import VectorToggle
 
 
 class VectorToggleBlueprint(ToggleBlueprint[VectorToggle]):

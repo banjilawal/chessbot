@@ -7,7 +7,7 @@ Created: 2025-10-09
 version: 1.0.0
 """
 
-from model.catalog.formation import FormationException
+from domain.model import FormationException
 from system import ExecutionRouteException
 
 __all__ = [

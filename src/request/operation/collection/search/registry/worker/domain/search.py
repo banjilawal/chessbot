@@ -13,7 +13,7 @@ from typing import Dict, List
 from controller import WorkerRegistryController
 from err import WorkerRegistryDomainSearchException
 from result import SearchResult
-from model import WorkerRegistry
+from domain.model import WorkerRegistry
 from util import LoggingLevelRouter
 from operation import Operation, RegistryEntryNameValidator
 

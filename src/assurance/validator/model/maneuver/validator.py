@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, cast
 
 from err import ManeuverValidatorException
-from model import Maneuver
+from domain.model import Maneuver
 from assurance import ManeuverIntegrityChecker
 from result import ValidationResult
 from assurance import ManeuverIntegrityChecker

@@ -7,7 +7,7 @@ Created: 2025-09-08
 version: 1.0.0
 """
 
-from model.catalog.formation import FormationException
+from domain.model import FormationException
 from system import BoundsException
 
 __all__ = [

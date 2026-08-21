@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Optional
 
 from fabrication.blueprint import CoordBlueprint
-from model import Coord
+from domain.model import Coord
 from carrier import ModelCarrier
 
 

@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, cast
 
 from err import PlayerValidatorException
-from model import Player
+from domain.model import Player
 from assurance import PlayerIntegrityChecker
 from result import ValidationResult
 from util import LoggingLevelRouter

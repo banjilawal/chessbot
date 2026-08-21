@@ -13,8 +13,8 @@ from typing import Optional, Type, cast
 
 from fabrication.blueprint import RegisterBlueprint
 from err import RegisterNullException, VectorRegisterNullException
-from model import Vector
-from register import VectorRegister
+from domain.model import Vector
+from domain.register import VectorRegister
 
 
 class VectorRegisterBlueprint(RegisterBlueprint[VectorRegister]):

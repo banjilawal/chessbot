@@ -12,7 +12,7 @@ from __future__ import annotations
 from sensor.analyzer import Analyzer
 from bootstrapper import ReadinessAnalyzerBootstrapper
 from err import TokenReadinessAnalyzerException
-from model import Token
+from domain.model import Token
 from report import TokenReadinessReport
 from result import AnalysisResult
 from util import LoggingLevelRouter

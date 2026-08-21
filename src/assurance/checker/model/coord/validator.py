@@ -11,7 +11,7 @@ from __future__ import annotations
 from typing import Any, cast
 
 from err import CoordCheckerException
-from model import CoordBlueprint
+from domain.model import CoordBlueprint
 from result import ValidationResult
 from setting import BoardProperty
 from toolkit import CoordBlueprintToolkit

@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Optional, cast
 
 from fabrication.assembler import ArenaAssembler
-from model import Arena
+from domain.model import Arena
 from assurance.checker import ArenaRootCertifier
 from toolkit.builder.model.arena.toolkit import ModelBuilderToolkit
 

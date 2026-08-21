@@ -13,7 +13,7 @@ from typing import Optional, cast
 
 from fabrication.assembler import  VectorToggleAssembler
 from assurance.checker import VectorToggleRootCertifier
-from toggle import VectorToggle
+from domain.toggle import VectorToggle
 from toolkit.builder.toggle.vector.toolkit import ToggleBuilderToolkit
 
 

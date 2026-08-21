@@ -14,7 +14,7 @@ from typing import Optional, cast
 from fabrication.blueprint import GameBlueprint
 from fabrication.builder import ModelBuilder
 from err import GameBuilderException
-from model import Game
+from domain.model import Game
 from result import BuildResult, MethodResultType
 from toolkit import GameBuilderToolkit
 from util import LoggingLevelRouter

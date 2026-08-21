@@ -12,7 +12,7 @@ from __future__ import annotations
 from integrity import BoardBuilder, BoardValidator
 from logic.board import BoardRelationAnalyzer
 from microservice import Microservice, BoardTeamBinderService
-from model import Board
+from domain.model import Board
 
 
 class BoardService(Microservice[Board]):

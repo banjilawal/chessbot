@@ -16,7 +16,7 @@ from typing import cast
 from sensor.analyzer import HomeSquareValidator
 from controller import WorkerRegistryController
 from err import TokenPlaceException
-from model import PlaceState, HomeSquare, Token, TokenHomeClaimState
+from domain.model import PlaceState, HomeSquare, Token, TokenHomeClaimState
 from operation import Operation
 from report import HomeSquareClaimReport
 from result import MethodResultType, UpdateResult

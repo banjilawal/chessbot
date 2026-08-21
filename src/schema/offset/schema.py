@@ -13,7 +13,7 @@ from enum import Enum
 from typing import Dict
 
 from collection import VectorSet
-from model import Vector
+from domain.model import Vector
 
 
 class Offset(Enum):

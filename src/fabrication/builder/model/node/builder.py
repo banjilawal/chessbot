@@ -14,7 +14,7 @@ from typing import Optional, cast
 from fabrication.blueprint import NodeBlueprint
 from fabrication.builder import ModelBuilder
 from err import NodeBuilderException
-from model import Node
+from domain.model import Node
 from result import BuildResult, MethodResultType
 from toolkit import NodeBuilderToolkit
 from util import LoggingLevelRouter

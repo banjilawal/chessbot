@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Type
 
 from err import TokenContextNullException
-from model import TokenContext
+from domain.model import TokenContext
 from toolkit import ContextToolkit, TokenToolkit
 from assurance.validator import NumberValidator
 

@@ -12,8 +12,8 @@ from __future__ import annotations
 from typing import List
 
 from err import TokenSearcherException, TokenSearchRouteException
-from model import Coord, HomeSquare, Rank, Team, Token
-from model.query import TokenQuery
+from domain.model import Coord, HomeSquare, Rank, Team, Token
+from domain.model import TokenQuery
 from result import SearchResult
 from route import SearchRouter
 from system import LoggingLevelRouter

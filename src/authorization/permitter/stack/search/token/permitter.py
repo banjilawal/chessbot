@@ -11,9 +11,9 @@ from __future__ import annotations
 
 from typing import cast
 
-from context import TokenContext
+from domain.search.context import TokenContext
 from err import TokenSearchPermitterException
-from model import Token
+from domain.model import Token
 from authorization.permitter.stack import SearchPermitter
 from report import SearchApprovalReport
 from request import SearchRequest

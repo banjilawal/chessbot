@@ -12,7 +12,7 @@ from __future__ import annotations
 from abc import ABC
 from typing import cast
 
-from model import Vector
+from domain.model import Vector
 
 class Space(ABC):
     """

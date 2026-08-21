@@ -14,7 +14,7 @@ from fabrication.blueprint import TokenBlueprint
 from result import BuildResult
 
 from util import LoggingLevelRouter
-from model import CombatantToken, King, KingToken, Pawn, PawnToken, Token
+from domain.model import CombatantToken, King, KingToken, Pawn, PawnToken, Token
 
 class TokenAssembler(ModelAssembler[Token]):
     """

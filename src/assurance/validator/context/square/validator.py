@@ -10,7 +10,7 @@ version: 0.0.2
 from __future__ import annotations
 from typing import Any, cast
 
-from model import Formation, SquareContext, SquareState
+from domain.model import Formation, SquareContext, SquareState
 from result import ValidationResult
 from toolkit import SquareContextToolkit
 from util import LoggingLevelRouter

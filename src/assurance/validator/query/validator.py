@@ -13,7 +13,7 @@ from typing import Any, cast
 
 from fabrication.blueprint import QueryValidationBlueprint
 from err import QueryValidatorException
-from model import CatalogQuery, Query, StackQuery
+from domain.model import CatalogQuery, Query, StackQuery
 from result import ValidationResult
 from util import LoggingLevelRouter
 from assurance.validator import Validator

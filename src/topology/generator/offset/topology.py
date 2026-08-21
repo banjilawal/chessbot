@@ -13,7 +13,7 @@ from typing import Optional, Type, TypeVar, cast
 
 from collection import VectorSet, VectorTree
 from err import TopologyGeneratorException, VectorSetNullException
-from model import Vector
+from domain.model import Vector
 from result import ComputationResult, MethodResultType
 from toolkit import MathToolkit
 from topology import Topology

@@ -15,7 +15,7 @@ from typing import Generic, TypeVar, cast
 from authorization import CollectionRequest
 from collection import StackService
 
-from context import Context
+from domain.search.context import Context
 from result import SearchResult
 
 

@@ -15,7 +15,7 @@ __all__ = [
     "MoveUndoLimitException",
 ]
 
-from model.state.token import TokenDebugException
+from domain.model.state.token import TokenDebugException
 
 
 # ======================# ABOVE_MOVE_UNDO_LIMIT_EXCEPTION  #======================#

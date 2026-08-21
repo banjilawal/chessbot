@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, cast
 
 from err import BoardValidatorException
-from model import Board
+from domain.model import Board
 from assurance import BoardIntegrityChecker
 from result import ValidationResult
 from util import LoggingLevelRouter

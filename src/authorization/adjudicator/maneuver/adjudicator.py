@@ -16,8 +16,8 @@ from err import (
     CircularPathException, ManeuverRequestNullException,
     ManeuverRequestAdjudicatorException
 )
-from model import Maneuver, Path, Square
-from register import SquareRegister
+from domain.model import Maneuver, Path, Square
+from domain.register import SquareRegister
 from report import ManeuverRequestDecision
 from request import ManeuverRequest
 from result import MethodResultType

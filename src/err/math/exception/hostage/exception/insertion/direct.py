@@ -12,7 +12,7 @@ __all__ = [
     "AppendingHostageDirectlyIntoItemsFailedException",
 ]
 
-from model.hostage import HostageDataListException
+from domain.model import HostageDataListException
 
 
 # ======================# APPENDING_HOSTAGE_DIRECTLY_INTO_ITEMS EXCEPTION #======================#

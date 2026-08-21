@@ -13,7 +13,7 @@ from typing import cast
 
 from sensor.analyzer import Analyzer, EnemyCombatantStatusDetector, EnemyKingStatusDetector
 from err import FriendshipAnalyzerException
-from model import CombatantToken, KingToken, Token
+from domain.model import CombatantToken, KingToken, Token
 from report import FriendshipReport, FriendshipStatus
 from result import AnalysisResult
 from util import LoggingLevelRouter

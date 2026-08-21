@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from fabrication.blueprint import Blueprint
 from err import ContextNullException
-from model import Context
+from domain.model import Context
 
 
 class ContextBlueprint(Blueprint[Context]):

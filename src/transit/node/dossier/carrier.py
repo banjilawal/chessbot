@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Optional
 
 from fabrication import DossierNodeBlueprint
-from node import DossierNode
+from domain.node import DossierNode
 from transit import NodeCarrier
 
 

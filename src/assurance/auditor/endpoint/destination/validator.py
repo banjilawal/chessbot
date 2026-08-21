@@ -9,11 +9,9 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from typing import cast
-
 from bootstrapper import DestinationCertifierBootstrapper
 from err import TokenDestinationCertifierException
-from model import Square, Token
+from domain.model import Square, Token
 from result import ValidationResult
 from util import LoggingLevelRouter
 

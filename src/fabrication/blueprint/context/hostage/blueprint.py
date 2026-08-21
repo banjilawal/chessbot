@@ -13,7 +13,7 @@ from dataclasses import dataclass
 from typing import Optional
 
 from err import HostageContextNullException
-from model import HostageContext, Blueprint, Game, Player
+from domain.model import HostageContext, Blueprint, Game, Player
 
 
 @dataclass

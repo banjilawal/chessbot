@@ -10,7 +10,7 @@ version: 0.0.2
 from __future__ import annotations
 
 
-from model import Square, Token
+from domain.model import Square, Token
 from request.maneuver.request import Request
 
 

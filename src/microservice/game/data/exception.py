@@ -13,7 +13,7 @@ ___all__ = [
     "GameDataServiceException",
 ]
 
-from model.state.game import GameException
+from domain.model import GameException
 from system import ServiceException
 
 

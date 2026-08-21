@@ -13,7 +13,7 @@ from dataclasses import dataclass
 from typing import Generic, Optional, TypeVar
 
 from bootstrapper import EntityCarrierValidator
-from context import Context
+from domain.search.context import Context
 from err import ContextNullException
 from toolkit import Toolkit
 

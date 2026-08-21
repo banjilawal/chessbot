@@ -90,7 +90,7 @@ __all__ = [
 ]
 
 from system import SearchException
-from model.state.game import GameException
+from domain.model import GameException
 
 
 # ======================# GAME_SEARCH_FAILURE #======================#

@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from controller import WorkerRegistryController
 from err import PrimingSquareAssemblyException
-from model import Square, SquareBlueprint
+from domain.model import Square, SquareBlueprint
 from operation import AssemblyPrimer
 from report import CollisionReport
 from result import AnalysisResult, ValidationResult

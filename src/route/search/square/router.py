@@ -12,8 +12,8 @@ from __future__ import annotations
 from typing import List
 
 from err import SquareSearchException
-from model import Board, Coord, Formation, HomeSquare, Square, SquareState, Token
-from model.query import SquareQuery
+from domain.model import Board, Coord, Formation, HomeSquare, Square, SquareState, Token
+from domain.model import SquareQuery
 from result import SearchResult
 from route import SearchRouter
 from util import LoggingLevelRouter

@@ -9,7 +9,7 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from model import Node
+from domain.model import Node
 from toolkit.model.state.node.toolkit import StateModelToolkit
 
 

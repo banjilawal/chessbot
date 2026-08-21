@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from controller import WorkerRegistryController
 from err import FinalizeBoardBuilderException
-from model import Board
+from domain.model import Board
 from operation import BuilderFinalizer
 from result import BuildResult
 from util import LoggingLevelRouter

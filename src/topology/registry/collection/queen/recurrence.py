@@ -9,7 +9,7 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from model import Queen
+from domain.model import Queen
 from topology.recurrence import AxisRecurrenceRegistry, QuadrantRecurrenceRegistry
 from topology.registry.collection import RecurrenceRegistryCollection
 

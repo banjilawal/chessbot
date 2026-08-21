@@ -14,7 +14,7 @@ from typing import Generic, Optional, Type, TypeVar, cast
 
 from fabrication.blueprint import Blueprint
 from err import SpaceReservoirNullException
-from model import Vector
+from domain.model import Vector
 
 from space import SpaceReservoir
 

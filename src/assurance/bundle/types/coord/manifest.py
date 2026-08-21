@@ -15,7 +15,7 @@ from typing import Type
 
 from assurance import TypesManifest
 from fabrication import CoordBlueprint
-from model import Coord
+from domain.model import Coord
 from transit import CoordCarrier
 
 

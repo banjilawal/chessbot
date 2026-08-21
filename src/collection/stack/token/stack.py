@@ -15,7 +15,7 @@ from sensor.analyzer import CollisionAnalyzer
 from controller.stack.token.controller import TokenStackController
 from err import TokenStackServiceException
 from microservice import TokenService
-from model import Token, TokenContext, TokenQuery
+from domain.model import Token, TokenContext, TokenQuery
 from result import DeletionResult, InsertionResult, SearchResult
 from collection.stack import StackService, TokenStackState
 from system import IdFactory, LoggingLevelRouter

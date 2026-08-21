@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Any, cast
 
-from model import Persona, TokenContext
+from domain.model import Persona, TokenContext
 from result import ValidationResult
 from setting import GameColor
 from toolkit import TokenToolkit

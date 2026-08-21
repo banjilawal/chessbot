@@ -14,7 +14,7 @@ from typing import Optional, cast
 from assurance import ScalarValidator
 from fabrication import ScalarBuilder
 from kit import OperationSuite, ScalarToolkit
-from model import Scalar
+from domain.model import Scalar
 
 
 class ScalarOperationSuite(OperationSuite[Scalar]):

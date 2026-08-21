@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from bootstrapper import OriginCertifierBootstrapper
 from err import TokenOriginCertifierException
-from model import Square, Token
+from domain.model import Square, Token
 from result import ValidationResult
 from toolkit import TokenEndpointRelationToolkit
 from util import LoggingLevelRouter

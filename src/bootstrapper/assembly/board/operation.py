@@ -12,7 +12,7 @@ from __future__ import annotations
 from controller import WorkerRegistryController
 from toolkit import BoardToolkit
 from result import ValidationResult
-from model import Board, BoardBlueprint
+from domain.model import Board, BoardBlueprint
 from operation import AssemblyPrimer
 from err import PrimingBoardAssemblyException
 from util import LoggingLevelRouter

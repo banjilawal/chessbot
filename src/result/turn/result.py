@@ -9,7 +9,7 @@ version: 0.0.2
 from __future__ import annotations
 from typing import Generic, Optional, TypeVar, cast
 
-from model import Attack, Maneuver
+from domain.model import Attack, Maneuver
 from result import Result
 from result.turn import ManeuverState
 

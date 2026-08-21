@@ -11,7 +11,7 @@ from __future__ import annotations
 from typing import List, Type
 
 from system import GameColor, LoggingLevelRouter, SearchResult, SearchRouter
-from model.catalog import (
+from domain.model import (
     MissingSchemaSearchRouteException, Schema, SchemaQuery, SchemaQueryValidator,
     SchemaSearchException
 )

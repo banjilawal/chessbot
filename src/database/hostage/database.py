@@ -10,7 +10,7 @@ version: 0.0.2
 from __future__ import annotations
 
 from microservice import HostageService
-from model import Hostage
+from domain.model import Hostage
 from result import InsertionResult
 from operation.collection.search import HostageQueryService
 from util import LoggingLevelRouter

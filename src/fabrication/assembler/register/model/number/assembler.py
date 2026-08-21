@@ -12,7 +12,7 @@ from __future__ import annotations
 
 from fabrication.assembler import RegisterAssembler
 from fabrication.blueprint import NumberRegisterBlueprint
-from register import NumberRegister
+from domain.register import NumberRegister
 from result import BuildResult
 from util import LoggingLevelRouter
 

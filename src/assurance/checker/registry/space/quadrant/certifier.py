@@ -13,7 +13,7 @@ from typing import Optional, cast
 
 from fabrication.blueprint import QuadrantReservoirBlueprint
 from carrier import QuadrantReservoirCarrier
-from model import Vector
+from domain.model import Vector
 from assurance.checker import SpaceReservoirChecker
 from result import ValidationResult
 from space import QuadrantReservoir

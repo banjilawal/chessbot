@@ -12,7 +12,7 @@ __all__ = [
     "HostageInsertionException",
 ]
 
-from model.hostage import HostageException
+from domain.model import HostageException
 from system import InsertionException
 
 

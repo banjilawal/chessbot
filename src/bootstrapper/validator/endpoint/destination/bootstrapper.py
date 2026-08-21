@@ -16,7 +16,7 @@ from err import (
     BlockedPathException, DestinationCertifierBootstrapperException, PartialTokenDestinationRelationException,
     TokenAlreadyAtDestinationException
 )
-from model import Square, Token
+from domain.model import Square, Token
 from report import DestinationApprovalReport, RelationReport
 from util import LoggingLevelRouter
 

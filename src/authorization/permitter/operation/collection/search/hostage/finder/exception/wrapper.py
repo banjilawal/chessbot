@@ -90,7 +90,7 @@ __all__ = [
 ]
 
 from system import SearchException
-from model.hostage import HostageException
+from domain.model import HostageException
 
 
 # ======================# HOSTAGE_SEARCH_FAILURE #======================#

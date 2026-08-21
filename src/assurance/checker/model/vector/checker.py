@@ -15,8 +15,8 @@ from assurance import ModelIntegrityChecker, VectorValidationBundle
 from err import VectorIntegrityCheckerException
 from fabrication import VectorNodeBlueprint
 from fabrication.blueprint import VectorBlueprint
-from model import Vector
-from node import VectorNode
+from domain.model import Vector
+from domain.node import VectorNode
 from result import ValidationResult
 from transit import VectorCarrier
 from util import LoggingLevelRouter

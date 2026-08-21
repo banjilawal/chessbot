@@ -13,7 +13,7 @@ from typing import Optional, cast
 
 from authorization import AddNodeRequestAuthorizer
 from collection import VectorChain
-from node import VectorNode
+from domain.node import VectorNode
 from report import AuthorizationDecision
 from request import AddVectorNodeRequest
 from toolkit import AddVectorNodeRequestToolkit

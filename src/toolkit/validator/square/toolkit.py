@@ -13,7 +13,7 @@ from typing import Any, Dict, Optional, Type
 
 from err import TokenBlueprintNullException, TokenCarrierNullException, TokenNullException
 from fabrication import TokenBlueprint
-from model import Token
+from domain.model import Token
 from toolkit import ModelManifest
 from transit import TokenCarrier
 

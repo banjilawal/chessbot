@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import cast
 
 from event import Event
-from model import Square, Token
+from domain.model import Square, Token
 from report import ManeuverApproval
 
 

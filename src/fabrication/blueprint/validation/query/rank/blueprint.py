@@ -13,7 +13,7 @@ from dataclasses import dataclass
 from typing import Optional
 
 from err import RankNullException
-from model import Rank, Blueprint, Game, Player
+from domain.model import Rank, Blueprint, Game, Player
 
 
 @dataclass

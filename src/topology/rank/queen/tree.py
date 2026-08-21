@@ -10,7 +10,7 @@ version: 0.0.2
 from __future__ import  annotations
 
 
-from model import Queen
+from domain.model import Queen
 from tree import Topology, VectorTree
 
 class QueenTopology(Topology[Queen]):

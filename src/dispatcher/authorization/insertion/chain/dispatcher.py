@@ -15,10 +15,10 @@ from typing import Generic, TypeVar, cast
 from authorization import AddNodeRequestAuthorizer
 from collection import Chain
 from dispatcher import InsertionDispatcher
-from node import Node
+from domain.node import Node
 
 from report import AuthorizationDecision
-from request import AddNodeRequest, InsertionRequest
+from request import AddNodeRequest
 
 from util import LoggingLevelRouter
 

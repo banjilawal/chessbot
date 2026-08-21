@@ -10,7 +10,7 @@ version: 0.0.2
 from __future__ import annotations
 from enum import Enum
 
-from model import Bishop, King, Knight, Pawn, Rank, Rook
+from domain.model import Bishop, King, Knight, Pawn, Rank, Rook
 from schema import Persona
 from setting import GameColor
 

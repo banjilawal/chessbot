@@ -14,7 +14,7 @@ from typing import Generic, Optional, Type, TypeVar, cast
 
 from fabrication.blueprint import SpaceBlueprint
 from err import QuadrantNullException
-from model import Vector
+from domain.model import Vector
 
 
 T = TypeVar("T", bound="Quadrant")

@@ -11,8 +11,7 @@ from __future__ import annotations
 
 from enum import Enum
 
-import setting
-from model import Vector
+from domain.model import Vector
 
 
 class AxisDelta(Enum):

@@ -13,7 +13,7 @@ from setting import BoardDimensionSetting, BoardProperty
 from controller import WorkerRegistryController
 from toolkit import MathToolkit
 from result import ValidationResult
-from model import Vector, VectorBlueprint
+from domain.model import Vector, VectorBlueprint
 from operation import AssemblyPrimer
 from err import VectorAssemblyPrimerException
 from util import LoggingLevelRouter

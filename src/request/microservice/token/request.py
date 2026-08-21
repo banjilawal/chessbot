@@ -14,7 +14,7 @@ from typing import cast
 
 from authorization import MicroserviceRequest
 from microservice import TokenService
-from model import Token
+from domain.model import Token
 
 
 class TokenServiceRequest(MicroserviceRequest[Token]):

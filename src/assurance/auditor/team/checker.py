@@ -11,7 +11,7 @@ from __future__ import annotations
 from typing import Any, cast
 
 from controller import WorkerRegistryController
-from model import Team
+from domain.model import Team
 from toolkit import TeamToolkit
 from result import ValidationResult
 from util import LoggingLevelRouter

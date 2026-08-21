@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, Dict, cast
 
 from err import BoardTeamBinderNullException, BoardTeamBinderConsistencyCheckerException
-from model import BoardBinder, Schema, Team
+from domain.model import BoardBinder, Schema, Team
 from assurance.auditor import  ConsistencyAuditor
 from bootstrapper.consistency.binder.checker import SchemaHashtableConsistency
 from result import ValidationResult

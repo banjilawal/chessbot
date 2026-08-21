@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, cast
 
 from err import RankValidatorException
-from model import Rank
+from domain.model import Rank
 from assurance import RankIntegrityChecker
 from result import ValidationResult
 from util import LoggingLevelRouter

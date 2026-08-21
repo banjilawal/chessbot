@@ -14,7 +14,7 @@ from typing import Optional, cast
 from fabrication.blueprint import VectorRegisterBlueprint
 from fabrication.builder import RegisterBuilder
 from err import VectorRegisterBuilderException
-from register import VectorRegister
+from domain.register import VectorRegister
 from result import BuildResult, MethodResultType
 from util import LoggingLevelRouter
 

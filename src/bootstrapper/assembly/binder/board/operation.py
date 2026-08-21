@@ -9,11 +9,11 @@ version: 1.0.0
 
 from __future__ import annotations
 
-from model import TeamBinderBinderBlueprint, BoardBinderBlueprint
+from domain.model import TeamBinderBinderBlueprint, BoardBinderBlueprint
 from operation import AssemblyPrimer
 from result import ValidationResult
 from system import AssemblyResult, LoggingLevelRouter
-from model.teamBinder import (
+from domain.model import (
     TeamBinderBinder, TeamBinderBinderAssemblyException,
     WhiteTeamBinderHasWrongSchemaException
 )

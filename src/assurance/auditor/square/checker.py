@@ -13,7 +13,7 @@ from typing import Any, cast
 
 from controller import WorkerRegistryController
 from err import SquareConsistencyAuditorException
-from model import Square
+from domain.model import Square
 from chooser import SquareCarrier
 from assurance.checker import SquareRootCertifier
 from result import ValidationResult

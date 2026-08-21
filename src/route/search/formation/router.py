@@ -9,7 +9,7 @@ version: 1.0.0
 
 from typing import List
 
-from model.catalog.formation import (
+from domain.model import (
     Formation, FormationColorBoundsException, FormationDesignationBoundsException, FormationLookupFailedException,
     FormationLookupRouteException, FormationPersonaBoundsException, FormationSquareBoundsException, FormationKey,
     FormationKeyValidator

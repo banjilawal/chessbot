@@ -13,7 +13,7 @@ from fabrication.blueprint import CoordBlueprint
 from result import BuildResult
 from fabrication.assembler import ModelAssembler
 from util import LoggingLevelRouter
-from model import Coord
+from domain.model import Coord
 
 class CoordAssembler(ModelAssembler[Coord]):
     """

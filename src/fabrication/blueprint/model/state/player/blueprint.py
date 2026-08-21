@@ -14,7 +14,7 @@ from typing import Optional, Type
 from fabrication.blueprint import StateModelBlueprint
 from engine import Engine
 from err import PlayerNullException
-from model import Player
+from domain.model import Player
 
 
 @dataclass

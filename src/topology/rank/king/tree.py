@@ -10,7 +10,7 @@ version: 0.0.2
 from __future__ import  annotations
 
 
-from model import King
+from domain.model import King
 from tree import Topology, VectorTree
 
 class KingTopology(Topology[King]):

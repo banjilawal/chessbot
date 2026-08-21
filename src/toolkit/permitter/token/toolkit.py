@@ -14,7 +14,7 @@ from dataclasses import dataclass
 from detection import TokenHomeDetector
 from err import TokenNullException
 from microservice import RankService
-from model import Token
+from domain.model import Token
 from toolkit.permitter.token.toolkit import PermitterToolkit
 from assurance.validator import (
     BlueprintHomeSquareExtractor, BlueprintRankExtractor, CoordValidator, NumberValidator,

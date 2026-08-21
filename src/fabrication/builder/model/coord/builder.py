@@ -14,7 +14,7 @@ from typing import Optional, cast
 from fabrication.blueprint import CoordBlueprint
 from fabrication.builder import ModelBuilder
 from err import CoordBuilderException
-from model import Coord
+from domain.model import Coord
 from result import BuildResult, MethodResultType
 from toolkit import CoordBuilderToolkit
 from util import LoggingLevelRouter

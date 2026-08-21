@@ -13,7 +13,7 @@ from fabrication.blueprint import ItineraryBlueprint
 from result import BuildResult
 from fabrication.assembler import Assembler
 from util import  LoggingLevelRouter
-from model import Itinerary
+from domain.model import Itinerary
 
 class ItineraryAssembler(Assembler[Itinerary]):
     NAME = "itinerary_assembler"

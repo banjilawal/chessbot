@@ -13,7 +13,7 @@ from typing import Optional
 
 from fabrication.blueprint import QueryValidationBlueprint
 from err import ArenaNullException
-from model import Arena, Game, Player
+from domain.model import Arena, Game, Player
 from setting import GameColor
 
 

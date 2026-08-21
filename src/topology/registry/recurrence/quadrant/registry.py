@@ -16,7 +16,7 @@ from topology import (
     QuadrantRecurrence,
     RecurrenceRegistry, SoutheastQuadrantRecurrence, SouthwestQuadrantRecurrence
 )
-from model import Vector
+from domain.model import Vector
 
 
 class QuadrantRecurrenceRegistry(RecurrenceRegistry[Quadrant]):

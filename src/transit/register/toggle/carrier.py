@@ -13,8 +13,8 @@ from typing import Optional
 
 from fabrication.blueprint import VectorToggleRegisterBlueprint
 from carrier import RegisterCarrier
-from register import VectorToggleRegister
-from toggle import VectorToggle
+from domain.register import VectorToggleRegister
+from domain.toggle import VectorToggle
 
 
 class VectorToggleRegisterCarrier(RegisterCarrier[VectorToggle]):

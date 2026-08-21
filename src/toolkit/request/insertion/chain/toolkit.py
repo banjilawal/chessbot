@@ -13,7 +13,7 @@ from typing import Generic, Type, TypeVar, cast
 
 from collection import Chain
 from err import ChainNullException, NodeNullException, RequestNullException
-from node import Node
+from domain.node import Node
 from request import AddNodeRequest
 
 from toolkit import InsertionRequestToolkit

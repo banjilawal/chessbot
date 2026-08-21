@@ -12,7 +12,7 @@ from __future__ import annotations
 from assurance import TokenValidator
 from fabrication import TokenBuilder
 from kit import OperationSuite, TokenSensorSuite, TokenToolkit
-from model import Token
+from domain.model import Token
 from operation import PawnPromoter
 
 

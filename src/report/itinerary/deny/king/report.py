@@ -10,7 +10,7 @@ version: 0.0.2
 from __future__ import annotations
 from dataclasses import dataclass
 
-from model import KingToken, Square, Team, Token
+from domain.model import KingToken, Square, Team, Token
 from report import ItineraryDenialReport
 
 

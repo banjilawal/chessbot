@@ -15,7 +15,7 @@ from typing import Type
 
 from assurance import TypesManifest
 from fabrication import RankBlueprint
-from model import Rank
+from domain.model import Rank
 from transit import RankCarrier
 
 

@@ -15,7 +15,7 @@ from typing import Type
 
 from assurance import TypesManifest
 from fabrication import SquareBlueprint
-from model import Square
+from domain.model import Square
 from transit import SquareCarrier
 
 

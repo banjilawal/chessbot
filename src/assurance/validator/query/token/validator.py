@@ -14,7 +14,7 @@ from err import (
     TokenQueryNullException, TokenQueryStackEmptyException, TokenQueryValidatorException,
     TokenStackNullException
 )
-from model import TokenQuery
+from domain.model import TokenQuery
 from result import MethodResultType, ValidationResult
 from collection.stack import TokenStackService
 from util import LoggingLevelRouter

@@ -8,7 +8,7 @@ version: 1.0.0
 """
 
 from typing import Dict, List
-from model.math.vector import Vector
+from domain.model import Vector
 
 class PawnVectorSets:
     _opening_set: Dict[str, List[Vector]] = {

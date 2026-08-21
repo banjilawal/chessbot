@@ -10,7 +10,7 @@ version: 0.0.2
 from __future__ import annotations
 
 from microservice import BoardService, IdentityService
-from model import Arena
+from domain.model import Arena
 from toolkit.model.state.arena.toolkit import StateModelToolkit
 
 

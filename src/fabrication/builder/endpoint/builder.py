@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Generic, TypeVar
 
 from fabrication.builder import Builder
-from register import VectorRegister
+from domain.register import VectorRegister
 from result import BuildResult
 from util import LoggingLevelRouter
 

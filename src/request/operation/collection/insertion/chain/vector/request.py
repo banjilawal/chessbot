@@ -13,7 +13,7 @@ from typing import cast
 
 from authorization import AddNodeRequest
 from collection import VectorChain
-from node import VectorNode
+from domain.node import VectorNode
 
 
 class AddVectorNodeRequest(AddNodeRequest[VectorNode]):

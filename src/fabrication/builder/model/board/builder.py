@@ -14,7 +14,7 @@ from typing import Optional, cast
 from fabrication.blueprint import BoardBlueprint
 from fabrication.builder import ModelBuilder
 from err import BoardBuilderException
-from model import Board
+from domain.model import Board
 from result import BuildResult, MethodResultType
 from toolkit import BoardBuilderToolkit
 from util import LoggingLevelRouter

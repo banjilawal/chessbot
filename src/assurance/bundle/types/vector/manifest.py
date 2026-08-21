@@ -15,7 +15,7 @@ from typing import Type
 
 from assurance import TypesManifest
 from fabrication import VectorBlueprint
-from model import Vector
+from domain.model import Vector
 from transit import VectorCarrier
 
 

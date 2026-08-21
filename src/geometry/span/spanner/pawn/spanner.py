@@ -11,10 +11,10 @@ from __future__ import annotations
 
 from typing import Dict, List
 
-from model.state.token import PawnToken
+from domain.model.state.token import PawnToken
 from system import ComputationResult
-from model.math.coord import Coord, CoordService
-from model.math.vector import Vector, VectorService
+from domain.model import Coord, CoordService
+from domain.model import Vector, VectorService
 from math.span import PawnSpannerException, PawnVectorSets, CoordRay, CoordSpan, Spanner
 
 class PawnSpanner(Spanner):

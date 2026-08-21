@@ -9,7 +9,7 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from model.catalog.formation import (
+from domain.model import (
     ArenaFormationKeysException, FormationKey, FormationKeyToolkitException,
     FormationKeyToolkitRouteException, ZeroFormationKeysException
 )

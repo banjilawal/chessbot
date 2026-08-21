@@ -13,7 +13,7 @@ from typing import cast
 
 from authorization import StackPopRequest
 from collection import TokenStackService
-from model import Token
+from domain.model import Token
 
 
 class TokenStackPopRequest(StackPopRequest[Token]):

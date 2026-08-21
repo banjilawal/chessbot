@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Optional, cast
 
 from authorization import AddVectorNodeRequest
-from node import VectorNode
+from domain.node import VectorNode
 from operation import AddNode
 from result import InsertionResult
 from util import LoggingLevelRouter

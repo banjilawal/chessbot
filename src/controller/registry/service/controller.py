@@ -11,7 +11,7 @@ from __future__ import annotations
 from typing import List
 
 from controller import Controller
-from model import ServiceRegistry
+from domain.model import ServiceRegistry
 from toolkit import ServiceRegistryToolkit
 from util import LoggingLevelRouter, singleton
 from result import InsertionResult, SearchResult

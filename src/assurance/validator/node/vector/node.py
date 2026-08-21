@@ -11,8 +11,8 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from model import Vector
-from node import Node
+from domain.model import Vector
+from domain.node import Node
 
 
 class VectorNode(Node[Vector]):

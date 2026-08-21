@@ -13,7 +13,7 @@ from fabrication.assembler import ToggleAssembler
 from fabrication.blueprint.toggle import VectorToggleBlueprint
 
 from result import BuildResult
-from toggle import VectorToggle
+from domain.toggle import VectorToggle
 from util import LoggingLevelRouter
 
 

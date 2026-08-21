@@ -12,7 +12,7 @@ from typing import Optional, Type, cast
 
 from fabrication.blueprint import Blueprint
 from err import ModelNullException
-from model import Model
+from domain.model import Model
 
 
 class ModelBlueprint(Blueprint[Model]):

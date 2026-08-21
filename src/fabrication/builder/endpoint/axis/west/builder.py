@@ -12,8 +12,8 @@ from __future__ import annotations
 from typing import Optional, cast
 
 from fabrication.builder.endpoint.axis.builder import AxisEndpointBuilder
-from model import Vector
-from register import VectorRegister
+from domain.model import Vector
+from domain.register import VectorRegister
 from result import BuildResult, ComputationResult
 from schema import AxisTerminus
 from space import WestTraversalPattern

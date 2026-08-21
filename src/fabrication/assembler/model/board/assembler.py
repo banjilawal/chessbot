@@ -12,7 +12,7 @@ from __future__ import annotations
 
 from fabrication.assembler import ModelAssembler
 from fabrication.blueprint import BoardBlueprint
-from model import Board
+from domain.model import Board
 from result import BuildResult
 from util import LoggingLevelRouter
 

@@ -12,8 +12,8 @@ from __future__ import annotations
 from typing import Optional, cast
 
 from fabrication.builder import VectorValidator
-from model import Vector
-from register import VectorRegister
+from domain.model import Vector
+from domain.register import VectorRegister
 from result import BuildResult
 from schema import AxisTerminus
 from util import LoggingLevelRouter

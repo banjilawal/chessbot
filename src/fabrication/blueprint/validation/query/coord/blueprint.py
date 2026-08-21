@@ -13,7 +13,7 @@ from dataclasses import dataclass
 from typing import Optional
 
 from err import CoordNullException
-from model import Coord, Blueprint, Game, Player
+from domain.model import Coord, Blueprint
 
 
 @dataclass

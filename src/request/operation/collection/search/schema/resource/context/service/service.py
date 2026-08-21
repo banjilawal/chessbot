@@ -6,8 +6,8 @@ Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0
 """
-from model.catalog import SchemaContextBuilder, SchemaContextOpsController, SchemaContextValidator
-from model.catalog import SchemaContext
+from domain.model import SchemaContextBuilder, SchemaContextOpsController, SchemaContextValidator
+from domain.model import SchemaContext
 from system import IntegrityMicroservice, IdFactory
 
 class SchemaContextService(IntegrityMicroservice[SchemaContext]):

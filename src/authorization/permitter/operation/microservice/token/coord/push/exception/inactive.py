@@ -15,7 +15,7 @@ __all__ = [
     "InactiveTokenPushingCoordException",
 ]
 
-from model.state.token import TokenDebugException
+from domain.model.state.token import TokenDebugException
 
 
 # ======================# INACTIVE_TOKEN_PUSHING_COORD_EXCEPTION  #======================#

@@ -11,8 +11,8 @@ from __future__ import annotations
 
 from typing import List
 
-from model import Token
-from model.query import SquareQuery
+from domain.model import Token
+from domain.model import SquareQuery
 from result import SearchResult
 from system import LoggingLevelRouter
 

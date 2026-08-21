@@ -14,7 +14,7 @@ from typing import cast
 from sensor.analyzer import Analyzer, TokenReadinessAnalyzer
 from err import PawnDoublePromotionException, PawnPromotionRowException, PromoteInactivePawnException
 from err.analyzer.promotion import PromotionApprovalManagerException
-from model import PawnToken
+from domain.model import PawnToken
 from report import PromotionApprovalManagerReport, TokenReadinessReport
 from result import AnalysisResult, MethodResultType
 from util import LoggingLevelRouter

@@ -15,7 +15,7 @@ from sensor.analyzer import TokenReadinessAnalyzer
 from err import (
     DisabledTokenUndoMoveException, MaxMoveUndoException, TokenUndoMovePermitterException
 )
-from model import Token
+from domain.model import Token
 from authorization.permitter import TokenManeuverPermitter
 from report import PopApprovalReport, TokenReadinessReport
 from result import AnalysisResult

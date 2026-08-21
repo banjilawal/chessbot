@@ -13,7 +13,7 @@ from typing import Any, Generic, List, Type, TypeVar, cast
 
 from fabrication.blueprint import Blueprint
 from err import RegisterNullException
-from register import Register
+from domain.register import Register
 
 T = TypeVar("T", bound="Register")
 

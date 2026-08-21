@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Optional
 
 from fabrication.blueprint import VectorBlueprint
-from model import Vector
+from domain.model import Vector
 from transit import ModelCarrier
 
 

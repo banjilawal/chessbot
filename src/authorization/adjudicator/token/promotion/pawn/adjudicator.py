@@ -18,7 +18,7 @@ from err import (
     PawnDoublePromotionException, PawnPromotionRowException, PromoteInactivePawnException,
     PromotionPawnAdjudicatorException
 )
-from model import PawnToken
+from domain.model import PawnToken
 from operation import PawnPromoter
 from report import TokenReadinessReport
 from result import MethodResultType, ValidationResult

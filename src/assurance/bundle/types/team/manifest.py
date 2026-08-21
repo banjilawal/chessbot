@@ -15,7 +15,7 @@ from typing import Type
 
 from assurance import TypesManifest
 from fabrication import TeamBlueprint
-from model import Team
+from domain.model import Team
 from transit import TeamCarrier
 
 

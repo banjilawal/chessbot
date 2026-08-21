@@ -14,7 +14,7 @@ from typing import Optional, cast
 from fabrication.blueprint import ArenaBlueprint
 from fabrication.builder import ModelBuilder
 from err import ArenaBuilderException
-from model import Arena
+from domain.model import Arena
 from result import BuildResult, MethodResultType
 from toolkit import ArenaBuilderToolkit
 from util import LoggingLevelRouter

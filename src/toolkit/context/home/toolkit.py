@@ -12,7 +12,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Type
 
-from context import TokenHomeContext
+from domain.search.context import TokenHomeContext
 from err import BoardValidatorException, ContextNullException, TokenHomeContextNullException
 from toolkit.context.home.toolkit import TokenToolkit, Toolkit
 from assurance.validator import BoardValidator, TokenValidator

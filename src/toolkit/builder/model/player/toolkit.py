@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Optional, cast
 
 from fabrication.assembler import PlayerAssembler
-from model import Player
+from domain.model import Player
 from assurance.checker import PlayerRootCertifier
 from toolkit.builder.model.player.toolkit import ModelBuilderToolkit
 

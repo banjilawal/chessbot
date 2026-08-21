@@ -12,7 +12,7 @@ from __future__ import annotations
 
 from typing import cast
 
-from model import Bishop
+from domain.model import Bishop
 from topology import TraversalTopologyBasis
 
 

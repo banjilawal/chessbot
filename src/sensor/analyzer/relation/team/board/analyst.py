@@ -10,7 +10,7 @@ version: 0.0.2
 from __future__ import annotations
 from typing import cast
 
-from model import Board, Team
+from domain.model import Board, Team
 from report import RelationReport
 from sensor.analyzer import RelationAnalyzer
 from util import LoggingLevelRouter

@@ -12,7 +12,7 @@ from __future__ import annotations
 from abc import abstractmethod
 from typing import TypeVar
 
-from model import Blueprint
+from domain.model import Blueprint
 from operation import Finalizer
 from result import BuildResult
 from util import LoggingLevelRouter

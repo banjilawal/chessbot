@@ -11,8 +11,8 @@ from __future__ import annotations
 
 from typing import List
 
-from model import Board
-from model.query import BoardQuery
+from domain.model import Board
+from domain.model import BoardQuery
 from result import SearchResult
 from route import Router
 from system import LoggingLevelRouter

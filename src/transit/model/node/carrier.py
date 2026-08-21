@@ -14,7 +14,7 @@ from typing import Optional
 from fabrication.blueprint import NodeBlueprint
 
 from carrier import ModelCarrier
-from node import SquareNode
+from domain.node import SquareNode
 
 
 class NodeCarrier(ModelCarrier[SquareNode]):

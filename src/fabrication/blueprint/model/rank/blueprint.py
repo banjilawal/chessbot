@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Type, cast
 
 from fabrication.blueprint import ModelBlueprint
-from model import Rank
+from domain.model import Rank
 from schema import Persona
 
 

@@ -15,7 +15,7 @@ from typing import Type
 
 from assurance import TypesManifest
 from fabrication import TokenBlueprint
-from model import Token
+from domain.model import Token
 from transit import TokenCarrier
 
 

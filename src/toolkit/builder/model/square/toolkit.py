@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Optional, cast
 
 from fabrication.assembler import SquareAssembler
-from model import Square
+from domain.model import Square
 from assurance.checker import SquareRootCertifier
 from toolkit.builder.model.square.toolkit import ModelBuilderToolkit
 

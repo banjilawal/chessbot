@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, cast
 
 from err import SquareValidatorException
-from model import Square
+from domain.model import Square
 from assurance import SquareIntegrityChecker
 from result import ValidationResult
 from util import LoggingLevelRouter

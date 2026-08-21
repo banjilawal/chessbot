@@ -9,7 +9,7 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from model import Player
+from domain.model import Player
 from toolkit.model.state.player.toolkit import StateModelToolkit
 
 

@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Optional
 
 from fabrication.blueprint import ScalarBlueprint
-from model import Scalar
+from domain.model import Scalar
 from carrier import ModelCarrier
 
 

@@ -12,8 +12,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Optional
 
-from err import TokenContextNullException
-from model import Coord, HomeSquare, Rank, Team, TokenContext, Blueprint
+from domain.model import Coord, HomeSquare, Rank, Team, TokenContext, Blueprint
 from setting import GameColor
 
 

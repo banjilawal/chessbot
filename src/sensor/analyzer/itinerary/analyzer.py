@@ -15,7 +15,7 @@ from util import LoggingLevelRouter
 from assurance.validator import ItineraryValidator
 from err import ItineraryAnalyzerException
 from result import AnalysisResult, MethodResultType
-from model import CombatantToken, Itinerary, KingToken
+from domain.model import CombatantToken, Itinerary, KingToken
 from report import (
     AttackApproval, BlockingReport, KingAttackApproval, ItineraryReport,
     ManeuverApproval

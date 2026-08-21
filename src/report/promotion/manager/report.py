@@ -12,7 +12,7 @@ from dataclasses import dataclass
 from typing import Optional
 
 from report import Report
-from model import PawnToken, PromotionState
+from domain.model import PawnToken, PromotionState
 from report.promotion.manager.state import PromotionDecision
 
 

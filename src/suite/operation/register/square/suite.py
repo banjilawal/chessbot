@@ -13,7 +13,7 @@ from typing import Optional, cast
 
 from fabrication import SquareRegisterBuilder
 from kit import RegisterOperationSuite, SquareRegisterToolkit
-from register import SquareRegister
+from domain.register import SquareRegister
 
 
 class SquareRegisterSuite(RegisterOperationSuite[SquareRegister]):

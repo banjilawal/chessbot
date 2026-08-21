@@ -14,7 +14,7 @@ from typing import Any, Dict
 
 from assurance import ValidationBundle, TeamValidator, TokenNullRoster, TokenTypes
 from authorization import BlueprintHomeSquareExtractor, BlueprintRankExtractor
-from model import Token
+from domain.model import Token
 from sensor import TokenHomeReporter
 
 

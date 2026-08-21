@@ -14,7 +14,7 @@ from dataclasses import dataclass
 
 from assurance import NullRoster
 from err import VectorBlueprintNullException, VectorCarrierNullException, VectorNullException
-from model import Vector
+from domain.model import Vector
 
 
 @dataclass

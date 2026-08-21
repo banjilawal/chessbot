@@ -13,7 +13,7 @@ from copy import deepcopy
 from typing import cast
 
 from err import PawnPromoterException
-from model import PawnToken, PromotionState, Rank
+from domain.model import PawnToken, PromotionState, Rank
 from authorization.permitter import PromotionPermitter
 from report import PromotionRequestDecision
 from result import MethodResultType, UpdateResult

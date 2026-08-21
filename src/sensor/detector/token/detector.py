@@ -12,7 +12,7 @@ from __future__ import annotations
 from abc import ABC
 from typing import TypeVar
 
-from model import Token
+from domain.model import Token
 from sensor import EnvironmentReporter
 
 T = TypeVar("T", bound="StateModel")

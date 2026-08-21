@@ -13,7 +13,7 @@ from typing import cast
 
 from sensor.analyzer import RelationAnalyzer
 from err import SquareTokenRelationAnalyzerException
-from model import Square, Token
+from domain.model import Square, Token
 from report import RelationReport
 from result import AnalysisResult, MethodResultType
 from util import LoggingLevelRouter

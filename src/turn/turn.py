@@ -9,11 +9,10 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from model import Graph, Player
+from domain.model import Graph, Player
 from operation import ManeuverLauncher
 from report import ManeuverRequestDecision
 from result import TurnResult
-from turn import TurnAdviser
 from util import LoggingLevelRouter
 
 

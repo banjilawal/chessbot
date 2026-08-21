@@ -11,7 +11,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Optional
 
-from model import CombatantToken, Square, Token
+from domain.model import Square
 from report import ItineraryApprovalReport
 
 

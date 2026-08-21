@@ -10,7 +10,7 @@ version: 0.0.2
 from __future__ import annotations
 
 from microservice import ArenaService, IdentityService, SchemaService, PlayerService
-from model import ArenaBinder
+from domain.model import ArenaBinder
 from toolkit.model.state.binder.arena.toolkit import StateModelToolkit
 
 

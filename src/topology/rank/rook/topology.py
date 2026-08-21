@@ -10,7 +10,7 @@ version: 0.0.2
 from __future__ import  annotations
 
 from collection import VectorTree
-from model import Rook
+from domain.model import Rook
 from topology import Topology
 
 class RookTopology(Topology[Rook]):

@@ -13,7 +13,7 @@ from typing import List, Optional
 from sensor.analyzer import CollisionReport
 from database import Database
 from microservice import IdentityService, RankService, TokenService
-from model import Rank, Token, TokenBlueprint
+from domain.model import Rank, Token, TokenBlueprint
 from result import AnalysisResult, ComputationResult, DeletionResult
 from collection.stack import TokenStackService
 from system import IdFactory, LoggingLevelRouter

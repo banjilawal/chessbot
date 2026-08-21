@@ -14,7 +14,7 @@ from typing import Optional, Type, cast
 from fabrication.blueprint import SpaceReservoirBlueprint
 from err import AxisReservoirNullException
 
-from model import Vector
+from domain.model import Vector
 from topology.registry import AxisReservoir
 
 

@@ -9,14 +9,13 @@ version: 1.0.0
 
 from __future__ import annotations
 
-from copy import deepcopy
 from typing import List
 
 from logic.square import (
     SquareStackTokenHandlerException,  Square, VisitDestinationNotFoundException, SquareService, SquareStackService
 )
 from system import DeletionResult, LoggingLevelRouter, UpdateResult, ValidationResult
-from model.state.token import Token, TokenService
+from domain.model.state.token import Token, TokenService
 
 
 class SquareStackDepartureWorker:

@@ -12,8 +12,8 @@ from __future__ import annotations
 from typing import Type
 
 from bootstrapper import AnalyzerBootstrapper, PrimingValidator
-from context import TokenContext
-from model import Rank
+from domain.search.context import TokenContext
+from domain.model import Rank
 from report import RankQuotaReport
 from result import AnalysisResult, MethodResultType
 from collection.stack import TokenStackService

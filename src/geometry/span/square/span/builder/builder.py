@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import List
 
-from model.math.coord import Coord
+from domain.model import Coord
 from math.span.square import SquareSpanBuilderException
 from geometry.square import Square, SquareContext, SquareStackService
 from math.span import CoordRay, CoordSpan, SquareRay, SquareSpan

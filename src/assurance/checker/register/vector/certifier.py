@@ -13,8 +13,8 @@ from typing import List, cast
 from fabrication.blueprint import VectorRegisterBlueprint
 from carrier import VectorRegisterCarrier
 from err import RegisterEmptyException, RegisterSetSizeException, VectorRegisterRootCheckerException
-from model import Vector
-from register import VectorRegister
+from domain.model import Vector
+from domain.register import VectorRegister
 from result import ValidationResult
 from assurance.checker import Checker
 from toolkit import VectorRegisterToolkit

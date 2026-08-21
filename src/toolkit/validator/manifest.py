@@ -13,10 +13,10 @@ from abc import ABC, abstractmethod
 from typing import Any, Dict, Generic, Optional, Type, TypeVar
 
 from assurance import PrimingValidator
-from err import BlueprintNullException, EntityCarrierNullException, ModelNullException, NullException
+from err import BlueprintNullException, EntityCarrierNullException, ModelNullException
 from fabrication import Blueprint
 from microservice import IdentityService
-from model import Model
+from domain.model import Model
 from transit import EntityCarrier
 
 T = TypeVar("T", bound="Model")

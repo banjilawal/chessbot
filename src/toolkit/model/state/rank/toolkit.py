@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import List
 
 from microservice import IdentityService, Microservice
-from model import Rank
+from domain.model import Rank
 from toolkit.model.state.rank.toolkit import StateModelToolkit
 from operation import Operation
 from assurance.validator import PrimingValidator

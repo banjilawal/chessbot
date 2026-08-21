@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Type, cast
 
 from fabrication.blueprint import ModelBlueprint
-from model import Coord
+from domain.model import Coord
 
 
 class CoordBlueprint(ModelBlueprint[Coord]):

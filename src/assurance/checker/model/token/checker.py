@@ -12,10 +12,10 @@ from __future__ import annotations
 from typing import Optional, Type, cast
 
 from assurance import ModelIntegrityChecker, TokenValidationBundle
-from context import TokenHomeContext
+from domain.search.context import TokenHomeContext
 from err import FormationNullException, TokenIntegrityCheckerException
 from fabrication import TokenBlueprint
-from model import HomeSquare, Team, Token
+from domain.model import HomeSquare, Team, Token
 from result import ValidationResult
 from schema import Formation
 from transit import TokenCarrier

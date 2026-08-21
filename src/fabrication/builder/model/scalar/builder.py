@@ -14,7 +14,7 @@ from typing import Optional, cast
 from fabrication.blueprint import ScalarBlueprint
 from fabrication.builder import ModelBuilder
 from err import ScalarBuilderException
-from model import Scalar
+from domain.model import Scalar
 from result import BuildResult, MethodResultType
 from toolkit import ScalarBuilderToolkit
 from util import LoggingLevelRouter

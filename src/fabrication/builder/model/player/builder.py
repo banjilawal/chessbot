@@ -14,7 +14,7 @@ from typing import Optional, cast
 from fabrication.blueprint import PlayerBlueprint
 from fabrication.builder import ModelBuilder
 from err import PlayerBuilderException
-from model import Player
+from domain.model import Player
 from result import BuildResult, MethodResultType
 from toolkit import PlayerBuilderToolkit
 from util import LoggingLevelRouter

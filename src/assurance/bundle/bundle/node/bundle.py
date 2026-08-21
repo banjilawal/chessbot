@@ -13,7 +13,7 @@ from dataclasses import dataclass
 from typing import Any, Dict
 
 from assurance import NodeNullRoster, NodeTypes, ValidationBundle
-from node import Node
+from domain.node import Node
 
 
 @dataclass

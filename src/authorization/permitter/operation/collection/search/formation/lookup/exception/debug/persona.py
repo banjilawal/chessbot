@@ -8,7 +8,7 @@ version: 1.0.0
 """
 
 from system import BoundsException
-from model.catalog.formation import FormationException
+from domain.model import FormationException
 
 __all__ = [
     # ======================# FORMATION_PERSONA_BOUNDS EXCEPTION #======================#

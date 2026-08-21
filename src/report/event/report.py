@@ -11,7 +11,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Optional
 
-from model import HomeSquare, Token
+from domain.model import HomeSquare, Token
 from report import Report
 from report.event.state import EventPermission
 

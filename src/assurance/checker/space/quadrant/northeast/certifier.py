@@ -14,7 +14,7 @@ from typing import Any, List, cast
 from fabrication.blueprint import NortheastQuadrantBlueprint
 from err import NortheastQuadrantCarrierNullException, NortheastQuadrantRootCheckerException
 from carrier import NortheastQuadrantCarrier
-from model import Vector
+from domain.model import Vector
 from result import ValidationResult
 from assurance.checker import QuadrantRootChecker
 from space import NortheastQuadrant

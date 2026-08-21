@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Optional
 
 from fabrication.blueprint import ArenaBlueprint
-from model import Arena
+from domain.model import Arena
 from carrier import ModelCarrier
 
 

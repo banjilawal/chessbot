@@ -12,9 +12,9 @@ from __future__ import annotations
 from typing import cast
 
 from bootstrapper import HomeDetectorBootstrapper
-from context import TokenHomeContext
+from domain.search.context import TokenHomeContext
 from err import HomeSquareDetectorException
-from model import HomeSquare
+from domain.model import HomeSquare
 from result import Result
 from sensor import TokenEnvironmentReporter
 from util import LoggingLevelRouter

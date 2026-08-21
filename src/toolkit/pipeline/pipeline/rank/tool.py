@@ -10,7 +10,7 @@ version: 0.0.2
 from __future__ import annotations
 
 from microservice import PersonaService
-from model import Rank
+from domain.model import Rank
 from system import IdentityService
 from toolkit import toolkit
 

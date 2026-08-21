@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Optional, Type, cast
 
 from fabrication.blueprint import StateModelBlueprint
-from model import Board, Player, Team
+from domain.model import Board, Player, Team
 from schema import Archetype
 
 

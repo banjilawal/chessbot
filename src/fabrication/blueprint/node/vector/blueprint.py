@@ -13,8 +13,8 @@ from typing import Optional, Type, cast
 
 from err import VectorNodeNullException
 from fabrication import NodeBlueprint
-from model import Vector
-from node import VectorNode
+from domain.model import Vector
+from domain.node import VectorNode
 
 
 class VectorNodeBlueprint(NodeBlueprint):

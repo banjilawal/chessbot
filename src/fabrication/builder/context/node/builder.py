@@ -12,7 +12,7 @@ from __future__ import annotations
 import sys
 from typing import Optional
 
-from node import (
+from domain.node import (
     DiscoveryStatus, ArenaNodeContextFlagsException, SquareNode, NodeContext, NodeContextBuilderException,
     NodeContextBuildRouteException, NodeValidator, ZeroNodeContextFlagsException
 )

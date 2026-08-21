@@ -10,7 +10,7 @@ version: 0.0.2
 from __future__ import annotations
 
 from err import CoordContextNullException
-from model import Coord, CoordContext
+from domain.model import Coord, CoordContext
 from toolkit import ContextToolkit, CoordToolkit
 
 

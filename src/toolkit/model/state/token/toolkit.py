@@ -16,7 +16,7 @@ from fabrication.blueprint import TokenBlueprint
 from carrier import TokenCarrier
 from sensor.detector import TokenHomeReporter
 from err import TokenBlueprintNullException, TokenCarrierNullException, TokenNullException
-from model import Token
+from domain.model import Token
 from authorization.adjudicator import BlueprintHomeSquareExtractor, BlueprintRankExtractor
 from toolkit.model.state.token.toolkit import StateModelToolkit
 from assurance.validator import TeamValidator

@@ -13,7 +13,7 @@ from typing import Optional, Type, cast
 
 from fabrication.blueprint import QuadrantBlueprint
 from err import NortheastQuadrantNullException
-from model import Vector
+from domain.model import Vector
 from space import NortheastQuadrant
 
 

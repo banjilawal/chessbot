@@ -18,7 +18,7 @@ from err import (
     TeamBlueprintNullException, TeamNullException, TokenBlueprintNullException, TokenCarrierNullException,
     TokenNullException
 )
-from model import Team, Token
+from domain.model import Team, Token
 from authorization.adjudicator import BlueprintHomeSquareExtractor, BlueprintRankExtractor
 from toolkit.model.state.team.toolkit import StateModelToolkit
 from assurance.validator import BoardValidator, TeamValidator

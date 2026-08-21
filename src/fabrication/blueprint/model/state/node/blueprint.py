@@ -13,7 +13,7 @@ from typing import Optional, Type
 
 from fabrication.blueprint import StateModelBlueprint
 from err import NodeNullException
-from model import Node, Square
+from domain.model import Node, Square
 
 @dataclass
 class NodeBlueprint(StateModelBlueprint[Node]):

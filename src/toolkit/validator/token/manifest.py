@@ -9,13 +9,13 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from typing import Any, Dict, Optional, Type
+from typing import Any, Dict, Type
 
 from assurance import TeamValidator
 from authorization import BlueprintHomeSquareExtractor, BlueprintRankExtractor
-from err import NullException, TokenBlueprintNullException, TokenCarrierNullException, TokenNullException
+from err import TokenBlueprintNullException, TokenCarrierNullException, TokenNullException
 from fabrication import TokenBlueprint
-from model import Token
+from domain.model import Token
 from sensor import TokenHomeReporter
 from toolkit import ModelManifest
 from transit import TokenCarrier

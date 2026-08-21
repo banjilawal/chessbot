@@ -13,7 +13,7 @@ from typing import Optional, Type
 
 from fabrication.blueprint import StateModelBlueprint
 from err import BoardNullException
-from model import Arena, Board
+from domain.model import Arena, Board
 
 
 @dataclass

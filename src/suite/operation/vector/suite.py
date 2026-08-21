@@ -14,7 +14,7 @@ from typing import Optional, cast
 from assurance import VectorValidator
 from fabrication import VectorBuilder
 from kit import OperationSuite, VectorToolkit
-from model import Vector
+from domain.model import Vector
 
 
 class VectorOperationSuite(OperationSuite[Vector]):

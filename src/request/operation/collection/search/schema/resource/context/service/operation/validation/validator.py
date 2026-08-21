@@ -12,7 +12,7 @@ from typing import Any, cast
 
 
 from system import LoggingLevelRouter, Validator, ValidationResult
-from model.catalog import (
+from domain.model import (
     ExcessSchemaContextFlagsException, NullSchemaContextException, SchemaContext, SchemaContextIntegrityWorkers,
     SchemaContextValidatorException, SchemaContextValidationRouteException, ZeroSchemaContextFlagsException
 )

@@ -8,7 +8,7 @@ version: 1.0.0
 """
 
 from system import IntegrityMicroservice, IdFactory
-from model.catalog import SchemaQuery, SchemaQueryBuilder, SchemaQueryOpsController, SchemaQueryValidator
+from domain.model import SchemaQuery, SchemaQueryBuilder, SchemaQueryOpsController, SchemaQueryValidator
 
 
 class SchemaQueryService(IntegrityMicroservice[SchemaQuery]):

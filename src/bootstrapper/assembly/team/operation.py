@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from controller import WorkerRegistryController
 from err import PrimingTeamAssemblyException
-from model import Board, Team, TeamBlueprint
+from domain.model import Board, Team, TeamBlueprint
 from operation import AssemblyPrimer
 from result import ValidationResult
 from toolkit import TeamToolkit

@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Optional, Type, cast
 
 from fabrication.blueprint import StateModelBlueprint
-from model import Board, Coord, Square
+from domain.model import Board, Coord, Square
 from schema import Formation
 
 

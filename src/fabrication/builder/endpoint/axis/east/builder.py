@@ -11,8 +11,8 @@ from __future__ import annotations
 
 from typing import cast
 
-from model import Vector
-from register import VectorRegister
+from domain.model import Vector
+from domain.register import VectorRegister
 from result import BuildResult
 from schema.terminus.axis import AxisTerminus
 from util import LoggingLevelRouter

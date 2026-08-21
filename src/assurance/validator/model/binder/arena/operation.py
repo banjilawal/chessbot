@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, Dict, cast
 
 from err import BoardTeamBinderNullException, BoardTeamBinderValidatorException
-from model import BoardBinder, Schema, Team
+from domain.model import BoardBinder, Schema, Team
 from checker.validator.binder.validator import SchemaHashtableValidator
 from result import ValidationResult
 from util import LoggingLevelRouter

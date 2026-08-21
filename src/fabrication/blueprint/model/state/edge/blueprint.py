@@ -13,7 +13,7 @@ from typing import Optional, Type
 
 from fabrication.blueprint import StateModelBlueprint
 from err import EdgeNullException
-from model import Edge, Node
+from domain.model import Edge, Node
 
 
 @dataclass

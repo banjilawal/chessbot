@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Optional, Type, cast
 
 from fabrication.blueprint import StateModelBlueprint
-from model import HomeSquare, Rank, Team, Token
+from domain.model import HomeSquare, Rank, Team, Token
 from schema import Formation
 
 

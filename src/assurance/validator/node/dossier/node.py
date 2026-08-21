@@ -11,8 +11,8 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from model import Dossier
-from node import Node
+from domain.model import Dossier
+from domain.node import Node
 
 
 class DossierNode(Node[Dossier]):

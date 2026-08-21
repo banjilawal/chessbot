@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Iterator, List, Optional, Tuple, cast
 
 from collection import SetCollection
-from model import Coord, Vector
+from domain.model import Coord, Vector
 
 
 class CoordSet(SetCollection[Coord]):

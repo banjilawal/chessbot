@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, cast
 
 from err import ManeuverCheckerException
-from model import Maneuver
+from domain.model import Maneuver
 from result import ValidationResult
 from toolkit import ManeuverToolkit
 from util import LoggingLevelRouter

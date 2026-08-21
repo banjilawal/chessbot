@@ -12,10 +12,10 @@ from __future__ import annotations
 
 from typing import Optional, Type, cast
 
-from err import ModelNullException, VectorNullException
+from err import VectorNullException
 from fabrication import ModelBlueprint
 
-from model import Vector
+from domain.model import Vector
 
 
 

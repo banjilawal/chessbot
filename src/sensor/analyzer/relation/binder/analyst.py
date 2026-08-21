@@ -15,7 +15,7 @@ from sensor.analyzer import RelationAnalyzer
 from err import BoardBinderAnalysisAnalysisException
 from integrity import BoardValidator
 from microservice import BoardService
-from model import Board, BoardBinder
+from domain.model import Board, BoardBinder
 from operation import BoardTeamBinderValidator
 from report import RelationReport
 from result import AnalysisResult

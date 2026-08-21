@@ -12,7 +12,7 @@ from copy import deepcopy
 
 from err import AttackDestinationEmptyException, AttackEventNullException, AttackException
 from event import AttackEvent
-from model import SquareState
+from domain.model import SquareState
 from operation import ManeuverLauncher
 from report import AttackApproval, ManeuverApproval
 from result import EventResult, MethodResultType

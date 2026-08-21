@@ -10,7 +10,7 @@ version: 0.0.2
 from __future__ import annotations
 
 
-from model import Vector
+from domain.model import Vector
 from space.axis.north.space import Axis
 
 

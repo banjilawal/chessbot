@@ -13,7 +13,7 @@ from dataclasses import dataclass
 from typing import Type
 
 from err import PathNullException
-from model import Path
+from domain.model import Path
 from toolkit.model.state.path.toolkit import StateModelToolkit
 from assurance.validator import SquareValidator
 

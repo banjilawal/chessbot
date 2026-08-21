@@ -11,7 +11,7 @@ from __future__ import annotations
 from enum import Enum
 
 import setting.board.dimension
-from model import Scalar
+from domain.model import Scalar
 from setting import GameColor
 
 

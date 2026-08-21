@@ -13,8 +13,8 @@ from typing import Optional, Type, cast
 
 from fabrication.blueprint import RegisterBlueprint
 from err import VectorToggleRegisterNullException
-from register import VectorToggleRegister
-from toggle import VectorToggle
+from domain.register import VectorToggleRegister
+from domain.toggle import VectorToggle
 
 
 class VectorToggleRegisterBlueprint(

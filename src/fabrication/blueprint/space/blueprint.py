@@ -14,7 +14,7 @@ from typing import Generic, List, Type, TypeVar, cast
 
 from fabrication.blueprint import Blueprint
 from err import SpaceNullException
-from model import Vector
+from domain.model import Vector
 
 
 T = TypeVar("T", bound="Space")

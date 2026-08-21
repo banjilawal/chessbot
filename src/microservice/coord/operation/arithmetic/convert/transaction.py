@@ -10,7 +10,7 @@ version: 1.0.0
 from __future__ import annotations
 
 from system import ComputationResult
-from model.math.vector import Vector, VectorService
+from domain.model import Vector, VectorService
 from logic.coord import ConvertVectorException, Coord, CoordService
 
 

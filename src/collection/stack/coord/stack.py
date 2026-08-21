@@ -9,7 +9,7 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from model import Coord
+from domain.model import Coord
 from collection.stack import StackService
 
 

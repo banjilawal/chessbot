@@ -11,7 +11,7 @@ from __future__ import annotations
 
 
 from fabrication.blueprint import RankBlueprint
-from model import Bishop, King, Knight, Pawn, Queen, Rank, Rook
+from domain.model import Bishop, King, Knight, Pawn, Queen, Rank, Rook
 from result import BuildResult
 from fabrication.assembler import ModelAssembler
 from schema import Persona

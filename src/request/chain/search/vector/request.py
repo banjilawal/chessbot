@@ -13,7 +13,7 @@ from typing import cast
 
 from authorization import ChainSearchRequest
 from collection import VectorChain
-from node import VectorNode
+from domain.node import VectorNode
 
 
 class VectorNodeSearchRequest(ChainSearchRequest[VectorNode]):

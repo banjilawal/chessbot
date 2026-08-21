@@ -15,7 +15,7 @@ from typing import Type
 from fabrication.blueprint import RankBlueprint
 from carrier import RankCarrier
 from err import RankBlueprintNullException, RankCarrierNullException, RankNullException
-from model import Rank
+from domain.model import Rank
 from toolkit.model.rank.toolkit import ModelToolkit
 
 

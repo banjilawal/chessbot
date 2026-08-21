@@ -11,13 +11,12 @@ from __future__ import annotations
 from computation import sqrt
 from typing import Optional, cast
 
-from controller import WorkerRegistryController
 from pipeline import ScalarBuilder
 from result import ComputationResult
 from util import LoggingLevelRouter
 from err import VectorEuclideanException
-from operation import Operation, VectorRegisterValidator
-from model import RegisterContentType, Scalar, ScalarBlueprint, PointRegister
+from operation import VectorRegisterValidator
+from domain.model import RegisterContentType, Scalar, ScalarBlueprint, PointRegister
 
 
 class EuclideanDistance(Computation[Scalar]):

@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Type
 
 from err import PoppingEmptyTokenStackException, TokenPopPermitterException, TokenStackNullException
-from model import Token
+from domain.model import Token
 from authorization.permitter.stack import PopPermitter
 from report import PopApprovalReport
 from request import PopRequest

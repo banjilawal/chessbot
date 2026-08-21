@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from controller import WorkerRegistryController
 from err import FinalizeTokenBuilderException
-from model import Token
+from domain.model import Token
 from operation import BuilderFinalizer, TokenAssembler
 from result import BuildResult
 from util import LoggingLevelRouter

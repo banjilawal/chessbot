@@ -13,7 +13,7 @@ from abc import abstractmethod
 from typing import Generic, Optional, TypeVar, cast
 
 from fabrication.builder import Builder
-from model import Vector
+from domain.model import Vector
 
 from result import BuildResult
 from toolkit import MathToolkit, SpaceReservoirBuilderToolkit

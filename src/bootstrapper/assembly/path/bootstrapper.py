@@ -19,7 +19,7 @@ from operation.collection.search import SquareNotFoundException
 from operation import AssemblyPrimer
 from err import PathAssemblyPrimerException
 from result import AnalysisResult, SearchResult, ValidationResult
-from model import HomeSquare, SquareContext, Path
+from domain.model import HomeSquare, SquareContext, Path
 from util import IdFactory, LoggingLevelRouter
 
 

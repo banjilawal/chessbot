@@ -7,7 +7,7 @@ Created: 2026-04-03
 version: 0.0.2
 """
 from microservice import PersonaService
-from model import Rank
+from domain.model import Rank
 from result import ValidationResult
 from system import LoggingLevelRouter
 

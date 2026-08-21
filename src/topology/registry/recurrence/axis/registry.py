@@ -15,7 +15,7 @@ from topology import (
     Axis, AxisMappingFunctionStream, AxisRecurrence, EastAxisRecurrence, NorthAxisRecurrence,
     RecurrenceRegistry, SouthAxisRecurrence, WestAxisRecurrence
 )
-from model import Vector
+from domain.model import Vector
 
 
 class AxisRecurrenceRegistry(RecurrenceRegistry[Axis]):

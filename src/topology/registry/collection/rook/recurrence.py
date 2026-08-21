@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Dict, Tuple, Type, cast
 
-from model import Rook
+from domain.model import Rook
 from topology.recurrence import AxisRecurrenceRegistry
 from topology.registry.collection import RecurrenceRegistryCollection
 

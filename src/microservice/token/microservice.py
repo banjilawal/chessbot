@@ -12,7 +12,7 @@ from __future__ import annotations
 from fabrication.builder import TokenBuilder
 from controller import TokenController
 from microservice import CoordService
-from model import Coord, Token
+from domain.model import Coord, Token
 from result import DeletionResult, InsertionResult
 from util import IdFactory, LoggingLevelRouter
 from assurance.validator import TokenValidator

@@ -15,7 +15,7 @@ __all__ = [
     "GameNotFoundException",
 ]
 
-from model.state.game import GameDebugException
+from domain.model import GameDebugException
 
 
 # ======================# GAME_NOT_FOUND_EXCEPTION #======================#

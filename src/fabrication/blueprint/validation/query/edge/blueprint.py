@@ -13,7 +13,7 @@ from dataclasses import dataclass
 from typing import Optional
 
 from err import EdgeNullException
-from model import Edge, Blueprint, Game, Node, Player
+from domain.model import Edge, Blueprint, Node
 
 
 @dataclass

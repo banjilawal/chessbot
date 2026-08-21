@@ -13,7 +13,7 @@ from typing import Optional, Type, cast
 
 from fabrication.blueprint import AxisBlueprint
 from err import NorthAxisNullException
-from model import Vector
+from domain.model import Vector
 from space import NorthAxis
 
 

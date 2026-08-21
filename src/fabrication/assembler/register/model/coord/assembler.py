@@ -11,8 +11,8 @@ from __future__ import annotations
 
 
 from fabrication.assembler import RegisterAssembler
-from model import Coord
-from register import CoordRegister
+from domain.model import Coord
+from domain.register import CoordRegister
 from result import BuildResult
 from util import LoggingLevelRouter
 

@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Iterator, Optional, Tuple, cast
 
 from collection import SetCollection
-from register import Register
+from domain.register import Register
 
 
 class RegisterSet(SetCollection[Register]):

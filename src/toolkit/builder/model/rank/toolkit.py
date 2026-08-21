@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Optional, cast
 
 from fabrication.assembler import RankAssembler
-from model import Rank
+from domain.model import Rank
 from assurance.checker import RankRootCertifier
 from toolkit.builder.model.rank.toolkit import ModelBuilderToolkit
 

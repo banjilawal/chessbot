@@ -11,7 +11,7 @@ from __future__ import annotations
 from typing import Any, cast
 
 from err import CoordContextValidatorException
-from model import CoordContext
+from domain.model import CoordContext
 from result import ValidationResult
 from setting import BoardProperty
 from toolkit import CoordContextToolkit

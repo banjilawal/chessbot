@@ -13,7 +13,7 @@ from typing import cast
 
 from sensor.detector.token import TokenCollisionDetector
 from err import TokenAppendPermitterException
-from model import Token
+from domain.model import Token
 from authorization.permitter.chain import AppendPermitter, RankSlotPermitter
 from report import AppendApprovalReport
 from request import AppendRequest, RankSlotRequest

@@ -9,12 +9,11 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from abc import ABC
 from dataclasses import dataclass
 
 
 from report import Report
-from model import Square, Token
+from domain.model import Square, Token
 
 
 @dataclass

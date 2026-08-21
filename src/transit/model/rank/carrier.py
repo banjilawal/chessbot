@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Optional
 
 from fabrication.blueprint import RankBlueprint
-from model import Rank
+from domain.model import Rank
 from carrier import ModelCarrier
 
 

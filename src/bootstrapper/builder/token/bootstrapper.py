@@ -15,7 +15,7 @@ from err import (
     DisabledTokenException, TokenBuilderBootstrapperException, TokenSearchHitConflictException,
     TokenSearchResultEmptyException
 )
-from model import SquareContext, Token
+from domain.model import SquareContext, Token
 from report import TokenReadinessReport
 from result import MethodResultType, SearchResult
 from operation.collection.search import TokenTokenBuilder

@@ -10,7 +10,7 @@ version: 0.0.2
 from __future__ import annotations
 
 from err import SquareContextNullException
-from model import Square, SquareContext
+from domain.model import Square, SquareContext
 from toolkit import ContextToolkit, SquareToolkit
 
 

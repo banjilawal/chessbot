@@ -11,11 +11,11 @@ from __future__ import annotations
 from abc import abstractmethod
 
 from graph.domain.graph import Graph
-from model.math.coord import CoordService
+from domain.model import CoordService
 from math.span import CoordSpan, SpanGraphHandler, SpanServiceException, Spanner
-from model.math.vector import VectorService
+from domain.model import VectorService
 from geometry.square import SquareDatabase
-from model.state.token import Token, TokenService
+from domain.model.state.token import Token, TokenService
 from system import ComputationResult, IdFactory, IdentityService, LoggingLevelRouter, Microservice
 
 class SpanMicroservice(Microservice[CoordSpan]):

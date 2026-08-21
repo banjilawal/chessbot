@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import List
 
 from microservice import ResultService
-from model import Result
+from domain.model import Result
 from collection.stack import StackService
 
 

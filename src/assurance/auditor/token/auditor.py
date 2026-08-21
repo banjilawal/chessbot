@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from assurance import ConsistencyAuditor
 from err import TokenAuditorException
-from model import Token
+from domain.model import Token
 from result import ValidationResult
 from util import LoggingLevelRouter
 

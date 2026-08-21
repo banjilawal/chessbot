@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Optional, cast
 
 from fabrication.assembler import TeamAssembler
-from model import Team
+from domain.model import Team
 from assurance.checker import TeamRootCertifier
 from toolkit.builder.model.team.toolkit import ModelBuilderToolkit
 

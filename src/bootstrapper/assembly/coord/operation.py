@@ -14,7 +14,7 @@ from controller import WorkerRegistryController
 from err import PrimingCoordAssemblyException
 from toolkit import CoordToolkit
 from result import ValidationResult
-from model import Coord, CoordBlueprint
+from domain.model import Coord, CoordBlueprint
 from operation import AssemblyPrimer
 from util import LoggingLevelRouter
 

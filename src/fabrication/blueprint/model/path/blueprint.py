@@ -12,8 +12,8 @@ from __future__ import annotations
 from typing import Optional, Type, cast
 
 from fabrication.blueprint import ModelBlueprint
-from model import Path
-from register import SquareRegister
+from domain.model import Path
+from domain.register import SquareRegister
 
 
 class PathBlueprint(ModelBlueprint[Path]):

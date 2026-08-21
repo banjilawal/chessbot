@@ -13,7 +13,7 @@ from typing import cast
 
 from sensor.analyzer import RelationAnalyzer
 from err import TeamTokenRelationAnalysisException
-from model import Team, Token, TokenContext
+from domain.model import Team, Token, TokenContext
 from report import RelationReport
 from result import AnalysisResult, MethodResultType
 from util import LoggingLevelRouter

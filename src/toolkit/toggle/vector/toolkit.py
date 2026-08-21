@@ -16,7 +16,7 @@ from fabrication.blueprint import VectorToggleBlueprint
 from carrier.toggle.vector.carrier import VectorToggleCarrier
 from err import VectorToggleBlueprintNullException, VectorToggleCarrierNullException, VectorToggleNullException
 from suite import  CoordOperationSuite, VectorOperationSuite
-from toggle import VectorToggle
+from domain.toggle import VectorToggle
 from toolkit.toggle.vector.toolkit import ToggleToolkit
 
 

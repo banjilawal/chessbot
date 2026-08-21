@@ -14,7 +14,7 @@ from typing import Optional, cast
 from authorization import TokenStackPushPermitter, TokenStackPushRequest
 from collection import TokenStackState
 from err import TokenStackPushException
-from model import Token
+from domain.model import Token
 from operation import StackPop
 from result import InsertionResult, MethodResultType
 from util import LoggingLevelRouter

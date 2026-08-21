@@ -10,7 +10,7 @@ version: 1.0.0
 from typing import cast
 
 from system import QueryService, id_emitter
-from model.catalog.formation import FormationLookupProcess, FormationKey, FormationKeyBuilder, FormationKeyValidator
+from domain.model import FormationLookupProcess, FormationKey, FormationKeyBuilder, FormationKeyValidator
 
 
 class FormationKeyService(QueryService[FormationKey]):

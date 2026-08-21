@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any
 
 from microservice import ArenaService, IdentityService
-from model import Board
+from domain.model import Board
 from assurance.auditor import  ConsistencyAuditor
 from result import ValidationResult
 from util import LoggingLevelRouter

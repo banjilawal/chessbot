@@ -13,7 +13,7 @@ from abc import ABC
 from typing import Generic, TypeVar
 
 from assurance import IntegrityChecker
-from model import Model
+from domain.model import Model
 
 T = TypeVar("T", bound="Model")
 

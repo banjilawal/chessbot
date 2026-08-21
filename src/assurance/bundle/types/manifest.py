@@ -14,7 +14,7 @@ from dataclasses import dataclass
 from typing import Generic, Type, TypeVar
 
 from fabrication import Blueprint
-from model import Model
+from domain.model import Model
 from transit import EntityCarrier
 
 T = TypeVar("T", bound="Model")

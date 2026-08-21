@@ -13,8 +13,8 @@ from typing import Optional, Type, cast
 
 from err import DossierNodeNullException
 from fabrication import NodeBlueprint
-from model import Dossier
-from node import DossierNode
+from domain.model import Dossier
+from domain.node import DossierNode
 
 
 class DossierNodeBlueprint(NodeBlueprint):

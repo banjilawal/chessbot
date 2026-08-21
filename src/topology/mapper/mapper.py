@@ -12,7 +12,7 @@ from __future__ import annotations
 from abc import ABC, abstractmethod
 from typing import Generic, Optional, TypeVar
 
-from model import Vector
+from domain.model import Vector
 from result import ComputationResult
 from toolkit import MathToolkit
 from util import LoggingLevelRouter

@@ -13,7 +13,7 @@ from dataclasses import dataclass
 from typing import Optional
 
 from err import NodeContextNullException
-from model import DiscoveryStatus, Node, NodeContext, Blueprint, Square
+from domain.model import DiscoveryStatus, Node, NodeContext, Blueprint, Square
 
 
 @dataclass

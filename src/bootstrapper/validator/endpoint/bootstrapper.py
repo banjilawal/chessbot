@@ -10,7 +10,7 @@ version: 0.0.2
 from __future__ import annotations
 
 from bootstrapper import ValidatorBootstrapper
-from model import Path, Square, Token
+from domain.model import Path, Square, Token
 from result import ValidationResult
 from util import LoggingLevelRouter
 from assurance.validator import TokenDestinationCertifier, TokenOriginCertifier

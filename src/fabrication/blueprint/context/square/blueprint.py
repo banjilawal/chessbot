@@ -13,7 +13,7 @@ from dataclasses import dataclass
 from typing import Optional
 
 from err import SquareContextNullException
-from model import Board, Coord, Formation, SquareContext, Blueprint, SquareState, Token
+from domain.model import Board, Coord, Formation, SquareContext, Blueprint, SquareState, Token
 
 
 @dataclass

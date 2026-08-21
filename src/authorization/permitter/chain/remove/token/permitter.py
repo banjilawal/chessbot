@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Type
 
 from err import RemovepingEmptyTokenChainException, TokenRemovePermitterException, TokenChainNullException
-from model import Token
+from domain.model import Token
 from authorization.permitter.chain import RemovePermitter
 from report import RemoveApprovalReport
 from request import RemoveRequest

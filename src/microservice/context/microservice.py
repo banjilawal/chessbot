@@ -10,7 +10,7 @@ version: 0.0.2
 from __future__ import annotations
 
 from microservice import Microservice
-from model import Context
+from domain.model import Context
 from pipeline.build.pipeline import BuildPipeline
 from system import IdFactory
 

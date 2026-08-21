@@ -13,7 +13,7 @@ from abc import ABC, abstractmethod
 from typing import Dict, Generic, Type, TypeVar
 
 from topology import Recurrence, SpaceMapFunctionStream
-from model import Vector
+from domain.model import Vector
 
 T = TypeVar("T", bound="Space")
 

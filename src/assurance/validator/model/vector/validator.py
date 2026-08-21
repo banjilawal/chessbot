@@ -14,7 +14,7 @@ from typing import Any, cast
 from assurance import ModelValidator
 from err import VectorValidatorException
 from assurance import VectorIntegrityChecker
-from model import Vector
+from domain.model import Vector
 from result import ValidationResult
 from util import LoggingLevelRouter
 

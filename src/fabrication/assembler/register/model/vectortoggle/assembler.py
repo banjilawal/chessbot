@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from fabrication.assembler import RegisterAssembler
 from fabrication.blueprint import VectorToggleRegisterBlueprint
-from register import VectorToggleRegister
+from domain.register import VectorToggleRegister
 from result import BuildResult
 from util import LoggingLevelRouter
 

@@ -11,7 +11,7 @@ from __future__ import annotations
 from typing import Any, cast
 
 from err import CircularPathException, PathConsistencyAuditorException
-from model import Path
+from domain.model import Path
 from result import ValidationResult
 from toolkit import PathToolkit
 from util import LoggingLevelRouter

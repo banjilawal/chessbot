@@ -14,7 +14,7 @@ from typing import Optional
 
 from fabrication.blueprint import QueryValidationBlueprint
 from err import TeamNullException
-from model import Board, Player, Schema, Team, TeamValidation, TeamState
+from domain.model import Board, Player, Schema, Team, TeamValidation, TeamState
 
 
 @dataclass

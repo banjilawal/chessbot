@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Optional, cast
 
 from fabrication.assembler import VectorAssembler
-from model import Vector
+from domain.model import Vector
 from assurance.checker import VectorIntegrityChecker
 from toolkit.builder.model.vector.toolkit import ModelBuilderToolkit
 

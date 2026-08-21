@@ -11,7 +11,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Optional
 
-from model import CombatantToken, KingToken, Token
+from domain.model import CombatantToken, KingToken, Token
 from report import ReadinessState, Report
 
 

@@ -12,7 +12,7 @@ from dataclasses import dataclass
 from typing import Optional
 
 from microservice import PlayerService
-from model import Blueprint, Arena, Schema, ArenaBinder
+from domain.model import Blueprint, Arena, Schema, ArenaBinder
 
 @dataclass
 class ArenaBinderBlueprint(ModelBlueprint[ArenaBinder]):

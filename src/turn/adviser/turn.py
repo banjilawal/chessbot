@@ -9,7 +9,7 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from model import Graph
+from domain.model import Graph
 from report import ManeuverRequestDecision
 from util import LoggingLevelRouter
 

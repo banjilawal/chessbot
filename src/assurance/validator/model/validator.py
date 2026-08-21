@@ -13,7 +13,7 @@ from abc import abstractmethod
 from typing import Any, cast
 
 from assurance import ModelIntegrityChecker, Validator
-from model import Model
+from domain.model import Model
 from result import ValidationResult
 from util import LoggingLevelRouter
 

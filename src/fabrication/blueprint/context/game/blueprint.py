@@ -13,7 +13,7 @@ from dataclasses import dataclass
 from typing import Optional
 
 from err import GameContextNullException
-from model import Blueprint, Game, GameContext, Player
+from domain.model import Blueprint, Game, GameContext, Player
 
 
 @dataclass

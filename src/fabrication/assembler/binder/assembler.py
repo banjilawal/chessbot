@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from fabrication.blueprint.model.binder import BoardBinderBlueprint
 from system import BuildResult, Builder, LoggingLevelRouter
-from model.state.team import (
+from domain.model.state.team import (
     BlackTeamHasWrongSchemaException, TeamBinder, TeamBinderBuilderException,
     TeamSchemaCollisionException, WhiteTeamHasWrongSchemaException
 )

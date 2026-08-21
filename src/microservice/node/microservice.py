@@ -7,7 +7,7 @@ Created: 2026-04-03
 version: 0.0.2
 """
 from microservice import Microservice
-from model import Node
+from domain.model import Node
 
 
 class NodeService(Microservice[Node]):

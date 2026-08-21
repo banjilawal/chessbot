@@ -15,7 +15,7 @@ __all__ = [
     "HostageSearchRouteException",
 ]
 
-from model.hostage import HostageDebugException
+from domain.model import HostageDebugException
 
 
 # ======================# NO_HOSTAGE_SEARCH_ROUTE_ROUTE_EXCEPTION #======================#

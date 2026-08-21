@@ -16,10 +16,10 @@ from err import (
     RegisterEmptyException, RegisterSizeException, VectorToggleRegisterCheckerException,
     VectorToggleRegisterMismatchException
 )
-from register import VectorToggleRegister
+from domain.register import VectorToggleRegister
 from result import MethodResultType, ValidationResult
 from assurance.checker import Checker
-from toggle import VectorToggle
+from domain.toggle import VectorToggle
 from toolkit import VectorToggleRegisterToolkit
 from util import LoggingLevelRouter
 

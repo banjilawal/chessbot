@@ -14,7 +14,7 @@ from typing import Optional, cast
 from assurance import CoordValidator
 from fabrication import CoordBuilder
 from kit import OperationSuite, CoordToolkit
-from model import Coord
+from domain.model import Coord
 
 
 class CoordOperationSuite(OperationSuite[Coord]):

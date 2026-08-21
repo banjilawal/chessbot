@@ -15,7 +15,7 @@ from fabrication.blueprint import VectorToggleBlueprint
 from fabrication.builder import ToggleBuilder
 from err import VectorToggleBuilderException
 from result import BuildResult, MethodResultType
-from toggle import VectorToggle
+from domain.toggle import VectorToggle
 from toolkit import VectorToggleBuilderToolkit
 from util import LoggingLevelRouter
 

@@ -12,7 +12,7 @@ from typing import List
 
 from err import WorkerRegistryNameSearchException
 from result import SearchResult
-from model import WorkerRegistry
+from domain.model import WorkerRegistry
 from util import LoggingLevelRouter
 from controller import WorkerRegistryController
 from operation import Operation, RegistryEntryNameValidator

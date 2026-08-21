@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import List, cast
 
 from collection import CoordSet
-from model import Coord
+from domain.model import Coord
 from tree import Tree
 
 

@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 
-from model import Scalar
+from domain.model import Scalar
 from toolkit.model.state.scalar.toolkit import StateModelToolkit
 from assurance.validator import NumberValidator
 

@@ -11,7 +11,7 @@ from __future__ import annotations
 from typing import Optional
 
 from event import Event
-from model import KingToken, Square, Token
+from domain.model import KingToken, Square, Token
 
 
 class KingCheckEvent(Event):

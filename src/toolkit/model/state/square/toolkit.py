@@ -17,7 +17,7 @@ from bootstrapper import PrimingValidator
 from carrier import SquareCarrier
 from sensor.detector import SquareCollider
 from err import SquareBlueprintNullException, SquareNullException
-from model import Square
+from domain.model import Square
 from toolkit.model.state.square.toolkit import StateModelToolkit
 from assurance.validator import BoardValidator, CoordValidator, TokenValidator
 

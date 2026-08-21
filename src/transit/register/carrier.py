@@ -12,7 +12,7 @@ from __future__ import annotations
 from abc import ABC
 
 from carrier import EntityCarrier
-from register import Register
+from domain.register import Register
 
 
 class RegisterCarrier(EntityCarrier[Register], ABC):

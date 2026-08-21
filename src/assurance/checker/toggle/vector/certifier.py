@@ -16,10 +16,10 @@ from err import (
     ExcessToggleActivationException, NoActiveTogglesException, NoValidationRouteException,
     VectorToggleRootCheckerException
 )
-from model import Coord, Vector
+from domain.model import Coord, Vector
 from assurance.checker import ToggleChecker
 from result import ValidationResult
-from toggle import VectorToggle
+from domain.toggle import VectorToggle
 from toolkit import VectorToggleToolkit
 from util import LoggingLevelRouter
 

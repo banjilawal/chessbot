@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Optional, cast
 
 from fabrication.blueprint import SquareBlueprint
-from model import HomeSquare, Square
+from domain.model import HomeSquare, Square
 from carrier import ModelCarrier
 
 

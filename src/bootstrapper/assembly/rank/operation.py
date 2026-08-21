@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from controller import WorkerRegistryController
 from err import PrimingRankAssemblyException
-from model import Rank, RankBlueprint
+from domain.model import Rank, RankBlueprint
 
 from operation import AssemblyPrimer
 from result import ValidationResult

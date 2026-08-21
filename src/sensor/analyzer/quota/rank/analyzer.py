@@ -12,7 +12,7 @@ from __future__ import annotations
 from sensor.analyzer import Analyzer
 from bootstrapper.analyzer.quota.bootstrapper import QuotaAnalyzerBootstrapper
 from err import RankQuotaAnalyzerException
-from model import Rank
+from domain.model import Rank
 from report import RankQuotaReport
 from result import AnalysisResult, MethodResultType
 from collection.stack import TokenStackService

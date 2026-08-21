@@ -13,7 +13,7 @@ from typing import cast
 
 from sensor.detector import SquareCollider
 from err import SquareAppendPermitterException
-from model import Square
+from domain.model import Square
 from authorization.permitter.chain import AppendPermitter
 from report import AppendApprovalReport
 from request import AppendRequest

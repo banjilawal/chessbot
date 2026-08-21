@@ -11,9 +11,9 @@ from __future__ import annotations
 
 from typing import Type
 
-from model.catalog import Schema
+from domain.model import Schema
 from system import CatalogQuery
-from model.catalog import SchemaContext
+from domain.model import SchemaContext
 
 
 class SchemaQuery(CatalogQuery[Schema]):

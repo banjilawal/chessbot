@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, cast
 
 from err import ScalarValidatorException
-from model import Scalar
+from domain.model import Scalar
 from assurance import ScalarIntegrityChecker
 from result import ValidationResult
 from util import LoggingLevelRouter

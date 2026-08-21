@@ -12,7 +12,7 @@ from typing import Generic, List, Optional, Type, TypeVar, cast
 
 from fabrication.blueprint import SpaceBlueprint
 from err import AxisNullException
-from model import Vector
+from domain.model import Vector
 
 T = TypeVar("T", bound="Axis")
 

@@ -11,7 +11,7 @@ from __future__ import annotations
 
 
 from err import ManeuverEndpointConsistencyCheckerException
-from model import Square, Token
+from domain.model import Square, Token
 from result import ValidationResult
 from util import LoggingLevelRouter
 from assurance.auditor import  TokenDestinationCertifier, TokenOriginCertifier

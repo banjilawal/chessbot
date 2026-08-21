@@ -11,7 +11,7 @@ from __future__ import annotations
 from typing import Any, Dict, cast
 
 from err import BoardTeamBinderNullException, BoardTeamBinderConsistencyCheckerException
-from model import BoardBinder
+from domain.model import BoardBinder
 from assurance.auditor import  ConsistencyAuditor
 from result import ValidationResult
 from util import LoggingLevelRouter

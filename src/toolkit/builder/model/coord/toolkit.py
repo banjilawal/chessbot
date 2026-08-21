@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Optional, cast
 
 from fabrication.assembler import CoordAssembler
-from model import Coord
+from domain.model import Coord
 from assurance.checker import CoordRootCertifier
 from toolkit.builder.model.coord.toolkit import ModelBuilderToolkit
 

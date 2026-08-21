@@ -10,7 +10,7 @@ version: 0.0.2
 from __future__ import annotations
 
 from authorization import TokenServiceRequest
-from model import PawnToken, Rank
+from domain.model import PawnToken, Rank
 
 
 

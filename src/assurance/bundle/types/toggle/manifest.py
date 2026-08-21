@@ -15,7 +15,7 @@ from typing import Type
 
 from assurance import TypesManifest
 from fabrication import ToggleBlueprint
-from toggle import Toggle
+from domain.toggle import Toggle
 from transit import ToggleCarrier
 
 

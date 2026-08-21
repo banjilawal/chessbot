@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Optional
 
 from fabrication import TokenBlueprint
-from model import Token
+from domain.model import Token
 from transit import ModelCarrier
 
 

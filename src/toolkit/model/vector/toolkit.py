@@ -15,7 +15,7 @@ from typing import Type
 from fabrication.blueprint import VectorBlueprint
 
 from err import VectorBlueprintNullException, VectorCarrierNullException, VectorNullException
-from model import Vector
+from domain.model import Vector
 from assurance.validator import NumberValidator
 from toolkit import ModelToolkit
 from transit import VectorCarrier

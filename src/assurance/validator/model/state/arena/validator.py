@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, cast
 
 from err import ArenaValidatorException
-from model import Arena
+from domain.model import Arena
 from assurance import ArenaIntegrityChecker
 from result import ValidationResult
 from util import LoggingLevelRouter

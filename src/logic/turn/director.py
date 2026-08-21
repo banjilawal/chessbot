@@ -1,4 +1,4 @@
-from model.state.game import Game
+from domain.model import Game
 from system import GameColor
 from logic.turn.marker import Marker
 

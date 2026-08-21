@@ -12,7 +12,7 @@ from dataclasses import dataclass
 from typing import Optional
 
 from err import ArenaContextNullException
-from model import ArenaContext, Blueprint, Game, Player
+from domain.model import ArenaContext, Blueprint, Game, Player
 from setting import GameColor
 
 

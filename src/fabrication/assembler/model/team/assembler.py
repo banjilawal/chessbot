@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from fabrication.assembler import ModelAssembler
 from fabrication.blueprint import TeamBlueprint
-from model import Team
+from domain.model import Team
 from result import BuildResult
 from util import LoggingLevelRouter
 

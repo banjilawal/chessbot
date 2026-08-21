@@ -12,7 +12,7 @@ from __future__ import annotations
 from abc import ABC, abstractmethod
 from typing import Dict, Generic, Type, TypeVar
 
-from model import Vector
+from domain.model import Vector
 
 T = TypeVar("T", bound="Space")
 

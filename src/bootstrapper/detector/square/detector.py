@@ -15,7 +15,7 @@ from err import (
     SquareCollisionDetectorException, SquareCoordCollisionException, SquareIdCollisionException,
     SquareNameCollisionException
 )
-from model import Square
+from domain.model import Square
 from report import CollisionReport
 from result import AnalysisResult
 from collection.stack import SquareStackService

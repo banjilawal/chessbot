@@ -10,7 +10,7 @@ version: 0.0.2
 from __future__ import annotations
 
 from integrity import TeamValidator
-from model import BoardContext
+from domain.model import BoardContext
 from toolkit.context.board.toolkit import BoardToolkit, Toolkit
 
 

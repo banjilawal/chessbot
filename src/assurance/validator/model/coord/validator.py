@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, cast
 
 from err import CoordValidatorException
-from model import Coord
+from domain.model import Coord
 from assurance import CoordIntegrityChecker
 from result import ValidationResult
 from util import LoggingLevelRouter

@@ -15,7 +15,7 @@ __all__ = [
     "TokenStackAlreadyDeployedException",
 ]
 
-from model.state.token import TokenDebugException
+from domain.model.state.token import TokenDebugException
 
 # ======================# TOKEN_STACK_ALREADY_DEPLOYED_EXCEPTION #======================#
 class TokenStackAlreadyDeployedException(TokenDebugException):

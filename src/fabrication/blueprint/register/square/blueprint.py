@@ -13,8 +13,8 @@ from typing import Optional, Type, cast
 
 from fabrication.blueprint import RegisterBlueprint
 from err import RegisterNullException, SquareRegisterNullException
-from model import Square
-from register import SquareRegister
+from domain.model import Square
+from domain.register import SquareRegister
 
 
 class SquareRegisterBlueprint(RegisterBlueprint[SquareRegister]):

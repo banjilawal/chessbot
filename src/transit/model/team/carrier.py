@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Optional
 
 from fabrication import TeamBlueprint
-from model import Team
+from domain.model import Team
 from transit import ModelCarrier
 
 

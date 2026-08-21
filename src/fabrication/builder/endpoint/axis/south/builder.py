@@ -13,8 +13,8 @@ from typing import Optional, cast
 
 from fabrication.builder import VectorValidator
 from err import SouthAxisEndPointBuilderException
-from model import Vector
-from register import VectorRegister
+from domain.model import Vector
+from domain.register import VectorRegister
 from result import BuildResult
 from schema.terminus.axis import AxisTerminus
 from util import LoggingLevelRouter

@@ -16,7 +16,7 @@ from err import (
     DisabledTokenManeuverException, InconsistentStateException, ItineraryAssemblyPrimerException,
     SquareNotFoundSearchException, StaleTokenLinkException, TokenAlreadyAtDestinationException
 )
-from model import Itinerary, SquareContext
+from domain.model import Itinerary, SquareContext
 from operation import AssemblyPrimer
 from report import RelationReport, TokenReadinessReport
 from result import MethodResultType, ValidationResult

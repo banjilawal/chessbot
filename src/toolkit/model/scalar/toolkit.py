@@ -15,7 +15,7 @@ from typing import Type
 from fabrication.blueprint import ScalarBlueprint
 from carrier import ScalarCarrier
 from err import ScalarBlueprintNullException, ScalarCarrierNullException, ScalarNullException
-from model import Scalar
+from domain.model import Scalar
 from toolkit.model.scalar.toolkit import ModelToolkit
 from assurance.validator import NumberValidator
 

@@ -10,7 +10,7 @@ version: 0.0.2
 from __future__ import annotations
 
 from sensor.analyzer import Analyzer
-from model import KingToken
+from domain.model import KingToken
 from report import TokenReadinessReport
 from result import AnalysisResult
 from util import LoggingLevelRouter

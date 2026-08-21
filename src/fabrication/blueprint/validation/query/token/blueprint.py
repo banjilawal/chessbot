@@ -10,7 +10,7 @@ version: 0.0.2
 from __future__ import annotations
 from dataclasses import dataclass
 
-from model import Token, TokenQuery
+from domain.model import Token, TokenQuery
 from collection.stack import TokenStackService
 from assurance.validator import TokenContextValidator
 from fabrication.blueprint import QueryValidationBlueprint

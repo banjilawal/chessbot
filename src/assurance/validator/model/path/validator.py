@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, cast
 
 from err import PathValidatorException
-from model import Path
+from domain.model import Path
 from assurance import PathIntegrityChecker
 from result import ValidationResult
 from util import LoggingLevelRouter

@@ -10,7 +10,7 @@ version: 0.0.2
 from __future__ import annotations
 
 from fabrication.blueprint import SquareBlueprint
-from model import HomeSquare, Square
+from domain.model import HomeSquare, Square
 from result import BuildResult
 from fabrication.assembler import ModelAssembler
 from util import LoggingLevelRouter

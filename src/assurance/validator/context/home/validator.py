@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Any, cast
 
-from context import TokenHomeContext
+from domain.search.context import TokenHomeContext
 from result import ValidationResult
 from toolkit import TokenHomeContextToolkit
 from util import LoggingLevelRouter

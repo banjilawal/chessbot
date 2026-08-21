@@ -13,7 +13,7 @@ from abc import ABC
 from typing import Generic, TypeVar
 
 
-from model import Model
+from domain.model import Model
 from suite import OperationSuite, SensorSuite
 
 T = TypeVar("T", bound="Model")

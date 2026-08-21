@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from abc import ABC
 
-from node import Node
+from domain.node import Node
 from transit import EntityCarrier
 
 

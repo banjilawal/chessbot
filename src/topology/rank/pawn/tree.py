@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from abc import ABC
 
-from model import Pawn
+from domain.model import Pawn
 from tree import Topology, VectorTree
 
 

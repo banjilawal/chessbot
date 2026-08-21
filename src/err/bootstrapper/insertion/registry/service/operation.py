@@ -10,7 +10,7 @@ version: 0.0.2
 from __future__ import annotations
 
 from microservice import Microservice
-from model import ServiceRegistry
+from domain.model import ServiceRegistry
 from result import ValidationResult
 from util import LoggingLevelRouter
 from controller import ServiceRegistryController

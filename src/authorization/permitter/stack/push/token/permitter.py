@@ -13,7 +13,7 @@ from typing import cast
 
 from sensor.detector.token import TokenCollisionDetector
 from err import TokenPushPermitterException
-from model import Token
+from domain.model import Token
 from authorization.permitter.stack import StackPushPermitter, RankSlotPermitter
 from report import PushApprovalReport, AuthorizationDecision
 from request import TokenStackPushRequest, RankSlotRequest

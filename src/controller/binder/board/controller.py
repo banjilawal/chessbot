@@ -1,5 +1,5 @@
 from microservice import BoardTeamBinderService
-from model import BoardBinder
+from domain.model import BoardBinder
 
 
 class BoardTeamBinderController:

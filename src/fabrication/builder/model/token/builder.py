@@ -14,7 +14,7 @@ from typing import Optional, cast
 from fabrication.blueprint import TokenBlueprint
 from fabrication.builder import ModelBuilder
 from err import TokenBuilderException
-from model import Token
+from domain.model import Token
 from result import BuildResult, MethodResultType
 from toolkit import TokenBuilderToolkit
 from util import LoggingLevelRouter

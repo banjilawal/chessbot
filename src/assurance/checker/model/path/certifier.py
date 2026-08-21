@@ -11,7 +11,7 @@ from __future__ import annotations
 from typing import Any, Optional, cast
 
 from err import CircularPathException, PathCheckerException
-from model import Path
+from domain.model import Path
 from assurance.checker.model import ModelIntegrityChecker
 from result import ValidationResult
 from toolkit import PathToolkit

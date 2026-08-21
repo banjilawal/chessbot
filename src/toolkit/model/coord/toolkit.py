@@ -15,7 +15,7 @@ from typing import Type
 from fabrication.blueprint import CoordBlueprint
 from carrier import CoordCarrier
 from err import CoordBlueprintNullException, CoordCarrierNullException, CoordNullException
-from model import Coord
+from domain.model import Coord
 from toolkit.model.coord.toolkit import ModelToolkit
 from assurance.validator import NumberValidator
 

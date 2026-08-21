@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from microservice import Microservice
 from microservice.square.operation import SquareOpsController
-from model import Square
+from domain.model import Square
 
 
 class SquareService(Microservice[Square]):

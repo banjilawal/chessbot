@@ -14,7 +14,7 @@ from typing import Optional, Type, cast
 
 from fabrication.blueprint import Blueprint
 from err import ToggleNullException
-from toggle import Toggle
+from domain.toggle import Toggle
 
 
 class ToggleBlueprint(Blueprint[Toggle]):

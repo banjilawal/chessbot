@@ -11,7 +11,7 @@ from typing import List, cast
 
 
 from system import StackService, id_emitter
-from model.state.game import Game, GameQueryService, GameService
+from domain.model import Game, GameQueryService, GameService
 
 
 class GameStackService(StackService[Game]):

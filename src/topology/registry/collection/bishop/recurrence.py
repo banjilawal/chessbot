@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Dict, Tuple, Type, cast
 
-from model import Bishop
+from domain.model import Bishop
 from topology.recurrence import QuadrantRecurrenceRegistry
 from topology.registry.collection import RecurrenceRegistryCollection
 

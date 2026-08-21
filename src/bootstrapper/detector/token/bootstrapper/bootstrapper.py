@@ -17,7 +17,7 @@ from err import (
     TokenStackNullException, NoActiveTogglesException
 )
 from microservice import IdentityService
-from model import Token
+from domain.model import Token
 from result import ValidationResult
 from collection.stack import TokenStackService
 from util import LoggingLevelRouter

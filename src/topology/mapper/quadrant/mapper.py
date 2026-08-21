@@ -13,7 +13,7 @@ from typing import Generic, TypeVar, cast
 
 from err import QuadrantMappingFunctionException
 from topology.mapper import SpaceMappingFunction
-from model import Vector
+from domain.model import Vector
 from result import ComputationResult, MethodResultType
 
 from util import LoggingLevelRouter

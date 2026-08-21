@@ -11,7 +11,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Optional
 
-from model import KingToken, Square, Team
+from domain.model import KingToken, Square, Team
 from report import ItineraryApprovalReport
 
 

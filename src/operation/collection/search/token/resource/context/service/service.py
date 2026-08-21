@@ -8,7 +8,7 @@ version: 1.0.0
 """
 
 from system import IntegrityMicroservice, IdFactory
-from model.state.token import TokenContext, TokenContextBuilder, TokenContextOpsController, TokenContextValidator
+from domain.model.state.token import TokenContext, TokenContextBuilder, TokenContextOpsController, TokenContextValidator
 
 
 class TokenContextService(IntegrityMicroservice[TokenContext]):

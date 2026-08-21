@@ -13,7 +13,7 @@ from typing import cast
 
 from bootstrapper import ValidatorBootstrapper
 from err import OriginCertifierBootstrapperException, TokenOriginRelationNullException
-from model import Square, Token
+from domain.model import Square, Token
 from report import RelationReport
 from result import ValidationResult
 from toolkit import TokenEndpointRelationToolkit

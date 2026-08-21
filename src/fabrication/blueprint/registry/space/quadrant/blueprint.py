@@ -14,7 +14,7 @@ from typing import Optional, Type, cast
 from fabrication.blueprint import SpaceReservoirBlueprint
 from err import QuadrantReservoirNullException
 
-from model import Vector
+from domain.model import Vector
 from space import Quadrant, QuadrantReservoir
 
 

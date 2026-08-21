@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, cast
 
 from err import PromoteToKingException, PromoteToPawnException, PromotionLevelAdjudicatorException
-from model import King, Pawn, Rank
+from domain.model import King, Pawn, Rank
 from result import MethodResultType, ValidationResult
 from authorization.adjudicator.token import RequestAdjudicator
 from util import LoggingLevelRouter

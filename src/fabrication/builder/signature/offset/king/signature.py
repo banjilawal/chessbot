@@ -10,7 +10,7 @@ version: 0.0.2
 from __future__ import annotations
 
 from collection import VectorSet
-from model import King
+from domain.model import King
 from schema import Offset
 from topology.pattern import OffsetSignature
 

@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Any, cast
 
-from model import Schema, TeamContext
+from domain.model import Schema, TeamContext
 from result import ValidationResult
 from toolkit import TeamContextToolkit
 from util import LoggingLevelRouter

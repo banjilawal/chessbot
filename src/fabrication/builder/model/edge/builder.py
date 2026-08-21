@@ -14,7 +14,7 @@ from typing import Optional, cast
 from fabrication.blueprint import EdgeBlueprint
 from fabrication.builder import ModelBuilder
 from err import EdgeBuilderException
-from model import Edge
+from domain.model import Edge
 from result import BuildResult, MethodResultType
 from toolkit import EdgeBuilderToolkit
 from util import LoggingLevelRouter

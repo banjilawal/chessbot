@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, cast
 
 from err import NodeValidatorException
-from model import Node
+from domain.model import Node
 from assurance import NodeIntegrityChecker
 from result import ValidationResult
 from util import LoggingLevelRouter

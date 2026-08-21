@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Optional
 
 from kit import SensorSuite
-from model import Token
+from domain.model import Token
 from sensor import FriendshipAnalyzer, TokenCollider, TokenHomeReporter, TokenReadinessAnalyzer
 
 

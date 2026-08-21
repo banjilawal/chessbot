@@ -16,7 +16,7 @@ from typing import cast
 from sensor.analyzer import TokenReadinessAnalyzer
 from err import TokenDeploymentException
 from err.analyzer.claim.exist.exception import HomeSquareAlreadyClaimedException
-from model import HomeSquare, Token
+from domain.model import HomeSquare, Token
 from operation import Operation
 from report import TokenReadinessReport
 from result import MethodResultType, UpdateResult, ValidationResult

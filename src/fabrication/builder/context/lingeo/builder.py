@@ -12,7 +12,7 @@ from typing import Optional
 
 from err import ExcessVectorToggleFlagsException, VectorContextBuilderException
 from integrity import Builder
-from model import Coord, VectorToggle, Vector
+from domain.model import Coord, VectorToggle, Vector
 from result import BuildResult
 from toolkit import VectorContextToolkit
 

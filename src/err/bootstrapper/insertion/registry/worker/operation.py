@@ -10,7 +10,7 @@ version: 0.0.2
 from __future__ import annotations
 
 
-from model import WorkerRegistry
+from domain.model import WorkerRegistry
 from result import ValidationResult
 from util import LoggingLevelRouter
 from controller import WorkerRegistryController

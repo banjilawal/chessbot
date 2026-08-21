@@ -14,7 +14,7 @@ from fabrication.blueprint import Blueprint
 from err import (
     ContextNullException, QueryNullException, StackEmptyException, StackNullException
 )
-from model import Query
+from domain.model import Query
 from collection.stack import StackService
 from assurance.validator import ContextValidator, PrimingValidator
 

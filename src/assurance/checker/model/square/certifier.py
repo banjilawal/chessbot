@@ -13,7 +13,7 @@ from typing import Any, cast
 
 from fabrication.blueprint import SquareBlueprint
 from err import FormationNullException, SquareCheckerException, SquareCarrierNullException
-from model import Board, Coord, HomeSquare, Square
+from domain.model import Board, Coord, HomeSquare, Square
 from carrier import SquareCarrier
 from result import ValidationResult
 from schema import Formation

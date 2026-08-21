@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Dict, List, Type, cast
 
-from model import Vector
+from domain.model import Vector
 from topology.space import (
     Quadrant, NortheastQuadrant, NorthwestQuadrant, SoutheastQuadrant, SpaceReservoir, SouthwestQuadrant
 )

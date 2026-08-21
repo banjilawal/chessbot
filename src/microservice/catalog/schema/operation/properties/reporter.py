@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import List
 
 from fabrication.builder import Scalar
-from model.catalog import Schema
+from domain.model import Schema
 from system import GameColor
 
 

@@ -14,7 +14,7 @@ from typing import Tuple, Type, cast
 from fabrication.blueprint import ContainerBlueprint
 from collection import RegisterSet
 from err import RegisterSetNullException
-from register import Register
+from domain.register import Register
 
 
 class RegisterSetBlueprint(ContainerBlueprint[Register]):

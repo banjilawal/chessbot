@@ -14,7 +14,7 @@ from typing import Tuple, Type, cast
 from fabrication.blueprint import ContainerBlueprint
 from collection import VectorSet
 from err import VectorSetNullException
-from model import Vector
+from domain.model import Vector
 
 
 class VectorSetBlueprint(ContainerBlueprint[Vector]):

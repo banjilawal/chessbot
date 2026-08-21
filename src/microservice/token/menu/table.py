@@ -12,8 +12,8 @@ from __future__ import annotations
 from typing import Any, Dict
 
 from logic.team import Team
-from model.state.token import PawnToken, Token
-from model.catalog.formation import Formation
+from domain.model.state.token import PawnToken, Token
+from domain.model import Formation
 from command.system.adt import CommandArgs, CommandTable
 from command.token import (
     BuildTokenCommand, DeployTokenCommand, PromotePawnCommand, TokenCommand, ValidateTokenCommand

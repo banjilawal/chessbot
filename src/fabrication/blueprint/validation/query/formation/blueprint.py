@@ -13,7 +13,7 @@ from dataclasses import dataclass
 from typing import Optional
 
 from err import FormationNullException
-from model import Formation, Blueprint, Game, Player
+from domain.model import Formation, Blueprint, Game, Player
 
 
 @dataclass

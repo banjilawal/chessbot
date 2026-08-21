@@ -12,7 +12,7 @@ from __future__ import annotations
 from controller import CrudController
 from operation import TokenStackPush
 
-from model import Token
+from domain.model import Token
 from operation.collection.deletion.stack.popper import TokenPopper
 from operation.collection.insertion.stack.pusher import TokenPusher
 from request import CollectionDeletionRequest, PopRequest, TokenStackPushRequest, SearchRequest

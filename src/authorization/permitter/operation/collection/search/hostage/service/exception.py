@@ -8,7 +8,7 @@ version: 1.0.0
 """
 
 from system import ServiceException
-from model.hostage import CaptivityContextException
+from domain.model import CaptivityContextException
 
 __all__ = [
     # ======================# CAPTIVITY_CONTEXT_SERVICE EXCEPTION #======================#

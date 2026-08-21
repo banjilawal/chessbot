@@ -14,7 +14,7 @@ from dataclasses import dataclass
 
 from assurance import NullRoster
 from err import TokenBlueprintNullException, TokenCarrierNullException, TokenNullException
-from model import Token
+from domain.model import Token
 
 
 @dataclass

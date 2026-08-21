@@ -11,7 +11,7 @@ from __future__ import annotations
 from typing import Optional, Type, TypeVar, cast
 
 from fabrication.blueprint import ModelBlueprint
-from model import Model, StateModel
+from domain.model import Model, StateModel
 
 T = TypeVar("T", bound="StateModel")
 

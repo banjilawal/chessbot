@@ -12,7 +12,7 @@ from dataclasses import dataclass
 from typing import Type
 
 from err import ScalarNullException
-from model import Blueprint, Scalar
+from domain.model import Blueprint, Scalar
 
 @dataclass
 class ScalarBlueprint(ModelBlueprint[Scalar]):

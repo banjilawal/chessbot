@@ -13,7 +13,7 @@ from dataclasses import dataclass, field
 from typing import Any, Dict
 
 from assurance import NumberValidator, ValidationBundle, VectorNullRoster, VectorTypes
-from model import Vector
+from domain.model import Vector
 
 
 @dataclass

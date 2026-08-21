@@ -10,7 +10,7 @@ version: 0.0.2
 from __future__ import annotations
 
 from integrity import PlayerValidator
-from model import ArenaContext
+from domain.model import ArenaContext
 from toolkit.context.arena.toolkit import ArenaToolkit, Toolkit
 
 

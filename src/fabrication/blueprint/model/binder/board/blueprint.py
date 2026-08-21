@@ -11,8 +11,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Optional
 
-from microservice import TeamService
-from model import Blueprint, Board, Schema, BoardBinder
+from domain.model import Blueprint, Board, Schema, BoardBinder
 
 @dataclass
 class BoardBinderBlueprint(ModelBlueprint[BoardBinder]):

@@ -15,7 +15,7 @@ from typing import Any, Dict, Generic, TypeVar
 
 from assurance import NullRoster, PrimingValidator, TypesManifest
 from microservice import IdentityService
-from model import Model
+from domain.model import Model
 
 T = TypeVar("T", bound="Model")
 

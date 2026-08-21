@@ -14,7 +14,7 @@ from fabrication.blueprint import TokenBlueprint
 from detection import Detector, TokenCollider, TokenCollisionBootstrapper
 from err import TokenCollisionDetectorException
 from microservice import IdentityService
-from model import Token
+from domain.model import Token
 from report import CollisionReport
 from result import AnalysisResult
 from collection.stack import TokenStackService

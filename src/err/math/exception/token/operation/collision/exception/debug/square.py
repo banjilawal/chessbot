@@ -15,7 +15,7 @@ __all__ = [
     "TokenOpeningSquareCollisionException",
 ]
 
-from model.state.token import TokenDebugException
+from domain.model.state.token import TokenDebugException
 
 # ======================# TOKEN_HOME_SQUARE_COLLISION EXCEPTION #======================#
 class TokenOpeningSquareCollisionException(TokenDebugException):

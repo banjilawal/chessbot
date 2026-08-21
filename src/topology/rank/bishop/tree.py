@@ -10,7 +10,7 @@ version: 0.0.2
 from __future__ import  annotations
 
 
-from model import Bishop
+from domain.model import Bishop
 from tree import Topology, VectorTree
 
 class BishopTopology(Topology[Bishop]):

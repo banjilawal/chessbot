@@ -13,7 +13,7 @@ from typing import Optional, Type
 
 from fabrication.blueprint import StateModelBlueprint
 from err import ManeuverNullException
-from model import Path, Maneuver, Token
+from domain.model import Path, Maneuver, Token
 
 
 @dataclass

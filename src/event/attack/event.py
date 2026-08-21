@@ -11,7 +11,7 @@ from __future__ import annotations
 from typing import Optional, cast
 
 from event import Event
-from model import CombatantToken, Square, Token
+from domain.model import CombatantToken, Square, Token
 from report import AttackApproval
 
 

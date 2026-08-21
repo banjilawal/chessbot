@@ -12,7 +12,7 @@ from dataclasses import dataclass
 from typing import Optional
 
 from report import RankElevationDecision, Report
-from model import PawnToken, Rank
+from domain.model import Rank
 
 
 @dataclass

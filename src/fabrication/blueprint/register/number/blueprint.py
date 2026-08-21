@@ -13,7 +13,7 @@ from typing import Optional, Type, cast
 
 from fabrication.blueprint import RegisterBlueprint
 from err import NumberRegisterNullException
-from register import NumberRegister
+from domain.register import NumberRegister
 
 
 class NumberRegisterBlueprint(RegisterBlueprint[NumberRegister]):

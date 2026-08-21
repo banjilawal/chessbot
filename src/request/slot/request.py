@@ -9,7 +9,7 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from model import Rank
+from domain.model import Rank
 from request.slot.request import Request
 from collection.stack import TokenStackService
 

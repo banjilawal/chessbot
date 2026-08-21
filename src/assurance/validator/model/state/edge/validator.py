@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, cast
 
 from err import EdgeValidatorException
-from model import Edge
+from domain.model import Edge
 from assurance import EdgeIntegrityChecker
 from result import ValidationResult
 from util import LoggingLevelRouter

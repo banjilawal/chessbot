@@ -15,7 +15,7 @@ __all__ = [
     "HostageNotFoundException",
 ]
 
-from model.hostage import HostageDebugException
+from domain.model import HostageDebugException
 
 
 # ======================# HOSTAGE_NOT_FOUND_EXCEPTION #======================#

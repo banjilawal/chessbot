@@ -14,7 +14,7 @@ from dataclasses import dataclass
 
 from assurance import NullRoster
 from err import NodeBlueprintNullException, NodeCarrierNullException, NodeNullException
-from node import Node
+from domain.node import Node
 
 
 @dataclass

@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, cast
 
 from err import TokenValidatorException
-from model import Token
+from domain.model import Token
 from assurance import TokenIntegrityChecker
 from result import ValidationResult
 from util import LoggingLevelRouter

@@ -11,7 +11,7 @@ from __future__ import annotations
 from typing import Dict, List
 
 from controller import Controller
-from model import WorkerRegistry
+from domain.model import WorkerRegistry
 from toolkit import WorkerRegistryToolkit
 from util import LoggingLevelRouter, singleton
 from result import InsertionResult, SearchResult

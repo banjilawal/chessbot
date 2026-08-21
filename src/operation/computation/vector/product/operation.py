@@ -13,10 +13,10 @@ from controller import WorkerRegistryController
 from result import ComputationResult
 from util import LoggingLevelRouter
 from err import ScalarProductException
-from model import Coord, CoordBlueprint, OperandCategory, Vector, VectorBlueprint, VectorToggle, Scalar
+from domain.model import Coord, CoordBlueprint, OperandCategory, Vector, VectorBlueprint, VectorToggle, Scalar
 from pipeline import CoordBuildPipeline, VectorBuildPipeline
 
-from operation import Operation, ScalarValidator, VectorToggleValidator
+from operation import ScalarValidator, VectorToggleValidator
 
 
 class ScalarProduct(Computation[VectorToggle]):

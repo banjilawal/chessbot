@@ -12,7 +12,7 @@ from typing import Any, Dict, Optional
 
 from fabrication.blueprint import VectorToggleBlueprint
 from transit.toggle.carrier import ToggleCarrier
-from toggle import VectorToggle
+from domain.toggle import VectorToggle
 
 
 class VectorToggleCarrier(ToggleCarrier[VectorToggle]):

@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, cast
 
 from err import TeamValidatorException
-from model import Team
+from domain.model import Team
 from assurance import TeamIntegrityChecker
 from result import ValidationResult
 from util import LoggingLevelRouter

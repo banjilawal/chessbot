@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Optional, cast
 
 from fabrication.assembler import TokenAssembler
-from model import Token
+from domain.model import Token
 from assurance.checker import TokenIntegrityChecker
 from toolkit.builder.model.token.toolkit import ModelBuilderToolkit
 
