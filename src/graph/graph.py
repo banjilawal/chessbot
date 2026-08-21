@@ -11,21 +11,20 @@ from __future__ import annotations
 
 from typing import Optional
 
-from collection.stack import EdgeStackService, VertexStackService
+from collection import EdgeStackService, VertexStackService
 
 
 class Graph:
     _edges: EdgeStackService
     _vertices: VertexStackService
     
-    
     def __init__(
             self,
             edges: Optional[EdgeStackService] | None = None,
             vertices: Optional[VertexStackService] | None = None,
     ):
-        self._edges = edges
-        self._vertices = vertices
+        self._edges = edges or EdgeStackService()
+        self._vertices = vertices or VertexStackService()
         
     @property
     def edges(self) -> EdgeStackService:

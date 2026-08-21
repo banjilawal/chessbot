@@ -35,7 +35,7 @@ class TeamContextValidator(ContextValidator[Team]):
     Provides:
         -   def validate(
                     candidate: Any,
-                    toolkit: TeamContextToolkit,
+                    integrity_checker: TeamContextToolkit,
             ) -> ValidationResult[Team]:
 
     Super Class:
@@ -46,7 +46,7 @@ class TeamContextValidator(ContextValidator[Team]):
     def execute(
             cls,
             candidate: Any,
-            toolkit: TeamContextToolkit | None = None,
+            integrity_checker: TeamContextToolkit | None = None,
     ) -> ValidationResult[Team]:
         """
         Certify a candidate is a TeamContext that is safe to use.
@@ -60,7 +60,7 @@ class TeamContextValidator(ContextValidator[Team]):
             2.  Otherwise, send the success result.
         Args:
             candidate: Any,
-            toolkit: TeamContextToolkit,
+            integrity_checker: TeamContextToolkit,
         Returns:
             ValidationResult[Team]
         Raises:

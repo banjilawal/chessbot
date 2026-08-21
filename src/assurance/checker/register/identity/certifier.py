@@ -37,7 +37,7 @@ class IdentityRegisterChecker(Checker[IdentityRegister]):
         -   execute(candidate: Any,) -> ValidationResult
 
     Super Class:
-        Checker
+        IntegrityChecker
     """
     def __init__(
             self, 

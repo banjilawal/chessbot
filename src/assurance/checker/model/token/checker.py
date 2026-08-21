@@ -39,7 +39,7 @@ class TokenIntegrityChecker(ModelIntegrityChecker[Token]):
         -   execute(self, candidate: Any) -> ValidationResult:
 
     Super Class:
-        Checker
+        IntegrityChecker
     """
     
     def __init__(self, bundle: Optional[TokenValidationBundle] | None = None):

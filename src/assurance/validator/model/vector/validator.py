@@ -9,18 +9,18 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from typing import Any, TypeVar, cast
+from typing import Any, cast
 
 from assurance import ModelValidator
 from err import VectorValidatorException
 from assurance import VectorIntegrityChecker
-from model import StateModel
+from model import Vector
 from result import ValidationResult
 from util import LoggingLevelRouter
 
-T = TypeVar("T", bound="StateModel")
 
-class StateVectorValidator(ModelValidator[T]):
+
+class VectorValidator(ModelValidator):
     """
     Role
         -   Transaction Worker
@@ -59,7 +59,7 @@ class StateVectorValidator(ModelValidator[T]):
 
         Action:
             1.  Send an exception chain in the ValidationResult if the candidate fails a
-                integrity_checker test..
+                integrity_checker test.
             2.  Otherwise, cast the payload into a Vector and send in the success result.
                 success result.
         Args:
@@ -85,9 +85,4 @@ class StateVectorValidator(ModelValidator[T]):
                 )
             )
         # --- Forward the work product to the caller. ---#
-        return ValidationResult.success(
-            cast(
-                self.integrity_checker.bundle.model,
-                certification.payload
-            )
-        )
+        return ValidationResult.success(cast(Vector, certification.payload))

@@ -18,6 +18,7 @@ from result import Result
 from toolkit import RequestToolkit
 from util import LoggingLevelRouter
 
+
 T = TypeVar("T", bound="Result")
 
 

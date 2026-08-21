@@ -10,7 +10,8 @@ version: 0.0.2
 # =========== BLUEPRINT.NODE PACKAGE ===========#
 
 # Packages
-
+from .dossier import *
+from .vector import *
 
 # Modules
 from .blueprint import NodeBlueprint

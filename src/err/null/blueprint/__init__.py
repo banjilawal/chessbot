@@ -11,6 +11,7 @@ version: 0.0.2
 
 # Packages
 from .model import *
+from .node import *
 from .movement import *
 from .register import *
 from .space import *

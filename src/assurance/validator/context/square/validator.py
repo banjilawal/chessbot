@@ -38,7 +38,7 @@ class SquareContextValidator(ContextValidator[Square]):
     Provides:
         -   def validate(
                     candidate: Any,
-                    toolkit: SquareContextToolkit,
+                    integrity_checker: SquareContextToolkit,
             ) -> ValidationResult[Square]:
 
     Super Class:
@@ -49,7 +49,7 @@ class SquareContextValidator(ContextValidator[Square]):
     def execute(
             cls,
             candidate: Any,
-            toolkit: SquareContextToolkit | None = None,
+            integrity_checker: SquareContextToolkit | None = None,
     ) -> ValidationResult[Square]:
         """
         Certify a candidate is a SquareContext that is safe to use.
@@ -63,7 +63,7 @@ class SquareContextValidator(ContextValidator[Square]):
             2.  Otherwise, send the success result.
         Args:
             candidate: Any,
-            toolkit: SquareContextToolkit,
+            integrity_checker: SquareContextToolkit,
         Returns:
             ValidationResult[Square]
         Raises:

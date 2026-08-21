@@ -33,6 +33,7 @@ from .method import *
 from .microservice import *
 from .model import *
 from .movement import *
+from .node import *
 from .null import *
 from .number import *
 from .operand import *

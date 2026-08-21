@@ -40,7 +40,7 @@ class EastAxisRootChecker(AxisRootChecker[EastAxis]):
         -   execute(self, candidate: Any) -> ValidationResult:
 
     Super Class:
-        Checker
+        IntegrityChecker
     """
     
     def __init__(self, bundle: EastAxisToolkit | None = EastAxisToolkit()):

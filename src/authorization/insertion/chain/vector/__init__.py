@@ -13,4 +13,4 @@ version: 0.0.2
 
 
 # Modules
-from .authorizer import AddVectorNodeAuthorizer
+from .authorizer import AddVectorNodeRequestAuthorizer

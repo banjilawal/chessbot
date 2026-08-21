@@ -38,7 +38,7 @@ class CoordIntegrityChecker(ModelIntegrityChecker[Coord]):
             ) -> ValidationResult[Coord]:
 
     Super Class:
-        Checker
+        IntegrityChecker
     """
     
     @classmethod

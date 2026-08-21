@@ -39,7 +39,7 @@ class SquareIntegrityChecker(ModelIntegrityChecker[SquareBlueprint]):
         -   execute(self, candidate: Any) -> ValidationResult:
 
     Super Class:
-        Checker
+        IntegrityChecker
     """
     
     def __init__(

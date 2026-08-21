@@ -12,6 +12,7 @@ version: 0.0.2
 # Packages
 from .bootstrapper import *
 from .model import *
+from .node import *
 from .register import *
 from .registry import *
 from .space import *

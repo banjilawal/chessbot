@@ -34,7 +34,7 @@ class CoordContextValidator(ContextValidator[Coord]):
     Provides:
         -   def validate(
                     candidate: Any,
-                    toolkit: CoordContextToolkit,
+                    integrity_checker: CoordContextToolkit,
             ) -> ValidationResult[Coord]:
 
     Super Class:
@@ -46,7 +46,7 @@ class CoordContextValidator(ContextValidator[Coord]):
     def validate(
             cls,
             candidate: Any,
-            toolkit: CoordContextToolkit | None = None,
+            integrity_checker: CoordContextToolkit | None = None,
     ) -> ValidationResult[Coord]:
         """
         Certify a candidate is a CoordContext that is safe to use.
@@ -59,7 +59,7 @@ class CoordContextValidator(ContextValidator[Coord]):
             2.  Otherwise, send the success result.
         Args:
             candidate: Any,
-            toolkit: CoordContextToolkit,
+            integrity_checker: CoordContextToolkit,
         Returns:
             ValidationResult[Coord]
         Raises:

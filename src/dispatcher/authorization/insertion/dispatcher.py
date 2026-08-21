@@ -24,8 +24,6 @@ T = TypeVar("T", bound="Collection")
 
 class InsertionDispatcher(AuthorizationDispatcher[InsertionResult], ABC, Generic[T]):
     
-    _authorizer: InsertionRequestAuthorizer[T]
-    
     def __init__(self, authorizer: InsertionRequestAuthorizer[T]):
         """
         Args:

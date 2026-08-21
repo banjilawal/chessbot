@@ -9,18 +9,16 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from abc import abstractmethod
-from typing import Any, Generic, TypeVar
+from abc import ABC
+from typing import Generic, TypeVar
 
-from assurance import IntegrityChecker, ValidationBundle
+from assurance import IntegrityChecker
 from model import Model
-from result import ValidationResult
-from util import LoggingLevelRouter
 
 T = TypeVar("T", bound="Model")
 
 
-class ModelIntegrityChecker(IntegrityChecker, Generic[T]):
+class ModelIntegrityChecker(IntegrityChecker, Generic[T], ABC):
     """
     Role
         -   Validation Worker
@@ -38,27 +36,5 @@ class ModelIntegrityChecker(IntegrityChecker, Generic[T]):
 
     Super Class:
     """
-    _bundle: ValidationBundle[T]
-    
-    def __init__(self, bundle: ValidationBundle[T]):
-        """
-        Args:
-            bundle: ValidationBundle[T]
-        """
-        self._bundle = bundle
-    
-    @property
-    def bundle(self) -> ValidationBundle[T]:
-        return self._bundle
-    
-    @abstractmethod
-    @LoggingLevelRouter.monitor
-    def execute(self, candidate: Any) -> ValidationResult:
-        pass
-    
-    @abstractmethod
-    @LoggingLevelRouter.monitor
-    def execute(self, candidate: Any) -> ValidationResult:
-        pass
     
     

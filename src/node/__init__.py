@@ -15,4 +15,3 @@ from .vector import *
 
 # Modules
 from .node import Node
-from .state import DiscoveryStatus

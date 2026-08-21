@@ -46,7 +46,8 @@ class RegisterValidator(Validator, Generic[T]):
     def integrity_checker(self) -> RegisterIntegrityChecker:
         return cast(RegisterIntegrityChecker[T], super().integrity_checker)
     
-    @abstractmethod
+       @abstractmethod
+    @LoggingLevelRouter.monitor
     def execute(self, candidate: Any) -> ValidationResult[T]:
         pass
     

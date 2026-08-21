@@ -31,7 +31,7 @@ class TeamIntegrityChecker(ModelIntegrityChecker[Team]):
         -   execute(candidate) -> ValidationResult
 
     Super Class:
-        Checker
+        IntegrityChecker
     """
     
     def __init__(self, bundle: TeamToolkit | None = TeamToolkit()):

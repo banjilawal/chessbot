@@ -13,18 +13,17 @@ from typing import Optional
 
 from fabrication.blueprint import VectorBlueprint
 from model import Vector
-from carrier import ModelCarrier
+from transit import ModelCarrier
 
 
-class VectorCarrier(ModelCarrier[Vector]):
+class VectorCarrier(ModelCarrier):
     """
     Role:
-        -   Data Transport
+        -   Boundary Carrier
 
     Responsibilities:
-        2.  Transports either a
-            -   Vector
-            -   VectorBlueprint.
+        1.  Transport either a hydrated Vector or its Blueprint across validation and other
+            processing boundaries
     
     Attributes:
         model: Optional[Vector]
@@ -57,7 +56,7 @@ class VectorCarrier(ModelCarrier[Vector]):
         self._blueprint = blueprint
     
     @property
-    def entity(self) -> [Vector | VectorBlueprint]:
+    def entity(self) -> Vector|VectorBlueprint:
         return self._model or self._blueprint
     
     @property

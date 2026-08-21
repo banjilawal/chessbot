@@ -19,7 +19,8 @@ T = TypeVar("T", bound="Span")
 
 class SpanValidator(SpaceValidator, Generic[T]):
     
-    @abstractmethod
+       @abstractmethod
+    @LoggingLevelRouter.monitor
     def execute(self, candidate: Any) -> ValidationResult[T]:
         pass
     

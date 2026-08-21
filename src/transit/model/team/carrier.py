@@ -11,18 +11,19 @@ from __future__ import annotations
 
 from typing import Optional
 
-from fabrication.blueprint import TeamBlueprint
+from fabrication import TeamBlueprint
 from model import Team
-from carrier import ModelCarrier
+from transit import ModelCarrier
 
 
-class TeamCarrier(ModelCarrier[Team]):
+class TeamCarrier(ModelCarrier):
     """
     Role:
-        -   Data Transport
+        -   Boundary Carrier
 
     Responsibilities:
-        2.  Transports either a Team or its Blueprint.
+        1.  Transport either a hydrated Team or its Blueprint across validation and other
+            processing boundaries
 
     Attributes:
         model: Optional[Team]
@@ -50,8 +51,12 @@ class TeamCarrier(ModelCarrier[Team]):
         self._blueprint = blueprint
     
     @property
-    def entity(self) -> [Team | TeamBlueprint]:
-        return self._model or self._blueprint
+    def entity(self) -> Optional[Team | TeamBlueprint]:
+        if self.is_not_carrying_anything:
+            return None
+        if self.is_carrying_model:
+            return self._model
+        return self._blueprint
     
     @property
     def is_carrying_model(self) -> bool:

@@ -16,9 +16,30 @@ from node import Node
 
 
 class VectorNode(Node[Vector]):
+    """
+    Role:
+        - Structural Wrapper
+
+    Responsibilities:
+        1.  Encapsulate a Vector  payload with pointer references (next/previous) to
+            enable doubly-linked traversal.
+        2.  Provide type-safe accessors for payload inspection and node chaining.
+
+    Attributes:
+        payload: Vector
+        next: Optional[VectorNode]
+        previous: Optional[VectorNode]
+        
+    Provides:
+
+    Super Class:
+        Node
+    """
     
-    def __init__(self, payload: Optional[Vector] | None = None):
+    def __init__(self, payload: Vector):
         super().__init__(payload=payload)
+        super().next = None
+        super.previous = None
         
     @property
     def payload(self) -> Vector:

@@ -1,4 +1,4 @@
-# src/blueprint/node/blueprint.pboard
+# src/blueprint/node/blueprint
 
 """
 Module: blueprint.node.blueprint
@@ -9,23 +9,20 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from typing import Optional, Type, cast
+from typing import Type, cast
 
-from collection import VectorTree
 from err import NodeNullException
 from fabrication import Blueprint
-from model import Board
-from node import SquareNode
+from node import Node
 
 
-class NodeBlueprint(Blueprint[SquareNode]):
+class NodeBlueprint(Blueprint[Node]):
     """
      Role:
          -   DTO
 
      Responsibilities:
          1.  Provides values for instantiating a Node object
-
 
      Attributes:
          model_class: Type[Node]
@@ -36,39 +33,19 @@ class NodeBlueprint(Blueprint[SquareNode]):
      Super Class:
         Blueprint
      """
-    _tree: VectorTree
-    _board: Board
     
-    def __init__(
-            self,
-            tree: int,
-            board: int,
-            model_class: Type[SquareNode] = SquareNode,
-            null_exception: Optional[NodeNullException] | None = None,
-    ):
+    def __init__(self, model_class: Type[Node], null_exception: NodeNullException,):
         """
         Args:
-            tree: int
-            board: int
             model_class: Type[Node]
             null_exception: Optional[NodeModelNullException]
         """
-        super().__init__(model_class=model_class, null_exception=null_exception or NodeNullException())
-        self._tree = tree
-        self._board = board
+        super().__init__(model_class=model_class, null_exception=null_exception)
         
     @property
-    def model_class(self) -> Type[SquareNode]:
-        return cast(Type[SquareNode], super()._model_class)
+    def model_class(self) -> Type[Node]:
+        return cast(Type[Node], super()._model_class)
     
     @property
     def null_exception(self) -> NodeNullException:
         return cast(NodeNullException, super().null_exception)
-    
-    @property
-    def tree(self) -> VectorTree:
-        return self._tree
-    
-    @property
-    def board(self) -> Board:
-        return self._board

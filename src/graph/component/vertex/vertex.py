@@ -11,13 +11,12 @@ from __future__ import annotations
 
 from typing import Optional
 
-from model import Dossier
-from node import DiscoveryStatus
-from collection.stack import EdgeStackService
+from collection import EdgeStackService
+from node import Node
 
 
 class Vertex:
-    _square_dossier: Dossier
+    _square_dossier: Node
     _priority: Optional[int]
     _predecessor:Optional[Vertex]
     _incoming_edges: EdgeStackService

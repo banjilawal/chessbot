@@ -41,7 +41,7 @@ class VectorToggleRootChecker(ToggleChecker[VectorToggle]):
         -   execute(self, candidate: Any) -> ValidationResult:
 
     Super Class:
-        Checker
+        IntegrityChecker
     """
     
     def __init__(self, bundle: VectorToggleToolkit | None = VectorToggleToolkit()):

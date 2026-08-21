@@ -30,7 +30,8 @@ T = TypeVar("T", bound="VectorBasis")
 
 class BasisValidator(SpanValidator, Generic[T]):
     
-    @abstractmethod
+       @abstractmethod
+    @LoggingLevelRouter.monitor
     def execute(self, candidate: Any) -> ValidationResult[T]:
         pass
 # _vector_validator: VectorValidator = VectorValidator()

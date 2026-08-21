@@ -14,6 +14,7 @@ version: 0.0.2
 from .context import *
 from .model import *
 from .movement import *
+from .node import *
 from .number import *
 from .priming import *
 from .query import *

@@ -9,15 +9,12 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from os import times
-from sndhdr import tests
-from typing import Optional, cast
+from typing import Optional
 
-from model import Square
-from report import ManeuverRequestDecision, Report
+from model import Model, Square
 
 
-class Dossier:
+class Dossier(Model):
     """]
     Role:
         -   Data Holder

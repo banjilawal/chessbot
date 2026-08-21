@@ -15,7 +15,7 @@ from err import ManeuverValidatorException
 from model import Maneuver
 from assurance import ManeuverIntegrityChecker
 from result import ValidationResult
-from toolkit import ManeuverToolkit
+from assurance import ManeuverIntegrityChecker
 from util import LoggingLevelRouter
 
 
@@ -35,7 +35,7 @@ class ManeuverValidator:
     Provides:
         -   def validate(
                     candidate: Any,
-                    toolkit: ManeuverToolkit,
+                    integrity_checker: ManeuverIntegrityChecker,
             ) -> ValidationResult[Maneuver]:
 
     Super Class:
@@ -60,7 +60,7 @@ class ManeuverValidator:
             2.  Otherwise, send the success result.
         Args:
             candidate: Any
-            toolkit: ManeuverToolkit
+            integrity_checker: ManeuverIntegrityChecker
         Returns:
             ValidationResult[int]
         Raises:
@@ -69,14 +69,14 @@ class ManeuverValidator:
         method = f"{self.__class__.__name__}.execute"
         
         # --- Supply any missing dependencies. ---#
-        if toolkit is None:
-            toolkit = ManeuverToolkit()
+        if integrityChecker is None:
+            integrityChecker = ManeuverIntegrityChecker()
         
         # Handle the case that, the validator is not primed.
-        validator_priming_result = toolkit.priming_validator.execute(
+        validator_priming_result = integrityChecker.priming_validator.execute(
             candidate=candidate,
-            target_model=toolkit.model,
-            null_exception=toolkit.null_exception,
+            target_model=integrityChecker.model,
+            null_exception=integrityChecker.null_exception,
         )
         if validator_priming_result.is_failure:
             # Send the exception chain on failure.
@@ -93,7 +93,7 @@ class ManeuverValidator:
         maneuver = cast(Maneuver, candidate)
         
         # Handle the case that, the path is not safe.
-        path_validation_result = toolkit.path_validator.execute(maneuver.path)
+        path_validation_result = integrityChecker.path_validator.execute(maneuver.path)
         if path_validation_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
@@ -106,7 +106,7 @@ class ManeuverValidator:
                 )
             )
         # Handle the case that, the token is not safe.
-        token_validation_result = toolkit.token_validator.execute(maneuver.path)
+        token_validation_result = integrityChecker.token_validator.execute(maneuver.path)
         if token_validation_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
@@ -119,7 +119,7 @@ class ManeuverValidator:
                 )
             )
         # Handle the case that, either the token is not at the origin or already at the destination.
-        token_endpoint_relation_validation_result = toolkit.endpoint_validator.execute(
+        token_endpoint_relation_validation_result = integrityChecker.endpoint_validator.execute(
             token=maneuver.token,
             origin=maneuver.path.origin,
             destination=maneuver.path.destination,

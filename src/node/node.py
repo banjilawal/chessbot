@@ -18,24 +18,46 @@ T = TypeVar("T", bound="Model")
 
 
 class Node(ABC, Generic[T]):
-    _payload: Optional[T]
+    """
+    Role:
+        - Structural Wrapper
+
+    Responsibilities:
+        1.  Encapsulate a domain Model payload with pointer references (next/previous) to
+            enable doubly-linked traversal.
+        2.  Provide type-safe accessors for payload inspection and node chaining.
+
+    Attributes:
+        payload: T
+        next: Optional[Node[T]]
+        previous: Optional[Node[T]]
+        
+    Provides:
+
+    Super Class:
+    """
+    _payload: T
     _next: Optional[Node[T]]
     _previous: Optional[Node[T]]
     
-    
     def __init__(
             self,
-            payload: Optional[T] | None = None,
+            payload: T,
             next: Optional[Node[T]] | None = None,
             previous: Optional[Node[T]] | None = None,
     ):
+        """
+        Args:
+            payload: T
+            next: Optional[Node[T]]
+            previous: Optional[Node[T]]
+        """
         self._payload = payload
         self._next = next
         self._previous = previous
-
     
     @property
-    def payload(self) -> Optional[T]:
+    def payload(self) -> T:
         return self._payload
     
     @property

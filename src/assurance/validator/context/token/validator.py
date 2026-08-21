@@ -39,7 +39,7 @@ class TokenContextValidator(ContextValidator):
     Provides:
         -   def validate(
                     candidate: Any,
-                    toolkit: TokenToolkit,
+                    integrity_checker: TokenToolkit,
             ) -> ValidationResult[Token]:
 
     Super Class:
@@ -50,7 +50,7 @@ class TokenContextValidator(ContextValidator):
     def execute(
             cls,
             candidate: Any,
-            toolkit: TokenToolkit | None = None,
+            integrity_checker: TokenToolkit | None = None,
     ) -> ValidationResult[TokenContext]:
         """
         Certify a candidate is a TokenContext that is safe to use.
@@ -64,7 +64,7 @@ class TokenContextValidator(ContextValidator):
             2.  Otherwise, send the success result.
         Args:
             candidate: Any,
-            toolkit: TokenToolkit,
+            integrity_checker: TokenToolkit,
         Returns:
             ValidationResult[Token]
         Raises:

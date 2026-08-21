@@ -38,7 +38,7 @@ class VectorRegisterChecker(Checker[VectorRegister]):
         -   execute(self, candidate: Any) -> ValidationResult:
 
     Super Class:
-        Checker
+        IntegrityChecker
     """
     
     def __init__(self, bundle: VectorRegisterToolkit | None = VectorRegisterToolkit()):

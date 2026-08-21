@@ -14,3 +14,4 @@ version: 0.0.2
 
 # Modules
 from .vertex import Vertex
+from .status import DiscoveryStatus

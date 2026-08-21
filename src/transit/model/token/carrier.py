@@ -11,22 +11,22 @@ from __future__ import annotations
 
 from typing import Optional
 
-from fabrication.blueprint import TokenBlueprint
-from carrier import ModelCarrier
-
+from fabrication import TokenBlueprint
 from model import Token
+from transit import ModelCarrier
 
 
 class TokenCarrier(ModelCarrier[Token]):
     """
     Role:
-        -   Data Transport
+        -   Boundary Carrier
 
     Responsibilities:
-        2.  Transports either a Token or its Blueprint.
+        1.  Transport either a hydrated Token or its Blueprint across validation and other
+            processing boundaries
 
     Attributes:
-        entity: [Token|TokenBlueprint]
+        entity: Token|TokenBlueprint
         is_empty: bool
         has_overflow: bool
         is_model_carrier: bool
@@ -58,7 +58,7 @@ class TokenCarrier(ModelCarrier[Token]):
         self._blueprint = blueprint
     
     @property
-    def entity(self) -> [Token | TokenBlueprint | None]:
+    def entity(self) -> Optional[Token | TokenBlueprint]:
         if self.is_not_carrying_anything:
             return None
         if self.is_carrying_model:

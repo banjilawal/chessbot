@@ -10,11 +10,12 @@ version: 0.0.2
 from __future__ import annotations
 
 from abc import abstractmethod
-from typing import Any
+from typing import Any, cast
 
-from assurance import Validator
+from assurance import ModelIntegrityChecker, Validator
 from model import Model
 from result import ValidationResult
+from util import LoggingLevelRouter
 
 
 class ModelValidator(Validator[Model]):
@@ -29,24 +30,28 @@ class ModelValidator(Validator[Model]):
         1.  Ensure a Model instance is certified safe, reliable and consistent before use.
 
     Attributes:
-        toolkit: ModelToolkit
+        integrity_checker: ModelIntegrityChecker
         
     Provides:
         -   execute(self, candidate: Any) -> ValidationResult
 
     Super Class:
+        Validator
     """
-    _integrity_checker: IntegrityChecker
     
-    def __init__(self, integrity_checker: IntegrityChecker):
-        self._integrity_checker = integrity_checker
+    def __init__(self, integrity_checker: ModelIntegrityChecker):
+        """
+        Args:
+            integrity_checker: ModelIntegrityChecker
+        """
+        super().__init__(integrity_checker=integrity_checker)
 
     @property
-    @abstractmethod
-    def integrity_checker(self) -> IntegrityChecker:
-        pass
+    def integrity_checker(self) -> ModelIntegrityChecker:
+        return cast(ModelIntegrityChecker, super().integrity_checker)
     
     @abstractmethod
+    @LoggingLevelRouter.monitor
     def execute(self, candidate: Any) -> ValidationResult:
         pass
     

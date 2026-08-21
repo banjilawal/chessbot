@@ -37,7 +37,7 @@ class SquareRegisterChecker(Checker[SquareRegister]):
         -   execute(candidate: Any,) -> ValidationResult
 
     Super Class:
-        Checker
+        IntegrityChecker
     """
     def __init__(
             self, 

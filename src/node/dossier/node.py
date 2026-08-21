@@ -16,9 +16,30 @@ from node import Node
 
 
 class DossierNode(Node[Dossier]):
+    """
+    Role:
+        - Structural Wrapper
+
+    Responsibilities:
+        1.  Encapsulate a Dossier  payload with pointer references (next/previous) to
+            enable doubly-linked traversal.
+        2.  Provide type-safe accessors for payload inspection and node chaining.
+
+    Attributes:
+        payload: Dossier
+        next: Optional[DossierNode]
+        previous: Optional[DossierNode]
+        
+    Provides:
+
+    Super Class:
+        Node
+    """
     
-    def __init__(self, payload: Optional[Dossier] | None = None):
+    def __init__(self, payload: Dossier):
         super().__init__(payload=payload)
+        super().next = None
+        super.previous = None
         
     @property
     def payload(self) -> Dossier:
@@ -39,5 +60,15 @@ class DossierNode(Node[Dossier]):
     @previous.setter
     def previous(self, other: DossierNode):
         super().previous = other
+        
+    def __eq__(self, other):
+        if other is self:
+            return True
+        if other is None:
+            return False
+        if isinstance(other, DossierNode):
+            node = cast(DossierNode, other)
+            return self.payload == node.payload
+        return False
     
     

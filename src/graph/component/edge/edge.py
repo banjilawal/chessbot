@@ -1,7 +1,7 @@
-# src/graph/component/edge/state.py
+# src/graph/component/edge/edge.py
 
 """
-Module: graph.component.edge.model
+Module: graph.component.edge.edge
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -21,7 +21,6 @@ class Edge(GraphComponent):
     _distance: int
     _weight: Optional[int]
     _heuristic: Optional[int]
-    
     
     def __init__(
             self,

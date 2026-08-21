@@ -14,20 +14,18 @@ from abc import ABC, abstractmethod
 
 from typing import Generic, Optional, TypeVar
 
-from fabrication.blueprint import Blueprint
-
+from fabrication import Blueprint
 
 T = TypeVar("T")
 
 class EntityCarrier(ABC, Generic[T]):
     """
     Role:
-        -   Data Transport
+        -   Boundary Carrier
 
     Responsibilities:
-        1.  Transport either:
-            -   an Object
-            -   an ObjectBlueprint
+        1.  Transport either a hydrated Object or its Blueprint across validation and other
+            processing boundaries.
 
     Attributes:
         is_model_carrier: bool
@@ -50,7 +48,7 @@ class EntityCarrier(ABC, Generic[T]):
 
     @property
     @abstractmethod
-    def entity(self) -> [T|Blueprint[T]]:
+    def entity(self) -> Optional[T|Blueprint[T]]:
         pass
     
     @property

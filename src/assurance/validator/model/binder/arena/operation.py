@@ -16,7 +16,7 @@ from model import BoardBinder, Schema, Team
 from checker.validator.binder.validator import SchemaHashtableValidator
 from result import ValidationResult
 from util import LoggingLevelRouter
-from toolkit import BoardTeamBinderToolkit
+from assurance import BoardTeamBinderIntegrityChecker
 
 
 class BoardTeamBinderValidator(ModelValidator[BoardBinder]):
@@ -36,7 +36,7 @@ class BoardTeamBinderValidator(ModelValidator[BoardBinder]):
     Properties:
         -   def validate(
                     candidate: Any,
-                    toolkit : BoardTeamBinderToolSe,
+                    integrityChecker : BoardTeamBinderToolSe,
             ) -> ValidationResult[BoardTeamBinder]:
 
     Super Class:
@@ -48,7 +48,7 @@ class BoardTeamBinderValidator(ModelValidator[BoardBinder]):
     def validate(
             cls,
             candidate: Any,
-            toolkit: BoardTeamBinderToolkit,
+            integrity_checker: BoardTeamBinderIntegrityChecker,
     ) -> ValidationResult[BoardBinder]:
         """
         Verify the candidate is a safe BoardTeamBinder.
@@ -62,7 +62,7 @@ class BoardTeamBinderValidator(ModelValidator[BoardBinder]):
             3.  Otherwise, Send the success result.
         Args:
             candidate: Any
-            toolkit : BoardTeamBinderToolkit
+            integrityChecker : BoardTeamBinderIntegrityChecker
         Returns:
             ValidationResult[BoardTeamBinder]
         Raises:
@@ -74,11 +74,11 @@ class BoardTeamBinderValidator(ModelValidator[BoardBinder]):
         """
         method = f"{self.__class__.__name__}.execute"
         
-        if toolkit is None:
-            toolkit = BoardTeamBinderToolkit()
+        if integrityChecker is None:
+            integrityChecker = BoardTeamBinderIntegrityChecker()
             
         # Handle the case that, the validator is not primed.
-        validator_priming_result = toolkit.priming_validator.execute(
+        validator_priming_result = integrityChecker.priming_validator.execute(
             candidate=candidate,
             target_model=BoardBinder,
             model_null_exception=BoardTeamBinderNullException(),
@@ -95,7 +95,7 @@ class BoardTeamBinderValidator(ModelValidator[BoardBinder]):
                 )
             )
         binder = validator_priming_result.payload
-        board_validator_result =toolkit.board_service.execute.execute(binder.primary)
+        board_validator_result =integrityChecker.board_service.execute.execute(binder.primary)
         
         if board_validator_result.is_failure:
             # Send the exception chain on failure.
@@ -116,7 +116,7 @@ class BoardTeamBinderValidator(ModelValidator[BoardBinder]):
     def _run_satellite_table_checks(
             cls,
             binder: BoardBinder,
-            toolkit: BoardTeamBinderToolkit
+            integrity_checker: BoardTeamBinderIntegrityChecker
     ) -> ValidationResult[Dict[Schema, Team]]:
         method = f"{self.__class__.__name__}.run_satellite_table_checks"
         
@@ -138,7 +138,7 @@ class BoardTeamBinderValidator(ModelValidator[BoardBinder]):
         
         # handle the case that, the keys are not safe schemas.
         for key in table.keys():
-            schema_validation_result = toolkit.schema_service.validator.execute(table[key])
+            schema_validation_result = integrityChecker.schema_service.validator.execute(table[key])
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 BoardTeamBinderValidatorException(
@@ -151,7 +151,7 @@ class BoardTeamBinderValidator(ModelValidator[BoardBinder]):
             )
         # Handle the case that, the values are not safe teams.
         for key in table.keys():
-            team_validation_result = toolkit.schema_service.validator.execute(table[key])
+            team_validation_result = integrityChecker.schema_service.validator.execute(table[key])
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 BoardTeamBinderValidatorException(

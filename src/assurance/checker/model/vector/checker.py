@@ -12,8 +12,11 @@ from __future__ import annotations
 from typing import Optional, cast
 
 from assurance import ModelIntegrityChecker, VectorValidationBundle
+from err import VectorIntegrityCheckerException
+from fabrication import VectorNodeBlueprint
 from fabrication.blueprint import VectorBlueprint
 from model import Vector
+from node import VectorNode
 from result import ValidationResult
 from transit import VectorCarrier
 from util import LoggingLevelRouter
@@ -37,7 +40,7 @@ class VectorIntegrityChecker(ModelIntegrityChecker[Vector]):
         -   execute(self, candidate: Any) -> ValidationResult[Vector|VectorBlueprint]:
 
     Super Class:
-        Checker
+        IntegrityChecker
     """
     
     def __init__(self, bundle: Optional[VectorValidationBundle] | None = None):
@@ -51,9 +54,8 @@ class VectorIntegrityChecker(ModelIntegrityChecker[Vector]):
     def bundle(self) -> VectorValidationBundle:
         return cast(VectorValidationBundle, super().bundle)
     
-    
     @LoggingLevelRouter.monitor
-    def execute(self, candidate, Any) -> ValidationResult[Vector|VectorBlueprint]:
+    def execute(self, candidate, Any) -> ValidationResult[VectorNode|VectorNodeBlueprint]:
         """
         Certify a candidate is either a Vector or its Blueprint that is safe to use.
 
@@ -97,7 +99,7 @@ class VectorIntegrityChecker(ModelIntegrityChecker[Vector]):
         # Handle the case that, any id in the blueprint is flagged.
         numbers = []
         for number in [blueprint.x, blueprint.y]:
-            validation = self.bundle.number_checker.execute(number)
+            validation = self.bundle.number_validator.execute(number)
             if validation.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
@@ -114,19 +116,8 @@ class VectorIntegrityChecker(ModelIntegrityChecker[Vector]):
         # --- Use the validated numbers to build the appropriate object. ---#
         if carrier.is_carrying_model:
             return ValidationResult.success(
-                VectorCarrier(
-                    model=Vector(
-                        x=numbers[0],
-                        y=numbers[1]
-                    )
-                )
-            )
+                VectorCarrier(model=Vector(x=numbers[0], y=numbers[1])))
         # --- Forward the work product to the caller. ---#
         return ValidationResult.success(
-            VectorCarrier(
-                blueprint=VectorBlueprint(
-                    x=numbers[0],
-                    y=numbers[1]
-                )
-            )
+            VectorCarrier(blueprint=VectorBlueprint(x=numbers[0], y=numbers[1]))
         )

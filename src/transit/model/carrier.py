@@ -20,12 +20,11 @@ T = TypeVar("T", bound="Model")
 class ModelCarrier(EntityCarrier, ABC, Generic[T]):
     """
     Role:
-        -   Data Transport
+        -   Boundary Carrier
 
     Responsibilities:
-        1.  Transports either:
-            -   a Model
-            -   a ModeBlueprint.
+        1.  Transport either a hydrated domain Model or its Blueprint across validation and
+            other processing boundaries
 
     Attributes:
         is_model_carrier: bool

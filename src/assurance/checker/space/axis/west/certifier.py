@@ -39,7 +39,7 @@ class WestAxisRootChecker(AxisRootChecker[WestAxisBlueprint]):
         -   execute(self, candidate: Any) -> ValidationResult:
 
     Super Class:
-        Checker
+        IntegrityChecker
     """
     
     def __init__(self, bundle: WestAxisToolkit | None = WestAxisToolkit()):

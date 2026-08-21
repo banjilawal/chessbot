@@ -40,7 +40,7 @@ class NortheastQuadrantRootChecker(QuadrantRootChecker[NortheastQuadrant]):
         -   execute(self, candidate: Any) -> ValidationResult:
 
     Super Class:
-        Checker
+        IntegrityChecker
     """
     
     def __init__(self, bundle: NortheastQuadrantToolkit | None = NortheastQuadrantToolkit()):

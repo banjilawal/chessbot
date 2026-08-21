@@ -10,7 +10,7 @@ version: 0.0.2
 from __future__ import annotations
 
 from abc import ABC
-from dataclasses import dataclass, field
+from dataclasses import dataclass
 from typing import Any, Dict, Generic, TypeVar
 
 from assurance import NullRoster, PrimingValidator, TypesManifest

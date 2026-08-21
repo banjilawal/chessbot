@@ -34,7 +34,7 @@ class TokenHomeContextValidator(ContextValidator[TokenHomeContext]):
     Provides:
         -   def validate(
                     candidate: Any,
-                    toolkit: HomeToolkit,
+                    integrity_checker: HomeToolkit,
             ) -> ValidationResult[Home]:
 
     Super Class:
@@ -45,7 +45,7 @@ class TokenHomeContextValidator(ContextValidator[TokenHomeContext]):
     def execute(
             cls,
             candidate: Any,
-            toolkit: TokenHomeContextToolkit | None = None,
+            integrity_checker: TokenHomeContextToolkit | None = None,
     ) -> ValidationResult:
         """
         Certify a candidate is a HomeContext that is safe to use.
@@ -59,7 +59,7 @@ class TokenHomeContextValidator(ContextValidator[TokenHomeContext]):
             2.  Otherwise, send the success result.
         Args:
             candidate: Any,
-            toolkit: HomeToolkit,
+            integrity_checker: HomeToolkit,
         Returns:
             ValidationResult[Home]
         Raises:

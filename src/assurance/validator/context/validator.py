@@ -31,14 +31,14 @@ class ContextValidator(Validator, Generic[C]):
     Attributes:
 
     Provides:
-        -   def validate(candidate: Any, toolkit: ContextToolkit[T],) -> ValidationResult[Context[T]]:
+        -   def validate(candidate: Any, integrity_checker: ContextToolkit[T],) -> ValidationResult[Context[T]]:
 
     Super Class:
         ContextValidator
     """
     @classmethod
     @LoggingLevelRouter.monitor
-    def execute(cls, candidate: Any, toolkit: ContextToolkit[C], *args, **kwargs) -> ValidationResult:
+    def execute(cls, candidate: Any, integrity_checker: ContextToolkit[C], *args, **kwargs) -> ValidationResult:
         pass
         
     

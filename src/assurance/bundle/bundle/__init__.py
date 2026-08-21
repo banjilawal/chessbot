@@ -10,6 +10,7 @@ version: 0.0.2
 # =========== ASSURANCE.MANIFEST.BUNDLE PACKAGE ===========#
 
 # Packages
+from .node import *
 from .token import *
 from .vector import *
 
