@@ -19,12 +19,12 @@ from err import (
 from domain.model import Coord, Vector
 from assurance.checker import ToggleChecker
 from result import ValidationResult
-from domain.toggle import VectorToggle
+from domain.toggle import CartesianToggle
 from toolkit import VectorToggleToolkit
 from util import LoggingLevelRouter
 
 
-class VectorToggleRootChecker(ToggleChecker[VectorToggle]):
+class VectorToggleRootChecker(ToggleChecker[CartesianToggle]):
     """
     Role
         -   Integrity Maintenance
@@ -165,11 +165,11 @@ class VectorToggleRootChecker(ToggleChecker[VectorToggle]):
         if isinstance(item, Coord):
             coord = cast(Coord, item)
             return VectorToggleCarrier(
-                model=VectorToggle(coord=coord)
+                model=CartesianToggle(coord=coord)
             )
         vector = cast(Vector, item)
         return VectorToggleCarrier(
-            model=VectorToggle(vector=vector)
+            model=CartesianToggle(vector=vector)
         )
     
     def _process_blueprint_carrier(self, item) -> VectorToggleCarrier:

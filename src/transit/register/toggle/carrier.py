@@ -13,11 +13,11 @@ from typing import Optional
 
 from fabrication.blueprint import VectorToggleRegisterBlueprint
 from carrier import RegisterCarrier
-from domain.register import VectorToggleRegister
-from domain.toggle import VectorToggle
+from domain.register import CartesianToggleRegister
+from domain.toggle import CartesianToggle
 
 
-class VectorToggleRegisterCarrier(RegisterCarrier[VectorToggle]):
+class VectorToggleRegisterCarrier(RegisterCarrier[CartesianToggle]):
     """
     Role:
         -   Addressing
@@ -42,7 +42,7 @@ class VectorToggleRegisterCarrier(RegisterCarrier[VectorToggle]):
     
     def __init__(
             self,
-            model: Optional[VectorToggleRegister] |
+            model: Optional[CartesianToggleRegister] |
                    None = None,
             blueprint: Optional[VectorToggleRegisterBlueprint] |
                        None = None,
@@ -57,7 +57,7 @@ class VectorToggleRegisterCarrier(RegisterCarrier[VectorToggle]):
         self._blueprint = blueprint
     
     @property
-    def entity(self) -> [VectorToggleRegister | VectorToggleRegisterBlueprint | None]:
+    def entity(self) -> [CartesianToggleRegister | VectorToggleRegisterBlueprint | None]:
         if self.is_not_carrying_anything:
             return None
         if self.is_carrying_model:
@@ -69,7 +69,7 @@ class VectorToggleRegisterCarrier(RegisterCarrier[VectorToggle]):
         return (
                 self._model is not None and
                 self._blueprint is None and
-                isinstance(self._model, VectorToggleRegister)
+                isinstance(self._model, CartesianToggleRegister)
         )
     
     @property

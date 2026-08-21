@@ -14,10 +14,10 @@ from typing import Optional, cast
 from assurance import VectorToggleValidator
 from fabrication import VectorToggleBuilder
 from kit import ToggleOperationSuite, VectorToggleToolkit
-from domain.toggle import VectorToggle
+from domain.toggle import CartesianToggle
 
 
-class VectorToggleSuite(ToggleOperationSuite[VectorToggle]):
+class VectorToggleSuite(ToggleOperationSuite[CartesianToggle]):
     """
     Role:
         -   Dependency Container

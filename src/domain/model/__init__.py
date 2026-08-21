@@ -11,16 +11,14 @@ version: 0.0.2
 
 # Packages
 from .binder import *
-from .coord import *
+from .cartesian import *
 from .dossier import *
 from .identity import *
-from .node import *
 from .path import *
 from .rank import *
 from .scalar import *
 from .software import *
 from .state import *
-from .vector import *
 
 # Modules
 from .model import Model

@@ -96,7 +96,7 @@ class VectorRegisterChecker(Checker[VectorRegister]):
         blueprint = carrier.extract_blueprint()
         
         # Handle the case that, both slots are empty
-        if blueprint.is_empty:
+        if blueprint.is_blank:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 VectorRegisterRootCheckerException(

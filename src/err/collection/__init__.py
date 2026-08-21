@@ -1,0 +1,20 @@
+# src/err/collection/__init__.py
+
+"""
+Module: err.collection.__init__
+Author: Banji Lawal
+Created: 2026-04-04
+version: 0.0.2
+"""
+
+# =========== ERR.COLLECTION PACKAGE ===========#
+
+# Packages
+from .chain import *
+from .register import *
+from .stack import *
+from .tuple import *
+from .vector import *
+
+# Modules
+from .exception import CollectionException

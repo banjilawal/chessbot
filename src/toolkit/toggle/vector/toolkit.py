@@ -16,12 +16,12 @@ from fabrication.blueprint import VectorToggleBlueprint
 from carrier.toggle.vector.carrier import VectorToggleCarrier
 from err import VectorToggleBlueprintNullException, VectorToggleCarrierNullException, VectorToggleNullException
 from suite import  CoordOperationSuite, VectorOperationSuite
-from domain.toggle import VectorToggle
+from domain.toggle import CartesianToggle
 from toolkit.toggle.vector.toolkit import ToggleToolkit
 
 
 @dataclass
-class VectorToggleToolkit(ToggleToolkit[VectorToggle]):
+class VectorToggleToolkit(ToggleToolkit[CartesianToggle]):
     """
     Role:
         -   Container
@@ -45,8 +45,8 @@ class VectorToggleToolkit(ToggleToolkit[VectorToggle]):
     Super Class:
         ToggleToolkit
     """
-    model: Type[VectorToggle] = (
-        VectorToggle
+    model: Type[CartesianToggle] = (
+        CartesianToggle
     )
     blueprint_model: Type[VectorToggleBlueprint] = (
         VectorToggleBlueprint

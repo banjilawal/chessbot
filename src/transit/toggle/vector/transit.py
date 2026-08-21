@@ -12,10 +12,10 @@ from typing import Any, Dict, Optional
 
 from fabrication.blueprint import VectorToggleBlueprint
 from transit.toggle.carrier import ToggleCarrier
-from domain.toggle import VectorToggle
+from domain.toggle import CartesianToggle
 
 
-class VectorToggleCarrier(ToggleCarrier[VectorToggle]):
+class VectorToggleCarrier(ToggleCarrier[CartesianToggle]):
     """
     Role:
         -   Selection
@@ -42,12 +42,12 @@ class VectorToggleCarrier(ToggleCarrier[VectorToggle]):
     Super Class:
         Toggle
     """
-    _model: Optional[VectorToggle]
+    _model: Optional[CartesianToggle]
     _blueprint: Optional[VectorToggleBlueprint]
     
     def __init__(
             self,
-            model: Optional[VectorToggle] | None = None,
+            model: Optional[CartesianToggle] | None = None,
             blueprint: Optional[VectorToggleBlueprint] | None = None,
     ):
         """
@@ -60,7 +60,7 @@ class VectorToggleCarrier(ToggleCarrier[VectorToggle]):
         self._blueprint = blueprint
     
     @property
-    def entity(self) -> [VectorToggle | VectorToggleBlueprint | None]:
+    def entity(self) -> [CartesianToggle | VectorToggleBlueprint | None]:
         if self.is_not_carrying_anything:
             return None
         if self.is_carrying_model:
@@ -72,7 +72,7 @@ class VectorToggleCarrier(ToggleCarrier[VectorToggle]):
         return (
                 self._model is not None and
                 self._blueprint is None and
-                isinstance(self._model, VectorToggle)
+                isinstance(self._model, CartesianToggle)
         )
     
     @property

@@ -14,10 +14,10 @@ from typing import Optional, Type, cast
 
 from fabrication.blueprint import ToggleBlueprint
 from domain.model import Coord, Vector
-from domain.toggle import VectorToggle
+from domain.toggle import CartesianToggle
 
 
-class VectorToggleBlueprint(ToggleBlueprint[VectorToggle]):
+class VectorToggleBlueprint(ToggleBlueprint[CartesianToggle]):
     """
     Role:
         -   Container
@@ -42,7 +42,7 @@ class VectorToggleBlueprint(ToggleBlueprint[VectorToggle]):
             self,
             coord: Optional[Coord] | None = None,
             vector: Optional[Vector] | None = None,
-            model_class: Type[VectorToggle] = VectorToggle,
+            model_class: Type[CartesianToggle] = CartesianToggle,
     ):
         """
         Args:
@@ -55,8 +55,8 @@ class VectorToggleBlueprint(ToggleBlueprint[VectorToggle]):
         self._vector = vector
     
     @property
-    def model_class(self) -> Type[VectorToggle]:
-        return cast(Type[VectorToggle], super().model_class)
+    def model_class(self) -> Type[CartesianToggle]:
+        return cast(Type[CartesianToggle], super().model_class)
     
     @property
     def coord(self) -> Optional[Coord]:

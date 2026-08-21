@@ -36,13 +36,13 @@ class VectorNode(Node[Vector]):
         Node
     """
     
-    def __init__(self, payload: Vector):
+    def __init__(self, payload: Optional[Vector] | None = None):
         super().__init__(payload=payload)
         super().next = None
         super.previous = None
         
     @property
-    def payload(self) -> Vector:
+    def payload(self) -> Optional[Vector]:
         return cast(Vector, super().payload)
     
     @property
@@ -68,7 +68,7 @@ class VectorNode(Node[Vector]):
             return False
         if isinstance(other, VectorNode):
             node = cast(VectorNode, other)
-            return self.payload == domain.node.payload
+            return self.payload == node.payload
         return False
     
     

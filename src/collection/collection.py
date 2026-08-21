@@ -15,7 +15,7 @@ from typing import Generic, TypeVar
 
 T = TypeVar("T")
 
-class Collection(ABC, Generic[T]):
+class DomainObjectCollection(ABC, Generic[T]):
     """
     Role:
         -   Data Holder

@@ -92,7 +92,7 @@ class TokenPopPermitter(PopPermitter[Token]):
                 )
             )
         # Handle the case that, the stack is empty.
-        if request.stack.is_empty:
+        if request.stack.is_blank:
             # Send an exception chain in the permission denial.
             return PopApprovalReport.deny(
                 TokenPopPermitterException(

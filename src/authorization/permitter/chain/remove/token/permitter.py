@@ -92,7 +92,7 @@ class TokenRemovePermitter(RemovePermitter[Token]):
                 )
             )
         # Handle the case that, the chain is empty.
-        if request.chain.is_empty:
+        if request.chain.is_blank:
             # Send an exception chain in the permission denial.
             return RemoveApprovalReport.deny(
                 TokenRemovePermitterException(

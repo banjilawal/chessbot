@@ -12,11 +12,11 @@ from __future__ import annotations
 from abc import ABC
 from typing import Generic, TypeVar, cast
 
-from collection import Collection
+from collection import DomainObjectCollection
 from request import Request
 from result import InsertionResult
 
-T = TypeVar("T", bound="Collection")
+T = TypeVar("T", bound="DomainObjectCollection")
 
 
 class InsertionRequest(Request[InsertionResult], ABC, Generic[T]):

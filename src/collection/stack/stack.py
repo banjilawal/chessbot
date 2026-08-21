@@ -13,14 +13,14 @@ from abc import ABC, abstractmethod
 
 from typing import Generic, Iterator, List, Optional, TypeVar
 
-from collection import Collection
+from collection import DomainObjectCollection
 from microservice import IdentityService, Microservice
 from result import DeletionResult, InsertionResult, SearchResult
 
 
 T = TypeVar("T", bound="StateModel")
 
-class StackService(Collection, ABC, Generic[T]):
+class StackService(DomainObjectCollection, ABC, Generic[T]):
     """
     Role:
         -   Data layer

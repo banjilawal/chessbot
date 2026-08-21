@@ -11,13 +11,13 @@ from __future__ import annotations
 
 from fabrication.assembler import RegisterAssembler
 from fabrication.blueprint import VectorToggleRegisterBlueprint
-from domain.register import VectorToggleRegister
+from domain.register import CartesianToggleRegister
 from result import BuildResult
 from util import LoggingLevelRouter
 
 
 class VectorToggleRegisterAssembler(
-    RegisterAssembler[VectorToggleRegister]
+    RegisterAssembler[CartesianToggleRegister]
 ):
     """
     Role
@@ -41,7 +41,7 @@ class VectorToggleRegisterAssembler(
     def execute(
             self,
             blueprint: VectorToggleRegisterBlueprint,
-    ) -> BuildResult[VectorToggleRegister]:
+    ) -> BuildResult[CartesianToggleRegister]:
         """
         Assemble a VectorToggleRegister from the Blueprint's contents.
 
@@ -53,5 +53,5 @@ class VectorToggleRegisterAssembler(
         """
         method = f"{self.__class__.__name__}.validate"
         return BuildResult.success(
-            VectorToggleRegister(u=blueprint.u,v=blueprint.v,)
+            CartesianToggleRegister(u=blueprint.u, v=blueprint.v, )
         )

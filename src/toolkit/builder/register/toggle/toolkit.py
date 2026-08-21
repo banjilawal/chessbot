@@ -12,12 +12,12 @@ from __future__ import annotations
 from typing import Optional, cast
 
 from fabrication.assembler import VectorToggleRegisterAssembler
-from domain.register import VectorToggleRegister
+from domain.register import CartesianToggleRegister
 from assurance.checker import VectorToggleRegisterCertifier
 from toolkit.builder.register.toggle.toolkit import RegisterBuilderToolkit
 
 
-class VectorToggleRegisterBuilderToolkit(RegisterBuilderToolkit[VectorToggleRegister]):
+class VectorToggleRegisterBuilderToolkit(RegisterBuilderToolkit[CartesianToggleRegister]):
     """
     Role:
         -   Dependency Management

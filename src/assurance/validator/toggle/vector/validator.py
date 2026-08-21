@@ -14,12 +14,12 @@ from assurance import ToggleValidator
 from err import VectorToggleValidatorException
 from assurance import VectorToggleIntegrityChecker
 from result import ValidationResult
-from domain.toggle import VectorToggle
+from domain.toggle import CartesianToggle
 from util import LoggingLevelRouter
 
 
 
-class VectorToggleValidator(ToggleValidator[VectorToggle]):
+class VectorToggleValidator(ToggleValidator[CartesianToggle]):
     """
     Role
         -   Transaction Worker
@@ -55,7 +55,7 @@ class VectorToggleValidator(ToggleValidator[VectorToggle]):
         return cast(VectorToggleIntegrityChecker, self.integrity_checker)
     
     @LoggingLevelRouter.monitor
-    def execute(self, candidate: Any) -> ValidationResult[VectorToggle]:
+    def execute(self, candidate: Any) -> ValidationResult[CartesianToggle]:
         """
         Verify the candidate is a safe VectorToggle.
         
@@ -94,6 +94,6 @@ class VectorToggleValidator(ToggleValidator[VectorToggle]):
                 )
             )
         # --- Cast candidate to a VectorToggle for additional tests. ---#
-        return ValidationResult.success(cast(VectorToggle, certification.payload))
+        return ValidationResult.success(cast(CartesianToggle, certification.payload))
 
             

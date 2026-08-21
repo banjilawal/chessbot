@@ -86,7 +86,7 @@ class TokenStackPop(StackPop[Token]):
         # Otherwise, complete the pop steps.
         product = stack.items.remove(item)
         # Maintain state.
-        if stack.is_empty:
+        if stack.is_blank:
             stack.state = TokenStackState.DEPLOYED_ON_BOARD
         
         # --- Send the work product ---#

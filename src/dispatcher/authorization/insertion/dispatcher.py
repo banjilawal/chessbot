@@ -13,14 +13,14 @@ from abc import ABC, abstractmethod
 from typing import Generic, TypeVar, cast
 
 from authorization import InsertionRequestAuthorizer
-from collection import Collection
+from collection import DomainObjectCollection
 from dispatcher import AuthorizationDispatcher
 from report import AuthorizationDecision
 from request import InsertionRequest
 from result import InsertionResult
 from util import LoggingLevelRouter
 
-T = TypeVar("T", bound="Collection")
+T = TypeVar("T", bound="DomainObjectCollection")
 
 class InsertionDispatcher(AuthorizationDispatcher[InsertionResult], ABC, Generic[T]):
     

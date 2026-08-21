@@ -17,13 +17,13 @@ from err import (
     VectorToggleRegisterBlueprintNullException, VectorToggleRegisterCarrierNullException,
     VectorToggleRegisterNullException
 )
-from domain.register import VectorToggleRegister
-from domain.toggle import VectorToggle
+from domain.register import CartesianToggleRegister
+from domain.toggle import CartesianToggle
 from toolkit.register.toggle.toolkit import RegisterToolkit
 from assurance.validator import VectorToggleValidator
 
 
-class VectorToggleRegisterToolkit(RegisterToolkit[VectorToggle]):
+class VectorToggleRegisterToolkit(RegisterToolkit[CartesianToggle]):
     """
     Role:
         -   Container
@@ -43,8 +43,8 @@ class VectorToggleRegisterToolkit(RegisterToolkit[VectorToggle]):
     Super Class:
        RegisterToolkit
     """
-    model: Type[VectorToggleRegister] = (
-        VectorToggleRegister
+    model: Type[CartesianToggleRegister] = (
+        CartesianToggleRegister
     )
     carrier_model: Type[VectorToggleRegisterCarrier] = (
         VectorToggleRegisterCarrier

@@ -36,7 +36,7 @@ class Node(Domain, ABC, Generic[T]):
 
     Super Class:
     """
-    _payload: T
+    _payload: Optional[T]
     _next: Optional[Node[T]]
     _previous: Optional[Node[T]]
     
@@ -57,7 +57,7 @@ class Node(Domain, ABC, Generic[T]):
         self._previous = previous
     
     @property
-    def payload(self) -> T:
+    def payload(self) -> Optional[T]:
         return self._payload
     
     @property
@@ -75,3 +75,45 @@ class Node(Domain, ABC, Generic[T]):
     @previous.setter
     def previous(self, other: Node[T]):
         self._previous = other
+        
+    @property
+    def is_blank(self) -> bool:
+        return (
+                self._payload is None and
+                self.does_not_have_orphan_pointers
+        )
+    
+    @property
+    def is_not_blank(self):
+        return not self.is_blank
+    
+    @property
+    def is_consistent(self) -> bool:
+        return self.does_not_have_orphan_pointers
+    
+    @property
+    def is_not_consistent(self) -> bool:
+        return not self.is_consistent
+    
+    @property
+    def has_orphan_pointers(self) -> bool:
+        return self._payload is None and self.has_neighbors 
+    
+    @property
+    def does_not_have_orphan_pointers(self) -> bool:
+        return self._payload is not None and self.has_orphan_pointers 
+    
+    @property
+    def has_neighbors(self) -> bool:
+        return self.number_of_pointers > 0
+    
+    @property
+    def does_not_have_neighbors(self) -> bool:
+        return not self.has_neighbors
+    
+    @property
+    def number_of_pointers(self) -> int:
+        return len([self._next, self._previous])
+    
+    
+        

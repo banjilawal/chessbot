@@ -9,11 +9,11 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from typing import List, cast
+from typing import List, Optional, cast
 
-from collection import CoordSet, VectorSet
-from domain.model import Coord, Vector
-from tree import CoordTree, Tree
+from collection import Tree, VectorChain
+from domain import Vector, VectorNode
+
 
 
 class VectorTree(Tree[Vector]):
@@ -26,7 +26,8 @@ class VectorTree(Tree[Vector]):
         1.  Immutable unordered set of vectors.
 
     Attributes:
-        items: Tuple[Vector, ...]
+        root: VectorNode
+        branches: Optional[List[VectorChain]]
 
     Provides:
 
@@ -34,28 +35,21 @@ class VectorTree(Tree[Vector]):
         Tree
     """
     
-    def __init__(self, root: Vector, branches: List[VectorSet]):
+    def __init__(self, root: Vector, branches: Optional[List[VectorChain]] | None = None):
         """
         Args:
-            items: Optional[Tuple[Vector, ...]]
+            root: VectorNode
+            branches: Optional[List[VectorChain]]
         """
-        super().__init__(root=root, branches=branches)
+        super().__init__(root=root, branches=branches or List[VectorChain])
         
     @property
-    def root(self) -> Vector:
-        return cast(Vector, super().root)
+    def root(self) -> VectorNode:
+        return cast(VectorNode, super().root)
     
     @property
-    def branches(self) -> List[VectorSet]:
-        return cast(List[VectorSet], super().branches)
-    
-    @property
-    def to_coord_tree(self) -> CoordTree:
-        coord_branches = []
-        for branch in self.branches:
-            coord_branches.append(CoordSet(branch.to_coord_tuple()))
-        origin = Coord(column=self._root.x, row=self._root.y)
-        return CoordTree(root=origin, branches=coord_branches)
+    def branches(self) -> List[VectorChain]:
+        return cast(List[VectorChain], super().branches)
         
         
     

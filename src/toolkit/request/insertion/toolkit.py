@@ -11,12 +11,12 @@ from __future__ import annotations
 
 from typing import Generic, Type, TypeVar, cast
 
-from collection import Collection
+from collection import DomainObjectCollection
 from err import CollectionNullException, RequestNullException
 from result import InsertionResult
 from toolkit import RequestToolkit
 
-T = TypeVar("T", bound="Collection")
+T = TypeVar("T", bound="DomainObjectCollection")
 
 
 class InsertionRequestToolkit(RequestToolkit[InsertionResult], Generic[T]):
@@ -44,7 +44,7 @@ class InsertionRequestToolkit(RequestToolkit[InsertionResult], Generic[T]):
        Toolkit
     """
     _request_type: Type[T]
-    _collection_type: Type[Collection]
+    _collection_type: Type[DomainObjectCollection]
     _request_null_exception: RequestNullException
     _collection_null_exception: CollectionNullException
     
@@ -52,7 +52,7 @@ class InsertionRequestToolkit(RequestToolkit[InsertionResult], Generic[T]):
     def __init__(
             self,
             request_type: Type[T],
-            collection_type: Type[Collection],
+            collection_type: Type[DomainObjectCollection],
             request_null_exception: RequestNullException,
             collection_null_exception: CollectionNullException,
     ):
@@ -65,7 +65,7 @@ class InsertionRequestToolkit(RequestToolkit[InsertionResult], Generic[T]):
         return self._request_type
     
     @property
-    def collection_type(self) -> Type[Collection]:
+    def collection_type(self) -> Type[DomainObjectCollection]:
         return self._collection_type
     
     @property

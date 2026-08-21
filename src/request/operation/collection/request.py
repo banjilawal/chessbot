@@ -13,7 +13,7 @@ from abc import ABC
 from typing import Generic, TypeVar, cast
 
 from authorization import OperationRequest
-from collection import Collection
+from collection import DomainObjectCollection
 from operation import CollectionOperation
 
 T = TypeVar("T", bound="Result")
@@ -34,9 +34,9 @@ class CollectionRequest(OperationRequest[CollectionOperation], ABC, Generic[T]):
      Super Class:
         OperationRequest
      """
-    _collection: Collection
+    _collection: DomainObjectCollection
     
-    def __init__(self, id: int, collection: Collection):
+    def __init__(self, id: int, collection: DomainObjectCollection):
         """
         Args:
             id: int
@@ -46,7 +46,7 @@ class CollectionRequest(OperationRequest[CollectionOperation], ABC, Generic[T]):
         self._collection = collection
         
     @property
-    def collection(self) -> Collection:
+    def collection(self) -> DomainObjectCollection:
         return self._collection
     
     def __eq__(self, other):

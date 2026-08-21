@@ -10,8 +10,9 @@ version: 0.0.2
 # =========== DOMAIN.TOGGLE PACKAGE ===========#
 
 # Packages
+from .cartesian import *
 from .orientation import *
-from .vector import *
+
 
 # Modules
 from .toggle import Toggle

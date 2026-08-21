@@ -13,12 +13,12 @@ from typing import Optional, Type, cast
 
 from fabrication.blueprint import RegisterBlueprint
 from err import VectorToggleRegisterNullException
-from domain.register import VectorToggleRegister
-from domain.toggle import VectorToggle
+from domain.register import CartesianToggleRegister
+from domain.toggle import CartesianToggle
 
 
 class VectorToggleRegisterBlueprint(
-    RegisterBlueprint[VectorToggleRegister]
+    RegisterBlueprint[CartesianToggleRegister]
 ):
     """
     Role:
@@ -41,10 +41,10 @@ class VectorToggleRegisterBlueprint(
     
     def __init__(
             self,
-            u: VectorToggle,
-            v: VectorToggle,
-            model_class: Optional[Type[VectorToggleRegister]]
-                         | None = VectorToggleRegister,
+            u: CartesianToggle,
+            v: CartesianToggle,
+            model_class: Optional[Type[CartesianToggleRegister]]
+                         | None = CartesianToggleRegister,
             null_exception: Optional[VectorToggleRegisterNullException] |
                             None = VectorToggleRegisterNullException(),
     ):
@@ -63,27 +63,27 @@ class VectorToggleRegisterBlueprint(
         )
     
     @property
-    def model_class(self) -> Type[VectorToggle]:
-        return cast(Type[VectorToggle], super().model_class)
+    def model_class(self) -> Type[CartesianToggle]:
+        return cast(Type[CartesianToggle], super().model_class)
     
     @property
     def null_exception(self) -> VectorToggleRegisterNullException:
         return cast(VectorToggleRegisterNullException, super().null_exception)
     
     @property
-    def u(self) -> VectorToggle:
-        return cast(VectorToggle, super().a)
+    def u(self) -> CartesianToggle:
+        return cast(CartesianToggle, super().a)
     
     @property
-    def v(self) -> VectorToggle:
-        return cast(VectorToggle, super().b)
+    def v(self) -> CartesianToggle:
+        return cast(CartesianToggle, super().b)
     
     @property
-    def a(self) -> VectorToggle:
+    def a(self) -> CartesianToggle:
         return self.u
     
     @property
-    def b(self) -> VectorToggle:
+    def b(self) -> CartesianToggle:
         return self.v
     
     @property

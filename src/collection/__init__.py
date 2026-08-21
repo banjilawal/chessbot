@@ -16,4 +16,4 @@ from .stack import *
 from .tree import *
 
 # Modules
-from .collection import Collection
+from .collection import DomainObjectCollection

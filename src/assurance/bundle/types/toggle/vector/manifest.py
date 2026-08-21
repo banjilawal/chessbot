@@ -15,12 +15,12 @@ from typing import Type
 
 from assurance import ToggleTypes
 from fabrication import VectorToggleBlueprint
-from domain.toggle import VectorToggle
+from domain.toggle import CartesianToggle
 from transit import VectorToggleCarrier
 
 
 @dataclass
 class VectorToggleTypes(ToggleTypes):
-    model: Type[VectorToggle] = VectorToggle
+    model: Type[CartesianToggle] = CartesianToggle
     carrier: Type[VectorToggleCarrier] = VectorToggleCarrier
     blueprint: Type[VectorToggleBlueprint] = VectorToggleBlueprint

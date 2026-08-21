@@ -15,12 +15,12 @@ from fabrication.blueprint import VectorToggleBlueprint
 from fabrication.builder import ToggleBuilder
 from err import VectorToggleBuilderException
 from result import BuildResult, MethodResultType
-from domain.toggle import VectorToggle
+from domain.toggle import CartesianToggle
 from toolkit import VectorToggleBuilderToolkit
 from util import LoggingLevelRouter
 
 
-class VectorToggleBuilder(ToggleBuilder[VectorToggle]):
+class VectorToggleBuilder(ToggleBuilder[CartesianToggle]):
     """
     Role:
         -   Selection
@@ -59,7 +59,7 @@ class VectorToggleBuilder(ToggleBuilder[VectorToggle]):
         
     
     @LoggingLevelRouter.monitor
-    def execute(self, blueprint: VectorToggleBlueprint,) -> BuildResult[VectorToggle]:
+    def execute(self, blueprint: VectorToggleBlueprint,) -> BuildResult[CartesianToggle]:
         """
         Build a safe VectorToggle.
 
@@ -108,4 +108,4 @@ class VectorToggleBuilder(ToggleBuilder[VectorToggle]):
                 )
             )
         # --- Forward the work product to the caller. ---#
-        return BuildResult.success(cast(VectorToggle, assembly.payload))
+        return BuildResult.success(cast(CartesianToggle, assembly.payload))

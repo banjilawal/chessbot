@@ -16,16 +16,16 @@ from err import (
     RegisterEmptyException, RegisterSizeException, VectorToggleRegisterCheckerException,
     VectorToggleRegisterMismatchException
 )
-from domain.register import VectorToggleRegister
+from domain.register import CartesianToggleRegister
 from result import MethodResultType, ValidationResult
 from assurance.checker import Checker
-from domain.toggle import VectorToggle
+from domain.toggle import CartesianToggle
 from toolkit import VectorToggleRegisterToolkit
 from util import LoggingLevelRouter
 
 
 class VectorToggleRegisterChecker(
-    Checker[VectorToggleRegister]
+    Checker[CartesianToggleRegister]
 ):
     """
     Role
@@ -62,7 +62,7 @@ class VectorToggleRegisterChecker(
         return cast(VectorToggleRegisterToolkit, super().bundle)
     
     @LoggingLevelRouter.monitor
-    def execute(self, candidate, Any) -> ValidationResult[VectorToggleRegister]:
+    def execute(self, candidate, Any) -> ValidationResult[CartesianToggleRegister]:
         """
         Certify a candidate is a VectorToggleRegisterBlueprint that is safe to use.
 
@@ -105,7 +105,7 @@ class VectorToggleRegisterChecker(
         blueprint= carrier.extract_blueprint()
         
         # Handle the wrong number of toggles cases.
-        if blueprint.is_empty:
+        if blueprint.is_blank:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 VectorToggleRegisterCheckerException(
@@ -157,7 +157,7 @@ class VectorToggleRegisterChecker(
                 )
             )
         # Handle the case that, either slot is not safe.
-        toggles: List[VectorToggle] = []
+        toggles: List[CartesianToggle] = []
         
         for item in [blueprint.a, blueprint.b]:
             validation = self.toolkit.vector_toggle_validator.execute(item)
@@ -172,7 +172,7 @@ class VectorToggleRegisterChecker(
                         ex=validation.exception,
                     )
                 )
-            toggles.append(cast(VectorToggle, validation.payload))
+            toggles.append(cast(CartesianToggle, validation.payload))
             
         # --- Extract and cast payloads of the validation results. ---#
         u = toggles[0]
@@ -181,7 +181,7 @@ class VectorToggleRegisterChecker(
         if carrier.is_carrying_model:
             return ValidationResult.success(
                 VectorToggleRegisterCarrier(
-                    model=VectorToggleRegister(u=u, v=v)
+                    model=CartesianToggleRegister(u=u, v=v)
                 )
             )
         # --- Forward the work product to the caller. ---#

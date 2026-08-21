@@ -12,8 +12,8 @@ from __future__ import annotations
 from typing import List, Optional, cast
 
 from collection import Chain
-from err import SearchResultEmptyException
-from domain.node import VectorNode
+from domain import VectorNode
+from err import SearchResultEmptyException, VectorChainException
 from result import DeletionResult, InsertionResult, SearchResult
 from util import LoggingLevelRouter
 
@@ -54,8 +54,8 @@ class VectorChain(Chain[VectorNode]):
             )
         if search.is_empty:
             return SearchResult.empty()
-        node = cast(VectorNode, search.payload[0])
-        return SearchResult.success([node])
+        nodes = cast(List[VectorNode], search.payload)
+        return SearchResult.success(nodes)
     
     @LoggingLevelRouter.monitor
     def remove_at_offset(self, offset: int) -> DeletionResult[VectorNode]:

@@ -13,11 +13,11 @@ from fabrication.assembler import ToggleAssembler
 from fabrication.blueprint.toggle import VectorToggleBlueprint
 
 from result import BuildResult
-from domain.toggle import VectorToggle
+from domain.toggle import CartesianToggle
 from util import LoggingLevelRouter
 
 
-class VectorToggleAssembler(ToggleAssembler[VectorToggle]):
+class VectorToggleAssembler(ToggleAssembler[CartesianToggle]):
     """
     Role
         -   Builder
@@ -38,7 +38,7 @@ class VectorToggleAssembler(ToggleAssembler[VectorToggle]):
     
     
     @LoggingLevelRouter.monitor
-    def execute(self, blueprint: VectorToggleBlueprint,) -> BuildResult[VectorToggle]:
+    def execute(self, blueprint: VectorToggleBlueprint,) -> BuildResult[CartesianToggle]:
         """
         Assemble a VectorToggle from the Blueprint's contents.
 
