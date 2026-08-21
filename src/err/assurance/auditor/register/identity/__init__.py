@@ -1,4 +1,4 @@
-# src/err/auditor/register/identity/__init__.py
+# src/err/assurance/auditor/register/identity/__init__.py
 
 """
 Module: err.assurance.auditor.register.identity.__init__

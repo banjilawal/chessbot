@@ -1,4 +1,4 @@
-# src/err/auditor/token/king/__init__.py
+# src/err/assurance/auditor/token/king/__init__.py
 
 """
 Module: err.assurance.auditor.token.king.__init__

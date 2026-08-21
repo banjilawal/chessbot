@@ -19,7 +19,7 @@ from register import Register
 from transit import RegisterCarrier
 
 
-@dataclass(frozen=True)
+@dataclass
 class RegisterTypes(TypesManifest[Register]):
     model: Type[Register] = Register
     carrier: Type[RegisterCarrier] = RegisterCarrier

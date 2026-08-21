@@ -1,4 +1,4 @@
-# src/err/auditor/edge/__init__.py
+# src/err/assurance/auditor/edge/__init__.py
 
 """
 Module: err.assurance.auditor.edge.__init__

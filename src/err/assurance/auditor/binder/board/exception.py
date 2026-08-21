@@ -1,4 +1,4 @@
-# src/err/auditor/BoardTeamBinder/exception.py
+# src/err/assurance/auditor/BoardTeamBinder/exception.py
 
 """
 Module: err.assurance.auditor.BoardTeamBinder.exception

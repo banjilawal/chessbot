@@ -1,7 +1,7 @@
 # src/assurance/validator/model/state/node/validator.py
 
 """
-Module: assurance.validator.model.state.node.operation
+Module: assurance.validator.model.state.node.validator
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -13,7 +13,7 @@ from typing import Any, cast
 
 from err import NodeValidatorException
 from model import Node
-from assurance.checker import NodeRootCertifier
+from assurance import NodeIntegrityChecker
 from result import ValidationResult
 from util import LoggingLevelRouter
 from assurance.validator import ModelValidator
@@ -31,7 +31,7 @@ class NodeValidator(ModelValidator[Node]):
         1.  Ensure a Node instance is certified safe, reliable and consistent before use.
 
     Attributes:
-        root_certifier: NodeRootCertifier
+        integrity_checker: NodeIntegrityChecker
 
     Provides:
         -   execute(candidate: Any) -> ValidationResult
@@ -42,13 +42,13 @@ class NodeValidator(ModelValidator[Node]):
     
     def __init__(
             self,
-            root_certifier: NodeRootCertifier | None = NodeRootCertifier(),
+            integrity_checker: NodeIntegrityChecker | None = NodeIntegrityChecker(),
     ):
-        super().__init__(root_certifier=root_certifier)
+        super().__init__(integrity_checker=integrity_checker)
         
     @property
-    def integrity_checker(self) -> NodeRootCertifier:
-        return cast(NodeRootCertifier, self.integrity_checker)
+    def integrity_checker(self) -> NodeIntegrityChecker:
+        return cast(NodeIntegrityChecker, self.integrity_checker)
     
 
     @LoggingLevelRouter.monitor
@@ -58,7 +58,7 @@ class NodeValidator(ModelValidator[Node]):
 
         Action:
             1.  Send an exception chain in the ValidationResult if the candidate fails a
-                root_certifier test..
+                integrity_checker test..
             2.  Otherwise, cast the payload into a Node and send in the success result.
                 success result.
         Args:

@@ -19,7 +19,7 @@ from register import VectorRegister
 from transit import VectorRegisterCarrier
 
 
-@dataclass(frozen=True)
+@dataclass
 class VectorRegisterTypes(RegisterTypes):
     model: Type[VectorRegister] = VectorRegister
     carrier: Type[VectorRegisterCarrier] = VectorRegisterCarrier

@@ -1,4 +1,4 @@
-# src/err/auditor/registry/key/__init__.py
+# src/err/assurance/auditor/registry/key/__init__.py
 
 """
 Module: err.assurance.auditor.registry.key.__init__

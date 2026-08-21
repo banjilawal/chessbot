@@ -1,7 +1,7 @@
 # src/assurance/validator/model/state/board/validator.py
 
 """
-Module: assurance.validator.model.state.board.operation
+Module: assurance.validator.model.state.board.validator
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -13,7 +13,7 @@ from typing import Any, cast
 
 from err import BoardValidatorException
 from model import Board
-from assurance.checker import BoardRootCertifier
+from assurance import BoardIntegrityChecker
 from result import ValidationResult
 from util import LoggingLevelRouter
 from assurance.validator import ModelValidator
@@ -31,7 +31,7 @@ class BoardValidator(ModelValidator[Board]):
         1.  Ensure a Board instance is certified safe, reliable and consistent before use.
 
     Attributes:
-        root_certifier: BoardRootCertifier
+        integrity_checker: BoardIntegrityChecker
 
     Provides:
         -   execute(candidate: Any) -> ValidationResult
@@ -42,13 +42,13 @@ class BoardValidator(ModelValidator[Board]):
     
     def __init__(
             self,
-            root_certifier: BoardRootCertifier | None = BoardRootCertifier(),
+            integrity_checker: BoardIntegrityChecker | None = BoardIntegrityChecker(),
     ):
-        super().__init__(root_certifier=root_certifier)
+        super().__init__(integrity_checker=integrity_checker)
         
     @property
-    def integrity_checker(self) -> BoardRootCertifier:
-        return cast(BoardRootCertifier, self.integrity_checker)
+    def integrity_checker(self) -> BoardIntegrityChecker:
+        return cast(BoardIntegrityChecker, self.integrity_checker)
     
 
     @LoggingLevelRouter.monitor
@@ -58,7 +58,7 @@ class BoardValidator(ModelValidator[Board]):
 
         Action:
             1.  Send an exception chain in the ValidationResult if the candidate fails a
-                root_certifier test..
+                integrity_checker test..
             2.  Otherwise, cast the payload into a Board and send in the success result.
                 success result.
         Args:

@@ -28,7 +28,7 @@ class OrientationSelectorValidator(ModelValidator[OrientationToggle]):
             before use.
 
     Attributes:
-        carrier_validator: VectorToggleRegisterRootCertifier
+        carrier_validator: VectorToggleRegisterIntegrityChecker
 
     Properties:
         -   def validate(
@@ -42,13 +42,13 @@ class OrientationSelectorValidator(ModelValidator[OrientationToggle]):
     
     def __init__(
             self,
-            root_certifier: VectorToggleRegisterRootCertifier | None = VectorToggleRegisterRootCertifier(),
+            integrity_checker: VectorToggleRegisterIntegrityChecker | None = VectorToggleRegisterIntegrityChecker(),
     ):
-        super().__init__(root_certifier=root_certifier)
+        super().__init__(integrity_checker=integrity_checker)
         
     @property
-    def integrity_checker(self) -> VectorToggleRegisterRootCertifier:
-        return cast(VectorToggleRegisterRootCertifier, self.integrity_checker)
+    def integrity_checker(self) -> VectorToggleRegisterIntegrityChecker:
+        return cast(VectorToggleRegisterIntegrityChecker, self.integrity_checker)
     
     @LoggingLevelRouter.monitor
     def execute(self, candidate: Any) -> ValidationResult:

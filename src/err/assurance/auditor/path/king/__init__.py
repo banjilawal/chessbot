@@ -1,4 +1,4 @@
-# src/err/auditor/path/king/__init__.py
+# src/err/assurance/auditor/path/king/__init__.py
 
 """
 Module: err.assurance.auditor.path.king.__init__

@@ -15,7 +15,6 @@ from .arena import *
 from .board import *
 from .endpoint import *
 from .game import *
-
 from .path import *
 from .player import *
 from .snapshot import *

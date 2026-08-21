@@ -1,7 +1,7 @@
 # src/assurance/validator/model/coord/validator.py
 
 """
-Module: assurance.validator.model.coord.operation
+Module: assurance.validator.model.coord.validator
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -13,7 +13,7 @@ from typing import Any, cast
 
 from err import CoordValidatorException
 from model import Coord
-from assurance.checker import CoordRootCertifier
+from assurance import CoordIntegrityChecker
 from result import ValidationResult
 from util import LoggingLevelRouter
 from assurance.validator import ModelValidator
@@ -31,7 +31,7 @@ class CoordValidator(ModelValidator[Coord]):
         1.  Ensure a Coord instance is certified safe, reliable and consistent before use.
 
     Attributes:
-        root_certifier: CoordRootCertifier
+        integrity_checker: CoordIntegrityChecker
 
     Provides:
         -   execute(candidate: Any) -> ValidationResult
@@ -42,13 +42,13 @@ class CoordValidator(ModelValidator[Coord]):
     
     def __init__(
             self,
-            root_certifier: CoordRootCertifier | None = CoordRootCertifier(),
+            integrity_checker: CoordIntegrityChecker | None = CoordIntegrityChecker(),
     ):
-        super().__init__(root_certifier=root_certifier)
+        super().__init__(integrity_checker=integrity_checker)
         
     @property
-    def integrity_checker(self) -> CoordRootCertifier:
-        return cast(CoordRootCertifier, self.integrity_checker)
+    def integrity_checker(self) -> CoordIntegrityChecker:
+        return cast(CoordIntegrityChecker, self.integrity_checker)
     
 
     @LoggingLevelRouter.monitor
@@ -58,7 +58,7 @@ class CoordValidator(ModelValidator[Coord]):
 
         Action:
             1.  Send an exception chain in the ValidationResult if the candidate fails a
-                root_certifier test..
+                integrity_checker test..
             2.  Otherwise, cast the payload into a Coord and send in the success result.
                 success result.
         Args:

@@ -1,4 +1,4 @@
-# src/err/auditor/ArenaPlayerBinder/exception.py
+# src/err/assurance/auditor/ArenaPlayerBinder/exception.py
 
 """
 Module: err.assurance.auditor.ArenaPlayerBinder.exception

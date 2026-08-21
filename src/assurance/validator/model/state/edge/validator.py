@@ -1,7 +1,7 @@
 # src/assurance/validator/model/state/edge/validator.py
 
 """
-Module: assurance.validator.model.state.edge.operation
+Module: assurance.validator.model.state.edge.validator
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -13,7 +13,7 @@ from typing import Any, cast
 
 from err import EdgeValidatorException
 from model import Edge
-from assurance.checker import EdgeRootCertifier
+from assurance import EdgeIntegrityChecker
 from result import ValidationResult
 from util import LoggingLevelRouter
 from assurance.validator import ModelValidator
@@ -31,7 +31,7 @@ class EdgeValidator(ModelValidator[Edge]):
         1.  Ensure a Edge instance is certified safe, reliable and consistent before use.
 
     Attributes:
-        root_certifier: EdgeRootCertifier
+        integrity_checker: EdgeIntegrityChecker
 
     Provides:
         -   execute(candidate: Any) -> ValidationResult
@@ -42,13 +42,13 @@ class EdgeValidator(ModelValidator[Edge]):
     
     def __init__(
             self,
-            root_certifier: EdgeRootCertifier | None = EdgeRootCertifier(),
+            integrity_checker: EdgeIntegrityChecker | None = EdgeIntegrityChecker(),
     ):
-        super().__init__(root_certifier=root_certifier)
+        super().__init__(integrity_checker=integrity_checker)
         
     @property
-    def integrity_checker(self) -> EdgeRootCertifier:
-        return cast(EdgeRootCertifier, self.integrity_checker)
+    def integrity_checker(self) -> EdgeIntegrityChecker:
+        return cast(EdgeIntegrityChecker, self.integrity_checker)
     
 
     @LoggingLevelRouter.monitor
@@ -58,7 +58,7 @@ class EdgeValidator(ModelValidator[Edge]):
 
         Action:
             1.  Send an exception chain in the ValidationResult if the candidate fails a
-                root_certifier test..
+                integrity_checker test..
             2.  Otherwise, cast the payload into a Edge and send in the success result.
                 success result.
         Args:

@@ -12,4 +12,4 @@ version: 0.0.2
 # Packages
 
 # Module
-from .operation import BoardTeamBinderValidator
+from .validator import BoardTeamBinderValidator

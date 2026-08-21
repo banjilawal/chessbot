@@ -1,7 +1,7 @@
 # src/assurance/validator/register/vector/validator.py
 
 """
-Module: assurance.validator.register.vector.operation
+Module: assurance.validator.register.vector.validator
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -14,7 +14,7 @@ from typing import Any, cast
 from err import VectorRegisterValidatorException
 from register import VectorRegister
 from result import ValidationResult
-from assurance.checker import VectorRegisterCertifier
+from assurance import VectorRegisterIntegrityChecker
 from util import LoggingLevelRouter
 from assurance.validator import RegisterValidator
 
@@ -31,7 +31,7 @@ class VectorRegisterValidator(RegisterValidator[VectorRegister]):
         1.  Ensure a VectorRegister instance is certified safe, reliable and consistent before use.
 
     Attributes:
-        root_certifier: VectorRegisterRootCertifier
+        integrity_checker: VectorRegisterIntegrityChecker
 
     Provides:
         -   execute(candidate: Any) -> ValidationResult{VectorRegister]
@@ -42,13 +42,13 @@ class VectorRegisterValidator(RegisterValidator[VectorRegister]):
     
     def __init__(
             self,
-            root_certifier: VectorRegisterCertifier | None = VectorRegisterCertifier(),
+            integrity_checker: VectorRegisterIntegrityChecker | None = VectorRegisterIntegrityChecker(),
     ):
-        super().__init__(root_certifier=root_certifier)
+        super().__init__(integrity_checker=integrity_checker)
         
     @property
-    def integrity_checker(self) -> VectorRegisterCertifier:
-        return cast(VectorRegisterCertifier, self.integrity_checker)
+    def integrity_checker(self) -> VectorRegisterIntegrityChecker:
+        return cast(VectorRegisterIntegrityChecker, self.integrity_checker)
     
 
     @LoggingLevelRouter.monitor
@@ -58,7 +58,7 @@ class VectorRegisterValidator(RegisterValidator[VectorRegister]):
 
         Action:
             1.  Send an exception chain in the ValidationResult if the candidate fails a
-                root_certifier test..
+                integrity_checker test..
             2.  Otherwise, cast the payload into a VectorRegister and send in the success result.
                 success result.
         Args:

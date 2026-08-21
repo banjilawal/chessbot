@@ -12,7 +12,7 @@ from typing import Any, cast
 
 from assurance import ToggleValidator
 from err import VectorToggleValidatorException
-from assurance.checker import VectorToggleRootCertifier
+from assurance import VectorToggleIntegrityChecker
 from result import ValidationResult
 from toggle import VectorToggle
 from util import LoggingLevelRouter
@@ -32,7 +32,7 @@ class VectorToggleValidator(ToggleValidator[VectorToggle]):
             before use.
 
     Attributes:
-        carrier_validator: VectorToggleRegisterRootCertifier
+        carrier_validator: VectorToggleRegisterIntegrityChecker
 
     Properties:
         -   def validate(
@@ -46,13 +46,13 @@ class VectorToggleValidator(ToggleValidator[VectorToggle]):
     
     def __init__(
             self,
-            root_certifier: VectorToggleRootCertifier | None = VectorToggleRootCertifier(),
+            integrity_checker: VectorToggleIntegrityChecker | None = VectorToggleIntegrityChecker(),
     ):
-        super().__init__(root_certifier=root_certifier)
+        super().__init__(integrity_checker=integrity_checker)
         
     @property
-    def integrity_checker(self) -> VectorToggleRootCertifier:
-        return cast(VectorToggleRootCertifier, self.integrity_checker)
+    def integrity_checker(self) -> VectorToggleIntegrityChecker:
+        return cast(VectorToggleIntegrityChecker, self.integrity_checker)
     
     @LoggingLevelRouter.monitor
     def execute(self, candidate: Any) -> ValidationResult[VectorToggle]:

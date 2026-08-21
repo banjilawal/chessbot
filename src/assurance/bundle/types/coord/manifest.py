@@ -19,7 +19,7 @@ from model import Coord
 from transit import CoordCarrier
 
 
-@dataclass(frozen=True)
+@dataclass
 class CoordTypes(TypesManifest[Coord]):
     model: Type[Coord] = Coord
     carrier: Type[CoordCarrier] = CoordCarrier

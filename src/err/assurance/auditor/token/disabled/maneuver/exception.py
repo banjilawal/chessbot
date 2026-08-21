@@ -1,4 +1,4 @@
-# src/err/auditor/token/disabled/maneuver/exception.py
+# src/err/assurance/auditor/token/disabled/maneuver/exception.py
 
 """
 Module: err.assurance.auditor.token.disabled.maneuver.exception

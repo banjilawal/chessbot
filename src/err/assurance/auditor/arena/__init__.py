@@ -1,4 +1,4 @@
-# src/err/auditor/arena/__init__.py
+# src/err/assurance/auditor/arena/__init__.py
 
 """
 Module: err.assurance.auditor.arena.__init__

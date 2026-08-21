@@ -1,4 +1,4 @@
-# src/err/auditor/node/__init__.py
+# src/err/assurance/auditor/node/__init__.py
 
 """
 Module: err.assurance.auditor.node.__init__

@@ -1,4 +1,4 @@
-# src/err/auditor/player/human/exception.py
+# src/err/assurance/auditor/player/human/exception.py
 
 """
 Module: err.assurance.auditor.player.human.exception

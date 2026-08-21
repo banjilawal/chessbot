@@ -1,4 +1,4 @@
-# src/err/auditor/binder/__init__.py
+# src/err/assurance/auditor/binder/__init__.py
 
 """
 Module: err.assurance.auditor.binder.__init__

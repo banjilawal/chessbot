@@ -19,7 +19,7 @@ from toggle import Toggle
 from transit import ToggleCarrier
 
 
-@dataclass(frozen=True)
+@dataclass
 class ToggleTypes(TypesManifest[Toggle]):
     model: Type[Toggle] = Toggle
     carrier: Type[ToggleCarrier] = ToggleCarrier

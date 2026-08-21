@@ -12,7 +12,7 @@ from __future__ import annotations
 from abc import abstractmethod
 from typing import Any, Generic, TypeVar, cast
 
-from assurance.checker import RegisterCertifier
+from assurance import RegisterIntegrityChecker
 from result import ValidationResult
 from assurance.validator import Validator
 
@@ -30,7 +30,7 @@ class RegisterValidator(Validator, Generic[T]):
         1.  Ensure a Model instance is certified safe, reliable and consistent before use.
 
     Attributes:
-        root_certifier: RegisterRootCertifier[T]
+        integrity_checker: RegisterIntegrityChecker[T]
         
     Provides:
         -   execute(self, candidate: Any) -> ValidationResult
@@ -39,12 +39,12 @@ class RegisterValidator(Validator, Generic[T]):
         Validator
     """
     
-    def __init__(self, root_certifier: [RegisterCertifier[T]]):
-        super().__init__(root_certifier=root_certifier)
+    def __init__(self, integrity_checker: [RegisterIntegrityChecker[T]]):
+        super().__init__(integrity_checker=integrity_checker)
     
     @property
-    def integrity_checker(self) -> RegisterCertifier:
-        return cast(RegisterCertifier[T], super().integrity_checker)
+    def integrity_checker(self) -> RegisterIntegrityChecker:
+        return cast(RegisterIntegrityChecker[T], super().integrity_checker)
     
     @abstractmethod
     def execute(self, candidate: Any) -> ValidationResult[T]:

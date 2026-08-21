@@ -1,4 +1,4 @@
-# src/err/auditor/square/opening/__init__.py
+# src/err/assurance/auditor/square/opening/__init__.py
 
 """
 Module: err.assurance.auditor.square.opening.__init__

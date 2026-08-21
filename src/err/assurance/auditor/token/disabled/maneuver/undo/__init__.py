@@ -1,4 +1,4 @@
-# src/err/auditor/token/disabled/maneuver/undo/__init__.py
+# src/err/assurance/auditor/token/disabled/maneuver/undo/__init__.py
 
 """
 Module: err.assurance.auditor.token.disabled.maneuver.undo.__init__

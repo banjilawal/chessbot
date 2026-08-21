@@ -12,7 +12,7 @@ from __future__ import annotations
 from abc import abstractmethod
 from typing import Any
 
-from assurance import Certifier, Validator
+from assurance import Validator
 from model import Model
 from result import ValidationResult
 
@@ -36,14 +36,14 @@ class ModelValidator(Validator[Model]):
 
     Super Class:
     """
-    _bootstrapper: Certifier
+    _integrity_checker: IntegrityChecker
     
-    def __init__(self, root_certifier: Certifier):
-        self._bootstrapper = root_certifier
+    def __init__(self, integrity_checker: IntegrityChecker):
+        self._integrity_checker = integrity_checker
 
     @property
     @abstractmethod
-    def integrity_checker(self) -> Certifier:
+    def integrity_checker(self) -> IntegrityChecker:
         pass
     
     @abstractmethod

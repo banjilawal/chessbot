@@ -1,4 +1,4 @@
-# src/err/auditor/hostage/exception.py
+# src/err/assurance/auditor/hostage/exception.py
 
 """
 Module: err.assurance.auditor.hostage.exception

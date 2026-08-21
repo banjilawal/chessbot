@@ -1,4 +1,4 @@
-# src/err/auditor/binder/exception.py
+# src/err/assurance/auditor/binder/exception.py
 
 """
 Module: err.assurance.auditor.binder.exception

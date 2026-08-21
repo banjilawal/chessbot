@@ -1,4 +1,4 @@
-# src/err/auditor/game/exception.py
+# src/err/assurance/auditor/game/exception.py
 
 """
 Module: err.assurance.auditor.game.exception

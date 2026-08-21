@@ -1,7 +1,7 @@
 # src/assurance/validator/model/state/square/validator.py
 
 """
-Module: assurance.validator.model.state.square.operation
+Module: assurance.validator.model.state.square.validator
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -13,7 +13,7 @@ from typing import Any, cast
 
 from err import SquareValidatorException
 from model import Square
-from assurance.checker import SquareRootCertifier
+from assurance import SquareIntegrityChecker
 from result import ValidationResult
 from util import LoggingLevelRouter
 from assurance.validator import ModelValidator
@@ -31,7 +31,7 @@ class SquareValidator(ModelValidator[Square]):
         1.  Ensure a Square instance is certified safe, reliable and consistent before use.
 
     Attributes:
-        root_certifier: SquareRootCertifier
+        integrity_checker: SquareIntegrityChecker
 
     Provides:
         -   execute(candidate: Any) -> ValidationResult
@@ -42,13 +42,13 @@ class SquareValidator(ModelValidator[Square]):
     
     def __init__(
             self,
-            root_certifier: SquareRootCertifier | None = SquareRootCertifier(),
+            integrity_checker: SquareIntegrityChecker | None = SquareIntegrityChecker(),
     ):
-        super().__init__(root_certifier=root_certifier)
+        super().__init__(integrity_checker=integrity_checker)
         
     @property
-    def integrity_checker(self) -> SquareRootCertifier:
-        return cast(SquareRootCertifier, self.integrity_checker)
+    def integrity_checker(self) -> SquareIntegrityChecker:
+        return cast(SquareIntegrityChecker, self.integrity_checker)
     
 
     @LoggingLevelRouter.monitor
@@ -58,7 +58,7 @@ class SquareValidator(ModelValidator[Square]):
 
         Action:
             1.  Send an exception chain in the ValidationResult if the candidate fails a
-                root_certifier test..
+                integrity_checker test..
             2.  Otherwise, cast the payload into a Square and send in the success result.
                 success result.
         Args:

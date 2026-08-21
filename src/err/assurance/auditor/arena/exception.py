@@ -1,4 +1,4 @@
-# src/err/auditor/arena/exception.py
+# src/err/assurance/auditor/arena/exception.py
 
 """
 Module: err.assurance.auditor.arena.exception

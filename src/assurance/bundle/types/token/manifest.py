@@ -19,7 +19,7 @@ from model import Token
 from transit import TokenCarrier
 
 
-@dataclass(frozen=True)
+@dataclass
 class TokenTypes(TypesManifest[Token]):
     model: Type[Token] = Token
     carrier: Type[TokenCarrier] = TokenCarrier

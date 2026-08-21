@@ -17,7 +17,7 @@ from err import VectorBlueprintNullException, VectorCarrierNullException, Vector
 from model import Vector
 
 
-@dataclass(frozen=True)
+@dataclass
 class VectorNullRoster(NullRoster[Vector]):
     model: VectorNullException = VectorNullException()
     carrier: VectorCarrierNullException = VectorCarrierNullException()

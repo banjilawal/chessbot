@@ -1,7 +1,7 @@
 # src/assurance/validator/model/rank/validator.py
 
 """
-Module: assurance.validator.model.rank.operation
+Module: assurance.validator.model.rank.validator
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -13,7 +13,7 @@ from typing import Any, cast
 
 from err import RankValidatorException
 from model import Rank
-from assurance.checker import RankRootCertifier
+from assurance import RankIntegrityChecker
 from result import ValidationResult
 from util import LoggingLevelRouter
 from assurance.validator import ModelValidator
@@ -31,7 +31,7 @@ class RankValidator(ModelValidator[Rank]):
         1.  Ensure a Rank instance is certified safe, reliable and consistent before use.
 
     Attributes:
-        root_certifier: RankRootCertifier
+        integrity_checker: RankIntegrityChecker
 
     Provides:
         -   execute(candidate: Any) -> ValidationResult
@@ -42,13 +42,13 @@ class RankValidator(ModelValidator[Rank]):
     
     def __init__(
             self,
-            root_certifier: RankRootCertifier | None = RankRootCertifier(),
+            integrity_checker: RankIntegrityChecker | None = RankIntegrityChecker(),
     ):
-        super().__init__(root_certifier=root_certifier)
+        super().__init__(integrity_checker=integrity_checker)
         
     @property
-    def integrity_checker(self) -> RankRootCertifier:
-        return cast(RankRootCertifier, self.integrity_checker)
+    def integrity_checker(self) -> RankIntegrityChecker:
+        return cast(RankIntegrityChecker, self.integrity_checker)
     
 
     @LoggingLevelRouter.monitor
@@ -58,7 +58,7 @@ class RankValidator(ModelValidator[Rank]):
 
         Action:
             1.  Send an exception chain in the ValidationResult if the candidate fails a
-                root_certifier test..
+                integrity_checker test..
             2.  Otherwise, cast the payload into a Rank and send in the success result.
                 success result.
         Args:

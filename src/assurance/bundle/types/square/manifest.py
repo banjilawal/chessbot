@@ -19,7 +19,7 @@ from model import Square
 from transit import SquareCarrier
 
 
-@dataclass(frozen=True)
+@dataclass
 class SquareTypes(TypesManifest[Square]):
     model: Type[Square] = Square
     carrier: Type[SquareCarrier] = SquareCarrier

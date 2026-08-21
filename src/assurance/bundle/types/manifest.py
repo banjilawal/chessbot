@@ -14,11 +14,12 @@ from dataclasses import dataclass
 from typing import Generic, Type, TypeVar
 
 from fabrication import Blueprint
+from model import Model
 from transit import EntityCarrier
 
 T = TypeVar("T", bound="Model")
 
-@dataclass(frozen=True)
+@dataclass
 class TypesManifest(ABC, Generic[T]):
     model: Type[T]
     carrier: Type[EntityCarrier[T]]

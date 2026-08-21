@@ -1,4 +1,4 @@
-# src/err/auditor/register/exception.py
+# src/err/assurance/auditor/register/exception.py
 
 """
 Module: err.assurance.auditor.register.exception

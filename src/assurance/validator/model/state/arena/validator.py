@@ -1,7 +1,7 @@
 # src/assurance/validator/model/state/arena/validator.py
 
 """
-Module: assurance.validator.model.state.arena.operation
+Module: assurance.validator.model.state.arena.validator
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -13,7 +13,7 @@ from typing import Any, cast
 
 from err import ArenaValidatorException
 from model import Arena
-from assurance.checker import ArenaRootCertifier
+from assurance import ArenaIntegrityChecker
 from result import ValidationResult
 from util import LoggingLevelRouter
 from assurance.validator import ModelValidator
@@ -31,7 +31,7 @@ class ArenaValidator(ModelValidator[Arena]):
         1.  Ensure a Arena instance is certified safe, reliable and consistent before use.
 
     Attributes:
-        root_certifier: ArenaRootCertifier
+        integrity_checker: ArenaIntegrityChecker
 
     Provides:
         -   execute(candidate: Any) -> ValidationResult
@@ -42,13 +42,13 @@ class ArenaValidator(ModelValidator[Arena]):
     
     def __init__(
             self,
-            root_certifier: ArenaRootCertifier | None = ArenaRootCertifier(),
+            integrity_checker: ArenaIntegrityChecker | None = ArenaIntegrityChecker(),
     ):
-        super().__init__(root_certifier=root_certifier)
+        super().__init__(integrity_checker=integrity_checker)
         
     @property
-    def integrity_checker(self) -> ArenaRootCertifier:
-        return cast(ArenaRootCertifier, self.integrity_checker)
+    def integrity_checker(self) -> ArenaIntegrityChecker:
+        return cast(ArenaIntegrityChecker, self.integrity_checker)
     
 
     @LoggingLevelRouter.monitor
@@ -58,7 +58,7 @@ class ArenaValidator(ModelValidator[Arena]):
 
         Action:
             1.  Send an exception chain in the ValidationResult if the candidate fails a
-                root_certifier test..
+                integrity_checker test..
             2.  Otherwise, cast the payload into a Arena and send in the success result.
                 success result.
         Args:

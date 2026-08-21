@@ -19,7 +19,7 @@ from model import Scalar
 from transit import ScalarCarrier
 
 
-@dataclass(frozen=True)
+@dataclass
 class ScalarTypes(TypesManifest[Scalar]):
     model: Type[Scalar] = Scalar
     carrier: Type[ScalarCarrier] = ScalarCarrier

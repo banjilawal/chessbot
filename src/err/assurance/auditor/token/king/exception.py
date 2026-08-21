@@ -1,4 +1,4 @@
-# src/err/auditor/token/king/exception.py
+# src/err/assurance/auditor/token/king/exception.py
 
 """
 Module: err.assurance.auditor.token.king.exception

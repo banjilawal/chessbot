@@ -19,7 +19,7 @@ from model import Rank
 from transit import RankCarrier
 
 
-@dataclass(frozen=True)
+@dataclass
 class RankTypes(TypesManifest[Rank]):
     model: Type[Rank] = Rank
     carrier: Type[RankCarrier] = RankCarrier

@@ -19,7 +19,7 @@ from toggle import VectorToggle
 from transit import VectorToggleCarrier
 
 
-@dataclass(frozen=True)
+@dataclass
 class VectorToggleTypes(ToggleTypes):
     model: Type[VectorToggle] = VectorToggle
     carrier: Type[VectorToggleCarrier] = VectorToggleCarrier

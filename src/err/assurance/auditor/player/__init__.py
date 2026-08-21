@@ -1,4 +1,4 @@
-# src/err/auditor/player/__init__.py
+# src/err/assurance/auditor/player/__init__.py
 
 """
 Module: err.assurance.auditor.player.__init__

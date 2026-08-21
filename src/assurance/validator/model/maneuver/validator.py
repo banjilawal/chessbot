@@ -13,7 +13,7 @@ from typing import Any, cast
 
 from err import ManeuverValidatorException
 from model import Maneuver
-from assurance.checker import ManeuverRootCertifier
+from assurance import ManeuverIntegrityChecker
 from result import ValidationResult
 from toolkit import ManeuverToolkit
 from util import LoggingLevelRouter
@@ -41,8 +41,8 @@ class ManeuverValidator:
     Super Class:
         ModelValidator
     """
-    def __init__(self, root_certifier: ManeuverRootCertifier):
-        super().__init__(root_certifier=root_certifier)
+    def __init__(self, integrity_checker: ManeuverIntegrityChecker):
+        super().__init__(integrity_checker=integrity_checker)
     
 
     @LoggingLevelRouter.monitor

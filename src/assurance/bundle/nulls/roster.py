@@ -14,11 +14,12 @@ from dataclasses import dataclass
 from typing import Generic, TypeVar
 
 from err import BlueprintNullException, EntityCarrierNullException, ModelNullException
+from model import Model
 
 T = TypeVar("T", bound="Model")
 
 @dataclass
 class NullRoster(ABC, Generic[T]):
-    model: ModelNullException[T] = ModelNullException()
-    carrier: EntityCarrierNullException[T] = EntityCarrierNullException()
-    blueprint: BlueprintNullException[T] = BlueprintNullException()
+    model: ModelNullException
+    carrier: EntityCarrierNullException
+    blueprint: BlueprintNullException

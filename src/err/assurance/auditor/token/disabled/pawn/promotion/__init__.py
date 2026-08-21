@@ -1,4 +1,4 @@
-# src/err/auditor/token/disabled/pawn/promote/__init__.py
+# src/err/assurance/auditor/token/disabled/pawn/promote/__init__.py
 
 """
 Module: err.assurance.auditor.token.disabled.pawn.promote.__init__

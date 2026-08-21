@@ -1,4 +1,4 @@
-# src/err/auditor/path/circular/__init__.py
+# src/err/assurance/auditor/path/circular/__init__.py
 
 """
 Module: err.assurance.auditor.path.circular.__init__

@@ -19,7 +19,7 @@ from model import Team
 from transit import TeamCarrier
 
 
-@dataclass(frozen=True)
+@dataclass
 class TeamTypes(TypesManifest[Team]):
     model: Type[Team] = Team
     carrier: Type[TeamCarrier] = TeamCarrier

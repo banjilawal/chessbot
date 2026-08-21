@@ -69,23 +69,23 @@ class VectorIntegrityChecker(ModelIntegrityChecker[Vector]):
         Returns:
             ValidationResult[Vector|VectorBlueprint]
         Raises:
-            VectorRootCertifierException
+            VectorIntegrityCheckerException
         """
         method = f"{self.__class__.__name__}.execute"
         
         carrier_validation = self.bundle.priming_validator.execute(
             candidate=candidate,
             target_model=self.bundle.types.carrier,
-            model_null_exception=self.bundle.null_exceptions.carrier,
+            model_null_exception=self.bundle.nulls.carrier,
         )
         if carrier_validation.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                VectorRootCertifierException(
+                VectorIntegrityCheckerException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=VectorRootCertifierException.MSG,
-                    err_code=VectorRootCertifierException.ERR_CODE,
+                    msg=VectorIntegrityCheckerException.MSG,
+                    err_code=VectorIntegrityCheckerException.ERR_CODE,
                     ex=carrier_validation.exception,
                 )
             )
@@ -101,11 +101,11 @@ class VectorIntegrityChecker(ModelIntegrityChecker[Vector]):
             if validation.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
-                    VectorRootCertifierException(
+                    VectorIntegrityCheckerException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        msg=VectorRootCertifierException.MSG,
-                        err_code=VectorRootCertifierException.ERR_CODE,
+                        msg=VectorIntegrityCheckerException.MSG,
+                        err_code=VectorIntegrityCheckerException.ERR_CODE,
                         ex=validation.exception,
                     )
                 )

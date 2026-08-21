@@ -19,7 +19,7 @@ from model import Vector
 from transit import VectorCarrier
 
 
-@dataclass(frozen=True)
+@dataclass
 class VectorTypes(TypesManifest[Vector]):
     model: Type[Vector] = Vector
     carrier: Type[VectorCarrier] = VectorCarrier

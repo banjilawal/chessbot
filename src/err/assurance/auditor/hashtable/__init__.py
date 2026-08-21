@@ -1,4 +1,4 @@
-# src/err/auditor/hashtable/__init__.py
+# src/err/assurance/auditor/hashtable/__init__.py
 
 """
 Module: err.assurance.auditor.hashtable.__init__

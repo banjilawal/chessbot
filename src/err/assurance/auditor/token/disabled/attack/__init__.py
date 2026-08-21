@@ -1,4 +1,4 @@
-# src/err/auditor/token/disabled/attack/__init__.py
+# src/err/assurance/auditor/token/disabled/attack/__init__.py
 
 """
 Module: err.assurance.auditor.token.disabled.attack.__init__

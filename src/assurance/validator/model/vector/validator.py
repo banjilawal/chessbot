@@ -13,7 +13,8 @@ from typing import Any, TypeVar, cast
 
 from assurance import ModelValidator
 from err import VectorValidatorException
-from assurance.checker import VectorIntegrityChecker
+from assurance import VectorIntegrityChecker
+from model import StateModel
 from result import ValidationResult
 from util import LoggingLevelRouter
 
@@ -31,7 +32,7 @@ class StateVectorValidator(ModelValidator[T]):
         1.  Ensure a Vector instance is certified safe, reliable and consistent before use.
 
     Attributes:
-        root_certifier: VectorRootCertifier
+        integrity_checker: VectorIntegrityChecker
 
     Provides:
         -   execute(candidate: Any) -> ValidationResult
@@ -42,9 +43,9 @@ class StateVectorValidator(ModelValidator[T]):
     
     def __init__(
             self,
-            root_certifier: VectorIntegrityChecker | None = None,
+            integrity_checker: VectorIntegrityChecker | None = None,
     ):
-        super().__init__(root_certifier=root_certifier or VectorIntegrityChecker())
+        super().__init__(integrity_checker=integrity_checker or VectorIntegrityChecker())
         
     @property
     def integrity_checker(self) -> VectorIntegrityChecker:
@@ -58,7 +59,7 @@ class StateVectorValidator(ModelValidator[T]):
 
         Action:
             1.  Send an exception chain in the ValidationResult if the candidate fails a
-                root_certifier test..
+                integrity_checker test..
             2.  Otherwise, cast the payload into a Vector and send in the success result.
                 success result.
         Args:

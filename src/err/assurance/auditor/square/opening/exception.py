@@ -1,4 +1,4 @@
-# src/err/auditor/opening/exception.py
+# src/err/assurance/auditor/opening/exception.py
 
 """
 Module: err.assurance.auditor.opening.exception

@@ -1,4 +1,4 @@
-# src/err/auditor/scalar/__init__.py
+# src/err/assurance/auditor/scalar/__init__.py
 
 """
 Module: err.assurance.auditor.scalar.__init__

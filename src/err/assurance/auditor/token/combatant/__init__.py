@@ -1,4 +1,4 @@
-# src/err/auditor/token/combatant/__init__.py
+# src/err/assurance/auditor/token/combatant/__init__.py
 
 """
 Module: err.assurance.auditor.token.combatant.__init__

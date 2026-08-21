@@ -1,4 +1,4 @@
-# src/err/auditor/hashtable/exception.py
+# src/err/assurance/auditor/hashtable/exception.py
 
 """
 Module: err.assurance.auditor.hashtable.exception

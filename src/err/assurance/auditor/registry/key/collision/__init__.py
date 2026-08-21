@@ -1,4 +1,4 @@
-# src/err/auditor/registry/key/collision/__init__.py
+# src/err/assurance/auditor/registry/key/collision/__init__.py
 
 """
 Module: err.assurance.auditor.registry.key.collision.__init__

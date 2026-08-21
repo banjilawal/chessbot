@@ -1,4 +1,4 @@
-# src/err/auditor/registry/key/collision/domain/exception.py
+# src/err/assurance/auditor/registry/key/collision/domain/exception.py
 
 """
 Module: err.assurance.auditor.registry.key.collision.domain.exception

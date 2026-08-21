@@ -1,4 +1,4 @@
-# src/err/auditor/register/square/exception.py
+# src/err/assurance/auditor/register/square/exception.py
 
 """
 Module: err.assurance.auditor.register.square.exception

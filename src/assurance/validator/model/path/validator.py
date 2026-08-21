@@ -1,7 +1,7 @@
 # src/assurance/validator/model/path/validator.py
 
 """
-Module: assurance.validator.model.path.operation
+Module: assurance.validator.model.path.validator
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -13,7 +13,7 @@ from typing import Any, cast
 
 from err import PathValidatorException
 from model import Path
-from assurance.checker import PathRootCertifier
+from assurance import PathIntegrityChecker
 from result import ValidationResult
 from util import LoggingLevelRouter
 from assurance.validator import ModelValidator
@@ -31,7 +31,7 @@ class PathValidator(ModelValidator[Path]):
         1.  Ensure a Path instance is certified safe, reliable and consistent before use.
 
     Attributes:
-        root_certifier: PathRootCertifier
+        integrity_checker: PathIntegrityChecker
 
     Provides:
         -   execute(candidate: Any) -> ValidationResult
@@ -42,13 +42,13 @@ class PathValidator(ModelValidator[Path]):
     
     def __init__(
             self,
-            root_certifier: PathRootCertifier | None = PathRootCertifier(),
+            integrity_checker: PathIntegrityChecker | None = PathIntegrityChecker(),
     ):
-        super().__init__(root_certifier=root_certifier)
+        super().__init__(integrity_checker=integrity_checker)
         
     @property
-    def integrity_checker(self) -> PathRootCertifier:
-        return cast(PathRootCertifier, self.integrity_checker)
+    def integrity_checker(self) -> PathIntegrityChecker:
+        return cast(PathIntegrityChecker, self.integrity_checker)
     
 
     @LoggingLevelRouter.monitor
@@ -58,7 +58,7 @@ class PathValidator(ModelValidator[Path]):
 
         Action:
             1.  Send an exception chain in the ValidationResult if the candidate fails a
-                root_certifier test..
+                integrity_checker test..
             2.  Otherwise, cast the payload into a Path and send in the success result.
                 success result.
         Args:

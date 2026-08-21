@@ -1,7 +1,7 @@
 # src/assurance/validator/model/scalar/validator.py
 
 """
-Module: assurance.validator.model.scalar.operation
+Module: assurance.validator.model.scalar.validator
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -13,7 +13,7 @@ from typing import Any, cast
 
 from err import ScalarValidatorException
 from model import Scalar
-from assurance.checker import ScalarRootCertifier
+from assurance import ScalarIntegrityChecker
 from result import ValidationResult
 from util import LoggingLevelRouter
 from assurance.validator import ModelValidator
@@ -31,7 +31,7 @@ class ScalarValidator(ModelValidator[Scalar]):
         1.  Ensure a Scalar instance is certified safe, reliable and consistent before use.
 
     Attributes:
-        root_certifier: ScalarRootCertifier
+        integrity_checker: ScalarIntegrityChecker
 
     Provides:
         -   execute(candidate: Any) -> ValidationResult
@@ -42,13 +42,13 @@ class ScalarValidator(ModelValidator[Scalar]):
     
     def __init__(
             self,
-            root_certifier: ScalarRootCertifier | None = ScalarRootCertifier(),
+            integrity_checker: ScalarIntegrityChecker | None = ScalarIntegrityChecker(),
     ):
-        super().__init__(root_certifier=root_certifier)
+        super().__init__(integrity_checker=integrity_checker)
         
     @property
-    def integrity_checker(self) -> ScalarRootCertifier:
-        return cast(ScalarRootCertifier, self.integrity_checker)
+    def integrity_checker(self) -> ScalarIntegrityChecker:
+        return cast(ScalarIntegrityChecker, self.integrity_checker)
     
 
     @LoggingLevelRouter.monitor
@@ -58,7 +58,7 @@ class ScalarValidator(ModelValidator[Scalar]):
 
         Action:
             1.  Send an exception chain in the ValidationResult if the candidate fails a
-                root_certifier test..
+                integrity_checker test..
             2.  Otherwise, cast the payload into a Scalar and send in the success result.
                 success result.
         Args:
