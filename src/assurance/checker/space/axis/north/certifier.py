@@ -1,7 +1,7 @@
-# src/assurance/certifier/root/space/axis/north/assurance/certifier.py
+# src/assurance/checker/root/space/axis/north/assurance/checker.py
 
 """
-Module: assurance.certifier.space.axis.north.certifier
+Module: assurance.checker.space.axis.north.checker
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -13,16 +13,16 @@ from typing import Any, List, cast
 
 from fabrication.blueprint import NorthAxisBlueprint
 from carrier import NorthAxisCarrier
-from err import NorthAxisCarrierNullException, NorthAxisRootCertifierException
+from err import NorthAxisCarrierNullException, NorthAxisRootCheckerException
 from model import Vector
 from result import ValidationResult
-from assurance.checker import AxisRootCertifier
+from assurance.checker import AxisRootChecker
 from space import NorthAxis
 from toolkit.geometry.space.axis.north import NorthAxisToolkit
 from util import LoggingLevelRouter
 
 
-class NorthAxisRootCertifier(AxisRootCertifier[NorthAxisBlueprint]):
+class NorthAxisRootChecker(AxisRootChecker[NorthAxisBlueprint]):
     """
     Role
         -   Transaction Worker
@@ -34,24 +34,24 @@ class NorthAxisRootCertifier(AxisRootCertifier[NorthAxisBlueprint]):
         1.  Ensure a NorthAxisBlueprint instance is certified safe, reliable and consistent before use.
 
     Attributes:
-        toolkit: NorthAxisToolkit
+        bundle: NorthAxisToolkit
 
     Provides:
         -   execute(self, candidate: Any) -> ValidationResult:
 
     Super Class:
-        Certifier
+        Checker
     """
     
-    def __init__(self, toolkit: NorthAxisToolkit | None = NorthAxisToolkit()):
+    def __init__(self, bundle: NorthAxisToolkit | None = NorthAxisToolkit()):
         """
         Args:
-            toolkit: NorthAxisToolkit
+            bundle: NorthAxisToolkit
         """
-        super().__init__(toolkit=toolkit)
+        super().__init__(bundle=bundle)
     
     @property
-    def toolkit(self) -> NorthAxisToolkit:
+    def toolkit(self) -> NorthAxisBundle:
         return cast(NorthAxisToolkit, super().toolkit)
     
     @LoggingLevelRouter.monitor
@@ -70,7 +70,7 @@ class NorthAxisRootCertifier(AxisRootCertifier[NorthAxisBlueprint]):
         Returns:
             ValidationResult
         Raises:
-            NorthAxisRootCertifierException
+            NorthAxisRootCheckerException
         """
         method = f"{self.__class__.__name__}.execute"
         
@@ -82,11 +82,11 @@ class NorthAxisRootCertifier(AxisRootCertifier[NorthAxisBlueprint]):
         if carrier_validation.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                NorthAxisRootCertifierException(
+                NorthAxisRootCheckerException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=NorthAxisRootCertifierException.MSG,
-                    err_code=NorthAxisRootCertifierException.ERR_CODE,
+                    msg=NorthAxisRootCheckerException.MSG,
+                    err_code=NorthAxisRootCheckerException.ERR_CODE,
                     ex=carrier_validation.exception,
                 )
             )
@@ -94,11 +94,11 @@ class NorthAxisRootCertifier(AxisRootCertifier[NorthAxisBlueprint]):
         if carrier.is_not_carrying_anything:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                NorthAxisRootCertifierException(
+                NorthAxisRootCheckerException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=NorthAxisRootCertifierException.MSG,
-                    err_code=NorthAxisRootCertifierException.ERR_CODE,
+                    msg=NorthAxisRootCheckerException.MSG,
+                    err_code=NorthAxisRootCheckerException.ERR_CODE,
                     ex=NorthAxisCarrierNullException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
@@ -119,11 +119,11 @@ class NorthAxisRootCertifier(AxisRootCertifier[NorthAxisBlueprint]):
             if vector_validation.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
-                    NorthAxisRootCertifierException(
+                    NorthAxisRootCheckerException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        msg=NorthAxisRootCertifierException.MSG,
-                        err_code=NorthAxisRootCertifierException.ERR_CODE,
+                        msg=NorthAxisRootCheckerException.MSG,
+                        err_code=NorthAxisRootCheckerException.ERR_CODE,
                         ex=vector_validation.exception,
                     )
                 )

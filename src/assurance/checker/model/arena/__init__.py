@@ -1,16 +1,16 @@
-# src/assurance/certifier/arena/__init__.py
+# src/assurance/checker/model/arena/__init__.py
 
 """
-Module: assurance.certifier.arena.__init__
+Module: assurance.checker.model.arena.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
 """
 
-# =========== ASSURANCE.CERTIFIER.ARENA PACKAGE ===========#
+# =========== ASSURANCE.CHECKER.MODEL.ARENA PACKAGE ===========#
 
 # Packages
 
 
 # Modules
-from .validator import ArenaCertifier
+from .checker import ArenaChecker

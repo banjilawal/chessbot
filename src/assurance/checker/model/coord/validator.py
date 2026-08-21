@@ -1,7 +1,7 @@
-# src/assurance/certifier/coord/validator.py
+# src/assurance/checker/model/coord/checker.py
 
 """
-Module: assurance.certifier.coord.validator
+Module: assurance.checker.model.coord.checker
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -10,7 +10,7 @@ version: 0.0.2
 from __future__ import annotations
 from typing import Any, cast
 
-from err import CoordCertifierException
+from err import CoordCheckerException
 from model import CoordBlueprint
 from result import ValidationResult
 from setting import BoardProperty
@@ -34,11 +34,11 @@ class CoordIntegrityChecker(ModelIntegrityChecker[Coord]):
     Provides:
         -   def validate(
                     candidate: Any,
-                    toolkit: CoordBlueprintToolkit,
+                    bundle: CoordBlueprintToolkit,
             ) -> ValidationResult[Coord]:
 
     Super Class:
-        Certifier
+        Checker
     """
     
     @classmethod
@@ -46,7 +46,7 @@ class CoordIntegrityChecker(ModelIntegrityChecker[Coord]):
     def validate(
             cls,
             candidate: Any,
-            toolkit: CoordBlueprintToolkit | None = None,
+            bundle: CoordBlueprintToolkit | None = None,
     ) -> ValidationResult[Coord]:
         """
         Certify a candidate is a CoordBlueprint that is safe to use.
@@ -59,11 +59,11 @@ class CoordIntegrityChecker(ModelIntegrityChecker[Coord]):
             2.  Otherwise, send the success result.
         Args:
             candidate: Any,
-            toolkit: CoordBlueprintToolkit,
+            bundle: CoordBlueprintToolkit,
         Returns:
             ValidationResult[Coord]
         Raises:
-            CoordCertifierException
+            CoordCheckerException
         """
         method = f"{cls.__name__}.validate"
         
@@ -71,21 +71,21 @@ class CoordIntegrityChecker(ModelIntegrityChecker[Coord]):
         if toolkit is None:
             toolkit = CoordBlueprintToolkit()
         
-        # Handle the case that, the validator is not primed.
+        # Handle the case that, the checker is not primed.
         priming_result = toolkit.blueprint_priming_validator.execute(
             candidate=candidate,
             blueprint_model=toolkit.blueprint_model_type,
             blueprint_null_exception=toolkit.null_blueprint_exception,
-            validator_bootstrapper=toolkit.coord_toolkit.priming_validator
+            checker_bootstrapper=toolkit.coord_toolkit.priming_validator
         )
         if priming_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                CoordCertifierException(
+                CoordCheckerException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    msg=CoordCertifierException.MSG,
-                    err_code=CoordCertifierException.ERR_CODE,
+                    msg=CoordCheckerException.MSG,
+                    err_code=CoordCheckerException.ERR_CODE,
                     ex=priming_result.exception
                 )
             )
@@ -94,7 +94,7 @@ class CoordIntegrityChecker(ModelIntegrityChecker[Coord]):
         
         # Certification whichever attribute is enabled.
         for attribute in [blueprint.row, blueprint.column]:
-            validation_result = toolkit.coord_toolkit.number_validator.execute(
+            validation_result = toolkit.coord_toolkit.number_checker.execute(
                 candidate=attribute,
                 ceiling=BoardProperty.MAX_COLUMN_INDEX.value,
                 floor=0,
@@ -102,11 +102,11 @@ class CoordIntegrityChecker(ModelIntegrityChecker[Coord]):
             if validation_result.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
-                    CoordCertifierException(
+                    CoordCheckerException(
                         cls_mthd=method,
                         cls_name=cls.__name__,
-                        msg=CoordCertifierException.MSG,
-                        err_code=CoordCertifierException.ERR_CODE,
+                        msg=CoordCheckerException.MSG,
+                        err_code=CoordCheckerException.ERR_CODE,
                         ex=validation_result.exception
                     )
                 )

@@ -1,7 +1,7 @@
-# src/assurance/certifier/edge/validator.py
+# src/assurance/checker/model/edge/checker.py
 
 """
-Module: assurance.certifier.edge.validator
+Module: assurance.checker.model.edge.checker
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -19,7 +19,7 @@ class EdgeIntegrityChecker(ModelIntegrityChecker[Edge]):
     2.  If verification fails indicate the reason in an exception returned to the caller.
 
     Super Class:
-        *   Validator
+        *   Checker
 
     Provides:
 
@@ -61,16 +61,16 @@ class EdgeIntegrityChecker(ModelIntegrityChecker[Edge]):
             *   ZeroEdgeBlueprintFlagsException
             *   ArenaEdgeBlueprintFlagsException
             *   EdgeBlueprintValidationRouteException
-            *   EdgeCertifierException
+            *   EdgeCheckerException
         """
-        method = "EdgeCertifier.execute"
+        method = "EdgeChecker.execute"
         
         # Handle the nonexistence case.
         if candidate is None:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                EdgeCertifierException(
-                    msg=f"{method}: {EdgeCertifierException.MSG}",
+                EdgeCheckerException(
+                    msg=f"{method}: {EdgeCheckerException.MSG}",
                     ex=NullEdgeBlueprintException(f"{method}: {NullEdgeBlueprintException.MSG}")
                 )
             )
@@ -78,8 +78,8 @@ class EdgeIntegrityChecker(ModelIntegrityChecker[Edge]):
         if not isinstance(candidate, EdgeBlueprint):
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                EdgeCertifierException(
-                    msg=f"{method}: {EdgeCertifierException.MSG}",
+                EdgeCheckerException(
+                    msg=f"{method}: {EdgeCheckerException.MSG}",
                     ex=TypeError(
                         f"{method}: Was expecting a EdgeBlueprint, got {type(candidate).__name__} instead."
                     )
@@ -93,8 +93,8 @@ class EdgeIntegrityChecker(ModelIntegrityChecker[Edge]):
         if flag_count == 0:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                EdgeCertifierException(
-                    msg=f"{method}: {EdgeCertifierException.MSG}",
+                EdgeCheckerException(
+                    msg=f"{method}: {EdgeCheckerException.MSG}",
                     ex=ZeroEdgeBlueprintFlagsException(f"{method}: {ZeroEdgeBlueprintFlagsException.MSG}")
                 )
             )
@@ -102,8 +102,8 @@ class EdgeIntegrityChecker(ModelIntegrityChecker[Edge]):
         if flag_count > 1:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                EdgeCertifierException(
-                    msg=f"{method}: {EdgeCertifierException.MSG}",
+                EdgeCheckerException(
+                    msg=f"{method}: {EdgeCheckerException.MSG}",
                     ex=ArenaEdgeBlueprintFlagsException(
                         f"{method}: {ArenaEdgeBlueprintFlagsException.MSG}"
                     )
@@ -117,9 +117,9 @@ class EdgeIntegrityChecker(ModelIntegrityChecker[Edge]):
             if validation.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
-                    EdgeCertifierException(
-                        msg=f"{method}: {EdgeCertifierException.MSG}",
-                        ex=validator.exception
+                    EdgeCheckerException(
+                        msg=f"{method}: {EdgeCheckerException.MSG}",
+                        ex=checker.exception
                     )
                 )
             # On certification success return the id_EdgeBlueprint in the ValidationResult.
@@ -131,9 +131,9 @@ class EdgeIntegrityChecker(ModelIntegrityChecker[Edge]):
             if validation.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
-                    EdgeCertifierException(
-                        msg=f"{method}: {EdgeCertifierException.MSG}",
-                        ex=validator.exception
+                    EdgeCheckerException(
+                        msg=f"{method}: {EdgeCheckerException.MSG}",
+                        ex=checker.exception
                     )
                 )
             # On certification success return the name_EdgeBlueprint in the ValidationResult.
@@ -145,9 +145,9 @@ class EdgeIntegrityChecker(ModelIntegrityChecker[Edge]):
             if validation.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
-                    EdgeCertifierException(
-                        msg=f"{method}: {EdgeCertifierException.MSG}",
-                        ex=validator.exception
+                    EdgeCheckerException(
+                        msg=f"{method}: {EdgeCheckerException.MSG}",
+                        ex=checker.exception
                     )
                 )
             # On certification success return the coord_EdgeBlueprint in the ValidationResult.
@@ -159,9 +159,9 @@ class EdgeIntegrityChecker(ModelIntegrityChecker[Edge]):
             if validation.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
-                    EdgeCertifierException(
-                        msg=f"{method}: {EdgeCertifierException.MSG}",
-                        ex=validator.exception
+                    EdgeCheckerException(
+                        msg=f"{method}: {EdgeCheckerException.MSG}",
+                        ex=checker.exception
                     )
                 )
             # On certification success return the board_EdgeBlueprint in the ValidationResult.
@@ -173,9 +173,9 @@ class EdgeIntegrityChecker(ModelIntegrityChecker[Edge]):
             if validation.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
-                    EdgeCertifierException(
-                        msg=f"{method}: {EdgeCertifierException.MSG}",
-                        ex=validator.exception
+                    EdgeCheckerException(
+                        msg=f"{method}: {EdgeCheckerException.MSG}",
+                        ex=checker.exception
                     )
                 )
             # On certification success return the board_EdgeBlueprint in the ValidationResult.
@@ -186,8 +186,8 @@ class EdgeIntegrityChecker(ModelIntegrityChecker[Edge]):
             if not isinstance(blueprint.state, EdgeState):
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
-                    EdgeCertifierException(
-                        msg=f"{method}: {EdgeCertifierException.MSG}",
+                    EdgeCheckerException(
+                        msg=f"{method}: {EdgeCheckerException.MSG}",
                         ex=TypeError(
                             f"{method}: Was expecting a EdgeState, got {type(candidate).__name__} instead."
                         )
@@ -198,8 +198,8 @@ class EdgeIntegrityChecker(ModelIntegrityChecker[Edge]):
         
         # Return the exception chain if there is no validation route for the blueprint.
         return ValidationResult.failure(
-            EdgeCertifierException(
-                msg=f"{method}: {EdgeCertifierException.MSG}",
+            EdgeCheckerException(
+                msg=f"{method}: {EdgeCheckerException.MSG}",
                 ex=EdgeBlueprintValidationRouteException(
                     f"{method}: {EdgeBlueprintValidationRouteException.MSG}"
                 )

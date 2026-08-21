@@ -13,4 +13,4 @@ version: 0.0.2
 
 
 # Modules
-from .certifier import QuadrantReservoirRootCertifier
+from .checker import QuadrantReservoirRootChecker

@@ -1,7 +1,7 @@
-# src/assurance/certifier/register/carrier/validator.py
+# src/assurance/checker/register/carrier/validator.py
 
 """
-Module: assurance.certifier.register.carrier.validator
+Module: assurance.checker.register.carrier.validator
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -12,16 +12,16 @@ from typing import List, cast
 
 from fabrication.blueprint import VectorRegisterBlueprint
 from carrier import VectorRegisterCarrier
-from err import RegisterEmptyException, RegisterSetSizeException, VectorRegisterRootCertifierException
+from err import RegisterEmptyException, RegisterSetSizeException, VectorRegisterRootCheckerException
 from model import Vector
 from register import VectorRegister
 from result import ValidationResult
-from assurance.checker import Certifier
+from assurance.checker import Checker
 from toolkit import VectorRegisterToolkit
 from util import LoggingLevelRouter
 
 
-class VectorRegisterCertifier(Certifier[VectorRegister]):
+class VectorRegisterChecker(Checker[VectorRegister]):
     """
     Role
         -   Integrity Maintenance
@@ -32,24 +32,24 @@ class VectorRegisterCertifier(Certifier[VectorRegister]):
         1.  Ensure a VectorRegisterBlueprint instance is certified safe, reliable and consistent before use.
 
     Attributes:
-        toolkit: VectorRegisterToolkit
+        bundle: VectorRegisterToolkit
 
     Provides:
         -   execute(self, candidate: Any) -> ValidationResult:
 
     Super Class:
-        Certifier
+        Checker
     """
     
-    def __init__(self, toolkit: VectorRegisterToolkit | None = VectorRegisterToolkit()):
+    def __init__(self, bundle: VectorRegisterToolkit | None = VectorRegisterToolkit()):
         """
         Args:
-            toolkit: VectorRegisterToolkit
+            bundle: VectorRegisterToolkit
         """
-        super().__init__(toolkit=toolkit)
+        super().__init__(bundle=bundle)
     
     @property
-    def toolkit(self) -> VectorRegisterToolkit:
+    def toolkit(self) -> VectorRegisterBundle:
         return cast(VectorRegisterToolkit, super().bundle)
     
     @LoggingLevelRouter.monitor
@@ -70,7 +70,7 @@ class VectorRegisterCertifier(Certifier[VectorRegister]):
         Returns:
             ValidationResult
         Raises:
-            VectorRegisterCertifierException
+            VectorRegisterCheckerException
         """
         method = f"{self.__class__.__name__}.execute"
         
@@ -82,11 +82,11 @@ class VectorRegisterCertifier(Certifier[VectorRegister]):
         if carrier_validation.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                VectorRegisterRootCertifierException(
+                VectorRegisterRootCheckerException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=VectorRegisterRootCertifierException.MSG,
-                    err_code=VectorRegisterRootCertifierException.ERR_CODE,
+                    msg=VectorRegisterRootCheckerException.MSG,
+                    err_code=VectorRegisterRootCheckerException.ERR_CODE,
                     ex=carrier_validation.exception,
                 )
             )
@@ -99,11 +99,11 @@ class VectorRegisterCertifier(Certifier[VectorRegister]):
         if blueprint.is_empty:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                VectorRegisterRootCertifierException(
+                VectorRegisterRootCheckerException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=VectorRegisterRootCertifierException.MSG,
-                    err_code=VectorRegisterRootCertifierException.ERR_CODE,
+                    msg=VectorRegisterRootCheckerException.MSG,
+                    err_code=VectorRegisterRootCheckerException.ERR_CODE,
                     ex=RegisterEmptyException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
@@ -116,11 +116,11 @@ class VectorRegisterCertifier(Certifier[VectorRegister]):
         if blueprint.is_wrong_size:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                VectorRegisterRootCertifierException(
+                VectorRegisterRootCheckerException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=VectorRegisterRootCertifierException.MSG,
-                    err_code=VectorRegisterRootCertifierException.ERR_CODE,
+                    msg=VectorRegisterRootCheckerException.MSG,
+                    err_code=VectorRegisterRootCheckerException.ERR_CODE,
                     ex=RegisterSetSizeException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
@@ -136,11 +136,11 @@ class VectorRegisterCertifier(Certifier[VectorRegister]):
             if validation.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
-                    VectorRegisterRootCertifierException(
+                    VectorRegisterRootCheckerException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        msg=VectorRegisterRootCertifierException.MSG,
-                        err_code=VectorRegisterRootCertifierException.ERR_CODE,
+                        msg=VectorRegisterRootCheckerException.MSG,
+                        err_code=VectorRegisterRootCheckerException.ERR_CODE,
                         ex=validation.exception
                     )
                 )

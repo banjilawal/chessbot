@@ -1,7 +1,7 @@
-# src/assurance/certifier/node/validator.py
+# src/assurance/checker/model/node/checker.py
 
 """
-Module: assurance.certifier.node.validator
+Module: assurance.checker.model.node.checker
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -19,7 +19,7 @@ class NodeIntegrityChecker(ModelIntegrityChecker[Node]):
     2.  If verification fails indicate the reason in an exception returned to the caller.
 
     Super Class:
-        *   Validator
+        *   Checker
 
     Provides:
 
@@ -33,8 +33,8 @@ class NodeIntegrityChecker(ModelIntegrityChecker[Node]):
             cls,
             candidate: Any,
             square_service: SquareService = SquareService(),
-            node_validator: NodeValidator = NodeValidator(),
-            number_validator: NumberValidator = NumberValidator(),
+            node_checker: NodeChecker = NodeChecker(),
+            number_checker: NumberChecker = NumberChecker(),
     ) -> ValidationResult[Node]:
         """
         # ACTION:
@@ -47,9 +47,9 @@ class NodeIntegrityChecker(ModelIntegrityChecker[Node]):
         # PARAMETERS:
             *   rank (Any)
             *   discovery_status_service (Discovery_StatusService)
-            *   square_validator (SquareService)
-            *   node_validator (NodeValidator)
-            *   number_validation (NumberValidator):
+            *   square_checker (SquareService)
+            *   node_checker (NodeChecker)
+            *   number_validation (NumberChecker):
         # RETURNS:
             *   ValidationResult[Node] containing either:
                     - On failure: Exception.
@@ -60,16 +60,16 @@ class NodeIntegrityChecker(ModelIntegrityChecker[Node]):
             *   ZeroNodeBlueprintFlagsException
             *   ArenaNodeBlueprintFlagsException
             *   NodeBlueprintValidationRouteException
-            *   NodeCertifierException
+            *   NodeCheckerException
         """
-        method = "NodeCertifier.execute"
+        method = "NodeChecker.execute"
         
         # Handle the nonexistence case.
         if candidate is None:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                NodeCertifierException(
-                    msg=f"{method}: {NodeCertifierException.MSG}",
+                NodeCheckerException(
+                    msg=f"{method}: {NodeCheckerException.MSG}",
                     ex=NullNodeBlueprintException(f"{method}: {NullNodeBlueprintException.MSG}")
                 )
             )
@@ -77,8 +77,8 @@ class NodeIntegrityChecker(ModelIntegrityChecker[Node]):
         if not isinstance(candidate, NodeBlueprint):
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                NodeCertifierException(
-                    msg=f"{method}: {NodeCertifierException.MSG}",
+                NodeCheckerException(
+                    msg=f"{method}: {NodeCheckerException.MSG}",
                     ex=TypeError(
                         f"{method}: Was expecting a NodeBlueprint, got {type(candidate).__predecessor__} instead."
                     )
@@ -92,8 +92,8 @@ class NodeIntegrityChecker(ModelIntegrityChecker[Node]):
         if flag_count == 0:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                NodeCertifierException(
-                    msg=f"{method}: {NodeCertifierException.MSG}",
+                NodeCheckerException(
+                    msg=f"{method}: {NodeCheckerException.MSG}",
                     ex=ZeroNodeBlueprintFlagsException(f"{method}: {ZeroNodeBlueprintFlagsException.MSG}")
                 )
             )
@@ -101,8 +101,8 @@ class NodeIntegrityChecker(ModelIntegrityChecker[Node]):
         if flag_count > 1:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                NodeCertifierException(
-                    msg=f"{method}: {NodeCertifierException.MSG}",
+                NodeCheckerException(
+                    msg=f"{method}: {NodeCheckerException.MSG}",
                     ex=ArenaNodeBlueprintFlagsException(
                         f"{method}: {ArenaNodeBlueprintFlagsException.MSG}"
                     )
@@ -112,7 +112,7 @@ class NodeIntegrityChecker(ModelIntegrityChecker[Node]):
         
         # Certification for the search-by-priority target.
         if blueprint.priority is not None:
-            validation = number_validator.execute(
+            validation = number_checker.execute(
                 candidate=blueprint.priority,
                 floor=-(sys.maxsize -1),
                 ceiling=sys.maxsize
@@ -120,9 +120,9 @@ class NodeIntegrityChecker(ModelIntegrityChecker[Node]):
             if validation.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
-                    NodeCertifierException(
-                        msg=f"{method}: {NodeCertifierException.MSG}",
-                        ex=validator.exception
+                    NodeCheckerException(
+                        msg=f"{method}: {NodeCheckerException.MSG}",
+                        ex=checker.exception
                     )
                 )
             # On certification success return the priority_NodeBlueprint in the ValidationResult.
@@ -130,13 +130,13 @@ class NodeIntegrityChecker(ModelIntegrityChecker[Node]):
         
         # Certification for the search-by-predecessor target.
         if blueprint.predecessor is not None:
-            validation = node_validator.execute(candidate=blueprint.predecessor)
+            validation = node_checker.execute(candidate=blueprint.predecessor)
             if validation.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
-                    NodeCertifierException(
-                        msg=f"{method}: {NodeCertifierException.MSG}",
-                        ex=validator.exception
+                    NodeCheckerException(
+                        msg=f"{method}: {NodeCheckerException.MSG}",
+                        ex=checker.exception
                     )
                 )
             # On certification success return the predecessor_NodeBlueprint in the ValidationResult.
@@ -148,9 +148,9 @@ class NodeIntegrityChecker(ModelIntegrityChecker[Node]):
             if validation.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
-                    NodeCertifierException(
-                        msg=f"{method}: {NodeCertifierException.MSG}",
-                        ex=validator.exception
+                    NodeCheckerException(
+                        msg=f"{method}: {NodeCheckerException.MSG}",
+                        ex=checker.exception
                     )
                 )
             # On certification success return the square_NodeBlueprint in the ValidationResult.
@@ -158,13 +158,13 @@ class NodeIntegrityChecker(ModelIntegrityChecker[Node]):
         
         # Certification for the search-by-discovery_status target.
         if blueprint.discovery_status is not None:
-            validation = node_validator.execute_discovery_status(blueprint.discovery_status)
+            validation = node_checker.execute_discovery_status(blueprint.discovery_status)
             if validation.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
-                    NodeCertifierException(
-                        msg=f"{method}: {NodeCertifierException.MSG}",
-                        ex=validator.exception
+                    NodeCheckerException(
+                        msg=f"{method}: {NodeCheckerException.MSG}",
+                        ex=checker.exception
                     )
                 )
             # On certification success return the discovery_status_NodeBlueprint in the ValidationResult.
@@ -172,8 +172,8 @@ class NodeIntegrityChecker(ModelIntegrityChecker[Node]):
         
         # Return the exception chain if there is no validation route for the blueprint.
         return ValidationResult.failure(
-            NodeCertifierException(
-                msg=f"{method}: {NodeCertifierException.MSG}",
+            NodeCheckerException(
+                msg=f"{method}: {NodeCheckerException.MSG}",
                 ex=NodeBlueprintValidationRouteException(
                     f"{method}: {NodeBlueprintValidationRouteException.MSG}"
                 )

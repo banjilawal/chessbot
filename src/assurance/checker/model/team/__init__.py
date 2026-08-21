@@ -1,16 +1,16 @@
-# src/assurance/certifier/team/__init__.py
+# src/assurance/checker/model/team/__init__.py
 
 """
-Module: assurance.certifier.team.__init__
+Module: assurance.checker.model.team.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
 """
 
-# =========== ASSURANCE.CERTIFIER.TEAM PACKAGE ===========#
+# =========== ASSURANCE.CHECKER.MODEL.TEAM PACKAGE ===========#
 
 # Packages
 
 
 # Modules
-from .validator import TeamCertifier
+from .checker import TeamChecker

@@ -1,7 +1,7 @@
-# src/assurance/certifier/root/space/axis/south/assurance/certifier.py
+# src/assurance/checker/root/space/axis/south/assurance/checker.py
 
 """
-Module: assurance.certifier.space.axis.south.certifier
+Module: assurance.checker.space.axis.south.checker
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -15,13 +15,13 @@ from fabrication.blueprint import SouthAxisBlueprint
 from carrier import SouthAxisCarrier
 from model import Vector
 from result import ValidationResult
-from assurance.checker import AxisRootCertifier
+from assurance.checker import AxisRootChecker
 from space import SouthAxis
 from toolkit.geometry.space.axis import SouthAxisToolkit
 from util import LoggingLevelRouter
 
 
-class SouthAxisRootCertifier(AxisRootCertifier[SouthAxisBlueprint]):
+class SouthAxisRootChecker(AxisRootChecker[SouthAxisBlueprint]):
     """
     Role
         -   Transaction Worker
@@ -33,24 +33,24 @@ class SouthAxisRootCertifier(AxisRootCertifier[SouthAxisBlueprint]):
         1.  Ensure a SouthAxisBlueprint instance is certified safe, reliable and consistent before use.
 
     Attributes:
-        toolkit: SouthAxisToolkit
+        bundle: SouthAxisToolkit
 
     Provides:
         -   execute(self, candidate: Any) -> ValidationResult:
 
     Super Class:
-        Certifier
+        Checker
     """
     
-    def __init__(self, toolkit: SouthAxisToolkit | None = SouthAxisToolkit()):
+    def __init__(self, bundle: SouthAxisToolkit | None = SouthAxisToolkit()):
         """
         Args:
-            toolkit: SouthAxisToolkit
+            bundle: SouthAxisToolkit
         """
-        super().__init__(toolkit=toolkit)
+        super().__init__(bundle=bundle)
     
     @property
-    def toolkit(self) -> SouthAxisToolkit:
+    def toolkit(self) -> SouthAxisBundle:
         return cast(SouthAxisToolkit, super().toolkit)
     
     @LoggingLevelRouter.monitor
@@ -69,7 +69,7 @@ class SouthAxisRootCertifier(AxisRootCertifier[SouthAxisBlueprint]):
         Returns:
             ValidationResult
         Raises:
-            SouthAxisRootCertifierException
+            SouthAxisRootCheckerException
         """
         method = f"{self.__class__.__name__}.execute"
         
@@ -81,11 +81,11 @@ class SouthAxisRootCertifier(AxisRootCertifier[SouthAxisBlueprint]):
         if carrier_validation.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                SouthAxisRootCertifierException(
+                SouthAxisRootCheckerException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=SouthAxisRootCertifierException.MSG,
-                    err_code=SouthAxisRootCertifierException.ERR_CODE,
+                    msg=SouthAxisRootCheckerException.MSG,
+                    err_code=SouthAxisRootCheckerException.ERR_CODE,
                     ex=carrier_validation.exception,
                 )
             )
@@ -93,11 +93,11 @@ class SouthAxisRootCertifier(AxisRootCertifier[SouthAxisBlueprint]):
         if carrier.is_not_carrying_anything:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                SouthAxisRootCertifierException(
+                SouthAxisRootCheckerException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=SouthAxisRootCertifierException.MSG,
-                    err_code=SouthAxisRootCertifierException.ERR_CODE,
+                    msg=SouthAxisRootCheckerException.MSG,
+                    err_code=SouthAxisRootCheckerException.ERR_CODE,
                     ex=SouthAxisCarrierNullException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
@@ -118,11 +118,11 @@ class SouthAxisRootCertifier(AxisRootCertifier[SouthAxisBlueprint]):
             if vector_validation.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
-                    SouthAxisRootCertifierException(
+                    SouthAxisRootCheckerException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        msg=SouthAxisRootCertifierException.MSG,
-                        err_code=SouthAxisRootCertifierException.ERR_CODE,
+                        msg=SouthAxisRootCheckerException.MSG,
+                        err_code=SouthAxisRootCheckerException.ERR_CODE,
                         ex=vector_validation.exception,
                     )
                 )

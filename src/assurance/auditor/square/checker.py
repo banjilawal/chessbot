@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, cast
 
 from controller import WorkerRegistryController
-from err import SquareConsistencyCheckerException
+from err import SquareConsistencyAuditorException
 from model import Square
 from chooser import SquareCarrier
 from assurance.checker import SquareRootCertifier
@@ -84,11 +84,11 @@ class SquareConsistencyAuditor(ConsistencyAuditor[Square]):
         if bootstrap.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                SquareConsistencyCheckerException(
+                SquareConsistencyAuditorException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=SquareConsistencyCheckerException.MSG,
-                    err_code=SquareConsistencyCheckerException.ERR_CODE,
+                    msg=SquareConsistencyAuditorException.MSG,
+                    err_code=SquareConsistencyAuditorException.ERR_CODE,
                     ex=bootstrap.exception,
                 )
             )
@@ -98,11 +98,11 @@ class SquareConsistencyAuditor(ConsistencyAuditor[Square]):
         if root_certification.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                SquareConsistencyCheckerException(
+                SquareConsistencyAuditorException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=SquareConsistencyCheckerException.MSG,
-                    err_code=SquareConsistencyCheckerException.ERR_CODE,
+                    msg=SquareConsistencyAuditorException.MSG,
+                    err_code=SquareConsistencyAuditorException.ERR_CODE,
                     ex=root_certification.exception,
                 )
             )
@@ -143,12 +143,12 @@ class SquareConsistencyAuditor(ConsistencyAuditor[Square]):
         if board_consistency_result.is_faiure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                SquareConsistencyCheckerException(
+                SquareConsistencyAuditorException(
                     cls_mthd=method,
-                    op=SquareConsistencyCheckerException.OP,
-                    msg=SquareConsistencyCheckerException.MSG,
-                    err_code=SquareConsistencyCheckerException.ERR_CODE,
-                    mthd_rslt_type=SquareConsistencyCheckerException.MTHD_RSLT,
+                    op=SquareConsistencyAuditorException.OP,
+                    msg=SquareConsistencyAuditorException.MSG,
+                    err_code=SquareConsistencyAuditorException.ERR_CODE,
+                    mthd_rslt_type=SquareConsistencyAuditorException.MTHD_RSLT,
                     ex=board_consistency_result.exception
                 )
             )
@@ -163,12 +163,12 @@ class SquareConsistencyAuditor(ConsistencyAuditor[Square]):
         if board_square_relation.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                SquareConsistencyCheckerException(
+                SquareConsistencyAuditorException(
                     cls_mthd=method,
-                    op=SquareConsistencyCheckerException.OP,
-                    msg=SquareConsistencyCheckerException.MSG,
-                    err_code=SquareConsistencyCheckerException.ERR_CODE,
-                    mthd_rslt_type=SquareConsistencyCheckerException.MTHD_RSLT,
+                    op=SquareConsistencyAuditorException.OP,
+                    msg=SquareConsistencyAuditorException.MSG,
+                    err_code=SquareConsistencyAuditorException.ERR_CODE,
+                    mthd_rslt_type=SquareConsistencyAuditorException.MTHD_RSLT,
                     ex=board_square_relation.exception
                 )
             )
@@ -176,12 +176,12 @@ class SquareConsistencyAuditor(ConsistencyAuditor[Square]):
         if board_square_relation.does_not_exist:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                SquareConsistencyCheckerException(
+                SquareConsistencyAuditorException(
                     cls_mthd=method,
-                    op=SquareConsistencyCheckerException.OP,
-                    msg=SquareConsistencyCheckerException.MSG,
-                    err_code=SquareConsistencyCheckerException.ERR_CODE,
-                    mthd_rslt_type=SquareConsistencyCheckerException.MTHD_RSLT,
+                    op=SquareConsistencyAuditorException.OP,
+                    msg=SquareConsistencyAuditorException.MSG,
+                    err_code=SquareConsistencyAuditorException.ERR_CODE,
+                    mthd_rslt_type=SquareConsistencyAuditorException.MTHD_RSLT,
                     ex=SquareOnDifferentBoardException(
                         msg=SquareOnDifferentBoardException.MSG,
                         err_code=SquareOnDifferentBoardException.ERR_CODE,
@@ -192,12 +192,12 @@ class SquareConsistencyAuditor(ConsistencyAuditor[Square]):
         if board_square_relation.stale_link_exists:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                SquareConsistencyCheckerException(
+                SquareConsistencyAuditorException(
                     cls_mthd=method,
-                    op=SquareConsistencyCheckerException.OP,
-                    msg=SquareConsistencyCheckerException.MSG,
-                    err_code=SquareConsistencyCheckerException.ERR_CODE,
-                    mthd_rslt_type=SquareConsistencyCheckerException.MTHD_RSLT,
+                    op=SquareConsistencyAuditorException.OP,
+                    msg=SquareConsistencyAuditorException.MSG,
+                    err_code=SquareConsistencyAuditorException.ERR_CODE,
+                    mthd_rslt_type=SquareConsistencyAuditorException.MTHD_RSLT,
                     ex=BoardOrphanSquareLinkException(
                         msg=BoardOrphanSquareLinkException.MSG,
                         err_code=BoardOrphanSquareLinkException.ERR_CODE,
@@ -208,12 +208,12 @@ class SquareConsistencyAuditor(ConsistencyAuditor[Square]):
         if board_square_relation.registration_does_not_exist:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                SquareConsistencyCheckerException(
+                SquareConsistencyAuditorException(
                     cls_mthd=method,
-                    op=SquareConsistencyCheckerException.OP,
-                    msg=SquareConsistencyCheckerException.MSG,
-                    err_code=SquareConsistencyCheckerException.ERR_CODE,
-                    mthd_rslt_type=SquareConsistencyCheckerException.MTHD_RSLT,
+                    op=SquareConsistencyAuditorException.OP,
+                    msg=SquareConsistencyAuditorException.MSG,
+                    err_code=SquareConsistencyAuditorException.ERR_CODE,
+                    mthd_rslt_type=SquareConsistencyAuditorException.MTHD_RSLT,
                     ex=SquareBoardRegisteredException(
                         msg=SquareBoardRegisteredException.MSG,
                         err_code=SquareBoardRegisteredException.ERR_CODE,
@@ -248,12 +248,12 @@ class SquareConsistencyAuditor(ConsistencyAuditor[Square]):
         if candidate is None:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                SquareConsistencyCheckerException(
+                SquareConsistencyAuditorException(
                     cls_mthd=method,
-                    op=SquareConsistencyCheckerException.OP,
-                    msg=SquareConsistencyCheckerException.MSG,
-                    err_code=SquareConsistencyCheckerException.ERR_CODE,
-                    mthd_rslt_type=SquareConsistencyCheckerException.MTHD_RSLT,
+                    op=SquareConsistencyAuditorException.OP,
+                    msg=SquareConsistencyAuditorException.MSG,
+                    err_code=SquareConsistencyAuditorException.ERR_CODE,
+                    mthd_rslt_type=SquareConsistencyAuditorException.MTHD_RSLT,
                     ex=NullSquareException(
                         msg=NullSquareException.MSG,
                         err_code=NullSquareException.ERR_CODE,
@@ -264,12 +264,12 @@ class SquareConsistencyAuditor(ConsistencyAuditor[Square]):
         if not isinstance(candidate, SquareState):
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                SquareConsistencyCheckerException(
+                SquareConsistencyAuditorException(
                     cls_mthd=method,
-                    op=SquareConsistencyCheckerException.OP,
-                    msg=SquareConsistencyCheckerException.MSG,
-                    err_code=SquareConsistencyCheckerException.ERR_CODE,
-                    mthd_rslt_type=SquareConsistencyCheckerException.MTHD_RSLT,
+                    op=SquareConsistencyAuditorException.OP,
+                    msg=SquareConsistencyAuditorException.MSG,
+                    err_code=SquareConsistencyAuditorException.ERR_CODE,
+                    mthd_rslt_type=SquareConsistencyAuditorException.MTHD_RSLT,
                     ex=TypeError(
                         f"Expected type{SquareState.__name__}, got {type(candidate).__name__} instead."
                     )

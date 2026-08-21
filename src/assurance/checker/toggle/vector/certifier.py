@@ -1,7 +1,7 @@
-# src/root/toggle/vector/assurance/certifier.py
+# src/root/toggle/vector/assurance/checker.py
 
 """
-Module: root.toggle.vector.certifier
+Module: root.toggle.vector.checker
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -14,17 +14,17 @@ from fabrication.blueprint import VectorToggleBlueprint
 from carrier import VectorToggleCarrier
 from err import (
     ExcessToggleActivationException, NoActiveTogglesException, NoValidationRouteException,
-    VectorToggleRootCertifierException
+    VectorToggleRootCheckerException
 )
 from model import Coord, Vector
-from assurance.checker import ToggleCertifier
+from assurance.checker import ToggleChecker
 from result import ValidationResult
 from toggle import VectorToggle
 from toolkit import VectorToggleToolkit
 from util import LoggingLevelRouter
 
 
-class VectorToggleRootCertifier(ToggleCertifier[VectorToggle]):
+class VectorToggleRootChecker(ToggleChecker[VectorToggle]):
     """
     Role
         -   Integrity Maintenance
@@ -35,24 +35,24 @@ class VectorToggleRootCertifier(ToggleCertifier[VectorToggle]):
         1.  Ensure a VectorToggleBlueprint instance is certified safe, reliable and consistent before use.
 
     Attributes:
-        toolkit: VectorToggleToolkit
+        bundle: VectorToggleToolkit
 
     Provides:
         -   execute(self, candidate: Any) -> ValidationResult:
 
     Super Class:
-        Certifier
+        Checker
     """
     
-    def __init__(self, toolkit: VectorToggleToolkit | None = VectorToggleToolkit()):
+    def __init__(self, bundle: VectorToggleToolkit | None = VectorToggleToolkit()):
         """
         Args:
-            toolkit: VectorToggleToolkit
+            bundle: VectorToggleToolkit
         """
-        super().__init__(toolkit=toolkit)
+        super().__init__(bundle=bundle)
     
     @property
-    def toolkit(self) -> VectorToggleToolkit:
+    def toolkit(self) -> VectorToggleBundle:
         return cast(VectorToggleToolkit, super().toolkit)
     
     @LoggingLevelRouter.monitor
@@ -72,7 +72,7 @@ class VectorToggleRootCertifier(ToggleCertifier[VectorToggle]):
         Returns:
             ValidationResult
         Raises:
-            VectorToggleCertifierException
+            VectorToggleCheckerException
             VectorToggleDtoCarrierNullException
         """
         method = f"{self.__class__.__name__}.execute"
@@ -85,11 +85,11 @@ class VectorToggleRootCertifier(ToggleCertifier[VectorToggle]):
         if carrier_validation.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                VectorToggleRootCertifierException(
+                VectorToggleRootCheckerException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=VectorToggleRootCertifierException.MSG,
-                    err_code=VectorToggleRootCertifierException.ERR_CODE,
+                    msg=VectorToggleRootCheckerException.MSG,
+                    err_code=VectorToggleRootCheckerException.ERR_CODE,
                     ex=carrier_validation.exception,
                 )
             )
@@ -102,11 +102,11 @@ class VectorToggleRootCertifier(ToggleCertifier[VectorToggle]):
         if blueprint.no_active_toggles:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                VectorToggleRootCertifierException(
+                VectorToggleRootCheckerException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=VectorToggleRootCertifierException.MSG,
-                    err_code=VectorToggleRootCertifierException.ERR_CODE,
+                    msg=VectorToggleRootCheckerException.MSG,
+                    err_code=VectorToggleRootCheckerException.ERR_CODE,
                     ex=NoActiveTogglesException(
                         msg=NoActiveTogglesException.MSG,
                         err_code=NoActiveTogglesException.ERR_CODE,
@@ -117,11 +117,11 @@ class VectorToggleRootCertifier(ToggleCertifier[VectorToggle]):
         if blueprint.excess_active_toggles:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                VectorToggleRootCertifierException(
+                VectorToggleRootCheckerException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=VectorToggleRootCertifierException.MSG,
-                    err_code=VectorToggleRootCertifierException.ERR_CODE,
+                    msg=VectorToggleRootCheckerException.MSG,
+                    err_code=VectorToggleRootCheckerException.ERR_CODE,
                     ex=ExcessToggleActivationException(
                         msg=ExcessToggleActivationException.MSG,
                         err_code=ExcessToggleActivationException.ERR_CODE,
@@ -143,11 +143,11 @@ class VectorToggleRootCertifier(ToggleCertifier[VectorToggle]):
         if validation.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                VectorToggleRootCertifierException(
+                VectorToggleRootCheckerException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=VectorToggleRootCertifierException.MSG,
-                    err_code=VectorToggleRootCertifierException.ERR_CODE,
+                    msg=VectorToggleRootCheckerException.MSG,
+                    err_code=VectorToggleRootCheckerException.ERR_CODE,
                     ex=validation.exception
                 )
             )

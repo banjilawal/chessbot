@@ -1,7 +1,7 @@
-# src/assurance/certifier/root/space/axis/east/assurance/certifier.py
+# src/assurance/checker/root/space/axis/east/assurance/checker.py
 
 """
-Module: assurance.certifier.space.axis.east.certifier
+Module: assurance.checker.space.axis.east.checker
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -12,17 +12,17 @@ from __future__ import annotations
 from typing import Any, List, cast
 
 from fabrication.blueprint import EastAxisBlueprint
-from err import EastAxisCarrierNullException, EastAxisRootCertifierException
+from err import EastAxisCarrierNullException, EastAxisRootCheckerException
 from carrier import EastAxisCarrier
 from model import Vector
 from result import ValidationResult
-from assurance.checker import AxisRootCertifier
+from assurance.checker import AxisRootChecker
 from space import EastAxis
 from toolkit.geometry.space.axis import EastAxisToolkit
 from util import LoggingLevelRouter
 
 
-class EastAxisRootCertifier(AxisRootCertifier[EastAxis]):
+class EastAxisRootChecker(AxisRootChecker[EastAxis]):
     """
     Role
         -   Transaction Worker
@@ -34,24 +34,24 @@ class EastAxisRootCertifier(AxisRootCertifier[EastAxis]):
         1.  Ensure a EastAxisBlueprint instance is certified safe, reliable and consistent before use.
 
     Attributes:
-        toolkit: EastAxisToolkit
+        bundle: EastAxisToolkit
 
     Provides:
         -   execute(self, candidate: Any) -> ValidationResult:
 
     Super Class:
-        Certifier
+        Checker
     """
     
-    def __init__(self, toolkit: EastAxisToolkit | None = EastAxisToolkit()):
+    def __init__(self, bundle: EastAxisToolkit | None = EastAxisToolkit()):
         """
         Args:
-            toolkit: EastAxisToolkit
+            bundle: EastAxisToolkit
         """
-        super().__init__(toolkit=toolkit)
+        super().__init__(bundle=bundle)
     
     @property
-    def toolkit(self) -> EastAxisToolkit:
+    def toolkit(self) -> EastAxisBundle:
         return cast(EastAxisToolkit, super().toolkit)
     
     @LoggingLevelRouter.monitor
@@ -70,7 +70,7 @@ class EastAxisRootCertifier(AxisRootCertifier[EastAxis]):
         Returns:
             ValidationResult
         Raises:
-            EastAxisRootCertifierException
+            EastAxisRootCheckerException
         """
         method = f"{self.__class__.__name__}.execute"
         
@@ -82,11 +82,11 @@ class EastAxisRootCertifier(AxisRootCertifier[EastAxis]):
         if carrier_validation.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                EastAxisRootCertifierException(
+                EastAxisRootCheckerException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=EastAxisRootCertifierException.MSG,
-                    err_code=EastAxisRootCertifierException.ERR_CODE,
+                    msg=EastAxisRootCheckerException.MSG,
+                    err_code=EastAxisRootCheckerException.ERR_CODE,
                     ex=carrier_validation.exception,
                 )
             )
@@ -94,11 +94,11 @@ class EastAxisRootCertifier(AxisRootCertifier[EastAxis]):
         if carrier.is_not_carrying_anything:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                EastAxisRootCertifierException(
+                EastAxisRootCheckerException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=EastAxisRootCertifierException.MSG,
-                    err_code=EastAxisRootCertifierException.ERR_CODE,
+                    msg=EastAxisRootCheckerException.MSG,
+                    err_code=EastAxisRootCheckerException.ERR_CODE,
                     ex=EastAxisCarrierNullException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
@@ -119,11 +119,11 @@ class EastAxisRootCertifier(AxisRootCertifier[EastAxis]):
             if vector_validation.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
-                    EastAxisRootCertifierException(
+                    EastAxisRootCheckerException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        msg=EastAxisRootCertifierException.MSG,
-                        err_code=EastAxisRootCertifierException.ERR_CODE,
+                        msg=EastAxisRootCheckerException.MSG,
+                        err_code=EastAxisRootCheckerException.ERR_CODE,
                         ex=vector_validation.exception,
                     )
                 )

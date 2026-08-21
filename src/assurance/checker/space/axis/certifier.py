@@ -14,13 +14,13 @@ from typing import Any, Generic, TypeVar, cast
 
 
 from result import ValidationResult
-from assurance.checker import SpaceCertifier
+from assurance.checker import SpaceChecker
 from toolkit import AxisToolkit
 from util import LoggingLevelRouter
 
 T = TypeVar("T", bound="Axis")
 
-class AxisRootCertifier(SpaceCertifier, Generic[T]):
+class AxisRootChecker(SpaceChecker, Generic[T]):
     """
     Role:
         -   Definition
@@ -35,15 +35,15 @@ class AxisRootCertifier(SpaceCertifier, Generic[T]):
     Provides:
 
     Super Class:
-        SpaceRootCertifier
+        SpaceRootChecker
     """
 
-    def __init__(self, toolkit: AxisToolkit[T]):
+    def __init__(self, bundle: AxisToolkit[T]):
         """
         Args:
-            toolkit: AxisToolkit[T]
+            bundle: AxisToolkit[T]
         """
-        super().__init__(toolkit=toolkit)
+        super().__init__(bundle=bundle)
     
     @property
     def toolkit(self) -> AxisToolkit[T]:

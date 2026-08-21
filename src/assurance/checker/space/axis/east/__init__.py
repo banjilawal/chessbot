@@ -1,16 +1,16 @@
-# src/assurance/certifier/root/space/axis/east/__init__.py
+# src/assurance/checker/root/space/axis/east/__init__.py
 
 """
-Module: assurance.certifier.space.axis.east.__init__
+Module: assurance.checker.space.axis.east.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
 """
 
-# =========== ASSURANCE.CERTIFIER.SPACE.AXIS.EAST PACKAGE ===========#
+# =========== ASSURANCE.CHECKER.SPACE.AXIS.EAST PACKAGE ===========#
 
 # Packages
 
 
 # Modules
-from .certifier import EastAxisRootCertifier
+from .checker import EastAxisRootChecker

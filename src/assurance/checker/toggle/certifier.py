@@ -1,7 +1,7 @@
-# src/assurance/certifier/root.py
+# src/assurance/checker/root.py
 
 """
-Module: assurance.certifier.validator
+Module: assurance.checker.validator
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -12,7 +12,7 @@ from __future__ import annotations
 from abc import abstractmethod
 from typing import Any, Generic, TypeVar, cast
 
-from assurance.checker import Certifier
+from assurance.checker import Checker
 from result import ValidationResult
 from toolkit import ToggleToolkit
 from util import LoggingLevelRouter
@@ -21,7 +21,7 @@ from util import LoggingLevelRouter
 T = TypeVar("T", bound="Toggle")
 
 
-class ToggleCertifier(Certifier, Generic[T]):
+class ToggleChecker(Checker, Generic[T]):
     """
     Role
         -   Validator
@@ -33,16 +33,16 @@ class ToggleCertifier(Certifier, Generic[T]):
         2.  Pluggable validation module.
 
     Attributes:
-        toolkit: ToggleToolkit
+        bundle: ToggleToolkit
 
     Provides:
-        -   def validate(candidate: Any, toolkit: ToggleToolkit,) -> ValidationResult[Blueprint[T]]:
+        -   def validate(candidate: Any, bundle: ToggleToolkit,) -> ValidationResult[Blueprint[T]]:
 
     Super Class:
     """
 
-    def __init__(self, toolkit: ToggleToolkit[T],):
-        super().__init__(toolkit=toolkit)
+    def __init__(self, bundle: ToggleToolkit[T],):
+        super().__init__(bundle=bundle)
         
     @property
     def toolkit(self) -> ToggleToolkit[T]:

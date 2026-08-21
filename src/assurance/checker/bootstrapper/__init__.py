@@ -1,13 +1,13 @@
-# src/assurance/certifier/bootstrap/__init__.py
+# src/assurance/checker/bootstrap/__init__.py
 
 """
-Module: assurance.certifier.bootstrap.__init__
+Module: assurance.checker.bootstrap.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
 """
 
-# =========== ASSURANCE.CERTIFIER.BOOTSTRAP PACKAGE ===========#
+# =========== ASSURANCE.CHECKER.BOOTSTRAP PACKAGE ===========#
 
 # Packages
 

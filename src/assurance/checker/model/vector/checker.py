@@ -1,7 +1,7 @@
-# src/assurance/certifier/vector/validator.py
+# src/assurance/checker/model/vector/checker.py
 
 """
-Module: assurance.certifier.vector.validator
+Module: assurance.checker.model.vector.checker
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -13,7 +13,6 @@ from typing import Optional, cast
 
 from assurance import ModelIntegrityChecker, VectorValidationBundle
 from fabrication.blueprint import VectorBlueprint
-from err import VectorIntegrityCheckerException
 from model import Vector
 from result import ValidationResult
 from transit import VectorCarrier
@@ -32,21 +31,21 @@ class VectorIntegrityChecker(ModelIntegrityChecker[Vector]):
         1.  Ensure a VectorBlueprint instance is certified safe, reliable and consistent before use.
 
     Attributes:
-        toolkit: Optional[VectorValidationToolkit]
+        bundle: Optional[VectorValidationToolkit]
 
     Provides:
         -   execute(self, candidate: Any) -> ValidationResult[Vector|VectorBlueprint]:
 
     Super Class:
-        Certifier
+        Checker
     """
     
-    def __init__(self, toolkit: Optional[VectorValidationBundle] | None = None):
+    def __init__(self, bundle: Optional[VectorValidationBundle] | None = None):
         """
         Args:
-            toolkit: Optional[VectorValidationToolkit]
+            bundle: Optional[VectorValidationToolkit]
         """
-        super().__init__(toolkit=toolkit or VectorValidationBundle())
+        super().__init__(bundle=bundle or VectorValidationBundle())
         
     @property
     def bundle(self) -> VectorValidationBundle:
@@ -70,7 +69,7 @@ class VectorIntegrityChecker(ModelIntegrityChecker[Vector]):
         Returns:
             ValidationResult[Vector|VectorBlueprint]
         Raises:
-            VectorIntegrityCheckerException
+            VectorRootCertifierException
         """
         method = f"{self.__class__.__name__}.execute"
         
@@ -82,11 +81,11 @@ class VectorIntegrityChecker(ModelIntegrityChecker[Vector]):
         if carrier_validation.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                VectorIntegrityCheckerException(
+                VectorRootCertifierException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=VectorIntegrityCheckerException.MSG,
-                    err_code=VectorIntegrityCheckerException.ERR_CODE,
+                    msg=VectorRootCertifierException.MSG,
+                    err_code=VectorRootCertifierException.ERR_CODE,
                     ex=carrier_validation.exception,
                 )
             )
@@ -98,15 +97,15 @@ class VectorIntegrityChecker(ModelIntegrityChecker[Vector]):
         # Handle the case that, any id in the blueprint is flagged.
         numbers = []
         for number in [blueprint.x, blueprint.y]:
-            validation = self.bundle.number_validator.execute(number)
+            validation = self.bundle.number_checker.execute(number)
             if validation.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
-                    VectorIntegrityCheckerException(
+                    VectorRootCertifierException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        msg=VectorIntegrityCheckerException.MSG,
-                        err_code=VectorIntegrityCheckerException.ERR_CODE,
+                        msg=VectorRootCertifierException.MSG,
+                        err_code=VectorRootCertifierException.ERR_CODE,
                         ex=validation.exception,
                     )
                 )

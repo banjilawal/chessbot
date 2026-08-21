@@ -1,7 +1,7 @@
-# src/assurance/certifier/register/square/validator.py
+# src/assurance/checker/register/square/validator.py
 
 """
-Module: assurance.certifier.register.square.validator
+Module: assurance.checker.register.square.validator
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -11,15 +11,15 @@ from __future__ import annotations
 
 from typing import Any, cast
 
-from err import SquareRegisterRootCertifierException
+from err import SquareRegisterRootCheckerException
 from register import SquareRegister
 from result import ValidationResult
-from assurance.checker import Certifier
+from assurance.checker import Checker
 from toolkit import SquareRegisterToolkit
 from util import LoggingLevelRouter
 
 
-class SquareRegisterCertifier(Certifier[SquareRegister]):
+class SquareRegisterChecker(Checker[SquareRegister]):
     """
     Role
         -   Transaction Worker
@@ -32,21 +32,21 @@ class SquareRegisterCertifier(Certifier[SquareRegister]):
             before use in a binary arithmetic operation.
 
     Attributes:
-        toolkit: SquareRegisterToolkit   
+        bundle: SquareRegisterToolkit   
     Properties:
         -   execute(candidate: Any,) -> ValidationResult
 
     Super Class:
-        Certifier
+        Checker
     """
     def __init__(
             self, 
-            toolkit: SquareRegisterToolkit | None = SquareRegisterToolkit()
+            bundle: SquareRegisterToolkit | None = SquareRegisterToolkit()
     ):
-        super().__init__(toolkit=toolkit)
+        super().__init__(bundle=bundle)
         
     @property
-    def toolkit(self) -> SquareRegisterToolkit:
+    def toolkit(self) -> SquareRegisterBundle:
         return cast(SquareRegisterToolkit, super().bundle)
     
     @LoggingLevelRouter.monitor
@@ -66,7 +66,7 @@ class SquareRegisterCertifier(Certifier[SquareRegister]):
         Returns:
             ValidationResult[VectorRegister]
         Raises:
-            SquareRegisterRootCertifierException
+            SquareRegisterRootCheckerException
             SquareRegisterMismatchException
         """
         method = f"{self.__class__.__name__}.execute"
@@ -80,11 +80,11 @@ class SquareRegisterCertifier(Certifier[SquareRegister]):
         if validator_priming_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                SquareRegisterRootCertifierException(
+                SquareRegisterRootCheckerException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=SquareRegisterRootCertifierException.MSG,
-                    err_code=SquareRegisterRootCertifierException.ERR_CODE,
+                    msg=SquareRegisterRootCheckerException.MSG,
+                    err_code=SquareRegisterRootCheckerException.ERR_CODE,
                     ex=validator_priming_result.exception,
                 )
             )
@@ -97,11 +97,11 @@ class SquareRegisterCertifier(Certifier[SquareRegister]):
             if validation.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
-                    SquareRegisterRootCertifierException(
+                    SquareRegisterRootCheckerException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        msg=SquareRegisterRootCertifierException.MSG,
-                        err_code=SquareRegisterRootCertifierException.ERR_CODE,
+                        msg=SquareRegisterRootCheckerException.MSG,
+                        err_code=SquareRegisterRootCheckerException.ERR_CODE,
                         ex=validation.exception,
                     )
                 )

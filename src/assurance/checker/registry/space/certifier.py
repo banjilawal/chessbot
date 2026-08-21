@@ -13,7 +13,7 @@ from abc import ABC, abstractmethod
 from typing import Any, Generic, TypeVar, cast
 
 from fabrication.blueprint import SpaceReservoirBlueprint
-from assurance.checker import Certifier
+from assurance.checker import Checker
 from result import ValidationResult
 from toolkit import SpaceReservoirToolkit
 from util import LoggingLevelRouter
@@ -22,7 +22,7 @@ from util import LoggingLevelRouter
 T = TypeVar("T", bound="SpaceReservoir")
 
 
-class SpaceReservoirCertifier(Certifier, ABC, Generic[T]):
+class SpaceReservoirChecker(Checker, ABC, Generic[T]):
     """
     Role
         -   Validator
@@ -34,16 +34,16 @@ class SpaceReservoirCertifier(Certifier, ABC, Generic[T]):
         2.  Pluggable validation module.
 
     Attributes:
-        toolkit: SpaceToolkit
+        bundle: SpaceToolkit
 
     Provides:
-        -   def execute(candidate: Any, toolkit: SpaceToolkit,) -> ValidationResult[Blueprint[T]]:
+        -   def execute(candidate: Any, bundle: SpaceToolkit,) -> ValidationResult[Blueprint[T]]:
 
     Super Class:
     """
 
-    def __init__(self, toolkit: SpaceReservoirToolkit[T],):
-        super().__init__(toolkit=toolkit)
+    def __init__(self, bundle: SpaceReservoirToolkit[T],):
+        super().__init__(bundle=bundle)
         
     @property
     def toolkit(self) -> SpaceReservoirToolkit[T]:

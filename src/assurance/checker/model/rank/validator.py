@@ -1,7 +1,7 @@
-# src/assurance/certifier/rank/validator.py
+# src/assurance/checker/model/rank/checker.py
 
 """
-Module: assurance.certifier.rank.validator
+Module: assurance.checker.model.rank.checker
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -10,5 +10,5 @@ version: 0.0.2
 from __future__ import annotations
 
 
-class RankValidator:
+class RankChecker:
     pass

@@ -1,7 +1,7 @@
-# src/root/space/assurance/certifier.py
+# src/root/space/assurance/checker.py
 
 """
-Module: root.space.certifier
+Module: root.space.checker
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -13,7 +13,7 @@ from abc import abstractmethod
 from typing import Any, Generic, TypeVar, cast
 
 from fabrication.blueprint import SpaceBlueprint
-from assurance.checker import Certifier
+from assurance.checker import Checker
 from result import ValidationResult
 from toolkit import SpaceToolkit
 from util import LoggingLevelRouter
@@ -22,7 +22,7 @@ from util import LoggingLevelRouter
 T = TypeVar("T", bound="Space")
 
 
-class SpaceCertifier(Certifier, Generic[T]):
+class SpaceChecker(Checker, Generic[T]):
     """
     Role
         -   Validator
@@ -34,16 +34,16 @@ class SpaceCertifier(Certifier, Generic[T]):
         2.  Pluggable validation module.
 
     Attributes:
-        toolkit: SpaceToolkit
+        bundle: SpaceToolkit
 
     Provides:
-        -   def execute(candidate: Any, toolkit: SpaceToolkit,) -> ValidationResult[Blueprint[T]]:
+        -   def execute(candidate: Any, bundle: SpaceToolkit,) -> ValidationResult[Blueprint[T]]:
 
     Super Class:
     """
 
-    def __init__(self, toolkit: SpaceToolkit[T],):
-        super().__init__(toolkit=toolkit)
+    def __init__(self, bundle: SpaceToolkit[T],):
+        super().__init__(bundle=bundle)
         
     @property
     def toolkit(self) -> SpaceToolkit[T]:

@@ -1,7 +1,7 @@
-# src/assurance/certifier/toggle/assurance/certifier.py
+# src/assurance/checker/checker.py
 
 """
-Module: assurance.certifier.toggle.certifier
+Module: assurance.checker.checker
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2

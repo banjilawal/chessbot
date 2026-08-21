@@ -1,16 +1,16 @@
-# src/assurance/certifier/player/__init__.py
+# src/assurance/checker/model/player/__init__.py
 
 """
-Module: assurance.certifier.player.__init__
+Module: assurance.checker.model.player.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
 """
 
-# =========== ASSURANCE.CERTIFIER.PLAYER PACKAGE ===========#
+# =========== ASSURANCE.CHECKER.MODEL.PLAYER PACKAGE ===========#
 
 # Packages
 
 
 # Modules
-from .validator import PlayerCertifier
+from .checker import PlayerChecker

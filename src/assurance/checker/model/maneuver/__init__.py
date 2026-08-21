@@ -1,16 +1,16 @@
-# src/assurance/certifier/model/maneuver/__init__.py
+# src/assurance/checker/model/model/maneuver/__init__.py
 
 """
-Module: assurance.certifier.model.maneuver.__init__
+Module: assurance.checker.model.model.maneuver.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
 """
 
-# =========== ASSURANCE.CERTIFIER.MODEL.MANEUVER PACKAGE ===========#
+# =========== ASSURANCE.CHECKER.MODEL.MODEL.MANEUVER PACKAGE ===========#
 
 # Packages
 
 
 # Modules
-from .certifier import ManeuverIntegrityChecker
+from .checker import ManeuverIntegrityChecker

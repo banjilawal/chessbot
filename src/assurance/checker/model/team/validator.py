@@ -1,7 +1,7 @@
-# src/assurance/certifier/team/validator.py
+# src/assurance/checker/model/team/checker.py
 
 """
-Module: assurance.certifier.team.validator
+Module: assurance.checker.model.team.checker
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -25,20 +25,20 @@ class TeamIntegrityChecker(ModelIntegrityChecker[Team]):
         1.  Ensure a TeamBlueprint instance is certified safe, reliable and consistent before use.
 
     Attributes:
-        toolkit: TeamToolkit
+        bundle: TeamToolkit
 
     Provides:
         -   execute(candidate) -> ValidationResult
 
     Super Class:
-        Certifier
+        Checker
     """
     
-    def __init__(self, toolkit: TeamToolkit | None = TeamToolkit()):
-        super().__init__(toolkit=toolkit)
+    def __init__(self, bundle: TeamToolkit | None = TeamToolkit()):
+        super().__init__(bundle=bundle)
         
     @property
-    def toolkit(self) -> TeamToolkit:
+    def toolkit(self) -> TeamBundle:
         return cast(TeamToolkit, super().bundle)
     
     @LoggingLevelRouter.monitor
@@ -57,11 +57,11 @@ class TeamIntegrityChecker(ModelIntegrityChecker[Team]):
         Returns:
             ValidationResult
         Raises:
-            TeamCertifierException
+            TeamCheckerException
         """
         method = f"{self.__class__.__name__}.execute"
         
-        # Handle the case that, the validator is not primed.
+        # Handle the case that, the checker is not primed.
         priming_result = self.toolkit.priming_validator.execute(
             candidate=candidate,
             blueprint_model=self.toolkit.blueprint_model,
@@ -70,11 +70,11 @@ class TeamIntegrityChecker(ModelIntegrityChecker[Team]):
         if priming_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                TeamCertifierException(
+                TeamCheckerException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=TeamCertifierException.MSG,
-                    err_code=TeamCertifierException.ERR_CODE,
+                    msg=TeamCheckerException.MSG,
+                    err_code=TeamCheckerException.ERR_CODE,
                     ex=priming_result.exception
                 )
             )
@@ -82,43 +82,43 @@ class TeamIntegrityChecker(ModelIntegrityChecker[Team]):
         blueprint = cast(TeamBlueprint, candidate)
         
         # Handle the case that, the blueprint's id does not pass.
-        id_validation_result = self.toolkit.blueprint_id_validator.execute(
+        id_validation_result = self.toolkit.blueprint_id_checker.execute(
             candidate=blueprint.id,
         )
         if id_validation_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                TeamCertifierException(
+                TeamCheckerException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=TeamCertifierException.MSG,
-                    err_code=TeamCertifierException.ERR_CODE,
+                    msg=TeamCheckerException.MSG,
+                    err_code=TeamCheckerException.ERR_CODE,
                     ex=id_validation_result.exception
                 )
             )
         # Handle the case that, the owner gets flagged.
-        owner_validation_result = self.toolkit.player_validator.execute(blueprint.owner)
+        owner_validation_result = self.toolkit.player_checker.execute(blueprint.owner)
         if owner_validation_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                TeamCertifierException(
+                TeamCheckerException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=TeamCertifierException.MSG,
-                    err_code=TeamCertifierException.ERR_CODE,
+                    msg=TeamCheckerException.MSG,
+                    err_code=TeamCheckerException.ERR_CODE,
                     ex=owner_validation_result.exception
                 )
             )
         # Handle the case that, the board is not safe.
-        board_validation_result = self.toolkit.board_validator.excute(blueprint.board)
+        board_validation_result = self.toolkit.board_checker.excute(blueprint.board)
         if board_validation_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                TeamCertifierException(
+                TeamCheckerException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=TeamCertifierException.MSG,
-                    err_code=TeamCertifierException.ERR_CODE,
+                    msg=TeamCheckerException.MSG,
+                    err_code=TeamCheckerException.ERR_CODE,
                     ex=owner_validation_result.exception
                 )
             )
@@ -131,11 +131,11 @@ class TeamIntegrityChecker(ModelIntegrityChecker[Team]):
         if schema_validation_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                TeamCertifierException(
+                TeamCheckerException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=TeamCertifierException.MSG,
-                    err_code=TeamCertifierException.ERR_CODE,
+                    msg=TeamCheckerException.MSG,
+                    err_code=TeamCheckerException.ERR_CODE,
                     ex=owner_validation_result.exception
                 )
             )

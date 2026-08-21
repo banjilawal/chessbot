@@ -1,7 +1,7 @@
-# src/assurance/certifier/root/space/quadrant/southeast/assurance/certifier.py
+# src/assurance/checker/root/space/quadrant/southeast/assurance/checker.py
 
 """
-Module: assurance.certifier.space.quadrant.southeast.certifier
+Module: assurance.checker.space.quadrant.southeast.checker
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -15,13 +15,13 @@ from fabrication.blueprint import SoutheastQuadrantBlueprint
 from carrier import SoutheastQuadrantCarrier
 from model import Vector
 from result import ValidationResult
-from assurance.checker import QuadrantRootCertifier
+from assurance.checker import QuadrantRootChecker
 from space import SoutheastQuadrant
 from toolkit.geometry.space.quadrant import SoutheastQuadrantToolkit
 from util import LoggingLevelRouter
 
 
-class SoutheastQuadrantRootCertifier(QuadrantRootCertifier[SoutheastQuadrantBlueprint]):
+class SoutheastQuadrantRootChecker(QuadrantRootChecker[SoutheastQuadrantBlueprint]):
     """
     Role
         -   Transaction Worker
@@ -33,24 +33,24 @@ class SoutheastQuadrantRootCertifier(QuadrantRootCertifier[SoutheastQuadrantBlue
         1.  Ensure a SoutheastQuadrantBlueprint instance is certified safe, reliable and consistent before use.
 
     Attributes:
-        toolkit: SoutheastQuadrantToolkit
+        bundle: SoutheastQuadrantToolkit
 
     Provides:
         -   execute(self, candidate: Any) -> ValidationResult:
 
     Super Class:
-        Certifier
+        Checker
     """
     
-    def __init__(self, toolkit: SoutheastQuadrantToolkit | None = SoutheastQuadrantToolkit()):
+    def __init__(self, bundle: SoutheastQuadrantToolkit | None = SoutheastQuadrantToolkit()):
         """
         Args:
-            toolkit: SoutheastQuadrantToolkit
+            bundle: SoutheastQuadrantToolkit
         """
-        super().__init__(toolkit=toolkit)
+        super().__init__(bundle=bundle)
     
     @property
-    def toolkit(self) -> SoutheastQuadrantToolkit:
+    def toolkit(self) -> SoutheastQuadrantBundle:
         return cast(SoutheastQuadrantToolkit, super().toolkit)
     
     @LoggingLevelRouter.monitor
@@ -69,7 +69,7 @@ class SoutheastQuadrantRootCertifier(QuadrantRootCertifier[SoutheastQuadrantBlue
         Returns:
             ValidationResult
         Raises:
-            SoutheastQuadrantRootCertifierException
+            SoutheastQuadrantRootCheckerException
         """
         method = f"{self.__class__.__name__}.execute"
         
@@ -81,11 +81,11 @@ class SoutheastQuadrantRootCertifier(QuadrantRootCertifier[SoutheastQuadrantBlue
         if carrier_validation.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                SoutheastQuadrantRootCertifierException(
+                SoutheastQuadrantRootCheckerException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=SoutheastQuadrantRootCertifierException.MSG,
-                    err_code=SoutheastQuadrantRootCertifierException.ERR_CODE,
+                    msg=SoutheastQuadrantRootCheckerException.MSG,
+                    err_code=SoutheastQuadrantRootCheckerException.ERR_CODE,
                     ex=carrier_validation.exception,
                 )
             )
@@ -93,11 +93,11 @@ class SoutheastQuadrantRootCertifier(QuadrantRootCertifier[SoutheastQuadrantBlue
         if carrier.is_not_carrying_anything:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                SoutheastQuadrantRootCertifierException(
+                SoutheastQuadrantRootCheckerException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=SoutheastQuadrantRootCertifierException.MSG,
-                    err_code=SoutheastQuadrantRootCertifierException.ERR_CODE,
+                    msg=SoutheastQuadrantRootCheckerException.MSG,
+                    err_code=SoutheastQuadrantRootCheckerException.ERR_CODE,
                     ex=SoutheastQuadrantCarrierNullException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
@@ -118,11 +118,11 @@ class SoutheastQuadrantRootCertifier(QuadrantRootCertifier[SoutheastQuadrantBlue
             if vector_validation.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
-                    SoutheastQuadrantRootCertifierException(
+                    SoutheastQuadrantRootCheckerException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        msg=SoutheastQuadrantRootCertifierException.MSG,
-                        err_code=SoutheastQuadrantRootCertifierException.ERR_CODE,
+                        msg=SoutheastQuadrantRootCheckerException.MSG,
+                        err_code=SoutheastQuadrantRootCheckerException.ERR_CODE,
                         ex=vector_validation.exception,
                     )
                 )

@@ -1,16 +1,16 @@
-# src/assurance/certifier/root/space/quadrant/northwest/__init__.py
+# src/assurance/checker/root/space/quadrant/northwest/__init__.py
 
 """
-Module: assurance.certifier.space.quadrant.northwest.__init__
+Module: assurance.checker.space.quadrant.northwest.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
 """
 
-# =========== ASSURANCE.CERTIFIER.SPACE.QUADRANT.NORTHWEST PACKAGE ===========#
+# =========== ASSURANCE.CHECKER.SPACE.QUADRANT.NORTHWEST PACKAGE ===========#
 
 # Packages
 
 
 # Modules
-from .certifier import NorthwestQuadrantRootCertifier
+from .checker import NorthwestQuadrantRootChecker

@@ -1,7 +1,7 @@
-# src/assurance/certifier/player/validator.py
+# src/assurance/checker/model/player/checker.py
 
 """
-Module: assurance.certifier.player.validator
+Module: assurance.checker.model.player.checker
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -19,7 +19,7 @@ class PlayerIntegrityChecker(ModelIntegrityChecker[Player]):
     2.  If a rank fails a safety test, the validation sends an exception in a ValidationResult.
     
     Super Class:
-        *   Validator
+        *   Checker
 
     Provides:
 
@@ -64,7 +64,7 @@ class PlayerIntegrityChecker(ModelIntegrityChecker[Player]):
             *   ArenaPlayerBlueprintFlagsException
             *   InvalidPlayerBlueprintException
         """
-        method = "PlayerCertifier.execute"
+        method = "PlayerChecker.execute"
         try:
             # Handle the nonexistence case.
             if candidate is None:
@@ -96,7 +96,7 @@ class PlayerIntegrityChecker(ModelIntegrityChecker[Player]):
             
             # Using the tuple's attribute as an address, route to appropriate validation subflow.
             
-            # Which ever attribute value is not null should be certified safe by the appropriate validator.
+            # Which ever attribute value is not null should be certified safe by the appropriate checker.
             if blueprint.id is not None:
                 validation = identity_service.validate_id(candidate=blueprint.id)
                 if validation.is_failure:

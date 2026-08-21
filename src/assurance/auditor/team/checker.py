@@ -15,7 +15,7 @@ from model import Team
 from toolkit import TeamToolkit
 from result import ValidationResult
 from util import LoggingLevelRouter
-from err import SchemaNullException, TeamNullException, TeamConsistencyCheckerException
+from err import SchemaNullException, TeamNullException, TeamConsistencyAuditorException
 from assurance.auditor import  ConsistencyAuditor
 
 
@@ -81,11 +81,11 @@ class TeamConsistencyAuditor(ConsistencyAuditor[Team]):
         if consistency_priming_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                TeamConsistencyCheckerException(
+                TeamConsistencyAuditorException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=TeamConsistencyCheckerException.MSG,
-                    err_code=TeamConsistencyCheckerException.ERR_CODE,
+                    msg=TeamConsistencyAuditorException.MSG,
+                    err_code=TeamConsistencyAuditorException.ERR_CODE,
                     ex=consistency_priming_result.exception,
                 )
             )
@@ -97,11 +97,11 @@ class TeamConsistencyAuditor(ConsistencyAuditor[Team]):
         if id_validation_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                TeamConsistencyCheckerException(
+                TeamConsistencyAuditorException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=TeamConsistencyCheckerException.MSG,
-                    err_code=TeamConsistencyCheckerException.ERR_CODE,
+                    msg=TeamConsistencyAuditorException.MSG,
+                    err_code=TeamConsistencyAuditorException.ERR_CODE,
                     ex=id_validation_result.exception,
                 )
             )
@@ -114,11 +114,11 @@ class TeamConsistencyAuditor(ConsistencyAuditor[Team]):
         if schema_validation_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                TeamConsistencyCheckerException(
+                TeamConsistencyAuditorException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=TeamConsistencyCheckerException.MSG,
-                    err_code=TeamConsistencyCheckerException.ERR_CODE,
+                    msg=TeamConsistencyAuditorException.MSG,
+                    err_code=TeamConsistencyAuditorException.ERR_CODE,
                     ex=schema_validation_result.exception,
                 )
             )
@@ -127,11 +127,11 @@ class TeamConsistencyAuditor(ConsistencyAuditor[Team]):
         if owner_validation_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                TeamConsistencyCheckerException(
+                TeamConsistencyAuditorException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=TeamConsistencyCheckerException.MSG,
-                    err_code=TeamConsistencyCheckerException.ERR_CODE,
+                    msg=TeamConsistencyAuditorException.MSG,
+                    err_code=TeamConsistencyAuditorException.ERR_CODE,
                     ex=owner_validation_result.exception,
                 )
             )
@@ -140,11 +140,11 @@ class TeamConsistencyAuditor(ConsistencyAuditor[Team]):
         if board_consistency_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                TeamConsistencyCheckerException(
+                TeamConsistencyAuditorException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=TeamConsistencyCheckerException.MSG,
-                    err_code=TeamConsistencyCheckerException.ERR_CODE,
+                    msg=TeamConsistencyAuditorException.MSG,
+                    err_code=TeamConsistencyAuditorException.ERR_CODE,
                     ex=board_consistency_result.exception,
                 )
             )

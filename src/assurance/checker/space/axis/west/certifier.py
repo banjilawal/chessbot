@@ -1,7 +1,7 @@
-# src/assurance/certifier/root/space/axis/west/assurance/certifier.py
+# src/assurance/checker/root/space/axis/west/assurance/checker.py
 
 """
-Module: assurance.certifier.space.axis.west.certifier
+Module: assurance.checker.space.axis.west.checker
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -15,13 +15,13 @@ from fabrication.blueprint import WestAxisBlueprint
 from carrier import WestAxisCarrier
 from model import Vector
 from result import ValidationResult
-from assurance.checker import AxisRootCertifier
+from assurance.checker import AxisRootChecker
 from space import WestAxis
 from toolkit.geometry.space.axis.west import WestAxisToolkit
 from util import LoggingLevelRouter
 
 
-class WestAxisRootCertifier(AxisRootCertifier[WestAxisBlueprint]):
+class WestAxisRootChecker(AxisRootChecker[WestAxisBlueprint]):
     """
     Role
         -   Transaction Worker
@@ -33,24 +33,24 @@ class WestAxisRootCertifier(AxisRootCertifier[WestAxisBlueprint]):
         1.  Ensure a WestAxisBlueprint instance is certified safe, reliable and consistent before use.
 
     Attributes:
-        toolkit: WestAxisToolkit
+        bundle: WestAxisToolkit
 
     Provides:
         -   execute(self, candidate: Any) -> ValidationResult:
 
     Super Class:
-        Certifier
+        Checker
     """
     
-    def __init__(self, toolkit: WestAxisToolkit | None = WestAxisToolkit()):
+    def __init__(self, bundle: WestAxisToolkit | None = WestAxisToolkit()):
         """
         Args:
-            toolkit: WestAxisToolkit
+            bundle: WestAxisToolkit
         """
-        super().__init__(toolkit=toolkit)
+        super().__init__(bundle=bundle)
     
     @property
-    def toolkit(self) -> WestAxisToolkit:
+    def toolkit(self) -> WestAxisBundle:
         return cast(WestAxisToolkit, super().toolkit)
     
     @LoggingLevelRouter.monitor
@@ -69,7 +69,7 @@ class WestAxisRootCertifier(AxisRootCertifier[WestAxisBlueprint]):
         Returns:
             ValidationResult
         Raises:
-            WestAxisRootCertifierException
+            WestAxisRootCheckerException
         """
         method = f"{self.__class__.__name__}.execute"
         
@@ -81,11 +81,11 @@ class WestAxisRootCertifier(AxisRootCertifier[WestAxisBlueprint]):
         if carrier_validation.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                WestAxisRootCertifierException(
+                WestAxisRootCheckerException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=WestAxisRootCertifierException.MSG,
-                    err_code=WestAxisRootCertifierException.ERR_CODE,
+                    msg=WestAxisRootCheckerException.MSG,
+                    err_code=WestAxisRootCheckerException.ERR_CODE,
                     ex=carrier_validation.exception,
                 )
             )
@@ -93,11 +93,11 @@ class WestAxisRootCertifier(AxisRootCertifier[WestAxisBlueprint]):
         if carrier.is_not_carrying_anything:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                WestAxisRootCertifierException(
+                WestAxisRootCheckerException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=WestAxisRootCertifierException.MSG,
-                    err_code=WestAxisRootCertifierException.ERR_CODE,
+                    msg=WestAxisRootCheckerException.MSG,
+                    err_code=WestAxisRootCheckerException.ERR_CODE,
                     ex=WestAxisCarrierNullException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
@@ -118,11 +118,11 @@ class WestAxisRootCertifier(AxisRootCertifier[WestAxisBlueprint]):
             if vector_validation.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
-                    WestAxisRootCertifierException(
+                    WestAxisRootCheckerException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        msg=WestAxisRootCertifierException.MSG,
-                        err_code=WestAxisRootCertifierException.ERR_CODE,
+                        msg=WestAxisRootCheckerException.MSG,
+                        err_code=WestAxisRootCheckerException.ERR_CODE,
                         ex=vector_validation.exception,
                     )
                 )

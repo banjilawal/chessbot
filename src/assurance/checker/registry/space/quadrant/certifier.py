@@ -1,7 +1,7 @@
-# src/root/space/reservoir/quadrant/assurance/certifier.py
+# src/root/space/reservoir/quadrant/assurance/checker.py
 
 """
-Module: root.space.reservoir.quadrant.certifier
+Module: root.space.reservoir.quadrant.checker
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -14,14 +14,14 @@ from typing import Optional, cast
 from fabrication.blueprint import QuadrantReservoirBlueprint
 from carrier import QuadrantReservoirCarrier
 from model import Vector
-from assurance.checker import SpaceReservoirCertifier
+from assurance.checker import SpaceReservoirChecker
 from result import ValidationResult
 from space import QuadrantReservoir
 from toolkit import QuadrantReservoirToolkit
 from util import LoggingLevelRouter
 
 
-class QuadrantReservoirRootCertifier(SpaceReservoirCertifier[QuadrantReservoir]):
+class QuadrantReservoirRootChecker(SpaceReservoirChecker[QuadrantReservoir]):
     """
     Role
         -   Validator
@@ -33,19 +33,19 @@ class QuadrantReservoirRootCertifier(SpaceReservoirCertifier[QuadrantReservoir])
         2.  Pluggable validation module.
 
     Attributes:
-        toolkit: SpaceToolkit
+        bundle: SpaceToolkit
 
     Provides:
-        -   def execute(candidate: Any, toolkit: SpaceToolkit,) -> ValidationResult[Blueprint[T]]:
+        -   def execute(candidate: Any, bundle: SpaceToolkit,) -> ValidationResult[Blueprint[T]]:
 
     Super Class:
     """
 
-    def __init__(self, toolkit: Optional[QuadrantReservoirToolkit] | None = None):
-        super().__init__(toolkit=toolkit or QuadrantReservoirToolkit())
+    def __init__(self, bundle: Optional[QuadrantReservoirToolkit] | None = None):
+        super().__init__(bundle=bundle or QuadrantReservoirToolkit())
         
     @property
-    def toolkit(self) -> QuadrantReservoirToolkit:
+    def toolkit(self) -> QuadrantReservoirBundle:
         return cast(QuadrantReservoirToolkit, super().toolkit)
     
     @LoggingLevelRouter.monitor
@@ -66,7 +66,7 @@ class QuadrantReservoirRootCertifier(SpaceReservoirCertifier[QuadrantReservoir])
         Returns:
             ValidationResult
         Raises:
-            QuadrantReservoirCertifierException
+            QuadrantReservoirCheckerException
         """
         method = f"{self.__class__.__name__}.execute"
         
@@ -78,11 +78,11 @@ class QuadrantReservoirRootCertifier(SpaceReservoirCertifier[QuadrantReservoir])
         if carrier_validation.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                QuadrantReservoirRootCertifierException(
+                QuadrantReservoirRootCheckerException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=QuadrantReservoirRootCertifierException.MSG,
-                    err_code=QuadrantReservoirRootCertifierException.ERR_CODE,
+                    msg=QuadrantReservoirRootCheckerException.MSG,
+                    err_code=QuadrantReservoirRootCheckerException.ERR_CODE,
                     ex=carrier_validation.exception,
                 )
             )
@@ -96,11 +96,11 @@ class QuadrantReservoirRootCertifier(SpaceReservoirCertifier[QuadrantReservoir])
         if validation.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                QuadrantReservoirRootCertifierException(
+                QuadrantReservoirRootCheckerException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=QuadrantReservoirRootCertifierException.MSG,
-                    err_code=QuadrantReservoirRootCertifierException.ERR_CODE,
+                    msg=QuadrantReservoirRootCheckerException.MSG,
+                    err_code=QuadrantReservoirRootCheckerException.ERR_CODE,
                     ex=validation.exception
                 )
             )

@@ -1,7 +1,7 @@
-# src/assurance/certifier/arena/validator.py
+# src/assurance/checker/model/arena/checker.py
 
 """
-Module: assurance.certifier.arena.validator
+Module: assurance.checker.model.arena.checker
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2

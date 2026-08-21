@@ -1,7 +1,7 @@
-# src/assurance/certifier/register/identity/validator.py
+# src/assurance/checker/register/identity/validator.py
 
 """
-Module: assurance.certifier.register.identity.validator
+Module: assurance.checker.register.identity.validator
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -12,14 +12,14 @@ from typing import Any, cast
 
 
 from register import IdentityRegister
-from assurance.checker import Certifier
+from assurance.checker import Checker
 from result import ValidationResult
 from toolkit import IdentityRegisterToolkit
 from util import LoggingLevelRouter
 
 
 
-class IdentityRegisterCertifier(Certifier[IdentityRegister]):
+class IdentityRegisterChecker(Checker[IdentityRegister]):
     """
     Role
         -   Transaction Worker
@@ -32,21 +32,21 @@ class IdentityRegisterCertifier(Certifier[IdentityRegister]):
             before use in a binary arithmetic operation.
 
     Attributes:
-        toolkit: IdentityRegisterToolkit   
+        bundle: IdentityRegisterToolkit   
     Properties:
         -   execute(candidate: Any,) -> ValidationResult
 
     Super Class:
-        Certifier
+        Checker
     """
     def __init__(
             self, 
-            toolkit: IdentityRegisterToolkit | None = IdentityRegisterToolkit()
+            bundle: IdentityRegisterToolkit | None = IdentityRegisterToolkit()
     ):
-        super().__init__(toolkit=toolkit)
+        super().__init__(bundle=bundle)
         
     @property
-    def toolkit(self) -> IdentityRegisterToolkit:
+    def toolkit(self) -> IdentityRegisterBundle:
         return cast(IdentityRegisterToolkit, super().bundle)
     
     @LoggingLevelRouter.monitor
@@ -66,7 +66,7 @@ class IdentityRegisterCertifier(Certifier[IdentityRegister]):
         Returns:
             ValidationResult[VectorRegister]
         Raises:
-            IdentityRegisterCertifierException
+            IdentityRegisterCheckerException
             IdentityRegisterMismatchException
         """
         method = f"{self.__class__.__name__}.execute"
@@ -80,11 +80,11 @@ class IdentityRegisterCertifier(Certifier[IdentityRegister]):
         if validator_priming_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                IdentityRegisterCertifierException(
+                IdentityRegisterCheckerException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=IdentityRegisterCertifierException.MSG,
-                    err_code=IdentityRegisterCertifierException.ERR_CODE,
+                    msg=IdentityRegisterCheckerException.MSG,
+                    err_code=IdentityRegisterCheckerException.ERR_CODE,
                     ex=validator_priming_result.exception,
                 )
             )
@@ -96,11 +96,11 @@ class IdentityRegisterCertifier(Certifier[IdentityRegister]):
         if validator_priming_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                IdentityRegisterCertifierException(
+                IdentityRegisterCheckerException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=IdentityRegisterCertifierException.MSG,
-                    err_code=IdentityRegisterCertifierException.ERR_CODE,
+                    msg=IdentityRegisterCheckerException.MSG,
+                    err_code=IdentityRegisterCheckerException.ERR_CODE,
                     ex=id_validation_result.exception,
                 )
             )
@@ -109,11 +109,11 @@ class IdentityRegisterCertifier(Certifier[IdentityRegister]):
         if validator_priming_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                IdentityRegisterCertifierException(
+                IdentityRegisterCheckerException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=IdentityRegisterCertifierException.MSG,
-                    err_code=IdentityRegisterCertifierException.ERR_CODE,
+                    msg=IdentityRegisterCheckerException.MSG,
+                    err_code=IdentityRegisterCheckerException.ERR_CODE,
                     ex=name_validation_result.exception,
                 )
             )

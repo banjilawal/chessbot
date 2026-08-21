@@ -1,16 +1,16 @@
-# src/assurance/certifier/node/__init__.py
+# src/assurance/checker/model/node/__init__.py
 
 """
-Module: assurance.certifier.node.__init__
+Module: assurance.checker.model.node.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
 """
 
-# =========== ASSURANCE.CERTIFIER.NODE PACKAGE ===========#
+# =========== ASSURANCE.CHECKER.MODEL.NODE PACKAGE ===========#
 
 # Packages
 
 
 # Modules
-from .validator import NodeCertifier
+from .checker import NodeChecker

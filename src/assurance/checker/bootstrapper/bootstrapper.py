@@ -1,7 +1,7 @@
-# src/assurance/certifier/bootstrap/carrier_validator.py
+# src/assurance/checker/bootstrap/carrier_validator.py
 
 """
-Module: assurance.certifier.bootstrap.carrier_validator
+Module: assurance.checker.bootstrap.carrier_validator
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -28,7 +28,7 @@ class EntityCarrierValidator:
         -   Type checker
 
     Responsibilities:
-        1.  Make sure RootCertifier gets a valid EntityCarrier before more detailed checks are run.
+        1.  Make sure RootChecker gets a valid EntityCarrier before more detailed checks are run.
         2.  Run basic validation checks independently of validator.PrimingValidator to avoid circular
             validation calls.
 

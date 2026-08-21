@@ -1,16 +1,16 @@
-# src/assurance/certifier/edge/__init__.py
+# src/assurance/checker/model/edge/__init__.py
 
 """
-Module: assurance.certifier.edge.__init__
+Module: assurance.checker.model.edge.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
 """
 
-# =========== ASSURANCE.CERTIFIER.EDGE PACKAGE ===========#
+# =========== ASSURANCE.CHECKER.MODEL.EDGE PACKAGE ===========#
 
 # Packages
 
 
 # Modules
-from .validator import EdgeCertifier
+from .checker import EdgeChecker

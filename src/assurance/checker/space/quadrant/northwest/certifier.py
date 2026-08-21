@@ -1,7 +1,7 @@
-# src/assurance/certifier/root/space/quadrant/northwest/assurance/certifier.py
+# src/assurance/checker/root/space/quadrant/northwest/assurance/checker.py
 
 """
-Module: assurance.certifier.space.quadrant.northwest.certifier
+Module: assurance.checker.space.quadrant.northwest.checker
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -13,16 +13,16 @@ from typing import Any, List, cast
 
 from fabrication.blueprint import NorthwestQuadrantBlueprint
 from carrier import NorthwestQuadrantCarrier
-from err import NorthwestQuadrantCarrierNullException, NorthwestQuadrantRootCertifierException
+from err import NorthwestQuadrantCarrierNullException, NorthwestQuadrantRootCheckerException
 from model import Vector
 from result import ValidationResult
-from assurance.checker import QuadrantRootCertifier
+from assurance.checker import QuadrantRootChecker
 from space import NorthwestQuadrant
 from toolkit.geometry.space.quadrant import NorthwestQuadrantToolkit
 from util import LoggingLevelRouter
 
 
-class NorthwestQuadrantRootCertifier(QuadrantRootCertifier[NorthwestQuadrantBlueprint]):
+class NorthwestQuadrantRootChecker(QuadrantRootChecker[NorthwestQuadrantBlueprint]):
     """
     Role
         -   Transaction Worker
@@ -34,24 +34,24 @@ class NorthwestQuadrantRootCertifier(QuadrantRootCertifier[NorthwestQuadrantBlue
         1.  Ensure a NorthwestQuadrantBlueprint instance is certified safe, reliable and consistent before use.
 
     Attributes:
-        toolkit: NorthwestQuadrantToolkit
+        bundle: NorthwestQuadrantToolkit
 
     Provides:
         -   execute(self, candidate: Any) -> ValidationResult:
 
     Super Class:
-        Certifier
+        Checker
     """
     
-    def __init__(self, toolkit: NorthwestQuadrantToolkit | None = NorthwestQuadrantToolkit()):
+    def __init__(self, bundle: NorthwestQuadrantToolkit | None = NorthwestQuadrantToolkit()):
         """
         Args:
-            toolkit: NorthwestQuadrantToolkit
+            bundle: NorthwestQuadrantToolkit
         """
-        super().__init__(toolkit=toolkit)
+        super().__init__(bundle=bundle)
     
     @property
-    def toolkit(self) -> NorthwestQuadrantToolkit:
+    def toolkit(self) -> NorthwestQuadrantBundle:
         return cast(NorthwestQuadrantToolkit, super().toolkit)
     
     @LoggingLevelRouter.monitor
@@ -70,7 +70,7 @@ class NorthwestQuadrantRootCertifier(QuadrantRootCertifier[NorthwestQuadrantBlue
         Returns:
             ValidationResult
         Raises:
-            NorthwestQuadrantRootCertifierException
+            NorthwestQuadrantRootCheckerException
         """
         method = f"{self.__class__.__name__}.execute"
         
@@ -82,11 +82,11 @@ class NorthwestQuadrantRootCertifier(QuadrantRootCertifier[NorthwestQuadrantBlue
         if carrier_validation.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                NorthwestQuadrantRootCertifierException(
+                NorthwestQuadrantRootCheckerException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=NorthwestQuadrantRootCertifierException.MSG,
-                    err_code=NorthwestQuadrantRootCertifierException.ERR_CODE,
+                    msg=NorthwestQuadrantRootCheckerException.MSG,
+                    err_code=NorthwestQuadrantRootCheckerException.ERR_CODE,
                     ex=carrier_validation.exception,
                 )
             )
@@ -94,11 +94,11 @@ class NorthwestQuadrantRootCertifier(QuadrantRootCertifier[NorthwestQuadrantBlue
         if carrier.is_not_carrying_anything:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                NorthwestQuadrantRootCertifierException(
+                NorthwestQuadrantRootCheckerException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=NorthwestQuadrantRootCertifierException.MSG,
-                    err_code=NorthwestQuadrantRootCertifierException.ERR_CODE,
+                    msg=NorthwestQuadrantRootCheckerException.MSG,
+                    err_code=NorthwestQuadrantRootCheckerException.ERR_CODE,
                     ex=NorthwestQuadrantCarrierNullException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
@@ -119,11 +119,11 @@ class NorthwestQuadrantRootCertifier(QuadrantRootCertifier[NorthwestQuadrantBlue
             if vector_validation.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
-                    NorthwestQuadrantRootCertifierException(
+                    NorthwestQuadrantRootCheckerException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        msg=NorthwestQuadrantRootCertifierException.MSG,
-                        err_code=NorthwestQuadrantRootCertifierException.ERR_CODE,
+                        msg=NorthwestQuadrantRootCheckerException.MSG,
+                        err_code=NorthwestQuadrantRootCheckerException.ERR_CODE,
                         ex=vector_validation.exception,
                     )
                 )

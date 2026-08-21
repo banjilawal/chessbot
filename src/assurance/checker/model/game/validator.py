@@ -1,7 +1,7 @@
-# src/assurance/certifier/game/validator.py
+# src/assurance/checker/model/game/checker.py
 
 """
-Module: assurance.certifier.game.validator
+Module: assurance.checker.model.game.checker
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -19,10 +19,10 @@ class GameIntegrityChecker(ModelIntegrityChecker[Game]):
     2.  If verification fails indicate the reason in an exception, returned to the caller.
 
     Super Class:
-        *   Validator
+        *   Checker
 
     # PROVIDES:
-        * GameCertifier
+        * GameChecker
 
     
     # INHERITED ATTRIBUTES:
@@ -40,7 +40,7 @@ class GameIntegrityChecker(ModelIntegrityChecker[Game]):
         """
         # ACTION:
             1.  Confirm that only one in the (id, owner) tuple is not null.
-            2.  Certify the not-null attribute is safe using the appropriate entity_service and validator.
+            2.  Certify the not-null attribute is safe using the appropriate entity_service and checker.
             3.  If any check fais return a BuildResult containing the exception raised by the failure.
             4.  On success send the verified GameBlueprint in a ValidationResult.
 
@@ -65,7 +65,7 @@ class GameIntegrityChecker(ModelIntegrityChecker[Game]):
             *   ArenaGameBlueprintFlagsException
             *   InvalidGameBlueprintException
         """
-        method = "GameCertifier.execute"
+        method = "GameChecker.execute"
         try:
             # Handle the case that, the rank does not exist.
             if candidate is None:

@@ -14,4 +14,4 @@ from .axis import *
 from .quadrant import *
 
 # Modules
-from .certifier import SpaceReservoirCertifier
+from .checker import SpaceReservoirChecker

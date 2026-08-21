@@ -16,4 +16,4 @@ from .south import *
 from .west import *
 
 # Modules
-from .certifier import AxisRootCertifier
+from .checker import AxisRootChecker

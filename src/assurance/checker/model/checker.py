@@ -1,7 +1,7 @@
-# src/assurance/checker/model/checker.py
+# src/assurance/checker/model/model/checker.py
 
 """
-Module: assurance.checker.model.checker
+Module: assurance.checker.model.model.checker
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2

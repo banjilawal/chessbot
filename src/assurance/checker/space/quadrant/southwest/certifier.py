@@ -1,7 +1,7 @@
-# src/assurance/certifier/root/space/quadrant/southwest/assurance/certifier.py
+# src/assurance/checker/root/space/quadrant/southwest/assurance/checker.py
 
 """
-Module: assurance.certifier.space.quadrant.southwest.certifier
+Module: assurance.checker.space.quadrant.southwest.checker
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -15,14 +15,14 @@ from fabrication.blueprint import SouthwestQuadrantBlueprint
 from carrier import SouthwestQuadrantCarrier
 from model import Vector
 from result import ValidationResult
-from assurance.checker import QuadrantRootCertifier
+from assurance.checker import QuadrantRootChecker
 from space import SouthwestQuadrant
 from toolkit import SouthwestQuadrantToolkit
 
 from util import LoggingLevelRouter
 
 
-class SouthwestQuadrantRootCertifier(QuadrantRootCertifier[SouthwestQuadrantBlueprint]):
+class SouthwestQuadrantRootChecker(QuadrantRootChecker[SouthwestQuadrantBlueprint]):
     """
     Role
         -   Transaction Worker
@@ -35,24 +35,24 @@ class SouthwestQuadrantRootCertifier(QuadrantRootCertifier[SouthwestQuadrantBlue
             before use.
 
     Attributes:
-        toolkit: SouthwestQuadrantToolkit
+        bundle: SouthwestQuadrantToolkit
 
     Provides:
         -   def execute(self, candidate: Any) -> ValidationResult[SouthwestQuadrant|SouthwestQuadrantBlueprint]:
 
     Super Class:
-        RootCertifier
+        RootChecker
     """
     
-    def __init__(self, toolkit: Optional[SouthwestQuadrantToolkit]| None = None):
+    def __init__(self, bundle: Optional[SouthwestQuadrantToolkit]| None = None):
         """
         Args:
-            toolkit: SouthwestQuadrantToolkit
+            bundle: SouthwestQuadrantToolkit
         """
-        super().__init__(toolkit=toolkit or SouthwestQuadrantToolkit())
+        super().__init__(bundle=bundle or SouthwestQuadrantToolkit())
     
     @property
-    def toolkit(self) -> SouthwestQuadrantToolkit:
+    def toolkit(self) -> SouthwestQuadrantBundle:
         return cast(SouthwestQuadrantToolkit, super().toolkit)
     
     @LoggingLevelRouter.monitor
@@ -71,7 +71,7 @@ class SouthwestQuadrantRootCertifier(QuadrantRootCertifier[SouthwestQuadrantBlue
         Returns:
             ValidationResult
         Raises:
-            SouthwestQuadrantRootCertifierException
+            SouthwestQuadrantRootCheckerException
         """
         method = f"{self.__class__.__name__}.execute"
         
@@ -83,11 +83,11 @@ class SouthwestQuadrantRootCertifier(QuadrantRootCertifier[SouthwestQuadrantBlue
         if carrier_validation.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                SouthwestQuadrantRootCertifierException(
+                SouthwestQuadrantRootCheckerException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=SouthwestQuadrantRootCertifierException.MSG,
-                    err_code=SouthwestQuadrantRootCertifierException.ERR_CODE,
+                    msg=SouthwestQuadrantRootCheckerException.MSG,
+                    err_code=SouthwestQuadrantRootCheckerException.ERR_CODE,
                     ex=carrier_validation.exception,
                 )
             )
@@ -95,11 +95,11 @@ class SouthwestQuadrantRootCertifier(QuadrantRootCertifier[SouthwestQuadrantBlue
         if carrier.is_not_carrying_anything:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                SouthwestQuadrantRootCertifierException(
+                SouthwestQuadrantRootCheckerException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=SouthwestQuadrantRootCertifierException.MSG,
-                    err_code=SouthwestQuadrantRootCertifierException.ERR_CODE,
+                    msg=SouthwestQuadrantRootCheckerException.MSG,
+                    err_code=SouthwestQuadrantRootCheckerException.ERR_CODE,
                     ex=SouthwestQuadrantCarrierNullException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
@@ -120,11 +120,11 @@ class SouthwestQuadrantRootCertifier(QuadrantRootCertifier[SouthwestQuadrantBlue
             if vector_validation.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
-                    SouthwestQuadrantRootCertifierException(
+                    SouthwestQuadrantRootCheckerException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        msg=SouthwestQuadrantRootCertifierException.MSG,
-                        err_code=SouthwestQuadrantRootCertifierException.ERR_CODE,
+                        msg=SouthwestQuadrantRootCheckerException.MSG,
+                        err_code=SouthwestQuadrantRootCheckerException.ERR_CODE,
                         ex=vector_validation.exception,
                     )
                 )

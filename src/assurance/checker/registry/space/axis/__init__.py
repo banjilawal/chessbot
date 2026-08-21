@@ -13,4 +13,4 @@ version: 0.0.2
 
 
 # Modules
-from .certifier import AxisReservoirRootCertifier
+from .checker import AxisReservoirRootChecker

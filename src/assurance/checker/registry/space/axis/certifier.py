@@ -1,7 +1,7 @@
-# src/root/space/reservoir/axis/assurance/certifier.py
+# src/root/space/reservoir/axis/assurance/checker.py
 
 """
-Module: root.space.reservoir.axis.certifier
+Module: root.space.reservoir.axis.checker
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -14,14 +14,14 @@ from typing import Optional, cast
 from fabrication.blueprint import AxisReservoirBlueprint
 from carrier import AxisReservoirCarrier
 from model import Vector
-from assurance.checker import SpaceReservoirCertifier
+from assurance.checker import SpaceReservoirChecker
 from result import ValidationResult
 from space import AxisReservoir
 from toolkit import AxisReservoirToolkit
 from util import LoggingLevelRouter
 
 
-class AxisReservoirRootCertifier(SpaceReservoirCertifier[AxisReservoir]):
+class AxisReservoirRootChecker(SpaceReservoirChecker[AxisReservoir]):
     """
     Role
         -   Validator
@@ -33,19 +33,19 @@ class AxisReservoirRootCertifier(SpaceReservoirCertifier[AxisReservoir]):
         2.  Pluggable validation module.
 
     Attributes:
-        toolkit: SpaceToolkit
+        bundle: SpaceToolkit
 
     Provides:
-        -   def execute(candidate: Any, toolkit: SpaceToolkit,) -> ValidationResult[Blueprint[T]]:
+        -   def execute(candidate: Any, bundle: SpaceToolkit,) -> ValidationResult[Blueprint[T]]:
 
     Super Class:
     """
 
-    def __init__(self, toolkit: Optional[AxisReservoirToolkit] | None = None):
-        super().__init__(toolkit=toolkit or AxisReservoirToolkit())
+    def __init__(self, bundle: Optional[AxisReservoirToolkit] | None = None):
+        super().__init__(bundle=bundle or AxisReservoirToolkit())
         
     @property
-    def toolkit(self) -> AxisReservoirToolkit:
+    def toolkit(self) -> AxisReservoirBundle:
         return cast(AxisReservoirToolkit, super().toolkit)
     
     @LoggingLevelRouter.monitor
@@ -66,7 +66,7 @@ class AxisReservoirRootCertifier(SpaceReservoirCertifier[AxisReservoir]):
         Returns:
             ValidationResult
         Raises:
-            AxisReservoirCertifierException
+            AxisReservoirCheckerException
         """
         method = f"{self.__class__.__name__}.execute"
         
@@ -78,11 +78,11 @@ class AxisReservoirRootCertifier(SpaceReservoirCertifier[AxisReservoir]):
         if carrier_validation.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                AxisReservoirRootCertifierException(
+                AxisReservoirRootCheckerException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=AxisReservoirRootCertifierException.MSG,
-                    err_code=AxisReservoirRootCertifierException.ERR_CODE,
+                    msg=AxisReservoirRootCheckerException.MSG,
+                    err_code=AxisReservoirRootCheckerException.ERR_CODE,
                     ex=carrier_validation.exception,
                 )
             )
@@ -96,11 +96,11 @@ class AxisReservoirRootCertifier(SpaceReservoirCertifier[AxisReservoir]):
         if validation.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                AxisReservoirRootCertifierException(
+                AxisReservoirRootCheckerException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=AxisReservoirRootCertifierException.MSG,
-                    err_code=AxisReservoirRootCertifierException.ERR_CODE,
+                    msg=AxisReservoirRootCheckerException.MSG,
+                    err_code=AxisReservoirRootCheckerException.ERR_CODE,
                     ex=validation.exception
                 )
             )

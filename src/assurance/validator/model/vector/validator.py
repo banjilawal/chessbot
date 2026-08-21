@@ -1,7 +1,7 @@
 # src/assurance/validator/model/vector/validator.py
 
 """
-Module: assurance.validator.model.vector.operation
+Module: assurance.validator.model.vector.validator
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -9,18 +9,17 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from typing import Any, cast
+from typing import Any, TypeVar, cast
 
 from assurance import ModelValidator
 from err import VectorValidatorException
-from model import Vector
 from assurance.checker import VectorIntegrityChecker
 from result import ValidationResult
 from util import LoggingLevelRouter
 
+T = TypeVar("T", bound="StateModel")
 
-
-class VectorValidator(ModelValidator[Vector]):
+class StateVectorValidator(ModelValidator[T]):
     """
     Role
         -   Transaction Worker

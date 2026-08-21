@@ -1,16 +1,16 @@
-# src/assurance/certifier/square/__init__.py
+# src/assurance/checker/model/square/__init__.py
 
 """
-Module: assurance.certifier.square.__init__
+Module: assurance.checker.model.square.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
 """
 
-# =========== ASSURANCE.CERTIFIER.SQUARE PACKAGE ===========#
+# =========== ASSURANCE.CHECKER.MODEL.SQUARE PACKAGE ===========#
 
 # Packages
 
 
 # Modules
-from .certifier import SquareIntegrityChecker
+from .checker import SquareIntegrityChecker

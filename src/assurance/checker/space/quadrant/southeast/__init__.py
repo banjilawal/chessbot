@@ -1,16 +1,16 @@
-# src/assurance/certifier/root/space/quadrant/southeast/__init__.py
+# src/assurance/checker/root/space/quadrant/southeast/__init__.py
 
 """
-Module: assurance.certifier.space.quadrant.southeast.__init__
+Module: assurance.checker.space.quadrant.southeast.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
 """
 
-# =========== ASSURANCE.CERTIFIER.SPACE.QUADRANT.SOUTHEAST PACKAGE ===========#
+# =========== ASSURANCE.CHECKER.SPACE.QUADRANT.SOUTHEAST PACKAGE ===========#
 
 # Packages
 
 
 # Modules
-from .certifier import SoutheastQuadrantRootCertifier
+from .checker import SoutheastQuadrantRootChecker

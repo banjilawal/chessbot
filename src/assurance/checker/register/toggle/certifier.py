@@ -1,7 +1,7 @@
-# src/assurance/certifier/register/toggle/validator.py
+# src/assurance/checker/register/toggle/validator.py
 
 """
-Module: assurance.certifier.register.toggle.validator
+Module: assurance.checker.register.toggle.validator
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -13,19 +13,19 @@ from typing import List, Optional, cast
 from fabrication.blueprint import VectorToggleRegisterBlueprint
 from carrier import VectorToggleRegisterCarrier
 from err import (
-    RegisterEmptyException, RegisterSizeException, VectorToggleRegisterCertifierException,
+    RegisterEmptyException, RegisterSizeException, VectorToggleRegisterCheckerException,
     VectorToggleRegisterMismatchException
 )
 from register import VectorToggleRegister
 from result import MethodResultType, ValidationResult
-from assurance.checker import Certifier
+from assurance.checker import Checker
 from toggle import VectorToggle
 from toolkit import VectorToggleRegisterToolkit
 from util import LoggingLevelRouter
 
 
-class VectorToggleRegisterCertifier(
-    Certifier[VectorToggleRegister]
+class VectorToggleRegisterChecker(
+    Checker[VectorToggleRegister]
 ):
     """
     Role
@@ -38,27 +38,27 @@ class VectorToggleRegisterCertifier(
             reliable and consistent before use.
 
     Attributes:
-        toolkit: Optional[VectorToggleRegisterToolkit]
+        bundle: Optional[VectorToggleRegisterToolkit]
 
     Provides:
         -   execute(self, candidate: Any) -> ValidationResult:
 
     Super Class:
-        Certifier
+        Checker
     """
     
     def __init__(
             self,
-            toolkit: Optional[VectorToggleRegisterToolkit] |None = VectorToggleRegisterToolkit()
+            bundle: Optional[VectorToggleRegisterToolkit] |None = VectorToggleRegisterToolkit()
     ):
         """
         Args:
-            toolkit: Optional[VectorToggleRegisterToolkit]
+            bundle: Optional[VectorToggleRegisterToolkit]
         """
-        super().__init__(toolkit=toolkit)
+        super().__init__(bundle=bundle)
     
     @property
-    def toolkit(self) -> VectorToggleRegisterToolkit:
+    def toolkit(self) -> VectorToggleRegisterBundle:
         return cast(VectorToggleRegisterToolkit, super().bundle)
     
     @LoggingLevelRouter.monitor
@@ -78,7 +78,7 @@ class VectorToggleRegisterCertifier(
         Returns:
             ValidationResult
         Raises:
-            VectorToggleRegisterCertifierException
+            VectorToggleRegisterCheckerException
         """
         method = f"{self.__class__.__name__}.execute"
         
@@ -90,11 +90,11 @@ class VectorToggleRegisterCertifier(
         if carrier_validation.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                VectorToggleRegisterCertifierException(
+                VectorToggleRegisterCheckerException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=VectorToggleRegisterCertifierException.MSG,
-                    err_code=VectorToggleRegisterCertifierException.ERR_CODE,
+                    msg=VectorToggleRegisterCheckerException.MSG,
+                    err_code=VectorToggleRegisterCheckerException.ERR_CODE,
                     ex=carrier_validation.exception,
                 )
             )
@@ -108,11 +108,11 @@ class VectorToggleRegisterCertifier(
         if blueprint.is_empty:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                VectorToggleRegisterCertifierException(
+                VectorToggleRegisterCheckerException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=VectorToggleRegisterCertifierException.MSG,
-                    err_code=VectorToggleRegisterCertifierException.ERR_CODE,
+                    msg=VectorToggleRegisterCheckerException.MSG,
+                    err_code=VectorToggleRegisterCheckerException.ERR_CODE,
                     mthd_rslt_type=MethodResultType.VALIDATION_RESULT,
                     ex=RegisterEmptyException(
                         cls_mthd=method,
@@ -125,11 +125,11 @@ class VectorToggleRegisterCertifier(
         if blueprint.is_wrong_size:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                VectorToggleRegisterCertifierException(
+                VectorToggleRegisterCheckerException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=VectorToggleRegisterCertifierException.MSG,
-                    err_code=VectorToggleRegisterCertifierException.ERR_CODE,
+                    msg=VectorToggleRegisterCheckerException.MSG,
+                    err_code=VectorToggleRegisterCheckerException.ERR_CODE,
                     mthd_rslt_type=MethodResultType.VALIDATION_RESULT,
                     ex=RegisterSizeException(
                         cls_mthd=method,
@@ -142,11 +142,11 @@ class VectorToggleRegisterCertifier(
         if blueprint.toggles_are_different_types:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                VectorToggleRegisterCertifierException(
+                VectorToggleRegisterCheckerException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=VectorToggleRegisterCertifierException.MSG,
-                    err_code=VectorToggleRegisterCertifierException.ERR_CODE,
+                    msg=VectorToggleRegisterCheckerException.MSG,
+                    err_code=VectorToggleRegisterCheckerException.ERR_CODE,
                     mthd_rslt_type=MethodResultType.VALIDATION_RESULT,
                     ex=VectorToggleRegisterMismatchException(
                         cls_mthd=method,
@@ -164,11 +164,11 @@ class VectorToggleRegisterCertifier(
             if validation.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
-                    VectorToggleRegisterCertifierException(
+                    VectorToggleRegisterCheckerException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        msg=VectorToggleRegisterCertifierException.MSG,
-                        err_code=VectorToggleRegisterCertifierException.ERR_CODE,
+                        msg=VectorToggleRegisterCheckerException.MSG,
+                        err_code=VectorToggleRegisterCheckerException.ERR_CODE,
                         ex=validation.exception,
                     )
                 )

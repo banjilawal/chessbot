@@ -1,7 +1,7 @@
-# src/assurance/auditor/token/assurance/auditor.py
+# src/assurance/auditor/token/auditor.py
 
 """
-Module: assurance.auditor.token.checker
+Module: assurance.auditor.token.auditor
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -9,8 +9,7 @@ version: 0.0.2
 
 from __future__ import annotations
 
-
-from assurance.auditor import ConsistencyAuditor
+from assurance import ConsistencyAuditor
 from err import TokenAuditorException
 from model import Token
 from result import ValidationResult

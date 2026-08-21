@@ -14,14 +14,14 @@ from typing import Any, Generic, TypeVar, cast
 
 from fabrication.blueprint import Blueprint
 from result import ValidationResult
-from assurance.checker import SpaceCertifier
+from assurance.checker import SpaceChecker
 from toolkit import QuadrantToolkit
 
 from util import LoggingLevelRouter
 
 T = TypeVar("T", bound="Quadrant")
 
-class QuadrantRootCertifier(SpaceCertifier, Generic[T]):
+class QuadrantRootChecker(SpaceChecker, Generic[T]):
     """
     Role:
         -   Definition
@@ -36,15 +36,15 @@ class QuadrantRootCertifier(SpaceCertifier, Generic[T]):
     Provides:
 
     Super Class:
-        SpaceRootCertifier
+        SpaceRootChecker
     """
 
-    def __init__(self, toolkit: QuadrantToolkit[T]):
+    def __init__(self, bundle: QuadrantToolkit[T]):
         """
         Args:
-            toolkit: QuadrantToolkit[T]
+            bundle: QuadrantToolkit[T]
         """
-        super().__init__(toolkit=toolkit)
+        super().__init__(bundle=bundle)
     
     @property
     def toolkit(self) -> QuadrantToolkit[T]:

@@ -1,7 +1,7 @@
-# src/validator/model/maneuver/validator.py
+# src/checker/model/maneuver/checker.py
 
 """
-Module: validator.model.maneuver.validator
+Module: checker.model.maneuver.checker
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Any, cast
 
-from err import ManeuverValidatorException
+from err import ManeuverCheckerException
 from model import Maneuver
 from result import ValidationResult
 from toolkit import ManeuverToolkit
@@ -34,22 +34,22 @@ class ManeuverIntegrityChecker(ModelIntegrityChecker[Maneuver]):
     Provides:
         -   def validate(
                     candidate: Any,
-                    toolkit: ManeuverToolkit,
+                    bundle: ManeuverToolkit,
             ) -> ValidationResult[Maneuver]:
 
     Super Class:
-        ModelValidator
+        ModelChecker
     """
     
-    def __init__(self, toolkit: ManeuverToolkit | None = ManeuverToolkit()):
+    def __init__(self, bundle: ManeuverToolkit | None = ManeuverToolkit()):
         """
         Args:
-            toolkit: ManeuverToolkit
+            bundle: ManeuverToolkit
         """
-        super().__init__(toolkit=toolkit)
+        super().__init__(bundle=bundle)
     
     @property
-    def toolkit(self) -> ManeuverToolkit:
+    def toolkit(self) -> ManeuverBundle:
         return cast(ManeuverToolkit, super().bundle)
     
 
@@ -68,11 +68,11 @@ class ManeuverIntegrityChecker(ModelIntegrityChecker[Maneuver]):
             2.  Otherwise, send the success result.
         Args:
             candidate: Any
-            toolkit: ManeuverToolkit
+            bundle: ManeuverToolkit
         Returns:
             ValidationResult[int]
         Raises:
-            ManeuverValidatorException
+            ManeuverCheckerException
         """
         method = f"{self.__class__.__name__}.execute"
         
@@ -80,54 +80,54 @@ class ManeuverIntegrityChecker(ModelIntegrityChecker[Maneuver]):
         if self.toolkit is None:
             toolkit = ManeuverToolkit()
         
-        # Handle the case that, the validator is not primed.
-        validator_priming_result = self.toolkit.priming_validator.execute(
+        # Handle the case that, the checker is not primed.
+        checker_priming_result = self.toolkit.priming_validator.execute(
             candidate=candidate,
             target_model=self.toolkit.model,
             null_exception=self.toolkit.null_exception,
         )
-        if validator_priming_result.is_failure:
+        if checker_priming_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                ManeuverValidatorException(
+                ManeuverCheckerException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=ManeuverValidatorException.MSG,
-                    err_code=ManeuverValidatorException.ERR_CODE,
-                    ex=validator_priming_result.exception,
+                    msg=ManeuverCheckerException.MSG,
+                    err_code=ManeuverCheckerException.ERR_CODE,
+                    ex=checker_priming_result.exception,
                 )
             )
         # --- Cast the candidate into a Maneuver for additional tests. ---#
         maneuver = cast(Maneuver, candidate)
         
         # Handle the case that, the path is not safe.
-        path_validation_result = self.toolkit.path_validator.execute(maneuver.path)
+        path_validation_result = self.toolkit.path_checker.execute(maneuver.path)
         if path_validation_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                ManeuverValidatorException(
+                ManeuverCheckerException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=ManeuverValidatorException.MSG,
-                    err_code=ManeuverValidatorException.ERR_CODE,
+                    msg=ManeuverCheckerException.MSG,
+                    err_code=ManeuverCheckerException.ERR_CODE,
                     ex=path_validation_result.exception,
                 )
             )
         # Handle the case that, the token is not safe.
-        token_validation_result = self.toolkit.token_validator.execute(maneuver.path)
+        token_validation_result = self.toolkit.token_checker.execute(maneuver.path)
         if token_validation_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                ManeuverValidatorException(
+                ManeuverCheckerException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=ManeuverValidatorException.MSG,
-                    err_code=ManeuverValidatorException.ERR_CODE,
+                    msg=ManeuverCheckerException.MSG,
+                    err_code=ManeuverCheckerException.ERR_CODE,
                     ex=token_validation_result.exception,
                 )
             )
         # Handle the case that, either the token is not at the origin or already at the destination.
-        token_endpoint_relation_validation_result = self.toolkit.endpoint_validator.execute(
+        token_endpoint_relation_validation_result = self.toolkit.endpoint_checker.execute(
             token=maneuver.token,
             origin=maneuver.path.origin,
             destination=maneuver.path.destination,
@@ -135,11 +135,11 @@ class ManeuverIntegrityChecker(ModelIntegrityChecker[Maneuver]):
         if token_endpoint_relation_validation_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                ManeuverValidatorException(
+                ManeuverCheckerException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=ManeuverValidatorException.MSG,
-                    err_code=ManeuverValidatorException.ERR_CODE,
+                    msg=ManeuverCheckerException.MSG,
+                    err_code=ManeuverCheckerException.ERR_CODE,
                     ex=token_endpoint_relation_validation_result.exception,
                 )
             )

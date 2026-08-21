@@ -16,4 +16,4 @@ from .southeast import *
 from .southwest import *
 
 # Modules
-from .certifier import QuadrantRootCertifier
+from .checker import QuadrantRootChecker
