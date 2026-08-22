@@ -65,7 +65,7 @@
     "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "C:/Users/banji/PycharmProjects/chessbot/src/domain/search/context/stack",
+    "last_opened_file_path": "C:/Users/banji/PycharmProjects/chessbot/src/domain/search/context/chain",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
@@ -77,11 +77,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\banji\PycharmProjects\chessbot\src\domain\search\context\chain" />
+      <recent name="C:\Users\banji\PycharmProjects\chessbot\src\domain\search\context" />
       <recent name="C:\Users\banji\PycharmProjects\chessbot\src\domain\search\context\stack" />
       <recent name="C:\Users\banji\PycharmProjects\chessbot\src\domain\search" />
       <recent name="C:\Users\banji\PycharmProjects\chessbot\src\domain\exchange\request\crud" />
-      <recent name="C:\Users\banji\PycharmProjects\chessbot\src\domain\exchange\request\crud\delete" />
-      <recent name="C:\Users\banji\PycharmProjects\chessbot\src\domain\exchange\request\crud\delete\item" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\banji\PycharmProjects\chessbot\src\domain\search\context\stack" />
@@ -717,7 +717,7 @@
       <workItem from="1785354695376" duration="4352000" />
       <workItem from="1785366790867" duration="182641000" />
       <workItem from="1785958183827" duration="174661000" />
-      <workItem from="1786522110280" duration="167718000" />
+      <workItem from="1786522110280" duration="171578000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />
@@ -1683,6 +1683,11 @@
           <url>file://$PROJECT_DIR$/src/domain/search/context/stack/context.py</url>
           <line>11</line>
           <option name="timeStamp" value="378" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/domain/search/context/stack/team/context.py</url>
+          <line>11</line>
+          <option name="timeStamp" value="379" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
