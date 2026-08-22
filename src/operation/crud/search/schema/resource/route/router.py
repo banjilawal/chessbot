@@ -1,4 +1,4 @@
-# src/logic/schema/database/operation/collection/search/route/router.py
+# src/logic/schema/database/operation/crud/search/route/router.py
 
 """
 Module: logic.schema.database.searcher.route.router

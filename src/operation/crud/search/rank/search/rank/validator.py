@@ -1,4 +1,4 @@
-# src/rank/operation/collection/search/coord_stack_validator.py
+# src/rank/operation/crud/search/coord_stack_validator.py
 
 """
 Module: logic.rank.searcher.coord_stack_validator

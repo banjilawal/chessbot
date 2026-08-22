@@ -1,4 +1,4 @@
-# src/logic/token/database/operation/collection/search/resource/__init__.py
+# src/logic/token/database/operation/crud/search/resource/__init__.py
 
 """
 Module: logic.token.database.searcher.resource.__init__
@@ -7,7 +7,7 @@ Created: 2025-10-03
 version: 1.0.0
 """
 
-# =========== OPERATION.COLLECTION.SEARCH.TOKEN.DATABASE.SEARCHER.RESOURCE PACKAGE ===========#
+# =========== OPERATION.CRUD.SEARCH.TOKEN.DATABASE.SEARCHER.RESOURCE PACKAGE ===========#
 
 # Packages
 from .query import  *

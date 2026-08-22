@@ -13,8 +13,8 @@ from controller import CrudController
 from operation import TokenStackPush
 
 from domain.model import Token
-from operation.crud.deletion.stack.popper import TokenPopper
-from operation.crud.insertion.stack.pusher import TokenPusher
+from operation.crud.delete.stack.popper import TokenPopper
+from operation.crud.insert.stack.pusher import TokenPusher
 from domain.exchange.request import CollectionDeletionRequest, PopRequest, TokenStackPushRequest, SearchRequest
 from result import DeletionResult, InsertionResult, SearchResult
 from operation.crud.search import TokenSearcher

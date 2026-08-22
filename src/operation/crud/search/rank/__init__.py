@@ -1,4 +1,4 @@
-# src/logic/rank/operation/collection/search/__init__.py
+# src/logic/rank/operation/crud/search/__init__.py
 
 """
 Module: logic.rank.searcher.__init__

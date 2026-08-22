@@ -16,7 +16,7 @@ from authorization import RequestAuthorizer
 from collection import DomainObjectCollection
 from report import AuthorizationDecision
 from domain.exchange.request import InsertionRequest
-from toolkit import InsertionRequestToolkit
+from toolkit import InsertRequestToolkit
 
 from util import LoggingLevelRouter
 
@@ -24,7 +24,7 @@ T = TypeVar("T", bound="DomainObjectCollection")
 
 class InsertionRequestAuthorizer(RequestAuthorizer[InsertionRequest], ABC, Generic[T]):
     
-    def __init__(self, toolkit: InsertionRequestToolkit[T]):
+    def __init__(self, toolkit: InsertRequestToolkit[T]):
         """
         Args:
             toolkit: InsertionRequestToolkit[T]
@@ -32,8 +32,8 @@ class InsertionRequestAuthorizer(RequestAuthorizer[InsertionRequest], ABC, Gener
         super().__init__(toolkit=toolkit)
         
     @property
-    def toolkit(self) -> InsertionRequestToolkit[T]:
-        return cast(InsertionRequestToolkit, super().toolkit)
+    def toolkit(self) -> InsertRequestToolkit[T]:
+        return cast(InsertRequestToolkit, super().toolkit)
         
     @abstractmethod
     @LoggingLevelRouter.monitor

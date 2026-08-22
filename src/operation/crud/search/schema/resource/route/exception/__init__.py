@@ -1,4 +1,4 @@
-# src/logic/schema/database/operation/collection/search/route/exception/__init__.py
+# src/logic/schema/database/operation/crud/search/route/exception/__init__.py
 """
 Module: logic.schema.database.searcher.route.exception.__init__
 Author: Banji Lawal
@@ -6,7 +6,7 @@ Created: 2025-10-06
 version: 1.0.0
 """
 
-# =========== OPERATION.COLLECTION.SEARCH.SCHEMA.DATABASE.SEARCHER.ROUTE.EXCEPTION PACKAGE ===========#
+# =========== OPERATION.CRUD.SEARCH.SCHEMA.DATABASE.SEARCHER.ROUTE.EXCEPTION PACKAGE ===========#
 
 # Packages
 from .debug import *

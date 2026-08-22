@@ -14,14 +14,14 @@ from typing import Generic, TypeVar, cast
 
 from authorization import AddNodeRequest
 from collection import Chain
-from operation import CollectionInsertion
+from operation import InsertOperation
 from result import InsertionResult
 from util import LoggingLevelRouter
 
 T = TypeVar("T", bound="Node")
 
 
-class AddNode(CollectionInsertion[Chain], ABC, Generic[T]):
+class AddNode(InsertOperation[Chain], ABC, Generic[T]):
     """
     Role
         -   Worker

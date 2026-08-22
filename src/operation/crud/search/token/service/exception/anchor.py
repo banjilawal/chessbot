@@ -1,4 +1,4 @@
-# src/logic/token/database/operation/collection/search/service/exception/anchor.py
+# src/logic/token/database/operation/crud/search/service/exception/anchor.py
 
 """
 Module: logic.token.database.searcher.service.exception.anchor

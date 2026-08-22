@@ -1,7 +1,7 @@
-# src/operation/collection/search/operation.py
+# src/operation/crud/search/operation.py
 
 """
-Module: operation.collection.search.operation
+Module: operation.crud.search.operation
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -12,45 +12,53 @@ from __future__ import annotations
 from abc import ABC, abstractmethod
 from typing import Generic, TypeVar, cast
 
-from authorization import OperationPermitter, SearchPermitter, SearchRequest
+from authorization import SearchAuthorizer
+from domain import SearchRequest
 from operation import CrudOperation
 from result import SearchResult
 from util import LoggingLevelRouter
 
+T = TypeVar("T", bound="SearchRequest")
 
-T = TypeVar("T", bound="StackService")
 
-
-class Search(CrudOperation[SearchResult], ABC, Generic[T]):
+class Search(CrudOperation[T], ABC, Generic[T]):
     """
     Role
         -   Worker
 
     Responsibilities:
-        1.  Execute a task on a Collection that produces a SearchResult.
+        1.  Process an SearchRequest.
 
     Attributes:
-        permitter: SearchPermitter[T]
-        
+        authorizer: SearchAuthorizer[T]
+
     Provides:
-        -   def execute(request: SearchRequest[T]) -> SearchResult
+        -   def execute(self, request: T) -> SearchionResult
 
     Super Class:
-        CollectionOperation
+        CrudOperation
     """
     
-    def __init__(self, permitter: SearchPermitter[T]):
+    def __init__(self, authorizer: SearchAuthorizer[T]):
         """
         Args:
-            permitter: SearchPermitter[T]
+            authorizer: SearchAuthorizer[T]
         """
-        super().__init__(permitter=permitter)
-        
+        super().__init__(authorizer=authorizer)
+    
     @property
-    def permitter(self) -> SearchPermitter[T]:
-        return cast(SearchPermitter[T], super().permitter)
+    def authorizer(self) -> SearchAuthorizer[T]:
+        return cast(SearchAuthorizer[T], super().authorizer)
     
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def execute(self, request: SearchRequest) -> SearchResult:
+    def execute(self, request: T) -> SearchResult:
+        """
+        Args:
+            request: T
+        Result:
+            SearchResult
+        Raises:
+            SearchException
+        """
         pass

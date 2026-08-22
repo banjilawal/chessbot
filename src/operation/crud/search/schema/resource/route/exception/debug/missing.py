@@ -1,4 +1,4 @@
-# src/logic/schema/database/operation/collection/search/route/model/exception/debug/missing.py
+# src/logic/schema/database/operation/crud/search/route/model/exception/debug/missing.py
 """
 Module: logic.schema.database.searcher.route.model.exception.debug.missing
 Author: Banji Lawal

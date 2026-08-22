@@ -1,4 +1,4 @@
-# src/logic/schema/database/operation/collection/search/route/__init__.py
+# src/logic/schema/database/operation/crud/search/route/__init__.py
 
 """
 Module: logic.schema.database.searcher.route.__init__
@@ -7,7 +7,7 @@ Created: 2025-10-06
 version: 1.0.0
 """
 
-# =========== OPERATION.COLLECTION.SEARCH.SCHEMA.QUERY.ROUTE PACKAGE ===========#
+# =========== OPERATION.CRUD.SEARCH.SCHEMA.QUERY.ROUTE PACKAGE ===========#
 
 # Packages
 from .exception import *

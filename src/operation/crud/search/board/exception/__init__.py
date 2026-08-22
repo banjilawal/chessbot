@@ -7,7 +7,7 @@ Created: 2025-10-01
 version: 1.0.0
 """
 
-# =========== OPERATION.COLLECTION.SEARCH.BOARD.CONTEXT.EXCEPTION PACKAGE ===========#
+# =========== OPERATION.CRUD.SEARCH.BOARD.CONTEXT.EXCEPTION PACKAGE ===========#
 
 # Packages
 

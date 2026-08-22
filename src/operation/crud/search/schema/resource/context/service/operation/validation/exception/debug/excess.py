@@ -1,4 +1,4 @@
-# src/logic/schema/database/operation/collection/search/context/service/operation/validation/exception/flag/excess.py
+# src/logic/schema/database/operation/crud/search/context/service/operation/validation/exception/flag/excess.py
 
 """
 Module: logic.schema.validation.exception.flag.excess

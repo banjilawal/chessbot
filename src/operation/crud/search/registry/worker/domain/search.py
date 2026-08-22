@@ -1,7 +1,7 @@
-# src/operation/collection/search/registry/worker/domain/searcher.py
+# src/operation/crud/search/registry/worker/domain/searcher.py
 
 """
-Module: operation.collection.search.registry.worker.domain.search
+Module: operation.crud.search.registry.worker.domain.search
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2

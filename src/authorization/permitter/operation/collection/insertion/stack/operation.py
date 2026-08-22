@@ -14,7 +14,7 @@ from typing import Generic, TypeVar, cast
 
 from authorization import StackPushPermitter, StackPushRequest
 from collection import StackService
-from operation import CollectionInsertion
+from operation import InsertOperation
 from result import InsertionResult
 from util import LoggingLevelRouter
 
@@ -22,7 +22,7 @@ from util import LoggingLevelRouter
 T = TypeVar("T", bound="StateModel")
 
 
-class StackPush(CollectionInsertion[StackService], ABC, Generic[T]):
+class StackPush(InsertOperation[StackService], ABC, Generic[T]):
     """
     Role
         -   Worker

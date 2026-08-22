@@ -1,4 +1,4 @@
-# src/logic/rank/operation/collection/search/validator.py
+# src/logic/rank/operation/crud/search/validator.py
 
 """
 Module: logic.rank.searcher.service

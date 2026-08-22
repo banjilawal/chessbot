@@ -1,4 +1,4 @@
-# src/logic/token/database/operation/collection/search/context/service/__init__.py
+# src/logic/token/database/operation/crud/search/context/service/__init__.py
 
 """
 Module: logic.token.database.searcher.context.service.__init__

@@ -1,13 +1,13 @@
-# src/operation/collection/search/origin/__init__.py
+# src/operation/crud/search/origin/__init__.py
 
 """
-Module: operation.collection.search.origin.__init__
+Module: operation.crud.search.origin.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
 """
 
-# =========== OPERATION.COLLECTION.SEARCH.ORIGIN PACKAGE ===========#
+# =========== OPERATION.CRUD.SEARCH.ORIGIN PACKAGE ===========#
 # Packages
 
 

@@ -13,7 +13,7 @@ from abc import ABC, abstractmethod
 from typing import Generic, TypeVar
 
 from authorization import RequestAuthorizer
-from domain.exchange.request import Request
+from domain import Request
 from result import Result
 from util import LoggingLevelRouter
 
@@ -45,7 +45,6 @@ class Operation(ABC, Generic[T]):
         """
         self._authorizer = authorizer
         
-        
     @property
     def authorizer(self) -> RequestAuthorizer[T]:
         return self._authorizer
@@ -59,5 +58,7 @@ class Operation(ABC, Generic[T]):
             request: Request[T]
         Result:
             T
+        Raises:
+            OperationException
         """
         pass

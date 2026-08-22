@@ -16,12 +16,12 @@ from err import ChainNullException, NodeNullException, RequestNullException
 from domain.structure.node import Node
 from domain.exchange.request import AddNodeRequest
 
-from toolkit import InsertionRequestToolkit
+from toolkit import InsertRequestToolkit
 
 T = TypeVar("T", bound="Node")
 
 
-class AddNodeRequestToolkit(InsertionRequestToolkit[Chain], Generic[T]):
+class AddNodeRequestToolkit(InsertRequestToolkit[Chain], Generic[T]):
     """
     Role:
         -   Dependency Management

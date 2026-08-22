@@ -1,4 +1,4 @@
-# src/logic/system/operation/collection/search/exception/validator.py
+# src/logic/system/operation/crud/search/exception/validator.py
 
 """
 Module: logic.system.searcher.exception.work

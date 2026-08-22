@@ -1,4 +1,4 @@
-# src/logic/schema/database/operation/collection/search/context/service/__init__.py
+# src/logic/schema/database/operation/crud/search/context/service/__init__.py
 
 """
 Module: logic.schema.database.searcher.context.service.__init__
@@ -7,7 +7,7 @@ Created: 2025-10-03
 version: 1.0.0
 """
 
-# =========== OPERATION.COLLECTION.SEARCH.SCHEMA.DATABASE.SEARCHER.CONTEXT.SERVICE PACKAGE ===========#
+# =========== OPERATION.CRUD.SEARCH.SCHEMA.DATABASE.SEARCHER.CONTEXT.SERVICE PACKAGE ===========#
 
 # Packages
 from .exception import *

@@ -1,4 +1,4 @@
-# src/logic/token/database/operation/collection/search/service/exception/exist.py
+# src/logic/token/database/operation/crud/search/service/exception/exist.py
 
 """
 Module: logic.token.database.searcher.service.exception.exist

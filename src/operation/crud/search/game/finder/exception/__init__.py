@@ -6,7 +6,7 @@ Created: 2025-10-06
 version: 1.0.0
 """
 
-# =========== OPERATION.COLLECTION.SEARCH.GAME.CONTEXT.FINDER.EXCEPTION PACKAGE ===========#
+# =========== OPERATION.CRUD.SEARCH.GAME.CONTEXT.FINDER.EXCEPTION PACKAGE ===========#
 
 # Packages
 from .debug import *

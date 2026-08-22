@@ -1,13 +1,13 @@
-# src/operation/collection/search/__init__.py
+# src/operation/crud/search/__init__.py
 
 """
-Module: operation.collection.search.__init__
+Module: operation.crud.search.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
 """
 
-# =========== OPERATION.COLLECTION.SEARCH PACKAGE ===========#
+# =========== OPERATION.CRUD.SEARCH PACKAGE ===========#
 
 # Packages
 from .arena import *

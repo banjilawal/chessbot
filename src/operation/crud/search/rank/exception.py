@@ -1,4 +1,4 @@
-# src/logic/rank/operation/collection/search/exception.py
+# src/logic/rank/operation/crud/search/exception.py
 
 """
 Module: logic.rank.searcher.exception
@@ -7,7 +7,7 @@ Created: 2025-11-16
 version: 1.0.0
 """
 
-# src/rank/operation/collection/search/collision.py
+# src/rank/operation/crud/search/collision.py
 
 """
 Module: logic.rank.searcher.exception

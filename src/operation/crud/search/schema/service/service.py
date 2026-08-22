@@ -1,4 +1,4 @@
-# src/logic/schema/database/operation/collection/search/service/microservice.py
+# src/logic/schema/database/operation/crud/search/service/microservice.py
 
 """
 Module: logic.schema.database.searcher.service.service

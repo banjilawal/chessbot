@@ -1,7 +1,7 @@
-# src/operation/collection/search/origin/searcher.py
+# src/operation/crud/search/origin/searcher.py
 
 """
-Module: operation.collection.search.origin.searcher
+Module: operation.crud.search.origin.searcher
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2

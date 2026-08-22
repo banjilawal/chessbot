@@ -1,4 +1,4 @@
-# src/logic/schema/database/operation/collection/search/operation/controller.py
+# src/logic/schema/database/operation/crud/search/operation/controller.py
 
 """
 Module: logic.schema.database.searcher.operation.controller

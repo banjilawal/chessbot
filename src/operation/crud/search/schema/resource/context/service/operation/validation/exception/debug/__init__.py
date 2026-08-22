@@ -1,4 +1,4 @@
-# src/logic/schema/database/operation/collection/search/context/service/operation/validation/exception/debug/__init__.py
+# src/logic/schema/database/operation/crud/search/context/service/operation/validation/exception/debug/__init__.py
 
 """
 Module: logic.schema.database.searcher.context.service.operation.validation.exception.debug.__init__
@@ -7,7 +7,7 @@ Created: 2025-09-16
 version: 1.0.0
 """
 
-# =========== OPERATION.COLLECTION.SEARCH.SCHEMA.DATABASE.SEARCHER.SERVICE.OPERATION.VALIDATION.EXCEPTION.DEBUG PACKAGE ===========#
+# =========== OPERATION.CRUD.SEARCH.SCHEMA.DATABASE.SEARCHER.SERVICE.OPERATION.VALIDATION.EXCEPTION.DEBUG PACKAGE ===========#
 
 # Packages
 

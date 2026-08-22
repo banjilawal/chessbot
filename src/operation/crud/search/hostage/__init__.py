@@ -7,7 +7,7 @@ Created: 2025-10-01
 version: 1.0.0
 """
 
-# =========== OPERATION.COLLECTION.SEARCH.HOSTAGE.CONTEXT PACKAGE ===========#
+# =========== OPERATION.CRUD.SEARCH.HOSTAGE.CONTEXT PACKAGE ===========#
 
 # Packages
 from .builder import *

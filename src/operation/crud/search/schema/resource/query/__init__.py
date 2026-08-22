@@ -1,4 +1,4 @@
-# src/logic/schema/database/operation/collection/search/context/__init__.py
+# src/logic/schema/database/operation/crud/search/context/__init__.py
 
 """
 Module: logic.schema.database.searcher.context.__init__
@@ -7,7 +7,7 @@ Created: 2025-10-06
 version: 1.0.0
 """
 
-# =========== OPERATION.COLLECTION.SEARCH.SCHEMA.DATABASE.SEARCHER.QUERY PACKAGE ===========#
+# =========== OPERATION.CRUD.SEARCH.SCHEMA.DATABASE.SEARCHER.QUERY PACKAGE ===========#
 
 # Packages
 from .model import *

@@ -1,4 +1,4 @@
-# src/logic/schema/database/operation/collection/search/schema/model/exception/anchor.py
+# src/logic/schema/database/operation/crud/search/schema/model/exception/anchor.py
 
 """
 Module: logic.schema.database.searcher.schema.model.exception.anchor

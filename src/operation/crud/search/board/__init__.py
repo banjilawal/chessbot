@@ -7,7 +7,7 @@ Created: 2025-10-02
 version: 1.0.0
 """
 
-# =========== OPERATION.COLLECTION.SEARCH.BOARD.CONTEXT PACKAGE ===========#
+# =========== OPERATION.CRUD.SEARCH.BOARD.CONTEXT PACKAGE ===========#
 
 # Packages
 from .builder import *

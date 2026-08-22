@@ -19,7 +19,7 @@ from toolkit import RequestToolkit
 T = TypeVar("T", bound="DomainObjectCollection")
 
 
-class InsertionRequestToolkit(RequestToolkit[InsertionResult], Generic[T]):
+class InsertRequestToolkit(RequestToolkit[InsertionResult], Generic[T]):
     """
     Role:
         -   Dependency Management

@@ -1,4 +1,4 @@
-# src/logic/token/database/operation/collection/search/service/exception/__init__.py
+# src/logic/token/database/operation/crud/search/service/exception/__init__.py
 
 """
 Module: logic.token.database.searcher.service.exception.__init__
@@ -7,7 +7,7 @@ Created: 2025-10-01
 version: 1.0.0
 """
 
-# =========== OPERATION.COLLECTION.SEARCH.TOKEN.QUERY.SERVICE.EXCEPTION PACKAGE ===========#
+# =========== OPERATION.CRUD.SEARCH.TOKEN.QUERY.SERVICE.EXCEPTION PACKAGE ===========#
 
 # Packages
 

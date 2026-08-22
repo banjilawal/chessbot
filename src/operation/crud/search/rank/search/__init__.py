@@ -1,4 +1,4 @@
-# src/logic/target/operation/collection/search/__init__.py
+# src/logic/target/operation/crud/search/__init__.py
 
 """
 Module: logic.target.searcher.__init__

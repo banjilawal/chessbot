@@ -1,4 +1,4 @@
-# src/logic/schema/database/operation/collection/search/context/service/operation/workers.py
+# src/logic/schema/database/operation/crud/search/context/service/operation/workers.py
 
 """
 Module: logic.schema.database.searcher.context.service.operation.workers

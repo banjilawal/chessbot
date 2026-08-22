@@ -7,7 +7,7 @@ Created: 2025-10-09
 version: 1.0.0
 """
 
-# =========== OPERATION.COLLECTION.SEARCH.FORMATION.KEY PACKAGE ===========#
+# =========== OPERATION.CRUD.SEARCH.FORMATION.KEY PACKAGE ===========#
 
 # Packages
 from .builder import *

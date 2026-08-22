@@ -7,7 +7,7 @@ Created: 2025-11-22
 version: 1.0.0
 """
 
-# =========== OPERATION.COLLECTION.SEARCH.BOARD.CONTEXT.FINDER PACKAGE ===========#
+# =========== OPERATION.CRUD.SEARCH.BOARD.CONTEXT.FINDER PACKAGE ===========#
 
 # Packages
 from .exception import *

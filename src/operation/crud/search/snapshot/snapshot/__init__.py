@@ -7,7 +7,7 @@ Created: 2025-10-03
 version: 1.0.0
 """
 
-# =========== OPERATION.COLLECTION.SEARCH.SNAPSHOT.CONTEXT.VALIDATOR PACKAGE ===========#
+# =========== OPERATION.CRUD.SEARCH.SNAPSHOT.CONTEXT.VALIDATOR PACKAGE ===========#
 
 # Packages
 from .exception import *

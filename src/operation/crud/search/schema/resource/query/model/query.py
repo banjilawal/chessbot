@@ -1,4 +1,4 @@
-# src/logic/schema/database/operation/collection/search/context/context.py
+# src/logic/schema/database/operation/crud/search/context/context.py
 
 """
 Module: logic.schema.database.searcher.context.context

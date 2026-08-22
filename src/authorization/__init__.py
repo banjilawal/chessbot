@@ -11,10 +11,9 @@ version: 0.0.2
 
 # Packages
 from .adjudicator import *
-from .authorizer import *
-from .dispatcher import *
+from .crud import *
 from .insertion import *
 from .permitter import *
 
 # Modules
-from authorization.authorizer import RequestAuthorizer
+from .auth import RequestAuthorizer

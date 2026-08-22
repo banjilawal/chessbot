@@ -1,4 +1,4 @@
-# src/logic/token/database/operation/collection/search/service/service.py
+# src/logic/token/database/operation/crud/search/service/service.py
 
 """
 Module: logic.token.database.searcher.service.service

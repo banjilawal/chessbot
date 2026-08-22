@@ -1,4 +1,4 @@
-# src/logic/schema/database/operation/collection/search/context/service/operation/validation/exception/debug/route.py
+# src/logic/schema/database/operation/crud/search/context/service/operation/validation/exception/debug/route.py
 
 """
 Module: logic.schema.database.searcher.context.service.operation.validation.exception.debug.route

@@ -7,7 +7,7 @@ Created: 2025-10-03
 version: 1.0.0
 """
 
-# =========== OPERATION.COLLECTION.SEARCH.SNAPSHOT.CONTEXT PACKAGE ===========#
+# =========== OPERATION.CRUD.SEARCH.SNAPSHOT.CONTEXT PACKAGE ===========#
 
 # Packages
 from .builder import *

@@ -7,7 +7,7 @@ Created: 2025-10-01
 version: 1.0.0
 """
 
-# =========== OPERATION.COLLECTION.SEARCH.ARENA.CONTEXT PACKAGE ===========#
+# =========== OPERATION.CRUD.SEARCH.ARENA.CONTEXT PACKAGE ===========#
 
 # Packages
 from .builder import *
