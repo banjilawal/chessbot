@@ -10,6 +10,7 @@ version: 0.0.2
 # =========== DOMAIN.SEARCH.CONTEXT PACKAGE ===========#
 
 # Packages
+from .chain import *
 from stack import *
 
 # Modules

@@ -11,10 +11,10 @@ from __future__ import annotations
 
 from typing import Any, Dict, Optional
 
-from domain import Game, StackSearchContext
+from domain import Arena, Game, Player, StackSearchContext
 
 
-class GameSearchContext(StackSearchContext[Game]):
+class ArenaSearchContext(StackSearchContext[Arena]):
     """
     Role:
         -   Selection
@@ -26,9 +26,8 @@ class GameSearchContext(StackSearchContext[Game]):
 
     Attributes:
         id: Optional[int]
-        arena: Optional[Arena]
+        game: Optional[Game]
         player: Optional[Player]
-        winner: Optional[Player]
 
     Provides:
         -   to_dict() -> Dict[str, Any]
@@ -36,15 +35,12 @@ class GameSearchContext(StackSearchContext[Game]):
     Super Class:
         Context
     """
-    id: Optional[int] = None
-    arena: Optional[Arena] = None
     player: Optional[Player] = None
-    winner: Optional[Square] = None
+    game: Optional[Game] = None
     
     def to_dict(self) -> Dict[str, Any]:
         return {
             "id": self.id,
-            "arena": self.arena,
+            "game": self.game,
             "player": self.player,
-            "winner": self.winner,
         }

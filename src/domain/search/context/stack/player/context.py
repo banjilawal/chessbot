@@ -8,12 +8,13 @@ version: 0.0.2
 """
 
 from __future__ import annotations
+
 from typing import Any, Dict, Optional
 
-from domain import Context, Game, Player, Team
+from domain import Player, StackSearchContext
 
 
-class PlayerContext(Context[Player]):
+class PlayerSearchContext(StackSearchContext[Player]):
     """
     Role:
         -   Selection

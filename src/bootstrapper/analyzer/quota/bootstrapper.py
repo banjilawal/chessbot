@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Type
 
 from bootstrapper import AnalyzerBootstrapper, PrimingValidator
-from domain.search.context import TokenContext
+from domain.search.context import TokenSearchContext
 from domain.model import Rank
 from report import RankQuotaReport
 from result import AnalysisResult, MethodResultType
@@ -100,7 +100,7 @@ class QuotaAnalyzerBootstrapper(AnalyzerBootstrapper):
                 )
             )
         # --- Search for the schema for rank members. ---#
-        rank_search_result = token_stack.search(context=TokenContext(rank=rank))
+        rank_search_result = token_stack.search(context=TokenSearchContext(rank=rank))
         
         # Handle the case that, a search error occurred.
         if rank_search_result.is_failure:

@@ -1,19 +1,22 @@
-# src/domain/search/context/stack/game/context.py.py
+# src/domain/search/context/stack/rank/context.py.py
 
 """
-Module: domain.search.context.stack.game.context
+Module: domain.search.context.stack.rank.context
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
 """
 
 from __future__ import annotations
+
+from __future__ import annotations
+
 from typing import Any, Dict, Optional
 
-from domain import Arena, Context, Game, Player
+from domain import Rank, StackSearchContext
 
 
-class ArenaContext(Context[Arena]):
+class RankSearchContext(StackSearchContext[Rank]):
     """
     Role:
         -   Selection
@@ -21,12 +24,11 @@ class ArenaContext(Context[Arena]):
         -   Data-Holder
 
     Responsibilities:
-        1.  Supply a Game attribute-value search filter.
+        1.  Supply a Rank attribute-value tuple which selects an execution path.
 
     Attributes:
         id: Optional[int]
-        game: Optional[Game]
-        player: Optional[Player]
+        persona: Optional[Persona]
 
     Provides:
         -   to_dict() -> Dict[str, Any]
@@ -34,12 +36,15 @@ class ArenaContext(Context[Arena]):
     Super Class:
         Context
     """
-    player: Optional[Player] = None
-    game: Optional[Game] = None
+    persona: Persona
+
     
+    @property
     def to_dict(self) -> Dict[str, Any]:
         return {
             "id": self.id,
-            "game": self.game,
-            "player": self.player,
+            "persona": Persona,
         }
+
+
+

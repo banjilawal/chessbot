@@ -8,14 +8,13 @@ version: 0.0.2
 """
 
 from __future__ import annotations
+
 from typing import Any, Dict, Optional
 
-from domain.search.context.stack import SearchContext
-from domain import Coord, HomeSquare, Rank, Team, Token
-from setting import GameColor
+from domain import Coord, HomeSquare, Rank, StackSearchContext, Team, Token
 
 
-class TokenContext(SearchContext[Token]):
+class TokenSearchContext(StackSearchContext[Token]):
         """
         Role:
             -   Selection

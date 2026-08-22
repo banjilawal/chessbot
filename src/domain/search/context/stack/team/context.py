@@ -11,12 +11,10 @@ from __future__ import annotations
 
 from typing import Any, Dict, Optional
 
-from domain.search.context.stack import SearchContext
-from domain import Board, Player, Schema, Team
-from setting import GameColor
+from domain import Archetype, Board, Player, StackSearchContext, Team
 
 
-class TeamContext(SearchContext[Team]):
+class TeamSearchContext(StackSearchContext[Team]):
     """
     Role:
         -   Selection
@@ -41,7 +39,7 @@ class TeamContext(SearchContext[Team]):
     _board: Optional[Board] = None
     _owner: Optional[Player] = None
     _color: Optional[GameColor] = None
-    _schema: Optional[Schema] = None
+    _archetype: Optional[Archetype] = None
     
     def __init__(
             self,
@@ -49,7 +47,7 @@ class TeamContext(SearchContext[Team]):
             board: Optional[Board] | None = None,
             owner: Optional[Player] | None = None,
             color: Optional[GameColor] | None = None,
-            schema: Optional[Schema] | None = None,
+            archetype: Optional[Archetype] | None = None,
     ):
         """
         Args
@@ -57,13 +55,13 @@ class TeamContext(SearchContext[Team]):
             board: Optional[Board]
             owner: Optional[Player]
             color: Optional[GameColor]
-            schema: Optional[Schema
+            archetype: Optional[Archetype
         """
         super().__init__(id=id, name=None)
         self._board = board
         self._owner = owner
         self._color = color
-        self._schema = schema
+        self._archetype = archetype
     
     @property
     def board(self) -> Optional[Board]:
@@ -78,8 +76,8 @@ class TeamContext(SearchContext[Team]):
         return self._color
     
     @property
-    def schema(self) -> Optional[Schema]:
-        return self._schema
+    def archetype(self) -> Optional[Archetype]:
+        return self._archetype
     
     @property
     def to_dict(self) -> Dict[str, Any]:
@@ -88,5 +86,5 @@ class TeamContext(SearchContext[Team]):
             "board": self.board,
             "owner": self.owner,
             "color": self.color,
-            "schema": self.schema,
+            "archetype": self.archetype,
         }

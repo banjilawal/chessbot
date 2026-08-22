@@ -11,11 +11,10 @@ from __future__ import annotations
 
 from typing import Any, Dict, Optional
 
-from domain.search.context.stack import SearchContext
-from domain import Square
+from domain import StackSearchContext, Square
 
 
-class SquareContext(SearchContext[Square]):
+class SquareSearchContext(StackSearchContext[Square]):
     """
     Role:
         -   Selection

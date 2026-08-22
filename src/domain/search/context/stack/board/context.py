@@ -8,12 +8,13 @@ version: 0.0.2
 """
 
 from __future__ import annotations
-from typing import Optional
 
-from domain import Arena, Board, Context, Team
+from typing import Any, Dict, Optional
+
+from domain import Board, StackSearchContext
 
 
-class BoardContext(Context[Board]):
+class BoardSearchContext(StackSearchContext[Board]):
     """
     Role:
         -   Selection

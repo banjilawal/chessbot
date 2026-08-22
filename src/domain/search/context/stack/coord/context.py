@@ -11,10 +11,10 @@ from __future__ import annotations
 
 from typing import Any, Dict, Optional
 
-from domain import Context, Coord
+from domain import Coord, StackSearchContext
 
 
-class CoordContext(Context[Coord]):
+class CoordSearchContext(StackSearchContext[Coord]):
     """
     Role:
         -   Selection

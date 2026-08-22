@@ -5,44 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/domain/exchange/request/crud/search/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/domain/exchange/request/crud/search/chain/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/domain/exchange/request/crud/search/chain/request.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/domain/exchange/request/crud/search/request.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/domain/exchange/request/crud/search/stack/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/domain/exchange/request/crud/search/stack/request.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/domain/search/search.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/exchange/request/crud/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/exchange/request/crud/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/search/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/search/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/search/context/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/search/context/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/search/context/arena/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/search/context/arena/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/search/context/arena/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/search/context/arena/model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/search/context/board/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/search/context/board/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/search/context/board/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/search/context/board/model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/search/context/context.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/search/context/context.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/search/context/coord/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/search/context/coord/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/search/context/coord/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/search/context/coord/model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/search/context/edge/context.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/search/context/edge/context.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/search/context/formation/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/search/context/formation/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/search/context/formation/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/search/context/formation/model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/search/context/game/context.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/search/context/game/context.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/search/context/home/context.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/search/context/home/context.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/search/context/hostage/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/search/context/hostage/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/search/context/hostage/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/search/context/hostage/model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/search/context/node/context.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/search/context/node/context.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/search/context/orientation/context.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/search/context/orientation/context.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/search/context/persona/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/search/context/persona/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/search/context/persona/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/search/context/persona/model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/search/context/player/context.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/search/context/player/context.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/search/context/rank/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/search/context/rank/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/search/context/rank/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/search/context/rank/model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/search/context/schema/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/search/context/schema/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/search/context/schema/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/search/context/schema/model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/search/context/square/context.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/search/context/square/context.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/search/context/team/context.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/search/context/team/context.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/search/context/token/context.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/search/context/token/context.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/toolkit/context/toollkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/toolkit/context/toollkit.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -102,7 +65,7 @@
     "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "C:/Users/banji/PycharmProjects/chessbot/src/domain/search",
+    "last_opened_file_path": "C:/Users/banji/PycharmProjects/chessbot/src/domain/search/context/stack",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
@@ -114,18 +77,18 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\banji\PycharmProjects\chessbot\src\domain\search\context\stack" />
       <recent name="C:\Users\banji\PycharmProjects\chessbot\src\domain\search" />
       <recent name="C:\Users\banji\PycharmProjects\chessbot\src\domain\exchange\request\crud" />
       <recent name="C:\Users\banji\PycharmProjects\chessbot\src\domain\exchange\request\crud\delete" />
       <recent name="C:\Users\banji\PycharmProjects\chessbot\src\domain\exchange\request\crud\delete\item" />
-      <recent name="C:\Users\banji\PycharmProjects\chessbot\src\domain\exchange\request\crud\delete\id" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\banji\PycharmProjects\chessbot\src\domain\search\context\stack" />
       <recent name="C:\Users\banji\PycharmProjects\chessbot\src\domain\exchange\request\crud\insert" />
       <recent name="C:\Users\banji\PycharmProjects\chessbot\src\result\shell" />
       <recent name="C:\Users\banji\PycharmProjects\chessbot\src\command" />
       <recent name="C:\Users\banji\PycharmProjects\chessbot\src\result\crud" />
-      <recent name="C:\Users\banji\PycharmProjects\chessbot\src\domain" />
     </key>
   </component>
   <component name="RunManager" selected="Python.roster">
@@ -754,7 +717,7 @@
       <workItem from="1785354695376" duration="4352000" />
       <workItem from="1785366790867" duration="182641000" />
       <workItem from="1785958183827" duration="174661000" />
-      <workItem from="1786522110280" duration="165232000" />
+      <workItem from="1786522110280" duration="167718000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />
@@ -892,7 +855,7 @@
           <option name="timeStamp" value="89" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/src/domain/search/context/coord/exception/anchor.py</url>
+          <url>file://$PROJECT_DIR$/src/domain/search/context/stack/coord/exception/anchor.py</url>
           <line>67</line>
           <option name="timeStamp" value="98" />
         </line-breakpoint>
@@ -1715,6 +1678,11 @@
           <url>file://$PROJECT_DIR$/src/domain/exchange/request/crud/delete/item/stack/request.py</url>
           <line>11</line>
           <option name="timeStamp" value="377" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/domain/search/context/stack/context.py</url>
+          <line>11</line>
+          <option name="timeStamp" value="378" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

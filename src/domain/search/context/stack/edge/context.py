@@ -8,14 +8,13 @@ version: 0.0.2
 """
 
 from __future__ import annotations
-from typing import Optional
+
+from typing import Any, Dict, Optional
+
+from domain import Edge, StackSearchContext
 
 
-
-from domain import Context, Edge, Node
-
-
-class EdgeContext(Context[Edge]):
+class EdgeSearchContext(StackSearchContext[Edge]):
     """
     Role:
         -   Selection
