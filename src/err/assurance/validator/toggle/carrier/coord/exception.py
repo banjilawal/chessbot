@@ -27,7 +27,7 @@ class CoordCarrierValidatorException(EntityCarrierValidatorException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicating a candidate failed a CoordCarrierValidator test.
+        1.  Indicating assurance by a CoordCarrierValidator failed.
 
     Attributes:
             msg: Optional[str]

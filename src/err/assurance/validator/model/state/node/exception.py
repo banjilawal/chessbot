@@ -27,7 +27,7 @@ class NodeValidatorException(StateModelValidatorException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicating a candidate failed a NodeValidator test.
+        1.  Indicating assurance by a NodeValidator failed.
 
     Attributes:
         msg: Optional[str]

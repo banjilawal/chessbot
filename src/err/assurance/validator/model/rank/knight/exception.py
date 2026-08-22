@@ -25,7 +25,7 @@ class KnightValidatorException(RankValidatorException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicating a candidate failed a Knight validator test.
+        1.  Indicating assurance by a Knight validator failed.
 
     Attributes:
         msg: Optional[str]

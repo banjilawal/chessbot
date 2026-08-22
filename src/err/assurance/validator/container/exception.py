@@ -27,7 +27,7 @@ class ContainerValidatorException(ValidatorException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicating a candidate failed a ContainerValidator test.
+        1.  Indicating assurance by a ContainerValidator failed.
 
     Attributes:
         msg: Optional[str]

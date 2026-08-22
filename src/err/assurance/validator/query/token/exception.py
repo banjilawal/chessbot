@@ -27,7 +27,7 @@ class TokenQueryValidatorException(QueryValidatorException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicating a candidate failed a TokenQueryValidator test.
+        1.  Indicating assurance by a TokenQueryValidator failed.
 
     Attributes:
         msg: Optional[str]

@@ -15,18 +15,18 @@ from err import BinderException
 
 
 __all__ = [
-    # ======================# ARENA_PLAYER_BINDER_CONSISTENCY_CHECKER_FAILURE #======================#
-    "ArenaPlayerBinderConsistencyCheckerException",
+    # ======================# ARENA_PLAYER_BINDER_CONSISTENCY_AUDITOR_FAILURE #======================#
+    "ArenaPlayerBinderConsistencyAuditorException",
 ]
 
-# ======================# ARENA_PLAYER_BINDER_CONSISTENCY_CHECKER_FAILURE #======================#
-class ArenaPlayerBinderConsistencyCheckerException(BinderException):
+# ======================# ARENA_PLAYER_BINDER_CONSISTENCY_AUDITOR_FAILURE #======================#
+class ArenaPlayerBinderConsistencyAuditorException(BinderException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicating a ArenaPlayerBinderConsistencyChecker raised an error.
+        1.  Indicating a ArenaPlayerBinderConsistencyAuditor failed.
 
     Attributes:
         msg: Optional[str]
@@ -44,7 +44,7 @@ class ArenaPlayerBinderConsistencyCheckerException(BinderException):
         BinderException
     """
     MSG = "ArenaPlayerBinder consistency error."
-    ERR_CODE = "ARENA_PLAYER_BINDER_CONSISTENCY_CHECKER_FAILURE"
+    ERR_CODE = "ARENA_PLAYER_BINDER_CONSISTENCY_AUDITOR_FAILURE"
     
     def __init__(
             self,

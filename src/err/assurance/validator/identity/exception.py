@@ -27,7 +27,7 @@ class IdentityValidatorException(ValidatorException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicating an IdentityValidator test.
+        1.  Indicating an IdentityValidator failed.
 
     Attributes:
         msg: Optional[str]

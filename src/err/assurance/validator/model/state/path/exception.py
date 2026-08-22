@@ -27,7 +27,7 @@ class PathValidatorException(StateModelValidatorException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicating a candidate failed a PathValidation check.
+        1.  Indicating assurance by a PathValidation check.
 
     Attributes:
             msg: Optional[str]

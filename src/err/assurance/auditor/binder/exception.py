@@ -16,18 +16,18 @@ from result import MethodResultType
 
 
 __all__ = [
-    # ======================# BINDER_CONSISTENCY_CHECKER_FAILURE #======================#
+    # ======================# BINDER_CONSISTENCY_AUDITOR_FAILURE #======================#
     "BinderConsistencyAuditorException",
 ]
 
-# ======================# BINDER_CONSISTENCY_CHECKER_FAILURE #======================#
+# ======================# BINDER_CONSISTENCY_AUDITOR_FAILURE #======================#
 class BinderConsistencyAuditorException(ConsistencyAuditorException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicating a BinderConsistencyChecker raised an error.
+        1.  Indicating a BinderConsistencyAuditor failed.
 
     Attributes:
         msg: Optional[str]
@@ -42,10 +42,10 @@ class BinderConsistencyAuditorException(ConsistencyAuditorException):
     Provides:
 
     Super Class:
-        ConsistencyCheckerException
+        ConsistencyAuditorException
     """
     MSG = "Binder consistency error."
-    ERR_CODE = "BINDER_CONSISTENCY_CHECKER_FAILURE"
+    ERR_CODE = "BINDER_CONSISTENCY_AUDITOR_FAILURE"
     
     def __init__(
             self,

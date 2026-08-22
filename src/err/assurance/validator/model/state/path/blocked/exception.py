@@ -27,7 +27,7 @@ class BlockedPathValidatorException(PathValidatorException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicating a candidate failed a BlockedPathValidator test.
+        1.  Indicating assurance by a BlockedPathValidator failed.
 
     Attributes:
             msg: Optional[str]

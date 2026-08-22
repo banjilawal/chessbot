@@ -16,7 +16,7 @@ from .assurance import *
 from .bidirectional import *
 from .bootstrapper import *
 from .builder import *
-from .transit import *
+from err.domain.transit import *
 from .collider import *
 from .config import *
 from .collection import *

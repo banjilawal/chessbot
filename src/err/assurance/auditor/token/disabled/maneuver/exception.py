@@ -16,12 +16,12 @@ from result import MethodResultType
 
 
 __all__ = [
-    # ======================# DISABLED_TOKEN_MANEUVER_CONSISTENCY_CHECKER_FAILURE #======================#
-    "DisabledTokenManeuverConsistencyCheckerException",
+    # ======================# DISABLED_TOKEN_MANEUVER_CONSISTENCY_AUDITOR_FAILURE #======================#
+    "DisabledTokenManeuverConsistencyAuditorException",
 ]
 
-# ======================# DISABLED_TOKEN_MANEUVER_CONSISTENCY_CHECKER_FAILURE #======================#
-class DisabledTokenManeuverConsistencyCheckerException(DisabledTokenException):
+# ======================# DISABLED_TOKEN_MANEUVER_CONSISTENCY_AUDITOR_FAILURE #======================#
+class DisabledTokenManeuverConsistencyAuditorException(DisabledTokenException):
     """
     Role:
         -   Error Tracing
@@ -45,7 +45,7 @@ class DisabledTokenManeuverConsistencyCheckerException(DisabledTokenException):
         DisabledTokenException
     """
     MSG = "Cannot maneuver a disabled token."
-    ERR_CODE = "DISABLED_TOKEN_MANEUVER_CONSISTENCY_CHECKER_FAILURE"
+    ERR_CODE = "DISABLED_TOKEN_MANEUVER_CONSISTENCY_AUDITOR_FAILURE"
     
     def __init__(
             self,

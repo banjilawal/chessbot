@@ -16,18 +16,18 @@ from result import MethodResultType
 
 
 __all__ = [
-    # ======================# TOKEN_INTEGRITY_CHECKER_FAILURE #======================#
+    # ======================# TOKEN_INTEGRITY_INTEGRITY_CHECKER_FAILURE #======================#
     "TokenIntegrityCheckerException",
 ]
 
-# ======================# TOKEN_INTEGRITY_CHECKER_FAILURE #======================#
+# ======================# TOKEN_INTEGRITY_INTEGRITY_CHECKER_FAILURE #======================#
 class TokenIntegrityCheckerException(ModelIntegrityCheckerException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicating a candidate failed a TokenIntegrityChecker test.
+        1.  Indicating assurance by a TokenIntegrityChecker failed.
 
     Attributes:
             msg: Optional[str]
@@ -45,7 +45,7 @@ class TokenIntegrityCheckerException(ModelIntegrityCheckerException):
         ModelIntegrityCheckerException
     """
     MSG = "TokenIntegrityChecker failure."
-    ERR_CODE = "TOKEN_INTEGRITY_CHECKER_FAILURE"
+    ERR_CODE = "TOKEN_INTEGRITY_INTEGRITY_CHECKER_FAILURE"
     
     def __init__(
             self,

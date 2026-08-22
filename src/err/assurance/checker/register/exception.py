@@ -16,18 +16,18 @@ from result import MethodResultType
 
 
 __all__ = [
-    # ======================# REGISTER_ROOT_CERTIFIER_FAILURE #======================#
+    # ======================# REGISTER_INTEGRITY_CHECKER_FAILURE #======================#
     "RegisterIntegrityCheckerException",
 ]
 
-# ======================# REGISTER_ROOT_CERTIFIER_FAILURE #======================#
+# ======================# REGISTER_INTEGRITY_CHECKER_FAILURE #======================#
 class RegisterIntegrityCheckerException(IntegrityCheckerException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicating a candidate failed a RegisterRootCertifier test.
+        1.  Indicating assurance by a RegisterChecker failed.
 
     Attributes:
             msg: Optional[str]
@@ -42,10 +42,10 @@ class RegisterIntegrityCheckerException(IntegrityCheckerException):
     Provides:
 
     Super Class:
-        RootCertifierException
+        CheckerException
     """
-    MSG = "Register root certification failure."
-    ERR_CODE = "REGISTER_ROOT_CERTIFIER_FAILURE"
+    MSG = "Register IntegrityChecker failure."
+    ERR_CODE = "REGISTER_INTEGRITY_CHECKER_FAILURE"
     
     def __init__(
             self,

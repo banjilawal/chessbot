@@ -16,18 +16,18 @@ from result import MethodResultType
 
 
 __all__ = [
-    # ======================# RANK_TOGGLE_ROOT_CERTIFIER_FAILURE #======================#
-    "RankToggleRootCertifierException",
+    # ======================# RANK_TOGGLE_INTEGRITY_CHECKER_FAILURE #======================#
+    "RankToggleCheckerException",
 ]
 
-# ======================# RANK_TOGGLE_ROOT_CERTIFIER_FAILURE #======================#
-class RankToggleRootCertifierException(ToggleIntegrityCheckerException):
+# ======================# RANK_TOGGLE_INTEGRITY_CHECKER_FAILURE #======================#
+class RankToggleCheckerException(ToggleIntegrityCheckerException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicating a candidate failed a RankToggleRootCertifier test.
+        1.  Indicating assurance by a RankToggleChecker failed.
 
     Attributes:
             msg: Optional[str]
@@ -42,10 +42,10 @@ class RankToggleRootCertifierException(ToggleIntegrityCheckerException):
     Provides:
 
     Super Class:
-        ToggleRootCertifierException
+        ToggleCheckerException
     """
-    MSG = "Rank root certification failure."
-    ERR_CODE = "RANK_TOGGLE_ROOT_CERTIFIER_FAILURE"
+    MSG = "Rank IntegrityChecker failure."
+    ERR_CODE = "RANK_TOGGLE_INTEGRITY_CHECKER_FAILURE"
     
     def __init__(
             self,

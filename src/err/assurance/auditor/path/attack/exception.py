@@ -16,18 +16,18 @@ from result import MethodResultType
 
 
 __all__ = [
-    # ======================# ATTACK_PATH_CONSISTENCY_CHECKER_FAILURE #======================#
-    "AttackPathConsistencyCheckerException",
+    # ======================# ATTACK_PATH_CONSISTENCY_AUDITOR_FAILURE #======================#
+    "AttackPathConsistencyAuditorException",
 ]
 
-# ======================# ATTACK_PATH_CONSISTENCY_CHECKER_FAILURE #======================#
-class AttackPathConsistencyCheckerException(PathException):
+# ======================# ATTACK_PATH_CONSISTENCY_AUDITOR_FAILURE #======================#
+class AttackPathConsistencyAuditorException(PathException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicating a AttackPathConsistencyChecker raised an error.
+        1.  Indicating a AttackPathConsistencyAuditor failed.
 
     Attributes:
         msg: Optional[str]
@@ -45,7 +45,7 @@ class AttackPathConsistencyCheckerException(PathException):
         PathException
     """
     MSG = "AttackPath consistency error."
-    ERR_CODE = "ATTACK_PATH_CONSISTENCY_CHECKER_FAILURE"
+    ERR_CODE = "ATTACK_PATH_CONSISTENCY_AUDITOR_FAILURE"
     
     def __init__(
             self,

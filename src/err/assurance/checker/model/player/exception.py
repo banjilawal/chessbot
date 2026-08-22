@@ -16,18 +16,18 @@ from result import MethodResultType
 
 
 __all__ = [
-    # ======================# PLAYER_INTEGRITY_CHECKER_FAILURE #======================#
+    # ======================# PLAYER_INTEGRITY_INTEGRITY_CHECKER_FAILURE #======================#
     "PlayerIntegrityCheckerException",
 ]
 
-# ======================# PLAYER_INTEGRITY_CHECKER_FAILURE #======================#
+# ======================# PLAYER_INTEGRITY_INTEGRITY_CHECKER_FAILURE #======================#
 class PlayerIntegrityCheckerException(ModelIntegrityCheckerException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicating a candidate failed a PlayerIntegrityChecker test.
+        1.  Indicating assurance by a PlayerIntegrityChecker failed.
 
     Attributes:
             msg: Optional[str]
@@ -45,7 +45,7 @@ class PlayerIntegrityCheckerException(ModelIntegrityCheckerException):
         ModelIntegrityCheckerException
     """
     MSG = "PlayerIntegrityChecker failure."
-    ERR_CODE = "PLAYER_INTEGRITY_CHECKER_FAILURE"
+    ERR_CODE = "PLAYER_INTEGRITY_INTEGRITY_CHECKER_FAILURE"
     
     def __init__(
             self,

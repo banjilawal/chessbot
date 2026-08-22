@@ -14,11 +14,11 @@ from typing import Any, Optional
 from err import ExcessBlueprintFlagsException
 
 _all_ = [
-    # ======================# EXCESS_COORD_ROOT_CERTIFIER_FLAGS_FAILURE #======================#
+    # ======================# EXCESS_COORD_CHECKER_FLAGS_FAILURE #======================#
     "ExcessCoordBlueprintFlagsException",
 ]
 
-# ======================# EXCESS_COORD_ROOT_CERTIFIER_FLAGS_FAILURE #======================#
+# ======================# EXCESS_COORD_CHECKER_FLAGS_FAILURE #======================#
 class ExcessCoordBlueprintFlagsException(ExcessBlueprintFlagsException):
     """
     Role:
@@ -41,8 +41,8 @@ class ExcessCoordBlueprintFlagsException(ExcessBlueprintFlagsException):
     Super Class:
         ExcessBlueprintFlagsException
     """
-    MSG = "More than one CoordCRootCertifier test. enabled."
-    ERR_CODE = "EXCESS_COORD_ROOT_CERTIFIER_FLAGS_FAILURE"
+    MSG = "More than one CoordChecker failed."
+    ERR_CODE = "EXCESS_COORD_CHECKER_FLAGS_FAILURE"
     
     def __init__(
             self,

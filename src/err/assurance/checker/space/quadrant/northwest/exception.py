@@ -11,23 +11,23 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import QuadrantRootCertifierException
+from err import QuadrantCheckerException
 from result import MethodResultType
 
 
 __all__ = [
-    # ======================# NORTHWEST_QUADRANT_ROOT_CERTIFIER_FAILURE #======================#
-    "NorthwestQuadrantRootCertifierException",
+    # ======================# NORTHWEST_QUADRANT_INTEGRITY_CHECKER_FAILURE #======================#
+    "NorthwestQuadrantCheckerException",
 ]
 
-# ======================# NORTHWEST_QUADRANT_ROOT_CERTIFIER_FAILURE #======================#
-class NorthwestQuadrantRootCertifierException(QuadrantRootCertifierException):
+# ======================# NORTHWEST_QUADRANT_INTEGRITY_CHECKER_FAILURE #======================#
+class NorthwestQuadrantCheckerException(QuadrantCheckerException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicating a candidate failed an NorthwestQuadrantSRootCertifier test.
+        1.  Indicating assurance by an NorthwestQuadrantSChecker failed.
 
     Attributes:
             msg: Optional[str]
@@ -42,10 +42,10 @@ class NorthwestQuadrantRootCertifierException(QuadrantRootCertifierException):
     Provides:
 
     Super Class:
-        NorthwestQuadrantRootCertifierException
+        NorthwestQuadrantCheckerException
     """
     MSG = "NorthwestQuadrantRootCerfier failure."
-    ERR_CODE = "NORTHWEST_QUADRANT_ROOT_CERTIFIER_FAILURE"
+    ERR_CODE = "NORTHWEST_QUADRANT_INTEGRITY_CHECKER_FAILURE"
     
     def __init__(
             self,

@@ -14,18 +14,18 @@ from typing import Any, Optional
 from err import ZeroBlueprintFlagsException
 
 _all_ = [
-    # ======================# ZERO_GAME_ROOT_CERTIFIER_FLAGS_FAILURE #======================#
+    # ======================# ZERO_GAME_CHECKER_FLAGS_FAILURE #======================#
     "ZeroGameBlueprintFlagsException",
 ]
 
-# ======================# ZERO_GAME_ROOT_CERTIFIER_FLAGS_FAILURE #======================#
+# ======================# ZERO_GAME_CHECKER_FLAGS_FAILURE #======================#
 class ZeroGameBlueprintFlagsException(ZeroBlueprintFlagsException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicatings that no GameRootCertifier test. enabled.
+        1.  Indicatings that no GameChecker failed.
 
     Attributes:
         msg: Optional[str]
@@ -41,8 +41,8 @@ class ZeroGameBlueprintFlagsException(ZeroBlueprintFlagsException):
     Super Class:
         ZeroBlueprintFlagsException
     """
-    MSG = "No GameCRootCertifier test. enabled."
-    ERR_CODE = "ZERO_GAME_ROOT_CERTIFIER_FLAGS_FAILURE"
+    MSG = "No GameChecker failed."
+    ERR_CODE = "ZERO_GAME_CHECKER_FLAGS_FAILURE"
     
     def __init__(
             self,

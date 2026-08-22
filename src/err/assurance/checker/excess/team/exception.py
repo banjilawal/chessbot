@@ -14,11 +14,11 @@ from typing import Any, Optional
 from err import ExcessBlueprintFlagsException
 
 _all_ = [
-    # ======================# EXCESS_TEAM_ROOT_CERTIFIER_FLAGS_FAILURE #======================#
+    # ======================# EXCESS_TEAM_CHECKER_FLAGS_FAILURE #======================#
     "ExcessTeamBlueprintFlagsException",
 ]
 
-# ======================# EXCESS_TEAM_ROOT_CERTIFIER_FLAGS_FAILURE #======================#
+# ======================# EXCESS_TEAM_CHECKER_FLAGS_FAILURE #======================#
 class ExcessTeamBlueprintFlagsException(ExcessBlueprintFlagsException):
     """
     Role:
@@ -41,8 +41,8 @@ class ExcessTeamBlueprintFlagsException(ExcessBlueprintFlagsException):
     Super Class:
         ExcessBlueprintFlagsException
     """
-    MSG = "More than one TeamCRootCertifier test. enabled."
-    ERR_CODE = "EXCESS_TEAM_ROOT_CERTIFIER_FLAGS_FAILURE"
+    MSG = "More than one TeamChecker failed."
+    ERR_CODE = "EXCESS_TEAM_CHECKER_FLAGS_FAILURE"
     
     def __init__(
             self,

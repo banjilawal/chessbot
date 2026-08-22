@@ -17,18 +17,18 @@ from result import MethodResultType
 
 
 __all__ = [
-    # ======================# TOGGLE_REGISTER_ROOT_CERTIFIER_FAILURE #======================#
+    # ======================# TOGGLE_REGISTER_INTEGRITY_CHECKER_FAILURE #======================#
     "VectorToggleRegisterCertifierException",
 ]
 
-# ======================# TOGGLE_REGISTER_ROOT_CERTIFIER_FAILURE #======================#
+# ======================# TOGGLE_REGISTER_INTEGRITY_CHECKER_FAILURE #======================#
 class VectorToggleRegisterCertifierException(RegisterIntegrityCheckerException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicating a candidate failed a VectorToggleRegisterCertifier failed.
+        1.  Indicating assurance by a VectorToggleRegisterCertifier failed.
 
     Attributes:
             msg: Optional[str]
@@ -43,10 +43,10 @@ class VectorToggleRegisterCertifierException(RegisterIntegrityCheckerException):
     Provides:
 
     Super Class:
-        RegisterRootCertifierException
+        RegisterCheckerException
     """
     MSG = "VectorToggleRegisterCertifier failure."
-    ERR_CODE = "TOGGLE_REGISTER_ROOT_CERTIFIER_FAILURE"
+    ERR_CODE = "TOGGLE_REGISTER_INTEGRITY_CHECKER_FAILURE"
     
     def __init__(
             self,

@@ -27,7 +27,7 @@ class SquareContextValidatorException(EntityContextValidatorException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicating a candidate failed a SquareContextValidator test.
+        1.  Indicating assurance by a SquareContextValidator failed.
 
     Attributes:
             msg: Optional[str]

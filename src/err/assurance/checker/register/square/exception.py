@@ -17,18 +17,18 @@ from result import MethodResultType
 
 
 __all__ = [
-    # ======================# VECTOR_SQUARE_REGISTER_ROOT_CERTIFIER_FAILURE #======================#
-    "SquareRegisterRootCertifierException",
+    # ======================# VECTOR_SQUARE_REGISTER_INTEGRITY_CHECKER_FAILURE #======================#
+    "SquareRegisterCheckerException",
 ]
 
-# ======================# VECTOR_SQUARE_REGISTER_ROOT_CERTIFIER_FAILURE #======================#
-class SquareRegisterRootCertifierException(RegisterIntegrityCheckerException):
+# ======================# VECTOR_SQUARE_REGISTER_INTEGRITY_CHECKER_FAILURE #======================#
+class SquareRegisterCheckerException(RegisterIntegrityCheckerException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicating a candidate failed a VectorSquareRegisterCertifier failed.
+        1.  Indicating assurance by a VectorSquareRegisterCertifier failed.
 
     Attributes:
             msg: Optional[str]
@@ -43,10 +43,10 @@ class SquareRegisterRootCertifierException(RegisterIntegrityCheckerException):
     Provides:
 
     Super Class:
-        RegisterRootCertifierException
+        RegisterCheckerException
     """
     MSG = "VectorSquareRegisterCertifier failure."
-    ERR_CODE = "VECTOR_SQUARE_REGISTER_ROOT_CERTIFIER_FAILURE"
+    ERR_CODE = "VECTOR_SQUARE_REGISTER_INTEGRITY_CHECKER_FAILURE"
     
     def __init__(
             self,

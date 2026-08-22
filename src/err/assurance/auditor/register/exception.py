@@ -16,18 +16,18 @@ from result import MethodResultType
 
 
 __all__ = [
-    # ======================# REGISTER_CONSISTENCY_CHECKER_FAILURE #======================#
+    # ======================# REGISTER_CONSISTENCY_AUDITOR_FAILURE #======================#
     "RegisterConsistencyAuditorException",
 ]
 
-# ======================# REGISTER_CONSISTENCY_CHECKER_FAILURE #======================#
+# ======================# REGISTER_CONSISTENCY_AUDITOR_FAILURE #======================#
 class RegisterConsistencyAuditorException(ConsistencyAuditorException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicating a RegisterConsistencyChecker raised an error.
+        1.  Indicating a RegisterConsistencyAuditor failed.
 
     Attributes:
         msg: Optional[str]
@@ -42,10 +42,10 @@ class RegisterConsistencyAuditorException(ConsistencyAuditorException):
     Provides:
 
     Super Class:
-        ConsistencyCheckerException
+        ConsistencyAuditorException
     """
     MSG = "Register consistency error."
-    ERR_CODE = "REGISTER_CONSISTENCY_CHECKER_FAILURE"
+    ERR_CODE = "REGISTER_CONSISTENCY_AUDITOR_FAILURE"
     
     def __init__(
             self,

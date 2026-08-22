@@ -16,18 +16,18 @@ from result import MethodResultType
 
 
 __all__ = [
-    # ======================# QUADRANT_ROOT_CERTIFIER_FAILURE #======================#
-    "QuadrantRootCertifierException",
+    # ======================# QUADRANT_INTEGRITY_CHECKER_FAILURE #======================#
+    "QuadrantCheckerException",
 ]
 
-# ======================# QUADRANT_ROOT_CERTIFIER_FAILURE #======================#
-class QuadrantRootCertifierException(SpaceIntegrityCheckerException):
+# ======================# QUADRANT_INTEGRITY_CHECKER_FAILURE #======================#
+class QuadrantCheckerException(SpaceIntegrityCheckerException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicating a candidate failed an QuadrantSRootCertifier test.
+        1.  Indicating assurance by an QuadrantSChecker failed.
 
     Attributes:
             msg: Optional[str]
@@ -42,10 +42,10 @@ class QuadrantRootCertifierException(SpaceIntegrityCheckerException):
     Provides:
 
     Super Class:
-        QuadrantSpaceRootCertifierException
+        QuadrantSpaceCheckerException
     """
     MSG = "QuadrantRootCerfier failure."
-    ERR_CODE = "QUADRANT_ROOT_CERTIFIER_FAILURE"
+    ERR_CODE = "QUADRANT_INTEGRITY_CHECKER_FAILURE"
     
     def __init__(
             self,

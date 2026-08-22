@@ -16,18 +16,18 @@ from result import MethodResultType
 
 
 __all__ = [
-    # ======================# ARENA_TOGGLE_ROOT_CERTIFIER_FAILURE #======================#
-    "ArenaToggleRootCertifierException",
+    # ======================# ARENA_TOGGLE_INTEGRITY_CHECKER_FAILURE #======================#
+    "ArenaToggleCheckerException",
 ]
 
-# ======================# ARENA_TOGGLE_ROOT_CERTIFIER_FAILURE #======================#
-class ArenaToggleRootCertifierException(ToggleRootCertifierException):
+# ======================# ARENA_TOGGLE_INTEGRITY_CHECKER_FAILURE #======================#
+class ArenaToggleCheckerException(ToggleCheckerException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicating a candidate failed an ArenaToggleRootCertifier test.
+        1.  Indicating assurance by an ArenaToggleChecker failed.
 
     Attributes:
             msg: Optional[str]
@@ -42,10 +42,10 @@ class ArenaToggleRootCertifierException(ToggleRootCertifierException):
     Provides:
 
     Super Class:
-        ToggleRootCertifierException
+        ToggleCheckerException
     """
-    MSG = "Arena root certification failure."
-    ERR_CODE = "ARENA_TOGGLE_ROOT_CERTIFIER_FAILURE"
+    MSG = "Arena IntegrityChecker failure."
+    ERR_CODE = "ARENA_TOGGLE_INTEGRITY_CHECKER_FAILURE"
     
     def __init__(
             self,

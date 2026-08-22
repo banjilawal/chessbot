@@ -27,7 +27,7 @@ class BoardContextValidatorException(EntityContextValidatorException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicating a candidate failed a BoardContextValidator test.
+        1.  Indicating assurance by a BoardContextValidator failed.
 
     Attributes:
             msg: Optional[str]

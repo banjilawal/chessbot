@@ -27,7 +27,7 @@ class VectorToggleRegisterValidatorException(RegisterValidatorException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicating a candidate failed a VectorToggleRegisterValidator test.
+        1.  Indicating assurance by a VectorToggleRegisterValidator failed.
 
     Attributes:
             msg: Optional[str]

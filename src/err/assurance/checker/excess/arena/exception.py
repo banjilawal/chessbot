@@ -14,11 +14,11 @@ from typing import Any, Optional
 from err import ExcessBlueprintFlagsException
 
 _all_ = [
-    # ======================# EXCESS_ARENA_ROOT_CERTIFIER_FLAGS_FAILURE #======================#
+    # ======================# EXCESS_ARENA_CHECKER_FLAGS_FAILURE #======================#
     "ExcessArenaBlueprintFlagsException",
 ]
 
-# ======================# EXCESS_ARENA_ROOT_CERTIFIER_FLAGS_FAILURE #======================#
+# ======================# EXCESS_ARENA_CHECKER_FLAGS_FAILURE #======================#
 class ExcessArenaBlueprintFlagsException(ExcessBlueprintFlagsException):
     """
     Role:
@@ -41,8 +41,8 @@ class ExcessArenaBlueprintFlagsException(ExcessBlueprintFlagsException):
     Super Class:
         ExcessBlueprintFlagsException
     """
-    MSG = "More than one ArenaCRootCertifier test. enabled."
-    ERR_CODE = "EXCESS_ARENA_ROOT_CERTIFIER_FLAGS_FAILURE"
+    MSG = "More than one ArenaChecker failed."
+    ERR_CODE = "EXCESS_ARENA_CHECKER_FLAGS_FAILURE"
     
     def __init__(
             self,

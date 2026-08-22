@@ -27,7 +27,7 @@ class TokenCarrierValidatorException(EntityCarrierValidatorException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicating a candidate failed a TokenCarrierValidator test.
+        1.  Indicating assurance by a TokenCarrierValidator failed.
 
     Attributes:
             msg: Optional[str]

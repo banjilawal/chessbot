@@ -16,18 +16,18 @@ from result import MethodResultType
 
 
 __all__ = [
-    # ======================# COMBATANT_TOKEN_CONSISTENCY_CHECKER_FAILURE #======================#
-    "CombatantTokenConsistencyCheckerException",
+    # ======================# COMBATANT_TOKEN_CONSISTENCY_AUDITOR_FAILURE #======================#
+    "CombatantTokenConsistencyAuditorException",
 ]
 
-# ======================# COMBATANT_TOKEN_CONSISTENCY_CHECKER_FAILURE #======================#
-class CombatantTokenConsistencyCheckerException(TokenException):
+# ======================# COMBATANT_TOKEN_CONSISTENCY_AUDITOR_FAILURE #======================#
+class CombatantTokenConsistencyAuditorException(TokenException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicating a CombatantTokenConsistencyChecker raised an error.
+        1.  Indicating a CombatantTokenConsistencyAuditor failed.
 
     Attributes:
         msg: Optional[str]
@@ -44,8 +44,8 @@ class CombatantTokenConsistencyCheckerException(TokenException):
     Super Class:
         TokenException
     """
-    MSG = "CombatantTokenConsistencyChecker raised an consistency error."
-    ERR_CODE = "COMBATANT_TOKEN_CONSISTENCY_CHECKER_FAILURE"
+    MSG = "CombatantTokenConsistencyAuditor raised an consistency error."
+    ERR_CODE = "COMBATANT_TOKEN_CONSISTENCY_AUDITOR_FAILURE"
     
     def __init__(
             self,

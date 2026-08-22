@@ -14,18 +14,18 @@ from typing import Any, Optional
 from err import ZeroBlueprintFlagsException
 
 _all_ = [
-    # ======================# ZERO_COORD_ROOT_CERTIFIER_FLAGS_FAILURE #======================#
+    # ======================# ZERO_COORD_CHECKER_FLAGS_FAILURE #======================#
     "ZeroCoordBlueprintFlagsException",
 ]
 
-# ======================# ZERO_COORD_ROOT_CERTIFIER_FLAGS_FAILURE #======================#
+# ======================# ZERO_COORD_CHECKER_FLAGS_FAILURE #======================#
 class ZeroCoordBlueprintFlagsException(ZeroBlueprintFlagsException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicatings that no CoordRootCertifier test. enabled.
+        1.  Indicatings that no CoordChecker failed.
 
     Attributes:
         msg: Optional[str]
@@ -41,8 +41,8 @@ class ZeroCoordBlueprintFlagsException(ZeroBlueprintFlagsException):
     Super Class:
         ZeroBlueprintFlagsException
     """
-    MSG = "No CoordCRootCertifier test. enabled."
-    ERR_CODE = "ZERO_COORD_ROOT_CERTIFIER_FLAGS_FAILURE"
+    MSG = "No CoordChecker failed."
+    ERR_CODE = "ZERO_COORD_CHECKER_FLAGS_FAILURE"
     
     def __init__(
             self,

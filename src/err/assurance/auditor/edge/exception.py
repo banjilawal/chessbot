@@ -16,18 +16,18 @@ from result import MethodResultType
 
 
 __all__ = [
-    # ======================# EDGE_CONSISTENCY_CHECKER_FAILURE #======================#
+    # ======================# EDGE_CONSISTENCY_AUDITOR_FAILURE #======================#
     "EdgeConsistencyAuditorException",
 ]
 
-# ======================# EDGE_CONSISTENCY_CHECKER_FAILURE #======================#
+# ======================# EDGE_CONSISTENCY_AUDITOR_FAILURE #======================#
 class EdgeConsistencyAuditorException(ConsistencyAuditorException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicating a EdgeConsistencyChecker raised an error.
+        1.  Indicating a EdgeConsistencyAuditor failed.
 
     Attributes:
         msg: Optional[str]
@@ -42,10 +42,10 @@ class EdgeConsistencyAuditorException(ConsistencyAuditorException):
     Provides:
 
     Super Class:
-        ConsistencyCheckerException
+        ConsistencyAuditorException
     """
     MSG = "Edge consistency error."
-    ERR_CODE = "EDGE_CONSISTENCY_CHECKER_FAILURE"
+    ERR_CODE = "EDGE_CONSISTENCY_AUDITOR_FAILURE"
     
     def __init__(
             self,

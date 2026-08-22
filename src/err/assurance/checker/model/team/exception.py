@@ -16,18 +16,18 @@ from result import MethodResultType
 
 
 __all__ = [
-    # ======================# TEAM_INTEGRITY_CHECKER_FAILURE #======================#
+    # ======================# TEAM_INTEGRITY_INTEGRITY_CHECKER_FAILURE #======================#
     "TeamIntegrityCheckerException",
 ]
 
-# ======================# TEAM_INTEGRITY_CHECKER_FAILURE #======================#
+# ======================# TEAM_INTEGRITY_INTEGRITY_CHECKER_FAILURE #======================#
 class TeamIntegrityCheckerException(ModelIntegrityCheckerException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicating a candidate failed a TeamIntegrityChecker test.
+        1.  Indicating assurance by a TeamIntegrityChecker failed.
 
     Attributes:
             msg: Optional[str]
@@ -45,7 +45,7 @@ class TeamIntegrityCheckerException(ModelIntegrityCheckerException):
         ModelIntegrityCheckerException
     """
     MSG = "TeamIntegrityChecker failure."
-    ERR_CODE = "TEAM_INTEGRITY_CHECKER_FAILURE"
+    ERR_CODE = "TEAM_INTEGRITY_INTEGRITY_CHECKER_FAILURE"
     
     def __init__(
             self,

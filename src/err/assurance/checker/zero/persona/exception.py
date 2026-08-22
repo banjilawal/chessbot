@@ -14,18 +14,18 @@ from typing import Any, Optional
 from err import ZeroBlueprintFlagsException
 
 _all_ = [
-    # ======================# ZERO_PERSONA_ROOT_CERTIFIER_FLAGS_FAILURE #======================#
+    # ======================# ZERO_PERSONA_CHECKER_FLAGS_FAILURE #======================#
     "ZeroPersonaBlueprintFlagsException",
 ]
 
-# ======================# ZERO_PERSONA_ROOT_CERTIFIER_FLAGS_FAILURE #======================#
+# ======================# ZERO_PERSONA_CHECKER_FLAGS_FAILURE #======================#
 class ZeroPersonaBlueprintFlagsException(ZeroBlueprintFlagsException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicatings that no PersonaRootCertifier test. enabled.
+        1.  Indicatings that no PersonaChecker failed.
 
     Attributes:
         msg: Optional[str]
@@ -41,8 +41,8 @@ class ZeroPersonaBlueprintFlagsException(ZeroBlueprintFlagsException):
     Super Class:
         ZeroBlueprintFlagsException
     """
-    MSG = "No PersonaCRootCertifier test. enabled."
-    ERR_CODE = "ZERO_PERSONA_ROOT_CERTIFIER_FLAGS_FAILURE"
+    MSG = "No PersonaChecker failed."
+    ERR_CODE = "ZERO_PERSONA_CHECKER_FLAGS_FAILURE"
     
     def __init__(
             self,

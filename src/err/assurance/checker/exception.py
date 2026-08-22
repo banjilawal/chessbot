@@ -11,23 +11,23 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import ChessException
+from err import AssuranceException
 from result import MethodResultType
 
 
 __all__ = [
-    # ======================# ROOT_CERTIFIER_FAILURE #======================#
+    # ======================# INTEGRITY_CHECKER_FAILURE #======================#
     "IntegrityCheckerException",
 ]
 
-# ======================# ROOT_CERTIFIER_FAILURE #======================#
-class IntegrityCheckerException(ChessException):
+# ======================# INTEGRITY_CHECKER_FAILURE #======================#
+class IntegrityCheckerException(AssuranceException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicating a candidate failed a RootCertifier test.
+        1.  Indicating assurance by an IntegrityChecker failed.
 
     Attributes:
             msg: Optional[str]
@@ -42,10 +42,10 @@ class IntegrityCheckerException(ChessException):
     Provides:
 
     Super Class:
-        ChessException
+        AssuranceException
     """
-    MSG = "Root certification failure."
-    ERR_CODE = "ROOT_CERTIFIER_FAILURE"
+    MSG = "IntegrityChecker failure."
+    ERR_CODE = "INTEGRITY_CHECKER_FAILURE"
     MTHD_RSLT_TYPE = MethodResultType.VALIDATION_RESULT
     
     def __init__(

@@ -16,18 +16,18 @@ from result import MethodResultType
 
 
 __all__ = [
-    # ======================# KING_TOKEN_CONSISTENCY_CHECKER_FAILURE #======================#
-    "KingTokenConsistencyCheckerException",
+    # ======================# KING_TOKEN_CONSISTENCY_AUDITOR_FAILURE #======================#
+    "KingTokenConsistencyAuditorException",
 ]
 
-# ======================# KING_TOKEN_CONSISTENCY_CHECKER_FAILURE #======================#
-class KingTokenConsistencyCheckerException(TokenException):
+# ======================# KING_TOKEN_CONSISTENCY_AUDITOR_FAILURE #======================#
+class KingTokenConsistencyAuditorException(TokenException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicating a KingTokenConsistencyChecker raised an error.
+        1.  Indicating a KingTokenConsistencyAuditor failed.
 
     Attributes:
         msg: Optional[str]
@@ -44,8 +44,8 @@ class KingTokenConsistencyCheckerException(TokenException):
     Super Class:
         TokenException
     """
-    MSG = "KingTokenConsistencyChecker raised an consistency error."
-    ERR_CODE = "KING_TOKEN_CONSISTENCY_CHECKER_FAILURE"
+    MSG = "KingTokenConsistencyAuditor raised an consistency error."
+    ERR_CODE = "KING_TOKEN_CONSISTENCY_AUDITOR_FAILURE"
     
     def __init__(
             self,

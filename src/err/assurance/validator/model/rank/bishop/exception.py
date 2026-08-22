@@ -25,7 +25,7 @@ class BishopValidatorException(RankValidatorException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicating a candidate failed a Bishop validator test.
+        1.  Indicating assurance by a Bishop validator failed.
 
     Attributes:
         msg: Optional[str]

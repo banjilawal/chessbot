@@ -14,11 +14,11 @@ from typing import Any, Optional
 from err import ExcessBlueprintFlagsException
 
 _all_ = [
-    # ======================# EXCESS_EDGE_ROOT_CERTIFIER_FLAGS_FAILURE #======================#
+    # ======================# EXCESS_EDGE_CHECKER_FLAGS_FAILURE #======================#
     "ExcessEdgeBlueprintFlagsException",
 ]
 
-# ======================# EXCESS_EDGE_ROOT_CERTIFIER_FLAGS_FAILURE #======================#
+# ======================# EXCESS_EDGE_CHECKER_FLAGS_FAILURE #======================#
 class ExcessEdgeBlueprintFlagsException(ExcessBlueprintFlagsException):
     """
     Role:
@@ -41,8 +41,8 @@ class ExcessEdgeBlueprintFlagsException(ExcessBlueprintFlagsException):
     Super Class:
         ExcessBlueprintFlagsException
     """
-    MSG = "More than one EdgeCRootCertifier test. enabled."
-    ERR_CODE = "EXCESS_EDGE_ROOT_CERTIFIER_FLAGS_FAILURE"
+    MSG = "More than one EdgeChecker failed."
+    ERR_CODE = "EXCESS_EDGE_CHECKER_FLAGS_FAILURE"
     
     def __init__(
             self,

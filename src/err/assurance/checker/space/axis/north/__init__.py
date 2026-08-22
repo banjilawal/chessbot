@@ -13,4 +13,4 @@ version: 0.0.2
 
 
 # Modules
-from .exception import NorthAxisRootCertifierException
+from .exception import NorthAxisCheckerException

@@ -27,7 +27,7 @@ class ArenaValidatorException(StateModelValidatorException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicating an ArenaValidator test.
+        1.  Indicating an ArenaValidator failed.
 
     Attributes:
         msg: Optional[str]

@@ -10,10 +10,11 @@ version: 0.0.2
 # ============ ERR.DOMAIN PACKAGE ===========#
 
 # Packages
+from .metadata import *
 from .model import *
-from .node import *
-from .register import *
 from .search import *
+from .structure import *
+from .transit import *
 
 # Modules
 from .exception import DomainObjectException

@@ -15,18 +15,18 @@ from err import PlayerException
 
 
 __all__ = [
-    # ======================# MACHINE_PLAYER_CONSISTENCY_CHECKER_FAILURE #======================#
-    "MachinePlayerConsistencyCheckerException",
+    # ======================# MACHINE_PLAYER_CONSISTENCY_AUDITOR_FAILURE #======================#
+    "MachinePlayerConsistencyAuditorException",
 ]
 
-# ======================# MACHINE_PLAYER_CONSISTENCY_CHECKER_FAILURE #======================#
-class MachinePlayerConsistencyCheckerException(PlayerException):
+# ======================# MACHINE_PLAYER_CONSISTENCY_AUDITOR_FAILURE #======================#
+class MachinePlayerConsistencyAuditorException(PlayerException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicating a MachinePlayerConsistencyChecker raised an error.
+        1.  Indicating a MachinePlayerConsistencyAuditor failed.
 
     Attributes:
         msg: Optional[str]
@@ -44,7 +44,7 @@ class MachinePlayerConsistencyCheckerException(PlayerException):
         PlayerException
     """
     MSG = "MachinePlayer consistency error."
-    ERR_CODE = "MACHINE_PLAYER_CONSISTENCY_CHECKER_FAILURE"
+    ERR_CODE = "MACHINE_PLAYER_CONSISTENCY_AUDITOR_FAILURE"
     
     def __init__(
             self,

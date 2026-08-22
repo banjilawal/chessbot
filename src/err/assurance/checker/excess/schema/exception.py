@@ -14,11 +14,11 @@ from typing import Any, Optional
 from err import ExcessBlueprintFlagsException
 
 _all_ = [
-    # ======================# EXCESS_SCHEMA_ROOT_CERTIFIER_FLAGS_FAILURE #======================#
+    # ======================# EXCESS_SCHEMA_CHECKER_FLAGS_FAILURE #======================#
     "ExcessSchemaBlueprintFlagsException",
 ]
 
-# ======================# EXCESS_SCHEMA_ROOT_CERTIFIER_FLAGS_FAILURE #======================#
+# ======================# EXCESS_SCHEMA_CHECKER_FLAGS_FAILURE #======================#
 class ExcessSchemaBlueprintFlagsException(ExcessBlueprintFlagsException):
     """
     Role:
@@ -41,8 +41,8 @@ class ExcessSchemaBlueprintFlagsException(ExcessBlueprintFlagsException):
     Super Class:
         ExcessBlueprintFlagsException
     """
-    MSG = "More than one SchemaCRootCertifier test. enabled."
-    ERR_CODE = "EXCESS_SCHEMA_ROOT_CERTIFIER_FLAGS_FAILURE"
+    MSG = "More than one SchemaChecker failed."
+    ERR_CODE = "EXCESS_SCHEMA_CHECKER_FLAGS_FAILURE"
     
     def __init__(
             self,

@@ -16,18 +16,18 @@ from result import MethodResultType
 
 
 __all__ = [
-    # ======================# BOARD_INTEGRITY_CHECKER_FAILURE #======================#
+    # ======================# BOARD_INTEGRITY_INTEGRITY_CHECKER_FAILURE #======================#
     "BoardIntegrityCheckerException",
 ]
 
-# ======================# BOARD_INTEGRITY_CHECKER_FAILURE #======================#
+# ======================# BOARD_INTEGRITY_INTEGRITY_CHECKER_FAILURE #======================#
 class BoardIntegrityCheckerException(ModelIntegrityCheckerException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicating a candidate failed a BoardIntegrityChecker test.
+        1.  Indicating assurance by a BoardIntegrityChecker failed.
 
     Attributes:
             msg: Optional[str]
@@ -45,7 +45,7 @@ class BoardIntegrityCheckerException(ModelIntegrityCheckerException):
         ModelIntegrityCheckerException
     """
     MSG = "BoardIntegrityChecker failure."
-    ERR_CODE = "BOARD_INTEGRITY_CHECKER_FAILURE"
+    ERR_CODE = "BOARD_INTEGRITY_INTEGRITY_CHECKER_FAILURE"
     
     def __init__(
             self,

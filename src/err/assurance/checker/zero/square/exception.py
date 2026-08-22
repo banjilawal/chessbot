@@ -14,18 +14,18 @@ from typing import Any, Optional
 from err import ZeroBlueprintFlagsException
 
 _all_ = [
-    # ======================# ZERO_SQUARE_ROOT_CERTIFIER_FLAGS_FAILURE #======================#
+    # ======================# ZERO_SQUARE_CHECKER_FLAGS_FAILURE #======================#
     "ZeroSquareBlueprintFlagsException",
 ]
 
-# ======================# ZERO_SQUARE_ROOT_CERTIFIER_FLAGS_FAILURE #======================#
+# ======================# ZERO_SQUARE_CHECKER_FLAGS_FAILURE #======================#
 class ZeroSquareBlueprintFlagsException(ZeroBlueprintFlagsException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicatings that no SquareRootCertifier test. enabled.
+        1.  Indicatings that no SquareChecker failed.
 
     Attributes:
         msg: Optional[str]
@@ -41,8 +41,8 @@ class ZeroSquareBlueprintFlagsException(ZeroBlueprintFlagsException):
     Super Class:
         ZeroBlueprintFlagsException
     """
-    MSG = "No SquareCRootCertifier test. enabled."
-    ERR_CODE = "ZERO_SQUARE_ROOT_CERTIFIER_FLAGS_FAILURE"
+    MSG = "No SquareChecker failed."
+    ERR_CODE = "ZERO_SQUARE_CHECKER_FLAGS_FAILURE"
     
     def __init__(
             self,

@@ -14,18 +14,18 @@ from typing import Any, Optional
 from err import ZeroBlueprintFlagsException
 
 _all_ = [
-    # ======================# ZERO_EDGE_ROOT_CERTIFIER_FLAGS_FAILURE #======================#
+    # ======================# ZERO_EDGE_CHECKER_FLAGS_FAILURE #======================#
     "ZeroEdgeBlueprintFlagsException",
 ]
 
-# ======================# ZERO_EDGE_ROOT_CERTIFIER_FLAGS_FAILURE #======================#
+# ======================# ZERO_EDGE_CHECKER_FLAGS_FAILURE #======================#
 class ZeroEdgeBlueprintFlagsException(ZeroBlueprintFlagsException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicatings that no EdgeRootCertifier test. enabled.
+        1.  Indicatings that no EdgeChecker failed.
 
     Attributes:
         msg: Optional[str]
@@ -41,8 +41,8 @@ class ZeroEdgeBlueprintFlagsException(ZeroBlueprintFlagsException):
     Super Class:
         ZeroBlueprintFlagsException
     """
-    MSG = "No EdgeCRootCertifier test. enabled."
-    ERR_CODE = "ZERO_EDGE_ROOT_CERTIFIER_FLAGS_FAILURE"
+    MSG = "No EdgeChecker failed."
+    ERR_CODE = "ZERO_EDGE_CHECKER_FLAGS_FAILURE"
     
     def __init__(
             self,

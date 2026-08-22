@@ -16,18 +16,18 @@ from result import MethodResultType
 
 
 __all__ = [
-    # ======================# PLAYER_TOGGLE_ROOT_CERTIFIER_FAILURE #======================#
-    "PlayerToggleRootCertifierException",
+    # ======================# PLAYER_TOGGLE_INTEGRITY_CHECKER_FAILURE #======================#
+    "PlayerToggleCheckerException",
 ]
 
-# ======================# PLAYER_TOGGLE_ROOT_CERTIFIER_FAILURE #======================#
-class PlayerToggleRootCertifierException(ToggleIntegrityCheckerException):
+# ======================# PLAYER_TOGGLE_INTEGRITY_CHECKER_FAILURE #======================#
+class PlayerToggleCheckerException(ToggleIntegrityCheckerException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicating a candidate failed a PlayerToggleRootCertifier test.
+        1.  Indicating assurance by a PlayerToggleChecker failed.
 
     Attributes:
             msg: Optional[str]
@@ -42,10 +42,10 @@ class PlayerToggleRootCertifierException(ToggleIntegrityCheckerException):
     Provides:
 
     Super Class:
-        ToggleRootCertifierException
+        ToggleCheckerException
     """
-    MSG = "Player root certification failure."
-    ERR_CODE = "PLAYER_TOGGLE_ROOT_CERTIFIER_FAILURE"
+    MSG = "Player IntegrityChecker failure."
+    ERR_CODE = "PLAYER_TOGGLE_INTEGRITY_CHECKER_FAILURE"
     
     def __init__(
             self,

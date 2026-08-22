@@ -27,7 +27,7 @@ class PlayerValidatorException(StateModelValidatorException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicating a candidate failed a PlayerValidator test.
+        1.  Indicating assurance by a PlayerValidator failed.
 
     Attributes:
         msg: Optional[str]

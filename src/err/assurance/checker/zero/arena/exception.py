@@ -14,18 +14,18 @@ from typing import Any, Optional
 from err import ZeroBlueprintFlagsException
 
 _all_ = [
-    # ======================# ZERO_ARENA_ROOT_CERTIFIER_FLAGS_FAILURE #======================#
+    # ======================# ZERO_ARENA_CHECKER_FLAGS_FAILURE #======================#
     "ZeroArenaBlueprintFlagsException",
 ]
 
-# ======================# ZERO_ARENA_ROOT_CERTIFIER_FLAGS_FAILURE #======================#
+# ======================# ZERO_ARENA_CHECKER_FLAGS_FAILURE #======================#
 class ZeroArenaBlueprintFlagsException(ZeroBlueprintFlagsException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicatings that no ArenaRootCertifier test. enabled.
+        1.  Indicatings that no ArenaChecker failed.
 
     Attributes:
         msg: Optional[str]
@@ -41,8 +41,8 @@ class ZeroArenaBlueprintFlagsException(ZeroBlueprintFlagsException):
     Super Class:
         ZeroBlueprintFlagsException
     """
-    MSG = "No ArenaCRootCertifier test. enabled."
-    ERR_CODE = "ZERO_ARENA_ROOT_CERTIFIER_FLAGS_FAILURE"
+    MSG = "No ArenaChecker failed."
+    ERR_CODE = "ZERO_ARENA_CHECKER_FLAGS_FAILURE"
     
     def __init__(
             self,

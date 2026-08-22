@@ -26,7 +26,7 @@ class BlueprintValidationPrimingException(IntegrityCheckerException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicating a candidate failed a BlueprintValidation failed during its priming phase.
+        1.  Indicating assurance by a BlueprintValidation failed during its priming phase.
 
     Attributes:
             msg: Optional[str]
@@ -41,7 +41,7 @@ class BlueprintValidationPrimingException(IntegrityCheckerException):
     Provides:
 
     Super Class:
-        RootCertifierException
+        CheckerException
     """
     MSG = "BlueprintValidation failed during its priming phase."
     ERR_CODE = "BLUEPRINT_VALIDATION_PRIMING_FAILURE"

@@ -16,18 +16,18 @@ from result import MethodResultType
 
 
 __all__ = [
-    # ======================# SPACE_ROOT_CERTIFIER_FAILURE #======================#
+    # ======================# SPACE_INTEGRITY_CHECKER_FAILURE #======================#
     "SpaceIntegrityCheckerException",
 ]
 
-# ======================# SPACE_ROOT_CERTIFIER_FAILURE #======================#
+# ======================# SPACE_INTEGRITY_CHECKER_FAILURE #======================#
 class SpaceIntegrityCheckerException(IntegrityCheckerException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicating a candidate failed a SpaceRootCertifier test.
+        1.  Indicating assurance by a SpaceChecker failed.
 
     Attributes:
             msg: Optional[str]
@@ -42,10 +42,10 @@ class SpaceIntegrityCheckerException(IntegrityCheckerException):
     Provides:
 
     Super Class:
-        SpaceRootCertifierException
+        SpaceCheckerException
     """
-    MSG = "SpaceRootCertifier failure."
-    ERR_CODE = "SPACE_ROOT_CERTIFIER_FAILURE"
+    MSG = "SpaceChecker failure."
+    ERR_CODE = "SPACE_INTEGRITY_CHECKER_FAILURE"
     
     def __init__(
             self,

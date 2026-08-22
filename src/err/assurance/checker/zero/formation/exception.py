@@ -14,18 +14,18 @@ from typing import Any, Optional
 from err import ZeroBlueprintFlagsException
 
 _all_ = [
-    # ======================# ZERO_FORMATION_ROOT_CERTIFIER_FLAGS_FAILURE #======================#
+    # ======================# ZERO_FORMATION_CHECKER_FLAGS_FAILURE #======================#
     "ZeroFormationBlueprintFlagsException",
 ]
 
-# ======================# ZERO_FORMATION_ROOT_CERTIFIER_FLAGS_FAILURE #======================#
+# ======================# ZERO_FORMATION_CHECKER_FLAGS_FAILURE #======================#
 class ZeroFormationBlueprintFlagsException(ZeroBlueprintFlagsException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicatings that no FormationRootCertifier test. enabled.
+        1.  Indicatings that no FormationChecker failed.
 
     Attributes:
         msg: Optional[str]
@@ -41,8 +41,8 @@ class ZeroFormationBlueprintFlagsException(ZeroBlueprintFlagsException):
     Super Class:
         ZeroBlueprintFlagsException
     """
-    MSG = "No FormationCRootCertifier test. enabled."
-    ERR_CODE = "ZERO_FORMATION_ROOT_CERTIFIER_FLAGS_FAILURE"
+    MSG = "No FormationChecker failed."
+    ERR_CODE = "ZERO_FORMATION_CHECKER_FLAGS_FAILURE"
     
     def __init__(
             self,

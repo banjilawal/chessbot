@@ -14,18 +14,18 @@ from typing import Any, Optional
 from err import ZeroBlueprintFlagsException
 
 _all_ = [
-    # ======================# ZERO_SCHEMA_ROOT_CERTIFIER_FLAGS_FAILURE #======================#
+    # ======================# ZERO_SCHEMA_CHECKER_FLAGS_FAILURE #======================#
     "ZeroSchemaBlueprintFlagsException",
 ]
 
-# ======================# ZERO_SCHEMA_ROOT_CERTIFIER_FLAGS_FAILURE #======================#
+# ======================# ZERO_SCHEMA_CHECKER_FLAGS_FAILURE #======================#
 class ZeroSchemaBlueprintFlagsException(ZeroBlueprintFlagsException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicatings that no SchemaRootCertifier test. enabled.
+        1.  Indicatings that no SchemaChecker failed.
 
     Attributes:
         msg: Optional[str]
@@ -41,8 +41,8 @@ class ZeroSchemaBlueprintFlagsException(ZeroBlueprintFlagsException):
     Super Class:
         ZeroBlueprintFlagsException
     """
-    MSG = "No SchemaCRootCertifier test. enabled."
-    ERR_CODE = "ZERO_SCHEMA_ROOT_CERTIFIER_FLAGS_FAILURE"
+    MSG = "No SchemaChecker failed."
+    ERR_CODE = "ZERO_SCHEMA_CHECKER_FLAGS_FAILURE"
     
     def __init__(
             self,

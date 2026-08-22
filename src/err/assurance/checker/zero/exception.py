@@ -14,18 +14,18 @@ from typing import Any, Optional
 from err import BlueprintException
 
 _all_ = [
-    # ======================# ZERO_ROOT_CERTIFIER_FLAGS_FAILURE #======================#
+    # ======================# ZERO_CHECKER_FLAGS_FAILURE #======================#
     "ZeroBlueprintFlagsException",
 ]
 
-# ======================# ZERO_ROOT_CERTIFIER_FLAGS_FAILURE #======================#
+# ======================# ZERO_CHECKER_FLAGS_FAILURE #======================#
 class ZeroBlueprintFlagsException(BlueprintException):
     """
     Role:
         -   Error Tracing
         
     Responsibilities:
-        1.  Indicating that no RootCertifier test.s were enabled.
+        1.  Indicating that no Checker failed.s were enabled.
 
     Attributes:
         msg: Optional[str]
@@ -42,7 +42,7 @@ class ZeroBlueprintFlagsException(BlueprintException):
         BlueprintException
     """
     MSG = "No Blueprint flag is enabled."
-    ERR_CODE = "ZERO_ROOT_CERTIFIER_FLAGS_FAILURE"
+    ERR_CODE = "ZERO_CHECKER_FLAGS_FAILURE"
     
     def __init__(
             self,

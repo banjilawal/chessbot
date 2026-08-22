@@ -28,7 +28,7 @@ class StringValidatorException(ValidatorException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicating a candidate failed a StringValidator test.
+        1.  Indicating assurance by a StringValidator failed.
 
     Attributes:
         msg: Optional[str]

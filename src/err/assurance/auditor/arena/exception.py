@@ -16,18 +16,18 @@ from result import MethodResultType
 
 
 __all__ = [
-    # ======================# ARENA_CONSISTENCY_CHECKER_FAILURE #======================#
+    # ======================# ARENA_CONSISTENCY_AUDITOR_FAILURE #======================#
     "ArenaConsistencyAuditorException",
 ]
 
-# ======================# ARENA_CONSISTENCY_CHECKER_FAILURE #======================#
+# ======================# ARENA_CONSISTENCY_AUDITOR_FAILURE #======================#
 class ArenaConsistencyAuditorException(ConsistencyAuditorException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicating a ArenaConsistencyChecker raised an error.
+        1.  Indicating a ArenaConsistencyAuditor failed.
 
     Attributes:
         msg: Optional[str]
@@ -42,10 +42,10 @@ class ArenaConsistencyAuditorException(ConsistencyAuditorException):
     Provides:
 
     Super Class:
-        ConsistencyCheckerException
+        ConsistencyAuditorException
     """
     MSG = "Arena consistency error."
-    ERR_CODE = "ARENA_CONSISTENCY_CHECKER_FAILURE"
+    ERR_CODE = "ARENA_CONSISTENCY_AUDITOR_FAILURE"
     
     def __init__(
             self,

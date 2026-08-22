@@ -16,18 +16,18 @@ from result import MethodResultType
 
 
 __all__ = [
-    # ======================# HASHTABLE_CONSISTENCY_CHECKER_FAILURE #======================#
+    # ======================# HASHTABLE_CONSISTENCY_AUDITOR_FAILURE #======================#
     "HashtableConsistencyAuditorException",
 ]
 
-# ======================# HASHTABLE_CONSISTENCY_CHECKER_FAILURE #======================#
+# ======================# HASHTABLE_CONSISTENCY_AUDITOR_FAILURE #======================#
 class HashtableConsistencyAuditorException(ConsistencyAuditorException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicating a HashtableConsistencyChecker raised an error.
+        1.  Indicating a HashtableConsistencyAuditor failed.
 
     Attributes:
         msg: Optional[str]
@@ -42,10 +42,10 @@ class HashtableConsistencyAuditorException(ConsistencyAuditorException):
     Provides:
 
     Super Class:
-        ConsistencyCheckerException
+        ConsistencyAuditorException
     """
     MSG = "Hashtable consistency error."
-    ERR_CODE = "HASHTABLE_CONSISTENCY_CHECKER_FAILURE"
+    ERR_CODE = "HASHTABLE_CONSISTENCY_AUDITOR_FAILURE"
     
     def __init__(
             self,

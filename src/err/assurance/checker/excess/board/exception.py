@@ -14,11 +14,11 @@ from typing import Any, Optional
 from err import ExcessBlueprintFlagsException
 
 _all_ = [
-    # ======================# EXCESS_BOARD_ROOT_CERTIFIER_FLAGS_FAILURE #======================#
+    # ======================# EXCESS_BOARD_CHECKER_FLAGS_FAILURE #======================#
     "ExcessBoardBlueprintFlagsException",
 ]
 
-# ======================# EXCESS_BOARD_ROOT_CERTIFIER_FLAGS_FAILURE #======================#
+# ======================# EXCESS_BOARD_CHECKER_FLAGS_FAILURE #======================#
 class ExcessBoardBlueprintFlagsException(ExcessBlueprintFlagsException):
     """
     Role:
@@ -41,8 +41,8 @@ class ExcessBoardBlueprintFlagsException(ExcessBlueprintFlagsException):
     Super Class:
         ExcessBlueprintFlagsException
     """
-    MSG = "More than one BoardCRootCertifier test. enabled."
-    ERR_CODE = "EXCESS_BOARD_ROOT_CERTIFIER_FLAGS_FAILURE"
+    MSG = "More than one BoardChecker failed."
+    ERR_CODE = "EXCESS_BOARD_CHECKER_FLAGS_FAILURE"
     
     def __init__(
             self,

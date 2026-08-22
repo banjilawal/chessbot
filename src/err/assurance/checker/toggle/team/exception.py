@@ -16,18 +16,18 @@ from result import MethodResultType
 
 
 __all__ = [
-    # ======================# TEAM_TOGGLE_ROOT_CERTIFIER_FAILURE #======================#
-    "TeamToggleRootCertifierException",
+    # ======================# TEAM_TOGGLE_INTEGRITY_CHECKER_FAILURE #======================#
+    "TeamToggleCheckerException",
 ]
 
-# ======================# TEAM_TOGGLE_ROOT_CERTIFIER_FAILURE #======================#
-class TeamToggleRootCertifierException(ToggleIntegrityCheckerException):
+# ======================# TEAM_TOGGLE_INTEGRITY_CHECKER_FAILURE #======================#
+class TeamToggleCheckerException(ToggleIntegrityCheckerException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicating a candidate failed a TeamToggleRootCertifier test.
+        1.  Indicating assurance by a TeamToggleChecker failed.
 
     Attributes:
             msg: Optional[str]
@@ -42,10 +42,10 @@ class TeamToggleRootCertifierException(ToggleIntegrityCheckerException):
     Provides:
 
     Super Class:
-        ToggleRootCertifierException
+        ToggleCheckerException
     """
-    MSG = "Team root certification failure."
-    ERR_CODE = "TEAM_TOGGLE_ROOT_CERTIFIER_FAILURE"
+    MSG = "Team IntegrityChecker failure."
+    ERR_CODE = "TEAM_TOGGLE_INTEGRITY_CHECKER_FAILURE"
     
     def __init__(
             self,

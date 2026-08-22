@@ -14,18 +14,18 @@ from typing import Any, Optional
 from err import ZeroBlueprintFlagsException
 
 _all_ = [
-    # ======================# ZERO_RANK_ROOT_CERTIFIER_FLAGS_FAILURE #======================#
+    # ======================# ZERO_RANK_CHECKER_FLAGS_FAILURE #======================#
     "ZeroRankBlueprintFlagsException",
 ]
 
-# ======================# ZERO_RANK_ROOT_CERTIFIER_FLAGS_FAILURE #======================#
+# ======================# ZERO_RANK_CHECKER_FLAGS_FAILURE #======================#
 class ZeroRankBlueprintFlagsException(ZeroBlueprintFlagsException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicatings that no RankRootCertifier test. enabled.
+        1.  Indicatings that no RankChecker failed.
 
     Attributes:
         msg: Optional[str]
@@ -41,8 +41,8 @@ class ZeroRankBlueprintFlagsException(ZeroBlueprintFlagsException):
     Super Class:
         ZeroBlueprintFlagsException
     """
-    MSG = "No RankCRootCertifier test. enabled."
-    ERR_CODE = "ZERO_RANK_ROOT_CERTIFIER_FLAGS_FAILURE"
+    MSG = "No RankChecker failed."
+    ERR_CODE = "ZERO_RANK_CHECKER_FLAGS_FAILURE"
     
     def __init__(
             self,

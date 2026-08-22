@@ -27,7 +27,7 @@ class SquareCarrierValidatorException(EntityCarrierValidatorException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicating a candidate failed a SquareCarrierValidator test.
+        1.  Indicating assurance by a SquareCarrierValidator failed.
 
     Attributes:
             msg: Optional[str]

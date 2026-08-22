@@ -16,18 +16,18 @@ from result import MethodResultType
 
 
 __all__ = [
-    # ======================# GAME_CONSISTENCY_CHECKER_FAILURE #======================#
+    # ======================# GAME_CONSISTENCY_AUDITOR_FAILURE #======================#
     "GameConsistencyAuditorException",
 ]
 
-# ======================# GAME_CONSISTENCY_CHECKER_FAILURE #======================#
+# ======================# GAME_CONSISTENCY_AUDITOR_FAILURE #======================#
 class GameConsistencyAuditorException(ConsistencyAuditorException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicating a GameConsistencyChecker raised an error.
+        1.  Indicating a GameConsistencyAuditor failed.
 
     Attributes:
             msg: Optional[str]
@@ -42,10 +42,10 @@ class GameConsistencyAuditorException(ConsistencyAuditorException):
     Provides:
 
     Super Class:
-        ConsistencyCheckerException
+        ConsistencyAuditorException
     """
     MSG = "Game consistency error."
-    ERR_CODE = "GAME_CONSISTENCY_CHECKER_FAILURE"
+    ERR_CODE = "GAME_CONSISTENCY_AUDITOR_FAILURE"
     
     def __init__(
             self,

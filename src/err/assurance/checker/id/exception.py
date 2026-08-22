@@ -16,18 +16,18 @@ from result import MethodResultType
 
 
 __all__ = [
-    # ======================# ID_ROOT_CERTIFIER_FAILURE #======================#
+    # ======================# ID_INTEGRITY_CHECKER_FAILURE #======================#
     "BlueprintIdValidatorException",
 ]
 
-# ======================# ID_ROOT_CERTIFIER_FAILURE #======================#
+# ======================# ID_INTEGRITY_CHECKER_FAILURE #======================#
 class BlueprintIdValidatorException(IntegrityCheckerException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicating a candidate failed a BlueprintIdValidator test.
+        1.  Indicating assurance by a BlueprintIdValidator failed.
 
     Attributes:
             msg: Optional[str]
@@ -42,10 +42,10 @@ class BlueprintIdValidatorException(IntegrityCheckerException):
     Provides:
 
     Super Class:
-        RootCertifierException
+        CheckerException
     """
     MSG = "BlueprintId validation failed."
-    ERR_CODE = "BLUEPRINT_ID_ROOT_CERTIFIER_FAILURE"
+    ERR_CODE = "BLUEPRINT_ID_INTEGRITY_CHECKER_FAILURE"
     
     def __init__(
             self,

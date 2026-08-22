@@ -15,4 +15,4 @@ from .maneuver import *
 from .pawn import *
 
 # Modules
-from .exception import DisabledTokenConsistencyCheckerException
+from .exception import DisabledTokenConsistencyAuditorException

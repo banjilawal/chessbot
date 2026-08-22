@@ -13,4 +13,4 @@ version: 0.0.2
 from .pawn import *
 
 # Modules
-from .exception import CombatantTokenConsistencyCheckerException
+from .exception import CombatantTokenConsistencyAuditorException

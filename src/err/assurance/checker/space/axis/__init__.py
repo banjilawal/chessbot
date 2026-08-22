@@ -16,4 +16,4 @@ from .south import *
 from .west import *
 
 # Modules
-from .exception import AxisRootCertifierException
+from .exception import AxisCheckerException

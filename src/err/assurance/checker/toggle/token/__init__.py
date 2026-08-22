@@ -14,4 +14,4 @@ from .home import *
 from .rank import *
 
 # Modules
-from .exception import TokenToggleRootCertifierException
+from .exception import TokenToggleCheckerException

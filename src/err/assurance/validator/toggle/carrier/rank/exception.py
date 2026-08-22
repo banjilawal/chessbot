@@ -27,7 +27,7 @@ class RankCarrierValidatorException(EntityCarrierValidatorException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicating a candidate failed a RankCarrierValidator test.
+        1.  Indicating assurance by a RankCarrierValidator failed.
 
     Attributes:
             msg: Optional[str]

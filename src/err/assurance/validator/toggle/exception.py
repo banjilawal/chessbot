@@ -28,7 +28,7 @@ class EntityCarrierValidatorException(ValidatorException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicating a candidate failed a ToggleValidator test.
+        1.  Indicating assurance by a ToggleValidator failed.
 
     Attributes:
         msg: Optional[str]

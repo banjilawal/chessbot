@@ -16,18 +16,18 @@ from result import MethodResultType
 
 
 __all__ = [
-    # ======================# AXIS_ROOT_CERTIFIER_FAILURE #======================#
-    "AxisRootCertifierException",
+    # ======================# AXIS_INTEGRITY_CHECKER_FAILURE #======================#
+    "AxisCheckerException",
 ]
 
-# ======================# AXIS_ROOT_CERTIFIER_FAILURE #======================#
-class AxisRootCertifierException(SpaceIntegrityCheckerException):
+# ======================# AXIS_INTEGRITY_CHECKER_FAILURE #======================#
+class AxisCheckerException(SpaceIntegrityCheckerException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicating a candidate failed an AxisSRootCertifier test.
+        1.  Indicating assurance by an AxisSChecker failed.
 
     Attributes:
             msg: Optional[str]
@@ -42,10 +42,10 @@ class AxisRootCertifierException(SpaceIntegrityCheckerException):
     Provides:
 
     Super Class:
-        AxisRootCertifierException
+        AxisCheckerException
     """
     MSG = "AxisRootCerfier failure."
-    ERR_CODE = "AXIS_ROOT_CERTIFIER_FAILURE"
+    ERR_CODE = "AXIS_INTEGRITY_CHECKER_FAILURE"
     
     def __init__(
             self,

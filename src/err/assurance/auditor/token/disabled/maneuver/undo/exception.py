@@ -16,12 +16,12 @@ from result import MethodResultType
 
 
 __all__ = [
-    # ======================# DISABLED_TOKEN_UNDO_MOVE_CONSISTENCY_CHECKER_FAILURE #======================#
-    "DisabledTokenUndoMoveConsistencyCheckerException",
+    # ======================# DISABLED_TOKEN_UNDO_MOVE_CONSISTENCY_AUDITOR_FAILURE #======================#
+    "DisabledTokenUndoMoveConsistencyAuditorException",
 ]
 
-# ======================# DISABLED_TOKEN_UNDO_MOVE_CONSISTENCY_CHECKER_FAILURE #======================#
-class DisabledTokenUndoMoveConsistencyCheckerException(DisabledTokenManeuverException):
+# ======================# DISABLED_TOKEN_UNDO_MOVE_CONSISTENCY_AUDITOR_FAILURE #======================#
+class DisabledTokenUndoMoveConsistencyAuditorException(DisabledTokenManeuverException):
     """
     Role:
         -   Error Tracing
@@ -45,7 +45,7 @@ class DisabledTokenUndoMoveConsistencyCheckerException(DisabledTokenManeuverExce
         DisabledTokenManeuverException
     """
     MSG = "Disabled token cannot undo its move."
-    ERR_CODE = "DISABLED_TOKEN_UNDO_MOVE_CONSISTENCY_CHECKER_FAILURE"
+    ERR_CODE = "DISABLED_TOKEN_UNDO_MOVE_CONSISTENCY_AUDITOR_FAILURE"
     
     def __init__(
             self,

@@ -13,4 +13,4 @@ version: 0.0.2
 from .domain import *
 
 # Modules
-from .exception import RegistryKeyCollisionConsistencyCheckerException
+from .exception import RegistryKeyCollisionConsistencyAuditorException

@@ -27,7 +27,7 @@ class ArenaCarrierValidatorException(EntityCarrierValidatorException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicating a candidate failed a ArenaCarrierValidator test.
+        1.  Indicating assurance by a ArenaCarrierValidator failed.
 
     Attributes:
             msg: Optional[str]

@@ -27,7 +27,7 @@ class GameCarrierValidatorException(EntityCarrierValidatorException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicating a candidate failed a GameCarrierValidator test.
+        1.  Indicating assurance by a GameCarrierValidator failed.
 
     Attributes:
             msg: Optional[str]

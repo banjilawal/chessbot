@@ -27,7 +27,7 @@ class BoardValidatorException(StateModelValidatorException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicating a candidate failed a BoardValidator test.
+        1.  Indicating assurance by a BoardValidator failed.
 
     Attributes:
         msg: Optional[str]

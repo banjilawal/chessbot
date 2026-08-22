@@ -27,7 +27,7 @@ class TeamContextValidatorException(EntityContextValidatorException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicating a candidate failed a TeamContextValidator test.
+        1.  Indicating assurance by a TeamContextValidator failed.
 
     Attributes:
             msg: Optional[str]

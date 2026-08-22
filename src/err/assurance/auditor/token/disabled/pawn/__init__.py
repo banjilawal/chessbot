@@ -13,4 +13,4 @@ version: 0.0.2
 from .promotion import *
 
 # Modules
-from .exception import DisabledPawnConsistencyCheckerException
+from .exception import DisabledPawnConsistencyAuditorException

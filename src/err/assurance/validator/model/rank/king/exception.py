@@ -25,7 +25,7 @@ class KingValidatorException(RankValidatorException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicating a candidate failed a King validator test.
+        1.  Indicating assurance by a King validator failed.
 
     Attributes:
         msg: Optional[str]

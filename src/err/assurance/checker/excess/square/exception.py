@@ -14,11 +14,11 @@ from typing import Any, Optional
 from err import ExcessBlueprintFlagsException
 
 _all_ = [
-    # ======================# EXCESS_SQUARE_ROOT_CERTIFIER_FLAGS_FAILURE #======================#
+    # ======================# EXCESS_SQUARE_CHECKER_FLAGS_FAILURE #======================#
     "ExcessSquareBlueprintFlagsException",
 ]
 
-# ======================# EXCESS_SQUARE_ROOT_CERTIFIER_FLAGS_FAILURE #======================#
+# ======================# EXCESS_SQUARE_CHECKER_FLAGS_FAILURE #======================#
 class ExcessSquareBlueprintFlagsException(ExcessBlueprintFlagsException):
     """
     Role:
@@ -41,8 +41,8 @@ class ExcessSquareBlueprintFlagsException(ExcessBlueprintFlagsException):
     Super Class:
         ExcessBlueprintFlagsException
     """
-    MSG = "More than one SquareCRootCertifier test. enabled."
-    ERR_CODE = "EXCESS_SQUARE_ROOT_CERTIFIER_FLAGS_FAILURE"
+    MSG = "More than one SquareChecker failed."
+    ERR_CODE = "EXCESS_SQUARE_CHECKER_FLAGS_FAILURE"
     
     def __init__(
             self,

@@ -27,7 +27,7 @@ class HostageContextValidatorException(EntityContextValidatorException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicating a candidate failed a HostageContextValidator test.
+        1.  Indicating assurance by a HostageContextValidator failed.
 
     Attributes:
             msg: Optional[str]

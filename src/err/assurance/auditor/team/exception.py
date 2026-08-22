@@ -16,18 +16,18 @@ from result import MethodResultType
 
 
 __all__ = [
-    # ======================# TEAM_CONSISTENCY_CHECKER_FAILURE #======================#
+    # ======================# TEAM_CONSISTENCY_AUDITOR_FAILURE #======================#
     "TeamConsistencyAuditorException",
 ]
 
-# ======================# TEAM_CONSISTENCY_CHECKER_FAILURE #======================#
+# ======================# TEAM_CONSISTENCY_AUDITOR_FAILURE #======================#
 class TeamConsistencyAuditorException(ConsistencyAuditorException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicating a TeamConsistencyChecker raised an error.
+        1.  Indicating a TeamConsistencyAuditor failed.
 
     Attributes:
             msg: Optional[str]
@@ -42,10 +42,10 @@ class TeamConsistencyAuditorException(ConsistencyAuditorException):
     Provides:
 
     Super Class:
-        ConsistencyCheckerException
+        ConsistencyAuditorException
     """
     MSG = "Team consistency error."
-    ERR_CODE = "TEAM_CONSISTENCY_CHECKER_FAILURE"
+    ERR_CODE = "TEAM_CONSISTENCY_AUDITOR_FAILURE"
     
     def __init__(
             self,

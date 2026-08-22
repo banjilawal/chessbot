@@ -16,18 +16,18 @@ from result import MethodResultType
 
 
 __all__ = [
-    # ======================# EDGE_TOGGLE_ROOT_CERTIFIER_FAILURE #======================#
-    "EdgeToggleRootCertifierException",
+    # ======================# EDGE_TOGGLE_INTEGRITY_CHECKER_FAILURE #======================#
+    "EdgeToggleCheckerException",
 ]
 
-# ======================# EDGE_TOGGLE_ROOT_CERTIFIER_FAILURE #======================#
-class EdgeToggleRootCertifierException(ToggleIntegrityCheckerException):
+# ======================# EDGE_TOGGLE_INTEGRITY_CHECKER_FAILURE #======================#
+class EdgeToggleCheckerException(ToggleIntegrityCheckerException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicating a candidate failed a EdgeToggleRootCertifier test.
+        1.  Indicating assurance by a EdgeToggleChecker failed.
 
     Attributes:
             msg: Optional[str]
@@ -42,10 +42,10 @@ class EdgeToggleRootCertifierException(ToggleIntegrityCheckerException):
     Provides:
 
     Super Class:
-        ToggleRootCertifierException
+        ToggleCheckerException
     """
-    MSG = "Edge root certification failure."
-    ERR_CODE = "EDGE_TOGGLE_ROOT_CERTIFIER_FAILURE"
+    MSG = "Edge IntegrityChecker failure."
+    ERR_CODE = "EDGE_TOGGLE_INTEGRITY_CHECKER_FAILURE"
     
     def __init__(
             self,

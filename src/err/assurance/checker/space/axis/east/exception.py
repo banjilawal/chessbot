@@ -11,23 +11,23 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import AxisRootCertifierException
+from err import AxisCheckerException
 from result import MethodResultType
 
 
 __all__ = [
-    # ======================# EAST_AXIS_ROOT_CERTIFIER_FAILURE #======================#
-    "EastAxisRootCertifierException",
+    # ======================# EAST_AXIS_INTEGRITY_CHECKER_FAILURE #======================#
+    "EastAxisCheckerException",
 ]
 
-# ======================# EAST_AXIS_ROOT_CERTIFIER_FAILURE #======================#
-class EastAxisRootCertifierException(AxisRootCertifierException):
+# ======================# EAST_AXIS_INTEGRITY_CHECKER_FAILURE #======================#
+class EastAxisCheckerException(AxisCheckerException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicating a candidate failed an EastAxisSRootCertifier test.
+        1.  Indicating assurance by an EastAxisSChecker failed.
 
     Attributes:
             msg: Optional[str]
@@ -42,10 +42,10 @@ class EastAxisRootCertifierException(AxisRootCertifierException):
     Provides:
 
     Super Class:
-        EastAxisRootCertifierException
+        EastAxisCheckerException
     """
     MSG = "EastAxisRootCerfier failure."
-    ERR_CODE = "EAST_AXIS_ROOT_CERTIFIER_FAILURE"
+    ERR_CODE = "EAST_AXIS_INTEGRITY_CHECKER_FAILURE"
     
     def __init__(
             self,

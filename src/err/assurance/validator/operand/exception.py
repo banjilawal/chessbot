@@ -26,7 +26,7 @@ class VectorToggleValidatorException(ValidatorException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicating a candidate failed a VectorToggleValidator test.
+        1.  Indicating assurance by a VectorToggleValidator failed.
 
     Attributes:
             msg: Optional[str]

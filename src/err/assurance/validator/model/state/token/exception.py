@@ -27,7 +27,7 @@ class TokenValidatorException(StateModelValidatorException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicating a TokenValidator test.
+        1.  Indicating a TokenValidator failed.
 
     Attributes:
         msg: Optional[str]

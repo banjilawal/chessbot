@@ -15,18 +15,18 @@ from err import BinderException
 
 
 __all__ = [
-    # ======================# BOARD_TEAM_BINDER_CONSISTENCY_CHECKER_FAILURE #======================#
-    "BoardTeamBinderConsistencyCheckerException",
+    # ======================# BOARD_TEAM_BINDER_CONSISTENCY_AUDITOR_FAILURE #======================#
+    "BoardTeamBinderConsistencyAuditorException",
 ]
 
-# ======================# BOARD_TEAM_BINDER_CONSISTENCY_CHECKER_FAILURE #======================#
-class BoardTeamBinderConsistencyCheckerException(BinderException):
+# ======================# BOARD_TEAM_BINDER_CONSISTENCY_AUDITOR_FAILURE #======================#
+class BoardTeamBinderConsistencyAuditorException(BinderException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicating a BoardTeamBinderConsistencyChecker raised an error.
+        1.  Indicating a BoardTeamBinderConsistencyAuditor failed.
 
     Attributes:
         msg: Optional[str]
@@ -44,7 +44,7 @@ class BoardTeamBinderConsistencyCheckerException(BinderException):
         BinderException
     """
     MSG = "BoardTeamBinder consistency error."
-    ERR_CODE = "BOARD_TEAM_BINDER_CONSISTENCY_CHECKER_FAILURE"
+    ERR_CODE = "BOARD_TEAM_BINDER_CONSISTENCY_AUDITOR_FAILURE"
     
     def __init__(
             self,

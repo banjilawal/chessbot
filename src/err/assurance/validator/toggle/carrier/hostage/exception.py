@@ -27,7 +27,7 @@ class HostageCarrierValidatorException(EntityCarrierValidatorException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicating a candidate failed a HostageCarrierValidator test.
+        1.  Indicating assurance by a HostageCarrierValidator failed.
 
     Attributes:
             msg: Optional[str]

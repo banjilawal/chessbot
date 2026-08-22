@@ -16,12 +16,12 @@ from result import MethodResultType
 
 
 __all__ = [
-    # ======================# DISABLED_PAWN_CONSISTENCY_CHECKER_FAILURE #======================#
-    "DisabledPawnConsistencyCheckerException",
+    # ======================# DISABLED_PAWN_CONSISTENCY_AUDITOR_FAILURE #======================#
+    "DisabledPawnConsistencyAuditorException",
 ]
 
-# ======================# DISABLED_PAWN_CONSISTENCY_CHECKER_FAILURE #======================#
-class DisabledPawnConsistencyCheckerException(DisabledTokenException):
+# ======================# DISABLED_PAWN_CONSISTENCY_AUDITOR_FAILURE #======================#
+class DisabledPawnConsistencyAuditorException(DisabledTokenException):
     """
     Role:
         -   Error Tracing
@@ -45,7 +45,7 @@ class DisabledPawnConsistencyCheckerException(DisabledTokenException):
         DisabledTokenException
     """
     MSG = "Cannot use a disabled paw."
-    ERR_CODE = "DISABLED_PAWN_CONSISTENCY_CHECKER_FAILURE"
+    ERR_CODE = "DISABLED_PAWN_CONSISTENCY_AUDITOR_FAILURE"
     
     def __init__(
             self,

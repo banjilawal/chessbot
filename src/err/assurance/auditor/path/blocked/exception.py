@@ -16,12 +16,12 @@ from result import MethodResultType
 
 
 __all__ = [
-    # ======================# BLOCKED_PATH_CONSISTENCY_CHECKER_FAILURE #======================#
-    "BlockedPathConsistencyCheckerException",
+    # ======================# BLOCKED_PATH_CONSISTENCY_AUDITOR_FAILURE #======================#
+    "BlockedPathConsistencyAuditorException",
 ]
 
-# ======================# BLOCKED_PATH_CONSISTENCY_CHECKER_FAILURE #======================#
-class BlockedPathConsistencyCheckerException(PathException):
+# ======================# BLOCKED_PATH_CONSISTENCY_AUDITOR_FAILURE #======================#
+class BlockedPathConsistencyAuditorException(PathException):
     """
     Role:
         -   Error Tracing
@@ -45,7 +45,7 @@ class BlockedPathConsistencyCheckerException(PathException):
         PathException
     """
     MSG = "The path's destination is occupied by a friendly token."
-    ERR_CODE = "BLOCKED_PATH_CONSISTENCY_CHECKER_FAILURE"
+    ERR_CODE = "BLOCKED_PATH_CONSISTENCY_AUDITOR_FAILURE"
     
     def __init__(
             self,

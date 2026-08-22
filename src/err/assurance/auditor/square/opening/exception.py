@@ -15,18 +15,18 @@ from err import SquareException
 
 
 __all__ = [
-    # ======================# OPENING_CONSISTENCY_CHECKER_FAILURE #======================#
-    "OpeningSquareConsistencyCheckerException",
+    # ======================# OPENING_CONSISTENCY_AUDITOR_FAILURE #======================#
+    "OpeningSquareConsistencyAuditorException",
 ]
 
-# ======================# OPENING_CONSISTENCY_CHECKER_FAILURE #======================#
-class OpeningSquareConsistencyCheckerException(SquareException):
+# ======================# OPENING_CONSISTENCY_AUDITOR_FAILURE #======================#
+class OpeningSquareConsistencyAuditorException(SquareException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicating an OpeningSquareConsistencyChecker raised an error.
+        1.  Indicating an OpeningSquareConsistencyAuditor failed.
 
     Attributes:
         msg: Optional[str]
@@ -44,7 +44,7 @@ class OpeningSquareConsistencyCheckerException(SquareException):
         SquareException
     """
     MSG = "Opening consistency error."
-    ERR_CODE = "OPENING_CONSISTENCY_CHECKER_FAILURE"
+    ERR_CODE = "OPENING_CONSISTENCY_AUDITOR_FAILURE"
     
     def __init__(
             self,

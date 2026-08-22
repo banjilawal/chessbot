@@ -16,18 +16,18 @@ from result import MethodResultType
 
 
 __all__ = [
-    # ======================# SQUARE_REGISTER_CONSISTENCY_CHECKER_FAILURE #======================#
-    "SquareRegisterConsistencyCheckerException",
+    # ======================# SQUARE_REGISTER_CONSISTENCY_AUDITOR_FAILURE #======================#
+    "SquareRegisterConsistencyAuditorException",
 ]
 
-# ======================# SQUARE_REGISTER_CONSISTENCY_CHECKER_FAILURE #======================#
-class SquareRegisterConsistencyCheckerException(RegisterException):
+# ======================# SQUARE_REGISTER_CONSISTENCY_AUDITOR_FAILURE #======================#
+class SquareRegisterConsistencyAuditorException(RegisterException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicating a SquareRegisterConsistencyChecker raised an error.
+        1.  Indicating a SquareRegisterConsistencyAuditor failed.
 
     Attributes:
         msg: Optional[str]
@@ -44,7 +44,7 @@ class SquareRegisterConsistencyCheckerException(RegisterException):
         RegisterException
     """
     MSG = "SquareRegister consistency error."
-    ERR_CODE = "SQUARE_REGISTER_CONSISTENCY_CHECKER_FAILURE"
+    ERR_CODE = "SQUARE_REGISTER_CONSISTENCY_AUDITOR_FAILURE"
     
     def __init__(
             self,

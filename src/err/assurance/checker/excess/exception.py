@@ -14,18 +14,18 @@ from typing import Any, Optional
 from err import BlueprintException
 
 _all_ = [
-    # ======================# EXCESS_ROOT_CERTIFIER_FLAGS_FAILURE #======================#
+    # ======================# EXCESS_CHECKER_FLAGS_FAILURE #======================#
     "ExcessBlueprintFlagsException",
 ]
 
-# ======================# EXCESS_ROOT_CERTIFIER_FLAGS_FAILURE #======================#
+# ======================# EXCESS_CHECKER_FLAGS_FAILURE #======================#
 class ExcessBlueprintFlagsException(BlueprintException):
     """
     Role:
         -   Error Tracing
         
     Responsibilities:
-        1.  Indicating that no RootCertifier test.s were enabled.
+        1.  Indicating that no Checker failed.s were enabled.
 
     Attributes:
         msg: Optional[str]
@@ -41,8 +41,8 @@ class ExcessBlueprintFlagsException(BlueprintException):
     Super Class:
         BlueprintException
     """
-    MSG = "More than one RootCertifier test. enabled."
-    ERR_CODE = "EXCESS_ROOT_CERTIFIER_FLAGS_FAILURE"
+    MSG = "More than one Checker failed."
+    ERR_CODE = "EXCESS_CHECKER_FLAGS_FAILURE"
     
     def __init__(
             self,

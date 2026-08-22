@@ -14,18 +14,18 @@ from typing import Any, Optional
 from err import ZeroBlueprintFlagsException
 
 _all_ = [
-    # ======================# ZERO_TOKEN_ROOT_CERTIFIER_FLAGS_FAILURE #======================#
+    # ======================# ZERO_TOKEN_CHECKER_FLAGS_FAILURE #======================#
     "ZeroTokenBlueprintFlagsException",
 ]
 
-# ======================# ZERO_TOKEN_ROOT_CERTIFIER_FLAGS_FAILURE #======================#
+# ======================# ZERO_TOKEN_CHECKER_FLAGS_FAILURE #======================#
 class ZeroTokenBlueprintFlagsException(ZeroBlueprintFlagsException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicatings that no TokenRootCertifier test. enabled.
+        1.  Indicatings that no TokenChecker failed.
 
     Attributes:
         msg: Optional[str]
@@ -41,8 +41,8 @@ class ZeroTokenBlueprintFlagsException(ZeroBlueprintFlagsException):
     Super Class:
         ZeroBlueprintFlagsException
     """
-    MSG = "No TokenCRootCertifier test. enabled."
-    ERR_CODE = "ZERO_TOKEN_ROOT_CERTIFIER_FLAGS_FAILURE"
+    MSG = "No TokenChecker failed."
+    ERR_CODE = "ZERO_TOKEN_CHECKER_FLAGS_FAILURE"
     
     def __init__(
             self,

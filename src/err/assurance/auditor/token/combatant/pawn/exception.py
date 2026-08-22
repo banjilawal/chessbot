@@ -15,18 +15,18 @@ from err import TokenException
 
 
 __all__ = [
-    # ======================# PAWN_TOKEN_CONSISTENCY_CHECKER_FAILURE #======================#
-    "PawnTokenConsistencyCheckerException",
+    # ======================# PAWN_TOKEN_CONSISTENCY_AUDITOR_FAILURE #======================#
+    "PawnTokenConsistencyAuditorException",
 ]
 
-# ======================# PAWN_TOKEN_CONSISTENCY_CHECKER_FAILURE #======================#
-class PawnTokenConsistencyCheckerException(TokenException):
+# ======================# PAWN_TOKEN_CONSISTENCY_AUDITOR_FAILURE #======================#
+class PawnTokenConsistencyAuditorException(TokenException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicating a PawnTokenConsistencyChecker raised an error.
+        1.  Indicating a PawnTokenConsistencyAuditor failed.
 
     Attributes:
         msg: Optional[str]
@@ -43,8 +43,8 @@ class PawnTokenConsistencyCheckerException(TokenException):
     Super Class:
         TokenException
     """
-    MSG = "PawnTokenConsistencyChecker raised an consistency error."
-    ERR_CODE = "PAWN_TOKEN_CONSISTENCY_CHECKER_FAILURE"
+    MSG = "PawnTokenConsistencyAuditor raised an consistency error."
+    ERR_CODE = "PAWN_TOKEN_CONSISTENCY_AUDITOR_FAILURE"
     
     def __init__(
             self,

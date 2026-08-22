@@ -15,3 +15,4 @@ from .checker import *
 from .validator import *
 
 # Modules
+from .exception import AssuranceException

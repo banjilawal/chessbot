@@ -27,7 +27,7 @@ class VectorToggleRegisterMismatchException(VectorToggleRegisterValidatorExcepti
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicating a candidate failed a VectorToggleRegister's a-b slots contain different types.
+        1.  Indicating assurance by a VectorToggleRegister's a-b slots contain different types.
 
     Attributes:
             msg: Optional[str]

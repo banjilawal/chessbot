@@ -14,18 +14,18 @@ from typing import Any, Optional
 from err import ZeroBlueprintFlagsException
 
 _all_ = [
-    # ======================# ZERO_PLAYER_ROOT_CERTIFIER_FLAGS_FAILURE #======================#
+    # ======================# ZERO_PLAYER_CHECKER_FLAGS_FAILURE #======================#
     "ZeroPlayerBlueprintFlagsException",
 ]
 
-# ======================# ZERO_PLAYER_ROOT_CERTIFIER_FLAGS_FAILURE #======================#
+# ======================# ZERO_PLAYER_CHECKER_FLAGS_FAILURE #======================#
 class ZeroPlayerBlueprintFlagsException(ZeroBlueprintFlagsException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicatings that no PlayerRootCertifier test. enabled.
+        1.  Indicatings that no PlayerChecker failed.
 
     Attributes:
         msg: Optional[str]
@@ -41,8 +41,8 @@ class ZeroPlayerBlueprintFlagsException(ZeroBlueprintFlagsException):
     Super Class:
         ZeroBlueprintFlagsException
     """
-    MSG = "No PlayerCRootCertifier test. enabled."
-    ERR_CODE = "ZERO_PLAYER_ROOT_CERTIFIER_FLAGS_FAILURE"
+    MSG = "No PlayerChecker failed."
+    ERR_CODE = "ZERO_PLAYER_CHECKER_FLAGS_FAILURE"
     
     def __init__(
             self,

@@ -16,18 +16,18 @@ from result import MethodResultType
 
 
 __all__ = [
-    # ======================# VECTOR_TOGGLE_ROOT_CERTIFIER_FAILURE #======================#
-    "VectorToggleRootCertifierException",
+    # ======================# VECTOR_TOGGLE_INTEGRITY_CHECKER_FAILURE #======================#
+    "VectorToggleCheckerException",
 ]
 
-# ======================# VECTOR_TOGGLE_ROOT_CERTIFIER_FAILURE #======================#
-class VectorToggleRootCertifierException(ToggleIntegrityCheckerException):
+# ======================# VECTOR_TOGGLE_INTEGRITY_CHECKER_FAILURE #======================#
+class VectorToggleCheckerException(ToggleIntegrityCheckerException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicating a candidate failed a VectorToggleRootCertifier test.
+        1.  Indicating assurance by a VectorToggleChecker failed.
 
     Attributes:
             msg: Optional[str]
@@ -42,10 +42,10 @@ class VectorToggleRootCertifierException(ToggleIntegrityCheckerException):
     Provides:
 
     Super Class:
-        ToggleRootCertifierException
+        ToggleCheckerException
     """
-    MSG = "Vector root certification failure."
-    ERR_CODE = "VECTOR_TOGGLE_ROOT_CERTIFIER_FAILURE"
+    MSG = "Vector IntegrityChecker failure."
+    ERR_CODE = "VECTOR_TOGGLE_INTEGRITY_CHECKER_FAILURE"
     
     def __init__(
             self,

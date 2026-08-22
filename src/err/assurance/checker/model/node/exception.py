@@ -16,18 +16,18 @@ from result import MethodResultType
 
 
 __all__ = [
-    # ======================# NODE_INTEGRITY_CHECKER_FAILURE #======================#
+    # ======================# NODE_INTEGRITY_INTEGRITY_CHECKER_FAILURE #======================#
     "NodeIntegrityCheckerException",
 ]
 
-# ======================# NODE_INTEGRITY_CHECKER_FAILURE #======================#
+# ======================# NODE_INTEGRITY_INTEGRITY_CHECKER_FAILURE #======================#
 class NodeIntegrityCheckerException(ModelIntegrityCheckerException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicating a candidate failed a NodeIntegrityChecker test.
+        1.  Indicating assurance by a NodeIntegrityChecker failed.
 
     Attributes:
             msg: Optional[str]
@@ -45,7 +45,7 @@ class NodeIntegrityCheckerException(ModelIntegrityCheckerException):
         ModelIntegrityCheckerException
     """
     MSG = "NodeIntegrityChecker failure."
-    ERR_CODE = "NODE_INTEGRITY_CHECKER_FAILURE"
+    ERR_CODE = "NODE_INTEGRITY_INTEGRITY_CHECKER_FAILURE"
     
     def __init__(
             self,

@@ -16,18 +16,18 @@ from result import MethodResultType
 
 
 __all__ = [
-    # ======================# VECTOR_IDENTITY_REGISTER_CONSISTENCY_CHECKER_FAILURE #======================#
-    "VectorIdentityRegisterConsistencyCheckerException",
+    # ======================# VECTOR_IDENTITY_REGISTER_CONSISTENCY_AUDITOR_FAILURE #======================#
+    "VectorIdentityRegisterConsistencyAuditorException",
 ]
 
-# ======================# VECTOR_IDENTITY_REGISTER_CONSISTENCY_CHECKER_FAILURE #======================#
-class VectorIdentityRegisterConsistencyCheckerException(RegisterException):
+# ======================# VECTOR_IDENTITY_REGISTER_CONSISTENCY_AUDITOR_FAILURE #======================#
+class VectorIdentityRegisterConsistencyAuditorException(RegisterException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicating a VectorIdentityRegisterConsistencyChecker raised an error.
+        1.  Indicating a VectorIdentityRegisterConsistencyAuditor failed.
 
     Attributes:
         msg: Optional[str]
@@ -44,7 +44,7 @@ class VectorIdentityRegisterConsistencyCheckerException(RegisterException):
         RegisterException
     """
     MSG = "VectorIdentityRegister consistency error."
-    ERR_CODE = "VECTOR_IDENTITY_REGISTER_CONSISTENCY_CHECKER_FAILURE"
+    ERR_CODE = "VECTOR_IDENTITY_REGISTER_CONSISTENCY_AUDITOR_FAILURE"
     
     def __init__(
             self,

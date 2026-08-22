@@ -14,18 +14,18 @@ from typing import Any, Optional
 from err import ZeroBlueprintFlagsException
 
 _all_ = [
-    # ======================# ZERO_TEAM_ROOT_CERTIFIER_FLAGS_FAILURE #======================#
+    # ======================# ZERO_TEAM_CHECKER_FLAGS_FAILURE #======================#
     "ZeroTeamBlueprintFlagsException",
 ]
 
-# ======================# ZERO_TEAM_ROOT_CERTIFIER_FLAGS_FAILURE #======================#
+# ======================# ZERO_TEAM_CHECKER_FLAGS_FAILURE #======================#
 class ZeroTeamBlueprintFlagsException(ZeroBlueprintFlagsException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicatings that no TeamRootCertifier test. enabled.
+        1.  Indicatings that no TeamChecker failed.
 
     Attributes:
         msg: Optional[str]
@@ -41,8 +41,8 @@ class ZeroTeamBlueprintFlagsException(ZeroBlueprintFlagsException):
     Super Class:
         ZeroBlueprintFlagsException
     """
-    MSG = "No TeamCRootCertifier test. enabled."
-    ERR_CODE = "ZERO_TEAM_ROOT_CERTIFIER_FLAGS_FAILURE"
+    MSG = "No TeamChecker failed."
+    ERR_CODE = "ZERO_TEAM_CHECKER_FLAGS_FAILURE"
     
     def __init__(
             self,

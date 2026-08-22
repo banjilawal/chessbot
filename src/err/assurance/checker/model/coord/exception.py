@@ -16,18 +16,18 @@ from result import MethodResultType
 
 
 __all__ = [
-    # ======================# COORD_INTEGRITY_CHECKER_FAILURE #======================#
+    # ======================# COORD_INTEGRITY_INTEGRITY_CHECKER_FAILURE #======================#
     "CoordIntegrityCheckerException",
 ]
 
-# ======================# COORD_INTEGRITY_CHECKER_FAILURE #======================#
+# ======================# COORD_INTEGRITY_INTEGRITY_CHECKER_FAILURE #======================#
 class CoordIntegrityCheckerException(ModelIntegrityCheckerException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicating a candidate failed a CoordIntegrityChecker test.
+        1.  Indicating assurance by a CoordIntegrityChecker failed.
 
     Attributes:
             msg: Optional[str]
@@ -45,7 +45,7 @@ class CoordIntegrityCheckerException(ModelIntegrityCheckerException):
         ModelIntegrityCheckerException
     """
     MSG = "CoordIntegrityChecker failure."
-    ERR_CODE = "COORD_INTEGRITY_CHECKER_FAILURE"
+    ERR_CODE = "COORD_INTEGRITY_INTEGRITY_CHECKER_FAILURE"
     
     def __init__(
             self,

@@ -15,12 +15,12 @@ from err import RegistryException
 
 
 __all__ = [
-    # ======================# REGISTRY_KEY_CONSISTENCY_CHECKER_FAILURE #======================#
-    "RegistryKeyConsistencyCheckerException",
+    # ======================# REGISTRY_KEY_CONSISTENCY_AUDITOR_FAILURE #======================#
+    "RegistryKeyConsistencyAuditorException",
 ]
 
-# ======================# REGISTRY_KEY_CONSISTENCY_CHECKER_FAILURE #======================#
-class RegistryKeyConsistencyCheckerException(RegistryException):
+# ======================# REGISTRY_KEY_CONSISTENCY_AUDITOR_FAILURE #======================#
+class RegistryKeyConsistencyAuditorException(RegistryException):
     """
     Role:
         -   Error Tracing
@@ -44,7 +44,7 @@ class RegistryKeyConsistencyCheckerException(RegistryException):
         RegistryException
     """
     MSG = "Error with RegistryKey"
-    ERR_CODE = "REGISTRY_KEY_CONSISTENCY_CHECKER_FAILURE"
+    ERR_CODE = "REGISTRY_KEY_CONSISTENCY_AUDITOR_FAILURE"
     
     def __init__(
             self,

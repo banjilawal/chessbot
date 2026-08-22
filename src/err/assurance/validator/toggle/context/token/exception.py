@@ -27,7 +27,7 @@ class TokenContextValidatorException(EntityContextValidatorException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicating a candidate failed a TokenContextValidator test.
+        1.  Indicating assurance by a TokenContextValidator failed.
 
     Attributes:
             msg: Optional[str]

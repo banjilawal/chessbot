@@ -14,11 +14,11 @@ from typing import Any, Optional
 from err import ExcessBlueprintFlagsException
 
 _all_ = [
-    # ======================# EXCESS_FORMATION_ROOT_CERTIFIER_FLAGS_FAILURE #======================#
+    # ======================# EXCESS_FORMATION_CHECKER_FLAGS_FAILURE #======================#
     "ExcessFormationBlueprintFlagsException",
 ]
 
-# ======================# EXCESS_FORMATION_ROOT_CERTIFIER_FLAGS_FAILURE #======================#
+# ======================# EXCESS_FORMATION_CHECKER_FLAGS_FAILURE #======================#
 class ExcessFormationBlueprintFlagsException(ExcessBlueprintFlagsException):
     """
     Role:
@@ -41,8 +41,8 @@ class ExcessFormationBlueprintFlagsException(ExcessBlueprintFlagsException):
     Super Class:
         ExcessBlueprintFlagsException
     """
-    MSG = "More than one FormationCRootCertifier test. enabled."
-    ERR_CODE = "EXCESS_FORMATION_ROOT_CERTIFIER_FLAGS_FAILURE"
+    MSG = "More than one FormationChecker failed."
+    ERR_CODE = "EXCESS_FORMATION_CHECKER_FLAGS_FAILURE"
     
     def __init__(
             self,

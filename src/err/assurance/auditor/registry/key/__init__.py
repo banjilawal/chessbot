@@ -13,4 +13,4 @@ version: 0.0.2
 from .collision import *
 
 # Modules
-from .exception import RegistryKeyConsistencyCheckerException
+from .exception import RegistryKeyConsistencyAuditorException

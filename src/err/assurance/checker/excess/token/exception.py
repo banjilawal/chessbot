@@ -14,11 +14,11 @@ from typing import Any, Optional
 from err import ExcessBlueprintFlagsException
 
 _all_ = [
-    # ======================# EXCESS_TOKEN_ROOT_CERTIFIER_FLAGS_FAILURE #======================#
+    # ======================# EXCESS_TOKEN_CHECKER_FLAGS_FAILURE #======================#
     "ExcessTokenBlueprintFlagsException",
 ]
 
-# ======================# EXCESS_TOKEN_ROOT_CERTIFIER_FLAGS_FAILURE #======================#
+# ======================# EXCESS_TOKEN_CHECKER_FLAGS_FAILURE #======================#
 class ExcessTokenBlueprintFlagsException(ExcessBlueprintFlagsException):
     """
     Role:
@@ -41,8 +41,8 @@ class ExcessTokenBlueprintFlagsException(ExcessBlueprintFlagsException):
     Super Class:
         ExcessBlueprintFlagsException
     """
-    MSG = "More than one TokenCRootCertifier test. enabled."
-    ERR_CODE = "EXCESS_TOKEN_ROOT_CERTIFIER_FLAGS_FAILURE"
+    MSG = "More than one TokenChecker failed."
+    ERR_CODE = "EXCESS_TOKEN_CHECKER_FLAGS_FAILURE"
     
     def __init__(
             self,

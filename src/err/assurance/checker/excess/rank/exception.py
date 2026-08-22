@@ -14,11 +14,11 @@ from typing import Any, Optional
 from err import ExcessBlueprintFlagsException
 
 _all_ = [
-    # ======================# EXCESS_RANK_ROOT_CERTIFIER_FLAGS_FAILURE #======================#
+    # ======================# EXCESS_RANK_CHECKER_FLAGS_FAILURE #======================#
     "ExcessRankBlueprintFlagsException",
 ]
 
-# ======================# EXCESS_RANK_ROOT_CERTIFIER_FLAGS_FAILURE #======================#
+# ======================# EXCESS_RANK_CHECKER_FLAGS_FAILURE #======================#
 class ExcessRankBlueprintFlagsException(ExcessBlueprintFlagsException):
     """
     Role:
@@ -41,8 +41,8 @@ class ExcessRankBlueprintFlagsException(ExcessBlueprintFlagsException):
     Super Class:
         ExcessBlueprintFlagsException
     """
-    MSG = "More than one RankCRootCertifier test. enabled."
-    ERR_CODE = "EXCESS_RANK_ROOT_CERTIFIER_FLAGS_FAILURE"
+    MSG = "More than one RankChecker failed."
+    ERR_CODE = "EXCESS_RANK_CHECKER_FLAGS_FAILURE"
     
     def __init__(
             self,

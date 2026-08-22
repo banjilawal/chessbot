@@ -13,4 +13,4 @@ version: 0.0.2
 from .undo import *
 
 # Modules
-from .exception import DisabledTokenManeuverConsistencyCheckerException
+from .exception import DisabledTokenManeuverConsistencyAuditorException

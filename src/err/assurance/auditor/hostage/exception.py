@@ -16,18 +16,18 @@ from result import MethodResultType
 
 
 __all__ = [
-    # ======================# HOSTAGE_CONSISTENCY_CHECKER_FAILURE #======================#
+    # ======================# HOSTAGE_CONSISTENCY_AUDITOR_FAILURE #======================#
     "HostageConsistencyAuditorException",
 ]
 
-# ======================# HOSTAGE_CONSISTENCY_CHECKER_FAILURE #======================#
+# ======================# HOSTAGE_CONSISTENCY_AUDITOR_FAILURE #======================#
 class HostageConsistencyAuditorException(ConsistencyAuditorException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicating a HostageConsistencyChecker raised an error.
+        1.  Indicating a HostageConsistencyAuditor failed.
 
     Attributes:
         msg: Optional[str]
@@ -42,10 +42,10 @@ class HostageConsistencyAuditorException(ConsistencyAuditorException):
     Provides:
 
     Super Class:
-        ConsistencyCheckerException
+        ConsistencyAuditorException
     """
     MSG = "Hostage consistency error."
-    ERR_CODE = "HOSTAGE_CONSISTENCY_CHECKER_FAILURE"
+    ERR_CODE = "HOSTAGE_CONSISTENCY_AUDITOR_FAILURE"
     
     def __init__(
             self,

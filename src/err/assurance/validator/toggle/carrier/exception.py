@@ -27,7 +27,7 @@ class EntityCarrierValidatorException(ValidatorException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicating a candidate failed a CarrierValidator test.
+        1.  Indicating assurance by a CarrierValidator failed.
 
     Attributes:
             msg: Optional[str]

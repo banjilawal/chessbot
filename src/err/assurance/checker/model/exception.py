@@ -16,18 +16,18 @@ from result import MethodResultType
 
 
 __all__ = [
-    # ======================# MODEL__INTEGRITY_CHECKER_FAILURE #======================#
+    # ======================# MODEL__INTEGRITY_INTEGRITY_CHECKER_FAILURE #======================#
     "ModelIntegrityCheckerException",
 ]
 
-# ======================# MODEL__INTEGRITY_CHECKER_FAILURE #======================#
+# ======================# MODEL__INTEGRITY_INTEGRITY_CHECKER_FAILURE #======================#
 class ModelIntegrityCheckerException(IntegrityCheckerException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicating a candidate failed a ModelIntegrityChecker test.
+        1.  Indicating assurance by a ModelIntegrityChecker failed.
 
     Attributes:
             msg: Optional[str]
@@ -45,7 +45,7 @@ class ModelIntegrityCheckerException(IntegrityCheckerException):
         ModelIntegrityCheckerException
     """
     MSG = "ModelIntegrityChecker failure."
-    ERR_CODE = "MODEL_INTEGRITY_CHECKER_FAILURE"
+    ERR_CODE = "MODEL_INTEGRITY_INTEGRITY_CHECKER_FAILURE"
     
     def __init__(
             self,

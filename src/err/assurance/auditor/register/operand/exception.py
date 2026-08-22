@@ -16,18 +16,18 @@ from result import MethodResultType
 
 
 __all__ = [
-    # ======================# VECTOR_TOGGLE_REGISTER_CONSISTENCY_CHECKER_FAILURE #======================#
-    "VectorToggleRegisterConsistencyCheckerException",
+    # ======================# VECTOR_TOGGLE_REGISTER_CONSISTENCY_AUDITOR_FAILURE #======================#
+    "VectorToggleRegisterConsistencyAuditorException",
 ]
 
-# ======================# VECTOR_TOGGLE_REGISTER_CONSISTENCY_CHECKER_FAILURE #======================#
-class VectorToggleRegisterConsistencyCheckerException(RegisterException):
+# ======================# VECTOR_TOGGLE_REGISTER_CONSISTENCY_AUDITOR_FAILURE #======================#
+class VectorToggleRegisterConsistencyAuditorException(RegisterException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicating a VectorToggleRegisterConsistencyChecker raised an error.
+        1.  Indicating a VectorToggleRegisterConsistencyAuditor failed.
 
     Attributes:
         msg: Optional[str]
@@ -44,7 +44,7 @@ class VectorToggleRegisterConsistencyCheckerException(RegisterException):
         RegisterException
     """
     MSG = "VectorToggleRegister consistency error."
-    ERR_CODE = "VECTOR_TOGGLE_REGISTER_CONSISTENCY_CHECKER_FAILURE"
+    ERR_CODE = "VECTOR_TOGGLE_REGISTER_CONSISTENCY_AUDITOR_FAILURE"
     
     def __init__(
             self,

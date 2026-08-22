@@ -16,11 +16,11 @@ from err import RegistryKeyCollisionException
 
 __all__ = [
     # ======================# REGISTRY_DOMAIN_KEY_COLLISION_EXCEPTION #======================#
-    "RegistryDomainKeyCollisionConsistencyCheckerException",
+    "RegistryDomainKeyCollisionConsistencyAuditorException",
 ]
 
 # ======================# REGISTRY_DOMAIN_KEY_COLLISION_EXCEPTION #======================#
-class RegistryDomainKeyCollisionConsistencyCheckerException(RegistryKeyCollisionException):
+class RegistryDomainKeyCollisionConsistencyAuditorException(RegistryKeyCollisionException):
     """
     Role:
         -   Error Tracing

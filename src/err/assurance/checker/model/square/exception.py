@@ -16,18 +16,18 @@ from result import MethodResultType
 
 
 __all__ = [
-    # ======================# SQUARE_INTEGRITY_CHECKER_FAILURE #======================#
+    # ======================# SQUARE_INTEGRITY_INTEGRITY_CHECKER_FAILURE #======================#
     "SquareIntegrityCheckerException",
 ]
 
-# ======================# SQUARE_INTEGRITY_CHECKER_FAILURE #======================#
+# ======================# SQUARE_INTEGRITY_INTEGRITY_CHECKER_FAILURE #======================#
 class SquareIntegrityCheckerException(ModelIntegrityCheckerException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicating a candidate failed a SquareIntegrityChecker test.
+        1.  Indicating assurance by a SquareIntegrityChecker failed.
 
     Attributes:
             msg: Optional[str]
@@ -45,7 +45,7 @@ class SquareIntegrityCheckerException(ModelIntegrityCheckerException):
         ModelIntegrityCheckerException
     """
     MSG = "SquareIntegrityChecker failure."
-    ERR_CODE = "SQUARE_INTEGRITY_CHECKER_FAILURE"
+    ERR_CODE = "SQUARE_INTEGRITY_INTEGRITY_CHECKER_FAILURE"
     
     def __init__(
             self,

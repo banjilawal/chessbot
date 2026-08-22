@@ -16,19 +16,19 @@ from result import MethodResultType
 
 
 __all__ = [
-    # ======================# VECTOR_TOGGLE_CONSISTENCY_CHECKER_FAILURE #======================#
+    # ======================# VECTOR_TOGGLE_CONSISTENCY_AUDITOR_FAILURE #======================#
     "VectorToggleConsistencyAuditorException",
 ]
 
 
-# ======================# VECTOR_TOGGLE_CONSISTENCY_CHECKER_FAILURE #======================#
+# ======================# VECTOR_TOGGLE_CONSISTENCY_AUDITOR_FAILURE #======================#
 class VectorToggleConsistencyAuditorException(ConsistencyAuditorException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicating a VectorToggleConsistencyChecker raised an error.
+        1.  Indicating a VectorToggleConsistencyAuditor failed.
 
     Attributes:
             msg: Optional[str]
@@ -43,10 +43,10 @@ class VectorToggleConsistencyAuditorException(ConsistencyAuditorException):
     Provides:
 
     Super Class:
-        ConsistencyCheckerException
+        ConsistencyAuditorException
     """
     MSG = "VectorToggle consistency error."
-    ERR_CODE = "VECTOR_TOGGLE_CONSISTENCY_CHECKER_FAILURE"
+    ERR_CODE = "VECTOR_TOGGLE_CONSISTENCY_AUDITOR_FAILURE"
     
     def __init__(
             self,

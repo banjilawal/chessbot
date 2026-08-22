@@ -16,12 +16,12 @@ from result import MethodResultType
 
 
 __all__ = [
-    # ======================# CIRCULAR_PATH_CONSISTENCY_CHECKER_FAILURE #======================#
-    "CircularPathConsistencyCheckerException",
+    # ======================# CIRCULAR_PATH_CONSISTENCY_AUDITOR_FAILURE #======================#
+    "CircularPathConsistencyAuditorException",
 ]
 
-# ======================# CIRCULAR_PATH_CONSISTENCY_CHECKER_FAILURE #======================#
-class CircularPathConsistencyCheckerException(PathException):
+# ======================# CIRCULAR_PATH_CONSISTENCY_AUDITOR_FAILURE #======================#
+class CircularPathConsistencyAuditorException(PathException):
     """
     Role:
         -   Error Tracing
@@ -45,7 +45,7 @@ class CircularPathConsistencyCheckerException(PathException):
         PathException
     """
     MSG = "A Path's origin and destination cannot be the same."
-    ERR_CODE = "CIRCULAR_PATH_CONSISTENCY_CHECKER_FAILURE"
+    ERR_CODE = "CIRCULAR_PATH_CONSISTENCY_AUDITOR_FAILURE"
     
     def __init__(
             self,

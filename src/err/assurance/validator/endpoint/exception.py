@@ -27,7 +27,7 @@ class ManeuverEndpointValidatorException(ValidatorException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicating a candidate failed a ManeuverEndpointValidator test.
+        1.  Indicating assurance by a ManeuverEndpointValidator failed.
 
     Attributes:
         msg: Optional[str]

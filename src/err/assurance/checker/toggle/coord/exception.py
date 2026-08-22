@@ -16,18 +16,18 @@ from result import MethodResultType
 
 
 __all__ = [
-    # ======================# COORD_TOGGLE_ROOT_CERTIFIER_FAILURE #======================#
-    "CoordToggleRootCertifierException",
+    # ======================# COORD_TOGGLE_INTEGRITY_CHECKER_FAILURE #======================#
+    "CoordToggleCheckerException",
 ]
 
-# ======================# COORD_TOGGLE_ROOT_CERTIFIER_FAILURE #======================#
-class CoordToggleRootCertifierException(ToggleIntegrityCheckerException):
+# ======================# COORD_TOGGLE_INTEGRITY_CHECKER_FAILURE #======================#
+class CoordToggleCheckerException(ToggleIntegrityCheckerException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicating a candidate failed a CoordToggleRootCertifier test.
+        1.  Indicating assurance by a CoordToggleChecker failed.
 
     Attributes:
             msg: Optional[str]
@@ -42,10 +42,10 @@ class CoordToggleRootCertifierException(ToggleIntegrityCheckerException):
     Provides:
 
     Super Class:
-        ToggleRootCertifierException
+        ToggleCheckerException
     """
-    MSG = "Coord root certification failure."
-    ERR_CODE = "COORD_TOGGLE_ROOT_CERTIFIER_FAILURE"
+    MSG = "Coord IntegrityChecker failure."
+    ERR_CODE = "COORD_TOGGLE_INTEGRITY_CHECKER_FAILURE"
     
     def __init__(
             self,

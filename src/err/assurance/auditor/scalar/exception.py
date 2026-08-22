@@ -16,18 +16,18 @@ from result import MethodResultType
 
 
 __all__ = [
-    # ======================# SCALAR_CONSISTENCY_CHECKER_FAILURE #======================#
+    # ======================# SCALAR_CONSISTENCY_AUDITOR_FAILURE #======================#
     "ScalarConsistencyAuditorException",
 ]
 
-# ======================# SCALAR_CONSISTENCY_CHECKER_FAILURE #======================#
+# ======================# SCALAR_CONSISTENCY_AUDITOR_FAILURE #======================#
 class ScalarConsistencyAuditorException(ConsistencyAuditorException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicating a ScalarConsistencyChecker raised an error.
+        1.  Indicating a ScalarConsistencyAuditor failed.
 
     Attributes:
         msg: Optional[str]
@@ -42,10 +42,10 @@ class ScalarConsistencyAuditorException(ConsistencyAuditorException):
     Provides:
 
     Super Class:
-        ConsistencyCheckerException
+        ConsistencyAuditorException
     """
     MSG = "Scalar consistency error."
-    ERR_CODE = "SCALAR_CONSISTENCY_CHECKER_FAILURE"
+    ERR_CODE = "SCALAR_CONSISTENCY_AUDITOR_FAILURE"
     
     def __init__(
             self,

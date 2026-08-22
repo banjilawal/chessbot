@@ -16,18 +16,18 @@ from result import MethodResultType
 
 
 __all__ = [
-    # ======================# ARENA_INTEGRITY_CHECKER_FAILURE #======================#
+    # ======================# ARENA_INTEGRITY_INTEGRITY_CHECKER_FAILURE #======================#
     "ArenaIntegrityCheckerException",
 ]
 
-# ======================# ARENA_INTEGRITY_CHECKER_FAILURE #======================#
+# ======================# ARENA_INTEGRITY_INTEGRITY_CHECKER_FAILURE #======================#
 class ArenaIntegrityCheckerException(ModelIntegrityCheckerException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicating a candidate failed an ArenaIntegrityChecker test.
+        1.  Indicating assurance by an ArenaIntegrityChecker failed.
 
     Attributes:
             msg: Optional[str]
@@ -45,7 +45,7 @@ class ArenaIntegrityCheckerException(ModelIntegrityCheckerException):
         ModelIntegrityCheckerException
     """
     MSG = "ArenaIntegrityChecker failure."
-    ERR_CODE = "ARENA_INTEGRITY_CHECKER_FAILURE"
+    ERR_CODE = "ARENA_INTEGRITY_INTEGRITY_CHECKER_FAILURE"
     
     def __init__(
             self,

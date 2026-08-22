@@ -14,18 +14,18 @@ from typing import Any, Optional
 from err import ZeroBlueprintFlagsException
 
 _all_ = [
-    # ======================# ZERO_BOARD_ROOT_CERTIFIER_FLAGS_FAILURE #======================#
+    # ======================# ZERO_BOARD_CHECKER_FLAGS_FAILURE #======================#
     "ZeroBoardBlueprintFlagsException",
 ]
 
-# ======================# ZERO_BOARD_ROOT_CERTIFIER_FLAGS_FAILURE #======================#
+# ======================# ZERO_BOARD_CHECKER_FLAGS_FAILURE #======================#
 class ZeroBoardBlueprintFlagsException(ZeroBlueprintFlagsException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicatings that no BoardRootCertifier test. enabled.
+        1.  Indicatings that no BoardChecker failed.
 
     Attributes:
         msg: Optional[str]
@@ -41,8 +41,8 @@ class ZeroBoardBlueprintFlagsException(ZeroBlueprintFlagsException):
     Super Class:
         ZeroBlueprintFlagsException
     """
-    MSG = "No BoardCRootCertifier test. enabled."
-    ERR_CODE = "ZERO_BOARD_ROOT_CERTIFIER_FLAGS_FAILURE"
+    MSG = "No BoardChecker failed."
+    ERR_CODE = "ZERO_BOARD_CHECKER_FLAGS_FAILURE"
     
     def __init__(
             self,

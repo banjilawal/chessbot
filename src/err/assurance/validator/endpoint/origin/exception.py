@@ -27,7 +27,7 @@ class TokenOriginCertifierException(ValidatorException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicating a candidate failed a TokenOriginCertifier test.
+        1.  Indicating assurance by a TokenOriginCertifier failed.
 
     Attributes:
         msg: Optional[str]
@@ -44,7 +44,7 @@ class TokenOriginCertifierException(ValidatorException):
     Super Class:
         ValidatorException
     """
-    MSG = "Candidate did not pass TokenOriginCertifier test."
+    MSG = "Candidate did not pass TokenOriginCertifier failed."
     ERR_CODE = "TOKEN_ORIGIN_CERTIFIER_FAILURE"
     
     def __init__(

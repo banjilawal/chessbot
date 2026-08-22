@@ -16,18 +16,18 @@ from result import MethodResultType
 
 
 __all__ = [
-    # ======================# RANK_INTEGRITY_CHECKER_FAILURE #======================#
+    # ======================# RANK_INTEGRITY_INTEGRITY_CHECKER_FAILURE #======================#
     "RankIntegrityCheckerException",
 ]
 
-# ======================# RANK_INTEGRITY_CHECKER_FAILURE #======================#
+# ======================# RANK_INTEGRITY_INTEGRITY_CHECKER_FAILURE #======================#
 class RankIntegrityCheckerException(ModelIntegrityCheckerException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicating a candidate failed a RankIntegrityChecker test.
+        1.  Indicating assurance by a RankIntegrityChecker failed.
 
     Attributes:
             msg: Optional[str]
@@ -45,7 +45,7 @@ class RankIntegrityCheckerException(ModelIntegrityCheckerException):
         ModelIntegrityCheckerException
     """
     MSG = "RankIntegrityChecker failure."
-    ERR_CODE = "RANK_INTEGRITY_CHECKER_FAILURE"
+    ERR_CODE = "RANK_INTEGRITY_INTEGRITY_CHECKER_FAILURE"
     
     def __init__(
             self,

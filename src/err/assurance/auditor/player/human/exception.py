@@ -15,18 +15,18 @@ from err import PlayerException
 
 
 __all__ = [
-    # ======================# HUMAN_PLAYER_CONSISTENCY_CHECKER_FAILURE #======================#
-    "HumanPlayerConsistencyCheckerException",
+    # ======================# HUMAN_PLAYER_CONSISTENCY_AUDITOR_FAILURE #======================#
+    "HumanPlayerConsistencyAuditorException",
 ]
 
-# ======================# HUMAN_PLAYER_CONSISTENCY_CHECKER_FAILURE #======================#
-class HumanPlayerConsistencyCheckerException(PlayerException):
+# ======================# HUMAN_PLAYER_CONSISTENCY_AUDITOR_FAILURE #======================#
+class HumanPlayerConsistencyAuditorException(PlayerException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicating a HumanPlayerConsistencyChecker raised an error.
+        1.  Indicating a HumanPlayerConsistencyAuditor failed.
 
     Attributes:
         msg: Optional[str]
@@ -44,7 +44,7 @@ class HumanPlayerConsistencyCheckerException(PlayerException):
         PlayerException
     """
     MSG = "HumanPlayer consistency error."
-    ERR_CODE = "HUMAN_PLAYER_CONSISTENCY_CHECKER_FAILURE"
+    ERR_CODE = "HUMAN_PLAYER_CONSISTENCY_AUDITOR_FAILURE"
     
     def __init__(
             self,

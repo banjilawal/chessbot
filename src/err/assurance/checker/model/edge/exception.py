@@ -16,18 +16,18 @@ from result import MethodResultType
 
 
 __all__ = [
-    # ======================# EDGE_INTEGRITY_CHECKER_FAILURE #======================#
+    # ======================# EDGE_INTEGRITY_INTEGRITY_CHECKER_FAILURE #======================#
     "EdgeIntegrityCheckerException",
 ]
 
-# ======================# EDGE_INTEGRITY_CHECKER_FAILURE #======================#
+# ======================# EDGE_INTEGRITY_INTEGRITY_CHECKER_FAILURE #======================#
 class EdgeIntegrityCheckerException(ModelIntegrityCheckerException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicating a candidate failed a EdgeIntegrityChecker test.
+        1.  Indicating assurance by a EdgeIntegrityChecker failed.
 
     Attributes:
             msg: Optional[str]
@@ -45,7 +45,7 @@ class EdgeIntegrityCheckerException(ModelIntegrityCheckerException):
         ModelIntegrityCheckerException
     """
     MSG = "EdgeIntegrityChecker failure."
-    ERR_CODE = "EDGE_INTEGRITY_CHECKER_FAILURE"
+    ERR_CODE = "EDGE_INTEGRITY_INTEGRITY_CHECKER_FAILURE"
     
     def __init__(
             self,

@@ -28,7 +28,7 @@ class BlueprintRankExtractorException(ValidatorException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicating a candidate failed a RankProcessor encountered an error.
+        1.  Indicating assurance by a RankProcessor encountered an error.
 
     Attributes:
             msg: Optional[str]

@@ -27,7 +27,7 @@ class TokenDestinationCertifierException(ValidatorException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicating a candidate failed a TokenDestinationCertifier test.
+        1.  Indicating assurance by a TokenDestinationCertifier failed.
 
     Attributes:
         msg: Optional[str]
@@ -44,7 +44,7 @@ class TokenDestinationCertifierException(ValidatorException):
     Super Class:
         ValidatorException
     """
-    MSG = "Candidate did not pass TokenDestinationCertifier test."
+    MSG = "Candidate did not pass TokenDestinationCertifier failed."
     ERR_CODE = "TOKEN_DESTINATION_CERTIFIER_FAILURE"
     
     def __init__(

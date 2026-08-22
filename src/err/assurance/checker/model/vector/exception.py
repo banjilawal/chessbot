@@ -16,18 +16,18 @@ from result import MethodResultType
 
 
 __all__ = [
-    # ======================# VECTOR_INTEGRITY_CHECKER_FAILURE #======================#
+    # ======================# VECTOR_INTEGRITY_INTEGRITY_CHECKER_FAILURE #======================#
     "VectorIntegrityCheckerException",
 ]
 
-# ======================# VECTOR_INTEGRITY_CHECKER_FAILURE #======================#
+# ======================# VECTOR_INTEGRITY_INTEGRITY_CHECKER_FAILURE #======================#
 class VectorIntegrityCheckerException(ModelIntegrityCheckerException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicating a candidate failed a VectorIntegrityChecker test.
+        1.  Indicating assurance by a VectorIntegrityChecker failed.
 
     Attributes:
             msg: Optional[str]
@@ -45,7 +45,7 @@ class VectorIntegrityCheckerException(ModelIntegrityCheckerException):
         ModelIntegrityCheckerException
     """
     MSG = "VectorIntegrityChecker failure."
-    ERR_CODE = "VECTOR_INTEGRITY_CHECKER_FAILURE"
+    ERR_CODE = "VECTOR_INTEGRITY_INTEGRITY_CHECKER_FAILURE"
     
     def __init__(
             self,

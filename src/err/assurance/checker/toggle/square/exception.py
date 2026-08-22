@@ -16,18 +16,18 @@ from result import MethodResultType
 
 
 __all__ = [
-    # ======================# SQUARE_TOGGLE_ROOT_CERTIFIER_FAILURE #======================#
-    "SquareToggleRootCertifierException",
+    # ======================# SQUARE_TOGGLE_INTEGRITY_CHECKER_FAILURE #======================#
+    "SquareToggleCheckerException",
 ]
 
-# ======================# SQUARE_TOGGLE_ROOT_CERTIFIER_FAILURE #======================#
-class SquareToggleRootCertifierException(ToggleIntegrityCheckerException):
+# ======================# SQUARE_TOGGLE_INTEGRITY_CHECKER_FAILURE #======================#
+class SquareToggleCheckerException(ToggleIntegrityCheckerException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicating a candidate failed a SquareToggleRootCertifier test.
+        1.  Indicating assurance by a SquareToggleChecker failed.
 
     Attributes:
             msg: Optional[str]
@@ -42,10 +42,10 @@ class SquareToggleRootCertifierException(ToggleIntegrityCheckerException):
     Provides:
 
     Super Class:
-        ToggleRootCertifierException
+        ToggleCheckerException
     """
-    MSG = "Square root certification failure."
-    ERR_CODE = "SQUARE_TOGGLE_ROOT_CERTIFIER_FAILURE"
+    MSG = "Square IntegrityChecker failure."
+    ERR_CODE = "SQUARE_TOGGLE_INTEGRITY_CHECKER_FAILURE"
     
     def __init__(
             self,

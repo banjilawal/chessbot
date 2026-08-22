@@ -27,7 +27,7 @@ class NodeContextValidatorException(EntityContextValidatorException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicating a candidate failed a NodeContextValidator test.
+        1.  Indicating assurance by a NodeContextValidator failed.
 
     Attributes:
             msg: Optional[str]

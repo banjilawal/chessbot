@@ -15,18 +15,18 @@ from err import HashtableException
 
 
 __all__ = [
-    # ======================# SCHEMA_HASHTABLE_CONSISTENCY_CHECKER_FAILURE #======================#
-    "SchemaHashtableConsistencyCheckerException",
+    # ======================# SCHEMA_HASHTABLE_CONSISTENCY_AUDITOR_FAILURE #======================#
+    "SchemaHashtableConsistencyAuditorException",
 ]
 
-# ======================# SCHEMA_HASHTABLE_CONSISTENCY_CHECKER_FAILURE #======================#
-class SchemaHashtableConsistencyCheckerException(HashtableException):
+# ======================# SCHEMA_HASHTABLE_CONSISTENCY_AUDITOR_FAILURE #======================#
+class SchemaHashtableConsistencyAuditorException(HashtableException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicating a SchemaHashtableConsistencyChecker raised an error.
+        1.  Indicating a SchemaHashtableConsistencyAuditor failed.
 
     Attributes:
         msg: Optional[str]
@@ -44,7 +44,7 @@ class SchemaHashtableConsistencyCheckerException(HashtableException):
         HashtableException
     """
     MSG = "SchemaHashtable consistency error."
-    ERR_CODE = "SCHEMA_HASHTABLE_CONSISTENCY_CHECKER_FAILURE"
+    ERR_CODE = "SCHEMA_HASHTABLE_CONSISTENCY_AUDITOR_FAILURE"
     
     def __init__(
             self,

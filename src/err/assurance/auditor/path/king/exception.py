@@ -16,18 +16,18 @@ from result import MethodResultType
 
 
 __all__ = [
-    # ======================# KING_PATH_CONSISTENCY_CHECKER_FAILURE #======================#
-    "KingPathConsistencyCheckerException",
+    # ======================# KING_PATH_CONSISTENCY_AUDITOR_FAILURE #======================#
+    "KingPathConsistencyAuditorException",
 ]
 
-# ======================# KING_PATH_CONSISTENCY_CHECKER_FAILURE #======================#
-class KingPathConsistencyCheckerException(PathException):
+# ======================# KING_PATH_CONSISTENCY_AUDITOR_FAILURE #======================#
+class KingPathConsistencyAuditorException(PathException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicating a KingPathConsistencyChecker raised an error.
+        1.  Indicating a KingPathConsistencyAuditor failed.
 
     Attributes:
         msg: Optional[str]
@@ -45,7 +45,7 @@ class KingPathConsistencyCheckerException(PathException):
         PathException
     """
     MSG = "KingPath consistency error."
-    ERR_CODE = "KING_PATH_CONSISTENCY_CHECKER_FAILURE"
+    ERR_CODE = "KING_PATH_CONSISTENCY_AUDITOR_FAILURE"
     
     def __init__(
             self,

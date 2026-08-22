@@ -41,7 +41,7 @@ class ZeroVectorToggleFlagsException(ZeroBlueprintFlagsException):
     Super Class:
         ZeroBlueprintFlagsException
     """
-    MSG = "No NodeCRootCertifier test. enabled."
+    MSG = "No NodeChecker failed."
     ERR_CODE = "ZERO_VECTOR_TOGGLE_FLAGS_FAILURE"
     
     def __init__(

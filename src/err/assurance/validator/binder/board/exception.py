@@ -25,7 +25,7 @@ class BoardTeamBinderValidatorException(BinderValidatorException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicating a candidate failed a BoardTeamBinder validator test.
+        1.  Indicating assurance by a BoardTeamBinder validator failed.
 
     Attributes:
         msg: Optional[str]

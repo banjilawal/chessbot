@@ -11,24 +11,22 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import OperationException
+from err import AssuranceException
+from result import MethodResultType
 
 __all__ = [
     # ======================# VALIDATOR_FAILURE #======================#
     "ValidatorException",
 ]
 
-from result import MethodResultType
-
-
 # ======================# VALIDATOR_FAILURE #======================#
-class ValidatorException(OperationException):
+class ValidatorException(AssuranceException):
     """
     Role:
         -   Failure Tracing
 
     Responsibilities:
-        1.  Indicating a candidate failed a Validator test.
+        1.  Indicating assurance by a Validator failed.
 
     Attributes:
         msg: str
@@ -43,7 +41,7 @@ class ValidatorException(OperationException):
     Provides:
 
     Super Class:
-        OperationException
+        AssuranceException
     """
     MSG = " validation failed."
     ERR_CODE = "VALIDATOR_FAILURE"

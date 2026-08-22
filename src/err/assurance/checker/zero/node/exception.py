@@ -14,18 +14,18 @@ from typing import Any, Optional
 from err import ZeroBlueprintFlagsException
 
 _all_ = [
-    # ======================# ZERO_NODE_ROOT_CERTIFIER_FLAGS_FAILURE #======================#
+    # ======================# ZERO_NODE_CHECKER_FLAGS_FAILURE #======================#
     "ZeroNodeBlueprintFlagsException",
 ]
 
-# ======================# ZERO_NODE_ROOT_CERTIFIER_FLAGS_FAILURE #======================#
+# ======================# ZERO_NODE_CHECKER_FLAGS_FAILURE #======================#
 class ZeroNodeBlueprintFlagsException(ZeroBlueprintFlagsException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicatings that no NodeRootCertifier test. enabled.
+        1.  Indicatings that no NodeChecker failed.
 
     Attributes:
         msg: Optional[str]
@@ -41,8 +41,8 @@ class ZeroNodeBlueprintFlagsException(ZeroBlueprintFlagsException):
     Super Class:
         ZeroBlueprintFlagsException
     """
-    MSG = "No NodeCRootCertifier test. enabled."
-    ERR_CODE = "ZERO_NODE_ROOT_CERTIFIER_FLAGS_FAILURE"
+    MSG = "No NodeChecker failed."
+    ERR_CODE = "ZERO_NODE_CHECKER_FLAGS_FAILURE"
     
     def __init__(
             self,

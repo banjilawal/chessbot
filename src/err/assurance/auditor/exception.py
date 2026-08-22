@@ -11,21 +11,23 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import ChessException
+from err import AssuranceException
+from result import MethodResultType
+
 
 __all__ = [
-    # ======================# CONSISTENCY_CHECKER_FAILURE #======================#
+    # ======================# CONSISTENCY_AUDITOR_FAILURE #======================#
     "ConsistencyAuditorException",
 ]
 
-# ======================# CONSISTENCY_CHECKER_FAILURE #======================#
-class ConsistencyAuditorException(ChessException):
+# ======================# CONSISTENCY_AUDITOR_FAILURE #======================#
+class ConsistencyAuditorException(AssuranceException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicating a ConsistencyChecker raised an error.
+        1.  Indicating a ConsistencyAuditor failed.
 
     Attributes:
         msg: Optional[str]
@@ -40,10 +42,10 @@ class ConsistencyAuditorException(ChessException):
     Provides:
 
     Super Class:
-        ChessException
+        AssuranceException
     """
-    MSG = "Data object consistency error."
-    ERR_CODE = "CONSISTENCY_CHECKER_FAILURE"
+    MSG = "ConsistencyAuditor failure."
+    ERR_CODE = "CONSISTENCY_AUDITOR_FAILURE"
     
     def __init__(
             self,

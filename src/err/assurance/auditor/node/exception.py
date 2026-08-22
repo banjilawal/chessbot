@@ -16,18 +16,18 @@ from result import MethodResultType
 
 
 __all__ = [
-    # ======================# NODE_CONSISTENCY_CHECKER_FAILURE #======================#
+    # ======================# NODE_CONSISTENCY_AUDITOR_FAILURE #======================#
     "NodeConsistencyAuditorException",
 ]
 
-# ======================# NODE_CONSISTENCY_CHECKER_FAILURE #======================#
+# ======================# NODE_CONSISTENCY_AUDITOR_FAILURE #======================#
 class NodeConsistencyAuditorException(ConsistencyAuditorException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicating a NodeConsistencyChecker raised an error.
+        1.  Indicating a NodeConsistencyAuditor failed.
 
     Attributes:
         msg: Optional[str]
@@ -42,10 +42,10 @@ class NodeConsistencyAuditorException(ConsistencyAuditorException):
     Provides:
 
     Super Class:
-        ConsistencyCheckerException
+        ConsistencyAuditorException
     """
     MSG = "Node consistency error."
-    ERR_CODE = "NODE_CONSISTENCY_CHECKER_FAILURE"
+    ERR_CODE = "NODE_CONSISTENCY_AUDITOR_FAILURE"
     
     def __init__(
             self,

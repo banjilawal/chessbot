@@ -27,7 +27,7 @@ class CheckedPathValidatorException(PathValidatorException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicating a candidate failed a CheckedPathValidator test.
+        1.  Indicating assurance by a CheckedPathValidator failed.
 
     Attributes:
             msg: Optional[str]

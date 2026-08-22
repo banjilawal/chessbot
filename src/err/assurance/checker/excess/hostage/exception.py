@@ -14,11 +14,11 @@ from typing import Any, Optional
 from err import ExcessBlueprintFlagsException
 
 _all_ = [
-    # ======================# EXCESS_HOSTAGE_ROOT_CERTIFIER_FLAGS_FAILURE #======================#
+    # ======================# EXCESS_HOSTAGE_CHECKER_FLAGS_FAILURE #======================#
     "ExcessHostageBlueprintFlagsException",
 ]
 
-# ======================# EXCESS_HOSTAGE_ROOT_CERTIFIER_FLAGS_FAILURE #======================#
+# ======================# EXCESS_HOSTAGE_CHECKER_FLAGS_FAILURE #======================#
 class ExcessHostageBlueprintFlagsException(ExcessBlueprintFlagsException):
     """
     Role:
@@ -41,8 +41,8 @@ class ExcessHostageBlueprintFlagsException(ExcessBlueprintFlagsException):
     Super Class:
         ExcessBlueprintFlagsException
     """
-    MSG = "More than one HostageCRootCertifier test. enabled."
-    ERR_CODE = "EXCESS_HOSTAGE_ROOT_CERTIFIER_FLAGS_FAILURE"
+    MSG = "More than one HostageChecker failed."
+    ERR_CODE = "EXCESS_HOSTAGE_CHECKER_FLAGS_FAILURE"
     
     def __init__(
             self,

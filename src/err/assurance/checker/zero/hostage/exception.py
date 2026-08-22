@@ -14,18 +14,18 @@ from typing import Any, Optional
 from err import ZeroBlueprintFlagsException
 
 _all_ = [
-    # ======================# ZERO_HOSTAGE_ROOT_CERTIFIER_FLAGS_FAILURE #======================#
+    # ======================# ZERO_HOSTAGE_CHECKER_FLAGS_FAILURE #======================#
     "ZeroHostageBlueprintFlagsException",
 ]
 
-# ======================# ZERO_HOSTAGE_ROOT_CERTIFIER_FLAGS_FAILURE #======================#
+# ======================# ZERO_HOSTAGE_CHECKER_FLAGS_FAILURE #======================#
 class ZeroHostageBlueprintFlagsException(ZeroBlueprintFlagsException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicatings that no HostageRootCertifier test. enabled.
+        1.  Indicatings that no HostageChecker failed.
 
     Attributes:
         msg: Optional[str]
@@ -41,8 +41,8 @@ class ZeroHostageBlueprintFlagsException(ZeroBlueprintFlagsException):
     Super Class:
         ZeroBlueprintFlagsException
     """
-    MSG = "No HostageCRootCertifier test. enabled."
-    ERR_CODE = "ZERO_HOSTAGE_ROOT_CERTIFIER_FLAGS_FAILURE"
+    MSG = "No HostageChecker failed."
+    ERR_CODE = "ZERO_HOSTAGE_CHECKER_FLAGS_FAILURE"
     
     def __init__(
             self,

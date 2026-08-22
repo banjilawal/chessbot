@@ -16,4 +16,4 @@ from .south import *
 from .southwest import *
 
 # Modules
-from .exception import QuadrantRootCertifierException
+from .exception import QuadrantCheckerException
