@@ -10,23 +10,7 @@ version: 0.0.2
 # =========== DOMAIN.SEARCH.CONTEXT PACKAGE ===========#
 
 # Packages
-from .arena import *
-from .board import *
-from .coord import *
-from .edge import *
-from .formation import *
-from .game import *
-from .home import *
-from .hostage import *
-from .node import *
-from .orientation import *
-from .persona import *
-from .player import *
-from .rank import *
-from .schema import *
-from .square import *
-from .team import *
-from .token import *
+from stack import *
 
 # Modules
-from .context import Context
+from .context import SearchContext

@@ -13,3 +13,4 @@ version: 0.0.2
 from .context import *
 
 # Modules
+from .search import DomainSearchObject

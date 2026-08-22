@@ -1,4 +1,4 @@
-# src/domain/exchange/request/crud/insert/id/stack/__init__.py
+# src/domain/exchange/request/crud/insert/stack/__init__.py
 
 """
 Module: domain.exchange.request.crud.insert.stack.__init__

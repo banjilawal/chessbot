@@ -12,6 +12,7 @@ version: 0.0.2
 # Packages
 from .delete import *
 from .insert import *
+from .search import *
 
 # Modules
 from .request import CrudRequest

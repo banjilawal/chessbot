@@ -1,7 +1,7 @@
-# src/domain/search/context/model/state.py
+# src/domain/search/context/context.py.py
 
 """
-Module: domain.search.context.model
+Module: domain.search.context.context
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -10,14 +10,14 @@ version: 0.0.2
 from __future__ import annotations
 
 from typing import Generic, Optional, TypeVar
-from abc import abstractmethod
+from abc import ABC, abstractmethod
 
-from domain.structure.toggle import Toggle
+from domain import DomainObject, DomainSearchObject
 
-T = TypeVar("T")
+T = TypeVar("T", bound="DomainObject")
 
 
-class Context(Toggle, Generic[T]):
+class SearchContext(DomainSearchObject, ABC, Generic[T]):
     """
     Role:
         -   Selection
@@ -30,6 +30,7 @@ class Context(Toggle, Generic[T]):
     Attributes:
         id: Optional[int]
         name: Optional[str]
+        max_enabled_toggles: Optional[int]
         
     Provides:
         -   to_dict() -> Dict[str, Any]
@@ -48,17 +49,25 @@ class Context(Toggle, Generic[T]):
                     -   Unions are clunky if there are many attributes.
                     -   Unions don't lower validation and build integrity overhead.
     """
-    _id: Optional[int] = None
-    _name: Optional[str] = None
+    _id: Optional[int]
+    _name: Optional[str]
+    _max_enabled_toggles: Optional[int]
 
-    def __init__(self, id: Optional[int] | None = None, name: Optional[str] | None = None):
+    def __init__(
+            id: Optional[int] | None = None,
+            name: Optional[str] | None = None,
+            max_enabled_toggles: Optional[int] | None = None,
+    ):
         """
         Args:
             id: Optional[int]
             name: Optional[str]
+            max_enabled_toggles: Optional[int]
         """
+        super().__init__()
         self._id = id
         self._name = name
+        self._max_enabled_toggles = max_enabled_toggles or 1
 
     @property
     def id(self) -> Optional[int]:
@@ -67,6 +76,22 @@ class Context(Toggle, Generic[T]):
     @property
     def name(self) -> Optional[str]:
         return self._name
+    
+    @property
+    def max_enabled_toggles(self) -> int:
+        return self._max_enabled_toggles
+    
+    @property
+    def no_active_toggles(self) -> bool:
+        return self.active_toggles == 0
+    
+    @property
+    def excess_active_toggles(self) -> bool:
+        return self.active_toggles > self._max_enabled_toggles
+    
+    @property
+    def active_toggles(self) -> int:
+        return len(self.to_dict)
 
     @property
     @abstractmethod

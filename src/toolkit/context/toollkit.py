@@ -13,7 +13,7 @@ from dataclasses import dataclass
 from typing import Generic, Optional, TypeVar
 
 from bootstrapper import EntityCarrierValidator
-from domain.search.context import Context
+from domain.search.context import SearchContext
 from err import ContextNullException
 from toolkit import Toolkit
 
@@ -46,7 +46,7 @@ class ContextToolkit(Toolkit, Generic[T]):
     Super Class:
         Toolkit
     """
-    context_model: Context[T]
+    context_model: SearchContext[T]
     context_null_exception: ContextNullException
     model_toolkit: Optional[Toolkit[T]] | None = None
     context_priming_validator: EntityCarrierValidator = EntityCarrierValidator()

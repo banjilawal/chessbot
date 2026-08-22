@@ -1,7 +1,7 @@
-# src/domain/exchange/request/crud/insert/stack/request.py
+# src/domain/exchange/request/crud/search/stack/request.py
 
 """
-Module: domain.exchange.request.crud.insert.stack.request
+Module: domain.exchange.request.crud.search.stack.request
 Author: Banji Lawal
 Author: Banji Lawal
 Created: 2026-04-03
@@ -13,11 +13,11 @@ from abc import ABC
 from typing import Generic, TypeVar, cast
 
 from collection import StackService
-from domain import InsertRequest, StateModel
+from domain import SearchContext, SearchRequest, StateModel
 
 T = TypeVar("T", bound="StateModel")
 
-class StackPushRequest(InsertRequest, ABC, Generic[T]):
+class StackSearchRequest(SearchRequest, ABC, Generic[T]):
     """
      Role:
          -  Messaging
@@ -28,27 +28,27 @@ class StackPushRequest(InsertRequest, ABC, Generic[T]):
 
      Attributes:
          id: int
-         item: T
+         context: SearchContext[T]
          collection: StackService[T]
 
      Provides:
      
      Super Class:
-        InsertRequest
+        SearchRequest
      """
     
-    def __init__(self, id: int, item: T, stack: StackService[T]):
+    def __init__(self, id: int, context: SearchContext[T], stack: StackService[T]):
         """
         Args:
             id: int
-            item: T
+            context: SearchContext[T]
             stack: StackService[T]
         """
-        super().__init__(id=id, item=item, collection=stack)
+        super().__init__(id=id, context=context, collection=stack)
         
     @property
-    def item(self) -> T:
-        return cast(T, super().item)
+    def context(self) -> SearchContext[T]:
+        return cast(SearchContext[T], super().context)
         
     @property
     def stack(self) -> StackService[T]:
@@ -61,7 +61,7 @@ class StackPushRequest(InsertRequest, ABC, Generic[T]):
     def __eq__(self, other):
         if other is self: return True
         if other is None: return False
-        if isinstance(other, StackPushRequest):
-            request = cast(StackPushRequest, other)
+        if isinstance(other, StackSearchRequest):
+            request = cast(StackSearchRequest, other)
             return self.id == request.id
         return False
