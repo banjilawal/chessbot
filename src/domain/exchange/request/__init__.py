@@ -11,6 +11,7 @@ version: 0.0.2
 # =========== DOMAIN.EXCHANGE.REQUEST PACKAGE ===========#
 
 # Packages
+from .crud import *
 from .chain import *
 from .insertion import *
 from .maneuver import *
