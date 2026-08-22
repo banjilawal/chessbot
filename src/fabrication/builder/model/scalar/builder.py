@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from fabrication.blueprint import ScalarBlueprint
+from domain.metadata.blueprint import ScalarBlueprint
 from fabrication.builder import ModelBuilder
 from err import ScalarBuilderException
 from domain.model import Scalar

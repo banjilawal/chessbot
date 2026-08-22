@@ -17,7 +17,7 @@ from err import BlueprintNullException, EntityCarrierNullException, ModelNullExc
 from fabrication import Blueprint
 from microservice import IdentityService
 from domain.model import Model
-from transit import EntityCarrier
+from domain.transit import EntityCarrier
 
 T = TypeVar("T", bound="Model")
 

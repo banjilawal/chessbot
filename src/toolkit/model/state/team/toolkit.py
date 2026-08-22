@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Type
 
-from fabrication.blueprint import TeamBlueprint, TokenBlueprint
+from domain.metadata.blueprint import TeamBlueprint, TokenBlueprint
 from carrier import TokenCarrier
 from sensor.detector import TokenHomeReporter
 from err import (

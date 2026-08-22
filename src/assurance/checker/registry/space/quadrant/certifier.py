@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from fabrication.blueprint import QuadrantReservoirBlueprint
+from domain.metadata.blueprint import QuadrantReservoirBlueprint
 from carrier import QuadrantReservoirCarrier
 from domain.model import Vector
 from assurance.checker import SpaceReservoirChecker

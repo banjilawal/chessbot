@@ -12,7 +12,7 @@ __all__ = [
     "NodePushException",
 ]
 
-from domain.node import NodeStackException
+from domain.structures.node import NodeStackException
 from system import InsertionException
 
 

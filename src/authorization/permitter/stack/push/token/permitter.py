@@ -16,7 +16,7 @@ from err import TokenPushPermitterException
 from domain.model import Token
 from authorization.permitter.stack import StackPushPermitter, RankSlotPermitter
 from report import PushApprovalReport, AuthorizationDecision
-from request import TokenStackPushRequest, RankSlotRequest
+from domain.exchange.request import TokenStackPushRequest, RankSlotRequest
 from collection.stack import TokenStackService
 from authorization.adjudicator import TokenPushRequestAdjudicator
 from util import IdFactory, LoggingLevelRouter

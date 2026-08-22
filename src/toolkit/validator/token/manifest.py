@@ -18,7 +18,7 @@ from fabrication import TokenBlueprint
 from domain.model import Token
 from sensor import TokenHomeReporter
 from toolkit import ModelManifest
-from transit import TokenCarrier
+from domain.transit import TokenCarrier
 
 
 class TokenValidatorToolkit(ModelManifest[Token]):

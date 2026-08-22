@@ -15,7 +15,7 @@ from err import TokenBlueprintNullException, TokenCarrierNullException, TokenNul
 from fabrication import TokenBlueprint
 from domain.model import Token
 from toolkit import ModelManifest
-from transit import TokenCarrier
+from domain.transit import TokenCarrier
 
 
 class TokenValidatorToolkit(ModelManifest[Token]):

@@ -14,11 +14,11 @@ from typing import Optional, cast
 from assurance import ModelIntegrityChecker, VectorValidationBundle
 from err import VectorIntegrityCheckerException
 from fabrication import VectorNodeBlueprint
-from fabrication.blueprint import VectorBlueprint
+from domain.metadata.blueprint import VectorBlueprint
 from domain.model import Vector
-from domain.node import VectorNode
+from domain.structures.node import VectorNode
 from result import ValidationResult
-from transit import VectorCarrier
+from domain.transit import VectorCarrier
 from util import LoggingLevelRouter
 
 

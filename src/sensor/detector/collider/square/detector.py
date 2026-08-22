@@ -14,7 +14,7 @@ from report import CollisionReport
 from result import AnalysisResult
 from sensor import Collider
 from collection.stack import SquareStackService
-from transit import SquareCarrier
+from domain.transit import SquareCarrier
 from util import LoggingLevelRouter
 
 

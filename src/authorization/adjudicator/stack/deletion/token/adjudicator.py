@@ -15,7 +15,7 @@ from typing import Any, Type, cast
 from priming_validator import DeletionRequestPriming_Validator, PrimingValidator
 from err import TokenStackNullException
 from microservice import IdentityService
-from request import CollectionDeletionRequest
+from domain.exchange.request import CollectionDeletionRequest
 from result import MethodResultType, ValidationResult
 from collection.stack import TokenStackService
 from authorization.adjudicator import DeletionRequestAdjudicator

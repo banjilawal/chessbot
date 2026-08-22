@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Optional, Type
 
 from assurance import PrimingValidator
-from fabrication.blueprint import TokenBlueprint
+from domain.metadata.blueprint import TokenBlueprint
 from err import BlueprintRankExtractorException, TokenBlueprintNullException
 from microservice import RankService
 from result import ValidationResult

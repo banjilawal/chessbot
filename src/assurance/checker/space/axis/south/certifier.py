@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Any, List, cast
 
-from fabrication.blueprint import SouthAxisBlueprint
+from domain.metadata.blueprint import SouthAxisBlueprint
 from carrier import SouthAxisCarrier
 from domain.model import Vector
 from result import ValidationResult

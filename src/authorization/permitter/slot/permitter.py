@@ -15,7 +15,7 @@ from bootstrapper import PrimingValidator
 from err import RankQuotaFullException, RankSlotPermitterException, RankSlotRequestNullException
 from authorization.permitter import OperationPermitter
 from report import RankQuotaReport, RankSlotApprovalReport
-from request import RankSlotRequest
+from domain.exchange.request import RankSlotRequest
 from util import LoggingLevelRouter
 from assurance.validator import RankValidator
 

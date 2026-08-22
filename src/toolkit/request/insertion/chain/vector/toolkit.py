@@ -14,8 +14,8 @@ from typing import Optional, Type, cast
 from assurance import VectorValidator
 from collection import VectorChain
 from err import AddVectorNodeRequestNullException, VectorNodeNullException, VectorChainNullException
-from domain.node import VectorNode
-from request import AddVectorNodeRequest
+from domain.structures.node import VectorNode
+from domain.exchange.request import AddVectorNodeRequest
 from toolkit import AddNodeRequestToolkit
 
 

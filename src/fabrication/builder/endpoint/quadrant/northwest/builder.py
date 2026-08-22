@@ -13,7 +13,7 @@ from typing import Optional
 
 
 from domain.model import Vector
-from domain.register import VectorRegister
+from domain.structures.register import VectorRegister
 from result import BuildResult
 from schema.terminus.quadrant import QuadrantTerminus
 from util import LoggingLevelRouter

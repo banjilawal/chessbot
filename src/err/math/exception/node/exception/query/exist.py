@@ -14,7 +14,7 @@ __all__ = [
     "NodeNotFoundException",
 ]
 
-from domain.node import NodeDebugException
+from domain.structures.node import NodeDebugException
 
 
 # ======================# NODE_NOT_FOUND EXCEPTION #======================#

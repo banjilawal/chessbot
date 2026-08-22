@@ -10,7 +10,7 @@ version: 0.0.2
 from __future__ import annotations
 from typing import Optional
 
-from fabrication.blueprint import TokenBlueprint
+from domain.metadata.blueprint import TokenBlueprint
 from err import (
     OpeningSquareCollisionException,TokenIdCollisionException, TokenNameCollisionException
 )

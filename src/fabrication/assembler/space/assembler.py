@@ -13,7 +13,7 @@ from __future__ import annotations
 from typing import Generic, TypeVar
 
 from fabrication.assembler import Assembler
-from fabrication.blueprint import SpaceBlueprint
+from domain.metadata.blueprint import SpaceBlueprint
 from result import BuildResult
 from util import LoggingLevelRouter
 

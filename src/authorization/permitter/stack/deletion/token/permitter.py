@@ -13,7 +13,7 @@ from typing import cast
 
 from err import PoppingEmptyTokenStackException, TokenDeletePermitterException
 from report import DeletionApprovalReport
-from request import CollectionDeletionRequest
+from domain.exchange.request import CollectionDeletionRequest
 from collection.stack import TokenStackService
 from authorization.adjudicator import TokenDeletionRequestAdjudicator
 from util import LoggingLevelRouter

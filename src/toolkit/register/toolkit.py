@@ -12,10 +12,10 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Generic, Type, TypeVar
 
-from fabrication.blueprint import RegisterBlueprint
+from domain.metadata.blueprint import RegisterBlueprint
 from carrier import RegisterCarrier
 from err import RegisterBlueprintNullException, RegisterCarrierNullException, RegisterNullException
-from domain.register import Register
+from domain.structures.register import Register
 from toolkit.register.toolkit import Toolkit
 
 T = TypeVar("T", bound="Register")

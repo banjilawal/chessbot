@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from fabrication.blueprint import QuadrantReservoirBlueprint
+from domain.metadata.blueprint import QuadrantReservoirBlueprint
 from fabrication.builder import SpaceReservoirBuilder
 from err import QuadrantReservoirBuilderException
 from topology.registry import QuadrantReservoir

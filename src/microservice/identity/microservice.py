@@ -10,7 +10,7 @@ version: 0.0.2
 from __future__ import annotations
 from typing import Any, cast
 
-from fabrication.blueprint import Blueprint
+from domain.metadata.blueprint import Blueprint
 from err import IdentityServiceException
 from domain.model import IdentityRegister
 from result import ValidationResult

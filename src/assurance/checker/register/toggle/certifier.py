@@ -10,16 +10,16 @@ version: 0.0.2
 from __future__ import annotations
 from typing import List, Optional, cast
 
-from fabrication.blueprint import VectorToggleRegisterBlueprint
+from domain.metadata.blueprint import VectorToggleRegisterBlueprint
 from carrier import VectorToggleRegisterCarrier
 from err import (
     RegisterEmptyException, RegisterSizeException, VectorToggleRegisterCheckerException,
     VectorToggleRegisterMismatchException
 )
-from domain.register import CartesianToggleRegister
+from domain.structures.register import CartesianToggleRegister
 from result import MethodResultType, ValidationResult
 from assurance.checker import Checker
-from domain.toggle import CartesianToggle
+from domain.structures.toggle import CartesianToggle
 from toolkit import VectorToggleRegisterToolkit
 from util import LoggingLevelRouter
 

@@ -14,7 +14,7 @@ from typing import List, TypeVar
 from fabrication.builder import ContainerBuilder
 from collection import RegisterSet
 from domain.model import TargetVectorSet
-from domain.register import VectorRegister
+from domain.structures.register import VectorRegister
 from result import BuildResult
 from util import IdFactory, LoggingLevelRouter
 

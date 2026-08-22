@@ -12,11 +12,11 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Type
 
-from fabrication.blueprint import VectorToggleBlueprint
+from domain.metadata.blueprint import VectorToggleBlueprint
 from carrier.toggle.vector.carrier import VectorToggleCarrier
 from err import VectorToggleBlueprintNullException, VectorToggleCarrierNullException, VectorToggleNullException
 from suite import  CoordOperationSuite, VectorOperationSuite
-from domain.toggle import CartesianToggle
+from domain.structures.toggle import CartesianToggle
 from toolkit.toggle.vector.toolkit import ToggleToolkit
 
 

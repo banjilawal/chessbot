@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from fabrication.blueprint import NorthwestQuadrantBlueprint
+from domain.metadata.blueprint import NorthwestQuadrantBlueprint
 from fabrication.builder import QuadrantBuilder
 from err import NorthwestQuadrantBuilderException
 from result import BuildResult, MethodResultType

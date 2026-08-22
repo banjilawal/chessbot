@@ -10,7 +10,7 @@ version: 0.0.2
 from __future__ import annotations
 from typing import cast
 
-from fabrication.blueprint import VectorToggleBlueprint
+from domain.metadata.blueprint import VectorToggleBlueprint
 from carrier import VectorToggleCarrier
 from err import (
     ExcessToggleActivationException, NoActiveTogglesException, NoValidationRouteException,
@@ -19,7 +19,7 @@ from err import (
 from domain.model import Coord, Vector
 from assurance.checker import ToggleChecker
 from result import ValidationResult
-from domain.toggle import CartesianToggle
+from domain.structures.toggle import CartesianToggle
 from toolkit import VectorToggleToolkit
 from util import LoggingLevelRouter
 

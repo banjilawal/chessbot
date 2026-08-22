@@ -13,7 +13,7 @@ from abc import ABC, abstractmethod
 from typing import Generic, TypeVar
 
 from report import AuthorizationDecision
-from request import Request
+from domain.exchange.request import Request
 from result import Result
 from toolkit import RequestToolkit
 from util import LoggingLevelRouter

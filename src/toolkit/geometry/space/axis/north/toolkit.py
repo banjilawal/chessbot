@@ -12,7 +12,7 @@ from __future__ import annotations
 
 from typing import Type, cast
 
-from fabrication.blueprint.space.axis.north import NorthAxisBlueprint
+from domain.metadata.blueprint.space.axis.north import NorthAxisBlueprint
 from carrier import NorthAxisCarrier
 from err import (
     AxisBlueprintNullException, AxisCarrierNullException, NorthAxisBlueprintNullException,

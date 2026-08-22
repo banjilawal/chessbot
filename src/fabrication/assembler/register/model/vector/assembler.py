@@ -10,8 +10,8 @@ version: 0.0.2
 from __future__ import annotations
 
 from fabrication.assembler import RegisterAssembler
-from fabrication.blueprint import VectorRegisterBlueprint
-from domain.register import VectorRegister
+from domain.metadata.blueprint import VectorRegisterBlueprint
+from domain.structures.register import VectorRegister
 from result import BuildResult
 from util import LoggingLevelRouter
 

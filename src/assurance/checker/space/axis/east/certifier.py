@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Any, List, cast
 
-from fabrication.blueprint import EastAxisBlueprint
+from domain.metadata.blueprint import EastAxisBlueprint
 from err import EastAxisCarrierNullException, EastAxisRootCheckerException
 from carrier import EastAxisCarrier
 from domain.model import Vector

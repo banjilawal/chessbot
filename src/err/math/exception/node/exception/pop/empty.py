@@ -14,7 +14,7 @@ __all__ = [
     "PoppingEmptyNodeStackException",
 ]
 
-from domain.node import NodeDebugException
+from domain.structures.node import NodeDebugException
 
 
 # ======================# POPPING_EMPTY_NODE_STACK EXCEPTION #======================#

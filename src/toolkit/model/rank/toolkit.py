@@ -12,7 +12,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Type
 
-from fabrication.blueprint import RankBlueprint
+from domain.metadata.blueprint import RankBlueprint
 from carrier import RankCarrier
 from err import RankBlueprintNullException, RankCarrierNullException, RankNullException
 from domain.model import Rank

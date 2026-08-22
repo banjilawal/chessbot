@@ -13,7 +13,7 @@ from typing import Type
 from err import DeletionRequestNullException, DeletePermitterException
 from authorization.permitter.stack import OperationPermitter
 from report import DeletionApprovalReport
-from request import CollectionDeletionRequest
+from domain.exchange.request import CollectionDeletionRequest
 from result import ValidationResult
 from util import LoggingLevelRouter
 

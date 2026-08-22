@@ -11,10 +11,10 @@ from __future__ import annotations
 
 from typing import Type
 
-from fabrication.blueprint import VectorRegisterBlueprint
+from domain.metadata.blueprint import VectorRegisterBlueprint
 from carrier import VectorRegisterCarrier
 from err import VectorRegisterBlueprintNullException, VectorRegisterCarrierNullException, VectorRegisterNullException
-from domain.register import VectorRegister
+from domain.structures.register import VectorRegister
 from toolkit.register.vector.toolkit import RegisterToolkit
 from assurance.validator import VectorValidator
 

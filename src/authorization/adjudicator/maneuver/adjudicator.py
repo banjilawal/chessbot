@@ -17,9 +17,9 @@ from err import (
     ManeuverRequestAdjudicatorException
 )
 from domain.model import Maneuver, Path, Square
-from domain.register import SquareRegister
+from domain.structures.register import SquareRegister
 from report import ManeuverRequestDecision
-from request import ManeuverRequest
+from domain.exchange.request import ManeuverRequest
 from result import MethodResultType
 from toolkit import TokenManeuverToolkit
 from util import IdFactory, LoggingLevelRouter

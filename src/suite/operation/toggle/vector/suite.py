@@ -14,7 +14,7 @@ from typing import Optional, cast
 from assurance import VectorToggleValidator
 from fabrication import VectorToggleBuilder
 from kit import ToggleOperationSuite, VectorToggleToolkit
-from domain.toggle import CartesianToggle
+from domain.structures.toggle import CartesianToggle
 
 
 class VectorToggleSuite(ToggleOperationSuite[CartesianToggle]):

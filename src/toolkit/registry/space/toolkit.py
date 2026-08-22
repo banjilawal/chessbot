@@ -13,7 +13,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Generic, Optional, Type, TypeVar, cast
 
-from fabrication.blueprint import SpaceReservoirBlueprint
+from domain.metadata.blueprint import SpaceReservoirBlueprint
 from carrier import SpaceReservoirCarrier
 from err.null.carrier.space.reservoir import SpaceReservoirNullException
 from toolkit.registry.space.toolkit import MathToolkit, Toolkit

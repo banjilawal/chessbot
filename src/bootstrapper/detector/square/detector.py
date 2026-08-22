@@ -9,7 +9,7 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from fabrication.blueprint import SquareBlueprint
+from domain.metadata.blueprint import SquareBlueprint
 from bootstrapper import DetectorBootstrapper
 from err import (
     SquareCollisionDetectorException, SquareCoordCollisionException, SquareIdCollisionException,

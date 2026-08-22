@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Generic, Optional, Type, TypeVar, cast
 
-from fabrication.blueprint import Blueprint
+from domain.metadata.blueprint import Blueprint
 from carrier import EntityCarrier
 from err import (
     AxisBlueprintNullException, AxisCarrierNullException, AxisNullException

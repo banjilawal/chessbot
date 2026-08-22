@@ -12,7 +12,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Type
 
-from fabrication.blueprint import ScalarBlueprint
+from domain.metadata.blueprint import ScalarBlueprint
 from carrier import ScalarCarrier
 from err import ScalarBlueprintNullException, ScalarCarrierNullException, ScalarNullException
 from domain.model import Scalar

@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Optional, cast
 
 from fabrication.builder import RegisterBuilder
-from domain.register import SquareRegister
+from domain.structures.register import SquareRegister
 from util import LoggingLevelRouter
 
 

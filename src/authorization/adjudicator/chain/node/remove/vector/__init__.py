@@ -13,4 +13,3 @@ version: 0.0.2
 
 
 # Modules
-from request import RemoveVectorNodeRequest

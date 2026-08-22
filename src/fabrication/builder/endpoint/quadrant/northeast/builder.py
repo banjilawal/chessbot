@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Optional, cast
 
 from domain.model import Vector
-from domain.register import VectorRegister
+from domain.structures.register import VectorRegister
 from result import BuildResult
 from schema.terminus.quadrant import QuadrantTerminus
 from util import LoggingLevelRouter

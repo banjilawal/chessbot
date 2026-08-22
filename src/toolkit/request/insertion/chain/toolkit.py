@@ -13,8 +13,8 @@ from typing import Generic, Type, TypeVar, cast
 
 from collection import Chain
 from err import ChainNullException, NodeNullException, RequestNullException
-from domain.node import Node
-from request import AddNodeRequest
+from domain.structures.node import Node
+from domain.exchange.request import AddNodeRequest
 
 from toolkit import InsertionRequestToolkit
 

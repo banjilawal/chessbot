@@ -11,14 +11,14 @@ from __future__ import annotations
 
 from typing import Type
 
-from fabrication.blueprint import VectorToggleRegisterBlueprint
+from domain.metadata.blueprint import VectorToggleRegisterBlueprint
 from carrier import VectorToggleRegisterCarrier
 from err import (
     VectorToggleRegisterBlueprintNullException, VectorToggleRegisterCarrierNullException,
     VectorToggleRegisterNullException
 )
-from domain.register import CartesianToggleRegister
-from domain.toggle import CartesianToggle
+from domain.structures.register import CartesianToggleRegister
+from domain.structures.toggle import CartesianToggle
 from toolkit.register.toggle.toolkit import RegisterToolkit
 from assurance.validator import VectorToggleValidator
 

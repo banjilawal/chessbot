@@ -11,11 +11,11 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from fabrication.blueprint import VectorToggleBlueprint
+from domain.metadata.blueprint import VectorToggleBlueprint
 from fabrication.builder import ToggleBuilder
 from err import VectorToggleBuilderException
 from result import BuildResult, MethodResultType
-from domain.toggle import CartesianToggle
+from domain.structures.toggle import CartesianToggle
 from toolkit import VectorToggleBuilderToolkit
 from util import LoggingLevelRouter
 

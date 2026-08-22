@@ -13,9 +13,9 @@ from abc import ABC, abstractmethod
 from typing import Generic, TypeVar, cast
 
 from authorization import InsertionRequestAuthorizer
-from domain.node import Node
+from domain.structures.node import Node
 from report import AuthorizationDecision
-from request import AddNodeRequest
+from domain.exchange.request import AddNodeRequest
 from toolkit import AddNodeRequestToolkit
 from util import LoggingLevelRouter
 

@@ -10,11 +10,11 @@ version: 0.0.2
 from __future__ import annotations
 from typing import List, cast
 
-from fabrication.blueprint import VectorRegisterBlueprint
+from domain.metadata.blueprint import VectorRegisterBlueprint
 from carrier import VectorRegisterCarrier
 from err import RegisterEmptyException, RegisterSetSizeException, VectorRegisterRootCheckerException
 from domain.model import Vector
-from domain.register import VectorRegister
+from domain.structures.register import VectorRegister
 from result import ValidationResult
 from assurance.checker import Checker
 from toolkit import VectorRegisterToolkit

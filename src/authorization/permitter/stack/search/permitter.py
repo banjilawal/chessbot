@@ -11,7 +11,7 @@ from abc import abstractmethod
 
 from authorization.permitter.stack import OperationPermitter
 from report import SearchApprovalReport
-from request import SearchRequest
+from domain.exchange.request import SearchRequest
 from util import LoggingLevelRouter
 
 

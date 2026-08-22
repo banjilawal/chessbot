@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from fabrication.blueprint import PlayerBlueprint
+from domain.metadata.blueprint import PlayerBlueprint
 from fabrication.builder import ModelBuilder
 from err import PlayerBuilderException
 from domain.model import Player

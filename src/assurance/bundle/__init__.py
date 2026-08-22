@@ -1,17 +1,18 @@
-# src/assurance/manifest/__init__.py
+# src/assurance/bundle/__init__.py
 
 """
-Module: assurance.manifest.__init__
+Module: assurance.bundle.__init__
 Author: Banji Lawal
-Created: 2026-03-30
+Created: 2026-04-03
 version: 0.0.2
 """
 
-# =========== ASSURANCE.MANIFEST PACKAGE ===========#
+# =========== ASSURANCE.BUNDLE PACKAGE ===========#
 
 # Packages
-from .bundle import *
-from .nulls import *
-from .types import *
+from .node import *
+from .token import *
+from .vector import *
 
-# Modules
+# Module
+from .bundle import ValidationBundle

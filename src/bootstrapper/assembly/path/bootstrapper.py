@@ -11,11 +11,11 @@ from __future__ import annotations
 
 from typing import List
 
-from fabrication.blueprint import PathBlueprint
+from domain.metadata.blueprint import PathBlueprint
 from controller import WorkerRegistryController
 from report import CollisionReport
 from toolkit import PathToolkit
-from operation.collection.search import SquareNotFoundException
+from operation.crud.search import SquareNotFoundException
 from operation import AssemblyPrimer
 from err import PathAssemblyPrimerException
 from result import AnalysisResult, SearchResult, ValidationResult

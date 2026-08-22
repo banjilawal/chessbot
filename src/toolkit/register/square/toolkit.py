@@ -11,12 +11,12 @@ from __future__ import annotations
 
 from typing import Type
 
-from fabrication.blueprint import SquareRegisterBlueprint
+from domain.metadata.blueprint import SquareRegisterBlueprint
 from carrier import SquareRegisterCarrier
 from err import (
     SquareRegisterBlueprintNullException, SquareRegisterCarrierNullException, SquareRegisterNullException
 )
-from domain.register import SquareRegister
+from domain.structures.register import SquareRegister
 from toolkit.register.square.toolkit import RegisterToolkit
 from assurance.validator import SquareValidator
 

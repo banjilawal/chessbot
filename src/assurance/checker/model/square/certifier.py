@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Any, cast
 
-from fabrication.blueprint import SquareBlueprint
+from domain.metadata.blueprint import SquareBlueprint
 from err import FormationNullException, SquareCheckerException, SquareCarrierNullException
 from domain.model import Board, Coord, HomeSquare, Square
 from carrier import SquareCarrier

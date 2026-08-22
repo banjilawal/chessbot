@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Optional, cast
 
 from domain.model import Dossier
-from domain.node import Node
+from domain.structures.node import Node
 
 
 class DossierNode(Node[Dossier]):

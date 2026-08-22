@@ -12,7 +12,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Any, Optional
 
-from fabrication.blueprint import Blueprint
+from domain.metadata.blueprint import Blueprint
 from report import CollisionState, Report
 
 

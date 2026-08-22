@@ -10,7 +10,6 @@ version: 0.0.2
 # =========== GRAPH PACKAGE ===========#
 
 # Packages
-from component import *
 
 # Modules
 from .graph import Graph

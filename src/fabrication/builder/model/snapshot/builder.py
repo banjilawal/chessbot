@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from fabrication.blueprint import SnapshotBlueprint
+from domain.metadata.blueprint import SnapshotBlueprint
 from fabrication.builder import ModelBuilder
 from err import SnapshotBuilderException
 from domain.model import Snapshot

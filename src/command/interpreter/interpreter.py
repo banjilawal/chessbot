@@ -12,7 +12,7 @@ from __future__ import annotations
 from abc import ABC, abstractmethod
 from typing import Generic, TypeVar
 
-from request import Request
+from domain.exchange.request import Request
 from util import LoggingLevelRouter
 
 T = TypeVar("T", bound="Request")

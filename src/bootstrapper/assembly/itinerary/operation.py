@@ -10,7 +10,7 @@ version: 0.0.2
 from __future__ import annotations
 from typing import cast
 
-from fabrication.blueprint import ItineraryBlueprint
+from domain.metadata.blueprint import ItineraryBlueprint
 from controller import WorkerRegistryController
 from err import (
     DisabledTokenManeuverException, InconsistentStateException, ItineraryAssemblyPrimerException,

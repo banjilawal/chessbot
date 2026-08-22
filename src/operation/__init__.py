@@ -10,7 +10,7 @@ version: 0.0.2
 # =========== OPERATION PACKAGE ===========#
 
 # Packages
-from .collection import *
+from .crud import *
 from .computation import *
 from .insertion import *
 from .microservice import *

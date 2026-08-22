@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from fabrication.blueprint import WestAxisBlueprint
+from domain.metadata.blueprint import WestAxisBlueprint
 from fabrication.builder import AxisBuilder
 from err import WestAxisBuilderException
 from result import BuildResult, MethodResultType

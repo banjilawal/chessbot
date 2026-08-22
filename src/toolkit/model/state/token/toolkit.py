@@ -12,7 +12,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Type
 
-from fabrication.blueprint import TokenBlueprint
+from domain.metadata.blueprint import TokenBlueprint
 from carrier import TokenCarrier
 from sensor.detector import TokenHomeReporter
 from err import TokenBlueprintNullException, TokenCarrierNullException, TokenNullException

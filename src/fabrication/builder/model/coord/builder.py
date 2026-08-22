@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from fabrication.blueprint import CoordBlueprint
+from domain.metadata.blueprint import CoordBlueprint
 from fabrication.builder import ModelBuilder
 from err import CoordBuilderException
 from domain.model import Coord

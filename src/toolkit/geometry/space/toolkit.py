@@ -13,7 +13,7 @@ from __future__ import annotations
 
 from typing import Generic, Optional, Type, TypeVar
 
-from fabrication.blueprint import Blueprint
+from domain.metadata.blueprint import Blueprint
 from carrier import EntityCarrier
 from err import SpaceBlueprintNullException, SpaceCarrierNullException, SpaceNullException
 from toolkit.geometry.space.toolkit import MathToolkit, Toolkit

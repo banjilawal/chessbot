@@ -16,7 +16,7 @@ from err import SquareAppendPermitterException
 from domain.model import Square
 from authorization.permitter.chain import AppendPermitter
 from report import AppendApprovalReport
-from request import AppendRequest
+from domain.exchange.request import AppendRequest
 from chain import SquareChainService
 from authorization.adjudicator import SquareAppendRequestAdjudicator
 from util import LoggingLevelRouter

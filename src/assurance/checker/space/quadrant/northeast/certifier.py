@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Any, List, cast
 
-from fabrication.blueprint import NortheastQuadrantBlueprint
+from domain.metadata.blueprint import NortheastQuadrantBlueprint
 from err import NortheastQuadrantCarrierNullException, NortheastQuadrantRootCheckerException
 from carrier import NortheastQuadrantCarrier
 from domain.model import Vector

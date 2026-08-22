@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from fabrication.blueprint import EdgeBlueprint
+from domain.metadata.blueprint import EdgeBlueprint
 from fabrication.builder import ModelBuilder
 from err import EdgeBuilderException
 from domain.model import Edge

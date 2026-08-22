@@ -12,7 +12,7 @@ from __future__ import annotations
 from abc import ABC
 from typing import Generic, Optional, TypeVar, cast
 
-from request import OperationRequest
+from domain.exchange.request import OperationRequest
 from result import InterpretationState, Result
 
 

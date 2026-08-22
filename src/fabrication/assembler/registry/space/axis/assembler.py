@@ -10,7 +10,7 @@ version: 0.0.2
 from __future__ import annotations
 
 from fabrication.assembler import SpaceReservoirAssembler
-from fabrication.blueprint import AxisReservoirBlueprint
+from domain.metadata.blueprint import AxisReservoirBlueprint
 from topology.registry import AxisReservoir
 from result import BuildResult
 from util import LoggingLevelRouter

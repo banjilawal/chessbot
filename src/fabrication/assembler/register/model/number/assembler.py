@@ -11,8 +11,8 @@ from __future__ import annotations
 
 
 from fabrication.assembler import RegisterAssembler
-from fabrication.blueprint import NumberRegisterBlueprint
-from domain.register import NumberRegister
+from domain.metadata.blueprint import NumberRegisterBlueprint
+from domain.structures.register import NumberRegister
 from result import BuildResult
 from util import LoggingLevelRouter
 

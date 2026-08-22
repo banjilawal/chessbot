@@ -12,7 +12,7 @@ from __future__ import annotations
 from abc import ABC, abstractmethod
 from typing import Generic, TypeVar
 
-from fabrication.blueprint import Blueprint
+from domain.metadata.blueprint import Blueprint
 from result import BuildResult
 from util import LoggingLevelRouter
 

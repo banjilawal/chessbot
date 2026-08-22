@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from fabrication.blueprint import RankBlueprint
+from domain.metadata.blueprint import RankBlueprint
 from fabrication.builder import ModelBuilder
 from err import RankBuilderException
 from domain.model import Rank

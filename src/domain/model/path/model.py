@@ -13,7 +13,7 @@ from dataclasses import dataclass
 from typing import Optional
 
 from domain.model import Model
-from domain.register import SquareRegister
+from domain.structures.register import SquareRegister
 
 
 @dataclass

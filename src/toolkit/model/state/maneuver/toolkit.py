@@ -14,7 +14,7 @@ from typing import Type
 from sensor.analyzer import SquareTokenRelationAnalyzer, TokenReadinessAnalyzer
 from err import ManeuverNullException
 from domain.model import Maneuver
-from operation.collection.search import TokenOriginSearcher
+from operation.crud.search import TokenOriginSearcher
 from toolkit.model.state.maneuver.toolkit import StateModelToolkit
 from assurance.validator import (
     ManeuverEndpointValidator, PathValidator, SquareValidator, TokenDestinationCertifier,

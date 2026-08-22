@@ -13,7 +13,7 @@ from abc import ABC, abstractmethod
 from typing import Generic, TypeVar
 
 
-from fabrication.blueprint import Blueprint
+from domain.metadata.blueprint import Blueprint
 from result import BuildResult
 from toolkit import BuilderToolkit
 from util import LoggingLevelRouter

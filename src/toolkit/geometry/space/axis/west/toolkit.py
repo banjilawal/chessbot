@@ -13,7 +13,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Type
 
-from fabrication.blueprint.space.axis.west import WestAxisBlueprint
+from domain.metadata.blueprint.space.axis.west import WestAxisBlueprint
 from carrier import WestAxisCarrier
 from err import WestAxisBlueprintNullException, WestAxisCarrierNullException, WestAxisNullException
 from space import WestAxis

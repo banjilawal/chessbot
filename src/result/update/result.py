@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from response import Response
+from domain.exchange.response import Response
 from result import Result, UpdateState
 
 

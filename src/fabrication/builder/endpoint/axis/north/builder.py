@@ -13,7 +13,7 @@ from typing import Optional, cast
 
 from fabrication.builder import VectorValidator
 from domain.model import Vector
-from domain.register import VectorRegister
+from domain.structures.register import VectorRegister
 from result import BuildResult
 from schema import AxisTerminus
 from util import LoggingLevelRouter

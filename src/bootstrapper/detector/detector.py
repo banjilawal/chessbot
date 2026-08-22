@@ -12,7 +12,7 @@ from __future__ import annotations
 from abc import ABC
 from typing import Generic, Optional, TypeVar
 
-from fabrication.blueprint import Blueprint
+from domain.metadata.blueprint import Blueprint
 from report import CollisionReport
 from result import AnalysisResult
 from collection.stack import StackService

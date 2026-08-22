@@ -15,7 +15,7 @@ __all__ = [
     "NodeSearchRouteException",
 ]
 
-from domain.node import NodeDebugException
+from domain.structures.node import NodeDebugException
 
 
 # ======================# NO_NODE_SEARCH_ROUTE_ROUTE_EXCEPTION #======================#

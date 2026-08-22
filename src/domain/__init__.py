@@ -10,11 +10,13 @@ version: 0.0.2
 # =========== DOMAIN PACKAGE ===========#
 
 # Packages
+from .exchange import *
+from .graph import *
+from .metadata import *
 from .model import *
-from .node import *
-from .register import *
 from .search import *
-from .toggle import *
+from .structures import *
+from .transit import *
 
 # Modules
-from .domain import Domain
+from .domain import DomainObject

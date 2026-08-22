@@ -13,7 +13,7 @@ from abc import ABC, abstractmethod
 from typing import Any, Generic, List, Optional, TypeVar, cast
 
 from assurance import NumberValidator
-from domain.node import Node
+from domain.structures.node import Node
 from result import BuildResult, DeletionResult, InsertionResult, SearchResult, ValidationResult
 from util import LoggingLevelRouter
 

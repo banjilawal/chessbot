@@ -12,7 +12,7 @@ from typing import Optional
 
 
 from report import Permission, Report
-from request import Request
+from domain.exchange.request import Request
 
 
 class AuthorizationDecision(Report):

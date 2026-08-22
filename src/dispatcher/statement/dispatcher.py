@@ -14,7 +14,7 @@ from typing import Any, Generic, TypeVar
 
 from command import CommandInterpreter
 from command.parser import StatementParser
-from request import OperationRequest
+from domain.exchange.request import OperationRequest
 from util import LoggingLevelRouter
 
 T = TypeVar("T", bound="OperationRequest")

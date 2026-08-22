@@ -10,10 +10,10 @@ version: 0.0.2
 from __future__ import annotations
 
 from fabrication.assembler import ToggleAssembler
-from fabrication.blueprint.toggle import VectorToggleBlueprint
+from domain.metadata.blueprint.toggle import VectorToggleBlueprint
 
 from result import BuildResult
-from domain.toggle import CartesianToggle
+from domain.structures.toggle import CartesianToggle
 from util import LoggingLevelRouter
 
 

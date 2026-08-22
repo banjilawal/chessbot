@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from fabrication.blueprint import ArenaBlueprint
+from domain.metadata.blueprint import ArenaBlueprint
 from fabrication.builder import ModelBuilder
 from err import ArenaBuilderException
 from domain.model import Arena

@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from fabrication.blueprint import BoardBlueprint
+from domain.metadata.blueprint import BoardBlueprint
 from fabrication.builder import ModelBuilder
 from err import BoardBuilderException
 from domain.model import Board

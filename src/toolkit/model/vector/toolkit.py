@@ -12,13 +12,13 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Type
 
-from fabrication.blueprint import VectorBlueprint
+from domain.metadata.blueprint import VectorBlueprint
 
 from err import VectorBlueprintNullException, VectorCarrierNullException, VectorNullException
 from domain.model import Vector
 from assurance.validator import NumberValidator
 from toolkit import ModelToolkit
-from transit import VectorCarrier
+from domain.transit import VectorCarrier
 
 
 @dataclass

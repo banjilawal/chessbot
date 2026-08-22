@@ -12,7 +12,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Type
 
-from fabrication.blueprint import CoordBlueprint
+from domain.metadata.blueprint import CoordBlueprint
 from carrier import CoordCarrier
 from err import CoordBlueprintNullException, CoordCarrierNullException, CoordNullException
 from domain.model import Coord

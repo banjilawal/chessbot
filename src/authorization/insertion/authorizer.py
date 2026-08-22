@@ -15,7 +15,7 @@ from typing import Generic, TypeVar, cast
 from authorization import RequestAuthorizer
 from collection import DomainObjectCollection
 from report import AuthorizationDecision
-from request import InsertionRequest
+from domain.exchange.request import InsertionRequest
 from toolkit import InsertionRequestToolkit
 
 from util import LoggingLevelRouter

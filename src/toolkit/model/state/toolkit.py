@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Generic, Type, TypeVar
 
-from fabrication.blueprint import Blueprint
+from domain.metadata.blueprint import Blueprint
 from carrier import EntityCarrier
 from err import BlueprintNullException, EntityCarrierNullException, StateModelNullException
 from toolkit.model.state.toolkit import ModelToolkit

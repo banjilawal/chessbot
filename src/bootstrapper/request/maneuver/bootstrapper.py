@@ -13,7 +13,7 @@ from typing import Type
 
 from bootstrapper import RequestBootstrapper
 from err import ManeuverRequestNullException, ManeuverPermitterBootstrapperException
-from request import ManeuverRequest
+from domain.exchange.request import ManeuverRequest
 from result import ValidationResult
 from util import LoggingLevelRouter
 

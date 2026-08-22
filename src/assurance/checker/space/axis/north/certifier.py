@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Any, List, cast
 
-from fabrication.blueprint import NorthAxisBlueprint
+from domain.metadata.blueprint import NorthAxisBlueprint
 from carrier import NorthAxisCarrier
 from err import NorthAxisCarrierNullException, NorthAxisRootCheckerException
 from domain.model import Vector

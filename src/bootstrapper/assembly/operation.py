@@ -12,7 +12,7 @@ from __future__ import annotations
 from abc import abstractmethod
 from typing import TypeVar
 
-from fabrication.blueprint import Blueprint
+from domain.metadata.blueprint import Blueprint
 from toolkit import Toolkit
 from operation import Operation
 from result import ValidationResult

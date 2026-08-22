@@ -16,7 +16,7 @@ from authorization import InsertionRequestAuthorizer
 from collection import DomainObjectCollection
 from dispatcher import AuthorizationDispatcher
 from report import AuthorizationDecision
-from request import InsertionRequest
+from domain.exchange.request import InsertionRequest
 from result import InsertionResult
 from util import LoggingLevelRouter
 

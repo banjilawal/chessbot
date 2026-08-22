@@ -10,7 +10,7 @@ version: 0.0.2
 from __future__ import annotations
 from typing import Optional, cast
 
-from fabrication.blueprint import TokenBlueprint
+from domain.metadata.blueprint import TokenBlueprint
 from detection import Detector, TokenCollider, TokenCollisionBootstrapper
 from err import TokenCollisionDetectorException
 from microservice import IdentityService

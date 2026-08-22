@@ -13,7 +13,7 @@ from abc import ABC
 from typing import Generic, TypeVar
 
 from authorization import RequestAdjudicator, RequestAuthorizer
-from request import InsertionRequest
+from domain.exchange.request import InsertionRequest
 
 T = TypeVar("T", bound="Collection")
 

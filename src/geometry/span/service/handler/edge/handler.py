@@ -10,7 +10,7 @@ version: 1.0.0
 from __future__ import annotations
 from typing import Dict, List
 
-from domain.node import SquareNode
+from domain.structures.node import SquareNode
 from graph.domain.graph import Graph
 from microservice.edge import Edge, EdgeBuilder, PushingEdgeException
 from system import BuildResult, InsertionResult, LoggingLevelRouter
