@@ -13,8 +13,8 @@ from typing import Optional
 
 from domain.metadata.blueprint import VectorToggleRegisterBlueprint
 from carrier import RegisterCarrier
-from domain.structures.register import CartesianToggleRegister
-from domain.structures.toggle import CartesianToggle
+from domain.structure.register import CartesianToggleRegister
+from domain.structure.toggle import CartesianToggle
 
 
 class VectorToggleRegisterCarrier(RegisterCarrier[CartesianToggle]):

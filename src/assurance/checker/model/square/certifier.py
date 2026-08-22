@@ -16,7 +16,7 @@ from err import FormationNullException, SquareCheckerException, SquareCarrierNul
 from domain.model import Board, Coord, HomeSquare, Square
 from carrier import SquareCarrier
 from result import ValidationResult
-from schema import Formation
+from domain.schema import Formation
 from toolkit import SquareToolkit
 from util import LoggingLevelRouter
 

@@ -16,18 +16,18 @@ from result import MethodResultType
 
 
 __all__ = [
-    # ======================# GRAPH_COMPONENT_ERROR #======================#
-    "GraphComponentException",
+    # ======================# EXCHANGE_OBJECT_ERROR #======================#
+    "ExchangeObjectException",
 ]
 
-# ======================# GRAPH_COMPONENT_ERROR #======================#
-class GraphComponentException(DomainObjectException):
+# ======================# EXCHANGE_OBJECT_ERROR #======================#
+class ExchangeObjectException(DomainObjectException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicating GraphComponent encountered an error.
+        1.  Indicating either a Request or a Response encountered an error.
 
     Attributes:
         msg: Optional[str]
@@ -44,8 +44,8 @@ class GraphComponentException(DomainObjectException):
     Super Class:
         DomainObjectException
     """
-    MSG = "GraphComponent error."
-    ERR_CODE = "GRAPH_COMPONENT_ERROR"
+    MSG = "Exchange error."
+    ERR_CODE = "EXCHANGE_OBJECT_ERROR"
     
     def __init__(
             self,

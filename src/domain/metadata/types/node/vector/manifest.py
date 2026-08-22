@@ -15,7 +15,7 @@ from typing import Type
 
 from assurance import NodeTypes
 from fabrication import VectorNodeBlueprint
-from domain.structures.node import VectorNode
+from domain.structure.node import VectorNode
 from domain.transit import VectorNodeCarrier
 
 

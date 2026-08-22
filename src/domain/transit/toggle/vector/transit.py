@@ -12,7 +12,7 @@ from typing import Any, Dict, Optional
 
 from domain.metadata.blueprint import VectorToggleBlueprint
 from domain.transit.toggle import ToggleCarrier
-from domain.structures.toggle import CartesianToggle
+from domain.structure.toggle import CartesianToggle
 
 
 class VectorToggleCarrier(ToggleCarrier[CartesianToggle]):

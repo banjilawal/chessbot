@@ -13,5 +13,4 @@ version: 1.0.0
 
 
 # Modules
-from .label import Label
-from .response import Response
+from .response import ServiceResponse

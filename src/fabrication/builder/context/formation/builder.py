@@ -13,7 +13,7 @@ from domain.model import (
     ArenaFormationKeysException, FormationKey, FormationKeyBuilderException,
     FormationKeyBuildRouteException, ZeroFormationKeysException
 )
-from schema.persona import Persona, PersonaService
+from domain.schema.persona import Persona, PersonaService
 from logic.square import Square, SquareService
 from system import BuildResult, Builder, GameColor, GameColorValidator, IdentityService, LoggingLevelRouter
 

@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import ModelException
+from err import CartesianPointException
 from result import MethodResultType
 
 
@@ -21,7 +21,7 @@ __all__ = [
 ]
 
 # ======================# COORD_ERROR #======================#
-class CoordException(ModelException):
+class CoordException(CartesianPointException):
     """
     Role:
         -   Error Tracing
@@ -42,7 +42,7 @@ class CoordException(ModelException):
     Provides:
 
     Super Class:
-        ModelException
+        CartesianPointException
     """
     MSG = "Coord error."
     ERR_CODE = "COORD_ERROR"

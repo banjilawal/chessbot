@@ -13,7 +13,7 @@ from typing import Type, cast
 
 from domain.metadata.blueprint import ModelBlueprint
 from domain.model import Rank
-from schema import Persona
+from domain.schema import Persona
 
 
 class RankBlueprint(ModelBlueprint[Rank]):

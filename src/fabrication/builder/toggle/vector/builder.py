@@ -15,7 +15,7 @@ from domain.metadata.blueprint import VectorToggleBlueprint
 from fabrication.builder import ToggleBuilder
 from err import VectorToggleBuilderException
 from result import BuildResult, MethodResultType
-from domain.structures.toggle import CartesianToggle
+from domain.structure.toggle import CartesianToggle
 from toolkit import VectorToggleBuilderToolkit
 from util import LoggingLevelRouter
 

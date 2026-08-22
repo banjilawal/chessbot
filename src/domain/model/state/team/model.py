@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from database import TokenDatabase
 from domain.model import Board, Player, StateModel, TeamState
-from schema import Archetype
+from domain.schema import Archetype
 
 
 class Team(StateModel):

@@ -14,7 +14,7 @@ from typing import Optional, Type, cast
 
 from domain.metadata.blueprint import ToggleBlueprint
 from domain.model import Coord, Vector
-from domain.structures.toggle import CartesianToggle
+from domain.structure.toggle import CartesianToggle
 
 
 class VectorToggleBlueprint(ToggleBlueprint[CartesianToggle]):

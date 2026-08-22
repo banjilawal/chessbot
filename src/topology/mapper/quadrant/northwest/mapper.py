@@ -10,7 +10,7 @@ version: 0.0.2
 from __future__ import annotations
 
 
-from schema import QuadrantStepFunction
+from domain.schema import QuadrantStepFunction
 from topology.space import NorthwestQuadrant
 
 

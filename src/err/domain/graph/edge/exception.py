@@ -11,23 +11,23 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import DomainObjectException
+from err import GraphComponentException
 from result import MethodResultType
 
 
 __all__ = [
-    # ======================# GRAPH_COMPONENT_ERROR #======================#
-    "GraphComponentException",
+    # ======================# EDGE_ERROR #======================#
+    "EdgeException",
 ]
 
-# ======================# GRAPH_COMPONENT_ERROR #======================#
-class GraphComponentException(DomainObjectException):
+# ======================# EDGE_ERROR #======================#
+class EdgeException(GraphComponentException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicating GraphComponent encountered an error.
+        1.  Indicating an Edge encountered an error.
 
     Attributes:
         msg: Optional[str]
@@ -42,10 +42,10 @@ class GraphComponentException(DomainObjectException):
     Provides:
 
     Super Class:
-        DomainObjectException
+        GraphComponentException
     """
-    MSG = "GraphComponent error."
-    ERR_CODE = "GRAPH_COMPONENT_ERROR"
+    MSG = "Edge error."
+    ERR_CODE = "EDGE_ERROR"
     
     def __init__(
             self,

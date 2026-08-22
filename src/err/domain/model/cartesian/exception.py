@@ -16,18 +16,18 @@ from result import MethodResultType
 
 
 __all__ = [
-    # ======================# CARTESIAN_ERROR #======================#
-    "CartesianException",
+    # ======================# CARTESIAN_POINT_ERROR #======================#
+    "CartesianPointException",
 ]
 
-# ======================# CARTESIAN_ERROR #======================#
-class CartesianException(ModelException):
+# ======================# CARTESIAN_POINT_ERROR #======================#
+class CartesianPointException(ModelException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicating a Cartesian encountered an error.
+        1.  Indicating a CartesianPoint encountered an error.
 
     Attributes:
         msg: Optional[str]
@@ -44,8 +44,8 @@ class CartesianException(ModelException):
     Super Class:
         ModelException
     """
-    MSG = "Cartesian error."
-    ERR_CODE = "CARTESIAN_ERROR"
+    MSG = "CartesianPoint error."
+    ERR_CODE = "CARTESIAN_POINT_ERROR"
     
     def __init__(
             self,

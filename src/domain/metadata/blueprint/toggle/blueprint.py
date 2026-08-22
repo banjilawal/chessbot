@@ -14,7 +14,7 @@ from typing import Optional, Type, cast
 
 from domain.metadata.blueprint import Blueprint
 from err import ToggleNullException
-from domain.structures.toggle import Toggle
+from domain.structure.toggle import Toggle
 
 
 class ToggleBlueprint(Blueprint[Toggle]):

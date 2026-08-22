@@ -15,7 +15,7 @@ from typing import Generic, Type, TypeVar
 from domain.metadata.blueprint import RegisterBlueprint
 from carrier import RegisterCarrier
 from err import RegisterBlueprintNullException, RegisterCarrierNullException, RegisterNullException
-from domain.structures.register import Register
+from domain.structure.register import Register
 from toolkit.register.toolkit import Toolkit
 
 T = TypeVar("T", bound="Register")

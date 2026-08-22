@@ -13,7 +13,7 @@ from typing import Optional, cast
 
 from authorization import AppendNodeRequest, ChainOffsetRequest
 from collection import VectorChain
-from domain.structures.node import VectorNode
+from domain.structure.node import VectorNode
 
 
 class AppendVectorNodeRequest(AppendNodeRequest[VectorNode]):

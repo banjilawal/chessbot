@@ -15,7 +15,7 @@ __all__ = [
     "TokenCommandDebugException",
 ]
 
-from command import TokenCommandDebugException
+from shell import TokenCommandDebugException
 
 
 # ======================# TOKEN_COMMAND_NOT_FOUND_EXCEPTION #======================#

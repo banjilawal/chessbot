@@ -9,7 +9,7 @@ version: 1.0.0
 
 from __future__ import annotations
 
-from command import Command
+from shell import Command
 from transport import AddressTag, Message
 
 

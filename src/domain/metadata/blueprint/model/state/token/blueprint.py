@@ -13,7 +13,7 @@ from typing import Optional, Type, cast
 
 from domain.metadata.blueprint import StateModelBlueprint
 from domain.model import HomeSquare, Rank, Team, Token
-from schema import Formation
+from domain.schema import Formation
 
 
 class TokenBlueprint(StateModelBlueprint[Token]):

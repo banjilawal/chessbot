@@ -1,7 +1,7 @@
-# src/err/domain/graph/exception.py
+# src/err/domain/exchange/exception.py
 
 """
-Module: err.domain.graph.exception
+Module: err.domain.exchange.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -11,23 +11,23 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import ExchangeException
+from err import ExchangeObjectException
 from result import MethodResultType
 
 
 __all__ = [
-    # ======================# EDGE_ERROR #======================#
-    "EdgeException",
+    # ======================# REQUEST_ERROR #======================#
+    "RequestException",
 ]
 
-# ======================# EDGE_ERROR #======================#
-class EdgeException(ExchangeException):
+# ======================# REQUEST_ERROR #======================#
+class RequestException(ExchangeObjectException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicating an Edge encountered an error.
+        1.  Indicating an Request encountered an error.
 
     Attributes:
         msg: Optional[str]
@@ -44,8 +44,8 @@ class EdgeException(ExchangeException):
     Super Class:
         ExchangeException
     """
-    MSG = "Edge error."
-    ERR_CODE = "EDGE_ERROR"
+    MSG = "Request error."
+    ERR_CODE = "REQUEST_ERROR"
     
     def __init__(
             self,

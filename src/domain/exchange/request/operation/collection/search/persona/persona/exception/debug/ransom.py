@@ -8,7 +8,7 @@ version: 1.0.0
 """
 
 from system import BoundsException
-from schema.persona import PersonaException
+from domain.schema.persona import PersonaException
 
 __all__ = [
     # ======================# PERSONA_RANSOM_BOUNDS EXCEPTION #======================#

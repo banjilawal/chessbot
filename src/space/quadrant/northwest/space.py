@@ -11,7 +11,7 @@ from __future__ import annotations
 
 
 from domain.model import Vector
-from schema import QuadrantTerminus
+from domain.schema import QuadrantTerminus
 from space.quadrant.northwest.space import Quadrant
 
 

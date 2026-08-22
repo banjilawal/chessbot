@@ -13,7 +13,7 @@ from typing import Any, Generic, List, Type, TypeVar, cast
 
 from domain.metadata.blueprint import Blueprint
 from err import RegisterNullException
-from domain.structures.register import Register
+from domain.structure.register import Register
 
 T = TypeVar("T", bound="Register")
 

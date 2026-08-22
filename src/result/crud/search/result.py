@@ -9,12 +9,12 @@ version: 0.0.2
 from __future__ import annotations
 from typing import Generic, List, Optional, TypeVar, cast
 
-from result import Result, SearchState
+from result import CrudResult, SearchState
 
 T = TypeVar("T")
 
 
-class SearchResult(Result[T], Generic[T]):
+class SearchResult(CrudResult[T], Generic[T]):
     """
     Role:
         -   Data Transport

@@ -15,7 +15,7 @@ from result import CrudResult, DeletionState
 T = TypeVar("T")
 
 
-class DeletionResult(CrudResult, Generic[T]):
+class DeletionResult(CrudResult[T], Generic[T]):
     """
     Role:
         -   Data Transport

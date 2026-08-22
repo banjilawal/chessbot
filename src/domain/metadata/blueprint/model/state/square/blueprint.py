@@ -13,7 +13,7 @@ from typing import Optional, Type, cast
 
 from domain.metadata.blueprint import StateModelBlueprint
 from domain.model import Board, Coord, Square
-from schema import Formation
+from domain.schema import Formation
 
 
 class SquareBlueprint(StateModelBlueprint[Square]):

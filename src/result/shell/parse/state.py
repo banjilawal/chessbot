@@ -1,7 +1,7 @@
-# src/result/shell/delete/state.py
+# src/result/shell/parse/state.py
 
 """
-Module: result.delete.state
+Module: result.shell.parse.state
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -14,3 +14,4 @@ class ParseState(Enum):
     SUCCESS = auto(),
     FAILURE = auto(),
     TIMED_OUT = auto(),
+    NOTHING_TO_PARSE = auto(),

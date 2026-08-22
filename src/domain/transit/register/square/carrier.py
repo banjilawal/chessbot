@@ -14,7 +14,7 @@ from typing import Optional, Type
 from domain.metadata.blueprint import SquareRegisterBlueprint
 from carrier import EntityCarrier
 from err import SquareRegisterNullException
-from domain.structures.register import SquareRegister
+from domain.structure.register import SquareRegister
 
 
 class SquareRegisterCarrier(EntityCarrier[SquareRegister]):

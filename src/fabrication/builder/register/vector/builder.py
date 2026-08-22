@@ -14,7 +14,7 @@ from typing import cast
 from domain.metadata.blueprint import VectorRegisterBlueprint
 from fabrication.builder import RegisterBuilder
 from err import VectorRegisterBuilderException
-from domain.structures.register import VectorRegister
+from domain.structure.register import VectorRegister
 from result import BuildResult, MethodResultType
 from util import LoggingLevelRouter
 

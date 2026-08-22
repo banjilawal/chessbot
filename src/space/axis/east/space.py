@@ -11,7 +11,7 @@ from __future__ import annotations
 
 
 from domain.model import Vector
-from schema import AxisTerminus
+from domain.schema import AxisTerminus
 from space.axis.east.space import Axis
 
 

@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from topology.mapper import AxisMappingFunction
 from domain.model import Vector
-from schema import AxisDelta
+from domain.schema import AxisDelta
 from topology.space import NorthAxis
 
 

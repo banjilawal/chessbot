@@ -7,7 +7,7 @@ Created: 2025-10-09
 version: 1.0.0
 """
 
-from schema.persona import PersonaException
+from domain.schema.persona import PersonaException
 from system import ExecutionRouteException
 
 __all__ = [

@@ -12,7 +12,7 @@ from __future__ import annotations
 from abc import ABC
 from typing import Generic, Type, TypeVar
 
-from command.statement import UserStatement
+from shell.statement import UserStatement
 
 T = TypeVar("T", bound="Command")
 

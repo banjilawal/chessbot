@@ -13,7 +13,7 @@ from typing import Optional
 
 from domain.metadata.blueprint import VectorRegisterBlueprint
 from carrier import EntityCarrier, RegisterCarrier
-from domain.structures.register import VectorRegister
+from domain.structure.register import VectorRegister
 
 
 class VectorRegisterCarrier(EntityCarrier[VectorRegister]):

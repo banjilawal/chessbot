@@ -14,7 +14,7 @@ from typing import Any, Optional
 
 from domain.metadata.blueprint import IdentityRegisterBlueprint
 from carrier import RegisterCarrier
-from domain.structures.register import IdentityRegister
+from domain.structure.register import IdentityRegister
 
 
 class IdentityRegisterCarrier(RegisterCarrier[IdentityRegister]):

@@ -16,18 +16,18 @@ from result import MethodResultType
 
 
 __all__ = [
-    # ======================# PERSONA_ERROR #======================#
-    "PersonaException",
+    # ======================# STEPPER_ERROR #======================#
+    "StepperException",
 ]
 
-# ======================# PERSONA_ERROR #======================#
-class PersonaException(SchemaException):
+# ======================# STEPPER_ERROR #======================#
+class StepperException(SchemaException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicating a Persona encountered an error.
+        1.  Indicating a Stepper encountered an error.
 
     Attributes:
         msg: Optional[str]
@@ -44,8 +44,8 @@ class PersonaException(SchemaException):
     Super Class:
         ExchangeException
     """
-    MSG = "Persona error."
-    ERR_CODE = "PERSONA_ERROR"
+    MSG = "Stepper error."
+    ERR_CODE = "STEPPER_ERROR"
     
     def __init__(
             self,

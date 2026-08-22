@@ -1,7 +1,7 @@
-# src/err/domain/metadata/exception.py
+# src/err/domain/graph/exception.py
 
 """
-Module: err.domain.metadata.exception
+Module: err.domain.graph.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -16,18 +16,18 @@ from result import MethodResultType
 
 
 __all__ = [
-    # ======================# DOMAIN_METADATA_ERROR #======================#
-    "DomainMetadataException",
+    # ======================# GRAPH_COMPONENT_ERROR #======================#
+    "GraphComponentException",
 ]
 
-# ======================# DOMAIN_METADATA_ERROR #======================#
-class DomainMetadataException(DomainObjectException):
+# ======================# GRAPH_COMPONENT_ERROR #======================#
+class GraphComponentException(DomainObjectException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicating DomainMetadata encountered an error.
+        1.  Indicating GraphComponent encountered an error.
 
     Attributes:
         msg: Optional[str]
@@ -44,8 +44,8 @@ class DomainMetadataException(DomainObjectException):
     Super Class:
         DomainObjectException
     """
-    MSG = "DomainMetadata error."
-    ERR_CODE = "DOMAIN_METADATA_ERROR"
+    MSG = "GraphComponent error."
+    ERR_CODE = "GRAPH_COMPONENT_ERROR"
     
     def __init__(
             self,

@@ -10,7 +10,7 @@ version: 0.0.2
 from __future__ import annotations
 from typing import Dict
 
-from schema import Persona
+from domain.schema import Persona
 from err import PawnException
 from geometry import CoordSpan, PawnSpanner
 from domain.model import OffsetRank, PawnToken

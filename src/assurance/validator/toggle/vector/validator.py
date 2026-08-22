@@ -14,7 +14,7 @@ from assurance import ToggleValidator
 from err import VectorToggleValidatorException
 from assurance import VectorToggleIntegrityChecker
 from result import ValidationResult
-from domain.structures.toggle import CartesianToggle
+from domain.structure.toggle import CartesianToggle
 from util import LoggingLevelRouter
 
 

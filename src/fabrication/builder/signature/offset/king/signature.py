@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from collection import VectorSet
 from domain.model import King
-from schema import Offset
+from domain.schema import Offset
 from topology.pattern import OffsetSignature
 
 

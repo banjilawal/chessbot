@@ -12,9 +12,9 @@ from __future__ import annotations
 
 from typing import Any, cast
 
-from command import ArgumentCountException, ArgumentTypeException, NullArgumentsException, NullCommandException
-from command.token import DeployTokenCommand, PromotePawnCommand, TokenCommand, ValidateTokenCommand
-from command.token.service.build import BuildTokenCommand
+from shell import ArgumentCountException, ArgumentTypeException, NullArgumentsException, NullCommandException
+from shell.token import DeployTokenCommand, PromotePawnCommand, TokenCommand, ValidateTokenCommand
+from shell.token.service.build import BuildTokenCommand
 from system import IdentityService, LoggingLevelRouter, Router, ValidationResult
 from domain.model.state.token import TokenCommandTable, TokenService, TokenServiceMenuException
 from domain.model.state.token import TokenCommandNotFoundException

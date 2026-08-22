@@ -12,7 +12,7 @@ from __future__ import annotations
 
 from fabrication.assembler import RegisterAssembler
 from domain.model import Coord
-from domain.structures.register import CoordRegister
+from domain.structure.register import CoordRegister
 from result import BuildResult
 from util import LoggingLevelRouter
 

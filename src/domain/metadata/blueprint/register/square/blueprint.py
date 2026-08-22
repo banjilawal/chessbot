@@ -14,7 +14,7 @@ from typing import Optional, Type, cast
 from domain.metadata.blueprint import RegisterBlueprint
 from err import RegisterNullException, SquareRegisterNullException
 from domain.model import Square
-from domain.structures.register import SquareRegister
+from domain.structure.register import SquareRegister
 
 
 class SquareRegisterBlueprint(RegisterBlueprint[SquareRegister]):

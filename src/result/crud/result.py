@@ -9,13 +9,15 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from dataclasses import dataclass
-from typing import Optional, TypeVar, Generic
+from abc import ABC
+from typing import Optional, TypeVar, Generic, cast
+
+from result import Result
 
 T = TypeVar("T")
 
 
-class Result(Generic[T]):
+class CrudResult(Result, ABC, Generic[T]):
     """
     Role:
         -   Data Transport
@@ -35,9 +37,8 @@ class Result(Generic[T]):
         -   def failure(exception: Exception) -> Result
         
     Super Class:
+        Result
     """
-    _payload: Optional[T]
-    _exception: Optional[Exception]
     
     def __init__(
             self,
@@ -49,16 +50,11 @@ class Result(Generic[T]):
             payload: Optional[T]
             exception: Optional[Exception]
         """
-        self._payload = payload
-        self._exception = exception
+        super().__init__(payload=payload, exception=exception)
     
     @property
     def payload(self) -> Optional[T]:
-        return self._payload
-    
-    @property
-    def exception(self) -> Optional[Exception]:
-        return self._exception
+        return cast(T, super().payload)
     
     @property
     def is_success(self) -> bool:

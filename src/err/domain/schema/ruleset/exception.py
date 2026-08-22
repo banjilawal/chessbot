@@ -16,18 +16,18 @@ from result import MethodResultType
 
 
 __all__ = [
-    # ======================# PERSONA_ERROR #======================#
-    "PersonaException",
+    # ======================# RULESET_ERROR #======================#
+    "RulesetException",
 ]
 
-# ======================# PERSONA_ERROR #======================#
-class PersonaException(SchemaException):
+# ======================# RULESET_ERROR #======================#
+class RulesetException(SchemaException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicating a Persona encountered an error.
+        1.  Indicating a Ruleset encountered an error.
 
     Attributes:
         msg: Optional[str]
@@ -44,8 +44,8 @@ class PersonaException(SchemaException):
     Super Class:
         ExchangeException
     """
-    MSG = "Persona error."
-    ERR_CODE = "PERSONA_ERROR"
+    MSG = "Ruleset error."
+    ERR_CODE = "RULESET_ERROR"
     
     def __init__(
             self,

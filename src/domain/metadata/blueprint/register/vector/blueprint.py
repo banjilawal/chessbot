@@ -14,7 +14,7 @@ from typing import Optional, Type, cast
 from domain.metadata.blueprint import RegisterBlueprint
 from err import RegisterNullException, VectorRegisterNullException
 from domain.model import Vector
-from domain.structures.register import VectorRegister
+from domain.structure.register import VectorRegister
 
 
 class VectorRegisterBlueprint(RegisterBlueprint[VectorRegister]):

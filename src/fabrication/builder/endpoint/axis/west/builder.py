@@ -13,9 +13,9 @@ from typing import Optional, cast
 
 from fabrication.builder.endpoint.axis.builder import AxisEndpointBuilder
 from domain.model import Vector
-from domain.structures.register import VectorRegister
+from domain.structure.register import VectorRegister
 from result import BuildResult, ComputationResult
-from schema import AxisTerminus
+from domain.schema import AxisTerminus
 from space import WestTraversalPattern
 from toolkit import MathToolkit
 from util import LoggingLevelRouter

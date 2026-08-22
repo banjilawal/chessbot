@@ -10,11 +10,11 @@ version: 0.0.2
 from __future__ import annotations
 from typing import Optional, cast
 
+from result import ParseState, ShellResult
 from shell import Command
-from result import ParseState, Result
 
 
-class ParseResult(Result[Command]):
+class ParseResult(ShellResult[Command]):
     """
     Role:
         -   Data Transport
@@ -24,22 +24,23 @@ class ParseResult(Result[Command]):
         1.  Contains the outcome of a parse.
 
     Attributes:
+        state: ParseState
+        payload: Optional[Command]
         exception: Optional[Exception]
-        state: validationState
-        payload: Optional[T]
+        
         is_timed_out: bool
         is_success: bool
         is_failure: bool
-        is_nothing_to_delete: bool
+        nothing_to_parse: bool
 
     Provides:
-        -   def success(payload: T) -> ParseResu[T]
-        -   def failure(exception: Exception) -> ParseResu[T]
+        -   def success(payload: T) -> ParseResu[Command]
+        -   def failure(exception: Exception) -> ParseResu[Command]
         -   def timed_out(exception: Exception) -> ParseResult
-        -   def nothing_to_delete() -> ParseResult
+        -   def nothing_to_parse() -> ParseResult
 
     Super Class:
-        Result
+        ShellResult
     """
     _state = ParseState
     
@@ -51,8 +52,8 @@ class ParseResult(Result[Command]):
     ):
         """
         Args:
+            state: ParseState
             payload: Optional[Command]
-            state: ParseResultState
             exception: Optional[Exception]
         """
         super().__init__(
@@ -88,11 +89,11 @@ class ParseResult(Result[Command]):
         )
     
     @property
-    def is_nothing_to_delete(self) -> bool:
+    def nothing_to_parse(self) -> bool:
         return (
                 self.payload is None and
                 self.exception is None and
-                self._state == ParseState.NOTHING_TO_DELETE
+                self._state == ParseState.NOTHING_TO_PARSE
         )
     
     @property
@@ -109,6 +110,14 @@ class ParseResult(Result[Command]):
             payload=payload,
             exception=None,
             state=ParseState.SUCCESS,
+        )
+    
+    @classmethod
+    def nothing(cls,) -> ParseResult:
+        return cls(
+            payload=None,
+            exception=None,
+            state=ParseState.NOTHING_TO_PARSE,
         )
     
     @classmethod

@@ -14,7 +14,7 @@ from typing import Optional, TypeVar, Generic
 
 T = TypeVar("T")
 
-@dataclass
+
 class Result(Generic[T]):
     """
     Role:

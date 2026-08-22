@@ -7,7 +7,7 @@ Created: 2026-04-04
 version: 0.0.2
 """
 
-# ============ ERR.DOMAIN.metadata PACKAGE ===========#
+# ============ ERR.DOMAIN.METADATA PACKAGE ===========#
 
 # Packages
 from .blueprint import *

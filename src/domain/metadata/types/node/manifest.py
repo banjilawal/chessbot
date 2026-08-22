@@ -14,7 +14,7 @@ from typing import Type
 
 from assurance import TypesManifest
 from fabrication import NodeBlueprint
-from domain.structures.node import Node
+from domain.structure.node import Node
 from domain.transit import NodeCarrier
 
 

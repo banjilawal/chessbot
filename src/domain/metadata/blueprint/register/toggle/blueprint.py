@@ -13,8 +13,8 @@ from typing import Optional, Type, cast
 
 from domain.metadata.blueprint import RegisterBlueprint
 from err import VectorToggleRegisterNullException
-from domain.structures.register import CartesianToggleRegister
-from domain.structures.toggle import CartesianToggle
+from domain.structure.register import CartesianToggleRegister
+from domain.structure.toggle import CartesianToggle
 
 
 class VectorToggleRegisterBlueprint(

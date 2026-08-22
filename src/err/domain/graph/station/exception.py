@@ -16,18 +16,18 @@ from result import MethodResultType
 
 
 __all__ = [
-    # ======================# EDGE_ERROR #======================#
-    "EdgeException",
+    # ======================# STATION_ERROR #======================#
+    "StationException",
 ]
 
-# ======================# EDGE_ERROR #======================#
-class EdgeException(GraphComponentException):
+# ======================# STATION_ERROR #======================#
+class StationException(GraphComponentException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicating an Edge encountered an error.
+        1.  Indicating an Station encountered an error.
 
     Attributes:
         msg: Optional[str]
@@ -44,8 +44,8 @@ class EdgeException(GraphComponentException):
     Super Class:
         GraphComponentException
     """
-    MSG = "Edge error."
-    ERR_CODE = "EDGE_ERROR"
+    MSG = "Station error."
+    ERR_CODE = "STATION_ERROR"
     
     def __init__(
             self,

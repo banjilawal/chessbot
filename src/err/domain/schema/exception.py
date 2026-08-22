@@ -1,7 +1,7 @@
-# src/err/domain/graph/exception.py
+# src/err/domain/schema/exception.py
 
 """
-Module: err.domain.graph.exception
+Module: err.domain.schema.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -16,18 +16,18 @@ from result import MethodResultType
 
 
 __all__ = [
-    # ======================# EXCHANGE_OBJECT_ERROR #======================#
-    "ExchangeObjectException",
+    # ======================# SCHEMA_ERROR #======================#
+    "SchemaException",
 ]
 
-# ======================# EXCHANGE_OBJECT_ERROR #======================#
-class ExchangeObjectException(DomainObjectException):
+# ======================# SCHEMA_ERROR #======================#
+class SchemaException(DomainObjectException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicating either a Request or a Response encountered an error.
+        1.  Indicating a Schema encountered an error.
 
     Attributes:
         msg: Optional[str]
@@ -44,8 +44,8 @@ class ExchangeObjectException(DomainObjectException):
     Super Class:
         DomainObjectException
     """
-    MSG = "Exchange error."
-    ERR_CODE = "EXCHANGE_OBJECT_ERROR"
+    MSG = "Schema error."
+    ERR_CODE = "SCHEMA_ERROR"
     
     def __init__(
             self,

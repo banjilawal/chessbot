@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Optional
 
 from fabrication import VectorNodeBlueprint
-from domain.structures.node import VectorNode
+from domain.structure.node import VectorNode
 from domain.transit import NodeCarrier
 
 

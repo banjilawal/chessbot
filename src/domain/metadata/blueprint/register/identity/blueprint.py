@@ -13,7 +13,7 @@ from typing import Type, cast
 
 from domain.metadata.blueprint import RegisterBlueprint
 from err import IdentityRegisterNullException
-from domain.structures.register import IdentityRegister
+from domain.structure.register import IdentityRegister
 
 
 class IdentityRegisterBlueprint(RegisterBlueprint[IdentityRegister]):

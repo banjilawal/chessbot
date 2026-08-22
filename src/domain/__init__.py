@@ -14,8 +14,9 @@ from .exchange import *
 from .graph import *
 from .metadata import *
 from .model import *
+from .schema import *
 from .search import *
-from .structures import *
+from .structure import *
 from .transit import *
 
 # Modules

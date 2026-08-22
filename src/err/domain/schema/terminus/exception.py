@@ -16,18 +16,18 @@ from result import MethodResultType
 
 
 __all__ = [
-    # ======================# PERSONA_ERROR #======================#
-    "PersonaException",
+    # ======================# TERMINUS_ERROR #======================#
+    "TerminusException",
 ]
 
-# ======================# PERSONA_ERROR #======================#
-class PersonaException(SchemaException):
+# ======================# TERMINUS_ERROR #======================#
+class TerminusException(SchemaException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicating a Persona encountered an error.
+        1.  Indicating a Terminus encountered an error.
 
     Attributes:
         msg: Optional[str]
@@ -44,8 +44,8 @@ class PersonaException(SchemaException):
     Super Class:
         ExchangeException
     """
-    MSG = "Persona error."
-    ERR_CODE = "PERSONA_ERROR"
+    MSG = "Terminus error."
+    ERR_CODE = "TERMINUS_ERROR"
     
     def __init__(
             self,

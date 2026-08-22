@@ -14,7 +14,7 @@ from typing import Optional
 from domain.metadata.blueprint import NodeBlueprint
 
 from carrier import ModelCarrier
-from domain.structures.node import SquareNode
+from domain.structure.node import SquareNode
 
 
 class NodeCarrier(ModelCarrier[SquareNode]):

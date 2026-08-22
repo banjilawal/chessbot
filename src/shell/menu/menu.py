@@ -14,7 +14,7 @@ from typing import Any, Generic, TypeVar
 
 from microservice import Microservice
 from domain.exchange.request import Request
-from command.statement import UserStatement
+from shell.statement import UserStatement
 from util import LoggingLevelRouter
 
 T = TypeVar("T", bound="Microservice")

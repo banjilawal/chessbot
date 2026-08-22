@@ -15,7 +15,7 @@ from typing import Type
 
 from assurance import TypesManifest
 from fabrication import RegisterBlueprint
-from domain.structures.register import Register
+from domain.structure.register import Register
 from domain.transit import RegisterCarrier
 
 

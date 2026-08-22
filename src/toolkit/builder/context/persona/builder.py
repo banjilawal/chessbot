@@ -9,7 +9,7 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from schema.persona import (
+from domain.schema.persona import (
     ArenaPersonaKeysException, PersonaKey, PersonaKeyToolkitException,
     PersonaKeyToolkitRouteException, ZeroPersonaKeysException
 )

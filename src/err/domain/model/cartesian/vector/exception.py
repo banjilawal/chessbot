@@ -1,7 +1,7 @@
-# src/err/domain/model/cartesian/coord/exception.py
+# src/err/domain/model/cartesian/vector/exception.py
 
 """
-Module: err.domain.model.cartesian.coord.exception
+Module: err.domain.model.cartesian.vector.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -16,18 +16,18 @@ from result import MethodResultType
 
 
 __all__ = [
-    # ======================# COORD_ERROR #======================#
-    "CoordException",
+    # ======================# VECTOR_ERROR #======================#
+    "VectorException",
 ]
 
-# ======================# COORD_ERROR #======================#
-class CoordException(CartesianPointException):
+# ======================# VECTOR_ERROR #======================#
+class VectorException(CartesianPointException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicating a Coord encountered an error.
+        1.  Indicating a Vector encountered an error.
 
     Attributes:
         msg: Optional[str]
@@ -44,8 +44,8 @@ class CoordException(CartesianPointException):
     Super Class:
         CartesianPointException
     """
-    MSG = "Coord error."
-    ERR_CODE = "COORD_ERROR"
+    MSG = "Vector error."
+    ERR_CODE = "VECTOR_ERROR"
     
     def __init__(
             self,

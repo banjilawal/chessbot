@@ -16,10 +16,10 @@ from err import (
     RegisterEmptyException, RegisterSizeException, VectorToggleRegisterCheckerException,
     VectorToggleRegisterMismatchException
 )
-from domain.structures.register import CartesianToggleRegister
+from domain.structure.register import CartesianToggleRegister
 from result import MethodResultType, ValidationResult
 from assurance.checker import Checker
-from domain.structures.toggle import CartesianToggle
+from domain.structure.toggle import CartesianToggle
 from toolkit import VectorToggleRegisterToolkit
 from util import LoggingLevelRouter
 

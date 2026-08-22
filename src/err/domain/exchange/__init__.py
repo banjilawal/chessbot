@@ -10,8 +10,8 @@ version: 0.0.2
 # ============ ERR.DOMAIN.GRAPH PACKAGE ===========#
 
 # Packages
-from .edge import *
-from .station import *
+from .request import *
+from .response import *
 
 # Modules
-from .exception import GraphComponentException
+from .exception import ExchangeObjectException

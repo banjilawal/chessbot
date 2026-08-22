@@ -10,7 +10,7 @@ version: 0.0.2
 from __future__ import annotations
 
 from domain.model import Board, Coord, Square, TokenHomeClaimState
-from schema import Formation
+from domain.schema import Formation
 
 
 class HomeSquare(Square):

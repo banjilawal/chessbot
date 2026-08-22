@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Generic, Optional, TypeVar
 from abc import abstractmethod
 
-from domain.structures.toggle import Toggle
+from domain.structure.toggle import Toggle
 
 T = TypeVar("T")
 

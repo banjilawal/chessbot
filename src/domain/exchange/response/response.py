@@ -12,10 +12,7 @@ from __future__ import annotations
 from abc import ABC
 from typing import Generic,  TypeVar
 
-
-from domain.exchange.request import Request
-from domain.exchange.response.state import ResponseState
-
+from domain import Request, ResponseState
 
 T = TypeVar("T", bound="Request")
 
@@ -38,12 +35,12 @@ class Response(ABC, Generic[T]):
     
     @property
     def is_success(self) -> bool:
-        return self._state == Domain.Exchange.ResponseState.SUCCESS
+        return self._state == ResponseState.SUCCESS
 
     
     @property
     def is_failure(self) -> bool:
-        return self._state == Domain.Exchange.ResponseState.FAILURE
+        return self._state == ResponseState.FAILURE
         
     @classmethod
     def success(cls, request: Request[T]) -> Response[T]:

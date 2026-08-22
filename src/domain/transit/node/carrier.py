@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from abc import ABC
 
-from domain.structures.node import Node
+from domain.structure.node import Node
 from domain.transit import EntityCarrier
 
 

@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from microservice import CoordService, VectorService
 from domain.model import Model
-from schema import Persona
+from domain.schema import Persona
 
 
 class Rank(Model):

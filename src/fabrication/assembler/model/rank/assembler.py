@@ -14,7 +14,7 @@ from domain.metadata.blueprint import RankBlueprint
 from domain.model import Bishop, King, Knight, Pawn, Queen, Rank, Rook
 from result import BuildResult
 from fabrication.assembler import ModelAssembler
-from schema import Persona
+from domain.schema import Persona
 from util import LoggingLevelRouter
 
 

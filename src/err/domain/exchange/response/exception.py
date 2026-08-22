@@ -11,23 +11,23 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import ExchangeException
+from err import ExchangeObjectException
 from result import MethodResultType
 
 
 __all__ = [
-    # ======================# STATION_ERROR #======================#
-    "StationException",
+    # ======================# RESPONSE_ERROR #======================#
+    "ResponseException",
 ]
 
-# ======================# STATION_ERROR #======================#
-class StationException(ExchangeException):
+# ======================# RESPONSE_ERROR #======================#
+class ResponseException(ExchangeObjectException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicating an Station encountered an error.
+        1.  Indicating a Response encountered an error.
 
     Attributes:
         msg: Optional[str]
@@ -44,8 +44,8 @@ class StationException(ExchangeException):
     Super Class:
         ExchangeException
     """
-    MSG = "Station error."
-    ERR_CODE = "STATION_ERROR"
+    MSG = "Response error."
+    ERR_CODE = "RESPONSE_ERROR"
     
     def __init__(
             self,

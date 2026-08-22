@@ -12,8 +12,8 @@ from __future__ import annotations
 from abc import ABC, abstractmethod
 from typing import Any, Generic, TypeVar
 
-from command import CommandInterpreter
-from command.parser import StatementParser
+from shell import CommandInterpreter
+from shell.parser import StatementParser
 from domain.exchange.request import OperationRequest
 from util import LoggingLevelRouter
 

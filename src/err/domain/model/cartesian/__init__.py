@@ -10,7 +10,8 @@ version: 0.0.2
 # ============ ERR.DOMAIN.MODEL.CARTESIAN PACKAGE ===========#
 
 # Packages
-
+from .coord import *
+from .vector import *
 
 # Modules
-from .exception import CartesianException
+from .exception import CartesianPointException

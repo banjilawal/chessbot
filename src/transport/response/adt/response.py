@@ -14,7 +14,7 @@ from system import Result
 from transport import ServiceRequest
 
 
-class Response:
+class ServiceResponse:
     _id: int
     _request: ServiceRequest
     _result: Result

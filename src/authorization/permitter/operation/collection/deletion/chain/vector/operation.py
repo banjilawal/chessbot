@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Optional, cast
 
 from authorization import RemoveVectorNodeRequest
-from domain.structures.node import VectorNode
+from domain.structure.node import VectorNode
 from operation import RemoveNode
 from result import DeletionResult
 from util import LoggingLevelRouter

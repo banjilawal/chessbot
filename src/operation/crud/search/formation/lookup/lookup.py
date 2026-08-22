@@ -14,7 +14,7 @@ from domain.model import (
     FormationLookupRouteException, FormationPersonaBoundsException, FormationSquareBoundsException, FormationKey,
     FormationKeyValidator
 )
-from schema.persona import Persona
+from domain.schema.persona import Persona
 from system import GameColor, HashLookupProcess, LoggingLevelRouter, SearchResult
 
 

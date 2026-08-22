@@ -14,7 +14,7 @@ from typing import Optional, Type, cast
 from err import VectorNodeNullException
 from fabrication import NodeBlueprint
 from domain.model import Vector
-from domain.structures.node import VectorNode
+from domain.structure.node import VectorNode
 
 
 class VectorNodeBlueprint(NodeBlueprint):

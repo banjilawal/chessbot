@@ -10,10 +10,10 @@ version: 0.0.2
 from __future__ import annotations
 from typing import Optional, cast
 
-from result import InsertionState, Result
+from result import InsertionState
 
 
-class InsertionResult(Result[bool]):
+class InsertionResult(CrudResult[bool]):
     """
     Role:
         -   Data Transport

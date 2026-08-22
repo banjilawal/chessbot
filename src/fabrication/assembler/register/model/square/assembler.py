@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from fabrication.assembler import RegisterAssembler
 from domain.metadata.blueprint import SquareRegisterBlueprint
-from domain.structures.register import SquareRegister
+from domain.structure.register import SquareRegister
 from result import BuildResult
 from util import LoggingLevelRouter
 

@@ -13,7 +13,7 @@ from typing import Type, cast
 
 from err import NodeNullException
 from fabrication import Blueprint
-from domain.structures.node import Node
+from domain.structure.node import Node
 
 
 class NodeBlueprint(Blueprint[Node]):

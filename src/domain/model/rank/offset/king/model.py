@@ -9,7 +9,7 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from schema import Persona
+from domain.schema import Persona
 from err import KingException
 from geometry import KingSpanner
 from domain.model import Coord, OffsetRank

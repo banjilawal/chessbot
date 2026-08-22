@@ -17,7 +17,7 @@ from err import FormationNullException, TokenIntegrityCheckerException
 from fabrication import TokenBlueprint
 from domain.model import HomeSquare, Team, Token
 from result import ValidationResult
-from schema import Formation
+from domain.schema import Formation
 from domain.transit import TokenCarrier
 from util import LoggingLevelRouter
 

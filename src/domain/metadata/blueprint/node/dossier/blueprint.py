@@ -14,7 +14,7 @@ from typing import Optional, Type, cast
 from err import DossierNodeNullException
 from fabrication import NodeBlueprint
 from domain.model import Dossier
-from domain.structures.node import DossierNode
+from domain.structure.node import DossierNode
 
 
 class DossierNodeBlueprint(NodeBlueprint):

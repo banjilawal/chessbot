@@ -16,18 +16,18 @@ from result import MethodResultType
 
 
 __all__ = [
-    # ======================# RESPONSE_ERROR #======================#
-    "ResponseException",
+    # ======================# PERSONA_ERROR #======================#
+    "PersonaException",
 ]
 
-# ======================# RESPONSE_ERROR #======================#
-class ResponseException(SchemaException):
+# ======================# PERSONA_ERROR #======================#
+class PersonaException(SchemaException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicating a Response encountered an error.
+        1.  Indicating a Persona encountered an error.
 
     Attributes:
         msg: Optional[str]
@@ -44,8 +44,8 @@ class ResponseException(SchemaException):
     Super Class:
         ExchangeException
     """
-    MSG = "Response error."
-    ERR_CODE = "RESPONSE_ERROR"
+    MSG = "Persona error."
+    ERR_CODE = "PERSONA_ERROR"
     
     def __init__(
             self,

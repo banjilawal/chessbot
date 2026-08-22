@@ -13,13 +13,10 @@ version: 0.0.2
 from .analysis import *
 from .build import *
 from .computation import *
-from .deletion import *
+from .crud import *
 from .event import *
-from .insertion import *
-from .interpretation import *
-from .parse import *
+from .shell import *
 from .turn import *
-from .search import *
 from .update import *
 from .validation import*
 

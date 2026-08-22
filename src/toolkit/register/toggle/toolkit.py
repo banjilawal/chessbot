@@ -17,8 +17,8 @@ from err import (
     VectorToggleRegisterBlueprintNullException, VectorToggleRegisterCarrierNullException,
     VectorToggleRegisterNullException
 )
-from domain.structures.register import CartesianToggleRegister
-from domain.structures.toggle import CartesianToggle
+from domain.structure.register import CartesianToggleRegister
+from domain.structure.toggle import CartesianToggle
 from toolkit.register.toggle.toolkit import RegisterToolkit
 from assurance.validator import VectorToggleValidator
 

@@ -13,7 +13,7 @@ from typing import Optional, Type, cast
 
 from domain.metadata.blueprint import RegisterBlueprint
 from err import NumberRegisterNullException
-from domain.structures.register import NumberRegister
+from domain.structure.register import NumberRegister
 
 
 class NumberRegisterBlueprint(RegisterBlueprint[NumberRegister]):

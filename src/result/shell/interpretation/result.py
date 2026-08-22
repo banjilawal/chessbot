@@ -1,7 +1,7 @@
-# src/result/shell/interpretation/result.py
+# src/result/shell/Interpretation/result.py
 
 """
-Module: result.shell.interpretation.result
+Module: result.shell.Interpretation.result
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -9,22 +9,21 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from abc import ABC
+
 from typing import Generic, Optional, TypeVar, cast
 
-
-
+from result import InterpretationState, ShellResult
 
 T = TypeVar("T", bound="OperationRequest")
 
-class InterpretationResult(ShellResult, ABC, Generic[T]):
+class InterpretationResult(ShellResult[T], Generic[T]):
     """
     Role:
         -   Data Transport
         -   Error Transport
 
     Responsibilities:
-        1.  Contains the outcome of an interpretation.
+        1.  Contains the outcome of an Interpretation.
 
     Attributes:
         exception: Optional[Exception]
@@ -33,13 +32,13 @@ class InterpretationResult(ShellResult, ABC, Generic[T]):
         is_timed_out: bool
         is_success: bool
         is_failure: bool
-        is_nothing_to_delete: bool
+        is_nothing_to_interpret: bool
 
     Provides:
         -   def success(payload: T) -> InterpretationResu[T]
         -   def failure(exception: Exception) -> InterpretationResu[T]
         -   def timed_out(exception: Exception) -> InterpretationResult
-        -   def nothing_to_delete() -> InterpretationResult
+        -   def nothing_to_interpret() -> InterpretationResult
 
     Super Class:
         Result
@@ -89,6 +88,14 @@ class InterpretationResult(ShellResult, ABC, Generic[T]):
                 self._state == InterpretationState.FAILURE or
                 self._state == InterpretationState.TIMED_OUT
         )
+    
+    @property
+    def nothing_to_interpret(self) -> bool:
+        return (
+                self.payload is None and
+                self.exception is None and
+                self._state == InterpretationState.NOTHING_TO_INTERPRET
+        )
 
     @property
     def is_timed_out(self) -> bool:
@@ -104,6 +111,14 @@ class InterpretationResult(ShellResult, ABC, Generic[T]):
             payload=payload,
             exception=None,
             state=InterpretationState.SUCCESS,
+        )
+    
+    @classmethod
+    def nothing(cls, ) -> InterpretationResult:
+        return cls(
+            payload=None,
+            exception=None,
+            state=InterpretationState.NOTHING_TO_INTERPRET,
         )
     
     @classmethod

@@ -14,10 +14,10 @@ from typing import Optional, TypeVar, Generic, cast
 
 from result import Result
 
-T = TypeVar("T")
+T = TypeVar("T", bound="Command")
 
 
-class CrudResult(Result, ABC, Generic[T]):
+class ShellResult(Result, ABC, Generic[T]):
     """
     Role:
         -   Data Transport

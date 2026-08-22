@@ -16,7 +16,7 @@ from err import VectorIntegrityCheckerException
 from fabrication import VectorNodeBlueprint
 from domain.metadata.blueprint import VectorBlueprint
 from domain.model import Vector
-from domain.structures.node import VectorNode
+from domain.structure.node import VectorNode
 from result import ValidationResult
 from domain.transit import VectorCarrier
 from util import LoggingLevelRouter

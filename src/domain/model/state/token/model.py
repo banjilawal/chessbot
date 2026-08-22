@@ -13,7 +13,7 @@ from typing import Optional
 
 from database import CoordDatabase
 from domain.model import Coord, HomeSquare, KingToken, Rank, StateModel, Team, TokenActivityState, DeploymentState
-from schema import Formation
+from domain.schema import Formation
 
 
 class Token(StateModel):

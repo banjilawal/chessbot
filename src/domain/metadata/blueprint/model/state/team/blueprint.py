@@ -13,7 +13,7 @@ from typing import Optional, Type, cast
 
 from domain.metadata.blueprint import StateModelBlueprint
 from domain.model import Board, Player, Team
-from schema import Archetype
+from domain.schema import Archetype
 
 
 class TeamBlueprint(StateModelBlueprint[Team]):
